@@ -1163,6 +1163,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Térkép nagyí
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Térkép mozgatás
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Ki
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollgomb sebessége a térképen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatikus pause-mode új játék esetén: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármű játékosonként: {ORANGE}{STRING}
@@ -2140,6 +2141,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}A váro
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Egyiksem
+STR_NUM_VERY_LOW                                                :Nagyon kevés
 STR_6816_LOW                                                    :Kevés
 STR_6817_NORMAL                                                 :Normál
 STR_6818_HIGH                                                   :Sok

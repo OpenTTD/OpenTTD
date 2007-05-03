@@ -1097,6 +1097,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kaart
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kaart
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Uit
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaart muiswiel snelheid: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisch pauzeren wanneer je een nieuw spel start: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
@@ -2037,6 +2038,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Houding
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Geen
+STR_NUM_VERY_LOW                                                :Erg laag
 STR_6816_LOW                                                    :Laag
 STR_6817_NORMAL                                                 :Normaal
 STR_6818_HIGH                                                   :Hoog

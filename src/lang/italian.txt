@@ -1099,6 +1099,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom della mapp
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scorri la mappa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocità rotellina mappa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Metti in pausa all'inizio di una nuova partita: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automezzi per giocatore: {ORANGE}{STRING}
@@ -2039,6 +2040,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Atteggi
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Nessuno
+STR_NUM_VERY_LOW                                                :Molto basso
 STR_6816_LOW                                                    :Basso
 STR_6817_NORMAL                                                 :Normale
 STR_6818_HIGH                                                   :Alto

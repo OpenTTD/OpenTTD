@@ -229,7 +229,7 @@ STR_0102_OIL_WELLS                                              :{BLACK}{TINYFON
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Шахта железной руды
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Сталелитейный завод
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Банк
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Целлюлозно-бумажный комбинат
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Бумажная фабрика
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Золотой прииск
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Пищевой завод
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Алмазная шахта
@@ -410,7 +410,7 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Послать 
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Послать в гараж
 STR_SEND_SHIP_TO_DEPOT                                          :Послать в док
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Послать в ангар
-STR_SEND_FOR_SERVICING                                          :Обслужить в депо
+STR_SEND_FOR_SERVICING                                          :Послать обслужить
 
 ############ range for months starts
 STR_0162_JAN                                                    :Янв
@@ -653,8 +653,8 @@ STR_0240_COAL_MINE                                              :{BLACK}Угол
 STR_0241_POWER_STATION                                          :{BLACK}Электростанция
 STR_0242_SAWMILL                                                :{BLACK}Лесопилка
 STR_0243_FOREST                                                 :{BLACK}Лес
-STR_0244_OIL_REFINERY                                           :{BLACK}Нефтеобраб. завод
-STR_0245_OIL_RIG                                                :{BLACK}Буровая вышка
+STR_0244_OIL_REFINERY                                           :{BLACK}Нефтезавод
+STR_0245_OIL_RIG                                                :{BLACK}Нефтяная вышка
 STR_0246_FACTORY                                                :{BLACK}Фабрика
 STR_0247_STEEL_MILL                                             :{BLACK}Сталеплавильный завод
 STR_0248_FARM                                                   :{BLACK}Ферма
@@ -687,24 +687,24 @@ STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Пост
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Построить электростанцию
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Построить лесопилку
 STR_0265_PLANT_FOREST                                           :{BLACK}Посадить лес
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Построить нефтеперераб. завод
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Построить буровую платформу (возможно только у края карты)
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Построить нефтезавод
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Построить нефтяную вышку (только возможно у края карты)
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Построить фабрику
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Построить Сталелитейный завод
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Построить сталелитейный завод
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Построить ферму
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Построить шахту железной руды
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Построить нефтяные скважины
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Построить банк (Возможно только в городе с населением более 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Построить ЦБК
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Построить банк (только возможно в городе с населением более 1200)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Построить бумажную фабрику
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Построить пищевой завод
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Построить типографию
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Построить золотой прииск
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Построить банк (Возможно только в городе)
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Построить банк (только возможно в городе)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Построить лесопилку (уничтожает джунгли и производит дерево)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Создать фруктовую плантацию
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Создать плантацию каучука
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Построить водокачку
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Построить водонапорную башню (только в городе)
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Построить водонапорную башню (только возможно в городе)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Построить алмазную шахту
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Построить шахту медной руды
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Посадить лес сахарной ваты
@@ -1099,6 +1099,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :для масш
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :для смещения обзора
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :не использовать
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Скорость смещения обзора прокруткой колеса мыши: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автопауза в начале игры: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество автотранспорта на игрока: {ORANGE}{STRING}
@@ -1850,13 +1851,13 @@ STR_4803_POWER_STATION                                          :Электро�
 STR_4804_SAWMILL                                                :Лесопилка
 STR_4805_FOREST                                                 :Лес
 STR_4806_OIL_REFINERY                                           :Нефтезавод
-STR_4807_OIL_RIG                                                :Буровая вышка
+STR_4807_OIL_RIG                                                :Нефтяная вышка
 STR_4808_FACTORY                                                :Завод
 STR_4809_PRINTING_WORKS                                         :Типография
 STR_480A_STEEL_MILL                                             :Сталелитейный завод
 STR_480B_FARM                                                   :Ферма
 STR_480C_COPPER_ORE_MINE                                        :Шахта медной руды
-STR_480D_OIL_WELLS                                              :Нефтяная платформа
+STR_480D_OIL_WELLS                                              :Нефтяная скважина
 STR_480E_BANK                                                   :Банк
 STR_480F_FOOD_PROCESSING_PLANT                                  :Пищевая фабрика
 STR_4810_PAPER_MILL                                             :Бумажная фабрика
@@ -1984,7 +1985,7 @@ STR_SV_STNAME_WOODS                                             :Лесная {S
 STR_SV_STNAME_LAKESIDE                                          :Озёрная {STRING}
 STR_SV_STNAME_EXCHANGE                                          :{STRING}-сортировочная
 STR_SV_STNAME_AIRPORT                                           :Аэропорт {STRING}
-STR_SV_STNAME_OILFIELD                                          :Нефтяное поле {STRING}
+STR_SV_STNAME_OILFIELD                                          :Нефтяная вышка {STRING}
 STR_SV_STNAME_MINES                                             :Шахты {STRING}
 STR_SV_STNAME_DOCKS                                             :Пристань {STRING}
 STR_SV_STNAME_BUOY_1                                            :{STRING} Буй 1
@@ -2522,7 +2523,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :магнито�
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Депо {TOWN}
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый поезд прибыл на станцию {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Детали)
-STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Впереди поезд
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поезд мешает
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Ехать к ст. {STATION}
@@ -2567,7 +2568,7 @@ STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Новы
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Поезда
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Построить
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Копировать транспорт
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Копировать
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Создает копию автомобиля. Control-щелчок копирует задания
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Создает копию автомобиля. Щелкнуть на кнопке и затем на машине внутри или снаружи гаража. Control-щелчок копирует и задания
 STR_CLONE_TRAIN                                                 :{BLACK}Копировать состав
@@ -2640,8 +2641,8 @@ STR_SERVICE_HINT                                                :{BLACK}Проп
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Цена обслуж.: {CURRENCY}/год{}Емкость: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Поломка
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK} Стоимость обслуживания: {LTBLUE}{CURRENCY}/год
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_S}  {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_S} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY} {BLACK}Макс. Тяговое Усилие: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_S} {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Макс. скорость: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Вес: {LTBLUE}{WEIGHT_S} {BLACK}Мощн.: {LTBLUE}{POWER}{BLACK} Макс. ск.: {LTBLUE}{VELOCITY} {BLACK}Макс. ТУ: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего ремонта: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Остановлен
@@ -2660,7 +2661,7 @@ STR_886F_TRANSFER                                               :{BLACK}Тран
 
 STR_TRAIN_STOPPING                                              :{RED}Остановлен
 STR_TRAIN_STOPPING_VEL                                          :{RED}Останавливаю, {VELOCITY}
-STR_INCOMPATIBLE_RAIL_TYPES                                     :IНесовместимый тип рельсов
+STR_INCOMPATIBLE_RAIL_TYPES                                     :IНесовместимый тип рельс
 STR_TRAIN_NO_POWER                                              :{RED}Нет тока.
 STR_TRAIN_START_NO_CATENARY                                     :Кто-то украл все провода, поезд не может ехать...
 
@@ -2672,7 +2673,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появ
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Машина на пути
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Автомашин{P 2 а ы ""}
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Гараж
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Гараж {TOWN}
 STR_9004_NEW_VEHICLES                                           :{BLACK}Новая машина
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Новая машина
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Построить
@@ -2733,15 +2734,15 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Нево
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выберите тип грузов для перевозки
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Строительство РЕКА-МОРЕ
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Строительство РЕКА-МОРЕ
+STR_9800_DOCK_CONSTRUCTION                                      :Морские коммуникации
+STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Морские коммуникации
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Невозможно построить пристань здесь...
-STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} ДОК
-STR_9804_NEW_SHIPS                                              :{BLACK}Новые корабли
+STR_9803_SHIP_DEPOT                                             :{WHITE}Док {TOWN}
+STR_9804_NEW_SHIPS                                              :{BLACK}Новое судно
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Корабл{P 2 ь я ей}
-STR_9808_NEW_SHIPS                                              :{WHITE}Новые корабли
-STR_9809_BUILD_SHIP                                             :{BLACK}Купить Корабль
-STR_CLONE_SHIP                                                  :{BLACK}Копировать Судно
+STR_9808_NEW_SHIPS                                              :{WHITE}Покупка кораблей
+STR_9809_BUILD_SHIP                                             :{BLACK}Купить
+STR_CLONE_SHIP                                                  :{BLACK}Копировать судно
 STR_CLONE_SHIP_INFO                                             :{BLACK}Создает копию корабля. Control-клик копирует задания
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Создает копию корабля. Щелкнуть на кнопке и затем на корабле внутри или снаружи дока. Control-клик копирует задания
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Корабль должен быть остановлен в доке
@@ -2806,9 +2807,9 @@ SERVICE_AT_SHIP_DEPOT                                           :Обслужи�
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Аэропорты
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Невозможно построить аэропорт здесь...
-STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Ангар
-STR_A003_NEW_AIRCRAFT                                           :{BLACK}Новый
-STR_CLONE_AIRCRAFT                                              :{BLACK}Копировать транспорт
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Ангар {STATION}
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Новое судно
+STR_CLONE_AIRCRAFT                                              :{BLACK}Копировать
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Создает копию самолета. Control-клик - копирует задания
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Построить копию возд. судна. Нажмите на кнопку, а потом на возд. судно в/вне ангара. CTRL+click - также скопирует и задание.
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Новый
@@ -2857,8 +2858,8 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Назв
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Не могу назвать самолет...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Название самолета
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый самолет прибыл в {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Авиакатастрофа!{}{COMMA} человек погибло в огне в {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Авиакатастрофа{}В самолете закончилось топливо, {COMMA} человек погибли при столкновении с землей!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Авиакатастрофа!{}{COMMA} человек{P "" а ""} погиб{P "" ло ли} в огне в {STATION}!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Авиакатастрофа!{}В самолете закончилось топливо, {COMMA} человек{P "" а ""} погиб{P "" ло ли} при столкновении с землей!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Переимен.
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Переименовать
@@ -2882,7 +2883,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Взрыв завода при подозрительных обстоятельствах вблизи {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}НЛО приземлилось возле {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Обвал на угольной шахте вызывает оползень около {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}НАВОДНЕНИЕ!{}По крайней мере {COMMA} скорее всего погибли при наводнении!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}ПОТОП!{}{COMMA} человек{P "" а ""} погиб{P "" ло ли} при наводнении транспорта!
 
 STR_BRIBE_FAILED                                                :{WHITE}Ваша попытка дать взятку была
 STR_BRIBE_FAILED_2                                              :{WHITE}обнаружена региональным следователем

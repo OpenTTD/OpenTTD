@@ -1095,7 +1095,7 @@ STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Foretre
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funksjonen til scrollhjulet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kart
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kart
-STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Av
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :av
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Fart på rullehjul: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per speler: {ORANGE}{STRING}
@@ -1136,6 +1136,15 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midtstilt
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Høgre
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Knipseradius for vindauge: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Knipseradius for vindauge: {ORANGE}deaktivert
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Byen sin vekseProporsjonfart: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ingen
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Sakte
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rask
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Særs rask
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporsjon på byar som vil vekse dobbelt så fort: {ORANGE}1 av {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporsjon på byar som vil vekse dobbelt så fort: {ORANGE}Ingen
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Faktor for multiplikasjon av bystorleik: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Grensesnitt
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruksjon
@@ -1454,7 +1463,7 @@ STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ikkje autoriser
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :mottok merkeleg pakke
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :feil versjon
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :namnet er brukt av nokon andre
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :feil passord til spelet
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :feil passord for til spelet
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :feil spelar-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :sparka ut av tenaren
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :freista å jukse
@@ -2028,6 +2037,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Haldnin
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Ingen
+STR_NUM_VERY_LOW                                                :Særs låg
 STR_6816_LOW                                                    :Lite
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Høgt
@@ -2779,7 +2789,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapas
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikkje bygge om skip...
 STR_9842_REFITTABLE                                             :(ombyggbart)
 STR_GO_TO_SHIP_DEPOT                                            :Seil til {TOWN} skipsdepot
-SERVICE_AT_SHIP_DEPOT                                           :Vedlikehald ved {TOWN} skipsdepot
+SERVICE_AT_SHIP_DEPOT                                           :Vedlikehald ved {TOWN} Skipsdepot
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Flyplassar
@@ -3155,4 +3165,13 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...denne vegen eigast av ein by
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...vegen peiker feil veg
 
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Gjennomsynsval
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Byt gjennomsyn for stasjonssktilt
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Byt gjennomsyn for tre
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Byt gjennomsyn for hus
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Byt gjennomsyn for industriar
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Byt gjennomsyn for bygningar som kan byggast, til dømes depot og vegmerker
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Byt gjennomsyn for bruer
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Byt gjennomsyn for bygningar som fyrtårn og antenner, kanskje i framtida for fine effekter

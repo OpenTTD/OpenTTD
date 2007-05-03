@@ -1197,6 +1197,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Suurenda kaarti
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Keri kaarti
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Väljas
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaarti kerimisratta kiirus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaatne mängu peatamine uue mängu alustamisel: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. rongide arv mängija kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Suurim maanteesõidukite arv mängija kohta: {ORANGE}{STRING}
@@ -2508,7 +2509,7 @@ STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss vasemaagiv
 STR_80A5_UHL_WATER_TANKER                                       :Uhl veeveok
 STR_80A6_BALOGH_WATER_TANKER                                    :Balogh veeveok
 STR_80A7_MPS_WATER_TANKER                                       :MPS veeveok
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh veeveok
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh puuviljaveok
 STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl puuviljaveok
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling puuviljaveok
 STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh kummiveok

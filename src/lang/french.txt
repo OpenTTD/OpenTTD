@@ -1098,6 +1098,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom de la cart
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Défilement de la carte
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Désactivé
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Vitesse de défilement avec molette: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatique en début de nouvelle partie: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING}
@@ -2038,6 +2039,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Attitud
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Aucune
+STR_NUM_VERY_LOW                                                :Très bas
 STR_6816_LOW                                                    :Bas
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Élevé

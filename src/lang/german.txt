@@ -1097,6 +1097,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funktio
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Karte vergrößern
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Kartenansicht verschieben
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Aus
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollradgeschwindigkeit auf der Karte: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatische Pause bei Spielstart: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximale Anzahl der Straßenfahrzeuge pro Spieler: {ORANGE}{STRING}
@@ -2037,6 +2039,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Haltung
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Keine
+STR_NUM_VERY_LOW                                                :Sehr niedrig
 STR_6816_LOW                                                    :Niedrig
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Hoch

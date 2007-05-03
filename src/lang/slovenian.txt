@@ -1139,6 +1139,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Približaj zeml
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Premikaj zemljevid
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Izklopljeno
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Hitrost premika s kolescem miške: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Avtomatsko pavziraj ob zagonu nove igre: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Največ vlakov na igralca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Največ cestnih vozil na igralca: {ORANGE}{STRING}

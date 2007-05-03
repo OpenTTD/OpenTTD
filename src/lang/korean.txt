@@ -1098,6 +1098,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :맵 줌
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :맵 스크롤
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :끄기
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}맵 스크롤 속도: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}새로운 게임 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}최대 자동차 수: {ORANGE}{STRING}
@@ -2038,6 +2039,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}도시 
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :없음
+STR_NUM_VERY_LOW                                                :매우 적음
 STR_6816_LOW                                                    :낮음
 STR_6817_NORMAL                                                 :보통
 STR_6818_HIGH                                                   :높음

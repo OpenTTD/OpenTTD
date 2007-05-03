@@ -1155,6 +1155,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :zoomování map
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :pohyb po mapě
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :nic
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlost skrolovacího kolečka: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Zastavit automaticky hru při začínání nové hry: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaků na hráče: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum silničních vozidel na hráče: {ORANGE}{STRING}
@@ -2095,6 +2096,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Postoj 
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :žádný
+STR_NUM_VERY_LOW                                                :velmi nízké
 STR_6816_LOW                                                    :nízké
 STR_6817_NORMAL                                                 :střední
 STR_6818_HIGH                                                   :vysoké

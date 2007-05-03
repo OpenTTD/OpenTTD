@@ -1099,6 +1099,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Промени 
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Разгледай картата
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Изклучен
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollwheel скорост на картата: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматична пауза стартирайки нова игра: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. влакове на играч: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. брой коли на играч: {ORANGE}{STRING}
@@ -2039,6 +2040,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Отн�
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Николко
+STR_NUM_VERY_LOW                                                :Много ниско
 STR_6816_LOW                                                    :малко
 STR_6817_NORMAL                                                 :нормално
 STR_6818_HIGH                                                   :много

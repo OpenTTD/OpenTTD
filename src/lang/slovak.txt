@@ -602,36 +602,36 @@ STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jukebox
 STR_01D3_SOUND_MUSIC                                            :Zvuk/Hudba
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Zobraz okno zvuku a hudby
 STR_01D5_ALL                                                    :{TINYFONT}Všetko
-STR_01D6_OLD_STYLE                                              :{TINYFONT}Stary styl
-STR_01D7_NEW_STYLE                                              :{TINYFONT}Novy styl
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Starý štýl
+STR_01D7_NEW_STYLE                                              :{TINYFONT}Nový štýl
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
-STR_01D9_CUSTOM_1                                               :{TINYFONT}Vlastne 1
-STR_01DA_CUSTOM_2                                               :{TINYFONT}Vlastne 2
+STR_01D9_CUSTOM_1                                               :{TINYFONT}Vlastné 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}Vlastné 2
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Hlasitost hudby
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Hlasitost zvuk. efektov
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
-STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Predchadzajuca stopa
-STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Nasledujuca stopa
-STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Zastavit prehravanie hudby
-STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Spustit prehravanie hudby
-STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Tahat posuvace pre zmenu hlasitosti
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Predchádzajúca stopa
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Nasledujúca stopa
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Zastavit prehrávanie hudby
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Spustit prehrávanie hudby
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Tahat posúvace pre zmenu hlasitosti
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Stopa{SETX 88}Title
-STR_01E9_SHUFFLE                                                :{TINYFONT}Nahodne
+STR_01E9_SHUFFLE                                                :{TINYFONT}Náhodne
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
-STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Vyber hudobneho programu
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Výber hudobného programu
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
-STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Cislo stopy
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Císlo stopy
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Zmazat
-STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Ulozit
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Aktualny program
-STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Vybrat 'Vsetko'
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Uložit
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Aktuálny program
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Vybrat 'Všetko'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Vybrat 'Stary styl'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Vybrat 'Novy styl'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Vybrat 'Vlastny 1' (uzivatelom definovany) program
@@ -1161,6 +1161,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zvacšit mapu
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Posúvat mapu
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Vypnuté
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlost posúvania mapy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticka pauza pri štarte novej hry: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
