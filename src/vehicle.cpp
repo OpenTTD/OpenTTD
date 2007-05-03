@@ -743,27 +743,30 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 }
 
 
-bool CanFillVehicle(Vehicle *v)
+bool CanFillVehicle(Vehicle *front_v)
 {
-	TileIndex tile = v->tile;
+	TileIndex tile = front_v->tile;
 
-	if (IsTileType(tile, MP_STATION) ||
-			(v->type == VEH_SHIP && (
+	assert(IsTileType(tile, MP_STATION) ||
+			(front_v->type == VEH_SHIP && (
 				IsTileType(TILE_ADDXY(tile,  1,  0), MP_STATION) ||
 				IsTileType(TILE_ADDXY(tile, -1,  0), MP_STATION) ||
 				IsTileType(TILE_ADDXY(tile,  0,  1), MP_STATION) ||
 				IsTileType(TILE_ADDXY(tile,  0, -1), MP_STATION) ||
 				IsTileType(TILE_ADDXY(tile, -2,  0), MP_STATION)
-			))) {
+			)));
 
-		/* If patch is active, use alternative CanFillVehicle-function */
-		if (_patches.full_load_any && v->current_order.flags & OF_FULL_LOAD) return CanFillVehicle_FullLoadAny(v);
+	bool full_load = front_v->current_order.flags & OF_FULL_LOAD;
 
-		do {
-			if (v->cargo_count != v->cargo_cap) return true;
-		} while ((v = v->next) != NULL);
-	}
-	return false;
+	/* If patch is active, use alternative CanFillVehicle-function */
+	if (_patches.full_load_any && full_load) return CanFillVehicle_FullLoadAny(front_v);
+
+	Vehicle *v = front_v;
+	do {
+		if (HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) || (full_load && v->cargo_count != v->cargo_cap)) return true;
+	} while ((v = v->next) != NULL);
+
+	return !HASBIT(front_v->vehicle_flags, VF_LOADING_FINISHED);
 }
 
 /** Check if a given engine type can be refitted to a given cargo
