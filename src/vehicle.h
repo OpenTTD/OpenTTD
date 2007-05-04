@@ -108,7 +108,6 @@ enum EffectVehicle {
 struct VehicleRail {
 	uint16 last_speed; // NOSAVE: only used in UI
 	uint16 crash_anim_pos;
-	uint16 days_since_order_progr;
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
 	uint16 cached_max_speed;  // max speed of the consist. (minimum of the max speed of all vehicles in the consist)

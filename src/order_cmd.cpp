@@ -581,8 +581,6 @@ int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->cur_order_index = b;
 
-		if (v->type == VEH_TRAIN) v->u.rail.days_since_order_progr = 0;
-
 		if (v->type == VEH_ROAD) ClearSlot(v);
 
 		/* NON-stop flag is misused to see if a train is in a station that is

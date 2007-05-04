@@ -1265,7 +1265,6 @@ int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			DeleteVehicleNews(p1, STR_8814_TRAIN_IS_WAITING_IN_DEPOT);
 		}
 
-		v->u.rail.days_since_order_progr = 0;
 		v->vehstatus ^= VS_STOPPED;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
@@ -1965,7 +1964,6 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
 		if (flags & DC_EXEC) {
 			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
-				v->u.rail.days_since_order_progr = 0;
 				v->cur_order_index++;
 			}
 
@@ -2537,11 +2535,6 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 		case OT_LOADING: {
 			if (mode) return;
 
-			/* don't mark the train as lost if we're loading on the final station. */
-			if (v->current_order.flags & OF_NON_STOP) {
-				v->u.rail.days_since_order_progr = 0;
-			}
-
 			if (--v->load_unload_time_rem) return;
 
 			if (CanFillVehicle(v)) {
@@ -2564,7 +2557,6 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 		default: return;
 	}
 
-	v->u.rail.days_since_order_progr = 0;
 	v->cur_order_index++;
 	InvalidateVehicleOrder(v);
 }

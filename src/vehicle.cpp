@@ -2250,7 +2250,6 @@ void VehicleEnterDepot(Vehicle *v)
 
 		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
 			/* Part of orders */
-			if (v->type == VEH_TRAIN) v->u.rail.days_since_order_progr = 0;
 			v->cur_order_index++;
 		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
 			/* Force depot visit */
@@ -2746,7 +2745,7 @@ static const SaveLoad _train_desc[] = {
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, track),                  SLE_UINT8),
 
 	SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, flags),                  SLE_UINT8,  2, SL_MAX_VERSION),
-	SLE_CONDVARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, days_since_order_progr), SLE_UINT16, 2, SL_MAX_VERSION),
+	SLE_CONDNULL(2, 2, 59),
 
 	SLE_CONDNULL(2, 2, 19),
 	/* reserve extra space in savegame here. (currently 11 bytes) */
