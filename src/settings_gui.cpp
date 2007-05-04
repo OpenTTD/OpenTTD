@@ -609,6 +609,7 @@ static const char *_patches_construction[] = {
 	"drag_signals_density",
 	"oil_refinery_limit",
 	"semaphore_build_before",
+	"town_layout",
 };
 
 static const char *_patches_stations[] = {

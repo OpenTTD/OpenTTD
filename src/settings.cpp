@@ -1174,6 +1174,24 @@ static int32 EngineRenewMoneyUpdate(int32 p1)
 	DoCommandP(0, 2, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 	return 0;
 }
+
+/**
+ * Check for right TownLayout usage in editor mode.
+ * The No Road mode is not desirable since towns have to be
+ * able to grow. If a user desires to have a town with no road,
+ * he can easily remove them himself. This would create less confusion
+ * @param p1 unused
+ * @return always 0
+ */
+static int32 CheckTownLayout(int32 p1)
+{
+	if (_patches.town_layout == TL_NO_ROADS && _game_mode == GM_EDITOR) {
+		ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID, 0, 0);
+		_patches.town_layout = TL_ORIGINAL;
+	}
+	return 0;
+}
+
 /** Conversion callback for _gameopt_settings.landscape
  * It converts (or try) between old values and the new ones,
  * without loosing initial setting  of the user
@@ -1334,6 +1352,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, always_small_airport,          0, 0, false,        STR_CONFIG_PATCHES_SMALL_AIRPORTS,      NULL),
 	 SDT_VAR(Patches, drag_signals_density,SLE_UINT8,S, 0,  4, 1, 20, 0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,NULL),
 	 SDT_VAR(Patches, semaphore_build_before,SLE_INT32, S, NC, 1975, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE, NULL),
+	SDT_CONDVAR(Patches, town_layout, SLE_UINT8, 59, SL_MAX_VERSION, 0, MS, TL_ORIGINAL, TL_NO_ROADS, NUM_TLS - 1, 1, STR_CONFIG_PATCHES_TOWN_LAYOUT, CheckTownLayout),
 
 	/***************************************************************************/
 	/* Vehicle section of the GUI-configure patches window */

@@ -555,6 +555,14 @@ static const TileIndexDiffC _roadblock_tileadd[] = {
 	{ 0,  1}
 };
 
+/**
+ * Distance multiplyer
+ * Defines the possible distances between 2 road tiles
+ */
+enum RoadBlockTitleDistance {
+	RB_TILE_DIST1 = 1, ///< 1 tile between
+	RB_TILE_DIST2,     ///< 2 tiles between
+};
 
 static bool GrowTown(Town *t);
 
@@ -607,6 +615,23 @@ static RoadBits GetTownRoadMask(TileIndex tile)
 	return r;
 }
 
+/**
+ * Check if a neighboring tile has a road
+ *
+ * @param tile curent tile
+ * @param dir target direction
+ * @param dist_multi distance multiplyer
+ * @return true if one of the neighboring tiles at the
+ *  given distance is a road tile else
+ */
+static bool NeighborIsRoadTile(TileIndex tile, int dir, RoadBlockTitleDistance dist_multi)
+{
+	return (HASBIT(GetTownRoadMask(TILE_ADD(tile, dist_multi * ToTileIndexDiff(_roadblock_tileadd[dir + 1]))), dir ^ 2) ||
+			HASBIT(GetTownRoadMask(TILE_ADD(tile, dist_multi * ToTileIndexDiff(_roadblock_tileadd[dir + 3]))), dir ^ 2) ||
+			HASBIT(GetTownRoadMask(TILE_ADD(tile, dist_multi * (ToTileIndexDiff(_roadblock_tileadd[dir + 1]) + ToTileIndexDiff(_roadblock_tileadd[dir + 2])))), dir) ||
+			HASBIT(GetTownRoadMask(TILE_ADD(tile, dist_multi * (ToTileIndexDiff(_roadblock_tileadd[dir + 3]) + ToTileIndexDiff(_roadblock_tileadd[dir + 2])))), dir));
+}
+
 static bool IsRoadAllowedHere(TileIndex tile, int dir)
 {
 	Slope k;
@@ -630,16 +655,17 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 		slope = GetTileSlope(tile, NULL);
 		if (slope == SLOPE_FLAT) {
 no_slope:
-			/* Tile has no slope
-			 * Disallow the road if any neighboring tile has a road. */
-			if (HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir + 1]))), dir ^ 2) ||
-					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir + 3]))), dir ^ 2) ||
-					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir + 1]) + ToTileIndexDiff(_roadblock_tileadd[dir + 2]))), dir) ||
-					HASBIT(GetTownRoadMask(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[dir + 3]) + ToTileIndexDiff(_roadblock_tileadd[dir + 2]))), dir))
-				return false;
+			/* Tile has no slope */
+			switch (_patches.town_layout) {
+				default: NOT_REACHED();
 
-			/* Otherwise allow */
-			return true;
+				case TL_ORIGINAL: /* Disallow the road if any neighboring tile has a road (distance: 1) */
+					return !NeighborIsRoadTile(tile, dir, RB_TILE_DIST1);
+
+				case TL_BETTER_ROADS: /* Disallow the road if any neighboring tile has a road (distance: 1 and 2). */
+					return !(NeighborIsRoadTile(tile, dir, RB_TILE_DIST1) ||
+							NeighborIsRoadTile(tile, dir, RB_TILE_DIST2));
+			}
 		}
 
 		/* If the tile is not a slope in the right direction, then
@@ -698,6 +724,127 @@ static void LevelTownLand(TileIndex tile)
 	}
 }
 
+/**
+ * Generate the RoadBits of a grid tile
+ *
+ * @param t current town
+ * @param tile tile in reference to the town
+ * @return the RoadBit of the current tile regarding
+ *  the selected town layout
+ */
+static RoadBits GetTownRoadGridElement(Town* t, TileIndex tile)
+{
+	/* align the grid to the downtown */
+	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile); ///< Vector from downtown to the tile
+
+	/* lx, ly description:
+	 * @li lx and ly are true  if the tile is a crossing tile.
+	 * @li lx xor ly are true  if the tile is a straight road tile.
+	 * @li lx and ly are false if the tile is a house tile.
+	 */
+	bool lx, ly;
+
+	switch (_patches.town_layout) {
+		default: NOT_REACHED();
+
+		case TL_2X2_GRID:
+			lx = ((grid_pos.x % 3) == 0);
+			ly = ((grid_pos.y % 3) == 0);
+			break;
+
+		case TL_3X3_GRID:
+			lx = ((grid_pos.x % 4) == 0);
+			ly = ((grid_pos.y % 4) == 0);
+			break;
+	}
+
+	/* generate the basic grid structure */
+	if (!lx && !ly) {         ///< It is a house tile
+		return ROAD_NONE;
+	} else if (lx && !ly) {   ///< It is a Y-dir road tile
+		return ROAD_Y;
+	} else if (!lx && ly) {   ///< It is a X-dir road tile
+		return ROAD_X;
+	} else {                  ///< It is a crossing tile
+		/* Presets for junctions on slopes
+		 * not nice :( */
+		switch (GetTileSlope(tile, NULL)) {
+			case SLOPE_W:
+				return ROAD_NW | ROAD_SW;
+			case SLOPE_S:
+				return ROAD_SE | ROAD_SW;
+			case SLOPE_SW:
+				return ROAD_Y | ROAD_SW;
+			case SLOPE_E:
+				return ROAD_NE | ROAD_SE;
+			case SLOPE_SE:
+				return ROAD_X | ROAD_SE;
+			case SLOPE_N:
+				return ROAD_NW | ROAD_NE;
+			case SLOPE_NW:
+				return ROAD_X | ROAD_NW;
+			case SLOPE_NE:
+				return ROAD_Y | ROAD_NE;
+			case SLOPE_STEEP_W:
+			case SLOPE_STEEP_N:
+				return ROAD_X;
+			case SLOPE_STEEP_S:
+			case SLOPE_STEEP_E:
+				return ROAD_Y;
+			default:
+				return ROAD_ALL;
+		}
+	}
+}
+
+/**
+ * Check there are enougth neighbor house tiles next to the current tile
+ *
+ * @param tile current tile
+ * @return true if there are more than 2 house tiles next
+ *  to the current one
+ */
+static bool NeighborsAreHouseTiles(TileIndex tile)
+{
+	uint counter = 0; ///< counts the house neighbor tiles
+
+	/* We can't look further than that. */
+	if (TileX(tile) < 1 || TileY(tile) < 1) {
+		return false;
+	}
+
+	/* Check the tiles E,N,W and S of the current tile. */
+	for (uint i = 0; i < 4; i++) {
+		if (IsTileType(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[i])), MP_HOUSE)) {
+			counter++;
+		}
+
+		/* If there are enougth neighbor's stop it here */
+		if (counter >= 3) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Grows the given town.
+ * There are at the moment 3 possible way's for
+ * the town expansion:
+ * @li Generate a random tile and check if there is a road allowed
+ * 	@li TL_ORIGINAL
+ * 	@li TL_BETTER_ROADS
+ * @li Check if the town geometry allows a road and which one
+ * 	@li TL_2X2_GRID
+ * 	@li TL_3X3_GRID
+ * @li Forbid roads, only build houses
+ * 	@li TL_NO_ROADS
+ *
+ * @param tile_ptr current tile
+ * @param mask current tiles RoadBits
+ * @param block road block
+ * @param t1 current town
+ */
 static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* t1)
 {
 	RoadBits rcmd;
@@ -720,39 +867,81 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 		LevelTownLand(tile);
 
 		/* Is a road allowed here? */
-		if (!IsRoadAllowedHere(tile, block)) return;
+		switch (_patches.town_layout) {
+			default: NOT_REACHED();
 
-		/* Randomize new road block numbers */
-		a = block;
-		b = block ^ 2;
-		if (CHANCE16(1, 4)) {
-			do {
-				a = GB(Random(), 0, 2);
-			} while (a == b);
-		}
-
-		if (!IsRoadAllowedHere(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a])), a)) {
-			/* A road is not allowed to continue the randomized road,
-			 *   return if the road we're trying to build is curved. */
-			if (a != (b ^ 2)) return;
-
-			/* Return if neither side of the new road is a house */
-			if (!IsTileType(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 1])), MP_HOUSE) &&
-					!IsTileType(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 3])), MP_HOUSE))
+			case TL_NO_ROADS: /* Disallow Roads */
 				return;
 
-			/* That means that the road is only allowed if there is a house
-			 *  at any side of the new road. */
+			case TL_3X3_GRID:
+			case TL_2X2_GRID:
+				rcmd = GetTownRoadGridElement(t1, tile);
+				if (rcmd == ROAD_NONE) {
+					return;
+				}
+				break;
+
+			case TL_BETTER_ROADS:
+			case TL_ORIGINAL:
+				if (!IsRoadAllowedHere(tile, block)) {
+					return;
+				}
+
+				/* Randomize new road block numbers */
+				a = block;
+				b = block ^ 2;
+				if (CHANCE16(1, 4)) {
+					do {
+						a = GB(Random(), 0, 2);
+					} while (a == b);
+				}
+
+				if (!IsRoadAllowedHere(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a])), a)) {
+					/* A road is not allowed to continue the randomized road,
+					 *   return if the road we're trying to build is curved. */
+					if (a != (b ^ 2)) {
+						return;
+					}
+
+					/* Return if neither side of the new road is a house */
+					if (!IsTileType(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 1])), MP_HOUSE) &&
+							!IsTileType(TILE_ADD(tile, ToTileIndexDiff(_roadblock_tileadd[a + 3])), MP_HOUSE)) {
+						return;
+					}
+
+					/* That means that the road is only allowed if there is a house
+					 *  at any side of the new road. */
+				}
+
+				rcmd = (RoadBits)((1 << a) + (1 << b));
+				break;
 		}
-		rcmd = (RoadBits)((1 << a) + (1 << b));
 
 	} else if (block < 5 && !HASBIT(mask, block ^ 2)) {
 		/* Continue building on a partial road.
 		 * Always OK. */
 		_grow_town_result = 0;
-		rcmd = (RoadBits)(1 << (block ^ 2));
+
+		switch (_patches.town_layout) {
+			default: NOT_REACHED();
+
+			case TL_NO_ROADS: /* Disallow Roads */
+				return;
+
+			case TL_3X3_GRID:
+			case TL_2X2_GRID:
+			 	rcmd = GetTownRoadGridElement(t1, tile);
+				break;
+
+			case TL_BETTER_ROADS:
+			case TL_ORIGINAL:
+				rcmd = (RoadBits)(1 << (block ^ 2));
+				break;
+		}
 	} else {
 		int i;
+		bool allow_house = false;
+		TileIndex tmptile2;
 
 		/* Reached a tunnel/bridge? Then continue at the other side of it. */
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -775,17 +964,51 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 		/* Don't do it if it reaches to water. */
 		if (IsClearWaterTile(tmptile)) return;
 
-		/* Build a house at the edge. 60% chance or
-		 *  always ok if no road allowed. */
-		if (!IsRoadAllowedHere(tmptile, i) || CHANCE16(6, 10)) {
-			/* But not if there already is a house there. */
+		switch (_patches.town_layout) {
+			default: NOT_REACHED();
+
+			case TL_NO_ROADS:
+				allow_house = true;
+				break;
+
+			case TL_3X3_GRID: /* Use 2x2 grid afterwards! */
+				/* Fill gap if house has enougth neighbors */
+				tmptile2 = TILE_ADD(tmptile, ToTileIndexDiff(_roadblock_tileadd[i]));
+				if (NeighborsAreHouseTiles(tmptile2) && BuildTownHouse(t1, tmptile2)) {
+					_grow_town_result = -1;
+				}
+
+			case TL_2X2_GRID:
+				rcmd = GetTownRoadGridElement(t1, tmptile);
+				allow_house = (rcmd == ROAD_NONE);
+				break;
+
+			case TL_BETTER_ROADS: /* Use original afterwards! */
+				/* Fill gap if house has enougth neighbors */
+				tmptile2 = TILE_ADD(tmptile, ToTileIndexDiff(_roadblock_tileadd[i]));
+				if (NeighborsAreHouseTiles(tmptile2) && BuildTownHouse(t1, tmptile2)) {
+					_grow_town_result = -1;
+				}
+
+			case TL_ORIGINAL:
+				 /* Allow a house at the edge. 60% chance or
+				  * always ok if no road allowed. */
+				allow_house = (!IsRoadAllowedHere(tmptile, i) || CHANCE16(6, 10));
+				break;
+		}
+
+
+		if (allow_house) {
+			/* Build a house, but not if there already is a house there. */
 			if (!IsTileType(tmptile, MP_HOUSE)) {
 				/* Level the land if possible */
 				LevelTownLand(tmptile);
 
 				/* And build a house.
 				 * Set result to -1 if we managed to build it. */
-				if (BuildTownHouse(t1, tmptile)) _grow_town_result = -1;
+				if (BuildTownHouse(t1, tmptile)) {
+					_grow_town_result = -1;
+				}
 			}
 			return;
 		}
@@ -811,6 +1034,12 @@ build_road_and_exit:
 				_grow_town_result = -1;
 			}
 			return;
+	}
+
+	/* Check if the bridge is in the right direction */
+	if ((rcmd == ROAD_X && (i == DIAGDIR_NW || i == DIAGDIR_SE)) ||
+			(rcmd == ROAD_Y && (i == DIAGDIR_NE || i == DIAGDIR_SW))) {
+		goto build_road_and_exit;
 	}
 
 	tmptile = tile;
@@ -855,8 +1084,23 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 
 	TILE_ASSERT(tile);
 
-	/* Number of times to search. */
-	_grow_town_result = 10 + t->num_houses * 4 / 9;
+	/* Number of times to search.
+	 * Better roads, 2X2 and 3X3 grid grow quite fast so we give
+	 * them a little handicap. */
+	switch (_patches.town_layout) {
+		case TL_BETTER_ROADS:
+			_grow_town_result = 10 + t->num_houses * 2 / 9;
+			break;
+
+		case TL_3X3_GRID:
+		case TL_2X2_GRID:
+			_grow_town_result = 10 + t->num_houses * 1 / 9;
+			break;
+
+		default:
+			_grow_town_result = 10 + t->num_houses * 4 / 9;
+			break;
+	}
 
 	do {
 		/* Get a bitmask of the road blocks on a tile */
@@ -929,6 +1173,13 @@ static bool GrowTown(Town *t)
 		{ 2, -2},
 		{ 0,  0}
 	};
+
+	/* Let the town be a ghost town
+	 * The player wanted it in such a way. Thus there he has it. ;)
+	 * Never reached in editor mode. */
+	if (_patches.town_layout == TL_NO_ROADS) {
+		return false;
+	}
 
 	/* Current player is a town */
 	old_player = _current_player;

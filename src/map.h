@@ -209,6 +209,23 @@ static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC dif
 		return TileXY(x, y);
 }
 
+/**
+ * Returns the diff between two tiles
+ *
+ * @param tile_a from tile
+ * @param tile_b to tile
+ * @return the difference between tila_a and tile_b
+ */
+static inline TileIndexDiffC TileIndexToTileIndexDiffC(TileIndex tile_a, TileIndex tile_b)
+{
+	TileIndexDiffC difference;
+
+	difference.x = TileX(tile_a) - TileX(tile_b);
+	difference.y = TileY(tile_a) - TileY(tile_b);
+
+	return difference;
+}
+
 /* Functions to calculate distances */
 uint DistanceManhattan(TileIndex, TileIndex); ///< also known as L1-Norm. Is the shortest distance one could go over diagonal tracks (or roads)
 uint DistanceSquare(TileIndex, TileIndex); ///< euclidian- or L2-Norm squared

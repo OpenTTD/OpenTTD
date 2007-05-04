@@ -199,6 +199,19 @@ enum {
 	NUM_LANDSCAPE = 4,
 };
 
+/**
+ * Town Layouts
+ */
+enum TownLayout {
+	TL_NO_ROADS     = 0, ///< Build no more roads, but still build houses
+	TL_ORIGINAL,         ///< Original algorithm (min. 1 distance between roads)
+	TL_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
+	TL_2X2_GRID,         ///< Geometric 2x2 grid algorithm
+	TL_3X3_GRID,         ///< Geometric 3x3 grid algorithm
+
+	NUM_TLS,             ///< Number of town layouts
+};
+
 enum {
 	NUM_PRICES = 49,
 };

@@ -199,7 +199,7 @@ void StartGeneratingLandscape(glwp_modes mode)
 	}
 }
 
-static void HeightmapScaledTooMuchCallback(Window *w, bool confirmed)
+static void LandscapeGenerationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) StartGeneratingLandscape((glwp_modes)w->window_number);
 }
@@ -354,14 +354,26 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 		case GLAND_GENERATE_BUTTON: // Generate
-			if (mode == GLWP_HEIGHTMAP && (
-					_heightmap_x * 2 < (1U << _patches_newgame.map_x) || _heightmap_x / 2 > (1U << _patches_newgame.map_x) ||
-					_heightmap_y * 2 < (1U << _patches_newgame.map_y) || _heightmap_y / 2 > (1U << _patches_newgame.map_y))) {
+
+			UpdatePatches();
+
+			if (_patches.town_layout == TL_NO_ROADS) {
+				ShowQuery(
+					STR_TOWN_LAYOUT_WARNING_CAPTION,
+					STR_TOWN_LAYOUT_WARNING_MESSAGE,
+					w,
+					LandscapeGenerationCallback);
+			} else if (mode == GLWP_HEIGHTMAP &&
+					(_heightmap_x * 2 < (1U << _patches_newgame.map_x) ||
+					_heightmap_x / 2 > (1U << _patches_newgame.map_x) ||
+					_heightmap_y * 2 < (1U << _patches_newgame.map_y) ||
+					_heightmap_y / 2 > (1U << _patches_newgame.map_y))) {
 				ShowQuery(
 					STR_HEIGHTMAP_SCALE_WARNING_CAPTION,
 					STR_HEIGHTMAP_SCALE_WARNING_MESSAGE,
 					w,
-					HeightmapScaledTooMuchCallback);
+					LandscapeGenerationCallback);
+
 			} else {
 				StartGeneratingLandscape(mode);
 			}
@@ -545,6 +557,10 @@ void ShowHeightmapLoad()
 
 void StartScenarioEditor()
 {
+	if (_patches_newgame.town_layout == TL_NO_ROADS) {
+		_patches_newgame.town_layout = TL_ORIGINAL;
+	}
+
 	StartGeneratingLandscape(GLWP_SCENARIO);
 }
 
