@@ -2734,8 +2734,6 @@ static void FeatureNewName(byte *buf, int len)
 
 		if (name_length == 1) {
 			grfmsg(7, "FeatureNewName: Can't add empty name");
-		} else if (name_length > 127) {
-			grfmsg(7, "FeatureNewName: Too long a name (%d)", name_length);
 		} else {
 			grfmsg(8, "FeatureNewName: %d <- %s", id, name);
 
