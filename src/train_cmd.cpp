@@ -114,7 +114,7 @@ static void TrainCargoChanged(Vehicle* v)
 		/* Vehicle weight is not added for articulated parts. */
 		if (!IsArticulatedPart(u)) {
 			/* vehicle weight is the sum of the weight of the vehicle and the weight of its cargo */
-			vweight += RailVehInfo(u->engine_type)->weight;
+			vweight += GetVehicleProperty(u, 0x16, RailVehInfo(u->engine_type)->weight);
 
 			/* powered wagons have extra weight added */
 			if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON))
