@@ -1791,11 +1791,6 @@ static void FeatureChangeInfo(byte *buf, int len)
 
 	EngineInfo *ei = NULL;
 
-	if (len == 1) {
-		grfmsg(8, "Silently ignoring one-byte special sprite 0x00");
-		return;
-	}
-
 	if (!check_length(len, 6, "FeatureChangeInfo")) return;
 	buf++;
 	uint8 feature  = grf_load_byte(&buf);
@@ -1879,11 +1874,6 @@ static void FeatureChangeInfo(byte *buf, int len)
 /* Action 0x00 (GLS_SAFETYSCAN) */
 static void SafeChangeInfo(byte *buf, int len)
 {
-	if (len == 1) {
-		grfmsg(8, "Silently ignoring one-byte special sprite 0x00");
-		return;
-	}
-
 	if (!check_length(len, 6, "SafeChangeInfo")) return;
 	buf++;
 	uint8 feature  = grf_load_byte(&buf);
@@ -1908,11 +1898,6 @@ static void SafeChangeInfo(byte *buf, int len)
 static void InitChangeInfo(byte *buf, int len)
 {
 	byte *bufend = buf + len;
-
-	if (len == 1) {
-		grfmsg(8, "Silently ignoring one-byte special sprite 0x00");
-		return;
-	}
 
 	if (!check_length(len, 6, "InitChangeInfo")) return;
 	buf++;
@@ -1953,11 +1938,6 @@ static void InitChangeInfo(byte *buf, int len)
 static void ReserveChangeInfo(byte *buf, int len)
 {
 	byte *bufend = buf + len;
-
-	if (len == 1) {
-		grfmsg(8, "Silently ignoring one-byte special sprite 0x00");
-		return;
-	}
 
 	if (!check_length(len, 6, "InitChangeInfo")) return;
 	buf++;
@@ -2053,6 +2033,20 @@ static void NewSpriteSet(byte *buf, int len)
 		LoadNextSprite(_cur_spriteid++, _file_index);
 		_nfo_line++;
 	}
+}
+
+/* Action 0x01 (SKIP) */
+static void SkipAct1(byte *buf, int len)
+{
+	if (!check_length(len, 4, "SkipAct1")) return;
+	buf++;
+	grf_load_byte(&buf);
+	uint8 num_sets  = grf_load_byte(&buf);
+	uint16 num_ents = grf_load_extended(&buf);
+
+	_skip_sprites = num_sets * num_ents;
+
+	grfmsg(3, "SkipAct1: Skipping %d sprites", _skip_sprites);
 }
 
 /* Helper function to either create a callback or link to a previously
@@ -4614,8 +4608,8 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	 * In other stages we skip action 0x10 since it's already dealt with. */
 	static const SpecialSpriteHandler handlers[][GLS_END] = {
 		/* 0x00 */ { NULL,     SafeChangeInfo, NULL,       InitChangeInfo, ReserveChangeInfo, FeatureChangeInfo, },
-		/* 0x01 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              NewSpriteSet, },
-		/* 0x02 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              NewSpriteGroup, },
+		/* 0x01 */ { SkipAct1, SkipAct1,  SkipAct1,        SkipAct1,       SkipAct1,          NewSpriteSet, },
+		/* 0x02 */ { NULL,     NULL,      NULL,            NULL,           NULL,              NewSpriteGroup, },
 		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              FeatureMapSpriteGroup, },
 		/* 0x04 */ { NULL,     NULL,      NULL,            NULL,           NULL,              FeatureNewName, },
 		/* 0x05 */ { SkipAct5, SkipAct5,  SkipAct5,        SkipAct5,       SkipAct5,          GraphicsNew, },
