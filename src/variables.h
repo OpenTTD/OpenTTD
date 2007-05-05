@@ -232,7 +232,7 @@ struct Patches {
 
 	bool pause_on_newgame;   ///< Whether to start new games paused or not.
 
-	TownLayout town_layout;  ///< Select town layout
+	TownLayoutByte town_layout;  ///< Select town layout
 };
 
 VARDEF Patches _patches;
