@@ -704,7 +704,6 @@ void CallVehicleTicks()
 static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 {
 	uint32 full = 0, not_full = 0;
-	bool keep_loading = false;
 	const GoodsEntry *ge = GetStation(v->last_station_visited)->goods;
 
 	/* special handling of aircraft */
@@ -725,13 +724,13 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 		if (v->cargo_cap != 0) {
 			uint32 mask = 1 << v->cargo_type;
 
-			if (v->cargo_cap == v->cargo_count) {
+			if (!HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) && v->cargo_cap == v->cargo_count) {
 				full |= mask;
 			} else if (GB(ge[v->cargo_type].waiting_acceptance, 0, 12) > 0 ||
 					(HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) && (ge[v->cargo_type].waiting_acceptance & 0x8000))) {
 				/* If there is any cargo waiting, or this vehicle is still unloading
 				 * and the station accepts the cargo, don't leave the station. */
-				keep_loading = true;
+				return true;
 			} else {
 				not_full |= mask;
 			}
@@ -739,7 +738,7 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 	} while ((v = v->next) != NULL);
 
 	/* continue loading if there is a non full cargo type and no cargo type that is full */
-	return keep_loading || (not_full && (full & ~not_full) == 0);
+	return not_full && (full & ~not_full) == 0;
 }
 
 
