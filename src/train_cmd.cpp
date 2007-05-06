@@ -190,7 +190,7 @@ void TrainConsistChanged(Vehicle* v)
 			}
 
 			if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
-				UsesWagonOverride(u) && (u->u.rail.cached_vis_effect < 0x40)) {
+				UsesWagonOverride(u) && !HASBIT(u->u.rail.cached_vis_effect, 7)) {
 				/* wagon is powered */
 				SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
 			} else {
