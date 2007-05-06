@@ -447,21 +447,21 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			 */
 			FOR_EACH_OBJECT {
 				uint8 traction = grf_load_byte(&buf);
-				int engclass;
+				EngineClass engclass;
 
 				if (traction <= 0x07) {
-					engclass = 0;
+					engclass = EC_STEAM;
 				} else if (traction <= 0x27) {
-					engclass = 1;
+					engclass = EC_DIESEL;
 				} else if (traction <= 0x31) {
-					engclass = 2;
+					engclass = EC_ELECTRIC;
 				} else if (traction <= 0x41) {
-					engclass = 2;
+					engclass = EC_ELECTRIC;
 				} else {
 					break;
 				}
-				if (rvi[i].railtype == RAILTYPE_RAIL     && engclass == 2) rvi[i].railtype = RAILTYPE_ELECTRIC;
-				if (rvi[i].railtype == RAILTYPE_ELECTRIC && engclass != 2) rvi[i].railtype = RAILTYPE_RAIL;
+				if (rvi[i].railtype == RAILTYPE_RAIL     && engclass == EC_ELECTRIC) rvi[i].railtype = RAILTYPE_ELECTRIC;
+				if (rvi[i].railtype == RAILTYPE_ELECTRIC && engclass != EC_ELECTRIC) rvi[i].railtype = RAILTYPE_RAIL;
 
 				rvi[i].engclass = engclass;
 			}

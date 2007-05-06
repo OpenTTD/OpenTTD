@@ -16,6 +16,12 @@ enum RailVehicleTypes {
 	RAILVEH_WAGON,       ///< simple wagon, not motorized
 };
 
+enum EngineClass {
+	EC_STEAM,
+	EC_DIESEL,
+	EC_ELECTRIC,
+};
+
 struct RailVehicleInfo {
 	byte image_index;
 	RailVehicleTypes railveh_type;
@@ -26,7 +32,7 @@ struct RailVehicleInfo {
 	uint16 weight;
 	byte running_cost_base;
 	byte running_cost_class;
-	byte engclass;         ///< 0: steam, 1: diesel, 2: electric
+	EngineClass engclass;           ///< Class of engine for this vehicle
 	byte capacity;
 	CargoID cargo_type;
 	byte ai_rank;
