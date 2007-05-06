@@ -154,7 +154,7 @@ static void *_GenerateWorld(void *arg)
 
 	if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
 
-	if (_patches.pause_on_newgame) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+	if (_patches.pause_on_newgame && _game_mode == GM_NORMAL) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
 	return NULL;
 }
