@@ -2087,22 +2087,15 @@ static void TrainPlayLeaveStationSound(const Vehicle* v)
 	static const SoundFx sfx[] = {
 		SND_04_TRAIN,
 		SND_0A_TRAIN_HORN,
-		SND_0A_TRAIN_HORN
+		SND_0A_TRAIN_HORN,
+		SND_47_MAGLEV_2,
+		SND_41_MAGLEV
 	};
 
 	if (PlayVehicleSound(v, VSE_START)) return;
 
 	EngineID engtype = v->engine_type;
-	switch (RailVehInfo(engtype)->railtype) {
-		case RAILTYPE_RAIL:
-		case RAILTYPE_ELECTRIC:
-			SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], v);
-			break;
-
-		case RAILTYPE_MONO: SndPlayVehicleFx(SND_47_MAGLEV_2, v); break;
-		case RAILTYPE_MAGLEV: SndPlayVehicleFx(SND_41_MAGLEV, v); break;
-		default: NOT_REACHED();
-	}
+	SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], v);
 }
 
 static bool CheckTrainStayInDepot(Vehicle *v)
