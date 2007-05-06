@@ -589,6 +589,25 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				return (altitude << 8) | airporttype;
 			}
 
+		case 0x45: { // Curvature info
+			/* Format: xxxTxBxF
+			 * F - previous wagon to current wagon, 0 if vehicle is first
+			 * B - current wagon to next wagon, 0 if wagon is last
+			 * T - previous wagon to next wagon, 0 in an S-bend
+			 */
+			if (v->type != VEH_TRAIN) return 0;
+
+			const Vehicle *u_p = GetPrevVehicleInChain(v);
+			const Vehicle *u_n = v->next;
+			DirDiff f = (u_p == NULL) ?  DIRDIFF_SAME : DirDifference(u_p->direction, v->direction);
+			DirDiff b = (u_n == NULL) ?  DIRDIFF_SAME : DirDifference(v->direction, u_n->direction);
+			DirDiff t = ChangeDirDiff(f, b);
+
+			return ((t > DIRDIFF_REVERSE ? t | 8 : t) << 16) |
+			       ((b > DIRDIFF_REVERSE ? b | 8 : b) <<  8) |
+			       ( f > DIRDIFF_REVERSE ? f | 8 : f);
+		}
+
 		case 0x46: // Motion counter
 			return v->motion_counter;
 
