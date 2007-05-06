@@ -3463,7 +3463,7 @@ static uint32 GetPatchVariable(uint8 param)
 {
 	switch (param) {
 		/* start year - 1920 */
-		case 0x0B: return _cur_year - ORIGINAL_BASE_YEAR;
+		case 0x0B: return max(_patches.starting_year, ORIGINAL_BASE_YEAR) - ORIGINAL_BASE_YEAR;
 		/* freight trains weight factor */
 		case 0x0E: return _patches.freight_trains;
 		/* empty wagon speed increase */
