@@ -138,6 +138,7 @@ network/network_server.h
 network/network_udp.h
 newgrf.h
 newgrf_callbacks.h
+newgrf_canal.h
 newgrf_cargo.h
 newgrf_config.h
 newgrf_engine.h
@@ -282,6 +283,7 @@ ai/trolly/trolly.cpp
 
 # NewGRF
 newgrf.cpp
+newgrf_canal.cpp
 newgrf_cargo.cpp
 newgrf_config.cpp
 newgrf_engine.cpp

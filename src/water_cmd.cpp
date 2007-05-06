@@ -25,6 +25,7 @@
 #include "train.h"
 #include "water_map.h"
 #include "newgrf.h"
+#include "newgrf_canal.h"
 
 static const SpriteID _water_shore_sprites[] = {
 	0,
@@ -373,39 +374,43 @@ void DrawCanalWater(TileIndex tile)
 {
 	uint wa;
 
+	/* Test for custom graphics, else use the default */
+	SpriteID dikes_base = GetCanalSprite(CF_DIKES, tile);
+	if (dikes_base == 0) dikes_base = SPR_CANALS_BASE + 57;
+
 	/* determine the edges around with water. */
 	wa = IsWateredTile(TILE_ADDXY(tile, -1, 0)) << 0;
 	wa += IsWateredTile(TILE_ADDXY(tile, 0, 1)) << 1;
 	wa += IsWateredTile(TILE_ADDXY(tile, 1, 0)) << 2;
 	wa += IsWateredTile(TILE_ADDXY(tile, 0, -1)) << 3;
 
-	if (!(wa & 1)) DrawGroundSprite(SPR_CANALS_BASE + 57, PAL_NONE);
-	if (!(wa & 2)) DrawGroundSprite(SPR_CANALS_BASE + 58, PAL_NONE);
-	if (!(wa & 4)) DrawGroundSprite(SPR_CANALS_BASE + 59, PAL_NONE);
-	if (!(wa & 8)) DrawGroundSprite(SPR_CANALS_BASE + 60, PAL_NONE);
+	if (!(wa & 1)) DrawGroundSprite(dikes_base,     PAL_NONE);
+	if (!(wa & 2)) DrawGroundSprite(dikes_base + 1, PAL_NONE);
+	if (!(wa & 4)) DrawGroundSprite(dikes_base + 2, PAL_NONE);
+	if (!(wa & 8)) DrawGroundSprite(dikes_base + 3, PAL_NONE);
 
 	/* right corner */
 	switch (wa & 0x03) {
-		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 4, PAL_NONE); break;
-		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 8, PAL_NONE); break;
+		case 0: DrawGroundSprite(dikes_base + 4, PAL_NONE); break;
+		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(dikes_base + 8, PAL_NONE); break;
 	}
 
 	/* bottom corner */
 	switch (wa & 0x06) {
-		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 5, PAL_NONE); break;
-		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 9, PAL_NONE); break;
+		case 0: DrawGroundSprite(dikes_base + 5, PAL_NONE); break;
+		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(dikes_base + 9, PAL_NONE); break;
 	}
 
 	/* left corner */
 	switch (wa & 0x0C) {
-		case  0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 6, PAL_NONE); break;
-		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 10, PAL_NONE); break;
+		case  0: DrawGroundSprite(dikes_base + 6, PAL_NONE); break;
+		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(dikes_base + 10, PAL_NONE); break;
 	}
 
 	/* upper corner */
 	switch (wa & 0x09) {
-		case 0: DrawGroundSprite(SPR_CANALS_BASE + 57 + 7, PAL_NONE); break;
-		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(SPR_CANALS_BASE + 57 + 11, PAL_NONE); break;
+		case 0: DrawGroundSprite(dikes_base + 7, PAL_NONE); break;
+		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(dikes_base + 11, PAL_NONE); break;
 	}
 }
 
@@ -421,11 +426,29 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	SpriteID palette, uint base
 )
 {
-	DrawGroundSprite(wdts++->image, PAL_NONE);
+	SpriteID image;
+	SpriteID water_base = GetCanalSprite(CF_WATERSLOPE, ti->tile);
+	SpriteID locks_base = GetCanalSprite(CF_LOCKS, ti->tile);
+
+	/* If no custom graphics, use defaults */
+	if (water_base == 0) water_base = SPR_CANALS_BASE + 5;
+	if (locks_base == 0) {
+		locks_base = SPR_CANALS_BASE + 9;
+	} else {
+		/* If using custom graphics, ignore the variation on height */
+		base = 0;
+	}
+
+	image = wdts++->image;
+	if (image < 4) image += water_base;
+	DrawGroundSprite(image, PAL_NONE);
 
 	for (; wdts->delta_x != 0x80; wdts++) {
-		SpriteID image = wdts->image + base;
+		SpriteID image = wdts->image;
 		SpriteID pal;
+
+		if (image < 24) image += locks_base;
+		image += base;
 
 		if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
 			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);

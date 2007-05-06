@@ -513,6 +513,9 @@
 				RelativePath=".\..\src\newgrf_callbacks.h">
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_canal.h">
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_cargo.h">
 			</File>
 			<File
@@ -933,6 +936,9 @@
 			Filter="">
 			<File
 				RelativePath=".\..\src\newgrf.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_canal.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_cargo.cpp">

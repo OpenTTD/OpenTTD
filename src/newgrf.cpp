@@ -39,6 +39,7 @@
 #include "table/town_land.h"
 #include "cargotype.h"
 #include "industry.h"
+#include "newgrf_canal.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -2244,6 +2245,7 @@ static void NewSpriteGroup(byte *buf, int len)
 				case GSF_SHIP:
 				case GSF_AIRCRAFT:
 				case GSF_STATION:
+				case GSF_CANAL:
 				case GSF_CARGOS:
 				{
 					byte sprites     = _cur_grffile->spriteset_numents;
@@ -2513,6 +2515,30 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 
 }
 
 
+static void CanalMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+{
+	byte *bp = &buf[4 + idcount + cidcount * 3];
+	uint16 groupid = grf_load_word(&bp);
+
+	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+		grfmsg(1, "CanalMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
+		       groupid, _cur_grffile->spritegroups_count);
+		return;
+	}
+
+	for (uint i = 0; i < idcount; i++) {
+		CanalFeature cf = (CanalFeature)buf[3 + i];
+
+		if (cf >= CF_END) {
+			grfmsg(1, "CanalMapSpriteGroup: Canal subset %d out of range, skipping", cf);
+			continue;
+		}
+
+		_canal_sg[cf] = _cur_grffile->spritegroups[groupid];
+	}
+}
+
+
 static void StationMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 {
 	for (uint i = 0; i < idcount; i++) {
@@ -2659,6 +2685,10 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 		case GSF_SHIP:
 		case GSF_AIRCRAFT:
 			VehicleMapSpriteGroup(buf, feature, idcount, cidcount, wagover);
+			return;
+
+		case GSF_CANAL:
+			CanalMapSpriteGroup(buf, idcount, cidcount);
 			return;
 
 		case GSF_STATION:
@@ -4314,6 +4344,9 @@ static void ResetNewGRFData()
 	/* Reset station classes */
 	ResetStationClasses();
 	ResetCustomStations();
+
+	/* Reset canal sprite groups */
+	memset(_canal_sg, 0, sizeof(_canal_sg));
 
 	/* Reset the snowline table. */
 	ClearSnowLine();
