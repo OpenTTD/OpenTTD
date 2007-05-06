@@ -2026,7 +2026,6 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 		/* no smoke? */
 		if ((rvi->railveh_type == RAILVEH_WAGON && effect_type == 0) ||
 				disable_effect ||
-				rvi->railtype > RAILTYPE_ELECTRIC ||
 				v->vehstatus & VS_HIDDEN) {
 			continue;
 		}
