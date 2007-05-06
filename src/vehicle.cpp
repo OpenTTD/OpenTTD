@@ -2454,6 +2454,7 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 									scheme = LS_PASSENGER_WAGON_STEAM;
 								} else {
 									switch (RailVehInfo(parent_engine_type)->engclass) {
+										default: NOT_REACHED();
 										case EC_STEAM:    scheme = LS_PASSENGER_WAGON_STEAM;    break;
 										case EC_DIESEL:   scheme = LS_PASSENGER_WAGON_DIESEL;   break;
 										case EC_ELECTRIC: scheme = LS_PASSENGER_WAGON_ELECTRIC; break;
@@ -2466,6 +2467,7 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 							bool is_mu = HASBIT(_engine_info[engine_type].misc_flags, EF_RAIL_IS_MU);
 
 							switch (rvi->engclass) {
+								default: NOT_REACHED();
 								case EC_STEAM:    scheme = LS_STEAM; break;
 								case EC_DIESEL:   scheme = is_mu ? LS_DMU : LS_DIESEL;   break;
 								case EC_ELECTRIC: scheme = is_mu ? LS_EMU : LS_ELECTRIC; break;

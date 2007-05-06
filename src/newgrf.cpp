@@ -312,7 +312,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				uint8 tracktype = grf_load_byte(&buf);
 
 				switch (tracktype) {
-					case 0: rvi[i].railtype = rvi[i].engclass == 2 ? RAILTYPE_ELECTRIC : RAILTYPE_RAIL; break;
+					case 0: rvi[i].railtype = rvi[i].engclass >= 2 ? RAILTYPE_ELECTRIC : RAILTYPE_RAIL; break;
 					case 1: rvi[i].railtype = RAILTYPE_MONO; break;
 					case 2: rvi[i].railtype = RAILTYPE_MAGLEV; break;
 					default:
@@ -456,13 +456,15 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 					engclass = EC_DIESEL;
 				} else if (traction <= 0x31) {
 					engclass = EC_ELECTRIC;
+				} else if (traction <= 0x37) {
+					engclass = EC_MONORAIL;
 				} else if (traction <= 0x41) {
-					engclass = EC_ELECTRIC;
+					engclass = EC_MAGLEV;
 				} else {
 					break;
 				}
-				if (rvi[i].railtype == RAILTYPE_RAIL     && engclass == EC_ELECTRIC) rvi[i].railtype = RAILTYPE_ELECTRIC;
-				if (rvi[i].railtype == RAILTYPE_ELECTRIC && engclass != EC_ELECTRIC) rvi[i].railtype = RAILTYPE_RAIL;
+				if (rvi[i].railtype == RAILTYPE_RAIL     && engclass >= EC_ELECTRIC) rvi[i].railtype = RAILTYPE_ELECTRIC;
+				if (rvi[i].railtype == RAILTYPE_ELECTRIC && engclass  < EC_ELECTRIC) rvi[i].railtype = RAILTYPE_RAIL;
 
 				rvi[i].engclass = engclass;
 			}
@@ -2986,7 +2988,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 			uint major    = 2;
 			uint minor    = 6;
 			uint revision = 0; // special case: 2.0.1 is 2.0.10
-			uint build    = 1168;
+			uint build    = 1210;
 			return (major << 24) | (minor << 20) | (revision << 16) | build;
 		}
 
