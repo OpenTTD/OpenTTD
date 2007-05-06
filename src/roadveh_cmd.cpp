@@ -761,10 +761,7 @@ static void HandleRoadVehLoading(Vehicle *v)
 
 			if (--v->load_unload_time_rem != 0) return;
 
-			if (CanFillVehicle(v)) {
-				LoadUnloadVehicle(v);
-				return;
-			}
+			if (LoadUnloadVehicle(v)) return;
 
 			b = v->current_order;
 			v->LeaveStation();

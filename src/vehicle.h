@@ -467,7 +467,6 @@ void InitializeTrains();
 byte VehicleRandomBits();
 void ResetVehiclePosHash();
 
-bool CanFillVehicle(Vehicle *v);
 bool CanRefitTo(EngineID engine_type, CargoID cid_to);
 CargoID FindFirstRefittableCargo(EngineID engine_type);
 int32 GetRefitCost(EngineID engine_type);
@@ -507,7 +506,7 @@ void ShowAircraftViewWindow(const Vehicle* v);
 
 UnitID GetFreeUnitNumber(byte type);
 
-int LoadUnloadVehicle(Vehicle *v);
+bool LoadUnloadVehicle(Vehicle *v);
 
 void TrainConsistChanged(Vehicle *v);
 void TrainPowerChanged(Vehicle *v);

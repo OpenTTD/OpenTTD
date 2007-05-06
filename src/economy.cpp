@@ -1378,6 +1378,73 @@ static bool LoadWait(const Vehicle* v, const Vehicle* u)
 	return false;
 }
 
+static bool CanFillVehicle_FullLoadAny(Vehicle *v)
+{
+	uint32 full = 0, not_full = 0;
+	const GoodsEntry *ge = GetStation(v->last_station_visited)->goods;
+
+	/* special handling of aircraft */
+
+	/* if the aircraft carries passengers and is NOT full, then
+	 *continue loading, no matter how much mail is in */
+	if (v->type == VEH_AIRCRAFT &&
+			IsCargoInClass(v->cargo_type, CC_PASSENGERS) &&
+			v->cargo_cap != v->cargo_count) {
+		return true;
+	}
+
+	/* patch should return "true" to continue loading, i.e. when there is no cargo type that is fully loaded. */
+	do {
+		/* Should never happen, but just in case future additions change this */
+		assert(v->cargo_type<32);
+
+		if (v->cargo_cap != 0) {
+			uint32 mask = 1 << v->cargo_type;
+
+			if (!HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) && v->cargo_cap == v->cargo_count) {
+				full |= mask;
+			} else if (GB(ge[v->cargo_type].waiting_acceptance, 0, 12) > 0 ||
+					(HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) && (ge[v->cargo_type].waiting_acceptance & 0x8000))) {
+				/* If there is any cargo waiting, or this vehicle is still unloading
+				 * and the station accepts the cargo, don't leave the station. */
+				return true;
+			} else {
+				not_full |= mask;
+			}
+		}
+	} while ((v = v->next) != NULL);
+
+	/* continue loading if there is a non full cargo type and no cargo type that is full */
+	return not_full && (full & ~not_full) == 0;
+}
+
+
+static bool CanFillVehicle(Vehicle *front_v)
+{
+	TileIndex tile = front_v->tile;
+
+	assert(IsTileType(tile, MP_STATION) ||
+			(front_v->type == VEH_SHIP && (
+				IsTileType(TILE_ADDXY(tile,  1,  0), MP_STATION) ||
+				IsTileType(TILE_ADDXY(tile, -1,  0), MP_STATION) ||
+				IsTileType(TILE_ADDXY(tile,  0,  1), MP_STATION) ||
+				IsTileType(TILE_ADDXY(tile,  0, -1), MP_STATION) ||
+				IsTileType(TILE_ADDXY(tile, -2,  0), MP_STATION)
+			)));
+
+	bool full_load = HASBIT(front_v->current_order.flags, OFB_FULL_LOAD);
+
+	/* If patch is active, use alternative CanFillVehicle-function */
+	if (_patches.full_load_any && full_load) return CanFillVehicle_FullLoadAny(front_v);
+
+	Vehicle *v = front_v;
+	do {
+		if (HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) || (full_load && v->cargo_count != v->cargo_cap)) return true;
+	} while ((v = v->next) != NULL);
+
+	return !HASBIT(front_v->vehicle_flags, VF_LOADING_FINISHED);
+}
+
 /**
  * Performs the vehicle payment _and_ marks the vehicle to be unloaded.
  * @param front_v the vehicle to be unloaded
@@ -1477,8 +1544,15 @@ void VehiclePayment(Vehicle *front_v)
 	_current_player = old_player;
 }
 
-int LoadUnloadVehicle(Vehicle *v)
+/**
+ * Loads/unload the vehicle if possible.
+ * @param v the vehicle to be (un)loaded
+ * @return true if something was (un)loaded. False if the train is ready to leave.
+ */
+bool LoadUnloadVehicle(Vehicle *v)
 {
+	if (!CanFillVehicle(v)) return false;
+
 	int unloading_time = 20;
 	Vehicle *u = v;
 	int result = 0;
@@ -1689,7 +1763,7 @@ int LoadUnloadVehicle(Vehicle *v)
 		if (result & 2) InvalidateWindow(WC_STATION_VIEW, last_visited);
 	}
 
-	return result;
+	return true;
 }
 
 void PlayersMonthlyLoop()

@@ -306,10 +306,8 @@ static void HandleShipLoading(Vehicle *v)
 		case OT_LOADING: {
 			if (--v->load_unload_time_rem != 0) return;
 
-			if (CanFillVehicle(v)) {
-				LoadUnloadVehicle(v);
-				return;
-			}
+			if (LoadUnloadVehicle(v)) return;
+
 			PlayShipSound(v);
 
 			Order b = v->current_order;

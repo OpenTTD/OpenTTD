@@ -2537,10 +2537,7 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 
 			if (--v->load_unload_time_rem) return;
 
-			if (CanFillVehicle(v)) {
-				LoadUnloadVehicle(v);
-				return;
-			}
+			if (LoadUnloadVehicle(v)) return;
 
 			TrainPlayLeaveStationSound(v);
 
