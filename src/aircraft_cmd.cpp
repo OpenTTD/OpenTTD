@@ -1091,6 +1091,7 @@ static bool AircraftController(Vehicle *v)
 				 * helicopter will circle until sign disappears, then go to next order
 				 * what to do when it is the only order left, right now it just stays in 1 place */
 				v->u.air.state = FLYING;
+				UpdateAircraftCache(v);
 				AircraftNextAirportPos_and_Order(v);
 				return false;
 			}
@@ -1205,6 +1206,7 @@ static bool AircraftController(Vehicle *v)
 			if (st->airport_tile == 0) {
 				/* Airport has been removed, abort the landing procedure */
 				v->u.air.state = FLYING;
+				UpdateAircraftCache(v);
 				AircraftNextAirportPos_and_Order(v);
 				/* get aircraft back on running altitude */
 				SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlyingAltitude(v));
@@ -1879,7 +1881,7 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *apc)
 		byte prev_state = v->u.air.state;
 		_aircraft_state_handlers[v->u.air.state](v, apc);
 		if (v->u.air.state != FLYING) v->u.air.previous_pos = prev_pos;
-		if (v->u.air.state != prev_state) UpdateAircraftCache(v);
+		if (v->u.air.state != prev_state || v->u.air.pos != prev_pos) UpdateAircraftCache(v);
 		return true;
 	}
 
@@ -1889,6 +1891,7 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *apc)
 	if (current->next == NULL) {
 		if (AirportSetBlocks(v, current, apc)) {
 			v->u.air.pos = current->next_position;
+			UpdateAircraftCache(v);
 		} // move to next position
 		return false;
 	}
@@ -1899,6 +1902,7 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *apc)
 		if (v->u.air.state == current->heading || current->heading == TO_ALL) {
 			if (AirportSetBlocks(v, current, apc)) {
 				v->u.air.pos = current->next_position;
+				UpdateAircraftCache(v);
 			} // move to next position
 			return false;
 		}
@@ -2203,6 +2207,7 @@ void UpdateAirplanesOnNewStation(const Station *st)
 				if (v->u.air.state >= FLYING) { // circle around
 					v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, ap);
 					v->u.air.state = FLYING;
+					UpdateAircraftCache(v);
 					/* landing plane needs to be reset to flying height (only if in pause mode upgrade,
 					 * in normal mode, plane is reset in AircraftController. It doesn't hurt for FLYING */
 					GetNewVehiclePosResult gp = GetNewVehiclePos(v);
@@ -2216,6 +2221,7 @@ void UpdateAirplanesOnNewStation(const Station *st)
 					for (uint cnt = 0; cnt < ap->nofelements; cnt++) {
 						if (ap->layout[cnt].heading == takeofftype) {
 							v->u.air.pos = ap->layout[cnt].position;
+							UpdateAircraftCache(v);
 							break;
 						}
 					}
