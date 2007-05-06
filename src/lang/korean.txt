@@ -1132,6 +1132,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}부드�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}다른 회사가 주식을 사는 것을 허용
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호등을 매 {ORANGE}{STRING}타일마다 설치
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}자동으로 신호기 설치 : {ORANGE}{STRING} 이전에
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}도시설계 "도로건설 안함"은 시나리오 에디터에서 유효하지 않습니다
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}도시도로 설계: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :도로건설 안함
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :기본값
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :개선된 도로
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 칸
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 칸
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :왼쪽
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :가운데
@@ -3105,6 +3114,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}만년�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}시작 년도를 변경합니다.
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}맵 크기에 대한 경고
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}맵 자원의 크기를 너무 키우는 것은 좋지 않습니다. 생성을 계속하시겠습니까?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}도시 설계 경고
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}도시 설계 "도로건설 안함"은 추천하지 않습니다. 생성을 계속 하시겠습니까?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}DEM지형 이름:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}크기: {ORANGE}{NUM} x {NUM}

@@ -1133,6 +1133,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ativar 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite comprar ações de outras companhias
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticamente constroi semáforos anteriores: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}O layout de cidade "sem mais estradas" não é válido no editor
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecione o layout das estradas {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :sem mais estradas
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :padrão
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :melhores estradas
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grade 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :grade 3x3
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
@@ -2042,6 +2051,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Atitude
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Nenhum
+STR_NUM_VERY_LOW                                                :Muito baixo
 STR_6816_LOW                                                    :Baixo
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alto
@@ -3107,6 +3117,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Mudar li
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mudar data de início
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Aviso de Escala
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Alterar muito o tamanho do mapa original não é recomendado. Continuar com a geração?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Aviso do layout da cidade
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}O Layout "sem mais estradas" não é recomendado. Continuar com a geração?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nome do mapa em relevo:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}

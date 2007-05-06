@@ -1097,6 +1097,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoomaa karttaa
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Vieritä karttaa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Pois
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rullan nopeus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Uusi peli alkaa pysäytettynä: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Junia/pelaaja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Ajoneuvoja/pelaaja: {ORANGE}{STRING}
@@ -1130,6 +1131,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Tasaine
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Salli osakkeiden ostaminen muista yhtiöistä
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vedettäessä aseta opastimien väleiksi: {ORANGE}{STRING} ruutu(a)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Rakenna opasteet automaattisesti ennen: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Tiekaavaa "ei uusia teitä" ei voi käyttää editorissa
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Valitse tiekaava: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :ei uusia teitä
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :oletus
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :parempia teitä
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 ruudukko
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 ruudukko
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vasen
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :keskellä
@@ -2037,6 +2047,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Kaupung
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Ei mitään
+STR_NUM_VERY_LOW                                                :Erittäin alhainen
 STR_6816_LOW                                                    :Matala
 STR_6817_NORMAL                                                 :Normaali
 STR_6818_HIGH                                                   :Korkea
@@ -3102,6 +3113,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Vaihda l
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Vaihda aloitusvuosi
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Mittakaava-varoitus
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Lähdekartan koon liiallinen muuttaminen ei ole suositeltavaa. Haluatko jatkaa?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Varoitus tiekaavasta
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Tiekaavaa "ei uusia teitä" ei suositella. Jatketaanko?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Korkeuskartan nimi:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Koko: {ORANGE}{NUM} x {NUM}

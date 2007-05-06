@@ -1184,6 +1184,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Powiększ widok
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Przesuń widok
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Rolka wyłączona
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Prędkość przesuwania widoku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę tworząc nową grę: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. liczba pociągów na gracza: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. liczba samochodów na gracza: {ORANGE}{STRING}
@@ -1217,6 +1218,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Pozwól
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwól kupować odziały w innych firmach
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} kratk{P e i ek}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Plan sieci dróg "bez nowych dróg" nie jest poprawny dla edytora scenariuszy
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Wybierz plan sieci dróg miejskich: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :bez nowych dróg
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standardowy
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepsze drogi
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :siatka 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :siatka 3x3
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozycja głównego paska narzędzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Z lewej strony
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Wyśrodkowane

@@ -386,7 +386,7 @@ STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipo de Estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Avaliação de carga
-STR_ENGINE_SORT_ENGINE_ID                                       :Ordenação clássica
+STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (ordernação clássica)
 STR_ENGINE_SORT_COST                                            :Custo
 STR_ENGINE_SORT_POWER                                           :Potência
 STR_ENGINE_SORT_INTRO_DATE                                      :Data de Introdução
@@ -1049,7 +1049,7 @@ STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permiti
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avisar quando comboios andam perdidos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Alertar em caso de perda do combóio: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Analisar ordens dos veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
@@ -1086,7 +1086,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar medidas ao usar ferramentas de construção: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar uma dica de medição ao utilizar várias ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar estampagens da companhia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia
@@ -1097,6 +1097,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Ampliar mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Percorrer mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel no mapa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automática ao iniciar um novo jogo: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -1130,6 +1131,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Activar
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite comprar acções de outras companhias
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir automaticamente semáforos antes de: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A disposição de cidade "sem mais estradas" não é válida no editor de cenários
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Seleccionar disposição das estradas na cidade: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :sem mais estradas
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :por defeito
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :estradas melhores
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grelha 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :grelha 3x3
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
@@ -1144,6 +1154,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rápido
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Muito Rápido
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}1 em {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}Nenhuma
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador inicial para dimensão da cidade: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construção
@@ -2036,6 +2047,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Atitude
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Nenhum
+STR_NUM_VERY_LOW                                                :Muito baixo
 STR_6816_LOW                                                    :Baixo
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alto
@@ -2566,9 +2578,9 @@ STR_8825_NON_STOP                                               :{BLACK}Sem para
 STR_8826_GO_TO                                                  :{BLACK}Ir Para
 STR_8827_FULL_LOAD                                              :{BLACK}Carga
 STR_8828_UNLOAD                                                 :{BLACK}Descarga
-STR_REFIT                                                       :{BLACK}Reconverter
-STR_REFIT_TIP                                                   :{BLACK}Escolha o tipo de carga para reconverter nesta ordem. Control click para remover a instrução de reconversão
-STR_REFIT_ORDER                                                 :(Reconverter para {STRING})
+STR_REFIT                                                       :{BLACK}Converter
+STR_REFIT_TIP                                                   :{BLACK}Seleccionar o tipo de carga a converter nesta ordem. Pressionar Ctrl e botão-esquerdo do rato para remover instrução de conversão
+STR_REFIT_ORDER                                                 :(Converter para {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3101,6 +3113,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Mudar a 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mudar ano de início
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Aviso de redimensionamento
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Aviso de disposição da cidade
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}A disposição de cidade "sem mais estradas" não é recomendado. Continuar a geração?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nome mapa de alt.:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}
@@ -3162,5 +3176,14 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Créditos de Transferência: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...esta estrada é detida pela cidade
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...estrada orientada na direcção incorrecta
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opções de Transparência
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Comutar transparência para sinais das estações
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Comutar transparência das árvores
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Comutar transparência das casas
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Comutar transparência das indústrias
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Comutar transparência para edificações como estações, depósitos, pontos-de-passagem e catenárias
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comutar transparência para pontes
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas (talvez, no futuro, para embelezamentos)

@@ -1130,17 +1130,27 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Yüzeys
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Diğer şirketlerin hisseleri alınabilsin
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Sürüklerken her: {ORANGE}{STRING} karede bir sinyal koy
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bu tarihten önce ışık yerine semafor kullan: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Senaryo düzenleyicisinde "yolsuz" şehir seçeneği kullanılamaz
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :yolsuz
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :varsayılan
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :daha iyi yollar
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Ana araç çubuğu pozisyonu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Sol
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Orta
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Sağ
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}{STRING} piksel
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}kapalı
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Şehirlerin genişleme hızı: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Hiçbiri
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Yavaş
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Hızlı
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Çok Hızlı
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Kasabaların şehir olması için gerekli nüfus: {ORANGE}1 in {STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Arayüz
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}İnşaat

@@ -1097,6 +1097,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :地図をズー
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :地図をスクロール
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :切
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}地図のスクロール速度：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}新規ゲームを開始したときに自動的にポーズ：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
@@ -1130,6 +1131,8 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}スム�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}他の会社が所有している株式の購入を入にする
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}ドラッグするときの信号設備頻度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}次の年まで腕木式信号を建設：{ORANGE}{STRING}
+
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}主のツールバーの位置：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :左
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :中位
@@ -2037,6 +2040,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}町議�
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :なし
+STR_NUM_VERY_LOW                                                :特に低い
 STR_6816_LOW                                                    :低い
 STR_6817_NORMAL                                                 :通常
 STR_6818_HIGH                                                   :高い

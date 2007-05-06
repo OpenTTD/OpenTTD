@@ -1223,6 +1223,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Масштаб 
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Прокрутка карти
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Відкл.
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Швидкість прокрутки колесом миші: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. авто у гравця: {ORANGE}{STRING}
@@ -1256,6 +1257,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Еко�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Можна купувати інші компанії
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При протаскуванні сигнали ставляться через:{ORANGE}{STRING} клітки(ок)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Автоматично будувати семафори до: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Схема міста "не треба більше доріг" недійсна у редакторі сценаріїв
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Виберіть схему доріг у місті: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :не треба більше доріг
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :стандартна
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :кращі дороги
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :сітка 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :сітка 3x3
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положення головного меню: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Ліворуч
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :По центру
@@ -2200,6 +2210,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Від�
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Нема
+STR_NUM_VERY_LOW                                                :дуже мало
 STR_6816_LOW                                                    :МалО
 STR_6817_NORMAL                                                 :Нормально
 STR_6818_HIGH                                                   :Багато
@@ -3265,6 +3276,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Змін
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Змінити рік початку гри
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Завелике значення
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Розміри дуже великі. Продовжити генерацію?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Попередження про схему міста
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Схема міста "не треба більше доріг" небажана. Продовжити генерацію?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Ім'я рельєфа:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Розмір: {ORANGE}{NUM} x {NUM}

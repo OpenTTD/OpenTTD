@@ -752,6 +752,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...endan
 STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Middels
 STR_02A3_LARGE                                                  :{BLACK}Stor
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}By
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Vel storleik på by
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Bystorleik:
 
@@ -1097,6 +1098,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kart
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kart
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :av
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Fart på rullehjul: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal køyretøy per spelar: {ORANGE}{STRING}
@@ -1130,6 +1132,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Jamn ø
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøping av aksjar i andre selskap
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal hver: {ORANGE}{STRING} rute{P "" r}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Byoppsettet " ingen fleire vegar" kan ikkje brukast i scenarioredigeringsprogrammet
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Velg oppsett for byvegar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :Ingen fleire vegar
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standard
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betre vegar
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 rutenett
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Plassering av hovudverktøylinje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midtstilt
@@ -3103,6 +3114,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Skift h�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Endre startår
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalaåtvaring
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Å endre storleiken på kjeldekartet for mykje er ikkje anbefalt. Vil du halde fram med genereringa?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Åtvaring for byoppsett
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Byoppsettet "ingen fleire vegar" er ikkje anbefalt.  Hald fram med bygginga?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Høgdekartnamn:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Storleik: {ORANGE}{NUM} x {NUM}

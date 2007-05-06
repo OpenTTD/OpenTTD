@@ -1189,6 +1189,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Plynul�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit kupování podílu z ostatních společností
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat signály každých(é): {ORANGE}{STRING} dilků(y)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafory automaticky stavět do roku: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vzor "žádné silnice" se neuplatňuje v editoru scénářů
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vyber vzor městských silnic: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :žádné silnice
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :původní
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepší silnice
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :mřížka 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :mřížka 3x3
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Umístění hlavní lišty: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vlevo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :uprostřed
@@ -3168,6 +3177,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Změnit 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Změnit počáteční rok
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Varování kvůli velikosti
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Tak velká zmena velikosti zdrojové mapy není doporučena. Pokračovat s generováním?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Varování kvůli vzoru silnic
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Vzor "žádné silnice" není doporučen (nepostaví se ani domy). Pokračovat ve vytváření mapy?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Jméno výškové mapy:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Velikost: {ORANGE}{NUM} x {NUM}

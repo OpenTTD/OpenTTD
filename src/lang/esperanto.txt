@@ -1098,6 +1098,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zomi mapon
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Skroli mapon
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Malaktiva
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mapskrolrada rapido: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Aŭtomate paŭzu startante novan ludon: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Trajna maksimumo por ĉiu ludanto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Vojveturila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
@@ -1131,6 +1132,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Aktivig
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permesu aĉetadon de dividaĵoj en aliaj kompanioj
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tirante metu signalojn je ĉiuj: {ORANGE}{STRING} kvadrado(j)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Aŭtomate konstruu semaforojn antaŭ: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}La urbaspekto "sen pliaj vojoj" ne validas en la scenarkreilo
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Elektu urbvojan aspekton: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :sen pliaj vojoj
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :defaŭlte
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :pli bonaj vojoj
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :kvadrataro de 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :kvadrataro de 3x3
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Loko de ĉefa ilbreto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Maldekstre
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
@@ -2038,6 +2048,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Urbestr
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Neniu
+STR_NUM_VERY_LOW                                                :Tre malalte
 STR_6816_LOW                                                    :Malalte
 STR_6817_NORMAL                                                 :Normale
 STR_6818_HIGH                                                   :Alte
@@ -3103,6 +3114,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ŝanĝu 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ŝanĝu komencjaron
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala averto
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Urbaspekta averto
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}La urbaspekto "sen pliaj vojoj" ne estas rekomendata. Ĉu plugeneri?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Mapa nomo:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Grandeco: {ORANGE}{NUM} x {NUM}

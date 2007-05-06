@@ -1097,6 +1097,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zooma kartan
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scrolla kartan
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Avstängd
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mushjulshastighet: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automatiskt vid start av nytt spel: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max antal vägfordon per spelare: {ORANGE}{STRING}
@@ -1130,6 +1131,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Lugn ek
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillåt inköp av aktier från andra företag
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} ruta
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg automatiskt semaforer innan: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Det går ej att använda "inga fler vägar" i scenario editorn
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Välj stadens väg-inställningar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :inga fler vägar
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standard
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bättre vägar
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 rutnät
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 rutnät
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position av verktygsraden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Vänster
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrerad
@@ -2037,6 +2047,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Stadens
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Ingen
+STR_NUM_VERY_LOW                                                :Väldigt låg
 STR_6816_LOW                                                    :Låg
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Hög
@@ -3102,6 +3113,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ändra s
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ändra Startår
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala-varning
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}För stora storleksändringar av källkarta är inte rekomenderat. Fortsätt med generering?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Varning genererat från stadens väg-inställningar
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Det är ej rekommenderat att använda inställningen "inga fler vägar". Vill du fortsätta ändå?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Namn på höjdkarta:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Storlek: {ORANGE}{NUM} x {NUM}

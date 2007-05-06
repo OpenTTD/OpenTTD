@@ -1133,6 +1133,12 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Пла�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Позволяване покупката на акции от други компании
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При влачене, поставяне на семафори всеки: {ORANGE}{STRING} плочка(и)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Автоматично построй семафори преди: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Избери грацки пътформат: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :по-добри пътища
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Позиция на лента за инструменти: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Ляво
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Център
@@ -3106,6 +3112,7 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Висо
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Промяна началната година
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Мащаб предупреждение
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Прекаленото оразмеряване не е препорачително. Продължаване с генерацията?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Грацки план предупреждение
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Име на височинна карта:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Размер: {ORANGE}{NUM} x {NUM}
