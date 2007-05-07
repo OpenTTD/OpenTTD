@@ -1131,6 +1131,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Vloeien
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Sta het kopen van aandelen toe
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Plaats automatisch semaphore seinen voor: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}De stadindeling "geen wegen" is niet geldig in de scenario editor
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecteer stedelijke wegindeling: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :geen wegen
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standaard
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betere wegen
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 rooster
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 rooster
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Positie van algemene toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midden
@@ -3081,7 +3090,7 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tre
 
 ########### String for New Landscape Generator
 
-STR_GENERATE                                                    :{WHITE}Creeër
+STR_GENERATE                                                    :{WHITE}Maak aan
 STR_RANDOM                                                      :{BLACK}Willekeurig maken
 STR_RANDOM_HELP                                                 :{BLACK}Wijzig het willekeurige getal voor terrein creatie
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Wereld maken
@@ -3104,6 +3113,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begin jaar
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Schaal waarschuwing
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaar is niet aan te bevelen. Toch doorgaan?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Stadsindelingwaarschuwing
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}De stadsindeling "geen wegen" is niet aanbevolen. Doorgaan met aanmaken?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Hoogtekaart naam:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Grootte: {ORANGE}{NUM} x {NUM}
@@ -3124,7 +3135,7 @@ STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Deze akt
 STR_SE_FLAT_WORLD                                               :{WHITE}Vlak land
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereer een platte kaart
 STR_SE_RANDOM_LAND                                              :{WHITE}Willekeurig land
-STR_SE_NEW_WORLD                                                :{BLACK}Creeër nieuw scenario
+STR_SE_NEW_WORLD                                                :{BLACK}Maak nieuw scenario aan
 STR_SE_CAPTION                                                  :{WHITE}Scenario type
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Maak de hoogte van plat land een lager
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Maak de hoogte van plat land een hoger

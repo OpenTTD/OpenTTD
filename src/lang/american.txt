@@ -1097,6 +1097,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom map
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING}
@@ -1130,6 +1131,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enable 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}The town layout "no more roads" isn't valid in the scenario editor
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Select town-road layout: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :no more roads
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :default
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :better roads
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Left
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
@@ -2037,6 +2047,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}City co
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :None
+STR_NUM_VERY_LOW                                                :Very low
 STR_6816_LOW                                                    :Low
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :High
@@ -3102,6 +3113,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Change s
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Change starting year
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Scale warning
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Resizing source map too much is not recommended. Continue with the generation?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Town layout warning
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}The town layout "no more roads" is not recommended. Continue with the generation?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Heightmap name:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Size: {ORANGE}{NUM} x {NUM}
