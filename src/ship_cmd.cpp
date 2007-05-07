@@ -187,7 +187,7 @@ void OnNewDay_Ship(Vehicle *v)
 
 	if (v->vehstatus & VS_STOPPED) return;
 
-	cost = ShipVehInfo(v->engine_type)->running_cost * _price.ship_running / 364;
+	cost = GetVehicleProperty(v, 0x0F, ShipVehInfo(v->engine_type)->running_cost) * _price.ship_running / 364;
 	v->profit_this_year -= cost >> 8;
 
 	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);

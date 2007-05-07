@@ -384,16 +384,20 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 	y += 10;
 
 	/* Wagon weight - (including cargo) */
-	SetDParam(0, rvi->weight);
-	SetDParam(1, (GetCargo(rvi->cargo_type)->weight * rvi->capacity >> 4) + rvi->weight);
+	uint weight = GetEngineProperty(engine_number, 0x16, rvi->weight);
+	SetDParam(0, weight);
+	SetDParam(1, (GetCargo(rvi->cargo_type)->weight * rvi->capacity >> 4) + weight);
 	DrawString(x, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT, 0);
 	y += 10;
 
 	/* Wagon speed limit, displayed if above zero */
-	if (rvi->max_speed > 0 && _patches.wagon_speed_limits) {
-		SetDParam(0, rvi->max_speed * 10 / 16);
-		DrawString(x, y, STR_PURCHASE_INFO_SPEED, 0);
-		y += 10;
+	if (_patches.wagon_speed_limits) {
+		uint max_speed = GetEngineProperty(engine_number, 0x09, rvi->max_speed);
+		if (max_speed > 0) {
+			SetDParam(0, max_speed * 10 / 16);
+			DrawString(x, y, STR_PURCHASE_INFO_SPEED, 0);
+			y += 10;
+		}
 	}
 	return y;
 }
@@ -402,22 +406,23 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
 	int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
+	uint weight = GetEngineProperty(engine_number, 0x16, rvi->weight);
 
 	/* Purchase Cost - Engine weight */
 	SetDParam(0, GetEngineProperty(engine_number, 0x17, rvi->base_cost) * (_price.build_railvehicle >> 3) >> 5);
-	SetDParam(1, rvi->weight << multihead);
+	SetDParam(1, weight << multihead);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_WEIGHT, 0);
 	y += 10;
 
 	/* Max speed - Engine power */
-	SetDParam(0, rvi->max_speed * 10 / 16);
-	SetDParam(1, rvi->power << multihead);
+	SetDParam(0, GetEngineProperty(engine_number, 0x09, rvi->max_speed) * 10 / 16);
+	SetDParam(1, GetEngineProperty(engine_number, 0x0B, rvi->power) << multihead);
 	DrawString(x, y, STR_PURCHASE_INFO_SPEED_POWER, 0);
 	y += 10;
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
 	if (_patches.realistic_acceleration && rvi->railtype != RAILTYPE_MAGLEV) {
-		SetDParam(0, ((rvi->weight << multihead) * 10 * rvi->tractive_effort) / 256);
+		SetDParam(0, ((weight << multihead) * 10 * GetEngineProperty(engine_number, 0x1F, rvi->tractive_effort)) / 256);
 		DrawString(x, y, STR_PURCHASE_INFO_MAX_TE, 0);
 		y += 10;
 	}
@@ -469,7 +474,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 {
 	/* Purchase cost - Max speed */
 	SetDParam(0, GetEngineProperty(engine_number, 0x0A, svi->base_cost) * (_price.ship_base >> 3) >> 5);
-	SetDParam(1, svi->max_speed * 10 / 32);
+	SetDParam(1, GetEngineProperty(engine_number, 0x0B, svi->max_speed) * 10 / 32);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
 
@@ -481,7 +486,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 	y += 10;
 
 	/* Running cost */
-	SetDParam(0, GetEngineProperty(engine_number, 0x0B, svi->running_cost) * _price.ship_running >> 8);
+	SetDParam(0, GetEngineProperty(engine_number, 0x0F, svi->running_cost) * _price.ship_running >> 8);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
