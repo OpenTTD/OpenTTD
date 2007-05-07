@@ -753,31 +753,6 @@ static void ProcessRoadVehOrder(Vehicle *v)
 	InvalidateVehicleOrder(v);
 }
 
-static void HandleRoadVehLoading(Vehicle *v)
-{
-	switch (v->current_order.type) {
-		case OT_LOADING: {
-			Order b;
-
-			if (--v->load_unload_time_rem != 0) return;
-
-			if (LoadUnloadVehicle(v)) return;
-
-			b = v->current_order;
-			v->LeaveStation();
-			if (!(b.flags & OF_NON_STOP)) return;
-			break;
-		}
-
-		case OT_DUMMY: break;
-
-		default: return;
-	}
-
-	v->cur_order_index++;
-	InvalidateVehicleOrder(v);
-}
-
 static void StartRoadVehSound(const Vehicle* v)
 {
 	if (!PlayVehicleSound(v, VSE_START)) {
@@ -1304,7 +1279,7 @@ static void RoadVehController(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED) return;
 
 	ProcessRoadVehOrder(v);
-	HandleRoadVehLoading(v);
+	v->HandleLoading();
 
 	if (v->current_order.type == OT_LOADING) return;
 

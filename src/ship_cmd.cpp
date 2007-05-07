@@ -305,31 +305,6 @@ static void ProcessShipOrder(Vehicle *v)
 	InvalidateWindowClasses(WC_SHIPS_LIST);
 }
 
-static void HandleShipLoading(Vehicle *v)
-{
-	switch (v->current_order.type) {
-		case OT_LOADING: {
-			if (--v->load_unload_time_rem != 0) return;
-
-			if (LoadUnloadVehicle(v)) return;
-
-			v->PlayLeaveStationSound();
-
-			Order b = v->current_order;
-			v->LeaveStation();
-			if (!(b.flags & OF_NON_STOP)) return;
-			break;
-		}
-
-		case OT_DUMMY: break;
-
-		default: return;
-	}
-
-	v->cur_order_index++;
-	InvalidateVehicleOrder(v);
-}
-
 void Ship::UpdateDeltaXY(Direction direction)
 {
 #define MKIT(a, b, c, d) ((a & 0xFF) << 24) | ((b & 0xFF) << 16) | ((c & 0xFF) << 8) | ((d & 0xFF) << 0)
@@ -681,7 +656,7 @@ static void ShipController(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED) return;
 
 	ProcessShipOrder(v);
-	HandleShipLoading(v);
+	v->HandleLoading();
 
 	if (v->current_order.type == OT_LOADING) return;
 

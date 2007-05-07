@@ -2929,6 +2929,40 @@ void Vehicle::LeaveStation()
 }
 
 
+void Vehicle::HandleLoading(bool mode)
+{
+	switch (this->current_order.type) {
+		case OT_LOADING: {
+			/* Not the first call for this tick */
+			if (mode) return;
+
+			/* We have not waited enough time till the next round of loading/unloading */
+			if (--this->load_unload_time_rem) return;
+
+			/* Load/unload the vehicle; when it actually did something
+			 * we do not leave the station. */
+			if (LoadUnloadVehicle(this)) return;
+
+			this->PlayLeaveStationSound();
+
+			Order b = this->current_order;
+			this->LeaveStation();
+
+			/* If this was not the final order, don't remove it from the list. */
+			if (!(b.flags & OF_NON_STOP)) return;
+			break;
+		}
+
+		case OT_DUMMY: break;
+
+		default: return;
+	}
+
+	this->cur_order_index++;
+	InvalidateVehicleOrder(this);
+}
+
+
 void SpecialVehicle::UpdateDeltaXY(Direction direction)
 {
 	this->x_offs        = 0;

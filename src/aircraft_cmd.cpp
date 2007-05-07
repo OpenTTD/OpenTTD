@@ -1416,32 +1416,6 @@ void Aircraft::MarkDirty()
 		MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }
 
-static void HandleAircraftLoading(Vehicle *v, int mode)
-{
-	switch (v->current_order.type) {
-		case OT_LOADING: {
-			if (mode != 0) return;
-			if (--v->load_unload_time_rem != 0) return;
-
-			if (LoadUnloadVehicle(v)) return;
-
-			Order b = v->current_order;
-			v->LeaveStation();
-			v->current_order.Free();
-			v->MarkDirty();
-			if (!(b.flags & OF_NON_STOP)) return;
-			break;
-		}
-
-		case OT_DUMMY: break;
-
-		default: return;
-	}
-
-	v->cur_order_index++;
-	InvalidateVehicleOrder(v);
-}
-
 static void CrashAirplane(Vehicle *v)
 {
 	v->vehstatus |= VS_CRASHED;
@@ -2130,7 +2104,7 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 
 	HandleAircraftSmoke(v);
 	ProcessAircraftOrder(v);
-	HandleAircraftLoading(v, loop);
+	v->HandleLoading(loop != 0);
 
 	if (v->current_order.type >= OT_LOADING) return;
 

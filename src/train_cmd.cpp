@@ -2526,35 +2526,6 @@ void Train::MarkDirty()
 	UpdateTrainAcceleration(this);
 }
 
-static void HandleTrainLoading(Vehicle *v, bool mode)
-{
-	switch (v->current_order.type) {
-		case OT_LOADING: {
-			if (mode) return;
-
-			if (--v->load_unload_time_rem) return;
-
-			if (LoadUnloadVehicle(v)) return;
-
-			v->PlayLeaveStationSound();
-
-			Order b = v->current_order;
-			v->LeaveStation();
-
-			/* If this was not the final order, don't remove it from the list. */
-			if (!(b.flags & OF_NON_STOP)) return;
-			break;
-		}
-
-		case OT_DUMMY: break;
-
-		default: return;
-	}
-
-	v->cur_order_index++;
-	InvalidateVehicleOrder(v);
-}
-
 static int UpdateTrainSpeed(Vehicle *v)
 {
 	uint accel;
@@ -3333,7 +3304,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		return;
 	}
 
-	HandleTrainLoading(v, mode);
+	v->HandleLoading(mode);
 
 	if (v->current_order.type == OT_LOADING) return;
 

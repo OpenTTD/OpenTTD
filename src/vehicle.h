@@ -317,6 +317,13 @@ struct Vehicle {
 	void LeaveStation();
 
 	/**
+	 * Handle the loading of the vehicle; when not it skips through dummy
+	 * orders and does nothing in all other cases.
+	 * @param mode is the non-first call for this vehicle in this tick?
+	 */
+	void HandleLoading(bool mode = false);
+
+	/**
 	 * An overriden version of new, so you can use the vehicle instance
 	 * instead of a newly allocated piece of memory.
 	 * @param size the size of the variable (unused)
