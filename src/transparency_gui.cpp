@@ -23,6 +23,7 @@ enum TransparencyToolbarWidgets{
 	TTW_WIDGET_BUILDINGS,    ///< Make player buildings and structures transparent
 	TTW_WIDGET_BRIDGES,      ///< Make bridges transparent
 	TTW_WIDGET_STRUCTURES,   ///< Make unmovable structures transparent
+	TTW_WIDGET_END,          ///< End of toggle buttons
 };
 
 /** Toggle the bits of the transparencies variable
@@ -41,7 +42,7 @@ static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 		case WE_PAINT:
 			/* must be sure that the widgets show the transparency variable changes
 			 * also when we use shortcuts */
-			for (uint i = TTW_WIDGET_SIGNS; i < TTW_WIDGET_STRUCTURES; i++) {
+			for (uint i = TTW_WIDGET_SIGNS; i < TTW_WIDGET_END; i++) {
 				SetWindowWidgetLoweredState(w, i, HASBIT(_transparent_opt, i - TTW_WIDGET_SIGNS));
 			}
 			DrawWindowWidgets(w);
