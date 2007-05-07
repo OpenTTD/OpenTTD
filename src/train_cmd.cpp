@@ -2097,6 +2097,11 @@ static void TrainPlayLeaveStationSound(const Vehicle* v)
 	SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], v);
 }
 
+void Train::PlayLeaveStationSound() const
+{
+	TrainPlayLeaveStationSound(this);
+}
+
 static bool CheckTrainStayInDepot(Vehicle *v)
 {
 	/* bail out if not all wagons are in the same depot or not in a depot at all */
@@ -2531,7 +2536,7 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 
 			if (LoadUnloadVehicle(v)) return;
 
-			TrainPlayLeaveStationSound(v);
+			v->PlayLeaveStationSound();
 
 			Order b = v->current_order;
 			v->LeaveStation();

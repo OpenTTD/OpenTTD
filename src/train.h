@@ -248,6 +248,7 @@ struct Train : public Vehicle {
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_INC : EXPENSES_TRAIN_RUN; }
 	WindowClass GetVehicleListWindowClass() const { return WC_TRAINS_LIST; }
+	void PlayLeaveStationSound() const;
 };
 
 #endif /* TRAIN_H */

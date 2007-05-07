@@ -375,6 +375,11 @@ struct Vehicle {
 	 * Invalidates the vehicle list window of this type of vehicle
 	 */
 	virtual WindowClass GetVehicleListWindowClass() const { return WC_NONE; }
+
+	/**
+	 * Play the sound associated with leaving the station
+	 */
+	virtual void PlayLeaveStationSound() const {}
 };
 
 /**

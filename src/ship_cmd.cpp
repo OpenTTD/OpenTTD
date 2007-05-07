@@ -235,11 +235,16 @@ void Ship::MarkDirty()
 	MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }
 
-static void PlayShipSound(Vehicle *v)
+static void PlayShipSound(const Vehicle *v)
 {
 	if (!PlayVehicleSound(v, VSE_START)) {
 		SndPlayVehicleFx(ShipVehInfo(v->engine_type)->sfx, v);
 	}
+}
+
+void Ship::PlayLeaveStationSound() const
+{
+	PlayShipSound(this);
 }
 
 static void ProcessShipOrder(Vehicle *v)
@@ -308,7 +313,7 @@ static void HandleShipLoading(Vehicle *v)
 
 			if (LoadUnloadVehicle(v)) return;
 
-			PlayShipSound(v);
+			v->PlayLeaveStationSound();
 
 			Order b = v->current_order;
 			v->LeaveStation();
