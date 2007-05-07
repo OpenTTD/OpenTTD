@@ -1076,7 +1076,7 @@ void GameLoop()
 	StateGameLoop();
 #endif /* ENABLE_NETWORK */
 
-	if (!_pause_game && _display_opt & DO_FULL_ANIMATION) DoPaletteAnimations();
+	if (!_pause_game && HASBIT(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
 
 	if (!_pause_game || _cheats.build_in_pause.value) MoveAllTextEffects();
 

@@ -171,12 +171,12 @@ static void MenuClickSettings(int index)
 		case 2: ShowPatchesSelection(); return;
 		case 3: ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
 
-		case  5: _display_opt ^= DO_SHOW_TOWN_NAMES;    break;
-		case  6: _display_opt ^= DO_SHOW_STATION_NAMES; break;
-		case  7: _display_opt ^= DO_SHOW_SIGNS;         break;
-		case  8: _display_opt ^= DO_WAYPOINTS;          break;
-		case  9: _display_opt ^= DO_FULL_ANIMATION;     break;
-		case 10: _display_opt ^= DO_FULL_DETAIL;        break;
+		case  5: TOGGLEBIT(_display_opt, DO_SHOW_TOWN_NAMES);    break;
+		case  6: TOGGLEBIT(_display_opt, DO_SHOW_STATION_NAMES); break;
+		case  7: TOGGLEBIT(_display_opt, DO_SHOW_SIGNS);         break;
+		case  8: TOGGLEBIT(_display_opt, DO_WAYPOINTS);          break;
+		case  9: TOGGLEBIT(_display_opt, DO_FULL_ANIMATION);     break;
+		case 10: TOGGLEBIT(_display_opt, DO_FULL_DETAIL);        break;
 		case 11: ToggleTransparency(); break;
 		case 12: TOGGLEBIT(_transparent_opt, TO_SIGNS); break;
 	}
@@ -974,12 +974,12 @@ static void ToolbarOptionsClick(Window *w)
 
 	w = PopupMainToolbMenu(w, 2, STR_02C3_GAME_OPTIONS, 13, 0);
 
-	if (_display_opt & DO_SHOW_TOWN_NAMES)    SETBIT(x,  5);
-	if (_display_opt & DO_SHOW_STATION_NAMES) SETBIT(x,  6);
-	if (_display_opt & DO_SHOW_SIGNS)         SETBIT(x,  7);
-	if (_display_opt & DO_WAYPOINTS)          SETBIT(x,  8);
-	if (_display_opt & DO_FULL_ANIMATION)     SETBIT(x,  9);
-	if (_display_opt & DO_FULL_DETAIL)        SETBIT(x, 10);
+	if (HASBIT(_display_opt, DO_SHOW_TOWN_NAMES))    SETBIT(x,  5);
+	if (HASBIT(_display_opt, DO_SHOW_STATION_NAMES)) SETBIT(x,  6);
+	if (HASBIT(_display_opt, DO_SHOW_SIGNS))         SETBIT(x,  7);
+	if (HASBIT(_display_opt, DO_WAYPOINTS))          SETBIT(x,  8);
+	if (HASBIT(_display_opt, DO_FULL_ANIMATION))     SETBIT(x,  9);
+	if (HASBIT(_display_opt, DO_FULL_DETAIL))        SETBIT(x, 10);
 	if (GB(_transparent_opt, 1, 7) != 0)      SETBIT(x, 11);
 	if (HASBIT(_transparent_opt, TO_SIGNS))   SETBIT(x, 12);
 	WP(w,menu_d).checked_items = x;

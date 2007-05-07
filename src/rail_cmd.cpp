@@ -1322,7 +1322,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		DrawTrackBits(ti, rails);
 
-		if (_display_opt & DO_FULL_DETAIL) DrawTrackDetails(ti);
+		if (HASBIT(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti);
 
 		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails);
 	} else {

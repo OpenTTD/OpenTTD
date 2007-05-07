@@ -799,7 +799,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 	Town *t;
 	int left, top, right, bottom;
 
-	if (!(_display_opt & DO_SHOW_TOWN_NAMES) || _game_mode == GM_MENU)
+	if (!HASBIT(_display_opt, DO_SHOW_TOWN_NAMES) || _game_mode == GM_MENU)
 		return;
 
 	left = dpi->left;
@@ -873,7 +873,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 	int left, top, right, bottom;
 	const Station *st;
 
-	if (!(_display_opt & DO_SHOW_STATION_NAMES) || _game_mode == GM_MENU)
+	if (!HASBIT(_display_opt, DO_SHOW_STATION_NAMES) || _game_mode == GM_MENU)
 		return;
 
 	left = dpi->left;
@@ -940,7 +940,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 	const Sign *si;
 	int left, top, right, bottom;
 
-	if (!(_display_opt & DO_SHOW_SIGNS))
+	if (!HASBIT(_display_opt, DO_SHOW_SIGNS))
 		return;
 
 	left = dpi->left;
@@ -1007,7 +1007,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 	const Waypoint *wp;
 	int left, top, right, bottom;
 
-	if (!(_display_opt & DO_WAYPOINTS))
+	if (!HASBIT(_display_opt, DO_WAYPOINTS))
 		return;
 
 	left = dpi->left;
@@ -1487,7 +1487,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 {
 	const Town *t;
 
-	if (!(_display_opt & DO_SHOW_TOWN_NAMES)) return false;
+	if (!HASBIT(_display_opt, DO_SHOW_TOWN_NAMES)) return false;
 
 	switch (vp->zoom) {
 		case 0:
@@ -1541,7 +1541,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 {
 	const Station *st;
 
-	if (!(_display_opt & DO_SHOW_STATION_NAMES)) return false;
+	if (!HASBIT(_display_opt, DO_SHOW_STATION_NAMES)) return false;
 
 	switch (vp->zoom) {
 		case 0:
@@ -1595,7 +1595,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 {
 	const Sign *si;
 
-	if (!(_display_opt & DO_SHOW_SIGNS) || _current_player == PLAYER_SPECTATOR) return false;
+	if (!HASBIT(_display_opt, DO_SHOW_SIGNS) || _current_player == PLAYER_SPECTATOR) return false;
 
 	switch (vp->zoom) {
 		case 0:
@@ -1649,7 +1649,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 {
 	const Waypoint *wp;
 
-	if (!(_display_opt & DO_WAYPOINTS)) return false;
+	if (!HASBIT(_display_opt, DO_WAYPOINTS)) return false;
 
 	switch (vp->zoom) {
 		case 0:
