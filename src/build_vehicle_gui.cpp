@@ -379,7 +379,7 @@ static const StringID _sort_listing[][10] = {{
 static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
 	/* Purchase cost */
-	SetDParam(0, (rvi->base_cost * _price.build_railwagon) >> 8);
+	SetDParam(0, (GetEngineProperty(engine_number, 0x17, rvi->base_cost) * _price.build_railwagon) >> 8);
 	DrawString(x, y, STR_PURCHASE_INFO_COST, 0);
 	y += 10;
 
@@ -404,7 +404,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
 
 	/* Purchase Cost - Engine weight */
-	SetDParam(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);
+	SetDParam(0, GetEngineProperty(engine_number, 0x17, rvi->base_cost) * (_price.build_railvehicle >> 3) >> 5);
 	SetDParam(1, rvi->weight << multihead);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_WEIGHT, 0);
 	y += 10;
@@ -444,7 +444,7 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 	bool refittable = (_engine_info[engine_number].refit_mask != 0);
 
 	/* Purchase cost - Max speed */
-	SetDParam(0, rvi->base_cost * (_price.roadveh_base >> 3) >> 5);
+	SetDParam(0, GetEngineProperty(engine_number, 0x11, rvi->base_cost) * (_price.roadveh_base >> 3) >> 5);
 	SetDParam(1, rvi->max_speed * 10 / 32);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
@@ -468,7 +468,7 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const ShipVehicleInfo *svi)
 {
 	/* Purchase cost - Max speed */
-	SetDParam(0, svi->base_cost * (_price.ship_base >> 3) >> 5);
+	SetDParam(0, GetEngineProperty(engine_number, 0x0A, svi->base_cost) * (_price.ship_base >> 3) >> 5);
 	SetDParam(1, svi->max_speed * 10 / 32);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
@@ -494,7 +494,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 	CargoID cargo;
 
 	/* Purchase cost - Max speed */
-	SetDParam(0, avi->base_cost * (_price.aircraft_base >> 3) >> 5);
+	SetDParam(0, GetEngineProperty(engine_number, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5);
 	SetDParam(1, avi->max_speed * 10 / 16);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;

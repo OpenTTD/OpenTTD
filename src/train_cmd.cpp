@@ -566,7 +566,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
-	int32 value = (rvi->base_cost * _price.build_railwagon) >> 8;
+	int32 value = (GetEngineProperty(engine, 0x17, rvi->base_cost) * _price.build_railwagon) >> 8;
 
 	uint num_vehicles = 1 + CountArticulatedParts(engine);
 
@@ -666,9 +666,9 @@ static void NormalizeTrainVehInDepot(const Vehicle* u)
 	}
 }
 
-static int32 EstimateTrainCost(const RailVehicleInfo* rvi)
+static int32 EstimateTrainCost(EngineID engine, const RailVehicleInfo* rvi)
 {
-	return rvi->base_cost * (_price.build_railvehicle >> 3) >> 5;
+	return GetEngineProperty(engine, 0x17, rvi->base_cost) * (_price.build_railvehicle >> 3) >> 5;
 }
 
 static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool building)
@@ -728,7 +728,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
-	int32 value = EstimateTrainCost(rvi);
+	int32 value = EstimateTrainCost(p1, rvi);
 
 	uint num_vehicles =
 		(rvi->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) +

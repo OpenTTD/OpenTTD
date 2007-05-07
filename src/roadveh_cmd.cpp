@@ -117,7 +117,7 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 
 static int32 EstimateRoadVehCost(EngineID engine_type)
 {
-	return ((_price.roadveh_base >> 3) * RoadVehInfo(engine_type)->base_cost) >> 5;
+	return ((_price.roadveh_base >> 3) * GetEngineProperty(engine_type, 0x11, RoadVehInfo(engine_type)->base_cost)) >> 5;
 }
 
 /** Build a road vehicle.

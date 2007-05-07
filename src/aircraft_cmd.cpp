@@ -227,9 +227,9 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 	height = spr->height;
 }
 
-static int32 EstimateAircraftCost(const AircraftVehicleInfo *avi)
+static int32 EstimateAircraftCost(EngineID engine, const AircraftVehicleInfo *avi)
 {
-	return avi->base_cost * (_price.aircraft_base >> 3) >> 5;
+	return GetEngineProperty(engine, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5;
 }
 
 
@@ -270,7 +270,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_player)) return_cmd_error(STR_AIRCRAFT_NOT_AVAILABLE);
 
 	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
-	int32 value = EstimateAircraftCost(avi);
+	int32 value = EstimateAircraftCost(p1, avi);
 
 	/* to just query the cost, it is not neccessary to have a valid tile (automation/AI) */
 	if (flags & DC_QUERY_COST) return value;
