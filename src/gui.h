@@ -75,6 +75,7 @@ enum { // max 32 - 4 = 28 types
 	GUI_PlaceProc_WaterArea       = 3 << 4,
 	GUI_PlaceProc_ConvertRailArea = 4 << 4,
 	GUI_PlaceProc_RockyArea       = 5 << 4,
+	GUI_PlaceProc_RemoveFromStation = 6 << 4,
 };
 
 /* misc_gui.cpp */

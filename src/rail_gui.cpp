@@ -151,7 +151,7 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void PlaceRail_Station(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
+		VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_RemoveFromStation);
 	} else if (_railstation.dragdrop) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED);
 		VpSetPlaceSizingLimit(_patches.station_spread);
@@ -514,8 +514,13 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 			} else if ((e->we.place.userdata & 0xF) == VPM_X_AND_Y) {
 				if (GUIPlaceProcDragXY(e)) break;
 
-				if ((e->we.place.userdata >> 4) == GUI_PlaceProc_ConvertRailArea >> 4)
+				if ((e->we.place.userdata >> 4) == GUI_PlaceProc_RemoveFromStation >> 4) {
+					DoCommandP(end_tile, start_tile, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
+				}
+
+				if ((e->we.place.userdata >> 4) == GUI_PlaceProc_ConvertRailArea >> 4) {
 					DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
+				}
 			} else if (e->we.place.userdata == VPM_X_AND_Y_LIMITED) {
 				HandleStationPlacement(start_tile, end_tile);
 			} else {

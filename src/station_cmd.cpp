@@ -1025,43 +1025,77 @@ restart:
  * This allows for custom-built station with holes and weird layouts
  * @param tile tile of station piece to remove
  * @param flags operation to perform
- * @param p1 unused
+ * @param p1 start_tile
  * @param p2 unused
  */
 int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
+	TileIndex start = p1 == 0 ? tile : p1;
+
+	/* Count of the number of tiles removed */
+	int quantity = 0;
+
+	if (tile >= MapSize() || start >= MapSize()) return CMD_ERROR;
+
+	/* make sure sx,sy are smaller than ex,ey */
+	int ex = TileX(tile);
+	int ey = TileY(tile);
+	int sx = TileX(start);
+	int sy = TileY(start);
+	if (ex < sx) Swap(ex, sx);
+	if (ey < sy) Swap(ey, sy);
+	tile = TileXY(sx, sy);
+
+	int size_x = ex - sx + 1;
+	int size_y = ey - sy + 1;
+
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	// make sure the specified tile belongs to the current player, and that it is a railroad station.
-	if (!IsTileType(tile, MP_STATION) || !IsRailwayStation(tile) || !_patches.nonuniform_stations) return CMD_ERROR;
-	Station *st = GetStationByTile(tile);
-	if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile))) return CMD_ERROR;
-
-	// if we reached here, it means we can actually delete it. do that.
-	if (flags & DC_EXEC) {
-		uint specindex = GetCustomStationSpecIndex(tile);
-		Track track = GetRailStationTrack(tile);
-		DoClearSquare(tile);
-		st->rect.AfterRemoveTile(st, tile);
-		SetSignalsOnBothDir(tile, track);
-		YapfNotifyTrackLayoutChange(tile, track);
-
-		DeallocateSpecFromStation(st, specindex);
-
-		// now we need to make the "spanned" area of the railway station smaller if we deleted something at the edges.
-		// we also need to adjust train_tile.
-		MakeRailwayStationAreaSmaller(st);
-		st->MarkTilesDirty();
-		UpdateStationSignCoord(st);
-
-		// if we deleted the whole station, delete the train facility.
-		if (st->train_tile == 0) {
-			st->facilities &= ~FACIL_TRAIN;
-			UpdateStationVirtCoordDirty(st);
-			DeleteStationIfEmpty(st);
+	/* Do the action for every tile into the area */
+	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
+		/* Make sure the specified tile belongs to the current player, and that it is a railroad station. */
+		if (!IsTileType(tile2, MP_STATION) || !IsRailwayStation(tile2) || !_patches.nonuniform_stations) {
+			continue;
 		}
-	}
-	return _price.remove_rail_station;
+
+		/* Check ownership of station */
+		Station *st = GetStationByTile(tile2);
+		if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile2))) {
+			continue;
+		}
+
+		/* If we reached here, the tile is valid so increase the quantity of tiles we will remove */
+		quantity++;
+
+		if (flags & DC_EXEC) {
+			uint specindex = GetCustomStationSpecIndex(tile2);
+			Track track = GetRailStationTrack(tile2);
+			DoClearSquare(tile2);
+			st->rect.AfterRemoveTile(st, tile2);
+			SetSignalsOnBothDir(tile2, track);
+			YapfNotifyTrackLayoutChange(tile2, track);
+
+			DeallocateSpecFromStation(st, specindex);
+
+			// now we need to make the "spanned" area of the railway station smaller if we deleted something at the edges.
+			// we also need to adjust train_tile.
+			MakeRailwayStationAreaSmaller(st);
+			st->MarkTilesDirty();
+			UpdateStationSignCoord(st);
+
+			// if we deleted the whole station, delete the train facility.
+			if (st->train_tile == 0) {
+				st->facilities &= ~FACIL_TRAIN;
+				UpdateStationVirtCoordDirty(st);
+				DeleteStationIfEmpty(st);
+			}
+		}
+	} END_TILE_LOOP(tile2, size_x, size_y, tile)
+
+	/* If we've not removed any tiles, give an error */
+	if (quantity == 0) return CMD_ERROR;
+
+	return _price.remove_rail_station * quantity;
 }
 
 
