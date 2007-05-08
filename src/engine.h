@@ -22,8 +22,6 @@ enum EngineClass {
 	EC_ELECTRIC,
 	EC_MONORAIL,
 	EC_MAGLEV,
-
-	EC_INVALID
 };
 
 struct RailVehicleInfo {
