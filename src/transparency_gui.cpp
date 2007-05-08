@@ -64,7 +64,7 @@ static const Widget _transparency_widgets[] = {
 
 /* transparency widgets:
  * transparent signs, trees, houses, industries, player's buildings, bridges and unmovable structures */
-{   WWT_IMGBTN,   RESIZE_NONE,  7,   0,  21,  14,  35, SPR_IMG_PLACE_SIGN,   STR_TRANSPARENT_SIGNS_DESC},
+{   WWT_IMGBTN,   RESIZE_NONE,  7,   0,  21,  14,  35, SPR_IMG_SIGN,         STR_TRANSPARENT_SIGNS_DESC},
 {   WWT_IMGBTN,   RESIZE_NONE,  7,  22,  43,  14,  35, SPR_IMG_PLANTTREES,   STR_TRANSPARENT_TREES_DESC},
 {   WWT_IMGBTN,   RESIZE_NONE,  7,  44,  65,  14,  35, SPR_IMG_TOWN,         STR_TRANSPARENT_HOUSES_DESC},
 {   WWT_IMGBTN,   RESIZE_NONE,  7,  66,  87,  14,  35, SPR_IMG_INDUSTRY,     STR_TRANSPARENT_INDUSTRIES_DESC},
