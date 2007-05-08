@@ -1509,9 +1509,10 @@ void VehiclePayment(Vehicle *front_v)
 					v->cargo_days,
 					v->cargo_type);
 
-				ge->feeder_profit        += v->cargo_feeder_share; // transfer cargo transfer fees to station
-				total_cargo_feeder_share -= v->cargo_feeder_share; // accumulate deduction of feeder shares
-				v->cargo_feeder_share     = 0;                     // clear transfer cost
+				front_v->profit_this_year += virtual_profit;
+				ge->feeder_profit         += v->cargo_feeder_share + virtual_profit; // transfer cargo transfer fees to station
+				total_cargo_feeder_share  -= v->cargo_feeder_share; // accumulate deduction of feeder shares
+				v->cargo_feeder_share      = 0;                     // clear transfer cost
 
 				/* keep total of cargo unloaded (pending) for accurate cargoshare calculation on load */
 				SB(ge->unload_pending, 0, 12, GB(ge->unload_pending, 0, 12) + v->cargo_count);
