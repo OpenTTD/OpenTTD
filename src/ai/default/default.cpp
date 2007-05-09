@@ -1792,17 +1792,15 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 					p->ai.state_mode = -p->ai.state_mode;
 				}
 			} else if (CheckPlayerHasMoney(cost)) {
-				int32 r;
 				// player has money, build it.
 				aib->cur_building_rule = rule;
 
-				r = AiDoBuildDefaultRailTrack(
+				AiDoBuildDefaultRailTrack(
 					aib->use_tile,
 					_default_rail_track_data[rule]->data,
 					p->ai.railtype_to_use,
 					DC_EXEC | DC_NO_TOWN_RATING
 				);
-				assert(!CmdFailed(r));
 			}
 		} while (++aib, --j);
 	}
