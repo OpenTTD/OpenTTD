@@ -63,22 +63,22 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	memcpy(wo->train_id, train_id, trains);
 }
 
-static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, byte overriding_engine)
+const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, byte overriding_engine)
 {
 	const WagonOverrides *wos = &_engine_wagon_overrides[engine];
-	int i;
 
 	/* XXX: This could turn out to be a timesink on profiles. We could
 	 * always just dedicate 65535 bytes for an [engine][train] trampoline
 	 * for O(1). Or O(logMlogN) and searching binary tree or smt. like
 	 * that. --pasky */
 
-	for (i = 0; i < wos->overrides_count; i++) {
+	for (int i = 0; i < wos->overrides_count; i++) {
 		const WagonOverride *wo = &wos->overrides[i];
-		int j;
 
-		for (j = 0; j < wo->trains; j++) {
-			if (wo->train_id[j] == overriding_engine && (wo->cargo == cargo || wo->cargo == CT_DEFAULT)) return wo->group;
+		if (wo->cargo != cargo && wo->cargo != CT_DEFAULT) continue;
+
+		for (int j = 0; j < wo->trains; j++) {
+			if (wo->train_id[j] == overriding_engine) return wo->group;
 		}
 	}
 	return NULL;
@@ -850,8 +850,7 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 		cargo = v->cargo_type;
 
 		if (v->type == VEH_TRAIN) {
-			group = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
-
+			group = v->u.rail.cached_override;
 			if (group != NULL) return group;
 		}
 	}
@@ -912,7 +911,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
 bool UsesWagonOverride(const Vehicle* v)
 {
 	assert(v->type == VEH_TRAIN);
-	return GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, v->u.rail.first_engine) != NULL;
+	return v->u.rail.cached_override != NULL;
 }
 
 /**

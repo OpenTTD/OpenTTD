@@ -141,6 +141,9 @@ struct VehicleRail {
 
 	/* Link between the two ends of a multiheaded engine */
 	Vehicle *other_multiheaded_part;
+
+	/* Cached wagon override spritegroup */
+	const struct SpriteGroup *cached_override;
 };
 
 enum {
