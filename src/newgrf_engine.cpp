@@ -246,7 +246,7 @@ static byte MapAircraftMovementState(const Vehicle *v)
 {
 	const Station *st = GetStation(v->u.air.targetairport);
 	const AirportFTAClass *afc = st->Airport();
-	byte amdflag = afc->MovingData(v->u.air.pos)->flag;
+	uint16 amdflag = afc->MovingData(v->u.air.pos)->flag;
 
 	switch (v->u.air.state) {
 		case HANGAR:
@@ -313,7 +313,7 @@ static byte MapAircraftMovementState(const Vehicle *v)
 			}
 
 		case FLYING:
-			return AMS_TTDP_FLIGHT_TO_TOWER;
+			return amdflag & AMED_HOLD ? AMS_TTDP_FLIGHT_APPROACH : AMS_TTDP_FLIGHT_TO_TOWER;
 
 		case LANDING: // Descent
 			return AMS_TTDP_FLIGHT_DESCENT;
