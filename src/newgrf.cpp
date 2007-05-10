@@ -531,6 +531,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT rvi[i].user_def_data = grf_load_byte(&buf);
 			break;
 
+		case 0x26: // Retire vehicle early
+			FOR_EACH_OBJECT ei[i].retire_early = grf_load_byte(&buf);
+			break;
+
 		case 0x27: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
@@ -553,7 +557,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		/* @todo air drag and retire vehicle early
 		 * Fall-through for unimplemented one byte long properties. */
 		case 0x20: // Air drag
-		case 0x26: // Retire vehicle early
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
 			break;
@@ -650,6 +653,10 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
 			break;
 
+		case 0x1B: // Retire vehicle early
+			FOR_EACH_OBJECT ei[i].retire_early = grf_load_byte(&buf);
+			break;
+
 		case 0x1C: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
@@ -671,7 +678,6 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 		case 0x18: // Tractive effort
 		case 0x19: // Air drag
-		case 0x1B: // Retire vehicle early
 			/* @todo */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
@@ -758,6 +764,10 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
 			break;
 
+		case 0x16: // Retire vehicle early
+			FOR_EACH_OBJECT ei[i].retire_early = grf_load_byte(&buf);
+			break;
+
 		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
@@ -779,7 +789,6 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 		case 0x14: // Ocean speed fraction
 		case 0x15: // Canal speed fraction
-		case 0x16: // Retire vehicle early
 			/* @todo */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
 			ret = true;
@@ -871,6 +880,10 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
 			break;
 
+		case 0x16: // Retire vehicle early
+			FOR_EACH_OBJECT ei[i].retire_early = grf_load_byte(&buf);
+			break;
+
 		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
@@ -888,12 +901,6 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 		case 0x1A: // Long format introduction date (days since year 0)
 			FOR_EACH_OBJECT ei[i].base_intro = grf_load_dword(&buf);
-			break;
-
-		case 0x16: // Retire vehicle early
-			/* @todo */
-			FOR_EACH_OBJECT grf_load_byte(&buf);
-			ret = true;
 			break;
 
 		default:

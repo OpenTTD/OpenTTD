@@ -70,6 +70,16 @@ static void CalcEngineReliability(Engine *e)
 {
 	uint age = e->age;
 
+	/* Check for early retirement */
+	if (e->player_avail != 0 && !_patches.never_expire_vehicles) {
+		uint retire_early = EngInfo(e - _engines)->retire_early;
+		if (retire_early > 0 && age >= e->duration_phase_1 + e->duration_phase_2 - retire_early * 12) {
+			/* Early retirement is enabled and we're past the date... */
+			e->player_avail = 0;
+			AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
+		}
+	}
+
 	if (age < e->duration_phase_1) {
 		uint start = e->reliability_start;
 		e->reliability = age * (e->reliability_max - start) / e->duration_phase_1 + start;

@@ -105,6 +105,7 @@ struct EngineInfo {
 	byte refit_cost;
 	byte misc_flags;
 	byte callbackmask;
+	byte retire_early; ///< Number of years early to retire vehicle
 };
 
 struct Engine {

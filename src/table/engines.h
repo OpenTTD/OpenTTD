@@ -19,7 +19,7 @@
  * @note the 0x80 in parameter b sets the "is carriage bit"
  * @note the 5 between d and e is the load amount
  */
-#define MK(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, e, 0, 8, 0, 0 }
+#define MK(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, e, 0, 8, 0, 0, 0 }
 
 /** Writes the properties of a train carriage into the EngineInfo struct.
  * @param a Introduction date
@@ -30,7 +30,7 @@
  * @see MK
  * @note the 5 between d and e is the load amount
  */
-#define MW(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b | 0x80, 5, e, 0, 8, 0, 0 }
+#define MW(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b | 0x80, 5, e, 0, 8, 0, 0, 0 }
 
 /** Writes the properties of a ship into the EngineInfo struct.
  * @param a Introduction date
@@ -41,7 +41,7 @@
  * @see MK
  * @note the 10 between d and e is the load amount
  */
-#define MS(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, e, 0, 8, 0, 0 }
+#define MS(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, e, 0, 8, 0, 0, 0 }
 
 /** Writes the properties of an aeroplane into the EngineInfo struct.
  * @param a Introduction date
@@ -52,7 +52,7 @@
  * @see MK
  * @note the 20 between d and e is the load amount
  */
-#define MA(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, 0, 8, 0, 0 }
+#define MA(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, 0, 8, 0, 0, 0 }
 
 // Climates
 // T = Temperate
