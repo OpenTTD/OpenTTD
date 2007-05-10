@@ -1429,6 +1429,10 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 			}
 			break;
 
+		case 0x1F: // Minimum life span
+			FOR_EACH_OBJECT housespec[i]->minimum_life = grf_load_byte(&buf);
+			break;
+
 		default:
 			ret = true;
 			break;

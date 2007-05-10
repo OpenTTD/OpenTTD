@@ -424,6 +424,7 @@ static void TileLoop_Town(TileIndex tile)
 	if (hs->building_flags & BUILDING_HAS_1_TILE &&
 			HASBIT(t->flags12, TOWN_IS_FUNDED) &&
 			CanDeleteHouse(tile) &&
+			max(_cur_year - GetHouseConstructionYear(tile), 0) >= hs->minimum_life &&
 			--t->time_until_rebuild == 0) {
 		t->time_until_rebuild = GB(r, 16, 8) + 192;
 

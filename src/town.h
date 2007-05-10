@@ -164,10 +164,10 @@ struct HouseSpec {
 	CargoID accepts_cargo[3];          ///< 3 input cargo slots
 	BuildingFlags building_flags;      ///< some flags that describe the house (size, stadium etc...)
 	HouseZones building_availability;  ///< where can it be built (climates, zones)
-	bool enabled;                      ///< the house is still avaible (by default, true.newgrf can disable it, though)
+	bool enabled;                      ///< the house is available to build (true by default, but can be disabled by newgrf)
 
 	/* NewHouses properties */
-	HouseID substitute_id;             ///< which house this one is based on
+	HouseID substitute_id;             ///< which original house this one is based on
 	struct SpriteGroup *spritegroup;   ///< pointer to the different sprites of the house
 	HouseID override;                  ///< which house this one replaces
 	uint16 callback_mask;              ///< House callback flags
@@ -178,6 +178,7 @@ struct HouseSpec {
 	byte animation_frames;             ///< number of animation frames
 	byte animation_speed;              ///< amount of time between each of those frames
 	byte processing_time;              ///< Periodic refresh multiplier
+	byte minimum_life;                 ///< The minimum number of years this house will survive before the town rebuilds it
 
 	/* grf file related properties*/
 	uint8 local_id;                    ///< id defined by the grf file for this house
