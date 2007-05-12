@@ -1557,11 +1557,9 @@ bool LoadUnloadVehicle(Vehicle *v)
 	int unloading_time = 20;
 	Vehicle *u = v;
 	int result = 0;
-	int t;
-	uint count, cap;
+	uint cap;
 
 	bool completely_empty = true;
-	byte load_amount;
 	bool anything_loaded = false;
 	int total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
 
@@ -1579,83 +1577,82 @@ bool LoadUnloadVehicle(Vehicle *v)
 	Station *st = GetStation(last_visited);
 
 	for (; v != NULL; v = v->next) {
-		GoodsEntry* ge;
-		load_amount = EngInfo(v->engine_type)->load_amount;
+		if (v->cargo_cap == 0) continue;
+
+		byte load_amount = EngInfo(v->engine_type)->load_amount;
 		if (_patches.gradual_loading && HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_LOAD_AMOUNT)) {
 			uint16 cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
 			if (cb_load_amount != CALLBACK_FAILED) load_amount = cb_load_amount & 0xFF;
 		}
 
-		if (v->cargo_cap == 0) continue;
+		GoodsEntry *ge = &st->goods[v->cargo_type];
+		uint count = GB(ge->waiting_acceptance, 0, 12);
 
-		ge = &st->goods[v->cargo_type];
-		count = GB(ge->waiting_acceptance, 0, 12);
-
-		/* unload? */
-		if (v->cargo_count != 0 && HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING)) {
+		if (HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING)) {
 			uint16 amount_unloaded = _patches.gradual_loading ? min(v->cargo_count, load_amount) : v->cargo_count;
 
 			CLRBIT(u->vehicle_flags, VF_LOADING_FINISHED);
 
 			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000 && !(u->current_order.flags & OF_TRANSFER)) {
-				/* deliver goods to the station */
-				st->time_since_unload = 0;
-
-				unloading_time += v->cargo_count; // TTDBUG: bug in original TTD
-
 				result |= 1;
-				v->cargo_count -= amount_unloaded;
-				v->cargo_paid_for -= min(amount_unloaded, v->cargo_paid_for);
-				if (_patches.gradual_loading) continue;
-
 			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
-				/* unload goods and let it wait at the station */
-				st->time_since_unload = 0;
-
-				unloading_time += v->cargo_count;
-				t = GB(ge->waiting_acceptance, 0, 12);
-				if (t == 0) {
+				if (count == 0) {
 					/* No goods waiting at station */
-					ge->enroute_time = v->cargo_days;
-					ge->enroute_from = v->cargo_source;
+					ge->enroute_time    = v->cargo_days;
+					ge->enroute_from    = v->cargo_source;
 					ge->enroute_from_xy = v->cargo_source_xy;
 				} else {
 					/* Goods already waiting at station. Set counters to the worst value. */
 					if (v->cargo_days >= ge->enroute_time) ge->enroute_time = v->cargo_days;
 
 					if (last_visited != ge->enroute_from) {
-						ge->enroute_from = v->cargo_source;
+						ge->enroute_from    = v->cargo_source;
 						ge->enroute_from_xy = v->cargo_source_xy;
 					}
 				}
-				/* Update amount of waiting cargo */
-				SB(ge->waiting_acceptance, 0, 12, min(amount_unloaded + t, 0xFFF));
+				/* Update amount of waiting cargo. There is, however, no sense in
+				 * updating the count variable because this vehicle will not be
+				 * able to take the cargo. */
+				SB(ge->waiting_acceptance, 0, 12, min(amount_unloaded + count, 0xFFF));
 
 				/* if there is not enough to unload from pending, ensure it does not go -ve
 				 * else deduct amount actually unloaded from unload_pending */
 				SB(ge->unload_pending, 0, 12, max(GB(ge->unload_pending, 0, 12) - amount_unloaded, 0U));
 
 				result |= 2;
-				v->cargo_count -= amount_unloaded;
-				v->cargo_paid_for -= min(amount_unloaded, v->cargo_paid_for);
-				if (_patches.gradual_loading) continue;
+			} else {
+				/* The order changed while unloading (unset unload/transfer) or the
+				 * station does not accept goods anymore. */
+				CLRBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+				continue;
 			}
 
-			if (v->cargo_count != 0) completely_empty = false;
-		}
+			/* Deliver goods to the station */
+			st->time_since_unload = 0;
 
-		/* The vehicle must have been unloaded because it is either empty, or
-		 * the UNLOADING bit is already clear in v->vehicle_flags. */
-		CLRBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+			unloading_time += amount_unloaded;
+
+			v->cargo_count -= amount_unloaded;
+			v->cargo_paid_for -= min(amount_unloaded, v->cargo_paid_for);
+
+			if (_patches.gradual_loading && v->cargo_count != 0) {
+				completely_empty = false;
+			} else {
+				/* We have finished unloading (cargo count == 0) */
+				CLRBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+			}
+
+			continue;
+		}
 
 		/* We cannot have paid for more cargo than there is on board. */
 		assert(v->cargo_paid_for <= v->cargo_count);
 
-		/* don't pick up goods that we unloaded */
+		/* Do not pick up goods that we unloaded */
 		if (u->current_order.flags & OF_UNLOAD) continue;
 
 		/* update stats */
-		ge->days_since_pickup = 0;
+		int t;
 		switch (u->type) {
 			case VEH_TRAIN: t = u->u.rail.cached_max_speed; break;
 			case VEH_ROAD:  t = u->max_speed / 2;           break;
@@ -1663,6 +1660,7 @@ bool LoadUnloadVehicle(Vehicle *v)
 		}
 
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
+		ge->days_since_pickup = 0;
 		ge->last_speed = min(t, 255);
 		ge->last_age = _cur_year - v->build_year;
 
