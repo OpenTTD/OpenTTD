@@ -220,6 +220,8 @@ void TrainConsistChanged(Vehicle* v)
 			}
 		}
 
+		u->cargo_cap = GetVehicleProperty(u, 0x14, rvi_u->capacity);
+
 		/* check the vehicle length (callback) */
 		uint16 veh_len = CALLBACK_FAILED;
 		if (HASBIT(EngInfo(u->engine_type)->callbackmask, CBM_VEHICLE_LENGTH)) {

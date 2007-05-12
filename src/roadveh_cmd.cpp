@@ -211,6 +211,8 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
+		v->cargo_cap = GetVehicleProperty(v, 0x0F, rvi->capacity);
+
 		VehiclePositionChanged(v);
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -1849,7 +1851,7 @@ int32 CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		 * carry twice as much mail/goods as normal cargo, and four times as
 		 * many passengers
 		 */
-		capacity = rvi->capacity;
+		capacity = GetVehicleProperty(v, 0x0F, rvi->capacity);
 		switch (old_cid) {
 			case CT_PASSENGERS: break;
 			case CT_MAIL:

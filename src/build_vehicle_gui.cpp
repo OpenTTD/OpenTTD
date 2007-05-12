@@ -386,7 +386,7 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 	/* Wagon weight - (including cargo) */
 	uint weight = GetEngineProperty(engine_number, 0x16, rvi->weight);
 	SetDParam(0, weight);
-	SetDParam(1, (GetCargo(rvi->cargo_type)->weight * rvi->capacity >> 4) + weight);
+	SetDParam(1, (GetCargo(rvi->cargo_type)->weight * GetEngineProperty(engine_number, 0x14, rvi->capacity) >> 4) + weight);
 	DrawString(x, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT, 0);
 	y += 10;
 
@@ -461,7 +461,7 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 
 	/* Cargo type + capacity */
 	SetDParam(0, rvi->cargo_type);
-	SetDParam(1, rvi->capacity);
+	SetDParam(1, GetEngineProperty(engine_number, 0x0F, rvi->capacity));
 	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
 	y += 10;
@@ -480,7 +480,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 
 	/* Cargo type + capacity */
 	SetDParam(0, svi->cargo_type);
-	SetDParam(1, svi->capacity);
+	SetDParam(1, GetEngineProperty(engine_number, 0x0D, svi->capacity));
 	SetDParam(2, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
 	y += 10;
@@ -545,8 +545,9 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	switch (e->type) {
 		case VEH_TRAIN: {
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
+			uint capacity = GetEngineProperty(engine_number, 0x14, rvi->capacity);
 
-			refitable = (EngInfo(engine_number)->refit_mask != 0) && (rvi->capacity > 0);
+			refitable = (EngInfo(engine_number)->refit_mask != 0) && (capacity > 0);
 
 			if (rvi->railveh_type == RAILVEH_WAGON) {
 				y = DrawRailWagonPurchaseInfo(x, y, engine_number, rvi);
@@ -562,7 +563,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 				int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
 
 				SetDParam(0, rvi->cargo_type);
-				SetDParam(1, (rvi->capacity * (CountArticulatedParts(engine_number) + 1)) << multihead);
+				SetDParam(1, (capacity * (CountArticulatedParts(engine_number) + 1)) << multihead);
 				SetDParam(2, refitable ? STR_9842_REFITTABLE : STR_EMPTY);
 			}
 			DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);

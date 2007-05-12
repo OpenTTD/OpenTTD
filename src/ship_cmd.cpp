@@ -878,6 +878,8 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
+		v->cargo_cap = GetVehicleProperty(v, 0x0D, svi->capacity);
+
 		VehiclePositionChanged(v);
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -1090,7 +1092,7 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (capacity == CALLBACK_FAILED) {
-		capacity = ShipVehInfo(v->engine_type)->capacity;
+		capacity = GetVehicleProperty(v, 0x0D, ShipVehInfo(v->engine_type)->capacity);
 	}
 	_returned_refit_capacity = capacity;
 
