@@ -1178,7 +1178,7 @@ static bool GrowTown(Town *t)
 	/* Let the town be a ghost town
 	 * The player wanted it in such a way. Thus there he has it. ;)
 	 * Never reached in editor mode. */
-	if (_patches.town_layout == TL_NO_ROADS) {
+	if (_patches.town_layout == TL_NO_ROADS && _generating_world) {
 		return false;
 	}
 
