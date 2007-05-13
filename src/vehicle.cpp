@@ -2941,7 +2941,9 @@ void Vehicle::HandleLoading(bool mode)
 
 			/* Load/unload the vehicle; when it actually did something
 			 * we do not leave the station. */
-			if (LoadUnloadVehicle(this)) return;
+			LoadUnloadVehicle(this);
+
+			if (!HASBIT(this->vehicle_flags, VF_LOADING_FINISHED)) return;
 
 			this->PlayLeaveStationSound();
 
