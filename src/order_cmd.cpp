@@ -583,10 +583,12 @@ int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (v->type == VEH_ROAD) ClearSlot(v);
 
-		/* NON-stop flag is misused to see if a train is in a station that is
-		 * on his order list or not */
-		if (v->current_order.type == OT_LOADING && HASBIT(v->current_order.flags, OFB_NON_STOP))
-			v->current_order.flags = 0;
+		if (v->current_order.type == OT_LOADING) {
+			v->LeaveStation();
+			/* NON-stop flag is misused to see if a train is in a station that is
+			 * on his order list or not */
+			if (HASBIT(v->current_order.flags, OFB_NON_STOP)) v->current_order.flags = 0;
+		}
 
 		InvalidateVehicleOrder(v);
 	}
