@@ -1686,6 +1686,9 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 		return;
 	}
 
+	if (v->current_order.type == OT_LOADING) v->LeaveStation();
+	ClearSlot(v);
+
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;
 	v->current_order.dest = depot->index;
