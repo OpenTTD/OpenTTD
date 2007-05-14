@@ -890,6 +890,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 #endif /* UNICODE */
 
 #if defined(UNICODE)
+	/* Check if a win9x user started the win32 version */
+	if (HASBIT(GetVersion(), 31)) error("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
+
 	/* For UNICODE we need to convert the commandline to char* _AND_
 	 * save it because argv[] points into this buffer and thus needs to
 	 * be available between subsequent calls to FS2OTTD() */
