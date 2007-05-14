@@ -1323,61 +1323,6 @@ static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	return profit;
 }
 
-/*
- * Returns true if Vehicle v should wait loading because other vehicle is
- * already loading the same cargo type
- * v = vehicle to load, u = GetFirstInChain(v)
- */
-static bool LoadWait(const Vehicle* v, const Vehicle* u)
-{
-	const Vehicle *w;
-	bool has_any_cargo = false;
-
-	if (!(u->current_order.flags & OF_FULL_LOAD)) return false;
-
-	for (w = u; w != NULL; w = w->next) {
-		if (w->cargo_count != 0) {
-			if (v->cargo_type == w->cargo_type &&
-					u->last_station_visited == w->cargo_source) {
-				return false;
-			}
-			has_any_cargo = true;
-		}
-	}
-
-	const Station *st = GetStation(u->last_station_visited);
-	std::list<Vehicle *>::const_iterator iter;
-	for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
-		const Vehicle *x = *iter;
-		if (!(x->vehstatus & (VS_STOPPED | VS_CRASHED)) && u != x) {
-			bool other_has_any_cargo = false;
-			bool has_space_for_same_type = false;
-			bool other_has_same_type = false;
-
-			for (w = x; w != NULL; w = w->next) {
-				if (w->cargo_count < w->cargo_cap && v->cargo_type == w->cargo_type) {
-					has_space_for_same_type = true;
-				}
-
-				if (w->cargo_count != 0) {
-					if (v->cargo_type == w->cargo_type &&
-							u->last_station_visited == w->cargo_source) {
-						other_has_same_type = true;
-					}
-					other_has_any_cargo = true;
-				}
-			}
-
-			if (has_space_for_same_type) {
-				if (other_has_same_type) return true;
-				if (other_has_any_cargo && !has_any_cargo) return true;
-			}
-		}
-	}
-
-	return false;
-}
-
 /**
  * Performs the vehicle payment _and_ marks the vehicle to be unloaded.
  * @param front_v the vehicle to be unloaded
@@ -1481,13 +1426,25 @@ void VehiclePayment(Vehicle *front_v)
 /**
  * Loads/unload the vehicle if possible.
  * @param v the vehicle to be (un)loaded
+ * @param cargo_left the amount of each cargo type that is
+ *                   virtually left on the platform to be
+ *                   picked up by another vehicle when all
+ *                   previous vehicles have loaded.
  */
-static void LoadUnloadVehicle(Vehicle *v)
+static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 {
 	assert(v->current_order.type == OT_LOADING);
 
 	/* We have not waited enough time till the next round of loading/unloading */
-	if (--v->load_unload_time_rem != 0) return;
+	if (--v->load_unload_time_rem != 0) {
+		if (_patches.improved_load && HASBIT(v->current_order.flags, OFB_FULL_LOAD)) {
+			/* 'Reserve' this cargo for this vehicle, because we were first. */
+			for (; v != NULL; v = v->next) {
+				if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo_count;
+			}
+		}
+		return;
+	}
 
 	int unloading_time = 0;
 	Vehicle *u = v;
@@ -1598,14 +1555,22 @@ static void LoadUnloadVehicle(Vehicle *v)
 		if (count != 0 &&
 				(cap = v->cargo_cap - v->cargo_count) != 0) {
 
-			if (v->cargo_count == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
-
 			/* Skip loading this vehicle if another train/vehicle is already handling
 			 * the same cargo type at this station */
-			if (_patches.improved_load && (u->current_order.flags & OF_FULL_LOAD) && LoadWait(v,u)) {
+			if (_patches.improved_load && cargo_left[v->cargo_type] < 0) {
 				SETBIT(cargo_not_full, v->cargo_type);
 				continue;
 			}
+
+			if (cap > count) cap = count;
+			if (_patches.gradual_loading) cap = min(cap, load_amount);
+			if (_patches.improved_load) {
+				/* Don't load stuff that is already 'reserved' for other vehicles */
+				cap = min(cargo_left[v->cargo_type], cap);
+				cargo_left[v->cargo_type] -= cap;
+			}
+
+			if (v->cargo_count == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
 
 			/* TODO: Regarding this, when we do gradual loading, we
 			 * should first unload all vehicles and then start
@@ -1616,9 +1581,6 @@ static void LoadUnloadVehicle(Vehicle *v)
 			 * removed; that's how TTDPatch behaves too. --pasky */
 			completely_empty = false;
 			anything_loaded = true;
-
-			if (cap > count) cap = count;
-			if (_patches.gradual_loading) cap = min(cap, load_amount);
 
 			/* cargoshare is proportioned by the amount due to unload
 			 * Otherwise, with gradual loading, 100% of credits would be taken immediately,
@@ -1649,6 +1611,17 @@ static void LoadUnloadVehicle(Vehicle *v)
 			SETBIT(cargo_full, v->cargo_type);
 		} else {
 			SETBIT(cargo_not_full, v->cargo_type);
+		}
+	}
+
+	/* We update these variables here, so gradual loading still fills
+	 * all wagons at the same time instead of using the same 'improved'
+	 * loading algorithm for the wagons (only fill wagon when there is
+	 * enough to fill the previous wagons) */
+	if (_patches.improved_load && HASBIT(u->current_order.flags, OFB_FULL_LOAD)) {
+		/* Update left cargo */
+		for (v = u; v != NULL; v = v->next) {
+			if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo_count;
 		}
 	}
 
@@ -1716,10 +1689,14 @@ static void LoadUnloadVehicle(Vehicle *v)
  */
 void LoadUnloadStation(Station *st)
 {
+	int cargo_left[NUM_CARGO];
+
+	for (uint i = 0; i < NUM_CARGO; i++) cargo_left[i] = GB(st->goods[i].waiting_acceptance, 0, 12);
+
 	std::list<Vehicle *>::iterator iter;
 	for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
 		Vehicle *v = *iter;
-		if (!(v->vehstatus & (VS_STOPPED | VS_CRASHED))) LoadUnloadVehicle(v);
+		if (!(v->vehstatus & (VS_STOPPED | VS_CRASHED))) LoadUnloadVehicle(v, cargo_left);
 	}
 }
 
