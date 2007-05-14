@@ -671,7 +671,7 @@ static bool AllocateDibSection(int w, int h)
 
 	if (_wnd.double_size) {
 		w = ALIGN(w, 4);
-		_wnd.alloced_bits = _wnd.buffer_bits = (Pixel*)malloc(w * h);
+		_wnd.alloced_bits = _wnd.buffer_bits = (Pixel *)malloc(w * h * sizeof(Pixel));
 		w *= 2;
 		h *= 2;
 	}

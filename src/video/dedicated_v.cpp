@@ -112,7 +112,7 @@ static void CloseWindowsConsoleThread()
 #endif
 
 
-static void *_dedicated_video_mem;
+static Pixel *_dedicated_video_mem;
 
 extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
 extern void SwitchMode(int new_mode);
@@ -122,7 +122,7 @@ static const char *DedicatedVideoStart(const char * const *parm)
 {
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
-	_dedicated_video_mem = malloc(_cur_resolution[0]*_cur_resolution[1]);
+	_dedicated_video_mem = (Pixel *)malloc(_cur_resolution[0] * _cur_resolution[1] * sizeof(Pixel));
 
 	SetDebugString("net=6");
 
@@ -283,7 +283,7 @@ static void DedicatedVideoMainLoop()
 			next_tick = cur_ticks + 30;
 
 			GameLoop();
-			_screen.dst_ptr = (Pixel*)_dedicated_video_mem;
+			_screen.dst_ptr = _dedicated_video_mem;
 			UpdateWindows();
 		}
 		CSleep(1);

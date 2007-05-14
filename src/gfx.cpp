@@ -64,12 +64,12 @@ static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / 8];
 
 void memcpy_pitch(void *dst, void *src, int w, int h, int srcpitch, int dstpitch)
 {
-	byte *dstp = (byte*)dst;
-	byte *srcp = (byte*)src;
+	Pixel *dstp = (Pixel *)dst;
+	Pixel *srcp = (Pixel *)src;
 
 	assert(h >= 0);
 	for (; h != 0; --h) {
-		memcpy(dstp, srcp, w);
+		memcpy(dstp, srcp, w * sizeof(Pixel));
 		dstp += dstpitch;
 		srcp += srcpitch;
 	}
@@ -110,7 +110,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 		}
 
 		for (ht = height; ht > 0; --ht) {
-			memcpy(dst, src, width);
+			memcpy(dst, src, width * sizeof(Pixel));
 			src -= p;
 			dst -= p;
 		}
@@ -136,7 +136,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 		/* the y-displacement may be 0 therefore we have to use memmove,
 		 * because source and destination may overlap */
 		for (ht = height; ht > 0; --ht) {
-			memmove(dst, src, width);
+			memmove(dst, src, width * sizeof(Pixel));
 			src += p;
 			dst += p;
 		}
@@ -175,7 +175,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 	if (!HASBIT(color, PALETTE_MODIFIER_GREYOUT)) {
 		if (!HASBIT(color, USE_COLORTABLE)) {
 			do {
-				memset(dst, color, right);
+				memset(dst, color, right * sizeof(Pixel));
 				dst += dpi->pitch;
 			} while (--bottom);
 		} else {

@@ -449,7 +449,7 @@ void SetScreenshotFormat(int i)
 static void CurrentScreenCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n)
 {
 	for (; n > 0; --n) {
-		memcpy(buf, _screen.dst_ptr + y * _screen.pitch, _screen.width);
+		memcpy(buf, _screen.dst_ptr + y * _screen.pitch, _screen.width * sizeof(Pixel));
 		++y;
 		buf += pitch;
 	}

@@ -195,7 +195,7 @@ static bool CreateMainSurface(int w, int h)
 
 	_screen.width = newscreen->w;
 	_screen.height = newscreen->h;
-	_screen.pitch = newscreen->pitch;
+	_screen.pitch = newscreen->pitch / sizeof(Pixel);
 
 	_sdl_screen = newscreen;
 	InitPalette();
