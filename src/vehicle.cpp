@@ -659,8 +659,6 @@ static VehicleTickProc* _vehicle_tick_procs[] = {
 
 void CallVehicleTicks()
 {
-	Vehicle *v;
-
 #ifdef ENABLE_NETWORK
 	/* hotfix for desync problem:
 	 *  for MP games invalidate the YAPF cache every tick to keep it exactly the same on the server and all clients */
@@ -671,6 +669,10 @@ void CallVehicleTicks()
 
 	_first_veh_in_depot_list = NULL; // now we are sure it's initialized at the start of each tick
 
+	Station *st;
+	FOR_ALL_STATIONS(st) LoadUnloadStation(st);
+
+	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		_vehicle_tick_procs[v->type](v);
 
@@ -2933,17 +2935,8 @@ void Vehicle::HandleLoading(bool mode)
 {
 	switch (this->current_order.type) {
 		case OT_LOADING: {
-			/* Not the first call for this tick */
-			if (mode) return;
-
-			/* We have not waited enough time till the next round of loading/unloading */
-			if (--this->load_unload_time_rem) return;
-
-			/* Load/unload the vehicle; when it actually did something
-			 * we do not leave the station. */
-			LoadUnloadVehicle(this);
-
-			if (!HASBIT(this->vehicle_flags, VF_LOADING_FINISHED)) return;
+			/* Not the first call for this tick, or still loading */
+			if (mode || !HASBIT(this->vehicle_flags, VF_LOADING_FINISHED)) return;
 
 			this->PlayLeaveStationSound();
 

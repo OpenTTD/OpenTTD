@@ -69,5 +69,6 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount);
 
 void VehiclePayment(Vehicle *front_v);
+void LoadUnloadStation(Station *st);
 
 #endif /* ECONOMY_H */

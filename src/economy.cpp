@@ -1482,8 +1482,13 @@ void VehiclePayment(Vehicle *front_v)
  * Loads/unload the vehicle if possible.
  * @param v the vehicle to be (un)loaded
  */
-void LoadUnloadVehicle(Vehicle *v)
+static void LoadUnloadVehicle(Vehicle *v)
 {
+	assert(v->current_order.type == OT_LOADING);
+
+	/* We have not waited enough time till the next round of loading/unloading */
+	if (--v->load_unload_time_rem != 0) return;
+
 	int unloading_time = 0;
 	Vehicle *u = v;
 	int result = 0;
@@ -1495,8 +1500,6 @@ void LoadUnloadVehicle(Vehicle *v)
 	uint32 cargo_not_full  = 0;
 	uint32 cargo_full      = 0;
 	int total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
-
-	assert(v->current_order.type == OT_LOADING);
 
 	v->cur_speed = 0;
 
@@ -1703,6 +1706,20 @@ void LoadUnloadVehicle(Vehicle *v)
 		v->MarkDirty();
 
 		if (result & 2) InvalidateWindow(WC_STATION_VIEW, last_visited);
+	}
+}
+
+/**
+ * Load/unload the vehicles in this station according to the order
+ * they entered.
+ * @param st the station to do the loading/unloading for
+ */
+void LoadUnloadStation(Station *st)
+{
+	std::list<Vehicle *>::iterator iter;
+	for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
+		Vehicle *v = *iter;
+		if (!(v->vehstatus & (VS_STOPPED | VS_CRASHED))) LoadUnloadVehicle(v);
 	}
 }
 

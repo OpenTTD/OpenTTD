@@ -521,8 +521,6 @@ void ShowAircraftViewWindow(const Vehicle* v);
 
 UnitID GetFreeUnitNumber(byte type);
 
-void LoadUnloadVehicle(Vehicle *v);
-
 void TrainConsistChanged(Vehicle *v);
 void TrainPowerChanged(Vehicle *v);
 int32 GetTrainRunningCost(const Vehicle *v);
