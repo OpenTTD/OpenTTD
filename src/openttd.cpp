@@ -1934,6 +1934,10 @@ bool AfterLoadGame()
 					!(v->vehstatus & (VS_STOPPED | VS_CRASHED)) && // not stopped or crashed
 					v->current_order.type == OT_LOADING) {         // loading
 				GetStation(v->last_station_visited)->loading_vehicles.push_back(v);
+
+				/* The loading finished flag is *only* set when actually completely
+				 * finished. Because the vehicle is loading, it is not finished. */
+				CLRBIT(v->vehicle_flags, VF_LOADING_FINISHED);
 			}
 		}
 	}
