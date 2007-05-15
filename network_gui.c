@@ -1647,7 +1647,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		assert(WP(w, chatquerystr_d).caption < lengthof(chat_captions));
 		msg = chat_captions[WP(w, chatquerystr_d).caption];
 		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, msg, 16);
-		DrawEditBox(w, &WP(w, chatquerystr_d), 2);
+		DrawEditBox(w, &WP(w, querystr_d), 2);
 	} break;
 
 	case WE_CLICK:
@@ -1662,7 +1662,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		HandleEditBox(w, &WP(w, chatquerystr_d), 2);
+		HandleEditBox(w, &WP(w, querystr_d), 2);
 		break;
 
 	case WE_KEYPRESS:
@@ -1670,7 +1670,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 			ChatTabCompletion(w);
 		} else {
 			_chat_tab_completion_active = false;
-			switch (HandleEditBoxKey(w, &WP(w, chatquerystr_d), 2, e)) {
+			switch (HandleEditBoxKey(w, &WP(w, querystr_d), 2, e)) {
 				case 1: { /* Return */
 				DestType type = (DestType)WP(w, chatquerystr_d).caption;
 				int dest = WP(w, chatquerystr_d).dest;

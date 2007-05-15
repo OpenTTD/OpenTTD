@@ -803,7 +803,7 @@ static bool GrowTown(Town *t)
 	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 		/* Only work with plain land that not already has a house */
 		if (!IsTileType(tile, MP_HOUSE) && GetTileSlope(tile, NULL) == SLOPE_FLAT) {
-			if (!CmdFailed(DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) {
+			if (!CmdFailed(DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR))) {
 				DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 				_current_player = old_player;
 				return true;

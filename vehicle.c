@@ -2088,6 +2088,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			new_v->service_interval = old_v->service_interval;
 			new_front = true;
 			new_v->unitnumber = old_v->unitnumber; // use the same unit number
+			new_v->dest_tile  = old_v->dest_tile;
 
 			new_v->current_order = old_v->current_order;
 			if (old_v->type == VEH_Train && GetNextVehicle(old_v) != NULL){

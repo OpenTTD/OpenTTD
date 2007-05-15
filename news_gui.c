@@ -602,6 +602,7 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 	const char *ptr;
 	char *dest;
 	StringID str;
+	WChar c_last;
 
 	if (ni->display_mode == 3) {
 		str = _get_news_string_callback[ni->callback](ni);
@@ -615,15 +616,21 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 	 * from it such as big fonts, etc. */
 	ptr  = buffer;
 	dest = buffer2;
+	c_last = '\0';
 	for (;;) {
 		WChar c = Utf8Consume(&ptr);
 		if (c == 0) break;
-		if (c == '\r') {
+		/* Make a space from a newline, but ignore multiple newlines */
+		if (c == '\n' && c_last != '\n') {
+			dest[0] = ' ';
+			dest++;
+		} else if (c == '\r') {
 			dest[0] = dest[1] = dest[2] = dest[3] = ' ';
 			dest += 4;
 		} else if (IsPrintable(c)) {
 			dest += Utf8Encode(dest, c);
 		}
+		c_last = c;
 	}
 
 	*dest = '\0';

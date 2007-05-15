@@ -200,6 +200,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			break;
 		case 24: /* Change interface language */
 			ReadLanguagePack(e->we.dropdown.index);
+			UpdateAllStationVirtCoord();
 			MarkWholeScreenDirty();
 			break;
 		case 27: /* Change resolution */
