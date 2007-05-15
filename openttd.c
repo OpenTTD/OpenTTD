@@ -1242,8 +1242,8 @@ bool AfterLoadGame(void)
 	// If Load Scenario / New (Scenario) Game is used,
 	//  a player does not exist yet. So create one here.
 	// 1 exeption: network-games. Those can have 0 players
-	//   But this exeption is not true for network_servers!
-	if (!_players[0].is_active && (!_networking || (_networking && _network_server)))
+	//   But this exeption is not true for non dedicated network_servers! */
+	if (!_players[0].is_active && (!_networking || (_networking && _network_server && !_network_dedicated)))
 		DoStartupNewPlayer(false);
 
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status

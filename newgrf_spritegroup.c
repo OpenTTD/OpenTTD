@@ -118,10 +118,10 @@ static inline usize EvalAdjust_ ## size(const DeterministicSpriteGroupAdjust *ad
 		case DSGA_OP_SMAX: return max(last_value, value); \
 		case DSGA_OP_UMIN: return min((usize)last_value, (usize)value); \
 		case DSGA_OP_UMAX: return max((usize)last_value, (usize)value); \
-		case DSGA_OP_SDIV: return last_value / value; \
-		case DSGA_OP_SMOD: return last_value % value; \
-		case DSGA_OP_UDIV: return (usize)last_value / (usize)value; \
-		case DSGA_OP_UMOD: return (usize)last_value % (usize)value; \
+		case DSGA_OP_SDIV: return value == 0 ? last_value : last_value / value; \
+		case DSGA_OP_SMOD: return value == 0 ? last_value : last_value % value; \
+		case DSGA_OP_UDIV: return value == 0 ? (usize)last_value : (usize)last_value / (usize)value; \
+		case DSGA_OP_UMOD: return value == 0 ? (usize)last_value : (usize)last_value % (usize)value; \
 		case DSGA_OP_MUL:  return last_value * value; \
 		case DSGA_OP_AND:  return last_value & value; \
 		case DSGA_OP_OR:   return last_value | value; \

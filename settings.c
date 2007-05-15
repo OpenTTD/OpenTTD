@@ -989,7 +989,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 #define SDTG_CONDOMANY(name, type, flags, guiflags, var, def, max, full, str, proc, from, to)\
 	SDTG_GENERAL(name, SDT_ONEOFMANY, SL_VAR, type, flags, guiflags, var, 0, def, 0, max, 0, full, str, proc, from, to)
 #define SDTG_OMANY(name, type, flags, guiflags, var, def, max, full, str, proc)\
-	SDTG_CONDOMANY(name, type, flags, guiflags, var, def, max full, str, proc, 0, SL_MAX_VERSION)
+	SDTG_CONDOMANY(name, type, flags, guiflags, var, def, max, full, str, proc, 0, SL_MAX_VERSION)
 
 #define SDTG_CONDMMANY(name, type, flags, guiflags, var, def, full, str, proc, from, to)\
 	SDTG_GENERAL(name, SDT_MANYOFMANY, SL_VAR, type, flags, guiflags, var, 0, def, 0, 0, 0, full, str, proc, from, to)
@@ -1218,29 +1218,30 @@ static const SettingDescGlobVarList _misc_settings[] = {
 
 #ifdef ENABLE_NETWORK
 static const SettingDescGlobVarList _network_settings[] = {
-	 SDTG_VAR("sync_freq",           SLE_UINT16,C|S,0, _network_sync_freq,            100, 0,   100,   0, STR_NULL, NULL),
-	 SDTG_VAR("frame_freq",           SLE_UINT8,C|S,0, _network_frame_freq,             0, 0,   100,   0, STR_NULL, NULL),
-	 SDTG_VAR("max_join_time",       SLE_UINT16, S, 0, _network_max_join_time,        500, 0, 32000,   0, STR_NULL, NULL),
-	SDTG_BOOL("pause_on_join",                   S, 0, _network_pause_on_join,        true,               STR_NULL, NULL),
-	 SDTG_STR("server_bind_ip",        SLE_STRB, S, 0, _network_server_bind_ip_host,  "0.0.0.0",          STR_NULL, NULL),
-	 SDTG_VAR("server_port",         SLE_UINT16, S, 0, _network_server_port,          NETWORK_DEFAULT_PORT, 0, 65535, 0, STR_NULL, NULL),
-	SDTG_BOOL("server_advertise",                S, 0, _network_advertise,            false,              STR_NULL, NULL),
-	 SDTG_VAR("lan_internet",         SLE_UINT8, S, 0, _network_lan_internet,           0, 0,     1,   0, STR_NULL, NULL),
-	 SDTG_STR("player_name",           SLE_STRB, S, 0, _network_player_name,          NULL,               STR_NULL, NULL),
-	 SDTG_STR("server_password",       SLE_STRB, S, 0, _network_server_password,      NULL,               STR_NULL, NULL),
-	 SDTG_STR("rcon_password",         SLE_STRB, S, 0, _network_rcon_password,        NULL,               STR_NULL, NULL),
-	 SDTG_STR("server_name",           SLE_STRB, S, 0, _network_server_name,          NULL,               STR_NULL, NULL),
-	 SDTG_STR("connect_to_ip",         SLE_STRB, S, 0, _network_default_ip,           NULL,               STR_NULL, NULL),
-	 SDTG_STR("network_id",            SLE_STRB, S, 0, _network_unique_id,            NULL,               STR_NULL, NULL),
-	SDTG_BOOL("autoclean_companies",             S, 0, _network_autoclean_companies,  false,              STR_NULL, NULL),
-	 SDTG_VAR("autoclean_unprotected",SLE_UINT8, S, 0, _network_autoclean_unprotected,12, 0,     60,   0, STR_NULL, NULL),
-	 SDTG_VAR("autoclean_protected",  SLE_UINT8, S, 0, _network_autoclean_protected,  36, 0,    180,   0, STR_NULL, NULL),
-	 SDTG_VAR("max_companies",        SLE_UINT8, S, 0, _network_game_info.companies_max,   8, 0,  8,   0, STR_NULL, NULL),
-	 SDTG_VAR("max_clients",          SLE_UINT8, S, 0, _network_game_info.clients_max,    10, 0, 10,   0, STR_NULL, NULL),
-	 SDTG_VAR("max_spectators",       SLE_UINT8, S, 0, _network_game_info.spectators_max, 10, 0, 10,   0, STR_NULL, NULL),
-	 SDTG_VAR("restart_game_year",    SLE_INT32, S,D0, _network_restart_game_year,    0, MIN_YEAR, MAX_YEAR, 1, STR_NULL, NULL),
-	 SDTG_VAR("min_players",          SLE_UINT8, S, 0, _network_min_players,               0, 0, 10,   0, STR_NULL, NULL),
-	 SDTG_END()
+	  SDTG_VAR("sync_freq",           SLE_UINT16,C|S,0, _network_sync_freq,            100, 0,   100,   0, STR_NULL, NULL),
+	  SDTG_VAR("frame_freq",           SLE_UINT8,C|S,0, _network_frame_freq,             0, 0,   100,   0, STR_NULL, NULL),
+	  SDTG_VAR("max_join_time",       SLE_UINT16, S, 0, _network_max_join_time,        500, 0, 32000,   0, STR_NULL, NULL),
+	 SDTG_BOOL("pause_on_join",                   S, 0, _network_pause_on_join,        true,               STR_NULL, NULL),
+	  SDTG_STR("server_bind_ip",        SLE_STRB, S, 0, _network_server_bind_ip_host,  "0.0.0.0",          STR_NULL, NULL),
+	  SDTG_VAR("server_port",         SLE_UINT16, S, 0, _network_server_port,          NETWORK_DEFAULT_PORT, 0, 65535, 0, STR_NULL, NULL),
+	 SDTG_BOOL("server_advertise",                S, 0, _network_advertise,            false,              STR_NULL, NULL),
+	  SDTG_VAR("lan_internet",         SLE_UINT8, S, 0, _network_lan_internet,           0, 0,     1,   0, STR_NULL, NULL),
+	  SDTG_STR("player_name",           SLE_STRB, S, 0, _network_player_name,          NULL,               STR_NULL, NULL),
+	  SDTG_STR("server_password",       SLE_STRB, S, 0, _network_server_password,      NULL,               STR_NULL, NULL),
+	  SDTG_STR("rcon_password",         SLE_STRB, S, 0, _network_rcon_password,        NULL,               STR_NULL, NULL),
+	  SDTG_STR("server_name",           SLE_STRB, S, 0, _network_server_name,          NULL,               STR_NULL, NULL),
+	  SDTG_STR("connect_to_ip",         SLE_STRB, S, 0, _network_default_ip,           NULL,               STR_NULL, NULL),
+	  SDTG_STR("network_id",            SLE_STRB, S, 0, _network_unique_id,            NULL,               STR_NULL, NULL),
+	 SDTG_BOOL("autoclean_companies",             S, 0, _network_autoclean_companies,  false,              STR_NULL, NULL),
+	  SDTG_VAR("autoclean_unprotected",SLE_UINT8, S, 0, _network_autoclean_unprotected,12, 0,     60,   0, STR_NULL, NULL),
+	  SDTG_VAR("autoclean_protected",  SLE_UINT8, S, 0, _network_autoclean_protected,  36, 0,    180,   0, STR_NULL, NULL),
+	  SDTG_VAR("max_companies",        SLE_UINT8, S, 0, _network_game_info.companies_max,   8, 0,  8,   0, STR_NULL, NULL),
+	  SDTG_VAR("max_clients",          SLE_UINT8, S, 0, _network_game_info.clients_max,    10, 0, 10,   0, STR_NULL, NULL),
+	  SDTG_VAR("max_spectators",       SLE_UINT8, S, 0, _network_game_info.spectators_max, 10, 0, 10,   0, STR_NULL, NULL),
+	  SDTG_VAR("restart_game_year",    SLE_INT32, S,D0, _network_restart_game_year,    0, MIN_YEAR, MAX_YEAR, 1, STR_NULL, NULL),
+	  SDTG_VAR("min_players",          SLE_UINT8, S, 0, _network_min_players,               0, 0, 10,   0, STR_NULL, NULL),
+	SDTG_OMANY("server_lang",          SLE_UINT8, S, 0, _network_game_info.server_lang,     0, 3, "ANY|ENGLISH|GERMAN|FRENCH", STR_NULL, NULL),
+	  SDTG_END()
 };
 #endif /* ENABLE_NETWORK */
 
