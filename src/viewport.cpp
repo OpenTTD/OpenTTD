@@ -269,10 +269,10 @@ static void SetViewportPosition(Window *w, int x, int y)
 	vp->virtual_left = x;
 	vp->virtual_top = y;
 
-	old_left >>= vp->zoom;
-	old_top >>= vp->zoom;
-	x >>= vp->zoom;
-	y >>= vp->zoom;
+	old_left = UnScaleByZoom(old_left, vp->zoom);
+	old_top = UnScaleByZoom(old_top, vp->zoom);
+	x = UnScaleByZoom(x, vp->zoom);
+	y = UnScaleByZoom(y, vp->zoom);
 
 	old_left -= x;
 	old_top -= y;
@@ -333,8 +333,8 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 				return pt;
 	}
 
-	x = ((x << vp->zoom) + vp->virtual_left) >> 2;
-	y = ((y << vp->zoom) + vp->virtual_top) >> 1;
+	x = (ScaleByZoom(x, vp->zoom) + vp->virtual_left) >> 2;
+	y = (ScaleByZoom(y, vp->zoom) + vp->virtual_top) >> 1;
 
 	a = y-x;
 	b = y+x;
@@ -406,10 +406,10 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
  * @param widget_zoom_out widget index for window with zoom-out button */
 void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out)
 {
-	SetWindowWidgetDisabledState(w, widget_zoom_in, vp->zoom == ZOOM_LVL_NORMAL);
+	SetWindowWidgetDisabledState(w, widget_zoom_in, vp->zoom == ZOOM_LVL_MIN);
 	InvalidateWidget(w, widget_zoom_in);
 
-	SetWindowWidgetDisabledState(w, widget_zoom_out, vp->zoom == ZOOM_LVL_OUT_4X);
+	SetWindowWidgetDisabledState(w, widget_zoom_out, vp->zoom == ZOOM_LVL_MAX);
 	InvalidateWidget(w, widget_zoom_out);
 }
 
@@ -671,7 +671,7 @@ static void DrawTileSelection(const TileInfo *ti)
 				z += TILE_HEIGHT;
 				if (ti->tileh == SLOPE_STEEP_N) z += TILE_HEIGHT;
 			}
-			DrawGroundSpriteAt(_cur_dpi->zoom != ZOOM_LVL_OUT_4X ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti->x, ti->y, z);
+			DrawGroundSpriteAt(_cur_dpi->zoom <= ZOOM_LVL_DETAIL ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti->x, ti->y, z);
 		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) {
 			/* autorail highlight piece under cursor */
 			uint type = _thd.drawstyle & 0xF;
@@ -1241,7 +1241,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	_cur_dpi = &vd.dpi;
 
 	vd.dpi.zoom = vp->zoom;
-	mask = (-1) << vp->zoom;
+	mask = ScaleByZoom(-1, vp->zoom);
 
 	vd.combine_sprites = 0;
 
@@ -1251,8 +1251,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	vd.dpi.top = top & mask;
 	vd.dpi.pitch = old_dpi->pitch;
 
-	x = ((vd.dpi.left - (vp->virtual_left&mask)) >> vp->zoom) + vp->left;
-	y = ((vd.dpi.top - (vp->virtual_top&mask)) >> vp->zoom) + vp->top;
+	x = UnScaleByZoom(vd.dpi.left - (vp->virtual_left & mask), vp->zoom) + vp->left;
+	y = UnScaleByZoom(vd.dpi.top - (vp->virtual_top & mask), vp->zoom) + vp->top;
 
 	vd.dpi.dst_ptr = old_dpi->dst_ptr + x - old_dpi->left + (y - old_dpi->top) * old_dpi->pitch;
 
@@ -1295,7 +1295,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
  * If we do, the sprite memory will overflow. */
 static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
 {
-	if (((bottom - top) * (right - left) << (2 * vp->zoom)) > 180000) {
+	if (ScaleByZoom(bottom - top, vp->zoom) * ScaleByZoom(right - left, vp->zoom) > 180000) {
 		if ((bottom - top) > (right - left)) {
 			int t = (top + bottom) >> 1;
 			ViewportDrawChk(vp, left, top, right, t);
@@ -1307,10 +1307,10 @@ static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, in
 		}
 	} else {
 		ViewportDoDraw(vp,
-			((left - vp->left) << vp->zoom) + vp->virtual_left,
-			((top - vp->top) << vp->zoom) + vp->virtual_top,
-			((right - vp->left) << vp->zoom) + vp->virtual_left,
-			((bottom - vp->top) << vp->zoom) + vp->virtual_top
+			ScaleByZoom(left - vp->left, vp->zoom) + vp->virtual_left,
+			ScaleByZoom(top - vp->top, vp->zoom) + vp->virtual_top,
+			ScaleByZoom(right - vp->left, vp->zoom) + vp->virtual_left,
+			ScaleByZoom(bottom - vp->top, vp->zoom) + vp->virtual_top
 		);
 	}
 }
@@ -1398,10 +1398,10 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
 	if (top >= vp->virtual_height) return;
 
 	SetDirtyBlocks(
-		(left >> vp->zoom) + vp->left,
-		(top >> vp->zoom) + vp->top,
-		(right >> vp->zoom) + vp->left,
-		(bottom >> vp->zoom) + vp->top
+		UnScaleByZoom(left, vp->zoom) + vp->left,
+		UnScaleByZoom(top, vp->zoom) + vp->top,
+		UnScaleByZoom(right, vp->zoom) + vp->left,
+		UnScaleByZoom(bottom, vp->zoom) + vp->top
 	);
 }
 

@@ -986,8 +986,8 @@ static void ScrollMainViewport(int x, int y)
 		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 		assert(w);
 
-		WP(w,vp_d).scrollpos_x += x << w->viewport->zoom;
-		WP(w,vp_d).scrollpos_y += y << w->viewport->zoom;
+		WP(w,vp_d).scrollpos_x += ScaleByZoom(x, w->viewport->zoom);
+		WP(w,vp_d).scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
 	}
 }
 
@@ -1282,8 +1282,8 @@ bool AfterLoadGame()
 
 	vp = w->viewport;
 	vp->zoom = _saved_scrollpos_zoom;
-	vp->virtual_width = vp->width << vp->zoom;
-	vp->virtual_height = vp->height << vp->zoom;
+	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
+	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
 
 	/* in version 4.1 of the savegame, is_active was introduced to determine
 	 * if a player does exist, rather then checking name_1 */

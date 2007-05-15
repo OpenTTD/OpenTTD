@@ -1426,7 +1426,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 	const DrawPixelInfo *dpi = _cur_dpi;
 	int start_x, start_y;
 	BlitterParams bp;
-	int zoom_mask = ~((1 << dpi->zoom) - 1);
+	int zoom_mask = ~(ScaleByZoom(1, dpi->zoom) - 1);
 
 	/* decode sprite header */
 	x += sprite->x_offs;
@@ -1458,7 +1458,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 			start_y -= y;
 			y = 0;
 		} else {
-			bp.dst += bp.pitch * (y >> dpi->zoom);
+			bp.dst += bp.pitch * UnScaleByZoom(y, dpi->zoom);
 		}
 		bp.start_y = start_y;
 
@@ -1476,7 +1476,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 			x = 0;
 		}
 		bp.start_x = start_x;
-		bp.dst += x >> dpi->zoom;
+		bp.dst += UnScaleByZoom(x, dpi->zoom);
 
 		if ( (x = x + bp.width - dpi->width) > 0) {
 			bp.width -= x;
@@ -1485,9 +1485,9 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 
 		switch (dpi->zoom) {
 			default: NOT_REACHED();
-			case 0: GfxBlitTileZoomIn(&bp);     break;
-			case 1: GfxBlitTileZoomMedium(&bp); break;
-			case 2: GfxBlitTileZoomOut(&bp);    break;
+			case ZOOM_LVL_NORMAL: GfxBlitTileZoomIn(&bp);     break;
+			case ZOOM_LVL_OUT_2X: GfxBlitTileZoomMedium(&bp); break;
+			case ZOOM_LVL_OUT_4X: GfxBlitTileZoomOut(&bp);    break;
 		}
 	} else {
 		bp.sprite += bp.width * (bp.height & ~zoom_mask);
@@ -1502,7 +1502,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 			bp.sprite -= bp.width * y;
 			y = 0;
 		} else {
-			bp.dst += bp.pitch * (y >> dpi->zoom);
+			bp.dst += bp.pitch * UnScaleByZoom(y, dpi->zoom);
 		}
 
 		if (bp.height > dpi->height - y) {
@@ -1518,7 +1518,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 			bp.sprite -= x;
 			x = 0;
 		}
-		bp.dst += x >> dpi->zoom;
+		bp.dst += UnScaleByZoom(x, dpi->zoom);
 
 		if (bp.width > dpi->width - x) {
 			bp.width = dpi->width - x;
@@ -1527,9 +1527,9 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 
 		switch (dpi->zoom) {
 			default: NOT_REACHED();
-			case 0: GfxBlitZoomInUncomp(&bp);     break;
-			case 1: GfxBlitZoomMediumUncomp(&bp); break;
-			case 2: GfxBlitZoomOutUncomp(&bp);    break;
+			case ZOOM_LVL_NORMAL: GfxBlitZoomInUncomp(&bp);     break;
+			case ZOOM_LVL_OUT_2X: GfxBlitZoomMediumUncomp(&bp); break;
+			case ZOOM_LVL_OUT_4X: GfxBlitZoomOutUncomp(&bp);    break;
 		}
 	}
 }

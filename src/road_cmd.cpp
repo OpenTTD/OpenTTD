@@ -725,7 +725,7 @@ static void DrawRoadBits(TileInfo* ti)
 	}
 
 	/* Return if full detail is disabled, or we are zoomed fully out. */
-	if (!HASBIT(_display_opt, DO_FULL_DETAIL) || _cur_dpi->zoom == ZOOM_LVL_OUT_4X) return;
+	if (!HASBIT(_display_opt, DO_FULL_DETAIL) || _cur_dpi->zoom > ZOOM_LVL_DETAIL) return;
 
 	/* Draw extra details. */
 	for (drts = _road_display_table[roadside][road]; drts->image != 0; drts++) {

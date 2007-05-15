@@ -479,10 +479,10 @@ static void LargeWorldCallback(void *userdata, Pixel *buf, uint y, uint pitch, u
 		left += wx;
 
 		ViewportDoDraw(vp,
-			((left - wx - vp->left) << vp->zoom) + vp->virtual_left,
-			((y - vp->top) << vp->zoom) + vp->virtual_top,
-			((left - vp->left) << vp->zoom) + vp->virtual_left,
-			(((y + n) - vp->top) << vp->zoom) + vp->virtual_top
+			ScaleByZoom(left - wx - vp->left, vp->zoom) + vp->virtual_left,
+			ScaleByZoom(y - vp->top, vp->zoom) + vp->virtual_top,
+			ScaleByZoom(left - vp->left, vp->zoom) + vp->virtual_left,
+			ScaleByZoom((y + n) - vp->top, vp->zoom) + vp->virtual_top
 		);
 	}
 

@@ -1425,8 +1425,8 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 			 (uint)(y -= vp->top) >= (uint)vp->height)
 				return NULL;
 
-	x = (x << vp->zoom) + vp->virtual_left;
-	y = (y << vp->zoom) + vp->virtual_top;
+	x = ScaleByZoom(x, vp->zoom) + vp->virtual_left;
+	y = ScaleByZoom(y, vp->zoom) + vp->virtual_top;
 
 	FOR_ALL_VEHICLES(v) {
 		if ((v->vehstatus & (VS_HIDDEN|VS_UNCLICKABLE)) == 0 &&

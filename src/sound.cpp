@@ -152,7 +152,7 @@ static void StartSound(uint sound, int panning, uint volume)
 }
 
 
-static const byte _vol_factor_by_zoom[] = {255, 190, 134};
+static const byte _vol_factor_by_zoom[ZOOM_LVL_END] = {255, 190, 134};
 
 static const byte _sound_base_vol[] = {
 	128,  90, 128, 128, 128, 128, 128, 128,

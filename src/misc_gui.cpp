@@ -579,11 +579,11 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
 			/* move x pos to opposite corner */
-			pt.x = ((pt.x - vp->virtual_left) >> vp->zoom) + vp->left;
+			pt.x = UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left;
 			pt.x = (pt.x < (_screen.width >> 1)) ? _screen.width - 260 : 20;
 
 			/* move y pos to opposite corner */
-			pt.y = ((pt.y - vp->virtual_top) >> vp->zoom) + vp->top;
+			pt.y = UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top;
 			pt.y = (pt.y < (_screen.height >> 1)) ? _screen.height - 80 : 100;
 
 		} else {
@@ -595,8 +595,8 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 		if ( (x|y) != 0) {
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-			pt.x = clamp(((pt.x - vp->virtual_left) >> vp->zoom) + vp->left - (334/2), 0, _screen.width - 334);
-			pt.y = clamp(((pt.y - vp->virtual_top) >> vp->zoom) + vp->top - (137/2), 22, _screen.height - 137);
+			pt.x = clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (334/2), 0, _screen.width - 334);
+			pt.y = clamp(UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top - (137/2), 22, _screen.height - 137);
 		} else {
 			pt.x = (_screen.width - 334) >> 1;
 			pt.y = (_screen.height - 137) >> 1;

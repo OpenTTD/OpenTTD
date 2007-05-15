@@ -1618,14 +1618,14 @@ static void HandleAutoscroll()
 			/* here allows scrolling in both x and y axis */
 #define scrollspeed 3
 			if (x - 15 < 0) {
-				WP(w, vp_d).scrollpos_x += (x - 15) * scrollspeed << vp->zoom;
+				WP(w, vp_d).scrollpos_x += ScaleByZoom((x - 15) * scrollspeed, vp->zoom);
 			} else if (15 - (vp->width - x) > 0) {
-				WP(w, vp_d).scrollpos_x += (15 - (vp->width - x)) * scrollspeed << vp->zoom;
+				WP(w, vp_d).scrollpos_x += ScaleByZoom((15 - (vp->width - x)) * scrollspeed, vp->zoom);
 			}
 			if (y - 15 < 0) {
-				WP(w, vp_d).scrollpos_y += (y - 15) * scrollspeed << vp->zoom;
+				WP(w, vp_d).scrollpos_y += ScaleByZoom((y - 15) * scrollspeed, vp->zoom);
 			} else if (15 - (vp->height - y) > 0) {
-				WP(w,vp_d).scrollpos_y += (15 - (vp->height - y)) * scrollspeed << vp->zoom;
+				WP(w,vp_d).scrollpos_y += ScaleByZoom((15 - (vp->height - y)) * scrollspeed, vp->zoom);
 			}
 #undef scrollspeed
 		}
@@ -1970,8 +1970,8 @@ void RelocateAllWindows(int neww, int newh)
 			ViewPort *vp = w->viewport;
 			vp->width = w->width = neww;
 			vp->height = w->height = newh;
-			vp->virtual_width = neww << vp->zoom;
-			vp->virtual_height = newh << vp->zoom;
+			vp->virtual_width = ScaleByZoom(neww, vp->zoom);
+			vp->virtual_height = ScaleByZoom(newh, vp->zoom);
 			continue; // don't modify top,left
 		}
 
