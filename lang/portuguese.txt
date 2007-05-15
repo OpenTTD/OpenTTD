@@ -385,7 +385,7 @@ STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipo de Estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Avaliação de carga
-STR_ENGINE_SORT_ENGINE_ID                                       :Ordenação clássica
+STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (ordernação clássica)
 STR_ENGINE_SORT_COST                                            :Custo
 STR_ENGINE_SORT_POWER                                           :Potência
 STR_ENGINE_SORT_INTRO_DATE                                      :Data de Introdução
@@ -1048,7 +1048,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multipl
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avisar quando comboios andam perdidos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Alertar em caso de perda do combóio: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Analisar ordens dos veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
@@ -1085,7 +1085,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar medidas ao usar ferramentas de construção: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar uma dica de medição ao utilizar várias ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar estampagens da companhia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia
@@ -2549,9 +2549,9 @@ STR_8825_NON_STOP                                               :{BLACK}Sem para
 STR_8826_GO_TO                                                  :{BLACK}Ir Para
 STR_8827_FULL_LOAD                                              :{BLACK}Carga
 STR_8828_UNLOAD                                                 :{BLACK}Descarga
-STR_REFIT                                                       :{BLACK}Reconverter
-STR_REFIT_TIP                                                   :{BLACK}Escolha o tipo de carga para reconverter nesta ordem. Control click para remover a instrução de reconversão
-STR_REFIT_ORDER                                                 :(Reconverter para {STRING})
+STR_REFIT                                                       :{BLACK}Converter
+STR_REFIT_TIP                                                   :{BLACK}Seleccionar o tipo de carga a converter nesta ordem. Pressionar Ctrl e botão-esquerdo do rato para remover instrução de conversão
+STR_REFIT_ORDER                                                 :(Converter para {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}

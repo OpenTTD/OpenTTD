@@ -3058,7 +3058,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {
 
 ########### String for New Landscape Generator
 
-STR_GENERATE                                                    :{WHITE}Creeër
+STR_GENERATE                                                    :{WHITE}Maak aan
 STR_RANDOM                                                      :{BLACK}Willekeurig maken
 STR_RANDOM_HELP                                                 :{BLACK}Wijzig het willekeurige getal voor terrein creatie
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Wereld maken
@@ -3101,7 +3101,7 @@ STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Deze akt
 STR_SE_FLAT_WORLD                                               :{WHITE}Vlak land
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereer een platte kaart
 STR_SE_RANDOM_LAND                                              :{WHITE}Willekeurig land
-STR_SE_NEW_WORLD                                                :{BLACK}Creeër nieuw scenario
+STR_SE_NEW_WORLD                                                :{BLACK}Maak nieuw scenario aan
 STR_SE_CAPTION                                                  :{WHITE}Scenario type
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Maak de hoogte van plat land een lager
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Maak de hoogte van plat land een hoger

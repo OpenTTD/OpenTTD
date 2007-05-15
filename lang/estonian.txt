@@ -2490,7 +2490,7 @@ STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss vasemaagiv
 STR_80A5_UHL_WATER_TANKER                                       :Uhl veeveok
 STR_80A6_BALOGH_WATER_TANKER                                    :Balogh veeveok
 STR_80A7_MPS_WATER_TANKER                                       :MPS veeveok
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh veeveok
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh puuviljaveok
 STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl puuviljaveok
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling puuviljaveok
 STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh kummiveok

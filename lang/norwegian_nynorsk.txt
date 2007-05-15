@@ -1448,7 +1448,7 @@ STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ikkje autoriser
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :mottok merkeleg pakke
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :feil versjon
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :namnet er brukt av nokon andre
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :feil passord til spelet
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :feil passord for til spelet
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :feil spelar-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :sparka ut av tenaren
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :freista å jukse
@@ -2770,7 +2770,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapas
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikkje bygge om skip...
 STR_9842_REFITTABLE                                             :(ombyggbart)
 STR_GO_TO_SHIP_DEPOT                                            :Seil til {TOWN} skipsdepot
-SERVICE_AT_SHIP_DEPOT                                           :Vedlikehald ved {TOWN} skipsdepot
+SERVICE_AT_SHIP_DEPOT                                           :Vedlikehald ved {TOWN} Skipsdepot
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Flyplassar
