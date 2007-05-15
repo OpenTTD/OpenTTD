@@ -112,7 +112,6 @@
 # define FORCEINLINE inline
 # define CDECL
 # define __int64 long long
-# define NOT_REACHED() assert(0)
 # define GCC_PACK __attribute__((packed))
 
 # if (__GNUC__ == 2)
@@ -125,7 +124,6 @@
 # define NORETURN
 # define FORCEINLINE inline
 # define CDECL
-# define NOT_REACHED() assert(0)
 # define GCC_PACK
 # include <malloc.h>
 #endif /* __WATCOMC__ */
@@ -163,11 +161,6 @@
 # define FORCEINLINE __forceinline
 # define inline _inline
 # define CDECL _cdecl
-# if defined(_DEBUG)
-#  define NOT_REACHED() assert(0)
-# else
-#  define NOT_REACHED() _assume(0)
-# endif /* _DEBUG */
   int CDECL snprintf(char *str, size_t size, const char *format, ...);
 # if _MSC_VER < 1400
    int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
@@ -333,5 +326,8 @@ assert_compile(sizeof(uint8)  == 1);
 /* it seems AmigaOS already have a Point declared */
 # define Point OTTD_AMIGA_POINT
 #endif
+
+void NORETURN CDECL error(const char *str, ...);
+#define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
 
 #endif /* STDAFX_H */

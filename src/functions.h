@@ -30,7 +30,6 @@ StringID GetPlayerNameString(PlayerID player, uint index);
 /* standard */
 void ShowInfo(const char *str);
 void CDECL ShowInfoF(const char *str, ...);
-void NORETURN CDECL error(const char *str, ...);
 
 /* openttd.cpp */
 
