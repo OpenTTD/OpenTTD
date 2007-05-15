@@ -662,6 +662,9 @@
 			<File
 				RelativePath=".\..\src\window.h">
 			</File>
+			<File
+				RelativePath=".\..\src\zoom.hpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="GUI Source Code"

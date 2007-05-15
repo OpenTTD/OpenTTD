@@ -78,7 +78,6 @@ VARDEF byte _trees_tick_ctr;
 /* Keep track of current game position */
 VARDEF int _saved_scrollpos_x;
 VARDEF int _saved_scrollpos_y;
-VARDEF byte _saved_scrollpos_zoom;
 
 /* ********* END OF SAVE REGION */
 

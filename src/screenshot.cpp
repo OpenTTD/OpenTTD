@@ -469,7 +469,7 @@ static void LargeWorldCallback(void *userdata, Pixel *buf, uint y, uint pitch, u
 	dpi.height = n;
 	dpi.width = vp->width;
 	dpi.pitch = pitch;
-	dpi.zoom = 0;
+	dpi.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 	dpi.left = 0;
 	dpi.top = y;
 
@@ -540,7 +540,7 @@ static bool MakeWorldScreenshot()
 	ViewPort vp;
 	const ScreenshotFormat *sf;
 
-	vp.zoom = 0;
+	vp.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 	vp.left = 0;
 	vp.top = 0;
 	vp.virtual_left = -(int)MapMaxX() * TILE_PIXELS;

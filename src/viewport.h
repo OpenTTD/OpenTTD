@@ -5,6 +5,8 @@
 #ifndef VIEWPORT_H
 #define VIEWPORT_H
 
+#include "zoom.hpp"
+
 struct ViewPort {
 	int left,top;                       // screen coordinates for the viewport
 	int width, height;                  // screen width/height for the viewport
@@ -12,7 +14,7 @@ struct ViewPort {
 	int virtual_left, virtual_top;      // virtual coordinates
 	int virtual_width, virtual_height;  // these are just width << zoom, height << zoom
 
-	byte zoom;
+	ZoomLevel zoom;
 };
 
 void SetSelectionRed(bool);
@@ -21,7 +23,7 @@ void SetSelectionRed(bool);
 void InitViewports();
 void DeleteWindowViewport(Window *w);
 void AssignWindowViewport(Window *w, int x, int y,
-	int width, int height, uint32 follow_flags, byte zoom);
+	int width, int height, uint32 follow_flags, ZoomLevel zoom);
 ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);
 Point GetTileBelowCursor();
 void UpdateViewportPosition(Window *w);

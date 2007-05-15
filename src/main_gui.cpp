@@ -880,8 +880,8 @@ bool DoZoomInOutWindow(int how, Window *w)
 
 	switch (how) {
 		case ZOOM_IN:
-			if (vp->zoom == 0) return false;
-			vp->zoom--;
+			if (vp->zoom == ZOOM_LVL_NORMAL) return false;
+			vp->zoom = (ZoomLevel)((byte)vp->zoom - 1);
 			vp->virtual_width >>= 1;
 			vp->virtual_height >>= 1;
 
@@ -889,8 +889,8 @@ bool DoZoomInOutWindow(int how, Window *w)
 			WP(w,vp_d).scrollpos_y += vp->virtual_height >> 1;
 			break;
 		case ZOOM_OUT:
-			if (vp->zoom == 2) return false;
-			vp->zoom++;
+			if (vp->zoom == ZOOM_LVL_OUT_4X) return false;
+			vp->zoom = (ZoomLevel)((byte)vp->zoom + 1);
 
 			WP(w,vp_d).scrollpos_x -= vp->virtual_width >> 1;
 			WP(w,vp_d).scrollpos_y -= vp->virtual_height >> 1;
@@ -1049,7 +1049,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	vp = w->viewport;
 
 	if (_game_mode != GM_MENU) {
-		if ((in && vp->zoom == 0) || (!in && vp->zoom == 2))
+		if ((in && vp->zoom == ZOOM_LVL_NORMAL) || (!in && vp->zoom == ZOOM_LVL_OUT_4X))
 			return;
 
 		pt = GetTileZoomCenterWindow(in,w);
@@ -2460,7 +2460,7 @@ void SetupColorsAndInitialWindow()
 	height = _screen.height;
 
 	w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
-	AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), 0);
+	AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 
 	/* XXX: these are not done */
 	switch (_game_mode) {

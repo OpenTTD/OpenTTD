@@ -346,7 +346,7 @@ void ShowRoadVehViewWindow(const Vehicle *v)
 
 	if (w != NULL) {
 		w->caption_color = v->owner;
-		AssignWindowViewport(w, 3, 17, 0xE2, 0x54, w->window_number | (1 << 31), 0);
+		AssignWindowViewport(w, 3, 17, 0xE2, 0x54, w->window_number | (1 << 31), ZOOM_LVL_ROADVEH);
 	}
 }
 

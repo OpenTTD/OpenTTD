@@ -6,6 +6,7 @@
 #define GFX_H
 
 #include "openttd.h"
+#include "zoom.hpp"
 
 enum WindowKeyCodes {
 	WKC_SHIFT = 0x8000,
@@ -136,7 +137,7 @@ struct DrawPixelInfo {
 	Pixel *dst_ptr;
 	int left, top, width, height;
 	int pitch;
-	uint16 zoom;
+	ZoomLevel zoom;
 };
 
 struct Colour {

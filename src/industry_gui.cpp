@@ -452,7 +452,7 @@ void ShowIndustryViewWindow(int industry)
 		WP(w, vp2_d).data_1 = 0;
 		WP(w, vp2_d).data_2 = 0;
 		WP(w, vp2_d).data_3 = 0;
-		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, GetIndustry(w->window_number)->xy + TileDiffXY(1, 1), 1);
+		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, GetIndustry(w->window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
 	}
 }
 

@@ -427,7 +427,7 @@ static void ShowNewspaper(NewsItem *ni)
 			w = AllocateWindowDesc(&_news_type13_desc);
 			if (ni->flags & NF_VIEWPORT)
 				AssignWindowViewport(w, 2, 58, 0x1AA, 0x6E,
-					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), 0);
+					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
 			break;
 		}
 
@@ -436,7 +436,7 @@ static void ShowNewspaper(NewsItem *ni)
 			w = AllocateWindowDesc(&_news_type2_desc);
 			if (ni->flags & NF_VIEWPORT)
 				AssignWindowViewport(w, 2, 58, 0x1AA, 0x46,
-					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), 0);
+					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
 			break;
 		}
 
@@ -445,7 +445,7 @@ static void ShowNewspaper(NewsItem *ni)
 			w = AllocateWindowDesc(&_news_type0_desc);
 			if (ni->flags & NF_VIEWPORT)
 				AssignWindowViewport(w, 3, 17, 0x112, 0x2F,
-					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), 0);
+					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
 			break;
 		}
 	}

@@ -327,7 +327,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	const TextEffect* te;
 
 	switch (dpi->zoom) {
-		case 0:
+		case ZOOM_LVL_NORMAL:
 			for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
 				if (te->string_id != INVALID_STRING_ID &&
 						dpi->left <= te->right &&
@@ -339,7 +339,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 			}
 			break;
 
-		case 1:
+		case ZOOM_LVL_OUT_2X:
 			for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
 				if (te->string_id != INVALID_STRING_ID &&
 						dpi->left <= te->right  * 2 - te->x &&
@@ -349,6 +349,9 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 					AddStringToDraw(te->x, te->y, (StringID)(te->string_id-1), te->params_1, te->params_2);
 				}
 			}
+			break;
+
+		default:
 			break;
 	}
 }

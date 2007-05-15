@@ -26,6 +26,8 @@
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
+ZoomLevel _saved_scrollpos_zoom;
+
 /* XXX - maximum viewports is maximum windows - 2 (main toolbar + status bar) */
 static ViewPort _viewports[25 - 2];
 static uint32 _active_viewports;    ///< bitmasked variable where each bit signifies if a viewport is in use or not
@@ -143,7 +145,7 @@ void DeleteWindowViewport(Window *w)
 }
 
 void AssignWindowViewport(Window *w, int x, int y,
-	int width, int height, uint32 follow_flags, byte zoom)
+	int width, int height, uint32 follow_flags, ZoomLevel zoom)
 {
 	ViewPort *vp;
 	Point pt;
@@ -404,10 +406,10 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
  * @param widget_zoom_out widget index for window with zoom-out button */
 void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out)
 {
-	SetWindowWidgetDisabledState(w, widget_zoom_in, vp->zoom == 0);
+	SetWindowWidgetDisabledState(w, widget_zoom_in, vp->zoom == ZOOM_LVL_NORMAL);
 	InvalidateWidget(w, widget_zoom_in);
 
-	SetWindowWidgetDisabledState(w, widget_zoom_out, vp->zoom == 2);
+	SetWindowWidgetDisabledState(w, widget_zoom_out, vp->zoom == ZOOM_LVL_OUT_4X);
 	InvalidateWidget(w, widget_zoom_out);
 }
 
@@ -669,7 +671,7 @@ static void DrawTileSelection(const TileInfo *ti)
 				z += TILE_HEIGHT;
 				if (ti->tileh == SLOPE_STEEP_N) z += TILE_HEIGHT;
 			}
-			DrawGroundSpriteAt(_cur_dpi->zoom != 2 ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti->x, ti->y, z);
+			DrawGroundSpriteAt(_cur_dpi->zoom != ZOOM_LVL_OUT_4X ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti->x, ti->y, z);
 		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) {
 			/* autorail highlight piece under cursor */
 			uint type = _thd.drawstyle & 0xF;
@@ -808,7 +810,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 	bottom = top + dpi->height;
 
 	switch (dpi->zoom) {
-		case 0:
+		case ZOOM_LVL_NORMAL:
 			FOR_ALL_TOWNS(t) {
 				if (bottom > t->sign.top &&
 						top    < t->sign.top + 12 &&
@@ -821,7 +823,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 			}
 			break;
 
-		case 1:
+		case ZOOM_LVL_OUT_2X:
 			right += 2;
 			bottom += 2;
 
@@ -838,7 +840,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 			break;
 
 		default: NOT_REACHED();
-		case 2:
+		case ZOOM_LVL_OUT_4X:
 			right += 4;
 			bottom += 5;
 
@@ -882,7 +884,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 	bottom = top + dpi->height;
 
 	switch (dpi->zoom) {
-		case 0:
+		case ZOOM_LVL_NORMAL:
 			FOR_ALL_STATIONS(st) {
 				if (bottom > st->sign.top &&
 						top    < st->sign.top + 12 &&
@@ -893,7 +895,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 			}
 			break;
 
-		case 1:
+		case ZOOM_LVL_OUT_2X:
 			right += 2;
 			bottom += 2;
 			FOR_ALL_STATIONS(st) {
@@ -907,7 +909,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 			break;
 
 		default: NOT_REACHED();
-		case 2:
+		case ZOOM_LVL_OUT_4X:
 			right += 4;
 			bottom += 5;
 			FOR_ALL_STATIONS(st) {
@@ -949,7 +951,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 	bottom = top + dpi->height;
 
 	switch (dpi->zoom) {
-		case 0:
+		case ZOOM_LVL_NORMAL:
 			FOR_ALL_SIGNS(si) {
 				if (bottom > si->sign.top &&
 						top    < si->sign.top + 12 &&
@@ -960,7 +962,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 			}
 			break;
 
-		case 1:
+		case ZOOM_LVL_OUT_2X:
 			right += 2;
 			bottom += 2;
 			FOR_ALL_SIGNS(si) {
@@ -974,7 +976,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 			break;
 
 		default: NOT_REACHED();
-		case 2:
+		case ZOOM_LVL_OUT_4X:
 			right += 4;
 			bottom += 5;
 			FOR_ALL_SIGNS(si) {
@@ -1016,7 +1018,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 	bottom = top + dpi->height;
 
 	switch (dpi->zoom) {
-		case 0:
+		case ZOOM_LVL_NORMAL:
 			FOR_ALL_WAYPOINTS(wp) {
 				if (bottom > wp->sign.top &&
 						top    < wp->sign.top + 12 &&
@@ -1027,7 +1029,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 			}
 			break;
 
-		case 1:
+		case ZOOM_LVL_OUT_2X:
 			right += 2;
 			bottom += 2;
 			FOR_ALL_WAYPOINTS(wp) {
@@ -1041,7 +1043,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 			break;
 
 		default: NOT_REACHED();
-		case 2:
+		case ZOOM_LVL_OUT_4X:
 			right += 4;
 			bottom += 5;
 			FOR_ALL_WAYPOINTS(wp) {
@@ -1163,13 +1165,13 @@ static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
 static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss)
 {
 	DrawPixelInfo dp;
-	byte zoom;
+	ZoomLevel zoom;
 
 	_cur_dpi = &dp;
 	dp = *dpi;
 
 	zoom = dp.zoom;
-	dp.zoom = 0;
+	dp.zoom = ZOOM_LVL_NORMAL;
 
 	dp.left >>= zoom;
 	dp.top >>= zoom;
@@ -1490,7 +1492,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 	if (!HASBIT(_display_opt, DO_SHOW_TOWN_NAMES)) return false;
 
 	switch (vp->zoom) {
-		case 0:
+		case ZOOM_LVL_NORMAL:
 			x = x - vp->left + vp->virtual_left;
 			y = y - vp->top  + vp->virtual_top;
 			FOR_ALL_TOWNS(t) {
@@ -1504,7 +1506,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		case 1:
+		case ZOOM_LVL_OUT_2X:
 			x = (x - vp->left + 1) * 2 + vp->virtual_left;
 			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
 			FOR_ALL_TOWNS(t) {
@@ -1518,7 +1520,8 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		default:
+		default: NOT_REACHED();
+		case ZOOM_LVL_OUT_4X:
 			x = (x - vp->left + 3) * 4 + vp->virtual_left;
 			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
 			FOR_ALL_TOWNS(t) {
@@ -1544,7 +1547,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 	if (!HASBIT(_display_opt, DO_SHOW_STATION_NAMES)) return false;
 
 	switch (vp->zoom) {
-		case 0:
+		case ZOOM_LVL_NORMAL:
 			x = x - vp->left + vp->virtual_left;
 			y = y - vp->top  + vp->virtual_top;
 			FOR_ALL_STATIONS(st) {
@@ -1558,7 +1561,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		case 1:
+		case ZOOM_LVL_OUT_2X:
 			x = (x - vp->left + 1) * 2 + vp->virtual_left;
 			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
 			FOR_ALL_STATIONS(st) {
@@ -1572,7 +1575,8 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		default:
+		default: NOT_REACHED();
+		case ZOOM_LVL_OUT_4X:
 			x = (x - vp->left + 3) * 4 + vp->virtual_left;
 			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
 			FOR_ALL_STATIONS(st) {
@@ -1598,7 +1602,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 	if (!HASBIT(_display_opt, DO_SHOW_SIGNS) || _current_player == PLAYER_SPECTATOR) return false;
 
 	switch (vp->zoom) {
-		case 0:
+		case ZOOM_LVL_NORMAL:
 			x = x - vp->left + vp->virtual_left;
 			y = y - vp->top  + vp->virtual_top;
 			FOR_ALL_SIGNS(si) {
@@ -1612,7 +1616,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		case 1:
+		case ZOOM_LVL_OUT_2X:
 			x = (x - vp->left + 1) * 2 + vp->virtual_left;
 			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
 			FOR_ALL_SIGNS(si) {
@@ -1626,7 +1630,8 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		default:
+		default: NOT_REACHED();
+		case ZOOM_LVL_OUT_4X:
 			x = (x - vp->left + 3) * 4 + vp->virtual_left;
 			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
 			FOR_ALL_SIGNS(si) {
@@ -1652,7 +1657,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 	if (!HASBIT(_display_opt, DO_WAYPOINTS)) return false;
 
 	switch (vp->zoom) {
-		case 0:
+		case ZOOM_LVL_NORMAL:
 			x = x - vp->left + vp->virtual_left;
 			y = y - vp->top  + vp->virtual_top;
 			FOR_ALL_WAYPOINTS(wp) {
@@ -1666,7 +1671,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		case 1:
+		case ZOOM_LVL_OUT_2X:
 			x = (x - vp->left + 1) * 2 + vp->virtual_left;
 			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
 			FOR_ALL_WAYPOINTS(wp) {
@@ -1680,7 +1685,8 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		default:
+		default: NOT_REACHED();
+		case ZOOM_LVL_OUT_4X:
 			x = (x - vp->left + 3) * 4 + vp->virtual_left;
 			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
 			FOR_ALL_WAYPOINTS(wp) {

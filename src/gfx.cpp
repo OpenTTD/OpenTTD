@@ -18,6 +18,7 @@
 #include "fontcache.h"
 #include "genworld.h"
 #include "debug.h"
+#include "zoom.hpp"
 
 #ifdef _DEBUG
 bool _dbg_screen_rect;
@@ -153,7 +154,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 	const int otop = top;
 	const int oleft = left;
 
-	if (dpi->zoom != 0) return;
+	if (dpi->zoom != ZOOM_LVL_NORMAL) return;
 	if (left > right || top > bottom) return;
 	if (right < dpi->left || left >= dpi->left + dpi->width) return;
 	if (bottom < dpi->top || top >= dpi->top + dpi->height) return;
@@ -1444,7 +1445,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 		/* tile blit */
 		start_y = 0;
 
-		if (dpi->zoom > 0) {
+		if (dpi->zoom > ZOOM_LVL_NORMAL) {
 			start_y += bp.height & ~zoom_mask;
 			bp.height &= zoom_mask;
 			if (bp.height == 0) return;
@@ -1946,7 +1947,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 {
 	const DrawPixelInfo *o = _cur_dpi;
 
-	n->zoom = 0;
+	n->zoom = ZOOM_LVL_NORMAL;
 
 	assert(width > 0);
 	assert(height > 0);

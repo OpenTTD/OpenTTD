@@ -271,7 +271,7 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 		dp->top = top - (*wz)->top;
 		dp->pitch = _screen.pitch;
 		dp->dst_ptr = _screen.dst_ptr + top * _screen.pitch + left;
-		dp->zoom = 0;
+		dp->zoom = ZOOM_LVL_NORMAL;
 		CallWindowEventNP(*wz, WE_PAINT);
 	}
 }

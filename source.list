@@ -188,6 +188,7 @@ music/win32_m.h
 sound/win32_s.h
 video/win32_v.h
 window.h
+zoom.hpp
 
 # GUI Source Code
 aircraft_gui.cpp

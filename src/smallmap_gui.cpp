@@ -1055,7 +1055,7 @@ void ShowExtraViewPortWindow()
 		/* the main window with the main view */
 		v = FindWindowById(WC_MAIN_WINDOW, 0);
 		/* New viewport start ats (zero,zero) */
-		AssignWindowViewport(w, 3, 17, 294, 214, 0 , 0);
+		AssignWindowViewport(w, 3, 17, 294, 214, 0 , ZOOM_LVL_VIEWPORT);
 
 		/* center on same place as main window (zoom is maximum, no adjustment needed) */
 		x = WP(v, vp_d).scrollpos_x;
