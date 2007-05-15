@@ -34,13 +34,13 @@ extern ZoomLevel _saved_scrollpos_zoom;
 static inline int ScaleByZoom(int value, ZoomLevel zoom)
 {
 	int izoom = (int)zoom - (int)ZOOM_LVL_NORMAL;
-	return (zoom > ZOOM_LVL_NORMAL) ? value >> izoom : value << izoom;
+	return (zoom > ZOOM_LVL_NORMAL) ? value << izoom : value >> izoom;
 }
 
 static inline int UnScaleByZoom(int value, ZoomLevel zoom)
 {
 	int izoom = (int)zoom - (int)ZOOM_LVL_NORMAL;
-	return (zoom > ZOOM_LVL_NORMAL) ? value << izoom : value >> izoom;
+	return (zoom > ZOOM_LVL_NORMAL) ? value >> izoom : value << izoom;
 }
 
 #endif /* ZOOM_HPP */
