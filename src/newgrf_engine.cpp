@@ -770,6 +770,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				case 0x66: return MapAircraftMovementAction(v); // Current movement action
 			}
 			break;
+
+		default: break;
 	}
 
 	DEBUG(grf, 1, "Unhandled vehicle property 0x%X, type 0x%X", variable, v->type);

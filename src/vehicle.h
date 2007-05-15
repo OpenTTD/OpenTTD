@@ -64,15 +64,18 @@ enum RoadVehicleStates {
 	RVSB_ROAD_STOP_TRACKDIR_MASK = 0x09                       ///< Only bits 0 and 3 are used to encode the trackdir for road stops
 };
 
-enum {
+enum VehicleType {
 	VEH_TRAIN,
 	VEH_ROAD,
 	VEH_SHIP,
 	VEH_AIRCRAFT,
 	VEH_SPECIAL,
 	VEH_DISASTER,
+	VEH_END,
 	VEH_INVALID = 0xFF,
-} ;
+};
+template <> struct EnumPropsT<VehicleType> : MakeEnumPropsT<VehicleType, byte, VEH_TRAIN, VEH_END, VEH_INVALID> {};
+typedef TinyEnumT<VehicleType> VehicleTypeByte;
 
 enum VehStatus {
 	VS_HIDDEN          = 0x01,
@@ -203,7 +206,7 @@ struct VehicleShip {
 
 
 struct Vehicle {
-	byte type;               // type, ie roadven,train,ship,aircraft,special
+	VehicleTypeByte type;    ///< Type of vehicle
 	byte subtype;            // subtype (Filled with values from EffectVehicles/TrainSubTypes/AircraftSubTypes)
 
 	VehicleID index;         // NOSAVE: Index in vehicle array

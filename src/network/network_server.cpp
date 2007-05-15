@@ -1301,9 +1301,7 @@ void NetworkPopulateCompanyInfo()
 				_network_player_info[v->owner].num_vehicle[4]++;
 				break;
 
-			case VEH_SPECIAL:
-			case VEH_DISASTER:
-				break;
+			default: break;
 		}
 	}
 

@@ -677,6 +677,8 @@ void CallVehicleTicks()
 		_vehicle_tick_procs[v->type](v);
 
 		switch (v->type) {
+			default: break;
+
 			case VEH_TRAIN:
 			case VEH_ROAD:
 			case VEH_AIRCRAFT:
@@ -2850,6 +2852,7 @@ static void Load_VEHS()
 			case VEH_SPECIAL:  v = new (v) SpecialVehicle();  break;
 			case VEH_DISASTER: v = new (v) DisasterVehicle(); break;
 			case VEH_INVALID:  v = new (v) InvalidVehicle();  break;
+			default: NOT_REACHED();
 		}
 
 		/* Old savegames used 'last_station_visited = 0xFF' */

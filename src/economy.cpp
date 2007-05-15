@@ -365,6 +365,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 						case VEH_ROAD:     v->unitnumber = ++num_road; break;
 						case VEH_SHIP:     v->unitnumber = ++num_ship; break;
 						case VEH_AIRCRAFT: if (IsNormalAircraft(v)) v->unitnumber = ++num_aircraft; break;
+						default: NOT_REACHED();
 					}
 				}
 			}

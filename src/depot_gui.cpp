@@ -137,6 +137,7 @@ void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2)
 		case VEH_ROAD:     CcCloneRoadVeh( true, tile, p1, p2); break;
 		case VEH_SHIP:     CcCloneShip(    true, tile, p1, p2); break;
 		case VEH_AIRCRAFT: CcCloneAircraft(true, tile, p1, p2); break;
+		default: NOT_REACHED();
 	}
 }
 
