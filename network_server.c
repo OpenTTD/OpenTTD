@@ -1119,7 +1119,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 {
 	NetworkAction action = NetworkRecv_uint8(cs, p);
 	DestType desttype = NetworkRecv_uint8(cs, p);
-	int dest = NetworkRecv_uint8(cs, p);
+	int dest = NetworkRecv_uint16(cs, p);
 	char msg[MAX_TEXT_MSG_LEN];
 
 	NetworkRecv_string(cs, p, msg, MAX_TEXT_MSG_LEN);

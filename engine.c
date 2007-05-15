@@ -414,6 +414,12 @@ bool IsEngineBuildable(EngineID engine, byte type, PlayerID player)
 	// check if it's available
 	if (!HASBIT(e->player_avail, player)) return false;
 
+	if (type == VEH_Train) {
+		/* Check if the rail type is available to this player */
+		const Player *p = GetPlayer(player);
+		if (!HASBIT(p->avail_railtypes, EngInfo(engine)->railtype)) return false;
+	}
+
 	return true;
 }
 

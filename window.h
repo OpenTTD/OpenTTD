@@ -348,6 +348,17 @@ typedef struct querystr_d {
 } querystr_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
 
+typedef struct chatquerystr_d {
+	StringID caption;
+	WindowClass wnd_class;
+	WindowNumber wnd_num;
+	Textbuf text;
+	const char *orig;
+	CharSetFilter afilter;
+	int dest;
+} chatquerystr_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(chatquerystr_d));
+
 typedef struct query_d {
 	StringID caption;
 	StringID message;
