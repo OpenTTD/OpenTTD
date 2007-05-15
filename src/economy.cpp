@@ -1449,7 +1449,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	int unloading_time = 0;
 	Vehicle *u = v;
 	int result = 0;
-	uint cap;
+	int cap;
 
 	bool completely_empty  = true;
 	bool anything_unloaded = false;
@@ -1473,7 +1473,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
-		uint count = GB(ge->waiting_acceptance, 0, 12);
+		int count = GB(ge->waiting_acceptance, 0, 12);
 
 		if (HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING)) {
 			uint16 amount_unloaded = _patches.gradual_loading ? min(v->cargo_count, load_amount) : v->cargo_count;
