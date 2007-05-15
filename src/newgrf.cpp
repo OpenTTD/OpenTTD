@@ -40,6 +40,7 @@
 #include "cargotype.h"
 #include "industry.h"
 #include "newgrf_canal.h"
+#include "newgrf_commons.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -1246,7 +1247,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 		_cur_grffile->housespec = CallocT<HouseSpec*>(HOUSE_MAX);
 
 		/* Reset any overrides that have been set. */
-		ResetHouseOverrides();
+		_house_mngr.ResetOverride();
 	}
 
 	housespec = &_cur_grffile->housespec[hid];
@@ -1372,7 +1373,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 					return false;
 				}
 
-				AddHouseOverride(hid, override);
+				_house_mngr.Add(hid, override);
 			}
 			break;
 
@@ -4591,7 +4592,7 @@ static void FinaliseHouseArray()
 		for (int i = 0; i < HOUSE_MAX; i++) {
 			HouseSpec *hs = file->housespec[i];
 			if (hs != NULL) {
-				SetHouseSpec(hs);
+				_house_mngr.SetEntitySpec(hs);
 				if (hs->min_date < 1930) reset_dates = false;
 			}
 		}

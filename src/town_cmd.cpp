@@ -38,6 +38,7 @@
 #include "newgrf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_house.h"
+#include "newgrf_commons.h"
 
 /**
  * Called if a new block is added to the town-pool
@@ -2371,19 +2372,19 @@ static const SaveLoad _town_desc[] = {
 /* Save and load the mapping between the house id on the map, and the grf file
  * it came from. */
 static const SaveLoad _house_id_mapping_desc[] = {
-	SLE_VAR(HouseIDMapping, grfid,         SLE_UINT32),
-	SLE_VAR(HouseIDMapping, house_id,      SLE_UINT8),
-	SLE_VAR(HouseIDMapping, substitute_id, SLE_UINT8),
+	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
+	SLE_VAR(EntityIDMapping, entity_id,     SLE_UINT8),
+	SLE_VAR(EntityIDMapping, substitute_id, SLE_UINT8),
 	SLE_END()
 };
 
 static void Save_HOUSEIDS()
 {
-	uint i;
+	uint j = _house_mngr.GetMaxMapping();
 
-	for (i = 0; i != lengthof(_house_id_mapping); i++) {
+	for (uint i = 0; i < j; i++) {
 		SlSetArrayIndex(i);
-		SlObject(&_house_id_mapping[i], _house_id_mapping_desc);
+		SlObject(&_house_mngr.mapping_ID[i], _house_id_mapping_desc);
 	}
 }
 
@@ -2391,11 +2392,12 @@ static void Load_HOUSEIDS()
 {
 	int index;
 
-	ResetHouseIDMapping();
+	_house_mngr.ResetMapping();
+	uint max_id = _house_mngr.GetMaxMapping();
 
 	while ((index = SlIterateArray()) != -1) {
-		if ((uint)index >= lengthof(_house_id_mapping)) break;
-		SlObject(&_house_id_mapping[index], _house_id_mapping_desc);
+		if ((uint)index >= max_id) break;
+		SlObject(&_house_mngr.mapping_ID[index], _house_id_mapping_desc);
 	}
 }
 

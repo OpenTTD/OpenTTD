@@ -24,92 +24,12 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_town.h"
 #include "newgrf_sound.h"
+#include "newgrf_commons.h"
 
 static BuildingCounts    _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
-HouseIDMapping _house_id_mapping[HOUSE_MAX];
 
-/* Since the house IDs defined by the GRF file don't necessarily correlate
- * to those used by the game, the IDs used for overriding old houses must be
- * translated when the house spec is set. */
-static uint16 _house_overrides[NEW_HOUSE_OFFSET];
-
-void AddHouseOverride(uint8 local_id, uint house_type)
-{
-	assert(house_type < NEW_HOUSE_OFFSET);
-	_house_overrides[house_type] = local_id;
-}
-
-void ResetHouseOverrides()
-{
-	for (int i = 0; i != lengthof(_house_overrides); i++) {
-		_house_overrides[i] = INVALID_HOUSE_ID;
-	}
-}
-
-static HouseID GetHouseID(byte grf_local_id, uint32 grfid)
-{
-	const HouseIDMapping *map;
-
-	for (HouseID house_id = NEW_HOUSE_OFFSET; house_id != lengthof(_house_id_mapping); house_id++) {
-		map = &_house_id_mapping[house_id];
-		if (map->house_id == grf_local_id && map->grfid == grfid) return house_id;
-	}
-	return INVALID_HOUSE_ID;
-}
-
-static HouseID AddHouseID(byte grf_local_id, uint32 grfid, byte substitute_id)
-{
-	HouseID house_id;
-	HouseIDMapping *map;
-
-	/* Look to see if this house has already been added. This is done
-	 * separately from the loop below in case a GRF has been deleted, and there
-	 * are any gaps in the array. */
-	house_id = GetHouseID(grf_local_id, grfid);
-	if (house_id != INVALID_HOUSE_ID) return house_id;
-
-	/* This house hasn't been defined before, so give it an ID now. */
-	for (house_id = NEW_HOUSE_OFFSET; house_id != lengthof(_house_id_mapping); house_id++) {
-		map = &_house_id_mapping[house_id];
-
-		if (map->house_id == 0 && map->grfid == 0) {
-			map->house_id      = grf_local_id;
-			map->grfid         = grfid;
-			map->substitute_id = substitute_id;
-			return house_id;
-		}
-	}
-
-	return INVALID_HOUSE_ID;
-}
-
-void SetHouseSpec(const HouseSpec *hs)
-{
-	HouseID house_id = AddHouseID(hs->local_id, hs->grffile->grfid, hs->substitute_id);
-
-	if (house_id == INVALID_HOUSE_ID) {
-		grfmsg(1, "SetHouseSpec: Too many houses allocated. Ignoring.");
-		return;
-	}
-
-	memcpy(&_house_specs[house_id], hs, sizeof(*hs));
-
-	/* Now add the overrides. */
-	for (int i = 0; i != lengthof(_house_overrides); i++) {
-		HouseSpec *overridden_hs = GetHouseSpecs(i);
-
-		if (_house_overrides[i] != hs->local_id) continue;
-
-		overridden_hs->override = house_id;
-		_house_overrides[i] = INVALID_HOUSE_ID;
-	}
-}
-
-void ResetHouseIDMapping()
-{
-	memset(&_house_id_mapping, 0, sizeof(_house_id_mapping));
-}
+HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, HOUSE_MAX, INVALID_HOUSE_ID);
 
 void CheckHouseIDs()
 {
@@ -122,7 +42,7 @@ void CheckHouseIDs()
 		if (!GetHouseSpecs(house_id)->enabled && house_id >= NEW_HOUSE_OFFSET) {
 			/* The specs for this type of house are not available any more, so
 			 * replace it with the substitute original house type. */
-			SetHouseType(t, _house_id_mapping[house_id].substitute_id);
+			SetHouseType(t, _house_mngr.GetSubstituteID(house_id));
 		}
 	}
 
@@ -313,7 +233,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 			const HouseSpec *hs = GetHouseSpecs(house_id);
 			if (hs->grffile == NULL) return 0;
 
-			HouseID new_house = GetHouseID(parameter, hs->grffile->grfid);
+			HouseID new_house = _house_mngr.GetID(parameter, hs->grffile->grfid);
 			return new_house == INVALID_HOUSE_ID ? 0 : GetNumHouses(new_house, town);
 		}
 
@@ -577,7 +497,11 @@ bool NewHouseTileLoop(TileIndex tile)
 		return true;
 	}
 
-	/* @todo: Magic with triggers goes here.  Got to implement that, one day. .. */
+	/* @todo: Magic with triggers goes here.  Got to implement that, one day. ..
+	 * Process randomizing of tiles following specs.
+	 * Once done, redraw the house
+	 * MarkTileDirtyByTile(tile);
+	 */
 
 	if (HASBIT(hs->callback_mask, CBM_ANIMATION_START_STOP)) {
 		/* If this house is marked as having a synchronised callback, all the

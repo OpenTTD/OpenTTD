@@ -61,6 +61,7 @@
 #include "newgrf.h"
 #include "newgrf_config.h"
 #include "newgrf_house.h"
+#include "newgrf_commons.h"
 #include "player_face.h"
 
 #include "bridge_map.h"
@@ -685,7 +686,7 @@ static void MakeNewGame(bool from_heightmap)
 	_game_mode = GM_NORMAL;
 
 	ResetGRFConfig(true);
-	ResetHouseIDMapping();
+	_house_mngr.ResetMapping();
 
 	GenerateWorldSetCallback(&MakeNewGameDone);
 	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _patches.map_x, 1 << _patches.map_y);

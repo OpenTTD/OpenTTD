@@ -41,15 +41,7 @@ struct HouseClassMapping {
 	uint8  class_id;  ////< The class id within the grf file
 };
 
-extern HouseIDMapping _house_id_mapping[HOUSE_MAX]; ///< Declared in newgrf_house.cpp
-
-void AddHouseOverride(uint8 local_id, uint house_type);
-void ResetHouseOverrides();
-
-void SetHouseSpec(const HouseSpec *hs);
-
 void CheckHouseIDs();
-void ResetHouseIDMapping();
 
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32 grfid);
 

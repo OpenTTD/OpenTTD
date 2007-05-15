@@ -140,6 +140,7 @@ newgrf.h
 newgrf_callbacks.h
 newgrf_canal.h
 newgrf_cargo.h
+newgrf_commons.h
 newgrf_config.h
 newgrf_engine.h
 newgrf_house.h
@@ -286,6 +287,7 @@ ai/trolly/trolly.cpp
 newgrf.cpp
 newgrf_canal.cpp
 newgrf_cargo.cpp
+newgrf_commons.cpp
 newgrf_config.cpp
 newgrf_engine.cpp
 newgrf_house.cpp

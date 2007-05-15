@@ -920,6 +920,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_commons.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_config.h"
 				>
 			</File>
@@ -1481,6 +1485,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_cargo.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_commons.cpp"
 				>
 			</File>
 			<File
