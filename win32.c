@@ -887,6 +887,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	 * save it because argv[] points into this buffer and thus needs to
 	 * be available between subsequent calls to FS2OTTD() */
 	char cmdlinebuf[MAX_PATH];
+
+	/* Check if a win9x user started the win32 version */
+	if (HASBIT(GetVersion(), 31)) error("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
 #endif /* UNICODE */
 
 	cmdline = WIDE_TO_MB_BUFFER(GetCommandLine(), cmdlinebuf, lengthof(cmdlinebuf));

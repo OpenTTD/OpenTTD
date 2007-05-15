@@ -212,6 +212,7 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	static uint32 keycode = 0;
+	static bool console = false;
 
 	switch (msg) {
 		case WM_CREATE:
@@ -363,12 +364,23 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 #endif /* UNICODE */
 
+		case WM_DEADCHAR:
+			console = GB(lParam, 16, 8) == 41;
+			return 0;
+
 		case WM_CHAR: {
 			uint scancode = GB(lParam, 16, 8);
 			uint charcode = wParam;
 
 			/* Silently drop all non-text messages as those were handled by WM_KEYDOWN */
 			if (wParam < VK_SPACE) return 0;
+
+			/* If the console key is a dead-key, we need to press it twice to get a WM_CHAR message.
+			 * But we then get two WM_CHAR messages, so ignore the first one */
+			if (console && scancode == 41) {
+				console = false;
+				return 0;
+			}
 
 #if !defined(UNICODE)
 			{
