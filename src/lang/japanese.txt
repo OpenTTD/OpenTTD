@@ -1132,6 +1132,13 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}他の�
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}ドラッグするときの信号設備頻度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}次の年まで腕木式信号を建設：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}シナリオエディタを使用時に、「道路網を拡大せず」という道路網が選択できません
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}道路網の選択：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :道路網を拡大せず
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :デフォルト
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :改善の道路網
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2）
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :格子状（3x3）
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}主のツールバーの位置：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :左
@@ -3106,6 +3113,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}雪線�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}始める年を変えます
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}リサイズ警告
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}ソース地図をリサイズしすぎることはお勧めしません。地形作成を続けてもよろしいですか？
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}道路網の警告
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}「道路網を拡大せず」という道路網をおすすめしません。続けてもよろしいですか？
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}ハイトマップ名：
 STR_HEIGHTMAP_SIZE                                              :{BLACK}サイズ：{ORANGE}{NUM} x {NUM}

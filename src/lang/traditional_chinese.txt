@@ -25,7 +25,7 @@ STR_0011_MAIL                                                   :郵件
 STR_0012_OIL                                                    :石油
 STR_0013_LIVESTOCK                                              :牲畜
 STR_0014_GOODS                                                  :商品
-STR_0015_GRAIN                                                  :穀粒
+STR_0015_GRAIN                                                  :穀物
 STR_0016_WOOD                                                   :木材
 STR_0017_IRON_ORE                                               :鐵礦石
 STR_0018_STEEL                                                  :鋼鐵
@@ -57,7 +57,7 @@ STR_0031_MAIL                                                   :郵件
 STR_0032_OIL                                                    :石油
 STR_0033_LIVESTOCK                                              :牲畜
 STR_0034_GOODS                                                  :商品
-STR_0035_GRAIN                                                  :穀粒
+STR_0035_GRAIN                                                  :穀物
 STR_0036_WOOD                                                   :木材
 STR_0037_IRON_ORE                                               :鐵礦石
 STR_0038_STEEL                                                  :鋼鐵
@@ -89,7 +89,7 @@ STR_QUANTITY_MAIL                                               :{COMMA}包郵�
 STR_QUANTITY_OIL                                                :{VOLUME}石油
 STR_QUANTITY_LIVESTOCK                                          :{COMMA}頭牲畜
 STR_QUANTITY_GOODS                                              :{COMMA}箱商品
-STR_QUANTITY_GRAIN                                              :{WEIGHT}小麥
+STR_QUANTITY_GRAIN                                              :{WEIGHT}穀物
 STR_QUANTITY_WOOD                                               :{WEIGHT}木材
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT}鐵礦
 STR_QUANTITY_STEEL                                              :{WEIGHT}鋼鐵
@@ -101,7 +101,7 @@ STR_QUANTITY_DIAMONDS                                           :{COMMA}包鑽�
 STR_QUANTITY_FOOD                                               :{WEIGHT}食物
 STR_QUANTITY_PAPER                                              :{WEIGHT}紙張
 STR_QUANTITY_GOLD                                               :{COMMA}包黃金
-STR_QUANTITY_WATER                                              :{VOLUME}食水
+STR_QUANTITY_WATER                                              :{VOLUME}淡水
 STR_QUANTITY_WHEAT                                              :{WEIGHT}小麥
 STR_QUANTITY_RUBBER                                             :{VOLUME}橡膠
 STR_QUANTITY_SUGAR                                              :{WEIGHT}砂糖
@@ -1132,11 +1132,11 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}可以�
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}拖放時訊號燈之間距離：{ORANGE}{STRING} 格
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}於日期前自動建立舊式號誌臂：{ORANGE}{STRING}年
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}在場景編輯器中，"市鎮道路不再配置" 是不合法的
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}選擇市鎮道路配置：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :道路不再配置
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}在場景編輯器中，"市鎮道路不再規劃" 是不可行的
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}選擇市鎮道路規劃：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :道路不再規劃
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :預設
-STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :較好的配置
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :較好的規劃
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :２乘２網格
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :３乘３網格
 
@@ -1739,7 +1739,7 @@ STR_2810_CACTUS_PLANTS                                          :仙人掌
 
 ##id 0x3000
 STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}選擇鐵道車站
-STR_3001_AIRPORT_SELECTION                                      :{WHITE}選擇飛機場
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}選擇機場
 STR_3002_ORIENTATION                                            :{BLACK}方向
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}軌數
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}月台長度
@@ -1753,7 +1753,7 @@ STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}太靠�
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}必須先摧毀鐵道車站
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}太靠近另一個飛機場
-STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}必須先摧毀飛機場
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}必須先剷除機場
 
 STR_3030_RENAME_STATION_LOADING                                 :修改車站/載貨區名稱
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}不能修改車站名稱...
@@ -1802,7 +1802,7 @@ STR_305C_0                                                      :{STATION} {STAT
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :鐵道車站
 STR_305F_AIRCRAFT_HANGAR                                        :飛機棚
-STR_3060_AIRPORT                                                :飛機場
+STR_3060_AIRPORT                                                :機場
 STR_3061_TRUCK_LOADING_AREA                                     :貨運場
 STR_3062_BUS_STATION                                            :公車站
 STR_3063_SHIP_DOCK                                              :船塢
@@ -2803,7 +2803,7 @@ SERVICE_AT_SHIP_DEPOT                                           :在{TOWN}船塢
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}機場
-STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}無法在此建造機場...
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}無法在此興建機場...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} 停機棚
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}購買飛機
 STR_CLONE_AIRCRAFT                                              :{BLACK}複製飛機
@@ -2834,12 +2834,12 @@ STR_A019_CAPACITY                                               :{BLACK}容量�
 STR_A01A_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}飛機必須停在機棚内
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}無法出售飛機...
-STR_A01D_AIRPORT_CONSTRUCTION                                   :建造機場
-STR_A01E_BUILD_AIRPORT                                          :{BLACK}建造機場
+STR_A01D_AIRPORT_CONSTRUCTION                                   :興建機場
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}興建機場
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}飛機 - 點選飛機顯示詳細資料
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}購買新飛機 (需要有機棚的機場)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}飛機 - 點選飛機顯示詳細資料
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}建造新機場
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}購買新飛機
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}將飛機拉至此即可出售
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}將主視野帶到機棚位置
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}飛機清單 - 點選飛機檢視詳細資料
@@ -2855,7 +2855,7 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}命名�
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}無法命名飛機
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}命名飛機
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首架飛機抵達 {STATION}！
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}飛機墜毀！{}{COMMA} 名死於 {STATION} 機場的火球下
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}墜機！{}{COMMA} 名乘客與機組員死於 {STATION} 的火球下
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}飛機墜毀！{}飛機用光燃油, {COMMA} 死在火球裡！
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}更名
@@ -3085,7 +3085,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}容量�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}動力車廂：{GOLD}+{POWER}{BLACK} 重量：{GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}可改裝成：{GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :所有酬載類型
-STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD} 以外皆可
+STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}除了
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
 
 ########### String for New Landscape Generator
@@ -3113,8 +3113,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}變更�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}變更開始年份
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}縮放警告
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}不建議過度縮放地圖。繼續產生？
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}市鎮配置警告
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW} "市鎮道路不再配置" 是不建議的。要繼續產生嗎？
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}市鎮規劃警告
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW} "市鎮道路不再規劃" 是不建議的。要繼續產生嗎？
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}高度圖名稱：
 STR_HEIGHTMAP_SIZE                                              :{BLACK}大小：{ORANGE}{NUM} x {NUM}
@@ -3156,8 +3156,8 @@ STR_HELIPORT                                                    :{BLACK}直升�
 STR_HELIDEPOT                                                   :{BLACK}直升機棚
 STR_HELISTATION                                                 :{BLACK}直升機站
 
-STR_SMALL_AIRPORTS                                              :{BLACK}小機場
-STR_LARGE_AIRPORTS                                              :{BLACK}大機場
+STR_SMALL_AIRPORTS                                              :{BLACK}小型機場
+STR_LARGE_AIRPORTS                                              :{BLACK}大型機場
 STR_HUB_AIRPORTS                                                :{BLACK}轉運機場
 STR_HELIPORTS                                                   :{BLACK}直升機場
 
