@@ -339,7 +339,7 @@ int32 DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	CommandProc *proc;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (tile >= MapSize()) {
+	if (tile >= MapSize() || IsTileType(tile, MP_VOID)) {
 		_cmd_text = NULL;
 		return CMD_ERROR;
 	}
@@ -417,7 +417,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	int y = TileY(tile) * TILE_SIZE;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (tile >= MapSize()) {
+	if (tile >= MapSize() || IsTileType(tile, MP_VOID)) {
 		_cmd_text = NULL;
 		return false;
 	}
