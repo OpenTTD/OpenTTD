@@ -344,6 +344,9 @@ static void FixOldVehicles(void)
 	FOR_ALL_VEHICLES(v) {
 		Vehicle *u;
 
+		/* We haven't used this bit for stations for ages */
+		if (v->type == VEH_Road) CLRBIT(v->u.road.state, 2);
+
 		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
 			/* If a vehicle has the same orders, add the link to eachother
 			 * in both vehicles */
@@ -1511,6 +1514,7 @@ static bool LoadOldMain(LoadgameState *ls)
 
 	for (i = 0; i < OLD_MAP_SIZE; i ++) {
 		switch (GetTileType(i)) {
+			case MP_STATION: _m[i].m4 = 0; break; // We don't understand this grf mapping (yet)
 			case MP_RAILWAY:
 				/* We save presignals different from TTDPatch, convert them */
 				if (GetRailTileType(i) == RAIL_TILE_SIGNALS) {

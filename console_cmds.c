@@ -1216,16 +1216,20 @@ DEF_CONSOLE_CMD(ConPlayers)
 
 	FOR_ALL_PLAYERS(p) {
 		char buffer[512];
+		const NetworkPlayerInfo *npi;
 
 		if (!p->is_active) continue;
 
+		npi = &_network_player_info[p->index];
+
 		GetString(buffer, STR_00D1_DARK_BLUE + _player_colors[p->index], lastof(buffer));
-		IConsolePrintF(8, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %d  Loan: %d  Value: %" OTTD_PRINTF64 "d  (T:%d, R:%d, P:%d, S:%d)",
-			p->index + 1, buffer, _network_player_info[p->index].company_name, p->inaugurated_year, p->player_money, p->current_loan, CalculateCompanyValue(p),
-			/* trains      */ _network_player_info[p->index].num_vehicle[0],
-			/* lorry + bus */ _network_player_info[p->index].num_vehicle[1] + _network_player_info[p->index].num_vehicle[2],
-			/* planes      */ _network_player_info[p->index].num_vehicle[3],
-			/* ships       */ _network_player_info[p->index].num_vehicle[4]);
+		IConsolePrintF(8, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %d  Loan: %d  Value: %" OTTD_PRINTF64 "d  (T:%d, R:%d, P:%d, S:%d) %sprotected",
+			p->index + 1, buffer, npi->company_name, p->inaugurated_year, p->player_money, p->current_loan, CalculateCompanyValue(p),
+			/* trains      */ npi->num_vehicle[0],
+			/* lorry + bus */ npi->num_vehicle[1] + npi->num_vehicle[2],
+			/* planes      */ npi->num_vehicle[3],
+			/* ships       */ npi->num_vehicle[4],
+			/* protected   */ npi->password[0] == '\0' ? "un" : "");
 	}
 
 	return true;
