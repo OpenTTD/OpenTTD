@@ -15,16 +15,13 @@ or http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version.
 
-Bugs for 0.5.1
+Bugs for 0.5.2
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
 -735	Plural rule not expanded correctly when non-numeric placeholder uses
--732	Trains are lost after autorenewal/autoreplace
 -716	Train Crash in Depot
--677	Badspacing in news summaries
 -674	Map signs allow less nonenglish characters than english ones
--672	Non-transparent station names' backgrounds do not resize properly upon language change
 -669	Docks/Airports/RV Stations can be built without available vehicles
 -646	AI builds useless stations
 -601	Airports can't get flooded when they have planes in them
@@ -37,7 +34,7 @@ URL: http://bugs.openttd.org
 -540	Planes vanished when offered exclusive
 -539	Trains can cash the same cargo multiple times
 -524	OSX sometimes (not always) fails to find free disk space
--522	overflow on vehicle costs
+-522	Overflow on vehicle costs
 -508	Destroying trees and replanting => raised rating
 -502	OSX can incorrectly print "dbg: [sl] Cannot open savegame 'data/opntitle.dat' for saving/loading."
 -501	Mouse pointer gets hidden, when draging out of window and back again. Only affects Wacom etc.
@@ -53,7 +50,7 @@ URL: http://bugs.openttd.org
 -355	graphics bugs with trains - water, tunnels
 -354	Maglev Trains faster than All Planes
 -339	Crash in Quicktime when exiting game
--299	disable 90 deg turns patch - AI builds 90 deg turns
+-299	Disable 90 deg turns patch - AI builds 90 deg turns
 -290	NPF - no path to depot from tunnel
 -282	AI Players do not clear loans as soon as they could
 -274	Autoclean ignores any share holdings
@@ -62,11 +59,11 @@ URL: http://bugs.openttd.org
 -216	AI build train vans one van less
 -202	2 Locomotives in 1 Train - Selling one results in Age of the other one Being 0
 -193	Inconsistent directory usage on Mac OS X
--165	vehicle length not taken into account
+-165	Vehicle length not taken into account
 -153	Language crash with app renaming OSX
 -119	Clipping problems with vehicles on slopes
 - 89	Able to build railways/stations before engines become available
-- 65	short wagons bug
+- 65	Short wagons bug
 - 51	Windows doesn't support CUSTOM_LANG_DIR
 - 47	Low rating calculation and cargo loading priority
 
@@ -78,30 +75,25 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 -1459262	Towns building too many roads way too long now
 -1458995	Another bug with smooth_economy
 -1393415	NPF & one-way sigs
--1244842	Multiplayer interface bug (0.4.0.1)
--1212267	station visited twice when servicing
+-1212267	Station visited twice when servicing
 -1208170	Duplicate station names can be created
 -1116638	"More, but smaller changes" deficiency
--1106356	re-offered prototypes
+-1106356	Re-offered prototypes
 
-Minor Bugs for 0.5.1
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 
 -1461629	[r4180]Subsidy calculated wrong
--1412031	fast forward scrolling is also fast forward :)
--1387424	overtake insolvent company is to cheap
+-1412031	Fast forward scrolling is also fast forward :)
 -1382782	Loan interest calculated 'wrong'
--1201284	permanent hilight in a depot
+-1201284	Permanent hilight in a depot
 -1185852	Scrollbars get arbitrarily small
--1160732	little bug with transparency
--1117731	Editor-StartingDate
--1108046	game freezes
+-1160732	Little bug with transparency
+-1108046	Game freezes
 -1102174	Bug if 3 people buy 25% shares in one company
 -1084620	Minor bug considering buses/trucks
--1034310	color mauve in diagrams
+-1034310	Color mauve in diagrams
 -1030661	It's possible to build a tunnel under oil wells
-- 987891	Large UFO destruction bug
 - 987883	Aircraft landing/taking off
-- 987880	company league table updating
-- 985924	aircraft taxi speed
+- 987880	Company league table updating
+- 985924	Aircraft taxi speed

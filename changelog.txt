@@ -1,3 +1,26 @@
+0.5.2-RC1 (2007-05-16)
+------------------------------------------------------------------------
+- Feature: Windows 95/98/ME check in Windows 2000/XP/2003/Vista builds (r9834)
+- Feature: Add password protected status to 'players' (network server) console command (r9771)
+- Feature: Add server_lang in [network] section of openttd.cfg (r9716)
+- Fix: Loading some TTDP savegames caused an instant assertion on loading (r9857)
+- Fix: [NewGRF] Catch occurance of division-by-zero in varaction handling (r9837)
+- Fix: Only non dedicated servers cannot have 0 players [FS#765] (r9785)
+- Fix: Remove arbitrary limit on length of NewGRF strings (r9775)
+- Fix: [NewGRF] Ignore axis-bit of station tile layouts [FS#756] (r9758)
+- Fix: [win32] Dead key and open/close console. (r9728)
+- Fix: When you have closed the "Load game"/"New game" windows which you started from the "start server" menu, you shouldn't start a server when starting a new game [SF#1244842] (r9757)
+- Fix: Trains were lost after autorenewal/autoreplace [FS#732] (r9753)
+- Fix: Stop flooded towns from building roads on water [FS#598] (r9743)
+- Fix: Station signs were not resized when the language changed [FS#672] (r9741)
+- Fix: In news history, newlines were not replaced with spaces [FS#677] (r9731)
+- Fix: Crash when destroying bridge with train partially on it [FS#738] (r9726)
+- Fix: Planes made a 270 degree turn instead of a 90 degree turn on the southern runway of the intercontinental airport [FS#743] (r9725)
+- Fix: In-game private messages did not work for clients with high ClientIDs (r9719)
+- Fix: Do not allow building of rail vehicles whose railtype is not available (r9718)
+- Fix: [YAPF] The guessed path was ignored for ships [FS#736] (r9694)
+
+
 0.5.1 (2007-04-20)
 ------------------------------------------------------------------------
 (None)
