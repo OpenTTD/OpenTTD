@@ -329,6 +329,9 @@ static void FixOldVehicles()
 	FOR_ALL_VEHICLES(v) {
 		Vehicle *u;
 
+		/* We haven't used this bit for stations for ages */
+		if (v->type == VEH_ROAD) CLRBIT(v->u.road.state, RVS_IS_STOPPING);
+
 		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
 			/* If a vehicle has the same orders, add the link to eachother
 			 * in both vehicles */
@@ -621,12 +624,7 @@ static const OldChunks station_chunk[] = {
 };
 static bool LoadOldStation(LoadgameState *ls, int num)
 {
-	Station *st;
-
-	if (!AddBlockIfNeeded(&_Station_pool, num))
-		error("Stations: failed loading savegame: too many stations");
-
-	st = GetStation(num);
+	Station *st = new (num) Station();
 	_current_station_id = num;
 
 	if (!LoadChunk(ls, st, station_chunk))
@@ -1554,6 +1552,19 @@ static bool LoadOldMain(LoadgameState *ls)
 
 	for (i = 0; i < OLD_MAP_SIZE; i ++) {
 		switch (GetTileType(i)) {
+			case MP_STATION:
+				_m[i].m4 = 0; // We do not understand this TTDP station mapping (yet)
+				switch (_m[i].m5) {
+					/* We have drive through stops at a totally different place */
+					case 0x53: case 0x54: _m[i].m5 += GFX_BUS_BASE_EXT   - 0x53; break;
+					case 0x57: case 0x58: _m[i].m5 += GFX_TRUCK_BASE_EXT - 0x57; break;
+					case 0x55: case 0x56: // Bus tram stop
+					case 0x59: case 0x5A: // Truck tram stop
+						DEBUG(oldloader, 0, "Loading failed - we don't support trams (yet)");
+						return false;
+				}
+				break;
+
 			case MP_RAILWAY:
 				/* We save presignals different from TTDPatch, convert them */
 				if (GetRailTileType(i) == RAIL_TILE_SIGNALS) {
