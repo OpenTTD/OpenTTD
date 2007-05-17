@@ -327,7 +327,10 @@ assert_compile(sizeof(uint8)  == 1);
 # define Point OTTD_AMIGA_POINT
 #endif
 
+#ifndef STRGEN
+/* In strgen error is not fatal and it doesn't use NOT_REACHED */
 void NORETURN CDECL error(const char *str, ...);
 #define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
+#endif /* STRGEN */
 
 #endif /* STDAFX_H */
