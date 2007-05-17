@@ -1178,34 +1178,47 @@ int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 
 static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pieces)
 {
-	Industry* best = NULL;
-	Industry* ind;
-	uint u;
+	Industry *best = NULL;
+	Industry *ind;
+	const IndustrySpec *indspec;
+	uint best_dist;
+	uint accepted_cargo_index;
 
 	/* Check if there's an industry close to the station that accepts the cargo
 	 * XXX - Think of something better to
 	 *       1) Only deliver to industries which are withing the catchment radius
 	 *       2) Distribute between industries if more then one is present */
-	u = (_patches.station_spread + 8) * 2;
+	best_dist = (_patches.station_spread + 8) * 2;
 	FOR_ALL_INDUSTRIES(ind) {
-		uint t;
+		indspec = GetIndustrySpec(ind->type);
 
-		if (( cargo_type == ind->accepts_cargo[0] ||
-					cargo_type == ind->accepts_cargo[1] ||
-					cargo_type == ind->accepts_cargo[2]
-				) &&
-				ind->produced_cargo[0] != CT_INVALID &&
-				ind->produced_cargo[0] != cargo_type &&
-				(t = DistanceManhattan(ind->xy, xy)) < u) {
-			u = t;
+		if (indspec->produced_cargo[0] == CT_INVALID) continue;
+
+		uint i;
+		for (i = 0; i < lengthof(indspec->accepts_cargo); i++) {
+			if (cargo_type == indspec->accepts_cargo[i] &&
+					(indspec->input_cargo_multiplier[i][0] != 0 || indspec->input_cargo_multiplier[i][1] != 0)) {
+				break;
+			}
+		}
+
+		if (i == lengthof(indspec->accepts_cargo)) continue;
+
+		uint dist = DistanceManhattan(ind->xy, xy);
+
+		if (dist < best_dist) {
 			best = ind;
+			best_dist = dist;
+			accepted_cargo_index = i;
 		}
 	}
 
 	/* Found one? */
 	if (best != NULL) {
+		indspec = GetIndustrySpec(best->type);
 		best->was_cargo_delivered = true;
-		best->cargo_waiting[0] = min(best->cargo_waiting[0] + num_pieces, 0xFFFF);
+		best->cargo_waiting[0] = min(best->cargo_waiting[0] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][0] / 256), 0xFFFF);
+		best->cargo_waiting[1] = min(best->cargo_waiting[1] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][1] / 256), 0xFFFF);
 	}
 }
 

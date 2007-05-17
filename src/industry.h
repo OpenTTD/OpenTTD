@@ -107,6 +107,7 @@ struct IndustrySpec {
 	byte minimal_cargo;                   ///< minimum amount of cargo transported to the stations
 	                                      ///< If the waiting cargo is less than this number, no cargo is moved to it
 	CargoID accepts_cargo[3];             ///< 3 accepted cargos
+	uint16 input_cargo_multiplier[3][2];  ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargos)
 	IndustryLifeType life_type;           ///< This is also known as Industry production flag, in newgrf specs
 	byte climate_availability;            ///< Bitmask, giving landscape enums as bit position
 	IndustyBehaviour behaviour;           ///< How this industry will behave, and how others entities can use it
