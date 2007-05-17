@@ -53,7 +53,7 @@ bool FiosIsRoot(const char *path)
 #else
 	/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
 	const char *s = strchr(path, ':');
-	return s[1] == '\0';
+	return s != NULL && s[1] == '\0';
 #endif
 }
 
