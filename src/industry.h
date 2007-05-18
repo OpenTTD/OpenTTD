@@ -77,7 +77,7 @@ struct Industry {
 	uint16 total_transported[2];    ///< total units transported per cargo
 	uint16 counter;                 ///< used for animation and/or production (if available cargo)
 
-	byte type;                      ///< type of industry. see IT_COAL_MINE and others
+	IndustryType type;              ///< type of industry. see IT_COAL_MINE and others
 	OwnerByte owner;                ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
 	byte random_color;              ///< randomized colour of the industry, for display purpose
 	Year last_prod_year;            ///< last year of production

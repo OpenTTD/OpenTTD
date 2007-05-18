@@ -1190,7 +1190,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 	Industry *ind;
 	const IndustrySpec *indspec;
 	uint best_dist;
-	uint accepted_cargo_index;
+	uint accepted_cargo_index = 0;  ///< unlikely value, just for warning removing
 
 	/* Check if there's an industry close to the station that accepts the cargo
 	 * XXX - Think of something better to
@@ -1199,10 +1199,10 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 	best_dist = (_patches.station_spread + 8) * 2;
 	FOR_ALL_INDUSTRIES(ind) {
 		indspec = GetIndustrySpec(ind->type);
+		uint i;
 
 		if (indspec->produced_cargo[0] == CT_INVALID) continue;
 
-		uint i;
 		for (i = 0; i < lengthof(indspec->accepts_cargo); i++) {
 			if (cargo_type == indspec->accepts_cargo[i] &&
 					(indspec->input_cargo_multiplier[i][0] != 0 || indspec->input_cargo_multiplier[i][1] != 0)) {
@@ -1210,6 +1210,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 			}
 		}
 
+		/* Check if matching cargo has been found */
 		if (i == lengthof(indspec->accepts_cargo)) continue;
 
 		uint dist = DistanceManhattan(ind->xy, xy);

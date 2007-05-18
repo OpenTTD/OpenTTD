@@ -63,8 +63,8 @@ IndustryType GetIndustryType(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
 
-	const Industry *ind = GetIndustry(GetIndustryIndex(tile));
-	return IsValidIndustry(ind) ? ind->type : IT_INVALID;
+	const Industry *ind = GetIndustryByTile(tile);
+	return IsValidIndustry(ind) ? ind->type : (IndustryType)IT_INVALID;
 }
 
 /**
