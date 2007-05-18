@@ -133,11 +133,14 @@ struct IndustryTileSpec {
 	byte anim_production;                 ///< Animation frame to start when goods are produced
 	byte anim_next;                       ///< Next frame in an animation
 	bool anim_state;                      ///< When true, the tile has to be drawn using the animation
-                                         ///< state instead of the construction state
+	                                      ///< state instead of the construction state
 };
 
+/* industry_cmd.cpp*/
 const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of industries default data
 const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles default data
+void ResetIndustries();
+void PlantRandomFarmField(const Industry *i);
 
 /* smallmap_gui.cpp */
 void BuildIndustriesLegend();
@@ -218,10 +221,6 @@ static inline void DeleteIndustry(Industry *i)
 
 VARDEF const Industry** _industry_sort;
 VARDEF bool _industry_sort_dirty;
-
-
-void DeleteIndustry(Industry *is);
-void PlantRandomFarmField(const Industry *i);
 
 enum {
 	IT_COAL_MINE           =   0,
