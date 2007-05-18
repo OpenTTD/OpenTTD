@@ -17,7 +17,13 @@ static const CargoSpec _default_cargo[] = {
 		STR_0011_MAIL,           STR_0031_MAIL,           STR_BAGS,       STR_QUANTITY_MAIL,         STR_ABBREV_MAIL,
 		SPR_CARGO_MAIL,          CC_MAIL        ),
 
+	/* Oil in temperate and arctic */
 	MK(  3, 'OIL_', 174, 16, 4437, 25, 255, true,  TE_NONE,
+		STR_0012_OIL,            STR_0032_OIL,            STR_LITERS,     STR_QUANTITY_OIL,          STR_ABBREV_OIL,
+		SPR_CARGO_OIL,           CC_LIQUID      ),
+
+	/* Oil in subtropic */
+	MK(  3, 'OIL_', 174, 16, 4892, 25, 255, true,  TE_NONE,
 		STR_0012_OIL,            STR_0032_OIL,            STR_LITERS,     STR_QUANTITY_OIL,          STR_ABBREV_OIL,
 		SPR_CARGO_OIL,           CC_LIQUID      ),
 
@@ -37,11 +43,17 @@ static const CargoSpec _default_cargo[] = {
 		STR_0022_WHEAT,          STR_0042_WHEAT,          STR_TONS,       STR_QUANTITY_WHEAT,        STR_ABBREV_WHEAT,
 		SPR_CARGO_GRAIN,         CC_BULK        ),
 
-	MK(  6, 'MAIZ', 191,  6, 4778,  4,  40, true,  TE_NONE,
+	MK(  6, 'MAIZ', 191,  6, 4322,  4,  40, true,  TE_NONE,
 		STR_001B_MAIZE,          STR_003B_MAIZE,          STR_TONS,       STR_QUANTITY_MAIZE,        STR_ABBREV_MAIZE,
 		SPR_CARGO_GRAIN,         CC_BULK        ),
 
+	/* Wood in temperate and arctic */
 	MK(  7, 'WOOD',  84, 16, 5005, 15, 255, true,  TE_NONE,
+		STR_0016_WOOD,           STR_0036_WOOD,           STR_TONS,       STR_QUANTITY_WOOD,         STR_ABBREV_WOOD,
+		SPR_CARGO_WOOD,          CC_PIECE_GOODS ),
+
+	/* Wood in subtropic */
+	MK(  7, 'WOOD',  84, 16, 7964, 15, 255, true,  TE_NONE,
 		STR_0016_WOOD,           STR_0036_WOOD,           STR_TONS,       STR_QUANTITY_WOOD,         STR_ABBREV_WOOD,
 		SPR_CARGO_WOOD,          CC_PIECE_GOODS ),
 
@@ -57,15 +69,15 @@ static const CargoSpec _default_cargo[] = {
 		STR_0019_VALUABLES,      STR_0039_VALUABLES,      STR_BAGS,       STR_QUANTITY_VALUABLES,    STR_ABBREV_VALUABLES,
 		SPR_CARGO_VALUES_GOLD,   CC_ARMOURED    ),
 
-	MK( 10, 'GOLD', 202,  8, 7509, 10,  40, true,  TE_NONE,
+	MK( 10, 'GOLD', 202,  8, 5802, 10,  40, true,  TE_NONE,
 		STR_0020_GOLD,           STR_0040_GOLD,           STR_BAGS,       STR_QUANTITY_GOLD,         STR_ABBREV_GOLD,
 		SPR_CARGO_VALUES_GOLD,   CC_ARMOURED    ),
 
-	MK( 10, 'DIAM', 202,  2, 7509, 10, 255, true,  TE_NONE,
+	MK( 10, 'DIAM', 202,  2, 5802, 10, 255, true,  TE_NONE,
 		STR_001D_DIAMONDS,       STR_003D_DIAMOND,        STR_BAGS,       STR_QUANTITY_DIAMONDS,     STR_ABBREV_DIAMONDS,
 		SPR_CARGO_DIAMONDS,      CC_ARMOURED    ),
 
-	MK( 11, 'PAPR',  10, 16, 5688,  7,  60, true,  TE_NONE,
+	MK( 11, 'PAPR',  10, 16, 5461,  7,  60, true,  TE_NONE,
 		STR_001F_PAPER,          STR_003F_PAPER,          STR_TONS,       STR_QUANTITY_PAPER,        STR_ABBREV_PAPER,
 		SPR_CARGO_PAPER,         CC_PIECE_GOODS ),
 
@@ -73,27 +85,27 @@ static const CargoSpec _default_cargo[] = {
 		STR_001E_FOOD,           STR_003E_FOOD,           STR_TONS,       STR_QUANTITY_FOOD,         STR_ABBREV_FOOD,
 		SPR_CARGO_FOOD,          CC_EXPRESS     | CC_REFRIGERATED),
 
-	MK( 13, 'FRUT', 208,  6, 4322,  0,  15, true,  TE_NONE,
+	MK( 13, 'FRUT', 208,  6, 4209,  0,  15, true,  TE_NONE,
 		STR_001C_FRUIT,          STR_003C_FRUIT,          STR_TONS,       STR_QUANTITY_FRUIT,        STR_ABBREV_FRUIT,
 		SPR_CARGO_FRUIT,         CC_BULK        | CC_REFRIGERATED),
 
-	MK( 14, 'CORE', 184,  6, 5120, 12, 255, true,  TE_NONE,
+	MK( 14, 'CORE', 184,  6, 4892, 12, 255, true,  TE_NONE,
 		STR_001A_COPPER_ORE,     STR_003A_COPPER_ORE,     STR_TONS,       STR_QUANTITY_COPPER_ORE,   STR_ABBREV_COPPER_ORE,
 		SPR_CARGO_COPPER_ORE,    CC_BULK        ),
 
-	MK( 15, 'WATR',  10,  6, 5688, 20,  80, true,  TE_WATER,
+	MK( 15, 'WATR',  10,  6, 4664, 20,  80, true,  TE_WATER,
 		STR_0021_WATER,          STR_0041_WATER,          STR_LITERS,     STR_QUANTITY_WATER,        STR_ABBREV_WATER,
 		SPR_CARGO_WATERCOLA,     CC_LIQUID      ),
 
-	MK( 16, 'RUBR',  32,  6, 5916,  2,  20, true,  TE_NONE,
+	MK( 16, 'RUBR',  32,  6, 4437,  2,  20, true,  TE_NONE,
 		STR_0023_RUBBER,         STR_0043_RUBBER,         STR_LITERS,     STR_QUANTITY_RUBBER,       STR_ABBREV_RUBBER,
 		SPR_CARGO_RUBBER,        CC_LIQUID      ),
 
-	MK( 17, 'SUGR',  32, 16, 5916, 20, 255, true,  TE_NONE,
+	MK( 17, 'SUGR',  32, 16, 4437, 20, 255, true,  TE_NONE,
 		STR_0024_SUGAR,          STR_0044_SUGAR,          STR_TONS,       STR_QUANTITY_SUGAR,        STR_ABBREV_SUGAR,
 		SPR_CARGO_SUGAR,         CC_BULK        ),
 
-	MK( 18, 'TOYS', 174,  2, 4437, 25, 255, true,  TE_NONE,
+	MK( 18, 'TOYS', 174,  2, 5574, 25, 255, true,  TE_NONE,
 		STR_0025_TOYS,           STR_0045_TOY,            STR_NOTHING,    STR_QUANTITY_TOYS,         STR_ABBREV_TOYS,
 		SPR_CARGO_TOYS,          CC_PIECE_GOODS ),
 
@@ -109,23 +121,23 @@ static const CargoSpec _default_cargo[] = {
 		STR_002A_TOFFEE,         STR_004A_TOFFEE,         STR_TONS,       STR_QUANTITY_TOFFEE,       STR_ABBREV_TOFFEE,
 		SPR_CARGO_TOFFEE,        CC_BULK        ),
 
-	MK( 22, 'COLA',  84, 16, 5005,  5,  75, true,  TE_NONE,
+	MK( 22, 'COLA',  84, 16, 4892,  5,  75, true,  TE_NONE,
 		STR_0027_COLA,           STR_0047_COLA,           STR_LITERS,     STR_QUANTITY_COLA,         STR_ABBREV_COLA,
 		SPR_CARGO_WATERCOLA,     CC_LIQUID      ),
 
-	MK( 23, 'CTCD', 184, 16, 5120, 10,  25, true,  TE_NONE,
+	MK( 23, 'CTCD', 184, 16, 5005, 10,  25, true,  TE_NONE,
 		STR_0028_COTTON_CANDY,   STR_0048_COTTON_CANDY,   STR_TONS,       STR_QUANTITY_CANDYFLOSS,   STR_ABBREV_CANDYFLOSS,
 		SPR_CARGO_COTTONCANDY,   CC_BULK        ),
 
-	MK( 24, 'BUBL',  10,  1, 5688, 20,  80, true,  TE_NONE,
+	MK( 24, 'BUBL',  10,  1, 5077, 20,  80, true,  TE_NONE,
 		STR_0029_BUBBLES,        STR_0049_BUBBLE,         STR_NOTHING,    STR_QUANTITY_BUBBLES,      STR_ABBREV_BUBBLES,
 		SPR_CARGO_BUBBLES,       CC_PIECE_GOODS ),
 
-	MK( 25, 'PLST', 202, 16, 7509, 30, 255, true,  TE_NONE,
+	MK( 25, 'PLST', 202, 16, 4664, 30, 255, true,  TE_NONE,
 		STR_002C_PLASTIC,        STR_004C_PLASTIC,        STR_LITERS,     STR_QUANTITY_PLASTIC,      STR_ABBREV_PLASTIC,
 		SPR_CARGO_PLASTIC,       CC_LIQUID      ),
 
-	MK( 26, 'FZDR',  48,  2, 5688, 30,  50, true,  TE_FOOD,
+	MK( 26, 'FZDR',  48,  2, 6250, 30,  50, true,  TE_FOOD,
 		STR_002D_FIZZY_DRINKS,   STR_004D_FIZZY_DRINK,    STR_NOTHING,    STR_QUANTITY_FIZZY_DRINKS, STR_ABBREV_FIZZY_DRINKS,
 		SPR_CARGO_FIZZYDRINK,    CC_PIECE_GOODS ),
 
@@ -136,7 +148,7 @@ static const CargoSpec _default_cargo[] = {
 static const CargoLabel _default_climate_cargo[NUM_LANDSCAPE][12] = {
 	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'GRAI', 'WOOD', 'IORE', 'STEL', 'VALU', 'VOID', },
 	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'WHEA', 'WOOD', 'VOID', 'PAPR', 'GOLD', 'FOOD', },
-	{ 'PASS', 'RUBR', 'MAIL', 'OIL_', 'FRUT', 'GOOD', 'MAIZ', 'WOOD', 'CORE', 'WATR', 'DIAM', 'FOOD', },
+	{ 'PASS', 'RUBR', 'MAIL',      4, 'FRUT', 'GOOD', 'MAIZ',     11, 'CORE', 'WATR', 'DIAM', 'FOOD', },
 	{ 'PASS', 'SUGR', 'MAIL', 'TOYS', 'BATT', 'SWET', 'TOFF', 'COLA', 'CTCD', 'BUBL', 'PLST', 'FZDR', },
 };
 

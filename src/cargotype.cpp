@@ -33,6 +33,14 @@ void SetupCargoForClimate(LandscapeID l)
 	for (CargoID i = 0; i < lengthof(_default_climate_cargo[l]); i++) {
 		CargoLabel cl = _default_climate_cargo[l][i];
 
+		/* Bzzt: check if cl is just an index into the cargo table */
+		if (cl < lengthof(_default_cargo)) {
+			/* Copy the indexed cargo */
+			_cargo[i] = _default_cargo[cl];
+			SETBIT(_cargo_mask, i);
+			continue;
+		}
+
 		/* Loop through each of the default cargo types to see if
 		 * the label matches */
 		for (uint j = 0; j < lengthof(_default_cargo); j++) {
