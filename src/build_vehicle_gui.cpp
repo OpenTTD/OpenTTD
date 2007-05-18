@@ -543,6 +543,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	bool refitable = false;
 
 	switch (e->type) {
+		default: NOT_REACHED();
 		case VEH_TRAIN: {
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
 			uint capacity = GetEngineProperty(engine_number, 0x14, rvi->capacity);
@@ -720,6 +721,7 @@ static void GenerateBuildList(Window *w)
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
 	switch (bv->vehicle_type) {
+		default: NOT_REACHED();
 		case VEH_TRAIN:
 			GenerateBuildTrainList(w);
 			return; // trains should not reach the last sorting
@@ -757,7 +759,7 @@ static void DrawVehicleEngine(byte type, int x, int y, EngineID engine, SpriteID
  * @param selected_id what engine to highlight as selected, if any
  * @param show_count Display the number of vehicles (used by autoreplace)
  */
-void DrawEngineList(byte type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count)
+void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count)
 {
 	byte step_size = GetVehicleListHeight(type);
 	byte x_offset = 0;
@@ -872,6 +874,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 			EngineID sel_eng = bv->sel_engine;
 			if (sel_eng != INVALID_ENGINE) {
 				switch (bv->vehicle_type) {
+					default: NOT_REACHED();
 					case VEH_TRAIN:
 						DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco,
 								   CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
@@ -897,6 +900,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 
 				bv->rename_engine = sel_eng;
 				switch (bv->vehicle_type) {
+					default: NOT_REACHED();
 					case VEH_TRAIN:    str = STR_886A_RENAME_TRAIN_VEHICLE_TYPE; break;
 					case VEH_ROAD:     str = STR_9036_RENAME_ROAD_VEHICLE_TYPE;  break;
 					case VEH_SHIP:     str = STR_9838_RENAME_SHIP_TYPE;          break;
@@ -940,6 +944,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 				StringID str = STR_NULL;
 				_cmd_text = e->we.edittext.str;
 				switch (bv->vehicle_type) {
+					default: NOT_REACHED();
 					case VEH_TRAIN:    str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
 					case VEH_ROAD:     str = STR_9037_CAN_T_RENAME_ROAD_VEHICLE;  break;
 					case VEH_SHIP:     str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
@@ -977,7 +982,7 @@ static const WindowDesc _build_vehicle_desc = {
 	NewVehicleWndProc
 };
 
-void ShowBuildVehicleWindow(TileIndex tile, byte type)
+void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 {
 	buildvehicle_d *bv;
 	Window *w;
@@ -1006,6 +1011,7 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 	bv->descending_sort_order = _last_sort_order[type];
 
 	switch (type) {
+		default: NOT_REACHED();
 		case VEH_TRAIN:
 			WP(w, buildvehicle_d).filter.railtype = (tile == 0) ? RAILTYPE_END : GetRailType(tile);
 			ResizeWindow(w, 0, 16);

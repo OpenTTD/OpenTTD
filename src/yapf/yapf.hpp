@@ -7,6 +7,7 @@
 
 #include "track_dir.hpp"
 
+#include "../vehicle.h"
 #include "../depot.h"
 #include "../road_map.h"
 #include "../tunnel_map.h"
@@ -14,7 +15,6 @@
 #include "../bridge.h"
 #include "../station.h"
 #include "../station_map.h"
-#include "../vehicle.h"
 #include "../date.h"
 #include "../functions.h"
 #include "../landscape.h"

@@ -2443,6 +2443,7 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 	if (p->livery[LS_DEFAULT].in_use && (_patches.liveries == 2 || (_patches.liveries == 1 && player == _local_player))) {
 		/* Determine the livery scheme to use */
 		switch (GetEngine(engine_type)->type) {
+			default: NOT_REACHED();
 			case VEH_TRAIN: {
 				const RailVehicleInfo *rvi = RailVehInfo(engine_type);
 

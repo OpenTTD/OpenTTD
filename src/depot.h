@@ -42,7 +42,7 @@ static inline void DeleteDepot(Depot *depot)
 	depot->xy = 0;
 }
 
-void ShowDepotWindow(TileIndex tile, byte type);
+void ShowDepotWindow(TileIndex tile, VehicleType type);
 
 #define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) if (IsValidDepot(d))
 #define FOR_ALL_DEPOTS(d) FOR_ALL_DEPOTS_FROM(d, 0)

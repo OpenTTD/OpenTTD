@@ -45,7 +45,7 @@ struct vehiclelist_d {
 	const Vehicle** sort_list;  // List of vehicles (sorted)
 	Listing *_sorting;          // pointer to the appropiate subcategory of _sorting
 	uint16 length_of_sort_list; // Keeps track of how many vehicle pointers sort list got space for
-	byte vehicle_type;          // The vehicle type that is sorted
+	VehicleType vehicle_type;   // The vehicle type that is sorted
 	list_d l;                   // General list struct
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
@@ -809,7 +809,7 @@ static void CreateVehicleListWindow(Window *w)
 	uint16 window_type = w->window_number & VLW_MASK;
 	PlayerID player = (PlayerID)GB(w->window_number, 0, 8);
 
-	vl->vehicle_type = GB(w->window_number, 11, 5);
+	vl->vehicle_type = (VehicleType)GB(w->window_number, 11, 5);
 	vl->length_of_sort_list = 0;
 	vl->sort_list = NULL;
 	w->caption_color = player;
@@ -1236,7 +1236,7 @@ static const WindowDesc _player_vehicle_list_aircraft_desc = {
 	PlayerVehWndProc
 };
 
-static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, byte vehicle_type, uint16 unique_number)
+static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
 {
 	Window *w;
 	WindowNumber num;
@@ -1273,7 +1273,7 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, byte ve
 	}
 }
 
-void ShowVehicleListWindow(PlayerID player, byte vehicle_type)
+void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
 {
 	ShowVehicleListWindowLocal(player, VLW_STANDARD, vehicle_type, 0);
 }
@@ -1284,12 +1284,12 @@ void ShowVehicleListWindow(const Vehicle *v)
 	ShowVehicleListWindowLocal(v->owner, VLW_SHARED_ORDERS, v->type, v->orders->index);
 }
 
-void ShowVehicleListWindow(PlayerID player, byte vehicle_type, StationID station)
+void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, StationID station)
 {
 	ShowVehicleListWindowLocal(player, VLW_STATION_LIST, vehicle_type, station);
 }
 
-void ShowVehicleListWindow(PlayerID player, byte vehicle_type, TileIndex depot_tile)
+void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex depot_tile)
 {
 	uint16 depot_airport_index;
 

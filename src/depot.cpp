@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "vehicle.h"
 #include "depot.h"
 #include "functions.h"
 #include "landscape.h"

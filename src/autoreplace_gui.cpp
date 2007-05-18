@@ -62,7 +62,7 @@ void InvalidateAutoreplaceWindow(EngineID e)
 /** When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
  * @param type The type of engine
  */
-void AddRemoveEngineFromAutoreplaceAndBuildWindows(byte type)
+void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
 {
 	_rebuild_left_list = false; // left list is only for the vehicles the player owns and is not related to being buildable
 	_rebuild_right_list = true;
@@ -202,7 +202,7 @@ static void GenerateLists(Window *w)
 }
 
 
-void DrawEngineList(byte type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count);
+void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count);
 
 static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 {
@@ -296,7 +296,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				EngineID end    = min((i == 0 ? w->vscroll.cap : w->vscroll2.cap) + start, EngList_Count(&list));
 
 				/* Do the actual drawing */
-				DrawEngineList(w->window_number, x, 15, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0);
+				DrawEngineList((VehicleType)w->window_number, x, 15, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0);
 
 				/* Also draw the details if an engine is selected */
 				if (WP(w, replaceveh_d).sel_engine[i] != INVALID_ENGINE) {
@@ -480,7 +480,7 @@ static const WindowDesc _replace_ship_aircraft_vehicle_desc = {
 };
 
 
-void ShowReplaceVehicleWindow(byte vehicletype)
+void ShowReplaceVehicleWindow(VehicleType vehicletype)
 {
 	Window *w;
 

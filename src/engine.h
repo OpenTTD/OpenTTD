@@ -120,7 +120,7 @@ struct Engine {
 	PlayerByte preview_player;
 	byte preview_wait;
 	byte player_avail;
-	byte type; ///< type, ie VEH_ROAD, VEH_TRAIN, etc. Same as in vehicle.h
+	VehicleType type; ///< type, ie VEH_ROAD, VEH_TRAIN, etc. Same as in vehicle.h
 };
 
 /**
@@ -341,7 +341,7 @@ int32 RemoveEngineReplacement(EngineRenewList* erl, EngineID engine, uint32 flag
 /** When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
  * @param type The type of engine
  */
-void AddRemoveEngineFromAutoreplaceAndBuildWindows(byte type);
+void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type);
 
 /* Engine list manipulators - current implementation is only C wrapper of CBlobT<EngineID> class (helpers.cpp) */
 void EngList_Create(EngineList *el);            ///< Creates engine list

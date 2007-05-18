@@ -4550,6 +4550,8 @@ static void CalculateRefitMasks()
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Apparently cargo_type isn't a common property... */
 		switch (GetEngine(engine)->type) {
+			default: NOT_REACHED();
+			case VEH_AIRCRAFT: break;
 			case VEH_TRAIN: {
 				RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);

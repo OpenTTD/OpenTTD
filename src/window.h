@@ -10,6 +10,7 @@
 #include "order.h"
 #include "rail.h"
 #include "airport.h"
+#include "vehicle.h"
 
 struct WindowEvent;
 
@@ -323,7 +324,7 @@ struct tooltips_d {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 
 struct buildvehicle_d {
-	byte vehicle_type;
+	VehicleType vehicle_type;
 	union {
 		RailTypeByte railtype;
 		AirportFTAClass::Flags flags;
@@ -352,7 +353,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
 
 struct depot_d {
 	VehicleID sel;
-	byte type;
+	VehicleType type;
 	bool generate_list;
 	uint16 engine_list_length;
 	uint16 wagon_list_length;

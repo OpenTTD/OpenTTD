@@ -41,7 +41,7 @@ void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection);
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection);
 void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
 
-void ShowBuildVehicleWindow(TileIndex tile, byte type);
+void ShowBuildVehicleWindow(TileIndex tile, VehicleType type);
 
 void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v);
 
@@ -49,11 +49,11 @@ uint ShowAdditionalText(int x, int y, uint w, EngineID engine);
 uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine);
 
 void ShowVehicleListWindow(const Vehicle *v);
-void ShowVehicleListWindow(PlayerID player, byte vehicle_type);
-void ShowVehicleListWindow(PlayerID player, byte vehicle_type, StationID station);
-void ShowVehicleListWindow(PlayerID player, byte vehicle_type, TileIndex depot_tile);
+void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type);
+void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, StationID station);
+void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex depot_tile);
 
-void ShowReplaceVehicleWindow(byte vehicletype);
+void ShowReplaceVehicleWindow(VehicleType vehicletype);
 
 static inline void DrawVehicleImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
 {
@@ -66,7 +66,7 @@ static inline void DrawVehicleImage(const Vehicle *v, int x, int y, int count, i
 	}
 }
 
-static inline uint GetVehicleListHeight(byte type)
+static inline uint GetVehicleListHeight(VehicleType type)
 {
 	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
 }

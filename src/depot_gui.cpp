@@ -657,7 +657,7 @@ static void ResizeDefaultWindowSizeForRoadVehicles()
 	_block_sizes[VEH_ROAD][1] = GetVehicleListHeight(VEH_ROAD);
 }
 
-static void ResizeDefaultWindowSize(byte type)
+static void ResizeDefaultWindowSize(VehicleType type)
 {
 	EngineID engine;
 	uint max_width  = 0;
@@ -697,7 +697,7 @@ void InitDepotWindowBlockSizes()
 	ResizeDefaultWindowSize(VEH_AIRCRAFT);
 }
 
-static void CreateDepotListWindow(Window *w, byte type)
+static void CreateDepotListWindow(Window *w, VehicleType type)
 {
 	WP(w, depot_d).type = type;
 	_backup_orders_tile = 0;
@@ -975,7 +975,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
  * @param tile The tile where the depot/hangar is located
  * @param type The type of vehicles in the depot
  */
-void ShowDepotWindow(TileIndex tile, byte type)
+void ShowDepotWindow(TileIndex tile, VehicleType type)
 {
 	Window *w;
 
