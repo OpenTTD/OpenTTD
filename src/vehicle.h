@@ -522,7 +522,7 @@ void EndVehicleMove(Vehicle *v);
 
 void ShowAircraftViewWindow(const Vehicle* v);
 
-UnitID GetFreeUnitNumber(byte type);
+UnitID GetFreeUnitNumber(VehicleType type);
 
 void TrainConsistChanged(Vehicle *v);
 void TrainPowerChanged(Vehicle *v);
@@ -532,9 +532,9 @@ int CheckTrainStoppedInDepot(const Vehicle *v);
 
 bool VehicleNeedsService(const Vehicle *v);
 
-uint GenerateVehicleSortList(const Vehicle*** sort_list, uint16 *length_of_array, byte type, PlayerID owner, uint32 index, uint16 window_type);
-void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count);
-int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
+uint GenerateVehicleSortList(const Vehicle*** sort_list, uint16 *length_of_array, VehicleType type, PlayerID owner, uint32 index, uint16 window_type);
+void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count);
+int32 SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
 bool IsVehicleInDepot(const Vehicle *v);
 void VehicleEnterDepot(Vehicle *v);
 
@@ -610,7 +610,7 @@ static inline void DeleteVehicle(Vehicle *v)
 	v = new (v) InvalidVehicle();
 }
 
-static inline bool IsPlayerBuildableVehicleType(byte type)
+static inline bool IsPlayerBuildableVehicleType(VehicleType type)
 {
 	switch (type) {
 		case VEH_TRAIN:
@@ -618,8 +618,9 @@ static inline bool IsPlayerBuildableVehicleType(byte type)
 		case VEH_SHIP:
 		case VEH_AIRCRAFT:
 			return true;
+
+		default: return false;
 	}
-	return false;
 }
 
 static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
@@ -715,7 +716,7 @@ extern const uint32 _veh_refit_proc_table[];
 extern const uint32 _send_to_depot_proc_table[];
 
 /* Functions to find the right command for certain vehicle type */
-static inline uint32 GetCmdBuildVeh(byte type)
+static inline uint32 GetCmdBuildVeh(VehicleType type)
 {
 	return _veh_build_proc_table[type];
 }
@@ -725,7 +726,7 @@ static inline uint32 GetCmdBuildVeh(const Vehicle *v)
 	return GetCmdBuildVeh(v->type);
 }
 
-static inline uint32 GetCmdSellVeh(byte type)
+static inline uint32 GetCmdSellVeh(VehicleType type)
 {
 	return _veh_sell_proc_table[type];
 }
@@ -735,7 +736,7 @@ static inline uint32 GetCmdSellVeh(const Vehicle *v)
 	return GetCmdSellVeh(v->type);
 }
 
-static inline uint32 GetCmdRefitVeh(byte type)
+static inline uint32 GetCmdRefitVeh(VehicleType type)
 {
 	return _veh_refit_proc_table[type];
 }
@@ -745,7 +746,7 @@ static inline uint32 GetCmdRefitVeh(const Vehicle *v)
 	return GetCmdRefitVeh(v->type);
 }
 
-static inline uint32 GetCmdSendToDepot(byte type)
+static inline uint32 GetCmdSendToDepot(VehicleType type)
 {
 	return _send_to_depot_proc_table[type];
 }

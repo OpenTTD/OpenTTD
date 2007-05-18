@@ -1566,7 +1566,7 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	int32 return_value = CMD_ERROR;
 	uint i;
 	uint stop_command;
-	byte vehicle_type = GB(p2, 0, 5);
+	VehicleType vehicle_type = (VehicleType)GB(p2, 0, 5);
 	bool start_stop = HASBIT(p2, 5);
 	bool vehicle_list_window = HASBIT(p2, 6);
 
@@ -1633,7 +1633,7 @@ int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	int32 cost = 0;
 	uint i, sell_command, total_number_vehicles;
-	byte vehicle_type = GB(p1, 0, 8);
+	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
 	switch (vehicle_type) {
 		case VEH_TRAIN:    sell_command = CMD_SELL_RAIL_WAGON; break;
@@ -1682,8 +1682,7 @@ int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	uint16 engine_count = 0;
 	uint i, x = 0, y = 0, z = 0;
 	int32 cost = 0;
-	byte vehicle_type = GB(p1, 0, 8);
-
+	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
@@ -1895,7 +1894,7 @@ static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *e
  * @param *wagon_list_length Allocated size of wagon_list. Needs to be set to 0 when wagon_list points to a NULL array
  * @param *wagon_count The number of engines stored in the list
  */
-void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count)
+void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count)
 {
 	Vehicle *v;
 
@@ -1978,7 +1977,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
 * @return the number of vehicles added to the list
 */
-uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, byte type, PlayerID owner, uint32 index, uint16 window_type)
+uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, VehicleType type, PlayerID owner, uint32 index, uint16 window_type)
 {
 	const byte subtype = (type != VEH_AIRCRAFT) ? (byte)Train_Front : (byte)AIR_AIRCRAFT;
 	uint n = 0;
@@ -2075,7 +2074,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
  * @param vlw_flag tells what kind of list requested the goto depot
  * @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
  */
-int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
+int32 SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
 {
 	const Vehicle **sort_list = NULL;
 	uint n, i;
@@ -2385,7 +2384,7 @@ uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)
 	return _tile_type_procs[GetTileType(tile)]->vehicle_enter_tile_proc(v, tile, x, y);
 }
 
-UnitID GetFreeUnitNumber(byte type)
+UnitID GetFreeUnitNumber(VehicleType type)
 {
 	UnitID unit, max = 0;
 	const Vehicle *u;
