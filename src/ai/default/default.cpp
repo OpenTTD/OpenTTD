@@ -543,6 +543,7 @@ static void AiFindSubsidyPassengerRoute(FoundRoute *fr)
 static void AiFindRandomIndustryRoute(FoundRoute *fr)
 {
 	Industry* i;
+	const IndustrySpec *indsp;
 	uint32 r;
 	CargoID cargo;
 
@@ -556,8 +557,9 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 	if (i == NULL) return;
 
 	// pick a random produced cargo
-	cargo = i->produced_cargo[0];
-	if (r & 1 && i->produced_cargo[1] != CT_INVALID) cargo = i->produced_cargo[1];
+	indsp = GetIndustrySpec(i->type);
+	cargo = indsp->produced_cargo[0];
+	if (r & 1 && indsp->produced_cargo[1] != CT_INVALID) cargo = indsp->produced_cargo[1];
 
 	fr->cargo = cargo;
 
@@ -567,12 +569,16 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 	if (cargo != CT_GOODS && cargo != CT_FOOD) {
 		// pick a dest, and see if it can receive
 		Industry* i2 = AiFindRandomIndustry();
+		if (i2 == NULL) {
+			return;
+		}
 
-		if (i2 == NULL || i == i2 || (
-					i2->accepts_cargo[0] != cargo &&
-					i2->accepts_cargo[1] != cargo &&
-					i2->accepts_cargo[2] != cargo)
-				) {
+		indsp = GetIndustrySpec(i2->type);
+
+		if (i == i2 ||
+				(indsp->accepts_cargo[0] != cargo &&
+				indsp->accepts_cargo[1] != cargo &&
+				indsp->accepts_cargo[2] != cargo)) {
 			return;
 		}
 
@@ -664,9 +670,10 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 		}
 	} else {
 		const Industry* i = (const Industry*)fr->from;
+		const IndustrySpec *indsp = GetIndustrySpec(i->type);
 
-		if (i->pct_transported[fr->cargo != i->produced_cargo[0]] > 0x99 ||
-				i->total_production[fr->cargo != i->produced_cargo[0]] == 0) {
+		if (i->pct_transported[fr->cargo != indsp->produced_cargo[0]] > 0x99 ||
+				i->total_production[fr->cargo != indsp->produced_cargo[0]] == 0) {
 			return false;
 		}
 	}

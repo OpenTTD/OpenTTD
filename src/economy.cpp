@@ -957,6 +957,7 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 static void FindSubsidyCargoRoute(FoundRoute *fr)
 {
 	Industry *i;
+	const IndustrySpec *ind;
 	int trans, total;
 	CargoID cargo;
 
@@ -964,14 +965,15 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	fr->from = i = GetRandomIndustry();
 	if (i == NULL) return;
+	ind = GetIndustrySpec(i->type);
 
 	/* Randomize cargo type */
-	if (Random()&1 && i->produced_cargo[1] != CT_INVALID) {
-		cargo = i->produced_cargo[1];
+	if (HASBIT(Random(), 0) && ind->produced_cargo[1] != CT_INVALID) {
+		cargo = ind->produced_cargo[1];
 		trans = i->pct_transported[1];
 		total = i->total_production[1];
 	} else {
-		cargo = i->produced_cargo[0];
+		cargo = ind->produced_cargo[0];
 		trans = i->pct_transported[0];
 		total = i->total_production[0];
 	}
@@ -998,13 +1000,19 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	} else {
 		/* The destination is an industry */
 		Industry *i2 = GetRandomIndustry();
+		if (i2 == NULL) {
+			return;
+		}
+
+		ind = GetIndustrySpec(i2->type);
 
 		/* The industry must accept the cargo */
-		if (i == i2 || i == NULL ||
-				(cargo != i2->accepts_cargo[0] &&
-				cargo != i2->accepts_cargo[1] &&
-				cargo != i2->accepts_cargo[2]))
+		if (i == i2 ||
+				(cargo != ind->accepts_cargo[0] &&
+				cargo != ind->accepts_cargo[1] &&
+				cargo != ind->accepts_cargo[2])) {
 			return;
+		}
 		fr->distance = DistanceManhattan(i->xy, i2->xy);
 		fr->to = i2;
 	}

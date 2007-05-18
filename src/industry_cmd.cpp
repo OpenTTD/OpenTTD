@@ -55,26 +55,16 @@ DEFINE_OLD_POOL(Industry, Industry, IndustryPoolNewBlock, NULL)
  * Retrieve the type for this industry.  Although it is accessed by a tile,
  * it will return the general type of industry, and not the sprite index
  * as would do GetIndustryGfx.
- * The same information can be accessed by looking at Industry->type
  * @param tile that is queried
  * @pre IsTileType(tile, MP_INDUSTRY)
  * @return general type for this industry, as defined in industry.h
  **/
 IndustryType GetIndustryType(TileIndex tile)
 {
-	IndustryGfx this_type = GetIndustryGfx(tile);
-	IndustryType iloop;
-
 	assert(IsTileType(tile, MP_INDUSTRY));
 
-	for (iloop = IT_COAL_MINE; iloop < NUM_INDUSTRYTYPES; iloop += 1) {
-		if (IS_BYTE_INSIDE(this_type, industry_gfx_Solver[iloop].MinGfx,
-				industry_gfx_Solver[iloop].MaxGfx + 1)) {
-			return iloop;
-		}
-	}
-
-	return IT_INVALID;  //we have not found equivalent, whatever the reason
+	const Industry *ind = GetIndustry(GetIndustryIndex(tile));
+	return IsValidIndustry(ind) ? ind->type : IT_INVALID;
 }
 
 /**
@@ -355,7 +345,7 @@ static void TransportIndustryGoods(TileIndex tile)
 
 		i->last_mo_production[0] += cw;
 
-		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[0], cw);
+		am = MoveGoodsToStation(i->xy, i->width, i->height, indspec->produced_cargo[0], cw);
 		i->last_mo_transported[0] += am;
 		if (am != 0) {
 			uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
@@ -377,7 +367,7 @@ static void TransportIndustryGoods(TileIndex tile)
 
 		i->last_mo_production[1] += cw;
 
-		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[1], cw);
+		am = MoveGoodsToStation(i->xy, i->width, i->height, indspec->produced_cargo[1], cw);
 		i->last_mo_transported[1] += am;
 	}
 }
@@ -752,7 +742,7 @@ static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode)
 
 static void GetProducedCargo_Industry(TileIndex tile, CargoID *b)
 {
-	const Industry *i = GetIndustryByTile(tile);
+	const IndustrySpec *i = GetIndustrySpec(GetIndustryByTile(tile)->type);
 
 	b[0] = i->produced_cargo[0];
 	b[1] = i->produced_cargo[1];
@@ -1333,7 +1323,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 		/* check if an industry that accepts the same goods is nearby */
 		if (DistanceMax(tile, i->xy) <= 14 &&
 				indspec->accepts_cargo[0] != CT_INVALID &&
-				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
+				indspec->accepts_cargo[0] == indspec->accepts_cargo[0] && (
 					_game_mode != GM_EDITOR ||
 					!_patches.same_industry_close ||
 					!_patches.multiple_industry_per_town
@@ -1384,11 +1374,6 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->width = i->height = 0;
 	i->type = type;
 
-	i->produced_cargo[0] = indspec->produced_cargo[0];
-	i->produced_cargo[1] = indspec->produced_cargo[1];
-	i->accepts_cargo[0] = indspec->accepts_cargo[0];
-	i->accepts_cargo[1] = indspec->accepts_cargo[1];
-	i->accepts_cargo[2] = indspec->accepts_cargo[2];
 	i->production_rate[0] = indspec->production_rate[0];
 	i->production_rate[1] = indspec->production_rate[1];
 
@@ -1638,7 +1623,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 			break;
 
 		default: /* INDUSTRY_PRODUCTION */
-			for (j = 0; j < 2 && i->produced_cargo[j] != CT_INVALID; j++){
+			for (j = 0; j < 2 && indspec->produced_cargo[j] != CT_INVALID; j++){
 				uint32 r = Random();
 				int old_prod, new_prod, percent;
 				int mag;
@@ -1664,7 +1649,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 				mag = abs(percent);
 				if (mag >= 10) {
 					SetDParam(2, mag);
-					SetDParam(0, GetCargo(i->produced_cargo[j])->name);
+					SetDParam(0, GetCargo(indspec->produced_cargo[j])->name);
 					SetDParam(1, i->index);
 					AddNewsItem(
 						percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
@@ -1693,39 +1678,25 @@ static void UpdateIndustryStatistics(Industry *i)
 {
 	byte pct;
 	bool refresh = false;
+	const IndustrySpec *indsp = GetIndustrySpec(i->type);
 
-	if (i->produced_cargo[0] != CT_INVALID) {
-		pct = 0;
-		if (i->last_mo_production[0] != 0) {
-			i->last_prod_year = _cur_year;
-			pct = min(i->last_mo_transported[0] * 256 / i->last_mo_production[0], 255);
-		}
-		i->pct_transported[0] = pct;
+	for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
+		if (indsp->produced_cargo[j] != CT_INVALID) {
+			pct = 0;
+			if (i->last_mo_production[j] != 0) {
+				i->last_prod_year = _cur_year;
+				pct = min(i->last_mo_transported[j] * 256 / i->last_mo_production[j], 255);
+			}
+			i->pct_transported[j] = pct;
 
 		i->total_production[0] = i->last_mo_production[0];
 		i->last_mo_production[0] = 0;
 
-		i->total_transported[0] = i->last_mo_transported[0];
-		i->last_mo_transported[0] = 0;
-		refresh = true;
-	}
-
-	if (i->produced_cargo[1] != CT_INVALID) {
-		pct = 0;
-		if (i->last_mo_production[1] != 0) {
-			i->last_prod_year = _cur_year;
-			pct = min(i->last_mo_transported[1] * 256 / i->last_mo_production[1], 255);
+			i->total_transported[j] = i->last_mo_transported[j];
+			i->last_mo_transported[j] = 0;
+			refresh = true;
 		}
-		i->pct_transported[1] = pct;
-
-		i->total_production[1] = i->last_mo_production[1];
-		i->last_mo_production[1] = 0;
-
-		i->total_transported[1] = i->last_mo_transported[1];
-		i->last_mo_transported[1] = 0;
-		refresh = true;
 	}
-
 
 	if (refresh)
 		InvalidateWindow(WC_INDUSTRY_VIEW, i->index);
@@ -1920,10 +1891,10 @@ static const SaveLoad _industry_desc[] = {
 	    SLE_VAR(Industry, width,               SLE_UINT8),
 	    SLE_VAR(Industry, height,              SLE_UINT8),
 	    SLE_REF(Industry, town,                REF_TOWN),
-	    SLE_ARR(Industry, produced_cargo,      SLE_UINT8,  2),
+	SLE_CONDNULL( 2, 2, 60),       ///< used to be industry's produced_cargo
 	    SLE_ARR(Industry, cargo_waiting,       SLE_UINT16, 2),
 	    SLE_ARR(Industry, production_rate,     SLE_UINT8,  2),
-	    SLE_ARR(Industry, accepts_cargo,       SLE_UINT8,  3),
+	SLE_CONDNULL( 3, 2, 60),       ///< used to be industry's accepts_cargo
 	    SLE_VAR(Industry, prod_level,          SLE_UINT8),
 	    SLE_ARR(Industry, last_mo_production,  SLE_UINT16, 2),
 	    SLE_ARR(Industry, last_mo_transported, SLE_UINT16, 2),

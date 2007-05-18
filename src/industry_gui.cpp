@@ -287,8 +287,9 @@ static inline bool isProductionMaximum(const Industry *i, int pt) {
 
 static inline bool IsProductionAlterable(const Industry *i)
 {
+	const IndustrySpec *ind = GetIndustrySpec(i->type);
 	return ((_game_mode == GM_EDITOR || _cheats.setup_prod.value) &&
-		     (i->accepts_cargo[0] == CT_INVALID || i->accepts_cargo[0] == CT_VALUABLES));
+			(ind->accepts_cargo[0] == CT_INVALID || ind->accepts_cargo[0] == CT_VALUABLES));
 }
 
 static void IndustryViewWndProc(Window *w, WindowEvent *e)
@@ -300,30 +301,31 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		const Industry *i = GetIndustry(w->window_number);
+		const IndustrySpec *ind = GetIndustrySpec(i->type);
 
 		SetDParam(0, w->window_number);
 		DrawWindowWidgets(w);
 
-		if (i->accepts_cargo[0] != CT_INVALID) {
+		if (ind->accepts_cargo[0] != CT_INVALID) {
 			StringID str;
 
-			SetDParam(0, GetCargo(i->accepts_cargo[0])->name);
+			SetDParam(0, GetCargo(ind->accepts_cargo[0])->name);
 			str = STR_4827_REQUIRES;
-			if (i->accepts_cargo[1] != CT_INVALID) {
-				SetDParam(1, GetCargo(i->accepts_cargo[1])->name);
+			if (ind->accepts_cargo[1] != CT_INVALID) {
+				SetDParam(1, GetCargo(ind->accepts_cargo[1])->name);
 				str = STR_4828_REQUIRES;
-				if (i->accepts_cargo[2] != CT_INVALID) {
-					SetDParam(2, GetCargo(i->accepts_cargo[2])->name);
+				if (ind->accepts_cargo[2] != CT_INVALID) {
+					SetDParam(2, GetCargo(ind->accepts_cargo[2])->name);
 					str = STR_4829_REQUIRES;
 				}
 			}
 			DrawString(2, 107, str, 0);
 		}
 
-		if (i->produced_cargo[0] != CT_INVALID) {
+		if (ind->produced_cargo[0] != CT_INVALID) {
 			DrawString(2, 117, STR_482A_PRODUCTION_LAST_MONTH, 0);
 
-			SetDParam(0, i->produced_cargo[0]);
+			SetDParam(0, ind->produced_cargo[0]);
 			SetDParam(1, i->total_production[0]);
 
 			SetDParam(2, i->pct_transported[0] * 100 >> 8);
@@ -334,8 +336,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 						!isProductionMinimum(i, 0), !isProductionMaximum(i, 0));
 			}
 
-			if (i->produced_cargo[1] != CT_INVALID) {
-				SetDParam(0, i->produced_cargo[1]);
+			if (ind->produced_cargo[1] != CT_INVALID) {
+				SetDParam(0, ind->produced_cargo[1]);
 				SetDParam(1, i->total_production[1]);
 				SetDParam(2, i->pct_transported[1] * 100 >> 8);
 				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
@@ -365,7 +367,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 			x = e->we.click.pt.x;
 			line = (e->we.click.pt.y - 127) / 10;
-			if (e->we.click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
+			if (e->we.click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) &&
+					GetIndustrySpec(i->type)->produced_cargo[line] != CT_INVALID) {
 				if (IS_INT_INSIDE(x, 5, 25) ) {
 					/* Clicked buttons, decrease or increase production */
 					if (x < 15) {
@@ -416,11 +419,13 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 static void UpdateIndustryProduction(Industry *i)
 {
-	if (i->produced_cargo[0] != CT_INVALID)
-		i->total_production[0] = 8 * i->production_rate[0];
+	const IndustrySpec *ind = GetIndustrySpec(i->type);
 
-	if (i->produced_cargo[1] != CT_INVALID)
-		i->total_production[1] = 8 * i->production_rate[1];
+	for (byte j = 0; j < lengthof(ind->produced_cargo); j++) {
+		if (ind->produced_cargo[j] != CT_INVALID) {
+			i->total_production[j] = 8 * i->production_rate[j];
+		}
+	}
 }
 
 static const Widget _industry_view_widgets[] = {
@@ -482,6 +487,8 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
 	const Industry* i = *(const Industry**)a;
 	const Industry* j = *(const Industry**)b;
+	const IndustrySpec *ind_i = GetIndustrySpec(i->type);
+	const IndustrySpec *ind_j = GetIndustrySpec(j->type);
 	int r;
 
 	switch (_industry_sort_order >> 1) {
@@ -495,10 +502,10 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 			break;
 
 		case 2: /* Sort by Production */
-			if (i->produced_cargo[0] == CT_INVALID) {
-				r = (j->produced_cargo[0] == CT_INVALID ? 0 : -1);
+			if (ind_i->produced_cargo[0] == CT_INVALID) {
+				r = (ind_j->produced_cargo[0] == CT_INVALID ? 0 : -1);
 			} else {
-				if (j->produced_cargo[0] == CT_INVALID) {
+				if (ind_j->produced_cargo[0] == CT_INVALID) {
 					r = 1;
 				} else {
 					r =
@@ -509,23 +516,23 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 			break;
 
 		case 3: /* Sort by transported fraction */
-			if (i->produced_cargo[0] == CT_INVALID) {
-				r = (j->produced_cargo[0] == CT_INVALID ? 0 : -1);
+			if (ind_i->produced_cargo[0] == CT_INVALID) {
+				r = (ind_j->produced_cargo[0] == CT_INVALID ? 0 : -1);
 			} else {
-				if (j->produced_cargo[0] == CT_INVALID) {
+				if (ind_j->produced_cargo[0] == CT_INVALID) {
 					r = 1;
 				} else {
 					int pi;
 					int pj;
 
 					pi = i->pct_transported[0] * 100 >> 8;
-					if (i->produced_cargo[1] != CT_INVALID) {
+					if (ind_i->produced_cargo[1] != CT_INVALID) {
 						int p = i->pct_transported[1] * 100 >> 8;
 						if (p < pi) pi = p;
 					}
 
 					pj = j->pct_transported[0] * 100 >> 8;
-					if (j->produced_cargo[1] != CT_INVALID) {
+					if (ind_j->produced_cargo[1] != CT_INVALID) {
 						int p = j->pct_transported[1] * 100 >> 8;
 						if (p < pj) pj = p;
 					}
@@ -606,14 +613,15 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 		while (p < _num_industry_sort) {
 			const Industry* i = _industry_sort[p];
+			const IndustrySpec *ind = GetIndustrySpec(i->type);
 
 			SetDParam(0, i->index);
-			if (i->produced_cargo[0] != CT_INVALID) {
-				SetDParam(1, i->produced_cargo[0]);
+			if (ind->produced_cargo[0] != CT_INVALID) {
+				SetDParam(1, ind->produced_cargo[0]);
 				SetDParam(2, i->total_production[0]);
 
-				if (i->produced_cargo[1] != CT_INVALID) {
-					SetDParam(3, i->produced_cargo[1]);
+				if (ind->produced_cargo[1] != CT_INVALID) {
+					SetDParam(3, ind->produced_cargo[1]);
 					SetDParam(4, i->total_production[1]);
 					SetDParam(5, i->pct_transported[0] * 100 >> 8);
 					SetDParam(6, i->pct_transported[1] * 100 >> 8);

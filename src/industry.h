@@ -67,10 +67,8 @@ struct Industry {
 	byte width;
 	byte height;
 	const Town* town;               ///< Nearest town
-	CargoID produced_cargo[2];      ///< 2 production cargo slots
 	uint16 cargo_waiting[2];        ///< amount of cargo produced per cargo
 	byte production_rate[2];        ///< production rate for each cargo
-	CargoID accepts_cargo[3];       ///< 3 input cargo slots
 	byte prod_level;                ///< general production level
 	uint16 last_mo_production[2];   ///< stats of last month production per cargo
 	uint16 last_mo_transported[2];  ///< stats of last month transport per cargo

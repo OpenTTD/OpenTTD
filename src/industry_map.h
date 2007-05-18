@@ -207,46 +207,6 @@ struct IndustryTypeSolver {
 	IndustryGfx MaxGfx; ///< The last gfx index for the industry type
 };
 
-/** Mapping of industry gfx to industry type */
-static const IndustryTypeSolver industry_gfx_Solver[IT_END] = {
-	{  0,   6}, ///< IT_COAL_MINE
-	{  7,  10}, ///< IT_POWER_STATION,
-	{ 11,  15}, ///< IT_SAWMILL,
-	{ 16,  17}, ///< IT_FOREST,
-	{ 18,  23}, ///< IT_OIL_REFINERY,
-	{ 24,  28}, ///< IT_OIL_RIG,
-	{ 29,  31}, ///< IT_OIL_WELL,
-	{ 32,  38}, ///< IT_FARM,
-	{ 39,  42}, ///< IT_FACTORY,
-	{ 43,  46}, ///< IT_PRINTING_WORKS,
-	{ 47,  51}, ///< IT_COPPER_MINE,
-	{ 52,  57}, ///< IT_STEEL_MILL,
-	{ 58,  59}, ///< IT_BANK_TEMP,
-	{ 60,  63}, ///< IT_FOOD_PROCESS,
-	{ 64,  71}, ///< IT_PAPER_MILL,
-	{ 72,  88}, ///< IT_GOLD_MINE,
-	{ 89,  90}, ///< IT_BANK_TROPIC_ARCTIC,
-	{ 91,  99}, ///< IT_DIAMOND_MINE,
-	{100, 115}, ///< IT_IRON_MINE,
-	{116, 116}, ///< IT_FRUIT_PLANTATION,
-	{117, 117}, ///< IT_RUBBER_PLANTATION,
-	{118, 119}, ///< IT_WATER_SUPPLY,
-	{120, 120}, ///< IT_WATER_TOWER,
-	{121, 124}, ///< IT_FACTORY_2,
-	{125, 128}, ///< IT_LUMBER_MILL,
-	{129, 130}, ///< IT_COTTON_CANDY,
-	{131, 134}, ///< IT_CANDY_FACTORY or sweet factory
-	{135, 136}, ///< IT_BATTERY_FARM,
-	{137, 137}, ///< IT_COLA_WELLS,
-	{138, 141}, ///< IT_TOY_SHOP,
-	{142, 147}, ///< IT_TOY_FACTORY,
-	{148, 155}, ///< IT_PLASTIC_FOUNTAINS,
-	{156, 159}, ///< IT_FIZZY_DRINK_FACTORY,
-	{160, 163}, ///< IT_BUBBLE_GENERATOR,
-	{164, 166}, ///< IT_TOFFEE_QUARRY,
-	{167, 174}  ///< IT_SUGAR_MINE,
-};
-
 /**
  * Get the animation loop number
  * @param tile the tile to get the animation loop number of

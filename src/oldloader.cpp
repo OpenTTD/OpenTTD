@@ -651,8 +651,7 @@ static const OldChunks industry_chunk[] = {
 	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
 	OCL_SVAR(  OC_UINT8, Industry, width ),
 	OCL_SVAR(  OC_UINT8, Industry, height ),
-	OCL_SVAR(  OC_UINT8, Industry, produced_cargo[0] ),
-	OCL_SVAR(  OC_UINT8, Industry, produced_cargo[1] ),
+	OCL_NULL( 2 ),  ///< used to be industry's produced_cargo
 
 	OCL_SVAR( OC_UINT16, Industry, cargo_waiting[0] ),
 	OCL_SVAR( OC_UINT16, Industry, cargo_waiting[1] ),
@@ -660,9 +659,7 @@ static const OldChunks industry_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Industry, production_rate[0] ),
 	OCL_SVAR(  OC_UINT8, Industry, production_rate[1] ),
 
-	OCL_SVAR(  OC_UINT8, Industry, accepts_cargo[0] ),
-	OCL_SVAR(  OC_UINT8, Industry, accepts_cargo[1] ),
-	OCL_SVAR(  OC_UINT8, Industry, accepts_cargo[2] ),
+	OCL_NULL( 3 ),  ///< used to be industry's accepts_cargo
 
 	OCL_SVAR(  OC_UINT8, Industry, prod_level ),
 
