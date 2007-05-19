@@ -3094,11 +3094,18 @@ static void CfgApply(byte *buf, int len)
 
 		grfmsg(8, "CfgApply: Applying %u bytes from parameter 0x%02X at offset 0x%04X", param_size, param_num, offset);
 
+		bool carry = false;
 		for (i = 0; i < param_size; i++) {
 			uint32 value = GetParamVal(param_num + i / 4, NULL);
+			/* Reset carry flag for each iteration of the variable (only really
+			 * matters if param_size is greater than 4) */
+			if (i == 0) carry = false;
 
 			if (add_value) {
-				_preload_sprite[offset + i] += GB(value, (i % 4) * 8, 8);
+				uint new_value = _preload_sprite[offset + i] + GB(value, (i % 4) * 8, 8) + (carry ? 1 : 0);
+				_preload_sprite[offset + i] = GB(new_value, 0, 8);
+				/* Check if the addition overflowed */
+				carry = new_value >= 256;
 			} else {
 				_preload_sprite[offset + i] = GB(value, (i % 4) * 8, 8);
 			}
