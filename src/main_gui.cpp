@@ -2425,8 +2425,8 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				_scrolling_viewport = false;
 			}
 
-			WP(w, vp_d).scrollpos_x += e->we.scroll.delta.x << vp->zoom;
-			WP(w, vp_d).scrollpos_y += e->we.scroll.delta.y << vp->zoom;
+			WP(w, vp_d).scrollpos_x += ScaleByZoom(e->we.scroll.delta.x, vp->zoom);
+			WP(w, vp_d).scrollpos_y += ScaleByZoom(e->we.scroll.delta.y, vp->zoom);
 		} break;
 
 		case WE_MOUSEWHEEL:

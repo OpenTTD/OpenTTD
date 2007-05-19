@@ -505,6 +505,8 @@ int ttd_main(int argc, char *argv[])
 	LoadDriver(MUSIC_DRIVER, _ini_musicdriver);
 	LoadDriver(VIDEO_DRIVER, _ini_videodriver); // load video last, to prevent an empty window while sound and music loads
 	_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
+	/* Initialize the zoom level of the screen to normal */
+	_screen.zoom = ZOOM_LVL_NORMAL;
 
 	/* restore saved music volume */
 	_music_driver->set_volume(msf.music_vol);

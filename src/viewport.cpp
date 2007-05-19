@@ -164,8 +164,8 @@ void AssignWindowViewport(Window *w, int x, int y,
 
 	vp->zoom = zoom;
 
-	vp->virtual_width = width << zoom;
-	vp->virtual_height = height << zoom;
+	vp->virtual_width = ScaleByZoom(width, zoom);
+	vp->virtual_height = ScaleByZoom(height, zoom);
 
 	if (follow_flags & 0x80000000) {
 		const Vehicle *veh;
@@ -1196,17 +1196,17 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 	zoom = dp.zoom;
 	dp.zoom = ZOOM_LVL_NORMAL;
 
-	dp.left >>= zoom;
-	dp.top >>= zoom;
-	dp.width >>= zoom;
-	dp.height >>= zoom;
+	dp.left   = UnScaleByZoom(dp.left,   zoom);
+	dp.top    = UnScaleByZoom(dp.top,    zoom);
+	dp.width  = UnScaleByZoom(dp.width,  zoom);
+	dp.height = UnScaleByZoom(dp.height, zoom);
 
 	do {
 		uint16 colour;
 
 		if (ss->width != 0) {
-			int x = (ss->x >> zoom) - 1;
-			int y = (ss->y >> zoom) - 1;
+			int x = UnScaleByZoom(ss->x, zoom) - 1;
+			int y = UnScaleByZoom(ss->y, zoom) - 1;
 			int bottom = y + 11;
 			int w = ss->width;
 
@@ -1239,7 +1239,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 			colour = 16;
 		}
 		DrawString(
-			ss->x >> zoom, (ss->y >> zoom) - (ss->width & 0x8000 ? 2 : 0),
+			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),
 			ss->string, colour
 		);
 
