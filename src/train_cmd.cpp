@@ -221,7 +221,10 @@ void TrainConsistChanged(Vehicle* v)
 			}
 		}
 
-		u->cargo_cap = GetVehicleProperty(u, 0x14, rvi_u->capacity);
+		if (u->cargo_type == rvi_u->cargo_type && u->cargo_subtype == 0) {
+			/* Set cargo capacity if we've not been refitted */
+			u->cargo_cap = GetVehicleProperty(u, 0x14, rvi_u->capacity);
+		}
 
 		/* check the vehicle length (callback) */
 		uint16 veh_len = CALLBACK_FAILED;
