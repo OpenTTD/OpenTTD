@@ -16,6 +16,7 @@
 #include "train.h"
 #include "aircraft.h"
 #include "cargotype.h"
+#include "group.h"
 
 
 /*
@@ -136,8 +137,17 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 	char vehicle_name[32];
 	CargoID replacement_cargo_type;
 
-	new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type);
-	if (new_engine_type == INVALID_ENGINE) new_engine_type = old_v->engine_type;
+	/* If the vehicle belongs to a group, check if the group is protected from the global autoreplace.
+	 *  If not, chek if an global auto replacement is defined */
+	new_engine_type = (IsValidGroupID(old_v->group_id) && GetGroup(old_v->group_id)->replace_protection) ?
+			INVALID_ENGINE :
+			EngineReplacementForPlayer(p, old_v->engine_type, DEFAULT_GROUP);
+
+	/* If we don't set new_egnine_type previously, we try to check if an autoreplacement was defined
+	 *  for the group and the engine_type of the vehicle */
+	if (new_engine_type == INVALID_ENGINE && !IsDefaultGroupID(old_v->group_id)) {
+		new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type, old_v->group_id);
+	}
 
 	replacement_cargo_type = GetNewCargoTypeForReplace(old_v, new_engine_type);
 
@@ -165,6 +175,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 		new_v = GetVehicle(_new_vehicle_id);
 		*w = new_v; //we changed the vehicle, so MaybeReplaceVehicle needs to work on the new one. Now we tell it what the new one is
 
+		new_v->group_id = old_v->group_id;
 		/* refit if needed */
 		if (replacement_cargo_type != CT_NO_REFIT) {
 			if (CmdFailed(DoCommand(0, new_v->index, replacement_cargo_type, DC_EXEC, GetCmdRefitVeh(new_v)))) {
@@ -194,6 +205,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			new_v->profit_this_year = old_v->profit_this_year;
 			new_v->profit_last_year = old_v->profit_last_year;
 			new_v->service_interval = old_v->service_interval;
+			new_v->group_id = old_v->group_id;
 			new_front = true;
 			new_v->unitnumber = old_v->unitnumber; // use the same unit number
 			new_v->dest_tile  = old_v->dest_tile;
@@ -211,6 +223,10 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 				if (temp_v != NULL) {
 					DoCommand(0, (new_v->index << 16) | temp_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 				}
+			} else if (!IsDefaultGroupID(old_v->group_id) && IsValidGroupID(old_v->group_id)) {
+				/* Increase the new num engines of the group for the ships, aircraft, and road vehicles
+					The old new num engine is decrease in the destroyvehicle function */
+				GetGroup(old_v->group_id)->num_engines[new_v->engine_type]++;
 			}
 		}
 		/* We are done setting up the new vehicle. Now we move the cargo from the old one to the new one */
@@ -305,8 +321,17 @@ int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			if (!p->engine_renew ||
 					w->age - w->max_age < (p->engine_renew_months * 30) || // replace if engine is too old
 					w->max_age == 0) { // rail cars got a max age of 0
-				if (!EngineHasReplacementForPlayer(p, w->engine_type)) // updates to a new model
+				/* If the vehicle belongs to a group, check if the group is protected from the global autoreplace.
+				   If not, chek if an global auto remplacement is defined */
+				if (IsValidGroupID(w->group_id)) {
+					if (!EngineHasReplacementForPlayer(p, w->engine_type, w->group_id) && (
+							GetGroup(w->group_id)->replace_protection ||
+							!EngineHasReplacementForPlayer(p, w->engine_type, DEFAULT_GROUP))) {
+						continue;
+					}
+				} else if (!EngineHasReplacementForPlayer(p, w->engine_type, DEFAULT_GROUP)) {
 					continue;
+				}
 			}
 
 			/* Now replace the vehicle */

@@ -311,7 +311,7 @@ static inline void RemoveAllEngineReplacementForPlayer(Player *p) { RemoveAllEng
  * @return The engine type to replace with, or INVALID_ENGINE if no
  * replacement is in the list.
  */
-static inline EngineID EngineReplacementForPlayer(const Player *p, EngineID engine) { return EngineReplacement(p->engine_renew_list, engine); }
+static inline EngineID EngineReplacementForPlayer(const Player *p, EngineID engine, GroupID group) { return EngineReplacement(p->engine_renew_list, engine, group); }
 
 /**
  * Check if a player has a replacement set up for the given engine.
@@ -319,7 +319,7 @@ static inline EngineID EngineReplacementForPlayer(const Player *p, EngineID engi
  * @param  engine Engine type to be replaced.
  * @return true if a replacement was set up, false otherwise.
  */
-static inline bool EngineHasReplacementForPlayer(const Player *p, EngineID engine) { return EngineReplacementForPlayer(p, engine) != INVALID_ENGINE; }
+static inline bool EngineHasReplacementForPlayer(const Player *p, EngineID engine, GroupID group) { return EngineReplacementForPlayer(p, engine, group) != INVALID_ENGINE; }
 
 /**
  * Add an engine replacement for the player.
@@ -329,7 +329,7 @@ static inline bool EngineHasReplacementForPlayer(const Player *p, EngineID engin
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-static inline int32 AddEngineReplacementForPlayer(Player *p, EngineID old_engine, EngineID new_engine, uint32 flags) { return AddEngineReplacement(&p->engine_renew_list, old_engine, new_engine, flags); }
+static inline int32 AddEngineReplacementForPlayer(Player *p, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags) { return AddEngineReplacement(&p->engine_renew_list, old_engine, new_engine, group, flags); }
 
 /**
  * Remove an engine replacement for the player.
@@ -338,7 +338,7 @@ static inline int32 AddEngineReplacementForPlayer(Player *p, EngineID old_engine
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-static inline int32 RemoveEngineReplacementForPlayer(Player *p, EngineID engine, uint32 flags) {return RemoveEngineReplacement(&p->engine_renew_list, engine, flags); }
+static inline int32 RemoveEngineReplacementForPlayer(Player *p, EngineID engine, GroupID group, uint32 flags) {return RemoveEngineReplacement(&p->engine_renew_list, engine, group, flags); }
 
 /**
  * Reset the livery schemes to the player's primary colour.

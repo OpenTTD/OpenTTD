@@ -130,6 +130,7 @@ struct Patches {
 	bool measure_tooltip;               // Show a permanent tooltip when dragging tools
 	byte liveries;                      // Options for displaying company liveries, 0=none, 1=self, 2=all
 	bool prefer_teamchat;               // Choose the chat message target with <ENTER>, true=all players, false=your team
+	bool advanced_vehicle_list;         // Use the "advanced" vehicle list
 
 	uint8 toolbar_pos;                  // position of toolbars, 0=left, 1=center, 2=right
 	uint8 window_snap_radius;           // Windows snap at each other if closer than this

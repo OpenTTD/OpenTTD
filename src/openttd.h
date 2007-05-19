@@ -40,6 +40,7 @@ struct Town;
 struct NewsItem;
 struct Industry;
 struct DrawPixelInfo;
+struct Group;
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef byte CargoID;
 typedef byte LandscapeID;
@@ -63,6 +64,7 @@ typedef uint16 DepotID;
 typedef uint16 WaypointID;
 typedef uint16 OrderID;
 typedef uint16 SignID;
+typedef uint16 GroupID;
 typedef uint16 EngineRenewID;
 typedef uint16 DestinationID;
 

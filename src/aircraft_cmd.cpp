@@ -1684,7 +1684,7 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
 	 * unless it is due for renewal but the engine is no longer available */
 	if (v->owner == _local_player && (
-				EngineHasReplacementForPlayer(p, v->engine_type) ||
+				EngineHasReplacementForPlayer(p, v->engine_type, v->group_id) ||
 				((p->engine_renew && v->age - v->max_age > p->engine_renew_months * 30) &&
 				HASBIT(GetEngine(v->engine_type)->player_avail, _local_player))
 			)) {
@@ -1742,7 +1742,7 @@ static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *apc)
 	if (v->current_order.type != OT_GOTO_DEPOT && v->owner == _local_player) {
 		/* only the vehicle owner needs to calculate the rest (locally) */
 		const Player* p = GetPlayer(v->owner);
-		if (EngineHasReplacementForPlayer(p, v->engine_type) ||
+		if (EngineHasReplacementForPlayer(p, v->engine_type, v->group_id) ||
 			(p->engine_renew && v->age - v->max_age > (p->engine_renew_months * 30))) {
 			/* send the aircraft to the hangar at next airport */
 			_current_player = _local_player;

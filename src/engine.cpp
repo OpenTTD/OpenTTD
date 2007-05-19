@@ -20,6 +20,7 @@
 #include "newgrf_cargo.h"
 #include "date.h"
 #include "table/engines.h"
+#include "group.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
@@ -481,6 +482,7 @@ static EngineRenew *AllocateEngineRenew()
 
 		er->to = INVALID_ENGINE;
 		er->next = NULL;
+		er->group_id = DEFAULT_GROUP;
 		return er;
 	}
 
@@ -493,12 +495,12 @@ static EngineRenew *AllocateEngineRenew()
 /**
  * Retrieves the EngineRenew that specifies the replacement of the given
  * engine type from the given renewlist */
-static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine)
+static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine, GroupID group)
 {
 	EngineRenew *er = (EngineRenew *)erl;
 
 	while (er) {
-		if (er->from == engine) return er;
+		if (er->from == engine && er->group_id == group) return er;
 		er = er->next;
 	}
 	return NULL;
@@ -517,18 +519,18 @@ void RemoveAllEngineReplacement(EngineRenewList *erl)
 	*erl = NULL; // Empty list
 }
 
-EngineID EngineReplacement(EngineRenewList erl, EngineID engine)
+EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group)
 {
-	const EngineRenew *er = GetEngineReplacement(erl, engine);
+	const EngineRenew *er = GetEngineReplacement(erl, engine, group);
 	return er == NULL ? INVALID_ENGINE : er->to;
 }
 
-int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, uint32 flags)
+int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags)
 {
 	EngineRenew *er;
 
 	/* Check if the old vehicle is already in the list */
-	er = GetEngineReplacement(*erl, old_engine);
+	er = GetEngineReplacement(*erl, old_engine, group);
 	if (er != NULL) {
 		if (flags & DC_EXEC) er->to = new_engine;
 		return 0;
@@ -540,6 +542,7 @@ int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID n
 	if (flags & DC_EXEC) {
 		er->from = old_engine;
 		er->to = new_engine;
+		er->group_id = group;
 
 		/* Insert before the first element */
 		er->next = (EngineRenew *)(*erl);
@@ -549,14 +552,14 @@ int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID n
 	return 0;
 }
 
-int32 RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, uint32 flags)
+int32 RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, uint32 flags)
 {
 	EngineRenew *er = (EngineRenew *)(*erl);
 	EngineRenew *prev = NULL;
 
 	while (er)
 	{
-		if (er->from == engine) {
+		if (er->from == engine && er->group_id == group) {
 			if (flags & DC_EXEC) {
 				if (prev == NULL) { // First element
 					/* The second becomes the new first element */
@@ -577,11 +580,11 @@ int32 RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, uint32 flag
 }
 
 static const SaveLoad _engine_renew_desc[] = {
-	SLE_VAR(EngineRenew, from, SLE_UINT16),
-	SLE_VAR(EngineRenew, to,   SLE_UINT16),
+	    SLE_VAR(EngineRenew, from,     SLE_UINT16),
+	    SLE_VAR(EngineRenew, to,       SLE_UINT16),
 
-	SLE_REF(EngineRenew, next, REF_ENGINE_RENEWS),
-
+	    SLE_REF(EngineRenew, next,     REF_ENGINE_RENEWS),
+	SLE_CONDVAR(EngineRenew, group_id, SLE_UINT16, 60, SL_MAX_VERSION),
 	SLE_END()
 };
 
@@ -607,6 +610,9 @@ static void Load_ERNW()
 
 		er = GetEngineRenew(index);
 		SlObject(er, _engine_renew_desc);
+
+		/* Advanced vehicle lists got added */
+		if (CheckSavegameVersion(60)) er->group_id = DEFAULT_GROUP;
 	}
 }
 

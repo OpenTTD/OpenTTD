@@ -27,6 +27,7 @@
 #include "date.h"
 #include "strings.h"
 #include "cargotype.h"
+#include "group.h"
 
 
 enum BuildVehicleWidgets {
@@ -759,7 +760,7 @@ static void DrawVehicleEngine(byte type, int x, int y, EngineID engine, SpriteID
  * @param selected_id what engine to highlight as selected, if any
  * @param show_count Display the number of vehicles (used by autoreplace)
  */
-void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count)
+void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group)
 {
 	byte step_size = GetVehicleListHeight(type);
 	byte x_offset = 0;
@@ -795,11 +796,12 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 
 	for (; min < max; min++, y += step_size) {
 		const EngineID engine = eng_list[min];
+		const uint num_engines = IsDefaultGroupID(selected_group) ? p->num_engines[engine] : GetGroup(selected_group)->num_engines[engine];
 
 		DrawString(x + x_offset, y, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
-		DrawVehicleEngine(type, x, y + y_offset, engine, (show_count && p->num_engines[engine] == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_player));
+		DrawVehicleEngine(type, x, y + y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_player));
 		if (show_count) {
-			SetDParam(0, p->num_engines[engine]);
+			SetDParam(0, num_engines);
 			DrawStringRightAligned(213, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK, 0);
 		}
 	}
@@ -833,7 +835,7 @@ static void DrawBuildVehicleWindow(Window *w)
 	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
 	DrawWindowWidgets(w);
 
-	DrawEngineList(bv->vehicle_type, 2, 27, bv->eng_list, w->vscroll.pos, max, bv->sel_engine, false);
+	DrawEngineList(bv->vehicle_type, 2, 27, bv->eng_list, w->vscroll.pos, max, bv->sel_engine, false, DEFAULT_GROUP);
 
 	if (bv->sel_engine != INVALID_ENGINE) {
 		const Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];

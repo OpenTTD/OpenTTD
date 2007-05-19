@@ -348,6 +348,7 @@ struct replaceveh_d {
 	bool update_left;
 	bool update_right;
 	bool init_lists;
+	GroupID sel_group;
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
 
@@ -478,6 +479,28 @@ struct dropdown_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
 
+struct vehiclelist_d {
+	const Vehicle** sort_list;  // List of vehicles (sorted)
+	Listing *_sorting;          // pointer to the appropiate subcategory of _sorting
+	uint16 length_of_sort_list; // Keeps track of how many vehicle pointers sort list got space for
+	VehicleType vehicle_type;   // The vehicle type that is sorted
+	list_d l;                   // General list struct
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
+
+struct grouplist_d {
+	const Group **sort_list;
+	list_d l;                   // General list struct
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(grouplist_d));
+
+struct groupveh_d : vehiclelist_d {
+	GroupID group_sel;
+	VehicleID vehicle_sel;
+
+	grouplist_d gl;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(groupveh_d));
 
 /****************** THESE ARE NOT WIDGET TYPES!!!!! *******************/
 enum WindowWidgetBehaviours {

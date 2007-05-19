@@ -14,6 +14,7 @@
 #include "variables.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
+#include "group.h"
 
 
 static RailType _railtype_selected_in_replace_gui;
@@ -150,8 +151,11 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 		if (type == VEH_TRAIN && !GenerateReplaceRailList(e, draw_left, WP(w, replaceveh_d).wagon_btnstate)) continue; // special rules for trains
 
 		if (draw_left) {
+			const GroupID selected_group = WP(w, replaceveh_d).sel_group;
+			const uint num_engines = IsDefaultGroupID(selected_group) ? p->num_engines[e] : GetGroup(selected_group)->num_engines[e];
+
 			/* Skip drawing the engines we don't have any of and haven't set for replacement */
-			if (p->num_engines[e] == 0 && EngineReplacementForPlayer(GetPlayer(_local_player), e) == INVALID_ENGINE) continue;
+			if (num_engines == 0 && EngineReplacementForPlayer(GetPlayer(_local_player), e, selected_group) == INVALID_ENGINE) continue;
 		} else {
 			/* This is for engines we can replace to and they should depend on what we selected to replace from */
 			if (!IsEngineBuildable(e, type, _local_player)) continue; // we need to be able to build the engine
@@ -202,7 +206,7 @@ static void GenerateLists(Window *w)
 }
 
 
-void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count);
+void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
 
 static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 {
@@ -231,6 +235,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 			Player *p = GetPlayer(_local_player);
 			EngineID selected_id[2];
+			const GroupID selected_group = WP(w,replaceveh_d).sel_group;
 
 			selected_id[0] = WP(w, replaceveh_d).sel_engine[0];
 			selected_id[1] = WP(w, replaceveh_d).sel_engine[1];
@@ -242,15 +247,15 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			SetWindowWidgetDisabledState(w, 4,
 										 selected_id[0] == INVALID_ENGINE ||
 										 selected_id[1] == INVALID_ENGINE ||
-										 EngineReplacementForPlayer(p, selected_id[1]) != INVALID_ENGINE ||
-										 EngineReplacementForPlayer(p, selected_id[0]) == selected_id[1]);
+										 EngineReplacementForPlayer(p, selected_id[1], selected_group) != INVALID_ENGINE ||
+										 EngineReplacementForPlayer(p, selected_id[0], selected_group) == selected_id[1]);
 
 			/* Disable the "Stop Replacing" button if:
 			 *   The left list (existing vehicle) is empty
 			 *   or The selected vehicle has no replacement set up */
 			SetWindowWidgetDisabledState(w, 6,
 										 selected_id[0] == INVALID_ENGINE ||
-										 !EngineHasReplacementForPlayer(p, selected_id[0]));
+										 !EngineHasReplacementForPlayer(p, selected_id[0], selected_group));
 
 			/* now the actual drawing of the window itself takes place */
 			SetDParam(0, _vehicle_type_names[w->window_number]);
@@ -277,10 +282,10 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 			/* sets up the string for the vehicle that is being replaced to */
 			if (selected_id[0] != INVALID_ENGINE) {
-				if (!EngineHasReplacementForPlayer(p, selected_id[0])) {
+				if (!EngineHasReplacementForPlayer(p, selected_id[0], selected_group)) {
 					SetDParam(0, STR_NOT_REPLACING);
 				} else {
-					SetDParam(0, GetCustomEngineName(EngineReplacementForPlayer(p, selected_id[0])));
+					SetDParam(0, GetCustomEngineName(EngineReplacementForPlayer(p, selected_id[0], selected_group)));
 				}
 			} else {
 				SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
@@ -296,7 +301,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				EngineID end    = min((i == 0 ? w->vscroll.cap : w->vscroll2.cap) + start, EngList_Count(&list));
 
 				/* Do the actual drawing */
-				DrawEngineList((VehicleType)w->window_number, x, 15, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0);
+				DrawEngineList((VehicleType)w->window_number, x, 15, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0, selected_group);
 
 				/* Also draw the details if an engine is selected */
 				if (WP(w, replaceveh_d).sel_engine[i] != INVALID_ENGINE) {
@@ -328,12 +333,12 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				case 4: { /* Start replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					EngineID veh_to = WP(w, replaceveh_d).sel_engine[1];
-					DoCommandP(0, 3, veh_from + (veh_to << 16), NULL, CMD_SET_AUTOREPLACE);
+					DoCommandP(0, 3 + (WP(w, replaceveh_d).sel_group << 16) , veh_from + (veh_to << 16), NULL, CMD_SET_AUTOREPLACE);
 				} break;
 
 				case 6: { /* Stop replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
-					DoCommandP(0, 3, veh_from + (INVALID_ENGINE << 16), NULL, CMD_SET_AUTOREPLACE);
+					DoCommandP(0, 3 + (WP(w, replaceveh_d).sel_group << 16), veh_from + (INVALID_ENGINE << 16), NULL, CMD_SET_AUTOREPLACE);
 				} break;
 
 				case 7:
@@ -508,5 +513,38 @@ void ShowReplaceVehicleWindow(VehicleType vehicletype)
 	}
 
 	w->caption_color = _local_player;
+	w->vscroll2.cap = w->vscroll.cap;   // these two are always the same
+	WP(w, replaceveh_d).sel_group = DEFAULT_GROUP;
+ }
+
+void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
+{
+	Window *w;
+
+	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype);
+
+	switch (vehicletype) {
+		default: NOT_REACHED();
+		case VEH_TRAIN:
+			w = AllocateWindowDescFront(&_replace_rail_vehicle_desc, vehicletype);
+			w->vscroll.cap  = 8;
+			w->resize.step_height = 14;
+			WP(w, replaceveh_d).wagon_btnstate = true;
+			break;
+		case VEH_ROAD:
+			w = AllocateWindowDescFront(&_replace_road_vehicle_desc, vehicletype);
+			w->vscroll.cap  = 8;
+			w->resize.step_height = 14;
+			break;
+		case VEH_SHIP:
+		case VEH_AIRCRAFT:
+			w = AllocateWindowDescFront(&_replace_ship_aircraft_vehicle_desc, vehicletype);
+			w->vscroll.cap  = 4;
+			w->resize.step_height = 24;
+			break;
+	}
+
+	w->caption_color = _local_player;
+	WP(w, replaceveh_d).sel_group = id_g;
 	w->vscroll2.cap = w->vscroll.cap;   // these two are always the same
 }

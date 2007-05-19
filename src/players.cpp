@@ -27,6 +27,7 @@
 #include "date.h"
 #include "window.h"
 #include "player_face.h"
+#include "group.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a
@@ -638,6 +639,7 @@ static void DeletePlayerStuff(PlayerID pi)
  * if p1 = 2, then
  * - p2 = minimum amount of money available
  * if p1 = 3, then:
+ * - p1 bits  8-15 = engine group
  * - p2 bits  0-15 = old engine type
  * - p2 bits 16-31 = new engine type
  * if p1 = 4, then:
@@ -693,7 +695,10 @@ int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case 3: {
 			EngineID old_engine_type = GB(p2, 0, 16);
 			EngineID new_engine_type = GB(p2, 16, 16);
+			GroupID id_g = GB(p1, 16, 8);
 			int32 cost;
+
+			if (!IsValidGroupID(id_g)) return CMD_ERROR;
 
 			if (new_engine_type != INVALID_ENGINE) {
 				/* First we make sure that it's a valid type the user requested
@@ -714,9 +719,9 @@ int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (!HASBIT(GetEngine(new_engine_type)->player_avail, _current_player))
 					return CMD_ERROR;
 
-				cost = AddEngineReplacementForPlayer(p, old_engine_type, new_engine_type, flags);
+				cost = AddEngineReplacementForPlayer(p, old_engine_type, new_engine_type, id_g, flags);
 			} else {
-				cost = RemoveEngineReplacementForPlayer(p, old_engine_type, flags);
+				cost = RemoveEngineReplacementForPlayer(p, old_engine_type,id_g, flags);
 			}
 
 			if (IsLocalPlayer()) InvalidateAutoreplaceWindow(old_engine_type);
@@ -901,6 +906,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			p->is_active = false;
 		}
 		RemoveAllEngineReplacementForPlayer(p);
+		RemoveAllGroupsForPlayer(p);
 
 	} break;
 

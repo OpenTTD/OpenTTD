@@ -272,6 +272,7 @@ struct EngineRenew {
 	EngineID from;
 	EngineID to;
 	EngineRenew *next;
+	GroupID group_id;
 };
 
 /**
@@ -317,7 +318,7 @@ void RemoveAllEngineReplacement(EngineRenewList* erl);
  * @return The engine type to replace with, or INVALID_ENGINE if no
  * replacement is in the list.
  */
-EngineID EngineReplacement(EngineRenewList erl, EngineID engine);
+EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group);
 
 /**
  * Add an engine replacement to the given renewlist.
@@ -327,7 +328,7 @@ EngineID EngineReplacement(EngineRenewList erl, EngineID engine);
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID new_engine, uint32 flags);
+int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags);
 
 /**
  * Remove an engine replacement from a given renewlist.
@@ -336,7 +337,7 @@ int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID n
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-int32 RemoveEngineReplacement(EngineRenewList* erl, EngineID engine, uint32 flags);
+int32 RemoveEngineReplacement(EngineRenewList* erl, EngineID engine, GroupID group, uint32 flags);
 
 /** When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
  * @param type The type of engine

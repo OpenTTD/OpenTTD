@@ -453,6 +453,9 @@
 				RelativePath=".\..\src\gfxinit.h">
 			</File>
 			<File
+				RelativePath=".\..\src\group.h">
+			</File>
+			<File
 				RelativePath=".\..\src\gui.h">
 			</File>
 			<File
@@ -703,6 +706,9 @@
 				RelativePath=".\..\src\graph_gui.cpp">
 			</File>
 			<File
+				RelativePath=".\..\src\group_gui.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\industry_gui.cpp">
 			</File>
 			<File
@@ -789,6 +795,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\dummy_land.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\group_cmd.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\industry_cmd.cpp">

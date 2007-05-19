@@ -37,6 +37,7 @@
 #include "yapf/yapf.h"
 #include "date.h"
 #include "cargotype.h"
+#include "group.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, bool update_image);
@@ -637,12 +638,15 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->cur_image = 0xAC2;
 			v->random_bits = VehicleRandomBits();
 
+			v->group_id = DEFAULT_GROUP;
+
 			AddArticulatedParts(vl);
 
 			_new_vehicle_id = v->index;
 
 			VehiclePositionChanged(v);
 			TrainConsistChanged(GetFirstVehicleInChain(v));
+			UpdateTrainGroupID(GetFirstVehicleInChain(v));
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 			if (IsLocalPlayer()) {
@@ -797,6 +801,8 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->vehicle_flags = 0;
 			if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
+			v->group_id = DEFAULT_GROUP;
+
 			v->subtype = 0;
 			SetFrontEngine(v);
 			SetTrainEngine(v);
@@ -818,6 +824,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			TrainConsistChanged(v);
 			UpdateTrainAcceleration(v);
+			UpdateTrainGroupID(v);
 
 			if (!HASBIT(p2, 1)) { // check if the cars should be added to the new vehicle
 				NormalizeTrainVehInDepot(v);
@@ -1113,6 +1120,16 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		for (Vehicle *u = src_head; u != NULL; u = u->next) u->first = NULL;
 		for (Vehicle *u = dst_head; u != NULL; u = u->next) u->first = NULL;
 
+		/* If we move the front Engine and if the second vehicle is not an engine
+		   add the whole vehicle to the DEFAULT_GROUP */
+		if (IsFrontEngine(src) && !IsDefaultGroupID(src->group_id)) {
+			const Vehicle *v = GetNextVehicle(src);
+
+			if (v != NULL && !IsTrainEngine(v)) {
+				DoCommand(tile, DEFAULT_GROUP, v->index, flags, CMD_ADD_VEHICLE_GROUP);
+			}
+		}
+
 		if (HASBIT(p2, 0)) {
 			/* unlink ALL wagons */
 			if (src != src_head) {
@@ -1142,6 +1159,14 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					SetFrontEngine(src);
 					assert(src->orders == NULL);
 					src->num_orders = 0;
+
+					// Decrease the engines number of the src engine_type
+					if (!IsDefaultGroupID(src->group_id) && IsValidGroupID(src->group_id)) {
+						GetGroup(src->group_id)->num_engines[src->engine_type]--;
+					}
+
+					// If we move an engine to a new line affect it to the DEFAULT_GROUP
+					src->group_id = DEFAULT_GROUP;
 				}
 			} else {
 				SetFreeWagon(src);
@@ -1203,13 +1228,18 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		 * To do this, CmdMoveRailVehicle must be called once more
 		 * we can't loop forever here because next time we reach this line we will have a front engine */
 		if (src_head != NULL && !IsFrontEngine(src_head) && IsTrainEngine(src_head)) {
+			/* As in CmdMoveRailVehicle src_head->group_id will be equal to DEFAULT_GROUP
+			 * we need to save the group and reaffect it to src_head */
+			const GroupID tmp_g = src_head->group_id;
 			CmdMoveRailVehicle(0, flags, src_head->index | (INVALID_VEHICLE << 16), 1);
+			SetTrainGroupID(src_head, tmp_g);
 			src_head = NULL; // don't do anything more to this train since the new call will do it
 		}
 
 		if (src_head != NULL) {
 			NormaliseTrainConsist(src_head);
 			TrainConsistChanged(src_head);
+			UpdateTrainGroupID(src_head);
 			if (IsFrontEngine(src_head)) {
 				UpdateTrainAcceleration(src_head);
 				InvalidateWindow(WC_VEHICLE_DETAILS, src_head->index);
@@ -1224,6 +1254,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (dst_head != NULL) {
 			NormaliseTrainConsist(dst_head);
 			TrainConsistChanged(dst_head);
+			UpdateTrainGroupID(dst_head);
 			if (IsFrontEngine(dst_head)) {
 				UpdateTrainAcceleration(dst_head);
 				InvalidateWindow(WC_VEHICLE_DETAILS, dst_head->index);
@@ -1364,6 +1395,8 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (first->next_shared != NULL) {
 						first->next_shared->prev_shared = new_f;
 						new_f->next_shared = first->next_shared;
+					} else {
+						RemoveVehicleFromGroup(v);
 					}
 
 					/*
@@ -1394,6 +1427,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (first != NULL) {
 					NormaliseTrainConsist(first);
 					TrainConsistChanged(first);
+					UpdateTrainGroupID(first);
 					if (IsFrontEngine(first)) {
 						InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
 						InvalidateWindow(WC_VEHICLE_REFIT, first->index);
@@ -1447,6 +1481,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					first = UnlinkWagon(v, first);
 					DeleteDepotHighlightOfVehicle(v);
 					DeleteVehicle(v);
+					RemoveVehicleFromGroup(v);
 				}
 			}
 
@@ -1454,6 +1489,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (flags & DC_EXEC && first != NULL) {
 				NormaliseTrainConsist(first);
 				TrainConsistChanged(first);
+				UpdateTrainGroupID(first);
 				if (IsFrontEngine(first)) UpdateTrainAcceleration(first);
 				InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
 				InvalidateWindow(WC_VEHICLE_REFIT, first->index);
@@ -3063,6 +3099,9 @@ static void DeleteLastWagon(Vehicle *v)
 
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
+
+	if (IsFrontEngine(v)) RemoveVehicleFromGroup(v);
+
 	DeleteVehicle(v);
 
 	if (v->u.rail.track != TRACK_BIT_DEPOT && v->u.rail.track != TRACK_BIT_WORMHOLE)
@@ -3148,6 +3187,7 @@ static void HandleCrashedTrain(Vehicle *v)
 
 	if (state >= 4440 && !(v->tick_counter&0x1F)) {
 		DeleteLastWagon(v);
+		InvalidateWindow(WC_REPLACE_VEHICLE, (v->group_id << 16) | VEH_TRAIN);
 	}
 }
 

@@ -506,6 +506,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"WAYPOINT", EmitSingleChar, SCC_WAYPOINT_NAME, 1, 0}, // waypoint name
 	{"STATION",  EmitSingleChar, SCC_STATION_NAME,  1, 0},
 	{"TOWN",     EmitSingleChar, SCC_TOWN_NAME,     1, 0},
+	{"GROUP",    EmitSingleChar, SCC_GROUP_NAME,    1, 0},
 
 	// 0x9D is used for the pseudo command SETCASE
 	// 0x9E is used for case switching

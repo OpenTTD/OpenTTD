@@ -118,6 +118,7 @@ functions.h
 genworld.h
 gfx.h
 gfxinit.h
+group.h
 gui.h
 hal.h
 heightmap.h
@@ -202,6 +203,7 @@ dock_gui.cpp
 engine_gui.cpp
 genworld_gui.cpp
 graph_gui.cpp
+group_gui.cpp
 industry_gui.cpp
 intro_gui.cpp
 main_gui.cpp
@@ -232,6 +234,7 @@ aircraft_cmd.cpp
 clear_cmd.cpp
 disaster_cmd.cpp
 dummy_land.cpp
+group_cmd.cpp
 industry_cmd.cpp
 misc_cmd.cpp
 order_cmd.cpp

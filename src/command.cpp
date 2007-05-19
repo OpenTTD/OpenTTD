@@ -168,6 +168,12 @@ DEF_COMMAND(CmdMassStartStopVehicle);
 DEF_COMMAND(CmdDepotSellAllVehicles);
 DEF_COMMAND(CmdDepotMassAutoReplace);
 
+DEF_COMMAND(CmdCreateGroup);
+DEF_COMMAND(CmdRenameGroup);
+DEF_COMMAND(CmdDeleteGroup);
+DEF_COMMAND(CmdAddVehicleGroup);
+DEF_COMMAND(CmdAddSharedVehicleGroup);
+DEF_COMMAND(CmdRemoveAllVehiclesGroup);
 /* The master command table */
 static const Command _command_proc_table[] = {
 	{CmdBuildRailroadTrack,                  0}, /*   0 */
@@ -313,6 +319,12 @@ static const Command _command_proc_table[] = {
 	{CmdMassStartStopVehicle,                0}, /* 117 */
 	{CmdDepotSellAllVehicles,                0}, /* 118 */
 	{CmdDepotMassAutoReplace,                0}, /* 119 */
+	{CmdCreateGroup,                         0}, /* 120 */
+	{CmdDeleteGroup,                         0}, /* 121 */
+	{CmdRenameGroup,                         0}, /* 122 */
+	{CmdAddVehicleGroup,                     0}, /* 123 */
+	{CmdAddSharedVehicleGroup,               0}, /* 124 */
+	{CmdRemoveAllVehiclesGroup,              0}, /* 125 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */

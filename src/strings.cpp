@@ -25,6 +25,8 @@
 #include "industry.h"
 #include "helpers.hpp"
 #include "cargotype.h"
+#include "group.h"
+#include "debug.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"
@@ -837,6 +839,18 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 
 				temp[0] = t->townnameparts;
 				buff = GetStringWithArgs(buff, t->townnametype, temp, last);
+				break;
+			}
+
+			case SCC_GROUP_NAME: { // {GROUP}
+				const Group *g = GetGroup(GetInt32(&argv));
+				int32 args[1];
+
+				assert(IsValidGroup(g));
+
+				args[0] = g->index;
+				buff = GetStringWithArgs(buff, (g->string_id == STR_SV_GROUP_NAME) ? (StringID)STR_GROUP_NAME_FORMAT : g->string_id, args, last);
+
 				break;
 			}
 

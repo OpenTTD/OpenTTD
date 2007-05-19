@@ -40,6 +40,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "helpers.hpp"
+#include "group.h"
 #include "economy.h"
 
 #define INVALID_COORD (-0x8000)
@@ -111,7 +112,7 @@ bool VehicleNeedsService(const Vehicle *v)
 		return false; // Crashed vehicles don't need service anymore
 
 	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0) {
-		return EngineHasReplacementForPlayer(GetPlayer(v->owner), v->engine_type);  /* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off */
+		return EngineHasReplacementForPlayer(GetPlayer(v->owner), v->engine_type, v->group_id);  /* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off */
 	}
 
 	return _patches.servint_ispercent ?
@@ -284,6 +285,8 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->prev_shared = NULL;
 	v->depot_list  = NULL;
 	v->random_bits = 0;
+	v->group_id = DEFAULT_GROUP;
+
 	return v;
 }
 
@@ -580,6 +583,8 @@ void DestroyVehicle(Vehicle *v)
 	if (IsEngineCountable(v)) {
 		GetPlayer(v->owner)->num_engines[v->engine_type]--;
 		if (v->owner == _local_player) InvalidateAutoreplaceWindow(v->engine_type);
+
+		if (!IsDefaultGroupID(v->group_id) && IsValidGroupID(v->group_id)) GetGroup(v->group_id)->num_engines[v->engine_type]--;
 	}
 
 	DeleteVehicleNews(v->index, INVALID_STRING_ID);
@@ -1821,6 +1826,12 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		_new_vehicle_id = w_front->index;
 	}
 
+	if (flags & DC_EXEC) {
+		/* Cloned vehicles belong to the same group */
+		DoCommand(0, v_front->group_id, w_front->index, flags, CMD_ADD_VEHICLE_GROUP);
+	}
+
+
 	/* Take care of refitting. */
 	w = w_front;
 	v = v_front;
@@ -1973,6 +1984,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
       <li>VLW_SHARED_ORDERS: index of order to generate a list for<li>
       <li>VLW_STANDARD: not used<li>
       <li>VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for</li>
+      <li>VLW_GROUP_LIST: index of group to generate a list for</li>
     </ul>
 * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
 * @return the number of vehicles added to the list
@@ -2050,6 +2062,19 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 			}
 			break;
 		}
+
+ 		case VLW_GROUP_LIST:
+			FOR_ALL_VEHICLES(v) {
+				if (v->type == type && (
+							(type == VEH_TRAIN && IsFrontEngine(v)) ||
+							(type != VEH_TRAIN && v->subtype <= subtype)
+						) && v->owner == owner && v->group_id == index) {
+					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetNumVehicles() / 4);
+
+					(*sort_list)[n++] = v;
+				}
+			}
+			break;
 
 		default: NOT_REACHED(); break;
 	}
@@ -2667,6 +2692,8 @@ extern const SaveLoad _common_veh_desc[] = {
 	    SLE_REF(Vehicle, next_shared,          REF_VEHICLE),
 	    SLE_REF(Vehicle, prev_shared,          REF_VEHICLE),
 
+	SLE_CONDVAR(Vehicle, group_id,             SLE_UINT16,                60, SL_MAX_VERSION),
+
 	/* reserve extra space in savegame here. (currently 10 bytes) */
 	SLE_CONDNULL(10,                                                       2, SL_MAX_VERSION),
 
@@ -2865,6 +2892,9 @@ static void Load_VEHS()
 			v->current_order.flags = (v->current_order.type & 0xF0) >> 4;
 			v->current_order.type.m_val &= 0x0F;
 		}
+
+		/* Advanced vehicle lists got added */
+		if (CheckSavegameVersion(60)) v->group_id = DEFAULT_GROUP;
 	}
 
 	/* Check for shared order-lists (we now use pointers for that) */

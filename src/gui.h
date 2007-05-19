@@ -139,4 +139,6 @@ VARDEF PlaceProc *_place_proc;
 /* vehicle_gui.cpp */
 void InitializeGUI();
 
+void ShowPlayerGroup(PlayerID player, VehicleType veh);
+
 #endif /* GUI_H */

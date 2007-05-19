@@ -63,6 +63,7 @@
 #include "newgrf_house.h"
 #include "newgrf_commons.h"
 #include "player_face.h"
+#include "group.h"
 
 #include "bridge_map.h"
 #include "clear_map.h"
@@ -294,6 +295,7 @@ static void UnInitializeGame()
 	CleanPool(&_Vehicle_pool);
 	CleanPool(&_Sign_pool);
 	CleanPool(&_Order_pool);
+	CleanPool(&_Group_pool);
 
 	free((void*)_town_sort);
 	free((void*)_industry_sort);
@@ -1953,6 +1955,20 @@ bool AfterLoadGame()
 		/* Same goes for number of towns, although no test is needed, just an increment */
 		_opt.diff.number_towns++;
 	}
+
+	/* Recalculate */
+	Group *g;
+	FOR_ALL_GROUPS(g) {
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (!IsEngineCountable(v)) continue;
+
+			if (v->group_id != g->index || v->type != g->vehicle_type || v->owner != g->owner) continue;
+
+			g->num_engines[v->engine_type]++;
+		}
+	}
+
 
 	return true;
 }

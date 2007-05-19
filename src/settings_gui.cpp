@@ -598,6 +598,7 @@ static const char *_patches_ui[] = {
 	"scrollwheel_scrolling",
 	"scrollwheel_multiplier",
 	"pause_on_newgame",
+	"advanced_vehicle_list",
 };
 
 static const char *_patches_construction[] = {

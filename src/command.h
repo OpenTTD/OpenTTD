@@ -143,6 +143,12 @@ enum {
 	CMD_MASS_START_STOP              = 117,
 	CMD_DEPOT_SELL_ALL_VEHICLES      = 118,
 	CMD_DEPOT_MASS_AUTOREPLACE       = 119,
+	CMD_CREATE_GROUP                 = 120,
+	CMD_DELETE_GROUP                 = 121,
+	CMD_RENAME_GROUP                 = 122,
+	CMD_ADD_VEHICLE_GROUP            = 123,
+	CMD_ADD_SHARED_VEHICLE_GROUP     = 124,
+	CMD_REMOVE_ALL_VEHICLES_GROUP    = 125,
 };
 
 enum {

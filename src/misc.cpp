@@ -22,6 +22,7 @@
 #include "newgrf_house.h"
 #include "date.h"
 #include "cargotype.h"
+#include "group.h"
 
 char _name_array[512][32];
 
@@ -120,6 +121,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeWaypoints();
 	InitializeDepots();
 	InitializeOrders();
+	InitializeGroup();
 
 	InitNewsItemStructs();
 	InitializeLandscape();

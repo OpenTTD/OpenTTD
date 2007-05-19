@@ -310,6 +310,8 @@ struct Vehicle {
 	TileIndex cargo_loaded_at_xy;  ///< tile index where feeder cargo was loaded
 	uint32 value;
 
+	GroupID group_id;              ///< Index of group Pool array
+
 	union {
 		VehicleRail rail;
 		VehicleAir air;

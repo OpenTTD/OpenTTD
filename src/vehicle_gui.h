@@ -15,8 +15,21 @@ void InitializeVehiclesGuiList();
 /* sorter stuff */
 void RebuildVehicleLists();
 void ResortVehicleLists();
+void SortVehicleList(vehiclelist_d *vl);
+void BuildVehicleList(vehiclelist_d *vl, PlayerID owner, uint16 index, uint16 window_type);
 
 #define PERIODIC_RESORT_DAYS 10
+
+extern const StringID _vehicle_sort_listing[];
+
+/* Start of functions regarding vehicle list windows */
+enum {
+	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
+	PLY_WND_PRC__SIZE_OF_ROW_TINY  = 13,
+	PLY_WND_PRC__SIZE_OF_ROW_SMALL = 26,
+	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 36,
+	PLY_WND_PRC__SIZE_OF_ROW_BIG2  = 39,
+};
 
 /* Vehicle List Window type flags */
 enum {
@@ -24,12 +37,13 @@ enum {
 	VLW_SHARED_ORDERS = 1 << 8,
 	VLW_STATION_LIST  = 2 << 8,
 	VLW_DEPOT_LIST    = 3 << 8,
+	VLW_GROUP_LIST    = 4 << 8,
 	VLW_MASK          = 0x700,
 };
 
 static inline bool ValidVLWFlags(uint16 flags)
 {
-	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST);
+	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST || flags == VLW_GROUP_LIST);
 }
 
 void PlayerVehWndProc(Window *w, WindowEvent *e);
@@ -54,6 +68,8 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, StationID 
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex depot_tile);
 
 void ShowReplaceVehicleWindow(VehicleType vehicletype);
+void DrawSmallOrderList(const Vehicle *v, int x, int y);
+void ShowReplaceGroupVehicleWindow(GroupID group, VehicleType veh);
 
 static inline void DrawVehicleImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
 {

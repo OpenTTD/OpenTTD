@@ -31,6 +31,7 @@
 #include "depot.h"
 #include "helpers.hpp"
 #include "cargotype.h"
+#include "group.h"
 
 struct Sorting {
 	Listing aircraft;
@@ -40,15 +41,6 @@ struct Sorting {
 };
 
 static Sorting _sorting;
-
-struct vehiclelist_d {
-	const Vehicle** sort_list;  // List of vehicles (sorted)
-	Listing *_sorting;          // pointer to the appropiate subcategory of _sorting
-	uint16 length_of_sort_list; // Keeps track of how many vehicle pointers sort list got space for
-	VehicleType vehicle_type;   // The vehicle type that is sorted
-	list_d l;                   // General list struct
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
 
 static bool   _internal_sort_order;     // descending/ascending
 
@@ -78,7 +70,7 @@ static VehicleSortListingTypeFunction* const _vehicle_sorter[] = {
 	&VehicleValueSorter,
 };
 
-static const StringID _vehicle_sort_listing[] = {
+const StringID _vehicle_sort_listing[] = {
 	STR_SORT_BY_NUMBER,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_AGE,
@@ -134,7 +126,7 @@ void ResortVehicleLists()
 	}
 }
 
-static void BuildVehicleList(vehiclelist_d* vl, PlayerID owner, uint16 index, uint16 window_type)
+void BuildVehicleList(vehiclelist_d *vl, PlayerID owner, uint16 index, uint16 window_type)
 {
 	if (!(vl->l.flags & VL_REBUILD)) return;
 
@@ -146,7 +138,7 @@ static void BuildVehicleList(vehiclelist_d* vl, PlayerID owner, uint16 index, ui
 	vl->l.flags |= VL_RESORT;
 }
 
-static void SortVehicleList(vehiclelist_d *vl)
+void SortVehicleList(vehiclelist_d *vl)
 {
 	if (!(vl->l.flags & VL_RESORT)) return;
 
@@ -749,16 +741,6 @@ void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v)
 	}
 }
 
-/*
- * Start of functions regarding vehicle list windows
- */
-
-enum {
-	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
-	PLY_WND_PRC__SIZE_OF_ROW_SMALL = 26,
-	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 36,
-};
-
 enum VehicleListWindowWidgets {
 	VLW_WIDGET_CLOSEBOX = 0,
 	VLW_WIDGET_CAPTION,
@@ -926,7 +908,7 @@ static void CreateVehicleListWindow(Window *w)
 	vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 }
 
-static void DrawSmallOrderList(const Vehicle *v, int x, int y)
+void DrawSmallOrderList(const Vehicle *v, int x, int y)
 {
 	const Order *order;
 	int sel, i = 0;
@@ -1275,7 +1257,11 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, Vehicle
 
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
 {
-	ShowVehicleListWindowLocal(player, VLW_STANDARD, vehicle_type, 0);
+	if (player == _local_player && _patches.advanced_vehicle_list) {
+		ShowPlayerGroup(player, vehicle_type);
+	} else {
+		ShowVehicleListWindowLocal(player, VLW_STANDARD, vehicle_type, 0);
+	}
 }
 
 void ShowVehicleListWindow(const Vehicle *v)

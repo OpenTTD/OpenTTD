@@ -29,7 +29,7 @@
 #include <setjmp.h>
 #include <list>
 
-extern const uint16 SAVEGAME_VERSION = 59;
+extern const uint16 SAVEGAME_VERSION = 60;
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
@@ -1257,6 +1257,7 @@ extern const ChunkHandler _industry_chunk_handlers[];
 extern const ChunkHandler _economy_chunk_handlers[];
 extern const ChunkHandler _animated_tile_chunk_handlers[];
 extern const ChunkHandler _newgrf_chunk_handlers[];
+extern const ChunkHandler _group_chunk_handlers[];
 
 static const ChunkHandler * const _chunk_handlers[] = {
 	_misc_chunk_handlers,
@@ -1274,6 +1275,7 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	_player_chunk_handlers,
 	_animated_tile_chunk_handlers,
 	_newgrf_chunk_handlers,
+	_group_chunk_handlers,
 	NULL,
 };
 

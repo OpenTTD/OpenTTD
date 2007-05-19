@@ -38,6 +38,7 @@
 #include "date.h"
 #include "cargotype.h"
 #include "player_face.h"
+#include "group.h"
 
 /* Score info */
 const ScoreInfo _score_info[] = {
@@ -359,6 +360,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					DeleteVehicle(v);
 				} else {
 					v->owner = new_player;
+					v->group_id = DEFAULT_GROUP;
 					if (IsEngineCountable(v)) GetPlayer(new_player)->num_engines[v->engine_type]++;
 					switch (v->type) {
 						case VEH_TRAIN:    if (IsFrontEngine(v)) v->unitnumber = ++num_train; break;
