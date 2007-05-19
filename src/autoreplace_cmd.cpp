@@ -149,6 +149,8 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 		new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type, old_v->group_id);
 	}
 
+	if (new_engine_type == INVALID_ENGINE) new_engine_type = old_v->engine_type;
+
 	replacement_cargo_type = GetNewCargoTypeForReplace(old_v, new_engine_type);
 
 	/* check if we can't refit to the needed type, so no replace takes place to prevent the vehicle from altering cargo type */
