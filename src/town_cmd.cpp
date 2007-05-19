@@ -400,24 +400,55 @@ static void TileLoop_Town(TileIndex tile)
 
 	r = Random();
 
-	if (GB(r, 0, 8) < hs->population) {
-		uint amt = GB(r, 0, 8) / 8 + 1;
-		uint moved;
+	if (HASBIT(hs->callback_mask, CBM_HOUSE_PRODUCE_CARGO)) {
+		for (uint i = 0; i < 256; i++) {
+			uint16 callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, r, house_id, t, tile);
 
-		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
-		t->new_max_pass += amt;
-		moved = MoveGoodsToStation(tile, 1, 1, CT_PASSENGERS, amt);
-		t->new_act_pass += moved;
-	}
+			if (callback == CALLBACK_FAILED) break;
+			if (callback == 0x20FF) break;
 
-	if (GB(r, 8, 8) < hs->mail_generation) {
-		uint amt = GB(r, 8, 8) / 8 + 1;
-		uint moved;
+			CargoID cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grffile);
+			if (cargo == CT_INVALID) continue;
 
-		if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
-		t->new_max_mail += amt;
-		moved = MoveGoodsToStation(tile, 1, 1, CT_MAIL, amt);
-		t->new_act_mail += moved;
+			uint amt = GB(callback, 0, 8);
+			uint moved = MoveGoodsToStation(tile, 1, 1, cargo, amt);
+
+			const CargoSpec *cs = GetCargo(cargo);
+			switch (cs->town_effect) {
+				case TE_PASSENGERS:
+					t->new_max_pass += amt;
+					t->new_act_pass += moved;
+					break;
+
+				case TE_MAIL:
+					t->new_max_mail += amt;
+					t->new_act_mail += moved;
+					break;
+
+				default:
+					break;
+			}
+		}
+	} else {
+		if (GB(r, 0, 8) < hs->population) {
+			uint amt = GB(r, 0, 8) / 8 + 1;
+			uint moved;
+
+			if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
+			t->new_max_pass += amt;
+			moved = MoveGoodsToStation(tile, 1, 1, CT_PASSENGERS, amt);
+			t->new_act_pass += moved;
+		}
+
+		if (GB(r, 8, 8) < hs->mail_generation) {
+			uint amt = GB(r, 8, 8) / 8 + 1;
+			uint moved;
+
+			if (_economy.fluct <= 0) amt = (amt + 1) >> 1;
+			t->new_max_mail += amt;
+			moved = MoveGoodsToStation(tile, 1, 1, CT_MAIL, amt);
+			t->new_act_mail += moved;
+		}
 	}
 
 	_current_player = OWNER_TOWN;
