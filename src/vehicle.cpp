@@ -584,7 +584,8 @@ void DestroyVehicle(Vehicle *v)
 		GetPlayer(v->owner)->num_engines[v->engine_type]--;
 		if (v->owner == _local_player) InvalidateAutoreplaceWindow(v->engine_type);
 
-		if (!IsDefaultGroupID(v->group_id) && IsValidGroupID(v->group_id)) GetGroup(v->group_id)->num_engines[v->engine_type]--;
+		if (IsValidGroupID(v->group_id)) GetGroup(v->group_id)->num_engines[v->engine_type]--;
+		DecreaseGroupNumVehicle(v->group_id);
 	}
 
 	DeleteVehicleNews(v->index, INVALID_STRING_ID);

@@ -175,7 +175,6 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 		new_v = GetVehicle(_new_vehicle_id);
 		*w = new_v; //we changed the vehicle, so MaybeReplaceVehicle needs to work on the new one. Now we tell it what the new one is
 
-		new_v->group_id = old_v->group_id;
 		/* refit if needed */
 		if (replacement_cargo_type != CT_NO_REFIT) {
 			if (CmdFailed(DoCommand(0, new_v->index, replacement_cargo_type, DC_EXEC, GetCmdRefitVeh(new_v)))) {
@@ -205,7 +204,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			new_v->profit_this_year = old_v->profit_this_year;
 			new_v->profit_last_year = old_v->profit_last_year;
 			new_v->service_interval = old_v->service_interval;
-			new_v->group_id = old_v->group_id;
+			DoCommand(0, old_v->group_id, new_v->index, flags, CMD_ADD_VEHICLE_GROUP);
 			new_front = true;
 			new_v->unitnumber = old_v->unitnumber; // use the same unit number
 			new_v->dest_tile  = old_v->dest_tile;
