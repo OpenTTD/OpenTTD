@@ -3199,6 +3199,10 @@ static void SkipIf(byte *buf, int len)
 				break;
 			case 5: result = (param_val & mask) > cond_val;
 				break;
+			case 11: result = GetCargoIDByLabel(BSWAP32(cond_val)) == CT_INVALID;
+				break;
+			case 12: result = GetCargoIDByLabel(BSWAP32(cond_val)) != CT_INVALID;
+				break;
 
 			default: grfmsg(1, "SkipIf: Unsupported test %d. Ignoring", condtype); return;
 		}
