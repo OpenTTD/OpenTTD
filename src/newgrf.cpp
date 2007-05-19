@@ -4213,7 +4213,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (0 << 0x04)  // aichoosechance
 	                   |                                        (1 << 0x05)  // resolutionwidth
 	                   |                                        (1 << 0x06)  // resolutionheight
-	                   |                                        (1 << 0x07)  // newindustries
+	                   |                                        (0 << 0x07)  // newindustries
 	                   |         ((_patches.improved_load ? 1 : 0) << 0x08)  // fifoloading
 	                   |                                        (0 << 0x09)  // townroadbranchprob
 	                   |                                        (0 << 0x0A)  // tempsnowline
