@@ -181,7 +181,7 @@ int32 CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	GroupID new_g = p1;
 
-	if (!IsValidVehicleID(p2) || !IsValidGroupID(new_g)) return CMD_ERROR;
+	if (!IsValidVehicleID(p2) || (!IsValidGroupID(new_g) && !IsDefaultGroupID(new_g))) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p2);
 	if (v->owner != _current_player || (v->type == VEH_TRAIN && !IsFrontEngine(v))) return CMD_ERROR;
