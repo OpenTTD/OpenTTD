@@ -294,7 +294,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->reseed          = 0;
 }
 
-uint16 GetHouseCallback(uint16 callback, uint32 param1, HouseID house_id, Town *town, TileIndex tile)
+uint16 GetHouseCallback(uint16 callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile)
 {
 	ResolverObject object;
 	const SpriteGroup *group;
@@ -302,7 +302,7 @@ uint16 GetHouseCallback(uint16 callback, uint32 param1, HouseID house_id, Town *
 	NewHouseResolver(&object, house_id, tile, town);
 	object.callback = callback;
 	object.callback_param1 = param1;
-	object.callback_param2 = 0;
+	object.callback_param2 = param2;
 
 	group = Resolve(GetHouseSpecs(house_id)->spritegroup, &object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
@@ -333,7 +333,7 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 			if (pal == 0) {
 				const HouseSpec *hs = GetHouseSpecs(house_id);
 				if (HASBIT(hs->callback_mask, CBM_BUILDING_COLOUR)) {
-					uint16 callback = GetHouseCallback(CBID_BUILDING_COLOUR, 0, house_id, GetTownByTile(ti->tile), ti->tile);
+					uint16 callback = GetHouseCallback(CBID_BUILDING_COLOUR, 0, 0, house_id, GetTownByTile(ti->tile), ti->tile);
 					if (callback != CALLBACK_FAILED) {
 						/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
 						pal = HASBIT(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
@@ -388,7 +388,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	bool frame_set_by_callback = false;
 
 	if (HASBIT(hs->callback_mask, CBM_ANIMATION_SPEED)) {
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_SPEED, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_SPEED, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED) animation_speed = clamp(callback_res & 0xFF, 2, 16);
 	}
 
@@ -403,7 +403,7 @@ void AnimateNewHouseTile(TileIndex tile)
 
 	if (HASBIT(hs->callback_mask, CBM_ANIMATION_NEXT_FRAME)) {
 		uint32 param = (hs->extra_flags & CALLBACK_1A_RANDOM_BITS) ? Random() : 0;
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_NEXT_FRAME, param, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_NEXT_FRAME, param, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 
 		if (callback_res != CALLBACK_FAILED) {
 			frame_set_by_callback = true;
@@ -469,7 +469,7 @@ bool CanDeleteHouse(TileIndex tile)
 			|| _current_player == OWNER_WATER || _current_player == OWNER_NONE) return true;
 
 	if (HASBIT(hs->callback_mask, CBM_HOUSE_DENY_DESTRUCTION)) {
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		return (callback_res == CALLBACK_FAILED || callback_res == 0);
 	} else {
 		return !(hs->extra_flags & BUILDING_IS_PROTECTED);
@@ -482,7 +482,7 @@ static void AnimationControl(TileIndex tile, uint16 random_bits)
 
 	if (HASBIT(hs->callback_mask, CBM_ANIMATION_START_STOP)) {
 		uint32 param = (hs->extra_flags & SYNCHRONISED_CALLBACK_1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_START_STOP, param, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_START_STOP, param, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 
 		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(tile, callback_res);
 	}
@@ -522,7 +522,7 @@ bool NewHouseTileLoop(TileIndex tile)
 
 	/* Check callback 21, which determines if a house should be destroyed. */
 	if (HASBIT(hs->callback_mask, CBM_HOUSE_DESTRUCTION)) {
-		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DESTRUCTION, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DESTRUCTION, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED && callback_res > 0) {
 			ClearTownHouse(GetTownByTile(tile), tile);
 			return false;

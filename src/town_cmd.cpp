@@ -344,7 +344,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 
 	/* Check and/or  */
 	if (HASBIT(GetHouseSpecs(GetHouseType(tile))->callback_mask, CBM_CONSTRUCTION_STATE_CHANGE)) {
-		uint16 callback_res = GetHouseCallback(CBID_CONSTRUCTION_STATE_CHANGE, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_CONSTRUCTION_STATE_CHANGE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(tile, callback_res);
 	}
 
@@ -490,7 +490,7 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 
 	/* Check for custom accepted cargo types */
 	if (HASBIT(hs->callback_mask, CBM_HOUSE_ACCEPT_CARGO)) {
-		uint16 callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
 			/* Replace accepted cargo types with translated values from callback */
 			accepts[0] = GetCargoTranslation(GB(callback,  0, 5), hs->grffile);
@@ -501,7 +501,7 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 
 	/* Check for custom cargo acceptance */
 	if (HASBIT(hs->callback_mask, CBM_CARGO_ACCEPTANCE)) {
-		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
 			if (accepts[0] != CT_INVALID) ac[accepts[0]] = GB(callback, 0, 4);
 			if (accepts[1] != CT_INVALID) ac[accepts[1]] = GB(callback, 4, 4);
@@ -1663,7 +1663,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 				if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world) continue;
 
 				if (HASBIT(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
-					uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, house, t, tile);
+					uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile);
 					if (callback_res != CALLBACK_FAILED && callback_res == 0) continue;
 				}
 			}
