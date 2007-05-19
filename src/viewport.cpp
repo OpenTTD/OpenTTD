@@ -839,21 +839,26 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 			}
 			break;
 
-		default: NOT_REACHED();
 		case ZOOM_LVL_OUT_4X:
-			right += 4;
-			bottom += 5;
+		case ZOOM_LVL_OUT_8X:
+			right += ScaleByZoom(1, dpi->zoom);
+			bottom += ScaleByZoom(1, dpi->zoom) + 1;
 
 			FOR_ALL_TOWNS(t) {
 				if (bottom > t->sign.top &&
-						top    < t->sign.top + 24 &&
+						top    < t->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > t->sign.left &&
-						left   < t->sign.left + t->sign.width_2*4) {
+						left   < t->sign.left + ScaleByZoom(t->sign.width_2, dpi->zoom)) {
 					AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_TOWN_LABEL_TINY_BLACK, t->index, 0);
 					AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_TOWN_LABEL_TINY_WHITE, t->index, 0);
 				}
 			}
 			break;
+
+		case ZOOM_LVL_OUT_16X:
+			break;
+
+		default: NOT_REACHED();
 	}
 }
 
@@ -908,19 +913,25 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 			}
 			break;
 
-		default: NOT_REACHED();
 		case ZOOM_LVL_OUT_4X:
-			right += 4;
-			bottom += 5;
+		case ZOOM_LVL_OUT_8X:
+			right += ScaleByZoom(1, dpi->zoom);
+			bottom += ScaleByZoom(1, dpi->zoom) + 1;
+
 			FOR_ALL_STATIONS(st) {
 				if (bottom > st->sign.top &&
-						top    < st->sign.top + 24 &&
+						top    < st->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > st->sign.left &&
-						left   < st->sign.left + st->sign.width_2*4) {
+						left   < st->sign.left + ScaleByZoom(st->sign.width_2, dpi->zoom)) {
 					AddStation(st, STR_STATION_SIGN_TINY, st->sign.width_2 | 0x8000);
 				}
 			}
 			break;
+
+		case ZOOM_LVL_OUT_16X:
+			break;
+
+		default: NOT_REACHED();
 	}
 }
 
@@ -975,19 +986,25 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 			}
 			break;
 
-		default: NOT_REACHED();
 		case ZOOM_LVL_OUT_4X:
-			right += 4;
-			bottom += 5;
+		case ZOOM_LVL_OUT_8X:
+			right += ScaleByZoom(1, dpi->zoom);
+			bottom += ScaleByZoom(1, dpi->zoom) + 1;
+
 			FOR_ALL_SIGNS(si) {
 				if (bottom > si->sign.top &&
-						top    < si->sign.top + 24 &&
+						top    < si->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > si->sign.left &&
-						left   < si->sign.left + si->sign.width_2 * 4) {
+						left   < si->sign.left + ScaleByZoom(si->sign.width_2, dpi->zoom)) {
 					AddSign(si, STR_2002, si->sign.width_2 | 0x8000);
 				}
 			}
 			break;
+
+		case ZOOM_LVL_OUT_16X:
+			break;
+
+		default: NOT_REACHED();
 	}
 }
 
@@ -1042,19 +1059,25 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 			}
 			break;
 
-		default: NOT_REACHED();
 		case ZOOM_LVL_OUT_4X:
-			right += 4;
-			bottom += 5;
+		case ZOOM_LVL_OUT_8X:
+			right += ScaleByZoom(1, dpi->zoom);
+			bottom += ScaleByZoom(1, dpi->zoom) + 1;
+
 			FOR_ALL_WAYPOINTS(wp) {
 				if (bottom > wp->sign.top &&
-						top    < wp->sign.top + 24 &&
+						top    < wp->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > wp->sign.left &&
-						left   < wp->sign.left + wp->sign.width_2*4) {
+						left   < wp->sign.left + ScaleByZoom(wp->sign.width_2, dpi->zoom)) {
 					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT_TINY, wp->sign.width_2 | 0x8000);
 				}
 			}
 			break;
+
+		case ZOOM_LVL_OUT_16X:
+			break;
+
+		default: NOT_REACHED();
 	}
 }
 
@@ -1520,20 +1543,26 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		default: NOT_REACHED();
 		case ZOOM_LVL_OUT_4X:
-			x = (x - vp->left + 3) * 4 + vp->virtual_left;
-			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
+		case ZOOM_LVL_OUT_8X:
+			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
+			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
+
 			FOR_ALL_TOWNS(t) {
 				if (y >= t->sign.top &&
-						y < t->sign.top + 24 &&
+						y < t->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= t->sign.left &&
-						x < t->sign.left + t->sign.width_2 * 4) {
+						x < t->sign.left + ScaleByZoom(t->sign.width_2, vp->zoom)) {
 					ShowTownViewWindow(t->index);
 					return true;
 				}
 			}
 			break;
+
+		case ZOOM_LVL_OUT_16X:
+			break;
+
+		default: NOT_REACHED();
 	}
 
 	return false;
@@ -1575,20 +1604,26 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		default: NOT_REACHED();
 		case ZOOM_LVL_OUT_4X:
-			x = (x - vp->left + 3) * 4 + vp->virtual_left;
-			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
+		case ZOOM_LVL_OUT_8X:
+			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
+			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
+
 			FOR_ALL_STATIONS(st) {
 				if (y >= st->sign.top &&
-						y < st->sign.top + 24 &&
+						y < st->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= st->sign.left &&
-						x < st->sign.left + st->sign.width_2 * 4) {
+						x < st->sign.left + ScaleByZoom(st->sign.width_2, vp->zoom)) {
 					ShowStationViewWindow(st->index);
 					return true;
 				}
 			}
 			break;
+
+		case ZOOM_LVL_OUT_16X:
+			break;
+
+		default: NOT_REACHED();
 	}
 
 	return false;
@@ -1630,20 +1665,26 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		default: NOT_REACHED();
 		case ZOOM_LVL_OUT_4X:
-			x = (x - vp->left + 3) * 4 + vp->virtual_left;
-			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
+		case ZOOM_LVL_OUT_8X:
+			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
+			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
+
 			FOR_ALL_SIGNS(si) {
 				if (y >= si->sign.top &&
-						y <  si->sign.top + 24 &&
+						y <  si->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= si->sign.left &&
-						x <  si->sign.left + si->sign.width_2 * 4) {
+						x <  si->sign.left + ScaleByZoom(si->sign.width_2, vp->zoom)) {
 					ShowRenameSignWindow(si);
 					return true;
 				}
 			}
 			break;
+
+		case ZOOM_LVL_OUT_16X:
+			break;
+
+		default: NOT_REACHED();
 	}
 
 	return false;
@@ -1685,20 +1726,26 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		default: NOT_REACHED();
 		case ZOOM_LVL_OUT_4X:
-			x = (x - vp->left + 3) * 4 + vp->virtual_left;
-			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
+		case ZOOM_LVL_OUT_8X:
+			x = ScaleByZoom(x - vp->left + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_left;
+			y = ScaleByZoom(y - vp->top  + ScaleByZoom(1, vp->zoom) - 1, vp->zoom) + vp->virtual_top;
+
 			FOR_ALL_WAYPOINTS(wp) {
 				if (y >= wp->sign.top &&
-						y < wp->sign.top + 24 &&
+						y < wp->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= wp->sign.left &&
-						x < wp->sign.left + wp->sign.width_2 * 4) {
+						x < wp->sign.left + ScaleByZoom(wp->sign.width_2, vp->zoom)) {
 					ShowRenameWaypointWindow(wp);
 					return true;
 				}
 			}
 			break;
+
+		case ZOOM_LVL_OUT_16X:
+			break;
+
+		default: NOT_REACHED();
 	}
 
 	return false;

@@ -738,142 +738,7 @@ struct BlitterParams {
 	int pitch;
 };
 
-static void GfxBlitTileZoomIn(BlitterParams *bp)
-{
-	const byte *src_o = bp->sprite;
-	const byte *src;
-	int num, skip;
-	byte done;
-	Pixel *dst;
-	const byte *ctab;
-
-	src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
-	switch (bp->mode) {
-		case BM_COLOUR_REMAP:
-			do {
-				do {
-					done = src_o[0];
-					num = done & 0x7F;
-					skip = src_o[1];
-					src = src_o + 2;
-					src_o += num + 2;
-
-					dst = bp->dst;
-
-					if ( (skip -= bp->start_x) > 0) {
-						dst += skip;
-					} else {
-						src -= skip;
-						num += skip;
-						if (num <= 0) continue;
-						skip = 0;
-					}
-
-					skip = skip + num - bp->width;
-					if (skip > 0) {
-						num -= skip;
-						if (num <= 0) continue;
-					}
-
-					ctab = _color_remap_ptr;
-
-					for (; num >= 4; num -=4) {
-						dst[3] = ctab[src[3]];
-						dst[2] = ctab[src[2]];
-						dst[1] = ctab[src[1]];
-						dst[0] = ctab[src[0]];
-						dst += 4;
-						src += 4;
-					}
-					for (; num != 0; num--) *dst++ = ctab[*src++];
-				} while (!(done & 0x80));
-
-				bp->dst += bp->pitch;
-			} while (--bp->height != 0);
-			break;
-
-		case BM_TRANSPARENT:
-			do {
-				do {
-					done = src_o[0];
-					num = done & 0x7F;
-					skip = src_o[1];
-					src_o += num + 2;
-
-					dst = bp->dst;
-
-					if ( (skip -= bp->start_x) > 0) {
-						dst += skip;
-					} else {
-						num += skip;
-						if (num <= 0) continue;
-						skip = 0;
-					}
-
-					skip = skip + num - bp->width;
-					if (skip > 0) {
-						num -= skip;
-						if (num <= 0) continue;
-					}
-
-					ctab = _color_remap_ptr;
-					for (; num != 0; num--) {
-						*dst = ctab[*dst];
-						dst++;
-					}
-				} while (!(done & 0x80));
-
-				bp->dst += bp->pitch;
-			} while (--bp->height != 0);
-			break;
-
-		default:
-			do {
-				do {
-					done = src_o[0];
-					num = done & 0x7F;
-					skip = src_o[1];
-					src = src_o + 2;
-					src_o += num + 2;
-
-					dst = bp->dst;
-
-					if ( (skip -= bp->start_x) > 0) {
-						dst += skip;
-					} else {
-						src -= skip;
-						num += skip;
-						if (num <= 0) continue;
-						skip = 0;
-					}
-
-					skip = skip + num - bp->width;
-					if (skip > 0) {
-						num -= skip;
-						if (num <= 0) continue;
-					}
-#if defined(_WIN32)
-					if (num & 1) *dst++ = *src++;
-					if (num & 2) { *(uint16*)dst = *(uint16*)src; dst += 2; src += 2; }
-					if (num >>= 2) {
-						do {
-							*(uint32*)dst = *(uint32*)src;
-							dst += 4;
-							src += 4;
-						} while (--num != 0);
-					}
-#else
-					memcpy(dst, src, num);
-#endif
-				} while (!(done & 0x80));
-
-				bp->dst += bp->pitch;
-			} while (--bp->height != 0);
-			break;
-	}
-}
-
-static void GfxBlitZoomInUncomp(BlitterParams *bp)
+static void GfxBlitZoomUncomp(BlitterParams *bp, ZoomLevel zoom)
 {
 	const byte *src = bp->sprite;
 	Pixel *dst = bp->dst;
@@ -884,62 +749,48 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 	assert(height > 0);
 	assert(width > 0);
 
+	height = UnScaleByZoom(height, zoom);
+
 	switch (bp->mode) {
 		case BM_COLOUR_REMAP: {
 			const byte *ctab = _color_remap_ptr;
 
-			do {
-				for (i = 0; i != width; i++) {
-					byte b = ctab[src[i]];
+			for (; height != 0; height--) {
+				for (i = 0; i != UnScaleByZoom(width, zoom); i++) {
+					byte b = ctab[src[ScaleByZoom(i, zoom)]];
 
 					if (b != 0) dst[i] = b;
 				}
-				src += bp->width_org;
+				src += ScaleByZoom(bp->width_org, zoom);
 				dst += bp->pitch;
-			} while (--height != 0);
+			}
 			break;
 		}
 
 		case BM_TRANSPARENT: {
 			const byte *ctab = _color_remap_ptr;
 
-			do {
-				for (i = 0; i != width; i++)
-					if (src[i] != 0) dst[i] = ctab[dst[i]];
-				src += bp->width_org;
+			for (; height != 0; height--) {
+				for (i = 0; i != UnScaleByZoom(width, zoom); i++)
+					if (src[ScaleByZoom(i, zoom)] != 0) dst[i] = ctab[dst[i]];
+				src += ScaleByZoom(bp->width_org, zoom);
 				dst += bp->pitch;
-			} while (--height != 0);
+			}
 			break;
 		}
 
 		default:
-			do {
-				int n = width;
-
-				for (; n >= 4; n -= 4) {
-					if (src[0] != 0) dst[0] = src[0];
-					if (src[1] != 0) dst[1] = src[1];
-					if (src[2] != 0) dst[2] = src[2];
-					if (src[3] != 0) dst[3] = src[3];
-
-					dst += 4;
-					src += 4;
-				}
-
-				for (; n != 0; n--) {
-					if (src[0] != 0) dst[0] = src[0];
-					src++;
-					dst++;
-				}
-
-				src += bp->width_org - width;
-				dst += bp->pitch - width;
-			} while (--height != 0);
+			for (; height != 0; height--) {
+				for (i = 0; i != UnScaleByZoom(width, zoom); i++)
+					if (src[ScaleByZoom(i, zoom)] != 0) dst[i] = src[ScaleByZoom(i, zoom)];
+				src += ScaleByZoom(bp->width_org, zoom);
+				dst += bp->pitch;
+			}
 			break;
 	}
 }
 
-static void GfxBlitTileZoomMedium(BlitterParams *bp)
+static void GfxBlitTileZoom(BlitterParams *bp, ZoomLevel zoom)
 {
 	const byte *src_o = bp->sprite;
 	const byte *src;
@@ -949,477 +800,104 @@ static void GfxBlitTileZoomMedium(BlitterParams *bp)
 	const byte *ctab;
 
 	src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
-	switch (bp->mode) {
-		case BM_COLOUR_REMAP:
-			do {
-				do {
-					done = src_o[0];
-					num = done & 0x7F;
-					skip = src_o[1];
-					src = src_o + 2;
-					src_o += num + 2;
 
-					dst = bp->dst;
+	for (;;) {
+		do {
+			done = src_o[0];
+			num = done & 0x7F;
+			skip = src_o[1];
+			src = src_o + 2;
+			src_o += num + 2;
 
-					if (skip & 1) {
-						skip++;
-						src++;
-						if (--num == 0) continue;
-					}
+			dst = bp->dst;
 
-					if ( (skip -= bp->start_x) > 0) {
-						dst += skip >> 1;
-					} else {
-						src -= skip;
-						num += skip;
-						if (num <= 0) continue;
-						skip = 0;
-					}
+			if (zoom >= ZOOM_LVL_OUT_2X && (skip & 1)) {
+				skip += 1;
+				src += 1;
+				num -= 1;
+				if (num <= 0) continue;
+			}
 
-					skip = skip + num - bp->width;
-					if (skip > 0) {
-						num -= skip;
-						if (num <= 0) continue;
-					}
+			if (zoom >= ZOOM_LVL_OUT_4X && (skip & 2)) {
+				skip += 2;
+				src += 2;
+				num -= 2;
+				if (num <= 0) continue;
+			}
 
+			if (zoom >= ZOOM_LVL_OUT_8X && (skip & 4)) {
+				skip += 4;
+				src += 4;
+				num -= 4;
+				if (num <= 0) continue;
+			}
+
+			if (zoom >= ZOOM_LVL_OUT_16X && (skip & 8)) {
+				skip += 8;
+				src += 8;
+				num -= 8;
+				if (num <= 0) continue;
+			}
+
+			if ( (skip -= bp->start_x) > 0) {
+				dst += UnScaleByZoom(skip, zoom);
+			} else {
+				src -= skip;
+				num += skip;
+				if (num <= 0) continue;
+				skip = 0;
+			}
+
+			skip = skip + num - bp->width;
+			if (skip > 0) {
+				num -= skip;
+				if (num <= 0) continue;
+			}
+
+			num = UnScaleByZoom(num + ScaleByZoom(1, zoom) - 1, zoom);
+
+			switch (bp->mode) {
+				case BM_COLOUR_REMAP:
 					ctab = _color_remap_ptr;
-					num = (num + 1) >> 1;
 					for (; num != 0; num--) {
 							*dst = ctab[*src];
 							dst++;
-							src += 2;
+							src += ScaleByZoom(1, zoom);
 					}
-				} while (!(done & 0x80));
-				bp->dst += bp->pitch;
-				if (--bp->height == 0) return;
+					break;
 
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-			} while (--bp->height != 0);
-			break;
-
-		case BM_TRANSPARENT:
-			do {
-				do {
-					done = src_o[0];
-					num = done & 0x7F;
-					skip = src_o[1];
-					src_o += num + 2;
-
-					dst = bp->dst;
-
-					if (skip & 1) {
-						skip++;
-						if (--num == 0) continue;
-					}
-
-					if ( (skip -= bp->start_x) > 0) {
-						dst += skip >> 1;
-					} else {
-						num += skip;
-						if (num <= 0) continue;
-						skip = 0;
-					}
-
-					skip = skip + num - bp->width;
-					if (skip > 0) {
-						num -= skip;
-						if (num <= 0) continue;
-					}
-
+				case BM_TRANSPARENT:
 					ctab = _color_remap_ptr;
-					num = (num + 1) >> 1;
 					for (; num != 0; num--) {
 							*dst = ctab[*dst];
 							dst++;
 					}
-				} while (!(done & 0x80));
-				bp->dst += bp->pitch;
-				if (--bp->height == 0) return;
+					break;
 
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-			} while (--bp->height != 0);
-			break;
+				default:
+					for (; num != 0; num--) {
+							*dst = *src;
+							dst++;
+							src += ScaleByZoom(1, zoom);
+					}
+					break;
+			}
 
-		default:
+
+		} while (!(done & 0x80));
+
+		bp->dst += bp->pitch;
+		if (--bp->height == 0) return;
+
+		for (int i = 0; i < ScaleByZoom(1, zoom) - 1; i++) {
 			do {
-				do {
-					done = src_o[0];
-					num = done & 0x7F;
-					skip = src_o[1];
-					src = src_o + 2;
-					src_o += num + 2;
-
-					dst = bp->dst;
-
-					if (skip & 1) {
-						skip++;
-						src++;
-						if (--num == 0) continue;
-					}
-
-					if ( (skip -= bp->start_x) > 0) {
-						dst += skip >> 1;
-					} else {
-						src -= skip;
-						num += skip;
-						if (num <= 0) continue;
-						skip = 0;
-					}
-
-					skip = skip + num - bp->width;
-					if (skip > 0) {
-						num -= skip;
-						if (num <= 0) continue;
-					}
-
-					num = (num + 1) >> 1;
-
-					for (; num != 0; num--) {
-							*dst = *src;
-							dst++;
-							src += 2;
-					}
-
-				} while (!(done & 0x80));
-
-				bp->dst += bp->pitch;
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-			} while (--bp->height != 0);
-			break;
+				done = src_o[0];
+				src_o += (done & 0x7F) + 2;
+			} while (!(done & 0x80));
+			if (--bp->height == 0) return;
+		}
 	}
 }
-
-static void GfxBlitZoomMediumUncomp(BlitterParams *bp)
-{
-	const byte *src = bp->sprite;
-	Pixel *dst = bp->dst;
-	int height = bp->height;
-	int width = bp->width;
-	int i;
-
-	assert(height > 0);
-	assert(width > 0);
-
-	switch (bp->mode) {
-		case BM_COLOUR_REMAP: {
-			const byte *ctab = _color_remap_ptr;
-
-			for (height >>= 1; height != 0; height--) {
-				for (i = 0; i != width >> 1; i++) {
-					byte b = ctab[src[i * 2]];
-
-					if (b != 0) dst[i] = b;
-				}
-				src += bp->width_org * 2;
-				dst += bp->pitch;
-			}
-			break;
-		}
-
-		case BM_TRANSPARENT: {
-			const byte *ctab = _color_remap_ptr;
-
-			for (height >>= 1; height != 0; height--) {
-				for (i = 0; i != width >> 1; i++)
-					if (src[i * 2] != 0) dst[i] = ctab[dst[i]];
-				src += bp->width_org * 2;
-				dst += bp->pitch;
-			}
-			break;
-		}
-
-		default:
-			for (height >>= 1; height != 0; height--) {
-				for (i = 0; i != width >> 1; i++)
-					if (src[i * 2] != 0) dst[i] = src[i * 2];
-				src += bp->width_org * 2;
-				dst += bp->pitch;
-			}
-			break;
-	}
-}
-
-static void GfxBlitTileZoomOut(BlitterParams *bp)
-{
-	const byte *src_o = bp->sprite;
-	const byte *src;
-	int num, skip;
-	byte done;
-	Pixel *dst;
-	const byte *ctab;
-
-	src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
-	switch (bp->mode) {
-		case BM_COLOUR_REMAP:
-			for (;;) {
-				do {
-					done = src_o[0];
-					num = done & 0x7F;
-					skip = src_o[1];
-					src = src_o + 2;
-					src_o += num + 2;
-
-					dst = bp->dst;
-
-					if (skip & 1) {
-						skip++;
-						src++;
-						if (--num == 0) continue;
-					}
-
-					if (skip & 2) {
-						skip += 2;
-						src += 2;
-						num -= 2;
-						if (num <= 0) continue;
-					}
-
-					if ( (skip -= bp->start_x) > 0) {
-						dst += skip >> 2;
-					} else {
-						src -= skip;
-						num += skip;
-						if (num <= 0) continue;
-						skip = 0;
-					}
-
-					skip = skip + num - bp->width;
-					if (skip > 0) {
-						num -= skip;
-						if (num <= 0) continue;
-					}
-
-					ctab = _color_remap_ptr;
-					num = (num + 3) >> 2;
-					for (; num != 0; num--) {
-							*dst = ctab[*src];
-							dst++;
-							src += 4;
-					}
-				} while (!(done & 0x80));
-				bp->dst += bp->pitch;
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-				if (--bp->height == 0) return;
-			}
-			break;
-
-		case BM_TRANSPARENT:
-			for (;;) {
-				do {
-					done = src_o[0];
-					num = done & 0x7F;
-					skip = src_o[1];
-					src_o += num + 2;
-
-					dst = bp->dst;
-
-					if (skip & 1) {
-						skip++;
-						if (--num == 0) continue;
-					}
-
-					if (skip & 2) {
-						skip += 2;
-						num -= 2;
-						if (num <= 0) continue;
-					}
-
-					if ( (skip -= bp->start_x) > 0) {
-						dst += skip >> 2;
-					} else {
-						num += skip;
-						if (num <= 0) continue;
-						skip = 0;
-					}
-
-					skip = skip + num - bp->width;
-					if (skip > 0) {
-						num -= skip;
-						if (num <= 0) continue;
-					}
-
-					ctab = _color_remap_ptr;
-					num = (num + 3) >> 2;
-					for (; num != 0; num--) {
-							*dst = ctab[*dst];
-							dst++;
-					}
-
-				} while (!(done & 0x80));
-				bp->dst += bp->pitch;
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-				if (--bp->height == 0) return;
-			}
-			break;
-
-		default:
-			for (;;) {
-				do {
-					done = src_o[0];
-					num = done & 0x7F;
-					skip = src_o[1];
-					src = src_o + 2;
-					src_o += num + 2;
-
-					dst = bp->dst;
-
-					if (skip & 1) {
-						skip++;
-						src++;
-						if (--num == 0) continue;
-					}
-
-					if (skip & 2) {
-						skip += 2;
-						src += 2;
-						num -= 2;
-						if (num <= 0) continue;
-					}
-
-					if ( (skip -= bp->start_x) > 0) {
-						dst += skip >> 2;
-					} else {
-						src -= skip;
-						num += skip;
-						if (num <= 0) continue;
-						skip = 0;
-					}
-
-					skip = skip + num - bp->width;
-					if (skip > 0) {
-						num -= skip;
-						if (num <= 0) continue;
-					}
-
-					num = (num + 3) >> 2;
-
-					for (; num != 0; num--) {
-							*dst = *src;
-							dst++;
-							src += 4;
-					}
-				} while (!(done & 0x80));
-
-				bp->dst += bp->pitch;
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-				if (--bp->height == 0) return;
-
-				do {
-					done = src_o[0];
-					src_o += (done & 0x7F) + 2;
-				} while (!(done & 0x80));
-				if (--bp->height == 0) return;
-			}
-			break;
-	}
-}
-
-static void GfxBlitZoomOutUncomp(BlitterParams *bp)
-{
-	const byte *src = bp->sprite;
-	Pixel *dst = bp->dst;
-	int height = bp->height;
-	int width = bp->width;
-	int i;
-
-	assert(height > 0);
-	assert(width > 0);
-
-	switch (bp->mode) {
-		case BM_COLOUR_REMAP: {
-			const byte *ctab = _color_remap_ptr;
-
-			for (height >>= 2; height != 0; height--) {
-				for (i = 0; i != width >> 2; i++) {
-					byte b = ctab[src[i * 4]];
-
-					if (b != 0) dst[i] = b;
-				}
-				src += bp->width_org * 4;
-				dst += bp->pitch;
-			}
-			break;
-		}
-
-		case BM_TRANSPARENT: {
-			const byte *ctab = _color_remap_ptr;
-
-			for (height >>= 2; height != 0; height--) {
-				for (i = 0; i != width >> 2; i++)
-					if (src[i * 4] != 0) dst[i] = ctab[dst[i]];
-				src += bp->width_org * 4;
-				dst += bp->pitch;
-			}
-			break;
-		}
-
-		default:
-			for (height >>= 2; height != 0; height--) {
-				for (i = 0; i != width >> 2; i++)
-					if (src[i * 4] != 0) dst[i] = src[i * 4];
-				src += bp->width_org * 4;
-				dst += bp->pitch;
-			}
-			break;
-	}
-}
-
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 {
@@ -1483,12 +961,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 			if (bp.width <= 0) return;
 		}
 
-		switch (dpi->zoom) {
-			default: NOT_REACHED();
-			case ZOOM_LVL_NORMAL: GfxBlitTileZoomIn(&bp);     break;
-			case ZOOM_LVL_OUT_2X: GfxBlitTileZoomMedium(&bp); break;
-			case ZOOM_LVL_OUT_4X: GfxBlitTileZoomOut(&bp);    break;
-		}
+		GfxBlitTileZoom(&bp, dpi->zoom);
 	} else {
 		bp.sprite += bp.width * (bp.height & ~zoom_mask);
 		bp.height &= zoom_mask;
@@ -1525,12 +998,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 			if (bp.width <= 0) return;
 		}
 
-		switch (dpi->zoom) {
-			default: NOT_REACHED();
-			case ZOOM_LVL_NORMAL: GfxBlitZoomInUncomp(&bp);     break;
-			case ZOOM_LVL_OUT_2X: GfxBlitZoomMediumUncomp(&bp); break;
-			case ZOOM_LVL_OUT_4X: GfxBlitZoomOutUncomp(&bp);    break;
-		}
+		GfxBlitZoomUncomp(&bp, dpi->zoom);
 	}
 }
 

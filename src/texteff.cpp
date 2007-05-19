@@ -352,6 +352,8 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 			break;
 
 		case ZOOM_LVL_OUT_4X:
+		case ZOOM_LVL_OUT_8X:
+		case ZOOM_LVL_OUT_16X:
 			break;
 
 		default: NOT_REACHED();

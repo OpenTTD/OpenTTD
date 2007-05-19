@@ -125,8 +125,8 @@ void Station::MarkDirty() const
 		MarkAllViewportsDirty(
 			sign.left - 6,
 			sign.top,
-			sign.left + (sign.width_1 << 2) + 12,
-			sign.top + 48);
+			sign.left + ScaleByZoom(sign.width_1 + 12, _cur_dpi->zoom),
+			sign.top + ScaleByZoom(12, _cur_dpi->zoom));
 	}
 }
 

@@ -67,8 +67,8 @@ static void MarkSignDirty(Sign *si)
 	MarkAllViewportsDirty(
 		si->sign.left - 6,
 		si->sign.top  - 3,
-		si->sign.left + si->sign.width_1 * 4 + 12,
-		si->sign.top  + 45);
+		si->sign.left + ScaleByZoom(si->sign.width_1 + 12, _cur_dpi->zoom),
+		si->sign.top  + ScaleByZoom(12, _cur_dpi->zoom));
 }
 
 /**
