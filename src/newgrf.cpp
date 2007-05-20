@@ -2208,7 +2208,7 @@ static void NewSpriteGroup(byte *buf, int len)
 			} while (HASBIT(varadjust, 5));
 
 			group->g.determ.num_ranges = grf_load_byte(&buf);
-			group->g.determ.ranges = CallocT<DeterministicSpriteGroupRange>(group->g.determ.num_ranges);
+			if (group->g.determ.num_ranges > 0) group->g.determ.ranges = CallocT<DeterministicSpriteGroupRange>(group->g.determ.num_ranges);
 
 			if (!check_length(bufend - buf, 2 + (2 + 2 * varsize) * group->g.determ.num_ranges, "NewSpriteGroup (Deterministic)")) return;
 
