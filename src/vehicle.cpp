@@ -2479,7 +2479,7 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 					{
 						if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
 						if (rvi->railveh_type == RAILVEH_WAGON) {
-							if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_VALUABLES) {
+							if (!GetCargo(cargo_type)->is_freight) {
 								if (parent_engine_type == INVALID_ENGINE) {
 									scheme = LS_PASSENGER_WAGON_STEAM;
 								} else {
