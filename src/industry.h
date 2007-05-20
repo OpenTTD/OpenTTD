@@ -117,6 +117,8 @@ struct IndustrySpec {
 	StringID production_down_text;        ///< Message appearing when the industry's production is decreasing
 	byte appear_ingame[NUM_LANDSCAPE];    ///< Probability of appearance in game
 	byte appear_creation[NUM_LANDSCAPE];  ///< Probability of appearance during map creation
+	uint8 number_of_sounds;               ///< Number of sounds available in the sounds array
+	const uint8 *random_sounds;           ///< array of random sounds.
 	/* Newgrf stuff coming in */
 	uint16 callback_flags;                ///< Flags telling which grf callback is set
 	byte subst_id;

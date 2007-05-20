@@ -905,57 +905,17 @@ static void ChopLumberMillTrees(Industry *i)
 		i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + 45); ///< Found a tree, add according value to waiting cargo
 }
 
-static const byte _industry_sounds[37][2] = {
-	{0},
-	{0},
-	{1, SND_28_SAWMILL},
-	{0},
-	{0},
-	{0},
-	{1, SND_03_FACTORY_WHISTLE},
-	{1, SND_03_FACTORY_WHISTLE},
-	{0},
-	{3, SND_24_SHEEP},
-	{0},
-	{0},
-	{0},
-	{0},
-	{1, SND_28_SAWMILL},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{1, SND_03_FACTORY_WHISTLE},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{0},
-	{1, SND_33_PLASTIC_MINE},
-	{0},
-	{0},
-	{0},
-	{0},
-};
-
-
 static void ProduceIndustryGoods(Industry *i)
 {
 	uint32 r;
 	uint num;
+	const IndustrySpec *indsp = GetIndustrySpec(i->type);
 
 	/* play a sound? */
 	if ((i->counter & 0x3F) == 0) {
-		if (CHANCE16R(1, 14, r) && (num = _industry_sounds[i->type][0]) != 0) {
+		if (CHANCE16R(1, 14, r) && (num = indsp->number_of_sounds) != 0) {
 			SndPlayTileFx(
-				(SoundFx)(_industry_sounds[i->type][1] + (((r >> 16) * num) >> 16)),
+				(SoundFx)(indsp->random_sounds[((r >> 16) * num) >> 16]),
 				i->xy);
 		}
 	}
@@ -964,7 +924,7 @@ static void ProduceIndustryGoods(Industry *i)
 
 	/* produce some cargo */
 	if ((i->counter & 0xFF) == 0) {
-		IndustyBehaviour indbehav = GetIndustrySpec(i->type)->behaviour;
+		IndustyBehaviour indbehav = indsp->behaviour;
 		i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + i->production_rate[0]);
 		i->cargo_waiting[1] = min(0xffff, i->cargo_waiting[1] + i->production_rate[1]);
 

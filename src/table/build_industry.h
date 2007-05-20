@@ -1079,9 +1079,23 @@ static const IndustryTileTable * const _tile_table_sugar_mine[] = {
 #undef MK
 #undef MKEND
 
+/** Array with saw sound, for sawmill */
+static const uint8 _sawmill_sounds[] = { SND_28_SAWMILL };
+
+/** Array with whistle sound, for factory */
+static const uint8 _factory_sounds[] = { SND_03_FACTORY_WHISTLE };
+
+/** Array with 3 animal sounds, for farms */
+static const uint8 _farm_sounds[] = { SND_24_SHEEP, SND_25_COW, SND_26_HORSE };
+
+/** Array with... hem... a sound of toyland */
+static const uint8 _plastic_mine_sounds[] = { SND_33_PLASTIC_MINE };
+
 /**
  * Writes the properties of an industry into the IndustrySpec struct.
  * @param tbl  tile table
+ * @param sndc number of sounds
+ * @param snd  sounds table
  * @param d    cost multiplier
  * @param ai1  appear chance ingame - temperate
  * @param ai2  appear chance ingame - arctic
@@ -1117,22 +1131,24 @@ static const IndustryTileTable * const _tile_table_sugar_mine[] = {
  * @param s3   text for production down
  */
 
-#define MI(tbl, d, ai1, ai2, ai3, ai4, ag1, ag2, ag3, ag4, col, \
+#define MI(tbl, sndc, snd, d, ai1, ai2, ai3, ai4, ag1, ag2, ag3, ag4, col, \
            c1, c2, c3, proc, p1, r1, p2, r2, m, a1, im1, a2, im2, a3, im3, pr, clim, bev, in, intx, s1, s2, s3) \
 	{tbl, lengthof(tbl), d, {c1, c2, c3}, proc, {p1, p2}, {r1, r2}, m,            \
-	 {a1, a2, a3}, {{im1, 0}, {im2, 0}, {im3, 0}}, pr, clim, bev, col, in, intx, s1, s2, s3, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, 0, 0, 0, 0}
+	 {a1, a2, a3}, {{im1, 0}, {im2, 0}, {im3, 0}}, pr, clim, bev, col, in, intx, s1, s2, s3, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, sndc, snd, 0, 0, 0, 0}
 
 static const IndustrySpec _industry_specs[] = {
 	/* Format:
-	   tile table                              cost multiplier   appear chances(4ingame, 4random)  map colour
+	   tile table                              count and sounds table
+	   cost multiplier                         appear chances(4ingame, 4random)  map colour
 	   cannot be close to these industries (3 times)             check proc
 	   (produced cargo + rate) (twice)         minimum cargo moved to station
-	   3 accepted cargo
+	   3 accepted cargo and their corresponding input multiplier
 	   industry life                           climate availability
 	   industry behaviours
 	   industry name                           building text
 	   messages : Closure                      production up                      production down   */
-	MI(_tile_table_coal_mine,                  210,              2, 3, 0, 0,    8, 8, 0, 0,        215,
+	MI(_tile_table_coal_mine,                  0, NULL,
+	   210,                                    2, 3, 0, 0,    8, 8, 0, 0,        215,
 	   IT_POWER_STATION,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_COAL,       15, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1141,7 +1157,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4802_COAL_MINE,                     STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4836_NEW_COAL_SEAM_FOUND_AT,   STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_power_station,              30,               2, 2, 0, 0,    5, 5, 0, 0,        184,
+	MI(_tile_table_power_station,              0, NULL,
+	   30,                                     2, 2, 0, 0,    5, 5, 0, 0,        184,
 	   IT_COAL_MINE,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_INVALID,     0, CT_INVALID,       0, 5,
 	   CT_COAL,        0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1150,7 +1167,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4803_POWER_STATION,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_sawmill,                    28,               2, 0, 0, 0,    5, 0, 0, 0,        194,
+	MI(_tile_table_sawmill,                    1, _sawmill_sounds,
+	   28,                                     2, 0, 0, 0,    5, 0, 0, 0,        194,
 	   IT_FOREST,         IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_WOOD,      256, CT_INVALID,       0, CT_INVALID,     0,
@@ -1159,7 +1177,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4804_SAWMILL,                       STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_forest,                     200,              3, 4, 0, 0,    5, 5, 0, 0,         86,
+	MI(_tile_table_forest,                     0, NULL,
+	   200,                                    3, 4, 0, 0,    5, 5, 0, 0,         86,
 	   IT_SAWMILL,        IT_PAPER_MILL,       IT_INVALID,       CHECK_FOREST,
 	   CT_WOOD,       13, CT_INVALID,       0, 30,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1168,7 +1187,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4805_FOREST,                        STR_482E_NEW_BEING_PLANTED_NEAR,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MI(_tile_table_oil_refinery,               31,               2, 2, 2, 0,    4, 4, 4, 0,        191,
+	MI(_tile_table_oil_refinery,               0, NULL,
+	   31,                                     2, 2, 2, 0,    4, 4, 4, 0,        191,
 	   IT_OIL_RIG,        IT_INVALID,          IT_INVALID,       CHECK_REFINERY,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_OIL,       256, CT_INVALID,       0, CT_INVALID,     0,
@@ -1177,7 +1197,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4806_OIL_REFINERY,                  STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_oil_rig,                    240,              6, 0, 0, 0,    0, 0, 0, 0,        152,
+	MI(_tile_table_oil_rig,                    0, NULL,
+	   240,                                    6, 0, 0, 0,    0, 0, 0, 0,        152,
 	   IT_OIL_REFINERY,   IT_INVALID,          IT_INVALID,       CHECK_OIL_RIG,
 	   CT_OIL,        15, CT_PASSENGERS,    2, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1186,7 +1207,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4807_OIL_RIG,                       STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4837_NEW_OIL_RESERVES_FOUND,   STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_factory,                    26,               2, 0, 0, 0,    5, 0, 0, 0,        174,
+	MI(_tile_table_factory,                    1, _factory_sounds,
+	   26,                                     2, 0, 0, 0,    5, 0, 0, 0,        174,
 	   IT_FARM,           IT_STEEL_MILL,       IT_INVALID,       CHECK_NOTHING,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_LIVESTOCK, 256, CT_GRAIN ,      256, CT_STEEL,    256,
@@ -1195,7 +1217,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4808_FACTORY,                       STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_printing_works,             26,               0, 2, 0, 0,    0, 5, 0, 0,        174,
+	MI(_tile_table_printing_works,             1, _factory_sounds,
+	   26,                                     0, 2, 0, 0,    0, 5, 0, 0,        174,
 	   IT_PAPER_MILL,     IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_PAPER,     256, CT_INVALID,       0, CT_INVALID,     0,
@@ -1204,7 +1227,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4809_PRINTING_WORKS,                STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_steel_mill,                 27,               2, 0, 0, 0,    5, 0, 0, 0,         10,
+	MI(_tile_table_steel_mill,                 0, NULL,
+	   27,                                     2, 0, 0, 0,    5, 0, 0, 0,         10,
 	   IT_IRON_MINE,      IT_FACTORY,          IT_INVALID,       CHECK_NOTHING,
 	   CT_STEEL,       0, CT_INVALID,       0, 5,
 	   CT_IRON_ORE,  256, CT_INVALID,       0, CT_INVALID,     0,
@@ -1213,7 +1237,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480A_STEEL_MILL,                    STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_farm,                       250,              2, 4, 0, 0,    9, 9, 0, 0,         48,
+	MI(_tile_table_farm,                       3, _farm_sounds,
+	   250,                                    2, 4, 0, 0,    9, 9, 0, 0,         48,
 	   IT_FACTORY,        IT_FOOD_PROCESS,     IT_INVALID,       CHECK_FARM,
 	   CT_GRAIN,      10, CT_LIVESTOCK,    10, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1222,7 +1247,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480B_FARM,                          STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MI(_tile_table_copper_mine,                205,              0, 0, 3, 0,    0, 0, 4, 0,         10,
+	MI(_tile_table_copper_mine,                0, NULL,
+	   205,                                    0, 0, 3, 0,    0, 0, 4, 0,         10,
 	   IT_FACTORY_2,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_COPPER_ORE, 10, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1231,7 +1257,7 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480C_COPPER_ORE_MINE,               STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_oil_well,                   220,              0, 5, 3, 0,    4, 5, 5, 0,        152,
+	MI(_tile_table_oil_well,                   0, NULL,               220,              0, 5, 3, 0,    4, 5, 5, 0,        152,
 	   IT_OIL_REFINERY,   IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_OIL,        12, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1240,7 +1266,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480D_OIL_WELLS,                     STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4837_NEW_OIL_RESERVES_FOUND,   STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_bank,                       193,              7, 0, 0, 0,    0, 0, 0, 0,         15,
+	MI(_tile_table_bank,                       0, NULL,
+	   193,                                    7, 0, 0, 0,    0, 0, 0, 0,         15,
 	   IT_BANK_TEMP,      IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_VALUABLES,   6, CT_INVALID,       0, 5,
 	   CT_VALUABLES,   0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1249,7 +1276,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480E_BANK,                          STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_food_process,               26,               0, 2, 2, 0,    0, 3, 4, 0,         55,
+	MI(_tile_table_food_process,               0, NULL,
+	   26,                                     0, 2, 2, 0,    0, 3, 4, 0,         55,
 	   IT_FRUIT_PLANTATION, IT_FARM,           IT_FARM_2,        CHECK_NOTHING,
 	   CT_FOOD,        0, CT_INVALID,       0, 5,
 	   CT_FRUIT,     256, CT_MAIZE,       256, CT_INVALID,     0,
@@ -1258,7 +1286,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_480F_FOOD_PROCESSING_PLANT,         STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_paper_mill,                 28,               0, 2, 0, 0,    0, 5, 0, 0,         10,
+	MI(_tile_table_paper_mill,                 1, _sawmill_sounds,
+	   28,                                     0, 2, 0, 0,    0, 5, 0, 0,         10,
 	   IT_FOREST,         IT_PRINTING_WORKS,   IT_INVALID,       CHECK_NOTHING,
 	   CT_PAPER,       0, CT_INVALID,       0, 5,
 	   CT_WOOD,      256, CT_INVALID,       0, CT_INVALID,     0,
@@ -1267,7 +1296,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4810_PAPER_MILL,                    STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_gold_mine,                  208,              0, 3, 0, 0,    0, 4, 0, 0,        194,
+	MI(_tile_table_gold_mine,                  0, NULL,
+	   208,                                    0, 3, 0, 0,    0, 4, 0, 0,        194,
 	   IT_BANK_TROPIC_ARCTIC, IT_INVALID,      IT_INVALID,       CHECK_NOTHING,
 	   CT_GOLD,        7, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1276,7 +1306,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4811_GOLD_MINE,                     STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_bank2,                      19,               0, 3, 3, 0,    0, 6, 5, 0,         15,
+	MI(_tile_table_bank2,                      0, NULL,
+	   19,                                     0, 3, 3, 0,    0, 6, 5, 0,         15,
 	   IT_GOLD_MINE,      IT_DIAMOND_MINE,     IT_INVALID,       CHECK_NOTHING,
 	   CT_INVALID,     0, CT_INVALID,       0, 5,
 	   CT_GOLD,      256, CT_INVALID,       0, CT_INVALID,     0,
@@ -1285,7 +1316,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4812_BANK,                          STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_diamond_mine,               213,              0, 0, 3, 0,    0, 0, 4, 0,        184,
+	MI(_tile_table_diamond_mine,               0, NULL,
+	   213,                                    0, 0, 3, 0,    0, 0, 4, 0,        184,
 	   IT_BANK_TROPIC_ARCTIC, IT_INVALID,      IT_INVALID,       CHECK_NOTHING,
 	   CT_DIAMONDS,    7, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1294,7 +1326,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4813_DIAMOND_MINE,                  STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_iron_mine,                  220,              2, 0, 0, 0,    5, 0, 0, 0,         55,
+	MI(_tile_table_iron_mine,                  0, NULL,
+	   220,                                    2, 0, 0, 0,    5, 0, 0, 0,         55,
 	   IT_STEEL_MILL,     IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_IRON_ORE,   10, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1303,7 +1336,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4814_IRON_ORE_MINE,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_fruit_plantation,           225,              0, 0, 2, 0,    0, 0, 4, 0,         86,
+	MI(_tile_table_fruit_plantation,           0, NULL,
+	   225,                                    0, 0, 2, 0,    0, 0, 4, 0,         86,
 	   IT_FOOD_PROCESS,   IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
 	   CT_FRUIT,      10, CT_INVALID,       0, 15,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1312,7 +1346,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4815_FRUIT_PLANTATION,              STR_482E_NEW_BEING_PLANTED_NEAR,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MI(_tile_table_rubber_plantation,          218,              0, 0, 3, 0,    0, 0, 4, 0,         39,
+	MI(_tile_table_rubber_plantation,          0, NULL,
+	   218,                                    0, 0, 3, 0,    0, 0, 4, 0,         39,
 	   IT_FACTORY_2,      IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
 	   CT_RUBBER,     10, CT_INVALID,       0, 15,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1321,7 +1356,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4816_RUBBER_PLANTATION,             STR_482E_NEW_BEING_PLANTED_NEAR,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MI(_tile_table_water_supply,               199,              0, 0, 3, 0,    0, 0, 4, 0,         37,
+	MI(_tile_table_water_supply,               0, NULL,
+	   199,                                    0, 0, 3, 0,    0, 0, 4, 0,         37,
 	   IT_WATER_TOWER,    IT_INVALID,          IT_INVALID,       CHECK_WATER,
 	   CT_WATER,      12, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1330,7 +1366,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4817_WATER_SUPPLY,                  STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_water_tower,                14,               0, 0, 4, 0,    0, 0, 8, 0,        208,
+	MI(_tile_table_water_tower,                0, NULL,
+	   14,                                     0, 0, 4, 0,    0, 0, 8, 0,        208,
 	   IT_WATER_SUPPLY,   IT_INVALID,          IT_INVALID,       CHECK_WATER,
 	   CT_INVALID,     0, CT_INVALID,       0, 5,
 	   CT_WATER,     256, CT_INVALID,       0, CT_INVALID,     0,
@@ -1339,7 +1376,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4818_WATER_TOWER,                   STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_factory2,                   26,               0, 0, 2, 0,    0, 0, 4, 0,        174,
+	MI(_tile_table_factory2,                   1, _factory_sounds,
+	   26,                                     0, 0, 2, 0,    0, 0, 4, 0,        174,
 	   IT_RUBBER_PLANTATION, IT_COPPER_MINE,   IT_LUMBER_MILL,   CHECK_PLANTATION,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_RUBBER,    256, CT_COPPER_ORE,  256, CT_WOOD,      256,
@@ -1348,7 +1386,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4819_FACTORY,                       STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_farm2,                      250,              0, 0, 1, 0,    0, 0, 2, 0,         48,
+	MI(_tile_table_farm2,                      0, NULL,
+	   250,                                    0, 0, 1, 0,    0, 0, 2, 0,         48,
 	   IT_FOOD_PROCESS,   IT_INVALID,          IT_INVALID,       CHECK_PLANTATION,
 	   CT_MAIZE,      11, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1357,7 +1396,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481A_FARM,                          STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MI(_tile_table_lumber_mill,                17,               0, 0, 0, 0,    0, 0, 0, 0,        194,
+	MI(_tile_table_lumber_mill,                0, NULL,
+	   17,                                     0, 0, 0, 0,    0, 0, 0, 0,        194,
 	   IT_FACTORY_2,      IT_INVALID,          IT_INVALID,       CHECK_LUMBERMILL,
 	   CT_WOOD,        0, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1366,7 +1406,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481B_LUMBER_MILL,                   STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4834_LACK_OF_NEARBY_TREES_CAUSES,   STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_cotton_candy,               195,              0, 0, 0, 3,    0, 0, 0, 5,         48,
+	MI(_tile_table_cotton_candy,               0, NULL,
+	   195,                                    0, 0, 0, 3,    0, 0, 0, 5,         48,
 	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_COTTON_CANDY, 13, CT_INVALID,    0, 30,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1375,7 +1416,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481C_COTTON_CANDY_FOREST,           STR_482E_NEW_BEING_PLANTED_NEAR,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_candy_factory,              26,               0, 0, 0, 3,    0, 0, 0, 5,        174,
+	MI(_tile_table_candy_factory,              0, NULL,
+	   26,                                     0, 0, 0, 3,    0, 0, 0, 5,        174,
 	   IT_COTTON_CANDY,   IT_TOFFEE_QUARRY,    IT_SUGAR_MINE,    CHECK_NOTHING,
 	   CT_CANDY,       0, CT_INVALID,       0, 5,
 	   CT_SUGAR,     256, CT_TOFFEE,      256, CT_COTTON_CANDY, 256,
@@ -1384,7 +1426,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481D_CANDY_FACTORY,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_battery_farm,               187,              0, 0, 0, 3,    0, 0, 0, 4,         39,
+	MI(_tile_table_battery_farm,               0, NULL,
+	   187,                                    0, 0, 0, 3,    0, 0, 0, 4,         39,
 	   IT_TOY_FACTORY,    IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_BATTERIES,  11, CT_INVALID,      0, 30,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1393,7 +1436,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481E_BATTERY_FARM,                  STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4838_IMPROVED_FARMING_METHODS, STR_483A_INSECT_INFESTATION_CAUSES),
 
-	MI(_tile_table_cola_wells,                 193,              0, 0, 0, 3,    0, 0, 0, 5,         55,
+	MI(_tile_table_cola_wells,                 0, NULL,
+	   193,                                    0, 0, 0, 3,    0, 0, 0, 5,         55,
 	   IT_FIZZY_DRINK_FACTORY, IT_INVALID,     IT_INVALID,       CHECK_NOTHING,
 	   CT_COLA,       12, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1402,7 +1446,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_481F_COLA_WELLS,                    STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_toy_shop,                   17,               0, 0, 0, 3,    0, 0, 0, 4,        208,
+	MI(_tile_table_toy_shop,                   0, NULL,
+	   17,                                     0, 0, 0, 3,    0, 0, 0, 4,        208,
 	   IT_TOY_FACTORY,    IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_INVALID,     0, CT_INVALID,       0, 5,
 	   CT_TOYS,      256, CT_INVALID,       0, CT_INVALID,     0,
@@ -1411,7 +1456,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4820_TOY_SHOP,                      STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_toy_factory,                20,              0, 0, 0, 3,    0, 0, 0, 5,          10,
+	MI(_tile_table_toy_factory,                0, NULL,
+	   20,                                     0, 0, 0, 3,    0, 0, 0, 5,          10,
 	   IT_PLASTIC_FOUNTAINS, IT_BATTERY_FARM,  IT_TOY_SHOP,     CHECK_NOTHING,
 	   CT_TOYS,        0, CT_INVALID,       0, 5,
 	   CT_PLASTIC,   256, CT_BATTERIES,   256, CT_INVALID,     0,
@@ -1420,7 +1466,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4821_TOY_FACTORY,                   STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_plastic_fountain,           192,              0, 0, 0, 3,    0, 0, 0, 5,         37,
+	MI(_tile_table_plastic_fountain,           1, _plastic_mine_sounds,
+	   192,                                    0, 0, 0, 3,    0, 0, 0, 5,         37,
 	   IT_TOY_FACTORY,    IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_PLASTIC,    14, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1429,7 +1476,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4822_PLASTIC_FOUNTAINS,             STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_fizzy_drink,                22,               0, 0, 0, 3,    0, 0, 0, 4,        184,
+	MI(_tile_table_fizzy_drink,                0, NULL,
+	   22,                                     0, 0, 0, 3,    0, 0, 0, 4,        184,
 	   IT_COLA_WELLS,     IT_BUBBLE_GENERATOR, IT_INVALID,       CHECK_NOTHING,
 	   CT_FIZZY_DRINKS, 0, CT_INVALID,      0, 5,
 	   CT_COLA,       256, CT_BUBBLES,    256, CT_INVALID,     0,
@@ -1438,7 +1486,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4823_FIZZY_DRINK_FACTORY,           STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_bubble_generator,           203,              0, 0, 0, 3,    0, 0, 0, 5,        152,
+	MI(_tile_table_bubble_generator,           0, NULL,
+	   203,                                    0, 0, 0, 3,    0, 0, 0, 5,        152,
 	   IT_FIZZY_DRINK_FACTORY, IT_INVALID,     IT_INVALID,       CHECK_BUBBLEGEN,
 	   CT_BUBBLES,    13, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1447,7 +1496,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4824_BUBBLE_GENERATOR,              STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_toffee_quarry,              213,              0, 0, 0, 3,    0, 0, 0, 5,        194,
+	MI(_tile_table_toffee_quarry,              0, NULL,
+	   213,                                    0, 0, 0, 3,    0, 0, 0, 5,        194,
 	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_TOFFEE,     10, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
@@ -1456,7 +1506,8 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4825_TOFFEE_QUARRY,                 STR_482D_NEW_UNDER_CONSTRUCTION,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
-	MI(_tile_table_sugar_mine,                 210,              0, 0, 0, 2,    0, 0, 0, 4,         15,
+	MI(_tile_table_sugar_mine,                 0, NULL,
+	   210,                                    0, 0, 0, 2,    0, 0, 0, 4,         15,
 	   IT_CANDY_FACTORY,  IT_INVALID,          IT_INVALID,       CHECK_NOTHING,
 	   CT_SUGAR,      11, CT_INVALID,       0, 5,
 	   CT_INVALID,     0, CT_INVALID,       0, CT_INVALID,     0,
