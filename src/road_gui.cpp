@@ -84,11 +84,12 @@ static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
 void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
+		DiagDirection dir = (DiagDirection)GB(p1, 0, 2);
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 		ResetObjectToPlace();
-		BuildRoadOutsideStation(tile, (DiagDirection)p1);
+		BuildRoadOutsideStation(tile, dir);
 		/* For a drive-through road stop build connecting road for other entrance */
-		if (HASBIT(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir((DiagDirection)p1));
+		if (HASBIT(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir(dir));
 	}
 }
 

@@ -116,6 +116,7 @@ static inline void SetRoadOwner(TileIndex t, RoadType rt, Owner o)
 				case ROADTYPE_TRAM: SB( _m[t].m5, 0, 5, o); break;
 				case ROADTYPE_HWAY: SB(_me[t].m7, 0, 5, o); break;
 			}
+			break;
 		case ROAD_TILE_CROSSING:
 			switch (rt) {
 				default: NOT_REACHED();
@@ -123,6 +124,7 @@ static inline void SetRoadOwner(TileIndex t, RoadType rt, Owner o)
 				case ROADTYPE_TRAM: SB( _m[t].m5, 0, 5, o); break;
 				case ROADTYPE_HWAY: SB(_me[t].m7, 0, 5, o); break;
 			}
+			break;
 		case ROAD_TILE_DEPOT: return SetTileOwner(t, o);
 	}
 }
@@ -264,7 +266,7 @@ static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadTypes rot, Tow
 	SetTileOwner(t, road);
 	_m[t].m2 = town;
 	_m[t].m3 = 0;
-	_m[t].m4 = (HASBIT(rot, ROADTYPE_ROAD) ? bits : 0) << 4 | HASBIT(rot, ROADTYPE_TRAM) ? bits : 0;
+	_m[t].m4 = (HASBIT(rot, ROADTYPE_TRAM) ? bits : 0) << 4 | (HASBIT(rot, ROADTYPE_ROAD) ? bits : 0);
 	_m[t].m5 = ROAD_TILE_NORMAL << 6 | tram;
 	SB(_m[t].m6, 2, 4, HASBIT(rot, ROADTYPE_HWAY) ? bits : 0);
 	_me[t].m7 = rot << 5 | hway;

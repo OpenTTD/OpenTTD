@@ -147,17 +147,18 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* limit the bits to delete to the existing bits. */
 			c &= present;
-			if (c == 0) return CMD_ERROR;
+			if (c == ROAD_NONE) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 
 				present ^= c;
-				if (present == 0) {
+				if (present == ROAD_NONE) {
 					RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
 					if (rts == ROADTYPES_NONE) {
 						DoClearSquare(tile);
 					} else {
+						SetRoadBits(tile, ROAD_NONE, rt);
 						SetRoadTypes(tile, rts);
 					}
 				} else {
@@ -299,6 +300,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			switch (GetRoadTileType(tile)) {
 				case ROAD_TILE_NORMAL:
 					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+					if (!HASBIT(GetRoadTypes(tile), rt)) break;
 
 					existing = GetRoadBits(tile, rt);
 					if ((existing & pieces) == pieces) {
@@ -381,7 +383,7 @@ do_clear:;
 
 	if (flags & DC_EXEC) {
 		if (IsTileType(tile, MP_STREET)) {
-			if (existing == 0) {
+			if (existing == ROAD_NONE) {
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
 				SetRoadOwner(tile, rt, _current_player);
 			}
@@ -434,7 +436,7 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
  * - p2 = (bit 0) - start tile starts in the 2nd half of tile (p2 & 1)
  * - p2 = (bit 1) - end tile starts in the 2nd half of tile (p2 & 2)
  * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
- * - p2 = (bit 3) - road type
+ * - p2 = (bit 3 + 4) - road type
  */
 int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -446,7 +448,8 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	start_tile = p1;
-	RoadType rt = (RoadType)HASBIT(p2, 3);
+	RoadType rt = (RoadType)GB(p2, 3, 2);
+	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
 	/* Only drag in X or Y direction dictated by the direction variable */
 	if (!HASBIT(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
@@ -493,7 +496,7 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
  * - p2 = (bit 0) - start tile starts in the 2nd half of tile (p2 & 1)
  * - p2 = (bit 1) - end tile starts in the 2nd half of tile (p2 & 2)
  * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
- * - p2 = (bit 3) - road type
+ * - p2 = (bit 3 + 4) - road type
  */
 int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -505,7 +508,8 @@ int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	start_tile = p1;
-	RoadType rt = (RoadType)HASBIT(p2, 3);
+	RoadType rt = (RoadType)GB(p2, 3, 2);
+	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
 	/* Only drag in X or Y direction dictated by the direction variable */
 	if (!HASBIT(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
@@ -546,7 +550,7 @@ int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
  * @param tile tile where to build the depot
  * @param flags operation to perform
  * @param p1 bit 0..1 entrance direction (DiagDirection)
- *           bit    2 road type
+ *           bit 2..3 road type
  * @param p2 unused
  *
  * @todo When checking for the tile slope,
@@ -561,7 +565,9 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	DiagDirection dir = Extract<DiagDirection, 0>(p1);
-	RoadType rt = (RoadType)HASBIT(p1, 2);
+	RoadType rt = (RoadType)GB(p1, 2, 2);
+
+	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT && (

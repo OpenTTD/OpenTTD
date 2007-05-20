@@ -1397,7 +1397,7 @@ int32 CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Save the stop info before it is removed */
 	bool is_drive_through = IsDriveThroughStopTile(tile);
 	RoadTypes rts = GetRoadTypes(tile);
-	RoadBits road_bits = GetAnyRoadBits(tile, HASBIT(rts, ROADTYPE_ROAD) ? ROADTYPE_ROAD : ROADTYPE_TRAM);
+	RoadBits road_bits = GetAllRoadBits(tile);
 	bool is_towns_road = is_drive_through && GetStopBuiltOnTownRoad(tile);
 
 	int32 ret = RemoveRoadStop(st, flags, tile);
