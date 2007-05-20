@@ -1649,8 +1649,8 @@ static void UpdateIndustryStatistics(Industry *i)
 			}
 			i->pct_transported[j] = pct;
 
-		i->total_production[0] = i->last_mo_production[0];
-		i->last_mo_production[0] = 0;
+			i->total_production[j] = i->last_mo_production[j];
+			i->last_mo_production[j] = 0;
 
 			i->total_transported[j] = i->last_mo_transported[j];
 			i->last_mo_transported[j] = 0;
