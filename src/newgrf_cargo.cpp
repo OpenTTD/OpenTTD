@@ -39,10 +39,12 @@ static uint32 CargoGetVariable(const ResolverObject *object, byte variable, byte
 
 static const SpriteGroup *CargoResolveReal(const ResolverObject *object, const SpriteGroup *group)
 {
-	/* Cargo action 2s should always have only 1 "loaded" state */
-	if (group->g.real.num_loaded == 0) return NULL;
+	/* Cargo action 2s should always have only 1 "loaded" state, but some
+	 * times things don't follow the spec... */
+	if (group->g.real.num_loaded > 0) return group->g.real.loaded[0];
+	if (group->g.real.num_loading > 0) return group->g.real.loading[0];
 
-	return group->g.real.loaded[0];
+	return NULL;
 }
 
 

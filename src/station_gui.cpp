@@ -686,7 +686,7 @@ static void DrawCargoIcons(CargoID i, uint waiting, int x, int y)
 		sprite = cs->sprite;
 	}
 
-	if (sprite == 0) return;
+	if (sprite == 0) sprite = SPR_CARGO_GOODS;
 
 	do {
 		DrawSprite(sprite, PAL_NONE, x, y);
