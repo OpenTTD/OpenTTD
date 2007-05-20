@@ -209,11 +209,12 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	/* type of bridge */
 	if (HASBIT(p2, 15)) {
 		railtype = INVALID_RAILTYPE; // road bridge
-		roadtypes = (RoadTypes)GB(p2, 8, 2);
-		if (roadtypes > ROADTYPES_ALL || roadtypes == ROADTYPES_NONE) return CMD_ERROR;
+		roadtypes = (RoadTypes)GB(p2, 8, 3);
+		if (!AreValidRoadTypes(roadtypes)) return CMD_ERROR;
 	} else {
 		if (!ValParamRailtype(GB(p2, 8, 8))) return CMD_ERROR;
 		railtype = (RailType)GB(p2, 8, 8);
+		roadtypes = ROADTYPES_NONE;
 	}
 
 	x = TileX(end_tile);
@@ -462,10 +463,9 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 ret;
 
 	_build_tunnel_endtile = 0;
-
-	if (HASBIT(p1, 9)) {
+	if (!HASBIT(p1, 9)) {
 		if (!ValParamRailtype(p1)) return CMD_ERROR;
-	} else if (GB(p1, 0, 4) > ROADTYPES_ALL || GB(p1, 0, 4) == ROADTYPES_NONE) {
+	} else if (!AreValidRoadTypes((RoadTypes)GB(p1, 0, 3))) {
 		return CMD_ERROR;
 	}
 
@@ -527,8 +527,8 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 			UpdateSignalsOnSegment(start_tile, direction);
 			YapfNotifyTrackLayoutChange(start_tile, AxisToTrack(DiagDirToAxis(direction)));
 		} else {
-			MakeRoadTunnel(start_tile, _current_player, direction,                 (RoadTypes)GB(p1, 0, 4));
-			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RoadTypes)GB(p1, 0, 4));
+			MakeRoadTunnel(start_tile, _current_player, direction,                 (RoadTypes)GB(p1, 0, 3));
+			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RoadTypes)GB(p1, 0, 3));
 		}
 	}
 
@@ -887,9 +887,11 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		image += GetTunnelDirection(ti->tile) * 2;
 		DrawGroundSprite(image, PAL_NONE);
-		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL && GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
+			DrawCatenary(ti);
+		}
 
-		AddSortableSpriteToDraw(image+1, PAL_NONE, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, 1, 1, 8, (byte)ti->z);
+		AddSortableSpriteToDraw(image + 1, PAL_NONE, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, 1, 1, 8, (byte)ti->z);
 		DrawBridgeMiddle(ti);
 	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
 		const PalSpriteID *psid;
@@ -925,7 +927,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			DrawGroundSprite(SPR_FLAT_SNOWY_TILE + _tileh_to_sprite[ti->tileh], PAL_NONE);
 		}
 
-		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+		if (GetBridgeTransportType(ti->tile) == TRANSPORT_RAIL && GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
+			DrawCatenary(ti);
+		}
 
 		image = psid->sprite;
 
