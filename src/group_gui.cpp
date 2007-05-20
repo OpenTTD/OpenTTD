@@ -258,6 +258,30 @@ static void CreateVehicleGroupWindow(Window *w)
 }
 
 /**
+ * Update/redraw the group action dropdown
+ * @param w   the window the dropdown belongs to
+ * @param gid the currently selected group in the window
+ */
+static void UpdateGroupActionDropdown(Window *w, GroupID gid, bool refresh = true)
+{
+	if (refresh && !IsWindowWidgetLowered(w, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) return;
+
+	static StringID action_str[] = {
+		STR_REPLACE_VEHICLES,
+		STR_SEND_FOR_SERVICING,
+		STR_SEND_TRAIN_TO_DEPOT,
+		STR_NULL,
+		STR_NULL,
+		INVALID_STRING_ID
+	};
+
+	action_str[3] = IsDefaultGroupID(gid) ? INVALID_STRING_ID : STR_GROUP_ADD_SHARED_VEHICLE;
+	action_str[4] = IsDefaultGroupID(gid) ? INVALID_STRING_ID : STR_GROUP_REMOVE_ALL_VEHICLES;
+
+	ShowDropDownMenu(w, action_str, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN, 0, 0);
+}
+
+/**
  * bitmask for w->window_number
  * 0-7   PlayerID (owner)
  * 11-15 vehicle type
@@ -464,6 +488,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					if (!IsDefaultGroupID(gv->group_sel)) {
 						gv->group_sel = DEFAULT_GROUP;
 						gv->l.flags |= VL_REBUILD;
+						UpdateGroupActionDropdown(w, gv->group_sel);
 						SetWindowDirty(w);
 					}
 					break;
@@ -480,6 +505,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					gv->group_sel = gl->sort_list[id_g]->index;;
 
 					gv->l.flags |= VL_REBUILD;
+					UpdateGroupActionDropdown(w, gv->group_sel);
 					SetWindowDirty(w);
 					break;
 				}
@@ -518,8 +544,9 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				case GRP_WIDGET_CREATE_GROUP: // Create a new group
 					if (!CmdFailed(DoCommandP(0, gv->vehicle_type, 0, NULL, CMD_CREATE_GROUP | CMD_MSG(STR_GROUP_CAN_T_CREATE)))) {
-						SetWindowDirty(w);
 						gl->l.flags |= VL_REBUILD;
+						UpdateGroupActionDropdown(w, gv->group_sel);
+						SetWindowDirty(w);
 					}
 					break;
 
@@ -528,6 +555,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 						gv->group_sel = DEFAULT_GROUP;
 						gv->l.flags |= VL_REBUILD;
 						gl->l.flags |= VL_REBUILD;
+						UpdateGroupActionDropdown(w, gv->group_sel);
 						SetWindowDirty(w);
 					}
 					break;
@@ -548,19 +576,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				case GRP_WIDGET_MANAGE_VEHICLES:
 				case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:  {
-					static StringID action_str[] = {
-						STR_REPLACE_VEHICLES,
-						STR_SEND_FOR_SERVICING,
-						STR_SEND_TRAIN_TO_DEPOT,
-						STR_NULL,
-						STR_NULL,
-						INVALID_STRING_ID
-					};
-
-					action_str[3] = IsDefaultGroupID(gv->group_sel) ? INVALID_STRING_ID : STR_GROUP_ADD_SHARED_VEHICLE;
-					action_str[4] = IsDefaultGroupID(gv->group_sel) ? INVALID_STRING_ID : STR_GROUP_REMOVE_ALL_VEHICLES;
-
-					ShowDropDownMenu(w, action_str, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN, 0, 0);
+					UpdateGroupActionDropdown(w, gv->group_sel, false);
 					break;
 				}
 
