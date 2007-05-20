@@ -211,7 +211,6 @@ static inline void SetBridgeMiddle(TileIndex t, Axis a)
 	SETBIT(_m[t].m6, 6 + a);
 }
 
-
 /**
  * Generic part to make a bridge ramp for both roads and rails.
  * @param t          the tile to make a bridge ramp
@@ -219,13 +218,15 @@ static inline void SetBridgeMiddle(TileIndex t, Axis a)
  * @param bridgetype the type of bridge this bridge ramp belongs to
  * @param d          the direction this ramp must be facing
  * @param tt         the transport type of the bridge
+ * @param rt         the road or rail type
  * @note this function should not be called directly.
  */
-static inline void MakeBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, TransportType tt)
+static inline void MakeBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, TransportType tt, uint rt)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
 	_m[t].m2 = bridgetype << 4;
+	_m[t].m3 = rt;
 	_m[t].m4 = 0;
 	_m[t].m5 = 1 << 7 | tt << 2 | d;
 }
@@ -236,11 +237,11 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDir
  * @param o          the new owner of the bridge ramp
  * @param bridgetype the type of bridge this bridge ramp belongs to
  * @param d          the direction this ramp must be facing
+ * @param r          the road type of the bridge
  */
-static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d)
+static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, RoadTypes r)
 {
-	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_ROAD);
-	_m[t].m3 = 0;
+	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_ROAD, r);
 }
 
 /**
@@ -253,8 +254,7 @@ static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, uint bridgetype, Dia
  */
 static inline void MakeRailBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, RailType r)
 {
-	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_RAIL);
-	_m[t].m3 = r;
+	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_RAIL, r);
 }
 
 

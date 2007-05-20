@@ -7,6 +7,68 @@
 
 #include "helpers.hpp"
 
+/**
+ * The different roadtypes we support
+ * @note currently only ROADTYPE_ROAD is supported.
+ */
+enum RoadType {
+	ROADTYPE_ROAD = 0,
+	ROADTYPE_TRAM = 1,
+	ROADTYPE_HWAY = 2, ///< Only a placeholder. Not sure what we are going to do with this road type.
+	ROADTYPE_END,
+	INVALID_ROADTYPE = 0xFF
+};
+DECLARE_POSTFIX_INCREMENT(RoadType);
+
+/**
+ * The different roadtypes we support, but then a bitmask of them
+ * @note currently only ROADTYPES_ROAD is supported.
+ */
+enum RoadTypes {
+	ROADTYPES_NONE     = 0,
+	ROADTYPES_ROAD     = 1 << ROADTYPE_ROAD,
+	ROADTYPES_TRAM     = 1 << ROADTYPE_TRAM,
+	ROADTYPES_HWAY     = 1 << ROADTYPE_HWAY,
+	ROADTYPES_ROADTRAM = ROADTYPES_ROAD | ROADTYPES_TRAM,
+	ROADTYPES_ROADHWAY = ROADTYPES_ROAD | ROADTYPES_HWAY,
+	ROADTYPES_TRAMHWAY = ROADTYPES_TRAM | ROADTYPES_HWAY,
+	ROADTYPES_ALL      = ROADTYPES_ROAD | ROADTYPES_TRAM | ROADTYPES_HWAY,
+};
+DECLARE_ENUM_AS_BIT_SET(RoadTypes);
+
+/**
+ * Whether the given roadtype is valid.
+ * @param rt the roadtype to check for validness
+ * @return true if and only if valid
+ */
+static inline bool IsValidRoadType(RoadType rt)
+{
+	return rt == ROADTYPE_ROAD;
+}
+
+/**
+ * Are the given bits pointing to valid roadtypes?
+ * @param rts the roadtypes to check for validness
+ * @return true if and only if valid
+ */
+static inline bool AreValidRoadTypes(RoadTypes rts)
+{
+	return rts == ROADTYPES_ROAD;
+}
+
+/**
+ * Maps a RoadType to the corresponding RoadTypes value
+ */
+static inline RoadTypes RoadTypeToRoadTypes(RoadType rt)
+{
+	return (RoadTypes)(1 << rt);
+}
+
+static inline RoadTypes ComplementRoadTypes(RoadTypes r)
+{
+	return (RoadTypes)(ROADTYPES_ALL ^ r);
+}
+
 enum RoadBits {
 	ROAD_NONE = 0U,
 	ROAD_NW  = 1U,
@@ -48,8 +110,9 @@ static inline bool IsStraightRoadTrackdir(Trackdir dir)
  * @param remove    the roadbits that are going to be removed
  * @param owner     the actual owner of the roadbits of the tile
  * @param edge_road are the removed bits from a town?
+ * @param rt        the road type to remove the bits from
  * @return true when it is allowed to remove the road bits
  */
-bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road);
+bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road, RoadType rt);
 
 #endif /* ROAD_H */

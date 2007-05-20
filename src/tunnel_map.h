@@ -9,6 +9,7 @@
 #include "macros.h"
 #include "map.h"
 #include "rail.h"
+#include "road.h"
 
 /**
  * Is this a tunnel (entrance)?
@@ -93,13 +94,14 @@ bool IsTunnelInWay(TileIndex, uint z);
  * @param t the entrance of the tunnel
  * @param o the owner of the entrance
  * @param d the direction facing out of the tunnel
+ * @param r the road type used in the tunnel
  */
-static inline void MakeRoadTunnel(TileIndex t, Owner o, DiagDirection d)
+static inline void MakeRoadTunnel(TileIndex t, Owner o, DiagDirection d, RoadTypes r)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
-	_m[t].m3 = 0;
+	_m[t].m3 = r;
 	_m[t].m4 = 0;
 	_m[t].m5 = TRANSPORT_ROAD << 2 | d;
 }

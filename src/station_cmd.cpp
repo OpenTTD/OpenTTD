@@ -1214,6 +1214,7 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
  * @param p1 entrance direction (DiagDirection)
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
  *           bit 1: 0 for normal, 1 for drive-through
+ *           bit 2..4: the roadtypes
  */
 int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1222,17 +1223,23 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool build_over_road  = is_drive_through && IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL;
 	bool town_owned_road  = build_over_road && IsTileOwner(tile, OWNER_TOWN);
 	Owner cur_owner = _current_player;
+	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
+
+	if (rts == ROADTYPES_NONE || HASBIT(rts, ROADTYPE_HWAY)) return CMD_ERROR;
 
 	/* Saveguard the parameters */
 	if (!IsValidDiagDirection((DiagDirection)p1)) return CMD_ERROR;
 	/* If it is a drive-through stop check for valid axis */
 	if (is_drive_through && !IsValidAxis((Axis)p1)) return CMD_ERROR;
 	/* Road bits in the wrong direction */
-	if (build_over_road && (GetRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_DRIVE_THROUGH_ERROR_DIRECTION);
+	if (build_over_road && (GetAllRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_DRIVE_THROUGH_ERROR_DIRECTION);
 	/* Not allowed to build over this road */
 	if (build_over_road) {
 		if (IsTileOwner(tile, OWNER_TOWN) && !_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
-		if (!IsTileOwner(tile, OWNER_TOWN) && !CheckOwnership(GetTileOwner(tile))) return CMD_ERROR;
+		if (GetRoadTileType(tile) != ROAD_TILE_NORMAL) return CMD_ERROR;
+		if (!IsTileOwner(tile, OWNER_TOWN) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_ROAD)) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_TRAM))) return CMD_ERROR;
+		/* Do not remove roadtypes! */
+		if (rts != GetRoadTypes(tile) && rts != ROADTYPES_ROADTRAM) return CMD_ERROR;
 	}
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -1311,9 +1318,9 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		RoadStop::Type rs_type = type ? RoadStop::TRUCK : RoadStop::BUS;
 		if (is_drive_through) {
-			MakeDriveThroughRoadStop(tile, st->owner, st->index, rs_type, (Axis)p1, town_owned_road);
+			MakeDriveThroughRoadStop(tile, st->owner, st->index, rs_type, rts, (Axis)p1, town_owned_road);
 		} else {
-			MakeRoadStop(tile, st->owner, st->index, rs_type, (DiagDirection)p1);
+			MakeRoadStop(tile, st->owner, st->index, rs_type, rts, (DiagDirection)p1);
 		}
 
 		UpdateStationVirtCoordDirty(st);
@@ -1389,7 +1396,8 @@ int32 CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Station *st = GetStationByTile(tile);
 	/* Save the stop info before it is removed */
 	bool is_drive_through = IsDriveThroughStopTile(tile);
-	RoadBits road_bits = GetAnyRoadBits(tile);
+	RoadTypes rts = GetRoadTypes(tile);
+	RoadBits road_bits = GetAnyRoadBits(tile, HASBIT(rts, ROADTYPE_ROAD) ? ROADTYPE_ROAD : ROADTYPE_TRAM);
 	bool is_towns_road = is_drive_through && GetStopBuiltOnTownRoad(tile);
 
 	int32 ret = RemoveRoadStop(st, flags, tile);
@@ -1403,7 +1411,12 @@ int32 CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			index = ClosestTownFromTile(tile, (uint)-1)->index;
 			_current_player = OWNER_TOWN;
 		}
-		DoCommand(tile, road_bits, index, DC_EXEC, CMD_BUILD_ROAD);
+		if (HASBIT(rts, ROADTYPE_ROAD)) {
+			DoCommand(tile, ROADTYPE_ROAD << 4 | road_bits, index, DC_EXEC, CMD_BUILD_ROAD);
+		}
+		if (HASBIT(rts, ROADTYPE_TRAM)) {
+			DoCommand(tile, ROADTYPE_TRAM << 4 | road_bits, index, DC_EXEC, CMD_BUILD_ROAD);
+		}
 		_current_player = cur_owner;
 	}
 
@@ -2676,7 +2689,8 @@ static bool CanRemoveRoadWithStop(TileIndex tile)
 	if (!GetStopBuiltOnTownRoad(tile)) return true;
 
 	bool edge_road;
-	return CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile), OWNER_TOWN, &edge_road);
+	return CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, &edge_road, ROADTYPE_ROAD) &&
+				CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_TRAM), OWNER_TOWN, &edge_road, ROADTYPE_TRAM);
 }
 
 static int32 ClearTile_Station(TileIndex tile, byte flags)

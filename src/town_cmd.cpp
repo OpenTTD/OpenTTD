@@ -636,7 +636,7 @@ void OnTick_Town()
 
 static RoadBits GetTownRoadMask(TileIndex tile)
 {
-	TrackBits b = GetAnyRoadTrackBits(tile);
+	TrackBits b = GetAnyRoadTrackBits(tile, ROADTYPE_ROAD);
 	RoadBits r = ROAD_NONE;
 
 	if (b & TRACK_BIT_X)     r |= ROAD_X;
@@ -676,7 +676,7 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 
 	for (;;) {
 		/* Check if there already is a road at this point? */
-		if (GetAnyRoadTrackBits(tile) == 0) {
+		if (GetAnyRoadTrackBits(tile, ROADTYPE_ROAD) == 0) {
 			/* No, try to build one in the direction.
 			 * if that fails clear the land, and if that fails exit.
 			 * This is to make sure that we can build a road here later. */
@@ -1221,7 +1221,7 @@ static bool GrowTown(Town *t)
 	/* Find a road that we can base the construction on. */
 	tile = t->xy;
 	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
-		if (GetAnyRoadTrackBits(tile) != 0) {
+		if (GetAnyRoadTrackBits(tile, ROADTYPE_ROAD) != 0) {
 			int r = GrowTownAtRoad(t, tile);
 			_current_player = old_player;
 			return r != 0;
@@ -2208,7 +2208,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 {
 	if (IsTileType(tile, MP_HOUSE) || (
 				IsTileType(tile, MP_STREET) &&
-				(IsLevelCrossing(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile)) == OWNER_TOWN
+				GetRoadOwner(tile, ROADTYPE_ROAD) == OWNER_TOWN
 			)) {
 		return GetTownByTile(tile);
 	} else {

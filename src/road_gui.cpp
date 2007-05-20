@@ -69,7 +69,7 @@ void CcBuildRoadTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRoad_Tunnel(TileIndex tile)
 {
-	DoCommandP(tile, 0x200, 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
+	DoCommandP(tile, 0x200 | ROADTYPES_ROAD, 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
 }
 
 static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
@@ -113,7 +113,7 @@ static void PlaceRoad_BusStation(TileIndex tile)
 	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, RoadStop::BUS, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(STR_CAN_T_REMOVE_BUS_STATION));
 	} else {
-		PlaceRoadStop(tile, RoadStop::BUS, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
+		PlaceRoadStop(tile, ROADTYPES_ROAD << 2 | RoadStop::BUS, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
 	}
 }
 
@@ -122,7 +122,7 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, RoadStop::TRUCK, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(STR_CAN_T_REMOVE_TRUCK_STATION));
 	} else {
-		PlaceRoadStop(tile, RoadStop::TRUCK, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
+		PlaceRoadStop(tile, ROADTYPES_ROAD << 2 | RoadStop::TRUCK, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
 	}
 }
 
@@ -297,7 +297,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 			if (e->we.place.userdata == 0) {
 				ResetObjectToPlace();
-				ShowBuildBridgeWindow(start_tile, end_tile, 0x80);
+				ShowBuildBridgeWindow(start_tile, end_tile, 0x80 | ROADTYPES_ROAD);
 			} else if (e->we.place.userdata != 4) {
 				DoCommandP(end_tile, start_tile, _place_road_flag, CcPlaySound1D,
 					_remove_button_clicked ?
@@ -312,7 +312,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 	case WE_PLACE_PRESIZE: {
 		TileIndex tile = e->we.place.tile;
 
-		DoCommand(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
+		DoCommand(tile, 0x200 | ROADTYPES_ROAD, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 		break;
 	}

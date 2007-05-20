@@ -172,12 +172,14 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
  * @param p1 packed start tile coords (~ dx)
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0- 7) - bridge type (hi bh)
- * - p2 = (bit 8-..) - rail type. bit15 ((x>>8)&0x80) means road bridge.
+ * - p2 = (bit 8-..) - rail type or road types.
+ * - p2 = (bit 15  ) - set means road bridge.
  */
 int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint bridge_type;
 	RailType railtype;
+	RoadTypes roadtypes;
 	uint x;
 	uint y;
 	uint sx;
@@ -207,6 +209,8 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	/* type of bridge */
 	if (HASBIT(p2, 15)) {
 		railtype = INVALID_RAILTYPE; // road bridge
+		roadtypes = (RoadTypes)GB(p2, 8, 2);
+		if (roadtypes > ROADTYPES_ALL || roadtypes == ROADTYPES_NONE) return CMD_ERROR;
 	} else {
 		if (!ValParamRailtype(GB(p2, 8, 8))) return CMD_ERROR;
 		railtype = (RailType)GB(p2, 8, 8);
@@ -352,8 +356,8 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 			MakeRailBridgeRamp(tile_start, owner, bridge_type, dir, railtype);
 			MakeRailBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), railtype);
 		} else {
-			MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir);
-			MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir));
+			MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir, roadtypes);
+			MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), roadtypes);
 		}
 		MarkTileDirtyByTile(tile_start);
 		MarkTileDirtyByTile(tile_end);
@@ -442,7 +446,7 @@ not_valid_below:;
 /** Build Tunnel.
  * @param start_tile start tile of tunnel
  * @param flags type of operation
- * @param p1 railtype, 0x200 for road tunnel
+ * @param p1 railtype or roadtypes. bit 9 set means road tunnel
  * @param p2 unused
  */
 int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
@@ -459,7 +463,11 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 
 	_build_tunnel_endtile = 0;
 
-	if (p1 != 0x200 && !ValParamRailtype(p1)) return CMD_ERROR;
+	if (HASBIT(p1, 9)) {
+		if (!ValParamRailtype(p1)) return CMD_ERROR;
+	} else if (GB(p1, 0, 4) > ROADTYPES_ALL || GB(p1, 0, 4) == ROADTYPES_NONE) {
+		return CMD_ERROR;
+	}
 
 	start_tileh = GetTileSlope(start_tile, &start_z);
 
@@ -519,8 +527,8 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 			UpdateSignalsOnSegment(start_tile, direction);
 			YapfNotifyTrackLayoutChange(start_tile, AxisToTrack(DiagDirToAxis(direction)));
 		} else {
-			MakeRoadTunnel(start_tile, _current_player, direction);
-			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction));
+			MakeRoadTunnel(start_tile, _current_player, direction,                 (RoadTypes)GB(p1, 0, 4));
+			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RoadTypes)GB(p1, 0, 4));
 		}
 	}
 

@@ -295,10 +295,25 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
 				if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 
-				if ((track == TRACK_X && GetRoadBits(tile) == ROAD_Y) ||
-						(track == TRACK_Y && GetRoadBits(tile) == ROAD_X)) {
+				RoadTypes roadtypes = GetRoadTypes(tile);
+				RoadBits road = GetRoadBits(tile, ROADTYPE_ROAD);
+				RoadBits tram = GetRoadBits(tile, ROADTYPE_TRAM);
+				switch (roadtypes) {
+					default: break;
+					case ROADTYPES_ROADTRAM: if (road == tram) break;
+						/* FALL THROUGH */
+					case ROADTYPES_ROADHWAY: // Road and highway are incompatible in this case
+					case ROADTYPES_TRAMHWAY: // Tram and highway are incompatible in this case
+					case ROADTYPES_ALL:      // Also incompatible
+						return CMD_ERROR;
+				}
+
+				road |= tram | GetRoadBits(tile, ROADTYPE_HWAY);
+
+				if ((track == TRACK_X && road == ROAD_Y) ||
+						(track == TRACK_Y && road == ROAD_X)) {
 					if (flags & DC_EXEC) {
-						MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, GetTownIndex(tile));
+						MakeRoadCrossing(tile, GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
 					}
 					break;
 				}
@@ -359,7 +374,7 @@ int32 CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			if (flags & DC_EXEC) {
-				MakeRoadNormal(tile, GetCrossingRoadOwner(tile), GetCrossingRoadBits(tile), GetTownIndex(tile));
+				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY));
 			}
 			break;
 		}

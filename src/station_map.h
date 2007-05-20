@@ -6,6 +6,7 @@
 #define STATION_MAP_H
 
 #include "rail_map.h"
+#include "road_map.h"
 #include "station.h"
 
 typedef byte StationGfx;
@@ -309,15 +310,17 @@ static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, 
 	SetRailType(t, rt);
 }
 
-static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, DiagDirection d)
+static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, RoadTypes rt, DiagDirection d)
 {
 	MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE : GFX_TRUCK_BASE) + d);
+	SetRoadTypes(t, rt);
 }
 
-static inline void MakeDriveThroughRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, Axis a, bool on_town_road)
+static inline void MakeDriveThroughRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, RoadTypes rt, Axis a, bool on_town_road)
 {
 	MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE_EXT : GFX_TRUCK_BASE_EXT) + a);
 	SB(_m[t].m6, 3, 1, on_town_road);
+	SetRoadTypes(t, rt);
 }
 
 static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section)

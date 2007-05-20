@@ -18,9 +18,9 @@ enum RoadTileType {
 };
 
 static inline RoadTileType GetRoadTileType(TileIndex t)
-{
+	{
 	assert(IsTileType(t, MP_STREET));
-	return (RoadTileType)GB(_m[t].m5, 4, 4);
+	return (RoadTileType)GB(_m[t].m5, 6, 2);
 }
 
 static inline bool IsLevelCrossing(TileIndex t)
@@ -33,23 +33,104 @@ static inline bool IsLevelCrossingTile(TileIndex t)
 	return IsTileType(t, MP_STREET) && IsLevelCrossing(t);
 }
 
-static inline RoadBits GetRoadBits(TileIndex t)
+static inline RoadBits GetRoadBits(TileIndex t, RoadType rt)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL);
-	return (RoadBits)GB(_m[t].m5, 0, 4);
+	switch (rt) {
+		default: NOT_REACHED();
+		case ROADTYPE_ROAD: return (RoadBits)GB(_m[t].m4, 0, 4);
+		case ROADTYPE_TRAM: return (RoadBits)GB(_m[t].m4, 4, 4);
+		case ROADTYPE_HWAY: return (RoadBits)GB(_m[t].m6, 2, 4);
+	}
 }
 
-static inline void SetRoadBits(TileIndex t, RoadBits r)
+static inline RoadBits GetAllRoadBits(TileIndex tile)
+{
+	return GetRoadBits(tile, ROADTYPE_ROAD) | GetRoadBits(tile, ROADTYPE_TRAM) | GetRoadBits(tile, ROADTYPE_HWAY);
+}
+
+static inline void SetRoadBits(TileIndex t, RoadBits r, RoadType rt)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL); // XXX incomplete
-	SB(_m[t].m5, 0, 4, r);
+	switch (rt) {
+		default: NOT_REACHED();
+		case ROADTYPE_ROAD: SB(_m[t].m4, 0, 4, r); break;
+		case ROADTYPE_TRAM: SB(_m[t].m4, 4, 4, r); break;
+		case ROADTYPE_HWAY: SB(_m[t].m6, 2, 4, r); break;
+	}
 }
 
+static inline RoadTypes GetRoadTypes(TileIndex t)
+{
+	if (IsTileType(t, MP_STREET)) {
+		return (RoadTypes)GB(_me[t].m7, 5, 3);
+	} else {
+		return (RoadTypes)GB(_m[t].m3, 0, 3);
+	}
+}
+
+static inline void SetRoadTypes(TileIndex t, RoadTypes rt)
+{
+	if (IsTileType(t, MP_STREET)) {
+		SB(_me[t].m7, 5, 3, rt);
+	} else {
+		assert(IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE));
+		SB(_m[t].m3, 0, 2, rt);
+	}
+}
+
+static inline Owner GetRoadOwner(TileIndex t, RoadType rt)
+{
+	if (!IsTileType(t, MP_STREET)) return GetTileOwner(t);
+
+	switch (GetRoadTileType(t)) {
+		default: NOT_REACHED();
+		case ROAD_TILE_NORMAL:
+			switch (rt) {
+				default: NOT_REACHED();
+				case ROADTYPE_ROAD: return (Owner)GB( _m[t].m1, 0, 5);
+				case ROADTYPE_TRAM: return (Owner)GB( _m[t].m5, 0, 5);
+				case ROADTYPE_HWAY: return (Owner)GB(_me[t].m7, 0, 5);
+			}
+		case ROAD_TILE_CROSSING:
+			switch (rt) {
+				default: NOT_REACHED();
+				case ROADTYPE_ROAD: return (Owner)GB( _m[t].m4, 0, 5);
+				case ROADTYPE_TRAM: return (Owner)GB( _m[t].m5, 0, 5);
+				case ROADTYPE_HWAY: return (Owner)GB(_me[t].m7, 0, 5);
+			}
+		case ROAD_TILE_DEPOT: return GetTileOwner(t);
+	}
+}
+
+static inline void SetRoadOwner(TileIndex t, RoadType rt, Owner o)
+{
+	if (!IsTileType(t, MP_STREET)) return SetTileOwner(t, o);
+
+	switch (GetRoadTileType(t)) {
+		default: NOT_REACHED();
+		case ROAD_TILE_NORMAL:
+			switch (rt) {
+				default: NOT_REACHED();
+				case ROADTYPE_ROAD: SB( _m[t].m1, 0, 5, o); break;
+				case ROADTYPE_TRAM: SB( _m[t].m5, 0, 5, o); break;
+				case ROADTYPE_HWAY: SB(_me[t].m7, 0, 5, o); break;
+			}
+		case ROAD_TILE_CROSSING:
+			switch (rt) {
+				default: NOT_REACHED();
+				case ROADTYPE_ROAD: SB( _m[t].m4, 0, 5, o); break;
+				case ROADTYPE_TRAM: SB( _m[t].m5, 0, 5, o); break;
+				case ROADTYPE_HWAY: SB(_me[t].m7, 0, 5, o); break;
+			}
+		case ROAD_TILE_DEPOT: return SetTileOwner(t, o);
+	}
+}
 
 static inline Axis GetCrossingRoadAxis(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	return (Axis)GB(_m[t].m5, 3, 1);
+	return (Axis)GB(_m[t].m4, 6, 1);
 }
 
 static inline RoadBits GetCrossingRoadBits(TileIndex tile)
@@ -63,35 +144,22 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
 }
 
 
-// TODO swap owner of road and rail
-static inline Owner GetCrossingRoadOwner(TileIndex t)
-{
-	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	return (Owner)_m[t].m4;
-}
-
-static inline void SetCrossingRoadOwner(TileIndex t, Owner o)
-{
-	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	_m[t].m4 = o;
-}
-
 static inline void UnbarCrossing(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	CLRBIT(_m[t].m5, 2);
+	CLRBIT(_m[t].m4, 5);
 }
 
 static inline void BarCrossing(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	SETBIT(_m[t].m5, 2);
+	SETBIT(_m[t].m4, 5);
 }
 
 static inline bool IsCrossingBarred(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	return HASBIT(_m[t].m5, 2);
+	return HASBIT(_m[t].m4, 5);
 }
 
 #define IsOnDesert IsOnSnow
@@ -174,9 +242,10 @@ static inline DiagDirection GetRoadDepotDirection(TileIndex t)
  * - bridge ramps: start of the ramp is treated as road piece
  * - bridge middle parts: bridge itself is ignored
  * @param tile the tile to get the road bits for
+ * @param rt   the road type to get the road bits form
  * @return the road bits of the given tile
  */
-RoadBits GetAnyRoadBits(TileIndex tile);
+RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt);
 
 /**
  * Get the accessible track bits for the given tile.
@@ -186,39 +255,45 @@ RoadBits GetAnyRoadBits(TileIndex tile);
  * @param tile the tile to get the track bits for
  * @return the track bits for the given tile
  */
-TrackBits GetAnyRoadTrackBits(TileIndex tile);
+TrackBits GetAnyRoadTrackBits(TileIndex tile, RoadType rt);
 
 
-static inline void MakeRoadNormal(TileIndex t, Owner owner, RoadBits bits, TownID town)
+static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadTypes rot, TownID town, Owner road, Owner tram, Owner hway)
 {
 	SetTileType(t, MP_STREET);
-	SetTileOwner(t, owner);
+	SetTileOwner(t, road);
 	_m[t].m2 = town;
-	_m[t].m3 = 0 << 7 | 0 << 4 | 0;
-	_m[t].m4 = 0;
-	_m[t].m5 = ROAD_TILE_NORMAL << 4 | bits;
+	_m[t].m3 = 0;
+	_m[t].m4 = (HASBIT(rot, ROADTYPE_ROAD) ? bits : 0) << 4 | HASBIT(rot, ROADTYPE_TRAM) ? bits : 0;
+	_m[t].m5 = ROAD_TILE_NORMAL << 6 | tram;
+	SB(_m[t].m6, 2, 4, HASBIT(rot, ROADTYPE_HWAY) ? bits : 0);
+	_me[t].m7 = rot << 5 | hway;
 }
 
 
-static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner rail, Axis roaddir, RailType rt, uint town)
+static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner tram, Owner hway, Owner rail, Axis roaddir, RailType rat, RoadTypes rot, uint town)
 {
 	SetTileType(t, MP_STREET);
 	SetTileOwner(t, rail);
 	_m[t].m2 = town;
-	_m[t].m3 = 0 << 7 | 0 << 4 | rt;
-	_m[t].m4 = road;
-	_m[t].m5 = ROAD_TILE_CROSSING << 4 | roaddir << 3 | 0 << 2;
+	_m[t].m3 = rat;
+	_m[t].m4 = roaddir << 6 | road;
+	_m[t].m5 = ROAD_TILE_CROSSING << 6 | tram;
+	SB(_m[t].m6, 2, 4, 0);
+	_me[t].m7 = rot << 5 | hway;
 }
 
 
-static inline void MakeRoadDepot(TileIndex t, Owner owner, DiagDirection dir)
+static inline void MakeRoadDepot(TileIndex t, Owner owner, DiagDirection dir, RoadType rt)
 {
 	SetTileType(t, MP_STREET);
 	SetTileOwner(t, owner);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
-	_m[t].m5 = ROAD_TILE_DEPOT << 4 | dir;
+	_m[t].m5 = ROAD_TILE_DEPOT << 6 | dir;
+	SB(_m[t].m6, 2, 4, 0);
+	_me[t].m7 = RoadTypeToRoadTypes(rt) << 5;
 }
 
 #endif /* ROAD_MAP_H */

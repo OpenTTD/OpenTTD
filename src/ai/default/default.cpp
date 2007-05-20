@@ -2579,11 +2579,11 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 		if (p->mode == 2) {
 			if (IsTileType(c, MP_STREET) &&
 					GetRoadTileType(c) == ROAD_TILE_NORMAL &&
-					(GetRoadBits(c) & p->attr) != 0) {
+					(GetRoadBits(c, ROADTYPE_ROAD) & p->attr) != 0) {
 				roadflag |= 2;
 
 				// all bits are already built?
-				if ((GetRoadBits(c) & p->attr) == p->attr) continue;
+				if ((GetRoadBits(c, ROADTYPE_ROAD) & p->attr) == p->attr) continue;
 			}
 
 			ret = DoCommand(c, p->attr, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);

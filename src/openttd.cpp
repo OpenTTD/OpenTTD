@@ -1108,8 +1108,8 @@ static void ConvertTownOwner()
 	for (tile = 0; tile != MapSize(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_STREET:
-				if (IsLevelCrossing(tile) && GetCrossingRoadOwner(tile) & 0x80) {
-					SetCrossingRoadOwner(tile, OWNER_TOWN);
+				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HASBIT(_m[tile].m4, 7)) {
+					_m[tile].m4 = OWNER_TOWN;
 				}
 				/* FALLTHROUGH */
 
@@ -1414,6 +1414,70 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(48)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			switch (GetTileType(t)) {
+				case MP_RAILWAY:
+					if (IsPlainRailTile(t)) {
+						/* Swap ground type and signal type for plain rail tiles, so the
+						 * ground type uses the same bits as for depots and waypoints. */
+						uint tmp = GB(_m[t].m4, 0, 4);
+						SB(_m[t].m4, 0, 4, GB(_m[t].m2, 0, 4));
+						SB(_m[t].m2, 0, 4, tmp);
+					} else if (HASBIT(_m[t].m5, 2)) {
+						/* Split waypoint and depot rail type and remove the subtype. */
+						CLRBIT(_m[t].m5, 2);
+						CLRBIT(_m[t].m5, 6);
+					}
+					break;
+
+				case MP_STREET:
+					/* Swap m3 and m4, so the track type for rail crossings is the
+					 * same as for normal rail. */
+					Swap(_m[t].m3, _m[t].m4);
+					break;
+
+				default: break;
+			}
+		}
+	}
+
+	if (CheckSavegameVersion(61)) {
+		/* Added the RoadType */
+		for (TileIndex t = 0; t < map_size; t++) {
+			switch(GetTileType(t)) {
+				case MP_STREET:
+					SB(_m[t].m5, 6, 2, GB(_m[t].m5, 4, 2));
+					switch (GetRoadTileType(t)) {
+						default: NOT_REACHED();
+						case ROAD_TILE_NORMAL:
+							SB(_m[t].m4, 0, 4, GB(_m[t].m5, 0, 4));
+							SB(_m[t].m4, 4, 4, 0);
+							SB(_m[t].m6, 2, 4, 0);
+							break;
+						case ROAD_TILE_CROSSING:
+							SB(_m[t].m4, 5, 2, GB(_m[t].m5, 2, 2));
+							break;
+						case ROAD_TILE_DEPOT:    break;
+					}
+					SetRoadTypes(t, ROADTYPES_ROAD);
+					break;
+
+				case MP_STATION:
+					if (IsRoadStop(t)) SetRoadTypes(t, ROADTYPES_ROAD);
+					break;
+
+				case MP_TUNNELBRIDGE:
+					if ((IsTunnel(t) ? GetTunnelTransportType(t) : GetBridgeTransportType(t)) == TRANSPORT_ROAD) {
+						SetRoadTypes(t, ROADTYPES_ROAD);
+					}
+					break;
+
+				default: break;
+			}
+		}
+	}
+
 	if (CheckSavegameVersion(42)) {
 		Vehicle* v;
 
@@ -1436,9 +1500,10 @@ bool AfterLoadGame()
 
 							MakeRoadNormal(
 								t,
-								GetTileOwner(t),
 								axis == AXIS_X ? ROAD_Y : ROAD_X,
-								town
+								ROADTYPES_ROAD,
+								town,
+								GetTileOwner(t), OWNER_NONE, OWNER_NONE
 							);
 						}
 					} else {
@@ -1482,34 +1547,6 @@ bool AfterLoadGame()
 				v->u.rail.track = TRACK_BIT_WORMHOLE;
 			} else {
 				v->u.road.state = RVSB_WORMHOLE;
-			}
-		}
-	}
-
-	if (CheckSavegameVersion(48)) {
-		for (TileIndex t = 0; t < map_size; t++) {
-			switch (GetTileType(t)) {
-				case MP_RAILWAY:
-					if (IsPlainRailTile(t)) {
-						/* Swap ground type and signal type for plain rail tiles, so the
-						 * ground type uses the same bits as for depots and waypoints. */
-						uint tmp = GB(_m[t].m4, 0, 4);
-						SB(_m[t].m4, 0, 4, GB(_m[t].m2, 0, 4));
-						SB(_m[t].m2, 0, 4, tmp);
-					} else if (HASBIT(_m[t].m5, 2)) {
-						/* Split waypoint and depot rail type and remove the subtype. */
-						CLRBIT(_m[t].m5, 2);
-						CLRBIT(_m[t].m5, 6);
-					}
-					break;
-
-				case MP_STREET:
-					/* Swap m3 and m4, so the track type for rail crossings is the
-					 * same as for normal rail. */
-					Swap(_m[t].m3, _m[t].m4);
-					break;
-
-				default: break;
 			}
 		}
 	}
@@ -1772,8 +1809,6 @@ bool AfterLoadGame()
 	 * space for newhouses grf features. A new byte, m7, was also added. */
 	if (CheckSavegameVersion(53)) {
 		for (TileIndex t = 0; t < map_size; t++) {
-			_me[t].m7 = 0;
-
 			if (IsTileType(t, MP_HOUSE)) {
 				if (GB(_m[t].m3, 6, 2) != TOWN_HOUSE_COMPLETED) {
 					/* Move the construction stage from m3[7..6] to m5[5..4].
