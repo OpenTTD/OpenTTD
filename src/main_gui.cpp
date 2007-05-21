@@ -51,6 +51,7 @@ static int _rename_what = -1;
 
 static byte _terraform_size = 1;
 RailType _last_built_railtype;
+RoadType _last_built_roadtype;
 static int _scengen_town_size = 1; // depress medium-sized towns per default
 
 extern void GenerateIndustries();
@@ -310,7 +311,8 @@ static void MenuClickBuildRail(int index)
 
 static void MenuClickBuildRoad(int index)
 {
-	ShowBuildRoadToolbar();
+	_last_built_roadtype = (RoadType)index;
+	ShowBuildRoadToolbar(_last_built_roadtype);
 }
 
 static void MenuClickBuildWater(int index)
@@ -930,12 +932,13 @@ static void ToolbarBuildRailClick(Window *w)
 	const Player *p = GetPlayer(_local_player);
 	Window *w2;
 	w2 = PopupMainToolbMenu(w, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes);
-	WP(w2,menu_d).sel_index = _last_built_railtype;
+	WP(w2, menu_d).sel_index = _last_built_railtype;
 }
 
 static void ToolbarBuildRoadClick(Window *w)
 {
-	PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 1, 0);
+	Window *w2 = PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 1, 0);
+	WP(w2, menu_d).sel_index = _last_built_roadtype;
 }
 
 static void ToolbarBuildWaterClick(Window *w)
@@ -1873,7 +1876,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
 		case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
 		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype, -1); break;
-		case WKC_SHIFT | WKC_F8: ShowBuildRoadToolbar(); break;
+		case WKC_SHIFT | WKC_F8: ShowBuildRoadToolbar(_last_built_roadtype); break;
 		case WKC_SHIFT | WKC_F9: ShowBuildDocksToolbar(); break;
 		case WKC_SHIFT | WKC_F10:ShowBuildAirToolbar(); break;
 		case WKC_SHIFT | WKC_F11: ShowBuildTreesToolbar(); break;
@@ -2514,6 +2517,7 @@ void InitializeMainGui()
 {
 	/* Clean old GUI values */
 	_last_built_railtype = RAILTYPE_RAIL;
+	_last_built_roadtype = ROADTYPE_ROAD;
 }
 
 

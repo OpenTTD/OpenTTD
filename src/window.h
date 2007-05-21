@@ -9,6 +9,7 @@
 #include "string.h"
 #include "order.h"
 #include "rail.h"
+#include "road.h"
 #include "airport.h"
 #include "vehicle.h"
 
@@ -328,6 +329,7 @@ struct buildvehicle_d {
 	union {
 		RailTypeByte railtype;
 		AirportFTAClass::Flags flags;
+		RoadTypes roadtypes;
 	} filter;
 	byte sel_index;  ///< deprecated value, used for 'unified' ship and road
 	bool descending_sort_order;

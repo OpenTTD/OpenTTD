@@ -845,7 +845,7 @@ static void DrawTile_Road(TileInfo *ti)
 	DrawBridgeMiddle(ti);
 }
 
-void DrawRoadDepotSprite(int x, int y, DiagDirection dir)
+void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 {
 	SpriteID palette = PLAYER_SPRITE_COLOR(_local_player);
 	const DrawTileSprites* dts =  &_road_depot[dir];

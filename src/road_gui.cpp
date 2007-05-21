@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "road_cmd.h"
-#include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -18,6 +16,9 @@
 #include "sound.h"
 #include "command.h"
 #include "variables.h"
+#include "road.h"
+#include "road_cmd.h"
+#include "road_map.h"
 #include "station_map.h"
 //needed for catchments
 #include "station.h"
@@ -30,6 +31,8 @@ static void ShowRoadDepotPicker();
 static bool _remove_button_clicked;
 
 static byte _place_road_flag;
+
+static RoadType _cur_roadtype;
 
 static DiagDirection _road_depot_orientation;
 static DiagDirection _road_station_picker_orientation;
@@ -69,7 +72,7 @@ void CcBuildRoadTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRoad_Tunnel(TileIndex tile)
 {
-	DoCommandP(tile, 0x200 | ROADTYPES_ROAD, 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
+	DoCommandP(tile, 0x200 | RoadTypeToRoadTypes(_cur_roadtype), 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
 }
 
 static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
@@ -77,7 +80,9 @@ static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
 	tile += TileOffsByDiagDir(direction);
 	// if there is a roadpiece just outside of the station entrance, build a connecting route
 	if (IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
-		DoCommandP(tile, DiagDirToRoadBits(ReverseDiagDir(direction)), 0, NULL, CMD_BUILD_ROAD);
+		if (GetRoadBits(tile, _cur_roadtype) != ROAD_NONE) {
+			DoCommandP(tile, _cur_roadtype << 4 | DiagDirToRoadBits(ReverseDiagDir(direction)), 0, NULL, CMD_BUILD_ROAD);
+		}
 	}
 }
 
@@ -95,7 +100,7 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRoad_Depot(TileIndex tile)
 {
-	DoCommandP(tile, _road_depot_orientation, 0, CcRoadDepot, CMD_BUILD_ROAD_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1807_CAN_T_BUILD_ROAD_VEHICLE));
+	DoCommandP(tile, _cur_roadtype << 2 | _road_depot_orientation, 0, CcRoadDepot, CMD_BUILD_ROAD_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1807_CAN_T_BUILD_ROAD_VEHICLE));
 }
 
 static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
@@ -298,9 +303,9 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 			if (e->we.place.userdata == 0) {
 				ResetObjectToPlace();
-				ShowBuildBridgeWindow(start_tile, end_tile, 0x80 | ROADTYPES_ROAD);
+				ShowBuildBridgeWindow(start_tile, end_tile, 0x80 | RoadTypeToRoadTypes(_cur_roadtype));
 			} else if (e->we.place.userdata != 4) {
-				DoCommandP(end_tile, start_tile, _place_road_flag, CcPlaySound1D,
+				DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3), CcPlaySound1D,
 					_remove_button_clicked ?
 					CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1805_CAN_T_REMOVE_ROAD_FROM) :
 					CMD_BUILD_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1804_CAN_T_BUILD_ROAD_HERE));
@@ -313,7 +318,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 	case WE_PLACE_PRESIZE: {
 		TileIndex tile = e->we.place.tile;
 
-		DoCommand(tile, 0x200 | ROADTYPES_ROAD, 0, DC_AUTO, CMD_BUILD_TUNNEL);
+		DoCommand(tile, 0x200 | _cur_roadtype, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 		break;
 	}
@@ -349,9 +354,10 @@ static const WindowDesc _build_road_desc = {
 	BuildRoadToolbWndProc
 };
 
-void ShowBuildRoadToolbar()
+void ShowBuildRoadToolbar(RoadType roadtype)
 {
 	if (!IsValidPlayer(_current_player)) return;
+	_cur_roadtype = roadtype;
 
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 	Window *w = AllocateWindowDesc(&_build_road_desc);
@@ -396,10 +402,10 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		DrawWindowWidgets(w);
 
-		DrawRoadDepotSprite(70, 17, DIAGDIR_NE);
-		DrawRoadDepotSprite(70, 69, DIAGDIR_SE);
-		DrawRoadDepotSprite( 2, 69, DIAGDIR_SW);
-		DrawRoadDepotSprite( 2, 17, DIAGDIR_NW);
+		DrawRoadDepotSprite(70, 17, DIAGDIR_NE, _cur_roadtype);
+		DrawRoadDepotSprite(70, 69, DIAGDIR_SE, _cur_roadtype);
+		DrawRoadDepotSprite( 2, 69, DIAGDIR_SW, _cur_roadtype);
+		DrawRoadDepotSprite( 2, 17, DIAGDIR_NW, _cur_roadtype);
 		break;
 
 	case WE_CLICK: {

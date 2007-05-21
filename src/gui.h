@@ -46,7 +46,7 @@ void ShowTrainViewWindow(const Vehicle *v);
 void ShowOrdersWindow(const Vehicle *v);
 
 /* road_gui.cpp */
-void ShowBuildRoadToolbar();
+void ShowBuildRoadToolbar(RoadType roadtype);
 void ShowBuildRoadScenToolbar();
 void ShowRoadVehViewWindow(const Vehicle *v);
 
