@@ -1173,6 +1173,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Omogoč
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Dovoli kupovanje delnic od drugih podjetij
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Med vlečenjem postavi signale vsakih: {ORANGE}{STRING} ploščic
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Samodejno postavi semaforje pred: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Mestna razporeditev "nič več cest" ni veljavna v urejevalniku terena
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Izberi razporeditev mestnih cest: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :nič več cest
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :privzeto
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :boljše ceste
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozicija glavne orodne vrstice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Levo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Sredina
@@ -2083,6 +2092,7 @@ STR_SV_STNAME_LOWER                                             :Dolnja {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Pristajališče
 STR_SV_STNAME_FOREST                                            :{STRING} Gozd
 
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2118,6 +2128,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Odnos m
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Brez
+STR_NUM_VERY_LOW                                                :Zelo malo
 STR_6816_LOW                                                    :Malo
 STR_6817_NORMAL                                                 :Normalno
 STR_6818_HIGH                                                   :Veliko
@@ -3183,6 +3194,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Spremeni
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Spremeni začetno leto
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Opozorilo za merilo
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prevelika sprememba velikosti ozemlja ni priporočena. Nadaljujem?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Opozorilo mestne  razporeditve
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Mestna razporeditev "nič več cest" ni priporočena. Nadaljuješ z ustvarjanjem?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Ime višinskega zemljevida:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Velikost: {ORANGE}{NUM} x {NUM}
@@ -3255,3 +3268,11 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Prozoren
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Prozoren ali navaden pogled ostalih objektov kot so postaje, garaže...
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prozoren ali navaden pogled mostov
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki...
+
+##### Mass Order
+
+
+
+
+
+########

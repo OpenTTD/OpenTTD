@@ -1164,6 +1164,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Térkép mozgat
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Ki
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollgomb sebessége a térképen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatikus pause-mode új játék esetén: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Továbbfejlesztett járműlista használata: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármű játékosonként: {ORANGE}{STRING}
@@ -2114,6 +2115,8 @@ STR_SV_STNAME_UPPER                                             :{STRING}-felső
 STR_SV_STNAME_LOWER                                             :{STRING}-alsó
 STR_SV_STNAME_HELIPORT                                          :{STRING}i helikopter-leszálló
 STR_SV_STNAME_FOREST                                            :{STRING}i erdőség
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3290,3 +3293,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Átkapcs
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Átkapcsolni az építhető elemekre (állomások, depók, útipontok és felsővezeték)
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Átkapcsolni a hidakra
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Átkapcsolni egyéb épületekre, mint világítótorony és antennák (esetleg egyéb jövőbeni díszek)
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :{COMMA} csoport
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Összes vonat
+STR_GROUP_ALL_ROADS                                             :Összes közúti jármű
+STR_GROUP_ALL_SHIPS                                             :Összes hajó
+STR_GROUP_ALL_AIRCRAFTS                                         :Összes repülő
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Megosztott jármű hozzáadása
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Összes jármű eltávolítása
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} vonat
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} közúti jármű
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} hajó
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} repülő
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Csoport átnevezése
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}A(z) "{GROUP}" csoport járműveinek lecserélése
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Csoport létrehozás sikertelen...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Csoport törlése sikertelen...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Csoport átnevezése sikertelen...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Csoport járműveinek törlése sikertelen...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Jármű hozzáadása a csoporthoz sikertelen...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Megosztott jármű csoporthoz való hozzáadása sikertelen...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Csoportok - Kattints a csoport nevére a járművek listázásához
+STR_GROUP_CREATE_TIP                                            :{BLACK}Csoport létrehozásához kattints ide
+STR_GROUP_DELETE_TIP                                            :{BLACK}Kijelölt csoport törlése
+STR_GROUP_RENAME_TIP                                            :{BLACK}Kijelölt csoport átnevezése
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Csoport automata csere alóli mentességének beállításához kattints ide
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Idei profit: {GREEN}{CURRENCY} {BLACK}(tavalyi: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Idei profit: {RED}{CURRENCY} {BLACK}(tavalyi: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Idei profit: {GREEN}{CURRENCY} {BLACK}(tavalyi: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Idei profit: {RED}{CURRENCY} {BLACK}(tavalyi: {RED}{CURRENCY}{BLACK})
+
+########

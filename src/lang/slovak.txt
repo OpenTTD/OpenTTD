@@ -1162,6 +1162,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Posúvat mapu
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Vypnuté
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlost posúvania mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticka pauza pri štarte novej hry: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použit vylepšený zoznam vozidiel: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
@@ -1195,6 +1196,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Mierne 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit nakup akcii ostatnych spolocnosti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri stavbe tahanim umiestnit semafory na kazde: {ORANGE}{STRING}. pole
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatická stavba semafórov pred: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Struktúra mesta "žiadne cesty naviac" nie je platná v editore scenárov
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Štruktúra mestských ciestt: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :žiadne cesty naviac
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :štandardná
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepšie cesty
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :mriežka 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :mriežka 3x3
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozicia hlavneho menu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Nalavo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :V strede
@@ -2067,6 +2077,7 @@ STR_SV_STNAME_LOWER                                             :Dolny {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Les
 
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2102,6 +2113,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Postoj 
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Ziadny
+STR_NUM_VERY_LOW                                                :Velmi malý
 STR_6816_LOW                                                    :Nizke
 STR_6817_NORMAL                                                 :Normalne
 STR_6818_HIGH                                                   :Vysoke
@@ -3167,6 +3179,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Zmenit v
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Zmenit rok zaciatku hry
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Upozornenie na stupnicu
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prilis velka zmena velkosti zdrojovej mapy sa neodporuca. Pokracovat s generovanim?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Upozornenie na štruktúra mesta
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Štruktúra mesta  "žiadne cesty naviac" sa neodporúca. Pokracovat s generovaním?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nazov vyskovej mapy:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Velkost: {ORANGE}{NUM} x {NUM}
@@ -3239,3 +3253,35 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Prepnút
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Prepnút priehladnost staníc, garáží, tratí, ...
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prepnút priehladnost mostov
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prepnút priehladnost objektov ako sú majáky a antény
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Skupina {COMMA}
+STR_GROUP_ALL_TRAINS                                            :Všetky vlaky
+STR_GROUP_ALL_ROADS                                             :Všetky cestné vozidlá
+STR_GROUP_ALL_SHIPS                                             :Všetky lode
+STR_GROUP_ALL_AIRCRAFTS                                         :Všetky lietadlá
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Pridat zdielané vozidlá
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstránit všetky vozidlá
+
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Premenovat skupinu
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nie je možné vytvorit skupinu ...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nie je možné zrušit túto skupinu ...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Nie je možné premenovat skupinu ...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Nie je možné odstránit všetky vozdilá z tejto skupiny ...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Nie je možné pridat vozidlo do tejto skupiny
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Nie je možné pridat zdielané vozidlo do skupiny
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Skupiny  - kliknite na skupinu pre zobrazenie všetkých vozidiel skupiny
+STR_GROUP_CREATE_TIP                                            :{BLACK}Kliknite pre vytvorenie skupiny
+STR_GROUP_DELETE_TIP                                            :{BLACK}Zrušit vybranú skupinu
+STR_GROUP_RENAME_TIP                                            :{BLACK}Premenovat vybranú skupinu
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknite pre znemoznenie automatického nahradzovania v skupine
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Zisk tento rok: {GREEN}{CURRENCY} {BLACK}(minulý rok: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Zisk tento rok: {RED}{CURRENCY} {BLACK}(lminulý rok: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Zisk tento rok: {GREEN}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Zisk tento rok: {RED}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
+
+########

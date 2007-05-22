@@ -2013,6 +2013,7 @@ STR_SV_STNAME_LOWER                                             :Unter-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Wald
 
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -3188,3 +3189,28 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Verände
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Verändere die Transparenz für Gebäude wie Bahnhöfe, Depots, Wegpunkte und Oberleitung
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Verändere die Transparenz für Brücken
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Verändere die Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Gruppe {COMMA}
+STR_GROUP_ALL_TRAINS                                            :Alle Züge
+STR_GROUP_ALL_ROADS                                             :Alle Straßenfahrzeuge
+STR_GROUP_ALL_SHIPS                                             :Alle Schiffe
+STR_GROUP_ALL_AIRCRAFTS                                         :Alle Flugzeuge
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Entferne alle Fahrzeuge
+
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kann Gruppe nicht erstellen...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Kann diese Gruppe nicht löschen...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Kann Gruppe nicht umbenennen...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kann nicht alle Fahrzeuge dieser Gruppe entfernen...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kann das Fahrzeug nicht zu dieser Gruppe hinzufügen...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gruppen - Klicke auf eine Gruppe für eine Liste aller Fahrzeuge der Gruppe
+STR_GROUP_CREATE_TIP                                            :{BLACK}Klicken um eine Gruppe zu erstellen
+STR_GROUP_DELETE_TIP                                            :{BLACK}Die ausgewählte Gruppe löschen
+STR_GROUP_RENAME_TIP                                            :{BLACK}Die ausgewählte Gruppe umbenennen
+
+
+########

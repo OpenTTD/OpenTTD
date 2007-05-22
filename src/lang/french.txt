@@ -1099,6 +1099,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Défilement de 
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Désactivé
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Vitesse de défilement avec molette: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatique en début de nouvelle partie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utiliser la liste de véhicules avancée: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING}
@@ -2012,6 +2013,8 @@ STR_SV_STNAME_UPPER                                             :Haut {STRING}
 STR_SV_STNAME_LOWER                                             :Bas {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Héliport
 STR_SV_STNAME_FOREST                                            :{STRING} Forêt
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3188,3 +3191,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transpar
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparence des éléments constructibles tels que stations, dépôts, points de contrôle et caténaire
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparence des ponts
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparence des structures telles que phares et antennes
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Groupe {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Tous les trains
+STR_GROUP_ALL_ROADS                                             :Tous les véhicules routiers
+STR_GROUP_ALL_SHIPS                                             :Tous les navires
+STR_GROUP_ALL_AIRCRAFTS                                         :Tous les aéronefs
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Ajouter des véhicules partagés
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Retirer tous les véhicules
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Train{P "" s}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Véhicule{P "" s} routier{P "" s}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Navire{P "" s}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aéronef{P "" s}
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renommer un groupe
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Remplacer les véhicules de "{GROUP}"
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Impossible de créer le groupe...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Impossible de supprimer ce groupe...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Impossible de renommer le groupe...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Impossible de retirer tous les véhicules de ce groupe...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Impossible d'ajouter le véhicule à ce groupe...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Impossible d'ajouter les véhicules partagés à ce groupe...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Groupes - Cliquer sur un groupe pour lister tous les véhicules de ce groupe
+STR_GROUP_CREATE_TIP                                            :{BLACK}Cliquer pour créer un groupe
+STR_GROUP_DELETE_TIP                                            :{BLACK}Supprimer le groupe sélectionné
+STR_GROUP_RENAME_TIP                                            :{BLACK}Renommer le groupe sélectionné
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Cliquer pour protéger ce groupe contre l'auto-remplacement global
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Profit cette année: {GREEN}{CURRENCY} {BLACK}(an dernier: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit cette année: {RED}{CURRENCY} {BLACK}(an dernier: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit cette année: {GREEN}{CURRENCY} {BLACK}(an dernier: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit cette année: {RED}{CURRENCY} {BLACK}(an dernier: {RED}{CURRENCY}{BLACK})
+
+########

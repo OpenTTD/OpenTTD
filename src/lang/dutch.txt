@@ -1098,6 +1098,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kaart
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Uit
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaart muiswiel snelheid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisch pauzeren wanneer je een nieuw spel start: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik de geavanceerde voertuigenlijst: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
@@ -1137,8 +1138,8 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecte
 STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :geen wegen
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standaard
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betere wegen
-STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 rooster
-STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 rooster
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 raster
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 raster
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Positie van algemene toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links
@@ -2011,6 +2012,8 @@ STR_SV_STNAME_UPPER                                             :Hoger {STRING}
 STR_SV_STNAME_LOWER                                             :Lager {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helihaven
 STR_SV_STNAME_FOREST                                            :{STRING} Bossen
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3113,7 +3116,7 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begin jaar
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Schaal waarschuwing
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaar is niet aan te bevelen. Toch doorgaan?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Stadsindelingwaarschuwing
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Stadsindelingswaarschuwing
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}De stadsindeling "geen wegen" is niet aanbevolen. Doorgaan met aanmaken?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Hoogtekaart naam:
@@ -3187,3 +3190,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Wissel d
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Wissel doorzichtigheid voor gebouwen zoals stations, depots, waypoints en bovenleiding
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Wissel doorzichtigheid voor bruggen
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Wissel doorzichtigheid voor structuren zoals vuurtoren en antennes, in de toekomst misschien voor eyecandy
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Groep {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Alle treinen
+STR_GROUP_ALL_ROADS                                             :Alle voertuigen
+STR_GROUP_ALL_SHIPS                                             :Alle schepen
+STR_GROUP_ALL_AIRCRAFTS                                         :Alle vliegtuigen
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Toevoegen gedeelde voertuigen
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Verwijder alle voertuigen
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Trein{P "" en}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Weg Voertuig{P "" en}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Schip{P "" s}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Vliegtuig
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Hernoem een groep
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Vervang voertuigen van "{GROUP}"
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan groep niet maken...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Kan deze groep niet verwijderen...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Kan deze groep niet hernoemen...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kan niet alle voertuigen van deze groep verwijderen...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kan niet alle voertuigen aan deze groep toevoegen...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Kan niet alle gedeelde voertuigen aan deze groep toevoegen...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Groepen - Klik op een groep voor een lijst van alle voertuigen in deze groep
+STR_GROUP_CREATE_TIP                                            :{BLACK}Klik om een groep te maken
+STR_GROUP_DELETE_TIP                                            :{BLACK}Verwijder de geselecteerde groep
+STR_GROUP_RENAME_TIP                                            :{BLACK}Hernoem de geselecteerde groep
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Winst dit jaar: {GREEN}{CURRENCY} {BLACK}(vorig jaar: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Winst dit jaar: {RED}{CURRENCY} {BLACK}(vorig jaar: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Winst dit jaar: {GREEN}{CURRENCY} {BLACK}(vorig jaar: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Winst dit jaar: {RED}{CURRENCY} {BLACK}(vorig jaar: {RED}{CURRENCY}{BLACK})
+
+########

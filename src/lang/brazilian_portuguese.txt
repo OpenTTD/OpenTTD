@@ -1100,6 +1100,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausar automaticamente ao inicar um novo jogo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de automóveis por jogador: {ORANGE}{STRING}
@@ -2015,6 +2016,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} de cim
 STR_SV_STNAME_LOWER                                             :Sul de {STRING}
 STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
 STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
+
 
 ############ end of savegame specific region!
 
@@ -3191,3 +3193,35 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Alternar
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Alternar transparência para construções como estações, depósitos, pontos de controle e eletrificação da ferrovia
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Alternar transparência para pontes
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Alternar transparência para estruturas como faróis e antenas, talvez no futuro para efeitos visuais
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Agrupar {COMMA}
+STR_GROUP_ALL_TRAINS                                            :Todos os trens
+STR_GROUP_ALL_ROADS                                             :Todos os automóveis
+STR_GROUP_ALL_SHIPS                                             :Todos os navios
+STR_GROUP_ALL_AIRCRAFTS                                         :Todas as aeronaves
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Adicionar veículos compartilhados
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
+
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear um grupo
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Impossível criar grupo...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Impossível remover grupo...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Impossível renomear grupo...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Impossível remover todos os veículos desse grupo...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Impossível adicionar veículo a esse grupo
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Impossível adicionar veículos compartilhados a esse grupo...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Clique em um grupo para listar seus veículos
+STR_GROUP_CREATE_TIP                                            :{BLACK}Clique para criar um grupo
+STR_GROUP_DELETE_TIP                                            :{BLACK}Remove o grupo selecionado
+STR_GROUP_RENAME_TIP                                            :{BLACK}Renomeia o grupo selecionado
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clique para excluir esse grupo da substituição automática
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Lucros do ano: {GREEN}{CURRENCY} {BLACK}(ano passado: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Lucros do ano: {RED}{CURRENCY} {BLACK}(ano passado: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Lucros do ano {GREEN}{CURRENCY} {BLACK}(ano passado: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Lucros do ano: {RED}{CURRENCY} {BLACK}(ano passado {RED}{CURRENCY}{BLACK})
+
+########

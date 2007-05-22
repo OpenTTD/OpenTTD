@@ -1099,6 +1099,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :맵 스크롤
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :끄기
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}맵 스크롤 속도: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}새로운 게임 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}최대 자동차 수: {ORANGE}{STRING}
@@ -2012,6 +2013,8 @@ STR_SV_STNAME_UPPER                                             :상부 {STRING}
 STR_SV_STNAME_LOWER                                             :하부 {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} 헬리포트
 STR_SV_STNAME_FOREST                                            :{STRING} 삼림
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3188,3 +3191,38 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}산업�
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}정거장, 차량기지, 웨이포인트, 연결고리와 같은 건설 가능한 것들에 대한 투명 전환
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}다리 투명 전환
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대와 안테나와 같은 구조물 투명 전환
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :그룹 {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :모든 기차
+STR_GROUP_ALL_ROADS                                             :모든 차량
+STR_GROUP_ALL_SHIPS                                             :모든 선박
+STR_GROUP_ALL_AIRCRAFTS                                         :모든 항공기
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :모든 공유된 차량
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거
+
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 항공기
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 바꾸기
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}"{GROUP}"의 차량 교체
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}그룹을 만들 수 없습니다...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}이 그룹을 지울 수 없습니다.
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}그룹의 이름을 바꿀 수 없습니다.
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}이 구릅의 모든 차량을 제거할 수 없습니다.
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}이 그룹에 차량을 추가할 수 없습니다.
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}이 구릅에 공유된 차량을 추가할 수 없습니다.
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}그룹 - 땅을 클릭하면 이 그룹의 모든 차량을 나열
+STR_GROUP_CREATE_TIP                                            :{BLACK}그룹 만들기
+STR_GROUP_DELETE_TIP                                            :{BLACK}선택한 그룹 삭제
+STR_GROUP_RENAME_TIP                                            :{BLACK}선택한 그룹 이름 바꾸기
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}전체 자동 교체로부터 이 그룹 보호
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}올해의 수입: {GREEN}{CURRENCY} {BLACK}(작년: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}올해의 수입: {RED}{CURRENCY} {BLACK}(작년: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}올해 수입: {GREEN}{CURRENCY} {BLACK}(작년: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}올해 수입: {RED}{CURRENCY} {BLACK}(작년: {RED}{CURRENCY}{BLACK})
+
+########

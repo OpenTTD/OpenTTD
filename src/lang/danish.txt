@@ -385,7 +385,7 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Værdi
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Værdi af ventende fragt
-STR_SORT_BY_RATING_MAX                                          :Fragtrangering
+STR_SORT_BY_RATING_MAX                                          :Fragtbedømmelse
 STR_ENGINE_SORT_ENGINE_ID                                       :Lokomotiv ID (klassisk)
 STR_ENGINE_SORT_COST                                            :Omkostning
 STR_ENGINE_SORT_POWER                                           :Drivmiddel
@@ -408,7 +408,7 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Send til remise
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Send til værksted
 STR_SEND_SHIP_TO_DEPOT                                          :Send til skibsdok
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Send til hangar
-STR_SEND_FOR_SERVICING                                          :Send til service
+STR_SEND_FOR_SERVICING                                          :Send til eftersyn
 
 ############ range for months starts
 STR_0162_JAN                                                    :jan
@@ -458,7 +458,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Luk vind
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Vinduestitel - træk her for at flytte vinduet
 STR_STICKY_BUTTON                                               :{BLACK}Marker dette vindue som ulukkeligt af 'Luk ALLE vinduer' tasten
 STR_RESIZE_BUTTON                                               :{BLACK}Klik og træk for at ændre vinduets størrelse
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik her for at gå til det nuværende default gemme/hente bibliotek
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik her for at gå til det nuværende standard gemme/hente bibliotek
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Nedriv bygninger osv. på et stykke land
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sænk et hjørne af landet
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hæv et hjørne af landet
@@ -989,15 +989,15 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 # DON'T ADD OR REMOVE LINES HERE
 STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrer i sin odreliste
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA} har en ugyldig ordre
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har dobbelt ordrer
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har dobbelte ordrer
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig station i sin ordreliste
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretøj {COMMA} har for få ordrer i sin ruteplan
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretøj {COMMA} har for få ordrer i sin ordreliste
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Køretøj {COMMA} har en ugyldig ordre
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Køretøj {COMMA} har dobbelt ordrer
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Køretøj {COMMA} har dobbelte ordrer
 STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Køretøj {COMMA} har en ugyldig station i sin ordreliste
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skib {COMMA} har for få ordrer i sin ordreliste
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skib {COMMA} har en ugyldig ordre
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skib {COMMA} har dobbelt ordrer
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skib {COMMA} har dobbelte ordrer
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skib {COMMA} har en ugyldig havn i sin ordreliste
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA} har for få ordrer i sin ordreliste
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Fly {COMMA} har en ugyldig ordre
@@ -1098,6 +1098,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Rul kort
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Slået fra
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rulleknap-hastighed på kort: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Sæt automatisk på pause når nyt spil startes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Brug avanceret køretøjsliste: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. antal tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. antal køretøjer per spiller: {ORANGE}{STRING}
@@ -1254,7 +1255,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Træk lo
 STR_DRAG_DROP                                                   :{BLACK}Træk & slip
 STR_STATION_DRAG_DROP                                           :{BLACK}Byg en station vha. træk & slip
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Vælg hvilken stationstype, der skal vises
-STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vælg hvilen stationstype du vil bygge
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vælg hvilken stationstype du vil bygge
 
 STR_FAST_FORWARD                                                :{BLACK}Kør spillet hurtigere
 STR_MESSAGE_HISTORY                                             :{WHITE}Tidligere beskeder
@@ -1289,10 +1290,10 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for tæt på en anden industribygning
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Ombyg toget til at køre med en anden slags last
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Ombyg toget til at køre med en anden lasttype
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Ombyg toget
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den slags last toget skal køre med
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ombyg toget til at køre med den markerede slags last
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den lasttype toget skal køre med
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ombyg toget til at køre med den markerede lasttype
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke ombygge toget...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion
@@ -1590,7 +1591,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med ko
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Det er nødvendigt at fjerne vejen først
-STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vejarbejde er i gang
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vejarbejde i gang
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vejkonstruktion
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vælg vejbro
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan ikke bygge vej her...
@@ -1703,7 +1704,7 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Byg en statue til ære for dit selskab.{} Pris: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Betal for opførelse af forretningsbygninger i byen.{}  Pris: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Køb et års eksklusive rettigheder til transport i byen. De lokale myndigheder vil kun tillade passagerer og last at bruge dine stationer.{} Prist: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestik de lokale myndigheder til at hæve din bedømmelse, med sandsynlighed for en stor straf hvis det bliver opdaget.{}  Pris: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestik de lokale myndigheder til at hæve din bedømmelse, med risiko for en stor straf hvis det bliver opdaget.{}  Pris: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i byen {TOWN}!{}{}Vejfornyelse betalt af {COMPANY} forårsager 6 måneders kaos i trafikken!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2012,6 +2013,8 @@ STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplads
 STR_SV_STNAME_FOREST                                            :{STRING} Skov
 
+STR_SV_GROUP_NAME                                               :{GROUP}
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2148,7 +2151,7 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Tilbageb
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Direktør)
 STR_7038_INAUGURATED                                            :{GOLD}Indviet: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Køretøjer:
-STR_TRAINS                                                      :{WHITE}{COMMA} tog
+STR_TRAINS                                                      :{WHITE}{COMMA} tog{P "" e}
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} køretøj{P "" er}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} fly
 STR_SHIPS                                                       :{WHITE}{COMMA} skib{P "" e}
@@ -2726,7 +2729,7 @@ STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Ombyg vejkøretøj til at laste en anden type last
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Ombyg lastbil
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Ombyg vejkøretøjet til at laste den markede type last
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Ombyg vejkøretøjet til at laste den markerede type last
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke ombygge vejkøretøj
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg lasttype som lastbilen skal transportere
 
@@ -2987,7 +2990,7 @@ STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Fly
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skib{P "" e}
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle tog, som har denne station i deres ruteplan
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle toge, som har denne station i deres ruteplan
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle køretøjer, som har denne station i deres ruteplan
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Vis alle fly, som har denne lufthavn i deres ruteplan
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle skibe, som har denne station i deres ruteplan
@@ -3024,7 +3027,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop uds
 STR_NOT_REPLACING                                               :{BLACK}Udskifter ikke
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Intet køretøj valgt
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vælg en køretøjstype, som du ønsker udskiftet
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vælg en køretøjstype, som du ønker at få i stedet for den type, du  har valgt i venste side
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vælg en køretøjstype, som du ønker benyttet i stedet for den type, du  har valgt i venste side
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryk for at stoppe udskiftningen at den køretøjstype, som du har valgt til venstre
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tryk for at begynde at udskifte køretøjstypen til venstre med køretøjstypen til højre
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den skinnetype, hvor du vil udskifte lokomotiver
@@ -3033,10 +3036,10 @@ STR_REPLACE_HELP                                                :{BLACK}Dette gi
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Udskifter: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTEL EGENSKAB {}Skift imellem lokomotiv- og vogn-udskiftningsvindue.{}Vognudskiftning vil kun finde sted hvis den nye vogn kan ændres til at transportere samme godstype some den gamle vogn. Dette bliver checket for hver vogn, når udskiftningen finder sted.
-STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Tog er ikke tilgængelig
-STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vejkøretøj er ikke tilgængelig
-STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Skib er ikke tilgængelig
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTEL EGENSKAB {}Skift imellem lokomotiv- og vogn-udskiftningsvindue.{}Vognudskiftning vil kun finde sted hvis den nye vogn kan ændres til at transportere samme godstype som den gamle vogn. Dette bliver checket for hver vogn, når udskiftningen finder sted.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Tog er ikke tilgængeligt
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vejkøretøj er ikke tilgængeligt
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Skib er ikke tilgængeligt
 STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Fly er ikke tilgængelig
 
 STR_ENGINES                                                     :Lokomotiver
@@ -3187,3 +3190,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Skift ge
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Skift gennemsigtighed for konstruktioner som stationer, værksteder, kontrolsteder og køreledninger
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Skift gennemsigtighed for broer
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Skift gennemsigtighed for strukturer som fyrtårne og antenner, og måske i fremtiden for øjeguf
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Gruppe {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Alle toge
+STR_GROUP_ALL_ROADS                                             :Alle vejkøretøjer
+STR_GROUP_ALL_SHIPS                                             :Alle skibe
+STR_GROUP_ALL_AIRCRAFTS                                         :Alle fly
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Tilføj delte køretøjer
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle køretøjer
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tog{P "" e}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vejkøretøj{P "" er}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Skib{P "" e}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Fly
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Omdøb en gruppe
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Udskift køretøjer i "{GROUP}"
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan ikke oprette gruppe...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Kan ikke slette denne gruppe...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Kan ikke omdøbe gruppe...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kan ikke fjerne alle køretøjer fra denne gruppe...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kan ikke tilføje køretøjet til denne gruppe...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Kan ikke tilføje delte køretøjer til gruppe...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupper - klik på en gruppe for at vise alle køretøjer i gruppen
+STR_GROUP_CREATE_TIP                                            :{BLACK}Klik for at oprette en gruppe
+STR_GROUP_DELETE_TIP                                            :{BLACK}Slet den valgte gruppe
+STR_GROUP_RENAME_TIP                                            :{BLACK}Omdøb den valgte gruppe
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klik for at beskytte denne gruppe mod global auto-udskiftning
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Afkast i indeværende år: {GREEN}{CURRENCY} {BLACK}(sidste år: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Afkast i indeværende år: {RED}{CURRENCY} {BLACK}(sidste år: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Afkast i indeværende år: {GREEN}{CURRENCY} {BLACK}(sidste år: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Afkast i indeværende år: {RED}{CURRENCY} {BLACK}(sidste år: {RED}{CURRENCY}{BLACK})
+
+########

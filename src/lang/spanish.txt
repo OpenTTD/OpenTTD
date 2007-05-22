@@ -1099,6 +1099,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll sobre el
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Nada
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidad del scroll sobre el mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticamente hace pausa cuando empieza un juego nuevo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar la lista avanza de vehículos: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
@@ -1133,6 +1134,13 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cuando arrastre colocar señales cada: {ORANGE}{STRING} casilla(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Coloca automáticamente semáforos antes de: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}El trazado de ciudad "no más carreteras" no es válido en el editor de escenarios
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecciona trazado de carretera en ciudad: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :no más carreteras
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :por defecto
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :mejores carreteras
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posición de la barra de herramientas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Izquierda
@@ -2005,6 +2013,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} Alto
 STR_SV_STNAME_LOWER                                             :{STRING} Bajo
 STR_SV_STNAME_HELIPORT                                          :Helipuerto de {STRING}
 STR_SV_STNAME_FOREST                                            :Bosque de {STRING}
+
 
 ############ end of savegame specific region!
 
@@ -3107,6 +3116,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Cambiar 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambiar año de inicio
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Alerta de escala
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Cambiar demasiado el tamaño del mapa de origen no está recomendado. ¿Desea continuar con la generación?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Aviso de trazado de ciudad
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}El trazado de ciudad "no más carreteras" no es recomendable. ¿Continuar con la generación?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nombre del mapa de alturas:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamaño: {ORANGE}{NUM} x {NUM}
@@ -3179,3 +3190,35 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activar 
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activar transparencias para construcciones como estaciones, depósitos, puntos de paso, etc.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activar transparencias para puentes
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activar transparencias para estructuras como faros, antenas, etc.
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Grupo {COMMA}
+STR_GROUP_ALL_TRAINS                                            :Todos los trenes
+STR_GROUP_ALL_ROADS                                             :Todos los vehículos de carretera
+STR_GROUP_ALL_SHIPS                                             :Todos los barcos
+STR_GROUP_ALL_AIRCRAFTS                                         :Todas las aeronaves
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Todos los vehículos compartidos
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Quitar todos los vehículos
+
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renombrar un grupo
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}No se puede crear grupo...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}No se puede borrar este grupo...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}No se puede renombrar grupo...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}No se pueden quitar todos los vehículos de este grupo...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}No se puede añadir el vehículo a este grupo...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}No se pueden añadir vehículos compartidos al grupo...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Pulsa en el grupo para ver la lista de vehículos que tiene el grupo
+STR_GROUP_CREATE_TIP                                            :{BLACK}Pulsa para crear un grupo
+STR_GROUP_DELETE_TIP                                            :{BLACK}Borrar el grupo seleccionado
+STR_GROUP_RENAME_TIP                                            :{BLACK}Renombrar el grupo seleccionado
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Pulsa para proteger este grupo del auto reemplazado global
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Beneficio este año: {GREEN}{CURRENCY} {BLACK}(año pasado: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Beneficio este año: {RED}{CURRENCY} {BLACK}(año pasado: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Beneficio este año: {GREEN}{CURRENCY} {BLACK}(año pasado: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Beneficio este año: {RED}{CURRENCY} {BLACK}(año pasado: {RED}{CURRENCY}{BLACK})
+
+########

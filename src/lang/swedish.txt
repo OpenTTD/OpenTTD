@@ -1098,6 +1098,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scrolla kartan
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Avstängd
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mushjulshastighet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automatiskt vid start av nytt spel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Använd den avancerade fordonslistan: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max antal vägfordon per spelare: {ORANGE}{STRING}
@@ -2011,6 +2012,8 @@ STR_SV_STNAME_UPPER                                             :Övre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplats
 STR_SV_STNAME_FOREST                                            :{STRING} Skog
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3187,3 +3190,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Växla g
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer, riktmärken eller kedjelinje
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Växla genomskinlighet för industrier
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner, kanske i framtiden även ögongodis
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Grupp {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Alla tåg
+STR_GROUP_ALL_ROADS                                             :Alla vägfordon
+STR_GROUP_ALL_SHIPS                                             :Alla skepp
+STR_GROUP_ALL_AIRCRAFTS                                         :Alla flygplan
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Lägg till delade fordon
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ta bort alla fordon
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tåg{P "" s}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vägfordon{P "" s}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Skepp{P "" s}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Flygplan
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Döp om en grupp
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Byt ut fordonen i "{GROUP}"
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan inte skapa grupp...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Kan inte ta bort denna grupp...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Kan inte döpa om grupp...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kan inte ta bort alla fordon från denna grupp...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kan inte lägga till fordonet till denna grupp...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Kan inte lägga till delade fordon till grupp...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupper - Klicka på en grupp för att lista alla fordon i denna grupp
+STR_GROUP_CREATE_TIP                                            :{BLACK}Klicka för att skapa en grupp
+STR_GROUP_DELETE_TIP                                            :{BLACK}Ta bort den valda gruppen
+STR_GROUP_RENAME_TIP                                            :{BLACK}Döp om den valda gruppen
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klicka för att skydda denna grupp från globalt autoutbyte
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Vinst detta år: {GREEN}{CURRENCY} {BLACK}(förra året: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Vinst detta år: {RED}{CURRENCY} {BLACK}(förra året: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Vinst detta år: {GREEN}{CURRENCY} {BLACK}(förra året: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Vinst detta år: {RED}{CURRENCY} {BLACK}(förra året: {RED}{CURRENCY}{BLACK})
+
+########

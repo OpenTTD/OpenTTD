@@ -1134,7 +1134,9 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Поз�
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При влачене, поставяне на семафори всеки: {ORANGE}{STRING} плочка(и)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Автоматично построй семафори преди: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Грацкиа план "няма повече пътища" е невалиден в сценарий редакторат
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Избери грацки пътформат: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :няма повече пътища
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :по-добри пътища
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
@@ -2010,6 +2012,8 @@ STR_SV_STNAME_UPPER                                             :Горно {STR
 STR_SV_STNAME_LOWER                                             :Долно {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Хелипорт
 STR_SV_STNAME_FOREST                                            :{STRING} Дървета
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3113,6 +3117,7 @@ STR_START_DATE_QUERY_CAPT                                       :{WHITE}Пром
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Мащаб предупреждение
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Прекаленото оразмеряване не е препорачително. Продължаване с генерацията?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Грацки план предупреждение
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Грацкиа план "няма повече пътища" не е препоръчан. Продължи със създаването?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Име на височинна карта:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Размер: {ORANGE}{NUM} x {NUM}
@@ -3185,3 +3190,13 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Изпо
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Използвай прозрачност за сгради като гари, депа, пътни точки и висящи жици
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Използвай прозрачност за мостове
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Използвай прозрачност за сгради като фарове и антени, може би в бъдеще за украси
+
+##### Mass Order
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+
+
+
+
+
+########

@@ -1100,6 +1100,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scorri la mappa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocità rotellina mappa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Metti in pausa all'inizio di una nuova partita: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilizza la lista veicoli avanzata: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automezzi per giocatore: {ORANGE}{STRING}
@@ -2013,6 +2014,8 @@ STR_SV_STNAME_UPPER                                             :Alta {STRING}
 STR_SV_STNAME_LOWER                                             :Bassa {STRING}
 STR_SV_STNAME_HELIPORT                                          :Eliporto di {STRING}
 STR_SV_STNAME_FOREST                                            :{STRING} Foresta
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3189,3 +3192,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Attiva/d
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Attiva/disattiva la trasparenza delle strutture edificabili come stazioni, depositi, waypoint e catenarie
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Attiva/disattiva la trasparenza dei ponti
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Attiva/disattiva la trasparenza di strutture come fari, antenne e altri futuri oggetti decorativi
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Gruppo {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Tutti i treni
+STR_GROUP_ALL_ROADS                                             :Tutti gli automezzi
+STR_GROUP_ALL_SHIPS                                             :Tutte le navi
+STR_GROUP_ALL_AIRCRAFTS                                         :Tutti gli aeromobili
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Aggiungi veicoli condivisi
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Rimuovi tutti i veicoli
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} tren{P o i}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} automezz{P o i}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} nav{P e i}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} aeromobil{P e i}
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rinomina un gruppo
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Rimpiazza i veicoli del {GROUP}
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Impossibile creare il gruppo...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Impossibile eliminare il gruppo...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Impossibile rinominare il gruppo...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Impossibile rimuovere tutti i veicoli del gruppo...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Impossibile aggiungere il veicolo al gruppo...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Impossibile aggiungere veicoli condivisi al gruppo...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gruppi - Fare clic su un gruppo per elencare tutti i suoi veicoli
+STR_GROUP_CREATE_TIP                                            :{BLACK}Fare clic per creare un gruppo
+STR_GROUP_DELETE_TIP                                            :{BLACK}Elimina il gruppo selezionato
+STR_GROUP_RENAME_TIP                                            :{BLACK}Rinomina il gruppo selezionato
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Fare clic per proteggere questo gruppo dal rimpiazzo automatico
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Profitto quest'anno: {GREEN}{CURRENCY} {BLACK}(anno scorso: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profitto quest'anno: {RED}{CURRENCY} {BLACK}(anno scorso: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profitto quest'anno: {GREEN}{CURRENCY} {BLACK}(anno scorso: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profitto quest'anno: {RED}{CURRENCY} {BLACK}(anno scorso: {RED}{CURRENCY}{BLACK})
+
+########
