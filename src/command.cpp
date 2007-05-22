@@ -174,6 +174,8 @@ DEF_COMMAND(CmdDeleteGroup);
 DEF_COMMAND(CmdAddVehicleGroup);
 DEF_COMMAND(CmdAddSharedVehicleGroup);
 DEF_COMMAND(CmdRemoveAllVehiclesGroup);
+DEF_COMMAND(CmdSetGroupReplaceProtection);
+
 /* The master command table */
 static const Command _command_proc_table[] = {
 	{CmdBuildRailroadTrack,                  0}, /*   0 */
@@ -325,6 +327,7 @@ static const Command _command_proc_table[] = {
 	{CmdAddVehicleGroup,                     0}, /* 123 */
 	{CmdAddSharedVehicleGroup,               0}, /* 124 */
 	{CmdRemoveAllVehiclesGroup,              0}, /* 125 */
+	{CmdSetGroupReplaceProtection,           0}, /* 126 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */

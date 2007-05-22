@@ -15,6 +15,8 @@
 #include "train.h"
 #include "aircraft.h"
 #include "string.h"
+#include "window.h"
+#include "vehicle_gui.h"
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one
@@ -73,6 +75,18 @@ void InitializeGroup(void)
 }
 
 
+static WindowClass GetWCForVT(VehicleType vt)
+{
+	switch (vt) {
+		default:
+		case VEH_TRAIN:    return WC_TRAINS_LIST;
+		case VEH_ROAD:     return WC_ROADVEH_LIST;
+		case VEH_SHIP:     return WC_SHIPS_LIST;
+		case VEH_AIRCRAFT: return WC_AIRCRAFT_LIST;
+	}
+}
+
+
 /**
  * Add a vehicle to a group
  * @param tile unused
@@ -92,6 +106,8 @@ int32 CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		g->string_id = STR_SV_GROUP_NAME;
 		g->replace_protection = false;
 		g->vehicle_type = vt;
+
+		InvalidateWindowData(GetWCForVT(vt), (vt << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
 	return 0;
@@ -131,9 +147,13 @@ int32 CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 
+		VehicleType vt = g->vehicle_type;
+
 		/* Delete the Replace Vehicle Windows */
 		DeleteWindowById(WC_REPLACE_VEHICLE, g->vehicle_type);
 		DeleteGroup(g);
+
+		InvalidateWindowData(GetWCForVT(vt), (vt << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
 	return 0;
@@ -151,18 +171,20 @@ int32 CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidGroupID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
 
+	Group *g = GetGroup(p1);
+	if (g->owner != _current_player) return CMD_ERROR;
+
 	/* Create the name */
 	StringID str = AllocateName(_cmd_text, 0);
 	if (str == STR_NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Group *g = GetGroup(p1);
-
 		/* Delete the old name */
 		DeleteName(g->string_id);
 		/* Assign the new one */
 		g->string_id = str;
-		g->owner = _current_player;
+
+		InvalidateWindowData(GetWCForVT(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
 	return 0;
@@ -182,6 +204,9 @@ int32 CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	GroupID new_g = p1;
 
 	if (!IsValidVehicleID(p2) || (!IsValidGroupID(new_g) && !IsDefaultGroupID(new_g))) return CMD_ERROR;
+
+	Group *g = GetGroup(new_g);
+	if (g->owner != _current_player) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p2);
 	if (v->owner != _current_player || (v->type == VEH_TRAIN && !IsFrontEngine(v))) return CMD_ERROR;
@@ -205,6 +230,7 @@ int32 CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		/* Update the Replace Vehicle Windows */
 		InvalidateWindow(WC_REPLACE_VEHICLE, v->type);
+		InvalidateWindowData(GetWCForVT(v->type), (v->type << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
 	return 0;
@@ -242,6 +268,8 @@ int32 CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 				}
 			}
 		}
+
+		InvalidateWindowData(GetWCForVT(type), (type << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
 	return 0;
@@ -260,6 +288,9 @@ int32 CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	VehicleType type = (VehicleType)p2;
 	if (!IsValidGroupID(p1) || !IsPlayerBuildableVehicleType(type)) return CMD_ERROR;
 
+	Group *g = GetGroup(p1);
+	if (g->owner != _current_player) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
 		GroupID old_g = p1;
 		uint subtype = (type == VEH_AIRCRAFT) ? AIR_AIRCRAFT : 0;
@@ -276,6 +307,33 @@ int32 CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 
 				CmdAddVehicleGroup(tile, flags, DEFAULT_GROUP, v->index);
 			}
 		}
+
+		InvalidateWindowData(GetWCForVT(type), (type << 11) | VLW_GROUP_LIST | _current_player);
+	}
+
+	return 0;
+}
+
+
+/**
+ * (Un)set global replace protection from a group
+ * @param tile unused
+ * @param p1   index of group array
+ * - p1 bit 0-15 : GroupID
+ * @param p2
+ * - p2 bit 0    : 1 to set or 0 to clear protection.
+ */
+int32 CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	if (!IsValidGroupID(p1)) return CMD_ERROR;
+
+	Group *g = GetGroup(p1);
+	if (g->owner != _current_player) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		g->replace_protection = HASBIT(p2, 0);
+
+		InvalidateWindowData(GetWCForVT(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
 	return 0;

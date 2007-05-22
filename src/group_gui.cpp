@@ -296,6 +296,13 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 	gv->vehicle_type = (VehicleType)GB(w->window_number, 11, 5);
 
 	switch(e->event) {
+		case WE_INVALIDATE_DATA:
+			gv->l.flags |= VL_REBUILD;
+			gl->l.flags |= VL_REBUILD;
+			UpdateGroupActionDropdown(w, gv->group_sel);
+			SetWindowDirty(w);
+			break;
+
 		case WE_CREATE:
 			CreateVehicleGroupWindow(w);
 			break;
@@ -543,22 +550,16 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				}
 
 				case GRP_WIDGET_CREATE_GROUP: // Create a new group
-					if (!CmdFailed(DoCommandP(0, gv->vehicle_type, 0, NULL, CMD_CREATE_GROUP | CMD_MSG(STR_GROUP_CAN_T_CREATE)))) {
-						gl->l.flags |= VL_REBUILD;
-						UpdateGroupActionDropdown(w, gv->group_sel);
-						SetWindowDirty(w);
-					}
+					DoCommandP(0, gv->vehicle_type, 0, NULL, CMD_CREATE_GROUP | CMD_MSG(STR_GROUP_CAN_T_CREATE));
 					break;
 
-				case GRP_WIDGET_DELETE_GROUP: // Delete the selected group
-					if (!CmdFailed(DoCommandP(0, gv->group_sel, 0, NULL, CMD_DELETE_GROUP | CMD_MSG(STR_GROUP_CAN_T_DELETE)))) {
-						gv->group_sel = DEFAULT_GROUP;
-						gv->l.flags |= VL_REBUILD;
-						gl->l.flags |= VL_REBUILD;
-						UpdateGroupActionDropdown(w, gv->group_sel);
-						SetWindowDirty(w);
-					}
+				case GRP_WIDGET_DELETE_GROUP: { // Delete the selected group
+					GroupID group = gv->group_sel;
+					gv->group_sel = DEFAULT_GROUP;
+
+					DoCommandP(0, group, 0, NULL, CMD_DELETE_GROUP | CMD_MSG(STR_GROUP_CAN_T_DELETE));
 					break;
+				}
 
 				case GRP_WIDGET_RENAME_GROUP: { // Rename the selected roup
 					assert(!IsDefaultGroupID(gv->group_sel));
@@ -593,9 +594,9 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				case GRP_WIDGET_REPLACE_PROTECTION:
 					if (!IsDefaultGroupID(gv->group_sel)) {
-						Group *g = GetGroup(gv->group_sel);
+						const Group *g = GetGroup(gv->group_sel);
 
-						g->replace_protection = !g->replace_protection;
+						DoCommandP(0, gv->group_sel, !g->replace_protection, NULL, CMD_SET_GROUP_REPLACE_PROTECTION);
 					}
 					break;
 			}
@@ -605,9 +606,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 		case WE_DRAGDROP: {
 			switch (e->we.click.widget) {
 				case GRP_WIDGET_ALL_VEHICLES: // All trains
-					if (!CmdFailed(DoCommandP(0, DEFAULT_GROUP , gv->vehicle_sel, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE)))) {
-						gv->l.flags |= VL_REBUILD;
-					}
+					DoCommandP(0, DEFAULT_GROUP, gv->vehicle_sel, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
 
 					gv->vehicle_sel = INVALID_VEHICLE;
 
@@ -629,9 +628,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					if (id_g >= gl->l.list_length) return;
 
-					if (!CmdFailed(DoCommandP(0,  gl->sort_list[id_g]->index , vindex, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE)))) {
-						gv->l.flags |= VL_REBUILD;
-					}
+					DoCommandP(0, gl->sort_list[id_g]->index, vindex, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
 
 					break;
 				}
@@ -673,10 +670,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			if (!StrEmpty(e->we.edittext.str)) {
 				_cmd_text = e->we.edittext.str;
 
-				if (!CmdFailed(DoCommandP(0, gv->group_sel, 0, NULL, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME)))) {
-					SetWindowDirty(w);
-					gl->l.flags |= VL_REBUILD;
-				}
+				DoCommandP(0, gv->group_sel, 0, NULL, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME));
 			}
 			break;
 
@@ -719,16 +713,12 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 						case 3: // Add shared Vehicles
 							assert(!IsDefaultGroupID(gv->group_sel));
 
-							if (!CmdFailed(DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_SHARED_VEHICLE)))) {
-								gv->l.flags |= VL_REBUILD;
-							}
+							DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
 							break;
 						case 4: // Remove all Vehicles from the selected group
 							assert(!IsDefaultGroupID(gv->group_sel));
 
-							if (!CmdFailed(DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES)))) {
-								gv->l.flags |= VL_REBUILD;
-							}
+							DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
 							break;
 						default: NOT_REACHED();
 					}
