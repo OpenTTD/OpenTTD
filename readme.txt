@@ -75,6 +75,7 @@ are:
   Linux                - SDL
   MacOS X (universal)  - Cocoa video and sound drivers (SDL works too, but not 100% and not as a universal binary)
   MorphOS              - SDL
+  OpenBSD              - SDL
   OS/2                 - SDL
   Windows              - Win32 GDI (faster) or SDL
 
@@ -173,6 +174,10 @@ FreeBSD:
   You need the port devel/sdl12 for a non-dedicated build.
   graphics/png is optional for screenshots in the PNG format.
   Use "gmake", but do a "./configure" before the first build.
+
+OpenBSD:
+  Use "gmake", but do a "./configure" before the first build.
+  Note that you need the port devel/sdl to compile OpenTTD.
 
 MorphOS:
   Use "make". However, for the first build one has to do a "./configure" first.

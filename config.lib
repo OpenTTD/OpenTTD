@@ -303,10 +303,10 @@ check_params() {
 		echo " Available options are: --endian=[AUTO|LE|BE]"
 		exit 1
 	fi
-	# OS only allows DETECT, UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
-	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP)$'`" ]; then
+	# OS only allows DETECT, UNIX, OSX, FREEBSD, OPENBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
+	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|OPENBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP)$'`" ]; then
 		echo "configure: error: invalid option --os=$os"
-		echo " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP]"
+		echo " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|OPENBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP]"
 		exit 1
 	fi
 	# enable_debug should be between 0 and 4
@@ -709,7 +709,7 @@ make_cflags_and_ldflags() {
 		fi
 	fi
 
-	if [ "$os" != "CYGWIN" ] && [ "$os" != "FREEBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "WINCE" ] && [ "$os" != "PSP" ]; then
+	if [ "$os" != "CYGWIN" ] && [ "$os" != "FREEBSD" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "WINCE" ] && [ "$os" != "PSP" ]; then
 		LIBS="$LIBS -lpthread"
 		LIBS="$LIBS -lrt"
 	fi
@@ -733,6 +733,10 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -Wno-strict-prototypes"
 	fi
 
+	if [ "$os" = "OPENBSD" ]; then
+		LIBS="$LIBS -pthread"
+	fi
+
 	if [ "$os" = "OSX" ]; then
 		LDFLAGS="$LDFLAGS -framework Cocoa"
 		if [ "$enable_dedicated" = "0" ]; then
@@ -745,7 +749,7 @@ make_cflags_and_ldflags() {
 	fi
 
 	# Most targets act like UNIX, just with some additions
-	if [ "$os" = "BEOS" ] || [ "$os" = "OSX" ] || [ "$os" = "MORPHOS" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "SUNOS" ] || [ "$os" = "OS2" ]; then
+	if [ "$os" = "BEOS" ] || [ "$os" = "OSX" ] || [ "$os" = "MORPHOS" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "SUNOS" ] || [ "$os" = "OS2" ]; then
 		CFLAGS="$CFLAGS -DUNIX"
 	fi
 	# And others like Windows
@@ -1239,13 +1243,14 @@ detect_awk() {
 
 detect_os() {
 	if [ "$os" = "DETECT" ]; then
-		# Detect UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
+		# Detect UNIX, OSX, FREEBSD, OPENBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
 
 		# Try first via dumpmachine, then via uname
 		os=`echo "$host" | tr '[A-Z]' '[a-z]' | $awk '
 					/linux/        { print "UNIX";    exit}
 					/darwin/       { print "OSX";     exit}
 					/freebsd/      { print "FREEBSD"; exit}
+					/openbsd/      { print "OPENBSD"; exit}
 					/morphos/      { print "MORPHOS"; exit}
 					/beos/         { print "BEOS";    exit}
 					/sunos/        { print "SUNOS";   exit}
@@ -1262,6 +1267,7 @@ detect_os() {
 					/linux/        { print "UNIX";    exit}
 					/darwin/       { print "OSX";     exit}
 					/freebsd/      { print "FREEBSD"; exit}
+					/openbsd/      { print "OPENBSD"; exit}
 					/morphos/      { print "MORPHOS"; exit}
 					/beos/         { print "BEOS";    exit}
 					/sunos/        { print "SUNOS";   exit}
@@ -1273,8 +1279,8 @@ detect_os() {
 
 		if [ -z "$os" ]; then
 			log 1 "detecting OS... none detected"
-			log 1 "I couldn't detect your OS. Please use --with-os=OS to force one"
-			log 1 "Allowed values are: UNIX, OSX, FREEBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP"
+			log 1 "I couldn't detect your OS. Please use --os=OS to force one"
+			log 1 "Allowed values are: UNIX, OSX, FREEBSD, OPENBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP"
 			exit 1
 		fi
 
@@ -1960,8 +1966,8 @@ showhelp() {
 	echo "  --awk=AWK                      the awk to use in configure [awk]"
 	echo "  --lipo=LIPO                    the lipo to use (OSX ONLY) [HOST-lipo]"
 	echo "  --os=OS                        the OS we are compiling for [DETECT]"
-	echo "                                 DETECT/UNIX/OSX/FREEBSD/MORPHOS/BEOS/"
-	echo "                                 SUNOS/CYGWIN/MINGW/OS2/WINCE/PSP"
+	echo "                                 DETECT/UNIX/OSX/FREEBSD/OPENBSD/MORPHOS/"
+	echo "                                 BEOS/SUNOS/CYGWIN/MINGW/OS2/WINCE/PSP"
 	echo "  --endian=ENDIAN                set the endian of the HOST (AUTO/LE/BE)"
 	echo "  --revision=rXXXX               overwrite the revision detection."
 	echo "                                 Use with care!"
