@@ -157,7 +157,7 @@ static void PlaceRail_Station(TileIndex tile)
 		VpSetPlaceSizingLimit(_patches.station_spread);
 	} else {
 		DoCommandP(tile,
-				_railstation.orientation | (_railstation.numtracks << 8) | (_railstation.platlength << 16),
+				_railstation.orientation | (_railstation.numtracks << 8) | (_railstation.platlength << 16) | (_ctrl_pressed << 24),
 				_cur_railtype | (_railstation.station_class << 8) | (_railstation.station_type << 16), CcStation,
 				CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 	}
@@ -665,7 +665,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	if (!_railstation.orientation) Swap(w, h);
 
 	DoCommandP(TileXY(sx, sy),
-			_railstation.orientation | (w << 8) | (h << 16),
+			_railstation.orientation | (w << 8) | (h << 16) | (_ctrl_pressed << 24),
 			_cur_railtype | (_railstation.station_class << 8) | (_railstation.station_type << 16), CcStation,
 			CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 }

@@ -1048,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nonunif
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allow drive-through road stops on town owned roads: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Allow building adjacent stations: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Always allow small airports: {ORANGE}{STRING1}
 
@@ -1588,6 +1589,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railway track w
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Railway track with pre-signals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Railway track with exit-signals
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Railway track with combo-signals
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must remove railway station first
 
 
 

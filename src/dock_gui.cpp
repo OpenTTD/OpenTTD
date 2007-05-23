@@ -38,7 +38,7 @@ void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceDocks_Dock(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_DOCK | CMD_AUTO | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE));
+	DoCommandP(tile, _ctrl_pressed, 0, CcBuildDocks, CMD_BUILD_DOCK | CMD_AUTO | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE));
 }
 
 static void PlaceDocks_Depot(TileIndex tile)

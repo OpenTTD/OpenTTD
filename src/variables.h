@@ -118,6 +118,7 @@ struct Patches {
 	byte se_flat_world_height;          // land height a flat world gets in SE
 	bool bribe;                         // enable bribing the local authority
 	bool nonuniform_stations;           // allow nonuniform train stations
+	bool adjacent_stations;             // allow stations to be built directly adjacent to other stations
 	bool always_small_airport;          // always allow small airports
 	bool realistic_acceleration;        // realistic acceleration for trains
 	bool wagon_speed_limits;            // enable wagon speed limits

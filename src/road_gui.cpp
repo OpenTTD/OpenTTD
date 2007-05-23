@@ -119,7 +119,7 @@ static void PlaceRoad_BusStation(TileIndex tile)
 	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, RoadStop::BUS, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(STR_CAN_T_REMOVE_BUS_STATION));
 	} else {
-		PlaceRoadStop(tile, ROADTYPES_ROAD << 2 | RoadStop::BUS, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
+		PlaceRoadStop(tile, (_ctrl_pressed << 5) | ROADTYPES_ROAD << 2 | RoadStop::BUS, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
 	}
 }
 
@@ -128,7 +128,7 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, RoadStop::TRUCK, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(STR_CAN_T_REMOVE_TRUCK_STATION));
 	} else {
-		PlaceRoadStop(tile, ROADTYPES_ROAD << 2 | RoadStop::TRUCK, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
+		PlaceRoadStop(tile, (_ctrl_pressed << 5) | ROADTYPES_ROAD << 2 | RoadStop::TRUCK, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
 	}
 }
 

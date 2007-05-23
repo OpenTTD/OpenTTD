@@ -794,6 +794,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
  * - p1 = (bit  0)    - orientation (Axis)
  * - p1 = (bit  8-15) - number of tracks
  * - p1 = (bit 16-23) - platform length
+ * - p1 = (bit 24)    - allow stations directly adjacent to other stations.
  * @param p2 various bitstuffed elements
  * - p2 = (bit  0- 3) - railtype (p2 & 0xF)
  * - p2 = (bit  8-15) - custom station class
@@ -838,9 +839,33 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (CmdFailed(ret)) return ret;
 	int32 cost = ret + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len;
 
-	// Make sure there are no similar stations around us.
-	Station *st = GetStationAround(tile_org, w_org, h_org, est);
-	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
+	Station *st = NULL;
+	bool check_surrounding = true;
+
+	if (_patches.adjacent_stations) {
+		if (est != INVALID_STATION) {
+			if (HASBIT(p1, 24)) {
+				/* You can't build an adjacent station over the top of one that
+				 * already exists. */
+				return_cmd_error(STR_MUST_REMOVE_RAILWAY_STATION_FIRST);
+			} else {
+				/* Extend the current station, and don't check whether it will
+				 * be near any other stations. */
+				st = GetStation(est);
+				check_surrounding = false;
+			}
+		} else {
+			/* There's no station here. Don't check the tiles surrounding this
+			 * one if the player wanted to build an adjacent station. */
+			if (HASBIT(p1, 24)) check_surrounding = false;
+		}
+	}
+
+	if (check_surrounding) {
+		// Make sure there are no similar stations around us.
+		st = GetStationAround(tile_org, w_org, h_org, est);
+		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
+	}
 
 	// See if there is a deleted station close to us.
 	if (st == NULL) st = GetClosestStationFromTile(tile_org);
@@ -1215,6 +1240,7 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
  *           bit 1: 0 for normal, 1 for drive-through
  *           bit 2..4: the roadtypes
+ *           bit 5: allow stations directly adjacent to other stations.
  */
 int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1255,8 +1281,12 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (CmdFailed(ret)) return ret;
 	int32 cost = build_over_road ? 0 : ret; // Don't add cost of clearing road when overbuilding
 
-	Station *st = GetStationAround(tile, 1, 1, INVALID_STATION);
-	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
+	Station *st = NULL;
+
+	if (!_patches.adjacent_stations || !HASBIT(p2, 5)) {
+		st = GetStationAround(tile, 1, 1, INVALID_STATION);
+		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
+	}
 
 	/* Find a station close to us */
 	if (st == NULL) st = GetClosestStationFromTile(tile);
@@ -1521,7 +1551,7 @@ static const byte * const _airport_sections[] = {
  * @param tile tile where airport will be built
  * @param flags operation to perform
  * @param p1 airport type, @see airport.h
- * @param p2 unused
+ * @param p2 (bit 0) - allow airports directly adjacent to other airports.
  */
 int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1559,8 +1589,12 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (CmdFailed(ret)) return ret;
 	int32 cost = ret;
 
-	Station *st = GetStationAround(tile, w, h, INVALID_STATION);
-	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
+	Station *st = NULL;
+
+	if (!_patches.adjacent_stations || !HASBIT(p2, 0)) {
+		st = GetStationAround(tile, w, h, INVALID_STATION);
+		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
+	}
 
 	/* Find a station close to us */
 	if (st == NULL) st = GetClosestStationFromTile(tile);
@@ -1805,7 +1839,7 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
 /** Build a dock/haven.
  * @param tile tile where dock will be built
  * @param flags operation to perform
- * @param p1 unused
+ * @param p1 (bit 0) - allow docks directly adjacent to other docks.
  * @param p2 unused
  */
 int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -1847,10 +1881,14 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	/* middle */
-	Station *st = GetStationAround(
-		tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
-		_dock_w_chk[direction], _dock_h_chk[direction], INVALID_STATION);
-	if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
+	Station *st = NULL;
+
+	if (!_patches.adjacent_stations || !HASBIT(p1, 0)) {
+		st = GetStationAround(
+				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
+				_dock_w_chk[direction], _dock_h_chk[direction], INVALID_STATION);
+		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
+	}
 
 	/* Find a station close to us */
 	if (st == NULL) st = GetClosestStationFromTile(tile);

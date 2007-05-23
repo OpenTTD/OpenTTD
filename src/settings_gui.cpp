@@ -625,6 +625,7 @@ static const char *_patches_stations[] = {
 	"modified_catchment",
 	"gradual_loading",
 	"road_stop_on_town_road",
+	"adjacent_stations",
 };
 
 static const char *_patches_economy[] = {

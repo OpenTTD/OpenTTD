@@ -1402,6 +1402,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, modified_catchment,      0, 0,  true,        STR_CONFIG_PATCHES_CATCHMENT,          NULL),
 	SDT_CONDBOOL(Patches, gradual_loading, 40, SL_MAX_VERSION, 0, 0,  true, STR_CONFIG_PATCHES_GRADUAL_LOADING,    NULL),
 	SDT_CONDBOOL(Patches, road_stop_on_town_road, 47, SL_MAX_VERSION, 0, 0, false, STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD, NULL),
+	SDT_CONDBOOL(Patches, adjacent_stations,      62, SL_MAX_VERSION, 0, 0, true,  STR_CONFIG_PATCHES_ADJACENT_STATIONS, NULL),
 
 	/***************************************************************************/
 	/* Economy section of the GUI-configure patches window */
