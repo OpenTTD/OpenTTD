@@ -382,12 +382,12 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_PLACE_OBJ:
-		VpStartPlaceSizing(e->we.place.tile, VPM_X_AND_Y_LIMITED);
+		VpStartPlaceSizing(e->we.place.tile, VPM_X_AND_Y_LIMITED, GUI_PlaceProc_None);
 		VpSetPlaceSizingLimit(20);
 		break;
 
 	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		return;
 
 	case WE_PLACE_MOUSEUP:

@@ -39,7 +39,7 @@ static void PlaceAirport(TileIndex tile)
 
 static void PlaceAir_DemolishArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, 4);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_None);
 }
 
 
@@ -91,7 +91,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		break;
 
 	case WE_PLACE_MOUSEUP:

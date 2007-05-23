@@ -45,18 +45,18 @@ void CcPlaySound1D(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void PlaceRoad_NE(TileIndex tile)
 {
 	_place_road_flag = (_tile_fract_coords.y >= 8) + 4;
-	VpStartPlaceSizing(tile, VPM_FIX_X);
+	VpStartPlaceSizing(tile, VPM_FIX_X, GUI_PlaceProc_None);
 }
 
 static void PlaceRoad_NW(TileIndex tile)
 {
 	_place_road_flag = (_tile_fract_coords.x >= 8) + 0;
-	VpStartPlaceSizing(tile, VPM_FIX_Y);
+	VpStartPlaceSizing(tile, VPM_FIX_Y, GUI_PlaceProc_None);
 }
 
 static void PlaceRoad_Bridge(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_OR_Y);
+	VpStartPlaceSizing(tile, VPM_X_OR_Y, GUI_PlaceProc_None);
 }
 
 
@@ -134,7 +134,7 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 
 static void PlaceRoad_DemolishArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, 4);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_None);
 }
 
 
@@ -270,47 +270,41 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		if (w != NULL) WP(w, def_d).close = true;
 		break;
 
-	case WE_PLACE_DRAG: {
-		int sel_method;
-		switch (e->we.place.userdata) {
-			case 1:
-				sel_method = VPM_FIX_X;
+	case WE_PLACE_DRAG:
+		switch (e->we.place.select_method) {
+			case VPM_FIX_X:
 				_place_road_flag = (_place_road_flag & ~2) | ((e->we.place.pt.y & 8) >> 2);
 				break;
 
-			case 2:
-				sel_method = VPM_FIX_Y;
+			case VPM_FIX_Y:
 				_place_road_flag = (_place_road_flag & ~2) | ((e->we.place.pt.x & 8) >> 2);
-				break;
-
-			case 4:
-				sel_method = VPM_X_AND_Y;
-				break;
-
-			default:
-				sel_method = VPM_X_OR_Y;
 				break;
 		}
 
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, sel_method);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		return;
-	}
 
 	case WE_PLACE_MOUSEUP:
 		if (e->we.place.pt.x != -1) {
 			TileIndex start_tile = e->we.place.starttile;
 			TileIndex end_tile = e->we.place.tile;
 
-			if (e->we.place.userdata == 0) {
-				ResetObjectToPlace();
-				ShowBuildBridgeWindow(start_tile, end_tile, 0x80 | RoadTypeToRoadTypes(_cur_roadtype));
-			} else if (e->we.place.userdata != 4) {
-				DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3), CcPlaySound1D,
-					_remove_button_clicked ?
-					CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1805_CAN_T_REMOVE_ROAD_FROM) :
-					CMD_BUILD_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1804_CAN_T_BUILD_ROAD_HERE));
-			} else {
-				DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
+			switch (e->we.place.select_method) {
+				case VPM_X_OR_Y:
+					ResetObjectToPlace();
+					ShowBuildBridgeWindow(start_tile, end_tile, 0x80 | RoadTypeToRoadTypes(_cur_roadtype));
+					break;
+
+				case VPM_X_AND_Y:
+					DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
+					break;
+
+				default:
+					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3), CcPlaySound1D,
+						_remove_button_clicked ?
+						CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1805_CAN_T_REMOVE_ROAD_FROM) :
+						CMD_BUILD_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1804_CAN_T_BUILD_ROAD_HERE));
+					break;
 			}
 		}
 		break;

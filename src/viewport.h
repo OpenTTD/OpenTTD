@@ -62,7 +62,7 @@ void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
 
-void VpStartPlaceSizing(TileIndex tile, int user);
+void VpStartPlaceSizing(TileIndex tile, byte method, byte process);
 void VpSetPresizeRange(uint from, uint to);
 void VpSetPlaceSizingLimit(int limit);
 
@@ -137,7 +137,9 @@ struct TileHighlightData {
 	WindowClass window_class;
 	WindowNumber window_number;
 
-	int userdata;
+	byte select_method;
+	byte select_proc;
+
 	TileIndex redsq;
 };
 

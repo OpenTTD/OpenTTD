@@ -68,14 +68,15 @@ void PlaceProc_DemolishArea(TileIndex tile);
 void PlaceProc_LevelLand(TileIndex tile);
 bool GUIPlaceProcDragXY(const WindowEvent *e);
 
-enum { // max 32 - 4 = 28 types
-	GUI_PlaceProc_DemolishArea    = 0 << 4,
-	GUI_PlaceProc_LevelArea       = 1 << 4,
-	GUI_PlaceProc_DesertArea      = 2 << 4,
-	GUI_PlaceProc_WaterArea       = 3 << 4,
-	GUI_PlaceProc_ConvertRailArea = 4 << 4,
-	GUI_PlaceProc_RockyArea       = 5 << 4,
-	GUI_PlaceProc_RemoveFromStation = 6 << 4,
+enum {
+	GUI_PlaceProc_None,
+	GUI_PlaceProc_DemolishArea,
+	GUI_PlaceProc_LevelArea,
+	GUI_PlaceProc_DesertArea,
+	GUI_PlaceProc_WaterArea,
+	GUI_PlaceProc_ConvertRailArea,
+	GUI_PlaceProc_RockyArea,
+	GUI_PlaceProc_RemoveFromStation,
 };
 
 /* misc_gui.cpp */

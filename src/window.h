@@ -135,7 +135,8 @@ struct WindowEvent {
 			Point pt;
 			TileIndex tile;
 			TileIndex starttile;
-			int userdata;
+			byte select_method;
+			byte select_proc;
 		} place;
 
 		struct {

@@ -72,7 +72,7 @@ static void PlaceRail_N(TileIndex tile)
 
 static void PlaceRail_NE(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_FIX_Y);
+	VpStartPlaceSizing(tile, VPM_FIX_Y, GUI_PlaceProc_None);
 }
 
 static void PlaceRail_E(TileIndex tile)
@@ -83,12 +83,12 @@ static void PlaceRail_E(TileIndex tile)
 
 static void PlaceRail_NW(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_FIX_X);
+	VpStartPlaceSizing(tile, VPM_FIX_X, GUI_PlaceProc_None);
 }
 
 static void PlaceRail_AutoRail(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_RAILDIRS);
+	VpStartPlaceSizing(tile, VPM_RAILDIRS, GUI_PlaceProc_None);
 }
 
 static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
@@ -151,9 +151,9 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void PlaceRail_Station(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_RemoveFromStation);
+		VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_RemoveFromStation);
 	} else if (_railstation.dragdrop) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED);
+		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, GUI_PlaceProc_None);
 		VpSetPlaceSizingLimit(_patches.station_spread);
 	} else {
 		DoCommandP(tile,
@@ -197,7 +197,7 @@ static void GenericPlaceSignals(TileIndex tile)
 
 static void PlaceRail_Bridge(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_OR_Y);
+	VpStartPlaceSizing(tile, VPM_X_OR_Y, GUI_PlaceProc_None);
 }
 
 void CcBuildRailTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
@@ -223,12 +223,12 @@ void PlaceProc_BuyLand(TileIndex tile)
 
 static void PlaceRail_ConvertRail(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_ConvertRailArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_ConvertRailArea);
 }
 
 static void PlaceRail_AutoSignals(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_SIGNALDIRS);
+	VpStartPlaceSizing(tile, VPM_SIGNALDIRS, GUI_PlaceProc_None);
 }
 
 
@@ -492,7 +492,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		return;
 
 	case WE_PLACE_DRAG: {
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata & 0xF);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		return;
 	}
 
@@ -501,30 +501,45 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 			TileIndex start_tile = e->we.place.starttile;
 			TileIndex end_tile = e->we.place.tile;
 
-			if (e->we.place.userdata == VPM_X_OR_Y) {
-				ResetObjectToPlace();
-				ShowBuildBridgeWindow(start_tile, end_tile, _cur_railtype);
-			} else if (e->we.place.userdata == VPM_RAILDIRS) {
-				bool old = _remove_button_clicked;
-				if (_ctrl_pressed) _remove_button_clicked = true;
-				HandleAutodirPlacement();
-				_remove_button_clicked = old;
-			} else if (e->we.place.userdata == VPM_SIGNALDIRS) {
-				HandleAutoSignalPlacement();
-			} else if ((e->we.place.userdata & 0xF) == VPM_X_AND_Y) {
-				if (GUIPlaceProcDragXY(e)) break;
+			switch (e->we.place.select_method) {
+				case VPM_X_OR_Y:
+					ResetObjectToPlace();
+					ShowBuildBridgeWindow(start_tile, end_tile, _cur_railtype);
+					break;
 
-				if ((e->we.place.userdata >> 4) == GUI_PlaceProc_RemoveFromStation >> 4) {
-					DoCommandP(end_tile, start_tile, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
+				case VPM_RAILDIRS: {
+					bool old = _remove_button_clicked;
+					if (_ctrl_pressed) _remove_button_clicked = true;
+					HandleAutodirPlacement();
+					_remove_button_clicked = old;
+					break;
 				}
 
-				if ((e->we.place.userdata >> 4) == GUI_PlaceProc_ConvertRailArea >> 4) {
-					DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
-				}
-			} else if (e->we.place.userdata == VPM_X_AND_Y_LIMITED) {
-				HandleStationPlacement(start_tile, end_tile);
-			} else {
-				DoRailroadTrack(e->we.place.userdata & 1);
+				case VPM_SIGNALDIRS:
+					HandleAutoSignalPlacement();
+					break;
+
+				case VPM_X_AND_Y:
+					if (GUIPlaceProcDragXY(e)) break;
+
+					switch (e->we.place.select_proc) {
+						case GUI_PlaceProc_RemoveFromStation:
+							DoCommandP(end_tile, start_tile, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
+							break;
+
+						case GUI_PlaceProc_ConvertRailArea:
+							DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
+							break;
+					}
+					break;
+
+				case VPM_X_AND_Y_LIMITED:
+					HandleStationPlacement(start_tile, end_tile);
+					break;
+
+				default:
+					DoRailroadTrack(e->we.place.select_method == VPM_FIX_Y ? TRACK_X : TRACK_Y);
+					break;
 			}
 		}
 		break;

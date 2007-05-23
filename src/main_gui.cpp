@@ -1131,7 +1131,7 @@ static void PlaceProc_LowerBigLand(TileIndex tile)
 
 static void PlaceProc_RockyArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_RockyArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_RockyArea);
 }
 
 static void PlaceProc_LightHouse(TileIndex tile)
@@ -1158,12 +1158,12 @@ static void PlaceProc_Transmitter(TileIndex tile)
 
 static void PlaceProc_DesertArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_DesertArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_DesertArea);
 }
 
 static void PlaceProc_WaterArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_WaterArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_WaterArea);
 }
 
 static const Widget _scen_edit_land_gen_widgets[] = {
@@ -1377,12 +1377,12 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		_place_proc(e->we.place.tile);
 		break;
 	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata & 0xF);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		break;
 
 	case WE_PLACE_MOUSEUP:
 		if (e->we.place.pt.x != -1) {
-			if ((e->we.place.userdata & 0xF) == VPM_X_AND_Y) // dragged actions
+			if (e->we.place.select_method == VPM_X_AND_Y) // dragged actions
 				GUIPlaceProcDragXY(e);
 		}
 		break;

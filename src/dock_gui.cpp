@@ -53,12 +53,12 @@ static void PlaceDocks_Buoy(TileIndex tile)
 
 static void PlaceDocks_DemolishArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_DemolishArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_DemolishArea);
 }
 
 static void PlaceDocks_BuildCanal(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_OR_Y);
+	VpStartPlaceSizing(tile, VPM_X_OR_Y, GUI_PlaceProc_None);
 }
 
 static void PlaceDocks_BuildLock(TileIndex tile)
@@ -147,16 +147,20 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_DRAG: {
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		return;
 	}
 
 	case WE_PLACE_MOUSEUP:
 		if (e->we.place.pt.x != -1) {
-			if ((e->we.place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
-				GUIPlaceProcDragXY(e);
-			} else if (e->we.place.userdata == VPM_X_OR_Y) {
-				DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+			switch (e->we.place.select_method) {
+				case VPM_X_AND_Y:
+					GUIPlaceProcDragXY(e);
+					break;
+				case VPM_X_OR_Y:
+					DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+					break;
+				default: break;
 			}
 		}
 		break;

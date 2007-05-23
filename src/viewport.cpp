@@ -1985,9 +1985,10 @@ void UpdateTileSelection()
 }
 
 /** highlighting tiles while only going over them with the mouse */
-void VpStartPlaceSizing(TileIndex tile, int user)
+void VpStartPlaceSizing(TileIndex tile, byte method, byte process)
 {
-	_thd.userdata = user;
+	_thd.select_method = method;
+	_thd.select_proc   = process;
 	_thd.selend.x = TileX(tile) * TILE_SIZE;
 	_thd.selstart.x = TileX(tile) * TILE_SIZE;
 	_thd.selend.y = TileY(tile) * TILE_SIZE;
@@ -2445,7 +2446,8 @@ bool VpHandlePlaceSizingDrag()
 
 	if (_special_mouse_mode != WSM_SIZING) return true;
 
-	e.we.place.userdata = _thd.userdata;
+	e.we.place.select_method = _thd.select_method;
+	e.we.place.select_proc   = _thd.select_proc;
 
 	/* stop drag mode if the window has been closed */
 	w = FindWindowById(_thd.window_class, _thd.window_number);
@@ -2467,7 +2469,7 @@ bool VpHandlePlaceSizingDrag()
 	_special_mouse_mode = WSM_NONE;
 	if (_thd.next_drawstyle == HT_RECT) {
 		_thd.place_mode = VHM_RECT;
-	} else if ((e.we.place.userdata & 0xF) == VPM_SIGNALDIRS) { // some might call this a hack... -- Dominik
+	} else if (e.we.place.select_method == VPM_SIGNALDIRS) { // some might call this a hack... -- Dominik
 		_thd.place_mode = VHM_RECT;
 	} else if (_thd.next_drawstyle & HT_LINE) {
 		_thd.place_mode = VHM_RAIL;

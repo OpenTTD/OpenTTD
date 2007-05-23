@@ -104,23 +104,24 @@ bool GUIPlaceProcDragXY(const WindowEvent *e)
 	TileIndex start_tile = e->we.place.starttile;
 	TileIndex end_tile = e->we.place.tile;
 
-	switch (e->we.place.userdata >> 4) {
-	case GUI_PlaceProc_DemolishArea >> 4:
-		DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
-		break;
-	case GUI_PlaceProc_LevelArea >> 4:
-		DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
-		break;
-	case GUI_PlaceProc_RockyArea >> 4:
-		GenerateRockyArea(end_tile, start_tile);
-		break;
-	case GUI_PlaceProc_DesertArea >> 4:
-		GenerateDesertArea(end_tile, start_tile);
-		break;
-	case GUI_PlaceProc_WaterArea >> 4:
-		DoCommandP(end_tile, start_tile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
-		break;
-	default: return false;
+	switch (e->we.place.select_proc) {
+		case GUI_PlaceProc_DemolishArea:
+			DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
+			break;
+		case GUI_PlaceProc_LevelArea:
+			DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
+			break;
+		case GUI_PlaceProc_RockyArea:
+			GenerateRockyArea(end_tile, start_tile);
+			break;
+		case GUI_PlaceProc_DesertArea:
+			GenerateDesertArea(end_tile, start_tile);
+			break;
+		case GUI_PlaceProc_WaterArea:
+			DoCommandP(end_tile, start_tile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+			break;
+		default:
+			return false;
 	}
 
 	return true;
@@ -140,7 +141,7 @@ static const uint16 _terraform_keycodes[] = {
 
 void PlaceProc_DemolishArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_DemolishArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_DemolishArea);
 }
 
 static void PlaceProc_RaiseLand(TileIndex tile)
@@ -161,7 +162,7 @@ static void PlaceProc_LowerLand(TileIndex tile)
 
 void PlaceProc_LevelLand(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_LevelArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_LevelArea);
 }
 
 static void TerraformClick_Lower(Window *w)
@@ -239,12 +240,11 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		return;
 
 	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata & 0xF);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		break;
 
 	case WE_PLACE_MOUSEUP:
-		if (e->we.place.pt.x != -1 &&
-				(e->we.place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
+		if (e->we.place.pt.x != -1 && e->we.place.select_method == VPM_X_AND_Y) {
 			GUIPlaceProcDragXY(e);
 		}
 		break;
