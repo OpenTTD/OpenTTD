@@ -72,7 +72,7 @@ static void PlaceRail_N(TileIndex tile)
 
 static void PlaceRail_NE(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_FIX_Y, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_RAIL_NE);
 }
 
 static void PlaceRail_E(TileIndex tile)
@@ -83,12 +83,12 @@ static void PlaceRail_E(TileIndex tile)
 
 static void PlaceRail_NW(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_FIX_X, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_RAIL_NW);
 }
 
 static void PlaceRail_AutoRail(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_RAILDIRS, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_AUTORAIL);
 }
 
 static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
@@ -151,9 +151,9 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void PlaceRail_Station(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_RemoveFromStation);
+		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
 	} else if (_railstation.dragdrop) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, GUI_PlaceProc_None);
+		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
 		VpSetPlaceSizingLimit(_patches.station_spread);
 	} else {
 		DoCommandP(tile,
@@ -197,7 +197,7 @@ static void GenericPlaceSignals(TileIndex tile)
 
 static void PlaceRail_Bridge(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_OR_Y, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
 }
 
 void CcBuildRailTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
@@ -223,12 +223,12 @@ void PlaceProc_BuyLand(TileIndex tile)
 
 static void PlaceRail_ConvertRail(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_ConvertRailArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CONVERT_RAIL);
 }
 
 static void PlaceRail_AutoSignals(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_SIGNALDIRS, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
 }
 
 
@@ -501,13 +501,13 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 			TileIndex start_tile = e->we.place.starttile;
 			TileIndex end_tile = e->we.place.tile;
 
-			switch (e->we.place.select_method) {
-				case VPM_X_OR_Y:
+			switch (e->we.place.select_proc) {
+				case DDSP_BUILD_BRIDGE:
 					ResetObjectToPlace();
 					ShowBuildBridgeWindow(start_tile, end_tile, _cur_railtype);
 					break;
 
-				case VPM_RAILDIRS: {
+				case DDSP_PLACE_AUTORAIL: {
 					bool old = _remove_button_clicked;
 					if (_ctrl_pressed) _remove_button_clicked = true;
 					HandleAutodirPlacement();
@@ -515,30 +515,29 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 
-				case VPM_SIGNALDIRS:
+				case DDSP_BUILD_SIGNALS:
 					HandleAutoSignalPlacement();
 					break;
 
-				case VPM_X_AND_Y:
-					if (GUIPlaceProcDragXY(e)) break;
-
-					switch (e->we.place.select_proc) {
-						case GUI_PlaceProc_RemoveFromStation:
-							DoCommandP(end_tile, start_tile, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
-							break;
-
-						case GUI_PlaceProc_ConvertRailArea:
-							DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
-							break;
-					}
+				case DDSP_DEMOLISH_AREA:
+					GUIPlaceProcDragXY(e);
 					break;
 
-				case VPM_X_AND_Y_LIMITED:
+				case DDSP_REMOVE_STATION:
+					DoCommandP(end_tile, start_tile, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
+					break;
+
+				case DDSP_CONVERT_RAIL:
+					DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
+					break;
+
+				case DDSP_BUILD_STATION:
 					HandleStationPlacement(start_tile, end_tile);
 					break;
 
-				default:
-					DoRailroadTrack(e->we.place.select_method == VPM_FIX_Y ? TRACK_X : TRACK_Y);
+				case DDSP_PLACE_RAIL_NE:
+				case DDSP_PLACE_RAIL_NW:
+					DoRailroadTrack(e->we.place.select_proc == DDSP_PLACE_RAIL_NE ? TRACK_X : TRACK_Y);
 					break;
 			}
 		}

@@ -68,15 +68,29 @@ void PlaceProc_DemolishArea(TileIndex tile);
 void PlaceProc_LevelLand(TileIndex tile);
 bool GUIPlaceProcDragXY(const WindowEvent *e);
 
+/** Drag and drop selection process, or, what to do with an area of land when
+ * you've selected it. */
 enum {
-	GUI_PlaceProc_None,
-	GUI_PlaceProc_DemolishArea,
-	GUI_PlaceProc_LevelArea,
-	GUI_PlaceProc_DesertArea,
-	GUI_PlaceProc_WaterArea,
-	GUI_PlaceProc_ConvertRailArea,
-	GUI_PlaceProc_RockyArea,
-	GUI_PlaceProc_RemoveFromStation,
+	DDSP_DEMOLISH_AREA,
+	DDSP_LEVEL_AREA,
+	DDSP_CREATE_DESERT,
+	DDSP_CREATE_ROCKS,
+	DDSP_CREATE_WATER,
+	DDSP_PLANT_TREES,
+	DDSP_BUILD_BRIDGE,
+
+	/* Rail specific actions */
+	DDSP_PLACE_RAIL_NE,
+	DDSP_PLACE_RAIL_NW,
+	DDSP_PLACE_AUTORAIL,
+	DDSP_BUILD_SIGNALS,
+	DDSP_BUILD_STATION,
+	DDSP_REMOVE_STATION,
+	DDSP_CONVERT_RAIL,
+
+	/* Road specific actions */
+	DDSP_PLACE_ROAD_NE,
+	DDSP_PLACE_ROAD_NW,
 };
 
 /* misc_gui.cpp */

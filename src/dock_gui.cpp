@@ -53,12 +53,12 @@ static void PlaceDocks_Buoy(TileIndex tile)
 
 static void PlaceDocks_DemolishArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_DemolishArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
 }
 
 static void PlaceDocks_BuildCanal(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_OR_Y, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_CREATE_WATER);
 }
 
 static void PlaceDocks_BuildLock(TileIndex tile)
@@ -153,11 +153,11 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_MOUSEUP:
 		if (e->we.place.pt.x != -1) {
-			switch (e->we.place.select_method) {
-				case VPM_X_AND_Y:
+			switch (e->we.place.select_proc) {
+				case DDSP_DEMOLISH_AREA:
 					GUIPlaceProcDragXY(e);
 					break;
-				case VPM_X_OR_Y:
+				case DDSP_CREATE_WATER:
 					DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
 					break;
 				default: break;

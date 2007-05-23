@@ -1131,7 +1131,7 @@ static void PlaceProc_LowerBigLand(TileIndex tile)
 
 static void PlaceProc_RockyArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_RockyArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_ROCKS);
 }
 
 static void PlaceProc_LightHouse(TileIndex tile)
@@ -1158,12 +1158,12 @@ static void PlaceProc_Transmitter(TileIndex tile)
 
 static void PlaceProc_DesertArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_DesertArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
 }
 
 static void PlaceProc_WaterArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_WaterArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_WATER);
 }
 
 static const Widget _scen_edit_land_gen_widgets[] = {
@@ -1382,8 +1382,13 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_MOUSEUP:
 		if (e->we.place.pt.x != -1) {
-			if (e->we.place.select_method == VPM_X_AND_Y) // dragged actions
-				GUIPlaceProcDragXY(e);
+			switch (e->we.place.select_proc) {
+				case DDSP_CREATE_ROCKS:
+				case DDSP_CREATE_DESERT:
+				case DDSP_CREATE_WATER:
+					GUIPlaceProcDragXY(e);
+					break;
+			}
 		}
 		break;
 

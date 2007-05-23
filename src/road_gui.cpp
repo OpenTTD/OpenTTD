@@ -45,18 +45,18 @@ void CcPlaySound1D(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void PlaceRoad_NE(TileIndex tile)
 {
 	_place_road_flag = (_tile_fract_coords.y >= 8) + 4;
-	VpStartPlaceSizing(tile, VPM_FIX_X, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_ROAD_NE);
 }
 
 static void PlaceRoad_NW(TileIndex tile)
 {
 	_place_road_flag = (_tile_fract_coords.x >= 8) + 0;
-	VpStartPlaceSizing(tile, VPM_FIX_Y, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_ROAD_NW);
 }
 
 static void PlaceRoad_Bridge(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_OR_Y, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
 }
 
 
@@ -134,7 +134,7 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 
 static void PlaceRoad_DemolishArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
 }
 
 
@@ -271,12 +271,12 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_DRAG:
-		switch (e->we.place.select_method) {
-			case VPM_FIX_X:
+		switch (e->we.place.select_proc) {
+			case DDSP_PLACE_ROAD_NE:
 				_place_road_flag = (_place_road_flag & ~2) | ((e->we.place.pt.y & 8) >> 2);
 				break;
 
-			case VPM_FIX_Y:
+			case DDSP_PLACE_ROAD_NW:
 				_place_road_flag = (_place_road_flag & ~2) | ((e->we.place.pt.x & 8) >> 2);
 				break;
 		}
@@ -289,17 +289,18 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 			TileIndex start_tile = e->we.place.starttile;
 			TileIndex end_tile = e->we.place.tile;
 
-			switch (e->we.place.select_method) {
-				case VPM_X_OR_Y:
+			switch (e->we.place.select_proc) {
+				case DDSP_BUILD_BRIDGE:
 					ResetObjectToPlace();
 					ShowBuildBridgeWindow(start_tile, end_tile, 0x80 | RoadTypeToRoadTypes(_cur_roadtype));
 					break;
 
-				case VPM_X_AND_Y:
+				case DDSP_DEMOLISH_AREA:
 					DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 					break;
 
-				default:
+				case DDSP_PLACE_ROAD_NE:
+				case DDSP_PLACE_ROAD_NW:
 					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3), CcPlaySound1D,
 						_remove_button_clicked ?
 						CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1805_CAN_T_REMOVE_ROAD_FROM) :

@@ -105,19 +105,19 @@ bool GUIPlaceProcDragXY(const WindowEvent *e)
 	TileIndex end_tile = e->we.place.tile;
 
 	switch (e->we.place.select_proc) {
-		case GUI_PlaceProc_DemolishArea:
+		case DDSP_DEMOLISH_AREA:
 			DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 			break;
-		case GUI_PlaceProc_LevelArea:
+		case DDSP_LEVEL_AREA:
 			DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
 			break;
-		case GUI_PlaceProc_RockyArea:
+		case DDSP_CREATE_ROCKS:
 			GenerateRockyArea(end_tile, start_tile);
 			break;
-		case GUI_PlaceProc_DesertArea:
+		case DDSP_CREATE_DESERT:
 			GenerateDesertArea(end_tile, start_tile);
 			break;
-		case GUI_PlaceProc_WaterArea:
+		case DDSP_CREATE_WATER:
 			DoCommandP(end_tile, start_tile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
 			break;
 		default:
@@ -141,7 +141,7 @@ static const uint16 _terraform_keycodes[] = {
 
 void PlaceProc_DemolishArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_DemolishArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
 }
 
 static void PlaceProc_RaiseLand(TileIndex tile)
@@ -162,7 +162,7 @@ static void PlaceProc_LowerLand(TileIndex tile)
 
 void PlaceProc_LevelLand(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_LevelArea);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
 }
 
 static void TerraformClick_Lower(Window *w)
@@ -244,8 +244,13 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_MOUSEUP:
-		if (e->we.place.pt.x != -1 && e->we.place.select_method == VPM_X_AND_Y) {
-			GUIPlaceProcDragXY(e);
+		if (e->we.place.pt.x != -1) {
+			switch (e->we.place.select_proc) {
+				case DDSP_DEMOLISH_AREA:
+				case DDSP_LEVEL_AREA:
+					GUIPlaceProcDragXY(e);
+					break;
+			}
 		}
 		break;
 

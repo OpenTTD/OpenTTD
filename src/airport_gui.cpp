@@ -39,7 +39,7 @@ static void PlaceAirport(TileIndex tile)
 
 static void PlaceAir_DemolishArea(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, GUI_PlaceProc_None);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
 }
 
 
@@ -95,7 +95,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_MOUSEUP:
-		if (e->we.place.pt.x != -1) {
+		if (e->we.place.pt.x != -1 && e->we.place.select_proc == DDSP_DEMOLISH_AREA) {
 			DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 		}
 		break;
