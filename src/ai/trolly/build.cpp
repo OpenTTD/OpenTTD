@@ -42,9 +42,9 @@ int AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte 
 		return AI_DoCommand(tile, direction + (numtracks << 8) + (length << 16), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
 
 	if (type == AI_BUS)
-		return AI_DoCommand(tile, direction, RoadStop::BUS, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
+		return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | RoadStop::BUS, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 
-	return AI_DoCommand(tile, direction, RoadStop::TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
+	return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | RoadStop::TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 }
 
 
@@ -75,7 +75,7 @@ int AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag)
 	if (p->ainew.tbt == AI_TRAIN) {
 		return AI_DoCommand(tile_a, tile_b, (0x00 << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
 	} else {
-		return AI_DoCommand(tile_a, tile_b, (0x80 << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
+		return AI_DoCommand(tile_a, tile_b, ((0x80 | ROADTYPES_ROAD) << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
 	}
 }
 
@@ -162,7 +162,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 	} else {
 		// Tunnel code
 		if ((AI_PATHFINDER_FLAG_TUNNEL & route_extra[part]) != 0) {
-			cost += AI_DoCommand(route[part], 0x200, 0, flag, CMD_BUILD_TUNNEL);
+			cost += AI_DoCommand(route[part], 0x200 | ROADTYPES_ROAD, 0, flag, CMD_BUILD_TUNNEL);
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {

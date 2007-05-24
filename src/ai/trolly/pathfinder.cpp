@@ -237,15 +237,8 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 					if (IsTunnel(atile)) {
 						if (GetTunnelDirection(atile) != i) continue;
 					} else {
-						if ((_m[atile].m5 & 1) != DiagDirToAxis(i)) continue;
+						if (GetBridgeRampDirection(atile) != i) continue;
 					}
-				}
-			}
-			// But also if we are on a bridge, we can only move a certain direction
-			if (!PathFinderInfo->rail_or_road && IsRoad(ctile)) {
-				if (IsTileType(ctile, MP_TUNNELBRIDGE)) {
-					// An existing bridge/tunnel... let's test the direction ;)
-					if ((_m[ctile].m5 & 1) != (i & 1)) continue;
 				}
 			}
 
@@ -291,9 +284,9 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 							dir = 0;
 						} else {
 							// It already has road.. check if we miss any bits!
-							if ((_m[ctile].m5 & dir) != dir) {
+							if ((GetRoadBits(ctile, ROADTYPE_ROAD) & dir) != dir) {
 								// We do miss some pieces :(
-								dir &= ~_m[ctile].m5;
+								dir &= ~GetRoadBits(ctile, ROADTYPE_ROAD);
 							} else {
 								dir = 0;
 							}
