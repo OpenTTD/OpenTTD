@@ -70,6 +70,32 @@ void CcBuildRoadTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
+/** Structure holding information per roadtype for several functions */
+struct RoadTypeInfo {
+	StringID err_build_road;        ///< Building a normal piece of road
+	StringID err_remove_road;       ///< Removing a normal piece of road
+	StringID err_depot;             ///< Building a depot
+	StringID err_build_station[2];  ///< Building a bus or truck station
+	StringID err_remove_station[2]; ///< Removing of a bus or truck station
+
+	SpriteID cursor_nesw;           ///< Cursor for building NE and SW bits
+	SpriteID cursor_nwse;           ///< Cursor for building NW and SE bits
+};
+
+/** What errors/cursors must be shown for several types of roads */
+static const RoadTypeInfo _road_type_infos[] = {
+	{
+		STR_1804_CAN_T_BUILD_ROAD_HERE,
+		STR_1805_CAN_T_REMOVE_ROAD_FROM,
+		STR_1807_CAN_T_BUILD_ROAD_VEHICLE,
+		{ STR_1808_CAN_T_BUILD_BUS_STATION, STR_1809_CAN_T_BUILD_TRUCK_STATION },
+		{ STR_CAN_T_REMOVE_BUS_STATION,     STR_CAN_T_REMOVE_TRUCK_STATION     },
+
+		SPR_CURSOR_ROAD_NESW,
+		SPR_CURSOR_ROAD_NWSE,
+	},
+};
+
 static void PlaceRoad_Tunnel(TileIndex tile)
 {
 	DoCommandP(tile, 0x200 | RoadTypeToRoadTypes(_cur_roadtype), 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
@@ -100,7 +126,7 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRoad_Depot(TileIndex tile)
 {
-	DoCommandP(tile, _cur_roadtype << 2 | _road_depot_orientation, 0, CcRoadDepot, CMD_BUILD_ROAD_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1807_CAN_T_BUILD_ROAD_VEHICLE));
+	DoCommandP(tile, _cur_roadtype << 2 | _road_depot_orientation, 0, CcRoadDepot, CMD_BUILD_ROAD_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_depot));
 }
 
 static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
@@ -117,18 +143,18 @@ static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
 static void PlaceRoad_BusStation(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		DoCommandP(tile, 0, RoadStop::BUS, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(STR_CAN_T_REMOVE_BUS_STATION));
+		DoCommandP(tile, 0, RoadStop::BUS, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[RoadStop::BUS]));
 	} else {
-		PlaceRoadStop(tile, (_ctrl_pressed << 5) | ROADTYPES_ROAD << 2 | RoadStop::BUS, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
+		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | RoadStop::BUS, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[RoadStop::BUS]));
 	}
 }
 
 static void PlaceRoad_TruckStation(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		DoCommandP(tile, 0, RoadStop::TRUCK, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(STR_CAN_T_REMOVE_TRUCK_STATION));
+		DoCommandP(tile, 0, RoadStop::TRUCK, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[RoadStop::TRUCK]));
 	} else {
-		PlaceRoadStop(tile, (_ctrl_pressed << 5) | ROADTYPES_ROAD << 2 | RoadStop::TRUCK, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
+		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | RoadStop::TRUCK, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[RoadStop::TRUCK]));
 	}
 }
 
@@ -155,12 +181,12 @@ typedef void OnButtonClick(Window *w);
 
 static void BuildRoadClick_NE(Window *w)
 {
-	HandlePlacePushButton(w, RTW_ROAD_X, SPR_CURSOR_ROAD_NESW, 1, PlaceRoad_NE);
+	HandlePlacePushButton(w, RTW_ROAD_X, _road_type_infos[_cur_roadtype].cursor_nesw, 1, PlaceRoad_NE);
 }
 
 static void BuildRoadClick_NW(Window *w)
 {
-	HandlePlacePushButton(w, RTW_ROAD_Y, SPR_CURSOR_ROAD_NWSE, 1, PlaceRoad_NW);
+	HandlePlacePushButton(w, RTW_ROAD_Y, _road_type_infos[_cur_roadtype].cursor_nwse, 1, PlaceRoad_NW);
 }
 
 
@@ -303,8 +329,8 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 				case DDSP_PLACE_ROAD_NW:
 					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3), CcPlaySound1D,
 						_remove_button_clicked ?
-						CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1805_CAN_T_REMOVE_ROAD_FROM) :
-						CMD_BUILD_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1804_CAN_T_BUILD_ROAD_HERE));
+						CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
+						CMD_BUILD_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road));
 					break;
 			}
 		}
