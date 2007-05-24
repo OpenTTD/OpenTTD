@@ -725,7 +725,7 @@ void TileLoop_Water(TileIndex tile)
 	}
 }
 
-static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
+static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode, uint sub_mode)
 {
 	static const byte coast_tracks[] = {0, 32, 4, 0, 16, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0};
 

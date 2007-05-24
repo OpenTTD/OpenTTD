@@ -173,6 +173,9 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->u.road.state = RVSB_IN_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
+		v->u.road.roadtype = ROADTYPE_ROAD;
+		v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
+
 		v->spritenum = rvi->image_index;
 		v->cargo_type = rvi->cargo_type;
 		v->cargo_subtype = 0;
@@ -353,7 +356,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 		/* See where we are now */
 		Trackdir trackdir = GetVehicleTrackdir(v);
 
-		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
+		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPE);
 		if (ftd.best_bird_dist == 0) {
 			return GetDepotByTile(ftd.node.tile); /* Target found */
 		} else {
@@ -368,7 +371,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 
 		/* search in all directions */
 		for (DiagDirection i = DIAGDIR_BEGIN; i != DIAGDIR_END; i++) {
-			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, i, EnumRoadSignalFindDepot, NULL, &rfdd);
+			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, v->u.road.compatible_roadtypes, i, EnumRoadSignalFindDepot, NULL, &rfdd);
 		}
 
 		if (rfdd.best_length == (uint)-1) return NULL;
@@ -933,7 +936,7 @@ static bool FindRoadVehToOvertake(OvertakeData *od)
 {
 	uint32 bits;
 
-	bits = GetTileTrackStatus(od->tile, TRANSPORT_ROAD) & 0x3F;
+	bits = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, od->v->u.road.compatible_roadtypes) & 0x3F;
 
 	if (!(od->tilebits & bits) || (bits & 0x3C) || (bits & 0x3F3F0000))
 		return true;
@@ -959,7 +962,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */
 	if (v->u.road.state >= RVSB_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->u.road.state & RVSB_TRACKDIR_MASK))) return;
 
-	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD) & 0x3F;
+	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes) & 0x3F;
 	if ((tt & 3) == 0) return;
 	if ((tt & 0x3C) != 0) return;
 
@@ -1030,11 +1033,11 @@ static bool EnumRoadTrackFindDist(TileIndex tile, void* data, Trackdir trackdir,
 	return false;
 }
 
-static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypeMask railtypes)
+static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypeMask railtypes)
 {
 
 	void* perf = NpfBeginInterval();
-	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, target, type, owner, railtypes);
+	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, target, type, sub_type, owner, railtypes);
 	int t = NpfEndInterval(perf);
 	DEBUG(yapf, 4, "[NPFR] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
 	return ret;
@@ -1056,7 +1059,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 	FindRoadToChooseData frd;
 	Trackdir best_track;
 
-	uint32 r  = GetTileTrackStatus(tile, TRANSPORT_ROAD);
+	uint32 r  = GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
 	TrackdirBits signal    = (TrackdirBits)GB(r, 16, 16);
 	TrackdirBits trackdirs = (TrackdirBits)GB(r,  0, 16);
 
@@ -1131,7 +1134,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 		trackdir = DiagdirToDiagTrackdir(enterdir);
 		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
-		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
+		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPE);
 		if (ftd.best_trackdir == INVALID_TRACKDIR) {
 			/* We are already at our target. Just do something
 			 * @todo: maybe display error?
@@ -1181,7 +1184,7 @@ do_it:;
 				if (best_track == INVALID_TRACKDIR) best_track = (Trackdir)i; // in case we don't find the path, just pick a track
 				frd.maxtracklen = (uint)-1;
 				frd.mindist = (uint)-1;
-				FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
+				FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, v->u.road.compatible_roadtypes, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
 
 				if (frd.mindist < best_dist || (frd.mindist == best_dist && frd.maxtracklen < best_maxlen)) {
 					best_dist = frd.mindist;
@@ -1214,7 +1217,7 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 		fstd.dest_coords = tile;
 		fstd.station_index = INVALID_STATION; // indicates that the destination is a tile, not a station
 
-		dist = NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
+		dist = NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPE).best_path_dist;
 		/* change units from NPF_TILE_LENGTH to # of tiles */
 		if (dist != UINT_MAX)
 			dist = (dist + NPF_TILE_LENGTH - 1) / NPF_TILE_LENGTH;

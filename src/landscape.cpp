@@ -274,9 +274,9 @@ void DoClearSquare(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-uint32 GetTileTrackStatus(TileIndex tile, TransportType mode)
+uint32 GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode)
 {
-	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode);
+	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode, sub_mode);
 }
 
 void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player)

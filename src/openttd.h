@@ -364,7 +364,8 @@ typedef uint GetSlopeZProc(TileIndex tile, uint x, uint y);
 typedef int32 ClearTileProc(TileIndex tile, byte flags);
 typedef void GetAcceptedCargoProc(TileIndex tile, AcceptedCargo res);
 typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
-/* GetTileTrackStatusProcs return a value that contains the possible tracks
+/**
+ * GetTileTrackStatusProcs return a value that contains the possible tracks
  * that can be taken on a given tile by a given transport. The return value is
  * composed as follows: 0xaabbccdd. ccdd and aabb are bitmasks of trackdirs,
  * where bit n corresponds to trackdir n. ccdd are the trackdirs that are
@@ -382,8 +383,12 @@ typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
  * are a track, the fourth bit is the direction. these give 12 (or 14)
  * possible options: 0-5 and 8-13, so we need 14 bits for a trackdir bitmask
  * above.
+ * @param tile     the tile to get the track status from
+ * @param mode     the mode of transportation
+ * @param sub_mode used to differentiate between different kinds within the mode
+ * @return the above mentions track status information
  */
-typedef uint32 GetTileTrackStatusProc(TileIndex tile, TransportType mode);
+typedef uint32 GetTileTrackStatusProc(TileIndex tile, TransportType mode, uint sub_mode);
 typedef void GetProducedCargoProc(TileIndex tile, CargoID *b);
 typedef void ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);

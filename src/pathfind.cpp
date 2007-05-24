@@ -153,7 +153,7 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	if (++tpf->rd.cur_length > 50)
 		return;
 
-	bits = GetTileTrackStatus(tile, tpf->tracktype);
+	bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
 	bits = (byte)((bits | (bits >> 8)) & _bits_mask[direction]);
 	if (bits == 0)
 		return;
@@ -322,7 +322,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 	tpf->rd.cur_length++;
 
-	bits = GetTileTrackStatus(tile, tpf->tracktype);
+	bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
 
 	if ((byte)bits != tpf->var2) {
 		bits &= _tpfmode1_and[direction];
@@ -363,7 +363,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	direction = ReverseDiagDir(direction);
 	tile += TileOffsByDiagDir(direction);
 
-	bits = GetTileTrackStatus(tile, tpf->tracktype);
+	bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
 	bits |= (bits >> 8);
 
 	if ( (byte)bits != tpf->var2) {
@@ -388,7 +388,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	} while (bits != 0);
 }
 
-void FollowTrack(TileIndex tile, uint16 flags, DiagDirection direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
+void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
 {
 	TrackPathFinder tpf;
 
@@ -411,6 +411,7 @@ void FollowTrack(TileIndex tile, uint16 flags, DiagDirection direction, TPFEnumP
 
 
 	tpf.tracktype = (TransportType)(flags & 0xFF);
+	tpf.sub_type = sub_type;
 
 	if (HASBIT(flags, 11)) {
 		tpf.rd.pft_var6 = 0xFF;
@@ -783,7 +784,7 @@ start_at:
 			if (!IsTileType(tile, MP_RAILWAY) || !IsPlainRailTile(tile)) {
 				/* We found a tile which is not a normal railway tile.
 				 * Determine which tracks that exist on this tile. */
-				uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _tpfmode1_and[direction];
+				uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _tpfmode1_and[direction];
 				bits = TrackdirBitsToTrackBits((TrackdirBits)(ts & TRACKDIR_BIT_MASK));
 
 				/* Check that the tile contains exactly one track */

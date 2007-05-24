@@ -55,7 +55,7 @@ TrackBits GetAnyRoadTrackBits(TileIndex tile, RoadType rt)
 		return TRACK_BIT_NONE;
 	}
 
-	r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
+	r = GetTileTrackStatus(tile, TRANSPORT_ROAD, RoadTypeToRoadTypes(rt));
 
 	return (TrackBits)(byte)(r | (r >> 8));
 }

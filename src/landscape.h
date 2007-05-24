@@ -44,7 +44,7 @@ void DrawFoundation(TileInfo *ti, uint f);
 void DoClearSquare(TileIndex tile);
 void RunTileLoop();
 
-uint32 GetTileTrackStatus(TileIndex tile, TransportType mode);
+uint32 GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode);
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
 void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player);
 void AnimateTile(TileIndex tile);

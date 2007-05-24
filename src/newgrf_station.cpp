@@ -307,7 +307,7 @@ static uint32 GetRailContinuationInfo(TileIndex tile)
 	uint i;
 
 	for (i = 0; i < lengthof(x_dir); i++, dir++, diagdir++) {
-		uint32 ts = GetTileTrackStatus(tile + TileOffsByDir(*dir), TRANSPORT_RAIL);
+		uint32 ts = GetTileTrackStatus(tile + TileOffsByDir(*dir), TRANSPORT_RAIL, 0);
 		if (ts != 0) {
 			/* If there is any track on the tile, set the bit in the second byte */
 			SETBIT(res, i + 8);

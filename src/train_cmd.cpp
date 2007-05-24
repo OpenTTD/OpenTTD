@@ -1937,7 +1937,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
 
 		assert(trackdir != INVALID_TRACKDIR);
-		NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, last->tile, trackdir_rev, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes, NPF_INFINITE_PENALTY);
+		NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, last->tile, trackdir_rev, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes, NPF_INFINITE_PENALTY);
 		if (ftd.best_bird_dist == 0) {
 			/* Found target */
 			tfdd.tile = ftd.node.tile;
@@ -2302,7 +2302,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		Trackdir trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != 0xff);
 
-		NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes);
+		NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
 
 		if (ftd.best_trackdir == 0xff) {
 			/* We are already at our target. Just do something
@@ -2412,7 +2412,7 @@ static bool CheckReverseTrain(Vehicle *v)
 		assert(trackdir != 0xff);
 		assert(trackdir_rev != 0xff);
 
-		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes);
+		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
 		if (ftd.best_bird_dist != 0) {
 			/* We didn't find anything, just keep on going straight ahead */
 			reverse_best = false;
@@ -2920,7 +2920,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				/* Get the status of the tracks in the new tile and mask
 				 * away the bits that aren't reachable. */
-				uint32 ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL) & _reachable_tracks[enterdir];
+				uint32 ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL, 0) & _reachable_tracks[enterdir];
 
 				/* Combine the from & to directions.
 				 * Now, the lower byte contains the track status, and the byte at bit 16 contains
@@ -3265,7 +3265,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	/* Calculate next tile */
 	tile += TileOffsByDiagDir(dir);
 	// determine the track status on the next tile.
-	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _reachable_tracks[dir];
+	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _reachable_tracks[dir];
 
 	/* Calc position within the current tile ?? */
 	uint x = v->x_pos & 0xF;

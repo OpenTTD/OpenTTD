@@ -2132,7 +2132,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 }
 
 
-static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
+static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode, uint sub_mode)
 {
 	switch (mode) {
 		case TRANSPORT_RAIL:
@@ -2154,7 +2154,7 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 			break;
 
 		case TRANSPORT_ROAD:
-			if (IsRoadStopTile(tile)) {
+			if ((GetRoadTypes(tile) & sub_mode) != 0 && IsRoadStopTile(tile)) {
 				return AxisToTrackBits(DiagDirToAxis(GetRoadStopDir(tile))) * 0x101;
 			}
 			break;

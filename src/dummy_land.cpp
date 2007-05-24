@@ -63,7 +63,7 @@ static void ChangeTileOwner_Dummy(TileIndex tile, PlayerID old_player, PlayerID 
 	/* not used */
 }
 
-static uint32 GetTileTrackStatus_Dummy(TileIndex tile, TransportType mode)
+static uint32 GetTileTrackStatus_Dummy(TileIndex tile, TransportType mode, uint sub_mode)
 {
 	return 0;
 }

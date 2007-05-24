@@ -1716,7 +1716,7 @@ bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection direction)
 		ssd.cur = ssd.presignal_exits = ssd.presignal_exits_free = 0;
 		ssd.has_presignal = false;
 
-		FollowTrack(tile, 0xC000 | TRANSPORT_RAIL, direction, SetSignalsEnumProc, SetSignalsAfterProc, &ssd);
+		FollowTrack(tile, 0xC000 | TRANSPORT_RAIL, 0, direction, SetSignalsEnumProc, SetSignalsAfterProc, &ssd);
 		ChangeSignalStates(&ssd);
 
 		/* remember the result only for the first iteration. */
@@ -1908,7 +1908,7 @@ set_ground:
 }
 
 
-static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
+static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint sub_mode)
 {
 	if (mode != TRANSPORT_RAIL) return 0;
 

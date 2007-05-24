@@ -168,7 +168,7 @@ static void GenericPlaceSignals(TileIndex tile)
 	byte trackstat;
 	uint i;
 
-	trackstat = (byte)GetTileTrackStatus(tile, TRANSPORT_RAIL);
+	trackstat = (byte)GetTileTrackStatus(tile, TRANSPORT_RAIL, 0);
 
 	if (trackstat & TRACK_BIT_VERT) // N-S direction
 		trackstat = (_tile_fract_coords.x <= _tile_fract_coords.y) ? TRACK_BIT_RIGHT : TRACK_BIT_LEFT;

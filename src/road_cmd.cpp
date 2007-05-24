@@ -1111,9 +1111,8 @@ static const byte _road_trackbits[16] = {
 	0x0, 0x0, 0x0, 0x10, 0x0, 0x2, 0x8, 0x1A, 0x0, 0x4, 0x1, 0x15, 0x20, 0x26, 0x29, 0x3F,
 };
 
-static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
+static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode, uint sub_mode)
 {
-	RoadType rt = ROADTYPE_ROAD;
 
 	switch (mode) {
 		case TRANSPORT_RAIL:
@@ -1121,10 +1120,12 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 			return GetCrossingRailBits(tile) * 0x101;
 
 		case TRANSPORT_ROAD:
-			if (!HASBIT(GetRoadTypes(tile), rt)) return 0;
+			if ((GetRoadTypes(tile) & sub_mode) == 0) return 0;
 			switch (GetRoadTileType(tile)) {
-				case ROAD_TILE_NORMAL:
+				case ROAD_TILE_NORMAL: {
+					RoadType rt = (RoadType)FindFirstBit(sub_mode);
 					return HasRoadWorks(tile) ? 0 : _road_trackbits[GetRoadBits(tile, rt)] * 0x101;
+				}
 
 				case ROAD_TILE_CROSSING: {
 					uint32 r = AxisToTrackBits(GetCrossingRoadAxis(tile)) * 0x101;

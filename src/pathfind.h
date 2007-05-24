@@ -57,6 +57,8 @@ struct TrackPathFinder {
 	TrackdirByte the_dir;
 
 	TransportTypeByte tracktype;
+	uint sub_type;
+
 	byte var2;
 	bool disable_tile_hash;
 	bool hasbit_13;
@@ -67,7 +69,7 @@ struct TrackPathFinder {
 	TrackPathFinderLink links[0x400]; ///< hopefully, this is enough.
 };
 
-void FollowTrack(TileIndex tile, uint16 flags, DiagDirection direction, TPFEnumProc* enum_proc, TPFAfterProc* after_proc, void* data);
+void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection direction, TPFEnumProc* enum_proc, TPFAfterProc* after_proc, void* data);
 
 struct FindLengthOfTunnelResult {
 	TileIndex tile;

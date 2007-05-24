@@ -45,7 +45,7 @@ struct CFollowTrackT : public FollowTrack_t
 	{
 		m_old_tile = old_tile;
 		m_old_td = old_td;
-		assert((GetTileTrackStatus(m_old_tile, TT()) & TrackdirToTrackdirBits(m_old_td)) != 0);
+		assert((GetTileTrackStatus(m_old_tile, TT(), m_veh->u.road.compatible_roadtypes) & TrackdirToTrackdirBits(m_old_td)) != 0);
 		m_exitdir = TrackdirToExitdir(m_old_td);
 		if (EnteredDepot()) return true;
 		if (!CanExitOldTile()) return false;
@@ -114,7 +114,7 @@ protected:
 		if (IsRailTT() && GetTileType(m_new_tile) == MP_RAILWAY && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
 		} else {
-			uint32 ts = GetTileTrackStatus(m_new_tile, TT());
+			uint32 ts = GetTileTrackStatus(m_new_tile, TT(), m_veh->u.road.compatible_roadtypes);
 			m_new_td_bits = (TrackdirBits)(ts & TRACKDIR_BIT_MASK);
 		}
 		return (m_new_td_bits != TRACKDIR_BIT_NONE);

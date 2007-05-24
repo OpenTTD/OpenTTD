@@ -8,6 +8,7 @@
 #include "oldpool.h"
 #include "order.h"
 #include "rail.h"
+#include "road.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -188,6 +189,9 @@ struct VehicleRoad {
 	byte reverse_ctr;
 	struct RoadStop *slot;
 	byte slot_age;
+
+	RoadType roadtype;
+	RoadTypes compatible_roadtypes;
 };
 
 struct VehicleSpecial {

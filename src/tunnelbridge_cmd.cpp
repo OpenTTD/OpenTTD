@@ -1236,13 +1236,15 @@ static void ClickTile_TunnelBridge(TileIndex tile)
 }
 
 
-static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode)
+static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode, uint sub_mode)
 {
 	if (IsTunnel(tile)) {
 		if (GetTunnelTransportType(tile) != mode) return 0;
+		if (GetTunnelTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
 		return AxisToTrackBits(DiagDirToAxis(GetTunnelDirection(tile))) * 0x101;
 	} else {
 		if (GetBridgeTransportType(tile) != mode) return 0;
+		if (GetBridgeTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
 		return AxisToTrackBits(DiagDirToAxis(GetBridgeRampDirection(tile))) * 0x101;
 	}
 }

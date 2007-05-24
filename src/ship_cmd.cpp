@@ -43,7 +43,7 @@ static const TrackBits _ship_sometracks[4] = {
 
 static TrackBits GetTileShipTrackStatus(TileIndex tile)
 {
-	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER);
+	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER, 0);
 	return TrackdirBitsToTrackBits((TrackdirBits)(TRACKDIR_BIT_MASK & (r | r >> 8)));
 }
 
@@ -114,7 +114,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		Trackdir trackdir = GetVehicleTrackdir(v);
-		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE);
+		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPE);
 		if (ftd.best_bird_dist == 0) {
 			best_depot = GetDepotByTile(ftd.node.tile); /* Found target */
 		} else {
@@ -479,7 +479,7 @@ static uint FindShipTrack(Vehicle *v, TileIndex tile, DiagDirection dir, TrackBi
 		pfs.best_bird_dist = (uint)-1;
 		pfs.best_length = (uint)-1;
 
-		FollowTrack(tile, 0x3800 | TRANSPORT_WATER, (DiagDirection)_ship_search_directions[i][dir], (TPFEnumProc*)ShipTrackFollower, NULL, &pfs);
+		FollowTrack(tile, 0x3800 | TRANSPORT_WATER, 0, (DiagDirection)_ship_search_directions[i][dir], (TPFEnumProc*)ShipTrackFollower, NULL, &pfs);
 
 		if (best_track != INVALID_TRACK) {
 			if (pfs.best_bird_dist != 0) {
@@ -514,7 +514,7 @@ static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Tra
 {
 
 	void* perf = NpfBeginInterval();
-	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, target, type, owner, railtypes);
+	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, target, type, 0, owner, railtypes);
 	int t = NpfEndInterval(perf);
 	DEBUG(yapf, 4, "[NPFW] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
 	return ret;
@@ -597,7 +597,7 @@ static Direction ShipGetNewDirection(Vehicle *v, int x, int y)
 
 static TrackBits GetAvailShipTracks(TileIndex tile, int dir)
 {
-	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER);
+	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER, 0);
 	return (TrackBits)((r | r >> 8) & _ship_sometracks[dir]);
 }
 
