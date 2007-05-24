@@ -27,6 +27,8 @@
 #include "yapf/yapf.h"
 #include "depot.h"
 #include "newgrf.h"
+#include "station_map.h"
+#include "tunnel_map.h"
 
 
 static uint CountRoadBits(RoadBits r)
@@ -109,9 +111,28 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	RoadType rt = (RoadType)GB(p1, 4, 2);
-	if (!IsTileType(tile, MP_STREET) || !IsValidRoadType(rt)) return CMD_ERROR;
+	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
-	Owner owner = GetRoadOwner(tile, rt);
+	Owner owner;
+	switch (GetTileType(tile)) {
+		case MP_STREET:
+			owner = GetRoadOwner(tile, rt);
+			break;
+
+		case MP_STATION:
+			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
+			owner = GetTileOwner(tile);
+			break;
+
+		case MP_TUNNELBRIDGE:
+			if ((IsTunnel(tile) && GetTunnelTransportType(tile) != TRANSPORT_ROAD) ||
+					(IsBridge(tile) && GetBridgeTransportType(tile) != TRANSPORT_ROAD)) return CMD_ERROR;
+			owner = GetTileOwner(tile);
+			break;
+
+		default:
+			return CMD_ERROR;
+	}
 
 	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
 		t = GetTownByTile(tile);
@@ -131,6 +152,37 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* check if you're allowed to remove the street owned by a town
 	 * removal allowance depends on difficulty setting */
 	if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
+
+	if (!IsTileType(tile, MP_STREET)) {
+		/* If it's the last roadtype, just clear the whole tile */
+		if (rts == RoadTypeToRoadTypes(rt)) return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+
+		int32 cost;
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+			TileIndex other_end = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
+			/* Pay for *every* tile of the bridge or tunnel */
+			cost = (DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile) + 1) * _price.remove_road;
+			if (flags & DC_EXEC) {
+				SetRoadTypes(other_end, GetRoadTypes(other_end) & ~RoadTypeToRoadTypes(rt));
+				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
+
+				/* Mark tiles diry that have been repaved */
+				MarkTileDirtyByTile(other_end);
+				if (IsBridge(tile)) {
+					TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
+
+					for (TileIndex t = tile; tile != other_end; tile += delta) MarkTileDirtyByTile(t);
+				}
+			}
+		} else {
+			cost = _price.remove_road;
+			if (flags & DC_EXEC) {
+				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
+				MarkTileDirtyByTile(tile);
+			}
+		}
+		return cost;
+	}
 
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_NORMAL: {
@@ -359,6 +411,17 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			return _price.build_road * 2;
 		}
 
+		case MP_STATION:
+			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
+			if (HASBIT(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			break;
+
+		case MP_TUNNELBRIDGE:
+			if ((IsTunnel(tile) && GetTunnelTransportType(tile) != TRANSPORT_ROAD) ||
+					(IsBridge(tile) && GetBridgeTransportType(tile) != TRANSPORT_ROAD)) return CMD_ERROR;
+			if (HASBIT(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			break;
+
 		default:
 do_clear:;
 			ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -380,16 +443,44 @@ do_clear:;
 	}
 
 	cost += CountRoadBits(pieces) * _price.build_road;
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		/* Pay for *every* tile of the bridge or tunnel */
+		cost *= DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile);
+	}
 
 	if (flags & DC_EXEC) {
-		if (IsTileType(tile, MP_STREET)) {
-			if (existing == ROAD_NONE) {
+		switch (GetTileType(tile)) {
+			case MP_STREET: {
+				RoadTileType rtt = GetRoadTileType(tile);
+				if (existing == ROAD_NONE || rtt == ROAD_TILE_CROSSING) {
+					SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
+					SetRoadOwner(tile, rt, _current_player);
+				}
+				if (rtt != ROAD_TILE_CROSSING) SetRoadBits(tile, existing | pieces, rt);
+			} break;
+
+			case MP_TUNNELBRIDGE: {
+				TileIndex other_end = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
+
+				SetRoadTypes(other_end, GetRoadTypes(other_end) | RoadTypeToRoadTypes(rt));
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
-				SetRoadOwner(tile, rt, _current_player);
-			}
-			SetRoadBits(tile, existing | pieces, rt);
-		} else {
-			MakeRoadNormal(tile, pieces, RoadTypeToRoadTypes(rt), p2, _current_player, _current_player, _current_player);
+
+				/* Mark tiles diry that have been repaved */
+				MarkTileDirtyByTile(other_end);
+				if (IsBridge(tile)) {
+					TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
+
+					for (TileIndex t = tile + delta; tile != other_end; tile += delta) MarkTileDirtyByTile(t);
+				}
+			} break;
+
+			case MP_STATION:
+				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
+				break;
+
+			default:
+				MakeRoadNormal(tile, pieces, RoadTypeToRoadTypes(rt), p2, _current_player, _current_player, _current_player);
+				break;
 		}
 
 		MarkTileDirtyByTile(tile);
@@ -621,7 +712,16 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 			    ((flags & DC_AI_BUILDING) && IsTileOwner(tile, OWNER_TOWN)) ||
 			    !(flags & DC_AUTO)
 				) {
-				return DoCommand(tile, b, 0, flags, CMD_REMOVE_ROAD);
+				RoadTypes rts = GetRoadTypes(tile);
+				int32 ret = 0;
+				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
+					if (HASBIT(rts, rt)) {
+						int32 tmp_ret = DoCommand(tile, rt << 4 | GetRoadBits(tile, rt), 0, flags, CMD_REMOVE_ROAD);
+						if (CmdFailed(tmp_ret)) return tmp_ret;
+						ret += rt;
+					}
+				}
+				return ret;
 			}
 			return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 		}
