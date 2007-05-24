@@ -3,6 +3,8 @@
 ##isocode ja_JP
 ##plural 1
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}地図の端を越えています
@@ -1046,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不統�
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新型グローバルパスファインダー（NPF）：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}重い列車のシミュレーションのための重量乗数の設定：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}町有道路上に通過点の建設を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}隣接した駅の建設を許容：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}常に小型空港の建設を許容：{ORANGE}{STRING}
 
@@ -1098,6 +1101,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :地図をスク
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :切
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}地図のスクロール速度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}新規ゲームを開始したときに自動的にポーズ：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}詳細の車両リストを使用：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
@@ -1585,6 +1589,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :通常信号の
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :前位信号のある線路
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :後位信号のある線路
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :統合信号のある線路
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}先に駅を破壊しなければなりません
 
 
 
@@ -2012,6 +2017,8 @@ STR_SV_STNAME_LOWER                                             :下{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}ヘリポート
 STR_SV_STNAME_FOREST                                            :{STRING}森林
 
+STR_SV_GROUP_NAME                                               :{GROUP}
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2150,8 +2157,8 @@ STR_7038_INAUGURATED                                            :{GOLD}開業日
 STR_7039_VEHICLES                                               :{GOLD}車両数：
 STR_TRAINS                                                      :{WHITE}列車{COMMA}本
 STR_ROAD_VEHICLES                                               :{WHITE}道路車両{COMMA}両
-STR_AIRCRAFT                                                    :{WHITE}{COMMA}台の飛行機
-STR_SHIPS                                                       :{WHITE}{COMMA}隻の船舶
+STR_AIRCRAFT                                                    :{WHITE}飛行機{COMMA}台
+STR_SHIPS                                                       :{WHITE}船舶{COMMA}隻
 STR_7042_NONE                                                   :{WHITE}なし
 STR_7043_FACE_SELECTION                                         :{WHITE}顔の選択
 STR_7044_MALE                                                   :{BLACK}男性
@@ -2736,7 +2743,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}埠頭�
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}ここに埠頭が建設できません...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}造船所
 STR_9804_NEW_SHIPS                                              :{BLACK}新規船舶
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA}隻の船舶
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - 船舶{COMMA}隻
 STR_9808_NEW_SHIPS                                              :{WHITE}新規船舶
 STR_9809_BUILD_SHIP                                             :{BLACK}船舶を購入
 STR_CLONE_SHIP                                                  :{BLACK}船舶をクローン
@@ -2812,7 +2819,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}飛行�
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}新規飛行機
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}飛行機を購入
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}飛行機が購入できません...
-STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA}台の飛行機
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - 飛行機{COMMA}台
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
@@ -3013,10 +3020,10 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}車庫�
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}造船所内のすべての船舶を自動的に交換します
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}格納庫内のすべての飛行機を自動的に交換します
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA}本の列車
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA}両の道路車両
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA}隻の船舶
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA}台の飛行機
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - 列車{COMMA}本
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - 道路車両{COMMA}両
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - 船舶{COMMA}隻
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - 飛行機{COMMA}台
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}を交換
 STR_REPLACE_VEHICLES_START                                      :{BLACK}車両の交換を開始
@@ -3187,3 +3194,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}工業�
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}交通社所有の建物などの透明性を入／切
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}橋の透明性を入／切
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}灯台、送信機などの透明性を入／切
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :グループ {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :すべての列車
+STR_GROUP_ALL_ROADS                                             :すべての道路車両
+STR_GROUP_ALL_SHIPS                                             :すべての船舶
+STR_GROUP_ALL_AIRCRAFTS                                         :すべての飛行機
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :共有車両を追加
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :すべての車両を取り除く
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - 列車{COMMA}本
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - 道路車両{COMMA}両
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - 船舶{COMMA}隻
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - 飛行機{COMMA}台
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}グループ名を変更
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}"{GROUP}"内の車両を交換
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}グループが作成できません...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}グループが削除できません...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}グループ名が変更できません...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}グループ内のすべての車両が取り除けません...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}この車両がこのグループに追加できません...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}グループに共有車両が追加できません...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}グループ - グループをクリックしてグループ内のすべての車両のリストが表示します
+STR_GROUP_CREATE_TIP                                            :{BLACK}クリックしてグループを作成します
+STR_GROUP_DELETE_TIP                                            :{BLACK}選択したグループを削除します
+STR_GROUP_RENAME_TIP                                            :{BLACK}選択したグループの名称を変更します
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}このグループ内の車両を自動交換しません
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}今年の収益：{GREEN}{CURRENCY} {BLACK}（昨年：{GREEN}{CURRENCY}{BLACK}）
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}今年の収益：{RED}{CURRENCY} {BLACK}（昨年：{GREEN}{CURRENCY}{BLACK}）
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}今年の収益：{GREEN}{CURRENCY} {BLACK}（昨年：{RED}{CURRENCY}{BLACK}）
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}今年の収益：{RED}{CURRENCY} {BLACK}（昨年：{RED}{CURRENCY}{BLACK}）
+
+########

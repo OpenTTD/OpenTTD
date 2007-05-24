@@ -5,6 +5,8 @@
 ##case r d z
 ##gender m f s mn
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}За межами карти
@@ -1172,6 +1174,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Нео�
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новий глобальний пошук шляху(NPF, замість NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множник ваги для імітації важких потягів: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Дозволити безпересадкові зупинки на муніципальних дорогах: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Дозволити будувати суміжні станції: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Будувати малі аеропорти можна завжди: {ORANGE}{STRING}
 
@@ -1224,6 +1227,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Прокрут�
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Відкл.
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Швидкість прокрутки колесом миші: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Використовувати покращений список транспорту: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. авто у гравця: {ORANGE}{STRING}
@@ -1711,6 +1715,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Колія зі
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Колія з вхідними сигналами
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Колія з вихідними сигналами
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Колія з комбінованими сигналами
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Спочатку потрібно знести залізничну станцію
 
 
 
@@ -2174,6 +2179,8 @@ STR_SV_STNAME_UPPER                                             :Верхній 
 STR_SV_STNAME_LOWER                                             :Нижній {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} ГелМайданчик
 STR_SV_STNAME_FOREST                                            :{STRING} Ліс
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3350,3 +3357,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Пере
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Переключити прозорість для споруд, таких як станції, депо, ЛЕП тощо
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Переключити прозорість для мостів
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключити прозорість для споруд, таких як маяки та антенни (може, потім)
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Група {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Усі поїзди
+STR_GROUP_ALL_ROADS                                             :Усі авто
+STR_GROUP_ALL_SHIPS                                             :Усі кораблі
+STR_GROUP_ALL_AIRCRAFTS                                         :Усі літаки
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавити спільний транспорт
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбутися всього транспорту
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} поїзд{P "" и ів}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} автомобіл{P ь і ів}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} кораб{P ель лі лів}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} літак{P "" и ів}
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перейменувати групу
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Замінити транспорт групи "{GROUP}"
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Не можна створити групу...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Не можна стерти групу...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Не можна перейменувати групу...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Не можна позбутися всього транспорту цієї групи...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Не можна додати цей транспорт у групу...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Не можна додати спільний транспорт у групу...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Групи - клікніть на групі, щоб побачити список транспорту цієї групи
+STR_GROUP_CREATE_TIP                                            :{BLACK}Клікніть, щоб створити групу
+STR_GROUP_DELETE_TIP                                            :{BLACK}Стерти вибрану групу
+STR_GROUP_RENAME_TIP                                            :{BLACK}Перейменувати вибрану групу
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Клікніть, щоб захистити групу від глобальної автозаміни
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Прибуток цього року: {GREEN}{CURRENCY} {BLACK}(торік: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибуток цього року: {RED}{CURRENCY} {BLACK}(торік: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибуток цього року: {GREEN}{CURRENCY} {BLACK}(торік: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Прибуток цього року: {RED}{CURRENCY} {BLACK}(торік: {RED}{CURRENCY}{BLACK})
+
+########

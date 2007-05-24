@@ -5,6 +5,8 @@
 ##case g
 ##gender m z s
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Za okrajom mapy
@@ -1110,6 +1112,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Roznoro
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy globalny algoritmus hladania cesty (NPF namiesto NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Váhový násobok pre nákladné vlaky: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit prejazdné zastávky na mestských cestách: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavbu oddelených staníc: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vzdy povolit stavbu malych letisk: {ORANGE}{STRING}
 
@@ -1650,6 +1653,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kola
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje s pre-signalmi
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje s exit-signalmi
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kolaje s combo-signalmi
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je potrebné najprv odstránit železnicnú stanicu
 
 
 
@@ -2077,6 +2081,7 @@ STR_SV_STNAME_LOWER                                             :Dolny {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Les
 
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3256,6 +3261,7 @@ STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prepnút
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Skupina {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Všetky vlaky
 STR_GROUP_ALL_ROADS                                             :Všetky cestné vozidlá
 STR_GROUP_ALL_SHIPS                                             :Všetky lode
@@ -3264,7 +3270,12 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pridat zdielané vozidlá
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstránit všetky vozidlá
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Vlak{P "" y ov}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vozid{P lo lá ied}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Lod{P "" e í}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Lietad{P lo lá iel}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Premenovat skupinu
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Nahradit vozidlá skupiny "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nie je možné vytvorit skupinu ...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nie je možné zrušit túto skupinu ...

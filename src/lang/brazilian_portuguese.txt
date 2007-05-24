@@ -5,6 +5,8 @@
 ##case m f
 ##gender m f
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora do mapa
@@ -1048,6 +1050,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estaç�
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo busca de caminho global (NPF, sobrepõe NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para trens simulando trens pesados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações drive-through em ruas locais: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1588,6 +1591,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia com si
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia com pré-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia com sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia com sinais combinados
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Remova a estação de trem antes
 
 
 
@@ -2017,6 +2021,7 @@ STR_SV_STNAME_LOWER                                             :Sul de {STRING}
 STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
 STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
 
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3196,6 +3201,7 @@ STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Alternar
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Agrupar {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Todos os trens
 STR_GROUP_ALL_ROADS                                             :Todos os automóveis
 STR_GROUP_ALL_SHIPS                                             :Todos os navios
@@ -3204,7 +3210,12 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adicionar veículos compartilhados
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Trem{P "" s}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Automóvel{P "" s}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Navio{P "" s}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronave
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear um grupo
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Substituir Veículos de "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Impossível criar grupo...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Impossível remover grupo...

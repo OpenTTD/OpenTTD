@@ -5,6 +5,8 @@
 ##case accusative dative vocative nominative instrumental locative genitive
 ##gender мъжки женски среден
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Извън картата
@@ -1100,6 +1102,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Разглед�
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Изклучен
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollwheel скорост на картата: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматична пауза стартирайки нова игра: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Използваи напредналиат списък на превозни средства: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. влакове на играч: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. брой коли на играч: {ORANGE}{STRING}
@@ -1137,6 +1140,7 @@ STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Авт�
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Грацкиа план "няма повече пътища" е невалиден в сценарий редакторат
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Избери грацки пътформат: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :няма повече пътища
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :default
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :по-добри пътища
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
@@ -3192,11 +3196,39 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Изпо
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Използвай прозрачност за сгради като фарове и антени, може би в бъдеще за украси
 
 ##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Група {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Всички влакове
+STR_GROUP_ALL_ROADS                                             :Всички пътни превозни средства
+STR_GROUP_ALL_SHIPS                                             :Всички кораби
+STR_GROUP_ALL_AIRCRAFTS                                         :Всички самолети
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Добави споделени превозни средства
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Премахни всички превозни средсва
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Влак{P "" s}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Пътно Превозно Средство{P "" s}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Кораб{P "" s}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Самолет
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Преименовай група
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Замени Превозни средства на "{GROUP}"
 
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Групата неможе да бъде създадена...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Тази група неможе да бъде изтрита...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Групата неможе да бъде преименована...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Всички превозни средства немогат да бъдат премахнати от тази група...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Превозното средство неможе да се добави към тази група...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Поделени превозни средсва немогат да бъдат добавени към групата...
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Групи - Щракни на група за да видиш списък на всички превозни средства от тази група
+STR_GROUP_CREATE_TIP                                            :{BLACK}Щракни да създадеш група
+STR_GROUP_DELETE_TIP                                            :{BLACK}Изтрий избраната група
+STR_GROUP_RENAME_TIP                                            :{BLACK}Преименувай избраната група
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Щракни да защитиш тази група от глобална автоматична замяна
 
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Печалба тази година: {GREEN}{CURRENCY} {BLACK}(предишната година: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Печалба тази година: {RED}{CURRENCY} {BLACK}(предишната година: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Печалба тази година: {GREEN}{CURRENCY} {BLACK}(предишната година: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Печалба тази година: {RED}{CURRENCY} {BLACK}(предишната година: {RED}{CURRENCY}{BLACK})
 
 ########

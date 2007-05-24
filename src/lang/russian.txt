@@ -5,6 +5,8 @@
 ##case m f n p
 ##gender m f n p
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Край карты
@@ -1100,6 +1102,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :для смещ
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :не использовать
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Скорость смещения обзора прокруткой колеса мыши: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автопауза в начале игры: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Использовать расширенный список транспорта: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество автотранспорта на игрока: {ORANGE}{STRING}
@@ -1133,6 +1136,15 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Вкл�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить торговлю акциями других компаний
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При установке светофоров линией, ставить кажд{P 1 ую ые ые}: {ORANGE}{STRING} клет{P 1 ку ки ок}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Расположение дорог "не строить дороги" не действительно в редакторе сценариев
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Расположение дорог у городов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :не строить дороги
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :старый алгоритм
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :улучшенный алгоритм
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :решёткой 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :решёткой 3x3
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :слева
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :в центре
@@ -2005,6 +2017,8 @@ STR_SV_STNAME_LOWER                                             :Нижний {S
 STR_SV_STNAME_HELIPORT                                          :Площадка {STRING}
 STR_SV_STNAME_FOREST                                            :Лес {STRING}
 
+STR_SV_GROUP_NAME                                               :{GROUP}
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2044,6 +2058,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Отн�
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Нет
+STR_NUM_VERY_LOW                                                :Очень низкое
 STR_6816_LOW                                                    :Низкое
 STR_6817_NORMAL                                                 :Среднее
 STR_6818_HIGH                                                   :Большое
@@ -3116,6 +3131,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Изме
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Изменить год начала игры
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Выход за пределы доступных значений
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Увеличение карты до таких размеров не рекомендуется. Продолжить?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Предупреждение о расположении дорог
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Расположение дорог "не строить дороги" не рекомендуется. Продолжить создание карты?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Имя РЕЛЬЕФА:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Размер: {ORANGE}{NUM} x {NUM}
@@ -3188,3 +3205,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Пере
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Переключить прозрачность зданий, которые можно строить игроком. Например -- станции, депо, точки пути и столбы для электричества.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Переключить прозрачность мостов
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключить прозрачность зданий, вроде антенн и маяков.
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Группа {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Все поезда
+STR_GROUP_ALL_ROADS                                             :Весь автотранспорт
+STR_GROUP_ALL_SHIPS                                             :Все корабли
+STR_GROUP_ALL_AIRCRAFTS                                         :Все самолёты
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавить с общими заданиями
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить всех
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} поезд{P "" а ов}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} автомашин{P а ы ""}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} корабл{P ь я ей}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} самолёт{P "" а ов}
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Переименовать группу
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Заменить транспорт в группе "{GROUP}"
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Не могу создать группу...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Не могу удалить группу...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Не могу переименовать группу...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Не могу удалить весь транспорт с группы...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Не могу добавить транспорт в группу...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Не могу добавить транспорт с общими заданиями в группу...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Группы - Щёлкните группу для отображения в списке
+STR_GROUP_CREATE_TIP                                            :{BLACK}Создать группу
+STR_GROUP_DELETE_TIP                                            :{BLACK}Удалить выбранную группу
+STR_GROUP_RENAME_TIP                                            :{BLACK}Переименовать выбранную группу
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}В зажатом состоянии защищает группу от всеобщей автозамены
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Прибыль этот год: {GREEN}{CURRENCY} {BLACK}(прошлый год: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибыль этот год: {RED}{CURRENCY} {BLACK}(прошлый год: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибыль за год: {GREEN}{CURRENCY} {BLACK}(прошлый год: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Прибыль за год: {RED}{CURRENCY} {BLACK}(прошлый год: {RED}{CURRENCY}{BLACK})
+
+########

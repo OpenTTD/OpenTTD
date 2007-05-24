@@ -3,6 +3,8 @@
 ##isocode nl_NL
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Buiten de kaart
@@ -1046,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Vrij ge
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nieuwe globale routeplanner (NPF, voorkeur over NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Gewichtsverhouding voor vracht om zware treinen te simuleren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laat toe dat doorrij wegstops worden geplaatst op door stad beheerde wegen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Bouwen van aangrenzende stations toestaan: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Altijd kleine vliegvelden toestaan: {ORANGE}{STRING}
 
@@ -1586,6 +1589,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Spoor met norma
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Spoor met voorseinen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Spoor met uitgangseinen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Spoor met combinatieseinen
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Treinstation moet eerst verwijderd worden
 
 
 

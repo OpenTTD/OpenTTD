@@ -5,6 +5,8 @@
 ##case nom gen dat acc voc loc ins big
 ##gender f m n
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Mimo okraj mapy
@@ -1104,6 +1106,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nejedno
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nový globální algoritmus hledání cesty (NPF, nahradí NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {ORANGE}{STRING}x
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit průjezdné zastávky na silnicích vlastněných obcemi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavění přilehlých stanic: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Malá letiště se budou moci stále stavět: {ORANGE}{STRING}
 
@@ -1156,6 +1159,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :pohyb po mapě
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :nic
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlost skrolovacího kolečka: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Zastavit automaticky hru při začínání nové hry: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Používat pokročilý seznam vozidel: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaků na hráče: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum silničních vozidel na hráče: {ORANGE}{STRING}
@@ -1643,6 +1647,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Železniční t
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Železniční trať s presignály
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Železniční trať s výstupními signály
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Železniční trať s kombinovanými signály
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je nejprve nutno odstranit stanici
 
 
 
@@ -2069,6 +2074,8 @@ STR_SV_STNAME_UPPER                                             :horní {STRING}
 STR_SV_STNAME_LOWER                                             :dolní {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} heliport
 STR_SV_STNAME_FOREST                                            :{STRING} les
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3251,3 +3258,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Změna p
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, kontrolních bodů a vedení
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Změna průhlednosti mostů
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Změna průhlednosti staveb jako majáků, vysílačů a doplňků (v budoucnosti)
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Skupina {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Všechny vlaky
+STR_GROUP_ALL_ROADS                                             :Všechna silniční vozidla
+STR_GROUP_ALL_SHIPS                                             :Všechny lodě
+STR_GROUP_ALL_AIRCRAFTS                                         :Všechna letadla
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Přidat sdílená vozidla
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstranit všechna vozidla
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} vlak{P "" y ů}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} silniční{P "" "" ch} vozid{P lo la el}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} lo{P ď dě dí}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} letad{P lo la el}
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Přejmenovat skupinu
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Vyměnit vozidla "{GROUP}"
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nelze vytvořit skupinu...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nelze vymazat skupinu...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Nelze přejmenovat skupinu...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Nelze odstranit všechna vozidla ze skupiny...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Nelze přidat vozidlo do skupiny...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Nelze přidat sdílená vozidla do skupiny...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Skupiny - Kliknutím na skupinu se zobrazí seznam vozidel ve skupině
+STR_GROUP_CREATE_TIP                                            :{BLACK}Kliknutím vytvoříš skupinu
+STR_GROUP_DELETE_TIP                                            :{BLACK}Vymazat vybranou skupinu
+STR_GROUP_RENAME_TIP                                            :{BLACK}Přejmenovat vybranou skupinu
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknutím nebude na tuto skupinu mít vliv automatická výměna vozidel
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Letošní příjem: {GREEN}{CURRENCY} {BLACK}(minulý rok: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Letošní příjem: {RED}{CURRENCY} {BLACK}(minulý rok: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Letošní příjem: {GREEN}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Letošní příjem: {RED}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
+
+########

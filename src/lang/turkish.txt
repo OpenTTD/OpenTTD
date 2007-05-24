@@ -3,6 +3,8 @@
 ##isocode tr_TR
 ##plural 1
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Harita kenarında
@@ -2008,6 +2010,7 @@ STR_SV_STNAME_LOWER                                             :Asağı {STRING
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Ormanı
 
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -3179,3 +3182,36 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Fabrikal
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}İstasyonlar, garajlar tershaneler vb. için şeffaflık
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Köprüler için şeffaflık
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Antenler ve deniz fenerleri için şeffaflık
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Grup {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Bütün trenler
+STR_GROUP_ALL_ROADS                                             :Bütün arabalar
+STR_GROUP_ALL_SHIPS                                             :Bütün Gemiler
+STR_GROUP_ALL_AIRCRAFTS                                         :Bütün uçaklar
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Bütün paylaşılan araçlar
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bütün araçları çıkar
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tren
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Araba
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Gemi
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Uçak
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Grubun ismini değiştir
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}"{GROUP}"  Araçlarını Değiştir
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Grup oluşturulamıyor...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Bu grup silinemiyor...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Grubun ismi değiştirilemiyor...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Bu gruptaki bütün araçlar çıkartılamıyor...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Araç bu gruba eklenemiyor...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Paylaşılan araçlar bu gruba eklenemiyor...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gruplar - Gruba ait araçları listelemek için grubun üzerine tıklayın
+STR_GROUP_CREATE_TIP                                            :{BLACK}Grup oluşturmak için tıklayın
+STR_GROUP_DELETE_TIP                                            :{BLACK}Seçili grubu sil
+STR_GROUP_RENAME_TIP                                            :{BLACK}Seçili grubun ismini değiştir
+
+
+########
