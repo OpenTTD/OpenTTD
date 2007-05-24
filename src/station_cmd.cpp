@@ -1253,6 +1253,9 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (rts == ROADTYPES_NONE || HASBIT(rts, ROADTYPE_HWAY)) return CMD_ERROR;
 
+	/* Trams only have drive through stops */
+	if (!is_drive_through && HASBIT(rts, ROADTYPE_TRAM)) return CMD_ERROR;
+
 	/* Saveguard the parameters */
 	if (!IsValidDiagDirection((DiagDirection)p1)) return CMD_ERROR;
 	/* If it is a drive-through stop check for valid axis */
@@ -2076,7 +2079,7 @@ static void DrawTile_Station(TileInfo *ti)
 	}
 }
 
-void StationPickerDrawSprite(int x, int y, RailType railtype, int image)
+void StationPickerDrawSprite(int x, int y, RailType railtype, RoadType roadtype, int image)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID pal = PLAYER_SPRITE_COLOR(_local_player);

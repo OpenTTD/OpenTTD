@@ -755,7 +755,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			old_dpi = _cur_dpi;
 			_cur_dpi = &tmp_dpi;
 			if (!DrawStationTile(32, 16, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
-				StationPickerDrawSprite(32, 16, _cur_railtype, 2);
+				StationPickerDrawSprite(32, 16, _cur_railtype, INVALID_ROADTYPE, 2);
 			}
 			_cur_dpi = old_dpi;
 		}
@@ -765,7 +765,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			old_dpi = _cur_dpi;
 			_cur_dpi = &tmp_dpi;
 			if (!DrawStationTile(32, 16, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {
-				StationPickerDrawSprite(32, 16, _cur_railtype, 3);
+				StationPickerDrawSprite(32, 16, _cur_railtype, INVALID_ROADTYPE, 3);
 			}
 			_cur_dpi = old_dpi;
 		}

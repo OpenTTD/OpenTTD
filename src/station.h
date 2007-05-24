@@ -10,6 +10,7 @@
 #include "oldpool.h"
 #include "sprite.h"
 #include "tile.h"
+#include "road.h"
 #include "newgrf_station.h"
 #include <list>
 
@@ -271,7 +272,7 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int 
 
 
 const DrawTileSprites *GetStationTileLayout(byte gfx);
-void StationPickerDrawSprite(int x, int y, RailType railtype, int image);
+void StationPickerDrawSprite(int x, int y, RailType railtype, RoadType roadtype, int image);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStop::Type type);
 uint GetNumRoadStops(const Station* st, RoadStop::Type type);

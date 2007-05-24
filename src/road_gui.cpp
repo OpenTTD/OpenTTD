@@ -479,6 +479,12 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE:
+		/* Trams don't have non-drivethrough stations */
+		if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {
+			_road_station_picker_orientation = DIAGDIR_END;
+		}
+		SetWindowWidgetsDisabledState(w, _cur_roadtype == ROADTYPE_TRAM, 3, 4, 5, 6, WIDGET_LIST_END);
+
 		LowerWindowWidget(w, _road_station_picker_orientation + 3);
 		LowerWindowWidget(w, _station_show_coverage + 9);
 		break;
@@ -499,15 +505,15 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 
 		image = (w->window_class == WC_BUS_STATION) ? GFX_BUS_BASE : GFX_TRUCK_BASE;
 
-		StationPickerDrawSprite(103, 35, RAILTYPE_BEGIN, image);
-		StationPickerDrawSprite(103, 85, RAILTYPE_BEGIN, image + 1);
-		StationPickerDrawSprite(35, 85, RAILTYPE_BEGIN, image + 2);
-		StationPickerDrawSprite(35, 35, RAILTYPE_BEGIN, image + 3);
+		StationPickerDrawSprite(103, 35, RAILTYPE_BEGIN, ROADTYPE_ROAD, image);
+		StationPickerDrawSprite(103, 85, RAILTYPE_BEGIN, ROADTYPE_ROAD, image + 1);
+		StationPickerDrawSprite(35, 85, RAILTYPE_BEGIN, ROADTYPE_ROAD, image + 2);
+		StationPickerDrawSprite(35, 35, RAILTYPE_BEGIN, ROADTYPE_ROAD, image + 3);
 
 		image = (w->window_class == WC_BUS_STATION) ? GFX_BUS_BASE_EXT : GFX_TRUCK_BASE_EXT;
 
-		StationPickerDrawSprite(171, 35, RAILTYPE_BEGIN, image);
-		StationPickerDrawSprite(171, 85, RAILTYPE_BEGIN, image + 1);
+		StationPickerDrawSprite(171, 35, RAILTYPE_BEGIN, _cur_roadtype, image);
+		StationPickerDrawSprite(171, 85, RAILTYPE_BEGIN, _cur_roadtype, image + 1);
 
 		DrawStationCoverageAreaText(2, 146,
 			((w->window_class == WC_BUS_STATION) ? (1 << CT_PASSENGERS) : ~(1 << CT_PASSENGERS)),
