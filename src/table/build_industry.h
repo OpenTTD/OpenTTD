@@ -1133,9 +1133,9 @@ static const uint8 _plastic_mine_sounds[] = { SND_33_PLASTIC_MINE };
 
 #define MI(tbl, sndc, snd, d, ai1, ai2, ai3, ai4, ag1, ag2, ag3, ag4, col, \
            c1, c2, c3, proc, p1, r1, p2, r2, m, a1, im1, a2, im2, a3, im3, pr, clim, bev, in, intx, s1, s2, s3) \
-	{tbl, lengthof(tbl), d, {c1, c2, c3}, proc, {p1, p2}, {r1, r2}, m,            \
-	 {a1, a2, a3}, {{im1, 0}, {im2, 0}, {im3, 0}}, pr, clim, bev, col, in, intx, s1, s2, s3, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, sndc, snd, 0, 0, 0, 0}
-
+	 {tbl, lengthof(tbl), d, {c1, c2, c3}, proc, {p1, p2}, {r1, r2}, m,            \
+	 {a1, a2, a3}, {{im1, 0}, {im2, 0}, {im3, 0}}, pr, clim, bev, col, in, intx, s1, s2, s3, {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, \
+	 sndc, snd, 0, {0, 0, NULL, NULL, INVALID_INDUSTRYTYPE, true}}
 static const IndustrySpec _industry_specs[] = {
 	/* Format:
 	   tile table                              count and sounds table
@@ -1527,7 +1527,7 @@ static const IndustrySpec _industry_specs[] = {
  * @param a2 next frame of animation
  * @param a3 chooses between animation or construction state
  */
-#define MT(c1, c2, c3, sl, a1, a2, a3) {{c1, c2, c3}, sl, a1, a2, a3}
+#define MT(c1, c2, c3, sl, a1, a2, a3) {{c1, c2, c3}, sl, a1, a2, a3, 0, {0, 0, NULL, NULL, 0, true}}
 static const IndustryTileSpec _industry_tile_specs[] = {
 	/* Coal Mine */
 	MT(CT_INVALID,      CT_INVALID,   CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),

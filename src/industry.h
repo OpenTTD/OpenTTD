@@ -14,7 +14,8 @@ typedef uint8 IndustryType;
 enum {
 	INVALID_INDUSTRY = 0xFFFF,
 	NUM_INDUSTRYTYPES = 37,
-	INDUTILE_NOANIM = 0xFF,        ///< flag to mark industry tiles as having no animation
+	INDUTILE_NOANIM = 0xFF,                   ///< flag to mark industry tiles as having no animation
+	INVALID_INDUSTRYTYPE = NUM_INDUSTRYTYPES, ///< one above amount is considered invalid
 };
 
 enum IndustryLifeType {
@@ -91,6 +92,16 @@ struct IndustryTileTable {
 	IndustryGfx gfx;
 };
 
+/** Data related to the handling of grf files.  Common to both industry and industry tile */
+struct GRFFileProps {
+	uint8 subst_id;
+	uint16 local_id;                      ///< id defined by the grf file for this industry
+	struct SpriteGroup *spritegroup;      ///< pointer to the different sprites of the industry
+	const struct GRFFile *grffile;        ///< grf file that introduced this house
+	uint8 override;                       ///< id of the entity been replaced by
+	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
+};
+
 /**
  * Defines the data structure for constructing industry.
  */
@@ -119,11 +130,9 @@ struct IndustrySpec {
 	byte appear_creation[NUM_LANDSCAPE];  ///< Probability of appearance during map creation
 	uint8 number_of_sounds;               ///< Number of sounds available in the sounds array
 	const uint8 *random_sounds;           ///< array of random sounds.
-	/* Newgrf stuff coming in */
+	/* Newgrf data */
 	uint16 callback_flags;                ///< Flags telling which grf callback is set
-	byte subst_id;
-	uint32 grfid;
-	byte override;
+	struct GRFFileProps grf_prop;         ///< properties related the the grf file
 };
 
 /**
@@ -136,6 +145,9 @@ struct IndustryTileSpec {
 	byte anim_next;                       ///< Next frame in an animation
 	bool anim_state;                      ///< When true, the tile has to be drawn using the animation
 	                                      ///< state instead of the construction state
+	/* Newgrf data */
+	uint8 callback_flags;                ///< Flags telling which grf callback is set
+	struct GRFFileProps grf_prop;
 };
 
 /* industry_cmd.cpp*/
