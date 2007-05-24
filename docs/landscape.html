@@ -475,9 +475,9 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-     <li>m5 bits 7..4 clear: road
+     <li>m5 bits 7..6 clear: road
       <ul>
-       <li>m1: <a href="#OwnershipInfo">owner</a> of the road</li>
+       <li>m1: <a href="#OwnershipInfo">owner</a> of the road type #1</li>
        <li>m2: Index into the array of towns, 0 for non-town roads</li>
        <li>m3 bit 7 set = on snow or desert</li>
        <li>m3 bits 6..4:
@@ -513,7 +513,7 @@
         </table>
        </li>
        <li>m3 bits 3..0: counter for the roadworks</li>
-       <li>m5 bits 3..0: road layout: bit set = road piece present:
+       <li>m4 bits 3..0: road layout road type #1: bit set = road piece present:
         <table>
          <tr>
           <td nowrap valign=top>bit 0: </td>
@@ -533,25 +533,35 @@
          </tr>
         </table>
        </li>
+       <li>m4 bits 7..4: road layout road type #2
+       <li>m5 bits 4..0: owner of road type #2
+       <li>m6 bits 5..2: road layout road type #3
+       <li>m7 bits 7..5: road types
+       <li>m7 bits 4..0: owner of road type #3
+       </li>
       </ul>
      </li>
-     <li>m5 bit 5 set: road depot
+     <li>m5 bit 7 set, bit 6 clear: road depot
       <ul>
        <li>m1: <a href="#OwnershipInfo">owner</a> of the depot</li>
        <li>m3 bit 7 set = on snow or desert (not displayed, but set internally)</li>
        <li>m5 bits 3..0 - direction: exit towards: <tt>0</tt> = NE, <tt>1</tt> = SE, <tt>2</tt> = SW, <tt>3</tt> = NW</li>
+       <li>m7 bits 7..5: road types
       </ul>
      </li>
-     <li>m5 bit 4 set, bits 7..5 clear: level crossing
+     <li>m5 bit 6 set, bit 7 clear: level crossing
       <ul>
        <li>m1: <a href="#OwnershipInfo">owner</a> of the railway track</li>
        <li>m2: Index into the array of towns, 0 for non-town roads</li>
        <li>m3 bit 7 set = on snow or desert</li>
        <li>m3 bits 6..4: <tt>0</tt> - on bare land, <tt>1</tt> - on grass, <tt>2</tt> or higher - paved</li>
        <li>m3 bits 3..0: <a href="#TrackType">track type</a></li>
-       <li>m4: <a href="#OwnershipInfo">owner</a> of the road</li>
-       <li>m5 bit 3: clear - road in the X direction, set - road in the Y direction (railway track always perpendicular)</li>
-       <li>m5 bit 2: set if crossing lights are on</li>
+       <li>m4 bit 6: clear - road in the X direction, set - road in the Y direction (railway track always perpendicular)</li>
+       <li>m4 bit 5: set if crossing lights are on</li>
+       <li>m4 bits 4..0: <a href="#OwnershipInfo">owner</a> of the road type #1</li>
+       <li>m5 bits 4..0: owner of road type #2
+       <li>m7 bits 7..5: road types
+       <li>m7 bits 4..0: owner of road type #3
       </ul>
      </li>
      <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
