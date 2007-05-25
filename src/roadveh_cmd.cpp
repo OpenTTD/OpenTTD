@@ -1402,7 +1402,7 @@ again:
 					case TRACKDIR_RVREV_SW: needed = ROAD_NE; break;
 					case TRACKDIR_RVREV_NW: needed = ROAD_SE; break;
 				}
-				if (!IsTileType(tile, MP_STREET) || (needed & GetRoadBits(tile, ROADTYPE_TRAM)) == ROAD_NONE) {
+				if (!IsTileType(tile, MP_STREET) || GetRoadTileType(tile) != ROAD_TILE_NORMAL || (needed & GetRoadBits(tile, ROADTYPE_TRAM)) == ROAD_NONE) {
 					/* The tram cannot turn here */
 					v->cur_speed = 0;
 					return;
