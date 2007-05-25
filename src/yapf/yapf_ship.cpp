@@ -26,7 +26,7 @@ public:
 	 *  and adds it to the open list by calling Yapf().AddNewNode(n) */
 	inline void PfFollowNode(Node& old_node)
 	{
-		TrackFollower F;
+		TrackFollower F(Yapf().GetVehicle());
 		if (F.Follow(old_node.m_key.m_tile, old_node.m_key.m_td))
 			Yapf().AddMultipleNodes(&old_node, F);
 	}
