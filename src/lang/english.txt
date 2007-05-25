@@ -1819,6 +1819,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Select n
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Select length of railway station
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Select bus station orientation
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Select lorry loading bay orientation
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Select passenger tram station orientation
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Select cargo tram station orientation
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centre main view on station location
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Show station ratings
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Change name of station
