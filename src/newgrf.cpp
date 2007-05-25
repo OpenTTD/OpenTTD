@@ -4808,6 +4808,13 @@ void InitDepotWindowBlockSizes();
 
 static void AfterLoadGRFs()
 {
+	/* Update the bitmasks for the vehicle lists */
+	Player *p;
+	FOR_ALL_PLAYERS(p) {
+		p->avail_railtypes = GetPlayerRailtypes(p->index);
+		p->avail_roadtypes = GetPlayerRoadtypes(p->index);
+	}
+
 	/* Pre-calculate all refit masks after loading GRF files. */
 	CalculateRefitMasks();
 

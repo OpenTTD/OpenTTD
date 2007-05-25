@@ -332,6 +332,12 @@ static void NewVehicleAvailable(Engine *e)
 			if (p->is_active) SETBIT(p->avail_railtypes, railtype);
 		}
 	}
+	if ((index - NUM_TRAIN_ENGINES) < NUM_ROAD_ENGINES) {
+		/* maybe make another road type available */
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active) SETBIT(p->avail_roadtypes, HASBIT(EngInfo(index)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		}
+	}
 	AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL), 0, 0);
 }
 
