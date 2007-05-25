@@ -5,6 +5,8 @@
 ##case ms mp fs fp
 ##gender m f
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fuori dal bordo della mappa
@@ -1048,6 +1050,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Stazion
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuovo pathfinding globale (NPF, sovrascrive NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Moltiplicatore di peso per simulare treni merci pesanti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Consenti fermate passanti sulle strade delle città: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Consenti la costruzione di stazioni adiacenti: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Consenti sempre la costruzione di piccoli aeroporti: {ORANGE}{STRING}
 
@@ -1588,6 +1591,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia con se
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia con pre-segnali
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia con segnali di uscita
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia con segnali combinati
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bisogna rimuovere la stazione prima
 
 
 

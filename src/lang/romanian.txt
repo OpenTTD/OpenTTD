@@ -3,6 +3,8 @@
 ##isocode ro_RO
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Depãseste limita hãrtii
@@ -51,7 +53,7 @@ STR_002B_BATTERIES                                              :baterii
 STR_002C_PLASTIC                                                :plastic
 STR_002D_FIZZY_DRINKS                                           :sucuri
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :cãlãtori
+STR_002F_PASSENGER                                              :cãlãtor
 STR_0030_COAL                                                   :cãrbuni
 STR_0031_MAIL                                                   :colete postale
 STR_0032_OIL                                                    :petrol
@@ -200,7 +202,7 @@ STR_00E7_INDUSTRIES                                             :Industrii
 STR_00E8_ROUTES                                                 :Rute
 STR_00E9_VEGETATION                                             :Vegetatie
 STR_00EA_OWNERS                                                 :Proprietari
-STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Strãzi
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Drumuri
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Cãi ferate
 STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Statii/Aeroporturi/Porturi
 STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Clãdiri/Industrii
@@ -347,7 +349,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Profitul operational
-STR_0155_INCOME_GRAPH                                           :Cifra de afaceri
+STR_0155_INCOME_GRAPH                                           :Venituri
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Numãr încãrcãturi livrate
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Evolutia performantei
 STR_0158_COMPANY_VALUE_GRAPH                                    :Valoarea companiei
@@ -445,7 +447,7 @@ STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Afiseaz�
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Mãreste imaginea
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Micsoreazã imaginea
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Construieste cãi ferate
-STR_0182_BUILD_ROADS                                            :{BLACK}Construieste strãzi
+STR_0182_BUILD_ROADS                                            :{BLACK}Construieste drumuri
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Construieste porturi
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Construieste aeroporturi
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Planteazã arbori, plaseazã semne, etc.
@@ -453,7 +455,7 @@ STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informat
 STR_0187_OPTIONS                                                :{BLACK}Optiuni
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Nu pot schimba intervalul de service...
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Nu pot schimba intervalul de întreţinere...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Închide fereastra
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
 STR_STICKY_BUTTON                                               :{BLACK}Mark this window as undeletable for the 'Close All Windows' key
@@ -470,7 +472,7 @@ STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Aratã i
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Aratã rutele de transport pe hartã
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Aratã vegetatia pe hartã
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Aratã proprietãtile pe hartã
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Activeazã afisarea numelor oraselor pe hartã
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Activeazã/Dezactiveazã afisarea numelor oraselor pe hartã
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profit anul acesta: {CURRENCY} (anul trecut: {CURRENCY})
 
 ############ range for service numbers starts
@@ -486,9 +488,9 @@ STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} este foarte vechi
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} este foarte vechi si trebuie înlocuit urgent
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informatii teren
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costul demolãrii: {LTBLUE}N/A
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costul demolãrii: {LTBLUE}nu este cazul
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costul demolãrii: {LTBLUE}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
+STR_01A6_N_A                                                    :nu este cazul
 STR_01A7_OWNER                                                  :{BLACK}Proprietar: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoritatea localã: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :nici una
@@ -550,7 +552,7 @@ STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Sãri la
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Sãri la piesa urmãtoare din selectie
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Opreste muzica
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Porneste muzica
-STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Foloseste acest indicator pentru a regla volumul muzicii si al efectelor sonore
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Foloseste aceste indicatoare pentru a regla volumul muzicii si al efectelor sonore
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
@@ -574,7 +576,7 @@ STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Selectea
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Selecteazã programul personal 2
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Sterge programul curent (doar pentru cele personale)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Salveaza setarile pentru muzica
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Click pe o melodie pentru a adãuga-o in programul personal curent
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Click pe o melodie pentru a o adãuga in programul personal curent
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Apasa pe pista audio pentru a o elimina din programul actual (doar Custom1 sau Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Comutator pentru amestecarea melodiilor (da/nu)
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Afiseaza fereastra pentru selectia melodiilor
@@ -617,7 +619,7 @@ STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} al {COMPANY} dobandeste titlul de '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor scenarii
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor de scenarii
 STR_0223_LAND_GENERATION                                        :{WHITE}Generator suprafatã uscat
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
@@ -1046,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Statii 
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nou pathfinding global(NPF, dezactiveaza NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicator greutate pt marfar pt simularea trenurilor grele: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite semafoare in intersectiile drumurilor din proprietatea orasului: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permite construirea de statii adiacente: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING}
 
@@ -1585,6 +1588,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Cale feratã cu
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Cale feratã cu pre-semnalizare
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Cale feratã cu semnale de iesire
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Cale feratã cu semnale combinate
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Trebuie mai intai sa demolati gara
 
 
 
@@ -2011,6 +2015,8 @@ STR_SV_STNAME_UPPER                                             :{STRING} de Sus
 STR_SV_STNAME_LOWER                                             :{STRING} de Jos
 STR_SV_STNAME_HELIPORT                                          :Heliportul {STRING}
 STR_SV_STNAME_FOREST                                            :Pãdurea {STRING}
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3187,3 +3193,20 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Comuta t
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Comuta transparenta pentru construibile, precum statii, depouri, indicatoare si linii electrificate
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comuta transparenta pentru poduri
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comuta transparenta pentru structuri ca farurile si antenele - poate in viitor, pentru efect
+
+##### Mass Order
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Toate trenurile
+STR_GROUP_ALL_ROADS                                             :Toate autovehiculele
+STR_GROUP_ALL_SHIPS                                             :Toate navele
+STR_GROUP_ALL_AIRCRAFTS                                         :Toate aeronavele
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tren{P "" uri}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Autovehicul{P "" e}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Nav{P a e}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronav{P a e}
+
+
+
+
+########

@@ -3,6 +3,8 @@
 ##isocode ca_ES
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora del marc del mapa
@@ -991,10 +993,10 @@ STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tren {CO
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tren {COMMA} té una ordre buida
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tren {COMMA} té ordres duplicades
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tren {COMMA} té una estació incorrecta en les ordres
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Vehicle Rodat {COMMA} té massa poques ordres a la planificació
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Vehicle Rodat {COMMA} té una ordre buida
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Vehicle Rodat {COMMA} té ordres duplicades
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Vehicle Rodat {COMMA} té una estació incorrecta en les ordres
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Vehicle {COMMA} té massa poques ordres a la planificació
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Vehicle {COMMA} té una ordre buida
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Vehicle {COMMA} té ordres duplicades
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Vehicle {COMMA} té una estació incorrecta en les ordres
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Vaixell {COMMA} té massa poques ordres a la planificació
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Vaixell {COMMA} té una ordre buida
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Vaixell {COMMA} té ordres duplicades
@@ -1046,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacio
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova cerca de rutes global (NPF, anul·la NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de pes per contenidor per simular trens pesats: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permet situar parades en carreteres que són propietat del poble: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permetre construir estacions annexes: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permet sempre aeroports petits: {ORANGE}{STRING}
 
@@ -1098,6 +1101,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Moure mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocitat del mapa amb la rodeta del ratolí: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Posa en pausa automàticament en començar un joc nou: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilitza la llista de vehicles avançada: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
@@ -1585,6 +1589,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Via de tren amb
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Via de tren amb pre-senyals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Via de tren amb senyals de sortida
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Via de tren amb senyals combinades
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Primer has de treure la via de l'estació
 
 
 
@@ -1974,7 +1979,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ja é
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sense Nom
 STR_SV_TRAIN_NAME                                               :Tren {COMMA}
-STR_SV_ROADVEH_NAME                                             :Vehicle Rodat {COMMA}
+STR_SV_ROADVEH_NAME                                             :Vehicle {COMMA}
 STR_SV_SHIP_NAME                                                :Vaixell {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronau {COMMA}
 
@@ -2011,6 +2016,8 @@ STR_SV_STNAME_UPPER                                             :Sobre {STRING}
 STR_SV_STNAME_LOWER                                             :Baix {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Bosc
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -2108,12 +2115,12 @@ STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Construcció
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nous Vehicles
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Desp. de Circ. de Trens
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Desp. de Circ. de Vehicles Rodats
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Desp. de Circ. de Vehicles
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Desp. de Circ. d'Aeronaus
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Desp. de Circ. de Vaixells
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Manteniment de Propietats
 STR_7018_TRAIN_INCOME                                           :{GOLD}Ingressos de Tren
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ingressos de Vehicles Rodats
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ingressos de Vehicles
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ingressos d'Aeronaus
 STR_701B_SHIP_INCOME                                            :{GOLD}Ingressos de Vaixells
 STR_701C_LOAN_INTEREST                                          :{GOLD}Interessos del Prèstec
@@ -2668,11 +2675,11 @@ STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nou {STR
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automòbil en camí
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Vehicles Rodats
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Vehicles
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Cotxera de Vehicles Rodats
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Cotxera de Vehicles
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nous Vehicles
-STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nous Vehicles Rodats
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nous Vehicles
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Construeix Vehicle
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}No es pot construir l'automòbil...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalls)
@@ -2685,7 +2692,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...s'ha de parar dins d'una cotxera
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No pots vendre l'automòbil...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No es pot parar/arrencar l'automòbil...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehicle Rodat {COMMA} esperant en cotxera
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehicle {COMMA} esperant en cotxera
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Cap a la cotxera de {TOWN}.
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisió a la cotxera de {TOWN}
@@ -2704,7 +2711,7 @@ STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vehicles
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construeix un nou automòbil
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arrossega el vehicle fins aquí per vendre'l
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centra la pantalla principal en la situació de la cotxera
-STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista de selecció de Vehicles Rodats - clica en un vehicle per informació
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per informació
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construeix l'automòbil seleccionat
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Velocitat: {VELOCITY}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
 
@@ -2713,8 +2720,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}No es po
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Anomena automòbil
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{}Primer autobús arriba a {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{}Primer camió arriba a {STATION}!
-STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident de Vehicle Rodat!{}El conductor mor en una bola de foc després de la colisió amb un tren
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident de Vehicle Rodat!{}{COMMA} moren en una bola de foc després d'una colisió amb un tren
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident de Vehicle!{}El conductor mor en una bola de foc després de la colisió amb un tren
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident de Vehicle!{}{COMMA} moren en una bola de foc després d'una colisió amb un tren
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}No es pot fer que el vehicle torni...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}No es poden girar vehicles que estan formats per múltiples unitats
 STR_9034_RENAME                                                 :{BLACK}Reanomena
@@ -3006,7 +3013,7 @@ STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vendre t
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Treure una llista de tots els trens amb aquesta cotxera en les seves ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Treure una llista de tots els vehicles amb aquesta cotxera en les seves ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Treure una llista de tots els vaixells amb aquesta drassana en les seves ordres
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Treu una llista de tots els avions amb algun hangar en aquest aeroport en les seves ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Treu una llista de tots les aeronaus amb algun hangar en aquest aeroport en les seves ordres
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubstitueix tots els trens de la cotxera
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstitueix tots els vehicles de la cotxera
@@ -3187,3 +3194,41 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activa/D
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activa/Desactiva transparència dels edificis com ara estacions, cotxeres, punts de trobada i catenàries
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activa/Desactiva transparència dels ponts
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activa/Desactiva transparència de les estructures com ara fars i antenes
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Grup {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Tots els trens
+STR_GROUP_ALL_ROADS                                             :Tots els vehicles
+STR_GROUP_ALL_SHIPS                                             :Tots els vaixells
+STR_GROUP_ALL_AIRCRAFTS                                         :Totes les aeronaus
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Afegeix vehicles compartits
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Treu tots els vehicles
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tren{P "" s}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vehicle{P "" s}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Vaixell{P "" s}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronau
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Canvia de nom el grup
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Substitueix els Vehicles de "{GROUP}"
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}No puc crear el  grup...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}No puc eliminar aquest grup...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}No puc canviar el nom del grup...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}No puc eliminar tots els vehicles d'aquest grup...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}No puc afegir el vehicle a aquest grup...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}No puc afegir vehicles compartits al grup...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grups - Clica en un grup per llistar tots els vehicles d'aquest grup
+STR_GROUP_CREATE_TIP                                            :{BLACK}Clica per crear un grup
+STR_GROUP_DELETE_TIP                                            :{BLACK}Elimina el grup seleccionat
+STR_GROUP_RENAME_TIP                                            :{BLACK}Canvia el nom del grup seleccionat
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clica per protegir aquest grup de l'autosubstitueix global
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Benefici aquest any: {GREEN}{CURRENCY} {BLACK}(any passat: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Benefici aquest any: {RED}{CURRENCY} {BLACK}(any passat: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Benefici aquest any: {GREEN}{CURRENCY} {BLACK}(any passat: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Benefici aquest any: {RED}{CURRENCY} {BLACK}(any passat: {RED}{CURRENCY}{BLACK})
+
+########
