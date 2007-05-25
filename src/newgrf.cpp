@@ -4304,6 +4304,7 @@ static void ResetNewGRF()
 		next = f->next;
 
 		free(f->filename);
+		free(f->cargo_list);
 		free(f);
 	}
 
