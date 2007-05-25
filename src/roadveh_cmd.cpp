@@ -957,6 +957,9 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 		return;
 	}
 
+	/* Trams can't overtake other trams */
+	if (v->u.road.roadtype == ROADTYPE_TRAM) return;
+
 	if (v->direction != u->direction || !(v->direction & 1)) return;
 
 	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */

@@ -160,6 +160,9 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 			/* This is for engines we can replace to and they should depend on what we selected to replace from */
 			if (!IsEngineBuildable(e, type, _local_player)) continue; // we need to be able to build the engine
 			if (!EnginesGotCargoInCommon(e, WP(w, replaceveh_d).sel_engine[0])) continue; // the engines needs to be able to carry the same cargo
+
+			/* Road vehicles can't be replaced by trams and vice-versa */
+			if (type == VEH_ROAD && HASBIT(EngInfo(WP(w, replaceveh_d).sel_engine[0])->misc_flags, EF_ROAD_TRAM) != HASBIT(EngInfo(e)->misc_flags, EF_ROAD_TRAM)) continue;
 			if (e == WP(w, replaceveh_d).sel_engine[0]) continue; // we can't replace an engine into itself (that would be autorenew)
 		}
 

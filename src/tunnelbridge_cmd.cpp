@@ -1048,6 +1048,10 @@ void DrawBridgeMiddle(const TileInfo* ti)
 		pal = psid->pal;
 	}
 
+	if (GetRailType(rampsouth) == RAILTYPE_ELECTRIC) {
+		DrawCatenary(ti);
+	}
+
 	/* draw roof, the component of the bridge which is logically between the vehicle and the camera */
 	if (axis == AXIS_X) {
 		y += 12;
@@ -1056,8 +1060,6 @@ void DrawBridgeMiddle(const TileInfo* ti)
 		x += 12;
 		if (image & SPRITE_MASK) AddSortableSpriteToDraw(image, pal, x, y, 1, 16, 0x28, z);
 	}
-
-	if (GetRailType(rampsouth) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 	psid++;
 	if (ti->z + 5 == z) {
