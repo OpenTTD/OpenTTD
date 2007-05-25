@@ -1200,7 +1200,11 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
-		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		if (new_player == PLAYER_SPECTATOR) {
+			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		} else {
+			SetTileOwner(tile, new_player);
+		}
 		return;
 	}
 
@@ -1209,15 +1213,17 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 
 		if (GetRoadOwner(tile, rt) == old_player) {
 			SetRoadOwner(tile, rt, new_player == PLAYER_SPECTATOR ? OWNER_NONE : new_player);
-
-			if (rt == ROADTYPE_TRAM) {
-				DoCommand(tile, ROADTYPE_TRAM << 4 | GetRoadBits(tile, ROADTYPE_ROAD), 0, DC_EXEC, CMD_REMOVE_ROAD);
-			}
 		}
 	}
 
 	if (IsLevelCrossing(tile)) {
-		MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY));
+		if (GetTileOwner(tile) == old_player) {
+			if (new_player == PLAYER_SPECTATOR) {
+				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY));
+			} else {
+				SetTileOwner(tile, new_player);
+			}
+		}
 	}
 }
 
