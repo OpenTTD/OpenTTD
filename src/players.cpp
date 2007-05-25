@@ -472,6 +472,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = PLAYER_SPECTATOR;
 
 	p->avail_railtypes = GetPlayerRailtypes(p->index);
+	p->avail_roadtypes = GetPlayerRoadtypes(p->index);
 	p->inaugurated_year = _cur_year;
 	p->face = ConvertFromOldPlayerFace(Random());
 
@@ -603,6 +604,24 @@ byte GetPlayerRailtypes(PlayerID p)
 				assert(rvi->railtype < RAILTYPE_END);
 				SETBIT(rt, rvi->railtype);
 			}
+		}
+	}
+
+	return rt;
+}
+
+byte GetPlayerRoadtypes(PlayerID p)
+{
+	byte rt = 0;
+	EngineID i;
+
+	for (i = 0; i != TOTAL_NUM_ENGINES; i++) {
+		const Engine* e = GetEngine(i);
+		const EngineInfo *ei = EngInfo(i);
+
+		if (e->type == VEH_ROAD && HASBIT(ei->climates, _opt.landscape) &&
+				(HASBIT(e->player_avail, p) || _date >= e->intro_date + 365)) {
+			SETBIT(rt, HASBIT(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}
 	}
 

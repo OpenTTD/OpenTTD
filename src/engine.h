@@ -127,8 +127,8 @@ struct Engine {
  * EngineInfo.misc_flags is a bitmask, with the following values
  */
 enum {
-	EF_RAIL_TILTS = 0, ///< Rail vehicle tilts in curves (unsupported)
-	EF_ROAD_TRAM  = 0, ///< Road vehicle is a tram/light rail vehicle (unsup)
+	EF_RAIL_TILTS = 0, ///< Rail vehicle tilts in curves
+	EF_ROAD_TRAM  = 0, ///< Road vehicle is a tram/light rail vehicle
 	EF_USES_2CC   = 1, ///< Vehicle uses two company colours
 	EF_RAIL_IS_MU = 2, ///< Rail vehicle is a multiple-unit (DMU/EMU)
 };

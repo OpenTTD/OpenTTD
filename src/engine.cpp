@@ -178,14 +178,16 @@ void StartupEngines()
 static void AcceptEnginePreview(EngineID eid, PlayerID player)
 {
 	Engine *e = GetEngine(eid);
+	Player *p = GetPlayer(player);
 
 	SETBIT(e->player_avail, player);
 	if (e->type == VEH_TRAIN) {
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
-		Player *p = GetPlayer(player);
 
 		assert(rvi->railtype < RAILTYPE_END);
 		SETBIT(p->avail_railtypes, rvi->railtype);
+	} else if (e->type == VEH_ROAD) {
+		SETBIT(p->avail_roadtypes, HASBIT(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
 	e->preview_player = INVALID_PLAYER;

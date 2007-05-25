@@ -173,9 +173,6 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->u.road.state = RVSB_IN_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
-		v->u.road.roadtype = ROADTYPE_ROAD;
-		v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
-
 		v->spritenum = rvi->image_index;
 		v->cargo_type = rvi->cargo_type;
 		v->cargo_subtype = 0;
@@ -193,6 +190,9 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = rvi->max_speed;
 		v->engine_type = (byte)p1;
+
+		v->u.road.roadtype = HASBIT(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
+		v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
 
 		e = GetEngine(p1);
 		v->reliability = e->reliability;
@@ -1064,7 +1064,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 	TrackdirBits trackdirs = (TrackdirBits)GB(r,  0, 16);
 
 	if (IsTileType(tile, MP_STREET)) {
-		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir)) {
+		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir || (GetRoadTypes(tile) & v->u.road.compatible_roadtypes) == 0)) {
 			/* Road depot owned by another player or with the wrong orientation */
 			trackdirs = TRACKDIR_BIT_NONE;
 		}

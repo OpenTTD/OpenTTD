@@ -28,6 +28,7 @@
 #include "strings.h"
 #include "cargotype.h"
 #include "group.h"
+#include "road_map.h"
 
 
 enum BuildVehicleWidgets {
@@ -666,6 +667,7 @@ static void GenerateBuildRoadVehList(Window *w)
 
 	for (eid = ROAD_ENGINES_INDEX; eid < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; eid++) {
 		if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
+		if (!HASBIT(bv->filter.roadtypes, HASBIT(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
 		EngList_Add(&bv->eng_list, eid);
 
 		if (eid == bv->sel_engine) sel_id = eid;
@@ -1019,6 +1021,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 			ResizeWindow(w, 0, 16);
 			break;
 		case VEH_ROAD:
+			WP(w, buildvehicle_d).filter.roadtypes = (tile == 0) ? ROADTYPES_ALL : GetRoadTypes(tile);
 			ResizeWindow(w, 0, 16);
 		case VEH_SHIP:
 			break;

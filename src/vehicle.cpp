@@ -241,7 +241,7 @@ void AfterLoadVehicles()
 		switch (v->type) {
 			case VEH_ROAD:
 				v->cur_image = GetRoadVehImage(v, v->direction);
-				v->u.road.roadtype = ROADTYPE_ROAD;
+				v->u.road.roadtype = HASBIT(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 				v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
 				break;
 

@@ -1716,7 +1716,10 @@ bool AfterLoadGame()
 
 	if (CheckSavegameVersion(34)) FOR_ALL_PLAYERS(p) ResetPlayerLivery(p);
 
-	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
+	FOR_ALL_PLAYERS(p) {
+		p->avail_railtypes = GetPlayerRailtypes(p->index);
+		p->avail_roadtypes = GetPlayerRoadtypes(p->index);
+	}
 
 	if (!CheckSavegameVersion(27)) AfterLoadStations();
 

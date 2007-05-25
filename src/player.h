@@ -168,6 +168,7 @@ struct Player {
 	Livery livery[LS_END];
 	byte player_money_fraction;
 	byte avail_railtypes;
+	byte avail_roadtypes;
 	byte block_preview;
 	PlayerByte index;
 
@@ -248,6 +249,7 @@ static inline bool IsValidPlayer(PlayerID pi)
 }
 
 byte GetPlayerRailtypes(PlayerID p);
+byte GetPlayerRoadtypes(PlayerID p);
 
 /** Finds out if a Player has a certain railtype available */
 static inline bool HasRailtypeAvail(const Player *p, RailType Railtype)

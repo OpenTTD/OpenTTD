@@ -930,14 +930,15 @@ static void ToolbarZoomOutClick(Window *w)
 static void ToolbarBuildRailClick(Window *w)
 {
 	const Player *p = GetPlayer(_local_player);
-	Window *w2;
-	w2 = PopupMainToolbMenu(w, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes);
+	Window *w2 = PopupMainToolbMenu(w, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes);
 	WP(w2, menu_d).sel_index = _last_built_railtype;
 }
 
 static void ToolbarBuildRoadClick(Window *w)
 {
-	Window *w2 = PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 1, 0);
+	const Player *p = GetPlayer(_local_player);
+	/* The standard road button is *always* available */
+	Window *w2 = PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 1, ~(p->avail_roadtypes | 1));
 	WP(w2, menu_d).sel_index = _last_built_roadtype;
 }
 
