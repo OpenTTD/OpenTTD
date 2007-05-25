@@ -859,6 +859,36 @@ uint GetBridgeFoundation(Slope tileh, Axis axis)
 }
 
 /**
+ * Draws the trambits over an already drawn (lower end) of a bridge.
+ * @param x       the x of the bridge
+ * @param y       the y of the bridge
+ * @param z       the z of the bridge
+ * @param offset  number representing whether to level or sloped and the direction
+ * @param overlay do we want to still see the road?
+ */
+static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay)
+{
+	static const SpriteID tram_offsets[2][6] = { { 107, 108, 109, 110, 111, 112 }, { 4, 5, 15, 16, 17, 18 } };
+	static const SpriteID back_offsets[6]    =   {  95,  95,  99, 102, 100, 101 };
+	static const SpriteID front_offsets[6]   =   {  97,  98, 103, 106, 104, 105 };
+
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE, x, y, 16, 16, offset >= 2 ? 1 : 0, z);
+
+	SpriteID front = SPR_TRAMWAY_BASE + front_offsets[offset];
+	SpriteID back  = SPR_TRAMWAY_BASE + back_offsets[offset];
+	SpriteID pal   = PAL_NONE;
+	if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
+		SETBIT(front, PALETTE_MODIFIER_TRANSPARENT);
+		SETBIT(back,  PALETTE_MODIFIER_TRANSPARENT);
+		pal = PALETTE_TO_TRANSPARENT;
+	}
+
+	AddSortableSpriteToDraw(back,  pal, x, y, 16, 16, 0, z);
+	/* For sloped sprites the bounding box needs to be higher, as the pylons stop on a higher point */
+	AddSortableSpriteToDraw(front, pal, x, y, 16, 16, offset >= 2 ? 0x30 : 0x10, z);
+}
+
+/**
  * Draws a tunnel of bridge tile.
  * For tunnels, this is rather simple, as you only needa draw the entrance.
  * Bridges are a bit more complex. base_offset is where the sprite selection comes into play
@@ -887,7 +917,17 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		image += GetTunnelDirection(ti->tile) * 2;
 		DrawGroundSprite(image, PAL_NONE);
-		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL && GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
+		if (GetTunnelTransportType(ti->tile) == TRANSPORT_ROAD) {
+			DiagDirection dir = GetTunnelDirection(ti->tile);
+			RoadTypes rts = GetRoadTypes(ti->tile);
+
+			if (HASBIT(rts, ROADTYPE_TRAM)) {
+				static const SpriteID tunnel_sprites[2][4] = { { 28, 78, 79, 27 }, {  5, 76, 77,  4 } };
+
+				DrawGroundSprite(SPR_TRAMWAY_BASE + tunnel_sprites[rts - ROADTYPES_TRAM][dir], PAL_NONE);
+				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, 16, 16, 16, (byte)ti->z);
+			}
+		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
 			DrawCatenary(ti);
 		}
 
@@ -927,10 +967,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			DrawGroundSprite(SPR_FLAT_SNOWY_TILE + _tileh_to_sprite[ti->tileh], PAL_NONE);
 		}
 
-		if (GetBridgeTransportType(ti->tile) == TRANSPORT_RAIL && GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
-			DrawCatenary(ti);
-		}
-
 		image = psid->sprite;
 
 		/* draw ramp */
@@ -945,8 +981,25 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		 * it doesn't disappear behind it
 		 */
 		AddSortableSpriteToDraw(
-			image, pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 1 : 8, ti->z
+			image, pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 0 : 8, ti->z
 		);
+
+		if (GetBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
+			RoadTypes rts = GetRoadTypes(ti->tile);
+
+			if (HASBIT(rts, ROADTYPE_TRAM)) {
+				uint offset = GetBridgeRampDirection(ti->tile);
+				if (ti->tileh != SLOPE_FLAT) {
+					offset = (offset + 1) & 1;
+					ti->z += TILE_HEIGHT;
+				} else {
+					offset += 2;
+				}
+				DrawBridgeTramBits(ti->x, ti->y, ti->z, offset, HASBIT(rts, ROADTYPE_ROAD));
+			}
+		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
+			DrawCatenary(ti);
+		}
 
 		DrawBridgeMiddle(ti);
 	}
@@ -1023,7 +1076,8 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 	x = ti->x;
 	y = ti->y;
-	z = GetBridgeHeight(rampsouth) - 3;
+	uint bridge_z = GetBridgeHeight(rampsouth);
+	z = bridge_z - 3;
 
 	image = psid->sprite;
 	if (HASBIT(_transparent_opt, TO_BRIDGES)) {
@@ -1048,7 +1102,13 @@ void DrawBridgeMiddle(const TileInfo* ti)
 		pal = psid->pal;
 	}
 
-	if (GetRailType(rampsouth) == RAILTYPE_ELECTRIC) {
+	if (GetBridgeTransportType(rampsouth) == TRANSPORT_ROAD) {
+		RoadTypes rts = GetRoadTypes(rampsouth);
+
+		if (HASBIT(rts, ROADTYPE_TRAM)) {
+			DrawBridgeTramBits(x, y, bridge_z, axis ^ 1, HASBIT(rts, ROADTYPE_ROAD));
+		}
+	} else if (GetRailType(rampsouth) == RAILTYPE_ELECTRIC) {
 		DrawCatenary(ti);
 	}
 

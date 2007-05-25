@@ -472,6 +472,7 @@ int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & VS_STOPPED ||
+			v->u.road.roadtype == ROADTYPE_TRAM ||
 			v->u.road.crashed_ctr != 0 ||
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
@@ -836,7 +837,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 			SetDParam(0, st->index);
 			flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 			AddNewsItem(
-				STR_902F_CITIZENS_CELEBRATE_FIRST,
+				v->u.road.roadtype == ROADTYPE_ROAD ? STR_902F_CITIZENS_CELEBRATE_FIRST : STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM,
 				flags,
 				v->index,
 				0);
@@ -850,7 +851,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 			SetDParam(0, st->index);
 			flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 			AddNewsItem(
-				STR_9030_CITIZENS_CELEBRATE_FIRST,
+				v->u.road.roadtype == ROADTYPE_ROAD ? STR_9030_CITIZENS_CELEBRATE_FIRST : STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM,
 				flags,
 				v->index,
 				0
@@ -1303,7 +1304,7 @@ static void RoadVehController(Vehicle *v)
 		v->direction = DiagDirToDir(dir);
 
 		tdir = _roadveh_depot_exit_trackdir[dir];
-		rdp = _road_drive_data[(_opt.road_side << RVS_DRIVE_SIDE) + tdir];
+		rdp = _road_drive_data[v->u.road.roadtype][(_opt.road_side << RVS_DRIVE_SIDE) + tdir];
 
 		x = TileX(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].x & 0xF);
 		y = TileY(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].y & 0xF);
@@ -1372,7 +1373,7 @@ static void RoadVehController(Vehicle *v)
 	/* Get move position data for next frame.
 	 * For a drive-through road stop use 'straight road' move data.
 	 * In this case v->u.road.state is masked to give the road stop entry direction. */
-	rd = _road_drive_data[(
+	rd = _road_drive_data[v->u.road.roadtype][(
 		(HASBIT(v->u.road.state, RVS_IN_DT_ROAD_STOP) ? v->u.road.state & RVSB_ROAD_STOP_TRACKDIR_MASK : v->u.road.state) +
 		(_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
@@ -1391,11 +1392,27 @@ static void RoadVehController(Vehicle *v)
 again:
 		if (IsReversingRoadTrackdir(dir)) {
 			/* Turning around */
-			tile = v->tile;
+			if (v->u.road.roadtype == ROADTYPE_TRAM) {
+				RoadBits needed; // The road bits the tram needs to be able to turn around
+				switch (dir) {
+					default: NOT_REACHED();
+					case TRACKDIR_RVREV_NE: needed = ROAD_SW; break;
+					case TRACKDIR_RVREV_SE: needed = ROAD_NW; break;
+					case TRACKDIR_RVREV_SW: needed = ROAD_NE; break;
+					case TRACKDIR_RVREV_NW: needed = ROAD_SE; break;
+				}
+				if (!IsTileType(tile, MP_STREET) || (needed & GetRoadBits(tile, ROADTYPE_TRAM)) == ROAD_NONE) {
+					/* The tram cannot turn here */
+					v->cur_speed = 0;
+					return;
+				}
+			} else {
+				tile = v->tile;
+			}
 		}
 
 		/* Get position data for first frame on the new tile */
-		rdp = _road_drive_data[(dir + (_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
+		rdp = _road_drive_data[v->u.road.roadtype][(dir + (_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
 
 		x = TileX(tile) * TILE_SIZE + rdp[RVC_DEFAULT_START_FRAME].x;
 		y = TileY(tile) * TILE_SIZE + rdp[RVC_DEFAULT_START_FRAME].y;
@@ -1462,7 +1479,7 @@ again:
 			return;
 		}
 
-		rdp = _road_drive_data[(_opt.road_side << RVS_DRIVE_SIDE) + dir];
+		rdp = _road_drive_data[v->u.road.roadtype][(_opt.road_side << RVS_DRIVE_SIDE) + dir];
 
 		x = TileX(v->tile) * TILE_SIZE + rdp[RVC_TURN_AROUND_START_FRAME].x;
 		y = TileY(v->tile) * TILE_SIZE + rdp[RVC_TURN_AROUND_START_FRAME].y;

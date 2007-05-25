@@ -2905,6 +2905,14 @@ static void GraphicsNew(byte *buf, int len)
 			replace = SPR_2CCMAP_BASE;
 			break;
 
+		case 0x0B: // tramways
+			if (num != 113) {
+				grfmsg(1, "GraphicsNews: Tramway graphics sprite count must be 113, skipping");
+				return;
+			}
+			replace = SPR_TRAMWAY_BASE;
+			break;
+
 		case 0x0D: // Coast graphics
 			if (num != 16) {
 				grfmsg(1, "GraphicsNew: Coast graphics sprite count must be 16, skipping");
@@ -4237,7 +4245,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (1 << 0x11)  // autoreplace
 	                   |                                        (1 << 0x12)  // autoslope
 	                   |                                        (0 << 0x13)  // followvehicle
-	                   |                                        (0 << 0x14)  // trams
+	                   |                                        (1 << 0x14)  // trams
 	                   |                                        (0 << 0x15)  // enhancetunnels
 	                   |                                        (0 << 0x16)  // shortrvs
 	                   |                                        (0 << 0x17)  // articulatedrvs

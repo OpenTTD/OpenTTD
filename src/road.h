@@ -43,7 +43,7 @@ DECLARE_ENUM_AS_BIT_SET(RoadTypes);
  */
 static inline bool IsValidRoadType(RoadType rt)
 {
-	return rt == ROADTYPE_ROAD;
+	return rt == ROADTYPE_ROAD || rt == ROADTYPE_TRAM;
 }
 
 /**
@@ -53,7 +53,7 @@ static inline bool IsValidRoadType(RoadType rt)
  */
 static inline bool AreValidRoadTypes(RoadTypes rts)
 {
-	return rts == ROADTYPES_ROAD;
+	return HASBIT(rts, ROADTYPE_ROAD) || HASBIT(rts, ROADTYPE_TRAM);
 }
 
 /**
@@ -114,5 +114,7 @@ static inline bool IsStraightRoadTrackdir(Trackdir dir)
  * @return true when it is allowed to remove the road bits
  */
 bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road, RoadType rt);
+
+void DrawTramCatenary(TileInfo *ti, RoadBits tram);
 
 #endif /* ROAD_H */

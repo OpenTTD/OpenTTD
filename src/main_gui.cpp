@@ -938,7 +938,7 @@ static void ToolbarBuildRoadClick(Window *w)
 {
 	const Player *p = GetPlayer(_local_player);
 	/* The standard road button is *always* available */
-	Window *w2 = PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 1, ~(p->avail_roadtypes | 1));
+	Window *w2 = PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 2, ~(p->avail_roadtypes | 1));
 	WP(w2, menu_d).sel_index = _last_built_roadtype;
 }
 

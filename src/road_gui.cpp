@@ -94,6 +94,16 @@ static const RoadTypeInfo _road_type_infos[] = {
 		SPR_CURSOR_ROAD_NESW,
 		SPR_CURSOR_ROAD_NWSE,
 	},
+	{
+		STR_1804_CAN_T_BUILD_TRAMWAY_HERE,
+		STR_1805_CAN_T_REMOVE_TRAMWAY_FROM,
+		STR_1807_CAN_T_BUILD_TRAM_VEHICLE,
+		{ STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION, STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION },
+		{ STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION,     STR_CAN_T_REMOVE_CARGO_TRAM_STATION     },
+
+		SPR_CURSOR_TRAMWAY_NESW,
+		SPR_CURSOR_TRAMWAY_NWSE,
+	},
 };
 
 static void PlaceRoad_Tunnel(TileIndex tile)
@@ -375,13 +385,39 @@ static const WindowDesc _build_road_desc = {
 	BuildRoadToolbWndProc
 };
 
+static const Widget _build_tramway_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   205,     0,    13, STR_1802_TRAMWAY_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   206,   217,     0,    13, 0x0,                        STR_STICKY_BUTTON},
+
+{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_TRAMWAY_NW,         STR_180B_BUILD_TRAMWAY_SECTION},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_TRAMWAY_NE,         STR_180B_BUILD_TRAMWAY_SECTION},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_TRAM_VEHICLE_DEPOT},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_PASSENGER_TRAM_STATION},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_CARGO_TRAM_STATION},
+
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   173,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_TRAMWAY_BRIDGE},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   174,   195,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_TRAMWAY_TUNNEL},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   196,   217,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS},
+{   WIDGETS_END},
+};
+
+static const WindowDesc _build_tramway_desc = {
+	WDP_ALIGN_TBR, 22, 218, 36,
+	WC_BUILD_TOOLBAR, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
+	_build_tramway_widgets,
+	BuildRoadToolbWndProc
+};
+
 void ShowBuildRoadToolbar(RoadType roadtype)
 {
 	if (!IsValidPlayer(_current_player)) return;
 	_cur_roadtype = roadtype;
 
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
-	Window *w = AllocateWindowDesc(&_build_road_desc);
+	Window *w = AllocateWindowDesc(roadtype == ROADTYPE_ROAD ? &_build_road_desc : &_build_tramway_desc);
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
@@ -462,6 +498,17 @@ static const Widget _build_road_depot_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const Widget _build_tram_depot_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_1806_TRAM_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   121, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                             STR_1813_SELECT_TRAM_VEHICLE_DEPOT},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                             STR_1813_SELECT_TRAM_VEHICLE_DEPOT},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                             STR_1813_SELECT_TRAM_VEHICLE_DEPOT},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                             STR_1813_SELECT_TRAM_VEHICLE_DEPOT},
+{   WIDGETS_END},
+};
+
 static const WindowDesc _build_road_depot_desc = {
 	WDP_AUTO, WDP_AUTO, 140, 122,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
@@ -470,9 +517,17 @@ static const WindowDesc _build_road_depot_desc = {
 	BuildRoadDepotWndProc
 };
 
+static const WindowDesc _build_tram_depot_desc = {
+	WDP_AUTO, WDP_AUTO, 140, 122,
+	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	_build_tram_depot_widgets,
+	BuildRoadDepotWndProc
+};
+
 static void ShowRoadDepotPicker()
 {
-	AllocateWindowDesc(&_build_road_depot_desc);
+	AllocateWindowDesc(_cur_roadtype == ROADTYPE_ROAD ? &_build_road_depot_desc : &_build_tram_depot_desc);
 }
 
 static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
@@ -581,7 +636,8 @@ static const WindowDesc _bus_station_picker_desc = {
 
 static void ShowBusStationPicker()
 {
-	AllocateWindowDesc(&_bus_station_picker_desc);
+	Window *w = AllocateWindowDesc(&_bus_station_picker_desc);
+	if (w != NULL) w->widget[1].data = (_cur_roadtype == ROADTYPE_ROAD) ? STR_3042_BUS_STATION_ORIENTATION : STR_3042_PASSENGER_TRAM_STATION_ORIENTATION;
 }
 
 static const Widget _truck_station_picker_widgets[] = {
@@ -610,7 +666,8 @@ static const WindowDesc _truck_station_picker_desc = {
 
 static void ShowTruckStationPicker()
 {
-	AllocateWindowDesc(&_truck_station_picker_desc);
+	Window *w = AllocateWindowDesc(&_truck_station_picker_desc);
+	if (w != NULL) w->widget[1].data = (_cur_roadtype == ROADTYPE_ROAD) ? STR_3043_TRUCK_STATION_ORIENT : STR_3043_CARGO_TRAM_STATION_ORIENT;
 }
 
 void InitializeRoadGui()

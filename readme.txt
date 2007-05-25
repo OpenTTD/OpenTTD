@@ -317,6 +317,7 @@ Thanks to:
   Richard Kempton (RichK67)      - Additional airports, initial TGP implementation
   Michael Blunck                 - For revolutionizing TTD with awesome graphics
   George                         - Canal graphics
+  David Dallaston (Pikka)        - Tram tracks
   All Translators                - For their support to make OpenTTD a truly international game
   Bug Reporters                  - Thanks for all bug reports
   Chris Sawyer                   - For an amazing game!

@@ -1266,9 +1266,13 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (build_over_road) {
 		if (IsTileOwner(tile, OWNER_TOWN) && !_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
 		if (GetRoadTileType(tile) != ROAD_TILE_NORMAL) return CMD_ERROR;
-		if (!IsTileOwner(tile, OWNER_TOWN) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_ROAD)) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_TRAM))) return CMD_ERROR;
+
+		RoadTypes cur_rts = GetRoadTypes(tile);
+		if (!IsTileOwner(tile, OWNER_TOWN) && (
+				((HASBIT(cur_rts, ROADTYPE_ROAD) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_ROAD)))) ||
+				((HASBIT(cur_rts, ROADTYPE_TRAM) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_TRAM)))))) return CMD_ERROR;
 		/* Do not remove roadtypes! */
-		if (rts != GetRoadTypes(tile) && rts != ROADTYPES_ROADTRAM) return CMD_ERROR;
+		rts |= GetRoadTypes(tile);
 	}
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -1986,7 +1990,15 @@ extern void DrawCanalWater(TileIndex tile);
 static void DrawTile_Station(TileInfo *ti)
 {
 	const DrawTileSprites *t = NULL;
-	RailType railtype = GetRailType(ti->tile);
+	RailType railtype;
+	RoadTypes roadtypes;
+	if (IsRailwayStation(ti->tile)) {
+		railtype = GetRailType(ti->tile);
+		roadtypes = ROADTYPES_NONE;
+	} else {
+		roadtypes = GetRoadTypes(ti->tile);
+		railtype = RAILTYPE_BEGIN;
+	}
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	uint32 relocation = 0;
 	const Station *st = NULL;
@@ -2045,6 +2057,12 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
 
+	if (HASBIT(roadtypes, ROADTYPE_TRAM)) {
+		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
+		DrawGroundSprite((HASBIT(roadtypes, ROADTYPE_ROAD) ? SPR_TRAMWAY_OVERLAY : SPR_TRAMWAY_TRAM) + (axis ^ 1), PAL_NONE);
+		DrawTramCatenary(ti, axis == AXIS_X ? ROAD_X : ROAD_Y);
+	}
+
 	if (IsBuoyTile(ti->tile) && (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER))) DrawCanalWater(ti->tile);
 
 	const DrawTileSeqStruct *dtss;
@@ -2087,6 +2105,10 @@ void StationPickerDrawSprite(int x, int y, RailType railtype, RoadType roadtype,
 
 	SpriteID img = t->ground_sprite;
 	DrawSprite(img + rti->total_offset, HASBIT(img, PALETTE_MODIFIER_COLOR) ? pal : PAL_NONE, x, y);
+
+	if (roadtype == ROADTYPE_TRAM) {
+		DrawSprite(SPR_TRAMWAY_TRAM + (t->ground_sprite == SPR_ROAD_PAVED_STRAIGHT_X ? 1 : 0), PAL_NONE, x, y);
+	}
 
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {
@@ -2742,8 +2764,8 @@ static int32 ClearTile_Station(TileIndex tile, byte flags)
 		switch (GetStationType(tile)) {
 			case STATION_RAIL:    return_cmd_error(STR_300B_MUST_DEMOLISH_RAILROAD);
 			case STATION_AIRPORT: return_cmd_error(STR_300E_MUST_DEMOLISH_AIRPORT_FIRST);
-			case STATION_TRUCK:   return_cmd_error(STR_3047_MUST_DEMOLISH_TRUCK_STATION);
-			case STATION_BUS:     return_cmd_error(STR_3046_MUST_DEMOLISH_BUS_STATION);
+			case STATION_TRUCK:   return_cmd_error(HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION : STR_3047_MUST_DEMOLISH_TRUCK_STATION);
+			case STATION_BUS:     return_cmd_error(HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION : STR_3046_MUST_DEMOLISH_BUS_STATION);
 			case STATION_BUOY:    return_cmd_error(STR_306A_BUOY_IN_THE_WAY);
 			case STATION_DOCK:    return_cmd_error(STR_304D_MUST_DEMOLISH_DOCK_FIRST);
 			case STATION_OILRIG:

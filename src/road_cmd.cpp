@@ -815,19 +815,57 @@ static bool AlwaysDrawUnpavedRoads(TileIndex tile, Roadside roadside)
 }
 
 /**
+ * Draws the catenary for the given tile
+ * @param ti   information about the tile (slopes, height etc)
+ * @param tram the roadbits for the tram
+ */
+void DrawTramCatenary(TileInfo *ti, RoadBits tram)
+{
+	/* Don't draw the catenary under a low bridge */
+	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !HASBIT(_transparent_opt, TO_BUILDINGS)) {
+		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
+
+		if (height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) return;
+	}
+
+	SpriteID front;
+	SpriteID back;
+
+	if (ti->tileh != SLOPE_FLAT) {
+		back  = SPR_TRAMWAY_BACK_WIRES_SLOPED  + _road_sloped_sprites[ti->tileh - 1];
+		front = SPR_TRAMWAY_FRONT_WIRES_SLOPED + _road_sloped_sprites[ti->tileh - 1];
+	} else {
+		back  = SPR_TRAMWAY_BASE + _road_backpole_sprites_1[tram];
+		front = SPR_TRAMWAY_BASE + _road_frontwire_sprites_1[tram];
+	}
+
+	SpriteID pal = PAL_NONE;
+	if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
+		SETBIT(front, PALETTE_MODIFIER_TRANSPARENT);
+		SETBIT(back,  PALETTE_MODIFIER_TRANSPARENT);
+		pal = PALETTE_TO_TRANSPARENT;
+	}
+
+	AddSortableSpriteToDraw(back,  pal, ti->x, ti->y, 16, 16, 0x20, ti->z);
+	AddSortableSpriteToDraw(front, pal, ti->x, ti->y, 16, 16, 0, ti->z);
+}
+
+/**
  * Draw ground sprite and road pieces
  * @param ti TileInfo
  */
 static void DrawRoadBits(TileInfo* ti)
 {
 	RoadBits road = GetRoadBits(ti->tile, ROADTYPE_ROAD);
+	RoadBits tram = GetRoadBits(ti->tile, ROADTYPE_TRAM);
+
 	const DrawRoadTileStruct *drts;
 	SpriteID image = 0;
 	SpriteID pal = PAL_NONE;
 	Roadside roadside;
 
 	if (ti->tileh != SLOPE_FLAT) {
-		int foundation = GetRoadFoundation(ti->tileh, road);
+		int foundation = GetRoadFoundation(ti->tileh, road | tram);
 
 		if (foundation != 0) DrawFoundation(ti, foundation);
 
@@ -836,7 +874,7 @@ static void DrawRoadBits(TileInfo* ti)
 		if (ti->tileh != SLOPE_FLAT) image = _road_sloped_sprites[ti->tileh - 1] + 0x53F;
 	}
 
-	if (image == 0) image = _road_tile_sprites_1[road];
+	if (image == 0) image = _road_tile_sprites_1[road != ROAD_NONE ? road : tram];
 
 	roadside = GetRoadside(ti->tile);
 
@@ -853,11 +891,26 @@ static void DrawRoadBits(TileInfo* ti)
 
 	DrawGroundSprite(image, pal);
 
+	/* For tram we overlay the road graphics with either tram tracks only
+	 * (when there is actual road beneath the trams) or with tram tracks
+	 * and some dirts which hides the road graphics */
+	if (tram != ROAD_NONE) {
+		if (ti->tileh != SLOPE_FLAT) {
+			image = _road_sloped_sprites[ti->tileh - 1] + SPR_TRAMWAY_SLOPED_OFFSET;
+		} else {
+			image = _road_tile_sprites_1[tram] - SPR_ROAD_Y;
+		}
+		image += (road == ROAD_NONE) ? SPR_TRAMWAY_TRAM : SPR_TRAMWAY_OVERLAY;
+		DrawGroundSprite(image, pal);
+	}
+
 	if (HasRoadWorks(ti->tile)) {
 		/* Road works */
-		DrawGroundSprite(road & ROAD_X ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y, PAL_NONE);
+		DrawGroundSprite((road | tram) & ROAD_X ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y, PAL_NONE);
 		return;
 	}
+
+	if (tram != ROAD_NONE) DrawTramCatenary(ti, tram);
 
 	/* Return if full detail is disabled, or we are zoomed fully out. */
 	if (!HASBIT(_display_opt, DO_FULL_DETAIL) || _cur_dpi->zoom > ZOOM_LVL_DETAIL) return;
@@ -916,7 +969,12 @@ static void DrawTile_Road(TileInfo *ti)
 
 			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
-			dts =  &_road_depot[GetRoadDepotDirection(ti->tile)];
+			if (HASBIT(GetRoadTypes(ti->tile), ROADTYPE_TRAM)) {
+				dts =  &_tram_depot[GetRoadDepotDirection(ti->tile)];
+			} else {
+				dts =  &_road_depot[GetRoadDepotDirection(ti->tile)];
+			}
+
 			DrawGroundSprite(dts->ground_sprite, PAL_NONE);
 
 			for (dtss = dts->seq; dtss->image != 0; dtss++) {
@@ -948,7 +1006,7 @@ static void DrawTile_Road(TileInfo *ti)
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 {
 	SpriteID palette = PLAYER_SPRITE_COLOR(_local_player);
-	const DrawTileSprites* dts =  &_road_depot[dir];
+	const DrawTileSprites* dts = (rt == ROADTYPE_TRAM) ? &_tram_depot[dir] : &_road_depot[dir];
 	const DrawTileSeqStruct* dtss;
 
 	x += 33;
