@@ -261,6 +261,7 @@ int32 CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		v->vehstatus ^= VS_STOPPED;
+		v->cur_speed = 0;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
@@ -1519,6 +1520,7 @@ again:
 		Vehicle* u = RoadVehFindCloseTo(v, x, y, new_dir);
 
 		if (u != NULL) {
+			v->cur_speed = u->cur_speed;
 			/* There is a vehicle in front overtake it if possible */
 			if (v->u.road.overtaking == 0) RoadVehCheckOvertake(v, u);
 			return;
