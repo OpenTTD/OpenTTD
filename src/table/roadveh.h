@@ -1192,7 +1192,7 @@ static const RoadDriveEntry _roadveh_tram_turn_se_0[] = {
 	{9,  2},
 	{9,  1},
 	{9,  0},
-	{RDE_TURNED | DIAGDIR_NW, 0}
+	{RDE_NEXT_TILE | DIAGDIR_NW, 0}
 };
 
 static const RoadDriveEntry _roadveh_tram_turn_se_1[] = {
