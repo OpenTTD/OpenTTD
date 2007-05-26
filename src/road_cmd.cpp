@@ -171,7 +171,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (IsBridge(tile)) {
 					TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
 
-					for (TileIndex t = tile; tile != other_end; tile += delta) MarkTileDirtyByTile(t);
+					for (TileIndex t = tile + delta; t != other_end; t += delta) MarkTileDirtyByTile(t);
 				}
 			}
 		} else {
@@ -475,7 +475,7 @@ do_clear:;
 				if (IsBridge(tile)) {
 					TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
 
-					for (TileIndex t = tile + delta; tile != other_end; tile += delta) MarkTileDirtyByTile(t);
+					for (TileIndex t = tile + delta; t != other_end; t += delta) MarkTileDirtyByTile(t);
 				}
 			} break;
 
