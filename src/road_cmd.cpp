@@ -434,7 +434,7 @@ do_clear:;
 			cost += ret;
 	}
 
-	ret = CheckRoadSlope(tileh, &pieces, existing);
+	ret = CheckRoadSlope(tileh, &pieces, (IsTileType(tile, MP_STREET) ? GetAllRoadBits(tile) : ROAD_NONE) | existing);
 	/* Return an error if we need to build a foundation (ret != 0) but the
 	 * current patch-setting is turned off (or stupid AI@work) */
 	if (CmdFailed(ret) || (ret != 0 && (!_patches.build_on_slopes || _is_old_ai_player)))
