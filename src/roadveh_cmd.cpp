@@ -145,6 +145,8 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
+	if (HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM) != HASBIT(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_DEPOT_WRONG_DEPOT_TYPE);
+
 	v = AllocateVehicle();
 	if (v == NULL) return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
