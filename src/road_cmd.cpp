@@ -438,7 +438,7 @@ do_clear:;
 			cost += ret;
 	}
 
-	if (all_bits !=  existing) {
+	if (all_bits != pieces) {
 		/* Check the foundation/slopes when adding road/tram bits */
 		ret = CheckRoadSlope(tileh, &pieces, all_bits | existing);
 		/* Return an error if we need to build a foundation (ret != 0) but the
