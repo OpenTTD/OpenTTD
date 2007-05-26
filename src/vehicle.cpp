@@ -609,7 +609,7 @@ void DestroyVehicle(Vehicle *v)
 	/* Now remove any artic part. This will trigger an other
 	 *  destroy vehicle, which on his turn can remove any
 	 *  other artic parts. */
-	if (EngineHasArticPart(v)) DeleteVehicle(v->next);
+	if (v->type == VEH_TRAIN && EngineHasArticPart(v)) DeleteVehicle(v->next);
 }
 
 void DeleteVehicleChain(Vehicle *v)
