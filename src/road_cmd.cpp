@@ -830,7 +830,7 @@ void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !HASBIT(_transparent_opt, TO_BUILDINGS)) {
 		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
-		if (height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) return;
+		if (height <= GetTileMaxZ(ti->tile) + TILE_HEIGHT) return;
 	}
 
 	SpriteID front;
@@ -851,8 +851,8 @@ void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 
-	AddSortableSpriteToDraw(back,  pal, ti->x, ti->y, 16, 16, 0x20, ti->z);
-	AddSortableSpriteToDraw(front, pal, ti->x, ti->y, 16, 16, 0x20, ti->z);
+	AddSortableSpriteToDraw(back,  pal, ti->x, ti->y, 16, 16, 0x1F, ti->z);
+	AddSortableSpriteToDraw(front, pal, ti->x, ti->y, 16, 16, 0x1F, ti->z);
 }
 
 /**

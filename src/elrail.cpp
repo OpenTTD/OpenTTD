@@ -249,7 +249,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			Track bridgetrack = GetBridgeAxis(ti->tile) == AXIS_X ? TRACK_X : TRACK_Y;
 			uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
-			if ((height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) &&
+			if ((height <= GetTileMaxZ(ti->tile) + TILE_HEIGHT) &&
 					(i == PCPpositions[bridgetrack][0] || i == PCPpositions[bridgetrack][1])) {
 				SETBIT(OverridePCP, i);
 			}
@@ -289,7 +289,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !HASBIT(_transparent_opt, TO_BUILDINGS)) {
 		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
-		if (height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) return;
+		if (height <= GetTileMaxZ(ti->tile) + TILE_HEIGHT) return;
 	}
 
 	/* Drawing of pylons is finished, now draw the wires */
