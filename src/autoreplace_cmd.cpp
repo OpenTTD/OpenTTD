@@ -195,9 +195,11 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			 * We add the new engine after the old one instead of replacing it. It will give the same result anyway when we
 			 * sell the old engine in a moment
 			 */
-			DoCommand(0, (GetPrevVehicleInChain(old_v)->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			Vehicle *front = GetPrevVehicleInChain(old_v);
 			/* Now we move the old one out of the train */
 			DoCommand(0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			/* Add the new vehicle */
+			DoCommand(0, (front->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 		} else {
 			// copy/clone the orders
 			DoCommand(0, (old_v->index << 16) | new_v->index, IsOrderListShared(old_v) ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
