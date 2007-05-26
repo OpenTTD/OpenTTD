@@ -538,6 +538,7 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex start_tile, tile;
 	int32 cost, ret;
+	bool had_bridge = false;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -573,7 +574,15 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 			if (_error_message != STR_1007_ALREADY_BUILT) return CMD_ERROR;
 			_error_message = INVALID_STRING_ID;
 		} else {
-			cost += ret;
+			/* Only pay for the upgrade on one side of the bridge */
+			if (IsBridgeTile(tile)) {
+				if ((!had_bridge || GetBridgeRampDirection(tile) == DIAGDIR_SE || GetBridgeRampDirection(tile) == DIAGDIR_SW)) {
+					cost += ret;
+				}
+				had_bridge = true;
+			} else {
+				cost += ret;
+			}
 		}
 
 		if (tile == end_tile) break;
