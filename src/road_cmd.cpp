@@ -1284,10 +1284,12 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
-		if (new_player == PLAYER_SPECTATOR) {
-			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-		} else {
-			SetTileOwner(tile, new_player);
+		if (GetTileOwner(tile) == old_player) {
+			if (new_player == PLAYER_SPECTATOR) {
+				DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			} else {
+				SetTileOwner(tile, new_player);
+			}
 		}
 		return;
 	}
