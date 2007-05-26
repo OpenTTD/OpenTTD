@@ -1248,7 +1248,6 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool is_drive_through = HASBIT(p2, 1);
 	bool build_over_road  = is_drive_through && IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL;
 	bool town_owned_road  = build_over_road && IsTileOwner(tile, OWNER_TOWN);
-	Owner cur_owner = _current_player;
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
 
 	if (rts == ROADTYPES_NONE || HASBIT(rts, ROADTYPE_HWAY)) return CMD_ERROR;
@@ -1262,31 +1261,28 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (is_drive_through && !IsValidAxis((Axis)p1)) return CMD_ERROR;
 	/* Road bits in the wrong direction */
 	if (build_over_road && (GetAllRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_DRIVE_THROUGH_ERROR_DIRECTION);
+
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) return CMD_ERROR;
+
+	int32 cost = 0;
+
 	/* Not allowed to build over this road */
 	if (build_over_road) {
 		if (IsTileOwner(tile, OWNER_TOWN) && !_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
 		if (GetRoadTileType(tile) != ROAD_TILE_NORMAL) return CMD_ERROR;
 
 		RoadTypes cur_rts = GetRoadTypes(tile);
-		if (!IsTileOwner(tile, OWNER_TOWN) && (
-				((HASBIT(cur_rts, ROADTYPE_ROAD) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_ROAD)))) ||
-				((HASBIT(cur_rts, ROADTYPE_TRAM) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_TRAM)))))) return CMD_ERROR;
+		if (GetRoadOwner(tile, ROADTYPE_ROAD) != OWNER_TOWN && HASBIT(cur_rts, ROADTYPE_ROAD) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_ROAD))) return CMD_ERROR;
+		if (HASBIT(cur_rts, ROADTYPE_TRAM) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_TRAM))) return CMD_ERROR;
+
 		/* Do not remove roadtypes! */
-		rts |= GetRoadTypes(tile);
+		rts |= cur_rts;
+	} else {
+		cost = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
+		if (CmdFailed(cost)) return cost;
 	}
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
-	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
-		return CMD_ERROR;
-
-	if (build_over_road) flags ^= DC_AUTO;
-
-	if (town_owned_road) _current_player = OWNER_TOWN;
-	int32 ret = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
-	_current_player = cur_owner;
-	if (CmdFailed(ret)) return ret;
-	int32 cost = build_over_road ? 0 : ret; // Don't add cost of clearing road when overbuilding
 
 	Station *st = NULL;
 
