@@ -226,6 +226,10 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return CMD_ERROR;
 			}
 
+			/* Don't allow road to be removed from the crossing when there is tram;
+			 * we can't draw the crossing without trambits ;) */
+			if (rt == ROADTYPE_ROAD && HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM)) return CMD_ERROR;
+
 			if (flags & DC_EXEC) {
 				if (rt == ROADTYPE_ROAD) {
 					ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
@@ -405,10 +409,11 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			if (flags & DC_EXEC) {
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
-				MakeRoadCrossing(tile, _current_player, _current_player, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt), p2);
+				/* Always add road to the roadtypes (can't draw without it) */
+				MakeRoadCrossing(tile, _current_player, _current_player, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
 				MarkTileDirtyByTile(tile);
 			}
-			return _price.build_road * 2;
+			return _price.build_road * (rt == ROADTYPE_ROAD ? 2 : 4);
 		}
 
 		case MP_STATION:
@@ -847,7 +852,7 @@ void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 	}
 
 	AddSortableSpriteToDraw(back,  pal, ti->x, ti->y, 16, 16, 0x20, ti->z);
-	AddSortableSpriteToDraw(front, pal, ti->x, ti->y, 16, 16, 0, ti->z);
+	AddSortableSpriteToDraw(front, pal, ti->x, ti->y, 16, 16, 0x20, ti->z);
 }
 
 /**
@@ -955,6 +960,10 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(image, pal);
+			if (HASBIT(GetRoadTypes(ti->tile), ROADTYPE_TRAM)) {
+				DrawGroundSprite(SPR_TRAMWAY_OVERLAY + (GetCrossingRoadAxis(ti->tile) ^ 1), pal);
+				DrawTramCatenary(ti, GetCrossingRoadBits(ti->tile));
+			}
 			if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 			break;
 		}
