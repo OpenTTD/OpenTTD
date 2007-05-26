@@ -337,6 +337,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost = 0;
 	int32 ret;
 	RoadBits existing = ROAD_NONE;
+	RoadBits all_bits = ROAD_NONE;
 	Slope tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -359,6 +360,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 					if (!HASBIT(GetRoadTypes(tile), rt)) break;
 
+					all_bits = GetAllRoadBits(tile);
 					existing = GetRoadBits(tile, rt);
 					if ((existing & pieces) == pieces) {
 						return_cmd_error(STR_1007_ALREADY_BUILT);
@@ -368,7 +370,8 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				case ROAD_TILE_CROSSING:
 					if (HASBIT(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
-					if (pieces & ComplementRoadBits(GetCrossingRoadBits(tile))) goto do_clear;
+					all_bits = GetCrossingRoadBits(tile);
+					if (pieces & ComplementRoadBits(all_bits)) goto do_clear;
 					break;
 
 				default:
@@ -435,13 +438,16 @@ do_clear:;
 			cost += ret;
 	}
 
-	ret = CheckRoadSlope(tileh, &pieces, (IsTileType(tile, MP_STREET) ? GetAllRoadBits(tile) : ROAD_NONE) | existing);
-	/* Return an error if we need to build a foundation (ret != 0) but the
-	 * current patch-setting is turned off (or stupid AI@work) */
-	if (CmdFailed(ret) || (ret != 0 && (!_patches.build_on_slopes || _is_old_ai_player)))
-		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-
-	cost += ret;
+	if (all_bits !=  existing) {
+		/* Check the foundation/slopes when adding road/tram bits */
+		ret = CheckRoadSlope(tileh, &pieces, all_bits | existing);
+		/* Return an error if we need to build a foundation (ret != 0) but the
+		 * current patch-setting is turned off (or stupid AI@work) */
+		if (CmdFailed(ret) || (ret != 0 && (!_patches.build_on_slopes || _is_old_ai_player))) {
+			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		}
+		cost += ret;
+	}
 
 	if (IsTileType(tile, MP_STREET)) {
 		/* Don't put the pieces that already exist */
