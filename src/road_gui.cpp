@@ -645,6 +645,7 @@ static void ShowRVStationPicker(RoadStop::Type rs)
 	Window *w = AllocateWindowDesc(&_rv_station_picker_desc);
 	if (w == NULL) return;
 
+	w->window_class = (rs == RoadStop::BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
 	w->widget[1].data = _road_type_infos[_cur_roadtype].picker_title[rs];
 	for (uint i = 3; i < 9; i++) w->widget[i].tooltips = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
 }
