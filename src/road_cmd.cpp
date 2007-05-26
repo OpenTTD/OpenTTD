@@ -167,6 +167,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
 
 				/* Mark tiles diry that have been repaved */
+				MarkTileDirtyByTile(tile);
 				MarkTileDirtyByTile(other_end);
 				if (IsBridge(tile)) {
 					TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
@@ -472,6 +473,7 @@ do_clear:;
 
 				/* Mark tiles diry that have been repaved */
 				MarkTileDirtyByTile(other_end);
+				MarkTileDirtyByTile(tile);
 				if (IsBridge(tile)) {
 					TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
 
