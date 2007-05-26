@@ -244,7 +244,6 @@ bool FillDrawPixelInfo(DrawPixelInfo* n, int left, int top, int width, int heigh
 /* window.cpp */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 
-void SetMouseCursor(CursorID cursor);
 void SetMouseCursor(SpriteID sprite, SpriteID pal);
 void SetAnimatedMouseCursor(const AnimCursor *table);
 void CursorTick();
