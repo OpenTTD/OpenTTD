@@ -995,13 +995,14 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 			if (HASBIT(rts, ROADTYPE_TRAM)) {
 				uint offset = GetBridgeRampDirection(ti->tile);
+				uint z = ti->z;
 				if (ti->tileh != SLOPE_FLAT) {
 					offset = (offset + 1) & 1;
-					ti->z += TILE_HEIGHT;
+					z += TILE_HEIGHT;
 				} else {
 					offset += 2;
 				}
-				DrawBridgeTramBits(ti->x, ti->y, ti->z, offset, HASBIT(rts, ROADTYPE_ROAD));
+				DrawBridgeTramBits(ti->x, ti->y, z, offset, HASBIT(rts, ROADTYPE_ROAD));
 			}
 		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
 			DrawCatenary(ti);
