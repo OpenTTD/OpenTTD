@@ -291,24 +291,24 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		for (count = ts.tile_table_count; count != 0; count--, ti++) {
 			TileIndex tile = *ti;
 
-			if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) {
+			uint z_min = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
+			uint z_max = z_min;
+			uint t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
+			z_min = min(z_min, t);
+			z_max = max(z_max, t);
+			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
+			z_min = min(z_min, t);
+			z_max = max(z_max, t);
+			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
+			z_min = min(z_min, t);
+			z_max = max(z_max, t);
+
+			if (direction == 1 && MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) &&
+					GetBridgeHeight(GetSouthernBridgeEnd(tile)) <= z_max * TILE_HEIGHT) {
 				return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 			}
-
-			if (direction == -1) {
-				uint z, t;
-
-				z = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
-				t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
-				if (t <= z) z = t;
-				t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
-				if (t <= z) z = t;
-				t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
-				if (t <= z) z = t;
-
-				if (IsTunnelInWay(tile, z * TILE_HEIGHT)) {
-					return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
-				}
+			if (direction == -1 && IsTunnelInWay(tile, z_min * TILE_HEIGHT)) {
+				return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
 			}
 		}
 	}
