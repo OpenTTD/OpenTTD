@@ -122,11 +122,14 @@ void Station::MarkDirty() const
 	if (sign.width_1 != 0) {
 		InvalidateWindowWidget(WC_STATION_VIEW, index, 1);
 
+		/* We use ZOOM_LVL_MAX here, as every viewport can have an other zoom,
+		 *  and there is no way for us to know which is the biggest. So make the
+		 *  biggest area dirty, and we are safe for sure. */
 		MarkAllViewportsDirty(
 			sign.left - 6,
 			sign.top,
-			sign.left + ScaleByZoom(sign.width_1 + 12, _cur_dpi->zoom),
-			sign.top + ScaleByZoom(12, _cur_dpi->zoom));
+			sign.left + ScaleByZoom(sign.width_1 + 12, ZOOM_LVL_MAX),
+			sign.top + ScaleByZoom(12, ZOOM_LVL_MAX));
 	}
 }
 
