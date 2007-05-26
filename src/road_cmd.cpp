@@ -52,7 +52,7 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 	if (_game_mode == GM_EDITOR || remove == ROAD_NONE) return true;
 
 	/* Only do the special processing for actual players. */
-	if (!IsValidPlayer(_current_player)) return true;
+	if (rt == ROADTYPE_ROAD && !IsValidPlayer(_current_player)) return true;
 
 	/* Only do the special processing if the road is owned
 	 * by a town */
