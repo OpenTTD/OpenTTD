@@ -1582,7 +1582,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			/* Skip loading this vehicle if another train/vehicle is already handling
 			 * the same cargo type at this station */
-			if (_patches.improved_load && cargo_left[v->cargo_type] < 0) {
+			if (_patches.improved_load && cargo_left[v->cargo_type] <= 0) {
 				SETBIT(cargo_not_full, v->cargo_type);
 				continue;
 			}
