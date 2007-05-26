@@ -304,6 +304,9 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 		cost = (bridge_len + 1) * _price.clear_bridge; // The cost of clearing the current bridge.
 		replace_bridge = true;
 		replaced_bridge_type = GetBridgeType(tile_start);
+
+		/* Do not remove road types when upgrading a bridge */
+		roadtypes |= GetRoadTypes(tile_start);
 	} else {
 		/* Build a new bridge. */
 
