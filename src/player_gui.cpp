@@ -277,13 +277,14 @@ static const LiveryClass livery_class[LS_END] = {
 	LC_ROAD, LC_ROAD,
 	LC_SHIP, LC_SHIP,
 	LC_AIRCRAFT, LC_AIRCRAFT, LC_AIRCRAFT,
+	LC_ROAD, LC_ROAD,
 };
 
 /* Number of liveries in each class, used to determine the height of the livery window */
 static const byte livery_height[] = {
 	1,
 	11,
-	2,
+	4,
 	2,
 	3,
 };

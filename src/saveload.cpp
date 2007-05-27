@@ -29,7 +29,7 @@
 #include <setjmp.h>
 #include <list>
 
-extern const uint16 SAVEGAME_VERSION = 62;
+extern const uint16 SAVEGAME_VERSION = 63;
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 

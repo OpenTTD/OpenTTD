@@ -1279,8 +1279,15 @@ static void SaveLoad_PLYR(Player* p)
 	}
 
 	/* Write each livery entry. */
-	for (i = 0; i < LS_END; i++) {
+	int num_liveries = CheckSavegameVersion(63) ? LS_END - 2 : LS_END;
+	for (i = 0; i < num_liveries; i++) {
 		SlObject(&p->livery[i], _player_livery_desc);
+	}
+
+	if (num_liveries == LS_END - 2) {
+		/* Copy bus/truck liveries over to trams */
+		p->livery[LS_PASSENGER_TRAM] = p->livery[LS_BUS];
+		p->livery[LS_FREIGHT_TRAM]   = p->livery[LS_TRUCK];
 	}
 }
 

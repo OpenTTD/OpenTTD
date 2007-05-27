@@ -38,6 +38,10 @@ enum LiveryScheme {
 	LS_SMALL_PLANE,
 	LS_LARGE_PLANE,
 
+	/* Trams (appear on Road Vehicles tab) */
+	LS_PASSENGER_TRAM,
+	LS_FREIGHT_TRAM,
+
 	LS_END
 };
 

@@ -2271,6 +2271,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Freight Ship
 STR_LIVERY_HELICOPTER                                           :Helicopter
 STR_LIVERY_SMALL_PLANE                                          :Small Aeroplane
 STR_LIVERY_LARGE_PLANE                                          :Large Aeroplane
+STR_LIVERY_PASSENGER_TRAM                                       :Passenger Tram
+STR_LIVERY_FREIGHT_TRAM                                         :Freight Tram
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Show general colour schemes
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Show train colour schemes

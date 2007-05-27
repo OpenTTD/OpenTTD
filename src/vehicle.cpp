@@ -2520,7 +2520,13 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 			case VEH_ROAD: {
 				const RoadVehicleInfo *rvi = RoadVehInfo(engine_type);
 				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
-				scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_BUS : LS_TRUCK;
+				if (HASBIT(EngInfo(engine_type)->misc_flags, EF_ROAD_TRAM)) {
+					/* Tram */
+					scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_TRAM : LS_FREIGHT_TRAM;
+				} else {
+					/* Bus or truck */
+					scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_BUS : LS_TRUCK;
+				}
 				break;
 			}
 
