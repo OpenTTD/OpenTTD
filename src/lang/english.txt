@@ -1610,7 +1610,7 @@ STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Can't bu
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Can't build bus station...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Can't build lorry station...
 STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Can't build passenger tram station...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Can't build cargo tram station...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Can't build freight tram station...
 STR_180A_ROAD_CONSTRUCTION                                      :Road construction
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Tramway construction
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Build road section
@@ -1620,7 +1620,7 @@ STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Build tr
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Build bus station
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Build lorry loading bay
 STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Build passenger tram station
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Build cargo tram station
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Build freight tram station
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Build road bridge
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Build tramway bridge
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Build road tunnel
@@ -1637,7 +1637,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Road/rail level
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Can't remove bus station...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Can't remove lorry station...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Can't remove passenger tram station...
-STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Can't remove cargo tram station...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Can't remove freight tram station...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Towns
@@ -1803,11 +1803,11 @@ STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Bus Station Orientation
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lorry Station Orientation
 STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Passenger Tram Orientation
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Cargo Tram Orientation
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Freight Tram Orientation
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Must demolish bus station first
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Must demolish lorry station first
 STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Must demolish passenger tram station first
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Must demolish cargo tram station first
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Must demolish freight tram station first
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- None -
@@ -1820,7 +1820,7 @@ STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Select l
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Select bus station orientation
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Select lorry loading bay orientation
 STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Select passenger tram station orientation
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Select cargo tram station orientation
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Select freight tram station orientation
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centre main view on station location
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Show station ratings
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Change name of station
@@ -2747,7 +2747,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Name roa
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First bus arrives at {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First truck arrives at {STATION}!
 STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Citizens celebrate . . .{}First passenger tram arrives at {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Citizens celebrate . . .{}First cargo tram arrives at {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Citizens celebrate . . .{}First freight tram arrives at {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Road Vehicle Crash!{}Driver dies in fireball after collision with train
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Road Vehicle Crash!{}{COMMA} die in fireball after collision with train
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Can't make vehicle turn around...
