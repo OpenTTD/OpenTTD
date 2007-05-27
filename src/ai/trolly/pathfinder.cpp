@@ -284,9 +284,9 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 							dir = 0;
 						} else {
 							// It already has road.. check if we miss any bits!
-							if ((GetRoadBits(ctile, ROADTYPE_ROAD) & dir) != dir) {
+							if ((GetAnyRoadBits(ctile, ROADTYPE_ROAD) & dir) != dir) {
 								// We do miss some pieces :(
-								dir &= ~GetRoadBits(ctile, ROADTYPE_ROAD);
+								dir &= ~GetAnyRoadBits(ctile, ROADTYPE_ROAD);
 							} else {
 								dir = 0;
 							}
