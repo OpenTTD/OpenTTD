@@ -1872,7 +1872,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 		} while (v->type == VEH_TRAIN && EngineHasArticPart(v) && (v = GetNextArticPart(v)) != NULL);
 
-		if (flags & DC_EXEC) w = GetNextVehicle(w);
+		if ((flags & DC_EXEC) && v->type == VEH_TRAIN) w = GetNextVehicle(w);
 	} while (v->type == VEH_TRAIN && (v = GetNextVehicle(v)) != NULL);
 
 	/* Since we can't estimate the cost of cloning a vehicle accurately we must
