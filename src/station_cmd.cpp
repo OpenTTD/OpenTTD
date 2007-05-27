@@ -1279,10 +1279,9 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		/* Do not remove roadtypes! */
 		rts |= cur_rts;
-	} else {
-		cost = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
-		if (CmdFailed(cost)) return cost;
 	}
+	cost = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
+	if (CmdFailed(cost)) return cost;
 
 	Station *st = NULL;
 
