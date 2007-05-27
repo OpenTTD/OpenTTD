@@ -1250,8 +1250,12 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 	}
 }
 
-static const byte _roadveh_enter_depot_unk0[4] = {
-	8, 9, 0, 1
+/**
+ * Given the direction the road depot is pointing, this is the direction the
+ * vehicle should be travelling in in order to enter the depot.
+ */
+static const byte _roadveh_enter_depot_dir[4] = {
+	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
 };
 
 static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
@@ -1269,7 +1273,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 		case ROAD_TILE_DEPOT:
 			if (v->type == VEH_ROAD &&
 					v->u.road.frame == 11 &&
-					_roadveh_enter_depot_unk0[GetRoadDepotDirection(tile)] == v->u.road.state) {
+					_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == v->u.road.state) {
 				VehicleEnterDepot(v);
 				return VETSB_ENTERED_WORMHOLE;
 			}
