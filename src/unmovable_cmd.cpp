@@ -73,7 +73,7 @@ void UpdateCompanyHQ(Player *p, uint score)
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
 }
 
-extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station);
+extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station, bool check_clear = true);
 
 /** Build or relocate the HQ. This depends if the HQ is already built or not
  * @param tile tile where the HQ will be built or relocated to

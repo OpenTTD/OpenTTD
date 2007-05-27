@@ -615,7 +615,7 @@ static int32 ClearTile_Station(TileIndex tile, byte flags);
 
 // Tries to clear the given area. Returns the cost in case of success.
 // Or an error code if it failed.
-int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station)
+int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station, bool check_clear = true)
 {
 	int32 cost = 0;
 	int allowed_z = -1;
@@ -678,7 +678,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 					return_cmd_error(STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING);
 				}
 			}
-		} else {
+		} else if (check_clear) {
 			int32 ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
@@ -1280,7 +1280,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* Do not remove roadtypes! */
 		rts |= cur_rts;
 	}
-	cost = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL);
+	cost = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL, !build_over_road);
 	if (CmdFailed(cost)) return cost;
 
 	Station *st = NULL;
