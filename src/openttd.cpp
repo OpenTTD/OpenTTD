@@ -1468,7 +1468,7 @@ bool AfterLoadGame()
 					break;
 
 				case MP_TUNNELBRIDGE:
-					if ((IsTunnel(t) ? GetTunnelTransportType(t) : GetBridgeTransportType(t)) == TRANSPORT_ROAD) {
+					if ((IsTunnel(t) ? GetTunnelTransportType(t) : (TransportType)GB(_m[t].m5, 1, 2)) == TRANSPORT_ROAD) {
 						SetRoadTypes(t, ROADTYPES_ROAD);
 					}
 					break;
