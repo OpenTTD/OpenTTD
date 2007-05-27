@@ -1794,7 +1794,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	v = v_front;
 
 	do {
-		if (IsMultiheaded(v) && !IsTrainEngine(v)) {
+		if (v->type == VEH_TRAIN && IsMultiheaded(v) && !IsTrainEngine(v)) {
 			/* we build the rear ends of multiheaded trains with the front ones */
 			continue;
 		}
