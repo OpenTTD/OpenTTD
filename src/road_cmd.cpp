@@ -740,7 +740,7 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 					if (HASBIT(rts, rt)) {
 						int32 tmp_ret = DoCommand(tile, rt << 4 | GetRoadBits(tile, rt), 0, flags, CMD_REMOVE_ROAD);
 						if (CmdFailed(tmp_ret)) return tmp_ret;
-						ret += rt;
+						ret += tmp_ret;
 					}
 				}
 				return ret;
