@@ -1438,20 +1438,11 @@ int32 CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* If the stop was a drive-through stop replace the road */
 	if ((flags & DC_EXEC) && !CmdFailed(ret) && is_drive_through) {
-		uint index = 0;
-		Owner cur_owner = _current_player;
-
-		if (is_towns_road) {
-			index = ClosestTownFromTile(tile, (uint)-1)->index;
-			_current_player = OWNER_TOWN;
-		}
-		if (HASBIT(rts, ROADTYPE_ROAD)) {
-			DoCommand(tile, ROADTYPE_ROAD << 4 | road_bits, index, DC_EXEC, CMD_BUILD_ROAD);
-		}
-		if (HASBIT(rts, ROADTYPE_TRAM)) {
-			DoCommand(tile, ROADTYPE_TRAM << 4 | road_bits, index, DC_EXEC, CMD_BUILD_ROAD);
-		}
-		_current_player = cur_owner;
+		/* Rebuild the drive throuhg road stop. As a road stop can only be
+		 * removed by the owner of the roadstop, _current_player is the
+		 * owner of the road stop. */
+		MakeRoadNormal(tile, road_bits, rts, is_towns_road ? ClosestTownFromTile(tile, (uint)-1)->index : 0,
+				is_towns_road ? OWNER_TOWN : _current_player, _current_player, _current_player);
 	}
 
 	return ret;
