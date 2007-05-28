@@ -300,6 +300,12 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				RoadBits tram = GetRoadBits(tile, ROADTYPE_TRAM);
 				switch (roadtypes) {
 					default: break;
+					case ROADTYPES_TRAM:
+						/* Tram crossings must always have road. */
+						SetRoadOwner(tile, ROADTYPE_ROAD, _current_player);
+						roadtypes |= ROADTYPES_ROAD;
+						break;
+
 					case ROADTYPES_ROADTRAM: if (road == tram) break;
 						/* FALL THROUGH */
 					case ROADTYPES_ROADHWAY: // Road and highway are incompatible in this case
