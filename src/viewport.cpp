@@ -1397,10 +1397,15 @@ void UpdateViewportPosition(Window *w)
 		int delta_y = dest_y - y;
 
 		if (delta_x != 0 || delta_y != 0) {
-			int max_scroll = ScaleByMapSize1D(512);
-			/* Not at our desired positon yet... */
-			x += clamp(delta_x / 8, -max_scroll, max_scroll);
-			y += clamp(delta_y / 8, -max_scroll, max_scroll);
+			if (_patches.smooth_scroll) {
+				int max_scroll = ScaleByMapSize1D(512);
+				/* Not at our desired positon yet... */
+				x += clamp(delta_x / 8, -max_scroll, max_scroll);
+				y += clamp(delta_y / 8, -max_scroll, max_scroll);
+			} else {
+				x = dest_x;
+				y = dest_y;
+			}
 		}
 
 		/* Convert viewport coordinates to map coordinates
@@ -1868,7 +1873,7 @@ bool ScrollWindowTo(int x , int y, Window *w, bool instant)
 	if (WP(w, vp_d).dest_scrollpos_x == pt.x && WP(w, vp_d).dest_scrollpos_y == pt.y)
 		return false;
 
-	if (!_patches.smooth_scroll || instant) {
+	if (instant) {
 		WP(w, vp_d).scrollpos_x = pt.x;
 		WP(w, vp_d).scrollpos_y = pt.y;
 	}
