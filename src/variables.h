@@ -127,6 +127,7 @@ struct Patches {
 	bool no_servicing_if_no_breakdowns; // dont send vehicles to depot when breakdowns are disabled
 	bool link_terraform_toolbar;        // display terraform toolbar when displaying rail, road, water and airport toolbars
 	bool reverse_scroll;                // Right-Click-Scrolling scrolls in the opposite direction
+	bool smooth_scroll;                 ///< Smooth scroll viewports
 	bool disable_elrails;               // when true, the elrails are disabled
 	bool measure_tooltip;               // Show a permanent tooltip when dragging tools
 	byte liveries;                      // Options for displaying company liveries, 0=none, 1=self, 2=all

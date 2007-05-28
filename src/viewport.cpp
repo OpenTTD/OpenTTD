@@ -183,6 +183,9 @@ void AssignWindowViewport(Window *w, int x, int y,
 
 	WP(w, vp_d).scrollpos_x = pt.x;
 	WP(w, vp_d).scrollpos_y = pt.y;
+	WP(w, vp_d).dest_scrollpos_x = pt.x;
+	WP(w, vp_d).dest_scrollpos_y = pt.y;
+
 	w->viewport = vp;
 	vp->virtual_left = 0;//pt.x;
 	vp->virtual_top = 0;//pt.y;
@@ -1386,6 +1389,20 @@ void UpdateViewportPosition(Window *w)
 		/* Center of the viewport is hot spot */
 		x = WP(w,vp_d).scrollpos_x + vp->virtual_width / 2;
 		y = WP(w,vp_d).scrollpos_y + vp->virtual_height / 2;
+
+		int dest_x = WP(w,vp_d).dest_scrollpos_x + vp->virtual_width / 2;
+		int dest_y = WP(w,vp_d).dest_scrollpos_y + vp->virtual_height / 2;
+
+		int delta_x = dest_x - x;
+		int delta_y = dest_y - y;
+
+		if (delta_x != 0 || delta_y != 0) {
+			int max_scroll = ScaleByMapSize1D(512);
+			/* Not at our desired positon yet... */
+			x += clamp(delta_x / 8, -max_scroll, max_scroll);
+			y += clamp(delta_y / 8, -max_scroll, max_scroll);
+		}
+
 		/* Convert viewport coordinates to map coordinates
 		 * Calculation is scaled by 4 to avoid rounding errors */
 		vx = -x + y * 2;
@@ -1841,26 +1858,31 @@ void PlaceObject()
 
 
 /* scrolls the viewport in a window to a given location */
-bool ScrollWindowTo(int x , int y, Window *w)
+bool ScrollWindowTo(int x , int y, Window *w, bool instant)
 {
 	Point pt;
 
 	pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(x, y));
 	WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
 
-	if (WP(w, vp_d).scrollpos_x == pt.x && WP(w, vp_d).scrollpos_y == pt.y)
+	if (WP(w, vp_d).dest_scrollpos_x == pt.x && WP(w, vp_d).dest_scrollpos_y == pt.y)
 		return false;
 
-	WP(w, vp_d).scrollpos_x = pt.x;
-	WP(w, vp_d).scrollpos_y = pt.y;
+	if (!_patches.smooth_scroll || instant) {
+		WP(w, vp_d).scrollpos_x = pt.x;
+		WP(w, vp_d).scrollpos_y = pt.y;
+	}
+
+	WP(w, vp_d).dest_scrollpos_x = pt.x;
+	WP(w, vp_d).dest_scrollpos_y = pt.y;
 	return true;
 }
 
 
-bool ScrollMainWindowTo(int x, int y)
+bool ScrollMainWindowTo(int x, int y, bool instant)
 {
 	Window *w;
-	bool res = ScrollWindowTo(x, y, FindWindowById(WC_MAIN_WINDOW, 0));
+	bool res = ScrollWindowTo(x, y, FindWindowById(WC_MAIN_WINDOW, 0), instant);
 
 	/* If a user scrolls to a tile (via what way what so ever) and already is on
 	 *  that tile (e.g.: pressed twice), move the smallmap to that location,
@@ -1877,9 +1899,9 @@ bool ScrollMainWindowTo(int x, int y)
 }
 
 
-bool ScrollMainWindowToTile(TileIndex tile)
+bool ScrollMainWindowToTile(TileIndex tile, bool instant)
 {
-	return ScrollMainWindowTo(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2);
+	return ScrollMainWindowTo(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2, instant);
 }
 
 void SetRedErrorSquare(TileIndex tile)

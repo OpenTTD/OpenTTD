@@ -583,6 +583,7 @@ static const char *_patches_ui[] = {
 	"show_finances",
 	"autoscroll",
 	"reverse_scroll",
+	"smooth_scroll",
 	"errmsg_duration",
 	"toolbar_pos",
 	"measure_tooltip",

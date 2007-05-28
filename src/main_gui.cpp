@@ -889,6 +889,8 @@ bool DoZoomInOutWindow(int how, Window *w)
 
 			WP(w,vp_d).scrollpos_x += vp->virtual_width >> 1;
 			WP(w,vp_d).scrollpos_y += vp->virtual_height >> 1;
+			WP(w,vp_d).dest_scrollpos_x = WP(w,vp_d).scrollpos_x;
+			WP(w,vp_d).dest_scrollpos_y = WP(w,vp_d).scrollpos_y;
 			break;
 		case ZOOM_OUT:
 			if (vp->zoom == ZOOM_LVL_MAX) return false;
@@ -896,6 +898,8 @@ bool DoZoomInOutWindow(int how, Window *w)
 
 			WP(w,vp_d).scrollpos_x -= vp->virtual_width >> 1;
 			WP(w,vp_d).scrollpos_y -= vp->virtual_height >> 1;
+			WP(w,vp_d).dest_scrollpos_x = WP(w,vp_d).scrollpos_x;
+			WP(w,vp_d).dest_scrollpos_y = WP(w,vp_d).scrollpos_y;
 
 			vp->virtual_width <<= 1;
 			vp->virtual_height <<= 1;
@@ -1058,7 +1062,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 		pt = GetTileZoomCenterWindow(in,w);
 		if (pt.x != -1) {
-			ScrollWindowTo(pt.x, pt.y, w);
+			ScrollWindowTo(pt.x, pt.y, w, true);
 
 			DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, w);
 		}
@@ -2438,6 +2442,8 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 
 			WP(w, vp_d).scrollpos_x += ScaleByZoom(e->we.scroll.delta.x, vp->zoom);
 			WP(w, vp_d).scrollpos_y += ScaleByZoom(e->we.scroll.delta.y, vp->zoom);
+			WP(w, vp_d).dest_scrollpos_x = WP(w, vp_d).scrollpos_x;
+			WP(w, vp_d).dest_scrollpos_y = WP(w, vp_d).scrollpos_y;
 		} break;
 
 		case WE_MOUSEWHEEL:

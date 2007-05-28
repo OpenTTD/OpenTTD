@@ -991,8 +991,8 @@ static void ScrollMainViewport(int x, int y)
 		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 		assert(w);
 
-		WP(w,vp_d).scrollpos_x += ScaleByZoom(x, w->viewport->zoom);
-		WP(w,vp_d).scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
+		WP(w,vp_d).dest_scrollpos_x += ScaleByZoom(x, w->viewport->zoom);
+		WP(w,vp_d).dest_scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
 	}
 }
 
@@ -1284,6 +1284,8 @@ bool AfterLoadGame()
 
 	WP(w,vp_d).scrollpos_x = _saved_scrollpos_x;
 	WP(w,vp_d).scrollpos_y = _saved_scrollpos_y;
+	WP(w,vp_d).dest_scrollpos_x = _saved_scrollpos_x;
+	WP(w,vp_d).dest_scrollpos_y = _saved_scrollpos_y;
 
 	vp = w->viewport;
 	vp->zoom = _saved_scrollpos_zoom;

@@ -806,8 +806,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					_left_button_clicked = false;
 
 					pt = RemapCoords(WP(w,smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
-					WP(w2, vp_d).scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
-					WP(w2, vp_d).scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
+					WP(w2, vp_d).dest_scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
+					WP(w2, vp_d).dest_scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
 
 					SetWindowDirty(w);
 				} break;
@@ -986,8 +986,8 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 			int y = WP(w, vp_d).scrollpos_y;
 
 			/* set this view to same location. Based on the center, adjusting for zoom */
-			WP(w2, vp_d).scrollpos_x =  x - (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
-			WP(w2, vp_d).scrollpos_y =  y - (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
+			WP(w2, vp_d).dest_scrollpos_x =  x - (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
+			WP(w2, vp_d).dest_scrollpos_y =  y - (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
 		} break;
 
 		case 8: { /* inverse location button (move this view to same spot as main view) 'Copy Location' */
@@ -995,8 +995,8 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 			int x = WP(w2, const vp_d).scrollpos_x;
 			int y = WP(w2, const vp_d).scrollpos_y;
 
-			WP(w, vp_d).scrollpos_x =  x + (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
-			WP(w, vp_d).scrollpos_y =  y + (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
+			WP(w, vp_d).dest_scrollpos_x =  x + (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
+			WP(w, vp_d).dest_scrollpos_y =  y + (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
 		} break;
 		}
 		break;
@@ -1018,6 +1018,8 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 
 			WP(w, vp_d).scrollpos_x += ScaleByZoom(e->we.scroll.delta.x, vp->zoom);
 			WP(w, vp_d).scrollpos_y += ScaleByZoom(e->we.scroll.delta.y, vp->zoom);
+			WP(w, vp_d).dest_scrollpos_x = WP(w, vp_d).scrollpos_x;
+			WP(w, vp_d).dest_scrollpos_y = WP(w, vp_d).scrollpos_y;
 		} break;
 
 		case WE_MOUSEWHEEL:
@@ -1062,5 +1064,7 @@ void ShowExtraViewPortWindow()
 		y = WP(v, vp_d).scrollpos_y;
 		WP(w, vp_d).scrollpos_x = x + (v->viewport->virtual_width  - (294)) / 2;
 		WP(w, vp_d).scrollpos_y = y + (v->viewport->virtual_height - (214)) / 2;
+		WP(w, vp_d).dest_scrollpos_x = WP(w, vp_d).scrollpos_x;
+		WP(w, vp_d).dest_scrollpos_y = WP(w, vp_d).scrollpos_y;
 	}
 }
