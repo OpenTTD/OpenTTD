@@ -1017,39 +1017,6 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		dst_head = NULL;
 	}
 
-	if (dst != NULL && IsMultiheaded(dst) && !IsTrainEngine(dst) && IsTrainWagon(src)) {
-		/* We are moving a wagon to the rear part of a multiheaded engine */
-		if (dst->next == NULL) {
-			/* It's the last one, so we will add the wagon just before the rear engine */
-			dst = GetPrevVehicleInChain(dst);
-			/* Now if the vehicle we want to link to is the vehicle itself, drop out */
-			if (dst == src) return CMD_ERROR;
-			/* if dst is NULL, it means that dst got a rear multiheaded engine as first engine. We can't use that */
-			if (dst == NULL) return CMD_ERROR;
-		} else {
-			/* there are more units on this train, so we will add the wagon after the next one*/
-			dst = dst->next;
-		}
-	}
-
-	if (IsTrainEngine(src) && dst_head != NULL) {
-		/* we need to make sure that we didn't place it between a pair of multiheaded engines */
-		Vehicle *engine = NULL;
-
-		for (Vehicle *u = dst_head; u != NULL; u = u->next) {
-			if (IsTrainEngine(u) && IsMultiheaded(u) && u->u.rail.other_multiheaded_part != NULL) {
-				engine = u;
-			}
-			if (engine != NULL && engine->u.rail.other_multiheaded_part == u) {
-				engine = NULL;
-			}
-			if (u == dst) {
-				if (engine != NULL) dst = engine->u.rail.other_multiheaded_part;
-				break;
-			}
-		}
-	}
-
 	if (IsMultiheaded(src) && !IsTrainEngine(src)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
 
 	/* when moving all wagons, we can't have the same src_head and dst_head */

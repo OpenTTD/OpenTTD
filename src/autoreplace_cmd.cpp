@@ -195,7 +195,10 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			 * We add the new engine after the old one instead of replacing it. It will give the same result anyway when we
 			 * sell the old engine in a moment
 			 */
+			/* Get the vehicle in front of the one we move out */
 			Vehicle *front = GetPrevVehicleInChain(old_v);
+			/* If the vehicle in front is the rear end of a dualheaded engine, then we need to use the one in front of that one */
+			if (IsMultiheaded(front) && !IsTrainEngine(front)) front = GetPrevVehicleInChain(front);
 			/* Now we move the old one out of the train */
 			DoCommand(0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 			/* Add the new vehicle */
