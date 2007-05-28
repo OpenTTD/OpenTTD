@@ -73,7 +73,7 @@ enum WindowKeyCodes {
 
 	/* backquote is the key left of "1"
 	 * we only store this key here, no matter what character is really mapped to it
-	 * on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and °) */
+	 * on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and Â°) */
 	WKC_BACKQUOTE   = 45,
 	WKC_PAUSE       = 46,
 
