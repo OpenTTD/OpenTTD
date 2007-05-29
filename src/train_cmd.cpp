@@ -1174,26 +1174,6 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			src->u.rail.other_multiheaded_part->first = NULL;
 		}
 
-		if (HASBIT(p2, 0) && src_head != NULL && src_head != src) {
-			/* if we stole a rear multiheaded engine, we better give it back to the front end */
-			Vehicle *engine = NULL, *u;
-			for (u = src_head; u != NULL; u = u->next) {
-				if (IsMultiheaded(u)) {
-					if (IsTrainEngine(u)) {
-						engine = u;
-						continue;
-					}
-					/* we got the rear engine to match with the front one */
-					engine = NULL;
-				}
-			}
-			if (engine != NULL && engine->u.rail.other_multiheaded_part != NULL) {
-				AddWagonToConsist(engine->u.rail.other_multiheaded_part, engine);
-				/* previous line set the front engine to the old front. We need to clear that */
-				engine->u.rail.other_multiheaded_part->first = NULL;
-			}
-		}
-
 		/* If there is an engine behind first_engine we moved away, it should become new first_engine
 		 * To do this, CmdMoveRailVehicle must be called once more
 		 * we can't loop forever here because next time we reach this line we will have a front engine */
