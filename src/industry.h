@@ -99,7 +99,6 @@ struct GRFFileProps {
 	struct SpriteGroup *spritegroup;      ///< pointer to the different sprites of the industry
 	const struct GRFFile *grffile;        ///< grf file that introduced this house
 	uint8 override;                       ///< id of the entity been replaced by
-	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 };
 
 /**
@@ -132,6 +131,7 @@ struct IndustrySpec {
 	const uint8 *random_sounds;           ///< array of random sounds.
 	/* Newgrf data */
 	uint16 callback_flags;                ///< Flags telling which grf callback is set
+	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 	struct GRFFileProps grf_prop;         ///< properties related the the grf file
 };
 
@@ -148,6 +148,7 @@ struct IndustryTileSpec {
 	                                      ///< state instead of the construction state
 	/* Newgrf data */
 	uint8 callback_flags;                ///< Flags telling which grf callback is set
+	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 	struct GRFFileProps grf_prop;
 };
 
