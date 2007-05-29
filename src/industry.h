@@ -140,6 +140,7 @@ struct IndustrySpec {
  */
 struct IndustryTileSpec {
 	CargoID accepts_cargo[3];             ///< Cargo accepted by this tile
+	uint8 acceptance[3];                  ///< Level of aceptance per cargo type
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
 	byte anim_production;                 ///< Animation frame to start when goods are produced
 	byte anim_next;                       ///< Next frame in an animation

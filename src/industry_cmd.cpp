@@ -287,14 +287,10 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(GetIndustryGfx(tile));
 	CargoID a;
 
-	a = itspec->accepts_cargo[0];
-	if (a != CT_INVALID) ac[a] = (a == CT_PASSENGERS) ? 1 : 8;
-
-	a = itspec->accepts_cargo[1];
-	if (a != CT_INVALID) ac[a] = 8;
-
-	a = itspec->accepts_cargo[2];
-	if (a != CT_INVALID) ac[a] = 8;
+	for (byte i = 0; i < lengthof(itspec->accepts_cargo); i++) {
+		a = itspec->accepts_cargo[i];
+		if (a != CT_INVALID) ac[a] = itspec->acceptance[i];
+	}
 }
 
 static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
