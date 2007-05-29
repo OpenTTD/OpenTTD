@@ -1,3 +1,10 @@
+0.5.2 (2007-05-29)
+------------------------------------------------------------------------
+- Feature: Add threading support for MorphOS (r9759)
+- Fix: Bridges and tunnels were not always removed on bankruptcy, thus leaving tunnels/bridges with an invalid owner that would crash the game when clicking with the query tool on them (r9966)
+- Fix: Null pointer dereference under MorphOS and AmigaOS (r9861)
+
+
 0.5.2-RC1 (2007-05-16)
 ------------------------------------------------------------------------
 - Feature: Windows 95/98/ME check in Windows 2000/XP/2003/Vista builds (r9834)
@@ -24,6 +31,7 @@
 0.5.1 (2007-04-20)
 ------------------------------------------------------------------------
 (None)
+
 
 0.5.1-RC3 (2007-04-17)
 ------------------------------------------------------------------------
