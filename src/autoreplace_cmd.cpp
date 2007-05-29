@@ -234,10 +234,6 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 				if (temp_v != NULL) {
 					DoCommand(0, (new_v->index << 16) | temp_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 				}
-			} else if (!IsDefaultGroupID(old_v->group_id) && IsValidGroupID(old_v->group_id)) {
-				/* Increase the new num engines of the group for the ships, aircraft, and road vehicles
-					The old new num engine is decrease in the destroyvehicle function */
-				GetGroup(old_v->group_id)->num_engines[new_v->engine_type]++;
 			}
 		}
 		/* We are done setting up the new vehicle. Now we move the cargo from the old one to the new one */
