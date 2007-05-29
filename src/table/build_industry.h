@@ -1530,7 +1530,7 @@ static const IndustrySpec _industry_specs[] = {
  * @param a2  next frame of animation
  * @param a3  chooses between animation or construction state
  */
-#define MT(ca1, c1, ca2, c2, ca3, c3, sl, a1, a2, a3) {{c1, c2, c3}, {ca1, ca2, ca3}, sl, a1, a2, a3, 0, 0, 0, NULL, NULL, 0, true}
+#define MT(ca1, c1, ca2, c2, ca3, c3, sl, a1, a2, a3) {{c1, c2, c3}, {ca1, ca2, ca3}, sl, a1, a2, a3, 0, {0, 0, NULL, NULL, 0, true}}
 static const IndustryTileSpec _industry_tile_specs[] = {
 	/* Coal Mine */
 	MT(0,  CT_INVALID,      0,  CT_INVALID,   0,  CT_INVALID,    SLOPE_STEEP,  INDUTILE_NOANIM,   INDUTILE_NOANIM,  false),
