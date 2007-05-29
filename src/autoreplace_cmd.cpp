@@ -171,7 +171,12 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 		return cost;
 	}
 
-	if (replacement_cargo_type != CT_NO_REFIT) cost += GetRefitCost(new_engine_type); // add refit cost
+	if (replacement_cargo_type != CT_NO_REFIT) {
+		/* add refit cost */
+		int32 refit_cost = GetRefitCost(new_engine_type);
+		if (old_v->type == VEH_TRAIN && IsMultiheaded(old_v)) refit_cost += refit_cost; // pay for both ends
+		cost += refit_cost;
+	}
 
 	if (flags & DC_EXEC) {
 		new_v = GetVehicle(_new_vehicle_id);
