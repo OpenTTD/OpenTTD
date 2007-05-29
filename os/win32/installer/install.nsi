@@ -81,6 +81,7 @@ Page custom ShowWarningsPage
 !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\readme.txt"
 !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
+!define MUI_WELCOMEFINISHPAGE_CUSTOMFUNCTION_INIT DisableBack
 
 !insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -355,26 +356,30 @@ NoCD:
 hasCD:
 FunctionEnd
 
-;---------------------------------------------------------------------
-; Custom page function to show notices for running OpenTTD
+;----------------------------------------------------------------------------------
+; Disable the "Back" button on finish page if the installer is run on Win9x systems
+Function DisableBack
+	Call GetWindowsVersion
+	Pop $R0
+	StrCmp $R0 "win9x" 0 WinNT
+	!insertmacro MUI_INSTALLOPTIONS_WRITE "ioSpecial.ini" "Settings" "BackEnabled" "0"
+WinNT:
+	ClearErrors
+FunctionEnd
+
+;----------------------------------------------------------------------------------
+; Custom page function to show notices for running OpenTTD (only for win32 systems)
 ; We have extracted this custom page as Notice in the .onInit function
 Function ShowWarningsPage
+	Call GetWindowsVersion
+	Pop $R0
+	; Don't show the UNICODE notice if the installer is run on Win9x systems
+	StrCmp $R0 "win9x" 0 WinNT
+	Abort
+WinNT:
 	!insertmacro MUI_HEADER_TEXT "Installation Complete" "Important notices for OpenTTD usage."
 	!insertmacro MUI_INSTALLOPTIONS_EXTRACT_AS "notice.ini" "Notice"
 	!insertmacro MUI_INSTALLOPTIONS_INITDIALOG "Notice"
-
-	Call GetWindowsVersion
-	Pop $R0
-
-	; Hide the MSLU text if the installer is not run on Win9x systems
-	StrCmp $R0 "winnt" 0 Win9x
-	!insertmacro MUI_INSTALLOPTIONS_READ $R1 "Notice" "Field 1" "HWND" ; MSLU groupbox
-	ShowWindow $R1 0
-	!insertmacro MUI_INSTALLOPTIONS_READ $R1 "Notice" "Field 2" "HWND" ; MSLU text
-	ShowWindow $R1 0
-	!insertmacro MUI_INSTALLOPTIONS_READ $R1 "Notice" "Field 3" "HWND" ; MSLU link
-	ShowWindow $R1 0
-Win9x:
 	ClearErrors
 	!insertmacro MUI_INSTALLOPTIONS_SHOW
 FunctionEnd
