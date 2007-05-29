@@ -1446,6 +1446,7 @@ bool AfterLoadGame()
 
 	if (CheckSavegameVersion(61)) {
 		/* Added the RoadType */
+		bool old_bridge = CheckSavegameVersion(42);
 		for (TileIndex t = 0; t < map_size; t++) {
 			switch(GetTileType(t)) {
 				case MP_STREET:
@@ -1470,7 +1471,9 @@ bool AfterLoadGame()
 					break;
 
 				case MP_TUNNELBRIDGE:
-					if ((IsTunnel(t) ? GetTunnelTransportType(t) : (TransportType)GB(_m[t].m5, 1, 2)) == TRANSPORT_ROAD) {
+					/* Middle part of "old" bridges */
+					if (old_bridge && IsBridgeTile(t) && HASBIT(_m[t].m5, 6)) break;
+					if ((IsTunnel(t) ? GetTunnelTransportType(t) : (old_bridge ? (TransportType)GB(_m[t].m5, 1, 2) : GetBridgeTransportType(t))) == TRANSPORT_ROAD) {
 						SetRoadTypes(t, ROADTYPES_ROAD);
 					}
 					break;
