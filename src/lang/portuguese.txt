@@ -3,6 +3,8 @@
 ##isocode pt_PT
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora da borda do mapa
@@ -1046,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estaç�
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova procura de caminho global (NPF, substitui NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular comboios pesados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações de passagem em estradas das cidades: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1585,6 +1588,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Caminhos-de-fer
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Caminhos-de-ferro com pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Caminhos-de-ferro com sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Caminhos-de-ferro com sinais combinados
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}É preciso remover a estação primeiro
 
 
 
@@ -2011,6 +2015,8 @@ STR_SV_STNAME_UPPER                                             :{STRING} de cim
 STR_SV_STNAME_LOWER                                             :{STRING} de baixo
 STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
 STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3187,3 +3193,13 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Comutar 
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Comutar transparência para edificações como estações, depósitos, pontos-de-passagem e catenárias
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comutar transparência para pontes
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas (talvez, no futuro, para embelezamentos)
+
+##### Mass Order
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+
+
+
+
+
+########

@@ -3,6 +3,8 @@
 ##isocode sv_SE
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Utanför kanten
@@ -1046,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-re
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny globalt sätt att hitta rutt (NPF, åsidosätter NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillåt genomfarts-stop på stadsägda vägar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillåt byggande av närliggande stationer: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
@@ -1586,6 +1589,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Järnväg med v
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Järnväg med för-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Järnväg med utgående signaler
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Järnväg med kombinerade signaler
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Måste ta bort tågstationen först
 
 
 
@@ -1593,22 +1597,38 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Järnväg med k
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Måste ta bort väg först
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vägarbete pågår
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Bygg väg
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Byggnation av spårvagn
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Välj vägbro
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan inte bygga väg här...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Kan inte bygga spårvagnsräls här...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan inte ta bort väg här...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Kan inte ta bort spårvagnsrälsen härifrån...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Riktning för bussgarage
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Spårvagnsdepåns orientering
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan inte bygga bussgarage här...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Kan inte bygga spårvagnsdepå här...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan inte bygga busshållplats...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan inte bygga lastbilsstation...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Kan inte bygga passagerar-spårvagnsstation...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan inte bygga frakt-spårvagnsstation...
 STR_180A_ROAD_CONSTRUCTION                                      :Bygg väg
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Spårvagnskonstruktion
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Bygg väg
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Bygg spårvagnssektion
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Bygg bussgarage (för att bygga eller reparera vägfordon)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Bygg spårvagnsdepå (för att konstruera och serva fordon)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Bygg busshållplats
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Bygg lastbilsstation
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Bygg passagerar-spårvagnsstation
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Bygg frakt-spårvagnsstation
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bygg vägbro
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Bygg spårvagnsbro
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bygg vägtunnel
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Bygg spårvagnstunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Växla mellan att bygga/ta bort väg
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Växla byggande/rivande av spårvagnskonstruktion
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Välj riktning för bussgarage
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Välj spårvagnsdepåns orientering
 STR_1814_ROAD                                                   :Väg
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Väg med gatubelysning
 STR_1816_TREE_LINED_ROAD                                        :Väg med träd
@@ -1616,6 +1636,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Bussgarage
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Väg-/Järnvägskorsning
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kan inte ta bort busstation...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kan inte ta bort lastbilsstation...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Kan inte ta bort passagerar-spårvagnsstation...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Kan inte ta bort frakt-spårvagnsstation...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Städer
@@ -1780,8 +1802,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} tar nu emot {STRING} och {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Busshållplatsriktning
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lastbilsbryggsriktning
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Passagerar-spårvagns riktning
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Frakt-spårvagns riktning
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Måste riva busshållplats först
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Måste riva lastbilsbrygga först
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Måste ta bort passagerar-spårvagnsstation först
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Måste ta bort frakt-spårvagnsstation först
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" er}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Inga -
@@ -1793,6 +1819,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Välj an
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Välj längden på järnvägsstation
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Välj riktning för busshållplats
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Välj riktning för lastbilsbrygga
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Välj passagerar-spårvagnsstationens orientering
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Välj frakt-spårvagnsstationens orientering
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrera vyn på stationen
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Visa stationens klassificering
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Byt namn på stationen
@@ -2243,6 +2271,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Fraktskepp
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Litet flygplan
 STR_LIVERY_LARGE_PLANE                                          :Stort Flygplan
+STR_LIVERY_PASSENGER_TRAM                                       :Passagerarspårvagn
+STR_LIVERY_FREIGHT_TRAM                                         :Fraktspårvagn
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Visa generellt färgschema
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Visa färgscheman för tåg
@@ -2716,6 +2746,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan inte
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Byt namn på vägfordon
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första bussen ankommer till {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första lastbilen ankommer till {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Invånarna firar . . .{}Första passagerar-spårvagnen anländer på {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Invånarna firar . . .{}Första frakt-spårvagnen anländer på {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Vägfordonskrash!{}förare dör i eldklot efter kollision med tåg
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Vägfordonskrash!{}{COMMA} dör i eldklot efter kollision med tåg
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan inte tvinga fordonet att vända om...
@@ -3000,6 +3032,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Visa all
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du är på väg att sälja alla fordon i depån. Är du säker?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Felaktig depå-typ
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sälj alla tåg i depån
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sälj alla vägfordon i depån

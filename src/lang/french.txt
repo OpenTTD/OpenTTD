@@ -1090,6 +1090,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Etendue
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'héliport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils Paysage avec celle des rails/routes/eau et aéroport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverser la direction lors du défilement avec la souris : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Défilement régulier de la vue: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Montrer une infobulle de mesure lors de l'utilisation de divers outils de construction: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Affichage des livrées de compagnie : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Aucune
@@ -1569,7 +1570,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Impossib
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Impossible de construire des rails ici...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Impossible de retirer les rails d'ici...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Impossible de retirer les signaux d'ici...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientation du Dépôt
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientation du dépôt
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construction de voie ferrée
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construction de voie ferrée électrifiée
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construction de Monorail
@@ -1598,22 +1599,38 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Vous dev
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Vous devez d'abord retirer la route
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Route en travaux
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construction routière
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construction de tramway
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Choisir Pont Routier
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Impossible de construire la route ici...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Impossible de construire une section de tramway ici...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Impossible de retirer la route ici...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Impossible de retirer la section de tramway d'ici...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépôt
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépôt
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossible de construire un dépôt routier ici...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Impossible de construire un dépôt de tramway ici...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Impossible de construire un arrêt d'autobus...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Impossible de construire une aire de chargement...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Impossible de construire une station de tramway pour passagers...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Impossible de construire une station de tramway pour fret...
 STR_180A_ROAD_CONSTRUCTION                                      :Construction routière
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Construction de tramway
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construire une section de route
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construire une section de tramway
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construire un dépôt routier (pour construire et entretenir les véhicules routiers)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construire un dépôt de tramway (pour la construction et l'entretien des véhicules)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construire un arrêt d'autobus
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construire une aire de chargement
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Construire une station de tramway pour passagers
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Construire une station de tramway pour fret
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construire un pont routier
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construire un pont
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construire un tunnel routier
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construire un tunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Basculer construire/détruire routes
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Basculer construire/retirer pour tramways
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Choisir orientation du dépôt routier
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Choisir l'orientation du dépôt de tramway
 STR_1814_ROAD                                                   :Route
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Route avec lampadaires
 STR_1816_TREE_LINED_ROAD                                        :Route avec lignée d'arbustres
@@ -1621,6 +1638,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Dépôt de véh
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Route/rail Croisement à niveau
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossible de supprimer la station de bus...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossible de supprimer la station de camions...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Impossible de retirer la station de tramway pour passagers...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Impossible de retirer la station de tramway pour fret...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Villes
@@ -1785,8 +1804,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} accepte désormais: {STRING} et {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Arrêt d'autobus
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Aire de chargement
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Tramway pour passagers
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Tramway pour fret
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Vous devez d'abord détruire l'arrêt d'autobus
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Vous devez d'abord détruire l'aire de chargement
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Vous devez d'abord démolir la station de tramway pour passagers
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Vous devez d'abord démolir la station de tramway pour fret
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Aucun -
@@ -1798,6 +1821,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Choix du
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Choisir la longueur de la gare
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Choisir l'orientation de l'arrêt d'autobus
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Choix de l'orientation de l'aire de chargement
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Choisir l'orientation de la station de tramway pour passagers
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Choisir l'orientation de la station de tramway pour fret
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrer la vue sur la station
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Afficher la notation de la station
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Renommer la station
@@ -1827,7 +1852,7 @@ STR_STAT_CLASS_DFLT                                             :Station par dé
 STR_STAT_CLASS_WAYP                                             :Points de passage
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépot naval
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépôt
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...doit être construit sur l'eau
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Impossible de construire le dépôt naval ici...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Choisir l'orientation du dépôt naval
@@ -2248,6 +2273,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Navire de fret
 STR_LIVERY_HELICOPTER                                           :Hélicoptère
 STR_LIVERY_SMALL_PLANE                                          :Petit porteur
 STR_LIVERY_LARGE_PLANE                                          :Gros porteur
+STR_LIVERY_PASSENGER_TRAM                                       :Tramway pour passagers
+STR_LIVERY_FREIGHT_TRAM                                         :Tramway pour fret
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Montrer les livrées générales
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Montrer les livrées de trains
@@ -2721,6 +2748,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Impossib
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Renommer le véhicule
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier bus arrive à {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier camion arrive à {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier tramway arrive à {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Les habitants célèbrent . . .{}Le premier tramway arrive à {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident routier!{}Un automobiliste meurt brûlé vif lors d'une collision avec un train
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident routier!{}{COMMA} mort{P "" s} lors d'une collision avec un train
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Impossible de faire faire demi-tour au véhicule...
@@ -3005,6 +3034,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Afficher
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vous êtes sur le point de vendre tous les véhicules du dépôt. Etes-vous sûr ?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Dépôt incompatible
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendre tous les trains du dépôt
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendre tous les véhicules routiers du dépôt

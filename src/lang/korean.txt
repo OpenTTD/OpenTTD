@@ -4,6 +4,8 @@
 ##plural 1
 ##gender a b
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}맵 가장자리에서 너무 멉니다!
@@ -1047,6 +1049,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}이미 
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}향상된 글로벌 경로탐색 (NPF, NTP 우선) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}마을이 소유중인 도로를 통과하는 버스 정류장 건설 허용: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}정거장 근처에 건물 짓기 허용: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}소형 공항의 건설을 허용 : {ORANGE}{STRING}
 
@@ -1587,6 +1590,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :일반 신호�
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :PRE 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :출구 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :결합 신호등이 설치된 철도
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
 
 
 
@@ -1594,22 +1598,38 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :결합 신호�
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}도로를 먼저 제거하십시오
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}도로 작업이 진행중입니다
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}도로 건설
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}전찻길 건설
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}교량을 선택하십시오
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}도로를 건설할 수 없습니다...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}여기에 전찻길을 건설할 수 없습니다...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}도로를 제거할 수 없습니다...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}이곳의 전찻길을 제거할 수 없습니다...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}차고 방향
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}차량기지 방향
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}여기에 차고를 지을 수 없습니다...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}여기에 차량기지를 건설할 수 없습니다...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}버스 정류장을 지을 수 없습니다...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}트럭 적하장을 지을 수 없습니다...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}여기에 승객 전차 정거장을 건설할 수 없습니다...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}여기에 화물 전차 정거장을 건설할 수 없습니다...
 STR_180A_ROAD_CONSTRUCTION                                      :도로 건설
+STR_180A_TRAMWAY_CONSTRUCTION                                   :전찻길 건설
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}도로 섹션 건설
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}전찻길 섹션 건설
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}차고 건설 (차량의 제작/점검용)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}차량기지 건설 (차량 건설/점검용)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}버스 정류장 건설
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}트럭 적하장 건설
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}승객 전차 정거장 건설
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}화물 전차 전거장 건설
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}교량 건설
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}철교 건설
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}터널 건설
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}터널 건설
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}도로 제거툴 켜기/끄기
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}전찻길/신호등 제거툴 켜기/끄기
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}차고의 방향을 선택하십시오
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}차량기지의 방향을 선택하세요
 STR_1814_ROAD                                                   :도로
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :신호등이 있는 도로
 STR_1816_TREE_LINED_ROAD                                        :가로수가 있는 도로
@@ -1617,6 +1637,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :차고
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :철도 건널목
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}버스정류장을 제거할 수 없습니다...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}트럭 터미널을 제거할 수 없습니다...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}승객 전차 정거장을 제거할 수 없습니다...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}화물 전차 정거장을 제거할 수 없습니다...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}도시
@@ -1781,8 +1803,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION}에서 {STRING}/{STRING}을/를 받습니다.
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}버스 정류장 방향
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}트럭 적하장 방향
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}승객 전차 정거장 방향
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}화물 전차 정거장 방향
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}버스 정류장을 먼저 제거하십시오.
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}트럭 적하장을 먼저 제거하십시오.
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}승객 전차 정거장을 먼저 제거하십시오.
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}화물 전차 정거장을 먼저 제거하십시오.
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA}개 역사
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- 없음 -
@@ -1794,6 +1820,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}기차�
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}기차역의 길이를 선택합니다.
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}버스 정류장의 방향을 선택합니다.
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}트럭 적하장의 방향을 선택합니다.
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}승객 전차 정거장의 방향을 선택하세요.
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}화물 전차 정거장의 방향을 선택하세요.
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}이 역이 있는 곳으로 이동합니다.
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}역의 등급 표시
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}역 이름 변경
@@ -2244,6 +2272,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :화물선
 STR_LIVERY_HELICOPTER                                           :헬리콥터
 STR_LIVERY_SMALL_PLANE                                          :소형 항공기
 STR_LIVERY_LARGE_PLANE                                          :대형 항공기
+STR_LIVERY_PASSENGER_TRAM                                       :승객 전차
+STR_LIVERY_FREIGHT_TRAM                                         :화물 전차
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}일반 색상 선택
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}열차 색상 선택
@@ -2717,6 +2747,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}자동�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}자동차 이름 지정
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}자동차를 회차시킬 수 없습니다...
@@ -3001,6 +3033,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}이 스�
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안에 있는 모든 차량을 판매하려고 합니다. 정말 판매하시겠습니까?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :잘못된 차량기지 종류
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}이 차량기지에 있는 모든 열차를 팝니다.
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}이 차량기지에 있는 모든 자동차를 팝니다.
@@ -3203,6 +3236,9 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :모든 공유된 차량
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} 기차
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} 자동차
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} 선박
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 항공기
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 바꾸기
 STR_GROUP_REPLACE_CAPTION                                       :{WHITE}"{GROUP}"의 차량 교체

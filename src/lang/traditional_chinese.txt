@@ -3,6 +3,8 @@
 ##isocode zh_TW
 ##plural 1
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}超越版圖邊緣
@@ -1046,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不規�
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新路徑搜尋演算法 (NPF 將覆蓋 NTP)：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}貨物重量系數，以模擬較重列車：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在鎮內興建路邊車站：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}容許興建相鄰車站： {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}永遠可以興建小型機場：{ORANGE}{STRING}
 
@@ -1098,6 +1101,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :捲動地圖
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :關閉
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}滾輪地圖捲動速度： {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}自動在開始新遊戲時暫停：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用進階載具名單： {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家可擁有列車數目：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}每位玩家可擁有車輛數目：{ORANGE}{STRING}
@@ -1585,6 +1589,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :有一般號誌
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :有入口號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :有出口號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :有綜合號誌的鐵軌
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}必須先移除火車站
 
 
 
@@ -1592,22 +1597,38 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :有綜合號誌
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}必須先移除道路
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}道路施工中
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}鋪設道路
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}鋪設電車軌
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}選擇道路橋樑
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}不能在此鋪設道路...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}不可以在這裏鋪設電車軌...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}不能從此移除道路...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}不可以移除這裏的電車軌...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}車庫方向
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}電車
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}不能在此建築車庫...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}不可以在這裏興建電車維修廠...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}無法建築公車站...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}無法建築貨運站...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}不可以興建電車站...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}不可興建載貨電車站...
 STR_180A_ROAD_CONSTRUCTION                                      :鋪設道路
+STR_180A_TRAMWAY_CONSTRUCTION                                   :鋪設電車軌
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}鋪設一段公路
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}興建電車站
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}建築車庫 (用來製造與維護公路車輛)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}興建電車維修廠 (供製造及維修用)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}建築公車站
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}建築貨運站
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}興建載客電車站
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}興建載貨電車站
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}建築公路橋樑
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}架設電車橋
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}建築公路隧道
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}開鐅電車隧道
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}切換建築/移除公路
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}鋪設電車軌開關
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}選擇車庫方向
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}選擇電車維修廠方向
 STR_1814_ROAD                                                   :公路
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :有路燈的公路
 STR_1816_TREE_LINED_ROAD                                        :有行道樹的公路
@@ -1615,6 +1636,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :車庫
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :公路/鐵道平交道
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}不能從這邊移除公車站...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}不能從這邊移除貨運站...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}不可移除載客電車站...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}不可移除載貨電車站...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}城鎮
@@ -1779,8 +1802,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} 現在接受 {STRING} 與 {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}公車站方向
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}貨運站方向
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}載客電車方向
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}載貨電車方向
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}必須先摧毀公車站
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}必須先摧毀貨運站
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}必須先移除載客電車車站
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}必須先移除載貨電車車站
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} 座車站
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- 無 -
@@ -1792,6 +1819,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}選擇�
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}選擇鐵道車站的長度
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}選擇公車站方向
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}選擇貨運站方向
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}選擇載客電車方向
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}選擇載貨電車方向
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}將主視野帶到車站位置
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}顯示車站評價
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}變更車站名稱
@@ -2011,6 +2040,8 @@ STR_SV_STNAME_UPPER                                             :{STRING} 台地
 STR_SV_STNAME_LOWER                                             :{STRING} 盆地
 STR_SV_STNAME_HELIPORT                                          :{STRING} 直升機場
 STR_SV_STNAME_FOREST                                            :{STRING} 森林
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3187,3 +3218,40 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}將透�
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}將透明度套用於建物，如車站、廠棚、路標及電線
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}將透明度套用於橋樑
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}將透明度套用於設施，如燈塔、天線塔等
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :群組 {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :所有列車
+STR_GROUP_ALL_ROADS                                             :所有車輛
+STR_GROUP_ALL_SHIPS                                             :所有船舶
+STR_GROUP_ALL_AIRCRAFTS                                         :所有飛機
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :加入共用載具
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有載具
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} 列車
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} 車輛
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} 船舶
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 飛機
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}為群組重新命名
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}置換 "{GROUP}" 載具
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}不能建立群組...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}不能移除群組...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}不能重新命名群組...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}不能從群組移除所有載具...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}不能加入載具到這群組...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}不能加入共用載具到這群組...
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}群組 - 單擊群組以顯示載具名單
+STR_GROUP_CREATE_TIP                                            :{BLACK}單擊建立群組
+STR_GROUP_DELETE_TIP                                            :{BLACK}移除選擇群組
+STR_GROUP_RENAME_TIP                                            :{BLACK}為群組重新命名
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}本年盈餘： {GREEN}{CURRENCY} {BLACK}(去年： {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}本年盈餘：{RED}{CURRENCY} {BLACK}(去年： {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}本年盈餘： {GREEN}{CURRENCY} {BLACK}(去年： {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}本年盈餘： {RED}{CURRENCY} {BLACK}(去年：{RED}{CURRENCY}{BLACK})
+
+########

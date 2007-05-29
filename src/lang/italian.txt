@@ -1091,6 +1091,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max est
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutieni automaticamente gli elicotteri presso gli eliporti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti terreno assieme a quelli di costruzione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverti direzione di scorrimento della mappa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Scorrimento morbido delle visuali: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostra un tooltip di misura durante la costruzione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostra le livree della società: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nessuna
@@ -1599,22 +1600,38 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bisogna 
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Bisogna rimuovere la strada prima
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Lavori stradali in corso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Costruzione strade
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Costruzione tranvie
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Seleziona ponte stradale
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Impossibile costruire la strada qui...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Impossibile costruire la tranvia qui...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Impossibile rimuovere la strada da qui...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Impossibile rimuovere la tranvia da qui...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientamento deposito
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientamento deposito
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossibile costruire il deposito qui...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Impossibile costruire il deposito qui...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Impossibile costruire la stazione degli autobus qui...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Impossibile costruire la stazione dei camion qui...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Impossibile costruire la stazione tram passeggeri...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Impossibile costruire la stazione tram merci...
 STR_180A_ROAD_CONSTRUCTION                                      :Costruzione strade
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Costruzione tranvie
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Costruisce una sezione di strada
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Costruisce una sezione di tranvia
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Costruisce un deposito automezzi (per costruire e manutenere i veicoli)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Costruisce un deposito tranviario (per costruire e manutenere i veicoli)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Costruisce una stazione degli autobus
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Costruisce un'area di carico per camion
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Costruisce una stazione tram passeggeri
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Costruisce una stazione tram merci
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Costruisce un ponte stradale
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Costruisce un ponte tranviario
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Costruisce un tunnel stradale
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Costruisce un tunnel tranviario
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Seleziona fra costruzione/rimozione di strade
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Seleziona fra costruzione/rimozione di tranvie
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Seleziona l'orientamento del deposito automezzi
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Seleziona l'orientamento del deposito tranviario
 STR_1814_ROAD                                                   :Strada
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Strada con lampioni
 STR_1816_TREE_LINED_ROAD                                        :Strada alberata
@@ -1622,6 +1639,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Deposito autome
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passaggio a livello
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossibile rimuovere la stazione degli autobus...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossibile rimuovere l'area di carico per camion...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Impossibile rimuovere la stazione tram passeggeri...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Impossibile rimuovere la stazione tram merci...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Città
@@ -1786,8 +1805,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} adesso accetta {STRING} e {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientamento stazione
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orient. area carico
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orient. stazione tram passeggeri
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orient. stazione tram merci
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Bisogna demolire la stazione degli autobus prima
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Bisogna demolire l'area di carico per camion prima
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Bisogna demolire la stazione tram passeggeri prima
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Bisogna demolire la stazione tram merci prima
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} stazion{P e i}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nessuna -
@@ -1799,6 +1822,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Selezion
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Seleziona la lunghezza della stazione ferroviaria
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Seleziona l'orientamento della stazione degli autobus
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Seleziona l'orientamento dell'area di carico per camion
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Seleziona l'orientamento della stazione tram passeggeri
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Seleziona l'orientamento della stazione tram merci
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centra la visuale principale sulla posizione della stazione
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Mostra la valutazione della stazione
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Cambia il nome della stazione
@@ -2249,6 +2274,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Mercantile
 STR_LIVERY_HELICOPTER                                           :Elicottero
 STR_LIVERY_SMALL_PLANE                                          :Aeroplano piccolo
 STR_LIVERY_LARGE_PLANE                                          :Aeroplano grande
+STR_LIVERY_PASSENGER_TRAM                                       :Tram passeggeri
+STR_LIVERY_FREIGHT_TRAM                                         :Tram merci
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Mostra gli schemi di colorazione generali
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Mostra gli schemi di colorazione dei treni
@@ -2721,7 +2748,9 @@ STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Rinomina
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Impossibile rinominare l'automezzo...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Rinomina l'automezzo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo autobus arriva a {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano. . .{}Il primo camion arriva a {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo camion arriva a {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo tram passeggeri arriva a {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo tram merci arriva a {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Incidente stradale!{}Il conducente muore nell'incendio seguito alla collisione con un treno
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Incidente stradale!{}In {COMMA} muoiono nell'incendio seguito alla collisione con un treno
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Impossibile far girare il veicolo...
@@ -3006,6 +3035,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra t
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Stai per vendere tutti i veicoli nel deposito. Sei sicuro?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Tipo di deposito errato
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vende tutti i treni nel deposito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vende tutti gli automezzi nel deposito

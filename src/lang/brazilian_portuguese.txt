@@ -1599,22 +1599,38 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Remova a
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Precisa remover a rodovia primeiro
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Recapeamento rodoviário em progresso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construir rodovias
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construção de Bonde
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecionar Ponte Rodoviária
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Impossível construir rodovia aqui...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Impossível construir bonde aqui...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Impossível remover rodovia daqui...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Impossível remover bonde daqui...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientação da Garagem
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientação do Depósito
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossível construir garagem aqui...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Impossível construir depósito aqui...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Impossível construir estação de ônibus...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Impossível construir estação de caminhão
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Impossível construir estação de bonde...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Impossível construir estação de bonde
 STR_180A_ROAD_CONSTRUCTION                                      :Construir rodovias
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Construção de Bonde
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir trecho rodoviário
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construir linha de bonde
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir garagem (para construção e manutenção de automóveis)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construir depósito de bonde (para construção e manutenção de bondes)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construir estação de ônibus
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construir carga de caminhões
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Constuir estação de bonde para passageiros
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Constuir estação de bonde para carga
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construir ponte rodoviária
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construir ponte de bonde
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construir túnel rodoviário
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construir túnel de bonde
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Alternar construir/remover para contrução rodoviária
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Alternar construir/remover linhas de bonde e sinais
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selecionar a orientação da garagem
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Selecionar a orientação do depósito de bonde
 STR_1814_ROAD                                                   :Rodovia
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Rodovia iluminada
 STR_1816_TREE_LINED_ROAD                                        :Rodovia arborizada
@@ -1622,6 +1638,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Garagem
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passagem de nível
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossível remover estação de ônibus
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossível remover parada de caminhões
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Impossível remover estação de bonde...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Impossível remover estação de bonde...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Cidades
@@ -1788,8 +1806,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} agora aceita {STRING} e {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientação do estação de ônibus
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientação da estação de caminhão
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orientação da Estação de Bonde
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orientação da Estação de Bonde
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Precisa demolir a estação de ônibus primeiro
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Precisa demolir a estação de caminhão
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Precisa demolir estação de bonde primeiro
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Precisa demolir estação de bonde primeiro
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estações
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nenhuma -
@@ -1801,6 +1823,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Selecion
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Selecionar o tamanho da estação ferroviária
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Selecionar orientação do estação de ônibus
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Selecionar orientação da área de carga
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Selecionar orientação da estação de bonde
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Selecionar orientação da estação de bonde
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centralizar visualização no local estação
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Exibir avaliações da estação
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Alterar o nome da estação
@@ -2251,6 +2275,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Cargueiro
 STR_LIVERY_HELICOPTER                                           :Helicóptero
 STR_LIVERY_SMALL_PLANE                                          :Aeronave Pequena
 STR_LIVERY_LARGE_PLANE                                          :Aeronave Grande
+STR_LIVERY_PASSENGER_TRAM                                       :Bonde de Passageiros
+STR_LIVERY_FREIGHT_TRAM                                         :Bonde de Carga
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Exibir esquemas de cor gerais
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Exibir esquemas de cor de trens
@@ -2724,6 +2750,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Impossí
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Renomear automóvel
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro ônibus chega a {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro caminhão chega a {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro bonde de passageiros chega a {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro bonde de carga chega a {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Acidente Rodoviário!{} Condutor morre numa explosão após a colisão com um trem
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Acidente Rodoviário!{} {COMMA} mortos numa explosão após a colisão com um trem
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Impossível fazer o veículo dar a volta...
@@ -3008,6 +3036,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Exibir t
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Você está prestes a vender todos os automóveis da garagem. Você tem certeza?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Tipo de depósito errado
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os trens no depósito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos os automóveis na garagem

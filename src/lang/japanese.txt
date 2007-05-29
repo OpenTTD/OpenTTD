@@ -1609,10 +1609,15 @@ STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}道路�
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}（バス、トラックの建設、整備のための）車庫を建設します
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}バス停を建設します
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}荷役所を建設します
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}乗客用路面電車駅を建設
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}貨物用路面電車駅を建設
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}道路の端を建設します
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}路面電車用橋を建設
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}道路のトンネルを建設します
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}路面電車用トンネルを建設
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}道路の建設／破壊を切り替えます
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}車庫の配置の選択
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}路面電車庫の配置を選択
 STR_1814_ROAD                                                   :道路
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :街路照明のある道路
 STR_1816_TREE_LINED_ROAD                                        :並木道
@@ -1620,6 +1625,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :車庫
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :踏切
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}バス停が破壊できません...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}荷役所が破壊できません...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}乗客用路面電車駅が破壊できません...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}貨物用路面電車駅が破壊できません...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}市町村
@@ -1784,8 +1791,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION}は今後{STRING}と{STRING}が受入れます
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}バス停の配置
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}荷役所の配置
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}乗客用路面電車駅の配置
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}貨物用路面電車駅の配置
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}先にバス停を破壊しなければなりません
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}先にバス停を破壊しなければなりません
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}先に乗客用路面電車駅を破壊しなければなりません
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}先に貨物用路面電車駅を破壊しなければなりません
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA}軒の駅
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- なし -
@@ -1797,6 +1808,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}駅の�
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}駅のホームの長さを選択します
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}バス停の配置を選択します
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}荷役所の配置を選択します
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}乗客用路面電車駅の配置を選択
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}貨物用路面電車駅の配置を選択
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}主の画面を駅の場所に移動します
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}駅の評価を表示します
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}駅名を変更します
@@ -2247,6 +2260,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :貨物船
 STR_LIVERY_HELICOPTER                                           :ヘリコプター
 STR_LIVERY_SMALL_PLANE                                          :小型飛行機
 STR_LIVERY_LARGE_PLANE                                          :大型飛行機
+STR_LIVERY_PASSENGER_TRAM                                       :乗客用路面電車
+STR_LIVERY_FREIGHT_TRAM                                         :貨物用路面電車
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}一般のカラースキームを表示します
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}列車のカラースキームを表示します
@@ -2720,6 +2735,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}道路�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}道路車両を名付ける
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}初バスが{STATION}バス停に到着！
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀！{}初トラックが{STATION}荷役所に到着！
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}町民の祝賀{}初乗客用路面電車が{STATION}駅に到着！
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}町民の祝賀{}初貨物用路面電車が{STATION}駅に到着！
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}交通事故！{}列車に衝突、運転者が死亡
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}交通事故！{}列車に衝突、{COMMA}人が死亡
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}車両が逆転させられません...
@@ -3004,6 +3021,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}この�
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}車庫／格納庫／造船所内のすべての車両を販売します。続けてもよろしいですか？
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :電車庫の種類が一致していません
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}電車庫内のすべての列車を販売します
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}車庫内のすべての道路車両を販売します

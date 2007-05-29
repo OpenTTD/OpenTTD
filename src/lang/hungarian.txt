@@ -1155,6 +1155,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Állom�
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendező eszköztár megnyitása a közúti/vasúti/vízi/légi eszköztárakkal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Egeres mozgáskor a táj a másik irányba mozdul el: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Finomított nézőpont-görgetés: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Építési eszközök használata esetén területinformációk mutatása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Cégek járműveinek mutatása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Egyikét sem
@@ -1663,22 +1664,37 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb a
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Előbb le kell rombolnod az utat
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Útkarbantartás folyamatban
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Útépítés
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Villamospálya építés
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Közúti híd építése
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Nem építhetsz ide utat...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Nem lehet villamossínt építeni itt...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nem rombolhatod le innen az utat...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Nem lehet villamossínt eltávolítani innen...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Garázs helyzete
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Villamos-depó iránya
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nem építhetsz ide garázst...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Nem lehet villamos-depót építeni ide...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nem építhetsz ide buszmegállót...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nem építhetsz ide teherautó-rakodóhelyet...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Nem lehet villamos utasvárót építeni...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nem lehet tehervillamos-állomást építeni...
 STR_180A_ROAD_CONSTRUCTION                                      :Útépítés
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Villamospálya építés
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Út építése
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Garázs építése (járművek vételére és karbantartására)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Villamos-depó építése (járművek megépítésére és szervizelésére)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Buszmegálló építése
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Teherautó-rakodóhely építése
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Villamos utasváró építése
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Tehervillamos-állomás építése
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Közúti híd építése
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Villamos-híd építése
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Közúti alagút építése
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Villamos-alagút építése
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Építés/felszedés közötti váltás utaknál
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Építő/bontó üzemmód váltása a villamospályákhoz
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Válaszd ki a garázs helyzetét
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Válassz villamos-depó irányt
 STR_1814_ROAD                                                   :Út
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Út lámpákkal
 STR_1816_TREE_LINED_ROAD                                        :Fával szegélyezett út
@@ -1686,6 +1702,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Garázs
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Út/vasút kereszteződés
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nem távolíthatod el ezt a buszmegállót...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nem távolíthatod el ezt a teherautó megállót...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nem lehet a villamos utasvárót eltávolítani...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Nem lehet a tehervillamos-állomást eltávolítani
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Városok
@@ -1850,8 +1868,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} most már elfogad {STRING} és {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Buszmegálló helyzete
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Rakodóhely helyzete
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Utasszállító villamos irány
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Teherszállító-villamos irány
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Előbb le kell rombolnod a buszmegállót
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Előbb le kell rombolnod a teherautó-rakodóhelyet
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Előbb le kell rombolni a villamos utasvárót
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Előbb le kell rombolni a tehervillamos-állomást
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} állomásai - {COMMA}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nincs -
@@ -1863,6 +1885,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}A vasút
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}A vasútállomás hossza
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Buszmegálló helyzetének kiválasztása
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Teherautó-rakodó helyzetének kiválasztása
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Válassz villamos utasváró irányt
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Válassz tehervillamos-állomás irányt
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}A fő nézetet az állomásra állítja
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Vélemény megmutatása az állomásról
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Az állomás nevének megváltoztatása
@@ -2350,6 +2374,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Teherhajó
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Kis repülőgép
 STR_LIVERY_LARGE_PLANE                                          :Nagy repülőgép
+STR_LIVERY_PASSENGER_TRAM                                       :Utasszállító villamos
+STR_LIVERY_FREIGHT_TRAM                                         :Teherszállító villamos
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Általános szinsémák mutatása
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Vonat szinsémák mutatása
@@ -2823,6 +2849,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nem neve
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Közúti jármű átnevezése
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első busz {STATION} állomásra!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első teherautó {STATION} állomásra!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}A lakosság ünnepel . . .{}Első utasszállító villamos megérkezett {STATION} állomásra!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}A lakosság ünnepel . . .{}Első teherszállító-villamos megérkezett {STATION} állomásra!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Közúti baleset!{}A vezető meghalt a vonattal való ütközéskor
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nem fordíthatod vissza a járművet...
@@ -3107,6 +3135,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Megmutat
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Biztosan eladod a depóban lévő összes járművet?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Rossz depó típus
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Összes depóbeli vonat eladása
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Összes depóbeli jármű eladása

@@ -3,6 +3,8 @@
 ##isocode da_DA
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Ude over kanten af kortet
@@ -3000,6 +3002,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Du er ved at sælge alle køretøjer i depotet. Er du sikker?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Forkert depottype
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sælg alle toge i remisen
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sælg alle køretøjer i værkstedet
