@@ -4369,6 +4369,9 @@ static void ResetNewGRFData()
 	ResetCustomHouses();
 	ResetHouses();
 
+	/* Reset the industries structures*/
+	ResetIndustries();
+
 	/* Reset station classes */
 	ResetStationClasses();
 	ResetCustomStations();

@@ -37,6 +37,28 @@ void BuildOilRig(TileIndex tile);
 static byte _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
+IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
+IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
+
+/** This function initialize the spec arrays of both
+ * industry and industry tiles.
+ * It adjusts the enabling of the industry too, based on climate availability.
+ * This will allow for clearer testings */
+void ResetIndustries()
+{
+	memset(&_industry_specs, 0, sizeof(_industry_specs));
+	memcpy(&_industry_specs, &_origin_industry_specs, sizeof(_origin_industry_specs));
+
+	/* once performed, enable only the current climate industries */
+	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
+		_industry_specs[i].enabled = HASBIT(_origin_industry_specs[i].climate_availability, _opt.landscape);
+	}
+
+
+	memset(&_industry_tile_specs, 0, sizeof(_industry_tile_specs));
+	memcpy(&_industry_tile_specs, &_origin_industry_tile_specs, sizeof(_origin_industry_tile_specs));
+}
+
 /**
  * Called if a new block is added to the industry-pool
  */
@@ -346,7 +368,7 @@ static void TransportIndustryGoods(TileIndex tile)
 		if (am != 0) {
 			uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
 
-			if (newgfx != INDUTILE_NOANIM) {
+			if (newgfx != INDUSTRYTILE_NOANIM) {
 				ResetIndustryConstructionStage(tile);
 				SetIndustryCompleted(tile, true);
 				SetIndustryGfx(tile, newgfx);
@@ -632,7 +654,7 @@ static void TileLoop_Industry(TileIndex tile)
 	TransportIndustryGoods(tile);
 
 	newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_next;
-	if (newgfx != INDUTILE_NOANIM) {
+	if (newgfx != INDUSTRYTILE_NOANIM) {
 		ResetIndustryConstructionStage(tile);
 		SetIndustryGfx(tile, newgfx);
 		MarkTileDirtyByTile(tile);

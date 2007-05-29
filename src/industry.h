@@ -12,10 +12,14 @@ typedef byte IndustryGfx;
 typedef uint8 IndustryType;
 
 enum {
-	INVALID_INDUSTRY = 0xFFFF,
-	NUM_INDUSTRYTYPES = 37,
-	INDUTILE_NOANIM = 0xFF,                   ///< flag to mark industry tiles as having no animation
-	INVALID_INDUSTRYTYPE = NUM_INDUSTRYTYPES, ///< one above amount is considered invalid
+	INVALID_INDUSTRY       = 0xFFFF,
+	NEW_INDUSTRYOFFSET     = 37,                         ///< original number of industries
+	NUM_INDUSTRYTYPES      = 37,                         ///< total number of industries, new and old
+	INDUSTRYTILE_NOANIM    = 0xFF,                       ///< flag to mark industry tiles as having no animation
+	NEW_INDUSTRYTILEOFFSET = 175,                        ///< original number of tiles
+	INVALID_INDUSTRYTYPE   = NUM_INDUSTRYTYPES,          ///< one above amount is considered invalid
+	NUM_INDUSTRYTILES      = NEW_INDUSTRYTILEOFFSET,     ///< total number of industry tiles, new and old
+	INVALID_INDUSTRYTILE   = NUM_INDUSTRYTILES,          ///< one above amount is considered invalid
 };
 
 enum IndustryLifeType {
@@ -147,16 +151,20 @@ struct IndustryTileSpec {
 	bool anim_state;                      ///< When true, the tile has to be drawn using the animation
 	                                      ///< state instead of the construction state
 	/* Newgrf data */
-	uint8 callback_flags;                ///< Flags telling which grf callback is set
+	uint8 callback_flags;                 ///< Flags telling which grf callback is set
 	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 	struct GRFFileProps grf_prop;
 };
 
 /* industry_cmd.cpp*/
-const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of industries default data
-const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles default data
+const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of industries data
+const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles data
 void ResetIndustries();
 void PlantRandomFarmField(const Industry *i);
+
+/* writable arrays of specs */
+extern IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
+extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 
 /* smallmap_gui.cpp */
 void BuildIndustriesLegend();
