@@ -48,7 +48,6 @@ enum {
 	GFX_BUBBLE_CATCHER                 = 162,
 	GFX_TOFFEE_QUARY                   = 165,
 	GFX_SUGAR_MINE_SIEVE               = 174,
-	NUM_INDUSTRY_GFXES                 = 175,
 };
 
 /**
@@ -200,12 +199,6 @@ static inline void ResetIndustryConstructionStage(TileIndex tile)
 	assert(IsTileType(tile, MP_INDUSTRY));
 	_m[tile].m1 = 0;
 }
-
-/** Structure used to make a mapping from industry gfx to industry type */
-struct IndustryTypeSolver {
-	IndustryGfx MinGfx; ///< The first gfx index for the industry type
-	IndustryGfx MaxGfx; ///< The last gfx index for the industry type
-};
 
 /**
  * Get the animation loop number

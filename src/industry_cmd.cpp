@@ -108,12 +108,12 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype)
  * This will ensure at once : proper access and
  * not allowing modifications of it.
  * @param gfx of industrytile (which is the index in _industry_specs)
- * @pre gfx < NUM_INDUSTRY_GFXES
+ * @pre gfx < INVALID_INDUSTRYTILE
  * @return a pointer to the corresponding industrytile spec
  **/
 const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx)
 {
-	assert(gfx < NUM_INDUSTRY_GFXES);
+	assert(gfx < INVALID_INDUSTRYTILE);
 	return &_industry_tile_specs[gfx];
 }
 
