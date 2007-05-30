@@ -729,11 +729,14 @@ static void ProcessRoadVehOrder(Vehicle *v)
 				IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK
 			);
 
+			TileIndex dest = INVALID_TILE;
 			if (rs != NULL) {
-				TileIndex dest = rs->xy;
-				uint mindist = DistanceManhattan(v->tile, rs->xy);
+				uint mindist = MAX_UVALUE(uint);
 
-				for (rs = rs->next; rs != NULL; rs = rs->next) {
+				for (; rs != NULL; rs = rs->next) {
+					/* The vehicle cannot go to this roadstop */
+					if ((GetRoadTypes(rs->xy) & v->u.road.compatible_roadtypes) == ROADTYPES_NONE) continue;
+
 					uint dist = DistanceManhattan(v->tile, rs->xy);
 
 					if (dist < mindist) {
@@ -741,7 +744,10 @@ static void ProcessRoadVehOrder(Vehicle *v)
 						dest = rs->xy;
 					}
 				}
-				v->dest_tile = dest;
+			}
+
+			if (dest != INVALID_TILE) {
+					v->dest_tile = dest;
 			} else {
 				/* There is no stop left at the station, so don't even TRY to go there */
 				v->cur_order_index++;
