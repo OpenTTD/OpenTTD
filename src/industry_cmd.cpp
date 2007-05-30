@@ -1470,7 +1470,9 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	indspec = GetIndustrySpec(p1);
 
 	/* Check if the to-be built/founded industry is available for this climate. */
-	if (!HASBIT(indspec->climate_availability, _opt_ptr->landscape)) return CMD_ERROR;
+	if (!indspec->enabled) {
+		return CMD_ERROR;
+	}
 
 	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now)
@@ -1554,20 +1556,20 @@ void GenerateIndustries()
 
 	/* Find the total amount of industries */
 	for (it = IT_COAL_MINE; it < NUM_INDUSTRYTYPES; it++) {
-		int num;
 
 		ind_spc = GetIndustrySpec(it);
-		chance = ind_spc->appear_creation[_opt.landscape];
+		if (ind_spc->enabled) {
+			chance = ind_spc->appear_creation[_opt.landscape];
+			if (chance > 0) {
+				/* once the chance of appearance is determind, it have to be scaled by
+				 * the difficulty level. The "chance" in question is more an index into
+				 * the _numof_industry_table,in fact */
+				int num = _numof_industry_table[_opt.diff.number_industries][chance];
 
-		if (chance > 0) {
-			/* once the chance of appearance is determind, it have to be scaled by
-			 * the difficulty level. The "chance" in question is more an index into
-			 * the _numof_industry_table,in fact */
-			num = _numof_industry_table[_opt.diff.number_industries][chance];
-
-			/* These are always placed next to the coastline, so we scale by the perimeter instead. */
-			num = (it == IT_OIL_REFINERY || it == IT_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
-			i += num;
+				/* These are always placed next to the coastline, so we scale by the perimeter instead. */
+				num = (it == IT_OIL_REFINERY || it == IT_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
+				i += num;
+			}
 		}
 	}
 
@@ -1579,8 +1581,11 @@ void GenerateIndustries()
 		 * for this landscape.
 		 * @todo :  Do we really have to pass chance as un-scaled value, since we've already
 		 *          processed that scaling above? No, don't think so.  Will find a way. */
-		chance = GetIndustrySpec(it)->appear_creation[_opt.landscape];
-		if (chance > 0) PlaceInitialIndustry(it, chance);
+		ind_spc = GetIndustrySpec(it);
+		if (ind_spc->enabled) {
+			chance = ind_spc->appear_creation[_opt.landscape];
+			if (chance > 0) PlaceInitialIndustry(it, chance);
+		}
 	};
 }
 

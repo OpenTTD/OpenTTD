@@ -146,7 +146,7 @@ void BuildIndustriesLegend()
 	/* Add each name */
 	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
 		indsp = GetIndustrySpec(i);
-		if (HASBIT(indsp->climate_availability, _opt.landscape)) {
+		if (indsp->enabled) {
 			_legend_from_industries[j].legend = indsp->name;
 			_legend_from_industries[j].colour = indsp->map_colour;
 			_legend_from_industries[j].col_break = (j % 6) == 0;  // break is performed on the 7th item
