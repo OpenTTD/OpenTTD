@@ -705,8 +705,8 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!HasSignals(tile)) {
 			/* there are no signals at all on this tile yet */
 			SetHasSignals(tile, true);
-			_m[tile].m2 |= 0xF0;              // all signals are on
-			_m[tile].m3 &= ~0xF0;             // no signals built by default
+			SetSignalStates(tile, 0xF); // all signals are on
+			SetPresentSignals(tile, 0); // no signals built by default
 			SetSignalType(tile, SIGTYPE_NORMAL);
 			SetSignalVariant(tile, sigvar);
 		}
@@ -714,7 +714,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (p2 == 0) {
 			if (!HasSignalOnTrack(tile, track)) {
 				/* build new signals */
-				_m[tile].m3 |= SignalOnTrack(track);
+				SetPresentSignals(tile, GetPresentSignals(tile) | SignalOnTrack(track));
 			} else {
 				if (pre_signal) {
 					/* cycle between normal -> pre -> exit -> combo -> ... */
@@ -728,8 +728,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		} else {
 			/* If CmdBuildManySignals is called with copying signals, just copy the
 			 * direction of the first signal given as parameter by CmdBuildManySignals */
-			_m[tile].m3 &= ~SignalOnTrack(track);
-			_m[tile].m3 |= p2 & SignalOnTrack(track);
+			SetPresentSignals(tile, (GetPresentSignals(tile) & ~SignalOnTrack(track)) | (p2 & SignalOnTrack(track)));
 			SetSignalVariant(tile, sigvar);
 		}
 
@@ -784,7 +783,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	/* copy the signal-style of the first rail-piece if existing */
 	if (HasSignals(tile)) {
-		signals = _m[tile].m3 & SignalOnTrack(track);
+		signals = GetPresentSignals(tile) & SignalOnTrack(track);
 		if (signals == 0) signals = SignalOnTrack(track); /* Can this actually occur? */
 
 		/* copy signal/semaphores style (independent of CTRL) */
@@ -874,11 +873,11 @@ int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Do it? */
 	if (flags & DC_EXEC) {
-		_m[tile].m3 &= ~SignalOnTrack(track);
+		SetPresentSignals(tile, GetPresentSignals(tile) & ~SignalOnTrack(track));
 
 		/* removed last signal from tile? */
-		if (GB(_m[tile].m3, 4, 4) == 0) {
-			SB(_m[tile].m2, 4, 4, 0);
+		if (GetPresentSignals(tile) == 0) {
+			SetSignalStates(tile, 0);
 			SetHasSignals(tile, false);
 			SetSignalVariant(tile, SIG_ELECTRIC); // remove any possible semaphores
 		}
@@ -1666,7 +1665,7 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 	for (i = 0; i != ssd->cur; i++) {
 		TileIndex tile = ssd->tile[i];
 		byte bit = SignalAgainstTrackdir(ssd->bit[i]);
-		uint16 m2 = _m[tile].m2;
+		uint signals = GetSignalStates(tile);
 
 		/* presignals don't turn green if there is at least one presignal exit and none are free */
 		if (IsPresignalEntry(tile)) {
@@ -1686,10 +1685,10 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 		if (ssd->stop) {
 make_red:
 			/* turn red */
-			if ((bit & m2) == 0) continue;
+			if ((bit & signals) == 0) continue;
 		} else {
 			/* turn green */
-			if ((bit & m2) != 0) continue;
+			if ((bit & signals) != 0) continue;
 		}
 
 		/* Update signals on the other side of this exit-combo signal; it changed. */
@@ -1704,7 +1703,7 @@ make_red:
 		}
 
 		/* it changed, so toggle it */
-		_m[tile].m2 = m2 ^ bit;
+		SetSignalStates(tile, signals ^ bit);
 		MarkTileDirtyByTile(tile);
 	}
 }
@@ -1928,11 +1927,8 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint 
 
 		case RAIL_TILE_SIGNALS: {
 			uint32 ret = GetTrackBits(tile) * 0x101;
-			byte a;
-			uint16 b;
-
-			a = _m[tile].m3;
-			b = _m[tile].m2;
+			byte a = GetPresentSignals(tile);
+			uint b = GetSignalStates(tile);
 
 			b &= a;
 
@@ -1940,13 +1936,13 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint 
 			 * direction), we pretend them to be green. (So if
 			 * signals are only one way, the other way will
 			 * implicitely become `red' */
-			if ((a & 0xC0) == 0) b |= 0xC0;
-			if ((a & 0x30) == 0) b |= 0x30;
+			if ((a & 0xC) == 0) b |= 0xC;
+			if ((a & 0x3) == 0) b |= 0x3;
 
-			if ((b & 0x80) == 0) ret |= 0x10070000;
-			if ((b & 0x40) == 0) ret |= 0x07100000;
-			if ((b & 0x20) == 0) ret |= 0x20080000;
-			if ((b & 0x10) == 0) ret |= 0x08200000;
+			if ((b & 0x8) == 0) ret |= 0x10070000;
+			if ((b & 0x4) == 0) ret |= 0x07100000;
+			if ((b & 0x2) == 0) ret |= 0x20080000;
+			if ((b & 0x1) == 0) ret |= 0x08200000;
 
 			return ret;
 		}

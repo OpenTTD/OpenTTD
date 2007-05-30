@@ -256,11 +256,6 @@ static inline void SetSignalVariant(TileIndex t, SignalVariant v)
 	SB(_m[t].m2, 2, 1, v);
 }
 
-static inline bool IsSignalPresent(TileIndex t, byte signalbit)
-{
-	return HASBIT(_m[t].m3, signalbit + 4);
-}
-
 /** These are states in which a signal can be. Currently these are only two, so
  * simple boolean logic will do. But do try to compare to this enum instead of
  * normal boolean evaluation, since that will make future additions easier.
@@ -270,11 +265,67 @@ enum SignalState {
 	SIGNAL_STATE_GREEN = 1, ///< The signal is green
 };
 
-static inline SignalState GetSingleSignalState(TileIndex t, byte signalbit)
+/**
+ * Set the states of the signals (Along/AgainstTrackDir)
+ * @param tile  the tile to set the states for
+ * @param state the new state
+ */
+static inline void SetSignalStates(TileIndex tile, uint state)
 {
-	return (SignalState)HASBIT(_m[t].m2, signalbit + 4);
+	SB(_m[tile].m2, 4, 4, state);
 }
 
+/**
+ * Set the states of the signals (Along/AgainstTrackDir)
+ * @param tile  the tile to set the states for
+ * @param state the new state
+ */
+static inline uint GetSignalStates(TileIndex tile)
+{
+	return GB(_m[tile].m2, 4, 4);
+}
+
+/**
+ * Get the state of a single signal
+ * @param t         the tile to get the signal state for
+ * @param signalbit the signal
+ * @return the state of the signal
+ */
+static inline SignalState GetSingleSignalState(TileIndex t, byte signalbit)
+{
+	return (SignalState)HASBIT(GetSignalStates(t), signalbit);
+}
+
+/**
+ * Set whether the given signals are present (Along/AgainstTrackDir)
+ * @param tile    the tile to set the present signals for
+ * @param signals the signals that have to be present
+ */
+static inline void SetPresentSignals(TileIndex tile, uint signals)
+{
+	SB(_m[tile].m3, 4, 4, signals);
+}
+
+/**
+ * Get whether the given signals are present (Along/AgainstTrackDir)
+ * @param tile the tile to get the present signals for
+ * @return the signals that are present
+ */
+static inline uint GetPresentSignals(TileIndex tile)
+{
+	return GB(_m[tile].m3, 4, 4);
+}
+
+/**
+ * Checks whether the given signals is present
+ * @param t         the tile to check on
+ * @param signalbit the signal
+ * @return true if and only if the signal is present
+ */
+static inline bool IsSignalPresent(TileIndex t, byte signalbit)
+{
+	return HASBIT(GetPresentSignals(t), signalbit);
+}
 
 /**
  * Checks for the presence of signals (either way) on the given track on the
@@ -285,7 +336,7 @@ static inline bool HasSignalOnTrack(TileIndex tile, Track track)
 	assert(IsValidTrack(track));
 	return
 		GetRailTileType(tile) == RAIL_TILE_SIGNALS &&
-		(_m[tile].m3 & SignalOnTrack(track)) != 0;
+		(GetPresentSignals(tile) & SignalOnTrack(track)) != 0;
 }
 
 /**
@@ -300,7 +351,7 @@ static inline bool HasSignalOnTrackdir(TileIndex tile, Trackdir trackdir)
 	assert (IsValidTrackdir(trackdir));
 	return
 		GetRailTileType(tile) == RAIL_TILE_SIGNALS &&
-		_m[tile].m3 & SignalAlongTrackdir(trackdir);
+		GetPresentSignals(tile) & SignalAlongTrackdir(trackdir);
 }
 
 /**
@@ -313,7 +364,7 @@ static inline SignalState GetSignalStateByTrackdir(TileIndex tile, Trackdir trac
 {
 	assert(IsValidTrackdir(trackdir));
 	assert(HasSignalOnTrack(tile, TrackdirToTrack(trackdir)));
-	return _m[tile].m2 & SignalAlongTrackdir(trackdir) ?
+	return GetSignalStates(tile) & SignalAlongTrackdir(trackdir) ?
 		SIGNAL_STATE_GREEN : SIGNAL_STATE_RED;
 }
 
