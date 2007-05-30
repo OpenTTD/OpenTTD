@@ -361,6 +361,8 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			switch (GetRoadTileType(tile)) {
 				case ROAD_TILE_NORMAL:
 					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+
 					all_bits = GetAllRoadBits(tile);
 					if (!HASBIT(GetRoadTypes(tile), rt)) break;
 
@@ -368,7 +370,6 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if ((existing & pieces) == pieces) {
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
-					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 					break;
 
 				case ROAD_TILE_CROSSING:
