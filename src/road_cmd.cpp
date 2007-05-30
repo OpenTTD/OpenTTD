@@ -51,8 +51,11 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 
 	if (_game_mode == GM_EDITOR || remove == ROAD_NONE) return true;
 
-	/* Only do the special processing for actual players. */
-	if (rt == ROADTYPE_ROAD && !IsValidPlayer(_current_player)) return true;
+	/* Water can always flood and towns can always remove "normal" road pieces.
+	 * Towns are not be allowed to remove non "normal" road pieces, like tram
+	 * tracks as that would result in trams that cannot turn. */
+	if (_current_player == OWNER_WATER ||
+			(rt == ROADTYPE_ROAD && !IsValidPlayer(_current_player))) return true;
 
 	/* Only do the special processing if the road is owned
 	 * by a town */
