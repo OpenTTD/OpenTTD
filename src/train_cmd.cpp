@@ -2724,7 +2724,7 @@ static void *FindTrainCollideEnum(Vehicle *v, void *data)
 			v != tcc->v_skip &&
 			v->type == VEH_TRAIN &&
 			v->u.rail.track != TRACK_BIT_DEPOT &&
-			myabs(v->z_pos - tcc->v->z_pos) <= 6 &&
+			myabs(v->z_pos - tcc->v->z_pos) < 6 &&
 			myabs(v->x_pos - tcc->v->x_pos) < 6 &&
 			myabs(v->y_pos - tcc->v->y_pos) < 6) {
 		return v;
