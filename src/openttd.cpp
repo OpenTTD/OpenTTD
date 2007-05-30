@@ -1781,7 +1781,7 @@ bool AfterLoadGame()
 		FOR_ALL_INDUSTRIES(i) {
 			uint j;
 
-			if (i->type == IT_FARM || i->type == IT_FARM_2) {
+			if (GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_PLANT_ON_BUILT) {
 				for (j = 0; j != 50; j++) PlantRandomFarmField(i);
 			}
 		}

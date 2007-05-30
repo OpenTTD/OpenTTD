@@ -430,7 +430,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 			break;
 
 		case MP_INDUSTRY:
-			bits = GetIndustryType(tile) == IT_FOREST ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
+			bits = GetIndustrySpec(GetIndustryByTile(tile)->type)->check_proc == CHECK_FOREST ? MKCOLOR(0xD0D0D0D0) : MKCOLOR(0xB5B5B5B5);
 			break;
 
 		case MP_TREES:

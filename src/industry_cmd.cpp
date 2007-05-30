@@ -1481,7 +1481,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			indspec->accepts_cargo[0] == CT_INVALID &&
 			indspec->accepts_cargo[1] == CT_INVALID &&
 			indspec->accepts_cargo[2] == CT_INVALID &&
-			p1 != IT_LUMBER_MILL) {
+			!(ind_spc->behaviour & INDUSTRYBEH_CUT_TREES) {
 		return CMD_ERROR;
 	}
 
@@ -1522,9 +1522,10 @@ static const byte _numof_industry_table[5][12] = {
 static void PlaceInitialIndustry(IndustryType type, int amount)
 {
 	int num = _numof_industry_table[_opt.diff.number_industries][amount];
+	const IndustrySpec *ind_spc = GetIndustrySpec(type);
 
 	/* These are always placed next to the coastline, so we scale by the perimeter instead. */
-	num = (type == IT_OIL_REFINERY || type == IT_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
+	num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
 
 	if (_opt.diff.number_industries != 0) {
 		PlayerID old_player = _current_player;
@@ -1567,7 +1568,7 @@ void GenerateIndustries()
 				int num = _numof_industry_table[_opt.diff.number_industries][chance];
 
 				/* These are always placed next to the coastline, so we scale by the perimeter instead. */
-				num = (it == IT_OIL_REFINERY || it == IT_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
+				num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
 				i += num;
 			}
 		}
