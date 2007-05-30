@@ -114,9 +114,10 @@ char *FiosBrowseTo(const FiosItem *item)
 
 	case FIOS_TYPE_PARENT:
 		/* Check for possible NULL ptr (not required for UNIXes, but AmigaOS-alikes) */
-		if ((s = strrchr(path, PATHSEPCHAR)) != NULL) {
-			s[1] = '\0'; // go up a directory
-			if (!FiosIsRoot(path)) s[0] = '\0';
+		if ((s = strrchr(path, PATHSEPCHAR)) != path) {
+			s[0] = '\0'; // Remove last path separator character, so we can go up one level.
+			s = strrchr(path, PATHSEPCHAR);
+			if (s != NULL) s[1] = '\0'; // go up a directory
 		}
 #if defined(__MORPHOS__) || defined(__AMIGAOS__)
 		/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
@@ -125,14 +126,12 @@ char *FiosBrowseTo(const FiosItem *item)
 		break;
 
 	case FIOS_TYPE_DIR:
-		if (!FiosIsRoot(path)) strcat(path, PATHSEP);
 		strcat(path, item->name);
+		strcat(path, PATHSEP);
 		break;
 
 	case FIOS_TYPE_DIRECT:
-		sprintf(path, "%s" PATHSEP, item->name);
-		s = strrchr(path, PATHSEPCHAR);
-		if (s != NULL && s[1] == '\0') s[0] = '\0'; // strip trailing slash
+		sprintf(path, "%s", item->name);
 		break;
 
 	case FIOS_TYPE_FILE:
@@ -150,7 +149,7 @@ char *FiosBrowseTo(const FiosItem *item)
 			snprintf(str_buffr, lengthof(str_buffr), "%s:%s", path, item->name);
 		} else // XXX - only next line!
 #endif
-		snprintf(str_buffr, lengthof(str_buffr), "%s" PATHSEP "%s", path, item->name);
+		snprintf(str_buffr, lengthof(str_buffr), "%s%s", path, item->name);
 
 		return str_buffr;
 	}

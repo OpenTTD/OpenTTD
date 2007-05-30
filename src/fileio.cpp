@@ -359,10 +359,10 @@ void DeterminePaths(const char *exe)
 {
 	DetermineBasePaths(exe);
 
-	_paths.save_dir      = str_fmt("%ssave", _paths.personal_dir);
-	_paths.autosave_dir  = str_fmt("%s" PATHSEP "autosave", _paths.save_dir);
-	_paths.scenario_dir  = str_fmt("%sscenario", _paths.personal_dir);
-	_paths.heightmap_dir = str_fmt("%s" PATHSEP "heightmap", _paths.scenario_dir);
+	_paths.save_dir      = str_fmt("%ssave" PATHSEP, _paths.personal_dir);
+	_paths.autosave_dir  = str_fmt("%s" PATHSEP "autosave" PATHSEP, _paths.save_dir);
+	_paths.scenario_dir  = str_fmt("%sscenario" PATHSEP, _paths.personal_dir);
+	_paths.heightmap_dir = str_fmt("%s" PATHSEP "heightmap" PATHSEP, _paths.scenario_dir);
 	_paths.gm_dir        = str_fmt("%sgm" PATHSEP, _paths.game_data_dir);
 	_paths.data_dir      = str_fmt("%sdata" PATHSEP, _paths.game_data_dir);
 #if defined(CUSTOM_LANG_DIR)

@@ -87,8 +87,11 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	if (FiosIsRoot(path)) {
 		snprintf(filename, lengthof(filename), "%s:%s", path, ent->d_name);
 	} else // XXX - only next line!
+#else
+	assert(path[strlen(path) - 1] == PATHSEPCHAR);
+	if (strlen(path) > 2) assert(path[strlen(path) - 2] != PATHSEPCHAR);
 #endif
-	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, ent->d_name);
+	snprintf(filename, lengthof(filename), "%s%s", path, ent->d_name);
 
 	return stat(filename, sb) == 0;
 }
