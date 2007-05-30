@@ -1481,7 +1481,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			indspec->accepts_cargo[0] == CT_INVALID &&
 			indspec->accepts_cargo[1] == CT_INVALID &&
 			indspec->accepts_cargo[2] == CT_INVALID &&
-			!(ind_spc->behaviour & INDUSTRYBEH_CUT_TREES) {
+			!(indspec->behaviour & INDUSTRYBEH_CUT_TREES)) {
 		return CMD_ERROR;
 	}
 
