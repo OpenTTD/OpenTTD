@@ -55,7 +55,7 @@ STR_002B_BATTERIES                                              :{G=f}Batterie
 STR_002C_PLASTIC                                                :{G=f}Plastica
 STR_002D_FIZZY_DRINKS                                           :{G=f}Bibite frizzanti
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :{G=m}Passeggero
+STR_002F_PASSENGER                                              :{G=m}Passeggeri
 STR_0030_COAL                                                   :{G=m}Carbone
 STR_0031_MAIL                                                   :{G=f}Posta
 STR_0032_OIL                                                    :{G=m}Petrolio
@@ -81,11 +81,11 @@ STR_0045_TOY                                                    :{G=m}Giocattolo
 STR_0046_CANDY                                                  :{G=f}Caramella
 STR_0047_COLA                                                   :{G=f}Cola
 STR_0048_COTTON_CANDY                                           :{G=m}Zucchero filato
-STR_0049_BUBBLE                                                 :{G=f}Bollicina
+STR_0049_BUBBLE                                                 :{G=f}Bollicine
 STR_004A_TOFFEE                                                 :{G=m}Toffee
-STR_004B_BATTERY                                                :{G=f}Batteria
+STR_004B_BATTERY                                                :{G=f}Batterie
 STR_004C_PLASTIC                                                :{G=f}Plastica
-STR_004D_FIZZY_DRINK                                            :{G=f}Bevanda frizzante
+STR_004D_FIZZY_DRINK                                            :{G=f}Bevande frizzanti
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passegger{P o i}
 STR_QUANTITY_COAL                                               :{WEIGHT} di carbone
@@ -1811,7 +1811,7 @@ STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Bisogna 
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Bisogna demolire l'area di carico per camion prima
 STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Bisogna demolire la stazione tram passeggeri prima
 STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Bisogna demolire la stazione tram merci prima
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} stazion{P e i}
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} stazion{P 2 e i}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nessuna -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...sito inadatto
@@ -1933,16 +1933,16 @@ STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produzio
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% trasportato)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centra la visuale principale sulla posizione dell'industria
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nuov{G o a} {STRING} in costruzione vicino a {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Un{G "" a} nuov{G o a} {STRING} è stat{G o a} piantat{G o a} vicino a {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nuov{G o a} {STRING} piantat{G o a} vicino a {TOWN}!
 STR_482F_COST                                                   :{BLACK}Costo: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Impossibile costruire questo tipo di industria qui...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...una foresta può essere piantata solo in una zona innevata
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} annuncia imminente chiusura!!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Per problemi di rifornimenti {G il la} {INDUSTRY} annuncia imminente chiusura!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Per problemi di rifornimenti {INDUSTRY} annuncia imminente chiusura!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}La mancanza di alberi vicini costringe la {INDUSTRY} ad imminente chiusura!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} incrementa la produzione!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nuovo giacimento di carbone trovato alla {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nuovo giacimento di petrolio trovato a {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Trovato nuovo giacimento di carbone alla {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Trovato nuovo giacimento di petrolio al {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Grazie a metodi di coltivazione migliorati alla {INDUSTRY} è atteso un raddoppiamento della produzione!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}La produzione a {INDUSTRY} scende del 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Infestazione di insetti devasta la {INDUSTRY}!{}Produzione scesa del 50%
@@ -2083,8 +2083,20 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Atteggi
 STR_26816_NONE                                                  :Nessuno
 STR_NUM_VERY_LOW                                                :Molto basso
 STR_6816_LOW                                                    :Basso
+STR_6816_LOW.ms                                                 :Basso
+STR_6816_LOW.mp                                                 :Bassi
+STR_6816_LOW.fs                                                 :Bassa
+STR_6816_LOW.fp                                                 :Basse
 STR_6817_NORMAL                                                 :Normale
+STR_6817_NORMAL.ms                                              :Normale
+STR_6817_NORMAL.mp                                              :Normali
+STR_6817_NORMAL.fs                                              :Normale
+STR_6817_NORMAL.fp                                              :Normali
 STR_6818_HIGH                                                   :Alto
+STR_6818_HIGH.ms                                                :Alto
+STR_6818_HIGH.mp                                                :Alti
+STR_6818_HIGH.fs                                                :Alta
+STR_6818_HIGH.fp                                                :Alte
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Molto lenta
@@ -2093,6 +2105,10 @@ STR_681D_MEDIUM                                                 :Media
 STR_681E_FAST                                                   :Veloce
 STR_681F_VERY_FAST                                              :Molto veloce
 STR_VERY_LOW                                                    :Molto basso
+STR_VERY_LOW.ms                                                 :Molto basso
+STR_VERY_LOW.mp                                                 :Molto bassi
+STR_VERY_LOW.fs                                                 :Molto bassa
+STR_VERY_LOW.fp                                                 :Molto basse
 STR_6820_LOW                                                    :Basso
 STR_6821_MEDIUM                                                 :Medio
 STR_6822_HIGH                                                   :Alto
@@ -2592,7 +2608,7 @@ STR_8815_NEW_VEHICLES                                           :{BLACK}Nuovi ve
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Treno troppo lungo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Un treno può essere modificato solo quando è fermo in un deposito
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} tren{P o i}
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} tren{P 2 o i}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nuovi veicoli ferroviari
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nuovi veicoli ferroviari elettrici
@@ -2704,7 +2720,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuov{G o
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automezzo di mezzo
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} automezz{P o i}
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} automezz{P 2 o i}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Deposito automezzi di {TOWN}
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nuovi veicoli
@@ -2774,7 +2790,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Costruzi
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Impossibile costruire il molo qui...
 STR_9803_SHIP_DEPOT                                             :{WHITE}Deposito navale di {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Nuove navi
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} nav{P e i}
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} nav{P 2 e i}
 STR_9808_NEW_SHIPS                                              :{WHITE}Nuove navi
 STR_9809_BUILD_SHIP                                             :{BLACK}Costruisci nave
 STR_CLONE_SHIP                                                  :{BLACK}Clona nave
@@ -2850,7 +2866,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Costruis
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuovo aeromobile
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Costruisci aeromobile
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Impossibile costruire l'aeromobile...
-STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} aeromobil{P e i}
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} aeromobil{P 2 e i}
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Ordini)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Dettagli)
@@ -3020,10 +3036,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} tren{P o i}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} automezz{P o i}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} aeromobil{P e i}
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} nav{P e i}
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} tren{P 2 o i}
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} automezz{P 2 o i}
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} aeromobil{P 2 e i}
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} nav{P 2 e i}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostra tutti i treni che hanno questa stazione pianificata
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra tutti gli automezzi che hanno questa stazione pianificata
@@ -3052,10 +3068,10 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Rimpiazz
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Rimpiazza automaticamente tutte le navi nel deposito
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Rimpiazza automaticamente tutti gli aeromobili nell'hangar
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} tren{P o i}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} automezz{P o i}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} nav{P e i}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} aeromobil{P e i}
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} tren{P 2 o i}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} automezz{P 2 o i}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} nav{P 2 e i}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} aeromobil{P 2 e i}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inizia rimpiazzamento
@@ -3135,7 +3151,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Cambia i
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generazione mondo
 STR_RANDOM_SEED                                                 :{BLACK}Seme casuale:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Fare clic per introdurre un seme casuale
-STR_LAND_GENERATOR                                              :{BLACK}Generatore terreno:
+STR_LAND_GENERATOR                                              :{BLACK}Generatore:
 STR_TREE_PLACER                                                 :{BLACK}Algoritmo alberi:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotazione heightmap:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo di terreno:

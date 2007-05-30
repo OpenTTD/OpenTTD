@@ -1215,6 +1215,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Мак�
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматичний техогляд гелікоптерів на площадках: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Включити меню рельєфу до меню будування: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Протилежний напрямок прокрутки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Плавна прокрутка у вікні: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Показувати розміри будівництва в підказці: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Показати кольори компаній: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Жодна
@@ -1723,22 +1724,38 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Споч
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Спочатку зруйнуйте дорогу
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Дорога ремонтується
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Будівництво дороги
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Будівництво трамвайної колії
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Виберіть дорожний міст
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Неможливо тут побудувати дорогу ...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Тут не можна побудувати трамвайну колію...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Неможливо прибрати дорогу звідси...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Не можна прибрати трамвайну колію звідси...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Орієнтація депо
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Орієнтація трамвайного депо
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Неможливо будувати депо тут...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Тут не можна побудувати трамвайне депо...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Неможливо будувати зупинку тут...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Неможливо будувати вантажну станцію тут...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Не можна побудувати пасажирську трамвайну станцію...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Не можна побудувати вантажну трамвайну станцію...
 STR_180A_ROAD_CONSTRUCTION                                      :Будувати дороги
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Будівництво трамвайної колії
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Будувати дорогу
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Будувати трамвайну колію
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Будувати автомобільне депо
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Будувати трамвайне депо (для будівництва та обслуговування трамваїв)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Будувати зупинку
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Будувати вантажну станцію
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Побудувати пасажирську трамвайну станцію
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Побудувати вантажну трамвайну станцію
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Будувати міст
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Побудувати трамвайний міст
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Будувати тунель
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Побудувати трамвайний тунель
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Будувати/зруйнувати дорогу
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Будувати/демонтувати колію
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Виберіть направлення депо
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Виберіть орієнтацію трамвайного депо
 STR_1814_ROAD                                                   :Дорога
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Дорога з вуличними ліхтарями
 STR_1816_TREE_LINED_ROAD                                        :Дорога з насадженнями
@@ -1746,6 +1763,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Автомоб�
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Залізничний переїзд
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Не можна знести автобусну станцію...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Не можна знести грузову станцію...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Не можна знести пасажирську трамвайну станцію...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Не можна знести вантажну трамвайну станцію...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Міста
@@ -1910,8 +1929,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} тепер приймає {STRING} і {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Орієнтація зупинки
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Орієнтація станції
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Орієнтація пасажирської трамвайної станції
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Орієнтація вантажної трамвайної станції
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Спочатку зруйнуйте зупинку
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Спочатку зруйнуйте вантажну станцію
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Спочатку треба знести пасажирську трамвайну станцію
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Спочатку треба знести вантажну трамвайну станцію
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} станці{P я ї й}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- нема -
@@ -1923,6 +1946,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Вибе
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Виберіть довжину залізничної станції
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Виберіть орієнтацію зупинки
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Виберіть орієнтацію вантажної станції
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Виберіть орієнтацію пасажирської трамвайної станції
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Виберіть орієнтацію вантажної трамвайної станції
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Показати станцію в центрі екрану
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Показати рейтинг станції
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Перейменувати станцію
@@ -2410,6 +2435,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Товарни�
 STR_LIVERY_HELICOPTER                                           :Гелікоптер
 STR_LIVERY_SMALL_PLANE                                          :Малий літак
 STR_LIVERY_LARGE_PLANE                                          :Великий літак
+STR_LIVERY_PASSENGER_TRAM                                       :Пасажирський трамвай
+STR_LIVERY_FREIGHT_TRAM                                         :Вантажний трамвай
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Показати основні кольорові схеми
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Показати кольорову схему поїздів
@@ -2883,6 +2910,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Немо
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Назвати авто
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший автобус з'явився на {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жителі святкують . . .{}Перша вантажівка з'явилася на {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший пасажирський трамвай прибув на {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший вантажний трамвай прибув на {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Неможливо розвернути авто...
@@ -3167,6 +3196,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Пока
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Ви впевнені, що хочете продати усі машини в депо?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Неправильний тип депо
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продати всі поїзди з депо
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продати всі автомобілі з депо

@@ -1090,6 +1090,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}역의 
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 정보 링크 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 뷰포인트 스크롤: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}다양한 건설도구를 사용시에 거리측정 툴팁 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}회사 조합원 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :없음
