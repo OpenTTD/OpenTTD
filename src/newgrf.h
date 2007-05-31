@@ -10,6 +10,7 @@
 #include "newgrf_config.h"
 #include "helpers.hpp"
 #include "cargotype.h"
+#include "industry.h"
 
 enum GrfLoadingStage {
 	GLS_FILESCAN,
@@ -69,6 +70,8 @@ struct GRFFile {
 
 	StationSpec **stations;
 	HouseSpec **housespec;
+	IndustrySpec **industryspec;
+	IndustryTileSpec **indtspec;
 
 	uint32 param[0x80];
 	uint param_end;  ///< one more than the highest set parameter

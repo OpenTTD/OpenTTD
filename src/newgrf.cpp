@@ -4304,6 +4304,43 @@ static void ResetCustomHouses()
 	}
 }
 
+static void ResetCustomIndustries()
+{
+	GRFFile *file;
+
+	for (file = _first_grffile; file != NULL; file = file->next) {
+		uint i;
+		/* We are verifiying both tiles and industries specs loaded from the grf file
+		 * First, let's deal with industryspec */
+		if (file->industryspec != NULL) {
+
+			for (i = 0; i < NUM_INDUSTRYTYPES; i++) {
+				IndustrySpec *ind = file->industryspec[i];
+
+				if (ind != NULL) {
+					free(ind);
+					ind = NULL;
+				}
+			}
+
+			free(file->industryspec);
+			file->industryspec = NULL;
+		}
+
+		if (file->indtspec != NULL) {
+			for (i = 0; i < NUM_INDUSTRYTILES; i++) {
+				if (file->indtspec[i] != NULL) {
+					free(file->indtspec[i]);
+					file->indtspec[i] = NULL;
+				}
+			}
+
+			free(file->indtspec);
+			file->indtspec = NULL;
+		}
+	}
+}
+
 static void ResetNewGRF()
 {
 	GRFFile *next;
@@ -4370,6 +4407,7 @@ static void ResetNewGRFData()
 	ResetHouses();
 
 	/* Reset the industries structures*/
+	ResetCustomIndustries();
 	ResetIndustries();
 
 	/* Reset station classes */
