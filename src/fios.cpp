@@ -114,11 +114,12 @@ char *FiosBrowseTo(const FiosItem *item)
 
 	case FIOS_TYPE_PARENT:
 		/* Check for possible NULL ptr (not required for UNIXes, but AmigaOS-alikes) */
-		if ((s = strrchr(path, PATHSEPCHAR)) != path) {
+		s = strrchr(path, PATHSEPCHAR);
+		if (s != NULL && s != path) {
 			s[0] = '\0'; // Remove last path separator character, so we can go up one level.
-			s = strrchr(path, PATHSEPCHAR);
-			if (s != NULL) s[1] = '\0'; // go up a directory
 		}
+		s = strrchr(path, PATHSEPCHAR);
+		if (s != NULL) s[1] = '\0'; // go up a directory
 #if defined(__MORPHOS__) || defined(__AMIGAOS__)
 		/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
 		else if ((s = strrchr(path, ':')) != NULL) s[1] = '\0';
