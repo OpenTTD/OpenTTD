@@ -87,8 +87,15 @@ extern GRFFile *_first_grffile;
 
 extern SpriteID _signal_base;
 extern SpriteID _coast_base;
-extern bool _have_2cc;
-extern bool _have_newhouses;
+
+enum GRFLoadedFeatures {
+	GRFLOADED_2CC,             // Set if any vehicle is loaded which uses 2cc (two company colours).
+	GRFLOADED_NEWHOUSES,       // Set if there are any newhouses loaded.
+	GRFLOADED_NEWINDUSTRIES,   // Set if there are any newindustries loaded.
+};
+
+/* Indicates which are the newgrf features currently loaded ingame */
+extern uint8 _loaded_newgrf_features;
 
 void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
 void LoadNewGRF(uint load_index, uint file_index);

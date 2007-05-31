@@ -83,7 +83,7 @@ void IncreaseBuildingCount(Town *t, HouseID house_id)
 {
 	HouseClassID class_id = GetHouseSpecs(house_id)->class_id;
 
-	if (!_have_newhouses) return;
+	if (!HASBIT(_loaded_newgrf_features, GRFLOADED_NEWHOUSES)) return;
 
 	/* If there are 255 buildings of this type in this town, there are also
 	 * at least that many houses of the same class in the town, and
@@ -111,7 +111,7 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
 {
 	HouseClassID class_id = GetHouseSpecs(house_id)->class_id;
 
-	if (!_have_newhouses) return;
+	if (!HASBIT(_loaded_newgrf_features, GRFLOADED_NEWHOUSES)) return;
 
 	if (t->building_counts.id_count[house_id] > 0) t->building_counts.id_count[house_id]--;
 	if (_building_counts.id_count[house_id] > 0)   _building_counts.id_count[house_id]--;
@@ -129,7 +129,7 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
  */
 void AfterLoadCountBuildings()
 {
-	if (!_have_newhouses) return;
+	if (!HASBIT(_loaded_newgrf_features, GRFLOADED_NEWHOUSES)) return;
 
 	for (TileIndex t = 0; t < MapSize(); t++) {
 		if (!IsTileType(t, MP_HOUSE)) continue;

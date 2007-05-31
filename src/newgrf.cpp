@@ -74,12 +74,8 @@ static uint32 _ttdpatch_flags[8];
 /* Used by Action 0x06 to preload a pseudo sprite and modify its content */
 static byte *_preload_sprite = NULL;
 
-/* Set if any vehicle is loaded which uses 2cc (two company colours) */
-bool _have_2cc = false;
-
-/* Set if there are any newhouses loaded. */
-bool _have_newhouses = false;
-
+/* Indicates which are the newgrf features currently loaded ingame */
+uint8 _loaded_newgrf_features;
 
 enum GrfDataType {
 	GDT_SOUND,
@@ -539,7 +535,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x27: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
+				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) SETBIT(_loaded_newgrf_features, GRFLOADED_2CC);
 			}
 			break;
 
@@ -661,7 +657,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x1C: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
+				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) SETBIT(_loaded_newgrf_features, GRFLOADED_2CC);
 			}
 			break;
 
@@ -772,7 +768,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
+				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) SETBIT(_loaded_newgrf_features, GRFLOADED_2CC);
 			}
 			break;
 
@@ -888,7 +884,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
+				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) SETBIT(_loaded_newgrf_features, GRFLOADED_2CC);
 			}
 			break;
 
@@ -1297,7 +1293,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				 * FinaliseHouseArray() for more details. */
 				if (housespec[i]->min_date < 1930) housespec[i]->min_date = 1930;
 			}
-			_have_newhouses = true;
+			SETBIT(_loaded_newgrf_features, GRFLOADED_NEWHOUSES);
 			break;
 
 		case 0x09: // Building flags
@@ -4459,8 +4455,9 @@ static void ResetNewGRFData()
 	_misc_grf_features = 0;
 	_traininfo_vehicle_pitch = 0;
 	_traininfo_vehicle_width = 29;
-	_have_2cc = false;
-	_have_newhouses = false;
+
+	_loaded_newgrf_features = 0;
+
 	_signal_base = 0;
 	_coast_base = 0;
 
