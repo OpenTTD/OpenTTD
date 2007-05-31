@@ -375,8 +375,8 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 					existing = GetRoadBits(tile, rt);
 					RoadBits merged = existing | pieces;
-					bool crossing = (merged & ROAD_X) != ROAD_NONE && (merged & ROAD_Y) != ROAD_NONE;
-					if (GetDisallowedRoadDirections(tile) != DRD_NONE && crossing) {
+					bool crossing = (merged != ROAD_X && merged != ROAD_Y);
+					if (rt != ROADTYPE_TRAM && (GetDisallowedRoadDirections(tile) != DRD_NONE || toggle_drd != DRD_NONE) && crossing) {
 						/* Junctions cannot be one-way */
 						return_cmd_error(STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
 					}
