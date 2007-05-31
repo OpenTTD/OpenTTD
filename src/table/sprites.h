@@ -168,6 +168,9 @@ enum Sprites {
 	SPR_TRAMWAY_TUNNEL_WIRES         = SPR_TRAMWAY_BASE + 80,
 	SPR_TRAMWAY_BRIDGE               = SPR_TRAMWAY_BASE + 107,
 
+	/* One way road sprites */
+	SPR_ONEWAY_BASE = SPR_TRAMWAY_BASE + 113,
+
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face
 

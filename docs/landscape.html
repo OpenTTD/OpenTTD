@@ -534,7 +534,8 @@
         </table>
        </li>
        <li>m4 bits 7..4: road layout road type #2
-       <li>m5 bits 4..0: owner of road type #2
+       <li>m5 bits 5..4: bits to disallow vehicles to go a specific direction
+       <li>m5 bits 3..0: owner of road type #2
        <li>m6 bits 5..2: road layout road type #3
        <li>m7 bits 7..5: road types
        <li>m7 bits 4..0: owner of road type #3
@@ -559,7 +560,7 @@
        <li>m4 bit 6: clear - road in the X direction, set - road in the Y direction (railway track always perpendicular)</li>
        <li>m4 bit 5: set if crossing lights are on</li>
        <li>m4 bits 4..0: <a href="#OwnershipInfo">owner</a> of the road type #1</li>
-       <li>m5 bits 4..0: owner of road type #2
+       <li>m5 bits 3..0: owner of road type #2
        <li>m7 bits 7..5: road types
        <li>m7 bits 4..0: owner of road type #3
       </ul>

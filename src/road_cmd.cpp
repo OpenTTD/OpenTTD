@@ -218,6 +218,10 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						SetRoadTypes(tile, rts);
 					}
 				} else {
+					/* When bits are removed, you *always* end up with something that
+					 * is not a complete straight road tile. However, trams do not have
+					 * onewayness, so they cannot remove it either. */
+					if (rt != ROADTYPE_TRAM) SetDisallowedRoadDirections(tile, DRD_NONE);
 					SetRoadBits(tile, present, rt);
 					MarkTileDirtyByTile(tile);
 				}
@@ -333,6 +337,7 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
  * @param flags operation to perform
  * @param p1 bit 0..3 road pieces to build (RoadBits)
  *           bit 4..5 road type
+ *           bit 6..7 disallowed directions to toggle
  * @param p2 the town that is building the road (0 if not applicable)
  */
 int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -354,12 +359,14 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	RoadType rt = (RoadType)GB(p1, 4, 2);
 	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
+	DisallowedRoadDirections toggle_drd = (DisallowedRoadDirections)GB(p1, 6, 2);
+
 	tileh = GetTileSlope(tile, NULL);
 
 	switch (GetTileType(tile)) {
 		case MP_STREET:
 			switch (GetRoadTileType(tile)) {
-				case ROAD_TILE_NORMAL:
+				case ROAD_TILE_NORMAL: {
 					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
@@ -367,10 +374,27 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (!HASBIT(GetRoadTypes(tile), rt)) break;
 
 					existing = GetRoadBits(tile, rt);
+					RoadBits merged = existing | pieces;
+					bool crossing = (merged & ROAD_X) != ROAD_NONE && (merged & ROAD_Y) != ROAD_NONE;
+					if (GetDisallowedRoadDirections(tile) != DRD_NONE && crossing) {
+						/* Junctions cannot be one-way */
+						return_cmd_error(STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
+					}
 					if ((existing & pieces) == pieces) {
+						/* We only want to set the (dis)allowed road directions */
+						if (toggle_drd != DRD_NONE && rt != ROADTYPE_TRAM && GetRoadOwner(tile, ROADTYPE_ROAD) == _current_player) {
+							if (crossing) return_cmd_error(STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
+
+							/* Ignore half built tiles */
+							if (flags & DC_EXEC && rt != ROADTYPE_TRAM && (existing == ROAD_X || existing == ROAD_Y)) {
+								SetDisallowedRoadDirections(tile, GetDisallowedRoadDirections(tile) ^ toggle_drd);
+								MarkTileDirtyByTile(tile);
+							}
+							return 0;
+						}
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
-					break;
+				} break;
 
 				case ROAD_TILE_CROSSING:
 					if (HASBIT(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
@@ -504,6 +528,12 @@ do_clear:;
 				break;
 		}
 
+		if (rt != ROADTYPE_TRAM && IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+			existing |= pieces;
+			SetDisallowedRoadDirections(tile, (existing == ROAD_X || existing == ROAD_Y) ?
+					GetDisallowedRoadDirections(tile) ^ toggle_drd : DRD_NONE);
+		}
+
 		MarkTileDirtyByTile(tile);
 	}
 	return cost;
@@ -549,12 +579,15 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
  * - p2 = (bit 1) - end tile starts in the 2nd half of tile (p2 & 2)
  * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
  * - p2 = (bit 3 + 4) - road type
+ * - p2 = (bit 5) - set road direction
  */
 int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex start_tile, tile;
 	int32 cost, ret;
 	bool had_bridge = false;
+	bool had_success = false;
+	DisallowedRoadDirections drd = DRD_NORTHBOUND;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -574,7 +607,15 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 		start_tile = end_tile;
 		end_tile = t;
 		p2 ^= IS_INT_INSIDE(p2 & 3, 1, 3) ? 3 : 0;
+		drd = DRD_SOUTHBOUND;
 	}
+
+	/* On the X-axis, we have to swap the initial bits, so they
+	 * will be interpreted correctly in the GTTS. Futhermore
+	 * when you just 'click' on one tile to build them. */
+	if (HASBIT(p2, 2) == (start_tile == end_tile)) drd ^= DRD_BOTH;
+	/* No disallowed direction bits have to be toggled */
+	if (!HASBIT(p2, 5)) drd = DRD_NONE;
 
 	cost = 0;
 	tile = start_tile;
@@ -585,11 +626,12 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 		if (tile == end_tile && !HASBIT(p2, 1)) bits &= ROAD_NW | ROAD_NE;
 		if (tile == start_tile && HASBIT(p2, 0)) bits &= ROAD_SE | ROAD_SW;
 
-		ret = DoCommand(tile, rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
+		ret = DoCommand(tile, drd << 6 | rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
 		if (CmdFailed(ret)) {
 			if (_error_message != STR_1007_ALREADY_BUILT) return CMD_ERROR;
 			_error_message = INVALID_STRING_ID;
 		} else {
+			had_success = true;
 			/* Only pay for the upgrade on one side of the bridge */
 			if (IsBridgeTile(tile)) {
 				if ((!had_bridge || GetBridgeRampDirection(tile) == DIAGDIR_SE || GetBridgeRampDirection(tile) == DIAGDIR_SW)) {
@@ -606,7 +648,7 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 		tile += HASBIT(p2, 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	}
 
-	return (cost == 0) ? CMD_ERROR : cost;
+	return !had_success ? CMD_ERROR : cost;
 }
 
 /** Remove a long piece of road.
@@ -881,6 +923,23 @@ void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 }
 
 /**
+ * Draws details on/around the road
+ * @param img the sprite to draw
+ * @param ti  the tile to draw on
+ * @param dx  the offset from the top of the BB of the tile
+ * @param dy  the offset from the top of the BB of the tile
+ * @param h   the height of the sprite to draw
+ */
+static void DrawRoadDetail(SpriteID img, TileInfo *ti, int dx, int dy, int h)
+{
+	int x = ti->x | dx;
+	int y = ti->y | dy;
+	byte z = ti->z;
+	if (ti->tileh != SLOPE_FLAT) z = GetSlopeZ(x, y);
+	AddSortableSpriteToDraw(img, PAL_NONE, x, y, 2, 2, h, z);
+}
+
+/**
  * Draw ground sprite and road pieces
  * @param ti TileInfo
  */
@@ -921,6 +980,13 @@ static void DrawRoadBits(TileInfo* ti)
 
 	DrawGroundSprite(image, pal);
 
+	if (road != ROAD_NONE) {
+		DisallowedRoadDirections drd = GetDisallowedRoadDirections(ti->tile);
+		if (drd != DRD_NONE) {
+			DrawRoadDetail(SPR_ONEWAY_BASE + drd - 1 + ((road == ROAD_X) ? 0 : 3), ti, 8, 8, 0);
+		}
+	}
+
 	/* For tram we overlay the road graphics with either tram tracks only
 	 * (when there is actual road beneath the trams) or with tram tracks
 	 * and some dirts which hides the road graphics */
@@ -947,11 +1013,7 @@ static void DrawRoadBits(TileInfo* ti)
 
 	/* Draw extra details. */
 	for (drts = _road_display_table[roadside][road]; drts->image != 0; drts++) {
-		int x = ti->x | drts->subcoord_x;
-		int y = ti->y | drts->subcoord_y;
-		byte z = ti->z;
-		if (ti->tileh != SLOPE_FLAT) z = GetSlopeZ(x, y);
-		AddSortableSpriteToDraw(drts->image, PAL_NONE, x, y, 2, 2, 0x10, z);
+		DrawRoadDetail(drts->image, ti, drts->subcoord_x, drts->subcoord_y, 0x10);
 	}
 }
 
@@ -1216,7 +1278,9 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode, uint s
 			switch (GetRoadTileType(tile)) {
 				case ROAD_TILE_NORMAL: {
 					RoadType rt = (RoadType)FindFirstBit(sub_mode);
-					return HasRoadWorks(tile) ? 0 : _road_trackbits[GetRoadBits(tile, rt)] * 0x101;
+					const uint drd_to_multiplier[DRD_END] = { 0x101, 0x100, 0x1, 0x0 };
+					uint multiplier = drd_to_multiplier[rt == ROADTYPE_TRAM ? DRD_NONE : GetDisallowedRoadDirections(tile)];
+					return HasRoadWorks(tile) ? 0 : _road_trackbits[GetRoadBits(tile, rt)] * multiplier;
 				}
 
 				case ROAD_TILE_CROSSING: {

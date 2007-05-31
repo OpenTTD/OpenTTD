@@ -89,14 +89,24 @@ static inline Owner GetRoadOwner(TileIndex t, RoadType rt)
 			switch (rt) {
 				default: NOT_REACHED();
 				case ROADTYPE_ROAD: return (Owner)GB( _m[t].m1, 0, 5);
-				case ROADTYPE_TRAM: return (Owner)GB( _m[t].m5, 0, 5);
+				case ROADTYPE_TRAM: {
+					/* Trams don't need OWNER_TOWN, and remapping OWNER_NONE
+					 * to OWNER_TOWN makes it use one bit less */
+					Owner o = (Owner)GB( _m[t].m5, 0, 4);
+					return o == OWNER_TOWN ? OWNER_NONE : o;
+				}
 				case ROADTYPE_HWAY: return (Owner)GB(_me[t].m7, 0, 5);
 			}
 		case ROAD_TILE_CROSSING:
 			switch (rt) {
 				default: NOT_REACHED();
 				case ROADTYPE_ROAD: return (Owner)GB( _m[t].m4, 0, 5);
-				case ROADTYPE_TRAM: return (Owner)GB( _m[t].m5, 0, 5);
+				case ROADTYPE_TRAM: {
+					/* Trams don't need OWNER_TOWN, and remapping OWNER_NONE
+					 * to OWNER_TOWN makes it use one bit less */
+					Owner o = (Owner)GB( _m[t].m5, 0, 4);
+					return o == OWNER_TOWN ? OWNER_NONE : o;
+				}
 				case ROADTYPE_HWAY: return (Owner)GB(_me[t].m7, 0, 5);
 			}
 		case ROAD_TILE_DEPOT: return GetTileOwner(t);
@@ -113,7 +123,9 @@ static inline void SetRoadOwner(TileIndex t, RoadType rt, Owner o)
 			switch (rt) {
 				default: NOT_REACHED();
 				case ROADTYPE_ROAD: SB( _m[t].m1, 0, 5, o); break;
-				case ROADTYPE_TRAM: SB( _m[t].m5, 0, 5, o); break;
+				/* Trams don't need OWNER_TOWN, and remapping OWNER_NONE
+				 * to OWNER_TOWN makes it use one bit less */
+				case ROADTYPE_TRAM: SB( _m[t].m5, 0, 4, o == OWNER_NONE ? OWNER_TOWN : o); break;
 				case ROADTYPE_HWAY: SB(_me[t].m7, 0, 5, o); break;
 			}
 			break;
@@ -121,12 +133,47 @@ static inline void SetRoadOwner(TileIndex t, RoadType rt, Owner o)
 			switch (rt) {
 				default: NOT_REACHED();
 				case ROADTYPE_ROAD: SB( _m[t].m4, 0, 5, o); break;
-				case ROADTYPE_TRAM: SB( _m[t].m5, 0, 5, o); break;
+				/* Trams don't need OWNER_TOWN, and remapping OWNER_NONE
+				 * to OWNER_TOWN makes it use one bit less */
+				case ROADTYPE_TRAM: SB( _m[t].m5, 0, 4, o == OWNER_NONE ? OWNER_TOWN : o); break;
 				case ROADTYPE_HWAY: SB(_me[t].m7, 0, 5, o); break;
 			}
 			break;
 		case ROAD_TILE_DEPOT: return SetTileOwner(t, o);
 	}
+}
+
+/** Which directions are disallowed ? */
+enum DisallowedRoadDirections {
+	DRD_NONE,       ///< None of the directions are disallowed
+	DRD_SOUTHBOUND, ///< All southbound traffic is disallowed
+	DRD_NORTHBOUND, ///< All northbound traffic is disallowed
+	DRD_BOTH,       ///< All directions are disallowed
+	DRD_END
+};
+DECLARE_ENUM_AS_BIT_SET(DisallowedRoadDirections);
+
+/**
+ * Gets the disallowed directions
+ * @param t the tile to get the directions from
+ * @return the disallowed directions
+ */
+static inline DisallowedRoadDirections GetDisallowedRoadDirections(TileIndex t)
+{
+	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL);
+	return (DisallowedRoadDirections)GB(_m[t].m5, 4, 2);
+}
+
+/**
+ * Sets the disallowed directions
+ * @param t   the tile to set the directions for
+ * @param drd the disallowed directions
+ */
+static inline void SetDisallowedRoadDirections(TileIndex t, DisallowedRoadDirections drd)
+{
+	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL);
+	assert(drd < DRD_END);
+	SB(_m[t].m5, 4, 2, drd);
 }
 
 static inline Axis GetCrossingRoadAxis(TileIndex t)

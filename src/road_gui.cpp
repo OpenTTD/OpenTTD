@@ -343,7 +343,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 				case DDSP_PLACE_ROAD_NE:
 				case DDSP_PLACE_ROAD_NW:
-					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3), CcPlaySound1D,
+					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | _ctrl_pressed << 5, CcPlaySound1D,
 						_remove_button_clicked ?
 						CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
 						CMD_BUILD_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road));

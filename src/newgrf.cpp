@@ -2897,6 +2897,14 @@ static void GraphicsNew(byte *buf, int len)
 			replace = SPR_CANALS_BASE + 5;
 			break;
 
+		case 0x09: // One way graphics
+			if (num != 6) {
+				grfmsg(1, "GraphicsNew: One way road graphics sprite count must be 6, skipping");
+				return;
+			}
+			replace = SPR_ONEWAY_BASE;
+			break;
+
 		case 0x0A: // 2CC colour maps
 			if (num != 256) {
 				grfmsg(1, "GraphicsNew: 2CC colour maps sprite count must be 256, skipping");
