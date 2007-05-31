@@ -1417,7 +1417,7 @@ again:
 					v->cur_speed = 0;
 					return;
 				}
-			} else if (GetDisallowedRoadDirections(v->tile) != DRD_NONE) {
+			} else if (GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) {
 				v->cur_speed = 0;
 				return;
 			} else {
