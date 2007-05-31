@@ -4326,6 +4326,24 @@ static void ResetCustomIndustries()
 				IndustrySpec *ind = file->industryspec[i];
 
 				if (ind != NULL) {
+					/* We need to remove the sounds array */
+					if (HASBIT(ind->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
+						free((void*)ind->random_sounds);
+					}
+
+					/* We need to remove the tiles layouts */
+					if (HASBIT(ind->cleanup_flag, CLEAN_TILELSAYOUT) && ind->table != NULL) {
+						for (int j = 0; j < ind->num_table; j++) {
+							/* remove the individual layouts */
+							if (ind->table[j] != NULL) {
+								free((IndustryTileTable*)ind->table[j]);
+							}
+						}
+						/* remove the layouts pointers */
+						free((IndustryTileTable**)ind->table);
+						ind->table = NULL;
+					}
+
 					free(ind);
 					ind = NULL;
 				}

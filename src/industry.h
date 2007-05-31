@@ -22,6 +22,11 @@ enum {
 	INVALID_INDUSTRYTILE   = NUM_INDUSTRYTILES,          ///< one above amount is considered invalid
 };
 
+enum {
+	CLEAN_RANDOMSOUNDS,    ///< Free the dynamically allocated sounds table
+	CLEAN_TILELSAYOUT,     ///< Free the dynamically allocated tile layout structure
+};
+
 enum IndustryLifeType {
 	INDUSTRYLIFE_NOT_CLOSABLE,     ///< Industry can never close
 	INDUSTRYLIFE_PRODUCTION,       ///< Industry can close and change of production
@@ -135,6 +140,7 @@ struct IndustrySpec {
 	const uint8 *random_sounds;           ///< array of random sounds.
 	/* Newgrf data */
 	uint16 callback_flags;                ///< Flags telling which grf callback is set
+	uint8 cleanup_flag;                   ///< flags indicating which data should be freed upon cleaning up
 	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 	struct GRFFileProps grf_prop;         ///< properties related the the grf file
 };
