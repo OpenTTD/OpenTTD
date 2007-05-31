@@ -121,7 +121,7 @@ public:
 						Yapf().m_stopped_on_first_two_way_signal = true;
 						return -1;
 					}
-					SignalType sig_type = GetSignalType(tile);
+					SignalType sig_type = GetSignalType(tile, TrackdirToTrack(trackdir));
 					n.m_last_red_signal_type = sig_type;
 					n.flags_u.flags_s.m_last_signal_was_red = true;
 

@@ -357,7 +357,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 				 * encounter, if it is red */
 
 				/* Is this a presignal exit or combo? */
-				SignalType sigtype = GetSignalType(tile);
+				SignalType sigtype = GetSignalType(tile, TrackdirToTrack(trackdir));
 				if (sigtype == SIGTYPE_EXIT || sigtype == SIGTYPE_COMBO) {
 					/* Penalise exit and combo signals differently (heavier) */
 					cost += _patches.npf_rail_firstred_exit_penalty;

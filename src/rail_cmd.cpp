@@ -692,7 +692,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* build new signals */
 		cost = _price.build_signals;
 	} else {
-		if (p2 != 0 && sigvar != GetSignalVariant(tile)) {
+		if (p2 != 0 && sigvar != GetSignalVariant(tile, track)) {
 			/* convert signals <-> semaphores */
 			cost = _price.build_signals + _price.remove_signals;
 		} else {
@@ -707,20 +707,22 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			SetHasSignals(tile, true);
 			SetSignalStates(tile, 0xF); // all signals are on
 			SetPresentSignals(tile, 0); // no signals built by default
-			SetSignalType(tile, SIGTYPE_NORMAL);
-			SetSignalVariant(tile, sigvar);
+			SetSignalType(tile, track, SIGTYPE_NORMAL);
+			SetSignalVariant(tile, track, sigvar);
 		}
 
 		if (p2 == 0) {
 			if (!HasSignalOnTrack(tile, track)) {
 				/* build new signals */
 				SetPresentSignals(tile, GetPresentSignals(tile) | SignalOnTrack(track));
+				SetSignalType(tile, track, SIGTYPE_NORMAL);
+				SetSignalVariant(tile, track, sigvar);
 			} else {
 				if (pre_signal) {
 					/* cycle between normal -> pre -> exit -> combo -> ... */
-					SignalType type = GetSignalType(tile);
+					SignalType type = GetSignalType(tile, track);
 
-					SetSignalType(tile, type == SIGTYPE_COMBO ? SIGTYPE_NORMAL : (SignalType)(type + 1));
+					SetSignalType(tile, track, type == SIGTYPE_COMBO ? SIGTYPE_NORMAL : (SignalType)(type + 1));
 				} else {
 					CycleSignalSide(tile, track);
 				}
@@ -729,7 +731,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* If CmdBuildManySignals is called with copying signals, just copy the
 			 * direction of the first signal given as parameter by CmdBuildManySignals */
 			SetPresentSignals(tile, (GetPresentSignals(tile) & ~SignalOnTrack(track)) | (p2 & SignalOnTrack(track)));
-			SetSignalVariant(tile, sigvar);
+			SetSignalVariant(tile, track, sigvar);
 		}
 
 		MarkTileDirtyByTile(tile);
@@ -787,7 +789,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 		if (signals == 0) signals = SignalOnTrack(track); /* Can this actually occur? */
 
 		/* copy signal/semaphores style (independent of CTRL) */
-		semaphores = GetSignalVariant(tile) != SIG_ELECTRIC;
+		semaphores = GetSignalVariant(tile, track) != SIG_ELECTRIC;
 	} else { // no signals exist, drag a two-way signal stretch
 		signals = SignalOnTrack(track);
 	}
@@ -879,7 +881,7 @@ int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (GetPresentSignals(tile) == 0) {
 			SetSignalStates(tile, 0);
 			SetHasSignals(tile, false);
-			SetSignalVariant(tile, SIG_ELECTRIC); // remove any possible semaphores
+			SetSignalVariant(tile, INVALID_TRACK, SIG_ELECTRIC); // remove any possible semaphores
 		}
 
 		SetSignalsOnBothDir(tile, track);
@@ -1090,7 +1092,7 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 
 #include "table/track_land.h"
 
-static void DrawSingleSignal(TileIndex tile, byte condition, uint image, uint pos)
+static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint image, uint pos)
 {
 	bool side = (_opt.road_side != 0) && _patches.signal_side;
 	static const Point SignalPositions[2][12] = {
@@ -1127,10 +1129,10 @@ static void DrawSingleSignal(TileIndex tile, byte condition, uint image, uint po
 	/* _signal_base is set by our NewGRF Action 5 loader. If it is 0 then we
 	 * just draw the standard signals, else we get the offset from _signal_base
 	 * and draw that sprite. All the signal sprites are loaded sequentially. */
-	if (_signal_base == 0 || (GetSignalType(tile) == 0 && GetSignalVariant(tile) == SIG_ELECTRIC)) {
-		sprite = SignalBase[side][GetSignalVariant(tile)][GetSignalType(tile)] + image + condition;
+	if (_signal_base == 0 || (GetSignalType(tile, track) == SIGTYPE_NORMAL && GetSignalVariant(tile, track) == SIG_ELECTRIC)) {
+		sprite = SignalBase[side][GetSignalVariant(tile, track)][GetSignalType(tile, track)] + image + condition;
 	} else {
-		sprite = _signal_base + (GetSignalType(tile) - 1) * 16 + GetSignalVariant(tile) * 64 + image + condition;
+		sprite = _signal_base + (GetSignalType(tile, track) - 1) * 16 + GetSignalVariant(tile, track) * 64 + image + condition;
 	}
 
 	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, 10, GetSlopeZ(x,y));
@@ -1300,33 +1302,33 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 
 static void DrawSignals(TileIndex tile, TrackBits rails)
 {
-#define MAYBE_DRAW_SIGNAL(x,y,z) if (IsSignalPresent(tile, x)) DrawSingleSignal(tile, GetSingleSignalState(tile, x), y - 0x4FB, z)
+#define MAYBE_DRAW_SIGNAL(x,y,z,t) if (IsSignalPresent(tile, x)) DrawSingleSignal(tile, t, GetSingleSignalState(tile, x), y - 0x4FB, z)
 
 	if (!(rails & TRACK_BIT_Y)) {
 		if (!(rails & TRACK_BIT_X)) {
 			if (rails & TRACK_BIT_LEFT) {
-				MAYBE_DRAW_SIGNAL(2, 0x509, 0);
-				MAYBE_DRAW_SIGNAL(3, 0x507, 1);
+				MAYBE_DRAW_SIGNAL(2, 0x509, 0, TRACK_LEFT);
+				MAYBE_DRAW_SIGNAL(3, 0x507, 1, TRACK_LEFT);
 			}
 			if (rails & TRACK_BIT_RIGHT) {
-				MAYBE_DRAW_SIGNAL(0, 0x509, 2);
-				MAYBE_DRAW_SIGNAL(1, 0x507, 3);
+				MAYBE_DRAW_SIGNAL(0, 0x509, 2, TRACK_RIGHT);
+				MAYBE_DRAW_SIGNAL(1, 0x507, 3, TRACK_RIGHT);
 			}
 			if (rails & TRACK_BIT_UPPER) {
-				MAYBE_DRAW_SIGNAL(3, 0x505, 4);
-				MAYBE_DRAW_SIGNAL(2, 0x503, 5);
+				MAYBE_DRAW_SIGNAL(3, 0x505, 4, TRACK_UPPER);
+				MAYBE_DRAW_SIGNAL(2, 0x503, 5, TRACK_UPPER);
 			}
 			if (rails & TRACK_BIT_LOWER) {
-				MAYBE_DRAW_SIGNAL(1, 0x505, 6);
-				MAYBE_DRAW_SIGNAL(0, 0x503, 7);
+				MAYBE_DRAW_SIGNAL(1, 0x505, 6, TRACK_LOWER);
+				MAYBE_DRAW_SIGNAL(0, 0x503, 7, TRACK_LOWER);
 			}
 		} else {
-			MAYBE_DRAW_SIGNAL(3, 0x4FB, 8);
-			MAYBE_DRAW_SIGNAL(2, 0x4FD, 9);
+			MAYBE_DRAW_SIGNAL(3, 0x4FB, 8, TRACK_X);
+			MAYBE_DRAW_SIGNAL(2, 0x4FD, 9, TRACK_X);
 		}
 	} else {
-		MAYBE_DRAW_SIGNAL(3, 0x4FF, 10);
-		MAYBE_DRAW_SIGNAL(2, 0x501, 11);
+		MAYBE_DRAW_SIGNAL(3, 0x4FF, 10, TRACK_Y);
+		MAYBE_DRAW_SIGNAL(2, 0x501, 11, TRACK_Y);
 	}
 }
 
@@ -1510,11 +1512,12 @@ struct SetSignalsData {
 static bool SetSignalsEnumProc(TileIndex tile, void* data, Trackdir trackdir, uint length, byte* state)
 {
 	SetSignalsData* ssd = (SetSignalsData*)data;
+	Track track = TrackdirToTrack(trackdir);
 
 	if (!IsTileType(tile, MP_RAILWAY)) return false;
 
 	/* the tile has signals? */
-	if (HasSignalOnTrack(tile, TrackdirToTrack(trackdir))) {
+	if (HasSignalOnTrack(tile, track)) {
 		if (HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir))) {
 			/* yes, add the signal to the list of signals */
 			if (ssd->cur != NUM_SSD_ENTRY) {
@@ -1524,10 +1527,10 @@ static bool SetSignalsEnumProc(TileIndex tile, void* data, Trackdir trackdir, ui
 			}
 
 			/* remember if this block has a presignal. */
-			ssd->has_presignal |= IsPresignalEntry(tile);
+			ssd->has_presignal |= IsPresignalEntry(tile, track);
 		}
 
-		if (HasSignalOnTrackdir(tile, trackdir) && IsPresignalExit(tile)) {
+		if (HasSignalOnTrackdir(tile, trackdir) && IsPresignalExit(tile, track)) {
 			/* this is an exit signal that points out from the segment */
 			ssd->presignal_exits++;
 			if (GetSignalStateByTrackdir(tile, trackdir) != SIGNAL_STATE_RED)
@@ -1666,13 +1669,14 @@ static void ChangeSignalStates(SetSignalsData *ssd)
 		TileIndex tile = ssd->tile[i];
 		byte bit = SignalAgainstTrackdir(ssd->bit[i]);
 		uint signals = GetSignalStates(tile);
+		Track track = TrackdirToTrack(ssd->bit[i]);
 
 		/* presignals don't turn green if there is at least one presignal exit and none are free */
-		if (IsPresignalEntry(tile)) {
+		if (IsPresignalEntry(tile, track)) {
 			int ex = ssd->presignal_exits, exfree = ssd->presignal_exits_free;
 
 			/* subtract for dual combo signals so they don't count themselves */
-			if (IsPresignalExit(tile) && HasSignalOnTrackdir(tile, ssd->bit[i])) {
+			if (IsPresignalExit(tile, track) && HasSignalOnTrackdir(tile, ssd->bit[i])) {
 				ex--;
 				if (GetSignalStateByTrackdir(tile, ssd->bit[i]) != SIGNAL_STATE_RED) exfree--;
 			}
@@ -1692,7 +1696,7 @@ make_red:
 		}
 
 		/* Update signals on the other side of this exit-combo signal; it changed. */
-		if (IsPresignalExit(tile)) {
+		if (IsPresignalExit(tile, track)) {
 			if (ssd->cur_stack != NUM_SSD_STACK) {
 				ssd->next_tile[ssd->cur_stack] = tile;
 				ssd->next_dir[ssd->cur_stack] = _dir_from_track[ssd->bit[i]];
@@ -1970,14 +1974,34 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 			break;
 
 		case RAIL_TILE_SIGNALS: {
-			const StringID signal_type[] = {
-				STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS,
-				STR_RAILROAD_TRACK_WITH_PRESIGNALS,
-				STR_RAILROAD_TRACK_WITH_EXITSIGNALS,
-				STR_RAILROAD_TRACK_WITH_COMBOSIGNALS
+			const StringID signal_type[4][4] = {
+				{
+					STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS,
+					STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS,
+					STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS,
+					STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS
+				},
+				{
+					STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS,
+					STR_RAILROAD_TRACK_WITH_PRESIGNALS,
+					STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS,
+					STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS
+				},
+				{
+					STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS,
+					STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS,
+					STR_RAILROAD_TRACK_WITH_EXITSIGNALS,
+					STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS
+				},
+				{
+					STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS,
+					STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS,
+					STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS,
+					STR_RAILROAD_TRACK_WITH_COMBOSIGNALS
+				}
 			};
 
-			td->str = signal_type[GetSignalType(tile)];
+			td->str = signal_type[GetSignalType(tile, TRACK_UPPER)][GetSignalType(tile, TRACK_LOWER)];
 			break;
 		}
 

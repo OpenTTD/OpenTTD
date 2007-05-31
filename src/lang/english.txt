@@ -1590,6 +1590,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railway track w
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Railway track with pre-signals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Railway track with exit-signals
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Railway track with combo-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Railway track with normal and pre-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Railway track with normal and exit-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Railway track with normal and combo-signals
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Railway track with pre- and exit-signals
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Railway track with pre- and combo-signals
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Railway track with exit- and combo-signals
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must remove railway station first
 
 

@@ -207,33 +207,35 @@ enum SignalType {
 	SIGTYPE_COMBO   = 3  ///< presignal inter-block
 };
 
-static inline SignalType GetSignalType(TileIndex t)
+static inline SignalType GetSignalType(TileIndex t, Track track)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
-	return (SignalType)GB(_m[t].m2, 0, 2);
+	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
+	return (SignalType)GB(_m[t].m2, pos, 2);
 }
 
-static inline void SetSignalType(TileIndex t, SignalType s)
+static inline void SetSignalType(TileIndex t, Track track, SignalType s)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
-	SB(_m[t].m2, 0, 2, s);
+	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
+	SB(_m[t].m2, pos, 2, s);
+	if (track == INVALID_TRACK) SB(_m[t].m2, 4, 2, s);
 }
 
-static inline bool IsPresignalEntry(TileIndex t)
+static inline bool IsPresignalEntry(TileIndex t, Track track)
 {
-	return GetSignalType(t) == SIGTYPE_ENTRY || GetSignalType(t) == SIGTYPE_COMBO;
+	return GetSignalType(t, track) == SIGTYPE_ENTRY || GetSignalType(t, track) == SIGTYPE_COMBO;
 }
 
-static inline bool IsPresignalExit(TileIndex t)
+static inline bool IsPresignalExit(TileIndex t, Track track)
 {
-	return GetSignalType(t) == SIGTYPE_EXIT || GetSignalType(t) == SIGTYPE_COMBO;
+	return GetSignalType(t, track) == SIGTYPE_EXIT || GetSignalType(t, track) == SIGTYPE_COMBO;
 }
 
 static inline void CycleSignalSide(TileIndex t, Track track)
 {
 	byte sig;
-	byte pos = 6;
-	if (track == TRACK_LOWER || track == TRACK_RIGHT) pos = 4;
+	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 6;
 
 	sig = GB(_m[t].m3, pos, 2);
 	if (--sig == 0) sig = 3;
@@ -246,14 +248,17 @@ enum SignalVariant {
 	SIG_SEMAPHORE = 1  ///< Old-fashioned semaphore signal
 };
 
-static inline SignalVariant GetSignalVariant(TileIndex t)
+static inline SignalVariant GetSignalVariant(TileIndex t, Track track)
 {
-	return (SignalVariant)GB(_m[t].m2, 2, 1);
+	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 6 : 2;
+	return (SignalVariant)GB(_m[t].m2, pos, 1);
 }
 
-static inline void SetSignalVariant(TileIndex t, SignalVariant v)
+static inline void SetSignalVariant(TileIndex t, Track track, SignalVariant v)
 {
-	SB(_m[t].m2, 2, 1, v);
+	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 6 : 2;
+	SB(_m[t].m2, pos, 1, v);
+	if (track == INVALID_TRACK) SB(_m[t].m2, 6, 1, v);
 }
 
 /** These are states in which a signal can be. Currently these are only two, so
@@ -272,7 +277,7 @@ enum SignalState {
  */
 static inline void SetSignalStates(TileIndex tile, uint state)
 {
-	SB(_m[tile].m2, 4, 4, state);
+	SB(_m[tile].m4, 4, 4, state);
 }
 
 /**
@@ -282,7 +287,7 @@ static inline void SetSignalStates(TileIndex tile, uint state)
  */
 static inline uint GetSignalStates(TileIndex tile)
 {
-	return GB(_m[tile].m2, 4, 4);
+	return GB(_m[tile].m4, 4, 4);
 }
 
 /**

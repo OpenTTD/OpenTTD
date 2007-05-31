@@ -1664,10 +1664,10 @@ bool AfterLoadGame()
 				case MP_RAILWAY:
 					if (HasSignals(t)) {
 						/* convert PBS signals to combo-signals */
-						if (HASBIT(_m[t].m2, 2)) SetSignalType(t, SIGTYPE_COMBO);
+						if (HASBIT(_m[t].m2, 2)) SetSignalType(t, TRACK_X, SIGTYPE_COMBO);
 
 						/* move the signal variant back */
-						SetSignalVariant(t, HASBIT(_m[t].m2, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
+						SetSignalVariant(t, TRACK_X, HASBIT(_m[t].m2, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
 						CLRBIT(_m[t].m2, 3);
 					}
 
@@ -1999,6 +1999,18 @@ bool AfterLoadGame()
 
 		/* Same goes for number of towns, although no test is needed, just an increment */
 		_opt.diff.number_towns++;
+	}
+
+	if (CheckSavegameVersion(64)) {
+		/* copy the signal type/variant and move signal states bits */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_RAILWAY) && HasSignals(t)) {
+				SetSignalStates(t, GB(_m[t].m2, 4, 4));
+				SetSignalVariant(t, INVALID_TRACK, GetSignalVariant(t, TRACK_X));
+				SetSignalType(t, INVALID_TRACK, GetSignalType(t, TRACK_X));
+				CLRBIT(_m[t].m2, 7);
+			}
+		}
 	}
 
 	/* Recalculate */
