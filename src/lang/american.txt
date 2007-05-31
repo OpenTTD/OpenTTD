@@ -1089,6 +1089,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max sta
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Smooth viewport scrolling: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Show a measurement tooltip when using various build-tools: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Show company liveries: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :None
@@ -1597,22 +1598,38 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must rem
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Must remove road first
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Road works in progress
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Road Construction
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Tramway Construction
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Select Road Bridge
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Can't build road here...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Can't build tramway here...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Can't remove road from here...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Can't remove tramway from here...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Road Depot Orientation
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Tram Depot Orientation
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Can't build road vehicle depot here...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Can't build tram vehicle depot here...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Can't build bus station...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Can't build truck station...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Can't build passenger tram station...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Can't build freight tram station...
 STR_180A_ROAD_CONSTRUCTION                                      :Road construction
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Tramway construction
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Build road section
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Build tramway section
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Build road vehicle depot (for building and servicing vehicles)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Build tram vehicle depot (for building and servicing trams)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Build bus station
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Build truck loading bay
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Build passenger tram station
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Build freight tram station
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Build road bridge
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Build tramway bridge
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Build road tunnel
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Build tramway tunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Toggle build/remove for road construction
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Toggle build/remove for tramway construction
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Select road vehicle depot orientation
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Select tram vehicle depot orientation
 STR_1814_ROAD                                                   :Road
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Road with streetlights
 STR_1816_TREE_LINED_ROAD                                        :Tree-lined road
@@ -1620,6 +1637,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Road vehicle de
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Road/rail grade crossing
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Can't remove bus station...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Can't remove truck station...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Can't remove passenger tram station...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Can't remove freight tram station...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Towns
@@ -1784,8 +1803,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} now accepts {STRING} and {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Bus Station Orientation
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Truck Station Orient.
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Passenger Tram Orientation
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Freight Tram Orientation
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Must demolish bus station first
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Must demolish truck station first
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Must demolish passenger tram station first
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Must demolish freight tram station first
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- None -
@@ -1797,6 +1820,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Select n
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Select length of railroad station
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Select bus station orientation
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Select truck loading bay orientation
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Select passenger tram station orientation
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Select freight tram station orientation
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Center main view on station location
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Show station ratings
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Change name of station
@@ -2247,6 +2272,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Freight Ship
 STR_LIVERY_HELICOPTER                                           :Helicopter
 STR_LIVERY_SMALL_PLANE                                          :Small Airplane
 STR_LIVERY_LARGE_PLANE                                          :Large Airplane
+STR_LIVERY_PASSENGER_TRAM                                       :Passenger Tram
+STR_LIVERY_FREIGHT_TRAM                                         :Freight Tram
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Show general color schemes
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Show train color schemes
@@ -2720,6 +2747,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Can't na
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Name road vehicle
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First bus arrives at {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First truck arrives at {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Citizens celebrate . . .{}First passenger tram arrives at {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Citizens celebrate . . .{}First freight tram arrives at {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Road Vehicle Crash!{}Driver dies in fireball after collision with train
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Road Vehicle Crash!{}{COMMA} die in fireball after collision with train
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Can't make vehicle turn around...
@@ -3004,6 +3033,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}You are about to sell all the vehicles in the depot. Are you sure?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Wrong depot type
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sell all trains in the depot
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sell all road vehicles in the depot

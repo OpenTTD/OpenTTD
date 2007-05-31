@@ -1810,7 +1810,7 @@ STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Vous dev
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Vous devez d'abord détruire l'aire de chargement
 STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Vous devez d'abord démolir la station de tramway pour passagers
 STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Vous devez d'abord démolir la station de tramway pour fret
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P 2 "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Aucun -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...l'endroit ne convient pas
