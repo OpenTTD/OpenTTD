@@ -290,6 +290,6 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 
 	/* Centre the view on the map */
 	if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) {
-		ScrollMainWindowToTile(TileXY(MapSizeX() / 2, MapSizeY() / 2));
+		ScrollMainWindowToTile(TileXY(MapSizeX() / 2, MapSizeY() / 2), true);
 	}
 }
