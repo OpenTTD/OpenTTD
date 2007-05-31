@@ -427,12 +427,16 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MP_STATION:
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
 			if (HASBIT(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			/* Don't allow "upgrading" the roadstop when vehicles are already driving on it */
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
 		case MP_TUNNELBRIDGE:
 			if ((IsTunnel(tile) && GetTunnelTransportType(tile) != TRANSPORT_ROAD) ||
 					(IsBridge(tile) && GetBridgeTransportType(tile) != TRANSPORT_ROAD)) return CMD_ERROR;
 			if (HASBIT(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			/* Don't allow "upgrading" the bridge/tunnel when vehicles are already driving on it */
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
 		default:

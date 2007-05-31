@@ -1273,6 +1273,9 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (IsTileOwner(tile, OWNER_TOWN) && !_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
 		if (GetRoadTileType(tile) != ROAD_TILE_NORMAL) return CMD_ERROR;
 
+		/* Don't allow building the roadstop when vehicles are already driving on it */
+		if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+
 		RoadTypes cur_rts = GetRoadTypes(tile);
 		if (GetRoadOwner(tile, ROADTYPE_ROAD) != OWNER_TOWN && HASBIT(cur_rts, ROADTYPE_ROAD) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_ROAD))) return CMD_ERROR;
 		if (HASBIT(cur_rts, ROADTYPE_TRAM) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_TRAM))) return CMD_ERROR;
