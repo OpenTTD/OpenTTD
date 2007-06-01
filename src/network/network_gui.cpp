@@ -84,13 +84,71 @@ static const StringID _players_dropdown[] = {
 	STR_NETWORK_10_PLAYERS,
 	INVALID_STRING_ID
 };
-
+/* The strings are in alphabetical order (in English). */
 static const StringID _language_dropdown[] = {
 	STR_NETWORK_LANG_ANY,
+	STR_NETWORK_LANG_BRAZILIAN,
+	STR_NETWORK_LANG_BULGARIAN,
+	STR_NETWORK_LANG_CHINESE,
+	STR_NETWORK_LANG_CZECH,
+	STR_NETWORK_LANG_DANISH,
+	STR_NETWORK_LANG_DUTCH,
 	STR_NETWORK_LANG_ENGLISH,
-	STR_NETWORK_LANG_GERMAN,
+	STR_NETWORK_LANG_ESPERANTO,
+	STR_NETWORK_LANG_FINNISH,
 	STR_NETWORK_LANG_FRENCH,
+	STR_NETWORK_LANG_GERMAN,
+	STR_NETWORK_LANG_HUNGARIAN,
+	STR_NETWORK_LANG_ICELANDIC,
+	STR_NETWORK_LANG_ITALIAN,
+	STR_NETWORK_LANG_JAPANESE,
+	STR_NETWORK_LANG_KOREAN,
+	STR_NETWORK_LANG_LITHUANIAN,
+	STR_NETWORK_LANG_NORWEGIAN,
+	STR_NETWORK_LANG_POLISH,
+	STR_NETWORK_LANG_PORTUGUESE,
+	STR_NETWORK_LANG_ROMANIAN,
+	STR_NETWORK_LANG_RUSSIAN,
+	STR_NETWORK_LANG_SLOVAK,
+	STR_NETWORK_LANG_SLOVENIAN,
+	STR_NETWORK_LANG_SPANISH,
+	STR_NETWORK_LANG_SWEDISH,
+	STR_NETWORK_LANG_TURKISH,
+	STR_NETWORK_LANG_UKRAINIAN,
 	INVALID_STRING_ID
+};
+
+/* Used to map the _server_lang value to the sorted string. */
+static const int _server_lang_to_string[] = {
+	 0, // Any
+	 7, // English
+	11, // German
+	10, // French
+	 1, // Brazilian
+	 2, // Bulgarian
+	 3, // Chinese
+	 4, // Czech
+	 5, // Danish
+	 6, // Dutch
+	 8, // Esperanto
+	 9, // Finnish
+	12, // Hungarian
+	13, // Icelandic
+	14, // Italian
+	15, // Japanese
+	16, // Korean
+	17, // Lithuanian
+	18, // Norwegian
+	19, // Polish
+	20, // Portuguese
+	21, // Romanian
+	22, // Russian
+	23, // Slovak
+	24, // Slovenian
+	25, // Spanish
+	26, // Swedish
+	27, // Turkish
+	28, // Ukrainian
 };
 
 enum {
@@ -342,7 +400,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			DrawString(x, y, STR_NETWORK_CLIENTS, 2);
 			y += 10;
 
-			SetDParam(0, _language_dropdown[sel->info.server_lang]);
+			SetDParam(0, _language_dropdown[_server_lang_to_string[sel->info.server_lang]]);
 			DrawString(x, y, STR_NETWORK_LANGUAGE, 2); // server language
 			y += 10;
 
@@ -609,7 +667,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		SetDParam( 9, _players_dropdown[_network_game_info.clients_max]);
 		SetDParam(11, _players_dropdown[_network_game_info.companies_max]);
 		SetDParam(13, _players_dropdown[_network_game_info.spectators_max]);
-		SetDParam(15, _language_dropdown[_network_game_info.server_lang]);
+		SetDParam(15, _language_dropdown[_server_lang_to_string[_network_game_info.server_lang]]);
 		DrawWindowWidgets(w);
 
 		GfxFillRect(11, 63, 258, 215, 0xD7);
@@ -680,7 +738,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, _players_dropdown, _network_game_info.spectators_max, 14, 0, 0);
 			break;
 		case 15: case 16: /* Language */
-			ShowDropDownMenu(w, _language_dropdown, _network_game_info.server_lang, 16, 0, 0);
+			ShowDropDownMenu(w, _language_dropdown, _server_lang_to_string[_network_game_info.server_lang], 16, 0, 0);
 			break;
 		case 17: /* Start game */
 			_is_network_server = true;
@@ -715,7 +773,13 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			case 10: _network_game_info.clients_max    = e->we.dropdown.index;        break;
 			case 12: _network_game_info.companies_max  = e->we.dropdown.index;        break;
 			case 14: _network_game_info.spectators_max = e->we.dropdown.index;        break;
-			case 16: _network_game_info.server_lang    = e->we.dropdown.index;        break;
+			case 16:
+				for (uint i = 0; i < lengthof(_server_lang_to_string); i++) {
+					if (_server_lang_to_string[i] == e->we.dropdown.index) {
+						_network_game_info.server_lang = i;
+					}
+				}
+				break;
 		}
 
 		SetWindowDirty(w);

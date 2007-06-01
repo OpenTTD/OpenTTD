@@ -1397,6 +1397,31 @@ STR_NETWORK_LANG_ANY                                            :Any
 STR_NETWORK_LANG_ENGLISH                                        :English
 STR_NETWORK_LANG_GERMAN                                         :German
 STR_NETWORK_LANG_FRENCH                                         :French
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazilian
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgarian
+STR_NETWORK_LANG_CHINESE                                        :Chinese
+STR_NETWORK_LANG_CZECH                                          :Czech
+STR_NETWORK_LANG_DANISH                                         :Danish
+STR_NETWORK_LANG_DUTCH                                          :Dutch
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finnish
+STR_NETWORK_LANG_HUNGARIAN                                      :Hungarian
+STR_NETWORK_LANG_ICELANDIC                                      :Icelandic
+STR_NETWORK_LANG_ITALIAN                                        :Italian
+STR_NETWORK_LANG_JAPANESE                                       :Japanese
+STR_NETWORK_LANG_KOREAN                                         :Korean
+STR_NETWORK_LANG_LITHUANIAN                                     :Lithuanian
+STR_NETWORK_LANG_NORWEGIAN                                      :Norwegian
+STR_NETWORK_LANG_POLISH                                         :Polish
+STR_NETWORK_LANG_PORTUGUESE                                     :Portuguese
+STR_NETWORK_LANG_ROMANIAN                                       :Romanian
+STR_NETWORK_LANG_RUSSIAN                                        :Russian
+STR_NETWORK_LANG_SLOVAK                                         :Slovak
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovenian
+STR_NETWORK_LANG_SPANISH                                        :Spanish
+STR_NETWORK_LANG_SWEDISH                                        :Swedish
+STR_NETWORK_LANG_TURKISH                                        :Turkish
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainian
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
