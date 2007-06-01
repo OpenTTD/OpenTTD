@@ -1591,6 +1591,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :일반 신호�
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :PRE 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :출구 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :결합 신호등이 설치된 철도
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :일반 신호등과 PRE신호등이 설치된 철도
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :일반 신호등과 출구신호등이 설치된 철도
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :일반 신호등과 결합신호등이 설치된 철도
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :PRE 신호등과 출구신호등이 설치된 철도
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :PRE 신호등과 결합신호등이 설치된 철도
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :출구 신호등과 결합신호등이 설치된 철도
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
 
 
@@ -1601,6 +1607,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}도로 �
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}도로 건설
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}전찻길 건설
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}교량을 선택하십시오
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... 일방통행 도로는 교차로를 만들 수 없습니다
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}도로를 건설할 수 없습니다...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}여기에 전찻길을 건설할 수 없습니다...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}도로를 제거할 수 없습니다...

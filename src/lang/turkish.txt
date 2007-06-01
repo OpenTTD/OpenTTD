@@ -1592,20 +1592,34 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Yol çal
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Yol Yapımı
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Köprü Seç
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Yol yapılamıyor...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Buraya tramvay yapılamaz...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Yol kaldırılamıyor...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Tramvay kaldırılamaz...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Garaj Yönü
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Tramvay Garı Yönü
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Buraya Garaj yapılamaz...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Buraya tramvay garı yapılamaz...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Otobüs durağı yapılamaz...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kamyon durağı yapılamaz...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Yolcu tramvayı istasyonu yapılamaz...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Yük tramvayı istasyonu yapılamaz...
 STR_180A_ROAD_CONSTRUCTION                                      :Yol yapımı
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Tramvay yapımı
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Yol bölmesi yap
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Tramvay yolu yap
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Garaj yap (araç alımı ve bakımlar için)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Tramvay garı yap (araç alımı ve tamiri için)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Otobüs durağı yap
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Kamyon yükleme bölgesi yap
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Yolcu tramvayı istasyonu yap
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Yük tramvayı istasyonu yap
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Köprü yap
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Tramvay köprüsü yap
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Tünel Yap
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Tramvay tüneli yap
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Yol yap/sil arasında geçiş yap
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Garaj yönünü seç
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Tramvay garı yönü
 STR_1814_ROAD                                                   :Yol
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Lambali yol
 STR_1816_TREE_LINED_ROAD                                        :Ağaçli yol
@@ -1613,6 +1627,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Araba garı
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Hemzemin geçit
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Otobüs durağı kaldırılamaz...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kamyon durağı kaldırılamaz...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Yolcu tramvayı istasyonu kaldırılamıyor...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Yük tramvayı istasyonu kaldırılamıyor...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Şehirler
@@ -1777,8 +1793,11 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} artık {STRING} ve {STRING} istiyor
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Otobüs Durağı Yönü
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Kamyon Durağı Yönü
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Yolcu Tramvayı Yönü
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Yük Tramvayı Yönü
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Önce otobüs durağı yıkılmalı
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Önce kamyon durağı yıkılmalı
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Önce yolcu tramvayı istasyonu yıkılmalı
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} istasyonları
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Yok -
@@ -2010,6 +2029,7 @@ STR_SV_STNAME_LOWER                                             :Asağı {STRING
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Ormanı
 
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -2046,6 +2066,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Belediy
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Hiç
+STR_NUM_VERY_LOW                                                :Çok az
 STR_6816_LOW                                                    :Düşük
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Yüksek
@@ -2238,6 +2259,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Yük Gemisi
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Küçük Uçak
 STR_LIVERY_LARGE_PLANE                                          :Büyük Uçak
+STR_LIVERY_PASSENGER_TRAM                                       :Yolcu Tramvayı
+STR_LIVERY_FREIGHT_TRAM                                         :Yük Tramvayı
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Genel renk şemalarını göster
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Tren renk düzenlerini göster

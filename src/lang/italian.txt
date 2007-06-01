@@ -1592,6 +1592,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia con se
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia con pre-segnali
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia con segnali di uscita
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia con segnali combinati
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Ferrovia con segnali normali e pre-segnali
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ferrovia con segnali normali e di uscita
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ferrovia con segnali normali e combinati
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ferrovia con pre-segnali e segnali di uscita
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ferrovia con pre-segnali e segnali combinati
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ferrovia con segnali di uscita e combinati
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bisogna rimuovere la stazione prima
 
 
@@ -1602,6 +1608,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Lavori s
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Costruzione strade
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Costruzione tranvie
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Seleziona ponte stradale
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...le strade a senso unico non possono avere raccordi
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Impossibile costruire la strada qui...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Impossibile costruire la tranvia qui...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Impossibile rimuovere la strada da qui...
@@ -2056,7 +2063,7 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Salva
 STR_6801_EASY                                                   :{BLACK}Facile
 STR_6802_MEDIUM                                                 :{BLACK}Medio
 STR_6803_HARD                                                   :{BLACK}Difficile
-STR_6804_CUSTOM                                                 :{BLACK}Personalizzata
+STR_6804_CUSTOM                                                 :{BLACK}Personalizzato
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
@@ -2083,20 +2090,8 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Atteggi
 STR_26816_NONE                                                  :Nessuno
 STR_NUM_VERY_LOW                                                :Molto basso
 STR_6816_LOW                                                    :Basso
-STR_6816_LOW.ms                                                 :Basso
-STR_6816_LOW.mp                                                 :Bassi
-STR_6816_LOW.fs                                                 :Bassa
-STR_6816_LOW.fp                                                 :Basse
 STR_6817_NORMAL                                                 :Normale
-STR_6817_NORMAL.ms                                              :Normale
-STR_6817_NORMAL.mp                                              :Normali
-STR_6817_NORMAL.fs                                              :Normale
-STR_6817_NORMAL.fp                                              :Normali
 STR_6818_HIGH                                                   :Alto
-STR_6818_HIGH.ms                                                :Alto
-STR_6818_HIGH.mp                                                :Alti
-STR_6818_HIGH.fs                                                :Alta
-STR_6818_HIGH.fp                                                :Alte
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Molto lenta
@@ -2105,10 +2100,6 @@ STR_681D_MEDIUM                                                 :Media
 STR_681E_FAST                                                   :Veloce
 STR_681F_VERY_FAST                                              :Molto veloce
 STR_VERY_LOW                                                    :Molto basso
-STR_VERY_LOW.ms                                                 :Molto basso
-STR_VERY_LOW.mp                                                 :Molto bassi
-STR_VERY_LOW.fs                                                 :Molto bassa
-STR_VERY_LOW.fp                                                 :Molto basse
 STR_6820_LOW                                                    :Basso
 STR_6821_MEDIUM                                                 :Medio
 STR_6822_HIGH                                                   :Alto

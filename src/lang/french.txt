@@ -1588,9 +1588,15 @@ STR_1021_RAILROAD_TRACK                                         :Rails
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Dépôt ferroviaire
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...appartient à une autre compagnie
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rails avec des signaux normaux
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rails avec des pré-signaux
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rails avec des signaux d'entrée
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rails avec des signaux de sortie
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rails avec des signaux combinés
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Rails avec des signaux normaux et d'entrée
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Rails avec des signaux normaux et de sortie
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Rails avec des signaux normaux et combinés
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Rails avec des signaux d'entrée et de sortie
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Rails avec des signaux d'entrée et combinés
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Rails avec des signaux de sortie et combinés
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Vous devez d'abord retirer la gare
 
 
@@ -1601,6 +1607,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Route en
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construction routière
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construction de tramway
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Choisir Pont Routier
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... les routes à sens unique ne peuvent pas avoir de jonctions
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Impossible de construire la route ici...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Impossible de construire une section de tramway ici...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Impossible de retirer la route ici...

@@ -464,7 +464,7 @@ STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik her
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Nedriv bygninger osv. på et stykke land
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sænk et hjørne af landet
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hæv et hjørne af landet
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scroll bar - scroller listen op/ned
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scrollbar - scroller listen op/ned
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Scroll bar - flytter listen mod venstre/højre
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis landskabskonturer på kortet
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Vis køretøjer på kortet
@@ -1048,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke un
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global ruteplanlægger (NPF, tilsidesætter NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vægtfaktor for fragt for at simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillad gennemkørsels-stop på veje ejet af en by: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillad bygning af tilstødende stationer: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING}
 
@@ -1567,7 +1568,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Kan ikke
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Kan ikke bygge jernbane her...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Kan ikke fjerne jernbane herfra...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kan ikke fjerne signaler herfra...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Retning for remise
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Retning af remise
 STR_1015_RAILROAD_CONSTRUCTION                                  :Jernbanekonstruktion
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrisk jernbanekonstruktion
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monorailkonstruktion
@@ -1585,9 +1586,16 @@ STR_1021_RAILROAD_TRACK                                         :Jernbaneskinner
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Remise
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...området ejes af et andet selskab
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbane med almindelige signaler
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbane med indkørselssignaler
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbane med udkørselssignaler
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med kombinerede ind- og udkørselssignaler
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbane med præ-signaler
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbane med exit-signaler
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med kombi-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale og præ-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Jernbanespor med normale og exit-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Jernbanespor med normale og kombi-signaler
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Jernbanespor med præ- og exit-signaler
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Jernbanespor med præ- og kombi-signaler
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Jernbanespor med exit- og kombi-signaler
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Jernbanestation skal fjernes først
 
 
 
@@ -1595,22 +1603,39 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med ko
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Det er nødvendigt at fjerne vejen først
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vejarbejde i gang
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vejkonstruktion
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Sporvejskonstruktion
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vælg vejbro
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... ensrettede veje kan ikke have kryds
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan ikke bygge vej her...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Kan ikke bygge sporvej her...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan ikke fjerne vej herfra...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Kan ikke fjerne sporvej her...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Retning af værksted
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Retning af sporvognsremise
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge værksted her...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Kan ikke bygge sporvognsremise her...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan ikke bygge rutebilstation...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan ikke bygge fragtcentral...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Kan ikke bygge passager-sporvognsstation...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan ikke bygge fragt-sporvognsstation...
 STR_180A_ROAD_CONSTRUCTION                                      :Vejkonstruktion
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Sporvejskonstruktion
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Byg en sektion vej
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Byg sporvejssektion
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Byg værksted (til bygning og servicering af vejkøretøjer)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Byg sporvognsremise (til konstruktion og service af vogne)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Byg rutebilstation
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Byg fragtcentral
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Byg passager-sporvognsstation
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Byg fragt-sporvognsstation
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Byg bro
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Byg sporvejsbro
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Byg tunnel
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Byg sporvejstunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Skift mellem bygning/fjernelse af veje
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Skift mellem bygning/fjernelse af sporveje
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vælg retning for værksted
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Vælg retning af sporvognsremise
 STR_1814_ROAD                                                   :Vej
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Vej med gadelygter
 STR_1816_TREE_LINED_ROAD                                        :Vej med vejtræer
@@ -1618,6 +1643,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Værksted
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Jernbaneoverskæring
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kan ikke fjerne rutebilstation...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kan ikke fjerne fragtcentral...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Kan ikke fjerne passager-sporvognsstation
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Kan ikke fjerne fragt-sporvognsstation
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Byer
@@ -1782,8 +1809,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} accepterer nu {STRING} og {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Retning af rutebilstation
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Retning af fragtcentral
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Retning af sporvognsstation
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Retning af sporvognsstation
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Det er nødvendigt at nedrive rutebilstationen først
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Det er nødvendigt at rive fragtcentralen ned først
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Passager-sporvognsstation skal fjernes først
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Fragt-sporvognsstation skal fjernes først
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stationer
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ingen -
@@ -1795,6 +1826,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Vælg an
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Vælg længde af banegård
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vælg retning af rutebilstation
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vælg retning af fragtcentral
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Vælg retning af sporvognsstation
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Vælg retning af sporvognsstation
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrer skærmen over stationens lokalitet
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Vis stationens bedømmelse
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Ændre stationens navn
@@ -1824,10 +1857,10 @@ STR_STAT_CLASS_DFLT                                             :Standard statio
 STR_STAT_CLASS_WAYP                                             :Kontrolsteder
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skibsdok orientering
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Retning af skibsdok
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...skal bygges på vand
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Kan ikke bygge en skibsdok her...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vælg orientering af skibsdok
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vælg retning af skibsdok
 STR_3804_WATER                                                  :Vand
 STR_3805_COAST_OR_RIVERBANK                                     :Kyst eller flodbred
 STR_3806_SHIP_DEPOT                                             :Skibsdok
@@ -2245,6 +2278,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Fragtskib
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Lille fly
 STR_LIVERY_LARGE_PLANE                                          :Stort fly
+STR_LIVERY_PASSENGER_TRAM                                       :Passager-sporvogn
+STR_LIVERY_FREIGHT_TRAM                                         :Fragt-sporvogn
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Vis generelle farveskemaer
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Vis farveskemaer for tog
@@ -2718,6 +2753,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan ikke
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Giv køretøjet et navn
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første bus ankommer til {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første lastbil ankommer til {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første passager-sporvogn ankommer til {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første fragt-sporvogn ankommer til {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Lastbil forulykket!{}Chauffør dør i flammerne efter sammenstød med tog
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Bus forulykket!{}{COMMA} dør i flammerne efter kollision med et tog
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikke få køretøjet til at vende...

@@ -1590,6 +1590,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railroad track 
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Railroad track with pre-signals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Railroad track with exit-signals
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Railroad track with combo-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Railway track with normal and pre-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Railway track with normal and exit-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Railway track with normal and combo-signals
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Railway track with pre- and exit-signals
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Railway track with pre- and combo-signals
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Railway track with exit- and combo-signals
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must remove railway station first
 
 
@@ -1600,6 +1606,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Road wor
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Road Construction
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Tramway Construction
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Select Road Bridge
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... one way roads can't have junctions
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Can't build road here...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Can't build tramway here...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Can't remove road from here...

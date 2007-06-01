@@ -1089,6 +1089,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max spr
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Serva helikoptrar vid landningplattor automatiskt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koppla landskapsverktyget till övriga verktygsfält: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Omvänd scrollriktning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Mjuk skrollning av vy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Visa måtthjälptext vid användning av byggverktyg: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Visa färgschema för företag: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Inga
@@ -1589,6 +1590,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Järnväg med v
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Järnväg med för-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Järnväg med utgående signaler
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Järnväg med kombinerade signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Järnväg med normala signaler och för-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Järnväg med normala signaler och utfarts-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Järnväg med normala signaler och kombo-signaler
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Järnväg med för- och utfarts-signaler
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Järnväg med för- och kombo-signaler
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Järnväg med utfards-signaler och kombo-signaler
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Måste ta bort tågstationen först
 
 
@@ -1599,6 +1606,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vägarbe
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Bygg väg
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Byggnation av spårvagn
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Välj vägbro
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... enkelriktade vägar kan inte ha korsningar
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan inte bygga väg här...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Kan inte bygga spårvagnsräls här...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan inte ta bort väg här...
