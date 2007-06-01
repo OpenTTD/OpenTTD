@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file train_cmd.cpp */
+/** @file articulated_vehicles.cpp */
 
 #include "stdafx.h"
 #include "openttd.h"
