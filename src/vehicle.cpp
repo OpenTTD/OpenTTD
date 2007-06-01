@@ -590,7 +590,7 @@ void DestroyVehicle(Vehicle *v)
 		if (v->owner == _local_player) InvalidateAutoreplaceWindow(v->engine_type);
 
 		if (IsValidGroupID(v->group_id)) GetGroup(v->group_id)->num_engines[v->engine_type]--;
-		if (v->type != VEH_TRAIN || IsFrontEngine(v)) DecreaseGroupNumVehicle(v->group_id);
+		if (v->IsPrimaryVehicle()) DecreaseGroupNumVehicle(v->group_id);
 	}
 
 	DeleteVehicleNews(v->index, INVALID_STRING_ID);
@@ -1997,16 +1997,13 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 */
 uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, VehicleType type, PlayerID owner, uint32 index, uint16 window_type)
 {
-	const byte subtype = (type != VEH_AIRCRAFT) ? (byte)Train_Front : (byte)AIR_AIRCRAFT;
 	uint n = 0;
 	const Vehicle *v;
 
 	switch (window_type) {
 		case VLW_STATION_LIST: {
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && (
-					(type == VEH_TRAIN && IsFrontEngine(v)) ||
-					(type != VEH_TRAIN && v->subtype <= subtype))) {
+				if (v->type == type && v->IsPrimaryVehicle()) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
@@ -2039,9 +2036,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 
 		case VLW_STANDARD: {
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && v->owner == owner && (
-					(type == VEH_TRAIN && IsFrontEngine(v)) ||
-					(type != VEH_TRAIN && v->subtype <= subtype))) {
+				if (v->type == type && v->owner == owner && v->IsPrimaryVehicle()) {
 					/* TODO find a better estimate on the total number of vehicles for current player */
 					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetNumVehicles()/4);
 					(*sort_list)[n++] = v;
@@ -2052,9 +2047,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 
 		case VLW_DEPOT_LIST: {
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && (
-					(type == VEH_TRAIN && IsFrontEngine(v)) ||
-					(type != VEH_TRAIN && v->subtype <= subtype))) {
+				if (v->type == type && v->IsPrimaryVehicle()) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
@@ -2071,10 +2064,8 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 
  		case VLW_GROUP_LIST:
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && (
-							(type == VEH_TRAIN && IsFrontEngine(v)) ||
-							(type != VEH_TRAIN && v->subtype <= subtype)
-						) && v->owner == owner && v->group_id == index) {
+				if (v->type == type && v->IsPrimaryVehicle() &&
+						v->owner == owner && v->group_id == index) {
 					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetNumVehicles() / 4);
 
 					(*sort_list)[n++] = v;

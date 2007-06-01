@@ -43,6 +43,7 @@ struct RoadVehicle : public Vehicle {
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }
 	WindowClass GetVehicleListWindowClass() const { return WC_ROADVEH_LIST; }
+	bool IsPrimaryVehicle() const { return true; }
 };
 
 #endif /* ROADVEH_H */

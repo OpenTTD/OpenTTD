@@ -320,9 +320,9 @@ static bool HandleOrderVehClick(const Vehicle *v, const Vehicle *u, Window *w)
 {
 	if (u->type != v->type) return false;
 
-	if (u->type == VEH_TRAIN && !IsFrontEngine(u)) {
+	if (u->HasFront() && !u->IsPrimaryVehicle()) {
 		u = GetFirstVehicleInChain(u);
-		if (!IsFrontEngine(u)) return false;
+		if (!u->IsPrimaryVehicle()) return false;
 	}
 
 	// v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet

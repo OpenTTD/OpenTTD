@@ -117,10 +117,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner != owner) continue;
-			if ((v->type == VEH_TRAIN && IsFrontEngine(v)) ||
-					 v->type == VEH_ROAD ||
-					(v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) ||
-					 v->type == VEH_SHIP) {
+			if (IsPlayerBuildableVehicleType(v->type) && v->IsPrimaryVehicle()) {
 				num++;
 				if (v->age > 730) {
 					/* Find the vehicle with the lowest amount of profit */

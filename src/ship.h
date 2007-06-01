@@ -45,6 +45,7 @@ struct Ship: public Vehicle {
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_SHIP_INC : EXPENSES_SHIP_RUN; }
 	WindowClass GetVehicleListWindowClass() const { return WC_SHIPS_LIST; }
 	void PlayLeaveStationSound() const;
+	bool IsPrimaryVehicle() const { return true; }
 };
 
 #endif /* SHIP_H */

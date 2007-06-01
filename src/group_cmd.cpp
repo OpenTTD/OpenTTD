@@ -211,7 +211,7 @@ int32 CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	Vehicle *v = GetVehicle(p2);
-	if (v->owner != _current_player || (v->type == VEH_TRAIN && !IsFrontEngine(v))) return CMD_ERROR;
+	if (v->owner != _current_player || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		DecreaseGroupNumVehicle(v->group_id);
@@ -254,14 +254,11 @@ int32 CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		Vehicle *v;
 		VehicleType type = (VehicleType)p2;
 		GroupID id_g = p1;
-		uint subtype = (type == VEH_AIRCRAFT) ? AIR_AIRCRAFT : 0;
 
 		/* Find the first front engine which belong to the group id_g
 		 * then add all shared vehicles of this front engine to the group id_g */
 		FOR_ALL_VEHICLES(v) {
-			if ((v->type == type) && (
-					(type == VEH_TRAIN && IsFrontEngine(v)) ||
-					(type != VEH_TRAIN && v->subtype <= subtype))) {
+			if (v->type == type && v->IsPrimaryVehicle()) {
 				if (v->group_id != id_g) continue;
 
 				/* For each shared vehicles add it to the group */
@@ -295,14 +292,11 @@ int32 CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	if (flags & DC_EXEC) {
 		GroupID old_g = p1;
-		uint subtype = (type == VEH_AIRCRAFT) ? AIR_AIRCRAFT : 0;
 		Vehicle *v;
 
 		/* Find each Vehicle that belongs to the group old_g and add it to the default group */
 		FOR_ALL_VEHICLES(v) {
-			if ((v->type == type) && (
-					(type == VEH_TRAIN && IsFrontEngine(v)) ||
-					(type != VEH_TRAIN && v->subtype <= subtype))) {
+			if (v->type == type && v->IsPrimaryVehicle()) {
 				if (v->group_id != old_g) continue;
 
 				/* Add The Vehicle to the default group */
@@ -348,7 +342,7 @@ int32 CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1, uint
  */
 void RemoveVehicleFromGroup(const Vehicle *v)
 {
-	if (!IsValidVehicle(v) || v->type != VEH_TRAIN || !IsFrontEngine(v)) return;
+	if (!IsValidVehicle(v) || !(v->HasFront() && v->IsPrimaryVehicle())) return;
 
 	if (!IsDefaultGroupID(v->group_id)) DecreaseGroupNumVehicle(v->group_id);
 }

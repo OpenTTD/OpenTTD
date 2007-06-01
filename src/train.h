@@ -270,6 +270,8 @@ struct Train : public Vehicle {
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_INC : EXPENSES_TRAIN_RUN; }
 	WindowClass GetVehicleListWindowClass() const { return WC_TRAINS_LIST; }
 	void PlayLeaveStationSound() const;
+	bool IsPrimaryVehicle() const { return IsFrontEngine(this); }
+	bool HasFront() const { return true; }
 };
 
 #endif /* TRAIN_H */

@@ -399,6 +399,17 @@ struct Vehicle {
 	 * Play the sound associated with leaving the station
 	 */
 	virtual void PlayLeaveStationSound() const {}
+
+	/**
+	 * Whether this is the primary vehicle in the chain.
+	 */
+	virtual bool IsPrimaryVehicle() const { return false; }
+
+	/**
+	 * Whether this vehicle understands the concept of a front engine, so
+	 * basically, if GetFirstVehicleInChain() can be called for it.
+	 */
+	virtual bool HasFront() const { return false; }
 };
 
 /**

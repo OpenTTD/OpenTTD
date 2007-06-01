@@ -135,6 +135,7 @@ struct Aircraft : public Vehicle {
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_AIRCRAFT_INC : EXPENSES_AIRCRAFT_RUN; }
 	WindowClass GetVehicleListWindowClass() const { return WC_AIRCRAFT_LIST; }
+	bool IsPrimaryVehicle() const { return IsNormalAircraft(this); }
 };
 
 #endif /* AIRCRAFT_H */
