@@ -164,6 +164,9 @@
 				RelativePath=".\..\src\airport.cpp">
 			</File>
 			<File
+				RelativePath=".\..\src\articulated_vehicles.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\autoreplace_cmd.cpp">
 			</File>
 			<File
@@ -385,6 +388,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\airport_movement.h">
+			</File>
+			<File
+				RelativePath=".\..\src\autoreplace_cmd.h">
 			</File>
 			<File
 				RelativePath=".\..\src\aystar.h">

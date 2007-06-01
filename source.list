@@ -1,5 +1,6 @@
 # Source Files
 airport.cpp
+articulated_vehicles.cpp
 autoreplace_cmd.cpp
 aystar.cpp
 bmp.cpp
@@ -96,6 +97,7 @@ window.cpp
 aircraft.h
 airport.h
 airport_movement.h
+autoreplace_cmd.h
 aystar.h
 bmp.h
 cargotype.h

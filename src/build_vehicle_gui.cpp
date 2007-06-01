@@ -15,6 +15,7 @@
 #include "window.h"
 #include "gui.h"
 #include "vehicle.h"
+#include "articulated_vehicles.h"
 #include "gfx.h"
 #include "station.h"
 #include "command.h"
