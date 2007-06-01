@@ -619,8 +619,10 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->u.rail.track = TRACK_BIT_DEPOT;
 			v->vehstatus = VS_HIDDEN | VS_DEFPAL;
 
+			v = new (v) Train();
 			v->subtype = 0;
 			SetTrainWagon(v);
+
 			if (u != NULL) {
 				u->next = v;
 			} else {
@@ -637,7 +639,6 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->u.rail.railtype = rvi->railtype;
 
 			v->build_year = _cur_year;
-			v = new (v) Train();
 			v->cur_image = 0xAC2;
 			v->random_bits = VehicleRandomBits();
 

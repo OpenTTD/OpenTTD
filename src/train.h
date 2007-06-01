@@ -31,6 +31,7 @@ enum TrainSubtype {
  */
 static inline bool IsFrontEngine(const Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	return HASBIT(v->subtype, Train_Front);
 }
 
@@ -39,6 +40,7 @@ static inline bool IsFrontEngine(const Vehicle *v)
  */
 static inline void SetFrontEngine(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	SETBIT(v->subtype, Train_Front);
 }
 
@@ -47,6 +49,7 @@ static inline void SetFrontEngine(Vehicle *v)
  */
 static inline void ClearFrontEngine(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	CLRBIT(v->subtype, Train_Front);
 }
 
@@ -56,6 +59,7 @@ static inline void ClearFrontEngine(Vehicle *v)
  */
 static inline bool IsArticulatedPart(const Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	return HASBIT(v->subtype, Train_Articulated_Part);
 }
 
@@ -64,6 +68,7 @@ static inline bool IsArticulatedPart(const Vehicle *v)
  */
 static inline void SetArticulatedPart(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	SETBIT(v->subtype, Train_Articulated_Part);
 }
 
@@ -72,6 +77,7 @@ static inline void SetArticulatedPart(Vehicle *v)
  */
 static inline void ClearArticulatedPart(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	CLRBIT(v->subtype, Train_Articulated_Part);
 }
 
@@ -81,6 +87,7 @@ static inline void ClearArticulatedPart(Vehicle *v)
  */
 static inline bool IsTrainWagon(const Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	return HASBIT(v->subtype, Train_Wagon);
 }
 
@@ -89,6 +96,7 @@ static inline bool IsTrainWagon(const Vehicle *v)
  */
 static inline void SetTrainWagon(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	SETBIT(v->subtype, Train_Wagon);
 }
 
@@ -97,6 +105,7 @@ static inline void SetTrainWagon(Vehicle *v)
  */
 static inline void ClearTrainWagon(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	CLRBIT(v->subtype, Train_Wagon);
 }
 
@@ -106,6 +115,7 @@ static inline void ClearTrainWagon(Vehicle *v)
  */
 static inline bool IsTrainEngine(const Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	return HASBIT(v->subtype, Train_Engine);
 }
 
@@ -114,6 +124,7 @@ static inline bool IsTrainEngine(const Vehicle *v)
  */
 static inline void SetTrainEngine(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	SETBIT(v->subtype, Train_Engine);
 }
 
@@ -122,6 +133,7 @@ static inline void SetTrainEngine(Vehicle *v)
  */
 static inline void ClearTrainEngine(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	CLRBIT(v->subtype, Train_Engine);
 }
 
@@ -131,6 +143,7 @@ static inline void ClearTrainEngine(Vehicle *v)
  */
 static inline bool IsFreeWagon(const Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	return HASBIT(v->subtype, Train_Free_Wagon);
 }
 
@@ -139,6 +152,7 @@ static inline bool IsFreeWagon(const Vehicle *v)
  */
 static inline void SetFreeWagon(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	SETBIT(v->subtype, Train_Free_Wagon);
 }
 
@@ -147,6 +161,7 @@ static inline void SetFreeWagon(Vehicle *v)
  */
 static inline void ClearFreeWagon(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	CLRBIT(v->subtype, Train_Free_Wagon);
 }
 
@@ -156,6 +171,7 @@ static inline void ClearFreeWagon(Vehicle *v)
  */
 static inline bool IsMultiheaded(const Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	return HASBIT(v->subtype, Train_Multiheaded);
 }
 
@@ -164,6 +180,7 @@ static inline bool IsMultiheaded(const Vehicle *v)
  */
 static inline void SetMultiheaded(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	SETBIT(v->subtype, Train_Multiheaded);
 }
 
@@ -172,6 +189,7 @@ static inline void SetMultiheaded(Vehicle *v)
  */
 static inline void ClearMultiheaded(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	CLRBIT(v->subtype, Train_Multiheaded);
 }
 
@@ -181,6 +199,7 @@ static inline void ClearMultiheaded(Vehicle *v)
  */
 static inline bool EngineHasArticPart(const Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	return (v->next != NULL && IsArticulatedPart(v->next));
 }
 
@@ -201,6 +220,7 @@ static inline Vehicle *GetNextArticPart(const Vehicle *v)
  */
 static inline Vehicle *GetLastEnginePart(Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	while (EngineHasArticPart(v)) v = GetNextArticPart(v);
 	return v;
 }
@@ -211,6 +231,7 @@ static inline Vehicle *GetLastEnginePart(Vehicle *v)
  */
 static inline Vehicle *GetNextVehicle(const Vehicle *v)
 {
+	assert(v->type == VEH_TRAIN);
 	while (EngineHasArticPart(v)) v = GetNextArticPart(v);
 
 	/* v now contains the last artic part in the engine */
