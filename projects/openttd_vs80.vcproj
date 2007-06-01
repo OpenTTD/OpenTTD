@@ -748,6 +748,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\articulated_vehicles.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\autoreplace_cmd.h"
 				>
 			</File>

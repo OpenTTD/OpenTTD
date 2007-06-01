@@ -97,6 +97,7 @@ window.cpp
 aircraft.h
 airport.h
 airport_movement.h
+articulated_vehicles.h
 autoreplace_cmd.h
 aystar.h
 bmp.h
