@@ -454,6 +454,7 @@ static const WindowDesc _build_road_scen_desc = {
 
 void ShowBuildRoadScenToolbar()
 {
+	_cur_roadtype = ROADTYPE_ROAD;
 	AllocateWindowDescFront(&_build_road_scen_desc, 0);
 }
 
