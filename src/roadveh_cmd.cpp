@@ -485,7 +485,7 @@ int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	if (GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
+	if (IsTileType(v->tile, MP_STREET) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
 
 	if (IsTunnelTile(v->tile) && DirToDiagDir(v->direction) == GetTunnelDirection(v->tile)) return CMD_ERROR;
 	if (IsBridgeTile(v->tile) && DirToDiagDir(v->direction) == GetBridgeRampDirection(v->tile)) return CMD_ERROR;
@@ -1417,7 +1417,7 @@ again:
 					v->cur_speed = 0;
 					return;
 				}
-			} else if (IsTileType(tile, MP_STREET) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) {
+			} else if (IsTileType(v->tile, MP_STREET) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) {
 				v->cur_speed = 0;
 				return;
 			} else {
