@@ -332,13 +332,20 @@ static int CDECL AircraftEngineRunningCostSorter(const void *a, const void *b)
 
 static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 {
-	const int va = AircraftVehInfo(*(const EngineID*)a)->passenger_capacity;
-	const int vb = AircraftVehInfo(*(const EngineID*)b)->passenger_capacity;
-	const int r = va - vb;
+	int va = AircraftVehInfo(*(const EngineID*)a)->passenger_capacity;
+	int vb = AircraftVehInfo(*(const EngineID*)b)->passenger_capacity;
+	int r = va - vb;
 
 	if (r == 0) {
-		/* Use EngineID to sort instead since we want consistent sorting */
-		return EngineNumberSorter(a, b);
+		/* The planes has the same passenger capacity. Check mail capacity instead */
+		va = AircraftVehInfo(*(const EngineID*)a)->mail_capacity;
+		vb = AircraftVehInfo(*(const EngineID*)b)->mail_capacity;
+		r = va - vb;
+
+		if (r == 0) {
+			/* Use EngineID to sort instead since we want consistent sorting */
+			return EngineNumberSorter(a, b);
+		}
 	}
 	return _internal_sort_order ? -r : r;
 }
