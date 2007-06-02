@@ -1205,6 +1205,9 @@ int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
+	/* Check if we deleted a vehicle window */
+	Window *w = NULL;
+
 	if (!IsValidVehicleID(p1) || p2 > 2) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p1);
@@ -1225,7 +1228,8 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		if (v == first && IsFrontEngine(first)) {
-			DeleteWindowById(WC_VEHICLE_VIEW, first->index);
+			w = FindWindowById(WC_VEHICLE_VIEW, first->index);
+			if (w != NULL) DeleteWindow(w);
 		}
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
 		RebuildVehicleLists();
@@ -1292,7 +1296,8 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					first->prev_shared = NULL;
 					first->next_shared = NULL;
 
-					if (IsLocalPlayer()) ShowTrainViewWindow(new_f);
+					/* If we deleted a window then open a new one for the 'new' train */
+					if (IsLocalPlayer() && w != NULL) ShowTrainViewWindow(new_f);
 				}
 			}
 
