@@ -240,6 +240,19 @@ static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
+static int CDECL TrainEngineCapacitySorter(const void *a, const void *b)
+{
+	int va = RailVehInfo(*(const EngineID*)a)->capacity;
+	int vb = RailVehInfo(*(const EngineID*)b)->capacity;
+	int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return EngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
 static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
 {
 	EngineID va = *(const EngineID*)a;
@@ -251,6 +264,32 @@ static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
 	/* Use EngineID to sort instead since we want consistent sorting */
 	if (r == 0) return EngineNumberSorter(a, b);
 
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL RoadVehEngineCapacitySorter(const void *a, const void *b)
+{
+	int va = RoadVehInfo(*(const EngineID*)a)->capacity;
+	int vb = RoadVehInfo(*(const EngineID*)b)->capacity;
+	int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return EngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL ShipEngineCapacitySorter(const void *a, const void *b)
+{
+	int va = ShipVehInfo(*(const EngineID*)a)->capacity;
+	int vb = ShipVehInfo(*(const EngineID*)b)->capacity;
+	int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return EngineNumberSorter(a, b);
+	}
 	return _internal_sort_order ? -r : r;
 }
 
@@ -304,7 +343,7 @@ static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static EngList_SortTypeFunction * const _sorter[][9] = {{
+static EngList_SortTypeFunction * const _sorter[][10] = {{
 	/* Trains */
 	&TrainEngineNumberSorter,
 	&TrainEngineCostSorter,
@@ -315,18 +354,21 @@ static EngList_SortTypeFunction * const _sorter[][9] = {{
 	&TrainEngineRunningCostSorter,
 	&TrainEnginePowerVsRunningCostSorter,
 	&EngineReliabilitySorter,
+	&TrainEngineCapacitySorter,
 }, {
 	/* Road vehicles */
 	&EngineNumberSorter,
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineReliabilitySorter,
+	&RoadVehEngineCapacitySorter,
 }, {
 	/* Ships */
 	&EngineNumberSorter,
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineReliabilitySorter,
+	&ShipEngineCapacitySorter,
 }, {
 	/* Aircraft */
 	&EngineNumberSorter,
@@ -339,7 +381,7 @@ static EngList_SortTypeFunction * const _sorter[][9] = {{
 	&AircraftEngineCargoSorter,
 }};
 
-static const StringID _sort_listing[][10] = {{
+static const StringID _sort_listing[][11] = {{
 	/* Trains */
 	STR_ENGINE_SORT_ENGINE_ID,
 	STR_ENGINE_SORT_COST,
@@ -350,6 +392,7 @@ static const StringID _sort_listing[][10] = {{
 	STR_ENGINE_SORT_RUNNING_COST,
 	STR_ENGINE_SORT_POWER_VS_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
+	STR_ENGINE_SORT_CARGO_CAPACITY,
 	INVALID_STRING_ID
 }, {
 	/* Road vehicles */
@@ -357,6 +400,7 @@ static const StringID _sort_listing[][10] = {{
 	STR_ENGINE_SORT_INTRO_DATE,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_RELIABILITY,
+	STR_ENGINE_SORT_CARGO_CAPACITY,
 	INVALID_STRING_ID
 }, {
 	/* Ships */
@@ -364,6 +408,7 @@ static const StringID _sort_listing[][10] = {{
 	STR_ENGINE_SORT_INTRO_DATE,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_RELIABILITY,
+	STR_ENGINE_SORT_CARGO_CAPACITY,
 	INVALID_STRING_ID
 }, {
 	/* Aircraft */
