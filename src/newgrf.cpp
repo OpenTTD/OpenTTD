@@ -128,6 +128,9 @@ static uint16 cargo_disallowed[TOTAL_NUM_ENGINES];
 /* Contains the GRF ID of the owner of a vehicle if it has been reserved */
 static uint32 _grm_engines[TOTAL_NUM_ENGINES];
 
+/* Contains the GRF ID of the owner of a cargo if it has been reserved */
+static uint32 _grm_cargos[NUM_CARGO];
+
 /** DEBUG() function dedicated to newGRF debugging messages
  * Function is essentialy the same as DEBUG(grf, severity, ...) with the
  * addition of file:line information when parsing grf files.
@@ -3541,6 +3544,54 @@ static uint32 GetPatchVariable(uint8 param)
 }
 
 
+static uint32 PerformGRM(uint32 *grm, uint16 num_ids, uint16 count, uint8 op, uint8 target, const char *type)
+{
+	uint start = 0;
+	uint size  = 0;
+
+	if (op == 6) {
+		/* Return GRFID of set that reserved ID */
+		return grm[_cur_grffile->param[target]];
+	}
+
+	/* With an operation of 2 or 3, we want to reserve a specific block of IDs */
+	if (op == 2 || op == 3) start = _cur_grffile->param[target];
+
+	for (uint i = start; i < num_ids; i++) {
+		if (grm[i] == 0) {
+			size++;
+		} else {
+			if (op == 2 || op == 3) break;
+			start = i + 1;
+			size = 0;
+		}
+
+		if (size == count) break;
+	}
+
+	if (size == count) {
+		/* Got the slot... */
+		if (op == 0 || op == 3) {
+			grfmsg(2, "ParamSet: GRM: Reserving %d %s at %d", count, type, start);
+			for (uint i = 0; i < count; i++) grm[start + i] = _cur_grffile->grfid;
+		}
+		return start;
+	}
+
+	/* Unable to allocate */
+	if (op != 4 && op != 5) {
+		/* Deactivate GRF */
+		grfmsg(0, "ParamSet: GRM: Unable to allocate %d %s, deactivating", count, type);
+		_cur_grfconfig->status = GCS_DISABLED;
+		_skip_sprites = -1;
+		return UINT_MAX;
+	}
+
+	grfmsg(1, "ParamSet: GRM: Unable to allocate %d %s", count, type);
+	return UINT_MAX;
+}
+
+
 /* Action 0x0D */
 static void ParamSet(byte *buf, int len)
 {
@@ -3611,55 +3662,9 @@ static void ParamSet(byte *buf, int len)
 						case 0x01: // Road Vehicles
 						case 0x02: // Ships
 						case 0x03: // Aircraft
-						{
-							uint start = 0;
-							uint size  = 0;
-							uint shift = _vehshifts[feature];
-
-							if (op == 6) {
-								/* Return GRFID of set that reserved ID */
-								src1 = _grm_engines[shift + _cur_grffile->param[target]];
-								break;
-							}
-
-							/* With an operation of 2 or 3, we want to reserve a specific block of IDs */
-							if (op == 2 || op == 3) start = _cur_grffile->param[target];
-
-							for (uint i = start; i < _vehcounts[feature]; i++) {
-								if (_grm_engines[shift + i] == 0) {
-									size++;
-								} else {
-									if (op == 2 || op == 3) break;
-									start = i + 1;
-									size = 0;
-								}
-
-								if (size == count) break;
-							}
-
-							if (size == count) {
-								/* Got the slot... */
-								if (op == 0 || op == 3) {
-									grfmsg(2, "ParamSet: GRM: Reserving %d vehicles at %d", count, start);
-									for (uint i = 0; i < count; i++) _grm_engines[shift + start + i] = _cur_grffile->grfid;
-								}
-								src1 = start;
-							} else {
-								/* Unable to allocate */
-								if (op != 4 && op != 5) {
-									/* Deactivate GRF */
-									grfmsg(0, "ParamSet: GRM: Unable to allocate %d vehicles, deactivating", count);
-									_cur_grfconfig->status = GCS_DISABLED;
-
-									_skip_sprites = -1;
-									return;
-								}
-
-								grfmsg(1, "ParamSet: GRM: Unable to allocate %d vehicles", count);
-								src1 = UINT_MAX;
-							}
+							src1 = PerformGRM(&_grm_engines[_vehshifts[feature]], _vehcounts[feature], count, op, target, "vehicles");
+							if (_skip_sprites == -1) return;
 							break;
-						}
 
 						case 0x08: // General sprites
 							switch (op) {
@@ -3686,6 +3691,11 @@ static void ParamSet(byte *buf, int len)
 									grfmsg(1, "ParamSet: GRM: Unsupported operation %d for general sprites", op);
 									return;
 							}
+							break;
+
+						case 0x0B: // Cargo
+							src1 = PerformGRM(_grm_cargos, NUM_CARGO, count, op, target, "cargos");
+							if (_skip_sprites == -1) return;
 							break;
 
 						default: grfmsg(1, "ParamSet: GRM: Unsupported feature 0x%X", feature); return;
@@ -4410,6 +4420,7 @@ static void ResetNewGRFData()
 
 	/* Reset GRM reservations */
 	memset(&_grm_engines, 0, sizeof(_grm_engines));
+	memset(&_grm_cargos, 0, sizeof(_grm_cargos));
 
 	/* Unload sprite group data */
 	UnloadWagonOverrides();
