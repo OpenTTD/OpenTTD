@@ -1347,6 +1347,15 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 						if (rear != NULL) {
 							cost -= rear->value;
+
+							/* If this is a multiheaded vehicle with nothing
+							 * between the parts, tmp will be pointing to the
+							 * rear part, which is unlinked from the train and
+							 * deleted here. However, because tmp has already
+							 * been set it needs to be updated now so that the
+							 * loop never sees the rear part. */
+							if (tmp == rear) tmp = GetNextVehicle(tmp);
+
 							if (flags & DC_EXEC) {
 								first = UnlinkWagon(rear, first);
 								DeleteDepotHighlightOfVehicle(rear);
