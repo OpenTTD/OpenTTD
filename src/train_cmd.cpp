@@ -626,6 +626,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	u->z_pos = v->z_pos;
 	u->u.rail.track = TRACK_BIT_DEPOT;
 	u->vehstatus = v->vehstatus & ~VS_STOPPED;
+	u = new (u) Train();
 	u->subtype = 0;
 	SetMultiheaded(u);
 	u->spritenum = v->spritenum + 1;
@@ -638,7 +639,6 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	u->build_year = v->build_year;
 	if (building) v->value >>= 1;
 	u->value = v->value;
-	u = new (u) Train();
 	u->cur_image = 0xAC2;
 	u->random_bits = VehicleRandomBits();
 	VehiclePositionChanged(u);
