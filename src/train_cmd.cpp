@@ -839,6 +839,7 @@ static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 	Vehicle *u;
 	for (u = first; GetNextVehicle(u) != v; u = GetNextVehicle(u)) {}
 	GetLastEnginePart(u)->next = GetNextVehicle(v);
+	v->first = NULL; // we shouldn't point to the old first, since the vehicle isn't in that chain anymore
 	return first;
 }
 
