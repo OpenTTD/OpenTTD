@@ -612,11 +612,20 @@ void DestroyVehicle(Vehicle *v)
 	if (v->type == VEH_TRAIN && EngineHasArticPart(v)) DeleteVehicle(v->next);
 }
 
+/**
+ * Deletes all vehicles in a chain.
+ * @param v The first vehicle in the chain.
+ *
+ * @warning This function is not valid for any vehicle containing articulated
+ * parts.
+ */
 void DeleteVehicleChain(Vehicle *v)
 {
+	assert(v->type != VEH_TRAIN);
+
 	do {
 		Vehicle *u = v;
-		v = GetNextVehicle(v);
+		v = v->next;
 		DeleteVehicle(u);
 	} while (v != NULL);
 }
