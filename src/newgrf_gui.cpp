@@ -186,8 +186,9 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 						GRFConfig *c = CallocT<GRFConfig>(1);
 						*c = *src;
 						c->filename = strdup(src->filename);
-						if (src->name != NULL) c->name = strdup(src->name);
-						if (src->info != NULL) c->info = strdup(src->info);
+						if (src->full_path != NULL) c->full_path = strdup(src->full_path);
+						if (src->name      != NULL) c->name      = strdup(src->name);
+						if (src->info      != NULL) c->info      = strdup(src->info);
 						c->next = NULL;
 
 						/* Append GRF config to configuration list */
