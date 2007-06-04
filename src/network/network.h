@@ -107,7 +107,7 @@ enum NetworkLanguage {
 	NETLANG_SWEDISH,
 	NETLANG_TURKISH,
 	NETLANG_UKRAINIAN,
-	NETLANG_LAST
+	NETLANG_COUNT
 };
 
 VARDEF NetworkGameInfo _network_game_info;
