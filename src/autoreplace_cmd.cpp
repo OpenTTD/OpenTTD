@@ -246,9 +246,19 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			GetName(vehicle_name, old_v->string_id & 0x7FF, lastof(vehicle_name));
 		}
 	} else { // flags & DC_EXEC not set
+		int32 tmp_move = 0;
+		if (old_v->type == VEH_TRAIN && IsFrontEngine(old_v) && old_v->next != NULL) {
+			/* Verify that the wagons can be placed on the engine in question.
+			 * This is done by building an engine, test if the wagons can be added and then sell the test engine. */
+			DoCommand(old_v->tile, new_engine_type, 3, DC_EXEC, GetCmdBuildVeh(old_v));
+			Vehicle *temp = GetVehicle(_new_vehicle_id);
+			tmp_move = DoCommand(0, (temp->index << 16) | old_v->next->index, 1, 0, CMD_MOVE_RAIL_VEHICLE);
+			DoCommand(0, temp->index, 0, DC_EXEC, GetCmdSellVeh(old_v));
+		}
+
 		/* Ensure that the player will not end up having negative money while autoreplacing
 		 * This is needed because the only other check is done after the income from selling the old vehicle is substracted from the cost */
-		if (p->money64 < (cost + total_cost)) {
+		if (CmdFailed(tmp_move) || p->money64 < (cost + total_cost)) {
 			SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 			SubtractMoneyFromPlayer(-sell_value); // Pay back the loan
 			return CMD_ERROR;
@@ -344,6 +354,8 @@ int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			/* Now replace the vehicle */
 			temp_cost = ReplaceVehicle(&w, flags, cost);
 
+			if (CmdFailed(temp_cost)) break; // replace failed for some reason. Leave the vehicle alone
+
 			if (flags & DC_EXEC &&
 					(w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE)) {
 				/* now we bought a new engine and sold the old one. We need to fix the
@@ -352,10 +364,7 @@ int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 				 */
 				v = w;
 			}
-
-			if (!CmdFailed(temp_cost)) {
-				cost += temp_cost;
-			}
+			cost += temp_cost;
 		} while (w->type == VEH_TRAIN && (w = GetNextVehicle(w)) != NULL);
 
 		if (!(flags & DC_EXEC) && (p->money64 < (int32)(cost + p->engine_renew_money) || cost == 0)) {
