@@ -66,6 +66,21 @@ static StringID *BuildDynamicDropdown(StringID base, int num)
 	return buf;
 }
 
+static StringID _town_names[SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 2] = {STR_NULL};
+
+void SortTownGeneratorNames()
+{
+	int nb_town_names = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1;
+	/* Init the strings */
+	if (_town_names[0] == STR_NULL) {
+		for (int i = 0; i < nb_town_names; i++) _town_names[i] = STR_TOWNNAME_ORIGINAL_ENGLISH + i;
+		_town_names[nb_town_names] = INVALID_STRING_ID;
+	}
+
+	/* Sort the strings */
+	qsort(&_town_names[0], nb_town_names, sizeof(StringID), &StringIDSorter);
+}
+
 static int GetCurRes()
 {
 	int i;
@@ -136,8 +151,14 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, 11, i, 0);
 		} return;
 		case 13: case 14: { /* Setup townname dropdown */
-			int i = _opt_ptr->town_name;
-			ShowDropDownMenu(w, BuildDynamicDropdown(STR_TOWNNAME_ORIGINAL_ENGLISH, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1), i, 14, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << i), 0);
+			uint sel;
+			for (uint i = 0; i < lengthof(_town_names) - 1; i++) {
+				if (_town_names[i] == STR_TOWNNAME_ORIGINAL_ENGLISH + _opt_ptr->town_name) {
+					sel = i;
+					break;
+				}
+			}
+			ShowDropDownMenu(w, _town_names, sel, 14, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << sel), 0);
 			return;
 		}
 		case 16: case 17: /* Setup autosave dropdown */
@@ -193,7 +214,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			break;
 		case 14: /* Town names */
 			if (_game_mode == GM_MENU) {
-				_opt_ptr->town_name = e->we.dropdown.index;
+				_opt_ptr->town_name = _town_names[e->we.dropdown.index] - STR_TOWNNAME_ORIGINAL_ENGLISH;
 				InvalidateWindow(WC_GAME_OPTIONS, 0);
 			}
 			break;

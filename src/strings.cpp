@@ -1102,6 +1102,7 @@ StringID RemapOldStringID(StringID s)
 }
 
 extern void SortNetworkLanguages();
+extern void SortTownGeneratorNames();
 
 bool ReadLanguagePack(int lang_index)
 {
@@ -1159,6 +1160,7 @@ bool ReadLanguagePack(int lang_index)
 	_dynlang.curr = lang_index;
 	SetCurrentGrfLangID(_langpack->isocode);
 	SortNetworkLanguages();
+	SortTownGeneratorNames();
 	return true;
 }
 
