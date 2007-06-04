@@ -1101,6 +1101,8 @@ StringID RemapOldStringID(StringID s)
 	}
 }
 
+extern void SortNetworkLanguages();
+
 bool ReadLanguagePack(int lang_index)
 {
 	int tot_count, i;
@@ -1156,6 +1158,7 @@ bool ReadLanguagePack(int lang_index)
 
 	_dynlang.curr = lang_index;
 	SetCurrentGrfLangID(_langpack->isocode);
+	SortNetworkLanguages();
 	return true;
 }
 
@@ -1189,6 +1192,18 @@ static int CDECL LanguageCompareFunc(const void *a, const void *b)
 	const Language *cmp2 = (const Language*)b;
 
 	return strcmp(cmp1->file, cmp2->file);
+}
+
+int CDECL StringIDSorter(const void *a, const void *b)
+{
+	const StringID va = *(const StringID*)a;
+	const StringID vb = *(const StringID*)b;
+	char stra[512];
+	char strb[512];
+	GetString(stra, va, lastof(stra));
+	GetString(strb, vb, lastof(strb));
+
+	return strcmp(stra, strb);
 }
 
 /**

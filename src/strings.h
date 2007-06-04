@@ -16,4 +16,6 @@ int32 GetParamInt32();
 bool ReadLanguagePack(int index);
 void InitializeLanguagePacks();
 
+int CDECL StringIDSorter(const void *a, const void *b);
+
 #endif /* STRINGS_H */

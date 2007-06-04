@@ -84,20 +84,20 @@ static const StringID _players_dropdown[] = {
 	STR_NETWORK_10_PLAYERS,
 	INVALID_STRING_ID
 };
-/* The strings are in alphabetical order (in English). */
-static const StringID _language_dropdown[] = {
+
+static StringID _language_dropdown[] = {
 	STR_NETWORK_LANG_ANY,
+	STR_NETWORK_LANG_ENGLISH,
+	STR_NETWORK_LANG_GERMAN,
+	STR_NETWORK_LANG_FRENCH,
 	STR_NETWORK_LANG_BRAZILIAN,
 	STR_NETWORK_LANG_BULGARIAN,
 	STR_NETWORK_LANG_CHINESE,
 	STR_NETWORK_LANG_CZECH,
 	STR_NETWORK_LANG_DANISH,
 	STR_NETWORK_LANG_DUTCH,
-	STR_NETWORK_LANG_ENGLISH,
 	STR_NETWORK_LANG_ESPERANTO,
 	STR_NETWORK_LANG_FINNISH,
-	STR_NETWORK_LANG_FRENCH,
-	STR_NETWORK_LANG_GERMAN,
 	STR_NETWORK_LANG_HUNGARIAN,
 	STR_NETWORK_LANG_ICELANDIC,
 	STR_NETWORK_LANG_ITALIAN,
@@ -119,37 +119,22 @@ static const StringID _language_dropdown[] = {
 };
 
 /* Used to map the _server_lang value to the sorted string. */
-static const int _server_lang_to_string[] = {
-	 0, // Any
-	 7, // English
-	11, // German
-	10, // French
-	 1, // Brazilian
-	 2, // Bulgarian
-	 3, // Chinese
-	 4, // Czech
-	 5, // Danish
-	 6, // Dutch
-	 8, // Esperanto
-	 9, // Finnish
-	12, // Hungarian
-	13, // Icelandic
-	14, // Italian
-	15, // Japanese
-	16, // Korean
-	17, // Lithuanian
-	18, // Norwegian
-	19, // Polish
-	20, // Portuguese
-	21, // Romanian
-	22, // Russian
-	23, // Slovak
-	24, // Slovenian
-	25, // Spanish
-	26, // Swedish
-	27, // Turkish
-	28, // Ukrainian
-};
+static int _server_lang_to_string[NETLANG_LAST] = {0};
+
+void SortNetworkLanguages() {
+	/* Sort the strings (we don't move 'any' and the 'invalid' one) */
+	qsort(&_language_dropdown[1], NETLANG_LAST - 1, sizeof(StringID), &StringIDSorter);
+
+	/* Update the lookup table */
+	for (int i = NETLANG_ANY; i < NETLANG_LAST; i++) {
+		for (int j = NETLANG_ANY; j < NETLANG_LAST; j++) {
+			if (_language_dropdown[j] - STR_NETWORK_LANG_ANY == i) {
+				_server_lang_to_string[i] = j;
+				break;
+			}
+		}
+	}
+}
 
 enum {
 	NET_PRC__OFFSET_TOP_WIDGET          = 54,
