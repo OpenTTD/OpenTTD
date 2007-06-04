@@ -151,7 +151,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, 11, i, 0);
 		} return;
 		case 13: case 14: { /* Setup townname dropdown */
-			uint sel;
+			uint sel = 0;
 			for (uint i = 0; i < lengthof(_town_names) - 1; i++) {
 				if (_town_names[i] == STR_TOWNNAME_ORIGINAL_ENGLISH + _opt_ptr->town_name) {
 					sel = i;

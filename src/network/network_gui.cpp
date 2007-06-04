@@ -685,7 +685,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, _players_dropdown, _network_game_info.spectators_max, 14, 0, 0);
 			break;
 		case 15: case 16: { /* Language */
-			int sel;
+			uint sel = 0;
 			for (uint i = 0; i < lengthof(_language_dropdown) - 1; i++) {
 				if (_language_dropdown[i] == STR_NETWORK_LANG_ANY + _network_game_info.server_lang) {
 					sel = i;
