@@ -121,6 +121,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 {
 	uint num;
 	byte type;
+	uint32 file_pos = sc->file_pos;
 
 	DEBUG(sprite, 9, "Load sprite %d", id);
 
@@ -129,10 +130,10 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 
 		/* SPR_IMG_QUERY is a BIG FAT RED ? */
 		id = SPR_IMG_QUERY;
-		sc = GetSpriteCache(SPR_IMG_QUERY);
+		file_pos = GetSpriteCache(SPR_IMG_QUERY)->file_pos;
 	}
 
-	FioSeekToFile(sc->file_pos);
+	FioSeekToFile(file_pos);
 
 	num  = FioReadWord();
 	type = FioReadByte();
