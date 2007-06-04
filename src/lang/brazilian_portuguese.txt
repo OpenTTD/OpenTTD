@@ -2698,7 +2698,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Exibir d
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Exibir capacidades de cada veículo
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Exibir capacidade total do trem, dividir por tipo de carga
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de ordens - clique numa ordem para a selecionar
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saltar a ordem atual, e iniciar a próxima
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Remover a ordem selecionada
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem selecionada fará com que o veículo não pare nas estações
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Inserir nova ordem antes da ordem selecionada, ou adicionar no fim da lista

@@ -2629,7 +2629,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Montru d
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Montru kapablojn de ĉiu veturilo
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Montru tutan kapablon de trajno, dividite laŭ ŝarĝtipo
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordena listo - alklaku ordenon por elekti. CTRL + klako skrolas al la stacio
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saltu de la nuna ordeno al la sekva
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Forviŝu la elektitan ordenon
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Senhaltigu elektitan ordenon
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Enigu novan ordenon antaŭ la elektita ordeno, aŭ aldonu fine de la listo

@@ -2738,7 +2738,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Zobrazit
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Zobrazit kapacitu kazdeho vozidla
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Zobrazit celkovu kapacitu vlaku, rozdelenu podla typu nakladu
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Zoznam prikazov - kliknut na prikaz pre oznacenie
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Vynechat aktualny prikaz - preskocit na dalsi
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Vymazat oznaceny prikaz
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaceny prikaz bude prevedeny bez zastavenia
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vlozit novy prikaz pred oznaceny prikaz, alebo na koniec zoznamu

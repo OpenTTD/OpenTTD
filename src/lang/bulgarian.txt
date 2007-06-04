@@ -2660,7 +2660,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Инфо
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Капацитет на влаковата композиция
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Общ капацитет на влака, разбит по типове товар
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Пътен лист - натиснете върху назначение за маркиране. CTRL + натискане - центрира върху станцията
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Прескачане на текущото назначение и насочване към следващото
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Изтриване на избраното назначение
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Преминавай през избраното назначение без спиране
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Добавяне на назначение преди избраната или в края на списъка

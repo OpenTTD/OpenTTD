@@ -2628,7 +2628,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Rodyti d
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Rodyti detalia vagonu talpos informacija
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Rodyti bendra traukinio talpos informacija pagal kroviniu tipa
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Nurodymų sąrašas - nurodymas pažymimas ant jo spragtelėjus. Spregtelėjimas laikant VALD (CTRL) nukelia į stotį
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Praleisti esama uzduoti, vygdyti sekancia
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Istrinti pazymeta uzduoti
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Nestoti pazymetoje stoteleje
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Iterpti nauja uzduoti pries pazymeta, arba iterpti saraso pabaigoje

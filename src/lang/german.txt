@@ -2670,7 +2670,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Zeige Ei
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Zeige Kapazität jedes Fahrzeugs
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Frachtübersicht des Zuges anzeigen, aufgeteilt nach Frachttyp
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Auftragsliste - zum Markieren hier anklicken
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Übergehe den laufenden Auftrag, und starte den nächsten
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Lösche den markierten Auftrag
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Führe den markierten Auftrag ohne Halt durch
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Füge einen neuen Auftrag vor dem markierten Auftrag ein, oder setze ihn ans Ende der Liste

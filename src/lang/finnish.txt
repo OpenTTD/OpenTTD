@@ -2628,7 +2628,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Näytä 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Näytä kunkin ajoneuvon kapasiteetti.
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Näytä junan kokonaiskapasiteetti, eritelty rahtityypin mukaan.
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Aikataulu - napsauta määräystä korostaaksesi.
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Ohita nykyinen pysähdys ja aloita seuraava.
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Poista korostettu määräys.
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Tee korostetusta pysäkistä pysähtymätön.
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Lisää uusi pysähdys ennen valittua, tai lisää listan viimeiseksi.

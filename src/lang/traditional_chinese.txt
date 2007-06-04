@@ -2659,7 +2659,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}顯示�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}顯示車輛的容量
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}顯示列車的總容量，照貨物分類
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}指令清單 - 點選指令可選擇。按住 CTRL 點選可跳到車站位置
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}跳過目前指令，繼續下個指令
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}刪除選定指令
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}使選定的指令中途不停
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}在選定的指令前插入新指令，或在最後新增指令

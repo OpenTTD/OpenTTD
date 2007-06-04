@@ -2598,7 +2598,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Sýna n�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Sýna burðargetu hvers farartækis
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Sýna heildar burðargetu lestar, raðar eftir tegund farms
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Áætlun - smelltu til að velja stöð. CTRL + músartakki færir sjónarhorn að stöðinni
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sleppa núverandi skipun, og byrja á næstu
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Eyða valdri skipun
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gera valda skipun viðstöðulausa
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Skeyta inn nýrri skipun á undan valdri skipun, eða bæta við á enda listans

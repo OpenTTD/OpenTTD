@@ -2646,7 +2646,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Пока
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Показать вместимость вагонов
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Показать общую вместимость поезда по типам грузов
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Показ списка заданий - щелкните для выделения. Если зажать CTRL - обзор станции.
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Пропустить текущее задание и перейти к следующему
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Удалить выделенное задание
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Ехать по выбранному заданию без остановок
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставить новое задание перед выделенным, или в конец списка

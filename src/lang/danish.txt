@@ -2668,7 +2668,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Vis deta
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Vis kapaciteten af hver togvogn
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Vis total lasteevne på toget, fordelt på lasttyper
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - klik på en ordre for at markere den. CTRL-klik for at centrere skærmen over stationen
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Spring over den nuværende ordre og gå til den næste
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Slet den markerede ordre
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Lav den markerede ordre til en "uden stop" ordre
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Indsæt en ny ordre før den markerede eller ved slutningen af ordrelisten

@@ -2695,7 +2695,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}각 차�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}각 차량의 수송량 정보를 보여줌
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}각 화물 종류에 따른 총 수송량 보여줌
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}이 열차의 경로 - 선택하려면 클릭하세요. CTRL+클릭하시면 그 역이 있는 장소로 이동합니다.
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}현재 경로를 건너뛰고 다음 경로로 진행합니다.
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}선택된 경로를 삭제합니다.
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로를 급행으로 변경합니다.
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새로운 경로를 삽입합니다.

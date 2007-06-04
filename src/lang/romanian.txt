@@ -2654,7 +2654,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afiseaz�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Afiseazã capacitãtile componentelor trenului
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Afiseazã capacitãtile totale ale trenului, diferentiate pe tip de încãrcãturã
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de comenzi - clic pe comandã pentru a o selecta
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sãri peste comanda curentã si treci la urmãtoarea
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Sterge comanda selectatã
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Circulă fără oprire până la destinaţia selectată
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Introdu o comandã înaintea celei selectate sau adaugã o comandã la sfârsitul listei

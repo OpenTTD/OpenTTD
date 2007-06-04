@@ -2684,7 +2684,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}鉄道�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}各車両の容量を表示します
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}貨物種類に並べ替えて列車の合計容量を表示します
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}指令リスト - 指令を選択するにはクリックします
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}現在の指令をスキップして、次へ移動します
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}選択した指令を削除します
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令を「直行便」にします
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}選択した指令の前／リストの終わりに新規指令を挿入します

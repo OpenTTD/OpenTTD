@@ -2694,7 +2694,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostra e
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostra les capacitats de cada element
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Mostra la capacitat total del tren, separat per tipus de càrrega
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Llista d'ordres - clica en una per seleccionar-la
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Salta l'ordre actual i comença la següent
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Esborra l'ordre seleccionada
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer sense parades l'ordre seleccionada
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista

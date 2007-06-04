@@ -2853,7 +2853,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Пока
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Показати місткість кожного вагону
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Показати загальну місткість поїзда, розділену за типом вантажу
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Маршрутний лист - клікніть на завданні для його вибору. CTRL + клік показати станцію
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Пропустити це завдання, перейти до наступного
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Видалити виділене завдання
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Не зупинятися на відміченій станції
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставити новий пункт перед відміченим або додати в кінець

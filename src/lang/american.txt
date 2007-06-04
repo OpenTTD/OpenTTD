@@ -2669,7 +2669,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Show det
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Show capacities of each vehicle
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Show total capacity of train, split by cargo type
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orders list - click on order to highlight it
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Skip the current order, and start the next
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Delete the highlighted order
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insert a new order before the highlighted order, or add to end of list

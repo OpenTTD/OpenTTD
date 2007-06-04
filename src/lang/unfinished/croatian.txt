@@ -2415,7 +2415,6 @@ STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Prikaži
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Povećaj servisni interval
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Smanji servisni interval
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaži detalje prevoženog tereta
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutnu naredbu i počni sa sljedećom
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Obriši označenu naredbu
 STR_SERVICE_HINT                                                :{BLACK}Preskoči ovu narudžbu osim ako servis nije potreban
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Trošak: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY} Snaga: {POWER}{}Troškovi održavanja: {CURRENCY}/god{}Kapacitet: {CARGO}

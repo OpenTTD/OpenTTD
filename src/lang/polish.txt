@@ -2756,7 +2756,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaż s
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Pokaż pojemność każdego wagonu
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Pokaż całkowitą pojemność pociągu, według typu ładunku
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista poleceń - klik na poleceniu aby zaznaczyć. CTRL + klik przenosi do stacji
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Pomiń obecne polecenie i zacznij następne
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Usuń podświetlone polecenie
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zrób z tego polecenia 'non-stop'
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem

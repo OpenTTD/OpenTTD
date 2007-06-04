@@ -2674,7 +2674,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Laat det
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Laat de mogelijkheden van elk voertuig zien
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Laat totale capaiteit van trein zien, gescheiden door goederentype
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlijst - klik op een order om deze te selecteren. CTRL + klikken gaat naar het station
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sla de huidige order over en begin met de volgende
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Verwijder de geselecteerde order
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak de geselecteerde order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan de eind van de lijst

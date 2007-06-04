@@ -2617,7 +2617,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}显示�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}显示列车的运载能力
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}根据不同的挂车种类显示相应的总运力
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}调度列表 - 单击一个调度指令可以使之高亮化. CTRL + 单击可以将视点移动到相应的车站
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}跳过的当前的调度指令并直接执行下一条
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}删除高亮的调度命令
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令铁车在高亮的指令对应的车站不停车
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}在调度列表的结尾或高亮项目的前面增加一条新指令

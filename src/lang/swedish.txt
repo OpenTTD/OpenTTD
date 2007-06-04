@@ -2669,7 +2669,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Visa det
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Visa kapaciteter för varje fordon
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Visa tågets totala kapacitet, separera för typ av gods
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlista - klicka på order för att markera det
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Skippa nuvararande order och börja med nästa
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Ta bort markerad order
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör markerad order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan

@@ -2796,7 +2796,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}A vonat 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}A kocsik kapacitása
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Megmutatja a vonat teljes kapacitását, rakománytípusokra lebontva
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Menetrend - kattints egy célpontra a kijelöléséhez
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Az aktuális célpont kihagyása és ugrás a következőre
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}A kijelölt célpont törlése
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelölt célpont felé megállás nélkül kell haladni
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Új célpont beillesztése a kijelölt elé vagy a lista végére

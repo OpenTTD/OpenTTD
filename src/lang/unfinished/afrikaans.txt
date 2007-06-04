@@ -2473,7 +2473,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Wys aanw
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Wys kapasiteite van elke voertuig
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Wys totaale kapasitiet van trein, verdeel by vrag tipe
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Opdraglys - kliek op 'n opdrag om dit te beklemtoon. CTRL + kliek senter op stasie
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sprong die huidige opdrag, en begin die volgende
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Uitwis die beklemtoonde opdrag
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak die beklemtoonde opdrag deurgaande
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Invoeg 'n nuwe opdrag voor die beklemtoonde opdrag, of byvoeg na einde van lys

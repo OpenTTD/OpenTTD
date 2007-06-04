@@ -2631,7 +2631,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostrar 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostrar capacidades de cada vehículo
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Mostrar capacidad total del tren, dividida por tipo de carga
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de órdenes - click en orden para resaltarla
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saltar orden actual y comenzar la siguiente
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Borrar orden resaltada
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Hacer la orden resaltada sin parada
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista

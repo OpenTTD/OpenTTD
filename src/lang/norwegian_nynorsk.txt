@@ -2662,7 +2662,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Vis deta
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Vis kapasiteten til vognene
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Vis total kapasitet på vognene, sortert etter type vare
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - trykk på ein ordre for å velje han
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Hopp over gjeldande ordre, og start den neste
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Slett den valde ordren
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gjer den valde ordren om til ein
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Sett inn ein ordre før den valde ordren, eller i slutten av lista

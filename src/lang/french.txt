@@ -2695,7 +2695,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afficher
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Afficher la capacité de chaque wagon
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Afficher la capacité totale du train, par type de cargaison
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Liste des ordres - Cliquer sur un ordre pour le sélectionner.  Cliquer avec Ctrl déplace la vue sur la station
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sauter l'ordre courant, et enchaîner sur le suivant
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Supprime l'ordre sélectionné
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Transformer l'ordre sélectionné en Sans-Arrêt
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insérer un nouvel ordre

@@ -2709,7 +2709,6 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaži 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Prikaži zmogljivosti vsakega vagona
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Prikaži polno zmogljivost vlaka, razdeli glede na tip tovora
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Seznam navodil - klikni na ukaz, da ga izbereš. CTRL+klik prikaže postajo
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenuten ukaz in izvrši naslednjega
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Zbriši izbran ukaz
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz kot brez-postanka
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vstavi nov ukaz pred izbranega ali pa ga dodaj na koncu seznama
