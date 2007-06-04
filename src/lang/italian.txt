@@ -1399,6 +1399,31 @@ STR_NETWORK_LANG_ANY                                            :Qualsiasi
 STR_NETWORK_LANG_ENGLISH                                        :Inglese
 STR_NETWORK_LANG_GERMAN                                         :Tedesco
 STR_NETWORK_LANG_FRENCH                                         :Francese
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasiliano
+STR_NETWORK_LANG_BULGARIAN                                      :Bùlgaro
+STR_NETWORK_LANG_CHINESE                                        :Cinese
+STR_NETWORK_LANG_CZECH                                          :Ceco
+STR_NETWORK_LANG_DANISH                                         :Danese
+STR_NETWORK_LANG_DUTCH                                          :Olandese
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finlandese
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungherese
+STR_NETWORK_LANG_ICELANDIC                                      :Islandese
+STR_NETWORK_LANG_ITALIAN                                        :Italiano
+STR_NETWORK_LANG_JAPANESE                                       :Giapponese
+STR_NETWORK_LANG_KOREAN                                         :Coreano
+STR_NETWORK_LANG_LITHUANIAN                                     :Lituano
+STR_NETWORK_LANG_NORWEGIAN                                      :Norvegese
+STR_NETWORK_LANG_POLISH                                         :Polacco
+STR_NETWORK_LANG_PORTUGUESE                                     :Portoghese
+STR_NETWORK_LANG_ROMANIAN                                       :Rumeno
+STR_NETWORK_LANG_RUSSIAN                                        :Russo
+STR_NETWORK_LANG_SLOVAK                                         :Slovacco
+STR_NETWORK_LANG_SLOVENIAN                                      :Sloveno
+STR_NETWORK_LANG_SPANISH                                        :Spagnolo
+STR_NETWORK_LANG_SWEDISH                                        :Svedese
+STR_NETWORK_LANG_TURKISH                                        :Turco
+STR_NETWORK_LANG_UKRAINIAN                                      :Ucraino
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Stanza principale partita multigiocatore

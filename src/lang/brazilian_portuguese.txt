@@ -1091,6 +1091,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de transportes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Melhorar deslocamento do vizualizador extra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Exibir distâncias quando usar ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Exibir cores das empresas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
@@ -1398,6 +1399,31 @@ STR_NETWORK_LANG_ANY                                            :Qualquer
 STR_NETWORK_LANG_ENGLISH                                        :Inglês
 STR_NETWORK_LANG_GERMAN                                         :Alemão
 STR_NETWORK_LANG_FRENCH                                         :Francês
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasileiro
+STR_NETWORK_LANG_BULGARIAN                                      :Búlgaro
+STR_NETWORK_LANG_CHINESE                                        :Chinês
+STR_NETWORK_LANG_CZECH                                          :Checo
+STR_NETWORK_LANG_DANISH                                         :Dinamarquês
+STR_NETWORK_LANG_DUTCH                                          :Holandês
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finlandês
+STR_NETWORK_LANG_HUNGARIAN                                      :Húngaro
+STR_NETWORK_LANG_ICELANDIC                                      :Islandês
+STR_NETWORK_LANG_ITALIAN                                        :Italiano
+STR_NETWORK_LANG_JAPANESE                                       :Japonês
+STR_NETWORK_LANG_KOREAN                                         :Coreano
+STR_NETWORK_LANG_LITHUANIAN                                     :Lituano
+STR_NETWORK_LANG_NORWEGIAN                                      :Norueguês
+STR_NETWORK_LANG_POLISH                                         :Polandês
+STR_NETWORK_LANG_PORTUGUESE                                     :Português
+STR_NETWORK_LANG_ROMANIAN                                       :Romeno
+STR_NETWORK_LANG_RUSSIAN                                        :Russo
+STR_NETWORK_LANG_SLOVAK                                         :Eslovaco
+STR_NETWORK_LANG_SLOVENIAN                                      :Esloveno
+STR_NETWORK_LANG_SPANISH                                        :Espanhol
+STR_NETWORK_LANG_SWEDISH                                        :Sueco
+STR_NETWORK_LANG_TURKISH                                        :Turco
+STR_NETWORK_LANG_UKRAINIAN                                      :Ucraniano
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera do jogo
@@ -1591,6 +1617,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia com si
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia com pré-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia com sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia com sinais combinados
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Linha de trem com sinais normais e pré-sinais
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Linha de trem com sinais normais e de saída
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Linha de trem com sinais normais e sinais combo
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Linha de trem com pré-sinais e de saída
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Linha de trem com pré-sinais e sinais combo
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Linha de trem com sinais de saída e sinais combo
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Remova a estação de trem antes
 
 
@@ -1601,6 +1633,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Recapeam
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construir rodovias
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construção de Bonde
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecionar Ponte Rodoviária
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... vias de mão única não podem ter junções
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Impossível construir rodovia aqui...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Impossível construir bonde aqui...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Impossível remover rodovia daqui...

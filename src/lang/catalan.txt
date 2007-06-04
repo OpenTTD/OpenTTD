@@ -1397,6 +1397,31 @@ STR_NETWORK_LANG_ANY                                            :Qualsevol
 STR_NETWORK_LANG_ENGLISH                                        :Anglès
 STR_NETWORK_LANG_GERMAN                                         :Alemany
 STR_NETWORK_LANG_FRENCH                                         :Francès
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasiler
+STR_NETWORK_LANG_BULGARIAN                                      :Búlgar
+STR_NETWORK_LANG_CHINESE                                        :Xinès
+STR_NETWORK_LANG_CZECH                                          :Txec
+STR_NETWORK_LANG_DANISH                                         :Danès
+STR_NETWORK_LANG_DUTCH                                          :Holandès
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finès
+STR_NETWORK_LANG_HUNGARIAN                                      :Hongarès
+STR_NETWORK_LANG_ICELANDIC                                      :Islandès
+STR_NETWORK_LANG_ITALIAN                                        :Italià
+STR_NETWORK_LANG_JAPANESE                                       :Japonès
+STR_NETWORK_LANG_KOREAN                                         :Koreà
+STR_NETWORK_LANG_LITHUANIAN                                     :Lituà
+STR_NETWORK_LANG_NORWEGIAN                                      :Noruec
+STR_NETWORK_LANG_POLISH                                         :Polonès
+STR_NETWORK_LANG_PORTUGUESE                                     :Portuguès
+STR_NETWORK_LANG_ROMANIAN                                       :Romanès
+STR_NETWORK_LANG_RUSSIAN                                        :Rus
+STR_NETWORK_LANG_SLOVAK                                         :Eslovac
+STR_NETWORK_LANG_SLOVENIAN                                      :Eslovè
+STR_NETWORK_LANG_SPANISH                                        :Espanyol
+STR_NETWORK_LANG_SWEDISH                                        :Suec
+STR_NETWORK_LANG_TURKISH                                        :Turc
+STR_NETWORK_LANG_UKRAINIAN                                      :Ucraïnès
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Lobby de partida multijugador
@@ -1590,6 +1615,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Via de tren amb
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Via de tren amb pre-senyals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Via de tren amb senyals de sortida
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Via de tren amb senyals combinades
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Via de tren amb senyals normals i pre-senyals
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Via de tren amb senyals normals i senyals de sortida
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Via de tren amb senyals normals i senyals combinades
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Via de tren amb pre-senyals i senyals de sortida
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Via de tren amb pre-senyals i senyals combinades
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Via de tren amb senyals de sortida i senyals combinades
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Primer has de treure la via de l'estació
 
 

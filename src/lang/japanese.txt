@@ -1396,6 +1396,22 @@ STR_NETWORK_LANG_ANY                                            :何でも
 STR_NETWORK_LANG_ENGLISH                                        :英語
 STR_NETWORK_LANG_GERMAN                                         :ドイツ語
 STR_NETWORK_LANG_FRENCH                                         :フランス語
+STR_NETWORK_LANG_ICELANDIC                                      :アイスランド語
+STR_NETWORK_LANG_ITALIAN                                        :イタリア語
+STR_NETWORK_LANG_JAPANESE                                       :日本語
+STR_NETWORK_LANG_KOREAN                                         :韓国語
+STR_NETWORK_LANG_LITHUANIAN                                     :リトアニア語
+STR_NETWORK_LANG_NORWEGIAN                                      :ノルウェイ語
+STR_NETWORK_LANG_POLISH                                         :ポーランド語
+STR_NETWORK_LANG_PORTUGUESE                                     :ポルトガル語
+STR_NETWORK_LANG_ROMANIAN                                       :ルーマニア語
+STR_NETWORK_LANG_RUSSIAN                                        :ロシア語
+STR_NETWORK_LANG_SLOVAK                                         :スロバキア語
+STR_NETWORK_LANG_SLOVENIAN                                      :スロベニア語
+STR_NETWORK_LANG_SPANISH                                        :スペイン語
+STR_NETWORK_LANG_SWEDISH                                        :スウェーデン語
+STR_NETWORK_LANG_TURKISH                                        :トルコ語
+STR_NETWORK_LANG_UKRAINIAN                                      :ウクライナ語
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}多人数ゲームロビー
@@ -1589,6 +1605,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :通常信号の
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :前位信号のある線路
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :後位信号のある線路
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :統合信号のある線路
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :通常信号と入口従属信号のある鉄道
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :通常信号と出口従属信号のある鉄道
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :通常信号と結合信号のある鉄道
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :入口従属信号と出口従属信号のある鉄道
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :入口従属信号と結合信号のある鉄道
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :出口従属信号と結合信号のある鉄道
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}先に駅を破壊しなければなりません
 
 
@@ -1597,16 +1619,27 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}先に�
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}先に道路を破壊しなければなりません
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}道路工事中
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}道路の建設
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}路面電車線の建設
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}道路橋を選択
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...一方通行路上にジャンクションが建設できません
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}ここに道路が建設できません...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}ここに路面電車線が建設できません...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}ここから道路が破壊できません...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}ここから路面電車線が破壊できません...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}車庫の配置
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}路面電車庫の配置
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}ここに車庫が建設できません...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}ここに路面電車庫が建設できません...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}バス停が建設できません...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}荷役所が建設できません...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}乗客用路面電車駅が建設できません...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}貨物用路面電車駅が建設できません...
 STR_180A_ROAD_CONSTRUCTION                                      :道路の建設
+STR_180A_TRAMWAY_CONSTRUCTION                                   :路面電車線の建設
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}道路の部分を建設します
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}路面電車線を建設します
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}（バス、トラックの建設、整備のための）車庫を建設します
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}（路面電車の購入や修理のため）路面電車庫を建設します
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}バス停を建設します
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}荷役所を建設します
 STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}乗客用路面電車駅を建設
@@ -1616,6 +1649,7 @@ STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}路面�
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}道路のトンネルを建設します
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}路面電車用トンネルを建設
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}道路の建設／破壊を切り替えます
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}路面電車線の建設／破壊を切り替えます
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}車庫の配置の選択
 STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}路面電車庫の配置を選択
 STR_1814_ROAD                                                   :道路

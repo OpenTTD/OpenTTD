@@ -1398,6 +1398,31 @@ STR_NETWORK_LANG_ANY                                            :모든 언어
 STR_NETWORK_LANG_ENGLISH                                        :영어
 STR_NETWORK_LANG_GERMAN                                         :독일어
 STR_NETWORK_LANG_FRENCH                                         :프랑스어
+STR_NETWORK_LANG_BRAZILIAN                                      :브라질어
+STR_NETWORK_LANG_BULGARIAN                                      :불가리아어
+STR_NETWORK_LANG_CHINESE                                        :중국어
+STR_NETWORK_LANG_CZECH                                          :체코어
+STR_NETWORK_LANG_DANISH                                         :덴마크어
+STR_NETWORK_LANG_DUTCH                                          :네덜란드어
+STR_NETWORK_LANG_ESPERANTO                                      :에스페란토
+STR_NETWORK_LANG_FINNISH                                        :핀란드어
+STR_NETWORK_LANG_HUNGARIAN                                      :헝가리어
+STR_NETWORK_LANG_ICELANDIC                                      :아이슬란드어
+STR_NETWORK_LANG_ITALIAN                                        :이탈리아어
+STR_NETWORK_LANG_JAPANESE                                       :일본어
+STR_NETWORK_LANG_KOREAN                                         :한국어
+STR_NETWORK_LANG_LITHUANIAN                                     :리투아니아어
+STR_NETWORK_LANG_NORWEGIAN                                      :노르웨이어
+STR_NETWORK_LANG_POLISH                                         :폴란드어
+STR_NETWORK_LANG_PORTUGUESE                                     :포르투갈어
+STR_NETWORK_LANG_ROMANIAN                                       :루마니아어
+STR_NETWORK_LANG_RUSSIAN                                        :러시아어
+STR_NETWORK_LANG_SLOVAK                                         :슬로바키아어
+STR_NETWORK_LANG_SLOVENIAN                                      :슬로베니아어
+STR_NETWORK_LANG_SPANISH                                        :스페인어
+STR_NETWORK_LANG_SWEDISH                                        :스웨덴어
+STR_NETWORK_LANG_TURKISH                                        :터키어
+STR_NETWORK_LANG_UKRAINIAN                                      :우크라이나어
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}멀티플레이 준비

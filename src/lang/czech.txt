@@ -1647,6 +1647,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Železniční t
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Železniční trať s presignály
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Železniční trať s výstupními signály
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Železniční trať s kombinovanými signály
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Koleje s normálním a vjezdovým návěstím (pre-signal)
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Koleje s normálním a výjezdovým návěstím (exit-signal)
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Koleje s normálním a cestovým návěstím (combo-signal)
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Koleje s vjezdovým (pre-signal) a výjezdovým návěstím (exit-signal)
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Koleje s vjezdovým (pre-signal) a cestovým návěstím (combo-signal)
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Koleje s výjezdovým (exit-signal) a cestovým návěstím (combo-signal)
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je nejprve nutno odstranit stanici
 
 
@@ -1655,22 +1661,39 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je nejpr
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Musíš nejprve odstranit silnici
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Silnice je v rekonstrukci
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Výstavba silnic
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Výstavba tramvajové tratě
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Zvolit silniční most
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... na jednosměrných silnicích nemůžou být křižovatky
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Zde nemohu postavit silnici...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Zde není možné postavit tramvajovou trať...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nemohu odsud odstranit silnici
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Není možné odsud odstranit tramvajovou trať...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientace garáže
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientace tramvajového depa
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tady nejde postavit garáž
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Zde není možné postavit depo pro tramvaje...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nemohu postavit autobusovou stanici...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nemohu postavit nákladovou rampu...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Není možné postavit tramvajovou stanici pro cestující...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Není možné postavit tramvajovou stanici pro cestující...
 STR_180A_ROAD_CONSTRUCTION                                      :Výstavba silnic
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Výstavba tramvajové tratě
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Postavit silnici
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Položit kus kolejí pro tramvaje
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Postavit garáž (pro nákup a servis vozidel)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Vystavět tramvajové depo (na kupování a servis tramvají)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Postavit autobusovou stanici
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Postavit nákladovou rampu
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Postavit tramvajovou stanici pro cestující
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Postavit nákladní tramvajovou stanici
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Postavit silniční most
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Postavit tramvajový most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Postavit silniční tunel
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Postavit tramvajový tunel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Přepnout stavba / odstranění silnice
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Přepínání mezi výstavbou a bouráním tramvajové tratě
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Výběr orientace garáže
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Zvol směr tramvajového depa
 STR_1814_ROAD                                                   :Silnice
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Silnice s pouličním osvětlením
 STR_1816_TREE_LINED_ROAD                                        :Silnice s alejí
@@ -1678,6 +1701,7 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Garáž
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Železniční přejezd
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nelze odstranit autobusovou zastávku...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nelze odstranit nakládací rampu...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nelze zbourat tramvajovou stanici pro cestující...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Města
@@ -2305,6 +2329,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Nákladní loď
 STR_LIVERY_HELICOPTER                                           :Vrtulník
 STR_LIVERY_SMALL_PLANE                                          :Malé letadlo
 STR_LIVERY_LARGE_PLANE                                          :Velké letadlo
+STR_LIVERY_PASSENGER_TRAM                                       :Tramvaj pro cestující
+STR_LIVERY_FREIGHT_TRAM                                         :Nákladní tramvaj
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Zobrazit všeobecná barevná schémata
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Zobrazit barevná schémata pro vlaky
@@ -2784,6 +2810,7 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nelze p�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Přejmenovat silniční vozidlo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První autobus přijel do {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První nákladní vozidlo přijelo do {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První nákladní tramvaj přijíždí do {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravní nehoda!{}Řidič zahynul v plamenech při srážce s vlakem
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravní nehoda!{}{COMMA} {P člověk lidé lidí} zahynul{P "" i o} v plamenech při srážce s vlakem
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nelze otočit vozidlo...
@@ -3068,6 +3095,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chceš prodat všechna vozidla v depu. Jsi si jistý?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Nevhodný druh depa
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Prodat všechny vlaky v depu
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Prodat všechna silniční vozidla v depu

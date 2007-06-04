@@ -1523,6 +1523,27 @@ STR_NETWORK_LANG_ANY                                            :Будь-яка
 STR_NETWORK_LANG_ENGLISH                                        :Англійська
 STR_NETWORK_LANG_GERMAN                                         :Німецька
 STR_NETWORK_LANG_FRENCH                                         :Французька
+STR_NETWORK_LANG_BRAZILIAN                                      :Бразильська
+STR_NETWORK_LANG_BULGARIAN                                      :Болгарська
+STR_NETWORK_LANG_CHINESE                                        :Китайська
+STR_NETWORK_LANG_CZECH                                          :Чеська
+STR_NETWORK_LANG_DUTCH                                          :Німецька
+STR_NETWORK_LANG_ESPERANTO                                      :Есперанто
+STR_NETWORK_LANG_FINNISH                                        :Фінська
+STR_NETWORK_LANG_HUNGARIAN                                      :Угорська
+STR_NETWORK_LANG_ICELANDIC                                      :Ісландська
+STR_NETWORK_LANG_ITALIAN                                        :Італійська
+STR_NETWORK_LANG_JAPANESE                                       :Японська
+STR_NETWORK_LANG_KOREAN                                         :Корейська
+STR_NETWORK_LANG_NORWEGIAN                                      :Норвезька
+STR_NETWORK_LANG_POLISH                                         :Польськая
+STR_NETWORK_LANG_PORTUGUESE                                     :Португальська
+STR_NETWORK_LANG_RUSSIAN                                        :Російська
+STR_NETWORK_LANG_SLOVENIAN                                      :Словенська
+STR_NETWORK_LANG_SPANISH                                        :Іспанська
+STR_NETWORK_LANG_SWEDISH                                        :Шведська
+STR_NETWORK_LANG_TURKISH                                        :Турецька
+STR_NETWORK_LANG_UKRAINIAN                                      :Українська
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
@@ -1716,6 +1737,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Колія зі
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Колія з вхідними сигналами
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Колія з вихідними сигналами
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Колія з комбінованими сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Залізнична колія зі звичайним та пре-сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Залізнична колія зі звичайним та вихід-сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Залізнична колія зі звичайним та комбо-сигналами
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Залізнична колія з пре- та вихід-сигналами
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Залізнична колія з пре- та комбо-сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Залізнична колія з вихід- та комбо-сигналами
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Спочатку потрібно знести залізничну станцію
 
 

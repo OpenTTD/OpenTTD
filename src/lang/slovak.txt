@@ -1153,6 +1153,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. ro
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvarat panel uprav terenu s panelom stavby trati, ciest, ... : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pri posuvani mapy mysou posuvat opacnym smerom: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Plynulé posúvanie pohladu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Zobrazit info o rozmerom pri vystavbe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Zobrazit farebne schemy spolocnosti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ziadne
@@ -1460,6 +1461,30 @@ STR_NETWORK_LANG_ANY                                            :Lubovolny
 STR_NETWORK_LANG_ENGLISH                                        :Anglicky
 STR_NETWORK_LANG_GERMAN                                         :Nemecky
 STR_NETWORK_LANG_FRENCH                                         :Francuzsky
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazílsky
+STR_NETWORK_LANG_BULGARIAN                                      :Bulharsky
+STR_NETWORK_LANG_CHINESE                                        :Cinsky
+STR_NETWORK_LANG_CZECH                                          :Cesky
+STR_NETWORK_LANG_DANISH                                         :Dánsky
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Fínsky
+STR_NETWORK_LANG_HUNGARIAN                                      :Madarsky
+STR_NETWORK_LANG_ICELANDIC                                      :Islandsky
+STR_NETWORK_LANG_ITALIAN                                        :Taliansky
+STR_NETWORK_LANG_JAPANESE                                       :Japonsky
+STR_NETWORK_LANG_KOREAN                                         :Kórejsky
+STR_NETWORK_LANG_LITHUANIAN                                     :Litovksy
+STR_NETWORK_LANG_NORWEGIAN                                      :Nórsky
+STR_NETWORK_LANG_POLISH                                         :Polsky
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugalsky
+STR_NETWORK_LANG_ROMANIAN                                       :Rumunsky
+STR_NETWORK_LANG_RUSSIAN                                        :Rusky
+STR_NETWORK_LANG_SLOVAK                                         :Slovensky
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovinsky
+STR_NETWORK_LANG_SPANISH                                        :Spanielsky
+STR_NETWORK_LANG_SWEDISH                                        :Svédsky
+STR_NETWORK_LANG_TURKISH                                        :Turecky
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinsky
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sietova hra - lobby
@@ -1653,6 +1678,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kola
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje s pre-signalmi
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje s exit-signalmi
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kolaje s combo-signalmi
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Železnicné kolaje s normálnymi a pre-signálmi
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Železnicné kolaje s normálnymi a exit-signálmi
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Železnicné kolaje s normálnymi a combo-signálmi
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Železnicné kolaje s pre- a exit-signálmi
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Železnicné kolaje s pre- a combo-signálmi
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Železnicné kolaje s exit- a combo-signálmi
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je potrebné najprv odstránit železnicnú stanicu
 
 
@@ -1661,13 +1692,21 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je potre
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Cesta musi byt najskor odstranena
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Prebiehaju cestne prace
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vystavba cesty
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Výstavba elektrickovej trate
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vyber cestny most
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... na jednosmerných cestách nie sú dovolené križovatky
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Tu sa neda postavit cesta ...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Nie je možné postavit elektrickovú trat ...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Tu sa neda odstranit cesta ...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Nie je možné odstránit elektrickovú trat ...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientacia garaze
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientácia elektrickového depa
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tu sa neda postavit garaz ...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Nie je možné postavit elektrickové depo ...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nemozno postavit autobusovu zastavku ...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nemozno postavit vykladku ...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Nie je možné postavit elektrickovú osobnú stanicu ...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nie je možné postavit elektrickovú nákladnú stanicu ...
 STR_180A_ROAD_CONSTRUCTION                                      :Vystavba cesty
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Postavit cast cesty
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Postavit garaz (na vyroby a opravy automobilov)

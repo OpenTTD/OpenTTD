@@ -1395,6 +1395,31 @@ STR_NETWORK_LANG_ANY                                            :Qualquer
 STR_NETWORK_LANG_ENGLISH                                        :Inglês
 STR_NETWORK_LANG_GERMAN                                         :Alemão
 STR_NETWORK_LANG_FRENCH                                         :Francês
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasileiro
+STR_NETWORK_LANG_BULGARIAN                                      :Búlgaro
+STR_NETWORK_LANG_CHINESE                                        :Chinês
+STR_NETWORK_LANG_CZECH                                          :Checo
+STR_NETWORK_LANG_DANISH                                         :Dinamarquês
+STR_NETWORK_LANG_DUTCH                                          :Holandês
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finlandês
+STR_NETWORK_LANG_HUNGARIAN                                      :Húngaro
+STR_NETWORK_LANG_ICELANDIC                                      :Islandês
+STR_NETWORK_LANG_ITALIAN                                        :Italiano
+STR_NETWORK_LANG_JAPANESE                                       :Japonês
+STR_NETWORK_LANG_KOREAN                                         :Coreano
+STR_NETWORK_LANG_LITHUANIAN                                     :Lituano
+STR_NETWORK_LANG_NORWEGIAN                                      :Norueguês
+STR_NETWORK_LANG_POLISH                                         :Polaco
+STR_NETWORK_LANG_PORTUGUESE                                     :Português
+STR_NETWORK_LANG_ROMANIAN                                       :Romeno
+STR_NETWORK_LANG_RUSSIAN                                        :Russo
+STR_NETWORK_LANG_SLOVAK                                         :Eslovaco
+STR_NETWORK_LANG_SLOVENIAN                                      :Esloveno
+STR_NETWORK_LANG_SPANISH                                        :Espanhol
+STR_NETWORK_LANG_SWEDISH                                        :Sueco
+STR_NETWORK_LANG_TURKISH                                        :Turco
+STR_NETWORK_LANG_UKRAINIAN                                      :Ucraniano
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera de jogo multi-jogador
@@ -3196,10 +3221,30 @@ STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comutar 
 
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Todos os Comboios
+STR_GROUP_ALL_ROADS                                             :Todos os veículos de estrada
+STR_GROUP_ALL_SHIPS                                             :Todos os barcos
+STR_GROUP_ALL_AIRCRAFTS                                         :Todas as aeronaves
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
 
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear um grupo
 
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Impossível criar grupo...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Impossível remover este grupo...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Impossível renomear o grupo...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Não é possível remover todos os veículos deste grupo...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Impossível adicionar o veículo a este grupo...
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Clique num grupo para listar todos os seus veículos
+STR_GROUP_CREATE_TIP                                            :{BLACK}Clique para criar um grupo
+STR_GROUP_DELETE_TIP                                            :{BLACK}Remover o grupo seleccionado
+STR_GROUP_RENAME_TIP                                            :{BLACK}Mudar o nome do grupo seleccionado
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clique para proteger este grupo da autosubstituição global
 
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Lucro deste ano: {GREEN}{CURRENCY} {BLACK}(ano passado: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Lucro deste ano: {RED}{CURRENCY} {BLACK}(ano passado: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Lucro deste ano: {GREEN}{CURRENCY} {BLACK}(ano passado: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Lucro deste ano: {RED}{CURRENCY} {BLACK}(ano passado: {RED}{CURRENCY}{BLACK})
 
 ########

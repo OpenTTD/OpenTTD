@@ -884,7 +884,7 @@ STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglais (Origin
 STR_TOWNNAME_FRENCH                                             :Français
 STR_TOWNNAME_GERMAN                                             :Allemand
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Anglais (Additionels)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latino-Americain
+STR_TOWNNAME_LATIN_AMERICAN                                     :Latino-Americains
 STR_TOWNNAME_SILLY                                              :Drôles
 STR_TOWNNAME_SWEDISH                                            :Suédois
 STR_TOWNNAME_DUTCH                                              :Hollandais
@@ -894,13 +894,13 @@ STR_TOWNNAME_SLOVAKISH                                          :Slovaques
 STR_TOWNNAME_NORWEGIAN                                          :Norvégiens
 STR_TOWNNAME_HUNGARIAN                                          :Hongrois
 STR_TOWNNAME_AUSTRIAN                                           :Autrichiens
-STR_TOWNNAME_ROMANIAN                                           :Roumain
+STR_TOWNNAME_ROMANIAN                                           :Roumains
 STR_TOWNNAME_CZECH                                              :Tchèques
-STR_TOWNNAME_SWISS                                              :Suisse
+STR_TOWNNAME_SWISS                                              :Suisses
 STR_TOWNNAME_DANISH                                             :Danois
 STR_TOWNNAME_TURKISH                                            :Turques
-STR_TOWNNAME_ITALIAN                                            :Italien
-STR_TOWNNAME_CATALAN                                            :Catalan
+STR_TOWNNAME_ITALIAN                                            :Italiens
+STR_TOWNNAME_CATALAN                                            :Catalans
 ############ end of townname region
 
 STR_CURR_GBP                                                    :Livre (£)
@@ -1398,6 +1398,31 @@ STR_NETWORK_LANG_ANY                                            :Aucune
 STR_NETWORK_LANG_ENGLISH                                        :Anglais
 STR_NETWORK_LANG_GERMAN                                         :Allemand
 STR_NETWORK_LANG_FRENCH                                         :Français
+STR_NETWORK_LANG_BRAZILIAN                                      :Brésilien
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgare
+STR_NETWORK_LANG_CHINESE                                        :Chinois
+STR_NETWORK_LANG_CZECH                                          :Tchèque
+STR_NETWORK_LANG_DANISH                                         :Danois
+STR_NETWORK_LANG_DUTCH                                          :Hollandais
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finlandais
+STR_NETWORK_LANG_HUNGARIAN                                      :Hongrois
+STR_NETWORK_LANG_ICELANDIC                                      :Islandais
+STR_NETWORK_LANG_ITALIAN                                        :Italien
+STR_NETWORK_LANG_JAPANESE                                       :Japonais
+STR_NETWORK_LANG_KOREAN                                         :Coréen
+STR_NETWORK_LANG_LITHUANIAN                                     :Lithuanien
+STR_NETWORK_LANG_NORWEGIAN                                      :Norvégien
+STR_NETWORK_LANG_POLISH                                         :Polonais
+STR_NETWORK_LANG_PORTUGUESE                                     :Portuguais
+STR_NETWORK_LANG_ROMANIAN                                       :Roumain
+STR_NETWORK_LANG_RUSSIAN                                        :Russe
+STR_NETWORK_LANG_SLOVAK                                         :Slovaque
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovène
+STR_NETWORK_LANG_SPANISH                                        :Espagnol
+STR_NETWORK_LANG_SWEDISH                                        :Suédois
+STR_NETWORK_LANG_TURKISH                                        :Turc
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainien
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Préparation de la partie

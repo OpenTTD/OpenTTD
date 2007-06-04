@@ -4,6 +4,8 @@
 ##plural 0
 ##gender m w n
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Zu weit vom Kartenrand entfernt
@@ -1047,6 +1049,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ungleic
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Neue globale Wegfindung für alle Fahrzeuge: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen um schwere Züge zu simulieren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Erlaube Bushaltestellen an städtischen Straßen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Erlaube das Bauen aneinanderliegender Stationen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Kleine Flughäfen immer erlauben: {ORANGE}{STRING}
 
@@ -1087,6 +1090,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximal
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Landschaftsbau-Toolbar an Eisenbahn/Straßen/Hafen/Flughafen-Toolbar binden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Beim Verschieben mit der Maus die Ansicht in die Gegenrichtung verschieben: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Weiches Scrollen in den Ansichten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Zeige Tooltip mit Abmessungen bei verschiedenen Bauwerkzeugen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Anzeigen der Firmenlackierungen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Keine
@@ -1099,6 +1103,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Kartenansicht v
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Aus
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollradgeschwindigkeit auf der Karte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatische Pause bei Spielstart: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Erweiterte Fahrzeugliste benutzen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximale Anzahl der Straßenfahrzeuge pro Spieler: {ORANGE}{STRING}
@@ -1586,6 +1591,13 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit norma
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit kombinierten Vor-/Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Eisenbahnschienen mit Vor- und Hauptsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Eisenbahnschienen mit Haupt- und Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Eisenbahnschienen mit Haupt- und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Eisenbahnschienen mit Vor- und Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Eisenbahnschienen mit Vor- und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Eisenbahnschienen mit Ausfahr- und Kombinationssignalen
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bahnhof muss erst entfernt werden
 
 
 
@@ -1593,22 +1605,39 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit kombi
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Straße muss erst entfernt werden
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Straßenarbeiten sind im Gange
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Straßenbau
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Straßenbahnbau
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Brücke wählen
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... Einbahnstraßen können keinen Abzweig haben
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kann hier keine Straße bauen...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Kann Straßenbahn hier nicht bauen...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kann diese Straße nicht entfernen...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Kann Straßenbahn hier nicht entfernen...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Fahrzeugdepot-Ausr.
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Ausrichtung des Straßenbahndepots
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann Fahrzeugdepot hier nicht bauen...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Kann Straßenbahndepot hier nicht bauen...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kann Busbahnhof nicht bauen...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kann Lkw-Ladeplatz nicht bauen...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Kann Haltestelle hier nicht bauen...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kann Güterverladestelle hier nicht bauen...
 STR_180A_ROAD_CONSTRUCTION                                      :Straßenbau
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Straßenbahnbau
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Straße bauen
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Baue Straßenbahnabschnitt
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Fahrzeugdepot bauen (zum Bau und zur Wartung von Fahrzeugen)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Baue Straßenbahndepot (zum Erstellen und Warten von Straßenbahnen)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Busbahnhof bauen
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Lkw-Ladeplatz bauen
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Baue Haltestelle
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Baue Güterverladestelle
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Straßenbrücke bauen
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Baue Straßenbahnbrücke
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Straßentunnel bauen
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Baue Straßenbahntunnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Zwischen Bau/Abriss der Straße umschalten
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Umschalten zwischen bauen/entfernen für Straßenbahnbau
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ausrichtung des Fahrzeugdepots wählen
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Ausrichtung des Straßenbahndepots wählen
 STR_1814_ROAD                                                   :Straße
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Straße mit Laternen
 STR_1816_TREE_LINED_ROAD                                        :Straße mit Bäumen
@@ -1616,6 +1645,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Fahrzeugdepot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Bahnübergang
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kann Bushaltestelle nicht entfernen...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kann LKW-Ladestelle nicht entfernen...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE} Haltestelle kann nicht entfernt werden...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Güterverladestelle kann nicht entfernt werden...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Städte
@@ -1780,8 +1811,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} akzeptiert jetzt {STRING} und {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Busbahnhof-Ausr.
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lkw-Ladeplatz-Ausr.
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Ausrichtung der Haltestelle
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Ausrichtung der Güterverladestelle
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Der Busbahnhof muss erst abgerissen werden
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Der Lkw-Ladeplatz muss erst abgerissen werden
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Haltestelle muss vorher abgerissen werden
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Güterverladestelle muss vorher abgerissen werden
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Haltestelle{P "" n}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Keine -
@@ -1793,6 +1828,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Anzahl d
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Bahnsteiglänge wählen
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Busbahnhofsausrichtung wählen
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Ladeplatzausrichtung wählen
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Ausrichtung für die Haltestelle wählen
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Ausrichtung für die Güterverladestelle wählen
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Ansicht auf die Station zentrieren
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Stationsbewertung anzeigen
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Name der Station ändern
@@ -2013,6 +2050,7 @@ STR_SV_STNAME_LOWER                                             :Unter-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Wald
 
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -2242,6 +2280,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Frachter
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Kleines Flugzeug
 STR_LIVERY_LARGE_PLANE                                          :Großraumflugzeug
+STR_LIVERY_PASSENGER_TRAM                                       :Straßenbahn
+STR_LIVERY_FREIGHT_TRAM                                         :Frachtstraßenbahn
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Allgemeines Farbschema anzeigen
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Zugfarbschema anzeigen
@@ -2715,6 +2755,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kann das
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Name des Fahrzeuges
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Die Stadt feiert . . .{}Der erste Bus erreicht {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Die Stadt feiert . . .{}Der erste Lkw erreicht {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Die erste Straßenbahn erreicht {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Die erste Frachtstraßenbahn erreicht {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}Fahrer stirbt in einem Feuerball nach Zusammenstoß mit einem Zug
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}{COMMA} sterben nach Zusammenstoß mit einem Zug im Feuerball
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Das Fahrzeug kann nicht gewendet werden...
@@ -2999,6 +3041,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zeige al
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Möchtest du alle Fahrzeuge in diesem Depot verkaufen?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Falsche Depotart
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Verkaufe alle Züge im Depot
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Verkaufe alle Fahrzeuge im Depot
@@ -3192,6 +3235,7 @@ STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Verände
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Gruppe {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Alle Züge
 STR_GROUP_ALL_ROADS                                             :Alle Straßenfahrzeuge
 STR_GROUP_ALL_SHIPS                                             :Alle Schiffe

@@ -1397,6 +1397,31 @@ STR_NETWORK_LANG_ANY                                            :Всеки
 STR_NETWORK_LANG_ENGLISH                                        :Английски
 STR_NETWORK_LANG_GERMAN                                         :Немски
 STR_NETWORK_LANG_FRENCH                                         :Френски
+STR_NETWORK_LANG_BRAZILIAN                                      :Бразилски
+STR_NETWORK_LANG_BULGARIAN                                      :Български
+STR_NETWORK_LANG_CHINESE                                        :Китайски
+STR_NETWORK_LANG_CZECH                                          :Чешки
+STR_NETWORK_LANG_DANISH                                         :Датски
+STR_NETWORK_LANG_DUTCH                                          :Холандски
+STR_NETWORK_LANG_ESPERANTO                                      :Eсперанто
+STR_NETWORK_LANG_FINNISH                                        :Финландски
+STR_NETWORK_LANG_HUNGARIAN                                      :Унгарски
+STR_NETWORK_LANG_ICELANDIC                                      :Исландски
+STR_NETWORK_LANG_ITALIAN                                        :Италиански
+STR_NETWORK_LANG_JAPANESE                                       :Японски
+STR_NETWORK_LANG_KOREAN                                         :Корейски
+STR_NETWORK_LANG_LITHUANIAN                                     :Литовски
+STR_NETWORK_LANG_NORWEGIAN                                      :Норвежки
+STR_NETWORK_LANG_POLISH                                         :Полски
+STR_NETWORK_LANG_PORTUGUESE                                     :Португалски
+STR_NETWORK_LANG_ROMANIAN                                       :Румънски
+STR_NETWORK_LANG_RUSSIAN                                        :Руски
+STR_NETWORK_LANG_SLOVAK                                         :Словашки
+STR_NETWORK_LANG_SLOVENIAN                                      :Словенски
+STR_NETWORK_LANG_SPANISH                                        :Испански
+STR_NETWORK_LANG_SWEDISH                                        :Шведски
+STR_NETWORK_LANG_TURKISH                                        :Турски
+STR_NETWORK_LANG_UKRAINIAN                                      :Украински
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Преддверие

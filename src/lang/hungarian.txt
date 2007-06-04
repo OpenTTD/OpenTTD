@@ -1463,6 +1463,31 @@ STR_NETWORK_LANG_ANY                                            :Bármilyen
 STR_NETWORK_LANG_ENGLISH                                        :Angol
 STR_NETWORK_LANG_GERMAN                                         :Német
 STR_NETWORK_LANG_FRENCH                                         :Francia
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazíl
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgár
+STR_NETWORK_LANG_CHINESE                                        :Kínai
+STR_NETWORK_LANG_CZECH                                          :Cseh
+STR_NETWORK_LANG_DANISH                                         :Dán
+STR_NETWORK_LANG_DUTCH                                          :Holland
+STR_NETWORK_LANG_ESPERANTO                                      :Eszperantó
+STR_NETWORK_LANG_FINNISH                                        :Finn
+STR_NETWORK_LANG_HUNGARIAN                                      :Magyar
+STR_NETWORK_LANG_ICELANDIC                                      :Izlandi
+STR_NETWORK_LANG_ITALIAN                                        :Olasz
+STR_NETWORK_LANG_JAPANESE                                       :Japán
+STR_NETWORK_LANG_KOREAN                                         :Koreai
+STR_NETWORK_LANG_LITHUANIAN                                     :Litván
+STR_NETWORK_LANG_NORWEGIAN                                      :Norvég
+STR_NETWORK_LANG_POLISH                                         :Lengyel
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugál
+STR_NETWORK_LANG_ROMANIAN                                       :Román
+STR_NETWORK_LANG_RUSSIAN                                        :Orosz
+STR_NETWORK_LANG_SLOVAK                                         :Szlovák
+STR_NETWORK_LANG_SLOVENIAN                                      :Szlovén
+STR_NETWORK_LANG_SPANISH                                        :Spanyol
+STR_NETWORK_LANG_SWEDISH                                        :Svéd
+STR_NETWORK_LANG_TURKISH                                        :Török
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrán
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Hálózati-játék lobby
@@ -1656,6 +1681,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vasúti sin sze
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vasúti sin előrejelző szemaforral
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vasúti sin kijáratjelző szemaforral
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti sin vegyes szemaforral
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vasúti sín normál és előrejelzőlámpával
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vasúti sín normál és utójelzőlámpával
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vasúti sín normál és előutójelző lámpával
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vasúti sín elő és utójelző lámpával
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Vasúti sín elő és előutójelző lámpával
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Vasúti sín utó és előutójelző lámpával
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb a vasútállomást le kell rombolni
 
 
@@ -1666,6 +1697,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Útkarba
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Útépítés
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Villamospálya építés
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Közúti híd építése
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... egy irányú utaknak nem lehetnek kereszteződéseik...
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Nem építhetsz ide utat...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Nem lehet villamossínt építeni itt...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nem rombolhatod le innen az utat...
