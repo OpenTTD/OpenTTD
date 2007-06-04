@@ -79,7 +79,7 @@ DEF_COMMAND(CmdForceTrainProceed);
 DEF_COMMAND(CmdReverseTrainDirection);
 
 DEF_COMMAND(CmdModifyOrder);
-DEF_COMMAND(CmdSkipOrder);
+DEF_COMMAND(CmdSkipToOrder);
 DEF_COMMAND(CmdDeleteOrder);
 DEF_COMMAND(CmdInsertOrder);
 DEF_COMMAND(CmdChangeServiceInt);
@@ -222,7 +222,7 @@ static const Command _command_proc_table[] = {
 	{CmdReverseTrainDirection,               0}, /*  41 */
 
 	{CmdModifyOrder,                         0}, /*  42 */
-	{CmdSkipOrder,                           0}, /*  43 */
+	{CmdSkipToOrder,                         0}, /*  43 */
 	{CmdDeleteOrder,                         0}, /*  44 */
 	{CmdInsertOrder,                         0}, /*  45 */
 

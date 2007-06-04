@@ -1224,7 +1224,7 @@ static void AiNew_State_StartVehicle(Player *p)
 	// Skip the first order if it is a second vehicle
 	//  This to make vehicles go different ways..
 	if (p->ainew.cur_veh & 1)
-		AI_DoCommand(0, p->ainew.veh_id, 0, DC_EXEC, CMD_SKIP_ORDER);
+		AI_DoCommand(0, p->ainew.veh_id, 1, DC_EXEC, CMD_SKIP_TO_ORDER);
 
 	// 3, 2, 1... go! (give START_STOP command ;))
 	AI_DoCommand(0, p->ainew.veh_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);

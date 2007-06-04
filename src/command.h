@@ -57,7 +57,7 @@ enum {
 	CMD_REVERSE_TRAIN_DIRECTION      =  41,
 
 	CMD_MODIFY_ORDER                 =  42,
-	CMD_SKIP_ORDER                   =  43,
+	CMD_SKIP_TO_ORDER                =  43,
 	CMD_DELETE_ORDER                 =  44,
 	CMD_INSERT_ORDER                 =  45,
 

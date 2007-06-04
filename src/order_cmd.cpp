@@ -557,29 +557,27 @@ int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-/** Goto next order of order-list.
+/** Goto order of order-list.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 The ID of the vehicle which order is skipped
- * @param p2 unused
+ * @param p2 the selected order to which we want to skip
  */
-int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	VehicleID veh_id = p1;
+	VehicleOrderID sel_ord = p2;
 
 	if (!IsValidVehicleID(veh_id)) return CMD_ERROR;
 
 	v = GetVehicle(veh_id);
 
-	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!CheckOwnership(v->owner) || sel_ord == v->cur_order_index ||
+			sel_ord >= v->num_orders || v->num_orders < 2) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		/* Goto next order */
-		VehicleOrderID b = v->cur_order_index + 1;
-		if (b >= v->num_orders) b = 0;
-
-		v->cur_order_index = b;
+		v->cur_order_index = sel_ord;
 
 		if (v->type == VEH_ROAD) ClearSlot(v);
 

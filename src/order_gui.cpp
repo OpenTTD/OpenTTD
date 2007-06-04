@@ -93,7 +93,7 @@ static void DrawOrdersWindow(Window *w)
 
 	if (v->owner == _local_player) {
 		/* skip */
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_SKIP, v->num_orders == 0);
+		SetWindowWidgetDisabledState(w, ORDER_WIDGET_SKIP, v->num_orders <= 1);
 
 		/* delete */
 		SetWindowWidgetDisabledState(w, ORDER_WIDGET_DELETE,
@@ -390,7 +390,11 @@ static void OrderClick_Transfer(Window* w, const Vehicle* v)
 
 static void OrderClick_Skip(Window *w, const Vehicle *v)
 {
-	DoCommandP(v->tile, v->index, 0, NULL, CMD_SKIP_ORDER);
+	/* Don't skip when there's nothing to skip */
+	if (_ctrl_pressed && v->cur_order_index == OrderGetSel(w)) return;
+
+	DoCommandP(v->tile, v->index, _ctrl_pressed ? OrderGetSel(w) : ((v->cur_order_index + 1) % v->num_orders),
+			NULL, CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_CAN_T_SKIP_TO_ORDER : STR_CAN_T_SKIP_ORDER));
 }
 
 static void OrderClick_Delete(Window *w, const Vehicle *v)
