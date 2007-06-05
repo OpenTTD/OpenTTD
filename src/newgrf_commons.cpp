@@ -6,6 +6,8 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "variables.h"
+#include "clear_map.h"
 #include "town.h"
 #include "industry.h"
 #include "newgrf.h"
@@ -148,3 +150,18 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 		entity_overrides[i] = invalid_ID;
 	}
 }
+
+/** Function used by houses (and soon industries) to get information
+ * on type of "terrain" the tile it is queries sits on.
+ * @param tile TileIndex of the tile been queried
+ * @return value corresponding to the grf expected format:
+ *         Terrain type: 0 normal, 1 desert, 2 rainforest, 4 on or above snowline */
+uint32 GetTerrainType(TileIndex tile)
+{
+	switch (_opt.landscape) {
+		case LT_TROPIC: return GetTropicZone(tile) == TROPICZONE_DESERT ? 1 : 2;
+		case LT_ARCTIC: return (GetClearGround(tile) == CLEAR_SNOW) ? 4 : 0;
+		default:        return 0;
+	}
+}
+

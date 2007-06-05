@@ -169,15 +169,6 @@ static uint32 GetNumHouses(HouseID house_id, const Town *town)
 	return map_class_count << 24 | town_class_count << 16 | map_id_count << 8 | town_id_count;
 }
 
-static uint32 GetTerrainType(TileIndex tile)
-{
-	switch (_opt.landscape) {
-		case LT_TROPIC: return GetTropicZone(tile) == TROPICZONE_DESERT ? 1 : 2;
-		case LT_ARCTIC: return GetTileZ(tile) >= GetSnowLine() ? 4 : 0;
-		default:        return 0;
-	}
-}
-
 static uint32 GetGRFParameter(HouseID house_id, byte parameter)
 {
 	const HouseSpec *hs = GetHouseSpecs(house_id);

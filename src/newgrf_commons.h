@@ -66,4 +66,6 @@ public:
 
 extern HouseOverrideManager _house_mngr;
 
+uint32 GetTerrainType(TileIndex tile);
+
 #endif /* NEWGRF_COMMONS_H */
