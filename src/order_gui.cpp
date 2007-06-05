@@ -356,6 +356,12 @@ static void OrdersPlaceObj(const Vehicle *v, TileIndex tile, Window *w)
 	}
 }
 
+/**
+ * Handle the click on the goto button.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
 static void OrderClick_Goto(Window *w, const Vehicle *v)
 {
 	InvalidateWidget(w, ORDER_WIDGET_GOTO);
@@ -368,26 +374,58 @@ static void OrderClick_Goto(Window *w, const Vehicle *v)
 	}
 }
 
+/**
+ * Handle the click on the full load button.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
 static void OrderClick_FullLoad(Window *w, const Vehicle *v)
 {
 	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_FULL_LOAD, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
+/**
+ * Handle the click on the unload button.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
 static void OrderClick_Unload(Window *w, const Vehicle *v)
 {
 	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_UNLOAD,    NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
+/**
+ * Handle the click on the nonstop button.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
 static void OrderClick_Nonstop(Window *w, const Vehicle *v)
 {
 	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_NON_STOP,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
+/**
+ * Handle the click on the transfer button.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
 static void OrderClick_Transfer(Window* w, const Vehicle* v)
 {
 	DoCommandP(v->tile, v->index + (OrderGetSel(w) <<  16), OFB_TRANSFER, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
+/**
+ * Handle the click on the skip button.
+ * If ctrl is pressed skip to selected order.
+ *  Else skip to current order + 1
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
 static void OrderClick_Skip(Window *w, const Vehicle *v)
 {
 	/* Don't skip when there's nothing to skip */
@@ -397,11 +435,25 @@ static void OrderClick_Skip(Window *w, const Vehicle *v)
 			NULL, CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_CAN_T_SKIP_TO_ORDER : STR_CAN_T_SKIP_ORDER));
 }
 
+/**
+ * Handle the click on the unload button.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
 static void OrderClick_Delete(Window *w, const Vehicle *v)
 {
 	DoCommandP(v->tile, v->index, OrderGetSel(w), NULL, CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER));
 }
 
+/**
+ * Handle the click on the refit button.
+ * If ctrl is pressed cancel refitting.
+ *  Else show the refit window.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
 static void OrderClick_Refit(Window *w, const Vehicle *v)
 {
 	if (_ctrl_pressed) {
@@ -414,6 +466,12 @@ static void OrderClick_Refit(Window *w, const Vehicle *v)
 
 typedef void OnButtonVehClick(Window *w, const Vehicle *v);
 
+/**
+ * Keycode function mapping.
+ *
+ * @see _order_keycodes[]
+ * @note Keep them allways in sync with _order_keycodes[]!
+ */
 static OnButtonVehClick* const _order_button_proc[] = {
 	OrderClick_Skip,
 	OrderClick_Delete,
@@ -593,23 +651,32 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	}
 }
 
+/**
+ * Widget definition for player train orders
+ */
 static const Widget _orders_train_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   398,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_RB,      14,     0,   386,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   387,   398,    14,    75, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,    52,    76,    87, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,    53,   105,    76,    87, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   106,   158,    76,    87, STR_8825_NON_STOP,       STR_8855_MAKE_THE_HIGHLIGHTED_ORDER},
-{    WWT_TEXTBTN,   RESIZE_TB,      14,   159,   211,    76,    87, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   212,   264,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   265,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   265,   319,    76,    87, STR_REFIT,               STR_REFIT_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER},
-{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   373,   386,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
-{      WWT_PANEL,   RESIZE_RTB,     14,   387,   386,    76,    87, 0x0,                     STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   387,   398,    76,    87, 0x0,                     STR_RESIZE_BUTTON},
-{   WIDGETS_END},
+	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   398,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+
+	{      WWT_PANEL,   RESIZE_RB,      14,     0,   386,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
+
+	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   387,   398,    14,    75, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},    // ORDER_WIDGET_SCROLLBAR
+
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,    52,    76,    87, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},     // ORDER_WIDGET_SKIP
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,    53,   105,    76,    87, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   106,   158,    76,    87, STR_8825_NON_STOP,       STR_8855_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_NON_STOP
+	{    WWT_TEXTBTN,   RESIZE_TB,      14,   159,   211,    76,    87, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   212,   264,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   265,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   265,   319,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_TRANSFER
+
+	{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   373,   386,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
+
+	{      WWT_PANEL,   RESIZE_RTB,     14,   387,   386,    76,    87, 0x0,                     STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
+
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   387,   398,    76,    87, 0x0,                     STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
+	{   WIDGETS_END},
 };
 
 static const WindowDesc _orders_train_desc = {
@@ -620,23 +687,32 @@ static const WindowDesc _orders_train_desc = {
 	OrdersWndProc
 };
 
+/**
+ * Widget definition for player orders (!train)
+ */
 static const Widget _orders_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   409,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_RB,      14,     0,   397,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   398,   409,    14,    75, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,    63,    76,    87, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,    64,   128,    76,    87, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},
-{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                     0x0},
-{    WWT_TEXTBTN,   RESIZE_TB,      14,   129,   192,    76,    87, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   193,   256,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   257,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   257,   319,    76,    87, STR_REFIT,               STR_REFIT_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER},
-{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   384,   397,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
-{      WWT_PANEL,   RESIZE_RTB,     14,   397,   396,    76,    87, 0x0,                     STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   398,   409,    76,    87, 0x0,                     STR_RESIZE_BUTTON},
-{   WIDGETS_END},
+	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   409,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+
+	{      WWT_PANEL,   RESIZE_RB,      14,     0,   397,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
+
+	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   398,   409,    14,    75, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},    // ORDER_WIDGET_SCROLLBAR
+
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,    63,    76,    87, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},     // ORDER_WIDGET_SKIP
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,    64,   128,    76,    87, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
+	{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                     0x0},                                 // ORDER_WIDGET_NON_STOP
+	{    WWT_TEXTBTN,   RESIZE_TB,      14,   129,   192,    76,    87, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   193,   256,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   257,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   257,   319,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_TRANSFER
+
+	{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   384,   397,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
+
+	{      WWT_PANEL,   RESIZE_RTB,     14,   397,   396,    76,    87, 0x0,                     STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
+
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   398,   409,    76,    87, 0x0,                     STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
+	{   WIDGETS_END},
 };
 
 static const WindowDesc _orders_desc = {
@@ -647,20 +723,32 @@ static const WindowDesc _orders_desc = {
 	OrdersWndProc
 };
 
+/**
+ * Widget definition for competitor orders
+ */
 static const Widget _other_orders_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   331,     0,    13, STR_A00B_ORDERS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_RB,      14,     0,   319,    14,    75, 0x0,             STR_8852_ORDERS_LIST_CLICK_ON_ORDER},
-{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   320,   331,    14,    75, 0x0,             STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},
-{      WWT_PANEL,   RESIZE_RTB,     14,     0,   319,    76,    87, 0x0,             STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   320,   331,    76,    87, 0x0,             STR_RESIZE_BUTTON},
-{   WIDGETS_END},
+	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   331,     0,    13, STR_A00B_ORDERS, STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+
+	{      WWT_PANEL,   RESIZE_RB,      14,     0,   319,    14,    75, 0x0,             STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
+
+	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   320,   331,    14,    75, 0x0,             STR_0190_SCROLL_BAR_SCROLLS_LIST},    // ORDER_WIDGET_SCROLLBAR
+
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_SKIP
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_DELETE
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_NON_STOP
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_GOTO
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_UNLOAD
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_REFIT
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_TRANSFER
+
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_SHARED_ORDER_LIST
+
+	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
+
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   320,   331,    76,    87, 0x0,             STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
+	{   WIDGETS_END},
 };
 
 static const WindowDesc _other_orders_desc = {
