@@ -12,9 +12,9 @@
 #include "fileio.h"
 #include "helpers.hpp"
 
-#ifndef SPRITE_CACHE_SIZE
-# define SPRITE_CACHE_SIZE 2*1024*1024
-#endif /* SPRITE_CACHE_SIZE */
+
+/* Default of 2MB spritecache */
+uint _sprite_cache_size = 2;
 
 
 struct SpriteCache {
@@ -409,10 +409,10 @@ const void *GetRawSprite(SpriteID sprite)
 void GfxInitSpriteMem()
 {
 	/* initialize sprite cache heap */
-	if (_spritecache_ptr == NULL) _spritecache_ptr = (MemBlock*)malloc(SPRITE_CACHE_SIZE);
+	if (_spritecache_ptr == NULL) _spritecache_ptr = (MemBlock*)malloc(_sprite_cache_size * 1024 * 1024);
 
 	/* A big free block */
-	_spritecache_ptr->size = (SPRITE_CACHE_SIZE - sizeof(MemBlock)) | S_FREE_MASK;
+	_spritecache_ptr->size = ((_sprite_cache_size * 1024 * 1024) - sizeof(MemBlock)) | S_FREE_MASK;
 	/* Sentinel block (identified by size == 0) */
 	NextBlock(_spritecache_ptr)->size = 0;
 

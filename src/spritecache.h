@@ -14,6 +14,8 @@ struct Sprite {
 	byte data[VARARRAY_SIZE];
 };
 
+extern uint _sprite_cache_size;
+
 const void *GetRawSprite(SpriteID sprite);
 bool SpriteExists(SpriteID sprite);
 
