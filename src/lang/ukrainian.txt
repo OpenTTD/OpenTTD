@@ -1527,6 +1527,7 @@ STR_NETWORK_LANG_BRAZILIAN                                      :Бразиль�
 STR_NETWORK_LANG_BULGARIAN                                      :Болгарська
 STR_NETWORK_LANG_CHINESE                                        :Китайська
 STR_NETWORK_LANG_CZECH                                          :Чеська
+STR_NETWORK_LANG_DANISH                                         :Датська
 STR_NETWORK_LANG_DUTCH                                          :Німецька
 STR_NETWORK_LANG_ESPERANTO                                      :Есперанто
 STR_NETWORK_LANG_FINNISH                                        :Фінська
@@ -1535,10 +1536,13 @@ STR_NETWORK_LANG_ICELANDIC                                      :Ісландс�
 STR_NETWORK_LANG_ITALIAN                                        :Італійська
 STR_NETWORK_LANG_JAPANESE                                       :Японська
 STR_NETWORK_LANG_KOREAN                                         :Корейська
+STR_NETWORK_LANG_LITHUANIAN                                     :Литовська
 STR_NETWORK_LANG_NORWEGIAN                                      :Норвезька
 STR_NETWORK_LANG_POLISH                                         :Польськая
 STR_NETWORK_LANG_PORTUGUESE                                     :Португальська
+STR_NETWORK_LANG_ROMANIAN                                       :Румунська
 STR_NETWORK_LANG_RUSSIAN                                        :Російська
+STR_NETWORK_LANG_SLOVAK                                         :Словацька
 STR_NETWORK_LANG_SLOVENIAN                                      :Словенська
 STR_NETWORK_LANG_SPANISH                                        :Іспанська
 STR_NETWORK_LANG_SWEDISH                                        :Шведська
@@ -2853,6 +2857,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Пока
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Показати місткість кожного вагону
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Показати загальну місткість поїзда, розділену за типом вантажу
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Маршрутний лист - клікніть на завданні для його вибору. CTRL + клік показати станцію
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Видалити виділене завдання
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Не зупинятися на відміченій станції
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставити новий пункт перед відміченим або додати в кінець

@@ -1713,6 +1713,7 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nem lehe
 STR_180A_ROAD_CONSTRUCTION                                      :Útépítés
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Villamospálya építés
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Út építése
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Villamos-sín építése
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Garázs építése (járművek vételére és karbantartására)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Villamos-depó építése (járművek megépítésére és szervizelésére)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Buszmegálló építése
@@ -2765,6 +2766,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Túl sok
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nem adhatsz meg új célpontot...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nem törölheted ezt a célpontot...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nem módosíthatod ezt a célpontot...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nem lehet átugrani a jelenlegi úticélt...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nem lehet a kiválasztott úticélra ugrani...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nem mozgathatod a járművet...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}A mozdony első felének mindig elöl kell lennie
 STR_8838_N_A                                                    :Nincs{SKIP}
@@ -2796,6 +2799,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}A vonat 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}A kocsik kapacitása
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Megmutatja a vonat teljes kapacitását, rakománytípusokra lebontva
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Menetrend - kattints egy célpontra a kijelöléséhez
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Jelenlegi úticél átugrása, és a következő aktiválása. CTRL + kattintásra a kiválasztott úticélra ugrik
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}A kijelölt célpont törlése
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelölt célpont felé megállás nélkül kell haladni
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Új célpont beillesztése a kijelölt elé vagy a lista végére

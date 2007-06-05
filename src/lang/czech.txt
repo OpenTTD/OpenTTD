@@ -1,6 +1,6 @@
 ##name Czech
-##ownname Česky
-##isocode cs_CS
+##ownname Čeština
+##isocode cs_CZ
 ##plural 6
 ##case nom gen dat acc voc loc ins big
 ##gender f m n
@@ -1147,6 +1147,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Největ
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Údržba vrtulníků na heliportech: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat lištu na úpravy terénu s lištami na výstavbu tratí/silnic atd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Posouvat pohled opačným směrem: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Plynulé posouvání po mapě: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Ukázat rozměry při použití stavebních nástrojů: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Zobrazovat barvy společnosti pro: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :žádnou společnost
@@ -1454,6 +1455,31 @@ STR_NETWORK_LANG_ANY                                            :Jakýkoli
 STR_NETWORK_LANG_ENGLISH                                        :Angličtina
 STR_NETWORK_LANG_GERMAN                                         :Němčina
 STR_NETWORK_LANG_FRENCH                                         :Francouzština
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazilská portugalština
+STR_NETWORK_LANG_BULGARIAN                                      :Bulharština
+STR_NETWORK_LANG_CHINESE                                        :Čínština
+STR_NETWORK_LANG_CZECH                                          :Čeština
+STR_NETWORK_LANG_DANISH                                         :Dánština
+STR_NETWORK_LANG_DUTCH                                          :Nizozemština
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finština
+STR_NETWORK_LANG_HUNGARIAN                                      :Maďarština
+STR_NETWORK_LANG_ICELANDIC                                      :Islandština
+STR_NETWORK_LANG_ITALIAN                                        :Italština
+STR_NETWORK_LANG_JAPANESE                                       :Japonština
+STR_NETWORK_LANG_KOREAN                                         :Korejština
+STR_NETWORK_LANG_LITHUANIAN                                     :Litevština
+STR_NETWORK_LANG_NORWEGIAN                                      :Norština
+STR_NETWORK_LANG_POLISH                                         :Polština
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugalština
+STR_NETWORK_LANG_ROMANIAN                                       :Rumunština
+STR_NETWORK_LANG_RUSSIAN                                        :Ruština
+STR_NETWORK_LANG_SLOVAK                                         :Slovenština
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovinština
+STR_NETWORK_LANG_SPANISH                                        :Španělština
+STR_NETWORK_LANG_SWEDISH                                        :Švédština
+STR_NETWORK_LANG_TURKISH                                        :Turečtina
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinština
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Vstupní místnost do multiplayerové hry
@@ -1702,6 +1728,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Železniční p
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nelze odstranit autobusovou zastávku...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nelze odstranit nakládací rampu...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nelze zbourat tramvajovou stanici pro cestující...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Nelze odstranit nákladní tramvajovou stanici...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Města
@@ -1866,8 +1893,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} nyní přijímá {STRING} a {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientace autobusové zastávky.
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientace nákladové rampy
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orientace tramvajové stanice pro cestující
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orientace nákladní tramvajové stanice
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Musíš nejprve zničit autobusovou zastávku
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Musíš nejprve zničit nákladovou rampu
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Je nutné nejdříve zbourat tramvajovou stanici pro cestující
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Je nutné nejdříve zbourat nákladní tramvajovou stanici
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} stanic{P e e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nic -
@@ -1879,6 +1910,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Zvolit p
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Zvolit délku nádraží
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Zvolit orientaci autobusové zastávky
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Zvolit orientaci nákladové rampy
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Vyber směr tramvajové stanice pro cestující
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Vyber směr nákladní tramvajové stanice
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Vycentrovat pohled na stanici
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Ukázat hodnocení společností
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Změnit jméno stanice
@@ -2725,6 +2758,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Ukázat 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Ukázat kapacity jednotlivých vagonů
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Ukázat celkovou kapacitu vlaku, rozdělenou dle nákladu
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Seznam příkazů - stiskni příkaz pro označení. Kliknutím na příkaz se stisknutým CTRL se nastaví pohled na stanici
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Smazat označený příkaz
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Provést označený příkaz bez zastavení
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vložit nový příkaz před označený příkaz nebo na konec seznamu
@@ -2809,6 +2843,7 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nelze p�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Přejmenovat silniční vozidlo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První autobus přijel do {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První nákladní vozidlo přijelo do {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První tramvaj pro cestující přijela do {STATION}
 STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První nákladní tramvaj přijíždí do {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravní nehoda!{}Řidič zahynul v plamenech při srážce s vlakem
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravní nehoda!{}{COMMA} {P člověk lidé lidí} zahynul{P "" i o} v plamenech při srážce s vlakem
