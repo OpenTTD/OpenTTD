@@ -2504,7 +2504,7 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 
 
 			/* Don't tell me you don't love duplicated code! */
 			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(1, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
+				grfmsg(1, "VehicleMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
 				       groupid, _cur_grffile->spritegroups_count);
 				continue;
 			}
@@ -2914,7 +2914,7 @@ static void GraphicsNew(byte *buf, int len)
 
 		case 0x0B: // tramways
 			if (num != 113) {
-				grfmsg(1, "GraphicsNews: Tramway graphics sprite count must be 113, skipping");
+				grfmsg(1, "GraphicsNew: Tramway graphics sprite count must be 113, skipping");
 				return;
 			}
 			replace = SPR_TRAMWAY_BASE;
@@ -2947,6 +2947,7 @@ static void GraphicsNew(byte *buf, int len)
 		default:
 			grfmsg(2, "GraphicsNew: Custom graphics (type 0x%02X) sprite block of length %u (unimplemented, ignoring)",
 					type, num);
+			_skip_sprites = num;
 			return;
 	}
 
@@ -3428,7 +3429,7 @@ static void GRFLoadError(byte *buf, int len)
 	/* Skip the error until the activation stage unless bit 7 of the severity
 	 * is set. */
 	if (!HASBIT(severity, 7) && _cur_stage < GLS_ACTIVATION) {
-		grfmsg(7, "GRFLoadError: Skipping non-fatal GRFLoadError in stage 1");
+		grfmsg(7, "GRFLoadError: Skipping non-fatal GRFLoadError in stage %d", _cur_stage);
 		return;
 	}
 	CLRBIT(severity, 7);
