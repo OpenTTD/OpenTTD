@@ -3271,7 +3271,7 @@ static void SkipIf(byte *buf, int len)
 		_skip_sprites = -1;
 
 		/* If an action 8 hasn't been encountered yet, disable the grf. */
-		if (_cur_stage != GLS_RESERVE && _cur_grfconfig->status != GCS_ACTIVATED) _cur_grfconfig->status = GCS_DISABLED;
+		if (_cur_grfconfig->status != GCS_ACTIVATED) _cur_grfconfig->status = GCS_DISABLED;
 	}
 }
 
@@ -3321,7 +3321,7 @@ static void GRFInfo(byte *buf, int len)
 
 	_cur_grffile->grfid = grfid;
 	_cur_grffile->grf_version = version;
-	_cur_grfconfig->status = _cur_stage < GLS_ACTIVATION ? GCS_INITIALISED : GCS_ACTIVATED;
+	_cur_grfconfig->status = _cur_stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
 	DEBUG(grf, 1, "GRFInfo: Loaded GRFv%d set %08lX - %s", version, BSWAP32(grfid), name);
@@ -3428,7 +3428,7 @@ static void GRFLoadError(byte *buf, int len)
 
 	/* Skip the error until the activation stage unless bit 7 of the severity
 	 * is set. */
-	if (!HASBIT(severity, 7) && _cur_stage < GLS_ACTIVATION) {
+	if (!HASBIT(severity, 7) && _cur_stage == GLS_INIT) {
 		grfmsg(7, "GRFLoadError: Skipping non-fatal GRFLoadError in stage %d", _cur_stage);
 		return;
 	}
@@ -4754,7 +4754,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x05 */ { SkipAct5, SkipAct5,  SkipAct5,        SkipAct5,       SkipAct5,          GraphicsNew, },
 		/* 0x06 */ { NULL,     NULL,      NULL,            CfgApply,       CfgApply,          CfgApply, },
 		/* 0x07 */ { NULL,     NULL,      NULL,            NULL,           SkipIf,            SkipIf, },
-		/* 0x08 */ { ScanInfo, NULL,      NULL,            GRFInfo,        NULL,              GRFInfo, },
+		/* 0x08 */ { ScanInfo, NULL,      NULL,            GRFInfo,        GRFInfo,           GRFInfo, },
 		/* 0x09 */ { NULL,     NULL,      NULL,            SkipIf,         SkipIf,            SkipIf, },
 		/* 0x0A */ { SkipActA, SkipActA,  SkipActA,        SkipActA,       SkipActA,          SpriteReplace, },
 		/* 0x0B */ { NULL,     NULL,      NULL,            GRFLoadError,   GRFLoadError,      GRFLoadError, },
@@ -4823,7 +4823,8 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	if (stage != GLS_FILESCAN && stage != GLS_SAFETYSCAN && stage != GLS_LABELSCAN) {
 		_cur_grffile = GetFileByFilename(filename);
 		if (_cur_grffile == NULL) error("File '%s' lost in cache.\n", filename);
-		if (stage == GLS_ACTIVATION && config->status != GCS_INITIALISED) return;
+		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
+		if (stage == GLS_ACTIVATION && config->status != GCS_ACTIVATED) return;
 	}
 
 	FioOpenFile(file_index, filename);
