@@ -2595,7 +2595,7 @@ SpriteID GetVehiclePalette(const Vehicle *v)
 {
 	if (v->type == VEH_TRAIN) {
 		return GetEngineColourMap(
-			(v->u.rail.first_engine != INVALID_ENGINE && (IsArticulatedPart(v) || UsesWagonOverride(v))) ?
+			(v->u.rail.first_engine != INVALID_ENGINE && (UsesWagonOverride(v) || (IsArticulatedPart(v) && RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON))) ?
 				v->u.rail.first_engine : v->engine_type,
 			v->owner, v->u.rail.first_engine, v);
 	}
