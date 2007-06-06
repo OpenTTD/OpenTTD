@@ -1396,6 +1396,31 @@ STR_NETWORK_LANG_ANY                                            :Hvilketsomhelst
 STR_NETWORK_LANG_ENGLISH                                        :Engelsk
 STR_NETWORK_LANG_GERMAN                                         :Tysk
 STR_NETWORK_LANG_FRENCH                                         :Fransk
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasiliansk
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgarsk
+STR_NETWORK_LANG_CHINESE                                        :Kinesisk
+STR_NETWORK_LANG_CZECH                                          :Tjekkisk
+STR_NETWORK_LANG_DANISH                                         :Dansk
+STR_NETWORK_LANG_DUTCH                                          :Hollandsk
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finsk
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungarsk
+STR_NETWORK_LANG_ICELANDIC                                      :Islandsk
+STR_NETWORK_LANG_ITALIAN                                        :Italiensk
+STR_NETWORK_LANG_JAPANESE                                       :Japansk
+STR_NETWORK_LANG_KOREAN                                         :Koreansk
+STR_NETWORK_LANG_LITHUANIAN                                     :Litauisk
+STR_NETWORK_LANG_NORWEGIAN                                      :Norsk
+STR_NETWORK_LANG_POLISH                                         :Polsk
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugisisk
+STR_NETWORK_LANG_ROMANIAN                                       :Rumænsk
+STR_NETWORK_LANG_RUSSIAN                                        :Russisk
+STR_NETWORK_LANG_SLOVAK                                         :Slovakisk
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovensk
+STR_NETWORK_LANG_SPANISH                                        :Spansk
+STR_NETWORK_LANG_SWEDISH                                        :Svensk
+STR_NETWORK_LANG_TURKISH                                        :Tyrkisk
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Netværksspils lobby
@@ -2637,6 +2662,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}For mang
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke indsætte ny ordre...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikke slette denne ordre...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke ændre denne ordre...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan ikke springe over nuværende ordre...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan ikke springe over valgt ordre...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikke flytte køretøjet...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Det bagerste lokomotiv vil altid følge dets forende
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2668,6 +2695,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Vis deta
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Vis kapaciteten af hver togvogn
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Vis total lasteevne på toget, fordelt på lasttyper
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - klik på en ordre for at markere den. CTRL-klik for at centrere skærmen over stationen
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Spring over nuværende ordre og start næste. CTRL + klik springer til den valgte ordre
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Slet den markerede ordre
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Lav den markerede ordre til en "uden stop" ordre
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Indsæt en ny ordre før den markerede eller ved slutningen af ordrelisten

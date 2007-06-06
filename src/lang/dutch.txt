@@ -1397,6 +1397,26 @@ STR_NETWORK_LANG_ANY                                            :Elke
 STR_NETWORK_LANG_ENGLISH                                        :Engels
 STR_NETWORK_LANG_GERMAN                                         :Duits
 STR_NETWORK_LANG_FRENCH                                         :Frans
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazilliaans
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgaars
+STR_NETWORK_LANG_CHINESE                                        :Chinees
+STR_NETWORK_LANG_CZECH                                          :Tchechisch
+STR_NETWORK_LANG_DANISH                                         :Deens
+STR_NETWORK_LANG_DUTCH                                          :Nederlands
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Fins
+STR_NETWORK_LANG_HUNGARIAN                                      :Hongaars
+STR_NETWORK_LANG_ICELANDIC                                      :IJslands
+STR_NETWORK_LANG_ITALIAN                                        :Italiaans
+STR_NETWORK_LANG_JAPANESE                                       :Japans
+STR_NETWORK_LANG_KOREAN                                         :Koreaans
+STR_NETWORK_LANG_LITHUANIAN                                     :Litouws
+STR_NETWORK_LANG_NORWEGIAN                                      :Noors
+STR_NETWORK_LANG_POLISH                                         :Pools
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugees
+STR_NETWORK_LANG_ROMANIAN                                       :Roemeens
+STR_NETWORK_LANG_RUSSIAN                                        :Russisch
+STR_NETWORK_LANG_SLOVAK                                         :Slovaaks
 STR_NETWORK_LANG_SLOVENIAN                                      :Sloveens
 STR_NETWORK_LANG_SPANISH                                        :Spaans
 STR_NETWORK_LANG_SWEDISH                                        :Zweeds
@@ -2643,6 +2663,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Teveel o
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan nieuwe order niet invoegen...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan deze order niet verwijderen...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan deze order niet aanpassen...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan huidige order niet overslaan...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan geselecteerde order niet overslaan...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan voertuig niet verplaatsen...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}De achterste locomotief zal altijd het voorste deel volgen
 STR_8838_N_A                                                    :NVT.{SKIP}
@@ -2674,6 +2696,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Laat det
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Laat de mogelijkheden van elk voertuig zien
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Laat totale capaiteit van trein zien, gescheiden door goederentype
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlijst - klik op een order om deze te selecteren. CTRL + klikken gaat naar het station
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sla huidige order over, en begin met de volgende. CTRL + klik, begin direct met geselecteerde order
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Verwijder de geselecteerde order
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak de geselecteerde order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan de eind van de lijst

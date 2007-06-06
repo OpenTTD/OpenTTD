@@ -4,6 +4,8 @@
 ##plural 6
 ##gender male female middle
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Izvan rubova karte
@@ -723,6 +725,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Stavi st
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Postavi svjetionik
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Postavi odašiljač
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Odredi pustinjsko područje.{}Pritisni i drži CTRL za uklanjanje
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Obriši
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Obriši ovaj grad u cjelosti
 STR_0292_SAVE_SCENARIO                                          :Spremi scenarij
@@ -797,10 +800,14 @@ STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Karta svijeta
 STR_EXTRA_VIEW_PORT                                             :Dodatni pogled
 STR_SIGN_LIST                                                   :Popis znakova
+STR_TRANSPARENCY_OPTIONS                                        :Opcije prozirnosti
 STR_02DF_TOWN_DIRECTORY                                         :Direktorij gradova
 STR_TOWN_POPULATION                                             :{BLACK}Svjetska populacija: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiraj u pogled
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiraj lokaciju globalnog pogleda na ovaj mini pogled
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Zalijepi iz mini pogleda
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Zalijepi lokaciju ovog mini pogleda na globalni pogled
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Novčane jedinice
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -1024,7 +1031,9 @@ STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Dopusti
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Dopusti izgadnju industrija koje proizvode sirovine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Dopusti više sličnih industrija po gradu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Moguće je graditi spojene industrije iste vrste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Uvijek prikaži dugi datum u statusnoj traci: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Prikaži znakove na strani po kojoj se vozi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Prikaži financijski prozor na kraju godine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Dozvoli potkupljivanje gradskih vlasti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Neujednačene stanice: {ORANGE}{STRING}
 
@@ -1044,7 +1053,9 @@ STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Prikaž
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevidljivo drveće (sa prozirnim građevinama): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Izvorno
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimalna udaljenost Rafinerija nafte od ruba {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Grubost terena (samo TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Vrlo glatko
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glatko
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Grubo
@@ -1059,8 +1070,16 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :U smjeru kazalj
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimalna raširenost stanice: {ORANGE}{STRING} {RED}Pozor: Visoka vrijednost usporuje igru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatski servisiraj helikoptere na heliodromima: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Poveži alatnu traku za krajolik sa alatnim trakama za željeznicu/ceste/vodu/zračne luke: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Glatko skrolanje kroz mini pogled: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ništa
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Vlastita tvrtka
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Sve tvrtke
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zumiraj kartu
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Skrolaj kartom
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Isključeno
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Brzina kotačića za skrolanje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatski pauziraj kad pokrećeš novu igru: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Koristi naprednu listu vozila: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maksimalan broj vlakova po igraču: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalan broj cestovnih vozila po igraču: {ORANGE}{STRING}
@@ -1083,16 +1102,32 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Pretpos
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Pretpostavljeni period servisiranja aviona: {ORANGE}onemogućeno
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Pretpostavljeni period servisiranja brodova: {ORANGE}{STRING} dana/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Pretpostavljeni period servisiranja brodova: {ORANGE}onemogućeno
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Uključi ograničenje brzine za vagone: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Onemogući električne tračnice: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Vijesti u boji pojavljuju se: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Početna godina: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Završna godina: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Uključi tečnu ekonomiju (više manjih izazova)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Dopusti kupovanje udjela drugih tvrtki
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatski izgradi semafore prije: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :nema više cesta
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :inicijalno
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bolje ceste
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Položaj glavne alatne trake: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Lijevo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Sredina
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Desno
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Brzina rasta gradova: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ništa
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Sporo
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normalno
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Brzo
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Vrlo brzo
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Sučelje
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Izgradnja
@@ -1130,6 +1165,8 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Omoguć
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Ide prema {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Ide prema {WAYPOINT}, {VELOCITY}
 
+STR_GO_TO_WAYPOINT                                              :Idi preko {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Idi non-stop preko {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           : Čvorište{TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Čvorište {TOWN} #{COMMA}
@@ -1168,6 +1205,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Raznovrs
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Stavi drveće nasumičnog tipa
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Ovdje ne možeš graditi kanale...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Izgradi kanale.
 STR_LANDINFO_CANAL                                              :Kanal
 
 
@@ -1321,6 +1359,31 @@ STR_NETWORK_LANG_ANY                                            :Bilo koji
 STR_NETWORK_LANG_ENGLISH                                        :Engleski
 STR_NETWORK_LANG_GERMAN                                         :Njemački
 STR_NETWORK_LANG_FRENCH                                         :Francuski
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazilski
+STR_NETWORK_LANG_BULGARIAN                                      :Bugarski
+STR_NETWORK_LANG_CHINESE                                        :Kineski
+STR_NETWORK_LANG_CZECH                                          :Češki
+STR_NETWORK_LANG_DANISH                                         :Danski
+STR_NETWORK_LANG_DUTCH                                          :Nizozemski
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finski
+STR_NETWORK_LANG_HUNGARIAN                                      :Mađarski
+STR_NETWORK_LANG_ICELANDIC                                      :Islandski
+STR_NETWORK_LANG_ITALIAN                                        :Talijanski
+STR_NETWORK_LANG_JAPANESE                                       :Japanski
+STR_NETWORK_LANG_KOREAN                                         :Korejski
+STR_NETWORK_LANG_LITHUANIAN                                     :Litavski
+STR_NETWORK_LANG_NORWEGIAN                                      :Norveški
+STR_NETWORK_LANG_POLISH                                         :Poljski
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugalski
+STR_NETWORK_LANG_ROMANIAN                                       :Rumunjski
+STR_NETWORK_LANG_RUSSIAN                                        :Ruski
+STR_NETWORK_LANG_SLOVAK                                         :Slovački
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovenski
+STR_NETWORK_LANG_SPANISH                                        :Španjolski
+STR_NETWORK_LANG_SWEDISH                                        :Švedski
+STR_NETWORK_LANG_TURKISH                                        :Turski
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinski
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Predvorje multiplayer igre
@@ -1939,6 +2002,7 @@ STR_SV_STNAME_LOWER                                             :Donji {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliodrom
 STR_SV_STNAME_FOREST                                            :{STRING} Šuma
 
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2415,6 +2479,7 @@ STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Prikaži
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Povećaj servisni interval
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Smanji servisni interval
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaži detalje prevoženog tereta
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Obriši označenu naredbu
 STR_SERVICE_HINT                                                :{BLACK}Preskoči ovu narudžbu osim ako servis nije potreban
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Trošak: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY} Snaga: {POWER}{}Troškovi održavanja: {CURRENCY}/god{}Kapacitet: {CARGO}
@@ -2908,3 +2973,12 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Prebaci novac: {LTBLUE}{CURRENCY}
+
+
+##### Mass Order
+
+
+
+
+
+########

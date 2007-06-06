@@ -2727,6 +2727,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Příli�
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nemohu přidat nový příkaz
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemohu tento příkaz smazat...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemohu tento příkaz změnit...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nelze přeskočit současný příkaz...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nelze přeskočit na označený příkaz...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nemohu přesunout vozidlo...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadní stroj vždy doprovází svůj protějšek vepředu
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2758,7 +2760,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Ukázat 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Ukázat kapacity jednotlivých vagonů
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Ukázat celkovou kapacitu vlaku, rozdělenou dle nákladu
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Seznam příkazů - stiskni příkaz pro označení. Kliknutím na příkaz se stisknutým CTRL se nastaví pohled na stanici
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Přeskočit příkaz a jít na další. Pomocí CTRL + kliknutí se přeskočí na vybraný příkaz
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Smazat označený příkaz
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Provést označený příkaz bez zastavení
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vložit nový příkaz před označený příkaz nebo na konec seznamu
