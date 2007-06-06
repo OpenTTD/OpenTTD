@@ -744,7 +744,6 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 			default: NOT_REACHED();
 			}
 			break;
-		case SL_WRITEBYTE: return 1; // a byte is logically of size 1
 		case SL_INCLUDE: return SlCalcObjLength(object, _sl.includes[sld->version_from]);
 		default: NOT_REACHED();
 	}
@@ -779,19 +778,6 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		case SL_STR: SlString(ptr, sld->length, conv); break;
 		case SL_LST: SlList(ptr, (SLRefType)conv); break;
 		default: NOT_REACHED();
-		}
-		break;
-
-	/* SL_WRITEBYTE translates a value of a variable to another one upon
-	 * saving or loading.
-	 * XXX - variable renaming abuse
-	 * game_value: the value of the variable ingame is abused by sld->version_from
-	 * file_value: the value of the variable in the savegame is abused by sld->version_to */
-	case SL_WRITEBYTE:
-		if (_sl.save) {
-			SlWriteByte(sld->version_to);
-		} else {
-			*(byte*)ptr = sld->version_from;
 		}
 		break;
 
