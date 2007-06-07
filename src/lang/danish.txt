@@ -1089,6 +1089,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. s
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Forbind landskabsværktøjer med skinne/vej/vand/lufthavn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Flyt i modsat retning ved scroll med musen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Jævn scrolling af udsnit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Vis måleværktøjstip ved brug af div. bygge-værktøjer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis selskabsfarver: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen

@@ -1397,6 +1397,31 @@ STR_NETWORK_LANG_ANY                                            :Kva som helst
 STR_NETWORK_LANG_ENGLISH                                        :Engelsk
 STR_NETWORK_LANG_GERMAN                                         :Tysk
 STR_NETWORK_LANG_FRENCH                                         :Fransk
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasiliansk
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgarsk
+STR_NETWORK_LANG_CHINESE                                        :Kinesisk
+STR_NETWORK_LANG_CZECH                                          :Tsjekkisk
+STR_NETWORK_LANG_DANISH                                         :Dansk
+STR_NETWORK_LANG_DUTCH                                          :Nederlandsk
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finsk
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungarsk
+STR_NETWORK_LANG_ICELANDIC                                      :Islandsk
+STR_NETWORK_LANG_ITALIAN                                        :Italiensk
+STR_NETWORK_LANG_JAPANESE                                       :Japansk
+STR_NETWORK_LANG_KOREAN                                         :Koreansk
+STR_NETWORK_LANG_LITHUANIAN                                     :Litauisk
+STR_NETWORK_LANG_NORWEGIAN                                      :Norsk
+STR_NETWORK_LANG_POLISH                                         :Polsk
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugisisk
+STR_NETWORK_LANG_ROMANIAN                                       :Rumensk
+STR_NETWORK_LANG_RUSSIAN                                        :Russisk
+STR_NETWORK_LANG_SLOVAK                                         :Slovakisk
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovensk
+STR_NETWORK_LANG_SPANISH                                        :Spansk
+STR_NETWORK_LANG_SWEDISH                                        :Svensk
+STR_NETWORK_LANG_TURKISH                                        :Tyrkisk
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Fleirspelarspel-lobby
@@ -1590,6 +1615,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbanespor me
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbanespor med for-signal
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbanespor med ut-signal
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbanespor med samansette signal
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale- og pre-signal
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Jernbanespor med normale- og exit-spor
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Jernbanespor med normale- og blandingssignal
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Jernbanespor med pre- og exit-signal
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Jernbanespor med pre- og blandingssignal
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Jernbanespor med exit- og blandingssignal
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Må fjerne togstasjon først
 
 
@@ -1600,6 +1631,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vegarbei
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Bygg veg
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Trikkekonstruksjon
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vel type bru
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... einvegskøyrde vegar kan ikkje ha kryss
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan ikkje byggje veg her...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Kan ikkje byggje trikk her
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan ikkje fjerne veg her...
@@ -2631,6 +2663,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}For mang
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikkje setje inn ny ordre...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikkje slette denne ordren...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikkje endre denne ordren...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan ikkje hoppa over gjeldande ordre
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan ikkje hoppa til valde ordre
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikkje flytte køyretøy...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Bakmaskinen vil alltid følgje det fremste motstykket
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2662,6 +2696,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Vis deta
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Vis kapasiteten til vognene
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Vis total kapasitet på vognene, sortert etter type vare
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - trykk på ein ordre for å velje han
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Hopp over gjedande ordre, og start neste.  CTRL + klikk hopper til valde ordre
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Slett den valde ordren
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gjer den valde ordren om til ein
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Sett inn ein ordre før den valde ordren, eller i slutten av lista

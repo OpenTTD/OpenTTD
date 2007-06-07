@@ -3,6 +3,8 @@
 ##isocode gl_ES
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora do borde do mapa
@@ -706,6 +708,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmisor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definir área de deserto
+STR_CREATE_LAKE                                                 :
 STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Grabar Escenario
@@ -1074,6 +1077,8 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Termina
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Habilita-la economía "suave"(máis cambios, pero máis pequenos)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permiti-la compra de accións por outras compañías
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cando se arrastre, colocar siniais cada: {ORANGE}{STRING} cadrado(s)
+
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
@@ -1158,6 +1163,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árbores
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Colocar árbores dun tipo aleatorio
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Non se pode construí-los canais aí...
+STR_BUILD_CANALS_TIP                                            :
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Non se pode construí-lo peche aí...
@@ -1920,6 +1926,7 @@ STR_SV_STNAME_LOWER                                             :Inferior {STRIN
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliporto
 STR_SV_STNAME_FOREST                                            :{STRING} Bosque
 
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2519,6 +2526,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostra-l
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostra-la capacidade de cada vehículo
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Mostra-la capacidade total do tren, dividida por tipos de carga
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de Ordes - Pincha nunha orde para seleccionala
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Borra-la orde seleccionada
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Facer que a orde seleccionada sexa de Non Parar
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insertar unha nova orde despois da seleccionada, o insertar unha nova orde ó final da lista
@@ -2549,6 +2557,8 @@ STR_TRAIN_STOPPING                                              :{RED}Parando
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parando, {VELOCITY}
 STR_TRAIN_NO_POWER                                              :{RED}Sen enerxía
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}¡Novo {STRING} agora dispoñible!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Haí un vehículo de estrada no camiño
@@ -2794,6 +2804,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Amount o
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Valor do préstamo que ten a compañía
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Puntos totais de puntos posibles
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configuración NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplica-los cambios
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Conf. parámetros
@@ -2803,8 +2814,12 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Ficheiro
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}Suma MD5: {SILVER}{STRING}
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aviso: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 
 STR_NEWGRF_ADD                                                  :{BLACK}Engadir
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Engadir un novo arquivo NewGRF á lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Eliminar
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Elimina-lo arquivo NewGRF seleccionado da lista
 STR_NEWGRF_MOVEUP                                               :{BLACK}Mover Arriba
@@ -2846,6 +2861,7 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tódolos vehículos que comparte esta planificación
 
 ### depot strings
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas vender tódolos vehículos do depósito. ¿Estás seguro?
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender tódolos trens do depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender tódolos barcos no depósito
@@ -2989,3 +3005,11 @@ STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Habilita
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Habilitar transparencia para industrias
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Habilitar transparencia para construibles como estacións, depósitos, puntos de ruta e catenaria
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Habilitar transparencia para pontes
+
+##### Mass Order
+
+
+
+
+
+########
