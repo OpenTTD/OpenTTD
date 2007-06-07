@@ -99,6 +99,11 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool *edge_roa
  * @param flags operation to perform
  * @param p1 bit 0..3 road pieces to remove (RoadBits)
  *           bit 4..5 road type
+ *           bit    6 ignore the fact that the tram track has not been removed
+ *                    yet when removing the road bits when not actually doing
+ *                    it. Makes it possible to test whether the road bits can
+ *                    be removed from a level crossing without physically
+ *                    removing the tram bits before the test.
  * @param p2 unused
  */
 int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -236,7 +241,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Don't allow road to be removed from the crossing when there is tram;
 			 * we can't draw the crossing without trambits ;) */
-			if (rt == ROADTYPE_ROAD && HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM)) return CMD_ERROR;
+			if (rt == ROADTYPE_ROAD && HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM) && ((flags & DC_EXEC) || !HASBIT(p1, 6))) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
 				if (rt == ROADTYPE_ROAD) {
@@ -800,12 +805,20 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 #undef M
 
 		case ROAD_TILE_CROSSING: {
-			int32 ret;
+			RoadTypes rts = GetRoadTypes(tile);
+			int32 ret = 0;
 
 			if (flags & DC_AUTO) return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 
-			ret = DoCommand(tile, GetCrossingRoadBits(tile), 0, flags, CMD_REMOVE_ROAD);
-			if (CmdFailed(ret)) return CMD_ERROR;
+			/* Must iterate over the roadtypes in a reverse manner because
+			 * tram tracks must be removed before the road bits. */
+			for (RoadType rt = ROADTYPE_HWAY; rt >= ROADTYPE_ROAD; rt--) {
+				if (HASBIT(rts, rt)) {
+					int32 tmp_ret = DoCommand(tile, 1 << 6 | rt << 4 | GetCrossingRoadBits(tile), 0, flags, CMD_REMOVE_ROAD);
+					if (CmdFailed(tmp_ret)) return tmp_ret;
+					ret += tmp_ret;
+				}
+			}
 
 			if (flags & DC_EXEC) {
 				DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
