@@ -1494,7 +1494,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (CreateNewIndustryHelper(tile, p1, flags, indspec, it) == NULL) return CMD_ERROR;
 
-	return (_price.build_industry >> 5) * indspec->cost_multiplier;
+	return (_price.build_industry >> 8) * indspec->cost_multiplier;
 }
 
 

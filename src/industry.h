@@ -116,7 +116,7 @@ struct GRFFileProps {
 struct IndustrySpec {
 	const IndustryTileTable *const *table;///< List of the tiles composing the industry
 	byte num_table;                       ///< Number of elements in the table
-	byte cost_multiplier;                 ///< Base cost multiplier. Watch out for this one, << 5  VS << 8
+	uint16 cost_multiplier;               ///< Base cost multiplier.
 	IndustryType conflicting[3];          ///< Industries this industry cannot be close to
 	byte check_proc;                      ///< Index to a procedure to check for conflicting circumstances
 	CargoID produced_cargo[2];
