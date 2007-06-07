@@ -45,8 +45,8 @@ fi
 
 set_default
 detect_params "$@"
-save_params
 check_params
+save_params
 make_cflags_and_ldflags
 
 EXE=""

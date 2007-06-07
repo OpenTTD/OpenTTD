@@ -5,6 +5,8 @@ log() {
 }
 
 set_default() {
+	released_version=""
+
 	ignore_extra_parameters="0"
 	# We set all kinds of defaults for params. Later on the user can override
 	# most of them; but if they don't, this default is used.
@@ -609,6 +611,34 @@ check_params() {
 			exit 1
 		fi
 	fi
+
+	if [ -n "$released_version" ]; then
+		log 1 "checking revision... release ($released_version)"
+		if [ -n "$revision" ] && [ "$revision" != "$released_version" ]; then
+			log 1 "WARNING: overriding of the revision is NOT possible for releases"
+			log 1 "WARNING: the given revision is IGNORED"
+
+			sleep 5
+		fi
+		revision=$released_version
+	else
+		if [ -n "$revision" ]; then
+			log 1 "checking revision... $revision"
+			log 1 "WARNING: we do not advise you to use this setting"
+			log 1 "WARNING: in most cases it is not safe for network use"
+			log 1 "WARNING: USE WITH CAUTION!"
+
+			sleep 5
+		elif [ -f "$ROOT_DIR/version" ]; then
+			revision="`cat $ROOT_DIR/version`"
+
+			log 1 "checking revision... $revision"
+		else
+			revision=""
+
+			log 1 "checking revision... svn detection"
+		fi
+	fi
 }
 
 make_cflags_and_ldflags() {
@@ -929,23 +959,6 @@ make_cflags_and_ldflags() {
 		if [ -n "$icon_dir" ]; then
 			CFLAGS="$CFLAGS -DICON_DIR=\\\\\"$prefix_dir/$icon_dir/\\\\\""
 		fi
-	fi
-
-	if [ -n "$revision" ]; then
-		log 1 "checking revision... $revision"
-		log 1 "WARNING: we do not advise you to use this setting"
-		log 1 "WARNING: in most cases it is not safe for network use"
-		log 1 "WARNING: USE WITH CAUTION!"
-
-		sleep 5
-	elif [ -f "$ROOT_DIR/version" ]; then
-		revision="`cat $ROOT_DIR/version`"
-
-		log 1 "checking revision... $revision"
-	else
-		revision=""
-
-		log 1 "checking revision... svn detection"
 	fi
 
 	log 1 "using CFLAGS... $CFLAGS $CC_CFLAGS"
