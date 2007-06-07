@@ -96,8 +96,15 @@ ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
 REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
 # Find the revision like: rXXXX-branch
 REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branch/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+else
+# Are we a git dir?
+ifeq ($(shell if test -d $(SRC_DIR)/../.git; then echo 1; fi), 1)
+# Find the revision like: rXXXXM
+REV := g$(shell if head=`git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(shell if git diff-index HEAD | read dummy; then echo M; fi)$(shell git branch|grep '*'|sed 's/\* /-/;s/^-master$$//')
 endif
 endif
+endif
+
 # Make sure we have something in REV
 ifeq ($(REV),)
 REV := norev000
