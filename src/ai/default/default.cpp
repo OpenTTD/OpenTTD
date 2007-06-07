@@ -672,8 +672,8 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 		const Industry* i = (const Industry*)fr->from;
 		const IndustrySpec *indsp = GetIndustrySpec(i->type);
 
-		if (i->pct_transported[fr->cargo != indsp->produced_cargo[0]] > 0x99 ||
-				i->total_production[fr->cargo != indsp->produced_cargo[0]] == 0) {
+		if (i->last_month_pct_transported[fr->cargo != indsp->produced_cargo[0]] > 0x99 ||
+				i->last_month_production[fr->cargo != indsp->produced_cargo[0]] == 0) {
 			return false;
 		}
 	}

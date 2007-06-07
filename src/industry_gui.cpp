@@ -326,9 +326,9 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			DrawString(2, 117, STR_482A_PRODUCTION_LAST_MONTH, 0);
 
 			SetDParam(0, ind->produced_cargo[0]);
-			SetDParam(1, i->total_production[0]);
+			SetDParam(1, i->last_month_production[0]);
 
-			SetDParam(2, i->pct_transported[0] * 100 >> 8);
+			SetDParam(2, i->last_month_pct_transported[0] * 100 >> 8);
 			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
@@ -338,8 +338,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 			if (ind->produced_cargo[1] != CT_INVALID) {
 				SetDParam(0, ind->produced_cargo[1]);
-				SetDParam(1, i->total_production[1]);
-				SetDParam(2, i->pct_transported[1] * 100 >> 8);
+				SetDParam(1, i->last_month_production[1]);
+				SetDParam(2, i->last_month_pct_transported[1] * 100 >> 8);
 				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
 				/* Let's put out those buttons.. */
 				if (IsProductionAlterable(i)) {
@@ -423,7 +423,7 @@ static void UpdateIndustryProduction(Industry *i)
 
 	for (byte j = 0; j < lengthof(ind->produced_cargo); j++) {
 		if (ind->produced_cargo[j] != CT_INVALID) {
-			i->total_production[j] = 8 * i->production_rate[j];
+			i->last_month_production[j] = 8 * i->production_rate[j];
 		}
 	}
 }
@@ -509,8 +509,8 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 					r = 1;
 				} else {
 					r =
-						(i->total_production[0] + i->total_production[1]) -
-						(j->total_production[0] + j->total_production[1]);
+						(i->last_month_production[0] + i->last_month_production[1]) -
+						(j->last_month_production[0] + j->last_month_production[1]);
 				}
 			}
 			break;
@@ -525,15 +525,15 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 					int pi;
 					int pj;
 
-					pi = i->pct_transported[0] * 100 >> 8;
+					pi = i->last_month_pct_transported[0] * 100 >> 8;
 					if (ind_i->produced_cargo[1] != CT_INVALID) {
-						int p = i->pct_transported[1] * 100 >> 8;
+						int p = i->last_month_pct_transported[1] * 100 >> 8;
 						if (p < pi) pi = p;
 					}
 
-					pj = j->pct_transported[0] * 100 >> 8;
+					pj = j->last_month_pct_transported[0] * 100 >> 8;
 					if (ind_j->produced_cargo[1] != CT_INVALID) {
-						int p = j->pct_transported[1] * 100 >> 8;
+						int p = j->last_month_pct_transported[1] * 100 >> 8;
 						if (p < pj) pj = p;
 					}
 
@@ -618,16 +618,16 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, i->index);
 			if (ind->produced_cargo[0] != CT_INVALID) {
 				SetDParam(1, ind->produced_cargo[0]);
-				SetDParam(2, i->total_production[0]);
+				SetDParam(2, i->last_month_production[0]);
 
 				if (ind->produced_cargo[1] != CT_INVALID) {
 					SetDParam(3, ind->produced_cargo[1]);
-					SetDParam(4, i->total_production[1]);
-					SetDParam(5, i->pct_transported[0] * 100 >> 8);
-					SetDParam(6, i->pct_transported[1] * 100 >> 8);
+					SetDParam(4, i->last_month_production[1]);
+					SetDParam(5, i->last_month_pct_transported[0] * 100 >> 8);
+					SetDParam(6, i->last_month_pct_transported[1] * 100 >> 8);
 					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_TWO, 0);
 				} else {
-					SetDParam(3, i->pct_transported[0] * 100 >> 8);
+					SetDParam(3, i->last_month_pct_transported[0] * 100 >> 8);
 					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM, 0);
 				}
 			} else {

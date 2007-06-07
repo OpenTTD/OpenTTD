@@ -361,10 +361,10 @@ static void TransportIndustryGoods(TileIndex tile)
 		/* fluctuating economy? */
 		if (_economy.fluct <= 0) cw = (cw + 1) / 2;
 
-		i->last_mo_production[0] += cw;
+		i->this_month_production[0] += cw;
 
 		am = MoveGoodsToStation(i->xy, i->width, i->height, indspec->produced_cargo[0], cw);
-		i->last_mo_transported[0] += am;
+		i->this_month_transported[0] += am;
 		if (am != 0) {
 			uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
 
@@ -383,10 +383,10 @@ static void TransportIndustryGoods(TileIndex tile)
 
 		if (_economy.fluct <= 0) cw = (cw + 1) / 2;
 
-		i->last_mo_production[1] += cw;
+		i->this_month_production[1] += cw;
 
 		am = MoveGoodsToStation(i->xy, i->width, i->height, indspec->produced_cargo[1], cw);
-		i->last_mo_transported[1] += am;
+		i->this_month_transported[1] += am;
 	}
 }
 
@@ -1368,20 +1368,20 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->counter = GB(r, 0, 12);
 	i->cargo_waiting[0] = 0;
 	i->cargo_waiting[1] = 0;
-	i->last_mo_production[0] = 0;
-	i->last_mo_production[1] = 0;
-	i->last_mo_transported[0] = 0;
-	i->last_mo_transported[1] = 0;
-	i->pct_transported[0] = 0;
-	i->pct_transported[1] = 0;
-	i->total_transported[0] = 0;
-	i->total_transported[1] = 0;
+	i->this_month_production[0] = 0;
+	i->this_month_production[1] = 0;
+	i->this_month_transported[0] = 0;
+	i->this_month_transported[1] = 0;
+	i->last_month_pct_transported[0] = 0;
+	i->last_month_pct_transported[1] = 0;
+	i->last_month_transported[0] = 0;
+	i->last_month_transported[1] = 0;
 	i->was_cargo_delivered = false;
 	i->last_prod_year = _cur_year;
-	i->total_production[0] = i->production_rate[0] * 8;
-	i->total_production[1] = i->production_rate[1] * 8;
+	i->last_month_production[0] = i->production_rate[0] * 8;
+	i->last_month_production[1] = i->production_rate[1] * 8;
 
-	if (!_generating_world) i->total_production[0] = i->total_production[1] = 0;
+	if (!_generating_world) i->last_month_production[0] = i->last_month_production[1] = 0;
 
 	i->prod_level = 0x10;
 
@@ -1615,7 +1615,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 				new_prod = old_prod = i->production_rate[j];
 				if (CHANCE16I(20, 1024, r))
 					new_prod -= ((RandomRange(50) + 10) * old_prod) >> 8;
-				if (CHANCE16I(20 + (i->pct_transported[j] * 20 >> 8), 1024, r >> 16))
+				if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16))
 					new_prod += ((RandomRange(50) + 10) * old_prod) >> 8;
 
 				new_prod = clamp(new_prod, 0, 255);
@@ -1667,17 +1667,17 @@ static void UpdateIndustryStatistics(Industry *i)
 	for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
 		if (indsp->produced_cargo[j] != CT_INVALID) {
 			pct = 0;
-			if (i->last_mo_production[j] != 0) {
+			if (i->this_month_production[j] != 0) {
 				i->last_prod_year = _cur_year;
-				pct = min(i->last_mo_transported[j] * 256 / i->last_mo_production[j], 255);
+				pct = min(i->this_month_transported[j] * 256 / i->this_month_production[j], 255);
 			}
-			i->pct_transported[j] = pct;
+			i->last_month_pct_transported[j] = pct;
 
-			i->total_production[j] = i->last_mo_production[j];
-			i->last_mo_production[j] = 0;
+			i->last_month_production[j] = i->this_month_production[j];
+			i->this_month_production[j] = 0;
 
-			i->total_transported[j] = i->last_mo_transported[j];
-			i->last_mo_transported[j] = 0;
+			i->last_month_transported[j] = i->this_month_transported[j];
+			i->this_month_transported[j] = 0;
 			refresh = true;
 		}
 	}
@@ -1767,7 +1767,7 @@ static void ChangeIndustryProduction(Industry *i)
 
 			if (only_decrease || CHANCE16(1, 3)) {
 				/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
-				if (!only_decrease && (i->pct_transported[0] > 153) != CHANCE16(1, 3)) {
+				if (!only_decrease && (i->last_month_pct_transported[0] > 153) != CHANCE16(1, 3)) {
 					/* Increase production */
 					if (i->prod_level != 0x80) {
 						byte b;
@@ -1870,30 +1870,30 @@ extern const TileTypeProcs _tile_type_industry_procs = {
 };
 
 static const SaveLoad _industry_desc[] = {
-	SLE_CONDVAR(Industry, xy,                  SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
-	SLE_CONDVAR(Industry, xy,                  SLE_UINT32,                  6, SL_MAX_VERSION),
-	    SLE_VAR(Industry, width,               SLE_UINT8),
-	    SLE_VAR(Industry, height,              SLE_UINT8),
-	    SLE_REF(Industry, town,                REF_TOWN),
+	SLE_CONDVAR(Industry, xy,                         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDVAR(Industry, xy,                         SLE_UINT32,                  6, SL_MAX_VERSION),
+	    SLE_VAR(Industry, width,                      SLE_UINT8),
+	    SLE_VAR(Industry, height,                     SLE_UINT8),
+	    SLE_REF(Industry, town,                       REF_TOWN),
 	SLE_CONDNULL( 2, 2, 60),       ///< used to be industry's produced_cargo
-	    SLE_ARR(Industry, cargo_waiting,       SLE_UINT16, 2),
-	    SLE_ARR(Industry, production_rate,     SLE_UINT8,  2),
+	    SLE_ARR(Industry, cargo_waiting,              SLE_UINT16, 2),
+	    SLE_ARR(Industry, production_rate,            SLE_UINT8,  2),
 	SLE_CONDNULL( 3, 2, 60),       ///< used to be industry's accepts_cargo
-	    SLE_VAR(Industry, prod_level,          SLE_UINT8),
-	    SLE_ARR(Industry, last_mo_production,  SLE_UINT16, 2),
-	    SLE_ARR(Industry, last_mo_transported, SLE_UINT16, 2),
-	    SLE_ARR(Industry, pct_transported,     SLE_UINT8,  2),
-	    SLE_ARR(Industry, total_production,    SLE_UINT16, 2),
-	    SLE_ARR(Industry, total_transported,   SLE_UINT16, 2),
+	    SLE_VAR(Industry, prod_level,                 SLE_UINT8),
+	    SLE_ARR(Industry, this_month_production,      SLE_UINT16, 2),
+	    SLE_ARR(Industry, this_month_transported,     SLE_UINT16, 2),
+	    SLE_ARR(Industry, last_month_pct_transported, SLE_UINT8,  2),
+	    SLE_ARR(Industry, last_month_production,      SLE_UINT16, 2),
+	    SLE_ARR(Industry, last_month_transported,     SLE_UINT16, 2),
 
-	    SLE_VAR(Industry, counter,             SLE_UINT16),
+	    SLE_VAR(Industry, counter,                    SLE_UINT16),
 
-	    SLE_VAR(Industry, type,                SLE_UINT8),
-	    SLE_VAR(Industry, owner,               SLE_UINT8),
-	    SLE_VAR(Industry, random_color,        SLE_UINT8),
-	SLE_CONDVAR(Industry, last_prod_year,      SLE_FILE_U8 | SLE_VAR_I32,  0, 30),
-	SLE_CONDVAR(Industry, last_prod_year,      SLE_INT32,                 31, SL_MAX_VERSION),
-	    SLE_VAR(Industry, was_cargo_delivered, SLE_UINT8),
+	    SLE_VAR(Industry, type,                       SLE_UINT8),
+	    SLE_VAR(Industry, owner,                      SLE_UINT8),
+	    SLE_VAR(Industry, random_color,               SLE_UINT8),
+	SLE_CONDVAR(Industry, last_prod_year,             SLE_FILE_U8 | SLE_VAR_I32,  0, 30),
+	SLE_CONDVAR(Industry, last_prod_year,             SLE_INT32,                 31, SL_MAX_VERSION),
+	    SLE_VAR(Industry, was_cargo_delivered,        SLE_UINT8),
 
 	/* reserve extra space in savegame here. (currently 32 bytes) */
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),

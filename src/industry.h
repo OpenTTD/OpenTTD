@@ -73,27 +73,27 @@ DECLARE_ENUM_AS_BIT_SET(IndustyBehaviour);
  * Defines the internal data of a functionnal industry
  */
 struct Industry {
-	TileIndex xy;                   ///< coordinates of the primary tile the industry is built one
+	TileIndex xy;                       ///< coordinates of the primary tile the industry is built one
 	byte width;
 	byte height;
-	const Town* town;               ///< Nearest town
-	uint16 cargo_waiting[2];        ///< amount of cargo produced per cargo
-	byte production_rate[2];        ///< production rate for each cargo
-	byte prod_level;                ///< general production level
-	uint16 last_mo_production[2];   ///< stats of last month production per cargo
-	uint16 last_mo_transported[2];  ///< stats of last month transport per cargo
-	byte pct_transported[2];        ///< percentage transported per cargo
-	uint16 total_production[2];     ///< total units produced per cargo
-	uint16 total_transported[2];    ///< total units transported per cargo
-	uint16 counter;                 ///< used for animation and/or production (if available cargo)
+	const Town *town;                   ///< Nearest town
+	uint16 cargo_waiting[2];            ///< amount of cargo produced per cargo
+	byte production_rate[2];            ///< production rate for each cargo
+	byte prod_level;                    ///< general production level
+	uint16 this_month_production[2];    ///< stats of this month's production per cargo
+	uint16 this_month_transported[2];   ///< stats of this month's transport per cargo
+	byte last_month_pct_transported[2]; ///< percentage transported per cargo in the last full month
+	uint16 last_month_production[2];    ///< total units produced per cargo in the last full month
+	uint16 last_month_transported[2];   ///< total units transported per cargo in the last full month
+	uint16 counter;                     ///< used for animation and/or production (if available cargo)
 
-	IndustryType type;              ///< type of industry. see IT_COAL_MINE and others
-	OwnerByte owner;                ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
-	byte random_color;              ///< randomized colour of the industry, for display purpose
-	Year last_prod_year;            ///< last year of production
-	byte was_cargo_delivered;       ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
+	IndustryType type;                  ///< type of industry. see IT_COAL_MINE and others
+	OwnerByte owner;                    ///< owner of the industry.  Which SHOULD always be (imho) OWNER_NONE
+	byte random_color;                  ///< randomized colour of the industry, for display purpose
+	Year last_prod_year;                ///< last year of production
+	byte was_cargo_delivered;           ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 
-	IndustryID index;               ///< index of the industry in the pool of industries
+	IndustryID index;                   ///< index of the industry in the pool of industries
 };
 
 struct IndustryTileTable {

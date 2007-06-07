@@ -280,9 +280,9 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 
 		// No limits on delevering stations!
 		//  Or for industry that does not give anything yet
-		if (indsp->produced_cargo[0] == CT_INVALID || i->total_production[0] == 0) return true;
+		if (indsp->produced_cargo[0] == CT_INVALID || i->last_month_production[0] == 0) return true;
 
-		if (i->total_production[0] - i->total_transported[0] < AI_CHECKCITY_NEEDED_CARGO) return false;
+		if (i->last_month_production[0] - i->last_month_transported[0] < AI_CHECKCITY_NEEDED_CARGO) return false;
 
 		// Check if we have build a station in this town the last 6 months
 		//  else we don't do it. This is done, because stat updates can be slow
@@ -322,7 +322,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 		// We are about to add one...
 		count++;
 		// Check if we the city can provide enough cargo for this amount of stations..
-		if (count * AI_CHECKCITY_CARGO_PER_STATION > i->total_production[0]) return false;
+		if (count * AI_CHECKCITY_CARGO_PER_STATION > i->last_month_production[0]) return false;
 
 		// All check are okay, so we can build here!
 		return true;
@@ -468,12 +468,12 @@ static void AiNew_State_LocateRoute(Player *p)
 
 			// TODO: in max_cargo, also check other cargo (beside [0])
 			// First we check if the from_ic produces cargo that this ic accepts
-			if (indsp_from->produced_cargo[0] != CT_INVALID && ind_from->total_production[0] != 0) {
+			if (indsp_from->produced_cargo[0] != CT_INVALID && ind_from->last_month_production[0] != 0) {
 				for (i = 0; i < lengthof(indsp_temp->accepts_cargo); i++) {
 					if (indsp_temp->accepts_cargo[i] == CT_INVALID) break;
 					if (indsp_from->produced_cargo[0] == indsp_temp->accepts_cargo[i]) {
 						// Found a compatible industry
-						max_cargo = ind_from->total_production[0] - ind_from->total_transported[0];
+						max_cargo = ind_from->last_month_production[0] - ind_from->last_month_transported[0];
 						found = true;
 						p->ainew.from_deliver = true;
 						p->ainew.to_deliver = false;
@@ -481,14 +481,14 @@ static void AiNew_State_LocateRoute(Player *p)
 					}
 				}
 			}
-			if (!found && indsp_temp->produced_cargo[0] != CT_INVALID && ind_temp->total_production[0] != 0) {
+			if (!found && indsp_temp->produced_cargo[0] != CT_INVALID && ind_temp->last_month_production[0] != 0) {
 				// If not check if the current ic produces cargo that the from_ic accepts
 				for (i = 0; i < lengthof(indsp_from->accepts_cargo); i++) {
 					if (indsp_from->accepts_cargo[i] == CT_INVALID) break;
 					if (indsp_from->produced_cargo[0] == indsp_from->accepts_cargo[i]) {
 						// Found a compatbiel industry
 						found = true;
-						max_cargo = ind_temp->total_production[0] - ind_temp->total_transported[0];
+						max_cargo = ind_temp->last_month_production[0] - ind_temp->last_month_transported[0];
 						p->ainew.from_deliver = false;
 						p->ainew.to_deliver = true;
 						break;
@@ -898,9 +898,9 @@ static int AiNew_HowManyVehicles(Player *p)
 		// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
 		tiles_a_day = RoadVehInfo(i)->max_speed * DAY_TICKS / 256 / 16;
 		if (p->ainew.from_deliver) {
-			max_cargo = GetIndustry(p->ainew.from_ic)->total_production[0];
+			max_cargo = GetIndustry(p->ainew.from_ic)->last_month_production[0];
 		} else {
-			max_cargo = GetIndustry(p->ainew.to_ic)->total_production[0];
+			max_cargo = GetIndustry(p->ainew.to_ic)->last_month_production[0];
 		}
 
 		// This is because moving 60% is more than we can dream of!

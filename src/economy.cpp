@@ -969,12 +969,12 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	/* Randomize cargo type */
 	if (HASBIT(Random(), 0) && ind->produced_cargo[1] != CT_INVALID) {
 		cargo = ind->produced_cargo[1];
-		trans = i->pct_transported[1];
-		total = i->total_production[1];
+		trans = i->last_month_pct_transported[1];
+		total = i->last_month_production[1];
 	} else {
 		cargo = ind->produced_cargo[0];
-		trans = i->pct_transported[0];
-		total = i->total_production[0];
+		trans = i->last_month_pct_transported[0];
+		total = i->last_month_production[0];
 	}
 
 	/* Quit if no production in this industry
