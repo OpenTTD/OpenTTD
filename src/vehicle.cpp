@@ -2714,6 +2714,7 @@ extern const SaveLoad _common_veh_desc[] = {
 
 
 static const SaveLoad _train_desc[] = {
+	SLE_WRITEBYTE(Vehicle, type, VEH_TRAIN),
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, crash_anim_pos),         SLE_UINT16),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, force_proceed),          SLE_UINT8),
@@ -2731,6 +2732,7 @@ static const SaveLoad _train_desc[] = {
 };
 
 static const SaveLoad _roadveh_desc[] = {
+	SLE_WRITEBYTE(Vehicle, type, VEH_ROAD),
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, state),          SLE_UINT8),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, frame),          SLE_UINT8),
@@ -2750,6 +2752,7 @@ static const SaveLoad _roadveh_desc[] = {
 };
 
 static const SaveLoad _ship_desc[] = {
+	SLE_WRITEBYTE(Vehicle, type, VEH_SHIP),
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleShip, state), SLE_UINT8),
 
@@ -2760,6 +2763,7 @@ static const SaveLoad _ship_desc[] = {
 };
 
 static const SaveLoad _aircraft_desc[] = {
+	SLE_WRITEBYTE(Vehicle, type, VEH_AIRCRAFT),
 	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, crashed_counter), SLE_UINT16),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, pos),             SLE_UINT8),
@@ -2778,6 +2782,8 @@ static const SaveLoad _aircraft_desc[] = {
 };
 
 static const SaveLoad _special_desc[] = {
+	SLE_WRITEBYTE(Vehicle, type, VEH_SPECIAL),
+
 	    SLE_VAR(Vehicle, subtype,       SLE_UINT8),
 
 	SLE_CONDVAR(Vehicle, tile,          SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
@@ -2804,6 +2810,8 @@ static const SaveLoad _special_desc[] = {
 };
 
 static const SaveLoad _disaster_desc[] = {
+	SLE_WRITEBYTE(Vehicle, type, VEH_DISASTER),
+
 	    SLE_REF(Vehicle, next,          REF_VEHICLE_OLD),
 
 	    SLE_VAR(Vehicle, subtype,       SLE_UINT8),
@@ -2856,7 +2864,6 @@ static void Save_VEHS()
 	/* Write the vehicles */
 	FOR_ALL_VEHICLES(v) {
 		SlSetArrayIndex(v->index);
-		SlWriteByte(v->type);
 		SlObject(v, (SaveLoad*)_veh_descs[v->type]);
 	}
 }
@@ -2874,8 +2881,8 @@ static void Load_VEHS()
 			error("Vehicles: failed loading savegame: too many vehicles");
 
 		v = GetVehicle(index);
-		v->type = (VehicleType)SlReadByte();
-		SlObject(v, (SaveLoad*)_veh_descs[v->type]);
+		VehicleType vtype = (VehicleType)SlReadByte();
+		SlObject(v, (SaveLoad*)_veh_descs[vtype]);
 
 		switch (v->type) {
 			case VEH_TRAIN:    v = new (v) Train();           break;

@@ -161,6 +161,7 @@ enum SaveLoadTypes {
 	SL_STR       =  3,
 	SL_LST       =  4,
 	// non-normal save-load types
+	SL_WRITEBYTE =  8,
 	SL_INCLUDE   =  9,
 	SL_END       = 15
 };
@@ -200,6 +201,8 @@ typedef SaveLoad SaveLoadGlobVarList;
 
 #define SLE_CONDNULL(length, from, to) SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL | SLF_CONFIG_NO, length, from, to)
 
+/* Translate values ingame to different values in the savegame and vv */
+#define SLE_WRITEBYTE(base, variable, value) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, value, value)
 /* Load common code and put it into each struct (currently only for vehicles */
 #define SLE_INCLUDE(base, variable, include_index) SLE_GENERAL(SL_INCLUDE, base, variable, 0, 0, include_index, 0)
 
@@ -211,6 +214,7 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_VARX(offset, type) SLE_CONDVARX(offset, type, 0, SL_MAX_VERSION)
 #define SLE_REFX(offset, type) SLE_CONDREFX(offset, type, 0, SL_MAX_VERSION)
 
+#define SLE_WRITEBYTEX(offset, something) SLE_GENERALX(SL_WRITEBYTE, offset, 0, something, 0)
 #define SLE_INCLUDEX(offset, type) SLE_GENERALX(SL_INCLUDE, offset, type, 0, SL_MAX_VERSION)
 
 /* End marker */
