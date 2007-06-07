@@ -100,7 +100,7 @@ else
 # Are we a git dir?
 ifeq ($(shell if test -d $(SRC_DIR)/../.git; then echo 1; fi), 1)
 # Find the revision like: rXXXXM
-REV := g$(shell if head=`git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(shell if git diff-index HEAD | read dummy; then echo M; fi)$(shell git branch|grep '*'|sed 's/\* /-/;s/^-master$$//')
+REV := g$(shell if head=`git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(shell if git diff-index HEAD | read dummy; then echo M; fi)$(shell git branch|grep '[*]'|sed 's/\* /-/;s/^-master$$//')
 endif
 endif
 endif
