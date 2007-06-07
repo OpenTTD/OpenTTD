@@ -2987,8 +2987,14 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 		case 0x83: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
 			return _opt.landscape;
 
-		case 0x84: // GRF loading stage
-			return (_cur_stage > GLS_INIT) | ((_cur_stage == GLS_ACTIVATION) << 9);
+		case 0x84: { // GRF loading stage
+			uint32 res = 0;
+
+			if (_cur_stage > GLS_INIT) SETBIT(res, 0);
+			if (_cur_stage == GLS_RESERVE) SETBIT(res, 8);
+			if (_cur_stage == GLS_ACTIVATION) SETBIT(res, 9);
+			return res;
+		}
 
 		case 0x85: // TTDPatch flags, only for bit tests
 			if (cond_val == NULL) {
