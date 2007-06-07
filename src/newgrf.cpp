@@ -4830,7 +4830,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 		_cur_grffile = GetFileByFilename(filename);
 		if (_cur_grffile == NULL) error("File '%s' lost in cache.\n", filename);
 		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
-		if (stage == GLS_ACTIVATION && config->status != GCS_ACTIVATED) return;
+		if (stage == GLS_ACTIVATION && config->status != GCS_INITIALISED) return;
 	}
 
 	FioOpenFile(file_index, filename);
@@ -4945,7 +4945,9 @@ void LoadNewGRF(uint load_index, uint file_index)
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
 			LoadNewGRFFile(c, slot++, stage);
-			if (stage == GLS_ACTIVATION) {
+			if (stage == GLS_RESERVE) {
+				if (c->status == GCS_ACTIVATED) c->status = GCS_INITIALISED;
+			} else if (stage == GLS_ACTIVATION) {
 				ClearTemporaryNewGRFData();
 				BuildCargoTranslationMap();
 				DEBUG(sprite, 2, "LoadNewGRF: Currently %i sprites are loaded", _cur_spriteid);
