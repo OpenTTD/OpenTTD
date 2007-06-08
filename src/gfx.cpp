@@ -856,7 +856,7 @@ static inline void GfxBlitTileZoom(BlitterParams *bp)
 				if (num <= 0) continue;
 			}
 
-			num = UnScaleByZoom(num + ScaleByZoom(1, Tzoom) - 1, Tzoom);
+			num = UnScaleByZoom(num, Tzoom);
 
 			switch (Tmode) {
 				case BM_COLOUR_REMAP:
