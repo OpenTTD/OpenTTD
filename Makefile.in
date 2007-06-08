@@ -99,6 +99,9 @@ run: all
 run-gdb: all
 	$(Q)cd !!BIN_DIR!! && gdb --ex run --args ./!!TTD!! $(OPENTTD_ARGS)
 
+run-prof: all
+	$(Q)cd !!BIN_DIR!! && ./!!TTD!! $(OPENTTD_ARGS) && gprof !!TTD!! | less
+
 %.o:
 	@for dir in $(SRC_DIRS); do \
 		$(MAKE) -C $$dir $(@:src/%=%); \
