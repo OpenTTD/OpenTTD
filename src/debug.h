@@ -93,7 +93,27 @@ const char *GetDebugString();
 	#define OTTD_PRINTF64 "ll"
 #endif
 
-/* Used for profiling */
+/* Used for profiling
+ *
+ * Usage:
+ * TIC();
+ *   --Do your code--
+ * TOC("A name", 1);
+ *
+ * When you run the TIC() / TOC() multiple times, you can increase the '1'
+ *  to only display average stats every N values. Some things to know:
+ *
+ * for (int i = 0; i < 5; i++) {
+ *   TIC();
+ *     --Do yuor code--
+ *   TOC("A name", 5);
+ * }
+ *
+ * Is the correct usage for multiple TIC() / TOC() calls.
+ *
+ * TIC() / TOC() creates it's own block, so make sure not the mangle
+ *  it with an other block.
+ **/
 #define TIC() {\
 	extern uint64 _rdtsc();\
 	uint64 _xxx_ = _rdtsc();\
