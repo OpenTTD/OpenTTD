@@ -8,22 +8,6 @@
 #include "town.h"
 
 /**
- * Maps a house id stored on the map to a GRF file.
- * House IDs are stored on the map, so there needs to be a way to tie them to
- * GRF files. An array of HouseIDMapping structs is saved with the savegame so
- * that house GRFs can be loaded in a different order, or removed safely. The
- * index in the array is the house ID stored on the map.
- *
- * The substitute ID is the ID of an original house that should be used instead
- * if the GRF containing the new house is not available.
- */
-struct HouseIDMapping {
-	uint32 grfid;          ///< The GRF ID of the file this house belongs to
-	uint8  house_id;       ///< The house ID within the GRF file
-	uint8  substitute_id;  ///< The (original) house ID to use if this GRF is not available
-};
-
-/**
  * Makes class IDs unique to each GRF file.
  * Houses can be assigned class IDs which are only comparable within the GRF
  * file they were defined in. This mapping ensures that if two houses have the
