@@ -44,12 +44,46 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_RESIZE,
 };
 
+/**
+ * Return the memorised selected order.
+ *
+ * @param w current window
+ * @return the memorised order if it is a vaild one
+ *  else return the number of orders
+ */
 static int OrderGetSel(const Window *w)
 {
 	const Vehicle *v = GetVehicle(w->window_number);
 	int num = WP(w,order_d).sel;
 
 	return (num >= 0 && num < v->num_orders) ? num : v->num_orders;
+}
+
+/**
+ * Calculate the selected order.
+ * The calculation is based on the relative (to the window) y click position and
+ *  the position of the scrollbar.
+ *
+ * @param w current window
+ * @param y Y-value of the click relative to the window origin
+ * @param v current vehicle
+ * @return the new selected order if the order is valid else return that
+ *  an invalid one has been selected.
+ */
+static int GetOrderFromOrderWndPt(Window *w, int y, const Vehicle *v)
+{
+	/*
+	 * Calculation description:
+	 * 15 = 14 (w->widget[ORDER_WIDGET_ORDER_LIST].top) + 1 (frame-line)
+	 * 10 = order text hight
+	 */
+	int sel = (y - 15) / 10;
+
+	if ((uint)sel >= w->vscroll.cap) return INVALID_ORDER;
+
+	sel += w->vscroll.pos;
+
+	return (sel <= v->num_orders && sel >= 0) ? sel : INVALID_ORDER;
 }
 
 static StringID StationOrderStrings[] = {
@@ -513,14 +547,14 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		Vehicle *v = GetVehicle(w->window_number);
+		const Vehicle *v = GetVehicle(w->window_number);
 		switch (e->we.click.widget) {
 		case ORDER_WIDGET_ORDER_LIST: {
-			int sel = (e->we.click.pt.y - 15) / 10;
+			ResetObjectToPlace();
 
-			if ((uint)sel >= w->vscroll.cap) return;
+			int sel = GetOrderFromOrderWndPt(w, e->we.click.pt.y, v);
 
-			sel += w->vscroll.pos;
+			if (sel == INVALID_ORDER) return;
 
 			if (_ctrl_pressed && sel < v->num_orders) {
 				const Order *ord = GetVehicleOrder(v, sel);
@@ -535,10 +569,21 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 				if (xy != 0) ScrollMainWindowToTile(xy);
 				return;
+			} else {
+				if (sel == WP(w,order_d).sel) {
+					/* Deselect clicked order */
+					WP(w,order_d).sel = -1;
+				} else {
+					/* Select clicked order */
+					WP(w,order_d).sel = sel;
+
+					if (v->owner == _local_player) {
+						/* Activate drag and drop */
+						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, 4, w);
+					}
+				}
 			}
 
-			if (sel == WP(w,order_d).sel) sel = -1;
-			WP(w,order_d).sel = sel;
 			SetWindowDirty(w);
 		} break;
 
@@ -577,6 +622,31 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 	} break;
+
+	case WE_DRAGDROP: {
+		const Vehicle *v = GetVehicle(w->window_number);
+
+		switch (e->we.click.widget) {
+			case ORDER_WIDGET_ORDER_LIST: {
+				int from_order = OrderGetSel(w);
+				int to_order = GetOrderFromOrderWndPt(w, e->we.dragdrop.pt.y, v);
+
+				if (!(from_order == to_order || from_order == INVALID_ORDER || from_order > v->num_orders || to_order == INVALID_ORDER || to_order > v->num_orders) &&
+						DoCommandP(v->tile, v->index, from_order | (to_order << 16), NULL, CMD_MOVE_ORDER | CMD_MSG(STR_CAN_T_MOVE_THIS_ORDER))) {
+					WP(w, order_d).sel = -1;
+				}
+
+				break;
+			}
+
+			case ORDER_WIDGET_DELETE:
+				OrderClick_Delete(w, v);
+				break;
+		}
+
+		ResetObjectToPlace();
+		break;
+	}
 
 	case WE_KEYPRESS: {
 		Vehicle *v = GetVehicle(w->window_number);

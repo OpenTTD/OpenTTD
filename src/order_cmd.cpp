@@ -598,6 +598,91 @@ int32 CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+/**
+ * Move an order inside the orderlist
+ * @param tile unused
+ * @param p1 the ID of the vehicle
+ * @param p2 order to move and target
+ *           bit 0-15  : the order to move
+ *           bit 16-31 : the target order
+ * @note The target order will move one place down in the orderlist
+ *  if you move the order upwards else it'll move it one place down
+ */
+int32 CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	VehicleID veh = p1;
+	VehicleOrderID moving_order = GB(p2,  0, 16);
+	VehicleOrderID target_order = GB(p2, 16, 16);
+
+	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+
+	Vehicle *v = GetVehicle(veh);
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+
+	/* Don't make senseless movements */
+	if (moving_order >= v->num_orders || target_order >= v->num_orders ||
+			moving_order == target_order || v->num_orders <= 1)
+		return CMD_ERROR;
+
+	Order *moving_one = GetVehicleOrder(v, moving_order);
+	/* Don't move an empty order */
+	if (moving_one == NULL) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		/* Take the moving order out of the pointer-chain */
+		Order *one_before = GetVehicleOrder(v, moving_order - 1);
+		Order *one_past = GetVehicleOrder(v, moving_order + 1);
+
+		if (one_before == NULL) {
+			/* First order edit */
+			v->orders = moving_one->next;
+		} else {
+			one_before->next = moving_one->next;
+		}
+
+		/* Insert the moving_order again in the pointer-chain */
+		one_before = GetVehicleOrder(v, target_order - 1);
+		one_past = GetVehicleOrder(v, target_order);
+
+		moving_one->next = one_past;
+
+		if (one_before == NULL) {
+			/* first order edit */
+			SwapOrders(v->orders, moving_one);
+			v->orders->next = moving_one;
+		} else {
+			one_before->next = moving_one;
+		}
+
+		/* Update shared list */
+		Vehicle *u = GetFirstVehicleFromSharedList(v);
+
+		DeleteOrderWarnings(u);
+
+		for (; u != NULL; u = u->next_shared) {
+			/* Update the first order */
+			if (u->orders != v->orders) u->orders = v->orders;
+
+			/* Update the current order */
+			if (u->cur_order_index == moving_order) {
+				u->cur_order_index = target_order;
+			} else if(u->cur_order_index > moving_order && u->cur_order_index <= target_order) {
+				u->cur_order_index--;
+			} else if(u->cur_order_index < moving_order && u->cur_order_index >= target_order) {
+				u->cur_order_index++;
+			}
+
+			assert(v->orders == u->orders);
+			/* Update any possible open window of the vehicle */
+			InvalidateVehicleOrder(u);
+		}
+
+		/* Make sure to rebuild the whole list */
+		RebuildVehicleLists();
+	}
+
+	return 0;
+}
 
 /** Modify an order in the orderlist of a vehicle.
  * @param tile unused
