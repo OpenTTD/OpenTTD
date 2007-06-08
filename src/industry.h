@@ -197,7 +197,6 @@ static inline bool IsValidIndustryID(IndustryID index)
 	return index < GetIndustryPoolSize() && IsValidIndustry(GetIndustry(index));
 }
 
-VARDEF int _total_industries; //general counter
 
 static inline IndustryID GetMaxIndustryIndex()
 {
@@ -212,6 +211,36 @@ static inline IndustryID GetMaxIndustryIndex()
 static inline uint GetNumIndustries()
 {
 	return _total_industries;
+}
+
+extern int _total_industries;                      // general counter
+extern uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
+
+/** Increment the count of industries for this type
+ * @param type IndustryType to increment
+ * @pre type < INVALID_INDUSTRYTYPE */
+static inline void IncIndustryTypeCount(IndustryType type)
+{
+	assert(type < INVALID_INDUSTRYTYPE);
+	_industry_counts[type]++;
+}
+
+/** Decrement the count of industries for this type
+ * @param type IndustryType to decrement
+ * @pre type < INVALID_INDUSTRYTYPE */
+static inline void DecIndustryTypeCount(IndustryType type)
+{
+	assert(type < INVALID_INDUSTRYTYPE);
+	_industry_counts[type]--;
+}
+
+/** get the count of industries for this type
+ * @param type IndustryType to query
+ * @pre type < INVALID_INDUSTRYTYPE */
+static inline uint8 GetIndustryTypeCount(IndustryType type)
+{
+	assert(type < INVALID_INDUSTRYTYPE);
+	return min(_industry_counts[type], 0xFF); // callback expects only a byte, so cut it
 }
 
 /**
@@ -249,8 +278,8 @@ static inline void DeleteIndustry(Industry *i)
 #define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) if (IsValidIndustry(i))
 #define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
 
-VARDEF const Industry** _industry_sort;
-VARDEF bool _industry_sort_dirty;
+extern const Industry **_industry_sort;
+extern bool _industry_sort_dirty;
 
 enum {
 	IT_COAL_MINE           =   0,

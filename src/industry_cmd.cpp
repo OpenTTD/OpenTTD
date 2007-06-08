@@ -37,6 +37,12 @@ void BuildOilRig(TileIndex tile);
 static byte _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
+int _total_industries;                      //general counter
+uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
+
+const Industry **_industry_sort;
+bool _industry_sort_dirty;
+
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 
@@ -142,6 +148,8 @@ void DestroyIndustry(Industry *i)
 
 	_industry_sort_dirty = true;
 	_total_industries--;
+	DecIndustryTypeCount(i->type);
+
 	DeleteSubsidyWithIndustry(i->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, i->index);
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
@@ -1351,6 +1359,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->xy = tile;
 	i->width = i->height = 0;
 	i->type = type;
+	IncIndustryTypeCount(type);
 
 	i->production_rate[0] = indspec->production_rate[0];
 	i->production_rate[1] = indspec->production_rate[1];
@@ -1849,6 +1858,7 @@ void InitializeIndustries()
 	AddBlockToPool(&_Industry_pool);
 
 	_total_industries = 0;
+	memset(&_industry_counts, 0, sizeof(_industry_counts));
 	_industry_sort_dirty = true;
 	_industry_sound_tile = 0;
 }
@@ -1926,6 +1936,7 @@ static void Load_INDY()
 
 		i = GetIndustry(index);
 		SlObject(i, _industry_desc);
+		IncIndustryTypeCount(i->type);
 
 		_total_industries++;
 	}
