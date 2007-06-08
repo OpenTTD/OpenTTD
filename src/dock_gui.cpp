@@ -235,14 +235,16 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: LowerWindowWidget(w, _station_show_coverage + 3); break;
 
 	case WE_PAINT: {
-		int rad;
+		int rad = (_patches.modified_catchment) ? CA_DOCK : 4;
 
 		if (WP(w, def_d).close) return;
 		DrawWindowWidgets(w);
 
-		rad = (_patches.modified_catchment) ? CA_DOCK : 4;
-
-		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		if (_station_show_coverage) {
+			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		} else {
+			SetTileSelectSize(1, 1);
+		}
 
 		DrawStationCoverageAreaText(4, 50, (uint)-1, rad);
 		break;
