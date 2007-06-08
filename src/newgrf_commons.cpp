@@ -165,3 +165,13 @@ uint32 GetTerrainType(TileIndex tile)
 	}
 }
 
+TileIndex GetNearbyTile(byte parameter, TileIndex tile)
+{
+	int8 x = GB(parameter, 0, 4);
+	int8 y = GB(parameter, 4, 4);
+
+	if (x >= 8) x -= 16;
+	if (y >= 8) y -= 16;
+
+	return tile + TileDiffXY(x, y);
+}

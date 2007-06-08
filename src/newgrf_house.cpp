@@ -178,6 +178,16 @@ static uint32 GetGRFParameter(HouseID house_id, byte parameter)
 	return file->param[parameter];
 }
 
+uint32 GetNearbyTileInformation(byte parameter, TileIndex tile)
+{
+	uint32 tile_type;
+
+	tile = GetNearbyTile(parameter, tile);
+	tile_type = GetTerrainType(tile) << 2 | (IsTileType(tile, MP_WATER) ? 1 : 0) << 1;
+
+	return GetTileType(tile) << 24 | (TileHeight(tile) * 8) << 16 | tile_type << 8 | GetTileSlope(tile, NULL);
+}
+
 /**
  * HouseGetVariable():
  *
@@ -229,20 +239,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		}
 
 		/* Land info for nearby tiles. */
-		case 0x62: {
-			int8 x = GB(parameter, 0, 4);
-			int8 y = GB(parameter, 4, 4);
-			byte tile_type;
-
-			if (x >= 8) x -= 16;
-			if (y >= 8) y -= 16;
-
-			tile += TileDiffXY(x, y);
-
-			tile_type = GetTerrainType(tile) << 2 | (IsTileType(tile, MP_WATER) ? 1 : 0) << 1;
-
-			return GetTileType(tile) << 24 | (TileHeight(tile) * 8) << 16 | tile_type << 8 | GetTileSlope(tile, NULL);
-		}
+		case 0x62: return GetNearbyTileInformation(parameter, tile);
 
 		/* Read GRF parameter */
 		case 0x7F: return GetGRFParameter(object->u.house.house_id, parameter);
