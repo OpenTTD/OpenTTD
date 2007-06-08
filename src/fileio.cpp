@@ -206,10 +206,10 @@ FILE *FioFOpenFile(const char *filename)
 	FILE *f;
 	char buf[MAX_PATH];
 
-	if (strrchr(filename, PATHSEPCHAR) == NULL) {
-		snprintf(buf, lengthof(buf), "%s%s", _paths.data_dir, filename);
-	} else {
+	if (filename[0] == PATHSEPCHAR || filename[1] == ':') {
 		ttd_strlcpy(buf, filename, lengthof(buf));
+	} else {
+		snprintf(buf, lengthof(buf), "%s%s", _paths.data_dir, filename);
 	}
 
 	f = fopen(buf, "rb");
@@ -264,6 +264,31 @@ void AppendPathSeparator(char *buf, size_t buflen)
 	}
 }
 
+/**
+ * Allocates and files a variable with the full path
+ * based on the given directory.
+ * @param dir the directory to base the path on
+ * @return the malloced full path
+ */
+char *BuildWithFullPath(const char *dir)
+{
+	char *dest = MallocT<char>(MAX_PATH);
+	ttd_strlcpy(dest, dir, MAX_PATH);
+
+	/* Check if absolute or relative path */
+	const char *s = strchr(dest, PATHSEPCHAR);
+
+	/* Add absolute path */
+	if (s == NULL || dest != s) {
+		getcwd(dest, MAX_PATH);
+		AppendPathSeparator(dest, MAX_PATH);
+		ttd_strlcat(dest, dir, MAX_PATH);
+	}
+	AppendPathSeparator(dest, MAX_PATH);
+
+	return dest;
+}
+
 #if defined(WIN32) || defined(WINCE)
 /**
  * Determine the base (personal dir and game data dir) paths
@@ -307,11 +332,9 @@ void DetermineBasePaths(const char *exe)
 	/* Change the working directory to enable doubleclicking in UIs */
 	ChangeWorkingDirectory(exe);
 
-	_paths.game_data_dir = MallocT<char>(MAX_PATH);
-	ttd_strlcpy(_paths.game_data_dir, GAME_DATA_DIR, MAX_PATH);
+	_paths.game_data_dir = BuildWithFullPath(GAME_DATA_DIR);
 #if defined(SECOND_DATA_DIR)
-	_paths.second_data_dir = MallocT<char>(MAX_PATH);
-	ttd_strlcpy(_paths.second_data_dir, SECOND_DATA_DIR, MAX_PATH);
+	_paths.second_data_dir = BuildWithFullPath(SECOND_DATA_DIR);
 #else
 	_paths.second_data_dir = NULL;
 #endif
@@ -325,23 +348,10 @@ void DetermineBasePaths(const char *exe)
 	}
 
 	_paths.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
+	AppendPathSeparator(_paths.personal_dir, MAX_PATH);
 #else /* not defined(USE_HOMEDIR) */
-	_paths.personal_dir = MallocT<char>(MAX_PATH);
-	ttd_strlcpy(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
-
-	/* check if absolute or relative path */
-	const char *s = strchr(_paths.personal_dir, PATHSEPCHAR);
-
-	/* add absolute path */
-	if (s == NULL || _paths.personal_dir != s) {
-		getcwd(_paths.personal_dir, MAX_PATH);
-		AppendPathSeparator(_paths.personal_dir, MAX_PATH);
-		ttd_strlcat(_paths.personal_dir, PERSONAL_DIR, MAX_PATH);
-	}
+	_paths.personal_dir = BuildWithFullPath(PERSONAL_DIR);
 #endif /* defined(USE_HOMEDIR) */
-
-	AppendPathSeparator(_paths.personal_dir,  MAX_PATH);
-	AppendPathSeparator(_paths.game_data_dir, MAX_PATH);
 }
 #endif /* defined(WIN32) || defined(WINCE) */
 
@@ -366,10 +376,7 @@ void DeterminePaths(const char *exe)
 	_paths.gm_dir        = str_fmt("%sgm" PATHSEP, _paths.game_data_dir);
 	_paths.data_dir      = str_fmt("%sdata" PATHSEP, _paths.game_data_dir);
 #if defined(CUSTOM_LANG_DIR)
-	/* Sets the search path for lng files to the custom one */
-	_paths.lang_dir = MallocT<char>(MAX_PATH);
-	ttd_strlcpy(_paths.lang_dir, CUSTOM_LANG_DIR, MAX_PATH);
-	AppendPathSeparator(_paths.lang_dir, MAX_PATH);
+	_paths.lang_dir = BuildWithFullPath(CUSTOM_LANG_DIR);
 #else
 	_paths.lang_dir = str_fmt("%slang" PATHSEP, _paths.game_data_dir);
 #endif

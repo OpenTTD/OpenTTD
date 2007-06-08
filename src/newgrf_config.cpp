@@ -40,7 +40,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 	size_t len;
 
 	/* open the file */
-	f = fopen(config->full_path, "rb");
+	f = FioFOpenFile(config->full_path);
 	if (f == NULL) return false;
 
 	/* calculate md5sum */
@@ -59,13 +59,14 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 /* Find the GRFID and calculate the md5sum */
 bool FillGRFDetails(GRFConfig *config, bool is_static)
 {
-	if (!FileExists(config->full_path)) {
+	if (!FioCheckFileExists(config->full_path)) {
 		config->status = GCS_NOT_FOUND;
 		return false;
 	}
 
 	if (config->filename == NULL) {
-		config->filename = strdup(strrchr(config->full_path, PATHSEPCHAR) + 1);
+		const char *t = strrchr(config->full_path, PATHSEPCHAR);
+		config->filename = strdup(t != NULL ? t + 1 : config->full_path);
 	}
 
 	/* Find and load the Action 8 information */
@@ -278,7 +279,7 @@ compatible_grf:
 extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
 
 /* Scan a path for NewGRFs */
-static uint ScanPath(const char *path)
+static uint ScanPath(const char *path, int basepath_length)
 {
 	uint num = 0;
 	struct stat sb;
@@ -299,7 +300,7 @@ static uint ScanPath(const char *path)
 			/* Directory */
 			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
 			AppendPathSeparator(filename, lengthof(filename));
-			num += ScanPath(filename);
+			num += ScanPath(filename, basepath_length);
 		} else if (sb.st_mode & S_IFREG) {
 			/* File */
 			char *ext = strrchr(filename, '.');
@@ -309,7 +310,7 @@ static uint ScanPath(const char *path)
 			if (strcasecmp(ext, ".grf") != 0) continue;
 
 			GRFConfig *c = CallocT<GRFConfig>(1);
-			c->full_path = strdup(filename);
+			c->full_path = strdup(filename + basepath_length);
 
 			bool added = true;
 			if (FillGRFDetails(c, false)) {
@@ -360,8 +361,10 @@ void ScanNewGRFFiles()
 	ClearGRFConfigList(&_all_grfs);
 
 	DEBUG(grf, 1, "Scanning for NewGRFs");
-	num  = ScanPath(_paths.data_dir);
-	num += ScanPath(_paths.second_data_dir);
+	num  = ScanPath(_paths.data_dir, strlen(_paths.data_dir));
+	if (_paths.second_data_dir != NULL) {
+		num += ScanPath(_paths.second_data_dir, strlen(_paths.second_data_dir));
+	}
 	DEBUG(grf, 1, "Scan complete, found %d files", num);
 }
 

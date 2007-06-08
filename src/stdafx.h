@@ -196,6 +196,7 @@
  * call to the same function and is not thread- or reentrancy-safe */
 #if !defined(STRGEN)
 # if defined(WIN32) || defined(WIN64)
+char *getcwd(char *buf, size_t size);
 #  include <tchar.h>
 /* XXX - WinCE without MSVCRT doesn't support wfopen, so it seems */
 #  if !defined(WINCE)

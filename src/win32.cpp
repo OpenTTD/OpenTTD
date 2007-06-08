@@ -946,16 +946,30 @@ void GetCurrentDirectoryW(int length, wchar_t *path)
 }
 #endif
 
-void DetermineBasePaths(const char *exe)
+char *getcwd(char *buf, size_t size)
 {
-	_paths.personal_dir = _paths.game_data_dir = MallocT<char>(MAX_PATH);
-	_paths.second_data_dir = NULL;
 #if defined(UNICODE)
 	TCHAR path[MAX_PATH];
 	GetCurrentDirectory(MAX_PATH - 1, path);
-	convert_from_fs(path, _paths.personal_dir, MAX_PATH);
+	convert_from_fs(path, buf, size);
 #else
-	GetCurrentDirectory(MAX_PATH - 1, _paths.personal_dir);
+	GetCurrentDirectory(size, buf);
+#endif
+	return buf;
+}
+
+extern char *BuildWithFullPath(const char *dir);
+
+void DetermineBasePaths(const char *exe)
+{
+	_paths.personal_dir = MallocT<char>(MAX_PATH);
+	getcwd(_paths.personal_dir, MAX_PATH);
+
+	_paths.game_data_dir = BuildWithFullPath(GAME_DATA_DIR);
+#if defined(SECOND_DATA_DIR)
+	_paths.second_data_dir = BuildWithFullPath(SECOND_DATA_DIR);
+#else
+	_paths.second_data_dir = NULL;
 #endif
 
 	_paths.personal_dir[0] = toupper(_paths.personal_dir[0]);
