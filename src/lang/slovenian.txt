@@ -4,6 +4,8 @@
 ##plural 8
 ##case r d t
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Čez rob zemljevida
@@ -1088,6 +1090,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Neenake
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo skupno iskanje poti (NPF, prevlada NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Koeficient teže tovora za simulacijo težkih vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dovoli prehodne postaje na cestah v lasti mest: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Dovoli gradnjo združljivih postaj: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vedno dovoli majhna letališča: {ORANGE}{STRING}
 
@@ -1128,6 +1131,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Največ
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Avtomatski servis helikopterjev na pristajališču: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Pripni orodje za teren k orodju za gradnjo cest/železnic itd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Obrni smer premika okna: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Gladek premik pogleda: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Prikaz merilnega nasveta med uporabo gradbenih orodij: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Prikaz znakov podjetij: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Brez
@@ -1140,6 +1144,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Premikaj zemlje
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Izklopljeno
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Hitrost premika s kolescem miške: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Avtomatsko pavziraj ob zagonu nove igre: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uporabi napreden seznam vozil: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Največ vlakov na igralca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Največ cestnih vozil na igralca: {ORANGE}{STRING}
@@ -1434,6 +1439,31 @@ STR_NETWORK_LANG_ANY                                            :Kakršen koli
 STR_NETWORK_LANG_ENGLISH                                        :Angleški
 STR_NETWORK_LANG_GERMAN                                         :Nemški
 STR_NETWORK_LANG_FRENCH                                         :Francoski
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazilski
+STR_NETWORK_LANG_BULGARIAN                                      :Bolgarski
+STR_NETWORK_LANG_CHINESE                                        :Kitajski
+STR_NETWORK_LANG_CZECH                                          :Češki
+STR_NETWORK_LANG_DANISH                                         :Danski
+STR_NETWORK_LANG_DUTCH                                          :Nizozemski
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finski
+STR_NETWORK_LANG_HUNGARIAN                                      :Madžarski
+STR_NETWORK_LANG_ICELANDIC                                      :Islandski
+STR_NETWORK_LANG_ITALIAN                                        :Italijanski
+STR_NETWORK_LANG_JAPANESE                                       :Japonski
+STR_NETWORK_LANG_KOREAN                                         :Korejski
+STR_NETWORK_LANG_LITHUANIAN                                     :Litvijski
+STR_NETWORK_LANG_NORWEGIAN                                      :Norveški
+STR_NETWORK_LANG_POLISH                                         :Poljski
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugalski
+STR_NETWORK_LANG_ROMANIAN                                       :Romunski
+STR_NETWORK_LANG_RUSSIAN                                        :Ruski
+STR_NETWORK_LANG_SLOVAK                                         :Slovaški
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovenski
+STR_NETWORK_LANG_SPANISH                                        :Španski
+STR_NETWORK_LANG_SWEDISH                                        :Švedski
+STR_NETWORK_LANG_TURKISH                                        :Turški
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinski
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Seje večigralskih iger
@@ -1627,6 +1657,13 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Železniški ti
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Železniški tiri s pred-signali
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Železniški tiri z izhodnimi signali
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Železniški tiri s kombiniranimi signali
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Tiri z normalnimi in uvodnimi signali
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Tiri z normalnimi in izhodnimi signali
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tiri z normalnimi in kombiniranimi signali
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tiri z uvodnimi in izhodnimi signali
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tiri z uvodnimi in kombiniranimi signali
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tiri z izhodnimi in kombiniranimi signali
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Najprej moraš odstraniti železniško postajo
 
 
 
@@ -1634,22 +1671,39 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Železniški ti
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Najprej odstrani cesto
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Cestna dela napredujejo
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Cestne gradnje
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Gradnja tramvaj proge
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Izberi cestni most
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... enosmerne poti ne morejo imeti odcepov
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Nemogoča gradnja ceste ...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Nemogoča gradnja tramvaja tukaj...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nemogoča odstranitev ceste ...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Nemogoče odstraniti tramvaja od tukaj...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Smer garaže
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orijentacija tramvaj garaže
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nemogoča gradnja garaže tukaj ...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Nemogoča gradnja tramvaj garaže tukaj...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nemogoča gradnja avtobusne postaje ...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nemogoča gradnja tovorne postaje tukaj ...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Nemogoča gradnja potniške tramvaj postaje...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nemogoča gradnja tovorne tramvaj postaje...
 STR_180A_ROAD_CONSTRUCTION                                      :Gradnja ceste
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Gradnja tramvaj proge
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Zgradi cestni odsek
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Zgradi odsek proge
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Zgradi garažo (za izdelavo in servis vozil)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Zgradi tramvaj garažo (za izdelavo in servisiranje vozil)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Zgradi avtobusno postajo
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Zgradi tovorno postajo
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Zgradi potniško tramvaj postajo
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Zgradi tovorno tramvaj postajo
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Zgradi cestni most
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Zgradi most za tramvaj
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Zgradi cestni predor
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Zgradi predor za tramvaj
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Preklopi gradnja/rušenje cestnih konstrukcij
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Preklop gradi/odstrani za tramvaj progo
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Izberi smer garaže
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Izberi orijentacijo tramvaj garaže
 STR_1814_ROAD                                                   :Cesta
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta z razsvetljavo
 STR_1816_TREE_LINED_ROAD                                        :Drevored
@@ -1657,6 +1711,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Garaža
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Cestno/železniško križišče
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Ni mogoča odstranitev avtobusne postaje...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Ni mogoča odstranitev tovorne postaje...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nemogoča odstranitev potniške tramvaj postaje...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Nemogoča odstranitev tovorne tramvaj postaje...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Mesta
@@ -1822,8 +1878,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} sedaj sprejema {STRING.t} in {STRING.t}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientacija avtobusne postaje
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientacija tovorne postaje
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orijentacija potniške postaje
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orijentacija tovorne postaje
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Najprej moraš porušiti avtobusno postajo
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Najprej moraš porušiti tovorno postajo
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Najprej poruši potniško tramvaj postajo
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Najprej poruši tovorno tramvaj postajo
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Postaj{P a i e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Brez -
@@ -1835,6 +1895,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Izberi �
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Izberi dolžino železniške postaje
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Izberi orientacijo železniške postaje
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Izberi orientacijo tovorne postaje
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Izbor orijentacije potniške tramvaj postaje
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Izbor orijentacije tovorne tramvaj postaje
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Pogled na postajo
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Prikaz ocen postaje
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Spremeni ime postaje
@@ -2092,6 +2154,7 @@ STR_SV_STNAME_LOWER                                             :Dolnja {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Pristajališče
 STR_SV_STNAME_FOREST                                            :{STRING} Gozd
 
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -2321,6 +2384,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Tovorna ladja
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :majhno letalo
 STR_LIVERY_LARGE_PLANE                                          :Veliko letalo
+STR_LIVERY_PASSENGER_TRAM                                       :Potniški tramvaj
+STR_LIVERY_FREIGHT_TRAM                                         :Tovorni tramvaj
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Prikaz glavnih barvnih shem
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Prikaz barvnih shem vlakov
@@ -2678,6 +2743,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Preveč 
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ni mogoče vstaviti nov ukaz ...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ni mogoče izbrisati ukaza ...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ni mogoče spreminjati ukaza ...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nemogoč preskok trenutnega ukaza...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nemogoč preskok na izbran ukaz...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ni mogoče premakniti vozila ...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadnja lokomotiva vedno sledi prvi
 STR_8838_N_A                                                    :Ni na voljo{SKIP}
@@ -2709,6 +2776,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaži 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Prikaži zmogljivosti vsakega vagona
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Prikaži polno zmogljivost vlaka, razdeli glede na tip tovora
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Seznam navodil - klikni na ukaz, da ga izbereš. CTRL+klik prikaže postajo
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutni ukaz in začni naslednjega. CTRL + klik preskoči na izbran ukaz
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Zbriši izbran ukaz
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz kot brez-postanka
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vstavi nov ukaz pred izbranega ali pa ga dodaj na koncu seznama
@@ -2793,6 +2861,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ni mogo�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Poimenuj cestno vozilo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prihod prvega avtobusa na postajo {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prihod prvega tovornjaka na postajo {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Meščani proslavljajo . . .{}Prvi potniški tramvaj je prispel na postajo {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Proslava meščanov . . .{}Prvi tovorni tramvaj je pripeljal na postajo {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Prometna nesreča!{}Voznik umrl v plamenih po trku z vlakom.
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Prometna nesreča!{}{COMMA} mrt{P ev va vi vih} v plamenih ob trku z vlakom.
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Ni mogoče obrniti smeri vozila ...
@@ -3077,6 +3147,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Prikaz v
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Pripravljaš se na prodajo vseh vozil v garaži. Zagotovo?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Napačna vrsta garaže
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Prodaj vse vlake v garaži
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Prodaj vsa vestna vozila v garaži
@@ -3269,9 +3340,39 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prozoren
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki...
 
 ##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Skupina {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Vsi vlaki
+STR_GROUP_ALL_ROADS                                             :Vsa cestna vozila
+STR_GROUP_ALL_SHIPS                                             :Vse ladje
+STR_GROUP_ALL_AIRCRAFTS                                         :Vsa letala
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Vsa izmenljiva vozila
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstrani vsa vozila
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Vlak{P "" a i ov}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Cestn{P o i a ih} Vozil{P o i a ""}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Lad{P ja ji je ij}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Letal{P o i a ""}
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj eno skupino
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Zamenjaj Vozila v "{GROUP}"
 
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nemogoče ustvariti skupino...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nemogoče brisanje te skupine...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Nemogoče preimenovanje skupine...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Nemogoča odstranitev vseh vozil iz te skupine...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Nemogoče dodati vozilo v to skupino...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Nemogoče dodati izmenljivo vozilo v to skupino...
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Skupine - Klikni na skupino za seznam vseh vozil v skupini
+STR_GROUP_CREATE_TIP                                            :{BLACK}Klikni za ustvarit skupino
+STR_GROUP_DELETE_TIP                                            :{BLACK}Izbriši izbrano skupino
+STR_GROUP_RENAME_TIP                                            :{BLACK}Preimenuj izbrano skupino
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klikni za zaščito skupine pred splošno samoobnovo
 
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Dobiček letos: {GREEN}{CURRENCY} {BLACK}(lani: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Dobiček letos: {RED}{CURRENCY} {BLACK}(lani: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Dobiček letos: {GREEN}{CURRENCY} {BLACK}(lani: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Dobiček letos: {RED}{CURRENCY} {BLACK}(lani: {RED}{CURRENCY}{BLACK})
 
 ########

@@ -889,8 +889,8 @@ STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Mérték
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Közúti járművek
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Válaszd ki,az út melyik oldalán haladjanak a közúti járművek
-STR_02E9_DRIVE_ON_LEFT                                          :Balra hajts
-STR_02EA_DRIVE_ON_RIGHT                                         :Jobbra hajts
+STR_02E9_DRIVE_ON_LEFT                                          :Balra hajtás
+STR_02EA_DRIVE_ON_RIGHT                                         :Jobbra hajtás
 STR_02EB_TOWN_NAMES                                             :{BLACK}Városnevek
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}A városnevek stílusának kiválasztása

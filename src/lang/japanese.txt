@@ -1089,6 +1089,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}駅の�
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}ヘリコプターを自動的ヘリパッドで修理：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}地形のツールバーを鉄道／道路／船舶／空港のツールバーに付ける：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}スクロールの方面を逆転：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}画面のスムーズスクロール機能：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}様々な建設のツールを使用するときに、測定ツールティップを表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}会社のカラースキームを表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :なし
@@ -1396,6 +1397,15 @@ STR_NETWORK_LANG_ANY                                            :何でも
 STR_NETWORK_LANG_ENGLISH                                        :英語
 STR_NETWORK_LANG_GERMAN                                         :ドイツ語
 STR_NETWORK_LANG_FRENCH                                         :フランス語
+STR_NETWORK_LANG_BRAZILIAN                                      :ポルトガル語（ブラジル）
+STR_NETWORK_LANG_BULGARIAN                                      :ブルガリア語
+STR_NETWORK_LANG_CHINESE                                        :中国語
+STR_NETWORK_LANG_CZECH                                          :チェコ語
+STR_NETWORK_LANG_DANISH                                         :デンマーク語
+STR_NETWORK_LANG_DUTCH                                          :オランダ語
+STR_NETWORK_LANG_ESPERANTO                                      :エスペラント語
+STR_NETWORK_LANG_FINNISH                                        :フィンランド語
+STR_NETWORK_LANG_HUNGARIAN                                      :ハンガリー語
 STR_NETWORK_LANG_ICELANDIC                                      :アイスランド語
 STR_NETWORK_LANG_ITALIAN                                        :イタリア語
 STR_NETWORK_LANG_JAPANESE                                       :日本語
@@ -2653,6 +2663,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}指令�
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}新規指令が挿入できません...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}この指令が削除できません...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}この指令が変更できません...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}実行中の指令がスキップできない...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}選択した指令へスキップできない...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}この車輌が移動できません...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}ダブルヘッドの場合、後部の機関車は常に前部の機関車について行きます
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2684,6 +2696,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}鉄道�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}各車両の容量を表示します
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}貨物種類に並べ替えて列車の合計容量を表示します
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}指令リスト - 指令を選択するにはクリックします
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}実行中の指令をスキップして、次へ移動します。Control クリックすると、選択した指令へ移動します。
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}選択した指令を削除します
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令を「直行便」にします
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}選択した指令の前／リストの終わりに新規指令を挿入します

@@ -2659,6 +2659,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostrar 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostrar capacidades de cada veículo
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Mostrar capacidade total do comboio, dividir por tipo de carga
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de ordens - clique numa ordem para a seleccionar
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Eliminar a ordem seleccionada
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem seleccionada fará com que o veículo não para noutras estações pelo caminho
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Inserir nova ordem antes da ordem seleccionada, ou adicionar ao fim da lista
@@ -3219,6 +3220,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comutar 
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas (talvez, no futuro, para embelezamentos)
 
 ##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Grupo {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Todos os Comboios
 STR_GROUP_ALL_ROADS                                             :Todos os veículos de estrada
@@ -3228,6 +3230,7 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear um grupo
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Substituir Veículos de "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Impossível criar grupo...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Impossível remover este grupo...
