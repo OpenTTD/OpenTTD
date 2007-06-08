@@ -978,7 +978,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
 
-		st->MarkTilesDirty();
+		st->MarkTilesDirty(false);
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
@@ -1105,7 +1105,7 @@ int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint
 			// now we need to make the "spanned" area of the railway station smaller if we deleted something at the edges.
 			// we also need to adjust train_tile.
 			MakeRailwayStationAreaSmaller(st);
-			st->MarkTilesDirty();
+			st->MarkTilesDirty(false);
 			UpdateStationSignCoord(st);
 
 			// if we deleted the whole station, delete the train facility.
@@ -2484,7 +2484,7 @@ static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
 	st->goods[type].enroute_from = st->index;
 	st->goods[type].enroute_from_xy = st->xy;
 	InvalidateWindow(WC_STATION_VIEW, st->index);
-	st->MarkTilesDirty();
+	st->MarkTilesDirty(true);
 }
 
 /** Rename a station

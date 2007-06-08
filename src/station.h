@@ -182,7 +182,7 @@ struct Station {
 
 	void AddFacility(byte new_facility_bit, TileIndex facil_xy);
 	void MarkDirty() const;
-	void MarkTilesDirty() const;
+	void MarkTilesDirty(bool cargo_change) const;
 	bool TileBelongsToRailStation(TileIndex tile) const;
 	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const;
 	uint GetPlatformLength(TileIndex tile) const;

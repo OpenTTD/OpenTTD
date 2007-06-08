@@ -133,13 +133,22 @@ void Station::MarkDirty() const
 	}
 }
 
-void Station::MarkTilesDirty() const
+void Station::MarkTilesDirty(bool cargo_change) const
 {
 	TileIndex tile = train_tile;
 	int w, h;
 
 	/* XXX No station is recorded as 0, not INVALID_TILE... */
 	if (tile == 0) return;
+
+	/* cargo_change is set if we're refreshing the tiles due to cargo moving
+	 * around. */
+	if (cargo_change) {
+		/* Don't waste time updating if there are no custom station graphics
+		 * that might change. Even if there are custom graphics, they might
+		 * not change. Unfortunately we have no way of telling. */
+		if (this->num_specs == 0) return;
+	}
 
 	for (h = 0; h < trainst_h; h++) {
 		for (w = 0; w < trainst_w; w++) {

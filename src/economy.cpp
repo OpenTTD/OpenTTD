@@ -1697,7 +1697,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		InvalidateWindow(v->GetVehicleListWindowClass(), v->owner);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-		st->MarkTilesDirty();
+		st->MarkTilesDirty(true);
 		v->MarkDirty();
 
 		if (result & 2) InvalidateWindow(WC_STATION_VIEW, last_visited);

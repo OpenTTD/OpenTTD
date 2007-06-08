@@ -2964,7 +2964,7 @@ void Vehicle::BeginLoading()
 	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	InvalidateWindow(WC_STATION_VIEW, this->last_station_visited);
 
-	GetStation(this->last_station_visited)->MarkTilesDirty();
+	GetStation(this->last_station_visited)->MarkTilesDirty(true);
 	this->MarkDirty();
 }
 
