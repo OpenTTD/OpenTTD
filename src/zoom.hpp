@@ -37,7 +37,7 @@ static inline int ScaleByZoom(int value, ZoomLevel zoom)
 {
 	if (zoom == ZOOM_LVL_NORMAL) return value;
 	int izoom = (int)zoom - (int)ZOOM_LVL_NORMAL;
-	return (zoom > ZOOM_LVL_NORMAL) ? value << izoom : (value + (1 << -izoom)) >> -izoom;
+	return (zoom > ZOOM_LVL_NORMAL) ? value << izoom : (value + (1 << -izoom) - 1) >> -izoom;
 }
 
 static inline int UnScaleByZoom(int value, ZoomLevel zoom)
