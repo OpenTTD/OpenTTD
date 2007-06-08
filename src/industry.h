@@ -210,10 +210,10 @@ static inline IndustryID GetMaxIndustryIndex()
 
 static inline uint GetNumIndustries()
 {
+	extern int _total_industries;  // general counter
 	return _total_industries;
 }
 
-extern int _total_industries;                      // general counter
 extern uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
 
 /** Increment the count of industries for this type
