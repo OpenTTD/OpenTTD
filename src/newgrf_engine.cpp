@@ -528,16 +528,19 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			}
 
 		case 0x42: { // Consist cargo information
-			/* XXX Missing support for common refit cycle and property 25 */
 			const Vehicle *u;
 			byte cargo_classes = 0;
-			uint common_cargo_best = 0;
-			uint common_cargos[NUM_CARGO];
+			uint8 common_cargo_best = 0;
+			uint8 common_cargos[NUM_CARGO];
+			uint8 common_subtype_best = 0;
+			uint8 common_subtypes[256];
 			byte user_def_data = 0;
 			CargoID common_cargo_type = CT_PASSENGERS;
+			uint8 common_subtype = 0;
 
 			/* Reset our arrays */
 			memset(common_cargos, 0, sizeof(common_cargos));
+			memset(common_subtypes, 0, sizeof(common_subtypes));
 
 			for (u = v; u != NULL; u = u->next) {
 				/* Skip empty engines */
@@ -546,6 +549,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				cargo_classes |= GetCargo(u->cargo_type)->classes;
 				common_cargos[u->cargo_type]++;
 				user_def_data |= RailVehInfo(u->engine_type)->user_def_data;
+				common_subtypes[u->cargo_subtype]++;
 			}
 
 			/* Pick the most common cargo type */
@@ -556,7 +560,14 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				}
 			}
 
-			return cargo_classes | (common_cargo_type << 8) | (user_def_data << 24);
+			for (uint i = 0; i < lengthof(common_subtypes); i++) {
+				if (common_subtypes[i] > common_subtype_best) {
+					common_subtype_best = common_subtypes[i];
+					common_subtype = i;
+				}
+			}
+
+			return cargo_classes | (common_cargo_type << 8) | (common_subtype << 16) | (user_def_data << 24);
 		}
 
 		case 0x43: // Player information
