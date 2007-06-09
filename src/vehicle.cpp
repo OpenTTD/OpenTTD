@@ -1825,7 +1825,14 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) {
 				/* this s a train car
 				 * add this unit to the end of the train */
-				DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
+				int32 result = DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
+				if (CmdFailed(result)) {
+					/* The train can't be joined to make the same consist as the original.
+					 * Sell what we already made (clean up) and return an error.           */
+					DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
+					DoCommand(w_front->tile, w->index,       1, flags, GetCmdSellVeh(w));
+					return result; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
+				}
 			} else {
 				/* this is a front engine or not a train. It need orders */
 				w_front = w;
