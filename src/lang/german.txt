@@ -1398,6 +1398,31 @@ STR_NETWORK_LANG_ANY                                            :Egal
 STR_NETWORK_LANG_ENGLISH                                        :Englisch
 STR_NETWORK_LANG_GERMAN                                         :Deutsch
 STR_NETWORK_LANG_FRENCH                                         :Französisch
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasilianisch
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgarisch
+STR_NETWORK_LANG_CHINESE                                        :Chinesisch
+STR_NETWORK_LANG_CZECH                                          :Tschechisch
+STR_NETWORK_LANG_DANISH                                         :Dänisch
+STR_NETWORK_LANG_DUTCH                                          :Holländisch
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finnisch
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungarisch
+STR_NETWORK_LANG_ICELANDIC                                      :Isländisch
+STR_NETWORK_LANG_ITALIAN                                        :Italienisch
+STR_NETWORK_LANG_JAPANESE                                       :Japanisch
+STR_NETWORK_LANG_KOREAN                                         :Koreanisch
+STR_NETWORK_LANG_LITHUANIAN                                     :Litauisch
+STR_NETWORK_LANG_NORWEGIAN                                      :Norwegisch
+STR_NETWORK_LANG_POLISH                                         :Polnisch
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugiesisch
+STR_NETWORK_LANG_ROMANIAN                                       :Rumänisch
+STR_NETWORK_LANG_RUSSIAN                                        :Russisch
+STR_NETWORK_LANG_SLOVAK                                         :Slowakisch
+STR_NETWORK_LANG_SLOVENIAN                                      :Slowenisch
+STR_NETWORK_LANG_SPANISH                                        :Spanisch
+STR_NETWORK_LANG_SWEDISH                                        :Schwedisch
+STR_NETWORK_LANG_TURKISH                                        :Türkisch
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainisch
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Mehrspielerlobby
@@ -2639,6 +2664,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Zu viele
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kann keinen neuen Auftrag hinzufügen...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kann den Auftrag nicht löschen...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kann den Auftrag nicht bearbeiten...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Kann diesen Auftrag nicht verschieben...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kann diesen Auftrag nicht auslassen...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kann nicht zum gewählten Auftrag wechseln...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kann das Fahrzeug nicht bewegen...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Hintere Lok folgt immer der vorderen Lok
 STR_8838_N_A                                                    :k.A.{SKIP}
@@ -2670,6 +2698,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Zeige Ei
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Zeige Kapazität jedes Fahrzeugs
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Frachtübersicht des Zuges anzeigen, aufgeteilt nach Frachttyp
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Auftragsliste - zum Markieren hier anklicken
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Den aktuellen Auftrag auslassen und den Nächsten starten. STRG + Klick geht zum ausgewählten Auftrag
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Lösche den markierten Auftrag
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Führe den markierten Auftrag ohne Halt durch
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Füge einen neuen Auftrag vor dem markierten Auftrag ein, oder setze ihn ans Ende der Liste
