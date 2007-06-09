@@ -832,8 +832,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	const NetworkClientInfo *ci;
 	byte callback;
 
-	CommandPacket *cp = MallocT<CommandPacket>(1);
-
 	// The client was never joined.. so this is impossible, right?
 	//  Ignore the packet, give the client a warning, and close his connection
 	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
@@ -841,6 +839,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return;
 	}
 
+	CommandPacket *cp = MallocT<CommandPacket>(1);
 	cp->player = (Owner)p->Recv_uint8();
 	cp->cmd    = p->Recv_uint32();
 	cp->p1     = p->Recv_uint32();
@@ -850,7 +849,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	callback = p->Recv_uint8();
 
-	if (cs->has_quit) return;
+	if (cs->has_quit) {
+		free(cp);
+		return;
+	}
 
 	ci = DEREF_CLIENT_INFO(cs);
 
@@ -858,11 +860,13 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	if (!IsValidCommand(cp->cmd)) {
 		IConsolePrintF(_icolour_err, "WARNING: invalid command from client %d (IP: %s).", ci->client_index, GetPlayerIP(ci));
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		free(cp);
 		return;
 	}
 
 	if (!CheckCommandFlags(cp, ci)) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
+		free(cp);
 		return;
 	}
 
@@ -874,6 +878,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		IConsolePrintF(_icolour_err, "WARNING: player %d (IP: %s) tried to execute a command as player %d, kicking...",
 		               ci->client_playas + 1, GetPlayerIP(ci), cp->player + 1);
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
+		free(cp);
 		return;
 	}
 
@@ -885,6 +890,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	if (cp->cmd == CMD_PLAYER_CTRL) {
 		if (cp->p1 != 0) {
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
+			free(cp);
 			return;
 		}
 
