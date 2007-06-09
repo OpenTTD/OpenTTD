@@ -6,6 +6,7 @@
 #define NEWGRF_SPRITEGROUP_H
 
 #include "town.h"
+#include "industry.h"
 
 struct SpriteGroup;
 
@@ -196,6 +197,10 @@ struct ResolverObject {
 			Town *town;
 			HouseID house_id;
 		} house;
+		struct {
+			TileIndex tile;
+			Industry *ind;
+		} industry;
 		struct {
 			const struct CargoSpec *cs;
 		} cargo;

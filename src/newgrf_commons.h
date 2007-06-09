@@ -35,7 +35,6 @@ protected:
 
 	uint16 invalid_ID;       ///< ID used to dected invalid entities;
 
-	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
 public:
 	EntityIDMapping *mapping_ID; ///< mapping of ids from grf files.  Public out of convenience
 
@@ -46,6 +45,7 @@ public:
 	void ResetMapping();
 
 	void Add(uint8 local_id, uint entity_type);
+	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
 
 	uint16 GetSubstituteID(byte entity_id);
 	uint16 GetID(uint8 grf_local_id, uint32 grfid);
@@ -59,12 +59,25 @@ struct HouseSpec;
 class HouseOverrideManager : public OverrideManagerBase
 {
 public:
-	HouseOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) : OverrideManagerBase(offset, maximum, invalid) {};
+	HouseOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {};
 	void SetEntitySpec(const HouseSpec *hs);
 };
 
 
+struct IndustrySpec;
+class IndustryOverrideManager : public OverrideManagerBase
+{
+	public:
+		IndustryOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+				OverrideManagerBase(offset, maximum, invalid) {};
+
+		virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
+		void SetEntitySpec(const IndustrySpec *inds);
+};
+
 extern HouseOverrideManager _house_mngr;
+extern IndustryOverrideManager _industry_mngr;
 
 uint32 GetTerrainType(TileIndex tile);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);

@@ -151,6 +151,75 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 	}
 }
 
+/** Method to find an entity ID and to mark it as reserved for the Industry to be included.
+ * @param grf_local_id ID used by the grf file for pre-installation work (equivalent of TTDPatch's setid
+ * @param grfid ID of the current grf file
+ * @param substitute_id industry from which data has been copied
+ * @return a free entity id (slotid) if ever one has been found, or Invalid_ID marker otherwise
+ */
+uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id)
+{
+	/* This entity hasn't been defined before, so give it an ID now. */
+	for (uint16 id = 0; id < max_new_entities; id++) {
+		/* Get the real live industry */
+		const IndustrySpec *inds = GetIndustrySpec(id);
+
+		/* This industry must be one that is not available(enabled), mostly because of climate.
+		 * And it must not already be used by a grf (grffile == NULL).
+		 * So reseve this slot here, as it is the chosen one */
+		if (!inds->enabled && inds->grf_prop.grffile == NULL) {
+			EntityIDMapping *map = &mapping_ID[id];
+
+			if (map->entity_id == 0 && map->grfid == 0) {
+				/* winning slot, mark it as been used */
+				map->entity_id     = grf_local_id;
+				map->grfid         = grfid;
+				map->substitute_id = substitute_id;
+				return id;
+			}
+		}
+	}
+
+	return invalid_ID;
+}
+
+/** Method to install the new indistry data in its proper slot
+ * The slot assigment is internal of this method, since it requires
+ * checking what is available
+ * @param inds Industryspec that comes from the grf decoding process
+ */
+void IndustryOverrideManager::SetEntitySpec(const IndustrySpec *inds)
+{
+	/* First step : We need to find if this industry is already specified in the savegame data */
+	IndustryType ind_id = this->GetID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid);
+
+	if (ind_id == invalid_ID) { // not found?  So this is the introduction of a new industry
+		/* Second step is dealing with the override. */
+		if (inds->grf_prop.override != invalid_ID && _industry_specs[inds->grf_prop.override].grf_prop.override == invalid_ID) {
+			/* this is an override, which means it will take the place of the industry it is
+			 * designed to replace. Before we conclude that the override is allowed,
+			* we first need to verify that the slot is not holding another override
+			* If it's the case,it will be considered as a normal substitute */
+			ind_id = inds->grf_prop.override;
+		} else {
+			/* It has already been overriden, so you've lost your place old boy.
+			 * Or it is a simple substitute.
+			 * In both case, we need to find a free available slot */
+			ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid, inds->grf_prop.subst_id);
+		}
+	}
+
+	if (ind_id == invalid_ID) {
+		grfmsg(1, "Industry.SetEntitySpec: Too many industries allocated. Ignoring.");
+		return;
+	}
+
+	/* Now that we know we can use the given id, copy the spech to its final destination*/
+	memcpy(&_industry_specs[ind_id], inds, sizeof(*inds));
+	/* and mark it as usable*/
+	_industry_specs[ind_id].enabled = true;
+}
+
 /** Function used by houses (and soon industries) to get information
  * on type of "terrain" the tile it is queries sits on.
  * @param tile TileIndex of the tile been queried
