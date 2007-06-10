@@ -1468,6 +1468,13 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		return;
 	}
 
+	if (v->type == VEH_TRAIN && !IsTileType(v->tile, MP_STATION)) {
+		/* The train reversed in the station. Take the "easy" way
+		 * out and let the train just leave as it always did. */
+		SETBIT(v->vehicle_flags, VF_LOADING_FINISHED);
+		return;
+	}
+
 	int unloading_time = 0;
 	Vehicle *u = v;
 	int result = 0;
