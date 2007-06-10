@@ -208,13 +208,13 @@ static inline IndustryID GetMaxIndustryIndex()
 	return GetIndustryPoolSize() - 1;
 }
 
+extern int _total_industries;  // general counter
+extern uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
+
 static inline uint GetNumIndustries()
 {
-	extern int _total_industries;  // general counter
 	return _total_industries;
 }
-
-extern uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
 
 /** Increment the count of industries for this type
  * @param type IndustryType to increment
@@ -223,6 +223,7 @@ static inline void IncIndustryTypeCount(IndustryType type)
 {
 	assert(type < INVALID_INDUSTRYTYPE);
 	_industry_counts[type]++;
+	_total_industries++;
 }
 
 /** Decrement the count of industries for this type
@@ -232,6 +233,7 @@ static inline void DecIndustryTypeCount(IndustryType type)
 {
 	assert(type < INVALID_INDUSTRYTYPE);
 	_industry_counts[type]--;
+	_total_industries--;
 }
 
 /** get the count of industries for this type
@@ -241,6 +243,14 @@ static inline uint8 GetIndustryTypeCount(IndustryType type)
 {
 	assert(type < INVALID_INDUSTRYTYPE);
 	return min(_industry_counts[type], 0xFF); // callback expects only a byte, so cut it
+}
+
+/** Resets both the total_industries and the _industry_counts
+ * This way, we centralize all counts activities */
+static inline void ResetIndustryCounts()
+{
+	_total_industries = 0;
+	memset(&_industry_counts, 0, sizeof(_industry_counts));
 }
 
 /**

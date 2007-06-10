@@ -147,7 +147,6 @@ void DestroyIndustry(Industry *i)
 	}
 
 	_industry_sort_dirty = true;
-	_total_industries--;
 	DecIndustryTypeCount(i->type);
 
 	DeleteSubsidyWithIndustry(i->index);
@@ -1355,7 +1354,6 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	uint32 r;
 	int j;
 
-	_total_industries++;
 	i->xy = tile;
 	i->width = i->height = 0;
 	i->type = type;
@@ -1857,8 +1855,7 @@ void InitializeIndustries()
 	CleanPool(&_Industry_pool);
 	AddBlockToPool(&_Industry_pool);
 
-	_total_industries = 0;
-	memset(&_industry_counts, 0, sizeof(_industry_counts));
+	ResetIndustryCounts();
 	_industry_sort_dirty = true;
 	_industry_sound_tile = 0;
 }
@@ -1926,7 +1923,7 @@ static void Load_INDY()
 {
 	int index;
 
-	_total_industries = 0;
+	ResetIndustryCounts();
 
 	while ((index = SlIterateArray()) != -1) {
 		Industry *i;
@@ -1937,8 +1934,6 @@ static void Load_INDY()
 		i = GetIndustry(index);
 		SlObject(i, _industry_desc);
 		IncIndustryTypeCount(i->type);
-
-		_total_industries++;
 	}
 }
 
