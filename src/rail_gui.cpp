@@ -165,32 +165,27 @@ static void PlaceRail_Station(TileIndex tile)
 
 static void GenericPlaceSignals(TileIndex tile)
 {
-	byte trackstat;
-	uint i;
+	TrackBits trackbits = (TrackBits)GB(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0), 0, 6);
 
-	trackstat = (byte)GetTileTrackStatus(tile, TRANSPORT_RAIL, 0);
-
-	if (trackstat & TRACK_BIT_VERT) // N-S direction
-		trackstat = (_tile_fract_coords.x <= _tile_fract_coords.y) ? TRACK_BIT_RIGHT : TRACK_BIT_LEFT;
-
-	if (trackstat & TRACK_BIT_HORZ) // E-W direction
-		trackstat = (_tile_fract_coords.x + _tile_fract_coords.y <= 15) ? TRACK_BIT_UPPER : TRACK_BIT_LOWER;
-
-	// Lookup the bit index
-	i = 0;
-	if (trackstat != 0) {
-		for (; !(trackstat & 1); trackstat >>= 1) i++;
+	if (trackbits & TRACK_BIT_VERT) { // N-S direction
+		trackbits = (_tile_fract_coords.x <= _tile_fract_coords.y) ? TRACK_BIT_RIGHT : TRACK_BIT_LEFT;
 	}
 
+	if (trackbits & TRACK_BIT_HORZ) { // E-W direction
+		trackbits = (_tile_fract_coords.x + _tile_fract_coords.y <= 15) ? TRACK_BIT_UPPER : TRACK_BIT_LOWER;
+	}
+
+	Track track = TrackBitsToTrack(trackbits);
+
 	if (!_remove_button_clicked) {
-		uint32 p1 = GB(i, 0, 3);
+		uint32 p1 = track;
 		SB(p1, 3, 1, _ctrl_pressed);
 		SB(p1, 4, 1, _cur_year < _patches.semaphore_build_before);
 
 		DoCommandP(tile, p1, 0, CcPlaySound1E,
 			CMD_BUILD_SIGNALS | CMD_AUTO | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE));
 	} else {
-		DoCommandP(tile, i, 0, CcPlaySound1E,
+		DoCommandP(tile, track, 0, CcPlaySound1E,
 			CMD_REMOVE_SIGNALS | CMD_AUTO | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM));
 	}
 }
