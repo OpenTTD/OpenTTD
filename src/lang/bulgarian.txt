@@ -1615,6 +1615,10 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :ЖП линия
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :ЖП линия с пре-сигнали
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :ЖП линия с изходни сигнали
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :ЖП линия с комбинирани сигнали
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Железопътна линиа с нормални и изходни сигнали
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Железопътна линиа с нормални и съединени сигнали
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Железопътна линиа с изходни и съединени сигнали
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Железопътната гара трябва да бъде премахната първо
 
 
 
@@ -1622,22 +1626,36 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :ЖП линия
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Първо махнете пътя
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Пътни ремонти в процес
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Пътно строителство
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Конструкциа на трамвайна линиа
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Избор на асфалтов мост
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... еднопосочни пътища немогат да имат съединениа
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Пътя не може да се построи...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Трамвайна линиа неможе да бъде посроена тук...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Пътя не може да се махне...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Трамвайната линиа неможе да бъде премахната от тук...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Ориентация на гараж
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Посока на Трамвайно Депо
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Гаража не може да се построи...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Трамвайно депо неможе да бъде построено тук...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Автогарата не може да се построи...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Товарната гара не може да се построи...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Пътническа трамвайна гара неможе да бъде построена...
 STR_180A_ROAD_CONSTRUCTION                                      :Пътно строителство
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Конструкциа на трамвайна линиа
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Строене на път
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Построи секциа от трамвайна линиа
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Строене на гараж (за строене и сервиз на МПС-та)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Строене на автогара
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Строене на товарна гара
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Построи пъгническа трамвайна гара
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Построи товарна трамвайна гара
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Построй мост
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Построи трамвайен мост
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Построй тунел
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Построи трамвайен тунел
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Премахване на асфалтов път
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ориентация на гараж
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Избери посоката на трамвайното депо
 STR_1814_ROAD                                                   :път
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Асфалтов път с улични лампи
 STR_1816_TREE_LINED_ROAD                                        :Асфалтов път с дървета
@@ -1645,6 +1663,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Авто деп
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :ЖП прелез
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Не може да премахне автогарата...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Не може да премахне товарната гара...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Пътническата трамвайна гара неможе да бъде премахната...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Товарната трамвайна гара неможе да бъде премахната...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Градове
@@ -1809,8 +1829,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} вече приема {STRING} и {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Ориентация на автогара
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Ориент. товарна гара
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Посока на пътнически трамвай
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Посока на товарен трамвай
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Първо разрушете автогарата
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Първо разрушете товарната гара
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Пътническата трамвайна гара трябва да бъде унищожена първо
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Товарната трамвайна гара трябва да бъде унищожена първо
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Станци{P я и}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Николко -
@@ -1822,6 +1846,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Брой
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Дължина на ЖП гарата
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Ориентация на автогарата
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Ориентация на товарната гара
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Избери посоката на пътническата трамвайна гара
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Избери посоката на товарната трамвайна гара
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Центриране на главния прозорец върху станцията
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Покажи нивото на обслужване
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Промяна името на станцията
@@ -2272,6 +2298,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Товарен 
 STR_LIVERY_HELICOPTER                                           :Хеликоптер
 STR_LIVERY_SMALL_PLANE                                          :Малък аероплан
 STR_LIVERY_LARGE_PLANE                                          :Голям аероплан
+STR_LIVERY_PASSENGER_TRAM                                       :Пътнически Трамвай
+STR_LIVERY_FREIGHT_TRAM                                         :Товарен Трамвай
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Показване на общи цветови схеми
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Показване цветовите схеми на влаковете
@@ -2660,6 +2688,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Инфо
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Капацитет на влаковата композиция
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Общ капацитет на влака, разбит по типове товар
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Пътен лист - натиснете върху назначение за маркиране. CTRL + натискане - центрира върху станцията
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Изтриване на избраното назначение
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Преминавай през избраното назначение без спиране
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Добавяне на назначение преди избраната или в края на списъка
@@ -3028,6 +3057,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Пока
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Потвърдете продажбата на всички превозни средства в депото?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Погрешен депо теп
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продажба всички влакове в депото
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продажба всички автомобили в гаража
