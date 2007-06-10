@@ -422,6 +422,7 @@ int32 SettingsDisableElrail(int32 p1)
 		if (rv_info->engclass == 2 && e->railtype == old_railtype) {
 			/* change it to the proper one */
 			e->railtype = new_railtype;
+			_engine_info[e_id].railtype = new_railtype;
 		}
 	}
 
