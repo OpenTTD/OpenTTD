@@ -33,6 +33,7 @@ CommandCallback CcPlaySound10;
 CommandCallback CcPlaceSign;
 CommandCallback CcTerraform;
 CommandCallback CcBuildTown;
+CommandCallback CcGiveMoney;
 
 /* rail_gui.cpp */
 CommandCallback CcPlaySound1E;
@@ -87,7 +88,8 @@ CommandCallback *_callback_table[] = {
 	/* 0x17 */ CcCloneShip,
 	/* 0x18 */ CcCloneTrain,
 	/* 0x19 */ CcAI,
-	/* 0x1A */ CcCloneVehicle
+	/* 0x1A */ CcCloneVehicle,
+	/* 0x1B */ CcGiveMoney,
 };
 
 const int _callback_table_count = lengthof(_callback_table);
