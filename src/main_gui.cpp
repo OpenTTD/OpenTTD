@@ -80,7 +80,8 @@ void HandleOnEditText(const char *str)
 		money = clamp(money, 0, 20000000); // Clamp between 20 million and 0
 
 		/* Give 'id' the money, and substract it from ourself */
-		if (!DoCommandP(0, money, id, NULL, CMD_GIVE_MONEY | CMD_MSG(STR_INSUFFICIENT_FUNDS))) break;
+		int32 ret = DoCommandP(0, money, id, NULL, CMD_GIVE_MONEY | CMD_MSG(STR_INSUFFICIENT_FUNDS));
+		if (CmdFailed(ret) || ret == 0) break; // We either did something wrong, or we don't have any money anymore
 
 		/* Inform the player of this action */
 		snprintf(msg, sizeof(msg), "%d", money);
