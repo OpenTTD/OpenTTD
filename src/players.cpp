@@ -193,9 +193,17 @@ static void SubtractMoneyFromAnyPlayer(Player *p, int32 cost)
 
 	p->yearly_expenses[0][_yearly_expenses_type] += cost;
 
-	if (HASBIT(1<<7|1<<8|1<<9|1<<10, _yearly_expenses_type)) {
+	if (HASBIT(1 << EXPENSES_TRAIN_INC    |
+	           1 << EXPENSES_ROADVEH_INC  |
+	           1 << EXPENSES_AIRCRAFT_INC |
+	           1 << EXPENSES_SHIP_INC, _yearly_expenses_type)) {
 		p->cur_economy.income -= cost;
-	} else if (HASBIT(1<<2|1<<3|1<<4|1<<5|1<<6|1<<11, _yearly_expenses_type)) {
+	} else if (HASBIT(1 << EXPENSES_TRAIN_RUN    |
+	                  1 << EXPENSES_ROADVEH_RUN  |
+	                  1 << EXPENSES_AIRCRAFT_RUN |
+	                  1 << EXPENSES_SHIP_RUN     |
+	                  1 << EXPENSES_PROPERTY     |
+	                  1 << EXPENSES_LOAN_INT, _yearly_expenses_type)) {
 		p->cur_economy.expenses -= cost;
 	}
 
