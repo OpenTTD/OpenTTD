@@ -4318,7 +4318,9 @@ static void ResetCustomHouses()
 
 	for (file = _first_grffile; file != NULL; file = file->next) {
 		if (file->housespec == NULL) continue;
-		for (i = 0; i < HOUSE_MAX; i++) free(file->housespec[i]);
+		for (i = 0; i < HOUSE_MAX; i++) {
+			free(file->housespec[i]);
+		}
 
 		free(file->housespec);
 		file->housespec = NULL;
