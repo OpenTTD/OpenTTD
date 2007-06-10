@@ -1096,7 +1096,7 @@ build_road_and_exit:
 		do {
 			byte bridge_type = RandomRange(MAX_BRIDGES - 1);
 			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
-				if (!CmdFailed(DoCommand(tile, tmptile, 0x8000 + bridge_type, DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE)))
+				if (!CmdFailed(DoCommand(tile, tmptile, bridge_type | ((0x80 | ROADTYPES_ROAD) << 8), DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE)))
 					_grow_town_result = -1;
 
 				/* obviously, if building any bridge would fail, there is no need to try other bridge-types */

@@ -2888,7 +2888,7 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 		}
 
 		// Is building a (rail)bridge possible at this place (type doesn't matter)?
-		if (CmdFailed(DoCommand(tile_new, tile, 0x8000, DC_AUTO, CMD_BUILD_BRIDGE)))
+		if (CmdFailed(DoCommand(tile_new, tile, ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE)))
 			return;
 		AiBuildRoadRecursive(arf, tile_new, dir2);
 
@@ -3038,13 +3038,13 @@ do_some_terraform:
 		 */
 		for (i = 10; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
-				int32 cost = DoCommand(tile, p->ai.cur_tile_a, i + (0x80 << 8), DC_AUTO, CMD_BUILD_BRIDGE);
+				int32 cost = DoCommand(tile, p->ai.cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
 				if (!CmdFailed(cost) && cost < (p->player_money >> 5)) break;
 			}
 		}
 
 		// Build it
-		DoCommand(tile, p->ai.cur_tile_a, i + (0x80 << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
+		DoCommand(tile, p->ai.cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
 
 		p->ai.state_counter = 0;
 	} else if (arf.best_ptr[0] & 0x40) {
