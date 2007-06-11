@@ -86,7 +86,7 @@ extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
 
-const char *_default_blitter = "8bpp-optimzed";
+const char *_default_blitter = "8bpp-optimized";
 
 /* TODO: usrerror() for errors which are not of an internal nature but
  * caused by the user, i.e. missing files or fatal configuration errors.
