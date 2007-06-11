@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file debug.hpp */
+/** @file 8bpp_debug.hpp */
 
 #ifndef BLITTER_8BPP_DEBUG_HPP
 #define BLITTER_8BPP_DEBUG_HPP

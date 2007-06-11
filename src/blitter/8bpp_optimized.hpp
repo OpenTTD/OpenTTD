@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 8bpp_nice.hpp */
+/** @file 8bpp_optimized.hpp */
 
 #ifndef BLITTER_8BPP_OPTIMIZED_HPP
 #define BLITTER_8BPP_OPTIMIZED_HPP
