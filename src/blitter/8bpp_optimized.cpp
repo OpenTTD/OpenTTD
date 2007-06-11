@@ -134,6 +134,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite)
 			uint pixels = 0;
 			uint last_color = 0;
 			uint count_index = 0;
+			uint rx = 0;
 			src = &sprite->data[ScaleByZoom(y, (ZoomLevel)i) * sprite->width];
 
 			for (int x = 0; x < UnScaleByZoom(sprite->width, (ZoomLevel)i); x++) {
@@ -144,6 +145,9 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite)
 				for (int j = 0; j < ScaleByZoom(1, (ZoomLevel)i); j++) {
 					if (src->m != 0) { color = src->m; count++; }
 					src++;
+					rx++;
+					/* Because of the scaling it might happen we read outside the buffer. Avoid that. */
+					if (rx == sprite->width) break;
 				}
 				/* If more than 12.5% of the pixels are non-transparent, make thisone non-transparent too */
 				if (count < ScaleByZoom(1, (ZoomLevel)i) / 8) color = 0;
