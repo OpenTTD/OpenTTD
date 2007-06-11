@@ -11,7 +11,6 @@ enum ZoomLevel {
 	ZOOM_LVL_OUT_2X,
 	ZOOM_LVL_OUT_4X,
 	ZOOM_LVL_OUT_8X,
-	ZOOM_LVL_OUT_16X,
 	ZOOM_LVL_END,
 
 	/* Here we define in which zoom viewports are */
@@ -28,7 +27,7 @@ enum ZoomLevel {
 	ZOOM_LVL_DETAIL   = ZOOM_LVL_OUT_2X, ///< All zoomlevels below or equal to this, will result in details on the screen, like road-work, ...
 
 	ZOOM_LVL_MIN      = ZOOM_LVL_NORMAL,
-	ZOOM_LVL_MAX      = ZOOM_LVL_OUT_16X,
+	ZOOM_LVL_MAX      = ZOOM_LVL_OUT_8X,
 };
 
 extern ZoomLevel _saved_scrollpos_zoom;

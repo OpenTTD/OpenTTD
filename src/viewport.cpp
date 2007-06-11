@@ -858,9 +858,6 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 			}
 			break;
 
-		case ZOOM_LVL_OUT_16X:
-			break;
-
 		default: NOT_REACHED();
 	}
 }
@@ -929,9 +926,6 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 					AddStation(st, STR_STATION_SIGN_TINY, st->sign.width_2 | 0x8000);
 				}
 			}
-			break;
-
-		case ZOOM_LVL_OUT_16X:
 			break;
 
 		default: NOT_REACHED();
@@ -1004,9 +998,6 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 			}
 			break;
 
-		case ZOOM_LVL_OUT_16X:
-			break;
-
 		default: NOT_REACHED();
 	}
 }
@@ -1075,9 +1066,6 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT_TINY, wp->sign.width_2 | 0x8000);
 				}
 			}
-			break;
-
-		case ZOOM_LVL_OUT_16X:
 			break;
 
 		default: NOT_REACHED();
@@ -1581,9 +1569,6 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		case ZOOM_LVL_OUT_16X:
-			break;
-
 		default: NOT_REACHED();
 	}
 
@@ -1640,9 +1625,6 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 					return true;
 				}
 			}
-			break;
-
-		case ZOOM_LVL_OUT_16X:
 			break;
 
 		default: NOT_REACHED();
@@ -1703,9 +1685,6 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 			}
 			break;
 
-		case ZOOM_LVL_OUT_16X:
-			break;
-
 		default: NOT_REACHED();
 	}
 
@@ -1762,9 +1741,6 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 					return true;
 				}
 			}
-			break;
-
-		case ZOOM_LVL_OUT_16X:
 			break;
 
 		default: NOT_REACHED();
