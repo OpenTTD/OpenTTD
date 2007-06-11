@@ -31,10 +31,14 @@ OS = !!OS!!
 OSXAPP = !!OSXAPP!!
 REVISION = !!REVISION!!
 AWK = !!AWK!!
+DISTCC = !!DISTCC!!
 
 RES := $(shell if ! [ -f $(CONFIG_CACHE_SOURCE_LIST) ] || [ -n "`cmp $(CONFIG_CACHE_SOURCE_LIST) $(SOURCE_LIST)`" ]; then cp $(SOURCE_LIST) $(CONFIG_CACHE_SOURCE_LIST); fi )
 
 all: config.cache
+ifdef DISTCC
+	@if [ -z "`echo '$(MFLAGS)' | grep '\-j'`" ]; then echo; echo "WARNING: you enabled distcc support, but you don't seem to be using the -jN paramter"; echo; fi
+endif
 	@for dir in $(DIRS); do \
 		$(MAKE) -C $$dir all; \
 	done

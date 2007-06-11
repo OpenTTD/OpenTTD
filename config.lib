@@ -531,6 +531,7 @@ check_params() {
 	if [ "$with_distcc" != "0" ]; then
 		res="`$distcc --version 2>/dev/null | head -n 1 | cut -b 0-6`"
 		if [ "$res" != "distcc" ]; then
+			distcc=""
 			log 1 "checking distcc... no"
 			if [ "$with_distcc" = "2" ]; then
 				log 1 "configure: error: no distcc detected, but was forced to be used"
@@ -1935,6 +1936,7 @@ make_sed() {
 		s#!!AWK!!#$awk#g;
 		s#!!GCC295!!#$gcc295#g;
 		s#!!ENABLE_INSTALL!!#$enable_install#g;
+		s#!!DISTCC!!#$distcc#g;
 	"
 }
 
