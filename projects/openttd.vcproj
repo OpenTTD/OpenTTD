@@ -959,6 +959,44 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="Blitters"
+			Filter="">
+			<File
+				RelativePath=".\..\src\blitter\8bpp_debug.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_debug.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_optimized.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_optimized.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_slow.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_slow.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\blitter.hpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Sprite loaders"
+			Filter="">
+			<File
+				RelativePath=".\..\src\spriteloader\grf.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\spriteloader\grf.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\spriteloader\spriteloader.hpp">
+			</File>
+		</Filter>
+		<Filter
 			Name="NewGRF"
 			Filter="">
 			<File

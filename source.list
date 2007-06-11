@@ -290,6 +290,20 @@ ai/trolly/pathfinder.cpp
 ai/trolly/shared.cpp
 ai/trolly/trolly.cpp
 
+# Blitters
+blitter/8bpp_debug.cpp
+blitter/8bpp_debug.hpp
+blitter/8bpp_optimized.cpp
+blitter/8bpp_optimized.hpp
+blitter/8bpp_slow.cpp
+blitter/8bpp_slow.hpp
+blitter/blitter.hpp
+
+# Sprite loaders
+spriteloader/grf.cpp
+spriteloader/grf.hpp
+spriteloader/spriteloader.hpp
+
 # NewGRF
 newgrf.cpp
 newgrf_canal.cpp

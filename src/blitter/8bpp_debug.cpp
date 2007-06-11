@@ -1,0 +1,53 @@
+#include "../stdafx.h"
+#include "../zoom.hpp"
+#include "../gfx.h"
+#include "../functions.h"
+#include "8bpp_debug.hpp"
+
+static FBlitter_8bppDebug iFBlitter_8bppDebug;
+
+extern void* AllocSprite(size_t);
+
+void Blitter_8bppDebug::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+{
+	const byte *src, *src_line;
+	Pixel8 *dst, *dst_line;
+
+	/* Find where to start reading in the source sprite */
+	src_line = (const byte *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
+	dst_line = (Pixel8 *)bp->dst + bp->top * bp->pitch + bp->left;
+
+	for (int y = 0; y < bp->height; y++) {
+		dst = dst_line;
+		dst_line += bp->pitch;
+
+		src = src_line;
+		src_line += bp->sprite_width * ScaleByZoom(1, zoom);
+
+		for (int x = 0; x < bp->width; x++) {
+			if (*src != 0) *dst = *src;
+			dst++;
+			src += ScaleByZoom(1, zoom);
+		}
+		assert(src <= src_line);
+	}
+}
+
+Sprite *Blitter_8bppDebug::Encode(SpriteLoader::Sprite *sprite)
+{
+	Sprite *dest_sprite;
+	dest_sprite = (Sprite *)AllocSprite(sizeof(*dest_sprite) + sprite->height * sprite->width);
+
+	dest_sprite->height = sprite->height;
+	dest_sprite->width  = sprite->width;
+	dest_sprite->x_offs = sprite->x_offs;
+	dest_sprite->y_offs = sprite->y_offs;
+
+	/* Write a random color as sprite; this makes debugging really easy */
+	uint color = InteractiveRandom() % 150 + 2;
+	for (int i = 0; i < sprite->height * sprite->width; i++) {
+		dest_sprite->data[i] = (sprite->data[i].m == 0) ? 0 : color;
+	}
+
+	return dest_sprite;
+}

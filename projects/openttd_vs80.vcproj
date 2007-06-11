@@ -952,7 +952,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\newgrf_industries.h"
+				RelativePath=".\..\src\newgrf_industries.h"
 				>
 			</File>
 			<File
@@ -1501,6 +1501,54 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="Blitters"
+			>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_debug.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_debug.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_optimized.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_optimized.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_slow.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_slow.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\blitter.hpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Sprite loaders"
+			>
+			<File
+				RelativePath=".\..\src\spriteloader\grf.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\spriteloader\grf.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\spriteloader\spriteloader.hpp"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="NewGRF"
 			>
 			<File
@@ -1532,7 +1580,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\newgrf_industries.cpp"
+				RelativePath=".\..\src\newgrf_industries.cpp"
 				>
 			</File>
 			<File

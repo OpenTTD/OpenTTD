@@ -64,6 +64,7 @@
 #include "newgrf_commons.h"
 #include "player_face.h"
 #include "group.h"
+#include "blitter/blitter.hpp"
 
 #include "bridge_map.h"
 #include "clear_map.h"
@@ -84,6 +85,8 @@ void ResetMusic();
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
+
+const char *_default_blitter = "8bpp-optimzed";
 
 /* TODO: usrerror() for errors which are not of an internal nature but
  * caused by the user, i.e. missing files or fatal configuration errors.
@@ -159,6 +162,7 @@ static void showhelp()
 		"  -v drv              = Set video driver (see below)\n"
 		"  -s drv              = Set sound driver (see below) (param bufsize,hz)\n"
 		"  -m drv              = Set music driver (see below)\n"
+		"  -b drv              = Set the blitter to use (see below)\n"
 		"  -r res              = Set resolution (for instance 800x600)\n"
 		"  -h                  = Display this help text\n"
 		"  -t year             = Set starting year\n"
@@ -182,6 +186,9 @@ static void showhelp()
 	);
 
 	p = GetDriverList(p, lastof(buf));
+
+	/* List the blitters */
+	p = BlitterFactoryBase::GetBlittersInfo(p, lastof(buf));
 
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
@@ -350,7 +357,7 @@ int ttd_main(int argc, char *argv[])
 {
 	int i;
 	const char *optformat;
-	char musicdriver[32], sounddriver[32], videodriver[32];
+	char musicdriver[32], sounddriver[32], videodriver[32], blitter[32];
 	int resolution[2] = {0, 0};
 	Year startyear = INVALID_YEAR;
 	uint generation_seed = GENERATE_NEW_SEED;
@@ -364,7 +371,7 @@ int ttd_main(int argc, char *argv[])
 	uint16 dedicated_port = 0;
 #endif /* ENABLE_NETWORK */
 
-	musicdriver[0] = sounddriver[0] = videodriver[0] = '\0';
+	musicdriver[0] = sounddriver[0] = videodriver[0] = blitter[0] = '\0';
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
@@ -376,7 +383,7 @@ int ttd_main(int argc, char *argv[])
 	 *   a letter means: it accepts that param (e.g.: -h)
 	 *   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	 *   a '::' behind it means: it can optional have a param (e.g.: -d<debug>) */
-	optformat = "m:s:v:hD::n::eit:d::r:g::G:c:xl:"
+	optformat = "m:s:v:b:hD::n::eit:d::r:g::G:c:xl:"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
 #endif
@@ -389,6 +396,7 @@ int ttd_main(int argc, char *argv[])
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
 		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
+		case 'b': ttd_strlcpy(blitter, mgo.opt, sizeof(blitter)); break;
 #if defined(ENABLE_NETWORK)
 		case 'D':
 			strcpy(musicdriver, "null");
@@ -461,6 +469,7 @@ int ttd_main(int argc, char *argv[])
 	if (!StrEmpty(musicdriver)) ttd_strlcpy(_ini_musicdriver, musicdriver, sizeof(_ini_musicdriver));
 	if (!StrEmpty(sounddriver)) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
 	if (!StrEmpty(videodriver)) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
+	if (StrEmpty(blitter)) ttd_strlcpy(blitter, _default_blitter, sizeof(blitter));
 	if (resolution[0] != 0) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startyear != INVALID_YEAR) _patches_newgame.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _patches_newgame.generation_seed = generation_seed;
@@ -500,6 +509,9 @@ int ttd_main(int argc, char *argv[])
 	/* Initialize game palette */
 	GfxInitPalettes();
 
+	DEBUG(misc, 1, "Loading blitter '%s'...", blitter);
+	if (BlitterFactoryBase::SelectBlitter(blitter) == NULL)
+		error("Failed to select requested blitter '%s'; does it exist?", blitter);
 	DEBUG(driver, 1, "Loading drivers...");
 	LoadDriver(SOUND_DRIVER, _ini_sounddriver);
 	LoadDriver(MUSIC_DRIVER, _ini_musicdriver);

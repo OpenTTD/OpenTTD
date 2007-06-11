@@ -11,10 +11,11 @@
 #include "table/sprites.h"
 #include "fileio.h"
 #include "helpers.hpp"
+#include "spriteloader/grf.hpp"
+#include "blitter/blitter.hpp"
 
-
-/* Default of 2MB spritecache */
-uint _sprite_cache_size = 2;
+/* Default of 4MB spritecache */
+uint _sprite_cache_size = 4;
 
 
 struct SpriteCache {
@@ -115,12 +116,10 @@ bool SpriteExists(SpriteID id)
 	return GetSpriteCache(id)->file_pos != 0;
 }
 
-static void* AllocSprite(size_t);
+void* AllocSprite(size_t);
 
 static void* ReadSprite(SpriteCache *sc, SpriteID id)
 {
-	uint num;
-	byte type;
 	uint32 file_pos = sc->file_pos;
 
 	DEBUG(sprite, 9, "Load sprite %d", id);
@@ -135,49 +134,28 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 
 	FioSeekToFile(file_pos);
 
-	num  = FioReadWord();
-	type = FioReadByte();
+	/* Read the size and type */
+	int num  = FioReadWord();
+	byte type = FioReadByte();
+	/* Type 0xFF indicates either a colormap or some other non-sprite info */
 	if (type == 0xFF) {
-		byte* dest = (byte*)AllocSprite(num);
+		byte *dest = (byte *)AllocSprite(num);
 
 		sc->ptr = dest;
 		FioReadBlock(dest, num);
 
 		return dest;
-	} else {
-		uint height = FioReadByte();
-		uint width  = FioReadWord();
-		Sprite* sprite;
-		byte* dest;
-
-		num = (type & 0x02) ? width * height : num - 8;
-		sprite = (Sprite*)AllocSprite(sizeof(*sprite) + num);
-		sc->ptr = sprite;
-		sprite->info   = type;
-		sprite->height = (id != 142) ? height : 10; // Compensate for a TTD bug
-		sprite->width  = width;
-		sprite->x_offs = FioReadWord();
-		sprite->y_offs = FioReadWord();
-
-		dest = sprite->data;
-		while (num > 0) {
-			int8 i = FioReadByte();
-
-			if (i >= 0) {
-				num -= i;
-				for (; i > 0; --i) *dest++ = FioReadByte();
-			} else {
-				const byte* rel = dest - (((i & 7) << 8) | FioReadByte());
-
-				i = -(i >> 3);
-				num -= i;
-
-				for (; i > 0; --i) *dest++ = *rel++;
-			}
-		}
-
-		return sprite;
 	}
+
+	SpriteLoaderGrf sprite_loader;
+	SpriteLoader::Sprite sprite;
+
+	if (!sprite_loader.LoadSprite(&sprite, file_pos)) return NULL;
+	if (id == 142) sprite.height = 10; // Compensate for a TTD bug
+	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite);
+	free(sprite.data);
+
+	return sc->ptr;
 }
 
 
@@ -348,7 +326,7 @@ static void DeleteEntryFromSpriteCache()
 	}
 }
 
-static void* AllocSprite(size_t mem_req)
+void* AllocSprite(size_t mem_req)
 {
 	mem_req += sizeof(MemBlock);
 

@@ -19,6 +19,7 @@
 #include "genworld.h"
 #include "debug.h"
 #include "zoom.hpp"
+#include "blitter/blitter.hpp"
 
 #ifdef _DEBUG
 bool _dbg_screen_rect;
@@ -45,14 +46,7 @@ int _pal_last_dirty;
 Colour _cur_palette[256];
 byte _stringwidth_table[FS_END][224];
 
-enum BlitterMode {
-	BM_NORMAL,
-	BM_COLOUR_REMAP,
-	BM_TRANSPARENT,
-};
-
-template <BlitterMode Tmode>
-static inline void GfxMainBlitter(const Sprite *sprite, int x, int y);
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode);
 
 FontSize _cur_fontsize;
 static FontSize _last_fontsize;
@@ -683,7 +677,7 @@ skip_cont:;
 		if (IsPrintable(c)) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
 			if (x + 26 >= dpi->left) {
-				GfxMainBlitter<BM_COLOUR_REMAP>(GetGlyph(size, c), x, y);
+				GfxMainBlitter(GetGlyph(size, c), x, y, BM_COLOUR_REMAP);
 			}
 			x += GetCharacterWidth(size, c);
 		} else if (c == '\n') { // newline = {}
@@ -720,269 +714,81 @@ void DrawSprite(SpriteID img, SpriteID pal, int x, int y)
 {
 	if (HASBIT(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH)) + 1;
-		GfxMainBlitter<BM_TRANSPARENT>(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y);
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_TRANSPARENT);
 	} else if (pal != PAL_NONE) {
 		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH)) + 1;
-		GfxMainBlitter<BM_COLOUR_REMAP>(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y);
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_COLOUR_REMAP);
 	} else {
-		GfxMainBlitter<BM_NORMAL>(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y);
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_NORMAL);
 	}
 }
 
-struct BlitterParams {
-	int start_x, start_y;
-	const byte *sprite;
-	Pixel *dst;
-	int width, height;
-	int width_org;
-	int pitch;
-};
-
-template <BlitterMode Tmode, ZoomLevel Tzoom>
-static inline void GfxBlitZoomUncomp(BlitterParams *bp)
-{
-	const byte *src = bp->sprite + bp->start_y * bp->width_org + bp->start_x;
-	Pixel *dst = bp->dst;
-	int height = bp->height;
-	int width = bp->width;
-	int i;
-
-	assert(height > 0);
-	assert(width > 0);
-
-	height = UnScaleByZoom(height, Tzoom);
-
-	switch (Tmode) {
-		case BM_COLOUR_REMAP: {
-			const byte *ctab = _color_remap_ptr;
-
-			for (; height != 0; height--) {
-				for (i = 0; i != UnScaleByZoom(width, Tzoom); i++) {
-					byte b = ctab[src[ScaleByZoom(i, Tzoom)]];
-
-					if (b != 0) dst[i] = b;
-				}
-				src += ScaleByZoom(bp->width_org, Tzoom);
-				dst += bp->pitch;
-			}
-			break;
-		}
-
-		case BM_TRANSPARENT: {
-			const byte *ctab = _color_remap_ptr;
-
-			for (; height != 0; height--) {
-				for (i = 0; i != UnScaleByZoom(width, Tzoom); i++)
-					if (src[ScaleByZoom(i, Tzoom)] != 0) dst[i] = ctab[dst[i]];
-				src += ScaleByZoom(bp->width_org, Tzoom);
-				dst += bp->pitch;
-			}
-			break;
-		}
-
-		default:
-			for (; height != 0; height--) {
-				for (i = 0; i != UnScaleByZoom(width, Tzoom); i++)
-					if (src[ScaleByZoom(i, Tzoom)] != 0) dst[i] = src[ScaleByZoom(i, Tzoom)];
-				src += ScaleByZoom(bp->width_org, Tzoom);
-				dst += bp->pitch;
-			}
-			break;
-	}
-}
-
-template <BlitterMode Tmode, ZoomLevel Tzoom>
-static inline void GfxBlitTileZoom(BlitterParams *bp)
-{
-	const byte *src_o = bp->sprite;
-	const byte *src;
-	int num, skip;
-	byte done;
-	Pixel *dst;
-	const byte *ctab;
-
-	src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
-
-	for (;;) {
-		do {
-			done = src_o[0];
-			num = done & 0x7F;
-			skip = src_o[1];
-			src = src_o + 2;
-			src_o += num + 2;
-
-			dst = bp->dst;
-
-			if (Tzoom >= ZOOM_LVL_OUT_2X && (skip & 1)) {
-				skip += 1;
-				src += 1;
-				num -= 1;
-				if (num <= 0) continue;
-			}
-
-			if (Tzoom >= ZOOM_LVL_OUT_4X && (skip & 2)) {
-				skip += 2;
-				src += 2;
-				num -= 2;
-				if (num <= 0) continue;
-			}
-
-			if (Tzoom >= ZOOM_LVL_OUT_8X && (skip & 4)) {
-				skip += 4;
-				src += 4;
-				num -= 4;
-				if (num <= 0) continue;
-			}
-
-			if (Tzoom >= ZOOM_LVL_OUT_16X && (skip & 8)) {
-				skip += 8;
-				src += 8;
-				num -= 8;
-				if (num <= 0) continue;
-			}
-
-			if ( (skip -= bp->start_x) > 0) {
-				dst += UnScaleByZoom(skip, Tzoom);
-			} else {
-				src -= skip;
-				num += skip;
-				if (num <= 0) continue;
-				skip = 0;
-			}
-
-			skip = skip + num - bp->width;
-			if (skip > 0) {
-				num -= skip;
-				if (num <= 0) continue;
-			}
-
-			num = UnScaleByZoom(num, Tzoom);
-
-			switch (Tmode) {
-				case BM_COLOUR_REMAP:
-					ctab = _color_remap_ptr;
-					for (; num != 0; num--) {
-							*dst = ctab[*src];
-							dst++;
-							src += ScaleByZoom(1, Tzoom);
-					}
-					break;
-
-				case BM_TRANSPARENT:
-					ctab = _color_remap_ptr;
-					for (; num != 0; num--) {
-							*dst = ctab[*dst];
-							dst++;
-					}
-					break;
-
-				default:
-					if (Tzoom == ZOOM_LVL_NORMAL) {
-						memcpy(dst, src, num);
-					} else {
-						for (; num != 0; num--) {
-								*dst = *src;
-								dst++;
-								src += ScaleByZoom(1, Tzoom);
-						}
-					}
-					break;
-			}
-
-
-		} while (!(done & 0x80));
-
-		bp->dst += bp->pitch;
-		if (--bp->height == 0) return;
-
-		for (int i = 0; i < ScaleByZoom(1, Tzoom) - 1; i++) {
-			do {
-				done = src_o[0];
-				src_o += (done & 0x7F) + 2;
-			} while (!(done & 0x80));
-			if (--bp->height == 0) return;
-		}
-	}
-}
-
-template <BlitterMode Tmode>
-static inline void GfxMainBlitter(const Sprite *sprite, int x, int y)
+static inline void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 {
 	const DrawPixelInfo *dpi = _cur_dpi;
-	int start_x, start_y;
-	BlitterParams bp;
-	int zoom_mask = ~(ScaleByZoom(1, dpi->zoom) - 1);
+	Blitter::BlitterParams bp;
 
-	/* decode sprite header */
+	/* Move to the correct offset */
 	x += sprite->x_offs;
 	y += sprite->y_offs;
-	bp.width_org = bp.width = sprite->width;
-	bp.height = sprite->height;
+
+	/* Copy the main data directly from the sprite */
 	bp.sprite = sprite->data;
+	bp.sprite_width = sprite->width;
+	bp.sprite_height = sprite->height;
+	bp.width = UnScaleByZoom(sprite->width, dpi->zoom);
+	bp.height = UnScaleByZoom(sprite->height, dpi->zoom);
+	bp.top = 0;
+	bp.left = 0;
+	bp.skip_left = 0;
+	bp.skip_top = 0;
 	bp.dst = dpi->dst_ptr;
 	bp.pitch = dpi->pitch;
+	bp.remap = _color_remap_ptr;
 
-	assert(bp.height > 0);
-	assert(bp.width > 0);
+	assert(sprite->width > 0);
+	assert(sprite->height > 0);
 
-	start_y = 0;
-	if (dpi->zoom > ZOOM_LVL_NORMAL) {
-		start_y += bp.height & ~zoom_mask;
-		bp.height &= zoom_mask;
-		if (bp.height == 0) return;
-		y &= zoom_mask;
-	}
+	if (bp.width <= 0) return;
+	if (bp.height <= 0) return;
 
-	if ( (y -= dpi->top) < 0) {
-		bp.height += y;
+	y -= dpi->top;
+	/* Check for top overflow */
+	if (y < 0) {
+		bp.height -= -UnScaleByZoom(y, dpi->zoom);
 		if (bp.height <= 0) return;
-		start_y -= y;
+		bp.skip_top += -UnScaleByZoom(y, dpi->zoom);
 		y = 0;
 	} else {
-		bp.dst += bp.pitch * UnScaleByZoom(y, dpi->zoom);
+		bp.top = UnScaleByZoom(y, dpi->zoom);
 	}
-	bp.start_y = start_y;
 
-	if ( (y = y + bp.height - dpi->height) > 0) {
-		bp.height -= y;
+	/* Check for bottom overflow */
+	y += ScaleByZoom(bp.height, dpi->zoom) - dpi->height;
+	if (y > 0) {
+		bp.height -= UnScaleByZoom(y, dpi->zoom);
 		if (bp.height <= 0) return;
 	}
 
-	start_x = 0;
-	x &= zoom_mask;
-	if ( (x -= dpi->left) < 0) {
-		bp.width += x;
+	x -= dpi->left;
+	/* Check for left overflow */
+	if (x < 0) {
+		bp.width -= -UnScaleByZoom(x, dpi->zoom);
 		if (bp.width <= 0) return;
-		start_x -= x;
+		bp.skip_left += -UnScaleByZoom(x, dpi->zoom);
 		x = 0;
+	} else {
+		bp.left = UnScaleByZoom(x, dpi->zoom);
 	}
-	bp.start_x = start_x;
-	bp.dst += UnScaleByZoom(x, dpi->zoom);
 
-	if ( (x = x + bp.width - dpi->width) > 0) {
-		bp.width -= x;
+	/* Check for right overflow */
+	x += ScaleByZoom(bp.width, dpi->zoom) - dpi->width;
+	if (x > 0) {
+		bp.width -= UnScaleByZoom(x, dpi->zoom);
 		if (bp.width <= 0) return;
 	}
 
-	if (sprite->info & 8) {
-		switch (dpi->zoom) {
-			case ZOOM_LVL_NORMAL:  GfxBlitTileZoom<Tmode, ZOOM_LVL_NORMAL>(&bp);  break;
-			case ZOOM_LVL_OUT_2X:  GfxBlitTileZoom<Tmode, ZOOM_LVL_OUT_2X>(&bp);  break;
-			case ZOOM_LVL_OUT_4X:  GfxBlitTileZoom<Tmode, ZOOM_LVL_OUT_4X>(&bp);  break;
-			case ZOOM_LVL_OUT_8X:  GfxBlitTileZoom<Tmode, ZOOM_LVL_OUT_8X>(&bp);  break;
-			case ZOOM_LVL_OUT_16X: GfxBlitTileZoom<Tmode, ZOOM_LVL_OUT_16X>(&bp); break;
-			default: NOT_REACHED();
-		}
-	} else {
-		switch (dpi->zoom) {
-			case ZOOM_LVL_NORMAL:  GfxBlitZoomUncomp<Tmode, ZOOM_LVL_NORMAL>(&bp);  break;
-			case ZOOM_LVL_OUT_2X:  GfxBlitZoomUncomp<Tmode, ZOOM_LVL_OUT_2X>(&bp);  break;
-			case ZOOM_LVL_OUT_4X:  GfxBlitZoomUncomp<Tmode, ZOOM_LVL_OUT_4X>(&bp);  break;
-			case ZOOM_LVL_OUT_8X:  GfxBlitZoomUncomp<Tmode, ZOOM_LVL_OUT_8X>(&bp);  break;
-			case ZOOM_LVL_OUT_16X: GfxBlitZoomUncomp<Tmode, ZOOM_LVL_OUT_16X>(&bp); break;
-			default: NOT_REACHED();
-		}
-	}
+	BlitterFactoryBase::GetCurrentBlitter()->Draw(&bp, mode, dpi->zoom);
 }
 
 void DoPaletteAnimations();

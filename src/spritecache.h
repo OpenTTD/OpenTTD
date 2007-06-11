@@ -6,7 +6,6 @@
 #define SPRITECACHE_H
 
 struct Sprite {
-	byte info;
 	byte height;
 	uint16 width;
 	int16 x_offs;
