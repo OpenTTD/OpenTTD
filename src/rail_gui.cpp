@@ -175,7 +175,7 @@ static void GenericPlaceSignals(TileIndex tile)
 		trackbits = (_tile_fract_coords.x + _tile_fract_coords.y <= 15) ? TRACK_BIT_UPPER : TRACK_BIT_LOWER;
 	}
 
-	Track track = TrackBitsToTrack(trackbits);
+	Track track = FindFirstTrack(trackbits);
 
 	if (!_remove_button_clicked) {
 		uint32 p1 = track;
