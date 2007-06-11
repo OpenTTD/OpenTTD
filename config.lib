@@ -44,6 +44,7 @@ set_default() {
 	enable_universal="1"
 	enable_osx_g5="0"
 	enable_unicode="1"
+	with_distcc="1"
 	with_osx_sysroot="1"
 	with_application_bundle="1"
 	with_sdl="1"
@@ -61,7 +62,7 @@ set_default() {
 	with_fontconfig="1"
 	with_psp_config="1"
 
-	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -234,6 +235,10 @@ detect_params() {
 
 			--with-midi=*)                with_midi="$optarg";;
 			--with-midi-arg=*)            with_midi_arg="$optarg";;
+
+			--without-distcc)             with_distcc="0";;
+			--with-distcc)                with_distcc="2";;
+			--with-distcc=*)              with_distcc="$optarg";;
 
 			--without-osx-sysroot)        with_osx_sysroot="0";;
 			--with-osx-sysroot)           with_osx_sysroot="2";;
@@ -510,6 +515,34 @@ check_params() {
 	else
 		strip=""
 		log 1 "checking stripping... skipped"
+	fi
+
+	if [ "$with_distcc" = "0" ]; then
+		log 1 "checking distcc... no"
+	elif [ "$with_distcc" = "1" ]; then
+		with_distcc="0"
+
+		log 1 "checking distcc... no (only used when forced)"
+	elif [ "$with_distcc" = "2" ]; then
+		distcc="distcc"
+	else
+		distcc="$with_distcc"
+	fi
+	if [ "$with_distcc" != "0" ]; then
+		res="`$distcc --version 2>/dev/null | head -n 1 | cut -b 0-6`"
+		if [ "$res" != "distcc" ]; then
+			log 1 "checking distcc... no"
+			if [ "$with_distcc" = "2" ]; then
+				log 1 "configure: error: no distcc detected, but was forced to be used"
+				exit 1
+			fi
+			if [ "$with_distcc" != "1" ]; then
+				log 1 "configure: error: '$with_distcc' doesn't seem a distcc to me"
+				exit 1
+			fi
+		fi
+
+		log 1 "checking distcc... $distcc"
 	fi
 
 	if [ "$os" != "OSX" ] && [ "$with_osx_sysroot" != "0" ]; then
@@ -987,6 +1020,14 @@ make_cflags_and_ldflags() {
 		cflags_makedep="` echo "$CFLAGS" | sed 's# /# -#g'`"
 	else
 		makedepend=""
+	fi
+
+	if [ "$with_distcc" != "0" ]; then
+		cc_host="$distcc $cc_host"
+		cxx_host="$distcc $cxx_host"
+		log 1 ""
+		log 1 " NOTICE: remind yourself to use 'make -jN' to make use of distcc"
+		log 1 ""
 	fi
 }
 
