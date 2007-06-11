@@ -144,7 +144,46 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 		sc->ptr = dest;
 		FioReadBlock(dest, num);
 
-		return dest;
+		return sc->ptr;
+	}
+	/* Ugly hack to work around the problem that the old landscape
+	 *  generator assumes that those sprites are stored uncompressed in
+	 *  the memory, and they are only read directly by the code, never
+	 *  send to the blitter. So do not send it to the blitter (which will
+	 *  result in a data array in the format the blitter likes most), but
+	 *  read the data directly from disk and store that as sprite.
+	 * Ugly: yes. Other solution: no. Blame the original author or
+	 *  something ;) The image should really have been a data-stream
+	 *  (so type = 0xFF basicly). */
+	if (id >= 4845 && id <= 4881) {
+		uint height = FioReadByte();
+		uint width  = FioReadWord();
+		Sprite *sprite;
+		byte *dest;
+
+		num = width * height;
+		sprite = (Sprite *)AllocSprite(sizeof(*sprite) + num);
+		sc->ptr = sprite;
+		sprite->height = height;
+		sprite->width  = width;
+		sprite->x_offs = FioReadWord();
+		sprite->y_offs = FioReadWord();
+
+		dest = sprite->data;
+		while (num > 0) {
+			int8 i = FioReadByte();
+			if (i >= 0) {
+				num -= i;
+				for (; i > 0; --i) *dest++ = FioReadByte();
+			} else {
+				const byte* rel = dest - (((i & 7) << 8) | FioReadByte());
+				i = -(i >> 3);
+				num -= i;
+				for (; i > 0; --i) *dest++ = *rel++;
+			}
+		}
+
+		return sc->ptr;
 	}
 
 	SpriteLoaderGrf sprite_loader;
