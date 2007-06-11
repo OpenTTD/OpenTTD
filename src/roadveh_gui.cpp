@@ -11,6 +11,7 @@
 #include "table/strings.h"
 #include "window.h"
 #include "gui.h"
+#include "strings.h"
 #include "vehicle.h"
 #include "viewport.h"
 #include "command.h"
@@ -18,22 +19,61 @@
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 
-void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection)
+static inline int RoadVehLengthToPixels(int length)
 {
-	SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	DrawSprite(GetRoadVehImage(v, DIR_W), pal, x + 14, y + 6);
+	return (length * 28) / 8;
+}
 
-	if (v->index == selection) {
-		DrawFrameRect(x - 1, y - 1, x + 28, y + 12, 15, FR_BORDERONLY);
-	}
+void DrawRoadVehImage(const Vehicle *v, int x, int y, int count, VehicleID selection)
+{
+	int dx = 0;
+
+	/* Road vehicle lengths are measured in eighths of the standard length, so
+	 * count is the number of standard vehicles that should be drawn. If it is
+	 * 0, we draw enough vehicles for 10 standard vehicle lengths. */
+	int max_length = (count == 0) ? 80 : count * 8;
+
+	do {
+		int length = v->u.road.cached_veh_length;
+
+		if (dx + length > 0 && dx <= max_length) {
+			SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+			DrawSprite(GetRoadVehImage(v, DIR_W), pal, x + 14 + RoadVehLengthToPixels(dx), y + 6);
+
+			if (v->index == selection) {
+				DrawFrameRect(x - 1, y - 1, x + 28, y + 12, 15, FR_BORDERONLY);
+			}
+		}
+
+		dx += length;
+		v = v->next;
+	} while (v != NULL && dx < max_length);
 }
 
 static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: {
+		const Vehicle *v = GetVehicle(w->window_number);
+
+		if (!RoadVehHasArticPart(v)) break;
+
+		/* Draw the text under the vehicle instead of next to it, minus the
+		 * height already allocated for the cargo of the first vehicle. */
+		uint height_extension = 15 - 11;
+
+		/* Add space for the cargo amount for each part. */
+		do {
+			height_extension += 11;
+		} while ((v = v->next) != NULL);
+
+		ResizeWindow(w, 0, height_extension);
+	} break;
+
 	case WE_PAINT: {
 		const Vehicle *v = GetVehicle(w->window_number);
 		StringID str;
+		uint y_offset = RoadVehHasArticPart(v) ? 15 :0;
 
 		SetWindowWidgetDisabledState(w, 2, v->owner != _local_player);
 		/* disable service-scroller when interval is set to disabled */
@@ -76,37 +116,81 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 			DrawString(2, 45, STR_9010_RELIABILITY_BREAKDOWNS, 0);
 		}
 
-		/* Draw service interval text */
-		{
-			SetDParam(0, v->service_interval);
-			SetDParam(1, v->date_of_last_service);
-			DrawString(13, 102, _patches.servint_ispercent?STR_SERVICING_INTERVAL_PERCENT:STR_883C_SERVICING_INTERVAL_DAYS, 0);
-		}
-
-		DrawRoadVehImage(v, 3, 57, INVALID_VEHICLE);
+		DrawRoadVehImage(v, 3, 57, 0, INVALID_VEHICLE);
 
 		SetDParam(0, GetCustomEngineName(v->engine_type));
 		SetDParam(1, v->build_year);
 		SetDParam(2, v->value);
-		DrawString(34, 57, STR_9011_BUILT_VALUE, 0);
+		DrawString(34, 57 + y_offset, STR_9011_BUILT_VALUE, 0);
 
-		SetDParam(0, v->cargo_type);
-		SetDParam(1, v->cargo_cap);
-		DrawString(34, 67, STR_9012_CAPACITY, 0);
+		if (RoadVehHasArticPart(v)) {
+			AcceptedCargo max_cargo;
+			char capacity[512];
 
-		str = STR_8812_EMPTY;
-		if (v->cargo_count != 0) {
+			memset(max_cargo, 0, sizeof(max_cargo));
+
+			for (const Vehicle *u = v; u != NULL; u = u->next) {
+				max_cargo[u->cargo_type] += u->cargo_cap;
+			}
+
+			GetString(capacity, STR_ARTICULATED_RV_CAPACITY, lastof(capacity));
+
+			bool first = true;
+			for (CargoID i = 0; i < NUM_CARGO; i++) {
+				if (max_cargo[i] > 0) {
+					char buffer[128];
+
+					SetDParam(0, i);
+					SetDParam(1, max_cargo[i]);
+					GetString(buffer, STR_BARE_CARGO, lastof(buffer));
+
+					if (!first) strecat(capacity, ", ", lastof(capacity));
+					strecat(capacity, buffer, lastof(capacity));
+				}
+			}
+
+			SetDParamStr(0, capacity);
+			DrawStringTruncated(34, 67 + y_offset, STR_JUST_STRING, 0, w->width - 34);
+
+			for (const Vehicle *u = v; u != NULL; u = u->next) {
+				str = STR_8812_EMPTY;
+				if (u->cargo_count != 0) {
+					SetDParam(0, u->cargo_type);
+					SetDParam(1, u->cargo_count);
+					SetDParam(2, u->cargo_source);
+					str = STR_8813_FROM;
+				}
+				DrawString(34, 78 + y_offset, str, 0);
+
+				y_offset += 11;
+			}
+
+			y_offset -= 11;
+		} else {
 			SetDParam(0, v->cargo_type);
-			SetDParam(1, v->cargo_count);
-			SetDParam(2, v->cargo_source);
-			str = STR_8813_FROM;
+			SetDParam(1, v->cargo_cap);
+			DrawString(34, 67 + y_offset, STR_9012_CAPACITY, 0);
+
+			str = STR_8812_EMPTY;
+			if (v->cargo_count != 0) {
+				SetDParam(0, v->cargo_type);
+				SetDParam(1, v->cargo_count);
+				SetDParam(2, v->cargo_source);
+				str = STR_8813_FROM;
+			}
+			DrawString(34, 78 + y_offset, str, 0);
 		}
-		DrawString(34, 78, str, 0);
 
 		/* Draw Transfer credits text */
 		SetDParam(0, v->cargo_feeder_share);
-		DrawString(34, 89, STR_FEEDER_CARGO_VALUE, 0);
+		DrawString(34, 90 + y_offset, STR_FEEDER_CARGO_VALUE, 0);
 
+		/* Draw service interval text */
+		{
+			SetDParam(0, v->service_interval);
+			SetDParam(1, v->date_of_last_service);
+			DrawString(13, 102 + y_offset, _patches.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, 0);
+		}
 	} break;
 
 	case WE_CLICK: {
@@ -151,10 +235,10 @@ static const Widget _roadveh_details_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   339,     0,    13, STR_900C_DETAILS, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   340,   379,     0,    13, STR_01AA_NAME,    STR_902E_NAME_ROAD_VEHICLE},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   379,    14,    55, 0x0,              STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   379,    56,   100, 0x0,              STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   101,   106, STR_0188,         STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   107,   112, STR_0189,         STR_884E_DECREASE_SERVICING_INTERVAL},
-{      WWT_PANEL,   RESIZE_NONE,    14,    11,   379,   101,   112, 0x0,              STR_NULL},
+{      WWT_PANEL,   RESIZE_BOTTOM,  14,     0,   379,    56,   100, 0x0,              STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,    10,   101,   106, STR_0188,         STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,    10,   107,   112, STR_0189,         STR_884E_DECREASE_SERVICING_INTERVAL},
+{      WWT_PANEL,   RESIZE_TB,      14,    11,   379,   101,   112, 0x0,              STR_NULL},
 {   WIDGETS_END},
 };
 

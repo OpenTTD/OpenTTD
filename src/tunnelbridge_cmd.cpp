@@ -1427,7 +1427,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 	} else if (IsBridge(tile)) { // XXX is this necessary?
 		DiagDirection dir;
 
-		if (v->type == VEH_ROAD || (v->type == VEH_TRAIN && IsFrontEngine(v))) {
+		if (v->HasFront() && v->IsPrimaryVehicle()) {
 			/* modify speed of vehicle */
 			uint16 spd = _bridge[GetBridgeType(tile)].speed;
 

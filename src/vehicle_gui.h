@@ -51,7 +51,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e);
 int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number);
 
 void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection);
-void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection);
+void DrawRoadVehImage(const Vehicle *v, int x, int y, int count, VehicleID selection);
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection);
 void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
 
@@ -75,7 +75,7 @@ static inline void DrawVehicleImage(const Vehicle *v, int x, int y, int count, i
 {
 	switch (v->type) {
 		case VEH_TRAIN:    DrawTrainImage(v, x, y, count, skip, selection); break;
-		case VEH_ROAD:     DrawRoadVehImage(v, x, y, selection);            break;
+		case VEH_ROAD:     DrawRoadVehImage(v, x, y, count, selection);     break;
 		case VEH_SHIP:     DrawShipImage(v, x, y, selection);               break;
 		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);           break;
 		default: NOT_REACHED();

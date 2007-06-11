@@ -17,6 +17,7 @@
 #include "economy.h"
 #include "network/network.h"
 #include "variables.h"
+#include "roadveh.h"
 #include "train.h"
 #include "aircraft.h"
 #include "date.h"
@@ -649,7 +650,7 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 		if (v->owner == player) {
 			switch (v->type) {
 				case VEH_TRAIN:    if (IsFrontEngine(v)) train++; break;
-				case VEH_ROAD:     road++; break;
+				case VEH_ROAD:     if (IsRoadVehFront(v)) road++; break;
 				case VEH_AIRCRAFT: if (IsNormalAircraft(v)) air++; break;
 				case VEH_SHIP:     ship++; break;
 				default: break;

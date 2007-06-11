@@ -576,7 +576,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 
 			v->group_id = DEFAULT_GROUP;
 
-			AddArticulatedParts(vl);
+			AddArticulatedParts(vl, VEH_TRAIN);
 
 			_new_vehicle_id = v->index;
 
@@ -755,7 +755,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				vl[0]->u.rail.other_multiheaded_part = vl[1];
 				vl[1]->u.rail.other_multiheaded_part = vl[0];
 			} else {
-				AddArticulatedParts(vl);
+				AddArticulatedParts(vl, VEH_TRAIN);
 			}
 
 			TrainConsistChanged(v);

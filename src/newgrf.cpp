@@ -4268,8 +4268,8 @@ static void InitializeGRFSpecial()
 	                   |                                        (0 << 0x13)  // followvehicle
 	                   |                                        (1 << 0x14)  // trams
 	                   |                                        (0 << 0x15)  // enhancetunnels
-	                   |                                        (0 << 0x16)  // shortrvs
-	                   |                                        (0 << 0x17)  // articulatedrvs
+	                   |                                        (1 << 0x16)  // shortrvs
+	                   |                                        (1 << 0x17)  // articulatedrvs
 	                   |                                        (1 << 0x1E); // variablerunningcosts
 }
 

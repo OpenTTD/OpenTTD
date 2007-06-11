@@ -2776,6 +2776,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centre m
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Road vehicle selection list - click on vehicle for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Build the highlighted road vehicle
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Speed: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacity: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name road vehicle
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Can't name road vehicle...

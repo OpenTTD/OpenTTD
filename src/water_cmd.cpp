@@ -23,6 +23,7 @@
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "train.h"
+#include "roadveh.h"
 #include "water_map.h"
 #include "newgrf.h"
 #include "newgrf_canal.h"
@@ -641,21 +642,13 @@ static void FloodVehicle(Vehicle *v)
 	if (!(v->vehstatus & VS_CRASHED)) {
 		uint16 pass = 0;
 
-		if (v->type == VEH_ROAD) { // flood bus/truck
-			pass = 1; // driver
-			if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo_count;
-
-			v->vehstatus |= VS_CRASHED;
-			v->u.road.crashed_ctr = 2000; // max 2220, disappear pretty fast
-			RebuildVehicleLists();
-		} else if (v->type == VEH_TRAIN) {
+		if (v->type == VEH_TRAIN || v->type == VEH_ROAD) {
 			Vehicle *u;
 
 			v = GetFirstVehicleInChain(v);
 			u = v;
-			if (IsFrontEngine(v)) pass = 4; // driver
 
-			/* crash all wagons, and count passangers */
+			/* crash all wagons, and count passengers */
 			BEGIN_ENUM_WAGONS(v)
 				if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo_count;
 				v->vehstatus |= VS_CRASHED;
@@ -663,7 +656,15 @@ static void FloodVehicle(Vehicle *v)
 			END_ENUM_WAGONS(v)
 
 			v = u;
-			v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
+
+			if (v->type == VEH_TRAIN) {
+				if (IsFrontEngine(v)) pass += 4; // driver
+				v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
+			} else {
+				if (IsRoadVehFront(v)) pass += 1; // driver
+				v->u.road.crashed_ctr = 2000; // max 2220, disappear pretty fast
+			}
+
 			RebuildVehicleLists();
 		} else {
 			return;

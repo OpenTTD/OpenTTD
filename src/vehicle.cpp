@@ -230,11 +230,15 @@ void AfterLoadVehicles()
 
 		v->first = NULL;
 		if (v->type == VEH_TRAIN) v->u.rail.first_engine = INVALID_ENGINE;
+		if (v->type == VEH_ROAD)  v->u.road.first_engine = INVALID_ENGINE;
 	}
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v)))
+		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
 			TrainConsistChanged(v);
+		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
+			RoadVehUpdateCache(v);
+		}
 	}
 
 	FOR_ALL_VEHICLES(v) {
@@ -498,7 +502,7 @@ static Vehicle *GetPrevVehicleInChain_bruteforce(const Vehicle *v)
 {
 	Vehicle *u;
 
-	FOR_ALL_VEHICLES(u) if (u->type == VEH_TRAIN && u->next == v) return u;
+	FOR_ALL_VEHICLES(u) if (u->type == v->type && u->next == v) return u;
 
 	return NULL;
 }
@@ -531,10 +535,14 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	Vehicle* u;
 
 	assert(v != NULL);
-	assert(v->type == VEH_TRAIN);
+	assert(v->type == VEH_TRAIN || v->type == VEH_ROAD);
 
 	if (v->first != NULL) {
-		if (IsFrontEngine(v->first) || IsFreeWagon(v->first)) return v->first;
+		if (v->type == VEH_TRAIN) {
+			if (IsFrontEngine(v->first) || IsFreeWagon(v->first)) return v->first;
+		} else {
+			if (IsRoadVehFront(v->first)) return v->first;
+		}
 
 		DEBUG(misc, 0, "v->first cache faulty. We shouldn't be here, rebuilding cache!");
 	}
@@ -548,8 +556,10 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	while ((u = GetPrevVehicleInChain_bruteforce(v)) != NULL) v = u;
 
 	/* Set the first pointer of all vehicles in that chain to the first wagon */
-	if (IsFrontEngine(v) || IsFreeWagon(v))
+	if ((v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) ||
+			(v->type == VEH_ROAD && IsRoadVehFront(v))) {
 		for (u = (Vehicle *)v; u != NULL; u = u->next) u->first = (Vehicle *)v;
+	}
 
 	return (Vehicle*)v;
 }
@@ -572,9 +582,8 @@ bool IsEngineCountable(const Vehicle *v)
 		case VEH_TRAIN:
 			return !IsArticulatedPart(v) && // tenders and other articulated parts
 			(!IsMultiheaded(v) || IsTrainEngine(v)); // rear parts of multiheaded engines
-		case VEH_ROAD:
-		case VEH_SHIP:
-			return true;
+		case VEH_ROAD: return IsRoadVehFront(v);
+		case VEH_SHIP: return true;
 		default: return false; // Only count player buildable vehicles
 	}
 }
@@ -609,7 +618,9 @@ void DestroyVehicle(Vehicle *v)
 	/* Now remove any artic part. This will trigger an other
 	 *  destroy vehicle, which on his turn can remove any
 	 *  other artic parts. */
-	if (v->type == VEH_TRAIN && EngineHasArticPart(v)) DeleteVehicle(v->next);
+	if ((v->type == VEH_TRAIN && EngineHasArticPart(v)) || (v->type == VEH_ROAD && RoadVehHasArticPart(v))) {
+		DeleteVehicle(v->next);
+	}
 }
 
 /**
@@ -621,7 +632,7 @@ void DestroyVehicle(Vehicle *v)
  */
 void DeleteVehicleChain(Vehicle *v)
 {
-	assert(v->type != VEH_TRAIN);
+	assert(v->type != VEH_TRAIN && v->type != VEH_ROAD);
 
 	do {
 		Vehicle *u = v;
@@ -705,6 +716,7 @@ void CallVehicleTicks()
 			case VEH_SHIP:
 				if (v->type == VEH_TRAIN && IsTrainWagon(v)) continue;
 				if (v->type == VEH_AIRCRAFT && v->subtype != AIR_HELICOPTER) continue;
+				if (v->type == VEH_ROAD && !IsRoadVehFront(v)) continue;
 
 				v->motion_counter += (v->direction & 1) ? (v->cur_speed * 3) / 4 : v->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
@@ -1876,6 +1888,8 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				if (w->type == VEH_TRAIN && EngineHasArticPart(w)) {
 					w = GetNextArticPart(w);
+				} else if (w->type == VEH_ROAD && RoadVehHasArticPart(w)) {
+					w = w->next;
 				} else {
 					break;
 				}
@@ -1886,7 +1900,15 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					total_cost += GetRefitCost(v->engine_type);
 				}
 			}
-		} while (v->type == VEH_TRAIN && EngineHasArticPart(v) && (v = GetNextArticPart(v)) != NULL);
+
+			if (v->type == VEH_TRAIN && EngineHasArticPart(v)) {
+				v = GetNextArticPart(v);
+			} else if (v->type == VEH_ROAD && RoadVehHasArticPart(v)) {
+				v = v->next;
+			} else {
+				break;
+			}
+		} while (v != NULL);
 
 		if ((flags & DC_EXEC) && v->type == VEH_TRAIN) w = GetNextVehicle(w);
 	} while (v->type == VEH_TRAIN && (v = GetNextVehicle(v)) != NULL);
@@ -1964,7 +1986,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 
 		case VEH_ROAD:
 			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_ROAD && IsRoadVehInDepot(v)) {
+				if (v->tile == tile && v->type == VEH_ROAD && IsRoadVehInDepot(v) && IsRoadVehFront(v)) {
 					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
 				}
@@ -2163,7 +2185,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		case VEH_ROAD:
 			InvalidateWindowClasses(WC_ROADVEH_LIST);
-			v->u.road.state = RVSB_IN_DEPOT;
+			if (!IsRoadVehFront(v)) v = GetFirstVehicleInChain(v);
 			break;
 
 		case VEH_SHIP:

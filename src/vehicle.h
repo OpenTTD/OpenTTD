@@ -189,6 +189,8 @@ struct VehicleRoad {
 	byte reverse_ctr;
 	struct RoadStop *slot;
 	byte slot_age;
+	EngineID first_engine;
+	byte cached_veh_length;
 
 	RoadType roadtype;
 	RoadTypes compatible_roadtypes;

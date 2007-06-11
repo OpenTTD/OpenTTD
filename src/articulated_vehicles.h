@@ -6,6 +6,6 @@
 #define ARTICULATED_VEHICLES_H
 
 uint CountArticulatedParts(EngineID engine_type);
-void AddArticulatedParts(Vehicle **vl);
+void AddArticulatedParts(Vehicle **vl, VehicleType type);
 
 #endif /* ARTICULATED_VEHICLES_H */

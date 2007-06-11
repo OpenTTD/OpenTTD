@@ -184,7 +184,7 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 			DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
 			break;
 
-		case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, WP(w, depot_d).sel); break;
+		case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, 1, WP(w, depot_d).sel); break;
 		case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, WP(w, depot_d).sel); break;
 		case VEH_AIRCRAFT: {
 			const Sprite *spr = GetSprite(GetAircraftImage(v, DIR_W));

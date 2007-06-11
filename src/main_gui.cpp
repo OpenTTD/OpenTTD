@@ -30,6 +30,7 @@
 #include "waypoint.h"
 #include "variables.h"
 #include "train.h"
+#include "roadveh.h"
 #include "unmovable_map.h"
 #include "string.h"
 #include "screenshot.h"
@@ -849,7 +850,7 @@ static void ToolbarRoadClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_ROAD) CLRBIT(dis, v->owner);
+		if (v->type == VEH_ROAD && IsRoadVehFront(v)) CLRBIT(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 332, 14, dis);
 }

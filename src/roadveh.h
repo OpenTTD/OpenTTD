@@ -8,6 +8,42 @@
 #include "vehicle.h"
 
 
+enum RoadVehicleSubType {
+	RVST_FRONT,
+	RVST_ARTIC_PART,
+};
+
+static inline bool IsRoadVehFront(const Vehicle *v)
+{
+	assert(v->type == VEH_ROAD);
+	return v->subtype == RVST_FRONT;
+}
+
+static inline void SetRoadVehFront(Vehicle *v)
+{
+	assert(v->type == VEH_ROAD);
+	v->subtype = RVST_FRONT;
+}
+
+static inline bool IsRoadVehArticPart(const Vehicle *v)
+{
+	assert(v->type == VEH_ROAD);
+	return v->subtype == RVST_ARTIC_PART;
+}
+
+static inline void SetRoadVehArticPart(Vehicle *v)
+{
+	assert(v->type == VEH_ROAD);
+	v->subtype = RVST_ARTIC_PART;
+}
+
+static inline bool RoadVehHasArticPart(const Vehicle *v)
+{
+	assert(v->type == VEH_ROAD);
+	return v->next != NULL && IsRoadVehArticPart(v->next);
+}
+
+
 static inline bool IsRoadVehInDepot(const Vehicle* v)
 {
 	assert(v->type == VEH_ROAD);
@@ -43,7 +79,12 @@ struct RoadVehicle : public Vehicle {
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }
 	WindowClass GetVehicleListWindowClass() const { return WC_ROADVEH_LIST; }
-	bool IsPrimaryVehicle() const { return true; }
+	bool IsPrimaryVehicle() const { return IsRoadVehFront(this); }
+	bool HasFront() const { return true; }
 };
+
+byte GetRoadVehLength(const Vehicle *v);
+
+void RoadVehUpdateCache(Vehicle *v);
 
 #endif /* ROADVEH_H */

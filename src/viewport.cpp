@@ -23,6 +23,7 @@
 #include "waypoint.h"
 #include "variables.h"
 #include "train.h"
+#include "roadveh.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
@@ -1764,12 +1765,18 @@ static void SafeShowTrainViewWindow(const Vehicle* v)
 	ShowTrainViewWindow(v);
 }
 
+static void SafeShowRoadVehViewWindow(const Vehicle *v)
+{
+	if (!IsRoadVehFront(v)) v = GetFirstVehicleInChain(v);
+	ShowRoadVehViewWindow(v);
+}
+
 static void Nop(const Vehicle *v) {}
 
 typedef void OnVehicleClickProc(const Vehicle *v);
 static OnVehicleClickProc* const _on_vehicle_click_proc[] = {
 	SafeShowTrainViewWindow,
-	ShowRoadVehViewWindow,
+	SafeShowRoadVehViewWindow,
 	ShowShipViewWindow,
 	ShowAircraftViewWindow,
 	Nop, // Special vehicles

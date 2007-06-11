@@ -30,6 +30,7 @@
 #include "vehicle_gui.h"
 #include "ai/ai.h"
 #include "train.h"
+#include "roadveh.h"
 #include "aircraft.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
@@ -340,7 +341,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 			if (v->owner == new_player) {
 				switch (v->type) {
 					case VEH_TRAIN:    if (IsFrontEngine(v)) num_train++; break;
-					case VEH_ROAD:     num_road++; break;
+					case VEH_ROAD:     if (IsRoadVehFront(v)) num_road++; break;
 					case VEH_SHIP:     num_ship++; break;
 					case VEH_AIRCRAFT: if (IsNormalAircraft(v)) num_aircraft++; break;
 					default: break;
@@ -361,7 +362,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					if (IsEngineCountable(v)) GetPlayer(new_player)->num_engines[v->engine_type]++;
 					switch (v->type) {
 						case VEH_TRAIN:    if (IsFrontEngine(v)) v->unitnumber = ++num_train; break;
-						case VEH_ROAD:     v->unitnumber = ++num_road; break;
+						case VEH_ROAD:     if (IsRoadVehFront(v)) v->unitnumber = ++num_road; break;
 						case VEH_SHIP:     v->unitnumber = ++num_ship; break;
 						case VEH_AIRCRAFT: if (IsNormalAircraft(v)) v->unitnumber = ++num_aircraft; break;
 						default: NOT_REACHED();

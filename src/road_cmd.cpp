@@ -13,6 +13,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
+#include "window.h"
 #include "map.h"
 #include "landscape.h"
 #include "tile.h"
@@ -1359,7 +1360,13 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 			if (v->type == VEH_ROAD &&
 					v->u.road.frame == 11 &&
 					_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == v->u.road.state) {
-				VehicleEnterDepot(v);
+				v->u.road.state = RVSB_IN_DEPOT;
+				v->vehstatus |= VS_HIDDEN;
+				v->direction = ReverseDir(v->direction);
+				if (v->next == NULL) VehicleEnterDepot(v);
+				v->tile = tile;
+
+				InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 				return VETSB_ENTERED_WORMHOLE;
 			}
 			break;
