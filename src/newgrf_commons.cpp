@@ -7,7 +7,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "clear_map.h"
+#include "landscape.h"
 #include "town.h"
 #include "industry.h"
 #include "newgrf.h"
@@ -229,7 +229,7 @@ uint32 GetTerrainType(TileIndex tile)
 {
 	switch (_opt.landscape) {
 		case LT_TROPIC: return GetTropicZone(tile) == TROPICZONE_DESERT ? 1 : 2;
-		case LT_ARCTIC: return (GetClearGround(tile) == CLEAR_SNOW) ? 4 : 0;
+		case LT_ARCTIC: return GetTileZ(tile) >= GetSnowLine() ? 4 : 0;
 		default:        return 0;
 	}
 }

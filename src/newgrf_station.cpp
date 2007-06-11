@@ -15,6 +15,7 @@
 #include "station_map.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"
+#include "newgrf_commons.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 #include "date.h"
@@ -388,10 +389,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		/* Calculated station variables */
 		case 0x40: return GetPlatformInfoHelper(tile, false, false, false);
 		case 0x41: return GetPlatformInfoHelper(tile, true,  false, false);
-		case 0x42: // Terrain and rail type
-			return ((_opt.landscape == LT_ARCTIC && GetTileZ(tile) > GetSnowLine()) ? 4 : 0) |
-			       (_opt.landscape == LT_TROPIC ? GetTropicZone(tile) : 0) |
-			       (GetRailType(tile) << 8);
+		case 0x42: return GetTerrainType(tile) | (GetRailType(tile) << 8);
 		case 0x43: return st->owner; // Station owner
 		case 0x44: return 2;         // PBS status
 		case 0x45: return GetRailContinuationInfo(tile);
