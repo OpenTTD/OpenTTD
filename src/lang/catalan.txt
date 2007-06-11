@@ -922,7 +922,7 @@ STR_CURR_ITL                                                    :Lires Italianes
 STR_CURR_NLG                                                    :Florins Holandesos (NLG)
 STR_CURR_NOK                                                    :Corones Noruegues (NOK)
 STR_CURR_PLN                                                    :Zloty Polac (PLN)
-STR_CURR_ROL                                                    :Leu RomanÃšs (ROL)
+STR_CURR_ROL                                                    :Leu Romanès (ROL)
 STR_CURR_RUR                                                    :Rubles Russos (RUR)
 STR_CURR_SIT                                                    :Eslovè Tolar (SIT)
 STR_CURR_SEK                                                    :Corones Sueques (SEK)
@@ -2624,8 +2624,8 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren mas
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Els trens només es poden modificar quan estan parats dins d'una cotxera
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trens
 
-STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nous Vehicles
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nous vehicles de Via Electrificada
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nous Trens
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nous Trens de Via Electrificada
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nous Trens Monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nous Trens Maglev
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Vehicles amb Vies
@@ -2733,7 +2733,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Aquesta via no 
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nou {STRING} disponible!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nou {STRING} disponible!  -  {STRING}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nou/Nova {STRING} disponible!  -  {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automòbil en camí

@@ -2879,6 +2879,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}A fő n�
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Közúti jármű kiválasztása - kattints egy járműre az adataihoz
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}A kijelölt közúti jármű megvétele
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ár: {CURRENCY}{}Sebesség: {VELOCITY}{}Működtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitás: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Közúti jármű átnevezése
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nem nevezheted át a közúti járművet...

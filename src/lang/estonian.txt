@@ -450,12 +450,12 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Opereerimiskasumi graafik
 STR_0155_INCOME_GRAPH                                           :Tulugraafik
-STR_0156_DELIVERED_CARGO_GRAPH                                  :Transporditud kauba graafik
+STR_0156_DELIVERED_CARGO_GRAPH                                  :Kohaleviidud kauba graafik
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Tegevustulemuste graafik
 STR_0158_COMPANY_VALUE_GRAPH                                    :Firmaväärtuse graafik
 STR_0159_CARGO_PAYMENT_RATES                                    :Veotasude määrad
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Ettevõtete edetabel
-STR_PERFORMANCE_DETAIL_MENU                                     :Üksikasjalik tulemusreiting
+STR_PERFORMANCE_DETAIL_MENU                                     :Üksikasjalik tulemushinnang
 ############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD lisainfo
@@ -472,7 +472,7 @@ STR_SORT_BY                                                     :{BLACK}Sorteeri
 STR_SORT_BY_POPULATION                                          :{BLACK}Rahvastik
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Toodang
 STR_SORT_BY_TYPE                                                :{BLACK}Tüüp
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transporditud
+STR_SORT_BY_TRANSPORTED                                         :{BLACK}Veetud
 STR_SORT_BY_NAME                                                :{BLACK}Nimi
 STR_SORT_BY_DROPDOWN_NAME                                       :Nimi
 STR_SORT_BY_DATE                                                :{BLACK}Daatum
@@ -561,7 +561,7 @@ STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Akna pea
 STR_STICKY_BUTTON                                               :{BLACK}Keela selle akna sulgemine 'Sulge kõik aknad' nupu klõpsamisel
 STR_RESIZE_BUTTON                                               :{BLACK}Kliki ja venita, et akna suurust muuta
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Vajuta siia, et minna praegusesse vaikimisi valitud salvestamise/laadimise kausta
-STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Ehitiste jms. hävitamine
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Rajatiste lammutamine
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Maapinna madaldamine
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Maapinna kõrgendamine
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Kerimisriba - kerib nimistut üles/alla
@@ -1169,7 +1169,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nähtam
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Maaala Generaator: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Suurim kaugus kaardi äärest nafta puuraukudeni {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Suurim kaugus kaardiservast naftapuuraukudeni {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Lumepiiri kõrgus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Maa mägisus (TerraGenesis ainult) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väga sile
@@ -1262,7 +1262,7 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Topeltk
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Algne linna suuruse kordaja: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Välimus
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Ehituskulud
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Ehitamine
 STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Sõidukid
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Jaamad
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Majandus
@@ -1859,7 +1859,7 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Oma ettevõtte auks kuju ehitamine.{} Hind: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Uute ärihoonete ehitamise rahastamine selles linnas.{} Hind: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Üheks aastaks monopoolsete veoõiguste ostmine selles linnas. Linna omavalitsus lubab reisijate ja kauba veoks kasutada ainult sinu jaamasid.{} Hind: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Linna omavalitusele ettevõtu reitingu tõstmise eesmärgil altkäemaksu pakkumine. Vahele jäädes korral tuleb trahvi maksta.{} Hind: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Linna omavalitusele ettevõtte hinnangu tõstmise eesmärgil altkäemaksu pakkumine. Vahele jäädes tuleb trahvi maksta.{} Hind: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Liikluskaos linnas {TOWN}!{}{}Ettevõtte {COMPANY} poolt rahastatud teedeehitus tekitab 6 kuu jooksul maanteedel liiklushäireid!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -2026,7 +2026,7 @@ STR_4809_PRINTING_WORKS                                         :trükikoda
 STR_480A_STEEL_MILL                                             :terasetööstus
 STR_480B_FARM                                                   :talu
 STR_480C_COPPER_ORE_MINE                                        :vasemaagikaevandus
-STR_480D_OIL_WELLS                                              :nafta puurauk
+STR_480D_OIL_WELLS                                              :naftapuurauk
 STR_480E_BANK                                                   :pank
 STR_480F_FOOD_PROCESSING_PLANT                                  :toiduainetetööstus
 STR_4810_PAPER_MILL                                             :paberivabrik
@@ -2269,7 +2269,7 @@ STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Ei saa p
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} rahavoogude aruanne {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Kulud/tulud
 STR_7010                                                        :{WHITE}{NUM}
-STR_7011_CONSTRUCTION                                           :{GOLD}Ehitamine
+STR_7011_CONSTRUCTION                                           :{GOLD}Ehituskulud
 STR_7012_NEW_VEHICLES                                           :{GOLD}Uus veerem
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Rongide käituskulud
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Mootorsõidukite käituskulud
@@ -2330,7 +2330,7 @@ STR_704C_KEY                                                    :{BLACK}Selgitus
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Näita selgitust graafikute juures
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Ettevõttegraafiku selgitus
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klõpsa, et ettevõtte graafikut sisse ja välja lülitada
-STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Transporditud veoste kogus
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Veetud veoste kogus
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ettevõtte tegevushinnang (suurim hinnang saab olla 1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Firmaväärtus
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Ettevõtete edetabel
@@ -2876,6 +2876,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Vii vaad
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Mootorsõiduki valimisnimekiri - andmete saamiseks klõpsa sõidukile
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ehita valitud mootorsõiduk
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Hind: {CURRENCY}{}Tippkiirus: {VELOCITY}{}Käituskulud: {CURRENCY}/aastas{}Kandevõime: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kandevõime: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nimeta mootorsõiduk ümber
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ei saa maanteveokit ümber nimetada...
@@ -3057,8 +3059,8 @@ STR_BRIBE_FAILED                                                :{WHITE}Sinu alt
 STR_BRIBE_FAILED_2                                              :{WHITE}kohalike uurijate poolt avastatud
 STR_BUILD_DATE                                                  :{BLACK}Ehitatud: {LTBLUE}{DATE_LONG}
 
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailne tegevuse reiting
-STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detailne
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Üksikasjalik tulemushinnang
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Üksikasjalik
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
@@ -3069,21 +3071,21 @@ STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Jaamu:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Vähim kasum:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Vähim tulu:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Suurim tulu:
-STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Transporditud:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Veetud:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Kaupu:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Raha:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Laen:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Kokku:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Veeremit kokku; sisaldab sõidutee-, rööbastee- ja õhusõidukeid, ning laevu
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Jaamablokkide arv. Iga osa jaamast (nt. rongijaam, bussipeatus, lennujaam) loetakse eraldi, isegi kui naad on ühendatud üheks jaamaks
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Jaamablokkide arv. Iga osa jaamast (nt. raudteejaam, bussipeatus, lennujaam) loetakse eraldi, isegi kui naad on ühendatud üheks jaamaks
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Kõige väiksema tuluga sõiduki kasum (kõikidest vähemalt 2 aastastest veovahenditest)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Väikseim kuukasum viimase 12 kvartali jooksul
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Suurim kuukasum viimase 12 kvartali jooksul
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Kauba arv, mis on veatud viimase 4 kvartali jooksul
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Kauba arv, mis on veatud viimasel kvartalil
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Raha arv, mis on sellel firmal pangas
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Raha arv, mida see firma on võtnud laenuks
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Selle ettevõtte kogulaen
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Kokku punkte võimalikest punktidest
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF seaded

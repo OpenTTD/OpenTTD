@@ -1127,7 +1127,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevidit
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Tvůrce krajiny: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :původní
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximální vzdálenost ropných rafinerií od okraje mapy {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximální vzdálenost ropných rafinerií od okraje mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Výška sněhové čáry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Členitost krajiny (jen TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :velmi rovná
@@ -2727,6 +2727,7 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Příli�
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nemohu přidat nový příkaz
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemohu tento příkaz smazat...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemohu tento příkaz změnit...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nelze přesunout tento příkaz...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nelze přeskočit současný příkaz...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nelze přeskočit na označený příkaz...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nemohu přesunout vozidlo...
@@ -2839,6 +2840,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Nastav p
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Seznam silničních vozidel - klepni na vozidlo pro informace
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Koupit označené vozidlo
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Cena provozu: {CURRENCY} ročně{}Kapacita: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Přejmenovat silniční vozidlo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nelze přejmenovat silniční vozidlo...
