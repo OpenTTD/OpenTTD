@@ -654,7 +654,7 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 
 	/* Random value between 37 and 292. Low values are exponentially more likely
 	 * With 50% chance the value will be under 52 tiles */
-	int min_distance = 36 + 1 << (Random() % 9); // 0..8
+	int min_distance = 36 + (1 << (Random() % 9)); // 0..8
 
 	/* Make sure distance to closest station is < min_distance tiles. */
 	if (dist != 0xFFFF && dist > min_distance) return false;
