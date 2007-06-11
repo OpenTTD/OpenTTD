@@ -152,7 +152,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 
 	if (!sprite_loader.LoadSprite(&sprite, file_pos)) return NULL;
 	if (id == 142) sprite.height = 10; // Compensate for a TTD bug
-	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite);
+	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 	free(sprite.data);
 
 	return sc->ptr;

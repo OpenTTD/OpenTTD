@@ -35,6 +35,8 @@ public:
 		int pitch;               ///< The pitch of the destination buffer
 	};
 
+	typedef void *AllocatorProc(size_t size);
+
 	/**
 	 * Get the screen depth this blitter works for.
 	 *  This is either: 8, 16, 24 or 32.
@@ -49,7 +51,7 @@ public:
 	/**
 	 * Convert a sprite from the loader to our own format.
 	 */
-	virtual Sprite *Encode(SpriteLoader::Sprite *sprite) = 0;
+	virtual Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator) = 0;
 
 	virtual ~Blitter() { }
 };

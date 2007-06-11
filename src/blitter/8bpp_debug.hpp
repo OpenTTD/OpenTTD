@@ -15,7 +15,7 @@ public:
 
 	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 
-	Sprite *Encode(SpriteLoader::Sprite *sprite);
+	Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator);
 };
 
 class FBlitter_8bppDebug: public BlitterFactory<FBlitter_8bppDebug> {

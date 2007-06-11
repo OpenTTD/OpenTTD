@@ -14,6 +14,8 @@
 #include "string.h"
 #include "fontcache.h"
 #include "helpers.hpp"
+#include "spriteloader/spriteloader.hpp"
+#include "blitter/blitter.hpp"
 
 #ifdef WITH_FREETYPE
 
@@ -361,6 +363,11 @@ static void SetGlyphPtr(FontSize size, WChar key, const GlyphEntry *glyph)
 	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].width  = glyph->width;
 }
 
+void *AllocateFont(size_t size)
+{
+	return malloc(size);
+}
+
 
 const Sprite *GetGlyph(FontSize size, WChar key)
 {
@@ -368,7 +375,7 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	FT_GlyphSlot slot;
 	GlyphEntry new_glyph;
 	GlyphEntry *glyph;
-	Sprite *sprite;
+	SpriteLoader::Sprite sprite;
 	int width;
 	int height;
 	int x;
@@ -398,20 +405,20 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	height = max(1, slot->bitmap.rows  + (size == FS_NORMAL));
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
-	sprite = (Sprite*)calloc(width * height + 8, 1);
-	sprite->width  = width;
-	sprite->height = height;
-	sprite->x_offs = slot->bitmap_left;
+	sprite.data = CallocT<SpriteLoader::CommonPixel>(width * height);
+	sprite.width = width;
+	sprite.height = height;
+	sprite.x_offs = slot->bitmap_left;
 	// XXX 2 should be determined somehow... it's right for the normal face
 	y_adj = (size == FS_NORMAL) ? 2 : 0;
-	sprite->y_offs = GetCharacterHeight(size) - slot->bitmap_top - y_adj;
+	sprite.y_offs = GetCharacterHeight(size) - slot->bitmap_top - y_adj;
 
 	/* Draw shadow for medium size */
 	if (size == FS_NORMAL) {
 		for (y = 0; y < slot->bitmap.rows; y++) {
 			for (x = 0; x < slot->bitmap.width; x++) {
 				if (HASBIT(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
-					sprite->data[1 + x + (1 + y) * sprite->width] = SHADOW_COLOUR;
+					sprite.data[1 + x + (1 + y) * sprite.width].m = SHADOW_COLOUR;
 				}
 			}
 		}
@@ -420,17 +427,18 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	for (y = 0; y < slot->bitmap.rows; y++) {
 		for (x = 0; x < slot->bitmap.width; x++) {
 			if (HASBIT(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
-				sprite->data[x + y * sprite->width] = FACE_COLOUR;
+				sprite.data[x + y * sprite.width].m = FACE_COLOUR;
 			}
 		}
 	}
 
-	new_glyph.sprite = sprite;
+	new_glyph.sprite = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, AllocateFont);
+	free(sprite.data);
 	new_glyph.width  = (slot->advance.x >> 6) + (size != FS_NORMAL);
 
 	SetGlyphPtr(size, key, &new_glyph);
 
-	return sprite;
+	return new_glyph.sprite;
 }
 
 

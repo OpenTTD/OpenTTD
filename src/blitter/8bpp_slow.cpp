@@ -5,8 +5,6 @@
 
 static FBlitter_8bppSimple iFBlitter_8bppSimple;
 
-extern void* AllocSprite(size_t);
-
 void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
 	const byte *src, *src_line;
@@ -46,10 +44,10 @@ void Blitter_8bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoom
 	}
 }
 
-Sprite *Blitter_8bppSimple::Encode(SpriteLoader::Sprite *sprite)
+Sprite *Blitter_8bppSimple::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
 {
 	Sprite *dest_sprite;
-	dest_sprite = (Sprite *)AllocSprite(sizeof(*dest_sprite) + sprite->height * sprite->width);
+	dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + sprite->height * sprite->width);;
 
 	dest_sprite->height = sprite->height;
 	dest_sprite->width  = sprite->width;

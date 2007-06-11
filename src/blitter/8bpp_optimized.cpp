@@ -6,8 +6,6 @@
 
 static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 
-extern void* AllocSprite(size_t);
-
 void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
 	const byte *src, *src_next;
@@ -100,7 +98,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 	}
 }
 
-Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite)
+Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
 {
 	Sprite *dest_sprite;
 	byte *temp_dst;
@@ -191,7 +189,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite)
 	assert(index < memory);
 
 	/* Allocate the exact amount of memory we need */
-	dest_sprite = (Sprite *)AllocSprite(sizeof(*dest_sprite) + index);
+	dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + index);
 
 	dest_sprite->height = sprite->height;
 	dest_sprite->width  = sprite->width;
