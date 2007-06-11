@@ -137,18 +137,15 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 
 			for (int x = 0; x < UnScaleByZoom(sprite->width, (ZoomLevel)i); x++) {
 				uint color = 0;
-				int count = 0;
 
 				/* Get the color keeping in mind the zoom-level */
 				for (int j = 0; j < ScaleByZoom(1, (ZoomLevel)i); j++) {
-					if (src->m != 0) { color = src->m; count++; }
+					if (src->m != 0) color = src->m;
 					src++;
 					rx++;
 					/* Because of the scaling it might happen we read outside the buffer. Avoid that. */
 					if (rx == sprite->width) break;
 				}
-				/* If more than 12.5% of the pixels are non-transparent, make thisone non-transparent too */
-				if (count < ScaleByZoom(1, (ZoomLevel)i) / 8) color = 0;
 
 				if (last_color == 0 || color == 0) {
 					if (count_index != 0) {
