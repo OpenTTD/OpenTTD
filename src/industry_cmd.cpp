@@ -1308,7 +1308,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 		/* check if an industry that accepts the same goods is nearby */
 		if (DistanceMax(tile, i->xy) <= 14 &&
 				indspec->accepts_cargo[0] != CT_INVALID &&
-				indspec->accepts_cargo[0] == indspec->accepts_cargo[0] && (
+				indspec->accepts_cargo[0] == GetIndustrySpec(i->type)->accepts_cargo[0] && (
 					_game_mode != GM_EDITOR ||
 					!_patches.same_industry_close ||
 					!_patches.multiple_industry_per_town
