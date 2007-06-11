@@ -567,8 +567,32 @@ static const AiDefaultBlockData _airportdata_ai_1[] = {
 	{1, 0, {0, 0}}
 };
 
+static const AiDefaultBlockData _airportdata_ai_3[] = {
+	MKAIR(3, 0, 0),
+	{1, 0, {0, 0}},
+};
+
+static const AiDefaultBlockData _airportdata_ai_4[] = {
+	MKAIR(4, 0, 0),
+	{1, 0, {0, 0}},
+};
+
+static const AiDefaultBlockData _airportdata_ai_5[] = {
+	MKAIR(5, 0, 0),
+	{1, 0, {0, 0}},
+};
+
+static const AiDefaultBlockData _airportdata_ai_7[] = {
+	MKAIR(7, 0, 0),
+	{1, 0, {0, 0}}
+};
+
 static const AiDefaultBlockData * const _airport_default_block_data[] = {
+	_airportdata_ai_7, // intercontinental airport
+	_airportdata_ai_4, // international airport
+	_airportdata_ai_3, // metropolitan airport
 	_airportdata_ai_0, // city airport
+	_airportdata_ai_5, // commuter airport
 	_airportdata_ai_1, // country airport
 	NULL
 };

@@ -622,7 +622,6 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 	int dist;
 	uint same_station = 0;
 
-	// Make sure distance to closest station is < 37 pixels.
 	from_tile = GET_TOWN_OR_INDUSTRY_TILE(fr->from);
 	to_tile = GET_TOWN_OR_INDUSTRY_TILE(fr->to);
 
@@ -646,7 +645,19 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 		return false;
 	}
 
-	if (dist != 0xFFFF && dist > 37) return false;
+	/* Requiring distance to nearest station to be always under 37 tiles may be suboptimal,
+	 * Especially for longer aircraft routes that start and end pretty at any arbitrary place on map
+	 * While it may be nice for AI to cluster their creations together, hardcoded limit is not ideal.
+	 * If AI will randomly start on some isolated spot, it will never get out of there.
+	 * AI will have chance of randomly rejecting routes further than 37 tiles from their network,
+	 * so there will be some attempt to cluster the network together */
+
+	/* Random value between 37 and 292. Low values are exponentially more likely
+	 * With 50% chance the value will be under 52 tiles */
+	int min_distance = 36 + 1 << (Random() % 9); // 0..8
+
+	/* Make sure distance to closest station is < min_distance tiles. */
+	if (dist != 0xFFFF && dist > min_distance) return false;
 
 	if (p->ai.route_type_mask != 0 &&
 			!(p->ai.route_type_mask & bitmask) &&
@@ -1371,15 +1382,55 @@ static void AiWantPassengerAircraftRoute(Player *p)
 	FoundRoute fr;
 	int i;
 
+	/* Get aircraft that would be bought for this route
+	 * (probably, as conditions may change before the route is fully built,
+	 * like running out of money and having to select different aircraft, etc ...) */
+	EngineID veh = AiChooseAircraftToBuild(p->player_money, p->ai.build_kind != 0 ? 0 : AIR_CTOL);
+
+	/* No aircraft buildable mean no aircraft route */
+	if (veh == INVALID_ENGINE) return;
+
+	const AircraftVehicleInfo *avi = AircraftVehInfo(veh);
+
+	/* For passengers, "optimal" number of days in transit is about 80 to 100
+	 * Calculate "maximum optimal number of squares" from speed for 80 days
+	 * 20 days should be enough for takeoff, land, taxi, etc ...
+	 *
+	 * "A vehicle traveling at 100kph will cross 5.6 tiles per day" ->
+	 * Since in table aircraft speeds are in "real km/h", this should be accurate
+	 * We get max_squares = avi->max_speed * 5.6 / 100.0 * 80 */
+	int max_squares = avi->max_speed * 448 / 100;
+
+	/* For example this will be 10456 tiles for 2334 km/h aircrafts with realistic aircraft speeds
+	 * and 836 with "unrealistic" speeds, much more than the original 95 squares limit
+	 *
+	 * Size of the map, if not rectangular, it is the larger dimension of it
+	 */
+	int map_size = max(MapSizeX(), MapSizeY());
+
+	/* Minimum distance between airports is half of map size, clamped between 1% and 20% of optimum.
+	 * May prevent building plane routes at all on small maps, but they will be ineffective there, so
+	 * it is feature, not a bug.
+	 * On smaller distances, buses or trains are usually more effective approach anyway.
+	 * Additional safeguard is needing at least 20 squares,
+	 * which may trigger in highly unusual configurations */
+	int min_squares = max(20, max(max_squares / 100, min(max_squares / 5, map_size / 2)));
+
+	/* Should not happen, unless aircraft with real speed under approx. 5 km/h is selected.
+	 * No such exist, unless using some NewGRF with ballons, zeppelins or similar
+	 * slow-moving stuff. In that case, bail out, it is faster to walk by foot anyway :). */
+	if (max_squares < min_squares) return;
+
 	i = 60;
 	for (;;) {
+
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 0, 95 + 1)) break;
+		if (IS_INT_INSIDE(fr.distance, min_squares, max_squares + 1)) break;
 
 		// try a random one
 		AiFindRandomPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 0, 95 + 1)) break;
+		if (IS_INT_INSIDE(fr.distance, min_squares, max_squares + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;
@@ -1408,7 +1459,19 @@ static void AiWantPassengerAircraftRoute(Player *p)
 	p->ai.build_kind = 0;
 	p->ai.num_build_rec = 2;
 	p->ai.num_loco_to_build = 1;
-	p->ai.num_want_fullload = 1;
+	/* Using full load always may not be the best.
+	 * Pick random value and rely on selling the vehicle & route
+	 * afterwards if the choice was utterly wrong (or maybe altering the value if AI is improved)
+	 * When traffic is very low or very assymetric, is is better not to full load
+	 * When traffic is high, full/non-full make no difference
+	 * It should be better to run with aircraft only one way full 6 times per year,
+	 * rather than two way full 1 times.
+	 * Practical experiments with AI show that the non-full-load aircrafts are usually
+	 * those that survive
+	 * Also, non-full load is more resistant against starving (by building better stations
+	 * or using exclusive rights)
+	 */
+	p->ai.num_want_fullload = CHANCE16(1, 5); // 20% chance
 //	p->ai.loco_id = INVALID_VEHICLE;
 	p->ai.order_list_blocks[0] = 0;
 	p->ai.order_list_blocks[1] = 1;
