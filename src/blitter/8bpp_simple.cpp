@@ -1,7 +1,7 @@
 #include "../stdafx.h"
 #include "../zoom.hpp"
 #include "../gfx.h"
-#include "8bpp_slow.hpp"
+#include "8bpp_simple.hpp"
 
 static FBlitter_8bppSimple iFBlitter_8bppSimple;
 

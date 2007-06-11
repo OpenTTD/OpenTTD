@@ -974,10 +974,10 @@
 				RelativePath=".\..\src\blitter\8bpp_optimized.hpp">
 			</File>
 			<File
-				RelativePath=".\..\src\blitter\8bpp_slow.cpp">
+				RelativePath=".\..\src\blitter\8bpp_simple.cpp">
 			</File>
 			<File
-				RelativePath=".\..\src\blitter\8bpp_slow.hpp">
+				RelativePath=".\..\src\blitter\8bpp_simple.hpp">
 			</File>
 			<File
 				RelativePath=".\..\src\blitter\blitter.hpp">

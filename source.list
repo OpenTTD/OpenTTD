@@ -295,8 +295,8 @@ blitter/8bpp_debug.cpp
 blitter/8bpp_debug.hpp
 blitter/8bpp_optimized.cpp
 blitter/8bpp_optimized.hpp
-blitter/8bpp_slow.cpp
-blitter/8bpp_slow.hpp
+blitter/8bpp_simple.cpp
+blitter/8bpp_simple.hpp
 blitter/blitter.hpp
 
 # Sprite loaders
