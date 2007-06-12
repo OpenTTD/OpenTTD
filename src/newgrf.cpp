@@ -4398,6 +4398,16 @@ static void ResetNewGRF()
 	_cur_grffile   = NULL;
 }
 
+static void ResetNewGRFErrors()
+{
+	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+		if (!HASBIT(c->flags, GCF_COPY) && c->error != NULL) {
+			free(c->error);
+			c->error = NULL;
+		}
+	}
+}
+
 /**
  * Reset all NewGRF loaded data
  * TODO
@@ -4464,6 +4474,9 @@ static void ResetNewGRFData()
 
 	/* Reset NewGRF files */
 	ResetNewGRF();
+
+	/* Reset NewGRF errors. */
+	ResetNewGRFErrors();
 
 	/* Add engine type to engine data. This is needed for the refit precalculation. */
 	AddTypeToEngines();
