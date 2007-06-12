@@ -35,6 +35,7 @@
 #include "date.h"
 #include "cargotype.h"
 #include "player_face.h"
+#include "fileio.h"
 
 #include "fios.h"
 /* Variables to display file lists */
@@ -1396,6 +1397,7 @@ static void GenerateFileName()
 	SetDParam(1, p->name_2);
 	SetDParam(2, _date);
 	GetString(_edit_str_buf, STR_4004, lastof(_edit_str_buf));
+	SanitizeFilename(_edit_str_buf);
 }
 
 extern void StartupEngines();

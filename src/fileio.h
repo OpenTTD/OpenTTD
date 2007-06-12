@@ -20,6 +20,7 @@ FILE *FioFOpenFile(const char *filename);
 bool FioCheckFileExists(const char *filename);
 void FioCreateDirectory(const char *filename);
 
+void SanitizeFilename(char *filename);
 void AppendPathSeparator(char *buf, size_t buflen);
 void DeterminePaths(const char *exe);
 

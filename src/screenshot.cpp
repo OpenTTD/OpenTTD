@@ -14,6 +14,7 @@
 #include "variables.h"
 #include "date.h"
 #include "helpers.hpp"
+#include "fileio.h"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;
@@ -505,6 +506,7 @@ static char *MakeScreenshotName(const char *ext)
 		GetString(_screenshot_name, STR_4004, lastof(_screenshot_name));
 	}
 
+	SanitizeFilename(_screenshot_name);
 	base = strchr(_screenshot_name, 0);
 	base[0] = '.'; strcpy(base + 1, ext);
 
