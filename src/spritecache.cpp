@@ -118,7 +118,7 @@ bool SpriteExists(SpriteID id)
 
 void* AllocSprite(size_t);
 
-static void* ReadSprite(SpriteCache *sc, SpriteID id)
+static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 {
 	uint32 file_pos = sc->file_pos;
 
@@ -139,6 +139,14 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 	byte type = FioReadByte();
 	/* Type 0xFF indicates either a colormap or some other non-sprite info */
 	if (type == 0xFF) {
+		if (real_sprite) {
+			static byte warning_level = 0;
+			DEBUG(sprite, warning_level, "Tried to load non sprite #%d as a real sprite. Probable cause: NewGRF interference", id);
+			warning_level = 6;
+			if (id == SPR_IMG_QUERY) error("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non- sprite?");
+			return (void*)GetSprite(SPR_IMG_QUERY);
+		}
+
 		byte *dest = (byte *)AllocSprite(num);
 
 		sc->ptr = dest;
@@ -184,6 +192,12 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id)
 		}
 
 		return sc->ptr;
+	}
+
+	if (!real_sprite) {
+		static byte warning_level = 0;
+		DEBUG(sprite, warning_level, "Tried to load real sprite #%d as a non sprite. Probable cause: NewGRF interference", id);
+		warning_level = 6;
 	}
 
 	SpriteLoaderGrf sprite_loader;
@@ -403,7 +417,7 @@ void* AllocSprite(size_t mem_req)
 }
 
 
-const void *GetRawSprite(SpriteID sprite)
+const void *GetRawSprite(SpriteID sprite, bool real_sprite)
 {
 	SpriteCache *sc;
 	void* p;
@@ -418,7 +432,7 @@ const void *GetRawSprite(SpriteID sprite)
 	p = sc->ptr;
 
 	/* Load the sprite, if it is not loaded, yet */
-	if (p == NULL) p = ReadSprite(sc, sprite);
+	if (p == NULL) p = ReadSprite(sc, sprite, real_sprite);
 	return p;
 }
 

@@ -15,17 +15,17 @@ struct Sprite {
 
 extern uint _sprite_cache_size;
 
-const void *GetRawSprite(SpriteID sprite);
+const void *GetRawSprite(SpriteID sprite, bool real_sprite);
 bool SpriteExists(SpriteID sprite);
 
 static inline const Sprite *GetSprite(SpriteID sprite)
 {
-	return (Sprite*)GetRawSprite(sprite);
+	return (Sprite*)GetRawSprite(sprite, true);
 }
 
 static inline const byte *GetNonSprite(SpriteID sprite)
 {
-	return (byte*)GetRawSprite(sprite);
+	return (byte*)GetRawSprite(sprite, false);
 }
 
 void GfxInitSpriteMem();
