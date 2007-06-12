@@ -1395,9 +1395,11 @@ void VehiclePayment(Vehicle *front_v)
 		/* No cargo to unload */
 		if (v->cargo_cap == 0 || v->cargo_count == 0) continue;
 
-		SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
 		/* All cargo has already been paid for, no need to pay again */
-		if (v->cargo_count == v->cargo_paid_for) continue;
+		if (v->cargo_count == v->cargo_paid_for) {
+			SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+			continue;
+		}
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
 
@@ -1416,6 +1418,8 @@ void VehiclePayment(Vehicle *front_v)
 
 			v->cargo_feeder_share = 0;   // clear transfer cost per vehicle
 			result |= 1;
+
+			SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
 		} else if (front_v->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
 			if ((front_v->current_order.flags & OF_TRANSFER) != 0) {
 				virtual_profit = GetTransportedGoodsIncome(
@@ -1437,6 +1441,8 @@ void VehiclePayment(Vehicle *front_v)
 				v->cargo_paid_for = v->cargo_count;       // record how much of the cargo has been paid for to eliminate double counting
 			}
 			result |= 2;
+
+			SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
 		}
 	}
 
