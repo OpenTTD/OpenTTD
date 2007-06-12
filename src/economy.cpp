@@ -355,7 +355,30 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 					DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
 					DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
-					DeleteVehicle(v);
+
+					if (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && IsFreeWagon(v))) {
+						switch (v->type) {
+							default: NOT_REACHED();
+
+							case VEH_TRAIN: {
+								Vehicle *u = v;
+								do {
+									Vehicle *next = GetNextVehicle(u);
+									DeleteVehicle(u);
+									u = next;
+								} while (u != NULL);
+							} break;
+
+							case VEH_ROAD:
+							case VEH_SHIP:
+								DeleteVehicle(v);
+								break;
+
+							case VEH_AIRCRAFT:
+								DeleteVehicleChain(v);
+								break;
+						}
+					}
 				} else {
 					v->owner = new_player;
 					v->group_id = DEFAULT_GROUP;
