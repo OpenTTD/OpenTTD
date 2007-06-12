@@ -1,3 +1,7 @@
+/* $Id$ */
+
+/** @file grf.cpp */
+
 #include "../stdafx.h"
 #include "../gfx.h"
 #include "../fileio.h"
