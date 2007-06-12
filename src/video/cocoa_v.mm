@@ -72,6 +72,8 @@ extern "C" void HideMenuBar();
 #include "../blitter/blitter.hpp"
 #include "cocoa_v.h"
 #include "cocoa_keys.h"
+#include "../blitter/blitter.hpp"
+#include "../renderer/renderer.hpp"
 
 #undef Point
 #undef Rect
@@ -871,6 +873,9 @@ static void QZ_SetPortAlphaOpaque()
 	_screen.width = _cocoa_video_data.width;
 	_screen.height = _cocoa_video_data.height;
 	_screen.pitch = _cocoa_video_data.width;
+	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
+
+	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 
 	GameSizeChanged();
 
@@ -1706,6 +1711,9 @@ static const char* QZ_SetVideoMode(uint width, uint height, bool fullscreen)
 	_screen.width = _cocoa_video_data.width;
 	_screen.height = _cocoa_video_data.height;
 	_screen.pitch = _cocoa_video_data.width;
+	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
+
+	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 
 	QZ_UpdateVideoModes();
 	GameSizeChanged();
