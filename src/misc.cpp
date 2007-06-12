@@ -270,6 +270,21 @@ int FindFirstBit(uint32 value)
 	return i;
 }
 
+int CountBitsSet(uint32 value)
+{
+	int num;
+
+	/* This loop is only called once for every bit set by clearing the lowest
+	 * bit in each loop. The number of bits is therefore equal to the number of
+	 * times the loop was called. It was found at the following website:
+	 * http://graphics.stanford.edu/~seander/bithacks.html */
+
+	for (num = 0; value != 0; num++) {
+		value &= value - 1;
+	}
+
+	return num;
+}
 
 static void Save_NAME()
 {

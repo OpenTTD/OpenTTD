@@ -1085,15 +1085,8 @@ static void RoadZPosAffectSpeed(Vehicle *v, byte old_z)
 
 static int PickRandomBit(uint bits)
 {
-	uint num = 0;
-	uint b = bits;
 	uint i;
-
-	do {
-		if (b & 1) num++;
-	} while (b >>= 1);
-
-	num = RandomRange(num);
+	uint num = RandomRange(CountBitsSet(bits));
 
 	for (i = 0; !(bits & 1) || (int)--num >= 0; bits >>= 1, i++) {}
 	return i;

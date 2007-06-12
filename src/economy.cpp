@@ -67,10 +67,7 @@ int64 CalculateCompanyValue(const Player* p)
 		uint num = 0;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->owner == owner) {
-				uint facil = st->facilities;
-				do num += (facil&1); while (facil >>= 1);
-			}
+			if (st->owner == owner) num += CountBitsSet(st->facilities);
 		}
 
 		value = num * _price.station_value * 25;
@@ -144,10 +141,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		const Station* st;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->owner == owner) {
-				int facil = st->facilities;
-				do num += facil&1; while (facil>>=1);
-			}
+			if (st->owner == owner) num += CountBitsSet(st->facilities);
 		}
 		_score_part[owner][SCORE_STATIONS] = num;
 	}
@@ -196,9 +190,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 /* Generate score for variety of cargo */
 	{
-		uint cargo = p->cargo_types;
-		uint num = 0;
-		do num += cargo&1; while (cargo>>=1);
+		uint num = CountBitsSet(p->cargo_types);
 		_score_part[owner][SCORE_CARGO] = num;
 		if (update) p->cargo_types = 0;
 	}
