@@ -873,9 +873,6 @@ static void QZ_SetPortAlphaOpaque()
 	_screen.width = _cocoa_video_data.width;
 	_screen.height = _cocoa_video_data.height;
 	_screen.pitch = _cocoa_video_data.width;
-	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
-
-	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 
 	GameSizeChanged();
 
@@ -1711,9 +1708,6 @@ static const char* QZ_SetVideoMode(uint width, uint height, bool fullscreen)
 	_screen.width = _cocoa_video_data.width;
 	_screen.height = _cocoa_video_data.height;
 	_screen.pitch = _cocoa_video_data.width;
-	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
-
-	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 
 	QZ_UpdateVideoModes();
 	GameSizeChanged();
@@ -1739,6 +1733,8 @@ static const char* QZ_SetVideoModeAndRestoreOnFailure(uint width, uint height, b
 
 static void QZ_VideoInit()
 {
+	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 0) error("Can't use a blitter that blits 0 bpp for normal visuals");
+
 	memset(&_cocoa_video_data, 0, sizeof(_cocoa_video_data));
 
 	/* Initialize the video settings; this data persists between mode switches */
@@ -1765,6 +1761,9 @@ static void QZ_VideoInit()
 	);
 
 	_cocoa_video_data.cursor_visible = true;
+
+	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
+	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 
 	/* register for sleep notifications so wake from sleep generates SDL_VIDEOEXPOSE */
 //	QZ_RegisterForSleepNotifications();
