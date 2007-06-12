@@ -8,6 +8,7 @@
 #include "functions.h"
 #include "macros.h"
 #include "industry.h"
+#include "industry_map.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
@@ -59,6 +60,51 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 	return best_dist;
 }
 
+/** Make an analysis of a tile and check for its belonging to the same
+ * industry, and/or the same grf file
+ * @param new_tile TileIndex of the tile to query
+ * @param old_tile TileINdex of teh reference tile
+ * @param i Industry to which old_tile belongs to
+ * @return value encoded as per NFO specs */
+uint32 GetIndustryIDAtOffset(TileIndex new_tile, TileIndex old_tile, const Industry *i)
+{
+	if (IsTileType(new_tile, MP_INDUSTRY)) {  // Is this an industry tile?
+
+		if (GetIndustryIndex(new_tile) == i->index) {  // Does it belong to the same industry?
+			IndustryGfx gfx = GetIndustryGfx(new_tile);
+			const IndustryTileSpec *indtsp = GetIndustryTileSpec(gfx);
+			const IndustryTileSpec *indold = GetIndustryTileSpec(GetIndustryGfx(old_tile));
+
+			if (gfx < NEW_INDUSTRYOFFSET) {  // Does it belongs to an old type?
+				/* It is an old tile.  We have to see if it's been overriden */
+				if (indtsp->grf_prop.override == INVALID_INDUSTRYTILE) {  // has it been overridden?
+					return 0xFF << 8 | gfx; // no. Tag FF + the gfx id of that tile
+				} else { // yes.  FInd out if it is from the same grf file or not
+					const IndustryTileSpec *old_tile_ovr = GetIndustryTileSpec(indtsp->grf_prop.override);
+
+					if (old_tile_ovr->grf_prop.grffile->grfid == indold->grf_prop.grffile->grfid) {
+						return old_tile_ovr->grf_prop.local_id; // same grf file
+					} else {
+						return 0xFFFE; // not the same grf file
+					}
+				}
+			} else {
+				if (indtsp->grf_prop.spritegroup != NULL) {  // tile has a spritegroup ?
+					if (indtsp->grf_prop.grffile->grfid == indold->grf_prop.grffile->grfid) {  // same industry, same grf ?
+						return indtsp->grf_prop.local_id;
+					} else {
+						return 0xFFFE;  // Defined in another grf file
+					}
+				} else {  // tile has no spritegroup
+					return 0xFF << 8 | indtsp->grf_prop.subst_id;  // so just give him the substitute
+				}
+			}
+		}
+	}
+
+	return 0xFFFF; // tile is not an industry one or  does not belong to the current industry
+}
+
 /** This function implements the industries variables that newGRF defines.
  * @param variable that is queried
  * @param parameter unused
@@ -85,16 +131,8 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* TODO: somehow determine whether we're in water or not */
 		case 0x43: return GetClosestWaterDistance(tile, true); // Manhattan distance of closes dry/water tile
 
-		case 0x60: { /* Get industry ID at offset param */
-			/*The parameter of this variable is an offset from the northernmost tile of the industry:
-			 * the high nibble contains the Y offset, the low one the X offset; both are unsigned.
-			 * The high word of the return value is currently reserved, and the low word can be:
-			 * 00xxh if the tile is an industry tile and was defined in the current GRF with ID xx.
-			 * FFxxh if the tile is an industry tile of an old type, and has the ID xx.
-			 * FFFEh if the tile is an industry tile that was defined in another GRF file
-			 * FFFFh if the tile isn't an industry tile, or doesn't belong to the current industry */
-			return GetIndustry(GetNearbyTile(parameter, tile))->type;
-		}
+		/* Get industry ID at offset param */
+		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->xy), tile, industry);
 
 		case 0x61: return 0; // Get random tile bits at offset param
 
