@@ -5,19 +5,23 @@
 #include "../gfx.h"
 #include "../variables.h"
 #include "../window.h"
+#include "../debug.h"
+#include "../blitter/blitter.hpp"
 #include "null_v.h"
-
-static Pixel *_null_video_mem = NULL;
 
 static const char* NullVideoStart(const char* const* parm)
 {
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
-	_null_video_mem = (Pixel *)malloc(_cur_resolution[0] * _cur_resolution[1] * sizeof(Pixel));
+	/* Do not render, nor blit */
+	DEBUG(misc, 1, "Forcing blitter 'null'...");
+	BlitterFactoryBase::SelectBlitter("null");
+	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
+	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 	return NULL;
 }
 
-static void NullVideoStop() { free(_null_video_mem); }
+static void NullVideoStop() { }
 
 static void NullVideoMakeDirty(int left, int top, int width, int height) {}
 
@@ -27,7 +31,7 @@ static void NullVideoMainLoop()
 
 	for (i = 0; i < 1000; i++) {
 		GameLoop();
-		_screen.dst_ptr = _null_video_mem;
+		_screen.dst_ptr = NULL;
 		UpdateWindows();
 	}
 }

@@ -7,15 +7,15 @@
 
 #include "blitter.hpp"
 
-typedef Pixel Pixel8;
-
 class Blitter_8bppDebug : public Blitter {
 public:
-	uint8 GetScreenDepth() { return 8; }
+	/* virtual */ uint8 GetScreenDepth() { return 8; }
 
-	void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
+	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 
-	Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator);
+	/* virtual */ Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator);
+
+	/* virtual */ const char *GetRenderer() { return "8bpp"; }
 };
 
 class FBlitter_8bppDebug: public BlitterFactory<FBlitter_8bppDebug> {

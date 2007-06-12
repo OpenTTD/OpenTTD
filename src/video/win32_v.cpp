@@ -9,6 +9,7 @@
 #include "../variables.h"
 #include "../win32.h"
 #include "../window.h"
+#include "../blitter/blitter.hpp"
 #include "win32_v.h"
 #include <windows.h>
 #include <tchar.h>
@@ -16,22 +17,18 @@
 static struct {
 	HWND main_wnd;
 	HBITMAP dib_sect;
-	Pixel *bitmap_bits;
-	Pixel *buffer_bits;
-	Pixel *alloced_bits;
+	void *buffer_bits;
 	HPALETTE gdi_palette;
 	int width;
 	int height;
 	int width_org;
 	int height_org;
 	bool fullscreen;
-	bool double_size;
 	bool has_focus;
 	bool running;
 } _wnd;
 
 bool _force_full_redraw;
-bool _double_size;
 bool _window_maximize;
 uint _display_hz;
 uint _fullscreen_bpp;
@@ -63,6 +60,10 @@ static void MakePalette()
 
 static void UpdatePalette(HDC dc, uint start, uint count)
 {
+	/* We can only update the palette in 8bpp for now */
+	/* TODO -- We need support for other bpps too! */
+	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 8) return;
+
 	RGBQUAD rgb[256];
 	uint i;
 
@@ -136,11 +137,6 @@ static bool AllocateDibSection(int w, int h);
 
 static void ClientSizeChanged(int w, int h)
 {
-	if (_wnd.double_size) {
-		w /= 2;
-		h /= 2;
-	}
-
 	// allocate new dib section of the new size
 	if (AllocateDibSection(w, h)) {
 		// mark all palette colors dirty
@@ -319,11 +315,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				DrawMouseCursor();
 			}
 
-			if (_wnd.double_size) {
-				x /= 2;
-				y /= 2;
-			}
-
 			if (_cursor.fix_at) {
 				int dx = x - _cursor.pos.x;
 				int dy = y - _cursor.pos.y;
@@ -334,10 +325,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 					pt.x = _cursor.pos.x;
 					pt.y = _cursor.pos.y;
 
-					if (_wnd.double_size) {
-						pt.x *= 2;
-						pt.y *= 2;
-					}
 					ClientToScreen(hwnd, &pt);
 					SetCursorPos(pt.x, pt.y);
 				}
@@ -400,13 +387,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			 * WM_KEYDOWN only handles CTRL+ commands and special keys like VK_LEFT, etc. */
 			if (keycode == 0 || (keycode > WKC_PAUSE && GB(keycode, 13, 4) == 0)) return 0;
 
-			if (keycode == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
-				_double_size ^= 1;
-				_wnd.double_size = _double_size;
-				ClientSizeChanged(_wnd.width, _wnd.height);
-				MarkWholeScreenDirty();
-			}
-
 			HandleKeypress(0 | (keycode << 16));
 			return 0;
 		}
@@ -455,16 +435,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 			w = r->right - r->left - (r2.right - r2.left);
 			h = r->bottom - r->top - (r2.bottom - r2.top);
-			if (_wnd.double_size) {
-				w /= 2;
-				h /= 2;
-			}
 			w = clamp(w, 64, MAX_SCREEN_WIDTH);
 			h = clamp(h, 64, MAX_SCREEN_HEIGHT);
-			if (_wnd.double_size) {
-				w *= 2;
-				h *= 2;
-			}
 			SetRect(&r2, 0, 0, w, h);
 
 			AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
@@ -567,8 +539,6 @@ static void MakeWindow(bool full_screen)
 {
 	_fullscreen = full_screen;
 
-	_wnd.double_size = _double_size && !full_screen;
-
 	// recreate window?
 	if ((full_screen || _wnd.fullscreen) && _wnd.main_wnd) {
 		DestroyWindow(_wnd.main_wnd);
@@ -580,6 +550,9 @@ static void MakeWindow(bool full_screen)
 #else
 	if (full_screen) {
 		DEVMODE settings;
+
+		/* Make sure we are always at least the screen-depth of the blitter */
+		if (_fullscreen_bpp < BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth()) _fullscreen_bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 
 		memset(&settings, 0, sizeof(settings));
 		settings.dmSize = sizeof(settings);
@@ -649,9 +622,12 @@ static bool AllocateDibSection(int w, int h)
 {
 	BITMAPINFO *bi;
 	HDC dc;
+	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 
 	w = clamp(w, 64, MAX_SCREEN_WIDTH);
 	h = clamp(h, 64, MAX_SCREEN_HEIGHT);
+
+	if (bpp == 0) error("Can't use a blitter that blits 0 bpp for normal visuals");
 
 	if (w == _screen.width && h == _screen.height)
 		return false;
@@ -659,38 +635,25 @@ static bool AllocateDibSection(int w, int h)
 	_screen.width = w;
 	_screen.pitch = ALIGN(w, 4);
 	_screen.height = h;
-
-	if (_wnd.alloced_bits) {
-		free(_wnd.alloced_bits);
-		_wnd.alloced_bits = NULL;
-	}
-
+	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
+	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 	bi = (BITMAPINFO*)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
 	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-
-	if (_wnd.double_size) {
-		w = ALIGN(w, 4);
-		_wnd.alloced_bits = _wnd.buffer_bits = (Pixel *)malloc(w * h * sizeof(Pixel));
-		w *= 2;
-		h *= 2;
-	}
 
 	bi->bmiHeader.biWidth = _wnd.width = w;
 	bi->bmiHeader.biHeight = -(_wnd.height = h);
 
 	bi->bmiHeader.biPlanes = 1;
-	bi->bmiHeader.biBitCount = 8;
+	bi->bmiHeader.biBitCount = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 	bi->bmiHeader.biCompression = BI_RGB;
 
 	if (_wnd.dib_sect) DeleteObject(_wnd.dib_sect);
 
 	dc = GetDC(0);
-	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID**)&_wnd.bitmap_bits, NULL, 0);
+	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID**)&_wnd.buffer_bits, NULL, 0);
 	if (_wnd.dib_sect == NULL) error("CreateDIBSection failed");
 	ReleaseDC(0, dc);
-
-	if (!_wnd.double_size) _wnd.buffer_bits = _wnd.bitmap_bits;
 
 	return true;
 }
@@ -723,7 +686,7 @@ static void FindResolutions()
 	 * Doesn't really matter since we don't pass a string anyways, but still
 	 * a letdown */
 	for (i = 0; EnumDisplaySettingsA(NULL, i, &dm) != 0; i++) {
-		if (dm.dmBitsPerPel == 8 && IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
+		if (dm.dmBitsPerPel == BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() && IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
 				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1)) {
 			uint j;
 
@@ -786,43 +749,13 @@ static void Win32GdiStop()
 #if !defined(WINCE)
 	if (_wnd.fullscreen) ChangeDisplaySettings(NULL, 0);
 #endif
-	if (_wnd.double_size) {
-		_cur_resolution[0] *= 2;
-		_cur_resolution[1] *= 2;
-	}
-
 	MyShowCursor(true);
-}
-
-// simple upscaler by 2
-static void filter(int left, int top, int width, int height)
-{
-	uint p = _screen.pitch;
-	const Pixel *s = _wnd.buffer_bits + top * p + left;
-	Pixel *d = _wnd.bitmap_bits + top * p * 4 + left * 2;
-
-	for (; height > 0; height--) {
-		int i;
-
-		for (i = 0; i != width; i++) {
-			d[i * 2] = d[i * 2 + 1] = d[i * 2 + p * 2] = d[i * 2 + 1 + p * 2] = s[i];
-		}
-		s += p;
-		d += p * 4;
-	}
 }
 
 static void Win32GdiMakeDirty(int left, int top, int width, int height)
 {
 	RECT r = { left, top, left + width, top + height };
 
-	if (_wnd.double_size) {
-		filter(left, top, width, height);
-		r.left *= 2;
-		r.top *= 2;
-		r.right *= 2;
-		r.bottom *= 2;
-	}
 	InvalidateRect(_wnd.main_wnd, &r, FALSE);
 }
 

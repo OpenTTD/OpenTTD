@@ -50,7 +50,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 
 FontSize _cur_fontsize;
 static FontSize _last_fontsize;
-static Pixel _cursor_backup[64 * 64];
+static uint8 _cursor_backup[64 * 64 * 4];
 static Rect _invalid_rect;
 static const byte *_color_remap_ptr;
 static byte _string_colorremap[3];
@@ -58,37 +58,20 @@ static byte _string_colorremap[3];
 #define DIRTY_BYTES_PER_LINE (MAX_SCREEN_WIDTH / 64)
 static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / 8];
 
-void memcpy_pitch(void *dst, void *src, int w, int h, int srcpitch, int dstpitch)
-{
-	Pixel *dstp = (Pixel *)dst;
-	Pixel *srcp = (Pixel *)src;
-
-	assert(h >= 0);
-	for (; h != 0; --h) {
-		memcpy(dstp, srcp, w * sizeof(Pixel));
-		dstp += dstpitch;
-		srcp += srcpitch;
-	}
-}
-
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
-	const Pixel *src;
-	Pixel *dst;
-	int p;
-	int ht;
+	const void *src;
+	void *dst;
 
 	if (xo == 0 && yo == 0) return;
 
 	if (_cursor.visible) UndrawMouseCursor();
 	UndrawTextMessage();
 
-	p = _screen.pitch;
-
 	if (yo > 0) {
 		/*Calculate pointers */
-		dst = _screen.dst_ptr + (top + height - 1) * p + left;
-		src = dst - yo * p;
+		dst = _screen.renderer->MoveTo(_screen.dst_ptr, left, top + height - 1);
+		src = _screen.renderer->MoveTo(dst, 0, -yo);
 
 		/* Decrease height and increase top */
 		top += yo;
@@ -97,23 +80,20 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 		/* Adjust left & width */
 		if (xo >= 0) {
-			dst += xo;
+			dst = _screen.renderer->MoveTo(dst, xo, 0);
 			left += xo;
 			width -= xo;
 		} else {
-			src -= xo;
+			src = _screen.renderer->MoveTo(src, -xo, 0);
 			width += xo;
 		}
 
-		for (ht = height; ht > 0; --ht) {
-			memcpy(dst, src, width * sizeof(Pixel));
-			src -= p;
-			dst -= p;
-		}
+		/* Negative height as we want to copy from bottom to top */
+		_screen.renderer->CopyFromBuffer(dst, src, width, -height, _screen.pitch);
 	} else {
 		/* Calculate pointers */
-		dst = _screen.dst_ptr + top * p + left;
-		src = dst - yo * p;
+		dst = _screen.renderer->MoveTo(_screen.dst_ptr, left, top);
+		src = _screen.renderer->MoveTo(dst, 0, -yo);
 
 		/* Decrese height. (yo is <=0). */
 		height += yo;
@@ -121,21 +101,17 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 		/* Adjust left & width */
 		if (xo >= 0) {
-			dst += xo;
+			dst = _screen.renderer->MoveTo(dst, xo, 0);
 			left += xo;
 			width -= xo;
 		} else {
-			src -= xo;
+			src = _screen.renderer->MoveTo(src, -xo, 0);
 			width += xo;
 		}
 
 		/* the y-displacement may be 0 therefore we have to use memmove,
 		 * because source and destination may overlap */
-		for (ht = height; ht > 0; --ht) {
-			memmove(dst, src, width * sizeof(Pixel));
-			src += p;
-			dst += p;
-		}
+		_screen.renderer->MoveBuffer(dst, src, width, height);
 	}
 	/* This part of the screen is now dirty. */
 	_video_driver->make_dirty(left, top, width, height);
@@ -144,8 +120,8 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 void GfxFillRect(int left, int top, int right, int bottom, int color)
 {
-	const DrawPixelInfo* dpi = _cur_dpi;
-	Pixel *dst;
+	const DrawPixelInfo *dpi = _cur_dpi;
+	void *dst;
 	const int otop = top;
 	const int oleft = left;
 
@@ -166,40 +142,37 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 	bottom -= top;
 	assert(bottom > 0);
 
-	dst = dpi->dst_ptr + top * dpi->pitch + left;
+	dst = _screen.renderer->MoveTo(dpi->dst_ptr, left, top);
 
 	if (!HASBIT(color, PALETTE_MODIFIER_GREYOUT)) {
 		if (!HASBIT(color, USE_COLORTABLE)) {
 			do {
-				memset(dst, color, right * sizeof(Pixel));
-				dst += dpi->pitch;
+				_screen.renderer->SetHorizontalLine(dst, right, (uint8)color);
+				dst = _screen.renderer->MoveTo(dst, 0, 1);
 			} while (--bottom);
 		} else {
 			/* use colortable mode */
 			const byte* ctab = GetNonSprite(GB(color, 0, PALETTE_WIDTH)) + 1;
 
 			do {
-				int i;
-				for (i = 0; i != right; i++) dst[i] = ctab[dst[i]];
-				dst += dpi->pitch;
+				for (int i = 0; i != right; i++) _screen.renderer->SetPixel(dst, i, 0, ctab[((uint8 *)dst)[i]]);
+				dst = _screen.renderer->MoveTo(dst, 0, 1);
 			} while (--bottom);
 		}
 	} else {
 		byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
 		do {
-			int i;
-			for (i = (bo ^= 1); i < right; i += 2) dst[i] = (byte)color;
-			dst += dpi->pitch;
+			for (int i = (bo ^= 1); i < right; i += 2) _screen.renderer->SetPixel(dst, i, 0, (uint8)color);
+			dst = _screen.renderer->MoveTo(dst, 0, 1);
 		} while (--bottom > 0);
 	}
 }
 
 static void GfxSetPixel(int x, int y, int color)
 {
-	const DrawPixelInfo* dpi = _cur_dpi;
-	if ((x -= dpi->left) < 0 || x >= dpi->width || (y -= dpi->top)<0 || y >= dpi->height)
-		return;
-	dpi->dst_ptr[y * dpi->pitch + x] = color;
+	const DrawPixelInfo *dpi = _cur_dpi;
+	if ((x -= dpi->left) < 0 || x >= dpi->width || (y -= dpi->top) < 0 || y >= dpi->height) return;
+	_screen.renderer->SetPixel(dpi->dst_ptr, x, y, color);
 }
 
 void GfxDrawLine(int x, int y, int x2, int y2, int color)
@@ -817,6 +790,13 @@ void DoPaletteAnimations()
 	Colour old_val[38]; // max(38, 28)
 	uint i;
 	uint j;
+	int old_tc = _timer_counter;
+
+	/* We can only update the palette in 8bpp for now */
+	/* TODO -- We need support for other bpps too! */
+	if (BlitterFactoryBase::GetCurrentBlitter() != NULL && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 8) {
+		_timer_counter = 0;
+	}
 
 	d = &_cur_palette[217];
 	memcpy(old_val, d, c * sizeof(*old_val));
@@ -913,6 +893,8 @@ void DoPaletteAnimations()
 		if (_pal_first_dirty > 217) _pal_first_dirty = 217;
 		if (_pal_last_dirty < 217 + c) _pal_last_dirty = 217 + c;
 	}
+
+	if (old_tc != _timer_counter) _timer_counter = old_tc;
 }
 
 
@@ -959,11 +941,7 @@ void UndrawMouseCursor()
 {
 	if (_cursor.visible) {
 		_cursor.visible = false;
-		memcpy_pitch(
-			_screen.dst_ptr + _cursor.draw_pos.x + _cursor.draw_pos.y * _screen.pitch,
-			_cursor_backup,
-			_cursor.draw_size.x, _cursor.draw_size.y, _cursor.draw_size.x, _screen.pitch);
-
+		_screen.renderer->CopyFromBuffer(_screen.renderer->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup, _cursor.draw_size.x, _cursor.draw_size.y, _cursor.draw_size.x);
 		_video_driver->make_dirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
 	}
 }
@@ -1006,13 +984,10 @@ void DrawMouseCursor()
 	_cursor.draw_pos.y = y;
 	_cursor.draw_size.y = h;
 
-	assert(w * h < (int)sizeof(_cursor_backup));
+	assert(_screen.renderer->BufferSize(w, h) < (int)sizeof(_cursor_backup));
 
 	/* Make backup of stuff below cursor */
-	memcpy_pitch(
-		_cursor_backup,
-		_screen.dst_ptr + _cursor.draw_pos.x + _cursor.draw_pos.y * _screen.pitch,
-		_cursor.draw_size.x, _cursor.draw_size.y, _screen.pitch, _cursor.draw_size.x);
+	_screen.renderer->CopyToBuffer(_screen.renderer->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup, _cursor.draw_size.x, _cursor.draw_size.y, _cursor.draw_size.x);
 
 	/* Draw cursor on screen */
 	_cur_dpi = &_screen;
@@ -1233,7 +1208,8 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 		n->top = 0;
 	}
 
-	n->dst_ptr = o->dst_ptr + left + top * (n->pitch = o->pitch);
+	n->dst_ptr = _screen.renderer->MoveTo(o->dst_ptr, left, top);
+	n->pitch = o->pitch;
 
 	if (height > o->height - top) {
 		height = o->height - top;

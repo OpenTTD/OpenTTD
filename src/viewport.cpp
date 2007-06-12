@@ -1269,7 +1269,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	x = UnScaleByZoom(vd.dpi.left - (vp->virtual_left & mask), vp->zoom) + vp->left;
 	y = UnScaleByZoom(vd.dpi.top - (vp->virtual_top & mask), vp->zoom) + vp->top;
 
-	vd.dpi.dst_ptr = old_dpi->dst_ptr + x - old_dpi->left + (y - old_dpi->top) * old_dpi->pitch;
+	vd.dpi.dst_ptr = _screen.renderer->MoveTo(old_dpi->dst_ptr, x - old_dpi->left, y - old_dpi->top);
 
 	vd.parent_list = parent_list;
 	vd.eof_parent_list = endof(parent_list);

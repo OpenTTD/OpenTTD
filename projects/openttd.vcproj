@@ -980,6 +980,12 @@
 				RelativePath=".\..\src\blitter\8bpp_simple.hpp">
 			</File>
 			<File
+				RelativePath=".\..\src\blitter\null.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\null.hpp">
+			</File>
+			<File
 				RelativePath=".\..\src\blitter\blitter.hpp">
 			</File>
 		</Filter>
@@ -994,6 +1000,25 @@
 			</File>
 			<File
 				RelativePath=".\..\src\spriteloader\spriteloader.hpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Renderer"
+			Filter="">
+			<File
+				RelativePath=".\..\src\renderer\8bpp.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\renderer\8bpp.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\renderer\null.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\renderer\null.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\renderer\renderer.hpp">
 			</File>
 		</Filter>
 		<Filter

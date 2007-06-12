@@ -53,6 +53,11 @@ public:
 	 */
 	virtual Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator) = 0;
 
+	/**
+	 * Get the renderer this class depends on.
+	 */
+	virtual const char *GetRenderer() = 0;
+
 	virtual ~Blitter() { }
 };
 

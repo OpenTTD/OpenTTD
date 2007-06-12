@@ -12,16 +12,16 @@ static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 
 void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
-	const byte *src, *src_next;
-	Pixel8 *dst, *dst_line;
+	const uint8 *src, *src_next;
+	uint8 *dst, *dst_line;
 	uint offset = 0;
 
 	/* Find the offset of this zoom-level */
-	offset = ((const byte *)bp->sprite)[(int)zoom * 2] | ((const byte *)bp->sprite)[(int)zoom * 2 + 1] << 8;
+	offset = ((const uint8 *)bp->sprite)[(int)zoom * 2] | ((const byte *)bp->sprite)[(int)zoom * 2 + 1] << 8;
 
 	/* Find where to start reading in the source sprite */
-	src = (const byte *)bp->sprite + offset;
-	dst_line = (Pixel8 *)bp->dst + bp->top * bp->pitch + bp->left;
+	src = (const uint8 *)bp->sprite + offset;
+	dst_line = (uint8 *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	/* Skip over the top lines in the source image */
 	for (int y = 0; y < bp->skip_top; y++) {

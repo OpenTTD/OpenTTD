@@ -13,6 +13,8 @@
 #include "../window.h"
 #include "../network/network.h"
 #include "../variables.h"
+#include "../blitter/blitter.hpp"
+#include "../renderer/renderer.hpp"
 #include "sdl_v.h"
 #include <SDL.h>
 
@@ -36,6 +38,10 @@ static void SdlVideoMakeDirty(int left, int top, int width, int height)
 
 static void UpdatePalette(uint start, uint count)
 {
+	/* We can only update the palette in 8bpp for now */
+	/* TODO -- We need support for other bpps too! */
+	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 8) return;
+
 	SDL_Color pal[256];
 	uint i;
 
@@ -172,10 +178,13 @@ static bool CreateMainSurface(int w, int h)
 	extern const char _openttd_revision[];
 	SDL_Surface *newscreen, *icon;
 	char caption[50];
+	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 
 	GetAvailableVideoMode(&w, &h);
 
-	DEBUG(driver, 1, "SDL: using mode %dx%d", w, h);
+	DEBUG(driver, 1, "SDL: using mode %dx%dx%d", w, h, bpp);
+
+	if (bpp == 0) error("Can't use a blitter that blits 0 bpp for normal visuals");
 
 	/* Give the application an icon */
 	icon = SDL_CALL SDL_LoadBMP(ICON_DIR PATHSEP "openttd.32.bmp");
@@ -189,14 +198,15 @@ static bool CreateMainSurface(int w, int h)
 	}
 
 	// DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK
-	newscreen = SDL_CALL SDL_SetVideoMode(w, h, 8, SDL_SWSURFACE | SDL_HWPALETTE | (_fullscreen ? SDL_FULLSCREEN : SDL_RESIZABLE));
+	newscreen = SDL_CALL SDL_SetVideoMode(w, h, bpp, SDL_SWSURFACE | SDL_HWPALETTE | (_fullscreen ? SDL_FULLSCREEN : SDL_RESIZABLE));
 	if (newscreen == NULL)
 		return false;
 
 	_screen.width = newscreen->w;
 	_screen.height = newscreen->h;
-	_screen.pitch = newscreen->pitch / sizeof(Pixel);
-
+	_screen.pitch = newscreen->pitch / (bpp / 8);
+	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
+	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 	_sdl_screen = newscreen;
 	InitPalette();
 
@@ -469,7 +479,7 @@ static void SdlVideoMainLoop()
 				(keys[SDLK_DOWN]  ? 8 : 0);
 			GameLoop();
 
-			_screen.dst_ptr = (Pixel*)_sdl_screen->pixels;
+			_screen.dst_ptr = _sdl_screen->pixels;
 			UpdateWindows();
 			if (++pal_tick > 4) {
 				CheckPaletteAnim();
@@ -478,7 +488,7 @@ static void SdlVideoMainLoop()
 			DrawSurfaceToScreen();
 		} else {
 			SDL_CALL SDL_Delay(1);
-			_screen.dst_ptr = (Pixel*)_sdl_screen->pixels;
+			_screen.dst_ptr = _sdl_screen->pixels;
 			DrawTextMessage();
 			DrawMouseCursor();
 			DrawSurfaceToScreen();

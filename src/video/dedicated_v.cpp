@@ -13,6 +13,7 @@
 #include "../console.h"
 #include "../variables.h"
 #include "../genworld.h"
+#include "../blitter/blitter.hpp"
 #include "dedicated_v.h"
 
 #ifdef BEOS_NET_SERVER
@@ -112,7 +113,7 @@ static void CloseWindowsConsoleThread()
 #endif
 
 
-static Pixel *_dedicated_video_mem;
+static void *_dedicated_video_mem;
 
 extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
 extern void SwitchMode(int new_mode);
@@ -120,9 +121,14 @@ extern void SwitchMode(int new_mode);
 
 static const char *DedicatedVideoStart(const char * const *parm)
 {
+	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
+	if (bpp == 0) _dedicated_video_mem = NULL;
+	else          _dedicated_video_mem = malloc(_cur_resolution[0] * _cur_resolution[1] * (bpp / 8));
+
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
-	_dedicated_video_mem = (Pixel *)malloc(_cur_resolution[0] * _cur_resolution[1] * sizeof(Pixel));
+	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
+	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 
 	SetDebugString("net=6");
 

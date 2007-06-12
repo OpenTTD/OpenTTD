@@ -54,9 +54,7 @@ static bool _textmessage_visible = false;
 /* The chatbox grows from the bottom so the coordinates are pixels from
  * the left and pixels from the bottom. The height is the maximum height */
 static const Oblong _textmsg_box = {10, 30, 500, 150};
-static Pixel _textmessage_backup[150 * 500]; // (height * width)
-
-extern void memcpy_pitch(void *dst, void *src, int w, int h, int srcpitch, int dstpitch);
+static uint8 _textmessage_backup[150 * 500 * 4]; // (height * width)
 
 static inline uint GetTextMessageCount()
 {
@@ -163,11 +161,7 @@ void UndrawTextMessage()
 
 		_textmessage_visible = false;
 		/* Put our 'shot' back to the screen */
-		memcpy_pitch(
-			_screen.dst_ptr + x + y * _screen.pitch,
-			_textmessage_backup,
-			width, height, _textmsg_box.width, _screen.pitch);
-
+		_screen.renderer->CopyFromBuffer(_screen.renderer->MoveTo(_screen.dst_ptr, x, y), _textmessage_backup, width, height, _textmsg_box.width);
 		/* And make sure it is updated next time */
 		_video_driver->make_dirty(x, y, width, height);
 
@@ -227,10 +221,7 @@ void DrawTextMessage()
 	if (width <= 0 || height <= 0) return;
 
 	/* Make a copy of the screen as it is before painting (for undraw) */
-	memcpy_pitch(
-		_textmessage_backup,
-		_screen.dst_ptr + x + y * _screen.pitch,
-		width, height, _screen.pitch, _textmsg_box.width);
+	_screen.renderer->CopyToBuffer(_screen.renderer->MoveTo(_screen.dst_ptr, x, y), _textmessage_backup, width, height, _textmsg_box.width);
 
 	_cur_dpi = &_screen; // switch to _screen painting
 

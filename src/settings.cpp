@@ -1225,14 +1225,13 @@ static const SettingDesc _music_settings[] = {
 
 /* win32_v.c only settings */
 #ifdef WIN32
-extern bool _force_full_redraw, _double_size, _window_maximize;
+extern bool _force_full_redraw, _window_maximize;
 extern uint _display_hz, _fullscreen_bpp;
 
 static const SettingDescGlobVarList _win32_settings[] = {
 	 SDTG_VAR("display_hz",     SLE_UINT, S, 0, _display_hz,       0, 0, 120, 0, STR_NULL, NULL),
 	SDTG_BOOL("force_full_redraw",        S, 0, _force_full_redraw,false,        STR_NULL, NULL),
 	 SDTG_VAR("fullscreen_bpp", SLE_UINT, S, 0, _fullscreen_bpp,   8, 8,  32, 0, STR_NULL, NULL),
-	SDTG_BOOL("double_size",              S, 0, _double_size,      false,        STR_NULL, NULL),
 	SDTG_BOOL("window_maximize",          S, 0, _window_maximize,  false,        STR_NULL, NULL),
 	 SDTG_END()
 };

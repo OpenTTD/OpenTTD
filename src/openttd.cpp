@@ -402,6 +402,7 @@ int ttd_main(int argc, char *argv[])
 			strcpy(musicdriver, "null");
 			strcpy(sounddriver, "null");
 			strcpy(videodriver, "dedicated");
+			strcpy(blitter, "null");
 			dedicated = true;
 			if (mgo.opt != NULL) {
 				/* Use the existing method for parsing (openttd -n).

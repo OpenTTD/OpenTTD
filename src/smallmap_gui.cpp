@@ -167,41 +167,23 @@ static const LegendAndColour * const _legend_table[] = {
 	_legend_land_owners,
 };
 
-#if defined(OTTD_ALIGNMENT)
-	static inline void WRITE_PIXELS(Pixel* d, uint32 val)
-	{
-#	if defined(TTD_BIG_ENDIAN)
-		d[0] = GB(val, 24, 8);
-		d[1] = GB(val, 16, 8);
-		d[2] = GB(val,  8, 8);
-		d[3] = GB(val,  0, 8);
-#	elif defined(TTD_LITTLE_ENDIAN)
-		d[0] = GB(val,  0, 8);
-		d[1] = GB(val,  8, 8);
-		d[2] = GB(val, 16, 8);
-		d[3] = GB(val, 24, 8);
-#	endif
-	}
+static inline void WRITE_PIXELS(void *d, uint32 val)
+{
+	uint8 *val8 = (uint8 *)&val;
+	_screen.renderer->SetPixel(d, 0, 0, val8[0]);
+	_screen.renderer->SetPixel(d, 1, 0, val8[1]);
+	_screen.renderer->SetPixel(d, 2, 0, val8[2]);
+	_screen.renderer->SetPixel(d, 3, 0, val8[3]);
+}
 
-/* need to use OR, otherwise we will overwrite the wrong pixels at the edges :( */
-	static inline void WRITE_PIXELS_OR(Pixel *d, uint32 val)
-	{
-#	if defined(TTD_BIG_ENDIAN)
-		d[0] |= GB(val, 24, 8);
-		d[1] |= GB(val, 16, 8);
-		d[2] |= GB(val,  8, 8);
-		d[3] |= GB(val,  0, 8);
-#	elif defined(TTD_LITTLE_ENDIAN)
-		d[0] |= GB(val,  0, 8);
-		d[1] |= GB(val,  8, 8);
-		d[2] |= GB(val, 16, 8);
-		d[3] |= GB(val, 24, 8);
-#	endif
-	}
-#else
-#	define WRITE_PIXELS(dst, val)   *(uint32*)(dst) = (val);
-#	define WRITE_PIXELS_OR(dst,val) *(uint32*)(dst) |= (val);
-#endif
+static inline void WRITE_PIXELS_OR(void *d, uint32 val)
+{
+	uint8 *val8 = (uint8 *)&val;
+	_screen.renderer->SetPixelIfEmpty(d, 0, 0, val8[0]);
+	_screen.renderer->SetPixelIfEmpty(d, 1, 0, val8[1]);
+	_screen.renderer->SetPixelIfEmpty(d, 2, 0, val8[2]);
+	_screen.renderer->SetPixelIfEmpty(d, 3, 0, val8[3]);
+}
 
 #define MKCOLOR(x) TO_LE32X(x)
 
@@ -296,9 +278,9 @@ typedef uint32 GetSmallMapPixels(TileIndex tile); // typedef callthrough functio
  * @param proc Pointer to the colour function
  * @see GetSmallMapPixels(TileIndex)
  */
-static void DrawSmallMapStuff(Pixel *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
+static void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
 {
-	Pixel *dst_ptr_end = _screen.dst_ptr + _screen.width * _screen.height - _screen.width;
+	void *dst_ptr_end = _screen.renderer->MoveTo(_screen.dst_ptr, _screen.width, _screen.height - 1);
 
 	do {
 		/* check if the tile (xc,yc) is within the map range */
@@ -308,7 +290,7 @@ static void DrawSmallMapStuff(Pixel *dst, uint xc, uint yc, int pitch, int reps,
 				WRITE_PIXELS_OR(dst, proc(TileXY(xc, yc)) & mask);
 		}
 	/* switch to next tile in the column */
-	} while (xc++, yc++, dst += pitch, --reps != 0);
+	} while (xc++, yc++, dst = _screen.renderer->MoveTo(dst, pitch, 0), --reps != 0);
 }
 
 
@@ -530,7 +512,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 {
 	DrawPixelInfo *old_dpi;
 	int dx,dy, x, y, x2, y2;
-	Pixel *ptr;
+	void *ptr;
 	int tile_x;
 	int tile_y;
 	ViewPort *vp;
@@ -582,7 +564,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		}
 	}
 
-	ptr = dpi->dst_ptr - dx - 4;
+	ptr = _screen.renderer->MoveTo(dpi->dst_ptr, -dx - 4, 0);
 	x = - dx - 4;
 	y = 0;
 
@@ -609,7 +591,6 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		/* number of lines */
 		reps = (dpi->height - y + 1) / 2;
 		if (reps > 0) {
-//			assert(ptr >= dpi->dst_ptr);
 			DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, _smallmap_draw_procs[type]);
 		}
 
@@ -617,13 +598,13 @@ skip_column:
 		if (y == 0) {
 			tile_y++;
 			y++;
-			ptr += dpi->pitch;
+			ptr = _screen.renderer->MoveTo(ptr, 0, 1);
 		} else {
 			tile_x--;
 			y--;
-			ptr -= dpi->pitch;
+			ptr = _screen.renderer->MoveTo(ptr, 0, -1);
 		}
-		ptr += 2;
+		ptr = _screen.renderer->MoveTo(ptr, 2, 0);
 		x += 2;
 	}
 
@@ -666,12 +647,11 @@ skip_column:
 				}
 
 				/* Calculate pointer to pixel and the color */
-				ptr = dpi->dst_ptr + y * dpi->pitch + x;
 				color = (type == 1) ? _vehicle_type_colors[v->type] : 0xF;
 
 				/* And draw either one or two pixels depending on clipping */
-				ptr[0] = color;
-				if (!skip) ptr[1] = color;
+				_screen.renderer->SetPixel(dpi->dst_ptr, x, y, color);
+				if (!skip) _screen.renderer->SetPixel(dpi->dst_ptr, x + 1, y, color);;
 			}
 		}
 	}

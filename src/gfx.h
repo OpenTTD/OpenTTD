@@ -7,6 +7,7 @@
 
 #include "openttd.h"
 #include "zoom.hpp"
+#include "renderer/renderer.hpp"
 
 enum WindowKeyCodes {
 	WKC_SHIFT = 0x8000,
@@ -93,7 +94,6 @@ void GameLoop();
 void CreateConsole();
 
 typedef int32 CursorID;
-typedef byte Pixel;
 
 struct Point {
 	int x,y;
@@ -134,10 +134,11 @@ struct CursorVars {
 };
 
 struct DrawPixelInfo {
-	Pixel *dst_ptr;
+	void *dst_ptr;
 	int left, top, width, height;
 	int pitch;
 	ZoomLevel zoom;
+	Renderer *renderer;
 };
 
 struct Colour {

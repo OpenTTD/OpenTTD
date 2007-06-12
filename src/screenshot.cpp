@@ -14,6 +14,7 @@
 #include "variables.h"
 #include "date.h"
 #include "helpers.hpp"
+#include "blitter/blitter.hpp"
 #include "fileio.h"
 
 char _screenshot_format_name[8];
@@ -22,7 +23,7 @@ uint _cur_screenshot_format;
 ScreenshotType current_screenshot_type;
 
 /* called by the ScreenShot proc to generate screenshot lines. */
-typedef void ScreenshotCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n);
+typedef void ScreenshotCallback(void *userdata, void *buf, uint y, uint pitch, uint n);
 typedef bool ScreenshotHandlerProc(const char *name, ScreenshotCallback *callb, void *userdata, uint w, uint h, int pixelformat, const Colour *palette);
 
 struct ScreenshotFormat {
@@ -72,10 +73,11 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	FILE *f;
 	uint i, padw;
 	uint n, maxlines;
+	uint pal_size = 0;
+	uint bpp = pixelformat / 8;
 
-	/* only implemented for 8bit images so far. */
-	if (pixelformat != 8)
-		return false;
+	/* only implemented for 8bit and 32bit images so far. */
+	if (pixelformat != 8 && pixelformat != 32) return false;
 
 	f = fopen(name, "wb");
 	if (f == NULL) return false;
@@ -83,18 +85,20 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	/* each scanline must be aligned on a 32bit boundary */
 	padw = ALIGN(w, 4);
 
+	if (pixelformat == 8) pal_size = sizeof(RgbQuad) * 256;
+
 	/* setup the file header */
 	bfh.type = TO_LE16('MB');
-	bfh.size = TO_LE32(sizeof(bfh) + sizeof(bih) + sizeof(RgbQuad) * 256 + padw * h);
+	bfh.size = TO_LE32(sizeof(bfh) + sizeof(bih) + pal_size + padw * h * bpp);
 	bfh.reserved = 0;
-	bfh.off_bits = TO_LE32(sizeof(bfh) + sizeof(bih) + sizeof(RgbQuad) * 256);
+	bfh.off_bits = TO_LE32(sizeof(bfh) + sizeof(bih) + pal_size);
 
 	/* setup the info header */
 	bih.size = TO_LE32(sizeof(BitmapInfoHeader));
 	bih.width = TO_LE32(w);
 	bih.height = TO_LE32(h);
 	bih.planes = TO_LE16(1);
-	bih.bitcount = TO_LE16(8);
+	bih.bitcount = TO_LE16(pixelformat);
 	bih.compression = 0;
 	bih.sizeimage = 0;
 	bih.xpels = 0;
@@ -102,24 +106,26 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	bih.clrused = 0;
 	bih.clrimp = 0;
 
-	/* convert the palette to the windows format */
-	for (i = 0; i != 256; i++) {
-		rq[i].red   = palette[i].r;
-		rq[i].green = palette[i].g;
-		rq[i].blue  = palette[i].b;
-		rq[i].reserved = 0;
+	if (pixelformat == 8) {
+		/* convert the palette to the windows format */
+		for (i = 0; i != 256; i++) {
+			rq[i].red   = palette[i].r;
+			rq[i].green = palette[i].g;
+			rq[i].blue  = palette[i].b;
+			rq[i].reserved = 0;
+		}
 	}
 
 	/* write file header and info header and palette */
 	if (fwrite(&bfh, sizeof(bfh), 1, f) != 1) return false;
 	if (fwrite(&bih, sizeof(bih), 1, f) != 1) return false;
-	if (fwrite(rq, sizeof(rq), 1, f) != 1) return false;
+	if (pixelformat == 8) if (fwrite(rq, sizeof(rq), 1, f) != 1) return false;
 
 	/* use by default 64k temp memory */
 	maxlines = clamp(65536 / padw, 16, 128);
 
 	/* now generate the bitmap bits */
-	Pixel *buff = MallocT<Pixel>(padw * maxlines); // by default generate 128 lines at a time.
+	void *buff = MallocT<uint8>(padw * maxlines * bpp); // by default generate 128 lines at a time.
 	if (buff == NULL) {
 		fclose(f);
 		return false;
@@ -137,7 +143,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 
 		/* write each line */
 		while (n)
-			if (fwrite(buff + (--n) * padw, padw, 1, f) != 1) {
+			if (fwrite((uint8 *)buff + (--n) * padw * bpp, padw * bpp, 1, f) != 1) {
 				free(buff);
 				fclose(f);
 				return false;
@@ -173,12 +179,12 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	FILE *f;
 	uint i, y, n;
 	uint maxlines;
+	uint bpp = pixelformat / 8;
 	png_structp png_ptr;
 	png_infop info_ptr;
 
-	/* only implemented for 8bit images so far. */
-	if (pixelformat != 8)
-		return false;
+	/* only implemented for 8bit and 32bit images so far. */
+	if (pixelformat != 8 && pixelformat != 32) return false;
 
 	f = fopen(name, "wb");
 	if (f == NULL) return false;
@@ -207,31 +213,53 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 
 	png_set_filter(png_ptr, 0, PNG_FILTER_NONE);
 
-	png_set_IHDR(png_ptr, info_ptr, w, h, pixelformat, PNG_COLOR_TYPE_PALETTE,
+	png_set_IHDR(png_ptr, info_ptr, w, h, 8, pixelformat == 8 ? PNG_COLOR_TYPE_PALETTE : PNG_COLOR_TYPE_RGB,
 		PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
 
-	/* convert the palette to the .PNG format. */
-	for (i = 0; i != 256; i++) {
-		rq[i].red   = palette[i].r;
-		rq[i].green = palette[i].g;
-		rq[i].blue  = palette[i].b;
+	if (pixelformat == 8) {
+		/* convert the palette to the .PNG format. */
+		for (i = 0; i != 256; i++) {
+			rq[i].red   = palette[i].r;
+			rq[i].green = palette[i].g;
+			rq[i].blue  = palette[i].b;
+		}
+
+		png_set_PLTE(png_ptr, info_ptr, rq, 256);
 	}
 
-	png_set_PLTE(png_ptr, info_ptr, rq, 256);
 	png_write_info(png_ptr, info_ptr);
 	png_set_flush(png_ptr, 512);
+
+	if (pixelformat == 32) {
+		png_color_8 sig_bit;
+
+		/* Save exact color/alpha resolution */
+		sig_bit.alpha = 0;
+		sig_bit.blue  = 8;
+		sig_bit.green = 8;
+		sig_bit.red   = 8;
+		sig_bit.gray  = 8;
+		png_set_sBIT(png_ptr, info_ptr, &sig_bit);
+
+#ifdef TTD_LITTLE_ENDIAN
+		png_set_bgr(png_ptr);
+		png_set_filler(png_ptr, 0, PNG_FILLER_AFTER);
+#else
+		png_set_filler(png_ptr, 0, PNG_FILLER_BEFORE);
+#endif
+	}
 
 	/* use by default 64k temp memory */
 	maxlines = clamp(65536 / w, 16, 128);
 
 	/* now generate the bitmap bits */
-	Pixel *buff = MallocT<Pixel>(w * maxlines); // by default generate 128 lines at a time.
+	void *buff = MallocT<uint8>(w * maxlines * bpp); // by default generate 128 lines at a time.
 	if (buff == NULL) {
 		png_destroy_write_struct(&png_ptr, &info_ptr);
 		fclose(f);
 		return false;
 	}
-	memset(buff, 0, w * maxlines); // zero the buffer to have the padding bytes set to 0
+	memset(buff, 0, w * maxlines * bpp);
 
 	y = 0;
 	do {
@@ -244,7 +272,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 
 		/* write them to png */
 		for (i = 0; i != n; i++)
-			png_write_row(png_ptr, buff + i * w);
+			png_write_row(png_ptr, (png_bytep)buff + i * w * bpp);
 	} while (y != h);
 
 	png_write_end(png_ptr, info_ptr);
@@ -288,6 +316,10 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	PcxHeader pcx;
 	bool success;
 
+	if (pixelformat == 32) {
+		DEBUG(misc, 0, "Can't convert a 32bpp screenshot to PCX format. Please pick an other format.");
+		return false;
+	}
 	if (pixelformat != 8 || w == 0)
 		return false;
 
@@ -321,7 +353,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	maxlines = clamp(65536 / w, 16, 128);
 
 	/* now generate the bitmap bits */
-	Pixel *buff = MallocT<Pixel>(w * maxlines); // by default generate 128 lines at a time.
+	uint8 *buff = MallocT<uint8>(w * maxlines); // by default generate 128 lines at a time.
 	if (buff == NULL) {
 		fclose(f);
 		return false;
@@ -340,14 +372,14 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 
 		/* write them to pcx */
 		for (i = 0; i != n; i++) {
-			const Pixel* bufp = buff + i * w;
+			const uint8 *bufp = buff + i * w;
 			byte runchar = bufp[0];
 			uint runcount = 1;
 			uint j;
 
 			/* for each pixel... */
 			for (j = 1; j < w; j++) {
-				Pixel ch = bufp[j];
+				uint8 ch = bufp[j];
 
 				if (ch != runchar || runcount >= 0x3f) {
 					if (runcount > 1 || (runchar & 0xC0) == 0xC0)
@@ -447,17 +479,14 @@ void SetScreenshotFormat(int i)
 }
 
 /* screenshot generator that dumps the current video buffer */
-static void CurrentScreenCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n)
+static void CurrentScreenCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
 {
-	for (; n > 0; --n) {
-		memcpy(buf, _screen.dst_ptr + y * _screen.pitch, _screen.width * sizeof(Pixel));
-		++y;
-		buf += pitch;
-	}
+	void *src = _screen.renderer->MoveTo(_screen.dst_ptr, 0, y);
+	_screen.renderer->CopyToBuffer(src, buf, _screen.width, n, pitch);
 }
 
 /* generate a large piece of the world */
-static void LargeWorldCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n)
+static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
 {
 	ViewPort *vp = (ViewPort *)userdata;
 	DrawPixelInfo dpi, *old_dpi;
@@ -534,7 +563,7 @@ bool IsScreenshotRequested()
 static bool MakeSmallScreenshot()
 {
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
-	return sf->proc(MakeScreenshotName(sf->extension), CurrentScreenCallback, NULL, _screen.width, _screen.height, 8, _cur_palette);
+	return sf->proc(MakeScreenshotName(sf->extension), CurrentScreenCallback, NULL, _screen.width, _screen.height, BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth(), _cur_palette);
 }
 
 static bool MakeWorldScreenshot()
@@ -553,7 +582,7 @@ static bool MakeWorldScreenshot()
 	vp.height = vp.virtual_height;
 
 	sf = _screenshot_formats + _cur_screenshot_format;
-	return sf->proc(MakeScreenshotName(sf->extension), LargeWorldCallback, &vp, vp.width, vp.height, 8, _cur_palette);
+	return sf->proc(MakeScreenshotName(sf->extension), LargeWorldCallback, &vp, vp.width, vp.height, BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth(), _cur_palette);
 }
 
 bool MakeScreenshot()
