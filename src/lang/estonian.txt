@@ -864,12 +864,12 @@ STR_SUMMARY                                                     :Lühike
 STR_FULL                                                        :Täielik
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Linnanimistu
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Sõidukite disaini nimed
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Sõidukidisanide nimed
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Vaikimisi valitud
 STR_02BF_CUSTOM                                                 :Omatehtud
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Salvesta oma nimega
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Sõidukite disaininimede valik
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Sõidukidisainide nimevalik
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salvesta omatehtud disaininimed
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -929,7 +929,7 @@ STR_02EB_TOWN_NAMES                                             :{BLACK}Linnanim
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Vali linnanimede stiil
 
-STR_02F4_AUTOSAVE                                               :{BLACK}Automaatsalvestus
+STR_02F4_AUTOSAVE                                               :{BLACK}Isesalvestus
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Vali intervall, mille järel isesalvestus toimub
 STR_02F7_OFF                                                    :Väljas
@@ -1048,7 +1048,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{S
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Valik, millises formaadis salvestatakse ekraanitõmmis
 
 STR_AUTOSAVE_1_MONTH                                            :Iga kuu
-STR_AUTOSAVE_FAILED                                             :{WHITE}Automaatsalvestus ebaõnnestus
+STR_AUTOSAVE_FAILED                                             :{WHITE}Isesalvestus ebaõnnestus
 
 STR_MONTH_JAN                                                   :Jaanuar
 STR_MONTH_FEB                                                   :Veebruar
@@ -1201,7 +1201,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Suurenda kaarti
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Keri kaarti
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Väljas
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaardi kerimisrulliku kiirus: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaatne mängu peatamine uue mängu alustamisel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Mängu isepeatamine uue mängu alustamisel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Kasuta laiendatud sõidukinimekirja: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Enim ronge mängija kohta: {ORANGE}{STRING}
@@ -1235,7 +1235,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Mäng l
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Luba sujuv majandus (väiksemad muutused)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Luba teiste ettevõtete aktsiate ostmine
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Venitades rajatavate signaalide paigutustihedus: {ORANGE}{STRING} ühik(ut)
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Ehita semaforid automaatselt enne: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Ehita ise semaforid enne: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Stsenaariumiredaktor ei tunnista "ilma teedeta" linnaplaneeringut
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vali linnale teedeplaneering: {ORANGE}{STRING}
@@ -1807,7 +1807,7 @@ STR_201C_WAREHOUSE                                              :Ladu
 STR_201D_OFFICE_BLOCK                                           :Büroohoone
 STR_201E_STADIUM                                                :Staadion
 STR_201F_OLD_HOUSES                                             :Vanad majad
-STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Kohalik omavalitsus
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Omavalitsus
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Näita teavet kohaliku omavalitsuse kohta
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} kohalik omavalitsus
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ettevõtete hinnangud:
@@ -2386,11 +2386,11 @@ STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT
 STR_7080_PROTECTED                                              :{WHITE}See ettevõtte pole veel piisavalt vana, et aktsiaid vahetada...
 
 STR_LIVERY_DEFAULT                                              :Firmavärv
-STR_LIVERY_STEAM                                                :Aurumootor
-STR_LIVERY_DIESEL                                               :Diiselmootor
-STR_LIVERY_ELECTRIC                                             :Elektrivedur
-STR_LIVERY_MONORAIL                                             :Monorelsi Mootor
-STR_LIVERY_MAGLEV                                               :Maglev'i Mootor
+STR_LIVERY_STEAM                                                :Aurumootorvedur
+STR_LIVERY_DIESEL                                               :Diiselmootorvedur
+STR_LIVERY_ELECTRIC                                             :Elektrimootorvedur
+STR_LIVERY_MONORAIL                                             :Monorelss-mootorvedur
+STR_LIVERY_MAGLEV                                               :Elektromagneetiline mootorvedur
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Reisivagun (auru)
@@ -2399,22 +2399,22 @@ STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Reisivagun (ele
 STR_LIVERY_FREIGHT_WAGON                                        :Kaubavagun
 STR_LIVERY_BUS                                                  :Buss
 STR_LIVERY_TRUCK                                                :Veoauto
-STR_LIVERY_PASSENGER_SHIP                                       :Reisijate Praam
+STR_LIVERY_PASSENGER_SHIP                                       :Reisipraam
 STR_LIVERY_FREIGHT_SHIP                                         :Kaubalaev
 STR_LIVERY_HELICOPTER                                           :Helikopter
-STR_LIVERY_SMALL_PLANE                                          :Väike Lennuk
-STR_LIVERY_LARGE_PLANE                                          :Suur Lennuk
+STR_LIVERY_SMALL_PLANE                                          :Väikelennuk
+STR_LIVERY_LARGE_PLANE                                          :Suurlennuk
 STR_LIVERY_PASSENGER_TRAM                                       :Reisitramm
 STR_LIVERY_FREIGHT_TRAM                                         :Kaubatramm
 
-STR_LIVERY_GENERAL_TIP                                          :{BLACK}Näita üldiseid värvivalikuid
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Näita üldiseid värvistikke
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Näita rongide värvistikke
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Näita mootorsõidukite värvivalikuid
-STR_LIVERY_SHIP_TIP                                             :{BLACK}Näita laevade värvivalikuid
-STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Näita lennukite värvivalikuid
-STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Vali põhivärv valitud skeemile
-STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Vali teine värv valitud skeemile
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Vali värvivalik, mida muuta - või mitu kasutades CTRL+hiireklõps kombinatsiooni. Klõpsa kastil, et muuta värvivaliku kasutust.
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Näita mootorsõidukite värvistikke
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Näita laevavärvistikke
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Näita lennukivärvistikke
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Vali põhivärv värvistikule
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Vali teine värv valitud värvistikule
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Vali muudetav värvivalik - või mitu CTRL+klõps abil. Klõpsa kastil, et muuta värvivaliku kasutust.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (auruvedur)
@@ -3349,7 +3349,7 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 ########
 
-STR_FEEDER_CARGO_VALUE                                          :{BLACK}Kanna Raha: {LTBLUE}{CURRENCY}
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Ülekantud tulu: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...see tee on omatud linna poolt
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...tee on vales suunas
 

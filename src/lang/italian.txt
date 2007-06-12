@@ -2778,6 +2778,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centra l
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Elenco selezione automezzi - fare clic su un veicolo per informazioni
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Costruisce l'automezzo selezionato
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Costo: {CURRENCY}{}Velocità: {VELOCITY}{}Costo d'esercizio: {CURRENCY}/anno{}Capacità: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacità: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Rinomina l'automezzo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Impossibile rinominare l'automezzo...

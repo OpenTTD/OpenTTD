@@ -2777,6 +2777,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}이 차�
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}자동차 선택 목록 - 차량 정보를 보려면 클릭
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}선택한 자동차 만들기
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}가격: {CURRENCY}{}속력: {VELOCITY}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}수송량: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}자동차 이름 지정
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}자동차의 이름을 지정할 수 없습니다...

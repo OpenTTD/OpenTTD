@@ -817,9 +817,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Importa 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unităţi monetare
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Alege unitatea monetară
-STR_MEASURING_UNITS                                             :{BLACK}Unitãti de mãsurã
+STR_MEASURING_UNITS                                             :{BLACK}Unităţi de măsură
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Selectie unitãti de mãsurã
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Selecţie unităţi de măsură
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Autovehiculele circulă...
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Alege partea străzii pe care se circulă
@@ -1309,9 +1309,9 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Atentie:
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multiplayer
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Numele jucãtorului:
-STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Acesta este numele prin care te vor identifica ceilalti
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Acesta este numele prin care te vor identifica ceilalţi
 STR_NETWORK_CONNECTION                                          :{BLACK}Conexiune:
-STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Alege intre un joc pe internet si unul pe LAN
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Alege între un joc pe internet şi unul în reţea (LAN)
 
 STR_NETWORK_START_SERVER                                        :{BLACK}Porneste serverul
 STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Porneste un server propriu
@@ -1321,32 +1321,32 @@ STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Numele j
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Limba, versiunea serverului, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Click pe un joc din listã pentru a-l selecta
 
-STR_NETWORK_FIND_SERVER                                         :{BLACK}Cautã server
-STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Cautã un server în retea
-STR_NETWORK_ADD_SERVER                                          :{BLACK}Adauga un server
-STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Adauga un server pe lista care va fi verificata pentru jocuri active
+STR_NETWORK_FIND_SERVER                                         :{BLACK}Caută server
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Caută un server în reţea
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Adaugă un server
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Adaugă un server pe lista care va fi verificată pentru jocuri active
 STR_NETWORK_ENTER_IP                                            :{BLACK}Introdu IP-ul serverului
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
-STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clienti
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clienţi
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clienti online / Nr. max. clienti
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO JOC
 STR_ORANGE                                                      :{ORANGE}{STRING}
-STR_NETWORK_CLIENTS                                             :{SILVER}Clienti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_CLIENTS                                             :{SILVER}Clienţi:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Limba:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Marimea hartii:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versiune server:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serverului:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Data de inceput:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data curenta:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data curentă:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protejat cu parola!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PLIN
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIUNE DIFERITA
-STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF NEPOTRIVIRE
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEPOTRIVIRE NEWGRF
 
-STR_NETWORK_JOIN_GAME                                           :{BLACK}Intrã în joc
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Intră în joc
 
 
 STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Începe un joc nou
@@ -1363,7 +1363,7 @@ STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{S
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
-STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (fa reclama)
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (fă reclamă)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_0_PLAYERS                                           :0 jucãtori
 STR_NETWORK_1_PLAYERS                                           :1 jucãtor
@@ -1382,8 +1382,8 @@ STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{S
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maxim spectatori:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limiteazã serverul la un anumit numãr de spectatori
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Limba vorbita:
-STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Ceilalti jucatori vor sti in ce limba se discuta per server.
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Limba vorbită:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Începe jocul
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu
@@ -1395,6 +1395,31 @@ STR_NETWORK_LANG_ANY                                            :Oricare
 STR_NETWORK_LANG_ENGLISH                                        :Engleza
 STR_NETWORK_LANG_GERMAN                                         :Germana
 STR_NETWORK_LANG_FRENCH                                         :Franceza
+STR_NETWORK_LANG_BRAZILIAN                                      :Braziliana
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgara
+STR_NETWORK_LANG_CHINESE                                        :Chineza
+STR_NETWORK_LANG_CZECH                                          :Ceha
+STR_NETWORK_LANG_DANISH                                         :Daneza
+STR_NETWORK_LANG_DUTCH                                          :Olandeza
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finlandeza
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungara
+STR_NETWORK_LANG_ICELANDIC                                      :Islandeza
+STR_NETWORK_LANG_ITALIAN                                        :Italiana
+STR_NETWORK_LANG_JAPANESE                                       :Japoneza
+STR_NETWORK_LANG_KOREAN                                         :Coreana
+STR_NETWORK_LANG_LITHUANIAN                                     :Lituaniana
+STR_NETWORK_LANG_NORWEGIAN                                      :Norvegiana
+STR_NETWORK_LANG_POLISH                                         :Poloneza
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugheza
+STR_NETWORK_LANG_ROMANIAN                                       :Româna
+STR_NETWORK_LANG_RUSSIAN                                        :Rusa
+STR_NETWORK_LANG_SLOVAK                                         :Slovaca
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovena
+STR_NETWORK_LANG_SPANISH                                        :Spaniola
+STR_NETWORK_LANG_SWEDISH                                        :Suedeza
+STR_NETWORK_LANG_TURKISH                                        :Turca
+STR_NETWORK_LANG_UKRAINIAN                                      :Ucrainiana
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Chatul jocului multiplayer
@@ -1405,8 +1430,8 @@ STR_NETWORK_NEW_COMPANY                                         :{BLACK}Companie
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Fondeazã o nouã companie
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Modul spectator
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Vizioneazã un joc din pozitia unui spectator
-STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Alatura-te companiei
-STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Ajuta la conducerea acestei companii
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Alătură-te companiei
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Ajută la conducerea acestei companii
 STR_NETWORK_REFRESH                                             :{BLACK}Actualizeaza serverul
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Actualizeaza informatiile despre server
 
@@ -1415,7 +1440,7 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO CO
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Numele companiei:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurarea:  {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Valoarea companiei:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanta curenta:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanţa curentă:  {WHITE}{CURRENCY64}
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Venituri anul trecut:  {WHITE}{CURRENCY64}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Performanta:  {WHITE}{NUM}
 
@@ -1427,64 +1452,64 @@ STR_NETWORK_CONNECTING                                          :{WHITE}Conectar
 
 ############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Conectare..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Authorizare..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Asteptati..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Descarcare harta..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizare..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Aşteptaţi..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Descărcare harta..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Prelucrare date..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Inregistrare...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Înregistrare...
 
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Preluare info joc..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Preluare info companie..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" i} inaintea noastra
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes descarcati pana acum
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} clien{P t ţi} înaintea noastră
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes descărcaţi până acum
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Deconectare
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introdu suma de bani pe care vrei sa o cedezi
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introdu suma de bani pe care vrei să o cedezi
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server protejat. Introdu parola
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companie protejata. Introdu parola
-STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de clienti
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de clienţi
 
-STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nu a fost detectatã o placã de retea valabilã
-STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nu a fost gãsit nici un joc în retea
-STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Serverul nu a rãspuns cererii
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE}Nu a fost detectată o placă sau jocul a fost compilat fără ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE}Nu a fost găsit nici un joc în reţea
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Serverul nu a răspuns cererii
 STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nu m-am putut conecta din cauza unei nepotriviri NewGRF
-STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sincronizarea jocului in retea a esuat.
-STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Conexiunea jocului in reatea a fost intrerupta.
-STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nu am reusit sa incarc jocul-server salvat.
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} Sincronizarea jocului în reţea a eşuat.
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Conexiunea jocului în reţea a fost întreruptă.
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nu am reuşit să încarc jocul-server salvat.
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE}Nu pot porni serverul.
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE}Nu pot efectua conectarea.
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Conexiunea #{NUM} a expirat.
-STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Eroare de protocol. Conexiunea a fost inchisa.
-STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Versiunea acestui client este diferita de cea a serverului.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Parola gresita.
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE}Eroare de protocol. Conexiunea a fost închisă.
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}Versiunea acestui client este diferită de cea a serverului.
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE}Parola greşită.
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE}Serverul este plin
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Acessul tau este interzis pe acest server
-STR_NETWORK_ERR_KICKED                                          :{WHITE}Ai fost dat afara de pe server
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Acessul tău este interzis pe acest server
+STR_NETWORK_ERR_KICKED                                          :{WHITE}Ai fost dat afară de pe server
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheat-urile nu sunt permise pe acest server
 
-STR_NETWORK_ERR_LEFT                                            :a parasit jocul
+STR_NETWORK_ERR_LEFT                                            :a părăsit jocul
 ############ Leave those lines in this order!!
-STR_NETWORK_ERR_CLIENT_GENERAL                                  :eroare generala
+STR_NETWORK_ERR_CLIENT_GENERAL                                  :eroare generală
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :eroare de desincronizare
-STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :nu pot incarca harta
-STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :conexiune pierduta
+STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :nu pot încărca harta
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :conexiune pierdută
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :eroare de protocol
 STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :Nepotrivire NewGRF
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :neautorizat
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :primit pachet ciudat
-STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versiune incorecta
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versiune incorectă
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nume folosit deja
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :parola gresita
-STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :player-id in DoCommand gresit
-STR_NETWORK_ERR_CLIENT_KICKED                                   :dat afara de pe server
-STR_NETWORK_ERR_CLIENT_CHEATER                                  :a incercat sa foloseasca un cheat
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :parola greşită
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :player-id greşit în DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED                                   :dat afară de pe server
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :a încercat să folosească un cheat
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server plin
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :a intrat in joc
-STR_NETWORK_GIVE_MONEY                                          :ti-a dat o suma de bani ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :ai donat o suma de bani companiei {STRING} ({CURRENCY})
+STR_NETWORK_CLIENT_JOINED                                       :a intrat în joc
+STR_NETWORK_GIVE_MONEY                                          :ţi-a dat o sumă de bani ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY                                     :ai donat o sumă de bani companiei {STRING} ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}: {GRAY}{STRING}
@@ -1503,9 +1528,9 @@ STR_NETWORK_SPECTATORS                                          :Spectatori
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(none)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Doneaza bani
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Vorbeste catre toti
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Vorbeste catre companie
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donează bani
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Vorbeşte către toţi
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Vorbeşte către companie
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mesaj privat
 
 
@@ -2154,7 +2179,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graficul profitului din operare
 STR_7026_BANK_BALANCE                                           :{WHITE}Balanţă curentă
 STR_7027_LOAN                                                   :{WHITE}Credite
-STR_MAX_LOAN                                                    :{WHITE}Limita credite:  {BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Limită credite:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Împrumută {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Plăteşte înapoi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
@@ -2534,7 +2559,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Elicopter Trica
 STR_80FE_GURU_X2_HELICOPTER                                     :Elicopter Guru X2
 STR_80FF_POWERNAUT_HELICOPTER                                   :Elicopter Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Mesaj de la producătorul de vehicule
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Am creat un nou tip de {STRING}. Ati fi interesati de folosirea exclusivã pentru un an a acestui vehicul, astfel ca noi sa putem observa rezultatele înaintea lansãrii oficiale?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Am creat un nou tip de {STRING}. Aţi fi interesaţi de folosirea exclusivă pentru un an a acestui vehicul, astfel ca noi să-i putem observa performanţele înaintea lansării oficiale?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :locomotivă
 STR_8103_ROAD_VEHICLE                                           :autovehicul
 STR_8104_AIRCRAFT                                               :aeronavă
@@ -2623,6 +2648,7 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prea mul
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nu pot adăuga o comandă nouă...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nu pot şterge această comandă...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nu pot modifica această comandă...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nu pot sări la ordinul selectat...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nu pot muta vehiculul...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Al doilea vagon+motor va avea mereu aceeasi destinatie ca si primul
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2654,6 +2680,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afiseaz�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Afiseazã capacitãtile componentelor trenului
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Afiseazã capacitãtile totale ale trenului, diferentiate pe tip de încãrcãturã
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de comenzi - clic pe comandã pentru a o selecta
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Sterge comanda selectatã
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Circulă fără oprire până la destinaţia selectată
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Introdu o comandã înaintea celei selectate sau adaugã o comandã la sfârsitul listei
@@ -2732,6 +2759,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centreaz
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista selectie vehicule rutiere - apasa pe vehicul pentru informatii
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pret: {CURRENCY}{}Vitezã: {VELOCITY}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacitate: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Numele autovehiculului
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nu pot redenumi autovehiculul...
@@ -3080,7 +3109,7 @@ STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Click pt
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Click pt pornirea tuturor vaselor din depou
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Click pt pornirea tuturor aeronavelor din hangar
 
-STR_MASS_STOP_LIST_TIP                                          :{BLACK}Click pt oprirea tuturor vehiculelor din lista
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Click pt oprirea tuturor vehiculelor din listă
 STR_MASS_START_LIST_TIP                                         :{BLACK}Apasa pentru pornirea tuturor vehiclulelor din lista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
@@ -3192,9 +3221,9 @@ STR_HELIPORTS                                                   :{BLACK}Aeroport
 ############ Tooltip measurment
 
 STR_MEASURE_LENGTH                                              :{BLACK}Lungime: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Suprafata: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lungime: {NUM}{}Diferenta inaltime: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Suprafata: {NUM} x {NUM}{}Diferenta inaltime: {NUM} m
+STR_MEASURE_AREA                                                :{BLACK}Suprafaţa: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lungime: {NUM}{}Diferenţa de înălţime: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Suprafaţa: {NUM} x {NUM}{}Diferenţa de înălţime: {NUM} m
 
 ############ Date formatting
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}

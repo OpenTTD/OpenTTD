@@ -1397,6 +1397,31 @@ STR_NETWORK_LANG_ANY                                            :Valfritt
 STR_NETWORK_LANG_ENGLISH                                        :Engelska
 STR_NETWORK_LANG_GERMAN                                         :Tyska
 STR_NETWORK_LANG_FRENCH                                         :Franska
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasiliansk
+STR_NETWORK_LANG_BULGARIAN                                      :Belgisk
+STR_NETWORK_LANG_CHINESE                                        :Kines
+STR_NETWORK_LANG_CZECH                                          :Tjeckisk
+STR_NETWORK_LANG_DANISH                                         :Dansk
+STR_NETWORK_LANG_DUTCH                                          :Holländsk
+STR_NETWORK_LANG_ESPERANTO                                      :Spansk
+STR_NETWORK_LANG_FINNISH                                        :Finsk
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungersk
+STR_NETWORK_LANG_ICELANDIC                                      :Isländsk
+STR_NETWORK_LANG_ITALIAN                                        :Italiensk
+STR_NETWORK_LANG_JAPANESE                                       :Japansk
+STR_NETWORK_LANG_KOREAN                                         :Koreansk
+STR_NETWORK_LANG_LITHUANIAN                                     :Litauisk
+STR_NETWORK_LANG_NORWEGIAN                                      :Norsk
+STR_NETWORK_LANG_POLISH                                         :Polsk
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugisisk
+STR_NETWORK_LANG_ROMANIAN                                       :Rumänsk
+STR_NETWORK_LANG_RUSSIAN                                        :Rysk
+STR_NETWORK_LANG_SLOVAK                                         :Slovakisk
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovensk
+STR_NETWORK_LANG_SPANISH                                        :Spansk
+STR_NETWORK_LANG_SWEDISH                                        :Svensk
+STR_NETWORK_LANG_TURKISH                                        :Turkisk
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Nätverksspel
@@ -2638,6 +2663,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}För må
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan inte sätta in ny order...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan inte ta bort denna order...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan inte ändra denna order...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Kan inte flytta denna order...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan inte hoppa över nuvarande order...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan inte hoppa över till vald order...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan inte flytta fordon...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Det bakre loket kommer alltid följa med det tillhörande främre loket
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2669,6 +2697,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Visa det
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Visa kapaciteter för varje fordon
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Visa tågets totala kapacitet, separera för typ av gods
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlista - klicka på order för att markera det
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Hoppa över nuvarande order och starta nästa. CTRL + klick hoppar över till vald order
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Ta bort markerad order
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör markerad order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan
@@ -2747,6 +2776,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrera
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vägfordonslista - klicka på fordon för information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bygg markerat vägfordon
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kostnad: {CURRENCY}{}Hastighet: {VELOCITY}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitet: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Byt namn på vägfordon
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan inte byta namn på vägfordon...
