@@ -290,6 +290,8 @@ struct Vehicle {
 	int32 right_coord;
 	int32 bottom_coord;
 	Vehicle *next_hash;
+	Vehicle *next_new_hash;
+	Vehicle **old_new_hash;
 
 	/* Related to age and service time */
 	Date age;     // Age in days
@@ -497,6 +499,7 @@ uint CountVehiclesInChain(const Vehicle* v);
 bool IsEngineCountable(const Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
+void *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
 Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z);
 

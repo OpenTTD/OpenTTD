@@ -709,7 +709,7 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 
 		if (!IsLevelCrossingTile(tile)) continue;
 
-		if (VehicleFromPos(tile, u, EnumCheckRoadVehCrashTrain) != NULL) {
+		if (VehicleFromPosXY(v->x_pos, v->y_pos, u, EnumCheckRoadVehCrashTrain) != NULL) {
 			RoadVehCrash(v);
 			return;
 		}
@@ -889,7 +889,7 @@ static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
 	rvf.y = y;
 	rvf.dir = dir;
 	rvf.veh = v;
-	u = (Vehicle*)VehicleFromPos(TileVirtXY(x, y), &rvf, EnumCheckRoadVehClose);
+	u = (Vehicle*)VehicleFromPosXY(x, y, &rvf, EnumCheckRoadVehClose);
 
 	/* This code protects a roadvehicle from being blocked for ever
 	 * If more than 1480 / 74 days a road vehicle is blocked, it will

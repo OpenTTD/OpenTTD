@@ -2722,7 +2722,7 @@ static void CheckTrainCollision(Vehicle *v)
 	tcc.v_skip = v->next;
 
 	/* find colliding vehicle */
-	Vehicle *realcoll = (Vehicle*)VehicleFromPos(TileVirtXY(v->x_pos, v->y_pos), &tcc, FindTrainCollideEnum);
+	Vehicle *realcoll = (Vehicle*)VehicleFromPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
 	if (realcoll == NULL) return;
 
 	Vehicle *coll = GetFirstVehicleInChain(realcoll);
@@ -2775,6 +2775,8 @@ static void TrainController(Vehicle *v, bool update_image)
 
 	/* For every vehicle after and including the given vehicle */
 	for (prev = GetPrevVehicleInChain(v); v != NULL; prev = v, v = v->next) {
+		DiagDirection enterdir = DIAGDIR_BEGIN;
+		bool update_signals = false;
 		BeginVehicleMove(v);
 
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
@@ -2810,7 +2812,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				/* Determine what direction we're entering the new tile from */
 				Direction dir = GetNewVehicleDirectionByTile(gp.new_tile, gp.old_tile);
-				DiagDirection enterdir = DirToDiagDir(dir);
+				enterdir = DirToDiagDir(dir);
 				assert(IsValidDiagDirection(enterdir));
 
 				/* Get the status of the tracks in the new tile and mask
@@ -2917,11 +2919,9 @@ static void TrainController(Vehicle *v, bool update_image)
 					assert(v->u.rail.track);
 				}
 
-				if (IsFrontEngine(v)) TrainMovedChangeSignals(gp.new_tile, enterdir);
-
-				/* Signals can only change when the first
-				 * (above) or the last vehicle moves. */
-				if (v->next == NULL) TrainMovedChangeSignals(gp.old_tile, ReverseDiagDir(enterdir));
+				/* We need to update signal status, but after the vehicle position hash
+				 * has been updated by AfterSetTrainPos() */
+				update_signals = true;
 
 				if (prev == NULL) AffectSpeedByDirChange(v, chosen_dir);
 
@@ -2957,6 +2957,14 @@ static void TrainController(Vehicle *v, bool update_image)
 		if (prev == NULL) {
 			/* This is the first vehicle in the train */
 			AffectSpeedByZChange(v, old_z);
+		}
+
+		if (update_signals) {
+			if (IsFrontEngine(v)) TrainMovedChangeSignals(gp.new_tile, enterdir);
+
+			/* Signals can only change when the first
+			 * (above) or the last vehicle moves. */
+			if (v->next == NULL) TrainMovedChangeSignals(gp.old_tile, ReverseDiagDir(enterdir));
 		}
 	}
 	return;

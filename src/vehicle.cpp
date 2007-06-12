@@ -394,44 +394,117 @@ bool AllocateVehicles(Vehicle **vl, int num)
 	return true;
 }
 
+/* Size of the hash, 6 = 64 x 64, 7 = 128 x 128. Larger sizes will (in theory) reduce hash
+ * lookup times at the expense of memory usage. */
+const int HASH_BITS = 7;
+const int HASH_SIZE = 1 << HASH_BITS;
+const int HASH_MASK = HASH_SIZE - 1;
+const int TOTAL_HASH_SIZE = 1 << (HASH_BITS * 2);
+const int TOTAL_HASH_MASK = TOTAL_HASH_SIZE - 1;
 
-static Vehicle *_vehicle_position_hash[0x1000];
+/* Resolution of the hash, 0 = 1*1 tile, 1 = 2*2 tiles, 2 = 4*4 tiles, etc.
+ * Profiling results show that 0 is fastest. */
+const int HASH_RES = 0;
 
-void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
+static Vehicle *_new_vehicle_position_hash[TOTAL_HASH_SIZE];
+
+static void *VehicleFromHash(int xl, int yl, int xu, int yu, void *data, VehicleFromPosProc *proc)
 {
-	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, 0);
-
-	/* The hash area to scan */
-	const int xl = GB(pt.x - 174, 7, 6);
-	const int xu = GB(pt.x + 104, 7, 6);
-	const int yl = GB(pt.y - 294, 6, 6) << 6;
-	const int yu = GB(pt.y +  56, 6, 6) << 6;
-
-	int x;
-	int y;
-
-	for (y = yl;; y = (y + (1 << 6)) & (0x3F << 6)) {
-		for (x = xl;; x = (x + 1) & 0x3F) {
-			Vehicle *v = _vehicle_position_hash[(x + y) & 0xFFFF];
-
-			while (v != NULL) {
-				void* a = proc(v, data);
-
+	for (int y = yl; ; y = (y + (1 << HASH_BITS)) & (HASH_MASK << HASH_BITS)) {
+		for (int x = xl; ; x = (x + 1) & HASH_MASK) {
+			Vehicle *v = _new_vehicle_position_hash[(x + y) & TOTAL_HASH_MASK];
+			for (; v != NULL; v = v->next_new_hash) {
+				void *a = proc(v, data);
 				if (a != NULL) return a;
-				v = v->next_hash;
 			}
-
 			if (x == xu) break;
 		}
-
 		if (y == yu) break;
 	}
+
 	return NULL;
 }
 
 
+void *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
+{
+	const int COLL_DIST = 6;
+
+	/* Hash area to scan is from xl,yl to xu,yu */
+	int xl = GB((x - COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS);
+	int xu = GB((x + COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS);
+	int yl = GB((y - COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS) << HASH_BITS;
+	int yu = GB((y + COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS) << HASH_BITS;
+
+	return VehicleFromHash(xl, yl, xu, yu, data, proc);
+}
+
+
+void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
+{
+	int x = GB(TileX(tile), HASH_RES, HASH_BITS);
+	int y = GB(TileY(tile), HASH_RES, HASH_BITS) << HASH_BITS;
+
+	Vehicle *v = _new_vehicle_position_hash[(x + y) & TOTAL_HASH_MASK];
+	for (; v != NULL; v = v->next_new_hash) {
+		if (v->tile != tile) continue;
+
+		void *a = proc(v, data);
+		if (a != NULL) return a;
+	}
+
+	return NULL;
+}
+
+static void UpdateNewVehiclePosHash(Vehicle *v)
+{
+	Vehicle **old_hash = v->old_new_hash;
+	Vehicle **new_hash;
+
+	if (v->tile == INVALID_TILE || v->tile == 0) {
+		new_hash = NULL;
+	} else {
+		int x = GB(TileX(v->tile), HASH_RES, HASH_BITS);
+		int y = GB(TileY(v->tile), HASH_RES, HASH_BITS) << HASH_BITS;
+		new_hash = &_new_vehicle_position_hash[(x + y) & TOTAL_HASH_MASK];
+	}
+
+	if (old_hash == new_hash) return;
+
+	/* Remove from the old position in the hash table */
+	if (old_hash != NULL) {
+		Vehicle *last = NULL;
+		Vehicle *u = *old_hash;
+		while (u != v) {
+			last = u;
+			u = u->next_new_hash;
+			assert(u != NULL);
+		}
+
+		if (last == NULL) {
+			*old_hash = v->next_new_hash;
+		} else {
+			last->next_new_hash = v->next_new_hash;
+		}
+	}
+
+	/* Insert vehicle at beginning of the new position in the hash table */
+	if (new_hash != NULL) {
+		v->next_new_hash = *new_hash;
+		*new_hash = v;
+		assert(v != v->next_new_hash);
+	}
+
+	/* Remember current hash position */
+	v->old_new_hash = new_hash;
+}
+
+static Vehicle *_vehicle_position_hash[0x1000];
+
 static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 {
+	UpdateNewVehiclePosHash(v);
+
 	Vehicle **old_hash, **new_hash;
 	int old_x = v->left_coord;
 	int old_y = v->top_coord;
@@ -468,6 +541,7 @@ static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 void ResetVehiclePosHash()
 {
 	memset(_vehicle_position_hash, 0, sizeof(_vehicle_position_hash));
+	memset(_new_vehicle_position_hash, 0, sizeof(_new_vehicle_position_hash));
 }
 
 void InitializeVehicles()
@@ -611,8 +685,10 @@ void DestroyVehicle(Vehicle *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
+	v->tile = INVALID_TILE;
 	UpdateVehiclePosHash(v, INVALID_COORD, 0);
 	v->next_hash = NULL;
+	v->next_new_hash = NULL;
 	if (IsPlayerBuildableVehicleType(v)) DeleteVehicleOrders(v);
 
 	/* Now remove any artic part. This will trigger an other
