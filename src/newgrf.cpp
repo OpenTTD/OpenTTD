@@ -18,6 +18,7 @@
 #include "newgrf.h"
 #include "variables.h"
 #include "string.h"
+#include "strings.h"
 #include "table/strings.h"
 #include "bridge.h"
 #include "town.h"
@@ -3412,15 +3413,6 @@ static void GRFLoadError(byte *buf, int len)
 		STR_NEWGRF_ERROR_MSG_FATAL
 	};
 
-	/* AddGRFString expects the string to be referred to by an id in the newgrf
-	 * file. Errors messages are never referred to however, so invent ids that
-	 * are unlikely to be reached in a newgrf file so they don't overwrite
-	 * anything else. */
-	enum {
-		MESSAGE_STRING_ID = MAX_UVALUE(StringID) - 1,
-		MESSAGE_DATA_ID   = MAX_UVALUE(StringID)
-	};
-
 	if (!check_length(len, 6, "GRFLoadError")) return;
 
 	/* For now we can only show one message per newgrf file. */
@@ -3431,6 +3423,9 @@ static void GRFLoadError(byte *buf, int len)
 	byte lang       = grf_load_byte(&buf);
 	byte message_id = grf_load_byte(&buf);
 	len -= 4;
+
+	/* Skip the error if it isn't valid for the current language. */
+	if (!CheckGrfLangID(lang, _cur_grffile->grf_version)) return;
 
 	/* Skip the error until the activation stage unless bit 7 of the severity
 	 * is set. */
@@ -3461,7 +3456,6 @@ static void GRFLoadError(byte *buf, int len)
 		return;
 	}
 
-	bool new_scheme = _cur_grffile->grf_version >= 7;
 	GRFError *error = CallocT<GRFError>(1);
 
 	error->severity = sevstr[severity];
@@ -3471,7 +3465,7 @@ static void GRFLoadError(byte *buf, int len)
 		const char *message = grf_load_string(&buf, len);
 		len -= (strlen(message) + 1);
 
-		error->message = AddGRFString(_cur_grffile->grfid, MESSAGE_STRING_ID, lang, new_scheme, message, STR_UNDEFINED);
+		error->custom_message = TranslateTTDPatchCodes(message);
 	} else {
 		error->message = msgstr[message_id];
 	}
@@ -3480,7 +3474,7 @@ static void GRFLoadError(byte *buf, int len)
 		const char *data = grf_load_string(&buf, len);
 		len -= (strlen(data) + 1);
 
-		error->data = AddGRFString(_cur_grffile->grfid, MESSAGE_DATA_ID, lang, new_scheme, data, STR_UNDEFINED);
+		error->data = TranslateTTDPatchCodes(data);
 	}
 
 	/* Only two parameter numbers can be used in the string. */
@@ -4116,8 +4110,12 @@ static void TranslateGRFStrings(byte *buf, int len)
 		/* If the file is not active but will be activated later, give an error
 		 * and disable this file. */
 		GRFError *error = CallocT<GRFError>(1);
+
+		char tmp[256];
+		GetString(tmp, STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE, lastof(tmp));
+		error->data = strdup(tmp);
+
 		error->message  = STR_NEWGRF_ERROR_LOAD_AFTER;
-		error->data     = STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE;
 		error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
 
 		if (_cur_grfconfig->error != NULL) free(_cur_grfconfig->error);
@@ -4402,6 +4400,8 @@ static void ResetNewGRFErrors()
 {
 	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 		if (!HASBIT(c->flags, GCF_COPY) && c->error != NULL) {
+			free(c->error->custom_message);
+			free(c->error->data);
 			free(c->error);
 			c->error = NULL;
 		}

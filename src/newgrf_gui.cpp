@@ -48,7 +48,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 
 	if (c->error != NULL) {
 		SetDParamStr(0, c->filename);
-		SetDParam(1, c->error->data);
+		SetDParamStr(1, c->error->data);
 		for (uint i = 0; i < c->error->num_params; i++) {
 			uint32 param = 0;
 			byte param_number = c->error->param_number[i];
@@ -59,7 +59,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 		}
 
 		char message[512];
-		GetString(message, c->error->message, lastof(message));
+		GetString(message, c->error->custom_message != NULL ? BindCString(c->error->custom_message) : c->error->message, lastof(message));
 
 		SetDParamStr(0, message);
 		y += DrawStringMultiLine(x, y, c->error->severity, w, bottom - y);

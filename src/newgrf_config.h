@@ -36,8 +36,9 @@ struct GRFIdentifier {
 };
 
 struct GRFError {
+	char *custom_message;
+	char *data;
 	StringID message;
-	StringID data;
 	StringID severity;
 	uint8 num_params;
 	uint8 param_number[2];

@@ -97,7 +97,12 @@ void ClearGRFConfig(GRFConfig **config)
 		free((*config)->full_path);
 		free((*config)->name);
 		free((*config)->info);
-		free((*config)->error);
+
+		if ((*config)->error != NULL) {
+			free((*config)->error->custom_message);
+			free((*config)->error->data);
+			free((*config)->error);
+		}
 	}
 	free(*config);
 	*config = NULL;
@@ -134,6 +139,8 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 		if (src->error     != NULL) {
 			c->error = CallocT<GRFError>(1);
 			memcpy(c->error, src->error, sizeof(GRFError));
+			if (src->error->data != NULL) c->error->data = strdup(src->error->data);
+			if (src->error->custom_message != NULL) c->error->custom_message = strdup(src->error->custom_message);
 		}
 
 		*dst = c;

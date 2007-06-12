@@ -13,4 +13,6 @@ void CleanUpStrings();
 void SetCurrentGrfLangID(const char *iso_name);
 char *TranslateTTDPatchCodes(const char *str);
 
+bool CheckGrfLangID(byte lang_id, byte grf_version);
+
 #endif /* NEWGRF_TEXT_H */

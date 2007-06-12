@@ -445,6 +445,20 @@ void SetCurrentGrfLangID(const char *iso_name)
 	_currentLangID = ret;
 }
 
+bool CheckGrfLangID(byte lang_id, byte grf_version)
+{
+	if (grf_version < 7) {
+		switch (_currentLangID) {
+			case GRFLX_GERMAN:  return (lang_id & GRFLB_GERMAN)  != 0;
+			case GRFLX_FRENCH:  return (lang_id & GRFLB_FRENCH)  != 0;
+			case GRFLX_SPANISH: return (lang_id & GRFLB_SPANISH) != 0;
+			default:            return (lang_id & (GRFLB_ENGLISH | GRFLB_AMERICAN)) != 0;
+		}
+	}
+
+	return (lang_id == _currentLangID || lang_id == GRFLX_UNSPECIFIED);
+}
+
 /**
  * House cleaning.
  * Remove all strings and reset the text counter.
