@@ -19,6 +19,7 @@
 #include "network.h"
 #include "ai/ai.h"
 #include "date.h"
+#include "bridge_map.h"
 
 enum {
 	HEADER_SIZE = 49,
@@ -355,6 +356,21 @@ static void FixOldVehicles(void)
 				u->prev_shared = v;
 				break;
 			}
+		}
+
+		if (IsBridgeTile(v->tile) && IsBridgeRamp(v->tile) &&
+				(v->z_pos & (TILE_HEIGHT - 1)) == (TILE_HEIGHT - 1)) {
+			/* Under some circumstances the trains going up a ramp can be one
+			 * pixel too low when they enter the bridge. This causes the train
+			 * to "disappear" under the bridge, which causes the train to
+			 * break into two pieces and crash slightly later.
+			 *
+			 * This "hack" will make the trains on those positions on the
+			 * ramps run one pixel higher. This offset will be automatically
+			 * "fixed" when it enters the bridge middle parts or when it
+			 * drives down the ramp of the bridge.
+			 */
+			v->z_pos++;
 		}
 	}
 }
