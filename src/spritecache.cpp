@@ -139,8 +139,8 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 		file_pos = GetSpriteCache(SPR_IMG_QUERY)->file_pos;
 	}
 
-#ifdef WITH_PNG
 	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
+#ifdef WITH_PNG
 		/* Try loading 32bpp graphics in case we are 32bpp output */
 		SpriteLoaderPNG sprite_loader;
 		SpriteLoader::Sprite sprite;
@@ -152,8 +152,14 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 			return sc->ptr;
 		}
 		/* If the PNG couldn't be loaded, fall back to 8bpp grfs */
-	}
+#else
+		static bool show_once = true;
+		if (show_once) {
+			DEBUG(misc, 0, "You are running a 32bpp blitter, but this build is without libpng support; falling back to 8bpp graphics");
+			show_once = false;
+		}
 #endif /* WITH_PNG */
+	}
 
 	FioSeekToFile(file_pos);
 
