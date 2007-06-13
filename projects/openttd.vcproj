@@ -546,6 +546,9 @@
 				RelativePath=".\..\src\newgrf_industries.h">
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_industrytiles.h">
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_sound.h">
 			</File>
 			<File
@@ -1047,6 +1050,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_industries.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_industrytiles.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_sound.cpp">

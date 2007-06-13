@@ -227,16 +227,17 @@ static const SpriteGroup *IndustryResolveReal(const ResolverObject *object, cons
 	return NULL;
 }
 
-static void NewIndustryResolver(ResolverObject *res, IndustryType ind_id, TileIndex tile, Industry *indus)
+static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *indus)
 {
-	res->GetRandomBits = NULL;//IndustryTileGetRandomBits;
-	res->GetTriggers   = NULL;//IndustryTileGetTriggers;
-	res->SetTriggers   = NULL;//IndustryTileSetTriggers;
+	res->GetRandomBits = IndustryTileGetRandomBits;
+	res->GetTriggers   = IndustryTileGetTriggers;
+	res->SetTriggers   = IndustryTileSetTriggers;
 	res->GetVariable   = IndustryGetVariable;
 	res->ResolveReal   = IndustryResolveReal;
 
 	res->u.industry.tile = tile;
 	res->u.industry.ind  = indus;
+	res->u.industry.gfx  = INVALID_INDUSTRYTILE;
 
 	res->callback        = 0;
 	res->callback_param1 = 0;
@@ -251,7 +252,7 @@ uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Indust
 	ResolverObject object;
 	const SpriteGroup *group;
 
-	NewIndustryResolver(&object, industry->type, tile, industry);
+	NewIndustryResolver(&object, tile, industry);
 	object.callback = callback;
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;

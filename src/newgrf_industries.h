@@ -8,8 +8,14 @@
 #include "industry.h"
 #include "newgrf_spritegroup.h"
 
+/* in newgrf_industry.cpp */
 uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available);
 uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Industry *industry, TileIndex tile);
 uint32 GetIndustryIDAtOffset(TileIndex new_tile, TileIndex old_tile, const Industry *i);
+
+/* in newgrf_industrytiles.cpp*/
+uint32 IndustryTileGetRandomBits(const ResolverObject *object);
+uint32 IndustryTileGetTriggers(const ResolverObject *object);
+void IndustryTileSetTriggers(const ResolverObject *object, int triggers);
 
 #endif /* NEWGRF_INDUSTRIES_H */

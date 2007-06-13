@@ -149,6 +149,7 @@ newgrf_config.h
 newgrf_engine.h
 newgrf_house.h
 newgrf_industries.h
+newgrf_industrytiles.h
 newgrf_sound.h
 newgrf_spritegroup.h
 newgrf_station.h
@@ -322,6 +323,7 @@ newgrf_config.cpp
 newgrf_engine.cpp
 newgrf_house.cpp
 newgrf_industries.cpp
+newgrf_industrytiles.cpp
 newgrf_sound.cpp
 newgrf_spritegroup.cpp
 newgrf_station.cpp

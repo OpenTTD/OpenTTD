@@ -200,6 +200,7 @@ struct ResolverObject {
 		struct {
 			TileIndex tile;
 			Industry *ind;
+			IndustryGfx gfx;
 		} industry;
 		struct {
 			const struct CargoSpec *cs;
