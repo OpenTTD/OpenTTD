@@ -330,7 +330,11 @@ static void FixOldVehicles()
 		Vehicle *u;
 
 		/* We haven't used this bit for stations for ages */
-		if (v->type == VEH_ROAD) CLRBIT(v->u.road.state, RVS_IS_STOPPING);
+		if (v->type == VEH_ROAD &&
+				v->u.road.state != RVSB_IN_DEPOT &&
+				v->u.road.state != RVSB_WORMHOLE) {
+			CLRBIT(v->u.road.state, RVS_IS_STOPPING);
+		}
 
 		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
 			/* If a vehicle has the same orders, add the link to eachother
