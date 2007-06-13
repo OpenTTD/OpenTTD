@@ -280,7 +280,8 @@ static void ProcessShipOrder(Vehicle *v)
 
 	if (order->type  == v->current_order.type &&
 			order->flags == v->current_order.flags &&
-			order->dest  == v->current_order.dest)
+			order->dest  == v->current_order.dest &&
+			(order->type != OT_GOTO_STATION || GetStation(order->dest)->dock_tile != 0))
 		return;
 
 	v->current_order = *order;
@@ -294,6 +295,8 @@ static void ProcessShipOrder(Vehicle *v)
 		st = GetStation(order->dest);
 		if (st->dock_tile != 0) {
 			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));
+		} else {
+			v->cur_order_index++;
 		}
 	} else if (order->type == OT_GOTO_DEPOT) {
 		v->dest_tile = GetDepot(order->dest)->xy;
