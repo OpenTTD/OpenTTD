@@ -456,12 +456,12 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 	return NULL;
 }
 
-static void UpdateNewVehiclePosHash(Vehicle *v)
+static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)
 {
 	Vehicle **old_hash = v->old_new_hash;
 	Vehicle **new_hash;
 
-	if (v->tile == INVALID_TILE || v->tile == 0) {
+	if (remove) {
 		new_hash = NULL;
 	} else {
 		int x = GB(TileX(v->tile), HASH_RES, HASH_BITS);
@@ -503,7 +503,7 @@ static Vehicle *_vehicle_position_hash[0x1000];
 
 static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 {
-	UpdateNewVehiclePosHash(v);
+	UpdateNewVehiclePosHash(v, x == INVALID_COORD);
 
 	Vehicle **old_hash, **new_hash;
 	int old_x = v->left_coord;
@@ -687,7 +687,6 @@ void DestroyVehicle(Vehicle *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
-	v->tile = INVALID_TILE;
 	UpdateVehiclePosHash(v, INVALID_COORD, 0);
 	v->next_hash = NULL;
 	v->next_new_hash = NULL;
