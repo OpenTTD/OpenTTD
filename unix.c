@@ -88,6 +88,12 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
 	if (FiosIsRoot(path)) {
 		snprintf(filename, lengthof(filename), "%s:%s", path, ent->d_name);
+	} else if (path[strlen(path) - 1] == PATHSEPCHAR) { // PATHSEP is only one byte
+		/* Paths with double PATHSEP like "directory//foobar.ext" won't work under MorphOS/AmigaOS
+		 * (the extra slash is interpreted like ".." under UNIXes). UNIXes simply interpret double
+		 * slash as single slash, so the adding of the PATHSEP further below could actually be
+		 * removed. */
+		snprintf(filename, lengthof(filename), "%s%s", path, ent->d_name);
 	} else // XXX - only next line!
 #endif
 	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, ent->d_name);
