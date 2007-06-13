@@ -889,17 +889,29 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	const int b = dpi->top + dpi->height;
 
 	/* The hash area to scan */
-	const int xl = GB(l - 70, 7, 6);
-	const int xu = GB(r,      7, 6);
-	const int yl = GB(t - 70, 6, 6) << 6;
-	const int yu = GB(b,      6, 6) << 6;
+	int xl, xu, yl, yu;
 
-	int x;
-	int y;
+	if (dpi->width + 70 < (1 << (7 + 6))) {
+		xl = GB(l - 70, 7, 6);
+		xu = GB(r,      7, 6);
+	} else {
+		/* scan whole hash row */
+		xl = 0;
+		xu = 0x3F;
+	}
 
-	for (y = yl;; y = (y + (1 << 6)) & (0x3F << 6)) {
-		for (x = xl;; x = (x + 1) & 0x3F) {
-			const Vehicle *v = _vehicle_position_hash[(x + y) & 0xFFFF];
+	if (dpi->height + 70 < (1 << (6 + 6))) {
+		yl = GB(t - 70, 6, 6) << 6;
+		yu = GB(b,      6, 6) << 6;
+	} else {
+		/* scan whole column */
+		yl = 0;
+		yu = 0x3F << 6;
+	}
+
+	for (int y = yl;; y = (y + (1 << 6)) & (0x3F << 6)) {
+		for (int x = xl;; x = (x + 1) & 0x3F) {
+			const Vehicle *v = _vehicle_position_hash[x + y]; // already masked & 0xFFF
 
 			while (v != NULL) {
 				if (!(v->vehstatus & VS_HIDDEN) &&
