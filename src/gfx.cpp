@@ -151,13 +151,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 				dst = _screen.renderer->MoveTo(dst, 0, 1);
 			} while (--bottom);
 		} else {
-			/* use colortable mode */
-			const byte* ctab = GetNonSprite(GB(color, 0, PALETTE_WIDTH)) + 1;
-
-			do {
-				for (int i = 0; i != right; i++) _screen.renderer->SetPixel(dst, i, 0, ctab[((uint8 *)dst)[i]]);
-				dst = _screen.renderer->MoveTo(dst, 0, 1);
-			} while (--bottom);
+			BlitterFactoryBase::GetCurrentBlitter()->DrawColorMappingRect(dst, right, bottom, GB(color, 0, PALETTE_WIDTH));
 		}
 	} else {
 		byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;

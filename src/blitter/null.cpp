@@ -10,6 +10,10 @@ void Blitter_Null::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel 
 {
 }
 
+void Blitter_Null::DrawColorMappingRect(void *dst, int width, int height, int pal)
+{
+}
+
 Sprite *Blitter_Null::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
 {
 	Sprite *dest_sprite;

@@ -965,6 +965,12 @@
 			Name="Blitters"
 			Filter="">
 			<File
+				RelativePath=".\..\src\blitter\32bpp_simple.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\32bpp_simple.hpp">
+			</File>
+			<File
 				RelativePath=".\..\src\blitter\8bpp_debug.cpp">
 			</File>
 			<File
@@ -1008,6 +1014,12 @@
 		<Filter
 			Name="Renderer"
 			Filter="">
+			<File
+				RelativePath=".\..\src\renderer\32bpp.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\renderer\32bpp.hpp">
+			</File>
 			<File
 				RelativePath=".\..\src\renderer\8bpp.cpp">
 			</File>

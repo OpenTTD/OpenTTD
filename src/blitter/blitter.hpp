@@ -49,6 +49,17 @@ public:
 	virtual void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) = 0;
 
 	/**
+	 * Draw a colortable to the screen. This is: the color of the screen is read
+	 *  and is looked-up in the palette to match a new color, which then is put
+	 *  on the screen again.
+	 * @param dst the destination pointer (video-buffer).
+	 * @param width the width of the buffer.
+	 * @param height the height of the buffer.
+	 * @param pal the palette to use.
+	 */
+	virtual void DrawColorMappingRect(void *dst, int width, int height, int pal) = 0;
+
+	/**
 	 * Convert a sprite from the loader to our own format.
 	 */
 	virtual Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator) = 0;

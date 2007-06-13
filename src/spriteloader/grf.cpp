@@ -95,6 +95,10 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint32 file_pos)
 			sprite->data[i].m = dest[i];
 	}
 
+	/* Make sure to mark all transparent pixels transparent on the alpha channel too */
+	for (int i = 0; i < sprite->width * sprite->height; i++)
+		if (sprite->data[i].m != 0) sprite->data[i].a = 0xFF;
+
 	free(dest_orig);
 	return true;
 }

@@ -292,6 +292,8 @@ ai/trolly/shared.cpp
 ai/trolly/trolly.cpp
 
 # Blitters
+blitter/32bpp_simple.cpp
+blitter/32bpp_simple.hpp
 blitter/8bpp_debug.cpp
 blitter/8bpp_debug.hpp
 blitter/8bpp_optimized.cpp
@@ -308,6 +310,8 @@ spriteloader/grf.hpp
 spriteloader/spriteloader.hpp
 
 # Renderer
+renderer/32bpp.cpp
+renderer/32bpp.hpp
 renderer/8bpp.cpp
 renderer/8bpp.hpp
 renderer/null.cpp
