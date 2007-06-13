@@ -83,6 +83,7 @@ SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | $awk '
 		deep += 1;
 
 		if ($0 == "SDL"         && "'$sdl_config'" == "")          { next; }
+		if ($0 == "PNG"         && "'$png_config'" == "")          { next; }
 		if ($0 == "OSX"         && "'$os'" != "OSX")               { next; }
 		if ($0 == "OS2"         && "'$os'" != "OS2")               { next; }
 		if ($0 == "PSP"         && "'$os'" != "PSP")               { next; }

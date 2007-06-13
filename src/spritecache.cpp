@@ -14,7 +14,9 @@
 #include "fileio.h"
 #include "helpers.hpp"
 #include "spriteloader/grf.hpp"
+#ifdef WITH_PNG
 #include "spriteloader/png.hpp"
+#endif /* WITH_PNG */
 #include "blitter/blitter.hpp"
 
 /* Default of 4MB spritecache */
@@ -137,6 +139,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 		file_pos = GetSpriteCache(SPR_IMG_QUERY)->file_pos;
 	}
 
+#ifdef WITH_PNG
 	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
 		/* Try loading 32bpp graphics in case we are 32bpp output */
 		SpriteLoaderPNG sprite_loader;
@@ -150,6 +153,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 		}
 		/* If the PNG couldn't be loaded, fall back to 8bpp grfs */
 	}
+#endif /* WITH_PNG */
 
 	FioSeekToFile(file_pos);
 
