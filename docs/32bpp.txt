@@ -1,0 +1,36 @@
+32bpp and OpenTTD
+=================
+
+OpenTTD has 32bpp support. This means: OpenTTD still is 8bpp, but it has the
+posibility to override the graphics with 32bpp. This means that it isn't a
+replacement of grf or newgrf, but simply an addition. If you want to use 32bpp
+graphics of a newgrf, you do need the newgrf itself too (with 8bpp graphics).
+
+
+The Format
+----------
+
+32bpp images are stored in PNG. They should go in:
+  data/sprites/<grfname>/<SpriteID>.png
+
+For example, a grfname would be 'openttd' (without .grf, lowercase), and the
+SpriteID 3, to override the 3rd sprite in openttd.grf with a 32bpp version.
+
+The format of this PNG can be almost anything, but we advise to use RGBA
+format. Alpha-channel is fully supported.
+
+As the core of OpenTTD is 8bpp, and because you of course want company colours
+in your images, you will need to add a mask for every sprite that needs colour
+remapping. The name is simular as above, only you have to put a 'm' behind the
+SpriteID. This image should be a 8bpp palette image, where the palette is the
+OpenTTD palette. Upon load of the PNG, the mask is loaded too, and overrides
+the RGB (not the Alpha) of the original PNG image, and replacing it with a
+8bpp color remapped and converted to 32bpp.
+
+An other thing that OpenTTD needs in your png, is 2 tEXt chunks: x_offs and
+y_offs. This to define the x- and y-offset, of course. Use the tool we supply
+to add this information. Sadly enough most graphical editors trashes those
+chunks upon save, so you have to readd it every time you save your image.
+
+Your images should be the same as the grf, in size.
+

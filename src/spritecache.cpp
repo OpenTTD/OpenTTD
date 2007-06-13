@@ -4,6 +4,8 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "variables.h"
+#include "string.h"
 #include "debug.h"
 #include "functions.h"
 #include "macros.h"
@@ -12,6 +14,7 @@
 #include "fileio.h"
 #include "helpers.hpp"
 #include "spriteloader/grf.hpp"
+#include "spriteloader/png.hpp"
 #include "blitter/blitter.hpp"
 
 /* Default of 4MB spritecache */
@@ -22,6 +25,8 @@ struct SpriteCache {
 	void *ptr;
 	uint32 file_pos;
 	int16 lru;
+	uint32 id;
+	const char *grf_name;
 };
 
 
@@ -132,6 +137,20 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 		file_pos = GetSpriteCache(SPR_IMG_QUERY)->file_pos;
 	}
 
+	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
+		/* Try loading 32bpp graphics in case we are 32bpp output */
+		SpriteLoaderPNG sprite_loader;
+		SpriteLoader::Sprite sprite;
+
+		if (sprite_loader.LoadSprite(&sprite, sc->grf_name, sc->id)) {
+			sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
+			free(sprite.data);
+
+			return sc->ptr;
+		}
+		/* If the PNG couldn't be loaded, fall back to 8bpp grfs */
+	}
+
 	FioSeekToFile(file_pos);
 
 	/* Read the size and type */
@@ -203,7 +222,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 	SpriteLoaderGrf sprite_loader;
 	SpriteLoader::Sprite sprite;
 
-	if (!sprite_loader.LoadSprite(&sprite, file_pos)) return NULL;
+	if (!sprite_loader.LoadSprite(&sprite, sc->grf_name, file_pos)) return NULL;
 	if (id == 142) sprite.height = 10; // Compensate for a TTD bug
 	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 	free(sprite.data);
@@ -227,6 +246,17 @@ bool LoadNextSprite(int load_index, byte file_index)
 	sc->file_pos = file_pos;
 	sc->ptr = NULL;
 	sc->lru = 0;
+	sc->id = load_index;
+
+	char *grf_name = strrchr(FioGetFilename(), PATHSEPCHAR);
+	if (grf_name == NULL) grf_name = (char *)FioGetFilename();
+	/* Copy the string, make it lowercase, strip .grf */
+	grf_name = strdup(grf_name);
+	char *t = strrchr(grf_name, '.');
+	if (t != NULL) *t = '\0';
+	strtolower(grf_name);
+	free((char *)sc->grf_name);
+	sc->grf_name = grf_name;
 
 	return true;
 }
@@ -239,6 +269,8 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 
 	scnew->file_pos = scold->file_pos;
 	scnew->ptr = NULL;
+	scnew->id = scold->id;
+	scnew->grf_name = strdup(scold->grf_name);
 }
 
 

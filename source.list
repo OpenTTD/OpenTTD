@@ -307,6 +307,8 @@ blitter/blitter.hpp
 # Sprite loaders
 spriteloader/grf.cpp
 spriteloader/grf.hpp
+spriteloader/png.cpp
+spriteloader/png.hpp
 spriteloader/spriteloader.hpp
 
 # Renderer

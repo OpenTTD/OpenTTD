@@ -8,7 +8,7 @@
 #include "../debug.h"
 #include "grf.hpp"
 
-bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint32 file_pos)
+bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, const char *filename, uint32 file_pos)
 {
 	/* Open the right file and go to the correct position */
 	FioSeekToFile(file_pos);

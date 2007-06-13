@@ -28,11 +28,12 @@ struct Fio {
 	byte *buffer, *buffer_end;          ///< position pointer in local buffer and last valid byte of buffer
 	uint32 pos;                         ///< current (system) position in file
 	FILE *cur_fh;                       ///< current file handle
+	const char *filename;               ///< current filename
 	FILE *handles[MAX_HANDLES];         ///< array of file handles we can have open
 	byte buffer_start[FIO_BUFFER_SIZE]; ///< local buffer when read from file
+	const char *filenames[MAX_HANDLES]; ///< array of filenames we (should) have open
 #if defined(LIMITED_FDS)
 	uint open_handles;                  ///< current amount of open handles
-	const char *filename[MAX_HANDLES];  ///< array of filenames we (should) have open
 	uint usage_count[MAX_HANDLES];      ///< count how many times this file has been opened
 #endif /* LIMITED_FDS */
 };
@@ -43,6 +44,11 @@ static Fio _fio;
 uint32 FioGetPos()
 {
 	return _fio.pos + (_fio.buffer - _fio.buffer_start) - FIO_BUFFER_SIZE;
+}
+
+const char *FioGetFilename()
+{
+	return _fio.filename;
 }
 
 void FioSeekTo(uint32 pos, int mode)
@@ -76,6 +82,7 @@ void FioSeekToFile(uint32 pos)
 	f = _fio.handles[pos >> 24];
 	assert(f != NULL);
 	_fio.cur_fh = f;
+	_fio.filename = _fio.filenames[pos >> 24];
 	FioSeekTo(GB(pos, 0, 24), SEEK_SET);
 }
 
@@ -174,8 +181,8 @@ void FioOpenFile(int slot, const char *filename)
 
 	FioCloseFile(slot); // if file was opened before, close it
 	_fio.handles[slot] = f;
+	_fio.filenames[slot] = filename;
 #if defined(LIMITED_FDS)
-	_fio.filename[slot] = filename;
 	_fio.usage_count[slot] = 0;
 	_fio.open_handles++;
 #endif /* LIMITED_FDS */

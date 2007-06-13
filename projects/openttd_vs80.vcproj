@@ -956,7 +956,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\newgrf_industrytiles.h"
+				RelativePath=".\..\src\newgrf_industrytiles.h"
 				>
 			</File>
 			<File
@@ -1564,6 +1564,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\spriteloader\png.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\spriteloader\png.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\spriteloader\spriteloader.hpp"
 				>
 			</File>
@@ -1636,7 +1644,7 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\newgrf_industrytiles.cpp"
+				RelativePath=".\..\src\newgrf_industrytiles.cpp"
 				>
 			</File>
 			<File

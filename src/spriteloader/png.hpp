@@ -1,13 +1,13 @@
 /* $Id$ */
 
-/** @file grf.hpp */
+/** @file png.hpp */
 
-#ifndef SPRITELOADER_GRF_HPP
-#define SPRITELOADER_GRF_HPP
+#ifndef SPRITELOADER_PNG_HPP
+#define SPRITELOADER_PNG_HPP
 
 #include "spriteloader.hpp"
 
-class SpriteLoaderGrf : public SpriteLoader {
+class SpriteLoaderPNG : public SpriteLoader {
 public:
 	/**
 	 * Load a sprite from the disk and return a sprite struct which is the same for all loaders.
@@ -15,4 +15,4 @@ public:
 	bool LoadSprite(SpriteLoader::Sprite *sprite, const char *filename, uint32 file_pos);
 };
 
-#endif /* SPRITELOADER_GRF_HPP */
+#endif /* SPRITELOADER_PNG_HPP */
