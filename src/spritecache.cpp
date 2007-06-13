@@ -252,13 +252,16 @@ bool LoadNextSprite(int load_index, byte file_index)
 	sc->lru = 0;
 	sc->id = load_index;
 
-	char *grf_name = strrchr(FioGetFilename(), PATHSEPCHAR);
-	if (grf_name == NULL) grf_name = (char *)FioGetFilename();
-	/* Copy the string, make it lowercase, strip .grf */
-	grf_name = strdup(grf_name);
-	char *t = strrchr(grf_name, '.');
-	if (t != NULL) *t = '\0';
+	const char *fio_grf_name = FioGetFilename();
+	const char *t = strrchr(fio_grf_name, PATHSEPCHAR);
+	char *grf_name;
+	if (t == NULL) grf_name = strdup(fio_grf_name);
+	else           grf_name = strdup(t);
+	/* Make the string lowercase and strip extension */
+	char *t2 = strrchr(grf_name, '.');
+	if (t2 != NULL) *t2 = '\0';
 	strtolower(grf_name);
+
 	free((char *)sc->grf_name);
 	sc->grf_name = grf_name;
 
