@@ -438,7 +438,7 @@ void SetCurrentGrfLangID(const char *iso_name)
 	for (i=0; i < lengthof(iso_codes); i++) {
 		if (strncmp(iso_codes[i].code, iso_name, strlen(iso_codes[i].code)) == 0) {
 			/* We found a match, so let's use it. */
-			ret = i;
+			ret = iso_codes[i].grfLangID;
 			break;
 		}
 	}
