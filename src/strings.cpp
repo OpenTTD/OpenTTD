@@ -1101,7 +1101,11 @@ StringID RemapOldStringID(StringID s)
 	}
 }
 
+#ifdef ENABLE_NETWORK
 extern void SortNetworkLanguages();
+#else /* ENABLE_NETWORK */
+static inline void SortNetworkLanguages() {}
+#endif /* ENABLE_NETWORK */
 extern void SortTownGeneratorNames();
 
 bool ReadLanguagePack(int lang_index)

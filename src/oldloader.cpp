@@ -22,7 +22,7 @@
 #include "signs.h"
 #include "debug.h"
 #include "depot.h"
-#include "network/network.h"
+#include "newgrf_config.h"
 #include "ai/ai.h"
 #include "date.h"
 

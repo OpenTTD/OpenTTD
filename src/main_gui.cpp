@@ -61,6 +61,7 @@ extern bool GenerateTowns();
 
 void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
+#ifdef ENABLE_NETWORK
 	if (!success) return;
 
 	char msg[20];
@@ -72,6 +73,7 @@ void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	} else {
 		NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, NETWORK_SERVER_INDEX);
 	}
+#endif /* ENABLE_NETWORK */
 }
 
 void HandleOnEditText(const char *str)
