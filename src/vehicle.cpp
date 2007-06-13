@@ -540,6 +540,8 @@ static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 
 void ResetVehiclePosHash()
 {
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) { v->old_new_hash = NULL; }
 	memset(_vehicle_position_hash, 0, sizeof(_vehicle_position_hash));
 	memset(_new_vehicle_position_hash, 0, sizeof(_new_vehicle_position_hash));
 }
