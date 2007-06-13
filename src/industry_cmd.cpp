@@ -1131,6 +1131,8 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			}
 		} else {
 			if (!EnsureNoVehicle(cur_tile)) return false;
+			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return false;
+
 			IndustyBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
 			if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
