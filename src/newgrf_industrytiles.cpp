@@ -61,28 +61,35 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 {
 	const Industry *inds = object->u.industry.ind;
 	TileIndex tile       = object->u.industry.tile;
-	IndustryGfx gfx      = object->u.industry.gfx;
 
 	if (object->scope == VSG_SCOPE_PARENT) {
 		return IndustryGetVariable(object, variable, parameter, available);
 	}
 
 	switch (variable) {
-		case 0x40 : return GetIndustryConstructionStage(tile); /* Construction state of the tile: a value between 0 and 3 */
+		 /* Construction state of the tile: a value between 0 and 3 */
+		case 0x40 : return (IsTileType(tile, MP_INDUSTRY)) ? GetIndustryConstructionStage(tile) : 0;
 
 		case 0x41 : return GetTerrainType(tile);
 
-		case 0x42 : return GetTownRadiusGroup(ClosestTownFromTile(tile, (uint)-1), tile); /* Current town zone of the tile in the nearest town */
+		/* Current town zone of the tile in the nearest town */
+		case 0x42 : return GetTownRadiusGroup(ClosestTownFromTile(tile, (uint)-1), tile);
 
-		case 0x43 : return GetRelativePosition(tile, inds->xy); /* Relative position */
+		/* Relative position */
+		case 0x43 : return GetRelativePosition(tile, inds->xy);
 
-		case 0x44 : break; /* Animation frame. Like house variable 46 but can contain anything 0..FF. */
+		/* Animation frame. Like house variable 46 but can contain anything 0..FF. */
+		case 0x44 : return (IsTileType(tile, MP_INDUSTRY)) ? GetIndustryAnimationState(tile) : 0;
 
-		case 0x60 : return GetNearbyIndustryTileInformation(parameter, tile, inds->index); /* Land info of nearby tiles */
+		/* Land info of nearby tiles */
+		case 0x60 : return GetNearbyIndustryTileInformation(parameter, tile, inds->index);
 
 		case 0x61 : {/* Animation stage of nearby tiles */
 			tile = GetNearbyTile(parameter, tile);
-			return 0;  // TODO define the animation scheme for newgrf.  Based on same as old one?
+			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == inds) {
+				return GetIndustryAnimationState(tile);
+			}
+			return 0xFFFFFFFF;
 		}
 
 		/* Get industry tile ID at offset */
