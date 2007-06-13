@@ -17,6 +17,39 @@ static inline uint ComposeColor(uint r, uint g, uint b)
 }
 
 /**
+ * Compose a color based on RGBA values and the current pixel value.
+ */
+static inline uint ComposeColorRGBA(uint r, uint g, uint b, uint a, uint current)
+{
+	uint cr, cg, cb;
+	cr = GB(current, 16, 8);
+	cg = GB(current, 8,  8);
+	cb = GB(current, 0,  8);
+
+	return ComposeColor((r * a + cr * (255 - a)) / 255,
+											(g * a + cg * (255 - a)) / 255,
+											(b * a + cb * (255 - a)) / 255);
+}
+
+/**
+ * Compose a color based on Pixel value, alpha value, and the current pixel value.
+ */
+static inline uint ComposeColorPA(uint color, uint a, uint current)
+{
+	uint r, g, b, cr, cg, cb;
+	r  = GB(color,   16, 8);
+	g  = GB(color,   8,  8);
+	b  = GB(color,   0,  8);
+	cr = GB(current, 16, 8);
+	cg = GB(current, 8,  8);
+	cb = GB(current, 0,  8);
+
+	return ComposeColor((r * a + cr * (255 - a)) / 255,
+											(g * a + cg * (255 - a)) / 255,
+											(b * a + cb * (255 - a)) / 255);
+}
+
+/**
  * Make a pixel looks like it is transparent.
  * @param color the color already on the screen.
  * @param amount the amount of transparency, times 100.
@@ -69,14 +102,13 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 		src_line += bp->sprite_width * ScaleByZoom(1, zoom);
 
 		for (int x = 0; x < bp->width; x++) {
-
 			switch (mode) {
 				case BM_COLOUR_REMAP:
 					/* In case the m-channel is zero, do not remap this pixel in any way */
 					if (src->m == 0) {
-						if (src->a != 0) *dst = ComposeColor(src->r, src->g, src->b);
+						if (src->a != 0) *dst = ComposeColorRGBA(src->r, src->g, src->b, src->a, *dst);
 					} else {
-						if (bp->remap[src->m] != 0) *dst = Renderer_32bpp::LookupColourInPalette(bp->remap[src->m]);
+						if (bp->remap[src->m] != 0) *dst = ComposeColorPA(Renderer_32bpp::LookupColourInPalette(bp->remap[src->m]), src->a, *dst);
 					}
 					break;
 
@@ -90,7 +122,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					break;
 
 				default:
-					if (src->a != 0) *dst = ComposeColor(src->r, src->g, src->b);
+					if (src->a != 0) *dst = ComposeColorRGBA(src->r, src->g, src->b, src->a, *dst);
 					break;
 			}
 			dst++;

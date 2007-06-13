@@ -419,6 +419,7 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 			for (x = 0; x < slot->bitmap.width; x++) {
 				if (HASBIT(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
 					sprite.data[1 + x + (1 + y) * sprite.width].m = SHADOW_COLOUR;
+					sprite.data[1 + x + (1 + y) * sprite.width].a = 0xFF;
 				}
 			}
 		}
@@ -428,6 +429,7 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 		for (x = 0; x < slot->bitmap.width; x++) {
 			if (HASBIT(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
 				sprite.data[x + y * sprite.width].m = FACE_COLOUR;
+				sprite.data[x + y * sprite.width].a = 0xFF;
 			}
 		}
 	}
