@@ -2045,7 +2045,7 @@ static void NewSpriteSet(byte *buf, int len)
 	);
 
 	for (uint16 i = 0; i < num_sets * num_ents; i++) {
-		LoadNextSprite(_cur_spriteid++, _file_index);
+		LoadNextSprite(_cur_spriteid++, _file_index, _nfo_line);
 		_nfo_line++;
 	}
 }
@@ -2960,7 +2960,7 @@ static void GraphicsNew(byte *buf, int len)
 	}
 
 	for (; num > 0; num--) {
-		LoadNextSprite(replace == 0 ? _cur_spriteid++ : replace++, _file_index);
+		LoadNextSprite(replace == 0 ? _cur_spriteid++ : replace++, _file_index, _nfo_line);
 		_nfo_line++;
 	}
 }
@@ -3358,7 +3358,7 @@ static void SpriteReplace(byte *buf, int len)
 		);
 
 		for (uint j = 0; j < num_sprites; j++) {
-			LoadNextSprite(first_sprite + j, _file_index); // XXX
+			LoadNextSprite(first_sprite + j, _file_index, _nfo_line); // XXX
 			_nfo_line++;
 		}
 	}
@@ -4081,7 +4081,7 @@ static void LoadFontGlyph(byte *buf, int len)
 
 		for (uint c = 0; c < num_char; c++) {
 			SetUnicodeGlyph(size, base_char + c, _cur_spriteid);
-			LoadNextSprite(_cur_spriteid++, _file_index);
+			LoadNextSprite(_cur_spriteid++, _file_index, _nfo_line);
 			_nfo_line++;
 		}
 	}

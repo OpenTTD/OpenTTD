@@ -31,7 +31,7 @@ static inline const byte *GetNonSprite(SpriteID sprite)
 void GfxInitSpriteMem();
 void IncreaseSpriteLRU();
 
-bool LoadNextSprite(int load_index, byte file_index);
+bool LoadNextSprite(int load_index, byte file_index, uint file_sprite_id);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
 void SkipSprites(uint count);
 

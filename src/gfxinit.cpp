@@ -53,13 +53,15 @@ static const SpriteID * const _slopes_spriteindexes[] = {
 static uint LoadGrfFile(const char* filename, uint load_index, int file_index)
 {
 	uint load_index_org = load_index;
+	uint sprite_id = 0;
 
 	FioOpenFile(file_index, filename);
 
 	DEBUG(sprite, 2, "Reading grf-file '%s'", filename);
 
-	while (LoadNextSprite(load_index, file_index)) {
+	while (LoadNextSprite(load_index, file_index, sprite_id)) {
 		load_index++;
+		sprite_id++;
 		if (load_index >= MAX_SPRITES) {
 			error("Too many sprites. Recompile with higher MAX_SPRITES value or remove some custom GRF files.");
 		}
@@ -73,6 +75,7 @@ static uint LoadGrfFile(const char* filename, uint load_index, int file_index)
 static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int file_index)
 {
 	uint start;
+	uint sprite_id = 0;
 
 	FioOpenFile(file_index, filename);
 
@@ -83,14 +86,16 @@ static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int 
 
 		if (start == SKIP) { // skip sprites (amount in second var)
 			SkipSprites(end);
+			sprite_id += end;
 		} else { // load sprites and use indexes from start to end
 			do {
 			#ifdef NDEBUG
-				LoadNextSprite(start, file_index);
+				LoadNextSprite(start, file_index, sprite_id);
 			#else
-				bool b = LoadNextSprite(start, file_index);
+				bool b = LoadNextSprite(start, file_index, sprite_id);
 				assert(b);
 			#endif
+				sprite_id++;
 			} while (++start <= end);
 		}
 	}

@@ -241,7 +241,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 }
 
 
-bool LoadNextSprite(int load_index, byte file_index)
+bool LoadNextSprite(int load_index, byte file_index, uint file_sprite_id)
 {
 	SpriteCache *sc;
 	uint32 file_pos = FioGetPos() | (file_index << 24);
@@ -256,7 +256,7 @@ bool LoadNextSprite(int load_index, byte file_index)
 	sc->file_pos = file_pos;
 	sc->ptr = NULL;
 	sc->lru = 0;
-	sc->id = load_index;
+	sc->id = file_sprite_id;
 
 	const char *fio_grf_name = FioGetFilename();
 	const char *t = strrchr(fio_grf_name, PATHSEPCHAR);
