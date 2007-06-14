@@ -114,8 +114,14 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 	if (!mask) {
 		if (bit_depth == 16) png_set_strip_16(png_ptr);
 
-		if (color_type == PNG_COLOR_TYPE_PALETTE) png_set_palette_to_rgb(png_ptr);
-	/* TODO 32bpp: Convert grayscale to rgb */
+		if (color_type == PNG_COLOR_TYPE_PALETTE) {
+			png_set_palette_to_rgb(png_ptr);
+			color_type = PNG_COLOR_TYPE_RGB;
+		}
+		if (color_type == PNG_COLOR_TYPE_GRAY || color_type == PNG_COLOR_TYPE_GRAY_ALPHA) {
+			png_set_gray_to_rgb(png_ptr);
+			color_type = PNG_COLOR_TYPE_RGB;
+		}
 
 #ifdef TTD_LITTLE_ENDIAN
 		png_set_bgr(png_ptr);
