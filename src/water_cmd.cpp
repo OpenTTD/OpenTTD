@@ -618,6 +618,21 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
  */
 static Vehicle *FindFloodableVehicleOnTile(TileIndex tile)
 {
+	if (IsTileType(tile, MP_STATION) && IsAirport(tile)) {
+		const Station *st = GetStationByTile(tile);
+		const AirportFTAClass *airport = st->Airport();
+		for (uint x = 0; x < airport->size_x; x++) {
+			for (uint y = 0; y < airport->size_y; y++) {
+				tile = TILE_ADDXY(st->airport_tile, x, y);
+				Vehicle *v = FindVehicleOnTileZ(tile, 1 + airport->delta_z);
+				if (v != NULL && (v->vehstatus & VS_CRASHED) == 0) return v;
+			}
+		}
+
+		/* No vehicle could be flooded on this airport anymore */
+		return NULL;
+	}
+
 	if (!IsBridgeTile(tile)) return FindVehicleOnTileZ(tile, 0);
 
 	TileIndex end = GetOtherBridgeEnd(tile);
@@ -642,10 +657,20 @@ static void FloodVehicle(Vehicle *v)
 	if (!(v->vehstatus & VS_CRASHED)) {
 		uint16 pass = 0;
 
-		if (v->type == VEH_TRAIN || v->type == VEH_ROAD) {
+		if (v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_AIRCRAFT) {
+			if (v->type == VEH_AIRCRAFT) {
+				/* Crashing aircraft are always at z_pos == 1, never on z_pos == 0,
+				 * because that's always the shadow. Except for the heliport, because
+				 * that station has a big z_offset for the aircraft. */
+				if (!IsTileType(v->tile, MP_STATION) || !IsAirport(v->tile) || GetTileMaxZ(v->tile) != 0) return;
+				const Station *st = GetStationByTile(v->tile);
+				const AirportFTAClass *airport = st->Airport();
+
+				if (v->z_pos != airport->delta_z + 1) return;
+			}
 			Vehicle *u;
 
-			v = GetFirstVehicleInChain(v);
+			if (v->type != VEH_AIRCRAFT) v = GetFirstVehicleInChain(v);
 			u = v;
 
 			/* crash all wagons, and count passengers */
@@ -657,12 +682,22 @@ static void FloodVehicle(Vehicle *v)
 
 			v = u;
 
-			if (v->type == VEH_TRAIN) {
-				if (IsFrontEngine(v)) pass += 4; // driver
-				v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
-			} else {
-				if (IsRoadVehFront(v)) pass += 1; // driver
-				v->u.road.crashed_ctr = 2000; // max 2220, disappear pretty fast
+			switch (v->type) {
+				default: NOT_REACHED();
+				case VEH_TRAIN:
+					if (IsFrontEngine(v)) pass += 4; // driver
+					v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
+					break;
+
+				case VEH_ROAD:
+					if (IsRoadVehFront(v)) pass += 1; // driver
+					v->u.road.crashed_ctr = 2000; // max 2220, disappear pretty fast
+					break;
+
+				case VEH_AIRCRAFT:
+					pass += 2; // driver
+					v->u.air.crashed_counter = 9000; // max 10000, disappear pretty fast
+					break;
 			}
 
 			RebuildVehicleLists();
