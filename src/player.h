@@ -149,6 +149,12 @@ struct PlayerAiNew {
 };
 
 
+/* The "steps" in loan size, in British Pounds! */
+enum {
+	LOAN_INTERVAL        = 10000,
+	LOAN_INTERVAL_OLD_AI = 50000,
+};
+
 typedef uint32 PlayerFace;
 
 struct Player {

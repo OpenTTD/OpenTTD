@@ -121,23 +121,30 @@ int32 CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param tile unused
  * @param flags operation to perform
  * @param p1 unused
- * @param p2 when set, loans the maximum amount in one go (press CTRL)
+ * @param p2 when 0: loans LOAN_INTERVAL
+ *           when 1: loans the maximum loan permitting money (press CTRL),
  */
 int32 CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
-
-	p = GetPlayer(_current_player);
+	Player *p = GetPlayer(_current_player);
 
 	if (p->current_loan >= _economy.max_loan) {
 		SetDParam(0, _economy.max_loan);
 		return_cmd_error(STR_702B_MAXIMUM_PERMITTED_LOAN);
 	}
 
-	if (flags & DC_EXEC) {
-		/* Loan the maximum amount or not? */
-		int32 loan = (p2) ? _economy.max_loan - p->current_loan : (IsHumanPlayer(_current_player) || _patches.ainew_active) ? 10000 : 50000;
+	int32 loan;
+	switch (p2) {
+		default: return CMD_ERROR; // Invalid method
+		case 0: // Take some extra loan
+			loan = (IsHumanPlayer(_current_player) || _patches.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI;
+			break;
+		case 1: // Take a loan as big as possible
+			loan = _economy.max_loan - p->current_loan;
+			break;
+	}
 
+	if (flags & DC_EXEC) {
 		p->money64 += loan;
 		p->current_loan += loan;
 		UpdatePlayerMoney32(p);
@@ -151,27 +158,25 @@ int32 CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param tile unused
  * @param flags operation to perform
  * @param p1 unused
- * @param p2 when set, pays back the maximum loan permitting money (press CTRL)
+ * @param p2 when 0: pays back LOAN_INTERVAL
+ *           when 1: pays back the maximum loan permitting money (press CTRL),
  */
 int32 CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
-	int32 loan;
-
-	p = GetPlayer(_current_player);
+	Player *p = GetPlayer(_current_player);
 
 	if (p->current_loan == 0) return_cmd_error(STR_702D_LOAN_ALREADY_REPAYED);
 
-	loan = p->current_loan;
-
-	/* p2 is true while CTRL is pressed (repay all possible loan, or max money you have)
-	 * Repay any loan in chunks of 10.000 pounds */
-	if (p2) {
-		loan = min(loan, p->player_money);
-		loan = max(loan, 10000);
-		loan -= loan % 10000;
-	} else {
-		loan = min(loan, (IsHumanPlayer(_current_player) || _patches.ainew_active) ? 10000 : 50000);
+	int32 loan;
+	switch (p2) {
+		default: return CMD_ERROR; // Invalid method
+		case 0: // Pay back one step
+			loan = min(p->current_loan, (IsHumanPlayer(_current_player) || _patches.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI);
+			break;
+		case 1: // Pay back as much as possible
+			loan = max(min(p->current_loan, p->player_money), (int32)LOAN_INTERVAL);
+			loan -= loan % LOAN_INTERVAL;
+			break;
 	}
 
 	if (p->player_money < loan) {

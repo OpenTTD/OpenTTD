@@ -156,15 +156,19 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 		PlayerID player = (PlayerID)w->window_number;
 		const Player *p = GetPlayer(player);
 
+		/* Borrow/repay buttons only exist for local player */
 		if (player == _local_player) {
-			/* borrow/repay buttons only exist for local player */
+			/* Borrow button only shows when there is any more money to loan */
+			SetWindowWidgetDisabledState(w, 6, p->current_loan == _economy.max_loan);
+
+			/* Repay button only shows when there is any more money to repay */
 			SetWindowWidgetDisabledState(w, 7, p->current_loan == 0);
 		}
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		SetDParam(2, GetPlayerNameString(player, 3));
-		SetDParam(4, 10000);
+		SetDParam(4, LOAN_INTERVAL);
 		DrawWindowWidgets(w);
 
 		DrawPlayerEconomyStats(p, (byte)WP(w, def_d).data_1);
