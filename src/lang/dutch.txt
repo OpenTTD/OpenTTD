@@ -2776,6 +2776,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centreer
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Wegvoertuig selectie lijst - klik op voertuig voor informatie
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bouw het geselecteerde wegvoertuig
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Prijs: {CURRENCY}{}Snelheid: {VELOCITY}{}Brandstofkosten: {CURRENCY}/jr{}Capaciteit: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capaciteit: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Hernoem wegvoertuig
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan wegvoertuig niet hernoemen...

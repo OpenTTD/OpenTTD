@@ -1394,6 +1394,23 @@ STR_NETWORK_LANG_ANY                                            :Hva som helst
 STR_NETWORK_LANG_ENGLISH                                        :Engelsk
 STR_NETWORK_LANG_GERMAN                                         :Tysk
 STR_NETWORK_LANG_FRENCH                                         :Fransk
+STR_NETWORK_LANG_FINNISH                                        :Finsk
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungarsk
+STR_NETWORK_LANG_ICELANDIC                                      :Islandsk
+STR_NETWORK_LANG_ITALIAN                                        :Italiensk
+STR_NETWORK_LANG_JAPANESE                                       :Japanesisk
+STR_NETWORK_LANG_KOREAN                                         :Koreansk
+STR_NETWORK_LANG_NORWEGIAN                                      :Norsk
+STR_NETWORK_LANG_POLISH                                         :Polsk
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugisisk
+STR_NETWORK_LANG_ROMANIAN                                       :Romensk
+STR_NETWORK_LANG_RUSSIAN                                        :Russisk
+STR_NETWORK_LANG_SLOVAK                                         :Slovakisk
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovensk
+STR_NETWORK_LANG_SPANISH                                        :Spansk
+STR_NETWORK_LANG_SWEDISH                                        :Svensk
+STR_NETWORK_LANG_TURKISH                                        :Tyrkisk
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Flerspillere spill lobby
@@ -1587,6 +1604,13 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbanespor me
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbanespor med for-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbanespor med forlat-signaler
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbanespor med kombinerte signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Togbane med normale og pre-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Togbane med normale og utgangs-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Togbane med normale og kombinasjons-signaler
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Togbane med pre- og utgangs-signaler
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Togbane med pre- og kombinasjons-signaler
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Togbane med utgangs- og kombinasjons-signaler
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Må fjerne togbanestasjon først
 
 
 
@@ -2630,6 +2654,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Vis deta
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Vis kapasiteten til vognene
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Vis en total kapasitet på togene oppdelt etter godstype
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - trykk på en ordre for å velge den
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Slett den valgte ordren
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gjør den valgte ordren om til en
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Sett inn en ordre før den valgte ordren, eller i slutten av listen.

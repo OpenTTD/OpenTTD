@@ -4,6 +4,8 @@
 ##plural 0
 ##case n
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}For de la mapo
@@ -1047,6 +1049,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nekonfo
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova ĝenerala vojtrovado (NPF, superas NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permesu trairaj bushaltejoj sur vojoj urboposedataj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permesu konstrui staciojn apude: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Ĉiam permesu malgrandajn flughavenojn: {ORANGE}{STRING}
 
@@ -2013,6 +2016,7 @@ STR_SV_STNAME_LOWER                                             :Malsupra {STRIN
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterejo
 STR_SV_STNAME_FOREST                                            :Arbaro de {STRING}
 
+
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2629,6 +2633,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Montru d
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Montru kapablojn de ĉiu veturilo
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Montru tutan kapablon de trajno, dividite laŭ ŝarĝtipo
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordena listo - alklaku ordenon por elekti. CTRL + klako skrolas al la stacio
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Forviŝu la elektitan ordenon
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Senhaltigu elektitan ordenon
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Enigu novan ordenon antaŭ la elektita ordeno, aŭ aldonu fine de la listo
@@ -3187,3 +3192,11 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}(Ne)trav
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}(Ne)travideblu konstrueblaĵoj kiel stacidomoj, deponejoj, trairejoj kaj kondukdratoj
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}(Ne)travideblu la pontoj
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}(Ne)travideblu aĵoj kiel lumturoj kaj antenoj, kaj eble estonte vidĝuaĵoj
+
+##### Mass Order
+
+
+
+
+
+########

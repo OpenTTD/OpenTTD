@@ -2776,6 +2776,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centra l
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per informació
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construeix l'automòbil seleccionat
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Velocitat: {VELOCITY}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacitat: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Anomena automòbil
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}No es pot anomenar l'automòbil...

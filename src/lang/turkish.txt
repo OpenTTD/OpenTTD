@@ -1390,6 +1390,16 @@ STR_NETWORK_LANG_ANY                                            :Farketmez
 STR_NETWORK_LANG_ENGLISH                                        :İngilizce
 STR_NETWORK_LANG_GERMAN                                         :Almanca
 STR_NETWORK_LANG_FRENCH                                         :Fransızca
+STR_NETWORK_LANG_LITHUANIAN                                     :Litvanyaca
+STR_NETWORK_LANG_NORWEGIAN                                      :Norveççe
+STR_NETWORK_LANG_PORTUGUESE                                     :Portekizce
+STR_NETWORK_LANG_ROMANIAN                                       :Romanca
+STR_NETWORK_LANG_RUSSIAN                                        :Rusça
+STR_NETWORK_LANG_SLOVAK                                         :Slovakça
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovence
+STR_NETWORK_LANG_SPANISH                                        :İspanyolca
+STR_NETWORK_LANG_TURKISH                                        :Türkçe
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukraynaca
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Çok oyunculu oyun lobisi
@@ -1583,6 +1593,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Normal sinyalli
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ön-sinayalli ray
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Çıkış-sinyalli ray
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ön+çikis-sinyalli ray
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Önce tren istasyonu kaldırılmalı
 
 
 
@@ -1590,7 +1601,9 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ön+çikis-siny
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Önce yol silinmeli
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Yol çalışmaları
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Yol Yapımı
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Tramvay Yapımı
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Köprü Seç
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...tek yönlü yollar kesişemez
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Yol yapılamıyor...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Buraya tramvay yapılamaz...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Yol kaldırılamıyor...
@@ -2649,6 +2662,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Trenin a
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Her aracın kapasitesi
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Trenin kargo türlerine ayrilmis toplam kapasitesini göster
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Talimat listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırir
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Seçili talimatı sil
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı durmadan yap
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili talimatın önüne ya da listenin sonuna komut ekle
@@ -2727,6 +2741,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Araba ga
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Araba listesi - bilgi için arabayı tıklayın
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Seçili arabayı al
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Fiyat: {CURRENCY}{}Hız: {VELOCITY}{}Bakım: {CURRENCY}/sene{}Kapasite: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasite: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Arabayı adlandır
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Araba adlandırılamıyor...
@@ -3016,6 +3032,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Aynı ta
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Garajdaki bütün araçları satmak üzeresiniz. Emin misiniz?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Yanlış gar türü
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Gardaki tüm trenleri sat
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Garajdaki tüm arabaları sat
