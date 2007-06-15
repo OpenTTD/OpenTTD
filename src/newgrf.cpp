@@ -76,7 +76,7 @@ static uint32 _ttdpatch_flags[8];
 static byte *_preload_sprite = NULL;
 
 /* Indicates which are the newgrf features currently loaded ingame */
-uint8 _loaded_newgrf_features;
+GRFLoadedFeatures _loaded_newgrf_features;
 
 enum GrfDataType {
 	GDT_SOUND,
@@ -539,7 +539,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x27: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) SETBIT(_loaded_newgrf_features, GRFLOADED_2CC);
+				_loaded_newgrf_features.has_2CC = HASBIT(ei[i].misc_flags, EF_USES_2CC);
 			}
 			break;
 
@@ -661,7 +661,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x1C: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) SETBIT(_loaded_newgrf_features, GRFLOADED_2CC);
+				_loaded_newgrf_features.has_2CC = HASBIT(ei[i].misc_flags, EF_USES_2CC);
 			}
 			break;
 
@@ -772,7 +772,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) SETBIT(_loaded_newgrf_features, GRFLOADED_2CC);
+				_loaded_newgrf_features.has_2CC = HASBIT(ei[i].misc_flags, EF_USES_2CC);
 			}
 			break;
 
@@ -888,7 +888,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) SETBIT(_loaded_newgrf_features, GRFLOADED_2CC);
+				_loaded_newgrf_features.has_2CC = HASBIT(ei[i].misc_flags, EF_USES_2CC);
 			}
 			break;
 
@@ -1297,7 +1297,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				 * FinaliseHouseArray() for more details. */
 				if (housespec[i]->min_date < 1930) housespec[i]->min_date = 1930;
 			}
-			SETBIT(_loaded_newgrf_features, GRFLOADED_NEWHOUSES);
+			_loaded_newgrf_features.has_newhouses = true;
 			break;
 
 		case 0x09: // Building flags
@@ -4490,7 +4490,9 @@ static void ResetNewGRFData()
 	_traininfo_vehicle_pitch = 0;
 	_traininfo_vehicle_width = 29;
 
-	_loaded_newgrf_features = 0;
+	_loaded_newgrf_features.has_2CC           = false;
+	_loaded_newgrf_features.has_newhouses     = false;
+	_loaded_newgrf_features.has_newindustries = false,
 
 	_signal_base = 0;
 	_coast_base = 0;

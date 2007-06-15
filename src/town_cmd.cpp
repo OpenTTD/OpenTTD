@@ -1668,7 +1668,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		for (i = 0; i < HOUSE_MAX; i++) {
 			hs = GetHouseSpecs(i);
 			if ((~hs->building_availability & bitmask) == 0 && hs->enabled) {
-				if (HASBIT(_loaded_newgrf_features, GRFLOADED_NEWHOUSES)) {
+				if (_loaded_newgrf_features.has_newhouses) {
 					probability_max += hs->probability;
 					cumulative_probs[num] = probability_max;
 				}
@@ -1677,7 +1677,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		}
 
 		for (;;) {
-			if (HASBIT(_loaded_newgrf_features, GRFLOADED_NEWHOUSES)) {
+			if (_loaded_newgrf_features.has_newhouses) {
 				uint r = RandomRange(probability_max);
 				for (i = 0; i < num; i++) if (cumulative_probs[i] >= r) break;
 
@@ -1688,7 +1688,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 
 			hs = GetHouseSpecs(house);
 
-			if (HASBIT(_loaded_newgrf_features, GRFLOADED_NEWHOUSES)) {
+			if (_loaded_newgrf_features.has_newhouses) {
 				if (hs->override != 0) hs = GetHouseSpecs(hs->override);
 
 				if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world) continue;

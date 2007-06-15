@@ -329,7 +329,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_CREATE:
 			LowerWindowWidget(w, WP(w, livery_d).livery_class + 2);
-			if (!HASBIT(_loaded_newgrf_features, GRFLOADED_2CC)) {
+			if (!_loaded_newgrf_features.has_2CC) {
 				HideWindowWidget(w, 11);
 				HideWindowWidget(w, 12);
 			}
@@ -371,7 +371,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour1), 152, y);
 					DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? 0xC : 2);
 
-					if (HASBIT(_loaded_newgrf_features, GRFLOADED_2CC)) {
+					if (_loaded_newgrf_features.has_2CC) {
 						DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour2), 277, y);
 						DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? 0xC : 2);
 					}
@@ -799,7 +799,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				}
 
 				case PCW_WIDGET_COLOR_SCHEME: {
-					Window *wf = AllocateWindowDescFront(HASBIT(_loaded_newgrf_features, GRFLOADED_2CC) ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, w->window_number);
+					Window *wf = AllocateWindowDescFront(_loaded_newgrf_features.has_2CC ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, w->window_number);
 					if (wf != NULL) {
 						wf->caption_color = wf->window_number;
 						WP(wf, livery_d).livery_class = LC_OTHER;
