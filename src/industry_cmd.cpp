@@ -280,6 +280,8 @@ static void DrawTile_Industry(TileInfo *ti)
 		if (HASBIT(_transparent_opt, TO_INDUSTRIES)) {
 			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 			pal = PALETTE_TO_TRANSPARENT;
+		} else if (HASBIT(image, PALETTE_MODIFIER_COLOR) && dits->building.pal == PAL_NONE) {
+			pal = GENERAL_SPRITE_COLOR(ind->random_color);
 		} else {
 			pal = dits->building.pal;
 		}
