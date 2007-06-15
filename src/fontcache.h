@@ -21,6 +21,9 @@ struct FreeTypeSettings {
 	uint small_size;
 	uint medium_size;
 	uint large_size;
+	bool small_aa;
+	bool medium_aa;
+	bool large_aa;
 };
 
 extern FreeTypeSettings _freetype;

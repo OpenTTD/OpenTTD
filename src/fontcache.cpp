@@ -369,6 +369,21 @@ void *AllocateFont(size_t size)
 }
 
 
+/* Check if a glyph should be rendered with antialiasing */
+static bool GetFontAAState(FontSize size)
+{
+	/* AA is only supported for 32 bpp */
+	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 32) return false;
+
+	switch (size) {
+		default: NOT_REACHED();
+		case FS_NORMAL: return _freetype.medium_aa;
+		case FS_SMALL:  return _freetype.small_aa;
+		case FS_LARGE:  return _freetype.large_aa;
+	}
+}
+
+
 const Sprite *GetGlyph(FontSize size, WChar key)
 {
 	FT_Face face = GetFontFace(size);
@@ -397,8 +412,10 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 
 	slot = face->glyph;
 
+	bool aa = GetFontAAState(size);
+
 	FT_Load_Char(face, key, FT_LOAD_DEFAULT);
-	FT_Render_Glyph(face->glyph, FT_RENDER_MODE_MONO);
+	FT_Render_Glyph(face->glyph, aa ? FT_RENDER_MODE_NORMAL : FT_RENDER_MODE_MONO);
 
 	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
 	width  = max(1, slot->bitmap.width + (size == FS_NORMAL));
@@ -417,9 +434,9 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 	if (size == FS_NORMAL) {
 		for (y = 0; y < slot->bitmap.rows; y++) {
 			for (x = 0; x < slot->bitmap.width; x++) {
-				if (HASBIT(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
+				if (aa ? (slot->bitmap.buffer[x + y * slot->bitmap.pitch] > 0) : HASBIT(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
 					sprite.data[1 + x + (1 + y) * sprite.width].m = SHADOW_COLOUR;
-					sprite.data[1 + x + (1 + y) * sprite.width].a = 0xFF;
+					sprite.data[1 + x + (1 + y) * sprite.width].a = aa ? slot->bitmap.buffer[x + y * slot->bitmap.pitch] : 0xFF;
 				}
 			}
 		}
@@ -427,9 +444,9 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 
 	for (y = 0; y < slot->bitmap.rows; y++) {
 		for (x = 0; x < slot->bitmap.width; x++) {
-			if (HASBIT(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
+			if (aa ? (slot->bitmap.buffer[x + y * slot->bitmap.pitch] > 0) : HASBIT(slot->bitmap.buffer[(x / 8) + y * slot->bitmap.pitch], 7 - (x % 8))) {
 				sprite.data[x + y * sprite.width].m = FACE_COLOUR;
-				sprite.data[x + y * sprite.width].a = 0xFF;
+				sprite.data[x + y * sprite.width].a = aa ? slot->bitmap.buffer[x + y * slot->bitmap.pitch] : 0xFF;
 			}
 		}
 	}
