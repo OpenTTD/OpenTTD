@@ -245,6 +245,8 @@ enum {
 static byte MapAircraftMovementState(const Vehicle *v)
 {
 	const Station *st = GetStation(v->u.air.targetairport);
+	if (st->airport_tile == 0) return AMS_TTDP_FLIGHT_TO_TOWER;
+
 	const AirportFTAClass *afc = st->Airport();
 	uint16 amdflag = afc->MovingData(v->u.air.pos)->flag;
 
