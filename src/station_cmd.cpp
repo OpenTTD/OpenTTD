@@ -626,7 +626,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 			return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 		}
 
-		if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
+		if (!EnsureNoVehicleOnGround(tile_cur)) return CMD_ERROR;
 
 		uint z;
 		Slope tileh = GetTileSlope(tile_cur, &z);
