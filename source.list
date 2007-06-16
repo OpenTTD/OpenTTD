@@ -300,9 +300,9 @@ blitter/8bpp_optimized.cpp
 blitter/8bpp_optimized.hpp
 blitter/8bpp_simple.cpp
 blitter/8bpp_simple.hpp
+blitter/blitter.hpp
 blitter/null.cpp
 blitter/null.hpp
-blitter/blitter.hpp
 
 # Sprite loaders
 spriteloader/grf.cpp

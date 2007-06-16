@@ -114,33 +114,7 @@ static bool CheckMD5Digest(const MD5File file, md5_byte_t *digest, bool warn)
  * returns true if the checksum is correct */
 static bool FileMD5(const MD5File file, bool warn)
 {
-	FILE *f;
-	char buf[MAX_PATH];
-
-	/* open file */
-	snprintf(buf, lengthof(buf), "%s%s", _paths.data_dir, file.filename);
-	f = fopen(buf, "rb");
-
-#if !defined(WIN32)
-	if (f == NULL) {
-		strtolower(buf + strlen(_paths.data_dir) - 1);
-		f = fopen(buf, "rb");
-	}
-#endif
-
-#if defined SECOND_DATA_DIR
-	/* If we failed to find the file in the first data directory, we will try the other one */
-
-	if (f == NULL) {
-		snprintf(buf, lengthof(buf), "%s%s", _paths.second_data_dir, file.filename);
-		f = fopen(buf, "rb");
-
-		if (f == NULL) {
-			strtolower(buf + strlen(_paths.second_data_dir) - 1);
-			f = fopen(buf, "rb");
-		}
-	}
-#endif
+	FILE *f = FioFOpenFile(file.filename);
 
 	if (f != NULL) {
 		md5_state_t filemd5state;
@@ -152,7 +126,7 @@ static bool FileMD5(const MD5File file, bool warn)
 		while ((len = fread(buffer, 1, sizeof(buffer), f)) != 0)
 			md5_append(&filemd5state, buffer, len);
 
-		if (ferror(f) && warn) ShowInfoF("Error Reading from %s \n", buf);
+		if (ferror(f) && warn) ShowInfoF("Error Reading from %s \n", file.filename);
 		fclose(f);
 
 		md5_finish(&filemd5state, digest);

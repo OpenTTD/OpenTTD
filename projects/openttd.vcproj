@@ -989,13 +989,13 @@
 				RelativePath=".\..\src\blitter\8bpp_simple.hpp">
 			</File>
 			<File
+				RelativePath=".\..\src\blitter\blitter.hpp">
+			</File>
+			<File
 				RelativePath=".\..\src\blitter\null.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\blitter\null.hpp">
-			</File>
-			<File
-				RelativePath=".\..\src\blitter\blitter.hpp">
 			</File>
 		</Filter>
 		<Filter
