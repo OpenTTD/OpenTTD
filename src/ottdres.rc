@@ -65,8 +65,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,5,0,0
- PRODUCTVERSION 0,5,0,0
+ FILEVERSION 0,5,99,0
+ PRODUCTVERSION 0,5,99,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -91,7 +91,7 @@ BEGIN
             VALUE "OriginalFilename", "openttd.exe\0"
             VALUE "PrivateBuild", "\0"
             VALUE "ProductName", "OpenTTD\0"
-            VALUE "ProductVersion", "0.0.0.0\0"
+            VALUE "ProductVersion", "Development Version\0"
             VALUE "SpecialBuild", "-\0"
         END
     END
