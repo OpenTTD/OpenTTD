@@ -85,37 +85,37 @@ STR_004B_BATTERY                                                :Atterybay
 STR_004C_PLASTIC                                                :Asticplay
 STR_004D_FIZZY_DRINK                                            :Izzyfay Inkdray
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} assengerpay{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} assenger{P "" s}pay
 STR_QUANTITY_COAL                                               :{WEIGHT} ofway oalcay
-STR_QUANTITY_MAIL                                               :{COMMA} agbay{P "" s} ofway ailmay
+STR_QUANTITY_MAIL                                               :{COMMA} ag{P "" s}bay ofway ailmay
 STR_QUANTITY_OIL                                                :{VOLUME} ofway oilway
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} itemway{P "" s} ofway ivestocklay
-STR_QUANTITY_GOODS                                              :{COMMA} atecray{P "" s} ofway oodsgay
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} item{P "" s}WAY ofway ivestocklay
+STR_QUANTITY_GOODS                                              :{COMMA} ate{P "" s}cray ofway oodsgay
 STR_QUANTITY_GRAIN                                              :{WEIGHT} ofway aingray
 STR_QUANTITY_WOOD                                               :{WEIGHT} ofway oodway
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} ofway ironway oreway
 STR_QUANTITY_STEEL                                              :{WEIGHT} ofway eelstay
-STR_QUANTITY_VALUABLES                                          :{COMMA} agbay{P "" s} ofway aluablesvay
+STR_QUANTITY_VALUABLES                                          :{COMMA} ag{P "" s}bay ofway aluablesvay
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} ofway oppercay oreway
 STR_QUANTITY_MAIZE                                              :{WEIGHT} ofway aizemay
 STR_QUANTITY_FRUIT                                              :{WEIGHT} ofway uitfray
-STR_QUANTITY_DIAMONDS                                           :{COMMA} agbay{P "" s} ofway iamondsday
+STR_QUANTITY_DIAMONDS                                           :{COMMA} ag{P "" s}bay ofway iamondsday
 STR_QUANTITY_FOOD                                               :{WEIGHT} ofway oodfay
 STR_QUANTITY_PAPER                                              :{WEIGHT} ofway aperpay
-STR_QUANTITY_GOLD                                               :{COMMA} agbay{P "" s} ofway oldgay
+STR_QUANTITY_GOLD                                               :{COMMA} ag{P "" s}bay ofway oldgay
 STR_QUANTITY_WATER                                              :{VOLUME} ofway aterway
 STR_QUANTITY_WHEAT                                              :{WEIGHT} ofway eatwhay
 STR_QUANTITY_RUBBER                                             :{VOLUME} ofway ubberray
 STR_QUANTITY_SUGAR                                              :{WEIGHT} ofway ugarsay
-STR_QUANTITY_TOYS                                               :{COMMA} oytay{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} agbay{P "" s} ofway eetssway
+STR_QUANTITY_TOYS                                               :{COMMA} oy{P "" s}tay
+STR_QUANTITY_SWEETS                                             :{COMMA} ag{P "" s}bay ofway eetssway
 STR_QUANTITY_COLA                                               :{VOLUME} ofway olacay
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} ofway andyflosscay
-STR_QUANTITY_BUBBLES                                            :{COMMA} ubblebay{P "" s}
+STR_QUANTITY_BUBBLES                                            :{COMMA} ubble{P "" s}bay
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} ofway offeetay
-STR_QUANTITY_BATTERIES                                          :{COMMA} atterbay{P y ies}
+STR_QUANTITY_BATTERIES                                          :{COMMA} atter{P y ies}bay
 STR_QUANTITY_PLASTIC                                            :{VOLUME} ofway asticplay
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} izzyfay inkdray{P "" s}
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} izzyfay ink{P "" s}dray
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PSay
 STR_ABBREV_COAL                                                 :{TINYFONT}CLay
@@ -331,16 +331,16 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}tay
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}tay
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kgay
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ontay{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} onnetay{P "" s}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} on{P "" s}tay
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} onne{P "" s}tay
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kgay
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}algay
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}lay
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}may³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} allongay{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} itrelay{P "" s}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} allon{P "" s}gay
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} itre{P "" s}lay
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} may³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}xay10³ lbfay
@@ -476,8 +476,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Oggletay
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Ofitpray isthay earyay: {CURRENCY} (astlay earyay: {CURRENCY})
 
 ############ range for service numbers starts
-STR_AGE                                                         :{COMMA} earyay{P "" s} ({COMMA})
-STR_AGE_RED                                                     :{RED}{COMMA} earyay{P "" s} ({COMMA})
+STR_AGE                                                         :{COMMA} ear{P "" s}yay ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} ear{P "" s}yay ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Oadray ehiclevay
@@ -1463,7 +1463,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Eg
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Etchingfay amegay infoway..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Etchingfay ompanycay infoway..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} ientclay{P "" s} inway ontfray ofway ouyay
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} ient{P "" s}clay inway ontfray ofway ouyay
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} yteskbay ownloadedday osay arfay
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Isconnectday
@@ -1841,7 +1841,7 @@ STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Ustmay e
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Ustmay emolishday orrylay ationstay irstfay
 STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Ustmay emolishday assengerpay amtray ationstay irstfay
 STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Ustmay emolishday eightfray amtray ationstay irstfay
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Ationstay{P "" s}
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Ation{P "" s}stay
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Onenay -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...itesay unsuitableway
@@ -1898,7 +1898,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Oadlay A
 STR_4002_SAVE                                                   :{BLACK}Avesay
 STR_4003_DELETE                                                 :{BLACK}Eleteday
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} egabytemay{P "" s} eefray
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} egabyte{P "" s}may eefray
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Unableway otay eadray ivedray
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Amegay Avesay Ailedfay
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Unableway otay eleteday ilefay
@@ -2212,10 +2212,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Epayray 
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Anagermay)
 STR_7038_INAUGURATED                                            :{GOLD}Inauguratedway: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Ehiclesvay:
-STR_TRAINS                                                      :{WHITE}{COMMA} aintray{P "" s}
-STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} oadray ehiclevay{P "" s}
+STR_TRAINS                                                      :{WHITE}{COMMA} ain{P "" s}tray
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} oadray ehicle{P "" s}vay
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} aircraftway
-STR_SHIPS                                                       :{WHITE}{COMMA} ipshay{P "" s}
+STR_SHIPS                                                       :{WHITE}{COMMA} ip{P "" s}shay
 STR_7042_NONE                                                   :{WHITE}Onenay
 STR_7043_FACE_SELECTION                                         :{WHITE}Acefay Electionsay
 STR_7044_MALE                                                   :{BLACK}Alemay
@@ -2622,7 +2622,7 @@ STR_8815_NEW_VEHICLES                                           :{BLACK}Ewnay Eh
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Aintray ootay onglay
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Ainstray ancay onlyway ebay alteredway enwhay oppedstay insideway away epotday
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Aintray{P "" s}
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Ain{P "" s}tray
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Ewnay Ailray Ehiclesvay
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Ewnay Electricway Ailray Ehiclesvay
@@ -2737,7 +2737,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ewnay {S
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Oadray ehiclevay inway ethay ayway
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Oadray Ehiclevay{P "" s}
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Oadray Ehicle{P "" s}vay
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Oadray Ehiclevay Epotday
 STR_9004_NEW_VEHICLES                                           :{BLACK}Ewnay Ehiclesvay
@@ -2809,7 +2809,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Ockday o
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}An'tcay uildbay ockday erehay...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Ipshay Epotday
 STR_9804_NEW_SHIPS                                              :{BLACK}Ewnay Ipsshay
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Ipshay{P "" s}
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Ip{P "" s}shay
 STR_9808_NEW_SHIPS                                              :{WHITE}Ewnay Ipsshay
 STR_9809_BUILD_SHIP                                             :{BLACK}Uildbay Ipshay
 STR_CLONE_SHIP                                                  :{BLACK}Oneclay Ipshay
@@ -3055,17 +3055,17 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Aintray{P "" s}
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Oadray Ehiclevay{P "" s}
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Ain{P "" s}tray
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Oadray Ehicle{P "" s}vay
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aircraftway
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Ipshay{P "" s}
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Ip{P "" s}shay
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Owshay allway ainstray ichwhay avehay isthay ationstay onway eirthay eduleschay
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Owshay allway oadray ehiclesvay ichwhay avehay isthay ationstay onway eirthay eduleschay
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Owshay allway aircraftway ichwhay avehay isthay ationstay onway eirthay eduleschay
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Owshay allway ipsshay ichwhay avehay isthay ationstay onway eirthay eduleschay
 
-STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Aredshay ordersway ofway {COMMA} Ehiclevay{P "" s}
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Aredshay ordersway ofway {COMMA} Ehicle{P "" s}vay
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Owshay allway ehiclesvay atthay areshay isthay eduleschay
 
 ### depot strings
@@ -3087,9 +3087,9 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autorepl
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autoreplaceway allway ipsshay inway ethay epotday
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autoreplaceway allway aircraftway inway ethay angarhay
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING1} - {COMMA} Aintray{P "" s}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING1} - {COMMA} Oadray Ehiclevay{P "" s}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING1} - {COMMA} Ipshay{P "" s}
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING1} - {COMMA} Ain{P "" s}tray
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING1} - {COMMA} Oadray Ehicle{P "" s}vay
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING1} - {COMMA} Ip{P "" s}shay
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING1} - {COMMA} Aircraftway
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Eplaceray {STRING}
@@ -3130,7 +3130,7 @@ STR_MASS_STOP_LIST_TIP                                          :{BLACK}Ickclay 
 STR_MASS_START_LIST_TIP                                         :{BLACK}Ickclay otay artstay allway ethay ehiclesvay inway ethay istlay
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Ignsay Istlay - {COMMA} Ignsay{P "" s}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Ignsay Istlay - {COMMA} Ign{P "" s}say
 
 STR_ORDER_REFIT_FAILED                                          :{WHITE}Orderway efitray ailurefay oppedstay {STRING} {COMMA}
 
@@ -3273,9 +3273,9 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Addway aredshay ehiclesvay
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Emoveray allway ehiclesvay
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Aintray{P "" s}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Oadray Ehiclevay{P "" s}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Ipshay{P "" s}
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Ain{P "" s}tray
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Oadray Ehicle{P "" s}vay
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Ip{P "" s}shay
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aircraftway
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Enameray away oupgray
 STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Eplaceray Ehiclesvay ofway "{GROUP}"
