@@ -51,8 +51,8 @@ static uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, I
  */
 static uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 {
-	byte x = TileX(ind_tile) - TileX(tile);
-	byte y = TileY(ind_tile) - TileY(tile);
+	byte x = TileX(tile) - TileX(ind_tile);
+	byte y = TileY(tile) - TileY(ind_tile);
 
 	return ((y & 0xF) << 20) | ((x & 0xF) << 16) | (y << 8) | x;
 }
