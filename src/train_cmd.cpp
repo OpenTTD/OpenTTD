@@ -2732,10 +2732,10 @@ static void CheckTrainCollision(Vehicle *v)
 			(v->u.rail.track == TRACK_BIT_WORMHOLE && (v->direction & 2) != (realcoll->direction & 2)))
 		return;
 
-	/* two drivers + passangers killed in train v */
+	/* two drivers + passengers killed in train v */
 	uint num = 2 + CountPassengersInTrain(v);
 	if (!(coll->vehstatus & VS_CRASHED))
-		/* two drivers + passangers killed in train coll (if it was not crashed already) */
+		/* two drivers + passengers killed in train coll (if it was not crashed already) */
 		num += 2 + CountPassengersInTrain(coll);
 
 	SetVehicleCrashed(v);

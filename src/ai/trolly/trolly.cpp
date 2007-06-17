@@ -650,7 +650,7 @@ static void AiNew_State_FindStation(Player *p)
 		// To find a good spot we scan a range from the center, a get the point
 		//  where we get the most cargo and where it is buildable.
 		// TODO: also check for station of myself and make sure we are not
-		//   taking eachothers passangers away (bad result when it does not)
+		//   taking eachothers passengers away (bad result when it does not)
 		for (x = TileX(tile) - AI_FINDSTATION_TILE_RANGE; x <= TileX(tile) + AI_FINDSTATION_TILE_RANGE; x++) {
 			for (y = TileY(tile) - AI_FINDSTATION_TILE_RANGE; y <= TileY(tile) + AI_FINDSTATION_TILE_RANGE; y++) {
 				new_tile = TileXY(x, y);
