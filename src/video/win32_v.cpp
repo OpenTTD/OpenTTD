@@ -23,6 +23,7 @@ static struct {
 	int height;
 	int width_org;
 	int height_org;
+	bool minimized;
 	bool fullscreen;
 	bool has_focus;
 	bool running;
@@ -33,6 +34,9 @@ bool _window_maximize;
 uint _display_hz;
 uint _fullscreen_bpp;
 static uint16 _bck_resolution[2];
+#if !defined(WINCE)
+static DEVMODE _fullscreen_dm;
+#endif
 #if !defined(UNICODE)
 uint _codepage;
 #endif
@@ -412,7 +416,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			break;
 
 		case WM_SIZE:
-			if (wParam != SIZE_MINIMIZED) {
+			_wnd.minimized = (wParam == SIZE_MINIMIZED);
+			if (!_wnd.minimized) {
 				/* Set maximized flag when we maximize (obviously), but also when we
 				 * switched to fullscreen from a maximized state */
 				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
@@ -506,6 +511,21 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 		case WM_ACTIVATEAPP:
 			_wnd.has_focus = (wParam != 0);
+#if !defined(WINCE)
+			if (_wnd.fullscreen) {
+				if (_wnd.has_focus && _wnd.minimized) {
+					/* Restore the game window */
+					ShowWindow(hwnd, SW_RESTORE);
+					ChangeDisplaySettings(&_fullscreen_dm, CDS_FULLSCREEN);
+					/* Force palette update */
+					SendMessage(hwnd, WM_QUERYNEWPALETTE, 0, 0);
+				} else if (!_wnd.has_focus && !_wnd.minimized) {
+					/* Minimise the window and restore desktop */
+					ShowWindow(hwnd, SW_MINIMIZE);
+					ChangeDisplaySettings(NULL, 0);
+				}
+			}
+#endif
 			break;
 	}
 	return DefWindowProc(hwnd, msg, wParam, lParam);
@@ -549,24 +569,22 @@ static void MakeWindow(bool full_screen)
 	/* WinCE is always fullscreen */
 #else
 	if (full_screen) {
-		DEVMODE settings;
-
 		/* Make sure we are always at least the screen-depth of the blitter */
 		if (_fullscreen_bpp < BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth()) _fullscreen_bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 
-		memset(&settings, 0, sizeof(settings));
-		settings.dmSize = sizeof(settings);
-		settings.dmFields =
+		memset(&_fullscreen_dm, 0, sizeof(_fullscreen_dm));
+		_fullscreen_dm.dmSize = sizeof(_fullscreen_dm);
+		_fullscreen_dm.dmFields =
 			(_fullscreen_bpp != 0 ? DM_BITSPERPEL : 0) |
 			DM_PELSWIDTH |
 			DM_PELSHEIGHT |
 			(_display_hz != 0 ? DM_DISPLAYFREQUENCY : 0);
-		settings.dmBitsPerPel = _fullscreen_bpp;
-		settings.dmPelsWidth  = _wnd.width_org;
-		settings.dmPelsHeight = _wnd.height_org;
-		settings.dmDisplayFrequency = _display_hz;
+		_fullscreen_dm.dmBitsPerPel = _fullscreen_bpp;
+		_fullscreen_dm.dmPelsWidth  = _wnd.width_org;
+		_fullscreen_dm.dmPelsHeight = _wnd.height_org;
+		_fullscreen_dm.dmDisplayFrequency = _display_hz;
 
-		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
+		if (ChangeDisplaySettings(&_fullscreen_dm, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
 			MakeWindow(false);
 			return;
 		}
