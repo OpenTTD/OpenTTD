@@ -630,6 +630,9 @@
 				RelativePath=".\..\src\sprite.h">
 			</File>
 			<File
+				RelativePath=".\..\src\spritecache.h">
+			</File>
+			<File
 				RelativePath=".\..\src\station.h">
 			</File>
 			<File

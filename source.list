@@ -177,6 +177,7 @@ signs.h
 slope.h
 sound.h
 sprite.h
+spritecache.h
 station.h
 stdafx.h
 string.h
