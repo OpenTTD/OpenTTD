@@ -539,7 +539,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x27: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				_loaded_newgrf_features.has_2CC = HASBIT(ei[i].misc_flags, EF_USES_2CC);
+				_loaded_newgrf_features.has_2CC |= HASBIT(ei[i].misc_flags, EF_USES_2CC);
 			}
 			break;
 
@@ -661,7 +661,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x1C: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				_loaded_newgrf_features.has_2CC = HASBIT(ei[i].misc_flags, EF_USES_2CC);
+				_loaded_newgrf_features.has_2CC |= HASBIT(ei[i].misc_flags, EF_USES_2CC);
 			}
 			break;
 
@@ -772,7 +772,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				_loaded_newgrf_features.has_2CC = HASBIT(ei[i].misc_flags, EF_USES_2CC);
+				_loaded_newgrf_features.has_2CC |= HASBIT(ei[i].misc_flags, EF_USES_2CC);
 			}
 			break;
 
@@ -888,7 +888,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 		case 0x17: // Miscellaneous flags
 			FOR_EACH_OBJECT {
 				ei[i].misc_flags = grf_load_byte(&buf);
-				_loaded_newgrf_features.has_2CC = HASBIT(ei[i].misc_flags, EF_USES_2CC);
+				_loaded_newgrf_features.has_2CC |= HASBIT(ei[i].misc_flags, EF_USES_2CC);
 			}
 			break;
 
