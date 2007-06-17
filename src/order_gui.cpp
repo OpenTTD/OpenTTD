@@ -554,7 +554,13 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 			int sel = GetOrderFromOrderWndPt(w, e->we.click.pt.y, v);
 
-			if (sel == INVALID_ORDER) return;
+			if (sel == INVALID_ORDER) {
+				/* This was a click on an empty part of the orders window, so
+				 * deselect the currently selected order. */
+				WP(w,order_d).sel = -1;
+				SetWindowDirty(w);
+				return;
+			}
 
 			if (_ctrl_pressed && sel < v->num_orders) {
 				const Order *ord = GetVehicleOrder(v, sel);
