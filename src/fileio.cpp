@@ -224,7 +224,7 @@ char *FioGetFullPath(char *buf, size_t buflen, Searchpath sp, Subdirectory subdi
 	assert(subdir < NUM_SUBDIRS);
 	assert(sp < NUM_SEARCHPATHS);
 
-	snprintf(buf, buflen, "%s%s" PATHSEP "%s", _searchpaths[sp], _subdirs[subdir], filename);
+	snprintf(buf, buflen, "%s%s%s", _searchpaths[sp], _subdirs[subdir], filename);
 	return buf;
 }
 
@@ -464,17 +464,39 @@ void DeterminePaths(const char *exe)
 	Searchpath sp;
 	FOR_ALL_SEARCHPATHS(sp) DEBUG(misc, 4, "%s added as search path", _searchpaths[sp]);
 
-	/* Search for the first search path, as that will be the closest to
-	 * the personal directory. */
-	FOR_ALL_SEARCHPATHS(sp) {
-		_personal_dir = strdup(_searchpaths[sp]);
-		DEBUG(misc, 3, "%s found as personal directory", _searchpaths[sp]);
-		break;
+	if (_config_file != NULL) {
+		_personal_dir = strdup(_config_file);
+		char *end = strrchr(_personal_dir , PATHSEPCHAR);
+		if (end == NULL) {
+			_personal_dir[0] = '\0';
+		} else {
+			end[1] = '\0';
+		}
+	} else {
+		char personal_dir[MAX_PATH];
+		FioFindFullPath(personal_dir, lengthof(personal_dir), BASE_DIR, "openttd.cfg");
+
+		if (FileExists(personal_dir)) {
+			char *end = strrchr(personal_dir, PATHSEPCHAR);
+			if (end != NULL) end[1] = '\0';
+			_personal_dir = strdup(personal_dir);
+			_config_file = str_fmt("%sopenttd.cfg", _personal_dir);
+		} else {
+			static const Searchpath new_openttd_cfg_order[] = {
+					SP_PERSONAL_DIR, SP_BINARY_DIR, SP_WORKING_DIR, SP_SHARED_DIR, SP_INSTALLATION_DIR
+				};
+
+			for (uint i = 0; i < lengthof(new_openttd_cfg_order); i++) {
+				if (IsValidSearchPath(new_openttd_cfg_order[i])) {
+					_personal_dir = strdup(_searchpaths[new_openttd_cfg_order[i]]);
+					_config_file = str_fmt("%sopenttd.cfg", _personal_dir);
+					break;
+				}
+			}
+		}
 	}
 
-	if (_config_file == NULL) {
-		_config_file = str_fmt("%sopenttd.cfg", _personal_dir);
-	}
+	DEBUG(misc, 3, "%s found as personal directory", _personal_dir);
 
 	_highscore_file = str_fmt("%shs.dat", _personal_dir);
 	_log_file = str_fmt("%sopenttd.log",  _personal_dir);

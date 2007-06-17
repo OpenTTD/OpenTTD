@@ -40,9 +40,9 @@ enum Subdirectory {
  * Types of searchpaths OpenTTD might use
  */
 enum Searchpath {
+	SP_WORKING_DIR,            ///< Search in the working directory
 	SP_PERSONAL_DIR,           ///< Search in the personal directory
 	SP_SHARED_DIR,             ///< Search in the shared directory, like 'Shared Files' under Windows
-	SP_WORKING_DIR,            ///< Search in the working directory
 	SP_BINARY_DIR,             ///< Search in the directory where the binary resides
 	SP_INSTALLATION_DIR,       ///< Search in the installation directory
 	SP_APPLICATION_BUNDLE_DIR, ///< Search within the application bundle
