@@ -961,29 +961,29 @@ static const DrawTileSeqStruct _station_display_datas_0163[] = {
 
 // drive-through truck stop X
 static const DrawTileSeqStruct _station_display_datas_0168[] = {
-	{  1,  0,  0,  14,  3, 10, SPR_TRUCK_STOP_DT_X_W | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
-	{  1, 13,  0,  14,  1, 10, SPR_TRUCK_STOP_DT_X_E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
+	{  0,  0,  0,  16,  3, 16, SPR_TRUCK_STOP_DT_X_W | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
+	{  0, 13,  0,  16,  3, 16, SPR_TRUCK_STOP_DT_X_E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
 	TILE_SEQ_END()
 };
 
 // drive-through truck stop Y
 static const DrawTileSeqStruct _station_display_datas_0169[] = {
-	{ 13,  1,  0,  1, 14, 10, SPR_TRUCK_STOP_DT_Y_W | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
-	{  0,  1,  0,  3, 14, 10, SPR_TRUCK_STOP_DT_Y_E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
+	{ 13,  0,  0,  3, 16, 16, SPR_TRUCK_STOP_DT_Y_W | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
+	{  0,  0,  0,  3, 16, 16, SPR_TRUCK_STOP_DT_Y_E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
 	TILE_SEQ_END()
 };
 
 // drive-through bus stop X
 static const DrawTileSeqStruct _station_display_datas_0170[] = {
-	{  5,  0,  0,  8,  3, 10, SPR_BUS_STOP_DT_X_W | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
-	{  5, 14,  0,  8,  1, 10, SPR_BUS_STOP_DT_X_E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
+	{  0,  0,  0,  16,  3, 16, SPR_BUS_STOP_DT_X_W | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
+	{  0, 13,  0,  16,  3, 16, SPR_BUS_STOP_DT_X_E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
 	TILE_SEQ_END()
 };
 
 // drive-through bus stop Y
 static const DrawTileSeqStruct _station_display_datas_0171[] = {
-	{ 13,  5,  0,  1,  8, 10, SPR_BUS_STOP_DT_Y_W | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
-	{  0,  5,  0,  3,  8, 10, SPR_BUS_STOP_DT_Y_E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
+	{ 13,  0,  0,  3,  16, 16, SPR_BUS_STOP_DT_Y_W | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
+	{  0,  0,  0,  3,  16, 16, SPR_BUS_STOP_DT_Y_E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE },
 	TILE_SEQ_END()
 };
 
