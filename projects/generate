@@ -38,6 +38,24 @@ with_cocoa="0"
 enable_directmusic="1"
 file_prefix="..\\\\src\\\\"
 
+safety_check() {
+	li=""
+	for i in `cat $1 | grep -v "#" | xargs -n 1 basename | sort`; do
+		if [ "$li" = "$i" ]; then
+			echo " !! ERROR !!"
+			echo ""
+			echo "The filename '$i' is already used in this project."
+			echo "Because MSVC uses one single directory for all object files, it"
+			echo "cannot handle filenames with the same name inside the same project."
+			echo "Please rename either one of the file and try generating again."
+			echo ""
+			echo " !! ERROR !!"
+			exit 1
+		fi
+		li="$i"
+	done
+}
+
 load_main_data() {
 	# Read the source.list and process it
 	RES="`cat $1 | tr '\r' '\n' | awk '
@@ -168,6 +186,8 @@ generate() {
 		}
 	' >> "$ROOT_DIR/projects/$2"
 }
+
+safety_check "$ROOT_DIR/source.list"
 
 load_main_data "$ROOT_DIR/source.list" openttd
 load_lang_data "$ROOT_DIR/src/lang/*.txt" lang
