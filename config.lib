@@ -694,7 +694,7 @@ check_params() {
 		fi
 	fi
 
-	if [ "$personal_dir" == "1" ]; then
+	if [ "$personal_dir" = "1" ]; then
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
 			personal_dir="OpenTTD"
 		elif [ "$os" = "OSX" ]; then
