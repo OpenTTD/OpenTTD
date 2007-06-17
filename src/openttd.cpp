@@ -1306,7 +1306,7 @@ bool AfterLoadGame()
 	WP(w,vp_d).dest_scrollpos_y = _saved_scrollpos_y;
 
 	vp = w->viewport;
-	vp->zoom = _saved_scrollpos_zoom;
+	vp->zoom = (ZoomLevel)min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
 	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
 
