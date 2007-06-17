@@ -33,56 +33,6 @@ void Blitter_8bppBase::SetHorizontalLine(void *video, int width, uint8 color)
 	memset(video, color, width);
 }
 
-void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, uint8 color)
-{
-	int dy;
-	int dx;
-	int stepx;
-	int stepy;
-	int frac;
-
-	dy = (y2 - y) * 2;
-	if (dy < 0) {
-		dy = -dy;
-		stepy = -1;
-	} else {
-		stepy = 1;
-	}
-
-	dx = (x2 - x) * 2;
-	if (dx < 0) {
-		dx = -dx;
-		stepx = -1;
-	} else {
-		stepx = 1;
-	}
-
-	this->SetPixel(video, x, y, color);
-	if (dx > dy) {
-		frac = dy - (dx / 2);
-		while (x != x2) {
-			if (frac >= 0) {
-				y += stepy;
-				frac -= dx;
-			}
-			x += stepx;
-			frac += dy;
-			this->SetPixel(video, x, y, color);
-		}
-	} else {
-		frac = dx - (dy / 2);
-		while (y != y2) {
-			if (frac >= 0) {
-				x += stepx;
-				frac -= dy;
-			}
-			y += stepy;
-			frac += dx;
-			this->SetPixel(video, x, y, color);
-		}
-	}
-}
-
 void Blitter_8bppBase::CopyFromBuffer(void *video, const void *src, int width, int height, int src_pitch)
 {
 	int direction = (height < 0) ? -1 : 1;

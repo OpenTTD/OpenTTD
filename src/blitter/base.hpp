@@ -97,11 +97,6 @@ public:
 	virtual void SetHorizontalLine(void *video, int width, uint8 color) = 0;
 
 	/**
-	 * Draw a line in which ever direction.
-	 */
-	virtual void DrawLine(void *video, int x, int y, int x2, int y2, uint8 color) = 0;
-
-	/**
 	 * Copy from a buffer to the screen.
 	 * @param video The destionation pointer (video-buffer).
 	 * @param src The buffer from which the data will be read.
