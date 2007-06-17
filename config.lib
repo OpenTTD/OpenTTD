@@ -22,6 +22,7 @@ set_default() {
 	awk="awk"
 	os="DETECT"
 	endian="AUTO"
+	cpu_type="DETECT"
 	revision=""
 	config_log="config.log"
 	prefix_dir="/usr/local"
@@ -60,7 +61,7 @@ set_default() {
 	with_fontconfig="1"
 	with_psp_config="1"
 
-	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir                                                enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_ccache with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os cpu_type revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_ccache with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -89,6 +90,9 @@ detect_params() {
 
 			--os)                         prev_p="os";;
 			--os=*)                       os="$optarg";;
+
+			--cpu-type)                   prev_p="cpu_type";;
+			--cpu-type=*)                 cpu_type="$optarg";;
 
 			--revision=*)                 revision="$optarg";;
 
@@ -294,6 +298,7 @@ check_params() {
 
 	endian=`echo $endian | tr '[a-z]' '[A-Z]'`
 	os=`echo $os | tr '[a-z]' '[A-Z]'`
+	cpu_type=`echo $cpu_type | tr '[a-z]' '[A-Z]'`
 
 	# Check if all params have valid values
 
@@ -307,6 +312,12 @@ check_params() {
 	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|OPENBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP)$'`" ]; then
 		echo "configure: error: invalid option --os=$os"
 		echo " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|OPENBSD|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|WINCE|PSP]"
+		exit 1
+	fi
+	# cpu_type can be either 32 or 64
+	if [ -z "`echo $cpu_type | grep '^32$\|^64$\|^DETECT$'`" ]; then
+		echo "configure: error: invalid option --cpu-type=$cpu_type"
+		echo " Available options are: --cpu-type[=DETECT|32|64]"
 		exit 1
 	fi
 	# enable_debug should be between 0 and 4
@@ -352,6 +363,7 @@ check_params() {
 	fi
 	check_lipo
 	check_makedepend
+	detect_cputype
 
 	if [ "$enable_static" = "1" ]; then
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "MORPHOS" ] || [ "$os" = "OSX" ]; then
@@ -1485,6 +1497,9 @@ detect_library() {
 	# $2 - library name ('zlib', sets $zlib)
 	# $3 - static library name (libz.a)
 	# $4 - header name (zlib.h)
+	# $5 - force static (if non-empty)
+
+	if [ -n "$5" ]; then force_static="1"; fi
 
 	# 0 means no, 1 is auto-detect, 2 is force
 	if [ "$1" = "0" ]; then
@@ -1509,7 +1524,7 @@ detect_library() {
 		fi
 
 		eval "res=\$$2"
-		if [ -n "$res" ] && [ "$enable_static" != "0" ] && [ "$os" != "OSX" ]; then
+		if [ -n "$res" ] && ( [ -n "$force_static" ] || ( [ "$enable_static" != "0" ] && [ "$os" != "OSX" ] ) ); then
 			eval "res=\$$2"
 			log 2 "  trying $res... found"
 			# Now find the static lib, if needed
@@ -1870,6 +1885,25 @@ detect_sort() {
 	else
 		log 1 "checking sort... $sort"
 	fi
+}
+
+detect_cputype() {
+	if [ -n "$cpu_type" ] && [ "$cpu_type" != "DETECT" ]; then
+		log 1 "forcing cpu-type... $cpu_type bits"
+		return;
+	fi
+	echo "#include \"src/stdafx.h\"" > tmp.64bit.cpp
+	echo "assert_compile(sizeof(size_t) == 8);" >> tmp.64bit.cpp
+	echo "int main() { return 0; }" >> tmp.64bit.cpp
+	execute="$cxx_host $CFLAGS tmp.64bit.cpp -o tmp.64bit -DTESTING 2>&1"
+	cpu_type="`eval $execute 2>/dev/null`"
+	ret=$?
+	log 2 "executing $execute"
+	log 2 "  returned $cpu_type"
+	log 2 "  exit code $ret"
+	if [ "$ret" = "0" ]; then cpu_type="64"; else cpu_type="32"; fi
+	log 1 "detecting cpu-type... $cpu_type bits"
+	rm -f tmp.64bit tmp.64bit.cpp
 }
 
 make_sed() {

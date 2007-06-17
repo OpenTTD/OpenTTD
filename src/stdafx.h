@@ -216,6 +216,7 @@ char *getcwd(char *buf, size_t size);
 /* Windows has always LITTLE_ENDIAN */
 #if defined(WIN32) || defined(__OS2__) || defined(WIN64)
 # define TTD_LITTLE_ENDIAN
+#elif defined(TESTING)
 #else
 /* Else include endian[target/host].h, which has the endian-type, autodetected by the Makefile */
 # if defined(STRGEN)
