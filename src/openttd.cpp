@@ -860,7 +860,7 @@ void SwitchMode(int new_mode)
 		_opt_ptr = &_opt;
 		ResetGRFConfig(true);
 
-		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, BASE_DIR)) {
+		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
 			LoadIntroGame();
 			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		} else {
@@ -894,7 +894,7 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
-		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, BASE_DIR)) {
+		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
 			_opt_ptr = &_opt;
 
 			SetLocalPlayer(OWNER_NONE);
@@ -910,7 +910,7 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_SAVE: /* Save game */
-		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, BASE_DIR) != SL_OK) {
+		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, NO_DIRECTORY) != SL_OK) {
 			ShowErrorMessage(INVALID_STRING_ID, STR_4007_GAME_SAVE_FAILED, 0, 0);
 		} else {
 			DeleteWindowById(WC_SAVELOAD, 0);

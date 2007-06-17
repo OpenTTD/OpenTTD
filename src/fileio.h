@@ -33,6 +33,7 @@ enum Subdirectory {
 	DATA_DIR,      ///< Subdirectory for all data (GRFs, sample.cat, intro game)
 	LANG_DIR,      ///< Subdirectory for all translation files
 	NUM_SUBDIRS,   ///< Number of subdirectories
+	NO_DIRECTORY,  ///< A path without any base directory
 };
 
 /**

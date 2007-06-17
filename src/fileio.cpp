@@ -279,7 +279,7 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 	FILE *f = NULL;
 	char buf[MAX_PATH];
 
-	if (subdir == BASE_DIR) {
+	if (subdir == NO_DIRECTORY) {
 		ttd_strlcpy(buf, filename, lengthof(buf));
 	} else {
 		snprintf(buf, lengthof(buf), "%s%s%s", _searchpaths[sp], _subdirs[subdir], filename);
@@ -301,11 +301,11 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir)
 	FILE *f = NULL;
 	Searchpath sp;
 
-	assert(subdir < NUM_SUBDIRS);
+	assert(subdir < NUM_SUBDIRS || subdir == NO_DIRECTORY);
 
 	FOR_ALL_SEARCHPATHS(sp) {
 		f = FioFOpenFileSp(filename, mode, sp, subdir);
-		if (f != NULL || subdir == 0) break;
+		if (f != NULL || subdir == NO_DIRECTORY) break;
 	}
 
 	return f;

@@ -1584,6 +1584,11 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 	}
 
 	_sl.fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
+
+	/* Make it a little easier to load savegames from the console */
+	if (_sl.fh == NULL && mode == SL_LOAD) _sl.fh = FioFOpenFile(filename, "rb", SAVE_DIR);
+	if (_sl.fh == NULL && mode == SL_LOAD) _sl.fh = FioFOpenFile(filename, "rb", BASE_DIR);
+
 	if (_sl.fh == NULL) {
 		DEBUG(sl, 0, "Cannot open savegame '%s' for saving/loading.", filename);
 		return SL_ERROR;
