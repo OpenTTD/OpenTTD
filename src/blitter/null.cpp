@@ -1,18 +1,8 @@
 #include "../stdafx.h"
-#include "../zoom.hpp"
-#include "../gfx.h"
-#include "../functions.h"
+#include "../variables.h"
 #include "null.hpp"
 
 static FBlitter_Null iFBlitter_Null;
-
-void Blitter_Null::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
-{
-}
-
-void Blitter_Null::DrawColorMappingRect(void *dst, int width, int height, int pal)
-{
-}
 
 Sprite *Blitter_Null::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
 {

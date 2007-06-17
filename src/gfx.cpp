@@ -19,7 +19,7 @@
 #include "genworld.h"
 #include "debug.h"
 #include "zoom.hpp"
-#include "blitter/blitter.hpp"
+#include "blitter/factory.hpp"
 
 #ifdef _DEBUG
 bool _dbg_screen_rect;
@@ -60,6 +60,7 @@ static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / 8];
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const void *src;
 	void *dst;
 
@@ -70,8 +71,8 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 	if (yo > 0) {
 		/*Calculate pointers */
-		dst = _screen.renderer->MoveTo(_screen.dst_ptr, left, top + height - 1);
-		src = _screen.renderer->MoveTo(dst, 0, -yo);
+		dst = blitter->MoveTo(_screen.dst_ptr, left, top + height - 1);
+		src = blitter->MoveTo(dst, 0, -yo);
 
 		/* Decrease height and increase top */
 		top += yo;
@@ -80,20 +81,20 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 		/* Adjust left & width */
 		if (xo >= 0) {
-			dst = _screen.renderer->MoveTo(dst, xo, 0);
+			dst = blitter->MoveTo(dst, xo, 0);
 			left += xo;
 			width -= xo;
 		} else {
-			src = _screen.renderer->MoveTo(src, -xo, 0);
+			src = blitter->MoveTo(src, -xo, 0);
 			width += xo;
 		}
 
 		/* Negative height as we want to copy from bottom to top */
-		_screen.renderer->CopyFromBuffer(dst, src, width, -height, _screen.pitch);
+		blitter->CopyFromBuffer(dst, src, width, -height, _screen.pitch);
 	} else {
 		/* Calculate pointers */
-		dst = _screen.renderer->MoveTo(_screen.dst_ptr, left, top);
-		src = _screen.renderer->MoveTo(dst, 0, -yo);
+		dst = blitter->MoveTo(_screen.dst_ptr, left, top);
+		src = blitter->MoveTo(dst, 0, -yo);
 
 		/* Decrese height. (yo is <=0). */
 		height += yo;
@@ -101,17 +102,17 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 		/* Adjust left & width */
 		if (xo >= 0) {
-			dst = _screen.renderer->MoveTo(dst, xo, 0);
+			dst = blitter->MoveTo(dst, xo, 0);
 			left += xo;
 			width -= xo;
 		} else {
-			src = _screen.renderer->MoveTo(src, -xo, 0);
+			src = blitter->MoveTo(src, -xo, 0);
 			width += xo;
 		}
 
 		/* the y-displacement may be 0 therefore we have to use memmove,
 		 * because source and destination may overlap */
-		_screen.renderer->MoveBuffer(dst, src, width, height);
+		blitter->MoveBuffer(dst, src, width, height);
 	}
 	/* This part of the screen is now dirty. */
 	_video_driver->make_dirty(left, top, width, height);
@@ -120,6 +121,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 void GfxFillRect(int left, int top, int right, int bottom, int color)
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const DrawPixelInfo *dpi = _cur_dpi;
 	void *dst;
 	const int otop = top;
@@ -142,31 +144,33 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 	bottom -= top;
 	assert(bottom > 0);
 
-	dst = _screen.renderer->MoveTo(dpi->dst_ptr, left, top);
+	dst = blitter->MoveTo(dpi->dst_ptr, left, top);
 
 	if (!HASBIT(color, PALETTE_MODIFIER_GREYOUT)) {
 		if (!HASBIT(color, USE_COLORTABLE)) {
 			do {
-				_screen.renderer->SetHorizontalLine(dst, right, (uint8)color);
-				dst = _screen.renderer->MoveTo(dst, 0, 1);
+				blitter->SetHorizontalLine(dst, right, (uint8)color);
+				dst = blitter->MoveTo(dst, 0, 1);
 			} while (--bottom);
 		} else {
-			BlitterFactoryBase::GetCurrentBlitter()->DrawColorMappingRect(dst, right, bottom, GB(color, 0, PALETTE_WIDTH));
+			blitter->DrawColorMappingRect(dst, right, bottom, GB(color, 0, PALETTE_WIDTH));
 		}
 	} else {
 		byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
 		do {
-			for (int i = (bo ^= 1); i < right; i += 2) _screen.renderer->SetPixel(dst, i, 0, (uint8)color);
-			dst = _screen.renderer->MoveTo(dst, 0, 1);
+			for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8)color);
+			dst = blitter->MoveTo(dst, 0, 1);
 		} while (--bottom > 0);
 	}
 }
 
 static void GfxSetPixel(int x, int y, int color)
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const DrawPixelInfo *dpi = _cur_dpi;
+
 	if ((x -= dpi->left) < 0 || x >= dpi->width || (y -= dpi->top) < 0 || y >= dpi->height) return;
-	_screen.renderer->SetPixel(dpi->dst_ptr, x, y, color);
+	blitter->SetPixel(dpi->dst_ptr, x, y, color);
 }
 
 void GfxDrawLine(int x, int y, int x2, int y2, int color)
@@ -934,14 +938,16 @@ void ScreenSizeChanged()
 void UndrawMouseCursor()
 {
 	if (_cursor.visible) {
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		_cursor.visible = false;
-		_screen.renderer->CopyFromBuffer(_screen.renderer->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup, _cursor.draw_size.x, _cursor.draw_size.y, _cursor.draw_size.x);
+		blitter->CopyFromBuffer(blitter->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup, _cursor.draw_size.x, _cursor.draw_size.y, _cursor.draw_size.x);
 		_video_driver->make_dirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
 	}
 }
 
 void DrawMouseCursor()
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	int x;
 	int y;
 	int w;
@@ -978,10 +984,10 @@ void DrawMouseCursor()
 	_cursor.draw_pos.y = y;
 	_cursor.draw_size.y = h;
 
-	assert(_screen.renderer->BufferSize(w, h) < (int)sizeof(_cursor_backup));
+	assert(blitter->BufferSize(w, h) < (int)sizeof(_cursor_backup));
 
 	/* Make backup of stuff below cursor */
-	_screen.renderer->CopyToBuffer(_screen.renderer->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup, _cursor.draw_size.x, _cursor.draw_size.y, _cursor.draw_size.x);
+	blitter->CopyToBuffer(blitter->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup, _cursor.draw_size.x, _cursor.draw_size.y, _cursor.draw_size.x);
 
 	/* Draw cursor on screen */
 	_cur_dpi = &_screen;
@@ -1171,6 +1177,7 @@ void MarkWholeScreenDirty()
  * get some nasty results */
 bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int height)
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const DrawPixelInfo *o = _cur_dpi;
 
 	n->zoom = ZOOM_LVL_NORMAL;
@@ -1202,7 +1209,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 		n->top = 0;
 	}
 
-	n->dst_ptr = _screen.renderer->MoveTo(o->dst_ptr, left, top);
+	n->dst_ptr = blitter->MoveTo(o->dst_ptr, left, top);
 	n->pitch = o->pitch;
 
 	if (height > o->height - top) {

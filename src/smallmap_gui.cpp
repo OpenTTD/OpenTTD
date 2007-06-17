@@ -25,6 +25,7 @@
 #include "town.h"
 #include "sound.h"
 #include "variables.h"
+#include "blitter/factory.hpp"
 
 static const Widget _smallmap_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
@@ -169,20 +170,24 @@ static const LegendAndColour * const _legend_table[] = {
 
 static inline void WRITE_PIXELS(void *d, uint32 val)
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	uint8 *val8 = (uint8 *)&val;
-	_screen.renderer->SetPixel(d, 0, 0, val8[0]);
-	_screen.renderer->SetPixel(d, 1, 0, val8[1]);
-	_screen.renderer->SetPixel(d, 2, 0, val8[2]);
-	_screen.renderer->SetPixel(d, 3, 0, val8[3]);
+
+	blitter->SetPixel(d, 0, 0, val8[0]);
+	blitter->SetPixel(d, 1, 0, val8[1]);
+	blitter->SetPixel(d, 2, 0, val8[2]);
+	blitter->SetPixel(d, 3, 0, val8[3]);
 }
 
 static inline void WRITE_PIXELS_OR(void *d, uint32 val)
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	uint8 *val8 = (uint8 *)&val;
-	_screen.renderer->SetPixelIfEmpty(d, 0, 0, val8[0]);
-	_screen.renderer->SetPixelIfEmpty(d, 1, 0, val8[1]);
-	_screen.renderer->SetPixelIfEmpty(d, 2, 0, val8[2]);
-	_screen.renderer->SetPixelIfEmpty(d, 3, 0, val8[3]);
+
+	blitter->SetPixelIfEmpty(d, 0, 0, val8[0]);
+	blitter->SetPixelIfEmpty(d, 1, 0, val8[1]);
+	blitter->SetPixelIfEmpty(d, 2, 0, val8[2]);
+	blitter->SetPixelIfEmpty(d, 3, 0, val8[3]);
 }
 
 #define MKCOLOR(x) TO_LE32X(x)
@@ -280,7 +285,8 @@ typedef uint32 GetSmallMapPixels(TileIndex tile); // typedef callthrough functio
  */
 static void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
 {
-	void *dst_ptr_end = _screen.renderer->MoveTo(_screen.dst_ptr, _screen.width, _screen.height - 1);
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+	void *dst_ptr_end = blitter->MoveTo(_screen.dst_ptr, _screen.width, _screen.height - 1);
 
 	do {
 		/* check if the tile (xc,yc) is within the map range */
@@ -290,7 +296,7 @@ static void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, 
 				WRITE_PIXELS_OR(dst, proc(TileXY(xc, yc)) & mask);
 		}
 	/* switch to next tile in the column */
-	} while (xc++, yc++, dst = _screen.renderer->MoveTo(dst, pitch, 0), --reps != 0);
+	} while (xc++, yc++, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);
 }
 
 
@@ -510,6 +516,7 @@ static void DrawHorizMapIndicator(int x, int y, int x2, int y2)
  */
 static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_towns)
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	DrawPixelInfo *old_dpi;
 	int dx,dy, x, y, x2, y2;
 	void *ptr;
@@ -564,7 +571,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		}
 	}
 
-	ptr = _screen.renderer->MoveTo(dpi->dst_ptr, -dx - 4, 0);
+	ptr = blitter->MoveTo(dpi->dst_ptr, -dx - 4, 0);
 	x = - dx - 4;
 	y = 0;
 
@@ -598,13 +605,13 @@ skip_column:
 		if (y == 0) {
 			tile_y++;
 			y++;
-			ptr = _screen.renderer->MoveTo(ptr, 0, 1);
+			ptr = blitter->MoveTo(ptr, 0, 1);
 		} else {
 			tile_x--;
 			y--;
-			ptr = _screen.renderer->MoveTo(ptr, 0, -1);
+			ptr = blitter->MoveTo(ptr, 0, -1);
 		}
-		ptr = _screen.renderer->MoveTo(ptr, 2, 0);
+		ptr = blitter->MoveTo(ptr, 2, 0);
 		x += 2;
 	}
 
@@ -650,8 +657,8 @@ skip_column:
 				color = (type == 1) ? _vehicle_type_colors[v->type] : 0xF;
 
 				/* And draw either one or two pixels depending on clipping */
-				_screen.renderer->SetPixel(dpi->dst_ptr, x, y, color);
-				if (!skip) _screen.renderer->SetPixel(dpi->dst_ptr, x + 1, y, color);;
+				blitter->SetPixel(dpi->dst_ptr, x, y, color);
+				if (!skip) blitter->SetPixel(dpi->dst_ptr, x + 1, y, color);
 			}
 		}
 	}

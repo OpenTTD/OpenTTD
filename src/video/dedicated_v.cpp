@@ -14,7 +14,7 @@
 #include "../variables.h"
 #include "../genworld.h"
 #include "../fileio.h"
-#include "../blitter/blitter.hpp"
+#include "../blitter/factory.hpp"
 #include "dedicated_v.h"
 
 #ifdef BEOS_NET_SERVER
@@ -128,8 +128,6 @@ static const char *DedicatedVideoStart(const char * const *parm)
 
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
-	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
-	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 
 	SetDebugString("net=6");
 

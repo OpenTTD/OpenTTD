@@ -13,8 +13,7 @@
 #include "../window.h"
 #include "../network/network.h"
 #include "../variables.h"
-#include "../blitter/blitter.hpp"
-#include "../renderer/renderer.hpp"
+#include "../blitter/factory.hpp"
 #include "sdl_v.h"
 #include <SDL.h>
 
@@ -205,8 +204,6 @@ static bool CreateMainSurface(int w, int h)
 	_screen.width = newscreen->w;
 	_screen.height = newscreen->h;
 	_screen.pitch = newscreen->pitch / (bpp / 8);
-	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
-	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 	_sdl_screen = newscreen;
 	InitPalette();
 

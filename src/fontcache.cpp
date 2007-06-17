@@ -15,7 +15,7 @@
 #include "fontcache.h"
 #include "helpers.hpp"
 #include "spriteloader/spriteloader.hpp"
-#include "blitter/blitter.hpp"
+#include "blitter/factory.hpp"
 
 #ifdef WITH_FREETYPE
 

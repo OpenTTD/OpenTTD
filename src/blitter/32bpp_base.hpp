@@ -1,18 +1,23 @@
 /* $Id$ */
 
-/** @file 32bpp.hpp */
+/** @file 32bpp_base.hpp */
 
-#ifndef RENDERER_32BPP_HPP
-#define RENDERER_32BPP_HPP
+#ifndef BLITTER_32BPP_BASE_HPP
+#define BLITTER_32BPP_BASE_HPP
 
-#include "renderer.hpp"
+#include "base.hpp"
 
-class Renderer_32bpp : public Renderer {
+class Blitter_32bppBase : public Blitter {
 public:
+	/* virtual */ uint8 GetScreenDepth() { return 32; }
+//	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
+//	/* virtual */ void DrawColorMappingRect(void *dst, int width, int height, int pal);
+//	/* virtual */ Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator);
 	/* virtual */ void *MoveTo(const void *video, int x, int y);
 	/* virtual */ void SetPixel(void *video, int x, int y, uint8 color);
 	/* virtual */ void SetPixelIfEmpty(void *video, int x, int y, uint8 color);
 	/* virtual */ void SetHorizontalLine(void *video, int width, uint8 color);
+	/* virtual */ void DrawLine(void *video, int x, int y, int x2, int y2, uint8 color);
 	/* virtual */ void CopyFromBuffer(void *video, const void *src, int width, int height, int src_pitch);
 	/* virtual */ void CopyToBuffer(const void *video, void *dst, int width, int height, int dst_pitch);
 	/* virtual */ void MoveBuffer(void *video_dst, const void *video_src, int width, int height);
@@ -25,11 +30,4 @@ public:
 	}
 };
 
-class FRenderer_32bpp: public RendererFactory<FRenderer_32bpp> {
-public:
-	/* virtual */ const char *GetName() { return "32bpp"; }
-
-	/* virtual */ Renderer *CreateInstance() { return new Renderer_32bpp(); }
-};
-
-#endif /* RENDERER_32BPP_HPP */
+#endif /* BLITTER_32BPP_BASE_HPP */

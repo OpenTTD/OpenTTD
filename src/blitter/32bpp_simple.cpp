@@ -3,7 +3,6 @@
 #include "../gfx.h"
 #include "../debug.h"
 #include "../table/sprites.h"
-#include "../renderer/32bpp.hpp"
 #include "32bpp_simple.hpp"
 
 static FBlitter_32bppSimple iFBlitter_32bppSimple;
@@ -108,7 +107,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					if (src->m == 0) {
 						if (src->a != 0) *dst = ComposeColorRGBA(src->r, src->g, src->b, src->a, *dst);
 					} else {
-						if (bp->remap[src->m] != 0) *dst = ComposeColorPA(Renderer_32bpp::LookupColourInPalette(bp->remap[src->m]), src->a, *dst);
+						if (bp->remap[src->m] != 0) *dst = ComposeColorPA(this->LookupColourInPalette(bp->remap[src->m]), src->a, *dst);
 					}
 					break;
 
@@ -176,7 +175,7 @@ Sprite *Blitter_32bppSimple::Encode(SpriteLoader::Sprite *sprite, Blitter::Alloc
 	for (int i = 0; i < sprite->height * sprite->width; i++) {
 		if (dst[i].m != 0) {
 			/* Pre-convert the mapping channel to a RGB value */
-			uint color = Renderer_32bpp::LookupColourInPalette(dst[i].m);
+			uint color = this->LookupColourInPalette(dst[i].m);
 			dst[i].r = GB(color, 16, 8);
 			dst[i].g = GB(color, 8,  8);
 			dst[i].b = GB(color, 0,  8);

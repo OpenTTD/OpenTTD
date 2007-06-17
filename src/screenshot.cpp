@@ -16,7 +16,7 @@
 #include "date.h"
 #include "string.h"
 #include "helpers.hpp"
-#include "blitter/blitter.hpp"
+#include "blitter/factory.hpp"
 #include "fileio.h"
 
 char _screenshot_format_name[8];
@@ -483,8 +483,9 @@ void SetScreenshotFormat(int i)
 /* screenshot generator that dumps the current video buffer */
 static void CurrentScreenCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
 {
-	void *src = _screen.renderer->MoveTo(_screen.dst_ptr, 0, y);
-	_screen.renderer->CopyToBuffer(src, buf, _screen.width, n, pitch);
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+	void *src = blitter->MoveTo(_screen.dst_ptr, 0, y);
+	blitter->CopyToBuffer(src, buf, _screen.width, n, pitch);
 }
 
 /* generate a large piece of the world */

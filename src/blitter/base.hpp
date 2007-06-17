@@ -1,16 +1,64 @@
 /* $Id$ */
 
-/** @file renderer.hpp */
+#ifndef BLITTER_BASE_HPP
+#define BLITTER_BASE_HPP
 
-#ifndef RENDERER_HPP
-#define RENDERER_HPP
+#include "../spritecache.h"
+#include "../spriteloader/spriteloader.hpp"
 
-#include <string>
-#include <map>
+enum BlitterMode {
+	BM_NORMAL,
+	BM_COLOUR_REMAP,
+	BM_TRANSPARENT,
+};
 
-class Renderer {
+/**
+ * How all blitters should look like. Extend this class to make your own.
+ */
+class Blitter {
 public:
-	virtual ~Renderer() { }
+	struct BlitterParams {
+		const void *sprite;      ///< Pointer to the sprite how ever the encoder stored it
+		const byte *remap;       ///< XXX -- Temporary storage for remap array
+
+		int skip_left, skip_top; ///< How much pixels of the source to skip on the left and top (based on zoom of dst)
+		int width, height;       ///< The width and height in pixels that needs to be drawn to dst
+		int sprite_width;        ///< Real width of the sprite
+		int sprite_height;       ///< Real height of the sprite
+		int left, top;           ///< The offset in the 'dst' in pixels to start drawing
+
+		void *dst;               ///< Destination buffer
+		int pitch;               ///< The pitch of the destination buffer
+	};
+
+	typedef void *AllocatorProc(size_t size);
+
+	/**
+	 * Get the screen depth this blitter works for.
+	 *  This is either: 8, 16, 24 or 32.
+	 */
+	virtual uint8 GetScreenDepth() = 0;
+
+	/**
+	 * Draw an image to the screen, given an amount of params defined above.
+	 */
+	virtual void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) = 0;
+
+	/**
+	 * Draw a colortable to the screen. This is: the color of the screen is read
+	 *  and is looked-up in the palette to match a new color, which then is put
+	 *  on the screen again.
+	 * @param dst the destination pointer (video-buffer).
+	 * @param width the width of the buffer.
+	 * @param height the height of the buffer.
+	 * @param pal the palette to use.
+	 */
+	virtual void DrawColorMappingRect(void *dst, int width, int height, int pal) = 0;
+
+	/**
+	 * Convert a sprite from the loader to our own format.
+	 */
+	virtual Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator) = 0;
 
 	/**
 	 * Move the destination pointer the requested amount x and y, keeping in mind
@@ -49,6 +97,11 @@ public:
 	virtual void SetHorizontalLine(void *video, int width, uint8 color) = 0;
 
 	/**
+	 * Draw a line in which ever direction.
+	 */
+	virtual void DrawLine(void *video, int x, int y, int x2, int y2, uint8 color) = 0;
+
+	/**
 	 * Copy from a buffer to the screen.
 	 * @param video The destionation pointer (video-buffer).
 	 * @param src The buffer from which the data will be read.
@@ -84,82 +137,8 @@ public:
 	 * @return The size needed for the buffer.
 	 */
 	virtual int BufferSize(int width, int height) = 0;
+
+	virtual ~Blitter() { }
 };
 
-/**
- * The factory, keeping track of all renderers.
- */
-class RendererFactoryBase {
-private:
-	char *name;
-	typedef std::map<std::string, RendererFactoryBase *> Renderers;
-
-	static Renderers &GetRenderers()
-	{
-		static Renderers &s_renderers = *new Renderers();
-		return s_renderers;
-	}
-
-protected:
-	/**
-	 * Register a renderer internally, based on his bpp.
-	 * @param name the name of the renderer.
-	 * @note an assert() will be trigger if 2 renderers with the same bpp try to register.
-	 */
-	void RegisterRenderer(const char *name)
-	{
-		/* Don't register nameless Renderers */
-		if (name == NULL) return;
-
-		this->name = strdup(name);
-		std::pair<Renderers::iterator, bool> P = GetRenderers().insert(Renderers::value_type(name, this));
-		assert(P.second);
-	}
-
-public:
-	RendererFactoryBase() :
-		name(NULL)
-	{ }
-
-	virtual ~RendererFactoryBase() { if (this->name != NULL) GetRenderers().erase(this->name); free(this->name); }
-
-	/**
-	 * Find the requested renderer and return his class-instance.
-	 * @param name the renderer to select.
-	 */
-	static Renderer *SelectRenderer(const char *name)
-	{
-		if (GetRenderers().size() == 0) return NULL;
-
-		Renderers::iterator it = GetRenderers().begin();
-		for (; it != GetRenderers().end(); it++) {
-			RendererFactoryBase *r = (*it).second;
-			if (strcasecmp(name, r->name) == 0) {
-				return r->CreateInstance();
-			}
-		}
-		return NULL;
-	}
-
-	/**
-	 * Create an instance of this Renderer-class.
-	 */
-	virtual Renderer *CreateInstance() = 0;
-};
-
-/**
- * A template factory, so ->GetBpp() works correctly. This because else some compiler will complain.
- */
-template <class T>
-class RendererFactory: public RendererFactoryBase {
-public:
-	RendererFactory() { this->RegisterRenderer(((T *)this)->GetName()); }
-
-	/**
-	 * Get the name for this renderer.
-	 */
-	const char *GetName();
-};
-
-
-#endif /* RENDERER_HPP */
+#endif /* BLITTER_BASE_HPP */

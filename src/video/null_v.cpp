@@ -6,7 +6,7 @@
 #include "../variables.h"
 #include "../window.h"
 #include "../debug.h"
-#include "../blitter/blitter.hpp"
+#include "../blitter/factory.hpp"
 #include "null_v.h"
 
 static const char* NullVideoStart(const char* const* parm)
@@ -16,8 +16,6 @@ static const char* NullVideoStart(const char* const* parm)
 	/* Do not render, nor blit */
 	DEBUG(misc, 1, "Forcing blitter 'null'...");
 	BlitterFactoryBase::SelectBlitter("null");
-	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
-	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
 	return NULL;
 }
 

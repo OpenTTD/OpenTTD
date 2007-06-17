@@ -17,7 +17,7 @@
 #ifdef WITH_PNG
 #include "spriteloader/png.hpp"
 #endif /* WITH_PNG */
-#include "blitter/blitter.hpp"
+#include "blitter/factory.hpp"
 
 /* Default of 4MB spritecache */
 uint _sprite_cache_size = 4;

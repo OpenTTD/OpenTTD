@@ -968,10 +968,22 @@
 			Name="Blitters"
 			Filter="">
 			<File
+				RelativePath=".\..\src\blitter\32bpp_base.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\32bpp_base.hpp">
+			</File>
+			<File
 				RelativePath=".\..\src\blitter\32bpp_simple.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\blitter\32bpp_simple.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_base.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\8bpp_base.hpp">
 			</File>
 			<File
 				RelativePath=".\..\src\blitter\8bpp_debug.cpp">
@@ -992,7 +1004,10 @@
 				RelativePath=".\..\src\blitter\8bpp_simple.hpp">
 			</File>
 			<File
-				RelativePath=".\..\src\blitter\blitter.hpp">
+				RelativePath=".\..\src\blitter\base.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\factory.hpp">
 			</File>
 			<File
 				RelativePath=".\..\src\blitter\null.cpp">
@@ -1018,31 +1033,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\spriteloader\spriteloader.hpp">
-			</File>
-		</Filter>
-		<Filter
-			Name="Renderer"
-			Filter="">
-			<File
-				RelativePath=".\..\src\renderer\32bpp.cpp">
-			</File>
-			<File
-				RelativePath=".\..\src\renderer\32bpp.hpp">
-			</File>
-			<File
-				RelativePath=".\..\src\renderer\8bpp.cpp">
-			</File>
-			<File
-				RelativePath=".\..\src\renderer\8bpp.hpp">
-			</File>
-			<File
-				RelativePath=".\..\src\renderer\null.cpp">
-			</File>
-			<File
-				RelativePath=".\..\src\renderer\null.hpp">
-			</File>
-			<File
-				RelativePath=".\..\src\renderer\renderer.hpp">
 			</File>
 		</Filter>
 		<Filter

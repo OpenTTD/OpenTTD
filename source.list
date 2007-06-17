@@ -293,15 +293,20 @@ ai/trolly/shared.cpp
 ai/trolly/trolly.cpp
 
 # Blitters
+blitter/32bpp_base.cpp
+blitter/32bpp_base.hpp
 blitter/32bpp_simple.cpp
 blitter/32bpp_simple.hpp
+blitter/8bpp_base.cpp
+blitter/8bpp_base.hpp
 blitter/8bpp_debug.cpp
 blitter/8bpp_debug.hpp
 blitter/8bpp_optimized.cpp
 blitter/8bpp_optimized.hpp
 blitter/8bpp_simple.cpp
 blitter/8bpp_simple.hpp
-blitter/blitter.hpp
+blitter/base.hpp
+blitter/factory.hpp
 blitter/null.cpp
 blitter/null.hpp
 
@@ -313,15 +318,6 @@ spriteloader/png.cpp
 spriteloader/png.hpp
 #end
 spriteloader/spriteloader.hpp
-
-# Renderer
-renderer/32bpp.cpp
-renderer/32bpp.hpp
-renderer/8bpp.cpp
-renderer/8bpp.hpp
-renderer/null.cpp
-renderer/null.hpp
-renderer/renderer.hpp
 
 # NewGRF
 newgrf.cpp

@@ -17,6 +17,7 @@
 #include "table/sprites.h"
 #include "genworld.h"
 #include "helpers.hpp"
+#include "blitter/factory.hpp"
 
 /* delta between mouse cursor and upper left corner of dragged window */
 static Point _drag_delta;
@@ -270,7 +271,7 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 		dp->left = left - (*wz)->left;
 		dp->top = top - (*wz)->top;
 		dp->pitch = _screen.pitch;
-		dp->dst_ptr = _screen.renderer->MoveTo(_screen.dst_ptr, left, top);
+		dp->dst_ptr = BlitterFactoryBase::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
 		dp->zoom = ZOOM_LVL_NORMAL;
 		CallWindowEventNP(*wz, WE_PAINT);
 	}

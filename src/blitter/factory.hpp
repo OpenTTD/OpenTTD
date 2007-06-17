@@ -1,76 +1,11 @@
 /* $Id$ */
 
-/** @file blitter.hpp */
+#ifndef BLITTER_FACTORY_HPP
+#define BLITTER_FACTORY_HPP
 
-#ifndef BLITTER_HPP
-#define BLITTER_HPP
-
-#include "../spriteloader/spriteloader.hpp"
-#include "../spritecache.h"
+#include "base.hpp"
 #include <string>
 #include <map>
-
-enum BlitterMode {
-	BM_NORMAL,
-	BM_COLOUR_REMAP,
-	BM_TRANSPARENT,
-};
-
-/**
- * How all blitters should look like. Extend this class to make your own.
- */
-class Blitter {
-public:
-	struct BlitterParams {
-		const void *sprite;      ///< Pointer to the sprite how ever the encoder stored it
-		const byte *remap;       ///< XXX -- Temporary storage for remap array
-
-		int skip_left, skip_top; ///< How much pixels of the source to skip on the left and top (based on zoom of dst)
-		int width, height;       ///< The width and height in pixels that needs to be drawn to dst
-		int sprite_width;        ///< Real width of the sprite
-		int sprite_height;       ///< Real height of the sprite
-		int left, top;           ///< The offset in the 'dst' in pixels to start drawing
-
-		void *dst;               ///< Destination buffer
-		int pitch;               ///< The pitch of the destination buffer
-	};
-
-	typedef void *AllocatorProc(size_t size);
-
-	/**
-	 * Get the screen depth this blitter works for.
-	 *  This is either: 8, 16, 24 or 32.
-	 */
-	virtual uint8 GetScreenDepth() = 0;
-
-	/**
-	 * Draw an image to the screen, given an amount of params defined above.
-	 */
-	virtual void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom) = 0;
-
-	/**
-	 * Draw a colortable to the screen. This is: the color of the screen is read
-	 *  and is looked-up in the palette to match a new color, which then is put
-	 *  on the screen again.
-	 * @param dst the destination pointer (video-buffer).
-	 * @param width the width of the buffer.
-	 * @param height the height of the buffer.
-	 * @param pal the palette to use.
-	 */
-	virtual void DrawColorMappingRect(void *dst, int width, int height, int pal) = 0;
-
-	/**
-	 * Convert a sprite from the loader to our own format.
-	 */
-	virtual Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator) = 0;
-
-	/**
-	 * Get the renderer this class depends on.
-	 */
-	virtual const char *GetRenderer() = 0;
-
-	virtual ~Blitter() { }
-};
 
 /**
  * The base factory, keeping track of all blitters.
@@ -183,4 +118,4 @@ public:
 	const char *GetName();
 };
 
-#endif /* BLITTER_HPP */
+#endif /* BLITTER_FACTORY_HPP */

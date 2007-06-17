@@ -102,16 +102,6 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 	}
 }
 
-void Blitter_8bppOptimized::DrawColorMappingRect(void *dst, int width, int height, int pal)
-{
-	const uint8 *ctab = GetNonSprite(pal) + 1;
-
-	do {
-		for (int i = 0; i != width; i++) _screen.renderer->SetPixel(dst, i, 0, ctab[((uint8 *)dst)[i]]);
-		dst = _screen.renderer->MoveTo(dst, 0, 1);
-	} while (height--);
-}
-
 Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
 {
 	Sprite *dest_sprite;

@@ -16,6 +16,7 @@
 #include "string.h"
 #include "variables.h"
 #include "table/sprites.h"
+#include "blitter/factory.hpp"
 #include <stdarg.h> /* va_list */
 #include "date.h"
 
@@ -126,6 +127,7 @@ void InitTextMessage()
 void UndrawTextMessage()
 {
 	if (_textmessage_visible) {
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		/* Sometimes we also need to hide the cursor
 		 *   This is because both textmessage and the cursor take a shot of the
 		 *   screen before drawing.
@@ -161,7 +163,7 @@ void UndrawTextMessage()
 
 		_textmessage_visible = false;
 		/* Put our 'shot' back to the screen */
-		_screen.renderer->CopyFromBuffer(_screen.renderer->MoveTo(_screen.dst_ptr, x, y), _textmessage_backup, width, height, _textmsg_box.width);
+		blitter->CopyFromBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _textmessage_backup, width, height, _textmsg_box.width);
 		/* And make sure it is updated next time */
 		_video_driver->make_dirty(x, y, width, height);
 
@@ -196,6 +198,7 @@ void TextMessageDailyLoop()
 /** Draw the textmessage-box */
 void DrawTextMessage()
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	if (!_textmessage_dirty) return;
 
 	/* First undraw if needed */
@@ -221,7 +224,7 @@ void DrawTextMessage()
 	if (width <= 0 || height <= 0) return;
 
 	/* Make a copy of the screen as it is before painting (for undraw) */
-	_screen.renderer->CopyToBuffer(_screen.renderer->MoveTo(_screen.dst_ptr, x, y), _textmessage_backup, width, height, _textmsg_box.width);
+	blitter->CopyToBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _textmessage_backup, width, height, _textmsg_box.width);
 
 	_cur_dpi = &_screen; // switch to _screen painting
 

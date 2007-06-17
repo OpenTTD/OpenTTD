@@ -7,7 +7,6 @@
 
 #include "openttd.h"
 #include "zoom.hpp"
-#include "renderer/renderer.hpp"
 
 enum WindowKeyCodes {
 	WKC_SHIFT = 0x8000,
@@ -138,7 +137,6 @@ struct DrawPixelInfo {
 	int left, top, width, height;
 	int pitch;
 	ZoomLevel zoom;
-	Renderer *renderer;
 };
 
 struct Colour {

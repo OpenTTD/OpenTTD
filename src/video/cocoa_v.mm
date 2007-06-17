@@ -1763,9 +1763,6 @@ static void QZ_VideoInit()
 
 	_cocoa_video_data.cursor_visible = true;
 
-	_screen.renderer = RendererFactoryBase::SelectRenderer(BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
-	if (_screen.renderer == NULL) error("Couldn't load the renderer '%s' the selected blitter depends on", BlitterFactoryBase::GetCurrentBlitter()->GetRenderer());
-
 	/* register for sleep notifications so wake from sleep generates SDL_VIDEOEXPOSE */
 //	QZ_RegisterForSleepNotifications();
 }

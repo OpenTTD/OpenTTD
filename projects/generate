@@ -40,7 +40,7 @@ file_prefix="..\\\\src\\\\"
 
 safety_check() {
 	li=""
-	for i in `cat $1 | grep -v "#" | xargs -n 1 basename | sort`; do
+	for i in `cat $1 | grep -v "#\|ottdres.rc\|win32.cpp\|win32_v.cpp" | xargs -n 1 basename | sort`; do
 		if [ "$li" = "$i" ]; then
 			echo " !! ERROR !!"
 			echo ""

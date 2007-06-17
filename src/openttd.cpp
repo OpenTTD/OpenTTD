@@ -64,7 +64,7 @@
 #include "newgrf_commons.h"
 #include "player_face.h"
 #include "group.h"
-#include "blitter/blitter.hpp"
+#include "blitter/factory.hpp"
 
 #include "bridge_map.h"
 #include "clear_map.h"
