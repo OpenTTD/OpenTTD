@@ -312,8 +312,6 @@ static void UnInitializeGame()
 
 static void LoadIntroGame()
 {
-	char filename[256];
-
 	_game_mode = GM_MENU;
 
 	/* Clear transparency options */
@@ -326,14 +324,8 @@ static void LoadIntroGame()
 	ResetWindowSystem();
 	SetupColorsAndInitialWindow();
 
-	/* Generate a world. */
-	snprintf(filename, lengthof(filename), "%sopntitle.dat",  _paths.data_dir);
-#if defined SECOND_DATA_DIR
-	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
-		snprintf(filename, lengthof(filename), "%sopntitle.dat",  _paths.second_data_dir);
-	}
-#endif
-	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
+	/* Load the default opening screen savegame */
+	if (SaveOrLoad("opntitle.dat", SL_LOAD, DATA_DIR) != SL_OK) {
 		GenerateWorld(GW_EMPTY, 64, 64); // if failed loading, make empty world.
 		WaitTillGeneratedWorld();
 	}
@@ -760,7 +752,7 @@ static void StartScenario()
 	ResetGRFConfig(true);
 
 	/* Load game */
-	if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode) != SL_OK) {
+	if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, SCENARIO_DIR) != SL_OK) {
 		LoadIntroGame();
 		ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 	}
@@ -782,12 +774,20 @@ static void StartScenario()
 	MarkWholeScreenDirty();
 }
 
-bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
+/** Load the specified savegame but on error do different things.
+ * If loading fails due to corrupt savegame, bad version, etc. go back to
+ * a previous correct state. In the menu for example load the intro game again.
+ * @param filename file to be loaded
+ * @param mode mode of loading, either SL_LOAD or SL_OLD_LOAD
+ * @param newgm switch to this mode of loading fails due to some unknown error
+ * @param subdir default directory to look for filename, set to 0 if not needed */
+bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subdir)
 {
 	byte ogm = _game_mode;
 
 	_game_mode = newgm;
-	switch (SaveOrLoad(filename, mode)) {
+	assert(mode == SL_LOAD || mode == SL_OLD_LOAD);
+	switch (SaveOrLoad(filename, mode, subdir)) {
 		case SL_OK: return true;
 
 		case SL_REINIT:
@@ -860,7 +860,7 @@ void SwitchMode(int new_mode)
 		_opt_ptr = &_opt;
 		ResetGRFConfig(true);
 
-		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
+		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, BASE_DIR)) {
 			LoadIntroGame();
 			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		} else {
@@ -894,7 +894,7 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
-		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR)) {
+		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, BASE_DIR)) {
 			_opt_ptr = &_opt;
 
 			SetLocalPlayer(OWNER_NONE);
@@ -910,7 +910,7 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_SAVE: /* Save game */
-		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE) != SL_OK) {
+		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, BASE_DIR) != SL_OK) {
 			ShowErrorMessage(INVALID_STRING_ID, STR_4007_GAME_SAVE_FAILED, 0, 0);
 		} else {
 			DeleteWindowById(WC_SAVELOAD, 0);
@@ -967,9 +967,11 @@ void StateGameLoop()
 	}
 }
 
+/** Create an autosave. The default name is "autosave#.sav". However with
+ * the patch setting 'keep_all_autosave' the name defaults to company-name + date */
 static void DoAutosave()
 {
-	char buf[200];
+	char buf[MAX_PATH];
 
 #if defined(PSP)
 	/* Autosaving in networking is too time expensive for the PSP */
@@ -979,27 +981,21 @@ static void DoAutosave()
 
 	if (_patches.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
 		const Player *p = GetPlayer(_local_player);
-		char* s = buf;
-
-		s += snprintf(buf, lengthof(buf), "%s%s", _paths.autosave_dir, PATHSEP);
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		SetDParam(2, _date);
-		s = GetString(s, STR_4004, lastof(buf));
-		strecpy(s, ".sav", lastof(buf));
-	} else { // generate a savegame name and number according to _patches.max_num_autosaves
-		snprintf(buf, lengthof(buf), "%s%sautosave%d.sav", _paths.autosave_dir, PATHSEP, _autosave_ctr);
+		GetString(buf, STR_4004, lastof(buf));
+		ttd_strlcpy(buf, ".sav", sizeof(buf));
+	} else {
+		/* generate a savegame name and number according to _patches.max_num_autosaves */
+		snprintf(buf, sizeof(buf), "autosave%d.sav", _autosave_ctr);
 
-		_autosave_ctr++;
-		if (_autosave_ctr >= _patches.max_num_autosaves) {
-			/* we reached the limit for numbers of autosaves. We will start over */
-			_autosave_ctr = 0;
-		}
+		if (++_autosave_ctr >= _patches.max_num_autosaves) _autosave_ctr = 0;
 	}
 
 	DEBUG(sl, 2, "Autosaving to '%s'", buf);
-	if (SaveOrLoad(buf, SL_SAVE) != SL_OK)
+	if (SaveOrLoad(buf, SL_SAVE, AUTOSAVE_DIR) != SL_OK)
 		ShowErrorMessage(INVALID_STRING_ID, STR_AUTOSAVE_FAILED, 0, 0);
 }
 

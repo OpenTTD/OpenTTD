@@ -1561,7 +1561,7 @@ void WaitTillSaved()
  * @param mode Save or load. Load can also be a TTD(Patch) game. Use SL_LOAD, SL_OLD_LOAD or SL_SAVE
  * @return Return the results of the action. SL_OK, SL_ERROR or SL_REINIT ("unload" the game)
  */
-SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
+SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 {
 	uint32 hdr[2];
 	const SaveLoadFormat *fmt;
@@ -1583,7 +1583,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		return SL_OK;
 	}
 
-	_sl.fh = (mode == SL_SAVE) ? fopen(filename, "wb") : fopen(filename, "rb");
+	_sl.fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 	if (_sl.fh == NULL) {
 		DEBUG(sl, 0, "Cannot open savegame '%s' for saving/loading.", filename);
 		return SL_ERROR;
@@ -1721,9 +1721,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 /** Do a save when exiting the game (patch option) _patches.autosave_on_exit */
 void DoExitSave()
 {
-	char buf[200];
-	snprintf(buf, sizeof(buf), "%s%sexit.sav", _paths.autosave_dir, PATHSEP);
-	SaveOrLoad(buf, SL_SAVE);
+	SaveOrLoad("exit.sav", SL_SAVE, AUTOSAVE_DIR);
 }
 
 #if 0

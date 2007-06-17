@@ -8,11 +8,13 @@
 #include "table/strings.h"
 #include "gfx.h"
 #include "hal.h"
+#include "fileio.h"
 #include "viewport.h"
 #include "player.h"
 #include "screenshot.h"
 #include "variables.h"
 #include "date.h"
+#include "string.h"
 #include "helpers.hpp"
 #include "blitter/blitter.hpp"
 #include "fileio.h"
@@ -521,12 +523,12 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
 
 static char *MakeScreenshotName(const char *ext)
 {
-	static char filename[256];
-	char *base;
+	static char filename[MAX_PATH];
 	int serial;
+	size_t len;
 
 	if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_player == PLAYER_SPECTATOR) {
-		sprintf(_screenshot_name, "screenshot");
+		ttd_strlcpy(_screenshot_name, "screenshot", lengthof(_screenshot_name));
 	} else {
 		const Player* p = GetPlayer(_local_player);
 		SetDParam(0, p->name_1);
@@ -535,16 +537,16 @@ static char *MakeScreenshotName(const char *ext)
 		GetString(_screenshot_name, STR_4004, lastof(_screenshot_name));
 	}
 
+	/* Add extension to screenshot file */
 	SanitizeFilename(_screenshot_name);
-	base = strchr(_screenshot_name, 0);
-	base[0] = '.'; strcpy(base + 1, ext);
+	len = strlen(_screenshot_name);
+	snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, ".%s", ext);
 
-	serial = 0;
-	for (;;) {
-		snprintf(filename, sizeof(filename), "%s%s", _paths.personal_dir, _screenshot_name);
-		if (!FileExists(filename))
-			break;
-		sprintf(base, " #%d.%s", ++serial, ext);
+	for (serial = 1;; serial++) {
+		snprintf(filename, lengthof(filename), "%s%s", _personal_dir, _screenshot_name);
+		if (!FileExists(filename)) break;
+		/* If file exists try another one with same name, but just with a higher index */
+		snprintf(&_screenshot_name[len], lengthof(_screenshot_name) - len, "#%d.%s", serial, ext);
 	}
 
 	return filename;

@@ -363,14 +363,16 @@ static uint ScanPath(const char *path, int basepath_length)
 /* Scan for all NewGRFs */
 void ScanNewGRFFiles()
 {
-	uint num;
+	Searchpath sp;
+	char path[MAX_PATH];
+	uint num = 0;
 
 	ClearGRFConfigList(&_all_grfs);
 
 	DEBUG(grf, 1, "Scanning for NewGRFs");
-	num  = ScanPath(_paths.data_dir, strlen(_paths.data_dir));
-	if (_paths.second_data_dir != NULL) {
-		num += ScanPath(_paths.second_data_dir, strlen(_paths.second_data_dir));
+	FOR_ALL_SEARCHPATHS(sp) {
+		FioAppendDirectory(path, MAX_PATH, sp, DATA_DIR);
+		num += ScanPath(path, strlen(path));
 	}
 	DEBUG(grf, 1, "Scan complete, found %d files", num);
 }

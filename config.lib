@@ -28,11 +28,8 @@ set_default() {
 	binary_dir="games"
 	data_dir="share/games/openttd"
 	icon_dir="share/pixmaps"
-	personal_dir=""
-	custom_lang_dir=""
-	second_data_dir=""
+	personal_dir="1"
 	install_dir="/"
-	enable_install="0"
 	enable_debug="0"
 	enable_profiling="0"
 	enable_dedicated="0"
@@ -63,7 +60,7 @@ set_default() {
 	with_fontconfig="1"
 	with_psp_config="1"
 
-	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir custom_lang_dir second_data_dir enable_install enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_ccache with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir                                                enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_ccache with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -131,20 +128,11 @@ detect_params() {
 
 			--personal-dir)               prevp_p="personal-dir";;
 			--personal-dir=*)             personal_dir="$optarg";;
+			--without-personal-dir)       personal_dir="";;
 
 			--install-dir)                prevp_p="install-dir";;
 			--install-dir=*)              install_dir="$optarg";;
 
-# TODO: The next few cases will be removed when the search path patch is applied
-			--custom-lang-dir)            prevp_p="custom-lang-dir";;
-			--custom-lang-dir=*)          custom_lang_dir="$optarg";;
-
-			--second-data-dir)            prevp_p="second-data-dir";;
-			--second-data-dir=*)          second_data_dir="$optarg";;
-
-			--enable-install)             enable_install="1";;
-			--enable-install=*)           enable_install="$optarg";;
-# TODO: End of to be removed cases
 
 
 			--enable-debug)               enable_debug="1";;
@@ -623,21 +611,6 @@ check_params() {
 
 	if [ "$os" = "OSX" ] && [ "$with_application_bundle" = "1" ]; then
 		OSXAPP="OpenTTD.app"
-
-# TODO: remove next few lines of code when the search path patch has been applied
-		if [ -n "$custom_lang_dir" ] && [ "$custom_lang_dir" != "${OSXAPP}/Contents/Resources/lang/" ]; then
-			log 1 "configure: error: --custom-lang-dir and --with-application-bundle are not compatible
-			exit 1
-		fi
-
-		if [ -n "$custom_lang_dir" ] && [ "$second_data_dir" != "${OSXAPP}/Contents/Resources/data/" ]; then
-			log 1 "configure: error: --second-data-dir and --with-application-bundle are not compatible
-			exit 1
-		fi
-
-		custom_lang_dir="${OSXAPP}/Contents/Resources/lang/"
-		second_data_dir="${OSXAPP}/Contents/Resources/data/"
-# TODO: remove till here
 	else
 		OSXAPP=""
 	fi
@@ -719,6 +692,30 @@ check_params() {
 
 			sleep 5
 		fi
+	fi
+
+	if [ "$personal_dir" == "1" ]; then
+		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
+			personal_dir="OpenTTD"
+		elif [ "$os" = "OSX" ]; then
+			personal_dir="Documents/OpenTTD"
+		else
+			personal_dir=".openttd"
+		fi
+	fi
+
+	if [ -n "$personal_dir" ]
+	then
+		log 1 "personal home directory... $personal_dir"
+	else
+		log 1 "personal home directory... none"
+	fi
+
+	if [ -n "$install_dir" ]
+	then
+		log 1 "installation directory... $install_dir"
+	else
+		log 1 "installation directory... none"
 	fi
 }
 
@@ -1018,29 +1015,11 @@ make_cflags_and_ldflags() {
 		LDFLAGS="$LDFLAGS -Wl,-syslibroot,/Developer/SDKs/MacOSX$with_osx_sysroot.sdk"
 	fi
 
-# TODO: remove next few lines of code when the search path patch has been applied
-	if [ -n "$second_data_dir" ]; then
-		CFLAGS="$CFLAGS -DSECOND_DATA_DIR=\\\\\"$second_data_dir\\\\\""
+	if [ -n "$personal_dir" ]; then
+		CFLAGS="$CFLAGS -DWITH_PERSONAL_DIR -DPERSONAL_DIR=\\\\\"$personal_dir\\\\\""
 	fi
 
-	if [ -n "$custom_lang_dir" ]; then
-		CFLAGS="$CFLAGS -DCUSTOM_LANG_DIR=\\\\\"$custom_lang_dir\\\\\""
-	fi
-# TODO: remove till here
-
-	if [ "$enable_install" = "1" ]; then
-		if [ -n "$personal_dir" ]; then
-			CFLAGS="$CFLAGS -DUSE_HOMEDIR=1 -DPERSONAL_DIR=\\\\\"$personal_dir/\\\\\""
-		fi
-
-		if [ -n "$data_dir" ]; then
-			CFLAGS="$CFLAGS -DGAME_DATA_DIR=\\\\\"$prefix_dir/$data_dir/\\\\\""
-		fi
-
-		if [ -n "$icon_dir" ]; then
-			CFLAGS="$CFLAGS -DICON_DIR=\\\\\"$prefix_dir/$icon_dir/\\\\\""
-		fi
-	fi
+	CFLAGS="$CFLAGS -DGLOBAL_DATA_DIR=\\\\\"$prefix_dir/$data_dir\\\\\""
 
 	log 1 "using CFLAGS... $CFLAGS $CC_CFLAGS"
 	log 1 "using LDFLAGS... $LIBS $LDFLAGS"
@@ -1974,7 +1953,6 @@ make_sed() {
 		s#!!REVISION!!#$revision#g;
 		s#!!AWK!!#$awk#g;
 		s#!!GCC295!!#$gcc295#g;
-		s#!!ENABLE_INSTALL!!#$enable_install#g;
 		s#!!DISTCC!!#$distcc#g;
 	"
 }
@@ -2090,17 +2068,9 @@ showhelp() {
 	echo "                                 [share/games/openttd]"
 	echo "  --icon-dir=dir                 location of icons. Will be prefixed"
 	echo "                                 with the prefix-dir [share/pixmaps]"
-	echo "  --personal-dir=dir             location of the personal directory []"
+	echo "  --personal-dir=dir             location of the personal directory [.openttd]"
 	echo "  --install-dir=dir              specifies the root to install to."
 	echo "                                 Useful to install into jails [/]"
-	echo ""
-# TODO: The Following 3 tags will be removed when the 'search path patch' is applied
-	echo "  --second-data-dir=dir          specifies a second directory for the"
-	echo "                                 data files"
-	echo "  --custom-lang-dir=dir          specifies a custom directory for the"
-	echo "                                 language files"
-	echo "  --enable-install               make a binary that uses the specified"
-	echo "                                 data-dir and icon-dir"
 	echo ""
 	echo "Features and packages:"
 	echo "  --enable-debug[=LVL]           enable debug-mode (LVL=[0123], 0 is release)"

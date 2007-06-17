@@ -23,11 +23,13 @@
 #include "variables.h"
 #include "win32.h"
 #include "fios.h" // opendir/readdir/closedir
+#include "fileio.h"
 #include <ctype.h>
 #include <tchar.h>
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <shlobj.h>
 
 static bool _has_console;
 
@@ -224,7 +226,7 @@ static const TCHAR _save_succeeded[] =
 
 static bool EmergencySave()
 {
-	SaveOrLoad("crash.sav", SL_SAVE);
+	SaveOrLoad("crash.sav", SL_SAVE, BASE_DIR);
 	return true;
 }
 
@@ -958,22 +960,54 @@ char *getcwd(char *buf, size_t size)
 	return buf;
 }
 
-extern char *BuildWithFullPath(const char *dir);
 
 void DetermineBasePaths(const char *exe)
 {
-	_paths.personal_dir = MallocT<char>(MAX_PATH);
-	getcwd(_paths.personal_dir, MAX_PATH);
+	char tmp[MAX_PATH];
+	TCHAR path[MAX_PATH];
+#ifdef WITH_PERSONAL_DIR
+	SHGetFolderPath(NULL, CSIDL_PERSONAL, NULL, SHGFP_TYPE_CURRENT, path);
+	strncpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lengthof(tmp));
+	AppendPathSeparator(tmp, MAX_PATH);
+	ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
+	AppendPathSeparator(tmp, MAX_PATH);
+	_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
 
-	_paths.game_data_dir = BuildWithFullPath(GAME_DATA_DIR);
-#if defined(SECOND_DATA_DIR)
-	_paths.second_data_dir = BuildWithFullPath(SECOND_DATA_DIR);
+	SHGetFolderPath(NULL, CSIDL_COMMON_DOCUMENTS, NULL, SHGFP_TYPE_CURRENT, path);
+	strncpy(tmp, WIDE_TO_MB_BUFFER(path, tmp, lengthof(tmp)), lengthof(tmp));
+	AppendPathSeparator(tmp, MAX_PATH);
+	ttd_strlcat(tmp, PERSONAL_DIR, MAX_PATH);
+	AppendPathSeparator(tmp, MAX_PATH);
+	_searchpaths[SP_SHARED_DIR] = strdup(tmp);
 #else
-	_paths.second_data_dir = NULL;
+	_searchpaths[SP_PERSONAL_DIR] = NULL;
+	_searchpaths[SP_SHARED_DIR]   = NULL;
 #endif
 
-	_paths.personal_dir[0] = toupper(_paths.personal_dir[0]);
-	AppendPathSeparator(_paths.personal_dir,  MAX_PATH);
+	/* Get the path to working directory of OpenTTD */
+	getcwd(tmp, lengthof(tmp));
+	AppendPathSeparator(tmp, MAX_PATH);
+	_searchpaths[SP_WORKING_DIR] = strdup(tmp);
+
+	if (!GetModuleFileName(NULL, path, lengthof(path))) {
+		DEBUG(misc, 0, "GetModuleFileName failed (%d)\n", GetLastError());
+		_searchpaths[SP_BINARY_DIR] = NULL;
+	} else {
+		TCHAR exec_dir[MAX_PATH];
+		_tcsncpy(path, MB_TO_WIDE_BUFFER(exe, path, lengthof(path)), lengthof(path));
+		if (!GetFullPathName(path, lengthof(exec_dir), exec_dir, NULL)) {
+			DEBUG(misc, 0, "GetFullPathName failed (%d)\n", GetLastError());
+			_searchpaths[SP_BINARY_DIR] = NULL;
+		} else {
+			strncpy(tmp, WIDE_TO_MB_BUFFER(exec_dir, tmp, lengthof(tmp)), lengthof(tmp));
+			char *s = strrchr(tmp, PATHSEPCHAR);
+			*(s + 1) = '\0';
+			_searchpaths[SP_BINARY_DIR] = strdup(tmp);
+		}
+	}
+
+	_searchpaths[SP_INSTALLATION_DIR]       = NULL;
+	_searchpaths[SP_APPLICATION_BUNDLE_DIR] = NULL;
 }
 
 /**

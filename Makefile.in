@@ -228,11 +228,6 @@ bundle_dmg: bundle
 	$(Q)mkdir -p "$(BUNDLES_DIR)"
 	$(Q)hdiutil create -ov -format UDZO -srcfolder "$(BUNDLE_DIR)" "$(BUNDLES_DIR)/$(BUNDLE_NAME).dmg"
 
-# TODO: ENABLE_INSTALL should be removed when the search path patch has been applied
-ifeq ($(ENABLE_INSTALL), 0)
-install:
-	@echo '[INSTALL] Cannot install. Not compiled with installation paths'
-else
 ifdef OSXAPP
 install:
 	@echo '[INSTALL] Cannot install the OSX Application Bundle'
@@ -257,4 +252,3 @@ else
 	$(Q)cp -R "$(BUNDLE_DIR)/scenario" "$(INSTALL_DATA_DIR)"
 endif # INSTALL_PERSONAL_DIR
 endif # OSXAPP
-endif # ENABLE_INSTALL

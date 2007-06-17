@@ -74,6 +74,7 @@ extern "C" void HideMenuBar();
 #include "cocoa_keys.h"
 #include "../blitter/blitter.hpp"
 #include "../renderer/renderer.hpp"
+#include "../fileio.h"
 
 #undef Point
 #undef Rect
@@ -2057,6 +2058,22 @@ void CocoaDialog(const char* title, const char* message, const char* buttonLabel
 	if (!wasstarted) CocoaVideoStop();
 
 	_cocoa_video_dialog = false;
+}
+
+/* This is needed since OS X application bundles do not have a
+ * current directory and the data files are 'somewhere' in the bundle */
+void cocoaSetApplicationBundleDir()
+{
+	char tmp[MAXPATHLEN];
+	CFURLRef url = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
+	if (CFURLGetFileSystemRepresentation(url, true, (unsigned char*)tmp, MAXPATHLEN)) {
+		AppendPathSeparator(tmp, lengthof(tmp));
+		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = strdup(tmp);
+	} else {
+		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = NULL;
+	}
+
+	CFRelease(url);
 }
 
 /* These are called from main() to prevent a _NSAutoreleaseNoPool error when

@@ -21,6 +21,7 @@
 #include "../variables.h"
 #include "../ai/ai.h"
 #include "../helpers.hpp"
+#include "../fileio.h"
 
 // This file handles all the client-commands
 
@@ -269,7 +270,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *
 //   DEF_CLIENT_RECEIVE_COMMAND has parameter: Packet *p
 // **********
 
-extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
+extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subdir);
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FULL)
 {
@@ -489,7 +490,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WAIT)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 {
-	static char filename[256];
 	static FILE *file_pointer;
 
 	byte maptype;
@@ -500,10 +500,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 	// First packet, init some stuff
 	if (maptype == MAP_PACKET_START) {
-		// The name for the temp-map
-		snprintf(filename, lengthof(filename), "%s%snetwork_client.tmp",  _paths.autosave_dir, PATHSEP);
-
-		file_pointer = fopen(filename, "wb");
+		file_pointer = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);;
 		if (file_pointer == NULL) {
 			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;
@@ -545,7 +542,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 
 		/* The map is done downloading, load it */
-		if (!SafeSaveOrLoad(filename, SL_LOAD, GM_NORMAL)) {
+		if (!SafeSaveOrLoad("network_client.tmp", SL_LOAD, GM_NORMAL, AUTOSAVE_DIR)) {
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;

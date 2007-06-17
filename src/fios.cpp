@@ -14,6 +14,7 @@
 #include "helpers.hpp"
 #include "table/strings.h"
 #include "fios.h"
+#include "fileio.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 
@@ -334,7 +335,7 @@ FiosItem *FiosGetSavegameList(int mode)
 
 	if (_fios_save_path == NULL) {
 		_fios_save_path = MallocT<char>(MAX_PATH);
-		ttd_strlcpy(_fios_save_path, _paths.save_dir, MAX_PATH);
+		FioGetDirectory(_fios_save_path, MAX_PATH, SAVE_DIR);
 	}
 
 	_fios_path = _fios_save_path;
@@ -380,9 +381,10 @@ FiosItem *FiosGetScenarioList(int mode)
 {
 	static char *_fios_scn_path = NULL;
 
+	/* Copy the default path on first run or on 'New Game' */
 	if (_fios_scn_path == NULL) {
 		_fios_scn_path = MallocT<char>(MAX_PATH);
-		ttd_strlcpy(_fios_scn_path, _paths.scenario_dir, MAX_PATH);
+		FioGetDirectory(_fios_scn_path, MAX_PATH, SCENARIO_DIR);
 	}
 
 	_fios_path = _fios_scn_path;
@@ -413,7 +415,7 @@ FiosItem *FiosGetHeightmapList(int mode)
 
 	if (_fios_hmap_path == NULL) {
 		_fios_hmap_path = MallocT<char>(MAX_PATH);
-		strcpy(_fios_hmap_path, _paths.heightmap_dir);
+		FioGetDirectory(_fios_hmap_path, MAX_PATH, HEIGHTMAP_DIR);
 	}
 
 	_fios_path = _fios_hmap_path;

@@ -7,6 +7,7 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "functions.h"
+#include "fileio.h"
 #include "window.h"
 #include "gfx.h"
 #include "sound.h"
@@ -90,9 +91,9 @@ static void MusicVolumeChanged(byte new_vol)
 
 static void DoPlaySong()
 {
-	char filename[256];
-	snprintf(filename, sizeof(filename), "%s%s",
-		_paths.gm_dir, origin_songs_specs[_music_wnd_cursong - 1].filename);
+	char filename[MAX_PATH];
+	FioFindFullPath(filename, lengthof(filename), GM_DIR,
+			origin_songs_specs[_music_wnd_cursong - 1].filename);
 	_music_driver->play_song(filename);
 }
 
@@ -105,20 +106,14 @@ static void SelectSongToPlay()
 {
 	uint i = 0;
 	uint j = 0;
-	char filename[256];
 
 	memset(_cur_playlist, 0, sizeof(_cur_playlist));
 	do {
-		if (_playlists[msf.playlist][i] != 0) {  // Don't evaluate playlist terminator
-			snprintf(filename, sizeof(filename),  "%s%s",
-				_paths.gm_dir, origin_songs_specs[(_playlists[msf.playlist][i]) - 1].filename);
-
-			/* we are now checking for the existence of that file prior
-			 * to add it to the list of available songs */
-			if (FileExists(filename)) {
-				_cur_playlist[j] = _playlists[msf.playlist][i];
-				j++;
-			}
+		/* We are now checking for the existence of that file prior
+		 * to add it to the list of available songs */
+		if (FioCheckFileExists(origin_songs_specs[_playlists[msf.playlist][i]].filename, GM_DIR)) {
+			_cur_playlist[j] = _playlists[msf.playlist][i];
+			j++;
 		}
 	} while (_playlists[msf.playlist][i++] != 0 && i < lengthof(_cur_playlist) - 1);
 

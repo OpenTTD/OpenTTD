@@ -23,6 +23,7 @@
 #include "music.h"
 #include "date.h"
 #include "industry.h"
+#include "fileio.h"
 #include "helpers.hpp"
 #include "cargotype.h"
 #include "group.h"
@@ -1295,8 +1296,15 @@ static int GetLanguageList(Language *langs, int start, int max, const char *path
  */
 void InitializeLanguagePacks()
 {
+	Searchpath sp;
 	Language files[MAX_LANG];
-	uint language_count = GetLanguageList(files, 0, lengthof(files), _paths.lang_dir);
+	uint language_count = 0;
+
+	FOR_ALL_SEARCHPATHS(sp) {
+		char path[MAX_PATH];
+		FioAppendDirectory(path, lengthof(path), sp, LANG_DIR);
+		language_count += GetLanguageList(files, language_count, lengthof(files), path);
+	}
 	if (language_count == 0) error("No available language packs (invalid versions?)");
 
 	/* Sort the language names alphabetically */

@@ -11,7 +11,9 @@
 #include "variables.h"
 #include "debug.h"
 #include "fios.h"
-#ifndef WIN32
+#ifdef WIN32
+#include <windows.h>
+#else
 #include <pwd.h>
 #include <unistd.h>
 #include <sys/stat.h>
@@ -189,52 +191,122 @@ void FioOpenFile(int slot, const char *filename)
 	FioSeekToFile(slot << 24);
 }
 
+const char *_subdirs[NUM_SUBDIRS] = {
+	"",
+	"save" PATHSEP,
+	"save" PATHSEP "autosave" PATHSEP,
+	"scenario" PATHSEP,
+	"scenario" PATHSEP "heightmap" PATHSEP,
+	"gm" PATHSEP,
+	"data" PATHSEP,
+	"lang" PATHSEP
+};
+
+const char *_searchpaths[NUM_SEARCHPATHS];
+
 /**
  * Check whether the given file exists
  * @param filename the file to try for existance
+ * @param subdir the subdirectory to look in
  * @return true if and only if the file can be opened
  */
-bool FioCheckFileExists(const char *filename)
+bool FioCheckFileExists(const char *filename, Subdirectory subdir)
 {
-	FILE *f = FioFOpenFile(filename);
+	FILE *f = FioFOpenFile(filename, "rb", subdir);
 	if (f == NULL) return false;
 
 	fclose(f);
 	return true;
 }
 
-/**
- * Opens the file with the given name
- * @param filename the file to open (in either data_dir or second_data_dir)
- * @return the opened file or NULL when it failed.
- */
-FILE *FioFOpenFile(const char *filename)
+char *FioGetFullPath(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir, const char *filename)
 {
-	FILE *f;
+	assert(subdir < NUM_SUBDIRS);
+	assert(sp < NUM_SEARCHPATHS);
+
+	snprintf(buf, buflen, "%s%s" PATHSEP "%s", _searchpaths[sp], _subdirs[subdir], filename);
+	return buf;
+}
+
+char *FioFindFullPath(char *buf, size_t buflen, Subdirectory subdir, const char *filename)
+{
+	Searchpath sp;
+	assert(subdir < NUM_SUBDIRS);
+
+	FOR_ALL_SEARCHPATHS(sp) {
+		FioGetFullPath(buf, buflen, sp, subdir, filename);
+		if (FileExists(buf)) break;
+	}
+
+	return buf;
+}
+
+char *FioAppendDirectory(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir)
+{
+	assert(subdir < NUM_SUBDIRS);
+	assert(sp < NUM_SEARCHPATHS);
+
+	snprintf(buf, buflen, "%s%s", _searchpaths[sp], _subdirs[subdir]);
+	return buf;
+}
+
+char *FioGetDirectory(char *buf, size_t buflen, Subdirectory subdir)
+{
+	Searchpath sp;
+
+	/* Find and return the first valid directory */
+	FOR_ALL_SEARCHPATHS(sp) {
+		char *ret = FioAppendDirectory(buf, buflen, sp, subdir);
+		if (FileExists(buf)) return ret;
+	}
+
+	/* Could not find the directory, fall back to a base path */
+	ttd_strlcpy(buf, _personal_dir, buflen);
+
+	return buf;
+}
+
+FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subdirectory subdir)
+{
+#if defined(WIN32) && defined(UNICODE)
+	/* fopen is implemented as a define with ellipses for
+	 * Unicode support (prepend an L). As we are not sending
+	 * a string, but a variable, it 'renames' the variable,
+	 * so make that variable to makes it compile happily */
+	wchar_t Lmode[5];
+	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, lengthof(Lmode));
+#endif
+	FILE *f = NULL;
 	char buf[MAX_PATH];
 
-	if (filename[0] == PATHSEPCHAR || filename[1] == ':') {
+	if (subdir == BASE_DIR) {
 		ttd_strlcpy(buf, filename, lengthof(buf));
 	} else {
-		snprintf(buf, lengthof(buf), "%s%s", _paths.data_dir, filename);
+		snprintf(buf, lengthof(buf), "%s%s%s", _searchpaths[sp], _subdirs[subdir], filename);
 	}
 
-	f = fopen(buf, "rb");
+	f = fopen(buf, mode);
 #if !defined(WIN32)
 	if (f == NULL) {
-		strtolower(strrchr(buf, PATHSEPCHAR));
-		f = fopen(buf, "rb");
-
-#if defined SECOND_DATA_DIR
-		/* tries in the 2nd data directory */
-		if (f == NULL) {
-			snprintf(buf, lengthof(buf), "%s%s", _paths.second_data_dir, filename);
-			strtolower(buf + strlen(_paths.second_data_dir) - 1);
-			f = fopen(buf, "rb");
-		}
-#endif
+		strtolower(buf + strlen(_searchpaths[sp]) - 1);
+		f = fopen(buf, mode);
 	}
 #endif
+	return f;
+}
+
+/** Opens OpenTTD files somewhere in a personal or global directory */
+FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir)
+{
+	FILE *f = NULL;
+	Searchpath sp;
+
+	assert(subdir < NUM_SUBDIRS);
+
+	FOR_ALL_SEARCHPATHS(sp) {
+		f = FioFOpenFileSp(filename, mode, sp, subdir);
+		if (f != NULL || subdir == 0) break;
+	}
 
 	return f;
 }
@@ -299,7 +371,8 @@ char *BuildWithFullPath(const char *dir)
 #if defined(WIN32) || defined(WINCE)
 /**
  * Determine the base (personal dir and game data dir) paths
- * @param exe the path to the executable
+ * @param exe the path from the current path to the executable
+ * @note defined in the OS related files (os2.cpp, win32.cpp, unix.cpp etc)
  */
 extern void DetermineBasePaths(const char *exe);
 #else /* defined(WIN32) || defined(WINCE) */
@@ -336,70 +409,86 @@ void ChangeWorkingDirectory(const char *exe)
  */
 void DetermineBasePaths(const char *exe)
 {
-	/* Change the working directory to enable doubleclicking in UIs */
-	ChangeWorkingDirectory(exe);
-
-	_paths.game_data_dir = BuildWithFullPath(GAME_DATA_DIR);
-#if defined(SECOND_DATA_DIR)
-	_paths.second_data_dir = BuildWithFullPath(SECOND_DATA_DIR);
-#else
-	_paths.second_data_dir = NULL;
-#endif
-
-#if defined(USE_HOMEDIR)
+	char tmp[MAX_PATH];
+#ifdef WITH_PERSONAL_DIR
 	const char *homedir = getenv("HOME");
 
 	if (homedir == NULL) {
 		const struct passwd *pw = getpwuid(getuid());
-		if (pw != NULL) homedir = pw->pw_dir;
+		homedir = (pw == NULL) ? "" : pw->pw_dir;
 	}
 
-	_paths.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
-	AppendPathSeparator(_paths.personal_dir, MAX_PATH);
-#else /* not defined(USE_HOMEDIR) */
-	_paths.personal_dir = BuildWithFullPath(PERSONAL_DIR);
-#endif /* defined(USE_HOMEDIR) */
+	snprintf(tmp, MAX_PATH, "%s" PATHSEP "%s", homedir, PERSONAL_DIR);
+	AppendPathSeparator(tmp, MAX_PATH);
+
+	_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
+#else
+	_searchpaths[SP_PERSONAL_DIR] = NULL;
+#endif
+	_searchpaths[SP_SHARED_DIR] = NULL;
+
+	getcwd(tmp, MAX_PATH);
+	AppendPathSeparator(tmp, MAX_PATH);
+	_searchpaths[SP_WORKING_DIR] = strdup(tmp);
+
+	/* Change the working directory to that one of the executable */
+	ChangeWorkingDirectory((char*)exe);
+	getcwd(tmp, MAX_PATH);
+	AppendPathSeparator(tmp, MAX_PATH);
+	_searchpaths[SP_BINARY_DIR] = strdup(tmp);
+
+	snprintf(tmp, MAX_PATH, "%s", GLOBAL_DATA_DIR);
+	AppendPathSeparator(tmp, MAX_PATH);
+	_searchpaths[SP_INSTALLATION_DIR] = strdup(tmp);
+#ifdef WITH_COCOA
+extern void cocoaSetApplicationBundleDir();
+	cocoaSetApplicationBundleDir();
+#else
+	_searchpaths[SP_APPLICATION_BUNDLE_DIR] = NULL;
+#endif
 }
 #endif /* defined(WIN32) || defined(WINCE) */
+
+char *_personal_dir;
 
 /**
  * Acquire the base paths (personal dir and game data dir),
  * fill all other paths (save dir, autosave dir etc) and
  * make the save and scenario directories.
- * @param exe the path to the executable
- * @todo for save_dir, autosave_dir, scenario_dir and heightmap_dir the
- *       assumption is that there is no path separator, however for gm_dir
- *       lang_dir and data_dir that assumption is made.
- *       This inconsistency should be resolved.
+ * @param exe the path from the current path to the executable
  */
 void DeterminePaths(const char *exe)
 {
 	DetermineBasePaths(exe);
 
-	_paths.save_dir      = str_fmt("%ssave" PATHSEP, _paths.personal_dir);
-	_paths.autosave_dir  = str_fmt("%s" PATHSEP "autosave" PATHSEP, _paths.save_dir);
-	_paths.scenario_dir  = str_fmt("%sscenario" PATHSEP, _paths.personal_dir);
-	_paths.heightmap_dir = str_fmt("%s" PATHSEP "heightmap" PATHSEP, _paths.scenario_dir);
-	_paths.gm_dir        = str_fmt("%sgm" PATHSEP, _paths.game_data_dir);
-	_paths.data_dir      = str_fmt("%sdata" PATHSEP, _paths.game_data_dir);
-#if defined(CUSTOM_LANG_DIR)
-	_paths.lang_dir = BuildWithFullPath(CUSTOM_LANG_DIR);
-#else
-	_paths.lang_dir = str_fmt("%slang" PATHSEP, _paths.game_data_dir);
-#endif
+	Searchpath sp;
+	FOR_ALL_SEARCHPATHS(sp) DEBUG(misc, 4, "%s added as search path", _searchpaths[sp]);
 
-	if (_config_file == NULL) {
-		_config_file = str_fmt("%sopenttd.cfg", _paths.personal_dir);
+	/* Search for the first search path, as that will be the closest to
+	 * the personal directory. */
+	FOR_ALL_SEARCHPATHS(sp) {
+		_personal_dir = strdup(_searchpaths[sp]);
+		DEBUG(misc, 3, "%s found as personal directory", _searchpaths[sp]);
+		break;
 	}
 
-	_highscore_file = str_fmt("%shs.dat", _paths.personal_dir);
-	_log_file = str_fmt("%sopenttd.log",  _paths.personal_dir);
+	if (_config_file == NULL) {
+		_config_file = str_fmt("%sopenttd.cfg", _personal_dir);
+	}
 
-	/* Make (auto)save and scenario folder */
-	FioCreateDirectory(_paths.save_dir);
-	FioCreateDirectory(_paths.autosave_dir);
-	FioCreateDirectory(_paths.scenario_dir);
-	FioCreateDirectory(_paths.heightmap_dir);
+	_highscore_file = str_fmt("%shs.dat", _personal_dir);
+	_log_file = str_fmt("%sopenttd.log",  _personal_dir);
+
+	char *save_dir     = str_fmt("%s%s", _personal_dir, FioGetSubdirectory(SAVE_DIR));
+	char *autosave_dir = str_fmt("%s%s", _personal_dir, FioGetSubdirectory(AUTOSAVE_DIR));
+
+	/* Make the necessary folders */
+	FioCreateDirectory(_personal_dir);
+	FioCreateDirectory(save_dir);
+	FioCreateDirectory(autosave_dir);
+
+	free(save_dir);
+	free(autosave_dir);
 }
 
 /**

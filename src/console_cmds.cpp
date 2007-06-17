@@ -19,6 +19,7 @@
 #include "command.h"
 #include "settings.h"
 #include "fios.h"
+#include "fileio.h"
 #include "vehicle.h"
 #include "station.h"
 #include "strings.h"
@@ -173,7 +174,6 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 	return false;
 }
 
-extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
 extern void BuildFileList();
 extern void SetFiosType(const byte fiostype);
 
@@ -186,16 +186,15 @@ DEF_CONSOLE_CMD(ConSave)
 	}
 
 	if (argc == 2) {
-		char buf[200];
-
-		snprintf(buf, lengthof(buf), "%s%s%s.sav", _paths.save_dir, PATHSEP, argv[1]);
+		char *filename = str_fmt("%s.sav", argv[1]);
 		IConsolePrint(_icolour_def, "Saving map...");
 
-		if (SaveOrLoad(buf, SL_SAVE) != SL_OK) {
-			IConsolePrint(_icolour_err, "SaveMap failed");
+		if (SaveOrLoad(filename, SL_SAVE, SAVE_DIR) != SL_OK) {
+			IConsolePrint(_icolour_err, "Saving map failed");
 		} else {
-			IConsolePrintF(_icolour_def, "Map sucessfully saved to %s", buf);
+			IConsolePrintF(_icolour_def, "Map sucessfully saved to %s", filename);
 		}
+		free(filename);
 		return true;
 	}
 

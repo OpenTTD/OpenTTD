@@ -13,6 +13,7 @@
 #include "../console.h"
 #include "../variables.h"
 #include "../genworld.h"
+#include "../fileio.h"
 #include "../blitter/blitter.hpp"
 #include "dedicated_v.h"
 
@@ -115,7 +116,7 @@ static void CloseWindowsConsoleThread()
 
 static void *_dedicated_video_mem;
 
-extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm);
+extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subdir);
 extern void SwitchMode(int new_mode);
 
 
@@ -260,7 +261,7 @@ static void DedicatedVideoMainLoop()
 		_switch_mode = SM_NONE;
 		/* First we need to test if the savegame can be loaded, else we will end up playing the
 		 *  intro game... */
-		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
+		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, BASE_DIR)) {
 			/* Loading failed, pop out.. */
 			DEBUG(net, 0, "Loading requested map failed, aborting");
 			_networking = false;

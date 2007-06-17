@@ -5,6 +5,8 @@
 #ifndef SAVELOAD_H
 #define SAVELOAD_H
 
+#include "fileio.h"
+
 #ifdef SIZE_MAX
 #undef SIZE_MAX
 #endif
@@ -26,7 +28,7 @@ enum SaveOrLoadMode {
 	SL_BMP      =  4,
 };
 
-SaveOrLoadResult SaveOrLoad(const char *filename, int mode);
+SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb);
 void WaitTillSaved();
 void DoExitSave();
 

@@ -286,11 +286,7 @@ typedef unsigned char byte;
 # define TO_BE32X(x)  BSWAP32(x)
 #endif /* TTD_BIG_ENDIAN */
 
-#if !defined(GAME_DATA_DIR)
-# define GAME_DATA_DIR ""
-#endif
-
-#if !defined(PERSONAL_DIR)
+#if !defined(WITH_PERSONAL_DIR)
 # define PERSONAL_DIR ""
 #endif
 

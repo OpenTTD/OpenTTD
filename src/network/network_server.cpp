@@ -24,6 +24,7 @@
 #include "../variables.h"
 #include "../genworld.h"
 #include "../helpers.hpp"
+#include "../fileio.h"
 
 // This file handles all the server-commands
 
@@ -307,14 +308,13 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 	}
 
 	if (cs->status == STATUS_AUTH) {
-		char filename[256];
+		const char *filename = "network_server.tmp";
 		Packet *p;
 
 		// Make a dump of the current game
-		snprintf(filename, lengthof(filename), "%s%snetwork_server.tmp",  _paths.autosave_dir, PATHSEP);
-		if (SaveOrLoad(filename, SL_SAVE) != SL_OK) error("network savedump failed");
+		if (SaveOrLoad(filename, SL_SAVE, AUTOSAVE_DIR) != SL_OK) error("network savedump failed");
 
-		file_pointer = fopen(filename, "rb");
+		file_pointer = FioFOpenFile(filename, "rb", AUTOSAVE_DIR);
 		fseek(file_pointer, 0, SEEK_END);
 
 		if (ftell(file_pointer) == 0) error("network savedump failed - zero sized savegame?");

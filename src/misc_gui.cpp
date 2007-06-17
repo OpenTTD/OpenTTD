@@ -37,6 +37,7 @@
 #include "player_face.h"
 #include "fileio.h"
 
+#include "fileio.h"
 #include "fios.h"
 /* Variables to display file lists */
 FiosItem *_fios_list;
@@ -1407,28 +1408,27 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 	static FiosItem o_dir;
 
 	switch (e->event) {
-	case WE_CREATE: { // Set up OPENTTD button
+	case WE_CREATE: // Set up OPENTTD button
 		o_dir.type = FIOS_TYPE_DIRECT;
 		switch (_saveload_mode) {
 			case SLD_SAVE_GAME:
 			case SLD_LOAD_GAME:
-				ttd_strlcpy(&o_dir.name[0], _paths.save_dir, sizeof(o_dir.name));
+				FioGetDirectory(o_dir.name, lengthof(o_dir.name), SAVE_DIR);
 				break;
 
 			case SLD_SAVE_SCENARIO:
 			case SLD_LOAD_SCENARIO:
-				ttd_strlcpy(&o_dir.name[0], _paths.scenario_dir, sizeof(o_dir.name));
+				FioGetDirectory(o_dir.name, lengthof(o_dir.name), SCENARIO_DIR);
 				break;
 
 			case SLD_LOAD_HEIGHTMAP:
-				ttd_strlcpy(&o_dir.name[0], _paths.heightmap_dir, sizeof(o_dir.name));
+				FioGetDirectory(o_dir.name, lengthof(o_dir.name), HEIGHTMAP_DIR);
 				break;
 
 			default:
-				ttd_strlcpy(&o_dir.name[0], _paths.personal_dir, sizeof(o_dir.name));
+				ttd_strlcpy(o_dir.name, _personal_dir, lengthof(o_dir.name));
 		}
 		break;
-		}
 
 	case WE_PAINT: {
 		int pos;
