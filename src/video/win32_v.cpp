@@ -9,7 +9,7 @@
 #include "../variables.h"
 #include "../win32.h"
 #include "../window.h"
-#include "../blitter/blitter.hpp"
+#include "../blitter/factory.hpp"
 #include "win32_v.h"
 #include <windows.h>
 #include <tchar.h>

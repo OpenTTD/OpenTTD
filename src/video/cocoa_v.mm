@@ -69,11 +69,9 @@ extern "C" void HideMenuBar();
 #include "../macros.h"
 #include "../os/macosx/splash.h"
 #include "../variables.h"
-#include "../blitter/blitter.hpp"
 #include "cocoa_v.h"
 #include "cocoa_keys.h"
-#include "../blitter/blitter.hpp"
-#include "../renderer/renderer.hpp"
+#include "../blitter/factory.hpp"
 #include "../fileio.h"
 
 #undef Point
