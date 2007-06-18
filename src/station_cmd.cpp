@@ -2917,7 +2917,8 @@ static const SaveLoad _goods_desc[] = {
 	    SLE_VAR(GoodsEntry, enroute_time,       SLE_UINT8),
 	    SLE_VAR(GoodsEntry, last_speed,         SLE_UINT8),
 	    SLE_VAR(GoodsEntry, last_age,           SLE_UINT8),
-	SLE_CONDVAR(GoodsEntry, feeder_profit,      SLE_INT32,                 14, SL_MAX_VERSION),
+	SLE_CONDVAR(GoodsEntry, feeder_profit,      SLE_FILE_I32 | SLE_VAR_I64,14, 64),
+	SLE_CONDVAR(GoodsEntry, feeder_profit,      SLE_INT64,                 65, SL_MAX_VERSION),
 
 	SLE_END()
 };

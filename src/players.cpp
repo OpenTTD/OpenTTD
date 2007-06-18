@@ -188,11 +188,11 @@ bool CheckPlayerHasMoney(CommandCost cost)
 
 static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
 {
-	CommandCost tmp((int32)p->player_money);
+	CommandCost tmp(p->player_money);
 	tmp.AddCost(-cost.GetCost());
 	p->player_money = tmp.GetCost();
 
-	tmp = CommandCost((int32)p->yearly_expenses[0][_yearly_expenses_type]);
+	tmp = CommandCost(p->yearly_expenses[0][_yearly_expenses_type]);
 	tmp.AddCost(cost);
 	p->yearly_expenses[0][_yearly_expenses_type] = tmp.GetCost();
 
@@ -1130,10 +1130,11 @@ static const SaveLoad _player_desc[] = {
 	    SLE_VAR(Player, face,            SLE_UINT32),
 
 	/* money was changed to a 64 bit field in savegame version 1. */
-	SLE_CONDVAR(Player, player_money,          SLE_VAR_I64 | SLE_FILE_I32, 0, 0),
-	SLE_CONDVAR(Player, player_money,          SLE_INT64, 1, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, player_money,          SLE_VAR_I64 | SLE_FILE_I32,  0, 0),
+	SLE_CONDVAR(Player, player_money,          SLE_INT64,                   1, SL_MAX_VERSION),
 
-	    SLE_VAR(Player, current_loan,          SLE_INT32),
+	SLE_CONDVAR(Player, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
+	SLE_CONDVAR(Player, current_loan,          SLE_INT64,                  65, SL_MAX_VERSION),
 
 	    SLE_VAR(Player, player_color,          SLE_UINT8),
 	    SLE_VAR(Player, player_money_fraction, SLE_UINT8),
@@ -1155,7 +1156,8 @@ static const SaveLoad _player_desc[] = {
 	    SLE_VAR(Player, quarters_of_bankrupcy, SLE_UINT8),
 	    SLE_VAR(Player, bankrupt_asked,        SLE_UINT8),
 	    SLE_VAR(Player, bankrupt_timeout,      SLE_INT16),
-	    SLE_VAR(Player, bankrupt_value,        SLE_INT32),
+	SLE_CONDVAR(Player, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
+	SLE_CONDVAR(Player, bankrupt_value,        SLE_INT64,                  65, SL_MAX_VERSION),
 
 	/* yearly expenses was changed to 64-bit in savegame version 2. */
 	SLE_CONDARR(Player, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, 0, 1),
@@ -1180,11 +1182,11 @@ static const SaveLoad _player_desc[] = {
 
 static const SaveLoad _player_economy_desc[] = {
 	/* these were changed to 64-bit in savegame format 2 */
-	SLE_CONDVAR(PlayerEconomyEntry, income,              SLE_INT32,                  0, 1),
-	SLE_CONDVAR(PlayerEconomyEntry, expenses,            SLE_INT32,                  0, 1),
+	SLE_CONDVAR(PlayerEconomyEntry, income,              SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
+	SLE_CONDVAR(PlayerEconomyEntry, income,              SLE_INT64,                  2, SL_MAX_VERSION),
+	SLE_CONDVAR(PlayerEconomyEntry, expenses,            SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
+	SLE_CONDVAR(PlayerEconomyEntry, expenses,            SLE_INT64,                  2, SL_MAX_VERSION),
 	SLE_CONDVAR(PlayerEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
-	SLE_CONDVAR(PlayerEconomyEntry, income,              SLE_FILE_I64 | SLE_VAR_I32, 2, SL_MAX_VERSION),
-	SLE_CONDVAR(PlayerEconomyEntry, expenses,            SLE_FILE_I64 | SLE_VAR_I32, 2, SL_MAX_VERSION),
 	SLE_CONDVAR(PlayerEconomyEntry, company_value,       SLE_INT64,                  2, SL_MAX_VERSION),
 
 	    SLE_VAR(PlayerEconomyEntry, delivered_cargo,     SLE_INT32),

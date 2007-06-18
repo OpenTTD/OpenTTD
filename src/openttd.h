@@ -69,7 +69,7 @@ typedef uint16 SignID;
 typedef uint16 GroupID;
 typedef uint16 EngineRenewID;
 typedef uint16 DestinationID;
-typedef int32 Money;
+typedef int64 Money;
 
 /* DestinationID must be at least as large as every these below, because it can
  * be any of them
@@ -386,8 +386,6 @@ public:
 	 * @param cst the initial cost of this command
 	 */
 	CommandCost(Money cst) : cost(cst), message(INVALID_STRING_ID), success(true) {}
-	/** "Hack" to make everything compile nicely, not needed when cost is int64 */
-	CommandCost(uint cst) : cost(cst), message(INVALID_STRING_ID), success(true) {}
 
 	/**
 	 * Adds the cost of the given command return value to this cost.

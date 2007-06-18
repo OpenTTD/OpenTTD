@@ -93,7 +93,7 @@ Money CalculateCompanyValue(const Player* p)
 	value.AddCost(-p->current_loan);
 	value.AddCost(p->player_money);
 
-	return max(value.GetCost(), 1);
+	return max(value.GetCost(), 1LL);
 }
 
 /** if update is set to true, the economy is updated with this score
@@ -1451,7 +1451,7 @@ void VehiclePayment(Vehicle *front_v)
 	}
 
 	/* Ensure a negative total is only applied to the vehicle if there is value to reduce. */
-	front_v->cargo_feeder_share = max(front_v->cargo_feeder_share + total_cargo_feeder_share, 0);
+	front_v->cargo_feeder_share = max(front_v->cargo_feeder_share + total_cargo_feeder_share, 0LL);
 
 	if (virtual_profit_total > 0) {
 		ShowFeederIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, virtual_profit_total);
@@ -1920,7 +1920,8 @@ CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Prices */
 static void SaveLoad_PRIC()
 {
-	SlArray(&_price,      NUM_PRICES, SLE_INT32);
+	int vt = CheckSavegameVersion(65) ? (SLE_FILE_I32 | SLE_VAR_I64) : SLE_INT64;
+	SlArray(&_price,      NUM_PRICES, vt);
 	SlArray(&_price_frac, NUM_PRICES, SLE_UINT16);
 }
 
@@ -1928,18 +1929,21 @@ static void SaveLoad_PRIC()
 static void SaveLoad_CAPR()
 {
 	uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
-	SlArray(&_cargo_payment_rates,      num_cargo, SLE_INT32);
+	int vt = CheckSavegameVersion(65) ? (SLE_FILE_I32 | SLE_VAR_I64) : SLE_INT64;
+	SlArray(&_cargo_payment_rates,      num_cargo, vt);
 	SlArray(&_cargo_payment_rates_frac, num_cargo, SLE_UINT16);
 }
 
 static const SaveLoad _economy_desc[] = {
-	SLE_VAR(Economy, max_loan,         SLE_INT32),
-	SLE_VAR(Economy, max_loan_unround, SLE_INT32),
-	SLE_VAR(Economy, fluct,            SLE_FILE_I16 | SLE_VAR_I32),
-	SLE_VAR(Economy, interest_rate,    SLE_UINT8),
-	SLE_VAR(Economy, infl_amount,      SLE_UINT8),
-	SLE_VAR(Economy, infl_amount_pr,   SLE_UINT8),
-	SLE_END()
+	SLE_CONDVAR(Economy, max_loan,         SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
+	SLE_CONDVAR(Economy, max_loan,         SLE_INT64,                  65, SL_MAX_VERSION),
+	SLE_CONDVAR(Economy, max_loan_unround, SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
+	SLE_CONDVAR(Economy, max_loan_unround, SLE_INT64,                  65, SL_MAX_VERSION),
+	    SLE_VAR(Economy, fluct,            SLE_FILE_I16 | SLE_VAR_I32),
+	    SLE_VAR(Economy, interest_rate,    SLE_UINT8),
+	    SLE_VAR(Economy, infl_amount,      SLE_UINT8),
+	    SLE_VAR(Economy, infl_amount_pr,   SLE_UINT8),
+	    SLE_END()
 };
 
 /** Economy variables */

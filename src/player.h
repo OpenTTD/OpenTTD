@@ -16,7 +16,7 @@ struct PlayerEconomyEntry {
 	Money expenses;
 	int32 delivered_cargo;
 	int32 performance_history; ///< player score (scale 0-1000)
-	int64 company_value;
+	Money company_value;
 };
 
 struct AiBuildRec {
@@ -166,7 +166,7 @@ struct Player {
 
 	PlayerFace face;
 
-	int64 player_money;
+	Money player_money;
 	Money current_loan;
 
 	byte player_color;
@@ -197,7 +197,7 @@ struct Player {
 	PlayerAI ai;
 	PlayerAiNew ainew;
 
-	int64 yearly_expenses[3][13];
+	Money yearly_expenses[3][13];
 	PlayerEconomyEntry cur_economy;
 	PlayerEconomyEntry old_economy[24];
 	EngineRenewList engine_renew_list; ///< Defined later
