@@ -179,6 +179,7 @@ endif
 	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/known-bugs.txt"       "$(BUNDLE_DIR)/docs/"
 	$(Q)cp "$(ROOT_DIR)/docs/multiplayer.txt" "$(BUNDLE_DIR)/docs/"
+	$(Q)cp "$(ROOT_DIR)/docs/32bpp.txt"       "$(BUNDLE_DIR)/docs/"
 	$(Q)cp "$(ROOT_DIR)/changelog.txt"        "$(BUNDLE_DIR)/docs/"
 	$(Q)cp "$(ROOT_DIR)/media/openttd.64.png" "$(BUNDLE_DIR)/media/"
 	$(Q)cp "$(ROOT_DIR)/media/openttd.32.xpm" "$(BUNDLE_DIR)/media/"
