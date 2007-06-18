@@ -139,6 +139,18 @@ public:
 	virtual void MoveBuffer(void *video_dst, const void *video_src, int width, int height) = 0;
 
 	/**
+	 * Scroll the videobuffer some 'x' and 'y' value.
+	 * @param video The buffer to scroll into.
+	 * @param left The left value of the screen to scroll.
+	 * @param top The top value of the screen to scroll.
+	 * @param width The width of the screen to scroll.
+	 * @param height The height of the screen to scroll.
+	 * @param scroll_x How much to scroll in X.
+	 * @param scroll_y How much to scroll in Y.
+	 */
+	virtual void ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y) = 0;
+
+	/**
 	 * Calculate how much memory there is needed for an image of this size in the video-buffer.
 	 * @param width The width of the buffer-to-be.
 	 * @param height The height of the buffer-to-be.

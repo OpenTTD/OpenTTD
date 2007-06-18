@@ -21,6 +21,7 @@ public:
 	/* virtual */ void CopyFromBuffer(void *video, const void *src, int width, int height, int src_pitch);
 	/* virtual */ void CopyToBuffer(const void *video, void *dst, int width, int height, int dst_pitch);
 	/* virtual */ void MoveBuffer(void *video_dst, const void *video_src, int width, int height);
+	/* virtual */ void ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y);
 	/* virtual */ int BufferSize(int width, int height);
 };
 

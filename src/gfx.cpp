@@ -61,59 +61,13 @@ static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / 8];
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-	const void *src;
-	void *dst;
 
 	if (xo == 0 && yo == 0) return;
 
 	if (_cursor.visible) UndrawMouseCursor();
 	UndrawTextMessage();
 
-	if (yo > 0) {
-		/*Calculate pointers */
-		dst = blitter->MoveTo(_screen.dst_ptr, left, top + height - 1);
-		src = blitter->MoveTo(dst, 0, -yo);
-
-		/* Decrease height and increase top */
-		top += yo;
-		height -= yo;
-		assert(height > 0);
-
-		/* Adjust left & width */
-		if (xo >= 0) {
-			dst = blitter->MoveTo(dst, xo, 0);
-			left += xo;
-			width -= xo;
-		} else {
-			src = blitter->MoveTo(src, -xo, 0);
-			width += xo;
-		}
-
-		/* Negative height as we want to copy from bottom to top */
-		blitter->CopyFromBuffer(dst, src, width, -height, _screen.pitch);
-	} else {
-		/* Calculate pointers */
-		dst = blitter->MoveTo(_screen.dst_ptr, left, top);
-		src = blitter->MoveTo(dst, 0, -yo);
-
-		/* Decrese height. (yo is <=0). */
-		height += yo;
-		assert(height > 0);
-
-		/* Adjust left & width */
-		if (xo >= 0) {
-			dst = blitter->MoveTo(dst, xo, 0);
-			left += xo;
-			width -= xo;
-		} else {
-			src = blitter->MoveTo(src, -xo, 0);
-			width += xo;
-		}
-
-		/* the y-displacement may be 0 therefore we have to use memmove,
-		 * because source and destination may overlap */
-		blitter->MoveBuffer(dst, src, width, height);
-	}
+	blitter->ScrollBuffer(_screen.dst_ptr, left, top, width, height, xo, yo);
 	/* This part of the screen is now dirty. */
 	_video_driver->make_dirty(left, top, width, height);
 }
