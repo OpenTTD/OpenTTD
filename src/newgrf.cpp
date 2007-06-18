@@ -42,6 +42,7 @@
 #include "industry.h"
 #include "newgrf_canal.h"
 #include "newgrf_commons.h"
+#include "newgrf_townname.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -3898,6 +3899,106 @@ static void GRFInhibit(byte *buf, int len)
 	}
 }
 
+/* Action 0x0F */
+static void FeatureTownName(byte *buf, int len)
+{
+	/* <0F> <id> <style-name> <num-parts> <parts>
+	 *
+	 * B id          ID of this definition in bottom 7 bits (final definition if bit 7 set)
+	 * V style-name  Name of the style (only for final definition)
+	 * B num-parts   Number of parts in this definition
+	 * V parts       The parts */
+
+	if (!check_length(len, 1, "FeatureTownName: definition ID")) return;
+	buf++; len--;
+
+	uint32 grfid = _cur_grffile->grfid;
+
+	GRFTownName *townname = AddGRFTownName(grfid);
+
+	byte id = grf_load_byte(&buf);
+	len--;
+	grfmsg(6, "FeatureTownName: definition 0x%02X", id & 0x7F);
+
+	if (HASBIT(id, 7)) {
+		/* Final definition */
+		CLRBIT(id, 7);
+		bool new_scheme = _cur_grffile->grf_version >= 7;
+
+		if (!check_length(len, 1, "FeatureTownName: lang_id")) return;
+		byte lang = grf_load_byte(&buf);
+		len--;
+
+		byte nb_gen = townname->nb_gen;
+		do {
+			CLRBIT(lang, 7);
+
+			if (!check_length(len, 1, "FeatureTownName: style name")) return;
+			const char *name = grf_load_string(&buf, len);
+			len -= strlen(name) + 1;
+			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, TranslateTTDPatchCodes(name));
+
+			townname->name[nb_gen] = AddGRFString(grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+
+			if (!check_length(len, 1, "FeatureTownName: lang_id")) return;
+			lang = grf_load_byte(&buf);
+			len--;
+		} while (lang != 0);
+		townname->id[nb_gen] = id;
+		townname->nb_gen++;
+	}
+
+	if (!check_length(len, 1, "FeatureTownName: number of parts")) return;
+	byte nb = grf_load_byte(&buf);
+	len--;
+	grfmsg(6, "FeatureTownName: %d parts", nb, nb);
+
+	townname->nbparts[id] = nb;
+	townname->partlist[id] = CallocT<NamePartList>(nb);
+
+	for (int i = 0; i < nb; i++) {
+		if (!check_length(len, 3, "FeatureTownName: parts header")) return;
+		byte nbtext =  grf_load_byte(&buf);
+		townname->partlist[id][i].bitstart  = grf_load_byte(&buf);
+		townname->partlist[id][i].bitcount  = grf_load_byte(&buf);
+		townname->partlist[id][i].maxprob   = 0;
+		townname->partlist[id][i].partcount = nbtext;
+		townname->partlist[id][i].parts     = CallocT<NamePart>(nbtext);
+		len -= 3;
+		grfmsg(6, "FeatureTownName: part %d contains %d texts and will use GB(seed, %d, %d)", i, nbtext, townname->partlist[id][i].bitstart, townname->partlist[id][i].bitcount);
+
+		for (int j = 0; j < nbtext; j++) {
+			if (!check_length(len, 2, "FeatureTownName: part")) return;
+			byte prob = grf_load_byte(&buf);
+			len--;
+
+			if (HASBIT(prob, 7)) {
+				byte ref_id = grf_load_byte(&buf);
+				len--;
+
+				if (townname->nbparts[ref_id] == 0) {
+					grfmsg(0, "FeatureTownName: definition 0x%02X doesn't exist, deactivating", ref_id);
+					DelGRFTownName(grfid);
+					_cur_grfconfig->status = GCS_DISABLED;
+					_skip_sprites = -1;
+					return;
+				}
+
+				grfmsg(6, "FeatureTownName: part %d, text %d, uses intermediate definition 0x%02X (with probability %d)", i, j, ref_id, prob & 0x7F);
+				townname->partlist[id][i].parts[j].data.id = ref_id;
+			} else {
+				const char *text = grf_load_string(&buf, len);
+				len -= strlen(text) + 1;
+				townname->partlist[id][i].parts[j].data.text = TranslateTTDPatchCodes(text);
+				grfmsg(6, "FeatureTownName: part %d, text %d, '%s' (with probability %d)", i, j, townname->partlist[id][i].parts[j].data.text, prob);
+			}
+			townname->partlist[id][i].parts[j].prob = prob;
+			townname->partlist[id][i].maxprob += GB(prob, 0, 7);
+		}
+		grfmsg(6, "FeatureTownName: part %d, total probability %d", i, townname->partlist[id][i].maxprob);
+	}
+}
+
 /* Action 0x10 */
 static void DefineGotoLabel(byte *buf, int len)
 {
@@ -4241,7 +4342,7 @@ static void InitializeGRFSpecial()
 	                   |    ((_patches.freight_trains > 1 ? 1 : 0) << 0x18)  // freighttrains
 	                   |                                        (1 << 0x19)  // newhouses
 	                   |                                        (1 << 0x1A)  // newbridges
-	                   |                                        (0 << 0x1B)  // newtownnames
+	                   |                                        (1 << 0x1B)  // newtownnames
 	                   |                                        (0 << 0x1C)  // moreanimations
 	                   |    ((_patches.wagon_speed_limits ? 1 : 0) << 0x1D)  // wagonspeedlimits
 	                   |                                        (1 << 0x1E)  // newshistory
@@ -4418,6 +4519,7 @@ static void ResetNewGRFErrors()
 static void ResetNewGRFData()
 {
 	CleanUpStrings();
+	CleanUpGRFTownNames();
 
 	/* Copy/reset original engine info data */
 	memcpy(&_engine_info, &orig_engine_info, sizeof(orig_engine_info));
@@ -4787,7 +4889,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x0C */ { NULL,     NULL,      NULL,            GRFComment,     NULL,              GRFComment, },
 		/* 0x0D */ { NULL,     SafeParamSet, NULL,         ParamSet,       ParamSet,          ParamSet, },
 		/* 0x0E */ { NULL,     SafeGRFInhibit, NULL,       GRFInhibit,     GRFInhibit,        GRFInhibit, },
-		/* 0x0F */ { NULL,     NULL,      NULL,            NULL,           NULL,              NULL, },
+		/* 0x0F */ { NULL,     GRFUnsafe, NULL,            FeatureTownName, NULL,             NULL, },
 		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,           NULL,              NULL, },
 		/* 0x11 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              GRFSound, },
 		/* 0x12 */ { NULL,     NULL,      NULL,            NULL,           NULL,              LoadFontGlyph, },
@@ -4917,6 +5019,8 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 
 void InitDepotWindowBlockSizes();
 
+extern void SortTownGeneratorNames();
+
 static void AfterLoadGRFs()
 {
 	/* Update the bitmasks for the vehicle lists */
@@ -4941,6 +5045,9 @@ static void AfterLoadGRFs()
 	/* Map cargo strings. This is a separate step because cargos are
 	 * loaded before strings... */
 	MapNewCargoStrings();
+
+	/* Update the townname generators list */
+	SortTownGeneratorNames();
 }
 
 void LoadNewGRF(uint load_index, uint file_index)
@@ -4959,6 +5066,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 		_cur_spriteid = load_index;
 		for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
+			if (stage > GLS_INIT && HASBIT(c->flags, GCF_INIT_ONLY)) continue;
 
 			/* @todo usererror() */
 			if (!FioCheckFileExists(c->full_path)) error("NewGRF file is missing '%s'", c->filename);

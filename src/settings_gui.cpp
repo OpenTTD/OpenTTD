@@ -24,6 +24,7 @@
 #include "vehicle.h"
 #include "date.h"
 #include "helpers.hpp"
+#include "newgrf_townname.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;
@@ -66,19 +67,44 @@ static StringID *BuildDynamicDropdown(StringID base, int num)
 	return buf;
 }
 
-static StringID _town_names[SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 2] = {STR_NULL};
+int _nb_orig_names = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1;
+static StringID *_town_names = NULL;
+static StringID *_grf_names = NULL;
+static int _nb_grf_names = 0;
 
 void SortTownGeneratorNames()
 {
-	int nb_town_names = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1;
-	/* Init the strings */
-	if (_town_names[0] == STR_NULL) {
-		for (int i = 0; i < nb_town_names; i++) _town_names[i] = STR_TOWNNAME_ORIGINAL_ENGLISH + i;
-		_town_names[nb_town_names] = INVALID_STRING_ID;
-	}
+	int n = 0;
+
+	/* Get Newgrf generators' names */
+	free(_grf_names);
+	_grf_names = GetGRFTownNameList();
+	_nb_grf_names = 0;
+	for (StringID *s = _grf_names; *s != INVALID_STRING_ID; s++) _nb_grf_names++;
+
+	/* Prepare the list */
+	free(_town_names);
+	_town_names = MallocT<StringID>(_nb_orig_names + _nb_grf_names + 1);
+
+	/* Put the original strings */
+	for (int i = 0; i < _nb_orig_names; i++) _town_names[n++] = STR_TOWNNAME_ORIGINAL_ENGLISH + i;
+
+	/* Put the grf strings */
+	for (int i = 0; i < _nb_grf_names; i++) _town_names[n++] = _grf_names[i];
+
+	/* Put the terminator */
+	_town_names[n] = INVALID_STRING_ID;
 
 	/* Sort the strings */
-	qsort(&_town_names[0], nb_town_names, sizeof(StringID), &StringIDSorter);
+	qsort(&_town_names[0], _nb_orig_names + _nb_grf_names, sizeof(StringID), &StringIDSorter);
+}
+
+static inline StringID TownName(int town_name)
+{
+	if (town_name < _nb_orig_names) return STR_TOWNNAME_ORIGINAL_ENGLISH + town_name;
+	town_name -= _nb_orig_names;
+	if (town_name < _nb_grf_names) return _grf_names[town_name];
+	return STR_UNDEFINED;
 }
 
 static int GetCurRes()
@@ -120,7 +146,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		SetDParam(1, _currency_specs[_opt_ptr->currency].name);
 		SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
 		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_ptr->road_side);
-		SetDParam(4, STR_TOWNNAME_ORIGINAL_ENGLISH + _opt_ptr->town_name);
+		SetDParam(4, TownName(_opt_ptr->town_name));
 		SetDParam(5, _autosave_dropdown[_opt_ptr->autosave]);
 		SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
 		i = GetCurRes();
@@ -152,8 +178,8 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		} return;
 		case 13: case 14: { /* Setup townname dropdown */
 			uint sel = 0;
-			for (uint i = 0; i < lengthof(_town_names) - 1; i++) {
-				if (_town_names[i] == STR_TOWNNAME_ORIGINAL_ENGLISH + _opt_ptr->town_name) {
+			for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
+				if (_town_names[i] == TownName(_opt_ptr->town_name)) {
 					sel = i;
 					break;
 				}
@@ -214,7 +240,12 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			break;
 		case 14: /* Town names */
 			if (_game_mode == GM_MENU) {
-				_opt_ptr->town_name = _town_names[e->we.dropdown.index] - STR_TOWNNAME_ORIGINAL_ENGLISH;
+				for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
+					if (_town_names[e->we.dropdown.index] == TownName(i)) {
+						_opt_ptr->town_name = i;
+						break;
+					}
+				}
 				InvalidateWindow(WC_GAME_OPTIONS, 0);
 			}
 			break;

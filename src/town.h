@@ -83,6 +83,7 @@ struct Town {
 	uint32 population;
 
 	/* Town name */
+	uint32 townnamegrfid;
 	uint16 townnametype;
 	uint32 townnameparts;
 

@@ -28,6 +28,7 @@
 #include "cargotype.h"
 #include "group.h"
 #include "debug.h"
+#include "newgrf_townname.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"
@@ -825,8 +826,8 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
 				} else {
 					int32 temp[2];
-					temp[0] = st->town->townnametype;
-					temp[1] = st->town->townnameparts;
+					temp[0] = STR_TOWN;
+					temp[1] = st->town->index;
 					buff = GetStringWithArgs(buff, st->string_id, temp, last);
 				}
 				break;
@@ -839,7 +840,21 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				assert(IsValidTown(t));
 
 				temp[0] = t->townnameparts;
-				buff = GetStringWithArgs(buff, t->townnametype, temp, last);
+				uint32 grfid = t->townnamegrfid;
+
+				if (grfid == 0) {
+					/* Original town name */
+					buff = GetStringWithArgs(buff, t->townnametype, temp, last);
+				} else {
+					/* Newgrf town name */
+					if (GetGRFTownName(grfid) != NULL) {
+						/* The grf is loaded */
+						buff = GRFTownNameGenerate(buff, t->townnamegrfid, t->townnametype, t->townnameparts, last);
+					} else {
+						/* Fallback to english original */
+						buff = GetStringWithArgs(buff, SPECSTR_TOWNNAME_ENGLISH, temp, last);
+					}
+				}
 				break;
 			}
 

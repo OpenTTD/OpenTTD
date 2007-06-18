@@ -980,6 +980,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_townname.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\news.h"
 				>
 			</File>
@@ -1657,6 +1661,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_town.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_townname.cpp"
 				>
 			</File>
 		</Filter>

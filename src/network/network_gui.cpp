@@ -1519,8 +1519,8 @@ static const char *ChatTabCompletionNextItem(uint *item)
 
 		FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {
 			/* Get the town-name via the string-system */
-			SetDParam(0, t->townnameparts);
-			GetString(chat_tab_temp_buffer, t->townnametype, lastof(chat_tab_temp_buffer));
+			SetDParam(0, t->index);
+			GetString(chat_tab_temp_buffer, STR_TOWN, lastof(chat_tab_temp_buffer));
 			return &chat_tab_temp_buffer[0];
 		}
 	}

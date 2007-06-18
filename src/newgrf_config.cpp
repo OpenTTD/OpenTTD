@@ -124,8 +124,9 @@ void ClearGRFConfigList(GRFConfig **config)
 /** Copy a GRF Config list
  * @param dst pointer to destination list
  * @param src pointer to source list values
+ * @param init_only the copied GRF will be processed up to GLS_INIT
  * @return pointer to the last value added to the destination list */
-GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
+GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only)
 {
 	/* Clear destination as it will be overwritten */
 	ClearGRFConfigList(dst);
@@ -142,6 +143,8 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src)
 			if (src->error->data != NULL) c->error->data = strdup(src->error->data);
 			if (src->error->custom_message != NULL) c->error->custom_message = strdup(src->error->custom_message);
 		}
+
+		if (init_only) SETBIT(c->flags, GCF_INIT_ONLY);
 
 		*dst = c;
 		dst = &c->next;
@@ -190,7 +193,7 @@ void AppendStaticGRFConfigs(GRFConfig **dst)
 	GRFConfig **tail = dst;
 	while (*tail != NULL) tail = &(*tail)->next;
 
-	CopyGRFConfigList(tail, _grfconfig_static);
+	CopyGRFConfigList(tail, _grfconfig_static, false);
 	RemoveDuplicatesFromGRFConfigList(*dst);
 }
 
@@ -210,14 +213,7 @@ void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el)
 /* Reset the current GRF Config to either blank or newgame settings */
 void ResetGRFConfig(bool defaults)
 {
-	GRFConfig **c = &_grfconfig;
-
-	if (defaults) {
-		c = CopyGRFConfigList(c, _grfconfig_newgame);
-	} else {
-		ClearGRFConfigList(c);
-	}
-
+	CopyGRFConfigList(&_grfconfig, _grfconfig_newgame, !defaults);
 	AppendStaticGRFConfigs(&_grfconfig);
 }
 

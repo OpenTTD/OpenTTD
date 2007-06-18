@@ -14,6 +14,7 @@ enum GCF_Flags {
 	GCF_STATIC,    ///< GRF file is used statically (can be used in any MP game)
 	GCF_COMPATIBLE,///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
 	GCF_COPY,      ///< The data is copied from a grf in _all_grfs
+	GCF_INIT_ONLY, ///< GRF file is processed up to GLS_INIT
 };
 
 enum GRFStatus {
@@ -74,7 +75,7 @@ extern GRFConfig *_grfconfig_static;
 void ScanNewGRFFiles();
 const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum = NULL);
 GRFConfig *GetGRFConfig(uint32 grfid);
-GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src);
+GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only);
 void AppendStaticGRFConfigs(GRFConfig **dst);
 void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
 void ClearGRFConfig(GRFConfig **config);

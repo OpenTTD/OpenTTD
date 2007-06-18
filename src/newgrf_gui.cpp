@@ -307,12 +307,12 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		GRFConfig *c;
 		int i = 0;
 
-		CopyGRFConfigList(nd->orig_list, *nd->list);
+		CopyGRFConfigList(nd->orig_list, *nd->list, false);
 		ReloadNewGRFData();
 
 		/* Show new, updated list */
 		for (c = *nd->list; c != NULL && c != nd->sel; c = c->next, i++);
-		CopyGRFConfigList(nd->list, *nd->orig_list);
+		CopyGRFConfigList(nd->list, *nd->orig_list, false);
 		for (c = *nd->list; c != NULL && i > 0; c = c->next, i--);
 		nd->sel = c;
 
@@ -469,7 +469,9 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 							NewGRFConfirmationCallback
 						);
 					} else {
-						CopyGRFConfigList(WP(w, newgrf_d).orig_list, *WP(w, newgrf_d).list);
+						CopyGRFConfigList(WP(w, newgrf_d).orig_list, *WP(w, newgrf_d).list, true);
+						ResetGRFConfig(false);
+						ReloadNewGRFData();
 					}
 					break;
 
@@ -498,7 +500,9 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 
 		case WE_DESTROY:
 			if (!WP(w, newgrf_d).execute) {
-				CopyGRFConfigList(WP(w, newgrf_d).orig_list, *WP(w, newgrf_d).list);
+				CopyGRFConfigList(WP(w, newgrf_d).orig_list, *WP(w, newgrf_d).list, true);
+				ResetGRFConfig(false);
+				ReloadNewGRFData();
 			}
 			/* Remove the temporary copy of grf-list used in window */
 			ClearGRFConfigList(WP(w, newgrf_d).list);
@@ -565,7 +569,7 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 	if (w == NULL) return;
 
 	w->resize.step_height = 14;
-	CopyGRFConfigList(&local, *config);
+	CopyGRFConfigList(&local, *config, false);
 
 	/* Clear selections */
 	WP(w, newgrf_d).sel         = NULL;

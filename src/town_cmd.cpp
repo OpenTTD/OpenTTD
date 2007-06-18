@@ -39,6 +39,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_house.h"
 #include "newgrf_commons.h"
+#include "newgrf_townname.h"
 
 /**
  * Called if a new block is added to the town-pool
@@ -1295,6 +1296,7 @@ static void UpdateTownRadius(Town *t)
 
 static bool CreateTownName(uint32 *townnameparts)
 {
+	extern int _nb_orig_names;
 	Town *t2;
 	char buf1[64];
 	char buf2[64];
@@ -1305,7 +1307,9 @@ static bool CreateTownName(uint32 *townnameparts)
 	 * the other towns may take considerable amount of time (10000 is
 	 * too much). */
 	int tries = 1000;
-	uint16 townnametype = SPECSTR_TOWNNAME_START + _opt.town_name;
+	bool grf = (_opt.town_name >= _nb_orig_names);
+	uint32 grfid = grf ? GetGRFTownNameId(_opt.town_name - _nb_orig_names) : 0;
+	uint16 townnametype = grf ? GetGRFTownNameType(_opt.town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + _opt.town_name;
 
 	assert(townnameparts);
 
@@ -1314,7 +1318,11 @@ restart:
 		r = Random();
 
 		SetDParam(0, r);
-		GetString(buf1, townnametype, lastof(buf1));
+		if (grf && grfid != 0) {
+			GRFTownNameGenerate(buf1, grfid, townnametype, r, lastof(buf1));
+		} else {
+			GetString(buf1, townnametype, lastof(buf1));
+		}
 
 		/* Check size and width */
 		if (strlen(buf1) >= 31 || GetStringBoundingBox(buf1).width > 130) continue;
@@ -1351,6 +1359,7 @@ void UpdateTownMaxPass(Town *t)
  */
 static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSizeMode size_mode, uint size)
 {
+	extern int _nb_orig_names;
 	int x, i;
 
 	/* clear the town struct */
@@ -1392,7 +1401,15 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->exclusive_counter = 0;
 	t->statues = 0;
 
-	t->townnametype = SPECSTR_TOWNNAME_START + _opt.town_name;
+	if (_opt.town_name < _nb_orig_names) {
+		/* Original town name */
+		t->townnamegrfid = 0;
+		t->townnametype = SPECSTR_TOWNNAME_START + _opt.town_name;
+	} else {
+		/* Newgrf town name */
+		t->townnamegrfid = GetGRFTownNameId(_opt.town_name  - _nb_orig_names);
+		t->townnametype  = GetGRFTownNameType(_opt.town_name - _nb_orig_names);
+	}
 	t->townnameparts = townnameparts;
 
 	UpdateTownVirtCoord(t);
@@ -2338,6 +2355,7 @@ static const SaveLoad _town_desc[] = {
 
 
 	    SLE_VAR(Town, num_houses,            SLE_UINT16),
+	SLE_CONDVAR(Town, townnamegrfid,         SLE_UINT32, 66, SL_MAX_VERSION),
 	    SLE_VAR(Town, townnametype,          SLE_UINT16),
 	    SLE_VAR(Town, townnameparts,         SLE_UINT32),
 
