@@ -148,10 +148,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 
 	if (!HASBIT(color, PALETTE_MODIFIER_GREYOUT)) {
 		if (!HASBIT(color, USE_COLORTABLE)) {
-			do {
-				blitter->SetHorizontalLine(dst, right, (uint8)color);
-				dst = blitter->MoveTo(dst, 0, 1);
-			} while (--bottom);
+			blitter->DrawRect(dst, right, bottom, (uint8)color);
 		} else {
 			blitter->DrawColorMappingRect(dst, right, bottom, GB(color, 0, PALETTE_WIDTH));
 		}

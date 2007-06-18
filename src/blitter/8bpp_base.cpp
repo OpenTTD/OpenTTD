@@ -28,9 +28,12 @@ void Blitter_8bppBase::SetPixelIfEmpty(void *video, int x, int y, uint8 color)
 	if (*dst == 0) *dst = color;
 }
 
-void Blitter_8bppBase::SetHorizontalLine(void *video, int width, uint8 color)
+void Blitter_8bppBase::DrawRect(void *video, int width, int height, uint8 color)
 {
-	memset(video, color, width);
+	do {
+		memset(video, color, width);
+		video = (uint8 *)video + _screen.pitch;
+	} while (--height);
 }
 
 void Blitter_8bppBase::CopyFromBuffer(void *video, const void *src, int width, int height, int src_pitch)

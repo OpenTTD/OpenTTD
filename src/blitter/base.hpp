@@ -94,7 +94,7 @@ public:
 	 * @param width The lenght of the line.
 	 * @param color A 8bpp mapping color.
 	 */
-	virtual void SetHorizontalLine(void *video, int width, uint8 color) = 0;
+	virtual void DrawRect(void *video, int width, int height, uint8 color) = 0;
 
 	/**
 	 * Copy from a buffer to the screen.

@@ -18,15 +18,18 @@ void Blitter_32bppBase::SetPixelIfEmpty(void *video, int x, int y, uint8 color)
 	if (*dst == 0) *dst = LookupColourInPalette(color);
 }
 
-void Blitter_32bppBase::SetHorizontalLine(void *video, int width, uint8 color)
+void Blitter_32bppBase::DrawRect(void *video, int width, int height, uint8 color)
 {
-	uint32 *dst = (uint32 *)video;
 	uint32 color32 = LookupColourInPalette(color);
 
-	for (; width > 0; width--) {
-		*dst = color32;
-		dst++;
-	}
+	do {
+		uint32 *dst = (uint32 *)video;
+		for (int i = width; i > 0; i--) {
+			*dst = color32;
+			dst++;
+		}
+		video = (uint32 *)video + _screen.pitch;
+	} while (--height);
 }
 
 void Blitter_32bppBase::CopyFromBuffer(void *video, const void *src, int width, int height, int src_pitch)
