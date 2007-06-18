@@ -195,6 +195,7 @@ public:
 		RailType rail_type = GetTileRailType(tile);
 
 		bool target_seen = Yapf().PfDetectDestination(tile, trackdir);
+		bool end_by_target_seen = false;
 
 		if (tf.m_is_station) {
 			// station tiles have an extra penalty
@@ -212,6 +213,7 @@ public:
 
 			// finish if we have reached the destination
 			if (target_seen) {
+				end_by_target_seen = true;
 				break;
 			}
 
@@ -342,7 +344,7 @@ public:
 		}
 
 		// special costs for the case we have reached our target
-		if (target_seen) {
+		if (end_by_target_seen) {
 			n.flags_u.flags_s.m_targed_seen = true;
 			if (n.flags_u.flags_s.m_last_signal_was_red) {
 				if (n.m_last_red_signal_type == SIGTYPE_EXIT) {
@@ -358,7 +360,7 @@ public:
 		// total node cost
 		n.m_cost = parent_cost + first_tile_cost + segment_cost + extra_cost;
 
-		return !n.m_segment->flags_u.flags_s.m_end_of_line;
+		return !n.m_segment->flags_u.flags_s.m_end_of_line || end_by_target_seen;
 	}
 
 	FORCEINLINE bool CanUseGlobalCache(Node& n) const
