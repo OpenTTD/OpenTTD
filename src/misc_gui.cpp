@@ -122,7 +122,7 @@ static void Place_LandInfo(TileIndex tile)
 	GetString(_landinfo_data[1], STR_01A7_OWNER, lastof(_landinfo_data[1]));
 
 	str = STR_01A4_COST_TO_CLEAR_N_A;
-	if (!CmdFailed(costclear)) {
+	if (CmdSucceeded(costclear)) {
 		SetDParam(0, costclear);
 		str = STR_01A5_COST_TO_CLEAR;
 	}

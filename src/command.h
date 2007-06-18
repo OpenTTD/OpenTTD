@@ -205,6 +205,8 @@ static inline bool CmdFailed(CommandCost res)
 	return res <= (CMD_ERROR | INVALID_STRING_ID);
 }
 
+static inline bool CmdSucceeded(CommandCost res) { return !CmdFailed(res); }
+
 /* command.cpp */
 typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);
 CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);

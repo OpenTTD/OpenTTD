@@ -206,7 +206,7 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 						return 0;
 					}
 
-					if (!CmdFailed(res)) cost += res;
+					if (CmdSucceeded(res)) cost += res;
 				}
 				// Go to the next tile
 				part++;

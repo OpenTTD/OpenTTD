@@ -1725,7 +1725,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 
 		ret = DoCommand(tile, v->index, 0, flags, stop_command);
 
-		if (!CmdFailed(ret)) {
+		if (CmdSucceeded(ret)) {
 			return_value = 0;
 			/* We know that the command is valid for at least one vehicle.
 			 * If we haven't set DC_EXEC, then there is no point in continueing because it will be valid */
@@ -1781,7 +1781,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 
 		ret = DoCommand(tile, v->index, 1, flags, sell_command);
 
-		if (!CmdFailed(ret)) cost += ret;
+		if (CmdSucceeded(ret)) cost += ret;
 	}
 
 	free(engines);
@@ -1829,7 +1829,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 		}
 		ret = MaybeReplaceVehicle(v, !(flags & DC_EXEC), false);
 
-		if (!CmdFailed(ret)) {
+		if (CmdSucceeded(ret)) {
 			cost += ret;
 			if (!(flags & DC_EXEC)) break;
 			/* There is a problem with autoreplace and newgrf
@@ -1972,7 +1972,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != v->cargo_type) {
 					cost = DoCommand(0, w->index, v->cargo_type | (v->cargo_subtype << 8) | 1U << 16 , flags, GetCmdRefitVeh(v));
-					if (!CmdFailed(cost)) total_cost += cost;
+					if (CmdSucceeded(cost)) total_cost += cost;
 				}
 
 				if (w->type == VEH_TRAIN && EngineHasArticPart(w)) {
@@ -2240,7 +2240,7 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service,
 			* In this case we know that at least one vehicle can be sent to a depot
 			* and we will issue the command. We can now safely quit the loop, knowing
 			* it will succeed at least once. With DC_EXEC we really need to send them to the depot */
-		if (!CmdFailed(ret) && !(flags & DC_EXEC)) {
+		if (CmdSucceeded(ret) && !(flags & DC_EXEC)) {
 			free((void*)sort_list);
 			return 0;
 		}

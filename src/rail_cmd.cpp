@@ -810,7 +810,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 			ret = DoCommand(tile, p1, signals, flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			/* Be user-friendly and try placing signals as much as possible */
-			if (!CmdFailed(ret)) {
+			if (CmdSucceeded(ret)) {
 				error = false;
 				total_cost += ret;
 			}

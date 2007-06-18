@@ -1063,7 +1063,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 
 		default:
 build_road_and_exit:
-			if (!CmdFailed(DoCommand(tile, rcmd, t1->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD))) {
+			if (CmdSucceeded(DoCommand(tile, rcmd, t1->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD))) {
 				_grow_town_result = -1;
 			}
 			return;
@@ -1096,7 +1096,7 @@ build_road_and_exit:
 		do {
 			byte bridge_type = RandomRange(MAX_BRIDGES - 1);
 			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
-				if (!CmdFailed(DoCommand(tile, tmptile, bridge_type | ((0x80 | ROADTYPES_ROAD) << 8), DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE)))
+				if (CmdSucceeded(DoCommand(tile, tmptile, bridge_type | ((0x80 | ROADTYPES_ROAD) << 8), DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE)))
 					_grow_town_result = -1;
 
 				/* obviously, if building any bridge would fail, there is no need to try other bridge-types */
@@ -1235,7 +1235,7 @@ static bool GrowTown(Town *t)
 	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 		/* Only work with plain land that not already has a house */
 		if (!IsTileType(tile, MP_HOUSE) && GetTileSlope(tile, NULL) == SLOPE_FLAT) {
-			if (!CmdFailed(DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR))) {
+			if (CmdSucceeded(DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR))) {
 				DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 				_current_player = old_player;
 				return true;
@@ -1587,7 +1587,7 @@ static bool CheckBuildHouseMode(TileIndex tile, Slope tileh, int mode)
 	if (b)
 		return false;
 
-	return !CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
+	return CmdSucceeded(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
 }
 
 

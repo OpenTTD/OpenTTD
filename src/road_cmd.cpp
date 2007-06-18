@@ -704,7 +704,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 		/* try to remove the halves. */
 		if (bits != 0) {
 			ret = DoCommand(tile, rt << 4 | bits, 0, flags, CMD_REMOVE_ROAD);
-			if (!CmdFailed(ret)) cost += ret;
+			if (CmdSucceeded(ret)) cost += ret;
 		}
 
 		if (tile == end_tile) break;

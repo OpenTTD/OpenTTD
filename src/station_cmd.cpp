@@ -1441,7 +1441,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	CommandCost ret = RemoveRoadStop(st, flags, tile);
 
 	/* If the stop was a drive-through stop replace the road */
-	if ((flags & DC_EXEC) && !CmdFailed(ret) && is_drive_through) {
+	if ((flags & DC_EXEC) && CmdSucceeded(ret) && is_drive_through) {
 		/* Rebuild the drive throuhg road stop. As a road stop can only be
 		 * removed by the owner of the roadstop, _current_player is the
 		 * owner of the road stop. */

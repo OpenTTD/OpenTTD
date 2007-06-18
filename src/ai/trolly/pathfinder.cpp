@@ -28,13 +28,13 @@ static bool TestCanBuildStationHere(TileIndex tile, byte dir)
 		//  should be fixed!!!
 		for (dir = 0; dir < 4; dir++) {
 			ret = AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST);
-			if (!CmdFailed(ret)) return true;
+			if (CmdSucceeded(ret)) return true;
 		}
 		return false;
 	}
 
 	// return true if command succeeded, so the inverse of CmdFailed()
-	return !CmdFailed(AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST));
+	return CmdSucceeded(AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST));
 }
 
 
@@ -352,7 +352,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 			// Now simply check if a tunnel can be build
 			ret = AI_DoCommand(tile, (PathFinderInfo->rail_or_road?0:0x200), 0, DC_AUTO, CMD_BUILD_TUNNEL);
 			tileh = GetTileSlope(_build_tunnel_endtile, NULL);
-			if (!CmdFailed(ret) && (tileh == SLOPE_SW || tileh == SLOPE_SE || tileh == SLOPE_NW || tileh == SLOPE_NE)) {
+			if (CmdSucceeded(ret) && (tileh == SLOPE_SW || tileh == SLOPE_SE || tileh == SLOPE_NW || tileh == SLOPE_NE)) {
 				aystar->neighbours[aystar->num_neighbours].tile = _build_tunnel_endtile;
 				aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_TUNNEL + (dir << 8);
 				aystar->neighbours[aystar->num_neighbours++].direction = 0;

@@ -588,7 +588,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			case MP_CLEAR:
 			case MP_TREES:
 				_current_player = OWNER_WATER;
-				if (!CmdFailed(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+				if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 					MakeShore(target);
 					MarkTileDirtyByTile(target);
 				}
@@ -603,7 +603,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		Vehicle *v = FindFloodableVehicleOnTile(target);
 		if (v != NULL) FloodVehicle(v);
 
-		if (!CmdFailed(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+		if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 			MakeWater(target);
 			MarkTileDirtyByTile(target);
 		}
