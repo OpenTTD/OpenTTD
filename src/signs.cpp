@@ -147,7 +147,7 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		_new_sign = si;
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Rename a sign. If the new name of the sign is empty, we assume
@@ -201,7 +201,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /**

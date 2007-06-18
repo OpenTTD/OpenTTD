@@ -34,7 +34,7 @@ CommandCost CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		GetPlayer(_current_player)->face = pf;
 		MarkWholeScreenDirty();
 	}
-	return 0;
+	return CommandCost();
 }
 
 /** Change the player's company-colour
@@ -114,7 +114,7 @@ CommandCost CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		}
 		MarkWholeScreenDirty();
 	}
-	return 0;
+	return CommandCost();
 }
 
 /** Increase the loan of your company.
@@ -151,7 +151,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidatePlayerWindows(p);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Decrease the loan of your company.
@@ -190,7 +190,7 @@ CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdatePlayerMoney32(p);
 		InvalidatePlayerWindows(p);
 	}
-	return 0;
+	return CommandCost();
 }
 
 /** Change the name of the company.
@@ -218,7 +218,7 @@ CommandCost CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32
 		DeleteName(str);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Change the name of the president.
@@ -254,7 +254,7 @@ CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint
 		DeleteName(str);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Pause/Unpause the game (server-only).
@@ -274,7 +274,7 @@ CommandCost CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_STATUS_BAR, 0);
 		InvalidateWindow(WC_MAIN_TOOLBAR, 0);
 	}
-	return 0;
+	return CommandCost();
 }
 
 /** Change the financial flow of your company.
@@ -291,7 +291,7 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (_networking) return CMD_ERROR;
 #endif
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	return -(int32)p1;
+	return CommandCost(-(int32)p1);
 }
 
 /** Transfer funds (money) from one player to another.
@@ -306,19 +306,19 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const Player *p = GetPlayer(_current_player);
-	CommandCost amount = min((int32)p1, 20000000);
+	CommandCost amount(min((int32)p1, 20000000));
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	/* You can only transfer funds that is in excess of your loan */
-	if (p->money64 - p->current_loan < amount || amount <= 0) return CMD_ERROR;
+	if (p->money64 - p->current_loan < amount.GetCost() || amount.GetCost() <= 0) return CMD_ERROR;
 	if (!_networking || !IsValidPlayer((PlayerID)p2)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Add money to player */
 		PlayerID old_cp = _current_player;
 		_current_player = (PlayerID)p2;
-		SubtractMoneyFromPlayer(-amount);
+		SubtractMoneyFromPlayer(CommandCost(-amount.GetCost()));
 		_current_player = old_cp;
 	}
 
@@ -354,5 +354,5 @@ CommandCost CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, ui
 		if (_networking && !_network_server && FindWindowById(WC_GAME_OPTIONS, 0) != NULL)
 			ShowGameDifficulty();
 	}
-	return 0;
+	return CommandCost();
 }

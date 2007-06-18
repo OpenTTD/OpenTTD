@@ -118,7 +118,7 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 
 static CommandCost EstimateRoadVehCost(EngineID engine_type)
 {
-	return ((_price.roadveh_base >> 3) * GetEngineProperty(engine_type, 0x11, RoadVehInfo(engine_type)->base_cost)) >> 5;
+	return CommandCost(((_price.roadveh_base >> 3) * GetEngineProperty(engine_type, 0x11, RoadVehInfo(engine_type)->base_cost)) >> 5);
 }
 
 byte GetRoadVehLength(const Vehicle *v)
@@ -219,7 +219,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->cargo_subtype = 0;
 		v->cargo_cap = rvi->capacity;
 //		v->cargo_count = 0;
-		v->value = cost;
+		v->value = cost.GetCost();
 //		v->day_counter = 0;
 //		v->next_order_param = v->next_order = 0;
 //		v->load_unload_time_rem = 0;
@@ -273,7 +273,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		GetPlayer(_current_player)->num_engines[p1]++;
 	}
 
-	return cost;
+	return CommandCost(cost);
 }
 
 /** Start/Stop a road vehicle.
@@ -312,7 +312,7 @@ CommandCost CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 void ClearSlot(Vehicle *v)
@@ -373,7 +373,7 @@ CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteVehicle(v);
 	}
 
-	return -(int32)v->value;
+	return CommandCost(-(int32)v->value);
 }
 
 struct RoadFindDepotData {
@@ -478,7 +478,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
-			return 0;
+			return CommandCost();
 		}
 
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
@@ -492,7 +492,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
-		return 0;
+		return CommandCost();
 	}
 
 	dep = FindClosestRoadDepot(v);
@@ -511,7 +511,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Turn a roadvehicle around.
@@ -548,7 +548,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) v->u.road.reverse_ctr = 180;
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -1968,10 +1968,10 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	cost = RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running / 364;
 
-	v->profit_this_year -= cost >> 8;
+	v->profit_this_year -= cost.GetCost() >> 8;
 
 	SET_EXPENSES_TYPE(EXPENSES_ROADVEH_RUN);
-	SubtractMoneyFromPlayerFract(v->owner, cost);
+	SubtractMoneyFromPlayerFract(v->owner, CommandCost(cost));
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	InvalidateWindowClasses(WC_ROADVEH_LIST);
@@ -2060,7 +2060,6 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 	_returned_refit_capacity = capacity;
 
-	cost = 0;
 	if (IsHumanPlayer(v->owner) && new_cid != v->cargo_type) {
 		cost = GetRefitCost(v->engine_type);
 	}

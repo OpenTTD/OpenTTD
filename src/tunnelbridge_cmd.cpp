@@ -115,12 +115,12 @@ static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope tileh)
 	uint32 valid;
 
 	valid = M(SLOPE_FLAT) | (axis == AXIS_X ? M(SLOPE_NE) : M(SLOPE_NW));
-	if (HASBIT(valid, tileh)) return 0;
+	if (HASBIT(valid, tileh)) return CommandCost();
 
 	valid =
 		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_N) | M(SLOPE_STEEP_N) |
 		(axis == AXIS_X ? M(SLOPE_E) | M(SLOPE_STEEP_E) : M(SLOPE_W) | M(SLOPE_STEEP_W));
-	if (HASBIT(valid, tileh)) return _price.terraform;
+	if (HASBIT(valid, tileh)) return CommandCost(_price.terraform);
 
 	return CMD_ERROR;
 }
@@ -130,12 +130,12 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope tileh)
 	uint32 valid;
 
 	valid = M(SLOPE_FLAT) | (axis == AXIS_X ? M(SLOPE_SW) : M(SLOPE_SE));
-	if (HASBIT(valid, tileh)) return 0;
+	if (HASBIT(valid, tileh)) return CommandCost();
 
 	valid =
 		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_S) | M(SLOPE_STEEP_S) |
 		(axis == AXIS_X ? M(SLOPE_W) | M(SLOPE_STEEP_W) : M(SLOPE_E) | M(SLOPE_STEEP_E));
-	if (HASBIT(valid, tileh)) return _price.terraform;
+	if (HASBIT(valid, tileh)) return CommandCost(_price.terraform);
 
 	return CMD_ERROR;
 }
@@ -301,7 +301,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 			return_cmd_error(STR_1024_AREA_IS_OWNED_BY_ANOTHER);
 		}
 
-		cost = (bridge_len + 1) * _price.clear_bridge; // The cost of clearing the current bridge.
+		cost.AddCost((bridge_len + 1) * _price.clear_bridge); // The cost of clearing the current bridge.
 		replace_bridge = true;
 		replaced_bridge_type = GetBridgeType(tile_start);
 
@@ -316,20 +316,20 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 		cost = ret;
 
 		terraformcost = CheckBridgeSlopeNorth(direction, tileh_start);
-		if (CmdFailed(terraformcost) || (terraformcost != 0 && !allow_on_slopes))
+		if (CmdFailed(terraformcost) || (terraformcost.GetCost() != 0 && !allow_on_slopes))
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-		cost += terraformcost;
+		cost.AddCost(terraformcost);
 
 		/* Try and clear the end landscape */
 		ret = DoCommand(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
-		cost += ret;
+		cost.AddCost(ret);
 
 		/* false - end tile slope check */
 		terraformcost = CheckBridgeSlopeSouth(direction, tileh_end);
-		if (CmdFailed(terraformcost) || (terraformcost != 0 && !allow_on_slopes))
+		if (CmdFailed(terraformcost) || (terraformcost.GetCost() != 0 && !allow_on_slopes))
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-		cost += terraformcost;
+		cost.AddCost(terraformcost);
 	}
 
 	if (!replace_bridge) {
@@ -412,7 +412,7 @@ not_valid_below:;
 				/* try and clear the middle landscape */
 				ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 				if (CmdFailed(ret)) return ret;
-				cost += ret;
+				cost.AddCost(ret);
 				break;
 		}
 
@@ -440,7 +440,7 @@ not_valid_below:;
 		if (IsValidPlayer(_current_player) && !_is_old_ai_player)
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
-		cost += (int64)bridge_len * _price.build_bridge * b->price >> 8;
+		cost.AddCost((int64)bridge_len * _price.build_bridge * b->price >> 8);
 	}
 
 	return cost;
@@ -489,7 +489,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	 * for the clearing of the entrance of the tunnel. Assigning it to
 	 * cost before the loop will yield different costs depending on start-
 	 * position, because of increased-cost-by-length: 'cost += cost >> 3' */
-	cost = 0;
+
 	delta = TileOffsByDiagDir(direction);
 	end_tile = start_tile;
 	for (;;) {
@@ -502,13 +502,14 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 			return_cmd_error(STR_5003_ANOTHER_TUNNEL_IN_THE_WAY);
 		}
 
-		cost += _price.build_tunnel;
-		cost += cost >> 3; // add a multiplier for longer tunnels
-		if (cost >= 400000000) cost = 400000000;
+		cost.AddCost(_price.build_tunnel);
+		cost.AddCost(cost.GetCost() >> 3); // add a multiplier for longer tunnels
+		if (cost.GetCost() >= 400000000) cost.AddCost(400000000 - cost.GetCost());
 	}
 
 	/* Add the cost of the entrance */
-	cost += _price.build_tunnel + ret;
+	cost.AddCost(_price.build_tunnel);
+	cost.AddCost(ret);
 
 	/* if the command fails from here on we want the end tile to be highlighted */
 	_build_tunnel_endtile = end_tile;
@@ -521,7 +522,8 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 		ret = DoCommand(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
 	}
-	cost += _price.build_tunnel + ret;
+	cost.AddCost(_price.build_tunnel);
+	cost.AddCost(ret);
 
 	if (flags & DC_EXEC) {
 		if (GB(p1, 9, 1) == TRANSPORT_RAIL) {
@@ -622,7 +624,7 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 		YapfNotifyTrackLayoutChange(tile, track);
 		YapfNotifyTrackLayoutChange(endtile, track);
 	}
-	return _price.clear_tunnel * (length + 1);
+	return CommandCost(_price.clear_tunnel * (length + 1));
 }
 
 
@@ -695,7 +697,7 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 		YapfNotifyTrackLayoutChange(endtile, track);
 	}
 
-	return (DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge;
+	return CommandCost((DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge);
 }
 
 static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
@@ -749,7 +751,7 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 		}
-		return (length + 1) * (_price.build_rail / 2);
+		return CommandCost((length + 1) * (_price.build_rail / 2));
 	} else if (IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
 
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
@@ -784,7 +786,7 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 			}
 		}
 
-		return (DistanceManhattan(tile, endtile) + 1) * (_price.build_rail / 2);
+		return CommandCost((DistanceManhattan(tile, endtile) + 1) * (_price.build_rail / 2));
 	} else {
 		return CMD_ERROR;
 	}

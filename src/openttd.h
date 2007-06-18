@@ -52,6 +52,8 @@ struct PalSpriteID {
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 typedef uint16 StringID;
+#define INVALID_STRING_ID 0xFFFF
+
 typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
 
 /* IDs used in Pools */
@@ -67,7 +69,6 @@ typedef uint16 SignID;
 typedef uint16 GroupID;
 typedef uint16 EngineRenewID;
 typedef uint16 DestinationID;
-typedef int32 CommandCost;
 
 /* DestinationID must be at least as large as every these below, because it can
  * be any of them
@@ -359,10 +360,84 @@ struct ViewportSign {
 	byte width_1, width_2;
 };
 
+/**
+ * Common return value for all commands. Wraps the cost and
+ * a possible error message/state together.
+ */
+class CommandCost {
+	int32 cost;       ///< The cost of this action
+	StringID message; ///< Warning message for when success is unset
+	bool success;     ///< Whether the comment went fine up to this moment
+
+public:
+	/**
+	 * Creates a command cost return with no cost and no error
+	 */
+	CommandCost() : cost(0), message(INVALID_STRING_ID), success(true) {}
+
+	/**
+	 * Creates a command return value the is failed with the given message
+	 */
+	CommandCost(StringID msg) : cost(0), message(msg), success(false) {}
+
+	/**
+	 * Creates a command return value with the given start cost
+	 * @param cst the initial cost of this command
+	 */
+	CommandCost(int32 cst) : cost(cst), message(INVALID_STRING_ID), success(true) {}
+	/** "Hack" to make everything compile nicely, not needed when cost is int64 */
+	CommandCost(uint cst) : cost(cst), message(INVALID_STRING_ID), success(true) {}
+
+	/**
+	 * Adds the cost of the given command return value to this cost.
+	 * Also takes a possible error message when it is set.
+	 * @param ret the command to add the cost of.
+	 * @return this class.
+	 */
+	CommandCost AddCost(CommandCost ret);
+
+	/**
+	 * Adds the given cost to the cost of the command.
+	 * @param cost the cost to add
+	 * @return this class.
+	 */
+	CommandCost AddCost(int32 cost);
+
+	/**
+	 * Multiplies the cost of the command by the given factor.
+	 * @param cost factor to multiply the costs with
+	 * @return this class
+	 */
+	CommandCost MultiplyCost(int factor);
+
+	/**
+	 * The costs as made up to this moment
+	 * @return the costs
+	 */
+	int32 GetCost() const;
+
+	/**
+	 * Sets the global error message *if* this class has one.
+	 */
+	void SetGlobalErrorMessage() const;
+
+	/**
+	 * Did this command succeed?
+	 * @return true if and only if it succeeded
+	 */
+	bool Succeeded() const;
+
+	/**
+	 * Did this command fail?
+	 * @return true if and only if it failed
+	 */
+	bool Failed() const;
+};
+
 
 typedef void DrawTileProc(TileInfo *ti);
 typedef uint GetSlopeZProc(TileIndex tile, uint x, uint y);
-typedef int32 ClearTileProc(TileIndex tile, byte flags);
+typedef CommandCost ClearTileProc(TileIndex tile, byte flags);
 typedef void GetAcceptedCargoProc(TileIndex tile, AcceptedCargo res);
 typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
 /**
@@ -588,8 +663,6 @@ enum {
 };
 
 VARDEF byte _savegame_sort_order;
-
-#define INVALID_STRING_ID 0xFFFF
 
 enum {
 	MAX_SCREEN_WIDTH  = 2048,

@@ -84,7 +84,7 @@ static void AI_PutCommandInQueue(PlayerID player, TileIndex tile, uint32 p1, uin
 CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc, CommandCallback* callback)
 {
 	PlayerID old_lp;
-	CommandCost res = 0;
+	CommandCost res;
 	const char* tmp_cmdtext;
 
 	/* If you enable DC_EXEC with DC_QUERY_COST you are a really strange

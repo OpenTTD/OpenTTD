@@ -152,7 +152,7 @@ static EngineID AiChooseTrainToBuild(RailType railtype, int32 money, byte flag, 
 		}
 
 		ret = DoCommand(tile, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
-		if (CmdSucceeded(ret) && ret <= money && rvi->ai_rank >= best_veh_score) {
+		if (CmdSucceeded(ret) && ret.GetCost() <= money && rvi->ai_rank >= best_veh_score) {
 			best_veh_score = rvi->ai_rank;
 			best_veh_index = i;
 		}
@@ -189,8 +189,8 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex til
 		if (CmdFailed(ret)) continue;
 
 		/* Add the cost of refitting */
-		if (rvi->cargo_type != cargo) ret += GetRefitCost(i);
-		if (ret > money) continue;
+		if (rvi->cargo_type != cargo) ret.AddCost(GetRefitCost(i));
+		if (ret.GetCost() > money) continue;
 
 		best_veh_rating = rating;
 		best_veh_index = i;
@@ -216,8 +216,8 @@ static EngineID AiChooseAircraftToBuild(int32 money, byte flag)
 		if ((AircraftVehInfo(i)->subtype & AIR_CTOL) != flag) continue;
 
 		ret = DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT);
-		if (CmdSucceeded(ret) && ret <= money && ret >= best_veh_cost) {
-			best_veh_cost = ret;
+		if (CmdSucceeded(ret) && ret.GetCost() <= money && ret.GetCost() >= best_veh_cost) {
+			best_veh_cost = ret.GetCost();
 			best_veh_index = i;
 		}
 	}
@@ -1641,7 +1641,7 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 static CommandCost AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData* p, RailType railtype, byte flag)
 {
 	CommandCost ret;
-	CommandCost total_cost = 0;
+	CommandCost total_cost;
 	Town *t = NULL;
 	int rating = 0;
 	int i, j, k;
@@ -1662,7 +1662,7 @@ static CommandCost AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBloc
 			}
 
 			if (CmdFailed(ret)) return CMD_ERROR;
-			total_cost += ret;
+			total_cost.AddCost(ret);
 
 clear_town_stuff:;
 			if (_cleared_town != NULL) {
@@ -1684,7 +1684,7 @@ clear_town_stuff:;
 					k = i;
 					ret = DoCommand(c, railtype, i, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
 					if (CmdFailed(ret)) return CMD_ERROR;
-					total_cost += ret;
+					total_cost.AddCost(ret);
 				}
 			}
 
@@ -1699,17 +1699,18 @@ clear_town_stuff:;
 						ret = DoCommand(c, k, 0, flag, CMD_BUILD_SIGNALS);
 					} while (--j);
 				} else {
-					ret = _price.build_signals;
+					ret.AddCost(_price.build_signals);
 				}
 				if (CmdFailed(ret)) return CMD_ERROR;
-				total_cost += ret;
+				total_cost.AddCost(ret);
 			}
 		} else if (p->mode == 3) {
 			//Clear stuff and then build single rail.
 			if (GetTileSlope(c, NULL) != SLOPE_FLAT) return CMD_ERROR;
 			ret = DoCommand(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) return CMD_ERROR;
-			total_cost += ret + _price.build_rail;
+			total_cost.AddCost(ret);
+			total_cost.AddCost(_price.build_rail);
 
 			if (flag & DC_EXEC) {
 				DoCommand(c, railtype, p->attr & 1, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_SINGLE_RAIL);
@@ -2069,7 +2070,7 @@ static inline void AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex tile,
 	if (GetTileSlope(tile, &z) == _dir_table_2[p[0] & 3] && z != 0) {
 		CommandCost cost = DoCommand(tile, arf->player->ai.railtype_to_use, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
-		if (CmdSucceeded(cost) && cost <= (arf->player->player_money >> 4)) {
+		if (CmdSucceeded(cost) && cost.GetCost() <= (arf->player->player_money >> 4)) {
 			AiBuildRailRecursive(arf, _build_tunnel_endtile, p[0] & 3);
 			if (arf->depth == 1) AiCheckRailPathBetter(arf, p);
 		}
@@ -2210,8 +2211,8 @@ static void AiBuildRailConstruct(Player *p)
 		 */
 		for (i = MAX_BRIDGES - 1; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
-				int32 cost = DoCommand(arf.bridge_end_tile, p->ai.cur_tile_a, i | (p->ai.railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
-				if (CmdSucceeded(cost) && cost < (p->player_money >> 5)) break;
+				CommandCost cost = DoCommand(arf.bridge_end_tile, p->ai.cur_tile_a, i | (p->ai.railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
+				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 5)) break;
 			}
 		}
 
@@ -2629,7 +2630,7 @@ static int AiFindBestDefaultRoadBlock(TileIndex tile, byte direction, byte cargo
 static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
 {
 	CommandCost ret;
-	CommandCost total_cost = 0;
+	CommandCost total_cost;
 	Town *t = NULL;
 	int rating = 0;
 	int roadflag = 0;
@@ -2651,7 +2652,7 @@ static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBloc
 
 			ret = DoCommand(c, p->attr, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
 			if (CmdFailed(ret)) return CMD_ERROR;
-			total_cost += ret;
+			total_cost.AddCost(ret);
 
 			continue;
 		}
@@ -2671,7 +2672,7 @@ static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBloc
 clear_town_stuff:;
 
 			if (CmdFailed(ret)) return CMD_ERROR;
-			total_cost += ret;
+			total_cost.AddCost(ret);
 
 			if (_cleared_town != NULL) {
 				if (t != NULL && t != _cleared_town) return CMD_ERROR;
@@ -2969,7 +2970,7 @@ static inline void AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex tile,
 	if (GetTileSlope(tile, &z) == _dir_table_2[p[0] & 3] && z != 0) {
 		CommandCost cost = DoCommand(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
-		if (CmdSucceeded(cost) && cost <= (arf->player->player_money >> 4)) {
+		if (CmdSucceeded(cost) && cost.GetCost() <= (arf->player->player_money >> 4)) {
 			AiBuildRoadRecursive(arf, _build_tunnel_endtile, p[0] & 3);
 			if (arf->depth == 1)  AiCheckRoadPathBetter(arf, p);
 		}
@@ -3102,7 +3103,7 @@ do_some_terraform:
 		for (i = 10; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
 				CommandCost cost = DoCommand(tile, p->ai.cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
-				if (CmdSucceeded(cost) && cost < (p->player_money >> 5)) break;
+				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 5)) break;
 			}
 		}
 
@@ -3390,13 +3391,13 @@ static void AiStateAirportStuff(Player *p)
 static CommandCost AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
 {
 	uint32 avail_airports = GetValidAirports();
-	CommandCost total_cost = 0, ret;
+	CommandCost total_cost, ret;
 
 	for (; p->mode == 0; p++) {
 		if (!HASBIT(avail_airports, p->attr)) return CMD_ERROR;
 		ret = DoCommand(TILE_MASK(tile + ToTileIndexDiff(p->tileoffs)), p->attr, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_AIRPORT);
 		if (CmdFailed(ret)) return CMD_ERROR;
-		total_cost += ret;
+		total_cost.AddCost(ret);
 	}
 
 	return total_cost;

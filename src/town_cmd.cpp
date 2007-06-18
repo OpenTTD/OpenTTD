@@ -488,7 +488,7 @@ static CommandCost ClearTile_Town(TileIndex tile, byte flags)
 	if (flags&DC_AUTO && !(flags&DC_AI_BUILDING)) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 	if (!CanDeleteHouse(tile)) return CMD_ERROR;
 
-	cost = _price.remove_house * hs->removal_cost >> 8;
+	cost.AddCost(_price.remove_house * hs->removal_cost >> 8);
 
 	rating = hs->remove_rating_decrease;
 	_cleared_town_rating += rating;
@@ -735,7 +735,7 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 	TILE_ASSERT(tile);
 
 	r = DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
-	if (CmdFailed(r) || r >= 126 * 16) return false;
+	if (CmdFailed(r) || r.GetCost() >= 126 * 16) return false;
 	DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER | DC_EXEC, CMD_TERRAFORM_LAND);
 	return true;
 }
@@ -1502,7 +1502,7 @@ CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DoCreateTown(t, tile, townnameparts, (TownSizeMode)p2, p1);
 		_generating_world = false;
 	}
-	return 0;
+	return CommandCost();
 }
 
 Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size)
@@ -1869,7 +1869,7 @@ CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		DeleteName(str);
 	}
-	return 0;
+	return CommandCost();
 }
 
 /** Called from GUI */
@@ -2063,7 +2063,7 @@ CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
-	cost = (_price.build_industry >> 8) * _town_action_costs[p2];
+	cost.AddCost((_price.build_industry >> 8) * _town_action_costs[p2]);
 
 	if (flags & DC_EXEC) {
 		_town_action_proc[p2](t);

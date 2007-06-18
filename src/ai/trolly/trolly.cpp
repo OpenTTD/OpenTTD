@@ -691,7 +691,7 @@ static void AiNew_State_FindStation(Player *p)
 
 		// See how much it is going to cost us...
 		r = AiNew_Build_Station(p, p->ainew.tbt, new_tile, 0, 0, 0, DC_QUERY_COST);
-		p->ainew.new_cost += r;
+		p->ainew.new_cost += r.GetCost();
 
 		direction = AI_PATHFINDER_NO_DIRECTION;
 	} else if (new_tile == 0 && p->ainew.tbt == AI_TRUCK) {
@@ -850,7 +850,7 @@ static void AiNew_State_FindDepot(Player *p)
 				r = AiNew_Build_Depot(p, t, ReverseDiagDir(j), 0);
 				if (CmdFailed(r)) continue;
 				// Found a spot!
-				p->ainew.new_cost += r;
+				p->ainew.new_cost += r.GetCost();
 				p->ainew.depot_tile = t;
 				p->ainew.depot_direction = ReverseDiagDir(j); // Reverse direction
 				p->ainew.state = AI_STATE_VERIFY_ROUTE;
@@ -935,7 +935,7 @@ static void AiNew_State_VerifyRoute(Player *p)
 
 	do {
 		p->ainew.path_info.position++;
-		p->ainew.new_cost += AiNew_Build_RoutePart(p, &p->ainew.path_info, DC_QUERY_COST);
+		p->ainew.new_cost += AiNew_Build_RoutePart(p, &p->ainew.path_info, DC_QUERY_COST).GetCost();
 	} while (p->ainew.path_info.position != -2);
 
 	// Now we know the price of build station + path. Now check how many vehicles
@@ -951,7 +951,7 @@ static void AiNew_State_VerifyRoute(Player *p)
 
 	// Check how much it it going to cost us..
 	for (i=0;i<res;i++) {
-		p->ainew.new_cost += AiNew_Build_Vehicle(p, 0, DC_QUERY_COST);
+		p->ainew.new_cost += AiNew_Build_Vehicle(p, 0, DC_QUERY_COST).GetCost();
 	}
 
 	// Now we know how much the route is going to cost us
@@ -985,7 +985,7 @@ static void AiNew_State_VerifyRoute(Player *p)
 // Build the stations
 static void AiNew_State_BuildStation(Player *p)
 {
-	CommandCost res = 0;
+	CommandCost res;
 	assert(p->ainew.state == AI_STATE_BUILD_STATION);
 	if (p->ainew.temp == 0) {
 		if (!IsTileType(p->ainew.from_tile, MP_STATION))
@@ -1103,7 +1103,7 @@ static void AiNew_State_BuildPath(Player *p)
 // Builds the depot
 static void AiNew_State_BuildDepot(Player *p)
 {
-	CommandCost res = 0;
+	CommandCost res;
 	assert(p->ainew.state == AI_STATE_BUILD_DEPOT);
 
 	if (IsTileType(p->ainew.depot_tile, MP_STREET) && GetRoadTileType(p->ainew.depot_tile) == ROAD_TILE_DEPOT) {
@@ -1278,7 +1278,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v)
 
 			if (!AiNew_SetSpecialVehicleFlag(p, v, AI_VEHICLEFLAG_SELL)) return;
 			{
-				CommandCost ret = 0;
+				CommandCost ret;
 				if (v->type == VEH_ROAD)
 					ret = AI_DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
 				// This means we can not find a depot :s

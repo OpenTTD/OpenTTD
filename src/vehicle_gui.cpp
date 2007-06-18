@@ -346,7 +346,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 				if (CmdSucceeded(cost)) {
 					SetDParam(0, WP(w, refit_d).cargo->cargo);
 					SetDParam(1, _returned_refit_capacity);
-					SetDParam(2, cost);
+					SetDParam(2, cost.GetCost());
 					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 				}
 			}

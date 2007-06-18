@@ -207,7 +207,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 
 		/* no special foundation */
 		if ((~_valid_tileh_slopes[0][tileh] & rail_bits) == 0) {
-			return 0;
+			return CommandCost();
 		} else if (!_patches.build_on_slopes || _is_old_ai_player) {
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 		}
@@ -216,7 +216,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 					(rail_bits == TRACK_BIT_X || rail_bits == TRACK_BIT_Y) &&
 					(tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)
 				)) { // partly up
-			return (existing != 0) ? 0 : _price.terraform;
+			return CommandCost((existing != 0) ? 0 : _price.terraform);
 		}
 	}
 	return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -237,7 +237,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	RailType railtype;
 	Track track;
 	TrackBits trackbit;
-	CommandCost cost = 0;
+	CommandCost cost;
 	CommandCost ret;
 
 	if (!ValParamRailtype(p1) || !ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
@@ -263,14 +263,14 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 			ret = CheckRailSlope(tileh, trackbit, GetTrackBits(tile), tile);
 			if (CmdFailed(ret)) return ret;
-			cost += ret;
+			cost.AddCost(ret);
 
 			/* If the rail types don't match, try to convert only if engines of
 			 * the present rail type are powered on the new rail type. */
 			if (GetRailType(tile) != railtype && HasPowerOnRail(GetRailType(tile), railtype)) {
 				ret = DoCommand(tile, tile, railtype, flags, CMD_CONVERT_RAIL);
 				if (CmdFailed(ret)) return ret;
-				cost += ret;
+				cost.AddCost(ret);
 			}
 
 			if (flags & DC_EXEC) {
@@ -330,11 +330,11 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		default:
 			ret = CheckRailSlope(tileh, trackbit, TRACK_BIT_NONE, tile);
 			if (CmdFailed(ret)) return ret;
-			cost += ret;
+			cost.AddCost(ret);
 
 			ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) return ret;
-			cost += ret;
+			cost.AddCost(ret);
 
 			if (flags & DC_EXEC) MakeRailNormal(tile, _current_player, trackbit, railtype);
 			break;
@@ -346,7 +346,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
-	return cost + _price.build_rail;
+	return cost.AddCost(_price.build_rail);
 }
 
 /** Remove a single piece of track
@@ -359,7 +359,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 {
 	Track track = (Track)p2;
 	TrackBits trackbit;
-	CommandCost cost = _price.remove_rail;
+	CommandCost cost(_price.remove_rail);
 	bool crossing = false;
 
 	if (!ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
@@ -397,7 +397,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 			/* Charge extra to remove signals on the track, if they are there */
 			if (HasSignalOnTrack(tile, track))
-				cost += DoCommand(tile, track, 0, flags, CMD_REMOVE_SIGNALS);
+				cost.AddCost(DoCommand(tile, track, 0, flags, CMD_REMOVE_SIGNALS));
 
 			if (flags & DC_EXEC) {
 				present ^= trackbit;
@@ -492,7 +492,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 			return CMD_ERROR;
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Build a stretch of railroad tracks.
@@ -506,7 +506,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
  */
 static CommandCost CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost ret, total_cost = 0;
+	CommandCost ret, total_cost;
 	Track track = (Track)GB(p2, 4, 3);
 	Trackdir trackdir;
 	byte mode = HASBIT(p2, 7);
@@ -531,7 +531,7 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, u
 			if ((_error_message != STR_1007_ALREADY_BUILT) && (mode == 0)) break;
 			_error_message = INVALID_STRING_ID;
 		} else {
-			total_cost += ret;
+			total_cost.AddCost(ret);
 		}
 
 		if (tile == end_tile) break;
@@ -542,7 +542,7 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, u
 		if (!IsDiagonalTrackdir(trackdir)) ToggleBitT(trackdir, 0);
 	}
 
-	return (total_cost == 0) ? CMD_ERROR : total_cost;
+	return (total_cost.GetCost() == 0) ? CMD_ERROR : total_cost;
 }
 
 /** Build rail on a stretch of track.
@@ -589,7 +589,7 @@ CommandCost CmdRemoveRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint
 CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Depot *d;
-	CommandCost cost, ret;
+	CommandCost cost;
 	Slope tileh;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -618,9 +618,8 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 
-	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(ret)) return CMD_ERROR;
-	cost = ret;
+	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	if (CmdFailed(cost)) return CMD_ERROR;
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
@@ -638,7 +637,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 	}
 
-	return cost + _price.build_train_depot;
+	return cost.AddCost(_price.build_train_depot);
 }
 
 /** Build signals, alternate between double/single, signal/semaphore,
@@ -687,14 +686,14 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	if (!HasSignalOnTrack(tile, track)) {
 		/* build new signals */
-		cost = _price.build_signals;
+		cost = CommandCost(_price.build_signals);
 	} else {
 		if (p2 != 0 && sigvar != GetSignalVariant(tile, track)) {
 			/* convert signals <-> semaphores */
-			cost = _price.build_signals + _price.remove_signals;
+			cost = CommandCost(_price.build_signals + _price.remove_signals);
 		} else {
 			/* it is free to change orientation/pre-exit-combo signals */
-			cost = 0;
+			cost = CommandCost();
 		}
 	}
 
@@ -800,7 +799,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	 * signals    - is there a signal/semaphore on the first tile, copy its style (two-way/single-way)
 	 *              and convert all others to semaphore/signal
 	 * remove     - 1 remove signals, 0 build signals */
-	signal_ctr = total_cost = 0;
+	signal_ctr = 0;
 	for (;;) {
 		/* only build/remove signals with the specified density */
 		if (signal_ctr % signal_density == 0) {
@@ -812,7 +811,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 			/* Be user-friendly and try placing signals as much as possible */
 			if (CmdSucceeded(ret)) {
 				error = false;
-				total_cost += ret;
+				total_cost.AddCost(ret);
 			}
 		}
 
@@ -888,7 +887,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 		MarkTileDirtyByTile(tile);
 	}
 
-	return _price.remove_signals;
+	return CommandCost(_price.remove_signals);
 }
 
 /** Remove signals on a stretch of track.
@@ -958,7 +957,7 @@ static CommandCost DoConvertRail(TileIndex tile, RailType totype, bool exec)
 		}
 	}
 
-	return _price.build_rail / 2;
+	return CommandCost(_price.build_rail / 2);
 }
 
 extern CommandCost DoConvertStationRail(TileIndex tile, RailType totype, bool exec);
@@ -994,8 +993,6 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (ey < sy) Swap(ey, sy);
 
 	money = GetAvailableMoneyForCommand();
-	cost = 0;
-	ret = 0;
 
 	for (x = sx; x <= ex; ++x) {
 		for (y = sy; y <= ey; ++y) {
@@ -1012,20 +1009,20 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			ret = proc(tile, (RailType)p2, false);
 			if (CmdFailed(ret)) continue;
-			cost += ret;
 
 			if (flags & DC_EXEC) {
-				money -= ret;
+				money -= ret.GetCost();
 				if (money < 0) {
-					_additional_cash_required = ret;
-					return cost - ret;
+					_additional_cash_required = ret.GetCost();
+					return cost;
 				}
 				proc(tile, (RailType)p2, true);
 			}
+			cost.AddCost(ret);
 		}
 	}
 
-	return (cost == 0) ? ret : cost;
+	return (cost.GetCost() == 0) ? ret : cost;
 }
 
 static CommandCost RemoveTrainDepot(TileIndex tile, uint32 flags)
@@ -1044,7 +1041,7 @@ static CommandCost RemoveTrainDepot(TileIndex tile, uint32 flags)
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 	}
 
-	return _price.remove_train_depot;
+	return CommandCost(_price.remove_train_depot);
 }
 
 static CommandCost ClearTile_Track(TileIndex tile, byte flags)
@@ -1063,8 +1060,6 @@ static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 		}
 	}
 
-	cost = 0;
-
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_SIGNALS:
 		case RAIL_TILE_NORMAL: {
@@ -1073,7 +1068,7 @@ static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 				Track track = RemoveFirstTrack(&tracks);
 				ret = DoCommand(tile, 0, track, flags, CMD_REMOVE_SINGLE_RAIL);
 				if (CmdFailed(ret)) return CMD_ERROR;
-				cost += ret;
+				cost.AddCost(ret);
 			}
 			return cost;
 		}

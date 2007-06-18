@@ -110,7 +110,7 @@ CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowData(GetWCForVT(vt), (vt << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -156,7 +156,7 @@ CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowData(GetWCForVT(vt), (vt << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -187,7 +187,7 @@ CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowData(GetWCForVT(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -235,7 +235,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		InvalidateWindowData(GetWCForVT(v->type), (v->type << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /**
@@ -271,7 +271,7 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, ui
 		InvalidateWindowData(GetWCForVT(type), (type << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -307,7 +307,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, u
 		InvalidateWindowData(GetWCForVT(type), (type << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -332,7 +332,7 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1
 		InvalidateWindowData(GetWCForVT(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_player);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /**

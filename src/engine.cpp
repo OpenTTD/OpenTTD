@@ -276,7 +276,7 @@ CommandCost CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	if (flags & DC_EXEC) AcceptEnginePreview(p1, _current_player);
 
-	return 0;
+	return CommandCost();
 }
 
 /* Determine if an engine type is a wagon (and not a loco) */
@@ -393,7 +393,7 @@ CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteName(str);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -541,7 +541,7 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 	er = GetEngineReplacement(*erl, old_engine, group);
 	if (er != NULL) {
 		if (flags & DC_EXEC) er->to = new_engine;
-		return 0;
+		return CommandCost();
 	}
 
 	er = AllocateEngineRenew();
@@ -557,7 +557,7 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 		*erl = (EngineRenewList)er;
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, uint32 flags)
@@ -578,7 +578,7 @@ CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, Group
 				}
 				DeleteEngineRenew(er);
 			}
-			return 0;
+			return CommandCost();
 		}
 		prev = er;
 		er = er->next;

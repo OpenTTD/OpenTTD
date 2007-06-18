@@ -261,7 +261,7 @@ CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		_opt_ptr->road_side = p1;
 		InvalidateWindow(WC_GAME_OPTIONS,0);
 	}
-	return 0;
+	return CommandCost();
 }
 
 static const Widget _game_options_widgets[] = {

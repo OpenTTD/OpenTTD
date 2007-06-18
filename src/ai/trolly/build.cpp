@@ -97,7 +97,7 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 	TileIndex *route = PathFinderInfo->route;
 	int dir;
 	int old_dir = -1;
-	CommandCost cost = 0;
+	CommandCost cost;
 	CommandCost res;
 	// We need to calculate the direction with the parent of the parent.. so we skip
 	//  the first pieces and the last piece
@@ -105,30 +105,30 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 	// When we are done, stop it
 	if (part >= PathFinderInfo->route_length - 1) {
 		PathFinderInfo->position = -2;
-		return 0;
+		return CommandCost();
 	}
 
 
 	if (PathFinderInfo->rail_or_road) {
 		// Tunnel code
 		if ((AI_PATHFINDER_FLAG_TUNNEL & route_extra[part]) != 0) {
-			cost += AI_DoCommand(route[part], 0, 0, flag, CMD_BUILD_TUNNEL);
+			cost.AddCost(AI_DoCommand(route[part], 0, 0, flag, CMD_BUILD_TUNNEL));
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
 				DEBUG(ai, 0, "[BuildPath] tunnel could not be built (0x%X)", route[part]);
-				return 0;
+				return CommandCost();
 			}
 			return cost;
 		}
 		// Bridge code
 		if ((AI_PATHFINDER_FLAG_BRIDGE & route_extra[part]) != 0) {
-			cost += AiNew_Build_Bridge(p, route[part], route[part - 1], flag);
+			cost.AddCost(AiNew_Build_Bridge(p, route[part], route[part - 1], flag));
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
 				DEBUG(ai, 0, "[BuildPath] bridge could not be built (0x%X, 0x%X)", route[part], route[part - 1]);
-				return 0;
+				return CommandCost();
 			}
 			return cost;
 		}
@@ -147,9 +147,9 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 				if (CmdFailed(res)) {
 					// Problem.. let's just abort it all!
 					p->ainew.state = AI_STATE_NOTHING;
-					return 0;
+					return CommandCost();
 				}
-				cost += res;
+				cost.AddCost(res);
 				// Go to the next tile
 				part++;
 				// Check if it is still in range..
@@ -162,23 +162,23 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 	} else {
 		// Tunnel code
 		if ((AI_PATHFINDER_FLAG_TUNNEL & route_extra[part]) != 0) {
-			cost += AI_DoCommand(route[part], 0x200 | ROADTYPES_ROAD, 0, flag, CMD_BUILD_TUNNEL);
+			cost.AddCost(AI_DoCommand(route[part], 0x200 | ROADTYPES_ROAD, 0, flag, CMD_BUILD_TUNNEL));
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
 				DEBUG(ai, 0, "[BuildPath] tunnel could not be built (0x%X)", route[part]);
-				return 0;
+				return CommandCost();
 			}
 			return cost;
 		}
 		// Bridge code
 		if ((AI_PATHFINDER_FLAG_BRIDGE & route_extra[part]) != 0) {
-			cost += AiNew_Build_Bridge(p, route[part], route[part + 1], flag);
+			cost.AddCost(AiNew_Build_Bridge(p, route[part], route[part + 1], flag));
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
 				DEBUG(ai, 0, "[BuildPath] bridge could not be built (0x%X, 0x%X)", route[part], route[part + 1]);
-				return 0;
+				return CommandCost();
 			}
 			return cost;
 		}
@@ -203,10 +203,10 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 						// Problem.. let's just abort it all!
 						DEBUG(ai, 0, "[BuidPath] route building failed at tile 0x%X, aborting", route[part]);
 						p->ainew.state = AI_STATE_NOTHING;
-						return 0;
+						return CommandCost();
 					}
 
-					if (CmdSucceeded(res)) cost += res;
+					if (CmdSucceeded(res)) cost.AddCost(res);
 				}
 				// Go to the next tile
 				part++;
@@ -314,11 +314,12 @@ CommandCost AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction
 		return AI_DoCommand(tile, 0, direction, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_TRAIN_DEPOT);
 	} else {
 		ret = AI_DoCommand(tile, direction, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_DEPOT);
-		if (CmdFailed(ret)) return ret;
+		if (CmdFailed(ret2)) return ret;
 		// Try to build the road from the depot
 		ret2 = AI_DoCommand(tile + TileOffsByDiagDir(direction), DiagDirToRoadBits(ReverseDiagDir(direction)), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
 		// If it fails, ignore it..
 		if (CmdFailed(ret2)) return ret;
-		return ret + ret2;
+		ret.AddCost(ret2);
+		return ret;
 	}
 }

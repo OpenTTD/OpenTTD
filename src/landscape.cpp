@@ -401,20 +401,19 @@ CommandCost CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (ex < sx) Swap(ex, sx);
 	if (ey < sy) Swap(ey, sy);
 
-	money = GetAvailableMoneyForCommand();
-	cost = 0;
+	money.AddCost(GetAvailableMoneyForCommand());
 
 	for (x = sx; x <= ex; ++x) {
 		for (y = sy; y <= ey; ++y) {
 			ret = DoCommand(TileXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) continue;
-			cost += ret;
 			success = true;
 
 			if (flags & DC_EXEC) {
-				if (ret > 0 && (money -= ret) < 0) {
-					_additional_cash_required = ret;
-					return cost - ret;
+				money.AddCost(-ret.GetCost());
+				if (ret.GetCost() > 0 && money.GetCost() < 0) {
+					_additional_cash_required = ret.GetCost();
+					return cost;
 				}
 				DoCommand(TileXY(x, y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
@@ -426,6 +425,7 @@ CommandCost CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					);
 				}
 			}
+			cost.AddCost(ret);
 		}
 	}
 

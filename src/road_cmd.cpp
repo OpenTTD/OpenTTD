@@ -170,7 +170,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			TileIndex other_end = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
 			/* Pay for *every* tile of the bridge or tunnel */
-			cost = (DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile) + 1) * _price.remove_road;
+			cost.AddCost((DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile) + 1) * _price.remove_road);
 			if (flags & DC_EXEC) {
 				SetRoadTypes(other_end, GetRoadTypes(other_end) & ~RoadTypeToRoadTypes(rt));
 				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
@@ -185,13 +185,13 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 		} else {
-			cost = _price.remove_road;
+			cost.AddCost(_price.remove_road);
 			if (flags & DC_EXEC) {
 				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
 				MarkTileDirtyByTile(tile);
 			}
 		}
-		return cost;
+		return CommandCost(cost);
 	}
 
 	switch (GetRoadTileType(tile)) {
@@ -232,7 +232,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					MarkTileDirtyByTile(tile);
 				}
 			}
-			return CountRoadBits(c) * _price.remove_road;
+			return CommandCost(CountRoadBits(c) * _price.remove_road);
 		}
 
 		case ROAD_TILE_CROSSING: {
@@ -258,7 +258,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				MarkTileDirtyByTile(tile);
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 			}
-			return _price.remove_road * 2;
+			return CommandCost(_price.remove_road * 2);
 		}
 
 		default:
@@ -320,12 +320,12 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 	if ((~_valid_tileh_slopes_road[0][tileh] & road_bits) == 0) {
 		/* force that all bits are set when we have slopes */
 		if (tileh != SLOPE_FLAT) *pieces |= _valid_tileh_slopes_road[0][tileh];
-		return 0; // no extra cost
+		return CommandCost(); // no extra cost
 	}
 
 	/* foundation is used. Whole tile is leveled up */
 	if ((~_valid_tileh_slopes_road[1][tileh] & road_bits) == 0) {
-		return existing != 0 ? 0 : _price.terraform;
+		return CommandCost(existing != 0 ? 0 : _price.terraform);
 	}
 
 	/* partly leveled up tile, only if there's no road on that tile */
@@ -348,7 +348,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
  */
 CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost cost = 0;
+	CommandCost cost;
 	CommandCost ret;
 	RoadBits existing = ROAD_NONE;
 	RoadBits all_bits = ROAD_NONE;
@@ -396,7 +396,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 								SetDisallowedRoadDirections(tile, GetDisallowedRoadDirections(tile) ^ toggle_drd);
 								MarkTileDirtyByTile(tile);
 							}
-							return 0;
+							return CommandCost();
 						}
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
@@ -451,7 +451,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				MakeRoadCrossing(tile, _current_player, _current_player, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
 				MarkTileDirtyByTile(tile);
 			}
-			return _price.build_road * (rt == ROADTYPE_ROAD ? 2 : 4);
+			return CommandCost(_price.build_road * (rt == ROADTYPE_ROAD ? 2 : 4));
 		}
 
 		case MP_STATION:
@@ -473,7 +473,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 do_clear:;
 			ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) return ret;
-			cost += ret;
+			cost.AddCost(ret);
 	}
 
 	if (all_bits != pieces) {
@@ -481,10 +481,10 @@ do_clear:;
 		ret = CheckRoadSlope(tileh, &pieces, all_bits | existing);
 		/* Return an error if we need to build a foundation (ret != 0) but the
 		 * current patch-setting is turned off (or stupid AI@work) */
-		if (CmdFailed(ret) || (ret != 0 && (!_patches.build_on_slopes || _is_old_ai_player))) {
+		if (CmdFailed(ret) || (ret.GetCost() != 0 && (!_patches.build_on_slopes || _is_old_ai_player))) {
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 		}
-		cost += ret;
+		cost.AddCost(ret);
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
@@ -492,10 +492,10 @@ do_clear:;
 		pieces &= ComplementRoadBits(existing);
 	}
 
-	cost += CountRoadBits(pieces) * _price.build_road;
+	cost.AddCost(CountRoadBits(pieces) * _price.build_road);
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* Pay for *every* tile of the bridge or tunnel */
-		cost *= DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile);
+		cost.MultiplyCost(DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile));
 	}
 
 	if (flags & DC_EXEC) {
@@ -572,7 +572,7 @@ CommandCost DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 		YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetCrossingRailBits(tile)));
 	}
 
-	return _price.build_rail / 2;
+	return CommandCost(_price.build_rail / 2);
 }
 
 
@@ -623,7 +623,6 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 	/* No disallowed direction bits have to be toggled */
 	if (!HASBIT(p2, 5)) drd = DRD_NONE;
 
-	cost = 0;
 	tile = start_tile;
 	/* Start tile is the small number. */
 	for (;;) {
@@ -641,11 +640,11 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 			/* Only pay for the upgrade on one side of the bridge */
 			if (IsBridgeTile(tile)) {
 				if ((!had_bridge || GetBridgeRampDirection(tile) == DIAGDIR_SE || GetBridgeRampDirection(tile) == DIAGDIR_SW)) {
-					cost += ret;
+					cost.AddCost(ret);
 				}
 				had_bridge = true;
 			} else {
-				cost += ret;
+				cost.AddCost(ret);
 			}
 		}
 
@@ -692,7 +691,6 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 		p2 ^= IS_INT_INSIDE(p2 & 3, 1, 3) ? 3 : 0;
 	}
 
-	cost = 0;
 	tile = start_tile;
 	/* Start tile is the small number. */
 	for (;;) {
@@ -704,7 +702,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 		/* try to remove the halves. */
 		if (bits != 0) {
 			ret = DoCommand(tile, rt << 4 | bits, 0, flags, CMD_REMOVE_ROAD);
-			if (CmdSucceeded(ret)) cost += ret;
+			if (CmdSucceeded(ret)) cost.AddCost(ret);
 		}
 
 		if (tile == end_tile) break;
@@ -712,7 +710,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 		tile += HASBIT(p2, 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	}
 
-	return (cost == 0) ? CMD_ERROR : cost;
+	return (cost.GetCost() == 0) ? CMD_ERROR : cost;
 }
 
 /** Build a road depot.
@@ -762,7 +760,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		MakeRoadDepot(tile, _current_player, dir, rt);
 		MarkTileDirtyByTile(tile);
 	}
-	return cost + _price.build_road_depot;
+	return cost.AddCost(_price.build_road_depot);
 }
 
 static CommandCost RemoveRoadDepot(TileIndex tile, uint32 flags)
@@ -774,7 +772,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, uint32 flags)
 
 	if (flags & DC_EXEC) DeleteDepot(GetDepotByTile(tile));
 
-	return _price.remove_road_depot;
+	return CommandCost(_price.remove_road_depot);
 }
 
 static CommandCost ClearTile_Road(TileIndex tile, byte flags)
@@ -791,12 +789,12 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 			    !(flags & DC_AUTO)
 				) {
 				RoadTypes rts = GetRoadTypes(tile);
-				CommandCost ret = 0;
+				CommandCost ret;
 				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 					if (HASBIT(rts, rt)) {
 						CommandCost tmp_ret = DoCommand(tile, rt << 4 | GetRoadBits(tile, rt), 0, flags, CMD_REMOVE_ROAD);
 						if (CmdFailed(tmp_ret)) return tmp_ret;
-						ret += tmp_ret;
+						ret.AddCost(tmp_ret);
 					}
 				}
 				return ret;
@@ -807,7 +805,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 
 		case ROAD_TILE_CROSSING: {
 			RoadTypes rts = GetRoadTypes(tile);
-			CommandCost ret = 0;
+			CommandCost ret;
 
 			if (flags & DC_AUTO) return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 
@@ -817,7 +815,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 				if (HASBIT(rts, rt)) {
 					CommandCost tmp_ret = DoCommand(tile, 1 << 6 | rt << 4 | GetCrossingRoadBits(tile), 0, flags, CMD_REMOVE_ROAD);
 					if (CmdFailed(tmp_ret)) return tmp_ret;
-					ret += tmp_ret;
+					ret.AddCost(tmp_ret);
 				}
 			}
 

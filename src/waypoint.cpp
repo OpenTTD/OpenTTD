@@ -272,7 +272,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
 	}
 
-	return _price.build_train_depot;
+	return CommandCost(_price.build_train_depot);
 }
 
 /**
@@ -324,7 +324,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
-	return _price.remove_train_depot;
+	return CommandCost(_price.remove_train_depot);
 }
 
 /**
@@ -382,7 +382,7 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			MarkWholeScreenDirty();
 		}
 	}
-	return 0;
+	return CommandCost();
 }
 
 /**

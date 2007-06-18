@@ -90,7 +90,7 @@ static void Place_LandInfo(TileIndex tile)
 	Window *w;
 	Town *t;
 	int64 old_money;
-	int64 costclear;
+	CommandCost costclear;
 	AcceptedCargo ac;
 	TileDesc td;
 	StringID str;
@@ -123,7 +123,7 @@ static void Place_LandInfo(TileIndex tile)
 
 	str = STR_01A4_COST_TO_CLEAR_N_A;
 	if (CmdSucceeded(costclear)) {
-		SetDParam(0, costclear);
+		SetDParam(0, costclear.GetCost());
 		str = STR_01A5_COST_TO_CLEAR;
 	}
 	GetString(_landinfo_data[2], str, lastof(_landinfo_data[2]));

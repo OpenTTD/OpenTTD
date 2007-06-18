@@ -847,19 +847,19 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 */
 CommandCost GetRefitCost(EngineID engine_type)
 {
-	CommandCost base_cost = 0;
+	CommandCost base_cost;
 
 	switch (GetEngine(engine_type)->type) {
-		case VEH_SHIP: base_cost = _price.ship_base; break;
-		case VEH_ROAD: base_cost = _price.roadveh_base; break;
-		case VEH_AIRCRAFT: base_cost = _price.aircraft_base; break;
+		case VEH_SHIP: base_cost.AddCost(_price.ship_base); break;
+		case VEH_ROAD: base_cost.AddCost(_price.roadveh_base); break;
+		case VEH_AIRCRAFT: base_cost.AddCost(_price.aircraft_base); break;
 		case VEH_TRAIN:
-			base_cost = 2 * ((RailVehInfo(engine_type)->railveh_type == RAILVEH_WAGON) ?
-							 _price.build_railwagon : _price.build_railvehicle);
+			base_cost.AddCost(2 * ((RailVehInfo(engine_type)->railveh_type == RAILVEH_WAGON) ?
+							 _price.build_railwagon : _price.build_railvehicle));
 			break;
 		default: NOT_REACHED(); break;
 	}
-	return (EngInfo(engine_type)->refit_cost * base_cost) >> 10;
+	return CommandCost((EngInfo(engine_type)->refit_cost * base_cost.GetCost()) >> 10);
 }
 
 static void DoDrawVehicle(const Vehicle *v)
@@ -1726,7 +1726,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 		ret = DoCommand(tile, v->index, 0, flags, stop_command);
 
 		if (CmdSucceeded(ret)) {
-			return_value = 0;
+			return_value = CommandCost();
 			/* We know that the command is valid for at least one vehicle.
 			 * If we haven't set DC_EXEC, then there is no point in continueing because it will be valid */
 			if (!(flags & DC_EXEC)) break;
@@ -1752,7 +1752,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 	uint16 wagon_list_length = 0;
 	uint16 wagon_count = 0;
 
-	CommandCost cost = 0;
+	CommandCost cost;
 	uint i, sell_command, total_number_vehicles;
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
@@ -1781,12 +1781,12 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 
 		ret = DoCommand(tile, v->index, 1, flags, sell_command);
 
-		if (CmdSucceeded(ret)) cost += ret;
+		if (CmdSucceeded(ret)) cost.AddCost(ret);
 	}
 
 	free(engines);
 	free(wagons);
-	if (cost == 0) return CMD_ERROR; // no vehicles to sell
+	if (cost.GetCost() == 0) return CMD_ERROR; // no vehicles to sell
 	return cost;
 }
 
@@ -1802,7 +1802,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 	uint16 engine_list_length = 0;
 	uint16 engine_count = 0;
 	uint i, x = 0, y = 0, z = 0;
-	CommandCost cost = 0;
+	CommandCost cost;
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
@@ -1830,7 +1830,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 		ret = MaybeReplaceVehicle(v, !(flags & DC_EXEC), false);
 
 		if (CmdSucceeded(ret)) {
-			cost += ret;
+			cost.AddCost(ret);
 			if (!(flags & DC_EXEC)) break;
 			/* There is a problem with autoreplace and newgrf
 			 * It's impossible to tell the length of a train after it's being replaced before it's actually done
@@ -1842,14 +1842,14 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 		}
 	}
 
-	if (cost == 0) {
+	if (cost.GetCost() == 0) {
 		cost = CMD_ERROR;
 	} else {
 		if (flags & DC_EXEC) {
 			/* Display the cost animation now that DoCommandP() can't do it for us (see previous comments) */
-			if (IsLocalPlayer()) ShowCostOrIncomeAnimation(x, y, z, cost);
+			if (IsLocalPlayer()) ShowCostOrIncomeAnimation(x, y, z, cost.GetCost());
 		}
-		cost = 0;
+		cost = CommandCost();
 	}
 
 	free(vl);
@@ -1866,7 +1866,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v_front, *v;
 	Vehicle *w_front, *w, *w_rear;
-	CommandCost cost, total_cost = 0;
+	CommandCost cost, total_cost;
 	uint32 build_argument = 2;
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
@@ -1914,7 +1914,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (CmdFailed(cost)) return cost;
 
-		total_cost += cost;
+		total_cost.AddCost(cost);
 
 		if (flags & DC_EXEC) {
 			w = GetVehicle(_new_vehicle_id);
@@ -1972,7 +1972,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != v->cargo_type) {
 					cost = DoCommand(0, w->index, v->cargo_type | (v->cargo_subtype << 8) | 1U << 16 , flags, GetCmdRefitVeh(v));
-					if (CmdSucceeded(cost)) total_cost += cost;
+					if (CmdSucceeded(cost)) total_cost.AddCost(cost);
 				}
 
 				if (w->type == VEH_TRAIN && EngineHasArticPart(w)) {
@@ -1986,7 +1986,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				CargoID initial_cargo = GetEngineCargoType(v->engine_type);
 
 				if (v->cargo_type != initial_cargo && initial_cargo != CT_INVALID) {
-					total_cost += GetRefitCost(v->engine_type);
+					total_cost.AddCost(GetRefitCost(v->engine_type));
 				}
 			}
 
@@ -2242,12 +2242,12 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service,
 			* it will succeed at least once. With DC_EXEC we really need to send them to the depot */
 		if (CmdSucceeded(ret) && !(flags & DC_EXEC)) {
 			free((void*)sort_list);
-			return 0;
+			return CommandCost();
 		}
 	}
 
 	free((void*)sort_list);
-	return (flags & DC_EXEC) ? 0 : CMD_ERROR;
+	return (flags & DC_EXEC) ? CommandCost() : CMD_ERROR;
 }
 
 bool IsVehicleInDepot(const Vehicle *v)
@@ -2327,8 +2327,8 @@ void VehicleEnterDepot(Vehicle *v)
 					SetDParam(1, v->unitnumber);
 					AddNewsItem(STR_ORDER_REFIT_FAILED, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 				}
-			} else if (v->owner == _local_player && cost != 0) {
-				ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
+			} else if (v->owner == _local_player && cost.GetCost() != 0) {
+				ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
 			}
 		}
 
@@ -2386,7 +2386,7 @@ CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteName(str);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -2412,7 +2412,7 @@ CommandCost CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 

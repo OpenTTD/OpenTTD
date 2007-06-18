@@ -354,7 +354,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
 	}
 
 	if (flags & DC_EXEC) DeleteIndustry(i);
-	return 0;
+	return CommandCost();
 }
 
 static void TransportIndustryGoods(TileIndex tile)
@@ -1505,7 +1505,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (CreateNewIndustryHelper(tile, p1, flags, indspec, it) == NULL) return CMD_ERROR;
 
-	return (_price.build_industry >> 8) * indspec->cost_multiplier;
+	return CommandCost((_price.build_industry >> 8) * indspec->cost_multiplier);
 }
 
 

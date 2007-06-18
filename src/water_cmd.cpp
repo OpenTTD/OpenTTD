@@ -82,9 +82,6 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 
-	/* pretend that we're not making land from the water even though we actually are. */
-	cost = 0;
-
 	depot = AllocateDepot();
 	if (depot == NULL) return CMD_ERROR;
 
@@ -98,7 +95,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		MarkTileDirtyByTile(tile2);
 	}
 
-	return cost + _price.build_ship_depot;
+	return cost.AddCost(_price.build_ship_depot);
 }
 
 static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
@@ -123,7 +120,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 		MarkTileDirtyByTile(tile2);
 	}
 
-	return _price.remove_ship_depot;
+	return CommandCost(_price.remove_ship_depot);
 }
 
 /** build a shiplift */
@@ -164,7 +161,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 fla
 		MarkTileDirtyByTile(tile + delta);
 	}
 
-	return _price.clear_water * 22 >> 3;
+	return CommandCost(_price.clear_water * 22 >> 3);
 }
 
 static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
@@ -183,7 +180,7 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
 		DoClearSquare(tile - delta);
 	}
 
-	return _price.clear_water * 2;
+	return CommandCost(_price.clear_water * 2);
 }
 
 static void MarkTilesAroundDirty(TileIndex tile)
@@ -249,7 +246,6 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Outside the editor you can only drag canals, and not areas */
 	if (_game_mode != GM_EDITOR && (sx != x && sy != y)) return CMD_ERROR;
 
-	cost = 0;
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		CommandCost ret;
 
@@ -262,7 +258,7 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
-		cost += ret;
+		cost.AddCost(ret);
 
 		if (flags & DC_EXEC) {
 			if (TileHeight(tile) == 0 && HASBIT(p2, 0)) {
@@ -274,10 +270,10 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			MarkTilesAroundDirty(tile);
 		}
 
-		cost += _price.clear_water;
+		cost.AddCost(_price.clear_water);
 	} END_TILE_LOOP(tile, size_x, size_y, 0);
 
-	if (cost == 0) {
+	if (cost.GetCost() == 0) {
 		return_cmd_error(STR_1007_ALREADY_BUILT);
 	} else {
 		return cost;
@@ -302,7 +298,7 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 			if (GetTileOwner(tile) != OWNER_WATER && !CheckTileOwnership(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
-			return _price.clear_water;
+			return CommandCost(_price.clear_water);
 
 		case WATER_TILE_COAST: {
 			Slope slope = GetTileSlope(tile, NULL);
@@ -318,9 +314,9 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			if (slope == SLOPE_N || slope == SLOPE_E || slope == SLOPE_S || slope == SLOPE_W) {
-				return _price.clear_water;
+				return CommandCost(_price.clear_water);
 			} else {
-				return _price.purchase_land;
+				return CommandCost(_price.purchase_land);
 			}
 		}
 
@@ -343,7 +339,6 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 
 		default:
 			NOT_REACHED();
-			return 0;
 	}
 }
 

@@ -154,7 +154,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 	replacement_cargo_type = GetNewCargoTypeForReplace(old_v, new_engine_type);
 
 	/* check if we can't refit to the needed type, so no replace takes place to prevent the vehicle from altering cargo type */
-	if (replacement_cargo_type == CT_INVALID) return 0;
+	if (replacement_cargo_type == CT_INVALID) return CommandCost();
 
 	sell_value = DoCommand(0, old_v->index, 0, DC_QUERY_COST, GetCmdSellVeh(old_v));
 
@@ -167,15 +167,17 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 	cost = DoCommand(old_v->tile, new_engine_type, 3, flags, GetCmdBuildVeh(old_v));
 	if (CmdFailed(cost)) {
 		SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-		SubtractMoneyFromPlayer(-sell_value); // Take back the money we just gave the player
+		/* Take back the money we just gave the player */
+		sell_value.MultiplyCost(-1);
+		SubtractMoneyFromPlayer(sell_value);
 		return cost;
 	}
 
 	if (replacement_cargo_type != CT_NO_REFIT) {
 		/* add refit cost */
 		CommandCost refit_cost = GetRefitCost(new_engine_type);
-		if (old_v->type == VEH_TRAIN && IsMultiheaded(old_v)) refit_cost += refit_cost; // pay for both ends
-		cost += refit_cost;
+		if (old_v->type == VEH_TRAIN && IsMultiheaded(old_v)) refit_cost.AddCost(refit_cost); // pay for both ends
+		cost.AddCost(refit_cost);
 	}
 
 	if (flags & DC_EXEC) {
@@ -246,7 +248,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			GetName(vehicle_name, old_v->string_id & 0x7FF, lastof(vehicle_name));
 		}
 	} else { // flags & DC_EXEC not set
-		CommandCost tmp_move = 0;
+		CommandCost tmp_move;
 		if (old_v->type == VEH_TRAIN && IsFrontEngine(old_v) && old_v->next != NULL) {
 			/* Verify that the wagons can be placed on the engine in question.
 			 * This is done by building an engine, test if the wagons can be added and then sell the test engine. */
@@ -258,9 +260,11 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 
 		/* Ensure that the player will not end up having negative money while autoreplacing
 		 * This is needed because the only other check is done after the income from selling the old vehicle is substracted from the cost */
-		if (CmdFailed(tmp_move) || p->money64 < (cost + total_cost)) {
+		if (CmdFailed(tmp_move) || p->money64 < (cost.GetCost() + total_cost)) {
 			SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-			SubtractMoneyFromPlayer(-sell_value); // Pay back the loan
+			/* Pay back the loan */
+			sell_value.MultiplyCost(-1);
+			SubtractMoneyFromPlayer(sell_value);
 			return CMD_ERROR;
 		}
 	}
@@ -268,10 +272,11 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 	/* Take back the money we just gave the player just before building the vehicle
 	 * The player will get the same amount now that the sale actually takes place */
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-	SubtractMoneyFromPlayer(-sell_value);
+	sell_value.MultiplyCost(-1);
+	SubtractMoneyFromPlayer(sell_value);
 
 	/* sell the engine/ find out how much you get for the old engine (income is returned as negative cost) */
-	cost += DoCommand(0, old_v->index, 0, flags, GetCmdSellVeh(old_v));
+	cost.AddCost(DoCommand(0, old_v->index, 0, flags, GetCmdSellVeh(old_v)));
 
 	if (new_front) {
 		/* now we assign the old unitnumber to the new vehicle */
@@ -300,7 +305,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 	Vehicle *w;
 	const Player *p = GetPlayer(v->owner);
 	byte flags = 0;
-	CommandCost cost, temp_cost = 0;
+	CommandCost cost, temp_cost;
 	bool stopped;
 
 	/* Remember the length in case we need to trim train later on
@@ -326,7 +331,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 	v->leave_depot_instantly = false;
 
 	for (;;) {
-		cost = 0;
+		cost = CommandCost();
 		w = v;
 		do {
 			if (w->type == VEH_TRAIN && IsMultiheaded(w) && !IsTrainEngine(w)) {
@@ -352,7 +357,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			}
 
 			/* Now replace the vehicle */
-			temp_cost = ReplaceVehicle(&w, flags, cost);
+			temp_cost = ReplaceVehicle(&w, flags, cost.GetCost());
 
 			if (CmdFailed(temp_cost)) break; // replace failed for some reason. Leave the vehicle alone
 
@@ -364,11 +369,11 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 				 */
 				v = w;
 			}
-			cost += temp_cost;
+			cost.AddCost(temp_cost);
 		} while (w->type == VEH_TRAIN && (w = GetNextVehicle(w)) != NULL);
 
-		if (!(flags & DC_EXEC) && (p->money64 < (int32)(cost + p->engine_renew_money) || cost == 0)) {
-			if (!check && p->money64 < (int32)(cost + p->engine_renew_money) && ( _local_player == v->owner ) && cost != 0) {
+		if (!(flags & DC_EXEC) && (p->money64 < (int32)(cost.GetCost() + p->engine_renew_money) || cost.GetCost() == 0)) {
+			if (!check && p->money64 < (int32)(cost.GetCost() + p->engine_renew_money) && ( _local_player == v->owner ) && cost.GetCost() != 0) {
 				StringID message;
 				SetDParam(0, v->unitnumber);
 				switch (v->type) {
@@ -418,13 +423,13 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			w = GetNextVehicle(w);
 			DoCommand(0, (INVALID_VEHICLE << 16) | temp->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 			MoveVehicleCargo(v, temp);
-			cost += DoCommand(0, temp->index, 0, DC_EXEC, CMD_SELL_RAIL_WAGON);
+			cost.AddCost(DoCommand(0, temp->index, 0, DC_EXEC, CMD_SELL_RAIL_WAGON));
 		}
 	}
 
 	if (stopped) v->vehstatus &= ~VS_STOPPED;
 	if (display_costs) {
-		if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
+		if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
 		_current_player = OWNER_NONE;
 	}
 	return cost;

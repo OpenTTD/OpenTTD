@@ -372,13 +372,13 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint p
 	if (_docommand_recursive == 1 || !(flags & DC_EXEC) || (flags & DC_FORCETEST) ) {
 		res = proc(tile, flags & ~DC_EXEC, p1, p2);
 		if (CmdFailed(res)) {
-			if (res & 0xFFFF) _error_message = res & 0xFFFF;
+			res.SetGlobalErrorMessage();
 			goto error;
 		}
 
 		if (_docommand_recursive == 1 &&
 				!(flags & DC_QUERY_COST) &&
-				res != 0 &&
+				res.GetCost() != 0 &&
 				!CheckPlayerHasMoney(res)) {
 			goto error;
 		}
@@ -394,7 +394,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint p
 	 * themselves with "SET_EXPENSES_TYPE(...);" at the beginning of the function */
 	res = proc(tile, flags, p1, p2);
 	if (CmdFailed(res)) {
-		if (res & 0xFFFF) _error_message = res & 0xFFFF;
+		res.SetGlobalErrorMessage();
 error:
 		_docommand_recursive--;
 		_cmd_text = NULL;
@@ -425,7 +425,7 @@ int32 GetAvailableMoneyForCommand()
  * the callback is called when the command succeeded or failed. */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd)
 {
-	CommandCost res = 0, res2;
+	CommandCost res, res2;
 	CommandProc *proc;
 	uint32 flags;
 	bool notest;
@@ -497,10 +497,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		/* estimate the cost. */
 		res = proc(tile, flags, p1, p2);
 		if (CmdFailed(res)) {
-			if (res & 0xFFFF) _error_message = res & 0xFFFF;
+			res.SetGlobalErrorMessage();
 			ShowErrorMessage(_error_message, error_part1, x, y);
 		} else {
-			ShowEstimatedCostOrIncome(res, x, y);
+			ShowEstimatedCostOrIncome(res.GetCost(), x, y);
 		}
 
 		_docommand_recursive = 0;
@@ -513,11 +513,11 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		/* first test if the command can be executed. */
 		res = proc(tile, flags, p1, p2);
 		if (CmdFailed(res)) {
-			if (res & 0xFFFF) _error_message = res & 0xFFFF;
+			res.SetGlobalErrorMessage();
 			goto show_error;
 		}
 		/* no money? Only check if notest is off */
-		if (!notest && res != 0 && !CheckPlayerHasMoney(res)) goto show_error;
+		if (!notest && res.GetCost() != 0 && !CheckPlayerHasMoney(res)) goto show_error;
 	}
 
 #ifdef ENABLE_NETWORK
@@ -552,10 +552,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	/* If notest is on, it means the result of the test can be different than
 	 *  the real command.. so ignore the test */
 	if (!notest && !((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
-		assert(res == res2); // sanity check
+		assert(res.GetCost() == res2.GetCost() && CmdFailed(res) == CmdFailed(res2)); // sanity check
 	} else {
 		if (CmdFailed(res2)) {
-			if (res2 & 0xFFFF) _error_message = res2 & 0xFFFF;
+			res.SetGlobalErrorMessage();
 			goto show_error;
 		}
 	}
@@ -563,11 +563,11 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	SubtractMoneyFromPlayer(res2);
 
 	if (IsLocalPlayer() && _game_mode != GM_EDITOR) {
-		if (res2 != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2);
+		if (res2.GetCost() != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2.GetCost());
 		if (_additional_cash_required) {
 			SetDParam(0, _additional_cash_required);
 			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x, y);
-			if (res2 == 0) goto callb_err;
+			if (res2.GetCost() == 0) goto callb_err;
 		}
 	}
 
@@ -589,4 +589,48 @@ callb_err:
 	if (callback) callback(false, tile, p1, p2);
 	_cmd_text = NULL;
 	return false;
+}
+
+
+CommandCost CommandCost::AddCost(CommandCost ret)
+{
+	this->cost += ret.cost;
+	if (this->success && !ret.success) {
+		this->message = ret.message;
+		this->success = false;
+	}
+	return *this;
+}
+
+CommandCost CommandCost::AddCost(int32 cost)
+{
+	this->cost += cost;
+	return *this;
+}
+
+CommandCost CommandCost::MultiplyCost(int factor)
+{
+	this->cost *= factor;
+	return *this;
+}
+
+int32 CommandCost::GetCost() const
+{
+	return this->cost;
+}
+
+void CommandCost::SetGlobalErrorMessage() const
+{
+	extern StringID _error_message;
+	if (this->message != INVALID_STRING_ID) _error_message = this->message;
+}
+
+bool CommandCost::Succeeded() const
+{
+	return this->success;
+}
+
+bool CommandCost::Failed() const
+{
+	return !this->success;
 }

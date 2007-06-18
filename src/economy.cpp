@@ -710,7 +710,7 @@ static void PlayersPayInterest()
 		_current_player = p->index;
 		SET_EXPENSES_TYPE(EXPENSES_LOAN_INT);
 
-		SubtractMoneyFromPlayer(BIGMULUS(p->current_loan, interest, 16));
+		SubtractMoneyFromPlayer(CommandCost(BIGMULUS(p->current_loan, interest, 16)));
 
 		SET_EXPENSES_TYPE(EXPENSES_OTHER);
 		SubtractMoneyFromPlayer(_price.station_value >> 2);
@@ -1823,12 +1823,12 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
 	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
 
 	/* Those lines are here for network-protection (clients can be slow) */
-	if (GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0) return 0;
+	if (GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0) return cost;
 
 	/* We can not buy out a real player (temporarily). TODO: well, enable it obviously */
-	if (GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 1 && !p->is_ai) return 0;
+	if (GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 1 && !p->is_ai) return cost;
 
-	cost = CalculateCompanyValue(p) >> 2;
+	cost.AddCost(CalculateCompanyValue(p) >> 2);
 	if (flags & DC_EXEC) {
 		PlayerByte* b = p->share_owners;
 		int i;
@@ -1866,7 +1866,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
 	p = GetPlayer((PlayerID)p1);
 
 	/* Those lines are here for network-protection (clients can be slow) */
-	if (GetAmountOwnedBy(p, _current_player) == 0) return 0;
+	if (GetAmountOwnedBy(p, _current_player) == 0) return CommandCost();
 
 	/* adjust it a little to make it less profitable to sell and buy */
 	cost = CalculateCompanyValue(p) >> 2;
@@ -1878,7 +1878,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
 		*b = PLAYER_SPECTATOR;
 		InvalidateWindow(WC_COMPANY, p1);
 	}
-	return cost;
+	return CommandCost((int32)cost);
 }
 
 /** Buy up another company.
@@ -1909,7 +1909,7 @@ CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		DoAcquireCompany(p);
 	}
-	return p->bankrupt_value;
+	return CommandCost(p->bankrupt_value);
 }
 
 /** Prices */

@@ -175,10 +175,10 @@ void InvalidatePlayerWindows(const Player *p)
 
 bool CheckPlayerHasMoney(CommandCost cost)
 {
-	if (cost > 0) {
+	if (cost.GetCost() > 0) {
 		PlayerID pid = _current_player;
-		if (IsValidPlayer(pid) && cost > GetPlayer(pid)->player_money) {
-			SetDParam(0, cost);
+		if (IsValidPlayer(pid) && cost.GetCost() > GetPlayer(pid)->player_money) {
+			SetDParam(0, cost.GetCost());
 			_error_message = STR_0003_NOT_ENOUGH_CASH_REQUIRES;
 			return false;
 		}
@@ -188,23 +188,23 @@ bool CheckPlayerHasMoney(CommandCost cost)
 
 static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
 {
-	p->money64 -= cost;
+	p->money64 -= cost.GetCost();
 	UpdatePlayerMoney32(p);
 
-	p->yearly_expenses[0][_yearly_expenses_type] += cost;
+	p->yearly_expenses[0][_yearly_expenses_type] += cost.GetCost();
 
 	if (HASBIT(1 << EXPENSES_TRAIN_INC    |
 	           1 << EXPENSES_ROADVEH_INC  |
 	           1 << EXPENSES_AIRCRAFT_INC |
 	           1 << EXPENSES_SHIP_INC, _yearly_expenses_type)) {
-		p->cur_economy.income -= cost;
+		p->cur_economy.income -= cost.GetCost();
 	} else if (HASBIT(1 << EXPENSES_TRAIN_RUN    |
 	                  1 << EXPENSES_ROADVEH_RUN  |
 	                  1 << EXPENSES_AIRCRAFT_RUN |
 	                  1 << EXPENSES_SHIP_RUN     |
 	                  1 << EXPENSES_PROPERTY     |
 	                  1 << EXPENSES_LOAN_INT, _yearly_expenses_type)) {
-		p->cur_economy.expenses -= cost;
+		p->cur_economy.expenses -= cost.GetCost();
 	}
 
 	InvalidatePlayerWindows(p);
@@ -217,15 +217,16 @@ void SubtractMoneyFromPlayer(CommandCost cost)
 	if (IsValidPlayer(pid)) SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
 }
 
-void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cost)
+void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cst)
 {
 	Player *p = GetPlayer(player);
 	byte m = p->player_money_fraction;
+	int32 cost = cst.GetCost();
 
 	p->player_money_fraction = m - (byte)cost;
 	cost >>= 8;
 	if (p->player_money_fraction > m) cost++;
-	if (cost != 0) SubtractMoneyFromAnyPlayer(p, cost);
+	if (cost != 0) SubtractMoneyFromAnyPlayer(p, CommandCost(cost));
 }
 
 /** the player_money field is kept as it is, but money64 contains the actual amount of money. */
@@ -782,7 +783,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		break;
 
 	}
-	return 0;
+	return CommandCost();
 }
 
 /** Control the players: add, delete, etc.
@@ -827,9 +828,9 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!_networking) return CMD_ERROR;
 
 		/* Has the network client a correct ClientID? */
-		if (!(flags & DC_EXEC)) return 0;
+		if (!(flags & DC_EXEC)) return CommandCost();
 #ifdef ENABLE_NETWORK
-		if (cid >= MAX_CLIENT_INFO) return 0;
+		if (cid >= MAX_CLIENT_INFO) return CommandCost();
 #endif /* ENABLE_NETWORK */
 
 		/* Delete multiplayer progress bar */
@@ -903,7 +904,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} break;
 
 	case 1: /* Make a new AI player */
-		if (!(flags & DC_EXEC)) return 0;
+		if (!(flags & DC_EXEC)) return CommandCost();
 
 		DoStartupNewPlayer(true);
 		break;
@@ -913,7 +914,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (!IsValidPlayer((PlayerID)p2)) return CMD_ERROR;
 
-		if (!(flags & DC_EXEC)) return 0;
+		if (!(flags & DC_EXEC)) return CommandCost();
 
 		p = GetPlayer((PlayerID)p2);
 
@@ -951,7 +952,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	default: return CMD_ERROR;
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 static const StringID _endgame_perf_titles[] = {

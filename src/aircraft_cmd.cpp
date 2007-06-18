@@ -229,7 +229,7 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 
 static CommandCost EstimateAircraftCost(EngineID engine, const AircraftVehicleInfo *avi)
 {
-	return GetEngineProperty(engine, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5;
+	return CommandCost(GetEngineProperty(engine, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5);
 }
 
 
@@ -346,7 +346,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->subtype = (avi->subtype & AIR_CTOL ? AIR_AIRCRAFT : AIR_HELICOPTER);
 		v->UpdateDeltaXY(INVALID_DIR);
-		v->value = value;
+		v->value = (uint32)value.GetCost();
 
 		u->subtype = AIR_SHADOW;
 		u->UpdateDeltaXY(INVALID_DIR);
@@ -493,7 +493,7 @@ CommandCost CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DoDeleteAircraft(v);
 	}
 
-	return -(int32)v->value;
+	return CommandCost(-(int32)v->value);
 }
 
 /** Start/Stop an aircraft.
@@ -534,7 +534,7 @@ CommandCost CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32
 		InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Send an aircraft to the hangar.
@@ -569,7 +569,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
-			return 0;
+			return CommandCost();
 		}
 
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of hangar orders
@@ -609,7 +609,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 		}
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -668,7 +668,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 	_returned_refit_capacity = pass;
 
-	CommandCost cost = 0;
+	CommandCost cost;
 	if (IsHumanPlayer(v->owner) && new_cid != v->cargo_type) {
 		cost = GetRefitCost(v->engine_type);
 	}
@@ -744,9 +744,9 @@ void OnNewDay_Aircraft(Vehicle *v)
 
 	if (v->vehstatus & VS_STOPPED) return;
 
-	CommandCost cost = GetVehicleProperty(v, 0x0E, AircraftVehInfo(v->engine_type)->running_cost) * _price.aircraft_running / 364;
+	CommandCost cost = CommandCost(GetVehicleProperty(v, 0x0E, AircraftVehInfo(v->engine_type)->running_cost) * _price.aircraft_running / 364);
 
-	v->profit_this_year -= cost >> 8;
+	v->profit_this_year -= cost.GetCost() >> 8;
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 	SubtractMoneyFromPlayerFract(v->owner, cost);

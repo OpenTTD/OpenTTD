@@ -164,8 +164,6 @@ enum {
 	DC_AI_BUILDING     = 0x20, ///< special building rules for AI
 	DC_NO_TOWN_RATING  = 0x40, ///< town rating does not disallow you from building
 	DC_FORCETEST       = 0x80, ///< force test too.
-
-	CMD_ERROR = ((int32)0x80000000),
 };
 
 #define CMD_MSG(x) ((x) << 16)
@@ -191,21 +189,12 @@ struct Command {
 	byte flags;
 };
 
-//#define return_cmd_error(errcode) do { _error_message=(errcode); return CMD_ERROR; } while(0)
-#define return_cmd_error(errcode) do { return CMD_ERROR | (errcode); } while (0)
+static inline bool CmdFailed(CommandCost cost) { return cost.Failed(); }
+static inline bool CmdSucceeded(CommandCost cost) { return cost.Succeeded(); }
 
-/**
- * Check the return value of a DoCommand*() function
- * @param res the resulting value from the command to be checked
- * @return Return true if the command failed, false otherwise
- */
-static inline bool CmdFailed(CommandCost res)
-{
-	/* lower 16bits are the StringID of the possible error */
-	return res <= (CMD_ERROR | INVALID_STRING_ID);
-}
+static const CommandCost CMD_ERROR = CommandCost((StringID)INVALID_STRING_ID);
 
-static inline bool CmdSucceeded(CommandCost res) { return !CmdFailed(res); }
+#define return_cmd_error(errcode) do { return CommandCost((StringID)(errcode)); } while (0)
 
 /* command.cpp */
 typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);

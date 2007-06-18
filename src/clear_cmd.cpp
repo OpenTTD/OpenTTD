@@ -148,7 +148,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 		return -1;
 	}
 
-	ts->cost += ret;
+	ts->cost.AddCost(ret.GetCost());
 
 	if (ts->tile_table_count >= 625) return -1;
 	ts->tile_table[ts->tile_table_count++] = tile;
@@ -198,7 +198,7 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 	mod->tile = tile;
 	mod->height = (byte)height;
 
-	ts->cost += _price.terraform;
+	ts->cost.AddCost(_price.terraform);
 
 	{
 		int direction = ts->direction, r;
@@ -248,7 +248,7 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	ts.direction = direction = p2 ? 1 : -1;
 	ts.flags = flags;
 	ts.modheight_count = ts.tile_table_count = 0;
-	ts.cost = 0;
+	ts.cost = CommandCost();
 	ts.modheight = modheight_data;
 	ts.tile_table = tile_table_data;
 
@@ -364,7 +364,7 @@ CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int ey;
 	int sx, sy;
 	uint h, curh;
-	int32 money;
+	CommandCost money;
 	CommandCost ret;
 	CommandCost cost;
 
@@ -387,29 +387,29 @@ CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	size_x = ex - sx + 1;
 	size_y = ey - sy + 1;
 
-	money = GetAvailableMoneyForCommand();
-	cost = 0;
+	money.AddCost(GetAvailableMoneyForCommand());
 
 	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
 		curh = TileHeight(tile2);
 		while (curh != h) {
 			ret = DoCommand(tile2, 8, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
 			if (CmdFailed(ret)) break;
-			cost += ret;
 
 			if (flags & DC_EXEC) {
-				if ((money -= ret) < 0) {
-					_additional_cash_required = ret;
-					return cost - ret;
+				money.AddCost(-ret.GetCost());
+				if (money.GetCost() < 0) {
+					_additional_cash_required = ret.GetCost();
+					return cost;
 				}
 				DoCommand(tile2, 8, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
 			}
 
+			cost.AddCost(ret);
 			curh += (curh > h) ? -1 : 1;
 		}
 	} END_TILE_LOOP(tile2, size_x, size_y, tile)
 
-	return (cost == 0) ? CMD_ERROR : cost;
+	return (cost.GetCost() == 0) ? CMD_ERROR : cost;
 }
 
 /** Purchase a land area. Actually you only purchase one tile, so
@@ -440,7 +440,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		MarkTileDirtyByTile(tile);
 	}
 
-	return cost + _price.purchase_land * 10;
+	return cost.AddCost(_price.purchase_land * 10);
 }
 
 
@@ -457,10 +457,8 @@ static CommandCost ClearTile_Clear(TileIndex tile, byte flags)
 	};
 	CommandCost price;
 
-	if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
-		price = 0;
-	} else {
-		price = *clear_price_table[GetClearGround(tile)];
+	if (!IsClearGround(tile, CLEAR_GRASS) || GetClearDensity(tile) != 0) {
+		price.AddCost(*clear_price_table[GetClearGround(tile)]);
 	}
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
@@ -488,7 +486,7 @@ CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return - _price.purchase_land * 2;
+	return CommandCost(- _price.purchase_land * 2);
 }
 
 

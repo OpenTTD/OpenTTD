@@ -1782,7 +1782,7 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Top function to save the new value of an element of the Patches struct

@@ -441,7 +441,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Declone an order-list
@@ -455,7 +455,7 @@ static CommandCost DecloneOrder(Vehicle *dst, uint32 flags)
 		InvalidateVehicleOrder(dst);
 		RebuildVehicleLists();
 	}
-	return 0;
+	return CommandCost();
 }
 
 /**
@@ -554,7 +554,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Goto order of order-list.
@@ -595,7 +595,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type == VEH_AIRCRAFT) InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 	if (v->type == VEH_SHIP) InvalidateWindowClasses(WC_SHIPS_LIST);
 
-	return 0;
+	return CommandCost();
 }
 
 /**
@@ -681,7 +681,7 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Modify an order in the orderlist of a vehicle.
@@ -763,7 +763,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Clone/share/copy an order-list of an other vehicle.
@@ -896,7 +896,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		default: return CMD_ERROR;
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Add/remove refit orders from an order
@@ -945,7 +945,7 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /**
@@ -1058,7 +1058,7 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32
 		v->service_interval = serv_int;
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 

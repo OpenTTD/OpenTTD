@@ -188,11 +188,11 @@ void OnNewDay_Ship(Vehicle *v)
 
 	if (v->vehstatus & VS_STOPPED) return;
 
-	cost = GetVehicleProperty(v, 0x0F, ShipVehInfo(v->engine_type)->running_cost) * _price.ship_running / 364;
-	v->profit_this_year -= cost >> 8;
+	cost.AddCost(GetVehicleProperty(v, 0x0F, ShipVehInfo(v->engine_type)->running_cost) * _price.ship_running / 364);
+	v->profit_this_year -= cost.GetCost() >> 8;
 
 	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
-	SubtractMoneyFromPlayerFract(v->owner, cost);
+	SubtractMoneyFromPlayerFract(v->owner, CommandCost(cost));
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	/* we need this for the profit */
@@ -405,7 +405,7 @@ static bool ShipAccelerate(Vehicle *v)
 
 static CommandCost EstimateShipCost(EngineID engine_type)
 {
-	return GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->base_cost) * (_price.ship_base >> 3) >> 5;
+	return CommandCost(GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->base_cost) * (_price.ship_base >> 3) >> 5);
 }
 
 static void ShipArrivesAt(const Vehicle* v, Station* st)
@@ -857,7 +857,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->cargo_type = svi->cargo_type;
 		v->cargo_subtype = 0;
 		v->cargo_cap = svi->capacity;
-		v->value = value;
+		v->value = value.GetCost();
 
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = svi->max_speed;
@@ -929,7 +929,7 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteVehicle(v);
 	}
 
-	return -(int32)v->value;
+	return CommandCost(-(int32)v->value);
 }
 
 /** Start/Stop a ship.
@@ -968,7 +968,7 @@ CommandCost CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowClasses(WC_SHIPS_LIST);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 /** Send a ship to the depot.
@@ -1010,7 +1010,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
-			return 0;
+			return CommandCost();
 		}
 
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
@@ -1024,7 +1024,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		}
-		return 0;
+		return CommandCost();
 	}
 
 	dep = FindClosestShipDepot(v);
@@ -1042,7 +1042,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 
@@ -1100,7 +1100,6 @@ CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 	_returned_refit_capacity = capacity;
 
-	cost = 0;
 	if (IsHumanPlayer(v->owner) && new_cid != v->cargo_type) {
 		cost = GetRefitCost(v->engine_type);
 	}

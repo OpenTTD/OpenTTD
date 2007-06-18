@@ -618,7 +618,7 @@ static CommandCost ClearTile_Station(TileIndex tile, byte flags);
 // Or an error code if it failed.
 CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station, bool check_clear = true)
 {
-	CommandCost cost = 0;
+	CommandCost cost;
 	int allowed_z = -1;
 
 	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
@@ -653,7 +653,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint 
 					(invalid_dirs & 8 && !(tileh & SLOPE_NW) && (uint)h_cur == h)) {
 				return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 			}
-			cost += _price.terraform;
+			cost.AddCost(_price.terraform);
 			flat_z += TILE_HEIGHT;
 		}
 
@@ -682,7 +682,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint 
 		} else if (check_clear) {
 			CommandCost ret = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) return ret;
-			cost += ret;
+			cost.AddCost(ret);
 		}
 	} END_TILE_LOOP(tile_cur, w, h, tile)
 
@@ -838,7 +838,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	//  for detail info, see: https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365
 	ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags & ~DC_EXEC, 5 << axis, _patches.nonuniform_stations ? &est : NULL);
 	if (CmdFailed(ret)) return ret;
-	CommandCost cost = ret + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len;
+	CommandCost cost(ret.GetCost() + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len);
 
 	Station *st = NULL;
 	bool check_surrounding = true;
@@ -1121,7 +1121,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 	/* If we've not removed any tiles, give an error */
 	if (quantity == 0) return CMD_ERROR;
 
-	return _price.remove_rail_station * quantity;
+	return CommandCost(_price.remove_rail_station * quantity);
 }
 
 
@@ -1142,7 +1142,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 
 	assert(w != 0 && h != 0);
 
-	CommandCost cost = 0;
+	CommandCost cost;
 	/* clear all areas of the station */
 	do {
 		int w_bak = w;
@@ -1151,7 +1151,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 			if (st->TileBelongsToRailStation(tile)) {
 				if (!EnsureNoVehicle(tile))
 					return CMD_ERROR;
-				cost += _price.remove_rail_station;
+				cost.AddCost(_price.remove_rail_station);
 				if (flags & DC_EXEC) {
 					Track track = GetRailStationTrack(tile);
 					DoClearSquare(tile);
@@ -1211,7 +1211,7 @@ CommandCost DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 		YapfNotifyTrackLayoutChange(tile, GetRailStationTrack(tile));
 	}
 
-	return _price.build_rail / 2;
+	return CommandCost(_price.build_rail / 2);
 }
 
 /**
@@ -1267,7 +1267,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) return CMD_ERROR;
 
-	CommandCost cost = 0;
+	CommandCost cost;
 
 	/* Not allowed to build over this road */
 	if (build_over_road) {
@@ -1340,7 +1340,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st->sign.width_1 = 0;
 	}
 
-	cost += (type) ? _price.build_truck_station : _price.build_bus_station;
+	cost.AddCost((type) ? _price.build_truck_station : _price.build_bus_station);
 
 	if (flags & DC_EXEC) {
 		// Insert into linked list of RoadStops
@@ -1416,7 +1416,7 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 		DeleteStationIfEmpty(st);
 	}
 
-	return (is_truck) ? _price.remove_truck_station : _price.remove_bus_station;
+	return CommandCost((is_truck) ? _price.remove_truck_station : _price.remove_bus_station);
 }
 
 /** Remove a bus or truck stop
@@ -1584,7 +1584,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	CommandCost ret = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
 	if (CmdFailed(ret)) return ret;
-	CommandCost cost = ret;
+	CommandCost cost(ret.GetCost());
 
 	Station *st = NULL;
 
@@ -1638,7 +1638,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	cost += _price.build_airport * w * h;
+	cost.AddCost(_price.build_airport * w * h);
 
 	if (flags & DC_EXEC) {
 		st->airport_tile = tile;
@@ -1687,7 +1687,7 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
 	int w = afc->size_x;
 	int h = afc->size_y;
 
-	CommandCost cost = w * h * _price.remove_airport;
+	CommandCost cost(w * h * _price.remove_airport);
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -1769,7 +1769,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st_auto_delete.Release();
 	}
 
-	return _price.build_dock;
+	return CommandCost(_price.build_dock);
 }
 
 /* Checks if any ship is servicing the buoy specified. Returns yes or no */
@@ -1821,7 +1821,7 @@ static CommandCost RemoveBuoy(Station *st, uint32 flags)
 		DeleteStationIfEmpty(st);
 	}
 
-	return _price.remove_truck_station;
+	return CommandCost(_price.remove_truck_station);
 }
 
 static const TileIndexDiffC _dock_tileoffs_chkaround[] = {
@@ -1935,7 +1935,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* success, so don't delete the new station */
 		st_auto_delete.Release();
 	}
-	return _price.build_dock;
+	return CommandCost(_price.build_dock);
 }
 
 static CommandCost RemoveDock(Station *st, uint32 flags)
@@ -1964,7 +1964,7 @@ static CommandCost RemoveDock(Station *st, uint32 flags)
 		DeleteStationIfEmpty(st);
 	}
 
-	return _price.remove_dock;
+	return CommandCost(_price.remove_dock);
 }
 
 #include "table/station_land.h"
@@ -2516,7 +2516,7 @@ CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteName(str);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 

@@ -145,7 +145,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 				const Bridge *b = &_bridge[bridge_type];
 				// bridge is accepted, add to list
 				// add to terraforming & bulldozing costs the cost of the bridge itself (not computed with DC_QUERY_COST)
-				_bridgedata.costs[j] = ret + (((int64)tot_bridgedata_len * _price.build_bridge * b->price) >> 8);
+				_bridgedata.costs[j] = ret.GetCost() + (((int64)tot_bridgedata_len * _price.build_bridge * b->price) >> 8);
 				_bridgedata.indexes[j] = bridge_type;
 				j++;
 			}

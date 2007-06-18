@@ -235,8 +235,6 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (ex < sx) Swap(ex, sx);
 	if (ey < sy) Swap(ey, sy);
 
-	cost = 0; // total cost
-
 	for (x = sx; x <= ex; x++) {
 		for (y = sy; y <= ey; y++) {
 			TileIndex tile = TileXY(x, y);
@@ -254,7 +252,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						MarkTileDirtyByTile(tile);
 					}
 					/* 2x as expensive to add more trees to an existing tile */
-					cost += _price.build_trees * 2;
+					cost.AddCost(_price.build_trees * 2);
 					break;
 
 				case MP_CLEAR:
@@ -265,8 +263,8 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					}
 
 					switch (GetClearGround(tile)) {
-						case CLEAR_FIELDS: cost += _price.clear_3; break;
-						case CLEAR_ROCKS:  cost += _price.clear_2; break;
+						case CLEAR_FIELDS: cost.AddCost(_price.clear_3); break;
+						case CLEAR_ROCKS:  cost.AddCost(_price.clear_2); break;
 						default: break;
 					}
 
@@ -297,7 +295,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						if (_game_mode == GM_EDITOR && IS_INT_INSIDE(treetype, TREE_RAINFOREST, TREE_CACTUS))
 							SetTropicZone(tile, TROPICZONE_RAINFOREST);
 					}
-					cost += _price.build_trees;
+					cost.AddCost(_price.build_trees);
 					break;
 
 				default:
@@ -307,7 +305,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	if (cost == 0) {
+	if (cost.GetCost() == 0) {
 		return_cmd_error(msg);
 	} else {
 		return cost;
@@ -443,7 +441,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return num * _price.remove_trees;
+	return CommandCost(num * _price.remove_trees);
 }
 
 static void GetAcceptedCargo_Trees(TileIndex tile, AcceptedCargo ac)

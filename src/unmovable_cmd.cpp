@@ -49,7 +49,7 @@ static CommandCost DestroyCompanyHQ(PlayerID pid, uint32 flags)
 	}
 
 	/* cost of relocating company is 1% of company value */
-	return CalculateCompanyValue(p) / 100;
+	return CommandCost((int32)(CalculateCompanyValue(p) / 100));
 }
 
 void UpdateCompanyHQ(Player *p, uint score)
@@ -85,16 +85,14 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 {
 	Player *p = GetPlayer(_current_player);
 	CommandCost cost;
-	CommandCost ret;
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
-	ret = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
-	if (CmdFailed(ret)) return ret;
-	cost = ret;
+	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
+	if (CmdFailed(cost)) return cost;
 
 	if (p->location_of_house != 0) { // Moving HQ
-		cost += DestroyCompanyHQ(_current_player, flags);
+		cost.AddCost(DestroyCompanyHQ(_current_player, flags));
 	}
 
 	if (flags & DC_EXEC) {
@@ -244,7 +242,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, byte flags)
 		DoClearSquare(tile);
 	}
 
-	return 0;
+	return CommandCost();
 }
 
 static void GetAcceptedCargo_Unmovable(TileIndex tile, AcceptedCargo ac)
