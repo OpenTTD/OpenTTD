@@ -602,7 +602,7 @@ CommandCost CommandCost::AddCost(CommandCost ret)
 	return *this;
 }
 
-CommandCost CommandCost::AddCost(int32 cost)
+CommandCost CommandCost::AddCost(Money cost)
 {
 	this->cost += cost;
 	return *this;
@@ -614,7 +614,7 @@ CommandCost CommandCost::MultiplyCost(int factor)
 	return *this;
 }
 
-int32 CommandCost::GetCost() const
+Money CommandCost::GetCost() const
 {
 	return this->cost;
 }

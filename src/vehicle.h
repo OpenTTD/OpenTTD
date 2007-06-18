@@ -312,11 +312,11 @@ struct Vehicle {
 	uint16 cargo_paid_for;      // How much of the cargo currently on board has been paid for.
 	byte vehicle_flags;         // Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
-	int32 profit_this_year;
-	int32 profit_last_year;
-	int32 cargo_feeder_share;      ///< value of feeder pickup to be paid for on delivery of cargo
+	Money profit_this_year;
+	Money profit_last_year;
+	Money cargo_feeder_share;      ///< value of feeder pickup to be paid for on delivery of cargo
 	TileIndex cargo_loaded_at_xy;  ///< tile index where feeder cargo was loaded
-	uint32 value;
+	Money value;
 
 	GroupID group_id;              ///< Index of group Pool array
 
@@ -548,7 +548,7 @@ UnitID GetFreeUnitNumber(VehicleType type);
 
 void TrainConsistChanged(Vehicle *v);
 void TrainPowerChanged(Vehicle *v);
-int32 GetTrainRunningCost(const Vehicle *v);
+Money GetTrainRunningCost(const Vehicle *v);
 
 int CheckTrainStoppedInDepot(const Vehicle *v);
 

@@ -89,7 +89,7 @@ static void Place_LandInfo(TileIndex tile)
 	Player *p;
 	Window *w;
 	Town *t;
-	int64 old_money;
+	Money old_money;
 	CommandCost costclear;
 	AcceptedCargo ac;
 	TileDesc td;

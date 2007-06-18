@@ -3353,9 +3353,9 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
-int32 GetTrainRunningCost(const Vehicle *v)
+Money GetTrainRunningCost(const Vehicle *v)
 {
-	int32 cost = 0;
+	Money cost = 0;
 
 	do {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);

@@ -57,10 +57,11 @@ const ScoreInfo _score_info[] = {
 
 int _score_part[MAX_PLAYERS][SCORE_END];
 
-int64 CalculateCompanyValue(const Player* p)
+Money CalculateCompanyValue(const Player* p)
 {
 	PlayerID owner = p->index;
-	int64 value;
+	/* Do a little nasty by using CommandCost, so we can use the "overflow" protection of CommandCost */
+	CommandCost value;
 
 	{
 		Station *st;
@@ -70,7 +71,7 @@ int64 CalculateCompanyValue(const Player* p)
 			if (st->owner == owner) num += CountBitsSet(st->facilities);
 		}
 
-		value = num * _price.station_value * 25;
+		value.AddCost(num * _price.station_value * 25);
 	}
 
 	{
@@ -83,14 +84,16 @@ int64 CalculateCompanyValue(const Player* p)
 					v->type == VEH_ROAD ||
 					(v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) ||
 					v->type == VEH_SHIP) {
-				value += v->value * 3 >> 1;
+				value.AddCost(v->value * 3 >> 1);
 			}
 		}
 	}
 
-	value += p->player_money - p->current_loan; // add real money value
+	/* Add real money value */
+	value.AddCost(-p->current_loan);
+	value.AddCost(p->player_money);
 
-	return max(value, 1LL);
+	return max(value.GetCost(), 1);
 }
 
 /** if update is set to true, the economy is updated with this score
@@ -148,16 +151,12 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 /* Generate statistics depending on recent income statistics */
 	{
-		const PlayerEconomyEntry* pee;
-		int numec;
-		int32 min_income;
-		int32 max_income;
-
-		numec = min(p->num_valid_stat_ent, 12);
+		int numec = min(p->num_valid_stat_ent, 12);
 		if (numec != 0) {
-			min_income = 0x7FFFFFFF;
-			max_income = 0;
-			pee = p->old_economy;
+			const PlayerEconomyEntry *pee = p->old_economy;
+			Money min_income = pee->income + pee->expenses;
+			Money max_income = pee->income + pee->expenses;
+
 			do {
 				min_income = min(min_income, pee->income + pee->expenses);
 				max_income = max(max_income, pee->income + pee->expenses);
@@ -658,11 +657,17 @@ static void PlayersGenStatistics()
 	InvalidateWindow(WC_COMPANY_LEAGUE, 0);
 }
 
-static void AddSingleInflation(int32 *value, uint16 *frac, int32 amt)
+static void AddSingleInflation(Money *value, uint16 *frac, int32 amt)
 {
-	int64 tmp = (int64)*value * amt + *frac;
-	*frac   = GB(tmp, 0, 16);
-	*value += tmp >> 16;
+	/* Is it safe to add inflation ? */
+	if ((MAX_UVALUE(Money) / 2 / amt) > (*value + *frac + 1)) {
+		*value = MAX_UVALUE(Money);
+		*frac = 0;
+	} else {
+		int64 tmp = (int64)*value * amt + *frac;
+		*frac   = GB(tmp, 0, 16);
+		*value += tmp >> 16;
+	}
 }
 
 static void AddInflation()
@@ -672,10 +677,10 @@ static void AddInflation()
 	 * 12 -> months per year
 	 * This is only a good approxiamtion for small values
 	 */
-	int32 inf = _economy.infl_amount * 54;
+	Money inf = _economy.infl_amount * 54;
 
 	for (uint i = 0; i != NUM_PRICES; i++) {
-		AddSingleInflation((int32*)&_price + i, _price_frac + i, inf);
+		AddSingleInflation((Money*)&_price + i, _price_frac + i, inf);
 	}
 
 	_economy.max_loan_unround += BIGMULUS(_economy.max_loan_unround, inf, 16);
@@ -686,7 +691,7 @@ static void AddInflation()
 	inf = _economy.infl_amount_pr * 54;
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		AddSingleInflation(
-			(int32*)_cargo_payment_rates + i,
+			(Money*)_cargo_payment_rates + i,
 			_cargo_payment_rates_frac + i,
 			inf
 		);
@@ -709,7 +714,7 @@ static void PlayersPayInterest()
 		_current_player = p->index;
 		SET_EXPENSES_TYPE(EXPENSES_LOAN_INT);
 
-		SubtractMoneyFromPlayer(CommandCost(BIGMULUS(p->current_loan, interest, 16)));
+		SubtractMoneyFromPlayer(CommandCost((Money)BIGMULUS(p->current_loan, interest, 16)));
 
 		SET_EXPENSES_TYPE(EXPENSES_OTHER);
 		SubtractMoneyFromPlayer(_price.station_value >> 2);
@@ -739,7 +744,7 @@ static byte _price_category[NUM_PRICES] = {
 	2,
 };
 
-static const int32 _price_base[NUM_PRICES] = {
+static const Money _price_base[NUM_PRICES] = {
 	    100, ///< station_value
 	    100, ///< build_rail
 	     95, ///< build_road
@@ -822,10 +827,10 @@ void StartupEconomy()
 {
 	int i;
 
-	assert(sizeof(_price) == NUM_PRICES * sizeof(int32));
+	assert(sizeof(_price) == NUM_PRICES * sizeof(Money));
 
 	for (i = 0; i != NUM_PRICES; i++) {
-		int32 price = _price_base[i];
+		Money price = _price_base[i];
 		if (_price_category[i] != 0) {
 			uint mod = _price_category[i] == 1 ? _opt.diff.vehicle_costs : _opt.diff.construction_cost;
 			if (mod < 1) {
@@ -839,7 +844,7 @@ void StartupEconomy()
 		} else {
 			price >>= 8 - price_base_multiplier[i];
 		}
-		((int32*)&_price)[i] = price;
+		((Money*)&_price)[i] = price;
 		_price_frac[i] = 0;
 	}
 
@@ -1368,14 +1373,14 @@ void VehiclePayment(Vehicle *front_v)
 {
 	int result = 0;
 
-	int profit = 0;
-	int total_veh_profit = 0;         // accumulates the profit across the vehicle chain (used by trains)
-	int32 route_profit = 0;           // the grand total amount for the route. A-D of transfer chain A-B-C-D
-	int virtual_profit = 0;           // virtual profit of one vehicle element for feeder systems
-	int virtual_profit_total = 0;     // virtual profit for entire vehicle chain
-	int total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
+	Money profit = 0;
+	Money total_veh_profit = 0;         // accumulates the profit across the vehicle chain (used by trains)
+	Money route_profit = 0;             // the grand total amount for the route. A-D of transfer chain A-B-C-D
+	Money virtual_profit = 0;           // virtual profit of one vehicle element for feeder systems
+	Money virtual_profit_total = 0;     // virtual profit for entire vehicle chain
+	Money total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
 
-	int all_vehicles_cargo_feeder_share = front_v->cargo_feeder_share; // used to hold transfer value of complete vehicle chain - used by trains
+	Money all_vehicles_cargo_feeder_share = front_v->cargo_feeder_share; // used to hold transfer value of complete vehicle chain - used by trains
 
 	StationID last_visited = front_v->last_station_visited;
 	Station *st = GetStation(last_visited);
@@ -1766,7 +1771,7 @@ static void DoAcquireCompany(Player *p)
 {
 	Player *owner;
 	int i;
-	int64 value;
+	Money value;
 
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);
@@ -1784,13 +1789,15 @@ static void DoAcquireCompany(Player *p)
 	}
 
 	value = CalculateCompanyValue(p) >> 2;
+	PlayerID old_player = _current_player;
 	for (i = 0; i != 4; i++) {
 		if (p->share_owners[i] != PLAYER_SPECTATOR) {
-			owner = GetPlayer(p->share_owners[i]);
-			owner->player_money += value;
-			owner->yearly_expenses[0][EXPENSES_OTHER] += value;
+			SET_EXPENSES_TYPE(EXPENSES_OTHER);
+			_current_player = p->share_owners[i];
+			SubtractMoneyFromPlayer(CommandCost(-value));
 		}
 	}
+	_current_player = old_player;
 
 	p->is_active = false;
 
@@ -1855,7 +1862,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
 CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
-	int64 cost;
+	Money cost;
 
 	/* Check if buying shares is allowed (protection against modified clients */
 	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
@@ -1876,7 +1883,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
 		*b = PLAYER_SPECTATOR;
 		InvalidateWindow(WC_COMPANY, p1);
 	}
-	return CommandCost((int32)cost);
+	return CommandCost(cost);
 }
 
 /** Buy up another company.

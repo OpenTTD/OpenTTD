@@ -929,7 +929,7 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteVehicle(v);
 	}
 
-	return CommandCost(-(int32)v->value);
+	return CommandCost(-v->value);
 }
 
 /** Start/Stop a ship.

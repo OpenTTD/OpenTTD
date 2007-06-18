@@ -133,7 +133,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_702B_MAXIMUM_PERMITTED_LOAN);
 	}
 
-	int32 loan;
+	Money loan;
 	switch (p2) {
 		default: return CMD_ERROR; // Invalid method
 		case 0: // Take some extra loan
@@ -289,7 +289,7 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (_networking) return CMD_ERROR;
 #endif
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	return CommandCost(-(int32)p1);
+	return CommandCost(-(Money)p1);
 }
 
 /** Transfer funds (money) from one player to another.
@@ -304,7 +304,7 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const Player *p = GetPlayer(_current_player);
-	CommandCost amount(min((int32)p1, 20000000));
+	CommandCost amount((Money)min(p1, 20000000LL));
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 

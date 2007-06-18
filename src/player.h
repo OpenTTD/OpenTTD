@@ -12,8 +12,8 @@
 #include "livery.h"
 
 struct PlayerEconomyEntry {
-	int32 income;
-	int32 expenses;
+	Money income;
+	Money expenses;
 	int32 delivered_cargo;
 	int32 performance_history; ///< player score (scale 0-1000)
 	int64 company_value;
@@ -166,8 +166,8 @@ struct Player {
 
 	PlayerFace face;
 
-	int32 current_loan;
 	int64 player_money;
+	Money current_loan;
 
 	byte player_color;
 	Livery livery[LS_END];
@@ -190,7 +190,7 @@ struct Player {
 	byte quarters_of_bankrupcy;
 	byte bankrupt_asked; ///< which players were asked about buying it?
 	int16 bankrupt_timeout;
-	int32 bankrupt_value;
+	Money bankrupt_value;
 
 	bool is_active;
 	bool is_ai;
@@ -212,7 +212,7 @@ uint16 GetDrawStringPlayerColor(PlayerID player);
 
 void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player);
 void GetNameOfOwner(Owner owner, TileIndex tile);
-int64 CalculateCompanyValue(const Player* p);
+Money CalculateCompanyValue(const Player* p);
 void InvalidatePlayerWindows(const Player* p);
 void SetLocalPlayer(PlayerID new_player);
 #define FOR_ALL_PLAYERS(p) for (p = _players; p != endof(_players); p++)

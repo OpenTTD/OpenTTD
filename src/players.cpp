@@ -188,22 +188,30 @@ bool CheckPlayerHasMoney(CommandCost cost)
 
 static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
 {
-	p->player_money -= cost.GetCost();
+	CommandCost tmp((int32)p->player_money);
+	tmp.AddCost(-cost.GetCost());
+	p->player_money = tmp.GetCost();
 
-	p->yearly_expenses[0][_yearly_expenses_type] += cost.GetCost();
+	tmp = CommandCost((int32)p->yearly_expenses[0][_yearly_expenses_type]);
+	tmp.AddCost(cost);
+	p->yearly_expenses[0][_yearly_expenses_type] = tmp.GetCost();
 
 	if (HASBIT(1 << EXPENSES_TRAIN_INC    |
 	           1 << EXPENSES_ROADVEH_INC  |
 	           1 << EXPENSES_AIRCRAFT_INC |
 	           1 << EXPENSES_SHIP_INC, _yearly_expenses_type)) {
-		p->cur_economy.income -= cost.GetCost();
+		tmp = CommandCost(p->cur_economy.income);
+		tmp.AddCost(-cost.GetCost());
+		p->cur_economy.income = tmp.GetCost();
 	} else if (HASBIT(1 << EXPENSES_TRAIN_RUN    |
 	                  1 << EXPENSES_ROADVEH_RUN  |
 	                  1 << EXPENSES_AIRCRAFT_RUN |
 	                  1 << EXPENSES_SHIP_RUN     |
 	                  1 << EXPENSES_PROPERTY     |
 	                  1 << EXPENSES_LOAN_INT, _yearly_expenses_type)) {
-		p->cur_economy.expenses -= cost.GetCost();
+		tmp = CommandCost(p->cur_economy.expenses);
+		tmp.AddCost(-cost.GetCost());
+		p->cur_economy.expenses = tmp.GetCost();
 	}
 
 	InvalidatePlayerWindows(p);
@@ -220,7 +228,7 @@ void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cst)
 {
 	Player *p = GetPlayer(player);
 	byte m = p->player_money_fraction;
-	int32 cost = cst.GetCost();
+	Money cost = cst.GetCost();
 
 	p->player_money_fraction = m - (byte)cost;
 	cost >>= 8;

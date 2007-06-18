@@ -49,7 +49,7 @@ static CommandCost DestroyCompanyHQ(PlayerID pid, uint32 flags)
 	}
 
 	/* cost of relocating company is 1% of company value */
-	return CommandCost((int32)(CalculateCompanyValue(p) / 100));
+	return CommandCost(CalculateCompanyValue(p) / 100);
 }
 
 void UpdateCompanyHQ(Player *p, uint score)

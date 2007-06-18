@@ -446,7 +446,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 static CommandCost ClearTile_Clear(TileIndex tile, byte flags)
 {
-	static const int32* clear_price_table[] = {
+	static const Money* clear_price_table[] = {
 		&_price.clear_1,
 		&_price.purchase_land,
 		&_price.clear_2,

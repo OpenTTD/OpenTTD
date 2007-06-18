@@ -69,6 +69,7 @@ typedef uint16 SignID;
 typedef uint16 GroupID;
 typedef uint16 EngineRenewID;
 typedef uint16 DestinationID;
+typedef int32 Money;
 
 /* DestinationID must be at least as large as every these below, because it can
  * be any of them
@@ -226,53 +227,53 @@ enum {
 };
 
 struct Prices {
-	int32 station_value;
-	int32 build_rail;
-	int32 build_road;
-	int32 build_signals;
-	int32 build_bridge;
-	int32 build_train_depot;
-	int32 build_road_depot;
-	int32 build_ship_depot;
-	int32 build_tunnel;
-	int32 train_station_track;
-	int32 train_station_length;
-	int32 build_airport;
-	int32 build_bus_station;
-	int32 build_truck_station;
-	int32 build_dock;
-	int32 build_railvehicle;
-	int32 build_railwagon;
-	int32 aircraft_base;
-	int32 roadveh_base;
-	int32 ship_base;
-	int32 build_trees;
-	int32 terraform;
-	int32 clear_1;
-	int32 purchase_land;
-	int32 clear_2;
-	int32 clear_3;
-	int32 remove_trees;
-	int32 remove_rail;
-	int32 remove_signals;
-	int32 clear_bridge;
-	int32 remove_train_depot;
-	int32 remove_road_depot;
-	int32 remove_ship_depot;
-	int32 clear_tunnel;
-	int32 clear_water;
-	int32 remove_rail_station;
-	int32 remove_airport;
-	int32 remove_bus_station;
-	int32 remove_truck_station;
-	int32 remove_dock;
-	int32 remove_house;
-	int32 remove_road;
-	int32 running_rail[3];
-	int32 aircraft_running;
-	int32 roadveh_running;
-	int32 ship_running;
-	int32 build_industry;
+	Money station_value;
+	Money build_rail;
+	Money build_road;
+	Money build_signals;
+	Money build_bridge;
+	Money build_train_depot;
+	Money build_road_depot;
+	Money build_ship_depot;
+	Money build_tunnel;
+	Money train_station_track;
+	Money train_station_length;
+	Money build_airport;
+	Money build_bus_station;
+	Money build_truck_station;
+	Money build_dock;
+	Money build_railvehicle;
+	Money build_railwagon;
+	Money aircraft_base;
+	Money roadveh_base;
+	Money ship_base;
+	Money build_trees;
+	Money terraform;
+	Money clear_1;
+	Money purchase_land;
+	Money clear_2;
+	Money clear_3;
+	Money remove_trees;
+	Money remove_rail;
+	Money remove_signals;
+	Money clear_bridge;
+	Money remove_train_depot;
+	Money remove_road_depot;
+	Money remove_ship_depot;
+	Money clear_tunnel;
+	Money clear_water;
+	Money remove_rail_station;
+	Money remove_airport;
+	Money remove_bus_station;
+	Money remove_truck_station;
+	Money remove_dock;
+	Money remove_house;
+	Money remove_road;
+	Money running_rail[3];
+	Money aircraft_running;
+	Money roadveh_running;
+	Money ship_running;
+	Money build_industry;
 };
 
 #define GAME_DIFFICULTY_NUM 18
@@ -365,7 +366,7 @@ struct ViewportSign {
  * a possible error message/state together.
  */
 class CommandCost {
-	int32 cost;       ///< The cost of this action
+	Money cost;       ///< The cost of this action
 	StringID message; ///< Warning message for when success is unset
 	bool success;     ///< Whether the comment went fine up to this moment
 
@@ -384,7 +385,7 @@ public:
 	 * Creates a command return value with the given start cost
 	 * @param cst the initial cost of this command
 	 */
-	CommandCost(int32 cst) : cost(cst), message(INVALID_STRING_ID), success(true) {}
+	CommandCost(Money cst) : cost(cst), message(INVALID_STRING_ID), success(true) {}
 	/** "Hack" to make everything compile nicely, not needed when cost is int64 */
 	CommandCost(uint cst) : cost(cst), message(INVALID_STRING_ID), success(true) {}
 
@@ -401,7 +402,7 @@ public:
 	 * @param cost the cost to add
 	 * @return this class.
 	 */
-	CommandCost AddCost(int32 cost);
+	CommandCost AddCost(Money cost);
 
 	/**
 	 * Multiplies the cost of the command by the given factor.
@@ -414,7 +415,7 @@ public:
 	 * The costs as made up to this moment
 	 * @return the costs
 	 */
-	int32 GetCost() const;
+	Money GetCost() const;
 
 	/**
 	 * Sets the global error message *if* this class has one.

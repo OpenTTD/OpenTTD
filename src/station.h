@@ -39,7 +39,7 @@ struct GoodsEntry {
 	byte enroute_time;
 	byte last_speed;
 	byte last_age;
-	int32 feeder_profit;
+	Money feeder_profit;
 };
 
 /** A Stop for a Road Vehicle */
