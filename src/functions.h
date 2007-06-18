@@ -20,9 +20,9 @@ void DrawShipDepotSprite(int x, int y, int image);
 void TileLoop_Water(TileIndex tile);
 
 /* players.cpp */
-bool CheckPlayerHasMoney(int32 cost);
-void SubtractMoneyFromPlayer(int32 cost);
-void SubtractMoneyFromPlayerFract(PlayerID player, int32 cost);
+bool CheckPlayerHasMoney(CommandCost cost);
+void SubtractMoneyFromPlayer(CommandCost cost);
+void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cost);
 bool CheckOwnership(Owner owner);
 bool CheckTileOwnership(TileIndex tile);
 StringID GetPlayerNameString(PlayerID player, uint index);

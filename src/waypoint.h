@@ -66,7 +66,7 @@ static inline Waypoint *GetWaypointByTile(TileIndex tile)
 	return GetWaypoint(GetWaypointIndex(tile));
 }
 
-int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove);
+CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove);
 Station *ComposeWaypointStation(TileIndex tile);
 void ShowRenameWaypointWindow(const Waypoint *cp);
 void DrawWaypointSprite(int x, int y, int image, RailType railtype);

@@ -124,10 +124,10 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
  * @param flags is the flags to use when calling DoCommand(). Mainly DC_EXEC counts
  * @return value is cost of the replacement or CMD_ERROR
  */
-static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
+static CommandCost ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 {
-	int32 cost;
-	int32 sell_value;
+	CommandCost cost;
+	CommandCost sell_value;
 	Vehicle *old_v = *w;
 	const Player *p = GetPlayer(old_v->owner);
 	EngineID new_engine_type;
@@ -173,7 +173,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 
 	if (replacement_cargo_type != CT_NO_REFIT) {
 		/* add refit cost */
-		int32 refit_cost = GetRefitCost(new_engine_type);
+		CommandCost refit_cost = GetRefitCost(new_engine_type);
 		if (old_v->type == VEH_TRAIN && IsMultiheaded(old_v)) refit_cost += refit_cost; // pay for both ends
 		cost += refit_cost;
 	}
@@ -246,7 +246,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			GetName(vehicle_name, old_v->string_id & 0x7FF, lastof(vehicle_name));
 		}
 	} else { // flags & DC_EXEC not set
-		int32 tmp_move = 0;
+		CommandCost tmp_move = 0;
 		if (old_v->type == VEH_TRAIN && IsFrontEngine(old_v) && old_v->next != NULL) {
 			/* Verify that the wagons can be placed on the engine in question.
 			 * This is done by building an engine, test if the wagons can be added and then sell the test engine. */
@@ -295,12 +295,12 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
  * @param display_costs If set, a cost animation is shown (only if check is false)
  * @return CMD_ERROR if something went wrong. Otherwise the price of the replace
  */
-int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
+CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 {
 	Vehicle *w;
 	const Player *p = GetPlayer(v->owner);
 	byte flags = 0;
-	int32 cost, temp_cost = 0;
+	CommandCost cost, temp_cost = 0;
 	bool stopped;
 
 	/* Remember the length in case we need to trim train later on

@@ -113,7 +113,7 @@ static const WindowDesc _build_road_bridge_desc = {
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 {
 	uint j = 0;
-	int32 ret;
+	CommandCost ret;
 	StringID errmsg;
 
 	DeleteWindowById(WC_BUILD_BRIDGE, 0);

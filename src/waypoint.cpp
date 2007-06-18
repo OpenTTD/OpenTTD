@@ -201,7 +201,7 @@ void AfterLoadWaypoints()
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
  */
-int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Waypoint *wp;
 	Slope tileh;
@@ -295,7 +295,7 @@ void WaypointsDailyLoop()
  * @param justremove will indicate if it is removed from rail or if rails are removed too
  * @return cost of operation or error
  */
-int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
+CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 {
 	Waypoint *wp;
 
@@ -335,7 +335,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
  * @param p2 unused
  * @return cost of operation or error
  */
-int32 CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 	return RemoveTrainWaypoint(tile, flags, true);
@@ -349,7 +349,7 @@ int32 CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 unused
  * @return cost of operation or error
  */
-int32 CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Waypoint *wp;
 

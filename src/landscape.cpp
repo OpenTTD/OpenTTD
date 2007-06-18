@@ -367,7 +367,7 @@ void ClearSnowLine(void)
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -380,9 +380,9 @@ int32 CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param flags of operation to conduct
  * @param p2 unused
  */
-int32 CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 cost, ret, money;
+	CommandCost cost, ret, money;
 	int ex;
 	int ey;
 	int sx, sy;

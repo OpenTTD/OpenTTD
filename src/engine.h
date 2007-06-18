@@ -328,7 +328,7 @@ EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group);
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags);
+CommandCost AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags);
 
 /**
  * Remove an engine replacement from a given renewlist.
@@ -337,7 +337,7 @@ int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID n
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-int32 RemoveEngineReplacement(EngineRenewList* erl, EngineID engine, GroupID group, uint32 flags);
+CommandCost RemoveEngineReplacement(EngineRenewList* erl, EngineID engine, GroupID group, uint32 flags);
 
 /** When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
  * @param type The type of engine

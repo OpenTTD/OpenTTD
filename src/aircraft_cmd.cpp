@@ -227,7 +227,7 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 	height = spr->height;
 }
 
-static int32 EstimateAircraftCost(EngineID engine, const AircraftVehicleInfo *avi)
+static CommandCost EstimateAircraftCost(EngineID engine, const AircraftVehicleInfo *avi)
 {
 	return GetEngineProperty(engine, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5;
 }
@@ -265,12 +265,12 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
  * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
  * return result of operation.  Could be cost, error
  */
-int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_player)) return_cmd_error(STR_AIRCRAFT_NOT_AVAILABLE);
 
 	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
-	int32 value = EstimateAircraftCost(p1, avi);
+	CommandCost value = EstimateAircraftCost(p1, avi);
 
 	/* to just query the cost, it is not neccessary to have a valid tile (automation/AI) */
 	if (flags & DC_QUERY_COST) return value;
@@ -476,7 +476,7 @@ static void DoDeleteAircraft(Vehicle *v)
  * @param p2 unused
  * @return result of operation.  Error or sold value
  */
-int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
@@ -503,7 +503,7 @@ int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 unused
  * @return result of operation.  Nothing if everything went well
  */
-int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
@@ -546,7 +546,7 @@ int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * - p2 bit 8-10 - VLW flag (for mass goto depot)
  * @return o if everything went well
  */
-int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
@@ -623,7 +623,7 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * - p2 = (bit 16) - refit only this vehicle (ignored)
  * @return cost of refit or error
  */
-int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	byte new_subtype = GB(p2, 8, 8);
 
@@ -668,7 +668,7 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 	_returned_refit_capacity = pass;
 
-	int32 cost = 0;
+	CommandCost cost = 0;
 	if (IsHumanPlayer(v->owner) && new_cid != v->cargo_type) {
 		cost = GetRefitCost(v->engine_type);
 	}
@@ -744,7 +744,7 @@ void OnNewDay_Aircraft(Vehicle *v)
 
 	if (v->vehstatus & VS_STOPPED) return;
 
-	int32 cost = GetVehicleProperty(v, 0x0E, AircraftVehInfo(v->engine_type)->running_cost) * _price.aircraft_running / 364;
+	CommandCost cost = GetVehicleProperty(v, 0x0E, AircraftVehInfo(v->engine_type)->running_cost) * _price.aircraft_running / 364;
 
 	v->profit_this_year -= cost >> 8;
 
@@ -1379,7 +1379,7 @@ static void ProcessAircraftOrder(Vehicle *v)
 		 */
 		const Station *st = GetStation(v->u.air.targetairport);
 		if (!st->IsValid() || st->airport_tile == 0) {
-			int32 ret;
+			CommandCost ret;
 			PlayerID old_player = _current_player;
 
 			_current_player = v->owner;

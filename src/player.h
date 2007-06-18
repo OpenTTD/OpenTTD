@@ -337,7 +337,7 @@ static inline bool EngineHasReplacementForPlayer(const Player *p, EngineID engin
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-static inline int32 AddEngineReplacementForPlayer(Player *p, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags) { return AddEngineReplacement(&p->engine_renew_list, old_engine, new_engine, group, flags); }
+static inline CommandCost AddEngineReplacementForPlayer(Player *p, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags) { return AddEngineReplacement(&p->engine_renew_list, old_engine, new_engine, group, flags); }
 
 /**
  * Remove an engine replacement for the player.
@@ -346,7 +346,7 @@ static inline int32 AddEngineReplacementForPlayer(Player *p, EngineID old_engine
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-static inline int32 RemoveEngineReplacementForPlayer(Player *p, EngineID engine, GroupID group, uint32 flags) {return RemoveEngineReplacement(&p->engine_renew_list, engine, group, flags); }
+static inline CommandCost RemoveEngineReplacementForPlayer(Player *p, EngineID engine, GroupID group, uint32 flags) {return RemoveEngineReplacement(&p->engine_renew_list, engine, group, flags); }
 
 /**
  * Reset the livery schemes to the player's primary colour.

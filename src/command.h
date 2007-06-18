@@ -184,7 +184,7 @@ enum {
 	CMD_OFFLINE = 0x2, ///< the command cannot be executed in a multiplayer game; single-player only
 };
 
-typedef int32 CommandProc(TileIndex tile, uint32 flags, uint32 p1, uint32 p2);
+typedef CommandCost CommandProc(TileIndex tile, uint32 flags, uint32 p1, uint32 p2);
 
 struct Command {
 	CommandProc *proc;
@@ -199,7 +199,7 @@ struct Command {
  * @param res the resulting value from the command to be checked
  * @return Return true if the command failed, false otherwise
  */
-static inline bool CmdFailed(int32 res)
+static inline bool CmdFailed(CommandCost res)
 {
 	/* lower 16bits are the StringID of the possible error */
 	return res <= (CMD_ERROR | INVALID_STRING_ID);
@@ -207,7 +207,7 @@ static inline bool CmdFailed(int32 res)
 
 /* command.cpp */
 typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);
-int32 DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
+CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd);
 
 #ifdef ENABLE_NETWORK

@@ -24,7 +24,7 @@
  * @param p1 unused
  * @param p2 face bitmasked
  */
-int32 CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	PlayerFace pf = (PlayerFace)p2;
 
@@ -45,7 +45,7 @@ int32 CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * p1 bits 8-9 set in use state or first/second colour
  * @param p2 new colour for vehicles, property, etc.
  */
-int32 CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p, *pp;
 	byte colour;
@@ -124,7 +124,7 @@ int32 CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 when 0: loans LOAN_INTERVAL
  *           when 1: loans the maximum loan permitting money (press CTRL),
  */
-int32 CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p = GetPlayer(_current_player);
 
@@ -161,7 +161,7 @@ int32 CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 when 0: pays back LOAN_INTERVAL
  *           when 1: pays back the maximum loan permitting money (press CTRL),
  */
-int32 CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p = GetPlayer(_current_player);
 
@@ -199,7 +199,7 @@ int32 CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 	Player *p;
@@ -227,7 +227,7 @@ int32 CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 	Player *p;
@@ -266,7 +266,7 @@ int32 CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 0 = decrease pause counter; 1 = increase pause counter
  * @param p2 unused
  */
-int32 CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
 		_pause_game += (p1 == 1) ? 1 : -1;
@@ -285,7 +285,7 @@ int32 CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 the amount of money to receive (if negative), or spend (if positive)
  * @param p2 unused
  */
-int32 CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 #ifndef _DEBUG
 	if (_networking) return CMD_ERROR;
@@ -303,10 +303,10 @@ int32 CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 the amount of money to transfer; max 20.000.000
  * @param p2 the player to transfer the money to
  */
-int32 CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const Player *p = GetPlayer(_current_player);
-	int32 amount = min((int32)p1, 20000000);
+	CommandCost amount = min((int32)p1, 20000000);
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
@@ -336,7 +336,7 @@ int32 CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *           itself is changed. The new value is inside p2
  * @param p2 new value for a difficulty setting or difficulty level
  */
-int32 CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (p1 != (uint32)-1L && ((int32)p1 >= GAME_DIFFICULTY_NUM || (int32)p1 < 0)) return CMD_ERROR;
 

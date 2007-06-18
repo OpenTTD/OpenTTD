@@ -93,7 +93,7 @@ static WindowClass GetWCForVT(VehicleType vt)
  * @param p1   vehicle type
  * @param p2   unused
  */
-int32 CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleType vt = (VehicleType)p1;
 	if (!IsPlayerBuildableVehicleType(vt)) return CMD_ERROR;
@@ -121,7 +121,7 @@ int32 CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *      - p1 bit 0-15 : GroupID
  * @param p2   unused
  */
-int32 CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 
@@ -167,7 +167,7 @@ int32 CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *   - p1 bit 0-15 : GroupID
  * @param p2   unused
  */
-int32 CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidGroupID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
 
@@ -199,7 +199,7 @@ int32 CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2   vehicle to add to a group
  *   - p2 bit 0-15 : VehicleID
  */
-int32 CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	GroupID new_g = p1;
 
@@ -245,7 +245,7 @@ int32 CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *  - p1 bit 0-15 : GroupID
  * @param p2   type of vehicles
  */
-int32 CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleType type = (VehicleType)p2;
 	if (!IsValidGroupID(p1) || !IsPlayerBuildableVehicleType(type)) return CMD_ERROR;
@@ -282,7 +282,7 @@ int32 CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  * - p1 bit 0-15 : GroupID
  * @param p2   type of vehicles
  */
-int32 CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleType type = (VehicleType)p2;
 	if (!IsValidGroupID(p1) || !IsPlayerBuildableVehicleType(type)) return CMD_ERROR;
@@ -319,7 +319,7 @@ int32 CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 
  * @param p2
  * - p2 bit 0    : 1 to set or 0 to clear protection.
  */
-int32 CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 

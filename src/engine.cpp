@@ -266,7 +266,7 @@ void EnginesDailyLoop()
  * @param p1 engine-prototype offered
  * @param p2 unused
  */
-int32 CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Engine *e;
 
@@ -374,7 +374,7 @@ void EnginesMonthlyLoop()
  * @param p1 engine ID to rename
  * @param p2 unused
  */
-int32 CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 
@@ -533,7 +533,7 @@ EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group)
 	return er == NULL ? INVALID_ENGINE : er->to;
 }
 
-int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags)
+CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags)
 {
 	EngineRenew *er;
 
@@ -560,7 +560,7 @@ int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID n
 	return 0;
 }
 
-int32 RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, uint32 flags)
+CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, uint32 flags)
 {
 	EngineRenew *er = (EngineRenew *)(*erl);
 	EngineRenew *prev = NULL;

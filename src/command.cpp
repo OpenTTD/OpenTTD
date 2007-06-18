@@ -17,7 +17,7 @@
 
 const char* _cmd_text = NULL;
 
-#define DEF_COMMAND(yyyy) int32 yyyy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+#define DEF_COMMAND(yyyy) CommandCost yyyy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 DEF_COMMAND(CmdBuildRailroadTrack);
 DEF_COMMAND(CmdRemoveRailroadTrack);
@@ -351,9 +351,9 @@ byte GetCommandFlags(uint cmd)
 
 static int _docommand_recursive;
 
-int32 DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
+CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 {
-	int32 res;
+	CommandCost res;
 	CommandProc *proc;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
@@ -425,7 +425,7 @@ int32 GetAvailableMoneyForCommand()
  * the callback is called when the command succeeded or failed. */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd)
 {
-	int32 res = 0, res2;
+	CommandCost res = 0, res2;
 	CommandProc *proc;
 	uint32 flags;
 	bool notest;

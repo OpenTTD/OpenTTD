@@ -173,7 +173,7 @@ void InvalidatePlayerWindows(const Player *p)
 	InvalidateWindow(WC_FINANCES, pid);
 }
 
-bool CheckPlayerHasMoney(int32 cost)
+bool CheckPlayerHasMoney(CommandCost cost)
 {
 	if (cost > 0) {
 		PlayerID pid = _current_player;
@@ -186,7 +186,7 @@ bool CheckPlayerHasMoney(int32 cost)
 	return true;
 }
 
-static void SubtractMoneyFromAnyPlayer(Player *p, int32 cost)
+static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
 {
 	p->money64 -= cost;
 	UpdatePlayerMoney32(p);
@@ -210,14 +210,14 @@ static void SubtractMoneyFromAnyPlayer(Player *p, int32 cost)
 	InvalidatePlayerWindows(p);
 }
 
-void SubtractMoneyFromPlayer(int32 cost)
+void SubtractMoneyFromPlayer(CommandCost cost)
 {
 	PlayerID pid = _current_player;
 
 	if (IsValidPlayer(pid)) SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
 }
 
-void SubtractMoneyFromPlayerFract(PlayerID player, int32 cost)
+void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cost)
 {
 	Player *p = GetPlayer(player);
 	byte m = p->player_money_fraction;
@@ -676,7 +676,7 @@ static void DeletePlayerStuff(PlayerID pi)
  * if p1 = 5, then
  * - p2 = enable renew_keep_length
  */
-int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	if (!IsValidPlayer(_current_player)) return CMD_ERROR;
@@ -723,7 +723,7 @@ int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			EngineID old_engine_type = GB(p2, 0, 16);
 			EngineID new_engine_type = GB(p2, 16, 16);
 			GroupID id_g = GB(p1, 16, 16);
-			int32 cost;
+			CommandCost cost;
 
 			if (!IsValidGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
 			if (new_engine_type != INVALID_ENGINE) {
@@ -805,7 +805,7 @@ int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @arg - network_server.c:838 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)@n
  * @arg - network_client.c:536 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP) from where the map has been received
  */
-int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) _current_player = OWNER_NONE;
 

@@ -56,11 +56,11 @@ static void FloodVehicle(Vehicle *v);
  * @param p1 bit 0 depot orientation (Axis)
  * @param p2 unused
  */
-int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex tile2;
 
-	int32 cost, ret;
+	CommandCost cost, ret;
 	Depot *depot;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -101,7 +101,7 @@ int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return cost + _price.build_ship_depot;
 }
 
-static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
+static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 {
 	TileIndex tile2;
 
@@ -127,9 +127,9 @@ static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 }
 
 /** build a shiplift */
-static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
+static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 {
-	int32 ret;
+	CommandCost ret;
 	int delta;
 
 	/* middle tile */
@@ -167,7 +167,7 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 	return _price.clear_water * 22 >> 3;
 }
 
-static int32 RemoveShiplift(TileIndex tile, uint32 flags)
+static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(GetLockDirection(tile));
 
@@ -200,7 +200,7 @@ static void MarkTilesAroundDirty(TileIndex tile)
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	DiagDirection dir;
 
@@ -222,9 +222,9 @@ int32 CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 start tile of stretch-dragging
  * @param p2 ctrl pressed - toggles ocean / canals at sealevel (ocean only allowed in the scenario editor)
  */
-int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 cost;
+	CommandCost cost;
 	int size_x, size_y;
 	int x;
 	int y;
@@ -251,7 +251,7 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = 0;
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
-		int32 ret;
+		CommandCost ret;
 
 		if (GetTileSlope(tile, NULL) != SLOPE_FLAT) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
@@ -284,7 +284,7 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 }
 
-static int32 ClearTile_Water(TileIndex tile, byte flags)
+static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:

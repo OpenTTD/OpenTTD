@@ -26,7 +26,7 @@ static Slope GetSlopeTileh_Dummy(TileIndex tile, Slope tileh)
 	return SLOPE_FLAT;
 }
 
-static int32 ClearTile_Dummy(TileIndex tile, byte flags)
+static CommandCost ClearTile_Dummy(TileIndex tile, byte flags)
 {
 	return_cmd_error(STR_0001_OFF_EDGE_OF_MAP);
 }

@@ -23,7 +23,7 @@ static bool TestCanBuildStationHere(TileIndex tile, byte dir)
 	Player *p = GetPlayer(_current_player);
 
 	if (dir == TEST_STATION_NO_DIR) {
-		int32 ret;
+		CommandCost ret;
 		// TODO: currently we only allow spots that can be access from al 4 directions...
 		//  should be fixed!!!
 		for (dir = 0; dir < 4; dir++) {
@@ -214,7 +214,7 @@ static void AyStar_AiPathFinder_FoundEndNode(AyStar *aystar, OpenListNode *curre
 // What tiles are around us.
 static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *current)
 {
-	int ret;
+	CommandCost ret;
 	int dir;
 
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;

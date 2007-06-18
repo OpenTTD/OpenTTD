@@ -116,7 +116,7 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 	DrawSprite(6 + _roadveh_images[spritenum], pal, x, y);
 }
 
-static int32 EstimateRoadVehCost(EngineID engine_type)
+static CommandCost EstimateRoadVehCost(EngineID engine_type)
 {
 	return ((_price.roadveh_base >> 3) * GetEngineProperty(engine_type, 0x11, RoadVehInfo(engine_type)->base_cost)) >> 5;
 }
@@ -156,9 +156,9 @@ void RoadVehUpdateCache(Vehicle *v)
  * @param p1 bus/truck type being built (engine)
  * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
  */
-int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 cost;
+	CommandCost cost;
 	Vehicle *v;
 	UnitID unit_num;
 	Engine *e;
@@ -282,7 +282,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 road vehicle ID to start/stop
  * @param p2 unused
  */
-int32 CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	uint16 callback;
@@ -347,7 +347,7 @@ static bool CheckRoadVehInDepotStopped(const Vehicle *v)
  * @param p1 vehicle ID to be sold
  * @param p2 unused
  */
-int32 CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -447,7 +447,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
  * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
  * - p2 bit 8-10 - VLW flag (for mass goto depot)
  */
-int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	const Depot *dep;
@@ -520,7 +520,7 @@ int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 vehicle ID to turn
  * @param p2 unused
  */
-int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -1886,7 +1886,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 void OnNewDay_RoadVeh(Vehicle *v)
 {
-	int32 cost;
+	CommandCost cost;
 
 	if (!IsRoadVehFront(v)) return;
 
@@ -2001,10 +2001,10 @@ void RoadVehiclesYearlyLoop()
  * - p2 = (bit 16) - refit only this vehicle (ignored)
  * @return cost of refit or error
  */
-int32 CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	int32 cost;
+	CommandCost cost;
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
 	uint16 capacity = CALLBACK_FAILED;

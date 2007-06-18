@@ -338,7 +338,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 			WP(w, refit_d).cargo = DrawVehicleRefitWindow(WP(w, refit_d).list, WP(w, refit_d).sel, w->vscroll.pos, w->vscroll.cap, w->resize.step_height);
 
 			if (WP(w, refit_d).cargo != NULL) {
-				int32 cost;
+				CommandCost cost;
 
 				cost = DoCommand(v->tile, v->index, WP(w, refit_d).cargo->cargo | WP(w, refit_d).cargo->subtype << 8,
 								 DC_QUERY_COST, GetCmdRefitVeh(GetVehicle(w->window_number)->type));

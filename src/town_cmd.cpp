@@ -478,10 +478,10 @@ static void ClickTile_Town(TileIndex tile)
 	/* not used */
 }
 
-static int32 ClearTile_Town(TileIndex tile, byte flags)
+static CommandCost ClearTile_Town(TileIndex tile, byte flags)
 {
 	int rating;
-	int32 cost;
+	CommandCost cost;
 	Town *t;
 	HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
 
@@ -708,7 +708,7 @@ no_slope:
 			uint32 r = Random();
 
 			if (CHANCE16I(1, 8, r) && !_generating_world) {
-				int32 res;
+				CommandCost res;
 
 				if (CHANCE16I(1, 16, r)) {
 					res = DoCommand(tile, slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER,
@@ -730,7 +730,7 @@ no_slope:
 
 static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 {
-	int32 r;
+	CommandCost r;
 
 	TILE_ASSERT(tile);
 
@@ -1464,7 +1464,7 @@ static Town *AllocateTown()
  * @param p1 size of the town (0 = small, 1 = medium, 2 = large)
  * @param p2 size mode (@see TownSizeMode)
  */
-int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Town *t;
 	uint32 townnameparts;
@@ -1770,7 +1770,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 
 static bool BuildTownHouse(Town *t, TileIndex tile)
 {
-	int32 r;
+	CommandCost r;
 
 	if (IsSteepSlope(GetTileSlope(tile, NULL))) return false;
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
@@ -1846,7 +1846,7 @@ void ClearTownHouse(Town *t, TileIndex tile)
  * @param p1 town ID to rename
  * @param p2 unused
  */
-int32 CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 	Town *t;
@@ -1932,7 +1932,7 @@ static void TownActionRoadRebuild(Town* t)
 static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
 {
 	PlayerID old;
-	int32 r;
+	CommandCost r;
 
 	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return false;
 
@@ -2050,9 +2050,9 @@ extern uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t);
  * @param p1 town to do the action at
  * @param p2 action to perform, @see _town_action_proc for the list of available actions
  */
-int32 CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 cost;
+	CommandCost cost;
 	Town *t;
 
 	if (!IsValidTownID(p1) || p2 > lengthof(_town_action_proc)) return CMD_ERROR;

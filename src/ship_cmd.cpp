@@ -175,7 +175,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 void OnNewDay_Ship(Vehicle *v)
 {
-	int32 cost;
+	CommandCost cost;
 
 	if ((++v->day_counter & 7) == 0)
 		DecreaseVehicleValue(v);
@@ -403,9 +403,9 @@ static bool ShipAccelerate(Vehicle *v)
 	return (t < v->progress);
 }
 
-static int32 EstimateShipCost(EngineID engine_type)
+static CommandCost EstimateShipCost(EngineID engine_type)
 {
-	return GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->base_cost) * (_price.ship_base>>3)>>5;
+	return GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->base_cost) * (_price.ship_base >> 3) >> 5;
 }
 
 static void ShipArrivesAt(const Vehicle* v, Station* st)
@@ -809,9 +809,9 @@ void ShipsYearlyLoop()
  * @param p1 ship type being built (engine)
  * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
  */
-int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 value;
+	CommandCost value;
 	Vehicle *v;
 	UnitID unit_num;
 	Engine *e;
@@ -904,7 +904,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 vehicle ID to be sold
  * @param p2 unused
  */
-int32 CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
@@ -938,7 +938,7 @@ int32 CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 ship ID to start/stop
  * @param p2 unused
  */
-int32 CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	uint16 callback;
@@ -979,7 +979,7 @@ int32 CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
  * - p2 bit 8-10 - VLW flag (for mass goto depot)
  */
-int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	const Depot *dep;
@@ -1056,10 +1056,10 @@ int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * - p2 = (bit 16) - refit only this vehicle (ignored)
  * @return cost of refit or error
  */
-int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	int32 cost;
+	CommandCost cost;
 	CargoID new_cid = GB(p2, 0, 8); //gets the cargo number
 	byte new_subtype = GB(p2, 8, 8);
 	uint16 capacity = CALLBACK_FAILED;

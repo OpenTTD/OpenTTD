@@ -509,7 +509,7 @@ void ResetVehiclePosHash();
 
 bool CanRefitTo(EngineID engine_type, CargoID cid_to);
 CargoID FindFirstRefittableCargo(EngineID engine_type);
-int32 GetRefitCost(EngineID engine_type);
+CommandCost GetRefitCost(EngineID engine_type);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
@@ -556,13 +556,13 @@ bool VehicleNeedsService(const Vehicle *v);
 
 uint GenerateVehicleSortList(const Vehicle*** sort_list, uint16 *length_of_array, VehicleType type, PlayerID owner, uint32 index, uint16 window_type);
 void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count);
-int32 SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
+CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
 bool IsVehicleInDepot(const Vehicle *v);
 void VehicleEnterDepot(Vehicle *v);
 
 void InvalidateAutoreplaceWindow(EngineID e);
 
-int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs);
+CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs);
 
 /* Flags to add to p2 for goto depot commands */
 /* Note: bits 8-10 are used for VLW flags */

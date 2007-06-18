@@ -107,7 +107,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool *edge_roa
  *                    removing the tram bits before the test.
  * @param p2 unused
  */
-int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* cost for removing inner/edge -roads */
 	static const uint16 road_remove_cost[2] = {50, 18};
@@ -166,7 +166,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* If it's the last roadtype, just clear the whole tile */
 		if (rts == RoadTypeToRoadTypes(rt)) return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
-		int32 cost;
+		CommandCost cost;
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			TileIndex other_end = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
 			/* Pay for *every* tile of the bridge or tunnel */
@@ -301,7 +301,7 @@ static const RoadBits _valid_tileh_slopes_road[][15] = {
 };
 
 
-static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
+static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 {
 	RoadBits road_bits;
 
@@ -346,10 +346,10 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
  *           bit 6..7 disallowed directions to toggle
  * @param p2 the town that is building the road (0 if not applicable)
  */
-int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 cost = 0;
-	int32 ret;
+	CommandCost cost = 0;
+	CommandCost ret;
 	RoadBits existing = ROAD_NONE;
 	RoadBits all_bits = ROAD_NONE;
 	Slope tileh;
@@ -553,7 +553,7 @@ do_clear:;
  * @return            The cost and state of the operation
  * @retval CMD_ERROR  An error occured during the operation.
  */
-int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
+CommandCost DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 {
 	/* not a railroad crossing? */
 	if (!IsLevelCrossing(tile)) return CMD_ERROR;
@@ -587,10 +587,10 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
  * - p2 = (bit 3 + 4) - road type
  * - p2 = (bit 5) - set road direction
  */
-int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex start_tile, tile;
-	int32 cost, ret;
+	CommandCost cost, ret;
 	bool had_bridge = false;
 	bool had_success = false;
 	DisallowedRoadDirections drd = DRD_NORTHBOUND;
@@ -667,10 +667,10 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
  * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
  * - p2 = (bit 3 + 4) - road type
  */
-int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex start_tile, tile;
-	int32 cost, ret;
+	CommandCost cost, ret;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -725,9 +725,9 @@ int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
  */
-int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 cost;
+	CommandCost cost;
 	Depot *dep;
 	Slope tileh;
 
@@ -765,7 +765,7 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return cost + _price.build_road_depot;
 }
 
-static int32 RemoveRoadDepot(TileIndex tile, uint32 flags)
+static CommandCost RemoveRoadDepot(TileIndex tile, uint32 flags)
 {
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
 		return CMD_ERROR;
@@ -777,7 +777,7 @@ static int32 RemoveRoadDepot(TileIndex tile, uint32 flags)
 	return _price.remove_road_depot;
 }
 
-static int32 ClearTile_Road(TileIndex tile, byte flags)
+static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 {
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_NORMAL: {
@@ -791,10 +791,10 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 			    !(flags & DC_AUTO)
 				) {
 				RoadTypes rts = GetRoadTypes(tile);
-				int32 ret = 0;
+				CommandCost ret = 0;
 				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 					if (HASBIT(rts, rt)) {
-						int32 tmp_ret = DoCommand(tile, rt << 4 | GetRoadBits(tile, rt), 0, flags, CMD_REMOVE_ROAD);
+						CommandCost tmp_ret = DoCommand(tile, rt << 4 | GetRoadBits(tile, rt), 0, flags, CMD_REMOVE_ROAD);
 						if (CmdFailed(tmp_ret)) return tmp_ret;
 						ret += tmp_ret;
 					}
@@ -807,7 +807,7 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 
 		case ROAD_TILE_CROSSING: {
 			RoadTypes rts = GetRoadTypes(tile);
-			int32 ret = 0;
+			CommandCost ret = 0;
 
 			if (flags & DC_AUTO) return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 
@@ -815,7 +815,7 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 			 * tram tracks must be removed before the road bits. */
 			for (RoadType rt = ROADTYPE_HWAY; rt >= ROADTYPE_ROAD; rt--) {
 				if (HASBIT(rts, rt)) {
-					int32 tmp_ret = DoCommand(tile, 1 << 6 | rt << 4 | GetCrossingRoadBits(tile), 0, flags, CMD_REMOVE_ROAD);
+					CommandCost tmp_ret = DoCommand(tile, 1 << 6 | rt << 4 | GetCrossingRoadBits(tile), 0, flags, CMD_REMOVE_ROAD);
 					if (CmdFailed(tmp_ret)) return tmp_ret;
 					ret += tmp_ret;
 				}

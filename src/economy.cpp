@@ -259,7 +259,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 			for (i = 0; i < 4; i++) {
 				if (p->share_owners[i] == old_player) {
 					/* Sell his shares */
-					int32 res = DoCommand(0, p->index, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+					CommandCost res = DoCommand(0, p->index, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
 					/* Because we are in a DoCommand, we can't just execute an other one and
 					 *  expect the money to be removed. We need to do it ourself! */
 					SubtractMoneyFromPlayer(res);
@@ -273,7 +273,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 			_current_player = p->share_owners[i];
 			if (_current_player != PLAYER_SPECTATOR) {
 				/* Sell the shares */
-				int32 res = DoCommand(0, old_player, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+				CommandCost res = DoCommand(0, old_player, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
 				/* Because we are in a DoCommand, we can't just execute an other one and
 				 *  expect the money to be removed. We need to do it ourself! */
 				SubtractMoneyFromPlayer(res);
@@ -1808,10 +1808,10 @@ extern int GetAmountOwnedBy(const Player *p, PlayerID owner);
  * @param p1 player to buy the shares from
  * @param p2 unused
  */
-int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
-	int64 cost;
+	CommandCost cost;
 
 	/* Check if buying shares is allowed (protection against modified clients */
 	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
@@ -1854,7 +1854,7 @@ int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 player to sell the shares from
  * @param p2 unused
  */
-int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	int64 cost;
@@ -1890,7 +1890,7 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 player/company to buy up
  * @param p2 unused
  */
-int32 CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	PlayerID pid = (PlayerID)p1;

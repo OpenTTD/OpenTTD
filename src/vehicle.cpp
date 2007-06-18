@@ -845,9 +845,9 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 * @param engine_type Which engine to refit
 * @return Price for refitting
 */
-int32 GetRefitCost(EngineID engine_type)
+CommandCost GetRefitCost(EngineID engine_type)
 {
-	int32 base_cost = 0;
+	CommandCost base_cost = 0;
 
 	switch (GetEngine(engine_type)->type) {
 		case VEH_SHIP: base_cost = _price.ship_base; break;
@@ -1679,12 +1679,12 @@ void AgeVehicle(Vehicle *v)
  *   - bit 6 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
  *   - bit 8-11 Vehicle List Window type (ignored unless bit 1 is set)
  */
-int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle **vl = NULL;
 	uint16 engine_list_length = 0;
 	uint16 engine_count = 0;
-	int32 return_value = CMD_ERROR;
+	CommandCost return_value = CMD_ERROR;
 	uint i;
 	uint stop_command;
 	VehicleType vehicle_type = (VehicleType)GB(p2, 0, 5);
@@ -1711,7 +1711,7 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	for (i = 0; i < engine_count; i++) {
 		const Vehicle *v = vl[i];
-		int32 ret;
+		CommandCost ret;
 
 		if (!!(v->vehstatus & VS_STOPPED) != start_stop) continue;
 
@@ -1743,7 +1743,7 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * @param p1 Vehicle type
  * @param p2 unused
  */
-int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle **engines = NULL;
 	Vehicle **wagons = NULL;
@@ -1752,7 +1752,7 @@ int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	uint16 wagon_list_length = 0;
 	uint16 wagon_count = 0;
 
-	int32 cost = 0;
+	CommandCost cost = 0;
 	uint i, sell_command, total_number_vehicles;
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
@@ -1771,7 +1771,7 @@ int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	total_number_vehicles = engine_count + wagon_count;
 	for (i = 0; i < total_number_vehicles; i++) {
 		const Vehicle *v;
-		int32 ret;
+		CommandCost ret;
 
 		if (i < engine_count) {
 			v = engines[i];
@@ -1796,13 +1796,13 @@ int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * @param p1 Type of vehicle
  * @param p2 Unused
  */
-int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle **vl = NULL;
 	uint16 engine_list_length = 0;
 	uint16 engine_count = 0;
 	uint i, x = 0, y = 0, z = 0;
-	int32 cost = 0;
+	CommandCost cost = 0;
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
@@ -1814,7 +1814,7 @@ int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	for (i = 0; i < engine_count; i++) {
 		Vehicle *v = vl[i];
 		bool stopped = !(v->vehstatus & VS_STOPPED);
-		int32 ret;
+		CommandCost ret;
 
 		/* Ensure that the vehicle completely in the depot */
 		if (!IsVehicleInDepot(v)) continue;
@@ -1862,11 +1862,11 @@ int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * @param p1 the original vehicle's index
  * @param p2 1 = shared orders, else copied orders
  */
-int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v_front, *v;
 	Vehicle *w_front, *w, *w_rear;
-	int32 cost, total_cost = 0;
+	CommandCost cost, total_cost = 0;
 	uint32 build_argument = 2;
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
@@ -1926,7 +1926,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) {
 				/* this s a train car
 				 * add this unit to the end of the train */
-				int32 result = DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
+				CommandCost result = DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
 				if (CmdFailed(result)) {
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
@@ -2223,7 +2223,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
  * @param vlw_flag tells what kind of list requested the goto depot
  * @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
  */
-int32 SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
+CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
 {
 	const Vehicle **sort_list = NULL;
 	uint n, i;
@@ -2234,7 +2234,7 @@ int32 SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, Playe
 	/* Send all the vehicles to a depot */
 	for (i = 0; i < n; i++) {
 		const Vehicle *v = sort_list[i];
-		int32 ret = DoCommand(v->tile, v->index, (service ? 1 : 0) | DEPOT_DONT_CANCEL, flags, GetCmdSendToDepot(type));
+		CommandCost ret = DoCommand(v->tile, v->index, (service ? 1 : 0) | DEPOT_DONT_CANCEL, flags, GetCmdSendToDepot(type));
 
 		/* Return 0 if DC_EXEC is not set this is a valid goto depot command)
 			* In this case we know that at least one vehicle can be sent to a depot
@@ -2314,7 +2314,7 @@ void VehicleEnterDepot(Vehicle *v)
 		v->current_order.flags = 0;
 
 		if (t.refit_cargo < NUM_CARGO) {
-			int32 cost;
+			CommandCost cost;
 
 			_current_player = v->owner;
 			cost = DoCommand(v->tile, v->index, t.refit_cargo | t.refit_subtype << 8, DC_EXEC, GetCmdRefitVeh(v));
@@ -2362,7 +2362,7 @@ void VehicleEnterDepot(Vehicle *v)
  * @param p1 vehicle ID to name
  * @param p2 unused
  */
-int32 CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	StringID str;
@@ -2396,7 +2396,7 @@ int32 CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 vehicle ID that is being service-interval-changed
  * @param p2 new service interval
  */
-int32 CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle* v;
 	uint16 serv_int = GetServiceIntervalClamped(p2); /* Double check the service interval from the user-input */

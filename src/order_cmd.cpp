@@ -190,7 +190,7 @@ static TileIndex GetOrderLocation(const Order& o)
  *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
  * @param p2 packed order to insert
  */
-int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	VehicleID veh   = GB(p1,  0, 16);
@@ -448,7 +448,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param *dst delete the orders of this vehicle
  * @param flags execution flags
  */
-static int32 DecloneOrder(Vehicle *dst, uint32 flags)
+static CommandCost DecloneOrder(Vehicle *dst, uint32 flags)
 {
 	if (flags & DC_EXEC) {
 		DeleteVehicleOrders(dst);
@@ -483,7 +483,7 @@ static void RemoveSharedOrderVehicleList(Vehicle *v)
  * @param p1 the ID of the vehicle
  * @param p2 the order to delete (max 255)
  */
-int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v, *u;
 	VehicleID veh_id = p1;
@@ -563,7 +563,7 @@ int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 The ID of the vehicle which order is skipped
  * @param p2 the selected order to which we want to skip
  */
-int32 CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	VehicleID veh_id = p1;
@@ -608,7 +608,7 @@ int32 CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @note The target order will move one place down in the orderlist
  *  if you move the order upwards else it'll move it one place down
  */
-int32 CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleID veh = p1;
 	VehicleOrderID moving_order = GB(p2,  0, 16);
@@ -694,7 +694,7 @@ int32 CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
  * @param p2 mode to change the order to (always set)
  */
-int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	Order *order;
@@ -774,7 +774,7 @@ int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * - p1 = (bit 16-31) - source vehicle to clone orders from, if any (none for CO_UNSHARE)
  * @param p2 mode of cloning: CO_SHARE, CO_COPY, or CO_UNSHARE
  */
-int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *dst;
 	VehicleID veh_src = GB(p1, 16, 16);
@@ -908,7 +908,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *   - bit 8-15 Cargo subtype
  *   - bit 16-23 number of order to modify
  */
-int32 CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const Vehicle *v;
 	Order *order;
@@ -1039,7 +1039,7 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
  * If we do want to backup/restore it, just add UnitID uid to BackuppedOrders, and
  * restore it as parameter 'y' (ugly hack I know) for example. "v->unitnumber = y;"
  */
-int32 CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	VehicleOrderID cur_ord = GB(p2,  0, 16);

@@ -36,7 +36,7 @@ bool AiNew_Build_CompanyHQ(Player *p, TileIndex tile)
 //    numtracks : in case of AI_TRAIN: tracks of station
 //    direction : the direction of the station
 //    flag : flag passed to DoCommand (normally 0 to get the cost or DC_EXEC to build it)
-int AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag)
+CommandCost AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag)
 {
 	if (type == AI_TRAIN)
 		return AI_DoCommand(tile, direction + (numtracks << 8) + (length << 16), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
@@ -53,7 +53,7 @@ int AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte 
 //   tile_a : starting point
 //   tile_b : end point
 //   flag : flag passed to DoCommand
-int AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag)
+CommandCost AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag)
 {
 	int bridge_type, bridge_len, type, type2;
 
@@ -90,15 +90,15 @@ int AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag)
 //   part : Which part we need to build
 //
 // TODO: skip already builded road-pieces (e.g.: cityroad)
-int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte flag)
+CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte flag)
 {
 	int part = PathFinderInfo->position;
 	byte *route_extra = PathFinderInfo->route_extra;
 	TileIndex *route = PathFinderInfo->route;
 	int dir;
 	int old_dir = -1;
-	int cost = 0;
-	int res;
+	CommandCost cost = 0;
+	CommandCost res;
 	// We need to calculate the direction with the parent of the parent.. so we skip
 	//  the first pieces and the last piece
 	if (part < 1) part = 1;
@@ -243,7 +243,7 @@ EngineID AiNew_PickVehicle(Player *p)
 			const RoadVehicleInfo *rvi = RoadVehInfo(i);
 			const Engine* e = GetEngine(i);
 			int32 rating;
-			int32 ret;
+			CommandCost ret;
 
 			/* Skip vehicles which can't take our cargo type */
 			if (rvi->cargo_type != p->ainew.cargo && !CanRefitTo(i, p->ainew.cargo)) continue;
@@ -293,7 +293,7 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 
 // Builds the best vehicle possible
-int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
+CommandCost AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
 {
 	EngineID i = AiNew_PickVehicle(p);
 
@@ -307,9 +307,9 @@ int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
 	}
 }
 
-int AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte flag)
+CommandCost AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte flag)
 {
-	int ret, ret2;
+	CommandCost ret, ret2;
 	if (p->ainew.tbt == AI_TRAIN) {
 		return AI_DoCommand(tile, 0, direction, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_TRAIN_DEPOT);
 	} else {

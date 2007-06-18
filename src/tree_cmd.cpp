@@ -213,10 +213,10 @@ void GenerateTrees()
  * @param p1 tree type, -1 means random.
  * @param p2 end tile of area-drag
  */
-int32 CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID msg = INVALID_STRING_ID;
-	int32 cost;
+	CommandCost cost;
 	int ex;
 	int ey;
 	int sx, sy, x, y;
@@ -428,7 +428,7 @@ static Slope GetSlopeTileh_Trees(TileIndex tile, Slope tileh)
 	return tileh;
 }
 
-static int32 ClearTile_Trees(TileIndex tile, byte flags)
+static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
 {
 	uint num;
 

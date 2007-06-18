@@ -31,7 +31,7 @@
  * @param flags docommand flags of calling function
  * @return cost of the operation
  */
-static int32 DestroyCompanyHQ(PlayerID pid, uint32 flags)
+static CommandCost DestroyCompanyHQ(PlayerID pid, uint32 flags)
 {
 	Player* p = GetPlayer(pid);
 
@@ -73,7 +73,7 @@ void UpdateCompanyHQ(Player *p, uint score)
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
 }
 
-extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station, bool check_clear = true);
+extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station, bool check_clear = true);
 
 /** Build or relocate the HQ. This depends if the HQ is already built or not
  * @param tile tile where the HQ will be built or relocated to
@@ -81,11 +81,11 @@ extern int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p = GetPlayer(_current_player);
-	int cost;
-	int32 ret;
+	CommandCost cost;
+	CommandCost ret;
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
@@ -216,7 +216,7 @@ static Slope GetSlopeTileh_Unmovable(TileIndex tile, Slope tileh)
 	return IsOwnedLand(tile) ? tileh : SLOPE_FLAT;
 }
 
-static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
+static CommandCost ClearTile_Unmovable(TileIndex tile, byte flags)
 {
 	if (IsCompanyHQ(tile)) {
 		if (_current_player == OWNER_WATER) {

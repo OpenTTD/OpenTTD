@@ -336,7 +336,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 	}
 }
 
-static int32 ClearTile_Industry(TileIndex tile, byte flags)
+static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
 {
 	Industry *i = GetIndustryByTile(tile);
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
@@ -1469,7 +1469,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
  * @param p2 unused
  * @return index of the newly create industry, or CMD_ERROR if it failed
  */
-int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int num;
 	const IndustryTileTable * const *itt;

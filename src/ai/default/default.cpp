@@ -136,7 +136,7 @@ static EngineID AiChooseTrainToBuild(RailType railtype, int32 money, byte flag, 
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	byte best_veh_score = 0;
-	int32 ret;
+	CommandCost ret;
 	EngineID i;
 
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
@@ -172,7 +172,7 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex til
 		const RoadVehicleInfo *rvi = RoadVehInfo(i);
 		const Engine* e = GetEngine(i);
 		int32 rating;
-		int32 ret;
+		CommandCost ret;
 
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
 			continue;
@@ -207,7 +207,7 @@ static EngineID AiChooseAircraftToBuild(int32 money, byte flag)
 
 	for (i = AIRCRAFT_ENGINES_INDEX; i != AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; i++) {
 		const Engine* e = GetEngine(i);
-		int32 ret;
+		CommandCost ret;
 
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
 			continue;
@@ -1638,10 +1638,10 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 	return true;
 }
 
-static int32 AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData* p, RailType railtype, byte flag)
+static CommandCost AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData* p, RailType railtype, byte flag)
 {
-	int32 ret;
-	int32 total_cost = 0;
+	CommandCost ret;
+	CommandCost total_cost = 0;
 	Town *t = NULL;
 	int rating = 0;
 	int i, j, k;
@@ -1734,7 +1734,7 @@ clear_town_stuff:;
 }
 
 // Returns rule and cost
-static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, byte p3, byte dir, byte cargo, RailType railtype, int32* cost)
+static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, byte p3, byte dir, byte cargo, RailType railtype, CommandCost* cost)
 {
 	int i;
 	const AiDefaultRailBlock *p;
@@ -1821,7 +1821,7 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 	int j;
 	AiBuildRec *aib;
 	int rule;
-	int32 cost;
+	CommandCost cost;
 
 	// time out?
 	if (++p->ai.timeout_counter == 1388) {
@@ -2067,7 +2067,7 @@ static inline void AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex tile,
 	uint z;
 
 	if (GetTileSlope(tile, &z) == _dir_table_2[p[0] & 3] && z != 0) {
-		int32 cost = DoCommand(tile, arf->player->ai.railtype_to_use, 0, DC_AUTO, CMD_BUILD_TUNNEL);
+		CommandCost cost = DoCommand(tile, arf->player->ai.railtype_to_use, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (!CmdFailed(cost) && cost <= (arf->player->player_money >> 4)) {
 			AiBuildRailRecursive(arf, _build_tunnel_endtile, p[0] & 3);
@@ -2465,7 +2465,7 @@ static void AiStateBuildRailVeh(Player *p)
 	EngineID veh;
 	int i;
 	CargoID cargo;
-	int32 cost;
+	CommandCost cost;
 	Vehicle *v;
 	VehicleID loco_id;
 
@@ -2605,10 +2605,10 @@ static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, by
 }
 
 static bool _want_road_truck_station;
-static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag);
+static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag);
 
 // Returns rule and cost
-static int AiFindBestDefaultRoadBlock(TileIndex tile, byte direction, byte cargo, int32 *cost)
+static int AiFindBestDefaultRoadBlock(TileIndex tile, byte direction, byte cargo, CommandCost *cost)
 {
 	int i;
 	const AiDefaultRoadBlock *p;
@@ -2626,10 +2626,10 @@ static int AiFindBestDefaultRoadBlock(TileIndex tile, byte direction, byte cargo
 	return -1;
 }
 
-static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
+static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
 {
-	int32 ret;
-	int32 total_cost = 0;
+	CommandCost ret;
+	CommandCost total_cost = 0;
 	Town *t = NULL;
 	int rating = 0;
 	int roadflag = 0;
@@ -2721,7 +2721,7 @@ static void AiStateBuildDefaultRoadBlocks(Player *p)
 	int j;
 	AiBuildRec *aib;
 	int rule;
-	int32 cost;
+	CommandCost cost;
 
 	// time out?
 	if (++p->ai.timeout_counter == 1388) {
@@ -2758,7 +2758,7 @@ static void AiStateBuildDefaultRoadBlocks(Player *p)
 					p->ai.state_mode = -p->ai.state_mode;
 				}
 			} else if (CheckPlayerHasMoney(cost) && AiCheckBlockDistances(p, aib->use_tile)) {
-				int32 r;
+				CommandCost r;
 
 				// player has money, build it.
 				aib->cur_building_rule = rule;
@@ -2967,7 +2967,7 @@ static inline void AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex tile,
 	uint z;
 
 	if (GetTileSlope(tile, &z) == _dir_table_2[p[0] & 3] && z != 0) {
-		int32 cost = DoCommand(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
+		CommandCost cost = DoCommand(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (!CmdFailed(cost) && cost <= (arf->player->player_money >> 4)) {
 			AiBuildRoadRecursive(arf, _build_tunnel_endtile, p[0] & 3);
@@ -3101,7 +3101,7 @@ do_some_terraform:
 		 */
 		for (i = 10; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
-				int32 cost = DoCommand(tile, p->ai.cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
+				CommandCost cost = DoCommand(tile, p->ai.cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
 				if (!CmdFailed(cost) && cost < (p->player_money >> 5)) break;
 			}
 		}
@@ -3387,10 +3387,10 @@ static void AiStateAirportStuff(Player *p)
 	p->ai.state_counter = 0;
 }
 
-static int32 AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
+static CommandCost AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
 {
 	uint32 avail_airports = GetValidAirports();
-	int32 total_cost = 0, ret;
+	CommandCost total_cost = 0, ret;
 
 	for (; p->mode == 0; p++) {
 		if (!HASBIT(avail_airports, p->attr)) return CMD_ERROR;
@@ -3424,7 +3424,7 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 	return true;
 }
 
-static int AiFindBestDefaultAirportBlock(TileIndex tile, byte cargo, byte heli, int32 *cost)
+static int AiFindBestDefaultAirportBlock(TileIndex tile, byte cargo, byte heli, CommandCost *cost)
 {
 	const AiDefaultBlockData *p;
 	uint i;
@@ -3446,7 +3446,7 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 	int i, j;
 	AiBuildRec *aib;
 	int rule;
-	int32 cost;
+	CommandCost cost;
 
 	// time out?
 	if (++p->ai.timeout_counter == 1388) {
@@ -3485,7 +3485,7 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 				}
 			} else if (CheckPlayerHasMoney(cost) && AiCheckBlockDistances(p, aib->use_tile)) {
 				// player has money, build it.
-				int32 r;
+				CommandCost r;
 
 				aib->cur_building_rule = rule;
 

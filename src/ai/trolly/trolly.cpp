@@ -642,7 +642,7 @@ static void AiNew_State_FindStation(Player *p)
 
 	if (new_tile == 0 && p->ainew.tbt == AI_BUS) {
 		uint x, y, i = 0;
-		int r;
+		CommandCost r;
 		uint best;
 		uint accepts[NUM_CARGO];
 		TileIndex found_spot[AI_FINDSTATION_TILE_RANGE*AI_FINDSTATION_TILE_RANGE * 4];
@@ -788,7 +788,8 @@ static void AiNew_State_FindDepot(Player *p)
 	// To make the depot stand in the middle of the route, we start from the center..
 	// But first we walk through the route see if we can find a depot that is ours
 	//  this keeps things nice ;)
-	int g, i, r;
+	int g, i;
+	CommandCost r;
 	DiagDirection j;
 	TileIndex tile;
 	assert(p->ainew.state == AI_STATE_FIND_DEPOT);
@@ -984,7 +985,7 @@ static void AiNew_State_VerifyRoute(Player *p)
 // Build the stations
 static void AiNew_State_BuildStation(Player *p)
 {
-	int res = 0;
+	CommandCost res = 0;
 	assert(p->ainew.state == AI_STATE_BUILD_STATION);
 	if (p->ainew.temp == 0) {
 		if (!IsTileType(p->ainew.from_tile, MP_STATION))
@@ -1037,8 +1038,8 @@ static void AiNew_State_BuildPath(Player *p)
 			// We don't want that, so try building some road left or right of the station
 			int dir1, dir2, dir3;
 			TileIndex tile;
-			int i, ret;
-			for (i=0;i<2;i++) {
+			CommandCost ret;
+			for (int i = 0; i < 2; i++) {
 				if (i == 0) {
 					tile = p->ainew.from_tile + TileOffsByDiagDir(p->ainew.from_direction);
 					dir1 = p->ainew.from_direction - 1;
@@ -1102,7 +1103,7 @@ static void AiNew_State_BuildPath(Player *p)
 // Builds the depot
 static void AiNew_State_BuildDepot(Player *p)
 {
-	int res = 0;
+	CommandCost res = 0;
 	assert(p->ainew.state == AI_STATE_BUILD_DEPOT);
 
 	if (IsTileType(p->ainew.depot_tile, MP_STREET) && GetRoadTileType(p->ainew.depot_tile) == ROAD_TILE_DEPOT) {
@@ -1137,7 +1138,7 @@ static void AiNew_State_BuildDepot(Player *p)
 // Build vehicles
 static void AiNew_State_BuildVehicle(Player *p)
 {
-	int res;
+	CommandCost res;
 	assert(p->ainew.state == AI_STATE_BUILD_VEHICLE);
 
 	// Check if we need to build a vehicle
@@ -1277,7 +1278,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v)
 
 			if (!AiNew_SetSpecialVehicleFlag(p, v, AI_VEHICLEFLAG_SELL)) return;
 			{
-				int ret = 0;
+				CommandCost ret = 0;
 				if (v->type == VEH_ROAD)
 					ret = AI_DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
 				// This means we can not find a depot :s

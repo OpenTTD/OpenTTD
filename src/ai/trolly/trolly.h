@@ -252,11 +252,11 @@ uint AiNew_GetSpecialVehicleFlag(Player *p, Vehicle *v);
 
 // ai_build.c
 bool AiNew_Build_CompanyHQ(Player *p, TileIndex tile);
-int AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag);
-int AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag);
-int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte flag);
+CommandCost AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag);
+CommandCost AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag);
+CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte flag);
 EngineID AiNew_PickVehicle(Player *p);
-int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag);
-int AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte flag);
+CommandCost AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag);
+CommandCost AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte flag);
 
 #endif /* AI_TROLLY_H */

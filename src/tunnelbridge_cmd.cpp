@@ -110,7 +110,7 @@ static inline byte GetBridgeFlags(int index) { return _bridge[index].flags;}
  * - rest is invalid
  */
 #define M(x) (1 << (x))
-static int32 CheckBridgeSlopeNorth(Axis axis, Slope tileh)
+static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope tileh)
 {
 	uint32 valid;
 
@@ -125,7 +125,7 @@ static int32 CheckBridgeSlopeNorth(Axis axis, Slope tileh)
 	return CMD_ERROR;
 }
 
-static int32 CheckBridgeSlopeSouth(Axis axis, Slope tileh)
+static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope tileh)
 {
 	uint32 valid;
 
@@ -175,7 +175,7 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
  * - p2 = (bit 8-..) - rail type or road types.
  * - p2 = (bit 15  ) - set means road bridge.
  */
-int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint bridge_type;
 	RailType railtype;
@@ -194,7 +194,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	TileIndexDiff delta;
 	uint bridge_len;
 	Axis direction;
-	int32 cost, terraformcost, ret;
+	CommandCost cost, terraformcost, ret;
 	bool allow_on_slopes;
 	bool replace_bridge = false;
 	uint replaced_bridge_type;
@@ -453,7 +453,7 @@ not_valid_below:;
  * @param p1 railtype or roadtypes. bit 9 set means road tunnel
  * @param p2 unused
  */
-int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndexDiff delta;
 	TileIndex end_tile;
@@ -462,8 +462,8 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 	Slope end_tileh;
 	uint start_z;
 	uint end_z;
-	int32 cost;
-	int32 ret;
+	CommandCost cost;
+	CommandCost ret;
 
 	_build_tunnel_endtile = 0;
 	if (!HASBIT(p1, 9)) {
@@ -578,7 +578,7 @@ static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 	return false;
 }
 
-static int32 DoClearTunnel(TileIndex tile, uint32 flags)
+static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 {
 	Town *t = NULL;
 	TileIndex endtile;
@@ -638,7 +638,7 @@ static bool IsVehicleOnBridge(TileIndex starttile, TileIndex endtile, uint z)
 	return false;
 }
 
-static int32 DoClearBridge(TileIndex tile, uint32 flags)
+static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 {
 	DiagDirection direction;
 	TileIndexDiff delta;
@@ -698,7 +698,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	return (DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge;
 }
 
-static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
+static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
 {
 	if (IsTunnel(tile)) {
 		if (flags & DC_AUTO) return_cmd_error(STR_5006_MUST_DEMOLISH_TUNNEL_FIRST);
@@ -721,7 +721,7 @@ static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
  * @return            The cost and state of the operation
  * @retval CMD_ERROR  An error occured during the operation.
  */
-int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
+CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 {
 	TileIndex endtile;
 

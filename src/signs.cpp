@@ -122,7 +122,7 @@ void DestroySign(Sign *si)
  * @param p1 unused
  * @param p2 unused
  */
-int32 CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Sign *si;
 
@@ -159,7 +159,7 @@ int32 CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 unused
  * @return 0 if succesfull, otherwise CMD_ERROR
  */
-int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidSignID(p1)) return CMD_ERROR;
 

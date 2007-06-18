@@ -36,7 +36,7 @@ struct TerraformerState {
 	int modheight_count;
 	int tile_table_count;
 
-	int32 cost;
+	CommandCost cost;
 
 	TileIndex *tile_table;
 	TerraformerHeightMod *modheight;
@@ -97,7 +97,7 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
 static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 {
 	int r;
-	int32 ret;
+	CommandCost ret;
 
 	assert(tile < MapSize());
 
@@ -232,7 +232,7 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
  * @param p2 direction; eg up or down
  * @return error or cost of terraforming
  */
-int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TerraformerState ts;
 	TileIndex t;
@@ -357,14 +357,16 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 unused
  * @return  error or cost of terraforming
  */
-int32 CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int size_x, size_y;
 	int ex;
 	int ey;
 	int sx, sy;
 	uint h, curh;
-	int32 ret, cost, money;
+	int32 money;
+	CommandCost ret;
+	CommandCost cost;
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
@@ -418,9 +420,9 @@ int32 CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 unused
  * @return error of cost of operation
  */
-int32 CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int32 cost;
+	CommandCost cost;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -442,7 +444,7 @@ int32 CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-static int32 ClearTile_Clear(TileIndex tile, byte flags)
+static CommandCost ClearTile_Clear(TileIndex tile, byte flags)
 {
 	static const int32* clear_price_table[] = {
 		&_price.clear_1,
@@ -453,7 +455,7 @@ static int32 ClearTile_Clear(TileIndex tile, byte flags)
 		&_price.purchase_land,
 		&_price.clear_2, // XXX unused?
 	};
-	int32 price;
+	CommandCost price;
 
 	if (IsClearGround(tile, CLEAR_GRASS) && GetClearDensity(tile) == 0) {
 		price = 0;
@@ -474,7 +476,7 @@ static int32 ClearTile_Clear(TileIndex tile, byte flags)
  * @param p2 unused
  * @return error or cost of operation
  */
-int32 CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 

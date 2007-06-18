@@ -1766,7 +1766,7 @@ static const SettingDesc *GetSettingDescription(uint index)
  * The new value is properly clamped to its minimum/maximum when setting
  * @see _patch_settings
  */
-int32 CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const SettingDesc *sd = GetSettingDescription(p1);
 

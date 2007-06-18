@@ -251,7 +251,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
  * @param p1 the side of the road; 0 = left side and 1 = right side
  * @param p2 unused
  */
-int32 CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* Check boundaries and you can only change this if NO vehicles have been built yet,
 	 * except in the intro-menu where of course it's always possible to do so. */

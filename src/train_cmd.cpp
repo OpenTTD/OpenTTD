@@ -502,12 +502,12 @@ void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 	DrawSprite(image, pal, x, y);
 }
 
-static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
+static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 {
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
-	int32 value = (GetEngineProperty(engine, 0x17, rvi->base_cost) * _price.build_railwagon) >> 8;
+	CommandCost value = (GetEngineProperty(engine, 0x17, rvi->base_cost) * _price.build_railwagon) >> 8;
 
 	uint num_vehicles = 1 + CountArticulatedParts(engine);
 
@@ -611,7 +611,7 @@ static void NormalizeTrainVehInDepot(const Vehicle* u)
 	}
 }
 
-static int32 EstimateTrainCost(EngineID engine, const RailVehicleInfo* rvi)
+static CommandCost EstimateTrainCost(EngineID engine, const RailVehicleInfo* rvi)
 {
 	return GetEngineProperty(engine, 0x17, rvi->base_cost) * (_price.build_railvehicle >> 3) >> 5;
 }
@@ -651,7 +651,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
  * @param p2 bit 0 when set, the train will get number 0, otherwise it will get a free number
  *           bit 1 prevents any free cars from being added to the train
  */
-int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* Check if the engine-type is valid (for the player) */
 	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_player)) return_cmd_error(STR_RAIL_VEHICLE_NOT_AVAILABLE);
@@ -673,7 +673,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
-	int32 value = EstimateTrainCost(p1, rvi);
+	CommandCost value = EstimateTrainCost(p1, rvi);
 
 	uint num_vehicles =
 		(rvi->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) +
@@ -909,7 +909,7 @@ static void NormaliseTrainConsist(Vehicle *v)
  * - p1 (bit 16 - 31) what wagon to put the source wagon AFTER, XXX - INVALID_VEHICLE to make a new line
  * @param p2 (bit 0) move all vehicles following the source vehicle
  */
-int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleID s = GB(p1, 0, 16);
 	VehicleID d = GB(p1, 16, 16);
@@ -1162,7 +1162,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 train to start/stop
  * @param p2 unused
  */
-int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
@@ -1203,7 +1203,7 @@ int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * - p2 = 2: when selling attached locos, rearrange all vehicles after it to separate lines;
  *           all wagons of the same type will go on the same line. Used by the AI currently
  */
-int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* Check if we deleted a vehicle window */
 	Window *w = NULL;
@@ -1235,7 +1235,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 	}
 
-	int32 cost = 0;
+	CommandCost cost = 0;
 	switch (p2) {
 		case 0: case 2: { /* Delete given wagon */
 			bool switch_engine = false;    // update second wagon to engine?
@@ -1616,7 +1616,7 @@ static void ReverseTrainDirection(Vehicle *v)
  * @param p1 train to reverse
  * @param p2 if true, reverse a unit in a train (needs to be in a depot)
  */
-int32 CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
@@ -1665,7 +1665,7 @@ int32 CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  * @param p1 train to ignore the red signal
  * @param p2 unused
  */
-int32 CmdForceTrainProceed(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdForceTrainProceed(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
@@ -1688,7 +1688,7 @@ int32 CmdForceTrainProceed(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * - p2 = (bit 16) - refit only this vehicle
  * @return cost of refit or error
  */
-int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
@@ -1706,7 +1706,7 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
 
-	int32 cost = 0;
+	CommandCost cost = 0;
 	uint num = 0;
 
 	do {
@@ -1872,7 +1872,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
  * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
  * - p2 bit 8-10 - VLW flag (for mass goto depot)
  */
-int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
@@ -3389,7 +3389,7 @@ void OnNewDay_Train(Vehicle *v)
 
 		if ((v->vehstatus & VS_STOPPED) == 0) {
 			/* running costs */
-			int32 cost = GetTrainRunningCost(v) / 364;
+			CommandCost cost = GetTrainRunningCost(v) / 364;
 
 			v->profit_this_year -= cost >> 8;
 
