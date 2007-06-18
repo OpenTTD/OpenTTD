@@ -40,12 +40,13 @@ enum Subdirectory {
  * Types of searchpaths OpenTTD might use
  */
 enum Searchpath {
-	SP_WORKING_DIR,            ///< Search in the working directory
-	SP_PERSONAL_DIR,           ///< Search in the personal directory
-	SP_SHARED_DIR,             ///< Search in the shared directory, like 'Shared Files' under Windows
-	SP_BINARY_DIR,             ///< Search in the directory where the binary resides
-	SP_INSTALLATION_DIR,       ///< Search in the installation directory
-	SP_APPLICATION_BUNDLE_DIR, ///< Search within the application bundle
+	SP_FIRST_DIR,
+	SP_WORKING_DIR = SP_FIRST_DIR, ///< Search in the working directory
+	SP_PERSONAL_DIR,               ///< Search in the personal directory
+	SP_SHARED_DIR,                 ///< Search in the shared directory, like 'Shared Files' under Windows
+	SP_BINARY_DIR,                 ///< Search in the directory where the binary resides
+	SP_INSTALLATION_DIR,           ///< Search in the installation directory
+	SP_APPLICATION_BUNDLE_DIR,     ///< Search within the application bundle
 	NUM_SEARCHPATHS
 };
 
@@ -70,7 +71,7 @@ static inline bool IsValidSearchPath(Searchpath sp)
 }
 
 /** Iterator for all the search paths */
-#define FOR_ALL_SEARCHPATHS(sp) for (sp = SP_PERSONAL_DIR; sp < NUM_SEARCHPATHS; sp++) if (IsValidSearchPath(sp))
+#define FOR_ALL_SEARCHPATHS(sp) for (sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) if (IsValidSearchPath(sp))
 
 FILE *FioFOpenFile(const char *filename, const char *mode = "rb", Subdirectory subdir = DATA_DIR);
 bool FioCheckFileExists(const char *filename, Subdirectory subdir = DATA_DIR);
