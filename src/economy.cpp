@@ -1157,7 +1157,7 @@ static void Load_SUBS()
 		SlObject(&_subsidies[index], _subsidies_desc);
 }
 
-int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)
+Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)
 {
 	const CargoSpec *cs = GetCargo(cargo_type);
 	byte f;

@@ -9,8 +9,8 @@ void ResetPriceBaseMultipliers();
 void SetPriceBaseMultiplier(uint price, byte factor);
 
 struct Economy {
-	int32 max_loan;         ///< Maximum possible loan
-	int32 max_loan_unround; ///< Economy fluctuation status
+	Money max_loan;         ///< Maximum possible loan
+	Money max_loan_unround; ///< Economy fluctuation status
 	int fluct;
 	byte interest_rate;     ///< Interest
 	byte infl_amount;       ///< inflation amount
@@ -65,7 +65,7 @@ void DeleteSubsidyWithTown(TownID index);
 void DeleteSubsidyWithIndustry(IndustryID index);
 void DeleteSubsidyWithStation(StationID index);
 
-int32 GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type);
+Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type);
 uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount);
 
 void VehiclePayment(Vehicle *front_v);
