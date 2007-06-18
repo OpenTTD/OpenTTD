@@ -161,79 +161,23 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 	}
 }
 
-static void GfxSetPixel(int x, int y, int color)
-{
-	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-	const DrawPixelInfo *dpi = _cur_dpi;
-
-	if ((x -= dpi->left) < 0 || x >= dpi->width || (y -= dpi->top) < 0 || y >= dpi->height) return;
-	blitter->SetPixel(dpi->dst_ptr, x, y, color);
-}
-
 void GfxDrawLine(int x, int y, int x2, int y2, int color)
 {
-	int dy;
-	int dx;
-	int stepx;
-	int stepy;
-	int frac;
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+	DrawPixelInfo *dpi = _cur_dpi;
 
-	/* Check clipping first */
-	{
-		DrawPixelInfo *dpi = _cur_dpi;
-		int t;
+	x -= dpi->left;
+	x2 -= dpi->left;
+	y -= dpi->top;
+	y2 -= dpi->top;
 
-		if (x < dpi->left && x2 < dpi->left) return;
+	/* Check clipping */
+	if (x < 0 && x2 < 0) return;
+	if (y < 0 && y2 < 0) return;
+	if (x > dpi->width  && x2 > dpi->width)  return;
+	if (y > dpi->height && y2 > dpi->height) return;
 
-		if (y < dpi->top && y2 < dpi->top) return;
-
-		t = dpi->left + dpi->width;
-		if (x > t && x2 > t) return;
-
-		t = dpi->top + dpi->height;
-		if (y > t && y2 > t) return;
-	}
-
-	dy = (y2 - y) * 2;
-	if (dy < 0) {
-		dy = -dy;
-		stepy = -1;
-	} else {
-		stepy = 1;
-	}
-
-	dx = (x2 - x) * 2;
-	if (dx < 0) {
-		dx = -dx;
-		stepx = -1;
-	} else {
-		stepx = 1;
-	}
-
-	GfxSetPixel(x, y, color);
-	if (dx > dy) {
-		frac = dy - (dx >> 1);
-		while (x != x2) {
-			if (frac >= 0) {
-				y += stepy;
-				frac -= dx;
-			}
-			x += stepx;
-			frac += dy;
-			GfxSetPixel(x, y, color);
-		}
-	} else {
-		frac = dx - (dy >> 1);
-		while (y != y2) {
-			if (frac >= 0) {
-				x += stepx;
-				frac -= dy;
-			}
-			y += stepy;
-			frac += dx;
-			GfxSetPixel(x, y, color);
-		}
-	}
+	blitter->DrawLine(dpi->dst_ptr, x, y, x2, y2, dpi->width, dpi->height, color);
 }
 
 
