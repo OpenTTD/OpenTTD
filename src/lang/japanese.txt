@@ -2776,6 +2776,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}主の�
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}道路車両のリスト - 情報を見るには車両をクリックします
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}選択した道路車両を購入します
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}価格：{CURRENCY}{}最大速度：{VELOCITY}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}容量：{LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}道路車両を名付ける
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}道路車両が名付けません...
