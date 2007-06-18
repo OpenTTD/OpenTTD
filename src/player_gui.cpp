@@ -87,7 +87,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 	}
 
 	DrawString(2, y, STR_7026_BANK_BALANCE, 0);
-	SetDParam64(0, p->money64);
+	SetDParam64(0, p->player_money);
 	DrawStringRightAligned(182, y, STR_7028, 0);
 
 	y += 10;
@@ -100,7 +100,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 
 	GfxFillRect(182 - 75, y - 2, 182, y - 2, 215);
 
-	SetDParam64(0, p->money64 - p->current_loan);
+	SetDParam64(0, p->player_money - p->current_loan);
 	DrawStringRightAligned(182, y, STR_7028, 0);
 }
 

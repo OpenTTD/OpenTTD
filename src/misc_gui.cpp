@@ -103,11 +103,10 @@ static void Place_LandInfo(TileIndex tile)
 	p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
 	t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
-	old_money = p->money64;
-	p->money64 = p->player_money = 0x7fffffff;
+	old_money = p->player_money;
+	p->player_money = 0x7fffffff;
 	costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
-	p->money64 = old_money;
-	UpdatePlayerMoney32(p);
+	p->player_money = old_money;
 
 	/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
 	td.build_date = 0;

@@ -260,7 +260,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 
 		/* Ensure that the player will not end up having negative money while autoreplacing
 		 * This is needed because the only other check is done after the income from selling the old vehicle is substracted from the cost */
-		if (CmdFailed(tmp_move) || p->money64 < (cost.GetCost() + total_cost)) {
+		if (CmdFailed(tmp_move) || p->player_money < (cost.GetCost() + total_cost)) {
 			SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 			/* Pay back the loan */
 			sell_value.MultiplyCost(-1);
@@ -372,8 +372,8 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			cost.AddCost(temp_cost);
 		} while (w->type == VEH_TRAIN && (w = GetNextVehicle(w)) != NULL);
 
-		if (!(flags & DC_EXEC) && (p->money64 < (int32)(cost.GetCost() + p->engine_renew_money) || cost.GetCost() == 0)) {
-			if (!check && p->money64 < (int32)(cost.GetCost() + p->engine_renew_money) && ( _local_player == v->owner ) && cost.GetCost() != 0) {
+		if (!(flags & DC_EXEC) && (p->player_money < (cost.GetCost() + p->engine_renew_money) || cost.GetCost() == 0)) {
+			if (!check && p->player_money < (cost.GetCost() + p->engine_renew_money) && ( _local_player == v->owner ) && cost.GetCost() != 0) {
 				StringID message;
 				SetDParam(0, v->unitnumber);
 				switch (v->type) {

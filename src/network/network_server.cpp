@@ -1278,7 +1278,7 @@ void NetworkPopulateCompanyInfo()
 		// Set some general stuff
 		_network_player_info[p->index].inaugurated_year = p->inaugurated_year;
 		_network_player_info[p->index].company_value = p->old_economy[0].company_value;
-		_network_player_info[p->index].money = p->money64;
+		_network_player_info[p->index].money = p->player_money;
 		_network_player_info[p->index].performance = p->old_economy[0].performance_history;
 	}
 

@@ -166,9 +166,8 @@ struct Player {
 
 	PlayerFace face;
 
-	int32 player_money;
 	int32 current_loan;
-	int64 money64; ///< internal 64-bit version of the money. the 32-bit field will be clamped to plus minus 2 billion
+	int64 player_money;
 
 	byte player_color;
 	Livery livery[LS_END];
@@ -215,7 +214,6 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player);
 void GetNameOfOwner(Owner owner, TileIndex tile);
 int64 CalculateCompanyValue(const Player* p);
 void InvalidatePlayerWindows(const Player* p);
-void UpdatePlayerMoney32(Player *p);
 void SetLocalPlayer(PlayerID new_player);
 #define FOR_ALL_PLAYERS(p) for (p = _players; p != endof(_players); p++)
 

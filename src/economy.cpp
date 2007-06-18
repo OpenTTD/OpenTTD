@@ -88,7 +88,7 @@ int64 CalculateCompanyValue(const Player* p)
 		}
 	}
 
-	value += p->money64 - p->current_loan; // add real money value
+	value += p->player_money - p->current_loan; // add real money value
 
 	return max(value, 1LL);
 }
@@ -287,8 +287,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	 * removing his/her property doesn't fail because of lack of money.
 	 * Not too drastically though, because it could overflow */
 	if (new_player == PLAYER_SPECTATOR) {
-		GetPlayer(old_player)->money64 = MAX_UVALUE(uint64) >>2; // jackpot ;p
-		UpdatePlayerMoney32(GetPlayer(old_player));
+		GetPlayer(old_player)->player_money = MAX_UVALUE(uint64) >> 2; // jackpot ;p
 	}
 
 	if (new_player == PLAYER_SPECTATOR) {
@@ -1788,9 +1787,8 @@ static void DoAcquireCompany(Player *p)
 	for (i = 0; i != 4; i++) {
 		if (p->share_owners[i] != PLAYER_SPECTATOR) {
 			owner = GetPlayer(p->share_owners[i]);
-			owner->money64 += value;
+			owner->player_money += value;
 			owner->yearly_expenses[0][EXPENSES_OTHER] += value;
-			UpdatePlayerMoney32(owner);
 		}
 	}
 

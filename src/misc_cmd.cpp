@@ -145,9 +145,8 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		p->money64 += loan;
+		p->player_money += loan;
 		p->current_loan += loan;
-		UpdatePlayerMoney32(p);
 		InvalidatePlayerWindows(p);
 	}
 
@@ -185,9 +184,8 @@ CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		p->money64 -= loan;
+		p->player_money -= loan;
 		p->current_loan -= loan;
-		UpdatePlayerMoney32(p);
 		InvalidatePlayerWindows(p);
 	}
 	return CommandCost();
@@ -311,7 +309,7 @@ CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	/* You can only transfer funds that is in excess of your loan */
-	if (p->money64 - p->current_loan < amount.GetCost() || amount.GetCost() <= 0) return CMD_ERROR;
+	if (p->player_money - p->current_loan < amount.GetCost() || amount.GetCost() <= 0) return CMD_ERROR;
 	if (!_networking || !IsValidPlayer((PlayerID)p2)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

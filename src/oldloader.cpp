@@ -954,7 +954,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 
 	p->name_1 = RemapOldStringID(_old_string_id);
 	p->president_name_1 = RemapOldStringID(_old_string_id_2);
-	p->money64 = p->player_money;
+	p->player_money = p->player_money;
 
 	if (num == 0) {
 		/* If the first player has no name, make sure we call it UNNAMED */
@@ -972,7 +972,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 	Ps: this also means that if you had exact 893288 pounds, you will go back
 	to 10000.. this is a very VERY small chance ;) */
 	if (p->player_money == 893288)
-		p->money64 = p->player_money = p->current_loan = 100000;
+		p->player_money = p->current_loan = 100000;
 
 	_player_colors[num] = p->player_color;
 	p->inaugurated_year -= ORIGINAL_BASE_YEAR;

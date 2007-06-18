@@ -188,8 +188,7 @@ bool CheckPlayerHasMoney(CommandCost cost)
 
 static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
 {
-	p->money64 -= cost.GetCost();
-	UpdatePlayerMoney32(p);
+	p->player_money -= cost.GetCost();
 
 	p->yearly_expenses[0][_yearly_expenses_type] += cost.GetCost();
 
@@ -227,18 +226,6 @@ void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cst)
 	cost >>= 8;
 	if (p->player_money_fraction > m) cost++;
 	if (cost != 0) SubtractMoneyFromAnyPlayer(p, CommandCost(cost));
-}
-
-/** the player_money field is kept as it is, but money64 contains the actual amount of money. */
-void UpdatePlayerMoney32(Player *p)
-{
-	if (p->money64 < -2000000000) {
-		p->player_money = -2000000000;
-	} else if (p->money64 > 2000000000) {
-		p->player_money = 2000000000;
-	} else {
-		p->player_money = (int32)p->money64;
-	}
 }
 
 void GetNameOfOwner(Owner owner, TileIndex tile)
@@ -474,7 +461,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->name_1 = STR_SV_UNNAMED;
 	p->is_active = true;
 
-	p->money64 = p->player_money = p->current_loan = 100000;
+	p->player_money = p->current_loan = 100000;
 
 	p->is_ai = is_ai;
 	p->ai.state = 5; // AIS_WANT_NEW_ROUTE
@@ -1135,8 +1122,8 @@ static const SaveLoad _player_desc[] = {
 	    SLE_VAR(Player, face,            SLE_UINT32),
 
 	/* money was changed to a 64 bit field in savegame version 1. */
-	SLE_CONDVAR(Player, money64,               SLE_VAR_I64 | SLE_FILE_I32, 0, 0),
-	SLE_CONDVAR(Player, money64,               SLE_INT64, 1, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, player_money,          SLE_VAR_I64 | SLE_FILE_I32, 0, 0),
+	SLE_CONDVAR(Player, player_money,          SLE_INT64, 1, SL_MAX_VERSION),
 
 	    SLE_VAR(Player, current_loan,          SLE_INT32),
 
@@ -1318,7 +1305,6 @@ static void Load_PLYR()
 		Player *p = GetPlayer((PlayerID)index);
 		SaveLoad_PLYR(p);
 		_player_colors[index] = p->player_color;
-		UpdatePlayerMoney32(p);
 
 		/* This is needed so an AI is attached to a loaded AI */
 		if (p->is_ai && (!_networking || _network_server) && _ai.enabled)
