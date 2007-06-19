@@ -294,6 +294,8 @@ ai/trolly/shared.cpp
 ai/trolly/trolly.cpp
 
 # Blitters
+blitter/32bpp_anim.cpp
+blitter/32bpp_anim.hpp
 blitter/32bpp_base.cpp
 blitter/32bpp_base.hpp
 blitter/32bpp_simple.cpp
