@@ -9,7 +9,7 @@ void Blitter_8bppBase::DrawColorMappingRect(void *dst, int width, int height, in
 	do {
 		for (int i = 0; i != width; i++) *((uint8 *)dst + i) = ctab[((uint8 *)dst)[i]];
 		dst = (uint8 *)dst + _screen.pitch;
-	} while (height--);
+	} while (--height);
 }
 
 void *Blitter_8bppBase::MoveTo(const void *video, int x, int y)
