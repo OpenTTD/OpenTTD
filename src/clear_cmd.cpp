@@ -116,7 +116,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 		 * basement and then you raise/lower the other corner. */
 		tileh = GetTileSlope(tile, &z);
 		if (tileh == unsafe_slope[mode] ||
-				tileh == ComplementSlope(unsafe_slope[mode])) {
+				tileh == SLOPE_STEEP | ComplementSlope(unsafe_slope[mode])) {
 			_terraform_err_tile = tile;
 			_error_message = STR_1008_MUST_REMOVE_RAILROAD_TRACK;
 			return -1;
