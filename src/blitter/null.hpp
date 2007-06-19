@@ -24,6 +24,8 @@ public:
 	/* virtual */ void MoveBuffer(void *video_dst, const void *video_src, int width, int height) {};
 	/* virtual */ void ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y) {};
 	/* virtual */ int BufferSize(int width, int height) { return 0; };
+	/* virtual */ void PaletteAnimate(uint start, uint count) { };
+	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation() { return Blitter::PALETTE_ANIMATION_NONE; };
 };
 
 class FBlitter_Null: public BlitterFactory<FBlitter_Null> {

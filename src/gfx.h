@@ -166,7 +166,7 @@ extern byte _game_mode;
 extern byte _pause_game;
 
 extern int _pal_first_dirty;
-extern int _pal_last_dirty;
+extern int _pal_count_dirty;
 extern int _num_resolutions;
 extern uint16 _resolutions[32][2];
 extern uint16 _cur_resolution[2];

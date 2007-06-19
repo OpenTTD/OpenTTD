@@ -205,9 +205,23 @@ static uint32 GetTick()
 
 static void QZ_CheckPaletteAnim()
 {
-	if (_pal_last_dirty != -1) {
-		QZ_UpdatePalette(_pal_first_dirty, _pal_last_dirty - _pal_first_dirty + 1);
-		_pal_last_dirty = -1;
+	if (_pal_count_dirty != 0) {
+		switch (blitter->UsePaletteAnimation()) {
+			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+				QZ_UpdatePalette(_pal_first_dirty, _pal_count_dirty);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_BLITTER:
+				blitter->PaletteAnimate(_pal_first_dirty, _pal_count_dirty);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_NONE:
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+		_pal_count_dirty = 0;
 	}
 }
 

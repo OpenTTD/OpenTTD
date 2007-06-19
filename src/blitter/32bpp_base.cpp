@@ -177,3 +177,13 @@ int Blitter_32bppBase::BufferSize(int width, int height)
 {
 	return width * height * sizeof(uint32);
 }
+
+void Blitter_32bppBase::PaletteAnimate(uint start, uint count)
+{
+	/* By default, 32bpp doesn't have palette animation */
+}
+
+Blitter::PaletteAnimation Blitter_32bppBase::UsePaletteAnimation()
+{
+	return Blitter::PALETTE_ANIMATION_NONE;
+}

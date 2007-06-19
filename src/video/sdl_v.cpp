@@ -37,10 +37,6 @@ static void SdlVideoMakeDirty(int left, int top, int width, int height)
 
 static void UpdatePalette(uint start, uint count)
 {
-	/* We can only update the palette in 8bpp for now */
-	/* TODO -- We need support for other bpps too! */
-	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 8) return;
-
 	SDL_Color pal[256];
 	uint i;
 
@@ -61,9 +57,25 @@ static void InitPalette()
 
 static void CheckPaletteAnim()
 {
-	if (_pal_last_dirty != -1) {
-		UpdatePalette(_pal_first_dirty, _pal_last_dirty - _pal_first_dirty + 1);
-		_pal_last_dirty = -1;
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+
+	if (_pal_count_dirty != 0) {
+		switch (blitter->UsePaletteAnimation()) {
+			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+				UpdatePalette(_pal_first_dirty, _pal_count_dirty);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_BLITTER:
+				blitter->PaletteAnimate(_pal_first_dirty, _pal_count_dirty);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_NONE:
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+		_pal_count_dirty = 0;
 	}
 }
 

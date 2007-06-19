@@ -31,6 +31,12 @@ public:
 		int pitch;               ///< The pitch of the destination buffer
 	};
 
+	enum PaletteAnimation {
+		PALETTE_ANIMATION_NONE,           ///< No palette animation
+		PALETTE_ANIMATION_VIDEO_BACKEND,  ///< Palette animation should be done by video backend (8bpp only!)
+		PALETTE_ANIMATION_BLITTER,        ///< The blitter takes care of the palette animation
+	};
+
 	typedef void *AllocatorProc(size_t size);
 
 	/**
@@ -157,6 +163,20 @@ public:
 	 * @return The size needed for the buffer.
 	 */
 	virtual int BufferSize(int width, int height) = 0;
+
+	/**
+	 * Called when the 8bpp palette is changed; you should redraw all pixels on the screen that
+	 *  are equal to the 8bpp palette indexes 'start' to 'start + count'.
+	 * @param start The start index in the 8bpp palette.
+	 * @param count The amount of indexes that are (possible) changed.
+	 */
+	virtual void PaletteAnimate(uint start, uint count) = 0;
+
+	/**
+	 * Check if the blitter uses palette animation at all.
+	 * @return True if it uses palette animation.
+	 */
+	virtual Blitter::PaletteAnimation UsePaletteAnimation() = 0;
 
 	virtual ~Blitter() { }
 };

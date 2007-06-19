@@ -41,7 +41,7 @@ bool _networking;         ///< are we in networking mode?
 byte _game_mode;
 byte _pause_game;
 int _pal_first_dirty;
-int _pal_last_dirty;
+int _pal_count_dirty;
 
 Colour _cur_palette[256];
 byte _stringwidth_table[FS_END][224];
@@ -664,7 +664,7 @@ void GfxInitPalettes()
 	memcpy(_cur_palette, _palettes[_use_dos_palette ? 1 : 0], sizeof(_cur_palette));
 
 	_pal_first_dirty = 0;
-	_pal_last_dirty = 255;
+	_pal_count_dirty = 255;
 	DoPaletteAnimations();
 }
 
@@ -673,6 +673,7 @@ void GfxInitPalettes()
 
 void DoPaletteAnimations()
 {
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const Colour *s;
 	Colour *d;
 	/* Amount of colors to be rotated.
@@ -680,14 +681,12 @@ void DoPaletteAnimations()
 	 * 245-254 for DOS and 217-226 for Windows.  */
 	const ExtraPaletteValues *ev = &_extra_palette_values;
 	int c = _use_dos_palette ? 38 : 28;
-	Colour old_val[38]; // max(38, 28)
+	Colour old_val[38];
 	uint i;
 	uint j;
-	int old_tc = _timer_counter;
+	uint old_tc = _timer_counter;
 
-	/* We can only update the palette in 8bpp for now */
-	/* TODO -- We need support for other bpps too! */
-	if (BlitterFactoryBase::GetCurrentBlitter() != NULL && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 8) {
+	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
 		_timer_counter = 0;
 	}
 
@@ -782,12 +781,14 @@ void DoPaletteAnimations()
 		}
 	}
 
-	if (memcmp(old_val, &_cur_palette[217], c * sizeof(*old_val)) != 0) {
-		if (_pal_first_dirty > 217) _pal_first_dirty = 217;
-		if (_pal_last_dirty < 217 + c) _pal_last_dirty = 217 + c;
+	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
+		_timer_counter = old_tc;
+	} else {
+		if (memcmp(old_val, &_cur_palette[217], c * sizeof(*old_val)) != 0) {
+			_pal_first_dirty = 217;
+			_pal_count_dirty = c;
+		}
 	}
-
-	if (old_tc != _timer_counter) _timer_counter = old_tc;
 }
 
 

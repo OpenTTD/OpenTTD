@@ -145,7 +145,7 @@ static void ClientSizeChanged(int w, int h)
 	if (AllocateDibSection(w, h)) {
 		// mark all palette colors dirty
 		_pal_first_dirty = 0;
-		_pal_last_dirty = 255;
+		_pal_count_dirty = 255;
 		GameSizeChanged();
 
 		// redraw screen
@@ -231,9 +231,23 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
 			old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
 
-			if (_pal_last_dirty != -1) {
-				UpdatePalette(dc2, _pal_first_dirty, _pal_last_dirty - _pal_first_dirty + 1);
-				_pal_last_dirty = -1;
+			if (_pal_count_dirty != 0) {
+				switch (blitter->UsePaletteAnimation()) {
+					case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+						UpdatePalette(_pal_first_dirty, _pal_count_dirty);
+						break;
+
+					case Blitter::PALETTE_ANIMATION_BLITTER:
+						blitter->PaletteAnimate(_pal_first_dirty, _pal_count_dirty);
+						break;
+
+					case Blitter::PALETTE_ANIMATION_NONE:
+						break;
+
+					default:
+						NOT_REACHED();
+				}
+				_pal_count_dirty = 0;
 			}
 
 			BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
