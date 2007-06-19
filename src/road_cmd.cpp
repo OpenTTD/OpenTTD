@@ -992,13 +992,6 @@ static void DrawRoadBits(TileInfo* ti)
 
 	DrawGroundSprite(image, pal);
 
-	if (road != ROAD_NONE) {
-		DisallowedRoadDirections drd = GetDisallowedRoadDirections(ti->tile);
-		if (drd != DRD_NONE) {
-			DrawRoadDetail(SPR_ONEWAY_BASE + drd - 1 + ((road == ROAD_X) ? 0 : 3), ti, 8, 8, 0);
-		}
-	}
-
 	/* For tram we overlay the road graphics with either tram tracks only
 	 * (when there is actual road beneath the trams) or with tram tracks
 	 * and some dirts which hides the road graphics */
@@ -1010,6 +1003,13 @@ static void DrawRoadBits(TileInfo* ti)
 		}
 		image += (road == ROAD_NONE) ? SPR_TRAMWAY_TRAM : SPR_TRAMWAY_OVERLAY;
 		DrawGroundSprite(image, pal);
+	}
+
+	if (road != ROAD_NONE) {
+		DisallowedRoadDirections drd = GetDisallowedRoadDirections(ti->tile);
+		if (drd != DRD_NONE) {
+			DrawRoadDetail(SPR_ONEWAY_BASE + drd - 1 + ((road == ROAD_X) ? 0 : 3), ti, 8, 8, 0);
+		}
 	}
 
 	if (HasRoadWorks(ti->tile)) {
