@@ -22,6 +22,7 @@
 #include "unmovable_map.h"
 #include "genworld.h"
 #include "industry.h"
+#include "water_map.h"
 
 struct TerraformerHeightMod {
 	TileIndex tile;
@@ -139,6 +140,13 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 			}
 			return 0;
 		}
+	}
+
+	/* Canals can't be terraformed */
+	if (IsClearWaterTile(tile) && IsCanal(tile)) {
+		_terraform_err_tile = tile;
+		_error_message = STR_MUST_DEMOLISH_CANAL_FIRST;
+		return -1;
 	}
 
 	ret = DoCommand(tile, 0, 0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);

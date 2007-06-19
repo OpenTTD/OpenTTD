@@ -45,6 +45,11 @@ static inline bool IsCoast(TileIndex t)
 	return GetWaterTileType(t) == WATER_TILE_COAST;
 }
 
+static inline bool IsCanal(TileIndex t)
+{
+	return GetWaterTileType(t) == WATER_TILE_CLEAR && GetTileOwner(t) != OWNER_WATER;
+}
+
 static inline bool IsClearWaterTile(TileIndex t)
 {
 	return IsTileType(t, MP_WATER) && IsWater(t) && GetTileSlope(t, NULL) == SLOPE_FLAT;
