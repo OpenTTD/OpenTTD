@@ -663,9 +663,9 @@ void GfxInitPalettes()
 {
 	memcpy(_cur_palette, _palettes[_use_dos_palette ? 1 : 0], sizeof(_cur_palette));
 
+	DoPaletteAnimations();
 	_pal_first_dirty = 0;
 	_pal_count_dirty = 255;
-	DoPaletteAnimations();
 }
 
 #define EXTR(p, q) (((uint16)(_timer_counter * (p)) * (q)) >> 16)

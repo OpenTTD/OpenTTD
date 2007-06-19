@@ -968,10 +968,6 @@ static void QZ_SetPortAlphaOpaque()
 
 static void QZ_UpdateWindowPalette(uint start, uint count)
 {
-	/* We can only update the palette in 8bpp for now */
-	/* TODO -- We need support for other bpps too! */
-	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 8) return;
-
 	uint i;
 
 	switch (_cocoa_video_data.device_bpp) {

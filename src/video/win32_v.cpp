@@ -64,10 +64,6 @@ static void MakePalette()
 
 static void UpdatePalette(HDC dc, uint start, uint count)
 {
-	/* We can only update the palette in 8bpp for now */
-	/* TODO -- We need support for other bpps too! */
-	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() != 8) return;
-
 	RGBQUAD rgb[256];
 	uint i;
 
