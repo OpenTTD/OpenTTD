@@ -232,6 +232,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
 
 			if (_pal_count_dirty != 0) {
+				Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+
 				switch (blitter->UsePaletteAnimation()) {
 					case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
 						UpdatePalette(_pal_first_dirty, _pal_count_dirty);

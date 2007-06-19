@@ -57,9 +57,9 @@ static void InitPalette()
 
 static void CheckPaletteAnim()
 {
-	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-
 	if (_pal_count_dirty != 0) {
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+
 		switch (blitter->UsePaletteAnimation()) {
 			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
 				UpdatePalette(_pal_first_dirty, _pal_count_dirty);

@@ -206,6 +206,8 @@ static uint32 GetTick()
 static void QZ_CheckPaletteAnim()
 {
 	if (_pal_count_dirty != 0) {
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+
 		switch (blitter->UsePaletteAnimation()) {
 			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
 				QZ_UpdatePalette(_pal_first_dirty, _pal_count_dirty);
