@@ -141,7 +141,7 @@ void Blitter_32bppSimple::DrawColorMappingRect(void *dst, int width, int height,
 				udst++;
 			}
 			udst = udst - width + _screen.pitch;
-		} while (height--);
+		} while (--height);
 		return;
 	}
 	if (pal == PALETTE_TO_STRUCT_GREY) {
@@ -151,7 +151,7 @@ void Blitter_32bppSimple::DrawColorMappingRect(void *dst, int width, int height,
 				udst++;
 			}
 			udst = udst - width + _screen.pitch;
-		} while (height--);
+		} while (--height);
 		return;
 	}
 
