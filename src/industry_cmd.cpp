@@ -30,6 +30,8 @@
 #include "water_map.h"
 #include "tree_map.h"
 #include "cargotype.h"
+#include "newgrf_industrytiles.h"
+#include "newgrf_callbacks.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -241,18 +243,32 @@ static IndustryDrawTileProc * const _industry_draw_tile_procs[5] = {
 
 static void DrawTile_Industry(TileInfo *ti)
 {
-	const IndustryGfx gfx = GetIndustryGfx(ti->tile);
-	const Industry *ind;
+	IndustryGfx gfx = GetIndustryGfx(ti->tile);
+	Industry *ind = GetIndustryByTile(ti->tile);
+	const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
 	const DrawBuildingsTileStruct *dits;
 	byte z;
 	SpriteID image;
 	SpriteID pal;
 
-	/* Pointer to industry */
-	ind = GetIndustryByTile(ti->tile);
-
 	/* Retrieve pointer to the draw industry tile struct */
-	dits = &_industry_draw_tile_data[gfx << 2 | (GetIndustryTileSpec(gfx)->anim_state ?
+	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
+		/* Draw the tile using the specialized method of newgrf industrytile.
+		 * DrawNewIndustry will return false if ever the resolver could not
+		 * find any sprite to display.  So in this case, we will jump on the
+		 * substitute gfx instead. */
+		if (indts->grf_prop.spritegroup != NULL && DrawNewIndustryTile(ti, ind, gfx, indts)) {
+			return;
+		} else {
+			/* No sprite group (or no valid one) found, meaning no graphics associated.
+			 * Use the substitute one instead */
+			gfx = indts->grf_prop.subst_id;
+			/* And point the industrytile spec accordingly */
+			indts = GetIndustryTileSpec(indts->grf_prop.subst_id);
+		}
+	}
+
+	dits = &_industry_draw_tile_data[gfx << 2 | (indts->anim_state ?
 			GetIndustryAnimationState(ti->tile) & 3 :
 			GetIndustryConstructionStage(ti->tile))];
 

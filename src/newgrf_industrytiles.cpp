@@ -143,6 +143,44 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->reseed          = 0;
 }
 
+void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte rnd_color, byte stage, IndustryGfx gfx)
+{
+	const DrawTileSprites *dts = group->g.layout.dts;
+	const DrawTileSeqStruct *dtss;
+
+	SpriteID image = dts->ground_sprite;
+	SpriteID pal   = dts->ground_pal;
+
+	if (GB(image, 0, SPRITE_WIDTH) != 0) DrawGroundSprite(image, pal);
+
+	foreach_draw_tile_seq(dtss, dts->seq) {
+		if (GB(dtss->image, 0, SPRITE_WIDTH) == 0) continue;
+
+		image = dtss->image + stage;
+		pal   = dtss->pal;
+
+		if (!HASBIT(image, SPRITE_MODIFIER_OPAQUE) && HASBIT(_transparent_opt, TO_INDUSTRIES)) {
+			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+			pal = PALETTE_TO_TRANSPARENT;
+		} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+			pal = GENERAL_SPRITE_COLOR(rnd_color);
+		} else {
+			pal = PAL_NONE;
+		}
+
+		if ((byte)dtss->delta_z != 0x80) {
+			AddSortableSpriteToDraw(
+				image, pal,
+				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+				dtss->size_x, dtss->size_y,
+				dtss->size_z, ti->z + dtss->delta_z
+			);
+		} else {
+			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y);
+		}
+	}
+}
+
 uint16 GetIndustryTileCallback(uint16 callback, uint32 param1, uint32 param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile)
 {
 	ResolverObject object;
@@ -157,4 +195,34 @@ uint16 GetIndustryTileCallback(uint16 callback, uint32 param1, uint32 param2, In
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
+}
+
+bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const IndustryTileSpec *inds)
+{
+	const SpriteGroup *group;
+	ResolverObject object;
+
+	if (ti->tileh != SLOPE_FLAT) {
+		bool draw_old_one = true;
+		if (HASBIT(inds->callback_flags, CBM_INDT_DRAW_FOUNDATIONS)) {
+			/* Called to determine the type (if any) of foundation to draw for industry tile */
+			uint32 callback_res = GetIndustryTileCallback(CBID_INDUSTRY_DRAW_FOUNDATIONS, 0, 0, gfx, i, ti->tile);
+			draw_old_one = callback_res == 0 || callback_res == CALLBACK_FAILED;
+		}
+
+		if (draw_old_one) DrawFoundation(ti, ti->tileh);
+	}
+
+	NewIndustryTileResolver(&object, gfx, ti->tile, i);
+
+	group = Resolve(inds->grf_prop.spritegroup, &object);
+	if (group == NULL || group->type != SGT_TILELAYOUT) {
+		return false;
+	} else {
+		/* Limit the building stage to the number of stages supplied. */
+		byte stage = GetIndustryConstructionStage(ti->tile);
+		stage = clamp(stage - 4 + group->g.layout.num_sprites, 0, group->g.layout.num_sprites - 1);
+		IndustryDrawTileLayout(ti, group, i->random_color, stage, gfx);
+		return true;
+	}
 }
