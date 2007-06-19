@@ -26,10 +26,92 @@ public:
 	/* virtual */ void PaletteAnimate(uint start, uint count);
 	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation();
 
-	static inline uint32 LookupColourInPalette(uint8 index) {
-		#define ARGB(a, r, g, b) ((((a) << 24) & 0xFF000000) | (((r) << 16) & 0x00FF0000) | (((g) << 8) & 0x0000FF00) | ((b) & 0x000000FF))
-		if (index == 0) return 0x00000000;
-		return ARGB(0xFF, _cur_palette[index].r, _cur_palette[index].g, _cur_palette[index].b);
+	/**
+	 * Compose a colour based on RGB values.
+	 */
+	static inline uint ComposeColour(uint a, uint r, uint g, uint b)
+	{
+		return (((a) << 24) & 0xFF000000) | (((r) << 16) & 0x00FF0000) | (((g) << 8) & 0x0000FF00) | ((b) & 0x000000FF);
+	}
+
+	/**
+	 * Look up the colour in the current palette.
+	 **/
+	static inline uint32 LookupColourInPalette(uint8 index)
+	{
+		if (index == 0) return 0x00000000; // Full transparent pixel */
+		return ComposeColour(0xFF, _cur_palette[index].r, _cur_palette[index].g, _cur_palette[index].b);
+	}
+
+	/**
+	 * Compose a colour based on RGBA values and the current pixel value.
+	 */
+	static inline uint ComposeColourRGBA(uint r, uint g, uint b, uint a, uint current)
+	{
+		uint cr, cg, cb;
+		cr = GB(current, 16, 8);
+		cg = GB(current, 8,  8);
+		cb = GB(current, 0,  8);
+
+		return ComposeColour(0xFF,
+												(r * a + cr * (255 - a)) / 255,
+												(g * a + cg * (255 - a)) / 255,
+												(b * a + cb * (255 - a)) / 255);
+	}
+
+	/**
+	* Compose a colour based on Pixel value, alpha value, and the current pixel value.
+	*/
+	static inline uint ComposeColourPA(uint colour, uint a, uint current)
+	{
+		uint r, g, b, cr, cg, cb;
+		r  = GB(colour,   16, 8);
+		g  = GB(colour,   8,  8);
+		b  = GB(colour,   0,  8);
+		cr = GB(current, 16, 8);
+		cg = GB(current, 8,  8);
+		cb = GB(current, 0,  8);
+
+		return ComposeColour(0xFF,
+												(r * a + cr * (255 - a)) / 255,
+												(g * a + cg * (255 - a)) / 255,
+												(b * a + cb * (255 - a)) / 255);
+	}
+
+	/**
+	* Make a pixel looks like it is transparent.
+	* @param colour the colour already on the screen.
+	* @param amount the amount of transparency, times 100.
+	* @return the new colour for the screen.
+	*/
+	static inline uint MakeTransparent(uint colour, uint amount)
+	{
+		uint r, g, b;
+		r = GB(colour, 16, 8);
+		g = GB(colour, 8,  8);
+		b = GB(colour, 0,  8);
+
+		return ComposeColour(0xFF, r * amount / 100, g * amount / 100, b * amount / 100);
+	}
+
+	/**
+	* Make a colour grey-based.
+	* @param colour the colour to make grey.
+	* @return the new colour, now grey.
+	*/
+	static inline uint MakeGrey(uint colour)
+	{
+		uint r, g, b;
+		r = GB(colour, 16, 8);
+		g = GB(colour, 8,  8);
+		b = GB(colour, 0,  8);
+
+		/* To avoid doubles and stuff, multiple it with a total of 65536 (16bits), then
+		*  divide by it to normalize the value to a byte again. See heightmap.cpp for
+		*  information about the formula. */
+		colour = ((r * 19595) + (g * 38470) + (b * 7471)) / 65536;
+
+		return ComposeColour(0xFF, colour, colour, colour);
 	}
 };
 

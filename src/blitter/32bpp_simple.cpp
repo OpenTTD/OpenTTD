@@ -7,83 +7,6 @@
 
 static FBlitter_32bppSimple iFBlitter_32bppSimple;
 
-/**
- * Compose a color based on RGB values.
- */
-static inline uint ComposeColor(uint r, uint g, uint b)
-{
-	return (r & 0xFF) << 16 | (g & 0xFF) << 8 | (b & 0xFF) << 0;
-}
-
-/**
- * Compose a color based on RGBA values and the current pixel value.
- */
-static inline uint ComposeColorRGBA(uint r, uint g, uint b, uint a, uint current)
-{
-	uint cr, cg, cb;
-	cr = GB(current, 16, 8);
-	cg = GB(current, 8,  8);
-	cb = GB(current, 0,  8);
-
-	return ComposeColor((r * a + cr * (255 - a)) / 255,
-											(g * a + cg * (255 - a)) / 255,
-											(b * a + cb * (255 - a)) / 255);
-}
-
-/**
- * Compose a color based on Pixel value, alpha value, and the current pixel value.
- */
-static inline uint ComposeColorPA(uint color, uint a, uint current)
-{
-	uint r, g, b, cr, cg, cb;
-	r  = GB(color,   16, 8);
-	g  = GB(color,   8,  8);
-	b  = GB(color,   0,  8);
-	cr = GB(current, 16, 8);
-	cg = GB(current, 8,  8);
-	cb = GB(current, 0,  8);
-
-	return ComposeColor((r * a + cr * (255 - a)) / 255,
-											(g * a + cg * (255 - a)) / 255,
-											(b * a + cb * (255 - a)) / 255);
-}
-
-/**
- * Make a pixel looks like it is transparent.
- * @param color the color already on the screen.
- * @param amount the amount of transparency, times 100.
- * @return the new color for the screen.
- */
-static inline uint MakeTransparent(uint color, uint amount)
-{
-	uint r, g, b;
-	r = GB(color, 16, 8);
-	g = GB(color, 8,  8);
-	b = GB(color, 0,  8);
-
-	return ComposeColor(r * amount / 100, g * amount / 100, b * amount / 100);
-}
-
-/**
- * Make a color grey-based.
- * @param color the color to make grey.
- * @return the new color, now grey.
- */
-static inline uint MakeGrey(uint color)
-{
-	uint r, g, b;
-	r = GB(color, 16, 8);
-	g = GB(color, 8,  8);
-	b = GB(color, 0,  8);
-
-	/* To avoid doubles and stuff, multiple it with a total of 65536 (16bits), then
-	 *  divide by it to normalize the value to a byte again. See heightmap.cpp for
-	 *  information about the formula. */
-	color = ((r * 19595) + (g * 38470) + (b * 7471)) / 65536;
-
-	return ComposeColor(color, color, color);
-}
-
 void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
 	const SpriteLoader::CommonPixel *src, *src_line;
@@ -105,9 +28,9 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 				case BM_COLOUR_REMAP:
 					/* In case the m-channel is zero, do not remap this pixel in any way */
 					if (src->m == 0) {
-						if (src->a != 0) *dst = ComposeColorRGBA(src->r, src->g, src->b, src->a, *dst);
+						if (src->a != 0) *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
 					} else {
-						if (bp->remap[src->m] != 0) *dst = ComposeColorPA(this->LookupColourInPalette(bp->remap[src->m]), src->a, *dst);
+						if (bp->remap[src->m] != 0) *dst = ComposeColourPA(this->LookupColourInPalette(bp->remap[src->m]), src->a, *dst);
 					}
 					break;
 
@@ -121,7 +44,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					break;
 
 				default:
-					if (src->a != 0) *dst = ComposeColorRGBA(src->r, src->g, src->b, src->a, *dst);
+					if (src->a != 0) *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
 					break;
 			}
 			dst++;
