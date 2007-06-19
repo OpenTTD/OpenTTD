@@ -2659,28 +2659,6 @@ static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 }
 
 
-struct TrainCollideChecker {
-	const Vehicle *v;
-	const Vehicle *v_skip;
-};
-
-static void *FindTrainCollideEnum(Vehicle *v, void *data)
-{
-	const TrainCollideChecker* tcc = (TrainCollideChecker*)data;
-
-	if (v != tcc->v &&
-			v != tcc->v_skip &&
-			v->type == VEH_TRAIN &&
-			v->u.rail.track != TRACK_BIT_DEPOT &&
-			myabs(v->z_pos - tcc->v->z_pos) < 6 &&
-			myabs(v->x_pos - tcc->v->x_pos) < 6 &&
-			myabs(v->y_pos - tcc->v->y_pos) < 6) {
-		return v;
-	} else {
-		return NULL;
-	}
-}
-
 static void SetVehicleCrashed(Vehicle *v)
 {
 	if (v->u.rail.crash_anim_pos != 0) return;
@@ -2704,6 +2682,47 @@ static uint CountPassengersInTrain(const Vehicle* v)
 	return num;
 }
 
+struct TrainCollideChecker {
+	Vehicle *v;
+	const Vehicle *v_skip;
+	uint num;
+};
+
+static void *FindTrainCollideEnum(Vehicle *v, void *data)
+{
+	TrainCollideChecker* tcc = (TrainCollideChecker*)data;
+
+	if (v != tcc->v &&
+			v != tcc->v_skip &&
+			v->type == VEH_TRAIN &&
+			v->u.rail.track != TRACK_BIT_DEPOT &&
+			myabs(v->z_pos - tcc->v->z_pos) < 6 &&
+			myabs(v->x_pos - tcc->v->x_pos) < 6 &&
+			myabs(v->y_pos - tcc->v->y_pos) < 6 ) {
+
+		Vehicle *coll = GetFirstVehicleInChain(v);
+
+		/* it can't collide with its own wagons */
+		if (tcc->v == coll ||
+			(tcc->v->u.rail.track == TRACK_BIT_WORMHOLE && (tcc->v->direction & 2) != (v->direction & 2)))
+			return NULL;
+
+		/* two drivers + passengers killed in train tcc->v (if it was not crashed already) */
+		if (!(tcc->v->vehstatus & VS_CRASHED)) {
+			tcc->num += 2 + CountPassengersInTrain(tcc->v);
+			SetVehicleCrashed(tcc->v);
+		}
+
+		if (!(coll->vehstatus & VS_CRASHED)) {
+			/* two drivers + passengers killed in train coll (if it was not crashed already) */
+			tcc->num += 2 + CountPassengersInTrain(coll);
+			SetVehicleCrashed(coll);
+		}
+	}
+
+	return NULL;
+}
+
 /**
  * Checks whether the specified train has a collision with another vehicle. If
  * so, destroys this vehicle, and the other vehicle if its subtype has TS_Front.
@@ -2720,28 +2739,15 @@ static void CheckTrainCollision(Vehicle *v)
 	TrainCollideChecker tcc;
 	tcc.v = v;
 	tcc.v_skip = v->next;
+	tcc.num = 0;
 
-	/* find colliding vehicle */
-	Vehicle *realcoll = (Vehicle*)VehicleFromPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
-	if (realcoll == NULL) return;
+	/* find colliding vehicles */
+	VehicleFromPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
 
-	Vehicle *coll = GetFirstVehicleInChain(realcoll);
+	/* any dead -> no crash */
+	if (tcc.num == 0) return;
 
-	/* it can't collide with its own wagons */
-	if (v == coll ||
-			(v->u.rail.track == TRACK_BIT_WORMHOLE && (v->direction & 2) != (realcoll->direction & 2)))
-		return;
-
-	/* two drivers + passengers killed in train v */
-	uint num = 2 + CountPassengersInTrain(v);
-	if (!(coll->vehstatus & VS_CRASHED))
-		/* two drivers + passengers killed in train coll (if it was not crashed already) */
-		num += 2 + CountPassengersInTrain(coll);
-
-	SetVehicleCrashed(v);
-	if (IsFrontEngine(coll)) SetVehicleCrashed(coll);
-
-	SetDParam(0, num);
+	SetDParam(0, tcc.num);
 	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
 		NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, 0),
 		v->index,
