@@ -236,7 +236,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 				switch (blitter->UsePaletteAnimation()) {
 					case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-						UpdatePalette(_pal_first_dirty, _pal_count_dirty);
+						UpdatePalette(dc2, _pal_first_dirty, _pal_count_dirty);
 						break;
 
 					case Blitter::PALETTE_ANIMATION_BLITTER:
@@ -793,7 +793,7 @@ static void Win32GdiMakeDirty(int left, int top, int width, int height)
 
 static void CheckPaletteAnim()
 {
-	if (_pal_last_dirty == -1)
+	if (_pal_count_dirty == 0)
 		return;
 	InvalidateRect(_wnd.main_wnd, NULL, FALSE);
 }
