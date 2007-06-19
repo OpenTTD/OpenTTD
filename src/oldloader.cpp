@@ -541,7 +541,7 @@ static bool LoadOldPrice(LoadgameState *ls, int num)
 
 	/* We use a struct to store the prices, but they are ints in a row..
 	so just access the struct as an array of int32's */
-	((int32*)&_price)[num] = _old_price;
+	((Money*)&_price)[num] = _old_price;
 	_price_frac[num] = _old_price_frac;
 
 	return true;

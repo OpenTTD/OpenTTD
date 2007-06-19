@@ -20,6 +20,7 @@
 # endif
 #else
 # define INT64_MAX 9223372036854775807LL
+# define INT64_MIN -9223372036854775808LL
 #endif
 
 #include <cstdio>

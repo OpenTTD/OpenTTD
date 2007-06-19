@@ -660,8 +660,8 @@ static void PlayersGenStatistics()
 static void AddSingleInflation(Money *value, uint16 *frac, int32 amt)
 {
 	/* Is it safe to add inflation ? */
-	if ((MAX_UVALUE(Money) / 2 / amt) > (*value + *frac + 1)) {
-		*value = MAX_UVALUE(Money);
+	if ((INT64_MAX / amt) < (*value + 1)) {
+		*value = INT64_MAX / amt;
 		*frac = 0;
 	} else {
 		int64 tmp = (int64)*value * amt + *frac;

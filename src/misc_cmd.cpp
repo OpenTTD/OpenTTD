@@ -144,6 +144,9 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			break;
 	}
 
+	/* Overflow protection */
+	if (p->player_money + p->current_loan + loan < p->player_money) return CMD_ERROR;
+
 	if (flags & DC_EXEC) {
 		p->player_money += loan;
 		p->current_loan += loan;
@@ -166,14 +169,14 @@ CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p->current_loan == 0) return_cmd_error(STR_702D_LOAN_ALREADY_REPAYED);
 
-	int32 loan;
+	Money loan;
 	switch (p2) {
 		default: return CMD_ERROR; // Invalid method
 		case 0: // Pay back one step
 			loan = min(p->current_loan, (IsHumanPlayer(_current_player) || _patches.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI);
 			break;
 		case 1: // Pay back as much as possible
-			loan = max(min(p->current_loan, p->player_money), (int32)LOAN_INTERVAL);
+			loan = max(min(p->current_loan, p->player_money), (Money)LOAN_INTERVAL);
 			loan -= loan % LOAN_INTERVAL;
 			break;
 	}
@@ -304,7 +307,7 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const Player *p = GetPlayer(_current_player);
-	CommandCost amount((Money)min(p1, 20000000LL));
+	CommandCost amount(min((Money)p1, 20000000LL));
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 

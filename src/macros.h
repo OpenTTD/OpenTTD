@@ -26,6 +26,12 @@ static inline T max(T a, T b)
 	return a >= b ? a : b;
 }
 
+template <typename T>
+static inline T min(T a, T b)
+{
+	return a < b ? a : b;
+}
+
 static inline int min(int a, int b) { if (a <= b) return a; return b; }
 
 static inline uint minu(uint a, uint b) { if (a <= b) return a; return b; }
