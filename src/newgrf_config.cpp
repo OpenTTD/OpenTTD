@@ -144,6 +144,7 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_o
 			if (src->error->custom_message != NULL) c->error->custom_message = strdup(src->error->custom_message);
 		}
 
+		CLRBIT(c->flags, GCF_INIT_ONLY);
 		if (init_only) SETBIT(c->flags, GCF_INIT_ONLY);
 
 		*dst = c;
