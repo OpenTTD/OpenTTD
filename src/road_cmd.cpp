@@ -505,6 +505,7 @@ do_clear:;
 				if (existing == ROAD_NONE || rtt == ROAD_TILE_CROSSING) {
 					SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
 					SetRoadOwner(tile, rt, _current_player);
+					if (_current_player == OWNER_TOWN && rt == ROADTYPE_ROAD) SetTownIndex(tile, p2);
 				}
 				if (rtt != ROAD_TILE_CROSSING) SetRoadBits(tile, existing | pieces, rt);
 			} break;
