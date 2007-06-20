@@ -151,7 +151,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 					if (rx == sprite->width) break;
 				}
 
-				if (last_color == 0 || color == 0 || pixels > 250) {
+				if (last_color == 0 || color == 0 || pixels == 255) {
 					if (count_index != 0) {
 						/* Write how many non-transparent bytes we get */
 						temp_dst[count_index] = pixels;
