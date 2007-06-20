@@ -166,6 +166,9 @@ void Blitter_32bppAnim::PaletteAnimate(uint start, uint count)
 {
 	uint8 *anim = this->anim_buf;
 
+	/* Never repaint the transparency pixel */
+	if (start == 0) start++;
+
 	/* Let's walk the anim buffer and try to find the pixels */
 	for (int y = 0; y < this->anim_buf_height; y++) {
 		for (int x = 0; x < this->anim_buf_width; x++) {
