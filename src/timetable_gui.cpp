@@ -263,7 +263,7 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 
 		case WE_RESIZE:
 			/* Update the scroll + matrix */
-			w->vscroll.cap = (w->widget[2].bottom - w->widget[2].top) / 10;
+			w->vscroll.cap = (w->widget[3].bottom - w->widget[3].top) / 10;
 			break;
 
 	}
