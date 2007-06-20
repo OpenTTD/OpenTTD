@@ -272,7 +272,7 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 static const Widget _timetable_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
 	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   337,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{  WWT_STICKYBOX,   RESIZE_NONE,    14,   338,   349,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},
+	{  WWT_STICKYBOX,   RESIZE_LR,      14,   338,   349,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},
 
 	{      WWT_PANEL,   RESIZE_RB,      14,     0,   337,    14,   176, STR_NULL,                   STR_TIMETABLE_TOOLTIP},
 	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   338,   349,    14,   176, STR_NULL,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},
