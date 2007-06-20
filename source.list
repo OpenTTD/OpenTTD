@@ -98,7 +98,6 @@ aircraft.h
 airport.h
 airport_movement.h
 articulated_vehicles.h
-autoreplace_cmd.h
 aystar.h
 bmp.h
 cargotype.h
@@ -127,6 +126,7 @@ hal.h
 heightmap.h
 helpers.hpp
 industry.h
+landscape.h
 livery.h
 macros.h
 map.h
@@ -259,7 +259,6 @@ water_cmd.cpp
 
 # Tables
 table/ai_rail.h
-table/allstrings.h
 table/animcursors.h
 table/autorail.h
 table/build_industry.h
@@ -276,12 +275,11 @@ table/road_land.h
 table/roadveh.h
 table/sprites.h
 table/station_land.h
-table/strings.h
+../objs/langs/table/strings.h
 table/town_land.h
 table/track_land.h
 table/train_cmd.h
 table/tree_land.h
-table/tunnel_land.h
 table/unmovable_land.h
 table/water_land.h
 

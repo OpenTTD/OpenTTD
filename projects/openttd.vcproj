@@ -393,9 +393,6 @@
 				RelativePath=".\..\src\articulated_vehicles.h">
 			</File>
 			<File
-				RelativePath=".\..\src\autoreplace_cmd.h">
-			</File>
-			<File
 				RelativePath=".\..\src\aystar.h">
 			</File>
 			<File
@@ -478,6 +475,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\industry.h">
+			</File>
+			<File
+				RelativePath=".\..\src\landscape.h">
 			</File>
 			<File
 				RelativePath=".\..\src\livery.h">
@@ -870,9 +870,6 @@
 				RelativePath=".\..\src\table\ai_rail.h">
 			</File>
 			<File
-				RelativePath=".\..\src\table\allstrings.h">
-			</File>
-			<File
 				RelativePath=".\..\src\table\animcursors.h">
 			</File>
 			<File
@@ -921,7 +918,7 @@
 				RelativePath=".\..\src\table\station_land.h">
 			</File>
 			<File
-				RelativePath=".\..\src\table\strings.h">
+				RelativePath=".\..\src\..\objs\langs\table\strings.h">
 			</File>
 			<File
 				RelativePath=".\..\src\table\town_land.h">
@@ -934,9 +931,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\table\tree_land.h">
-			</File>
-			<File
-				RelativePath=".\..\src\table\tunnel_land.h">
 			</File>
 			<File
 				RelativePath=".\..\src\table\unmovable_land.h">
@@ -970,6 +964,12 @@
 		<Filter
 			Name="Blitters"
 			Filter="">
+			<File
+				RelativePath=".\..\src\blitter\32bpp_anim.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\32bpp_anim.hpp">
+			</File>
 			<File
 				RelativePath=".\..\src\blitter\32bpp_base.cpp">
 			</File>
