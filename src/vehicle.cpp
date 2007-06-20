@@ -15,6 +15,7 @@
 #include "map.h"
 #include "tile.h"
 #include "vehicle.h"
+#include "timetable.h"
 #include "gfx.h"
 #include "viewport.h"
 #include "news.h"
@@ -2335,6 +2336,7 @@ void VehicleEnterDepot(Vehicle *v)
 		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
 			/* Part of orders */
 			v->cur_order_index++;
+			UpdateVehicleTimetable(v, true);
 		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
 			/* Force depot visit */
 			v->vehstatus |= VS_STOPPED;
@@ -2787,6 +2789,10 @@ extern const SaveLoad _common_veh_desc[] = {
 	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, refit_cargo),    SLE_UINT8, 36, SL_MAX_VERSION),
 	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, refit_subtype),  SLE_UINT8, 36, SL_MAX_VERSION),
 
+	/* Timetable in current order */
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, wait_time),      SLE_UINT16, 67, SL_MAX_VERSION),
+	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, travel_time),    SLE_UINT16, 67, SL_MAX_VERSION),
+
 	    SLE_REF(Vehicle, orders,               REF_ORDER),
 
 	SLE_CONDVAR(Vehicle, age,                  SLE_FILE_U16 | SLE_VAR_I32,  0, 30),
@@ -2827,6 +2833,9 @@ extern const SaveLoad _common_veh_desc[] = {
 	    SLE_REF(Vehicle, prev_shared,          REF_VEHICLE),
 
 	SLE_CONDVAR(Vehicle, group_id,             SLE_UINT16,                60, SL_MAX_VERSION),
+
+	SLE_CONDVAR(Vehicle, current_order_time,   SLE_UINT32,                67, SL_MAX_VERSION),
+	SLE_CONDVAR(Vehicle, lateness_counter,     SLE_INT32,                 67, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 10 bytes) */
 	SLE_CONDNULL(10,                                                       2, SL_MAX_VERSION),
@@ -3070,6 +3079,7 @@ void Vehicle::BeginLoading()
 		 * whether the train is lost or not; not marking a train lost
 		 * that arrives at random stations is bad. */
 		this->current_order.flags |= OF_NON_STOP;
+		UpdateVehicleTimetable(this, true);
 	} else {
 		/* This is just an unordered intermediate stop */
 		this->current_order.flags = 0;
@@ -3096,6 +3106,8 @@ void Vehicle::LeaveStation()
 	current_order.type = OT_LEAVESTATION;
 	current_order.flags = 0;
 	GetStation(this->last_station_visited)->loading_vehicles.remove(this);
+
+	UpdateVehicleTimetable(this, false);
 }
 
 
@@ -3103,8 +3115,11 @@ void Vehicle::HandleLoading(bool mode)
 {
 	switch (this->current_order.type) {
 		case OT_LOADING: {
+			uint wait_time = max(this->current_order.wait_time - this->lateness_counter, 0);
+
 			/* Not the first call for this tick, or still loading */
-			if (mode || !HASBIT(this->vehicle_flags, VF_LOADING_FINISHED)) return;
+			if (mode || !HASBIT(this->vehicle_flags, VF_LOADING_FINISHED) ||
+					(_patches.timetabling && this->current_order_time < wait_time)) return;
 
 			this->PlayLeaveStationSound();
 

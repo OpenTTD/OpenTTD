@@ -14,6 +14,7 @@
 #include "map.h"
 #include "tile.h"
 #include "vehicle.h"
+#include "timetable.h"
 #include "engine.h"
 #include "command.h"
 #include "station.h"
@@ -758,6 +759,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
 					!VehicleNeedsService(v)) {
 				v->cur_order_index++;
+				UpdateVehicleTimetable(v, true);
 			}
 			break;
 
@@ -1784,6 +1786,7 @@ static void RoadVehController(Vehicle *v)
 {
 	/* decrease counters */
 	v->tick_counter++;
+	v->current_order_time++;
 	if (v->u.road.reverse_ctr != 0) v->u.road.reverse_ctr--;
 
 	/* handle crashed */

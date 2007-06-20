@@ -15,6 +15,7 @@
 #include "tile.h"
 #include "tunnel_map.h"
 #include "vehicle.h"
+#include "timetable.h"
 #include "articulated_vehicles.h"
 #include "command.h"
 #include "pathfind.h"
@@ -2380,6 +2381,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 			if ((v->current_order.flags & OF_SERVICE_IF_NEEDED) &&
 					!VehicleNeedsService(v)) {
 				v->cur_order_index++;
+				UpdateVehicleTimetable(v, true);
 			}
 			break;
 
@@ -2395,6 +2397,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 	if (v->current_order.type == OT_GOTO_WAYPOINT && v->tile == v->dest_tile) {
 		v->cur_order_index++;
 		at_waypoint = true;
+		UpdateVehicleTimetable(v, true);
 	}
 
 	/* check if we've reached a non-stop station while TTDPatch nonstop is enabled.. */
@@ -2403,6 +2406,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.dest == GetStationIndex(v->tile)) {
 		v->cur_order_index++;
+		UpdateVehicleTimetable(v, true);
 	}
 
 	/* Get the current order */
@@ -3296,6 +3300,8 @@ void Train_Tick(Vehicle *v)
 	v->tick_counter++;
 
 	if (IsFrontEngine(v)) {
+		v->current_order_time++;
+
 		TrainLocoHandler(v, false);
 
 		/* make sure vehicle wasn't deleted. */

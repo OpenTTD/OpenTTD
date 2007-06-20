@@ -1100,6 +1100,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\timetable.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\town.h"
 				>
 			</File>
@@ -1280,6 +1284,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\timetable_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\town_gui.cpp"
 				>
 			</File>
@@ -1349,6 +1357,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\station_cmd.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\timetable_cmd.cpp"
 				>
 			</File>
 			<File

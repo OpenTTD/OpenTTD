@@ -48,6 +48,8 @@ Order UnpackOldOrder(uint16 packed)
 
 	order.refit_cargo   = CT_NO_REFIT;
 	order.refit_subtype = 0;
+	order.wait_time     = 0;
+	order.travel_time   = 0;
 	order.index = 0; // avoid compiler warning
 
 	// Sanity check
@@ -75,6 +77,8 @@ static Order UnpackVersion4Order(uint16 packed)
 	order.index = 0; // avoid compiler warning
 	order.refit_cargo   = CT_NO_REFIT;
 	order.refit_subtype = 0;
+	order.wait_time     = 0;
+	order.travel_time   = 0;
 	return order;
 }
 
@@ -85,8 +89,9 @@ static Order UnpackVersion4Order(uint16 packed)
  */
 void InvalidateVehicleOrder(const Vehicle *v)
 {
-	InvalidateWindow(WC_VEHICLE_VIEW,   v->index);
-	InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
+	InvalidateWindow(WC_VEHICLE_VIEW,      v->index);
+	InvalidateWindow(WC_VEHICLE_ORDERS,    v->index);
+	InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
 }
 
 /**
@@ -127,6 +132,8 @@ static Order *AllocateOrder()
 			order->next = NULL;
 			order->refit_cargo   = CT_NO_REFIT;
 			order->refit_subtype = 0;
+			order->wait_time     = 0;
+			order->travel_time   = 0;
 
 			return order;
 		}
@@ -152,6 +159,9 @@ void AssignOrder(Order *order, Order data)
 
 	order->refit_cargo   = data.refit_cargo;
 	order->refit_subtype = data.refit_subtype;
+
+	order->wait_time   = data.wait_time;
+	order->travel_time = data.travel_time;
 }
 
 
@@ -1315,8 +1325,10 @@ static const SaveLoad _order_desc[] = {
 	SLE_VAR(Order, flags, SLE_UINT8),
 	SLE_VAR(Order, dest,  SLE_UINT16),
 	SLE_REF(Order, next,  REF_ORDER),
-	SLE_CONDVAR(Order, refit_cargo,    SLE_UINT8, 36, SL_MAX_VERSION),
-	SLE_CONDVAR(Order, refit_subtype,  SLE_UINT8, 36, SL_MAX_VERSION),
+	SLE_CONDVAR(Order, refit_cargo,    SLE_UINT8,  36, SL_MAX_VERSION),
+	SLE_CONDVAR(Order, refit_subtype,  SLE_UINT8,  36, SL_MAX_VERSION),
+	SLE_CONDVAR(Order, wait_time,      SLE_UINT16, 67, SL_MAX_VERSION),
+	SLE_CONDVAR(Order, travel_time,    SLE_UINT16, 67, SL_MAX_VERSION),
 
 	/* Leftover from the minor savegame version stuff
 	 * We will never use those free bytes, but we have to keep this line to allow loading of old savegames */

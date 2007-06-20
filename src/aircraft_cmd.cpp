@@ -14,6 +14,7 @@
 #include "map.h"
 #include "tile.h"
 #include "vehicle.h"
+#include "timetable.h"
 #include "depot.h"
 #include "engine.h"
 #include "command.h"
@@ -1349,6 +1350,7 @@ static void ProcessAircraftOrder(Vehicle *v)
 			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
 					!VehicleNeedsService(v)) {
 				v->cur_order_index++;
+				UpdateVehicleTimetable(v, true);
 			}
 			break;
 
@@ -2086,6 +2088,7 @@ static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *apc)
 static void AircraftEventHandler(Vehicle *v, int loop)
 {
 	v->tick_counter++;
+	v->current_order_time++;
 
 	if (v->vehstatus & VS_CRASHED) {
 		HandleCrashedAircraft(v);

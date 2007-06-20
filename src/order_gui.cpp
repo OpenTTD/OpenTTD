@@ -24,11 +24,13 @@
 #include "train.h"
 #include "water_map.h"
 #include "vehicle_gui.h"
+#include "timetable.h"
 #include "cargotype.h"
 
 enum OrderWindowWidgets {
 	ORDER_WIDGET_CLOSEBOX = 0,
 	ORDER_WIDGET_CAPTION,
+	ORDER_WIDGET_TIMETABLE_VIEW,
 	ORDER_WIDGET_ORDER_LIST,
 	ORDER_WIDGET_SCROLLBAR,
 	ORDER_WIDGET_SKIP,
@@ -540,6 +542,13 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				assert(w->widget[ORDER_WIDGET_REFIT].bottom        == w->widget[ORDER_WIDGET_UNLOAD].bottom);
 				assert(w->widget[ORDER_WIDGET_REFIT].display_flags == w->widget[ORDER_WIDGET_UNLOAD].display_flags);
 			}
+
+			if (_patches.timetabling) {
+				w->widget[ORDER_WIDGET_CAPTION].right -= 61;
+			} else {
+				HideWindowWidget(w, ORDER_WIDGET_TIMETABLE_VIEW);
+			}
+
 			break;
 
 	case WE_PAINT:
@@ -623,6 +632,11 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		case ORDER_WIDGET_TRANSFER:
 			OrderClick_Transfer(w, v);
 			break;
+
+		case ORDER_WIDGET_TIMETABLE_VIEW:
+			ShowTimetableWindow(v);
+			break;
+
 		case ORDER_WIDGET_SHARED_ORDER_LIST:
 			ShowVehicleListWindow(v);
 			break;
@@ -733,6 +747,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 static const Widget _orders_train_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   398,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,      14,   338,   398,     0,    13, STR_TIMETABLE_VIEW,      STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
 
 	{      WWT_PANEL,   RESIZE_RB,      14,     0,   386,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
 
@@ -769,6 +784,7 @@ static const WindowDesc _orders_train_desc = {
 static const Widget _orders_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   409,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,      14,   349,   409,     0,    13, STR_TIMETABLE_VIEW,      STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
 
 	{      WWT_PANEL,   RESIZE_RB,      14,     0,   397,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
 
@@ -803,27 +819,28 @@ static const WindowDesc _orders_desc = {
  * Widget definition for competitor orders
  */
 static const Widget _other_orders_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   331,     0,    13, STR_A00B_ORDERS, STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,           STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   331,     0,    13, STR_A00B_ORDERS,    STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,      14,   271,   331,     0,    13, STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
 
-	{      WWT_PANEL,   RESIZE_RB,      14,     0,   319,    14,    75, 0x0,             STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
+	{      WWT_PANEL,   RESIZE_RB,      14,     0,   319,    14,    75, 0x0,                STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
 
-	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   320,   331,    14,    75, 0x0,             STR_0190_SCROLL_BAR_SCROLLS_LIST},    // ORDER_WIDGET_SCROLLBAR
+	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   320,   331,    14,    75, 0x0,                STR_0190_SCROLL_BAR_SCROLLS_LIST},    // ORDER_WIDGET_SCROLLBAR
 
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_SKIP
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_DELETE
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_NON_STOP
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_GOTO
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_UNLOAD
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_REFIT
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_TRANSFER
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SKIP
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_DELETE
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_NON_STOP
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_REFIT
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_TRANSFER
 
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_SHARED_ORDER_LIST
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SHARED_ORDER_LIST
 
-	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   319,    76,    87, 0x0,             STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
+	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
 
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   320,   331,    76,    87, 0x0,             STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   320,   331,    76,    87, 0x0,                STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 

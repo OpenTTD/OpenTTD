@@ -153,6 +153,8 @@ enum {
 	CMD_SET_GROUP_REPLACE_PROTECTION = 126,
 
 	CMD_MOVE_ORDER                   = 127,
+	CMD_CHANGE_TIMETABLE             = 128,
+	CMD_SET_VEHICLE_ON_TIME          = 129,
 };
 
 enum {

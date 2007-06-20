@@ -11,6 +11,7 @@
 #include "map.h"
 #include "tile.h"
 #include "vehicle.h"
+#include "timetable.h"
 #include "command.h"
 #include "pathfind.h"
 #include "station_map.h"
@@ -258,6 +259,7 @@ static void ProcessShipOrder(Vehicle *v)
 			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
 					!VehicleNeedsService(v)) {
 				v->cur_order_index++;
+				UpdateVehicleTimetable(v, true);
 			}
 			break;
 
@@ -648,6 +650,7 @@ static void ShipController(Vehicle *v)
 	TrackBits tracks;
 
 	v->tick_counter++;
+	v->current_order_time++;
 
 	if (v->breakdown_ctr != 0) {
 		if (v->breakdown_ctr <= 2) {
@@ -695,6 +698,7 @@ static void ShipController(Vehicle *v)
 					 * next order */
 					v->cur_order_index++;
 					v->current_order.type = OT_DUMMY;
+					UpdateVehicleTimetable(v, true);
 					InvalidateVehicleOrder(v);
 				} else {
 					/* Non-buoy orders really need to reach the tile */

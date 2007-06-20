@@ -185,6 +185,7 @@ string.h
 tgp.h
 thread.h
 tile.h
+timetable.h
 town.h
 train.h
 transparency_gui.h
@@ -231,6 +232,7 @@ smallmap_gui.cpp
 station_gui.cpp
 subsidy_gui.cpp
 terraform_gui.cpp
+timetable_gui.cpp
 town_gui.cpp
 train_gui.cpp
 transparency_gui.cpp
@@ -250,6 +252,7 @@ road_cmd.cpp
 roadveh_cmd.cpp
 ship_cmd.cpp
 station_cmd.cpp
+timetable_cmd.cpp
 town_cmd.cpp
 train_cmd.cpp
 tree_cmd.cpp

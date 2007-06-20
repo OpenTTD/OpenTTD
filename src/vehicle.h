@@ -320,6 +320,10 @@ struct Vehicle {
 
 	GroupID group_id;              ///< Index of group Pool array
 
+	/* Used for timetabling. */
+	uint32 current_order_time;     ///< How many ticks have passed since this order started.
+	int32 lateness_counter;        ///< How many ticks late (or early if negative) this vehicle is.
+
 	union {
 		VehicleRail rail;
 		VehicleAir air;

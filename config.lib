@@ -315,13 +315,13 @@ check_params() {
 		exit 1
 	fi
 	# cpu_type can be either 32 or 64
-	if [ -z "`echo $cpu_type | grep '^32$\|^64$\|^DETECT$'`" ]; then
+	if [ -z "`echo $cpu_type | egrep '^(32|64|DETECT)$'`" ]; then
 		echo "configure: error: invalid option --cpu-type=$cpu_type"
 		echo " Available options are: --cpu-type[=DETECT|32|64]"
 		exit 1
 	fi
 	# enable_debug should be between 0 and 4
-	if [ -z "`echo $enable_debug | grep '^[0123]$'`" ]; then
+	if [ -z "`echo $enable_debug | egrep '^[0123]$'`" ]; then
 		echo "configure: error: invalid option --enable-debug=$enable_debug"
 		echo " Available options are: --enable-debug[=0123]"
 		exit 1
@@ -1512,11 +1512,11 @@ detect_library() {
 	log 2 "detecting $2"
 
 	if [ "$1" = "1" ] || [ "$1" = "" ] || [ "$1" = "2" ]; then
-		eval "$2=`ls -1 /usr/include/*.h 2>/dev/null | grep \"\/$4\$\"`"
+		eval "$2=`ls -1 /usr/include/*.h 2>/dev/null | egrep \"\/$4\$\"`"
 		eval "res=\$$2"
 		if [ -z "$res" ]; then
 			log 2 "  trying /usr/include/$4... no"
-			eval "$2=`ls -1 /usr/local/include/*.h 2>/dev/null | grep \"\/$4\$\"`"
+			eval "$2=`ls -1 /usr/local/include/*.h 2>/dev/null | egrep \"\/$4\$\"`"
 		fi
 		eval "res=\$$2"
 		if [ -z "$res" ]; then
@@ -1528,16 +1528,16 @@ detect_library() {
 			eval "res=\$$2"
 			log 2 "  trying $res... found"
 			# Now find the static lib, if needed
-			eval "$2=`ls /lib/*.a 2>/dev/null | grep \"\/$3\$\"`"
+			eval "$2=`ls /lib/*.a 2>/dev/null | egrep \"\/$3\$\"`"
 			eval "res=\$$2"
 			if [ -z "$res" ]; then
 				log 2 "  trying /lib/$3... no"
-				eval "$2=`ls /usr/lib/*.a 2>/dev/null | grep \"\/$3\$\"`"
+				eval "$2=`ls /usr/lib/*.a 2>/dev/null | egrep \"\/$3\$\"`"
 			fi
 			eval "res=\$$2"
 			if [ -z "$res" ]; then
 				log 2 "  trying /usr/lib/$3... no"
-				eval "$2=`ls /usr/local/lib/*.a 2>/dev/null | grep \"\/$3\$\"`"
+				eval "$2=`ls /usr/local/lib/*.a 2>/dev/null | egrep \"\/$3\$\"`"
 			fi
 			eval "res=\$$2"
 			if [ -z "$res" ]; then
@@ -1913,7 +1913,7 @@ make_sed() {
 	# FOUR_BYTE_BOOL is needed, because C++ uses 4byte for a bool on PPC, where
 	#  we use 1 byte per bool normally in C part. So convert that last one to 4
 	#  bytes too, but only for PPC.
-	ppc=`$cc_host -dumpmachine | grep "powerpc\|ppc"`
+	ppc=`$cc_host -dumpmachine | egrep "powerpc|ppc"`
 	if [ -n "$ppc" ]; then
 		T_CFLAGS="$CFLAGS -DFOUR_BYTE_BOOL"
 		osx_sysroot_version=10.3.9

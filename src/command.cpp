@@ -177,6 +177,8 @@ DEF_COMMAND(CmdRemoveAllVehiclesGroup);
 DEF_COMMAND(CmdSetGroupReplaceProtection);
 
 DEF_COMMAND(CmdMoveOrder);
+DEF_COMMAND(CmdChangeTimetable);
+DEF_COMMAND(CmdSetVehicleOnTime);
 
 /* The master command table */
 static const Command _command_proc_table[] = {
@@ -331,6 +333,8 @@ static const Command _command_proc_table[] = {
 	{CmdRemoveAllVehiclesGroup,              0}, /* 125 */
 	{CmdSetGroupReplaceProtection,           0}, /* 126 */
 	{CmdMoveOrder,                           0}, /* 127 */
+	{CmdChangeTimetable,                     0}, /* 128 */
+	{CmdSetVehicleOnTime,                    0}, /* 129 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */

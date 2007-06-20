@@ -235,6 +235,9 @@ struct Patches {
 	bool pause_on_newgame;   ///< Whether to start new games paused or not.
 
 	TownLayoutByte town_layout;  ///< Select town layout
+
+	bool timetabling;        ///< Whether to allow timetabling.
+	bool timetable_in_ticks; ///< Whether to show the timetable in ticks rather than days.
 };
 
 VARDEF Patches _patches;
