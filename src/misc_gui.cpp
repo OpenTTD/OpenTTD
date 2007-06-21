@@ -702,7 +702,7 @@ static void TooltipsWndProc(Window *w, WindowEvent *e)
  * @param paramcount number of params to deal with
  * @param params (optional) up to 5 pieces of additional information that may be
  * added to a tooltip; currently only supports parameters of {NUM} (integer) */
-void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint32 params[])
+void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[])
 {
 	char buffer[512];
 	BoundingRect br;
@@ -1214,7 +1214,7 @@ enum QueryWidgets {
 struct query_d {
 	void (*proc)(Window*, bool); ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
 	StringID message;            ///< message shown for query window
-	uint32 params[20];           ///< local copy of _decode_parameters
+	uint64 params[10];           ///< local copy of _decode_parameters
 	bool calledback;             ///< has callback been executed already (internal usage for WE_DESTROY event)
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(query_d));

@@ -217,7 +217,7 @@ void SetDParamStr(uint n, const char *str)
 
 void InjectDParam(int amount)
 {
-	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint32));
+	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint64));
 }
 
 static const uint32 _divisor_table[] = {

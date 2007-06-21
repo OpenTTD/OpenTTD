@@ -58,7 +58,7 @@ struct StringSpriteToDraw {
 	StringSpriteToDraw *next;
 	int32 x;
 	int32 y;
-	uint32 params[2];
+	uint64 params[2];
 	uint16 width;
 };
 
@@ -580,7 +580,7 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y)
 }
 
 /* Returns a StringSpriteToDraw */
-void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 params_2)
+void *AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2)
 {
 	ViewportDrawer *vd = _cur_vd;
 	StringSpriteToDraw *ss;
@@ -2028,7 +2028,7 @@ void VpSetPlaceSizingLimit(int limit)
 * @param to TileIndex of the last tile to highlight */
 void VpSetPresizeRange(TileIndex from, TileIndex to)
 {
-	uint distance = DistanceManhattan(from, to) + 1;
+	uint64 distance = DistanceManhattan(from, to) + 1;
 
 	_thd.selend.x = TileX(to) * TILE_SIZE;
 	_thd.selend.y = TileY(to) * TILE_SIZE;
@@ -2304,7 +2304,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 		TileIndex t1 = TileVirtXY(x, y);
 		uint distance = DistanceManhattan(t0, t1) + 1;
 		byte index = 0;
-		uint params[2];
+		uint64 params[2];
 
 		if (distance != 1) {
 			int heightdiff = CalcHeightdiff(b, distance, t0, t1);
@@ -2383,7 +2383,7 @@ calc_heightdiff_single_direction:;
 				TileIndex t1 = TileVirtXY(x, y);
 				uint distance = DistanceManhattan(t0, t1) + 1;
 				byte index = 0;
-				uint params[2];
+				uint64 params[2];
 
 				if (distance != 1) {
 					/* With current code passing a HT_LINE style to calculate the height
@@ -2416,7 +2416,7 @@ calc_heightdiff_single_direction:;
 				uint dx = delta(TileX(t0), TileX(t1)) + 1;
 				uint dy = delta(TileY(t0), TileY(t1)) + 1;
 				byte index = 0;
-				uint params[3];
+				uint64 params[3];
 
 				/* If dragging an area (eg dynamite tool) and it is actually a single
 				 * row/column, change the type to 'line' to get proper calculation for height */

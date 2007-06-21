@@ -17,7 +17,7 @@ struct NewsItem {
 	TileIndex data_a;
 	TileIndex data_b;
 
-	uint32 params[10];
+	uint64 params[10];
 };
 
 typedef bool ValidationProc ( uint data_a, uint data_b );

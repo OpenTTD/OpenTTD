@@ -321,7 +321,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tree_d));
 struct tooltips_d {
 	StringID string_id;
 	byte paramcount;
-	uint32 params[5];
+	uint64 params[5];
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 
@@ -764,7 +764,7 @@ void CDECL SetWindowWidgetsHiddenState(Window *w, bool hidden_stat, int widgets,
 void CDECL SetWindowWidgetsLoweredState(Window *w, bool lowered_stat, int widgets, ...);
 
 /* misc_gui.cpp */
-void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint params[]);
+void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[]);
 static inline void GuiShowTooltips(StringID str)
 {
 	GuiShowTooltipsWithArgs(str, 0, NULL);

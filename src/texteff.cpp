@@ -35,8 +35,8 @@ struct TextEffect {
 	int32 right;
 	int32 bottom;
 	uint16 duration;
-	uint32 params_1;
-	uint32 params_2;
+	uint64 params_1;
+	uint64 params_2;
 	TextEffectMode mode;
 };
 
