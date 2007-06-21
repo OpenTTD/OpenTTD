@@ -1169,6 +1169,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Ki
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollgomb sebessége a térképen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatikus pause-mode új játék esetén: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Továbbfejlesztett járműlista használata: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Betöltésjelző használata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Időalapú menetrend engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetrendi idő-alapegység tick a nap helyett: {ORANGE}{STRING}
 
@@ -2716,7 +2717,9 @@ STR_TIMETABLE_GO_TO                                             :{STRING} {STRIN
 STR_TIMETABLE_TRAVEL_FOR                                        :Menjen {STRING} állomásra
 STR_TIMETABLE_STAY_FOR                                          :és maradjon {STRING.t}
 STR_TIMETABLE_DAYS                                              :{COMMA} nap
+STR_TIMETABLE_DAYS.t                                            :{COMMA} napot
 STR_TIMETABLE_TICKS                                             :{COMMA} tick
+STR_TIMETABLE_TICKS.t                                           :{COMMA} tick-et
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Úton {TOWN} járműtelepére
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Úton {TOWN} járműtelepére, {VELOCITY}
@@ -3391,6 +3394,10 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Átkapcs
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Átkapcsolni az építhető elemekre (állomások, depók, útipontok és felsővezeték)
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Átkapcsolni a hidakra
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Átkapcsolni egyéb épületekre, mint világítótorony és antennák (esetleg egyéb jövőbeni díszek)
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Átlátszó betöltésjelző kapcsolása (ki/be)
+
+STR_PERCENT_FULL_SMALL                                          :{TINYFONT}{WHITE}{NUM}%
+STR_PERCENT_FULL                                                :{WHITE}{NUM}%
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :{COMMA} csoport

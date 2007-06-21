@@ -636,7 +636,7 @@ STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Industri
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Bygning af vej
 STR_0233_TOWN_GENERATION                                        :{WHITE}Bygenerering
 STR_0234_NEW_TOWN                                               :{BLACK}Ny by
-STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Byg en ny by
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Opfør en ny by
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kan ikke bygge en by her...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...for tæt på kanten af kortet
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...for tæt på en anden by
@@ -683,41 +683,41 @@ STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Sodavand
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Boblegenerator
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Karamelbrud
 STR_0261_SUGAR_MINE                                             :{BLACK}Sukkermine
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Byg Kulmine
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Byg Kraftværk
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Byg Savværk
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Opfør Kulmine
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Opfør Kraftværk
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Opfør Savværk
 STR_0265_PLANT_FOREST                                           :{BLACK}Plant Skov
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Byg Olieraffinaderi
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Byg Boreplatform (Kan kun bygges tæt på kanten af kortet)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Byg Fabrik
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Byg Stålværk
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Byg Bondegård
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Byg Jernmalmsmine
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Byg Oliekilde
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Byg Bank (Kan kun bygges i en by med mere end 1200 indbyggere)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Byg Papirmølle
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Byg Fødevareindustri
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Byg Trykkeri
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Byg Guldmine
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Byg Bank (Kan kun bygges i en by)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Byg Træfabrik (for at rydde regnskoven og producere træ)
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Opfør Olieraffinaderi
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Opfør Boreplatform (Kan kun bygges tæt på kanten af kortet)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Opfør Fabrik
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Opfør Stålværk
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Opfør Bondegård
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Opfør Jernmalmsmine
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Opfør Oliekilde
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Opfør Bank (Kan kun bygges i en by med mere end 1200 indbyggere)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Opfør Papirmølle
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Opfør Fødevareindustri
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Opfør Trykkeri
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Opfør Guldmine
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Opfør Bank (Kan kun bygges i en by)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Opfør Savværk (for at rydde regnskoven og producere træ)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plant Frugtplantage
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plant Gummiplantage
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Byg Vandværk
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Byg Vandtårn (Kan kun bygges i byer)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Byg Diamantmine
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Byg Kobbermalmsmine
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Opfør Vandværk
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Opfør Vandtårn (Kan kun bygges i byer)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Opfør Diamantmine
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Opfør Kobbermalmsmine
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plant Candyfloss-skov
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Byg Slikfabrik
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Byg Batterigård
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Byg Colabrønd
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Byg Legetøjsforretning
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Byg Legetøjsfabrik
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Byg Plastikspringvand
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Byg Sodavandsfabrik
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Byg Boblegenerator
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Byg Karamelbrud
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Byg Sukkermine
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Opfør Slikfabrik
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Opfør Batterigård
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Opfør Colabrønd
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Opfør Legetøjsforretning
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Opfør Legetøjsfabrik
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Opfør Plastikspringvand
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Opfør Sodavandsfabrik
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Opfør Boblegenerator
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Opfør Karamelbrud
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Opfør Sukkermine
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan ikke bygge {STRING} her...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...det er nødvendigt at bygge en by først
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...kun en tilladt per by
@@ -1103,6 +1103,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Slået fra
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rulleknap-hastighed på kort: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Sæt automatisk på pause når nyt spil startes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Brug avanceret køretøjsliste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Slå køreplaner for transportmidler til: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis køreplan i tik i stedet for dage: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. antal tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. antal køretøjer per spiller: {ORANGE}{STRING}
@@ -1263,29 +1265,29 @@ STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vælg hv
 
 STR_FAST_FORWARD                                                :{BLACK}Kør spillet hurtigere
 STR_MESSAGE_HISTORY                                             :{WHITE}Tidligere beskeder
-STR_MESSAGE_HISTORY_TIP                                         :{BLACK}En liste of seneste nyheder
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}En liste over seneste nyheder
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Slå alle fra
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Slå alle til
 
-STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Byg Kulmine
+STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Opfør Kulmine
 STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Plant Skov
-STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Byg Boreplatform
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Opfør en bondegård
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Byg Kobbermalmsmine
+STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Opfør Boreplatform
+STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Opfør Bondegård
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Opfør Kobbermalmsmine
 STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Bor efter olie
-STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Byg Guldmine
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Byg Diamandmine
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Byg Jernmalmsmine
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Opfør Frugtplantage
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Opfør Gummiplantage
+STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Opfør Guldmine
+STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Opfør Diamantmine
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Opfør Jernmalmsmine
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Plant Frugtplantage
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Plant Gummiplantage
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Opfør Vandforsyning
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plant Candyfloss Skov
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plant Candyfloss-skov
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Opfør Batterigård
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Bor efter Cola
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Opfør Plastikspringvand
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Byg Boblegenerator
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Opfør Boblegenerator
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Opfør Karamelbrud
-STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Byg Sukkermine
+STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Opfør Sukkermine
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrier
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transporteret)
@@ -1355,7 +1357,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Start et
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spillets navn:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Navnet vil blive vist til andre spillere i menuen, hvor man vælger netværksspil
-STR_NETWORK_SET_PASSWORD                                        :{BLACK}Set kodeord
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Sæt kodeord
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Beskyt dit spil med et kodeord hvis du ikke vil have fremmede med
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vælg et kort:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Hvilket kort vil du spille?
@@ -1458,9 +1460,9 @@ STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Go
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Venter..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Henter kort..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Behandler data..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registere..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrerer..
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Henter spil info..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Henter spil-info..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter selskabsinfo..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} foran dig
@@ -1469,7 +1471,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Afbryd forbindelse
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv det beløb, som du ønsker at give
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Skriv kodeordet
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Indtast kodeord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskabet er beskyttet. Indtast kodeord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient liste
 
@@ -1482,7 +1484,7 @@ STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Netvær
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Kunne ikke hente gemt spil
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Kunne ikke starte serveren
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Kunne ikke forbinde
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Forbindelsen #{NUM} svare ikke
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Forbindelsen #{NUM} svarer ikke
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Der opstod en protokol-fejl og forbindelse blev lukket
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Revisionen af denne klient passer ikke sammen med serverens revision
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Forkert kodeord
@@ -1891,6 +1893,7 @@ STR_3804_WATER                                                  :Vand
 STR_3805_COAST_OR_RIVERBANK                                     :Kyst eller flodbred
 STR_3806_SHIP_DEPOT                                             :Skibsdok
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...kan ikke bygge på vand
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Kanal må fjernes først
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Gem spil
@@ -2606,6 +2609,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} remise
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden stop i {TOWN} remise
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg. køreplan)
+STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
+STR_TIMETABLE_STAY_FOR                                          :og vent i {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" e}
+STR_TIMETABLE_TICKS                                             :{COMMA} tik
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} remise
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kører til {TOWN} remise, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Service i {TOWN} remise
@@ -2647,6 +2657,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Aflæs
 STR_REFIT                                                       :{BLACK}Ombyg
 STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype der skal ombygges til i denne ordre. CTRL-klik for at fjerne ombygningsinstruktion
 STR_REFIT_ORDER                                                 :(Ombyg til {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Køreplan
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Skift til køreplan-visning
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordrer)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slut på ordrer - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2703,6 +2715,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Lav den 
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Indsæt en ny ordre før den markerede eller ved slutningen af ordrelisten
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den markerede ordre til at tvinge toget til at vente på en fuld last
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den markerede ordre til at tvinge toget til at aflæsse
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Køreplan - klik på en ordre for at markere den.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre hvor lang tid den markerede ordre skal tage
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil tiden for den markerede ordre
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulstil forsinkelses-tæller, så transportmidlet kommer til tiden
 STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over medmindre der er behov for service
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
@@ -2724,6 +2740,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Omdøb t
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den valgte ordre til at tvinge køretøjet til at smide lasten
 STR_886F_TRANSFER                                               :{BLACK}Overfør
+STR_CLEAR_TIME                                                  :{BLACK}Nulstil tid
+STR_RESET_LATENESS                                              :{BLACK}Nulstil forsinkelses-tæller
 
 STR_TRAIN_STOPPING                                              :{RED}Stopper
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {VELOCITY}
@@ -2734,6 +2752,14 @@ STR_TRAIN_START_NO_CATENARY                                     :Toget kan ikke 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING} er nu tilgængelig!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING} er nu tilgængelig!  -  {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan ikke lave køreplan for transportmiddel...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Transportmidler kan kun vente ved stationer.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Dette transportmiddel stopper ikke ved denne station.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ændre tid
+STR_TIMETABLE_STATUS_ON_TIME                                    :Dette transportmiddel kommer til tiden
+STR_TIMETABLE_STATUS_LATE                                       :Dette transportmiddel er nu {STRING} forsinket
+STR_TIMETABLE_STATUS_EARLY                                      :Dette transportmiddel er nu {STRING} foran køreplanen
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køretøj i vejen
@@ -2945,6 +2971,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapac
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikke ombygge fly...
 STR_GO_TO_AIRPORT_HANGAR                                        :Flyv til {STATION} hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Service i {STATION} hangar
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Køreplan)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelin katastrofe ved {STATION}!
@@ -3261,6 +3289,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Skift ge
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Skift gennemsigtighed for konstruktioner som stationer, værksteder, kontrolsteder og køreledninger
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Skift gennemsigtighed for broer
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Skift gennemsigtighed for strukturer som fyrtårne og antenner, og måske i fremtiden for øjeguf
+
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Gruppe {COMMA}

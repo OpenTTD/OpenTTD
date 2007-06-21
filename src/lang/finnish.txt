@@ -3,6 +3,8 @@
 ##isocode fi_FI
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Kartan reunan ulkopuolella.
@@ -1391,6 +1393,27 @@ STR_NETWORK_LANG_ANY                                            :mikä tahansa
 STR_NETWORK_LANG_ENGLISH                                        :englanti
 STR_NETWORK_LANG_GERMAN                                         :saksa
 STR_NETWORK_LANG_FRENCH                                         :ranska
+STR_NETWORK_LANG_DANISH                                         :tanska
+STR_NETWORK_LANG_DUTCH                                          :hollanti
+STR_NETWORK_LANG_ESPERANTO                                      :esperanto
+STR_NETWORK_LANG_FINNISH                                        :suomi
+STR_NETWORK_LANG_HUNGARIAN                                      :unkari
+STR_NETWORK_LANG_ICELANDIC                                      :islanti
+STR_NETWORK_LANG_ITALIAN                                        :italia
+STR_NETWORK_LANG_JAPANESE                                       :japani
+STR_NETWORK_LANG_KOREAN                                         :korea
+STR_NETWORK_LANG_LITHUANIAN                                     :liettua
+STR_NETWORK_LANG_NORWEGIAN                                      :norja
+STR_NETWORK_LANG_POLISH                                         :puola
+STR_NETWORK_LANG_PORTUGUESE                                     :portugali
+STR_NETWORK_LANG_ROMANIAN                                       :romania
+STR_NETWORK_LANG_RUSSIAN                                        :venäjä
+STR_NETWORK_LANG_SLOVAK                                         :slovakia
+STR_NETWORK_LANG_SLOVENIAN                                      :sloveeni
+STR_NETWORK_LANG_SPANISH                                        :espanja
+STR_NETWORK_LANG_SWEDISH                                        :ruotsi
+STR_NETWORK_LANG_TURKISH                                        :turkki
+STR_NETWORK_LANG_UKRAINIAN                                      :ukraina
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Moninpeliaula
@@ -1584,6 +1607,13 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rautatie tavall
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rautatie esiopastimin
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rautatie poistumisopastimin
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatie yhdistetyin opastimin
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Rautatie esisignaaleilla
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Rautatie poistumis-signaaleilla
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Rautatie yhdistelmäsignaaleilla
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Rautatie esi- ja poistumissignaaleilla
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Rautatie esi- ja yhdistelmäsignaaleilla
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Rautatie poistumis- ja yhdistelmäsignaaleilla
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Poista asema ensin
 
 
 
@@ -1591,22 +1621,39 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatie yhdist
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Tie pitää siirtää ensin.
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Tietyöt ovat käynnissä.
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Tien rakentaminen
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Raitiotien rakentaminen
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Valitse maantiesilta
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... yksisuuntaisella kadulla ei voi olla risteystä
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Tietä ei voi rakentaa.
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Tähän ei voi rakentaa raitiotietä.
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Tietä ei voi poistaa.
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Tästä ei voi poistaa raitiotietä.
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Autovarikon suunta
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Varikon suunta
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Autovarikkoa ei voi rakentaa.
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Tähän ei voi rakentaa varikkoa.
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Linja-autoasemaa ei voi rakentaa.
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Lastauslaituria ei voi rakentaa.
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Ei voi rakentaa asemaa.
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Ei voi rakentaa rahtiasemaa.
 STR_180A_ROAD_CONSTRUCTION                                      :Tien rakentaminen
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Raitiotien rakentaminen
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Rakenna tieosuus.
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Rakenna raitiotietä
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Rakenna autovarikko (ajoneuvojen rakentamista ja huoltoa varten)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Rakenna raitiotievarikko (vaunujen rakentamiseen ja korjaamiseen)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Rakenna linja-autoasema
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Rakenna lastauslaituri
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Rakenna asema
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Rakenna rahtiasema
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Rakenna maantiesilta
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Rakenna raitiotiesilta
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Rakenna maantietunneli
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Rakenna raitiotietunneli
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Tien rakentaminen/siirtäminen päälle/pois
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Vaihda rakentamisen ja purkamisen välillä
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Valitse autovarikon suunta.
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Valitse varikon suunta
 STR_1814_ROAD                                                   :Tie
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Tie katuvaloilla
 STR_1816_TREE_LINED_ROAD                                        :Puilla reunustettu tie
@@ -1614,6 +1661,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Autovarikko
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Tasoristeys
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Linja-autoasemaa ei voida poistaa...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kuorma-auto asemaa ei voida poistaa...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Ei voi poistaa asemaa.
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Ei voi poistaa rahtiasemaa.
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Kaupungit
@@ -1778,8 +1827,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} ottaa nyt vastaan {STRING} ja {STRING}.
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Linja-autoaseman suunta
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lastauslaiturin suunta
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Aseman suunta
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Rahtiaseman suunta
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Linja-autoasema pitää purkaa ensin.
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Lastauslaituri pitää purkaa ensin.
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Asema täytyy purkaa ensin
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Rahtiasema täytyy purkaa ensin
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} asema{P "" a}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ei mitään -
@@ -1791,6 +1844,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Valitse 
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Valitse rautatieaseman pituus.
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Valitse linja-autoaseman suunta.
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Valitse lastauslaiturin suunta.
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Valitse aseman suunta
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Valitse rahtiaseman suunta
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Keskitä näkymä aseman sijaintiin.
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Näytä aseman arviot.
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Muuta aseman nimi.
@@ -1828,6 +1883,7 @@ STR_3804_WATER                                                  :Vettä
 STR_3805_COAST_OR_RIVERBANK                                     :Rannikko tai joenpenkka
 STR_3806_SHIP_DEPOT                                             :Telakka
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...veteen ei voi rakentaa.
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Kanava täytyy purkaa ensin
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Tallenna peli
@@ -2010,6 +2066,8 @@ STR_SV_STNAME_UPPER                                             :Ylä-{STRING}
 STR_SV_STNAME_LOWER                                             :Ala-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}, helikopterikenttä
 STR_SV_STNAME_FOREST                                            :{STRING}, metsä
+
+STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -2239,6 +2297,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Rahtilaiva
 STR_LIVERY_HELICOPTER                                           :Helikopteri
 STR_LIVERY_SMALL_PLANE                                          :Pieni lentokone
 STR_LIVERY_LARGE_PLANE                                          :Suuri lentokone
+STR_LIVERY_PASSENGER_TRAM                                       :Matkustajavaunu
+STR_LIVERY_FREIGHT_TRAM                                         :Rahtivaunu
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Näytä yleiset väriteemat
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Näytä junan väriteemat
@@ -2539,6 +2599,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Huolto veturita
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mene pysähtymättä veturitalliin ({TOWN})
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Huolto pysähtymättä veturitallilla ({TOWN})
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
+STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
+STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} päivä{P "" ä}
+STR_TIMETABLE_TICKS                                             :{COMMA} tunti{P "" a}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Suuntana veturitalli ({TOWN})
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Suuntana veturitalli ({TOWN}), {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Huolto {TOWN} Varikko
@@ -2580,6 +2647,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Pura las
 STR_REFIT                                                       :{BLACK}Sovita
 STR_REFIT_TIP                                                   :{BLACK}Valitse rahdin tyyppi jolla tämä käsky uudistetaan. CTRL+klikkaus poistaa uudistuksen
 STR_REFIT_ORDER                                                 :(Sovita {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Aikataulu
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Näytä aikataulu
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (aikataulu)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - aikataulun loppu - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2596,6 +2665,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Liian mo
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Uutta pysähdystä ei voi lisätä...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Pysähdystä ei voi poistaa...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Pysähdystä ei voi muokata...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Tätä riviä ei voi siirtää.
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Tätä riviä ei voi ohittaa.
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Tähän riviin ei voi siirtyä.
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Liikennevälinettä ei voi poistaa...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Moottorivaunun takaosa seuraa aina etuosaansa
 STR_8838_N_A                                                    :-{SKIP}
@@ -2627,11 +2699,16 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Näytä 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Näytä kunkin ajoneuvon kapasiteetti.
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Näytä junan kokonaiskapasiteetti, eritelty rahtityypin mukaan.
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Aikataulu - napsauta määräystä korostaaksesi.
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Ohita nykyinen pysähdys ja aloita seuraava.
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Poista korostettu määräys.
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Tee korostetusta pysäkistä pysähtymätön.
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Lisää uusi pysähdys ennen valittua, tai lisää listan viimeiseksi.
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Aseta korostettu pysähdys pakottamaan ajoneuvon odottamaan täyttä lastausta.
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Aseta korostettu pysähdys pakottamaan ajoneuvo odottamaan purkua.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataulu - valitse rivi
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Aseta kuinka kauan käskyn tulisi kestää
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nollaa tämän rivin aika
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollaa myöhästymislaskuri, jotta vaunu olisi taas aikataulussa
 STR_SERVICE_HINT                                                :{BLACK}Ohita tämä määräys, ellei palvelua tarvita.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kulu: {CURRENCY} Paino: {WEIGHT_S}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Rikki
@@ -2653,6 +2730,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Nimeä j
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Juna(vaunu)n tyyppiä ei voi uudelleennimetä...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Pakottaa tyhjentämään rahdin valitulla pysäkillä
 STR_886F_TRANSFER                                               :{BLACK}Siirrä
+STR_CLEAR_TIME                                                  :{BLACK}Nollaa aika
+STR_RESET_LATENESS                                              :{BLACK}Nollaa myöhästymislaskuri
 
 STR_TRAIN_STOPPING                                              :{RED}Pysäytetään
 STR_TRAIN_STOPPING_VEL                                          :{RED}Pysäytetään, {VELOCITY}
@@ -2663,6 +2742,14 @@ STR_TRAIN_START_NO_CATENARY                                     :Radasta puuttuu
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Uusi {STRING} on nyt saatavilla!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Uusi {STRING} on nyt saatavilla! - {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Ei voi asettaa aikataulua.
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vain asemalla voi odottaa.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Tämä ajoneuvo ei pysähdy tällä asemalla.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta aikaa
+STR_TIMETABLE_STATUS_ON_TIME                                    :Ajoneuvo on aikataulussa
+STR_TIMETABLE_STATUS_LATE                                       :Ajoneuvo on {STRING} myöhässä
+STR_TIMETABLE_STATUS_EARLY                                      :Ajoneuvo on {STRING} etuajassa
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Ajoneuvo tiellä.
@@ -2705,12 +2792,16 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Keskitä
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Ajoneuvon valintalista - napsauta ajoneuvoa saadaksesi tietoja.
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Rakenna valittu ajoneuvo.
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kulu: {CURRENCY}{}Nopeus: {VELOCITY}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasiteetti: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nimeä ajoneuvo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ajoneuvoa ei voi nimetä...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nimeä ajoneuvo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen linja-auto saapuu asemalle {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen kuorma-auto saapuu asemalle {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen raitiovaunu saapuu asemalle {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen rahtiraitiovaunu saapuu asemalle {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Ajoneuvokolari!{}Kuljettaja kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Ajoneuvokolari!{}{COMMA} kuolee junaan törmäyksen jälkeisessä tulipallossa
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Ajoneuvoa ei voi pakottaa kääntymään ympäri...
@@ -2871,6 +2962,8 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Lentokon
 STR_GO_TO_AIRPORT_HANGAR                                        :Aseta kohteeksi lentokonehalli, {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Huolto, kohteena lentokonehalli, {STATION}
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Aikataulu)
+
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}{STATION}: Ilmalaivaonnettomuus!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Ajoneuvo tuhoitui törmäyksessä UFO:n kanssa!
@@ -2995,6 +3088,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Näytä 
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet myymässä kaikki varikon ajoneuvot. Oletko varma?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Väärä varikkotyyppi
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Myy kaikki varikolla olevat junat
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Myy kaikki varikolla olevat ajoneuvot
@@ -3185,3 +3279,42 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Läpinä
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Läpinäkyvät asemat, varikot, rastit ja sähkölinjat
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Läpinäkyvät sillat
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Läpinäkyvät rakenteet kuten majakat ja antennit
+
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Ryhmä {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Kaikki junat
+STR_GROUP_ALL_ROADS                                             :Kaikki autot
+STR_GROUP_ALL_SHIPS                                             :Kaikki laivat
+STR_GROUP_ALL_AIRCRAFTS                                         :Kaikki lentoalukset
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Lisää jaettuja ajoneuvoja
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki ajoneuvot
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Juna{P "" t}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Auto{P "" t}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Laiva{P "" t}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} {P Lentoalus Lentoalukset}
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Korvaa ryhmän "{GROUP}" ajoneuvot
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Ei voi luoda ryhmää.
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Ryhmää ei voi poistaa.
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Ryhmää ei voi nimetä.
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Ryhmän kaikkia ajoneuvoja ei voi poistaa.
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Ei voi lisätä ajoneuvoa ryhmään.
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Ei voi lisätä jaettuja ajoneuvoja ryhmään.
+
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Ryhmät - Valitse ryhmä
+STR_GROUP_CREATE_TIP                                            :{BLACK}Luo ryhmä
+STR_GROUP_DELETE_TIP                                            :{BLACK}Poista valittu ryhmä
+STR_GROUP_RENAME_TIP                                            :{BLACK}Nimeä valittu ryhmä
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Poista ryhmä automaattisesti korvattavien joukosta
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Tulos tänä vuonna: {GREEN}{CURRENCY} {BLACK}(viime vuonna: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Tulos tänä vuonna: {RED}{CURRENCY} {BLACK}(viime vuonna: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Tulos tänä vuonna: {GREEN}{CURRENCY} {BLACK}(viime vuonna: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Tulos tänä vuonna: {RED}{CURRENCY} {BLACK}(viime vuonna: {RED}{CURRENCY}{BLACK})
+
+########

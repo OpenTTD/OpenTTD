@@ -2,8 +2,8 @@
 ##ownname Українська
 ##isocode uk_UA
 ##plural 6
-##case r d z
 ##gender m f s mn
+##case r d z
 
 #
 
@@ -1229,6 +1229,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Відкл.
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Швидкість прокрутки колесом миші: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Використовувати покращений список транспорту: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Дозволити розклад руху для транспорту: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Показувати розклад в одиницях, а не в днях: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. авто у гравця: {ORANGE}{STRING}
@@ -2017,6 +2019,7 @@ STR_3804_WATER                                                  :Вода
 STR_3805_COAST_OR_RIVERBANK                                     :Берег
 STR_3806_SHIP_DEPOT                                             :Корабельне депо
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Неможливо будувати на воді
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Спочатку потрібно прибрати канал
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Зберегти гру
@@ -2769,6 +2772,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Ремонту�
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Прямувати без зупинок до {TOWN} депо
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонтуватись без зупинок в {TOWN} депо
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Прямує (не за розкладом)
+STR_TIMETABLE_TRAVEL_FOR                                        :Прямує до {STRING}
+STR_TIMETABLE_STAY_FOR                                          :і стояти {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ні нів}
+STR_TIMETABLE_TICKS                                             :{COMMA} одиниц{P ю і ь}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Прямує до {TOWN} депо
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Прямує до {TOWN} депо, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Техогляд в {TOWN} депо
@@ -2810,6 +2820,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Розв
 STR_REFIT                                                       :{BLACK}Переобладнати
 STR_REFIT_TIP                                                   :{BLACK}Оберіть на який тип вантажу переобладнати це завдання. Control+клік видалити команду переобладнання
 STR_REFIT_ORDER                                                 :(Переобладнати до {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Розклад
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Переключитись на розклад
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Накази)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Кінець наказів - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2866,6 +2878,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Не з�
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставити новий пункт перед відміченим або додати в кінець
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Чекати повного завантаження на цій станції
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Лише розвантажитися на цій станції
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Розклад - клікніть на наказі, щоб виділити.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Змінити час, впродовж якого має виконуватись наказ
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Очистити час для виділеного наказу
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Очистити лічильник запізнення, щоб транспорт встигнув
 STR_SERVICE_HINT                                                :{BLACK}Пропустити це завдання поки обслуговування потрібне!!!
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}{}Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Зламався
@@ -2887,6 +2903,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Пере
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Неможливо перейменувати тип поїзду...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Наказати транспорту примусово відвантажити вантаж
 STR_886F_TRANSFER                                               :{BLACK}Пересадка
+STR_CLEAR_TIME                                                  :{BLACK}Очистити час
+STR_RESET_LATENESS                                              :{BLACK}Очистити лічильник запізнення
 
 STR_TRAIN_STOPPING                                              :{RED}Зупиняється
 STR_TRAIN_STOPPING_VEL                                          :{RED}Зупиняється, {VELOCITY}
@@ -2897,6 +2915,14 @@ STR_TRAIN_START_NO_CATENARY                                     :Нема еле
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Став доступним новий {STRING}!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Став доступним новий {STRING}!  -  {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не можна встановити розклад для транспорту...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт може чекати тільки на станціях.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Цей транспорт не зупиняється на цій станції.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змінити час
+STR_TIMETABLE_STATUS_ON_TIME                                    :Цей транспорт зараз прямує за розкладом
+STR_TIMETABLE_STATUS_LATE                                       :Цей транспорт запізнюється на {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :Цей транспорт випереджує розклад на {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}На шляху авто
@@ -3108,6 +3134,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нова
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Неможливо переобладнати літак...
 STR_GO_TO_AIRPORT_HANGAR                                        :Летіти в {STATION} ангар
 SERVICE_AT_AIRPORT_HANGAR                                       :Ремонтуватись в {STATION} ангарі
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (розклад)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Дирижабль впав на {STATION}!
@@ -3424,6 +3452,10 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Пере
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Переключити прозорість для споруд, таких як станції, депо, ЛЕП тощо
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Переключити прозорість для мостів
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключити прозорість для споруд, таких як маяки та антенни (може, потім)
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Змінити прозорість індикаторів завантаження
+
+STR_PERCENT_FULL_SMALL                                          :{TINYFONT}{WHITE}{NUM}%
+STR_PERCENT_FULL                                                :{WHITE}{NUM}%
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Група {COMMA}

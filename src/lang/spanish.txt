@@ -4,6 +4,8 @@
 ##plural 0
 ##gender masculino femenino
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fuera del borde del mapa
@@ -1047,6 +1049,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacio
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuevo sistema de busq. de rutas global (NPF, anula a NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Carga el multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite conducir en paradas sobre carreteras de ciudades: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permitir construcción en estaciones contiguas : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir siempre aeropuertos pequeños: {ORANGE}{STRING}
 
@@ -1100,6 +1103,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Nada
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidad del scroll sobre el mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticamente hace pausa cuando empieza un juego nuevo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar la lista avanza de vehículos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horario en ticks en vez de en dias: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
@@ -1394,6 +1398,11 @@ STR_NETWORK_LANG_ANY                                            :Cualquiera
 STR_NETWORK_LANG_ENGLISH                                        :Inglés
 STR_NETWORK_LANG_GERMAN                                         :Alemán
 STR_NETWORK_LANG_FRENCH                                         :Francés
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasileño
+STR_NETWORK_LANG_BULGARIAN                                      :Búlgaro
+STR_NETWORK_LANG_CHINESE                                        :Chino
+STR_NETWORK_LANG_CZECH                                          :Checo
+STR_NETWORK_LANG_DANISH                                         :Danés
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de estar del juego multijugador
@@ -2543,6 +2552,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Ir al depósito
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN} para mantenimiento
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Hacia el depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Hacia el depósito de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servicio en el depósito de trenes de {TOWN}
@@ -2631,6 +2641,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostrar 
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostrar capacidades de cada vehículo
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Mostrar capacidad total del tren, dividida por tipo de carga
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de órdenes - click en orden para resaltarla
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saltar orden actual y comenzar la siguiente
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Borrar orden resaltada
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Hacer la orden resaltada sin parada
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista
@@ -2667,6 +2678,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Esta vía carec
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuevo{STRING} ahora disponible!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuevo {STRING} ahora disponible!  -  {STRING}
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vehículo de carretera en camino
@@ -2874,6 +2886,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nueva ca
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No se puede reformar aeronave...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ir al hangar de {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Ir al hangar de {STATION} para mantenimiento
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}¡Desastre de zepelín en {STATION}!
@@ -3189,6 +3202,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activar 
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activar transparencias para construcciones como estaciones, depósitos, puntos de paso, etc.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activar transparencias para puentes
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activar transparencias para estructuras como faros, antenas, etc.
+
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Grupo {COMMA}

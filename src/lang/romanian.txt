@@ -1038,7 +1038,7 @@ STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Permite
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permite mai multe industrii similare in acelasi oras: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrii identice pot fi construite aproape una de cealaltã: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Afiseazã intotdeauna data in format lung in bara de stare: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Afiseazã semnalele pe partea de circulatie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Afişează semafoarele pe partea de circulaţie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Afiseazã finantele la sfârsitul fiecãrui an: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Utilizeazã o metodã gen TTDPatch pentru 'non stop': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Autovehiculele formeazã o coadã (cu efecte cuantice): {ORANGE}{STRING}
@@ -1132,7 +1132,7 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Anul de
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Termina jocul in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Economie cu schimbãri de productie mai reduse, dar mai frecvente
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite cumpararea de actiuni de la alte companii
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasare automatã a semnalelor la fiecare: {ORANGE}{STRING} pãtrãtele
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasare automată a semafoarelor la fiecare: {ORANGE}{STRING} pătrăţele
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construieste automat semafaore înainte de: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Apectul de oras "fara alte drumuri" nu este valid in editorul de scenarii
@@ -1588,10 +1588,10 @@ STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construc
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Alege podul de cale ferată
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Nu pot construi un depou feroviar aici...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Nu pot construi o gară aici...
-STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Nu pot plasa semnale aici...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Nu pot plasa semafoare aici...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Nu pot construi cale ferată aici...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nu pot înlătura calea ferată...
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nu pot înlătura semnalele de aici...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nu pot înlătura semafoarele de aici...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientarea depoului feroviar
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construcţii feroviare
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construcţie cale ferată electrificată
@@ -1600,7 +1600,7 @@ STR_1017_MAGLEV_CONSTRUCTION                                    :Construcţii ma
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construieşte cale ferată
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Construieşte un depou feroviar (pentru construire şi întreţinere de trenuri)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Construieşte gară
-STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Plasează semnale feroviare
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Plasează semafoare feroviare
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Construieşte pod de cale ferată
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Construieşte tunel feroviar
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Comutator pentru construcţie/înlăturare căi ferate şi semnale
@@ -1609,10 +1609,15 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Alege or
 STR_1021_RAILROAD_TRACK                                         :Cale ferată
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Depou de cale ferată
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...terenul se află în proprietatea altei companii
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Cale feratã cu semnale normale
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Cale feratã cu pre-semnalizare
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Cale feratã cu semnale de iesire
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Cale feratã cu semnale combinate
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Cale ferată cu semafoare normale
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Cale ferată cu pre-semafoare
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Cale ferată cu semafoare de ieşire
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Cale ferată cu semafoare combinate
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Cale ferată cu semafoare normale şi pre-semafoare
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Cale ferată cu semafoare normale şi semafoare de ieşire
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Cale ferată cu semafoare normale şi semafoare combinate
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Cale ferată cu pre-semafoare şi semafoare de ieşire
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Cale ferată cu pre-semafoare şi semafoare combinate
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Trebuie mai intai sa demolati gara
 
 
@@ -2591,6 +2596,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Service la Depo
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mergi fără oprire la Depoul {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non-stop pt. service la Depoul {TOWN}
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Merge la Depoul {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Merge la Depoul {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Service la Depoul {TOWN}
@@ -2648,6 +2654,7 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prea mul
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nu pot adăuga o comandă nouă...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nu pot şterge această comandă...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nu pot modifica această comandă...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nu pot muta acest ordin...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nu pot sări la ordinul selectat...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nu pot muta vehiculul...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Al doilea vagon+motor va avea mereu aceeasi destinatie ca si primul
@@ -2716,6 +2723,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Aceasta sina nu
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Un nou {STRING} este acum disponibil!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Un nou {STRING} este acum disponibil!  -  {STRING}
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Autovehicul in cale
@@ -2927,6 +2935,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua cap
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nu pot schimba tipul de încãrcãturã...
 STR_GO_TO_AIRPORT_HANGAR                                        :Mergi la Hangarul {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Întreţinere la hangarul {STATION}
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Accident de zepelin la{STATION}!
@@ -3244,6 +3253,7 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Comuta t
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comuta transparenta pentru poduri
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comuta transparenta pentru structuri ca farurile si antenele - poate in viitor, pentru efect
 
+
 ##### Mass Order
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Toate trenurile
@@ -3257,6 +3267,8 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Nav{P a e}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronav{P a e}
 
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nu pot crea grup...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nu pot şterge grup...
 
 
 STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Profit anul acesta: {GREEN}{CURRENCY} {BLACK}(anul trecut: {GREEN}{CURRENCY}{BLACK})
