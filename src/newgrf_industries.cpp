@@ -19,6 +19,7 @@
  * to those used by the game, the IDs used for overriding old industries must be
  * translated when the idustry spec is set. */
 IndustryOverrideManager _industry_mngr(NEW_INDUSTRYOFFSET, NUM_INDUSTRYTYPES, INVALID_INDUSTRYTYPE);
+IndustryTileOverrideManager _industile_mngr(NEW_INDUSTRYTILEOFFSET, NUM_INDUSTRYTILES, INVALID_INDUSTRYTILE);
 
 /**
  * Finds the distance for the closest tile with water/land given a tile

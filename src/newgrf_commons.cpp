@@ -220,6 +220,29 @@ void IndustryOverrideManager::SetEntitySpec(const IndustrySpec *inds)
 	_industry_specs[ind_id].enabled = true;
 }
 
+void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
+{
+	IndustryGfx indt_id = this->AddEntityID(its->grf_prop.local_id, its->grf_prop.grffile->grfid, its->grf_prop.subst_id);
+
+	if (indt_id == invalid_ID) {
+		grfmsg(1, "IndustryTile.SetEntitySpec: Too many industry tiles allocated. Ignoring.");
+		return;
+	}
+
+	memcpy(&_industry_tile_specs[indt_id], its, sizeof(*its));
+
+	/* Now add the overrides. */
+	for (int i = 0; i < max_offset; i++) {
+		IndustryTileSpec *overridden_its = &_industry_tile_specs[i];
+
+		if (entity_overrides[i] != its->grf_prop.local_id) continue;
+
+		overridden_its->grf_prop.override = indt_id;
+		overridden_its->enabled = false;
+		entity_overrides[i] = invalid_ID;
+	}
+}
+
 /** Function used by houses (and soon industries) to get information
  * on type of "terrain" the tile it is queries sits on.
  * @param tile TileIndex of the tile been queried

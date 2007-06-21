@@ -76,8 +76,19 @@ class IndustryOverrideManager : public OverrideManagerBase
 		void SetEntitySpec(const IndustrySpec *inds);
 };
 
+
+struct IndustryTileSpec;
+class IndustryTileOverrideManager : public OverrideManagerBase
+{
+	public:
+		IndustryTileOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+				OverrideManagerBase(offset, maximum, invalid) {};
+		void SetEntitySpec(const IndustryTileSpec *indts);
+};
+
 extern HouseOverrideManager _house_mngr;
 extern IndustryOverrideManager _industry_mngr;
+extern IndustryTileOverrideManager _industile_mngr;
 
 uint32 GetTerrainType(TileIndex tile);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
