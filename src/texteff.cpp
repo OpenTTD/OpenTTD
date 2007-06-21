@@ -55,7 +55,7 @@ static bool _textmessage_visible = false;
 /* The chatbox grows from the bottom so the coordinates are pixels from
  * the left and pixels from the bottom. The height is the maximum height */
 static const Oblong _textmsg_box = {10, 30, 500, 150};
-static uint8 _textmessage_backup[150 * 500 * 5]; // (height * width)
+static uint8 _textmessage_backup[150 * 500 * 6]; // (height * width)
 
 static inline uint GetTextMessageCount()
 {
