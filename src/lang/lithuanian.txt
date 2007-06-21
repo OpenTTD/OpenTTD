@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Už žemelapio kraštų
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Per arti žemėlapio krašto
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Neužtenka lėšų: reikia {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Paviršius turi būti lygus
 STR_0008_WAITING                                                :{BLACK}Laukia: {WHITE}{STRING}
@@ -1185,7 +1185,7 @@ STR_TOYLAND_LANDSCAPE                                           :'Zaislinis' kli
 STR_CHEATS                                                      :{WHITE}Sukciavimai
 STR_CHEATS_TIP                                                  :{BLACK}Laukeliai rodo ar jus naudojote si triuka pries tai
 STR_CHEATS_WARNING                                              :{BLACK}Demesio! Tu bandai isduoti vargsus savo varzovus. Tai bus tavo geda visiems laikams ir niekada neuzmirsta.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Padauginti pinigu {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Padauginti pinigu {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Zaisti uz zaideja: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiskas buldozeris (pasalina gamyklas ir kt.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneliai gali susikirsti: {ORANGE}{STRING}
@@ -1414,9 +1414,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}KOMPANI
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Kompanijos pavadinimas:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Pradejo zaisti:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Kompanijos verte:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Dabartinis balansas:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Praeitu metu pajamos:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Kompanijos verte:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Dabartinis balansas:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Praeitu metu pajamos:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Sparta:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Transporto priemones:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2118,18 +2118,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Lektuvu p
 STR_701B_SHIP_INCOME                                            :{GOLD}Laivu pajamos
 STR_701C_LOAN_INTEREST                                          :{GOLD}Paskolos palukanos
 STR_701D_OTHER                                                  :{GOLD}Kita
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Viso:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Pajamu diagrama
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Įprastinės veiklos pelno diagrama
 STR_7026_BANK_BALANCE                                           :{WHITE}Saskaitos balansas
 STR_7027_LOAN                                                   :{WHITE}Paskola
-STR_MAX_LOAN                                                    :{WHITE}Maksimali paskola:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Maksimali paskola:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Skolintis{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Grazinti{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...skolintis maksimaliai galima {CURRENCY}
@@ -2209,7 +2209,7 @@ STR_SET_COMPANY_PASSWORD                                        :Ivesti slaptazo
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Pasauline krize!{}{}Ekonomikai griuvant, finansu ekspertai bijo paties blogiausio!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Krize iveikta!{}{}Prekybos pagyvejimas suteikia naujas viltis pramones imonems!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Pakeisti lango dydi
-STR_7076_COMPANY_VALUE                                          :{GOLD}Kompanijos verte: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Kompanijos verte: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Pirkti 25% kompanijos akciju
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Parduoti 25% kompanijos akciju
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Pirkti 25% sios kompanijos akciju

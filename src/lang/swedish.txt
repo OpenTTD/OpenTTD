@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Utanför kanten
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}För nära kanten av kartan
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Inte tillräckligt med pengar - krävs {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Platt mark krävs
 STR_0008_WAITING                                                :{BLACK}Väntar: {WHITE}{STRING}
@@ -1186,7 +1186,7 @@ STR_TOYLAND_LANDSCAPE                                           :Leksakslandskap
 STR_CHEATS                                                      :{WHITE}Fusk
 STR_CHEATS_TIP                                                  :{BLACK}Checkboxar indikerar om du använt det här fusket förut
 STR_CHEATS_WARNING                                              :{BLACK}Varning! Du är på väg att förråda dina motståndare. Kom ihåg att detta inte kommer glömmas.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Öka pengar med {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Öka pengar med {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spela som Spelare: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk Bulldozer (ta bort industrier, fyrar etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRING}
@@ -1441,9 +1441,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}FÖRETA
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Företagsnamn: {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Etableringsår:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Företagsvärde:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuvarande saldo:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Förra årets inkomst:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Företagsvärde:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuvarande saldo:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Förra årets inkomst:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestandabetyg:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Fordon:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2182,18 +2182,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Inkomst f
 STR_701B_SHIP_INCOME                                            :{GOLD}Inkomst från skepp
 STR_701C_LOAN_INTEREST                                          :{GOLD}Ränta på lån
 STR_701D_OTHER                                                  :{GOLD}Övrigt
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totalt:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf över inkomster
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf över vinst
 STR_7026_BANK_BALANCE                                           :{WHITE}Banksaldo
 STR_7027_LOAN                                                   :{WHITE}Lån
-STR_MAX_LOAN                                                    :{WHITE}Maxlån:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Maxlån:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Låna {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Återbetala {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maximal storlek på lånet är {CURRENCY}
@@ -2273,7 +2273,7 @@ STR_SET_COMPANY_PASSWORD                                        :Ange företaget
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin sjunker!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i byteshandeln ger tillförsikt till industrier när ekonomin stärks!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Växla stor/liten fönsterstorlek
-STR_7076_COMPANY_VALUE                                          :{GOLD}Företagets värde: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Företagets värde: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Köp 25% andelar i företaget
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Sälj 25% andelar i företaget
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Köp 25% andelar i detta företag

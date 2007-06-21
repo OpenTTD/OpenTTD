@@ -457,10 +457,9 @@ static const CmdStruct _cmd_structs[] = {
 	{"DKBLUE",  EmitSingleChar, SCC_DKBLUE,  0, 0},
 	{"BLACK",   EmitSingleChar, SCC_BLACK,   0, 0},
 
-	{"CURRCOMPACT",   EmitSingleChar, SCC_CURRENCY_COMPACT,    1, 0}, // compact currency (32 bits)
+	{"CURRCOMPACT",   EmitSingleChar, SCC_CURRENCY_COMPACT,    1, 0}, // compact currency
 	{"REV",           EmitSingleChar, SCC_REVISION,            0, 0}, // openttd revision string
 	{"SHORTCARGO",    EmitSingleChar, SCC_CARGO_SHORT,         2, 0}, // short cargo description, only ### tons, or ### litres
-	{"CURRCOMPACT64", EmitSingleChar, SCC_CURRENCY_COMPACT_64, 2, 0}, // compact currency 64 bits
 
 	// These are special versions of {STRING1}
 	// The first string includes the second string.
@@ -501,7 +500,6 @@ static const CmdStruct _cmd_structs[] = {
 	{"NUM",   EmitSingleChar, SCC_NUM,   1, 0}, // Signed number
 
 	{"CURRENCY",   EmitSingleChar, SCC_CURRENCY,    1, 0},
-	{"CURRENCY64", EmitSingleChar, SCC_CURRENCY_64, 2, 0},
 
 	{"WAYPOINT", EmitSingleChar, SCC_WAYPOINT_NAME, 1, 0}, // waypoint name
 	{"STATION",  EmitSingleChar, SCC_STATION_NAME,  1, 0},

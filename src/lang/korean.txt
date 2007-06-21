@@ -11,8 +11,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}맵 가장자리에서 너무 멉니다!
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}맵 가장자리와 너무 가깝습니다!
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}재정이 부족합니다 - {CURRENCY} 이(가) 필요합니다
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}평지가 필요합니다!
 STR_0008_WAITING                                                :{BLACK}대기: {WHITE}{STRING}
@@ -1187,7 +1187,7 @@ STR_TOYLAND_LANDSCAPE                                           :장난감 나�
 STR_CHEATS                                                      :{WHITE}치트
 STR_CHEATS_TIP                                                  :{BLACK}체크박스는 이전에 사용한 치트를 나타냅니다.
 STR_CHEATS_WARNING                                              :{BLACK}경고! 당신은 경쟁자를 속이고 있습니다. 그러한 창피는 영원히 지워지지 않으리란 것을 명심하십시오.
-STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY64} 만큼 증가
+STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY} 만큼 증가
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}플레이어 {ORANGE}{COMMA} (으)로 플레이
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거) : {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용 : {ORANGE}{STRING}
@@ -1442,9 +1442,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}회사 
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}회사 이름:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}설립:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}회사가치:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}재정 수익:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}작년 수익:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}회사가치:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}재정 수익:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}작년 수익:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}퍼포먼스:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}차량:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2184,18 +2184,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}항공기
 STR_701B_SHIP_INCOME                                            :{GOLD}선박 수익
 STR_701C_LOAN_INTEREST                                          :{GOLD}이자
 STR_701D_OTHER                                                  :{GOLD}기타
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}총계:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}수익 그래프
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}수행 이익 그래프
 STR_7026_BANK_BALANCE                                           :{WHITE}소유금
 STR_7027_LOAN                                                   :{WHITE}대출
-STR_MAX_LOAN                                                    :{WHITE}최대 대출:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}최대 대출:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} 빌리기
 STR_702A_REPAY                                                  :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} 갚기
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...허용된 최대 대출금은 {CURRENCY} 입니다.
@@ -2275,7 +2275,7 @@ STR_SET_COMPANY_PASSWORD                                        :회사 암호 �
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}공황 종료!{}{}무역량의 증대로 경제를 살려낸 결과 산업시설에 대한 신뢰를 가져왔습니다!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}대형/소형 창 크기 토글
-STR_7076_COMPANY_VALUE                                          :{GOLD}회사가치: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}회사가치: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}회사 주식의 25%를 매입
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}회사 주식의 25%를 매도
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}이 회사 주식의 25%를 매입합니다.

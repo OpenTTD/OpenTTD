@@ -12,8 +12,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Za okrajom mapy
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Príliš blízko okraja mapy
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Malá hotovost - potrebných {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebný rovný terén
 STR_0008_WAITING                                                :{BLACK}Caka: {WHITE}{STRING}
@@ -1250,7 +1250,7 @@ STR_TOYLAND_LANDSCAPE                                           :krajina hraciek
 STR_CHEATS                                                      :{WHITE}Cheaty
 STR_CHEATS_TIP                                                  :{BLACK}Checkbox indikuje opakovane pouzite cheatu
 STR_CHEATS_WARNING                                              :{BLACK}Varovanie! Chcete podviest vasich protihracov. Tento podvod sa navzdy zapameta.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Zvysit hotovost o {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Zvysit hotovost o {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Hrat ako hrac: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magicky buldozer (odstrani priemysel, budovy): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely sa mozu navzajom krizit: {ORANGE}{STRING}
@@ -1504,9 +1504,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO O 
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nazov spolocnosti:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Zalozene:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Hodnota spolocnosti:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Stav uctu:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Zisk v minulom roku:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Hodnota spolocnosti:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Stav uctu:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Zisk v minulom roku:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Vykon:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vozidla:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2228,18 +2228,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Trzby lie
 STR_701B_SHIP_INCOME                                            :{GOLD}Trzby lodi
 STR_701C_LOAN_INTEREST                                          :{GOLD}Uroky
 STR_701D_OTHER                                                  :{GOLD}Ostatne
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Spolu:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf príjmov
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf prevadzkoveho zisku
 STR_7026_BANK_BALANCE                                           :{WHITE}Zostatok v banke
 STR_7027_LOAN                                                   :{WHITE}Uver
-STR_MAX_LOAN                                                    :{WHITE}Uverovy limit:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Uverovy limit:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Pozicat {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Splatit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}... uverovy limit je {CURRENCY}
@@ -2319,7 +2319,7 @@ STR_SET_COMPANY_PASSWORD                                        :Nastavte heslo 
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svetova kriza!{}{}Financni experti maju obavy z prepadu ekonomiky!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Koniec krizy!{}{}Ocakava sa vzostup predaja a posilnenie ekonomiky!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Prepnut velkost okna
-STR_7076_COMPANY_VALUE                                          :{GOLD}Hodnota spolocnosti: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Hodnota spolocnosti: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kupit 25% podiel v spolocnosti
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Predat 25% podiel v spolocnosti
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kupit 25% podiel v tejto spolocnosti

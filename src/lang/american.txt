@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Off edge of map
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Too close to edge of map
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Not enough cash - requires {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flat land required
 STR_0008_WAITING                                                :{BLACK}Waiting: {WHITE}{STRING}
@@ -1186,7 +1186,7 @@ STR_TOYLAND_LANDSCAPE                                           :Toyland landsca
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Checkboxes indicate if you have used this cheat before
 STR_CHEATS_WARNING                                              :{BLACK}Warning! You are about to betray your fellow competitors. Keep in mind that such a disgrace will be remembered for eternity.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Increase money by {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Increase money by {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Playing as player: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
@@ -1441,9 +1441,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}COMPANY
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Company name:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguration:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Company value:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Current balance:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Last year's income:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Company value:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Current balance:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Last year's income:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Performance:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vehicles:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2182,18 +2182,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Aircraft 
 STR_701B_SHIP_INCOME                                            :{GOLD}Ship Income
 STR_701C_LOAN_INTEREST                                          :{GOLD}Loan Interest
 STR_701D_OTHER                                                  :{GOLD}Other
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Income Graph
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Operating Profit Graph
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank Balance
 STR_7027_LOAN                                                   :{WHITE}Loan
-STR_MAX_LOAN                                                    :{WHITE}Max Loan:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Max Loan:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Borrow {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Repay {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maximum permitted loan size is {CURRENCY}
@@ -2273,7 +2273,7 @@ STR_SET_COMPANY_PASSWORD                                        :Set company pas
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}World Recession!{}{}Financial experts fear worst as economy slumps!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recession Over!{}{}Upturn in trade gives confidence to industries as economy strengthens!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Toggle large/small window size
-STR_7076_COMPANY_VALUE                                          :{GOLD}Company value: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Company value: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Buy 25% share in company
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Sell 25% share in company
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Buy 25% share in this company

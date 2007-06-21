@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Kartan reunan ulkopuolella.
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Liian lähellä kartan reunaa.
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Käteinen ei riitä - tarvitaan {CURRENCY}.
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Tarvitaan tasaista maata.
 STR_0008_WAITING                                                :{BLACK}Lähdössä: {WHITE}{STRING}
@@ -1182,7 +1182,7 @@ STR_TOYLAND_LANDSCAPE                                           :Lelumaan maasto
 STR_CHEATS                                                      :{WHITE}Huijaukset
 STR_CHEATS_TIP                                                  :{BLACK}Valintaruudut osoittavat, oletko käyttänyt huijausta aiemmin.
 STR_CHEATS_WARNING                                              :{BLACK}Varoitus! Olet juuri pettämässä kanssakilpailijoitasi. Pidä mielessä, että tällainen häväistys pidetään mielessä ikuisuuden ajan.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Anna lisää rahaa: {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Anna lisää rahaa: {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Pelaa pelaajana: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Taikapuskutraktori (siirrä teollisuutta yms.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelit voivat mennä ristiin: {ORANGE}{STRING}
@@ -1433,9 +1433,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}YHTIÖN
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Yhtiön nimi:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Perustettu:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Yhtiön arvo:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nykyinen kate:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Viime vuoden tulot:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Yhtiön arvo:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nykyinen kate:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Viime vuoden tulot:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Suorite:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Liikenneväl.:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2175,18 +2175,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Lentokone
 STR_701B_SHIP_INCOME                                            :{GOLD}Laivojen tulot
 STR_701C_LOAN_INTEREST                                          :{GOLD}Lainan korko
 STR_701D_OTHER                                                  :{GOLD}Muuta
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Yhteensä:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Tulokuvaaja
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Käyttökatekuvaaja
 STR_7026_BANK_BALANCE                                           :{WHITE}Tilin saldo
 STR_7027_LOAN                                                   :{WHITE}Laina
-STR_MAX_LOAN                                                    :{WHITE}Laina enimmillään:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Laina enimmillään:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Lainaa {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Lyhennä lainaa {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...suurin sallittu lainan suuruus on {CURRENCY}.
@@ -2266,7 +2266,7 @@ STR_SET_COMPANY_PASSWORD                                        :Aseta yhtiön s
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Maailmanlaajuinen laskukausi!{}{}Rahoitusasiantuntijat pelkäävät pahinta talouden laskiessa!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Laskukausi ohi!{}{}Kaupankäynnin käänne parempaan lisää luottamusta teollisuuteen talouden vahvistuessa!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Suuri/pieni ikkunan koko
-STR_7076_COMPANY_VALUE                                          :{GOLD}Yhtiön arvo: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Yhtiön arvo: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Osta 25{NBSP}%:n osuus yhtiöstä
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Myy 25{NBSP}%:n osuus yhtiöstä
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Osta 25{NBSP}%:n osuus tästä yhtiöstä

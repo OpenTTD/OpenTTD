@@ -12,8 +12,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Извън картата
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Края на картата е прекалено близо
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недостатъчно пари - трябват {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Трябва равна земя
 STR_0008_WAITING                                                :{BLACK}Чакане: {WHITE}{STRING}
@@ -1186,7 +1186,7 @@ STR_TOYLAND_LANDSCAPE                                           :Земята н
 STR_CHEATS                                                      :{WHITE}Кодове
 STR_CHEATS_TIP                                                  :{BLACK}Кутийките показват дали този код е бил използван
 STR_CHEATS_WARNING                                              :{BLACK}Внимание! По този начин ще измамите своите съперници. Имайте в предвид, че това безчестие ще бъде запомнено вовеки веков.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Увеличаване на парите с {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Увеличаване на парите с {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Игра като: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Магически булдозер (премахва промишленост, неподвижни обекти): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунелите може да се пресичат: {ORANGE}{STRING}
@@ -1441,9 +1441,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}ИНФ�
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Име на компания:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Основаване:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Стойност на компанията:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Текущ баланс:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Приход от предходната година:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Стойност на компанията:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Текущ баланс:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Приход от предходната година:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Представяне:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Превозни средства:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2176,18 +2176,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Прих�
 STR_701B_SHIP_INCOME                                            :{GOLD}Приходи от кораби
 STR_701C_LOAN_INTEREST                                          :{GOLD}Лихва по заема
 STR_701D_OTHER                                                  :{GOLD}Други
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Всичко:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Графика на приходите
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Графика на оперативните приходи
 STR_7026_BANK_BALANCE                                           :{WHITE}Баланс на банковата сметка
 STR_7027_LOAN                                                   :{WHITE}Заем
-STR_MAX_LOAN                                                    :{WHITE}Максимален заем:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Максимален заем:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Изтегли {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Изплати {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...максимално разрешеният размер на заема е {CURRENCY}
@@ -2267,7 +2267,7 @@ STR_SET_COMPANY_PASSWORD                                        :Поставя�
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Световна икономическа криза!{}{}Финансовите експерти очакват най-лошото от сриващата се световна икономика!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Световната икономическа криза отмина!{}{}Възходът на търговията дава увереност на индустриите в новата засилваща се икономическа реалност!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Активирай голям/малък размер на прозореца
-STR_7076_COMPANY_VALUE                                          :{GOLD}Стойност на Компанията: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Стойност на Компанията: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Купи 25% от акциите на компанията
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Продай 25% от акциите на компанията
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Купи 25% от акциите на тази компания

@@ -11,8 +11,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Izvan rubova karte
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Preblizu rubu karte
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nedovoljno gotovine - potrebno je {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebna ravna površina
 STR_0008_WAITING                                                :{BLACK}Čekanje: {WHITE}{STRING}
@@ -1152,7 +1152,7 @@ STR_TOYLAND_LANDSCAPE                                           :Toyland krajoli
 STR_CHEATS                                                      :{WHITE}Varanje
 STR_CHEATS_TIP                                                  :{BLACK}Kvačice ukazuju na to jesi li koristio ovo varanje prije
 STR_CHEATS_WARNING                                              :{BLACK}Upozorenje! Upravo se spremaš izdati svoj kolege natjecatelje. Imaj na umu da se takva sramota pamti zauvijek.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Povećava novce za {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Povećava novce za {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Igraj kao igrač: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čudesni buldožer (uklanja industrije, nepokretne objekte): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli se mogu ukrštavati međusobno: {ORANGE}{STRING}
@@ -1403,9 +1403,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}PODACI 
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Ime tvrtke:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Preuzimanje dužnosti:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Vrijednost tvrtke:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Trenutno stanje:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Prošlogodišnji prihod:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Vrijednost tvrtke:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Trenutno stanje:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Prošlogodišnji prihod:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Izvršavanje: {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vozila:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2108,18 +2108,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Prihod od
 STR_701B_SHIP_INCOME                                            :{GOLD}Prihod od brodova
 STR_701C_LOAN_INTEREST                                          :{GOLD}Kamate
 STR_701D_OTHER                                                  :{GOLD}Ostalo
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Ukupno:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf prihoda
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf operativnih prihoda
 STR_7026_BANK_BALANCE                                           :{WHITE}Bankovna bilanca
 STR_7027_LOAN                                                   :{WHITE}Kredit
-STR_MAX_LOAN                                                    :{WHITE}Maks zajam:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Maks zajam:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Pozajmi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Otplati {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...najveći dopušteni kredit iznosi {CURRENCY}
@@ -2197,7 +2197,7 @@ STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaštiti
 STR_SET_COMPANY_PASSWORD                                        :Postavi zaporku tvrtke
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svjetska recesija!{}{}Financijski stručnjaci očekuju najgore zbog ekonomske krize!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesija završena!{}{}Obrat  u trgovanu daje samopouzdanje gospodarstvu jer ekonomija jača!
-STR_7076_COMPANY_VALUE                                          :{GOLD}Vrijednost tvrtke: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Vrijednost tvrtke: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kupi 25% udjela u tvrtci
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Prodaj 25% udio u tvrtci
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kupi 25% udjela u ovoj tvrtci

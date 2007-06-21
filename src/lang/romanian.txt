@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Depăşeşte limita hărţii
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Prea aproape de marginea hărţii
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nu ai destui bani - îţi trebuie {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Necesită teren plat
 STR_0008_WAITING                                                :{BLACK}În aşteptare: {WHITE}{STRING}
@@ -1184,7 +1184,7 @@ STR_TOYLAND_LANDSCAPE                                           :peisajul 'tara 
 STR_CHEATS                                                      :{WHITE}Cheat-uri
 STR_CHEATS_TIP                                                  :{BLACK}Checkbox-urile aratã un cheat folosit anterior
 STR_CHEATS_WARNING                                              :{BLACK}Atentie! Esti pe cale sã-ti trãdezi colegii de joc! Nu uita cã aceastã rusine va rãmâne înregistratã pentru totdeauna!
-STR_CHEAT_MONEY                                                 :{LTBLUE}Mãreste fondurile cu {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Mãreste fondurile cu {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Joacã în locul jucãtorului: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demoleazã industrii si lucruri amovibile): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelele se pot intersecta: {ORANGE}{STRING}
@@ -1439,9 +1439,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO CO
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Numele companiei:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurarea:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Valoarea companiei:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanţa curentă:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Venituri anul trecut:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Valoarea companiei:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanţa curentă:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Venituri anul trecut:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Performanta:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vehicule:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2174,18 +2174,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Venituri 
 STR_701B_SHIP_INCOME                                            :{GOLD}Venituri nave
 STR_701C_LOAN_INTEREST                                          :{GOLD}Dobânda la credit
 STR_701D_OTHER                                                  :{GOLD}Altele
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graficul veniturilor
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graficul profitului din operare
 STR_7026_BANK_BALANCE                                           :{WHITE}Balanţă curentă
 STR_7027_LOAN                                                   :{WHITE}Credite
-STR_MAX_LOAN                                                    :{WHITE}Limită credite:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Limită credite:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Împrumută {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Plăteşte înapoi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...creditul maxim permis este de {CURRENCY}
@@ -2265,7 +2265,7 @@ STR_SET_COMPANY_PASSWORD                                        :Alege parola co
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recesiune mondială!{}{}Experţii financiari se tem de ceea ce e mai rău odată cu prăbuşirea economică!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesiunea s-a încheiat!{}{}Creşterea comerţului dă încredere industriei, iar economia se redresează!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Comutator pentru mărimea ferestrei
-STR_7076_COMPANY_VALUE                                          :{GOLD}Valoarea companiei: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Valoarea companiei: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Cumpără 25% din acţiunile companiei
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vinde 25% din acţiunile companiei
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Cumpără 25% din acţiunile acestei companii

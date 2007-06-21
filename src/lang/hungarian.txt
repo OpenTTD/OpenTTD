@@ -11,8 +11,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Kilóg a térképről
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Túl közel van a térkép széléhez
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nincs elég pénzed - {CURRENCY} kellene
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sima talaj szükséges
 STR_0008_WAITING                                                :{BLACK}Várakozik: {WHITE}{STRING}
@@ -1255,7 +1255,7 @@ STR_TOYLAND_LANDSCAPE                                           :játék táj
 STR_CHEATS                                                      :{WHITE}Csalások
 STR_CHEATS_TIP                                                  :{BLACK}A kijelölőnégyzetek jelzik a csalások eddigi használtságát
 STR_CHEATS_WARNING                                              :{BLACK}Figyelem! Te épp a versenytársaidat készülöd elárulni. Sose felejtsd el, hogy egy ilyen szégyenletes tett sose merül feledésbe.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Tőkeemelés {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Tőkeemelés {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Játszani mint játékos #{ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, stb): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}A csatornák keresztezhessék egymást: {ORANGE}{STRING}
@@ -1510,9 +1510,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}CÉG IN
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}A cég neve:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Beiktatás:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}A cég értéke:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Jelelegi összeg:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Előző évi bevétel:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}A cég értéke:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Jelelegi összeg:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Előző évi bevétel:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Teljesítmény:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Járművek:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2289,18 +2289,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Repülőg
 STR_701B_SHIP_INCOME                                            :{GOLD}Hajók bevétele
 STR_701C_LOAN_INTEREST                                          :{GOLD}Kölcsön kamata
 STR_701D_OTHER                                                  :{GOLD}Egyéb
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Összesen:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Jövedelem grafikon
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Működési nyereség grafikon
 STR_7026_BANK_BALANCE                                           :{WHITE}Banki egyenleg
 STR_7027_LOAN                                                   :{WHITE}Kölcsön
-STR_MAX_LOAN                                                    :{WHITE}Max. kölcsön:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Max. kölcsön:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Kölcsönkér {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Visszafizet {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...{CURRENCY} a megengedett legnagyobb kölcsön
@@ -2380,7 +2380,7 @@ STR_SET_COMPANY_PASSWORD                                        :Vállalati jels
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Gazdasági visszaesés!{}{}A közgazdászok gazdasági válságtól tartanak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Vége a visszaesésnek!{}{}A kereskedelem fellendül, ami önbizalmat ad az iparnak, és erősödik a gazdaság!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Kicsi/nagy ablakméret közötti váltás
-STR_7076_COMPANY_VALUE                                          :{GOLD}Cég értéke: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Cég értéke: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}25% megvétele a cégből
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}25% eladása a cégből
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}25% megvétele ebből a cégből

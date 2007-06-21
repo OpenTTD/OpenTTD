@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Harita kenarında
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Sınıra çok yakın
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Para Yetersiz - şu kadar gerekli: {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Yerin düzleştirilmesi lazım
 STR_0008_WAITING                                                :{BLACK}Bekleyen: {WHITE}{STRING}
@@ -1179,7 +1179,7 @@ STR_TOYLAND_LANDSCAPE                                           :Oyun bahçesi
 STR_CHEATS                                                      :{WHITE}Hileler
 STR_CHEATS_TIP                                                  :{BLACK}Onay kutuları bu hilenin daha önce kullanılıp kullanmadığını bildirir.
 STR_CHEATS_WARNING                                              :{BLACK}Uyarı! Rakiplerine ihanet etmek üzeresin. Böyle bir davranışı sonsuza dek unutmayacaklarını akılda tut.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Parayı {CURRENCY64} kadar arttır
+STR_CHEAT_MONEY                                                 :{LTBLUE}Parayı {CURRENCY} kadar arttır
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Oyuncunun yerine geç: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldözer (normalde silinemeyen binaları siler): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tüneller kesişebilir: {ORANGE}{STRING}
@@ -1419,9 +1419,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}ŞİRKE
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Şirket adı:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Kurulus:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Şirket değeri:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Şimdiki dengesi:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Geçen seneki geliri:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Şirket değeri:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Şimdiki dengesi:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Geçen seneki geliri:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Performans:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Araçlar:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2150,18 +2150,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Uçak Gel
 STR_701B_SHIP_INCOME                                            :{GOLD}Gemi Geliri
 STR_701C_LOAN_INTEREST                                          :{GOLD}Kredi Faizi
 STR_701D_OTHER                                                  :{GOLD}Diğer
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Toplam:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Gelir Grafiği
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Çalıştirma Geliri Grafiği
 STR_7026_BANK_BALANCE                                           :{WHITE}Banka Hesabı
 STR_7027_LOAN                                                   :{WHITE}Kredi
-STR_MAX_LOAN                                                    :{WHITE}Mak Kredi:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Mak Kredi:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Ödünç al {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Öde {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksimum kredi miktarı {CURRENCY}
@@ -2241,7 +2241,7 @@ STR_SET_COMPANY_PASSWORD                                        :Şirket parolas
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Dünyada Kriz!{}{}Çok büyük bir ekonomik kriz yaşanacağı öngörüldü!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Kriz Atlatıldı!{}{}Ekonomi yine eski güzel günlerine döndü!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Pencere boyutunu büyült/küçült
-STR_7076_COMPANY_VALUE                                          :{GOLD}Şirket değeri: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Şirket değeri: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}%25'ini satın al
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}%25'ini geri ver
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Şirketin %25 hissesini al

@@ -12,8 +12,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Mimo okraj mapy
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Moc blízko k okraji mapy
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nedostatek peněz - je potřeba {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Je potřeba plochá země
 STR_0008_WAITING                                                :{BLACK}Čeká tu: {WHITE}{STRING}
@@ -1244,7 +1244,7 @@ STR_TOYLAND_LANDSCAPE                                           :Země hraček
 STR_CHEATS                                                      :{WHITE}Cheaty
 STR_CHEATS_TIP                                                  :{BLACK}Zaškrtávací políčka ukazují, jestli jsi tento cheat už použil.
 STR_CHEATS_WARNING                                              :{BLACK}Varování! Chystáš se podvést ostatní hráče. Pamatuj si, že tento podlý čin nebude nikdy zapomenut!
-STR_CHEAT_MONEY                                                 :{LTBLUE}Navýšit peníze o {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Navýšit peníze o {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Hrát jako hráč: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozer (odstraní průmysl a neodstranitelné předměty): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely se mohou křížit: {ORANGE}{STRING}
@@ -1499,9 +1499,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO O 
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Jméno společnosti:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Založeno:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Hodnota společnosti:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Stav na účtu:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Loňský hrubý zisk:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Hodnota společnosti:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Stav na účtu:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Loňský hrubý zisk:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Výkon:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vozidla:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2240,18 +2240,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Příjmy 
 STR_701B_SHIP_INCOME                                            :{GOLD}Příjmy lodí
 STR_701C_LOAN_INTEREST                                          :{GOLD}Úroky z půjček
 STR_701D_OTHER                                                  :{GOLD}Další
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Celkem:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf příjmu
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf provozního zisku
 STR_7026_BANK_BALANCE                                           :{WHITE}Stav na účtu
 STR_7027_LOAN                                                   :{WHITE}Půjčka
-STR_MAX_LOAN                                                    :{WHITE}Max. půjčka:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Max. půjčka:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Půjčit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Vrátit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}... maximální dovolená výše půjčky je {CURRENCY}.
@@ -2331,7 +2331,7 @@ STR_SET_COMPANY_PASSWORD                                        :Nastav heslo sp
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Celosvětový hospodářský úpadek!{}{}Finanční experti se kvůli prudkému poklesu ekonomiky obávají nejhoršího!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Konec hospodářského úpadku!{}{}Posílení trhu zvýšilo u průmyslu důvěru!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Přepnout velké/malé okno
-STR_7076_COMPANY_VALUE                                          :{GOLD}Hodnota společnosti: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Hodnota společnosti: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Koupit 25% podíl ve společnosti
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Prodat 25% podíl ve společnosti
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Koupit 25% podíl v této společnosti

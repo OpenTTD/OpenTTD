@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora del marc del mapa
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Massa a prop del marc del mapa
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}No tens prou diners - et fan falta {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Es necessita un terreny pla
 STR_0008_WAITING                                                :{BLACK}Esperant: {WHITE}{STRING}
@@ -1186,7 +1186,7 @@ STR_TOYLAND_LANDSCAPE                                           :paisatge de jog
 STR_CHEATS                                                      :{WHITE}Trampes
 STR_CHEATS_TIP                                                  :{BLACK}Els quadres marcats indiquen que ja has fet servir aquesta trampa
 STR_CHEATS_WARNING                                              :{BLACK}Atenció! Estàs a punt d'enredar als teus companys competidors. Pensa que una cosa així serà recordada per tota la eternitat!.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementa els diners en {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementa els diners en {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Juga com el jugador: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries, inamovibles): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Els túnels es poden creuar: {ORANGE}{STRING}
@@ -1441,9 +1441,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFORMA
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nom empresa:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguració:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Valor de l'empresa:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanç actual:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingressos de l'últim any:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Valor de l'empresa:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanç actual:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingressos de l'últim any:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Rendiment:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vehicles:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2182,18 +2182,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ingressos
 STR_701B_SHIP_INCOME                                            :{GOLD}Ingressos de Vaixells
 STR_701C_LOAN_INTEREST                                          :{GOLD}Interessos del Prèstec
 STR_701D_OTHER                                                  :{GOLD}Altres
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Gràfic d'Ingressos
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gràfic de Rendiment d'Operacions
 STR_7026_BANK_BALANCE                                           :{WHITE}Balanç del Banc
 STR_7027_LOAN                                                   :{WHITE}Préstec
-STR_MAX_LOAN                                                    :{WHITE}Max. Prèstec:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Max. Prèstec:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Demana {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Amortitza {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...màxim import permès del préstec és {CURRENCY}
@@ -2273,7 +2273,7 @@ STR_SET_COMPANY_PASSWORD                                        :Estableix la co
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recessió Mundial!{}{}Economistes experts temen que l'economia es desplomi!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessió Acabada!{}{}La millora als negocis dóna confiança a les indústries a la vegada que l'economia s'enforteix!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Intercanvia mida gran/petita de finestra
-STR_7076_COMPANY_VALUE                                          :{GOLD}Valor de l'Empresa: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Valor de l'Empresa: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Compra un 25% d'accions
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vendre un 25% d'accions
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Compra el 25% d'accions d'aquesta empresa

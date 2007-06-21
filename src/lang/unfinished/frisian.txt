@@ -7,8 +7,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Bûten de map
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Te ticht by de râne fan 'e map
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Net genôch jild - {CURRENCY} nedich
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flak lân nedich
 STR_0008_WAITING                                                :{BLACK}Wachtsjend: {WHITE}{STRING}
@@ -1193,14 +1193,14 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ynkomsten
 STR_701B_SHIP_INCOME                                            :{GOLD}Ynkomsten Skepen
 STR_701C_LOAN_INTEREST                                          :{GOLD}Rinte Liening
 STR_701D_OTHER                                                  :{GOLD}Oaren
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totaal:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Ynkomsten Grafyk
 STR_7024                                                        :{COMMA}
 STR_7027_LOAN                                                   :{WHITE}Liening
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Lien {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Betelje {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} werom
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kin net mear jild liene

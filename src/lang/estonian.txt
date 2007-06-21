@@ -11,8 +11,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Väljaspool kaardi piire
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Kaardi äärele liiga lähedal
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Pole piisavalt raha - vajad {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Maapind peab olema tasane
 STR_0008_WAITING                                                :{BLACK}Ootel: {WHITE}{STRING}
@@ -1288,7 +1288,7 @@ STR_TOYLAND_LANDSCAPE                                           :Mänguasjamaa
 STR_CHEATS                                                      :{WHITE}Petmine
 STR_CHEATS_TIP                                                  :{BLACK}Märgistatud kastid näitavad et, kas sa oled varem seda pettust kasutanud
 STR_CHEATS_WARNING                                              :{BLACK}Hoiatus! Sa kavatsed oma konkurente reeta. Pea meeles, et sellisest häbist ei saa sa enam kunagi lahti.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Suurenda raha hulka {CURRENCY64} võrra
+STR_CHEAT_MONEY                                                 :{LTBLUE}Suurenda raha hulka {CURRENCY} võrra
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Mängi, kui mängija: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Maagiline buldooser (eemaldamatute rajatiste lammutamine): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelid võivad üksteist läbida: {ORANGE}{STRING}
@@ -1543,9 +1543,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}ETTEVÕ
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Ettevõtte nimi:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Avamine:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Firmaväärtus:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Rahaline seis:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Eelmise aasta tulud:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Firmaväärtus:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Rahaline seis:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Eelmise aasta tulud:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Suutlikus:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Sõidukid:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2285,18 +2285,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Õhusõid
 STR_701B_SHIP_INCOME                                            :{GOLD}Laevade tulud
 STR_701C_LOAN_INTEREST                                          :{GOLD}Laenuintress
 STR_701D_OTHER                                                  :{GOLD}Kõik muu
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Kokku:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Tulugraafik
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Opereerimiskasumi graafik
 STR_7026_BANK_BALANCE                                           :{WHITE}Kontojääk
 STR_7027_LOAN                                                   :{WHITE}Laen
-STR_MAX_LOAN                                                    :{WHITE}Suurim laen:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Suurim laen:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Laena {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Maksa tagasi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...suurim lubatud laen on {CURRENCY}
@@ -2376,7 +2376,7 @@ STR_SET_COMPANY_PASSWORD                                        :Vali ettevõtte
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Majanduslik tagasilöök!{}{}Finantseksperdid ennustavad suurt majanduslangust!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Madalseis on läbi!{}{}Suurem kauplemine julgustab majanduse tugevnemisega ettevõtteid!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Lülita aken suureks/väikseks
-STR_7076_COMPANY_VALUE                                          :{GOLD}Firmaväärtus: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Firmaväärtus: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Osta 25% ettevõtte aktsiatest
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Müü 25% ettevõtte aktsiatest
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Osta 25% ettevõtte aktsiatest

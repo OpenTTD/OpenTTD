@@ -8,8 +8,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}A'rpus kartes robez'as
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pa'ra'k tuvu kartes malai
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietiek naudas - vajag {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei ja'bu't plakanai
 STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING}
@@ -1241,14 +1241,14 @@ STR_7006_COLOR_SCHEME                                           :{GOLD}Krasas sh
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Jaunâ Krasas shçma
 STR_7010                                                        :{WHITE}{NUM}
 STR_701D_OTHER                                                  :{GOLD}Citi
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7027_LOAN                                                   :{WHITE}Aizdevums
-STR_MAX_LOAN                                                    :{WHITE}Maksmalais Aizdevums:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Maksmalais Aizdevums:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Naudu, kas ir bankas aizn'e'mums, nevar dot prom...
 STR_7042_NONE                                                   :{WHITE}Neviens
 STR_7044_MALE                                                   :{BLACK}Viriešu

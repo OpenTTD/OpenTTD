@@ -11,8 +11,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fuera del borde del mapa
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Demasiado cerca del borde del mapa
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}No hay suficiente dinero - se requiere {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Se requiere terreno llano
 STR_0008_WAITING                                                :{BLACK}Esperando: {WHITE}{STRING}
@@ -1187,7 +1187,7 @@ STR_TOYLAND_LANDSCAPE                                           :Paisaje fantas�
 STR_CHEATS                                                      :{WHITE}Trucos
 STR_CHEATS_TIP                                                  :{BLACK}Las casillas indican si ha usado este truco antes
 STR_CHEATS_WARNING                                              :{BLACK}Atención! Usted está a punto de traicionar a sus competidores. Tenga presente que tal deshonra será recordada para toda la eternidad.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar dinero en {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar dinero en {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Jugar como el jugador: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (elimina industrias, etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Los túneles pueden cruzarse: {ORANGE}{STRING}
@@ -1422,9 +1422,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO EM
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nombre empresa:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguración:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Valor empresa:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balance actual:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingresos último año:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Valor empresa:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balance actual:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingresos último año:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Rendimiento:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vehículos:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2130,18 +2130,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ingresos 
 STR_701B_SHIP_INCOME                                            :{GOLD}Ingresos Barcos
 STR_701C_LOAN_INTEREST                                          :{GOLD}Intereses de Préstamo
 STR_701D_OTHER                                                  :{GOLD}Otros
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Gráfico de Ingresos
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gráfico de Beneficio Operativo
 STR_7026_BANK_BALANCE                                           :{WHITE}Saldo en Banco
 STR_7027_LOAN                                                   :{WHITE}Préstamo
-STR_MAX_LOAN                                                    :{WHITE}Préstamo Máx:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Préstamo Máx:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Pedir Préstamo {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Pagar Préstamo {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...máxima cantidad de préstamo permitida es {CURRENCY}
@@ -2221,7 +2221,7 @@ STR_SET_COMPANY_PASSWORD                                        :Configurar cont
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}¡Recesión Mundial!{}{}¡Los expertos financieros son pesimistas mientras la economía se hunde!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}¡Fin de la Recesión!{}{}¡Mejora en el comercio da ánimos a las industrias mientras la economía se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Cambiar entre tamaño de ventana grande/pequeño
-STR_7076_COMPANY_VALUE                                          :{GOLD}Valor de la empresa: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Valor de la empresa: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Comprar un 25% de sus acciones
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vender 25% de acciones
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Comprar 25% de acciones de esta empresa

@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Ude over kanten af kortet
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}For tæt på kanten af kortet
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Ikke nok penge - kræver {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Landskabet skal være fladt
 STR_0008_WAITING                                                :{BLACK}Venter: {WHITE}{STRING}
@@ -1188,7 +1188,7 @@ STR_TOYLAND_LANDSCAPE                                           :Legetøjsland
 STR_CHEATS                                                      :{WHITE}Snydefunktioner
 STR_CHEATS_TIP                                                  :{BLACK}Checkbokse viser, om du har brugt denne snydefunktion før
 STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er ved at forråde dine modstandere. Husk at dette vil blive husket i al evighed.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Forøg kassebeholdning med {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Forøg kassebeholdning med {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spil som spiller: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING}
@@ -1443,9 +1443,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}SELSKAB
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Selskabsnavn:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Grundlagt:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Virksomhedens værdi:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuværende beholdning:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Sidste års indtægt:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Virksomhedens værdi:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuværende beholdning:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Sidste års indtægt:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Præstation:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Køretøjer:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2185,18 +2185,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Flyindkom
 STR_701B_SHIP_INCOME                                            :{GOLD}Skibsindkomst
 STR_701C_LOAN_INTEREST                                          :{GOLD}Renter
 STR_701D_OTHER                                                  :{GOLD}Andet
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf over indkomst
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf over afkast
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank balance
 STR_7027_LOAN                                                   :{WHITE}Lån
-STR_MAX_LOAN                                                    :{WHITE}Maks. lån:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Maks. lån:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Lån {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Tilbagebetal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksimale størrelse af lån er {CURRENCY}
@@ -2276,7 +2276,7 @@ STR_SET_COMPANY_PASSWORD                                        :Sæt selskabets
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Lavkonjuktur over hele verden!{}{}Vismændende frygter det værste, økonomien skrumper!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Skift mellem stort/lille vindue
-STR_7076_COMPANY_VALUE                                          :{GOLD}Selskabsværdi: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Selskabsværdi: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Køb 25% aktier i selskabet
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Sælg 25% aktier i selskabet
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Køb 25% aktier i dette selskab

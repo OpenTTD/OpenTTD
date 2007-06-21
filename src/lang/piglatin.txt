@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Offway edgeway ofway apmay
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Ootay oseclay otay edgeway ofway apmay
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Otnay enoughway ashcay - equiresray {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Atflay andlay equiredray
 STR_0008_WAITING                                                :{BLACK}Aitingway: {WHITE}{STRING}
@@ -1188,7 +1188,7 @@ STR_TOYLAND_LANDSCAPE                                           :Oylandtay andsc
 STR_CHEATS                                                      :{WHITE}Eatschay
 STR_CHEATS_TIP                                                  :{BLACK}Eckboxeschay indicateway ifway ouyay avehay usedway isthay eatchay eforebay
 STR_CHEATS_WARNING                                              :{BLACK}Arningway! Ouyay areway aboutway otay etraybay ouryay ellowfay ompetitorscay. Eepkay inway indmay atthay uchsay away isgraceday illway ebay ememberedray orfay eternityway.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Increaseway oneymay ybay {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Increaseway oneymay ybay {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Ayingplay asway ayerplay: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Agicmay ulldozerbay (emoveray industriesway, unmovablesway): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Unnelstay aymay osscray eachway otherway: {ORANGE}{STRING}
@@ -1443,9 +1443,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}OMPANYC
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Ompanycay amenay:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inaugurationway:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Ompanycay aluevay:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Urrentcay alancebay:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Astlay ear'syay incomeway:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Ompanycay aluevay:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Urrentcay alancebay:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Astlay ear'syay incomeway:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Erformancepay:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Ehiclesvay:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2185,18 +2185,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Aircraftw
 STR_701B_SHIP_INCOME                                            :{GOLD}Ipshay Incomeway
 STR_701C_LOAN_INTEREST                                          :{GOLD}Oanlay Interestway
 STR_701D_OTHER                                                  :{GOLD}Otherway
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Otaltay:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Incomeway Aphgray
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Operatingway Ofitpray Aphgray
 STR_7026_BANK_BALANCE                                           :{WHITE}Ankbay Alancebay
 STR_7027_LOAN                                                   :{WHITE}Oanlay
-STR_MAX_LOAN                                                    :{WHITE}Axmay Oanlay:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Axmay Oanlay:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Orrowbay {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Epayray {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...aximummay ermittedpay oanlay izesay isway {CURRENCY}
@@ -2276,7 +2276,7 @@ STR_SET_COMPANY_PASSWORD                                        :Etsay ompanycay
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Orldway Ecessionray!{}{}Inancialfay expertsway earfay orstway asway economyway umpsslay!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Ecessionray Overway!{}{}Upturnway inway adetray ivesgay onfidencecay otay industriesway asway economyway engthensstray!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Oggletay argelay/allsmay indowway izesay
-STR_7076_COMPANY_VALUE                                          :{GOLD}Ompanycay aluevay: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Ompanycay aluevay: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Uybay 25% areshay inway ompanycay
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Ellsay 25% areshay inway ompanycay
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Uybay 25% areshay inway isthay ompanycay

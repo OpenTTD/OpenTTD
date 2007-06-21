@@ -9,8 +9,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Brún kortsins
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Of nálægt brún kortsins
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Ekki nógu mikið reiðufé - þarf {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sléttlendi nauðsynlegt
 STR_0008_WAITING                                                :{BLACK}Bíður: {WHITE}{STRING}
@@ -1153,7 +1153,7 @@ STR_TOYLAND_LANDSCAPE                                           :Leikfangalandsl
 STR_CHEATS                                                      :{WHITE}Svindl
 STR_CHEATS_TIP                                                  :{BLACK}Valreitur segir til um ef þú hefur notað þetta svindl áður
 STR_CHEATS_WARNING                                              :{BLACK}Aðvörun! Þú ert í þann mund að svíkja keppinauta þína. Hafðu í huga að þess lags svívirðing mun ætíð höfð í minnum.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Auka pening um {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Auka pening um {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spila sem leikmaður: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Töfrajarðýta (eyða iðnaði og óeyðanlegu): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Göng mega skerast: {ORANGE}{STRING}
@@ -1382,9 +1382,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}UPPLÝS
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nafn fyrirtækis:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Upphaf:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Heildarverðmæti fyrirtækis:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Núverandi staða:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Innkoma síðasta árs:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Heildarverðmæti fyrirtækis:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Núverandi staða:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Innkoma síðasta árs:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Frammistaða:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Farartæki:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2088,18 +2088,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Tekjur ve
 STR_701B_SHIP_INCOME                                            :{GOLD}Tekjur vegna skipa
 STR_701C_LOAN_INTEREST                                          :{GOLD}Lánsvextir
 STR_701D_OTHER                                                  :{GOLD}Annað
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Summa:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Tekjulínurit
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Resktrartekju línurit
 STR_7026_BANK_BALANCE                                           :{WHITE}Bankainnistæða
 STR_7027_LOAN                                                   :{WHITE}Lán
-STR_MAX_LOAN                                                    :{WHITE}Hámarkslán:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Hámarkslán:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Taka lán {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Borga lán {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...hámarksleyfi á láni er {CURRENCY}
@@ -2179,7 +2179,7 @@ STR_SET_COMPANY_PASSWORD                                        :Setja lykilorð
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Heimssamdráttur!{}{}Hagfræðingar hræddir um efnahagshrun!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Samdráttur!{}{}Uppslag í viðskiptum gefur bjartari von um betri efnahag!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Stækka/smækka gluggastærð
-STR_7076_COMPANY_VALUE                                          :{GOLD}Heildarverðmæti fyrirtækis: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Heildarverðmæti fyrirtækis: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kaupa 25% hlut í fyrirtæki
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Selja 25% hlut í fyrirtæki
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kaupa 25% hlut í þessu fyrirtæki

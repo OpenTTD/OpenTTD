@@ -11,8 +11,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Utføre kartet
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}For nært kanten av kartet
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Du har ikkje nok pengar - du treng {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flatt land er naudsynt
 STR_0008_WAITING                                                :{BLACK}Ventar: {WHITE}{STRING}
@@ -1186,7 +1186,7 @@ STR_TOYLAND_LANDSCAPE                                           :"Leikeland"-lan
 STR_CHEATS                                                      :{WHITE}Juks
 STR_CHEATS_TIP                                                  :{BLACK}Avkrysningsbokser fortel at du har nytta denne juksekoden tidlegare
 STR_CHEATS_WARNING                                              :{BLACK}Åtvaring! Du skal vete at du er i ferd med å gjera motspelarane ein stor urett. Gud tilgjev, men det er ikkje sikkert at venene dine gjer det same.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Auk lommeboka di med {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Auk lommeboka di med {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spelar som speler: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industriar, ufjernbare ting): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelar kan krysse kvarandre: {ORANGE}{STRING}
@@ -1441,9 +1441,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}FIRMAOV
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Firmanamn:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Skipa:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Firmaverdi:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Noverande saldo:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Inntekt i fjor:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Firmaverdi:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Noverande saldo:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Inntekt i fjor:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Nettverksyting:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Køyretøy:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2182,18 +2182,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Inntekter
 STR_701B_SHIP_INCOME                                            :{GOLD}Inntekter frå skip
 STR_701C_LOAN_INTEREST                                          :{GOLD}Renter
 STR_701D_OTHER                                                  :{GOLD}Anna
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totalt:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf over inntekter
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf over overskot
 STR_7026_BANK_BALANCE                                           :{WHITE}Saldo
 STR_7027_LOAN                                                   :{WHITE}Lån
-STR_MAX_LOAN                                                    :{WHITE}Maks lån:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Maks lån:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Lån meir ({SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY})
 STR_702A_REPAY                                                  :{BLACK}Betal attende ({SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY})
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksimalt lån er {CURRENCY}
@@ -2273,7 +2273,7 @@ STR_SET_COMPANY_PASSWORD                                        :Vel firmapassor
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Verdskrise!{}{}Økonomar fryktar det verste. Nedgangstider i kjømda.
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Verdskrise over!{}{}Opptur i marknaden gjer industrien sjølvkjensla attende.
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Byt mellom stor/liten storleik på vindauga
-STR_7076_COMPANY_VALUE                                          :{GOLD}Firmaverdi: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Firmaverdi: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kjøp 25 % av aksjane i firmaet
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Sel 25 % av aksjane du eig
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kjøp 25 % av aksjane i firmaet

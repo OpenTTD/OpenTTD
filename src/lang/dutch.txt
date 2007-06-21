@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Buiten de kaart
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Te dicht bij de rand van de kaart
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Niet genoeg geld - {CURRENCY} nodig
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Vlak land nodig
 STR_0008_WAITING                                                :{BLACK}Wachtend: {WHITE}{STRING}
@@ -1186,7 +1186,7 @@ STR_TOYLAND_LANDSCAPE                                           :speelgoed lands
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Keuzevakjes geven aan of je deze cheat al ooit gebruikt hebt.
 STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je concurrenten te verraden. Bedenk dat zo'n schande eeuwig wordt onthouden.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Verhoog geld met {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Verhoog geld met {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spelend als speler: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
@@ -1441,9 +1441,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}BEDRIJF
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Bedrijfsnaam:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Begonnen in:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Bedrijfswaarde:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Huidige kas:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Inkomen vorig jaar:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Bedrijfswaarde:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Huidige kas:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Inkomen vorig jaar:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestatie:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Voertuigen:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2183,18 +2183,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Vliegtuig
 STR_701B_SHIP_INCOME                                            :{GOLD}Schipinkomsten
 STR_701C_LOAN_INTEREST                                          :{GOLD}Rente van lening
 STR_701D_OTHER                                                  :{GOLD}Overig
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totaal:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Inkomstengrafiek
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Bedrijfswinst Grafiek
 STR_7026_BANK_BALANCE                                           :{WHITE}Banksaldo
 STR_7027_LOAN                                                   :{WHITE}Lening
-STR_MAX_LOAN                                                    :{WHITE}Max lening:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Max lening:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Leen {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Betaal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} terug
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maximaal toegestane leninggrootte is {CURRENCY}
@@ -2274,7 +2274,7 @@ STR_SET_COMPANY_PASSWORD                                        :Geef bedrijfswa
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Wereld Recessie!{}{}Financiële experts vrezen het ergste terwijl economie ineen stort!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessie Voorbij!{}{}Stijgende handel geeft industrie vertrouwen terwijl economie verstevigt!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Schakel tussen groot/klein venster
-STR_7076_COMPANY_VALUE                                          :{GOLD}Bedrijfswaarde: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Bedrijfswaarde: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Koop 25% aandeel in bedrijf
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Verkoop 25% aandeel in bedrijf
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Koop een aandeel van 25% in dit bedrijf

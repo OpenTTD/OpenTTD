@@ -8,8 +8,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}超过地图边界
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}距离地图边界过近
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}没有足够的现金 - 需要 {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}需要平坦的地面
 STR_0008_WAITING                                                :{BLACK}等待：{WHITE}{STRING}
@@ -1171,7 +1171,7 @@ STR_TOYLAND_LANDSCAPE                                           :奇幻景观
 STR_CHEATS                                                      :{WHITE}作弊
 STR_CHEATS_TIP                                                  :{BLACK}标志你是否用过此项作弊手段的单选框
 STR_CHEATS_WARNING                                              :{BLACK}警告！你将要背叛你的盟友，这将被永久记录！
-STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY64} 现金
+STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY} 现金
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}作为玩家 {ORANGE}{COMMA} 进行游戏
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土机 (清除工业设施或不可移除物): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}隧道可以相交：{ORANGE}{STRING}
@@ -1401,9 +1401,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}公司�
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}公司信息：{WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}开业时间：{WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}公司市值：{WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}流动资金：{WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}去年收入：{WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}公司市值：{WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}流动资金：{WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}去年收入：{WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}表现情况：{WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}车辆：{WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2107,18 +2107,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}航空运
 STR_701B_SHIP_INCOME                                            :{GOLD}水上运输收入
 STR_701C_LOAN_INTEREST                                          :{GOLD}贷款利息
 STR_701D_OTHER                                                  :{GOLD}其他费用
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}总计：
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}收入图表
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}利润图表
 STR_7026_BANK_BALANCE                                           :{WHITE}流动资金
 STR_7027_LOAN                                                   :{WHITE}贷款
-STR_MAX_LOAN                                                    :{WHITE}最大贷款额度：{BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}最大贷款额度：{BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}贷款 {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}还款 {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}最大贷款额度是{CURRENCY}……
@@ -2198,7 +2198,7 @@ STR_SET_COMPANY_PASSWORD                                        :设置公司密
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}大萧条！{}{}金融专家预测世界经济将全面倒退！
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}大萧条结束！{}{}贸易复苏带动经济全面启动！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}切换窗口大小
-STR_7076_COMPANY_VALUE                                          :{GOLD}公司市值：{WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}公司市值：{WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}购买其 25% 的股份
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}出售其 25% 的股份
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}购买此公司 25% 的股份

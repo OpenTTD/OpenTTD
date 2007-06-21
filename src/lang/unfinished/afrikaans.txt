@@ -8,8 +8,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Oor kant van kaart
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Te naby aan kant van kaart
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nie genoeg kontant nie - vereis {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Platte land vereis
 STR_0008_WAITING                                                :{BLACK}Wagtend: {WHITE}{STRING}
@@ -1093,7 +1093,7 @@ STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Gebruik
 STR_CHEATS                                                      :{WHITE}Bedriege
 STR_CHEATS_TIP                                                  :{BLACK}tikblokkies aanwys as jy die bedreig vroe� gebruik het
 STR_CHEATS_WARNING                                              :{BLACK}Waarskuwing! Jy gaan omtrent jou genoote mededingers verrai. Hou in gemoed dat so 'n skande sal vir ewig onhout word.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Vermeerder geld by {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Vermeerder geld by {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Speel as speler: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tower stootskraper (uitwis nywerheide, onbeweegbares): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tonnels mag vir mekaar kruis: {ORANGE}{STRING}
@@ -1299,9 +1299,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}MAATSKA
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Maatskappy naam:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inwyding:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Maatskappy waarde:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Hudige balans:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Verlede jaar se inkome:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Maatskappy waarde:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Hudige balans:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Verlede jaar se inkome:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestasie:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Voertuie:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -1965,18 +1965,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Vliegtuig
 STR_701B_SHIP_INCOME                                            :{GOLD}Skip Inkome
 STR_701C_LOAN_INTEREST                                          :{GOLD}Lening Rente
 STR_701D_OTHER                                                  :{GOLD}Ander
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totaal:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Inkome Grafiek
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Bewerking Profyt Grafiek
 STR_7026_BANK_BALANCE                                           :{WHITE}Bank Balans
 STR_7027_LOAN                                                   :{WHITE}Lening
-STR_MAX_LOAN                                                    :{WHITE}Max Lening:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Max Lening:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Leen {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Terugbetaal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksimum vergun lening groote is {CURRENCY}
@@ -2055,7 +2055,7 @@ STR_SET_COMPANY_PASSWORD                                        :Stel maatskappy
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}W�eld Insinking!{}{}Finansieel eksperte vrees ergste as ekconomie inmekaar sak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Insinking Oor!{}{}Oplewing in sake gee vertroue na nywerheide as ekonomie versterk!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Skakel groot/klein venster groote
-STR_7076_COMPANY_VALUE                                          :{GOLD}Maatskappy waarde: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Maatskappy waarde: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Koop 25% aandeel in maatskappy
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Verkoop 25% aandeel in maatskappy
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Koop 25% aandeel in die maatskappy

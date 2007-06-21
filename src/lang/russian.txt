@@ -12,8 +12,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Край карты
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Слишком близко к краю карты
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недостаточно денег - требуется {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Необходимо ровное место
 STR_0008_WAITING                                                :{BLACK}Ожидает: {WHITE}{STRING}
@@ -1186,7 +1186,7 @@ STR_TOYLAND_LANDSCAPE                                           :Игрушеч�
 STR_CHEATS                                                      :{WHITE}ЧИТЫ
 STR_CHEATS_TIP                                                  :{BLACK}Галочка показывает, использовали ли Вы этот ЧИТ раньше
 STR_CHEATS_WARNING                                              :{BLACK}Внимание, вы собираетесь предать своих соперников! Этого вам никогда не простят!
-STR_CHEAT_MONEY                                                 :{LTBLUE}Увеличить деньги на {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Увеличить деньги на {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Играть за компанию: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный динамит (снос _ВСЕГО_): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Туннели могут пересекаться: {ORANGE}{STRING}
@@ -1416,9 +1416,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}ИНФ�
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Имя компании:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Основана: {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Оценочная стоимость: {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Текущий баланс: {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Доход в прошлом году: {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Оценочная стоимость: {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Текущий баланс: {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Доход в прошлом году: {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Результативность: {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Трансп. средства: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2136,18 +2136,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Дохо�
 STR_701B_SHIP_INCOME                                            :{GOLD}Доход от водного транспорта
 STR_701C_LOAN_INTEREST                                          :{GOLD}Проценты по займу
 STR_701D_OTHER                                                  :{GOLD}Другое
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}ИТОГО:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}График доходов
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}График прибыли от основной деятельности
 STR_7026_BANK_BALANCE                                           :{WHITE}Баланс
 STR_7027_LOAN                                                   :{WHITE}Ссуда
-STR_MAX_LOAN                                                    :{WHITE}Макс. Ссуда: {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Макс. Ссуда: {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Занять {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Отдать {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...максимально допустимый размер ссуды - {CURRENCY}.
@@ -2227,7 +2227,7 @@ STR_SET_COMPANY_PASSWORD                                        :Установ�
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Мировой спад{}{}Финансовые эксперты дают ужасные прогнозы в связи с кризисом экономики!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Спад закончился!{}{}Увеличение объемов торговли внушает уверенность владельцам предприятий. Экономика укрепляет свои позиции.
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Большое/маленькое окно
-STR_7076_COMPANY_VALUE                                          :{GOLD}Стоимость компании: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Стоимость компании: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Купить 25% акций компании
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Продать 25% акций компании
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Купить 25% акций этой компании

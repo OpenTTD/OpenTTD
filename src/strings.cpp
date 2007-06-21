@@ -611,12 +611,6 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				}
 			} break;
 
-			case SCC_CURRENCY_COMPACT_64: { /* {CURRCOMPACT64} */
-				/* 64 bit compact currency-unit */
-				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), true, last);
-				break;
-			}
-
 			case SCC_STRING1: { /* {STRING1} */
 				/* String that consumes ONE argument */
 				uint str = modifier + GetInt32(&argv);
@@ -864,11 +858,6 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				args[0] = g->index;
 				buff = GetStringWithArgs(buff, (g->string_id == STR_SV_GROUP_NAME) ? (StringID)STR_GROUP_NAME_FORMAT : g->string_id, args, last);
 
-				break;
-			}
-
-			case SCC_CURRENCY_64: { // {CURRENCY64}
-				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), false, last);
 				break;
 			}
 

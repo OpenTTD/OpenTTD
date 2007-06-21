@@ -10,8 +10,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}地図の端を越えています
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}地図の端に近すぎます
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}資金が足りません。{CURRENCY}がかかります
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}平地が必要です
 STR_0008_WAITING                                                :{BLACK}到着待ち：{WHITE}{STRING}
@@ -1188,7 +1188,7 @@ STR_TOYLAND_LANDSCAPE                                           :玩具国
 STR_CHEATS                                                      :{WHITE}チート
 STR_CHEATS_TIP                                                  :{BLACK}以前にこのチートを使用したことがあることを示します
 STR_CHEATS_WARNING                                              :{BLACK}中位！チートすると、競争者の裏切りとして見られていて、永遠にのろわれる可能性があります！
-STR_CHEAT_MONEY                                                 :{LTBLUE}残額に{CURRENCY64}を追加
+STR_CHEAT_MONEY                                                 :{LTBLUE}残額に{CURRENCY}を追加
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}プレヤーの変更：{ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}ゴジラブルドーザー（産業など何でも破壊できる）：{ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}トンネルが交差可能ようにする：{ORANGE}{STRING}
@@ -1443,9 +1443,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}交通�
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}会社名：{WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}開業日付：{WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}企業価値：{WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}残額：{WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}昨年の損益：{WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}企業価値：{WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}残額：{WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}昨年の損益：{WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}パフォーマンス：{WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}車両：{WHITE}{NUM} {TRAIN}、{NUM} {LORRY}、{NUM} {BUS}、{NUM} {PLANE}、{NUM} {SHIP}
@@ -2185,18 +2185,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}飛行機
 STR_701B_SHIP_INCOME                                            :{GOLD}船舶の損益
 STR_701C_LOAN_INTEREST                                          :{GOLD}借入金の金利
 STR_701D_OTHER                                                  :{GOLD}その他
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}合計：
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}損益グラフ
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}営業利益グラフ
 STR_7026_BANK_BALANCE                                           :{WHITE}残額
 STR_7027_LOAN                                                   :{WHITE}借入金
-STR_MAX_LOAN                                                    :{WHITE}最高借入金：{BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}最高借入金：{BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}を借りる
 STR_702A_REPAY                                                  :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}を返済
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...最高借入金が{CURRENCY}
@@ -2276,7 +2276,7 @@ STR_SET_COMPANY_PASSWORD                                        :会社のパス
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}世界中不景気！{}{}経済がスランプに陥る、アナリストの不安説！
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}スランプの終わり！{}{}経済が上昇気流、産業が好転！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}大きい／小さいウィンドウサイズを切り替えます
-STR_7076_COMPANY_VALUE                                          :{GOLD}会社の価値：{WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}会社の価値：{WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}会社の２５％の株を買収
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}会社の２５％の株を販売
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}この会社の２５％の株を購入

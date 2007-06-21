@@ -12,8 +12,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}За межами карти
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Надто близько до краю карти
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недостатньо коштів - потрібно {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Потрібна рівна ділянка
 STR_0008_WAITING                                                :{BLACK}Чекає: {WHITE}{STRING}
@@ -1314,7 +1314,7 @@ STR_TOYLAND_LANDSCAPE                                           :Іграшко�
 STR_CHEATS                                                      :{WHITE}Гратиму нечесно
 STR_CHEATS_TIP                                                  :{BLACK}Галка показує, що Ви стали грати нечесно
 STR_CHEATS_WARNING                                              :{BLACK}Попередження! Ви збираєтеся обманювати конкурентів. Зауважте, подібне безчестя запам'ятається назавжди.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Збільшити кошти на {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Збільшити кошти на {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Грати за гравця: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Супер бульдозер (руйнує все): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунелі перетинаються: {ORANGE}{STRING}
@@ -1569,9 +1569,9 @@ STR_NETWORK_COMPANY_INFO                                        :{SILVER}Інф�
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Назва компанії:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Засновано:  {WHITE}{NUM}
-STR_NETWORK_VALUE                                               :{SILVER}Вартість компанії:  {WHITE}{CURRENCY64}
-STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Поточний баланс:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Прибуток торік:  {WHITE}{CURRENCY64}
+STR_NETWORK_VALUE                                               :{SILVER}Вартість компанії:  {WHITE}{CURRENCY}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Поточний баланс:  {WHITE}{CURRENCY}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Прибуток торік:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Продуктивність:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Транспорт:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -2348,18 +2348,18 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Літа�
 STR_701B_SHIP_INCOME                                            :{GOLD}Кораблі: дохід
 STR_701C_LOAN_INTEREST                                          :{GOLD}Відсотки за кредит
 STR_701D_OTHER                                                  :{GOLD}Інше
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Всього:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Графік доходів
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Графік прибутку від виробництва
 STR_7026_BANK_BALANCE                                           :{WHITE}Рахунок
 STR_7027_LOAN                                                   :{WHITE}Взято в кредит
-STR_MAX_LOAN                                                    :{WHITE}Макс. кредит:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Макс. кредит:  {BLACK}{CURRENCY}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Позичити {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Повернути {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...найбільший дозволений розмір кредиту {CURRENCY}
@@ -2439,7 +2439,7 @@ STR_SET_COMPANY_PASSWORD                                        :Встанов�
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Світова економічна криза!{}{}Фінансисти очікують спад виробництва та попиту!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Криза минула!{}{}Збільшення виробництва внаслідок стабілізації економіки надає впевненості підприємствам!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Розмір вікна великий/малий
-STR_7076_COMPANY_VALUE                                          :{GOLD}Вартість компанії: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Вартість компанії: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Купити 25% акцій компанії
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Продати 25% акцій компанії
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Купити 25% акцій цієї компанії

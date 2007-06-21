@@ -9,8 +9,8 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Απο την άκρη του χάρτη
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολυ κοντά στην άκρη του χάρτη
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτούνται {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}.
-STR_0005                                                        :{RED}{CURRENCY64}.
+STR_0004                                                        :{WHITE}{CURRENCY}.
+STR_0005                                                        :{RED}{CURRENCY}.
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο εδαφος
 STR_0008_WAITING                                                :{BLACK}Αναμονη: {WHITE}{STRING}
@@ -1159,7 +1159,7 @@ STR_TOYLAND_LANDSCAPE                                           :Παιχνιδ�
 STR_CHEATS                                                      :{WHITE}Κλεψιές
 STR_CHEATS_TIP                                                  :{BLACK}Τα κουτάκια δείχνουν αν έχετε χρησιμοποιήσει αυτό το κόλπο πρίν
 STR_CHEATS_WARNING                                              :{BLACK}Προσοχή! Είστε έτοιμος να προδώσετε τους φίλους ανταγωνιστές σας. Θυμηθείτε ότι αυτή η ντροπή θα μείνει για πάντα.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY64}
+STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Παίξτε σαν παίκτης: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Μαγική μπουλντόζα (αφαιρεί βιομηχανίες, αμετακίνητα): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Τα τούνελ διασταυρώνονται: {ORANGE}{STRING}
@@ -1792,8 +1792,8 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Έσοδ�
 STR_701B_SHIP_INCOME                                            :{GOLD}Έσοδα Πλοίων
 STR_701C_LOAN_INTEREST                                          :{GOLD}Τόκος Δανείου
 STR_701D_OTHER                                                  :{GOLD}Άλλα
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Σύνολο:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Γράφημα Εισοδήματος
@@ -1801,7 +1801,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Γράφημα Ενεργών Εσόδων
 STR_7026_BANK_BALANCE                                           :{WHITE}Ισολογισμός Τραπέζης
 STR_7027_LOAN                                                   :{WHITE}Δάνειο
-STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Δανεισμός {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Πληρωμή {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...το μέγιστο επιτρεπόμενο δάνειο είναι {CURRENCY}
@@ -1871,7 +1871,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Προβ
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Παγκόσμια Υποχώρηση!{}{}Οι οικονομολόγοι φοβούνται τα χειρότερα καθώς η οικονομία πιάνει πάτο!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Υποχώρηση Τέλος!{}{}Κέρδη στο εμπόριο δίνει σιγουριά στις βιομηχανίες καθώς η οικονομία δυναμώνει!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
-STR_7076_COMPANY_VALUE                                          :{GOLD}Αξία εταιρείας: {WHITE}{CURRENCY64}
+STR_7076_COMPANY_VALUE                                          :{GOLD}Αξία εταιρείας: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Αγορά μεριδίου 25% στην εταιρεία
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Πώληση μεριδίου 25% της εταιρείας
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Αγορά μεριδίου 25% της εταιρείας
