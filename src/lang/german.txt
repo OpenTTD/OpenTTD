@@ -1892,6 +1892,7 @@ STR_3804_WATER                                                  :Wasser
 STR_3805_COAST_OR_RIVERBANK                                     :Küste oder Flussufer
 STR_3806_SHIP_DEPOT                                             :Werft
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...kann nicht auf Wasser gebaut werden
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Kanal muß erst abgerissen werden
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Spiel speichern
@@ -2607,6 +2608,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Wartung bei {TO
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Fahre ohne Halt zu {TOWN} Zugdepot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Wartung (ohne Halt) bei {TOWN} Zugdepot
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Unterwegs zu {TOWN} Zugdepot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Unterwegs zu {TOWN} Zugdepot, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Wartung in {TOWN} Zugdepot
@@ -2736,6 +2738,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue{G r "" s} {STRING} jetzt erhältlich!  -  {STRING}
 
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Fahrzeug ist im Weg
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Fahrzeug{P "" e}
@@ -2777,6 +2780,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Ansicht 
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Fahrzeugauswahlliste - Klicke auf ein Fahrzeug für Einzelheiten
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Baue das ausgewählte Fahrzeug
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY}/Jahr{}Ladevermögen: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapazität: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name des Fahrzeuges
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kann das Fahrzeug nicht benennen...
@@ -2944,6 +2949,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Neue Kap
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht umrüsten...
 STR_GO_TO_AIRPORT_HANGAR                                        :Fliege zu {STATION} Hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Wartung im {STATION} Hangar
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinabsturz bei {STATION}!
@@ -3269,20 +3275,32 @@ STR_GROUP_ALL_ROADS                                             :Alle Straßenfa
 STR_GROUP_ALL_SHIPS                                             :Alle Schiffe
 STR_GROUP_ALL_AIRCRAFTS                                         :Alle Flugzeuge
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Gemeinsame Fahrzeuge hinzufügen
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Entferne alle Fahrzeuge
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Z{P ug üge}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Fahrzeug{P "" e}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Schiff{P "" e}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Flugzeug{P "" e}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Fahrzeuge ersetzen von "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kann Gruppe nicht erstellen...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Kann diese Gruppe nicht löschen...
 STR_GROUP_CAN_T_RENAME                                          :{WHITE}Kann Gruppe nicht umbenennen...
 STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kann nicht alle Fahrzeuge dieser Gruppe entfernen...
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kann das Fahrzeug nicht zu dieser Gruppe hinzufügen...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Die gemeinsamen Fahrzeuge können nicht zur Gruppe hinzugefügt werden...
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gruppen - Klicke auf eine Gruppe für eine Liste aller Fahrzeuge der Gruppe
 STR_GROUP_CREATE_TIP                                            :{BLACK}Klicken um eine Gruppe zu erstellen
 STR_GROUP_DELETE_TIP                                            :{BLACK}Die ausgewählte Gruppe löschen
 STR_GROUP_RENAME_TIP                                            :{BLACK}Die ausgewählte Gruppe umbenennen
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Hier klicken um diese Gruppe aus der automatischen Fahrzeugersetzung zu nehmen
 
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Profit dieses Jahr: {GREEN}{CURRENCY} {BLACK}(letztes Jahr: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit dieses Jahr: {RED}{CURRENCY} {BLACK}(letztes Jahr: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit dieses Jahr: {GREEN}{CURRENCY} {BLACK}(letztes Jahr: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit dieses Jahr: {RED}{CURRENCY} {BLACK}(letztes Jahr: {RED}{CURRENCY}{BLACK})
 
 ########

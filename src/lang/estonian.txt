@@ -1203,6 +1203,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Väljas
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaardi kerimisrulliku kiirus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Mängu isepeatamine uue mängu alustamisel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Kasuta laiendatud sõidukinimekirja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Luba sõiduplaanide määramine: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Kasuta sõiduplaanis päevade asemel tikse: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Enim ronge mängija kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Enim mootorsõidukeid mängija kohta: {ORANGE}{STRING}
@@ -1991,6 +1993,7 @@ STR_3804_WATER                                                  :Vesi
 STR_3805_COAST_OR_RIVERBANK                                     :Kallas
 STR_3806_SHIP_DEPOT                                             :Laevaangaar
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...vette ei saa ehitada
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Kanali peab eelnevalt lammutama
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Salvesta mäng
@@ -2706,6 +2709,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Hoolda linna {T
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi linna {TOWN} rongidepoo
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Hooldus linna {TOWN} rongidepoost läbisõidul
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Sõitmine (sõiduplaanita)
+STR_TIMETABLE_TRAVEL_FOR                                        :Sõida {STRING}
+STR_TIMETABLE_STAY_FOR                                          :ja oota {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} päev{P "" a}
+STR_TIMETABLE_TICKS                                             :{COMMA} tiks{P "" u}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Suundub linna {TOWN} rongidepoosse
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Suundub linna {TOWN} rongidepoosse, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Hooldus linna {TOWN} raudteedepoos
@@ -2747,6 +2757,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Laadi ma
 STR_REFIT                                                       :{BLACK}Taasseadista
 STR_REFIT_TIP                                                   :{BLACK}Vali, millist laadungit ümber seadistada selles järjestuses. Ümberseadistuse käsu eemaldamiseks hoia klõpsamise ajal all Control nuppu
 STR_REFIT_ORDER                                                 :(Taasseadista {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Sõiduplaan
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Näita sõiduplaani
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Käsud)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Käskude Lõpp - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2803,6 +2815,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Märgi v
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Lisa uus käsk enne valitud käsku või nimekirja lõppu
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni valitud käsu juures oodata täis laadingut
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni valitud käsu juures maha laadida.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Sõiduplaan - esiletõstmiseks klõpsa sihtpunktil
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda, kaua esile tõstetud sihtpunkti peale aega peaks kuluma
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Tühista esile tõstetud sihtpunkti ajaperiood
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Tühista hilinemisloendur, et sõiduk ei jääks hiljaks
 STR_SERVICE_HINT                                                :{BLACK}Jäta see käsk vahele, kui hooldust ei vajata
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Hind: {CURRENCY} Tühimass: {WEIGHT_S}{}Tippkiirus: {VELOCITY}  Võimsus: {POWER}{}Käituskulud: {CURRENCY}/aastas{}Kandevõime: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Lagunes
@@ -2824,6 +2840,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Muuda ro
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Raudteesõiduki tüübinime ei saa muuta...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni valitud käsul visata maha laadung
 STR_886F_TRANSFER                                               :{BLACK}Transpordi
+STR_CLEAR_TIME                                                  :{BLACK}Tühista aeg
+STR_RESET_LATENESS                                              :{BLACK}Tühista hilinemisloendur
 
 STR_TRAIN_STOPPING                                              :{RED}Peatub
 STR_TRAIN_STOPPING_VEL                                          :{RED}Peatub, {VELOCITY}
@@ -2834,6 +2852,14 @@ STR_TRAIN_START_NO_CATENARY                                     :Selle raja ahel
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Uus {STRING} saadaval!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Uus {STRING} saadaval!  -  {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Sõidukile ei saa sõiduplaani anda...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Sõidukid saavad ainult peatustes oodata.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Sellel sõidukil pole ühtegi peatust.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda aega
+STR_TIMETABLE_STATUS_ON_TIME                                    :See sõiduk peab ajast kinni
+STR_TIMETABLE_STATUS_LATE                                       :See sõiduk on {STRING} hiljaks jäämas
+STR_TIMETABLE_STATUS_EARLY                                      :See sõiduk on {STRING} varajane
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Mootorsõiduk takistab teed
@@ -3045,6 +3071,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus kand
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ei saa lennukit ümber seadistada...
 STR_GO_TO_AIRPORT_HANGAR                                        :Mine {STATION} angaari
 SERVICE_AT_AIRPORT_HANGAR                                       :Hooldus {STATION} angaaris
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Sõiduplaan)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Tsepeliini õnnetus {STATION}s!

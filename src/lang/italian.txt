@@ -1893,6 +1893,7 @@ STR_3804_WATER                                                  :Acqua
 STR_3805_COAST_OR_RIVERBANK                                     :Costa
 STR_3806_SHIP_DEPOT                                             :Deposito navale
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...impossibile costruire sull'acqua
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Bisogna demolire il canale prima
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Salva partita
@@ -2608,6 +2609,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenzione al
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vai non-stop al Deposito ferroviario di {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenzione non-stop al Deposito di {TOWN}
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Diretto al Deposito di {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Diretto al Deposito di {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Manutenzione al Deposito di {TOWN}
@@ -2736,6 +2738,7 @@ STR_TRAIN_START_NO_CATENARY                                     :In questo binar
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuov{G o a} {STRING} disponibile!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuov{G o a} {STRING} disponibile! -  {STRING}
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automezzo di mezzo
@@ -2947,6 +2950,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuova ca
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Impossibile riadattare l'aeromobile...
 STR_GO_TO_AIRPORT_HANGAR                                        :Vai all'Hangar di {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Manutenzione all'Hangar di {STATION}
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Disastro Zeppelin a {STATION}!

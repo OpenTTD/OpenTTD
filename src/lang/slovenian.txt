@@ -1934,6 +1934,7 @@ STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Obala ali nabrežje
 STR_3806_SHIP_DEPOT                                             :Ladjedelnica
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE} ... Nemogoča gradnja na vodi
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Najprej moraš porušiti kanal
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Shrani igro
@@ -2686,6 +2687,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Na servis v {TO
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Pojdi brez postanka do garaže {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non stop na servis v {TOWN} železniško garažo
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Pelje v {TOWN} železniško garažo
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Pelje v {TOWN} železniško garažo, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Na servis v {TOWN} železniško garažo
@@ -2814,6 +2816,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Ta proga nima n
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novo! {STRING} sedaj na razpolago!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo! {STRING} sedaj na razpolago!  -  {STRING}
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestno vozilo na poti
@@ -3025,6 +3028,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova zmo
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ni mogoča predelava letala ...
 STR_GO_TO_AIRPORT_HANGAR                                        :Pojdi v {STATION} hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Na servisiranje v {STATION} Hangar
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Nesreča cepelina na letališču {STATION}!

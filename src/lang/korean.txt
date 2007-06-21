@@ -1892,6 +1892,7 @@ STR_3804_WATER                                                  :물
 STR_3805_COAST_OR_RIVERBANK                                     :해안 또는 강기슭
 STR_3806_SHIP_DEPOT                                             :정박소
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...물 위에 지을 수 없습니다
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}운하를 먼저 제거하십시오
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}게임 저장
@@ -2607,6 +2608,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :{TOWN} 차량�
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :{TOWN} 차량기지 급행
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :{TOWN} 차량기지 급행 (점검)
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} 차량기지로 가는 중
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN} 차량기지로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} 차량기지로 점검하러 가는중
@@ -2735,6 +2737,7 @@ STR_TRAIN_START_NO_CATENARY                                     :연결고리가
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 자동차가 출시되었습니다!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}신형 {STRING} 자동차가 출시되었습니다!  -  {STRING}
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}중간에 자동차가 있습니다.
@@ -2946,6 +2949,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}새 수�
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}항공기를 개조할 수 없습니다...
 STR_GO_TO_AIRPORT_HANGAR                                        :{STATION}공항 격납고로 가는 중
 SERVICE_AT_AIRPORT_HANGAR                                       :{STATION}공항 격납고로 점검하러 가는 중
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}{STATION}에서 체펠린 재앙이 발생했습니다!

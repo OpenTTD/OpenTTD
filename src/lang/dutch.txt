@@ -1891,6 +1891,7 @@ STR_3804_WATER                                                  :Water
 STR_3805_COAST_OR_RIVERBANK                                     :Kust of rivierbed
 STR_3806_SHIP_DEPOT                                             :Scheepswerf
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kan niet op water bouwen
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Het kanaal moet eerst verwijderd worden
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Spel Opslaan
@@ -2606,6 +2607,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Reparatie in {T
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ga zonder tussenstop naar {TOWN} Treindepot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Reparatie zonder tussentop in {TOWN} Treindepot
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Op weg naar {TOWN} Trein Depot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Op weg naar {TOWN} Trein Depot, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Onderhoud bij {TOWN} Trein Depot
@@ -2734,6 +2736,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Er is geen bove
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nieuw {STRING} nu beschikbaar!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nieuw {STRING} nu beschikbaar!  -  {STRING}
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Wegvoertuig in de weg
@@ -2945,6 +2948,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nieuwe c
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet ombouwen...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ga naar {STATION} hanger
 SERVICE_AT_AIRPORT_HANGAR                                       :Reperatie bij {STATION} hanger
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelin ongeluk bij {STATION}!

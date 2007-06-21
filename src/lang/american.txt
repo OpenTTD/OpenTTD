@@ -1397,6 +1397,31 @@ STR_NETWORK_LANG_ANY                                            :Any
 STR_NETWORK_LANG_ENGLISH                                        :English
 STR_NETWORK_LANG_GERMAN                                         :German
 STR_NETWORK_LANG_FRENCH                                         :French
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazilian
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgarian
+STR_NETWORK_LANG_CHINESE                                        :Chinese
+STR_NETWORK_LANG_CZECH                                          :Czech
+STR_NETWORK_LANG_DANISH                                         :Danish
+STR_NETWORK_LANG_DUTCH                                          :Dutch
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finnish
+STR_NETWORK_LANG_HUNGARIAN                                      :Hungarian
+STR_NETWORK_LANG_ICELANDIC                                      :Icelandic
+STR_NETWORK_LANG_ITALIAN                                        :Italian
+STR_NETWORK_LANG_JAPANESE                                       :Japanese
+STR_NETWORK_LANG_KOREAN                                         :Korean
+STR_NETWORK_LANG_LITHUANIAN                                     :Lithuanian
+STR_NETWORK_LANG_NORWEGIAN                                      :Norwegian
+STR_NETWORK_LANG_POLISH                                         :Polish
+STR_NETWORK_LANG_PORTUGUESE                                     :Portuguese
+STR_NETWORK_LANG_ROMANIAN                                       :Romanian
+STR_NETWORK_LANG_RUSSIAN                                        :Russian
+STR_NETWORK_LANG_SLOVAK                                         :Slovak
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovenian
+STR_NETWORK_LANG_SPANISH                                        :Spanish
+STR_NETWORK_LANG_SWEDISH                                        :Swedish
+STR_NETWORK_LANG_TURKISH                                        :Turkish
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainian
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
@@ -2581,6 +2606,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Service at {TOW
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Go non-stop to {TOWN} Train Depot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service non-stop at {TOWN} Train Depot
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Heading for {TOWN} Train Depot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Heading for {TOWN} Train Depot, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Service at {TOWN} Train Depot
@@ -2638,6 +2664,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Too many
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Can't insert new order...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Can't delete this order...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Can't modify this order...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Can't move this order...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Can't skip current order...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Can't skip to selected order...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Can't move vehicle...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}The rear engine will always follow its front counterpart
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2669,6 +2698,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Show det
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Show capacities of each vehicle
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Show total capacity of train, split by cargo type
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orders list - click on order to highlight it
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Skip the current order, and start the next. CTRL + click skips to the selected order)
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Delete the highlighted order
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insert a new order before the highlighted order, or add to end of list
@@ -2705,6 +2735,7 @@ STR_TRAIN_START_NO_CATENARY                                     :This track lack
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}New {STRING} now available!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}New {STRING} now available!  -  {STRING}
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Road vehicle in the way
@@ -2747,6 +2778,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Center m
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Road vehicle selection list - click on vehicle for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Build the highlighted road vehicle
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Speed: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacity: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name road vehicle
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Can't name road vehicle...
@@ -2914,6 +2947,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}New capa
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Can't refit aircraft...
 STR_GO_TO_AIRPORT_HANGAR                                        :Go to {STATION} Hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Service at {STATION} Hangar
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelin disaster at {STATION}!

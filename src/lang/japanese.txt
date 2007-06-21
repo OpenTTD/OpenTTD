@@ -1103,6 +1103,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :切
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}地図のスクロール速度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}新規ゲームを開始したときに自動的にポーズ：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}詳細の車両リストを使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}車両の時刻表を使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}日の代わりに時刻表をティックで表示：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
@@ -1891,6 +1893,7 @@ STR_3804_WATER                                                  :水
 STR_3805_COAST_OR_RIVERBANK                                     :海岸または川岸
 STR_3806_SHIP_DEPOT                                             :造船所
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...水上に建設できません
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}先に運河を破壊しなければなりません
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}ゲームを保存
@@ -2606,6 +2609,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :{TOWN}電車庫
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :{TOWN}電車庫へ直行で回送
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :{TOWN}電車庫へ直行で回送して修理
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :運行（未計画）
+STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}運行
+STR_TIMETABLE_STAY_FOR                                          :{STRING}停車
+STR_TIMETABLE_DAYS                                              :{COMMA}日間
+STR_TIMETABLE_TICKS                                             :{COMMA}ティック
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN}電車庫へ行く
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN}電車庫へ行く、{VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN}電車庫で修理
@@ -2647,6 +2657,8 @@ STR_8828_UNLOAD                                                 :{BLACK}降ろ�
 STR_REFIT                                                       :{BLACK}再装備
 STR_REFIT_TIP                                                   :{BLACK}貨物の種類を選択してください。Control+クリックすると、再装備をキャンセルします。
 STR_REFIT_ORDER                                                 :（{STRING}に再装備）
+STR_TIMETABLE_VIEW                                              :{BLACK}時刻表
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}時刻表を表示します
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 指令終了 - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2703,6 +2715,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択�
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}選択した指令の前／リストの終わりに新規指令を挿入します
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に全負荷まで待つことを強制します
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に降ろすことを強制します
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻表 - 指令を選択するにはクリックします。
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の実行時間を変更します
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択した指令の実行時間を消去します
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}遅刻回数をリセットして、車両が定刻になります
 STR_SERVICE_HINT                                                :{BLACK}修理が必要でないとこの指令をスキップ
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}価格：{CURRENCY}　重量：{WEIGHT_S}{}最大速度：{VELOCITY}　出力：{POWER}{}運転費：一年間{CURRENCY}{}容量：{CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}故障
@@ -2724,6 +2740,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}鉄道�
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}鉄道車両の名称が変更できません...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に貨物の降ろすことを含みます
 STR_886F_TRANSFER                                               :{BLACK}運搬
+STR_CLEAR_TIME                                                  :{BLACK}時間を消去
+STR_RESET_LATENESS                                              :{BLACK}遅刻回数をリセット
 
 STR_TRAIN_STOPPING                                              :{RED}停車中
 STR_TRAIN_STOPPING_VEL                                          :{RED}停車中、{VELOCITY}
@@ -2734,6 +2752,14 @@ STR_TRAIN_START_NO_CATENARY                                     :線路は懸垂
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING}が新登場！
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING}が新登場！ー{STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}この車両に時刻表が設定できません...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}車両が駅／バス停のみで停車できます。
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}この車両はこの駅／バス停で停車しません。
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}時間を変更
+STR_TIMETABLE_STATUS_ON_TIME                                    :この車両は現在定刻しています
+STR_TIMETABLE_STATUS_LATE                                       :この車両は現在{STRING}遅刻しています
+STR_TIMETABLE_STATUS_EARLY                                      :この車両は現在{STRING}早刻しています
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}道路車両があります
@@ -2945,6 +2971,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}再装�
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}飛行機が再装備できません...
 STR_GO_TO_AIRPORT_HANGAR                                        :{STATION}格納庫へ行く
 SERVICE_AT_AIRPORT_HANGAR                                       : {STATION}のハンガーでサービスします
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE}（時刻表）
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}{STATION}で飛行船墜落！

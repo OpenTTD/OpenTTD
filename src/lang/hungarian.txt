@@ -1169,6 +1169,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Ki
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollgomb sebessége a térképen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatikus pause-mode új játék esetén: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Továbbfejlesztett járműlista használata: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Időalapú menetrend engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetrendi idő-alapegység tick a nap helyett: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármű játékosonként: {ORANGE}{STRING}
@@ -1957,6 +1959,7 @@ STR_3804_WATER                                                  :Víz
 STR_3805_COAST_OR_RIVERBANK                                     :Tenger- vagy folyópart
 STR_3806_SHIP_DEPOT                                             :Dokk
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...nem építhető vízen
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}A csatornát előbb le kell rombolni
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Játék mentése
@@ -2709,6 +2712,12 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Javítsd a vona
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Menj megállás nélkül {TOWN}i járműtelepre
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Mindig javítsd a vonatot a {TOWN}i járműtelepen
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_FOR                                        :Menjen {STRING} állomásra
+STR_TIMETABLE_STAY_FOR                                          :és maradjon {STRING.t}
+STR_TIMETABLE_DAYS                                              :{COMMA} nap
+STR_TIMETABLE_TICKS                                             :{COMMA} tick
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Úton {TOWN} járműtelepére
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Úton {TOWN} járműtelepére, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Javítás {TOWN} depójában
@@ -2750,6 +2759,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Lepakol
 STR_REFIT                                                       :{BLACK}Átalakít
 STR_REFIT_TIP                                                   :{BLACK}Válaszd ki minek a szállítására álljunk át. Ctrl+kattintással eltávolítod az átalakítási utasítást.
 STR_REFIT_ORDER                                                 :(Átalakít erre: {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Menetrend
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Átkapcsolás menetrendi nézetre
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} menetrendje
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Menetrend vége - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2806,6 +2817,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijel�
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Új célpont beillesztése a kijelölt elé vagy a lista végére
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelölt célponton meg kell várni, amíg telerakják a járművet
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelölt célponton le kell pakolni a rakományt
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Menetrend - kijelöléshez kattints egy elemére
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt menetrend-sor végrehajtási idejét változtatja meg
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijelölt menetrendi sorhoz tartozó végrehajtási idő törlése
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Késés-számláló nullázása, azaz a jármű pontos lesz
 STR_SERVICE_HINT                                                :{BLACK}Célpont kihagyása, ha javítás szükséges
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ár: {CURRENCY}    Súly: {WEIGHT_S}{}Sebesség: {VELOCITY}    Teljesítmény: {POWER}{}Működtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Lerobbant
@@ -2827,6 +2842,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Márkan�
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nem változtathatod meg a márkanevet...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kiválasztott állomásnál a jármű a rakományt leteszi
 STR_886F_TRANSFER                                               :{BLACK}Elszállít
+STR_CLEAR_TIME                                                  :{BLACK}Idő törlése
+STR_RESET_LATENESS                                              :{BLACK}Késés nullázása
 
 STR_TRAIN_STOPPING                                              :{RED}Lassít
 STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {VELOCITY}
@@ -2837,6 +2854,14 @@ STR_TRAIN_START_NO_CATENARY                                     :Ennek a sínnek
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Új {STRING} elérhető!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Új {STRING} elérhető!  -  {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}A jármű nem időzíthető
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}A járművek csak az állomáson várakozhatnak
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Ez a jármű nem áll meg ezen az állomáson
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő megváltoztatása
+STR_TIMETABLE_STATUS_ON_TIME                                    :Ez a jármű jelenleg pontosan közlekedik
+STR_TIMETABLE_STATUS_LATE                                       :Ez a jármű jelenleg {STRING} késéssel közlekedik
+STR_TIMETABLE_STATUS_EARLY                                      :Ez a jármű jelenleg {STRING} korábban közlekedik
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármű van az útban
@@ -3048,6 +3073,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapa
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nem alakíthatod át a repülőgépet...
 STR_GO_TO_AIRPORT_HANGAR                                        :Menj a {STATION} repülőtér hangárjába
 SERVICE_AT_AIRPORT_HANGAR                                       :Javítás a(z) {STATION} hangárban
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Menetrendesítve)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinbaleset {STATION} közelében!

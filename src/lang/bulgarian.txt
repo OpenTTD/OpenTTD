@@ -2600,6 +2600,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Ремонт в
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Отиди без да спираш на {TOWN} Влаково депо
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонт без спиране в {TOWN} влаково депо
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Отиващ към Влаковото депо на {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Отиващ към Влаковото депо на {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}На ремонт във Влаковото депо на {TOWN}
@@ -2724,6 +2726,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Влака не
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Нов {STRING} е на разположение!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Нов {STRING} е на разположение! - {STRING}
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Кола на пътя
@@ -2932,6 +2935,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нова
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не може да се преустрои самолета...
 STR_GO_TO_AIRPORT_HANGAR                                        :Отиди до Хангара на летище {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Сервиз в {STATION} хангар
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Катастрофа с Цепелин на {STATION}!
