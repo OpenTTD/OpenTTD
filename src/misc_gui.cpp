@@ -1213,8 +1213,8 @@ enum QueryWidgets {
 
 struct query_d {
 	void (*proc)(Window*, bool); ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
-	StringID message;            ///< message shown for query window
 	uint64 params[10];           ///< local copy of _decode_parameters
+	StringID message;            ///< message shown for query window
 	bool calledback;             ///< has callback been executed already (internal usage for WE_DESTROY event)
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(query_d));
