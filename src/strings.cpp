@@ -569,7 +569,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_CURRENCY_COMPACT: /* {CURRCOMPACT} */
-				buff = FormatGenericCurrency(buff, _currency, GetInt32(&argv), true, last);
+				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), true, last);
 				break;
 
 			case SCC_REVISION: /* {REV} */
@@ -801,7 +801,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 
 			case SCC_CURRENCY: // {CURRENCY}
-				buff = FormatGenericCurrency(buff, _currency, GetInt32(&argv), false, last);
+				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), false, last);
 				break;
 
 			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
