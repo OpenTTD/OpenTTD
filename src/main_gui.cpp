@@ -2208,7 +2208,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 
 		if (p != NULL) {
 			/* Draw player money */
-			SetDParam64(0, p->player_money);
+			SetDParamMoney(0, p->player_money);
 			DrawStringCentered(570, 1, p->player_money >= 0 ? STR_0004 : STR_0005, 0);
 		}
 

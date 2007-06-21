@@ -345,12 +345,12 @@ static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
 {
 	if (RailVehInfo(v->engine_type)->railveh_type == RAILVEH_WAGON) {
 		SetDParam(0, GetCustomEngineName(v->engine_type));
-		SetDParam(1, v->value);
+		SetDParamMoney(1, v->value);
 		DrawString(x, y, STR_882D_VALUE, 0x10);
 	} else {
 		SetDParam(0, GetCustomEngineName(v->engine_type));
 		SetDParam(1, v->build_year);
-		SetDParam(2, v->value);
+		SetDParamMoney(2, v->value);
 		DrawString(x, y, STR_882C_BUILT_VALUE, 0x10);
 	}
 }
@@ -423,7 +423,7 @@ static void DrawTrainDetailsWindow(Window *w)
 
 	SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 	SetDParam(2, v->max_age / 366);
-	SetDParam(3, GetTrainRunningCost(v) >> 8);
+	SetDParamMoney(3, GetTrainRunningCost(v) >> 8);
 	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
 
 	SetDParam(2, v->u.rail.cached_max_speed * 10 / 16);
@@ -434,8 +434,8 @@ static void DrawTrainDetailsWindow(Window *w)
 		STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
 		STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, 0);
 
-	SetDParam(0, v->profit_this_year);
-	SetDParam(1, v->profit_last_year);
+	SetDParamMoney(0, v->profit_this_year);
+	SetDParamMoney(1, v->profit_last_year);
 	DrawString(x, 35, STR_885F_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
 	SetDParam(0, 100 * (v->reliability>>8) >> 8);
@@ -504,7 +504,7 @@ static void DrawTrainDetailsWindow(Window *w)
 				DrawString(x, y + 2, FreightWagonMult(i) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_013F_TOTAL_CAPACITY, 0);
 			}
 		}
-		SetDParam(0, v->cargo_feeder_share);
+		SetDParamMoney(0, v->cargo_feeder_share);
 		DrawString(x, y + 15, STR_FEEDER_CARGO_VALUE, 0);
 	}
 }

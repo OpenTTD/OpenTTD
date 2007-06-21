@@ -64,7 +64,7 @@ struct GraphDrawer {
 	uint height;    ///< The height of the graph in pixels.
 	StringID format_str_y_axis;
 	byte colors[GRAPH_MAX_DATASETS];
-	int64 cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
+	Money cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
 };
 
 static void DrawGraph(const GraphDrawer *gw)
@@ -132,7 +132,7 @@ static void DrawGraph(const GraphDrawer *gw)
 	for (int i = 0; i < gw->num_dataset; i++) {
 		if (!HASBIT(gw->excluded_data, i)) {
 			for (int j = 0; j < gw->num_on_x_axis; j++) {
-				int64 datapoint = gw->cost[i][j];
+				Money datapoint = gw->cost[i][j];
 
 				if (datapoint != INVALID_DATAPOINT) {
 					/* For now, if the graph has negative values the scaling is
@@ -214,7 +214,7 @@ static void DrawGraph(const GraphDrawer *gw)
 			uint prev_y = INVALID_DATAPOINT_POS;
 
 			for (int j = 0; j < gw->num_on_x_axis; j++) {
-				int64 datapoint = gw->cost[i][j];
+				Money datapoint = gw->cost[i][j];
 
 				if (datapoint != INVALID_DATAPOINT) {
 					/* XXX: This can overflow if x_axis_offset * datapoint is

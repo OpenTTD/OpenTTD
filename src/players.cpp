@@ -178,7 +178,7 @@ bool CheckPlayerHasMoney(CommandCost cost)
 	if (cost.GetCost() > 0) {
 		PlayerID pid = _current_player;
 		if (IsValidPlayer(pid) && cost.GetCost() > GetPlayer(pid)->player_money) {
-			SetDParam(0, cost.GetCost());
+			SetDParamMoney(0, cost.GetCost());
 			_error_message = STR_0003_NOT_ENOUGH_CASH_REQUIRES;
 			return false;
 		}

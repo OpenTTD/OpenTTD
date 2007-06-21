@@ -434,7 +434,7 @@ static const StringID _sort_listing[][11] = {{
 static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
 	/* Purchase cost */
-	SetDParam(0, (GetEngineProperty(engine_number, 0x17, rvi->base_cost) * _price.build_railwagon) >> 8);
+	SetDParamMoney(0, (GetEngineProperty(engine_number, 0x17, rvi->base_cost) * _price.build_railwagon) >> 8);
 	DrawString(x, y, STR_PURCHASE_INFO_COST, 0);
 	y += 10;
 
@@ -464,7 +464,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	uint weight = GetEngineProperty(engine_number, 0x16, rvi->weight);
 
 	/* Purchase Cost - Engine weight */
-	SetDParam(0, GetEngineProperty(engine_number, 0x17, rvi->base_cost) * (_price.build_railvehicle >> 3) >> 5);
+	SetDParamMoney(0, GetEngineProperty(engine_number, 0x17, rvi->base_cost) * (_price.build_railvehicle >> 3) >> 5);
 	SetDParam(1, weight << multihead);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_WEIGHT, 0);
 	y += 10;
@@ -483,7 +483,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	}
 
 	/* Running cost */
-	SetDParam(0, (GetEngineProperty(engine_number, 0x0D, rvi->running_cost_base) * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
+	SetDParamMoney(0, (GetEngineProperty(engine_number, 0x0D, rvi->running_cost_base) * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
@@ -504,13 +504,13 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 	bool refittable = (_engine_info[engine_number].refit_mask != 0);
 
 	/* Purchase cost - Max speed */
-	SetDParam(0, GetEngineProperty(engine_number, 0x11, rvi->base_cost) * (_price.roadveh_base >> 3) >> 5);
+	SetDParamMoney(0, GetEngineProperty(engine_number, 0x11, rvi->base_cost) * (_price.roadveh_base >> 3) >> 5);
 	SetDParam(1, rvi->max_speed * 10 / 32);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
 
 	/* Running cost */
-	SetDParam(0, rvi->running_cost * _price.roadveh_running >> 8);
+	SetDParamMoney(0, rvi->running_cost * _price.roadveh_running >> 8);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
@@ -528,7 +528,7 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const ShipVehicleInfo *svi)
 {
 	/* Purchase cost - Max speed */
-	SetDParam(0, GetEngineProperty(engine_number, 0x0A, svi->base_cost) * (_price.ship_base >> 3) >> 5);
+	SetDParamMoney(0, GetEngineProperty(engine_number, 0x0A, svi->base_cost) * (_price.ship_base >> 3) >> 5);
 	SetDParam(1, GetEngineProperty(engine_number, 0x0B, svi->max_speed) * 10 / 32);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
@@ -541,7 +541,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 	y += 10;
 
 	/* Running cost */
-	SetDParam(0, GetEngineProperty(engine_number, 0x0F, svi->running_cost) * _price.ship_running >> 8);
+	SetDParamMoney(0, GetEngineProperty(engine_number, 0x0F, svi->running_cost) * _price.ship_running >> 8);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 
@@ -554,7 +554,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 	CargoID cargo;
 
 	/* Purchase cost - Max speed */
-	SetDParam(0, GetEngineProperty(engine_number, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5);
+	SetDParamMoney(0, GetEngineProperty(engine_number, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5);
 	SetDParam(1, avi->max_speed * 10 / 16);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, 0);
 	y += 10;
@@ -576,7 +576,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 	y += 10;
 
 	/* Running cost */
-	SetDParam(0, GetEngineProperty(engine_number, 0x0E, avi->running_cost) * _price.aircraft_running >> 8);
+	SetDParamMoney(0, GetEngineProperty(engine_number, 0x0E, avi->running_cost) * _price.aircraft_running >> 8);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, 0);
 	y += 10;
 

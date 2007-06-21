@@ -122,7 +122,7 @@ static void Place_LandInfo(TileIndex tile)
 
 	str = STR_01A4_COST_TO_CLEAR_N_A;
 	if (CmdSucceeded(costclear)) {
-		SetDParam(0, costclear.GetCost());
+		SetDParamMoney(0, costclear.GetCost());
 		str = STR_01A5_COST_TO_CLEAR;
 	}
 	GetString(_landinfo_data[2], str, lastof(_landinfo_data[2]));
@@ -618,7 +618,7 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 		cost = -cost;
 		msg = STR_0807_ESTIMATED_INCOME;
 	}
-	SetDParam(0, cost);
+	SetDParamMoney(0, cost);
 	ShowErrorMessage(INVALID_STRING_ID, msg, x, y);
 }
 
@@ -632,7 +632,7 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 		cost = -cost;
 		msg = STR_0803_INCOME;
 	}
-	SetDParam(0, cost);
+	SetDParamMoney(0, cost);
 	AddTextEffect(msg, pt.x, pt.y, 0x250);
 }
 
@@ -640,7 +640,7 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
 {
 	Point pt = RemapCoords(x,y,z);
 
-	SetDParam(0, cost);
+	SetDParamMoney(0, cost);
 	AddTextEffect(STR_FEEDER, pt.x, pt.y, 0x250);
 }
 

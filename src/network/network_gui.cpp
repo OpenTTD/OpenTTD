@@ -894,15 +894,15 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, 2); // inauguration year
 			y += 10;
 
-			SetDParam64(0, _network_player_info[nd->company].company_value);
+			SetDParamMoney(0, _network_player_info[nd->company].company_value);
 			DrawString(x, y, STR_NETWORK_VALUE, 2); // company value
 			y += 10;
 
-			SetDParam64(0, _network_player_info[nd->company].money);
+			SetDParamMoney(0, _network_player_info[nd->company].money);
 			DrawString(x, y, STR_NETWORK_CURRENT_BALANCE, 2); // current balance
 			y += 10;
 
-			SetDParam64(0, _network_player_info[nd->company].income);
+			SetDParamMoney(0, _network_player_info[nd->company].income);
 			DrawString(x, y, STR_NETWORK_LAST_YEARS_INCOME, 2); // last year's income
 			y += 10;
 

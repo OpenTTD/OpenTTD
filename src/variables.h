@@ -367,6 +367,8 @@ static inline void SetDParam64(uint n, uint64 v)
 	_decode_parameters[n + 1] = v >> 32;
 }
 
+static inline void SetDParamMoney(uint n, Money m) { SetDParam64(n, (uint64)m); }
+
 static inline uint32 GetDParam(uint n)
 {
 	assert(n < lengthof(_decode_parameters));

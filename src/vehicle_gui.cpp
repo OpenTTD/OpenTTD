@@ -346,7 +346,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 				if (CmdSucceeded(cost)) {
 					SetDParam(0, WP(w, refit_d).cargo->cargo);
 					SetDParam(1, _returned_refit_capacity);
-					SetDParam(2, cost.GetCost());
+					SetDParamMoney(2, cost.GetCost());
 					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 				}
 			}
@@ -1005,8 +1005,8 @@ static void DrawVehicleListWindow(Window *w)
 		const Vehicle *v = vl->sort_list[i];
 		StringID str;
 
-		SetDParam(0, v->profit_this_year);
-		SetDParam(1, v->profit_last_year);
+		SetDParamMoney(0, v->profit_this_year);
+		SetDParamMoney(1, v->profit_last_year);
 
 		DrawVehicleImage(v, x + 19, y + 6, w->widget[VLW_WIDGET_LIST].right - w->widget[VLW_WIDGET_LIST].left - 20, 0, INVALID_VEHICLE);
 		DrawString(x + 19, y + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);

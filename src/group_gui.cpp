@@ -461,8 +461,8 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 							STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR;
 				}
 
-				SetDParam(0, v->profit_this_year);
-				SetDParam(1, v->profit_last_year);
+				SetDParamMoney(0, v->profit_this_year);
+				SetDParamMoney(1, v->profit_last_year);
 				DrawString(x + 19, y2 + w->resize.step_height - 8, str, 0);
 
 				if (IsValidGroupID(v->group_id)) {

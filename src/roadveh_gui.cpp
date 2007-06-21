@@ -92,7 +92,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 			SetDParam(2, v->max_age / 366);
-			SetDParam(3, RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running >> 8);
+			SetDParamMoney(3, RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running >> 8);
 			DrawString(2, 15, STR_900D_AGE_RUNNING_COST_YR, 0);
 		}
 
@@ -104,8 +104,8 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw profit */
 		{
-			SetDParam(0, v->profit_this_year);
-			SetDParam(1, v->profit_last_year);
+			SetDParamMoney(0, v->profit_this_year);
+			SetDParamMoney(1, v->profit_last_year);
 			DrawString(2, 35, STR_900F_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 		}
 
@@ -120,7 +120,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 
 		SetDParam(0, GetCustomEngineName(v->engine_type));
 		SetDParam(1, v->build_year);
-		SetDParam(2, v->value);
+		SetDParamMoney(2, v->value);
 		DrawString(34, 57 + y_offset, STR_9011_BUILT_VALUE, 0);
 
 		if (RoadVehHasArticPart(v)) {
@@ -182,7 +182,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* Draw Transfer credits text */
-		SetDParam(0, v->cargo_feeder_share);
+		SetDParamMoney(0, v->cargo_feeder_share);
 		DrawString(34, 90 + y_offset, STR_FEEDER_CARGO_VALUE, 0);
 
 		/* Draw service interval text */
