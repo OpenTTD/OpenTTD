@@ -340,15 +340,17 @@ static char *FormatTinyDate(char *buff, Date date, const char* last)
 	return FormatString(buff, GetStringPtr(STR_DATE_TINY), args, 0, last);
 }
 
-static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 number, bool compact, const char* last)
+static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money number, bool compact, const char* last)
 {
 	const char* multiplier = "";
 	char buf[40];
 	char* p;
 	int j;
 
-	/* multiply by exchange rate */
-	number *= spec->rate;
+	/* Multiply by exchange rate, but do it safely. */
+	CommandCost cs(number);
+	cs.MultiplyCost(spec->rate);
+	number = cs.GetCost();
 
 	/* convert from negative */
 	if (number < 0) {
