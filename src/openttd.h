@@ -192,6 +192,7 @@ enum {
 	TO_BUILDINGS,
 	TO_BRIDGES,
 	TO_STRUCTURES,
+	TO_LOADING,
 };
 
 /* Landscape types */

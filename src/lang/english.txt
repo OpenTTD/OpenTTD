@@ -1103,6 +1103,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the advanced vehicle list: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Use loading indicators: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING1}
 
@@ -3289,6 +3290,10 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle t
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots, waypoints and catenary
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas, maybe in future for eyecandy
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators
+
+STR_PERCENT_FULL_SMALL                                          :{TINYFONT}{WHITE}{NUM}%
+STR_PERCENT_FULL                                                :{WHITE}{NUM}%
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Group {COMMA}

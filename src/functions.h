@@ -79,16 +79,6 @@ uint32 InteractiveRandom(); // Used for random sequences that are not the same o
 uint InteractiveRandomRange(uint max);
 
 /* texteff.cpp */
-void MoveAllTextEffects();
-void AddTextEffect(StringID msg, int x, int y, uint16 duration);
-void InitTextEffects();
-void DrawTextEffects(DrawPixelInfo *dpi);
-
-void InitTextMessage();
-void DrawTextMessage();
-void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...);
-void UndrawTextMessage();
-
 bool AddAnimatedTile(TileIndex tile);
 void DeleteAnimatedTile(TileIndex tile);
 void AnimateAnimatedTiles();

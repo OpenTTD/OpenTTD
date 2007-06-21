@@ -19,6 +19,7 @@
 #include "genworld.h"
 #include "debug.h"
 #include "zoom.hpp"
+#include "texteff.hpp"
 #include "blitter/factory.hpp"
 
 #ifdef _DEBUG

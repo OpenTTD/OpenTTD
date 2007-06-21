@@ -19,10 +19,11 @@
 #include "blitter/factory.hpp"
 #include <stdarg.h> /* va_list */
 #include "date.h"
+#include "texteff.hpp"
 
 enum {
 	MAX_TEXTMESSAGE_LENGTH = 200,
-	MAX_TEXT_MESSAGES      =  30,
+	INIT_NUM_TEXT_MESSAGES =  20,
 	MAX_CHAT_MESSAGES      =  10,
 	MAX_ANIMATED_TILES     = 256,
 };
@@ -36,6 +37,7 @@ struct TextEffect {
 	uint16 duration;
 	uint32 params_1;
 	uint32 params_2;
+	TextEffectMode mode;
 };
 
 
@@ -45,12 +47,13 @@ struct TextMessage {
 	Date end_date;
 };
 
-static TextEffect _text_effect_list[MAX_TEXT_MESSAGES];
+static TextEffect *_text_effect_list = NULL;
 static TextMessage _textmsg_list[MAX_CHAT_MESSAGES];
 TileIndex _animated_tile_list[MAX_ANIMATED_TILES];
 
 static bool _textmessage_dirty = false;
 static bool _textmessage_visible = false;
+static uint16 _num_text_effects = INIT_NUM_TEXT_MESSAGES;
 
 /* The chatbox grows from the bottom so the coordinates are pixels from
  * the left and pixels from the bottom. The height is the maximum height */
@@ -261,24 +264,38 @@ static void MarkTextEffectAreaDirty(TextEffect *te)
 	);
 }
 
-void AddTextEffect(StringID msg, int x, int y, uint16 duration)
+TextEffectID AddTextEffect(StringID msg, int x, int y, uint16 duration, TextEffectMode mode)
 {
 	TextEffect *te;
 	int w;
 	char buffer[100];
+	TextEffectID i;
 
-	if (_game_mode == GM_MENU) return;
+	if (_game_mode == GM_MENU) return INVALID_TE_ID;
 
-	for (te = _text_effect_list; te->string_id != INVALID_STRING_ID; ) {
-		if (++te == endof(_text_effect_list)) return;
+	/* Look for a free spot in the text effect array */
+	for (i = 0; i < _num_text_effects; i++) {
+		if (_text_effect_list[i].string_id == INVALID_STRING_ID) break;
 	}
 
+	/* If there is none found, we grow the array */
+	if (i == _num_text_effects) {
+		_num_text_effects += 25;
+		_text_effect_list = (TextEffect*) realloc(_text_effect_list, _num_text_effects * sizeof(TextEffect));
+		for (; i < _num_text_effects; i++) _text_effect_list[i].string_id = INVALID_STRING_ID;
+		i = _num_text_effects - 1;
+	}
+
+	te = &_text_effect_list[i];
+
+	/* Start defining this object */
 	te->string_id = msg;
 	te->duration = duration;
 	te->y = y - 5;
 	te->bottom = y + 5;
 	te->params_1 = GetDParam(0);
 	te->params_2 = GetDParam(4);
+	te->mode = mode;
 
 	GetString(buffer, msg, lastof(buffer));
 	w = GetStringBoundingBox(buffer).width;
@@ -286,10 +303,38 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration)
 	te->x = x - (w >> 1);
 	te->right = x + (w >> 1) - 1;
 	MarkTextEffectAreaDirty(te);
+
+	return i;
+}
+
+void UpdateTextEffect(TextEffectID te_id, StringID msg)
+{
+	assert(te_id < _num_text_effects);
+	TextEffect *te;
+
+	/* Update details */
+	te = &_text_effect_list[te_id];
+	te->string_id = msg;
+	te->params_1 = GetDParam(0);
+	te->params_2 = GetDParam(4);
+
+	MarkTextEffectAreaDirty(te);
+}
+
+void RemoveTextEffect(TextEffectID te_id)
+{
+	assert(te_id < _num_text_effects);
+	TextEffect *te;
+
+	te = &_text_effect_list[te_id];
+	MarkTextEffectAreaDirty(te);
+	te->string_id = INVALID_STRING_ID;
 }
 
 static void MoveTextEffect(TextEffect *te)
 {
+	/* Never expire for duration of 0xFFFF */
+	if (te->duration == 0xFFFF) return;
 	if (te->duration < 8) {
 		te->string_id = INVALID_STRING_ID;
 	} else {
@@ -302,47 +347,48 @@ static void MoveTextEffect(TextEffect *te)
 
 void MoveAllTextEffects()
 {
-	TextEffect *te;
-
-	for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
-		if (te->string_id != INVALID_STRING_ID) MoveTextEffect(te);
+	for (TextEffectID i = 0; i < _num_text_effects; i++) {
+		TextEffect *te = &_text_effect_list[i];
+		if (te->string_id != INVALID_STRING_ID && te->mode == TE_RISING) MoveTextEffect(te);
 	}
 }
 
 void InitTextEffects()
 {
-	TextEffect *te;
+	if (_text_effect_list == NULL) _text_effect_list = MallocT<TextEffect>(_num_text_effects);
 
-	for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
-		te->string_id = INVALID_STRING_ID;
-	}
+	for (TextEffectID i = 0; i < _num_text_effects; i++) _text_effect_list[i].string_id = INVALID_STRING_ID;
 }
 
 void DrawTextEffects(DrawPixelInfo *dpi)
 {
-	const TextEffect* te;
-
 	switch (dpi->zoom) {
 		case ZOOM_LVL_NORMAL:
-			for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
+			for (TextEffectID i = 0; i < _num_text_effects; i++) {
+				TextEffect *te = &_text_effect_list[i];
 				if (te->string_id != INVALID_STRING_ID &&
 						dpi->left <= te->right &&
 						dpi->top  <= te->bottom &&
 						dpi->left + dpi->width  > te->x &&
 						dpi->top  + dpi->height > te->y) {
-					AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2);
+					if (te->mode == TE_RISING || (_patches.loading_indicators && !HASBIT(_transparent_opt, TO_LOADING))) {
+						AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2);
+					}
 				}
 			}
 			break;
 
 		case ZOOM_LVL_OUT_2X:
-			for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
+			for (TextEffectID i = 0; i < _num_text_effects; i++) {
+				TextEffect *te = &_text_effect_list[i];
 				if (te->string_id != INVALID_STRING_ID &&
 						dpi->left <= te->right  * 2 - te->x &&
 						dpi->top  <= te->bottom * 2 - te->y &&
 						dpi->left + dpi->width  > te->x &&
 						dpi->top  + dpi->height > te->y) {
-					AddStringToDraw(te->x, te->y, (StringID)(te->string_id-1), te->params_1, te->params_2);
+					if (te->mode == TE_RISING || (_patches.loading_indicators && !HASBIT(_transparent_opt, TO_LOADING))) {
+						AddStringToDraw(te->x, te->y, (StringID)(te->string_id - 1), te->params_1, te->params_2);
+					}
 				}
 			}
 			break;

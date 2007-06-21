@@ -229,6 +229,7 @@ void AfterLoadVehicles()
 	FOR_ALL_VEHICLES(v) {
 		v->UpdateDeltaXY(v->direction);
 
+		v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = NULL;
 		if (v->type == VEH_TRAIN) v->u.rail.first_engine = INVALID_ENGINE;
 		if (v->type == VEH_ROAD)  v->u.road.first_engine = INVALID_ENGINE;
@@ -296,6 +297,7 @@ static Vehicle *InitializeVehicle(Vehicle *v)
 	v->depot_list  = NULL;
 	v->random_bits = 0;
 	v->group_id = DEFAULT_GROUP;
+	v->fill_percent_te_id = INVALID_TE_ID;
 
 	return v;
 }
@@ -2263,6 +2265,29 @@ bool IsVehicleInDepot(const Vehicle *v)
 	return false;
 }
 
+/**
+ * Calculates how full a vehicle is.
+ * @param v The Vehicle to check. For trains, use the first engine.
+ * @return A percentage of how full the Vehicle is.
+ */
+uint8 CalcPercentVehicleFilled(Vehicle *v)
+{
+	int count = 0;
+	int max = 0;
+
+	/* Count up max and used */
+	for (; v != NULL; v = v->next) {
+		count += v->cargo_count;
+		max += v->cargo_cap;
+	}
+
+	/* Train without capacity */
+	if (max == 0) return 100;
+
+	/* Return the percentage */
+	return (count * 100) / max;
+}
+
 void VehicleEnterDepot(Vehicle *v)
 {
 	switch (v->type) {
@@ -3106,6 +3131,9 @@ void Vehicle::LeaveStation()
 	current_order.type = OT_LEAVESTATION;
 	current_order.flags = 0;
 	GetStation(this->last_station_visited)->loading_vehicles.remove(this);
+
+	HideFillingPercent(this->fill_percent_te_id);
+	this->fill_percent_te_id = INVALID_TE_ID;
 
 	UpdateVehicleTimetable(this, false);
 }

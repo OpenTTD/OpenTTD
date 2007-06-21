@@ -9,6 +9,7 @@
 #include "order.h"
 #include "rail.h"
 #include "road.h"
+#include "texteff.hpp"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -244,6 +245,8 @@ struct Vehicle {
 	int8 x_offs;             // x offset for vehicle sprite
 	int8 y_offs;             // y offset for vehicle sprite
 	EngineID engine_type;
+
+	TextEffectID fill_percent_te_id; // a text-effect id to a loading indicator object
 
 	/* for randomized variational spritegroups
 	 * bitmask used to resolve them; parts of it get reseeded when triggers
@@ -506,6 +509,7 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
 Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z);
+uint8 CalcPercentVehicleFilled(Vehicle *v);
 
 void InitializeTrains();
 byte VehicleRandomBits();

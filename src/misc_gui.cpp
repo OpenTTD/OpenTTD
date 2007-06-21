@@ -633,7 +633,7 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 		msg = STR_0803_INCOME;
 	}
 	SetDParamMoney(0, cost);
-	AddTextEffect(msg, pt.x, pt.y, 0x250);
+	AddTextEffect(msg, pt.x, pt.y, 0x250, TE_RISING);
 }
 
 void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
@@ -641,7 +641,26 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
 	Point pt = RemapCoords(x,y,z);
 
 	SetDParamMoney(0, cost);
-	AddTextEffect(STR_FEEDER, pt.x, pt.y, 0x250);
+	AddTextEffect(STR_FEEDER, pt.x, pt.y, 0x250, TE_RISING);
+}
+
+TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent)
+{
+	Point pt = RemapCoords(x, y, z);
+
+	SetDParam(0, percent);
+	return AddTextEffect(STR_PERCENT_FULL, pt.x, pt.y, 0xFFFF, TE_STATIC);
+}
+
+void UpdateFillingPercent(TextEffectID te_id, uint8 percent)
+{
+	SetDParam(0, percent);
+	UpdateTextEffect(te_id, STR_PERCENT_FULL);
+}
+
+void HideFillingPercent(TextEffectID te_id)
+{
+	if (te_id != INVALID_TE_ID) RemoveTextEffect(te_id);
 }
 
 static const Widget _tooltips_widgets[] = {
