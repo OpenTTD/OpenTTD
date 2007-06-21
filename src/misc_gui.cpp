@@ -104,7 +104,7 @@ static void Place_LandInfo(TileIndex tile)
 	t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
 	old_money = p->player_money;
-	p->player_money = 0x7fffffff;
+	p->player_money = INT64_MAX;
 	costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
 	p->player_money = old_money;
 
@@ -610,7 +610,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 }
 
 
-void ShowEstimatedCostOrIncome(int32 cost, int x, int y)
+void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 {
 	StringID msg = STR_0805_ESTIMATED_COST;
 
@@ -622,7 +622,7 @@ void ShowEstimatedCostOrIncome(int32 cost, int x, int y)
 	ShowErrorMessage(INVALID_STRING_ID, msg, x, y);
 }
 
-void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost)
+void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 {
 	StringID msg;
 	Point pt = RemapCoords(x,y,z);
@@ -636,7 +636,7 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost)
 	AddTextEffect(msg, pt.x, pt.y, 0x250);
 }
 
-void ShowFeederIncomeAnimation(int x, int y, int z, int32 cost)
+void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
 {
 	Point pt = RemapCoords(x,y,z);
 

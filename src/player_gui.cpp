@@ -31,8 +31,8 @@ static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_sti
 static void DrawPlayerEconomyStats(const Player *p, byte mode)
 {
 	int x, y, i, j, year;
-	const int64 (*tbl)[13];
-	int64 sum, cost;
+	const Money (*tbl)[13];
+	Money sum, cost;
 	StringID str;
 
 	if (!(mode & 1)) { // normal sized economics window (mode&1) is minimized status

@@ -1248,7 +1248,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				IsTrainEngine(v)) ? v->u.rail.other_multiheaded_part : NULL;
 
 			if (rear != NULL) {
-				cost.AddCost(-(int64)rear->value);
+				cost.AddCost(-rear->value);
 				if (flags & DC_EXEC) {
 					UnlinkWagon(rear, first);
 					DeleteDepotHighlightOfVehicle(rear);

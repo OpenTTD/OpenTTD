@@ -41,7 +41,7 @@ extern const byte _town_action_costs[8];
  */
 uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 {
-	int32 avail, ref;
+	Money avail, ref;
 	int num = 0;
 	uint avail_buttons = 0x7F; // by default all buttons except bribe are enabled.
 	uint buttons = 0;

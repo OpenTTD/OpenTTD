@@ -124,7 +124,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
  * @param flags is the flags to use when calling DoCommand(). Mainly DC_EXEC counts
  * @return value is cost of the replacement or CMD_ERROR
  */
-static CommandCost ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
+static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 {
 	CommandCost cost;
 	CommandCost sell_value;

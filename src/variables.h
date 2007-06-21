@@ -286,7 +286,7 @@ VARDEF uint32 _news_display_opt;
 VARDEF bool _news_ticker_sound;
 
 VARDEF StringID _error_message;
-VARDEF int32 _additional_cash_required;
+VARDEF Money _additional_cash_required;
 
 VARDEF uint32 _decode_parameters[20];
 

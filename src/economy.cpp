@@ -112,7 +112,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 /* Count vehicles */
 	{
 		Vehicle *v;
-		int32 min_profit = 0;
+		Money min_profit = 0;
 		bool min_profit_first = true;
 		uint num = 0;
 
@@ -135,7 +135,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		_score_part[owner][SCORE_VEHICLES] = num;
 		/* Don't allow negative min_profit to show */
 		if (min_profit > 0)
-			_score_part[owner][SCORE_MIN_PROFIT] = min_profit;
+			_score_part[owner][SCORE_MIN_PROFIT] = ClampToI32(min_profit);
 	}
 
 /* Count stations */
@@ -163,9 +163,9 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 			} while (++pee,--numec);
 
 			if (min_income > 0)
-				_score_part[owner][SCORE_MIN_INCOME] = min_income;
+				_score_part[owner][SCORE_MIN_INCOME] = ClampToI32(min_income);
 
-			_score_part[owner][SCORE_MAX_INCOME] = max_income;
+			_score_part[owner][SCORE_MAX_INCOME] = ClampToI32(max_income);
 		}
 	}
 
@@ -196,15 +196,14 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 /* Generate score for player money */
 	{
-		int32 money = p->player_money;
-		if (money > 0) {
-			_score_part[owner][SCORE_MONEY] = money;
+		if (p->player_money > 0) {
+			_score_part[owner][SCORE_MONEY] = ClampToI32(p->player_money);
 		}
 	}
 
 /* Generate score for loan */
 	{
-		_score_part[owner][SCORE_LOAN] = _score_info[SCORE_LOAN].needed - p->current_loan;
+		_score_part[owner][SCORE_LOAN] = ClampToI32(_score_info[SCORE_LOAN].needed - p->current_loan);
 	}
 
 	/* Now we calculate the score for each item.. */
@@ -438,7 +437,6 @@ static void ChangeNetworkOwner(PlayerID current_player, PlayerID new_player)
 static void PlayersCheckBankrupt(Player *p)
 {
 	PlayerID owner;
-	int64 val;
 
 	/*  If the player has money again, it does not go bankrupt */
 	if (p->player_money >= 0) {
@@ -466,7 +464,7 @@ static void PlayersCheckBankrupt(Player *p)
 
 			/* Check if the company has any value.. if not, declare it bankrupt
 			 *  right now */
-			val = CalculateCompanyValue(p);
+			Money val = CalculateCompanyValue(p);
 			if (val > 0) {
 				p->bankrupt_value = val;
 				p->bankrupt_asked = 1 << owner; // Don't ask the owner
@@ -1319,11 +1317,11 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 	return false;
 }
 
-static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit)
+static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit)
 {
 	bool subsidised;
 	Station *s_from, *s_to;
-	int32 profit;
+	Money profit;
 
 	assert(num_pieces > 0);
 
@@ -1511,7 +1509,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	bool anything_loaded   = false;
 	uint32 cargo_not_full  = 0;
 	uint32 cargo_full      = 0;
-	int total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
+	Money total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
 
 	v->cur_speed = 0;
 
@@ -1603,7 +1601,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
 		ge->days_since_pickup = 0;
 		ge->last_speed = min(t, 255);
-		ge->last_age = _cur_year - v->build_year;
+		ge->last_age = _cur_year - u->build_year;
 
 		/* If there's goods waiting at the station, and the vehicle
 		 * has capacity for it, load it on the vehicle. */
@@ -1643,7 +1641,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			 * ge->unload_pending holds the amount that has been credited, but has not yet been unloaded.
 			 */
 			int cargoshare = cap * 10000 / (ge->waiting_acceptance + ge->unload_pending);
-			int feeder_profit_share = ge->feeder_profit * cargoshare / 10000;
+			Money feeder_profit_share = ge->feeder_profit * cargoshare / 10000;
 			v->cargo_count += cap;
 			ge->waiting_acceptance -= cap;
 

@@ -132,7 +132,7 @@ static void AiStateVehLoop(Player *p)
 	p->ai.state_counter = 0;
 }
 
-static EngineID AiChooseTrainToBuild(RailType railtype, int32 money, byte flag, TileIndex tile)
+static EngineID AiChooseTrainToBuild(RailType railtype, Money money, byte flag, TileIndex tile)
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	byte best_veh_score = 0;
@@ -161,7 +161,7 @@ static EngineID AiChooseTrainToBuild(RailType railtype, int32 money, byte flag, 
 	return best_veh_index;
 }
 
-static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex tile)
+static EngineID AiChooseRoadVehToBuild(CargoID cargo, Money money, TileIndex tile)
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	int32 best_veh_rating = 0;
@@ -199,10 +199,10 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex til
 	return best_veh_index;
 }
 
-static EngineID AiChooseAircraftToBuild(int32 money, byte flag)
+static EngineID AiChooseAircraftToBuild(Money money, byte flag)
 {
 	EngineID best_veh_index = INVALID_ENGINE;
-	int32 best_veh_cost = 0;
+	Money best_veh_cost = 0;
 	EngineID i;
 
 	for (i = AIRCRAFT_ENGINES_INDEX; i != AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; i++) {
@@ -225,9 +225,9 @@ static EngineID AiChooseAircraftToBuild(int32 money, byte flag)
 	return best_veh_index;
 }
 
-static int32 AiGetBasePrice(const Player* p)
+static Money AiGetBasePrice(const Player* p)
 {
-	int32 base = _price.station_value;
+	Money base = _price.station_value;
 
 	// adjust base price when more expensive vehicles are available
 	switch (p->ai.railtype_to_use) {
@@ -242,7 +242,7 @@ static int32 AiGetBasePrice(const Player* p)
 }
 
 #if 0
-static EngineID AiChooseShipToBuild(byte cargo, int32 money)
+static EngineID AiChooseShipToBuild(byte cargo, Money money)
 {
 	// XXX: not done
 	return INVALID_ENGINE;
@@ -251,13 +251,13 @@ static EngineID AiChooseShipToBuild(byte cargo, int32 money)
 
 static EngineID AiChooseRoadVehToReplaceWith(const Player* p, const Vehicle* v)
 {
-	int32 avail_money = p->player_money + v->value;
+	Money avail_money = p->player_money + v->value;
 	return AiChooseRoadVehToBuild(v->cargo_type, avail_money, v->tile);
 }
 
 static EngineID AiChooseAircraftToReplaceWith(const Player* p, const Vehicle* v)
 {
-	int32 avail_money = p->player_money + v->value;
+	Money avail_money = p->player_money + v->value;
 	return AiChooseAircraftToBuild(
 		avail_money, AircraftVehInfo(v->engine_type)->subtype & AIR_CTOL
 	);
@@ -265,7 +265,7 @@ static EngineID AiChooseAircraftToReplaceWith(const Player* p, const Vehicle* v)
 
 static EngineID AiChooseTrainToReplaceWith(const Player* p, const Vehicle* v)
 {
-	int32 avail_money = p->player_money + v->value;
+	Money avail_money = p->player_money + v->value;
 	const Vehicle* u = v;
 	int num = 0;
 
@@ -3901,7 +3901,7 @@ static void AiHandleTakeover(Player *p)
 
 static void AiAdjustLoan(const Player* p)
 {
-	int32 base = AiGetBasePrice(p);
+	Money base = AiGetBasePrice(p);
 
 	if (p->player_money > base * 1400) {
 		// Decrease loan

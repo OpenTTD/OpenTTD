@@ -139,8 +139,8 @@ void DrawSprite(SpriteID img, SpriteID pal, int x, int y);
 bool EnsureNoVehicle(TileIndex tile);
 bool EnsureNoVehicleOnGround(TileIndex tile);
 void MarkAllViewportsDirty(int left, int top, int right, int bottom);
-void ShowCostOrIncomeAnimation(int x, int y, int z, int32 cost);
-void ShowFeederIncomeAnimation(int x, int y, int z, int32 cost);
+void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
+void ShowFeederIncomeAnimation(int x, int y, int z, Money cost);
 
 bool CheckIfAuthorityAllows(TileIndex tile);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);

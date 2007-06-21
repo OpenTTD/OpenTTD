@@ -22,7 +22,7 @@ static struct BridgeData {
 	TileIndex end_tile;
 	byte type;
 	byte indexes[MAX_BRIDGES];
-	int32 costs[MAX_BRIDGES];
+	Money costs[MAX_BRIDGES];
 } _bridgedata;
 
 void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2)

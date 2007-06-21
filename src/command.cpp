@@ -418,10 +418,10 @@ error:
 	return res;
 }
 
-int32 GetAvailableMoneyForCommand()
+Money GetAvailableMoneyForCommand()
 {
 	PlayerID pid = _current_player;
-	if (!IsValidPlayer(pid)) return 0x7FFFFFFF; // max int
+	if (!IsValidPlayer(pid)) return INT64_MAX;
 	return GetPlayer(pid)->player_money;
 }
 
@@ -568,7 +568,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	if (IsLocalPlayer() && _game_mode != GM_EDITOR) {
 		if (res2.GetCost() != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2.GetCost());
-		if (_additional_cash_required) {
+		if (_additional_cash_required != 0) {
 			SetDParam(0, _additional_cash_required);
 			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x, y);
 			if (res2.GetCost() == 0) goto callb_err;

@@ -974,7 +974,7 @@ extern CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bo
 CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	CommandCost ret, cost;
-	int32 money;
+	Money money;
 	int ex;
 	int ey;
 	int sx, sy, x, y;

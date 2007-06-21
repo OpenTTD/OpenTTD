@@ -116,7 +116,7 @@ struct PlayerAiNew {
 
 	CargoID cargo;
 	byte tbt;    ///< train/bus/truck 0/1/2 AI_TRAIN/AI_BUS/AI_TRUCK
-	int new_cost;
+	Money new_cost;
 
 	byte action;
 

@@ -97,7 +97,6 @@ static void AiNew_State_Nothing(Player *p)
 //    - Build HQ
 static void AiNew_State_WakeUp(Player *p)
 {
-	int32 money;
 	int c;
 	assert(p->ainew.state == AI_STATE_WAKE_UP);
 	// First, check if we have a HQ
@@ -111,7 +110,7 @@ static void AiNew_State_WakeUp(Player *p)
 		return;
 	}
 
-	money = p->player_money - AI_MINIMUM_MONEY;
+	Money money = p->player_money - AI_MINIMUM_MONEY;
 
 	// Let's pick an action!
 	if (p->ainew.action == AI_ACTION_NONE) {

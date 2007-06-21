@@ -131,14 +131,14 @@ static int CDECL StationWaitingSorter(const void *a, const void *b)
 {
 	const Station* st1 = *(const Station**)a;
 	const Station* st2 = *(const Station**)b;
-	int sum1 = 0, sum2 = 0;
+	Money sum1 = 0, sum2 = 0;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
 		if (st1->goods[j].waiting_acceptance & 0xfff) sum1 += GetTransportedGoodsIncome(st1->goods[j].waiting_acceptance & 0xfff, 20, 50, j);
 		if (st2->goods[j].waiting_acceptance & 0xfff) sum2 += GetTransportedGoodsIncome(st2->goods[j].waiting_acceptance & 0xfff, 20, 50, j);
 	}
 
-	return (_internal_sort_order & 1) ? sum2 - sum1 : sum1 - sum2;
+	return (_internal_sort_order & 1) ? ClampToI32(sum2 - sum1) : ClampToI32(sum1 - sum2);
 }
 
 /**

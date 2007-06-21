@@ -44,9 +44,9 @@ struct NetworkPlayerInfo {
 	char company_name[NETWORK_NAME_LENGTH];         // Company name
 	char password[NETWORK_PASSWORD_LENGTH];         // The password for the player
 	Year inaugurated_year;                          // What year the company started in
-	int64 company_value;                            // The company value
-	int64 money;                                    // The amount of money the company has
-	int64 income;                                   // How much did the company earned last year
+	Money company_value;                            // The company value
+	Money money;                                    // The amount of money the company has
+	Money income;                                   // How much did the company earned last year
 	uint16 performance;                             // What was his performance last month?
 	bool use_password;                              // Is there a password
 	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];      // How many vehicles are there of this type?

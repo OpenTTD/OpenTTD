@@ -347,7 +347,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->subtype = (avi->subtype & AIR_CTOL ? AIR_AIRCRAFT : AIR_HELICOPTER);
 		v->UpdateDeltaXY(INVALID_DIR);
-		v->value = (uint32)value.GetCost();
+		v->value = value.GetCost();
 
 		u->subtype = AIR_SHADOW;
 		u->UpdateDeltaXY(INVALID_DIR);

@@ -410,7 +410,9 @@ void ChangeWorkingDirectory(const char *exe)
 void DetermineBasePaths(const char *exe)
 {
 	char tmp[MAX_PATH];
-#ifdef WITH_PERSONAL_DIR
+#if defined(__MORPHOS__) || defined(__AMIGA__) || !defined(WITH_PERSONAL_DIR)
+	_searchpaths[SP_PERSONAL_DIR] = NULL;
+#else
 	const char *homedir = getenv("HOME");
 
 	if (homedir == NULL) {
@@ -422,14 +424,16 @@ void DetermineBasePaths(const char *exe)
 	AppendPathSeparator(tmp, MAX_PATH);
 
 	_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
-#else
-	_searchpaths[SP_PERSONAL_DIR] = NULL;
 #endif
 	_searchpaths[SP_SHARED_DIR] = NULL;
 
+#if defined(__MORPHOS__) || defined(__AMIGA__)
+	_searchpaths[SP_WORKING_DIR] = NULL;
+#else
 	getcwd(tmp, MAX_PATH);
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_WORKING_DIR] = strdup(tmp);
+#endif
 
 	/* Change the working directory to that one of the executable */
 	ChangeWorkingDirectory((char*)exe);
@@ -437,9 +441,13 @@ void DetermineBasePaths(const char *exe)
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_BINARY_DIR] = strdup(tmp);
 
+#if defined(__MORPHOS__) || defined(__AMIGA__)
+	_searchpaths[SP_INSTALLATION_DIR] = NULL;
+#else
 	snprintf(tmp, MAX_PATH, "%s", GLOBAL_DATA_DIR);
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_INSTALLATION_DIR] = strdup(tmp);
+#endif
 #ifdef WITH_COCOA
 extern void cocoaSetApplicationBundleDir();
 	cocoaSetApplicationBundleDir();

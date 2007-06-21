@@ -589,7 +589,7 @@ static int CDECL VehicleProfitThisYearSorter(const void *a, const void *b)
 {
 	const Vehicle* va = *(const Vehicle**)a;
 	const Vehicle* vb = *(const Vehicle**)b;
-	int r = va->profit_this_year - vb->profit_this_year;
+	int r = ClampToI32(va->profit_this_year - vb->profit_this_year);
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 
@@ -600,7 +600,7 @@ static int CDECL VehicleProfitLastYearSorter(const void *a, const void *b)
 {
 	const Vehicle* va = *(const Vehicle**)a;
 	const Vehicle* vb = *(const Vehicle**)b;
-	int r = va->profit_last_year - vb->profit_last_year;
+	int r = ClampToI32(va->profit_last_year - vb->profit_last_year);
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 
@@ -687,13 +687,12 @@ static int CDECL VehicleValueSorter(const void *a, const void *b)
 	const Vehicle* va = *(const Vehicle**)a;
 	const Vehicle* vb = *(const Vehicle**)b;
 	const Vehicle *u;
-	int valuea = 0, valueb = 0;
-	int r;
+	Money valuea = 0, valueb = 0;
 
 	for (u = va; u != NULL; u = u->next) valuea += u->value;
 	for (u = vb; u != NULL; u = u->next) valueb += u->value;
 
-	r = valuea - valueb;
+	int r = ClampToI32(valuea - valueb);
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 

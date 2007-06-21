@@ -51,6 +51,14 @@ static inline uint clampu(uint a, uint min, uint max)
 	return a;
 }
 
+/* Gracefully reduce a signed 64-bit int to signed 32-bit -- no bogusly truncating the sign bit */
+static inline int32 ClampToI32(int64 a)
+{
+	if (a <= (int32)0x80000000) return 0x80000000;
+	if (a >= (int32)0x7FFFFFFF) return 0x7FFFFFFF;
+	return (int32)a;
+}
+
 static inline int32 BIGMULSS(int32 a, int32 b, int shift)
 {
 	return (int32)((int64)a * (int64)b >> shift);
