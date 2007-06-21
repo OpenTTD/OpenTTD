@@ -485,7 +485,7 @@ static void CurrentScreenCallback(void *userdata, void *buf, uint y, uint pitch,
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	void *src = blitter->MoveTo(_screen.dst_ptr, 0, y);
-	blitter->CopyToBuffer(src, buf, _screen.width, n, pitch);
+	blitter->CopyImageToBuffer(src, buf, _screen.width, n, pitch);
 }
 
 /* generate a large piece of the world */

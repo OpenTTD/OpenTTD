@@ -18,9 +18,9 @@ public:
 	/* virtual */ void SetPixelIfEmpty(void *video, int x, int y, uint8 color);
 	/* virtual */ void DrawRect(void *video, int width, int height, uint8 color);
 	/* virtual */ void DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 color);
-	/* virtual */ void CopyFromBuffer(void *video, const void *src, int width, int height, int src_pitch);
-	/* virtual */ void CopyToBuffer(const void *video, void *dst, int width, int height, int dst_pitch);
-	/* virtual */ void MoveBuffer(void *video_dst, const void *video_src, int width, int height);
+	/* virtual */ void CopyFromBuffer(void *video, const void *src, int width, int height);
+	/* virtual */ void CopyToBuffer(const void *video, void *dst, int width, int height);
+	/* virtual */ void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch);
 	/* virtual */ void ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y);
 	/* virtual */ int BufferSize(int width, int height);
 	/* virtual */ void PaletteAnimate(uint start, uint count);

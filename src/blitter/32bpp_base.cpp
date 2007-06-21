@@ -81,43 +81,40 @@ void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int 
 		}
 	}
 }
-void Blitter_32bppBase::CopyFromBuffer(void *video, const void *src, int width, int height, int src_pitch)
+
+void Blitter_32bppBase::CopyFromBuffer(void *video, const void *src, int width, int height)
 {
-	int direction = (height < 0) ? -1 : 1;
 	uint32 *dst = (uint32 *)video;
 	uint32 *usrc = (uint32 *)src;
 
-	height = abs(height);
 	for (; height > 0; height--) {
 		memcpy(dst, usrc, width * sizeof(uint32));
-		usrc += src_pitch * direction;
-		dst += _screen.pitch * direction;
+		usrc += width;
+		dst += _screen.pitch;
 	}
 }
 
-void Blitter_32bppBase::CopyToBuffer(const void *video, void *dst, int width, int height, int dst_pitch)
+void Blitter_32bppBase::CopyToBuffer(const void *video, void *dst, int width, int height)
 {
-	int direction = (height < 0) ? -1 : 1;
 	uint32 *udst = (uint32 *)dst;
 	uint32 *src = (uint32 *)video;
 
-	height = abs(height);
 	for (; height > 0; height--) {
 		memcpy(udst, src, width * sizeof(uint32));
-		src += _screen.pitch * direction;
-		udst += dst_pitch * direction;
+		src += _screen.pitch;
+		udst += width;
 	}
 }
 
-void Blitter_32bppBase::MoveBuffer(void *video_dst, const void *video_src, int width, int height)
+void Blitter_32bppBase::CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch)
 {
-	uint32 *dst = (uint32 *)video_dst;
-	uint32 *src = (uint32 *)video_src;
+	uint32 *udst = (uint32 *)dst;
+	uint32 *src = (uint32 *)video;
 
 	for (; height > 0; height--) {
-		memmove(dst, src, width * sizeof(uint32));
+		memcpy(udst, src, width * sizeof(uint32));
 		src += _screen.pitch;
-		dst += _screen.pitch;
+		udst += dst_pitch;
 	}
 }
 
@@ -146,8 +143,11 @@ void Blitter_32bppBase::ScrollBuffer(void *video, int &left, int &top, int &widt
 			width += scroll_x;
 		}
 
-		/* Negative height as we want to copy from bottom to top */
-		this->CopyFromBuffer(dst, src, width, -height, _screen.pitch);
+		for (int h = height; h > 0; h--) {
+			memcpy(dst, src, width * sizeof(uint32));
+			src -= _screen.pitch;
+			dst -= _screen.pitch;
+		}
 	} else {
 		/* Calculate pointers */
 		dst = (uint32 *)video + left + top * _screen.pitch;
@@ -169,7 +169,11 @@ void Blitter_32bppBase::ScrollBuffer(void *video, int &left, int &top, int &widt
 
 		/* the y-displacement may be 0 therefore we have to use memmove,
 		 * because source and destination may overlap */
-		this->MoveBuffer(dst, src, width, height);
+		for (int h = height; h > 0; h--) {
+			memmove(dst, src, width * sizeof(uint32));
+			src += _screen.pitch;
+			dst += _screen.pitch;
+		}
 	}
 }
 

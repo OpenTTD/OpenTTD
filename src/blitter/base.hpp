@@ -121,9 +121,9 @@ public:
 	 * @param src The buffer from which the data will be read.
 	 * @param width The width of the buffer.
 	 * @param height The height of the buffer.
-	 * @param src_pitch The pitch (byte per line) of the source buffer.
+	 * @note You can not do anything with the content of the buffer, as the blitter can store non-pixel data in it too!
 	 */
-	virtual void CopyFromBuffer(void *video, const void *src, int width, int height, int src_pitch) = 0;
+	virtual void CopyFromBuffer(void *video, const void *src, int width, int height) = 0;
 
 	/**
 	 * Copy from the screen to a buffer.
@@ -131,18 +131,19 @@ public:
 	 * @param dst The buffer in which the data will be stored.
 	 * @param width The width of the buffer.
 	 * @param height The height of the buffer.
-	 * @param dst_pitch The pitch (byte per line) of the destination buffer.
+	 * @note You can not do anything with the content of the buffer, as the blitter can store non-pixel data in it too!
 	 */
-	virtual void CopyToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) = 0;
+	virtual void CopyToBuffer(const void *video, void *dst, int width, int height) = 0;
 
 	/**
-	 * Move the videobuffer some places (via memmove).
-	 * @param video_dst The destination pointer (video-buffer).
-	 * @param video_src The source pointer (video-buffer).
-	 * @param width The width of the buffer to move.
-	 * @param height The height of the buffer to move.
+	 * Copy from the screen to a buffer in a palette format for 8bpp and RGBA format for 32bpp.
+	 * @param video The destination pointer (video-buffer).
+	 * @param dst The buffer in which the data will be stored.
+	 * @param width The width of the buffer.
+	 * @param height The height of the buffer.
+	 * @param dst_pitch The pitch (byte per line) of the destination buffer.
 	 */
-	virtual void MoveBuffer(void *video_dst, const void *video_src, int width, int height) = 0;
+	virtual void CopyImageToBuffer(const void *video, void *dst, int width, int height, int dst_pitch) = 0;
 
 	/**
 	 * Scroll the videobuffer some 'x' and 'y' value.
