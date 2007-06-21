@@ -1103,6 +1103,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Offway
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Apmay ollwheelscray eedspay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticallyway ausepay enwhay artingstay away ewnay amegay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Useway ethay advancedway ehiclevay istlay: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enableway imetablingtay orfay ehiclesvay: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Owshay imetabletay inway ickstay atherray anthay aysday: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Axmay ainstray erpay ayerplay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Axmay oadray ehiclesvay erpay ayerplay: {ORANGE}{STRING}
@@ -1891,6 +1893,7 @@ STR_3804_WATER                                                  :Aterway
 STR_3805_COAST_OR_RIVERBANK                                     :Oastcay orway iverbankray
 STR_3806_SHIP_DEPOT                                             :Ipshay epotday
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...An'tcay uildbay onway aterway
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Ustmay emolishday analcay irstfay
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Avesay Amegay
@@ -2606,6 +2609,11 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Ervicesay atway
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ogay onnay-opstay otay {TOWN} Aintray Epotday
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ervicesay onnay-opstay atway {TOWN} Aintray Epotday
 
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Aveltray (otnay imetabledtay)
+STR_TIMETABLE_STAY_FOR                                          :andway aystay orfay {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} ay{P "" s}day
+STR_TIMETABLE_TICKS                                             :{COMMA} ick{P "" s}tay
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Eadinghay orfay {TOWN} Aintray Epotday
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Eadinghay orfay {TOWN} Aintray Epotday, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Ervicesay atway {TOWN} Aintray Epotday
@@ -2647,6 +2655,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Unloadwa
 STR_REFIT                                                       :{BLACK}Efitray
 STR_REFIT_TIP                                                   :{BLACK}Electsay atwhay argocay ypetay otay efitray otay inway isthay orderway. Ontrolcay ickclay otay emoveray efitray instructionway
 STR_REFIT_ORDER                                                 :(Efitray otay {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Imetabletay
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Itchsway otay ethay imetabletay iewvay
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordersway)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Endway ofway Ordersway - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2703,6 +2713,9 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Akemay e
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insertway away ewnay orderway eforebay ethay ighlightedhay orderway, orway addway otay endway ofway istlay
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Akemay ethay ighlightedhay orderway orcefay ethay ehiclevay otay aitway orfay away ullfay oadlay
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Akemay ethay ighlightedhay orderway orcefay ethay ehiclevay otay unloadway
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Imetabletay - ickclay onway anway orderway otay ighlighthay itway.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Angechay ethay amountway ofway imetay atthay ethay ighlightedhay orderway ouldshay aketay
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Earclay ethay amountway ofway imetay orfay ethay ighlightedhay orderway
 STR_SERVICE_HINT                                                :{BLACK}Ipskay isthay orderway unlessway away ervicesay isway eedednay
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ostcay: {CURRENCY} Eightway: {WEIGHT_S}{}Eedspay: {VELOCITY}  Owerpay: {POWER}{}Unningray Ostcay: {CURRENCY}/yray{}Apacitycay: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Okenbray ownday
@@ -2734,6 +2747,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Isthay acktray 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ewnay {STRING} ownay availableway!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ewnay {STRING} ownay availableway!  -  {STRING}
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Oadray ehiclevay inway ethay ayway
@@ -2945,6 +2959,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ewnay ap
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}An'tcay efitray aircraftway...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ogay otay {STATION} Angarhay
 SERVICE_AT_AIRPORT_HANGAR                                       :Ervicesay atway {STATION} Angarhay
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Eppelinzay isasterday atway {STATION}!
@@ -3261,6 +3276,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Oggletay
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Oggletay ansparencytray orfay uildablesbay ikelay ationsstay, epotsday, aypointsway andway atenarycay
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Oggletay ansparencytray orfay idgesbray
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Oggletay ansparencytray orfay ucturesstray ikelay ighthouseslay andway antennasway, aybemay inway uturefay orfay eyecandyway
+
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Oupgray {COMMA}
