@@ -77,10 +77,6 @@ extern "C" void HideMenuBar();
 #undef Point
 #undef Rect
 
-/* Taken from ../gfx.h */
-extern bool _dbg_screen_rect;
-
-
 /* Subclass of NSWindow to fix genie effect and support resize events  */
 @interface OTTD_QuartzWindow : NSWindow
 - (void)miniaturize:(id)sender;
@@ -740,9 +736,6 @@ static void QZ_GameLoop()
 
 			_ctrl_pressed = !!(_cocoa_video_data.current_mods & NSControlKeyMask);
 			_shift_pressed = !!(_cocoa_video_data.current_mods & NSShiftKeyMask);
-#ifdef _DEBUG
-			_dbg_screen_rect = !!(_cocoa_video_data.current_mods & NSAlphaShiftKeyMask);
-#endif
 
 			GameLoop();
 

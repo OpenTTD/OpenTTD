@@ -22,10 +22,6 @@
 #include "texteff.hpp"
 #include "blitter/factory.hpp"
 
-#ifdef _DEBUG
-bool _dbg_screen_rect;
-#endif
-
 byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 bool _fullscreen;
 CursorVars _cursor;
@@ -896,20 +892,6 @@ void DrawMouseCursor()
 	_cursor.dirty = false;
 }
 
-#if defined(_DEBUG)
-static void DbgScreenRect(int left, int top, int right, int bottom)
-{
-	DrawPixelInfo dp;
-	DrawPixelInfo *old;
-
-	old = _cur_dpi;
-	_cur_dpi = &dp;
-	dp = _screen;
-	GfxFillRect(left, top, right - 1, bottom - 1, rand() & 255);
-	_cur_dpi = old;
-}
-#endif
-
 void RedrawScreenRect(int left, int top, int right, int bottom)
 {
 	assert(right <= _screen.width && bottom <= _screen.height);
@@ -923,12 +905,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 	}
 	UndrawTextMessage();
 
-#if defined(_DEBUG)
-	if (_dbg_screen_rect)
-		DbgScreenRect(left, top, right, bottom);
-	else
-#endif
-		DrawOverlappedWindowForAll(left, top, right, bottom);
+	DrawOverlappedWindowForAll(left, top, right, bottom);
 
 	_video_driver->make_dirty(left, top, right - left, bottom - top);
 }
