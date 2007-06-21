@@ -663,7 +663,7 @@ static bool AllocateDibSection(int w, int h)
 		return false;
 
 	_screen.width = w;
-	_screen.pitch = ALIGN(w, 4);
+	_screen.pitch = (bpp == 8) ? ALIGN(w, 4) : w;
 	_screen.height = h;
 	bi = (BITMAPINFO*)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
 	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
