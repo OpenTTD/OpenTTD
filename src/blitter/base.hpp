@@ -179,6 +179,11 @@ public:
 	 */
 	virtual Blitter::PaletteAnimation UsePaletteAnimation() = 0;
 
+	/**
+	 * Get the naem of the blitter, the same as the Factory-instance returns.
+	 */
+	virtual const char *GetName() = 0;
+
 	virtual ~Blitter() { }
 };
 

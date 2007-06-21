@@ -12,6 +12,8 @@ class Blitter_8bppOptimized : public Blitter_8bppBase {
 public:
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 	/* virtual */ Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator);
+
+	/* virtual */ const char *GetName() { return "8bpp-optimized"; }
 };
 
 class FBlitter_8bppOptimized: public BlitterFactory<FBlitter_8bppOptimized> {

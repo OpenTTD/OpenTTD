@@ -32,6 +32,8 @@ public:
 	/* virtual */ int BufferSize(int width, int height);
 	/* virtual */ void PaletteAnimate(uint start, uint count);
 	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation();
+
+	/* virtual */ const char *GetName() { return "32bpp-anim"; }
 };
 
 class FBlitter_32bppAnim: public BlitterFactory<FBlitter_32bppAnim> {

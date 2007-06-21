@@ -26,6 +26,8 @@ public:
 	/* virtual */ int BufferSize(int width, int height) { return 0; };
 	/* virtual */ void PaletteAnimate(uint start, uint count) { };
 	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation() { return Blitter::PALETTE_ANIMATION_NONE; };
+
+	/* virtual */ const char *GetName() { return "null"; }
 };
 
 class FBlitter_Null: public BlitterFactory<FBlitter_Null> {

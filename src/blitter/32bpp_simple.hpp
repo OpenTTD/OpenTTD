@@ -13,6 +13,8 @@ public:
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 	/* virtual */ void DrawColorMappingRect(void *dst, int width, int height, int pal);
 	/* virtual */ Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator);
+
+	/* virtual */ const char *GetName() { return "32bpp-simple"; }
 };
 
 class FBlitter_32bppSimple: public BlitterFactory<FBlitter_32bppSimple> {
