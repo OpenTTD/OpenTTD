@@ -668,7 +668,7 @@ static bool NeighborIsRoadTile(TileIndex tile, int dir, RoadBlockTitleDistance d
 
 static bool IsRoadAllowedHere(TileIndex tile, int dir)
 {
-	if (TileX(tile) < 1 || TileY(tile) < 1 || MapMaxX() >= TileX(tile) || MapMaxY() >= TileY(tile)) return false;
+	if (TileX(tile) < 1 || TileY(tile) < 1 || MapMaxX() <= TileX(tile) || MapMaxY() <= TileY(tile)) return false;
 
 	Slope k;
 	Slope slope;
