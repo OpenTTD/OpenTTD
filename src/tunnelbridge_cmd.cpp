@@ -512,7 +512,6 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 		cost.AddCost(_price.build_tunnel);
 		cost.AddCost(cost.GetCost() >> 3); // add a multiplier for longer tunnels
 	}
-	cost.MultiplyCost(0);
 
 	/* Add the cost of the entrance */
 	cost.AddCost(_price.build_tunnel);
