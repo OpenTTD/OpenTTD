@@ -129,7 +129,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Player *p = GetPlayer(_current_player);
 
 	if (p->current_loan >= _economy.max_loan) {
-		SetDParamMoney(0, _economy.max_loan);
+		SetDParam(0, _economy.max_loan);
 		return_cmd_error(STR_702B_MAXIMUM_PERMITTED_LOAN);
 	}
 
@@ -182,7 +182,7 @@ CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (p->player_money < loan) {
-		SetDParamMoney(0, loan);
+		SetDParam(0, loan);
 		return_cmd_error(STR_702E_REQUIRED);
 	}
 

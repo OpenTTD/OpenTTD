@@ -162,7 +162,7 @@ static void DrawGraph(const GraphDrawer *gw)
 
 	for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 		SetDParam(0, gw->format_str_y_axis);
-		SetDParam64(1, y_label);
+		SetDParam(1, y_label);
 		DrawStringRightAligned(x, y, STR_0170, GRAPH_AXIS_LABEL_COLOUR);
 
 		y_label -= y_label_separation;

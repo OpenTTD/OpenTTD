@@ -92,7 +92,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 			SetDParam(2, v->max_age / 366);
-			SetDParamMoney(3, _price.aircraft_running * AircraftVehInfo(v->engine_type)->running_cost >> 8);
+			SetDParam(3, _price.aircraft_running * AircraftVehInfo(v->engine_type)->running_cost >> 8);
 			DrawString(2, 15, STR_A00D_AGE_RUNNING_COST_YR, 0);
 		}
 
@@ -104,8 +104,8 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw profit */
 		{
-			SetDParamMoney(0, v->profit_this_year);
-			SetDParamMoney(1, v->profit_last_year);
+			SetDParam(0, v->profit_this_year);
+			SetDParam(1, v->profit_last_year);
 			DrawString(2, 35, STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 		}
 
@@ -125,7 +125,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw Transfer credits text */
 		{
-			SetDParamMoney(0, v->cargo_feeder_share);
+			SetDParam(0, v->cargo_feeder_share);
 			DrawString(60, 101, STR_FEEDER_CARGO_VALUE, 0);
 		}
 
@@ -139,7 +139,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 				if (IsNormalAircraft(v)) {
 					SetDParam(0, GetCustomEngineName(v->engine_type));
 					SetDParam(1, v->build_year);
-					SetDParamMoney(2, v->value);
+					SetDParam(2, v->value);
 					DrawString(60, y, STR_A011_BUILT_VALUE, 0);
 					y += 10;
 

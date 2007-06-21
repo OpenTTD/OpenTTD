@@ -60,14 +60,14 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 
 						str = STR_701E;
 						if (cost < 0) { cost = -cost; str++; }
-						SetDParamMoney(0, cost);
+						SetDParam(0, cost);
 						DrawStringRightAligned(x, 27 + i * 10, str, 0);
 					}
 				}
 
 				str = STR_701E;
 				if (sum < 0) { sum = -sum; str++; }
-				SetDParamMoney(0, sum);
+				SetDParam(0, sum);
 				DrawStringRightAligned(x, 27 + 13 * 10 + 2, str, 0);
 
 				GfxFillRect(x - 75, 27 + 10 * 13, x, 27 + 10 * 13, 215);
@@ -80,27 +80,27 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 		y = 171;
 
 		/* draw max loan aligned to loan below (y += 10) */
-		SetDParamMoney(0, _economy.max_loan);
+		SetDParam(0, _economy.max_loan);
 		DrawString(202, y + 10, STR_MAX_LOAN, 0);
 	} else {
 		y = 15;
 	}
 
 	DrawString(2, y, STR_7026_BANK_BALANCE, 0);
-	SetDParamMoney(0, p->player_money);
+	SetDParam(0, p->player_money);
 	DrawStringRightAligned(182, y, STR_7028, 0);
 
 	y += 10;
 
 	DrawString(2, y, STR_7027_LOAN, 0);
-	SetDParamMoney(0, p->current_loan);
+	SetDParam(0, p->current_loan);
 	DrawStringRightAligned(182, y, STR_7028, 0);
 
 	y += 12;
 
 	GfxFillRect(182 - 75, y - 2, 182, y - 2, 215);
 
-	SetDParamMoney(0, p->player_money - p->current_loan);
+	SetDParam(0, p->player_money - p->current_loan);
 	DrawStringRightAligned(182, y, STR_7028, 0);
 }
 
@@ -778,7 +778,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			SetDParam(1, p->president_name_2);
 			DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
 
-			SetDParamMoney(0, CalculateCompanyValue(p));
+			SetDParam(0, CalculateCompanyValue(p));
 			DrawString(110, 114, STR_7076_COMPANY_VALUE, 0);
 
 			DrawCompanyOwnerText(p);
@@ -947,7 +947,7 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
-		SetDParamMoney(2, p->bankrupt_value);
+		SetDParam(2, p->bankrupt_value);
 		DrawStringMultiCenter(214, 65, STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT, 238);
 		break;
 	}

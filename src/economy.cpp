@@ -1783,7 +1783,7 @@ static void DoAcquireCompany(Player *p)
 
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);
-	SetDParamMoney(2, p->bankrupt_value);
+	SetDParam(2, p->bankrupt_value);
 	AddNewsItem( (StringID)(_current_player | NB_BMERGER), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 	/* original code does this a little bit differently */

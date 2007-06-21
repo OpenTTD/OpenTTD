@@ -38,9 +38,9 @@ char _userstring[128];
 
 static char *StationGetSpecialString(char *buff, int x, const char* last);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char* last);
-static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv, const char* last);
+static char *GetSpecialPlayerNameString(char *buff, int ind, const int64 *argv, const char* last);
 
-static char *FormatString(char *buff, const char *str, const int32 *argv, uint casei, const char* last);
+static char *FormatString(char *buff, const char *str, const int64 *argv, uint casei, const char* last);
 
 struct LanguagePack {
 	uint32 ident;       // 32-bits identifier
@@ -61,27 +61,22 @@ static uint _langtab_start[32]; // Offset into langpack offs
 
 
 /** Read an int64 from the argv array. */
-static inline int64 GetInt64(const int32 **argv)
-{
-	int64 result;
-
-	assert(argv);
-	result = (uint32)(*argv)[0] + ((uint64)(uint32)(*argv)[1] << 32);
-	(*argv) += 2;
-	return result;
-}
-
-/** Read an int32 from the argv array. */
-static inline int32 GetInt32(const int32 **argv)
+static inline int64 GetInt64(const int64 **argv)
 {
 	assert(argv);
 	return *(*argv)++;
 }
 
-/** Read an array from the argv array. */
-static inline const int32 *GetArgvPtr(const int32 **argv, int n)
+/** Read an int32 from the argv array. */
+static inline int32 GetInt32(const int64 **argv)
 {
-	const int32 *result;
+	return (int32)GetInt64(argv);
+}
+
+/** Read an array from the argv array. */
+static inline const int64 *GetArgvPtr(const int64 **argv, int n)
+{
+	const int64 *result;
 	assert(*argv);
 	result = *argv;
 	(*argv) += n;
@@ -115,7 +110,7 @@ static const char *GetStringPtr(StringID string)
  * @param last
  * @return a formatted string of char
  */
-static char *GetStringWithArgs(char *buffr, uint string, const int32 *argv, const char* last)
+static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, const char* last)
 {
 	uint index = GB(string,  0, 11);
 	uint tab   = GB(string, 11,  5);
@@ -180,7 +175,7 @@ static char *GetStringWithArgs(char *buffr, uint string, const int32 *argv, cons
 
 char *GetString(char *buffr, StringID string, const char* last)
 {
-	return GetStringWithArgs(buffr, string, (int32*)_decode_parameters, last);
+	return GetStringWithArgs(buffr, string, (int64*)_decode_parameters, last);
 }
 
 
@@ -312,7 +307,7 @@ static char *FormatYmdString(char *buff, Date date, const char* last)
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
 
-	int32 args[3] = { ymd.day + STR_01AC_1ST - 1, STR_0162_JAN + ymd.month, ymd.year };
+	int64 args[3] = { ymd.day + STR_01AC_1ST - 1, STR_0162_JAN + ymd.month, ymd.year };
 	return FormatString(buff, GetStringPtr(STR_DATE_LONG), args, 0, last);
 }
 
@@ -321,7 +316,7 @@ static char *FormatMonthAndYear(char *buff, Date date, const char* last)
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
 
-	int32 args[2] = { STR_MONTH_JAN + ymd.month, ymd.year };
+	int64 args[2] = { STR_MONTH_JAN + ymd.month, ymd.year };
 	return FormatString(buff, GetStringPtr(STR_DATE_SHORT), args, 0, last);
 }
 
@@ -336,7 +331,7 @@ static char *FormatTinyDate(char *buff, Date date, const char* last)
 	snprintf(day,   lengthof(day),   "%02i", ymd.day);
 	snprintf(month, lengthof(month), "%02i", ymd.month + 1);
 
-	int32 args[3] = { BindCString(day), BindCString(month), ymd.year };
+	int64 args[3] = { BindCString(day), BindCString(month), ymd.year };
 	return FormatString(buff, GetStringPtr(STR_DATE_TINY), args, 0, last);
 }
 
@@ -525,11 +520,11 @@ static const Units units[] = {
 	},
 };
 
-static char* FormatString(char* buff, const char* str, const int32* argv, uint casei, const char* last)
+static char* FormatString(char* buff, const char* str, const int64* argv, uint casei, const char* last)
 {
 	extern const char _openttd_revision[];
 	WChar b;
-	const int32 *argv_orig = argv;
+	const int64 *argv_orig = argv;
 	uint modifier = 0;
 
 	while ((b = Utf8Consume(&str)) != '\0') {
@@ -562,7 +557,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 
 			case SCC_VELOCITY: {// {VELOCITY}
-				int32 args[1];
+				int64 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].s_m >> units[_opt_ptr->units].s_s;
 				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].velocity), args, modifier >> 24, last);
@@ -585,7 +580,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				StringID cargo_str = GetCargo(GetInt32(&argv))->units_volume;
 				switch (cargo_str) {
 					case STR_TONS: {
-						int32 args[1];
+						int64 args[1];
 						assert(_opt_ptr->units < lengthof(units));
 						args[0] = GetInt32(&argv) * units[_opt_ptr->units].w_m >> units[_opt_ptr->units].w_s;
 						buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].l_weight), args, modifier >> 24, last);
@@ -594,7 +589,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 					}
 
 					case STR_LITERS: {
-						int32 args[1];
+						int64 args[1];
 						assert(_opt_ptr->units < lengthof(units));
 						args[0] = GetInt32(&argv) * units[_opt_ptr->units].v_m >> units[_opt_ptr->units].v_s;
 						buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].l_volume), args, modifier >> 24, last);
@@ -669,7 +664,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 
 			case SCC_INDUSTRY_NAME: { /* {INDUSTRY} */
 				const Industry* i = GetIndustry(GetInt32(&argv));
-				int32 args[2];
+				int64 args[2];
 
 				/* industry not valid anymore? */
 				if (!IsValidIndustry(i)) break;
@@ -684,7 +679,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_VOLUME: { // {VOLUME}
-				int32 args[1];
+				int64 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].v_m >> units[_opt_ptr->units].v_s;
 				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].l_volume), args, modifier >> 24, last);
@@ -718,7 +713,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_POWER: { // {POWER}
-				int32 args[1];
+				int64 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].p_m >> units[_opt_ptr->units].p_s;
 				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].power), args, modifier >> 24, last);
@@ -727,7 +722,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_VOLUME_SHORT: { // {VOLUME_S}
-				int32 args[1];
+				int64 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].v_m >> units[_opt_ptr->units].v_s;
 				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].s_volume), args, modifier >> 24, last);
@@ -736,7 +731,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_WEIGHT: { // {WEIGHT}
-				int32 args[1];
+				int64 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].w_m >> units[_opt_ptr->units].w_s;
 				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].l_weight), args, modifier >> 24, last);
@@ -745,7 +740,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_WEIGHT_SHORT: { // {WEIGHT_S}
-				int32 args[1];
+				int64 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].w_m >> units[_opt_ptr->units].w_s;
 				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].s_weight), args, modifier >> 24, last);
@@ -754,7 +749,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 			}
 
 			case SCC_FORCE: { // {FORCE}
-				int32 args[1];
+				int64 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].f_m >> units[_opt_ptr->units].f_s;
 				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].force), args, modifier >> 24, last);
@@ -807,7 +802,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 
 			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
-				int32 temp[2];
+				int64 temp[2];
 				Waypoint *wp = GetWaypoint(GetInt32(&argv));
 				StringID str;
 				if (wp->string != STR_NULL) {
@@ -827,7 +822,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				if (!st->IsValid()) { // station doesn't exist anymore
 					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
 				} else {
-					int32 temp[2];
+					int64 temp[2];
 					temp[0] = STR_TOWN;
 					temp[1] = st->town->index;
 					buff = GetStringWithArgs(buff, st->string_id, temp, last);
@@ -837,7 +832,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 
 			case SCC_TOWN_NAME: { // {TOWN}
 				const Town* t = GetTown(GetInt32(&argv));
-				int32 temp[1];
+				int64 temp[1];
 
 				assert(IsValidTown(t));
 
@@ -862,7 +857,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 
 			case SCC_GROUP_NAME: { // {GROUP}
 				const Group *g = GetGroup(GetInt32(&argv));
-				int32 args[1];
+				int64 args[1];
 
 				assert(IsValidGroup(g));
 
@@ -1046,7 +1041,7 @@ static char *GenPresidentName(char *buff, uint32 x, const char* last)
 	return buff;
 }
 
-static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv, const char* last)
+static char *GetSpecialPlayerNameString(char *buff, int ind, const int64 *argv, const char* last)
 {
 	switch (ind) {
 		case 1: // not used

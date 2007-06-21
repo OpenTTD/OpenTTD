@@ -87,6 +87,7 @@ static inline void SetTunnelSnowOrDesert(TileIndex t, bool snow_or_desert)
 
 TileIndex GetOtherTunnelEnd(TileIndex);
 bool IsTunnelInWay(TileIndex, uint z);
+bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir);
 
 
 /**

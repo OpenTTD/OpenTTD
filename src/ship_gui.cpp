@@ -50,7 +50,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 			SetDParam(2, v->max_age / 366);
-			SetDParamMoney(3, ShipVehInfo(v->engine_type)->running_cost * _price.ship_running >> 8);
+			SetDParam(3, ShipVehInfo(v->engine_type)->running_cost * _price.ship_running >> 8);
 			DrawString(2, 15, STR_9812_AGE_RUNNING_COST_YR, 0);
 		}
 
@@ -62,8 +62,8 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw profit */
 		{
-			SetDParamMoney(0, v->profit_this_year);
-			SetDParamMoney(1, v->profit_last_year);
+			SetDParam(0, v->profit_this_year);
+			SetDParam(1, v->profit_last_year);
 			DrawString(2, 35, STR_9814_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 		}
 
@@ -85,7 +85,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 
 		SetDParam(1, v->build_year);
 		SetDParam(0, GetCustomEngineName(v->engine_type));
-		SetDParamMoney(2, v->value);
+		SetDParam(2, v->value);
 		DrawString(74, 57, STR_9816_BUILT_VALUE, 0);
 
 		SetDParam(0, v->cargo_type);
@@ -102,7 +102,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		DrawString(74, 78, str, 0);
 
 		/* Draw Transfer credits text */
-		SetDParamMoney(0, v->cargo_feeder_share);
+		SetDParam(0, v->cargo_feeder_share);
 		DrawString(74, 89, STR_FEEDER_CARGO_VALUE, 0);
 
 	} break;

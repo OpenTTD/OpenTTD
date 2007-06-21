@@ -289,7 +289,7 @@ VARDEF bool _news_ticker_sound;
 VARDEF StringID _error_message;
 VARDEF Money _additional_cash_required;
 
-VARDEF uint32 _decode_parameters[20];
+VARDEF uint64 _decode_parameters[20];
 
 VARDEF bool _rightclick_emulate;
 
@@ -345,32 +345,23 @@ VARDEF char *_highscore_file;
 VARDEF char *_log_file;
 
 
-static inline void SetDParamX(uint32 *s, uint n, uint32 v)
+static inline void SetDParamX(uint64 *s, uint n, uint64 v)
 {
 	s[n] = v;
 }
 
-static inline uint32 GetDParamX(const uint32 *s, uint n)
+static inline uint64 GetDParamX(const uint64 *s, uint n)
 {
 	return s[n];
 }
 
-static inline void SetDParam(uint n, uint32 v)
+static inline void SetDParam(uint n, uint64 v)
 {
 	assert(n < lengthof(_decode_parameters));
 	_decode_parameters[n] = v;
 }
 
-static inline void SetDParam64(uint n, uint64 v)
-{
-	assert(n + 1 < lengthof(_decode_parameters));
-	_decode_parameters[n + 0] = v & 0xffffffff;
-	_decode_parameters[n + 1] = v >> 32;
-}
-
-static inline void SetDParamMoney(uint n, Money m) { SetDParam64(n, (uint64)m); }
-
-static inline uint32 GetDParam(uint n)
+static inline uint64 GetDParam(uint n)
 {
 	assert(n < lengthof(_decode_parameters));
 	return _decode_parameters[n];
@@ -387,8 +378,8 @@ void SetDParamStr(uint n, const char *str);
 StringID BindCString(const char *str);
 
 
-#define COPY_IN_DPARAM(offs, src, num) memcpy(_decode_parameters + offs, src, sizeof(uint32) * (num))
-#define COPY_OUT_DPARAM(dst, offs, num) memcpy(dst, _decode_parameters + offs, sizeof(uint32) * (num))
+#define COPY_IN_DPARAM(offs, src, num) memcpy(_decode_parameters + offs, src, sizeof(uint64) * (num))
+#define COPY_OUT_DPARAM(dst, offs, num) memcpy(dst, _decode_parameters + offs, sizeof(uint64) * (num))
 
 
 #define SET_EXPENSES_TYPE(x) _yearly_expenses_type = x;

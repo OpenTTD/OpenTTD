@@ -353,7 +353,7 @@ struct TileDesc {
 	StringID str;
 	Owner owner;
 	Date build_date;
-	uint32 dparam[2];
+	uint64 dparam[2];
 };
 
 struct ViewportSign {

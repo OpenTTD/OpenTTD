@@ -175,7 +175,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			int i = WP(w,def_d).data_1;
 
 			if (i != -1) {
-				SetDParamMoney(1, (_price.build_industry >> 8) * _town_action_costs[i]);
+				SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[i]);
 				SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i);
 				DrawStringMultiLine(2, 159, STR_204D_INITIATE_A_SMALL_LOCAL + i, 313);
 			}

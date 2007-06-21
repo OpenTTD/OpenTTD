@@ -122,7 +122,7 @@ static void Place_LandInfo(TileIndex tile)
 
 	str = STR_01A4_COST_TO_CLEAR_N_A;
 	if (CmdSucceeded(costclear)) {
-		SetDParamMoney(0, costclear.GetCost());
+		SetDParam(0, costclear.GetCost());
 		str = STR_01A5_COST_TO_CLEAR;
 	}
 	GetString(_landinfo_data[2], str, lastof(_landinfo_data[2]));
@@ -478,7 +478,7 @@ void ShowBuildTreesScenToolbar()
 	AllocateWindowDescFront(&_build_trees_scen_desc, 0);
 }
 
-static uint32 _errmsg_decode_params[20];
+static uint64 _errmsg_decode_params[20];
 static StringID _errmsg_message_1, _errmsg_message_2;
 static uint _errmsg_duration;
 
@@ -618,7 +618,7 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 		cost = -cost;
 		msg = STR_0807_ESTIMATED_INCOME;
 	}
-	SetDParamMoney(0, cost);
+	SetDParam(0, cost);
 	ShowErrorMessage(INVALID_STRING_ID, msg, x, y);
 }
 
@@ -632,7 +632,7 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 		cost = -cost;
 		msg = STR_0803_INCOME;
 	}
-	SetDParamMoney(0, cost);
+	SetDParam(0, cost);
 	AddTextEffect(msg, pt.x, pt.y, 0x250, TE_RISING);
 }
 
@@ -640,7 +640,7 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
 {
 	Point pt = RemapCoords(x,y,z);
 
-	SetDParamMoney(0, cost);
+	SetDParam(0, cost);
 	AddTextEffect(STR_FEEDER, pt.x, pt.y, 0x250, TE_RISING);
 }
 
@@ -1845,7 +1845,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				if (ce->flags & CE_CLICK) {
 					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, 0, (clk - (i * 2) == 1) ? FR_LOWERED : FR_NONE);
 					if (i == 0) { // XXX - hack/hack for first element which is increase money. Told ya it's a mess
-						SetDParam64(0, 10000000);
+						SetDParam(0, 10000000);
 					} else {
 						SetDParam(0, false);
 					}

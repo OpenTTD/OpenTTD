@@ -491,6 +491,13 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	 * position, because of increased-cost-by-length: 'cost += cost >> 3' */
 
 	delta = TileOffsByDiagDir(direction);
+	DiagDirection tunnel_in_way_dir;
+	if (OtherAxis(DiagDirToAxis(direction)) == AXIS_X) {
+		tunnel_in_way_dir = (TileX(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SW : DIAGDIR_NE;
+	} else {
+		tunnel_in_way_dir = (TileY(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SE : DIAGDIR_NW;
+	}
+
 	end_tile = start_tile;
 	for (;;) {
 		end_tile += delta;
@@ -498,13 +505,14 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 
 		if (start_z == end_z) break;
 
-		if (!_cheats.crossing_tunnels.value && IsTunnelInWay(end_tile, start_z)) {
+		if (!_cheats.crossing_tunnels.value && IsTunnelInWayDir(end_tile, start_z, tunnel_in_way_dir)) {
 			return_cmd_error(STR_5003_ANOTHER_TUNNEL_IN_THE_WAY);
 		}
 
 		cost.AddCost(_price.build_tunnel);
 		cost.AddCost(cost.GetCost() >> 3); // add a multiplier for longer tunnels
 	}
+	cost.MultiplyCost(0);
 
 	/* Add the cost of the entrance */
 	cost.AddCost(_price.build_tunnel);
