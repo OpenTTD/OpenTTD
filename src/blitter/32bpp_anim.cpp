@@ -186,6 +186,8 @@ void Blitter_32bppAnim::CopyToBuffer(const void *video, void *dst, int width, in
 	uint32 *src = (uint32 *)video;
 	uint8 *anim_line;
 
+	if (this->anim_buf == NULL) return;
+
 	anim_line = ((uint32 *)video - (uint32 *)_screen.dst_ptr) + this->anim_buf;
 
 	for (; height > 0; height--) {
