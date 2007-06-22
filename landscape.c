@@ -19,7 +19,6 @@
 #include "water_map.h"
 #include "tgp.h"
 #include "genworld.h"
-#include "heightmap.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,

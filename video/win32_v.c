@@ -24,6 +24,7 @@ static struct {
 	int height;
 	int width_org;
 	int height_org;
+	bool minimized;
 	bool fullscreen;
 	bool double_size;
 	bool has_focus;
@@ -207,6 +208,82 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
 		KillTimer(hwnd, event);
 		PostMessage(hwnd, WM_MOUSELEAVE, 0, 0L);
 	}
+}
+
+static void MakeWindow(bool full_screen)
+{
+	_fullscreen = full_screen;
+
+	_wnd.double_size = _double_size && !full_screen;
+
+	// recreate window?
+	if ((full_screen || _wnd.fullscreen) && _wnd.main_wnd) {
+		DestroyWindow(_wnd.main_wnd);
+		_wnd.main_wnd = 0;
+	}
+
+	if (full_screen) {
+		DEVMODE settings;
+
+		memset(&settings, 0, sizeof(settings));
+		settings.dmSize = sizeof(settings);
+		settings.dmFields =
+			(_fullscreen_bpp != 0 ? DM_BITSPERPEL : 0) |
+			DM_PELSWIDTH |
+			DM_PELSHEIGHT |
+			(_display_hz != 0 ? DM_DISPLAYFREQUENCY : 0);
+		settings.dmBitsPerPel = _fullscreen_bpp;
+		settings.dmPelsWidth  = _wnd.width_org;
+		settings.dmPelsHeight = _wnd.height_org;
+		settings.dmDisplayFrequency = _display_hz;
+
+		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
+			MakeWindow(false);
+			return;
+		}
+	} else if (_wnd.fullscreen) {
+		// restore display?
+		ChangeDisplaySettings(NULL, 0);
+	}
+
+	{
+		RECT r;
+		DWORD style, showstyle;
+		int x, y, w, h;
+
+		showstyle = SW_SHOWNORMAL;
+		_wnd.fullscreen = full_screen;
+		if (_wnd.fullscreen) {
+			style = WS_POPUP;
+			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
+		} else {
+			style = WS_OVERLAPPEDWINDOW;
+			/* On window creation, check if we were in maximize mode before */
+			if (_window_maximize) showstyle = SW_SHOWMAXIMIZED;
+			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
+		}
+
+		AdjustWindowRect(&r, style, FALSE);
+		w = r.right - r.left;
+		h = r.bottom - r.top;
+		x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
+		y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
+
+		if (_wnd.main_wnd) {
+			ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL); // remove maximize-flag
+			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
+		} else {
+			extern const char _openttd_revision[];
+			TCHAR Windowtitle[50];
+
+			_sntprintf(Windowtitle, sizeof(Windowtitle), _T("OpenTTD %s"), MB_TO_WIDE(_openttd_revision));
+
+			_wnd.main_wnd = CreateWindow(_T("OTTD"), Windowtitle, style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
+			if (_wnd.main_wnd == NULL) error("CreateWindow failed");
+			ShowWindow(_wnd.main_wnd, showstyle);
+		}
+	}
+	GameSizeChanged(); // invalidate all windows, force redraw
 }
 
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -435,7 +512,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			break;
 
 		case WM_SIZE:
-			if (wParam != SIZE_MINIMIZED) {
+			_wnd.minimized = (wParam == SIZE_MINIMIZED);
+			if (!_wnd.minimized) {
 				/* Set maximized flag when we maximize (obviously), but also when we
 				 * switched to fullscreen from a maximized state */
 				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
@@ -534,7 +612,20 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 
 		case WM_ACTIVATEAPP:
-			_wnd.has_focus = (bool)wParam;
+			_wnd.has_focus = (wParam != 0);
+#if !defined(WINCE)
+			if (_wnd.fullscreen) {
+				if (_wnd.has_focus && _wnd.minimized) {
+					/* Restore the game window */
+					ShowWindow(hwnd, SW_RESTORE);
+					MakeWindow(true);
+				} else if (!_wnd.has_focus && !_wnd.minimized) {
+					/* Minimise the window and restore desktop */
+					ShowWindow(hwnd, SW_MINIMIZE);
+					ChangeDisplaySettings(NULL, 0);
+				}
+			}
+#endif
 			break;
 	}
 	return DefWindowProc(hwnd, msg, wParam, lParam);
@@ -562,82 +653,6 @@ static void RegisterWndClass(void)
 		registered = true;
 		if (!RegisterClass(&wnd)) error("RegisterClass failed");
 	}
-}
-
-static void MakeWindow(bool full_screen)
-{
-	_fullscreen = full_screen;
-
-	_wnd.double_size = _double_size && !full_screen;
-
-	// recreate window?
-	if ((full_screen || _wnd.fullscreen) && _wnd.main_wnd) {
-		DestroyWindow(_wnd.main_wnd);
-		_wnd.main_wnd = 0;
-	}
-
-	if (full_screen) {
-		DEVMODE settings;
-
-		memset(&settings, 0, sizeof(settings));
-		settings.dmSize = sizeof(settings);
-		settings.dmFields =
-			(_fullscreen_bpp != 0 ? DM_BITSPERPEL : 0) |
-			DM_PELSWIDTH |
-			DM_PELSHEIGHT |
-			(_display_hz != 0 ? DM_DISPLAYFREQUENCY : 0);
-		settings.dmBitsPerPel = _fullscreen_bpp;
-		settings.dmPelsWidth  = _wnd.width_org;
-		settings.dmPelsHeight = _wnd.height_org;
-		settings.dmDisplayFrequency = _display_hz;
-
-		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
-			MakeWindow(false);
-			return;
-		}
-	} else if (_wnd.fullscreen) {
-		// restore display?
-		ChangeDisplaySettings(NULL, 0);
-	}
-
-	{
-		RECT r;
-		DWORD style, showstyle;
-		int x, y, w, h;
-
-		showstyle = SW_SHOWNORMAL;
-		_wnd.fullscreen = full_screen;
-		if (_wnd.fullscreen) {
-			style = WS_POPUP;
-			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
-		} else {
-			style = WS_OVERLAPPEDWINDOW;
-			/* On window creation, check if we were in maximize mode before */
-			if (_window_maximize) showstyle = SW_SHOWMAXIMIZED;
-			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
-		}
-
-		AdjustWindowRect(&r, style, FALSE);
-		w = r.right - r.left;
-		h = r.bottom - r.top;
-		x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
-		y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
-
-		if (_wnd.main_wnd) {
-			ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL); // remove maximize-flag
-			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
-		} else {
-			extern const char _openttd_revision[];
-			TCHAR Windowtitle[50];
-
-			_sntprintf(Windowtitle, sizeof(Windowtitle), _T("OpenTTD %s"), MB_TO_WIDE(_openttd_revision));
-
-			_wnd.main_wnd = CreateWindow(_T("OTTD"), Windowtitle, style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
-			if (_wnd.main_wnd == NULL) error("CreateWindow failed");
-			ShowWindow(_wnd.main_wnd, showstyle);
-		}
-	}
-	GameSizeChanged(); // invalidate all windows, force redraw
 }
 
 static bool AllocateDibSection(int w, int h)
