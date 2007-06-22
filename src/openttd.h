@@ -59,6 +59,7 @@ typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C
 /* IDs used in Pools */
 typedef uint16 VehicleID;
 typedef uint16 StationID;
+static const StationID INVALID_STATION = 0xFFFF;
 typedef uint16 RoadStopID;
 typedef uint16 TownID;
 typedef uint16 IndustryID;

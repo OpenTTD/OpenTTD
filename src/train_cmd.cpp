@@ -112,7 +112,7 @@ static void TrainCargoChanged(Vehicle* v)
 	uint32 weight = 0;
 
 	for (Vehicle *u = v; u != NULL; u = u->next) {
-		uint32 vweight = GetCargo(u->cargo_type)->weight * u->cargo_count * FreightWagonMult(u->cargo_type) / 16;
+		uint32 vweight = GetCargo(u->cargo_type)->weight * u->cargo.Count() * FreightWagonMult(u->cargo_type) / 16;
 
 		/* Vehicle weight is not added for articulated parts. */
 		if (!IsArticulatedPart(u)) {
@@ -463,7 +463,7 @@ int GetTrainImage(const Vehicle* v, Direction direction)
 
 	base = _engine_sprite_base[img] + ((direction + _engine_sprite_add[img]) & _engine_sprite_and[img]);
 
-	if (v->cargo_count >= v->cargo_cap / 2) base += _wagon_full_adder[img];
+	if (v->cargo.Count() >= v->cargo_cap / 2) base += _wagon_full_adder[img];
 	return base;
 }
 
@@ -1761,7 +1761,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 				num += amount;
 				if (flags & DC_EXEC) {
-					v->cargo_count = (v->cargo_type == new_cid) ? min(amount, v->cargo_count) : 0;
+					v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
 					v->cargo_type = new_cid;
 					v->cargo_cap = amount;
 					v->cargo_subtype = new_subtype;
@@ -2681,7 +2681,7 @@ static uint CountPassengersInTrain(const Vehicle* v)
 {
 	uint num = 0;
 	BEGIN_ENUM_WAGONS(v)
-		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) num += v->cargo_count;
+		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) num += v->cargo.Count();
 	END_ENUM_WAGONS(v)
 	return num;
 }
@@ -3294,8 +3294,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 
 void Train_Tick(Vehicle *v)
 {
-	if (_age_cargo_skip_counter == 0 && v->cargo_days != 0xff)
-		v->cargo_days++;
+	if (_age_cargo_skip_counter == 0) v->cargo.AgeCargo();
 
 	v->tick_counter++;
 

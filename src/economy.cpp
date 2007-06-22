@@ -1371,14 +1371,9 @@ void VehiclePayment(Vehicle *front_v)
 {
 	int result = 0;
 
-	Money profit = 0;
-	Money total_veh_profit = 0;         // accumulates the profit across the vehicle chain (used by trains)
-	Money route_profit = 0;             // the grand total amount for the route. A-D of transfer chain A-B-C-D
-	Money virtual_profit = 0;           // virtual profit of one vehicle element for feeder systems
-	Money virtual_profit_total = 0;     // virtual profit for entire vehicle chain
-	Money total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
-
-	Money all_vehicles_cargo_feeder_share = front_v->cargo_feeder_share; // used to hold transfer value of complete vehicle chain - used by trains
+	Money vehicle_profit = 0; // Money paid to the train
+	Money route_profit   = 0; // The grand total amount for the route. A-D of transfer chain A-B-C-D
+	Money virtual_profit = 0; // The virtual profit for entire vehicle chain
 
 	StationID last_visited = front_v->last_station_visited;
 	Station *st = GetStation(last_visited);
@@ -1395,75 +1390,70 @@ void VehiclePayment(Vehicle *front_v)
 
 	for (Vehicle *v = front_v; v != NULL; v = v->next) {
 		/* No cargo to unload */
-		if (v->cargo_cap == 0 || v->cargo_count == 0) continue;
+		if (v->cargo_cap == 0 || v->cargo.Empty()) continue;
 
 		/* All cargo has already been paid for, no need to pay again */
-		if (v->cargo_count == v->cargo_paid_for) {
+		if (!v->cargo.UnpaidCargo()) {
 			SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
 			continue;
 		}
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
+		const CargoList::List *cargos = v->cargo.Packets();
 
-		if (v->cargo_source != last_visited &&
-				HASBIT(ge->waiting_acceptance, 15) &&
-				(front_v->current_order.flags & OF_TRANSFER) == 0) {
-			/* Deliver goods to the station */
-			st->time_since_unload = 0;
+		for (CargoList::List::const_iterator it = cargos->begin(); it != cargos->end(); it++) {
+			CargoPacket *cp = *it;
+			if (!cp->paid_for &&
+					cp->source != last_visited &&
+					ge->acceptance &&
+					(front_v->current_order.flags & OF_TRANSFER) == 0) {
+				/* Deliver goods to the station */
+				st->time_since_unload = 0;
 
-			/* handle end of route payment */
-			profit += DeliverGoods(v->cargo_count - v->cargo_paid_for, v->cargo_type, v->cargo_source, last_visited, v->cargo_source_xy, v->cargo_days);
-			v->cargo_paid_for        = v->cargo_count;
-			route_profit             = profit;                                   // display amount paid for final route delivery, A-D of a chain A-B-C-D
-			total_veh_profit         = profit - all_vehicles_cargo_feeder_share; // whole vehicle is not payed for transfers picked up earlier
-			total_cargo_feeder_share = -all_vehicles_cargo_feeder_share;         // total of transfer fees in vehicle chain needs to be zero at end of unload
+				/* handle end of route payment */
+				Money profit = DeliverGoods(cp->count, v->cargo_type, cp->source, last_visited, cp->source_xy, cp->days_in_transit);
+				cp->paid_for = true;
+				route_profit   += profit - cp->feeder_share; // display amount paid for final route delivery, A-D of a chain A-B-C-D
+				vehicle_profit += profit;                    // whole vehicle is not payed for transfers picked up earlier
 
-			v->cargo_feeder_share = 0;   // clear transfer cost per vehicle
-			result |= 1;
+				result |= 1;
 
-			SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
-		} else if (front_v->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
-			if ((front_v->current_order.flags & OF_TRANSFER) != 0) {
-				virtual_profit = GetTransportedGoodsIncome(
-					v->cargo_count - v->cargo_paid_for,
-					/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
-					DistanceManhattan(v->cargo_loaded_at_xy, GetStation(last_visited)->xy),
-					v->cargo_days,
-					v->cargo_type);
+				SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+			} else if (front_v->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
+				if (!cp->paid_for && (front_v->current_order.flags & OF_TRANSFER) != 0) {
+					Money profit = GetTransportedGoodsIncome(
+						cp->count,
+						/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
+						DistanceManhattan(cp->loaded_at_xy, GetStation(last_visited)->xy),
+						cp->days_in_transit,
+						v->cargo_type);
 
-				front_v->profit_this_year += virtual_profit;
-				ge->feeder_profit         += v->cargo_feeder_share + virtual_profit; // transfer cargo transfer fees to station
-				total_cargo_feeder_share  -= v->cargo_feeder_share; // accumulate deduction of feeder shares
-				v->cargo_feeder_share      = 0;                     // clear transfer cost
+					front_v->profit_this_year += profit;
+					virtual_profit   += profit; // accumulate transfer profits for whole vehicle
+					cp->feeder_share += profit; // account for the (virtual) profit already made for the cargo packet
+					cp->paid_for      = true;   // record that the cargo has been paid for to eliminate double counting
+				}
+				result |= 2;
 
-				/* keep total of cargo unloaded (pending) for accurate cargoshare calculation on load */
-				SB(ge->unload_pending, 0, 12, GB(ge->unload_pending, 0, 12) + v->cargo_count);
-
-				virtual_profit_total += virtual_profit;   // accumulate transfer profits for whole vehicle
-				v->cargo_paid_for = v->cargo_count;       // record how much of the cargo has been paid for to eliminate double counting
+				SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
 			}
-			result |= 2;
-
-			SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
 		}
+		v->cargo.InvalidateCache();
 	}
 
-	/* Ensure a negative total is only applied to the vehicle if there is value to reduce. */
-	front_v->cargo_feeder_share = max(front_v->cargo_feeder_share + total_cargo_feeder_share, 0LL);
-
-	if (virtual_profit_total > 0) {
-		ShowFeederIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, virtual_profit_total);
+	if (virtual_profit > 0) {
+		ShowFeederIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, virtual_profit);
 	}
 
 	if (route_profit != 0) {
-		front_v->profit_this_year += total_veh_profit;
+		front_v->profit_this_year += vehicle_profit;
 		SubtractMoneyFromPlayer(-route_profit);
 
 		if (IsLocalPlayer() && !PlayVehicleSound(front_v, VSE_LOAD_UNLOAD)) {
 			SndPlayVehicleFx(SND_14_CASHTILL, front_v);
 		}
 
-		ShowCostOrIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, -total_veh_profit);
+		ShowCostOrIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, -vehicle_profit);
 	}
 
 	_current_player = old_player;
@@ -1486,7 +1476,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		if (_patches.improved_load && HASBIT(v->current_order.flags, OFB_FULL_LOAD)) {
 			/* 'Reserve' this cargo for this vehicle, because we were first. */
 			for (; v != NULL; v = v->next) {
-				if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo_count;
+				if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
 			}
 		}
 		return;
@@ -1502,14 +1492,13 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	int unloading_time = 0;
 	Vehicle *u = v;
 	int result = 0;
-	int cap;
+	uint cap;
 
 	bool completely_empty  = true;
 	bool anything_unloaded = false;
 	bool anything_loaded   = false;
 	uint32 cargo_not_full  = 0;
 	uint32 cargo_full      = 0;
-	Money total_cargo_feeder_share = 0; // the feeder cash amount for the goods being loaded/unloaded in this load step
 
 	v->cur_speed = 0;
 
@@ -1526,36 +1515,19 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
-		int count = GB(ge->waiting_acceptance, 0, 12);
 
 		if (HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING)) {
-			uint16 amount_unloaded = _patches.gradual_loading ? min(v->cargo_count, load_amount) : v->cargo_count;
+			uint cargo_count = v->cargo.Count();
+			uint amount_unloaded = _patches.gradual_loading ? min(cargo_count, load_amount) : cargo_count;
+			bool remaining; // Are there cargo entities in this vehicle that can still be unloaded here?
 
-			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000 && !(u->current_order.flags & OF_TRANSFER)) {
+			if (ge->acceptance && !(u->current_order.flags & OF_TRANSFER)) {
+				/* The cargo has reached it's final destination, the packets may now be destroyed */
+				remaining = v->cargo.MoveTo(NULL, amount_unloaded, CargoList::MTA_FINAL_DELIVERY, last_visited);
+
 				result |= 1;
 			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
-				if (count == 0) {
-					/* No goods waiting at station */
-					ge->enroute_time    = v->cargo_days;
-					ge->enroute_from    = v->cargo_source;
-					ge->enroute_from_xy = v->cargo_source_xy;
-				} else {
-					/* Goods already waiting at station. Set counters to the worst value. */
-					if (v->cargo_days >= ge->enroute_time) ge->enroute_time = v->cargo_days;
-
-					if (last_visited != ge->enroute_from) {
-						ge->enroute_from    = v->cargo_source;
-						ge->enroute_from_xy = v->cargo_source_xy;
-					}
-				}
-				/* Update amount of waiting cargo. There is, however, no sense in
-				 * updating the count variable because this vehicle will not be
-				 * able to take the cargo. */
-				SB(ge->waiting_acceptance, 0, 12, min(amount_unloaded + count, 0xFFF));
-
-				/* if there is not enough to unload from pending, ensure it does not go -ve
-				 * else deduct amount actually unloaded from unload_pending */
-				SB(ge->unload_pending, 0, 12, max(GB(ge->unload_pending, 0, 12) - amount_unloaded, 0U));
+				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded);
 
 				result |= 2;
 			} else {
@@ -1570,11 +1542,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			unloading_time += amount_unloaded;
 
-			v->cargo_count -= amount_unloaded;
-			v->cargo_paid_for -= min(amount_unloaded, v->cargo_paid_for);
-
 			anything_unloaded = true;
-			if (_patches.gradual_loading && v->cargo_count != 0) {
+			if (_patches.gradual_loading && remaining) {
 				completely_empty = false;
 			} else {
 				/* We have finished unloading (cargo count == 0) */
@@ -1583,9 +1552,6 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			continue;
 		}
-
-		/* We cannot have paid for more cargo than there is on board. */
-		assert(v->cargo_paid_for <= v->cargo_count);
 
 		/* Do not pick up goods that we unloaded */
 		if (u->current_order.flags & OF_UNLOAD) continue;
@@ -1605,8 +1571,9 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 		/* If there's goods waiting at the station, and the vehicle
 		 * has capacity for it, load it on the vehicle. */
-		if (count != 0 &&
-				(cap = v->cargo_cap - v->cargo_count) != 0) {
+		if (!ge->cargo.Empty() &&
+				(cap = v->cargo_cap - v->cargo.Count()) != 0) {
+			uint count = ge->cargo.Count();
 
 			/* Skip loading this vehicle if another train/vehicle is already handling
 			 * the same cargo type at this station */
@@ -1623,7 +1590,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 				cargo_left[v->cargo_type] -= cap;
 			}
 
-			if (v->cargo_count == 0) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
+			if (v->cargo.Empty()) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
 
 			/* TODO: Regarding this, when we do gradual loading, we
 			 * should first unload all vehicles and then start
@@ -1635,32 +1602,16 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			completely_empty = false;
 			anything_loaded = true;
 
-			/* cargoshare is proportioned by the amount due to unload
-			 * Otherwise, with gradual loading, 100% of credits would be taken immediately,
-			 * even if the cargo volume represents a tiny percent of the whole.
-			 * ge->unload_pending holds the amount that has been credited, but has not yet been unloaded.
-			 */
-			int cargoshare = cap * 10000 / (ge->waiting_acceptance + ge->unload_pending);
-			Money feeder_profit_share = ge->feeder_profit * cargoshare / 10000;
-			v->cargo_count += cap;
-			ge->waiting_acceptance -= cap;
+			ge->cargo.MoveTo(&v->cargo, cap, CargoList::MTA_CARGO_LOAD, st->xy);
 
-			total_cargo_feeder_share += feeder_profit_share;    // store cost for later payment when cargo unloaded
-			v->cargo_loaded_at_xy = st->xy;                     // retains location of where the cargo was picked up for intermediate payments
-
-			ge->feeder_profit -= feeder_profit_share;
 			unloading_time += cap;
 			st->time_since_load = 0;
-
-			/* And record the source of the cargo, and the days in travel. */
-			v->cargo_source = ge->enroute_from;
-			v->cargo_source_xy = ge->enroute_from_xy;
-			v->cargo_days = ge->enroute_time;
-			result |= 2;
 			st->last_vehicle_type = v->type;
+
+			result |= 2;
 		}
 
-		if (v->cargo_count == v->cargo_cap) {
+		if (v->cargo.Count() == v->cargo_cap) {
 			SETBIT(cargo_full, v->cargo_type);
 		} else {
 			SETBIT(cargo_not_full, v->cargo_type);
@@ -1674,13 +1625,11 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	if (_patches.improved_load && HASBIT(u->current_order.flags, OFB_FULL_LOAD)) {
 		/* Update left cargo */
 		for (v = u; v != NULL; v = v->next) {
-			if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo_count;
+			if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
 		}
 	}
 
 	v = u;
-
-	v->cargo_feeder_share += total_cargo_feeder_share;
 
 	if (anything_loaded || anything_unloaded) {
 		if (_patches.gradual_loading) {
@@ -1696,7 +1645,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			if (_patches.full_load_any) {
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */
-				if ((v->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS) && v->cargo_cap != v->cargo_count) ||
+				if ((v->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS) && v->cargo_cap != v->cargo.Count()) ||
 						(cargo_not_full && (cargo_full & ~cargo_not_full) == 0)) { // There are stull non-full cargos
 					finished_loading = false;
 				}
@@ -1754,7 +1703,7 @@ void LoadUnloadStation(Station *st)
 {
 	int cargo_left[NUM_CARGO];
 
-	for (uint i = 0; i < NUM_CARGO; i++) cargo_left[i] = GB(st->goods[i].waiting_acceptance, 0, 12);
+	for (uint i = 0; i < NUM_CARGO; i++) cargo_left[i] = st->goods[i].cargo.Count();
 
 	std::list<Vehicle *>::iterator iter;
 	for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {

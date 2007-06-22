@@ -233,6 +233,8 @@ void AfterLoadVehicles()
 		v->first = NULL;
 		if (v->type == VEH_TRAIN) v->u.rail.first_engine = INVALID_ENGINE;
 		if (v->type == VEH_ROAD)  v->u.road.first_engine = INVALID_ENGINE;
+
+		v->cargo.InvalidateCache();
 	}
 
 	FOR_ALL_VEHICLES(v) {
@@ -690,6 +692,7 @@ void DestroyVehicle(Vehicle *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
+	v->cargo.Truncate(0);
 	UpdateVehiclePosHash(v, INVALID_COORD, 0);
 	v->next_hash = NULL;
 	v->next_new_hash = NULL;
@@ -2277,7 +2280,7 @@ uint8 CalcPercentVehicleFilled(Vehicle *v)
 
 	/* Count up max and used */
 	for (; v != NULL; v = v->next) {
-		count += v->cargo_count;
+		count += v->cargo.Count();
 		max += v->cargo_cap;
 	}
 
@@ -2748,6 +2751,14 @@ SpriteID GetVehiclePalette(const Vehicle *v)
 	return GetEngineColourMap(v->engine_type, v->owner, INVALID_ENGINE, v);
 }
 
+static uint8  _cargo_days;
+static uint16 _cargo_source;
+static uint32 _cargo_source_xy;
+static uint16 _cargo_count;
+static uint16 _cargo_paid_for;
+static Money  _cargo_feeder_share;
+static uint32 _cargo_loaded_at_xy;
+
 /** Save and load of vehicles */
 extern const SaveLoad _common_veh_desc[] = {
 	    SLE_VAR(Vehicle, subtype,              SLE_UINT8),
@@ -2784,14 +2795,15 @@ extern const SaveLoad _common_veh_desc[] = {
 	SLE_CONDVAR(Vehicle, last_station_visited, SLE_FILE_U8  | SLE_VAR_U16,  0, 4),
 	SLE_CONDVAR(Vehicle, last_station_visited, SLE_UINT16,                  5, SL_MAX_VERSION),
 
-	    SLE_VAR(Vehicle, cargo_type,           SLE_UINT8),
-	SLE_CONDVAR(Vehicle, cargo_subtype,        SLE_UINT8,                  35, SL_MAX_VERSION),
-	    SLE_VAR(Vehicle, cargo_days,           SLE_UINT8),
-	SLE_CONDVAR(Vehicle, cargo_source,         SLE_FILE_U8  | SLE_VAR_U16,  0, 6),
-	SLE_CONDVAR(Vehicle, cargo_source,         SLE_UINT16,                  7, SL_MAX_VERSION),
-	SLE_CONDVAR(Vehicle, cargo_source_xy,      SLE_UINT32,                 44, SL_MAX_VERSION),
-	    SLE_VAR(Vehicle, cargo_cap,            SLE_UINT16),
-	    SLE_VAR(Vehicle, cargo_count,          SLE_UINT16),
+	     SLE_VAR(Vehicle, cargo_type,           SLE_UINT8),
+	 SLE_CONDVAR(Vehicle, cargo_subtype,        SLE_UINT8,                  35, SL_MAX_VERSION),
+	SLEG_CONDVAR(         _cargo_days,          SLE_UINT8,                   0, 67),
+	SLEG_CONDVAR(         _cargo_source,        SLE_FILE_U8  | SLE_VAR_U16,  0, 6),
+	SLEG_CONDVAR(         _cargo_source,        SLE_UINT16,                  7, 67),
+	SLEG_CONDVAR(         _cargo_source_xy,     SLE_UINT32,                 44, 67),
+	     SLE_VAR(Vehicle, cargo_cap,            SLE_UINT16),
+	SLEG_CONDVAR(         _cargo_count,         SLE_UINT16,                  0, 67),
+	 SLE_CONDLST(Vehicle, cargo,                REF_CARGO_PACKET,           68, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, day_counter,          SLE_UINT8),
 	    SLE_VAR(Vehicle, tick_counter,         SLE_UINT8),
@@ -2837,19 +2849,19 @@ extern const SaveLoad _common_veh_desc[] = {
 	SLE_CONDVAR(Vehicle, build_year,           SLE_FILE_U8 | SLE_VAR_I32,  0, 30),
 	SLE_CONDVAR(Vehicle, build_year,           SLE_INT32,                 31, SL_MAX_VERSION),
 
-	    SLE_VAR(Vehicle, load_unload_time_rem, SLE_UINT16),
-	SLE_CONDVAR(Vehicle, cargo_paid_for,       SLE_UINT16,                45, SL_MAX_VERSION),
-	SLE_CONDVAR(Vehicle, vehicle_flags,        SLE_UINT8,                 40, SL_MAX_VERSION),
+	     SLE_VAR(Vehicle, load_unload_time_rem, SLE_UINT16),
+	SLEG_CONDVAR(         _cargo_paid_for,      SLE_UINT16,                45, SL_MAX_VERSION),
+	 SLE_CONDVAR(Vehicle, vehicle_flags,        SLE_UINT8,                 40, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Vehicle, profit_this_year,     SLE_FILE_I32 | SLE_VAR_I64, 0, 64),
-	SLE_CONDVAR(Vehicle, profit_this_year,     SLE_INT64,                 65, SL_MAX_VERSION),
-	SLE_CONDVAR(Vehicle, profit_last_year,     SLE_FILE_I32 | SLE_VAR_I64, 0, 64),
-	SLE_CONDVAR(Vehicle, profit_last_year,     SLE_INT64,                 65, SL_MAX_VERSION),
-	SLE_CONDVAR(Vehicle, cargo_feeder_share,   SLE_FILE_I32 | SLE_VAR_I64,51, 64),
-	SLE_CONDVAR(Vehicle, cargo_feeder_share,   SLE_INT64,                 65, SL_MAX_VERSION),
-	SLE_CONDVAR(Vehicle, cargo_loaded_at_xy,   SLE_UINT32,                51, SL_MAX_VERSION),
-	SLE_CONDVAR(Vehicle, value,                SLE_FILE_I32 | SLE_VAR_I64, 0, 64),
-	SLE_CONDVAR(Vehicle, value,                SLE_INT64,                 65, SL_MAX_VERSION),
+	 SLE_CONDVAR(Vehicle, profit_this_year,     SLE_FILE_I32 | SLE_VAR_I64, 0, 64),
+	 SLE_CONDVAR(Vehicle, profit_this_year,     SLE_INT64,                 65, SL_MAX_VERSION),
+	 SLE_CONDVAR(Vehicle, profit_last_year,     SLE_FILE_I32 | SLE_VAR_I64, 0, 64),
+	 SLE_CONDVAR(Vehicle, profit_last_year,     SLE_INT64,                 65, SL_MAX_VERSION),
+	SLEG_CONDVAR(         _cargo_feeder_share,  SLE_FILE_I32 | SLE_VAR_I64,51, 64),
+	SLEG_CONDVAR(         _cargo_feeder_share,  SLE_INT64,                 65, 67),
+	SLEG_CONDVAR(         _cargo_loaded_at_xy,  SLE_UINT32,                51, 67),
+	 SLE_CONDVAR(Vehicle, value,                SLE_FILE_I32 | SLE_VAR_I64, 0, 64),
+	 SLE_CONDVAR(Vehicle, value,                SLE_INT64,                 65, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, random_bits,          SLE_UINT8),
 	    SLE_VAR(Vehicle, waiting_triggers,     SLE_UINT8),
@@ -3030,6 +3042,8 @@ static void Load_VEHS()
 	int index;
 	Vehicle *v;
 
+	_cargo_count = 0;
+
 	while ((index = SlIterateArray()) != -1) {
 		Vehicle *v;
 
@@ -3038,9 +3052,8 @@ static void Load_VEHS()
 
 		v = GetVehicle(index);
 		VehicleType vtype = (VehicleType)SlReadByte();
-		SlObject(v, (SaveLoad*)_veh_descs[vtype]);
 
-		switch (v->type) {
+		switch (vtype) {
 			case VEH_TRAIN:    v = new (v) Train();           break;
 			case VEH_ROAD:     v = new (v) RoadVehicle();     break;
 			case VEH_SHIP:     v = new (v) Ship();            break;
@@ -3049,6 +3062,20 @@ static void Load_VEHS()
 			case VEH_DISASTER: v = new (v) DisasterVehicle(); break;
 			case VEH_INVALID:  v = new (v) InvalidVehicle();  break;
 			default: NOT_REACHED();
+		}
+
+		SlObject(v, (SaveLoad*)_veh_descs[vtype]);
+
+		if (_cargo_count != 0 && IsPlayerBuildableVehicleType(v)) {
+			/* Don't construct the packet with station here, because that'll fail with old savegames */
+			CargoPacket *cp = new CargoPacket();
+			cp->source          = _cargo_source;
+			cp->source_xy       = _cargo_source_xy;
+			cp->count           = _cargo_count;
+			cp->days_in_transit = _cargo_days;
+			cp->feeder_share    = _cargo_feeder_share;
+			cp->loaded_at_xy    = _cargo_loaded_at_xy;
+			v->cargo.Append(cp);
 		}
 
 		/* Old savegames used 'last_station_visited = 0xFF' */

@@ -784,7 +784,7 @@ reverse_direction:
 static void AgeShipCargo(Vehicle *v)
 {
 	if (_age_cargo_skip_counter != 0) return;
-	if (v->cargo_days != 255) v->cargo_days++;
+	v->cargo.AgeCargo();
 }
 
 void Ship_Tick(Vehicle *v)
@@ -1110,7 +1110,7 @@ CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		v->cargo_cap = capacity;
-		v->cargo_count = (v->cargo_type == new_cid) ? min(v->cargo_cap, v->cargo_count) : 0;
+		v->cargo.Truncate((v->cargo_type == new_cid) ? capacity : 0);
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);

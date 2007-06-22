@@ -93,16 +93,16 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		DrawString(74, 67, STR_9817_CAPACITY, 0);
 
 		str = STR_8812_EMPTY;
-		if (v->cargo_count != 0) {
+		if (!v->cargo.Empty()) {
 			SetDParam(0, v->cargo_type);
-			SetDParam(1, v->cargo_count);
-			SetDParam(2, v->cargo_source);
+			SetDParam(1, v->cargo.Count());
+			SetDParam(2, v->cargo.Source());
 			str = STR_8813_FROM;
 		}
 		DrawString(74, 78, str, 0);
 
 		/* Draw Transfer credits text */
-		SetDParam(0, v->cargo_feeder_share);
+		SetDParam(0, v->cargo.FeederShare());
 		DrawString(74, 89, STR_FEEDER_CARGO_VALUE, 0);
 
 	} break;

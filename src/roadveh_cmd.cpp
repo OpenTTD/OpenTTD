@@ -97,7 +97,7 @@ int GetRoadVehImage(const Vehicle* v, Direction direction)
 	}
 
 	image = direction + _roadveh_images[img];
-	if (v->cargo_count >= v->cargo_cap / 2) image += _roadveh_full_adder[img];
+	if (v->cargo.Count() >= v->cargo_cap / 2) image += _roadveh_full_adder[img];
 	return image;
 }
 
@@ -677,7 +677,7 @@ static void RoadVehCrash(Vehicle *v)
 	v->u.road.crashed_ctr++;
 
 	for (Vehicle *u = v; u != NULL; u = u->next) {
-		if (IsCargoInClass(u->cargo_type, CC_PASSENGERS)) pass += u->cargo_count;
+		if (IsCargoInClass(u->cargo_type, CC_PASSENGERS)) pass += u->cargo.Count();
 
 		u->vehstatus |= VS_CRASHED;
 
@@ -1826,7 +1826,7 @@ static void RoadVehController(Vehicle *v)
 static void AgeRoadVehCargo(Vehicle *v)
 {
 	if (_age_cargo_skip_counter != 0) return;
-	if (v->cargo_days != 255) v->cargo_days++;
+	v->cargo.AgeCargo();
 }
 
 void RoadVeh_Tick(Vehicle *v)
@@ -2069,7 +2069,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		v->cargo_cap = capacity;
-		v->cargo_count = (v->cargo_type == new_cid) ? min(capacity, v->cargo_count) : 0;
+		v->cargo.Truncate((v->cargo_type == new_cid) ? capacity : 0);
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);

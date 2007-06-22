@@ -327,13 +327,12 @@ void ShowTrainViewWindow(const Vehicle *v)
 static void TrainDetailsCargoTab(const Vehicle *v, int x, int y)
 {
 	if (v->cargo_cap != 0) {
-		uint num = v->cargo_count;
 		StringID str = STR_8812_EMPTY;
 
-		if (num != 0) {
+		if (!v->cargo.Empty()) {
 			SetDParam(0, v->cargo_type);
-			SetDParam(1, num);
-			SetDParam(2, v->cargo_source);
+			SetDParam(1, v->cargo.Count());
+			SetDParam(2, v->cargo.Source());
 			SetDParam(3, _patches.freight_trains);
 			str = FreightWagonMult(v->cargo_type) > 1 ? STR_FROM_MULT : STR_8813_FROM;
 		}
@@ -387,7 +386,7 @@ static void DrawTrainDetailsWindow(Window *w)
 		}
 
 		do {
-			act_cargo[u->cargo_type] += u->cargo_count;
+			act_cargo[u->cargo_type] += u->cargo.Count();
 			max_cargo[u->cargo_type] += u->cargo_cap;
 		} while ((u = u->next) != NULL);
 
@@ -504,7 +503,7 @@ static void DrawTrainDetailsWindow(Window *w)
 				DrawString(x, y + 2, FreightWagonMult(i) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_013F_TOTAL_CAPACITY, 0);
 			}
 		}
-		SetDParam(0, v->cargo_feeder_share);
+		SetDParam(0, v->cargo.FeederShare());
 		DrawString(x, y + 15, STR_FEEDER_CARGO_VALUE, 0);
 	}
 }

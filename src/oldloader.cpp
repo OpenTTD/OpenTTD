@@ -565,15 +565,18 @@ static bool LoadOldCargoPaymentRate(LoadgameState *ls, int num)
 	return true;
 }
 
-static uint8 _old_platforms;
-static uint _current_station_id;
+static uint8  _old_platforms;
+static uint   _current_station_id;
+static uint16 _waiting_acceptance;
+static uint8  _cargo_source;
+static uint8  _cargo_days;
 
 static const OldChunks goods_chunk[] = {
-	OCL_SVAR( OC_UINT16, GoodsEntry, waiting_acceptance ),
+	OCL_VAR ( OC_UINT16, 1,          &_waiting_acceptance ),
 	OCL_SVAR(  OC_UINT8, GoodsEntry, days_since_pickup ),
 	OCL_SVAR(  OC_UINT8, GoodsEntry, rating ),
-	OCL_SVAR(  OC_FILE_U8 | OC_VAR_U16, GoodsEntry, enroute_from ),
-	OCL_SVAR(  OC_UINT8, GoodsEntry, enroute_time ),
+	OCL_VAR (  OC_UINT8, 1,          &_cargo_source ),
+	OCL_VAR (  OC_UINT8, 1,          &_cargo_days ),
 	OCL_SVAR(  OC_UINT8, GoodsEntry, last_speed ),
 	OCL_SVAR(  OC_UINT8, GoodsEntry, last_age ),
 
@@ -583,7 +586,17 @@ static const OldChunks goods_chunk[] = {
 static bool LoadOldGood(LoadgameState *ls, int num)
 {
 	Station *st = GetStation(_current_station_id);
-	return LoadChunk(ls, &st->goods[num], goods_chunk);
+	GoodsEntry *ge = &st->goods[num];
+	bool ret = LoadChunk(ls, ge, goods_chunk);
+	if (ret && GB(_waiting_acceptance, 0, 12) != 0) {
+		CargoPacket *cp = new CargoPacket();
+		cp->source          = (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
+		cp->count           = GB(_waiting_acceptance, 0, 12);
+		cp->days_in_transit = _cargo_days;
+		ge->acceptance      = HASBIT(_waiting_acceptance, 15);
+		ge->cargo.Append(cp);
+	}
+	return ret;
 }
 
 static const OldChunks station_chunk[] = {
@@ -1091,6 +1104,8 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 	return res;
 }
 
+static uint16 _cargo_count;
+
 static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Vehicle, type ),
 	OCL_SVAR(  OC_UINT8, Vehicle, subtype ),
@@ -1133,9 +1148,9 @@ static const OldChunks vehicle_chunk[] = {
 
 	OCL_SVAR(  OC_UINT8, Vehicle, cargo_type ),
 	OCL_SVAR( OC_UINT16, Vehicle, cargo_cap ),
-	OCL_SVAR( OC_UINT16, Vehicle, cargo_count ),
-	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Vehicle, cargo_source ),
-	OCL_SVAR(  OC_UINT8, Vehicle, cargo_days ),
+	OCL_VAR ( OC_UINT16, 1,       &_cargo_count ),
+	OCL_VAR (  OC_UINT8, 1,       &_cargo_source ),
+	OCL_VAR (  OC_UINT8, 1,       &_cargo_days ),
 
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, age ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, max_age ),
@@ -1213,6 +1228,12 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 
 		/* Vehicle-subtype is different in TTD(Patch) */
 		if (v->type == VEH_SPECIAL) v->subtype = v->subtype >> 1;
+
+		if (_cargo_count != 0) {
+			CargoPacket *cp = new CargoPacket((_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, _cargo_count);
+			cp->days_in_transit = _cargo_days;
+			v->cargo.Append(cp);
+		}
 	}
 
 	return true;

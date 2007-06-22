@@ -55,6 +55,7 @@ enum SLRefType {
 	REF_VEHICLE_OLD   = 4,
 	REF_ROADSTOPS     = 5,
 	REF_ENGINE_RENEWS = 6,
+	REF_CARGO_PACKET  = 7,
 };
 
 #define SL_MAX_VERSION 255
@@ -172,6 +173,7 @@ typedef byte SaveLoadType;
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 struct SaveLoad {
+	bool global;         ///< should we load a global variable or a non-global one
 	SaveLoadType cmd;    ///< the action to take with the saved/loaded type, All types need different action
 	VarType conv;        ///< type of the variable to be saved, int
 	uint16 length;       ///< (conditional) length of the variable (eg. arrays) (max array size is 65536 elements)
@@ -180,7 +182,7 @@ struct SaveLoad {
 	/* NOTE: This element either denotes the address of the variable for a global
 	 * variable, or the offset within a struct which is then bound to a variable
 	 * during runtime. Decision on which one to use is controlled by the function
-	 * that is called to save it. address: SlGlobList, offset: SlObject */
+	 * that is called to save it. address: global=true, offset: global=false */
 	void *address;       ///< address of variable OR offset of variable in the struct (max offset is 65536)
 };
 
@@ -188,7 +190,7 @@ struct SaveLoad {
 typedef SaveLoad SaveLoadGlobVarList;
 
 /* Simple variables, references (pointers) and arrays */
-#define SLE_GENERAL(cmd, base, variable, type, length, from, to) {cmd, type, length, from, to, (void*)cpp_offsetof(base, variable)}
+#define SLE_GENERAL(cmd, base, variable, type, length, from, to) {false, cmd, type, length, from, to, (void*)cpp_offsetof(base, variable)}
 #define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SL_VAR, base, variable, type, 0, from, to)
 #define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SL_REF, base, variable, type, 0, from, to)
 #define SLE_CONDARR(base, variable, type, length, from, to) SLE_GENERAL(SL_ARR, base, variable, type, length, from, to)
@@ -209,7 +211,7 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_INCLUDE(base, variable, include_index) SLE_GENERAL(SL_INCLUDE, base, variable, 0, 0, include_index, 0)
 
 /* The same as the ones at the top, only the offset is given directly; used for unions */
-#define SLE_GENERALX(cmd, offset, type, param1, param2) {cmd, type, 0, param1, param2, (void*)(offset)}
+#define SLE_GENERALX(cmd, offset, type, param1, param2) {false, cmd, type, 0, param1, param2, (void*)(offset)}
 #define SLE_CONDVARX(offset, type, from, to) SLE_GENERALX(SL_VAR, offset, type, from, to)
 #define SLE_CONDREFX(offset, type, from, to) SLE_GENERALX(SL_REF, offset, type, from, to)
 
@@ -220,10 +222,10 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_INCLUDEX(offset, type) SLE_GENERALX(SL_INCLUDE, offset, type, 0, SL_MAX_VERSION)
 
 /* End marker */
-#define SLE_END() {SL_END, 0, 0, 0, 0, NULL}
+#define SLE_END() {false, SL_END, 0, 0, 0, 0, NULL}
 
 /* Simple variables, references (pointers) and arrays, but for global variables */
-#define SLEG_GENERAL(cmd, variable, type, length, from, to) {cmd, type, length, from, to, (void*)&variable}
+#define SLEG_GENERAL(cmd, variable, type, length, from, to) {true, cmd, type, length, from, to, (void*)&variable}
 
 #define SLEG_CONDVAR(variable, type, from, to) SLEG_GENERAL(SL_VAR, variable, type, 0, from, to)
 #define SLEG_CONDREF(variable, type, from, to) SLEG_GENERAL(SL_REF, variable, type, 0, from, to)
@@ -237,9 +239,9 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, lengthof(variable), 0, SL_MAX_VERSION)
 #define SLEG_LST(variable, type) SLEG_CONDLST(variable, type, 0, SL_MAX_VERSION)
 
-#define SLEG_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_CONFIG_NO, length, from, to, (void*)NULL}
+#define SLEG_CONDNULL(length, from, to) {true, SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_CONFIG_NO, length, from, to, (void*)NULL}
 
-#define SLEG_END() {SL_END, 0, 0, 0, 0, NULL}
+#define SLEG_END() {true, SL_END, 0, 0, 0, 0, NULL}
 
 /** Checks if the savegame is below major.minor.
  */

@@ -9,6 +9,7 @@
 #include "order.h"
 #include "rail.h"
 #include "road.h"
+#include "cargopacket.h"
 #include "texteff.hpp"
 
 /** The returned bits of VehicleEnterTile. */
@@ -265,12 +266,10 @@ struct Vehicle {
 	StationID last_station_visited;
 
 	CargoID cargo_type;      // type of cargo this vehicle is carrying
-	byte cargo_days;         // how many days have the pieces been in transit
-	StationID cargo_source;  // source of cargo
-	TileIndex cargo_source_xy; //< stores the Tile where the source station is located, in case it is removed
 	uint16 cargo_cap;        // total capacity
-	uint16 cargo_count;      // how many pieces are used
 	byte cargo_subtype;      ///< Used for livery refits (NewGRF variations)
+	CargoList cargo;         ///< The cargo this vehicle is carrying
+
 
 	byte day_counter;        // increased by one for each day
 	byte tick_counter;       // increased by one for each tick
@@ -312,13 +311,10 @@ struct Vehicle {
 	bool leave_depot_instantly; // NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 
 	uint16 load_unload_time_rem;
-	uint16 cargo_paid_for;      // How much of the cargo currently on board has been paid for.
 	byte vehicle_flags;         // Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
 	Money profit_this_year;
 	Money profit_last_year;
-	Money cargo_feeder_share;      ///< value of feeder pickup to be paid for on delivery of cargo
-	TileIndex cargo_loaded_at_xy;  ///< tile index where feeder cargo was loaded
 	Money value;
 
 	GroupID group_id;              ///< Index of group Pool array

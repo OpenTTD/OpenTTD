@@ -303,6 +303,7 @@ static void UnInitializeGame()
 	CleanPool(&_Sign_pool);
 	CleanPool(&_Order_pool);
 	CleanPool(&_Group_pool);
+	CleanPool(&_CargoPacket_pool);
 
 	free((void*)_town_sort);
 	free((void*)_industry_sort);
@@ -930,6 +931,31 @@ void SwitchMode(int new_mode)
 	}
 }
 
+#include "cargopacket.h"
+void CheckCargoPacketLeaks()
+{
+	CargoPacket *cp;
+	FOR_ALL_CARGOPACKETS(cp) cp->touched = false;
+
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		const CargoList::List *packets = v->cargo.Packets();
+		for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) (*it)->touched = true;
+	}
+
+	Station *st;
+	FOR_ALL_STATIONS(st) {
+		for (CargoID c = 0; c < NUM_CARGO; c++) {
+			GoodsEntry *ge = &st->goods[c];
+
+			const CargoList::List *packets = ge->cargo.Packets();
+			for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) (*it)->touched = true;
+		}
+	}
+
+	FOR_ALL_CARGOPACKETS(cp) assert(cp->touched);
+}
+
 
 /* State controlling game loop.
  * The state must not be changed from anywhere
@@ -964,6 +990,7 @@ void StateGameLoop()
 		CallWindowTickEvent();
 		NewsLoop();
 		_current_player = p;
+		CheckCargoPacketLeaks();
 	}
 }
 
@@ -1896,13 +1923,19 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(44)) {
 		Vehicle *v;
 		/* If we remove a station while cargo from it is still enroute, payment calculation will assume
-		 * 0, 0 to be the origin of the cargo, resulting in very high payments usually. v->cargo_source_xy
+		 * 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_xy
 		 * stores the coordinates, preserving them even if the station is removed. However, if a game is loaded
-		 * where this situation exists, the cargo-source information is lost. in this case, we set the origin
+		 * where this situation exists, the cargo-source information is lost. in this case, we set the source
 		 * to the current tile of the vehicle to prevent excessive profits
 		 */
 		FOR_ALL_VEHICLES(v) {
-			v->cargo_source_xy = IsValidStationID(v->cargo_source) ? GetStation(v->cargo_source)->xy : v->tile;
+			const CargoList::List *packets = v->cargo.Packets();
+			for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
+				CargoPacket *cp = *it;
+				cp->source_xy = IsValidStationID(cp->source) ? GetStation(cp->source)->xy : v->tile;
+				cp->loaded_at_xy = cp->source_xy;
+			}
+			v->cargo.InvalidateCache();
 		}
 
 		/* Store position of the station where the goods come from, so there
@@ -1915,12 +1948,12 @@ bool AfterLoadGame()
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				GoodsEntry *ge = &st->goods[c];
 
-				/* In old versions, enroute_from used 0xFF as INVALID_STATION */
-				if (CheckSavegameVersion(7) && ge->enroute_from == 0xFF) {
-					ge->enroute_from = INVALID_STATION;
+				const CargoList::List *packets = ge->cargo.Packets();
+				for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
+					CargoPacket *cp = *it;
+					cp->source_xy = IsValidStationID(cp->source) ? GetStation(cp->source)->xy : st->xy;
+					cp->loaded_at_xy = cp->source_xy;
 				}
-
-				ge->enroute_from_xy = IsValidStationID(ge->enroute_from) ? GetStation(ge->enroute_from)->xy : st->xy;
 			}
 		}
 	}
@@ -1933,12 +1966,13 @@ bool AfterLoadGame()
 		 * loading again, even if it didn't actually load anything, so now the
 		 * amount of cargo that has been paid for is stored. */
 		FOR_ALL_VEHICLES(v) {
-			if (HASBIT(v->vehicle_flags, 2)) {
-				v->cargo_paid_for = v->cargo_count;
-				CLRBIT(v->vehicle_flags, 2);
-			} else {
-				v->cargo_paid_for = 0;
+			const CargoList::List *packets = v->cargo.Packets();
+			for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
+				CargoPacket *cp = *it;
+				cp->paid_for = HASBIT(v->vehicle_flags, 2);
 			}
+			CLRBIT(v->vehicle_flags, 2);
+			v->cargo.InvalidateCache();
 		}
 	}
 

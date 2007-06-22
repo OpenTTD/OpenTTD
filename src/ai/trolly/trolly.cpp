@@ -617,7 +617,7 @@ static void AiNew_State_FindStation(Player *p)
 			if (p->ainew.tbt == AI_BUS && (FACIL_BUS_STOP & st->facilities) == FACIL_BUS_STOP) {
 				if (st->town == town) {
 					// Check how much cargo there is left in the station
-					if ((st->goods[p->ainew.cargo].waiting_acceptance & 0xFFF) > RoadVehInfo(i)->capacity * AI_STATION_REUSE_MULTIPLER) {
+					if ((int)st->goods[p->ainew.cargo].cargo.Count() > RoadVehInfo(i)->capacity * AI_STATION_REUSE_MULTIPLER) {
 						if (AiNew_CheckVehicleStation(p, st)) {
 							// We did found a station that was good enough!
 							new_tile = st->xy;
@@ -1258,7 +1258,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v)
 		if (v->profit_last_year + v->profit_this_year < AI_MINIMUM_ROUTE_PROFIT ||
 				(v->reliability * 100 >> 16) < 40) {
 			// There is a possibility that the route is fucked up...
-			if (v->cargo_days > AI_VEHICLE_LOST_DAYS) {
+			if (v->cargo.DaysInTransit() > AI_VEHICLE_LOST_DAYS) {
 				// The vehicle is lost.. check the route, or else, get the vehicle
 				//  back to a depot
 				// TODO: make this piece of code

@@ -12,34 +12,26 @@
 #include "tile.h"
 #include "road.h"
 #include "newgrf_station.h"
+#include "cargopacket.h"
 #include <list>
 
-static const StationID INVALID_STATION = 0xFFFF;
 static const byte INITIAL_STATION_RATING = 175;
 
 struct GoodsEntry {
 	GoodsEntry() :
-		waiting_acceptance(0),
-		unload_pending(0),
+		acceptance(false),
 		days_since_pickup(0),
 		rating(INITIAL_STATION_RATING),
-		enroute_from(INVALID_STATION),
-		enroute_from_xy(INVALID_TILE),
 		last_speed(0),
-		last_age(255),
-		feeder_profit(0)
+		last_age(255)
 	{}
 
-	uint16 waiting_acceptance;
-	uint16 unload_pending;        ///< records how much cargo is awaiting transfer during gradual loading to allow correct fee calc
+	bool acceptance;
 	byte days_since_pickup;
 	byte rating;
-	StationID enroute_from;
-	TileIndex enroute_from_xy;
-	byte enroute_time;
 	byte last_speed;
 	byte last_age;
-	Money feeder_profit;
+	CargoList cargo; ///< The cargo packets of cargo waiting in this station
 };
 
 /** A Stop for a Road Vehicle */

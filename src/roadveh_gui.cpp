@@ -154,10 +154,10 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 
 			for (const Vehicle *u = v; u != NULL; u = u->next) {
 				str = STR_8812_EMPTY;
-				if (u->cargo_count != 0) {
+				if (!u->cargo.Empty()) {
 					SetDParam(0, u->cargo_type);
-					SetDParam(1, u->cargo_count);
-					SetDParam(2, u->cargo_source);
+					SetDParam(1, u->cargo.Count());
+					SetDParam(2, u->cargo.Source());
 					str = STR_8813_FROM;
 				}
 				DrawString(34, 78 + y_offset, str, 0);
@@ -172,17 +172,17 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 			DrawString(34, 67 + y_offset, STR_9012_CAPACITY, 0);
 
 			str = STR_8812_EMPTY;
-			if (v->cargo_count != 0) {
+			if (!v->cargo.Empty()) {
 				SetDParam(0, v->cargo_type);
-				SetDParam(1, v->cargo_count);
-				SetDParam(2, v->cargo_source);
+				SetDParam(1, v->cargo.Count());
+				SetDParam(2, v->cargo.Source());
 				str = STR_8813_FROM;
 			}
 			DrawString(34, 78 + y_offset, str, 0);
 		}
 
 		/* Draw Transfer credits text */
-		SetDParam(0, v->cargo_feeder_share);
+		SetDParam(0, v->cargo.FeederShare());
 		DrawString(34, 90 + y_offset, STR_FEEDER_CARGO_VALUE, 0);
 
 		/* Draw service interval text */

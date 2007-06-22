@@ -355,7 +355,7 @@ static uint GetAcceptanceMask(const Station *st)
 	uint mask = 0;
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (st->goods[i].waiting_acceptance & 0x8000) mask |= 1 << i;
+		if (st->goods[i].acceptance) mask |= 1 << i;
 	}
 	return mask;
 }
@@ -536,7 +536,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 				(is_passengers && !(st->facilities & (byte)~FACIL_TRUCK_STOP)))
 			amt = 0;
 
-		SB(st->goods[i].waiting_acceptance, 12, 4, amt);
+		st->goods[i].acceptance = (amt >= 8);
 	}
 
 	// Only show a message in case the acceptance was actually changed.
@@ -2347,11 +2347,10 @@ static void UpdateStationRating(Station *st)
 		/* Slowly increase the rating back to his original level in the case we
 		 *  didn't deliver cargo yet to this station. This happens when a bribe
 		 *  failed while you didn't moved that cargo yet to a station. */
-		if (ge->enroute_from == INVALID_STATION && ge->rating < INITIAL_STATION_RATING)
+		if (ge->days_since_pickup == 255 && ge->rating < INITIAL_STATION_RATING)
 			ge->rating++;
 		/* Only change the rating if we are moving this cargo */
-		if (ge->enroute_from != INVALID_STATION) {
-			byte_inc_sat(&ge->enroute_time);
+		if (ge->last_speed != 0) {
 			byte_inc_sat(&ge->days_since_pickup);
 
 			int rating = 0;
@@ -2383,7 +2382,7 @@ static void UpdateStationRating(Station *st)
 				(rating += 35, true);
 			}
 
-			int waiting = GB(ge->waiting_acceptance, 0, 12);
+			uint waiting = ge->cargo.Count();
 			(rating -= 90, waiting > 1500) ||
 			(rating += 55, waiting > 1000) ||
 			(rating += 35, waiting > 600) ||
@@ -2409,12 +2408,13 @@ static void UpdateStationRating(Station *st)
 				if (rating <= 127 && waiting != 0) {
 					uint32 r = Random();
 					if (rating <= (int)GB(r, 0, 7)) {
-						waiting = max(waiting - (int)GB(r, 8, 2) - 1, 0);
+						/* Need to have int, otherwise it will just overflow etc. */
+						waiting = max((int)waiting - (int)GB(r, 8, 2) - 1, 0);
 						waiting_changed = true;
 					}
 				}
 
-				if (waiting_changed) SB(ge->waiting_acceptance, 0, 12, waiting);
+				if (waiting_changed) ge->cargo.Truncate(waiting);
 			}
 		}
 	} while (++ge != endof(st->goods));
@@ -2467,7 +2467,7 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				GoodsEntry* ge = &st->goods[i];
 
-				if (ge->enroute_from != INVALID_STATION) {
+				if (ge->days_since_pickup != 255) {
 					ge->rating = clamp(ge->rating + amount, 0, 255);
 				}
 			}
@@ -2477,13 +2477,8 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 
 static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
 {
-	SB(st->goods[type].waiting_acceptance, 0, 12,
-		min(0xFFF, GB(st->goods[type].waiting_acceptance, 0, 12) + amount)
-	);
+	st->goods[type].cargo.Append(new CargoPacket(st->index, amount));
 
-	st->goods[type].enroute_time = 0;
-	st->goods[type].enroute_from = st->index;
-	st->goods[type].enroute_from_xy = st->xy;
 	InvalidateWindow(WC_STATION_VIEW, st->index);
 	st->MarkTilesDirty(true);
 }
@@ -2553,7 +2548,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 			if (around[i] == NULL) {
 				if (!st->IsBuoy() &&
 						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
-						st->goods[type].rating != 0 &&
+						st->goods[type].rating != 0 && st->goods[type].days_since_pickup != 255 && // we actually service the station
 						(!_patches.selectgoods || st->goods[type].last_speed > 0) && // if last_speed is 0, no vehicle has been there.
 						((st->facilities & ~FACIL_BUS_STOP)   != 0 || IsCargoInClass(type, CC_PASSENGERS)) && // if we have other fac. than a bus stop, or the cargo is passengers
 						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || !IsCargoInClass(type, CC_PASSENGERS))) { // if we have other fac. than a cargo bay or the cargo is not passengers
@@ -2683,10 +2678,8 @@ void BuildOilRig(TileIndex tile)
 	st->build_date = _date;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		st->goods[j].waiting_acceptance = 0;
-		st->goods[j].days_since_pickup = 0;
-		st->goods[j].enroute_from = INVALID_STATION;
-		st->goods[j].enroute_from_xy = INVALID_TILE;
+		st->goods[j].acceptance = false;
+		st->goods[j].days_since_pickup = 255;
 		st->goods[j].rating = INITIAL_STATION_RATING;
 		st->goods[j].last_speed = 0;
 		st->goods[j].last_age = 255;
@@ -2810,6 +2803,8 @@ void AfterLoadStations()
 
 			st->speclist[i].spec = GetCustomStationSpecByGrf(st->speclist[i].grfid, st->speclist[i].localidx);
 		}
+
+		for (CargoID c = 0; c < NUM_CARGO; c++) st->goods[c].cargo.InvalidateCache();
 	}
 }
 
@@ -2906,19 +2901,27 @@ static const SaveLoad _station_desc[] = {
 	SLE_END()
 };
 
+static uint16 _waiting_acceptance;
+static uint16 _cargo_source;
+static uint32 _cargo_source_xy;
+static uint16 _cargo_days;
+static Money  _cargo_feeder_share;
+
 static const SaveLoad _goods_desc[] = {
-	    SLE_VAR(GoodsEntry, waiting_acceptance, SLE_UINT16),
-	SLE_CONDVAR(GoodsEntry, unload_pending,     SLE_UINT16,                51, SL_MAX_VERSION),
-	    SLE_VAR(GoodsEntry, days_since_pickup,  SLE_UINT8),
-	    SLE_VAR(GoodsEntry, rating,             SLE_UINT8),
-	SLE_CONDVAR(GoodsEntry, enroute_from,       SLE_FILE_U8 | SLE_VAR_U16,  0, 6),
-	SLE_CONDVAR(GoodsEntry, enroute_from,       SLE_UINT16,                 7, SL_MAX_VERSION),
-	SLE_CONDVAR(GoodsEntry, enroute_from_xy,    SLE_UINT32,                44, SL_MAX_VERSION),
-	    SLE_VAR(GoodsEntry, enroute_time,       SLE_UINT8),
-	    SLE_VAR(GoodsEntry, last_speed,         SLE_UINT8),
-	    SLE_VAR(GoodsEntry, last_age,           SLE_UINT8),
-	SLE_CONDVAR(GoodsEntry, feeder_profit,      SLE_FILE_I32 | SLE_VAR_I64,14, 64),
-	SLE_CONDVAR(GoodsEntry, feeder_profit,      SLE_INT64,                 65, SL_MAX_VERSION),
+	SLEG_CONDVAR(            _waiting_acceptance, SLE_UINT16,                  0, 67),
+	 SLE_CONDVAR(GoodsEntry, acceptance,          SLE_BOOL,                   68, SL_MAX_VERSION),
+	SLE_CONDNULL(2,                                                           51, 67),
+	     SLE_VAR(GoodsEntry, days_since_pickup,   SLE_UINT8),
+	     SLE_VAR(GoodsEntry, rating,              SLE_UINT8),
+	SLEG_CONDVAR(            _cargo_source,       SLE_FILE_U8 | SLE_VAR_U16,   0, 6),
+	SLEG_CONDVAR(            _cargo_source,       SLE_UINT16,                  7, 67),
+	SLEG_CONDVAR(            _cargo_source_xy,    SLE_UINT32,                 44, 67),
+	SLEG_CONDVAR(            _cargo_days,         SLE_UINT8,                   0, 67),
+	     SLE_VAR(GoodsEntry, last_speed,          SLE_UINT8),
+	     SLE_VAR(GoodsEntry, last_age,            SLE_UINT8),
+	SLEG_CONDVAR(            _cargo_feeder_share, SLE_FILE_U32 | SLE_VAR_I64, 14, 64),
+	SLEG_CONDVAR(            _cargo_feeder_share, SLE_INT64,                  65, 67),
+	 SLE_CONDLST(GoodsEntry, cargo,               REF_CARGO_PACKET,           68, SL_MAX_VERSION),
 
 	SLE_END()
 };
@@ -2935,9 +2938,28 @@ static void SaveLoad_STNS(Station *st)
 {
 	SlObject(st, _station_desc);
 
+	_waiting_acceptance = 0;
+
 	uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
 	for (CargoID i = 0; i < num_cargo; i++) {
-		SlObject(&st->goods[i], _goods_desc);
+		GoodsEntry *ge = &st->goods[i];
+		SlObject(ge, _goods_desc);
+		if (_waiting_acceptance != 0) {
+			ge->acceptance = HASBIT(_waiting_acceptance, 15);
+			if (GB(_waiting_acceptance, 0, 12) != 0) {
+				/* Don't construct the packet with station here, because that'll fail with old savegames */
+				CargoPacket *cp = new CargoPacket();
+				/* In old versions, enroute_from used 0xFF as INVALID_STATION */
+				cp->source          = (CheckSavegameVersion(7) && _cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
+				cp->count           = GB(_waiting_acceptance, 0, 12);
+				cp->days_in_transit = _cargo_days;
+				cp->feeder_share    = _cargo_feeder_share;
+				cp->source_xy       = _cargo_source_xy;
+				cp->days_in_transit = _cargo_days;
+				cp->feeder_share    = _cargo_feeder_share;
+				ge->cargo.Append(cp);
+			}
+		}
 	}
 
 	if (st->num_specs != 0) {

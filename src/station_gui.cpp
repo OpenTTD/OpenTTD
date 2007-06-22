@@ -134,8 +134,8 @@ static int CDECL StationWaitingSorter(const void *a, const void *b)
 	Money sum1 = 0, sum2 = 0;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		if (st1->goods[j].waiting_acceptance & 0xfff) sum1 += GetTransportedGoodsIncome(st1->goods[j].waiting_acceptance & 0xfff, 20, 50, j);
-		if (st2->goods[j].waiting_acceptance & 0xfff) sum2 += GetTransportedGoodsIncome(st2->goods[j].waiting_acceptance & 0xfff, 20, 50, j);
+		if (!st1->goods[j].cargo.Empty()) sum1 += GetTransportedGoodsIncome(st1->goods[j].cargo.Count(), 20, 50, j);
+		if (!st2->goods[j].cargo.Empty()) sum2 += GetTransportedGoodsIncome(st2->goods[j].cargo.Count(), 20, 50, j);
 	}
 
 	return (_internal_sort_order & 1) ? ClampToI32(sum2 - sum1) : ClampToI32(sum1 - sum2);
@@ -157,8 +157,8 @@ static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 	byte maxr2 = 0;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		if (st1->goods[j].enroute_from != INVALID_STATION) maxr1 = max(maxr1, st1->goods[j].rating);
-		if (st2->goods[j].enroute_from != INVALID_STATION) maxr2 = max(maxr2, st2->goods[j].rating);
+		if (st1->goods[j].days_since_pickup != 255) maxr1 = max(maxr1, st1->goods[j].rating);
+		if (st2->goods[j].days_since_pickup != 255) maxr2 = max(maxr2, st2->goods[j].rating);
 	}
 
 	return (_internal_sort_order & 1) ? maxr2 - maxr1 : maxr1 - maxr2;
@@ -225,7 +225,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 			if (facilities & st->facilities) { //only stations with selected facilities
 				int num_waiting_cargo = 0;
 				for (CargoID j = 0; j < NUM_CARGO; j++) {
-					if (st->goods[j].waiting_acceptance & 0xFFF) {
+					if (!st->goods[j].cargo.Empty()) {
 						num_waiting_cargo++; //count number of waiting cargo
 						if (HASBIT(cargo_filter, j)) {
 							station_sort[n++] = st;
@@ -368,9 +368,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				/* show cargo waiting and station ratings */
 				for (CargoID j = 0; j < NUM_CARGO; j++) {
-					uint amount = GB(st->goods[j].waiting_acceptance, 0, 12);
-					if (amount != 0) {
-						StationsWndShowStationRating(x, y, j, amount, st->goods[j].rating);
+					if (!st->goods[j].cargo.Empty()) {
+						StationsWndShowStationRating(x, y, j, st->goods[j].cargo.Count(), st->goods[j].rating);
 						x += 20;
 					}
 				}
@@ -705,9 +704,9 @@ static void DrawStationViewWindow(Window *w)
 
 	num = 1;
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) {
+		if (!st->goods[i].cargo.Empty()) {
 			num++;
-			if (st->goods[i].enroute_from != station_id) num++;
+			if (st->goods[i].cargo.Source() != station_id) num++;
 		}
 	}
 	SetVScrollCount(w, num);
@@ -729,7 +728,7 @@ static void DrawStationViewWindow(Window *w)
 	if (--pos < 0) {
 		str = STR_00D0_NOTHING;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (GB(st->goods[i].waiting_acceptance, 0, 12) != 0) str = STR_EMPTY;
+			if (!st->goods[i].cargo.Empty()) str = STR_EMPTY;
 		}
 		SetDParam(0, str);
 		DrawString(x, y, STR_0008_WAITING, 0);
@@ -737,10 +736,10 @@ static void DrawStationViewWindow(Window *w)
 	}
 
 	for (CargoID i = 0; i < NUM_CARGO && pos > -5; i++) {
-		uint waiting = GB(st->goods[i].waiting_acceptance, 0, 12);
+		uint waiting = st->goods[i].cargo.Count();
 		if (waiting == 0) continue;
 
-		if (st->goods[i].enroute_from == station_id) {
+		if (st->goods[i].cargo.Source() == station_id) {
 			if (--pos < 0) {
 				DrawCargoIcons(i, waiting, x, y);
 				SetDParam(1, waiting);
@@ -759,7 +758,7 @@ static void DrawStationViewWindow(Window *w)
 			}
 
 			if (pos > -5 && --pos < 0) {
-				SetDParam(0, st->goods[i].enroute_from);
+				SetDParam(0, st->goods[i].cargo.Source());
 				DrawStringRightAligned(x + 234, y, STR_000B, 0);
 				y += 10;
 			}
@@ -774,7 +773,7 @@ static void DrawStationViewWindow(Window *w)
 
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (b >= endof(_userstring) - 5 - 1) break;
-			if (st->goods[i].waiting_acceptance & 0x8000) {
+			if (st->goods[i].acceptance) {
 				if (first) {
 					first = false;
 				} else {
@@ -800,7 +799,7 @@ static void DrawStationViewWindow(Window *w)
 			if (!cs->IsValid()) continue;
 
 			const GoodsEntry *ge = &st->goods[i];
-			if (ge->enroute_from == INVALID_STATION) continue;
+			if (ge->days_since_pickup == 255) continue;
 
 			SetDParam(0, cs->name);
 			SetDParam(2, ge->rating * 101 >> 8);

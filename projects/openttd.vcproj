@@ -182,6 +182,9 @@
 				RelativePath=".\..\src\cargotype.cpp">
 			</File>
 			<File
+				RelativePath=".\..\src\cargopacket.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\command.cpp">
 			</File>
 			<File
@@ -400,6 +403,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\cargotype.h">
+			</File>
+			<File
+				RelativePath=".\..\src\cargopacket.h">
 			</File>
 			<File
 				RelativePath=".\..\src\command.h">

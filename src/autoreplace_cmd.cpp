@@ -25,27 +25,23 @@
 static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 {
 	Vehicle *v = dest;
-	int units_moved;
 
 	do {
 		do {
 			if (source->cargo_type != dest->cargo_type)
 				continue; // cargo not compatible
 
-			if (dest->cargo_count == dest->cargo_cap)
+			if (dest->cargo.Count() == dest->cargo_cap)
 				continue; // the destination vehicle is already full
 
-			units_moved = min(source->cargo_count, dest->cargo_cap - dest->cargo_count);
-			source->cargo_count -= units_moved;
-			dest->cargo_count   += units_moved;
-			dest->cargo_source   = source->cargo_source;
+			uint units_moved = min(source->cargo.Count(), dest->cargo_cap - dest->cargo.Count());
+			source->cargo.MoveTo(&dest->cargo, units_moved);
 
 			// copy the age of the cargo
-			dest->cargo_days   = source->cargo_days;
 			dest->day_counter  = source->day_counter;
 			dest->tick_counter = source->tick_counter;
 
-		} while (source->cargo_count > 0 && (dest = dest->next) != NULL);
+		} while (source->cargo.Count() > 0 && (dest = dest->next) != NULL);
 		dest = v;
 	} while ((source = source->next) != NULL);
 

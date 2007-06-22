@@ -400,7 +400,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			uint32 value = 0;
 
 			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				if (HASBIT(st->goods[cargo_type].waiting_acceptance, 15)) SETBIT(value, cargo_type);
+				if (st->goods[cargo_type].acceptance) SETBIT(value, cargo_type);
 			}
 			return value;
 		}
@@ -431,12 +431,12 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		const GoodsEntry *ge = &st->goods[c];
 
 		switch (variable) {
-			case 0x60: return GB(ge->waiting_acceptance, 0, 12);
+			case 0x60: return min(ge->cargo.Count(), 4095);
 			case 0x61: return ge->days_since_pickup;
 			case 0x62: return ge->rating;
-			case 0x63: return ge->enroute_time;
+			case 0x63: return ge->cargo.DaysInTransit();
 			case 0x64: return ge->last_speed | (ge->last_age << 8);
-			case 0x65: return GB(ge->waiting_acceptance, 12, 4);
+			case 0x65: return ge->acceptance << 3;
 		}
 	}
 
@@ -444,12 +444,12 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 	if (variable >= 0x8C && variable <= 0xEC) {
 		const GoodsEntry *g = &st->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
-			case 0: return g->waiting_acceptance;
-			case 1: return GB(g->waiting_acceptance, 8, 8);
+			case 0: return g->cargo.Count();
+			case 1: return GB(min(g->cargo.Count(), 4095), 0, 4) | (g->acceptance << 7);
 			case 2: return g->days_since_pickup;
 			case 3: return g->rating;
-			case 4: return g->enroute_from;
-			case 5: return g->enroute_time;
+			case 4: return g->cargo.Source();
+			case 5: return g->cargo.DaysInTransit();
 			case 6: return g->last_speed;
 			case 7: return g->last_age;
 		}
@@ -484,12 +484,12 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 
 		case CT_DEFAULT:
 			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				cargo += GB(st->goods[cargo_type].waiting_acceptance, 0, 12);
+				cargo += st->goods[cargo_type].cargo.Count();
 			}
 			break;
 
 		default:
-			cargo = GB(st->goods[cargo_type].waiting_acceptance, 0, 12);
+			cargo = st->goods[cargo_type].cargo.Count();
 			break;
 	}
 
@@ -545,7 +545,7 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 		for (CargoID cargo = 0; cargo < NUM_CARGO; cargo++) {
 			const CargoSpec *cs = GetCargo(cargo);
 			if (cs->IsValid() && object->u.station.statspec->spritegroup[cargo] != NULL &&
-					GB(object->u.station.st->goods[cargo].waiting_acceptance, 0, 12) != 0) {
+					!object->u.station.st->goods[cargo].cargo.Empty()) {
 				ctype = cargo;
 				break;
 			}

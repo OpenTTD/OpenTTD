@@ -29,7 +29,7 @@
 #include <setjmp.h>
 #include <list>
 
-extern const uint16 SAVEGAME_VERSION = 67;
+extern const uint16 SAVEGAME_VERSION = 68;
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
@@ -820,7 +820,7 @@ void SlObject(void *object, const SaveLoad *sld)
 	}
 
 	for (; sld->cmd != SL_END; sld++) {
-		void *ptr = GetVariableAddress(object, sld);
+		void *ptr = sld->global ? sld->address : GetVariableAddress(object, sld);
 		SlObjectMember(ptr, sld);
 	}
 }
@@ -831,14 +831,7 @@ void SlObject(void *object, const SaveLoad *sld)
  */
 void SlGlobList(const SaveLoadGlobVarList *sldg)
 {
-	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcObjLength(NULL, (const SaveLoad*)sldg));
-		if (_sl.need_length == NL_CALCLENGTH) return;
-	}
-
-	for (; sldg->cmd != SL_END; sldg++) {
-		SlObjectMember(sldg->address, (const SaveLoad*)sldg);
-	}
+	SlObject(NULL, (const SaveLoad*)sldg);
 }
 
 /**
@@ -1258,6 +1251,7 @@ extern const ChunkHandler _economy_chunk_handlers[];
 extern const ChunkHandler _animated_tile_chunk_handlers[];
 extern const ChunkHandler _newgrf_chunk_handlers[];
 extern const ChunkHandler _group_chunk_handlers[];
+extern const ChunkHandler _cargopacket_chunk_handlers[];
 
 static const ChunkHandler * const _chunk_handlers[] = {
 	_misc_chunk_handlers,
@@ -1276,6 +1270,7 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	_animated_tile_chunk_handlers,
 	_newgrf_chunk_handlers,
 	_group_chunk_handlers,
+	_cargopacket_chunk_handlers,
 	NULL,
 };
 
@@ -1307,6 +1302,7 @@ static uint ReferenceToInt(const void *obj, SLRefType rt)
 		case REF_ORDER:     return ((const    Order*)obj)->index + 1;
 		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
 		case REF_ENGINE_RENEWS: return ((const EngineRenew*)obj)->index + 1;
+		case REF_CARGO_PACKET:  return ((const CargoPacket*)obj)->index + 1;
 		default: NOT_REACHED();
 	}
 
@@ -1366,6 +1362,11 @@ static void *IntToReference(uint index, SLRefType rt)
 			if (!AddBlockIfNeeded(&_EngineRenew_pool, index))
 				error("EngineRenews: failed loading savegame: too many EngineRenews");
 			return GetEngineRenew(index);
+		}
+		case REF_CARGO_PACKET: {
+			if (!AddBlockIfNeeded(&_CargoPacket_pool, index))
+				error("CargoPackets: failed loading savegame: too many Cargo packets");
+			return GetCargoPacket(index);
 		}
 
 		case REF_VEHICLE_OLD: {

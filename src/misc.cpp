@@ -93,6 +93,7 @@ void InitializeTowns();
 void InitializeTrees();
 void InitializeSigns();
 void InitializeStations();
+void InitializeCargoPackets();
 static void InitializeNameMgr();
 void InitializePlayers();
 static void InitializeCheats();
@@ -134,6 +135,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeTrees();
 	InitializeSigns();
 	InitializeStations();
+	InitializeCargoPackets();
 	InitializeIndustries();
 	InitializeBuildingCounts();
 	InitializeMainGui();

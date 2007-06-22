@@ -705,10 +705,10 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x39: return v->cargo_type;
 		case 0x3A: return v->cargo_cap;
 		case 0x3B: return GB(v->cargo_cap, 8, 8);
-		case 0x3C: return v->cargo_count;
-		case 0x3D: return GB(v->cargo_count, 8, 8);
-		case 0x3E: return v->cargo_source;
-		case 0x3F: return v->cargo_days;
+		case 0x3C: return v->cargo.Count();
+		case 0x3D: return GB(v->cargo.Count(), 8, 8);
+		case 0x3E: return v->cargo.Source();
+		case 0x3F: return v->cargo.DaysInTransit();
 		case 0x40: return v->age;
 		case 0x41: return GB(v->age, 8, 8);
 		case 0x42: return v->max_age;
@@ -811,12 +811,12 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 
 	totalsets = in_motion ? group->g.real.num_loaded : group->g.real.num_loading;
 
-	if (v->cargo_count == v->cargo_cap || totalsets == 1) {
+	if (v->cargo.Count() == v->cargo_cap || totalsets == 1) {
 		set = totalsets - 1;
-	} else if (v->cargo_count == 0 || totalsets == 2) {
+	} else if (v->cargo.Empty() || totalsets == 2) {
 		set = 0;
 	} else {
-		set = v->cargo_count * (totalsets - 2) / max((uint16)1, v->cargo_cap) + 1;
+		set = v->cargo.Count() * (totalsets - 2) / max((uint16)1, v->cargo_cap) + 1;
 	}
 
 	return in_motion ? group->g.real.loaded[set] : group->g.real.loading[set];

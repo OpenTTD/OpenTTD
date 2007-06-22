@@ -680,13 +680,8 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Vehicle *u = v->next;
 		uint mail = IsCargoInClass(new_cid, CC_PASSENGERS) ? avi->mail_capacity : 0;
 		u->cargo_cap = mail;
-		if (v->cargo_type == new_cid) {
-			v->cargo_count = min(pass, v->cargo_count);
-			u->cargo_count = min(mail, u->cargo_count);
-		} else {
-			v->cargo_count = 0;
-			u->cargo_count = 0;
-		}
+		v->cargo.Truncate(v->cargo_type == new_cid ? pass : 0);
+		u->cargo.Truncate(v->cargo_type == new_cid ? mail : 0);
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
@@ -774,7 +769,7 @@ static void AgeAircraftCargo(Vehicle *v)
 	if (_age_cargo_skip_counter != 0) return;
 
 	do {
-		if (v->cargo_days != 0xFF) v->cargo_days++;
+		v->cargo.AgeCargo();
 		v = v->next;
 	} while (v != NULL);
 }
@@ -1429,11 +1424,11 @@ static void CrashAirplane(Vehicle *v)
 	InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
 	uint amt = 2;
-	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) amt += v->cargo_count;
+	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) amt += v->cargo.Count();
 	SetDParam(0, amt);
 
-	v->cargo_count = 0;
-	v->next->cargo_count = 0;
+	v->cargo.Truncate(0);
+	v->next->cargo.Truncate(0);
 	const Station *st = GetStation(v->u.air.targetairport);
 	StringID newsitem;
 	if (st->airport_tile == 0) {
@@ -1469,7 +1464,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 	/* Crash the airplane. Remove all goods stored at the station. */
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		st->goods[i].rating = 1;
-		SB(st->goods[i].waiting_acceptance, 0, 12, 0);
+		st->goods[i].cargo.Truncate(0);
 	}
 
 	CrashAirplane(v);

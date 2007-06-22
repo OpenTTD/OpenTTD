@@ -6,6 +6,7 @@ aystar.cpp
 bmp.cpp
 callback_table.cpp
 cargotype.cpp
+cargopacket.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
@@ -101,6 +102,7 @@ articulated_vehicles.h
 aystar.h
 bmp.h
 cargotype.h
+cargopacket.h
 command.h
 console.h
 currency.h

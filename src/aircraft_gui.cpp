@@ -125,7 +125,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw Transfer credits text */
 		{
-			SetDParam(0, v->cargo_feeder_share);
+			SetDParam(0, v->cargo.FeederShare());
 			DrawString(60, 101, STR_FEEDER_CARGO_VALUE, 0);
 		}
 
@@ -152,12 +152,13 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 					y += 14;
 				}
 
-				if (v->cargo_count != 0) {
+				uint cargo_count = v->cargo.Count();
+				if (cargo_count != 0) {
 
 					/* Cargo names (fix pluralness) */
 					SetDParam(0, v->cargo_type);
-					SetDParam(1, v->cargo_count);
-					SetDParam(2, v->cargo_source);
+					SetDParam(1, cargo_count);
+					SetDParam(2, v->cargo.Source());
 					DrawString(60, y, STR_8813_FROM, 0);
 
 					y += 10;

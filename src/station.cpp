@@ -79,6 +79,10 @@ Station::~Station()
 
 	free(speclist);
 	xy = 0;
+
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
+		goods[c].cargo.Truncate(0);
+	}
 }
 
 void* Station::operator new(size_t size)
