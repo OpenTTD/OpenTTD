@@ -182,6 +182,7 @@ spritecache.h
 station.h
 stdafx.h
 string.h
+texteff.hpp
 tgp.h
 thread.h
 tile.h

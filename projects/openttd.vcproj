@@ -645,6 +645,9 @@
 				RelativePath=".\..\src\string.h">
 			</File>
 			<File
+				RelativePath=".\..\src\texteff.hpp">
+			</File>
+			<File
 				RelativePath=".\..\src\tgp.h">
 			</File>
 			<File
