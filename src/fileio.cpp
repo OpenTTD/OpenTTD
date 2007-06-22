@@ -532,6 +532,7 @@ void SanitizeFilename(char *filename)
 			/* The following characters are not allowed in filenames
 			 * on at least one of the supported operating systems: */
 			case ':': case '\\': case '*': case '?': case '/':
+			case '<': case '>': case '|': case '"':
 				*filename = '_';
 				break;
 		}
