@@ -20,7 +20,7 @@ static const byte INITIAL_STATION_RATING = 175;
 struct GoodsEntry {
 	GoodsEntry() :
 		acceptance(false),
-		days_since_pickup(0),
+		days_since_pickup(255),
 		rating(INITIAL_STATION_RATING),
 		last_speed(0),
 		last_age(255)

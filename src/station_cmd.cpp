@@ -2944,7 +2944,7 @@ static void SaveLoad_STNS(Station *st)
 	for (CargoID i = 0; i < num_cargo; i++) {
 		GoodsEntry *ge = &st->goods[i];
 		SlObject(ge, _goods_desc);
-		if (_waiting_acceptance != 0) {
+		if (CheckSavegameVersion(68)) {
 			ge->acceptance = HASBIT(_waiting_acceptance, 15);
 			if (GB(_waiting_acceptance, 0, 12) != 0) {
 				/* Don't construct the packet with station here, because that'll fail with old savegames */
@@ -2958,6 +2958,8 @@ static void SaveLoad_STNS(Station *st)
 				cp->days_in_transit = _cargo_days;
 				cp->feeder_share    = _cargo_feeder_share;
 				ge->cargo.Append(cp);
+			} else {
+				ge->days_since_pickup = 255;
 			}
 		}
 	}
