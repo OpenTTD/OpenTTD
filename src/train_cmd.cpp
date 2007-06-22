@@ -3410,6 +3410,9 @@ void OnNewDay_Train(Vehicle *v)
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 		}
+	} else if (IsTrainEngine(v)) {
+		/* Also age engines that aren't front engines */
+		AgeVehicle(v);
 	}
 }
 
