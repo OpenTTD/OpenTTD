@@ -429,34 +429,24 @@ void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp)
 // Prepare a DoCommand to be send over the network
 void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback)
 {
-	CommandPacket *c = malloc(sizeof(CommandPacket));
-	byte temp_callback;
+	CommandPacket c;
 
-	c->player = _local_player;
-	c->next = NULL;
-	c->tile = tile;
-	c->p1 = p1;
-	c->p2 = p2;
-	c->cmd = cmd;
-	c->callback = 0;
+	c.player = _local_player;
+	c.next = NULL;
+	c.tile = tile;
+	c.p1 = p1;
+	c.p2 = p2;
+	c.cmd = cmd;
+	c.callback = 0;
 
-	temp_callback = 0;
-
-	while (temp_callback < _callback_table_count && _callback_table[temp_callback] != callback)
-		temp_callback++;
-	if (temp_callback == _callback_table_count) {
+	while (c.callback < _callback_table_count && _callback_table[c.callback] != callback)
+		c.callback++;
+	if (c.callback == _callback_table_count) {
 		DEBUG(net, 0) ("[NET] Unknown callback. (Pointer: %p) No callback sent.", callback);
-		temp_callback = 0; /* _callback_table[0] == NULL */
+		c.callback = 0; /* _callback_table[0] == NULL */
 	}
 
-	if (_network_server) {
-		// We are the server, so set the command to be executed next possible frame
-		c->frame = _frame_counter_max + 1;
-	} else {
-		c->frame = 0; // The client can't tell which frame, so just make it 0
-	}
-
-	ttd_strlcpy(c->text, (_cmd_text != NULL) ? _cmd_text : "", lengthof(c->text));
+	ttd_strlcpy(c.text, (_cmd_text != NULL) ? _cmd_text : "", lengthof(c.text));
 
 	if (_network_server) {
 		// If we are the server, we queue the command in our 'special' queue.
@@ -464,30 +454,38 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 		//   client on the server can do everything 1 tick faster than others.
 		//   So to keep the game fair, we delay the command with 1 tick
 		//   which gives about the same speed as most clients.
-		NetworkClientState *cs;
-
-		// And we queue it for delivery to the clients
-		FOR_ALL_CLIENTS(cs) {
-			if (cs->status > STATUS_AUTH) NetworkAddCommandQueue(cs, c);
-		}
-
 		// Only the server gets the callback, because clients should not get them
-		c->callback = temp_callback;
+
+		// We are the server, so set the command to be executed next possible frame
+
+		NetworkClientState *cs;
+		CommandPacket *new_cp = malloc(sizeof(CommandPacket));
+
+		c.frame = _frame_counter_max + 1;
+		*new_cp = c;
+
 		if (_local_command_queue == NULL) {
-			_local_command_queue = c;
+			_local_command_queue = new_cp;
 		} else {
 			// Find last packet
 			CommandPacket *cp = _local_command_queue;
 			while (cp->next != NULL) cp = cp->next;
-			cp->next = c;
+			cp->next = new_cp;
+		}
+
+		c.callback = 0;
+
+		// And we queue it for delivery to the clients
+		FOR_ALL_CLIENTS(cs) {
+			if (cs->status > STATUS_AUTH) NetworkAddCommandQueue(cs, &c);
 		}
 
 		return;
 	}
 
 	// Clients send their command to the server and forget all about the packet
-	c->callback = temp_callback;
-	SEND_COMMAND(PACKET_CLIENT_COMMAND)(c);
+	c.frame = 0;
+	SEND_COMMAND(PACKET_CLIENT_COMMAND)(&c);
 }
 
 // Execute a DoCommand we received from the network

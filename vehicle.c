@@ -2924,7 +2924,7 @@ PalSpriteID GetVehiclePalette(const Vehicle *v)
 {
 	if (v->type == VEH_Train) {
 		return GetEngineColourMap(
-			(v->u.rail.first_engine != INVALID_ENGINE && (IsArticulatedPart(v) || UsesWagonOverride(v))) ?
+			(v->u.rail.first_engine != INVALID_ENGINE && (UsesWagonOverride(v) || (IsArticulatedPart(v) && (RailVehInfo(v->engine_type)->flags & RVI_WAGON) != 0))) ?
 				v->u.rail.first_engine : v->engine_type,
 			v->owner,
 			v->u.rail.first_engine,

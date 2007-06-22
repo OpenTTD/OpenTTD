@@ -53,6 +53,18 @@ static int _scengen_town_size = 2; // depress medium-sized towns per default
 extern void GenerateIndustries(void);
 extern bool GenerateTowns(void);
 
+void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
+{
+	char msg[20];
+	if (!success) return;
+	/* Inform the player of this action */
+	snprintf(msg, sizeof(msg), "%d", p1);
+	if (!_network_server) {
+		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg);
+	} else {
+		NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, NETWORK_SERVER_INDEX);
+	}
+}
 
 void HandleOnEditText(WindowEvent *e)
 {
@@ -75,21 +87,11 @@ void HandleOnEditText(WindowEvent *e)
 	case 3: { /* Give money, you can only give money in excess of loan */
 		const Player *p = GetPlayer(_current_player);
 		int32 money = min(p->money64 - p->current_loan, atoi(e->we.edittext.str) / _currency->rate);
-		char msg[20];
 
 		money = clamp(money, 0, 20000000); // Clamp between 20 million and 0
 
 		// Give 'id' the money, and substract it from ourself
-		if (!DoCommandP(0, money, id, NULL, CMD_GIVE_MONEY | CMD_MSG(STR_INSUFFICIENT_FUNDS))) break;
-
-		// Inform the player of this action
-		snprintf(msg, sizeof(msg), "%d", money);
-
-		if (!_network_server) {
-			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id, msg);
-		} else {
-			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id, msg, NETWORK_SERVER_INDEX);
-		}
+		DoCommandP(0, money, id, CcGiveMoney, CMD_GIVE_MONEY | CMD_MSG(STR_INSUFFICIENT_FUNDS));
 		break;
 	}
 #endif /* ENABLE_NETWORK */
