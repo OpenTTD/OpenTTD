@@ -66,7 +66,9 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		/* Do not create a network server when you (just) have closed one of the game
 		 * creation/load windows for the network server. */
+#ifdef ENABLE_NETWORK
 		if (2 <= e->we.click.widget && e->we.click.widget <= 6) _is_network_server = false;
+#endif /* ENABLE_NETWORK */
 
 		switch (e->we.click.widget) {
 		case 2: ShowGenerateLandscape(); break;

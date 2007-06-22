@@ -838,7 +838,9 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		 * _local_player/_network_playas: what they play as
 		 * cid = requested company/player of joining client */
 		Player *p;
+#ifdef ENABLE_NETWORK
 		uint16 cid = p2; // ClientID
+#endif /* ENABLE_NETWORK */
 
 		/* This command is only executed in a multiplayer game */
 		if (!_networking) return CMD_ERROR;
