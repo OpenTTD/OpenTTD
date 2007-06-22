@@ -442,6 +442,7 @@ static void SdlVideoStop()
 static void SdlVideoMainLoop()
 {
 	uint32 cur_ticks = SDL_CALL SDL_GetTicks();
+	uint32 last_cur_ticks = cur_ticks;
 	uint32 next_tick = cur_ticks + 30;
 	uint32 pal_tick = 0;
 	uint32 mod;
@@ -471,6 +472,8 @@ static void SdlVideoMainLoop()
 		}
 
 		cur_ticks = SDL_CALL SDL_GetTicks();
+		_realtime_tick += cur_ticks - last_cur_ticks;
+		last_cur_ticks = cur_ticks;
 		if (cur_ticks >= next_tick || (_fast_forward && !_pause_game) || cur_ticks < prev_cur_ticks) {
 			next_tick = cur_ticks + 30;
 

@@ -270,10 +270,11 @@ struct Cheats {
 VARDEF Cheats _cheats;
 
 /* NOSAVE: Used in palette animations only, not really important. */
-VARDEF int _timer_counter;
+VARDEF int _palette_animation_counter;
 
 
 VARDEF uint32 _frame_counter;
+VARDEF uint32 _realtime_tick;
 
 VARDEF bool _is_old_ai_player; // current player is an oldAI player? (enables a lot of cheats..)
 

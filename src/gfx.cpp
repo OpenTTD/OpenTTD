@@ -665,8 +665,8 @@ void GfxInitPalettes()
 	_pal_count_dirty = 255;
 }
 
-#define EXTR(p, q) (((uint16)(_timer_counter * (p)) * (q)) >> 16)
-#define EXTR2(p, q) (((uint16)(~_timer_counter * (p)) * (q)) >> 16)
+#define EXTR(p, q) (((uint16)(_palette_animation_counter * (p)) * (q)) >> 16)
+#define EXTR2(p, q) (((uint16)(~_palette_animation_counter * (p)) * (q)) >> 16)
 
 void DoPaletteAnimations()
 {
@@ -681,10 +681,10 @@ void DoPaletteAnimations()
 	Colour old_val[38];
 	uint i;
 	uint j;
-	uint old_tc = _timer_counter;
+	uint old_tc = _palette_animation_counter;
 
 	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
-		_timer_counter = 0;
+		_palette_animation_counter = 0;
 	}
 
 	d = &_cur_palette[217];
@@ -727,7 +727,7 @@ void DoPaletteAnimations()
 
 	/* Radio tower blinking */
 	{
-		byte i = (_timer_counter >> 1) & 0x7F;
+		byte i = (_palette_animation_counter >> 1) & 0x7F;
 		byte v;
 
 		(v = 255, i < 0x3f) ||
@@ -779,7 +779,7 @@ void DoPaletteAnimations()
 	}
 
 	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
-		_timer_counter = old_tc;
+		_palette_animation_counter = old_tc;
 	} else {
 		if (memcmp(old_val, &_cur_palette[217], c * sizeof(*old_val)) != 0) {
 			_pal_first_dirty = 217;

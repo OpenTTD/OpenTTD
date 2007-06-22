@@ -110,6 +110,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	_pause_game = 0;
 	_fast_forward = 0;
 	_tick_counter = 0;
+	_realtime_tick = 0;
 	_date_fract = 0;
 	_cur_tileloop_tile = 0;
 

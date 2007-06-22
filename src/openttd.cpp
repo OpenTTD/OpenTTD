@@ -1099,7 +1099,7 @@ void GameLoop()
 	}
 
 	_caret_timer += 3;
-	_timer_counter += 8;
+	_palette_animation_counter += 8;
 	CursorTick();
 
 #ifdef ENABLE_NETWORK

@@ -685,6 +685,7 @@ static bool QZ_PollEvent()
 static void QZ_GameLoop()
 {
 	uint32 cur_ticks = GetTick();
+	uint32 last_cur_ticks = cur_ticks;
 	uint32 next_tick = cur_ticks + 30;
 	uint32 pal_tick = 0;
 #ifdef _DEBUG
@@ -731,6 +732,8 @@ static void QZ_GameLoop()
 		}
 
 		cur_ticks = GetTick();
+		_realtime_tick += cur_ticks - last_cur_ticks;
+		last_cur_ticks = cur_ticks;
 		if (cur_ticks >= next_tick || (_fast_forward && !_pause_game) || cur_ticks < prev_cur_ticks) {
 			next_tick = cur_ticks + 30;
 

@@ -875,14 +875,12 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 		_tp.percent = percent_table[cls];
 	}
 
-	/* Don't update the screen too often. So update it once in every 200ms.
-	 * However, the _tick_counter increases by 8 every 30ms, so compensate
-	 * for that. */
-	if (!_network_dedicated && _tp.timer != 0 && _timer_counter - _tp.timer < (200 * 8 / 30)) return;
+	/* Don't update the screen too often. So update it once in every 200ms */
+	if (!_network_dedicated && _tp.timer != 0 && _realtime_tick - _tp.timer < 200) return;
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
 	_tp.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_tp.current == 0 ? 0 : _tp.current - 1) / _tp.total;
-	_tp.timer = _timer_counter;
+	_tp.timer = _realtime_tick;
 
 	if (_network_dedicated) {
 		static uint last_percent = 0;

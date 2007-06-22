@@ -1639,8 +1639,8 @@ enum MouseClick {
 	MC_RIGHT,
 	MC_DOUBLE_LEFT,
 
-	MAX_OFFSET_DOUBLE_CLICK = 5,
-	TIME_BETWEEN_DOUBLE_CLICK = 50,
+	MAX_OFFSET_DOUBLE_CLICK = 5,     ///< How much the mouse is allowed to move to call it a double click
+	TIME_BETWEEN_DOUBLE_CLICK = 500, ///< Time between 2 left clicks before it becoming a double click, in ms
 };
 
 void MouseLoop(MouseClick click, int mousewheel)
@@ -1759,12 +1759,12 @@ void HandleMouseEvents()
 	click = MC_NONE;
 	if (_left_button_down && !_left_button_clicked) {
 		click = MC_LEFT;
-		if (double_click_time != 0 && _tick_counter - double_click_time   < TIME_BETWEEN_DOUBLE_CLICK &&
+		if (double_click_time != 0 && _realtime_tick - double_click_time   < TIME_BETWEEN_DOUBLE_CLICK &&
 			  double_click_x != 0    && abs(_cursor.pos.x - double_click_x) < MAX_OFFSET_DOUBLE_CLICK  &&
 			  double_click_y != 0    && abs(_cursor.pos.y - double_click_y) < MAX_OFFSET_DOUBLE_CLICK) {
 			click = MC_DOUBLE_LEFT;
 		}
-		double_click_time = _tick_counter;
+		double_click_time = _realtime_tick;
 		double_click_x = _cursor.pos.x;
 		double_click_y = _cursor.pos.y;
 		_left_button_clicked = true;
