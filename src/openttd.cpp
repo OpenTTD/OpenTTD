@@ -2061,6 +2061,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(69)) {
+		/* In some old savegames a bit was cleared when it should not be cleared */
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_ROAD && (v->u.road.state == 250 || v->u.road.state == 251)) {
+				SETBIT(v->u.road.state, RVS_IS_STOPPING);
+			}
+		}
+	}
+
 	/* Recalculate */
 	Group *g;
 	FOR_ALL_GROUPS(g) {
