@@ -463,7 +463,7 @@ int GetTrainImage(const Vehicle* v, Direction direction)
 
 	base = _engine_sprite_base[img] + ((direction + _engine_sprite_add[img]) & _engine_sprite_and[img]);
 
-	if (v->cargo.Count() >= v->cargo_cap / 2) base += _wagon_full_adder[img];
+	if (v->cargo.Count() >= v->cargo_cap / 2U) base += _wagon_full_adder[img];
 	return base;
 }
 

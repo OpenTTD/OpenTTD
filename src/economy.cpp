@@ -1586,7 +1586,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			if (_patches.gradual_loading) cap = min(cap, load_amount);
 			if (_patches.improved_load) {
 				/* Don't load stuff that is already 'reserved' for other vehicles */
-				cap = min(cargo_left[v->cargo_type], cap);
+				cap = min((uint)cargo_left[v->cargo_type], cap);
 				cargo_left[v->cargo_type] -= cap;
 			}
 

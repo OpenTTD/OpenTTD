@@ -97,7 +97,7 @@ int GetRoadVehImage(const Vehicle* v, Direction direction)
 	}
 
 	image = direction + _roadveh_images[img];
-	if (v->cargo.Count() >= v->cargo_cap / 2) image += _roadveh_full_adder[img];
+	if (v->cargo.Count() >= v->cargo_cap / 2U) image += _roadveh_full_adder[img];
 	return image;
 }
 
