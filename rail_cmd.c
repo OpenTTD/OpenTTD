@@ -201,20 +201,17 @@ static uint32 CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits existin
 		}
 
 		// no special foundation
-		if ((~_valid_tileh_slopes[0][tileh] & rail_bits) == 0)
+		if ((~_valid_tileh_slopes[0][tileh] & rail_bits) == 0) {
 			return 0;
+		} else if (!_patches.build_on_slopes || _is_old_ai_player) {
+			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+		}
 
 		if ((~_valid_tileh_slopes[1][tileh] & rail_bits) == 0 || ( // whole tile is leveled up
 					(rail_bits == TRACK_BIT_X || rail_bits == TRACK_BIT_Y) &&
 					(tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)
 				)) { // partly up
-			if (existing != 0) {
-				return 0;
-			} else if (!_patches.build_on_slopes || _is_old_ai_player) {
-				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-			} else {
-				return _price.terraform;
-			}
+			return (existing != 0) ? 0 : _price.terraform;
 		}
 	}
 	return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);

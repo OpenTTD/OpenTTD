@@ -1611,6 +1611,13 @@ bool AfterLoadGame(void)
 		}
 	}
 
+	{
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Road && v->u.road.state >= 250) SETBIT(v->u.road.state, 2);
+		}
+	}
+
 	return true;
 }
 

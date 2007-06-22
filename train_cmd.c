@@ -1325,6 +1325,7 @@ int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
+	Window *w = NULL;
 	Vehicle *v, *tmp, *first;
 	Vehicle *new_f = NULL;
 	int32 cost = 0;
@@ -1349,7 +1350,8 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		if (v == first && IsFrontEngine(first)) {
-			DeleteWindowById(WC_VEHICLE_VIEW, first->index);
+			w = FindWindowById(WC_VEHICLE_VIEW, first->index);
+			if (w != NULL) DeleteWindow(w);
 		}
 		if (IsLocalPlayer() && (p1 == 1 || !(RailVehInfo(v->engine_type)->flags & RVI_WAGON))) {
 			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Train);
@@ -1416,7 +1418,8 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					first->prev_shared = NULL;
 					first->next_shared = NULL;
 
-					if (IsLocalPlayer()) ShowTrainViewWindow(new_f);
+					/* If we deleted a window then open a new one for the 'new' train */
+					if (IsLocalPlayer() && w != NULL) ShowTrainViewWindow(new_f);
 				}
 			}
 
@@ -1469,6 +1472,15 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 						if (rear != NULL) {
 							cost -= rear->value;
+
+							/* If this is a multiheaded vehicle with nothing
+							 * between the parts, tmp will be pointing to the
+							 * rear part, which is unlinked from the train and
+							 * deleted here. However, because tmp has already
+							 * been set it needs to be updated now so that the
+							 * loop never sees the rear part. */
+							if (tmp == rear) tmp = GetNextVehicle(tmp);
+
 							if (flags & DC_EXEC) {
 								first = UnlinkWagon(rear, first);
 								DeleteDepotHighlightOfVehicle(rear);

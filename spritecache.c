@@ -88,6 +88,7 @@ static void* ReadSprite(SpriteID id)
 {
 	uint num;
 	byte type;
+	uint32 filepos = _sprite_file_pos[id];
 
 	DEBUG(spritecache, 9) ("load sprite %d", id);
 
@@ -95,10 +96,10 @@ static void* ReadSprite(SpriteID id)
 		DEBUG(spritecache, 1) ("Tried to load non-existing sprite #%d. Probable cause: Wrong/missing NewGRFs", id);
 
 		/* SPR_IMG_QUERY is a BIG FAT RED ? */
-		id = SPR_IMG_QUERY;
+		filepos = _sprite_file_pos[SPR_IMG_QUERY];
 	}
 
-	FioSeekToFile(_sprite_file_pos[id]);
+	FioSeekToFile(filepos);
 
 	num  = FioReadWord();
 	type = FioReadByte();

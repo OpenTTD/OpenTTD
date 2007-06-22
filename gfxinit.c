@@ -206,7 +206,7 @@ static const SpriteID trg1idx[] = {
 /* Medium font */
 	   2,   92, // ' ' till 'z'
 	SKIP,   36,
-	 160,  160, // Move æ to the correct position
+	 160,  160, // Move ≈∏ to the correct position
 	  98,   98, // Up arrow
 	 131,  133,
 	SKIP,    1, // skip currency sign
@@ -231,7 +231,7 @@ static const SpriteID trg1idx[] = {
 /* Small font */
 	 226,  316, // ' ' till 'z'
 	SKIP,   36,
-	 384,  384, // Move æ to the correct position
+	 384,  384, // Move ≈∏ to the correct position
 	 322,  322, // Up arrow
 	 355,  357,
 	SKIP,    1, // skip currency sign
@@ -253,7 +253,7 @@ static const SpriteID trg1idx[] = {
 /* Big font */
 	 450,  540, // ' ' till 'z'
 	SKIP,   36,
-	 608,  608, // Move æ to the correct position
+	 608,  608, // Move ≈∏ to the correct position
 	SKIP,    1,
 	 579,  581,
 	SKIP,    1,
@@ -292,47 +292,47 @@ static const SpriteID _openttd_grf_indexes[] = {
 	582, 582,  // euro symbol large size
 	358, 358,  // euro symbol tiny
 	SPR_CURSOR_CANAL, SPR_IMG_FASTFORWARD, // more icons
-	648, 648, // nordic char: Ê
-	616, 616, // nordic char: ∆
-	666, 666, // nordic char: ¯
-	634, 634, // nordic char: ÿ
+	648, 648, // nordic char: √¶
+	616, 616, // nordic char: √Ü
+	666, 666, // nordic char: √∏
+	634, 634, // nordic char: √ò
 	SPR_PIN_UP, SPR_CURSOR_CLONE_TRAIN, // more icons
-	382, 383, // º Ω tiny
-	158, 159, // º Ω medium
-	606, 607, // º Ω large
-	360, 360, // ¶ tiny
-	362, 362, // ® tiny
-	136, 136, // ¶ medium
-	138, 138, // ® medium
-	584, 584, // ¶ large
-	586, 586, // ® large
-	626, 626, // – large
-	658, 658, //  large
-	374, 374, // ¥ tiny
-	378, 378, // ∏ tiny
-	150, 150, // ¥ medium
-	154, 154, // ∏ medium
-	598, 598, // ¥ large
-	602, 602, // ∏ large
-	640, 640, // ﬁ large
-	672, 672, // ˛ large
-	380, 380, // ∫ tiny
-	156, 156, // ∫ medium
-	604, 604, // ∫ large
+	382, 383, // ≈í ≈ì tiny
+	158, 159, // ≈í ≈ì medium
+	606, 607, // ≈í ≈ì large
+	360, 360, // ≈† tiny
+	362, 362, // ≈° tiny
+	136, 136, // ≈† medium
+	138, 138, // ≈° medium
+	584, 584, // ≈† large
+	586, 586, // ≈° large
+	626, 626, // √ê large
+	658, 658, // √∞ large
+	374, 374, // ≈Ω tiny
+	378, 378, // ≈æ tiny
+	150, 150, // ≈Ω medium
+	154, 154, // ≈æ medium
+	598, 598, // ≈Ω large
+	602, 602, // ≈æ large
+	640, 640, // √û large
+	672, 672, // √æ large
+	380, 380, // ¬∫ tiny
+	156, 156, // ¬∫ medium
+	604, 604, // ¬∫ large
 	317, 320, // { | } ~ tiny
 	 93,  96, // { | } ~ medium
 	541, 544, // { | } ~ large
 	SPR_HOUSE_ICON, SPR_HOUSE_ICON,
-	585, 585, // ß large
-	587, 587, // © large
-	592, 592, // Æ large
-	594, 597, // ∞ ± ≤ ≥ large
-	633, 633, // ◊ large
-	665, 665, // ˜ large
+	585, 585, // ¬ß large
+	587, 587, // ¬© large
+	592, 592, // ¬Æ large
+	594, 597, // ¬∞ ¬± ¬≤ ¬≥ large
+	633, 633, // √ó large
+	665, 665, // √∑ large
 	SPR_SELL_TRAIN, SPR_SHARED_ORDERS_ICON,
-	377, 377, // ∑ small
-	153, 153, // ∑ medium
-	601, 601, // ∑ large
+	377, 377, // ¬∑ small
+	153, 153, // ¬∑ medium
+	601, 601, // ¬∑ large
 	END
 };
 
