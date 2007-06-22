@@ -28,8 +28,8 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 void UndrawTextMessage();
 
 /* misc_gui.cpp */
-TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent);
-void UpdateFillingPercent(TextEffectID te_id, uint8 percent);
+TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID color);
+void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID color);
 void HideFillingPercent(TextEffectID te_id);
 
 #endif /* TEXTEFF_HPP */

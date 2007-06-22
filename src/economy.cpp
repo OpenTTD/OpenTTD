@@ -1669,11 +1669,12 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	/* Calculate the loading indicator fill percent and display */
 	if (_patches.loading_indicators && _game_mode != GM_MENU && v->owner == _local_player) {
-		int percent = CalcPercentVehicleFilled(v);
+		StringID percent_up_down = STR_NULL;
+		int percent = CalcPercentVehicleFilled(v, &percent_up_down);
 		if (v->fill_percent_te_id == INVALID_TE_ID) {
-			v->fill_percent_te_id = ShowFillingPercent(v->x_pos, v->y_pos, v->z_pos + 20, percent);
+			v->fill_percent_te_id = ShowFillingPercent(v->x_pos, v->y_pos, v->z_pos + 20, percent, percent_up_down);
 		} else {
-			UpdateFillingPercent(v->fill_percent_te_id, percent);
+			UpdateFillingPercent(v->fill_percent_te_id, percent, percent_up_down);
 		}
 	}
 

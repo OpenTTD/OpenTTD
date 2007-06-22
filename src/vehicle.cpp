@@ -2271,18 +2271,31 @@ bool IsVehicleInDepot(const Vehicle *v)
 /**
  * Calculates how full a vehicle is.
  * @param v The Vehicle to check. For trains, use the first engine.
+ * @param color The string to show depending on if we are unloading or loading
  * @return A percentage of how full the Vehicle is.
  */
-uint8 CalcPercentVehicleFilled(Vehicle *v)
+uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 {
 	int count = 0;
 	int max = 0;
+	int cars = 0;
+	int unloading = 0;
+
+	assert(color != NULL);
 
 	/* Count up max and used */
 	for (; v != NULL; v = v->next) {
 		count += v->cargo.Count();
 		max += v->cargo_cap;
+		if (v->cargo_cap != 0) {
+			unloading += HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
+			cars++;
+		}
 	}
+
+	if (unloading == 0)         *color = STR_PERCENT_UP;
+	else if (cars == unloading) *color = STR_PERCENT_DOWN;
+	else                        *color = STR_PERCENT_UP_DOWN;
 
 	/* Train without capacity */
 	if (max == 0) return 100;

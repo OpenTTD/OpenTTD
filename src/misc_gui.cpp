@@ -644,18 +644,22 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
 	AddTextEffect(STR_FEEDER, pt.x, pt.y, 0x250, TE_RISING);
 }
 
-TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent)
+TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID string)
 {
 	Point pt = RemapCoords(x, y, z);
 
+	assert(string != STR_NULL);
+
 	SetDParam(0, percent);
-	return AddTextEffect(STR_PERCENT_FULL, pt.x, pt.y, 0xFFFF, TE_STATIC);
+	return AddTextEffect(string, pt.x, pt.y, 0xFFFF, TE_STATIC);
 }
 
-void UpdateFillingPercent(TextEffectID te_id, uint8 percent)
+void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID string)
 {
+	assert(string != STR_NULL);
+
 	SetDParam(0, percent);
-	UpdateTextEffect(te_id, STR_PERCENT_FULL);
+	UpdateTextEffect(te_id, string);
 }
 
 void HideFillingPercent(TextEffectID te_id)

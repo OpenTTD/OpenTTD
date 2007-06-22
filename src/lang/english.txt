@@ -3292,8 +3292,12 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle t
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas, maybe in future for eyecandy
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators
 
-STR_PERCENT_FULL_SMALL                                          :{TINYFONT}{WHITE}{NUM}%
-STR_PERCENT_FULL                                                :{WHITE}{NUM}%
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Group {COMMA}
