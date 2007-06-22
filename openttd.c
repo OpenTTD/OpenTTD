@@ -419,6 +419,11 @@ int ttd_main(int argc, char *argv[])
 	if (startyear != INVALID_YEAR) _patches_newgame.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _patches_newgame.generation_seed = generation_seed;
 
+	/* The width and height must be at least 1 pixel, this
+	 * way all internal drawing routines work correctly. */
+	if (_cur_resolution[0] == 0) _cur_resolution[0] = 1;
+	if (_cur_resolution[1] == 0) _cur_resolution[1] = 1;
+
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 
 	// enumerate language files

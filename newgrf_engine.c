@@ -290,6 +290,8 @@ static byte MapAircraftMovementState(const Vehicle *v)
 	const Station *st = GetStation(v->u.air.targetairport);
 	byte amdflag = GetAirportMovingData(st->airport_type, v->u.air.pos)->flag;
 
+	if (st->airport_tile == 0) return AMS_TTDP_FLIGHT_TO_TOWER;
+
 	switch (v->u.air.state) {
 		case HANGAR:
 			/* The international airport is a special case as helicopters can land in

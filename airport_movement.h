@@ -180,7 +180,7 @@ static const AirportMovingData _airport_moving_data_international[51] = {
 	{  193,  104, AMED_NOSPDCLAMP | AMED_SLOWTURN, 0 }, // 32 Fly to landing position in air
 	{  105,  104, AMED_NOSPDCLAMP | AMED_LAND,     0 }, // 33 Going down for land
 	{    3,  104, AMED_NOSPDCLAMP | AMED_BRAKE,    0 }, // 34 Just landed, brake until end of runway
-	{   12,  104, 0,                               0 }, // 35 Just landed, turn around and taxi 1 square
+	{   12,  104, AMED_SLOWTURN,                   0 }, // 35 Just landed, turn around and taxi 1 square
 	{    7,   84, 0,                               0 }, // 36 Taxi from runway to crossing
 	{  -31,  209, AMED_NOSPDCLAMP | AMED_SLOWTURN, 0 }, // 37 Fly around waiting for a landing spot (north-east)
 	{    1,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, 0 }, // 38 Fly around waiting for a landing spot (north-west)

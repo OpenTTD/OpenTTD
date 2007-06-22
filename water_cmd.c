@@ -21,6 +21,7 @@
 #include "water_map.h"
 #include "newgrf.h"
 #include "bridge.h"
+#include "airport.h"
 
 const SpriteID _water_shore_sprites[15] = {
 	0,
@@ -620,6 +621,26 @@ static Vehicle *FindFloodableVehicleOnTile(TileIndex tile)
 	byte z;
 	Vehicle *v;
 
+	if (IsTileType(tile, MP_STATION) && IsAirport(tile)) {
+		uint x, y;
+		const Station *st = GetStationByTile(tile);
+		const AirportFTAClass *airport = GetAirport(st->airport_type);
+		for (x = 0; x < airport->size_x; x++) {
+			for (y = 0; y < airport->size_y; y++) {
+				uint z = 1;
+				tile = TILE_ADDXY(st->airport_tile, x, y);
+				if (st->airport_type == AT_OILRIG) z += 54;
+				if (st->airport_type == AT_HELIPORT) z += 60;
+
+				v = FindVehicleOnTileZ(tile, z);
+				if (v != NULL && (v->vehstatus & VS_CRASHED) == 0) return v;
+			}
+		}
+
+		/* No vehicle could be flooded on this airport anymore */
+		return NULL;
+	}
+
 	if (!IsBridgeTile(tile) || !IsBridgeRamp(tile)) return FindVehicleOnTileZ(tile, 0);
 
 	end = GetOtherBridgeEnd(tile);
@@ -668,6 +689,25 @@ static void FloodVehicle(Vehicle *v)
 			v = u;
 			v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
 			RebuildVehicleLists();
+		} else if (v->type == VEH_Aircraft) {
+			const Station *st;
+			const AirportFTAClass *airport;
+			uint z = 1;
+
+			/* Crashing aircraft are always at z_pos == 1, never on z_pos == 0,
+			 * because that's always the shadow. Except for the heliport, because
+			 * that station has a big z_offset for the aircraft. */
+			if (!IsTileType(v->tile, MP_STATION) || !IsAirport(v->tile) || GetTileMaxZ(v->tile) != 0) return;
+			st = GetStationByTile(v->tile);
+			airport = GetAirport(st->airport_type);
+
+			if (st->airport_type == AT_OILRIG) z += 54;
+			if (st->airport_type == AT_HELIPORT) z += 60;
+
+			if (v->z_pos != z) return;
+
+			pass = 2; // driver
+			if (v->cargo_type == CT_PASSENGERS) pass += v->cargo_count;
 		} else {
 			return;
 		}
