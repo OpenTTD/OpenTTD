@@ -3396,8 +3396,6 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Átkapcs
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Átkapcsolni egyéb épületekre, mint világítótorony és antennák (esetleg egyéb jövőbeni díszek)
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Átlátszó betöltésjelző kapcsolása (ki/be)
 
-STR_PERCENT_FULL_SMALL                                          :{TINYFONT}{WHITE}{NUM}%
-STR_PERCENT_FULL                                                :{WHITE}{NUM}%
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :{COMMA} csoport

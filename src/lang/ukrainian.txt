@@ -3454,8 +3454,6 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Пере
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключити прозорість для споруд, таких як маяки та антенни (може, потім)
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Змінити прозорість індикаторів завантаження
 
-STR_PERCENT_FULL_SMALL                                          :{TINYFONT}{WHITE}{NUM}%
-STR_PERCENT_FULL                                                :{WHITE}{NUM}%
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Група {COMMA}
