@@ -863,12 +863,10 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				NetworkClientInfo *ci = &_network_client_info[cid];
 				ci->client_playas = PLAYER_SPECTATOR;
 				NetworkUpdateClientInfo(ci->client_index);
-			} else
-#endif /* ENABLE_NETWORK */
-			{
+			} else if (_local_player == PLAYER_SPECTATOR) {
 				_network_playas = PLAYER_SPECTATOR;
-				SetLocalPlayer(PLAYER_SPECTATOR);
 			}
+#endif /* ENABLE_NETWORK */
 			break;
 		}
 
