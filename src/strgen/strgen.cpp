@@ -463,7 +463,7 @@ static const CmdStruct _cmd_structs[] = {
 
 	// These are special versions of {STRING1}
 	// The first string includes the second string.
-	{"COMPANY",    EmitSingleChar, SCC_STRING1, 1, 0},
+	{"COMPANY",    EmitSingleChar, SCC_STRING1, 2, 0},
 	{"PLAYERNAME", EmitSingleChar, SCC_STRING1, 1, 0},
 	{"VEHICLE",    EmitSingleChar, SCC_STRING1, 1, 0},
 
