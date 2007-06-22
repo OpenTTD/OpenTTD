@@ -183,6 +183,10 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 	} break;
 
+	case WE_DOUBLE_CLICK:
+		e->we.click.widget = 6;
+		/* Fall through */
+
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 3: { /* listbox */

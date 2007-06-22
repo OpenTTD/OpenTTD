@@ -91,14 +91,14 @@ void HandleButtonClick(Window *w, byte widget)
 static void StartWindowDrag(Window *w);
 static void StartWindowSizing(Window *w);
 
-static void DispatchLeftClickEvent(Window *w, int x, int y)
+static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 {
 	WindowEvent e;
 	const Widget *wi;
 
 	e.we.click.pt.x = x;
 	e.we.click.pt.y = y;
-	e.event = WE_CLICK;
+	e.event = double_click ? WE_DOUBLE_CLICK : WE_CLICK;
 
 	if (w->desc_flags & WDF_DEF_WIDGET) {
 		e.we.click.widget = GetWidgetFromPos(w, x, y);
@@ -1633,7 +1633,17 @@ static void HandleAutoscroll()
 	}
 }
 
-void MouseLoop(int click, int mousewheel)
+enum MouseClick {
+	MC_NONE = 0,
+	MC_LEFT,
+	MC_RIGHT,
+	MC_DOUBLE_LEFT,
+
+	MAX_OFFSET_DOUBLE_CLICK = 5,
+	TIME_BETWEEN_DOUBLE_CLICK = 50,
+};
+
+void MouseLoop(MouseClick click, int mousewheel)
 {
 	int x,y;
 	Window *w;
@@ -1654,7 +1664,7 @@ void MouseLoop(int click, int mousewheel)
 	x = _cursor.pos.x;
 	y = _cursor.pos.y;
 
-	if (click == 0 && mousewheel == 0 && !scrollwheel_scrolling) return;
+	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
 
 	w = FindWindowFromPt(x, y);
 	if (w == NULL) return;
@@ -1680,9 +1690,10 @@ void MouseLoop(int click, int mousewheel)
 	}
 
 	if (vp != NULL) {
-		if (scrollwheel_scrolling) click = 2; // we are using the scrollwheel in a viewport, so we emulate right mouse button
+		if (scrollwheel_scrolling) click = MC_RIGHT; // we are using the scrollwheel in a viewport, so we emulate right mouse button
 		switch (click) {
-			case 1:
+			case MC_DOUBLE_LEFT:
+			case MC_LEFT:
 				DEBUG(misc, 2, "Cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
 				if (_thd.place_mode != 0 &&
 						/* query button and place sign button work in pause mode */
@@ -1700,29 +1711,37 @@ void MouseLoop(int click, int mousewheel)
 				}
 				break;
 
-			case 2:
+			case MC_RIGHT:
 				if (!(w->flags4 & WF_DISABLE_VP_SCROLL)) {
 					_scrolling_viewport = true;
 					_cursor.fix_at = true;
 				}
 				break;
+
+			default:
+				break;
 		}
 	} else {
 		switch (click) {
-			case 1: DispatchLeftClickEvent(w, x - w->left, y - w->top);  break;
+			case MC_DOUBLE_LEFT: DispatchLeftClickEvent(w, x - w->left, y - w->top, true);
+				/* fallthough, and also give a single-click for backwards compatible */
+			case MC_LEFT: DispatchLeftClickEvent(w, x - w->left, y - w->top, false); break;
 			default:
 				if (!scrollwheel_scrolling || w == NULL || w->window_class != WC_SMALLMAP) break;
 				/* We try to use the scrollwheel to scroll since we didn't touch any of the buttons.
 				* Simulate a right button click so we can get started. */
 				/* fallthough */
-			case 2: DispatchRightClickEvent(w, x - w->left, y - w->top); break;
+			case MC_RIGHT: DispatchRightClickEvent(w, x - w->left, y - w->top); break;
 		}
 	}
 }
 
 void HandleMouseEvents()
 {
-	int click;
+	static int double_click_time = 0;
+	static int double_click_x = 0;
+	static int double_click_y = 0;
+	MouseClick click;
 	int mousewheel;
 
 	/*
@@ -1737,14 +1756,22 @@ void HandleMouseEvents()
 	if (!IsGeneratingWorld()) _current_player = _local_player;
 
 	/* Mouse event? */
-	click = 0;
+	click = MC_NONE;
 	if (_left_button_down && !_left_button_clicked) {
+		click = MC_LEFT;
+		if (double_click_time != 0 && _tick_counter - double_click_time   < TIME_BETWEEN_DOUBLE_CLICK &&
+			  double_click_x != 0    && abs(_cursor.pos.x - double_click_x) < MAX_OFFSET_DOUBLE_CLICK  &&
+			  double_click_y != 0    && abs(_cursor.pos.y - double_click_y) < MAX_OFFSET_DOUBLE_CLICK) {
+			click = MC_DOUBLE_LEFT;
+		}
+		double_click_time = _tick_counter;
+		double_click_x = _cursor.pos.x;
+		double_click_y = _cursor.pos.y;
 		_left_button_clicked = true;
-		click = 1;
 		_input_events_this_tick++;
 	} else if (_right_button_clicked) {
 		_right_button_clicked = false;
-		click = 2;
+		click = MC_RIGHT;
 		_input_events_this_tick++;
 	}
 

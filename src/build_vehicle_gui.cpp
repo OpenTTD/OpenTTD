@@ -996,6 +996,14 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 			BuildVehicleClickEvent(w, e);
 			break;
 
+		case WE_DOUBLE_CLICK:
+			if (e->we.click.widget == BUILD_VEHICLE_WIDGET_LIST) {
+				/* When double clicking, we want to buy a vehicle */
+				e->we.click.widget = BUILD_VEHICLE_WIDGET_BUILD;
+				BuildVehicleClickEvent(w, e);
+			}
+			break;
+
 		case WE_ON_EDIT_TEXT: {
 			if (e->we.edittext.str[0] != '\0') {
 				StringID str = STR_NULL;
