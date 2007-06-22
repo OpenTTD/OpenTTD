@@ -395,6 +395,8 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 
 void DrawCatenary(const TileInfo *ti)
 {
+	if (_patches.disable_elrails) return;
+
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
 		TileIndex head = GetNorthernBridgeEnd(ti->tile);
 
@@ -402,7 +404,6 @@ void DrawCatenary(const TileInfo *ti)
 			DrawCatenaryOnBridge(ti);
 		}
 	}
-	if (_patches.disable_elrails) return;
 
 	switch (GetTileType(ti->tile)) {
 		case MP_RAILWAY:
