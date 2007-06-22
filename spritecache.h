@@ -12,17 +12,17 @@ typedef struct Sprite {
 	byte data[VARARRAY_SIZE];
 } Sprite;
 
-const void *GetRawSprite(SpriteID sprite);
+const void *GetRawSprite(SpriteID sprite, bool real_sprite);
 bool SpriteExists(SpriteID sprite);
 
 static inline const Sprite *GetSprite(SpriteID sprite)
 {
-	return GetRawSprite(sprite);
+	return GetRawSprite(sprite, true);
 }
 
 static inline const byte *GetNonSprite(SpriteID sprite)
 {
-	return GetRawSprite(sprite);
+	return GetRawSprite(sprite, false);
 }
 
 void GfxInitSpriteMem(void);

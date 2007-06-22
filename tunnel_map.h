@@ -38,6 +38,7 @@ static inline TransportType GetTunnelTransportType(TileIndex t)
 
 TileIndex GetOtherTunnelEnd(TileIndex);
 bool IsTunnelInWay(TileIndex, uint z);
+bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir);
 
 
 static inline void MakeRoadTunnel(TileIndex t, Owner o, DiagDirection d)

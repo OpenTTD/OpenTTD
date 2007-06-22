@@ -1468,7 +1468,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 		// if last speed is 0, we treat that as if no vehicle has ever visited the station.
 		ge->last_speed = min(t, 255);
-		ge->last_age = _cur_year - v->build_year;
+		ge->last_age = _cur_year - u->build_year;
 
 		// If there's goods waiting at the station, and the vehicle
 		//  has capacity for it, load it on the vehicle.

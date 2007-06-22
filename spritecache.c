@@ -84,7 +84,7 @@ bool SpriteExists(SpriteID id)
 
 static void* AllocSprite(size_t);
 
-static void* ReadSprite(SpriteID id)
+static void* ReadSprite(SpriteID id, bool real_sprite)
 {
 	uint num;
 	byte type;
@@ -104,7 +104,17 @@ static void* ReadSprite(SpriteID id)
 	num  = FioReadWord();
 	type = FioReadByte();
 	if (type == 0xFF) {
-		byte* dest = AllocSprite(num);
+		byte* dest;
+
+		if (real_sprite) {
+			static byte warning_level = 0;
+			DEBUG(misc, warning_level) ("Tried to load non sprite #%d as a real sprite. Probable cause: NewGRF interference", id);
+			warning_level = 6;
+			if (id == SPR_IMG_QUERY) error("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non- sprite?");
+			return (void*)GetSprite(SPR_IMG_QUERY);
+		}
+
+		dest = AllocSprite(num);
 
 		_sprite_ptr[id] = dest;
 		FioReadBlock(dest, num);
@@ -115,6 +125,12 @@ static void* ReadSprite(SpriteID id)
 		uint width  = FioReadWord();
 		Sprite* sprite;
 		byte* dest;
+
+		if (!real_sprite) {
+			static byte warning_level = 0;
+			DEBUG(misc, warning_level) ("Tried to load real sprite #%d as a non sprite. Probable cause: NewGRF interference", id);
+			warning_level = 6;
+		}
 
 		num = (type & 0x02) ? width * height : num - 8;
 		sprite = AllocSprite(sizeof(*sprite) + num);
@@ -424,7 +440,7 @@ static uint RotateSprite(uint s)
 }
 #endif
 
-const void *GetRawSprite(SpriteID sprite)
+const void *GetRawSprite(SpriteID sprite, bool real_sprite)
 {
 	void* p;
 
@@ -444,7 +460,7 @@ const void *GetRawSprite(SpriteID sprite)
 
 	p = _sprite_ptr[sprite];
 	// Load the sprite, if it is not loaded, yet
-	if (p == NULL) p = ReadSprite(sprite);
+	if (p == NULL) p = ReadSprite(sprite, real_sprite);
 	return p;
 }
 

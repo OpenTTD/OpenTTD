@@ -452,6 +452,7 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 	uint end_z;
 	int32 cost;
 	int32 ret;
+	DiagDirection tunnel_in_way_dir;
 
 	_build_tunnel_endtile = 0;
 
@@ -476,6 +477,12 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 	 * position, because of increased-cost-by-length: 'cost += cost >> 3' */
 	cost = 0;
 	delta = TileOffsByDiagDir(direction);
+	if (OtherAxis(DiagDirToAxis(direction)) == AXIS_X) {
+		tunnel_in_way_dir = (TileX(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SW : DIAGDIR_NE;
+	} else {
+		tunnel_in_way_dir = (TileY(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SE : DIAGDIR_NW;
+	}
+
 	end_tile = start_tile;
 	for (;;) {
 		end_tile += delta;
@@ -483,7 +490,7 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (start_z == end_z) break;
 
-		if (!_cheats.crossing_tunnels.value && IsTunnelInWay(end_tile, start_z)) {
+		if (!_cheats.crossing_tunnels.value && IsTunnelInWayDir(end_tile, start_z, tunnel_in_way_dir)) {
 			return_cmd_error(STR_5003_ANOTHER_TUNNEL_IN_THE_WAY);
 		}
 
