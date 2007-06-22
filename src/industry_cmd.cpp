@@ -1643,7 +1643,11 @@ static void ExtChangeIndustryProduction(Industry *i)
 				if (CHANCE16I(20, 1024, r))
 					new_prod -= ((RandomRange(50) + 10) * old_prod) >> 8;
 				if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16))
-					new_prod += ((RandomRange(50) + 10) * old_prod) >> 8;
+					/* old_prod gets stuck at '4' because 60 * 4 / 256 < 1, so in that case
+					 *  increase the odds a bit for increasing, so at least it can escape
+					 *  the production of '4' at some time in the future (instead of being
+					 *  stuck there for ever). */
+					new_prod += ((RandomRange(old_prod == 4 ? 55 : 50) + 10) * old_prod) >> 8;
 
 				new_prod = clamp(new_prod, 0, 255);
 				if (new_prod == old_prod) {
