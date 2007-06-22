@@ -149,3 +149,20 @@ void FioOpenFile(int slot, const char *filename)
 	_fio.handles[slot] = f;
 	FioSeekToFile(slot << 24);
 }
+
+/**
+ * Sanitizes a filename, i.e. removes all illegal characters from it.
+ * @param filename the "\0" terminated filename
+ */
+void SanitizeFilename(char *filename)
+{
+	for (; *filename != '\0'; filename++) {
+		switch (*filename) {
+			/* The following characters are not allowed in filenames
+			 * on at least one of the supported operating systems: */
+			case ':': case '\\': case '*': case '?': case '/': case '<': case '>': case '|': case '"':
+				*filename = '_';
+				break;
+		}
+	}
+}

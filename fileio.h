@@ -15,5 +15,6 @@ void FioOpenFile(int slot, const char *filename);
 void FioReadBlock(void *ptr, uint size);
 void FioSkipBytes(int n);
 bool FioCheckFileExists(const char *filename);
+void SanitizeFilename(char *filename);
 
 #endif /* FILEIO_H */

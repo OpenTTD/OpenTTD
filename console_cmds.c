@@ -928,6 +928,20 @@ DEF_CONSOLE_CMD(ConGetSeed)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConGetDate)
+{
+	YearMonthDay ymd;
+	if (argc == 0) {
+		IConsoleHelp("Returns the current date (day-month-year) of the game. Usage: 'getdate'");
+		return true;
+	}
+
+	ConvertDateToYMD(_date, &ymd);
+	IConsolePrintF(_icolour_def, "Date: %d-%d-%d", ymd.day, ymd.month + 1, ymd.year);
+	return true;
+}
+
+
 DEF_CONSOLE_CMD(ConAlias)
 {
 	IConsoleAlias *alias;
@@ -1484,6 +1498,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("newgame",      ConNewGame);
 	IConsoleCmdRegister("restart",      ConRestart);
 	IConsoleCmdRegister("getseed",      ConGetSeed);
+	IConsoleCmdRegister("getdate",      ConGetDate);
 	IConsoleCmdRegister("quit",         ConExit);
 	IConsoleCmdRegister("resetengines", ConResetEngines);
 	IConsoleCmdRegister("return",       ConReturn);

@@ -1626,6 +1626,7 @@ static const SpriteGroup* CreateGroupFromGroupID(byte feature, byte setid, byte 
 
 	if (feature != _cur_grffile->spriteset_feature) {
 		grfmsg(GMS_WARN, "NewSpriteGroup(0x%02X:0x%02X): Sprite set feature 0x%02X does not match action feature 0x%02X, skipping.",
+				setid, type,
 				_cur_grffile->spriteset_feature, feature);
 		return NULL;
 	}

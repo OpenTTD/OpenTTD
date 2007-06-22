@@ -30,6 +30,7 @@
 #include "tgp.h"
 #include "settings.h"
 #include "date.h"
+#include "fileio.h"
 
 #include "fios.h"
 /* Variables to display file lists */
@@ -1337,6 +1338,7 @@ static void GenerateFileName(void)
 	SetDParam(1, p->name_2);
 	SetDParam(2, _date);
 	GetString(_edit_str_buf, STR_4004, lastof(_edit_str_buf));
+	SanitizeFilename(_edit_str_buf);
 }
 
 extern void StartupEngines(void);
