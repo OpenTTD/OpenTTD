@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :Game options
 STR_02C5_DIFFICULTY_SETTINGS                                    :Difficulty settings
 STR_02C7_CONFIG_PATCHES                                         :Configure patches
 STR_NEWGRF_SETTINGS                                             :NewGRF settings
+STR_TRANSPARENCY_OPTIONS                                        :Transparency options
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Town names displayed
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Station names displayed
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :Subsidies
 STR_02DE_MAP_OF_WORLD                                           :Map of world
 STR_EXTRA_VIEW_PORT                                             :Extra viewport
 STR_SIGN_LIST                                                   :Sign list
-STR_TRANSPARENCY_OPTIONS                                        :Transparency options
 STR_02DF_TOWN_DIRECTORY                                         :Town directory
 STR_TOWN_POPULATION                                             :{BLACK}World population: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}

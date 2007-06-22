@@ -179,15 +179,16 @@ static void MenuClickSettings(int index)
 		case 1: ShowGameDifficulty();   return;
 		case 2: ShowPatchesSelection(); return;
 		case 3: ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
+		case 4: ShowTransparencyToolbar(); break;
 
-		case  5: TOGGLEBIT(_display_opt, DO_SHOW_TOWN_NAMES);    break;
-		case  6: TOGGLEBIT(_display_opt, DO_SHOW_STATION_NAMES); break;
-		case  7: TOGGLEBIT(_display_opt, DO_SHOW_SIGNS);         break;
-		case  8: TOGGLEBIT(_display_opt, DO_WAYPOINTS);          break;
-		case  9: TOGGLEBIT(_display_opt, DO_FULL_ANIMATION);     break;
-		case 10: TOGGLEBIT(_display_opt, DO_FULL_DETAIL);        break;
-		case 11: ToggleTransparency(); break;
-		case 12: TOGGLEBIT(_transparent_opt, TO_SIGNS); break;
+		case  6: TOGGLEBIT(_display_opt, DO_SHOW_TOWN_NAMES);    break;
+		case  7: TOGGLEBIT(_display_opt, DO_SHOW_STATION_NAMES); break;
+		case  8: TOGGLEBIT(_display_opt, DO_SHOW_SIGNS);         break;
+		case  9: TOGGLEBIT(_display_opt, DO_WAYPOINTS);          break;
+		case 10: TOGGLEBIT(_display_opt, DO_FULL_ANIMATION);     break;
+		case 11: TOGGLEBIT(_display_opt, DO_FULL_DETAIL);        break;
+		case 12: ToggleTransparency(); break;
+		case 13: TOGGLEBIT(_transparent_opt, TO_SIGNS); break;
 	}
 	MarkWholeScreenDirty();
 }
@@ -218,7 +219,6 @@ static void MenuClickMap(int index)
 		case 0: ShowSmallMap();            break;
 		case 1: ShowExtraViewPortWindow(); break;
 		case 2: ShowSignList();            break;
-		case 3: ShowTransparencyToolbar(); break;
 	}
 }
 
@@ -791,7 +791,7 @@ static void ToolbarSaveClick(Window *w)
 
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, 4, STR_02DE_MAP_OF_WORLD, 4, 0);
+	PopupMainToolbMenu(w, 4, STR_02DE_MAP_OF_WORLD, 3, 0);
 }
 
 static void ToolbarTownClick(Window *w)
@@ -988,16 +988,16 @@ static void ToolbarOptionsClick(Window *w)
 {
 	uint16 x = 0;
 
-	w = PopupMainToolbMenu(w, 2, STR_02C3_GAME_OPTIONS, 13, 0);
+	w = PopupMainToolbMenu(w, 2, STR_02C3_GAME_OPTIONS, 14, 0);
 
-	if (HASBIT(_display_opt, DO_SHOW_TOWN_NAMES))    SETBIT(x,  5);
-	if (HASBIT(_display_opt, DO_SHOW_STATION_NAMES)) SETBIT(x,  6);
-	if (HASBIT(_display_opt, DO_SHOW_SIGNS))         SETBIT(x,  7);
-	if (HASBIT(_display_opt, DO_WAYPOINTS))          SETBIT(x,  8);
-	if (HASBIT(_display_opt, DO_FULL_ANIMATION))     SETBIT(x,  9);
-	if (HASBIT(_display_opt, DO_FULL_DETAIL))        SETBIT(x, 10);
-	if (GB(_transparent_opt, 1, 7) != 0)      SETBIT(x, 11);
-	if (HASBIT(_transparent_opt, TO_SIGNS))   SETBIT(x, 12);
+	if (HASBIT(_display_opt, DO_SHOW_TOWN_NAMES))    SETBIT(x,  6);
+	if (HASBIT(_display_opt, DO_SHOW_STATION_NAMES)) SETBIT(x,  7);
+	if (HASBIT(_display_opt, DO_SHOW_SIGNS))         SETBIT(x,  8);
+	if (HASBIT(_display_opt, DO_WAYPOINTS))          SETBIT(x,  9);
+	if (HASBIT(_display_opt, DO_FULL_ANIMATION))     SETBIT(x, 10);
+	if (HASBIT(_display_opt, DO_FULL_DETAIL))        SETBIT(x, 11);
+	if (GB(_transparent_opt, 1, 7) != 0)      SETBIT(x, 12);
+	if (HASBIT(_transparent_opt, TO_SIGNS))   SETBIT(x, 13);
 	WP(w,menu_d).checked_items = x;
 }
 
