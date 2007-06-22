@@ -156,6 +156,11 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
+		case WE_DOUBLE_CLICK:
+			if (e->we.click.widget != 3) break;
+			e->we.click.widget = 6;
+			/* Fall through */
+
 		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case 3: {
