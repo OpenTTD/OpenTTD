@@ -40,7 +40,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 	size_t len;
 
 	/* open the file */
-	f = FioFOpenFile(config->full_path);
+	f = FioFOpenFile(config->filename);
 	if (f == NULL) return false;
 
 	/* calculate md5sum */
@@ -59,14 +59,9 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 /* Find the GRFID and calculate the md5sum */
 bool FillGRFDetails(GRFConfig *config, bool is_static)
 {
-	if (!FioCheckFileExists(config->full_path)) {
+	if (!FioCheckFileExists(config->filename)) {
 		config->status = GCS_NOT_FOUND;
 		return false;
-	}
-
-	if (config->filename == NULL) {
-		const char *t = strrchr(config->full_path, PATHSEPCHAR);
-		config->filename = strdup(t != NULL ? t + 1 : config->full_path);
 	}
 
 	/* Find and load the Action 8 information */
@@ -94,7 +89,6 @@ void ClearGRFConfig(GRFConfig **config)
 	/* GCF_COPY as in NOT strdupped/alloced the filename, name and info */
 	if (!HASBIT((*config)->flags, GCF_COPY)) {
 		free((*config)->filename);
-		free((*config)->full_path);
 		free((*config)->name);
 		free((*config)->info);
 
@@ -134,7 +128,6 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_o
 		GRFConfig *c = CallocT<GRFConfig>(1);
 		*c = *src;
 		if (src->filename  != NULL) c->filename  = strdup(src->filename);
-		if (src->full_path != NULL) c->full_path = strdup(src->full_path);
 		if (src->name      != NULL) c->name      = strdup(src->name);
 		if (src->info      != NULL) c->info      = strdup(src->info);
 		if (src->error     != NULL) {
@@ -265,9 +258,7 @@ compatible_grf:
 			 * already a local one, so there is no need to replace it. */
 			if (!HASBIT(c->flags, GCF_COPY)) {
 				free(c->filename);
-				free(c->full_path);
 				c->filename = strdup(f->filename);
-				c->full_path = strdup(f->full_path);
 				memcpy(c->md5sum, f->md5sum, sizeof(c->md5sum));
 				if (c->name == NULL && f->name != NULL) c->name = strdup(f->name);
 				if (c->info == NULL && f->info != NULL) c->info = strdup(f->info);
@@ -314,7 +305,7 @@ static uint ScanPath(const char *path, int basepath_length)
 			if (strcasecmp(ext, ".grf") != 0) continue;
 
 			GRFConfig *c = CallocT<GRFConfig>(1);
-			c->full_path = strdup(filename + basepath_length);
+			c->filename = strdup(filename + basepath_length);
 
 			bool added = true;
 			if (FillGRFDetails(c, false)) {
@@ -341,7 +332,6 @@ static uint ScanPath(const char *path, int basepath_length)
 				/* File couldn't be opened, or is either not a NewGRF or is a
 				 * 'system' NewGRF or it's already known, so forget about it. */
 				free(c->filename);
-				free(c->full_path);
 				free(c->name);
 				free(c->info);
 				free(c);

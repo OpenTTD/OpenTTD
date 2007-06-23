@@ -47,7 +47,6 @@ struct GRFError {
 
 struct GRFConfig : public GRFIdentifier {
 	char *filename;
-	char *full_path;
 	char *name;
 	char *info;
 	GRFError *error;

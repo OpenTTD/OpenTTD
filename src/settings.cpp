@@ -1626,7 +1626,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 
 	for (item = group->item; item != NULL; item = item->next) {
 		GRFConfig *c = CallocT<GRFConfig>(1);
-		c->full_path = strdup(item->name);
+		c->filename = strdup(item->name);
 
 		/* Parse parameters */
 		if (*item->value != '\0') {
@@ -1703,7 +1703,7 @@ static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *li
 		char params[512];
 		GRFBuildParamList(params, c, lastof(params));
 
-		*item = ini_item_alloc(group, c->full_path, strlen(c->full_path));
+		*item = ini_item_alloc(group, c->filename, strlen(c->filename));
 		(*item)->value = (char*)pool_strdup(&ini->pool, params, strlen(params));
 		item = &(*item)->next;
 	}

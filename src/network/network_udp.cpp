@@ -395,7 +395,6 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 		config->status = GCS_NOT_FOUND;
 	} else {
 		config->filename  = f->filename;
-		config->full_path = f->full_path;
 		config->name      = f->name;
 		config->info      = f->info;
 	}
