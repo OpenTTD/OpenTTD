@@ -780,6 +780,7 @@ STR_02C3_GAME_OPTIONS                                           :Opzioni gioco
 STR_02C5_DIFFICULTY_SETTINGS                                    :Impostazioni difficoltà
 STR_02C7_CONFIG_PATCHES                                         :Configura patch
 STR_NEWGRF_SETTINGS                                             :Impostazioni NewGRF
+STR_TRANSPARENCY_OPTIONS                                        :Opzioni trasparenza
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostra nomi città
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostra nomi stazioni
@@ -807,7 +808,6 @@ STR_02DD_SUBSIDIES                                              :Sussidi
 STR_02DE_MAP_OF_WORLD                                           :Mappa del mondo
 STR_EXTRA_VIEW_PORT                                             :Mini visuale extra
 STR_SIGN_LIST                                                   :Elenco cartelli
-STR_TRANSPARENCY_OPTIONS                                        :Opzioni trasparenza
 STR_02DF_TOWN_DIRECTORY                                         :Elenco città
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA}
@@ -1105,6 +1105,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocità rotellina mappa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Metti in pausa all'inizio di una nuova partita: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilizza la lista veicoli avanzata: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Utilizza gli indicatori di caricamento: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Abilita la definizione di tabelle orarie per i veicoli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra le tabelle orarie in tick piuttosto che in giorni: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automezzi per giocatore: {ORANGE}{STRING}
@@ -2609,6 +2612,12 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenzione al
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vai non-stop al Deposito ferroviario di {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenzione non-stop al Deposito di {TOWN}
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaggia senza orario
+STR_TIMETABLE_TRAVEL_FOR                                        :Viaggia per {STRING}
+STR_TIMETABLE_STAY_FOR                                          :e sosta per {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} giorn{P o i}
+STR_TIMETABLE_TICKS                                             :{COMMA} tick
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Diretto al Deposito di {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Diretto al Deposito di {TOWN}, {VELOCITY}
@@ -2651,6 +2660,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Scarica
 STR_REFIT                                                       :{BLACK}Riadatta
 STR_REFIT_TIP                                                   :{BLACK}Selezionare il tipo di carico per il quale riadattare in questo ordine.  Premere CTRL+clic per rimuovere l'istruzione di riadattamento
 STR_REFIT_ORDER                                                 :(Riadatta per {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Orario
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Passa alla visualizzazione della tabella oraria
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordini)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fine degli ordini - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2707,6 +2718,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fa diven
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Inserisce un nuovo ordine prima di quello selezionato, o lo aggiunge alla fine della lista
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fa in modo che l'ordine selezionato forzi il veicolo ad aspettare il carico completo
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fa in modo che l'ordine selezionato forzi il veicolo a scaricare
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tabella oraria - fare clic su un ordine per selezionarlo
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la quantità di tempo che dovrebbe essere impiegata per l'ordine selezionato
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina l'impostazione della quantità di tempo per l'ordine selezionato
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Azzera il contatore del ritardo, in modo che il veicolo sia considerato in orario
 STR_SERVICE_HINT                                                :{BLACK}Ingnora quest'ordine a meno che non sia necessaria una manutenzione
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Costo: {CURRENCY} Peso: {WEIGHT_S}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Costo d'esercizio: {CURRENCY}/anno{}Capacità: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Guasto
@@ -2728,6 +2743,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rinomina
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Impossibile rinominare il tipo di veicolo ferroviario...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fa in modo che l'ordine selezionato forzi il veicolo a trasferire il carico
 STR_886F_TRANSFER                                               :{BLACK}Trasferisci
+STR_CLEAR_TIME                                                  :{BLACK}Elimina tempo
+STR_RESET_LATENESS                                              :{BLACK}Azzera ritardo
 
 STR_TRAIN_STOPPING                                              :{RED}In frenata
 STR_TRAIN_STOPPING_VEL                                          :{RED}In frenata, {VELOCITY}
@@ -2739,6 +2756,13 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuov{G o a} {STRING} disponibile! -  {STRING}
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Impossibile dare un orario al veicolo...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}I veicoli possono attendere solo alle stazioni.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Il veicolo non ferma a questa stazione.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambia tempo
+STR_TIMETABLE_STATUS_ON_TIME                                    :Il veicolo viaggia in orario
+STR_TIMETABLE_STATUS_LATE                                       :Il veicolo viaggia con un ritardo di {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :Il veicolo viaggia con un anticipo di {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automezzo di mezzo
@@ -2951,6 +2975,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Impossib
 STR_GO_TO_AIRPORT_HANGAR                                        :Vai all'Hangar di {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Manutenzione all'Hangar di {STATION}
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tabella oraria)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Disastro Zeppelin a {STATION}!
@@ -3267,6 +3292,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Attiva/d
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Attiva/disattiva la trasparenza delle strutture edificabili come stazioni, depositi, waypoint e catenarie
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Attiva/disattiva la trasparenza dei ponti
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Attiva/disattiva la trasparenza di strutture come fari, antenne e altri futuri oggetti decorativi
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Attiva/disattiva la trasparenza degli indicatori di caricamento
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Gruppo {COMMA}
@@ -3293,7 +3326,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Impossib
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Impossibile aggiungere il veicolo al gruppo...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Impossibile aggiungere veicoli condivisi al gruppo...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gruppi - Fare clic su un gruppo per elencare tutti i suoi veicoli
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gruppi - fare clic su un gruppo per elencare tutti i suoi veicoli
 STR_GROUP_CREATE_TIP                                            :{BLACK}Fare clic per creare un gruppo
 STR_GROUP_DELETE_TIP                                            :{BLACK}Elimina il gruppo selezionato
 STR_GROUP_RENAME_TIP                                            :{BLACK}Rinomina il gruppo selezionato

@@ -780,6 +780,7 @@ STR_02C3_GAME_OPTIONS                                           :Настрой�
 STR_02C5_DIFFICULTY_SETTINGS                                    :Настройки сложности
 STR_02C7_CONFIG_PATCHES                                         :Настройки патчей
 STR_NEWGRF_SETTINGS                                             :Настройки NewGRF
+STR_TRANSPARENCY_OPTIONS                                        :Настройки прозрачности
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Показ названий городов
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Показ названий станций
@@ -807,7 +808,6 @@ STR_02DD_SUBSIDIES                                              :Субсиди�
 STR_02DE_MAP_OF_WORLD                                           :Карта мира
 STR_EXTRA_VIEW_PORT                                             :Доп. окно просмотра
 STR_SIGN_LIST                                                   :Список меток
-STR_TRANSPARENCY_OPTIONS                                        :Настройки прозрачности
 STR_02DF_TOWN_DIRECTORY                                         :Список городов
 STR_TOWN_POPULATION                                             :{BLACK}Население: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Окно просмотра {COMMA}
@@ -985,8 +985,8 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Нево
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Невозможно скопировать список заданий
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Конец общих заданий - -
 
-STR_TRAIN_IS_LOST                                               :{WHITE}Поезд {COMMA} не может найти пути
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Поезд {COMMA} за прошлый год принёс {CURRENCY} убытка
+STR_TRAIN_IS_LOST                                               :{WHITE}Поезд {COMMA} заблудился
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Доход поезда {COMMA} за прошлый год составил {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 
 # Start of order review system.
@@ -1050,6 +1050,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ста�
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Алгоритм навигации NPF (замена оригинального): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Позволять строить остановки на городских дорогах: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Разрешить строительство смежных станций: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Малые аэропорты всегда доступны: {ORANGE}{STRING}
 
@@ -1090,6 +1091,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Мак�
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолетных площадках: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортной: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обратить направление перемещения обзора мышью: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Плавный скроллинг окна просмотра: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Показывать замеры при строительстве: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Показывать окраску транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :нет
@@ -1103,6 +1105,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :не испол
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Скорость смещения обзора прокруткой колеса мыши: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автопауза в начале игры: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Использовать расширенный список транспорта: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Использовать индикатор загрузки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Использовать расписание для транспорта: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Показывать расписание в 'тиках', а не днях: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество автотранспорта на игрока: {ORANGE}{STRING}
@@ -1397,6 +1402,10 @@ STR_NETWORK_LANG_ANY                                            :Любой
 STR_NETWORK_LANG_ENGLISH                                        :Английский
 STR_NETWORK_LANG_GERMAN                                         :Немецкий
 STR_NETWORK_LANG_FRENCH                                         :Французский
+STR_NETWORK_LANG_BRAZILIAN                                      :Бразильский
+STR_NETWORK_LANG_BULGARIAN                                      :Болгарский
+STR_NETWORK_LANG_CHINESE                                        :Китайский
+STR_NETWORK_LANG_CZECH                                          :Чешский
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Состояние сетевой игры
@@ -1560,7 +1569,7 @@ STR_1007_ALREADY_BUILT                                          :{WHITE}...уж�
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Сначала надо удалить рельсы
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Железные дороги
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Электрифицированные ж/д
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Монорельсы
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Монорельс
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Магнитные поезда
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Выберите железнодорожный мост
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Невозможно построить депо здесь...
@@ -1597,22 +1606,38 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/Д путь 
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Сначала удалите дорогу
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Идут дорожные работы...
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Строительство дорог
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Трамваи
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Выберите тип моста
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Не могу проложить дорогу здесь...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Нельзя построить здесь трамвай...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Не могу удалить дорогу...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Не могу удалить этот трамвай...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Направление гаража
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Ориентация трамвайного депо
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Не могу построить гараж здесь...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Не могу построить здесь трамвайное депо...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Не могу построить остановку здесь...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Не могу построить грузовую станцию...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Не могу построить пассажирскую трамвайную остановку...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Не могу построить грузовую трамвайную остановку...
 STR_180A_ROAD_CONSTRUCTION                                      :Строительство дорог
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Трамваи
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Проложить дорогу
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Проложить трамвайные пути
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Построить гараж (для закупки и обслуживания машин)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Построить трамвайное депо (для закупки и обслуживания трамваев)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Построить автобусную остановку
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Построить погрузочную станцию
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Построить пассажирскую трамвайную остановку
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Построить грузовую трамвайную остановку
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Построить мост (авто)
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Построить трамвайный мост
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Построить туннель (авто)
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Построить трамвайный туннель
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Переключение строительства/удаления автомобильной инфраструктуры
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Переключение строительства/удаления трамвайной инфраструктуры
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Выбор ориентации гаража
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Выбор ориентации трамвайного депо
 STR_1814_ROAD                                                   :Дорога
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Дорога с уличным освещением
 STR_1816_TREE_LINED_ROAD                                        :Шоссе
@@ -1984,12 +2009,12 @@ STR_SV_SHIP_NAME                                                :Корабль 
 STR_SV_AIRCRAFT_NAME                                            :Самолет {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :Северный {STRING}
-STR_SV_STNAME_SOUTH                                             :Южный {STRING}
-STR_SV_STNAME_EAST                                              :Восточный {STRING}
-STR_SV_STNAME_WEST                                              :Западный {STRING}
+STR_SV_STNAME_NORTH                                             :Северная {STRING}
+STR_SV_STNAME_SOUTH                                             :Южная {STRING}
+STR_SV_STNAME_EAST                                              :Восточная {STRING}
+STR_SV_STNAME_WEST                                              :Западная {STRING}
 STR_SV_STNAME_CENTRAL                                           :Центральный {STRING}
-STR_SV_STNAME_TRANSFER                                          :Перегонный {STRING}
+STR_SV_STNAME_TRANSFER                                          :Перегонная {STRING}
 STR_SV_STNAME_HALT                                              :{STRING}-привал
 STR_SV_STNAME_VALLEY                                            :Долина {STRING}
 STR_SV_STNAME_HEIGHTS                                           :{STRING}-высотная
@@ -2010,10 +2035,10 @@ STR_SV_STNAME_BUOY_7                                            :{STRING} Буй
 STR_SV_STNAME_BUOY_8                                            :{STRING} Буй 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} Буй 9
 STR_SV_STNAME_ANNEXE                                            :{STRING}-дополнительная
-STR_SV_STNAME_SIDINGS                                           :{STRING}-запасный
+STR_SV_STNAME_SIDINGS                                           :{STRING}-запасная
 STR_SV_STNAME_BRANCH                                            :{STRING}-ветка
-STR_SV_STNAME_UPPER                                             :Верхний {STRING}
-STR_SV_STNAME_LOWER                                             :Нижний {STRING}
+STR_SV_STNAME_UPPER                                             :Верхняя {STRING}
+STR_SV_STNAME_LOWER                                             :Нижняя {STRING}
 STR_SV_STNAME_HELIPORT                                          :Площадка {STRING}
 STR_SV_STNAME_FOREST                                            :Лес {STRING}
 
@@ -2558,6 +2583,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Обслужи�
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ехать в депо {TOWN} без остановки
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Обслужиться в депо {TOWN} без остановки
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Путешествует (не учитывается)
+STR_TIMETABLE_TRAVEL_FOR                                        :Идти до {STRING}
+STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ня ней}
+STR_TIMETABLE_TICKS                                             :{COMMA} тик{P "" а ов}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Следует в депо {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Следует в Депо {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Обслуж. в депо {TOWN}
@@ -2599,6 +2631,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Без �
 STR_REFIT                                                       :{BLACK}Переоб.
 STR_REFIT_TIP                                                   :{BLACK}Выберите тип грузов для переоборудования. CTRL+клик - для удаления.
 STR_REFIT_ORDER                                                 :(Переоборуд. для {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Расписание
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Просмотр расписания
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Задания)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Конец заданий - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2651,6 +2685,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Ехат
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставить новое задание перед выделенным, или в конец списка
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Задать ожидание полной загрузки
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Задать ожидание полной разгрузки
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Расписание - выберите задание.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время для выделенного задания
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Очистить время в выделенном задании
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Сбросить задержку счетчика, так чтобы транспорт прибыл вовремя.
 STR_SERVICE_HINT                                                :{BLACK}Пропустить это задание, если обслуживание не требуется
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Цена обслуж.: {CURRENCY}/год{}Емкость: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Поломка
@@ -2682,6 +2720,13 @@ STR_TRAIN_START_NO_CATENARY                                     :Кто-то у�
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Появился новый {STRING}!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появился новый {STRING}!  -  {STRING}
+
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт может только ждать на станции.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Этот транспорт не останавливается на этой станции.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изм. время
+STR_TIMETABLE_STATUS_ON_TIME                                    :Этот транспорт приходит вовремя
+STR_TIMETABLE_STATUS_LATE                                       :Этот транспорт приходит на  {STRING} позже
+STR_TIMETABLE_STATUS_EARLY                                      :Этот транспорт приходит на  {STRING} раньше
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Машина на пути
@@ -2889,6 +2934,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нова
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Невозможно переоборудовать...
 STR_GO_TO_AIRPORT_HANGAR                                        :Лететь в Ангар {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Сервис в ангаре {STATION}
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Расписание)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Крушение дирижабля в {STATION}!
@@ -3204,6 +3251,8 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Пере
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Переключить прозрачность зданий, которые можно строить игроком. Например -- станции, депо, точки пути и столбы для электричества.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Переключить прозрачность мостов
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключить прозрачность зданий, вроде антенн и маяков.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Переключить прозрачность для индикаторов загрузки
+
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Группа {COMMA}

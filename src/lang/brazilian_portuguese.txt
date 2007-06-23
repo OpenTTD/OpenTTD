@@ -780,6 +780,7 @@ STR_02C3_GAME_OPTIONS                                           :Opções do Jog
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configurações de dificuldade
 STR_02C7_CONFIG_PATCHES                                         :Configurar correções
 STR_NEWGRF_SETTINGS                                             :Configurar NewGRF
+STR_TRANSPARENCY_OPTIONS                                        :Opções de Transparência
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Exibir nomes de cidades
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Exibir nomes de estações
@@ -807,7 +808,6 @@ STR_02DD_SUBSIDIES                                              :Subsídios
 STR_02DE_MAP_OF_WORLD                                           :Mapa mundi
 STR_EXTRA_VIEW_PORT                                             :Visualizador extra
 STR_SIGN_LIST                                                   :Lista de placas
-STR_TRANSPARENCY_OPTIONS                                        :Opções de Transparência
 STR_02DF_TOWN_DIRECTORY                                         :Lista de cidades
 STR_TOWN_POPULATION                                             :{BLACK}População mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Visualizador {COMMA}
@@ -1105,6 +1105,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausar automaticamente ao inicar um novo jogo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Ativar plano de horário para veículos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Exibir plano de horário em tiques ao invés de dias: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de automóveis por jogador: {ORANGE}{STRING}
@@ -1895,6 +1898,7 @@ STR_3804_WATER                                                  :Água
 STR_3805_COAST_OR_RIVERBANK                                     :Costa ou margem
 STR_3806_SHIP_DEPOT                                             :Depósito naval
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Impossível construir na água
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Deve demolir o canal primeiro
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Salvar Jogo
@@ -2610,6 +2614,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenção no
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sem parar para o depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenção no depósito de {TOWN} sem parar
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não progamado)
+STR_TIMETABLE_TRAVEL_FOR                                        :Viajar para {STRING}
+STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} tique{P "" s}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Dirigindo-se ao depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Dirigindo-se ao depósito de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Manutenção no depósito de {TOWN}
@@ -2651,6 +2662,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Descarga
 STR_REFIT                                                       :{BLACK}Readaptar
 STR_REFIT_TIP                                                   :{BLACK}Selecionar a adaptação na ordem atual. CTRL + Clique para remover a instrução
 STR_REFIT_ORDER                                                 :(Readaptar para {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Plano de horário
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Exibe o plano de horário
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2667,6 +2680,7 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Muitas o
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Impossível inserir nova ordem...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Impossível remover esta ordem...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Impossível modificar esta ordem...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Impossível mudar essa ordem
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Impossível pular a ordem atual...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Impossível pular à ordem selecionada...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Impossível mover veículo...
@@ -2706,6 +2720,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem 
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Inserir nova ordem antes da ordem selecionada, ou adicionar no fim da lista
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem selecionada fará com que o veículo espere carregar completamente
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem selecionada forçará o veículo a descarregar
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Plano de horário - selecione uma ordem clicando nela
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mude a quantidade de tempo que a ordem deverá levar
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Reseta a quantidade de tempo para a ordem selecionada
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseta o contador de atraso, fazendo o veículo estar na hora
 STR_SERVICE_HINT                                                :{BLACK}Saltar esta ordem a menos que seja necessário manutenção
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Quebrado
@@ -2727,6 +2745,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomear
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Impossível renomear tipo de veículo ferroviário...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Força o veículo a deixar a carga na ordem selecionada
 STR_886F_TRANSFER                                               :{BLACK}Transferir
+STR_CLEAR_TIME                                                  :{BLACK}Resetar horário
+STR_RESET_LATENESS                                              :{BLACK}Resetar contador de atraso
 
 STR_TRAIN_STOPPING                                              :{RED}Parando
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parando, {VELOCITY}
@@ -2737,6 +2757,14 @@ STR_TRAIN_START_NO_CATENARY                                     :Essa linha não
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novo {STRING} agora disponível!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível!  -  {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Impossível programar veículo...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Veículos só podem aguardar em estações
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Esse veículo não pára nesta estação
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar horário
+STR_TIMETABLE_STATUS_ON_TIME                                    :Esse veículo está no horário
+STR_TIMETABLE_STATUS_LATE                                       :Esse veículo está {STRING} atrasado
+STR_TIMETABLE_STATUS_EARLY                                      :Esse veículo está {STRING} adiantado
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automóvel no caminho
@@ -2779,6 +2807,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrar 
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista de automóveis - clique num automóvel para informações
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construir o veículo selecionado
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Custo: {CURRENCY}{}Velocidade: {VELOCITY}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacidade: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Renomear automóvel
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Impossível renomear automóvel...
@@ -2946,6 +2976,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova cap
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Impossível adaptar aeronave...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ir para o hangar de {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Manutenção no hangar de {STATION}
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Timetable)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Acidente de Zepelim em {STATION}!
@@ -3262,6 +3294,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Alternar
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Alternar transparência para construções como estações, depósitos, pontos de controle e eletrificação da ferrovia
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Alternar transparência para pontes
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Alternar transparência para estruturas como faróis e antenas, talvez no futuro para efeitos visuais
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Altera transparência para os indicadores de carga
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Agrupar {COMMA}

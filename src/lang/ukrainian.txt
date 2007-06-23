@@ -904,6 +904,7 @@ STR_02C3_GAME_OPTIONS                                           :Налашту�
 STR_02C5_DIFFICULTY_SETTINGS                                    :Налаштування складності
 STR_02C7_CONFIG_PATCHES                                         :Розширені налаштування
 STR_NEWGRF_SETTINGS                                             :Нова графіка
+STR_TRANSPARENCY_OPTIONS                                        :Опції прозорості
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Показ назви міст
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Показ назви станцій
@@ -931,7 +932,6 @@ STR_02DD_SUBSIDIES                                              :Субсиді�
 STR_02DE_MAP_OF_WORLD                                           :Карта світу
 STR_EXTRA_VIEW_PORT                                             :Додаткове вікно
 STR_SIGN_LIST                                                   :Список позначень
-STR_TRANSPARENCY_OPTIONS                                        :Опції прозорості
 STR_02DF_TOWN_DIRECTORY                                         :Список міст
 STR_TOWN_POPULATION                                             :{BLACK}Населення світу: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вікно {COMMA}
@@ -1229,6 +1229,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Відкл.
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Швидкість прокрутки колесом миші: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Використовувати покращений список транспорту: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Використовувати індикатори завантаження: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Дозволити розклад руху для транспорту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Показувати розклад в одиницях, а не в днях: {ORANGE}{STRING}
 

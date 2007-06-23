@@ -331,15 +331,15 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tona{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tone{P "" s}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P a es}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P a es}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galó{P "" s}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galó{P "" ns}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :Opcions del Joc
 STR_02C5_DIFFICULTY_SETTINGS                                    :Paràmetres de dificultat
 STR_02C7_CONFIG_PATCHES                                         :Configura pedaços
 STR_NEWGRF_SETTINGS                                             :Configuracions de Newgrf
+STR_TRANSPARENCY_OPTIONS                                        :Opcions de transparència
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostra els noms de les poblacions
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostra els noms de les estacions
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :Subvencions
 STR_02DE_MAP_OF_WORLD                                           :Mapa del món
 STR_EXTRA_VIEW_PORT                                             :Vista extra
 STR_SIGN_LIST                                                   :Llista de senyals
-STR_TRANSPARENCY_OPTIONS                                        :Opcions de transparència
 STR_02DF_TOWN_DIRECTORY                                         :Directori de Poblacions
 STR_TOWN_POPULATION                                             :{BLACK}Població mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
@@ -1103,6 +1103,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocitat del mapa amb la rodeta del ratolí: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Posa en pausa automàticament en començar un joc nou: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilitza la llista de vehicles avançada: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Utilitza indicadors de carregament: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Habilita horaris dels vehicles: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra horaris en marques enlloc de dies: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
@@ -1584,7 +1587,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Via de t
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ja construit
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}S'ha de treure la via primer
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construcció de Ferrocarril
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construcció de Via Electrificada
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construcció de Ferrocarril Elèctric
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construcció de Monorail
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construcció de Maglev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selecciona pont per la via
@@ -1596,7 +1599,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Aquí no
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Aquí no es poden treure les senyals...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Cotxeres de Tren
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construcció de Ferrocarril
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Contrucció de Via Electrificada
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construcció de Ferrocarril Elèctric
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construcció de Monorail
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construcció de Maglev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construeix via de tren
@@ -1629,7 +1632,7 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Primer h
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}S'ha de treure la carretera primer
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Obres en progrés
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcció de Carreteres
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construcció de via de tramvia
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construcció de Tramvies
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecciona un Pont per Carretera
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... les carreteres de sentit únic no poden tenir encreuaments
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Aquí no es pot construir una carretera...
@@ -1645,9 +1648,9 @@ STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}No es po
 STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}No puc construir l'estació de tramvies de passatgers
 STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}No puc construir l'estació de tramvies de càrrega
 STR_180A_ROAD_CONSTRUCTION                                      :Construcció de Carreteres
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Construcció de vies de tramvia
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Construcció de Tramvies
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construeix una secció de carretera
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construeix secció de via de tramvia
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construeix una secció de via de tramvia
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construeix una cotxera (per construir i mantenir vehicles)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construeix cotxeres de tramvies (per construir i revisar tramvies)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Constueix una parada d'autobús
@@ -1751,7 +1754,7 @@ STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Patrocina la re
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Construeix una estàtua del propietari de l'empresa
 STR_204B_FUND_NEW_BUILDINGS                                     :Patrocina nous edificis
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Compra els drets de transport en exclusiva
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Subornar les autoritats locals
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Suborna les autoritats locals
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Inicia una petita campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Inicia una mitjana campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Inicia una gran campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
@@ -1759,7 +1762,7 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construeix una estatua en honor a la teva empresa.{} Cost: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Patrocina la construcció de nous edificis comercials en la població.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compra per 1 any els drets exclusius de transport en la població. La autoritat local només permetrà utilitzar les instal·lacions de la teva empresa de transports als passatgers i les mercaderies.{} Cost: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Subornar les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen!!.{}  Cost: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Suborna les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen!!.{}  Cost: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Caos de trànsit en  {TOWN}!{}{}El programa de rehabilitació dels carrers patrocinat per {COMPANY} porta 6 mesos de misèria als motoristes!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1891,6 +1894,7 @@ STR_3804_WATER                                                  :Aigua
 STR_3805_COAST_OR_RIVERBANK                                     :Costa o marge de riu
 STR_3806_SHIP_DEPOT                                             :Drassana
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...No es pot construir dins l'aigua
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Has de demolir el canal primer
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Desa el Joc
@@ -2606,6 +2610,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manteniment a c
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ves sense parar a les cotxeres de {TOWN}.
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manteniment sense parades a cotxeres de {TOWN}.
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
+STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRING}
+STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} di{P a es}
+STR_TIMETABLE_TICKS                                             :{COMMA} mar{P ca ques}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Cap a cotxeres de {TOWN}.
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Cap a cotxeres de {TOWN}, a {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Revisió a la cotxera de {TOWN}
@@ -2647,6 +2658,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Descarre
 STR_REFIT                                                       :{BLACK}Remodela
 STR_REFIT_TIP                                                   :{BLACK}Selecciona quin tipus de càrrega vols remodelar en aquesta ordre. Control + Clic per eliminar l'ordre de remodelar
 STR_REFIT_ORDER                                                 :(Remodela a {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Horari
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Canvia cap a la vista d'horari
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordres)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fí d'Ordres - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2703,6 +2716,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer sens
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que en l'ordre seleccionada s'esperi a que l'element tingui càrrega total
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obliga en l'ordre seleccionada a descarregar l'element
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari - clica sobre l'ordre per marcar-la.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia la quantitat de temps que l'ordre marcada hauria de prendre
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Esborra la quantitat de temps de l'ordre marcada
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseteja el comptador de retrassos, de manera que el vehicle serà puntual
 STR_SERVICE_HINT                                                :{BLACK}Saltar l'ordre a menys que es necessiti manteniment
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Pes: {WEIGHT_S}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Avariat
@@ -2724,6 +2741,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Reanomen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No es pot reanomenar el tipus d'element del tren...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que l'ordre marcada forci al vehicle a volcar la càrrega
 STR_886F_TRANSFER                                               :{BLACK}Transfereix
+STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
+STR_RESET_LATENESS                                              :{BLACK}Reseteja el comptador de retrassos
 
 STR_TRAIN_STOPPING                                              :{RED}Parant
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a {VELOCITY}
@@ -2734,6 +2753,14 @@ STR_TRAIN_START_NO_CATENARY                                     :Aquesta via no 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nou {STRING} disponible!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nou/Nova {STRING} disponible!  -  {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Impossible establir l'horari del vehicle...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Els vehicles només poden esperar a les estacions.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Aquest vehicle no para en aquesta estació.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia Temps
+STR_TIMETABLE_STATUS_ON_TIME                                    :Actualment aquest vehicle és puntual
+STR_TIMETABLE_STATUS_LATE                                       :Actualment aquest vehicle va {STRING} tard
+STR_TIMETABLE_STATUS_EARLY                                      :Actualment aquest vehicle va {STRING} d'hora
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automòbil en camí
@@ -2945,6 +2972,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova cap
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No es pot remodelar l'aeronau...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ves a l'hangar de {STATION}.
 SERVICE_AT_AIRPORT_HANGAR                                       :Manteniment en l'hangar de {STATION}.
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horari)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Desastre de Zeppelin a {STATION}!
@@ -3261,6 +3290,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activa/D
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activa/Desactiva transparència dels edificis com ara estacions, cotxeres, punts de trobada i catenàries
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activa/Desactiva transparència dels ponts
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activa/Desactiva transparència de les estructures com ara fars i antenes
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Activa/Desactiva la transparència pels indicadors de carregament
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Grup {COMMA}

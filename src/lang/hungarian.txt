@@ -844,6 +844,7 @@ STR_02C3_GAME_OPTIONS                                           :Beállítások
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nehézségi beállítások
 STR_02C7_CONFIG_PATCHES                                         :Foltok beállítása
 STR_NEWGRF_SETTINGS                                             :Newgrf beállítások
+STR_TRANSPARENCY_OPTIONS                                        :Átlátszósági beállítások
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Városnevek mutatása
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Állomásnevek mutatása
@@ -871,7 +872,6 @@ STR_02DD_SUBSIDIES                                              :Támogatások
 STR_02DE_MAP_OF_WORLD                                           :Világtérkép
 STR_EXTRA_VIEW_PORT                                             :Extra látkép
 STR_SIGN_LIST                                                   :Feliratok listája
-STR_TRANSPARENCY_OPTIONS                                        :Átlátszósági beállítások
 STR_02DF_TOWN_DIRECTORY                                         :Városlista
 STR_TOWN_POPULATION                                             :{BLACK}Világnépesség: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}{COMMA}. látkép
@@ -2714,12 +2714,11 @@ STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Menj megállás
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Mindig javítsd a vonatot a {TOWN}i járműtelepen
 
 STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Útipont (időzítetlen)
 STR_TIMETABLE_TRAVEL_FOR                                        :Menjen {STRING} állomásra
 STR_TIMETABLE_STAY_FOR                                          :és maradjon {STRING.t}
 STR_TIMETABLE_DAYS                                              :{COMMA} nap
-STR_TIMETABLE_DAYS.t                                            :{COMMA} napot
 STR_TIMETABLE_TICKS                                             :{COMMA} tick
-STR_TIMETABLE_TICKS.t                                           :{COMMA} tick-et
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Úton {TOWN} járműtelepére
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Úton {TOWN} járműtelepére, {VELOCITY}
@@ -3396,6 +3395,12 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Átkapcs
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Átkapcsolni egyéb épületekre, mint világítótorony és antennák (esetleg egyéb jövőbeni díszek)
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Átlátszó betöltésjelző kapcsolása (ki/be)
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :{COMMA} csoport

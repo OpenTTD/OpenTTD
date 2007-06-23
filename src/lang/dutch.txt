@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :Spelopties
 STR_02C5_DIFFICULTY_SETTINGS                                    :Moeilijkheidsgraad
 STR_02C7_CONFIG_PATCHES                                         :Kies patches
 STR_NEWGRF_SETTINGS                                             :Newgrf instellingen
+STR_TRANSPARENCY_OPTIONS                                        :Doorzichtigheidsopties
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Geef stadsnamen weer
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Geef stationsnamen weer
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :Subsidies
 STR_02DE_MAP_OF_WORLD                                           :Kaart
 STR_EXTRA_VIEW_PORT                                             :Extra kijkvenster
 STR_SIGN_LIST                                                   :Bordenlijst
-STR_TRANSPARENCY_OPTIONS                                        :Doorzichtigheidsopties
 STR_02DF_TOWN_DIRECTORY                                         :Stedenlijst
 STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Kijkvenster {COMMA}
@@ -1103,6 +1103,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Uit
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaart muiswiel snelheid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisch pauzeren wanneer je een nieuw spel start: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik de geavanceerde voertuigenlijst: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Gebruik laad indicatoren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activeer dienstregeling voor voertuigen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon dienstregeling in tikken ipv in dagen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
@@ -2607,6 +2610,12 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Reparatie in {T
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ga zonder tussenstop naar {TOWN} Treindepot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Reparatie zonder tussentop in {TOWN} Treindepot
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
+STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
+STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" en}
+STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" ken}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Op weg naar {TOWN} Trein Depot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Op weg naar {TOWN} Trein Depot, {VELOCITY}
@@ -2649,6 +2658,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Uitladen
 STR_REFIT                                                       :{BLACK}Ombouwen
 STR_REFIT_TIP                                                   :{BLACK}Kies naar welk type vracht ombouwen in deze order. Ctrl-klik om ombouw instructie te verwijderen
 STR_REFIT_ORDER                                                 :(Ombouwen naar {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Dienstregeling
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Schakelaar naar dienstregeling overzicht
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Einde van orders - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2705,6 +2716,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak de 
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan de eind van de lijst
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zorg dat de geselecteerde order het voertuig forceert te wachten voor een volledige belading
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zorg dat de geselecteerde order het voertuig forceert uit te laden
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstregeling - klik op een opdracht om het te selecteren
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de hoeveelheid tijd die de geselecteerde opdracht mag innemen
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de hoeveelheid tijd die de geselecteerde opdracht mag innemen
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset de teller zodat het voertuig toch op tijd is
 STR_SERVICE_HINT                                                :{BLACK}Sla deze order over tenzij een reparatie nodig is
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Prijs: {CURRENCY} Gewicht: {WEIGHT_S}{}Snelheid: {VELOCITY}  Kracht: {POWER}{}Brandstofprijs: {CURRENCY}/jr{}Capaciteit: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Kapot
@@ -2726,6 +2741,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Hernoem 
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan het trein voertuig type niet hernoemen...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forceer het voertuig goederen te dumpen bij geselecteerde order
 STR_886F_TRANSFER                                               :{BLACK}Overladen
+STR_CLEAR_TIME                                                  :{BLACK}Reset de tijd
 
 STR_TRAIN_STOPPING                                              :{RED}Gestopt
 STR_TRAIN_STOPPING_VEL                                          :{RED}Aan het stoppen, {VELOCITY}
@@ -2737,6 +2753,13 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nieuw {STRING} nu beschikbaar!  -  {STRING}
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan geen dienstregeling opzetten voor dit voertuig...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Voertuigen kunnen alleen wachten op stations.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Dit voertuig stopt niet op dit station
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander de tijd
+STR_TIMETABLE_STATUS_ON_TIME                                    :Dit voertuig loopt op schema
+STR_TIMETABLE_STATUS_LATE                                       :Dit voertuig heeft {STRING} vertraging
+STR_TIMETABLE_STATUS_EARLY                                      :Dit voertuig is {STRING} te vroeg
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Wegvoertuig in de weg
@@ -2949,6 +2972,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan vlie
 STR_GO_TO_AIRPORT_HANGAR                                        :Ga naar {STATION} hanger
 SERVICE_AT_AIRPORT_HANGAR                                       :Reperatie bij {STATION} hanger
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Dienstregeling)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelin ongeluk bij {STATION}!
@@ -3265,6 +3289,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Wissel d
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Wissel doorzichtigheid voor gebouwen zoals stations, depots, waypoints en bovenleiding
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Wissel doorzichtigheid voor bruggen
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Wissel doorzichtigheid voor structuren zoals vuurtoren en antennes, in de toekomst misschien voor eyecandy
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Schakel tussen doorzichtigheid voor laad indicatoren
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Groep {COMMA}

@@ -878,6 +878,7 @@ STR_02C3_GAME_OPTIONS                                           :Mängu seaded
 STR_02C5_DIFFICULTY_SETTINGS                                    :Raskusastme seaded
 STR_02C7_CONFIG_PATCHES                                         :Paranduste seaded
 STR_NEWGRF_SETTINGS                                             :Newgrf seaded
+STR_TRANSPARENCY_OPTIONS                                        :Läbipaistvuse valikud
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Näidatavad linnanimed
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Näidatavad jaamanimed
@@ -905,7 +906,6 @@ STR_02DD_SUBSIDIES                                              :Toetused
 STR_02DE_MAP_OF_WORLD                                           :Maailmakaart
 STR_EXTRA_VIEW_PORT                                             :Lisa vaateaken
 STR_SIGN_LIST                                                   :Siltide nimekiri
-STR_TRANSPARENCY_OPTIONS                                        :Läbipaistvuse valikud
 STR_02DF_TOWN_DIRECTORY                                         :Linnade nimistu
 STR_TOWN_POPULATION                                             :{BLACK}Maailma rahvastik: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vaateaken {COMMA}
@@ -1203,6 +1203,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Väljas
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaardi kerimisrulliku kiirus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Mängu isepeatamine uue mängu alustamisel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Kasuta laiendatud sõidukinimekirja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Kasuta laadimisnäidikuid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Luba sõiduplaanide määramine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Kasuta sõiduplaanis päevade asemel tikse: {ORANGE}{STRING}
 
@@ -3389,6 +3390,8 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Vaheta t
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Vaheta läbipaistvust ehitistel nagu: jaamad, depood, vahepunktid ja elektriliinid
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Vaheta sildade läbipaistvust
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Vaheta läbipaistvust rajatistel, nagu: majakad, antennid ja võimalik, et tulevikus ka silmailu
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Vaheta laadimisnäidikute läbipaistvust
+
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Üksus {COMMA}

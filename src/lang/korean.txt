@@ -779,6 +779,7 @@ STR_02C3_GAME_OPTIONS                                           :게임 옵션
 STR_02C5_DIFFICULTY_SETTINGS                                    :난이도 설정
 STR_02C7_CONFIG_PATCHES                                         :패치 구성
 STR_NEWGRF_SETTINGS                                             :NewGRF 설정
+STR_TRANSPARENCY_OPTIONS                                        :투명 옵션
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}도시 이름 표시됨
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}역 이름 표시됨
@@ -806,7 +807,6 @@ STR_02DD_SUBSIDIES                                              :보조금
 STR_02DE_MAP_OF_WORLD                                           :전체 지도 보기
 STR_EXTRA_VIEW_PORT                                             :추가 뷰포인트
 STR_SIGN_LIST                                                   :팻말 목록
-STR_TRANSPARENCY_OPTIONS                                        :투명 옵션
 STR_02DF_TOWN_DIRECTORY                                         :도시 목록
 STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}뷰포인트 {COMMA}
@@ -1104,6 +1104,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :끄기
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}맵 스크롤 속도: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}새로운 게임 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}적재 정도 표시: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 날보다 초로 표시: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}최대 자동차 수: {ORANGE}{STRING}
@@ -2608,6 +2611,12 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :{TOWN} 차량�
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :{TOWN} 차량기지 급행
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :{TOWN} 차량기지 급행 (점검)
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :여행 (시간표 없음)
+STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}로 여행
+STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}에 머무름
+STR_TIMETABLE_DAYS                                              :{COMMA} 일
+STR_TIMETABLE_TICKS                                             :{COMMA} 초
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} 차량기지로 가는 중
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN} 차량기지로 가는 중 ({VELOCITY})
@@ -2650,6 +2659,8 @@ STR_8828_UNLOAD                                                 :{BLACK}모두 �
 STR_REFIT                                                       :{BLACK}개조
 STR_REFIT_TIP                                                   :{BLACK}이 경로에서 어떤 화물을 받을 것인지 선택하십시오. CTRL+클릭은 제거입니다.
 STR_REFIT_ORDER                                                 :({STRING}(으)로 개조)
+STR_TIMETABLE_VIEW                                              :{BLACK}시간표
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}시간표 보기 전환
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (경로)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 경로의 끝 - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2706,6 +2717,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택�
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새로운 경로를 삽입합니다.
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로에서 모든 화물을 가득 싣도록 변경합니다.
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로에서 모든 화물을 전부 내리도록 변경합니다.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하면 선택합니다.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로가 대기하고 있을 시간 변경
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간 초기화
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}늦은 쪽을 초기화, 차량은 제시간으로 운행합니다.
 STR_SERVICE_HINT                                                :{BLACK}점검이 필요하면 이 경로를 건너뜁니다.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}가격: {CURRENCY} 무게: {WEIGHT_S}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}고장
@@ -2727,6 +2742,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}열차 �
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로에서 모든 화물을 내려서 쌓아놓도록 변경합니다.
 STR_886F_TRANSFER                                               :{BLACK}환승
+STR_CLEAR_TIME                                                  :{BLACK}시간 초기화
+STR_RESET_LATENESS                                              :{BLACK}늦은 쪽 초기화
 
 STR_TRAIN_STOPPING                                              :{RED}정지중
 STR_TRAIN_STOPPING_VEL                                          :{RED}{VELOCITY}의 속도로 정지중
@@ -2738,6 +2755,13 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}신형 {STRING} 자동차가 출시되었습니다!  -  {STRING}
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}차량의 시간표를 정할 수 없습니다...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}정거장에서만 기다릴 수 있습니다.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}이 차량은 이 정거장에 서지 않습니다.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간 변경
+STR_TIMETABLE_STATUS_ON_TIME                                    :이 차량은 현재 제시간에 운행하고 있습니다
+STR_TIMETABLE_STATUS_LATE                                       :이 차량은 현재 {STRING} 늦게 운행하고 있습니다
+STR_TIMETABLE_STATUS_EARLY                                      :이 차량은 현재 {STRING} 빨리 운행하고 있습니다
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}중간에 자동차가 있습니다.
@@ -2950,6 +2974,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}항공�
 STR_GO_TO_AIRPORT_HANGAR                                        :{STATION}공항 격납고로 가는 중
 SERVICE_AT_AIRPORT_HANGAR                                       :{STATION}공항 격납고로 점검하러 가는 중
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (시간표)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}{STATION}에서 체펠린 재앙이 발생했습니다!
@@ -3266,6 +3291,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}산업�
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}정거장, 차량기지, 웨이포인트, 연결고리와 같은 건설 가능한 것들에 대한 투명 전환
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}다리 투명 전환
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대와 안테나와 같은 구조물 투명 전환
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}적재 정도 투명 전환
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :그룹 {COMMA}
