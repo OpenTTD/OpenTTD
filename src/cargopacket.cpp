@@ -8,6 +8,9 @@
 #include "cargopacket.h"
 #include "saveload.h"
 
+/** Cache for speeding up lookups in AllocateRaw */
+static uint _first_free_cargo_packet_index;
+
 /**
  * Called if a new block is added to the station-pool
  */
@@ -31,6 +34,7 @@ DEFINE_OLD_POOL(CargoPacket, CargoPacket, CargoPacketPoolNewBlock, CargoPacketPo
 
 void InitializeCargoPackets()
 {
+	_first_free_cargo_packet_index = 0;
 	/* Clean the cargo packet pool and create 1 block in it */
 	CleanPool(&_CargoPacket_pool);
 	AddBlockToPool(&_CargoPacket_pool);
@@ -55,6 +59,7 @@ CargoPacket::CargoPacket(StationID source, uint16 count)
 
 CargoPacket::~CargoPacket()
 {
+	if (this->index < _first_free_cargo_packet_index) _first_free_cargo_packet_index = this->index;
 	this->count = 0;
 }
 
@@ -92,12 +97,13 @@ void CargoPacket::operator delete(void *p, CargoPacket::ID cp_idx)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (cp = GetCargoPacket(0); cp != NULL; cp = (cp->index + 1U < GetCargoPacketPoolSize()) ? GetCargoPacket(cp->index + 1U) : NULL) {
+	for (cp = GetCargoPacket(_first_free_cargo_packet_index); cp != NULL; cp = (cp->index + 1U < GetCargoPacketPoolSize()) ? GetCargoPacket(cp->index + 1U) : NULL) {
 		if (!cp->IsValid()) {
 			CargoPacket::ID index = cp->index;
 
 			memset(cp, 0, sizeof(CargoPacket));
 			cp->index = index;
+			_first_free_cargo_packet_index = cp->index;
 			return cp;
 		}
 	}
