@@ -388,7 +388,8 @@ void IConsolePrint(uint16 color_code, const char *string)
 	str_validate(str);
 
 	if (_network_dedicated) {
-		printf("%s\n", str);
+		fprintf(stdout, "%s\n", str);
+		fflush(stdout);
 		IConsoleWriteToLogFile(str);
 		free(str); // free duplicated string since it's not used anymore
 		return;
