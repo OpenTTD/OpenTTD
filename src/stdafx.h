@@ -154,6 +154,7 @@
 #  pragma warning(disable: 4996)   // 'strdup' was declared deprecated
 #  define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
 # else /* _MSC_VER >= 1400  ( <1400 for MSVC2003) */
+#  pragma warning(disable: 4288)   // nonstandard extension used : 'y' : loop control variable declared in the for-loop is used outside the for-loop scope; it conflicts with the declaration in the outer scope
 #  pragma warning(disable: 4292)   // compiler limit : terminating debug information emission for enum 'StringIdEnum' with member 'STR_801D_COAL_CAR'
 # endif /* _MSC_VER >= 1400 */
 
