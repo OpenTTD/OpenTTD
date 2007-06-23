@@ -184,9 +184,6 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_DOUBLE_CLICK:
-		e->we.click.widget = 6;
-		/* Fall through */
-
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 3: { /* listbox */
@@ -200,7 +197,8 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 				WP(w,def_d).data_1 = y;
 				SetWindowDirty(w);
 			}
-			break;
+			/* Fall through to clicking in case we are double-clicked */
+			if (e->event != WE_DOUBLE_CLICK || y < 0) break;
 		}
 
 		case 6: { /* carry out the action */
