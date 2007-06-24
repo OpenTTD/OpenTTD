@@ -1289,9 +1289,6 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 		if (track & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w, PAL_NONE);
 		if (track & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e, PAL_NONE);
 	}
-
-	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
-
 }
 
 static void DrawSignals(TileIndex tile, TrackBits rails)
@@ -1339,6 +1336,8 @@ static void DrawTile_Track(TileInfo *ti)
 		DrawTrackBits(ti, rails);
 
 		if (HASBIT(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti);
+
+		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails);
 	} else {

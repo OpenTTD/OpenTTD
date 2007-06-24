@@ -252,7 +252,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 		if (f < 15) {
 			/* leveled foundation
 			 * Use the original slope sprites if NW and NE borders should be visible */
-			if (sprite_base  == SPR_SLOPES_BASE - 15) sprite_base = SPR_FOUNDATION_BASE;
+			if (sprite_base == SPR_SLOPES_BASE - 15) sprite_base = SPR_FOUNDATION_BASE;
 
 			AddSortableSpriteToDraw(sprite_base + f, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
 			ti->z += TILE_HEIGHT;
