@@ -252,7 +252,7 @@ protected:
 
 public:
 	/** Helper for pathfinders - get min/max speed on the m_old_tile/m_old_td */
-	int GetSpeedLimit(int *pmin_speed = NULL)
+	int GetSpeedLimit(int *pmin_speed = NULL) const
 	{
 		int min_speed = 0;
 		int max_speed = INT_MAX; // no limit

@@ -213,7 +213,7 @@ public:
 			m_stats_cache_hits++;
 		}
 
-		bool bValid = Yapf().PfCalcCost(n, tf);
+		bool bValid = Yapf().PfCalcCost(n, &tf);
 
 		if (bCached) {
 			Yapf().PfNodeCacheFlush(n);

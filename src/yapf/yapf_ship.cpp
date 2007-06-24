@@ -100,7 +100,7 @@ public:
 	/** Called by YAPF to calculate the cost from the origin to the given node.
 	 *  Calculates only the cost of given node, adds it to the parent node cost
 	 *  and stores the result into Node::m_cost member */
-	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower &tf)
+	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower *tf)
 	{
 		// base tile cost depending on distance
 		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? 10 : 7;

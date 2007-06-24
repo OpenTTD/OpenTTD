@@ -22,6 +22,60 @@ struct CYapfRailSegmentKey
 	FORCEINLINE bool operator == (const CYapfRailSegmentKey& other) const {return m_value == other.m_value;}
 };
 
+/* Enum used in PfCalcCost() to see why was the segment closed. */
+enum EndSegmentReason {
+	/* The following reasons can be saved into cached segment */
+	ESR_DEAD_END = 0,      ///< track ends here
+	ESR_RAIL_TYPE,         ///< the next tile has a different rail type than our tiles
+	ESR_INFINITE_LOOP,     ///< infinite loop detected
+	ESR_SEGMENT_TOO_LONG,  ///< the segment is too long (possible infinite loop)
+	ESR_CHOICE_FOLLOWS,    ///< the next tile contains a choice (the track splits to more than one segments)
+	ESR_DEPOT,             ///< stop in the depot (could be a target next time)
+	ESR_WAYPOINT,          ///< waypoint encountered (could be a target next time)
+	ESR_STATION,           ///< station encountered (could be a target next time)
+
+	/* The following reasons are used only internally by PfCalcCost().
+	*   They should not be found in the cached segment. */
+	ESR_PATH_TOO_LONG,     ///< the path is too long (searching for the nearest depot in the given radius)
+	ESR_FIRST_TWO_WAY_RED, ///< first signal was 2-way and it was red
+	ESR_LOOK_AHEAD_END,    ///< we have just passed the last look-ahead signal
+	ESR_TARGET_REACHED,    ///< we have just reached the destination
+
+	/* Special values */
+	ESR_NONE = 0xFF,          ///< no reason to end the segment here
+};
+
+enum EndSegmentReasonBits {
+	ESRB_NONE = 0,
+
+	ESRB_DEAD_END          = 1 << ESR_DEAD_END,
+	ESRB_RAIL_TYPE         = 1 << ESR_RAIL_TYPE,
+	ESRB_INFINITE_LOOP     = 1 << ESR_INFINITE_LOOP,
+	ESRB_SEGMENT_TOO_LONG  = 1 << ESR_SEGMENT_TOO_LONG,
+	ESRB_CHOICE_FOLLOWS    = 1 << ESR_CHOICE_FOLLOWS,
+	ESRB_DEPOT             = 1 << ESR_DEPOT,
+	ESRB_WAYPOINT          = 1 << ESR_WAYPOINT,
+	ESRB_STATION           = 1 << ESR_STATION,
+
+	ESRB_PATH_TOO_LONG     = 1 << ESR_PATH_TOO_LONG,
+	ESRB_FIRST_TWO_WAY_RED = 1 << ESR_FIRST_TWO_WAY_RED,
+	ESRB_LOOK_AHEAD_END    = 1 << ESR_LOOK_AHEAD_END,
+	ESRB_TARGET_REACHED    = 1 << ESR_TARGET_REACHED,
+
+	/* Additional (composite) values. */
+
+	/* What reasons mean that the target can be fond and needs to be detected. */
+	ESRB_POSSIBLE_TARGET = ESRB_DEPOT | ESRB_WAYPOINT | ESRB_STATION,
+
+	/* What reasons can be stored back into cached segment. */
+	ESRB_CACHED_MASK = ESRB_DEAD_END | ESRB_RAIL_TYPE | ESRB_INFINITE_LOOP | ESRB_SEGMENT_TOO_LONG | ESRB_CHOICE_FOLLOWS | ESRB_DEPOT | ESRB_WAYPOINT | ESRB_STATION,
+
+	/* Reasons to abort pathfinding in this direction. */
+	ESRB_ABORT_PF_MASK = ESRB_DEAD_END | ESRB_PATH_TOO_LONG | ESRB_INFINITE_LOOP | ESRB_FIRST_TWO_WAY_RED,
+};
+
+DECLARE_ENUM_AS_BIT_SET(EndSegmentReasonBits);
+
 /** cached segment cost for rail YAPF */
 struct CYapfRailSegment
 {
@@ -33,14 +87,8 @@ struct CYapfRailSegment
 	int                    m_cost;
 	TileIndex              m_last_signal_tile;
 	Trackdir               m_last_signal_td;
+	EndSegmentReasonBits   m_end_segment_reason;
 	CYapfRailSegment*      m_hash_next;
-	union {
-		byte                 m_flags;
-		struct {
-			bool                   m_end_of_line : 1;
-		} flags_s;
-	} flags_u;
-	byte m_reserve[3];
 
 	FORCEINLINE CYapfRailSegment(const CYapfRailSegmentKey& key)
 		: m_key(key)
@@ -49,10 +97,9 @@ struct CYapfRailSegment
 		, m_cost(-1)
 		, m_last_signal_tile(INVALID_TILE)
 		, m_last_signal_td(INVALID_TRACKDIR)
+		, m_end_segment_reason(ESRB_NONE)
 		, m_hash_next(NULL)
-	{
-		flags_u.m_flags = 0;
-	}
+	{}
 
 	FORCEINLINE const Key& GetKey() const {return m_key;}
 	FORCEINLINE TileIndex GetTile() const {return m_key.GetTile();}
