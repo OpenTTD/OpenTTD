@@ -522,6 +522,15 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 
 	/* slope of end tile must be complementary to the slope of the start tile */
 	if (end_tileh != ComplementSlope(start_tileh)) {
+		/* Some (rail) track bits might be terraformed into the correct direction,
+		 * but that would still leave tracks on foundation. Therefor excavation will
+		 * always fail for rail tiles. On the other hand, for road tiles it might
+		 * succeed when there is only one road bit on the tile, but then that road
+		 * bit is removed leaving a clear tile.
+		 * This therefor preserves the behaviour that half road tiles are always removable.
+		 */
+		if (IsTileType(end_tile, MP_RAILWAY)) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+
 		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
 		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
 	} else {
