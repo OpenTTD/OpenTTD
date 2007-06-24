@@ -424,7 +424,6 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			/* Write back the segment information so it can be reused the next time. */
 			segment.m_cost = segment_cost;
 			segment.m_end_segment_reason = end_segment_reason & ESRB_CACHED_MASK;
-			assert(segment.m_end_segment_reason != ESRB_NONE);
 			/* Save end of segment back to the node. */
 			n.SetLastTileTrackdir(cur.tile, cur.td);
 		}
