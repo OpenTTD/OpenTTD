@@ -282,13 +282,11 @@ static void DrawTile_Industry(TileInfo *ti)
 	z = ti->z;
 	/* Add bricks below the industry? */
 	if (ti->tileh != SLOPE_FLAT) {
-		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, PAL_NONE, ti->x, ti->y, 16, 16, 7, z);
-		AddChildSpriteScreen(image, pal, 31, 1);
+		DrawFoundation(ti, ti->tileh);
 		z += TILE_HEIGHT;
-	} else {
-		/* Else draw regular ground */
-		DrawGroundSprite(image, pal);
 	}
+
+	DrawGroundSprite(image, pal);
 
 	/* Add industry on top of the ground? */
 	image = dits->building.sprite;
