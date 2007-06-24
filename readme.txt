@@ -186,8 +186,8 @@ MorphOS:
   libpng and freetype2 developer files.
 
 OS/2:
-  Open Watcom C/C++ 1.3 or later is required to build the OS/2 version. See the
-  docs/Readme_OS2.txt file for more information.
+  A comprehensive GNU build environment is required to build the OS/2 version.
+  See the docs/Readme_OS2.txt file for more information.
 
 
 8.0) Translating:

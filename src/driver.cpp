@@ -64,7 +64,7 @@ static const DriverDesc _music_driver_descs[] = {
 #if defined(LIBTIMIDITY)
 	M("libtimidity", "LibTimidity MIDI Driver", &_libtimidity_music_driver),
 #endif /* LIBTIMIDITY */
-#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(PSP)
+#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(__OS2__) && !defined(PSP)
 	M("extmidi", "External MIDI Driver",    &_extmidi_music_driver),
 #endif
 #endif

@@ -12,6 +12,7 @@
 #include "functions.h"
 #include "macros.h"
 #include "fileio.h"
+#include "fios.h" // opendir/readdir/closedir
 
 #include <dirent.h>
 #include <unistd.h>
@@ -124,7 +125,7 @@ bool FiosIsHiddenFile(const struct dirent *ent)
 	return ent->d_name[0] == '.';
 }
 
-void ShowInfo(const unsigned char *str)
+void ShowInfo(const char *str)
 {
 	HAB hab;
 	HMQ hmq;
@@ -134,14 +135,14 @@ void ShowInfo(const unsigned char *str)
 	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
 
 	// display the box
-	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, str, (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_INFORMATION);
+	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, (const unsigned char *)str, (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_INFORMATION);
 
 	// terminate PM env.
 	WinDestroyMsgQueue(hmq);
 	WinTerminate(hab);
 }
 
-void ShowOSErrorBox(const unsigned char *buf)
+void ShowOSErrorBox(const char *buf)
 {
 	HAB hab;
 	HMQ hmq;
@@ -151,7 +152,7 @@ void ShowOSErrorBox(const unsigned char *buf)
 	hmq = WinCreateMsgQueue((hab = WinInitialize(0)), 0);
 
 	// display the box
-	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, buf, (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_ERROR);
+	rc = WinMessageBox(HWND_DESKTOP, HWND_DESKTOP, (const unsigned char *)buf, (const unsigned char *)"OpenTTD", 0, MB_OK | MB_MOVEABLE | MB_ERROR);
 
 	// terminate PM env.
 	WinDestroyMsgQueue(hmq);
