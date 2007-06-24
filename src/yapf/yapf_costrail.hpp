@@ -247,7 +247,6 @@ public:
 		 *    - penalty for too long or too short platform on the destination station
 		 */
 		int transition_cost = 0;
-		int tile_cost = 0;
 		int extra_cost = 0;
 
 		/* Segment: one or more tiles connected by contiguous tracks of the same type.
