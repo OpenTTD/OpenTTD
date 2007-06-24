@@ -134,7 +134,7 @@ static void ChangeWorkingDirectory(char *exe)
 	}
 }
 
-void ShowInfo(const unsigned char *str)
+void ShowInfo(const char *str)
 {
 	HAB hab;
 	HMQ hmq;

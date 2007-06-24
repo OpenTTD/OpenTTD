@@ -50,6 +50,9 @@ To enable music, start OpenTTD with the command line:
 If I hear enough responses that both music and sound work together (it might
 just be my system), I'll have the defaults changed.
 
+Please note also that the GCC version does not currently support the MCI MIDI
+system.
+
 A NOTE ABOUT DEDICATED MULTIPLAYER SERVERS
 ------------------------------------------
 
@@ -74,8 +77,16 @@ may help to set one up (although some of the links from that page are broken):
 
    http://www.mozilla.org/ports/os2/gccsetup.html
 
+Alternatively, Paul Smedley's ready-to-go GCC build environment has been known to
+successfully build the game:
+
+   http://www.smedley.info/os2ports/index.php?page=build-environment
+
 To build, you should, if your environment is set up well enough, be able to just
 type `./configure' (or `sh configure' if you're using the OS/2 shell) and `make'.
+
+You may have to manually specify `--os OS2' on the configure command line, as
+configure cannot currently detect OS/2 manually.
 
 A note on Open Watcom
 ---------------------
@@ -122,4 +133,4 @@ issues, see the Contacting section of readme.txt.
 
 Thanks to Paul Smedley for his help with getting OpenTTD to compile under GCC on OS/2.
 
-- Owen Rudge, 8th January 2007
+- Owen Rudge, 24th June 2007

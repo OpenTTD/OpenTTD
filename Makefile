@@ -843,8 +843,12 @@ ifdef WIN32
   SRCS += sound/win32_s.c
   SRCS += video/win32_v.c
 else
-  SRCS += unix.c
-  SRCS += music/extmidi.c
+  ifdef OS2
+    SRCS += os2.c
+  else
+    SRCS += unix.c
+    SRCS += music/extmidi.c
+  endif
 endif
 
 ifdef OSX

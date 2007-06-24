@@ -58,7 +58,7 @@ static const DriverDesc _music_driver_descs[] = {
 	M("qt",      "QuickTime MIDI Driver",   &_qtime_music_driver),
 #endif
 #ifdef UNIX
-#if !defined(__MORPHOS__) && !defined(__AMIGA__)
+#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(__OS2__)
 	M("extmidi", "External MIDI Driver",    &_extmidi_music_driver),
 #endif
 #endif
