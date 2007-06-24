@@ -1004,7 +1004,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		 * it doesn't disappear behind it
 		 */
 		AddSortableSpriteToDraw(
-			image, pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 0 : 1, ti->z
+			image, pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 0 : 8, ti->z
 		);
 
 		if (GetBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
