@@ -1908,6 +1908,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}드라�
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}게임 저장 실패{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}파일을 삭제할 수 없음
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}게임 불러오기 실패{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :내부 오류: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :손상된 세이브 게임 - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :상위 버젼의 세이브 게임입니다
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :파일을 읽을 수 없습니다
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :파일을 쓸 수 없습니다
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}드라이프, 폴더, 저장된 게임 파일의 목록입니다
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}저장될 세이브 파일의 이름입니다.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}선택된 세이브 파일을 삭제합니다.
@@ -2720,7 +2725,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택�
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하면 선택합니다.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로가 대기하고 있을 시간 변경
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간 초기화
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}늦은 쪽을 초기화, 차량은 제시간으로 운행합니다.
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}지각 카운터 초기화, 차량은 제시간으로 운행합니다.
 STR_SERVICE_HINT                                                :{BLACK}점검이 필요하면 이 경로를 건너뜁니다.
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}가격: {CURRENCY} 무게: {WEIGHT_S}{}속도: {VELOCITY}  힘: {POWER}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}고장
@@ -2743,7 +2748,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}차량 �
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로에서 모든 화물을 내려서 쌓아놓도록 변경합니다.
 STR_886F_TRANSFER                                               :{BLACK}환승
 STR_CLEAR_TIME                                                  :{BLACK}시간 초기화
-STR_RESET_LATENESS                                              :{BLACK}늦은 쪽 초기화
+STR_RESET_LATENESS                                              :{BLACK}지각 카운터 초기화
 
 STR_TRAIN_STOPPING                                              :{RED}정지중
 STR_TRAIN_STOPPING_VEL                                          :{RED}{VELOCITY}의 속도로 정지중

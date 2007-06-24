@@ -820,6 +820,7 @@ STR_02C3_GAME_OPTIONS                                           :Možnosti igre
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavitve težavnosti
 STR_02C7_CONFIG_PATCHES                                         :Urejanje popravkov
 STR_NEWGRF_SETTINGS                                             :NewGRF nastavitve
+STR_TRANSPARENCY_OPTIONS                                        :Nastavitve prozornega pogleda
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Imena mest prikazana
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Imena postaj prikazana
@@ -847,7 +848,6 @@ STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Zemljevid sveta
 STR_EXTRA_VIEW_PORT                                             :Dodaten pogled
 STR_SIGN_LIST                                                   :Seznam napisov
-STR_TRANSPARENCY_OPTIONS                                        :Nastavitve prozornega pogleda
 STR_02DF_TOWN_DIRECTORY                                         :Imenik mest
 STR_TOWN_POPULATION                                             :{BLACK}Svetovno prebivalstvo: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
@@ -1145,6 +1145,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Izklopljeno
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Hitrost premika s kolescem miške: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Avtomatsko pavziraj ob zagonu nove igre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uporabi napreden seznam vozil: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Uporabi pregledno polnenje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Omogoči časovne tabele vozil: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikaz časovnih tabel v pikah namesto dneh: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Največ vlakov na igralca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Največ cestnih vozil na igralca: {ORANGE}{STRING}
@@ -2687,6 +2690,12 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Na servis v {TO
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Pojdi brez postanka do garaže {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non stop na servis v {TOWN} železniško garažo
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez časovnih tabel)
+STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
+STR_TIMETABLE_STAY_FOR                                          :in ostani za {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} d{P an neva i i}
+STR_TIMETABLE_TICKS                                             :{COMMA} pik{P a i e ""}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Pelje v {TOWN} železniško garažo
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Pelje v {TOWN} železniško garažo, {VELOCITY}
@@ -2729,6 +2738,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Raztovor
 STR_REFIT                                                       :{BLACK}Predelaj
 STR_REFIT_TIP                                                   :{BLACK}Izberi predelavo za vrsto tovora, ki ga želiš. CTRL + klik za odstranitev ukaza predelave
 STR_REFIT_ORDER                                                 :(Predelaj za {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Časovna tabela
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Preklop na pogled časovnih tabel
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ukazi)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec ukazov - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2785,6 +2796,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi 
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vstavi nov ukaz pred izbranega ali pa ga dodaj na koncu seznama
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz, naj vozilo čaka na polno obremenitev
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz, naj se vozilo v celoti raztovori
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Časovna tabela - clikni na ukaz za ga označit.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Spremeni čas, ki naj bi ga označeni ukaz porabil
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Počisti čas za označen ukaz
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetiraj števec zamud, da bodo vozila točna
 STR_SERVICE_HINT                                                :{BLACK}Preskoči ta ukaz, razen če je potreben servis
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Teža: {WEIGHT_S}{}Hitrost: {VELOCITY}  Moč: {POWER}{}Cena delovanja: {CURRENCY}/leto{}Zmogljivost: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}V okvari
@@ -2806,6 +2821,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ni mogoče preimenovati železniškega vozila ...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Nastavi označen ukaz, naj prisili vozilo, da se raztovori
 STR_886F_TRANSFER                                               :{BLACK}Pretovori
+STR_CLEAR_TIME                                                  :{BLACK}Počisti čas
+STR_RESET_LATENESS                                              :{BLACK}Resetiraj  Late Counter
 
 STR_TRAIN_STOPPING                                              :{RED}Se ustavlja
 STR_TRAIN_STOPPING_VEL                                          :{RED}Se ustavlja, {VELOCITY}
@@ -2817,6 +2834,13 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo! {STRING} sedaj na razpolago!  -  {STRING}
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nemogoče določiti časa vozilu...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozila lahko čakajo le na postajah.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}To vozilo se ne ustavlja na tej postaji.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Spremeni čas
+STR_TIMETABLE_STATUS_ON_TIME                                    :To vozilo trenutno vozi po točnem času
+STR_TIMETABLE_STATUS_LATE                                       :To vozilo zamuja za  {STRING} .
+STR_TIMETABLE_STATUS_EARLY                                      :To vozilo prehiteva za {STRING} .
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestno vozilo na poti
@@ -3029,6 +3053,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ni mogo�
 STR_GO_TO_AIRPORT_HANGAR                                        :Pojdi v {STATION} hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Na servisiranje v {STATION} Hangar
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Časovna tabela)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Nesreča cepelina na letališču {STATION}!
@@ -3345,6 +3370,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Prozoren
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Prozoren ali navaden pogled ostalih objektov kot so postaje, garaže...
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prozoren ali navaden pogled mostov
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki...
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Preklop na prosojnost za prikaz polnenja
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Skupina {COMMA}

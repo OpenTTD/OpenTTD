@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :遊戲選項
 STR_02C5_DIFFICULTY_SETTINGS                                    :難易設定
 STR_02C7_CONFIG_PATCHES                                         :設置修正
 STR_NEWGRF_SETTINGS                                             :NewGRF 設定
+STR_TRANSPARENCY_OPTIONS                                        :透明度選項
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}顯示市鎮名稱
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}顯示車站/機場/碼頭名稱
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :補助資訊
 STR_02DE_MAP_OF_WORLD                                           :世界地圖
 STR_EXTRA_VIEW_PORT                                             :打開新視野
 STR_SIGN_LIST                                                   :標誌清單
-STR_TRANSPARENCY_OPTIONS                                        :透明度選項
 STR_02DF_TOWN_DIRECTORY                                         :市鎮索引
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}視野 {COMMA}
@@ -1089,6 +1089,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}車站�
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}直升機於直升機台自動維修：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}地形工具列與路軌/道路/碼頭建設/機場建設合併：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}倒轉滾動棒方向：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}視野平滑移動：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}使用某些建設工具時顯示量度提示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}顯示公司標記：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :不顯示
@@ -1102,6 +1103,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :關閉
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}滾輪地圖捲動速度： {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}自動在開始新遊戲時暫停：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用進階載具名單： {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}使用載入指示：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}啟用運具時刻表功能：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 為單位而不是日：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家可擁有列車數目：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}每位玩家可擁有車輛數目：{ORANGE}{STRING}
@@ -1396,6 +1400,31 @@ STR_NETWORK_LANG_ANY                                            :不限
 STR_NETWORK_LANG_ENGLISH                                        :英文
 STR_NETWORK_LANG_GERMAN                                         :德文
 STR_NETWORK_LANG_FRENCH                                         :法文
+STR_NETWORK_LANG_BRAZILIAN                                      :巴西
+STR_NETWORK_LANG_BULGARIAN                                      :保加利亞語
+STR_NETWORK_LANG_CHINESE                                        :中文
+STR_NETWORK_LANG_CZECH                                          :捷克語
+STR_NETWORK_LANG_DANISH                                         :丹麥語
+STR_NETWORK_LANG_DUTCH                                          :荷蘭語
+STR_NETWORK_LANG_ESPERANTO                                      :世界語
+STR_NETWORK_LANG_FINNISH                                        :芬蘭語
+STR_NETWORK_LANG_HUNGARIAN                                      :匈牙利
+STR_NETWORK_LANG_ICELANDIC                                      :冰島語
+STR_NETWORK_LANG_ITALIAN                                        :義大利語
+STR_NETWORK_LANG_JAPANESE                                       :日文
+STR_NETWORK_LANG_KOREAN                                         :韓文
+STR_NETWORK_LANG_LITHUANIAN                                     :立陶宛語
+STR_NETWORK_LANG_NORWEGIAN                                      :挪威語
+STR_NETWORK_LANG_POLISH                                         :波蘭語
+STR_NETWORK_LANG_PORTUGUESE                                     :葡萄牙語
+STR_NETWORK_LANG_ROMANIAN                                       :羅馬尼亞語
+STR_NETWORK_LANG_RUSSIAN                                        :俄語
+STR_NETWORK_LANG_SLOVAK                                         :斯洛法克語
+STR_NETWORK_LANG_SLOVENIAN                                      :斯洛法尼亞語
+STR_NETWORK_LANG_SPANISH                                        :西班牙語
+STR_NETWORK_LANG_SWEDISH                                        :瑞典語
+STR_NETWORK_LANG_TURKISH                                        :土耳其語
+STR_NETWORK_LANG_UKRAINIAN                                      :烏克蘭語
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}連線遊戲大廳
@@ -1589,6 +1618,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :有一般號誌
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :有入口號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :有出口號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :有綜合號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :有一般號誌及入口號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :有一般號誌及出口號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :有一般號誌及綜合號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :有入口號誌及出口號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :有入口號誌及綜合號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :有出口號誌及綜合號誌的鐵軌
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}必須先移除火車站
 
 
@@ -1599,6 +1634,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}道路�
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}鋪設道路
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}鋪設電車軌
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}選擇道路橋樑
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... 單向的道路不能有交叉點
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}不能在此鋪設道路...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}不可以在這裏鋪設電車軌...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}不能從此移除道路...
@@ -1858,6 +1894,7 @@ STR_3804_WATER                                                  :水
 STR_3805_COAST_OR_RIVERBANK                                     :海岸或河邊
 STR_3806_SHIP_DEPOT                                             :船塢
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...不能建在水域
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}必須先移除運河
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}儲存遊戲
@@ -2271,6 +2308,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :貨船
 STR_LIVERY_HELICOPTER                                           :直升機
 STR_LIVERY_SMALL_PLANE                                          :小飛機
 STR_LIVERY_LARGE_PLANE                                          :大飛機
+STR_LIVERY_PASSENGER_TRAM                                       :客運輕軌
+STR_LIVERY_FREIGHT_TRAM                                         :貨運輕軌
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}顯示通用配色
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}顯示鐵道配色
@@ -2549,7 +2588,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :磁浮機車頭
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} 鐵道機廠
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶祝 . . .{}首輛列車抵達 {STATION}！
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛列車抵達 {STATION}！
 STR_8802_DETAILS                                                :{WHITE}{STRING} (詳細資料)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}前方有列車
 STR_8804                                                        :{SETX 10}{COMMA}：{STRING} {STRING}
@@ -2570,6 +2609,13 @@ STR_GO_TO_TRAIN_DEPOT                                           :前往 {TOWN} �
 STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 機廠維護
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :前往 {TOWN} 機廠 中途不停
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :在 {TOWN} 機廠維護 中途不停
+
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :漫遊 (無時刻表)
+STR_TIMETABLE_TRAVEL_FOR                                        :通行於 {STRING}
+STR_TIMETABLE_STAY_FOR                                          :並等待 {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} 日
+STR_TIMETABLE_TICKS                                             :{COMMA} tick
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}正前往 {TOWN} 機廠
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}正前往 {TOWN} 機廠, {VELOCITY}
@@ -2612,6 +2658,8 @@ STR_8828_UNLOAD                                                 :{BLACK}卸載
 STR_REFIT                                                       :{BLACK}改裝
 STR_REFIT_TIP                                                   :{BLACK}選擇這個指令要改裝的酬載種類。按住 CTRL 點選可移除改裝指令
 STR_REFIT_ORDER                                                 :(改裝成 {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}時刻表
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}切換至時刻表檢視模式
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (指令)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 指令結束 - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2628,6 +2676,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}指令�
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}無法插入新指令...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}無法刪除這個指令...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}無法修改這個指令...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}無法移動這個命令...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}無法跳過目前的命令...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}無法跳過指定的命令...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}無法移動車輛...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}後端車頭一定跟著前端車頭
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2659,11 +2710,16 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}顯示�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}顯示車輛的容量
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}顯示列車的總容量，照貨物分類
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}指令清單 - 點選指令可選擇。按住 CTRL 點選可跳到車站位置
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}跳過目前的命令，從下一個開始。CTRL + 左鍵 可直接跳至所選的命令
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}刪除選定指令
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}使選定的指令中途不停
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}在選定的指令前插入新指令，或在最後新增指令
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}讓列車在選定的指令等待載滿
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}讓列車在選定的指令強制卸載
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻表 - 點一個命令來標記它。
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改變目前選定命令所需花費的時間
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除目前選定命令所設定的時間
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}將誤點/慢分歸零，如此運具將會準時抵達
 STR_SERVICE_HINT                                                :{BLACK}跳過這個指令，除非需要維護
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}價格：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}{}操作成本：{CURRENCY} / 年{}Capacity：{CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}故障
@@ -2685,6 +2741,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}重新�
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}無法修改鐵道車輛名稱...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}讓列車在選定的指令強制卸載
 STR_886F_TRANSFER                                               :{BLACK}轉運
+STR_CLEAR_TIME                                                  :{BLACK}清除時刻
+STR_RESET_LATENESS                                              :{BLACK}歸零誤點/慢分
 
 STR_TRAIN_STOPPING                                              :{RED}正在停止
 STR_TRAIN_STOPPING_VEL                                          :{RED}正在停止, {VELOCITY}
@@ -2695,6 +2753,14 @@ STR_TRAIN_START_NO_CATENARY                                     :這個軌道沒
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} 問世了!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} 問世了! -  {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}無法為運具加入時刻表...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}運具只能等待於站點。
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}此運具將不停靠此站點。
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}變更時刻
+STR_TIMETABLE_STATUS_ON_TIME                                    :此運具目前準點
+STR_TIMETABLE_STATUS_LATE                                       :此運具目前慢了 {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :此運具目前早了 {STRING}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}前方有汽車
@@ -2737,12 +2803,16 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}將主�
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}汽車清單 - 點選汽車可看到詳細資訊
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}購買選定的汽車
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}價格：{CURRENCY}{}速度：{VELOCITY}{}營運費用：{CURRENCY}/年{}容量：{CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}容量：{LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}命名汽車
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}無法命名汽車...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}命名汽車
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛公車抵達 {STATION}！
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛貨車抵達 {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛客運輕軌抵達 {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛貨運輕軌抵達 {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽車撞毀！{}駕駛在與列車相撞後死於火球下
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}汽車撞毀！{}與列車相撞後 {COMMA} 人死於火球下
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}無法使汽車掉頭...
@@ -2812,7 +2882,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}命名�
 
 STR_9831_NAME_SHIP                                              :{WHITE}命名船舶
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}無法命名船舶...
-STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶祝 . . .{}首艘船舶抵達 {STATION}！
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首艘船舶抵達 {STATION}！
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}放置浮標，可用作導航點
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}無法在此放置浮標...
 STR_9836_RENAME                                                 :{BLACK}更名
@@ -2902,6 +2972,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}新容�
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}無法改裝飛機...
 STR_GO_TO_AIRPORT_HANGAR                                        :前往 {STATION} 機棚
 SERVICE_AT_AIRPORT_HANGAR                                       :在{STATION}機棚進行檢修
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (時刻表)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}{STATION} 發生飛船災難！
@@ -3027,6 +3099,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}顯示�
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}您正準備出售庫房内所有車輛。確定嗎？
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :錯誤的機廠類型
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}出售機廠内所有列車
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}出售車庫内所有汽車
@@ -3217,6 +3290,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}將透�
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}將透明度套用於建物，如車站、廠棚、路標及電線
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}將透明度套用於橋樑
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}將透明度套用於設施，如燈塔、天線塔等
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}將透明度套用於運載顯示表
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :群組 {COMMA}
@@ -3247,6 +3328,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}群組 -
 STR_GROUP_CREATE_TIP                                            :{BLACK}單擊建立群組
 STR_GROUP_DELETE_TIP                                            :{BLACK}移除選擇群組
 STR_GROUP_RENAME_TIP                                            :{BLACK}為群組重新命名
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}點此可避免此群組內的設備被來自全域的設定替換
 
 STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}本年盈餘： {GREEN}{CURRENCY} {BLACK}(去年： {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}本年盈餘：{RED}{CURRENCY} {BLACK}(去年： {GREEN}{CURRENCY}{BLACK})

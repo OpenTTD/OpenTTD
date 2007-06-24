@@ -779,6 +779,7 @@ STR_02C3_GAME_OPTIONS                                           :Spelinstillinga
 STR_02C5_DIFFICULTY_SETTINGS                                    :Vanskegrad
 STR_02C7_CONFIG_PATCHES                                         :Konfigurer patcher
 STR_NEWGRF_SETTINGS                                             :Instillingar for ny grafikk
+STR_TRANSPARENCY_OPTIONS                                        :Gjennomsiktigheitsinnstillingar
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Vis namn på by
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Vis namn på stasjon
@@ -806,7 +807,6 @@ STR_02DD_SUBSIDIES                                              :Subsidiar
 STR_02DE_MAP_OF_WORLD                                           :Verdskart
 STR_EXTRA_VIEW_PORT                                             :Ekstra vindauge
 STR_SIGN_LIST                                                   :Skiltliste
-STR_TRANSPARENCY_OPTIONS                                        :Gjennomsiktigheitsinnstillingar
 STR_02DF_TOWN_DIRECTORY                                         :Byoversikt
 STR_TOWN_POPULATION                                             :{BLACK}Verdsinnbyggjartal: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindauge {COMMA}
@@ -1090,6 +1090,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks st
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Gjer vedlikehald på helikopter automatisk på helikopterlandingsplassar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til tog-/vei-/vass- og flyplassverktøylinjene: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musa, flytt synsvinkelen i den motsette retninga: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}glatt scrolling: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Vis eit målingverktøytips når ymse byggjeverktøy brukast: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis firmaovertakingar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
@@ -1103,6 +1104,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :av
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Fart på rullehjul: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert køyretøyliste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Bruk lasteindikatorar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Bruk rutetabellar for køyretøy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis rutetabell i klikk i staden for dagar: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal køyretøy per spelar: {ORANGE}{STRING}
@@ -1891,6 +1895,7 @@ STR_3804_WATER                                                  :Vatn
 STR_3805_COAST_OR_RIVERBANK                                     :Kyst eller elvebreidd
 STR_3806_SHIP_DEPOT                                             :Skipsdepot
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kan ikkje byggje på vatn
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Må fjerna kanal først
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Lagre spel
@@ -2606,6 +2611,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Velikehald ved 
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Køyr utan stopp til togstallen i {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Vedlikehald (utan å stoppe) ved {TOWN} togstall
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (ikke på rutetabell)
+STR_TIMETABLE_TRAVEL_FOR                                        :Reis i  {STRING}
+STR_TIMETABLE_STAY_FOR                                          :stå i {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
+STR_TIMETABLE_TICKS                                             :{COMMA} Tjukk{P "" s}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Er på veg til {TOWN} togstall
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Er på veg til {TOWN} togstall, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Vedlikehald ved {TOWN} togstall
@@ -2647,6 +2659,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Last av
 STR_REFIT                                                       :{BLACK}Bygg om
 STR_REFIT_TIP                                                   :{BLACK}Vel varetypen det skal skiftast til. CTRL-klikk for å fjerne ombyggingsinstruksjonar
 STR_REFIT_ORDER                                                 :(Bygg om til {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Rutetabell
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Bytt til rutetabellvinauge
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordre)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slutt på ordre - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2663,6 +2677,7 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}For mang
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikkje setje inn ny ordre...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikkje slette denne ordren...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikkje endre denne ordren...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Kan ikkje flytte denne ordra
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan ikkje hoppa over gjeldande ordre
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan ikkje hoppa til valde ordre
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikkje flytte køyretøy...
@@ -2702,6 +2717,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gjer den
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Sett inn ein ordre før den valde ordren, eller i slutten av lista
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Alltid fyll køyretøyet ved den valde stasjonen
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Alltid tøm køyretøyet ved den valde stasjonen
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rutetabell - klikk på ei ordre for å merka den
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Bytt tida den merka ordra skal bruke
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern tida den merka ordra skal bruke
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Still attende teljaren for forseining, slik at køyretøyet vert presis
 STR_SERVICE_HINT                                                :{BLACK}Hopp over ordren dersom ikkje vedlikehald trengst
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vekt: {WEIGHT_S}{}Fart: {VELOCITY}  Kraft: {POWER}{}Driftskostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Havarert
@@ -2723,6 +2742,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Gje tog/
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikkje gje tog/vogn nytt namn...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den merka ordren til å tvinge køyretøyet til å dumpe lasta
 STR_886F_TRANSFER                                               :{BLACK}Overfør
+STR_CLEAR_TIME                                                  :{BLACK}Fjern Tid
+STR_RESET_LATENESS                                              :{BLACK}Still attende teljaren for forseining
 
 STR_TRAIN_STOPPING                                              :{RED}Stoppar
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stoppar, {VELOCITY}
@@ -2733,6 +2754,14 @@ STR_TRAIN_START_NO_CATENARY                                     :Dette sporet ma
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING}type er tilgjengeleg!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING}type er tilgjengeleg!  -  {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan ikkje lage rutetabell for køyretøyet
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Køyretøy kan berre venta på stasjonar
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Dette køyretøyet stoppar ikkje på denne stasjonen
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Bytt Tid
+STR_TIMETABLE_STATUS_ON_TIME                                    :Dette køyretøyet er presis
+STR_TIMETABLE_STATUS_LATE                                       :Dette køyretøyet er {STRING} for seint
+STR_TIMETABLE_STATUS_EARLY                                      :Dette køyretøyet er {STRING} for tidleg
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køyretøy i vegen
@@ -2775,6 +2804,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Vis kvar
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Køyretøyliste - trykk på køyretøy for meir informasjon
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bygg det valde køyretøyet
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kostnad: {CURRENCY}{}Fart: {VELOCITY}{}Driftskostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasitet: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Namngje køyretøy
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan ikkje namngje køyretøy...
@@ -2942,6 +2973,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapas
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikkje byggje om flyet...
 STR_GO_TO_AIRPORT_HANGAR                                        :Fly til {STATION} hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Service ved {STATION} Hangar.
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Rutetabell)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinerulukke på {STATION}!
@@ -3258,6 +3291,13 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Byt gjen
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Byt gjennomsyn for bygningar som kan byggast, til dømes depot og vegmerker
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Byt gjennomsyn for bruer
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Byt gjennomsyn for bygningar som fyrtårn og antenner, kanskje i framtida for fine effekter
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Bytt gjennomsyn for lasteindikatorar
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Gruppe {COMMA}

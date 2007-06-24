@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :Game options
 STR_02C5_DIFFICULTY_SETTINGS                                    :Difficulty settings
 STR_02C7_CONFIG_PATCHES                                         :Configure patches
 STR_NEWGRF_SETTINGS                                             :Newgrf settings
+STR_TRANSPARENCY_OPTIONS                                        :Transparency options
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Town names displayed
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Station names displayed
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :Subsidies
 STR_02DE_MAP_OF_WORLD                                           :Map of world
 STR_EXTRA_VIEW_PORT                                             :Extra viewport
 STR_SIGN_LIST                                                   :Sign list
-STR_TRANSPARENCY_OPTIONS                                        :Transparency options
 STR_02DF_TOWN_DIRECTORY                                         :Town directory
 STR_TOWN_POPULATION                                             :{BLACK}World population: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
@@ -1103,6 +1103,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the advanced vehicle list: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Use loading indicators: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING}
@@ -1891,6 +1894,7 @@ STR_3804_WATER                                                  :Water
 STR_3805_COAST_OR_RIVERBANK                                     :Coast or riverbank
 STR_3806_SHIP_DEPOT                                             :Ship depot
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Can't build on water
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Must demolish canal first
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Save Game
@@ -2606,6 +2610,12 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Service at {TOW
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Go non-stop to {TOWN} Train Depot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service non-stop at {TOWN} Train Depot
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
+STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING}
+STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} day{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Heading for {TOWN} Train Depot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Heading for {TOWN} Train Depot, {VELOCITY}
@@ -2648,6 +2658,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Unload
 STR_REFIT                                                       :{BLACK}Refit
 STR_REFIT_TIP                                                   :{BLACK}Select what cargo type to refit to in this order. Control click to remove refit instruction
 STR_REFIT_ORDER                                                 :(Refit to {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Timetable
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Switch to the timetable view
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - End of Orders - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2704,6 +2716,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insert a new order before the highlighted order, or add to end of list
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order force the vehicle to wait for a full load
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order force the vehicle to unload
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetable - click on an order to highlight it.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Change the amount of time that the highlighted order should take
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clear the amount of time for the highlighted order
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time
 STR_SERVICE_HINT                                                :{BLACK}Skip this order unless a service is needed
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Weight: {WEIGHT_S}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Broken down
@@ -2725,6 +2741,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rename t
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Can't rename train vehicle type...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order force the vehicle to dump cargo
 STR_886F_TRANSFER                                               :{BLACK}Transfer
+STR_CLEAR_TIME                                                  :{BLACK}Clear Time
+STR_RESET_LATENESS                                              :{BLACK}Reset Late Counter
 
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}
@@ -2736,6 +2754,13 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}New {STRING} now available!  -  {STRING}
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Can't timetable vehicle...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehicles can only wait at stations.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}This vehicle is not stopping at this station.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Change Time
+STR_TIMETABLE_STATUS_ON_TIME                                    :This vehicle is currently running on time
+STR_TIMETABLE_STATUS_LATE                                       :This vehicle is currently running {STRING} late
+STR_TIMETABLE_STATUS_EARLY                                      :This vehicle is currently running {STRING} early
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Road vehicle in the way
@@ -2948,6 +2973,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Can't re
 STR_GO_TO_AIRPORT_HANGAR                                        :Go to {STATION} Hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Service at {STATION} Hangar
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Timetable)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelin disaster at {STATION}!
@@ -3264,6 +3290,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle t
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots, waypoints and catenary
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas, maybe in future for eyecandy
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Group {COMMA}

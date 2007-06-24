@@ -1098,7 +1098,7 @@ STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Totes les compa
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prefereix fer un chat d'equip amb <ENTER>: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funció de la rodeta del ratolí: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom mapa
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Moure mapa
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Mou el mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocitat del mapa amb la rodeta del ratolí: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Posa en pausa automàticament en començar un joc nou: {ORANGE}{STRING}
@@ -1907,6 +1907,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossib
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Desat del Joc erroni{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossible esborrar l'arxiu
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Càrrega del Joc errònia{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error Intern: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :El joc desat està trencat - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :El joc desat està fet amb una versió més moderna
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :L'arxiu no es pot llegir l'arxiu
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No es pot escriure a l'arxiu
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Llista de dispositius de disc, carpetes i arxius de jocs desats
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nom actualment seleccionat per joc desat
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Esborra el joc desat actualment seleccionat
@@ -3044,9 +3049,9 @@ STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Afegeix un arxiu NewGRF a la llista
 STR_NEWGRF_REMOVE                                               :{BLACK}Treu
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Treu l'arxiu NewGRF seleccionat de la llista
-STR_NEWGRF_MOVEUP                                               :{BLACK}Mou Amunt
+STR_NEWGRF_MOVEUP                                               :{BLACK}Mou amunt
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Mou amunt l'arxiu NewGRF seleccionat de la llista
-STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mou Avall
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mou avall
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Mou avall l'arxiu NewGRF seleccionat de la llista
 STR_NEWGRF_FILE_TIP                                             :{BLACK}Una llista d'arxius NewGRF que ha estat instal·lada. Clica un arxiu per canviar els seus paràmetres
 STR_NEWGRF_PARAMETER                                            :{BLACK}Paràmetres: {SILVER}{STRING}
@@ -3210,8 +3215,8 @@ STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}No. de pobles:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. d'indústries:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
-STR_SNOW_LINE_UP                                                :{BLACK}Moure la linia de neu un pas amunt
-STR_SNOW_LINE_DOWN                                              :{BLACK}Moure la linia de neu un pas avall
+STR_SNOW_LINE_UP                                                :{BLACK}Mou la linia de neu un pas amunt
+STR_SNOW_LINE_DOWN                                              :{BLACK}Mou la linia de neu un pas avall
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Canviar alçada de la linia de neu
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Canviar l'any inicial
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Alerta d'escala
@@ -3240,8 +3245,8 @@ STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generar 
 STR_SE_RANDOM_LAND                                              :{WHITE}Terreny aleatori
 STR_SE_NEW_WORLD                                                :{BLACK}Crear nou escenari
 STR_SE_CAPTION                                                  :{WHITE}Tipus d'escenari
-STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Moure l'alçada del terreny pla un pas avall
-STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Moure l'alçada del terreny pla un pas amunt
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Mou l'alçada del terreny pla un pas avall
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Mou l'alçada del terreny pla un pas amunt
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Canvia alçada del terreny pla
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Alçada del terreny pla:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}

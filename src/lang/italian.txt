@@ -1909,6 +1909,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossib
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Salvataggio fallito{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossibile eliminare il file
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Caricamento fallito{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Errore interno: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Salvataggio danneggiato - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvataggio creato con una versione più recente
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :File non leggibile
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File non scrivibile
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Elenco delle unità, delle cartelle e dei file delle partite salvate
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome del salvataggio selezionato
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Elimina il salvataggio selezionato

@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :ゲームの設
 STR_02C5_DIFFICULTY_SETTINGS                                    :難易度の設定
 STR_02C7_CONFIG_PATCHES                                         :パッチの設定
 STR_NEWGRF_SETTINGS                                             :NewGRFの設定
+STR_TRANSPARENCY_OPTIONS                                        :半透明設定
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}市町村名を表示
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}駅名を表示
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :助成金
 STR_02DE_MAP_OF_WORLD                                           :世界の地図
 STR_EXTRA_VIEW_PORT                                             :特別ビューア
 STR_SIGN_LIST                                                   :標示のリスト
-STR_TRANSPARENCY_OPTIONS                                        :半透明設定
 STR_02DF_TOWN_DIRECTORY                                         :市町村のリスト
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}人
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
@@ -1103,6 +1103,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :切
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}地図のスクロール速度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}新規ゲームを開始したときに自動的にポーズ：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}詳細の車両リストを使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}積み降ろしを表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}車両の時刻表を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}日の代わりに時刻表をティックで表示：{ORANGE}{STRING}
 
@@ -3289,6 +3290,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}工業�
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}交通社所有の建物などの透明性を入／切
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}橋の透明性を入／切
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}灯台、送信機などの透明性を入／切
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}積み降ろしの表示の透明性を切り替え
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :グループ {COMMA}

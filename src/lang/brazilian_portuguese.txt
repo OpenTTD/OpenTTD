@@ -1911,6 +1911,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Incapaz 
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Falha ao Salvar Jogo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Incapaz de remover o arquivo
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Falha ao Abrir Jogo{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erro interno: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Arquivo corrompido - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :O arquivo foi criado utilizando uma versão mais nova
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Arquivo não legível
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Arquivo não editável
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de unidades, diretórios e arquivos de jogos gravados
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome selecionado para salvar o jogo
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Remover o jogo selecionado

@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :Opções do Jog
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configurações de dificuldade
 STR_02C7_CONFIG_PATCHES                                         :Configurar correcções
 STR_NEWGRF_SETTINGS                                             :Definições Newgrf
+STR_TRANSPARENCY_OPTIONS                                        :Opções de Transparência
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostrar nomes de cidades
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostrar nomes de estações
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :Subsídios
 STR_02DE_MAP_OF_WORLD                                           :Mapa do mundo
 STR_EXTRA_VIEW_PORT                                             :Visualizador extra
 STR_SIGN_LIST                                                   :Lista de sinais
-STR_TRANSPARENCY_OPTIONS                                        :Opções de Transparência
 STR_02DF_TOWN_DIRECTORY                                         :Lista de cidades
 STR_TOWN_POPULATION                                             :{BLACK}População Mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Visualizador {COMMA}
@@ -2571,6 +2571,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenção no
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sem parar para o depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenção no depósito de {TOWN} sem parar
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Dirige-se ao depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Dirige-se ao depósito de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Serviço no depósito de {TOWN}
@@ -2696,6 +2697,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível! - {STRING}
 
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veículo de estrada no caminho
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Veículos de Estrada
@@ -2737,6 +2739,7 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrar 
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista de veículos de estrada - clique num veículo para informações
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construir o veículo de estrada seleccionado
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Custo: {CURRENCY}{}Velocidade: {VELOCITY}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Renomear veículo de estrada
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Não é possível renomear veículo de estrada...
@@ -2902,6 +2905,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova cap
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Não é possível adaptar aeronave...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ir para o hangar de {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Manutenção no hangar de {STATION}
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Acidente de Zepelim em {STATION}!
@@ -3217,6 +3221,13 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Comutar 
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Comutar transparência para edificações como estações, depósitos, pontos-de-passagem e catenárias
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comutar transparência para pontes
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas (talvez, no futuro, para embelezamentos)
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Grupo {COMMA}
