@@ -292,7 +292,7 @@ The OpenTTD team (in alphabetical order):
   Loïc Guilloux (glx)            - In training, not yet specialized
   Jaroslav Mazanec (KUDr)        - YAPG (Yet Another Pathfinder God) ;)
   Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
-
+  Owen Rudge (orudge)            - Contributor, forum host, master server host, OS/2 port
   Peter Nelson (peter1138)       - Spiritual descendant from newgrf gods
   Remko Bijker (Rubidium)        - THE desync hunter
   Christoph Mallon (Tron)        - Programmer, code correctness police
@@ -300,7 +300,6 @@ The OpenTTD team (in alphabetical order):
 
 Retired Developers:
   Dominik Scherer (dominik81)    - Lead programmer, GUI expert (0.3.0 - 0.3.6)
-  Owen Rudge (orudge)            - Contributor, forum host, master server host, OS/2 port (0.1 - 0.4.8)
   Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
   Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
 
