@@ -1697,9 +1697,9 @@ STR_4003_DELETE                                                 :{BLACK}Uitwis
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} vry
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan nie skyf lees nie
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spel Bewaar Gedop
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spel Bewaar Gedop{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan nie l�r uitwis nie
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Spel Laai Gedop
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Spel Laai Gedop{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lys van skywe, voublaaie en spel-bewaar l�rs
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Huidige naam vir bewaarde-spel
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Uitwis die verkieste bewaarde-spel

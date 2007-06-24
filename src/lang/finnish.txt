@@ -1893,9 +1893,9 @@ STR_4003_DELETE                                                 :{BLACK}Poista
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megatavu{P "" a} vapaana
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Asemaa ei voi lukea.
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Tallennus epäonnistui.
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Tallennus epäonnistui.{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Tiedostoa ei voi poistaa.
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Lataus epäonnistui.
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Lataus epäonnistui.{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista asemista, hakemistoista ja tallennetuista peleistä.
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Valittu nimi pelitallenteelle.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Poista valittu pelitallenne.

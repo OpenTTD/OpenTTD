@@ -1970,9 +1970,9 @@ STR_4003_DELETE                                                 :{BLACK}Töröl
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabájt szabad
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nem olvasható a meghajtó
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}A mentés nem sikerült
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}A mentés nem sikerült{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nem sikerült törölni a fájlt
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}A betöltés nem sikerült
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}A betöltés nem sikerült{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Meghajtók, könyvtárak és mentések listája
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}A mentés neve
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}A kijelölt mentés törlése

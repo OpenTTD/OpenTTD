@@ -1828,9 +1828,9 @@ STR_4003_DELETE                                                 :{BLACK}Obriši
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabajt{P "" a a} slobod{P an na no}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ne mogu pročitati disk
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spremanje igre nije uspjelo
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spremanje igre nije uspjelo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Ne mogu obrisati datoteku
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Učitavanje igre nije uspjelo
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Učitavanje igre nije uspjelo{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Popis diskova, mapa i spremljenih datoteka
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Trenutno odabrano ime za spremanje igre
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Obriši trenutno odabranu spremljenu igru

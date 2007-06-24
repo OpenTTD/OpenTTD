@@ -1905,9 +1905,9 @@ STR_4003_DELETE                                                 :{BLACK}파일 �
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mb 남음
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}드라이브를 읽을 수 없음
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}게임 저장 실패
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}게임 저장 실패{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}파일을 삭제할 수 없음
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}게임 불러오기 실패
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}게임 불러오기 실패{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}드라이프, 폴더, 저장된 게임 파일의 목록입니다
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}저장될 세이브 파일의 이름입니다.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}선택된 세이브 파일을 삭제합니다.

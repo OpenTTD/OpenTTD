@@ -1868,9 +1868,9 @@ STR_4003_DELETE                                                 :{BLACK}Удал
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Мб свободно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Не удалось прочитать диск
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Невозможно сохранить игру
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Невозможно сохранить игру{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Невозможно удалить файл
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Невозможно загрузить игру
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Невозможно загрузить игру{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Список дисков, папок и сохраненных игр
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Выбранное имя для сохранения игры
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Удалить выбранную сохраненную игру

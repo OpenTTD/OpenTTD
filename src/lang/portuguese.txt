@@ -1867,9 +1867,9 @@ STR_4003_DELETE                                                 :{BLACK}Eliminar
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes livres
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Não é possível ler unidade
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Falha ao Guardar Jogo
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Falha ao Guardar Jogo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Não é possível eliminar ficheiro
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Falha ao Abrir Jogo
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Falha ao Abrir Jogo{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de unidades, directorias e ficheiros de jogos guardados
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome escolhido para guardar o jogo
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Eliminar o jogo guardado seleccionado

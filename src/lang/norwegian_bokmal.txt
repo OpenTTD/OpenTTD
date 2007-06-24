@@ -1864,9 +1864,9 @@ STR_4003_DELETE                                                 :{BLACK}Slett
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte ledig
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikke lese fra disk
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Lagring av spillet mislyktes
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Lagring av spillet mislyktes{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan ikke slette fil
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Feil ved fremhenting av spill
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Feil ved fremhenting av spill{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste over disker, mapper og lagrede spill
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Gjeldende navn for valgt lagret spill
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Slett valgte lagring

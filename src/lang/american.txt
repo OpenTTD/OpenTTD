@@ -1900,9 +1900,9 @@ STR_4003_DELETE                                                 :{BLACK}Delete
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} free
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Unable to read drive
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Game Save Failed
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Game Save Failed{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Unable to delete file
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Game Load Failed
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Game Load Failed{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}List of drives, directories and saved-game files
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Currently selected name for saved-game
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Delete the currently selected saved-game

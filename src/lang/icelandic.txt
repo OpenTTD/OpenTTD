@@ -1809,9 +1809,9 @@ STR_4003_DELETE                                                 :{BLACK}Eyða
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabæti laus
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Get ekki lesið af drifi
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Vistun leiks mistókst
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Vistun leiks mistókst{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Get ekki eytt skrá
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Mistókst að opna leik
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Mistókst að opna leik{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listi yfir drif, möppur og vistaða leiki
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nafn fyrir vistun leiks
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Eyða nafninu

@@ -1048,9 +1048,9 @@ STR_4002_SAVE                                                   :{BLACK}Opslaan
 STR_4003_DELETE                                                 :{BLACK}Fuortsmite
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Koe net fan 'e skiif lêze
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Opslaan Mislearre
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Opslaan Mislearre{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kin triem net fuortsmite
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden Mislearre
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden Mislearre{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}List fan skiven, mappen en triemen
 STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Laad Hichtemap
 

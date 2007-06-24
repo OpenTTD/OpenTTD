@@ -1867,9 +1867,9 @@ STR_4003_DELETE                                                 :{BLACK}刪除
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}空間尚有 {COMMA} MB
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}無法讀取磁碟
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}遊戲儲存失敗
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}遊戲儲存失敗{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}無法刪除檔案
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}遊戲載入失敗
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}遊戲載入失敗{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}列出磁碟、目錄與遊戲存檔
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}目前選定的存檔名稱
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}刪除目前選定的存檔

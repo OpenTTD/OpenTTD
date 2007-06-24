@@ -1905,9 +1905,9 @@ STR_4003_DELETE                                                 :{BLACK}Supprime
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mo libre{P "" s}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossible d'accéder au disque
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}La sauvegarde à échoué
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}La sauvegarde à échoué{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossible de supprimer le fichier
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Le chargement à échoué
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Le chargement à échoué{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste des disques, répertoires, et fichiers de sauvegarde
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nom sélectionné pour la sauvegarde
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Supprime la sauvegarde sélectionnée

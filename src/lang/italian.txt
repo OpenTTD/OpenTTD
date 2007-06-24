@@ -1906,9 +1906,9 @@ STR_4003_DELETE                                                 :{BLACK}Elimina
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte liber{P o i}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossibile leggere dall'unità
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Salvataggio fallito
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Salvataggio fallito{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossibile eliminare il file
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Caricamento fallito
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Caricamento fallito{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Elenco delle unità, delle cartelle e dei file delle partite salvate
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome del salvataggio selezionato
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Elimina il salvataggio selezionato

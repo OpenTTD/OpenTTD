@@ -1903,9 +1903,9 @@ STR_4003_DELETE                                                 :{BLACK}Slet
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes fri
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikke læse drevet
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Fejl under gemning af spil
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Fejl under gemning af spil{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan ikke slette fil
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Fejl under hentning af spil
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Fejl under hentning af spil{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste over drev, biblioteker og gemte spilfiler
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nuværende gemte spils navn
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Slet det valgte gemte spil

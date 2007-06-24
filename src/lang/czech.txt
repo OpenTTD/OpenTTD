@@ -1958,9 +1958,9 @@ STR_4003_DELETE                                                 :{BLACK}Smazat
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB voln{P ý é ých}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nemohu číst z jednotky
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Uložení hry selhalo
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Uložení hry selhalo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nemohu smazat soubor
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nemohu otevřít hru
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nemohu otevřít hru{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Seznam jednotek, adresářů a uložených her
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Zvolené jméno uložené hry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Smazat označenou uloženou hru

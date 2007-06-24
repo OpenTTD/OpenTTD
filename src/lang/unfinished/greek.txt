@@ -1557,9 +1557,9 @@ STR_4003_DELETE                                                 :{BLACK}Διαγ
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} ελεύθερα
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Αδύνατη η ανάγνωση του δίσκου
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Αποθήκευση Παιχνιδιού Απέτυχε
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Αποθήκευση Παιχνιδιού Απέτυχε{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Αδύνατη η διαγραφή του αρχείου
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Φόρτωση Παιχνιδιού Απέτυχε
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Φόρτωση Παιχνιδιού Απέτυχε{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Λίστα δίσκων, φακέλλων και αποθηκευμένων παιχνιδιών
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Τρέχον όνομα για το αποθηκευμένο παιχνίδι
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Διαγραφή του επιλεγμένου αποθηκευμένου παιχνιδιού

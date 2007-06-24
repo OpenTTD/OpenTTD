@@ -740,7 +740,8 @@ static void StartScenario()
 	/* invalid type */
 	if (_file_to_saveload.mode == SL_INVALID) {
 		DEBUG(sl, 0, "Savegame is obsolete or invalid format: '%s'", _file_to_saveload.name);
-		ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
+		SetDParamStr(0, GetSaveLoadErrorString());
+		ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 		_game_mode = GM_MENU;
 		return;
 	}
@@ -755,7 +756,8 @@ static void StartScenario()
 	/* Load game */
 	if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, SCENARIO_DIR) != SL_OK) {
 		LoadIntroGame();
-		ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
+		SetDParamStr(0, GetSaveLoadErrorString());
+		ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 	}
 
 	_opt_ptr = &_opt;
@@ -863,7 +865,8 @@ void SwitchMode(int new_mode)
 
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
 			LoadIntroGame();
-			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
+			SetDParamStr(0, GetSaveLoadErrorString());
+			ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 		} else {
 			/* Update the local player for a loaded game. It is either always
 			 * player #1 (eg 0) or in the case of a dedicated server a spectator */
@@ -901,7 +904,8 @@ void SwitchMode(int new_mode)
 			SetLocalPlayer(OWNER_NONE);
 			_patches_newgame.starting_year = _cur_year;
 		} else {
-			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
+			SetDParamStr(0, GetSaveLoadErrorString());
+			ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 		}
 		break;
 	}
@@ -912,7 +916,8 @@ void SwitchMode(int new_mode)
 
 	case SM_SAVE: /* Save game */
 		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, NO_DIRECTORY) != SL_OK) {
-			ShowErrorMessage(INVALID_STRING_ID, STR_4007_GAME_SAVE_FAILED, 0, 0);
+			SetDParamStr(0, GetSaveLoadErrorString());
+			ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 		} else {
 			DeleteWindowById(WC_SAVELOAD, 0);
 		}
@@ -1268,7 +1273,10 @@ bool AfterLoadGame()
 
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList();
-	if (_networking && gcf_res != GLC_ALL_GOOD) return false;
+	if (_networking && gcf_res != GLC_ALL_GOOD) {
+		SetSaveLoadError(STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH);
+		return false;
+	}
 
 	switch (gcf_res) {
 		case GLC_COMPATIBLE: _switch_mode_errorstr = STR_NEWGRF_COMPATIBLE_LOAD_WARNING; break;
@@ -1313,7 +1321,7 @@ bool AfterLoadGame()
 
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, (uint)-1)) {
-		_error_message = STR_NO_TOWN_IN_SCENARIO;
+		SetSaveLoadError(STR_NO_TOWN_IN_SCENARIO);
 		return false;
 	}
 

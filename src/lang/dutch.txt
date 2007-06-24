@@ -1904,9 +1904,9 @@ STR_4003_DELETE                                                 :{BLACK}Verwijde
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes vrij
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan niet lezen van schijf
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Opslaan Spel Mislukt
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Opslaan Spel Mislukt{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan bestand niet verwijderen
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden Spel Mislukt
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden Spel Mislukt{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lijst van schijven, mappen, en opgeslagen spellen
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Huidige gekozen naam voor opgeslagen spel
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Verwijder het momenteel geselecteerde opgeslagen spel

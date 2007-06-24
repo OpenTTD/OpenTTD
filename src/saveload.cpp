@@ -26,6 +26,8 @@
 #include "saveload.h"
 #include "network/network.h"
 #include "variables.h"
+#include "table/strings.h"
+#include "strings.h"
 #include <setjmp.h>
 #include <list>
 
@@ -65,7 +67,8 @@ static struct {
 	FILE *fh;                            ///< the file from which is read or written to
 
 	void (*excpt_uninit)();              ///< the function to execute on any encountered error
-	const char *excpt_msg;               ///< the error message
+	StringID error_str;                  ///< the translateable error message to show
+	char *extra_msg;                     ///< the error message
 	jmp_buf excpt;                       ///< @todo used to jump to "exception handler";  really ugly
 } _sl;
 
@@ -136,9 +139,11 @@ static void SlWriteFill()
 /** Error handler, calls longjmp to simulate an exception.
  * @todo this was used to have a central place to handle errors, but it is
  * pretty ugly, and seriously interferes with any multithreaded approaches */
-static void NORETURN SlError(const char *msg)
+static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 {
-	_sl.excpt_msg = msg;
+	_sl.error_str = string;
+	free(_sl.extra_msg);
+	_sl.extra_msg = (extra_msg == NULL) ? NULL : strdup(extra_msg);
 	longjmp(_sl.excpt, 0);
 }
 
@@ -224,7 +229,7 @@ static uint SlReadSimpleGamma()
 			if (HASBIT(i, 5)) {
 				i &= ~0x20;
 				if (HASBIT(i, 4))
-					SlError("Unsupported gamma");
+					SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unsupported gamma");
 				i = (i << 8) | SlReadByte();
 			}
 			i = (i << 8) | SlReadByte();
@@ -859,7 +864,7 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 	/* And write the stuff */
 	proc(arg);
 
-	assert(offs == SlGetOffs());
+	if (offs != SlGetOffs()) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk size");
 }
 
 /**
@@ -891,9 +896,9 @@ static void SlLoadChunk(const ChunkHandler *ch)
 			_sl.obj_len = len;
 			endoffs = SlGetOffs() + len;
 			ch->load_proc();
-			assert(SlGetOffs() == endoffs);
+			if (SlGetOffs() != endoffs) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk size");
 		} else {
-			SlError("Invalid chunk type");
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk type");
 		}
 		break;
 	}
@@ -994,7 +999,7 @@ static void SlLoadChunks()
 		DEBUG(sl, 2, "Loading chunk %c%c%c%c", id >> 24, id >> 16, id >> 8, id);
 
 		ch = SlFindChunkHandler(id);
-		if (ch == NULL) SlError("found unknown tag in savegame (sync error)");
+		if (ch == NULL) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unknown chunk type");
 		SlLoadChunk(ch);
 	}
 }
@@ -1014,7 +1019,7 @@ static uint ReadLZO()
 	uint len;
 
 	/* Read header*/
-	if (fread(tmp, sizeof(tmp), 1, _sl.fh) != 1) SlError("file read failed");
+	if (fread(tmp, sizeof(tmp), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE, "File read failed");
 
 	/* Check if size is bad */
 	((uint32*)out)[0] = size = tmp[1];
@@ -1024,13 +1029,13 @@ static uint ReadLZO()
 		size = TO_BE32(size);
 	}
 
-	if (size >= sizeof(out)) SlError("inconsistent size");
+	if (size >= sizeof(out)) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Inconsistent size");
 
 	/* Read block */
-	if (fread(out + sizeof(uint32), size, 1, _sl.fh) != 1) SlError("file read failed");
+	if (fread(out + sizeof(uint32), size, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 	/* Verify checksum */
-	if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlError("bad checksum");
+	if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Bad checksum");
 
 	/* Decompress */
 	lzo1x_decompress(out + sizeof(uint32)*1, size, _sl.buf, &len, NULL);
@@ -1048,7 +1053,7 @@ static void WriteLZO(uint size)
 	lzo1x_1_compress(_sl.buf, size, out + sizeof(uint32)*2, &outlen, wrkmem);
 	((uint32*)out)[1] = TO_BE32(outlen);
 	((uint32*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32), outlen + sizeof(uint32)));
-	if (fwrite(out, outlen + sizeof(uint32)*2, 1, _sl.fh) != 1) SlError("file write failed");
+	if (fwrite(out, outlen + sizeof(uint32)*2, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 }
 
 static bool InitLZO()
@@ -1092,7 +1097,6 @@ static void UninitNoComp()
  ********** START OF MEMORY CODE (in ram)****
  ********************************************/
 
-#include "table/strings.h"
 #include "table/sprites.h"
 #include "gfx.h"
 #include "gui.h"
@@ -1171,8 +1175,7 @@ static uint ReadZlib()
 		if (r == Z_STREAM_END)
 			break;
 
-		if (r != Z_OK)
-			SlError("inflate() failed");
+		if (r != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "inflate() failed");
 	} while (_z.avail_out);
 
 	return 4096 - _z.avail_out;
@@ -1207,11 +1210,11 @@ static void WriteZlibLoop(z_streamp z, byte *p, uint len, int mode)
 		r = deflate(z, mode);
 			/* bytes were emitted? */
 		if ((n=sizeof(buf) - z->avail_out) != 0) {
-			if (fwrite(buf, n, 1, _sl.fh) != 1) SlError("file write error");
+			if (fwrite(buf, n, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 		}
 		if (r == Z_STREAM_END)
 			break;
-		if (r != Z_OK) SlError("zlib returned error code");
+		if (r != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "zlib returned error code");
 	} while (z->avail_in || !z->avail_out);
 }
 
@@ -1476,10 +1479,28 @@ void SaveFileDone()
 	_ts.saveinprogress = false;
 }
 
+/** Set the error message from outside of the actual loading/saving of the game (AfterLoadGame and friends) */
+void SetSaveLoadError(StringID str)
+{
+	_sl.error_str = str;
+}
+
+/** Get the string representation of the error message */
+const char *GetSaveLoadErrorString()
+{
+	SetDParam(0, _sl.error_str);
+	SetDParamStr(1, _sl.extra_msg);
+
+	static char err_str[512];
+	GetString(err_str, _sl.save ? STR_4007_GAME_SAVE_FAILED : STR_4009_GAME_LOAD_FAILED, lastof(err_str));
+	return err_str;
+}
+
 /** Show a gui message when saving has failed */
 void SaveFileError()
 {
-	ShowErrorMessage(STR_4007_GAME_SAVE_FAILED, STR_NULL, 0, 0);
+	SetDParamStr(0, GetSaveLoadErrorString());
+	ShowErrorMessage(STR_012D, STR_NULL, 0, 0);
 	SaveFileDone();
 }
 
@@ -1493,13 +1514,16 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 	const SaveLoadFormat *fmt;
 	uint32 hdr[2];
 
+	_sl.excpt_uninit = NULL;
 	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
 	 * loading/saving execute a longjmp() and continue execution here */
 	if (setjmp(_sl.excpt)) {
 		AbortSaveLoad();
-		_sl.excpt_uninit();
+		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
-		fprintf(stderr, "Save game failed: %s.", _sl.excpt_msg);
+		ShowInfo(GetSaveLoadErrorString());
+		fprintf(stderr, GetSaveLoadErrorString());
+
 		if (threaded) {
 			OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_ERROR);
 		} else {
@@ -1513,9 +1537,9 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 	/* We have written our stuff to memory, now write it to file! */
 	hdr[0] = fmt->tag;
 	hdr[1] = TO_BE32(SAVEGAME_VERSION << 16);
-	if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError("file write failed");
+	if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 
-	if (!fmt->init_write()) SlError("cannot initialize compressor");
+	if (!fmt->init_write()) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 
 	{
 		uint i;
@@ -1584,6 +1608,22 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		return SL_OK;
 	}
 
+	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
+	 * loading/saving execute a longjmp() and continue execution here */
+	_sl.excpt_uninit = NULL;
+	if (setjmp(_sl.excpt)) {
+		AbortSaveLoad();
+
+		/* deinitialize compressor. */
+		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
+
+		/* Skip the "color" character */
+		ShowInfoF(GetSaveLoadErrorString() + 3);
+
+		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
+		return (mode == SL_LOAD) ? SL_REINIT : SL_ERROR;
+	}
+
 	_sl.fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 
 	/* Make it a little easier to load savegames from the console */
@@ -1591,8 +1631,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 	if (_sl.fh == NULL && mode == SL_LOAD) _sl.fh = FioFOpenFile(filename, "rb", BASE_DIR);
 
 	if (_sl.fh == NULL) {
-		DEBUG(sl, 0, "Cannot open savegame '%s' for saving/loading.", filename);
-		return SL_ERROR;
+		SlError(mode == SL_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 	}
 
 	_sl.bufe = _sl.bufp = NULL;
@@ -1600,24 +1639,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 	_sl.save = (mode != 0);
 	_sl.includes = _desc_includes;
 	_sl.chs = _chunk_handlers;
-
-	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
-	 * loading/saving execute a longjmp() and continue execution here */
-	if (setjmp(_sl.excpt)) {
-		AbortSaveLoad();
-
-		/* deinitialize compressor. */
-		_sl.excpt_uninit();
-
-		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
-		if (mode == SL_LOAD) {
-			ShowInfoF("Load game failed: %s.", _sl.excpt_msg);
-			return SL_REINIT;
-		}
-
-		ShowInfoF("Save game failed: %s.", _sl.excpt_msg);
-		return SL_ERROR;
-	}
 
 	/* General tactic is to first save the game to memory, then use an available writer
 	 * to write it to file, either in threaded mode if possible, or single-threaded */
@@ -1650,10 +1671,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 	} else { /* LOAD game */
 		assert(mode == SL_LOAD);
 
-		if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) {
-			DEBUG(sl, 0, "Cannot read savegame header, aborting");
-			return AbortSaveLoad();
-		}
+		if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 		/* see if we have any loader for this type. */
 		for (fmt = _saveload_formats; ; fmt++) {
@@ -1685,10 +1703,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 				DEBUG(sl, 1, "Loading savegame version %d", _sl_version);
 
 				/* Is the version higher than the current? */
-				if (_sl_version > SAVEGAME_VERSION) {
-					DEBUG(sl, 0, "Savegame version invalid");
-					return AbortSaveLoad();
-				}
+				if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
 				break;
 			}
 		}
@@ -1698,13 +1713,15 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 		/* loader for this savegame type is not implemented? */
 		if (fmt->init_read == NULL) {
-			ShowInfoF("Loader for '%s' is not available.", fmt->name);
-			return AbortSaveLoad();
+			char err_str[64];
+			snprintf(err_str, lengthof(err_str), "Loader for '%s' is not available.", fmt->name);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
 		}
 
 		if (!fmt->init_read()) {
-			DEBUG(sl, 0, "Initializing loader '%s' failed", fmt->name);
-			return AbortSaveLoad();
+			char err_str[64];
+			snprintf(err_str, lengthof(err_str), "Initializing loader '%s' failed", fmt->name);
+			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
 		}
 
 		/* Old maps were hardcoded to 256x256 and thus did not contain

@@ -1828,9 +1828,9 @@ STR_4003_DELETE                                                 :{BLACK}删除
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte(s) 可用
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}不能读取驱动器
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}保存游戏失败
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}保存游戏失败{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}不能删除文件
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}游戏存档读取失败
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}游戏存档读取失败{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}驱动器、目录和游戏存档列表
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}保存当前游戏用的存档名字
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}删除选定的游戏存档

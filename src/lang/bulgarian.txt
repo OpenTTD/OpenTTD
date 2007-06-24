@@ -1894,9 +1894,9 @@ STR_4003_DELETE                                                 :{BLACK}Изтр
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт{P "" а} свободно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Не може да прочете диска
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Запазването на играта е неуспешно
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Запазването на играта е неуспешно{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Изтриването на файла е неуспешно
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Отварянето на играта е неуспешно
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Отварянето на играта е неуспешно{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Списък с хард-дисковете, директориите и запазените игри
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Избрано име за запазена игра
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Изтрий избраната запазената игра

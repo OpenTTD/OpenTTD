@@ -1946,9 +1946,9 @@ STR_4003_DELETE                                                 :{BLACK}Vymazat
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabajtov volnych
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Zariadenie je necitatelne
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ulozenie hry zlyhalo
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ulozenie hry zlyhalo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Subor sa neda vymazat
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nahratie hry zlyhalo
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nahratie hry zlyhalo{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Zoznam diskov, adresarov a subory ulozenych hier
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Vybrany nazov pre ulozenie hry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Vymazat vybranu ulozenu hru

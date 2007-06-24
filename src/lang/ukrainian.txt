@@ -2030,9 +2030,9 @@ STR_4003_DELETE                                                 :{BLACK}Вида
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт{P "" и ""}  вільно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Неможливо прочитати пристрій
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Помилка запису гри
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Помилка запису гри{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Неможливо стерти файл
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Помилка завантаження гри
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Помилка завантаження гри{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Список пристроїв, каталогів і збережених файлів гри
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Поточне вибране ім'я файлу для збереження гри
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Стерти вибрану збережену гру

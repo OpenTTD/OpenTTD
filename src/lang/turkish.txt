@@ -1868,9 +1868,9 @@ STR_4003_DELETE                                                 :{BLACK}Sil
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB bos
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Sürücü okunamıyor
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Oyun kaydedilemedi
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Oyun kaydedilemedi{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Dosya silinemedi
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Dosya yüklenemedi
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Dosya yüklenemedi{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Sürücü, klasör ve kayıtli oyun listesi
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Kaydetmek için kullanılacak dosya adı
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Seçili oyunu sil

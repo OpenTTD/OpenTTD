@@ -1842,9 +1842,9 @@ STR_4003_DELETE                                                 :{BLACK}Forviŝu
 STR_4004                                                        :{COMPANY} je {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabitoko{P "" j} libera{P "" j}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ne eblas legi diskon
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ludkonservado Fiaskis
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ludkonservado Fiaskis{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Ne eblas forviŝi dosieron
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Ludŝarĝado Fiaskis
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Ludŝarĝado Fiaskis{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listo da diskoj, dosierujoj kaj luddosieroj
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nune elektita nomo por luddosiero
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Forviŝu la nun elektitan luddosieron

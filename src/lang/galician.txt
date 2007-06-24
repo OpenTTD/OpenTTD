@@ -1751,9 +1751,9 @@ STR_4003_DELETE                                                 :{BLACK}Borrar
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes libres
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}No se pode lee-la unidade
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Grabación da partida fallida
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Grabación da partida fallida{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Non se pode borra-lo arquivo
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Carga da partida fallida
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Carga da partida fallida{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de unidades, directorios e arquivos de partida
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome seleccionado actualmente para o arquivo
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Borra-lo arquivo que está seleccionado

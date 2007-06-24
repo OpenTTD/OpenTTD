@@ -1904,9 +1904,9 @@ STR_4003_DELETE                                                 :{BLACK}Ta bort
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} ledigt
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan inte läsa från disk
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Sparandet av spelet misslyckades
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Sparandet av spelet misslyckades{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan inte ta bort filen
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Läsningen av spelet misslyckades
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Läsningen av spelet misslyckades{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listar enheter, kataloger och sparade spel
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Valt namn för spelet
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Ta bort markerat sparat spel

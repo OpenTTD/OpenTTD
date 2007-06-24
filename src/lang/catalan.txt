@@ -1904,9 +1904,9 @@ STR_4003_DELETE                                                 :{BLACK}Esborra
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes lliures
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossible llegir la unitat de disc
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Desat del Joc erroni
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Desat del Joc erroni{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossible esborrar l'arxiu
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Càrrega del Joc errònia
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Càrrega del Joc errònia{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Llista de dispositius de disc, carpetes i arxius de jocs desats
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nom actualment seleccionat per joc desat
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Esborra el joc desat actualment seleccionat

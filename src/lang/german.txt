@@ -1902,9 +1902,9 @@ STR_4003_DELETE                                                 :{BLACK}Löschen
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Megabyte{P "" s} frei
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kann vom Laufwerk nicht lesen
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spielspeicherung fehlgeschlagen
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spielspeicherung fehlgeschlagen{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Datei kann nicht gelöscht werden
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden des Spieles fehlgeschlagen
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden des Spieles fehlgeschlagen{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Ausgewählter Spielname
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Lösche gewählten Spielstand
