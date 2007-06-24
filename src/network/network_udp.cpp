@@ -124,7 +124,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 		packet.Send_uint16(_network_player_info[player->index].performance);
 
 		/* Send 1 if there is a passord for the company else send 0 */
-		packet.Send_bool  (StrEmpty(_network_player_info[player->index].password));
+		packet.Send_bool  (!StrEmpty(_network_player_info[player->index].password));
 
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
 			packet.Send_uint16(_network_player_info[player->index].num_vehicle[i]);
