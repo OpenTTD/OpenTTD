@@ -80,8 +80,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, 5, !_patches.servint_roadveh);
 		SetWindowWidgetDisabledState(w, 6, !_patches.servint_roadveh);
 
-		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
+		SetDParam(0, v->index);
 		DrawWindowWidgets(w);
 
 		/* Draw running cost */
@@ -199,8 +198,8 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 2: /* rename */
 			v = GetVehicle(w->window_number);
-			SetDParam(0, v->unitnumber);
-			ShowQueryString(v->string_id, STR_902C_NAME_ROAD_VEHICLE, 31, 150, w, CS_ALPHANUMERAL);
+			SetDParam(0, v->index);
+			ShowQueryString(STR_VEHICLE_NAME, STR_902C_NAME_ROAD_VEHICLE, 31, 150, w, CS_ALPHANUMERAL);
 			break;
 
 		case 5: /* increase int */
@@ -283,8 +282,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 				_engine_info[v->engine_type].refit_mask == 0);
 
 		/* draw widgets & caption */
-		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
+		SetDParam(0, v->index);
 		DrawWindowWidgets(w);
 
 		if (v->u.road.crashed_ctr != 0) {

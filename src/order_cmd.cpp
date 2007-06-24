@@ -18,6 +18,7 @@
 #include "saveload.h"
 #include "vehicle_gui.h"
 #include "cargotype.h"
+#include "strings.h"
 
 /**
  * Called if a new block is added to the order-pool
@@ -974,7 +975,8 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 	if (!IsCustomName(v->string_id)) {
 		bak->name[0] = '\0';
 	} else {
-		GetName(bak->name, v->string_id & 0x7FF, lastof(bak->name));
+		SetDParam(0, v->index);
+		GetString(bak->name, STR_VEHICLE_NAME, lastof(bak->name));
 	}
 
 	/* If we have shared orders, store it on a special way */

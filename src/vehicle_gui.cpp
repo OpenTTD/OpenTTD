@@ -331,8 +331,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 
 			SetVScrollCount(w, WP(w, refit_d).list->num_lines);
 
-			SetDParam(0, v->string_id);
-			SetDParam(1, v->unitnumber);
+			SetDParam(0, v->index);
 			DrawWindowWidgets(w);
 
 			WP(w, refit_d).cargo = DrawVehicleRefitWindow(WP(w, refit_d).list, WP(w, refit_d).sel, w->vscroll.pos, w->vscroll.cap, w->resize.step_height);
@@ -1017,7 +1016,7 @@ static void DrawVehicleListWindow(Window *w)
 			(v->type == VEH_AIRCRAFT && v->string_id != STR_SV_AIRCRAFT_NAME)) {
 
 			/* The vehicle got a name so we will print it */
-			SetDParam(0, v->string_id);
+			SetDParam(0, v->index);
 			DrawString(x + 19, y, STR_01AB, 0);
 		}
 

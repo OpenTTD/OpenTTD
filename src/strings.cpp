@@ -29,6 +29,7 @@
 #include "group.h"
 #include "debug.h"
 #include "newgrf_townname.h"
+#include "vehicle.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"
@@ -858,6 +859,16 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				args[0] = g->index;
 				buff = GetStringWithArgs(buff, (g->string_id == STR_SV_GROUP_NAME) ? (StringID)STR_GROUP_NAME_FORMAT : g->string_id, args, last);
 
+				break;
+			}
+
+			case SCC_VEHICLE_NAME: { // {VEHICLE}
+				const Vehicle *v = GetVehicle(GetInt32(&argv));
+
+				int64 args[1];
+				args[0] = v->unitnumber;
+
+				buff = GetStringWithArgs(buff, v->string_id, args, last);
 				break;
 			}
 

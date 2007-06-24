@@ -465,7 +465,6 @@ static const CmdStruct _cmd_structs[] = {
 	// The first string includes the second string.
 	{"COMPANY",    EmitSingleChar, SCC_STRING1, 2, 0},
 	{"PLAYERNAME", EmitSingleChar, SCC_STRING1, 1, 0},
-	{"VEHICLE",    EmitSingleChar, SCC_STRING1, 1, 0},
 
 	{"STRING1", EmitSingleChar, SCC_STRING1, 1, C_CASE}, // included string that consumes ONE argument
 	{"STRING2", EmitSingleChar, SCC_STRING2, 2, C_CASE}, // included string that consumes TWO arguments
@@ -505,6 +504,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"STATION",  EmitSingleChar, SCC_STATION_NAME,  1, 0},
 	{"TOWN",     EmitSingleChar, SCC_TOWN_NAME,     1, 0},
 	{"GROUP",    EmitSingleChar, SCC_GROUP_NAME,    1, 0},
+	{"VEHICLE",  EmitSingleChar, SCC_VEHICLE_NAME,  1, 0},
 
 	// 0x9D is used for the pseudo command SETCASE
 	// 0x9E is used for case switching

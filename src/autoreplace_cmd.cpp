@@ -17,6 +17,7 @@
 #include "aircraft.h"
 #include "cargotype.h"
 #include "group.h"
+#include "strings.h"
 
 
 /*
@@ -241,7 +242,8 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 		if (!IsCustomName(old_v->string_id)) {
 			vehicle_name[0] = '\0';
 		} else {
-			GetName(vehicle_name, old_v->string_id & 0x7FF, lastof(vehicle_name));
+			SetDParam(0, old_v->index);
+			GetString(vehicle_name, STR_VEHICLE_NAME, lastof(vehicle_name));
 		}
 	} else { // flags & DC_EXEC not set
 		CommandCost tmp_move;

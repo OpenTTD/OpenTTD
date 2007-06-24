@@ -495,7 +495,7 @@ STR_01A7_OWNER                                                  :{BLACK}Owner: {
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Local authority: {LTBLUE}{STRING1}
 STR_01A9_NONE                                                   :None
 STR_01AA_NAME                                                   :{BLACK}Name
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1st
@@ -2594,7 +2594,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :maglev locomoti
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Train Depot
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING1} (Details)
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in the way
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING1} {STRING1}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING1} {STRING1}
@@ -3339,5 +3339,7 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit this year: {RED}{CURRENCY} {BLACK}(last year: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit this year: {GREEN}{CURRENCY} {BLACK}(last year: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit this year: {RED}{CURRENCY} {BLACK}(last year: {RED}{CURRENCY}{BLACK})
+
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

@@ -169,8 +169,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* draw widgets & caption */
-		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
+		SetDParam(0, v->index);
 		DrawWindowWidgets(w);
 
 		if (v->u.rail.crash_anim_pos != 0) {
@@ -412,8 +411,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	SetWindowWidgetDisabledState(w, 6, !_patches.servint_trains);
 	SetWindowWidgetDisabledState(w, 7, !_patches.servint_trains);
 
-	SetDParam(0, v->string_id);
-	SetDParam(1, v->unitnumber);
+	SetDParam(0, v->index);
 	DrawWindowWidgets(w);
 
 	SetDParam(1, v->age / 366);
@@ -520,8 +518,8 @@ static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 2: /* name train */
 			v = GetVehicle(w->window_number);
-			SetDParam(0, v->unitnumber);
-			ShowQueryString(v->string_id, STR_8865_NAME_TRAIN, 31, 150, w, CS_ALPHANUMERAL);
+			SetDParam(0, v->index);
+			ShowQueryString(STR_VEHICLE_NAME, STR_8865_NAME_TRAIN, 31, 150, w, CS_ALPHANUMERAL);
 			break;
 		case 6: /* inc serv interval */
 			mod = _ctrl_pressed? 5 : 10;

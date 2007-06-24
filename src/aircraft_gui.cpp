@@ -80,8 +80,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, 5, !_patches.servint_aircraft);
 		SetWindowWidgetDisabledState(w, 6, !_patches.servint_aircraft);
 
-		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
+		SetDParam(0, v->index);
 		DrawWindowWidgets(w);
 
 		/* Draw running cost */
@@ -173,8 +172,8 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 2: /* rename */
 			v = GetVehicle(w->window_number);
-			SetDParam(0, v->unitnumber);
-			ShowQueryString(v->string_id, STR_A030_NAME_AIRCRAFT, 31, 150, w, CS_ALPHANUMERAL);
+			SetDParam(0, v->index);
+			ShowQueryString(STR_VEHICLE_NAME, STR_A030_NAME_AIRCRAFT, 31, 150, w, CS_ALPHANUMERAL);
 			break;
 		case 5: /* increase int */
 			mod = _ctrl_pressed? 5 : 10;
@@ -272,8 +271,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 
 
 		/* draw widgets & caption */
-		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
+		SetDParam(0, v->index);
 		DrawWindowWidgets(w);
 
 		if (v->vehstatus & VS_CRASHED) {

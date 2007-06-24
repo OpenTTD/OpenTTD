@@ -38,8 +38,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, 5, !_patches.servint_ships);
 		SetWindowWidgetDisabledState(w, 6, !_patches.servint_ships);
 
-		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
+		SetDParam(0, v->index);
 		DrawWindowWidgets(w);
 
 		/* Draw running cost */
@@ -113,8 +112,8 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 2: /* rename */
 			v = GetVehicle(w->window_number);
-			SetDParam(0, v->unitnumber);
-			ShowQueryString(v->string_id, STR_9831_NAME_SHIP, 31, 150, w, CS_ALPHANUMERAL);
+			SetDParam(0, v->index);
+			ShowQueryString(STR_VEHICLE_NAME, STR_9831_NAME_SHIP, 31, 150, w, CS_ALPHANUMERAL);
 			break;
 		case 5: /* increase int */
 			mod = _ctrl_pressed? 5 : 10;
@@ -208,8 +207,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 			SetWindowWidgetDisabledState(w, 11, !is_localplayer);
 
 			/* draw widgets & caption */
-			SetDParam(0, v->string_id);
-			SetDParam(1, v->unitnumber);
+			SetDParam(0, v->index);
 			DrawWindowWidgets(w);
 
 			if (v->breakdown_ctr == 1) {

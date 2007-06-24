@@ -73,8 +73,7 @@ static void DrawTimetableWindow(Window *w)
 		DisableWindowWidget(w, 8);
 	}
 
-	SetDParam(0, v->string_id);
-	SetDParam(1, v->unitnumber);
+	SetDParam(0, v->index);
 	DrawWindowWidgets(w);
 
 	int y = 15;

@@ -176,8 +176,7 @@ static void DrawOrdersWindow(Window *w)
 		}
 	}
 
-	SetDParam(0, v->string_id);
-	SetDParam(1, v->unitnumber);
+	SetDParam(0, v->index);
 	DrawWindowWidgets(w);
 
 	y = 15;
