@@ -773,14 +773,6 @@ static VehicleTickProc* _vehicle_tick_procs[] = {
 
 void CallVehicleTicks()
 {
-#ifdef ENABLE_NETWORK
-	/* hotfix for desync problem:
-	 *  for MP games invalidate the YAPF cache every tick to keep it exactly the same on the server and all clients */
-	if (_networking) {
-		YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
-	}
-#endif //ENABLE_NETWORK
-
 	_first_veh_in_depot_list = NULL; // now we are sure it's initialized at the start of each tick
 
 	Station *st;
