@@ -1106,6 +1106,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Use loading indicators: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Default rail type (after new game/game load): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal Rail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrified Rail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :First available
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Last available
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Most used
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING1}

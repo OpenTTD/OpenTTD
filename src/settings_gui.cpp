@@ -654,6 +654,7 @@ static const char *_patches_ui[] = {
 	"advanced_vehicle_list",
 	"loading_indicators",
 	"timetable_in_ticks",
+	"default_rail_type",
 };
 
 static const char *_patches_construction[] = {

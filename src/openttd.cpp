@@ -85,6 +85,7 @@ void ResetMusic();
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
+extern void SetDefaultRailGui();
 
 const char *_default_blitter = "8bpp-optimized";
 
@@ -692,6 +693,7 @@ static void MakeNewGameDone()
 	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
 	SettingsDisableElrail(_patches.disable_elrails);
+	SetDefaultRailGui();
 
 	MarkWholeScreenDirty();
 }
@@ -1858,6 +1860,7 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(38)) _patches.disable_elrails = false;
 	/* do the same as when elrails were enabled/disabled manually just now */
 	SettingsDisableElrail(_patches.disable_elrails);
+	SetDefaultRailGui();
 
 	/* From version 53, the map array was changed for house tiles to allow
 	 * space for newhouses grf features. A new byte, m7, was also added. */

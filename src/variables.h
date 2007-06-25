@@ -134,6 +134,7 @@ struct Patches {
 	bool prefer_teamchat;               // Choose the chat message target with <ENTER>, true=all players, false=your team
 	bool advanced_vehicle_list;         // Use the "advanced" vehicle list
 	bool loading_indicators;            // Show loading indicators
+	uint8 default_rail_type;            ///< The default rail type for the rail GUI
 
 	uint8 toolbar_pos;                  // position of toolbars, 0=left, 1=center, 2=right
 	uint8 window_snap_radius;           // Windows snap at each other if closer than this

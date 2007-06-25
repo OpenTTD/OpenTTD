@@ -26,6 +26,12 @@
 #include "newgrf_station.h"
 #include "train.h"
 
+#include "bridge_map.h"
+#include "rail_map.h"
+#include "road_map.h"
+#include "station_map.h"
+#include "tunnel_map.h"
+
 static RailType _cur_railtype;
 static bool _remove_button_clicked;
 static DiagDirection _build_depot_direction;
@@ -1223,4 +1229,56 @@ void ReinitGuiAfterToggleElrail(bool disable)
 	MarkWholeScreenDirty();
 }
 
+void SetDefaultRailGui()
+{
+	if (_local_player == PLAYER_SPECTATOR) return;
+
+	extern RailType _last_built_railtype;
+	RailType rt = (RailType)_patches.default_rail_type;
+	if (rt >= RAILTYPE_END) {
+		if (rt == RAILTYPE_END + 2) {
+			/* Find the most used rail type */
+			RailType count[RAILTYPE_END];
+			memset(count, 0, sizeof(count));
+			for (TileIndex t = 0; t < MapSize(); t++) {
+				if (IsTileType(t, MP_RAILWAY) ||
+						IsLevelCrossingTile(t) ||
+						IsRailwayStationTile(t) ||
+						(IsTunnelTile(t) && GetTunnelTransportType(t) == TRANSPORT_RAIL) ||
+						(IsBridgeTile(t) && GetBridgeTransportType(t) == TRANSPORT_RAIL)
+						) {
+					count[GetRailType(t)]++;
+				}
+			}
+
+			rt = RAILTYPE_RAIL;
+			for (RailType r = RAILTYPE_ELECTRIC; r < RAILTYPE_END; r++) {
+				if (count[r] >= count[rt]) rt = r;
+			}
+
+			/* No rail, just get the first available one */
+			if (count[rt] == 0) rt = RAILTYPE_END;
+		}
+		switch (rt) {
+			case RAILTYPE_END + 0:
+				rt = RAILTYPE_RAIL;
+				while (rt < RAILTYPE_END && !HasRailtypeAvail(GetPlayer(_local_player), rt)) rt++;
+				break;
+
+			case RAILTYPE_END + 1:
+				rt = GetBestRailtype(GetPlayer(_local_player));
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	_last_built_railtype = _cur_railtype = rt;
+	Window *w = FindWindowById(WC_BUILD_TOOLBAR, 0);
+	if (w != NULL && w->wndproc == BuildRailToolbWndProc) {
+		SetupRailToolbar(_cur_railtype, w);
+		SetWindowDirty(w);
+	}
+}
 
