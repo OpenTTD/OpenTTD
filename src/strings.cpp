@@ -817,9 +817,10 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				if (!st->IsValid()) { // station doesn't exist anymore
 					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
 				} else {
-					int64 temp[2];
+					int64 temp[3];
 					temp[0] = STR_TOWN;
 					temp[1] = st->town->index;
+					temp[2] = st->index;
 					buff = GetStringWithArgs(buff, st->string_id, temp, last);
 				}
 				break;

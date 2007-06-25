@@ -285,11 +285,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	}
 
 	tmp = free_names & ((1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 6) | (1 << 7) | (1 << 12) | (1 << 26) | (1 << 27) | (1 << 28) | (1 << 29) | (1 << 30));
-	if (tmp == 0) {
-		_error_message = STR_3007_TOO_MANY_STATIONS_LOADING;
-		return false;
-	}
-	found = FindFirstBit(tmp);
+	found = (tmp == 0) ? M(STR_SV_STNAME_FALLBACK) : FindFirstBit(tmp);
 
 done:
 	st->string_id = found + STR_SV_STNAME;

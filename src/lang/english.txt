@@ -2082,6 +2082,7 @@ STR_SV_STNAME_UPPER                                             :Upper {STRING1}
 STR_SV_STNAME_LOWER                                             :Lower {STRING1}
 STR_SV_STNAME_HELIPORT                                          :{STRING1} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING1} Forest
+STR_SV_STNAME_FALLBACK                                          :{STRING1} Station #{NUM}
 
 ############ end of savegame specific region!
 
