@@ -2380,8 +2380,8 @@ static bool ProcessTrainOrder(Vehicle *v)
 			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return false;
 			if ((v->current_order.flags & OF_SERVICE_IF_NEEDED) &&
 					!VehicleNeedsService(v)) {
-				v->cur_order_index++;
 				UpdateVehicleTimetable(v, true);
+				v->cur_order_index++;
 			}
 			break;
 
@@ -2395,9 +2395,9 @@ static bool ProcessTrainOrder(Vehicle *v)
 	/* check if we've reached the waypoint? */
 	bool at_waypoint = false;
 	if (v->current_order.type == OT_GOTO_WAYPOINT && v->tile == v->dest_tile) {
+		UpdateVehicleTimetable(v, true);
 		v->cur_order_index++;
 		at_waypoint = true;
-		UpdateVehicleTimetable(v, true);
 	}
 
 	/* check if we've reached a non-stop station while TTDPatch nonstop is enabled.. */
@@ -2405,8 +2405,8 @@ static bool ProcessTrainOrder(Vehicle *v)
 			v->current_order.flags & OF_NON_STOP &&
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.dest == GetStationIndex(v->tile)) {
-		v->cur_order_index++;
 		UpdateVehicleTimetable(v, true);
+		v->cur_order_index++;
 	}
 
 	/* Get the current order */

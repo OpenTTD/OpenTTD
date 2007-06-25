@@ -258,8 +258,8 @@ static void ProcessShipOrder(Vehicle *v)
 			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return;
 			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
 					!VehicleNeedsService(v)) {
-				v->cur_order_index++;
 				UpdateVehicleTimetable(v, true);
+				v->cur_order_index++;
 			}
 			break;
 
@@ -696,9 +696,9 @@ static void ShipController(Vehicle *v)
 						DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
 					/* We got within 3 tiles of our target buoy, so let's skip to our
 					 * next order */
+					UpdateVehicleTimetable(v, true);
 					v->cur_order_index++;
 					v->current_order.type = OT_DUMMY;
-					UpdateVehicleTimetable(v, true);
 					InvalidateVehicleOrder(v);
 				} else {
 					/* Non-buoy orders really need to reach the tile */

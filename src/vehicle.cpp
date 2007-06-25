@@ -2368,8 +2368,8 @@ void VehicleEnterDepot(Vehicle *v)
 
 		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
 			/* Part of orders */
-			v->cur_order_index++;
 			UpdateVehicleTimetable(v, true);
+			v->cur_order_index++;
 		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
 			/* Force depot visit */
 			v->vehstatus |= VS_STOPPED;

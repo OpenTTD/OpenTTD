@@ -1344,8 +1344,8 @@ static void ProcessAircraftOrder(Vehicle *v)
 			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return;
 			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
 					!VehicleNeedsService(v)) {
-				v->cur_order_index++;
 				UpdateVehicleTimetable(v, true);
+				v->cur_order_index++;
 			}
 			break;
 
