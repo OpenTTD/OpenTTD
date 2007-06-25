@@ -1908,6 +1908,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikkj
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Lagring av spelet mislukkast{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan ikkje slette fil
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Feil ved henting av spel{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Intern feil: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Det lagra spelet er øydelagd - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Dette spelet er lagra frå ei nyare utgåve
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Kan ikkje lesa fil
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Kan ikkje skriva fil
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste over diskar, mapper og lagra spel
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Gjeldande namn for vald lagra spel
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Slett valde lagra spel
@@ -3295,6 +3300,7 @@ STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Bytt gje
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
@@ -3334,5 +3340,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Forteneste i år: {RED}{CURRENCY} {BLACK}(førre år: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Forteneste i år: {GREEN}{CURRENCY} {BLACK}(førre år: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Forteneste i år: {RED}{CURRENCY} {BLACK}(førre år: {RED}{CURRENCY}{BLACK})
+
 
 ########

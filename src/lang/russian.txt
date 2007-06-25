@@ -497,7 +497,7 @@ STR_01A7_OWNER                                                  :{BLACK}Влад
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Администрация: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Нет
 STR_01AA_NAME                                                   :{BLACK}Имя
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1ое
@@ -1406,6 +1406,14 @@ STR_NETWORK_LANG_BRAZILIAN                                      :Бразиль�
 STR_NETWORK_LANG_BULGARIAN                                      :Болгарский
 STR_NETWORK_LANG_CHINESE                                        :Китайский
 STR_NETWORK_LANG_CZECH                                          :Чешский
+STR_NETWORK_LANG_DANISH                                         :Датский
+STR_NETWORK_LANG_DUTCH                                          :Немецкий
+STR_NETWORK_LANG_ESPERANTO                                      :Эсперанто
+STR_NETWORK_LANG_FINNISH                                        :Финский
+STR_NETWORK_LANG_HUNGARIAN                                      :Венгерский
+STR_NETWORK_LANG_ICELANDIC                                      :Исландский
+STR_NETWORK_LANG_ITALIAN                                        :Итальянский
+STR_NETWORK_LANG_JAPANESE                                       :Японский
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Состояние сетевой игры
@@ -2562,7 +2570,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :магнито�
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Депо {TOWN}
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый поезд прибыл на станцию {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Детали)
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поезд мешает
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -3289,5 +3297,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибыль этот год: {RED}{CURRENCY} {BLACK}(прошлый год: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибыль за год: {GREEN}{CURRENCY} {BLACK}(прошлый год: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Прибыль за год: {RED}{CURRENCY} {BLACK}(прошлый год: {RED}{CURRENCY}{BLACK})
+
 
 ########

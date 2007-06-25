@@ -2732,7 +2732,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Costo: {
 STR_885C_BROKEN_DOWN                                            :{RED}Guasto
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo d'esercizio: {LTBLUE}{CURRENCY}/anno
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max: {LTBLUE}{VELOCITY} {BLACK}Trazione max: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max: {LTBLUE}{VELOCITY} {BLACK}S.d.T. max: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profitto quest'anno: {LTBLUE}{CURRENCY}  (anno scorso: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenzione: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Fermo
@@ -3196,7 +3196,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoni a
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadattabile per: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Trazione massima: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 
@@ -3341,5 +3341,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profitto quest'anno: {RED}{CURRENCY} {BLACK}(anno scorso: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profitto quest'anno: {GREEN}{CURRENCY} {BLACK}(anno scorso: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profitto quest'anno: {RED}{CURRENCY} {BLACK}(anno scorso: {RED}{CURRENCY}{BLACK})
+
 
 ########

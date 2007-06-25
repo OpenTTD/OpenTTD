@@ -2007,6 +2007,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ei suuda
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Mängu salvestamine ebaõnnestus{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Faili ei saa kustutada
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Mängu laadimine ebaõnnestus{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Süsteemi viga: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Katkine salvestus - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvestus on tehtud uuemas versioonis
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fail pole loetav
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Faili ei saanud kirjutada
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Nimekiri ketastest, kataloogidest ja salvestatud mängudest
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Mängu salvestuse nimi
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Kustuta valitud salvestus
@@ -3392,6 +3397,12 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Vaheta s
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Vaheta läbipaistvust rajatistel, nagu: majakad, antennid ja võimalik, et tulevikus ka silmailu
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Vaheta laadimisnäidikute läbipaistvust
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Üksus {COMMA}
@@ -3428,5 +3439,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Selle aasta kasum: {RED}{CURRENCY} {BLACK}(eelmisel aastal: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Selle aasta kasum: {GREEN}{CURRENCY} {BLACK}(eelmisel aastal: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Selle aasta kasum: {RED}{CURRENCY} {BLACK}(eelmisel aastal: {RED}{CURRENCY}{BLACK})
+
 
 ########

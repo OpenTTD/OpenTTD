@@ -1907,6 +1907,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Unable t
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Game Save Failed{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Unable to delete file
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Game Load Failed{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internal error: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Broken savegame - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Savegame is made with newer version
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :File not readable
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File not writable
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}List of drives, directories and saved-game files
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Currently selected name for saved-game
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Delete the currently selected saved-game
@@ -3334,5 +3339,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit this year: {RED}{CURRENCY} {BLACK}(last year: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit this year: {GREEN}{CURRENCY} {BLACK}(last year: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit this year: {RED}{CURRENCY} {BLACK}(last year: {RED}{CURRENCY}{BLACK})
+
 
 ########

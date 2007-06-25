@@ -1907,6 +1907,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}無法�
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}遊戲儲存失敗{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}無法刪除檔案
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}遊戲載入失敗{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :內部錯誤：{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :損壞的存檔 - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :存檔是由較新版本的遊戲產生
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :檔案無法讀取
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :檔案無法寫入
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}列出磁碟、目錄與遊戲存檔
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}目前選定的存檔名稱
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}刪除目前選定的存檔
@@ -3334,5 +3339,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}本年盈餘：{RED}{CURRENCY} {BLACK}(去年： {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}本年盈餘： {GREEN}{CURRENCY} {BLACK}(去年： {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}本年盈餘： {RED}{CURRENCY} {BLACK}(去年：{RED}{CURRENCY}{BLACK})
+
 
 ########

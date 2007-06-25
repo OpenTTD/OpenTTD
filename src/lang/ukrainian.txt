@@ -2033,6 +2033,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Немо
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Помилка запису гри{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Неможливо стерти файл
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Помилка завантаження гри{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Внутрішня помилка: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл збереженої гри пошкоджений - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Файл збереженої гри зроблений більш новою версією
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Неможливо прочитати файл
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Неможливо записати файл
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Список пристроїв, каталогів і збережених файлів гри
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Поточне вибране ім'я файлу для збереження гри
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Стерти вибрану збережену гру
@@ -3455,6 +3460,11 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Пере
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключити прозорість для споруд, таких як маяки та антенни (може, потім)
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Змінити прозорість індикаторів завантаження
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Група {COMMA}
@@ -3491,5 +3501,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибуток цього року: {RED}{CURRENCY} {BLACK}(торік: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибуток цього року: {GREEN}{CURRENCY} {BLACK}(торік: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Прибуток цього року: {RED}{CURRENCY} {BLACK}(торік: {RED}{CURRENCY}{BLACK})
+
 
 ########

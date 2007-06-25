@@ -1950,6 +1950,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nemogoč
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Shranjevanje igre ni uspelo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nemogoče brisanje datoteke
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nalaganje igre ni uspelo{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna napaka: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Napaka v shranjeni igri - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Igra je bila shranjena z novejso razlicico
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datoteke ni mozno brati
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :V datoteko ni mozno pisati
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Seznam pogonov, map in shranjenih iger
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Trenutno izbrano ime za shranjevanje
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Izbriši trenutno izbrano shranjeno igro
@@ -3414,5 +3419,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Dobiček letos: {RED}{CURRENCY} {BLACK}(lani: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Dobiček letos: {GREEN}{CURRENCY} {BLACK}(lani: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Dobiček letos: {RED}{CURRENCY} {BLACK}(lani: {RED}{CURRENCY}{BLACK})
+
 
 ########
