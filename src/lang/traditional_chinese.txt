@@ -495,7 +495,7 @@ STR_01A7_OWNER                                                  :{BLACK}擁有�
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}地方政府：{LTBLUE}{STRING}
 STR_01A9_NONE                                                   :無
 STR_01AA_NAME                                                   :{BLACK}名稱
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1
@@ -2083,8 +2083,6 @@ STR_SV_STNAME_LOWER                                             :{STRING} 盆地
 STR_SV_STNAME_HELIPORT                                          :{STRING} 直升機場
 STR_SV_STNAME_FOREST                                            :{STRING} 森林
 
-STR_SV_GROUP_NAME                                               :{GROUP}
-
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2594,7 +2592,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :磁浮機車頭
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} 鐵道機廠
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛列車抵達 {STATION}！
-STR_8802_DETAILS                                                :{WHITE}{STRING} (詳細資料)
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (詳細資料)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}前方有列車
 STR_8804                                                        :{SETX 10}{COMMA}：{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}：{STRING} {STRING}
@@ -3340,5 +3338,6 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}本年盈餘： {GREEN}{CURRENCY} {BLACK}(去年： {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}本年盈餘： {RED}{CURRENCY} {BLACK}(去年：{RED}{CURRENCY}{BLACK})
 
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

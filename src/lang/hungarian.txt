@@ -2186,8 +2186,6 @@ STR_SV_STNAME_LOWER                                             :{STRING}-alsó
 STR_SV_STNAME_HELIPORT                                          :{STRING}i helikopter-leszálló
 STR_SV_STNAME_FOREST                                            :{STRING}i erdőség
 
-STR_SV_GROUP_NAME                                               :{GROUP}
-
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -3443,6 +3441,7 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Idei profit: {GREEN}{CURRENCY} {BLACK}(tavalyi: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Idei profit: {RED}{CURRENCY} {BLACK}(tavalyi: {RED}{CURRENCY}{BLACK})
 
+STR_GROUP_NAME                                                  :{GROUP}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

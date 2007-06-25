@@ -1908,6 +1908,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossib
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}La sauvegarde à échoué{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossible de supprimer le fichier
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Le chargement à échoué{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erreur interne: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sauvegarde corrompue - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sauvegarde modifiée avec une version plus récente
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fichier illisibble
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichier non modifiable
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste des disques, répertoires, et fichiers de sauvegarde
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nom sélectionné pour la sauvegarde
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Supprime la sauvegarde sélectionnée
@@ -2078,8 +2083,6 @@ STR_SV_STNAME_UPPER                                             :Haut {STRING}
 STR_SV_STNAME_LOWER                                             :Bas {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Héliport
 STR_SV_STNAME_FOREST                                            :{STRING} Forêt
-
-STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -3335,5 +3338,8 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit cette année: {RED}{CURRENCY} {BLACK}(an dernier: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit cette année: {GREEN}{CURRENCY} {BLACK}(an dernier: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit cette année: {RED}{CURRENCY} {BLACK}(an dernier: {RED}{CURRENCY}{BLACK})
+
+STR_GROUP_NAME                                                  :{GROUP}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

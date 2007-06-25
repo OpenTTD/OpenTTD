@@ -780,6 +780,7 @@ STR_02C3_GAME_OPTIONS                                           :Игрови о
 STR_02C5_DIFFICULTY_SETTINGS                                    :Опции за трудност
 STR_02C7_CONFIG_PATCHES                                         :Конфигурирай патчове
 STR_NEWGRF_SETTINGS                                             :Newgrf настройки
+STR_TRANSPARENCY_OPTIONS                                        :Опций на прозрачност
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Показване имената на градовете
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Показване имената на станциите
@@ -807,7 +808,6 @@ STR_02DD_SUBSIDIES                                              :Субсиди�
 STR_02DE_MAP_OF_WORLD                                           :Карта на света
 STR_EXTRA_VIEW_PORT                                             :Допълнителна камера
 STR_SIGN_LIST                                                   :Списък с табели
-STR_TRANSPARENCY_OPTIONS                                        :Опций на прозрачност
 STR_02DF_TOWN_DIRECTORY                                         :Списък със селищата
 STR_TOWN_POPULATION                                             :{BLACK}Световна популация: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Камера {COMMA}
@@ -2068,8 +2068,6 @@ STR_SV_STNAME_LOWER                                             :Долно {STR
 STR_SV_STNAME_HELIPORT                                          :{STRING} Хелипорт
 STR_SV_STNAME_FOREST                                            :{STRING} Дървета
 
-STR_SV_GROUP_NAME                                               :{GROUP}
-
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -3253,6 +3251,13 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Изпо
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Използвай прозрачност за мостове
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Използвай прозрачност за сгради като фарове и антени, може би в бъдеще за украси
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Група {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
@@ -3288,5 +3293,7 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Печалба тази година: {RED}{CURRENCY} {BLACK}(предишната година: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Печалба тази година: {GREEN}{CURRENCY} {BLACK}(предишната година: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Печалба тази година: {RED}{CURRENCY} {BLACK}(предишната година: {RED}{CURRENCY}{BLACK})
+
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

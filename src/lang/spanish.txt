@@ -779,6 +779,7 @@ STR_02C3_GAME_OPTIONS                                           :Opciones de jue
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configuración de dificultad
 STR_02C7_CONFIG_PATCHES                                         :Configurar parches
 STR_NEWGRF_SETTINGS                                             :Configuración Newgrf
+STR_TRANSPARENCY_OPTIONS                                        :Opciones de transparencia
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ver nombres de poblaciones
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Ver nombres de estaciones
@@ -806,7 +807,6 @@ STR_02DD_SUBSIDIES                                              :Subvenciones
 STR_02DE_MAP_OF_WORLD                                           :Mapa del mundo
 STR_EXTRA_VIEW_PORT                                             :Punto de vista extra
 STR_SIGN_LIST                                                   :Lista de señales
-STR_TRANSPARENCY_OPTIONS                                        :Opciones de transparencia
 STR_02DF_TOWN_DIRECTORY                                         :Listado de poblaciones
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
@@ -1596,6 +1596,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía del tren c
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vía del tren con pre-señales
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vía del tren con señales de salida
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vía del tren con señales combo
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Debes quitar la estación de tren primero
 
 
 
@@ -1840,6 +1841,7 @@ STR_3804_WATER                                                  :Agua
 STR_3805_COAST_OR_RIVERBANK                                     :Costa o rivera
 STR_3806_SHIP_DEPOT                                             :Astillero
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...No se puede construir sobre el agua
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Debes demoler el canal primero
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Guardar Juego
@@ -1852,6 +1854,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}No es po
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Error guardando juego{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}No es posible borrar el fichero
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Carga de juego erronea{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Error interno: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Partida guardada corrupta - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida guardada ha sido realizada con una versión más nueva
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :No se puede leer fichero
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichero no escribible
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listado de unidades, directorios y juegos guardados
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nombre seleccionado actualmente para el juego guardado
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Borrar el juego guardado seleccionado
@@ -2022,7 +2029,6 @@ STR_SV_STNAME_UPPER                                             :{STRING} Alto
 STR_SV_STNAME_LOWER                                             :{STRING} Bajo
 STR_SV_STNAME_HELIPORT                                          :Helipuerto de {STRING}
 STR_SV_STNAME_FOREST                                            :Bosque de {STRING}
-
 
 ############ end of savegame specific region!
 
@@ -2552,6 +2558,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Ir al depósito
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN} para mantenimiento
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Hacia el depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Hacia el depósito de {TOWN}, {VELOCITY}
@@ -3233,5 +3240,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Beneficio este año: {RED}{CURRENCY} {BLACK}(año pasado: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Beneficio este año: {GREEN}{CURRENCY} {BLACK}(año pasado: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Beneficio este año: {RED}{CURRENCY} {BLACK}(año pasado: {RED}{CURRENCY}{BLACK})
+
 
 ########

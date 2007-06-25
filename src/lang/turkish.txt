@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :Seçenekler
 STR_02C5_DIFFICULTY_SETTINGS                                    :Zorluk Ayarları
 STR_02C7_CONFIG_PATCHES                                         :Yamaları Düzenle
 STR_NEWGRF_SETTINGS                                             :Newgrf ayarları
+STR_TRANSPARENCY_OPTIONS                                        :Şeffaflık seçenekleri
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Şehir isimlerini göster
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}İstasyon isimlerini göster
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :İhaleler
 STR_02DE_MAP_OF_WORLD                                           :Dünya haritası
 STR_EXTRA_VIEW_PORT                                             :Ekstra görünüm
 STR_SIGN_LIST                                                   :Tabela listesi
-STR_TRANSPARENCY_OPTIONS                                        :Şeffaflık seçenekleri
 STR_02DF_TOWN_DIRECTORY                                         :Şehir listesi
 STR_TOWN_POPULATION                                             :{BLACK}Dünya nüfusu: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Görünüm {COMMA}
@@ -1390,6 +1390,14 @@ STR_NETWORK_LANG_ANY                                            :Farketmez
 STR_NETWORK_LANG_ENGLISH                                        :İngilizce
 STR_NETWORK_LANG_GERMAN                                         :Almanca
 STR_NETWORK_LANG_FRENCH                                         :Fransızca
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgarca
+STR_NETWORK_LANG_CHINESE                                        :Çince
+STR_NETWORK_LANG_CZECH                                          :Çekce
+STR_NETWORK_LANG_FINNISH                                        :Fince
+STR_NETWORK_LANG_HUNGARIAN                                      :Bulgarca
+STR_NETWORK_LANG_ITALIAN                                        :İtalyanca
+STR_NETWORK_LANG_JAPANESE                                       :Japonca
+STR_NETWORK_LANG_KOREAN                                         :Korece
 STR_NETWORK_LANG_LITHUANIAN                                     :Litvanyaca
 STR_NETWORK_LANG_NORWEGIAN                                      :Norveççe
 STR_NETWORK_LANG_PORTUGUESE                                     :Portekizce
@@ -1631,6 +1639,7 @@ STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Tramvay 
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Tünel Yap
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Tramvay tüneli yap
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Yol yap/sil arasında geçiş yap
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Tramvay yapımı/yıkımı
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Garaj yönünü seç
 STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Tramvay garı yönü
 STR_1814_ROAD                                                   :Yol
@@ -1811,6 +1820,7 @@ STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Yük Tra
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Önce otobüs durağı yıkılmalı
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Önce kamyon durağı yıkılmalı
 STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Önce yolcu tramvayı istasyonu yıkılmalı
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Önce yük tramvayı istasyonu kaldırılmalı
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} istasyonları
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Yok -
@@ -1822,6 +1832,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Tren ist
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Tren istasyonu uzunluğu seç
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Otobüs durağı yönünü seç
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Kamyon durağı yönünü seç
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Yolcu tramvayı istasyonu yönünü seçin
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Yük tramvayı istasyonu yönünü seçin
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Durağın oldugu yere git
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}İstasyonun reytinglerini göster
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}İstasyonun ismini değiştir
@@ -1859,6 +1871,7 @@ STR_3804_WATER                                                  :Su
 STR_3805_COAST_OR_RIVERBANK                                     :Sahil veya göl kenarı
 STR_3806_SHIP_DEPOT                                             :Tersane
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Suya yapılamaz
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Önce kanal kaldırılmalı
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Kaydet
@@ -1871,6 +1884,10 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Sürüc�
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Oyun kaydedilemedi{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Dosya silinemedi
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Dosya yüklenemedi{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bozuk kayıtlı oyun - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Kayıtlı oyun yeni bir sürümle yapılmış
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Dosya okunabilir değil
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Dosya yazılabilir değil
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Sürücü, klasör ve kayıtli oyun listesi
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Kaydetmek için kullanılacak dosya adı
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Seçili oyunu sil
@@ -2041,8 +2058,6 @@ STR_SV_STNAME_UPPER                                             :Yukarı {STRING
 STR_SV_STNAME_LOWER                                             :Asağı {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Ormanı
-
-STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -2574,6 +2589,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Bakıma git: {T
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Durmadan git: {TOWN} Tren Garı
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Durmadan bakıma git: {TOWN} Tren Garı
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı değil)
+STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} için gezi
+STR_TIMETABLE_STAY_FOR                                          :{STRING} için bekle
+STR_TIMETABLE_DAYS                                              :{COMMA} gün
+STR_TIMETABLE_TICKS                                             :{COMMA} birim
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} Tren Garına gidiyor
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN} Tren Garına gidiyor, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} Garında Bakım
@@ -2615,6 +2637,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Boşalt
 STR_REFIT                                                       :{BLACK}Modifiye
 STR_REFIT_TIP                                                   :{BLACK}Bu talimatta değiştirilecek kargo türünü seçin. Değiştirmeyi kaldırmak için CTRL ile tıklayın
 STR_REFIT_ORDER                                                 :(Moifiye ile > {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Zaman çizelgesi
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zaman tablosu görünümüne geç
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Talimatlar)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Talimatların Sonu - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2631,6 +2655,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Çok faz
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Yeni talimat verilemiyor...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Bu talimat silinemez...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Bu talimat değiştirilemez...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Talimat taşınamıyor...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Talimat atlanamıyor...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Seçili talimata atlanamıyor...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Araç hareket edemiyor...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Arkadaki lokomotif daima önündekini takip edecek
 STR_8838_N_A                                                    :yok{SKIP}
@@ -2688,6 +2715,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Tren yen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tren yeniden adlandırılamaz...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatta aracı kargoyu boşaltmaya zorla
 STR_886F_TRANSFER                                               :{BLACK}Aktar
+STR_CLEAR_TIME                                                  :{BLACK}Zamanı Temizle
+STR_RESET_LATENESS                                              :{BLACK}Gecikme sayacını sıfırla
 
 STR_TRAIN_STOPPING                                              :{RED}Frenliyor
 STR_TRAIN_STOPPING_VEL                                          :{RED}Frenliyor, {VELOCITY}
@@ -2698,6 +2727,13 @@ STR_TRAIN_START_NO_CATENARY                                     :Bu rayda elektr
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} artık kullanılabilir!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} artık kullanılabilir!  -  {STRING}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Aracın zaman çizelgesi oluşturulamıyor...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Araçlar sadece istasyonlarda bekleyebilir.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zamanı değiştir
+STR_TIMETABLE_STATUS_ON_TIME                                    :Bu araç zamanında çalışıyor
+STR_TIMETABLE_STATUS_LATE                                       :Bu araç {STRING} geç çalışıyor
+STR_TIMETABLE_STATUS_EARLY                                      :Bu araç {STRING} erken çalışıyor
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Yolda araba var
@@ -2748,6 +2784,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Araba ad
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Arabayı adlandır
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez otobüs geldi: {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez kamyon geldi: {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yolcu tramvayı geldi!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Araç döndürülemiyor...
@@ -2907,6 +2945,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Yeni kap
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Modifiye edilemez...
 STR_GO_TO_AIRPORT_HANGAR                                        :{STATION} Hangarına git
 SERVICE_AT_AIRPORT_HANGAR                                       :Servis: {STATION} Hangarı
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Zaman çizelgesi)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeplin düştü - {STATION}!
@@ -3220,6 +3260,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Fabrikal
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}İstasyonlar, garajlar tershaneler vb. için şeffaflık
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Köprüler için şeffaflık
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Antenler ve deniz fenerleri için şeffaflık
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparan yükleme göstergesi
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}%{NUM}{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}%{NUM}{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}%{NUM}{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}%{NUM}{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}%{NUM}{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}%{NUM}{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Grup {COMMA}
@@ -3250,6 +3298,13 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gruplar 
 STR_GROUP_CREATE_TIP                                            :{BLACK}Grup oluşturmak için tıklayın
 STR_GROUP_DELETE_TIP                                            :{BLACK}Seçili grubu sil
 STR_GROUP_RENAME_TIP                                            :{BLACK}Seçili grubun ismini değiştir
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Bu grubu otomatik yenilemeden ayrı tutmak için tıklayın
 
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Bu seneki gelir: {GREEN}{CURRENCY} {BLACK}(geçen sene: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Bu seneki gelir: {RED}{CURRENCY} {BLACK}(geçen sene: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Bu seneki gelir: {GREEN}{CURRENCY} {BLACK}(geçen sene: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Bu seneki gelir: {RED}{CURRENCY} {BLACK}(geçen sene: {RED}{CURRENCY}{BLACK})
+
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

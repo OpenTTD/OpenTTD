@@ -1414,6 +1414,19 @@ STR_NETWORK_LANG_HUNGARIAN                                      :Венгерс�
 STR_NETWORK_LANG_ICELANDIC                                      :Исландский
 STR_NETWORK_LANG_ITALIAN                                        :Итальянский
 STR_NETWORK_LANG_JAPANESE                                       :Японский
+STR_NETWORK_LANG_KOREAN                                         :Корейский
+STR_NETWORK_LANG_LITHUANIAN                                     :Латвийский
+STR_NETWORK_LANG_NORWEGIAN                                      :Норвержский
+STR_NETWORK_LANG_POLISH                                         :Польский
+STR_NETWORK_LANG_PORTUGUESE                                     :Португальский
+STR_NETWORK_LANG_ROMANIAN                                       :Румынский
+STR_NETWORK_LANG_RUSSIAN                                        :Русский
+STR_NETWORK_LANG_SLOVAK                                         :Словацкий
+STR_NETWORK_LANG_SLOVENIAN                                      :Словенский
+STR_NETWORK_LANG_SPANISH                                        :Испанский
+STR_NETWORK_LANG_SWEDISH                                        :Шведский
+STR_NETWORK_LANG_TURKISH                                        :Турецкий
+STR_NETWORK_LANG_UKRAINIAN                                      :Украинский
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Состояние сетевой игры
@@ -1607,6 +1620,13 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ж/Д путь 
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ж/Д путь с пресигналами
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/Д путь с выходными сигналами
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/Д путь с комбинированными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Рельсы и нормальными и пре-сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Рельсы и нормальными и выходными сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Рельсы с нормальными и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Рельсы с пре- и выходными сигналами
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Рельсы с пре- и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Рельсы с выходными и комбо-сигналами
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Сначала удалите ЖД станцию
 
 
 
@@ -1616,6 +1636,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Идут
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Строительство дорог
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Трамваи
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Выберите тип моста
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... односторонние дороги не могут иметь такое пересечение
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Не могу проложить дорогу здесь...
 STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Нельзя построить здесь трамвай...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Не могу удалить дорогу...
@@ -1653,6 +1674,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Гараж
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Железнодорожный переезд
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Невозможно удалить автобусную остановку...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Невозможно удалить грузовой терминал...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Не могу удалить пассажирскую трамвайную станцию...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Не могу удалить грузовую трамвайную станцию...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Города
@@ -1817,8 +1840,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} теперь принимает {STRING} и {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Направление остановки
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Ориентация станции
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Направление пассажирской трамвайной остановки
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Направление грузовой трамвайной остановки
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Сначала удалите автобусную остановку
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Сначала удалите грузовой терминал
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Сначала надо уничтожить пассажирскую трамвайную остановку
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Сначала надо уничтожить грузовую трамвайную остановку
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Станц{P 2 ия ии ий}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Нет -
@@ -1830,6 +1857,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Выбе
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Выберите длину ж/д станции
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Выберите направление автобусной остановки
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Выберите направление погрузочной станции
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Выберите направление пассажирской трамвайной остановки
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Выберите направление грузовой трамвайной остановки
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Показать станцию в основном окне
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Показать рейтинг станции
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Переименовать станцию
@@ -1867,6 +1896,7 @@ STR_3804_WATER                                                  :Вода
 STR_3805_COAST_OR_RIVERBANK                                     :Морской или речной берег
 STR_3806_SHIP_DEPOT                                             :Верфь
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Невозможно построить на воде
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Сначала надо уничтожить канал
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Сохранить игру
@@ -1879,6 +1909,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Не у�
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Невозможно сохранить игру{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Невозможно удалить файл
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Невозможно загрузить игру{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Внутренняя ошибка: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Нарушена структура сэйва - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сэйв сделан в более новой версии
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Файл не читается
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Незаписываемый файл
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Список дисков, папок и сохраненных игр
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Выбранное имя для сохранения игры
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Удалить выбранную сохраненную игру
@@ -2049,8 +2084,6 @@ STR_SV_STNAME_UPPER                                             :Верхняя 
 STR_SV_STNAME_LOWER                                             :Нижняя {STRING}
 STR_SV_STNAME_HELIPORT                                          :Площадка {STRING}
 STR_SV_STNAME_FOREST                                            :Лес {STRING}
-
-STR_SV_GROUP_NAME                                               :{GROUP}
 
 ############ end of savegame specific region!
 
@@ -2291,6 +2324,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Грузово�
 STR_LIVERY_HELICOPTER                                           :Вертолет
 STR_LIVERY_SMALL_PLANE                                          :Малый самолет
 STR_LIVERY_LARGE_PLANE                                          :Большой самолет
+STR_LIVERY_PASSENGER_TRAM                                       :Пассажирский трамвай
+STR_LIVERY_FREIGHT_TRAM                                         :Грузовой трамвай
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Настройка основной цветовой схемы
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Настройка цветовой схемы поездов
@@ -2657,6 +2692,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Слиш
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Невозможно вставить новое задание...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Невозможно удалить это задание...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Невозможно изменить это задание...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Не могу переместить это задание ...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Не могу пропустить это задание...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Не могу пропустить выделенное задание...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Невозможно переместить трансп. средство...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Тыловой локомотив всегда следует за его передней частью
 STR_8838_N_A                                                    :отсутствует{SKIP}
@@ -2688,6 +2726,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Пока
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Показать вместимость вагонов
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Показать общую вместимость поезда по типам грузов
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Показ списка заданий - щелкните для выделения. Если зажать CTRL - обзор станции.
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Пропустить данное задание и начать следующее. CTRL + клик пропускает выделенное задание.
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Удалить выделенное задание
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Ехать по выбранному заданию без остановок
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставить новое задание перед выделенным, или в конец списка
@@ -2718,6 +2757,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Пере
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Невозможно переименовать тип вагона ...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}По выделенному приказу произойдет принудительная разгрузка транспортного средства
 STR_886F_TRANSFER                                               :{BLACK}Трансфер
+STR_CLEAR_TIME                                                  :{BLACK}Сбросить Время
+STR_RESET_LATENESS                                              :{BLACK}Сброс счетчика
 
 STR_TRAIN_STOPPING                                              :{RED}Остановлен
 STR_TRAIN_STOPPING_VEL                                          :{RED}Останавливаю, {VELOCITY}
@@ -2729,6 +2770,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появился новый {STRING}!  -  {STRING}
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не могу составить расписание для этого транспорта...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт может только ждать на станции.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Этот транспорт не останавливается на этой станции.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изм. время
@@ -2777,12 +2819,16 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Пока
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Список автотранспорта - кликните для получения информации
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Построить выделенный автомобиль
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорость: {VELOCITY}{}Стоимость обслуживания: {CURRENCY}/год{}Емкость: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Емкость: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Назвать автотранспорт
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Невозможно переименовать автотранспорт ...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Назвать автотранспорт
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый автобус прибыл на остановку {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый грузовик прибыл на станцию {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Жители празднуют . . .{}Первый трамвай прибыл на {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Жители празднуют . . .{}Первый грузовой трамвай прибыл на {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}АВАРИЯ!{}Водитель погиб при столкновении с поездом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}АВАРИЯ!{}{COMMA} человек{P "" а ""} погиб{P "" ло ли} в столкновении с поездом!
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Невозможно развернуть автомобиль...
@@ -3069,6 +3115,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Пока
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Весь транспорт в депо будет продан. Вы уверены?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Неверный тип депо
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продать все поезда в депо
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продать все авто в гараже
@@ -3261,6 +3308,12 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Пере
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключить прозрачность зданий, вроде антенн и маяков.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Переключить прозрачность для индикаторов загрузки
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Группа {COMMA}
@@ -3298,5 +3351,7 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибыль за год: {GREEN}{CURRENCY} {BLACK}(прошлый год: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Прибыль за год: {RED}{CURRENCY} {BLACK}(прошлый год: {RED}{CURRENCY}{BLACK})
 
+STR_GROUP_NAME                                                  :{GROUP}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

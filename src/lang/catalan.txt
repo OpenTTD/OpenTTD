@@ -495,7 +495,7 @@ STR_01A7_OWNER                                                  :{BLACK}Propieta
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoritat Local: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ningú
 STR_01AA_NAME                                                   :{BLACK}Nom
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1
@@ -2083,8 +2083,6 @@ STR_SV_STNAME_LOWER                                             :Baix {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Bosc
 
-STR_SV_GROUP_NAME                                               :{GROUP}
-
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2594,7 +2592,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotora de m
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Cotxeres de Tren
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{} Arribada del 1er. tren a {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalls)
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalls)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en el camí
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -3339,5 +3337,8 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Benefici aquest any: {RED}{CURRENCY} {BLACK}(any passat: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Benefici aquest any: {GREEN}{CURRENCY} {BLACK}(any passat: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Benefici aquest any: {RED}{CURRENCY} {BLACK}(any passat: {RED}{CURRENCY}{BLACK})
+
+STR_GROUP_NAME                                                  :{GROUP}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########
