@@ -939,7 +939,7 @@ static void AddSign(const Sign *si, StringID str, uint16 width)
 {
 	StringSpriteToDraw *sstd;
 
-	sstd = (StringSpriteToDraw*)AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->str, 0);
+	sstd = (StringSpriteToDraw*)AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->index, 0);
 	if (sstd != NULL) {
 		sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
 		sstd->width = width;

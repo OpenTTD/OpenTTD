@@ -1681,7 +1681,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING1}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Building must be demolished first
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Population: {ORANGE}{COMMA}{BLACK}  Houses: {ORANGE}{COMMA}
@@ -1785,7 +1785,7 @@ STR_2802_TREES                                                  :{WHITE}Trees
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...tree already here
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...site unsuitable
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Can't plant tree here...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...too many signs
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Can't place sign here...
 STR_280A_SIGN                                                   :Sign
@@ -3340,6 +3340,7 @@ STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit this year: {RED}{CURRENCY} {BLACK}(last year: {RED}{CURRENCY}{BLACK})
 
 STR_GROUP_NAME                                                  :{GROUP}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

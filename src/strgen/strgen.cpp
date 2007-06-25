@@ -504,6 +504,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"STATION",  EmitSingleChar, SCC_STATION_NAME,  1, 0},
 	{"TOWN",     EmitSingleChar, SCC_TOWN_NAME,     1, 0},
 	{"GROUP",    EmitSingleChar, SCC_GROUP_NAME,    1, 0},
+	{"SIGN",     EmitSingleChar, SCC_SIGN_NAME,     1, 0},
 	{"VEHICLE",  EmitSingleChar, SCC_VEHICLE_NAME,  1, 0},
 
 	// 0x9D is used for the pseudo command SETCASE

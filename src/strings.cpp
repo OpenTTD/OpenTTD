@@ -29,6 +29,7 @@
 #include "group.h"
 #include "debug.h"
 #include "newgrf_townname.h"
+#include "signs.h"
 #include "vehicle.h"
 
 /* for opendir/readdir/closedir */
@@ -870,6 +871,12 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				args[0] = v->unitnumber;
 
 				buff = GetStringWithArgs(buff, v->string_id, args, last);
+				break;
+			}
+
+			case SCC_SIGN_NAME: { // {SIGN}
+				const Sign *si = GetSign(GetInt32(&argv));
+				buff = GetString(buff, si->str, last);
 				break;
 			}
 

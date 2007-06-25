@@ -88,7 +88,8 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 				if (si->owner != OWNER_NONE)
 					DrawPlayerIcon(si->owner, 4, y + 1);
 
-				DrawString(22, y, si->str, 8);
+				SetDParam(0, si->index);
+				DrawString(22, y, STR_SIGN_NAME, 8);
 				y += 10;
 			}
 		}

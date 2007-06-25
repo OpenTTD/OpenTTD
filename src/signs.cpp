@@ -39,7 +39,7 @@ DEFINE_OLD_POOL(Sign, Sign, SignPoolNewBlock, NULL)
 static void UpdateSignVirtCoords(Sign *si)
 {
 	Point pt = RemapCoords(si->x, si->y, si->z);
-	SetDParam(0, si->str);
+	SetDParam(0, si->index);
 	UpdateViewportSignPos(&si->sign, pt.x, pt.y - 6, STR_2806);
 }
 

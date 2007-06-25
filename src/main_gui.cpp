@@ -346,7 +346,8 @@ void ShowRenameSignWindow(const Sign *si)
 {
 	_rename_id = si->index;
 	_rename_what = 0;
-	ShowQueryString(si->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, NULL, CS_ALPHANUMERAL);
+	SetDParam(0, si->index);
+	ShowQueryString(STR_SIGN_NAME, STR_280B_EDIT_SIGN_TEXT, 30, 180, NULL, CS_ALPHANUMERAL);
 }
 
 void ShowRenameWaypointWindow(const Waypoint *wp)
