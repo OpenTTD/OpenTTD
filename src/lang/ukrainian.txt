@@ -1807,7 +1807,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Спочатку зруйнуйте споруду
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Населення: {ORANGE}{COMMA}{BLACK}  Будинки: {ORANGE}{COMMA}
@@ -1840,7 +1840,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Місц
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Інформація про місцеву владу
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} місцева влада
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейтинги компаній:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидії
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Пропонуються субсидії:-
 STR_2027_FROM_TO                                                :{ORANGE}Перевезення {STRING.r} з {STRING} до {STRING}
@@ -1911,7 +1911,7 @@ STR_2802_TREES                                                  :{WHITE}Дере
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...Тут вже росте дерево
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...невідповідне місце
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Неможливо посадити тут дерево
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...дуже багато позначень
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Неможливо позначити місце
 STR_280A_SIGN                                                   :Позначення
@@ -2324,7 +2324,7 @@ STR_683B_HOSTILE                                                :Вороже
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Гравець {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Нове лице
 STR_7005_COLOR_SCHEME                                           :{BLACK}Колір
@@ -2336,7 +2336,7 @@ STR_700A_COMPANY_NAME                                           :Назва ко
 STR_700B_PRESIDENT_S_NAME                                       :Ім'я керівника
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Неможливо змінити назву компанії...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Неможливо змінити ім'я керівника...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} - фінанси {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} - фінанси {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Витрати/доходи
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Будівництво
@@ -2355,7 +2355,7 @@ STR_701D_OTHER                                                  :{GOLD}Інше
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Всього:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Графік доходів
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2404,8 +2404,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Дост
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Рейтинг продуктивності компанії(найбільший рейтинг=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Вартість компанії
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Таблиця компаній
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Компанія у скруті!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} буде продано або оголошено банкрутом, якщо найблищим часом не зросте її продуктивність!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Керівник)
@@ -2831,8 +2831,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - К
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Техогляд
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Неможливо збудувати поїзд...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Ціна: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Ціна: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Завантажуюся/Розвантажуюся
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поїзд повинен стояти в депо
@@ -2917,8 +2917,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Нееле
 STR_TRAIN_START_NO_CATENARY                                     :Нема електрики, поїзд стоїть
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Став доступним новий {STRING}!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Став доступним новий {STRING}!  -  {STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Став доступним новий {STRING}!  -  {ENGINE}
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не можна встановити розклад для транспорту...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт може чекати тільки на станціях.
@@ -2942,7 +2942,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: 
 STR_900E_MAX_SPEED                                              :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...авто повинно стояти в депо
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Неможливо продати авто...
@@ -3018,7 +3018,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: 
 STR_9813_MAX_SPEED                                              :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Неможливо зупинити корабель...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Неможливо направити корабель в депо...
@@ -3086,7 +3086,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: 
 STR_A00E_MAX_SPEED                                              :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Неможливо направити літак до ангару...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летить до {STATION} ангару
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}

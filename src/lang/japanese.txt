@@ -495,7 +495,7 @@ STR_01A7_OWNER                                                  :{BLACK}所有�
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}町議会：{LTBLUE}{STRING}
 STR_01A9_NONE                                                   :なし
 STR_01AA_NAME                                                   :{BLACK}名称
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1日
@@ -1681,7 +1681,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} �
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}まずは建物を破壊しなければなりません
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}人口：{ORANGE}{COMMA}人{BLACK}　建物：{ORANGE}{COMMA}戸
@@ -1714,7 +1714,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}町議�
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}町議会の情報を表示します
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN}の町議会
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}会社の町内の世評：
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}：{ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}：{ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}助成金
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}次の運送経路に助成金を提案：
 STR_2027_FROM_TO                                                :{ORANGE}{STRING}を{STRING}から{STRING}へ
@@ -1785,7 +1785,7 @@ STR_2802_TREES                                                  :{WHITE}木
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...木はsすでにあります
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...不適当な位置です
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}ここに木が植林できません...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...標示が多すぎます
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}ここに標示が設置できません...
 STR_280A_SIGN                                                   :標示
@@ -2083,7 +2083,7 @@ STR_SV_STNAME_LOWER                                             :下{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}ヘリポート
 STR_SV_STNAME_FOREST                                            :{STRING}森林
 
-STR_SV_GROUP_NAME                                               :{GROUP}
+
 
 ############ end of savegame specific region!
 
@@ -2163,7 +2163,7 @@ STR_683B_HOSTILE                                                :対立
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :（プレヤー {COMMA}）
 STR_7004_NEW_FACE                                               :{BLACK}新規顔
 STR_7005_COLOR_SCHEME                                           :{BLACK}カラースキーム
@@ -2175,7 +2175,7 @@ STR_700A_COMPANY_NAME                                           :会社名
 STR_700B_PRESIDENT_S_NAME                                       :社長の名前
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}会社名が変更できません...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}社長の名前が変更できません...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY}の経営状況　{BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY}の経営状況　{BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}支払い／収益
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}建設
@@ -2194,7 +2194,7 @@ STR_701D_OTHER                                                  :{GOLD}その他
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}合計：
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}損益グラフ
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2243,8 +2243,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}運送�
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}会社のパフォーマンス率（最大＝1000）
 STR_7052_COMPANY_VALUES                                         :{WHITE}会社の価値
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}交通会社成績表
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}交通会社が経営困難！
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}もうすぐ{COMPANY}のパフォーマンスが改良なしで売却および破産のリスク！
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}（社長）
@@ -2594,7 +2594,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :磁気浮上式
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}電車庫
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀{}初列車が{STATION}駅に到着！
-STR_8802_DETAILS                                                :{WHITE}{STRING}（詳細）
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}列車があります
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2670,8 +2670,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - �
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}修理
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}鉄道車両が購入できません...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入日付：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}　購入日付：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}積み降ろし中
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列車は車庫に止めなければ成らないんです
@@ -2756,8 +2756,8 @@ STR_TRAIN_NO_POWER                                              :{RED}電源は�
 STR_TRAIN_START_NO_CATENARY                                     :線路は懸垂線がないため、この列車が動けません
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING}が新登場！
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING}が新登場！ー{STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING}が新登場！ー{ENGINE}
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}この車両に時刻表が設定できません...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}車両が駅／バス停のみで停車できます。
@@ -2781,7 +2781,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}使用�
 STR_900E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...車庫内に停止しなければなりません
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}道路車両が販売できません...
@@ -2857,7 +2857,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}使用�
 STR_9813_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}船舶が開始／停止できません...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}船舶が造船所へ回送できません...
@@ -2925,7 +2925,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}使用�
 STR_A00E_MAX_SPEED                                              :{BLACK}最大速度：{LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}今年の損益：{LTBLUE}{CURRENCY}（昨年：{CURRENCY}）
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}信頼度：{LTBLUE}{COMMA}％　{BLACK}最終修理後の故障回数：{LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}　購入年：{LTBLUE}{NUM}{BLACK}　価値：{LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}飛行機が格納庫へ回送できません...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION}格納庫へ行く
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}格納庫へ行く、{VELOCITY}

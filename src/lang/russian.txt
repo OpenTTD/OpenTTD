@@ -1683,7 +1683,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Сначала надо уничтожить здания
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Зданий: {ORANGE}{COMMA}
@@ -1716,7 +1716,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Мест
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Информация о местных властях
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} местные власти
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейтинг транспортной компании
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидии
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Свободные субсидии
 STR_2027_FROM_TO                                                :{ORANGE}{STRING.p} по маршруту из {STRING} в {STRING}
@@ -1787,7 +1787,7 @@ STR_2802_TREES                                                  :{WHITE}Дере
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...уже есть дерево
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...неподходящее место
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Невозможно высадить деревья...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...слишком много знаков
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Невозможно установить знак...
 STR_280A_SIGN                                                   :Знак
@@ -2174,7 +2174,7 @@ STR_683B_HOSTILE                                                :Враждеб�
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Игрок {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Лицо
 STR_7005_COLOR_SCHEME                                           :{BLACK}Цвет
@@ -2186,7 +2186,7 @@ STR_700A_COMPANY_NAME                                           :Компани�
 STR_700B_PRESIDENT_S_NAME                                       :Имя директора
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Невозможно изменить название компании...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Невозможно изменить имя директора...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Денежные средства {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Денежные средства {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Расход/доход
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Строительство
@@ -2205,7 +2205,7 @@ STR_701D_OTHER                                                  :{GOLD}Друг�
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}ИТОГО:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}График доходов
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2254,8 +2254,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Дост
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Рейтинг деятельности компании (макс=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Стоимость активов компании
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Сравнительная таблица компаний
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Транспортная компания в опасном положении!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT} {COMPANY} будет продана или объявлена банкротом, если ситуация не изменится!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Директор)
@@ -2681,8 +2681,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - К
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Обслуж.
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Невозможно построить ж/д транспорт...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Построен: {LTBLUE}{NUM}{BLACK} Стоимость: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Стоимость: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построен: {LTBLUE}{NUM}{BLACK} Стоимость: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Стоимость: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Разгрузка/Погрузка
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поезд должен быть остановлен в депо
@@ -2767,8 +2767,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Нет т�
 STR_TRAIN_START_NO_CATENARY                                     :Кто-то украл все провода, поезд не может ехать...
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Появился новый {STRING}!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появился новый {STRING}!  -  {STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появился новый {STRING}!  -  {ENGINE}
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не могу составить расписание для этого транспорта...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт может только ждать на станции.
@@ -2792,7 +2792,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Возр
 STR_900E_MAX_SPEED                                              :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего ремонта: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...должен быть остановлен в гараже
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Невозможно продать автомобиль...
@@ -2868,7 +2868,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Возр
 STR_9813_MAX_SPEED                                              :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего обслуж.: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Стоимость: {LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Стоимость: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Емкость: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не могу остановить/запустить корабль...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не могу отправить корабль в док...
@@ -2936,7 +2936,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Возр
 STR_A00E_MAX_SPEED                                              :{BLACK}Макс. скорость: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломок с последнего ремонта: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Построено: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Невозможно отправить его в ангар...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Летит в Ангар {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Следует в Ангар {STATION}, {VELOCITY}

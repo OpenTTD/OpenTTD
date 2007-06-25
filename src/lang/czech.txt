@@ -553,7 +553,7 @@ STR_01A7_OWNER                                                  :{BLACK}Vlastní
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Místní správa: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nic
 STR_01AA_NAME                                                   :{BLACK}Jméno
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1.
@@ -1736,7 +1736,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budova musí být nejprve zničena
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populace: {ORANGE}{COMMA}{BLACK} Domů: {ORANGE}{COMMA}
@@ -1769,7 +1769,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Místní
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Ukázat informace o místní správě
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Místní správa města {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Hodnocení společností:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Dotace
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Nabídnuté dotace pro službu:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING.big} z {STRING} do {STRING}
@@ -1840,7 +1840,7 @@ STR_2802_TREES                                                  :{WHITE}Stromy
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}... strom už tu je
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}... nepoužitelné místo
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Zde nemůžeš vysadit strom...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}... příliš mnoho popisků
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Zde nemůžeš umístit nápis...
 STR_280A_SIGN                                                   :Nápis
@@ -2132,7 +2132,7 @@ STR_SV_STNAME_LOWER                                             :dolní {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} heliport
 STR_SV_STNAME_FOREST                                            :{STRING} les
 
-STR_SV_GROUP_NAME                                               :{GROUP}
+
 
 ############ end of savegame specific region!
 
@@ -2212,7 +2212,7 @@ STR_683B_HOSTILE                                                :zaujatý
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(hráč {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nový obličej
 STR_7005_COLOR_SCHEME                                           :{BLACK}Barva
@@ -2224,7 +2224,7 @@ STR_700A_COMPANY_NAME                                           :Jméno společn
 STR_700B_PRESIDENT_S_NAME                                       :Jméno prezidenta
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Nemohu změnit jméno společnosti.
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Nemohu změnit jméno prezidenta.
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finance {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finance {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Příjmy / výdaje
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Výstavba
@@ -2243,7 +2243,7 @@ STR_701D_OTHER                                                  :{GOLD}Další
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Celkem:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf příjmu
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2292,8 +2292,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Doručen
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Hodnocení společností (nejvyšší hodnocení=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Hodnota společností
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tabulka pořadí společností
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Dopravní společnost má problémy!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} bude prodána nebo vyhlásí bankrot, pokud se brzy nezvýší výkonnost!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Prezident)
@@ -2649,7 +2649,7 @@ STR_8107_MAGLEV_LOCOMOTIVE.dat                                  :
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Železniční depo {TOWN}
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaily)
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V cestě je vlak
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2716,8 +2716,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ko
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Údržba
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nemohu koupit vagon nebo lokomotivu...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Hodnota: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Hodnota: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Nakládání / vykládání
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musí stát v depu
@@ -2796,8 +2796,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Bez proudu
 STR_TRAIN_START_NO_CATENARY                                     :Tato trať není elektrifikována, vlak nemůže odjet
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nov{G á ý é} {STRING} k dispozici!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nov{G á ý é} {STRING} k dispozici!  -  {STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nov{G á ý é} {STRING} k dispozici!  -  {ENGINE}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Silniční vozidlo v cestě
@@ -2813,7 +2813,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří
 STR_900E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok): {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupen: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupen: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musí být zastaven v garáži
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemohu prodat silniční vozidlo...
@@ -2889,7 +2889,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří
 STR_9813_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nelze rozjet/zastavit loď...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nelze poslat loď do depa...
@@ -2957,7 +2957,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nelze poslat letadlo do hangáru...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Jedu do hangáru {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Jedu do hangáru {STATION}, {VELOCITY}

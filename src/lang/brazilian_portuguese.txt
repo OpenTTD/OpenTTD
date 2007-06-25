@@ -497,7 +497,7 @@ STR_01A7_OWNER                                                  :{BLACK}Propriet
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoridade local: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nenhum
 STR_01AA_NAME                                                   :{BLACK}Nome
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1
@@ -1683,7 +1683,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}O edifício precisa ser demolido primeiro
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
@@ -1716,7 +1716,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Autorida
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Exibir informações sobre a autoridade local
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}autoridade local de {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Avaliações das empresas
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsídios
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ofertas de transporte subsidiados
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} para {STRING}
@@ -1789,7 +1789,7 @@ STR_2802_TREES                                                  :{WHITE}Árvores
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...árvore já plantada aqui
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...local impróprio
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Impossível plantar árvore aqui...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...muitas placas
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Impossível colocar placa aqui...
 STR_280A_SIGN                                                   :Placa
@@ -2087,7 +2087,7 @@ STR_SV_STNAME_LOWER                                             :Sul de {STRING}
 STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
 STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
 
-STR_SV_GROUP_NAME                                               :{GROUP}
+
 
 ############ end of savegame specific region!
 
@@ -2167,7 +2167,7 @@ STR_683B_HOSTILE                                                :Hostil
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Jogador {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Novo Rosto
 STR_7005_COLOR_SCHEME                                           :{BLACK}Cores
@@ -2179,7 +2179,7 @@ STR_700A_COMPANY_NAME                                           :Nome da Empresa
 STR_700B_PRESIDENT_S_NAME                                       :Nome do Presidente
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Impossível alterar o nome da empresa...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Impossível alterar o nome do presidente...
-STR_700E_FINANCES                                               :{WHITE}Finanças de {COMPANY} {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}Finanças de {COMPANY} {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Despesas/Lucros
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Construção
@@ -2198,7 +2198,7 @@ STR_701D_OTHER                                                  :{GOLD}Outros
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Gráfico de Rendimentos
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2247,8 +2247,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unidades
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Avaliações da empresa (máximo=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Valor da empresa
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Classificação de Empresas
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Empresa de transportes em dificuldades!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} será vendida ou declarada falida a menos que melhore os seus rendimentos em breve!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Presidente)
@@ -2598,7 +2598,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotiva trem
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Depósito ferroviário de {TOWN}
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro trem chega a {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalhes)
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalhes)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trem no caminho
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2674,8 +2674,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fi
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Manutenção
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Impossível construir veículo ferroviário...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valor: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Carregando / descarregando
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O trem precisa estar parado dentro do depósito
@@ -2760,8 +2760,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Sem força
 STR_TRAIN_START_NO_CATENARY                                     :Essa linha não tem energia, portanto o trem não parte
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novo {STRING} agora disponível!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível!  -  {STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível!  -  {ENGINE}
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Impossível programar veículo...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Veículos só podem aguardar em estações
@@ -2785,7 +2785,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {
 STR_900E_MAX_SPEED                                              :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros deste ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...precisa estar parado dentro de uma garagem
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossível vender automóvel...
@@ -2861,7 +2861,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {
 STR_9813_MAX_SPEED                                              :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros deste ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Impossível iniciar/parar embarcação...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Impossível enviar embarcação para o depósito...
@@ -2929,7 +2929,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {
 STR_A00E_MAX_SPEED                                              :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros deste ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Impossível enviar aeronave para o hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Dirigindo-se ao hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Dirigindo-se ao hangar de {STATION}, {VELOCITY}

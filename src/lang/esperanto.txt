@@ -496,7 +496,7 @@ STR_01A7_OWNER                                                  :{BLACK}Posedant
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokaj estroj: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Neniu
 STR_01AA_NAME                                                   :{BLACK}Nomo
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1a de
@@ -1626,7 +1626,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Antaŭe forigu konstruaĵon
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Enloĝantoj: {ORANGE}{COMMA}{BLACK}  Domoj: {ORANGE}{COMMA}
@@ -1659,7 +1659,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Lokaj es
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Montru informojn pri lokaj estroj
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Lokaj estroj de {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Takso de transportkompanioj:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencioj
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvencioj haveblas por jenaj servoj:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} al {STRING}
@@ -1730,7 +1730,7 @@ STR_2802_TREES                                                  :{WHITE}Arboj
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...jam estas arbo
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...loko ne uzeblas
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Ne povas planti arbon ĉi tie...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...tro da afiŝoj
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Ne povas meti afiŝon ĉi tie...
 STR_280A_SIGN                                                   :Afiŝo
@@ -2095,7 +2095,7 @@ STR_683B_HOSTILE                                                :Gastige
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Ludanto {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nova Vizaĝo
 STR_7005_COLOR_SCHEME                                           :{BLACK}Kolorskemo
@@ -2107,7 +2107,7 @@ STR_700A_COMPANY_NAME                                           :Kompania Nomo
 STR_700B_PRESIDENT_S_NAME                                       :Nomo de la Manaĝanto
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ne povas ŝanĝi kompaninomon...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Ne povas ŝanĝi manaĝantnomon...
-STR_700E_FINANCES                                               :{WHITE}Financoj de {COMPANY} {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}Financoj de {COMPANY} {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Elspezo/Enspezo
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Konstruado
@@ -2126,7 +2126,7 @@ STR_701D_OTHER                                                  :{GOLD}Alia
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Entute:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Enspeza Grafiko
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2175,8 +2175,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Kiom da 
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Kompania rendimento (maksimumo=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Kompaniaj valoroj
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Kompaniara tabelo
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportkompanio en problemoj!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} forvendiĝos aŭ bankrotiĝos krom se ĝi pli bone faros!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Manaĝanto)
@@ -2524,7 +2524,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :magleva lokomot
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Trajndeponejo
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaloj)
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trajno okupas la lokon
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2591,8 +2591,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fi
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Prizorgo
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ne povas krei relan veturilon...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valoro: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valoro: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Ŝarĝante / Deŝarĝante
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trajno estu halta en deponejo
@@ -2667,8 +2667,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Senforte
 STR_TRAIN_START_NO_CATENARY                                     :Mankas ĉi-trake supera elektro, do la trajno ne povas starti
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nova {STRING} nun haveblas!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nova {STRING} nun haveblas!  -  {STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nova {STRING} nun haveblas!  -  {ENGINE}
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vojveturilo okupas la lokon
@@ -2684,7 +2684,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {L
 STR_900E_MAX_SPEED                                              :{BLACK}Maksimuma rapideco: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...devas esti haltigata en vojveturila deponejo
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ne povas vendi vojveturilon...
@@ -2756,7 +2756,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {L
 STR_9813_MAX_SPEED                                              :{BLACK}Maksimuma rapideco: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapablo: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ne povas haltigi/starti ŝipon...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ne povas sendi ŝipon al deponejo...
@@ -2824,7 +2824,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Aĝo: {L
 STR_A00E_MAX_SPEED                                              :{BLACK}Maksimuma rapideco: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Ĉi-jara gajno: {LTBLUE}{CURRENCY}  (lastjara: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fidebleco: {LTBLUE}{COMMA}%  {BLACK}Rompiĝoj post lasta prizorgo: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Ne povas sendi aviadilon al hangaro...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Irante al {STATION} Hangaro
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Irante al {STATION} Hangaro, {VELOCITY}

@@ -1747,7 +1747,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Előbb le kell rombolnod az épületet
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Lakosság: {ORANGE}{COMMA}{BLACK} Házak: {ORANGE}{COMMA}
@@ -1780,7 +1780,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Önkorm�
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Az önkormányzat adatainak megmutatása
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} önkormányzata
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Vélemény a szállítási cégekről:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Támogatások
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Támogatás jár
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} szállításáért {STRING} és {STRING} között
@@ -1851,7 +1851,7 @@ STR_2802_TREES                                                  :{WHITE}Fák
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...már van itt
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...nem alkalmas rá a hely
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Nem ültethetsz ide fát...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...túl sok a felirat
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Nem rakhatsz ide feliratot...
 STR_280A_SIGN                                                   :Felirat
@@ -2264,7 +2264,7 @@ STR_683B_HOSTILE                                                :Ellenséges
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :({COMMA}. játékos)
 STR_7004_NEW_FACE                                               :{BLACK}Új arc
 STR_7005_COLOR_SCHEME                                           :{BLACK}Szín váltása
@@ -2276,7 +2276,7 @@ STR_700A_COMPANY_NAME                                           :A vállalat nev
 STR_700B_PRESIDENT_S_NAME                                       :Az elnök neve
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Nem változtathatod meg a cég nevét...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Nem változtathatod meg az elnök nevét...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} pénzügyei {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} pénzügyei {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Kiadás/Bevétel
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Építkezés
@@ -2295,7 +2295,7 @@ STR_701D_OTHER                                                  :{GOLD}Egyéb
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Összesen:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Jövedelem grafikon
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2344,8 +2344,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Elszáll
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Cégek teljesítménye (legjobb teljesítmény=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Vállalatok értéke
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}A cégek helyezése
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Egy szállítási cég bajban van!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} csődöt jelent vagy el kell adni, ha teljesítménye nem nő hamarosan!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME} {}(Elnök)
@@ -2771,8 +2771,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Me
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Javítás
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nem veheted meg a vasúti járművet...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK} Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Érték: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK} Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Felpakol / Lepakol
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}A remízben kellene állnia ehhez
@@ -2857,8 +2857,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Nincs ára
 STR_TRAIN_START_NO_CATENARY                                     :Ennek a sínnek nincs felsővezetéke, a vonat nem tud indulni
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Új {STRING} elérhető!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Új {STRING} elérhető!  -  {STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Új {STRING} elérhető!  -  {ENGINE}
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}A jármű nem időzíthető
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}A járművek csak az állomáson várakozhatnak
@@ -2882,7 +2882,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LT
 STR_900E_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...garázsban kellene állnia ehhez
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nem adhatod el a közúti járművet...
@@ -2958,7 +2958,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LT
 STR_9813_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nem indíthatod el/ állíthatod meg a hajót...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nem küldheted a hajót a dokkba...
@@ -3026,7 +3026,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LT
 STR_A00E_MAX_SPEED                                              :{BLACK}Végsebesség: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nem küldheted a repülőgépet a hangárba...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Úton {STATION} hangárjába
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Úton {STATION} hangárjába, {VELOCITY}

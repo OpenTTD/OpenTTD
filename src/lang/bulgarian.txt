@@ -497,7 +497,7 @@ STR_01A7_OWNER                                                  :{BLACK}Собс
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Община: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Нищо
 STR_01AA_NAME                                                   :{BLACK}Име
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1-ви
@@ -1672,7 +1672,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Сградата първо трябва да бъде разрушена
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Жилища: {ORANGE}{COMMA}
@@ -1705,7 +1705,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Мест
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Показване на информация за местните власти
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} местни власти
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейтинги на транспортни компании:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидии
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Субсидии за превоз на:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} от {STRING} до {STRING}
@@ -1776,7 +1776,7 @@ STR_2802_TREES                                                  :{WHITE}Дърв
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...вече има дърво
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...неподходящо място
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Тук не може да бъде засадено дърво...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...твърде много знаци
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Тук не може да бъде поставян знак...
 STR_280A_SIGN                                                   :Знак
@@ -2146,7 +2146,7 @@ STR_683B_HOSTILE                                                :враждеб�
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Играч {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Ново лице
 STR_7005_COLOR_SCHEME                                           :{BLACK}Цветове
@@ -2158,7 +2158,7 @@ STR_700A_COMPANY_NAME                                           :Име на к�
 STR_700B_PRESIDENT_S_NAME                                       :Име на управителя
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Не може да бъде променено името на компанията...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Не може да се промени името на управителя...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Финанси {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Финанси {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Разходи/Приходи
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Строеж
@@ -2177,7 +2177,7 @@ STR_701D_OTHER                                                  :{GOLD}Друг�
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Всичко:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Графика на приходите
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2226,8 +2226,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Брой
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Райтинг на представянето на компанията (максимален рейтинг=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Стойност на Компанията
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Класиране на Компаниите
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Транспортна компания в беда!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} ще бъде продадена или обявена в банкрут освен ако представянето й не се подобри скоро!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Manager)
@@ -2577,7 +2577,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :локомот�
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Влаково депо
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Подробности)
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Подробности)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Влак на пътя
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2646,8 +2646,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - К
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Ремонт
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Не може да купиш ЖП машина...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Купи: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Цена: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Купи: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Цена: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Товарене/ Разтоварване
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Влакът трябва да бъде спрян в депото
@@ -2722,8 +2722,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Няма �
 STR_TRAIN_START_NO_CATENARY                                     :Влака не може да тръгне, защото ЖП линията няма catenary
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Нов {STRING} е на разположение!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Нов {STRING} е на разположение! - {STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Нов {STRING} е на разположение! - {ENGINE}
 
 
 ##id 0x9000
@@ -2740,7 +2740,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Възр
 STR_900E_MAX_SPEED                                              :{BLACK}Макс. скорост: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Печалба тази година: {LTBLUE}{CURRENCY}  (предходна година: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Повреди от последния сервиз: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Производство: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Производство: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...трябва да бъде спряно в сервиз за коли
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Не може да продаде колата...
@@ -2813,7 +2813,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Възр
 STR_9813_MAX_SPEED                                              :{BLACK}Макс. скорост: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Печалба тази година: {LTBLUE}{CURRENCY}  (миналата година: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Повреди след последния сервиз: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Купен: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Купен: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не може да спреш/задвижиш кораба...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не може да пратиш кораба в депото...
@@ -2881,7 +2881,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Възр
 STR_A00E_MAX_SPEED                                              :{BLACK}Макс. скорост: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Печалба тази година: {LTBLUE}{CURRENCY}  (предходната: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Повреди от последния сервиз: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Произведен: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Произведен: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Не може да изпрати самолета в хангар...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Отиващ към Хангара на летище {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Отиващ към Хангара на летище {STATION}, {VELOCITY}

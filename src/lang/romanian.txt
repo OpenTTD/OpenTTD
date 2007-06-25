@@ -1681,7 +1681,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Mai întâi trebuie demolată clădirea
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populaţia: {ORANGE}{COMMA}{BLACK}  Locuinţe: {ORANGE}{COMMA}
@@ -1714,7 +1714,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Autorita
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Afişează informaţii referitoare la autoritatea locală
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Autoritatea locală din {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Evaluarea companiilor de transport:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvenţii (F6)
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvenţii disponibile:
 STR_2027_FROM_TO                                                :{ORANGE}- {STRING} de la {STRING} la {STRING}
@@ -1785,7 +1785,7 @@ STR_2802_TREES                                                  :{WHITE}Arbori
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...sunt deja plantaţi arbori
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...locaţie nepotrivită
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Nu pot planta arbori aici...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...prea multe semne
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Nu pot plasa un semn aici...
 STR_280A_SIGN                                                   :Semn
@@ -2083,7 +2083,7 @@ STR_SV_STNAME_LOWER                                             :{STRING} de Jos
 STR_SV_STNAME_HELIPORT                                          :Heliportul {STRING}
 STR_SV_STNAME_FOREST                                            :Pãdurea {STRING}
 
-STR_SV_GROUP_NAME                                               :{GROUP}
+
 
 ############ end of savegame specific region!
 
@@ -2163,7 +2163,7 @@ STR_683B_HOSTILE                                                :ostilă
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Jucătorul {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Schimbă poza
 STR_7005_COLOR_SCHEME                                           :{BLACK}Culoare
@@ -2175,7 +2175,7 @@ STR_700A_COMPANY_NAME                                           :Noul nume al co
 STR_700B_PRESIDENT_S_NAME                                       :Noul nume al preşedintelui
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Nu pot schimba numele companiei...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Nu pot schimba numele preşedintelui...
-STR_700E_FINANCES                                               :{WHITE}Situaţia financiară a companiei {COMPANY} {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}Situaţia financiară a companiei {COMPANY} {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Cheltuieli/Venituri
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Construcţii
@@ -2194,7 +2194,7 @@ STR_701D_OTHER                                                  :{GOLD}Altele
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graficul veniturilor
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2243,8 +2243,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unităţ
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Evaluarea performanţelor companiilor (maxim=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Valorile companiilor
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Clasamentul companiilor
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Companie de transport cu probleme!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} va fi vândută dacă situaţia financiară nu se va îmbunătăţi curând!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Preşedinte)
@@ -2670,8 +2670,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Sf
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Service
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nu pot construi vehiculul...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Cumpărat: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Valoare: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Cumpărat: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valoare: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Încărcare / Descărcare
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trenul trebuie oprit intr-un depou
@@ -2756,8 +2756,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Fara curen
 STR_TRAIN_START_NO_CATENARY                                     :Aceasta sina nu este electrificata, deci trenul nu poate porni
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Un nou {STRING} este acum disponibil!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Un nou {STRING} este acum disponibil!  -  {STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Un nou {STRING} este acum disponibil!  -  {ENGINE}
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nu pot programa vehiculul...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehiculele pot astepta numai in statii.
@@ -2781,7 +2781,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta:
 STR_900E_MAX_SPEED                                              :{BLACK}Vitezã max.: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Cumpãrat: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Cumpãrat: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...trebuie oprit intr-o autobazã
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nu pot vinde autovehiculul...
@@ -2857,7 +2857,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vârsta:
 STR_9813_MAX_SPEED                                              :{BLACK}Viteza max.: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nu pot opri/porni nava...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nu pot trimite nava în santier...
@@ -2925,7 +2925,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vârstã
 STR_A00E_MAX_SPEED                                              :{BLACK}Vitezã max.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Cumpãrat în: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Cumpãrat în: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nu pot trimite nava într+un hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Merge la Hangarul {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Merge la Hangarul {STATION}, {VELOCITY}

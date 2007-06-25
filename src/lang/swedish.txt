@@ -495,7 +495,7 @@ STR_01A7_OWNER                                                  :{BLACK}Ägare: 
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokala myndigheter: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Namn
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1
@@ -1681,7 +1681,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Byggnad måste rivas först
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Invånare: {ORANGE}{COMMA}{BLACK}  Hus: {ORANGE}{COMMA}
@@ -1714,7 +1714,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Lokala m
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Visa information om de lokala myndigheterna
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} lokala myndigheter
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transportföretags värderingar:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventioner
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Aktuella subventioner:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} från {STRING} till {STRING}
@@ -1785,7 +1785,7 @@ STR_2802_TREES                                                  :{WHITE}Träd
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...träd redan här
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...plats olämplig
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kan inte plantera träd här...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...för många skyltar
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Kan inte placera skylt här...
 STR_280A_SIGN                                                   :Skylt
@@ -2078,7 +2078,7 @@ STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplats
 STR_SV_STNAME_FOREST                                            :{STRING} Skog
 
-STR_SV_GROUP_NAME                                               :{GROUP}
+
 
 ############ end of savegame specific region!
 
@@ -2158,7 +2158,7 @@ STR_683B_HOSTILE                                                :Fientlig
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Spelare {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nytt ansikte
 STR_7005_COLOR_SCHEME                                           :{BLACK}Färgval
@@ -2170,7 +2170,7 @@ STR_700A_COMPANY_NAME                                           :Företagsnamn
 STR_700B_PRESIDENT_S_NAME                                       :Namn på VD
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Kan inte ändra företagsnamn...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Kan inte ändra namnet på VD:n...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Budget {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Budget {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Utgifter/inkomster
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Konstruktioner
@@ -2189,7 +2189,7 @@ STR_701D_OTHER                                                  :{GOLD}Övrigt
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totalt:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf över inkomster
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2238,8 +2238,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Enheter 
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Företagets prestationsvärderingar (maxvärdering=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Företagsvärde
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Företagstabell
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportföretag har problem!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} kommer att säljas eller gå bankrutt om det inte går bättre snart!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(VD)
@@ -2589,7 +2589,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :maglev-lokomoti
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} tågdepå
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första tåget ankommer till {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tåg i vägen
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2665,8 +2665,8 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Sl
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Servning
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Kan inte bygga järnvägfordon...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Värde: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Värde: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Lastar / lastar av
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tåget måste stoppas inne i depån
@@ -2751,8 +2751,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Ingen Kraf
 STR_TRAIN_START_NO_CATENARY                                     :Detta spår saknar kedjekurva, så tåget kan inte starta
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nya {STRING} är nu tillgänglig!
-STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nya {STRING} är nu tillgänglig  -  {STRING}
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nya {STRING} är nu tillgänglig  -  {ENGINE}
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan inte lägga till fordonet i en tidtabell...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Fordon kan enbart vänta vid stationer.
@@ -2776,7 +2776,7 @@ STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: 
 STR_900E_MAX_SPEED                                              :{BLACK}Tophastighet: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra året: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...måste stoppas inuti ett bussgarage
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan inte sälja vägfordon...
@@ -2852,7 +2852,7 @@ STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: 
 STR_9813_MAX_SPEED                                              :{BLACK}Tophastighet: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra år: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan inte stoppa/starta skepp...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan inte skicka skepp till depå...
@@ -2920,7 +2920,7 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: 
 STR_A00E_MAX_SPEED                                              :{BLACK}Tophastighet: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra året: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan inte skicka flygplan till hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}På väg mot {STATION}s hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}På väg mot {STATION}s hangar, {VELOCITY}
