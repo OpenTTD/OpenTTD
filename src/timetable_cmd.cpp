@@ -95,7 +95,10 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	v->current_order_time = 0;
 
-	if (!_patches.timetabling || timetabled == 0) return;
+	/* Vehicles will wait at stations if they arrive early even if they are not
+	 * timetabled to wait there, so make sure the lateness counter is updated
+	 * when this happens. */
+	if (!_patches.timetabling || (timetabled == 0 && (travelling || v->lateness_counter >= 0))) return;
 
 	v->lateness_counter -= (timetabled - time_taken);
 
