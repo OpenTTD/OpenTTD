@@ -1361,6 +1361,30 @@ void DrawWindowViewport(const Window *w)
 	dpi->top -= w->top;
 }
 
+static inline void ClampViewportToMap(const ViewPort *vp, int &x, int &y)
+{
+	/* Centre of the viewport is hot spot */
+	x += vp->virtual_width / 2;
+	y += vp->virtual_height / 2;
+
+	/* Convert viewport coordinates to map coordinates
+	 * Calculation is scaled by 4 to avoid rounding errors */
+	int vx = -x + y * 2;
+	int vy =  x + y * 2;
+
+	/* clamp to size of map */
+	vx = clamp(vx, 0, MapMaxX() * TILE_SIZE * 4);
+	vy = clamp(vy, 0, MapMaxY() * TILE_SIZE * 4);
+
+	/* Convert map coordinates to viewport coordinates */
+	x = (-vx + vy) / 2;
+	y = ( vx + vy) / 4;
+
+	/* Remove centreing */
+	x -= vp->virtual_width / 2;
+	y -= vp->virtual_height / 2;
+}
+
 void UpdateViewportPosition(Window *w)
 {
 	const ViewPort *vp = w->viewport;
@@ -1371,47 +1395,25 @@ void UpdateViewportPosition(Window *w)
 
 		SetViewportPosition(w, pt.x, pt.y);
 	} else {
-		int x;
-		int y;
-		int vx;
-		int vy;
+		/* Ensure the destination location is within the map */
+		ClampViewportToMap(vp, WP(w, vp_d).dest_scrollpos_x, WP(w, vp_d).dest_scrollpos_y);
 
-		/* Center of the viewport is hot spot */
-		x = WP(w,vp_d).scrollpos_x + vp->virtual_width / 2;
-		y = WP(w,vp_d).scrollpos_y + vp->virtual_height / 2;
-
-		int dest_x = WP(w,vp_d).dest_scrollpos_x + vp->virtual_width / 2;
-		int dest_y = WP(w,vp_d).dest_scrollpos_y + vp->virtual_height / 2;
-
-		int delta_x = dest_x - x;
-		int delta_y = dest_y - y;
+		int delta_x = WP(w, vp_d).dest_scrollpos_x - WP(w, vp_d).scrollpos_x;
+		int delta_y = WP(w, vp_d).dest_scrollpos_y - WP(w, vp_d).scrollpos_y;
 
 		if (delta_x != 0 || delta_y != 0) {
 			if (_patches.smooth_scroll) {
 				int max_scroll = ScaleByMapSize1D(512);
 				/* Not at our desired positon yet... */
-				x += clamp(delta_x / 8, -max_scroll, max_scroll);
-				y += clamp(delta_y / 8, -max_scroll, max_scroll);
+				WP(w, vp_d).scrollpos_x += clamp(delta_x / 4, -max_scroll, max_scroll);
+				WP(w, vp_d).scrollpos_y += clamp(delta_y / 4, -max_scroll, max_scroll);
 			} else {
-				x = dest_x;
-				y = dest_y;
+				WP(w, vp_d).scrollpos_x = WP(w, vp_d).dest_scrollpos_x;
+				WP(w, vp_d).scrollpos_y = WP(w, vp_d).dest_scrollpos_y;
 			}
 		}
 
-		/* Convert viewport coordinates to map coordinates
-		 * Calculation is scaled by 4 to avoid rounding errors */
-		vx = -x + y * 2;
-		vy =  x + y * 2;
-		/* clamp to size of map */
-		vx = clamp(vx, 0 * 4, MapMaxX() * TILE_SIZE * 4);
-		vy = clamp(vy, 0 * 4, MapMaxY() * TILE_SIZE * 4);
-		/* Convert map coordinates to viewport coordinates */
-		x = (-vx + vy) / 2;
-		y = ( vx + vy) / 4;
-		/* Set position */
-		WP(w, vp_d).scrollpos_x = x - vp->virtual_width / 2;
-		WP(w, vp_d).scrollpos_y = y - vp->virtual_height / 2;
-
+		ClampViewportToMap(vp, WP(w, vp_d).scrollpos_x, WP(w, vp_d).scrollpos_y);
 		SetViewportPosition(w, WP(w, vp_d).scrollpos_x, WP(w, vp_d).scrollpos_y);
 	}
 }
