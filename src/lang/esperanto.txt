@@ -2135,8 +2135,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Banka Ba
 STR_7027_LOAN                                                   :{WHITE}Prunto
 STR_MAX_LOAN                                                    :{WHITE}Maksimuma prunto:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Pruntu {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Repagu {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Pruntu {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Repagu {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksimuma permesata prunto estas {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ne povas prunti pli da mono...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...ne estas repagebla prunto

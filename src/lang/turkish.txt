@@ -2177,8 +2177,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Banka He
 STR_7027_LOAN                                                   :{WHITE}Kredi
 STR_MAX_LOAN                                                    :{WHITE}Mak Kredi:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Ödünç al {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Öde {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Ödünç al {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Öde {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksimum kredi miktarı {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Daha fazla kredi alınamaz...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...ödenecek kredi yok

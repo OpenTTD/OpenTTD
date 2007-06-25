@@ -2187,8 +2187,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Tilin sa
 STR_7027_LOAN                                                   :{WHITE}Laina
 STR_MAX_LOAN                                                    :{WHITE}Laina enimmillään:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Lainaa {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Lyhennä lainaa {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Lainaa {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Lyhennä lainaa {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...suurin sallittu lainan suuruus on {CURRENCY}.
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Lisälainan otto ei onnistu...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...ei lainaa maksettavana.

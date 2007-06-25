@@ -2203,8 +2203,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}残額
 STR_7027_LOAN                                                   :{WHITE}借入金
 STR_MAX_LOAN                                                    :{WHITE}最高借入金：{BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}を借りる
-STR_702A_REPAY                                                  :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}を返済
+STR_7029_BORROW                                                 :{BLACK}{SKIP}{SKIP}{CURRENCY}を借りる
+STR_702A_REPAY                                                  :{BLACK}{SKIP}{SKIP}{CURRENCY}を返済
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...最高借入金が{CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}より借入できません...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...残額がありません

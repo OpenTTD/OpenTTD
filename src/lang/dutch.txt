@@ -2201,8 +2201,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Banksald
 STR_7027_LOAN                                                   :{WHITE}Lening
 STR_MAX_LOAN                                                    :{WHITE}Max lening:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Leen {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Betaal {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} terug
+STR_7029_BORROW                                                 :{BLACK}Leen {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Betaal {SKIP}{SKIP}{CURRENCY} terug
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maximaal toegestane leninggrootte is {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kan geen geld meer lenen...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...geen lening om terug te betalen

@@ -2301,8 +2301,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Kontojä
 STR_7027_LOAN                                                   :{WHITE}Laen
 STR_MAX_LOAN                                                    :{WHITE}Suurim laen:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Laena {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Maksa tagasi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Laena {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Maksa tagasi {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...suurim lubatud laen on {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Rohkem raha ei saa laenata...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...pole laenu, mida tagasi maksta

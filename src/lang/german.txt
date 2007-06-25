@@ -2196,8 +2196,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Kontosta
 STR_7027_LOAN                                                   :{WHITE}Kredit
 STR_MAX_LOAN                                                    :{WHITE}Maximaler Kredit:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Leihen {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Rückzahlen {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Leihen {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Rückzahlen {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...Maximaler Kredit ist {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kann keinen weiteren Kredit aufnehmen ...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...Kredit bereits zurückgezahlt

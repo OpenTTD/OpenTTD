@@ -2204,8 +2204,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}소유�
 STR_7027_LOAN                                                   :{WHITE}대출
 STR_MAX_LOAN                                                    :{WHITE}최대 대출:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} 빌리기
-STR_702A_REPAY                                                  :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} 갚기
+STR_7029_BORROW                                                 :{BLACK}{SKIP}{SKIP}{CURRENCY} 빌리기
+STR_702A_REPAY                                                  :{BLACK}{SKIP}{SKIP}{CURRENCY} 갚기
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...허용된 최대 대출금은 {CURRENCY} 입니다.
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}더이상 돈을 빌릴 수 없습니다...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...값아야할 대출금이 없습니다.

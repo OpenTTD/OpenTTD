@@ -2252,8 +2252,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Bilans b
 STR_7027_LOAN                                                   :{WHITE}Pożyczka
 STR_MAX_LOAN                                                    :{WHITE}Maks. pożyczka:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Pożyczka {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Zwrot {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Pożyczka {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Zwrot {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksymalna dozwolona pożyczka wynosi {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nie można pożyczyć więcej pieniędzy...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...pożyczka już jest spłacona

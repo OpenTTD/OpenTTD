@@ -2240,8 +2240,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Zostatok
 STR_7027_LOAN                                                   :{WHITE}Uver
 STR_MAX_LOAN                                                    :{WHITE}Uverovy limit:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Pozicat {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Splatit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Pozicat {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Splatit {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}... uverovy limit je {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nemozno pozicat viac penazi ...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}... uver uz bol splateny

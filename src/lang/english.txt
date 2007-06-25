@@ -2210,8 +2210,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Bank Bal
 STR_7027_LOAN                                                   :{WHITE}Loan
 STR_MAX_LOAN                                                    :{WHITE}Max Loan:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Borrow {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Repay {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Borrow {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Repay {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maximum permitted loan size is {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Can't borrow any more money...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...no loan to repay

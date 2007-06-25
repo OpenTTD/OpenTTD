@@ -2042,8 +2042,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Balance 
 STR_7027_LOAN                                                   :{WHITE}Préstamo
 STR_MAX_LOAN                                                    :{WHITE}Préstamo Max:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Solicitar {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Devolver {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Solicitar {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Devolver {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...O tamaño máximo do préstamo permitido e de {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Non se pode solicitar máis diñeiro...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...non queda préstamo a pagar

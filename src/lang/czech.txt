@@ -2252,8 +2252,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Stav na 
 STR_7027_LOAN                                                   :{WHITE}Půjčka
 STR_MAX_LOAN                                                    :{WHITE}Max. půjčka:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Půjčit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Vrátit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Půjčit {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Vrátit {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}... maximální dovolená výše půjčky je {CURRENCY}.
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nemohu půjčit více peněz...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}... žádný dluh ke splacení

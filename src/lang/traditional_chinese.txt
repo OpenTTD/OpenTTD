@@ -2201,8 +2201,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}餘額
 STR_7027_LOAN                                                   :{WHITE}貸款
 STR_MAX_LOAN                                                    :{WHITE}貸款上限:：{BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}貸款 {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}償還 {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}貸款 {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}償還 {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...貸款額度上限是 {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}無法再借更多錢...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...不需償還貸款

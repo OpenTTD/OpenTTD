@@ -2202,8 +2202,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Equilibr
 STR_7027_LOAN                                                   :{WHITE}Prêt
 STR_MAX_LOAN                                                    :{WHITE}Emprunt maximum :  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Emprunter {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Rembourser {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Emprunter {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Rembourser {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...le prêt maximum est de {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Impossible d'emprunter plus...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...Prêt déjà remboursé

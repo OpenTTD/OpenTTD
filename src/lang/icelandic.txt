@@ -2100,8 +2100,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Bankainn
 STR_7027_LOAN                                                   :{WHITE}Lán
 STR_MAX_LOAN                                                    :{WHITE}Hámarkslán:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Taka lán {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Borga lán {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Taka lán {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Borga lán {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...hámarksleyfi á láni er {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ekki hægt að fá meiri pening lánaðan...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...ekkert lán til að borga

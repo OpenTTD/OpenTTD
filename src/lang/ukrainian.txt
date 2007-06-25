@@ -2364,8 +2364,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Раху
 STR_7027_LOAN                                                   :{WHITE}Взято в кредит
 STR_MAX_LOAN                                                    :{WHITE}Макс. кредит:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Позичити {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Повернути {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Позичити {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Повернути {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...найбільший дозволений розмір кредиту {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Неможливо взяти кредит...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...кредит вже оплачено

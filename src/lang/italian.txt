@@ -2203,8 +2203,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Bilancio
 STR_7027_LOAN                                                   :{WHITE}Prestito
 STR_MAX_LOAN                                                    :{WHITE}Prestito massimo:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Chiedi in prestito {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Ripaga {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Chiedi in prestito {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Ripaga {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...il prestito massimo concesso è di {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Impossibile chiedere in prestito altro denaro...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...debito già estinto

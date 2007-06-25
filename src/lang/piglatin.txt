@@ -2197,8 +2197,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Ankbay A
 STR_7027_LOAN                                                   :{WHITE}Oanlay
 STR_MAX_LOAN                                                    :{WHITE}Axmay Oanlay:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Orrowbay {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Epayray {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Orrowbay {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Epayray {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...aximummay ermittedpay oanlay izesay isway {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}An'tcay orrowbay anyway oremay oneymay...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...onay oanlay otay epayray

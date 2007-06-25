@@ -2130,8 +2130,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Saskaito
 STR_7027_LOAN                                                   :{WHITE}Paskola
 STR_MAX_LOAN                                                    :{WHITE}Maksimali paskola:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Skolintis{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Grazinti{SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Skolintis{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Grazinti{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...skolintis maksimaliai galima {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Daugiau skolintis negalima...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...kreditas grazintas

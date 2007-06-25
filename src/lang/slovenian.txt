@@ -2283,8 +2283,8 @@ STR_7026_BANK_BALANCE                                           :{WHITE}Bančno 
 STR_7027_LOAN                                                   :{WHITE}Posojilo
 STR_MAX_LOAN                                                    :{WHITE}Meja posojila:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Izposoja {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Vračilo {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Izposoja {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Vračilo {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE} ... najvišje posojilo je {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ni mogoča izposoja več denarja ...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE} ... ni posojila za odplačati
