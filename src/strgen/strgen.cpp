@@ -500,6 +500,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"TOWN",     EmitSingleChar, SCC_TOWN_NAME,     1, 0},
 	{"GROUP",    EmitSingleChar, SCC_GROUP_NAME,    1, 0},
 	{"SIGN",     EmitSingleChar, SCC_SIGN_NAME,     1, 0},
+	{"ENGINE",   EmitSingleChar, SCC_ENGINE_NAME,   1, 0},
 	{"VEHICLE",  EmitSingleChar, SCC_VEHICLE_NAME,  1, 0},
 	{"COMPANY",  EmitSingleChar, SCC_COMPANY_NAME,  1, 0},
 	{"COMPANYNUM", EmitSingleChar, SCC_COMPANY_NUM, 1, 0},

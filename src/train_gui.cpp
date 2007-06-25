@@ -342,11 +342,11 @@ static void TrainDetailsCargoTab(const Vehicle *v, int x, int y)
 static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
 {
 	if (RailVehInfo(v->engine_type)->railveh_type == RAILVEH_WAGON) {
-		SetDParam(0, GetCustomEngineName(v->engine_type));
+		SetDParam(0, v->engine_type);
 		SetDParam(1, v->value);
 		DrawString(x, y, STR_882D_VALUE, 0x10);
 	} else {
-		SetDParam(0, GetCustomEngineName(v->engine_type));
+		SetDParam(0, v->engine_type);
 		SetDParam(1, v->build_year);
 		SetDParam(2, v->value);
 		DrawString(x, y, STR_882C_BUILT_VALUE, 0x10);

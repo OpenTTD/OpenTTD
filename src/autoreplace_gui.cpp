@@ -288,7 +288,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				if (!EngineHasReplacementForPlayer(p, selected_id[0], selected_group)) {
 					SetDParam(0, STR_NOT_REPLACING);
 				} else {
-					SetDParam(0, GetCustomEngineName(EngineReplacementForPlayer(p, selected_id[0], selected_group)));
+					SetDParam(0, STR_ENGINE_NAME);
+					SetDParam(1, EngineReplacementForPlayer(p, selected_id[0], selected_group));
 				}
 			} else {
 				SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);

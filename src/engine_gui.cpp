@@ -78,7 +78,8 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 		SetDParam(0, GetEngineCategoryName(engine));
 		DrawStringMultiCenter(150, 44, STR_8101_WE_HAVE_JUST_DESIGNED_A, 296);
 
-		DrawStringCentered(w->width >> 1, 80, GetCustomEngineName(engine), 0x10);
+		SetDParam(0, engine);
+		DrawStringCentered(w->width >> 1, 80, STR_ENGINE_NAME, 0x10);
 
 		dei = &_draw_engine_list[GetEngine(engine)->type];
 
@@ -177,7 +178,7 @@ StringID GetNewsStringNewVehicleAvail(const NewsItem *ni)
 {
 	EngineID engine = ni->string_id;
 	SetDParam(0, GetEngineCategoryName(engine));
-	SetDParam(1, GetCustomEngineName(engine));
+	SetDParam(1, engine);
 	return STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE;
 }
 
@@ -193,7 +194,7 @@ void DrawNewsNewVehicleAvail(Window *w)
 
 	GfxFillRect(25, 56, w->width - 25, w->height - 2, 10);
 
-	SetDParam(0, GetCustomEngineName(engine));
+	SetDParam(0, engine);
 	DrawStringMultiCenter(w->width >> 1, 57, STR_NEW_VEHICLE_TYPE, w->width - 2);
 
 	dei->engine_proc(w->width >> 1, 88, engine, 0);

@@ -140,12 +140,14 @@ static int CDECL EngineNameSorter(const void *a, const void *b)
 
 	if (va != last_engine[0]) {
 		last_engine[0] = va;
-		GetString(last_name[0], GetCustomEngineName(va), lastof(last_name[0]));
+		SetDParam(0, va);
+		GetString(last_name[0], STR_ENGINE_NAME, lastof(last_name[0]));
 	}
 
 	if (vb != last_engine[1]) {
 		last_engine[1] = vb;
-		GetString(last_name[1], GetCustomEngineName(vb), lastof(last_name[1]));
+		SetDParam(0, vb);
+		GetString(last_name[1], STR_ENGINE_NAME, lastof(last_name[1]));
 	}
 
 	r = strcmp(last_name[0], last_name[1]); // sort by name
@@ -853,7 +855,8 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 		const EngineID engine = eng_list[min];
 		const uint num_engines = IsDefaultGroupID(selected_group) ? p->num_engines[engine] : GetGroup(selected_group)->num_engines[engine];
 
-		DrawString(x + x_offset, y, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
+		SetDParam(0, engine);
+		DrawString(x + x_offset, y, STR_ENGINE_NAME, engine == selected_id ? 0xC : 0x10);
 		DrawVehicleEngine(type, x, y + y_offset, engine, (show_count && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_player));
 		if (show_count) {
 			SetDParam(0, num_engines);
@@ -963,7 +966,8 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 					case VEH_SHIP:     str = STR_9838_RENAME_SHIP_TYPE;          break;
 					case VEH_AIRCRAFT: str = STR_A039_RENAME_AIRCRAFT_TYPE;      break;
 				}
-				ShowQueryString(GetCustomEngineName(sel_eng), str, 31, 160, w, CS_ALPHANUMERAL);
+				SetDParam(0, sel_eng);
+				ShowQueryString(STR_ENGINE_NAME, str, 31, 160, w, CS_ALPHANUMERAL);
 			}
 			break;
 		}

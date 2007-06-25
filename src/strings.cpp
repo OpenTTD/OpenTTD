@@ -31,6 +31,7 @@
 #include "newgrf_townname.h"
 #include "signs.h"
 #include "vehicle.h"
+#include "newgrf_engine.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"
@@ -861,6 +862,13 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				args[0] = g->index;
 				buff = GetStringWithArgs(buff, IsCustomName(g->string_id) ? g->string_id : (StringID)STR_GROUP_NAME_FORMAT, args, last);
 
+				break;
+			}
+
+			case SCC_ENGINE_NAME: { // {ENGINE}
+				EngineID engine = (EngineID)GetInt32(&argv);
+
+				buff = GetString(buff, GetCustomEngineName(engine), last);
 				break;
 			}
 

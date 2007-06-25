@@ -136,7 +136,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 			do {
 				if (IsNormalAircraft(v)) {
-					SetDParam(0, GetCustomEngineName(v->engine_type));
+					SetDParam(0, v->engine_type);
 					SetDParam(1, v->build_year);
 					SetDParam(2, v->value);
 					DrawString(60, y, STR_A011_BUILT_VALUE, 0);
