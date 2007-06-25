@@ -1090,7 +1090,8 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		if (ci != NULL && show_local) {
 			if (from_index == NETWORK_SERVER_INDEX) {
 				char name[NETWORK_NAME_LENGTH];
-				StringID str = IsValidPlayer(ci_to->client_playas) ? GetPlayer(ci_to->client_playas)->name_1 : (uint16)STR_NETWORK_SPECTATORS;
+				StringID str = IsValidPlayer(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
+				SetDParam(0, ci_to->client_playas);
 				GetString(name, str, lastof(name));
 				NetworkTextMessage(action, GetDrawStringPlayerColor(ci_own->client_playas), true, name, "%s", msg);
 			} else {
@@ -1259,9 +1260,8 @@ void NetworkPopulateCompanyInfo()
 		ttd_strlcpy(_network_player_info[p->index].password, password, sizeof(_network_player_info[p->index].password));
 
 		// Grap the company name
-		SetDParam(0, p->name_1);
-		SetDParam(1, p->name_2);
-		GetString(_network_player_info[p->index].company_name, STR_JUST_STRING, lastof(_network_player_info[p->index].company_name));
+		SetDParam(0, p->index);
+		GetString(_network_player_info[p->index].company_name, STR_COMPANY_NAME, lastof(_network_player_info[p->index].company_name));
 
 		// Check the income
 		if (_cur_year - 1 == p->inaugurated_year) {

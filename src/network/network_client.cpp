@@ -672,7 +672,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				if (!IsValidPlayer(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY;
 				/* fallthrough */
 			case NETWORK_ACTION_CHAT_COMPANY: {
-				StringID str = IsValidPlayer(ci_to->client_playas) ? GetPlayer(ci_to->client_playas)->name_1 : (uint16)STR_NETWORK_SPECTATORS;
+				StringID str = IsValidPlayer(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
+				SetDParam(0, ci_to->client_playas);
 
 				GetString(name, str, lastof(name));
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
