@@ -2529,22 +2529,28 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 
 static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 {
-	/* need this hint so it returns the right z coordinate on bridges. */
-	byte new_z = GetSlopeZ(v->x_pos, v->y_pos);
-
 	byte old_z = v->z_pos;
-	v->z_pos = new_z;
+	v->z_pos= GetSlopeZ(v->x_pos, v->y_pos);
 
 	if (new_tile) {
 		CLRBIT(v->u.rail.flags, VRF_GOINGUP);
 		CLRBIT(v->u.rail.flags, VRF_GOINGDOWN);
 
-		if (new_z != old_z) {
-			TileIndex tile = TileVirtXY(v->x_pos, v->y_pos);
+		if ((v->u.rail.track == TRACK_X || v->u.rail.track == TRACK_Y)) {
+			/* Any track that isn't TRACK_X or TRACK_Y cannot be sloped.
+			 * To check whether the current tile is sloped, and in which
+			 * direction it is sloped, we get the 'z' at the center of
+			 * the tile (middle_z) and the edge of the tile (old_z),
+			 * which we then can compare. */
+			static const int HALF_TILE_SIZE = TILE_SIZE / 2;
+			static const int INV_TILE_SIZE_MASK = ~(TILE_SIZE - 1);
 
-			/* XXX workaround, whole UP/DOWN detection needs overhaul */
-			if (!IsTunnelTile(tile)) {
-				SETBIT(v->u.rail.flags, (new_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
+			byte middle_z = GetSlopeZ((v->x_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE, (v->y_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE);
+
+			/* For some reason tunnel tiles are always given as sloped :(
+			 * But they are not sloped... */
+			if (middle_z != old_z && !IsTunnelTile(TileVirtXY(v->x_pos, v->y_pos))) {
+				SETBIT(v->u.rail.flags, (middle_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
 			}
 		}
 	}
