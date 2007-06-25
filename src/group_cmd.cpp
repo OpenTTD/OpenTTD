@@ -103,7 +103,7 @@ CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		g->owner = _current_player;
-		g->string_id = STR_SV_GROUP_NAME;
+		g->string_id = STR_EMPTY;
 		g->replace_protection = false;
 		g->vehicle_type = vt;
 

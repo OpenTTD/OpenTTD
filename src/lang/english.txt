@@ -2083,8 +2083,6 @@ STR_SV_STNAME_LOWER                                             :Lower {STRING1}
 STR_SV_STNAME_HELIPORT                                          :{STRING1} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING1} Forest
 
-STR_SV_GROUP_NAME                                               :{GROUP}
-
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -3340,6 +3338,7 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit this year: {GREEN}{CURRENCY} {BLACK}(last year: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit this year: {RED}{CURRENCY} {BLACK}(last year: {RED}{CURRENCY}{BLACK})
 
+STR_GROUP_NAME                                                  :{GROUP}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

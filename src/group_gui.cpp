@@ -78,13 +78,13 @@ static int CDECL GroupNameSorter(const void *a, const void *b)
 	if (ga != last_group[0]) {
 		last_group[0] = ga;
 		SetDParam(0, ga->index);
-		GetString(last_name[0], ga->string_id, lastof(last_name[0]));
+		GetString(last_name[0], STR_GROUP_NAME, lastof(last_name[0]));
 	}
 
 	if (gb != last_group[1]) {
 		last_group[1] = gb;
 		SetDParam(0, gb->index);
-		GetString(last_name[1], gb->string_id, lastof(last_name[1]));
+		GetString(last_name[1], STR_GROUP_NAME, lastof(last_name[1]));
 	}
 
 	r = strcmp(last_name[0], last_name[1]); // sort by name
@@ -420,7 +420,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				/* draw the selected group in white, else we draw it in black */
 				SetDParam(0, g->index);
-				DrawString(10, y1, STR_SV_GROUP_NAME, (gv->group_sel == g->index) ? 12 : 16);
+				DrawString(10, y1, STR_GROUP_NAME, (gv->group_sel == g->index) ? 12 : 16);
 
 				/* draw the number of vehicles of the group */
 				SetDParam(0, g->num_vehicle);
@@ -567,7 +567,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					const Group *g = GetGroup(gv->group_sel);
 
 					SetDParam(0, g->index);
-					ShowQueryString(g->string_id, STR_GROUP_RENAME_CAPTION, 31, 150, w, CS_ALPHANUMERAL);
+					ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, 31, 150, w, CS_ALPHANUMERAL);
 				}	break;
 
 
