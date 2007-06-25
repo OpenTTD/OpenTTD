@@ -122,14 +122,12 @@ static void DrawSubsidiesWindow(const Window *w)
 
 	for (s = _subsidies; s != endof(_subsidies); s++) {
 		if (s->cargo_type != CT_INVALID && s->age >= 12) {
-			const Player *p;
 			int xt;
 
 			SetupSubsidyDecodeParam(s, 1);
 
-			p = GetPlayer(GetStation(s->to)->owner);
-			SetDParam(3, p->name_1);
-			SetDParam(4, p->name_2);
+			PlayerID player = GetStation(s->to)->owner;
+			SetDParam(3, player);
 
 			xt = DrawString(x + 2, y, STR_202C_FROM_TO, 0);
 

@@ -270,9 +270,8 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 
 				DrawPlayerIcon(p->index, 4, 18 + p->index * 12);
 
-				SetDParam(0, p->name_1);
-				SetDParam(1, p->name_2);
-				SetDParam(2, GetPlayerNameString(p->index, 3));
+				SetDParam(0, p->index);
+				SetDParam(1, p->index);
 				DrawString(21, 17 + p->index * 12, STR_7021, HASBIT(_legend_excluded_players, p->index) ? 0x10 : 0xC);
 			}
 			break;
@@ -875,10 +874,9 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 			for (uint i = 0; i != pl_num; i++) {
 				p = plist[i];
 				SetDParam(0, i + STR_01AC_1ST);
-				SetDParam(1, p->name_1);
-				SetDParam(2, p->name_2);
-				SetDParam(3, GetPlayerNameString(p->index, 4));
-				SetDParam(5, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
+				SetDParam(1, p->index);
+				SetDParam(2, p->index);
+				SetDParam(3, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
 
 				DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, 0);
 				DrawPlayerIcon(p->index, 27, 16 + i * 10);

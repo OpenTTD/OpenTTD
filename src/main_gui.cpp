@@ -605,9 +605,8 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 				DrawPlayerIcon(p->index, x + 2, y + 1);
 
-				SetDParam(0, p->name_1);
-				SetDParam(1, p->name_2);
-				SetDParam(2, GetPlayerNameString(p->index, 3));
+				SetDParam(0, p->index);
+				SetDParam(1, p->index);
 
 				color = (p->index == sel) ? 0xC : 0x10;
 				if (chk&1) color = 14;
@@ -2227,8 +2226,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		} else {
 			if (p != NULL) {
 				/* This is the default text */
-				SetDParam(0, p->name_1);
-				SetDParam(1, p->name_2);
+				SetDParam(0, p->index);
 				DrawStringCentered(320, 1, STR_02BA, 0);
 			}
 		}

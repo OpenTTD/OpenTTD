@@ -1416,9 +1416,8 @@ static void GenerateFileName()
 	    Let's use the name of player #0 for now. */
 	const Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
 
-	SetDParam(0, p->name_1);
-	SetDParam(1, p->name_2);
-	SetDParam(2, _date);
+	SetDParam(0, p->index);
+	SetDParam(1, _date);
 	GetString(_edit_str_buf, STR_4004, lastof(_edit_str_buf));
 	SanitizeFilename(_edit_str_buf);
 }

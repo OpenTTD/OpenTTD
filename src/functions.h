@@ -25,7 +25,6 @@ void SubtractMoneyFromPlayer(CommandCost cost);
 void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cost);
 bool CheckOwnership(Owner owner);
 bool CheckTileOwnership(TileIndex tile);
-StringID GetPlayerNameString(PlayerID player, uint index);
 
 /* standard */
 void ShowInfo(const char *str);

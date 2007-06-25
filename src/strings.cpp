@@ -880,6 +880,34 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 			}
 
+			case SCC_COMPANY_NAME: { // {COMPANY}
+				const Player *p = GetPlayer((PlayerID)GetInt32(&argv));
+				int64 args[1];
+				args[0] = p->name_2;
+				buff = GetStringWithArgs(buff, p->name_1, args, last);
+				break;
+			}
+
+			case SCC_COMPANY_NUM: { // {COMPANYNUM}
+				PlayerID player = (PlayerID)GetInt32(&argv);
+
+				/* Nothing is added for AI or inactive players */
+				if (IsHumanPlayer(player) && IsValidPlayer(player)) {
+					int64 args[1];
+					args[0] = player + 1;
+					buff = GetStringWithArgs(buff, STR_7002_PLAYER, args, last);
+				}
+				break;
+			}
+
+			case SCC_PLAYER_NAME: { // {PLAYERNAME}
+				const Player *p = GetPlayer((PlayerID)GetInt32(&argv));
+				int64 args[1];
+				args[0] = p->president_name_2;
+				buff = GetStringWithArgs(buff, p->president_name_1, args, last);
+				break;
+			}
+
 			case SCC_SETCASE: { // {SETCASE}
 				/* This is a pseudo command, it's outputted when someone does {STRING.ack}
 				 * The modifier is added to all subsequent GetStringWithArgs that accept the modifier. */

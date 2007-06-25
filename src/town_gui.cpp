@@ -127,9 +127,8 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 				if (p->is_active && (HASBIT(t->have_ratings, p->index) || t->exclusivity == p->index)) {
 					DrawPlayerIcon(p->index, 2, y);
 
-					SetDParam(0, p->name_1);
-					SetDParam(1, p->name_2);
-					SetDParam(2, GetPlayerNameString(p->index, 3));
+					SetDParam(0, p->index);
+					SetDParam(1, p->index);
 
 					r = t->ratings[p->index];
 					(str = STR_3035_APPALLING, r <= RATING_APPALLING) || // Apalling
@@ -141,7 +140,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 					(str++,                    r <= RATING_EXCELLENT) || // Excellent
 					(str++,                    true);                    // Outstanding
 
-					SetDParam(4, str);
+					SetDParam(2, str);
 					if (t->exclusivity == p->index) { // red icon for player with exclusive rights
 						DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
 					}

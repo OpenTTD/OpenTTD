@@ -344,9 +344,8 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			/* If selected_group == DEFAULT_GROUP, draw the standard caption
 			   We list all vehicles */
 			if (IsDefaultGroupID(gv->group_sel)) {
-				SetDParam(0, p->name_1);
-				SetDParam(1, p->name_2);
-				SetDParam(2, gv->l.list_length);
+				SetDParam(0, p->index);
+				SetDParam(1, gv->l.list_length);
 
 				switch (gv->vehicle_type) {
 					case VEH_TRAIN:

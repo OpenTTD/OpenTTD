@@ -309,10 +309,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			SetVScrollCount(w, sl->list_length);
 
 			/* draw widgets, with player's name in the caption */
-			const Player* p = GetPlayer(owner);
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
-			SetDParam(2, w->vscroll.count);
+			SetDParam(0, owner);
+			SetDParam(1, w->vscroll.count);
 			DrawWindowWidgets(w);
 
 			/* draw sorting criteria string */

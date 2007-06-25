@@ -1714,7 +1714,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Local au
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Show information on local authority
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} local authority
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transport company ratings:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidies
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidies on offer for services taking:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} from {STRING2} to {STRING2}
@@ -2162,7 +2162,7 @@ STR_683B_HOSTILE                                                :Hostile
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Player {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}New Face
 STR_7005_COLOR_SCHEME                                           :{BLACK}Colour Scheme
@@ -2174,7 +2174,7 @@ STR_700A_COMPANY_NAME                                           :Company Name
 STR_700B_PRESIDENT_S_NAME                                       :Manager's Name
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Can't change company name...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Can't change manager's name...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finances {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finances {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Expenditure/Income
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Construction
@@ -2193,7 +2193,7 @@ STR_701D_OTHER                                                  :{GOLD}Other
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Income Graph
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2242,8 +2242,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Units of
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Company performance ratings (maximum rating=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Company values
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Company League Table
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transport company in trouble!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} will be sold off or declared bankrupt unless performance increases soon!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Manager)
@@ -3339,7 +3339,9 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit this year: {GREEN}{CURRENCY} {BLACK}(last year: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit this year: {RED}{CURRENCY} {BLACK}(last year: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

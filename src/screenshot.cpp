@@ -531,10 +531,8 @@ static char *MakeScreenshotName(const char *ext)
 	if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_player == PLAYER_SPECTATOR) {
 		ttd_strlcpy(_screenshot_name, "screenshot", lengthof(_screenshot_name));
 	} else {
-		const Player* p = GetPlayer(_local_player);
-		SetDParam(0, p->name_1);
-		SetDParam(1, p->name_2);
-		SetDParam(2, _date);
+		SetDParam(0, _local_player);
+		SetDParam(1, _date);
 		GetString(_screenshot_name, STR_4004, lastof(_screenshot_name));
 	}
 

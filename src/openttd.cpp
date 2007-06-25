@@ -1012,11 +1012,8 @@ static void DoAutosave()
 #endif /* PSP */
 
 	if (_patches.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
-		const Player *p = GetPlayer(_local_player);
-
-		SetDParam(0, p->name_1);
-		SetDParam(1, p->name_2);
-		SetDParam(2, _date);
+		SetDParam(0, _local_player);
+		SetDParam(1, _date);
 		GetString(buf, STR_4004, lastof(buf));
 		ttd_strlcpy(buf, ".sav", sizeof(buf));
 	} else {

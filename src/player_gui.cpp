@@ -165,10 +165,9 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 			SetWindowWidgetDisabledState(w, 7, p->current_loan == 0);
 		}
 
-		SetDParam(0, p->name_1);
-		SetDParam(1, p->name_2);
-		SetDParam(2, GetPlayerNameString(player, 3));
-		SetDParam(4, LOAN_INTERVAL);
+		SetDParam(0, p->index);
+		SetDParam(1, p->index);
+		SetDParam(2, LOAN_INTERVAL);
 		DrawWindowWidgets(w);
 
 		DrawPlayerEconomyStats(p, (byte)WP(w, def_d).data_1);
@@ -708,9 +707,8 @@ static void DrawCompanyOwnerText(const Player *p)
 		if (amt != 0) {
 			num++;
 
-			SetDParam(num * 3 + 0, amt * 25);
-			SetDParam(num * 3 + 1, p2->name_1);
-			SetDParam(num * 3 + 2, p2->name_2);
+			SetDParam(num * 2 + 0, amt * 25);
+			SetDParam(num * 2 + 1, p2->index);
 
 			if (num != 0) break;
 		}
@@ -757,9 +755,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				}
 			}
 
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
-			SetDParam(2, GetPlayerNameString((PlayerID)w->window_number, 3));
+			SetDParam(0, p->index);
+			SetDParam(1, p->index);
 
 			DrawWindowWidgets(w);
 
@@ -774,8 +771,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
-			SetDParam(0, p->president_name_1);
-			SetDParam(1, p->president_name_2);
+			SetDParam(0, p->index);
 			DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
 
 			SetDParam(0, CalculateCompanyValue(p));
@@ -812,16 +808,16 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				case PCW_WIDGET_PRESIDENT_NAME: {
 					const Player *p = GetPlayer((PlayerID)w->window_number);
 					WP(w, def_d).byte_1 = 0;
-					SetDParam(0, p->president_name_2);
-					ShowQueryString(p->president_name_1, STR_700B_PRESIDENT_S_NAME, 31, 94, w, CS_ALPHANUMERAL);
+					SetDParam(0, p->index);
+					ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, 31, 94, w, CS_ALPHANUMERAL);
 					break;
 				}
 
 				case PCW_WIDGET_COMPANY_NAME: {
 					Player *p = GetPlayer((PlayerID)w->window_number);
 					WP(w, def_d).byte_1 = 1;
-					SetDParam(0, p->name_2);
-					ShowQueryString(p->name_1, STR_700A_COMPANY_NAME, 31, 150, w, CS_ALPHANUMERAL);
+					SetDParam(0, p->index);
+					ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, 31, 150, w, CS_ALPHANUMERAL);
 					break;
 				}
 
@@ -939,15 +935,13 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		Player *p = GetPlayer((PlayerID)w->window_number);
-		SetDParam(0, p->name_1);
-		SetDParam(1, p->name_2);
+		SetDParam(0, p->index);
 		DrawWindowWidgets(w);
 
 		DrawPlayerFace(p->face, p->player_color, 2, 16);
 
-		SetDParam(0, p->name_1);
-		SetDParam(1, p->name_2);
-		SetDParam(2, p->bankrupt_value);
+		SetDParam(0, p->index);
+		SetDParam(1, p->bankrupt_value);
 		DrawStringMultiCenter(214, 65, STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT, 238);
 		break;
 	}
@@ -1028,16 +1022,13 @@ static void EndGameWndProc(Window *w, WindowEvent *e)
 		/* We need to get performance from last year because the image is shown
 		 * at the start of the new year when these things have already been copied */
 		if (WP(w, highscore_d).background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
-			SetDParam(0, p->president_name_1);
-			SetDParam(1, p->president_name_2);
-			SetDParam(2, p->name_1);
-			SetDParam(3, p->name_2);
-			SetDParam(4, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
+			SetDParam(0, p->index);
+			SetDParam(1, p->index);
+			SetDParam(2, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
 			DrawStringMultiCenter(x + (640 / 2), y + 107, STR_021C_OF_ACHIEVES_STATUS, 640);
 		} else {
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
-			SetDParam(2, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
+			SetDParam(0, p->index);
+			SetDParam(1, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
 			DrawStringMultiCenter(x + (640 / 2), y + 157, STR_021B_ACHIEVES_STATUS, 640);
 		}
 	} break;

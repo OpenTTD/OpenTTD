@@ -461,11 +461,6 @@ static const CmdStruct _cmd_structs[] = {
 	{"REV",           EmitSingleChar, SCC_REVISION,            0, 0}, // openttd revision string
 	{"SHORTCARGO",    EmitSingleChar, SCC_CARGO_SHORT,         2, 0}, // short cargo description, only ### tons, or ### litres
 
-	// These are special versions of {STRING1}
-	// The first string includes the second string.
-	{"COMPANY",    EmitSingleChar, SCC_STRING1, 2, 0},
-	{"PLAYERNAME", EmitSingleChar, SCC_STRING1, 1, 0},
-
 	{"STRING1", EmitSingleChar, SCC_STRING1, 1, C_CASE}, // included string that consumes ONE argument
 	{"STRING2", EmitSingleChar, SCC_STRING2, 2, C_CASE}, // included string that consumes TWO arguments
 	{"STRING3", EmitSingleChar, SCC_STRING3, 3, C_CASE}, // included string that consumes THREE arguments
@@ -506,6 +501,9 @@ static const CmdStruct _cmd_structs[] = {
 	{"GROUP",    EmitSingleChar, SCC_GROUP_NAME,    1, 0},
 	{"SIGN",     EmitSingleChar, SCC_SIGN_NAME,     1, 0},
 	{"VEHICLE",  EmitSingleChar, SCC_VEHICLE_NAME,  1, 0},
+	{"COMPANY",  EmitSingleChar, SCC_COMPANY_NAME,  1, 0},
+	{"COMPANYNUM", EmitSingleChar, SCC_COMPANY_NUM, 1, 0},
+	{"PLAYERNAME", EmitSingleChar, SCC_PLAYER_NAME, 1, 0},
 
 	// 0x9D is used for the pseudo command SETCASE
 	// 0x9E is used for case switching

@@ -478,8 +478,7 @@ static void PlayersCheckBankrupt(Player *p)
 			DeletePlayerWindows(owner);
 
 			/* Show bankrupt news */
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
+			SetDParam(0, p->index);
 			AddNewsItem( (StringID)(owner | NB_BBANKRUPT), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 			if (IsHumanPlayer(owner)) {
@@ -516,8 +515,7 @@ void DrawNewsBankrupcy(Window *w)
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
 	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
 
-	SetDParam(0, p->president_name_1);
-	SetDParam(1, p->president_name_2);
+	SetDParam(0, p->index);
 
 	DrawStringMultiCenter(49, 148, STR_7058_PRESIDENT, 94);
 
@@ -525,8 +523,7 @@ void DrawNewsBankrupcy(Window *w)
 	case NB_BTROUBLE:
 		DrawStringCentered(w->width>>1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, 0);
 
-		SetDParam(0, p->name_1);
-		SetDParam(1, p->name_2);
+		SetDParam(0, p->index);
 
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
@@ -540,10 +537,9 @@ void DrawNewsBankrupcy(Window *w)
 
 		DrawStringCentered(w->width>>1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, 0);
 		COPY_IN_DPARAM(0,WP(w,news_d).ni->params, 2);
-		SetDParam(2, p->name_1);
-		SetDParam(3, p->name_2);
+		SetDParam(2, p->index);
 		price = WP(w,news_d).ni->params[2];
-		SetDParam(4, price);
+		SetDParam(3, price);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
@@ -564,9 +560,8 @@ void DrawNewsBankrupcy(Window *w)
 
 	case NB_BNEWCOMPANY:
 		DrawStringCentered(w->width>>1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, 0);
-		SetDParam(0, p->name_1);
-		SetDParam(1, p->name_2);
-		COPY_IN_DPARAM(2,WP(w,news_d).ni->params, 2);
+		SetDParam(0, p->index);
+		COPY_IN_DPARAM(1,WP(w,news_d).ni->params, 2);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
@@ -587,16 +582,14 @@ StringID GetNewsStringBankrupcy(const NewsItem *ni)
 	case NB_BTROUBLE:
 		SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
 		SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
-		SetDParam(2, p->name_1);
-		SetDParam(3, p->name_2);
+		SetDParam(2, p->index);
 		return STR_02B6;
 	case NB_BMERGER:
 		SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
 		SetDParam(1, STR_705A_HAS_BEEN_SOLD_TO_FOR);
 		COPY_IN_DPARAM(2,ni->params, 2);
-		SetDParam(4, p->name_1);
-		SetDParam(5, p->name_2);
-		COPY_IN_DPARAM(6,ni->params + 2, 1);
+		SetDParam(4, p->index);
+		COPY_IN_DPARAM(5,ni->params + 2, 1);
 		return STR_02B6;
 	case NB_BBANKRUPT:
 		SetDParam(0, STR_705C_BANKRUPT);
@@ -606,9 +599,8 @@ StringID GetNewsStringBankrupcy(const NewsItem *ni)
 	case NB_BNEWCOMPANY:
 		SetDParam(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
 		SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
-		SetDParam(2, p->name_1);
-		SetDParam(3, p->name_2);
-		COPY_IN_DPARAM(4,ni->params, 2);
+		SetDParam(2, p->index);
+		COPY_IN_DPARAM(3,ni->params, 2);
 		return STR_02B6;
 	default:
 		NOT_REACHED();
@@ -1302,8 +1294,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 			InjectDParam(2);
 
 			p = GetPlayer(_current_player);
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
+			SetDParam(0, p->index);
 			AddNewsItem(
 				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier,
 				NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0),
@@ -1731,9 +1722,8 @@ static void DoAcquireCompany(Player *p)
 	int i;
 	Money value;
 
-	SetDParam(0, p->name_1);
-	SetDParam(1, p->name_2);
-	SetDParam(2, p->bankrupt_value);
+	SetDParam(0, p->index);
+	SetDParam(1, p->bankrupt_value);
 	AddNewsItem( (StringID)(_current_player | NB_BMERGER), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 	/* original code does this a little bit differently */

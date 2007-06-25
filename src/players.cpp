@@ -246,8 +246,8 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 		} else {
 			const Player* p = GetPlayer(owner);
 
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
+			SetDParam(0, STR_COMPANY_NAME);
+			SetDParam(1, p->index);
 		}
 	} else {
 		const Town* t = ClosestTownFromTile(tile, (uint)-1);
@@ -414,15 +414,15 @@ restart:;
 		p->president_name_2 = Random();
 		p->president_name_1 = SPECSTR_PRESIDENT_NAME;
 
-		SetDParam(0, p->president_name_2);
-		GetString(buffer, p->president_name_1, lastof(buffer));
+		SetDParam(0, p->index);
+		GetString(buffer, STR_PLAYER_NAME, lastof(buffer));
 		if (strlen(buffer) >= 32 || GetStringBoundingBox(buffer).width >= 94)
 			continue;
 
 		FOR_ALL_PLAYERS(pp) {
 			if (pp->is_active && p != pp) {
-				SetDParam(0, pp->president_name_2);
-				GetString(buffer2, pp->president_name_1, lastof(buffer2));
+				SetDParam(0, pp->index);
+				GetString(buffer2, STR_PLAYER_NAME, lastof(buffer2));
 				if (strcmp(buffer2, buffer) == 0)
 					goto restart;
 			}
@@ -553,16 +553,6 @@ void OnTick_Players()
 
 	if (AI_AllowNewAI() && _game_mode != GM_MENU && !--_next_competitor_start)
 		MaybeStartNewPlayer();
-}
-
-/** index is the next parameter in _decode_parameters to set up */
-StringID GetPlayerNameString(PlayerID player, uint index)
-{
-	if (IsHumanPlayer(player) && IsValidPlayer(player)) {
-		SetDParam(index, player+1);
-		return STR_7002_PLAYER;
-	}
-	return STR_EMPTY;
 }
 
 extern void ShowPlayerFinances(PlayerID player);
@@ -917,8 +907,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			DeletePlayerWindows(p->index);
 
 			/* Show the bankrupt news */
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
+			SetDParam(0, p->index);
 			AddNewsItem( (StringID)(p->index | NB_BBANKRUPT), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 			/* Remove the company */
@@ -1002,10 +991,8 @@ int8 SaveHighScoreValue(const Player *p)
 		if (hs[i].score <= score) {
 			/* move all elements one down starting from the replaced one */
 			memmove(&hs[i + 1], &hs[i], sizeof(HighScore) * (lengthof(_highscore_table[0]) - i - 1));
-			SetDParam(0, p->president_name_1);
-			SetDParam(1, p->president_name_2);
-			SetDParam(2, p->name_1);
-			SetDParam(3, p->name_2);
+			SetDParam(0, p->index);
+			SetDParam(1, p->index);
 			GetString(hs[i].company, STR_HIGHSCORE_NAME, lastof(hs[i].company)); // get manager/company name string
 			hs[i].score = score;
 			hs[i].title = EndGameGetPerformanceTitleFromValue(score);
@@ -1047,10 +1034,8 @@ int8 SaveHighScoreValueNetwork()
 		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < count; i++) {
 			HighScore* hs = &_highscore_table[LAST_HS_ITEM][i];
 
-			SetDParam(0, pl[i]->president_name_1);
-			SetDParam(1, pl[i]->president_name_2);
-			SetDParam(2, pl[i]->name_1);
-			SetDParam(3, pl[i]->name_2);
+			SetDParam(0, pl[i]->index);
+			SetDParam(1, pl[i]->index);
 			GetString(hs->company, STR_HIGHSCORE_NAME, lastof(hs->company)); // get manager/company name string
 			hs->score = pl[i]->old_economy[0].performance_history;
 			hs->title = EndGameGetPerformanceTitleFromValue(hs->score);

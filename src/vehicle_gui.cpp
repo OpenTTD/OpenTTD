@@ -957,9 +957,8 @@ static void DrawVehicleListWindow(Window *w)
 			break;
 
 		case VLW_STANDARD: /* Company Name */
-			SetDParam(0, p->name_1);
-			SetDParam(1, p->name_2);
-			SetDParam(2, w->vscroll.count);
+			SetDParam(0, p->index);
+			SetDParam(1, w->vscroll.count);
 			break;
 
 		case VLW_STATION_LIST: /* Station Name */

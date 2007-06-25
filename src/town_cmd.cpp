@@ -1934,15 +1934,10 @@ static void TownActionAdvertiseLarge(Town* t)
 
 static void TownActionRoadRebuild(Town* t)
 {
-	const Player* p;
-
 	t->road_build_months = 6;
 
 	SetDParam(0, t->index);
-
-	p = GetPlayer(_current_player);
-	SetDParam(1, p->name_1);
-	SetDParam(2, p->name_2);
+	SetDParam(1, _current_player);
 
 	AddNewsItem(STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING,
 		NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_GENERAL, 0), t->xy, 0);
