@@ -155,6 +155,7 @@ enum {
 	CMD_MOVE_ORDER                   = 127,
 	CMD_CHANGE_TIMETABLE             = 128,
 	CMD_SET_VEHICLE_ON_TIME          = 129,
+	CMD_AUTOFILL_TIMETABLE           = 130,
 };
 
 enum {

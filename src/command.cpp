@@ -179,6 +179,7 @@ DEF_COMMAND(CmdSetGroupReplaceProtection);
 DEF_COMMAND(CmdMoveOrder);
 DEF_COMMAND(CmdChangeTimetable);
 DEF_COMMAND(CmdSetVehicleOnTime);
+DEF_COMMAND(CmdAutofillTimetable);
 
 /* The master command table */
 static const Command _command_proc_table[] = {
@@ -335,6 +336,7 @@ static const Command _command_proc_table[] = {
 	{CmdMoveOrder,                           0}, /* 127 */
 	{CmdChangeTimetable,                     0}, /* 128 */
 	{CmdSetVehicleOnTime,                    0}, /* 129 */
+	{CmdAutofillTimetable,                   0}, /* 130 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */

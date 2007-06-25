@@ -2773,6 +2773,8 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Change T
 STR_TIMETABLE_STATUS_ON_TIME                                    :This vehicle is currently running on time
 STR_TIMETABLE_STATUS_LATE                                       :This vehicle is currently running {STRING1} late
 STR_TIMETABLE_STATUS_EARLY                                      :This vehicle is currently running {STRING1} early
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the first journey
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Road vehicle in the way

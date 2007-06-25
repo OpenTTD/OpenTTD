@@ -67,11 +67,15 @@ static void DrawTimetableWindow(Window *w)
 		}
 
 		EnableWindowWidget(w, 8);
+		EnableWindowWidget(w, 9);
 	} else {
 		DisableWindowWidget(w, 6);
 		DisableWindowWidget(w, 7);
 		DisableWindowWidget(w, 8);
+		DisableWindowWidget(w, 9);
 	}
+
+	SetWindowWidgetLoweredState(w, 9, HASBIT(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
 
 	SetDParam(0, v->index);
 	DrawWindowWidgets(w);
@@ -242,6 +246,10 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 				case 8: /* Reset the vehicle's late counter. */
 					DoCommandP(0, v->index, 0, NULL, CMD_SET_VEHICLE_ON_TIME | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 					break;
+
+				case 9: /* Autofill the timetable. */
+					DoCommandP(0, v->index, HASBIT(v->vehicle_flags, VF_AUTOFILL_TIMETABLE) ? 0 : 1, NULL, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
+					break;
 			}
 
 			SetWindowDirty(w);
@@ -270,26 +278,27 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 
 static const Widget _timetable_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
-	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   337,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{  WWT_STICKYBOX,   RESIZE_LR,      14,   338,   349,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},
+	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   387,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},
+	{  WWT_STICKYBOX,   RESIZE_LR,      14,   388,   399,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},
 
-	{      WWT_PANEL,   RESIZE_RB,      14,     0,   337,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},
-	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   338,   349,    14,    95, STR_NULL,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},
+	{      WWT_PANEL,   RESIZE_RB,      14,     0,   387,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},
+	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   388,   399,    14,    95, STR_NULL,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   349,    96,   107, STR_NULL,                   STR_NULL},
+	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   399,    96,   107, STR_NULL,                   STR_NULL},
 
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   109,   108,   119, STR_TIMETABLE_CHANGE_TIME,  STR_TIMETABLE_WAIT_TIME_TOOLTIP},
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   110,   219,   108,   119, STR_CLEAR_TIME,             STR_TIMETABLE_CLEAR_TIME_TOOLTIP},
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   220,   337,   108,   119, STR_RESET_LATENESS,         STR_TIMETABLE_RESET_LATENESS_TOOLTIP},
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   338,   387,   108,   119, STR_TIMETABLE_AUTOFILL,     STR_TIMETABLE_AUTOFILL_TOOLTIP},
 
-	{      WWT_PANEL,   RESIZE_RTB,     14,   338,   337,   108,   119, STR_NULL,                   STR_NULL},
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   338,   349,   108,   119, STR_NULL,                   STR_RESIZE_BUTTON},
+	{      WWT_PANEL,   RESIZE_RTB,     14,   388,   387,   108,   119, STR_NULL,                   STR_NULL},
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   388,   399,   108,   119, STR_NULL,                   STR_RESIZE_BUTTON},
 
 	{    WIDGETS_END }
 };
 
 static const WindowDesc _timetable_desc = {
-	WDP_AUTO, WDP_AUTO, 350, 120,
+	WDP_AUTO, WDP_AUTO, 400, 120,
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_timetable_widgets,
