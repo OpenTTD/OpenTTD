@@ -1556,7 +1556,6 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
-		ge->days_since_pickup = 0;
 		ge->last_speed = min(t, 255);
 		ge->last_age = _cur_year - u->build_year;
 
@@ -1594,6 +1593,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			anything_loaded = true;
 
 			ge->cargo.MoveTo(&v->cargo, cap, CargoList::MTA_CARGO_LOAD, st->xy);
+			ge->days_since_pickup = 0;
 
 			unloading_time += cap;
 			st->time_since_load = 0;

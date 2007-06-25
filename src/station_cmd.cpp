@@ -2544,7 +2544,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 			if (around[i] == NULL) {
 				if (!st->IsBuoy() &&
 						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
-						st->goods[type].rating != 0 && st->goods[type].days_since_pickup != 255 && // we actually service the station
+						st->goods[type].rating != 0 && st->goods[type].last_speed != 0 && // we actually service the station
 						(!_patches.selectgoods || st->goods[type].last_speed > 0) && // if last_speed is 0, no vehicle has been there.
 						((st->facilities & ~FACIL_BUS_STOP)   != 0 || IsCargoInClass(type, CC_PASSENGERS)) && // if we have other fac. than a bus stop, or the cargo is passengers
 						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || !IsCargoInClass(type, CC_PASSENGERS))) { // if we have other fac. than a cargo bay or the cargo is not passengers
