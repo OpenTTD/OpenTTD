@@ -374,6 +374,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
 		DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
 		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
+		DeleteWindowById(WC_VEHICLE_TIMETABLE, w->window_number);
 		break;
 
 	case WE_MOUSELOOP: {
