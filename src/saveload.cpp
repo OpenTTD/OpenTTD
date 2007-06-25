@@ -31,7 +31,7 @@
 #include <setjmp.h>
 #include <list>
 
-extern const uint16 SAVEGAME_VERSION = 68;
+extern const uint16 SAVEGAME_VERSION = 69;
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
@@ -115,7 +115,7 @@ static inline byte SlCalcConvFileLen(VarType conv)
 }
 
 /** Return the size in bytes of a reference (pointer) */
-static inline size_t SlCalcRefLen() {return 2;}
+static inline size_t SlCalcRefLen() {return CheckSavegameVersion(69) ? 2 : 4;}
 
 /** Flush the output buffer by writing to disk with the given reader.
  * If the buffer pointer has not yet been set up, set it up now. Usually
@@ -646,9 +646,10 @@ static inline size_t SlCalcListLen(const void *list)
 {
 	std::list<void *> *l = (std::list<void *> *) list;
 
-	/* Each entry is saved as 2 bytes, plus 2 bytes are used for the length
+	int type_size = CheckSavegameVersion(69) ? 2 : 4;
+	/* Each entry is saved as type_size bytes, plus type_size bytes are used for the length
 	 * of the list */
-	return l->size() * 2 + 2;
+	return l->size() * type_size + type_size;
 }
 
 
@@ -669,19 +670,19 @@ void SlList(void *list, SLRefType conv)
 	std::list<void *> *l = (std::list<void *> *) list;
 
 	if (_sl.save) {
-		SlWriteUint16(l->size());
+		SlWriteUint32(l->size());
 
 		std::list<void *>::iterator iter;
 		for (iter = l->begin(); iter != l->end(); ++iter) {
 			void *ptr = *iter;
-			SlWriteUint16(ReferenceToInt(ptr, conv));
+			SlWriteUint32(ReferenceToInt(ptr, conv));
 		}
 	} else {
-		uint length = SlReadUint16();
+		uint length = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
 
 		/* Load each reference and push to the end of the list */
 		for (uint i = 0; i < length; i++) {
-			void *ptr = IntToReference(SlReadUint16(), conv);
+			void *ptr = IntToReference(CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32(), conv);
 			l->push_back(ptr);
 		}
 	}
@@ -773,11 +774,10 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		switch (sld->cmd) {
 		case SL_VAR: SlSaveLoadConv(ptr, conv); break;
 		case SL_REF: // Reference variable, translate
-			/* @todo XXX - another artificial limitof 65K elements of pointers? */
-			if (_sl.save) { // XXX - read/write pointer as uint16? What is with higher indeces?
-				SlWriteUint16(ReferenceToInt(*(void**)ptr, (SLRefType)conv));
+			if (_sl.save) {
+				SlWriteUint32(ReferenceToInt(*(void**)ptr, (SLRefType)conv));
 			} else {
-				*(void**)ptr = IntToReference(SlReadUint16(), (SLRefType)conv);
+				*(void**)ptr = IntToReference(CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32(), (SLRefType)conv);
 			}
 			break;
 		case SL_ARR: SlArray(ptr, sld->length, conv); break;
