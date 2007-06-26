@@ -254,37 +254,13 @@ const byte _ffb_64[128] = {
 48, 56, 56, 58, 56, 60, 60, 62,
 };
 
-static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
+static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction);
+
+/** Most code of the "Normal" case of TPF Mode 1; for signals special tricks
+ * have to be done, but those happen in TPFMode1; this is just to prevent
+ * gotos ;). */
+static inline void TPFMode1_NormalCase(TrackPathFinder* tpf, TileIndex tile, TileIndex tile_org, DiagDirection direction)
 {
-	uint bits;
-	int i;
-	RememberData rd;
-	TileIndex tile_org = tile;
-
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		if (IsTunnel(tile)) {
-			if (GetTunnelDirection(tile) != direction ||
-					GetTunnelTransportType(tile) != tpf->tracktype) {
-				return;
-			}
-			tile = SkipToEndOfTunnel(tpf, tile, direction);
-		} else {
-			TileIndex tile_end;
-			if (GetBridgeRampDirection(tile) != direction ||
-					GetBridgeTransportType(tile) != tpf->tracktype) {
-				return;
-			}
-			//fprintf(stderr, "%s: Planning over bridge\n", __func__);
-			// TODO doesn't work - WHAT doesn't work?
-			TPFSetTileBit(tpf, tile, 14);
-			tile_end = GetOtherBridgeEnd(tile);
-			tpf->rd.cur_length += DistanceManhattan(tile, tile_end);
-			tile = tile_end;
-			TPFSetTileBit(tpf, tile, 14);
-		}
-	}
-	tile += TileOffsByDiagDir(direction);
-
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
 		/* don't enter train depot from the back */
@@ -322,7 +298,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 	tpf->rd.cur_length++;
 
-	bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
+	uint bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
 
 	if ((byte)bits != tpf->var2) {
 		bits &= _tpfmode1_and[direction];
@@ -333,11 +309,11 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	if (bits != 0) {
 		if (!tpf->disable_tile_hash || (tpf->rd.cur_length <= 64 && (KILL_FIRST_BIT(bits) == 0 || ++tpf->rd.depth <= 7))) {
 			do {
-				i = FIND_FIRST_BIT(bits);
+				int i = FIND_FIRST_BIT(bits);
 				bits = KILL_FIRST_BIT(bits);
 
 				tpf->the_dir = (Trackdir)((_otherdir_mask[direction] & (byte)(1 << i)) ? (i + 8) : i);
-				rd = tpf->rd;
+				RememberData rd = tpf->rd;
 
 				if (TPFSetTileBit(tpf, tile, tpf->the_dir) &&
 						!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, &tpf->rd.pft_var6) ) {
@@ -347,6 +323,37 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 			} while (bits != 0);
 		}
 	}
+}
+
+static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
+{
+	TileIndex tile_org = tile;
+
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		if (IsTunnel(tile)) {
+			if (GetTunnelDirection(tile) != direction ||
+					GetTunnelTransportType(tile) != tpf->tracktype) {
+				return;
+			}
+			tile = SkipToEndOfTunnel(tpf, tile, direction);
+		} else {
+			TileIndex tile_end;
+			if (GetBridgeRampDirection(tile) != direction ||
+					GetBridgeTransportType(tile) != tpf->tracktype) {
+				return;
+			}
+			//fprintf(stderr, "%s: Planning over bridge\n", __func__);
+			// TODO doesn't work - WHAT doesn't work?
+			TPFSetTileBit(tpf, tile, 14);
+			tile_end = GetOtherBridgeEnd(tile);
+			tpf->rd.cur_length += DistanceManhattan(tile, tile_end);
+			tile = tile_end;
+			TPFSetTileBit(tpf, tile, 14);
+		}
+	}
+	tile += TileOffsByDiagDir(direction);
+
+	TPFMode1_NormalCase(tpf, tile, tile_org, direction);
 
 	/* the next is only used when signals are checked.
 	 * seems to go in 2 directions simultaneously */
@@ -363,7 +370,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	direction = ReverseDiagDir(direction);
 	tile += TileOffsByDiagDir(direction);
 
-	bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
+	uint bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
 	bits |= (bits >> 8);
 
 	if ( (byte)bits != tpf->var2) {
@@ -375,11 +382,11 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		return;
 
 	do {
-		i = FIND_FIRST_BIT(bits);
+		uint i = FIND_FIRST_BIT(bits);
 		bits = KILL_FIRST_BIT(bits);
 
 		tpf->the_dir = (Trackdir)((_otherdir_mask[direction] & (byte)(1 << i)) ? (i + 8) : i);
-		rd = tpf->rd;
+		RememberData rd = tpf->rd;
 		if (TPFSetTileBit(tpf, tile, tpf->the_dir) &&
 				!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, &tpf->rd.pft_var6) ) {
 			TPFMode1(tpf, tile, _tpf_new_direction[tpf->the_dir]);
