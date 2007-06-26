@@ -1638,17 +1638,17 @@ static void ExtChangeIndustryProduction(Industry *i)
 				int mag;
 
 				new_prod = old_prod = i->production_rate[j];
-				if (CHANCE16I(20, 1024, r))
-					new_prod -= ((RandomRange(50) + 10) * old_prod) >> 8;
-				if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16))
-					/* old_prod gets stuck at '4' because 60 * 4 / 256 < 1, so in that case
-					 *  increase the odds a bit for increasing, so at least it can escape
-					 *  the production of '4' at some time in the future (instead of being
-					 *  stuck there for ever). */
-					new_prod += ((RandomRange(old_prod == 4 ? 55 : 50) + 10) * old_prod) >> 8;
 
-				new_prod = clamp(new_prod, 4, 255);
-				if (new_prod == old_prod) {
+				if (CHANCE16I(20, 1024, r)) new_prod -= max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
+				/* Chance of increasing becomes better when more is transported */
+				if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16) &&
+						(indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) == 0) {
+					new_prod += max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
+				}
+
+				new_prod = clamp(new_prod, 1, 255);
+				/* Do not stop closing the industry when it has the lowest possible production rate */
+				if (new_prod == old_prod && && old_prod > 1)) {
 					closeit = false;
 					continue;
 				}
@@ -1656,8 +1656,8 @@ static void ExtChangeIndustryProduction(Industry *i)
 				percent = new_prod * 100 / old_prod - 100;
 				i->production_rate[j] = new_prod;
 
-				if (new_prod >= indspec->production_rate[j] / 4)
-					closeit = false;
+				/* Close the industry when it has the lowest possible production rate */
+				if (new_prod > 1) closeit = false;
 
 				mag = abs(percent);
 				if (mag >= 10) {
