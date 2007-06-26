@@ -339,7 +339,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 			 * tunnel and we're pathfinding backwards */
 			if (GetTunnelDirection(tile) == direction) {
 				tile = SkipToEndOfTunnel(tpf, tile, direction);
-			} if (GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
+			} else if (GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
 				/* We don't support moving through the sides of a tunnel
 				 * entrance :-) */
 				return;
