@@ -649,6 +649,10 @@ static const int _AutorailType[6][2] = {
 
 #include "table/autorail.h"
 
+/**
+ * Checks if the specified tile is selected and if so draws selection using correct selectionstyle.
+ * @param *ti TileInfo Tile that is being drawn
+ */
 static void DrawTileSelection(const TileInfo *ti)
 {
 	SpriteID image;
@@ -1930,7 +1934,14 @@ static byte GetAutorailHT(int x, int y)
 	return HT_RAIL | _AutorailPiece[x & 0xF][y & 0xF];
 }
 
-/** called regular to update tile highlighting in all cases */
+/**
+ * Updates tile highlighting for all cases.
+ * Uses _thd.selstart and _thd.selend and _thd.place_mode (set elsewhere) to determine _thd.pos and _thd.size
+ * Also drawstyle is determined. Uses _thd.new.* as a buffer and calls SetSelectionTilesDirty() twice,
+ * Once for the old and once for the new selection.
+ * _thd is TileHighlightData, found in viewport.h
+ * Called by MouseLoop() in windows.cpp
+ */
 void UpdateTileSelection()
 {
 	int x1;
@@ -1981,8 +1992,8 @@ void UpdateTileSelection()
 	if (_thd.drawstyle != _thd.new_drawstyle ||
 			_thd.pos.x != _thd.new_pos.x || _thd.pos.y != _thd.new_pos.y ||
 			_thd.size.x != _thd.new_size.x || _thd.size.y != _thd.new_size.y ||
-	    _thd.outersize.x != _thd.new_outersize.x ||
-	    _thd.outersize.y != _thd.new_outersize.y) {
+			_thd.outersize.x != _thd.new_outersize.x ||
+			_thd.outersize.y != _thd.new_outersize.y) {
 		/* clear the old selection? */
 		if (_thd.drawstyle) SetSelectionTilesDirty();
 
