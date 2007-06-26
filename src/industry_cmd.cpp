@@ -1647,7 +1647,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 					 *  stuck there for ever). */
 					new_prod += ((RandomRange(old_prod == 4 ? 55 : 50) + 10) * old_prod) >> 8;
 
-				new_prod = clamp(new_prod, 0, 255);
+				new_prod = clamp(new_prod, 4, 255);
 				if (new_prod == old_prod) {
 					closeit = false;
 					continue;
