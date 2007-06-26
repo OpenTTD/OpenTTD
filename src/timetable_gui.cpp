@@ -175,6 +175,23 @@ static void DrawTimetableWindow(Window *w)
 
 	y = w->widget[5].top + 1;
 
+	{
+		uint total_time = 0;
+		bool complete = true;
+
+		for (const Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
+			total_time += order->travel_time + order->wait_time;
+			if (order->travel_time == 0) complete = false;
+			if (order->wait_time == 0 && order->type == OT_GOTO_STATION && !(_patches.new_nonstop && (order->flags & OF_NON_STOP))) complete = false;
+		}
+
+		if (total_time != 0) {
+			SetTimetableParams(0, 1, total_time);
+			DrawString(2, y, complete ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE, 0x10);
+		}
+	}
+	y += 10;
+
 	if (v->lateness_counter == 0 || (!_patches.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
 		DrawString(2, y, STR_TIMETABLE_STATUS_ON_TIME, 0x10);
 	} else {
@@ -284,21 +301,21 @@ static const Widget _timetable_widgets[] = {
 	{      WWT_PANEL,   RESIZE_RB,      14,     0,   387,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},
 	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   388,   399,    14,    95, STR_NULL,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   399,    96,   107, STR_NULL,                   STR_NULL},
+	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   399,    96,   117, STR_NULL,                   STR_NULL},
 
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   109,   108,   119, STR_TIMETABLE_CHANGE_TIME,  STR_TIMETABLE_WAIT_TIME_TOOLTIP},
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   110,   219,   108,   119, STR_CLEAR_TIME,             STR_TIMETABLE_CLEAR_TIME_TOOLTIP},
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   220,   337,   108,   119, STR_RESET_LATENESS,         STR_TIMETABLE_RESET_LATENESS_TOOLTIP},
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   338,   387,   108,   119, STR_TIMETABLE_AUTOFILL,     STR_TIMETABLE_AUTOFILL_TOOLTIP},
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   109,   118,   129, STR_TIMETABLE_CHANGE_TIME,  STR_TIMETABLE_WAIT_TIME_TOOLTIP},
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   110,   219,   118,   129, STR_CLEAR_TIME,             STR_TIMETABLE_CLEAR_TIME_TOOLTIP},
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   220,   337,   118,   129, STR_RESET_LATENESS,         STR_TIMETABLE_RESET_LATENESS_TOOLTIP},
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   338,   387,   118,   129, STR_TIMETABLE_AUTOFILL,     STR_TIMETABLE_AUTOFILL_TOOLTIP},
 
-	{      WWT_PANEL,   RESIZE_RTB,     14,   388,   387,   108,   119, STR_NULL,                   STR_NULL},
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   388,   399,   108,   119, STR_NULL,                   STR_RESIZE_BUTTON},
+	{      WWT_PANEL,   RESIZE_RTB,     14,   388,   387,   118,   129, STR_NULL,                   STR_NULL},
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   388,   399,   118,   129, STR_NULL,                   STR_RESIZE_BUTTON},
 
 	{    WIDGETS_END }
 };
 
 static const WindowDesc _timetable_desc = {
-	WDP_AUTO, WDP_AUTO, 400, 120,
+	WDP_AUTO, WDP_AUTO, 400, 130,
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_timetable_widgets,
