@@ -331,11 +331,19 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if (IsTunnel(tile)) {
-			if (GetTunnelDirection(tile) != direction ||
-					GetTunnelTransportType(tile) != tpf->tracktype) {
+			if (GetTunnelTransportType(tile) != tpf->tracktype) {
 				return;
 			}
-			tile = SkipToEndOfTunnel(tpf, tile, direction);
+			/* Only skip through the tunnel if heading inwards. We can
+			 * be headed outwards if our starting position was in a
+			 * tunnel and we're pathfinding backwards */
+			if (GetTunnelDirection(tile) == direction) {
+				tile = SkipToEndOfTunnel(tpf, tile, direction);
+			} if (GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
+				/* We don't support moving through the sides of a tunnel
+				 * entrance :-) */
+				return;
+			}
 		} else {
 			TileIndex tile_end;
 			if (GetBridgeRampDirection(tile) != direction ||

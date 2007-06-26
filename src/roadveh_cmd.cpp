@@ -416,7 +416,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 		/* See where we are now */
 		Trackdir trackdir = GetVehicleTrackdir(v);
 
-		ftd = NPFRouteToDepotBreadthFirst(v->tile, trackdir, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPE);
+		ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, v->tile, ReverseTrackdir(trackdir), TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPE, 0);
 		if (ftd.best_bird_dist == 0) {
 			return GetDepotByTile(ftd.node.tile); /* Target found */
 		} else {
