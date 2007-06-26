@@ -1106,6 +1106,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Använd
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Använd lastningsindikatörer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aktivera Tidtabeller för fordon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Visa tidtabeller räknat i ticks istället för dagar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard järnvägsräls (efter nytt/laddat spel): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal Järnvägsräls
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrisk Järnvägsräls
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Första tillgängliga
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Sista tillgängliga
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest använd
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max antal vägfordon per spelare: {ORANGE}{STRING}
@@ -1907,6 +1915,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan inte
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Sparandet av spelet misslyckades{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan inte ta bort filen
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Läsningen av spelet misslyckades{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internt fel: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Trasig sparfil - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sparfilen är gjord med en ny version
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Filen är inte läsbar
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Filen är inte skrivbar
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listar enheter, kataloger och sparade spel
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Valt namn för spelet
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Ta bort markerat sparat spel
@@ -2077,8 +2090,7 @@ STR_SV_STNAME_UPPER                                             :Övre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplats
 STR_SV_STNAME_FOREST                                            :{STRING} Skog
-
-
+STR_SV_STNAME_FALLBACK                                          :{STRING} Station #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2761,6 +2773,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra T
 STR_TIMETABLE_STATUS_ON_TIME                                    :Detta fordon ligger efter i tidtabellen
 STR_TIMETABLE_STATUS_LATE                                       :Detta fordon är för tillfället {STRING} sen
 STR_TIMETABLE_STATUS_EARLY                                      :Detta fordon är för tillfället {STRING} tidig
+STR_TIMETABLE_TOTAL_TIME                                        :Denna tidtabell kommer ta {STRING} att slutföra
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Denna tidtabell kommer att ta åtminstonde {STRING} att slutföra (allt är inte inlagt i en tidtabell)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatisk ifyllning
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll tidtabellen automatiskt med värdet från den första resan
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vägfordon i vägen
@@ -3292,6 +3308,12 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Växla g
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner, kanske i framtiden även ögongodis
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Växla genomskinlighet för lastningsindikatörer
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Grupp {COMMA}
@@ -3328,5 +3350,12 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Vinst detta år: {RED}{CURRENCY} {BLACK}(förra året: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Vinst detta år: {GREEN}{CURRENCY} {BLACK}(förra året: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Vinst detta år: {RED}{CURRENCY} {BLACK}(förra året: {RED}{CURRENCY}{BLACK})
+
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

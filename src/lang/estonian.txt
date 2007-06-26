@@ -2182,6 +2182,7 @@ STR_SV_STNAME_UPPER                                             :Ülemine {STRIN
 STR_SV_STNAME_LOWER                                             :Alumine {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Kopteriväljak
 STR_SV_STNAME_FOREST                                            :{STRING} mets
+STR_SV_STNAME_FALLBACK                                          :{STRING} Jaam #{NUM}
 
 ############ end of savegame specific region!
 

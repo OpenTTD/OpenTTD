@@ -166,7 +166,7 @@ STR_TRANSLATED_BY                                               :{BLACK}  Traduc
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
-STR_00C7_QUIT                                                   :{WHITE}Sortir
+STR_00C7_QUIT                                                   :{WHITE}Surt
 STR_00C8_YES                                                    :{BLACK}Si
 STR_00C9_NO                                                     :{BLACK}No
 STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur que vols abandonar aquest joc i tornar a {STRING}?
@@ -362,7 +362,7 @@ STR_015B_OPENTTD                                                :{WHITE}Quant a 
 STR_015C_SAVE_GAME                                              :Desa el joc
 STR_015D_LOAD_GAME                                              :Carrega el joc
 STR_015E_QUIT_GAME                                              :Abandona el joc
-STR_015F_QUIT                                                   :Sortir
+STR_015F_QUIT                                                   :Surt
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Estàs segur que vols abandonar aquest joc?
 STR_0161_QUIT_GAME                                              :{WHITE}Abandona el Joc
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecciona ordre de classificació (descendent/ascendent)
@@ -735,9 +735,9 @@ STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Esborra 
 STR_0292_SAVE_SCENARIO                                          :Desa l'escenari
 STR_0293_LOAD_SCENARIO                                          :Carrega un escenari
 STR_LOAD_HEIGHTMAP                                              :Carrega Mapa d'alçades
-STR_0294_QUIT_EDITOR                                            :Sortir de l'editor
+STR_0294_QUIT_EDITOR                                            :Surt de l'editor
 STR_0295                                                        :
-STR_0296_QUIT                                                   :Sortir
+STR_0296_QUIT                                                   :Surt
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Desa l'escenari, carrega un escenari, abandona l'editor d'escenaris, sortir
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Carrega un Escenari
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Desa l'Escenari
@@ -745,7 +745,7 @@ STR_029A_PLAY_SCENARIO                                          :{BLACK}Juga un 
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Juga un mapa d'alçades
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Comença un nou joc, utilitzant un mapa d'alçades com a terreny
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Estàs segur que vols sortir d'aquest escenari ?
-STR_029C_QUIT_EDITOR                                            :{WHITE}Sortir de l'Editor
+STR_029C_QUIT_EDITOR                                            :{WHITE}Surt de l'Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions de més de 1200 hab.
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retarda la data d'inici 1 any
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Avança la data d'inici 1 any
@@ -844,8 +844,8 @@ STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Seleccio
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Mostra les opcions del joc
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Mostra les opcions de dificultat
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Comença un joc nou, utilitzant un escenari personalitzat
-STR_0304_QUIT                                                   :{BLACK}Sortir
-STR_0305_QUIT_OPENTTD                                           :{BLACK}Sortir d'OpenTTD
+STR_0304_QUIT                                                   :{BLACK}Surt
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Surt d'OpenTTD
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Selecciona l'estil de paisatge 'temperat'
@@ -1106,6 +1106,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilitz
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Utilitza indicadors de carregament: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Habilita horaris dels vehicles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra horaris en marques enlloc de dies: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipus de via predeterminada (en un joc nou/joc desat): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Via Normal
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Via Electrificada
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :La primera disponible
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :La darrera disponible
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :La més utilitzada
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
@@ -2082,6 +2090,7 @@ STR_SV_STNAME_UPPER                                             :Sobre {STRING}
 STR_SV_STNAME_LOWER                                             :Baix {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Bosc
+STR_SV_STNAME_FALLBACK                                          :{STRING} Estació #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2654,10 +2663,10 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Fa una c
 STR_8820_RENAME                                                 :{BLACK}Reanomena
 STR_8823_SKIP                                                   :{BLACK}Salta
 STR_8824_DELETE                                                 :{BLACK}Esborra
-STR_8825_NON_STOP                                               :{BLACK}Sense Parar
+STR_8825_NON_STOP                                               :{BLACK}No paris
 STR_8826_GO_TO                                                  :{BLACK}Ves a
 STR_8827_FULL_LOAD                                              :{BLACK}Carrega
-STR_8828_UNLOAD                                                 :{BLACK}Descarrega
+STR_8828_UNLOAD                                                 :{BLACK}Descarreg
 STR_REFIT                                                       :{BLACK}Remodela
 STR_REFIT_TIP                                                   :{BLACK}Selecciona quin tipus de càrrega vols remodelar en aquesta ordre. Control + Clic per eliminar l'ordre de remodelar
 STR_REFIT_ORDER                                                 :(Remodela a {STRING})
@@ -2743,7 +2752,7 @@ STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No es po
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Reanomena el tipus d'element del tren
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No es pot reanomenar el tipus d'element del tren...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que l'ordre marcada forci al vehicle a volcar la càrrega
-STR_886F_TRANSFER                                               :{BLACK}Transfereix
+STR_886F_TRANSFER                                               :{BLACK}Transf.
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
 STR_RESET_LATENESS                                              :{BLACK}Reseteja el comptador de retrassos
 
@@ -2764,6 +2773,8 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia T
 STR_TIMETABLE_STATUS_ON_TIME                                    :Actualment aquest vehicle és puntual
 STR_TIMETABLE_STATUS_LATE                                       :Actualment aquest vehicle va {STRING} tard
 STR_TIMETABLE_STATUS_EARLY                                      :Actualment aquest vehicle va {STRING} d'hora
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoomple
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple l'horari automàticament amb els valors del primer viatge
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automòbil en camí
@@ -3338,7 +3349,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Benefici aquest any: {GREEN}{CURRENCY} {BLACK}(any passat: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Benefici aquest any: {RED}{CURRENCY} {BLACK}(any passat: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

@@ -5,6 +5,8 @@
 ##case d c b n m w
 ##gender m f n
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Poza krawędzią mapy
@@ -804,7 +806,7 @@ STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Zbuduj G
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Zbuduj Odkrywkę Toffi
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Zbuduj Kopalnię cukru
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Nie można tutaj wybudować: {STRING}...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...najpierw trzeba wybudować miasto
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...należy najpierw wybudować miasto
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...dozwolone jedno na miasto
 STR_0288_PLANT_TREES                                            :{BLACK}Posadź drzewa
 STR_0289_PLACE_SIGN                                             :{BLACK}Umieść napis
@@ -863,6 +865,7 @@ STR_02C3_GAME_OPTIONS                                           :Opcje gry
 STR_02C5_DIFFICULTY_SETTINGS                                    :Ustawienia trudności
 STR_02C7_CONFIG_PATCHES                                         :Konfiguracja wtyczek
 STR_NEWGRF_SETTINGS                                             :Ustawienia newgrf
+STR_TRANSPARENCY_OPTIONS                                        :Opcje przeźroczystości
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Wyświetlanie nazw miast
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Wyświetlanie nazw stacji
@@ -890,7 +893,6 @@ STR_02DD_SUBSIDIES                                              :Subsydia
 STR_02DE_MAP_OF_WORLD                                           :Mapa świata
 STR_EXTRA_VIEW_PORT                                             :Dodatkowy podgląd
 STR_SIGN_LIST                                                   :Lista tablic
-STR_TRANSPARENCY_OPTIONS                                        :Opcje przeźroczystości
 STR_02DF_TOWN_DIRECTORY                                         :Lista miast
 STR_TOWN_POPULATION                                             :{BLACK}Populacja świata: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Podgląd {COMMA}
@@ -1007,7 +1009,7 @@ STR_CURR_ITL                                                    :Lira włoska (I
 STR_CURR_NLG                                                    :Gulden holenderski (NLG)
 STR_CURR_NOK                                                    :Korona norweska (NOK)
 STR_CURR_PLN                                                    :Złoty polski (PLN)
-STR_CURR_ROL                                                    :Lewy rumuńskie (ROL)
+STR_CURR_ROL                                                    :Lej rumuński (ROL)
 STR_CURR_RUR                                                    :Rubel rosyjski (RUR)
 STR_CURR_SIT                                                    :Tolar słowenski (SIT)
 STR_CURR_SEK                                                    :Korona szwedzka (SEK)
@@ -1172,7 +1174,7 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Wysoko�
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. wielkość stacji: {ORANGE}{STRING} {RED}Uwaga: Duże wartości spowalniają grę
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatycznie serwisuj helikoptery na lądowiskach: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Przyłącz okno narzędzi krajobrazu do okien środków transportu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Przewijaj obraz myszka w przeciwnym kierunku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Przewijaj obraz myszką w przeciwnym kierunku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Pokaż dymek z pomiarem podczas używania rożnych narzędzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Pokaż poboczne schematy koloru: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Żadne
@@ -1215,7 +1217,7 @@ STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Pojawia
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data rozpoczęcia gry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Data zakończenia gry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Pozwól na łagodną ekonomię (więcej małych zmian)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwól kupować odziały w innych firmach
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwól kupować udziały w innych firmach
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} kratk{P e i ek}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
 
@@ -1397,8 +1399,8 @@ STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}To jest 
 STR_NETWORK_CONNECTION                                          :{BLACK}Połączenie:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Wybierz między grą w internecie a grą w sieci lokalnej
 
-STR_NETWORK_START_SERVER                                        :{BLACK}Uruchomienie serwera
-STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Uruchomienie własnego serwera
+STR_NETWORK_START_SERVER                                        :{BLACK}Uruchom serwer
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Uruchom własny serwer
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Nazwa
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nazwa gry
@@ -1466,7 +1468,7 @@ STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{S
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksymalna ilość widzów:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ogranicz serwer do określonej ilości widzów
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Wzywany język w grze:
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Używany język:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Inni gracze będą poinformowani jaki język jest używany na serwerze
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Rozpocznij grę
@@ -1479,6 +1481,31 @@ STR_NETWORK_LANG_ANY                                            :Dowolny
 STR_NETWORK_LANG_ENGLISH                                        :Angielski
 STR_NETWORK_LANG_GERMAN                                         :Niemiecki
 STR_NETWORK_LANG_FRENCH                                         :Francuski
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazylijski
+STR_NETWORK_LANG_BULGARIAN                                      :Bułgarski
+STR_NETWORK_LANG_CHINESE                                        :Chiński
+STR_NETWORK_LANG_CZECH                                          :Czeski
+STR_NETWORK_LANG_DANISH                                         :Duński
+STR_NETWORK_LANG_DUTCH                                          :Holenderski
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Fiński
+STR_NETWORK_LANG_HUNGARIAN                                      :Węgierski
+STR_NETWORK_LANG_ICELANDIC                                      :Islandzki
+STR_NETWORK_LANG_ITALIAN                                        :Włoski
+STR_NETWORK_LANG_JAPANESE                                       :Japoński
+STR_NETWORK_LANG_KOREAN                                         :Koreański
+STR_NETWORK_LANG_LITHUANIAN                                     :Litewski
+STR_NETWORK_LANG_NORWEGIAN                                      :Norweski
+STR_NETWORK_LANG_POLISH                                         :Polski
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugalski
+STR_NETWORK_LANG_ROMANIAN                                       :Rumuński
+STR_NETWORK_LANG_RUSSIAN                                        :Rosyjski
+STR_NETWORK_LANG_SLOVAK                                         :Słowacki
+STR_NETWORK_LANG_SLOVENIAN                                      :Słoweński
+STR_NETWORK_LANG_SPANISH                                        :Hiszpański
+STR_NETWORK_LANG_SWEDISH                                        :Szwedzki
+STR_NETWORK_LANG_TURKISH                                        :Turecki
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukraiński
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Lobby gry wieloosobowej
@@ -1639,7 +1666,7 @@ STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Już na 
 STR_1004_TOO_HIGH                                               :{WHITE}Zbyt wysoko
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nieodpowiednie tory
 STR_1007_ALREADY_BUILT                                          :{WHITE}...już zbudowano
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najpierw trzeba usunąć tory
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Należy najpierw usunąć tory
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Konstrukcja torowiska
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Konstrukcja elektryfikowanego torowiska
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Konstrukcja torowiska jednoszynowego
@@ -1651,7 +1678,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Nie moż
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Nie można tutaj ułożyć torów...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nie można stąd usunąć torów...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nie można stąd usunąć sygnałów...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientacja zajezdni
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Ukierunkowanie zajezdni
 STR_1015_RAILROAD_CONSTRUCTION                                  :Konstrukcja torowiska
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Konstrukcja elektryfikowanego torowiska
 STR_1016_MONORAIL_CONSTRUCTION                                  :Konstrukcja torowiska jednoszynowego
@@ -1664,37 +1691,60 @@ STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Budowa m
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Budowa tunelu kolejowego
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Przełącz buduj/usuń dla torów i semaforów
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Wybór mostu - klik na wybranym moście aby go zbudować
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Wybierz orientacje zajezdni kolejowej
-STR_1021_RAILROAD_TRACK                                         :Tory
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Wybierz ukierunkowanie zajezdni kolejowej
+STR_1021_RAILROAD_TRACK                                         :Tory kolejowe
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zajezdnia kolejowa
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...teren jest własnością innej firmy
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Tory kolejowe ze zwykłą sygnalizacją
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Tory kolejowe z pre-sygnałami
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Tory kolejowe z sygnalizacją wyjsciową
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Tory kolejowe z sygnalizacja combo
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Tory kolejowe z exit-sygnałami
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Tory kolejowe z combo-sygnałami
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Torry kolejowe z normalnymi i pre-sygnałami
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Tory kolejowe z normalnymi i exit-sygnałami
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tory kolejowe z normalnymi i combo-sygnałami
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tory kolejowe z pre- i exit-sygnałami
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tory kolejowe z pre- i combo-sygnałami
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tory kolejowe z exit- i combo-sygnałami
 
 
 
 ##id 0x1800
-STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Trzeba najpierw usunąć drogę
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Należy najpierw usunąć drogę
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Trwają roboty drogowe
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Tworzenie dróg
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Budowa torowiska tramwajowego
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Wybierz most drogowy
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... drogi jednokierunkowe nie mogą mieć skrzyżowań
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Nie można tutaj zbudować drogi...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Nie można tutaj zbudować torowiska...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nie można usunąć drogi z tego miejsca...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientacja zajezdni samochodowej
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Nie można torowiska z tego miejsca...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Ukierunkowanie zajezdni samochodowej
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientacja zajezdni
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nie można tutaj zbudować zajezdni...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Nie można tutaj zbudować zajezdni...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nie można zbudować przystanku...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nie można zbudować stacji ciężarówek...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Nie można zbudować przystanku tramwajowego...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nie można zbudować tramwajowej stacji załadunkowej...
 STR_180A_ROAD_CONSTRUCTION                                      :Budowa drogi
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Budowa torowiska tramwajowego
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Sekcja budowy dróg
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Zbuduj zajezdnie samochodową (do budowania i serwisowania pojazdów)
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Zbuduj fragment torowiska tramwajowego
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Zbuduj zajezdnię samochodową (do budowania i serwisowania pojazdów)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Zbuduj zajezdnię tramwajową (do budowania i serwisowania pojazdów)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Budowa przystanku
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Zbuduj stację załadunku ciężarówek
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Zbuduj przystanek tramwajowy
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Zbuduj tramwajową stację załadunkową
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Budowa mostu drogowego
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Zbuduj most tramwajowy
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Budowa tunelu drogowego
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Zbuduj tunel tramwajowy
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Przełącz buduj/usuń dla konstrukcji dróg
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Przełącz buduj/usuń dla konstrukcji torowiska tramwajowego
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Wybierz umiejscowienie zajezdni samochodowej
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Wybierz ukierunkowanie zajezdni tramwajowej
 STR_1814_ROAD                                                   :Droga
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Droga z oświetleniem ulicznym
 STR_1816_TREE_LINED_ROAD                                        :Droga z drzewami
@@ -1702,6 +1752,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Zajezdnia samoc
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Przejazd kolejowy
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nie można usunąć przystanku...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nie można usunąć stacji załadunkowej...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nie można usunąć przystanku tramwajowego...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Nie można usunąć tramwajowej stacji załadunkowej...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Miasta
@@ -1710,7 +1762,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
-STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budynek musi być najpierw zburzony
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Należy najpierw zburzyć budynek
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populacja: {ORANGE}{COMMA}{BLACK}  Domów: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Zmień nazwę miasta
@@ -1827,7 +1879,7 @@ STR_2810_CACTUS_PLANTS                                          :Kaktusy
 ##id 0x3000
 STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Wybór stacji
 STR_3001_AIRPORT_SELECTION                                      :{WHITE}Wybór lotniska
-STR_3002_ORIENTATION                                            :{BLACK}Orientacja
+STR_3002_ORIENTATION                                            :{BLACK}Ukierunkowanie
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Ilość peronów
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Długość peronu
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Zbyt blisko innej stacji
@@ -1838,9 +1890,9 @@ STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Za dużo
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Za dużo  wiele stacji załadunku ciężarówek
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Zbyt  blisko innej stacji
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
-STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Najpierw musisz zniszczyć stację
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Należy najpierw usunąc stację
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Zbyt blisko innego lotniska
-STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Najpierw  musisz zniszczyć lotnisko
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Należy najpierw usunąć lotnisko
 
 STR_3030_RENAME_STATION_LOADING                                 :Zmień nazwę stacji
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Nie można zmienić nazwy.
@@ -1864,21 +1916,27 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} już nie akceptuje {STRING.d} ani {STRING.d}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} już akceptuje {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} już akceptuje {STRING} i {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientacja przystanku
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientacja st. załadunku
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Najpierw musisz zniszczyć przystanek
-STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Najpierw musisz zniszczyć stację załadunku ciężarówek
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Ukierunkowanie przystanku
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Ukierunkowanie st. załadunku
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Ukierunkowanie przystanku tramwajowego
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Ukierunkowanie tramwajowej stacji załadunkowej
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Należy najpierw usunąć przystanek
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Należy najpierw usunąć stację załadunku ciężarówek
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Najpierw musisz zniszczyć przystanek tramwajowy
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Najpierw musisz zniszczyć tramwajową stację załadunkową
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nic -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...niewłaściwe miejsce
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Zbyt blisko innego portu
-STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Najpierw musisz zniszczyć port
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Wybierz orientacje stacji
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Należy najpierw usunąć port
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Wybierz ukierunkowanie stacji
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Wybierz ilość peronów na stacji
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Wybierz długość stacji
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Wybierz orientacje przystanku
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Orientacja stacji załadunku ciężarówek
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Wybierz ukierunkowanie przystanku
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Ukierunkowanie stacji załadunku ciężarówek
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Wybierz ukierunkowanie przystanku tramwajowego
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Wybierz ukierunkowanie tramwajowej stacji załadunkowej
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centruj główny widok na stacji
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Pokaż ocenę stacji
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Zmień nazwę stacji
@@ -1908,14 +1966,15 @@ STR_STAT_CLASS_DFLT                                             :Typowa stacja
 STR_STAT_CLASS_WAYP                                             :Pkt. kontrolne
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientacja stoczni
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Ukierunkowanie stoczni
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...musi być wybudowane na wodzie
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Nie można tutaj wybudować stoczni...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}wybierz orientację stoczni
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}wybierz ukierunkowanie stoczni
 STR_3804_WATER                                                  :Woda
 STR_3805_COAST_OR_RIVERBANK                                     :Wybrzeże lub brzeg rzeki
 STR_3806_SHIP_DEPOT                                             :Stocznia
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Nie można wybudować na wodzie
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Należy najpierw usunąć kanał
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Zapisz grę
@@ -1928,6 +1987,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nie moż
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Nie można zapisać gry{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nie można usunąć pliku
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nie można wczytać gry{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Błąd wewnętrzny: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Zepsuta zapisana gra - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Zapisana gra zrobiona w nowszej wersji
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Plik nie jest odczytywalny
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Plik nie jest zapisywalny
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista napędów, katalogów i zapisanych gier
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Obecnie zaznaczona nazwa dla zapisanej gry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Skasuj zaznaczoną zapisaną grę
@@ -2046,8 +2110,8 @@ STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Pociąg 
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Samochód w tunelu
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Inny tunel na drodze
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nie można wydrążyć drugiego końca tunelu
-STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Trzeba najpierw zniszczyć tunel
-STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Trzeba najpierw zniszczyć most
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Należy najpierw usunąć tunel
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Należy najpierw usunąć most
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nie można zaczynać i kończyć w tym samym miejscu
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Wymagany równy ląd lub woda pod mostem
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Początek i koniec muszą być w jednej linii
@@ -2134,6 +2198,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} Górny
 STR_SV_STNAME_LOWER                                             :{STRING} Dolny
 STR_SV_STNAME_HELIPORT                                          :{STRING} Lądowisko
 STR_SV_STNAME_FOREST                                            :{STRING} Las
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stacja #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2362,6 +2427,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Statek towarowy
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Mały samolot
 STR_LIVERY_LARGE_PLANE                                          :Duży samolot
+STR_LIVERY_PASSENGER_TRAM                                       :Tramwaj pasażerski
+STR_LIVERY_FREIGHT_TRAM                                         :Tramwaj towarowy
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Pokaż ogólne schematy koloru
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Pokaż schematy koloru pociągów
@@ -2668,6 +2735,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Serwisuj w zaje
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idź bez zatrzymywania do zajezdni w {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idź bez zatrzymywania do serwisu w zajezdni w {TOWN}
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Zmierza do zajezdni w {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Zmierza do zajezdni w {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Serwisuj w Zajezdni w {TOWN}
@@ -2725,6 +2793,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Zbyt wie
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nie można wstawić polecenia...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nie można usunąć tego polecenia...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nie można zmodyfikować tego polecenia...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nie można pominąć obecnego zadania...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nie można przejść do wybranego zadania...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nie można ruszyć pojazdem...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Tylna lokomotywa zawsze porusza się razem z przednią
 STR_8838_N_A                                                    :N/D{SKIP}
@@ -2793,6 +2863,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Dostępn{G y a e} now{G y a e} {STRING} - {ENGINE}!
 
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Samochód na drodze
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Samoch{P ód ody odów}
@@ -2834,12 +2905,16 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centruj 
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista wyboru samochodów - klik na pojeździe po więcej informacji
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zbuduj wybrany samochód
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koszt: {CURRENCY}{}Prędkość: {VELOCITY}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Pojemność: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nazwij samochód
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nie można nazwać samochodu...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nazwij samochód
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy autobus przybył do {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwsza ciężarówka przybyła do {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy tramwaj pasażerski przybył do {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy tramwaj towarowy przybył do {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Wypadek samochodowy!{}Kierowca zginął w zderzeniu z pociągiem
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wypadek samochodowy!{}{COMMA} ofiar{P a y ""} zderzenia z pociągiem
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nie można zawrócić samochodu...
@@ -3000,6 +3075,8 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie moż
 STR_GO_TO_AIRPORT_HANGAR                                        :Idź do hangaru na {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Serwisuj w hangarze na {STATION}
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Rozkład jazdy)
+
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Katastrofa Zeppelina na {STATION}!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Samochód zniszczony w kolizji z 'UFO'!
@@ -3124,6 +3201,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaż w
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Sprzedasz wszystkie pojazdy z zajezdni. Jesteś pewien?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Zły typ zajezdni
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sprzedaj wszystkie pociągi z zajezdni
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sprzedaj wszystkie samochody z zajezdni
@@ -3240,6 +3318,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Zmień w
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Zmień datę rozpoczęcia
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ostrzeżenie o skali
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Nie zaleca się zbyt dużej zmiany wielkości mapy źrodłowej. Kontynuować tworzenie?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Ostrzeżenie o planie miasta
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Model rozwoju miasta "bez nowych dróg" nie jest polecany. Kontynuować tworzenie?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nazwa mapy wysokosci:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Rozmiar: {ORANGE}{NUM} x {NUM}
@@ -3312,3 +3392,51 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Przełą
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Przełącz przeźroczystość infrastruktury takiej jak stacje, zajezdnie, punkty kontrolne i trakcja elektryczna
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Przełącz przeźroczystość mostów
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Przełącz przeźroczystość obiektów takich jak latarnie morskie i nadajniki, być może w przyszłości dodatki graficzne
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Przełącz przeźroczystość wskaźników załadunku
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+
+##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Grupa {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Wszystkie pociągi
+STR_GROUP_ALL_ROADS                                             :Wszystkie samochody
+STR_GROUP_ALL_SHIPS                                             :Wszystkie statki
+STR_GROUP_ALL_AIRCRAFTS                                         :Wszystkie samoloty
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie pojazdy
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Pociąg{P "" i ów}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Samoch{P ód ody odów}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Stat{P ek ki ków}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Samolot{P "" y ów}
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Zmień nazwę grupy
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nie można stworzyć grupy...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nie można usunąć tej grupy...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Nie można zmienić nazwy grupy...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Nie można usunąć wszystkich pojazdów z tej grupy...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Nie można dodać pojazdu do tej grupy...
+
+STR_GROUP_CREATE_TIP                                            :{BLACK}Kliknij aby stworzyć grupę
+STR_GROUP_DELETE_TIP                                            :{BLACK}Usuń zaznaczoną grupę
+STR_GROUP_RENAME_TIP                                            :{BLACK}Zmień nazwę zaznaczonej grupy
+
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Zysk w tym roku: {GREEN}{CURRENCY} {BLACK}(w ostatnim roku: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Zysk w tym roku: {RED}{CURRENCY} {BLACK}(w ostatnim roku: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Zysk w tym roku: {GREEN}{CURRENCY} {BLACK}(w ostatnim roku: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Zysk w tym roku: {RED}{CURRENCY} {BLACK}(w ostatnim roku: {RED}{CURRENCY}{BLACK})
+
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
+
+########

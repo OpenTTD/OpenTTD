@@ -1106,6 +1106,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用�
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}使用載入指示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}啟用運具時刻表功能：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 為單位而不是日：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌類型 (將在新遊戲或載入遊戲時生效)：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :鐵路
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :電氣化鐵路
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :單軌
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :磁浮
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :最新誕生的
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :最常使用的
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家可擁有列車數目：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}每位玩家可擁有車輛數目：{ORANGE}{STRING}
@@ -2082,6 +2090,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} 台地
 STR_SV_STNAME_LOWER                                             :{STRING} 盆地
 STR_SV_STNAME_HELIPORT                                          :{STRING} 直升機場
 STR_SV_STNAME_FOREST                                            :{STRING} 森林
+STR_SV_STNAME_FALLBACK                                          :{STRING} 車站 #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2764,6 +2773,8 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}變更�
 STR_TIMETABLE_STATUS_ON_TIME                                    :此運具目前準點
 STR_TIMETABLE_STATUS_LATE                                       :此運具目前慢了 {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :此運具目前早了 {STRING}
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動製表
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動地將第一次的路程列為時刻表
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}前方有汽車
@@ -3338,6 +3349,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}本年盈餘： {GREEN}{CURRENCY} {BLACK}(去年： {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}本年盈餘： {RED}{CURRENCY} {BLACK}(去年：{RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

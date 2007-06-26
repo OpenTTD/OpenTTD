@@ -1106,6 +1106,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Foloses
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Foloseste indicatorii de incarcare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Foloseste orarul pentru vehicule: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Arata orarul per programari, nu per zile: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipul implicit de sina (dupa joc nou/incarcare joc): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Sina normala
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Sina electrificata
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Mono-sina
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Prima disponibila
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Ultima disponibila
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Cea mai folosita
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri per jucãtor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nr. max. de autovehicule pentru un jucãtor: {ORANGE}{STRING}
@@ -2082,8 +2090,7 @@ STR_SV_STNAME_UPPER                                             :{STRING} de Sus
 STR_SV_STNAME_LOWER                                             :{STRING} de Jos
 STR_SV_STNAME_HELIPORT                                          :Heliportul {STRING}
 STR_SV_STNAME_FOREST                                            :Pãdurea {STRING}
-
-
+STR_SV_STNAME_FALLBACK                                          :{STRING} Statia #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2766,6 +2773,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifica
 STR_TIMETABLE_STATUS_ON_TIME                                    :Acest vehicul se incadreaza in timp
 STR_TIMETABLE_STATUS_LATE                                       :Momentan, acest vehicul este in intarziere {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :Momentan, acest vehicul si-a devansat programul {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :Acest orar va lua {STRING} pentru finalizare
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-completare
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Completeaza automat orarul cu valorile primei calatorii
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Autovehicul in cale
@@ -3340,6 +3351,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit anul acesta: {GREEN}{CURRENCY} {BLACK}(anul trecut: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit anul acesta: {RED}{CURRENCY} {BLACK}(anul trecut: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

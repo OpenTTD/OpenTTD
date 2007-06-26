@@ -842,6 +842,7 @@ STR_02C3_GAME_OPTIONS                                           :Nastavenia hry
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavenia obtiaznosti
 STR_02C7_CONFIG_PATCHES                                         :Nastavenia patchov
 STR_NEWGRF_SETTINGS                                             :Nastavenie newgrf
+STR_TRANSPARENCY_OPTIONS                                        :Nastavenia priehladnosti
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Zobrazit nazvy miest
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Zobrazit nazvy stanic
@@ -869,7 +870,6 @@ STR_02DD_SUBSIDIES                                              :Dotacie
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
 STR_EXTRA_VIEW_PORT                                             :Dalsi pohlad
 STR_SIGN_LIST                                                   :Zoznam popisov
-STR_TRANSPARENCY_OPTIONS                                        :Nastavenia priehladnosti
 STR_02DF_TOWN_DIRECTORY                                         :Zoznam miest
 STR_TOWN_POPULATION                                             :{BLACK}Svetova populacia: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohlad {COMMA}
@@ -1167,6 +1167,17 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Vypnuté
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlost posúvania mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticka pauza pri štarte novej hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použit vylepšený zoznam vozidiel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Použit ukazovatele nakladnia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Povolit cestovné poriadky pre vozidlá: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazovat cestovné poriadky v tikoch namiesto dní: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Predvolený typ kolají (v novej/nahranej hre): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normálne
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifikované
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Prvé dostupné
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Posledné dostupné
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Najcastejsie používané
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
@@ -1466,6 +1477,7 @@ STR_NETWORK_LANG_BULGARIAN                                      :Bulharsky
 STR_NETWORK_LANG_CHINESE                                        :Cinsky
 STR_NETWORK_LANG_CZECH                                          :Cesky
 STR_NETWORK_LANG_DANISH                                         :Dánsky
+STR_NETWORK_LANG_DUTCH                                          :Holadnsky
 STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
 STR_NETWORK_LANG_FINNISH                                        :Fínsky
 STR_NETWORK_LANG_HUNGARIAN                                      :Madarsky
@@ -1708,14 +1720,23 @@ STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nemozno 
 STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Nie je možné postavit elektrickovú osobnú stanicu ...
 STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nie je možné postavit elektrickovú nákladnú stanicu ...
 STR_180A_ROAD_CONSTRUCTION                                      :Vystavba cesty
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Výstavba elektrickovej dráhy
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Postavit cast cesty
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Postavit cast elektrickovej dráhy
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Postavit garaz (na vyroby a opravy automobilov)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Postavit elektrickové depo
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Postavit autobusovu zastavku
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Postavit vykladku
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Postavit osobnú elektrickovú stanicu
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Postavit nákladnú elektrickovú stanicu
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Postavit cestny most
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Postavit most s elektrickovou dráhou
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Postavit cestny tunel
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Postavit tunel s elektrickovou dráhou
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Prepnut stavbu/odstranovanie cesty
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Prepnút stavbu/odstranovanie elektrickovej dráhy
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vybrat orientaciu garaze
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Vybrat orientáciu elektrickového depa
 STR_1814_ROAD                                                   :Cesta
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta s lampami
 STR_1816_TREE_LINED_ROAD                                        :Cesta v aleji
@@ -1723,6 +1744,8 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Garaz
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Zeleznicne priecestie
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nie je možné odstránit autobusovú stanicu ...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nie je možné odstránit nakladaciu rampu ...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nie je možné odstránit osobnú elektrickovú stanicu ...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Nie je možné odstránit nákladnú elektrickovú stanicu ...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Mesta
@@ -1887,8 +1910,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} teraz prijima {STRING} a {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientacia stanice
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientacia vykladky
+STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orientácia osobnej elektricky
+STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orientácia nákladnej elektricky
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Stanica musi byt najskor zburana
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Vykladka musi byt najskor zburana
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Najprv sa musí zbúrat osobná elektricková stanica
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Najprv sa musí zbúrat nákladná elektricková stanica
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stanic{P a e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ziadne -
@@ -1900,6 +1927,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Pocet ko
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Dlzka zeleznicnej stanice
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vybrat orientaciu stanice
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vybrat orientaciu vykladky
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Vyberte orientáciu osobnej elektrickovej stanice
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Vyberte orientáciu nákladnej elektrickovej stanice
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Vycentrovat pohlad na poziciu stanice
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Zobrazit hodnotenie stanice
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Zmenit nazov stanice
@@ -1937,6 +1966,7 @@ STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Pobrezie alebo nabrezie
 STR_3806_SHIP_DEPOT                                             :Lodenica
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}... nemoze byt postavene na vode
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Najprv sa musí zbúrat kanál
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Ulozit hru
@@ -1949,6 +1979,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Zariaden
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ulozenie hry zlyhalo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Subor sa neda vymazat
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nahratie hry zlyhalo{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interná chyba: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Poškodená uložená hra - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Hra bola uložená vo vyššej verzii
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Súbor nie je možné precítat
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Nie je možný zápis do súboru
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Zoznam diskov, adresarov a subory ulozenych hier
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Vybrany nazov pre ulozenie hry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Vymazat vybranu ulozenu hru
@@ -2119,8 +2154,7 @@ STR_SV_STNAME_UPPER                                             :Horny {STRING}
 STR_SV_STNAME_LOWER                                             :Dolny {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Les
-
-
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stanica #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2350,6 +2384,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Nakladna lod
 STR_LIVERY_HELICOPTER                                           :Helikoptera
 STR_LIVERY_SMALL_PLANE                                          :Male lietadlo
 STR_LIVERY_LARGE_PLANE                                          :Velke lietadlo
+STR_LIVERY_PASSENGER_TRAM                                       :Osobná elektricka
+STR_LIVERY_FREIGHT_TRAM                                         :Nákladná elektricka
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Zobrazit všeobecné farebné schémy
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Zobrazit farebné schémy pre vlaky
@@ -2650,6 +2686,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Opravit v {TOWN
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Chod bez zastavenia do depa {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Opravovat bez zastavenia v depe {TOWN}
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Cesta (neurcený cas)
+STR_TIMETABLE_TRAVEL_FOR                                        :Cesta do {STRING}
+STR_TIMETABLE_STAY_FOR                                          :prestávka {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ni ní}
+STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" y ov}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Smeruje do {TOWN} depa
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Smeruje do {TOWN} depa, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servis v depe {TOWN}
@@ -2691,6 +2734,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Vylozit
 STR_REFIT                                                       :{BLACK}Prestavba
 STR_REFIT_TIP                                                   :{BLACK}Vyberte typ nákladu na prestavbu v tomto poradí. CTRL+klik na odstránenie príkazu prestavby
 STR_REFIT_ORDER                                                 :(Prestavba na {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Cestovný poriadok
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Prepnút na zobrazenie cestovného poriadku
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec prikazov - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2707,6 +2752,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prilis v
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nemozno vlozit novy prikaz...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemozno vymazat tebnto prikaz ...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemozno zmenit tento prikaz ...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nie je možné presunút tento príkaz ...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nie je možné vynechat tento príkaz ...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nie je možné preskocit na vybraný príkaz ...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nemozno posuvat vozdlo ...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadný stroj vždy doprevádza svoj druhý stroj vpredu
 STR_8838_N_A                                                    :Nie je{SKIP}
@@ -2738,11 +2786,16 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Zobrazit
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Zobrazit kapacitu kazdeho vozidla
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Zobrazit celkovu kapacitu vlaku, rozdelenu podla typu nakladu
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Zoznam prikazov - kliknut na prikaz pre oznacenie
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskocit aktuálny príkaz a zacat další. Podržte CTRL pre skok na oznacený príkaz
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Vymazat oznaceny prikaz
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaceny prikaz bude prevedeny bez zastavenia
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vlozit novy prikaz pred oznaceny prikaz, alebo na koniec zoznamu
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo cakat na plne nalozenie
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo uplne vylozene
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Cestovný poriadok - kliknite na príkaz pre jeho oznacenie
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmenit dlžku trvania oznaceného príkazu
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vymazat dlžku trvania oznaceného príkazu
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Resetnút pocítadlo meškania, takye vozidlo pojde presne
 STR_SERVICE_HINT                                                :{BLACK}Vynechat tento prikaz pokial nie je potrebna oprava
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rýchlost: {VELOCITY}  Výkon: {POWER}{}Náklady na prevádzku: {CURRENCY}/rok{}Kapacita: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokazene
@@ -2764,6 +2817,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Premenov
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Typ vlaku nemoze byt premenovany ...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}U vyznaceneho prikazu musi vozidlo vylozit naklad
 STR_886F_TRANSFER                                               :{BLACK}Prekladka
+STR_CLEAR_TIME                                                  :{BLACK}Vymazat cas
+STR_RESET_LATENESS                                              :{BLACK}Reset meskania
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
@@ -2774,6 +2829,18 @@ STR_TRAIN_START_NO_CATENARY                                     :Vlak nemoze nas
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nové {STRING} dostupné!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nové {STRING} dostupné!  -  {ENGINE}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Vozidlu nie je možné zadat cestovný poriadok ...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozidlá možu cakat len v staniciach.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Toto vozidlo nezastavuje v tejto stanici.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmenit cas
+STR_TIMETABLE_STATUS_ON_TIME                                    :Toto vozidlo ide presne
+STR_TIMETABLE_STATUS_LATE                                       :Toto vozidlo mešká {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :Toto vozidlo ide {STRING} skor
+STR_TIMETABLE_TOTAL_TIME                                        :Na dokoncenie cestovného poriadku je potrebných {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Na dokoncenie cestovného poriadku je potrebných najmenej {STRING} (nie všetko je urcené)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autovyplnenie
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vyplnit cestovný poriadok automaticky hodnotami z prvej cesty
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobil v ceste
@@ -2816,12 +2883,16 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrova
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vyber vozidiel - kliknut pre detaily
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zakupit vybrany automobil
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Naklady na prevadzku: {CURRENCY}/rok{}Kapacita: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pomenovat automobil
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nemozno pomenovat automobil ...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Pomenovat automobil
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy autobus dorazil do {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy automobil dorazil do {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá elektricka dorazila do stanice {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvá nákladná elektricka dorazila do stanice {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nemozno otocit vozidlo ...
@@ -2982,6 +3053,8 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie je m
 STR_GO_TO_AIRPORT_HANGAR                                        :Chod do {STATION} Hangaru
 SERVICE_AT_AIRPORT_HANGAR                                       :Opravit v {STATION} hangári
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Cestovný poriadok)
+
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelin zniceny pri nehode na {STATION}!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Automobil bol zniceny pri kolizii s 'UFO'
@@ -3106,6 +3179,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Chystáte sa predat všetky vozidlá v depe. Ste si isý?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Nesprávny typ depa
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Predat všetky vlaky v depe
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Predat všetky vozidlá v garáži
@@ -3296,6 +3370,14 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Prepnút
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Prepnút priehladnost staníc, garáží, tratí, ...
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prepnút priehladnost mostov
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prepnút priehladnost objektov ako sú majáky a antény
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Prepnút priehladnost pre ukazovatele nakladnia
+
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Skupina {COMMA}
@@ -3332,5 +3414,12 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Zisk tento rok: {RED}{CURRENCY} {BLACK}(lminulý rok: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Zisk tento rok: {GREEN}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Zisk tento rok: {RED}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
+
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

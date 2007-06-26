@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :Spillinnstillin
 STR_02C5_DIFFICULTY_SETTINGS                                    :Vanskelighetsgrad
 STR_02C7_CONFIG_PATCHES                                         :Konfigurer patcher
 STR_NEWGRF_SETTINGS                                             :Innstillinger for ny grafikk
+STR_TRANSPARENCY_OPTIONS                                        :Instillinger for gjennomsiktighet
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Vis bynavn
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Vis stasjonsnavn
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :Subsidier
 STR_02DE_MAP_OF_WORLD                                           :Verdenskart
 STR_EXTRA_VIEW_PORT                                             :Ekstra vindu
 STR_SIGN_LIST                                                   :Skiltliste
-STR_TRANSPARENCY_OPTIONS                                        :Instillinger for gjennomsiktighet
 STR_02DF_TOWN_DIRECTORY                                         :Byoversikt
 STR_TOWN_POPULATION                                             :{BLACK}Verdensbefolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vindu {COMMA}
@@ -1867,6 +1867,8 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikke
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Lagring av spillet mislyktes{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan ikke slette fil
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Feil ved fremhenting av spill{}{STRING}
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Kan ikke lese filen
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Kan ikke skrive til filen
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste over disker, mapper og lagrede spill
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Gjeldende navn for valgt lagret spill
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Slett valgte lagring
@@ -2037,7 +2039,7 @@ STR_SV_STNAME_UPPER                                             :Øvre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} helikopterstasjon
 STR_SV_STNAME_FOREST                                            :{STRING}skogen
-
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stasjon #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2074,6 +2076,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Bystyre
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Ingen
+STR_NUM_VERY_LOW                                                :Veldig lav
 STR_6816_LOW                                                    :Lite
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Høyt
@@ -2566,6 +2569,9 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Velikehold ved 
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Kjør uten å stoppe til {TOWN} togstall
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Vedlikehold (uten å stoppe) ved {TOWN} togstall
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" s}
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Er på vei til {TOWN} togstall
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Er på vei til {TOWN} togstall, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Vedlikehold ved {TOWN} togstall
@@ -2607,6 +2613,7 @@ STR_8828_UNLOAD                                                 :{BLACK}Last av
 STR_REFIT                                                       :{BLACK}Bygg om
 STR_REFIT_TIP                                                   :{BLACK}Velg varetypen det skal endres til. CTRL-klikk for å omgjøre.
 STR_REFIT_ORDER                                                 :(Bygg om til {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Tidstabell
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordre)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slutt på ordre - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2623,6 +2630,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}For mang
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke sette inn ny ordre...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikke slette denne ordren...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke endre denne ordren...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Kan ikke flytte ordren...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan ikke hoppe over nåverende ordre...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan ikke hoppe over den valgte ordren...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikke flytte kjøretøy...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Bakmaskinen vil alltid følge det fremste motstykket
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2691,6 +2701,14 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING} Nå tilgjengelig!  -  {ENGINE}
 
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Kjøretøy kan bare vente på stasjoner.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Dette kjøretøyet stopper ikke på denne stasjonen.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Skift Tid
+STR_TIMETABLE_STATUS_ON_TIME                                    :Dette kjøretøyet går på tid
+STR_TIMETABLE_STATUS_LATE                                       :Dette kjøretøyet er {STRING} for sent ute
+STR_TIMETABLE_STATUS_EARLY                                      :Dette kjøretøyet er {STRING} for tidlig ute
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Fyll automatisk
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kjøretøy i veien
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} kjøretøy
@@ -2732,6 +2750,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Vis hvor
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Kjøretøyliste - trykk på kjøretøy for mer informasjon
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bygg det valgte kjøretøyet
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koster: {CURRENCY}{}Fart: {VELOCITY}{}Driftkostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasitet: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Navngi kjøretøy
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan ikke navngi kjøretøy...
@@ -2897,6 +2917,8 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapas
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikke bygge om flyet...
 STR_GO_TO_AIRPORT_HANGAR                                        :Fly til {STATION} hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Vedlikehold ved {STATION} hangar
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tidstabell)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinulykke på {STATION}!
@@ -3211,10 +3233,50 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Skru på
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Skru på gjennomsiktighet for broer
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Skru på gjennomsiktighet for fyrtårn og antenner
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+
 ##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Gruppe {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Alle tog
+STR_GROUP_ALL_ROADS                                             :Alle kjøretøyer
+STR_GROUP_ALL_SHIPS                                             :Alle båter
+STR_GROUP_ALL_AIRCRAFTS                                         :Alle flyfartøy
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Legg til delte kjøretøy
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle kjøretøy
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tog{P "" s}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Kjøretøy{P "" s}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Skip{P "" s}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Luftfartøy
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gi nytt navn på gruppen
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Skift kjøretøyer i "{GROUP}"
 
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan ikke opprette gruppe...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Kan ikke slette denne gruppen...
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}Kan ikke gi nytt navn på denne gruppen...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kan ikke fjerne alle kjøretøy fra denne gruppen...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kan ikke legge til kjøretøy i denne grupppen...
 
+STR_GROUP_DELETE_TIP                                            :{BLACK}Fjern den valgte gruppen
+STR_GROUP_RENAME_TIP                                            :{BLACK}Gi nytt navn på den valgte gruppen
 
+STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Overskudd i år: {GREEN}{CURRENCY} {BLACK}(i fjor: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Overskudd i år: {RED}{CURRENCY} {BLACK}(i fjor: {GREEN}{CURRENCY}{BLACK})
+STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Overskudd i år: {GREEN}{CURRENCY} {BLACK}(i fjor: {RED}{CURRENCY}{BLACK})
+STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Overskudd i år: {RED}{CURRENCY} {BLACK}(i fjor: {RED}{CURRENCY}{BLACK})
+
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

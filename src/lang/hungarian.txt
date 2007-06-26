@@ -1172,6 +1172,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Tovább
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Betöltésjelző használata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Időalapú menetrend engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetrendi idő-alapegység tick a nap helyett: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Alapértelmezett síntipus (játéktöltés/új játék után): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normál sín
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektromos sín
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Egysín
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhető
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Leginkább használt
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármű játékosonként: {ORANGE}{STRING}
@@ -2185,6 +2193,7 @@ STR_SV_STNAME_UPPER                                             :{STRING}-felső
 STR_SV_STNAME_LOWER                                             :{STRING}-alsó
 STR_SV_STNAME_HELIPORT                                          :{STRING}i helikopter-leszálló
 STR_SV_STNAME_FOREST                                            :{STRING}i erdőség
+STR_SV_STNAME_FALLBACK                                          :{STRING}{NUM}. állomás
 
 ############ end of savegame specific region!
 
@@ -2867,6 +2876,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő meg
 STR_TIMETABLE_STATUS_ON_TIME                                    :Ez a jármű jelenleg pontosan közlekedik
 STR_TIMETABLE_STATUS_LATE                                       :Ez a jármű jelenleg {STRING} késéssel közlekedik
 STR_TIMETABLE_STATUS_EARLY                                      :Ez a jármű jelenleg {STRING} korábban közlekedik
+STR_TIMETABLE_TOTAL_TIME                                        :Ezen menetrend teljesítési ideje: {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ezen menetrend teljesítési ideje legalább: {STRING} (nincs minden időzítve)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automata kitöltés
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}A menetrendet kitölti automatikusan az első utazás értékeivel
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármű van az útban
@@ -3441,7 +3454,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Idei profit: {GREEN}{CURRENCY} {BLACK}(tavalyi: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Idei profit: {RED}{CURRENCY} {BLACK}(tavalyi: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

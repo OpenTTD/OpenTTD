@@ -1048,6 +1048,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel i
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni evrensel yol bulma (NPF, NTP üzerinde): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Şehiriçi yollara durak yapmak izinli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Bitişik istasyonlar izinli: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Küçük havalimanı her zaman etkin: {ORANGE}{STRING}
 
@@ -1099,6 +1100,17 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Haritayı yakı
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Haritayı kaydır
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Kapalı
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Tekerlek hızı: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Yeni bir oyun başlatırken zamanı duraklat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gelişmiş araç listesini kullan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Araç yükleme bilgisini göster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Araç zaman çizelgesi açık: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal Ray
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrikli Ray
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monoray
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :En eskisi
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :En yenisi
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :En çok kullanılan
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
@@ -1884,6 +1896,7 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Sürüc�
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Oyun kaydedilemedi{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Dosya silinemedi
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Dosya yüklenemedi{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :İç hata: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bozuk kayıtlı oyun - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Kayıtlı oyun yeni bir sürümle yapılmış
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Dosya okunabilir değil
@@ -2058,6 +2071,7 @@ STR_SV_STNAME_UPPER                                             :Yukarı {STRING
 STR_SV_STNAME_LOWER                                             :Asağı {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Ormanı
+STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. istasyon
 
 ############ end of savegame specific region!
 
@@ -2730,10 +2744,12 @@ STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING}
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Aracın zaman çizelgesi oluşturulamıyor...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Araçlar sadece istasyonlarda bekleyebilir.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Araç bu istasyonda durmuyor.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zamanı değiştir
 STR_TIMETABLE_STATUS_ON_TIME                                    :Bu araç zamanında çalışıyor
 STR_TIMETABLE_STATUS_LATE                                       :Bu araç {STRING} geç çalışıyor
 STR_TIMETABLE_STATUS_EARLY                                      :Bu araç {STRING} erken çalışıyor
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatik doldur
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Yolda araba var
@@ -3305,6 +3321,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Bu seneki gelir: {GREEN}{CURRENCY} {BLACK}(geçen sene: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Bu seneki gelir: {RED}{CURRENCY} {BLACK}(geçen sene: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

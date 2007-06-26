@@ -1108,6 +1108,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilizz
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Utilizza gli indicatori di caricamento: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Abilita la definizione di tabelle orarie per i veicoli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra le tabelle orarie in tick piuttosto che in giorni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo predefinito rotaie (a inizio/ripresa partita): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Ferrovia normale
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Ferrovia elettrificata
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorotaia
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Il primo disponibile
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :L'ultimo disponibile
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Il più usato
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automezzi per giocatore: {ORANGE}{STRING}
@@ -2084,6 +2092,7 @@ STR_SV_STNAME_UPPER                                             :Alta {STRING}
 STR_SV_STNAME_LOWER                                             :Bassa {STRING}
 STR_SV_STNAME_HELIPORT                                          :Eliporto di {STRING}
 STR_SV_STNAME_FOREST                                            :{STRING} Foresta
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stazione #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2730,7 +2739,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Costo: {
 STR_885C_BROKEN_DOWN                                            :{RED}Guasto
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Costo d'esercizio: {LTBLUE}{CURRENCY}/anno
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max: {LTBLUE}{VELOCITY} {BLACK}S.d.T. max: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità max: {LTBLUE}{VELOCITY} {BLACK}S.T. max: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profitto quest'anno: {LTBLUE}{CURRENCY}  (anno scorso: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenzione: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Fermo
@@ -2766,6 +2775,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambia t
 STR_TIMETABLE_STATUS_ON_TIME                                    :Il veicolo viaggia in orario
 STR_TIMETABLE_STATUS_LATE                                       :Il veicolo viaggia con un ritardo di {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :Il veicolo viaggia con un anticipo di {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :Questo orario richiede {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Questo orario richiede almeno {STRING} (non completamente impostato)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-imposta
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie automaticamente la tabella oraria con i tempi del primo viaggio
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automezzo di mezzo
@@ -3340,7 +3353,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profitto quest'anno: {GREEN}{CURRENCY} {BLACK}(anno scorso: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profitto quest'anno: {RED}{CURRENCY} {BLACK}(anno scorso: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

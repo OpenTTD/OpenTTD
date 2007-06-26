@@ -1106,6 +1106,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}詳細�
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}積み降ろしを表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}車両の時刻表を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}日の代わりに時刻表をティックで表示：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}デフォルトの鉄道の種類（新規ゲーム後／ゲームの読み込み後）：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :通常の鉄道
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :電鉄
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :モノレール
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :磁気浮上式鉄道
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :最初の鉄道種類
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :最新の鉄道種類
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :最も使われている鉄道種類
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
@@ -2082,8 +2090,7 @@ STR_SV_STNAME_UPPER                                             :上{STRING}
 STR_SV_STNAME_LOWER                                             :下{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}ヘリポート
 STR_SV_STNAME_FOREST                                            :{STRING}森林
-
-
+STR_SV_STNAME_FALLBACK                                          :{STRING} 駅 {NUM}号
 
 ############ end of savegame specific region!
 
@@ -2766,6 +2773,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}時間�
 STR_TIMETABLE_STATUS_ON_TIME                                    :この車両は現在定刻しています
 STR_TIMETABLE_STATUS_LATE                                       :この車両は現在{STRING}遅刻しています
 STR_TIMETABLE_STATUS_EARLY                                      :この車両は現在{STRING}早刻しています
+STR_TIMETABLE_TOTAL_TIME                                        :この時刻を実行するには{STRING}がかかります
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :この時刻を実行するには少なくとも{STRING}がかかります（時刻されていない部分があります）
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動時刻
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}最初の旅行の時間を用いて時刻表を作成します
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}道路車両があります
@@ -3340,5 +3351,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}今年の収益：{GREEN}{CURRENCY} {BLACK}（昨年：{RED}{CURRENCY}{BLACK}）
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}今年の収益：{RED}{CURRENCY} {BLACK}（昨年：{RED}{CURRENCY}{BLACK}）
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

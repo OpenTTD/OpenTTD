@@ -779,6 +779,7 @@ STR_02C3_GAME_OPTIONS                                           :Spieleinstellun
 STR_02C5_DIFFICULTY_SETTINGS                                    :Schwierigkeitsgrad
 STR_02C7_CONFIG_PATCHES                                         :Einstellungen der Patches
 STR_NEWGRF_SETTINGS                                             :Newgrf-Einstellungen
+STR_TRANSPARENCY_OPTIONS                                        :Transparenzeinstellungen
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Städtenamen anzeigen
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stationsnamen anzeigen
@@ -806,7 +807,6 @@ STR_02DD_SUBSIDIES                                              :Subventionen
 STR_02DE_MAP_OF_WORLD                                           :Weltkarte
 STR_EXTRA_VIEW_PORT                                             :Zusatzansicht
 STR_SIGN_LIST                                                   :Schilderliste
-STR_TRANSPARENCY_OPTIONS                                        :Transparenzeinstellungen
 STR_02DF_TOWN_DIRECTORY                                         :Städteverzeichnis
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ansicht {COMMA}
@@ -1104,6 +1104,13 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Aus
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollradgeschwindigkeit auf der Karte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatische Pause bei Spielstart: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Erweiterte Fahrzeugliste benutzen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard-Gleistyp (bei Spielbeginn/geladenem Spiel): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :normales Gleis
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :elektrifiziertes Gleis
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Einschienenbahn
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnetschwebebahn
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :zuerst verfügbarer
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Meistbenutze
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximale Anzahl der Straßenfahrzeuge pro Spieler: {ORANGE}{STRING}
@@ -1905,6 +1912,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kann vom
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spielspeicherung fehlgeschlagen{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Datei kann nicht gelöscht werden
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden des Spieles fehlgeschlagen{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :interner Fehler: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Defekte Spielstandsdatei - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spielstand wurde mit neuerer Version erstellt
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei nicht lesbar
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Kann Datei nicht schreiben
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Ausgewählter Spielname
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Lösche gewählten Spielstand
@@ -2075,8 +2087,6 @@ STR_SV_STNAME_UPPER                                             :Ober-{STRING}
 STR_SV_STNAME_LOWER                                             :Unter-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Wald
-
-
 
 ############ end of savegame specific region!
 
@@ -2650,6 +2660,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Entladen
 STR_REFIT                                                       :{BLACK}Ersetzen
 STR_REFIT_TIP                                                   :{BLACK}Wähle welche Frachtart du ersetzen möchtest. STRG+Klick um die Auswahl rückgängig zu machen
 STR_REFIT_ORDER                                                 :(Ersetzen zu {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Fahrplan
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Gehe zur Fahrplanansicht
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Aufträge)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ende der Aufträge - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2706,6 +2718,10 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Führe d
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Füge einen neuen Auftrag vor dem markierten Auftrag ein, oder setze ihn ans Ende der Liste
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Der markierte Auftrag wird nur nach voller Beladung ausgeführt
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Beim markierten Auftrag wird die volle Entladung veranlasst
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan - Einträge anklicken um sie zu markieren.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändere den Zeitrahmen für den markierten Auftrag
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Lösche den Zeitrahmen für den markierten Auftrag
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Setze den Verspätungsmelder zurück, das Fahrzeug ist dann pünktlich.
 STR_SERVICE_HINT                                                :{BLACK}Überspringe diesen Auftrag, sofern keine Wartung benötigt wird
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosten: {CURRENCY}   Gewicht: {WEIGHT_S}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY}/Jahr{}Kapazität: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Panne
@@ -2727,6 +2743,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zugtyp u
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Zugtyp kann nicht umbenannt werden...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Beim markierten Eintrag wird die Ladung in den Bahnhof entladen (für späteren Weitertransport)
 STR_886F_TRANSFER                                               :{BLACK}Umladen
+STR_CLEAR_TIME                                                  :{BLACK}Zeit löschen
+STR_RESET_LATENESS                                              :{BLACK}Setze Verspätungszähler zurück
 
 STR_TRAIN_STOPPING                                              :{RED}Halte an
 STR_TRAIN_STOPPING_VEL                                          :{RED}Halte an, {VELOCITY}
@@ -2738,6 +2756,13 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue{G r "" s} {STRING} jetzt erhältlich!  -  {ENGINE}
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kein Fahrplan für das Fahrzeug...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Fahrzeuge halten nur an Stationen.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Das Fahrzeug hält nicht an dieser Station.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändere Zeit
+STR_TIMETABLE_STATUS_ON_TIME                                    :Das Fahrzeug ist derzeit pünktlich.
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autom. Füllung
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Ergänze den Fahrplan automatisch mit den Werten der ersten Fahrt
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Fahrzeug ist im Weg
@@ -2950,6 +2975,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kann das
 STR_GO_TO_AIRPORT_HANGAR                                        :Fliege zu {STATION} Hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Wartung im {STATION} Hangar
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Fahrplan)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinabsturz bei {STATION}!
@@ -3266,6 +3292,8 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Verände
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Verändere die Transparenz für Gebäude wie Bahnhöfe, Depots, Wegpunkte und Oberleitung
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Verändere die Transparenz für Brücken
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Verändere die Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige umschalten
+
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Gruppe {COMMA}
@@ -3302,5 +3330,6 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit dieses Jahr: {RED}{CURRENCY} {BLACK}(letztes Jahr: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit dieses Jahr: {GREEN}{CURRENCY} {BLACK}(letztes Jahr: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit dieses Jahr: {RED}{CURRENCY} {BLACK}(letztes Jahr: {RED}{CURRENCY}{BLACK})
+
 
 ########

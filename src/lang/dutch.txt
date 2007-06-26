@@ -1106,6 +1106,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Gebruik laad indicatoren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activeer dienstregeling voor voertuigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon dienstregeling in tikken ipv in dagen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standaard spoorsoort (bij nieuw of opgeslagen spel): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normaal  spoor
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrisch spoor
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Eerst beschikbare
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Laatst beschikbare
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Meest gebruikte
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
@@ -2082,6 +2090,7 @@ STR_SV_STNAME_UPPER                                             :Hoger {STRING}
 STR_SV_STNAME_LOWER                                             :Lager {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helihaven
 STR_SV_STNAME_FOREST                                            :{STRING} Bossen
+STR_SV_STNAME_FALLBACK                                          :{STRING} Station #{NUM}
 
 ############ end of savegame specific region!
 

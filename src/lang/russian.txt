@@ -1108,6 +1108,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Исп�
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Использовать индикатор загрузки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Использовать расписание для транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Показывать расписание в 'тиках', а не днях: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип рельс по умолчанию (после старта/загрузки игры): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Обычные
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Электро
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Монорельс
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Маглев
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Перв. доступн.
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Посл. доступн.
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Наиб. исп.
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество автотранспорта на игрока: {ORANGE}{STRING}
@@ -2084,6 +2092,7 @@ STR_SV_STNAME_UPPER                                             :Верхняя 
 STR_SV_STNAME_LOWER                                             :Нижняя {STRING}
 STR_SV_STNAME_HELIPORT                                          :Площадка {STRING}
 STR_SV_STNAME_FOREST                                            :Лес {STRING}
+STR_SV_STNAME_FALLBACK                                          :{STRING}-{NUM}
 
 ############ end of savegame specific region!
 
@@ -2777,6 +2786,8 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изм. 
 STR_TIMETABLE_STATUS_ON_TIME                                    :Этот транспорт приходит вовремя
 STR_TIMETABLE_STATUS_LATE                                       :Этот транспорт приходит на  {STRING} позже
 STR_TIMETABLE_STATUS_EARLY                                      :Этот транспорт приходит на  {STRING} раньше
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автомат.
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Заполнить расписание автоматически данными из первой поездки
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Машина на пути
@@ -3351,7 +3362,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибыль за год: {GREEN}{CURRENCY} {BLACK}(прошлый год: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Прибыль за год: {RED}{CURRENCY} {BLACK}(прошлый год: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

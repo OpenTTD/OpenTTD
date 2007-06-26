@@ -1107,6 +1107,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilise
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Utiliser les indicateurs de chargement: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activer les horaires pour les véhicules: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Afficher l'horaire en ticks plutôt qu'en jours: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Type de rail par défaut (après nouvelle partie/chargement): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Rail normal
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Rail électrifié
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Premier disponible
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Dernier disponible
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Le plus utilisé
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING}
@@ -2083,6 +2091,7 @@ STR_SV_STNAME_UPPER                                             :Haut {STRING}
 STR_SV_STNAME_LOWER                                             :Bas {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Héliport
 STR_SV_STNAME_FOREST                                            :{STRING} Forêt
+STR_SV_STNAME_FALLBACK                                          :{STRING} Station #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2765,6 +2774,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Modifier
 STR_TIMETABLE_STATUS_ON_TIME                                    :Ce véhicule est à l'heure
 STR_TIMETABLE_STATUS_LATE                                       :Ce véhicule est en retard de {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :Ce véhicule est en avance de {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :Cet horaire prendra {STRING} pour s'achever
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Cet horaire prendra au moins {STRING} pour s'achever (horaire incomplet)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoremplir
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplit l'horaire automatiquement avec les valeurs du premier trajet
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Véhicule Routier présent
@@ -3339,7 +3352,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit cette année: {GREEN}{CURRENCY} {BLACK}(an dernier: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit cette année: {RED}{CURRENCY} {BLACK}(an dernier: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########
