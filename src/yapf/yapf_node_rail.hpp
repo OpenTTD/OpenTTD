@@ -11,14 +11,13 @@ struct CYapfRailSegmentKey
 	uint32    m_value;
 
 	FORCEINLINE CYapfRailSegmentKey(const CYapfRailSegmentKey& src) : m_value(src.m_value) {}
-	FORCEINLINE CYapfRailSegmentKey(const CYapfNodeKeyExitDir& node_key) {Set(node_key);}
+	FORCEINLINE CYapfRailSegmentKey(const CYapfNodeKeyTrackDir& node_key) {Set(node_key);}
 
 	FORCEINLINE void Set(const CYapfRailSegmentKey& src) {m_value = src.m_value;}
-	FORCEINLINE void Set(const CYapfNodeKeyExitDir& node_key) {m_value = (((int)node_key.m_tile) << 2) | node_key.m_exitdir;}
+	FORCEINLINE void Set(const CYapfNodeKeyTrackDir& node_key) {m_value = (((int)node_key.m_tile) << 3) | node_key.m_td;}
 
 	FORCEINLINE int32 CalcHash() const {return m_value;}
-	FORCEINLINE TileIndex GetTile() const {return (TileIndex)(m_value >> 2);}
-	FORCEINLINE DiagDirection GetExitDir() const {return (DiagDirection)(m_value & 3);}
+	FORCEINLINE TileIndex GetTile() const {return (TileIndex)(m_value >> 3);}
 	FORCEINLINE bool operator == (const CYapfRailSegmentKey& other) const {return m_value == other.m_value;}
 };
 
@@ -103,7 +102,6 @@ struct CYapfRailSegment
 
 	FORCEINLINE const Key& GetKey() const {return m_key;}
 	FORCEINLINE TileIndex GetTile() const {return m_key.GetTile();}
-	FORCEINLINE DiagDirection GetExitDir() const {return m_key.GetExitDir();}
 	FORCEINLINE CYapfRailSegment* GetHashNext() {return m_hash_next;}
 	FORCEINLINE void SetHashNext(CYapfRailSegment* next) {m_hash_next = next;}
 };

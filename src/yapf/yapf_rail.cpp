@@ -194,25 +194,22 @@ struct CYapfRail_TypesT
 };
 
 struct CYapfRail1         : CYapfT<CYapfRail_TypesT<CYapfRail1        , CFollowTrackRail    , CRailNodeListTrackDir, CYapfDestinationTileOrStationRailT, CYapfFollowRailT> > {};
-struct CYapfRail2         : CYapfT<CYapfRail_TypesT<CYapfRail2        , CFollowTrackRail    , CRailNodeListExitDir , CYapfDestinationTileOrStationRailT, CYapfFollowRailT> > {};
-struct CYapfRail3         : CYapfT<CYapfRail_TypesT<CYapfRail3        , CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationTileOrStationRailT, CYapfFollowRailT> > {};
+struct CYapfRail2         : CYapfT<CYapfRail_TypesT<CYapfRail2        , CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationTileOrStationRailT, CYapfFollowRailT> > {};
 
 struct CYapfAnyDepotRail1 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail1, CFollowTrackRail    , CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT> > {};
-struct CYapfAnyDepotRail2 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail2, CFollowTrackRail    , CRailNodeListExitDir , CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT> > {};
-struct CYapfAnyDepotRail3 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail3, CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT> > {};
+struct CYapfAnyDepotRail2 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail2, CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT> > {};
 
 
 Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
 {
 	// default is YAPF type 2
 	typedef Trackdir (*PfnChooseRailTrack)(Vehicle*, TileIndex, DiagDirection, TrackBits, bool*);
-	PfnChooseRailTrack pfnChooseRailTrack = &CYapfRail2::stChooseRailTrack;
+	PfnChooseRailTrack pfnChooseRailTrack = &CYapfRail1::stChooseRailTrack;
 
 	// check if non-default YAPF type needed
-	if (_patches.forbid_90_deg)
-		pfnChooseRailTrack = &CYapfRail3::stChooseRailTrack; // Trackdir, forbid 90-deg
-	else if (_patches.yapf.disable_node_optimization)
-		pfnChooseRailTrack = &CYapfRail1::stChooseRailTrack; // Trackdir, allow 90-deg
+	if (_patches.forbid_90_deg) {
+		pfnChooseRailTrack = &CYapfRail2::stChooseRailTrack; // Trackdir, forbid 90-deg
+	}
 
 	Trackdir td_ret = pfnChooseRailTrack(v, tile, enterdir, tracks, path_not_found);
 
@@ -233,13 +230,12 @@ bool YapfCheckReverseTrain(Vehicle* v)
 
 
 	typedef bool (*PfnCheckReverseTrain)(Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir);
-	PfnCheckReverseTrain pfnCheckReverseTrain = CYapfRail2::stCheckReverseTrain;
+	PfnCheckReverseTrain pfnCheckReverseTrain = CYapfRail1::stCheckReverseTrain;
 
 	// check if non-default YAPF type needed
-	if (_patches.forbid_90_deg)
-		pfnCheckReverseTrain = &CYapfRail3::stCheckReverseTrain; // Trackdir, forbid 90-deg
-	else if (_patches.yapf.disable_node_optimization)
-		pfnCheckReverseTrain = &CYapfRail1::stCheckReverseTrain; // Trackdir, allow 90-deg
+	if (_patches.forbid_90_deg) {
+		pfnCheckReverseTrain = &CYapfRail2::stCheckReverseTrain; // Trackdir, forbid 90-deg
+	}
 
 	bool reverse = pfnCheckReverseTrain(v, tile, td, last_veh->tile, td_rev);
 
@@ -261,13 +257,12 @@ bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_pe
 	Trackdir td_rev = ReverseTrackdir(GetVehicleTrackdir(last_veh));
 
 	typedef bool (*PfnFindNearestDepotTwoWay)(Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir, int, int, TileIndex*, bool*);
-	PfnFindNearestDepotTwoWay pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail2::stFindNearestDepotTwoWay;
+	PfnFindNearestDepotTwoWay pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail1::stFindNearestDepotTwoWay;
 
 	// check if non-default YAPF type needed
-	if (_patches.forbid_90_deg)
-		pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail3::stFindNearestDepotTwoWay; // Trackdir, forbid 90-deg
-	else if (_patches.yapf.disable_node_optimization)
-		pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail1::stFindNearestDepotTwoWay; // Trackdir, allow 90-deg
+	if (_patches.forbid_90_deg) {
+		pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail2::stFindNearestDepotTwoWay; // Trackdir, forbid 90-deg
+	}
 
 	bool ret = pfnFindNearestDepotTwoWay(v, tile, td, last_tile, td_rev, max_distance, reverse_penalty, depot_tile, reversed);
 	return ret;
