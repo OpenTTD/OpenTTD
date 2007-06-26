@@ -1648,7 +1648,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 
 				new_prod = clamp(new_prod, 1, 255);
 				/* Do not stop closing the industry when it has the lowest possible production rate */
-				if (new_prod == old_prod && && old_prod > 1)) {
+				if (new_prod == old_prod && old_prod > 1) {
 					closeit = false;
 					continue;
 				}
