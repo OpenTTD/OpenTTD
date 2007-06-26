@@ -3160,14 +3160,16 @@ void Vehicle::BeginLoading()
 void Vehicle::LeaveStation()
 {
 	assert(current_order.type == OT_LOADING);
+
+	/* Only update the timetable if the vehicle was supposed to stop here. */
+	if (current_order.flags & OF_NON_STOP) UpdateVehicleTimetable(this, false);
+
 	current_order.type = OT_LEAVESTATION;
 	current_order.flags = 0;
 	GetStation(this->last_station_visited)->loading_vehicles.remove(this);
 
 	HideFillingPercent(this->fill_percent_te_id);
 	this->fill_percent_te_id = INVALID_TE_ID;
-
-	UpdateVehicleTimetable(this, false);
 }
 
 
