@@ -213,19 +213,19 @@ static void BuildRoadClick_Demolish(Window *w)
 
 static void BuildRoadClick_Depot(Window *w)
 {
-	if (_game_mode == GM_EDITOR) return;
+	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
 	if (HandlePlacePushButton(w, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
 }
 
 static void BuildRoadClick_BusStation(Window *w)
 {
-	if (_game_mode == GM_EDITOR) return;
+	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
 	if (HandlePlacePushButton(w, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, 1, PlaceRoad_BusStation)) ShowRVStationPicker(RoadStop::BUS);
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
-	if (_game_mode == GM_EDITOR) return;
+	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
 	if (HandlePlacePushButton(w, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, 1, PlaceRoad_TruckStation)) ShowRVStationPicker(RoadStop::TRUCK);
 }
 
@@ -270,6 +270,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		if (IsWindowWidgetLowered(w, RTW_ROAD_X) || IsWindowWidgetLowered(w, RTW_ROAD_Y) || IsWindowWidgetLowered(w, RTW_BUS_STATION) || IsWindowWidgetLowered(w, RTW_TRUCK_STATION)) {
 			EnableWindowWidget(w, RTW_REMOVE);
 		}
+		SetWindowWidgetsDisabledState(w, !CanBuildVehicleInfrastructure(VEH_ROAD), 6, 7, 8, WIDGET_LIST_END);
 		DrawWindowWidgets(w);
 		break;
 

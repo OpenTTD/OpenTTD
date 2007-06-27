@@ -2615,6 +2615,50 @@ UnitID GetFreeUnitNumber(VehicleType type)
 }
 
 
+/**
+ * Check whether we can build infrastructure for the given
+ * vehicle type. This to disable building stations etc. when
+ * you are not allowed/able to have the vehicle type yet.
+ * @param type the vehicle type to check this for
+ * @return true if there is any reason why you may build
+ *         the infrastructure for the given vehicle type
+ */
+bool CanBuildVehicleInfrastructure(VehicleType type)
+{
+	assert(IsPlayerBuildableVehicleType(type));
+
+	if (_patches.always_build_infrastructure) return true;
+
+	UnitID max;
+	switch (type) {
+		case VEH_TRAIN:    max = _patches.max_trains; break;
+		case VEH_ROAD:     max = _patches.max_roadveh; break;
+		case VEH_SHIP:     max = _patches.max_ships; break;
+		case VEH_AIRCRAFT: max = _patches.max_aircraft; break;
+		default: NOT_REACHED();
+	}
+
+	/* We can build vehicle infrastructure when we may build the vehicle type */
+	if (max > 0) {
+
+		/* Can we actually build the vehicle type? */
+		EngineID e;
+		FOR_ALL_ENGINEIDS_OF_TYPE(e, type) {
+			if (HASBIT(GetEngine(e)->player_avail, _local_player)) return true;
+		}
+		return false;
+	}
+
+	/* We should be able to build infrastructure when we have the actual vehicle type */
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->owner == _local_player && v->type == type) return true;
+	}
+
+	return false;
+}
+
+
 const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v)
 {
 	const Player *p = GetPlayer(player);

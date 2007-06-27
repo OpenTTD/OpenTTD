@@ -1867,6 +1867,9 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		/* disable company list drop downs, if there are no companies */
 		SetWindowWidgetsDisabledState(w, ActivePlayerCount() == 0, 7, 8, 13, 14, 15, 16, WIDGET_LIST_END);
 
+		SetWindowWidgetDisabledState(w, 19, !CanBuildVehicleInfrastructure(VEH_TRAIN));
+		SetWindowWidgetDisabledState(w, 22, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
+
 		DrawWindowWidgets(w);
 		break;
 
@@ -1895,16 +1898,16 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, VEH_AIRCRAFT); break;
 		case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
 		case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
-		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype, -1); break;
+		case WKC_SHIFT | WKC_F7: if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, -1); break;
 		case WKC_SHIFT | WKC_F8: ShowBuildRoadToolbar(_last_built_roadtype); break;
 		case WKC_SHIFT | WKC_F9: ShowBuildDocksToolbar(); break;
-		case WKC_SHIFT | WKC_F10: ShowBuildAirToolbar(); break;
+		case WKC_SHIFT | WKC_F10: if (CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) ShowBuildAirToolbar(); break;
 		case WKC_SHIFT | WKC_F11: ShowBuildTreesToolbar(); break;
 		case WKC_SHIFT | WKC_F12: ShowMusicWindow(); break;
 		case WKC_CTRL  | 'S': MenuClickSmallScreenshot(); break;
 		case WKC_CTRL  | 'G': MenuClickWorldScreenshot(); break;
 		case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
-		case 'A': ShowBuildRailToolbar(_last_built_railtype, 4); break; /* Invoke Autorail */
+		case 'A': if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, 4); break; /* Invoke Autorail */
 		case 'L': ShowTerraformToolbar(); break;
 		default: return;
 		}

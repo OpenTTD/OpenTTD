@@ -139,6 +139,7 @@ struct Patches {
 	uint8 toolbar_pos;                  // position of toolbars, 0=left, 1=center, 2=right
 	uint8 window_snap_radius;           // Windows snap at each other if closer than this
 
+	bool always_build_infrastructure;   ///< Always allow building of infrastructure, even when you do not have the vehicles for it
 	UnitID max_trains;                  // max trains in game per player (these are 16bit because the unitnumber field can't hold more)
 	UnitID max_roadveh;                 // max trucks in game per player
 	UnitID max_aircraft;                // max planes in game per player

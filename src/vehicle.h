@@ -77,6 +77,7 @@ enum VehicleType {
 	VEH_END,
 	VEH_INVALID = 0xFF,
 };
+DECLARE_POSTFIX_INCREMENT(VehicleType);
 template <> struct EnumPropsT<VehicleType> : MakeEnumPropsT<VehicleType, byte, VEH_TRAIN, VEH_END, VEH_INVALID> {};
 typedef TinyEnumT<VehicleType> VehicleTypeByte;
 
@@ -569,6 +570,7 @@ void VehicleEnterDepot(Vehicle *v);
 void InvalidateAutoreplaceWindow(EngineID e);
 
 CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs);
+bool CanBuildVehicleInfrastructure(VehicleType type);
 
 /* Flags to add to p2 for goto depot commands */
 /* Note: bits 8-10 are used for VLW flags */

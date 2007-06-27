@@ -94,16 +94,19 @@ static void BuildDocksClick_Demolish(Window *w)
 
 static void BuildDocksClick_Depot(Window *w)
 {
+	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
 	if (HandlePlacePushButton(w, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, 1, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
 }
 
 static void BuildDocksClick_Dock(Window *w)
 {
+	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
 	if (HandlePlacePushButton(w, DTW_STATION, SPR_CURSOR_DOCK, 3, PlaceDocks_Dock)) ShowBuildDockStationPicker();
 }
 
 static void BuildDocksClick_Buoy(Window *w)
 {
+	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
 	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, 1, PlaceDocks_Buoy);
 }
 
@@ -124,6 +127,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
+		SetWindowWidgetsDisabledState(w, !CanBuildVehicleInfrastructure(VEH_SHIP), 7, 8, 9, WIDGET_LIST_END);
 		break;
 
 	case WE_CLICK:
