@@ -1107,7 +1107,16 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk av
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Bruk lasteindikatorar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Bruk rutetabellar for køyretøy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis rutetabell i klikk i staden for dagar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard Jernbane / etter nytt spel / lasta spel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Vanleg jernbane
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elekrisk Jernbane
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgjengelege
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Siste tilgjengelege
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukte
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis bygningsverktøy når det ikkje er nokon høvelege køyretøy tilgjengeleg: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal køyretøy per spelar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal fly per spelar: {ORANGE}{STRING}
@@ -2083,8 +2092,7 @@ STR_SV_STNAME_UPPER                                             :Øvre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} helikopterstasjon
 STR_SV_STNAME_FOREST                                            :{STRING}skogen
-
-
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stasjon #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2767,6 +2775,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Bytt Tid
 STR_TIMETABLE_STATUS_ON_TIME                                    :Dette køyretøyet er presis
 STR_TIMETABLE_STATUS_LATE                                       :Dette køyretøyet er {STRING} for seint
 STR_TIMETABLE_STATUS_EARLY                                      :Dette køyretøyet er {STRING} for tidleg
+STR_TIMETABLE_TOTAL_TIME                                        :Det vil ta {STRING} å gjere ferdig denne rutetabellen
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Det vil ta minst {STRING} å gjere ferdig denne rutetabellen ( ikkje alle på rutetabellen
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatisk utfylling
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll ut rutetabellen automatisk med verdiar frå den første turen
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køyretøy i vegen
@@ -3341,5 +3353,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Forteneste i år: {GREEN}{CURRENCY} {BLACK}(førre år: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Forteneste i år: {RED}{CURRENCY} {BLACK}(førre år: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

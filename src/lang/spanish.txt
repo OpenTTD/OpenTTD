@@ -1107,14 +1107,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar la
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activar horarios para vehículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horario en ticks en vez de en dias: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo de rail por defecto (después de juego nuevo/cargar juego): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Rail Normal
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Rail por defecto (juego nuevo/cargar juego): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Rail normal
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Rail Electrificado
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primero disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponible
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usados
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
@@ -3183,7 +3183,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}La orden
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Vehículos de rail
-STR_ELRAIL_VEHICLES                                             :Vehícules de Rail Eléctrico
+STR_ELRAIL_VEHICLES                                             :Vehículos de Rail Eléctrico
 STR_MONORAIL_VEHICLES                                           :Vehículos monorail
 STR_MAGLEV_VEHICLES                                             :Vehículos de Lev. Mag.
 
@@ -3352,7 +3352,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Beneficio este año: {GREEN}{CURRENCY} {BLACK}(año pasado: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Beneficio este año: {RED}{CURRENCY} {BLACK}(año pasado: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

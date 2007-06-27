@@ -1148,7 +1148,16 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uporabi
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Uporabi pregledno polnenje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Omogoči časovne tabele vozil: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikaz časovnih tabel v pikah namesto dneh: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Privzeta vrsta železnice (ob zagonu nove igre): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normalna železnica
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrificirana železnica
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Enotirna železnica
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnetna železnica
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Prvi/a/o/ na izbiro
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Zadnji/a/o/ na izbiro
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Najbolj uporabljan/a/o
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Prikaz gradbenih orodij, ko ni primernih vozil na izbiro: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Največ vlakov na igralca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Največ cestnih vozil na igralca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Največ letal na igralca: {ORANGE}{STRING}
@@ -2162,8 +2171,7 @@ STR_SV_STNAME_UPPER                                             :Gornja {STRING}
 STR_SV_STNAME_LOWER                                             :Dolnja {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Pristajališče
 STR_SV_STNAME_FOREST                                            :{STRING} Gozd
-
-
+STR_SV_STNAME_FALLBACK                                          :{STRING} Postaja #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2846,6 +2854,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Spremeni
 STR_TIMETABLE_STATUS_ON_TIME                                    :To vozilo trenutno vozi po točnem času
 STR_TIMETABLE_STATUS_LATE                                       :To vozilo zamuja za  {STRING} .
 STR_TIMETABLE_STATUS_EARLY                                      :To vozilo prehiteva za {STRING} .
+STR_TIMETABLE_TOTAL_TIME                                        :Ta časovna tabela bo trajala {STRING} do zaključka
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ta časovna tabela bo trajala vsaj {STRING} do zaključka (ni vse zajeto v tabeli)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Samodejno
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Napolni tabelo samodejno z vrednostmi iz prvega potovanja
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestno vozilo na poti
@@ -3420,5 +3432,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Dobiček letos: {GREEN}{CURRENCY} {BLACK}(lani: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Dobiček letos: {RED}{CURRENCY} {BLACK}(lani: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

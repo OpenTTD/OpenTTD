@@ -1116,6 +1116,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Premier disponi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Dernier disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Le plus utilisé
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Afficher les outils de construction quand aucun véhicule approprié n'est disponible: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Nombre d'aéronefs max. par joueur: {ORANGE}{STRING}

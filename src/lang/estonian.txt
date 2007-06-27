@@ -1206,6 +1206,8 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Kasuta 
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Kasuta laadimisnäidikuid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Luba sõiduplaanide määramine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Kasuta sõiduplaanis päevade asemel tikse: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Enim kasutatud
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Enim ronge mängija kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Enim mootorsõidukeid mängija kohta: {ORANGE}{STRING}
@@ -1242,11 +1244,11 @@ STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Ehita i
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Stsenaariumiredaktor ei tunnista "ilma teedeta" linnaplaneeringut
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vali linnale teedeplaneering: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :ilma teedeta
-STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :tavalised
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :rohkem teid ei ole
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :vaikimisi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :paremad teed
-STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 ruudustik
-STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 ruudustik
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 võrgustik
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 võrgustik
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Tööriistariba asukoht: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Vasakul
@@ -3439,7 +3441,11 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Selle aasta kasum: {GREEN}{CURRENCY} {BLACK}(eelmisel aastal: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Selle aasta kasum: {RED}{CURRENCY} {BLACK}(eelmisel aastal: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########

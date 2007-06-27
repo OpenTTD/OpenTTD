@@ -1115,6 +1115,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :La primera disp
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :La darrera disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :La més utilitzada
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostra les eines de construcció quan no hi hagi disponibles vehicles adequats: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Max aeronaus per jugador: {ORANGE}{STRING}
@@ -2773,6 +2774,8 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Canvia T
 STR_TIMETABLE_STATUS_ON_TIME                                    :Actualment aquest vehicle és puntual
 STR_TIMETABLE_STATUS_LATE                                       :Actualment aquest vehicle va {STRING} tard
 STR_TIMETABLE_STATUS_EARLY                                      :Actualment aquest vehicle va {STRING} d'hora
+STR_TIMETABLE_TOTAL_TIME                                        :L'horari tardarà {STRING} a complir-se
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :L'horari tardarà almenys {STRING} a complir-se (no tot està planificat)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoomple
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple l'horari automàticament amb els valors del primer viatge
 

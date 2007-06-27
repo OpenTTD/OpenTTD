@@ -1179,6 +1179,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Prvé dostupné
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Posledné dostupné
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Najcastejsie používané
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje výstavby ak nie sú dostupné žiadne vhodné vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maximalny pocet lietadiel hraca: {ORANGE}{STRING}

@@ -1135,6 +1135,7 @@ STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Niejedn
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nowe szukanie drogi (NPF, zastępuje NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków typu ro-ro na drogach miejskich: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Pozwól na budowę stacji przyległych do stacji przeciwnika (z CTRL): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Zawsze zezwalaj budować małe lotniska: {ORANGE}{STRING}
 
@@ -1175,6 +1176,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. w
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatycznie serwisuj helikoptery na lądowiskach: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Przyłącz okno narzędzi krajobrazu do okien środków transportu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Przewijaj obraz myszką w przeciwnym kierunku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Wygładź przesuwanie widoku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Pokaż dymek z pomiarem podczas używania rożnych narzędzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Pokaż poboczne schematy koloru: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Żadne
@@ -2235,6 +2237,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Nastawi
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Brak
+STR_NUM_VERY_LOW                                                :Bardzo mało
 STR_6816_LOW                                                    :Mało
 STR_6817_NORMAL                                                 :Średnio
 STR_6818_HIGH                                                   :Dużo
@@ -2735,6 +2738,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Serwisuj w zaje
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idź bez zatrzymywania do zajezdni w {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idź bez zatrzymywania do serwisu w zajezdni w {TOWN}
 
+STR_TIMETABLE_DAYS                                              :{COMMA} d{P zień ni ni}
+STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" i ów}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Zmierza do zajezdni w {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Zmierza do zajezdni w {TOWN}, {VELOCITY}

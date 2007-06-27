@@ -1117,6 +1117,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro dispon
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Exibe ferramentas de construção na falta de veículos adequados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de automóveis por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por jogador: {ORANGE}{STRING}
@@ -2777,6 +2778,8 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar ho
 STR_TIMETABLE_STATUS_ON_TIME                                    :Esse veículo está no horário
 STR_TIMETABLE_STATUS_LATE                                       :Esse veículo está {STRING} atrasado
 STR_TIMETABLE_STATUS_EARLY                                      :Esse veículo está {STRING} adiantado
+STR_TIMETABLE_TOTAL_TIME                                        :Esse horário será completo em {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Esse horário será completo em no mínimo {STRING} (nem todos agendados)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autopreencher
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preenche a tabela de horários com os horários da primeira viagem
 

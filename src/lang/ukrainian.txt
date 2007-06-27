@@ -301,7 +301,7 @@ STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
 STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
-STR_00D0_NOTHING                                                :Нічого
+STR_00D0_NOTHING                                                :нічого
 STR_00D1_DARK_BLUE                                              :Темно-синій
 STR_00D2_PALE_GREEN                                             :Світло-зелений
 STR_00D3_PINK                                                   :Рожевий
@@ -1241,6 +1241,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Перша з �
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Остання з доступних
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Найчастіш використовувана
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Показувати засоби будівництва, коли нема відповідного транспорту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. авто у гравця: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Макс. літаків у гравця: {ORANGE}{STRING}
@@ -2936,8 +2937,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Змін
 STR_TIMETABLE_STATUS_ON_TIME                                    :Цей транспорт зараз прямує за розкладом
 STR_TIMETABLE_STATUS_LATE                                       :Цей транспорт запізнюється на {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :Цей транспорт випереджує розклад на {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :Цей розклад займе ще {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Цей розклад займе якнайменше {STRING} (не все за розкладом)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автозаповнення
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Автоматично заповнювати розпис згiдно з даними першої подорожі
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Автоматично заповнювати розклад згiдно з даними першої подорожі
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}На шляху авто
