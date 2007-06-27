@@ -938,31 +938,6 @@ void SwitchMode(int new_mode)
 	}
 }
 
-#include "cargopacket.h"
-void CheckCargoPacketLeaks()
-{
-	CargoPacket *cp;
-	FOR_ALL_CARGOPACKETS(cp) cp->touched = false;
-
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		const CargoList::List *packets = v->cargo.Packets();
-		for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) (*it)->touched = true;
-	}
-
-	Station *st;
-	FOR_ALL_STATIONS(st) {
-		for (CargoID c = 0; c < NUM_CARGO; c++) {
-			GoodsEntry *ge = &st->goods[c];
-
-			const CargoList::List *packets = ge->cargo.Packets();
-			for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) (*it)->touched = true;
-		}
-	}
-
-	FOR_ALL_CARGOPACKETS(cp) assert(cp->touched);
-}
-
 
 /* State controlling game loop.
  * The state must not be changed from anywhere
@@ -997,7 +972,6 @@ void StateGameLoop()
 		CallWindowTickEvent();
 		NewsLoop();
 		_current_player = p;
-		CheckCargoPacketLeaks();
 	}
 }
 

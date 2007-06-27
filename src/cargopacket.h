@@ -11,8 +11,6 @@
  * Container for cargo from the same location and time
  */
 struct CargoPacket {
-	bool touched;
-
 	typedef uint32 ID;      ///< Type for cargopacket identifiers
 
 	ID index;               ///< The unique index of this packet

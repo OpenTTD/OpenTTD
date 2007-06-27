@@ -64,6 +64,7 @@ public:
 			BlitterFactoryBase *b = (*it).second;
 			if (strcasecmp(name, b->name) == 0) {
 				Blitter *newb = b->CreateInstance();
+				delete *GetActiveBlitter();
 				*GetActiveBlitter() = newb;
 				return newb;
 			}
