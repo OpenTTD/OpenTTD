@@ -371,6 +371,9 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	if (!IsValidWaypointID(p1)) return CMD_ERROR;
 
+	wp = GetWaypoint(p1);
+	if (!CheckTileOwnership(wp->xy)) return CMD_ERROR;
+
 	if (!StrEmpty(_cmd_text)) {
 		if (!IsUniqueWaypointName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
@@ -379,7 +382,6 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		if (str == 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			wp = GetWaypoint(p1);
 			if (wp->string != STR_NULL) DeleteName(wp->string);
 
 			wp->string = str;
@@ -392,7 +394,6 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		}
 	} else {
 		if (flags & DC_EXEC) {
-			wp = GetWaypoint(p1);
 			if (wp->string != STR_NULL) DeleteName(wp->string);
 
 			MakeDefaultWaypointName(wp);
