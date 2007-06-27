@@ -499,6 +499,12 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	}
 
 	end_tile = start_tile;
+
+	/** Tile shift coeficient. Will decrease for very long tunnels to avoid exponential growth of price*/
+	int tiles_coef = 3;
+	/** Number of tiles from start of tunnel */
+	int tiles = 0;
+
 	for (;;) {
 		end_tile += delta;
 		end_tileh = GetTileSlope(end_tile, &end_z);
@@ -509,8 +515,11 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 			return_cmd_error(STR_5003_ANOTHER_TUNNEL_IN_THE_WAY);
 		}
 
+		tiles++;
+		if (tiles == 25 || tiles == 50 || tiles == 100 || tiles == 200 || tiles == 400 || tiles == 800) tiles_coef++;
+
 		cost.AddCost(_price.build_tunnel);
-		cost.AddCost(cost.GetCost() >> 3); // add a multiplier for longer tunnels
+		cost.AddCost(cost.GetCost() >> tiles_coef); // add a multiplier for longer tunnels
 	}
 
 	/* Add the cost of the entrance */
