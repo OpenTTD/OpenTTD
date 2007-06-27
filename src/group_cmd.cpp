@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "variables.h"
 #include "functions.h"
 #include "player.h"
 #include "table/strings.h"
@@ -17,6 +18,7 @@
 #include "string.h"
 #include "window.h"
 #include "vehicle_gui.h"
+#include "strings.h"
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one
@@ -159,6 +161,19 @@ CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return CommandCost();
 }
 
+static bool IsUniqueGroupName(const char *name)
+{
+	const Group *g;
+	char buf[512];
+
+	FOR_ALL_GROUPS(g) {
+		SetDParam(0, g->index);
+		GetString(buf, STR_GROUP_NAME, lastof(buf));
+		if (strcmp(buf, name) == 0) return false;
+	}
+
+	return true;
+}
 
 /**
  * Rename a group
@@ -173,6 +188,8 @@ CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Group *g = GetGroup(p1);
 	if (g->owner != _current_player) return CMD_ERROR;
+
+	if (!IsUniqueGroupName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
 	/* Create the name */
 	StringID str = AllocateName(_cmd_text, 0);

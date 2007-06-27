@@ -98,9 +98,6 @@ bool IsCustomName(StringID id);
 void DeleteName(StringID id);
 char *GetName(char *buff, StringID id, const char* last);
 
-/* AllocateNameUnique also tests if the name used is not used anywere else
- * and if it is used, it returns an error. */
-#define AllocateNameUnique(name, skip) RealAllocateName(name, skip, true)
 #define AllocateName(name, skip) RealAllocateName(name, skip, false)
 StringID RealAllocateName(const char *name, byte skip, bool check_double);
 void ConvertNameArray();

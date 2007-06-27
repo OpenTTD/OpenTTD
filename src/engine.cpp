@@ -21,6 +21,8 @@
 #include "date.h"
 #include "table/engines.h"
 #include "group.h"
+#include "string.h"
+#include "strings.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
@@ -368,6 +370,19 @@ void EnginesMonthlyLoop()
 	}
 }
 
+static bool IsUniqueEngineName(const char *name)
+{
+	char buf[512];
+
+	for (EngineID i = 0; i < TOTAL_NUM_ENGINES; i++) {
+		SetDParam(0, i);
+		GetString(buf, STR_ENGINE_NAME, lastof(buf));
+		if (strcmp(buf, name) == 0) return false;
+	}
+
+	return true;
+}
+
 /** Rename an engine.
  * @param tile unused
  * @param flags operation to perfom
@@ -378,9 +393,11 @@ CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID str;
 
-	if (!IsEngineIndex(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
+	if (!IsEngineIndex(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
 
-	str = AllocateNameUnique(_cmd_text, 0);
+	if (!IsUniqueEngineName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+
+	str = AllocateName(_cmd_text, 0);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

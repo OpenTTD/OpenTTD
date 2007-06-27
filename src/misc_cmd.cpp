@@ -17,6 +17,7 @@
 #include "variables.h"
 #include "livery.h"
 #include "player_face.h"
+#include "strings.h"
 
 /** Change the player's face.
  * @param tile unused
@@ -194,6 +195,20 @@ CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return CommandCost();
 }
 
+static bool IsUniqueCompanyName(const char *name)
+{
+	const Player *p;
+	char buf[512];
+
+	FOR_ALL_PLAYERS(p) {
+		SetDParam(0, p->index);
+		GetString(buf, STR_COMPANY_NAME, lastof(buf));
+		if (strcmp(buf, name) == 0) return false;
+	}
+
+	return true;
+}
+
 /** Change the name of the company.
  * @param tile unused
  * @param flags operation to perform
@@ -205,9 +220,11 @@ CommandCost CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32
 	StringID str;
 	Player *p;
 
-	if (_cmd_text[0] == '\0') return CMD_ERROR;
+	if (StrEmpty(_cmd_text)) return CMD_ERROR;
 
-	str = AllocateNameUnique(_cmd_text, 4);
+	if (!IsUniqueCompanyName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+
+	str = AllocateName(_cmd_text, 4);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -222,6 +239,20 @@ CommandCost CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32
 	return CommandCost();
 }
 
+static bool IsUniquePresidentName(const char *name)
+{
+	const Player *p;
+	char buf[512];
+
+	FOR_ALL_PLAYERS(p) {
+		SetDParam(0, p->index);
+		GetString(buf, STR_PLAYER_NAME, lastof(buf));
+		if (strcmp(buf, name) == 0) return false;
+	}
+
+	return true;
+}
+
 /** Change the name of the president.
  * @param tile unused
  * @param flags operation to perform
@@ -233,9 +264,11 @@ CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint
 	StringID str;
 	Player *p;
 
-	if (_cmd_text[0] == '\0') return CMD_ERROR;
+	if (StrEmpty(_cmd_text)) return CMD_ERROR;
 
-	str = AllocateNameUnique(_cmd_text, 4);
+	if (!IsUniquePresidentName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+
+	str = AllocateName(_cmd_text, 4);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

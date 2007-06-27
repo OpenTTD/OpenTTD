@@ -43,6 +43,7 @@
 #include "helpers.hpp"
 #include "group.h"
 #include "economy.h"
+#include "strings.h"
 
 #define INVALID_COORD (0x7fffffff)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
@@ -2396,6 +2397,30 @@ void VehicleEnterDepot(Vehicle *v)
 	}
 }
 
+static bool IsUniqueVehicleName(const char *name)
+{
+	const Vehicle *v;
+	char buf[512];
+
+	FOR_ALL_VEHICLES(v) {
+		switch (v->type) {
+			case VEH_TRAIN:
+			case VEH_ROAD:
+			case VEH_AIRCRAFT:
+			case VEH_SHIP:
+				SetDParam(0, v->index);
+				GetString(buf, STR_VEHICLE_NAME, lastof(buf));
+				if (strcmp(buf, name) == 0) return false;
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	return true;
+}
+
 /** Give a custom name to your vehicle
  * @param tile unused
  * @param flags type of operation
@@ -2407,13 +2432,15 @@ CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	StringID str;
 
-	if (!IsValidVehicleID(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
+	if (!IsValidVehicleID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
-	str = AllocateNameUnique(_cmd_text, 2);
+	if (!IsUniqueVehicleName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+
+	str = AllocateName(_cmd_text, 2);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

@@ -41,6 +41,7 @@
 #include "misc/autoptr.hpp"
 #include "road.h"
 #include "cargotype.h"
+#include "strings.h"
 
 /**
  * Called if a new block is added to the station-pool
@@ -2479,6 +2480,20 @@ static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
 	st->MarkTilesDirty(true);
 }
 
+static bool IsUniqueStationName(const char *name)
+{
+	const Station *st;
+	char buf[512];
+
+	FOR_ALL_STATIONS(st) {
+		SetDParam(0, st->index);
+		GetString(buf, STR_STATION, lastof(buf));
+		if (strcmp(buf, name) == 0) return false;
+	}
+
+	return true;
+}
+
 /** Rename a station
  * @param tile unused
  * @param flags operation to perform
@@ -2487,12 +2502,14 @@ static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
  */
 CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsValidStationID(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
+	if (!IsValidStationID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
 	Station *st = GetStation(p1);
 
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
-	StringID str = AllocateNameUnique(_cmd_text, 6);
+	if (!IsUniqueStationName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+
+	StringID str = AllocateName(_cmd_text, 6);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

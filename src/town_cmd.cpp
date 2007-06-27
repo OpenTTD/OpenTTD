@@ -1859,6 +1859,20 @@ void ClearTownHouse(Town *t, TileIndex tile)
 	if (eflags & BUILDING_HAS_4_TILES) DoClearTownHouseHelper(tile + TileDiffXY(1, 1));
 }
 
+static bool IsUniqueTownName(const char *name)
+{
+	const Town *t;
+	char buf[512];
+
+	FOR_ALL_TOWNS(t) {
+		SetDParam(0, t->index);
+		GetString(buf, STR_TOWN, lastof(buf));
+		if (strcmp(buf, name) == 0) return false;
+	}
+
+	return true;
+}
+
 /** Rename a town (server-only).
  * @param tile unused
  * @param flags type of operation
@@ -1870,11 +1884,13 @@ CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	StringID str;
 	Town *t;
 
-	if (!IsValidTownID(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
+	if (!IsValidTownID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
 
 	t = GetTown(p1);
 
-	str = AllocateNameUnique(_cmd_text, 4);
+	if (!IsUniqueTownName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+
+	str = AllocateName(_cmd_text, 4);
 	if (str == 0) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

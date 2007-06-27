@@ -24,6 +24,8 @@
 #include "yapf/yapf.h"
 #include "date.h"
 #include "newgrf.h"
+#include "string.h"
+#include "strings.h"
 
 enum {
 	MAX_WAYPOINTS_PER_TOWN = 64,
@@ -341,6 +343,20 @@ CommandCost CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint
 	return RemoveTrainWaypoint(tile, flags, true);
 }
 
+static bool IsUniqueWaypointName(const char *name)
+{
+	const Waypoint *wp;
+	char buf[512];
+
+	FOR_ALL_WAYPOINTS(wp) {
+		SetDParam(0, wp->index);
+		GetString(buf, STR_WAYPOINT_RAW, lastof(buf));
+		if (strcmp(buf, name) == 0) return false;
+	}
+
+	return true;
+}
+
 /**
  * Rename a waypoint.
  * @param tile unused
@@ -355,8 +371,10 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	if (!IsValidWaypointID(p1)) return CMD_ERROR;
 
-	if (_cmd_text[0] != '\0') {
-		StringID str = AllocateNameUnique(_cmd_text, 0);
+	if (!StrEmpty(_cmd_text)) {
+		if (!IsUniqueWaypointName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+
+		StringID str = AllocateName(_cmd_text, 0);
 
 		if (str == 0) return CMD_ERROR;
 
