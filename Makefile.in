@@ -35,6 +35,23 @@ DISTCC = !!DISTCC!!
 
 RES := $(shell if ! [ -f $(CONFIG_CACHE_SOURCE_LIST) ] || [ -n "`cmp $(CONFIG_CACHE_SOURCE_LIST) $(SOURCE_LIST)`" ]; then cp $(SOURCE_LIST) $(CONFIG_CACHE_SOURCE_LIST); fi )
 
+all: config.cache
+ifdef DISTCC
+	@if [ -z "`echo '$(MFLAGS)' | grep '\-j'`" ]; then echo; echo "WARNING: you enabled distcc support, but you don't seem to be using the -jN paramter"; echo; fi
+endif
+	@for dir in $(DIRS); do \
+		$(MAKE) -C $$dir all; \
+	done
+ifdef LIPO
+# Lipo is an OSX thing. If it is defined, it means we are building for universal,
+# and so we have have to combine the binaries into one big binary
+
+# Remove the last binary made by the last compiled target
+	$(Q)rm -f $(BIN_DIR)/$(TTD)
+# Make all the binaries into one
+	$(Q)$(LIPO) -create -output $(BIN_DIR)/$(TTD) $(TTDS)
+endif
+
 help:
 	@echo "Available make commands:"
 	@echo ""
@@ -56,23 +73,6 @@ help:
 	@echo "  bundle_bzip2  create the bzip2 installation bundle"
 	@echo "  bundle_lha    create the lha installation bundle"
 	@echo "  bundle_dmg    create the dmg installation bundle"
-
-all: config.cache
-ifdef DISTCC
-	@if [ -z "`echo '$(MFLAGS)' | grep '\-j'`" ]; then echo; echo "WARNING: you enabled distcc support, but you don't seem to be using the -jN paramter"; echo; fi
-endif
-	@for dir in $(DIRS); do \
-		$(MAKE) -C $$dir all; \
-	done
-ifdef LIPO
-# Lipo is an OSX thing. If it is defined, it means we are building for universal,
-# and so we have have to combine the binaries into one big binary
-
-# Remove the last binary made by the last compiled target
-	$(Q)rm -f $(BIN_DIR)/$(TTD)
-# Make all the binaries into one
-	$(Q)$(LIPO) -create -output $(BIN_DIR)/$(TTD) $(TTDS)
-endif
 
 config.cache: $(CONFIG_CACHE_SOURCE_LIST) $(CONFIGURE_FILES)
 ifeq ($(shell if test -f config.cache; then echo 1; fi), 1)
