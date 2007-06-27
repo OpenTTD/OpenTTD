@@ -283,6 +283,7 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 	scnew->file_pos = scold->file_pos;
 	scnew->ptr = NULL;
 	scnew->id = scold->id;
+	free((char *)scnew->grf_name);
 	scnew->grf_name = strdup(scold->grf_name);
 }
 
@@ -493,6 +494,7 @@ void GfxInitSpriteMem()
 	NextBlock(_spritecache_ptr)->size = 0;
 
 	/* Reset the spritecache 'pool' */
+	for (uint i = 0; i < _spritecache_items; i++) free((char *)_spritecache[i].grf_name);
 	free(_spritecache);
 	_spritecache_items = 0;
 	_spritecache = NULL;
