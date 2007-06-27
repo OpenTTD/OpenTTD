@@ -587,7 +587,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 			if (IsLocalPlayer()) {
-				InvalidateAutoreplaceWindow(VEH_TRAIN); // updates the replace Train window
+				InvalidateAutoreplaceWindow(VEH_TRAIN, v->group_id); // updates the replace Train window
 			}
 			GetPlayer(_current_player)->num_engines[engine]++;
 		}
@@ -771,7 +771,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			RebuildVehicleLists();
 			InvalidateWindow(WC_COMPANY, v->owner);
 			if (IsLocalPlayer())
-				InvalidateAutoreplaceWindow(VEH_TRAIN); // updates the replace Train window
+				InvalidateAutoreplaceWindow(VEH_TRAIN, v->group_id); // updates the replace Train window
 
 			GetPlayer(_current_player)->num_engines[p1]++;
 		}

@@ -567,7 +567,7 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service,
 bool IsVehicleInDepot(const Vehicle *v);
 void VehicleEnterDepot(Vehicle *v);
 
-void InvalidateAutoreplaceWindow(EngineID e);
+void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g);
 
 CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs);
 bool CanBuildVehicleInfrastructure(VehicleType type);

@@ -677,7 +677,7 @@ void DestroyVehicle(Vehicle *v)
 
 	if (IsEngineCountable(v)) {
 		GetPlayer(v->owner)->num_engines[v->engine_type]--;
-		if (v->owner == _local_player) InvalidateAutoreplaceWindow(v->engine_type);
+		if (v->owner == _local_player) InvalidateAutoreplaceWindow(v->engine_type, v->group_id);
 
 		if (IsValidGroupID(v->group_id)) GetGroup(v->group_id)->num_engines[v->engine_type]--;
 		if (v->IsPrimaryVehicle()) DecreaseGroupNumVehicle(v->group_id);

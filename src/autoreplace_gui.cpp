@@ -38,17 +38,19 @@ void InitializeVehiclesGuiList()
 
 /** Rebuild the left autoreplace list if an engine is removed or added
  * @param e Engine to check if it is removed or added
+ * @param id_g The group the engine belongs to
  *  Note: this function only works if it is called either
  *   - when a new vehicle is build, but before it's counted in num_engines
  *   - when a vehicle is deleted and after it's substracted from num_engines
  *   - when not changing the count (used when changing replace orders)
  */
-void InvalidateAutoreplaceWindow(EngineID e)
+void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 {
 	Player *p = GetPlayer(_local_player);
 	byte type = GetEngine(e)->type;
+	uint num_engines = IsDefaultGroupID(id_g) ? p->num_engines[e] : GetGroup(id_g)->num_engines[e];
 
-	if (p->num_engines[e] == 0) {
+	if (num_engines == 0 || p->num_engines[e] == 0) {
 		/* We don't have any of this engine type.
 		 * Either we just sold the last one, we build a new one or we stopped replacing it.
 		 * In all cases, we need to update the left list */

@@ -894,7 +894,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
-			InvalidateAutoreplaceWindow(VEH_SHIP); // updates the replace Ship window
+			InvalidateAutoreplaceWindow(VEH_SHIP, v->group_id); // updates the replace Ship window
 
 		GetPlayer(_current_player)->num_engines[p1]++;
 	}

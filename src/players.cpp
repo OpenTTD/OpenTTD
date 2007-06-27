@@ -736,7 +736,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 				cost = RemoveEngineReplacementForPlayer(p, old_engine_type,id_g, flags);
 			}
 
-			if (IsLocalPlayer()) InvalidateAutoreplaceWindow(old_engine_type);
+			if (IsLocalPlayer()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
 
 			return cost;
 		}
