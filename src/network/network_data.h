@@ -3,11 +3,12 @@
 #ifndef NETWORK_DATA_H
 #define NETWORK_DATA_H
 
+#include "../openttd.h"
+#include "network.h"
+
 // Is the network enabled?
 #ifdef ENABLE_NETWORK
 
-#include "../openttd.h"
-#include "network.h"
 #include "core/os_abstraction.h"
 #include "core/core.h"
 #include "core/config.h"

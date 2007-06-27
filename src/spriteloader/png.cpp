@@ -2,6 +2,8 @@
 
 /** @file grf.cpp */
 
+#ifdef WITH_PNG
+
 #include "../stdafx.h"
 #include "../gfx.h"
 #include "../fileio.h"
@@ -184,3 +186,5 @@ bool SpriteLoaderPNG::LoadSprite(SpriteLoader::Sprite *sprite, const char *filen
 	if (!LoadPNG(sprite, filename, file_pos, true)) return false;
 	return true;
 }
+
+#endif /* WITH_PNG */
