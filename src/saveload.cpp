@@ -288,6 +288,8 @@ void SlSetArrayIndex(uint index)
 	_sl.array_index = index;
 }
 
+static uint32 _next_offs;
+
 /**
  * Iterate through the elements of an array and read the whole thing
  * @return The index of the object, or -1 if we have reached the end of current block
@@ -295,21 +297,20 @@ void SlSetArrayIndex(uint index)
 int SlIterateArray()
 {
 	int index;
-	static uint32 next_offs;
 
 	/* After reading in the whole array inside the loop
 	 * we must have read in all the data, so we must be at end of current block. */
-	assert(next_offs == 0 || SlGetOffs() == next_offs);
+	if (_next_offs != 0 && SlGetOffs() != _next_offs) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk size");
 
 	while (true) {
 		uint length = SlReadArrayLength();
 		if (length == 0) {
-			next_offs = 0;
+			_next_offs = 0;
 			return -1;
 		}
 
 		_sl.obj_len = --length;
-		next_offs = SlGetOffs() + length;
+		_next_offs = SlGetOffs() + length;
 
 		switch (_sl.block_mode) {
 		case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
@@ -1598,6 +1599,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		return SL_OK;
 	}
 	WaitTillSaved();
+
+	_next_offs = 0;
 
 	/* Load a TTDLX or TTDPatch game */
 	if (mode == SL_OLD_LOAD) {
