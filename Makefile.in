@@ -35,6 +35,28 @@ DISTCC = !!DISTCC!!
 
 RES := $(shell if ! [ -f $(CONFIG_CACHE_SOURCE_LIST) ] || [ -n "`cmp $(CONFIG_CACHE_SOURCE_LIST) $(SOURCE_LIST)`" ]; then cp $(SOURCE_LIST) $(CONFIG_CACHE_SOURCE_LIST); fi )
 
+help:
+	@echo "Available make commands:"
+	@echo ""
+	@echo "Compilation:"
+	@echo "  all           compile the executable and the lang files"
+	@echo "  lang          compile the lang files only"
+	@echo "Clean up:"
+	@echo "  clean         remove the files generated during compilation"
+	@echo "  mrproper      remove the files generated during configuration and compilation"
+	@echo "Run after compilation:"
+	@echo "  run           execute openttd after the compilation"
+	@echo "  run-gdb       execute openttd in debug mode after the compilation"
+	@echo "  run-prof      execute openttd in profiling mode after the compilation"
+	@echo "Installation:"
+	@echo "  install       install the compiled files and the data-files after the compilation"
+	@echo "  bundle        create the base for an installation bundle"
+	@echo "  bundle_zip    create the zip installation bundle"
+	@echo "  bundle_gzip   create the gzip installation bundle"
+	@echo "  bundle_bzip2  create the bzip2 installation bundle"
+	@echo "  bundle_lha    create the lha installation bundle"
+	@echo "  bundle_dmg    create the dmg installation bundle"
+
 all: config.cache
 ifdef DISTCC
 	@if [ -z "`echo '$(MFLAGS)' | grep '\-j'`" ]; then echo; echo "WARNING: you enabled distcc support, but you don't seem to be using the -jN paramter"; echo; fi
