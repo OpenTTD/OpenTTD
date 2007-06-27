@@ -2272,8 +2272,12 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 	int max = 0;
 	int cars = 0;
 	int unloading = 0;
+	bool loading = false;
 
 	assert(color != NULL);
+
+	const Vehicle *u = v;
+	const Station *st = GetStation(v->last_station_visited);
 
 	/* Count up max and used */
 	for (; v != NULL; v = v->next) {
@@ -2281,13 +2285,14 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0) {
 			unloading += HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
+			loading |= (u->current_order.flags & OF_UNLOAD) == 0 && st->goods[v->cargo_type].days_since_pickup != 255;
 			cars++;
 		}
 	}
 
-	if (unloading == 0)         *color = STR_PERCENT_UP;
-	else if (cars == unloading) *color = STR_PERCENT_DOWN;
-	else                        *color = STR_PERCENT_UP_DOWN;
+	if (unloading == 0 && loading)          *color = STR_PERCENT_UP;
+	else if (cars == unloading || !loading) *color = STR_PERCENT_DOWN;
+	else                                    *color = STR_PERCENT_UP_DOWN;
 
 	/* Train without capacity */
 	if (max == 0) return 100;
