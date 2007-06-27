@@ -55,6 +55,7 @@ protected:
 protected:
 	int           m_max_cost;
 	CBlobT<int>   m_sig_look_ahead_costs;
+	bool          m_disable_cache;
 
 public:
 	bool          m_stopped_on_first_two_way_signal;
@@ -64,6 +65,7 @@ protected:
 
 	CYapfCostRailT()
 		: m_max_cost(0)
+		, m_disable_cache(false)
 		, m_stopped_on_first_two_way_signal(false)
 	{
 		// pre-compute look-ahead penalties into array
@@ -468,7 +470,8 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 	FORCEINLINE bool CanUseGlobalCache(Node& n) const
 	{
-		return (n.m_parent != NULL)
+		return !m_disable_cache
+			&& (n.m_parent != NULL)
 			&& (n.m_parent->m_num_signals_passed >= m_sig_look_ahead_costs.Size());
 	}
 
@@ -481,6 +484,10 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 		}
 	}
 
+	void DisableCache(bool disable)
+	{
+		m_disable_cache = disable;
+	}
 };
 
 

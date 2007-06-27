@@ -9,6 +9,8 @@
 #include "yapf_costrail.hpp"
 #include "yapf_destrail.hpp"
 
+#define DEBUG_YAPF_CACHE 0
+
 int _total_pf_time_us = 0;
 
 
@@ -44,8 +46,21 @@ public:
 
 	static bool stFindNearestDepotTwoWay(Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
 	{
-		Tpf pf;
-		return pf.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_distance, reverse_penalty, depot_tile, reversed);
+		Tpf pf1;
+		bool result1 = pf1.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_distance, reverse_penalty, depot_tile, reversed);
+
+#if DEBUG_YAPF_CACHE
+		Tpf pf2;
+		TileIndex depot_tile2 = INVALID_TILE;
+		bool reversed2 = false;
+		pf2.DisableCache(true);
+		bool result2 = pf2.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_distance, reverse_penalty, &depot_tile2, &reversed2);
+		if (result1 != result2 || (result1 && (*depot_tile != depot_tile2 || *reversed != reversed2))) {
+			DEBUG(yapf, 0, "CACHE ERROR: FindNearestDepotTwoWay() = [%s, %s]", result1 ? "T" : "F", result2 ? "T" : "F");
+		}
+#endif
+
+		return result1;
 	}
 
 	FORCEINLINE bool FindNearestDepotTwoWay(Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
@@ -108,8 +123,19 @@ public:
 	static Trackdir stChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
 	{
 		// create pathfinder instance
-		Tpf pf;
-		return pf.ChooseRailTrack(v, tile, enterdir, tracks, path_not_found);
+		Tpf pf1;
+		Trackdir result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_not_found);
+
+#if DEBUG_YAPF_CACHE
+		Tpf pf2;
+		pf2.DisableCache(true);
+		Trackdir result2 = pf2.ChooseRailTrack(v, tile, enterdir, tracks, path_not_found);
+		if (result1 != result2) {
+			DEBUG(yapf, 0, "CACHE ERROR: ChooseRailTrack() = [%d, %d]", result1, result2);
+		}
+#endif
+
+		return result1;
 	}
 
 	FORCEINLINE Trackdir ChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
@@ -147,8 +173,19 @@ public:
 
 	static bool stCheckReverseTrain(Vehicle* v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2)
 	{
-		Tpf pf;
-		return pf.CheckReverseTrain(v, t1, td1, t2, td2);
+		Tpf pf1;
+		bool result1 = pf1.CheckReverseTrain(v, t1, td1, t2, td2);
+
+#if DEBUG_YAPF_CACHE
+		Tpf pf2;
+		pf2.DisableCache(true);
+		bool result2 = pf2.CheckReverseTrain(v, t1, td1, t2, td2);
+		if (result1 != result2) {
+			DEBUG(yapf, 0, "CACHE ERROR: CheckReverseTrain() = [%s, %s]", result1 ? "T" : "F", result2 ? "T" : "F");
+		}
+#endif
+
+		return result1;
 	}
 
 	FORCEINLINE bool CheckReverseTrain(Vehicle* v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2)
