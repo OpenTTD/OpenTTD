@@ -197,6 +197,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 	dest_sprite->x_offs = sprite->x_offs;
 	dest_sprite->y_offs = sprite->y_offs;
 	memcpy(dest_sprite->data, temp_dst, index);
+	free(temp_dst);
 
 	return dest_sprite;
 }
