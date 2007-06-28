@@ -66,7 +66,7 @@ static bool _masterlang;
 static bool _translated;
 static const char* _file = "(unknown file)";
 static int _cur_line;
-static int _errors, _warnings;
+static int _errors, _warnings, _show_todo;
 
 struct LangString {
 	char *name;            // Name of the string
@@ -377,7 +377,7 @@ static void EmitPlural(char *buf, int value)
 			fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
 				_plural_form_counts[_lang_pluralform], nw);
 		} else {
-			warning("'%s' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
+			if ((_show_todo & 2) != 0) warning("'%s' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
 			if (nw > _plural_form_counts[_lang_pluralform]) {
 				nw = _plural_form_counts[_lang_pluralform];
 			} else {
@@ -1130,7 +1130,7 @@ static void WriteLength(FILE *f, uint length)
 }
 
 
-static void WriteLangfile(const char *filename, int show_todo)
+static void WriteLangfile(const char *filename)
 {
 	FILE *f;
 	uint in_use[32];
@@ -1175,10 +1175,11 @@ static void WriteLangfile(const char *filename, int show_todo)
 			_cur_line = ls->line;
 
 			// Produce a message if a string doesn't have a translation.
-			if (show_todo > 0 && ls->translated == NULL) {
-				if (show_todo == 2) {
+			if (_show_todo > 0 && ls->translated == NULL) {
+				if ((_show_todo & 2) != 0) {
 					warning("'%s' is untranslated", ls->name);
-				} else {
+				}
+				if ((_show_todo & 1) != 0) {
 					const char *s = "<TODO> ";
 					while (*s != '\0') PutByte(*s++);
 				}
@@ -1287,8 +1288,6 @@ int CDECL main(int argc, char* argv[])
 	const char *src_dir = ".";
 	const char *dest_dir = NULL;
 
-	int show_todo = 0;
-
 	while (argc > 1 && *argv[1] == '-') {
 		if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
 			puts("$Revision$");
@@ -1296,13 +1295,13 @@ int CDECL main(int argc, char* argv[])
 		}
 
 		if (strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--todo") == 0) {
-			show_todo = 1;
+			_show_todo |= 1;
 			argc--, argv++;
 			continue;
 		}
 
 		if (strcmp(argv[1], "-w") == 0 || strcmp(argv[1], "--warning") == 0) {
-			show_todo = 2;
+			_show_todo |= 2;
 			argc--, argv++;
 			continue;
 		}
@@ -1378,10 +1377,10 @@ int CDECL main(int argc, char* argv[])
 		r = strrchr(pathbuf, '.');
 		if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(pathbuf, '\0');
 		ttd_strlcpy(r, ".lng", (size_t)(r - pathbuf));
-		WriteLangfile(pathbuf, show_todo);
+		WriteLangfile(pathbuf);
 
 		/* if showing warnings, print a summary of the language */
-		if (show_todo == 2) {
+		if ((_show_todo & 2) != 0) {
 			fprintf(stdout, "%d warnings and %d errors for %s\n", _warnings, _errors, pathbuf);
 		}
 	} else {
