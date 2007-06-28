@@ -53,14 +53,6 @@ static inline bool IsDefaultGroupID(GroupID index)
 	return (index == DEFAULT_GROUP);
 }
 
-static inline StringID GetGroupName(GroupID index)
-{
-	if (!IsValidGroupID(index)) return STR_NULL;
-
-	return GetGroup(index)->string_id;
-}
-
-
 #define FOR_ALL_GROUPS_FROM(g, start) for (g = GetGroup(start); g != NULL; g = (g->index + 1U < GetGroupPoolSize()) ? GetGroup(g->index + 1) : NULL) if (IsValidGroup(g))
 #define FOR_ALL_GROUPS(g) FOR_ALL_GROUPS_FROM(g, 0)
 
