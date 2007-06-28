@@ -251,31 +251,13 @@ const byte _ffb_64[128] = {
 48, 56, 56, 58, 56, 60, 60, 62,
 };
 
-static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
+static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction);
+
+/** Most code of the "Normal" case of TPF Mode 1; for signals special tricks
+ * have to be done, but those happen in TPFMode1; this is just to prevent
+ * gotos ;). */
+static inline void TPFMode1_NormalCase(TrackPathFinder* tpf, TileIndex tile, TileIndex tile_org, DiagDirection direction)
 {
-	uint bits;
-	int i;
-	RememberData rd;
-	TileIndex tile_org = tile;
-
-	// check if the old tile can be left at that direction
-	if (tpf->tracktype == TRANSPORT_ROAD) {
-		// road stops and depots now have a track (r4419)
-		// don't enter road stop from the back
-		if (IsRoadStopTile(tile) && GetRoadStopDir(tile) != direction) return;
-		// don't enter road depot from the back
-		if (IsTileDepotType(tile, TRANSPORT_ROAD) && GetRoadDepotDirection(tile) != direction) return;
-	}
-
-	if (IsTunnelTile(tile)) {
-		if (GetTunnelDirection(tile) != direction ||
-				GetTunnelTransportType(tile) != tpf->tracktype) {
-			return;
-		}
-		tile = SkipToEndOfTunnel(tpf, tile, direction);
-	}
-	tile += TileOffsByDiagDir(direction);
-
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
 		// don't enter train depot from the back
@@ -302,11 +284,46 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	/* Check if the new tile is a tunnel or bridge head and that the direction
 	 * and transport type match */
 	if (IsTileType(tile, MP_TUNNELBRIDGE) && IsTunnel(tile)) {
+		if (GetTunnelTransportType(tile) != tpf->tracktype) {
+			return;
+		}
+		/* Only skip through the tunnel if heading inwards. We can
+		 * be headed outwards if our starting position was in a
+		 * tunnel and we're pathfinding backwards */
+		if (GetTunnelDirection(tile) == direction) {
+			tile = SkipToEndOfTunnel(tpf, tile, direction);
+		} else if (GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
+			/* We don't support moving through the sides of a tunnel
+			 * entrance :-) */
+			return;
+		}
+	}
+}
+
+static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
+{
+	uint bits;
+	int i;
+	RememberData rd;
+	TileIndex tile_org = tile;
+
+	// check if the old tile can be left at that direction
+	if (tpf->tracktype == TRANSPORT_ROAD) {
+		// road stops and depots now have a track (r4419)
+		// don't enter road stop from the back
+		if (IsRoadStopTile(tile) && GetRoadStopDir(tile) != direction) return;
+		// don't enter road depot from the back
+		if (IsTileDepotType(tile, TRANSPORT_ROAD) && GetRoadDepotDirection(tile) != direction) return;
+	}
+
+	if (IsTunnelTile(tile)) {
 		if (GetTunnelDirection(tile) != direction ||
 				GetTunnelTransportType(tile) != tpf->tracktype) {
 			return;
 		}
+		tile = SkipToEndOfTunnel(tpf, tile, direction);
 	}
+	tile += TileOffsByDiagDir(direction);
 
 	tpf->rd.cur_length++;
 
@@ -335,6 +352,8 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 			} while (bits != 0);
 		}
 	}
+
+	TPFMode1_NormalCase(tpf, tile, tile_org, direction);
 
 	/* the next is only used when signals are checked.
 	 * seems to go in 2 directions simultaneously */

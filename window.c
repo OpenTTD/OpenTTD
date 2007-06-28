@@ -596,7 +596,7 @@ static Window *LocalAllocateWindow(
 		 * XXX - Yes, ugly, probably needs something like w->always_on_top flag
 		 * to implement correctly, but even then you need some kind of distinction
 		 * between on-top of chat/news and status windows, because these conflict */
-		if (wz != _z_windows && w->window_class != WC_SEND_NETWORK_MSG) {
+		if (wz != _z_windows && w->window_class != WC_SEND_NETWORK_MSG && w->window_class != WC_HIGHSCORE && w->window_class != WC_ENDSCREEN) {
 			if (FindWindowById(WC_MAIN_TOOLBAR, 0)     != NULL) wz--;
 			if (FindWindowById(WC_STATUS_BAR, 0)       != NULL) wz--;
 			if (FindWindowById(WC_NEWS_WINDOW, 0)      != NULL) wz--;
