@@ -2392,12 +2392,19 @@ static bool ProcessTrainOrder(Vehicle *v)
 		default: break;
 	}
 
+	/**
+	 * Reversing because of order change is allowed only just after leaving a
+	 * station (and the difficulty setting to allowed, of course)
+	 * this can be detected because only after OT_LEAVESTATION, current_order
+	 * will be reset to nothing. (That also happens if no order, but in that case
+	 * it won't hit the point in code where may_reverse is checked)
+	 */
+	bool may_reverse = v->current_order.type == OT_NOTHING;
+
 	/* check if we've reached the waypoint? */
-	bool at_waypoint = false;
 	if (v->current_order.type == OT_GOTO_WAYPOINT && v->tile == v->dest_tile) {
 		UpdateVehicleTimetable(v, true);
 		v->cur_order_index++;
-		at_waypoint = true;
 	}
 
 	/* check if we've reached a non-stop station while TTDPatch nonstop is enabled.. */
@@ -2453,7 +2460,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 			return false;
 	}
 
-	return !at_waypoint && CheckReverseTrain(v);
+	return may_reverse && CheckReverseTrain(v);
 }
 
 void Train::MarkDirty()
