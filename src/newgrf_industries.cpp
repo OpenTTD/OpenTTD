@@ -248,7 +248,7 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->reseed          = 0;
 }
 
-uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Industry *industry, TileIndex tile)
+uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile)
 {
 	ResolverObject object;
 	const SpriteGroup *group;
@@ -258,7 +258,7 @@ uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Indust
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = Resolve(GetIndustrySpec(industry->type)->grf_prop.spritegroup, &object);
+	group = Resolve(GetIndustrySpec(type)->grf_prop.spritegroup, &object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
