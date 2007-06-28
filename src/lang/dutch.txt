@@ -1115,6 +1115,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Eerst beschikba
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Laatst beschikbare
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Meest gebruikte
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Geef bouwgereedschap weer wanneer geen geschikte voertuigen beschikbaar zijn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maximaal aantal vliegtuigen per speler: {ORANGE}{STRING}
@@ -2773,6 +2774,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Verander
 STR_TIMETABLE_STATUS_ON_TIME                                    :Dit voertuig loopt op schema
 STR_TIMETABLE_STATUS_LATE                                       :Dit voertuig heeft {STRING} vertraging
 STR_TIMETABLE_STATUS_EARLY                                      :Dit voertuig is {STRING} te vroeg
+STR_TIMETABLE_TOTAL_TIME                                        :Dit tijdscheme duurt {STRING} om te volbrengen
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Dit tijdscheme duurt minstens {STRING} om te volbrengen (niet alles geselecteerd)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto aanvullen
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vul het tijdschema automatisch met de waardes van de eerste reis
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Wegvoertuig in de weg
@@ -3347,7 +3352,13 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Winst dit jaar: {GREEN}{CURRENCY} {BLACK}(vorig jaar: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Winst dit jaar: {RED}{CURRENCY} {BLACK}(vorig jaar: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Naam moet unique zijn
 
 ########

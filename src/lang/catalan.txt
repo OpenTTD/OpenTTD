@@ -2855,7 +2855,7 @@ STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} D
 STR_9804_NEW_SHIPS                                              :{BLACK}Nous Vaixells
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Vaixells
 STR_9808_NEW_SHIPS                                              :{WHITE}Nous Vaixells
-STR_9809_BUILD_SHIP                                             :{BLACK}Construeix un Vaixell
+STR_9809_BUILD_SHIP                                             :{BLACK}Construeix Vaixell
 STR_CLONE_SHIP                                                  :{BLACK}Clona Vaixell
 STR_CLONE_SHIP_INFO                                             :{BLACK}Fa una còpia del vaixell. Control-Clic compartirà les ordres
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Fa una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control-Clic compartirà les ordres
@@ -2927,7 +2927,7 @@ STR_CLONE_AIRCRAFT                                              :{BLACK}Clona Ae
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Fa una còpia de l'aeronau. Control-Clic compartirà les ordres
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Fa una còpia de l'aeronau. Prem aquest botó i després en una aeronau dins o fora l'hangar. Control-Clic compartirà les ordres
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nova Aeronau
-STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construeix una Aeronau
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construeix Aeronau
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No es pot construir l'aeronau...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aeronaus
 STR_A00A                                                        :{WHITE}{VEHICLE}
@@ -3358,5 +3358,7 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}El nom ha de ser únic
 
 ########

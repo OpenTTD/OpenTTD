@@ -1101,7 +1101,11 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Percorrer mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel no mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automática ao iniciar um novo jogo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostrar ferramentas de construção quando não estiverem disponíveis veículos adequeados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por jogador: {ORANGE}{STRING}
@@ -1613,6 +1617,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Caminhos-de-fer
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Caminhos-de-ferro com pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Caminhos-de-ferro com sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Caminhos-de-ferro com sinais combinados
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Carris com sinais normais e pré-sinais
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Carris com sinais normais e de saída
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Carris com sinais normais e combinados
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Carris com pré-sinais e sinais de saída
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Carris com pré-sinais e sinais combinados
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Carris com sinais de saída e combinados
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}É preciso remover a estação primeiro
 
 
@@ -1621,15 +1631,25 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}É preci
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Deverá remover a estrada primeiro
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Trabalhos na estrada em curso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construir Estradas
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construção de eléctricos
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Seleccionar Ponte de Estrada
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... estradas de um sentido não podem ter junções
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Não é possível construir estrada aqui...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Não é possível construir carris para eléctricos neste local...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Não é possível remover estrada daqui...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Não é possível remover carris para eléctricos deste local...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientação do Depósito
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientação do depósito para eléctricos
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Não é possível construir depósito de veículos de estrada aqui...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Não é possível construir depósito para eléctricos neste local...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Não é possível construir estação de autocarros...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Não é possível construir estação de carregamento de camiões...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Não é possível construir estação de passageiros para eléctricos...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Não é possível construir estação de carga para eléctricos...
 STR_180A_ROAD_CONSTRUCTION                                      :Construir estradas
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Construção de carris para eléctricos
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir estradas
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construir secção de carris para eléctricos
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir depósito (para criação e manutenção de veículos de estrada)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construir estação de autocarros
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construir área de carregamento de camiões
@@ -2040,8 +2060,6 @@ STR_SV_STNAME_UPPER                                             :{STRING} de cim
 STR_SV_STNAME_LOWER                                             :{STRING} de baixo
 STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
 STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
-
-
 
 ############ end of savegame specific region!
 
@@ -3258,5 +3276,7 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Lucro deste ano: {RED}{CURRENCY} {BLACK}(ano passado: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Lucro deste ano: {GREEN}{CURRENCY} {BLACK}(ano passado: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Lucro deste ano: {RED}{CURRENCY} {BLACK}(ano passado: {RED}{CURRENCY}{BLACK})
+
+
 
 ########

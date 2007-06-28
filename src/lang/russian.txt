@@ -1117,6 +1117,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Перв. до�
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Посл. доступн.
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Наиб. исп.
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Показывать окно покупки когда нет доступного транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Максимальное количество автотранспорта на игрока: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Максимальное количество авиатранспорта на игрока: {ORANGE}{STRING}
@@ -2786,6 +2787,8 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Изм. 
 STR_TIMETABLE_STATUS_ON_TIME                                    :Этот транспорт приходит вовремя
 STR_TIMETABLE_STATUS_LATE                                       :Этот транспорт приходит на  {STRING} позже
 STR_TIMETABLE_STATUS_EARLY                                      :Этот транспорт приходит на  {STRING} раньше
+STR_TIMETABLE_TOTAL_TIME                                        :Выполнение этого расписания займет {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Выполнение этого расписания займет не менее {STRING} (не все просчитано)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автомат.
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Заполнить расписание автоматически данными из первой поездки
 
@@ -3368,5 +3371,7 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Имя должно быть уникальным
 
 ########

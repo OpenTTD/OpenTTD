@@ -1116,6 +1116,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primero disponi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostrar herramientas de construcción aún sin vehículos apropiados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Máx aeroplanos por jugador: {ORANGE}{STRING}
@@ -3358,5 +3359,7 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}El nombre debe ser único
 
 ########
