@@ -107,7 +107,7 @@ struct GRFFileProps {
 	uint16 local_id;                      ///< id defined by the grf file for this industry
 	struct SpriteGroup *spritegroup;      ///< pointer to the different sprites of the industry
 	const struct GRFFile *grffile;        ///< grf file that introduced this industry
-	uint8 override;                       ///< id of the entity been replaced by
+	uint16 override;                      ///< id of the entity been replaced by
 };
 
 /**
