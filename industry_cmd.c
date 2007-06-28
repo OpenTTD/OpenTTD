@@ -1615,13 +1615,16 @@ static void ExtChangeIndustryProduction(Industry *i)
 				int mag;
 
 				new = old = i->production_rate[j];
-				if (CHANCE16I(20, 1024, r))
-					new -= ((RandomRange(50) + 10) * old) >> 8;
-				if (CHANCE16I(20 + (i->pct_transported[j] * 20 >> 8), 1024, r >> 16))
-					new += ((RandomRange(50) + 10) * old) >> 8;
+				if (CHANCE16I(20, 1024, r)) new -= max(((RandomRange(50) + 10) * old) >> 8, 1U);
+				/* Chance of increasing becomes better when more is transported */
+				if (CHANCE16I(20 + (i->pct_transported[j] * 20 >> 8), 1024, r >> 16) &&
+						i->type != IT_OIL_WELL) {
+					new += max(((RandomRange(50) + 10) * old) >> 8, 1U);
+				}
 
-				new = clamp(new, 0, 255);
-				if (new == old) {
+				new = clamp(new, 1, 255);
+				/* Do not stop closing the industry when it has the lowest possible production rate */
+				if (new == old && old > 1) {
 					closeit = false;
 					continue;
 				}
@@ -1629,8 +1632,8 @@ static void ExtChangeIndustryProduction(Industry *i)
 				percent = new * 100 / old - 100;
 				i->production_rate[j] = new;
 
-				if (new >= indspec->production_rate[j] / 4)
-					closeit = false;
+				/* Close the industry when it has the lowest possible production rate */
+				if (new > 1) closeit = false;
 
 				mag = abs(percent);
 				if (mag >= 10) {

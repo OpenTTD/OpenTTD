@@ -1805,7 +1805,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_F7: ShowPlayerStations(_local_player); break;
 		case WKC_F8: ShowPlayerFinances(_local_player); break;
 		case WKC_F9: ShowPlayerCompany(_local_player); break;
-		case WKC_F10:ShowOperatingProfitGraph(); break;
+		case WKC_F10: ShowOperatingProfitGraph(); break;
 		case WKC_F11: ShowCompanyLeagueTable(); break;
 		case WKC_F12: ShowBuildIndustryWindow(); break;
 		case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_player, INVALID_STATION, VEH_Train); break;
@@ -1817,7 +1817,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype, -1); break;
 		case WKC_SHIFT | WKC_F8: ShowBuildRoadToolbar(); break;
 		case WKC_SHIFT | WKC_F9: ShowBuildDocksToolbar(); break;
-		case WKC_SHIFT | WKC_F10:ShowBuildAirToolbar(); break;
+		case WKC_SHIFT | WKC_F10: ShowBuildAirToolbar(); break;
 		case WKC_SHIFT | WKC_F11: ShowBuildTreesToolbar(); break;
 		case WKC_SHIFT | WKC_F12: ShowMusicWindow(); break;
 		case WKC_CTRL  | 'S': MenuClickSmallScreenshot(); break;
@@ -2012,7 +2012,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		switch (e->we.keypress.keycode) {
-			case WKC_F1: ToolbarPauseClick(w); break;
+			case WKC_F1: case WKC_PAUSE: ToolbarPauseClick(w); break;
 			case WKC_F2: ShowGameOptions(); break;
 			case WKC_F3: MenuClickSaveLoad(0); break;
 			case WKC_F4: ToolbarScenGenLand(w); break;

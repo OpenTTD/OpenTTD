@@ -1033,7 +1033,8 @@ enum {
 
 static const Widget _client_list_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   249,     0,    13, STR_NETWORK_CLIENT_LIST,  STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   237,     0,    13, STR_NETWORK_CLIENT_LIST,  STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   238,   249,     0,    13, STR_NULL,                 STR_STICKY_BUTTON},
 
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   249,    14,    14 + CLNWND_ROWSIZE + 1, 0x0, STR_NULL},
 {   WIDGETS_END},
@@ -1047,7 +1048,7 @@ static const Widget _client_list_popup_widgets[] = {
 static WindowDesc _client_list_desc = {
 	WDP_AUTO, WDP_AUTO, 250, 1,
 	WC_CLIENT_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_client_list_widgets,
 	ClientListWndProc
 };
@@ -1143,7 +1144,7 @@ static bool CheckClientListHeight(Window *w)
 	if (w->height != CLNWND_OFFSET + num + 1) {
 		// XXX - magic unfortunately; (num + 2) has to be one bigger than heigh (num + 1)
 		SetWindowDirty(w);
-		w->widget[2].bottom = w->widget[2].top + num + 2;
+		w->widget[3].bottom = w->widget[3].top + num + 2;
 		w->height = CLNWND_OFFSET + num + 1;
 		SetWindowDirty(w);
 		return false;
