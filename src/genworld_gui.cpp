@@ -36,9 +36,12 @@ enum glwp_modes {
 	GLWP_END
 };
 
-static uint _heightmap_x = 0;
-static uint _heightmap_y = 0;
-static StringID _heightmap_str = STR_NULL;
+struct generate_d {
+	uint widget_id;
+	uint x;
+	uint y;
+	char name[64];
+};
 
 extern void SwitchMode(int new_mode);
 
@@ -307,17 +310,17 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			char buffer[512];
 
 			if (_patches_newgame.heightmap_rotation == HM_CLOCKWISE) {
-				SetDParam(0, _heightmap_y);
-				SetDParam(1, _heightmap_x);
+				SetDParam(0, WP(w, generate_d).y);
+				SetDParam(1, WP(w, generate_d).x);
 			} else {
-				SetDParam(0, _heightmap_x);
-				SetDParam(1, _heightmap_y);
+				SetDParam(0, WP(w, generate_d).x);
+				SetDParam(1, WP(w, generate_d).y);
 			}
 			GetString(buffer, STR_HEIGHTMAP_SIZE, lastof(buffer));
 			DrawStringRightAligned(326, 91, STR_HEIGHTMAP_SIZE, 0x10);
 
 			DrawString( 12,  91, STR_HEIGHTMAP_NAME, 0x10);
-			SetDParam(0, _heightmap_str);
+			SetDParamStr(0, WP(w, generate_d).name);
 			DrawStringTruncated(114,  91, STR_ORANGE, 0x10, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
 
 			DrawString( 12, 197, STR_TREE_PLACER, 0);
@@ -364,10 +367,10 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 					w,
 					LandscapeGenerationCallback);
 			} else if (mode == GLWP_HEIGHTMAP &&
-					(_heightmap_x * 2 < (1U << _patches_newgame.map_x) ||
-					_heightmap_x / 2 > (1U << _patches_newgame.map_x) ||
-					_heightmap_y * 2 < (1U << _patches_newgame.map_y) ||
-					_heightmap_y / 2 > (1U << _patches_newgame.map_y))) {
+					(WP(w, generate_d).x * 2 < (1U << _patches_newgame.map_x) ||
+					WP(w, generate_d).x / 2 > (1U << _patches_newgame.map_x) ||
+					WP(w, generate_d).y * 2 < (1U << _patches_newgame.map_y) ||
+					WP(w, generate_d).y / 2 > (1U << _patches_newgame.map_y))) {
 				ShowQuery(
 					STR_HEIGHTMAP_SCALE_WARNING_CAPTION,
 					STR_HEIGHTMAP_SCALE_WARNING_MESSAGE,
@@ -389,7 +392,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			_left_button_clicked = false;
 			break;
 		case GLAND_START_DATE_TEXT: // Year text
-			WP(w, def_d).data_3 = GLAND_START_DATE_TEXT;
+			WP(w, generate_d).widget_id = GLAND_START_DATE_TEXT;
 			SetDParam(0, _patches_newgame.starting_year);
 			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, w, CS_NUMERAL);
 			break;
@@ -404,7 +407,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			_left_button_clicked = false;
 			break;
 		case GLAND_SNOW_LEVEL_TEXT: // Snow line text
-			WP(w, def_d).data_3 = GLAND_SNOW_LEVEL_TEXT;
+			WP(w, generate_d).widget_id = GLAND_SNOW_LEVEL_TEXT;
 			SetDParam(0, _patches_newgame.snow_line_height);
 			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, w, CS_NUMERAL);
 			break;
@@ -488,7 +491,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		if (e->we.edittext.str != NULL) {
 			int32 value = atoi(e->we.edittext.str);
 
-			switch (WP(w, def_d).data_3) {
+			switch (WP(w, generate_d).widget_id) {
 			case GLAND_START_DATE_TEXT:
 				InvalidateWidget(w, GLAND_START_DATE_TEXT);
 				_patches_newgame.starting_year = clamp(value, MIN_YEAR, MAX_YEAR);
@@ -524,25 +527,30 @@ static const WindowDesc _heightmap_load_desc = {
 
 static void _ShowGenerateLandscape(glwp_modes mode)
 {
+	uint x = 0;
+	uint y = 0;
+
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
 
 	/* Always give a new seed if not editor */
 	if (_game_mode != GM_EDITOR) _patches_newgame.generation_seed = InteractiveRandom();
 
 	if (mode == GLWP_HEIGHTMAP) {
-		if (_heightmap_str != STR_NULL) DeleteName(_heightmap_str);
-
-		_heightmap_x = 0;
-		_heightmap_y = 0;
-		_heightmap_str = AllocateName(_file_to_saveload.title, 0);
 		/* If the function returns negative, it means there was a problem loading the heightmap */
-		if (!GetHeightmapDimensions(_file_to_saveload.name, &_heightmap_x, &_heightmap_y))
-			return;
+		if (!GetHeightmapDimensions(_file_to_saveload.name, &x, &y)) return;
 	}
 
 	Window *w = AllocateWindowDescFront((mode == GLWP_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
 
-	if (w != NULL) InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);
+	if (w == NULL) return;
+
+	if (mode == GLWP_HEIGHTMAP) {
+		WP(w, generate_d).x = x;
+		WP(w, generate_d).y = y;
+		strecpy(WP(w, generate_d).name, _file_to_saveload.title, lastof(WP(w, generate_d).name));
+	}
+
+	InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);
 }
 
 void ShowGenerateLandscape()
@@ -654,7 +662,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 			_left_button_clicked = false;
 			break;
 		case CSCEN_START_DATE_TEXT: // Year text
-			WP(w, def_d).data_3 = CSCEN_START_DATE_TEXT;
+			WP(w, generate_d).widget_id = CSCEN_START_DATE_TEXT;
 			SetDParam(0, _patches_newgame.starting_year);
 			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, w, CS_NUMERAL);
 			break;
@@ -669,7 +677,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 			_left_button_clicked = false;
 			break;
 		case CSCEN_FLAT_LAND_HEIGHT_TEXT: // Height level text
-			WP(w, def_d).data_3 = CSCEN_FLAT_LAND_HEIGHT_TEXT;
+			WP(w, generate_d).widget_id = CSCEN_FLAT_LAND_HEIGHT_TEXT;
 			SetDParam(0, _patches_newgame.se_flat_world_height);
 			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, w, CS_NUMERAL);
 			break;
@@ -688,7 +696,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		if (e->we.edittext.str != NULL) {
 			int32 value = atoi(e->we.edittext.str);
 
-			switch (WP(w, def_d).data_3) {
+			switch (WP(w, generate_d).widget_id) {
 			case CSCEN_START_DATE_TEXT:
 				InvalidateWidget(w, CSCEN_START_DATE_TEXT);
 				_patches_newgame.starting_year = clamp(value, MIN_YEAR, MAX_YEAR);
