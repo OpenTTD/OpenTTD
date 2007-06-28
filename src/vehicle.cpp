@@ -2405,17 +2405,26 @@ static bool IsUniqueVehicleName(const char *name)
 	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
 			case VEH_TRAIN:
+				if (!IsTrainEngine(v)) continue;
+				break;
+
 			case VEH_ROAD:
+				break;
+
 			case VEH_AIRCRAFT:
+				if (!IsNormalAircraft(v)) continue;
+				break;
+
 			case VEH_SHIP:
-				SetDParam(0, v->index);
-				GetString(buf, STR_VEHICLE_NAME, lastof(buf));
-				if (strcmp(buf, name) == 0) return false;
 				break;
 
 			default:
-				break;
+				continue;
 		}
+
+		SetDParam(0, v->index);
+		GetString(buf, STR_VEHICLE_NAME, lastof(buf));
+		if (strcmp(buf, name) == 0) return false;
 	}
 
 	return true;

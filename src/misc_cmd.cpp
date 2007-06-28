@@ -201,6 +201,7 @@ static bool IsUniqueCompanyName(const char *name)
 	char buf[512];
 
 	FOR_ALL_PLAYERS(p) {
+		if (!p->is_active) continue;
 		SetDParam(0, p->index);
 		GetString(buf, STR_COMPANY_NAME, lastof(buf));
 		if (strcmp(buf, name) == 0) return false;
@@ -245,6 +246,7 @@ static bool IsUniquePresidentName(const char *name)
 	char buf[512];
 
 	FOR_ALL_PLAYERS(p) {
+		if (!p->is_active) continue;
 		SetDParam(0, p->index);
 		GetString(buf, STR_PLAYER_NAME, lastof(buf));
 		if (strcmp(buf, name) == 0) return false;
