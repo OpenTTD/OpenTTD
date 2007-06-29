@@ -20,6 +20,13 @@ struct CYapfNodeKeyExitDir {
 
 	FORCEINLINE int CalcHash() const {return m_exitdir | (m_tile << 2);}
 	FORCEINLINE bool operator == (const CYapfNodeKeyExitDir& other) const {return (m_tile == other.m_tile) && (m_exitdir == other.m_exitdir);}
+
+	void Dump(DumpTarget &dmp) const
+	{
+		dmp.WriteTile("m_tile", m_tile);
+		dmp.WriteEnumT("m_td", m_td);
+		dmp.WriteEnumT("m_exitdir", m_exitdir);
+	}
 };
 
 struct CYapfNodeKeyTrackDir : public CYapfNodeKeyExitDir
@@ -57,6 +64,14 @@ struct CYapfNodeT {
 	FORCEINLINE int GetCost() {return m_cost;}
 	FORCEINLINE int GetCostEstimate() {return m_estimate;}
 	FORCEINLINE bool operator < (const Node& other) const {return m_estimate < other.m_estimate;}
+
+	void Dump(DumpTarget &dmp) const
+	{
+		dmp.WriteStructT("m_key", &m_key);
+		dmp.WriteStructT("m_parent", m_parent);
+		dmp.WriteLine("m_cost = %d", m_cost);
+		dmp.WriteLine("m_estimate = %d", m_estimate);
+	}
 };
 
 /** Yapf Node for ships */

@@ -19,6 +19,12 @@ struct CYapfRailSegmentKey
 	FORCEINLINE int32 CalcHash() const {return m_value;}
 	FORCEINLINE TileIndex GetTile() const {return (TileIndex)(m_value >> 3);}
 	FORCEINLINE bool operator == (const CYapfRailSegmentKey& other) const {return m_value == other.m_value;}
+
+	void Dump(DumpTarget &dmp) const
+	{
+		dmp.WriteTile("tile", GetTile());
+		dmp.WriteEnumT("td", GetTrackdir());
+	}
 };
 
 /* Enum used in PfCalcCost() to see why was the segment closed. */
@@ -63,7 +69,7 @@ enum EndSegmentReasonBits {
 
 	/* Additional (composite) values. */
 
-	/* What reasons mean that the target can be fond and needs to be detected. */
+	/* What reasons mean that the target can be found and needs to be detected. */
 	ESRB_POSSIBLE_TARGET = ESRB_DEPOT | ESRB_WAYPOINT | ESRB_STATION,
 
 	/* What reasons can be stored back into cached segment. */
@@ -74,6 +80,19 @@ enum EndSegmentReasonBits {
 };
 
 DECLARE_ENUM_AS_BIT_SET(EndSegmentReasonBits);
+
+inline CStrA ValueStr(EndSegmentReasonBits bits)
+{
+	static const char* end_segment_reason_names[] = {
+		"DEAD_END", "RAIL_TYPE", "INFINITE_LOOP", "SEGMENT_TOO_LONG", "CHOICE_FOLLOWS",
+		"DEPOT", "WAYPOINT", "STATION",
+		"PATH_TOO_LONG", "FIRST_TWO_WAY_RED", "LOOK_AHEAD_END", "TARGET_REACHED"
+	};
+
+	CStrA out;
+	out.Format("0x%04X (%s)", bits, ComposeNameT(bits, end_segment_reason_names, "UNK", ESRB_NONE, "NONE").Data());
+	return out.Transfer();
+}
 
 /** cached segment cost for rail YAPF */
 struct CYapfRailSegment
@@ -104,6 +123,17 @@ struct CYapfRailSegment
 	FORCEINLINE TileIndex GetTile() const {return m_key.GetTile();}
 	FORCEINLINE CYapfRailSegment* GetHashNext() {return m_hash_next;}
 	FORCEINLINE void SetHashNext(CYapfRailSegment* next) {m_hash_next = next;}
+
+	void Dump(DumpTarget &dmp) const
+	{
+		dmp.WriteStructT("m_key", &m_key);
+		dmp.WriteTile("m_last_tile", m_last_tile);
+		dmp.WriteEnumT("m_last_td", m_last_td);
+		dmp.WriteLine("m_cost = %d", m_cost);
+		dmp.WriteTile("m_last_signal_tile", m_last_signal_tile);
+		dmp.WriteEnumT("m_last_signal_td", m_last_signal_td);
+		dmp.WriteEnumT("m_end_segment_reason", m_end_segment_reason);
+	}
 };
 
 /** Yapf Node for rail YAPF */
@@ -145,6 +175,17 @@ struct CYapfRailNodeT
 	FORCEINLINE TileIndex GetLastTile() const {assert(m_segment != NULL); return m_segment->m_last_tile;}
 	FORCEINLINE Trackdir GetLastTrackdir() const {assert(m_segment != NULL); return m_segment->m_last_td;}
 	FORCEINLINE void SetLastTileTrackdir(TileIndex tile, Trackdir td) {assert(m_segment != NULL); m_segment->m_last_tile = tile; m_segment->m_last_td = td;}
+
+	void Dump(DumpTarget &dmp) const
+	{
+		base::Dump(dmp);
+		dmp.WriteStructT("m_segment", m_segment);
+		dmp.WriteLine("m_num_signals_passed = %d", m_num_signals_passed);
+		dmp.WriteLine("m_targed_seen = %s", flags_u.flags_s.m_targed_seen ? "Yes" : "No");
+		dmp.WriteLine("m_choice_seen = %s", flags_u.flags_s.m_choice_seen ? "Yes" : "No");
+		dmp.WriteLine("m_last_signal_was_red = %s", flags_u.flags_s.m_last_signal_was_red ? "Yes" : "No");
+		dmp.WriteEnumT("m_last_red_signal_type", m_last_red_signal_type);
+	}
 };
 
 // now define two major node types (that differ by key type)

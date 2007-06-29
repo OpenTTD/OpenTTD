@@ -132,6 +132,15 @@ public:
 		Trackdir result2 = pf2.ChooseRailTrack(v, tile, enterdir, tracks, path_not_found);
 		if (result1 != result2) {
 			DEBUG(yapf, 0, "CACHE ERROR: ChooseRailTrack() = [%d, %d]", result1, result2);
+			DumpTarget dmp1, dmp2;
+			pf1.DumpBase(dmp1);
+			pf2.DumpBase(dmp2);
+			FILE *f1 = fopen("C:\\yapf1.txt", "wt");
+			FILE *f2 = fopen("C:\\yapf2.txt", "wt");
+			fwrite(dmp1.m_out.Data(), 1, dmp1.m_out.Size(), f1);
+			fwrite(dmp2.m_out.Data(), 1, dmp2.m_out.Size(), f2);
+			fclose(f1);
+			fclose(f2);
 		}
 #endif
 

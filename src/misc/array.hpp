@@ -68,6 +68,19 @@ public:
 		const Titem& item   = sa [idx % Tblock_size];
 		return item;
 	}
+
+	template <typename D> void Dump(D &dmp) const
+	{
+		dmp.WriteLine("capacity = %d", Tcapacity);
+		int num_items = Size();
+		dmp.WriteLine("num_items = %d", num_items);
+		CStrA name;
+		for (int i = 0; i < num_items; i++) {
+			const Titem& item = (*this)[i];
+			name.Format("item[%d]", i);
+			dmp.WriteStructT(name.Data(), &item);
+		}
+	}
 };
 
 #endif /* ARRAY_HPP */

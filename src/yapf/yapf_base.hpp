@@ -280,6 +280,12 @@ public:
 
 	const Vehicle* GetVehicle() const {return m_veh;}
 
+	void DumpBase(DumpTarget &dmp) const
+	{
+		dmp.WriteStructT("m_nodes", &m_nodes);
+		dmp.WriteLine("m_num_steps = %d", m_num_steps);
+	}
+
 	// methods that should be implemented at derived class Types::Tpf (derived from CYapfBaseT)
 
 #if 0

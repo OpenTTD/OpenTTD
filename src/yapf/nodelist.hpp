@@ -127,6 +127,11 @@ public:
 
 	FORCEINLINE int TotalCount() {return m_arr.Size();}
 	FORCEINLINE Titem_& ItemAt(int idx) {return m_arr[idx];}
+
+	template <class D> void Dump(D &dmp) const
+	{
+		dmp.WriteStructT("m_arr", &m_arr);
+	}
 };
 
 #endif /* NODELIST_HPP */
