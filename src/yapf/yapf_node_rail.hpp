@@ -14,10 +14,11 @@ struct CYapfRailSegmentKey
 	FORCEINLINE CYapfRailSegmentKey(const CYapfNodeKeyTrackDir& node_key) {Set(node_key);}
 
 	FORCEINLINE void Set(const CYapfRailSegmentKey& src) {m_value = src.m_value;}
-	FORCEINLINE void Set(const CYapfNodeKeyTrackDir& node_key) {m_value = (((int)node_key.m_tile) << 3) | node_key.m_td;}
+	FORCEINLINE void Set(const CYapfNodeKeyTrackDir& node_key) {m_value = (((int)node_key.m_tile) << 4) | node_key.m_td;}
 
 	FORCEINLINE int32 CalcHash() const {return m_value;}
-	FORCEINLINE TileIndex GetTile() const {return (TileIndex)(m_value >> 3);}
+	FORCEINLINE TileIndex GetTile() const {return (TileIndex)(m_value >> 4);}
+	FORCEINLINE Trackdir GetTrackdir() const {return (Trackdir)(m_value & 0x0F);}
 	FORCEINLINE bool operator == (const CYapfRailSegmentKey& other) const {return m_value == other.m_value;}
 
 	void Dump(DumpTarget &dmp) const
