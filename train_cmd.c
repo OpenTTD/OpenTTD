@@ -2749,7 +2749,11 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 {
 	byte old_z = v->z_pos;
+
+	/* need this hint so it returns the right z coordinate on bridges. */
+	_get_z_hint = old_z;
 	v->z_pos = GetSlopeZ(v->x_pos, v->y_pos);
+	_get_z_hint = 0;
 
 	if (new_tile) {
 		CLRBIT(v->u.rail.flags, VRF_GOINGUP);
