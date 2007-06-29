@@ -1792,6 +1792,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\misc\dbg_helpers.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\misc\dbg_helpers.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\misc\fixedsizearray.hpp"
 				>
 			</File>
