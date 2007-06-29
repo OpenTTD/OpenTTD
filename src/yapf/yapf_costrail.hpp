@@ -295,6 +295,16 @@ public:
 					segment_cost = segment.m_cost;
 					/* We know also the reason why the segment ends. */
 					end_segment_reason = segment.m_end_segment_reason;
+					/* We will need also some information about the last signal (if it was red). */
+					if (segment.m_last_signal_tile != INVALID_TILE) {
+						assert(HasSignalOnTrackdir(segment.m_last_signal_tile, segment.m_last_signal_td));
+						SignalState sig_state = GetSignalStateByTrackdir(segment.m_last_signal_tile, segment.m_last_signal_td);
+						bool is_red = (sig_state == SIGNAL_STATE_RED);
+						n.flags_u.flags_s.m_last_signal_was_red = is_red;
+						if (is_red) {
+							n.m_last_red_signal_type = GetSignalType(segment.m_last_signal_tile, TrackdirToTrack(segment.m_last_signal_td));
+						}
+					}
 					/* No further calculation needed. */
 					cur = TILE(n.GetLastTile(), n.GetLastTrackdir());
 					break;
