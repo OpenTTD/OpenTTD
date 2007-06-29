@@ -64,8 +64,8 @@ public:
 	/** indexed access (const) */
 	FORCEINLINE const Titem& operator [] (int idx) const
 	{
-		CSubArray& sa = m_a[idx / Tblock_size];
-		Titem& item   = sa [idx % Tblock_size];
+		const CSubArray& sa = m_a[idx / Tblock_size];
+		const Titem& item   = sa [idx % Tblock_size];
 		return item;
 	}
 };
