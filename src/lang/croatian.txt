@@ -1516,7 +1516,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :pogrešna reviz
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :ime se već koristi
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :pogrešna zaporka
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :pogrešan igrač-id u DoCommand
-STR_NETWORK_ERR_CLIENT_KICKED                                   :izbačen{G "" a o) od strane poslužitelja
+STR_NETWORK_ERR_CLIENT_KICKED                                   :izbačen{G "" a o} od strane poslužitelja
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :je pokuša{G o la lo} varati
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :poslužitelj je pun
 ############ End of leave-in-this-order
@@ -2434,7 +2434,7 @@ STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Sup
 STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Bus
 STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Bus
 STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Bus
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :{MightyMover Poštanski Kamion
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover Poštanski Kamion
 STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught Poštanski Kamion
 STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzwow Poštanski Kamion
 STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe Tanker Ulja
