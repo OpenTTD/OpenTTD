@@ -315,16 +315,16 @@ STR_0151_MAP_OF_WORLD                                           :Harta lumii
 STR_0152_TOWN_DIRECTORY                                         :Lista cu orase
 STR_0153_SUBSIDIES                                              :Subventii
 
-STR_UNITS_IMPERIAL                                              :Imperial
-STR_UNITS_METRIC                                                :Metric
+STR_UNITS_IMPERIAL                                              :Imperiale
+STR_UNITS_METRIC                                                :Metrice
 STR_UNITS_SI                                                    :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cp
+STR_UNITS_POWER_METRIC                                          :{COMMA}cp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
@@ -343,8 +343,8 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galoane
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litri{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} tone fortã
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ livre-forţă
+STR_UNITS_FORCE_METRIC                                          :{COMMA} tone-forţă
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -472,7 +472,7 @@ STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Aratã i
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Aratã rutele de transport pe hartã
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Aratã vegetatia pe hartã
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Aratã proprietãtile pe hartã
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Activeazã/Dezactiveazã afisarea numelor oraselor pe hartã
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Activeazã/Dezactivează afişarea numelor oraşelor pe hartă
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profit anul acesta: {CURRENCY} (anul trecut: {CURRENCY})
 
 ############ range for service numbers starts
@@ -814,7 +814,7 @@ STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiaza 
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Importa din ecran
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Importa locatia acestui ecran in ecranul principal
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unităţi monetare
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unitate monetară
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Alege unitatea monetară
 STR_MEASURING_UNITS                                             :{BLACK}Unităţi de măsură
@@ -902,35 +902,35 @@ STR_TOWNNAME_ITALIAN                                            :Italian
 STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of townname region
 
-STR_CURR_GBP                                                    :Lira sterlina (£)
+STR_CURR_GBP                                                    :Liră sterlină (£)
 STR_CURR_USD                                                    :Dolar ($)
 STR_CURR_EUR                                                    :Euro (€)
 STR_CURR_YEN                                                    :Yen japonez (¥)
-STR_CURR_ATS                                                    :Siling austriac (ATS)
+STR_CURR_ATS                                                    :Şiling austriac (ATS)
 STR_CURR_BEF                                                    :Franc belgian (BEF)
-STR_CURR_CHF                                                    :Franc elvetian (CHF)
-STR_CURR_CZK                                                    :Coroanã cehã (CZK)
-STR_CURR_DEM                                                    :Marca germana (DEM)
-STR_CURR_DKK                                                    :Coroanã danezã (DKK)
+STR_CURR_CHF                                                    :Franc elveţian (CHF)
+STR_CURR_CZK                                                    :Coroană cehă (CZK)
+STR_CURR_DEM                                                    :Marcă germană (DEM)
+STR_CURR_DKK                                                    :Coroană daneză (DKK)
 STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Marcã finlandezã (FIM)
-STR_CURR_FRF                                                    :Franc (FRF)
-STR_CURR_GRD                                                    :Drahmã greceascã (GRD)
-STR_CURR_HUF                                                    :Forint (HUF)
-STR_CURR_ISK                                                    :Coroanã islandezã (ISK)
-STR_CURR_ITL                                                    :Lirã italianã (ITL)
+STR_CURR_FIM                                                    :Marcă finlandeză (FIM)
+STR_CURR_FRF                                                    :Franc francez (FRF)
+STR_CURR_GRD                                                    :Drahmă grecească (GRD)
+STR_CURR_HUF                                                    :Forinţ unguresc (HUF)
+STR_CURR_ISK                                                    :Coroană islandeză (ISK)
+STR_CURR_ITL                                                    :Liră italiană (ITL)
 STR_CURR_NLG                                                    :Gulden olandez (NLG)
-STR_CURR_NOK                                                    :Coroanã norvegianã (NOK)
-STR_CURR_PLN                                                    :Zlot (PLN)
+STR_CURR_NOK                                                    :Coroană norvegiană (NOK)
+STR_CURR_PLN                                                    :Zlot polonez (PLN)
 STR_CURR_ROL                                                    :Leu românesc (ROL)
-STR_CURR_RUR                                                    :Rublã ruseascã (RUR)
+STR_CURR_RUR                                                    :Rublă rusească (RUR)
 STR_CURR_SIT                                                    :Tolar Sloven (SIT)
-STR_CURR_SEK                                                    :Coroanã suedezã (SEK)
-STR_CURR_YTL                                                    :Lira Turceasca (YTL)
-STR_CURR_SKK                                                    :Coroana Slovaca (SKK)
+STR_CURR_SEK                                                    :Coroană suedeză (SEK)
+STR_CURR_YTL                                                    :Liră Turcească (YTL)
+STR_CURR_SKK                                                    :Coroană Slovacă (SKK)
 STR_CURR_BRR                                                    :Real Brazilian (BRL)
 
-STR_CURR_CUSTOM                                                 :Propriu...
+STR_CURR_CUSTOM                                                 :Personalizată...
 
 STR_OPTIONS_LANG                                                :{BLACK}Limba
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2606,17 +2606,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren în
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Mergi la {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Mergi la {STATION} (Transferă şi preia încărcătura)
+STR_8807_GO_TO_TRANSFER                                         :Mergi la {STATION} (Preia încărcătura pentru transfer)
 STR_8808_GO_TO_UNLOAD                                           :Mergi la {STATION} (Descarcă)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mergi la {STATION} (Transferă şi lasă descărcat)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mergi la {STATION} (Descarcă încărcătura pentru transfer)
 STR_880A_GO_TO_LOAD                                             :Mergi la {STATION} (Încarcă)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Mergi la {STATION} (Transferă şi încarcă 100%)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Mergi la {STATION} (Aşteaptă 100% încărcătură pentru transfer)
 STR_880C_GO_NON_STOP_TO                                         :Mergi fără oprire la {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Mergi non-stop la {STATION} (Transferã si ia încãrcãtura)
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Mergi fără oprire la {STATION} (Preia încărcătura pentru transfer)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Mergi fără oprire la {STATION} (Descarcă)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Mergi fără oprire la {STATION} (Transferă şi lasă descărcat)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Mergi fără oprire la {STATION} (Descarcă încărcătura pentru transfer)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Mergi fără oprire la {STATION} (Încarcă)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Mergi fără oprire la {STATION} (Transferă şi încarcă 100%)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Mergi fără oprire la {STATION} (Aşteaptă 100% încărcătură pentru transfer)
 STR_GO_TO_TRAIN_DEPOT                                           :Mergi la depoul {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service la Depoul {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mergi fără oprire la Depoul {TOWN}
@@ -2752,7 +2752,7 @@ STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nu pot s
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Redenumeste modelul vehiculului feroviar
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nu pot redenumi modelul acestui vehicul...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Comanda selectatã forteazã vehiculul sã arunce încãrcãtura
-STR_886F_TRANSFER                                               :{BLACK}Transferã
+STR_886F_TRANSFER                                               :{BLACK}Transferă
 STR_CLEAR_TIME                                                  :{BLACK}Curata timp
 STR_RESET_LATENESS                                              :{BLACK}Reinitializeaza contorul de intarziere
 
@@ -3084,15 +3084,15 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Fisier(e
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fisierele GRF lipsa au fost dezactivate
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fisierele GRF lipsa pentru permiterea incarcarii jocului
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Moneda proprie
+STR_CURRENCY_WINDOW                                             :{WHITE}Monedă proprie
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufix:
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Adera la Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Adera la Euro: {ORANGE}niciodata
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Aderă la Euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Aderă la Euro: {ORANGE}niciodată
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previzualizare: {ORANGE}{CURRENCY}
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Schimba un parametru al monedei proprii
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Schimbă un parametru al monedei proprii
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3357,5 +3357,7 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Numele trebuie să fie unic
 
 ########

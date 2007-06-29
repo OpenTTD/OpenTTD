@@ -389,6 +389,7 @@ STR_SORT_BY_VALUE                                               :Vrijednost
 STR_SORT_BY_FACILITY                                            :Vrsta stanice
 STR_SORT_BY_WAITING                                             :Vrijednost tereta koji čeka
 STR_SORT_BY_RATING_MAX                                          :Ocjena tereta
+STR_ENGINE_SORT_ENGINE_ID                                       :MotorID(standardno sortiranje)
 STR_ENGINE_SORT_COST                                            :Trošak
 STR_ENGINE_SORT_POWER                                           :Snaga
 STR_ENGINE_SORT_INTRO_DATE                                      :Datum početka
@@ -465,6 +466,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Uništi 
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Snizi vrh kvadrata zemlje
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Povisi vrh kvadrata zemlje
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Pomična traka - lista gore/dolje
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Klizač - pomiči listu lijevo/desno
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Prikaži obrise zemlje na karti
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Prikaži vozila na karti
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Prikaži industrije na karti
@@ -494,7 +496,7 @@ STR_01A7_OWNER                                                  :{BLACK}Vlasnik:
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Područna nadležnost: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nijedan/Nitko/Ništa
 STR_01AA_NAME                                                   :{BLACK}Ime
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1.
@@ -576,6 +578,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Odaberi 
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Obriši aktivni program (samo Proizvoljno 1 ili Proizvoljno 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Spremi glazbene postavke
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klikni na glazbenu traku za dodavanje u aktivni program (samo Proizvoljno 1 ili Proizvoljno 2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikni na glazbenu traku da ju makneš iz trenutnog programa (samo Proizvoljno1 ili Proizvoljno2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Ukluči/isključi miješanje programa
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Prikaži prozor za izbor glazbenih traka
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Pritisni na uslugu za centriranje pogleda na industriju/grad
@@ -591,6 +594,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak prvog vozila u stanicu suparnika
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nesreće / katastrofe
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Podaci vezani za tvrtku
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Otvaranje / zatvaranje industrija
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Promjene u gospodarstvu
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Savjet / informacija o vozilima igrača
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vozila
@@ -601,6 +605,7 @@ STR_MESSAGES_ALL                                                :{YELLOW}Postavi
 STR_MESSAGE_SOUND                                               :{YELLOW} Pusti zvuk za sve skraćene novinske poruke
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...predaleko od prethodnog odredišta
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Najbolje tvrtke koje su dosigle razinu {NUM}{}({STRING})
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tablica kompanija u {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Privrednik
 STR_0214_ENTREPRENEUR                                           :Poduzetnik
@@ -725,7 +730,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Stavi st
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Postavi svjetionik
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Postavi odašiljač
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Odredi pustinjsko područje.{}Pritisni i drži CTRL za uklanjanje
-STR_CREATE_LAKE                                                 :
+STR_CREATE_LAKE                                                 :{BLACK}Odredi vodeno područje.{}Napravi kanal, osim ako CTRL nije pritisnut na morskom nivou, kada će umjesto toga potopiti okolna područja
 STR_0290_DELETE                                                 :{BLACK}Obriši
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Obriši ovaj grad u cjelosti
 STR_0292_SAVE_SCENARIO                                          :Spremi scenarij
@@ -749,6 +754,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...oba k
 STR_02A1_SMALL                                                  :{BLACK}Malo
 STR_02A2_MEDIUM                                                 :{BLACK}Srednje
 STR_02A3_LARGE                                                  :{BLACK}Veliko
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Grad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izaberi veličinu grada
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Veličina grada:
 
@@ -773,6 +779,7 @@ STR_02C3_GAME_OPTIONS                                           :Opcije igre
 STR_02C5_DIFFICULTY_SETTINGS                                    :Postavke težine
 STR_02C7_CONFIG_PATCHES                                         :Konfiguriraj zakrpe
 STR_NEWGRF_SETTINGS                                             :Postavke NewGRF-a
+STR_TRANSPARENCY_OPTIONS                                        :Opcije prozirnosti
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Prikazana imena gradova
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Prikazana imena stanica
@@ -800,7 +807,6 @@ STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Karta svijeta
 STR_EXTRA_VIEW_PORT                                             :Dodatni pogled
 STR_SIGN_LIST                                                   :Popis znakova
-STR_TRANSPARENCY_OPTIONS                                        :Opcije prozirnosti
 STR_02DF_TOWN_DIRECTORY                                         :Direktorij gradova
 STR_TOWN_POPULATION                                             :{BLACK}Svjetska populacija: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled {COMMA}
@@ -1016,6 +1022,7 @@ STR_CONFIG_PATCHES_OFF                                          :Isključeno
 STR_CONFIG_PATCHES_ON                                           :Uključeno
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Prikaži brzinu vozila u statusnoj traci: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Dozvoli gradnju na nagibima i obalama: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Dozvoli realističnije veličine područja zahvaćanja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Dopusti rušenje više gradskih cesta, mostova itd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Omogući sastavljanje vrlo dugačkih vlakova: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Omogući realno ubrzanje za vlakove: {ORANGE}{STRING}
@@ -1034,12 +1041,20 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Moguće
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Uvijek prikaži dugi datum u statusnoj traci: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Prikaži znakove na strani po kojoj se vozi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Prikaži financijski prozor na kraju godine: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch kompatibilno nonstop rukovanje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Nizanje cestovnih vozila(sa kvantum efektima): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pomiči prozor kada je miš na rubu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Dozvoli potkupljivanje gradskih vlasti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Neujednačene stanice: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo globalno pronalaženje puteva (NPF, isključuje NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Težinski množitelj za teret za simulaciju teških vlakova: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dozvoli drive-through cestovne prepreke na cestama pod vlašću grada: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Dozvoli izradu spojenih stanica: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Uvjek omogući male zračne luke: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Upozori kad se vlak izgubi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Pogledaj naređenja vozila: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, no isključi zaustavljena vozila
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :od svih vozila
@@ -1052,9 +1067,11 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Trajanj
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Prikaži broj stanovnika u traci sa imenom grada: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevidljivo drveće (sa prozirnim građevinama): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generator zemlje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Izvorno
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimalna udaljenost Rafinerija nafte od ruba {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Visina linije snijega: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Grubost terena (samo TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Vrlo glatko
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Glatko
@@ -1064,22 +1081,40 @@ STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algorit
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nijedan
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Izvorno
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Unaprijeđeno
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotacija visinske mape: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Obrnuto smjeru kazaljke na satu
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :U smjeru kazaljke na satu
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visinski nivo koji ravna mapa u scenariju dobiva: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimalna raširenost stanice: {ORANGE}{STRING} {RED}Pozor: Visoka vrijednost usporuje igru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatski servisiraj helikoptere na heliodromima: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Poveži alatnu traku za krajolik sa alatnim trakama za željeznicu/ceste/vodu/zračne luke: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Okreni smjer pomicanja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Glatko skrolanje kroz mini pogled: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Pokaži mjerni opis kod korištenja raznih alata za izgradnju: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Pokaži tvrtkine livreje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ništa
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Vlastita tvrtka
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Sve tvrtke
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferiraj timski chat sa <ENTER>:{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funkcija kotačića: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zumiraj kartu
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Skrolaj kartom
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Isključeno
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Brzina kotačića za skrolanje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatski pauziraj kad pokrećeš novu igru: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Koristi naprednu listu vozila: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Koristi indikatore utovara: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Uključi raspored za vozila: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokaži raspored u otkucajima radije nego u danima: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Zadana vrsta tračnica (poslije nove igre/podizanja igre): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normalne Tračnice
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrificirane Tračnice
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monopruga
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Prvi dostupan
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Zadnji dostupan
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Najčešće korišten
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maksimalan broj vlakova po igraču: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalan broj cestovnih vozila po igraču: {ORANGE}{STRING}
@@ -1102,6 +1137,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Pretpos
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Pretpostavljeni period servisiranja aviona: {ORANGE}onemogućeno
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Pretpostavljeni period servisiranja brodova: {ORANGE}{STRING} dana/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Pretpostavljeni period servisiranja brodova: {ORANGE}onemogućeno
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Isključi servisiranje kada su kvarovi postavljeni na nula: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Uključi ograničenje brzine za vagone: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Onemogući električne tračnice: {ORANGE}{STRING}
 
@@ -1110,8 +1146,11 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Početn
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Završna godina: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Uključi tečnu ekonomiju (više manjih izazova)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Dopusti kupovanje udjela drugih tvrtki
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Kod povlačenja, postavi signale svakih/svaku; {ORANGE}{STRING}pločica/u
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatski izgradi semafore prije: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Izgled grada "bezviše cesta" nije valjan u editoru scenarija
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Odaberi grad-cesta raspored: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :nema više cesta
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :inicijalno
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bolje ceste
@@ -1122,12 +1161,16 @@ STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Položa
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Lijevo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Sredina
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Desno
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Radijus hvazanja  prozora: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus hvatanja prozora: {ORANGE}isključen
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Brzina rasta gradova: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ništa
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Sporo
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normalno
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Brzo
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Vrlo brzo
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporcije mjesta koja će postati gradovi: {ORANGE}1 u {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporcije mjesta koja će postati gradovi: {ORANGE} Ništa
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Sučelje
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Izgradnja
@@ -1141,12 +1184,14 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Promjeni vrijednost postavke
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Neki ili svi od zadanih servisnih intervala ispod nisu kompatibilni sa odabranim postavkama! 5-90% ili 30-800 dana su valjane vrijednosti
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Koristi YAPF za brodove: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Koristi YAPF za cestovna vozila: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Koristi YAPF za vlakove: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Umjereni krajolik
 STR_SUB_ARCTIC_LANDSCAPE                                        :Pod-arktički krajolik
+STR_SUB_TROPICAL_LANDSCAPE                                      :Sub-tropski krajolik
 STR_TOYLAND_LANDSCAPE                                           :Toyland krajolik
 
 STR_CHEATS                                                      :{WHITE}Varanje
@@ -1208,6 +1253,9 @@ STR_CANT_BUILD_CANALS                                           :{WHITE}Ovdje ne
 STR_BUILD_CANALS_TIP                                            :{BLACK}Izgradi kanale.
 STR_LANDINFO_CANAL                                              :Kanal
 
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Ne mogu graditi brane ovdje...
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Izgradi brane
+STR_LANDINFO_LOCK                                               :Brana
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...plutača je u uporabi!
 
@@ -1215,6 +1263,7 @@ STR_LANDINFO_COORDS                                             :{BLACK}Koordina
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Ne možeš ukloniti dio stanice...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Ne možeš pretvoriti vrstu tračnica ovdje...
+STR_CONVERT_RAIL_TIP                                            :{BLACK}Konvertiraj/Nadogradi vrstu tračnica
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Povucite lokomotivu na ovo mjesto da bi prodaoli cijeli vlak
 
@@ -1577,6 +1626,13 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Željezničke t
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Željezničke tračnice s prethodno postavljenim znakovima
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Željezničke tračnice s izlaznim znakovima
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Željezničke tračnice s kombo znakovima
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Tračnice sa normalnim i pre-signalima
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Tračnice sa normalnim i izlaznim-signalima
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tračnice sa normalnim i kombiniranim-signalima
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tračnice sa pre- i izlaznim signalima
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tračnice sa pre- i kombiniranim signalima
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tračnice sa izlaznim i kombiniranim signalima
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Morati prvo maknuti željezničku stanicu
 
 
 
@@ -1584,27 +1640,48 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Željezničke t
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Moraš prvo ukloniti cestu
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Cestovni radovi u tijeku
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Izgradnja ceste
+STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Konstruiranje Tramvaja
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Izaberi cestovni most
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...jednosmjerne ceste ne mogu imati raskršća
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Ovdje ne možeš graditi cestu...
+STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Ne mogu izgraditi tramvaj ovdje...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Odavde ne možeš maknuti cestu...
+STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Ne mogu maknuti tramvaj odavde...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Smjer cestovnog spremišta
+STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Smjer Tramvajskog Skladišta
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ovdje ne možeš izgraditi spremište cestovnih vozila...
+STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Ne mogu izgraditi skladište tramvaja ovdje
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nije moguće izgraditi autobusnu stanicu...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nije moguće izgraditi kamionski terminal...
+STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Ne mogu izgraditi tramvajsku stanicu za putnike...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nemogu izgraditi teretnu tramvajsku stanicu...
 STR_180A_ROAD_CONSTRUCTION                                      :Izgradnja ceste
+STR_180A_TRAMWAY_CONSTRUCTION                                   :Konstruiranje tramvaja
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Izgradi dio ceste
+STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Izgradi dio tramvaja
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Izgradi spremište cestovnih vozila (za izgradnju i servisiranje vozila)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Izgradi skladište za tramvajska vozila(za izgradnju i servisiranje vozila)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Izgradi autobusnu stanicu
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Izgradi pretovarni kamionski terminal
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Izgradi putničku tramvajsku stanicu
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Izgradi teretnu tramvajsku stanicu
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Izgradi cestovni most
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Izgradi tramvajski most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Izgradi cestovni tunel
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Izgradi tramvajski tunel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Prebacuj izgradnju/uklanjanje ceste
+STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Uključi izgradnju/brisanje za konstruiranje tramvaja
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Izaberi smjer spremišta cestovnih vozila
+STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Odaberi smjer skladišta za tramvaj
 STR_1814_ROAD                                                   :Cesta
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta sa semaforima
 STR_1816_TREE_LINED_ROAD                                        :Cesta s tri trake
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Spremište cestovnih vozila
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Prijelaz ceste preko željezničke pruge
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Ne mogu maknuti autobusnu stanicu...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Ne mogu maknuti kamionsku stanicu...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Ne mogu maknuti putničku tramvajsku stanicu...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Ne mogu maknuti teretnu tramvajsku stanicu...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Gradovi
@@ -1612,7 +1689,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Građevina mora prvo biti srušena
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Stanovništvo: {ORANGE}{COMMA}{BLACK}  Kuće: {ORANGE}{COMMA}
@@ -1645,7 +1722,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Lokalna 
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Prikaži informacije o lokalnoj samoupravi
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Lokalna samouprava {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ocjene prijevoznih tvrtki:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencije
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponuđene subvencije za pružanje usluga:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} od {STRING} do {STRING}
@@ -1716,7 +1793,7 @@ STR_2802_TREES                                                  :{WHITE}Drveće
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...ovdje već postoji drvo
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...neprikladno mjesto
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Ovdje ne možeš posaditi drvo...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...previše znakova
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Ovdje ne možeš postaviti znak...
 STR_280A_SIGN                                                   :Znak
@@ -1771,6 +1848,8 @@ STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Smjer au
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Smjer kamionskog terminala
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Prvo moraš uništiti autobusnu stanicu
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Prvo moraš uništiti kamionski terminal
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Morate prvo maknuti putničku tramvajsku stanicu
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Morate prvo maknuti teretnu tramvajsku stanicu
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stanic{P a e a}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ništa -
@@ -1782,6 +1861,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Izaberi 
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Izaberi dužinu željezničke stanice
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Izaberi smjer autobusne stanice
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Izaberi smjer kamionskog terminala
+STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Odaberite smjer putničke tramvajske stanice
+STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Odaberite smjer teretne tramvajske stanice
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centriraj glavni pogled na lokaciju stanice
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Pokaži ocjene stanice
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Promijeni ime stanice
@@ -1819,6 +1900,7 @@ STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Obala ili riječni nasip
 STR_3806_SHIP_DEPOT                                             :Brodsko spremište
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Ne možeš graditi na vodi
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Morate prvo maknuti kanal
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Spremi igru
@@ -1831,6 +1913,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ne mogu 
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spremanje igre nije uspjelo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Ne mogu obrisati datoteku
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Učitavanje igre nije uspjelo{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna greška: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Pokvarena spremljena igra - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Igra je spremljena sa novijom verzijom
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ne mogu pročitati datoteku
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Ne mogu pisati u datoteku
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Popis diskova, mapa i spremljenih datoteka
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Trenutno odabrano ime za spremanje igre
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Obriši trenutno odabranu spremljenu igru
@@ -2001,7 +2088,7 @@ STR_SV_STNAME_UPPER                                             :Gornji {STRING}
 STR_SV_STNAME_LOWER                                             :Donji {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliodrom
 STR_SV_STNAME_FOREST                                            :{STRING} Šuma
-
+STR_SV_STNAME_FALLBACK                                          :{STRING}Stanica #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2038,6 +2125,7 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Stav gr
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Ništa
+STR_NUM_VERY_LOW                                                :Vrlo nisko
 STR_6816_LOW                                                    :Nisko
 STR_6817_NORMAL                                                 :Normalno
 STR_6818_HIGH                                                   :Visoko
@@ -2080,7 +2168,7 @@ STR_683B_HOSTILE                                                :Agresivan
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Igrač {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Novo lice
 STR_7005_COLOR_SCHEME                                           :{BLACK}Boja
@@ -2092,7 +2180,7 @@ STR_700A_COMPANY_NAME                                           :Ime tvrtke
 STR_700B_PRESIDENT_S_NAME                                       :Ime direktora
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ime tvrtke ne može se promijeniti...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Ne možeš promijeniti ime direktora...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Financije {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Financije {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Izdatci/Prihodi
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Građenje
@@ -2111,7 +2199,7 @@ STR_701D_OTHER                                                  :{GOLD}Ostalo
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Ukupno:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf prihoda
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -2346,6 +2434,86 @@ STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Sup
 STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Bus
 STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Bus
 STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Bus
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :{MightyMover Poštanski Kamion
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught Poštanski Kamion
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzwow Poštanski Kamion
+STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe Tanker Ulja
+STR_8085_FOSTER_OIL_TANKER                                      :Foster Tanker Ulja
+STR_8086_PERRY_OIL_TANKER                                       :Perry Tanker Ulja
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Tallbot Stočni Kamion
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl Stočni Kamion
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Stočni Kamion
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh Robni Kamion
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead Robni Kamion
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss Robni Kamion
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford Kamion za žitarice
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas Kamion za žitarice
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss Kamion za žitarice
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Kamion za drvo
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster Kamion za drvo
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Kamion za Drvo
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS Kamion za željeznu rudu
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl Kamion za željezu rudu
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy Kamion za željeznu rudu
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh Kamion za čelik
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl Kamion za čelik
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling Kamion za čelik
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh Blindirani Kamion
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Blindirani Kamion
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster Blindirani Kamion
+STR_809C_FOSTER_FOOD_VAN                                        :Foster Kamion za hranu
+STR_809D_PERRY_FOOD_VAN                                         :Perry Kamion za hranu
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Kamion za hranu
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl Kamion za papir
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh Kamion za papir
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS Kamion za papir
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Kamion za bakrenu rudu
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Kamion za bakrenu rudu
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Kamion za bakrenu rudu
+STR_80A5_UHL_WATER_TANKER                                       :Uhl Tanker Voda
+STR_80A6_BALOGH_WATER_TANKER                                    :Baloght Tanker Voda
+STR_80A7_MPS_WATER_TANKER                                       :MPS Tanker Voda
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balog Kamion za voće
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Kamion za voće
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Kamion za voće
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Kamion za gumu
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Kamion za gumu
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Kamion za gumu
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Kamion za šećer
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Kamion za šećer
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzwow Kamion za šećer
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Cola Kamion
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Cola Kamion
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzwow Cola Kamion
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MighyMover Kamion za šećernu vatu
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Kamion za šećernu vatu
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzwow Kamion za šećernu vatu
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover Toffee Kamion
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught Toffee Kamion
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzwow Toffee Kamion
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MigtyMover Kamion za igračke
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught Kamion za igračke
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzwow Kamion za igračke
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover Kamona za slatkiše
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught Kamion za slatkiše
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzwow Kamion za slatkiše
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover Kamiona za baterije
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught Kamion za baterije
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzwwow Kamion za baterije
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover Kamion za gazirana pića
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught Kamion za gazirana pića
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzwow Kamion za gazirana pića
+STR_80CC_MPS_OIL_TANKER                                         :MPS Tanker Ulja
+STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. Tanker Ulja
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Trajekt
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Trajekt
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Lebdjelica
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Trajekt
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Trajekt
+STR_80D3_YATE_CARGO_SHIP                                        :Yate Teretni Brod
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell Teretni Brod
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover Teretni Brod
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaught Teretni Brod
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
 STR_80D9_FFP_DART                                               :FFP Dart
@@ -2418,8 +2586,18 @@ STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Idi non-stop do
 STR_GO_TO_TRAIN_DEPOT                                           :Idi do {TOWN} spremište vlakova
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Servisiraj u {TOWN} spremištu vlakova
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idi non-stop do {TOWN} spremišta vlakova
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Servisiraj non-stop u {TOWN} Željezničkom Skladištu
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (bez rasporeda)
+STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
+STR_TIMETABLE_STAY_FOR                                          :i boravak za {STRING}
 
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE} Krećem za {TOWN} Željezničko Skladište
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE} Krećem za {TOWN} Željezničko Skladište, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servis u {TOWN} Željezničkom Skladištu
+
+STR_INVALID_ORDER                                               :{RED} (Neispravna naredba)
 
 STR_UNKNOWN_DESTINATION                                         :nepoznato odredište
 STR_8812_EMPTY                                                  :{LTBLUE}Prazan
@@ -2431,6 +2609,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak pre
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlakovi mogu biti izmjenjeni jedino kad su zaustavljeni u spremištu
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova željeznička vozila
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nova vozila električne pruge
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nova monorail vozila
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nova maglev vozila
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Željeznička vozila
@@ -2438,8 +2617,10 @@ STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Željezn
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Izgradi vozilo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloniraj vozilo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Ovo će izgraditi kopiju cestovnog vozila. Control-clik će dijeliti naredbe
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Ovo će napraviti kopiju cestovnog vozila. Kliknite na ovu tipku i onda na cestovno vozilo unutar ili izvan skladišta. CTRL-klik će podijeliti naredbe
 STR_CLONE_TRAIN                                                 :{BLACK}Kloniraj vlak
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Ovo će izgraditi kopiju vlaka uključujući sve vagone. Control-klik će dijeliti naredbe
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Ovo će napraviti kopiju vlaka uključujući vagone. Kliknite na ovu tipku i onda na vlak unutar ili izvan skladišta. CTRL-klik će podijeliti naredbe
 STR_8820_RENAME                                                 :{BLACK}Preimenuj
 STR_8823_SKIP                                                   :{BLACK}Preskoči
 STR_8824_DELETE                                                 :{BLACK}Obriši
@@ -2450,20 +2631,27 @@ STR_8828_UNLOAD                                                 :{BLACK}Istovar
 STR_REFIT                                                       :{BLACK}Prenamijeni
 STR_REFIT_TIP                                                   :{BLACK}Odaberi tip tereta za prenamijeniti u ovoj narudžbi. CTRL-klik za brisanje uputa za prenamijenu
 STR_REFIT_ORDER                                                 :(Prenamijeni u {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK} Raspored
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Prebacivanje na pogled rasporeda
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Naredbe)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Kraj naredbi - -
+STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Servis
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ne mogu izgraditi željezničko vozilo...
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Izgrađen: {LTBLUE}{NUM}{BLACK} Vrijednost: {LTBLUE}{CURRENCY}
-STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Vrijednost: {LTBLUE}{CURRENCY}
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Izgrađen: {LTBLUE}{NUM}{BLACK} Vrijednost: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Vrijednost: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Utovar / Istovar
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti zaustavljan unutar skladišta
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Ne mogu poslati vlak u spremište...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nema mjesta za nove naredbe
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Previše naredbi
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ne možeš ubaciti novu naredbu...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ne možeš obrisati ovu naredbu...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ne možeš izmjeniti ovu naredbu...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Ne mogu pomaknuti ovu naredbu...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Ne mohu preskočiti trenutačnu naredbu...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nwe mogu skočiti na odabranu naredbu...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ne možeš pomaknuti vozilo...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Stražnja lokomotiva će uvijek pratiti svog prednjeg dvojnika
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2475,12 +2663,35 @@ STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Servisni
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlakovi - klikni na vlak za informacije
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Izgradi/kupi nove vlakove (zahtijeva spremište vlakova)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlakovi - klikni na vlak za informacije., vuci vozilo kako bi dodao/oduzeo od vlaka
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Izgradi novi vlak
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Povuci vlak ovdje za prodaju
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centriraj glavni pogled na lokaciju željezničkog skladišta
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista za odabiranje vlakova - klikni na vlak za informacije
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Izgradi označeni vlak
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Preimenuj tip vlaka
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Akcije trenutnog vlaka - klikni za zaustavljanje/pokretanje vlaka
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Pokaži naredbe vlaka
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centriraj glavni pogled na lokaciju vlaka
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Pošalji vlak u skladište. CTRL+klik će ga samo servisirati
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Natjeraj vlak da nastavi bez čekanja za odobrenjem signala
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Okreni smjer vlaka
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Prikaži detalje vlaka
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Povećaj servisni interval
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Smanji servisni interval
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaži detalje prevoženog tereta
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaži detalje vagona
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Pokaži kapacitet svakog vagona
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Pokaži potpuni kapacitet vlaka, podijeljen prema tipu tereta
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista naredbi - klikni na naredbu da ju označiš. CTRL + klik klizi na stanicu
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutnu naredbu, i pokreni slijedeću. CTRL + klik preskače na odabranu naredbu
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Obriši označenu naredbu
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Napravi označenu naredbu da bude non-stop
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Umetni novu naredbu prije odabrane naredbe, ili dodaj na kraj liste
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Napravi da odabrana naredba natjera vozilo da čeka na potpuni utovar
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Napravi da označena naredba natjera vozilo na istovar
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Raspored - klikni na naredbu da ju označiš.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Promijeni količinu vremena koju bi označena naredba trebala uzeti
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Obriši potrebno vrijeme za označenu naredbu
 STR_SERVICE_HINT                                                :{BLACK}Preskoči ovu narudžbu osim ako servis nije potreban
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Trošak: {CURRENCY} Težina: {WEIGHT_S}{}Brzina: {VELOCITY} Snaga: {POWER}{}Troškovi održavanja: {CURRENCY}/god{}Kapacitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokvaren
@@ -2497,11 +2708,31 @@ STR_8867_NAME_TRAIN                                             :{BLACK}Imenuj v
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vlak se sudario!{}{COMMA} poginulih u eksploziji nakon sudara
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ne mogu promijeniti smjer vlaka...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenuj vrstu vlaka
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ne mogu preimenovati tip vagona...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Naprvi da označeni red prisili vozilo da izbaci teret
 STR_886F_TRANSFER                                               :{BLACK}Transfer
+STR_CLEAR_TIME                                                  :{BLACK}Obriši Vrijeme
+STR_RESET_LATENESS                                              :{BLACK}Poništi Brojač Kašnjenja
 
 STR_TRAIN_STOPPING                                              :{RED}Zaustavljam
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zaustavljam, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Nekompatibilan tip tračnica
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novi {STRING} je sada dostupan!
+STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novi {STRING} je sada dostupan! - {ENGINE}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Ne mogu rasporediti vozilo...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozila mogu čekati samo na stanicama.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Ovo vozilo se ne zaustavlja na ovoj stanici.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Promijeni Vrijeme
+STR_TIMETABLE_STATUS_ON_TIME                                    :Ovo vozilo vozi na vrijeme
+STR_TIMETABLE_STATUS_LATE                                       :Ovo vozilo trenutačno {STRING} kasni
+STR_TIMETABLE_STATUS_EARLY                                      :Ovo vozilo je stiglo {STRING} ranije
+STR_TIMETABLE_TOTAL_TIME                                        :Ovaj raspored će trebati {STRING} za završetak
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :OVaj raspored će trebati najmanje {STRING} za završetak (nije sve raspoređeno)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatsko punjenje
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Napuni raspored automatski sa vrijednostima iz prvog puta
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestovno vozilo na putu
@@ -2543,12 +2774,15 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrira
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Popis cestovnih vozila - pritisni na vozilo za informacije
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Izgradi označeno cestovno vozilo
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Trošak: {CURRENCY}{}Brzina: {VELOCITY}{}Trošak uporabe: {CURRENCY}/god{}Kapacitet: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitet: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Imenuj cestovno vozilo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ne mogu imenovati cestovno vozilo...
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Imenuj cestovno vozilo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi bus stiže na {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi kamion stiže na {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Građani slave . . .{}Prvi teretni vlak je stigao u {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Sudar cestovnog vozila!{}Vozač poginuo u eksploziji nakon sudara s vlakom
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Sudar cestovnog vozila!{}{COMMA} poginulih u eksploziji nakon sudara s vlakom
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Ne mogu natjerati vozilo da se okrene...
@@ -2577,6 +2811,7 @@ STR_9808_NEW_SHIPS                                              :{WHITE}Novi bro
 STR_9809_BUILD_SHIP                                             :{BLACK}Izgradi brod
 STR_CLONE_SHIP                                                  :{BLACK}Kloniraj brod
 STR_CLONE_SHIP_INFO                                             :{BLACK}Ovo će izgradi kopiju broda. Control-klik će dijeliti naredbe
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Ovo će napraviti kopiju broda. Kliknite na ovu tipku i onda na brod unutar ili izvan skladišta. CTRL-klik će podijeliti naredbe
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Brod mora biti zaustavljen u spremištu
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Ne mogu prodati brod...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Ne mogu izgraditi brod...
@@ -2663,12 +2898,17 @@ STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Zrakoplo
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Ne možeš prodati zrakoplov...
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Izgradi zračnu luku
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Zrakoplov - klikni na zrakoplov za informacije
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Izgradi novi zrakoplov(potreban je aerodrom sa hangarom)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Zrakoplov - kliknite na zrakoplov za informacije
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Izgradi novi zrakoplov
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Povuci zrakoplov ovdje kako bi ga prodao
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centriraj glavni pogled na lokaciju hangara
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Popis zrakoplova - klini na zrakoplov za informacije
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Izgradi označeni zrakoplov
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Trenutka radnja zrakoplova - kliknite ovdje za zaustavljanje/pokretanje zrakoplova
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Prikaži naredbe zrakoplova
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK} Centrirajte glavni prozor na lokaciju zrakoplova
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Pošaljite avion u hangar. CTRL + klik će ga samo servisirati
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Prikaži detalje zrakoplova
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Imenuj zrakoplov
@@ -2690,7 +2930,10 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prenamij
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Označi vrstu tereta za prijenos:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Novi kapacitet: {GOLD}{STRING}{}{BLACK}Trošak prenamijene: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ne mogu prenamijeniti zrakoplov...
+STR_GO_TO_AIRPORT_HANGAR                                        :Idi u {STATION} Hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Servisiranje u hangaru {STATION}
+
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Raspored)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Cepelin je pao kod {STATION}!
@@ -2698,6 +2941,7 @@ STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Eksplozija rafinerije nafte blizu {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Tvornica uništena pod sumnjivim okolnostima u blizini {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'NLO' sletio blizu {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Urušavanje rudnika ugljena ostavilo je trag blizu {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Poplave!{}Najmanje {COMMA} nestalih, pretpostavlja se poginulih nakon značajnih poplava!
 
 STR_BRIBE_FAILED                                                :{WHITE}Tvoj pokušaj podmićivanja je
@@ -2733,13 +2977,19 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Količin
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Iznos novca koji je ova kompanija pozajmila
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totalni broj bodova od mogućih bodova
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Postavke
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF postavke
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdi promjene
+STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Postavi parametre
+STR_NEWGRF_TIP                                                  :{BLACK}Lista svih newGRF setova koje ste instalirali. Kliknite na set za promjenu postavki
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nema novih newgrf datoteka instaliranih! Molimo pogledajte manual za upute o tome kako instalirati novu grafiku
 STR_NEWGRF_FILENAME                                             :{BLACK}Datoteka: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 suma: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Spremate se napraviti izmjene na pokrenutoj igri; to može srušiti OpenTTD.{}Jeste li potpuno sigurni u to?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Upozorenje: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Greška: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Kobno: {SILVER}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} neće raditi sa inačicom zakrpe u OpenTTD-u.
@@ -2748,6 +2998,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je nap
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nevažeći parametar za  {STRING}: parametar {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} se mora učitati prije {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} se mora učitati nakon {STRING}.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je dizajnirana za prijevod
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj NewGRF datoteku u listu
@@ -2808,6 +3059,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Prikaži
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Upravo se spremaš prodati sva vozila u spremištu. Jesi li siguran?
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :Pogrešna vrsta skladišta
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Prodaj sve vlakove u spremištu
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Prodaj sva cestovna vozila u spremištu
@@ -2845,6 +3097,10 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Brisanje
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Neka automatska zamijena drži dužinu vlaka istom brišući vagone(počevši od naprijed), ako bi zamijena lokomotive vlak učinila dužim.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zamjenjujem:{ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}EXPERIMENTALNA FUNKCIJA {} Prebaci između prozora za izmjenu lokomotiva i vagona.{}Izmjena vagona će se izvršiti samo ako novi vagon može biti prenamijenjen za prijevoz istog tipa tereta kao i stari vagon. Ovo se provjerava za svaki vagon kada se stvarna zamjena odvija.
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozilo nije dostupno
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vozilo nije dostupno
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Brod nije dostupan
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Zrakoplov nije dostupan
 
 STR_ENGINES                                                     :Lokomotive
 STR_WAGONS                                                      :Vagoni
@@ -2865,6 +3121,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klikni z
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Popis znakova - {COMMA} Znak{P "" a ova}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Prepravke narudžbi nisu uspjele {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -2888,6 +3145,7 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Trošak:
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Težina: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Trošak: {GOLD}{CURRENCY}{BLACK} Brzina: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Zapremnina: {GOLD}{COMMA} putnika, {COMMA} vreća s poštom
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} Pokretni vagoni:.{GOLD}+{POWER}{BLACK} Težina: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Promjenjivo u: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Svi tipovi tereta
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve osim {GOLD}
@@ -2903,6 +3161,7 @@ STR_RANDOM_SEED                                                 :{BLACK}Nasumič
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klikni za unos nasumičnog slijeda
 STR_LAND_GENERATOR                                              :{BLACK}Izrađivač zemljišta:
 STR_TREE_PLACER                                                 :{BLACK} Algoritam za drveće:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotacija visinske mape:
 STR_TERRAIN_TYPE                                                :{BLACK}Tip terena:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Razina mora:
 STR_SMOOTHNESS                                                  :{BLACK}Graduacija:
@@ -2915,6 +3174,8 @@ STR_SNOW_LINE_UP                                                :{BLACK}Pomakni 
 STR_SNOW_LINE_DOWN                                              :{BLACK}Pomakni visinu linije snijega za jedan dolje
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Promijeni visinu linije snijega
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Promijeni početnu godinu
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Upozorenje o veličini
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prekomjerna promjena veličine mape nije preporučena. Nastaviti sa kreiranjem?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Veličina: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Izrada svijeta u toku...
@@ -2975,7 +3236,10 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Prebaci novac: {LTBLUE}{CURRENCY}
 
 
+
 ##### Mass Order
+
+
 
 
 

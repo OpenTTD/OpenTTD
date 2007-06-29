@@ -778,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :Pelin asetukset
 STR_02C5_DIFFICULTY_SETTINGS                                    :Vaikeusasetukset
 STR_02C7_CONFIG_PATCHES                                         :Muokkaa paikkauksia
 STR_NEWGRF_SETTINGS                                             :Newgrf-asetukset
+STR_TRANSPARENCY_OPTIONS                                        :Läpinäkyvyysvalinnat
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Kaupunkien nimet näkyvissä
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Asemien nimet näkyvissä
@@ -805,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :Tuet
 STR_02DE_MAP_OF_WORLD                                           :Maailmankartta
 STR_EXTRA_VIEW_PORT                                             :Lisänäkymä
 STR_SIGN_LIST                                                   :Kylttilista
-STR_TRANSPARENCY_OPTIONS                                        :Läpinäkyvyysvalinnat
 STR_02DF_TOWN_DIRECTORY                                         :Kaupunkihakemisto
 STR_TOWN_POPULATION                                             :{BLACK}Maailman asukasluku: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Näkymä {COMMA}
@@ -2067,8 +2067,6 @@ STR_SV_STNAME_LOWER                                             :Ala-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}, helikopterikenttä
 STR_SV_STNAME_FOREST                                            :{STRING}, metsä
 
-
-
 ############ end of savegame specific region!
 
 ##id 0x6800
@@ -2138,8 +2136,8 @@ STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 kuukautta pel
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 kuukautta pelaajan jälkeen
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Radan päässä ja asemilla
 STR_6835_AT_END_OF_LINE_ONLY                                    :Vain radan päässä
-STR_6836_OFF                                                    :Päällä
-STR_6837_ON                                                     :Pois
+STR_6836_OFF                                                    :Pois
+STR_6837_ON                                                     :Päällä
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Näytä pistetaulukko
 STR_6839_PERMISSIVE                                             :Salliva
 STR_683A_TOLERANT                                               :Suvaitseva
@@ -3316,5 +3314,7 @@ STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Tulos tänä vuonna: {RED}{CURRENCY} {BLACK}(viime vuonna: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Tulos tänä vuonna: {GREEN}{CURRENCY} {BLACK}(viime vuonna: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Tulos tänä vuonna: {RED}{CURRENCY} {BLACK}(viime vuonna: {RED}{CURRENCY}{BLACK})
+
+
 
 ########
