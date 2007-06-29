@@ -426,7 +426,7 @@ STR_01A7_OWNER                                                  :{BLACK}I'pas'ni
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Viete'ja's varas iesta'des: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Neviens/neviena
 STR_01AA_NAME                                                   :{BLACK}Va'rds
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :Pirmais
@@ -1111,7 +1111,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Vispirms ja'demole' celtne
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Iedzi'vota'ji: {ORANGE}{COMMA}{BLACK}  Ma'jas: {ORANGE}{COMMA}
@@ -1134,7 +1134,7 @@ STR_2016_STATUE                                                 :Statuja
 STR_2017_FOUNTAIN                                               :Stru'klaka
 STR_2018_PARK                                                   :Parks
 STR_201E_STADIUM                                                :Stadions
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidijas
 STR_202A_NONE                                                   :{ORANGE}Neviens
 STR_2036_COTTAGES                                               :Kotedži
@@ -1151,7 +1151,7 @@ STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_280A_SIGN                                                   :Zîme
 STR_280E_TREES                                                  :Koki
 
@@ -1234,7 +1234,7 @@ STR_6830_IMMEDIATE                                              :Uzreiz
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7004_NEW_FACE                                               :{BLACK}Jauna Seja
 STR_7005_COLOR_SCHEME                                           :{BLACK}Krasas shçma
 STR_7006_COLOR_SCHEME                                           :{GOLD}Krasas shçma:
@@ -1243,7 +1243,7 @@ STR_7010                                                        :{WHITE}{NUM}
 STR_701D_OTHER                                                  :{GOLD}Citi
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7027_LOAN                                                   :{WHITE}Aizdevums
@@ -1253,8 +1253,8 @@ STR_INSUFFICIENT_FUNDS                                          :{WHITE}Naudu, k
 STR_7042_NONE                                                   :{WHITE}Neviens
 STR_7044_MALE                                                   :{BLACK}Viriešu
 STR_7045_FEMALE                                                 :{BLACK}Sieviešu
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrots!
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_COMPANY_PASSWORD                                            :{BLACK}Parole

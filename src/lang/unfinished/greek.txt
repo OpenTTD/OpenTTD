@@ -494,7 +494,7 @@ STR_01A7_OWNER                                                  :{BLACK}Ιδιο
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Τοπική αρχή: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Κανένα
 STR_01AA_NAME                                                   :{BLACK}Όνομα
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1{G ος η ο}
@@ -1353,7 +1353,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Διασταύ�
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Πόλεις
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Το κτίριο πρέπει πρώτα να κατεδαφιστεί
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Πληθυσμός: {ORANGE}{COMMA}{BLACK}  Σπίτια: {ORANGE}{COMMA}
@@ -1386,7 +1386,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Τοπι
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Εμφάνιση πληροφοριών για την τοπική αρχή
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Τοπική αρχή της πόλης {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ποσοστά εταιρείας μεταφορών:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Χρηματοδοτήσεις
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Τρέχουσες χρηματοδοτήσεις για υπηρεσίες παίρνοντας:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} από {STRING} πρός {STRING}
@@ -1450,7 +1450,7 @@ STR_2802_TREES                                                  :{WHITE}Δέντ
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...υπάρχει ήδη δέντρο εδώ
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...ακατάλληλη τοποθεσία
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Δεν γίνεται να φυτευθεί δέντρο εδώ...
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...πάρα πολλοί σηματοδότες
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Δεν γίνεται να τοποθετηθεί σηματοδότης εδώ...
 STR_280A_SIGN                                                   :Πινακίδα
@@ -1764,7 +1764,7 @@ STR_683B_HOSTILE                                                :Εχθρικό
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Παίκτης {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Νέο Πρόσωπο
 STR_7005_COLOR_SCHEME                                           :{BLACK}Χρωματισμός
@@ -1776,7 +1776,7 @@ STR_700A_COMPANY_NAME                                           :Όνομα Ετ
 STR_700B_PRESIDENT_S_NAME                                       :Όνομα Διευθυντή
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Αδύνατο να αλλάξει το όνομα της εταιρείας...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Αδύνατο να αλλάξει το όνομα του διευθυντή...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Οικονομικά {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Οικονομικά {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Έξοδα/Έσοδα
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Κατασκευή
@@ -1795,15 +1795,15 @@ STR_701D_OTHER                                                  :{GOLD}Άλλα
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Σύνολο:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Γράφημα Εισοδήματος
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Γράφημα Ενεργών Εσόδων
 STR_7026_BANK_BALANCE                                           :{WHITE}Ισολογισμός Τραπέζης
 STR_7027_LOAN                                                   :{WHITE}Δάνειο
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Δανεισμός {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Πληρωμή {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Δανεισμός {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Πληρωμή {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...το μέγιστο επιτρεπόμενο δάνειο είναι {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Αδύνατος ο δανεισμός περισσοτέρων χρημάτων...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...δεν υπάρχει δάνειο προς αποπληρωμή
@@ -1837,8 +1837,8 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Μονά
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ποσοστά απόδοσης εταιρείας (μέγιστη τιμή=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Αξία εταιρείας
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Πίνακας Πρωταθλήματος Εταιρειών
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Εταιρεία μεταφορών σε μπελάδες!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Η εταιρεία {COMPANY} θα πωληθεί ή θα κυρήξει πτώχευση αν δεν αυξηθεί η απόδοσή της!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Διευθυντής)

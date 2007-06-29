@@ -348,7 +348,7 @@ STR_01A7_OWNER                                                  :{BLACK}Eigner: 
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Gemiente: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Neat
 STR_01AA_NAME                                                   :{BLACK}Namme
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
 STR_01AC_1ST                                                    :1
@@ -877,7 +877,7 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Dyk/spoar krusi
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Stêden
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebou moat earst fuorthelle wurde
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Ynwenners: {ORANGE}{COMMA}{BLACK}  Hûzen: {ORANGE}{COMMA}
@@ -910,7 +910,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Gemeente
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Lit ynformaasje sjen oer de gemeente
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} gemeente
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transportbedrieuw rang:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsydzjes
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsydzjes dy't oanbean wurde:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} fan {STRING} nei {STRING}
@@ -969,7 +969,7 @@ STR_2802_TREES                                                  :{WHITE}Beammen
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...hjir stiet al in beam
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...bouplak net geskikt
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kin hjir gjin beam plantsje
-STR_2806                                                        :{WHITE}{STRING}
+STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...te folle buordsjes
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Kin hjir gjin buordsje delsette
 STR_280A_SIGN                                                   :Buordsje
@@ -1178,13 +1178,13 @@ STR_6837_ON                                                     :Oan
 
 ##id 0x7000
 STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Spyler {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nei Gesicht
 STR_7005_COLOR_SCHEME                                           :{BLACK}Kleurenskema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Kleurenskema:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nei Kleurenskema
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finansieen {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finansieen {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Utjeften/Ynkomsten
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Konstruksje
@@ -1196,13 +1196,13 @@ STR_701D_OTHER                                                  :{GOLD}Oaren
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totaal:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Ynkomsten Grafyk
 STR_7024                                                        :{COMMA}
 STR_7027_LOAN                                                   :{WHITE}Liening
 STR_7028                                                        :{BLACK}{CURRENCY}
-STR_7029_BORROW                                                 :{BLACK}Lien {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Betelje {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY} werom
+STR_7029_BORROW                                                 :{BLACK}Lien {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Betelje {SKIP}{SKIP}{CURRENCY} werom
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kin net mear jild liene
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} nedich
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kin liening net werombetelje
