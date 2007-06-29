@@ -91,6 +91,19 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="..\src\lang\croatian.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating croatian language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;
+"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\croatian.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\src\lang\czech.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
