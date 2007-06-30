@@ -1,4 +1,4 @@
-/* $Id:$ */
+/* $Id$ */
 
 /** @file dbg_helpers.cpp */
 #include "../stdafx.h"

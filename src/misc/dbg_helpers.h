@@ -1,4 +1,4 @@
-/* $Id:$ */
+/* $Id$ */
 
 /** @file dbg_helpers.h */
 
@@ -67,7 +67,7 @@ inline CStrA ComposeNameT(E value, T &t, const char* t_unk, E val_inv, const cha
 	} else if (value == 0) {
 		out = "<none>";
 	} else {
-		for (int i = 0; i < ArrayT<T>::length; i++) {
+		for (size_t i = 0; i < ArrayT<T>::length; i++) {
 			if ((value & (1 << i)) == 0) continue;
 			out.AddFormat("%s%s", (out.Size() > 0 ? "+" : ""), t[i]);
 			value &= ~(E)(1 << i);
