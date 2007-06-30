@@ -1245,7 +1245,6 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 	Subsidy *s;
 	TileIndex xy;
 	Pair pair;
-	Player *p;
 
 	/* check if there is an already existing subsidy that applies to us */
 	for (s = _subsidies; s != endof(_subsidies); s++) {
@@ -1291,10 +1290,9 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 
 			/* Add a news item */
 			pair = SetupSubsidyDecodeParam(s, 0);
-			InjectDParam(2);
+			InjectDParam(1);
 
-			p = GetPlayer(_current_player);
-			SetDParam(0, p->index);
+			SetDParam(0, _current_player);
 			AddNewsItem(
 				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier,
 				NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0),
