@@ -155,7 +155,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}地圖 - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}遊戲選項
 STR_00B2_MESSAGE                                                :{YELLOW}訊息
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}來自{STRING}的訊息
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}來自{COMPANY}的訊息
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}注意！
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}不能執行以下動作....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}不能清除這個地段....

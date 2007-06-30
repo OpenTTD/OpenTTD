@@ -157,7 +157,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Карта - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Настройки игры
 STR_00B2_MESSAGE                                                :{YELLOW}Сообщение
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Сообщение из {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Сообщение из {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Осторожно!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Это невозможно
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Невозможно расчистить...

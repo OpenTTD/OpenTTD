@@ -156,7 +156,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opciones del juego
 STR_00B2_MESSAGE                                                :{YELLOW}Mensaje
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mensaje de {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mensaje de {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Precaución!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}No se puede hacer eso....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}No se puede desbrozar esta zona....

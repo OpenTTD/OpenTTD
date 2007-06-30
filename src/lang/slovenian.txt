@@ -197,7 +197,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Zemljevid - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Možnosti Igre
 STR_00B2_MESSAGE                                                :{YELLOW}Sporočilo
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sporočilo od/iz {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sporočilo od/iz {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Pozor!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ni izvedljivo ...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nemogoče čiščenje tega področja ...

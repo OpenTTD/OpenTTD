@@ -100,7 +100,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Map - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spul Opsjes
 STR_00B2_MESSAGE                                                :{YELLOW}Berjocht
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Berjocht fan {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Berjocht fan {COMPANY}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kin dit net dwaan....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kin dit gebiet net leech meitsje....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orizjineel copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved

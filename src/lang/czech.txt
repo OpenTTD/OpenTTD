@@ -213,7 +213,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Možnosti hry
 STR_00B2_MESSAGE                                                :{YELLOW}Zpráva
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Zpráva od {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Zpráva od {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Varování!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Tohle neumůžeš udělat...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nemůžeš vyčistit tuto oblast...

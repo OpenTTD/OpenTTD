@@ -155,7 +155,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Harita - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Seçenekler
 STR_00B2_MESSAGE                                                :{YELLOW}Mesaj
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj: {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj: {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Uyarı!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Yapılamaz....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Burası temizlenemez....

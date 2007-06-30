@@ -155,7 +155,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Apmay - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Amegay Optionsway
 STR_00B2_MESSAGE                                                :{YELLOW}Essagemay
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Essagemay omfray {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Essagemay omfray {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Autioncay!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}An'tcay oday isthay....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}An'tcay earclay isthay areaway....

@@ -155,7 +155,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Map - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Game Options
 STR_00B2_MESSAGE                                                :{YELLOW}Message
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Message from {STRING1}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Message from {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Caution!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Can't do this....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Can't clear this area....

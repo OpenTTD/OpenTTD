@@ -187,7 +187,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Žemėlapis - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Žaidimo nustatymai
 STR_00B2_MESSAGE                                                :{YELLOW}Žinutė
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Žinutė nuo {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Žinutė nuo {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Įspėjimas!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}To daryti negalima....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Negalima griauti šios teritorijos....

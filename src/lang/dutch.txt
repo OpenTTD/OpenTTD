@@ -155,7 +155,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spelopties
 STR_00B2_MESSAGE                                                :{YELLOW}Bericht
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Bericht van {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Bericht van {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Waarschuwing!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan dit niet uitvoeren....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan gebied niet ontruimen....
