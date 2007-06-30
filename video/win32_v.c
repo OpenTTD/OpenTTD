@@ -24,7 +24,6 @@ static struct {
 	int height;
 	int width_org;
 	int height_org;
-	bool minimized;
 	bool fullscreen;
 	bool double_size;
 	bool has_focus;
@@ -512,8 +511,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			break;
 
 		case WM_SIZE:
-			_wnd.minimized = (wParam == SIZE_MINIMIZED);
-			if (!_wnd.minimized) {
+			if (wParam != SIZE_MINIMIZED) {
 				/* Set maximized flag when we maximize (obviously), but also when we
 				 * switched to fullscreen from a maximized state */
 				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
@@ -611,23 +609,34 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			return 0;
 		}
 
-		case WM_ACTIVATEAPP:
-			_wnd.has_focus = (wParam != 0);
+		case WM_SETFOCUS:
+			_wnd.has_focus = true;
+			break;
+
+		case WM_KILLFOCUS:
+			_wnd.has_focus = false;
+			break;
+
 #if !defined(WINCE)
+		case WM_ACTIVATE: {
+			bool active = (LOWORD(wParam) != WA_INACTIVE);
+			bool minimized = (HIWORD(wParam) != 0);
 			if (_wnd.fullscreen) {
-				if (_wnd.has_focus && _wnd.minimized) {
+				if (active && minimized) {
 					/* Restore the game window */
 					ShowWindow(hwnd, SW_RESTORE);
 					MakeWindow(true);
-				} else if (!_wnd.has_focus && !_wnd.minimized) {
+				} else if (!active && !minimized) {
 					/* Minimise the window and restore desktop */
 					ShowWindow(hwnd, SW_MINIMIZE);
 					ChangeDisplaySettings(NULL, 0);
 				}
 			}
-#endif
 			break;
+		}
 	}
+#endif
+
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
