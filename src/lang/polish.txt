@@ -1189,7 +1189,20 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Przesuń widok
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Rolka wyłączona
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Prędkość przesuwania widoku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę tworząc nową grę: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Używaj zaawansowanej listy pojazdów: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Pokazuj wskaźniki załadunku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Uaktywnij rozkłady jazdy pojazdów: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokazuj rozkłady jazdy w tickach, a nie w dniach: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Domyślny typ torowiska (w nowej grze/po wczytaniu gry): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normalne
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektryfikowane
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Jednoszynowe
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :MagLev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Pierwszy dostępny
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Najnowszy
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Najczęściej używany
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Pokaż okno narzędzi do budowy nawet gdy nie ma odpowiednich pojazdów: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. liczba pociągów na gracza: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. liczba samochodów na gracza: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks. liczba samolotów na gracza: {ORANGE}{STRING}
@@ -1707,6 +1720,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tory kolejowe z
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tory kolejowe z pre- i exit-sygnałami
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tory kolejowe z pre- i combo-sygnałami
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tory kolejowe z exit- i combo-sygnałami
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Należy najpierw usunąć stację kolejową
 
 
 
@@ -2738,6 +2752,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Serwisuj w zaje
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idź bez zatrzymywania do zajezdni w {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idź bez zatrzymywania do serwisu w zajezdni w {TOWN}
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Przejazd (bez ustalonego czasu)
+STR_TIMETABLE_TRAVEL_FOR                                        :Przejazd przez {STRING}
+STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P zień ni ni}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" i ów}
 
@@ -2782,6 +2800,8 @@ STR_8828_UNLOAD                                                 :{BLACK}Wyładun
 STR_REFIT                                                       :{BLACK}Przebuduj
 STR_REFIT_TIP                                                   :{BLACK}Wybierz do przewozu jakiego towaru przebudować pojazd w tym zadaniu. CTRL+klik usuwa polecenie przebudowy
 STR_REFIT_ORDER                                                 :(Przebuduj na {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład jazdy
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Otwórz widok rozkładu jazdy
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Polecenia)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec poleceń - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2798,6 +2818,7 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Zbyt wie
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nie można wstawić polecenia...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nie można usunąć tego polecenia...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nie można zmodyfikować tego polecenia...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nie można przenieść tego zadania...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nie można pominąć obecnego zadania...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nie można przejść do wybranego zadania...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nie można ruszyć pojazdem...
@@ -2831,11 +2852,16 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaż s
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Pokaż pojemność każdego wagonu
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Pokaż całkowitą pojemność pociągu, według typu ładunku
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista poleceń - klik na poleceniu aby zaznaczyć. CTRL + klik przenosi do stacji
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Pomiń obecne zadanie, i rozpocznij kolejne. CTRL + klik pomija aż do zaznaczonego zadania
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Usuń podświetlone polecenie
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zrób z tego polecenia 'non-stop'
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw aby zaznaczone polecenie zmusiło pojazd do czekania na pełny załadunek
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw aby zaznaczone polecenie zmusiło pojazd do wyładunku
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rozkład jazdy - kliknij na zadaniu aby je zaznaczyć.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu którą zaznaczone zadanie powinno zająć
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń ilość czas przeznaczoną na zaznaczone zadanie
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Wyzeruj licznik spóźnienia, aby pojazd podróżował zgodnie z rozkładem jazdy
 STR_SERVICE_HINT                                                :{BLACK}Pomiń to polecenie jesli serwis nie jest wymagany
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Koszt: {CURRENCY} Waga: {WEIGHT_S}{}Prędkość: {VELOCITY}  Moc: {POWER}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Awaria
@@ -2857,6 +2883,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana n
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie można zmienić nazwy typu pojazdu...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw by w zaznaczonym poleceniu pojazd był zmuszony do pozostawienia towaru dla kolejnego pojazdu
 STR_886F_TRANSFER                                               :{BLACK}Przewieź
+STR_CLEAR_TIME                                                  :{BLACK}Usuń czas
+STR_RESET_LATENESS                                              :{BLACK}Wyzeruj licznik spóźnienia
 
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie
 STR_TRAIN_STOPPING_VEL                                          :{RED}Hamowanie, {VELOCITY}
@@ -2868,6 +2896,17 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Dostępn{G y a e} now{G y a e} {STRING} - {ENGINE}!
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Pojazdy mogą czekać tylko na stacjach.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Ten pojazd nie zatrzymuje się na tej stacji.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmień czas
+STR_TIMETABLE_STATUS_ON_TIME                                    :Ten pojazd podróżuje teraz zgodnie z rozkładem jazdy
+STR_TIMETABLE_STATUS_LATE                                       :Ten pojazd jest teraz spóźniony o {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :Ten pojazd spieszy się teraz o {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :Ten rozkład jazdy zajmie {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ten rozkład jazdy zajmie przynajmniej {STRING} (nie wszystkie stacje są na rozkładzie)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autowypełnienie
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij rozkład jazdy automatycznie wartościami z następnej podróży
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Samochód na drodze
@@ -3275,7 +3314,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}Niepowod
 STR_RAIL_VEHICLES                                               :Kolej
 STR_ELRAIL_VEHICLES                                             :Kolej elektryczna
 STR_MONORAIL_VEHICLES                                           :Kolej jednoszynowa
-STR_MAGLEV_VEHICLES                                             :Kolej Maglev
+STR_MAGLEV_VEHICLES                                             :Kolej MagLev
 
 ############ End of list of rail types
 
@@ -3421,6 +3460,7 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Stat{P ek ki ków}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Samolot{P "" y ów}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Zmień nazwę grupy
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Zastąp pojazdy z "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Nie można stworzyć grupy...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nie można usunąć tej grupy...
@@ -3428,9 +3468,11 @@ STR_GROUP_CAN_T_RENAME                                          :{WHITE}Nie moż
 STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Nie można usunąć wszystkich pojazdów z tej grupy...
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Nie można dodać pojazdu do tej grupy...
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupy - Kliknij na grupie aby wyświetlić wszystkie pojazdy z grupy
 STR_GROUP_CREATE_TIP                                            :{BLACK}Kliknij aby stworzyć grupę
 STR_GROUP_DELETE_TIP                                            :{BLACK}Usuń zaznaczoną grupę
 STR_GROUP_RENAME_TIP                                            :{BLACK}Zmień nazwę zaznaczonej grupy
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknij, aby ochronić tę grupę przed globalną zamianą pojazdów
 
 STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Zysk w tym roku: {GREEN}{CURRENCY} {BLACK}(w ostatnim roku: {GREEN}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Zysk w tym roku: {RED}{CURRENCY} {BLACK}(w ostatnim roku: {GREEN}{CURRENCY}{BLACK})
@@ -3443,5 +3485,9 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nazwa nie może się powtarzać
+
+#### Improved sign GUI
 
 ########

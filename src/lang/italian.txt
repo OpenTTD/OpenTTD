@@ -1110,7 +1110,7 @@ STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Abilita
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra le tabelle orarie in tick piuttosto che in giorni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Ferrovia predefinita (a inizio/ripresa partita): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Ferrovia normale
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Ferrovia elettrificata
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Ferrovia elettr.
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorotaia
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :La prima disponibile
@@ -2093,7 +2093,7 @@ STR_SV_STNAME_UPPER                                             :Alta {STRING}
 STR_SV_STNAME_LOWER                                             :Bassa {STRING}
 STR_SV_STNAME_HELIPORT                                          :Eliporto di {STRING}
 STR_SV_STNAME_FOREST                                            :{STRING} Foresta
-STR_SV_STNAME_FALLBACK                                          :Stazione #{1:NUM} di {0:STRING}
+STR_SV_STNAME_FALLBACK                                          :{STRING}, Stazione #{NUM}
 
 ############ end of savegame specific region!
 
@@ -3362,5 +3362,9 @@ STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Il nome deve essere univoco
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Va al cartello successivo
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Va al cartello precedente
 
 ########

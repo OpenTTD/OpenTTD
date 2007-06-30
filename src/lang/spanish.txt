@@ -1009,7 +1009,7 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}La aeron
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Auto renovar ha fallado con el tren {COMMA} (límite de dinero)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}AAuto renovar ha fallado con el vehículo de carretera {COMMA} (límite de dinero)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Auto renovar ha fallado con el vehículo de carretera {COMMA} (límite de dinero)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Auto renovar ha fallado con el barco {COMMA} (límite de dinero)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Auto renovar ha fallado con la aeronave {COMMA} (límite de dinero)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren {COMMA} es demasiado largo tras el cambio
@@ -1116,7 +1116,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primero disponi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostrar herramientas de construcción aún sin vehículos apropiados: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Herramientas de construcción aún sin vehículos apropiados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Máx aeroplanos por jugador: {ORANGE}{STRING}
@@ -1609,7 +1609,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}No se pu
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}No se pueden retirar señales de aquí...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientación del depósito
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construcción de ferrocarril
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construcción Línea Eléctrica de Ferrocarril
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construcción línea eléctrica de ferrocarril
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construcción de monorraíl
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construcción de maglev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir tramo de ferrocarril
@@ -2756,7 +2756,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No se pu
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Hacer que la orden marcada fuerce al vehículo a descargar
 STR_886F_TRANSFER                                               :{BLACK}Transferir
 STR_CLEAR_TIME                                                  :{BLACK}Limpiar Horario
-STR_RESET_LATENESS                                              :{BLACK}Resetear Contador de Retrasos
+STR_RESET_LATENESS                                              :{BLACK}Resetear Retrasos
 
 STR_TRAIN_STOPPING                                              :{RED}Parándose
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose, {VELOCITY}
@@ -2777,7 +2777,7 @@ STR_TIMETABLE_STATUS_LATE                                       :Este vehículo 
 STR_TIMETABLE_STATUS_EARLY                                      :Este vehículo está actualmente {STRING} adelantado
 STR_TIMETABLE_TOTAL_TIME                                        :Los horarios tomarán  {STRING} para completarse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Estos horarios tomarán {STRING} para completarse (no todos los horarios)
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Asignar automáticamente
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automático
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Asigna automáticamente la tabla de horarios con los valores del primer viaje
 
 ##id 0x9000
@@ -3361,5 +3361,7 @@ STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}El nombre debe ser único
+
+#### Improved sign GUI
 
 ########
