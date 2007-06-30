@@ -82,9 +82,6 @@ void HandleOnEditText(const char *str)
 	_cmd_text = str;
 
 	switch (_rename_what) {
-	case 0: // Rename a s sign, if string is empty, delete sign
-		DoCommandP(0, id, 0, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
-		break;
 	case 1: // Rename a waypoint
 		if (*str == '\0') return;
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
@@ -340,14 +337,6 @@ void ShowNetworkGiveMoneyWindow(PlayerID player)
 	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, NULL, CS_NUMERAL);
 }
 #endif /* ENABLE_NETWORK */
-
-void ShowRenameSignWindow(const Sign *si)
-{
-	_rename_id = si->index;
-	_rename_what = 0;
-	SetDParam(0, si->index);
-	ShowQueryString(STR_SIGN_NAME, STR_280B_EDIT_SIGN_TEXT, 30, 180, NULL, CS_ALPHANUMERAL);
-}
 
 void ShowRenameWaypointWindow(const Waypoint *wp)
 {

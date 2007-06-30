@@ -64,7 +64,7 @@ VARDEF bool _sign_sort_dirty;
 void UpdateAllSignVirtCoords();
 void PlaceProc_Sign(TileIndex tile);
 
-/* misc.cpp */
+/* signs_gui.cpp */
 void ShowRenameSignWindow(const Sign *si);
 
 void ShowSignList();
