@@ -888,7 +888,6 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
 	_tp.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_tp.current == 0 ? 0 : _tp.current - 1) / _tp.total;
-	_tp.timer = _realtime_tick;
 
 	if (_network_dedicated) {
 		static uint last_percent = 0;
@@ -917,6 +916,8 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 	 *  on the same tile at the same moment. Nasty hack, but that happens
 	 *  if you implement threading afterwards */
 	while (IsGeneratingWorldReadyForPaint()) { CSleep(10); }
+
+	_tp.timer = _realtime_tick;
 }
 
 /**
