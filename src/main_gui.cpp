@@ -233,8 +233,7 @@ static void MenuClickScenMap(int index)
 		case 0: ShowSmallMap();            break;
 		case 1: ShowExtraViewPortWindow(); break;
 		case 2: ShowSignList();            break;
-		case 3: ShowTransparencyToolbar(); break;
-		case 4: ShowTownDirectory();       break;
+		case 3: ShowTownDirectory();       break;
 	}
 }
 
@@ -1036,7 +1035,7 @@ static void ToolbarScenDateForward(Window *w)
 static void ToolbarScenMapTownDir(Window *w)
 {
 	/* Scenario editor button, *hack*hack* use different button to activate */
-	PopupMainToolbMenu(w, 8 | (17 << 8), STR_02DE_MAP_OF_WORLD, 5, 0);
+	PopupMainToolbMenu(w, 8 | (17 << 8), STR_02DE_MAP_OF_WORLD, 4, 0);
 }
 
 static void ToolbarScenZoomIn(Window *w)
