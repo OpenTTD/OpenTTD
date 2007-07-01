@@ -420,6 +420,13 @@ struct Vehicle {
 	 * basically, if GetFirstVehicleInChain() can be called for it.
 	 */
 	virtual bool HasFront() const { return false; }
+
+	/**
+	 * Gets the sprite to show for the given direction
+	 * @param direction the direction the vehicle is facing
+	 * @return the sprite for the given vehicle in the given direction
+	 */
+	virtual int GetImage(Direction direction) const { return 0; }
 };
 
 /**
@@ -520,11 +527,6 @@ CommandCost GetRefitCost(EngineID engine_type);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
-/* train_cmd.h */
-int GetTrainImage(const Vehicle* v, Direction direction);
-int GetAircraftImage(const Vehicle* v, Direction direction);
-int GetRoadVehImage(const Vehicle* v, Direction direction);
-int GetShipImage(const Vehicle* v, Direction direction);
 SpriteID GetRotorImage(const Vehicle *v);
 
 Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type);

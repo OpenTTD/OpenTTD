@@ -272,6 +272,7 @@ struct Train : public Vehicle {
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return IsFrontEngine(this); }
 	bool HasFront() const { return true; }
+	int GetImage(Direction direction) const;
 };
 
 #endif /* TRAIN_H */

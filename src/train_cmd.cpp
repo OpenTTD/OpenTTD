@@ -448,22 +448,22 @@ static void UpdateTrainAcceleration(Vehicle* v)
 	v->acceleration = clamp(power / weight * 4, 1, 255);
 }
 
-int GetTrainImage(const Vehicle* v, Direction direction)
+int Train::GetImage(Direction direction) const
 {
-	int img = v->spritenum;
+	int img = this->spritenum;
 	int base;
 
-	if (HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
+	if (HASBIT(this->u.rail.flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
 
 	if (is_custom_sprite(img)) {
-		base = GetCustomVehicleSprite(v, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
+		base = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
 		if (base != 0) return base;
-		img = orig_rail_vehicle_info[v->engine_type].image_index;
+		img = orig_rail_vehicle_info[this->engine_type].image_index;
 	}
 
 	base = _engine_sprite_base[img] + ((direction + _engine_sprite_add[img]) & _engine_sprite_and[img]);
 
-	if (v->cargo.Count() >= v->cargo_cap / 2U) base += _wagon_full_adder[img];
+	if (this->cargo.Count() >= this->cargo_cap / 2U) base += _wagon_full_adder[img];
 	return base;
 }
 
@@ -1424,7 +1424,7 @@ void Train::UpdateDeltaXY(Direction direction)
 static void UpdateVarsAfterSwap(Vehicle *v)
 {
 	v->UpdateDeltaXY(v->direction);
-	v->cur_image = GetTrainImage(v, v->direction);
+	v->cur_image = v->GetImage(v->direction);
 	BeginVehicleMove(v);
 	VehiclePositionChanged(v);
 	EndVehicleMove(v);
@@ -2081,7 +2081,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	v->cur_speed = 0;
 
 	v->UpdateDeltaXY(v->direction);
-	v->cur_image = GetTrainImage(v, v->direction);
+	v->cur_image = v->GetImage(v->direction);
 	VehiclePositionChanged(v);
 	UpdateSignalsOnSegment(v->tile, DirToDiagDir(v->direction));
 	UpdateTrainAcceleration(v);
@@ -2467,7 +2467,7 @@ void Train::MarkDirty()
 {
 	Vehicle *v = this;
 	do {
-		v->cur_image = GetTrainImage(v, v->direction);
+		v->cur_image = v->GetImage(v->direction);
 		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 	} while ((v = v->next) != NULL);
 
@@ -2969,7 +2969,7 @@ static void TrainController(Vehicle *v, bool update_image)
 		/* update image of train, as well as delta XY */
 		Direction newdir = GetNewVehicleDirection(v, gp.x, gp.y);
 		v->UpdateDeltaXY(newdir);
-		if (update_image) v->cur_image = GetTrainImage(v, newdir);
+		if (update_image) v->cur_image = v->GetImage(newdir);
 
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
@@ -3076,7 +3076,7 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 			v->direction = ChangeDir(v->direction, delta[GB(Random(), 0, 2)]);
 			BeginVehicleMove(v);
 			v->UpdateDeltaXY(v->direction);
-			v->cur_image = GetTrainImage(v, v->direction);
+			v->cur_image = v->GetImage(v->direction);
 			/* Refrain from updating the z position of the vehicle when on
 			   a bridge, because AfterSetTrainPos will put the vehicle under
 			   the bridge in that case */

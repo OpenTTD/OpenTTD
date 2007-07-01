@@ -90,15 +90,15 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height)
 	height = spr->height;
 }
 
-int GetShipImage(const Vehicle* v, Direction direction)
+int Ship::GetImage(Direction direction) const
 {
-	int spritenum = v->spritenum;
+	int spritenum = this->spritenum;
 
 	if (is_custom_sprite(spritenum)) {
-		int sprite = GetCustomVehicleSprite(v, direction);
+		int sprite = GetCustomVehicleSprite(this, direction);
 
 		if (sprite != 0) return sprite;
-		spritenum = orig_ship_vehicle_info[v->engine_type - SHIP_ENGINES_INDEX].image_index;
+		spritenum = orig_ship_vehicle_info[this->engine_type - SHIP_ENGINES_INDEX].image_index;
 	}
 	return _ship_sprites[spritenum] + direction;
 }
@@ -233,7 +233,7 @@ static void HandleBrokenShip(Vehicle *v)
 
 void Ship::MarkDirty()
 {
-	this->cur_image = GetShipImage(this, this->direction);
+	this->cur_image = this->GetImage(this->direction);
 	MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }
 
@@ -337,7 +337,7 @@ void Ship::UpdateDeltaXY(Direction direction)
 void RecalcShipStuff(Vehicle *v)
 {
 	v->UpdateDeltaXY(v->direction);
-	v->cur_image = GetShipImage(v, v->direction);
+	v->cur_image = v->GetImage(v->direction);
 	v->MarkDirty();
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 }
@@ -770,7 +770,7 @@ static void ShipController(Vehicle *v)
 
 getout:
 	v->UpdateDeltaXY(dir);
-	v->cur_image = GetShipImage(v, dir);
+	v->cur_image = v->GetImage(dir);
 	VehiclePositionChanged(v);
 	EndVehicleMove(v);
 	return;

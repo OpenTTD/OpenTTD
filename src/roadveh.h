@@ -81,6 +81,7 @@ struct RoadVehicle : public Vehicle {
 	WindowClass GetVehicleListWindowClass() const { return WC_ROADVEH_LIST; }
 	bool IsPrimaryVehicle() const { return IsRoadVehFront(this); }
 	bool HasFront() const { return true; }
+	int GetImage(Direction direction) const;
 };
 
 byte GetRoadVehLength(const Vehicle *v);

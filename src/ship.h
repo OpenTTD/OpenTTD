@@ -46,6 +46,7 @@ struct Ship: public Vehicle {
 	WindowClass GetVehicleListWindowClass() const { return WC_SHIPS_LIST; }
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return true; }
+	int GetImage(Direction direction) const;
 };
 
 #endif /* SHIP_H */

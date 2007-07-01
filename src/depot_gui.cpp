@@ -187,7 +187,7 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 		case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, 1, WP(w, depot_d).sel); break;
 		case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, WP(w, depot_d).sel); break;
 		case VEH_AIRCRAFT: {
-			const Sprite *spr = GetSprite(GetAircraftImage(v, DIR_W));
+			const Sprite *spr = GetSprite(v->GetImage(DIR_W));
 			DrawAircraftImage(v, x + 12,
 							  y + max(spr->height + spr->y_offs - 14, 0), // tall sprites needs an y offset
 							  WP(w, depot_d).sel);
@@ -438,15 +438,7 @@ static void DepotClick(Window *w, int x, int y)
 				WP(w,depot_d).sel = INVALID_VEHICLE;
 				TrainDepotMoveVehicle(v, sel, gdvp.head);
 			} else if (v != NULL) {
-				int image;
-
-				switch (WP(w, depot_d).type) {
-					case VEH_TRAIN:    image = GetTrainImage(v, DIR_W);    break;
-					case VEH_ROAD:     image = GetRoadVehImage(v, DIR_W);  break;
-					case VEH_SHIP:     image = GetShipImage(v, DIR_W);     break;
-					case VEH_AIRCRAFT: image = GetAircraftImage(v, DIR_W); break;
-					default: NOT_REACHED(); image = 0;
-				}
+				int image = v->GetImage(DIR_W);
 
 				WP(w, depot_d).sel = v->index;
 				SetWindowDirty(w);

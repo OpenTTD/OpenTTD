@@ -153,15 +153,15 @@ static bool HaveHangarInOrderList(Vehicle *v)
 }
 #endif
 
-int GetAircraftImage(const Vehicle* v, Direction direction)
+int Aircraft::GetImage(Direction direction) const
 {
-	int spritenum = v->spritenum;
+	int spritenum = this->spritenum;
 
 	if (is_custom_sprite(spritenum)) {
-		int sprite = GetCustomVehicleSprite(v, direction);
+		int sprite = GetCustomVehicleSprite(this, direction);
 
 		if (sprite != 0) return sprite;
-		spritenum = orig_aircraft_vehicle_info[v->engine_type - AIRCRAFT_ENGINES_INDEX].image_index;
+		spritenum = orig_aircraft_vehicle_info[this->engine_type - AIRCRAFT_ENGINES_INDEX].image_index;
 	}
 	return direction + _aircraft_sprite[spritenum];
 }
@@ -827,7 +827,7 @@ static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 	v->y_pos = y;
 	v->z_pos = z;
 
-	v->cur_image = GetAircraftImage(v, v->direction);
+	v->cur_image = v->GetImage(v->direction);
 	if (v->subtype == AIR_HELICOPTER) v->next->next->cur_image = GetRotorImage(v);
 
 	BeginVehicleMove(v);
@@ -1409,7 +1409,7 @@ static void ProcessAircraftOrder(Vehicle *v)
 
 void Aircraft::MarkDirty()
 {
-		this->cur_image = GetAircraftImage(this, this->direction);
+		this->cur_image = this->GetImage(this->direction);
 		if (this->subtype == AIR_HELICOPTER) this->next->next->cur_image = GetRotorImage(this);
 		MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }

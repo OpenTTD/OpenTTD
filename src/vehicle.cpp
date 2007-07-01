@@ -249,16 +249,17 @@ void AfterLoadVehicles()
 	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
 			case VEH_ROAD:
-				v->cur_image = GetRoadVehImage(v, v->direction);
 				v->u.road.roadtype = HASBIT(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 				v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
+				/* FALL THROUGH */
+			case VEH_TRAIN:
+			case VEH_SHIP:
+				v->cur_image = v->GetImage(v->direction);
 				break;
 
-			case VEH_TRAIN: v->cur_image = GetTrainImage(v, v->direction); break;
-			case VEH_SHIP: v->cur_image = GetShipImage(v, v->direction); break;
 			case VEH_AIRCRAFT:
 				if (IsNormalAircraft(v)) {
-					v->cur_image = GetAircraftImage(v, v->direction);
+					v->cur_image = v->GetImage(v->direction);
 
 					/* The plane's shadow will have the same image as the plane */
 					Vehicle *shadow = v->next;

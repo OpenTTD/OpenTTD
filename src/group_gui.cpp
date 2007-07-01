@@ -531,17 +531,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					gv->vehicle_sel = v->index;
 
 					if (IsValidVehicle(v)) {
-						CursorID image;
-
-						switch (gv->vehicle_type) {
-							case VEH_TRAIN:    image = GetTrainImage(v, DIR_W);    break;
-							case VEH_ROAD:     image = GetRoadVehImage(v, DIR_W);  break;
-							case VEH_SHIP:     image = GetShipImage(v, DIR_W);     break;
-							case VEH_AIRCRAFT: image = GetAircraftImage(v, DIR_W); break;
-							default: NOT_REACHED(); break;
-						}
-
-						SetObjectToPlaceWnd(image, GetVehiclePalette(v), 4, w);
+						SetObjectToPlaceWnd(v->GetImage(DIR_W), GetVehiclePalette(v), 4, w);
 					}
 
 					SetWindowDirty(w);

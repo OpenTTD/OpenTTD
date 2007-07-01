@@ -38,7 +38,7 @@ void DrawRoadVehImage(const Vehicle *v, int x, int y, int count, VehicleID selec
 
 		if (dx + length > 0 && dx <= max_length) {
 			SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-			DrawSprite(GetRoadVehImage(v, DIR_W), pal, x + 14 + RoadVehLengthToPixels(dx), y + 6);
+			DrawSprite(v->GetImage(DIR_W), pal, x + 14 + RoadVehLengthToPixels(dx), y + 6);
 
 			if (v->index == selection) {
 				DrawFrameRect(x - 1, y - 1, x + 28, y + 12, 15, FR_BORDERONLY);

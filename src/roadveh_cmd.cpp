@@ -85,19 +85,19 @@ static const Trackdir _roadveh_depot_exit_trackdir[DIAGDIR_END] = {
 	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW
 };
 
-int GetRoadVehImage(const Vehicle* v, Direction direction)
+int RoadVehicle::GetImage(Direction direction) const
 {
-	int img = v->spritenum;
+	int img = this->spritenum;
 	int image;
 
 	if (is_custom_sprite(img)) {
-		image = GetCustomVehicleSprite(v, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
+		image = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
 		if (image != 0) return image;
-		img = orig_road_vehicle_info[v->engine_type - ROAD_ENGINES_INDEX].image_index;
+		img = orig_road_vehicle_info[this->engine_type - ROAD_ENGINES_INDEX].image_index;
 	}
 
 	image = direction + _roadveh_images[img];
-	if (v->cargo.Count() >= v->cargo_cap / 2U) image += _roadveh_full_adder[img];
+	if (this->cargo.Count() >= this->cargo_cap / 2U) image += _roadveh_full_adder[img];
 	return image;
 }
 
@@ -555,7 +555,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 void RoadVehicle::MarkDirty()
 {
-	this->cur_image = GetRoadVehImage(this, this->direction);
+	this->cur_image = this->GetImage(this->direction);
 	MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }
 
@@ -641,7 +641,7 @@ static void RoadVehSetRandomDirection(Vehicle *v)
 		v->direction = ChangeDir(v->direction, delta[r & 3]);
 		BeginVehicleMove(v);
 		v->UpdateDeltaXY(v->direction);
-		v->cur_image = GetRoadVehImage(v, v->direction);
+		v->cur_image = v->GetImage(v->direction);
 		SetRoadVehPosition(v, v->x_pos, v->y_pos);
 	} while ((v = v->next) != NULL);
 }
@@ -1366,7 +1366,7 @@ static bool RoadVehLeaveDepot(Vehicle *v, bool first)
 	v->u.road.state = tdir;
 	v->u.road.frame = RVC_DEPOT_START_FRAME;
 
-	v->cur_image = GetRoadVehImage(v, v->direction);
+	v->cur_image = v->GetImage(v->direction);
 	v->UpdateDeltaXY(v->direction);
 	SetRoadVehPosition(v,x,y);
 
@@ -1459,7 +1459,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 
 		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && HASBIT(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			/* Vehicle has just entered a bridge or tunnel */
-			v->cur_image = GetRoadVehImage(v, v->direction);
+			v->cur_image = v->GetImage(v->direction);
 			v->UpdateDeltaXY(v->direction);
 			SetRoadVehPosition(v,gp.x,gp.y);
 			return true;
@@ -1574,7 +1574,7 @@ again:
 			v->cur_speed -= v->cur_speed >> 2;
 		}
 
-		v->cur_image = GetRoadVehImage(v, newdir);
+		v->cur_image = v->GetImage(newdir);
 		v->UpdateDeltaXY(v->direction);
 		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
 		return true;
@@ -1614,7 +1614,7 @@ again:
 			v->cur_speed -= v->cur_speed >> 2;
 		}
 
-		v->cur_image = GetRoadVehImage(v, newdir);
+		v->cur_image = v->GetImage(newdir);
 		v->UpdateDeltaXY(v->direction);
 		RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
 		return true;
@@ -1656,7 +1656,7 @@ again:
 		v->cur_speed -= (v->cur_speed >> 2);
 		if (old_dir != v->u.road.state) {
 			/* The vehicle is in a road stop */
-			v->cur_image = GetRoadVehImage(v, new_dir);
+			v->cur_image = v->GetImage(new_dir);
 			v->UpdateDeltaXY(v->direction);
 			SetRoadVehPosition(v, v->x_pos, v->y_pos);
 			/* Note, return here means that the frame counter is not incremented
@@ -1776,7 +1776,7 @@ again:
 	 * in a depot or entered a tunnel/bridge */
 	if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) v->u.road.frame++;
 
-	v->cur_image = GetRoadVehImage(v, v->direction);
+	v->cur_image = v->GetImage(v->direction);
 	v->UpdateDeltaXY(v->direction);
 	RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
 	return true;
