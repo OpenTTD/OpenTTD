@@ -3363,5 +3363,7 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}El nombre debe ser único
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ir a la siguiente señal
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ir a la señal anterior
 
 ########

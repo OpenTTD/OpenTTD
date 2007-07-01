@@ -1115,6 +1115,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :最初の鉄道
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :最新の鉄道種類
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :最も使われている鉄道種類
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}適当な車両がまだ購入不可能であっても、基礎の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}一人のプレヤーの飛行機数上限：{ORANGE}{STRING}
@@ -3357,5 +3358,11 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}名前は唯一でなければなりません
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}次の標示へ移動
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}前の標示へ移動
 
 ########
