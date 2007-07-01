@@ -726,14 +726,6 @@ void DeleteVehicleChain(Vehicle *v)
 	} while (v != NULL);
 }
 
-
-void Aircraft_Tick(Vehicle *v);
-void RoadVeh_Tick(Vehicle *v);
-void Ship_Tick(Vehicle *v);
-void Train_Tick(Vehicle *v);
-static void EffectVehicle_Tick(Vehicle *v);
-void DisasterVehicle_Tick(Vehicle *v);
-
 /** head of the linked list to tell what vehicles that visited a depot in a tick */
 static Vehicle* _first_veh_in_depot_list;
 
@@ -763,16 +755,6 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 	}
 }
 
-typedef void VehicleTickProc(Vehicle*);
-static VehicleTickProc* _vehicle_tick_procs[] = {
-	Train_Tick,
-	RoadVeh_Tick,
-	Ship_Tick,
-	Aircraft_Tick,
-	EffectVehicle_Tick,
-	DisasterVehicle_Tick,
-};
-
 void CallVehicleTicks()
 {
 	_first_veh_in_depot_list = NULL; // now we are sure it's initialized at the start of each tick
@@ -782,7 +764,7 @@ void CallVehicleTicks()
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		_vehicle_tick_procs[v->type](v);
+		v->Tick();
 
 		switch (v->type) {
 			default: break;
@@ -1532,9 +1514,9 @@ Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVeh
 	return CreateEffectVehicle(v->x_pos + x, v->y_pos + y, v->z_pos + z, type);
 }
 
-static void EffectVehicle_Tick(Vehicle *v)
+void SpecialVehicle::Tick()
 {
-	_effect_tick_procs[v->subtype](v);
+	_effect_tick_procs[this->subtype](this);
 }
 
 Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)

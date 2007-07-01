@@ -3305,24 +3305,24 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 }
 
 
-void Train_Tick(Vehicle *v)
+void Train::Tick()
 {
-	if (_age_cargo_skip_counter == 0) v->cargo.AgeCargo();
+	if (_age_cargo_skip_counter == 0) this->cargo.AgeCargo();
 
-	v->tick_counter++;
+	this->tick_counter++;
 
-	if (IsFrontEngine(v)) {
-		v->current_order_time++;
+	if (IsFrontEngine(this)) {
+		this->current_order_time++;
 
-		TrainLocoHandler(v, false);
+		TrainLocoHandler(this, false);
 
 		/* make sure vehicle wasn't deleted. */
-		if (v->type == VEH_TRAIN && IsFrontEngine(v))
-			TrainLocoHandler(v, true);
-	} else if (IsFreeWagon(v) && HASBITS(v->vehstatus, VS_CRASHED)) {
+		if (this->type == VEH_TRAIN && IsFrontEngine(this))
+			TrainLocoHandler(this, true);
+	} else if (IsFreeWagon(this) && HASBITS(this->vehstatus, VS_CRASHED)) {
 		/* Delete flooded standalone wagon */
-		if (++v->u.rail.crash_anim_pos >= 4400)
-			DeleteVehicle(v);
+		if (++this->u.rail.crash_anim_pos >= 4400)
+			DeleteVehicle(this);
 	}
 }
 

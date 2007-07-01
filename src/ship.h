@@ -47,6 +47,7 @@ struct Ship: public Vehicle {
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return true; }
 	int GetImage(Direction direction) const;
+	void Tick();
 };
 
 #endif /* SHIP_H */

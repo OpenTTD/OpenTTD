@@ -741,9 +741,9 @@ static DisasterVehicleTickProc * const _disastervehicle_tick_procs[] = {
 };
 
 
-void DisasterVehicle_Tick(Vehicle *v)
+void DisasterVehicle::Tick()
 {
-	_disastervehicle_tick_procs[v->subtype](v);
+	_disastervehicle_tick_procs[this->subtype](this);
 }
 
 

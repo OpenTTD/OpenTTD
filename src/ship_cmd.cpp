@@ -787,10 +787,10 @@ static void AgeShipCargo(Vehicle *v)
 	v->cargo.AgeCargo();
 }
 
-void Ship_Tick(Vehicle *v)
+void Ship::Tick()
 {
-	AgeShipCargo(v);
-	ShipController(v);
+	AgeShipCargo(this);
+	ShipController(this);
 }
 
 

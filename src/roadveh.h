@@ -82,6 +82,7 @@ struct RoadVehicle : public Vehicle {
 	bool IsPrimaryVehicle() const { return IsRoadVehFront(this); }
 	bool HasFront() const { return true; }
 	int GetImage(Direction direction) const;
+	void Tick();
 };
 
 byte GetRoadVehLength(const Vehicle *v);

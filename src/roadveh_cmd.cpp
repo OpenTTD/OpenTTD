@@ -1829,11 +1829,11 @@ static void AgeRoadVehCargo(Vehicle *v)
 	v->cargo.AgeCargo();
 }
 
-void RoadVeh_Tick(Vehicle *v)
+void RoadVehicle::Tick()
 {
-	AgeRoadVehCargo(v);
+	AgeRoadVehCargo(this);
 
-	if (IsRoadVehFront(v)) RoadVehController(v);
+	if (IsRoadVehFront(this)) RoadVehController(this);
 }
 
 static void CheckIfRoadVehNeedsService(Vehicle *v)

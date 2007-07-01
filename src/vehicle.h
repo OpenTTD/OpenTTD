@@ -427,6 +427,11 @@ struct Vehicle {
 	 * @return the sprite for the given vehicle in the given direction
 	 */
 	virtual int GetImage(Direction direction) const { return 0; }
+
+	/**
+	 * Calls the tick handler of the vehicle
+	 */
+	virtual void Tick() = 0;
 };
 
 /**
@@ -453,6 +458,7 @@ struct SpecialVehicle : public Vehicle {
 
 	const char *GetTypeString() const { return "special vehicle"; }
 	void UpdateDeltaXY(Direction direction);
+	void Tick();
 };
 
 /**
@@ -472,6 +478,7 @@ struct DisasterVehicle : public Vehicle {
 
 	const char *GetTypeString() const { return "disaster vehicle"; }
 	void UpdateDeltaXY(Direction direction);
+	void Tick();
 };
 
 /**
@@ -490,6 +497,7 @@ struct InvalidVehicle : public Vehicle {
 	virtual ~InvalidVehicle() {}
 
 	const char *GetTypeString() const { return "invalid vehicle"; }
+	void Tick() {}
 };
 
 #define is_custom_sprite(x) (x >= 0xFD)

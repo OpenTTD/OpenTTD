@@ -2110,17 +2110,17 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 	AirportGoToNextPosition(v);
 }
 
-void Aircraft_Tick(Vehicle *v)
+void Aircraft::Tick()
 {
-	if (!IsNormalAircraft(v)) return;
+	if (!IsNormalAircraft(this)) return;
 
-	if (v->subtype == AIR_HELICOPTER) HelicopterTickHandler(v);
+	if (this->subtype == AIR_HELICOPTER) HelicopterTickHandler(this);
 
-	AgeAircraftCargo(v);
+	AgeAircraftCargo(this);
 
 	for (uint i = 0; i != 2; i++) {
-		AircraftEventHandler(v, i);
-		if (v->type != VEH_AIRCRAFT) // In case it was deleted
+		AircraftEventHandler(this, i);
+		if (this->type != VEH_AIRCRAFT) // In case it was deleted
 			break;
 	}
 }
