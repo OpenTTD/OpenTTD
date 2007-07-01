@@ -1642,7 +1642,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 				if (CHANCE16I(20, 1024, r)) new_prod -= max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
 				/* Chance of increasing becomes better when more is transported */
 				if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16) &&
-						(indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) == 0) {
+						((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) == 0 || _opt.landscape != LT_TEMPERATE)) {
 					new_prod += max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
 				}
 
