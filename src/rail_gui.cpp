@@ -1231,7 +1231,7 @@ void ReinitGuiAfterToggleElrail(bool disable)
 
 void SetDefaultRailGui()
 {
-	if (_local_player == PLAYER_SPECTATOR) return;
+	if (_local_player == PLAYER_SPECTATOR || !IsValidPlayer(_local_player)) return;
 
 	extern RailType _last_built_railtype;
 	RailType rt = (RailType)_patches.default_rail_type;
