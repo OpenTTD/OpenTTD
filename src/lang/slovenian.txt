@@ -3442,5 +3442,7 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Ime mora biti edinstveno
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Pojdi na naslednjo oznako
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Pojdi na  predhodno oznako
 
 ########

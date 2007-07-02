@@ -3,6 +3,8 @@
 ##isocode zh_CN
 ##plural 1
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}超过地图边界
@@ -776,6 +778,7 @@ STR_02C3_GAME_OPTIONS                                           :游戏选项
 STR_02C5_DIFFICULTY_SETTINGS                                    :难度设定
 STR_02C7_CONFIG_PATCHES                                         :配置补丁
 STR_NEWGRF_SETTINGS                                             :NewGRF 设置
+STR_TRANSPARENCY_OPTIONS                                        :透明选项
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}显示城镇名称
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}显示车站名称
@@ -803,7 +806,6 @@ STR_02DD_SUBSIDIES                                              :财政补贴
 STR_02DE_MAP_OF_WORLD                                           :世界地图
 STR_EXTRA_VIEW_PORT                                             :额外视点
 STR_SIGN_LIST                                                   :标志列表
-STR_TRANSPARENCY_OPTIONS                                        :透明选项
 STR_02DF_TOWN_DIRECTORY                                         :城镇地图
 STR_TOWN_POPULATION                                             :{BLACK}世界人口：{COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}视点 {COMMA}
@@ -1130,6 +1132,8 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}启用�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}允许购买其他公司的股份
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}当拖动的时候每 {ORANGE}{STRING} 个地块放置一个信号灯
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}在 {ORANGE}{STRING} 前自动设置旗帜信号
+
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}主工具栏位置：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :左侧
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :中央
@@ -2529,6 +2533,13 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 车�
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :前往(不停) {TOWN} 车库
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :在 {TOWN} 车库保养(不停)
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :旅行 (无时间表)
+STR_TIMETABLE_TRAVEL_FOR                                        :前往 {STRING} 旅行
+STR_TIMETABLE_STAY_FOR                                          :并且在 {STRING} 停留
+STR_TIMETABLE_DAYS                                              :{COMMA} 天
+STR_TIMETABLE_TICKS                                             :{COMMA} 个标记
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}正在前往 {TOWN} 车库
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}正在前往 {TOWN} 车库，{VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}在 {TOWN} 车库保养
@@ -2570,6 +2581,8 @@ STR_8828_UNLOAD                                                 :{BLACK}卸货
 STR_REFIT                                                       :{BLACK}改装
 STR_REFIT_TIP                                                   :{BLACK}选择要在调度计划中改装的货物类型。CTRL+单击可以去掉说明。
 STR_REFIT_ORDER                                                 :(改装为 {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}时间表
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}切换到时间表视图
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (调度计划)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}-- 调度计划结束 --
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2586,6 +2599,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}调度�
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}不能插入新的调度计划……
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}不能删除调度计划……
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}不能执行这个命令……
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}不能移动这条命令…
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}不能跳过当前命令…
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}不能跳转到选定的命令...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}不能移动这项调度计划……
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}尾部的列车引擎必须和头部的一起写作……
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2617,11 +2633,16 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}显示�
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}显示列车的运载能力
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}根据不同的挂车种类显示相应的总运力
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}调度列表 - 单击一个调度指令可以使之高亮化. CTRL + 单击可以将视点移动到相应的车站
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}跳过当前命令并执行下一条命令。CTRL并单击可以跳过选定的命令
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}删除高亮的调度命令
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令铁车在高亮的指令对应的车站不停车
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}在调度列表的结尾或高亮项目的前面增加一条新指令
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令列车在高亮项目对应的车站装满货物
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令列车在高亮项目对应的车站卸载货物
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}时间表 - 单击一个命令可以使其高亮。
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变高亮选择的命令执行的时间
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除高亮选择的命令的执行时间
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}重置晚点计数器，从而使车辆准时到达
 STR_SERVICE_HINT                                                :{BLACK}除非需要在此处保养，否则跳过这一项目
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}费用：{CURRENCY} 重量：{WEIGHT_S}{}速度：{VELOCITY}  功率：{POWER}{}运行费用：{CURRENCY}/yr{}Capacity: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}抛锚
@@ -2643,6 +2664,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}重命�
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}不能重命名车辆的类型...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令列车在高亮指令对应的车站寄存货物
 STR_886F_TRANSFER                                               :{BLACK}联运
+STR_CLEAR_TIME                                                  :{BLACK}清除时间
+STR_RESET_LATENESS                                              :{BLACK}清除晚点计数器
 
 STR_TRAIN_STOPPING                                              :{RED}正在停止
 STR_TRAIN_STOPPING_VEL                                          :{RED}正在停止，{VELOCITY}
@@ -2653,6 +2676,18 @@ STR_TRAIN_START_NO_CATENARY                                     :这不是电气
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}新 {STRING} 上市了！
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}新 {STRING} 上市了！  -  {ENGINE}
+
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}不能给车辆编制时间表…
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}车辆只能在站内等候。
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}此车辆将不在本站停靠。
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}改变时间
+STR_TIMETABLE_STATUS_ON_TIME                                    :该车辆目前正点运行
+STR_TIMETABLE_STATUS_LATE                                       :该车辆目前晚点 {STRING}
+STR_TIMETABLE_STATUS_EARLY                                      :该车辆目前提前 {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :该时间表需要 {STRING} 完成
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :该时间表至少需要 {STRING} 完成（并非全部计划的时间）
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}自动填充
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}以第一次运行的时间来填充时间表
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}指定的位置有汽车
@@ -2695,6 +2730,7 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}将屏�
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}汽车列表 - 点击可以查看详细信息
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}购买高亮的汽车
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}价格：{CURRENCY}{}速度：{VELOCITY}{}运行成本：{CURRENCY}/年{}装载能力：{CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}运力： {LTBLUE}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}命名汽车
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}不能命名汽车……
@@ -2860,6 +2896,7 @@ STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}新的�
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}不能改装飞机……
 STR_GO_TO_AIRPORT_HANGAR                                        :前往 {STATION} 机库
 SERVICE_AT_AIRPORT_HANGAR                                       :在 {STATION} 机库保养
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}齐柏林飞艇在 {STATION} 失事！
@@ -3173,3 +3210,16 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}调节�
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}调节车站、码头及路点等的透明度
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}调节桥梁的透明度
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}调节灯塔及信号发射塔的透明度
+
+
+##### Mass Order
+
+
+
+
+
+
+
+#### Improved sign GUI
+
+########

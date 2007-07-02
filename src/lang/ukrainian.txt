@@ -3524,4 +3524,8 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Ім'я має бути унікальним
 
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Наступне позначення
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Попереднє позначення
+
 ########

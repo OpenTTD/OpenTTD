@@ -1146,7 +1146,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :tak, ale wykluc
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :wszystkich pojazdów
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ostrzegaj, jeśli pociąg przynosi straty: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Pojazdy nigdy nie są wycofywane: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autoodnowienie pojazdu gdy staje się stary
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autoodnawianie pojazdów gdy stają się stare
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie następuje {ORANGE}{STRING}{LTBLUE} miesięcy przed/po maks. wieku
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. ilość pieniędzy potrzebna do autoodnowienia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o błędzie: {ORANGE}{STRING} sekund{P a y ""}
@@ -1188,7 +1188,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Powiększ widok
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Przesuń widok
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Rolka wyłączona
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Prędkość przesuwania widoku: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę tworząc nową grę: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Używaj zaawansowanej listy pojazdów: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Pokazuj wskaźniki załadunku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Uaktywnij rozkłady jazdy pojazdów: {ORANGE}{STRING}
@@ -1565,7 +1565,7 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Uzyskiwa
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ów ów} chce się przyłączyć
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kB dotąd pobranych
 
-STR_NETWORK_DISCONNECT                                          :{BLACK}Rozłączony
+STR_NETWORK_DISCONNECT                                          :{BLACK}Rozłącz
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wprowadź ilość pieniędzy jaką chcesz przekazać
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer jest chroniony. Wprowadź hasło
@@ -1902,7 +1902,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Zbyt bli
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Przylega do więcej niż jednej stacji
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Za dużo stacji w tym mieście
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Za duzo stacji
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Za dużo  wiele przystankow autobusowych
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Za dużo przystankow autobusowych
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Za dużo  wiele stacji załadunku ciężarówek
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Zbyt  blisko innej stacji
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
@@ -2800,7 +2800,7 @@ STR_8828_UNLOAD                                                 :{BLACK}Wyładun
 STR_REFIT                                                       :{BLACK}Przebuduj
 STR_REFIT_TIP                                                   :{BLACK}Wybierz do przewozu jakiego towaru przebudować pojazd w tym zadaniu. CTRL+klik usuwa polecenie przebudowy
 STR_REFIT_ORDER                                                 :(Przebuduj na {STRING})
-STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład jazdy
+STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Otwórz widok rozkładu jazdy
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Polecenia)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec poleceń - -
@@ -2884,7 +2884,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie moż
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw by w zaznaczonym poleceniu pojazd był zmuszony do pozostawienia towaru dla kolejnego pojazdu
 STR_886F_TRANSFER                                               :{BLACK}Przewieź
 STR_CLEAR_TIME                                                  :{BLACK}Usuń czas
-STR_RESET_LATENESS                                              :{BLACK}Wyzeruj licznik spóźnienia
+STR_RESET_LATENESS                                              :{BLACK}Wyzeruj spóźnienia
 
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie
 STR_TRAIN_STOPPING_VEL                                          :{RED}Hamowanie, {VELOCITY}
@@ -2905,7 +2905,7 @@ STR_TIMETABLE_STATUS_LATE                                       :Ten pojazd jest
 STR_TIMETABLE_STATUS_EARLY                                      :Ten pojazd spieszy się teraz o {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :Ten rozkład jazdy zajmie {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ten rozkład jazdy zajmie przynajmniej {STRING} (nie wszystkie stacje są na rozkładzie)
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autowypełnienie
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij rozkład jazdy automatycznie wartościami z następnej podróży
 
 ##id 0x9000
@@ -3453,6 +3453,7 @@ STR_GROUP_ALL_ROADS                                             :Wszystkie samoc
 STR_GROUP_ALL_SHIPS                                             :Wszystkie statki
 STR_GROUP_ALL_AIRCRAFTS                                         :Wszystkie samoloty
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj poj. współdzielące
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie pojazdy
 
 STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Pociąg{P "" i ów}
@@ -3467,6 +3468,7 @@ STR_GROUP_CAN_T_DELETE                                          :{WHITE}Nie moż
 STR_GROUP_CAN_T_RENAME                                          :{WHITE}Nie można zmienić nazwy grupy...
 STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Nie można usunąć wszystkich pojazdów z tej grupy...
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Nie można dodać pojazdu do tej grupy...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Nie można dodać pojazdów współdzielących polecenia do grupy...
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupy - Kliknij na grupie aby wyświetlić wszystkie pojazdy z grupy
 STR_GROUP_CREATE_TIP                                            :{BLACK}Kliknij aby stworzyć grupę
@@ -3489,5 +3491,7 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nazwa nie może się powtarzać
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Idź do następnej tablicy
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Idź do poprzedniej tablicy
 
 ########

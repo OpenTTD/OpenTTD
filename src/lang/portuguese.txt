@@ -31,7 +31,7 @@ STR_0015_GRAIN                                                  :Cereais
 STR_0016_WOOD                                                   :Madeira
 STR_0017_IRON_ORE                                               :Minério de Ferro
 STR_0018_STEEL                                                  :Aço
-STR_0019_VALUABLES                                              :Valores
+STR_0019_VALUABLES                                              :Bens Valiosos
 STR_001A_COPPER_ORE                                             :Minério de Cobre
 STR_001B_MAIZE                                                  :Milho
 STR_001C_FRUIT                                                  :Fruta
@@ -1101,6 +1101,10 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Percorrer mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel no mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automática ao iniciar um novo jogo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Linha Normal
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Linha Electrificada
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
@@ -1653,8 +1657,12 @@ STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construi
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir depósito (para criação e manutenção de veículos de estrada)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construir estação de autocarros
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construir área de carregamento de camiões
+STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Construir paragem de eléctricos para passageiros
+STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Construir paragem de eléctricos para carga
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construir ponte de estrada
+STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construir ponte para eléctricos
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construir túnel de estrada
+STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construir túnel para eléctricos
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Alternar entre construir/remover estradas
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Seleccionar a orientação do depósito
 STR_1814_ROAD                                                   :Estrada
@@ -1664,6 +1672,7 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Depósito de ve
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passagem de nível
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossível remover estação...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossível remover estação...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Impossível remover paragem de eléctricos de passageiros
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Cidades
@@ -2850,7 +2859,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova cap
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Não é possível adaptar barco...
 STR_9842_REFITTABLE                                             :(adaptável)
 STR_GO_TO_SHIP_DEPOT                                            :Ir para o depósito naval de {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Manutenção no depósito de {TOWN}
+SERVICE_AT_SHIP_DEPOT                                           :Manutenção no estaleiro de {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Aeroportos
@@ -3278,5 +3287,7 @@ STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Lucro deste ano: {RED}{CURRENCY} {BLACK}(ano passado: {RED}{CURRENCY}{BLACK})
 
 
+
+#### Improved sign GUI
 
 ########
