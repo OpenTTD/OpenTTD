@@ -1184,9 +1184,16 @@ static const char* QZ_SetVideoWindowed(uint width, uint height)
 		/* We already have a window, just change its size */
 		if (!isCustom) {
 			[ _cocoa_video_data.window setContentSize:contentRect.size ];
+			// Ensure frame height - title bar height >= view height
+			contentRect.size.height = clamp(height, 0, [ _cocoa_video_data.window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
+			height = contentRect.size.height;
 			[ _cocoa_video_data.qdview setFrameSize:contentRect.size ];
 		}
 	}
+
+	// Update again
+	_cocoa_video_data.width = width;
+	_cocoa_video_data.height = height;
 
 	[ _cocoa_video_data.window center ];
 
