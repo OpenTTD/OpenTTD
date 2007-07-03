@@ -1896,6 +1896,7 @@ CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		DeleteName(t->townnametype);
 		t->townnametype = str;
+		t->townnamegrfid = 0;
 
 		UpdateTownVirtCoord(t);
 		_town_sort_dirty = true;
