@@ -155,7 +155,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Kartta - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Pelin asetukset
 STR_00B2_MESSAGE                                                :{YELLOW}Viesti
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Viesti: {COMPANY}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Viesti: {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Varoitus!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ei onnistu....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Aluetta ei voi tyhjentää....

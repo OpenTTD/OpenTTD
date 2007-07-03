@@ -155,7 +155,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}地图 - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}游戏选项
 STR_00B2_MESSAGE                                                :{YELLOW}消息
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}来自 {COMPANY} 的消息
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}来自 {STRING} 的消息
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}注意！
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}不能这样做……
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}不能清除这个区域……

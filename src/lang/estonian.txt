@@ -255,7 +255,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Mängu seaded
 STR_00B2_MESSAGE                                                :{YELLOW}Sõnum
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}{COMPANY} teatab
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING} teatab
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Ettevaatust!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Seda ei saa teha....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Seda ala ei saa puhastada....

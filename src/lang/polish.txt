@@ -199,7 +199,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcje Gry
 STR_00B2_MESSAGE                                                :{YELLOW}Wiadomość
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Wiadomość od {COMPANY}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Wiadomość od {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Uwaga!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nie można tego zrobić...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nie można wyczyścić terenu...

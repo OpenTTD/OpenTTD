@@ -153,7 +153,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spel Opsies
 STR_00B2_MESSAGE                                                :{YELLOW}Boodskap
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Boodskap van {COMPANY}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Boodskap van {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Waarskuwing!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan nie dit doen nie....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan nie die area reinig nie....

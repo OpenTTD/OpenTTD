@@ -156,7 +156,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Karte - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spieleinstellungen
 STR_00B2_MESSAGE                                                :{YELLOW}Nachricht
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Nachricht von {COMPANY}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Nachricht von {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Achtung!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kann dies nicht tun....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kann das Gebiet nicht räumen....

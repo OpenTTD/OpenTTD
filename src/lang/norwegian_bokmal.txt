@@ -155,7 +155,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Kart - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spillinnstillinger
 STR_00B2_MESSAGE                                                :{YELLOW}Melding
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Melding fra {COMPANY}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Melding fra {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Advarsel!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan ikke gjøre dette...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde dette området...

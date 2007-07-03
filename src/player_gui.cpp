@@ -935,7 +935,8 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		Player *p = GetPlayer((PlayerID)w->window_number);
-		SetDParam(0, p->index);
+		SetDParam(0, STR_COMPANY_NAME);
+		SetDParam(1, p->index);
 		DrawWindowWidgets(w);
 
 		DrawPlayerFace(p->face, p->player_color, 2, 16);

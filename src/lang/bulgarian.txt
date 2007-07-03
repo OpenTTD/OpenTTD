@@ -157,7 +157,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Карта - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Настройки
 STR_00B2_MESSAGE                                                :{YELLOW}Съобщение
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Съобщение от {COMPANY}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Съобщение от {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Внимание!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Това е невъзможно....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Изчистването е невъзможно....

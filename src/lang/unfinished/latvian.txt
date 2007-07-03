@@ -151,7 +151,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Karte - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spe'les parametri
 STR_00B2_MESSAGE                                                :{YELLOW}Zin'ojums
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Zin'ojums no {COMPANY}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Zin'ojums no {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ta' nevar dari't....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}S'o laukumu nevar noli'dzina't....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Org'ìina'la's autortiesi'bas {COPYRIGHT} 1995 Chris Sawyer, Visas tiesi'bas rezerve'tas
