@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "hal.h"
 #include "heightmap.h"
 #include "debug.h"
 #include "functions.h"

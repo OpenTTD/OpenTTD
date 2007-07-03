@@ -7,7 +7,6 @@
 #include "strings.h"
 #include "table/strings.h"
 #include "gfx.h"
-#include "hal.h"
 #include "fileio.h"
 #include "viewport.h"
 #include "player.h"

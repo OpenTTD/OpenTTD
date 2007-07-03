@@ -6,7 +6,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "hal.h"
 #include "string.h"
 #include "variables.h"
 #include "functions.h"

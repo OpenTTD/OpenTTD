@@ -2,6 +2,7 @@
 #include "../zoom.hpp"
 #include "../gfx.h"
 #include "../debug.h"
+#include "../hal.h"
 #include "../table/sprites.h"
 #include "32bpp_anim.hpp"
 

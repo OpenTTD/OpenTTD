@@ -17,7 +17,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "hal.h"
 #include "vehicle.h"
 #include "station.h"
 #include "thread.h"
