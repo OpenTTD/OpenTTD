@@ -153,6 +153,8 @@
 # if _MSC_VER >= 1400              // MSVC 2005 safety checks
 #  pragma warning(disable: 4996)   // 'strdup' was declared deprecated
 #  define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
+#  pragma warning(disable: 6308)   // code analyzer: 'realloc' might return null pointer: assigning null pointer to 't_ptr', which is passed as an argument to 'realloc', will cause the original memory block to be leaked
+#  pragma warning(disable: 6011)   // code analyzer: Dereferencing NULL pointer 'pfGetAddrInfo': Lines: 995, 996, 998, 999, 1001
 # else /* _MSC_VER >= 1400  ( <1400 for MSVC2003) */
 #  pragma warning(disable: 4288)   // nonstandard extension used : 'y' : loop control variable declared in the for-loop is used outside the for-loop scope; it conflicts with the declaration in the outer scope
 #  pragma warning(disable: 4292)   // compiler limit : terminating debug information emission for enum 'StringIdEnum' with member 'STR_801D_COAL_CAR'
