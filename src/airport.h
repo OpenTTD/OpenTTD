@@ -70,48 +70,48 @@ enum {
 /* Movement Blocks on Airports */
 // blocks (eg_airport_flags)
 static const uint64
-	TERM1_block              = 1 <<  0,
-	TERM2_block              = 1 <<  1,
-	TERM3_block              = 1 <<  2,
-	TERM4_block              = 1 <<  3,
-	TERM5_block              = 1 <<  4,
-	TERM6_block              = 1 <<  5,
-	HELIPAD1_block           = 1 <<  6,
-	HELIPAD2_block           = 1 <<  7,
-	RUNWAY_IN_OUT_block      = 1 <<  8,
-	RUNWAY_IN_block          = 1 <<  8,
-	AIRPORT_BUSY_block       = 1 <<  8,
-	RUNWAY_OUT_block         = 1 <<  9,
-	TAXIWAY_BUSY_block       = 1 << 10,
-	OUT_WAY_block            = 1 << 11,
-	IN_WAY_block             = 1 << 12,
-	AIRPORT_ENTRANCE_block   = 1 << 13,
-	TERM_GROUP1_block        = 1 << 14,
-	TERM_GROUP2_block        = 1 << 15,
-	HANGAR2_AREA_block       = 1 << 16,
-	TERM_GROUP2_ENTER1_block = 1 << 17,
-	TERM_GROUP2_ENTER2_block = 1 << 18,
-	TERM_GROUP2_EXIT1_block  = 1 << 19,
-	TERM_GROUP2_EXIT2_block  = 1 << 20,
-	PRE_HELIPAD_block        = 1 << 21,
+	TERM1_block              = 1ULL <<  0,
+	TERM2_block              = 1ULL <<  1,
+	TERM3_block              = 1ULL <<  2,
+	TERM4_block              = 1ULL <<  3,
+	TERM5_block              = 1ULL <<  4,
+	TERM6_block              = 1ULL <<  5,
+	HELIPAD1_block           = 1ULL <<  6,
+	HELIPAD2_block           = 1ULL <<  7,
+	RUNWAY_IN_OUT_block      = 1ULL <<  8,
+	RUNWAY_IN_block          = 1ULL <<  8,
+	AIRPORT_BUSY_block       = 1ULL <<  8,
+	RUNWAY_OUT_block         = 1ULL <<  9,
+	TAXIWAY_BUSY_block       = 1ULL << 10,
+	OUT_WAY_block            = 1ULL << 11,
+	IN_WAY_block             = 1ULL << 12,
+	AIRPORT_ENTRANCE_block   = 1ULL << 13,
+	TERM_GROUP1_block        = 1ULL << 14,
+	TERM_GROUP2_block        = 1ULL << 15,
+	HANGAR2_AREA_block       = 1ULL << 16,
+	TERM_GROUP2_ENTER1_block = 1ULL << 17,
+	TERM_GROUP2_ENTER2_block = 1ULL << 18,
+	TERM_GROUP2_EXIT1_block  = 1ULL << 19,
+	TERM_GROUP2_EXIT2_block  = 1ULL << 20,
+	PRE_HELIPAD_block        = 1ULL << 21,
 
 // blocks for new airports
-	TERM7_block              = 1 << 22,
-	TERM8_block              = 1 << 23,
-	TERM9_block              = 1 << 24,
-	HELIPAD3_block           = 1 << 24,
-	TERM10_block             = 1 << 25,
-	HELIPAD4_block           = 1 << 25,
-	HANGAR1_AREA_block       = 1 << 26,
-	OUT_WAY2_block           = 1 << 27,
-	IN_WAY2_block            = 1 << 28,
-	RUNWAY_IN2_block         = 1 << 29,
-	RUNWAY_OUT2_block        = 1 << 10,   // note re-uses TAXIWAY_BUSY
-	HELIPAD_GROUP_block      = 1 << 13,   // note re-uses AIRPORT_ENTRANCE
-	OUT_WAY_block2           = 1 << 31,
+	TERM7_block              = 1ULL << 22,
+	TERM8_block              = 1ULL << 23,
+	TERM9_block              = 1ULL << 24,
+	HELIPAD3_block           = 1ULL << 24,
+	TERM10_block             = 1ULL << 25,
+	HELIPAD4_block           = 1ULL << 25,
+	HANGAR1_AREA_block       = 1ULL << 26,
+	OUT_WAY2_block           = 1ULL << 27,
+	IN_WAY2_block            = 1ULL << 28,
+	RUNWAY_IN2_block         = 1ULL << 29,
+	RUNWAY_OUT2_block        = 1ULL << 10,   // note re-uses TAXIWAY_BUSY
+	HELIPAD_GROUP_block      = 1ULL << 13,   // note re-uses AIRPORT_ENTRANCE
+	OUT_WAY_block2           = 1ULL << 31,
 // end of new blocks
 
-	NOTHING_block            = 1 << 30;
+	NOTHING_block            = 1ULL << 30;
 
 struct AirportMovingData {
 	int16 x;
