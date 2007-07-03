@@ -196,11 +196,13 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkTCPSocketHandl
 	const GRFConfig *c;
 	uint grf_count = 0;
 
-	for (c = _grfconfig; c != NULL; c = c->next) grf_count++;
+	for (c = _grfconfig; c != NULL; c = c->next) {
+		if (!HASBIT(c->flags, GCF_STATIC)) grf_count++;
+	}
 
 	p->Send_uint8 (grf_count);
 	for (c = _grfconfig; c != NULL; c = c->next) {
-		cs->Send_GRFIdentifier(p, c);
+		if (!HASBIT(c->flags, GCF_STATIC)) cs->Send_GRFIdentifier(p, c);
 	}
 
 	cs->Send_Packet(p);
