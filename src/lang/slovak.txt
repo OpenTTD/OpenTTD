@@ -219,7 +219,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Nastavenia hry
 STR_00B2_MESSAGE                                                :{YELLOW}Správa
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Správa od {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Správa od {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Upozornenie!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nie je možné vykonat ...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast nie je možné vycistit ...
@@ -3422,5 +3422,11 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Meno musí byt jedinecné
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Prejst na dalsiu znacku
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Prejst na predchádzajúcu znacku
 
 ########

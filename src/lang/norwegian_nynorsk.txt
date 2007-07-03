@@ -156,7 +156,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Kart - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spelinstillingar
 STR_00B2_MESSAGE                                                :{YELLOW}Melding
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Melding frå {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Melding frå {COMPANY}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Åtvaring!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan ikkje gjere dette...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikkje rydde dette området...
@@ -3359,5 +3359,11 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Namnet må vera unikt
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Gå til neste skilt
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Gå til førre skilt
 
 ########

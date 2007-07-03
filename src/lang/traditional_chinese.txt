@@ -155,7 +155,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}地圖 - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}遊戲選項
 STR_00B2_MESSAGE                                                :{YELLOW}訊息
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}來自{STRING}的訊息
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}來自{COMPANY}的訊息
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}注意！
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}不能執行以下動作....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}不能清除這個地段....
@@ -1115,6 +1115,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :最新誕生的
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :最常使用的
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}即使沒有適合的運具可使用也顯示建造工具：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家可擁有列車數目：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}每位玩家可擁有車輛數目：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}每位玩家可擁有飛機數目：{ORANGE}{STRING}
@@ -2773,6 +2774,8 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}變更�
 STR_TIMETABLE_STATUS_ON_TIME                                    :此運具目前準點
 STR_TIMETABLE_STATUS_LATE                                       :此運具目前慢了 {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :此運具目前早了 {STRING}
+STR_TIMETABLE_TOTAL_TIME                                        :完成這份時刻表需時 {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :這份時刻表至少需要 {STRING} 來完成 (此表尚未完成)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動製表
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動地將第一次的路程列為時刻表
 
@@ -3355,5 +3358,11 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}名稱必須是唯一的
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}前往下一個標誌
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}前往前一個標誌
 
 ########
