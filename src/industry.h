@@ -28,9 +28,10 @@ enum {
 };
 
 enum IndustryLifeType {
-	INDUSTRYLIFE_NOT_CLOSABLE,     ///< Industry can never close
-	INDUSTRYLIFE_PRODUCTION,       ///< Industry can close and change of production
-	INDUSTRYLIFE_CLOSABLE,         ///< Industry can only close (no production change)
+	INDUSTRYLIFE_BLACK_HOLE =      0, ///< Like power plants and banks
+	INDUSTRYLIFE_EXTRACTIVE = 1 << 0, ///< Like mines
+	INDUSTRYLIFE_ORGANIC    = 1 << 1, ///< Like forests
+	INDUSTRYLIFE_PROCESSING = 1 << 2, ///< Like factories
 };
 
 /* Procedures that can be run to check whether an industry may

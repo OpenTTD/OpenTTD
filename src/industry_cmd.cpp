@@ -1622,56 +1622,52 @@ static void ExtChangeIndustryProduction(Industry *i)
 	int j;
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 
-	switch (indspec->life_type) {
-		case INDUSTRYLIFE_NOT_CLOSABLE:
-			return;
+	if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 
-		case INDUSTRYLIFE_CLOSABLE:
-			if ((byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1, 180))
-				closeit = false;
-			break;
+	if (HASBIT(indspec->life_type, INDUSTRYLIFE_ORGANIC) || HASBIT(indspec->life_type, INDUSTRYLIFE_EXTRACTIVE)) {
+		for (j = 0; j < 2 && indspec->produced_cargo[j] != CT_INVALID; j++){
+			uint32 r = Random();
+			int old_prod, new_prod, percent;
+			int mag;
 
-		default: /* INDUSTRY_PRODUCTION */
-			for (j = 0; j < 2 && indspec->produced_cargo[j] != CT_INVALID; j++){
-				uint32 r = Random();
-				int old_prod, new_prod, percent;
-				int mag;
+			new_prod = old_prod = i->production_rate[j];
 
-				new_prod = old_prod = i->production_rate[j];
-
-				if (CHANCE16I(20, 1024, r)) new_prod -= max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
-				/* Chance of increasing becomes better when more is transported */
-				if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16) &&
-						((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) == 0 || _opt.landscape != LT_TEMPERATE)) {
-					new_prod += max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
-				}
-
-				new_prod = clamp(new_prod, 1, 255);
-				/* Do not stop closing the industry when it has the lowest possible production rate */
-				if (new_prod == old_prod && old_prod > 1) {
-					closeit = false;
-					continue;
-				}
-
-				percent = new_prod * 100 / old_prod - 100;
-				i->production_rate[j] = new_prod;
-
-				/* Close the industry when it has the lowest possible production rate */
-				if (new_prod > 1) closeit = false;
-
-				mag = abs(percent);
-				if (mag >= 10) {
-					SetDParam(2, mag);
-					SetDParam(0, GetCargo(indspec->produced_cargo[j])->name);
-					SetDParam(1, i->index);
-					AddNewsItem(
-						percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
-						NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ECONOMY, 0),
-						i->xy + TileDiffXY(1, 1), 0
-					);
-				}
+			if (CHANCE16I(20, 1024, r)) new_prod -= max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
+			/* Chance of increasing becomes better when more is transported */
+			if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16) &&
+					((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) == 0 || _opt.landscape != LT_TEMPERATE)) {
+				new_prod += max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
 			}
-			break;
+
+			new_prod = clamp(new_prod, 1, 255);
+			/* Do not stop closing the industry when it has the lowest possible production rate */
+			if (new_prod == old_prod && old_prod > 1) {
+				closeit = false;
+				continue;
+			}
+
+			percent = (old_prod == 0) ? 100 : (new_prod * 100 / old_prod - 100);
+			i->production_rate[j] = new_prod;
+
+			/* Close the industry when it has the lowest possible production rate */
+			if (new_prod > 1) closeit = false;
+
+			mag = abs(percent);
+			if (mag >= 10) {
+				SetDParam(2, mag);
+				SetDParam(0, GetCargo(indspec->produced_cargo[j])->name);
+				SetDParam(1, i->index);
+				AddNewsItem(
+					percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
+					NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ECONOMY, 0),
+					i->xy + TileDiffXY(1, 1), 0
+				);
+			}
+		}
+	}
+
+	if (HASBIT(indspec->life_type, INDUSTRYLIFE_PROCESSING)) {
+		if ((byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1, 180)) closeit = false;
 	}
 
 	/* If industry will be closed down, show this */
@@ -1785,59 +1781,55 @@ static void ChangeIndustryProduction(Industry *i)
 	int type = i->type;
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
-	switch (indspec->life_type) {
-		case INDUSTRYLIFE_NOT_CLOSABLE:
-			return;
+	if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 
-		case INDUSTRYLIFE_PRODUCTION:
-			/* decrease or increase */
-			if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE)
-				only_decrease = true;
+	if (HASBIT(indspec->life_type, INDUSTRYLIFE_ORGANIC) || HASBIT(indspec->life_type, INDUSTRYLIFE_EXTRACTIVE)) {
+		/* decrease or increase */
+		if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE)
+			only_decrease = true;
 
-			if (only_decrease || CHANCE16(1, 3)) {
-				/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
-				if (!only_decrease && (i->last_month_pct_transported[0] > 153) != CHANCE16(1, 3)) {
-					/* Increase production */
-					if (i->prod_level != 0x80) {
-						byte b;
+		if (only_decrease || CHANCE16(1, 3)) {
+			/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
+			if (!only_decrease && (i->last_month_pct_transported[0] > 153) != CHANCE16(1, 3)) {
+				/* Increase production */
+				if (i->prod_level != 0x80) {
+					byte b;
 
-						i->prod_level <<= 1;
+					i->prod_level <<= 1;
 
-						b = i->production_rate[0] * 2;
-						if (i->production_rate[0] >= 128)
-							b = 0xFF;
-						i->production_rate[0] = b;
+					b = i->production_rate[0] * 2;
+					if (i->production_rate[0] >= 128)
+						b = 0xFF;
+					i->production_rate[0] = b;
 
-						b = i->production_rate[1] * 2;
-						if (i->production_rate[1] >= 128)
-							b = 0xFF;
-						i->production_rate[1] = b;
+					b = i->production_rate[1] * 2;
+					if (i->production_rate[1] >= 128)
+						b = 0xFF;
+					i->production_rate[1] = b;
 
-						str = indspec->production_up_text;
-					}
+					str = indspec->production_up_text;
+				}
+			} else {
+				/* Decrease production */
+				if (i->prod_level == 4) {
+					i->prod_level = 0;
+					str = indspec->closure_text;
 				} else {
-					/* Decrease production */
-					if (i->prod_level == 4) {
-						i->prod_level = 0;
-						str = indspec->closure_text;
-					} else {
-						i->prod_level >>= 1;
-						i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
-						i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
+					i->prod_level >>= 1;
+					i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
+					i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
 
-						str = indspec->production_down_text;
-					}
+					str = indspec->production_down_text;
 				}
 			}
-			break;
-
-		case INDUSTRYLIFE_CLOSABLE:
-			/* maybe close */
-			if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, 2)) {
-				i->prod_level = 0;
-				str = indspec->closure_text;
-			}
-			break;
+		}
+	}
+	if (HASBIT(indspec->life_type, INDUSTRYLIFE_PROCESSING)) {
+		/* maybe close */
+		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, 2)) {
+			i->prod_level = 0;
+			str = indspec->closure_text;
+		}
 	}
 
 	if (str != STR_NULL) {
