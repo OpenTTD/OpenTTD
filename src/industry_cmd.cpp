@@ -1624,7 +1624,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 
 	if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 
-	if (HASBIT(indspec->life_type, INDUSTRYLIFE_ORGANIC) || HASBIT(indspec->life_type, INDUSTRYLIFE_EXTRACTIVE)) {
+	if ((indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0) {
 		for (j = 0; j < 2 && indspec->produced_cargo[j] != CT_INVALID; j++){
 			uint32 r = Random();
 			int old_prod, new_prod, percent;
@@ -1666,7 +1666,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 		}
 	}
 
-	if (HASBIT(indspec->life_type, INDUSTRYLIFE_PROCESSING)) {
+	if ((indspec->life_type & INDUSTRYLIFE_PROCESSING) != 0) {
 		if ((byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1, 180)) closeit = false;
 	}
 
