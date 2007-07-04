@@ -90,6 +90,8 @@ public:
 
 	FORCEINLINE int CurveCost(Trackdir td1, Trackdir td2)
 	{
+		assert(IsValidTrackdir(td1));
+		assert(IsValidTrackdir(td2));
 		int cost = 0;
 		if (TrackFollower::Allow90degTurns()
 				&& ((TrackdirToTrackdirBits(td2) & (TrackdirBits)TrackdirCrossesTrackdirs(td1)) != 0)) {
@@ -265,7 +267,7 @@ public:
 		TILE cur(n.m_key.m_tile, n.m_key.m_td);
 
 		// the previous tile will be needed for transition cost calculations
-		TILE prev = has_parent ? TILE() : TILE(n.m_parent->GetLastTile(), n.m_parent->GetLastTrackdir());
+		TILE prev = !has_parent ? TILE() : TILE(n.m_parent->GetLastTile(), n.m_parent->GetLastTrackdir());
 
 		EndSegmentReasonBits end_segment_reason = ESRB_NONE;
 
