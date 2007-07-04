@@ -2231,7 +2231,7 @@ STR_7038_INAUGURATED                                            :{GOLD}成立於
 STR_7039_VEHICLES                                               :{GOLD}運具：
 STR_TRAINS                                                      :{WHITE}列車 {COMMA} 列
 STR_ROAD_VEHICLES                                               :{WHITE}汽車 {COMMA} 輛
-STR_AIRCRAFT                                                    :{WHITE}{COMMA} 飛機
+STR_AIRCRAFT                                                    :{WHITE}飛機 {COMMA} 架
 STR_SHIPS                                                       :{WHITE}船舶 {COMMA} 艘
 STR_7042_NONE                                                   :{WHITE}無
 STR_7043_FACE_SELECTION                                         :{WHITE}選擇面孔
@@ -2961,7 +2961,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}將飛�
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}將主視野帶到機棚位置
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}飛機清單 - 點選飛機檢視詳細資料
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}購買選定的飛機
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}目前非機動作 - 按此可停止/起動飛機
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}目前飛機動作 - 按此可停止/起動飛機
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}顯示飛機的指令
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}將主視野帶到飛機位置
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}將飛機送到機棚。按住 CTRL 點選則只做維護

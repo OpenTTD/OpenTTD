@@ -1899,6 +1899,7 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Não é 
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Falha ao Guardar Jogo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Não é possível eliminar ficheiro
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Falha ao Abrir Jogo{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erro interno: {STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de unidades, directorias e ficheiros de jogos guardados
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome escolhido para guardar o jogo
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Eliminar o jogo guardado seleccionado
@@ -2598,6 +2599,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenção no
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sem parar para o depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenção no depósito de {TOWN} sem parar
 
+STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Dirige-se ao depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Dirige-se ao depósito de {TOWN}, {VELOCITY}
@@ -2766,6 +2768,7 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrar 
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista de veículos de estrada - clique num veículo para informações
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construir o veículo de estrada seleccionado
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Custo: {CURRENCY}{}Velocidade: {VELOCITY}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacidade: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Renomear veículo de estrada
@@ -3286,7 +3289,14 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Lucro deste ano: {GREEN}{CURRENCY} {BLACK}(ano passado: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Lucro deste ano: {RED}{CURRENCY} {BLACK}(ano passado: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nome deve ser único
 
 #### Improved sign GUI
 

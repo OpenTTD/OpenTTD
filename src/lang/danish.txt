@@ -1106,7 +1106,16 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Brug av
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Benyt laste-indikatorer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Slå køreplaner for transportmidler til: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis køreplan i tik i stedet for dage: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard skinnetype (efter nyt spil/hentet spil): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal jernbane
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrificeret jernbane
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnetskinne
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgængelige
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Sidste tilgængelige
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest anvendte
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis byggeværktøjer hvis ingen passende transportmidler er tilgængelige: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. antal tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. antal køretøjer per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks. antal fly per spiller: {ORANGE}{STRING}
@@ -2082,6 +2091,7 @@ STR_SV_STNAME_UPPER                                             :Øvre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplads
 STR_SV_STNAME_FOREST                                            :{STRING} Skov
+STR_SV_STNAME_FALLBACK                                          :{STRING} Station #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2641,7 +2651,7 @@ STR_881B_TRAINS                                                 :{WHITE}{COMPANY
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye jernbanekøretøjer
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nyt Elektrisk lokomotiv
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye monorailkøretøjer
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye magnetskinne køretøjer
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye magnetskinnekøretøjer
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Jernbanekøretøjer
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Byg køretøj
@@ -2764,6 +2774,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ændre t
 STR_TIMETABLE_STATUS_ON_TIME                                    :Dette transportmiddel kommer til tiden
 STR_TIMETABLE_STATUS_LATE                                       :Dette transportmiddel er nu {STRING} forsinket
 STR_TIMETABLE_STATUS_EARLY                                      :Dette transportmiddel er nu {STRING} foran køreplanen
+STR_TIMETABLE_TOTAL_TIME                                        :Denne køreplan vil tage {STRING} at fuldføre
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Denne køreplan vil tage mindst {STRING} at fuldføre (ikke alt indført i køreplan)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-udfyld
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Udfyld køreplanen automatisk med værdier fra den første tur
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køretøj i vejen
@@ -3338,7 +3352,17 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Afkast i indeværende år: {GREEN}{CURRENCY} {BLACK}(sidste år: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Afkast i indeværende år: {RED}{CURRENCY} {BLACK}(sidste år: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Navnet skal være unikt
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Gå til næste skilt
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Gå til forrige skilt
 
 ########
