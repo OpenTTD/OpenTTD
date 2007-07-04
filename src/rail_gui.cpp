@@ -373,8 +373,10 @@ static void HandleAutoSignalPlacement()
 		return;
 	}
 
-	SB(p2,  3, 1, _ctrl_pressed);
+	/* XXX Steal ctrl for autosignal function, until we get some GUI */
+	SB(p2,  3, 1, 0);
 	SB(p2,  4, 1, _cur_year < _patches.semaphore_build_before);
+	SB(p2,  6, 1, _ctrl_pressed);
 	SB(p2, 24, 8, _patches.drag_signals_density);
 
 	/* _patches.drag_signals_density is given as a parameter such that each user

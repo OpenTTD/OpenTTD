@@ -738,6 +738,64 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 	return cost;
 }
 
+static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal_ctr, bool remove)
+{
+	tile = AddTileIndexDiffCWrap(tile, _trackdelta[trackdir]);
+	if (tile == INVALID_TILE) return false;
+
+	/* Check for track bits on the new tile */
+	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0);
+	TrackdirBits trackdirbits = (TrackdirBits)(ts & TRACKDIR_BIT_MASK);
+
+	if (TracksOverlap(TrackdirBitsToTrackBits(trackdirbits))) return false;
+	trackdirbits &= TrackdirReachesTrackdirs(trackdir);
+
+	/* No track bits, must stop */
+	if (trackdirbits == TRACKDIR_BIT_NONE) return false;
+
+	/* Get the first track dir */
+	trackdir = RemoveFirstTrackdir(&trackdirbits);
+
+	/* Any left? It's a junction so we stop */
+	if (trackdirbits != TRACKDIR_BIT_NONE) return false;
+
+	switch (GetTileType(tile)) {
+		case MP_RAILWAY:
+			if (IsRailDepot(tile)) return false;
+			if (!remove && HasSignalOnTrack(tile, TrackdirToTrack(trackdir))) return false;
+			signal_ctr++;
+			if (IsDiagonalTrackdir(trackdir)) {
+				signal_ctr++;
+				/* Ensure signal_ctr even so X and Y pieces get signals */
+				CLRBIT(signal_ctr, 0);
+			}
+			return true;
+
+		case MP_STREET:
+			if (!IsLevelCrossing(tile)) return false;
+			signal_ctr += 2;
+			return true;
+
+		case MP_TUNNELBRIDGE: {
+			TileIndex orig_tile = tile;
+			/* Skip to end of tunnel or bridge */
+			if (IsBridge(tile)) {
+				if (GetBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
+				if (GetBridgeRampDirection(tile) != TrackdirToExitdir(trackdir)) return false;
+				tile = GetOtherBridgeEnd(tile);
+			} else {
+				if (GetTunnelTransportType(tile) != TRANSPORT_RAIL) return false;
+				if (GetTunnelDirection(tile) != TrackdirToExitdir(trackdir)) return false;
+				tile = GetOtherTunnelEnd(tile);
+			}
+			signal_ctr += 2 + DistanceMax(orig_tile, tile) * 2;
+			return true;
+		}
+
+		default: return false;
+	}
+}
+
 /** Build many signals by dragging; AutoSignals
  * @param tile start tile of drag
  * @param flags operation to perform
@@ -747,6 +805,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
  * - p2 = (bit  3)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
  * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
  * - p2 = (bit  5)    - 0 = build, 1 = remove signals
+ * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
  * - p2 = (bit 24-31) - user defined signals_density
  */
 static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -756,11 +815,13 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	byte signals;
 	bool error = true;
 	TileIndex end_tile;
+	TileIndex start_tile = tile;
 
 	Track track = (Track)GB(p2, 0, 3);
 	bool mode = HASBIT(p2, 3);
 	bool semaphores = HASBIT(p2, 4);
 	bool remove = HASBIT(p2, 5);
+	bool autofill = HASBIT(p2, 6);
 	Trackdir trackdir = TrackToTrackdir(track);
 	byte signal_density = GB(p2, 24, 8);
 
@@ -774,11 +835,15 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 
 	/* for vertical/horizontal tracks, double the given signals density
 	 * since the original amount will be too dense (shorter tracks) */
-	if (!IsDiagonalTrack(track)) signal_density *= 2;
+	signal_density *= 2;
 
 	if (CmdFailed(ValidateAutoDrag(&trackdir, tile, end_tile))) return CMD_ERROR;
 
 	track = TrackdirToTrack(trackdir); /* trackdir might have changed, keep track in sync */
+	Trackdir start_trackdir = trackdir;
+
+	/* Autofill must start on a valid track to be able to avoid loops */
+	if (autofill && !HasTrack(tile, track)) return CMD_ERROR;
 
 	/* copy the signal-style of the first rail-piece if existing */
 	if (HasSignals(tile)) {
@@ -791,6 +856,10 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 		signals = SignalOnTrack(track);
 	}
 
+	byte signal_dir = 0;
+	if (signals & SignalAlongTrackdir(trackdir))   SETBIT(signal_dir, 0);
+	if (signals & SignalAgainstTrackdir(trackdir)) SETBIT(signal_dir, 1);
+
 	/* signal_ctr         - amount of tiles already processed
 	 * signals_density    - patch setting to put signal on every Nth tile (double space on |, -- tracks)
 	 **********
@@ -802,10 +871,16 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	signal_ctr = 0;
 	for (;;) {
 		/* only build/remove signals with the specified density */
-		if (signal_ctr % signal_density == 0) {
+		if ((remove && autofill) || signal_ctr % signal_density == 0) {
 			uint32 p1 = GB(TrackdirToTrack(trackdir), 0, 3);
 			SB(p1, 3, 1, mode);
 			SB(p1, 4, 1, semaphores);
+
+			/* Pick the correct orientation for the track direction */
+			signals = 0;
+			if (HASBIT(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
+			if (HASBIT(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
+
 			ret = DoCommand(tile, p1, signals, flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			/* Be user-friendly and try placing signals as much as possible */
@@ -815,13 +890,24 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 			}
 		}
 
-		if (tile == end_tile) break;
+		if (autofill) {
+			if (!CheckSignalAutoFill(tile, trackdir, signal_ctr, remove)) break;
 
-		tile += ToTileIndexDiff(_trackdelta[trackdir]);
-		signal_ctr++;
+			/* Prevent possible loops */
+			if (tile == start_tile && trackdir == start_trackdir) break;
+		} else {
+			if (tile == end_tile) break;
 
-		/* toggle railbit for the non-diagonal tracks (|, -- tracks) */
-		if (!IsDiagonalTrackdir(trackdir)) ToggleBitT(trackdir, 0);
+			tile += ToTileIndexDiff(_trackdelta[trackdir]);
+			signal_ctr++;
+
+			/* toggle railbit for the non-diagonal tracks (|, -- tracks) */
+			if (IsDiagonalTrackdir(trackdir)) {
+				signal_ctr++;
+			} else {
+				ToggleBitT(trackdir, 0);
+			}
+		}
 	}
 
 	return error ? CMD_ERROR : total_cost;
@@ -837,6 +923,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
  * - p2 = (bit  3)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
  * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
  * - p2 = (bit  5)    - 0 = build, 1 = remove signals
+ * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
  * - p2 = (bit 24-31) - user defined signals_density
  * @see CmdSignalTrackHelper
  */
@@ -900,6 +987,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
  * - p2 = (bit  3)    - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
  * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
  * - p2 = (bit  5)    - 0 = build, 1 = remove signals
+ * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
  * - p2 = (bit 24-31) - user defined signals_density
  * @see CmdSignalTrackHelper
  */
