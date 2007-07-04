@@ -1307,11 +1307,11 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 
 				/* The house being overridden must be an original house. */
 				if (override >= NEW_HOUSE_OFFSET) {
-					grfmsg(2, "TownHouseChangeInfo: Attempt to override new house %u with house id %u. Ignoring.", override, hid);
+					grfmsg(2, "TownHouseChangeInfo: Attempt to override new house %u with house id %u. Ignoring.", override, hid + i);
 					continue;
 				}
 
-				_house_mngr.Add(hid, override);
+				_house_mngr.Add(hid + i, override);
 			} break;
 
 			case 0x16: // Periodic refresh multiplier
