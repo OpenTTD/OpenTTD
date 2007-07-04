@@ -291,18 +291,18 @@ static uint32 GetPlatformInfoHelper(TileIndex tile, bool check_type, bool check_
 static uint32 GetRailContinuationInfo(TileIndex tile)
 {
 	/* Tile offsets and exit dirs for X axis */
-	static Direction x_dir[8] = { DIR_SW, DIR_NE, DIR_SE, DIR_NW, DIR_S, DIR_E, DIR_W, DIR_N };
-	static DiagDirection x_exits[8] = { DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SW, DIAGDIR_NE };
+	static const Direction x_dir[8] = { DIR_SW, DIR_NE, DIR_SE, DIR_NW, DIR_S, DIR_E, DIR_W, DIR_N };
+	static const DiagDirection x_exits[8] = { DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SW, DIAGDIR_NE };
 
 	/* Tile offsets and exit dirs for Y axis */
-	static Direction y_dir[8] = { DIR_SE, DIR_NW, DIR_SW, DIR_NE, DIR_S, DIR_W, DIR_E, DIR_N };
-	static DiagDirection y_exits[8] = { DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SE, DIAGDIR_NW };
+	static const Direction y_dir[8] = { DIR_SE, DIR_NW, DIR_SW, DIR_NE, DIR_S, DIR_W, DIR_E, DIR_N };
+	static const DiagDirection y_exits[8] = { DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NW, DIAGDIR_SE, DIAGDIR_NW };
 
 	Axis axis = IsTileType(tile, MP_RAILWAY) ? GetWaypointAxis(tile) : GetRailStationAxis(tile);
 
 	/* Choose appropriate lookup table to use */
-	Direction *dir = axis == AXIS_X ? x_dir : y_dir;
-	DiagDirection *diagdir = axis == AXIS_X ? x_exits : y_exits;
+	const Direction *dir = axis == AXIS_X ? x_dir : y_dir;
+	const DiagDirection *diagdir = axis == AXIS_X ? x_exits : y_exits;
 
 	uint32 res = 0;
 	uint i;
