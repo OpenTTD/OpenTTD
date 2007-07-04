@@ -1776,14 +1776,15 @@ static void MaybeNewIndustry(void)
 
 static void ChangeIndustryProduction(Industry *i)
 {
-	bool only_decrease = false;
 	StringID str = STR_NULL;
 	int type = i->type;
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 
-	if (HASBIT(indspec->life_type, INDUSTRYLIFE_ORGANIC) || HASBIT(indspec->life_type, INDUSTRYLIFE_EXTRACTIVE)) {
+	if ((indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0) {
+		bool only_decrease = false;
+
 		/* decrease or increase */
 		if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE)
 			only_decrease = true;
@@ -1824,7 +1825,7 @@ static void ChangeIndustryProduction(Industry *i)
 			}
 		}
 	}
-	if (HASBIT(indspec->life_type, INDUSTRYLIFE_PROCESSING)) {
+	if (indspec->life_type & INDUSTRYLIFE_PROCESSING) {
 		/* maybe close */
 		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, 2)) {
 			i->prod_level = 0;
