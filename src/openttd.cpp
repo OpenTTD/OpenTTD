@@ -286,6 +286,8 @@ static void InitializeDynamicVariables()
 	/* Dynamic stuff needs to be initialized somewhere... */
 	_town_sort     = NULL;
 	_industry_sort = NULL;
+	_industry_mngr.ResetMapping();
+	_industile_mngr.ResetMapping();
 }
 
 
@@ -704,6 +706,8 @@ static void MakeNewGame(bool from_heightmap)
 
 	ResetGRFConfig(true);
 	_house_mngr.ResetMapping();
+	_industile_mngr.ResetMapping();
+	_industry_mngr.ResetMapping();
 
 	GenerateWorldSetCallback(&MakeNewGameDone);
 	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _patches.map_x, 1 << _patches.map_y);
