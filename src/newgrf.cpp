@@ -1187,8 +1187,8 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 	byte *buf = *bufp;
 	bool ret = false;
 
-	if (hid + numinfo >= HOUSE_MAX) {
-		grfmsg(1, "TownHouseChangeInfo: Too many houses loaded (%u), max (%u). Ignoring.", hid + numinfo, HOUSE_MAX-1);
+	if (hid + numinfo > HOUSE_MAX) {
+		grfmsg(1, "TownHouseChangeInfo: Too many houses loaded (%u), max (%u). Ignoring.", hid + numinfo, HOUSE_MAX);
 		return false;
 	}
 
