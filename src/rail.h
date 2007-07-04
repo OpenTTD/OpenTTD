@@ -290,8 +290,8 @@ static inline Track FindFirstTrack(TrackBits tracks)
 */
 static inline Track TrackBitsToTrack(TrackBits tracks)
 {
-	assert(tracks == INVALID_TRACK_BIT || (tracks != TRACK_BIT_NONE && KILL_FIRST_BIT(tracks) == 0));
-	return tracks != INVALID_TRACK_BIT ? (Track)FIND_FIRST_BIT(tracks) : INVALID_TRACK;
+	assert(tracks == INVALID_TRACK_BIT || (tracks != TRACK_BIT_NONE && KILL_FIRST_BIT(tracks & TRACK_BIT_MASK) == 0));
+	return tracks != INVALID_TRACK_BIT ? (Track)FIND_FIRST_BIT(tracks & TRACK_BIT_MASK) : INVALID_TRACK;
 }
 
 /**
