@@ -53,7 +53,6 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 		case 0xA3: return t->ratings[5];
 		case 0xA4: return t->ratings[6];
 		case 0xA5: return t->ratings[7];
-		case 0xA6: return t->ratings[8];
 		case 0xAE: return t->have_ratings;
 		case 0xB2: return t->statues;
 		case 0xB6: return t->num_houses;
