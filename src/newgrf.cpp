@@ -322,7 +322,8 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			} break;
 
 			case 0x08: // AI passenger service
-				/* @todo missing feature */
+				/** @todo Tells the AI that this engine is designed for
+				 * passenger services and shouldn't be used for freight. */
 				grf_load_byte(&buf);
 				ret = true;
 				break;
@@ -488,7 +489,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x22: // Visual effect
-				/* see note in engine.h about rvi->visual_effect */
+				/** @see note in engine.h about rvi->visual_effect */
 				rvi->visual_effect = grf_load_byte(&buf);
 				break;
 
@@ -531,9 +532,8 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				ei->base_intro = grf_load_dword(&buf);
 				break;
 
-			/* @todo air drag and retire vehicle early
-			 * Fall-through for unimplemented one byte long properties. */
 			case 0x20: // Air drag
+				/** @todo Air drag for trains. */
 				grf_load_byte(&buf);
 				ret = true;
 				break;
@@ -567,7 +567,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x0A: // Running cost base
-				/* @todo : I have no idea. --pasky
+				/** @todo : I have no idea. --pasky
 				 * I THINK it is used for overriding the base cost of all road vehicle (_price.roadveh_base) --belugas */
 				grf_load_dword(&buf);
 				ret = true;
@@ -610,7 +610,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			case 0x13: // Power in 10hp
 			case 0x14: // Weight in 1/4 tons
 			case 0x15: // Speed in mph*0.8
-				/* TODO: Support for road vehicles realistic power
+				/** @todo Support for road vehicles realistic power
 				 * computations (called rvpower in TTDPatch) is just
 				 * missing in OTTD yet. --pasky */
 				grf_load_byte(&buf);
@@ -652,7 +652,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 			case 0x18: // Tractive effort
 			case 0x19: // Air drag
-				/* @todo */
+				/** @todo Tractive effort and air drag for road vehicles. */
 				grf_load_byte(&buf);
 				ret = true;
 				break;
@@ -758,7 +758,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 			case 0x14: // Ocean speed fraction
 			case 0x15: // Canal speed fraction
-				/* @todo */
+				/** @todo Speed fractions for ships on oceans and canals */
 				grf_load_byte(&buf);
 				ret = true;
 				break;
@@ -1240,9 +1240,11 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				housespec->random_colour[2] = 0x0C;  // they stand for red, blue, orange and green
 				housespec->random_colour[3] = 0x06;
 
-				/* New houses do not (currently) expect to have a default start
-				 * date before 1930, as this breaks the build date stuff. See
-				 * FinaliseHouseArray() for more details. */
+				/**
+				 * New houses do not (currently) expect to have a default start
+				 * date before 1930, as this breaks the build date stuff.
+				 * @see FinaliseHouseArray() for more details.
+				 */
 				if (housespec->min_date < 1930) housespec->min_date = 1930;
 
 				_loaded_newgrf_features.has_newhouses = true;
@@ -1387,7 +1389,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 
 	for (int i = 0; i < numinfo; i++) {
 		switch (prop) {
-			case 0x08: { /* Cost base factor */
+			case 0x08: { // Cost base factor
 				byte factor = grf_load_byte(&buf);
 				uint price = gvid + i;
 
@@ -1398,7 +1400,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 				}
 			} break;
 
-			case 0x09: /* Cargo translation table */
+			case 0x09: // Cargo translation table
 				/* This is loaded during the initialisation stage, so just skip it here. */
 				/* Each entry is 4 bytes. */
 				buf += 4;
@@ -1446,7 +1448,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 				uint32 tempfix = grf_load_dword(&buf);
 
 				if (curidx < NUM_CURRENCY) {
-					memcpy(_currency_specs[curidx].prefix,&tempfix,4);
+					memcpy(_currency_specs[curidx].prefix, &tempfix, 4);
 					_currency_specs[curidx].prefix[4] = 0;
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Currency symbol %d out of range, ignoring", curidx);
@@ -1476,7 +1478,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 				}
 			} break;
 
-			case 0x10: // 12 * 32 * B Snow line height table
+			case 0x10: // Snow line height table
 				if (numinfo > 1 || IsSnowLineSet()) {
 					grfmsg(1, "GlobalVarChangeInfo: The snowline can only be set once (%d)", numinfo);
 				} else if (len < SNOW_LINE_MONTHS * SNOW_LINE_DAYS) {
@@ -1578,7 +1580,7 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 				break;
 
 			case 0x15: /* Freight status */
-				cs->is_freight = grf_load_byte(&buf) != 0;
+				cs->is_freight = (grf_load_byte(&buf) != 0);
 				break;
 
 			case 0x16: /* Cargo classes */
@@ -1879,8 +1881,6 @@ static void ReserveChangeInfo(byte *buf, int len)
 		}
 	}
 }
-
-#undef FOR_EACH_OBJECT
 
 /**
  * Creates a spritegroup representing a callback result
