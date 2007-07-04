@@ -1641,12 +1641,6 @@ static void SetSignalsAfterProc(TrackPathFinder *tpf)
 	}
 }
 
-static const DiagDirection _dir_from_track[14] = {
-	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_NE,
-	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,
-};
-
-
 static void ChangeSignalStates(SetSignalsData *ssd)
 {
 	int i;
@@ -1692,7 +1686,7 @@ make_red:
 		if (IsPresignalExit(tile, track)) {
 			if (ssd->cur_stack != NUM_SSD_STACK) {
 				ssd->next_tile[ssd->cur_stack] = tile;
-				ssd->next_dir[ssd->cur_stack] = _dir_from_track[ssd->bit[i]];
+				ssd->next_dir[ssd->cur_stack] = TrackdirToExitdir(ssd->bit[i]);
 				ssd->cur_stack++;
 			} else {
 				DEBUG(misc, 0, "NUM_SSD_STACK too small"); /// @todo WTF is this???
