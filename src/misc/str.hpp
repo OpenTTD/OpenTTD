@@ -120,18 +120,32 @@ struct CStrT : public CBlobT<Tchar>
 	{
 		bsize_t addSize = Api::StrLen(format);
 		if (addSize < 16) addSize = 16;
-		addSize += addSize > 1;
-		int ret, err;
-		do {
+		addSize += addSize / 2;
+		int ret;
+		int err = 0;
+		for (;;) {
 			Tchar *buf = MakeFreeSpace(addSize);
 			ret = Api::SPrintFL(buf, base::GetReserve(), format, args);
-			addSize *= 2;
+			if (ret >= base::GetReserve()) {
+				/* Greater return than given count means needed buffer size. */
+				addSize = ret + 1;
+				continue;
+			}
+			if (ret >= 0) {
+				/* success */
+				break;
+			}
 			err = errno;
-		} while(ret < 0 && (err == ERANGE || err == ENOENT || err == 0));
+			if (err != ERANGE && err != ENOENT && err != 0) {
+				/* some strange failure */
+				break;
+			}
+			/* small buffer (M$ implementation) */
+			addSize *= 2;
+		}
 		if (ret > 0) {
 			GrowSizeNC(ret);
 		} else {
-//			int err = errno;
 			base::FixTail();
 		}
 		return ret;
