@@ -377,9 +377,9 @@ static void TransportIndustryGoods(TileIndex tile)
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 	uint cw, am;
 
-	cw = min(i->cargo_waiting[0], 255);
+	cw = min(i->produced_cargo_waiting[0], 255);
 	if (cw > indspec->minimal_cargo/* && i->produced_cargo[0] != 0xFF*/) {
-		i->cargo_waiting[0] -= cw;
+		i->produced_cargo_waiting[0] -= cw;
 
 		/* fluctuating economy? */
 		if (_economy.fluct <= 0) cw = (cw + 1) / 2;
@@ -400,9 +400,9 @@ static void TransportIndustryGoods(TileIndex tile)
 		}
 	}
 
-	cw = min(i->cargo_waiting[1], 255);
+	cw = min(i->produced_cargo_waiting[1], 255);
 	if (cw > indspec->minimal_cargo) {
-		i->cargo_waiting[1] -= cw;
+		i->produced_cargo_waiting[1] -= cw;
 
 		if (_economy.fluct <= 0) cw = (cw + 1) / 2;
 
@@ -943,7 +943,7 @@ static void ChopLumberMillTrees(Industry *i)
 	if (!IsIndustryCompleted(tile)) return;  ///< Can't proceed if not completed
 
 	if (CircularTileSearch(tile, 40, SearchLumberMillTrees, 0)) ///< 40x40 tiles  to search
-		i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + 45); ///< Found a tree, add according value to waiting cargo
+		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + 45); ///< Found a tree, add according value to waiting cargo
 }
 
 static void ProduceIndustryGoods(Industry *i)
@@ -966,8 +966,8 @@ static void ProduceIndustryGoods(Industry *i)
 	/* produce some cargo */
 	if ((i->counter & 0xFF) == 0) {
 		IndustyBehaviour indbehav = indsp->behaviour;
-		i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + i->production_rate[0]);
-		i->cargo_waiting[1] = min(0xffff, i->cargo_waiting[1] + i->production_rate[1]);
+		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + i->production_rate[0]);
+		i->produced_cargo_waiting[1] = min(0xffff, i->produced_cargo_waiting[1] + i->production_rate[1]);
 
 		if (indbehav & INDUSTRYBEH_PLANT_FIELDS) {
 			MaybePlantFarmField(i);
@@ -1391,8 +1391,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	r = Random();
 	i->random_color = GB(r, 8, 4);
 	i->counter = GB(r, 0, 12);
-	i->cargo_waiting[0] = 0;
-	i->cargo_waiting[1] = 0;
+	i->produced_cargo_waiting[0] = 0;
+	i->produced_cargo_waiting[1] = 0;
+	i->incoming_cargo_waiting[0] = 0;
+	i->incoming_cargo_waiting[1] = 0;
+	i->incoming_cargo_waiting[2] = 0;
 	i->this_month_production[0] = 0;
 	i->this_month_production[1] = 0;
 	i->this_month_transported[0] = 0;
@@ -1898,7 +1901,8 @@ static const SaveLoad _industry_desc[] = {
 	    SLE_VAR(Industry, height,                     SLE_UINT8),
 	    SLE_REF(Industry, town,                       REF_TOWN),
 	SLE_CONDNULL( 2, 2, 60),       ///< used to be industry's produced_cargo
-	    SLE_ARR(Industry, cargo_waiting,              SLE_UINT16, 2),
+	SLE_CONDARR(Industry, incoming_cargo_waiting,     SLE_UINT16, 3,              70, SL_MAX_VERSION),
+	    SLE_ARR(Industry, produced_cargo_waiting,     SLE_UINT16, 2),
 	    SLE_ARR(Industry, production_rate,            SLE_UINT8,  2),
 	SLE_CONDNULL( 3, 2, 60),       ///< used to be industry's accepts_cargo
 	    SLE_VAR(Industry, prod_level,                 SLE_UINT8),

@@ -123,8 +123,8 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x41:
 		case 0x42: { // waiting cargo, but only if those two callback flags are set
 			uint16 callback = indspec->callback_flags;
-			if (callback & (CBM_IND_PRODUCTION_CARGO_ARRIVAL | callback & CBM_IND_PRODUCTION_256_TICKS)) {
-				return max(industry->cargo_waiting[variable - 0x40], (uint16)0x7FFF);
+			if (callback & (CBM_IND_PRODUCTION_CARGO_ARRIVAL | CBM_IND_PRODUCTION_256_TICKS)) {
+				return max(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0x7FFF);
 			} else {
 				return 0;
 			}
@@ -173,10 +173,10 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/*  */
 		case 0x88:
 		case 0x89: return indspec->produced_cargo[variable - 0x88];
-		case 0x8A: return industry->cargo_waiting[0];
-		case 0x8B: return GB(industry->cargo_waiting[0], 8, 8);
-		case 0x8C: return industry->cargo_waiting[1];
-		case 0x8D: return GB(industry->cargo_waiting[1], 8, 8);
+		case 0x8A: return industry->produced_cargo_waiting[0];
+		case 0x8B: return GB(industry->produced_cargo_waiting[0], 8, 8);
+		case 0x8C: return industry->produced_cargo_waiting[1];
+		case 0x8D: return GB(industry->produced_cargo_waiting[1], 8, 8);
 		case 0x8E:
 		case 0x8F: return industry->production_rate[variable - 0x8E];
 		case 0x90:

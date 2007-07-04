@@ -1234,9 +1234,18 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 	/* Found one? */
 	if (best != NULL) {
 		indspec = GetIndustrySpec(best->type);
+		uint16 callback = indspec->callback_flags;
 		best->was_cargo_delivered = true;
-		best->cargo_waiting[0] = min(best->cargo_waiting[0] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][0] / 256), 0xFFFF);
-		best->cargo_waiting[1] = min(best->cargo_waiting[1] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][1] / 256), 0xFFFF);
+
+		if (callback & (CBM_IND_PRODUCTION_CARGO_ARRIVAL | CBM_IND_PRODUCTION_256_TICKS)) {
+			best->incoming_cargo_waiting[accepted_cargo_index] = min(num_pieces + best->incoming_cargo_waiting[accepted_cargo_index], 0xFFFF);
+			if (callback & CBM_IND_PRODUCTION_CARGO_ARRIVAL) {
+				/** @todo Perform some magic */
+			}
+		} else {
+			best->produced_cargo_waiting[0] = min(best->produced_cargo_waiting[0] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][0] / 256), 0xFFFF);
+			best->produced_cargo_waiting[1] = min(best->produced_cargo_waiting[1] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][1] / 256), 0xFFFF);
+		}
 	}
 }
 
