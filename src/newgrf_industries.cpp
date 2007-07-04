@@ -123,7 +123,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x41:
 		case 0x42: { // waiting cargo, but only if those two callback flags are set
 			uint16 callback = indspec->callback_flags;
-			if (callback & (CBM_IND_PRODUCTION_CARGO_ARRIVAL | CBM_IND_PRODUCTION_256_TICKS)) {
+			if (HASBIT(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 				return max(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0x7FFF);
 			} else {
 				return 0;

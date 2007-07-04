@@ -1237,11 +1237,9 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 		uint16 callback = indspec->callback_flags;
 		best->was_cargo_delivered = true;
 
-		if (callback & (CBM_IND_PRODUCTION_CARGO_ARRIVAL | CBM_IND_PRODUCTION_256_TICKS)) {
+		if (HASBIT(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 			best->incoming_cargo_waiting[accepted_cargo_index] = min(num_pieces + best->incoming_cargo_waiting[accepted_cargo_index], 0xFFFF);
-			if (callback & CBM_IND_PRODUCTION_CARGO_ARRIVAL) {
-				/** @todo Perform some magic */
-			}
+			if (HASBIT(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) ///< @todo Perform some magic
 		} else {
 			best->produced_cargo_waiting[0] = min(best->produced_cargo_waiting[0] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][0] / 256), 0xFFFF);
 			best->produced_cargo_waiting[1] = min(best->produced_cargo_waiting[1] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][1] / 256), 0xFFFF);
