@@ -6,6 +6,13 @@
 #include "music_driver.hpp"
 
 class MusicDriver_ExtMidi: public MusicDriver {
+private:
+	char song[MAX_PATH];
+	pid_t pid;
+
+	void DoPlay();
+	void DoStop();
+
 public:
 	/* virtual */ bool CanProbe() { return true; }
 
