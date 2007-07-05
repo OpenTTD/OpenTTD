@@ -139,7 +139,7 @@ static NSAutoreleasePool *_ottd_autorelease_pool;
 static OTTDMain *_ottd_main;
 
 
-static struct VideoDriver_Cocoa::Data {
+static struct CocoaVideoData {
 	bool isset;
 	bool issetting;
 
@@ -1320,9 +1320,9 @@ static uint32 QZ_FadeGammaIn(const OTTD_QuartzGammaTable* table)
 	return 0;
 }
 
-static const char* QZ_SetVideoToggleFullscreen(int width, int height)
+static const char* QZ_SetVideoFullScreen(int width, int height)
 {
-	const char* errstr = "QZ_SetVideoToggleFullscreen error";
+	const char* errstr = "QZ_SetVideoFullScreen error";
 	int exact_match;
 	CFNumberRef number;
 	int bpp;
@@ -1708,7 +1708,7 @@ static const char* QZ_SetVideoMode(uint width, uint height, bool fullscreen)
 	_cocoa_video_data.issetting = true;
 	if (fullscreen) {
 		/* Setup full screen video */
-		ret = QZ_SetVideoToggleFullscreen(width, height);
+		ret = QZ_SetVideoFullScreen(width, height);
 	} else {
 		/* Setup windowed video */
 		ret = QZ_SetVideoWindowed(width, height);
@@ -2001,7 +2001,7 @@ const char *VideoDriver_Cocoa::Start(const char * const *parm)
 	QZ_VideoInit();
 
 	ret = QZ_SetVideoMode(_cur_resolution[0], _cur_resolution[1], _fullscreen);
-	if (ret != NULL) VideoDriver_Cocoa::Stop();
+	if (ret != NULL) _video_driver->Stop();
 
 	return ret;
 }
@@ -2052,14 +2052,14 @@ void CocoaDialog(const char* title, const char* message, const char* buttonLabel
 	_cocoa_video_dialog = true;
 
 	wasstarted = _cocoa_video_started;
-	if (!_cocoa_video_started && VideoDriver_Cocoa::Start(NULL) != NULL) {
+	if (!_cocoa_video_started && _video_driver->Start(NULL) != NULL) {
 		fprintf(stderr, "%s: %s\n", title, message);
 		return;
 	}
 
 	NSRunAlertPanel([NSString stringWithCString: title], [NSString stringWithCString: message], [NSString stringWithCString: buttonLabel], nil, nil);
 
-	if (!wasstarted) VideoDriver_Cocoa::Stop();
+	if (!wasstarted) _video_driver->Stop();
 
 	_cocoa_video_dialog = false;
 }
