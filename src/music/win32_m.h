@@ -3,8 +3,30 @@
 #ifndef MUSIC_WIN32_H
 #define MUSIC_WIN32_H
 
-#include "../hal.h"
+#include "music_driver.hpp"
 
-extern const HalMusicDriver _win32_music_driver;
+class MusicDriver_Win32: public MusicDriver {
+public:
+	/* virtual */ bool CanProbe() { return true; }
+
+	/* virtual */ const char *Start(const char * const *param);
+
+	/* virtual */ void Stop();
+
+	/* virtual */ void PlaySong(const char *filename);
+
+	/* virtual */ void StopSong();
+
+	/* virtual */ bool IsSongPlaying();
+
+	/* virtual */ void SetVolume(byte vol);
+};
+
+class FMusicDriver_Win32: public MusicDriverFactory<FMusicDriver_Win32> {
+public:
+	/* virtual */ const char *GetName() { return "win32"; }
+	/* virtual */ const char *GetDescription() { return "Win32 Music Driver"; }
+	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Win32(); }
+};
 
 #endif /* MUSIC_WIN32_H */

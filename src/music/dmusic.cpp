@@ -47,7 +47,7 @@ struct ProcPtrs {
 static ProcPtrs proc;
 
 
-static const char* DMusicMidiStart(const char* const* parm)
+const char *MusicDriver_DMusic::Start(const char * const *parm)
 {
 	if (performance != NULL) return NULL;
 
@@ -109,7 +109,7 @@ static const char* DMusicMidiStart(const char* const* parm)
 }
 
 
-static void DMusicMidiStop()
+void MusicDriver_DMusic::Stop()
 {
 	seeking = false;
 
@@ -136,7 +136,7 @@ static void DMusicMidiStop()
 }
 
 
-static void DMusicMidiPlaySong(const char* filename)
+void MusicDriver_DMusic::PlaySong(const char* filename)
 {
 	/* set up the loader object info */
 	DMUS_OBJECTDESC obj_desc;
@@ -188,7 +188,7 @@ static void DMusicMidiPlaySong(const char* filename)
 }
 
 
-static void DMusicMidiStopSong()
+void MusicDriver_DMusic::StopSong()
 {
 	if (FAILED(performance->Stop(segment, NULL, 0, 0))) {
 		DEBUG(driver, 0, "DirectMusic: StopSegment failed");
@@ -197,7 +197,7 @@ static void DMusicMidiStopSong()
 }
 
 
-static bool DMusicMidiIsSongPlaying()
+bool MusicDriver_DMusic::IsSongPlaying()
 {
 	/* Not the nicest code, but there is a short delay before playing actually
 	 * starts. OpenTTD makes no provision for this. */
@@ -210,20 +210,11 @@ static bool DMusicMidiIsSongPlaying()
 }
 
 
-static void DMusicMidiSetVolume(byte vol)
+void MusicDriver_DMusic::SetVolume(byte vol)
 {
 	long db = vol * 2000 / 127 - 2000; ///< 0 - 127 -> -2000 - 0
 	performance->SetGlobalParam(GUID_PerfMasterVolume, &db, sizeof(db));
 }
 
-
-const HalMusicDriver _dmusic_midi_driver = {
-	DMusicMidiStart,
-	DMusicMidiStop,
-	DMusicMidiPlaySong,
-	DMusicMidiStopSong,
-	DMusicMidiIsSongPlaying,
-	DMusicMidiSetVolume,
-};
 
 #endif /* WIN32_ENABLE_DIRECTMUSIC_SUPPORT */

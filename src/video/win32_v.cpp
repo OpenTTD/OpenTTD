@@ -751,8 +751,9 @@ static void FindResolutions()
 	SortResolutions(_num_resolutions);
 }
 
+static FVideoDriver_Win32 iFVideoDriver_Win32;
 
-static const char *Win32GdiStart(const char * const *parm)
+const char *VideoDriver_Win32::Start(const char * const *parm)
 {
 	memset(&_wnd, 0, sizeof(_wnd));
 
@@ -774,7 +775,7 @@ static const char *Win32GdiStart(const char * const *parm)
 	return NULL;
 }
 
-static void Win32GdiStop()
+void VideoDriver_Win32::Stop()
 {
 	DeleteObject(_wnd.gdi_palette);
 	DeleteObject(_wnd.dib_sect);
@@ -786,7 +787,7 @@ static void Win32GdiStop()
 	MyShowCursor(true);
 }
 
-static void Win32GdiMakeDirty(int left, int top, int width, int height)
+void VideoDriver_Win32::MakeDirty(int left, int top, int width, int height)
 {
 	RECT r = { left, top, left + width, top + height };
 
@@ -800,7 +801,7 @@ static void CheckPaletteAnim()
 	InvalidateRect(_wnd.main_wnd, NULL, FALSE);
 }
 
-static void Win32GdiMainLoop()
+void VideoDriver_Win32::MainLoop()
 {
 	MSG mesg;
 	uint32 cur_ticks = GetTickCount();
@@ -873,7 +874,7 @@ static void Win32GdiMainLoop()
 	}
 }
 
-static bool Win32GdiChangeRes(int w, int h)
+bool VideoDriver_Win32::ChangeResolution(int w, int h)
 {
 	_wnd.width = _wnd.width_org = w;
 	_wnd.height = _wnd.height_org = h;
@@ -883,16 +884,7 @@ static bool Win32GdiChangeRes(int w, int h)
 	return true;
 }
 
-static void Win32GdiFullScreen(bool full_screen)
+void VideoDriver_Win32::ToggleFullscreen(bool full_screen)
 {
 	MakeWindow(full_screen);
 }
-
-const HalVideoDriver _win32_video_driver = {
-	Win32GdiStart,
-	Win32GdiStop,
-	Win32GdiMakeDirty,
-	Win32GdiMainLoop,
-	Win32GdiChangeRes,
-	Win32GdiFullScreen,
-};

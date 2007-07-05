@@ -65,10 +65,12 @@ extern "C" void HideMenuBar();
 
 
 #include "../stdafx.h"
+#include "../openttd.h"
 #include "../debug.h"
 #include "../macros.h"
 #include "../os/macosx/splash.h"
 #include "../variables.h"
+#include "../gfx.h"
 #include "cocoa_v.h"
 #include "cocoa_keys.h"
 #include "../blitter/factory.hpp"
@@ -131,14 +133,13 @@ static void QZ_UpdatePalette(uint start, uint count);
 static void QZ_WarpCursor(int x, int y);
 static void QZ_ShowMouse();
 static void QZ_HideMouse();
-static void CocoaVideoFullScreen(bool full_screen);
 
 
 static NSAutoreleasePool *_ottd_autorelease_pool;
 static OTTDMain *_ottd_main;
 
 
-static struct CocoaVideoData {
+static struct VideoDriver_Cocoa::Data {
 	bool isset;
 	bool issetting;
 
@@ -366,7 +367,7 @@ static void QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 		case QZ_RETURN:
 		case QZ_f:
 			if (down && (_cocoa_video_data.current_mods & NSCommandKeyMask)) {
-				CocoaVideoFullScreen(!_fullscreen);
+				_video_driver->ToggleFullscreen(!_fullscreen);
 			}
 			break;
 	}
@@ -1319,9 +1320,9 @@ static uint32 QZ_FadeGammaIn(const OTTD_QuartzGammaTable* table)
 	return 0;
 }
 
-static const char* QZ_SetVideoFullScreen(int width, int height)
+static const char* QZ_SetVideoToggleFullscreen(int width, int height)
 {
-	const char* errstr = "QZ_SetVideoFullScreen error";
+	const char* errstr = "QZ_SetVideoToggleFullscreen error";
 	int exact_match;
 	CFNumberRef number;
 	int bpp;
@@ -1707,7 +1708,7 @@ static const char* QZ_SetVideoMode(uint width, uint height, bool fullscreen)
 	_cocoa_video_data.issetting = true;
 	if (fullscreen) {
 		/* Setup full screen video */
-		ret = QZ_SetVideoFullScreen(width, height);
+		ret = QZ_SetVideoToggleFullscreen(width, height);
 	} else {
 		/* Setup windowed video */
 		ret = QZ_SetVideoWindowed(width, height);
@@ -1970,7 +1971,9 @@ static void setupApplication()
  *                             Video driver interface                         *
  ******************************************************************************/
 
-static void CocoaVideoStop()
+static FVideoDriver_Cocoa iFVideoDriver_Cocoa;
+
+void VideoDriver_Cocoa::Stop()
 {
 	if (!_cocoa_video_started) return;
 
@@ -1981,7 +1984,7 @@ static void CocoaVideoStop()
 	_cocoa_video_started = false;
 }
 
-static const char *CocoaVideoStart(const char * const *parm)
+const char *VideoDriver_Cocoa::Start(const char * const *parm)
 {
 	const char *ret;
 
@@ -1998,12 +2001,12 @@ static const char *CocoaVideoStart(const char * const *parm)
 	QZ_VideoInit();
 
 	ret = QZ_SetVideoMode(_cur_resolution[0], _cur_resolution[1], _fullscreen);
-	if (ret != NULL) CocoaVideoStop();
+	if (ret != NULL) VideoDriver_Cocoa::Stop();
 
 	return ret;
 }
 
-static void CocoaVideoMakeDirty(int left, int top, int width, int height)
+void VideoDriver_Cocoa::MakeDirty(int left, int top, int width, int height)
 {
 	if (_cocoa_video_data.num_dirty_rects < MAX_DIRTY_RECTS) {
 		_cocoa_video_data.dirty_rects[_cocoa_video_data.num_dirty_rects].left = left;
@@ -2014,40 +2017,31 @@ static void CocoaVideoMakeDirty(int left, int top, int width, int height)
 	_cocoa_video_data.num_dirty_rects++;
 }
 
-static void CocoaVideoMainLoop()
+void VideoDriver_Cocoa::MainLoop()
 {
 	/* Start the main event loop */
 	[NSApp run];
 }
 
-static bool CocoaVideoChangeRes(int w, int h)
+bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 {
 	const char *ret = QZ_SetVideoModeAndRestoreOnFailure((uint)w, (uint)h, _cocoa_video_data.fullscreen);
 	if (ret != NULL) {
-		DEBUG(driver, 0, "cocoa_v: CocoaVideoChangeRes failed with message: %s", ret);
+		DEBUG(driver, 0, "cocoa_v: VideoDriver_Cocoa::ChangeResolution failed with message: %s", ret);
 	}
 
 	return ret == NULL;
 }
 
-static void CocoaVideoFullScreen(bool full_screen)
+void VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 {
 	const char *ret = QZ_SetVideoModeAndRestoreOnFailure(_cocoa_video_data.width, _cocoa_video_data.height, full_screen);
 	if (ret != NULL) {
-		DEBUG(driver, 0, "cocoa_v: CocoaVideoFullScreen failed with message: %s", ret);
+		DEBUG(driver, 0, "cocoa_v: VideoDriver_Cocoa::ToggleFullscreen failed with message: %s", ret);
 	}
 
 	_fullscreen = _cocoa_video_data.fullscreen;
 }
-
-const HalVideoDriver _cocoa_video_driver = {
-	CocoaVideoStart,
-	CocoaVideoStop,
-	CocoaVideoMakeDirty,
-	CocoaVideoMainLoop,
-	CocoaVideoChangeRes,
-	CocoaVideoFullScreen,
-};
 
 
 /* This is needed since sometimes assert is called before the videodriver is initialized */
@@ -2058,14 +2052,14 @@ void CocoaDialog(const char* title, const char* message, const char* buttonLabel
 	_cocoa_video_dialog = true;
 
 	wasstarted = _cocoa_video_started;
-	if (!_cocoa_video_started && CocoaVideoStart(NULL) != NULL) {
+	if (!_cocoa_video_started && VideoDriver_Cocoa::Start(NULL) != NULL) {
 		fprintf(stderr, "%s: %s\n", title, message);
 		return;
 	}
 
 	NSRunAlertPanel([NSString stringWithCString: title], [NSString stringWithCString: message], [NSString stringWithCString: buttonLabel], nil, nil);
 
-	if (!wasstarted) CocoaVideoStop();
+	if (!wasstarted) VideoDriver_Cocoa::Stop();
 
 	_cocoa_video_dialog = false;
 }

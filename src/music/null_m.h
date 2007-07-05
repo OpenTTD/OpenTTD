@@ -3,8 +3,30 @@
 #ifndef MUSIC_NULL_H
 #define MUSIC_NULL_H
 
-#include "../hal.h"
+#include "music_driver.hpp"
 
-extern const HalMusicDriver _null_music_driver;
+class MusicDriver_Null: public MusicDriver {
+public:
+	/* virtual */ bool CanProbe() { return false; }
+
+	/* virtual */ const char *Start(const char * const *param) { return NULL; }
+
+	/* virtual */ void Stop() { }
+
+	/* virtual */ void PlaySong(const char *filename) { }
+
+	/* virtual */ void StopSong() { }
+
+	/* virtual */ bool IsSongPlaying() { return true; }
+
+	/* virtual */ void SetVolume(byte vol) { }
+};
+
+class FMusicDriver_Null: public MusicDriverFactory<FMusicDriver_Null> {
+public:
+	/* virtual */ const char *GetName() { return "null"; }
+	/* virtual */ const char *GetDescription() { return "Null Music Driver"; }
+	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Null(); }
+};
 
 #endif /* MUSIC_NULL_H */

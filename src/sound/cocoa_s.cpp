@@ -36,6 +36,7 @@
 #undef Point
 #undef Rect
 
+static FSoundDriver_Cocoa iFSoundDriver_Cocoa;
 
 static AudioUnit _outputAudioUnit;
 
@@ -48,7 +49,7 @@ static OSStatus audioCallback(void *inRefCon, AudioUnitRenderActionFlags inActio
 }
 
 
-static const char *CocoaSoundStart(const char * const *parm)
+const char *SoundDriver_Cocoa::Start(const char * const *parm)
 {
 	Component comp;
 	ComponentDescription desc;
@@ -116,7 +117,7 @@ static const char *CocoaSoundStart(const char * const *parm)
 }
 
 
-static void CocoaSoundStop()
+void SoundDriver_Cocoa::Stop()
 {
 	struct AudioUnitInputCallback callback;
 
@@ -139,11 +140,5 @@ static void CocoaSoundStop()
 		return;
 	}
 }
-
-
-const HalSoundDriver _cocoa_sound_driver = {
-	CocoaSoundStart,
-	CocoaSoundStop,
-};
 
 #endif /* WITH_COCOA */

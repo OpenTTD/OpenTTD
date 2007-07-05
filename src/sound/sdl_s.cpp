@@ -10,12 +10,14 @@
 #include "sdl_s.h"
 #include <SDL.h>
 
+static FSoundDriver_SDL iFSoundDriver_SDL;
+
 static void CDECL fill_sound_buffer(void *userdata, Uint8 *stream, int len)
 {
 	MxMixSamples(stream, len / 4);
 }
 
-static const char *SdlSoundStart(const char * const *parm)
+const char *SoundDriver_SDL::Start(const char * const *parm)
 {
 	SDL_AudioSpec spec;
 
@@ -32,15 +34,10 @@ static const char *SdlSoundStart(const char * const *parm)
 	return NULL;
 }
 
-static void SdlSoundStop()
+void SoundDriver_SDL::Stop()
 {
 	SDL_CALL SDL_CloseAudio();
 	SdlClose(SDL_INIT_AUDIO);
 }
-
-const HalSoundDriver _sdl_sound_driver = {
-	SdlSoundStart,
-	SdlSoundStop,
-};
 
 #endif /* WITH_SDL */

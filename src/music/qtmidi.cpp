@@ -47,6 +47,8 @@
 // we need to include debug.h after CoreServices because defining DEBUG will break CoreServices in OSX 10.2
 #include "../debug.h"
 
+static FMusicDriver_QtMidi iFMusicDriver_QtMidi;
+
 
 enum {
 	midiType = 'Midi' /**< OSType code for MIDI songs. */
@@ -207,9 +209,6 @@ static int   _quicktime_state  = QT_STATE_IDLE; /**< Current player state. */
 #define VOLUME  ((short)((0x00FF & _quicktime_volume) << 1))
 
 
-static void StopSong();
-
-
 /**
  * Initialized the MIDI player, including QuickTime initialization.
  *
@@ -217,7 +216,7 @@ static void StopSong();
  * @c Gestalt() and @c EnterMovies(). Needs changes in
  * #InitQuickTimeIfNeeded.
  */
-static const char* StartDriver(const char * const *parm)
+const char *MusicDriver_QtMidi::Start(const char * const *parm)
 {
 	InitQuickTimeIfNeeded();
 	return (_quicktime_started) ? NULL : "can't initialize QuickTime";
@@ -230,7 +229,7 @@ static const char* StartDriver(const char * const *parm)
  * This function is called at regular intervals from OpenTTD's main loop, so
  * we call @c MoviesTask() from here to let QuickTime do its work.
  */
-static bool SongIsPlaying()
+bool MusicDriver_QtMidi::IsSongPlaying()
 {
 	if (!_quicktime_started) return true;
 
@@ -258,7 +257,7 @@ static bool SongIsPlaying()
  * Stops playing and frees any used resources before returning. As it
  * deinitilizes QuickTime, the #_quicktime_started flag is set to @c false.
  */
-static void StopDriver()
+void MusicDriver_QtMidi::Stop()
 {
 	if (!_quicktime_started) return;
 
@@ -284,7 +283,7 @@ static void StopDriver()
  *
  * @param filename Path to a MIDI file.
  */
-static void PlaySong(const char *filename)
+void MusicDriver_QtMidi::PlaySong(const char *filename)
 {
 	if (!_quicktime_started) return;
 
@@ -312,7 +311,7 @@ static void PlaySong(const char *filename)
 /**
  * Stops playing the current song, if the player is active.
  */
-static void StopSong()
+void MusicDriver_QtMidi::StopSong()
 {
 	if (!_quicktime_started) return;
 
@@ -340,7 +339,7 @@ static void StopSong()
  *
  * @param vol The desired volume, range of the value is @c 0-127
  */
-static void SetVolume(byte vol)
+void MusicDriver_QtMidi::SetVolume(byte vol)
 {
 	if (!_quicktime_started) return;
 
@@ -357,15 +356,3 @@ static void SetVolume(byte vol)
 	}
 }
 
-
-/**
- * Table of callbacks that implement the QuickTime MIDI player.
- */
-const HalMusicDriver _qtime_music_driver = {
-	StartDriver,
-	StopDriver,
-	PlaySong,
-	StopSong,
-	SongIsPlaying,
-	SetVolume,
-};

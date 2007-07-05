@@ -124,7 +124,6 @@ gfx.h
 gfxinit.h
 group.h
 gui.h
-hal.h
 heightmap.h
 helpers.hpp
 industry.h
@@ -316,6 +315,11 @@ blitter/base.hpp
 blitter/factory.hpp
 blitter/null.cpp
 blitter/null.hpp
+
+# Drivers
+music/music_driver.hpp
+sound/sound_driver.hpp
+video/video_driver.hpp
 
 # Sprite loaders
 spriteloader/grf.cpp

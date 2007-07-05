@@ -2,8 +2,8 @@
 #include "../zoom.hpp"
 #include "../gfx.h"
 #include "../debug.h"
-#include "../hal.h"
 #include "../table/sprites.h"
+#include "../video/video_driver.hpp"
 #include "32bpp_anim.hpp"
 
 static FBlitter_32bppAnim iFBlitter_32bppAnim;
@@ -269,7 +269,7 @@ void Blitter_32bppAnim::PaletteAnimate(uint start, uint count)
 	}
 
 	/* Make sure the backend redraws the whole screen */
-	_video_driver->make_dirty(0, 0, _screen.width, _screen.height);
+	_video_driver->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
 Blitter::PaletteAnimation Blitter_32bppAnim::UsePaletteAnimation()

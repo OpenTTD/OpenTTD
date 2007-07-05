@@ -30,7 +30,9 @@ static long CDECL MidiSendCommand(const char *cmd, ...)
 	return mciSendString(buf, NULL, 0, NULL, 0);
 }
 
-static void OS2MidiPlaySong(const char *filename)
+static FMusicDriver_OS2 iFMusicDriver_OS2;
+
+void MusicDriver_OS2::PlaySong(const char *filename)
 {
 	MidiSendCommand("close all");
 
@@ -40,38 +42,29 @@ static void OS2MidiPlaySong(const char *filename)
 	MidiSendCommand("play song from 0");
 }
 
-static void OS2MidiStopSong()
+void MusicDriver_OS2::StopSong()
 {
 	MidiSendCommand("close all");
 }
 
-static void OS2MidiSetVolume(byte vol)
+void MusicDriver_OS2::SetVolume(byte vol)
 {
 	MidiSendCommand("set song audio volume %d", ((vol/127)*100));
 }
 
-static bool OS2MidiIsSongPlaying()
+bool MusicDriver_OS2::IsSongPlaying()
 {
 	char buf[16];
 	mciSendString("status song mode", buf, sizeof(buf), NULL, 0);
 	return strcmp(buf, "playing") == 0 || strcmp(buf, "seeking") == 0;
 }
 
-static const char *OS2MidiStart(const char * const *parm)
+const char *MusicDriver_OS2::Start(const char * const *parm)
 {
 	return 0;
 }
 
-static void OS2MidiStop()
+void MusicDriver_OS2::Stop()
 {
 	MidiSendCommand("close all");
 }
-
-const HalMusicDriver _os2_music_driver = {
-	OS2MidiStart,
-	OS2MidiStop,
-	OS2MidiPlaySong,
-	OS2MidiStopSong,
-	OS2MidiIsSongPlaying,
-	OS2MidiSetVolume,
-};

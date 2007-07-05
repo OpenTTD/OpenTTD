@@ -41,7 +41,6 @@
 #include "sound.h"
 #include "economy.h"
 #include "fileio.h"
-#include "hal.h"
 #include "airport.h"
 #include "aircraft.h"
 #include "console.h"
@@ -65,6 +64,9 @@
 #include "player_face.h"
 #include "group.h"
 #include "blitter/factory.hpp"
+#include "sound/sound_driver.hpp"
+#include "music/music_driver.hpp"
+#include "video/video_driver.hpp"
 
 #include "bridge_map.h"
 #include "clear_map.h"
@@ -103,7 +105,7 @@ void CDECL error(const char *s, ...)
 	va_end(va);
 
 	ShowOSErrorBox(buf);
-	if (_video_driver != NULL) _video_driver->stop();
+	if (_video_driver != NULL) _video_driver->Stop();
 
 	assert(0);
 	exit(1);
@@ -186,7 +188,8 @@ static void showhelp()
 		lastof(buf)
 	);
 
-	p = GetDriverList(p, lastof(buf));
+	/* List the drivers */
+	p = VideoDriverFactoryBase::GetDriversInfo(p, lastof(buf));
 
 	/* List the blitters */
 	p = BlitterFactoryBase::GetBlittersInfo(p, lastof(buf));
@@ -342,7 +345,7 @@ static void LoadIntroGame()
 	MarkWholeScreenDirty();
 
 	/* Play main theme */
-	if (_music_driver->is_song_playing()) ResetMusic();
+	if (_music_driver->IsSongPlaying()) ResetMusic();
 }
 
 #if defined(UNIX) && !defined(__MORPHOS__)
@@ -514,16 +517,36 @@ int ttd_main(int argc, char *argv[])
 	DEBUG(misc, 1, "Loading blitter '%s'...", blitter);
 	if (BlitterFactoryBase::SelectBlitter(blitter) == NULL)
 		error("Failed to select requested blitter '%s'; does it exist?", blitter);
+
 	DEBUG(driver, 1, "Loading drivers...");
-	LoadDriver(SOUND_DRIVER, _ini_sounddriver);
-	LoadDriver(MUSIC_DRIVER, _ini_musicdriver);
-	LoadDriver(VIDEO_DRIVER, _ini_videodriver); // load video last, to prevent an empty window while sound and music loads
+
+	_sound_driver = (SoundDriver*)SoundDriverFactoryBase::SelectDriver(_ini_sounddriver, Driver::DT_SOUND);
+	if (_sound_driver == NULL) {
+		StrEmpty(_ini_sounddriver) ?
+			error("Failed to autoprobe sound driver") :
+			error("Failed to select requested sound driver '%s'", _ini_sounddriver);
+	}
+
+	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(_ini_musicdriver, Driver::DT_MUSIC);
+	if (_music_driver == NULL) {
+		StrEmpty(_ini_musicdriver) ?
+			error("Failed to autoprobe music driver") :
+			error("Failed to select requested music driver '%s'", _ini_musicdriver);
+	}
+
+	_video_driver = (VideoDriver*)VideoDriverFactoryBase::SelectDriver(_ini_videodriver, Driver::DT_VIDEO);
+	if (_video_driver == NULL) {
+		StrEmpty(_ini_videodriver) ?
+			error("Failed to autoprobe video driver") :
+			error("Failed to select requested video driver '%s'", _ini_videodriver);
+	}
+
 	_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 	/* Initialize the zoom level of the screen to normal */
 	_screen.zoom = ZOOM_LVL_NORMAL;
 
 	/* restore saved music volume */
-	_music_driver->set_volume(msf.music_vol);
+	_music_driver->SetVolume(msf.music_vol);
 
 	NetworkStartUp(); // initialize network-core
 
@@ -594,16 +617,16 @@ int ttd_main(int argc, char *argv[])
 	}
 #endif /* ENABLE_NETWORK */
 
-	_video_driver->main_loop();
+	_video_driver->MainLoop();
 
 	WaitTillSaved();
 	IConsoleFree();
 
 	if (_network_available) NetworkShutDown(); // Shut down the network and close any open connections
 
-	_video_driver->stop();
-	_music_driver->stop();
-	_sound_driver->stop();
+	_video_driver->Stop();
+	_music_driver->Stop();
+	_sound_driver->Stop();
 
 	/* only save config if we have to */
 	if (save_config) {
@@ -2097,8 +2120,3 @@ void ReloadNewGRFData()
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
 }
-
-HalMusicDriver *_music_driver;
-HalSoundDriver *_sound_driver;
-HalVideoDriver *_video_driver;
-

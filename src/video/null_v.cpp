@@ -9,7 +9,9 @@
 #include "../blitter/factory.hpp"
 #include "null_v.h"
 
-static const char* NullVideoStart(const char* const* parm)
+static FVideoDriver_Null iFVideoDriver_Null;
+
+const char *VideoDriver_Null::Start(const char* const *parm)
 {
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
@@ -19,11 +21,11 @@ static const char* NullVideoStart(const char* const* parm)
 	return NULL;
 }
 
-static void NullVideoStop() { }
+void VideoDriver_Null::Stop() { }
 
-static void NullVideoMakeDirty(int left, int top, int width, int height) {}
+void VideoDriver_Null::MakeDirty(int left, int top, int width, int height) {}
 
-static void NullVideoMainLoop()
+void VideoDriver_Null::MainLoop()
 {
 	uint i;
 
@@ -34,14 +36,6 @@ static void NullVideoMainLoop()
 	}
 }
 
-static bool NullVideoChangeRes(int w, int h) { return false; }
-static void NullVideoFullScreen(bool fs) {}
+bool VideoDriver_Null::ChangeResolution(int w, int h) { return false; }
 
-const HalVideoDriver _null_video_driver = {
-	NullVideoStart,
-	NullVideoStop,
-	NullVideoMakeDirty,
-	NullVideoMainLoop,
-	NullVideoChangeRes,
-	NullVideoFullScreen,
-};
+void VideoDriver_Null::ToggleFullscreen(bool fs) {}

@@ -471,9 +471,6 @@
 				RelativePath=".\..\src\gui.h">
 			</File>
 			<File
-				RelativePath=".\..\src\hal.h">
-			</File>
-			<File
 				RelativePath=".\..\src\heightmap.h">
 			</File>
 			<File
@@ -1035,6 +1032,19 @@
 			</File>
 			<File
 				RelativePath=".\..\src\blitter\null.hpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Drivers"
+			Filter="">
+			<File
+				RelativePath=".\..\src\music\music_driver.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\sound\sound_driver.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\video\video_driver.hpp">
 			</File>
 		</Filter>
 		<Filter

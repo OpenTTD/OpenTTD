@@ -11,10 +11,10 @@
 #include "window.h"
 #include "gfx.h"
 #include "sound.h"
-#include "hal.h"
 #include "macros.h"
 #include "variables.h"
 #include "music.h"
+#include "music/music_driver.hpp"
 
 static byte _music_wnd_cursong;
 static bool _song_is_active;
@@ -86,7 +86,7 @@ static void SkipToNextSong()
 
 static void MusicVolumeChanged(byte new_vol)
 {
-	_music_driver->set_volume(new_vol);
+	_music_driver->SetVolume(new_vol);
 }
 
 static void DoPlaySong()
@@ -94,12 +94,12 @@ static void DoPlaySong()
 	char filename[MAX_PATH];
 	FioFindFullPath(filename, lengthof(filename), GM_DIR,
 			origin_songs_specs[_music_wnd_cursong - 1].filename);
-	_music_driver->play_song(filename);
+	_music_driver->PlaySong(filename);
 }
 
 static void DoStopMusic()
 {
-	_music_driver->stop_song();
+	_music_driver->StopSong();
 }
 
 static void SelectSongToPlay()
@@ -178,7 +178,7 @@ void MusicLoop()
 
 	if (!_song_is_active) return;
 
-	if (!_music_driver->is_song_playing()) {
+	if (!_music_driver->IsSongPlaying()) {
 		if (_game_mode != GM_MENU) {
 			StopMusic();
 			SkipToNextSong();

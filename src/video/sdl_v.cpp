@@ -17,6 +17,8 @@
 #include "sdl_v.h"
 #include <SDL.h>
 
+static FVideoDriver_SDL iFVideoDriver_SDL;
+
 static SDL_Surface *_sdl_screen;
 static bool _all_modes;
 
@@ -24,7 +26,7 @@ static bool _all_modes;
 static SDL_Rect _dirty_rects[MAX_DIRTY_RECTS];
 static int _num_dirty_rects;
 
-static void SdlVideoMakeDirty(int left, int top, int width, int height)
+void VideoDriver_SDL::MakeDirty(int left, int top, int width, int height)
 {
 	if (_num_dirty_rects < MAX_DIRTY_RECTS) {
 		_dirty_rects[_num_dirty_rects].x = left;
@@ -415,7 +417,7 @@ static int PollEvent()
 	return -1;
 }
 
-static const char *SdlVideoStart(const char * const *parm)
+const char *VideoDriver_SDL::Start(const char * const *parm)
 {
 	char buf[30];
 
@@ -434,12 +436,12 @@ static const char *SdlVideoStart(const char * const *parm)
 	return NULL;
 }
 
-static void SdlVideoStop()
+void VideoDriver_SDL::Stop()
 {
 	SdlClose(SDL_INIT_VIDEO);
 }
 
-static void SdlVideoMainLoop()
+void VideoDriver_SDL::MainLoop()
 {
 	uint32 cur_ticks = SDL_CALL SDL_GetTicks();
 	uint32 last_cur_ticks = cur_ticks;
@@ -505,28 +507,19 @@ static void SdlVideoMainLoop()
 	}
 }
 
-static bool SdlVideoChangeRes(int w, int h)
+bool VideoDriver_SDL::ChangeResolution(int w, int h)
 {
 	return CreateMainSurface(w, h);
 }
 
-static void SdlVideoFullScreen(bool full_screen)
+void VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 {
-	_fullscreen = full_screen;
+	_fullscreen = fullscreen;
 	GetVideoModes(); // get the list of available video modes
-	if (_num_resolutions == 0 || !_video_driver->change_resolution(_cur_resolution[0], _cur_resolution[1])) {
+	if (_num_resolutions == 0 || !this->ChangeResolution(_cur_resolution[0], _cur_resolution[1])) {
 		// switching resolution failed, put back full_screen to original status
 		_fullscreen ^= true;
 	}
 }
-
-const HalVideoDriver _sdl_video_driver = {
-	SdlVideoStart,
-	SdlVideoStop,
-	SdlVideoMakeDirty,
-	SdlVideoMainLoop,
-	SdlVideoChangeRes,
-	SdlVideoFullScreen,
-};
 
 #endif /* WITH_SDL */

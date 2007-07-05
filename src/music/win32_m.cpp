@@ -15,7 +15,9 @@ static struct {
 	char start_song[260];
 } _midi;
 
-static void Win32MidiPlaySong(const char *filename)
+static FMusicDriver_Win32 iFMusicDriver_Win32;
+
+void MusicDriver_Win32::PlaySong(const char *filename)
 {
 	strcpy(_midi.start_song, filename);
 	_midi.playing = true;
@@ -23,7 +25,7 @@ static void Win32MidiPlaySong(const char *filename)
 	SetEvent(_midi.wait_obj);
 }
 
-static void Win32MidiStopSong()
+void MusicDriver_Win32::StopSong()
 {
 	if (_midi.playing) {
 		_midi.stop_song = true;
@@ -32,12 +34,12 @@ static void Win32MidiStopSong()
 	}
 }
 
-static bool Win32MidiIsSongPlaying()
+bool MusicDriver_Win32::IsSongPlaying()
 {
 	return _midi.playing;
 }
 
-static void Win32MidiSetVolume(byte vol)
+void MusicDriver_Win32::SetVolume(byte vol)
 {
 	_midi.new_vol = vol;
 	SetEvent(_midi.wait_obj);
@@ -118,7 +120,7 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 	return 0;
 }
 
-static const char *Win32MidiStart(const char * const *parm)
+const char *MusicDriver_Win32::Start(const char * const *parm)
 {
 	MIDIOUTCAPS midicaps;
 	DWORD threadId;
@@ -146,17 +148,8 @@ static const char *Win32MidiStart(const char * const *parm)
 	return NULL;
 }
 
-static void Win32MidiStop()
+void MusicDriver_Win32::Stop()
 {
 	_midi.terminate = true;
 	SetEvent(_midi.wait_obj);
 }
-
-const HalMusicDriver _win32_music_driver = {
-	Win32MidiStart,
-	Win32MidiStop,
-	Win32MidiPlaySong,
-	Win32MidiStopSong,
-	Win32MidiIsSongPlaying,
-	Win32MidiSetVolume,
-};

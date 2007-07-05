@@ -44,7 +44,9 @@ static void AudioOutCallback(void *buf, unsigned int _reqn, void *userdata)
 }
 #endif /* PSP */
 
-static const char *LibtimidityMidiStart(const char *const *param)
+static FMusicDriver_LibTimidity iFMusicDriver_LibTimidity;
+
+const char *MusicDriver_LibTimidity::Start(const char *const *param)
 {
 	_midi.status = MIDI_STOPPED;
 
@@ -53,8 +55,7 @@ static const char *LibtimidityMidiStart(const char *const *param)
 		 *  If it was not forced via param, try to load it without a
 		 *  configuration. Who knows that works. */
 		if (param != NULL || mid_init_no_config() < 0) {
-			DEBUG(driver, 0, "error initializing timidity");
-			return NULL;
+			return "error initializing timidity";
 		}
 	}
 	DEBUG(driver, 1, "successfully initialised timidity");
@@ -77,7 +78,7 @@ static const char *LibtimidityMidiStart(const char *const *param)
 	return NULL;
 }
 
-static void LibtimidityMidiStop()
+void MusicDriver_LibTimidity::Stop()
 {
 	if (_midi.status == MIDI_PLAYING) {
 		_midi.status = MIDI_STOPPED;
@@ -86,7 +87,7 @@ static void LibtimidityMidiStop()
 	mid_exit();
 }
 
-static void LibtimidityMidiPlaySong(const char *filename)
+void MusicDriver_LibTimidity::PlaySong(const char *filename)
 {
 	_midi.stream = mid_istream_open_file(filename);
 	if (_midi.stream == NULL) {
@@ -107,13 +108,13 @@ static void LibtimidityMidiPlaySong(const char *filename)
 	_midi.status = MIDI_PLAYING;
 }
 
-static void LibtimidityMidiStopSong()
+void MusicDriver_LibTimidity::StopSong()
 {
 	_midi.status = MIDI_STOPPED;
 	mid_song_free(_midi.song);
 }
 
-static bool LibtimidityMidiIsPlaying()
+bool MusicDriver_LibTimidity::IsSongPlaying()
 {
 	if (_midi.status == MIDI_PLAYING) {
 		_midi.song_position = mid_song_get_time(_midi.song);
@@ -126,18 +127,8 @@ static bool LibtimidityMidiIsPlaying()
 	return (_midi.status == MIDI_PLAYING);
 }
 
-static void LibtimidityMidiSetVolume(byte vol)
+void MusicDriver_LibTimidity::SetVolume(byte vol)
 {
 	if (_midi.song != NULL)
 		mid_song_set_volume(_midi.song, vol);
 }
-
-const HalMusicDriver _libtimidity_music_driver = {
-	LibtimidityMidiStart,
-	LibtimidityMidiStop,
-	LibtimidityMidiPlaySong,
-	LibtimidityMidiStopSong,
-	LibtimidityMidiIsPlaying,
-	LibtimidityMidiSetVolume,
-};
-

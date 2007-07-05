@@ -3,8 +3,30 @@
 #ifndef MUSIC_EXTERNAL_H
 #define MUSIC_EXTERNAL_H
 
-#include "../hal.h"
+#include "music_driver.hpp"
 
-extern const HalMusicDriver _extmidi_music_driver;
+class MusicDriver_ExtMidi: public MusicDriver {
+public:
+	/* virtual */ bool CanProbe() { return true; }
+
+	/* virtual */ const char *Start(const char * const *param);
+
+	/* virtual */ void Stop();
+
+	/* virtual */ void PlaySong(const char *filename);
+
+	/* virtual */ void StopSong();
+
+	/* virtual */ bool IsSongPlaying();
+
+	/* virtual */ void SetVolume(byte vol);
+};
+
+class FMusicDriver_ExtMidi: public MusicDriverFactory<FMusicDriver_ExtMidi> {
+public:
+	/* virtual */ const char *GetName() { return "extmidi"; }
+	/* virtual */ const char *GetDescription() { return "External MIDI Driver"; }
+	/* virtual */ Driver *CreateInstance() { return new MusicDriver_ExtMidi(); }
+};
 
 #endif /* MUSIC_EXTERNAL_H */

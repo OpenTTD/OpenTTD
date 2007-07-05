@@ -10,6 +10,8 @@
 #include <windows.h>
 #include <mmsystem.h>
 
+static FSoundDriver_Win32 iFSoundDriver_Win32;
+
 static HWAVEOUT _waveout;
 static WAVEHDR _wave_hdr[2];
 static int _bufsize;
@@ -48,7 +50,7 @@ static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD_PTR dwInstance,
 	}
 }
 
-static const char *Win32SoundStart(const char* const* parm)
+const char *SoundDriver_Win32::Start(const char* const* parm)
 {
 	WAVEFORMATEX wfex;
 	wfex.wFormatTag = WAVE_FORMAT_PCM;
@@ -69,7 +71,7 @@ static const char *Win32SoundStart(const char* const* parm)
 	return NULL;
 }
 
-static void Win32SoundStop()
+void SoundDriver_Win32::Stop()
 {
 	HWAVEOUT waveout = _waveout;
 
@@ -79,8 +81,3 @@ static void Win32SoundStop()
 	waveOutUnprepareHeader(waveout, &_wave_hdr[1], sizeof(WAVEHDR));
 	waveOutClose(waveout);
 }
-
-const HalSoundDriver _win32_sound_driver = {
-	Win32SoundStart,
-	Win32SoundStop,
-};

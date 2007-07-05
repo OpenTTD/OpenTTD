@@ -24,32 +24,34 @@ static struct {
 static void DoPlay();
 static void DoStop();
 
-static const char* ExtMidiStart(const char* const * parm)
+static FMusicDriver_ExtMidi iFMusicDriver_ExtMidi;
+
+const char* MusicDriver_ExtMidi::Start(const char* const * parm)
 {
 	_midi.song[0] = '\0';
 	_midi.pid = -1;
 	return NULL;
 }
 
-static void ExtMidiStop()
+void MusicDriver_ExtMidi::Stop()
 {
 	_midi.song[0] = '\0';
 	DoStop();
 }
 
-static void ExtMidiPlaySong(const char* filename)
+void MusicDriver_ExtMidi::PlaySong(const char* filename)
 {
 	ttd_strlcpy(_midi.song, filename, lengthof(_midi.song));
 	DoStop();
 }
 
-static void ExtMidiStopSong()
+void MusicDriver_ExtMidi::StopSong()
 {
 	_midi.song[0] = '\0';
 	DoStop();
 }
 
-static bool ExtMidiIsPlaying()
+bool MusicDriver_ExtMidi::IsSongPlaying()
 {
 	if (_midi.pid != -1 && waitpid(_midi.pid, NULL, WNOHANG) == _midi.pid)
 		_midi.pid = -1;
@@ -57,7 +59,7 @@ static bool ExtMidiIsPlaying()
 	return _midi.pid != -1;
 }
 
-static void ExtMidiSetVolume(byte vol)
+void MusicDriver_ExtMidi::SetVolume(byte vol)
 {
 	DEBUG(driver, 1, "extmidi: set volume not implemented");
 }
@@ -95,14 +97,5 @@ static void DoStop()
 {
 	if (_midi.pid != -1) kill(_midi.pid, SIGTERM);
 }
-
-const HalMusicDriver _extmidi_music_driver = {
-	ExtMidiStart,
-	ExtMidiStop,
-	ExtMidiPlaySong,
-	ExtMidiStopSong,
-	ExtMidiIsPlaying,
-	ExtMidiSetVolume,
-};
 
 #endif /* __MORPHOS__ */

@@ -119,8 +119,10 @@ static void *_dedicated_video_mem;
 extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subdir);
 extern void SwitchMode(int new_mode);
 
+static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 
-static const char *DedicatedVideoStart(const char * const *parm)
+
+const char *VideoDriver_Dedicated::Start(const char * const *parm)
 {
 	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 	if (bpp == 0) _dedicated_video_mem = NULL;
@@ -147,7 +149,7 @@ static const char *DedicatedVideoStart(const char * const *parm)
 	return NULL;
 }
 
-static void DedicatedVideoStop()
+void VideoDriver_Dedicated::Stop()
 {
 #ifdef WIN32
 	CloseWindowsConsoleThread();
@@ -155,9 +157,9 @@ static void DedicatedVideoStop()
 	free(_dedicated_video_mem);
 }
 
-static void DedicatedVideoMakeDirty(int left, int top, int width, int height) {}
-static bool DedicatedVideoChangeRes(int w, int h) { return false; }
-static void DedicatedVideoFullScreen(bool fs) {}
+void VideoDriver_Dedicated::MakeDirty(int left, int top, int width, int height) {}
+bool VideoDriver_Dedicated::ChangeResolution(int w, int h) { return false; }
+void VideoDriver_Dedicated::ToggleFullscreen(bool fs) {}
 
 #if defined(UNIX) || defined(__OS2__) || defined(PSP)
 static bool InputWaiting()
@@ -232,7 +234,7 @@ static void DedicatedHandleKeyInput()
 	IConsoleCmdExec(input_line); // execute command
 }
 
-static void DedicatedVideoMainLoop()
+void VideoDriver_Dedicated::MainLoop()
 {
 	uint32 cur_ticks = GetTime();
 	uint32 next_tick = cur_ticks + 30;
@@ -294,14 +296,5 @@ static void DedicatedVideoMainLoop()
 		CSleep(1);
 	}
 }
-
-const HalVideoDriver _dedicated_video_driver = {
-	DedicatedVideoStart,
-	DedicatedVideoStop,
-	DedicatedVideoMakeDirty,
-	DedicatedVideoMainLoop,
-	DedicatedVideoChangeRes,
-	DedicatedVideoFullScreen,
-};
 
 #endif /* ENABLE_NETWORK */

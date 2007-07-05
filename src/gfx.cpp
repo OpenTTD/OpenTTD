@@ -12,7 +12,6 @@
 #include "gfx.h"
 #include "table/palettes.h"
 #include "table/sprites.h"
-#include "hal.h"
 #include "variables.h"
 #include "table/control_codes.h"
 #include "fontcache.h"
@@ -21,6 +20,7 @@
 #include "zoom.hpp"
 #include "texteff.hpp"
 #include "blitter/factory.hpp"
+#include "video/video_driver.hpp"
 
 byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 bool _fullscreen;
@@ -66,7 +66,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 
 	blitter->ScrollBuffer(_screen.dst_ptr, left, top, width, height, xo, yo);
 	/* This part of the screen is now dirty. */
-	_video_driver->make_dirty(left, top, width, height);
+	_video_driver->MakeDirty(left, top, width, height);
 }
 
 
@@ -834,7 +834,7 @@ void UndrawMouseCursor()
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		_cursor.visible = false;
 		blitter->CopyFromBuffer(blitter->MoveTo(_screen.dst_ptr, _cursor.draw_pos.x, _cursor.draw_pos.y), _cursor_backup, _cursor.draw_size.x, _cursor.draw_size.y);
-		_video_driver->make_dirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
+		_video_driver->MakeDirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
 	}
 }
 
@@ -886,7 +886,7 @@ void DrawMouseCursor()
 	_cur_dpi = &_screen;
 	DrawSprite(_cursor.sprite, _cursor.pal, _cursor.pos.x, _cursor.pos.y);
 
-	_video_driver->make_dirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
+	_video_driver->MakeDirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
 
 	_cursor.visible = true;
 	_cursor.dirty = false;
@@ -907,7 +907,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 
 	DrawOverlappedWindowForAll(left, top, right, bottom);
 
-	_video_driver->make_dirty(left, top, right - left, bottom - top);
+	_video_driver->MakeDirty(left, top, right - left, bottom - top);
 }
 
 void DrawDirtyBlocks()
@@ -1151,12 +1151,12 @@ bool ChangeResInGame(int w, int h)
 {
 	return
 		(_screen.width == w && _screen.height == h) ||
-		_video_driver->change_resolution(w, h);
+		_video_driver->ChangeResolution(w, h);
 }
 
 void ToggleFullScreen(bool fs)
 {
-	_video_driver->toggle_fullscreen(fs);
+	_video_driver->ToggleFullscreen(fs);
 	if (_fullscreen != fs && _num_resolutions == 0) {
 		DEBUG(driver, 0, "Could not find a suitable fullscreen resolution");
 	}

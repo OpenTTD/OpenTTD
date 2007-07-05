@@ -11,7 +11,6 @@
 #include "landscape.h"
 #include "viewport.h"
 #include "saveload.h"
-#include "hal.h"
 #include "console.h"
 #include "string.h"
 #include "variables.h"
@@ -20,6 +19,7 @@
 #include <stdarg.h> /* va_list */
 #include "date.h"
 #include "texteff.hpp"
+#include "video/video_driver.hpp"
 
 enum {
 	MAX_TEXTMESSAGE_LENGTH = 200,
@@ -168,7 +168,7 @@ void UndrawTextMessage()
 		/* Put our 'shot' back to the screen */
 		blitter->CopyFromBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _textmessage_backup, width, height);
 		/* And make sure it is updated next time */
-		_video_driver->make_dirty(x, y, width, height);
+		_video_driver->MakeDirty(x, y, width, height);
 
 		_textmessage_dirty = true;
 	}
@@ -248,7 +248,7 @@ void DrawTextMessage()
 	}
 
 	/* Make sure the data is updated next flush */
-	_video_driver->make_dirty(x, y, width, height);
+	_video_driver->MakeDirty(x, y, width, height);
 
 	_textmessage_visible = true;
 	_textmessage_dirty = false;

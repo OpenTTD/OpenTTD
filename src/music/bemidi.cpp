@@ -11,17 +11,19 @@
 
 static BMidiSynthFile midiSynthFile;
 
-static const char *bemidi_start(const char * const *parm)
+static FMusicDriver_BeMidi iFMusicDriver_BeMidi;
+
+const char *MusicDriver_BeMidi::Start(const char * const *parm)
 {
 	return NULL;
 }
 
-static void bemidi_stop()
+void MusicDriver_BeMidi::Stop()
 {
 	midiSynthFile.UnloadFile();
 }
 
-static void bemidi_play_song(const char *filename)
+void MusicDriver_BeMidi::PlaySong(const char *filename)
 {
 	bemidi_stop();
 	entry_ref midiRef;
@@ -30,26 +32,17 @@ static void bemidi_play_song(const char *filename)
 	midiSynthFile.Start();
 }
 
-static void bemidi_stop_song()
+void MusicDriver_BeMidi::StopSong()
 {
 	midiSynthFile.UnloadFile();
 }
 
-static bool bemidi_is_playing()
+bool MusicDriver_BeMidi::IsSongPlaying()
 {
 	return !midiSynthFile.IsFinished();
 }
 
-static void bemidi_set_volume(byte vol)
+void MusicDriver_BeMidi::SetVolume(byte vol)
 {
 	fprintf(stderr, "BeMidi: Set volume not implemented\n");
 }
-
-const HalMusicDriver _bemidi_music_driver = {
-	bemidi_start,
-	bemidi_stop,
-	bemidi_play_song,
-	bemidi_stop_song,
-	bemidi_is_playing,
-	bemidi_set_volume,
-};
