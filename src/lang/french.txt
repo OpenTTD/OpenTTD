@@ -2112,7 +2112,7 @@ STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Nombre 
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Arrivée des concurents: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Nombre de villes: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Nombre d'industries: {ORANGE}{STRING}
-STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Prêt initial maximum: {ORANGE}{CURRENCY}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Emprunt initial maximum: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Taux d'interêt initial: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Coûts d'entretien: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Vitesse de développement des concurents: {ORANGE}{STRING}
@@ -2209,14 +2209,14 @@ STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graphique du profit d'opération
 STR_7026_BANK_BALANCE                                           :{WHITE}Equilibre bancaire
-STR_7027_LOAN                                                   :{WHITE}Prêt
+STR_7027_LOAN                                                   :{WHITE}Emprunt
 STR_MAX_LOAN                                                    :{WHITE}Emprunt maximum :  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Emprunter {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Rembourser {SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...le prêt maximum est de {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Impossible d'emprunter plus...
-STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...Prêt déjà remboursé
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...emprunt déjà remboursé
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} nécessaires
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Impossible de rembourser...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}On ne peut pas distribuer de l'argent qui est emprunté à la banque...
@@ -3021,7 +3021,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Revenu m
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Livré :
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Cargo :
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Argent :
-STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prêt :
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprunt :
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total :
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Nombre de véhicules. Ceci inclut les véhicules routiers, les trains, les navies et les aéronefs.
