@@ -2207,7 +2207,8 @@ static void NewSpriteGroup(byte *buf, int len)
 					break;
 				}
 
-				case GSF_TOWNHOUSE: {
+				case GSF_TOWNHOUSE:
+				case GSF_INDUSTRYTILES: {
 					byte sprites     = _cur_grffile->spriteset_numents;
 					byte num_sprites = max((uint8)1, type);
 					uint i;
