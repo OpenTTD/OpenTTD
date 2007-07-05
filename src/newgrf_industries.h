@@ -12,6 +12,7 @@
 uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available);
 uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile);
 uint32 GetIndustryIDAtOffset(TileIndex new_tile, TileIndex old_tile, const Industry *i);
+void IndustryProductionCallback(Industry *ind, int reason);
 
 /* in newgrf_industrytiles.cpp*/
 uint32 IndustryTileGetRandomBits(const ResolverObject *object);

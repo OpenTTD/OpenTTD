@@ -30,6 +30,7 @@
 #include "water_map.h"
 #include "tree_map.h"
 #include "cargotype.h"
+#include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "newgrf_callbacks.h"
 
@@ -965,6 +966,8 @@ static void ProduceIndustryGoods(Industry *i)
 
 	/* produce some cargo */
 	if ((i->counter & 0xFF) == 0) {
+		if (HASBIT(indsp->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) IndustryProductionCallback(i, 1);
+
 		IndustyBehaviour indbehav = indsp->behaviour;
 		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + i->production_rate[0]);
 		i->produced_cargo_waiting[1] = min(0xffff, i->produced_cargo_waiting[1] + i->production_rate[1]);

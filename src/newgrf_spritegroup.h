@@ -8,6 +8,19 @@
 #include "town.h"
 #include "industry.h"
 
+/**
+ * Gets the value of a so-called newgrf "register".
+ * @param i index of the register
+ * @pre i < 0x110
+ * @return the value of the register
+ */
+static inline uint32 GetRegister(uint i)
+{
+	assert(i < 0x110);
+	extern uint32 _temp_store[0x110];
+	return _temp_store[i];
+}
+
 struct SpriteGroup;
 
 
@@ -135,6 +148,13 @@ struct TileLayoutSpriteGroup {
 	struct DrawTileSprites *dts;
 };
 
+struct IndustryProductionSpriteGroup {
+	uint8 version;
+	uint16 substract_input[3];
+	uint16 add_output[2];
+	uint8 again;
+};
+
 /* List of different sprite group types */
 enum SpriteGroupType {
 	SGT_INVALID,
@@ -144,6 +164,7 @@ enum SpriteGroupType {
 	SGT_CALLBACK,
 	SGT_RESULT,
 	SGT_TILELAYOUT,
+	SGT_INDUSTRY_PRODUCTION,
 };
 
 /* Common wrapper for all the different sprite group types */
@@ -157,6 +178,7 @@ struct SpriteGroup {
 		CallbackResultSpriteGroup callback;
 		ResultSpriteGroup result;
 		TileLayoutSpriteGroup layout;
+		IndustryProductionSpriteGroup indprod;
 	} g;
 };
 

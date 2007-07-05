@@ -124,7 +124,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x42: { // waiting cargo, but only if those two callback flags are set
 			uint16 callback = indspec->callback_flags;
 			if (HASBIT(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(callback, CBM_IND_PRODUCTION_256_TICKS)) {
-				return max(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0x7FFF);
+				return max(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0xFFFF);
 			} else {
 				return 0;
 			}
@@ -262,4 +262,41 @@ uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Indust
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
+}
+
+static int32 DerefIndProd(uint field, bool use_register)
+{
+	return use_register ? (int32)GetRegister(field) : field;
+}
+
+/**
+ * Get the industry production callback and apply it to the industry.
+ * @param ind    the industry this callback has to be called for
+ * @param reason the reason it is called (0 = incoming cargo, 1 = periodic tick callback)
+ */
+void IndustryProductionCallback(Industry *ind, int reason)
+{
+	ResolverObject object;
+	NewIndustryResolver(&object, INVALID_TILE, ind);
+	object.callback_param2 = reason;
+
+	for (uint loop = 0;; loop++) {
+		SB(object.callback_param2, 8, 16, loop);
+		const SpriteGroup *group = Resolve(GetIndustrySpec(ind->type)->grf_prop.spritegroup, &object);
+		if (group == NULL || group->type != SGT_INDUSTRY_PRODUCTION) break;
+
+		bool deref = (group->g.indprod.version == 1);
+
+		for (uint i = 0; i < 3; i++) {
+			ind->incoming_cargo_waiting[i] = clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->g.indprod.substract_input[i], deref), 0, 0xFFFF);
+		}
+		for (uint i = 0; i < 2; i++) {
+			ind->produced_cargo_waiting[i] = clamp(ind->produced_cargo_waiting[i] + DerefIndProd(group->g.indprod.add_output[i], deref), 0, 0xFFFF);
+		}
+
+		int32 again = DerefIndProd(group->g.indprod.again, deref);
+		if (again == 0) break;
+
+		SB(object.callback_param2, 24, 8, again);
+	}
 }

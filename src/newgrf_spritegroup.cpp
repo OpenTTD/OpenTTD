@@ -76,7 +76,7 @@ void InitializeSpriteGroupPool()
 	_spritegroup_count = 0;
 }
 
-static uint32 _temp_store[0x110];
+uint32 _temp_store[0x110];
 
 
 static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)

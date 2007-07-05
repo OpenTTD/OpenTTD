@@ -2287,6 +2287,35 @@ static void NewSpriteGroup(byte *buf, int len)
 					break;
 				}
 
+				case GSF_INDUSTRIES: {
+					if (type > 1) {
+						grfmsg(1, "NewSpriteGroup: Unsupported industry production version %d, skipping", type);
+						break;
+					}
+
+					group = AllocateSpriteGroup();
+					group->type = SGT_INDUSTRY_PRODUCTION;
+					group->g.indprod.version = type;
+					if (type == 0) {
+						for (uint i = 0; i < 3; i++) {
+							group->g.indprod.substract_input[i] = grf_load_word(&buf);
+						}
+						for (uint i = 0; i < 2; i++) {
+							group->g.indprod.add_output[i] = grf_load_word(&buf);
+						}
+						group->g.indprod.again = grf_load_byte(&buf);
+					} else {
+						for (uint i = 0; i < 3; i++) {
+							group->g.indprod.substract_input[i] = grf_load_byte(&buf);
+						}
+						for (uint i = 0; i < 2; i++) {
+							group->g.indprod.add_output[i] = grf_load_byte(&buf);
+						}
+						group->g.indprod.again = grf_load_byte(&buf);
+					}
+					break;
+				}
+
 				/* Loading of Tile Layout and Production Callback groups would happen here */
 				default: grfmsg(1, "NewSpriteGroup: Unsupported feature %d, skipping", feature);
 			}
