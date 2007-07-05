@@ -3,7 +3,6 @@
 /** @file win32.cpp Implementation of MS Windows system calls */
 
 #include "stdafx.h"
-#include "hal.h"
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
