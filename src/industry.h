@@ -37,15 +37,15 @@ enum IndustryLifeType {
 /* Procedures that can be run to check whether an industry may
  * build at location the given to the procedure */
 enum CheckProc {
-	CHECK_NOTHING    = 0,
-	CHECK_FOREST     = 1,
-	CHECK_REFINERY   = 2,
-	CHECK_FARM       = 3,
-	CHECK_PLANTATION = 4,
-	CHECK_WATER      = 5,
-	CHECK_LUMBERMILL = 6,
-	CHECK_BUBBLEGEN  = 7,
-	CHECK_OIL_RIG    = 8,
+	CHECK_NOTHING,
+	CHECK_FOREST,
+	CHECK_REFINERY,
+	CHECK_FARM,
+	CHECK_PLANTATION,
+	CHECK_WATER,
+	CHECK_LUMBERMILL,
+	CHECK_BUBBLEGEN,
+	CHECK_OIL_RIG,
 	CHECK_END,
 };
 
