@@ -12,6 +12,9 @@
  * Names are formatted as CBID_<CLASS>_<CALLBACK>
  */
 enum CallbackID {
+	/* Set when calling a randomizing trigger (almost undocumented) */
+	CBID_RANDOM_TRIGGER             = 0x01,
+
 	/* Powered wagons, if the result is lower as 0x40 then the wagon is powered
 	 * @todo : interpret the rest of the result, aka "visual effects" */
 	CBID_TRAIN_WAGON_POWER          = 0x10,

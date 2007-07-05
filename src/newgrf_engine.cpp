@@ -1014,7 +1014,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	assert(v != NULL);
 
 	NewVehicleResolver(&object, v->engine_type, v);
-
+	object.callback = CBID_RANDOM_TRIGGER;
 	object.trigger = trigger;
 
 	group = Resolve(GetVehicleSpriteGroup(v->engine_type, v), &object);
