@@ -2723,6 +2723,11 @@ static void FeatureNewName(byte *buf, int len)
 				}
 				break;
 
+			case GSF_INDUSTRIES: {
+				AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+				break;
+			}
+
 			case GSF_TOWNHOUSE:
 			default:
 				switch (GB(id, 8, 8)) {
@@ -2773,10 +2778,6 @@ static void FeatureNewName(byte *buf, int len)
 					}
 					break;
 
-				case GSF_INDUSTRIES :
-				case 0x48 :   // for generic strings
-					AddGRFString(_cur_spriteid, id, lang, name);
-					break;
 				default :
 					grfmsg(7, "FeatureNewName: Unsupported feature (0x%02X)", feature);
 					break;
