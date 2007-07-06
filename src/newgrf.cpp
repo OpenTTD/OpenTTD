@@ -4770,6 +4770,33 @@ static void FinaliseHouseArray()
 	}
 }
 
+/** Add all new industries to the industry array. Industry properties can be set at any
+ * time in the GRF file, so we can only add a industry spec to the industry array
+ * after the file has finished loading. */
+static void FinaliseIndustriesArray()
+{
+	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
+		if (file->industryspec != NULL) {
+			for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
+				IndustrySpec *indsp = file->industryspec[i];
+
+				if (indsp != NULL  && indsp->enabled) {
+					_industry_mngr.SetEntitySpec(indsp);
+					_loaded_newgrf_features.has_newindustries = true;
+				}
+			}
+		}
+
+		if (file->indtspec != NULL) {
+			for (int i = 0; i < NUM_INDUSTRYTILES; i++) {
+				IndustryTileSpec *indtsp = file->indtspec[i];
+				if (indtsp != NULL) {
+					_industile_mngr.SetEntitySpec(indtsp);
+				}
+			}
+		}
+	}
+}
 
 /** Each cargo string needs to be mapped from TTDPatch to OpenTTD string IDs.
  * This is done after loading so that strings from Action 4 will be mapped
@@ -4975,6 +5002,9 @@ static void AfterLoadGRFs()
 
 	/* Add all new houses to the house array. */
 	FinaliseHouseArray();
+
+	/* Add all new industries to the industry array. */
+	FinaliseIndustriesArray();
 
 	/* Create dynamic list of industry legends for smallmap_gui.cpp */
 	BuildIndustriesLegend();
