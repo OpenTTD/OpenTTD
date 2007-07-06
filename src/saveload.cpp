@@ -496,6 +496,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
  * @return return the net length of the string */
 static inline size_t SlCalcNetStringLen(const char *ptr, size_t length)
 {
+	if (ptr == NULL) return 0;
 	return minu(strlen(ptr), length - 1);
 }
 
@@ -573,9 +574,13 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			case SLE_VAR_STR:
 			case SLE_VAR_STRQ: // Malloc'd string, free previous incarnation, and allocate
 				free(*(char**)ptr);
-				*(char**)ptr = (char*)malloc(len + 1); // terminating '\0'
-				ptr = *(char**)ptr;
-				SlCopyBytes(ptr, len);
+				if (len == 0) {
+					*(char**)ptr = NULL;
+				} else {
+					*(char**)ptr = (char*)malloc(len + 1); // terminating '\0'
+					ptr = *(char**)ptr;
+					SlCopyBytes(ptr, len);
+				}
 				break;
 		}
 
