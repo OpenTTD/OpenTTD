@@ -1088,6 +1088,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}İstasy
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubuğunu diğer araç çubuklarına bağla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Fareyle kaydırma hareketini ters çevir: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Düzgün viewport kaydırması: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}İnşa araçları kullanılırken ölçüm ipucu göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Şirketin renklerini göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Hiçbiri
@@ -1164,6 +1165,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Hızlı
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Çok Hızlı
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Kasabaların şehir olması için gerekli nüfus: {ORANGE}1 in {STRING}
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Birincil şehir büyüklüğü çarpanı: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Arayüz
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}İnşaat
@@ -1612,6 +1614,12 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Normal sinyalli
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ön-sinayalli ray
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Çıkış-sinyalli ray
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ön+çikis-sinyalli ray
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Normal ve ön sinyalli ray
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Normal ve çıkış sinyalli ray
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Normal ve birleşik sinyalli ray
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ön ve Çıkış sinyalli ray
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ön ve birleşik sinyalli ray
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Çıkış ve birleşik sinyalli ray
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Önce tren istasyonu kaldırılmalı
 
 
@@ -2702,11 +2710,13 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Trenin a
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Her aracın kapasitesi
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Trenin kargo türlerine ayrilmis toplam kapasitesini göster
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Talimat listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırir
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Şimdiki talimatı atla ve sonrakine geç. CTRL ile tıklanırsa seçili talimata geçilir
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Seçili talimatı sil
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı durmadan yap
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili talimatın önüne ya da listenin sonuna komut ekle
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren dolana kadar beklesin
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren mutlaka yükünü boşaltsın
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman çizelgesi - işaretlemek için bir talimata tıklayın.
 STR_SERVICE_HINT                                                :{BLACK}Bakım gerekmiyorsa bunu atla
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {CURRENCY} Ağırlık: {WEIGHT_S}{}Hız: {VELOCITY}  Güç: {POWER}{}Bakım: {CURRENCY}/sene{}Kapasite: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Bozuldu
@@ -3326,5 +3336,8 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
+
+
+#### Improved sign GUI
 
 ########

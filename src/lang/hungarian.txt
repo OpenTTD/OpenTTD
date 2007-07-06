@@ -1100,6 +1100,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflác
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Csak akkor szállítson árut az állomásra, ha ott van rá kereslet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Nagyon hosszú hidak engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}'Menj a garázsba' engedélyezés a menetrendben: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Utólagos elsődleges-ipar létesítési módszer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :semmilyen
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :biztos módszer
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :lehetséges mód
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Több hasonló ipari épület egy városon belül: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Több ugyanolyan gyár építhető közel egymáshoz: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mindig teljes dátum a képernyőn: {ORANGE}{STRING}

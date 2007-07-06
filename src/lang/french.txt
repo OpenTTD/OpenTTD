@@ -1035,6 +1035,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflati
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livrer la cargaison seulement sur demande: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permettre la construction de longs ponts: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permettre l'ordre d'aller au dépôt: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Méthode de construction manuelle des industries primaires: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :aucune
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :comme les autres industries
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospection
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permettre plusieurs industries similaires par ville: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Permettre plusieurs industries similaires à proximité: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Afficher la date complète dans la barre d'état: {ORANGE}{STRING}

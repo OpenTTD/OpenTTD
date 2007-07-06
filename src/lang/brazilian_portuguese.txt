@@ -1036,6 +1036,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflaç
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Somente entregar carga a uma estação quando houver procura: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permitir a construção de pontes muito longas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permitir ordens de ir para o depósito: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Método manual de constução de indústria primária: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como as outras indústrias
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :em prospecção
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permitir várias indústrias semelhantes por cidade: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Indústrias do mesmo tipo podem ser construídas próximas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Sempre exibir a data completa na barra de estado: {ORANGE}{STRING}

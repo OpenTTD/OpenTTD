@@ -1034,6 +1034,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflati
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Lading alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Bouwen van zeer lange bruggen toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}'Ga naar depot' order toestaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Handmatige bouwmethode voor hoofdindustrieën: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere industrieën
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Meerdere vergelijkbare industrieën per stad toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrieën van hetzelfde type dicht bij elkaar toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Altijd lange datum in statusbalk weergeven: {ORANGE}{STRING}

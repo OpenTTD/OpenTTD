@@ -2763,9 +2763,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :알맞지 않�
 STR_TRAIN_NO_POWER                                              :{RED}기관차 없음
 STR_TRAIN_START_NO_CATENARY                                     :연결고리가 모자라 운행을 시작할 수 없습니다.
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 자동차가 출시되었습니다!
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 이(가) 출시되었습니다!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}신형 {STRING} 자동차가 출시되었습니다!  -  {ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}신형 {STRING} 이(가) 출시되었습니다!  -  {ENGINE}
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}차량의 시간표를 정할 수 없습니다...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}정거장에서만 기다릴 수 있습니다.
