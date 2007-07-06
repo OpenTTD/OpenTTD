@@ -95,7 +95,7 @@ struct Patches {
 	bool selectgoods;                   // only send the goods to station if a train has been there
 	bool longbridges;                   // allow 100 tile long bridges
 	bool gotodepot;                     // allow goto depot in orders
-	bool build_rawmaterial_ind;         // allow building raw material industries
+	uint8 raw_industry_construction;    ///< Type of (raw) industry construction (none, "normal", prospecting)
 	bool multiple_industry_per_town;    // allow many industries of the same type per town
 	bool same_industry_close;           // allow same type industries to be built close to each other
 	bool lost_train_warn;               // if a train can't find its destination, show a warning

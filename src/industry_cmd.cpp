@@ -1505,27 +1505,41 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
+	bool raw_industry = indspec->accepts_cargo[0] == CT_INVALID && indspec->accepts_cargo[1] == CT_INVALID &&
+			indspec->accepts_cargo[2] == CT_INVALID && !(indspec->behaviour & INDUSTRYBEH_CUT_TREES);
+
 	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now)
 	 * Exclude the lumber mill (only "raw" industry that can be built) */
-	if (!_patches.build_rawmaterial_ind &&
-			indspec->accepts_cargo[0] == CT_INVALID &&
-			indspec->accepts_cargo[1] == CT_INVALID &&
-			indspec->accepts_cargo[2] == CT_INVALID &&
-			!(indspec->behaviour & INDUSTRYBEH_CUT_TREES)) {
+	if (raw_industry && _patches.raw_industry_construction == 0) {
 		return CMD_ERROR;
 	}
 
-	num = indspec->num_table;
-	itt = indspec->table;
+	if (raw_industry && _patches.raw_industry_construction == 2) {
+		if (flags & DC_EXEC) {
+			/* Prospecting has a chance to fail, however we cannot guarantee that something can
+			 * be built on the map, so the chance gets lower when the map is fuller, but there
+			 * is nothing we can really do about that. */
+			if (Random() <= indspec->prospecting_chance) {
+				for (int i = 0; i < 5000; i++) {
+					const IndustryTileTable *it = indspec->table[RandomRange(indspec->num_table)];
+					if (CreateNewIndustryHelper(RandomTile(), p1, flags, indspec, it) != NULL) break;
+				}
+			}
+		}
+	} else {
+		num = indspec->num_table;
+		itt = indspec->table;
 
-	do {
-		if (--num < 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
-	} while (!CheckIfIndustryTilesAreFree(tile, it = itt[num], p1));
 
-	if (CreateNewIndustryHelper(tile, p1, flags, indspec, it) == NULL) return CMD_ERROR;
+		do {
+			if (--num < 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
+		} while (!CheckIfIndustryTilesAreFree(tile, it = itt[num], p1));
 
-	return CommandCost((_price.build_industry >> 8) * indspec->cost_multiplier);
+		if (CreateNewIndustryHelper(tile, p1, flags, indspec, it) == NULL) return CMD_ERROR;
+	}
+
+	return CommandCost((_price.build_industry >> 8) * ((_patches.raw_industry_construction == 1) ? indspec->raw_industry_cost_multiplier : indspec->cost_multiplier));
 }
 
 

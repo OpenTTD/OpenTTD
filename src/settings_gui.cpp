@@ -687,7 +687,7 @@ static const char *_patches_stations[] = {
 
 static const char *_patches_economy[] = {
 	"inflation",
-	"build_rawmaterial_ind",
+	"raw_industry_construction",
 	"multiple_industry_per_town",
 	"same_industry_close",
 	"bribe",

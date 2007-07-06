@@ -1418,7 +1418,7 @@ const SettingDesc _patch_settings[] = {
 	/***************************************************************************/
 	/* Economy section of the GUI-configure patches window */
 	SDT_BOOL(Patches, inflation,                  0, 0,  true,            STR_CONFIG_PATCHES_INFLATION,        NULL),
-	SDT_BOOL(Patches, build_rawmaterial_ind,      0, 0, false,            STR_CONFIG_PATCHES_BUILDXTRAIND,     NULL),
+	 SDT_VAR(Patches, raw_industry_construction,SLE_UINT8,0,MS,0,0, 2, 0, STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD, NULL),
 	SDT_BOOL(Patches, multiple_industry_per_town, 0, 0, false,            STR_CONFIG_PATCHES_MULTIPINDTOWN,    NULL),
 	SDT_BOOL(Patches, same_industry_close,        0, 0, false,            STR_CONFIG_PATCHES_SAMEINDCLOSE,     NULL),
 	SDT_BOOL(Patches, bribe,                      0, 0,  true,            STR_CONFIG_PATCHES_BRIBE,            NULL),
