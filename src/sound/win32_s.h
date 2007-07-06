@@ -17,7 +17,7 @@ public:
 class FSoundDriver_Win32: public SoundDriverFactory<FSoundDriver_Win32> {
 public:
 	/* virtual */ const char *GetName() { return "win32"; }
-	/* virtual */ const char *GetDescription() { return "Win32 Sound Driver"; }
+	/* virtual */ const char *GetDescription() { return "Win32 WaveOut Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new SoundDriver_Win32(); }
 };
 
