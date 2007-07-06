@@ -1505,17 +1505,13 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	bool raw_industry = indspec->accepts_cargo[0] == CT_INVALID && indspec->accepts_cargo[1] == CT_INVALID &&
-			indspec->accepts_cargo[2] == CT_INVALID && !(indspec->behaviour & INDUSTRYBEH_CUT_TREES);
-
 	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
-	 * Raw material industries are industries that do not accept cargo (at least for now)
-	 * Exclude the lumber mill (only "raw" industry that can be built) */
-	if (raw_industry && _patches.raw_industry_construction == 0) {
+	 * Raw material industries are industries that do not accept cargo (at least for now) */
+	if (_patches.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
 		return CMD_ERROR;
 	}
 
-	if (raw_industry && _patches.raw_industry_construction == 2) {
+	if (_patches.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
 		if (flags & DC_EXEC) {
 			/* Prospecting has a chance to fail, however we cannot guarantee that something can
 			 * be built on the map, so the chance gets lower when the map is fuller, but there
@@ -1539,7 +1535,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (CreateNewIndustryHelper(tile, p1, flags, indspec, it) == NULL) return CMD_ERROR;
 	}
 
-	return CommandCost((_price.build_industry >> 8) * ((_patches.raw_industry_construction == 1) ? indspec->raw_industry_cost_multiplier : indspec->cost_multiplier));
+	return CommandCost(indspec->GetConstructionCost());
 }
 
 
@@ -1894,6 +1890,23 @@ void InitializeIndustries()
 	_industry_sort_dirty = true;
 	_industry_sound_tile = 0;
 }
+
+bool IndustrySpec::IsRawIndustry() const
+{
+	/* Lumber mills are extractive/organic, but can always be built like a non-raw industry */
+	return (this->life_type & (INDUSTRYLIFE_EXTRACTIVE | INDUSTRYLIFE_ORGANIC)) != 0 &&
+			(this->behaviour & INDUSTRYBEH_CUT_TREES) == 0;
+}
+
+Money IndustrySpec::GetConstructionCost() const
+{
+	return (_price.build_industry *
+			(_patches.raw_industry_construction == 1 && this->IsRawIndustry() ?
+					this->raw_industry_cost_multiplier :
+					this->cost_multiplier
+			)) >> 8;
+}
+
 
 extern const TileTypeProcs _tile_type_industry_procs = {
 	DrawTile_Industry,           /* draw_tile_proc */

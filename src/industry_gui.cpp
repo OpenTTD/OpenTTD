@@ -39,7 +39,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 		if (_thd.place_mode == 1 && _thd.window_class == WC_BUILD_INDUSTRY) {
 			int ind_type = _build_industry_types[_opt_ptr->landscape][WP(w, def_d).data_1];
 
-			SetDParam(0, (_price.build_industry >> 8) * (_patches.raw_industry_construction == 1 ? GetIndustrySpec(ind_type)->raw_industry_cost_multiplier : GetIndustrySpec(ind_type)->cost_multiplier));
+			SetDParam(0, GetIndustrySpec(ind_type)->GetConstructionCost());
 			DrawStringCentered(85, w->height - 21, STR_482F_COST, 0);
 		}
 		break;

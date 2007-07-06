@@ -147,6 +147,18 @@ struct IndustrySpec {
 	uint8 cleanup_flag;                   ///< flags indicating which data should be freed upon cleaning up
 	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 	struct GRFFileProps grf_prop;         ///< properties related the the grf file
+
+	/**
+	 * Is an industry with the spec a raw industry?
+	 * @return true if it should be handled as a raw industry
+	 */
+	bool IsRawIndustry() const;
+
+	/**
+	 * Get the cost for constructing this industry
+	 * @return the cost (inflation corrected etc)
+	 */
+	Money GetConstructionCost() const;
 };
 
 /**
