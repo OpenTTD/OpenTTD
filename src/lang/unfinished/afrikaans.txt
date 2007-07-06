@@ -979,7 +979,6 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasi
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Aflewer vrag na 'n stasie slegs as daar 'n aanvrag is:: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Toelaat opbou van baie lank bruge: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Toelaat gaan na depot opdrae: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Toelaat opbou van rumateriaal oplewering nywerheide: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Toelaat veelvout soortgelyke nywerheide per stad: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Nywerheide van die selfde tipe kan naby aan mekaar gebou word: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Altyd wys lang datum in die standbaan: {ORANGE}{STRING}

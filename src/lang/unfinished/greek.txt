@@ -1029,7 +1029,6 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Πλη�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Επιτρέπεται να χτίζονται πολύ μακριές γέφυρες: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Επιτρέπονται οι εντολές αποστολής σε αμαξοστάσιο: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Επιτρέπεται η κατασκευή βιομηχανιών πρώτων υλών: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανα πόλη: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Βιομηχανίες ίδου τύπου μπορούν να χτιστούν κοντά η μία στην άλλη: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Εμφάνιση ολόκληρης ημερομηνίες στη γραμμή κατάστασης: {ORANGE}{STRING}

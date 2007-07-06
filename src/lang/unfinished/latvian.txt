@@ -946,7 +946,6 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infla'c
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Transporte't kravu uz staciju tikai tad ja ir pieprasijums: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Atl'aut l'oti garu tiltu cels'anu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Atl'aut "iet uz depo" komandu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Atl'aut materea'lu raz'os'anas industrijas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Atl'aut vaira'kas li'dzi'gas industrijas vienai pilse'tai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Viena veida industrijas var tikt celtas tuvu viena no otras: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vienme'r ra'di't garu datumu statusa josla': {ORANGE}{STRING}
