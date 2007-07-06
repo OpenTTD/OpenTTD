@@ -1092,7 +1092,6 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflace
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vozit zboží do stanice jen když je poptávka: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Povolit stavbu velmi dlouhých mostů: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Povolit příkaz 'jeď do depa': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Povolit výstavbu průmyslu těžícího surový materiál: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Povolit více stejného průmyslu kolem jednoho města: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Průmysl stejného druhu může být budován poblíž sebe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Ukazovat dlouhé datum ve stavové liště: {ORANGE}{STRING}

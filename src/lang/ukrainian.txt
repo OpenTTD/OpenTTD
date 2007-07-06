@@ -1160,7 +1160,6 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Інф�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Доставляти вантаж за умови, що там приймається: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Будувати дуже довгі мости: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Наказувати прямувати в депо: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Будувати виробництво сировини: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Подібна промисловість в одному місті: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Будувати промисловість однакового типу поруч: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Завжди показувати повну дату в рядку стану: {ORANGE}{STRING}

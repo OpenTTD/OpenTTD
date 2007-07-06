@@ -1036,7 +1036,6 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Вкл�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Поставлять груз на станцию, только если на него был спрос: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Разрешить строительство очень длинных мостов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Депо можно добавить в маршрут: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Разрешить строительство сырьевых предприятий: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Разрешить несколько предприятий одного типа на город: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Одинаковые предприятия могут быть рядом друг с другом: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Всегда полная дата в панели состояния: {ORANGE}{STRING}

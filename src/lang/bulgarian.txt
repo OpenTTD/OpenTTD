@@ -1036,7 +1036,6 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Инф�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Доставяне на стока до станция само ако има търсене: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Строене на много дълги мостове: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Сервиз в маршрута: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Позволяване израждане на промишленост добиваща суровини: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Няколко еднакви индустрии на град: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Индустрии от еднакъв тип могат да бъдат строени близо една до друга: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Показване на дълга дата в статус бара: {ORANGE}{STRING}
