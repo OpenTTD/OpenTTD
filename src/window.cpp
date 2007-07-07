@@ -652,8 +652,8 @@ static Window *LocalAllocateWindow(
 		_last_z_window++;
 	}
 
-	SetWindowDirty(w);
 	CallWindowEventNP(w, WE_CREATE);
+	SetWindowDirty(w);
 
 	return w;
 }
