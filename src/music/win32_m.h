@@ -22,7 +22,7 @@ public:
 
 class FMusicDriver_Win32: public MusicDriverFactory<FMusicDriver_Win32> {
 public:
-	static const int priorty = 5;
+	static const int priority = 5;
 	/* virtual */ const char *GetName() { return "win32"; }
 	/* virtual */ const char *GetDescription() { return "Win32 Music Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Win32(); }

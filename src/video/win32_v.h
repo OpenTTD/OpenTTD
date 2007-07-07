@@ -22,6 +22,7 @@ public:
 
 class FVideoDriver_Win32: public VideoDriverFactory<FVideoDriver_Win32> {
 public:
+	static const int priority = 10;
 	/* virtual */ const char *GetName() { return "win32"; }
 	/* virtual */ const char *GetDescription() { return "Win32 GDI Video Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Win32(); }

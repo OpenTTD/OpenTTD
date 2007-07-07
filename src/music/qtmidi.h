@@ -22,7 +22,7 @@ public:
 
 class FMusicDriver_QtMidi: public MusicDriverFactory<FMusicDriver_QtMidi> {
 public:
-	static const int priorty = 10;
+	static const int priority = 10;
 	/* virtual */ const char *GetName() { return "qt"; }
 	/* virtual */ const char *GetDescription() { return "QuickTime MIDI Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_QtMidi(); }
