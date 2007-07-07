@@ -125,7 +125,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x42: { // waiting cargo, but only if those two callback flags are set
 			uint16 callback = indspec->callback_flags;
 			if (HASBIT(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(callback, CBM_IND_PRODUCTION_256_TICKS)) {
-				return max(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0xFFFF);
+				return min(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0xFFFF);
 			} else {
 				return 0;
 			}
@@ -156,7 +156,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x80: return industry->xy;
 		case 0x81: return GB(industry->xy, 8, 8);
 		/* Pointer to the town the industry is associated with */
-		case 0x82:
+		case 0x82: return industry->town->index;
 		case 0x83:
 		case 0x84:
 		case 0x85: DEBUG(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
