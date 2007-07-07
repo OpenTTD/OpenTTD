@@ -1618,7 +1618,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 				if (CHANCE16I(20, 1024, r)) new -= max(((RandomRange(50) + 10) * old) >> 8, 1U);
 				/* Chance of increasing becomes better when more is transported */
 				if (CHANCE16I(20 + (i->pct_transported[j] * 20 >> 8), 1024, r >> 16) &&
-						i->type != IT_OIL_WELL) {
+						(i->type != IT_OIL_WELL || _opt.landscape != LT_NORMAL)) {
 					new += max(((RandomRange(50) + 10) * old) >> 8, 1U);
 				}
 
