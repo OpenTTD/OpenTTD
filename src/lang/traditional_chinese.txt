@@ -1833,7 +1833,7 @@ STR_3033_ACCEPTS                                                :{BLACK}接受�
 STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}本地對運輸服務的評價：
 
 ############ range for rating starts
-STR_3035_APPALLING                                              :駭人聽聞
+STR_3035_APPALLING                                              :慘不忍睹
 STR_3036_VERY_POOR                                              :非常糟糕
 STR_3037_POOR                                                   :糟糕
 STR_3038_MEDIOCRE                                               :普通

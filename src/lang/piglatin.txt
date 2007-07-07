@@ -1034,6 +1034,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflati
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Eliverday argocay otay away ationstay onlyway enwhay erethay isway away emandday: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Allowway uildingbay eryvay onglay idgesbray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Allowway otogay epotday ordersway: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Anualmay imarypray industryway onstructioncay ethodmay: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :onenay
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :asway otherway industriesway
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ospectingpray
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Allowway ultiplemay imilarsay industriesway erpay owntay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industriesway ofway ethay amesay ypetay ancay ebay uiltbay oseclay otay eachway otherway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Alwaysway owshay onglay ateday inway ethay atusstay arbay: {ORANGE}{STRING}
@@ -1102,10 +1106,19 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Offway
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Apmay ollwheelscray eedspay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticallyway ausepay enwhay artingstay away ewnay amegay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Useway ethay advancedway ehiclevay istlay: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Useway oadinglay indicatorsway:{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enableway imetablingtay orfay ehiclesvay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Owshay imetabletay inway ickstay atherray anthay aysday: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Efaultday ailray ypetay (afterway ewnay amegay/amegay oadlay): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Ormalnay Ailray
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrifiedway Ailray
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Onorailmay
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Aglevmay
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Irstfay availableway
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Astlay availableway
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Ostmay usedway
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Owshay uildingbay oolstay enwhay onay uitablesay ehiclesvay:{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Axmay ainstray erpay ayerplay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Axmay oadray ehiclesvay erpay ayerplay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Axmay aircraftway erpay ayerplay: {ORANGE}{STRING}
@@ -3299,6 +3312,12 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Oggletay
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Oggletay ansparencytray orfay ucturesstray ikelay ighthouseslay andway antennasway, aybemay inway uturefay orfay eyecandyway
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Oggletay ansparencytray orfay oadinglay indicatorsway
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Oupgray {COMMA}
@@ -3336,5 +3355,17 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Ofitpray isthay earyay: {GREEN}{CURRENCY} {BLACK}(astlay earyay: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Ofitpray isthay earyay: {RED}{CURRENCY} {BLACK}(astlay earyay: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Amenay ustmay ebay uniqueway
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ogay otay extnay ignsay
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ogay otay eviouspray ignsay
 
 ########

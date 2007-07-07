@@ -1134,7 +1134,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflats
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vii kaup jaama ainult siis, kui seal on nõudlus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Luba väga pikkade sildade ehitus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Luba 'mine depoosse' käsud: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Põhiline tööstuse rajamise viis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :pole
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :nagu muud tööstused
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :uurides
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Luba mitu sama liiki tööstust linna kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Sama liiki tööstusi saab ehitada üksteise lähedale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Alati näita olekuribal pikka kuupäeva: {ORANGE}{STRING}
@@ -1206,11 +1209,16 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Kasuta 
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Kasuta laadimisnäidikuid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Luba sõiduplaanide määramine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Kasuta sõiduplaanis päevade asemel tikse: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Algne rööbastee liik (mängu alustamisel/laadimisel): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Tavaline rööbastee
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifitseeritud rööbastee
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorelss
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Esimene saadaval
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Viimane saadaval
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Enim kasutatud
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Näita ehitustööriistu isegi siis, kui sobivaid sõidukeid veel pole: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Enim ronge mängija kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Enim mootorsõidukeid mängija kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Enim õhusõidukeid mängija kohta: {ORANGE}{STRING}
@@ -2869,6 +2877,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda ae
 STR_TIMETABLE_STATUS_ON_TIME                                    :See sõiduk peab ajast kinni
 STR_TIMETABLE_STATUS_LATE                                       :See sõiduk on {STRING} hiljaks jäämas
 STR_TIMETABLE_STATUS_EARLY                                      :See sõiduk on {STRING} varajane
+STR_TIMETABLE_TOTAL_TIME                                        :Selle sõiduplaani täitmine võtab {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Selle sõiduplaani täitmine võtab vähemalt {STRING} (kõik ei ole planeeritud)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Täida ise
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täida sõiduplaan ise esmareisi väärtustega
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Mootorsõiduk takistab teed
@@ -3450,7 +3462,10 @@ STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nime ei tohi korduda
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Mine järgmise märgi juurde
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Mine eelmise märgi juurde
 
 ########

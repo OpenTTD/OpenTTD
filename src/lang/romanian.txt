@@ -1034,6 +1034,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflati
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livreazã marfa doar in statiile unde aceasta este ceruta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permite constructia de poduri foarte lungi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permite ordine de tipul "mergi la depou": {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metoda manuala de constructie industrii primare: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :de prospectie
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permite mai multe industrii similare in acelasi oras: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrii identice pot fi construite aproape una de cealaltã: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Afiseazã intotdeauna data in format lung in bara de stare: {ORANGE}{STRING}
@@ -1114,6 +1118,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Prima disponibi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Ultima disponibila
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Cea mai folosita
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Arata uneltele de constructie cand nu sunt disponibile vehiculele potrivite: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri per jucãtor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nr. max. de autovehicule pentru un jucãtor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Nr. max. de aeronave pentru un jucãtor: {ORANGE}{STRING}
@@ -3358,5 +3363,9 @@ STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Numele trebuie să fie unic
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Mergi la semnul urmator
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Mergi la semnul anterior
 
 ########
