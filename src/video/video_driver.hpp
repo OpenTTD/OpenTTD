@@ -22,7 +22,7 @@ class VideoDriverFactoryBase: public DriverFactoryBase {
 template <class T>
 class VideoDriverFactory: public VideoDriverFactoryBase {
 public:
-	VideoDriverFactory() { this->RegisterDriver(((T *)this)->GetName(), Driver::DT_VIDEO); }
+	VideoDriverFactory() { this->RegisterDriver(((T *)this)->GetName(), Driver::DT_VIDEO, ((T *)this)->priority); }
 
 	/**
 	 * Get the long, human readable, name for the Driver-class.

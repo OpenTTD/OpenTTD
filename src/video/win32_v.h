@@ -7,8 +7,6 @@
 
 class VideoDriver_Win32: public VideoDriver {
 public:
-	/* virtual */ bool CanProbe() { return true; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();

@@ -7,8 +7,6 @@
 
 class SoundDriver_Cocoa: public SoundDriver {
 public:
-	/* virtual */ bool CanProbe() { return true; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
@@ -16,6 +14,7 @@ public:
 
 class FSoundDriver_Cocoa: public SoundDriverFactory<FSoundDriver_Cocoa> {
 public:
+	static const int priority = 10;
 	/* virtual */ const char *GetName() { return "cocoa"; }
 	/* virtual */ const char *GetDescription() { return "Cocoa Sound Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new SoundDriver_Cocoa(); }

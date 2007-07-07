@@ -14,7 +14,7 @@ class SoundDriverFactoryBase: public DriverFactoryBase {
 template <class T>
 class SoundDriverFactory: public SoundDriverFactoryBase {
 public:
-	SoundDriverFactory() { this->RegisterDriver(((T *)this)->GetName(), Driver::DT_SOUND); }
+	SoundDriverFactory() { this->RegisterDriver(((T *)this)->GetName(), Driver::DT_SOUND, ((T *)this)->priority); }
 
 	/**
 	 * Get the long, human readable, name for the Driver-class.

@@ -7,8 +7,6 @@
 
 class MusicDriver_BeMidi: public MusicDriver {
 public:
-	/* virtual */ bool CanProbe() { return true; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
@@ -24,6 +22,7 @@ public:
 
 class FMusicDriver_BeMidi: public MusicDriverFactory<FMusicDriver_BeMidi> {
 public:
+	static const int priority = 10;
 	/* virtual */ const char *GetName() { return "bemidi"; }
 	/* virtual */ const char *GetDescription() { return "BeOS MIDI Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_BeMidi(); }

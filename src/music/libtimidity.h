@@ -7,8 +7,6 @@
 
 class MusicDriver_LibTimidity: public MusicDriver {
 public:
-	/* virtual */ bool CanProbe() { return true; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
@@ -24,6 +22,7 @@ public:
 
 class FMusicDriver_LibTimidity: public MusicDriverFactory<FMusicDriver_LibTimidity> {
 public:
+	static const int priority = 5;
 	/* virtual */ const char *GetName() { return "libtimidity"; }
 	/* virtual */ const char *GetDescription() { return "LibTimidity MIDI Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_LibTimidity(); }

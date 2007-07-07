@@ -7,8 +7,6 @@
 
 class MusicDriver_DMusic: public MusicDriver {
 public:
-	/* virtual */ bool CanProbe() { return true; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
@@ -24,6 +22,7 @@ public:
 
 class FMusicDriver_DMusic: public MusicDriverFactory<FMusicDriver_DMusic> {
 public:
+	static const int priorty = 10;
 	/* virtual */ const char *GetName() { return "dmusic"; }
 	/* virtual */ const char *GetDescription() { return "DirectMusic MIDI Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_DMusic(); }

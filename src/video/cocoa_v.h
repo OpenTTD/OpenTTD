@@ -7,8 +7,6 @@
 
 class VideoDriver_Cocoa: public VideoDriver {
 public:
-	/* virtual */ bool CanProbe() { return true; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
@@ -24,6 +22,7 @@ public:
 
 class FVideoDriver_Cocoa: public VideoDriverFactory<FVideoDriver_Cocoa> {
 public:
+	static const int priority = 10;
 	/* virtual */ const char *GetName() { return "cocoa"; }
 	/* virtual */ const char *GetDescription() { return "Cocoa Video Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Cocoa(); }

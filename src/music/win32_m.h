@@ -7,8 +7,6 @@
 
 class MusicDriver_Win32: public MusicDriver {
 public:
-	/* virtual */ bool CanProbe() { return true; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
@@ -24,6 +22,7 @@ public:
 
 class FMusicDriver_Win32: public MusicDriverFactory<FMusicDriver_Win32> {
 public:
+	static const int priorty = 5;
 	/* virtual */ const char *GetName() { return "win32"; }
 	/* virtual */ const char *GetDescription() { return "Win32 Music Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Win32(); }

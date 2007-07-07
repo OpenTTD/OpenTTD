@@ -7,8 +7,6 @@
 
 class MusicDriver_Null: public MusicDriver {
 public:
-	/* virtual */ bool CanProbe() { return false; }
-
 	/* virtual */ const char *Start(const char * const *param) { return NULL; }
 
 	/* virtual */ void Stop() { }
@@ -24,6 +22,7 @@ public:
 
 class FMusicDriver_Null: public MusicDriverFactory<FMusicDriver_Null> {
 public:
+	static const int priority = 0;
 	/* virtual */ const char *GetName() { return "null"; }
 	/* virtual */ const char *GetDescription() { return "Null Music Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_Null(); }

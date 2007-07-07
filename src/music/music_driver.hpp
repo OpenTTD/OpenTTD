@@ -22,7 +22,7 @@ class MusicDriverFactoryBase: public DriverFactoryBase {
 template <class T>
 class MusicDriverFactory: public MusicDriverFactoryBase {
 public:
-	MusicDriverFactory() { this->RegisterDriver(((T *)this)->GetName(), Driver::DT_MUSIC); }
+	MusicDriverFactory() { this->RegisterDriver(((T *)this)->GetName(), Driver::DT_MUSIC, ((T *)this)->priority); }
 
 	/**
 	 * Get the long, human readable, name for the Driver-class.

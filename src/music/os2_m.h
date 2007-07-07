@@ -7,8 +7,6 @@
 
 class MusicDriver_OS2: public MusicDriver {
 public:
-	/* virtual */ bool CanProbe() { return true; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
@@ -24,6 +22,7 @@ public:
 
 class FMusicDriver_OS2: public MusicDriverFactory<FMusicDriver_OS2> {
 public:
+	static const int priority = 10;
 	/* virtual */ const char *GetName() { return "os2"; }
 	/* virtual */ const char *GetDescription() { return "OS/2 Music Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_OS2(); }

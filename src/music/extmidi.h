@@ -14,8 +14,6 @@ private:
 	void DoStop();
 
 public:
-	/* virtual */ bool CanProbe() { return true; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
@@ -31,6 +29,7 @@ public:
 
 class FMusicDriver_ExtMidi: public MusicDriverFactory<FMusicDriver_ExtMidi> {
 public:
+	static const int priority = 1;
 	/* virtual */ const char *GetName() { return "extmidi"; }
 	/* virtual */ const char *GetDescription() { return "External MIDI Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_ExtMidi(); }

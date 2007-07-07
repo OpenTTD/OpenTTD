@@ -16,8 +16,6 @@ int GetDriverParamInt(const char* const* parm, const char* name, int def);
 
 class Driver {
 public:
-	virtual bool CanProbe() = 0;
-
 	virtual const char *Start(const char * const *parm) = 0;
 
 	virtual void Stop() = 0;
@@ -40,6 +38,7 @@ class DriverFactoryBase {
 private:
 	Driver::Type type;
 	char *name;
+	int priority;
 	typedef std::map<std::string, DriverFactoryBase *> Drivers;
 
 	static Drivers &GetDrivers()
@@ -66,13 +65,14 @@ protected:
 	 * @param name the name of the driver.
 	 * @note an assert() will be trigger if 2 driver with the same name try to register.
 	 */
-	void RegisterDriver(const char *name, Driver::Type type)
+	void RegisterDriver(const char *name, Driver::Type type, int priority)
 	{
 		/* Don't register nameless Drivers */
 		if (name == NULL) return;
 
 		this->name = strdup(name);
 		this->type = type;
+		this->priority = priority;
 
 		/* Prefix the name with driver type to make it unique */
 		char buf[32];
@@ -101,17 +101,16 @@ public:
 
 		if (*name == '\0') {
 			/* Probe for this driver */
-			Drivers::iterator it = GetDrivers().begin();
-			for (; it != GetDrivers().end(); ++it) {
-				DriverFactoryBase *d = (*it).second;
+			for (int priority = 10; priority >= 0; priority--) {
+				Drivers::iterator it = GetDrivers().begin();
+				for (; it != GetDrivers().end(); ++it) {
+					DriverFactoryBase *d = (*it).second;
 
-				/* Check driver type */
-				if (d->type != type) continue;
+					/* Check driver type */
+					if (d->type != type) continue;
+					if (d->priority != priority) continue;
 
-				Driver *newd = d->CreateInstance();
-				if (!newd->CanProbe()) {
-					DEBUG(driver, 1, "Skipping probe of driver '%s'", d->name);
-				} else {
+					Driver *newd = d->CreateInstance();
 					const char *err = newd->Start(NULL);
 					if (err == NULL) {
 						DEBUG(driver, 1, "Successfully probed %s driver '%s'", GetDriverTypeName(type), d->name);
@@ -121,9 +120,8 @@ public:
 					}
 
 					DEBUG(driver, 1, "Probing %s driver '%s' failed with error: %s", GetDriverTypeName(type), d->name, err);
+					delete newd;
 				}
-
-				delete newd;
 			}
 			error("Couldn't find any suitable %s driver", GetDriverTypeName(type));
 		} else {
@@ -185,10 +183,14 @@ public:
 		for (Driver::Type type = Driver::DT_BEGIN; type != Driver::DT_END; type++) {
 			p += snprintf(p, last - p, "List of %s drivers:\n", GetDriverTypeName(type));
 
-			Drivers::iterator it = GetDrivers().begin();
-			for (; it != GetDrivers().end(); it++) {
-				DriverFactoryBase *d = (*it).second;
-				if (d->type == type) p += snprintf(p, last - p, "%18s: %s\n", d->name, d->GetDescription());
+			for (int priority = 10; priority >= 0; priority--) {
+				Drivers::iterator it = GetDrivers().begin();
+				for (; it != GetDrivers().end(); it++) {
+					DriverFactoryBase *d = (*it).second;
+					if (d->type != type) continue;
+					if (d->priority != priority) continue;
+					p += snprintf(p, last - p, "%18s: %s\n", d->name, d->GetDescription());
+				}
 			}
 
 			p += snprintf(p, last - p, "\n");

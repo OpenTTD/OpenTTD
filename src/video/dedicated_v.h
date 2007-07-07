@@ -7,8 +7,6 @@
 
 class VideoDriver_Dedicated: public VideoDriver {
 public:
-	/* virtual */ bool CanProbe() { return false; }
-
 	/* virtual */ const char *Start(const char * const *param);
 
 	/* virtual */ void Stop();
@@ -24,6 +22,7 @@ public:
 
 class FVideoDriver_Dedicated: public VideoDriverFactory<FVideoDriver_Dedicated> {
 public:
+	static const int priority = 0;
 	/* virtual */ const char *GetName() { return "dedicated"; }
 	/* virtual */ const char *GetDescription() { return "Dedicated Video Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Dedicated(); }
