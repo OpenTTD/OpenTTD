@@ -13,6 +13,9 @@
 #include "network/network_server.h"
 #include "functions.h"
 #include "currency.h"
+#ifdef DEBUG_DUMP_COMMANDS
+#include "saveload.h"
+#endif
 
 Year      _cur_year;
 Month     _cur_month;
@@ -259,6 +262,12 @@ void IncreaseDate()
 
 	/* yes, call various monthly loops */
 	if (_game_mode != GM_MENU) {
+#ifdef DEBUG_DUMP_COMMANDS
+		char name[MAX_PATH];
+		snprintf(name, lengthof(name), "dmp_cmds_%d.sav", _date);
+		SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
+		debug_dump_commands("ddc:save:%s\n", name);
+#endif /* DUMP_COMMANDS */
 		if (_opt.autosave != 0 && (_cur_month % _autosave_months[_opt.autosave]) == 0) {
 			_do_autosave = true;
 			RedrawAutosave();

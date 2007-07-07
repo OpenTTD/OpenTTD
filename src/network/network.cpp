@@ -37,6 +37,7 @@
 #include "../console.h" /* IConsoleCmdExec */
 #include <stdarg.h> /* va_list */
 #include "../md5.h"
+#include "../fileio.h"
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
@@ -195,6 +196,9 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 			break;
 	}
 
+#ifdef DEBUG_DUMP_COMMANDS
+	debug_dump_commands("ddc:cmsg:%d;%d;%s\n", _date, _date_fract, message);
+#endif /* DUMP_COMMANDS */
 	IConsolePrintF(color, "%s", message);
 	AddTextMessage(color, duration, "%s", message);
 }
@@ -1235,6 +1239,9 @@ static bool NetworkDoClientLoop()
 			if (_sync_seed_1 != _random_seeds[0][0]) {
 #endif
 				NetworkError(STR_NETWORK_ERR_DESYNC);
+#ifdef DEBUG_DUMP_COMMANDS
+				debug_dump_commands("ddc:serr:%d;%d\n", _date, _date_fract);
+#endif /* DUMP_COMMANDS */
 				DEBUG(net, 0, "Sync error detected!");
 				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, DEREF_CLIENT(0));
 				return false;
@@ -1280,6 +1287,37 @@ void NetworkGameLoop()
 	if (!NetworkReceive()) return;
 
 	if (_network_server) {
+#ifdef DEBUG_DUMP_COMMANDS
+		static FILE *f = FioFOpenFile("commands.log", "rb", SAVE_DIR);
+		static Date next_date = 0;
+		static uint32 next_date_fract;
+		static CommandPacket *cp = NULL;
+		if (f == NULL && next_date == 0) {
+			printf("Cannot open commands.log\n");
+			next_date = 1;
+		}
+
+		while (f != NULL && !feof(f)) {
+			if (cp != NULL && _date == next_date && _date_fract == next_date_fract) {
+				_current_player = cp->player;
+				_cmd_text = cp->text;
+				DoCommandP(cp->tile, cp->p1, cp->p2, NULL, cp->cmd);
+				free(cp);
+				cp = NULL;
+			}
+
+			if (cp != NULL) break;
+
+			char buff[4096];
+			if (fgets(buff, lengthof(buff), f) == NULL) break;
+			if (strncmp(buff, "ddc:cmd:", 8) != 0) continue;
+			cp = MallocT<CommandPacket>(1);
+			int player;
+			sscanf(&buff[8], "%d;%d;%d;%d;%d;%d;%d;%s", &next_date, &next_date_fract, &player, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
+			cp->player = (Owner)player;
+		}
+#endif /* DUMP_COMMANDS */
+
 		bool send_frame = false;
 
 		// We first increase the _frame_counter
@@ -1436,4 +1474,18 @@ bool IsNetworkCompatibleVersion(const char *other)
 			strncmp(_openttd_revision, other, NETWORK_REVISION_LENGTH - 1) == 0;
 }
 
+#ifdef DEBUG_DUMP_COMMANDS
+void CDECL debug_dump_commands(const char *s, ...)
+{
+	static FILE *f = FioFOpenFile("commands-out.log", "wb", SAVE_DIR);
+	if (f == NULL) return;
+
+	va_list va;
+	va_start(va, s);
+	vfprintf(f, s, va);
+	va_end(va);
+
+	fflush(f);
+}
+#endif /* DEBUG_DUMP_COMMANDS */
 #endif /* ENABLE_NETWORK */

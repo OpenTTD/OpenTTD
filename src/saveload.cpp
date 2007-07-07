@@ -1677,6 +1677,9 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		}
 	} else { /* LOAD game */
 		assert(mode == SL_LOAD);
+#ifdef DEBUG_DUMP_COMMANDS
+		debug_dump_commands("ddc:load:%s\n", filename);
+#endif /* DUMP_COMMANDS */
 
 		if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 

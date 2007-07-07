@@ -97,6 +97,11 @@ void NetworkExecuteCommand(CommandPacket *cp)
 		DEBUG(net, 0, "Received out-of-bounds callback (%d)", cp->callback);
 		cp->callback = 0;
 	}
+
+#ifdef DEBUG_DUMP_COMMANDS
+	debug_dump_commands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)cp->player, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text);
+#endif /* DUMP_COMMANDS */
+
 	DoCommandP(cp->tile, cp->p1, cp->p2, _callback_table[cp->callback], cp->cmd | CMD_NETWORK_COMMAND);
 }
 
