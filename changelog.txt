@@ -1,3 +1,9 @@
+0.5.3-RC2 (2007-07-07)
+------------------------------------------------------------------------
+- Fix: Visual glitches when a window is resized in the WE_CREATE callback (r10465)
+- Fix: [Windows] _wnd.has_focus was not properly set after using ALT-TAB [FS#962] (r10399)
+
+
 0.5.3-RC1 (2007-06-28)
 ------------------------------------------------------------------------
 - Feature: Make the client list window (for network games) stickyable (r10293)

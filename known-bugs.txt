@@ -14,6 +14,7 @@ Bugs for 0.5.3
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+-944	Incorrect el-rail catenary pole/wire offsets
 -917	Load scenario with no towns failed without proper warning
 -873	Assertion window fails to open on OSX
 -820	Pillar drawing order glich, with newbridges
