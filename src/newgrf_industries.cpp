@@ -14,6 +14,7 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_industries.h"
 #include "newgrf_commons.h"
+#include "date.h"
 
 /* Since the industry IDs defined by the GRF file don't necessarily correlate
  * to those used by the game, the IDs used for overriding old industries must be
@@ -151,15 +152,6 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		 * let's just say it is a beginning ;) */
 		case 0x67: return GetIndustryTypeCount(industry->type) << 16 | 0;
 
-		/* Industry founder information.
-		 * 0x10 if randomly created or from a map pre-newindustry.
-		 * Else, the company who funded it */
-		case 0xA7: return 0x10;
-
-		case 0xB0: // Date when built since 1920 (in days)
-		case 0xB3: // Construction type
-		case 0xB4: break; // Date last cargo accepted since 1920 (in days)
-
 		/* Industry structure access*/
 		case 0x80: return industry->xy;
 		case 0x81: return GB(industry->xy, 8, 8);
@@ -167,7 +159,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x82:
 		case 0x83:
 		case 0x84:
-		case 0x85: break; // not supported
+		case 0x85: DEBUG(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
 		case 0x86: return industry->width;
 		case 0x87: return industry->height;// xy dimensions
 		/*  */
@@ -208,12 +200,16 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0xA5: return GB(industry->last_month_transported[0], 8, 8);
 
 		case 0xA6: return industry->type;
-
+		case 0xA7: return industry->founder;
 		case 0xA8: return industry->random_color;
-		case 0xA9: return industry->last_prod_year; // capped?
+		case 0xA9: return clamp(0, industry->last_prod_year - 1920, 255);
 		case 0xAA: return industry->counter;
 		case 0xAB: return GB(industry->counter, 8, 8);
 		case 0xAC: return industry->was_cargo_delivered;
+
+		case 0xB0: return clamp(0, industry->construction_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 65535); // Date when built since 1920 (in days)
+		case 0xB3: return industry->construction_type; // Construction type
+		case 0xB4: return clamp(0, industry->last_cargo_accepted_at - DAYS_TILL_ORIGINAL_BASE_YEAR, 65535); // Date last cargo accepted since 1920 (in days)
 	}
 
 	DEBUG(grf, 1, "Unhandled industry property 0x%X", variable);

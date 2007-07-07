@@ -2080,6 +2080,12 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(70)) {
+		/* Added variables to support newindustries */
+		Industry *i;
+		FOR_ALL_INDUSTRIES(i) i->founder = OWNER_NONE;
+	}
+
 	/* Recalculate */
 	Group *g;
 	FOR_ALL_GROUPS(g) {

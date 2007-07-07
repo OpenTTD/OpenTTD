@@ -792,7 +792,9 @@ static void GetProducedCargo_Industry(TileIndex tile, CargoID *b)
 
 static void ChangeTileOwner_Industry(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
-	/* not used */
+	/* If the founder merges, the industry was created by the merged company */
+	Industry *i = GetIndustryByTile(tile);
+	if (i->founder == old_player) i->founder = (new_player == PLAYER_SPECTATOR) ? OWNER_NONE : new_player;
 }
 
 static const byte _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
@@ -1411,6 +1413,10 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->last_prod_year = _cur_year;
 	i->last_month_production[0] = i->production_rate[0] * 8;
 	i->last_month_production[1] = i->production_rate[1] * 8;
+	i->founder = _current_player;
+	i->construction_date = _date;
+	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR :
+			(_generating_world ? ICT_MAP_GENERATION : ICT_NORMAL_GAMEPLAY);
 
 	if (!_generating_world) i->last_month_production[0] = i->last_month_production[1] = 0;
 
@@ -1950,6 +1956,11 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, last_prod_year,             SLE_FILE_U8 | SLE_VAR_I32,  0, 30),
 	SLE_CONDVAR(Industry, last_prod_year,             SLE_INT32,                 31, SL_MAX_VERSION),
 	    SLE_VAR(Industry, was_cargo_delivered,        SLE_UINT8),
+
+	SLE_CONDVAR(Industry, owner,                      SLE_UINT8,                 70, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, construction_date,          SLE_INT32,                 70, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, construction_type,          SLE_UINT8,                 70, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, last_cargo_accepted_at,     SLE_INT32,                 70, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 32 bytes) */
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),

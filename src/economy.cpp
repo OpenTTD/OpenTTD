@@ -1236,7 +1236,9 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 	if (best != NULL) {
 		indspec = GetIndustrySpec(best->type);
 		uint16 callback = indspec->callback_flags;
+
 		best->was_cargo_delivered = true;
+		best->last_cargo_accepted_at = _date;
 
 		if (HASBIT(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 			best->incoming_cargo_waiting[accepted_cargo_index] = min(num_pieces + best->incoming_cargo_waiting[accepted_cargo_index], 0xFFFF);

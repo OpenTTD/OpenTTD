@@ -49,6 +49,13 @@ enum CheckProc {
 	CHECK_END,
 };
 
+enum IndustryConstructionType {
+	ICT_UNKNOWN,
+	ICT_NORMAL_GAMEPLAY,
+	ICT_MAP_GENERATION,
+	ICT_SCENARIO_EDITOR
+};
+
 enum IndustyBehaviour {
 	INDUSTRYBEH_NONE                  =      0,
 	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fileds around itself (temp and artic farms)
@@ -96,6 +103,11 @@ struct Industry {
 	byte was_cargo_delivered;           ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 
 	IndustryID index;                   ///< index of the industry in the pool of industries
+
+	OwnerByte founder;                  ///< Founder of the industry
+	Date construction_date;             ///< Date of the construction of the industry
+	uint8 construction_type;            ///< Way the industry was constructed (@see IndustryConstructionType)
+	Date last_cargo_accepted_at;        ///< Last day cargo was accepted by this industry
 };
 
 struct IndustryTileTable {
