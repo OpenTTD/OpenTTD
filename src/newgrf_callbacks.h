@@ -153,7 +153,7 @@ enum CallbackID {
 	CBID_INDUSTRY_WINDOW_MORE_TEXT  = 0x3A,
 
 	/* Called to determine industry special effects */
-	CBID_INDUSTRY_SPECIAL_EFFECT    = 0x3B, // not yet implemented
+	CBID_INDUSTRY_SPECIAL_EFFECT    = 0x3B,
 
 	/* Called to determine if industry can alter the ground below industry tile */
 	CBID_INDUSTRY_AUTOSLOPE         = 0x3C, // not yet implemented

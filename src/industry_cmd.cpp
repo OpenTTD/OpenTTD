@@ -929,11 +929,6 @@ void PlantRandomFarmField(const Industry *i)
 	if (tile != INVALID_TILE) PlantFarmField(tile, i->index);
 }
 
-static void MaybePlantFarmField(const Industry *i)
-{
-	if (CHANCE16(1, 8)) PlantRandomFarmField(i);
-}
-
 /**
  * Search callback function for ChopLumberMillTrees
  * @param tile to test
@@ -998,10 +993,23 @@ static void ProduceIndustryGoods(Industry *i)
 		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + i->production_rate[0]);
 		i->produced_cargo_waiting[1] = min(0xffff, i->produced_cargo_waiting[1] + i->production_rate[1]);
 
-		if (indbehav & INDUSTRYBEH_PLANT_FIELDS) {
-			MaybePlantFarmField(i);
-		} else if ((indbehav & INDUSTRYBEH_CUT_TREES) && (i->counter & 0x1FF) == 0) {
-			ChopLumberMillTrees(i);
+		if ((indbehav & INDUSTRYBEH_PLANT_FIELDS) != 0) {
+			bool plant;
+			if (HASBIT(indsp->callback_flags, CBM_IND_SPECIAL_EFFECT)) {
+				plant = (GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 0, i, i->type, i->xy) != 0);
+			} else {
+				plant = CHANCE16(1, 8);
+			}
+
+			if (plant) PlantRandomFarmField(i);
+		}
+		if ((indbehav & INDUSTRYBEH_CUT_TREES) != 0) {
+			bool cut = ((i->counter & 0x1FF) == 0);
+			if (HASBIT(indsp->callback_flags, CBM_IND_SPECIAL_EFFECT)) {
+				cut = (GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, 0, 1, i, i->type, i->xy) != 0);
+			}
+
+			if (cut) ChopLumberMillTrees(i);
 		}
 	}
 }
