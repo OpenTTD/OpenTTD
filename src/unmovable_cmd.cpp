@@ -18,6 +18,7 @@
 #include "economy.h"
 #include "town.h"
 #include "sprite.h"
+#include "bridge_map.h"
 #include "unmovable_map.h"
 #include "variables.h"
 #include "table/unmovable_land.h"
@@ -358,7 +359,7 @@ void GenerateUnmovables()
 
 	do {
 		tile = RandomTile();
-		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4) {
+		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4 && !IsBridgeAbove(tile)) {
 			if (IsRadioTowerNearby(tile)) continue;
 			MakeTransmitter(tile);
 			IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
@@ -401,7 +402,7 @@ restart:
 		do {
 			if (--j == 0) goto restart;
 			tile = TILE_MASK(tile + TileOffsByDiagDir(dir));
-		} while (!(IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2));
+		} while (!(IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2 && !IsBridgeAbove(tile)));
 
 		assert(tile == TILE_MASK(tile));
 
