@@ -90,7 +90,7 @@ static WindowClass GetWCForVT(VehicleType vt)
 
 
 /**
- * Add a vehicle to a group
+ * Create a new vehicle group.
  * @param tile unused
  * @param p1   vehicle type
  * @param p2   unused
@@ -117,7 +117,7 @@ CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 
 /**
- * Add a vehicle to a group
+ * Add all vehicles in the given group to the default group and then deletes the group.
  * @param tile unused
  * @param p1   index of array group
  *      - p1 bit 0-15 : GroupID
