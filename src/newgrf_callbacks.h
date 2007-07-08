@@ -67,7 +67,7 @@ enum CallbackID {
 
 	/* Called (if appropriate bit in callback mask is set) to decide how much
 	 * cargo a town building can accept. */
-	CBID_HOUSE_CARGO_ACCEPTANCE     = 0x1F, // not yet implemented
+	CBID_HOUSE_CARGO_ACCEPTANCE     = 0x1F,
 
 	/* Called (if appropriate bit in callback mask is set) to indicate
 	 * how long the current animation frame should last. */
@@ -104,7 +104,7 @@ enum CallbackID {
 
 	/* Called (if appropriate bit in callback mask is set) to determine which
 	 * cargoes a town building should accept. */
-	CBID_HOUSE_ACCEPT_CARGO         = 0x2A, // not yet implemented
+	CBID_HOUSE_ACCEPT_CARGO         = 0x2A,
 
 	/* Called to query the cargo acceptance of the industry tile */
 	CBID_INDTILE_ACCEPT_CARGO       = 0x2B, // not yet implemented
@@ -150,7 +150,7 @@ enum CallbackID {
 	CBID_CARGO_PROFIT_CALC          = 0x39,
 
 	/* Called to determine more text in the industry window */
-	CBID_INDUSTRY_WINDOW_MORE_TEXT  = 0x3A, // not yet implemented
+	CBID_INDUSTRY_WINDOW_MORE_TEXT  = 0x3A,
 
 	/* Called to determine industry special effects */
 	CBID_INDUSTRY_SPECIAL_EFFECT    = 0x3B, // not yet implemented
