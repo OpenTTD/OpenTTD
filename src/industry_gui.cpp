@@ -20,6 +20,10 @@
 #include "variables.h"
 #include "helpers.hpp"
 #include "cargotype.h"
+#include "newgrf.h"
+#include "newgrf_callbacks.h"
+#include "newgrf_industries.h"
+#include "newgrf_text.h"
 
 /* industries per climate, according to the different construction windows */
 const byte _build_industry_types[4][12] = {
@@ -299,14 +303,57 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 	 * WP(w,vp2_d).data_3 is for the click pos (left or right) */
 
 	switch (e->event) {
+	case WE_CREATE: {
+		/* Count the number of lines that we need to resize the GUI with */
+		const IndustrySpec *ind = GetIndustrySpec(GetIndustry(w->window_number)->type);
+		int lines = -3;
+
+		if (HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
+			for (uint j = 0; j < 3 && ind->accepts_cargo[j] != CT_INVALID; j++) {
+				if (j == 0) lines++;
+				lines++;
+			}
+		} else if (ind->accepts_cargo[0] != CT_INVALID) {
+			lines++;
+		}
+
+		for (uint j = 0; j < 2 && ind->produced_cargo[j] != CT_INVALID; j++) {
+			if (j == 0) {
+				if (ind->accepts_cargo[0] != CT_INVALID) lines++;
+				lines++;
+			}
+			lines++;
+		}
+
+		if (HASBIT(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) lines += 2;
+
+		for (uint j = 5; j <= 7; j++) {
+			if (j != 5) w->widget[j].top += lines * 10;
+			w->widget[j].bottom += lines * 10;
+		}
+		w->height += lines * 10;
+	} break;
+
 	case WE_PAINT: {
-		const Industry *i = GetIndustry(w->window_number);
+		Industry *i = GetIndustry(w->window_number);
 		const IndustrySpec *ind = GetIndustrySpec(i->type);
+		int y = 111;
 
 		SetDParam(0, w->window_number);
 		DrawWindowWidgets(w);
 
-		if (ind->accepts_cargo[0] != CT_INVALID) {
+		if (HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
+			for (uint j = 0; j < 3 && ind->accepts_cargo[j] != CT_INVALID; j++) {
+				if (j == 0) {
+					DrawString(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, 0);
+					y += 10;
+				}
+				SetDParam(0, ind->accepts_cargo[j]);
+				SetDParam(1, i->incoming_cargo_waiting[j]);
+				DrawString(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, 0);
+				y += 10;
+			}
+		} else if (ind->accepts_cargo[0] != CT_INVALID) {
 			StringID str;
 
 			SetDParam(0, GetCargo(ind->accepts_cargo[0])->name);
@@ -319,39 +366,44 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					str = STR_4829_REQUIRES;
 				}
 			}
-			DrawString(2, 107, str, 0);
+			DrawString(2, y, str, 0);
+			y += 10;
 		}
 
-		if (ind->produced_cargo[0] != CT_INVALID) {
-			DrawString(2, 117, STR_482A_PRODUCTION_LAST_MONTH, 0);
-
-			SetDParam(0, ind->produced_cargo[0]);
-			SetDParam(1, i->last_month_production[0]);
-
-			SetDParam(2, i->last_month_pct_transported[0] * 100 >> 8);
-			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
-			/* Let's put out those buttons.. */
-			if (IsProductionAlterable(i)) {
-				DrawArrowButtons(5, 127, 3, (WP(w, vp2_d).data_2 == 1) ? WP(w, vp2_d).data_3 : 0,
-						!isProductionMinimum(i, 0), !isProductionMaximum(i, 0));
+		for (uint j = 0; j < 2 && ind->produced_cargo[j] != CT_INVALID; j++) {
+			if (j == 0) {
+				if (ind->accepts_cargo[0] != CT_INVALID) y += 10;
+				DrawString(2, y, STR_482A_PRODUCTION_LAST_MONTH, 0);
+				y += 10;
 			}
 
-			if (ind->produced_cargo[1] != CT_INVALID) {
-				SetDParam(0, ind->produced_cargo[1]);
-				SetDParam(1, i->last_month_production[1]);
-				SetDParam(2, i->last_month_pct_transported[1] * 100 >> 8);
-				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
-				/* Let's put out those buttons.. */
-				if (IsProductionAlterable(i)) {
-					DrawArrowButtons(5, 137, 3, (WP(w, vp2_d).data_2 == 2) ? WP(w, vp2_d).data_3 : 0,
-						!isProductionMinimum(i, 1), !isProductionMaximum(i, 1));
+			SetDParam(0, ind->produced_cargo[j]);
+			SetDParam(1, i->last_month_production[j]);
+
+			SetDParam(2, i->last_month_pct_transported[j] * 100 >> 8);
+			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), y, STR_482B_TRANSPORTED, 0);
+			/* Let's put out those buttons.. */
+			if (IsProductionAlterable(i)) {
+				DrawArrowButtons(5, y, 3, (WP(w, vp2_d).data_2 == j + 1) ? WP(w, vp2_d).data_3 : 0,
+						!isProductionMinimum(i, j), !isProductionMaximum(i, j));
+			}
+			y += 10;
+		}
+
+		/* Get the extra message for the GUI */
+		if (HASBIT(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
+			uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->xy);
+			if (callback_res != CALLBACK_FAILED) {
+				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
+				if (message != STR_NULL && message != STR_UNDEFINED) {
+					y += 10;
+					DrawString(2, y, message, 0);
 				}
 			}
 		}
 
 		DrawWindowViewport(w);
-		}
-		break;
+	} break;
 
 	case WE_CLICK: {
 		Industry *i;
@@ -366,8 +418,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			if (!IsProductionAlterable(i)) return;
 
 			x = e->we.click.pt.x;
-			line = (e->we.click.pt.y - 127) / 10;
-			if (e->we.click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) &&
+			line = (e->we.click.pt.y - 121) / 10;
+			if (e->we.click.pt.y >= 121 && IS_INT_INSIDE(line, 0, 2) &&
 					GetIndustrySpec(i->type)->produced_cargo[line] != CT_INVALID) {
 				if (IS_INT_INSIDE(x, 5, 25) ) {
 					/* Clicked buttons, decrease or increase production */
