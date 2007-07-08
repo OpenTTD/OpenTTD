@@ -675,6 +675,9 @@ void DestroyVehicle(Vehicle *v)
 {
 	if (IsValidStationID(v->last_station_visited)) {
 		GetStation(v->last_station_visited)->loading_vehicles.remove(v);
+
+		HideFillingPercent(v->fill_percent_te_id);
+		v->fill_percent_te_id = INVALID_TE_ID;
 	}
 
 	if (IsEngineCountable(v)) {
