@@ -1549,7 +1549,14 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (Random() <= indspec->prospecting_chance) {
 				for (int i = 0; i < 5000; i++) {
 					const IndustryTileTable *it = indspec->table[RandomRange(indspec->num_table)];
-					if (CreateNewIndustryHelper(RandomTile(), p1, flags, indspec, it) != NULL) break;
+					const Industry *ind = CreateNewIndustryHelper(RandomTile(), p1, flags, indspec, it);
+					if (ind != NULL) {
+						SetDParam(0, indspec->name);
+						SetDParam(1, ind->town->index);
+						AddNewsItem(indspec->new_industry_text,
+								NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, 0), ind->xy, 0);
+						break;
+					}
 				}
 			}
 		}
