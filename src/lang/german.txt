@@ -1035,6 +1035,8 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflati
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Liefere Fracht nur, wenn die Station diese annimmt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Erlaube das Bauen von sehr langen Brücken: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Erlaube "Gehe zum Depot"-Aufträge im Fahrplan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keine
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wie andere Industrie
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Erlaube mehrere gleichartige Industrien pro Stadt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Gleiche Industrien können nahe beieinander gebaut werden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Lange Datumsanzeige in der Statusleiste (links unten): {ORANGE}{STRING}
@@ -1103,6 +1105,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Aus
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollradgeschwindigkeit auf der Karte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatische Pause bei Spielstart: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Erweiterte Fahrzeugliste benutzen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aktiviere Fahrpläne für Fahrzeuge: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zeige Zeitpläne in Ticks anstatt in Tagen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard-Gleistyp (bei Spielbeginn/geladenem Spiel): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :normales Gleis
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :elektrifiziertes Gleis
@@ -1972,6 +1976,8 @@ STR_4828_REQUIRES                                               :{BLACK}Benötig
 STR_4829_REQUIRES                                               :{BLACK}Benötigt: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion im letzten Monat:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% befördert)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Zentriere die Ansicht auf das Industriegebiet
@@ -2086,6 +2092,7 @@ STR_SV_STNAME_UPPER                                             :Ober-{STRING}
 STR_SV_STNAME_LOWER                                             :Unter-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Wald
+STR_SV_STNAME_FALLBACK                                          :{STRING} Station #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2617,6 +2624,9 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Wartung bei {TO
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Fahre ohne Halt zu {TOWN} Zugdepot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Wartung (ohne Halt) bei {TOWN} Zugdepot
 
+STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_FOR                                        :Fahre für {STRING}
+STR_TIMETABLE_STAY_FOR                                          :und bleibe für {STRING}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Unterwegs zu {TOWN} Zugdepot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Unterwegs zu {TOWN} Zugdepot, {VELOCITY}
@@ -3293,6 +3303,11 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Verände
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Verändere die Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige umschalten
 
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Gruppe {COMMA}
@@ -3330,5 +3345,17 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit dieses Jahr: {GREEN}{CURRENCY} {BLACK}(letztes Jahr: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit dieses Jahr: {RED}{CURRENCY} {BLACK}(letztes Jahr: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
+
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Name muss eindeutig sein
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Gehe zum nächsten Schild
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Gehe zum vorherigen Schild
 
 ########

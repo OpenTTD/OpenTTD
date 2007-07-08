@@ -1981,6 +1981,9 @@ STR_4828_REQUIRES                                               :{BLACK}Nécessi
 STR_4829_REQUIRES                                               :{BLACK}Nécessite: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Marchandise en attente d'être utilisée:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Production le mois dernier:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporté)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer la vue sur l'industrie

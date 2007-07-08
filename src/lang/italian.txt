@@ -1036,10 +1036,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflazi
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Scarica le merci in una stazione solo se richieste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Consenti la costruzione di ponti molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Consenti gli ordini 'Vai al deposito': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Costruzione manuale delle industrie primarie: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :non permessa
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :come le altre industrie
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospezione
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Costruzione delle industrie primarie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Non permessa
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Come le altre industrie
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospezione
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Consenti più industrie dello stesso tipo nella stessa città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Consenti la costruzione di industrie uguali anche molto vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostra sempre la data lunga nella barra di stato: {ORANGE}{STRING}
@@ -1981,6 +1981,9 @@ STR_4827_REQUIRES                                               :{BLACK}Richiede
 STR_4828_REQUIRES                                               :{BLACK}Richiede: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Richiede: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
+
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Carico in attesa di lavorazione:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produzione il mese scorso:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% trasportato)

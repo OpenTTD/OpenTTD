@@ -2060,6 +2060,9 @@ STR_4828_REQUIRES                                               :{BLACK}Potrebuj
 STR_4829_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Tovor na čakanju obdelave:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Proizvodnja prejšnjega meseca:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% prepeljano)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Pogled na industrijo

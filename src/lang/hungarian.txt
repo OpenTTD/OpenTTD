@@ -2083,6 +2083,9 @@ STR_4828_REQUIRES                                               :{BLACK}Felhaszn
 STR_4829_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Feldolgozásra váró szállítmány:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Múlt havi termelés:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% elszállítva)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}A fő nézetet a gazdasági épületre állítja

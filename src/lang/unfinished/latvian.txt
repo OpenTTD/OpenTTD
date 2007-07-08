@@ -1,4 +1,4 @@
-##name latvian
+##name Latvian
 ##ownname Latviešu
 ##isocode lv_LV
 ##plural 3
@@ -24,13 +24,9 @@ STR_000C_ACCEPTS                                                :{BLACK}Pieņem:
 STR_000D_ACCEPTS                                                :{BLACK}Pieņem: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasažieri
-STR_000F_PASSENGERS.a                                           :Pasažierus
 STR_0010_COAL                                                   :Ogles
-STR_0010_COAL.a                                                 :Ogles
 STR_0011_MAIL                                                   :Pasts
-STR_0011_MAIL.a                                                 :Pastu
 STR_0012_OIL                                                    :Nafta
-STR_0012_OIL.a                                                  :Naftu
 STR_0013_LIVESTOCK                                              :Liellopus
 STR_0014_GOODS                                                  :Preces
 STR_0015_GRAIN                                                  :Graudus
@@ -1461,27 +1457,76 @@ STR_STATION                                                     :{STATION}
 STR_2806                                                        :{WHITE}{SIGN}
 STR_280A_SIGN                                                   :Zîme
 STR_280E_TREES                                                  :Koki
+STR_280F_RAINFOREST                                             :Lietus meži
+STR_2810_CACTUS_PLANTS                                          :Kaktusu plantācijas
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Dzelzceļa stacijas izvēle
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Lidostas izvēle
+STR_3002_ORIENTATION                                            :{BLACK}Virziens
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Mašīnu skaits
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platformas garums
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Pārāk tuvu citai dzelzceļa stacijai
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz staciju/iekrašanas zonu šajā pilsētā
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz stacijas/iekraušanas zonas
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Pa'ra'k daudz autobusa pieturu
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}pa'ra'k daudz kravas auto staciju
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Pārāk tuvu citai stacijai/iekraušanas zonai
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Jānojauc dzelzsceļa stacija vispirms
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Pārāk tuvu citai lidostai
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Vispirms jānosauc lidosta
 
+STR_3030_RENAME_STATION_LOADING                                 :Pārsaukt staciju/iekraušanas zonu
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Nevar pārsaukt staciju...
 STR_3032_RATINGS                                                :{BLACK}Reitingi
+STR_3033_ACCEPTS                                                :{BLACK}Pieņem
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Vietējais transporta pakalpojumu reitings:
 
 ############ range for rating starts
+STR_3035_APPALLING                                              :Drausmīgs
+STR_3036_VERY_POOR                                              :Ļoti vājš
+STR_3037_POOR                                                   :Vājš
+STR_3038_MEDIOCRE                                               :Viduvējs
+STR_3039_GOOD                                                   :Labs
+STR_303A_VERY_GOOD                                              :Ļoti labs
+STR_303B_EXCELLENT                                              :Lielisks
+STR_303C_OUTSTANDING                                            :Perfekts
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} vairs nepieņem {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} vairs nepieņem {STRING} vai {STRING}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} pieņem {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} pieņem {STRING} un {STRING}
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Autoostas virziens
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Virpirms jānojauc autoosta
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stacij{P a s u}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_304A_NONE                                                   :{YELLOW}- Nav -
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}...vieta nav piemērota
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Pārāk tuvu citam dokam
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Vispirms jānojauc doks
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Izvēlaties dzelzsceļa stacijas virzienu
+STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Izvēlaties platformu skaitu dzelzsceļa stacijai
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Izvēlaties autoostas virzienu
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrēt galveno skatījumu uz stacijas atrašanās vietu
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Parādīt stacijas reitingu
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Mainīt stacijas nosaukumu
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Rādīt pieņemamās kravas sarakstu
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Staciju nosaukumi - uzklišķiniet uz nosaukuma, lai centrētu galveno skatījumu uz staciju
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Izvēlaties lidostas izmēru/veidu
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
+STR_305E_RAILROAD_STATION                                       :Dzelzsceļa stacija
+STR_305F_AIRCRAFT_HANGAR                                        :Lidaparātu angārs
 STR_3060_AIRPORT                                                :Lidosta
 STR_3062_BUS_STATION                                            :Autoosta
 STR_3063_SHIP_DOCK                                              :Osta
 STR_3068_DOCK                                                   :{WHITE}Osta
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...neregula'ras stacijas nav atl'autas
 
+STR_UNDEFINED                                                   :(nedefinēta rinda)
 
 ##id 0x3800
 STR_3804_WATER                                                  :Ûdens
@@ -1499,6 +1544,7 @@ STR_4819_FACTORY                                                :Rûpnîca
 
 ############ range for requires starts
 ############ range for requires ends
+
 
 
 ##id 0x5000

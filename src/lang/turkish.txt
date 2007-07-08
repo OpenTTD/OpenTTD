@@ -1964,6 +1964,7 @@ STR_4828_REQUIRES                                               :{BLACK}İstenen
 STR_4829_REQUIRES                                               :{BLACK}İstenenler: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Geçen ayki üretim:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} (%{COMMA} tasindi)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Fabrikaya git
@@ -2717,6 +2718,7 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren dolana kadar beklesin
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren mutlaka yükünü boşaltsın
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman çizelgesi - işaretlemek için bir talimata tıklayın.
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Geç kalma sayacını sıfırla, böylece araç zamanında gitmiş sayılacak
 STR_SERVICE_HINT                                                :{BLACK}Bakım gerekmiyorsa bunu atla
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {CURRENCY} Ağırlık: {WEIGHT_S}{}Hız: {VELOCITY}  Güç: {POWER}{}Bakım: {CURRENCY}/sene{}Kapasite: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Bozuldu
@@ -2758,7 +2760,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zamanı 
 STR_TIMETABLE_STATUS_ON_TIME                                    :Bu araç zamanında çalışıyor
 STR_TIMETABLE_STATUS_LATE                                       :Bu araç {STRING} geç çalışıyor
 STR_TIMETABLE_STATUS_EARLY                                      :Bu araç {STRING} erken çalışıyor
+STR_TIMETABLE_TOTAL_TIME                                        :Bu zaman çizelgesinin bitmesi {STRING} sürecek
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Bu zaman çizelgesinin bitmesi en az {STRING} sürecek (tamamı hesaplanmadı)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatik doldur
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman tablosunu ilk seferde elde edilen değerleri kullanarak doldur
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Yolda araba var
@@ -3337,7 +3342,10 @@ STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}İsim daha önce kullanılmamış olmalı
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Sonraki tabelaya git
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Önceki tabelaya git
 
 ########

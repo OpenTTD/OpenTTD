@@ -1034,6 +1034,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflati
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillad bygning af meget lange broer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillad gå til depot ordrer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode til manuel opførsel af primær industri: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industrier
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :efterforskning
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillad flere af samme slags industri per by: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Tillad flere af samme type industri tæt på hinanden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vis altid lang dato i statusbaren: {ORANGE}{STRING}
@@ -1975,6 +1979,9 @@ STR_4827_REQUIRES                                               :{BLACK}Kræver:
 STR_4828_REQUIRES                                               :{BLACK}Kræver: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Kræver: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
+
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Fragt der venter på forarbejdning:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion sidste måned:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporteret)
