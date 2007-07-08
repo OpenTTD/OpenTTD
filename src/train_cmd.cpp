@@ -3029,8 +3029,6 @@ static void DeleteLastWagon(Vehicle *v)
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
 
-	if (IsFrontEngine(v)) RemoveVehicleFromGroup(v);
-
 	DeleteVehicle(v);
 
 	if (v->u.rail.track != TRACK_BIT_DEPOT && v->u.rail.track != TRACK_BIT_WORMHOLE)
