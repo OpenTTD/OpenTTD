@@ -110,3 +110,20 @@ CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile)
 	/* Else the cargo value is a 'climate independent' 'bitnum' */
 	return GetCargoIDByBitnum(cargo);
 }
+
+uint8 GetReverseCargoTranslation(CargoID cargo, const GRFFile *grffile)
+{
+	/* Pre-version 7 uses the 'climate dependent' ID, i.e. cargo is the cargo ID */
+	if (grffile->grf_version < 7) return cargo;
+
+	const CargoSpec *cs = GetCargo(cargo);
+
+	/* If the GRF contains a translation table (and the cargo is in the table)
+	 * then get the cargo ID for the label */
+	for (uint i = 0; i < grffile->cargo_max; i++) {
+		if (cs->label == grffile->cargo_list[i]) return i;
+	}
+
+	/* No matching label was found, so we return the 'climate independent' 'bitnum' */
+	return cs->bitnum;;
+}

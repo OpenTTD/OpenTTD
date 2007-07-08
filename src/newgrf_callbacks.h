@@ -107,10 +107,10 @@ enum CallbackID {
 	CBID_HOUSE_ACCEPT_CARGO         = 0x2A,
 
 	/* Called to query the cargo acceptance of the industry tile */
-	CBID_INDTILE_ACCEPT_CARGO       = 0x2B, // not yet implemented
+	CBID_INDTILE_CARGO_ACCEPTANCE   = 0x2B,
 
 	/* Called to determine which cargoes an industry should accept. */
-	CBID_INDUSTRY_ACCEPT_CARGO      = 0x2C, // not yet implemented
+	CBID_INDTILE_ACCEPT_CARGO       = 0x2C,
 
 	/* Called to determine if a specific colour map should be used for a vehicle
 	 * instead of the default livery */
@@ -158,8 +158,8 @@ enum CallbackID {
 	/* Called to determine if industry can alter the ground below industry tile */
 	CBID_INDUSTRY_AUTOSLOPE         = 0x3C, // not yet implemented
 
-	/* Called to determine if the industry can still accept or refuse  more cargo arrival */
-	CBID_INDUSTRY_REFUSE_CARGO      = 0x3D, // not yet implemented
+	/* Called to determine if the industry can still accept or refuse more cargo arrival */
+	CBID_INDUSTRY_REFUSE_CARGO      = 0x3D,
 
 	/* Called (if appropriate bit in callback mask set) to determine whether a
 	 * town building can be destroyed. */
@@ -240,7 +240,7 @@ enum IndustryCallbackMask {
 enum IndustryTileCallbackMask {
 	CBM_INDT_ANIM_NEXT_FRAME          = 0,  ///< decides next animation frame
 	CBM_INDT_ANIM_SPEED               = 1,  ///< decides animation speed
-	CBM_INDT_ACCEPTANCE_CARGO         = 2,  ///< decides amount of cargo acceptance
+	CBM_INDT_CARGO_ACCEPTANCE         = 2,  ///< decides amount of cargo acceptance
 	CBM_INDT_ACCEPT_CARGO             = 3,  ///< decides accepted types
 	CBM_INDT_SHAPE_CHECK              = 4,  ///< decides slope suitability
 	CBM_INDT_DRAW_FOUNDATIONS         = 5,  ///< decides if default foundations need to be drawn

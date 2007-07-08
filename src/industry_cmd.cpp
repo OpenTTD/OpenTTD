@@ -330,12 +330,36 @@ static Slope GetSlopeTileh_Industry(TileIndex tile, Slope tileh)
 
 static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
-	const IndustryTileSpec *itspec = GetIndustryTileSpec(GetIndustryGfx(tile));
-	CargoID a;
+	IndustryGfx gfx = GetIndustryGfx(tile);
+	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
+
+	/* When we have to use a callback, we put our data in the next two variables */
+	CargoID raw_accepts_cargo[lengthof(itspec->accepts_cargo)];
+	uint8 raw_acceptance[lengthof(itspec->acceptance)];
+
+	/* And then these will always point to a same sized array with the required data */
+	const CargoID *accepts_cargo = itspec->accepts_cargo;
+	const uint8 *acceptance = itspec->acceptance;
+
+	if (HASBIT(itspec->callback_flags, CBM_INDT_ACCEPT_CARGO)) {
+		uint16 res = GetIndustryTileCallback(CBID_INDTILE_ACCEPT_CARGO, 0, 0, gfx, GetIndustryByTile(tile), tile);
+		if (res != CALLBACK_FAILED) {
+			accepts_cargo = raw_accepts_cargo;
+			for (uint i = 0; i < lengthof(itspec->accepts_cargo); i++) raw_accepts_cargo[i] = GetCargoTranslation(GB(res, i * 5, 5), itspec->grf_prop.grffile);
+		}
+	}
+
+	if (HASBIT(itspec->callback_flags, CBM_INDT_CARGO_ACCEPTANCE)) {
+		uint16 res = GetIndustryTileCallback(CBID_INDTILE_CARGO_ACCEPTANCE, 0, 0, gfx, GetIndustryByTile(tile), tile);
+		if (res != CALLBACK_FAILED) {
+			acceptance = raw_acceptance;
+			for (uint i = 0; i < lengthof(itspec->accepts_cargo); i++) raw_acceptance[i] = GB(res, i * 4, 4);
+		}
+	}
 
 	for (byte i = 0; i < lengthof(itspec->accepts_cargo); i++) {
-		a = itspec->accepts_cargo[i];
-		if (a != CT_INVALID) ac[a] = itspec->acceptance[i];
+		CargoID a = accepts_cargo[i];
+		if (a != CT_INVALID) ac[a] = acceptance[i];
 	}
 }
 

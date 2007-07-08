@@ -1211,17 +1211,17 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 		indspec = GetIndustrySpec(ind->type);
 		uint i;
 
-		if (indspec->produced_cargo[0] == CT_INVALID) continue;
-
 		for (i = 0; i < lengthof(indspec->accepts_cargo); i++) {
-			if (cargo_type == indspec->accepts_cargo[i] &&
-					(indspec->input_cargo_multiplier[i][0] != 0 || indspec->input_cargo_multiplier[i][1] != 0)) {
-				break;
-			}
+			if (cargo_type == indspec->accepts_cargo[i]) break;
 		}
 
 		/* Check if matching cargo has been found */
 		if (i == lengthof(indspec->accepts_cargo)) continue;
+
+		if (HASBIT(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
+			uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile), ind, ind->type, ind->xy);
+			if (res == 0) continue;
+		}
 
 		uint dist = DistanceManhattan(ind->xy, xy);
 
