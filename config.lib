@@ -748,15 +748,14 @@ make_cflags_and_ldflags() {
 		OBJS_SUBDIR="release"
 		if [ "$os" = "OSX" ]; then
 			# these compilerflags makes the app run as fast as possible without making the app unstable. It works on G3 or newer
-			CFLAGS="$CFLAGS -O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic"
+			CFLAGS="-O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic $CFLAGS"
 		else
 			if [ "$os" = "MORPHOS" ]; then
-				CFLAGS="$CFLAGS -I/gg/os-include -noixemul -fstrict-aliasing -fexpensive-optimizations"
-				CFLAGS="$CFLAGS -mcpu=604 -fno-inline -mstring -mmultiple"
+				CFLAGS="-I/gg/os-include -noixemul -fstrict-aliasing -fexpensive-optimizations -mcpu=604 -fno-inline -mstring -mmultiple $CFLAGS"
 				LDFLAGS="$LDFLAGS -noixemul"
 			fi
 
-			CFLAGS="$CFLAGS -O2 -fomit-frame-pointer"
+			CFLAGS="-O2 -fomit-frame-pointer $CFLAGS"
 		fi
 	else
 		OBJS_SUBDIR="debug"
