@@ -335,10 +335,10 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 
 	switch (group->g.callback.result) {
 		case 0x400: return true;
-		case 0x401: _error_message = STR_0239_SITE_UNSUITABLE;
-		case 0x402: _error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST;
-		case 0x403: _error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;
-		default: _error_message = GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + group->g.callback.result);
+		case 0x401: _error_message = STR_0239_SITE_UNSUITABLE; break;
+		case 0x402: _error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST; break;
+		case 0x403: _error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT; break;
+		default: _error_message = GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + group->g.callback.result); break;
 	}
 
 	return false;
