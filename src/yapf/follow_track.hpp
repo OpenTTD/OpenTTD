@@ -210,7 +210,7 @@ protected:
 				if (!m_is_tunnel) {
 					DiagDirection tunnel_enterdir = GetTunnelDirection(m_new_tile);
 					if (tunnel_enterdir != m_exitdir) {
-						EC_NO_WAY;
+						m_err = EC_NO_WAY;
 						return false;
 					}
 				}
@@ -218,7 +218,7 @@ protected:
 				if (!m_is_bridge) {
 					DiagDirection ramp_enderdir = GetBridgeRampDirection(m_new_tile);
 					if (ramp_enderdir != m_exitdir) {
-						EC_NO_WAY;
+						m_err = EC_NO_WAY;
 						return false;
 					}
 				}
