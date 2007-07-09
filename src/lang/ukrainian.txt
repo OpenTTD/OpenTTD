@@ -2143,6 +2143,9 @@ STR_4828_REQUIRES                                               :{BLACK}Потр
 STR_4829_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Вантаж чекає на обробку:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Вироблено за місяць:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% перевезено)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Показати в центрі екрану

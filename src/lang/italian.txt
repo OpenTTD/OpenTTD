@@ -1991,7 +1991,7 @@ STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centra l
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nuov{G o a} {STRING} in costruzione vicino a {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nuov{G o a} {STRING} piantat{G o a} vicino a {TOWN}!
 STR_482F_COST                                                   :{BLACK}Costo: {YELLOW}{CURRENCY}
-STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Impossibile costruire questo tipo di industria qui...
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Imposibile costruire l'industria qui...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...una foresta può essere piantata solo in una zona innevata
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} annuncia imminente chiusura!!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Per problemi di rifornimenti {INDUSTRY} annuncia imminente chiusura!

@@ -1055,7 +1055,7 @@ STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permiti
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Alertar em caso de perda do combóio: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Alertar em caso de perda do comboio: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Analisar ordens dos veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
@@ -1092,7 +1092,8 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar uma dica de medição ao utilizar várias ferramentas de construção: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Suavizar deslocamento da navegação no mapa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar as medidas nas várias ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar estampagens da companhia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia
@@ -1108,6 +1109,7 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a 
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activar plano de horários para veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horário em tics em vez dias: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar jogo): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Linha Normal
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Linha Electrificada
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
@@ -1116,7 +1118,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro dispon
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostrar ferramentas de construção quando não estiverem disponíveis veículos adequeados: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostrar ferramentas de construção quando não existirem veículos adequeados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por jogador: {ORANGE}{STRING}
@@ -2329,7 +2331,7 @@ STR_LIVERY_PASSENGER_TRAM                                       :Eléctrico de P
 STR_LIVERY_FREIGHT_TRAM                                         :Eléctrico de Mercadorias
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Exibir esquema de cores geral
-STR_LIVERY_TRAIN_TIP                                            :{BLACK}Exibir esquemas de cores dos combóios
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Exibir esquemas de cores dos comboios
 STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Exibir esquemas de cores dos veículos de estrada
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Exibir esquemas de cores dos navios
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Exibir esquema de cores da aeronave
@@ -2759,7 +2761,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Não é 
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem seleccionada forçará o veículo a largar a carga
 STR_886F_TRANSFER                                               :{BLACK}Transferir
 STR_CLEAR_TIME                                                  :{BLACK}Apagar Tempo
-STR_RESET_LATENESS                                              :{BLACK}Apagar Contador Atraso
+STR_RESET_LATENESS                                              :{BLACK}Apagar Contad. Atraso
 
 STR_TRAIN_STOPPING                                              :{RED}A Parar
 STR_TRAIN_STOPPING_VEL                                          :{RED}A Parar, {VELOCITY}
@@ -2780,6 +2782,7 @@ STR_TIMETABLE_STATUS_LATE                                       :Este veículo e
 STR_TIMETABLE_STATUS_EARLY                                      :Este veículo está presentemente adiantado {STRING}
 STR_TIMETABLE_TOTAL_TIME                                        :Este horário vai levar {STRING} a completar
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Este horário vai levar pelo menos {STRING} a completar (nem tudo está programado)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto pr.
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automaticamente com os valores da primeira viagem
 
 ##id 0x9000
@@ -3121,12 +3124,12 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra t
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está prestes a vender todos os veículos no depósito. Tem a certeza?
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Tipo de depósito errado
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os combóios no depósito
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os comboios no depósito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos os veículos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender todos os navios no depósito
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender todos os aviões no hangar
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter uma lista de todos os combóios em cujas ordens conste este depósito
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter uma lista de todos os comboios em cujas ordens conste este depósito
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obter uma lista de todos os veículos em cujas ordens conste este depósito
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obter uma lista de todos os navios em cujas ordens conste este depósito
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obter uma lista de todas as aeronaves em cujas ordens conste um hangar deste aeroporto
@@ -3165,12 +3168,12 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Aeronave
 STR_ENGINES                                                     :Locomotivas
 STR_WAGONS                                                      :Vagões
 
-STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os combóios no depósito
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os comboios no depósito
 STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os veículos no depósito
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os navios no depósito
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pressione botão esquerdo do rato para imobilizar todas as aeronaves no hangar
 
-STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Pressione botão esquerdo do rato para iniciar todos os combóios no depósito
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Pressione botão esquerdo do rato para iniciar todos os comboios no depósito
 STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos de estrada no depósito
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Pressione botão esquerdo do rato para iniciar todos os navios no depósito
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Pressione botão esquerdo do rato para iniciar todas as aeronaves no hangar
@@ -3327,6 +3330,7 @@ STR_GROUP_ALL_ROADS                                             :Todos os veícu
 STR_GROUP_ALL_SHIPS                                             :Todos os barcos
 STR_GROUP_ALL_AIRCRAFTS                                         :Todas as aeronaves
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Adic. veíc. partilh.
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
 
 STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Comboio{P "" s}
@@ -3341,6 +3345,7 @@ STR_GROUP_CAN_T_DELETE                                          :{WHITE}Impossí
 STR_GROUP_CAN_T_RENAME                                          :{WHITE}Impossível renomear o grupo...
 STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Não é possível remover todos os veículos deste grupo...
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Impossível adicionar o veículo a este grupo...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Impossível adicionar veículos com ordens partilhadas ao grupo...
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Clique num grupo para listar todos os seus veículos
 STR_GROUP_CREATE_TIP                                            :{BLACK}Clique para criar um grupo

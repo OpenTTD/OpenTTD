@@ -1539,13 +1539,39 @@ STR_4801                                                        :{WHITE}{INDUSTR
 STR_4804_SAWMILL                                                :Gateris
 STR_4805_FOREST                                                 :Mežs
 STR_480B_FARM                                                   :Ferma
+STR_480D_OIL_WELLS                                              :Naftas urbumi
+STR_480E_BANK                                                   :Banka
+STR_480F_FOOD_PROCESSING_PLANT                                  :Ēdiena apstrādes fabrika
+STR_4810_PAPER_MILL                                             :Papirfabrika
+STR_4811_GOLD_MINE                                              :Zelta raktuves
 STR_4812_BANK                                                   :Banka
+STR_4813_DIAMOND_MINE                                           :Dimantu raktuves
+STR_4814_IRON_ORE_MINE                                          :Dzelzs rūdas raktuves
+STR_4815_FRUIT_PLANTATION                                       :Augļu plantācija
+STR_4816_RUBBER_PLANTATION                                      :Gumijkoka plantācija
+STR_4817_WATER_SUPPLY                                           :Ūdens ieguve
+STR_4818_WATER_TOWER                                            :Ūdens tornis
 STR_4819_FACTORY                                                :Rûpnîca
+STR_481A_FARM                                                   :Ferma
+STR_481B_LUMBER_MILL                                            :Kokzāģētava
+STR_481D_CANDY_FACTORY                                          :Saldumu fabrika
+STR_481F_COLA_WELLS                                             :Kolas urbumi
+STR_4820_TOY_SHOP                                               :Rotaļlietu veikals
+STR_4821_TOY_FACTORY                                            :Rotaļlietu fabrika
+STR_4822_PLASTIC_FOUNTAINS                                      :Plastmasas strūklakas
+STR_4824_BUBBLE_GENERATOR                                       :Burbuļu ģenerātors
+STR_4826_SUGAR_MINE                                             :Cukura raktuve
 
 ############ range for requires starts
+STR_4827_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Krava, kas jāapstrādā:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkcija iepriekšēja mēnesī:
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vilciens tunelî
@@ -1563,18 +1589,45 @@ STR_SV_EMPTY                                                    :
 STR_SV_TRAIN_NAME                                               :Vilciens {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_AIRPORT                                           :{STRING} Lidosta
+STR_SV_STNAME_MINES                                             :{STRING} Raktuves
+STR_SV_STNAME_DOCKS                                             :{STRING} Doki
+STR_SV_STNAME_BUOY_1                                            :{STRING} Boja 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Boja 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Boja 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Boja 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Boja 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Boja 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Boja 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Boja 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Boja 9
 STR_SV_STNAME_FOREST                                            :{STRING} Mežs
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stacija #{NUM}
 
 ############ end of savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Grūtības līmenis
 STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Saglabât
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Viegls
+STR_6802_MEDIUM                                                 :{BLACK}Vidējs
+STR_6803_HARD                                                   :{BLACK}Grūts
+STR_6804_CUSTOM                                                 :{BLACK}Pielāgots
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksimāls pretinieku daudzums: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Pretinieku sākuma laiks: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Pilsētu skaits: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Industriju skaits: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimāls sākotnējais kredīts: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Sākotnējā kredīta likme: {ORANGE}{COMMA}%
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Transportlīdzekļu lietošanas izdevumi: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Pretinieku būvniecības ātrums: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Pretinieku inteliģence: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Transportlīdzekļu lūšana: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}

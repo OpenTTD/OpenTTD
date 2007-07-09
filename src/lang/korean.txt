@@ -1035,6 +1035,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}인플�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}매우 긴 교각 건설 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}차량기지(차고/격납고)를 경로에 지정하는 것을 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}수동 기본 산업 건설 방법: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :없음
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :다른 산업시설처럼
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :답사
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}한 도시당 같은 종류의 산업시설의 중복 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 종류의 산업 시설이 가까이에 지어지는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
@@ -1976,6 +1980,9 @@ STR_4827_REQUIRES                                               :{BLACK}필요�
 STR_4828_REQUIRES                                               :{BLACK}필요함: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}필요함: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
+
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}처리될 화물 대기:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}지난달 생산량:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% 수송됨)

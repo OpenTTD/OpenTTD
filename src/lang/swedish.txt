@@ -1034,6 +1034,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflati
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Leverera gods till en station enbart om någon frågar efter det: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillåt väldigt långa broar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillåt order att gå till depå/bussgarage: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuell prioritering för industrins konstruktionsmetod: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterande
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillåt flera industrier av samma typ per stad: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrier av samma typ kan byggas nära varandra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Visa alltid långt datum i statusfältet: {ORANGE}{STRING}
@@ -1975,6 +1979,9 @@ STR_4827_REQUIRES                                               :{BLACK}Kräver:
 STR_4828_REQUIRES                                               :{BLACK}Kräver: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Kräver: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
+
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Last som väntar på att bli behandlad:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion förra månaden:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporterat)
@@ -3361,5 +3368,7 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Namnet måste vara unikt
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Åk till nästa skylt
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Åk till föregående skylt
 
 ########
