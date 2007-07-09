@@ -1165,7 +1165,7 @@ static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 	return t;
 }
 
-static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, int type)
+static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, int type, bool *custom_shape_check = NULL)
 {
 	_error_message = STR_0239_SITE_UNSUITABLE;
 
@@ -1186,54 +1186,59 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			if (!EnsureNoVehicle(cur_tile)) return false;
 			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return false;
 
+			const IndustryTileSpec *its = GetIndustryTileSpec(it->gfx);
 			IndustyBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
-			if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
-				/* As soon as the tile is not water, bail out.
-				 * But that does not mean the search is over.  You have
-				 * to make sure every tile of the industry will be only water*/
-				if (!IsClearWaterTile(cur_tile)) return false;
+			if (HASBIT(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
+				if (custom_shape_check != NULL) *custom_shape_check = true;
+				if (!PerformIndustryTileSlopeCheck(cur_tile, its, it->gfx)) return false;
 			} else {
-				Slope tileh;
-
-				if (IsClearWaterTile(cur_tile)) return false;
-
-				tileh = GetTileSlope(cur_tile, NULL);
-				if (IsSteepSlope(tileh)) return false;
-
-				if (_patches.land_generator != LG_TERRAGENESIS || !_generating_world) {
-					/* It is almost impossible to have a fully flat land in TG, so what we
-					 *  do is that we check if we can make the land flat later on. See
-					 *  CheckIfCanLevelIndustryPlatform(). */
-					if (tileh != SLOPE_FLAT) {
-						Slope t;
-						byte bits = GetIndustryTileSpec(it->gfx)->slopes_refused;
-
-						if (bits & 0x10) return false;
-
-						t = ComplementSlope(tileh);
-
-						if (bits & 1 && (t & SLOPE_NW)) return false;
-						if (bits & 2 && (t & SLOPE_NE)) return false;
-						if (bits & 4 && (t & SLOPE_SW)) return false;
-						if (bits & 8 && (t & SLOPE_SE)) return false;
-					}
-				}
-
-				if (ind_behav & INDUSTRYBEH_ONLY_INTOWN) {
-					if (!IsTileType(cur_tile, MP_HOUSE)) {
-						_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
-						return false;
-					}
+				if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
+					/* As soon as the tile is not water, bail out.
+					* But that does not mean the search is over.  You have
+					* to make sure every tile of the industry will be only water*/
+					if (!IsClearWaterTile(cur_tile)) return false;
 				} else {
-					if (ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) {
-						if (!IsTileType(cur_tile, MP_HOUSE)) goto do_clear;
-					} else {
-do_clear:
-						if (CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
-							return false;
+					Slope tileh;
+
+					if (IsClearWaterTile(cur_tile)) return false;
+
+					tileh = GetTileSlope(cur_tile, NULL);
+					if (IsSteepSlope(tileh)) return false;
+
+					if (_patches.land_generator != LG_TERRAGENESIS || !_generating_world) {
+						/* It is almost impossible to have a fully flat land in TG, so what we
+						*  do is that we check if we can make the land flat later on. See
+						*  CheckIfCanLevelIndustryPlatform(). */
+						if (tileh != SLOPE_FLAT) {
+							Slope t;
+							byte bits = its->slopes_refused;
+
+							if (bits & 0x10) return false;
+
+							t = ComplementSlope(tileh);
+
+							if (bits & 1 && (t & SLOPE_NW)) return false;
+							if (bits & 2 && (t & SLOPE_NE)) return false;
+							if (bits & 4 && (t & SLOPE_SW)) return false;
+							if (bits & 8 && (t & SLOPE_SE)) return false;
+						}
 					}
 				}
+			}
+
+			if (ind_behav & INDUSTRYBEH_ONLY_INTOWN) {
+				if (!IsTileType(cur_tile, MP_HOUSE)) {
+					_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
+					return false;
+				}
+			}
+			if (ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) {
+				if (!IsTileType(cur_tile, MP_HOUSE)) goto do_clear;
+			} else {
+do_clear:
+				if (CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
+					return false;
 			}
 		}
 	} while ((++it)->ti.x != -0x80);
@@ -1496,14 +1501,17 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint32 flags, const IndustrySpec *indspec, uint itspec_index)
 {
 	const IndustryTileTable *it = indspec->table[itspec_index];
+	bool custom_shape_check = false;
+
+	if (!CheckIfIndustryTilesAreFree(tile, it, type, &custom_shape_check)) return NULL;
+
 	if (HASBIT(GetIndustrySpec(type)->callback_flags, CBM_IND_LOCATION)) {
 		if (!CheckIfCallBackAllowsCreation(tile, type, itspec_index)) return NULL;
-		/* TODO: what with things like quarries and other stuff that must not be on level ground? */
+	} else {
+		if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
 	}
 
-	if (!CheckIfIndustryTilesAreFree(tile, it, type)) return NULL;
-	if (_patches.land_generator == LG_TERRAGENESIS && _generating_world && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
-	if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
+	if (!custom_shape_check && _patches.land_generator == LG_TERRAGENESIS && _generating_world && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
 	if (!CheckIfTooCloseToIndustry(tile, type)) return NULL;
 
 	const Town *t = CheckMultipleIndustryInTown(tile, type);
@@ -1516,7 +1524,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 	if (i == NULL) return NULL;
 
 	if (flags & DC_EXEC) {
-		CheckIfCanLevelIndustryPlatform(tile, DC_EXEC, it, type);
+		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_EXEC, it, type);
 		DoCreateNewIndustry(i, tile, type, it, t, OWNER_NONE);
 	}
 

@@ -15,9 +15,11 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_industries.h"
+#include "newgrf_text.h"
 #include "industry_map.h"
 #include "clear_map.h"
 #include "table/sprites.h"
+#include "table/strings.h"
 #include "sprite.h"
 
 /**
@@ -82,7 +84,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 		case 0x44 : return (IsTileType(tile, MP_INDUSTRY)) ? GetIndustryAnimationState(tile) : 0;
 
 		/* Land info of nearby tiles */
-		case 0x60 : return GetNearbyIndustryTileInformation(parameter, tile, inds->index);
+		case 0x60 : return GetNearbyIndustryTileInformation(parameter, tile, inds == NULL ? (IndustryID)INVALID_INDUSTRY : inds->index);
 
 		case 0x61 : {/* Animation stage of nearby tiles */
 			tile = GetNearbyTile(parameter, tile);
@@ -224,5 +226,22 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 		stage = clamp(stage - 4 + group->g.layout.num_sprites, 0, group->g.layout.num_sprites - 1);
 		IndustryDrawTileLayout(ti, group, i->random_color, stage, gfx);
 		return true;
+	}
+}
+
+bool PerformIndustryTileSlopeCheck(TileIndex tile, const IndustryTileSpec *its, IndustryGfx gfx)
+{
+	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, 0, gfx, NULL, tile);
+	if (its->grf_prop.grffile->grf_version < 7) {
+		return callback_res != 0;
+	}
+	if (callback_res != CALLBACK_FAILED) return true;
+
+	switch (callback_res) {
+		case 0x400: return true;
+		case 0x401: _error_message = STR_0239_SITE_UNSUITABLE;                 return false;
+		case 0x402: _error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST; return false;
+		case 0x403: _error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;     return false;
+		default: _error_message = GetGRFStringID(its->grf_prop.grffile->grfid, 0xD000 + callback_res); return false;
 	}
 }

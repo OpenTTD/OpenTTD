@@ -121,7 +121,7 @@ enum CallbackID {
 	CBID_HOUSE_PRODUCE_CARGO        = 0x2E, // not yet implemented
 
 	/* Called to determine if the given industry tile can be built on specific tile */
-	CBID_INDTILE_SHAPE_CHECK        = 0x2F, // not yet implemented
+	CBID_INDTILE_SHAPE_CHECK        = 0x2F,
 
 	/* Called to determine the type (if any) of foundation to draw for industry tile */
 	CBID_INDUSTRY_DRAW_FOUNDATIONS  = 0x30,
