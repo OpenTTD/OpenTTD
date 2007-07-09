@@ -1490,26 +1490,29 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
  * @param type of industry to build
  * @param flags of operations to conduct
  * @param indspec pointer to industry specifications
- * @param it pointer to list of tile type to build
+ * @param itspec_index the index of the itsepc to build/fund
  * @return the pointer of the newly created industry, or NULL if it failed
  */
-static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint32 flags, const IndustrySpec *indspec, const IndustryTileTable *it)
+static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint32 flags, const IndustrySpec *indspec, uint itspec_index)
 {
-	const Town *t;
-	Industry *i;
+	const IndustryTileTable *it = indspec->table[itspec_index];
+	if (HASBIT(GetIndustrySpec(type)->callback_flags, CBM_IND_LOCATION)) {
+		if (!CheckIfCallBackAllowsCreation(tile, type, itspec_index)) return NULL;
+		/* TODO: what with things like quarries and other stuff that must not be on level ground? */
+	}
 
 	if (!CheckIfIndustryTilesAreFree(tile, it, type)) return NULL;
 	if (_patches.land_generator == LG_TERRAGENESIS && _generating_world && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
 	if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
 	if (!CheckIfTooCloseToIndustry(tile, type)) return NULL;
 
-	t = CheckMultipleIndustryInTown(tile, type);
+	const Town *t = CheckMultipleIndustryInTown(tile, type);
 	if (t == NULL) return NULL;
 
 	if (!CheckIfIndustryIsAllowed(tile, type, t)) return NULL;
 	if (!CheckSuitableIndustryPos(tile)) return NULL;
 
-	i = AllocateIndustry();
+	Industry *i = AllocateIndustry();
 	if (i == NULL) return NULL;
 
 	if (flags & DC_EXEC) {
@@ -1545,19 +1548,19 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now) */
-	if (_patches.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
+	if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
 		return CMD_ERROR;
 	}
 
-	if (_patches.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
+	if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
 		if (flags & DC_EXEC) {
 			/* Prospecting has a chance to fail, however we cannot guarantee that something can
 			 * be built on the map, so the chance gets lower when the map is fuller, but there
 			 * is nothing we can really do about that. */
 			if (Random() <= indspec->prospecting_chance) {
 				for (int i = 0; i < 5000; i++) {
-					const IndustryTileTable *it = indspec->table[RandomRange(indspec->num_table)];
-					const Industry *ind = CreateNewIndustryHelper(RandomTile(), p1, flags, indspec, it);
+					uint tilespec_index = RandomRange(indspec->num_table);
+					const Industry *ind = CreateNewIndustryHelper(RandomTile(), p1, flags, indspec, tilespec_index);
 					if (ind != NULL) {
 						SetDParam(0, indspec->name);
 						SetDParam(1, ind->town->index);
@@ -1577,7 +1580,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (--num < 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
 		} while (!CheckIfIndustryTilesAreFree(tile, it = itt[num], p1));
 
-		if (CreateNewIndustryHelper(tile, p1, flags, indspec, it) == NULL) return CMD_ERROR;
+		if (CreateNewIndustryHelper(tile, p1, flags, indspec, num) == NULL) return CMD_ERROR;
 	}
 
 	return CommandCost(indspec->GetConstructionCost());
@@ -1587,9 +1590,8 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
-	const IndustryTileTable *it = indspec->table[RandomRange(indspec->num_table)];
 
-	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, it);
+	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table));
 }
 
 static const byte _numof_industry_table[5][11] = {

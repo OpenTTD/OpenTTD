@@ -97,7 +97,7 @@ enum CallbackID {
 	CBID_INDTILE_ANIMATION_SPEED    = 0x27, // not yet implemented
 
 	/* Called to determine if the given industry can be built on specific area */
-	CBID_INDUSTRY_LOCATION          = 0x28, // not yet implemented
+	CBID_INDUSTRY_LOCATION          = 0x28,
 
 	/* Called on production changes, so it can be adjusted */
 	CBID_INDUSTRY_PRODUCTION_CHANGE = 0x29, // not yet implemented

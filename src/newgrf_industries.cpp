@@ -7,6 +7,9 @@
 #include "debug.h"
 #include "functions.h"
 #include "macros.h"
+#include "variables.h"
+#include "landscape.h"
+#include "table/strings.h"
 #include "industry.h"
 #include "industry_map.h"
 #include "newgrf.h"
@@ -14,6 +17,8 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_industries.h"
 #include "newgrf_commons.h"
+#include "newgrf_text.h"
+#include "newgrf_town.h"
 #include "date.h"
 
 /* Since the industry IDs defined by the GRF file don't necessarily correlate
@@ -116,7 +121,7 @@ uint32 GetIndustryIDAtOffset(TileIndex new_tile, TileIndex old_tile, const Indus
 uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
 	const Industry *industry = object->u.industry.ind;
-	TileIndex tile   = object->u.industry.tile;
+	TileIndex tile = object->u.industry.tile;
 	const IndustrySpec *indspec = GetIndustrySpec(industry->type);
 
 	switch (variable) {
@@ -130,8 +135,9 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 				return 0;
 			}
 		}
-		/* TODO: somehow determine whether we're in water or not */
-		case 0x43: return GetClosestWaterDistance(tile, true); // Manhattan distance of closes dry/water tile
+
+		/* Manhattan distance of closes dry/water tile */
+		case 0x43: return GetClosestWaterDistance(tile, (object->u.industry_location.spec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
 
 		/* Get industry ID at offset param */
 		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->xy), tile, industry);
@@ -258,6 +264,84 @@ uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Indust
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
+}
+
+uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+{
+	TileIndex tile = object->u.industry_location.tile;
+
+	if (object->scope == VSG_SCOPE_PARENT) {
+		return TownGetVariable(variable, parameter, available, ClosestTownFromTile(tile, (uint)-1));
+	}
+
+	switch (variable) {
+		case 0x62: // Land info of nearby tiles
+		case 0x64: break; // Distance of nearest industry of given type
+
+		/* Location where to build the industry */
+		case 0x80: return tile;
+		case 0x81: return GB(tile, 8, 8);
+		/* Pointer to the town the industry is associated with */
+		case 0x82: return ClosestTownFromTile(tile, (uint)-1)->index;
+		case 0x83:
+		case 0x84:
+		case 0x85: DEBUG(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
+
+		/* Number of the layout */
+		case 0x86: return object->u.industry_location.itspec_index;
+
+		/* Ground type */
+		case 0x87: return GetTerrainType(tile);
+
+		/* Town zone */
+		case 0x88: return GetTownRadiusGroup(ClosestTownFromTile(tile, (uint)-1), tile);
+
+		/* Manhattan distance of the closest town */
+		case 0x89: return min(DistanceManhattan(ClosestTownFromTile(tile, (uint)-1)->xy, tile), 255);
+
+		/* Lowest height of the tile */
+		case 0x8A: return GetTileZ(tile);
+
+		/* Distance to the nearest water/land tile */
+		case 0x8B: return GetClosestWaterDistance(tile, (object->u.industry_location.spec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
+
+		/* Square of Euclidian distance from town */
+		case 0x8D: return min(DistanceSquare(ClosestTownFromTile(tile, (uint)-1)->xy, tile), 65535);
+	}
+
+	DEBUG(grf, 1, "Unhandled industry property 0x%X", variable);
+
+	*available = false;
+	return (uint32)-1;
+}
+
+bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspec_index)
+{
+	const IndustrySpec *indspec = GetIndustrySpec(type);
+
+	ResolverObject object;
+	const SpriteGroup *group;
+
+	NewIndustryResolver(&object, tile, NULL);
+	object.GetVariable = IndustryLocationGetVariable;
+	object.callback = CBID_INDUSTRY_LOCATION;
+	object.u.industry_location.tile = tile;
+	object.u.industry_location.spec = indspec;
+	object.u.industry_location.itspec_index = itspec_index;
+
+	group = Resolve(GetIndustrySpec(type)->grf_prop.spritegroup, &object);
+
+	if (group == NULL || group->type != SGT_CALLBACK) return false;
+
+	switch (group->g.callback.result) {
+		case 0x400: return true;
+		case 0x401: _error_message = STR_0239_SITE_UNSUITABLE;
+		case 0x402: _error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST;
+		case 0x403: _error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;
+		default: _error_message = GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + group->g.callback.result);
+	}
+
+	return false;
 }
 
 static int32 DerefIndProd(uint field, bool use_register)

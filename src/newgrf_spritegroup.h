@@ -225,6 +225,11 @@ struct ResolverObject {
 			IndustryGfx gfx;
 		} industry;
 		struct {
+			TileIndex tile;
+			const IndustrySpec *spec;
+			uint itspec_index;
+		} industry_location;
+		struct {
 			const struct CargoSpec *cs;
 		} cargo;
 	} u;
