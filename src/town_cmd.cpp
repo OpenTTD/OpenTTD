@@ -345,7 +345,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 
 	/* Check and/or  */
 	if (HASBIT(GetHouseSpecs(GetHouseType(tile))->callback_mask, CBM_CONSTRUCTION_STATE_CHANGE)) {
-		uint16 callback_res = GetHouseCallback(CBID_CONSTRUCTION_STATE_CHANGE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
+		uint16 callback_res = GetHouseCallback(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(tile, callback_res);
 	}
 

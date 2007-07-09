@@ -231,7 +231,7 @@ void TrainConsistChanged(Vehicle* v)
 		/* check the vehicle length (callback) */
 		uint16 veh_len = CALLBACK_FAILED;
 		if (HASBIT(EngInfo(u->engine_type)->callbackmask, CBM_VEHICLE_LENGTH)) {
-			veh_len = GetVehicleCallback(CBID_TRAIN_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
+			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
 		veh_len = clamp(veh_len, 0, u->next == NULL ? 7 : 5); // the clamp on vehicles not the last in chain is stricter, as too short wagons can break the 'follow next vehicle' code

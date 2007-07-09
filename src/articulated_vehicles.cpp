@@ -21,7 +21,7 @@ uint CountArticulatedParts(EngineID engine_type)
 
 	uint i;
 	for (i = 1; i < 10; i++) {
-		uint16 callback = GetVehicleCallback(CBID_TRAIN_ARTIC_ENGINE, i, 0, engine_type, NULL);
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine_type, NULL);
 		if (callback == CALLBACK_FAILED || callback == 0xFF) break;
 	}
 
@@ -36,7 +36,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 	if (!HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) return;
 
 	for (uint i = 1; i < 10; i++) {
-		uint16 callback = GetVehicleCallback(CBID_TRAIN_ARTIC_ENGINE, i, 0, v->engine_type, v);
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, v->engine_type, v);
 		if (callback == CALLBACK_FAILED || callback == 0xFF) return;
 
 		/* Attempt to use pre-allocated vehicles until they run out. This can happen
