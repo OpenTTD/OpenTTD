@@ -124,7 +124,7 @@ enum CallbackID {
 	CBID_INDTILE_SHAPE_CHECK        = 0x2F, // not yet implemented
 
 	/* Called to determine the type (if any) of foundation to draw for industry tile */
-	CBID_INDUSTRY_DRAW_FOUNDATIONS  = 0x30, // not yet implemented
+	CBID_INDUSTRY_DRAW_FOUNDATIONS  = 0x30,
 
 	/* Called when the player (or AI) tries to start or stop a vehicle. Mainly
 	 * used for preventing a vehicle from leaving the depot. */
