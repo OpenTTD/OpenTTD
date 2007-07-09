@@ -7,6 +7,7 @@
 #include "debug.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"
+#include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_canal.h"
 
@@ -44,8 +45,7 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte
 			return TileHeight(tile);
 
 		case 0x81:
-			return ((_opt.landscape == LT_ARCTIC && GetTileZ(tile) > GetSnowLine()) ? 4 : 0) |
-			       (_opt.landscape == LT_TROPIC ? GetTropicZone(tile) : 0);
+			return GetTerrainType(tile);
 	}
 
 	DEBUG(grf, 1, "Unhandled canal property 0x%02X", variable);
