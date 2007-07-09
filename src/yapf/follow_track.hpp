@@ -31,6 +31,7 @@ struct CFollowTrackT : public FollowTrack_t
 		m_exitdir = INVALID_DIAGDIR;
 		m_is_station = m_is_bridge = m_is_tunnel = false;
 		m_tiles_skipped = 0;
+		m_err = EC_NONE;
 	}
 
 	FORCEINLINE static TransportType TT() {return Ttr_type_;}
@@ -45,6 +46,7 @@ struct CFollowTrackT : public FollowTrack_t
 	{
 		m_old_tile = old_tile;
 		m_old_td = old_td;
+		m_err = EC_NONE;
 		assert((GetTileTrackStatus(m_old_tile, TT(), m_veh->u.road.compatible_roadtypes) & TrackdirToTrackdirBits(m_old_td)) != 0);
 		m_exitdir = TrackdirToExitdir(m_old_td);
 		if (EnteredDepot()) return true;
@@ -53,9 +55,18 @@ struct CFollowTrackT : public FollowTrack_t
 		if (!QueryNewTileTrackStatus()) return TryReverse();
 		if (!CanEnterNewTile()) return false;
 		m_new_td_bits &= DiagdirReachesTrackdirs(m_exitdir);
-		if (!Allow90degTurns())
+		if (m_new_td_bits == TRACKDIR_BIT_NONE) {
+			m_err = EC_NO_WAY;
+			return false;
+		}
+		if (!Allow90degTurns()) {
 			m_new_td_bits &= (TrackdirBits)~(int)TrackdirCrossesTrackdirs(m_old_td);
-		return (m_new_td_bits != TRACKDIR_BIT_NONE);
+			if (m_new_td_bits == TRACKDIR_BIT_NONE) {
+				m_err = EC_90DEG;
+				return false;
+			}
+		}
+		return true;
 	}
 
 protected:
@@ -126,15 +137,19 @@ protected:
 		// road stop can be left at one direction only unless it's a drive-through stop
 		if (IsRoadTT() && IsStandardRoadStopTile(m_old_tile)) {
 			DiagDirection exitdir = GetRoadStopDir(m_old_tile);
-			if (exitdir != m_exitdir)
+			if (exitdir != m_exitdir) {
+				m_err = EC_NO_WAY;
 				return false;
+			}
 		}
 
 		// road depots can be also left in one direction only
 		if (IsRoadTT() && IsTileDepotType(m_old_tile, TT())) {
 			DiagDirection exitdir = GetRoadDepotDirection(m_old_tile);
-			if (exitdir != m_exitdir)
+			if (exitdir != m_exitdir) {
+				m_err = EC_NO_WAY;
 				return false;
+			}
 		}
 		return true;
 	}
@@ -145,29 +160,37 @@ protected:
 		if (IsRoadTT() && IsStandardRoadStopTile(m_new_tile)) {
 			// road stop can be entered from one direction only unless it's a drive-through stop
 			DiagDirection exitdir = GetRoadStopDir(m_new_tile);
-			if (ReverseDiagDir(exitdir) != m_exitdir)
+			if (ReverseDiagDir(exitdir) != m_exitdir) {
+				m_err = EC_NO_WAY;
 				return false;
+			}
 		}
 
 		// road and rail depots can also be entered from one direction only
 		if (IsRoadTT() && IsTileDepotType(m_new_tile, TT())) {
 			DiagDirection exitdir = GetRoadDepotDirection(m_new_tile);
-			if (ReverseDiagDir(exitdir) != m_exitdir)
+			if (ReverseDiagDir(exitdir) != m_exitdir) {
+				m_err = EC_NO_WAY;
 				return false;
+			}
 			// don't try to enter other player's depots
 			if (GetTileOwner(m_new_tile) != m_veh->owner) {
+				m_err = EC_OWNER;
 				return false;
 			}
 		}
 		if (IsRailTT() && IsTileDepotType(m_new_tile, TT())) {
 			DiagDirection exitdir = GetRailDepotDirection(m_new_tile);
-			if (ReverseDiagDir(exitdir) != m_exitdir)
+			if (ReverseDiagDir(exitdir) != m_exitdir) {
+				m_err = EC_NO_WAY;
 				return false;
+			}
 		}
 
 		// rail transport is possible only on tiles with the same owner as vehicle
 		if (IsRailTT() && GetTileOwner(m_new_tile) != m_veh->owner) {
 			// different owner
+			m_err = EC_NO_WAY;
 			return false;
 		}
 
@@ -176,6 +199,7 @@ protected:
 			RailType rail_type = GetTileRailType(m_new_tile);
 			if (!HASBIT(m_veh->u.rail.compatible_railtypes, rail_type)) {
 				// incompatible rail type
+				m_err = EC_RAIL_TYPE;
 				return false;
 			}
 		}
@@ -185,12 +209,18 @@ protected:
 			if (IsTunnel(m_new_tile)) {
 				if (!m_is_tunnel) {
 					DiagDirection tunnel_enterdir = GetTunnelDirection(m_new_tile);
-					if (tunnel_enterdir != m_exitdir) return false;
+					if (tunnel_enterdir != m_exitdir) {
+						EC_NO_WAY;
+						return false;
+					}
 				}
 			} else if (IsBridge(m_new_tile)) {
 				if (!m_is_bridge) {
 					DiagDirection ramp_enderdir = GetBridgeRampDirection(m_new_tile);
-					if (ramp_enderdir != m_exitdir) return false;
+					if (ramp_enderdir != m_exitdir) {
+						EC_NO_WAY;
+						return false;
+					}
 				}
 			}
 		}
@@ -247,6 +277,7 @@ protected:
 				return true;
 			}
 		}
+		m_err = EC_NO_WAY;
 		return false;
 	}
 

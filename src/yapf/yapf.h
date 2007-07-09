@@ -89,6 +89,14 @@ extern int _aystar_stats_closed_size;
 /** Base struct for track followers. */
 struct FollowTrack_t
 {
+	enum ErrorCode {
+		EC_NONE,
+		EC_OWNER,
+		EC_RAIL_TYPE,
+		EC_90DEG,
+		EC_NO_WAY,
+	};
+
 	const Vehicle*      m_veh;           ///< moving vehicle
 	TileIndex           m_old_tile;      ///< the origin (vehicle moved from) before move
 	Trackdir            m_old_td;        ///< the trackdir (the vehicle was on) before move
@@ -99,6 +107,7 @@ struct FollowTrack_t
 	bool                m_is_bridge;     ///< last turn passed bridge ramp
 	bool                m_is_station;    ///< last turn passed station
 	int                 m_tiles_skipped; ///< number of skipped tunnel or station tiles
+	ErrorCode           m_err;
 };
 
 /** Initializes FollowTrack_t structure */
