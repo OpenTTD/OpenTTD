@@ -229,9 +229,13 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 	}
 }
 
-bool PerformIndustryTileSlopeCheck(TileIndex tile, const IndustryTileSpec *its, IndustryGfx gfx)
+bool PerformIndustryTileSlopeCheck(TileIndex tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx)
 {
-	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, 0, gfx, NULL, tile);
+	Industry ind;
+	ind.xy = 0;
+	ind.type = type;
+
+	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, 0, gfx, &ind, tile);
 	if (its->grf_prop.grffile->grf_version < 7) {
 		return callback_res != 0;
 	}

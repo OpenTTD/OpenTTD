@@ -1191,7 +1191,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 
 			if (HASBIT(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
 				if (custom_shape_check != NULL) *custom_shape_check = true;
-				if (!PerformIndustryTileSlopeCheck(cur_tile, its, it->gfx)) return false;
+				if (!PerformIndustryTileSlopeCheck(cur_tile, its, type, it->gfx)) return false;
 			} else {
 				if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
 					/* As soon as the tile is not water, bail out.
