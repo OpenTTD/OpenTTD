@@ -68,6 +68,7 @@ struct CommandPacket {
 	char text[80];     ///< possible text sent for name changes etc
 	uint32 frame;      ///< the frame in which this packet is executed
 	byte callback;     ///< any callback function executed upon successful completion of the command
+	bool my_cmd;       ///< did the command originate from "me"
 };
 
 /** Status of a client */

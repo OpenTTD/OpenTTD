@@ -429,7 +429,7 @@ Money GetAvailableMoneyForCommand()
 
 /* toplevel network safe docommand function for the current player. must not be called recursively.
  * the callback is called when the command succeeded or failed. */
-bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd)
+bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd, bool my_cmd)
 {
 	CommandCost res, res2;
 	CommandProc *proc;
@@ -455,7 +455,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	/** Spectator has no rights except for the (dedicated) server which
 	 * is/can be a spectator but as the server it can do anything */
 	if (_current_player == PLAYER_SPECTATOR && !_network_server) {
-		ShowErrorMessage(_error_message, error_part1, x, y);
+		if (my_cmd) ShowErrorMessage(_error_message, error_part1, x, y);
 		_cmd_text = NULL;
 		return false;
 	}
@@ -572,7 +572,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		if (res2.GetCost() != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2.GetCost());
 		if (_additional_cash_required != 0) {
 			SetDParam(0, _additional_cash_required);
-			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x, y);
+			if (my_cmd) ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x, y);
 			if (res2.GetCost() == 0) goto callb_err;
 		}
 	}
@@ -585,7 +585,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 show_error:
 	/* show error message if the command fails? */
-	if (IsLocalPlayer() && error_part1 != 0) {
+	if (IsLocalPlayer() && error_part1 != 0 && my_cmd) {
 		ShowErrorMessage(_error_message, error_part1, x, y);
 	}
 

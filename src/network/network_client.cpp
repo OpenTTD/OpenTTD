@@ -628,6 +628,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 	p->Recv_string(cp->text, sizeof(cp->text));
 	cp->callback = p->Recv_uint8();
 	cp->frame    = p->Recv_uint32();
+	cp->my_cmd   = p->Recv_bool();
 	cp->next     = NULL;
 
 	// The server did send us this command..

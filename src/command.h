@@ -202,7 +202,7 @@ static const CommandCost CMD_ERROR = CommandCost((StringID)INVALID_STRING_ID);
 /* command.cpp */
 typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);
 CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
-bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd);
+bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd, bool my_cmd = true);
 
 #ifdef ENABLE_NETWORK
 

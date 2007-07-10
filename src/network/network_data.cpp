@@ -62,6 +62,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 
 		CommandPacket *new_cp = MallocT<CommandPacket>(1);
 		*new_cp = c;
+		new_cp->my_cmd = true;
 		if (_local_command_queue == NULL) {
 			_local_command_queue = new_cp;
 		} else {
@@ -102,7 +103,7 @@ void NetworkExecuteCommand(CommandPacket *cp)
 	debug_dump_commands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)cp->player, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text);
 #endif /* DUMP_COMMANDS */
 
-	DoCommandP(cp->tile, cp->p1, cp->p2, _callback_table[cp->callback], cp->cmd | CMD_NETWORK_COMMAND);
+	DoCommandP(cp->tile, cp->p1, cp->p2, _callback_table[cp->callback], cp->cmd | CMD_NETWORK_COMMAND, cp->my_cmd);
 }
 
 #endif /* ENABLE_NETWORK */

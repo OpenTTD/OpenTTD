@@ -491,6 +491,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkTCPSocketHandler *cs
 	p->Send_string(cp->text);
 	p->Send_uint8 (cp->callback);
 	p->Send_uint32(cp->frame);
+	p->Send_bool  (cp->my_cmd);
 
 	cs->Send_Packet(p);
 }
@@ -915,11 +916,13 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 			// Callbacks are only send back to the client who sent them in the
 			//  first place. This filters that out.
 			cp->callback = (new_cs != cs) ? 0 : callback;
+			cp->my_cmd = (new_cs == cs);
 			NetworkAddCommandQueue(new_cs, cp);
 		}
 	}
 
 	cp->callback = 0;
+	cp->my_cmd = false;
 	// Queue the command on the server
 	if (_local_command_queue == NULL) {
 		_local_command_queue = cp;
