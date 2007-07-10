@@ -697,9 +697,9 @@ check_params() {
 			log 1 "checking revision... no detection"
 			log 1 "WARNING: there is no means to determine the version."
 			log 1 "WARNING: please use a subversion or git checkout of OpenTTD."
-			log 1 "WARNING: this version will be allowed by all game servers,"
-			log 1 "WARNING: but you will be kicked from all incompatible"
-			log 1 "WARNING: servers as you will desync."
+			log 1 "WARNING: this version is only allowed by game servers that"
+			log 1 "WARNING: have been compiled without version detection."
+			log 1 "WARNING: there is a great chance you desync."
 			log 1 "WARNING: USE WITH CAUTION!"
 
 			sleep 5

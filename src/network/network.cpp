@@ -1470,8 +1470,7 @@ void NetworkShutDown()
 bool IsNetworkCompatibleVersion(const char *other)
 {
 	extern const char _openttd_revision[];
-	return strncmp(NOREV_STRING, other, NETWORK_REVISION_LENGTH - 1) == 0 ||
-			strncmp(_openttd_revision, other, NETWORK_REVISION_LENGTH - 1) == 0;
+	return strncmp(_openttd_revision, other, NETWORK_REVISION_LENGTH - 1) == 0;
 }
 
 #ifdef DEBUG_DUMP_COMMANDS
