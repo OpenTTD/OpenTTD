@@ -41,6 +41,7 @@
 #include "cargotype.h"
 #include "industry.h"
 #include "newgrf_canal.h"
+#include "table/build_industry.h"
 #include "newgrf_commons.h"
 #include "newgrf_townname.h"
 
@@ -1677,6 +1678,363 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 	return ret;
 }
 
+static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **bufp, int len)
+{
+	byte *buf = *bufp;
+	bool ret = false;
+
+	if (indtid + numinfo > NUM_INDUSTRYTILES) {
+		grfmsg(1, "IndustryTilesChangeInfo: Too many industry tiles loaded (%u), max (%u). Ignoring.", indtid + numinfo, NUM_INDUSTRYTILES);
+		return false;
+	}
+
+	/* Allocate industry tile specs if they haven't been allocated already. */
+	if (_cur_grffile->indtspec == NULL) {
+		_cur_grffile->indtspec = CallocT<IndustryTileSpec*>(NUM_INDUSTRYTILES);
+
+		/* Reset any overrides that have been set. */
+		_industile_mngr.ResetOverride();
+	}
+
+	for (int i = 0; i < numinfo; i++) {
+		IndustryTileSpec *tsp = _cur_grffile->indtspec[indtid + i];
+
+		if (prop != 0x08 && tsp == NULL) {
+			grfmsg(2, "IndustryTilesChangeInfo: Attempt to modify undefined industry tile %u. Ignoring.", indtid + i);
+			continue;
+		}
+
+		switch (prop) {
+			case 0x08: { // Substitute industry tile type
+				IndustryTileSpec **tilespec = &_cur_grffile->indtspec[indtid + i];
+				byte subs_id = grf_load_byte(&buf);
+
+				if (subs_id == 0xFF) {
+					/* Instead of defining a new industry, a substitute industry id
+					 * of 0xFF disables the old industry with the current id. */
+					tsp->enabled = false;
+					continue;
+				} else if (subs_id >= NEW_INDUSTRYTILEOFFSET) {
+					/* The substitute id must be one of the original industry tile. */
+					grfmsg(2, "IndustryTilesChangeInfo: Attempt to use new industry tile %u as substitute industry tile for %u. Ignoring.", subs_id, indtid + i);
+					return false;
+				}
+
+				/* Allocate space for this industry. */
+				if (*tilespec == NULL) {
+					int tempid;
+					*tilespec = CallocT<IndustryTileSpec>(1);
+					tsp = *tilespec;
+
+					memcpy(tsp, &_industry_tile_specs[subs_id], sizeof(_industry_tile_specs[subs_id]));
+					tsp->enabled = true;
+					tsp->grf_prop.local_id = indtid + i;
+					tsp->grf_prop.subst_id = subs_id;
+					tsp->grf_prop.grffile = _cur_grffile;
+					tempid = _industile_mngr.AddEntityID(indtid + i, _cur_grffile->grfid, subs_id); // pre-reserve the tile slot
+				}
+			} break;
+
+			case 0x09: { // Industry tile override
+				byte ovrid = grf_load_byte(&buf);
+
+				/* The industry being overridden must be an original industry. */
+				if (ovrid >= NEW_INDUSTRYTILEOFFSET) {
+					grfmsg(2, "IndustryTilesChangeInfo: Attempt to override new industry tile %u with industry tile id %u. Ignoring.", ovrid, indtid + i);
+					return false;
+				}
+
+				tsp->grf_prop.override = ovrid;
+				_industile_mngr.Add(indtid + i, ovrid);
+			} break;
+
+			case 0x0A: // Tile acceptance
+			case 0x0B:
+			case 0x0C: {
+				uint16 acctp = grf_load_word(&buf);
+				tsp->accepts_cargo[prop - 0x0A] = GetCargoTranslation(GB(acctp, 0, 8), _cur_grffile);
+				tsp->acceptance[prop - 0x0A] = GetCargoTranslation(GB(acctp, 8, 8), _cur_grffile);
+			} break;
+
+			case 0x0D: // Land shape flags
+				tsp->slopes_refused = (Slope)grf_load_byte(&buf);
+				break;
+
+			case 0x0E: // Callback flags
+				tsp->callback_flags = grf_load_byte(&buf);
+				break;
+
+			case 0x0F: // Animation information
+				grf_load_word(&buf); // TODO
+				break;
+
+			case 0x10: // Animation speed
+				grf_load_byte(&buf); // TODO
+				break;
+
+			case 0x11: // Triggers for callback 25
+				grf_load_byte(&buf); // TODO
+				break;
+
+			case 0x12: // Special flags
+				grf_load_byte(&buf); // TODO
+				break;
+
+			default:
+				ret = true;
+				break;
+		}
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
+static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp, int len)
+{
+	byte *buf = *bufp;
+	bool ret = false;
+
+	if (indid + numinfo > NUM_INDUSTRYTYPES) {
+		grfmsg(1, "IndustriesChangeInfo: Too many industries loaded (%u), max (%u). Ignoring.", indid + numinfo, NUM_INDUSTRYTYPES);
+		return false;
+	}
+
+	grfmsg(1, "IndustriesChangeInfo: newid %u", indid);
+
+	/* Allocate industry specs if they haven't been allocated already. */
+	if (_cur_grffile->industryspec == NULL) {
+		_cur_grffile->industryspec = CallocT<IndustrySpec*>(NUM_INDUSTRYTYPES);
+
+		/* Reset any overrides that have been set. */
+		_industry_mngr.ResetOverride();
+	}
+
+	for (int i = 0; i < numinfo; i++) {
+		IndustrySpec *indsp = _cur_grffile->industryspec[indid + i];
+
+		if (prop != 0x08 && indsp == NULL) {
+			grfmsg(2, "IndustriesChangeInfo: Attempt to modify undefined industry %u. Ignoring.", indid + i);
+			continue;
+		}
+
+		switch (prop) {
+			case 0x08: { // Substitute industry type
+				IndustrySpec **indspec = &_cur_grffile->industryspec[indid + i];
+				byte subs_id = grf_load_byte(&buf);
+
+				if (subs_id == 0xFF) {
+					/* Instead of defining a new industry, a substitute industry id
+					 * of 0xFF disables the old industry with the current id. */
+					_industry_specs[indid + i].enabled = false;
+					continue;
+				} else if (subs_id >= NEW_INDUSTRYOFFSET) {
+					/* The substitute id must be one of the original industry. */
+					grfmsg(2, "_industry_specs: Attempt to use new industry %u as substitute industry for %u. Ignoring.", subs_id, indid + i);
+					return false;
+				}
+
+				/* Allocate space for this industry.
+				 * Only need to do it once. If ever it is called again, it should not
+				 * do anything */
+				if (*indspec == NULL) {
+					*indspec = CallocT<IndustrySpec>(1);
+					indsp = *indspec;
+
+					memcpy(indsp, &_origin_industry_specs[subs_id], sizeof(_industry_specs[subs_id]));
+					indsp->enabled = true;
+					indsp->grf_prop.local_id = indid + i;
+					indsp->grf_prop.subst_id = subs_id;
+					indsp->grf_prop.grffile = _cur_grffile;
+				}
+			} break;
+
+			case 0x09: { // Industry type override
+				byte ovrid = grf_load_byte(&buf);
+
+				/* The industry being overridden must be an original industry. */
+				if (ovrid >= NEW_INDUSTRYOFFSET) {
+					grfmsg(2, "IndustriesChangeInfo: Attempt to override new industry %u with industry id %u. Ignoring.", ovrid, indid + i);
+					return false;
+				}
+				indsp->grf_prop.override = ovrid;
+				_industry_mngr.Add(indid + i, ovrid);
+			} break;
+
+			case 0x0A: { // Set industry layout(s)
+				indsp->num_table = grf_load_byte(&buf); // Number of layaouts
+				uint32 defsize = grf_load_dword(&buf);  // Total size of the definition
+				IndustryTileTable **tile_table = CallocT<IndustryTileTable*>(indsp->num_table); // Table with tiles to compose an industry
+				IndustryTileTable *itt = CallocT<IndustryTileTable>(defsize); // Temporary array to read the tile layouts from the GRF
+				int size;
+				IndustryTileTable *copy_from;
+
+				for (byte j = 0; j < indsp->num_table; j++) {
+					for (int k = 0;; k++) {
+						itt[k].ti.x = grf_load_byte(&buf); // Offsets from northermost tile
+
+						if (itt[k].ti.x == 0xFE && k == 0) {
+							/* This means we have to borrow the layout from an old industry */
+							IndustryType type = grf_load_byte(&buf);  //industry holding required layout
+							byte laynbr = grf_load_byte(&buf);        //layout number to borrow
+
+							copy_from = (IndustryTileTable*)_origin_industry_specs[type].table[laynbr];
+							for (size = 1;; size++) {
+								if (_origin_industry_specs[type].table[laynbr + (size - 1)]->ti.x == -0x80 &&
+										_origin_industry_specs[type].table[laynbr + (size - 1)]->ti.y == 0) break;
+							}
+							break;
+						}
+
+						itt[k].ti.y = grf_load_byte(&buf); // Or table definition finalisation
+
+						if (itt[k].ti.x == 0 && itt[k].ti.y == 0x80) {
+							/*  Not the same terminator.  The one we are using is rather
+							 x= -80, y = x .  So, adjust it. */
+							itt[k].ti.x = -0x80;
+							itt[k].ti.y =  0;
+							itt[k].gfx  =  0;
+
+							size = k + 1;
+							copy_from = itt;
+							break;
+						}
+
+						itt[k].gfx = grf_load_byte(&buf);
+
+						if (itt[k].gfx == 0xFE) {
+							/* Use a new tile from this GRF */
+							int local_tile_id = grf_load_word(&buf);
+
+							/* Read the ID from the _industile_mngr. */
+							int tempid = _industile_mngr.GetID(local_tile_id, _cur_grffile->grfid);
+
+							if (tempid == INVALID_INDUSTRYTILE) {
+								grfmsg(2, "IndustriesChangeInfo: Attempt to use industry tile %u with industry id %u, not yet defined. Ignoring.", local_tile_id, indid);
+							} else {
+								/* Declared as been valid, can be used */
+								itt[k].gfx = tempid;
+								size = k + 1;
+								copy_from = itt;
+							}
+						}
+					}
+					tile_table[j] = CallocT<IndustryTileTable>(size);
+					memcpy(tile_table[j], copy_from, sizeof(*copy_from) * size);
+				}
+				/* Install final layout construction in the industry spec */
+				indsp->table = tile_table;
+				SETBIT(indsp->cleanup_flag, 1);
+				free(itt);
+			} break;
+
+			case 0x0B: // Industry production flags
+				indsp->life_type = (IndustryLifeType)grf_load_byte(&buf);
+				break;
+
+			case 0x0C: // Industry closure message
+				indsp->closure_text = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				break;
+
+			case 0x0D: // Production increase message
+				indsp->production_up_text = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				break;
+
+			case 0x0E: // Production decrease message
+				indsp->production_down_text = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				break;
+
+			case 0x0F: // Fund cost multiplier
+				indsp->cost_multiplier = grf_load_byte(&buf);
+				break;
+
+			case 0x10: // Production cargo types
+				for (byte j = 0; j < 2; j++) {
+					indsp->produced_cargo[j] = GetCargoTranslation(grf_load_byte(&buf), _cur_grffile);
+				}
+				break;
+
+			case 0x11: // Acceptance cargo types
+				for (byte j = 0; j < 3; j++) {
+					indsp->accepts_cargo[j] = GetCargoTranslation(grf_load_byte(&buf), _cur_grffile);
+				}
+				grf_load_byte(&buf); // Unnused, eat it up
+				break;
+
+			case 0x12: // Production multipliers
+			case 0x13:
+				indsp->production_rate[prop - 0x12] = grf_load_byte(&buf);
+				break;
+
+			case 0x14: // Minimal amount of cargo distributed
+				indsp->minimal_cargo = grf_load_byte(&buf);
+				break;
+
+			case 0x15: { // Random sound effects
+				indsp->number_of_sounds = grf_load_byte(&buf);
+				uint8 *sounds = MallocT<uint8>(indsp->number_of_sounds);
+
+				for (uint8 j = 0; j < indsp->number_of_sounds; j++) sounds[j] = grf_load_byte(&buf);
+				indsp->random_sounds = sounds;
+				SETBIT(indsp->cleanup_flag, 0);
+			} break;
+
+			case 0x16: // Conflicting industry types
+				for (byte j = 0; j < 3; j++) indsp->conflicting[j] = grf_load_byte(&buf);
+				break;
+
+			case 0x17: // Probability in random game
+				indsp->appear_ingame[_opt.landscape] = grf_load_byte(&buf);
+				break;
+
+			case 0x18: // Probability during gameplay
+				indsp->appear_creation[_opt.landscape] = grf_load_byte(&buf);
+				break;
+
+			case 0x19: // Map color
+				indsp->map_colour = MapDOSColour(grf_load_byte(&buf));
+				break;
+
+			case 0x1A: // Special industry flags to define special behavior
+				indsp->behaviour = (IndustyBehaviour)grf_load_dword(&buf);
+				break;
+
+			case 0x1B: // New industry text ID
+				indsp->new_industry_text = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				break;
+
+			case 0x1C: // Input cargo multipliers for the three input cargo types
+			case 0x1D:
+			case 0x1E: {
+					uint32 multiples = grf_load_dword(&buf);
+					indsp->input_cargo_multiplier[prop - 0x1C][0] = GB(multiples, 0,15);
+					indsp->input_cargo_multiplier[prop - 0x1C][1] = GB(multiples, 15,15);
+				} break;
+
+			case 0x1F: // Industry name
+				indsp->name = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				break;
+
+			case 0x20: // Prospecting success chance
+				indsp->prospecting_chance = grf_load_dword(&buf);
+				break;
+
+			case 0x21:   // Callback flags
+			case 0x22: { // Callback additional flags
+				byte aflag = grf_load_byte(&buf);
+				SB(indsp->callback_flags, (prop - 0x21) * 8, 8, aflag);
+			} break;
+
+			default:
+				ret = true;
+				break;
+		}
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
 /* Action 0x00 */
 static void FeatureChangeInfo(byte *buf, int len)
 {
@@ -1705,8 +2063,8 @@ static void FeatureChangeInfo(byte *buf, int len)
 		/* GSF_BRIDGE */       BridgeChangeInfo,
 		/* GSF_TOWNHOUSE */    TownHouseChangeInfo,
 		/* GSF_GLOBALVAR */    GlobalVarChangeInfo,
-		/* GSF_INDUSTRYTILES */NULL,
-		/* GSF_INDUSTRIES */   NULL,
+		/* GSF_INDUSTRYTILES */IndustrytilesChangeInfo,
+		/* GSF_INDUSTRIES */   IndustriesChangeInfo,
 		/* GSF_CARGOS */       NULL, /* Cargo is handled during reservation */
 		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
 	};
@@ -2562,6 +2920,53 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 	}
 }
 
+static void IndustryMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+{
+	byte *bp = &buf[4 + idcount + cidcount * 3];
+	uint16 groupid = grf_load_word(&bp);
+
+	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+		grfmsg(1, "IndustryMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
+		       groupid, _cur_grffile->spritegroups_count);
+		return;
+	}
+
+	for (uint i = 0; i < idcount; i++) {
+		uint8 id = buf[3 + i];
+		IndustrySpec *indsp = _cur_grffile->industryspec[id];
+
+		if (indsp == NULL) {
+			grfmsg(1, "IndustryMapSpriteGroup: Too many industries defined, skipping");
+			return;
+		}
+
+		indsp->grf_prop.spritegroup = _cur_grffile->spritegroups[groupid];
+	}
+}
+
+static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+{
+	byte *bp = &buf[4 + idcount + cidcount * 3];
+	uint16 groupid = grf_load_word(&bp);
+
+	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+		grfmsg(1, "IndustrytileMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
+		       groupid, _cur_grffile->spritegroups_count);
+		return;
+	}
+
+	for (uint i = 0; i < idcount; i++) {
+		uint8 id = buf[3 + i];
+		IndustryTileSpec *indtsp = _cur_grffile->indtspec[id];
+
+		if (indtsp == NULL) {
+			grfmsg(1, "IndustrytileMapSpriteGroup: Too many industry tiles defined, skipping");
+			return;
+		}
+
+		indtsp->grf_prop.spritegroup = _cur_grffile->spritegroups[groupid];
+	}
+}
 
 static void CargoMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 {
@@ -2649,6 +3054,14 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 		case GSF_TOWNHOUSE:
 			TownHouseMapSpriteGroup(buf, idcount, cidcount);
+			return;
+
+		case GSF_INDUSTRIES:
+			IndustryMapSpriteGroup(buf, idcount, cidcount);
+			return;
+
+		case GSF_INDUSTRYTILES:
+			IndustrytileMapSpriteGroup(buf, idcount, cidcount);
 			return;
 
 		case GSF_CARGOS:
@@ -4780,7 +5193,26 @@ static void FinaliseIndustriesArray()
 			for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
 				IndustrySpec *indsp = file->industryspec[i];
 
-				if (indsp != NULL  && indsp->enabled) {
+				if (indsp != NULL && indsp->enabled) {
+					StringID strid;
+					/* process the conversion of text at the end, so to be sure everything will be fine
+					 * and available.  Check if it does not return undefind marker, which is a very good sign of a
+					 * substitute industry who has not changed the string been examined, thus using it as such */
+					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->name);
+					if (strid != STR_UNDEFINED) indsp->name = strid;
+
+					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->closure_text);
+					if (strid != STR_UNDEFINED) indsp->closure_text = strid;
+
+					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_up_text);
+					if (strid != STR_UNDEFINED) indsp->production_up_text = strid;
+
+					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_down_text);
+					if (strid != STR_UNDEFINED) indsp->production_down_text = strid;
+
+					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->new_industry_text);
+					if (strid != STR_UNDEFINED) indsp->new_industry_text = strid;
+
 					_industry_mngr.SetEntitySpec(indsp);
 					_loaded_newgrf_features.has_newindustries = true;
 				}
