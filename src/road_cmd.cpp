@@ -112,7 +112,6 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* cost for removing inner/edge -roads */
 	static const uint16 road_remove_cost[2] = {50, 18};
 
-	Town *t;
 	/* true if the roadpiece was always removeable,
 	 * false if it was a center piece. Affects town ratings drop */
 	bool edge_road;
@@ -122,31 +121,23 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	RoadType rt = (RoadType)GB(p1, 4, 2);
 	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
-	Owner owner;
+	Town *t = NULL;
 	switch (GetTileType(tile)) {
 		case MP_STREET:
-			owner = GetRoadOwner(tile, rt);
+			if (_game_mode != GM_EDITOR && GetRoadOwner(tile, rt) == OWNER_TOWN) t = GetTownByTile(tile);
 			break;
 
 		case MP_STATION:
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
-			owner = GetTileOwner(tile);
 			break;
 
 		case MP_TUNNELBRIDGE:
 			if ((IsTunnel(tile) && GetTunnelTransportType(tile) != TRANSPORT_ROAD) ||
 					(IsBridge(tile) && GetBridgeTransportType(tile) != TRANSPORT_ROAD)) return CMD_ERROR;
-			owner = GetTileOwner(tile);
 			break;
 
 		default:
 			return CMD_ERROR;
-	}
-
-	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
-		t = GetTownByTile(tile);
-	} else {
-		t = NULL;
 	}
 
 	RoadBits pieces = Extract<RoadBits, 0>(p1);
