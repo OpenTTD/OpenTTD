@@ -1241,7 +1241,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...no hi
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Estàs segur que vols crear un paisatge aleatori?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Moltes poblacions aleatòries
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Omple el mapa amb poblacions situades aleatòriament
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Moltes indústries aleatòries
+STR_MANY_RANDOM_INDUSTRIES                                      :Moltes indústries aleatòries
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Omple el mapa amb indústries situades aleatòriament
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}No es poden generar indústries...
 

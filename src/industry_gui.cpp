@@ -25,261 +25,321 @@
 #include "newgrf_industries.h"
 #include "newgrf_text.h"
 
-/* industries per climate, according to the different construction windows */
-const byte _build_industry_types[4][12] = {
-	{  1,  2,  4,  6,  8,  0,  3,  5,  9, 11, 18 },
-	{  1, 14,  4, 13,  7,  0,  3,  9, 11, 15 },
-	{ 25, 13,  4, 23, 22, 11, 17, 10, 24, 19, 20, 21 },
-	{ 27, 30, 31, 33, 26, 28, 29, 32, 34, 35, 36 },
+extern Industry *CreateNewIndustry(TileIndex tile, IndustryType type);
+
+/**
+ * Search callback function for TryBuildIndustry
+ * @param tile to test
+ * @param data that is passed by the caller.  In this case, the type of industry been tested
+ * @return the success (or not) of the operation
+ */
+static bool SearchTileForIndustry(TileIndex tile, uint32 data)
+{
+	return CreateNewIndustry(tile, data) != NULL;
+}
+
+/**
+ * Perform a 9*9 tiles circular search around a tile
+ * in order to find a suitable zone to create the desired industry
+ * @param tile to start search for
+ * @param type of the desired industry
+ * @return the success (or not) of the operation
+ */
+static bool TryBuildIndustry(TileIndex tile, int type)
+{
+	return CircularTileSearch(tile, 9, SearchTileForIndustry, type);
+}
+bool _ignore_restrictions;
+
+enum {
+	DYNA_INDU_MATRIX_WIDGET = 2,
+	DYNA_INDU_INFOPANEL = 4,
+	DYNA_INDU_FUND_WIDGET,
+	DYNA_INDU_RESIZE_WIDGET,
 };
 
-static void UpdateIndustryProduction(Industry *i);
+static struct IndustryData {
+	uint16 count;
+	IndustryType select;
+	byte index[NUM_INDUSTRYTYPES + 1];
+	StringID additional_text[NUM_INDUSTRYTYPES + 1];
+} _industrydata;
 
-static void BuildIndustryWndProc(Window *w, WindowEvent *e)
+static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT:
-		DrawWindowWidgets(w);
-		if (_thd.place_mode == 1 && _thd.window_class == WC_BUILD_INDUSTRY) {
-			int ind_type = _build_industry_types[_opt_ptr->landscape][WP(w, def_d).data_1];
+		case WE_CREATE: {
+			IndustryType ind;
+			const IndustrySpec *indsp;
 
-			SetDParam(0, GetIndustrySpec(ind_type)->GetConstructionCost());
-			DrawStringCentered(85, w->height - 21, STR_482F_COST, 0);
-		}
-		break;
+			/* Shorten the window to the equivalant of the additionnal purchase
+			 * info coming from the callback.  SO it will only be available to tis full
+			 * height when newindistries are loaded */
+			if (!_loaded_newgrf_features.has_newindustries) {
+				w->widget[DYNA_INDU_INFOPANEL].bottom -= 44;
+				w->widget[DYNA_INDU_FUND_WIDGET].bottom -= 44;
+				w->widget[DYNA_INDU_FUND_WIDGET].top -= 44;
+				w->widget[DYNA_INDU_RESIZE_WIDGET].bottom -= 44;
+				w->widget[DYNA_INDU_RESIZE_WIDGET].top -= 44;
+				w->resize.height = w->height -= 44;
+			}
 
-	case WE_CLICK: {
-		int wid = e->we.click.widget;
-		if (wid >= 3) {
-			if (HandlePlacePushButton(w, wid, SPR_CURSOR_INDUSTRY, 1, NULL))
-				WP(w, def_d).data_1 = wid - 3;
-		}
+			/* Initilialize structures */
+			memset(&_industrydata.index, 0xFF, NUM_INDUSTRYTYPES);
+			memset(&_industrydata.additional_text, STR_NULL, NUM_INDUSTRYTYPES);
+			_industrydata.count = 0;
+
+			/* first indutry type is selected.
+			 * I'll be damned if there are none available ;) */
+			_industrydata.select = 0;
+			w->vscroll.cap = 8; // rows in grid, same in scroller
+			w->resize.step_height = 13;
+
+			if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
+				_industrydata.index[_industrydata.count] = INVALID_INDUSTRYTYPE;
+				_industrydata.count++;
+			}
+
+			/* We'll perform two distinct loops, one for secondary industries, and the other one for
+			 * primary ones. Each loop will fill the _industrydata structure. */
+			for (ind = IT_COAL_MINE; ind < NUM_INDUSTRYTYPES; ind++) {
+				indsp = GetIndustrySpec(ind);
+				if (indsp->enabled && (!indsp->IsRawIndustry() || _game_mode == GM_EDITOR)) {
+					_industrydata.index[_industrydata.count] = ind;
+					_industrydata.count++;
+				}
+			}
+
+			if (_patches.raw_industry_construction != 0 && _game_mode != GM_EDITOR) {
+				for (ind = IT_COAL_MINE; ind < NUM_INDUSTRYTYPES; ind++) {
+					indsp = GetIndustrySpec(ind);
+					if (indsp->enabled && indsp->IsRawIndustry()) {
+						_industrydata.index[_industrydata.count] = ind;
+						_industrydata.count++;
+					}
+				}
+			}
+		} break;
+
+		case WE_PAINT: {
+			const IndustrySpec *indsp = (_industrydata.index[_industrydata.select] == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(_industrydata.index[_industrydata.select]);
+			StringID str = STR_4827_REQUIRES;
+			int x_str = w->widget[DYNA_INDU_INFOPANEL].left + 3;
+			int y_str = w->widget[DYNA_INDU_INFOPANEL].top + 3;
+			const Widget *wi = &w->widget[DYNA_INDU_INFOPANEL];
+			int max_width = wi->right - wi->left - 4;
+
+			/* Raw industries might be prospected. Show this fact by changing the string */
+			if (_game_mode == GM_EDITOR) {
+				w->widget[DYNA_INDU_FUND_WIDGET].data = STR_BUILD_NEW_INDUSTRY;
+			} else {
+				w->widget[DYNA_INDU_FUND_WIDGET].data = (_patches.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
+			}
+
+			SetVScrollCount(w, _industrydata.count);
+
+			DrawWindowWidgets(w);
+
+			/* and now with the matrix painting */
+			for (byte i = 0; i < w->vscroll.cap && ((i + w->vscroll.pos) < _industrydata.count); i++) {
+				int offset = i * 13;
+				int x = 3;
+				int y = 16;
+				bool selected = _industrydata.select == i + w->vscroll.pos;
+
+				if (_industrydata.index[i + w->vscroll.pos] == INVALID_INDUSTRYTYPE) {
+					DrawString(21, y + offset, STR_MANY_RANDOM_INDUSTRIES, selected ? 12 : 6);
+					continue;
+				}
+				const IndustrySpec *indsp = GetIndustrySpec(_industrydata.index[i + w->vscroll.pos]);
+
+				/* Draw the name of the industry in white is selected, otherwise, in orange */
+				DrawString(20,     y + offset, indsp->name, selected ? 12 : 6);
+				GfxFillRect(x,     y + 1 + offset,  x + 10, y + 7 + offset, selected ? 15 : 0);
+				GfxFillRect(x + 1, y + 2 + offset,  x +  9, y + 6 + offset, indsp->map_colour);
+			}
+
+			if (_industrydata.index[_industrydata.select] == INVALID_INDUSTRYTYPE) {
+				DrawStringMultiLine(x_str, y_str, STR_RANDOM_INDUSTRIES_TIP, max_width, wi->bottom - wi->top - 40);
+				break;
+			}
+
+			if (_game_mode != GM_EDITOR) {
+				SetDParam(0, indsp->GetConstructionCost());
+				DrawStringTruncated(x_str, y_str, STR_482F_COST, 0, max_width);
+				y_str += 11;
+			}
+
+			/* Draw the accepted cargos, if any. Otherwhise, will print "Nothing" */
+			if (indsp->accepts_cargo[0] != CT_INVALID) {
+				SetDParam(0, GetCargo(indsp->accepts_cargo[0])->name);
+				if (indsp->accepts_cargo[1] != CT_INVALID) {
+					SetDParam(1, GetCargo(indsp->accepts_cargo[1])->name);
+					str = STR_4828_REQUIRES;
+					if (indsp->accepts_cargo[2] != CT_INVALID) {
+						SetDParam(2, GetCargo(indsp->accepts_cargo[2])->name);
+						str = STR_4829_REQUIRES;
+					}
+				}
+			} else {
+				SetDParam(0, STR_00D0_NOTHING);
+			}
+			DrawStringTruncated(x_str, y_str, str, 0, max_width);
+
+			y_str += 11;
+			/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
+			str = STR_4827_PRODUCES;
+			if (indsp->produced_cargo[0] != CT_INVALID) {
+				SetDParam(0, GetCargo(indsp->produced_cargo[0])->name);
+				if (indsp->produced_cargo[1] != CT_INVALID) {
+					SetDParam(1, GetCargo(indsp->produced_cargo[1])->name);
+					str = STR_4828_PRODUCES;
+				}
+			} else {
+				SetDParam(0, STR_00D0_NOTHING);
+			}
+			DrawStringTruncated(x_str, y_str, str, 0, max_width);
+
+			/* Get the additional purchase info text, if it has not already been */
+			if (_industrydata.additional_text[_industrydata.select] == STR_NULL) {   // Have i been called already?
+				if (HASBIT(indsp->callback_flags, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
+					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, _industrydata.index[_industrydata.select], INVALID_TILE);
+					if (callback_res != CALLBACK_FAILED) {  // Did it failed?
+						StringID newtxt = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
+						_industrydata.additional_text[_industrydata.select] = newtxt;   // Store it for further usage
+					}
+				}
+			}
+
+			y_str += 11;
+			/* Draw the Additional purchase text, provided by newgrf callback, if any.
+			 * Otherwhise, will print Nothing */
+			if (_industrydata.additional_text[_industrydata.select] != STR_NULL &&
+					_industrydata.additional_text[_industrydata.select] != STR_UNDEFINED) {
+
+				SetDParam(0, _industrydata.additional_text[_industrydata.select]);
+				DrawStringMultiLine(x_str, y_str, STR_JUST_STRING, max_width, wi->bottom - wi->top - 40);  // text is white, for now
+			}
+		} break;
+
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case DYNA_INDU_MATRIX_WIDGET: {
+					IndustryType type;
+					int y = (e->we.click.pt.y - w->widget[DYNA_INDU_MATRIX_WIDGET].top) / 13 + w->vscroll.pos ;
+
+					if (y >= 0 && y < _industrydata.count) { //Isit within the boundaries of available data?
+						_industrydata.select = y;
+						type = _industrydata.index[_industrydata.select];
+
+						SetWindowDirty(w);
+						if ((_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 &&	GetIndustrySpec(type)->IsRawIndustry()) ||
+								type == INVALID_INDUSTRYTYPE) {
+							/* Reset the button state if going to prospecting or "build many industries" */
+							RaiseWindowButtons(w);
+							ResetObjectToPlace();
+						}
+					}
+				} break;
+
+				case DYNA_INDU_FUND_WIDGET: {
+					IndustryType type = _industrydata.index[_industrydata.select];
+
+					if (type == INVALID_INDUSTRYTYPE) {
+						HandleButtonClick(w, DYNA_INDU_FUND_WIDGET);
+						WP(w, def_d).data_1 = -1;
+
+						if (GetNumTowns() == 0) {
+							ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
+						} else {
+							extern void GenerateIndustries();
+							_generating_world = true;
+							GenerateIndustries();
+							_generating_world = false;
+						}
+					} else if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(type)->IsRawIndustry()) {
+						DoCommandP(0, type, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+						HandleButtonClick(w, DYNA_INDU_FUND_WIDGET);
+						WP(w, def_d).data_1 = -1;
+					} else if (HandlePlacePushButton(w, DYNA_INDU_FUND_WIDGET, SPR_CURSOR_INDUSTRY, 1, NULL)) {
+							WP(w, def_d).data_1 = _industrydata.select;
+					}
+				}
+				break;
 	} break;
 
-	case WE_PLACE_OBJ:
-		if (DoCommandP(e->we.place.tile, _build_industry_types[_opt_ptr->landscape][WP(w, def_d).data_1], 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY)))
+	case WE_RESIZE: {
+		w->vscroll.cap  += e->we.sizing.diff.y / (int)w->resize.step_height;
+		w->widget[DYNA_INDU_MATRIX_WIDGET].data = (w->vscroll.cap << 8) + 1;
+	} break;
+
+	case WE_PLACE_OBJ: {
+		IndustryType type = _industrydata.index[_industrydata.select];
+
+		if (WP(w, def_d).data_1 == -1) break;
+		if (_game_mode == GM_EDITOR) {
+			/* Show error if no town exists at all */
+			if (GetNumTowns() == 0) {
+				SetDParam(0, GetIndustrySpec(type)->name);
+				ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
+				return;
+			}
+
+			_current_player = OWNER_NONE;
+			_generating_world = true;
+			_ignore_restrictions = true;
+			if (!TryBuildIndustry(e->we.place.tile, type)) {
+				SetDParam(0, GetIndustrySpec(type)->name);
+				ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
+			} else {
+				ResetObjectToPlace();
+			}
+			_ignore_restrictions = false;
+			_generating_world = false;
+		} else if (DoCommandP(e->we.place.tile, type, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY))) {
 			ResetObjectToPlace();
-		break;
+		}
+	} break;
 
 	case WE_ABORT_PLACE_OBJ:
 		RaiseWindowButtons(w);
 		break;
+
+	case WE_TIMEOUT:
+		if (WP(w, def_d).data_1 == -1) {
+			RaiseWindowButtons(w);
+			WP(w, def_d).data_1 = 0;
+		}
+		break;
 	}
 }
 
-static const Widget _build_industry_land0_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   115, 0x0,                            STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_0241_POWER_STATION,         STR_0263_CONSTRUCT_POWER_STATION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    29,    40, STR_0242_SAWMILL,               STR_0264_CONSTRUCT_SAWMILL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    42,    53, STR_0244_OIL_REFINERY,          STR_0266_CONSTRUCT_OIL_REFINERY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    55,    66, STR_0246_FACTORY,               STR_0268_CONSTRUCT_FACTORY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    68,    79, STR_0247_STEEL_MILL,            STR_0269_CONSTRUCT_STEEL_MILL},
+static const Widget _build_dynamic_industry_widgets[] = {
+{   WWT_CLOSEBOX,    RESIZE_NONE,    7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_RIGHT,    7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX,      RESIZE_RB,    7,     0,   157,    14,   118, 0x801,                          STR_INDUSTRY_SELECTION_HINT},
+{  WWT_SCROLLBAR,     RESIZE_LRB,    7,   158,   169,    14,   118, 0x0,                            STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,     RESIZE_RTB,    7,     0,   169,   119,   199, 0x0,                            STR_NULL},
+{    WWT_TEXTBTN,     RESIZE_RTB,    7,     0,   157,   200,   211, STR_FUND_NEW_INDUSTRY,          STR_NULL},
+{  WWT_RESIZEBOX,    RESIZE_LRTB,    7,   158,   169,   200,   211, 0x0,                            STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
-static const Widget _build_industry_land1_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   115, 0x0,                            STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_0241_POWER_STATION,         STR_0263_CONSTRUCT_POWER_STATION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    29,    40, STR_024C_PAPER_MILL,            STR_026E_CONSTRUCT_PAPER_MILL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    42,    53, STR_0244_OIL_REFINERY,          STR_0266_CONSTRUCT_OIL_REFINERY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    55,    66, STR_024D_FOOD_PROCESSING_PLANT, STR_026F_CONSTRUCT_FOOD_PROCESSING},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    68,    79, STR_024E_PRINTING_WORKS,        STR_0270_CONSTRUCT_PRINTING_WORKS},
-{   WIDGETS_END},
-};
-
-static const Widget _build_industry_land2_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   115, 0x0,                            STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_0250_LUMBER_MILL,           STR_0273_CONSTRUCT_LUMBER_MILL_TO},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    29,    40, STR_024D_FOOD_PROCESSING_PLANT, STR_026F_CONSTRUCT_FOOD_PROCESSING},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    42,    53, STR_0244_OIL_REFINERY,          STR_0266_CONSTRUCT_OIL_REFINERY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    55,    66, STR_0246_FACTORY,               STR_0268_CONSTRUCT_FACTORY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    68,    79, STR_0254_WATER_TOWER,           STR_0277_CONSTRUCT_WATER_TOWER_CAN},
-{   WIDGETS_END},
-};
-
-static const Widget _build_industry_land3_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   115, 0x0,                            STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_0258_CANDY_FACTORY,         STR_027B_CONSTRUCT_CANDY_FACTORY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    29,    40, STR_025B_TOY_SHOP,              STR_027E_CONSTRUCT_TOY_SHOP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    42,    53, STR_025C_TOY_FACTORY,           STR_027F_CONSTRUCT_TOY_FACTORY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    55,    66, STR_025E_FIZZY_DRINK_FACTORY,   STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY},
-{   WIDGETS_END},
-};
-
-static const Widget _build_industry_land0_widgets_extra[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   187, 0x0,                            STR_NULL},
-
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_0241_POWER_STATION,         STR_0263_CONSTRUCT_POWER_STATION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    29,    40, STR_0242_SAWMILL,               STR_0264_CONSTRUCT_SAWMILL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    42,    53, STR_0244_OIL_REFINERY,          STR_0266_CONSTRUCT_OIL_REFINERY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    55,    66, STR_0246_FACTORY,               STR_0268_CONSTRUCT_FACTORY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    68,    79, STR_0247_STEEL_MILL,            STR_0269_CONSTRUCT_STEEL_MILL},
-
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    84,    95, STR_0240_COAL_MINE,             STR_CONSTRUCT_COAL_MINE_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    97,   108, STR_0243_FOREST,                STR_CONSTRUCT_FOREST_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   110,   121, STR_0245_OIL_RIG,               STR_CONSTRUCT_OIL_RIG_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   123,   134, STR_0248_FARM,                  STR_CONSTRUCT_FARM_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   136,   147, STR_024A_OIL_WELLS,             STR_CONSTRUCT_OIL_WELLS_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   149,   160, STR_0249_IRON_ORE_MINE,         STR_CONSTRUCT_IRON_ORE_MINE_TIP},
-
-{   WIDGETS_END},
-};
-
-static const Widget _build_industry_land1_widgets_extra[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   174, 0x0,                            STR_NULL},
-
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_0241_POWER_STATION,         STR_0263_CONSTRUCT_POWER_STATION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    29,    40, STR_024C_PAPER_MILL,            STR_026E_CONSTRUCT_PAPER_MILL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    42,    53, STR_0244_OIL_REFINERY,          STR_0266_CONSTRUCT_OIL_REFINERY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    55,    66, STR_024D_FOOD_PROCESSING_PLANT, STR_026F_CONSTRUCT_FOOD_PROCESSING},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    68,    79, STR_024E_PRINTING_WORKS,        STR_0270_CONSTRUCT_PRINTING_WORKS},
-
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    84,    95, STR_0240_COAL_MINE,             STR_CONSTRUCT_COAL_MINE_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    97,   108, STR_0243_FOREST,                STR_CONSTRUCT_FOREST_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   110,   121, STR_0248_FARM,                  STR_CONSTRUCT_FARM_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   123,   134, STR_024A_OIL_WELLS,             STR_CONSTRUCT_OIL_WELLS_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   136,   147, STR_024F_GOLD_MINE,             STR_CONSTRUCT_GOLD_MINE_TIP},
-{   WIDGETS_END},
-};
-
-static const Widget _build_industry_land2_widgets_extra[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   200, 0x0,                            STR_NULL},
-
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_0250_LUMBER_MILL,           STR_0273_CONSTRUCT_LUMBER_MILL_TO},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    29,    40, STR_024D_FOOD_PROCESSING_PLANT, STR_026F_CONSTRUCT_FOOD_PROCESSING},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    42,    53, STR_0244_OIL_REFINERY,          STR_0266_CONSTRUCT_OIL_REFINERY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    55,    66, STR_0246_FACTORY,               STR_0268_CONSTRUCT_FACTORY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    68,    79, STR_0254_WATER_TOWER,           STR_0277_CONSTRUCT_WATER_TOWER_CAN},
-
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    84,    95, STR_024A_OIL_WELLS,             STR_CONSTRUCT_OIL_WELLS_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    97,   108, STR_0255_DIAMOND_MINE,          STR_CONSTRUCT_DIAMOND_MINE_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   110,   121, STR_0256_COPPER_ORE_MINE,       STR_CONSTRUCT_COPPER_ORE_MINE_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   123,   134, STR_0248_FARM,                  STR_CONSTRUCT_FARM_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   136,   147, STR_0251_FRUIT_PLANTATION,      STR_CONSTRUCT_FRUIT_PLANTATION_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   149,   160, STR_0252_RUBBER_PLANTATION,     STR_CONSTRUCT_RUBBER_PLANTATION_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   162,   173, STR_0253_WATER_SUPPLY,          STR_CONSTRUCT_WATER_SUPPLY_TIP},
-{   WIDGETS_END},
-};
-
-static const Widget _build_industry_land3_widgets_extra[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   187, 0x0,                            STR_NULL},
-
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_0258_CANDY_FACTORY,         STR_027B_CONSTRUCT_CANDY_FACTORY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    29,    40, STR_025B_TOY_SHOP,              STR_027E_CONSTRUCT_TOY_SHOP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    42,    53, STR_025C_TOY_FACTORY,           STR_027F_CONSTRUCT_TOY_FACTORY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    55,    66, STR_025E_FIZZY_DRINK_FACTORY,   STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY},
-
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    71,    82, STR_0257_COTTON_CANDY_FOREST,   STR_CONSTRUCT_COTTON_CANDY_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    84,    95, STR_0259_BATTERY_FARM,          STR_CONSTRUCT_BATTERY_FARM_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    97,   108, STR_025A_COLA_WELLS,            STR_CONSTRUCT_COLA_WELLS_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   110,   121, STR_025D_PLASTIC_FOUNTAINS,     STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   123,   134, STR_025F_BUBBLE_GENERATOR,      STR_CONSTRUCT_BUBBLE_GENERATOR_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   136,   147, STR_0260_TOFFEE_QUARRY,         STR_CONSTRUCT_TOFFEE_QUARRY_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,   149,   160, STR_0261_SUGAR_MINE,            STR_CONSTRUCT_SUGAR_MINE_TIP},
-{   WIDGETS_END},
-};
-
-
-static const WindowDesc _build_industry_land0_desc = {
-	WDP_AUTO, WDP_AUTO, 170, 116,
+static const WindowDesc _build_industry_dynamic_desc = {
+	WDP_AUTO, WDP_AUTO, 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_industry_land0_widgets,
-	BuildIndustryWndProc
-};
-
-static const WindowDesc _build_industry_land1_desc = {
-	WDP_AUTO, WDP_AUTO, 170, 116,
-	WC_BUILD_INDUSTRY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_industry_land1_widgets,
-	BuildIndustryWndProc
-};
-
-static const WindowDesc _build_industry_land2_desc = {
-	WDP_AUTO, WDP_AUTO, 170, 116,
-	WC_BUILD_INDUSTRY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_industry_land2_widgets,
-	BuildIndustryWndProc
-};
-
-static const WindowDesc _build_industry_land3_desc = {
-	WDP_AUTO, WDP_AUTO, 170, 116,
-	WC_BUILD_INDUSTRY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_industry_land3_widgets,
-	BuildIndustryWndProc
-};
-
-static const WindowDesc _build_industry_land0_desc_extra = {
-	WDP_AUTO, WDP_AUTO, 170, 188,
-	WC_BUILD_INDUSTRY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_industry_land0_widgets_extra,
-	BuildIndustryWndProc
-};
-
-static const WindowDesc _build_industry_land1_desc_extra = {
-	WDP_AUTO, WDP_AUTO, 170, 175,
-	WC_BUILD_INDUSTRY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_industry_land1_widgets_extra,
-	BuildIndustryWndProc
-};
-
-static const WindowDesc _build_industry_land2_desc_extra = {
-	WDP_AUTO, WDP_AUTO, 170, 201,
-	WC_BUILD_INDUSTRY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_industry_land2_widgets_extra,
-	BuildIndustryWndProc
-};
-
-static const WindowDesc _build_industry_land3_desc_extra = {
-	WDP_AUTO, WDP_AUTO, 170, 188,
-	WC_BUILD_INDUSTRY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_industry_land3_widgets_extra,
-	BuildIndustryWndProc
-};
-
-static const WindowDesc * const _industry_window_desc[2][4] = {
-	{
-	&_build_industry_land0_desc,
-	&_build_industry_land1_desc,
-	&_build_industry_land2_desc,
-	&_build_industry_land3_desc,
-	},
-	{
-	&_build_industry_land0_desc_extra,
-	&_build_industry_land1_desc_extra,
-	&_build_industry_land2_desc_extra,
-	&_build_industry_land3_desc_extra,
-	},
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
+	_build_dynamic_industry_widgets,
+	BuildDynamicIndustryWndProc,
 };
 
 void ShowBuildIndustryWindow()
 {
-	if (!IsValidPlayer(_current_player)) return;
-	AllocateWindowDescFront(_industry_window_desc[(_patches.raw_industry_construction == 0) ? 0 : 1][_opt_ptr->landscape], 0);
+	if (_game_mode != GM_EDITOR && !IsValidPlayer(_current_player)) return;
+	AllocateWindowDescFront(&_build_industry_dynamic_desc, 0);
 }
+
+static void UpdateIndustryProduction(Industry *i);
 
 static inline bool isProductionMinimum(const Industry *i, int pt) {
 	return i->production_rate[pt] == 1;

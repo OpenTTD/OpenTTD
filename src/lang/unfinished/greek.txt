@@ -1198,7 +1198,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...δε�
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Είστε σίγουρος ότι θέλετε να δημιουργήσετε ένα τυχαίο τοπίο;
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Πολλές τυχαίες πόλεις
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Κάλυψη του χάρτη με τυχαία τοποθετημένες πόλεις
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Πολλές τυχαίες βιομηχανίες
+STR_MANY_RANDOM_INDUSTRIES                                      :Πολλές τυχαίες βιομηχανίες
 
 
 
@@ -2016,4 +2016,5 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Date formatting
 
 ########
+
 

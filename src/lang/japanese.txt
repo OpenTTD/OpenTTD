@@ -1241,7 +1241,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...こ�
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}ランダムな地形を作成してもよろしいですか？
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}多くのランダムな市町村
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}地図にたくさんの市町村を建設します
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}多くのランダムな産業
+STR_MANY_RANDOM_INDUSTRIES                                      :多くのランダムな産業
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}地図にたくさんの産業を建設します
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}産業が建設できません...
 

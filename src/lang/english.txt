@@ -1241,7 +1241,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...there
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Are you sure you want to create a random landscape?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Many random towns
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Cover the map with randomly placed towns
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Many random industries
+STR_MANY_RANDOM_INDUSTRIES                                      :Many random industries
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Cover the map with randomly placed industries
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Can't generate industries...
 
@@ -1980,8 +1980,12 @@ STR_4828_REQUIRES                                               :{BLACK}Requires
 STR_4829_REQUIRES                                               :{BLACK}Requires: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Cargo waiting to be processed:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produces: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produces: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Production last month:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transported)
@@ -3372,3 +3376,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Go to ne
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Go to previous sign
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Fund
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospect
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Build
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Choose the appropriate industry from this list

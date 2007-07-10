@@ -1192,7 +1192,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...það
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Ertu viss um að þú viljir búa til handahófskennt land?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Búa til marga bæi
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Þekja landið með bæjum
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Búa til marga iðnaði
+STR_MANY_RANDOM_INDUSTRIES                                      :Búa til marga iðnaði
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Þekja kortið mörgum handahófskenndum iðnöðum
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Get ekki búið til iðnað...
 

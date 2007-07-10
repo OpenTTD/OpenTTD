@@ -1224,7 +1224,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...siame
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Ar tikrai norite sukurti atsitiktinį kraštovaizdį?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Daug atsitiktinių miestų
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Sukuria miestus atsitiktinėse žemėlapio vietose
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Daug atsitiktinių pramonės įmonių
+STR_MANY_RANDOM_INDUSTRIES                                      :Daug atsitiktinių pramonės įmonių
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Sukuria pramonės įmones atsitiktinėse žemėlapio vietose
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Neimanoma sukurti pramones imoniu...
 

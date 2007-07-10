@@ -1341,7 +1341,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...kaard
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Oled sa kindel, et soovid luua suvalist maastikku?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Palju suvalisi linnu
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Kaardi katmine suvaliselt asetatud linnadega
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Palju suvalisi tööstusi
+STR_MANY_RANDOM_INDUSTRIES                                      :Palju suvalisi tööstusi
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Kata kaart suvaliselt paigutatud tööstustega
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Tööstust ei saa tekitada...
 

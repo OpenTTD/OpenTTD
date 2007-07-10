@@ -1367,7 +1367,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...у ц
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Ви дійсно бажаєте створити ландшафт випадково?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Багато різних міст
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Випадково розташувати міста по карті
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Багато різної промисловості
+STR_MANY_RANDOM_INDUSTRIES                                      :Багато різної промисловості
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Випадково розташувати промисловість по карті
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Неможливо створити промисловість...
 

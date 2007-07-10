@@ -1299,7 +1299,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}... v to
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Opravdu chceš vytvořit nový náhodný terén?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Hodně náhodných měst
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryje krajinu mnoha náhodnými městy
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Hodně náhodného průmyslu
+STR_MANY_RANDOM_INDUSTRIES                                      :Hodně náhodného průmyslu
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryje krajinu náhodným průmyslem
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nemůžu generovat průmysl...
 

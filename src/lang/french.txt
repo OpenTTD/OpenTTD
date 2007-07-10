@@ -1242,7 +1242,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...il n'
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Etes-vous sûr de vouloir créer un terrain aléatoire?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Beaucoup de villes au hasard
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Couvrir la carte avec des villes placées aléatoirement
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Beaucoup d'industries au hasard
+STR_MANY_RANDOM_INDUSTRIES                                      :Beaucoup d'industries au hasard
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Couvrir la carte avec des industries placées au hasard
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Ne peut pas générer les industries...
 

@@ -1324,7 +1324,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nie m
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Jesteś pewien że chcesz stworzyć losowy krajobraz?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Wiele losowych miast
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryj mapę losowo położonymi miastami
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Wiele losowych przedsiębiorstw
+STR_MANY_RANDOM_INDUSTRIES                                      :Wiele losowych przedsiębiorstw
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryj mapę losowo położonymi przedsiębiorstwami
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nie można stworzyć przedsiębiorstw...
 

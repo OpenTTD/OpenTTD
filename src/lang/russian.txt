@@ -1243,7 +1243,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...в э
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Вы уверены, что хотите создать случайную землю?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Много случайных городов
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Случайно разместить на карте города
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Много произвольных промышленностей
+STR_MANY_RANDOM_INDUSTRIES                                      :Много произвольных промышленностей
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Случайно разместить предприятия на карте
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Невозможно создать промышленность...
 

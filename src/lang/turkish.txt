@@ -1232,7 +1232,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...Bu se
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Arazinin rasgele düzenlenmesini istediğinizden emin misiniz?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Birçok rastgele şehir
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Haritayı rastgele şehirlerle doldur
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Birçok rastgele fabrika
+STR_MANY_RANDOM_INDUSTRIES                                      :Birçok rastgele fabrika
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Haritayı rastgele fabrikalarla doldur
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Fabrika yapılamıyor...
 

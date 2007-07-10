@@ -1241,7 +1241,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...det f
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Är du säker på att du vill generera ett slumpmässigt landskap?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Många slumpmässiga städer
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Täck kartan med slumpmässigt placerade städer
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Många slumpmässiga industrier
+STR_MANY_RANDOM_INDUSTRIES                                      :Många slumpmässiga industrier
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Täck kartan med slumpmässigt placerade industrier
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Kan inte generera industrier...
 

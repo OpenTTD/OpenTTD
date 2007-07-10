@@ -1214,7 +1214,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}当前�
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}你确定要创建一个随机的景观吗？
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}大量随机城镇
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}在地图上创建大量随机的城镇
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}大量随机工业
+STR_MANY_RANDOM_INDUSTRIES                                      :大量随机工业
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}在地图上创建大量随机的工业设施
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}不能生成工业设施……
 

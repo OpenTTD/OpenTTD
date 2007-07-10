@@ -1241,7 +1241,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...er is
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Weet je zeker dat je een willekeurig landschap wil maken?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Veel willekeurige steden
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Bedek de kaart met willekeurig geplaatste steden
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Veel willekeurige industrieën
+STR_MANY_RANDOM_INDUSTRIES                                      :Veel willekeurige industrieën
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Bedek de kaart met willekeurig geplaatste industrieën
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Kan geen industrieën genereren
 
