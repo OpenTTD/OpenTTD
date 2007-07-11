@@ -1765,19 +1765,19 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 				break;
 
 			case 0x0F: // Animation information
-				grf_load_word(&buf); // TODO
+				tsp->animation_info = grf_load_word(&buf);
 				break;
 
 			case 0x10: // Animation speed
-				grf_load_byte(&buf); // TODO
+				tsp->animation_speed = grf_load_byte(&buf);
 				break;
 
 			case 0x11: // Triggers for callback 25
-				grf_load_byte(&buf); // TODO
+				tsp->animation_triggers = grf_load_byte(&buf);
 				break;
 
 			case 0x12: // Special flags
-				grf_load_byte(&buf); // TODO
+				tsp->animation_special_flags = grf_load_byte(&buf);
 				break;
 
 			default:

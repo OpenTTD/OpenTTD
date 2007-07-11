@@ -85,13 +85,13 @@ enum CallbackID {
 	CBID_STATION_TILE_LAYOUT             = 0x24,
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_INDTILE_ANIM_START_STOP         = 0x25, // not implemented
+	CBID_INDTILE_ANIM_START_STOP         = 0x25,
 
 	/** Called to determine industry tile next animation frame. */
-	CBID_INDTILE_ANIM_NEXT_FRAME         = 0x26, // not implemented
+	CBID_INDTILE_ANIM_NEXT_FRAME         = 0x26,
 
 	/** Called to indicate how long the current animation frame should last. */
-	CBID_INDTILE_ANIMATION_SPEED         = 0x27, // not implemented
+	CBID_INDTILE_ANIMATION_SPEED         = 0x27,
 
 	/** Called to determine if the given industry can be built on specific area. */
 	CBID_INDUSTRY_LOCATION               = 0x28,

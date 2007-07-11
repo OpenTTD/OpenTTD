@@ -413,7 +413,7 @@ static void TransportIndustryGoods(TileIndex tile)
 
 		am = MoveGoodsToStation(i->xy, i->width, i->height, indspec->produced_cargo[0], cw);
 		i->this_month_transported[0] += am;
-		if (am != 0) {
+		if (am != 0 && !StartStopIndustryTileAnimation(i, IAT_INDUSTRY_DISTRIBUTES_CARGO)) {
 			uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
 
 			if (newgfx != INDUSTRYTILE_NOANIM) {
@@ -442,8 +442,14 @@ static void TransportIndustryGoods(TileIndex tile)
 static void AnimateTile_Industry(TileIndex tile)
 {
 	byte m;
+	IndustryGfx gfx = GetIndustryGfx(tile);
 
-	switch (GetIndustryGfx(tile)) {
+	if (GetIndustryTileSpec(gfx)->animation_info != 0xFFFF) {
+		AnimateNewIndustryTile(tile);
+		return;
+	}
+
+	switch (gfx) {
 	case GFX_SUGAR_MINE_SIEVE:
 		if ((_tick_counter & 1) == 0) {
 			m = GetIndustryAnimationState(tile) + 1;
@@ -629,6 +635,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	stage = GetIndustryConstructionStage(tile) + 1;
 	SetIndustryConstructionCounter(tile, 0);
 	SetIndustryConstructionStage(tile, stage);
+	StartStopIndustryTileAnimation(tile, IAT_CONSTRUCTION_STATE_CHANGE);
 	if (stage == 3) {
 		SetIndustryCompleted(tile, true);
 	}
@@ -637,7 +644,15 @@ static void MakeIndustryTileBigger(TileIndex tile)
 
 	if (!IsIndustryCompleted(tile)) return;
 
-	switch (GetIndustryGfx(tile)) {
+	IndustryGfx gfx = GetIndustryGfx(tile);
+	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
+		/* New industry */
+		const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
+		if (its->animation_info != 0xFFFF) AddAnimatedTile(tile);
+		return;
+	}
+
+	switch (gfx) {
 	case GFX_POWERPLANT_CHIMNEY:
 		CreateIndustryEffectSmoke(tile);
 		break;
@@ -700,6 +715,8 @@ static void TileLoop_Industry(TileIndex tile)
 	if (_game_mode == GM_EDITOR) return;
 
 	TransportIndustryGoods(tile);
+
+	if (StartStopIndustryTileAnimation(tile, IAT_TILELOOP)) return;
 
 	newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_next;
 	if (newgfx != INDUSTRYTILE_NOANIM) {
@@ -1032,6 +1049,7 @@ void OnTick_Industry()
 	if (_game_mode == GM_EDITOR) return;
 
 	FOR_ALL_INDUSTRIES(i) {
+		StartStopIndustryTileAnimation(i, IAT_INDUSTRY_TICK);
 		ProduceIndustryGoods(i);
 	}
 }

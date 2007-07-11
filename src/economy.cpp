@@ -36,6 +36,7 @@
 #include "newgrf_sound.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_industries.h"
+#include "newgrf_industrytiles.h"
 #include "unmovable.h"
 #include "date.h"
 #include "cargotype.h"
@@ -1251,6 +1252,8 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 			best->produced_cargo_waiting[0] = min(best->produced_cargo_waiting[0] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][0] / 256), 0xFFFF);
 			best->produced_cargo_waiting[1] = min(best->produced_cargo_waiting[1] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][1] / 256), 0xFFFF);
 		}
+
+		StartStopIndustryTileAnimation(best, IAT_INDUSTRY_RECEIVED_CARGO);
 	}
 }
 

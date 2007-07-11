@@ -186,6 +186,10 @@ struct IndustryTileSpec {
 	                                      ///< state instead of the construction state
 	/* Newgrf data */
 	uint8 callback_flags;                 ///< Flags telling which grf callback is set
+	uint16 animation_info;                ///< Information about the animation (is it looping, how many loops etc)
+	uint8 animation_speed;                ///< The speed of the animation
+	uint8 animation_triggers;             ///< When to start the animation
+	uint8 animation_special_flags;        ///< Extra flags to influence the animation
 	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 	struct GRFFileProps grf_prop;
 };

@@ -15,6 +15,7 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_industries.h"
+#include "newgrf_industrytiles.h"
 #include "newgrf_text.h"
 #include "industry_map.h"
 #include "clear_map.h"
@@ -248,4 +249,105 @@ bool PerformIndustryTileSlopeCheck(TileIndex tile, const IndustryTileSpec *its, 
 		case 0x403: _error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;     return false;
 		default: _error_message = GetGRFStringID(its->grf_prop.grffile->grfid, 0xD000 + callback_res); return false;
 	}
+}
+
+void AnimateNewIndustryTile(TileIndex tile)
+{
+	Industry *ind = GetIndustryByTile(tile);
+	IndustryGfx gfx = GetIndustryGfx(tile);
+	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
+	byte animation_speed = itspec->animation_speed;
+
+	if (HASBIT(itspec->callback_flags, CBM_INDT_ANIM_SPEED)) {
+		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIMATION_SPEED, 0, 0, gfx, ind, tile);
+		if (callback_res != CALLBACK_FAILED) animation_speed = clamp(callback_res & 0xFF, 0, 16);
+	}
+
+	/* An animation speed of 2 means the animation frame changes 4 ticks, and
+	 * increasing this value by one doubles the wait. 0 is the minimum value
+	 * allowed for animation_speed, which corresponds to 30ms, and 16 is the
+	 * maximum, corresponding to around 33 minutes. */
+	if ((_tick_counter % (1 << animation_speed)) != 0) return;
+
+	bool frame_set_by_callback = false;
+	byte frame = GetIndustryAnimationState(tile);
+	uint16 num_frames = GB(itspec->animation_info, 0, 8) + 1;
+
+	if (HASBIT(itspec->callback_flags, CBM_INDT_ANIM_NEXT_FRAME)) {
+		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIM_NEXT_FRAME, HASBIT(itspec->animation_special_flags, 0) ? Random() : 0, 0, gfx, ind, tile);
+
+		if (callback_res != CALLBACK_FAILED) {
+			frame_set_by_callback = true;
+
+			switch (callback_res & 0xFF) {
+				case 0xFF:
+					DeleteAnimatedTile(tile);
+					break;
+				case 0xFE:
+					/* Carry on as normal. */
+					frame_set_by_callback = false;
+					break;
+				default:
+					frame = callback_res & 0xFF;
+					break;
+			}
+		}
+	}
+
+	if (!frame_set_by_callback) {
+		if (frame < num_frames) {
+			frame++;
+		} else if (frame == num_frames && GB(itspec->animation_info, 8, 8) == 1) {
+			/* This animation loops, so start again from the beginning */
+			frame = 0;
+		} else {
+			/* This animation doesn't loop, so stay here */
+			DeleteAnimatedTile(tile);
+		}
+	}
+
+	SetIndustryAnimationState(tile, frame);
+	MarkTileDirtyByTile(tile);
+}
+
+static void ChangeIndustryTileAnimationFrame(TileIndex tile, IndustryAnimationTrigger iat, uint32 random_bits, IndustryGfx gfx, Industry *ind)
+{
+	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIM_START_STOP, random_bits, iat, gfx, ind, tile);
+	if (callback_res == CALLBACK_FAILED) return;
+
+	switch (callback_res & 0xFF) {
+		case 0xFD: /* Do nothing. */         break;
+		case 0xFE: AddAnimatedTile(tile);    break;
+		case 0xFF: DeleteAnimatedTile(tile); break;
+		default:
+			SetIndustryAnimationState(tile, callback_res & 0xFF);
+			AddAnimatedTile(tile);
+			break;
+	}
+}
+
+bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32 random)
+{
+	IndustryGfx gfx = GetIndustryGfx(tile);
+	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
+
+	if (!HASBIT(itspec->animation_triggers, iat)) return false;
+
+	Industry *ind = GetIndustryByTile(tile);
+	ChangeIndustryTileAnimationFrame(tile, iat, random, gfx, ind);
+	return true;
+}
+
+bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigger iat)
+{
+	bool ret = true;
+	uint32 random = Random();
+	BEGIN_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
+		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
+			ret &= StartStopIndustryTileAnimation(tile, iat, random);
+			SB(random, 0, 16, Random());
+		}
+	END_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
+
+	return ret;
 }
