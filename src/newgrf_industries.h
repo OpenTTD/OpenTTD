@@ -22,4 +22,6 @@ uint32 IndustryTileGetRandomBits(const ResolverObject *object);
 uint32 IndustryTileGetTriggers(const ResolverObject *object);
 void IndustryTileSetTriggers(const ResolverObject *object, int triggers);
 
+uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index);
+
 #endif /* NEWGRF_INDUSTRIES_H */

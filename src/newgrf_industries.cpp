@@ -165,8 +165,19 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 
 		case 0x61: return 0; // Get random tile bits at offset param
 
-		case 0x62: // Land info of nearby tiles
-		case 0x63: break; // Animation stage of nerby tiles
+		/* Land info of nearby tiles */
+		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY);
+
+		/* Animation stage of nearby tiles */
+		case 0x63 : {
+			tile = GetNearbyTile(parameter, tile);
+			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == industry) {
+				return GetIndustryAnimationState(tile);
+			}
+			return 0xFFFFFFFF;
+		}
+
+		/* Distance of nearest industry of given type */
 		case 0x64: return GetClosestIndustry(tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), industry); // Distance of nearest industry of given type
 		/* Get town zone and Manhattan distance of closest town */
  		case 0x65: return GetTownRadiusGroup(industry->town, tile) << 16 | min(DistanceManhattan(tile, industry->town->xy), 0xFFFF);
@@ -296,12 +307,16 @@ uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, 
 	}
 
 	switch (variable) {
-		case 0x62: break;// Land info of nearby tiles
-		case 0x64: return GetClosestIndustry(tile, MapNewGRFIndustryType(parameter, object->u.industry_location.spec->grf_prop.grffile->grfid), NULL); // Distance of nearest industry of given type
+		/* Land info of nearby tiles */
+		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY);
+
+		/* Distance of nearest industry of given type */
+		case 0x64: return GetClosestIndustry(tile, MapNewGRFIndustryType(parameter, object->u.industry_location.spec->grf_prop.grffile->grfid), NULL);
 
 		/* Location where to build the industry */
 		case 0x80: return tile;
 		case 0x81: return GB(tile, 8, 8);
+
 		/* Pointer to the town the industry is associated with */
 		case 0x82: return ClosestTownFromTile(tile, (uint)-1)->index;
 		case 0x83:

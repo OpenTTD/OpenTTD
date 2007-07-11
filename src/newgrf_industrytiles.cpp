@@ -30,7 +30,7 @@
  * @param index of the industry been queried for
  * @return a construction of bits obeying the newgrf format
  */
-static uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index)
+uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index)
 {
 	byte tile_type;
 	bool is_same_industry;
@@ -87,7 +87,8 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 		/* Land info of nearby tiles */
 		case 0x60 : return GetNearbyIndustryTileInformation(parameter, tile, inds == NULL ? (IndustryID)INVALID_INDUSTRY : inds->index);
 
-		case 0x61 : {/* Animation stage of nearby tiles */
+		/* Animation stage of nearby tiles */
+		case 0x61 : {
 			tile = GetNearbyTile(parameter, tile);
 			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == inds) {
 				return GetIndustryAnimationState(tile);
