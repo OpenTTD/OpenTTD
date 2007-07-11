@@ -215,7 +215,7 @@ STR_00F4_500M                                                   :{BLACK}{TINYFON
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Trens
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Vehicles de carretera
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Vaixells
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeronaus
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Avions
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rutes de Transport
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Mina de Carbó
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Central Tèrmica
@@ -443,7 +443,7 @@ STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Mostra l
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra la llista de trens de l'empresa
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra la llista de vehicles de l'empresa
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra la llista de vaixells de l'empresa
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra la llista d'aeronaus de l'empresa
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra la llista d'avions de l'empresa
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Apropar-se
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Allunyar-se
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Construeix vies
@@ -481,7 +481,7 @@ STR_AGE_RED                                                     :{RED}{COMMA} an
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Vehicle
-STR_019D_AIRCRAFT                                               :Aeronau
+STR_019D_AIRCRAFT                                               :Avió
 STR_019E_SHIP                                                   :Vaixell
 STR_019F_TRAIN                                                  :Tren
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} s'està envellint
@@ -852,14 +852,14 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Seleccio
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Selecciona l'estil de paisatge 'subàrtic'
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Selecciona l'estil de paisatge 'subtropical'
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Selecciona l'estil de paisatge 'toyland'
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Patrocina la construcció d'una nova indústria
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financia la construcció d'una nova indústria
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Directori d'indústries
-STR_0313_FUND_NEW_INDUSTRY                                      :Patrocina una nova indústria
+STR_0313_FUND_NEW_INDUSTRY                                      :Financia una nova indústria
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Patrocina una nova indústria
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financia una nova indústria
 STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...només es pot construir en àrees de selva tropical
@@ -1001,16 +1001,16 @@ STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Vaixell 
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Vaixell {COMMA} té una ordre buida
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Vaixell {COMMA} té ordres duplicades
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Vaixell {COMMA} té una estació incorrecta en les ordres
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aeronau {COMMA} té massa poques ordres a la planificació
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aeronau {COMMA} té una ordre buida
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aeronau {COMMA} has duplicate orders
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aeronau {COMMA} té una estació incorrecta en les ordres
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}L'avió {COMMA} té massa poques ordres a la planificació
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}L'avió {COMMA} té una ordre buida
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}L'avió {COMMA} té ordres duplicades
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}L'avió {COMMA} té una estació incorrecta a les ordres
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenovació ha fallat al tren {COMMA} (límit de diners)
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenovació ha fallat a l'automòbil {COMMA} (límit de diners)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenovació ha fallat al vaixell {COMMA} (límit de diners)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenovació ha fallat a l'aeronau {COMMA} (límit de diners)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}L'autorenovació ha fallat en l'avió {COMMA} (límit de diners)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren {COMMA} és massa llarg després del canvi
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configura Pedaços
@@ -1121,12 +1121,12 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :La més utilitz
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostra les eines de construcció quan no hi hagi disponibles vehicles adequats: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Max aeronaus per jugador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Max avions per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Max vaixells per jugador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Desactiva trens per l'ordinador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Desactiva automòbils per a l'ordinador: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desactiva aeronaus per l'ordinador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desactiva els avions per l'ordinador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desactiva vaixells per l'ordinador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Activa nova IA (alfa): {ORANGE}{STRING}
@@ -1136,8 +1136,8 @@ STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}desactivat
 STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Interval de manteniment per defecte dels automòbils: {ORANGE}{STRING} dies/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Interval de manteniment per defecte dels automòbils: {ORANGE}desactivat
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Interval de manteniment per defecte de les aeronaus: {ORANGE}{STRING} dies/%
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interval de manteniment per defecte de les aeronaus: {ORANGE}desactivat
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Interval de manteniment per defecte dels avions: {ORANGE}{STRING} dies/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interval de manteniment per defecte dels avions: {ORANGE}desactivat
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}{STRING} dies/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}desactivat
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactiva manteniment quan les avaries s'estableixen a cap: {ORANGE}{STRING}
@@ -1285,21 +1285,21 @@ STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activa t
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construeix Mina de Carbó
 STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Planta un Bosc
 STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Construeix una Plataforma Petrolífera
-STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Funda Granja
+STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Financia Granja
 STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Construeix una Mina de Coure
 STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Perfora per buscar Petroli
 STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Construeix una Mina d'Or
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Construeix una Mina de Diamants
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Construeix una Mina de Ferro
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Funda Plantació de Fruita
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Funda Plantació de Cautxú
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Funda Surtidor d'Aigua
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Financia Plantació de Fruita
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Financia Plantació de Cautxú
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financia Surtidor d'Aigua
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Planta un Bosc de Cotó de Sucre
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Funda Granja de Piles
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Financia Granja de Piles
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Perfora per buscar Cola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Funda Fonts de Plàstic
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Financia Fonts de Plàstic
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Construeix un Generador de Bombolles
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Funda Cantera de Caramel
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Financia Cantera de Caramel
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construeix una Mina de Sucre
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústries
@@ -1762,17 +1762,17 @@ STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Accions 
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Petita campanya de publicitat
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Mitjana campanya de publicitat
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Gran campanya de publicitat
-STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Patrocina la reconstrucció dels carrers de la població
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Financia la reconstrucció dels carrers de la població
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Construeix una estàtua del propietari de l'empresa
-STR_204B_FUND_NEW_BUILDINGS                                     :Patrocina nous edificis
+STR_204B_FUND_NEW_BUILDINGS                                     :Financia nous edificis
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Compra els drets de transport en exclusiva
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Suborna les autoritats locals
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Inicia una petita campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Inicia una mitjana campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Inicia una gran campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Patrocina la reconstrucció de la xarxa local de carrers. Causa una notable distorsió del trànsit durant 6 mesos.{}  Cost: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Financia la reconstrucció de la xarxa local de carrers. Dificulta notablement el trànsit durant 6 mesos.{}  Cost: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construeix una estatua en honor a la teva empresa.{} Cost: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Patrocina la construcció de nous edificis comercials en la població.{}  Cost: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financia la construcció de nous edificis comercials a la població.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compra per 1 any els drets exclusius de transport en la població. La autoritat local només permetrà utilitzar les instal·lacions de la teva empresa de transports als passatgers i les mercaderies.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Suborna les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen!!.{}  Cost: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Caos de trànsit en  {TOWN}!{}{}El programa de rehabilitació dels carrers patrocinat per {COMPANY} porta 6 mesos de misèria als motoristes!
@@ -1878,7 +1878,7 @@ STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Seleccio
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Estació de Ferrocarril
-STR_305F_AIRCRAFT_HANGAR                                        :Hangar d'Aeronaus
+STR_305F_AIRCRAFT_HANGAR                                        :Hangar d'Avions
 STR_3060_AIRPORT                                                :Aeroport
 STR_3061_TRUCK_LOADING_AREA                                     :Àrea de càrrega de camions
 STR_3062_BUS_STATION                                            :Parada d'autobús
@@ -1980,8 +1980,12 @@ STR_4828_REQUIRES                                               :{BLACK}Necessit
 STR_4829_REQUIRES                                               :{BLACK}Necessita: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Càrrega en espera de ser processada:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produeix: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produeix: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producció del darrer mes:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportat)
@@ -2062,7 +2066,7 @@ STR_SV_UNNAMED                                                  :Sense Nom
 STR_SV_TRAIN_NAME                                               :Tren {COMMA}
 STR_SV_ROADVEH_NAME                                             :Vehicle {COMMA}
 STR_SV_SHIP_NAME                                                :Vaixell {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Aeronau {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Avió {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Nort
@@ -2196,12 +2200,12 @@ STR_7011_CONSTRUCTION                                           :{GOLD}Construcc
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nous Vehicles
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Desp. de Circ. de Trens
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Desp. de Circ. de Vehicles
-STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Desp. de Circ. d'Aeronaus
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Desp. de Circ. d'Avions
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Desp. de Circ. de Vaixells
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Manteniment de Propietats
 STR_7018_TRAIN_INCOME                                           :{GOLD}Ingressos de Tren
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ingressos de Vehicles
-STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ingressos d'Aeronaus
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ingressos d'Avions
 STR_701B_SHIP_INCOME                                            :{GOLD}Ingressos de Vaixells
 STR_701C_LOAN_INTEREST                                          :{GOLD}Interessos del Prèstec
 STR_701D_OTHER                                                  :{GOLD}Altres
@@ -2237,7 +2241,7 @@ STR_7038_INAUGURATED                                            :{GOLD}Inaugurat
 STR_7039_VEHICLES                                               :{GOLD}Vehicles:
 STR_TRAINS                                                      :{WHITE}{COMMA} tren{P "" s}
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} automòbil{P "" s}
-STR_AIRCRAFT                                                    :{WHITE}{COMMA} aeronau{P "" s}
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} avió{P "" ns}
 STR_SHIPS                                                       :{WHITE}{COMMA} vaixell{P "" s}
 STR_7042_NONE                                                   :{WHITE}Cap
 STR_7043_FACE_SELECTION                                         :{WHITE}Selecció de cares
@@ -2600,7 +2604,7 @@ STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Missatge
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Acabem de dissenyar el nou {STRING} - estàs interessat en fer ús exclusiu d'aquest vehicle durant un any, per veure com va, abans del seu llançament mundial ?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :locomotora de tren
 STR_8103_ROAD_VEHICLE                                           :automòbil
-STR_8104_AIRCRAFT                                               :aeronau
+STR_8104_AIRCRAFT                                               :avió
 STR_8105_SHIP                                                   :vaixell
 STR_8106_MONORAIL_LOCOMOTIVE                                    :locomotora de monorail
 STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotora de maglev
@@ -2927,15 +2931,15 @@ SERVICE_AT_SHIP_DEPOT                                           :Manteniment a d
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Aeroports
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Aquí no es pot construir un aeroport...
-STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar d'Aeronaus
-STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nova Aeronau
-STR_CLONE_AIRCRAFT                                              :{BLACK}Clona Aeronau
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Fa una còpia de l'aeronau. Control-Clic compartirà les ordres
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Fa una còpia de l'aeronau. Prem aquest botó i després en una aeronau dins o fora l'hangar. Control-Clic compartirà les ordres
-STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nova Aeronau
-STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construeix Aeronau
-STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No es pot construir l'aeronau...
-STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aeronaus
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar d'Avions
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nou Avió
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clona Avió
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Fa una còpia de l'avió. Control-Clic compartirà les ordres
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Fa una còpia de l'avió. Prem aquest botó i després en un avió dins o fora l'hangar. Control-Clic compartirà les ordres
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nou Avió
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construeix Avió
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No es pot construir l'avió...
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Avions
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Ordres)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalls)
@@ -2944,55 +2948,55 @@ STR_A00E_MAX_SPEED                                              :{BLACK}Max. vel
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de l'últim manteniment: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construït: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No es pot enviar l'aeronau a l'hangar...
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No es pot enviar l'avió a l'hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Cap a l'hangar de {STATION}.
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Cap a l'hangar de {STATION}, a {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Revisió a l'hangar de {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Revisió a l'hangar de {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}L' aeronau {COMMA} esperant a l'hangar
-STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronau en el camí
-STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No es pot parar/arrencar l'aeronau...
-STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronau en vol
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}L'avió {COMMA} està esperant a l'hangar
+STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Avió al camí
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No es pot parar/arrencar l'avió...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}L'avió està volant
 STR_A019_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}, {CARGO}
 STR_A01A_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}L' aeronau s'ha de parar a l'hangar
-STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No es pot vendre l' aeronau...
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}L'avió s'ha de parar a l'hangar
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No es pot vendre l'avió...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construcció d'Aeroport
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construeix un aeroport
-STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l'aeronau per informació
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construeix noves aeronaus (necessites un aeroport amb hangar)
-STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l' aeronau per informació
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construeix noves aeronaus
-STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrossega l'aeronau fins aquí per vendre-la
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per informació
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construeix nous avions (necessites un aeroport amb hangar)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per informació
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construeix nous avions
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrossega l'avió fins aquí per vendre'l
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centra la pantalla principal en la situació de l'hangar
-STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Llista de selecció d'Aeronaus - clica en una aeronau per informació
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construeix l'aeronau seleccionada
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Accions sobre l'aeronau actual - clica aquí per parar/arrencar l'aeronau
-STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra les ordres de l'aeronau
-STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra la pantalla principal a la situació de l'aeronau
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envia aeronau a l'hangar
-STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostra els detalls de l'aeronau
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Llista de selecció d'Avions - clica sobre l'avió per informació
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construeix l'avió seleccionat
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Accions sobre l'avió actual - clica aquí per parar/arrencar l'avió
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra les ordres de l'avió
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra la pantalla principal a la situació de l'avió
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envia avió a l'hangar
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostra els detalls de l'avió
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Max. Velocitat: {VELOCITY}{}Capacitat: {COMMA} passatgers, {COMMA} sacs de correu{}Cost de Circulació: {CURRENCY}/any
 
-STR_A030_NAME_AIRCRAFT                                          :{WHITE}Anomena aeronau
-STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}No es pot anomenar aeronaus...
-STR_A032_NAME_AIRCRAFT                                          :{BLACK}Anomena aeronau
-STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{}La primera aeronau arriba a {STATION}!
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Anomena avió
+STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}No es pot anomenar l'avió...
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Anomena avió
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{}El primer avió arriba a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Accident d'avió!{}{COMMA} moren en una bola de foc a {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accident d'aviació!{}Aeronau sense combustible, {COMMA} morts en una bola de foc!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Accident d'aviació!{}L'avió s'ha quedat sense combustible, {COMMA} morts en l'accident!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Reanomena
-STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Reanomena tipus d'aeronau
-STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Reanomena tipus d'aeronau
-STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}No es pot reanomenar tipus d'aeronau...
-STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Remodela aeronaus per transportar diferent tipus de càrrega
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Reanomena tipus d'avió
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Reanomena tipus d'avió
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}No es pot reanomenar el tipus d'avió...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Remodela avions per poder transportar diferents tipus de càrrega
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Remodela)
-STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Remodela aeronau
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Remodela avió
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona tipus de càrrega a transportar
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Remodela aeronau per transportar el tipus de càrrega seleccionat
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Remodela l'avió per poder transportar el tipus de càrrega seleccionat
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona el tipus de càrrega a transportar:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacitat: {GOLD}{STRING}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
-STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No es pot remodelar l'aeronau...
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No es pot remodelar l'avió...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ves a l'hangar de {STATION}.
 SERVICE_AT_AIRPORT_HANGAR                                       :Manteniment en l'hangar de {STATION}.
 
@@ -3029,7 +3033,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Diner:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prèstec:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Quantitat de vehicles. Inclou els automòbils, trens, vaixells i aeronaus.
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Quantitat de vehicles. Inclou els automòbils, trens, vaixells i avions.
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Quantitat de parts d'estacions. Cada part d'una estació es compta (ex. estació de tren, parada d'autobus, aeroport), encara que estigui connectada a una altra estació.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}El benefici del vehicle amb els menors ingressos (de tots els vehicles més antics de 2 anys)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Quantitat de diners fets durant el mes amb el mínim benefici dels darrers 12 trimestres
@@ -3109,13 +3113,13 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trens
 STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Vehicles
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aeronaus
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Avions
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Vaixells
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostra tots els trens que tinguin aquesta estació al seu itinerari
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra tots els vehicles que tinguin aquesta estació al seu itinerari
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra totes les aeronaus que tinguin aquest aeroport al seu itinerari
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tots els vaixells que tinguin aquest port al seu itinerari
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostra tots els trens que tinguin aquesta estació en el seu itinerari
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra tots els vehicles que tinguin aquesta estació en el seu itinerari
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra tots els avions que tinguin aquest aeroport en el seu itinerari
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tots els vaixells que tinguin aquest port en el seu itinerari
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres compartides de {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres
@@ -3132,7 +3136,7 @@ STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vendre t
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Treure una llista de tots els trens amb aquesta cotxera en les seves ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Treure una llista de tots els vehicles amb aquesta cotxera en les seves ordres
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Treure una llista de tots els vaixells amb aquesta drassana en les seves ordres
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Treu una llista de tots les aeronaus amb algun hangar en aquest aeroport en les seves ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Treu una llista de tots els avions amb algun hangar d'aquest aeroport en les seves ordres
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubstitueix tots els trens de la cotxera
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstitueix tots els vehicles de la cotxera
@@ -3328,7 +3332,7 @@ STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROU
 STR_GROUP_ALL_TRAINS                                            :Tots els trens
 STR_GROUP_ALL_ROADS                                             :Tots els vehicles
 STR_GROUP_ALL_SHIPS                                             :Tots els vaixells
-STR_GROUP_ALL_AIRCRAFTS                                         :Totes les aeronaus
+STR_GROUP_ALL_AIRCRAFTS                                         :Tots els avions
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Afegeix vehicles compartits
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Treu tots els vehicles
@@ -3336,7 +3340,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Treu tots els v
 STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tren{P "" s}
 STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vehicle{P "" s}
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Vaixell{P "" s}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronau
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Avió
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Canvia de nom el grup
 STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Substitueix els Vehicles de "{GROUP}"
 
@@ -3372,3 +3376,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ves a la
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ves a la senyal anterior
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Financia
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospecciona
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Construeix
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Escolleix el tipus d'indústria adequada d'aquesta llista

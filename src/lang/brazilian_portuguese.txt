@@ -1984,6 +1984,13 @@ STR_4828_REQUIRES                                               :{BLACK}Necessá
 STR_4829_REQUIRES                                               :{BLACK}Necessário: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Carga aguardando processamento
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produz: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produz: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produção no mês passado:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportado)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centralizar visualização na localização da indústria
@@ -3373,3 +3380,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Próxima
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Placa anterior
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Fundar
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prosperir
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Construir
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Escolha a indústria apropriada

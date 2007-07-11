@@ -1980,8 +1980,12 @@ STR_4828_REQUIRES                                               :{BLACK}Kräver:
 STR_4829_REQUIRES                                               :{BLACK}Kräver: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Last som väntar på att bli behandlad:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Producerar: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Producerar: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion förra månaden:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporterat)
@@ -3372,3 +3376,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Åk till
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Åk till föregående skylt
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Grunda
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospektera
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Bygga
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Välj lämplig industri från denna lista

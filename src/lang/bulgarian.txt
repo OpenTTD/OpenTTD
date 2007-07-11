@@ -1036,6 +1036,9 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Инф�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Доставяне на стока до станция само ако има търсене: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Строене на много дълги мостове: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Сервиз в маршрута: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :нищо
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :като други промишлености
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :предстоящ
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Няколко еднакви индустрии на град: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Индустрии от еднакъв тип могат да бъдат строени близо една до друга: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Показване на дълга дата в статус бара: {ORANGE}{STRING}
@@ -1112,6 +1115,9 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Нормалн�
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Електрифицирани релси
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Еднорелси
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Магниторелси
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Първо на разположение
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Последно на разположение
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Най-много използван
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. влакове на играч: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. брой коли на играч: {ORANGE}{STRING}
@@ -1649,6 +1655,7 @@ STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Трам
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Автогарата не може да се построи...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Товарната гара не може да се построи...
 STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Пътническа трамвайна гара неможе да бъде построена...
+STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Товарна трамвайна гара неможе да бъде построена...
 STR_180A_ROAD_CONSTRUCTION                                      :Пътно строителство
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Конструкциа на трамвайна линиа
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Строене на път
@@ -1894,6 +1901,7 @@ STR_3804_WATER                                                  :Вода
 STR_3805_COAST_OR_RIVERBANK                                     :Бряг или поречие
 STR_3806_SHIP_DEPOT                                             :Корабно депо
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Не може да бъде построено във водата
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Трябва да разрушиш каналът първо
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Запази играта
@@ -1906,6 +1914,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Не м�
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Запазването на играта е неуспешно{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Изтриването на файла е неуспешно
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Отварянето на играта е неуспешно{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Вътрешна грешка: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Запазената игра е повредена - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Запазената игра е направена от по-нова версия
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Фаилат е непрочетим
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Фаилат е неписуем
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Списък с хард-дисковете, директориите и запазените игри
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Избрано име за запазена игра
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Изтрий избраната запазената игра
@@ -1961,6 +1974,13 @@ STR_4827_REQUIRES                                               :{BLACK}Нужд
 STR_4828_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
+
+############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Товар чакащ до бъде преработен:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Произвежда: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Произвежда: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Произведено миналия месец:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% превозено)
@@ -2076,6 +2096,7 @@ STR_SV_STNAME_UPPER                                             :Горно {STR
 STR_SV_STNAME_LOWER                                             :Долно {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Хелипорт
 STR_SV_STNAME_FOREST                                            :{STRING} Дървета
+STR_SV_STNAME_FALLBACK                                          :{STRING} Гара #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2608,6 +2629,9 @@ STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Отиди бе
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонт без спиране в {TOWN} влаково депо
 
 STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_FOR                                        :Патувай за {STRING}
+STR_TIMETABLE_STAY_FOR                                          :и остани за {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} ден{P "" s}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Отиващ към Влаковото депо на {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Отиващ към Влаковото депо на {TOWN}, {VELOCITY}
@@ -2650,6 +2674,7 @@ STR_8828_UNLOAD                                                 :{BLACK}Разт
 STR_REFIT                                                       :{BLACK}Преустройство
 STR_REFIT_TIP                                                   :{BLACK}Избор какво преустройсто да се направи. Щракване със задържан контрол премахва инструкцията
 STR_REFIT_ORDER                                                 :(Преустройство към {STRING})
+STR_TIMETABLE_VIEW                                              :{BLACK}Разписание
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Заповеди)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Край на Заповедите - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2723,6 +2748,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Преи
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Не може да се преименува влак...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Изхвърляне на товара при достигане на избраното назначение
 STR_886F_TRANSFER                                               :{BLACK}Транфер
+STR_CLEAR_TIME                                                  :{BLACK}Изчисти времето
 
 STR_TRAIN_STOPPING                                              :{RED}Спира
 STR_TRAIN_STOPPING_VEL                                          :{RED}Спира, {VELOCITY}
@@ -2734,6 +2760,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Нов {STRING} е на разположение! - {ENGINE}
 
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Промени времето
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Афтонапълване
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Кола на пътя
@@ -2776,6 +2804,7 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Фоку
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Купи посоченото МПС
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорост: {VELOCITY}{}Оперативен разход: {CURRENCY}/год{}Вместимост: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Капацитет: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Преименувай МПС-то
@@ -2943,6 +2972,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не м�
 STR_GO_TO_AIRPORT_HANGAR                                        :Отиди до Хангара на летище {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Сервиз в {STATION} хангар
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Разписание)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Катастрофа с Цепелин на {STATION}!
@@ -3310,7 +3340,14 @@ STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Името трябва да е уникално
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Отиди до следващиат знак
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Отиди до предишниат знак
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Фонд
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Перспектива
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Построи

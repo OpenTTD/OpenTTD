@@ -2083,8 +2083,12 @@ STR_4828_REQUIRES                                               :{BLACK}Felhaszn
 STR_4829_REQUIRES                                               :{BLACK}Felhasznál: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Feldolgozásra váró szállítmány:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Gyárt: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Gyárt: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Múlt havi termelés:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% elszállítva)
@@ -3475,3 +3479,6 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Követke
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Előző felirat
 
 ########
+
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Épít
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Válaszd ki a megfelelő ipartípust a listából

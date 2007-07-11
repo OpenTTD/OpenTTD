@@ -1980,6 +1980,13 @@ STR_4828_REQUIRES                                               :{BLACK}必要�
 STR_4829_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}、{STRING}、{STRING}
 ############ range for requires ends
 
+############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}処理待ちの貨物：
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}産物：{YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}産物：{YELLOW}{STRING}、{STRING}
+############ range for produces ends
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}先月の生産量：
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK}（{COMMA}％運送済み）
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}主の画面を産業の場所に移動します
@@ -3369,3 +3376,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}次の�
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}前の標示へ移動
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}出資
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}調査
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}建設
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}適当な産業を選択します

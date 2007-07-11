@@ -1980,8 +1980,12 @@ STR_4828_REQUIRES                                               :{BLACK}Vereist:
 STR_4829_REQUIRES                                               :{BLACK}Vereist: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Vracht klaar om te worden verwerkt:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produceert: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produceert: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Productie vorige maand:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% getransporteerd)
@@ -3372,3 +3376,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ga naar 
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ga naar vorige bord
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Investeer
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Onderzoek
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Bouw
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Kies de aangewezen industrie van de lijst

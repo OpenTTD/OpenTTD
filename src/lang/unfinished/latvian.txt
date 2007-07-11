@@ -1568,8 +1568,10 @@ STR_4828_REQUIRES                                               :{BLACK}Nepiecie
 STR_4829_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Krava, kas jāapstrādā:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkcija iepriekšēja mēnesī:
 
@@ -1647,9 +1649,19 @@ STR_7005_COLOR_SCHEME                                           :{BLACK}Krasas s
 STR_7006_COLOR_SCHEME                                           :{GOLD}Krasas shçma:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Jaunâ Krasas shçma
 STR_7010                                                        :{WHITE}{NUM}
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Ceļa transp. lietošanas izmaksas
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Lidaparātu lietošanas izmaksas
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Kuģu lietošanas izmaksas
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Īpašumu apkalpošana
+STR_7018_TRAIN_INCOME                                           :{GOLD}Vilcienu ienākumi
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ceļu transportlīdzekļu ienākumi
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Lidaparātu ienākumi
+STR_701B_SHIP_INCOME                                            :{GOLD}Kuģu ienākumi
+STR_701C_LOAN_INTEREST                                          :{GOLD}Kredīta likme
 STR_701D_OTHER                                                  :{GOLD}Citi
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
+STR_7020_TOTAL                                                  :{WHITE}Kopā:
 STR_7021                                                        :{COMPANY}{COMPANYNUM}
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
@@ -1940,3 +1952,4 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-va
 #### Improved sign GUI
 
 ########
+
