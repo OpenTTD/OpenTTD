@@ -345,6 +345,20 @@ static void StationSetTriggers(const ResolverObject *object, int triggers)
 	st->waiting_triggers = triggers;
 }
 
+/**
+ * Station variable cache
+ * This caches 'expensive' station variable lookups which iterate over
+ * several tiles that may be called multiple times per Resolve().
+ */
+static struct {
+	uint32 v40;
+	uint32 v41;
+	uint32 v45;
+	uint32 v46;
+	uint32 v47;
+	uint32 v49;
+	uint8 valid;
+} _svc;
 
 static uint32 StationGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
@@ -387,14 +401,29 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 	switch (variable) {
 		/* Calculated station variables */
-		case 0x40: return GetPlatformInfoHelper(tile, false, false, false);
-		case 0x41: return GetPlatformInfoHelper(tile, true,  false, false);
+		case 0x40:
+			if (!HASBIT(_svc.valid, 0)) { _svc.v40 = GetPlatformInfoHelper(tile, false, false, false); SETBIT(_svc.valid, 0); }
+			return _svc.v40;
+
+		case 0x41:
+			if (!HASBIT(_svc.valid, 1)) { _svc.v41 = GetPlatformInfoHelper(tile, true,  false, false); SETBIT(_svc.valid, 1); }
+			return _svc.v41;
+
 		case 0x42: return GetTerrainType(tile) | (GetRailType(tile) << 8);
 		case 0x43: return st->owner; // Station owner
 		case 0x44: return 2;         // PBS status
-		case 0x45: return GetRailContinuationInfo(tile);
-		case 0x46: return GetPlatformInfoHelper(tile, false, false, true);
-		case 0x47: return GetPlatformInfoHelper(tile, true,  false, true);
+		case 0x45:
+			if (!HASBIT(_svc.valid, 2)) { _svc.v45 = GetRailContinuationInfo(tile); SETBIT(_svc.valid, 2); }
+			return _svc.v45;
+
+		case 0x46:
+			if (!HASBIT(_svc.valid, 3)) { _svc.v46 = GetPlatformInfoHelper(tile, false, false, true); SETBIT(_svc.valid, 3); }
+			return _svc.v46;
+
+		case 0x47:
+			if (!HASBIT(_svc.valid, 4)) { _svc.v47 = GetPlatformInfoHelper(tile, true,  false, true); SETBIT(_svc.valid, 4); }
+			return _svc.v47;
+
 		case 0x48: { // Accepted cargo types
 			CargoID cargo_type;
 			uint32 value = 0;
@@ -404,7 +433,9 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			}
 			return value;
 		}
-		case 0x49: return GetPlatformInfoHelper(tile, false, true, false);
+		case 0x49:
+			if (!HASBIT(_svc.valid, 5)) { _svc.v49 = GetPlatformInfoHelper(tile, false, true, false); SETBIT(_svc.valid, 5); }
+			return _svc.v49;
 
 		/* Variables which use the parameter */
 		/* Variables 0x60 to 0x65 are handled separately below */
@@ -562,6 +593,9 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 
 	/* Remember the cargo type we've picked */
 	object->u.station.cargo_type = ctype;
+
+	/* Invalidate all cached vars */
+	_svc.valid = 0;
 
 	return Resolve(group, object);
 }
