@@ -145,7 +145,7 @@ enum CallbackID {
 	CBID_INDUSTRY_CARGO_SUFFIX           = 0x37, // not implemented
 
 	/** Called to determine more text in the fund industry window */
-	CBID_INDUSTRY_FUND_MORE_TEXT         = 0x38, // not implemented
+	CBID_INDUSTRY_FUND_MORE_TEXT         = 0x38,
 
 	/** Called to calculate the income of delivered cargo */
 	CBID_CARGO_PROFIT_CALC               = 0x39,
