@@ -1232,13 +1232,9 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 					_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 					return false;
 				}
-			}
-			if (ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) {
-				if (!IsTileType(cur_tile, MP_HOUSE)) goto do_clear;
-			} else {
-do_clear:
-				if (CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
-					return false;
+				if (CmdFailed(DoCommand(cur_tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR))) return false;
+			} else if ((ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) == 0 || !IsTileType(cur_tile, MP_HOUSE)) {
+				if (CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) return false;
 			}
 		}
 	} while ((++it)->ti.x != -0x80);
