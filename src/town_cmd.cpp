@@ -640,6 +640,7 @@ static RoadBits GetTownRoadMask(TileIndex tile)
 	TrackBits b = GetAnyRoadTrackBits(tile, ROADTYPE_ROAD);
 	RoadBits r = ROAD_NONE;
 
+	if (b == TRACK_BIT_NONE) return r;
 	if (b & TRACK_BIT_X)     r |= ROAD_X;
 	if (b & TRACK_BIT_Y)     r |= ROAD_Y;
 	if (b & TRACK_BIT_UPPER) r |= ROAD_NE | ROAD_NW;
