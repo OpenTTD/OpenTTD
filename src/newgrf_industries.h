@@ -15,6 +15,8 @@ uint32 GetIndustryIDAtOffset(TileIndex new_tile, TileIndex old_tile, const Indus
 void IndustryProductionCallback(Industry *ind, int reason);
 bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspec_index);
 
+IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id);
+
 /* in newgrf_industrytiles.cpp*/
 uint32 IndustryTileGetRandomBits(const ResolverObject *object);
 uint32 IndustryTileGetTriggers(const ResolverObject *object);

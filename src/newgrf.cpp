@@ -44,6 +44,7 @@
 #include "table/build_industry.h"
 #include "newgrf_commons.h"
 #include "newgrf_townname.h"
+#include "newgrf_industries.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -5225,6 +5226,15 @@ static void FinaliseIndustriesArray()
 				if (indtsp != NULL) {
 					_industile_mngr.SetEntitySpec(indtsp);
 				}
+			}
+		}
+	}
+
+	for (uint j = 0; j < NUM_INDUSTRYTYPES; j++) {
+		IndustrySpec *indsp = &_industry_specs[j];
+		if (indsp->enabled && indsp->grf_prop.grffile != NULL) {
+			for (uint i = 0; i < 3; i++) {
+				indsp->conflicting[i] = MapNewGRFIndustryType(indsp->conflicting[i], indsp->grf_prop.grffile->grfid);
 			}
 		}
 	}

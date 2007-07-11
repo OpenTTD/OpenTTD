@@ -99,7 +99,10 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 		case 0x62 : return GetIndustryIDAtOffset(GetNearbyTile(parameter, tile), tile, inds);
 	}
 
-	return 0;
+	DEBUG(grf, 1, "Unhandled industry tile property 0x%X", variable);
+
+	*available = false;
+	return (uint32)-1;
 }
 
 static const SpriteGroup *IndustryTileResolveReal(const ResolverObject *object, const SpriteGroup *group)
