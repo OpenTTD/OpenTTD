@@ -393,7 +393,7 @@ static int32 DerefIndProd(uint field, bool use_register)
 void IndustryProductionCallback(Industry *ind, int reason)
 {
 	ResolverObject object;
-	NewIndustryResolver(&object, INVALID_TILE, ind);
+	NewIndustryResolver(&object, ind->xy, ind);
 	object.callback_param2 = reason;
 
 	for (uint loop = 0;; loop++) {
