@@ -44,20 +44,20 @@ IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id)
 static uint GetClosestWaterDistance(TileIndex tile, bool water)
 {
 	TileIndex t;
-	uint best_dist;
-	for (t = 1; t < MapSize(); t++) {
+	int best_dist;
+	for (t = 0; t < MapSize(); t++) {
 		if (IsTileType(t, MP_WATER) == water) break;
 	}
 	best_dist = DistanceManhattan(tile, t);
 
 	for (; t < MapSize(); t++) {
-		uint dist = DistanceManhattan(tile, t);
+		int dist = DistanceManhattan(tile, t);
 		if (dist < best_dist) {
 			if (IsTileType(t, MP_WATER) == water) best_dist = dist;
 		} else {
 			/* When the Y distance between the current row and the 'source' tile
 			 * is larger than the best distance, we've found the best distance */
-			if (TileY(t) - TileY(tile) > best_dist) return best_dist;
+			if ((int)TileY(t) - (int)TileY(tile) > best_dist) break;
 			if (TileX(tile) > TileX(t)) {
 				/* We can safely skip this many tiles; from here all tiles have a
 				 * higher or equal distance than the best distance */
@@ -66,7 +66,7 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 			} else {
 				/* We can safely skip this many tiles; up to here all tiles have a
 				 * higher or equal distance than the best distance */
-				t += best_dist - dist;
+				t += max(best_dist - dist, 0);
 				continue;
 			}
 		}
