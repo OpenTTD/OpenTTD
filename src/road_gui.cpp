@@ -579,7 +579,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		StationPickerDrawSprite(171, 85, RAILTYPE_BEGIN, _cur_roadtype, image + 1);
 
 		DrawStationCoverageAreaText(2, 146,
-			((w->window_class == WC_BUS_STATION) ? (1 << CT_PASSENGERS) : ~(1 << CT_PASSENGERS)),
+			(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
 			3);
 
 	} break;

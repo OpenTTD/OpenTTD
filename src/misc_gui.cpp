@@ -751,16 +751,22 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 
 
 static void DrawStationCoverageText(const AcceptedCargo accepts,
-	int str_x, int str_y, uint mask)
+	int str_x, int str_y, StationCoverageType sct)
 {
 	char *b = _userstring;
 	bool first = true;
 
 	b = InlineString(b, STR_000D_ACCEPTS);
 
-	for (CargoID i = 0; i < NUM_CARGO; i++, mask >>= 1) {
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		if (b >= lastof(_userstring) - 5) break;
-		if (accepts[i] >= 8 && mask & 1) {
+		switch (sct) {
+			case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CC_PASSENGERS)) continue; break;
+			case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(i, CC_PASSENGERS)) continue; break;
+			case SCT_ALL: break;
+			default: NOT_REACHED();
+		}
+		if (accepts[i] >= 8) {
 			if (first) {
 				first = false;
 			} else {
@@ -779,12 +785,12 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 	DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);
 }
 
-void DrawStationCoverageAreaText(int sx, int sy, uint mask, int rad) {
+void DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad) {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
 	AcceptedCargo accepts;
 	if (tile < MapSize()) {
 		GetAcceptanceAroundTiles(accepts, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
-		DrawStationCoverageText(accepts, sx, sy, mask);
+		DrawStationCoverageText(accepts, sx, sy, sct);
 	}
 }
 

@@ -250,7 +250,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 			SetTileSelectSize(1, 1);
 		}
 
-		DrawStationCoverageAreaText(4, 50, (uint)-1, rad);
+		DrawStationCoverageAreaText(4, 50, SCT_ALL, rad);
 		break;
 	}
 

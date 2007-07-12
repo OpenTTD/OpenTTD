@@ -108,7 +108,13 @@ void ShowPlayerCompany(PlayerID player);
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y);
 
-void DrawStationCoverageAreaText(int sx, int sy, uint mask,int rad);
+enum StationCoverageType {
+	SCT_PASSENGERS_ONLY,
+	SCT_NON_PASSENGERS_ONLY,
+	SCT_ALL
+};
+
+void DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad);
 void CheckRedrawStationCoverage(const Window *w);
 
 void ShowSmallMap();

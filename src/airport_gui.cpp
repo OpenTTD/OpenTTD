@@ -183,7 +183,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 		// strings such as 'Size' and 'Coverage Area'
 		// 'Coverage Area'
-		DrawStationCoverageAreaText(2, 206, (uint)-1, rad);
+		DrawStationCoverageAreaText(2, 206, SCT_ALL, rad);
 		break;
 	}
 

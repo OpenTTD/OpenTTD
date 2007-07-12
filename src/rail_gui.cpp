@@ -778,7 +778,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		DrawStringCentered(74, 101 + y_offset, STR_3004_PLATFORM_LENGTH, 0);
 		DrawStringCentered(74, 141 + y_offset, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
 
-		DrawStationCoverageAreaText(2, 166 + y_offset, (uint)-1, rad);
+		DrawStationCoverageAreaText(2, 166 + y_offset, SCT_ALL, rad);
 
 		if (newstations) {
 			uint16 i;
