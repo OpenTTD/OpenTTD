@@ -73,7 +73,7 @@ uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid)
 {
 	const EntityIDMapping *map;
 
-	for (uint16 id = max_offset; id < max_new_entities; id++) {
+	for (uint16 id = 0; id < max_new_entities; id++) {
 		map = &mapping_ID[id];
 		if (map->entity_id == grf_local_id && map->grfid == grfid) {
 			return id;
