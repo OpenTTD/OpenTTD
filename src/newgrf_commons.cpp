@@ -265,5 +265,6 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile)
 	if (x >= 8) x -= 16;
 	if (y >= 8) y -= 16;
 
-	return tile + TileDiffXY(x, y);
+	/* Make sure we never roam outside of the map */
+	return TILE_MASK(tile + TileDiffXY(x, y));
 }
