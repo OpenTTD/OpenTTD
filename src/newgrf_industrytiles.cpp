@@ -244,7 +244,7 @@ bool PerformIndustryTileSlopeCheck(TileIndex tile, const IndustryTileSpec *its, 
 	if (its->grf_prop.grffile->grf_version < 7) {
 		return callback_res != 0;
 	}
-	if (callback_res != CALLBACK_FAILED) return true;
+	if (callback_res == CALLBACK_FAILED) return false;
 
 	switch (callback_res) {
 		case 0x400: return true;
