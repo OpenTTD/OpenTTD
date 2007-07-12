@@ -2143,8 +2143,12 @@ STR_4828_REQUIRES                                               :{BLACK}Потр
 STR_4829_REQUIRES                                               :{BLACK}Потребує: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Вантаж чекає на обробку:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Продукція: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Продукція: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Вироблено за місяць:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% перевезено)
@@ -3535,3 +3539,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Наст
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Попереднє позначення
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Фінансувати
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Огляд
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Будувати
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Виберіть необхідне виробництво

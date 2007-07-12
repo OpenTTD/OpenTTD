@@ -2765,7 +2765,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No es po
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que l'ordre marcada forci al vehicle a volcar la càrrega
 STR_886F_TRANSFER                                               :{BLACK}Transf.
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
-STR_RESET_LATENESS                                              :{BLACK}Reseteja el comptador de retrassos
+STR_RESET_LATENESS                                              :{BLACK}Reset. comptador de retràs
 
 STR_TRAIN_STOPPING                                              :{RED}Parant
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a {VELOCITY}
@@ -3277,10 +3277,10 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Centrar 
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Petit
-STR_CITY_AIRPORT                                                :{BLACK}Ciutadà
+STR_CITY_AIRPORT                                                :{BLACK}de Ciutat
 STR_METRO_AIRPORT                                               :{BLACK}Metropolità
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internacional
-STR_COMMUTER_AIRPORT                                            :{BLACK}Viatjer
+STR_COMMUTER_AIRPORT                                            :{BLACK}Regional
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
 STR_HELIPORT                                                    :{BLACK}Heliport
 STR_HELIDEPOT                                                   :{BLACK}Helihangar

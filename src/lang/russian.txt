@@ -1982,8 +1982,12 @@ STR_4828_REQUIRES                                               :{BLACK}Треб
 STR_4829_REQUIRES                                               :{BLACK}Требуется: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Груз, ожидающий переработки:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Произведено: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Произведено: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Произведено за прошлый месяц:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% перевезено)
@@ -3385,3 +3389,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}К сл�
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}К предыдущему знаку
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Профинансировать
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Разведать
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Построить
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Выберите тип производства из списка
