@@ -11,6 +11,7 @@ void SetPriceBaseMultiplier(uint price, byte factor);
 struct Economy {
 	Money max_loan;         ///< Maximum possible loan
 	Money max_loan_unround; ///< Economy fluctuation status
+	uint16 max_loan_unround_fract; ///< Fraction of the unrounded max loan
 	int fluct;
 	byte interest_rate;     ///< Interest
 	byte infl_amount;       ///< inflation amount

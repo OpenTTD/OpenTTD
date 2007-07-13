@@ -664,6 +664,23 @@ static void AddSingleInflation(Money *value, uint16 *frac, int32 amt)
 
 static void AddInflation()
 {
+	/* The cargo payment inflation differs from the normal inflation, so the
+	 * relative amount of money you make with a transport decreases slowly over
+	 * the 170 years. After a few hundred years we reach a level in which the
+	 * games will become unplayable as the maximum income will be less than
+	 * the minimum running cost.
+	 *
+	 * Furthermore there are a lot of inflation related overflows all over the
+	 * place. Solving them is hardly possible because inflation will always
+	 * reach the overflow threshold some day. So we'll just perform the
+	 * inflation mechanism during the first 170 years (the amount of years that
+	 * one had in the original TTD) and stop doing the inflation after that
+	 * because it only causes problems that can't be solved nicely and the
+	 * inflation doesn't add anything after that either; it even makes playing
+	 * it impossible due to the diverging cost and income rates.
+	 */
+	if ((_cur_year - _patches.starting_year) >= (ORIGINAL_MAX_YEAR - ORIGINAL_BASE_YEAR)) return;
+
 	/* Approximation for (100 + infl_amount)% ** (1 / 12) - 100%
 	 * scaled by 65536
 	 * 12 -> months per year
@@ -675,10 +692,9 @@ static void AddInflation()
 		AddSingleInflation((Money*)&_price + i, _price_frac + i, inf);
 	}
 
-	_economy.max_loan_unround += BIGMULUS(_economy.max_loan_unround, inf, 16);
+	AddSingleInflation(&_economy.max_loan_unround, &_economy.max_loan_unround_fract, inf);
 
-	if (_economy.max_loan + 50000 <= _economy.max_loan_unround)
-		_economy.max_loan += 50000;
+	if (_economy.max_loan + 50000 <= _economy.max_loan_unround) _economy.max_loan += 50000;
 
 	inf = _economy.infl_amount_pr * 54;
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
@@ -1902,6 +1918,7 @@ static const SaveLoad _economy_desc[] = {
 	SLE_CONDVAR(Economy, max_loan,         SLE_INT64,                  65, SL_MAX_VERSION),
 	SLE_CONDVAR(Economy, max_loan_unround, SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
 	SLE_CONDVAR(Economy, max_loan_unround, SLE_INT64,                  65, SL_MAX_VERSION),
+	SLE_CONDVAR(Economy, max_loan_unround_fract, SLE_UINT16,           70, SL_MAX_VERSION),
 	    SLE_VAR(Economy, fluct,            SLE_FILE_I16 | SLE_VAR_I32),
 	    SLE_VAR(Economy, interest_rate,    SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount,      SLE_UINT8),
