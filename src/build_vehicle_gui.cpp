@@ -672,7 +672,7 @@ static void GenerateBuildTrainList(Window *w)
 	int num_wagons  = 0;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
-	bv->filter.railtype = (w->window_number == 0) ? RAILTYPE_END : GetRailType(w->window_number);
+	bv->filter.railtype = (w->window_number <= VEH_END) ? RAILTYPE_END : GetRailType(w->window_number);
 
 	EngList_RemoveAll(&bv->eng_list);
 
@@ -764,7 +764,8 @@ static void GenerateBuildAircraftList(Window *w)
 	sel_id = INVALID_ENGINE;
 	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
 		if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_player)) continue;
-		if (w->window_number != 0 && !IsAircraftBuildableAtStation(eid, w->window_number)) continue;
+		/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
+		if (w->window_number > VEH_END && !IsAircraftBuildableAtStation(eid, w->window_number)) continue;
 
 		EngList_Add(&bv->eng_list, eid);
 		if (eid == bv->sel_engine) sel_id = eid;
@@ -887,7 +888,7 @@ static void DrawBuildVehicleWindow(Window *w)
 	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
 	uint max = min(w->vscroll.pos + w->vscroll.cap, EngList_Count(&bv->eng_list));
 
-	SetWindowWidgetDisabledState(w, BUILD_VEHICLE_WIDGET_BUILD, w->window_number == 0);
+	SetWindowWidgetDisabledState(w, BUILD_VEHICLE_WIDGET_BUILD, w->window_number <= VEH_END);
 
 	SetVScrollCount(w, EngList_Count(&bv->eng_list));
 	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
