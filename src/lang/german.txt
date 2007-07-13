@@ -1976,7 +1976,9 @@ STR_4828_REQUIRES                                               :{BLACK}Benötig
 STR_4829_REQUIRES                                               :{BLACK}Benötigt: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion im letzten Monat:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% befördert)
@@ -2627,6 +2629,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Wartung (ohne H
 STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_FOR                                        :Fahre für {STRING}
 STR_TIMETABLE_STAY_FOR                                          :und bleibe für {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} Tag{P "" e}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Unterwegs zu {TOWN} Zugdepot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Unterwegs zu {TOWN} Zugdepot, {VELOCITY}
@@ -3303,6 +3306,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Verände
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Verändere die Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige umschalten
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
@@ -3359,3 +3363,5 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Gehe zum
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Gehe zum vorherigen Schild
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Kapital

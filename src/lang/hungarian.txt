@@ -3480,5 +3480,7 @@ STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Előző 
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Alapít
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Támogat
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Épít
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Válaszd ki a megfelelő ipartípust a listából
