@@ -1055,12 +1055,17 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 {
 	buildvehicle_d *bv;
 	Window *w;
+	/* We want to be able to open both Available Train as Available Ships,
+	 *  so if tile == 0 (Available XXX Window), use 'type' as unique number.
+	 *  As it always is a low value, it won't collide with any real tile
+	 *  number. */
+	uint num = (tile == 0) ? (int)type : tile;
 
 	assert(IsPlayerBuildableVehicleType(type));
 
-	DeleteWindowById(WC_BUILD_VEHICLE, tile);
+	DeleteWindowById(WC_BUILD_VEHICLE, num);
 
-	w = AllocateWindowDescFront(&_build_vehicle_desc, tile);
+	w = AllocateWindowDescFront(&_build_vehicle_desc, num);
 
 	if (w == NULL) return;
 
