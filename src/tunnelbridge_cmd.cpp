@@ -898,7 +898,7 @@ uint GetBridgeFoundation(Slope tileh, Axis axis)
 static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay)
 {
 	static const SpriteID tram_offsets[2][6] = { { 107, 108, 109, 110, 111, 112 }, { 4, 5, 15, 16, 17, 18 } };
-	static const SpriteID back_offsets[6]    =   {  95,  95,  99, 102, 100, 101 };
+	static const SpriteID back_offsets[6]    =   {  95,  96,  99, 102, 100, 101 };
 	static const SpriteID front_offsets[6]   =   {  97,  98, 103, 106, 104, 105 };
 
 	static const uint size_x[6] = { 11, 16, 16, 16, 16, 16 };
