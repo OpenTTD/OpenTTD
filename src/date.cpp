@@ -273,6 +273,7 @@ void IncreaseDate()
 			RedrawAutosave();
 		}
 
+		InvalidateWindowClasses(WC_CHEATS);
 		PlayersMonthlyLoop();
 		EnginesMonthlyLoop();
 		TownsMonthlyLoop();
