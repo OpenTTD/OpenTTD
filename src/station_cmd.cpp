@@ -2411,6 +2411,21 @@ static void UpdateStationRating(Station *st)
 					}
 				}
 
+				/* At some point we really must cap the cargo. Previously this
+				 * was a strict 4095, but now we'll have a less strict, but
+				 * increasingly agressive truncation of the amount of cargo. */
+				static const uint WAITING_CARGO_THRESHOLD  = 1 << 12;
+				static const uint WAITING_CARGO_CUT_FACTOR = 1 <<  6;
+				static const uint MAX_WAITING_CARGO        = 1 << 15;
+
+				if (waiting > WAITING_CARGO_THRESHOLD) {
+					uint difference = waiting - WAITING_CARGO_THRESHOLD;
+					waiting -= (difference / WAITING_CARGO_CUT_FACTOR);
+
+					waiting = min(waiting, MAX_WAITING_CARGO);
+					waiting_changed = true;
+				}
+
 				if (waiting_changed) ge->cargo.Truncate(waiting);
 			}
 		}
