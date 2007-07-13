@@ -6,6 +6,9 @@
 #include "video_driver.hpp"
 
 class VideoDriver_Null: public VideoDriver {
+private:
+	uint ticks;
+
 public:
 	/* virtual */ const char *Start(const char * const *param);
 

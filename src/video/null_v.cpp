@@ -10,11 +10,10 @@
 #include "null_v.h"
 
 static FVideoDriver_Null iFVideoDriver_Null;
-static uint _null_ticks = 0;
 
 const char *VideoDriver_Null::Start(const char* const *parm)
 {
-	_null_ticks = GetDriverParamInt(parm, "ticks", 1000);
+	this->ticks = GetDriverParamInt(parm, "ticks", 1000);
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
 	/* Do not render, nor blit */
@@ -31,7 +30,7 @@ void VideoDriver_Null::MainLoop()
 {
 	uint i;
 
-	for (i = 0; i < _null_ticks; i++) {
+	for (i = 0; i < this->ticks; i++) {
 		GameLoop();
 		_screen.dst_ptr = NULL;
 		UpdateWindows();
