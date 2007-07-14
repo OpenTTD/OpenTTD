@@ -2080,8 +2080,12 @@ STR_4828_REQUIRES                                               :{BLACK}Vajab: {
 STR_4829_REQUIRES                                               :{BLACK}Vajab: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Käitlust ootav kaup:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Toodab: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Toodab: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Eelmise kuu valmistoodang:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% veetud)
@@ -3472,3 +3476,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Mine jä
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Mine eelmise märgi juurde
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Rahasta
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Uuri
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Ehita
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Vali siit nimistust sobiv tööstus

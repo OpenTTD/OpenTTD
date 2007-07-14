@@ -2060,8 +2060,12 @@ STR_4828_REQUIRES                                               :{BLACK}Potrebuj
 STR_4829_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Tovor na čakanju obdelave:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Proizvaja: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Proizvaja: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Proizvodnja prejšnjega meseca:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% prepeljano)
@@ -3452,3 +3456,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Pojdi na
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Pojdi na  predhodno oznako
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Ustanovi
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Obetajoča
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Zgradi
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Izberi primerno industrijo iz tega seznama

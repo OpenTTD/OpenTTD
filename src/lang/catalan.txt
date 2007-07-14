@@ -461,7 +461,7 @@ STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Títol d
 STR_STICKY_BUTTON                                               :{BLACK}Marca aquesta finestra com a no eliminable pel 'Tanca totes les Finestres'
 STR_RESIZE_BUTTON                                               :{BLACK}Prem i arrossega per canviar el tamany de la finestra
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Prem aquí per anar a la carpeta per defecte actual de desa/carrega
-STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolició d'edificis etc. en un quadre de terreny
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Enderroca edificis, etc. en un quadre de terreny
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Rebaixa una cantonada del terreny
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Eleva una cantonada del terreny
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Barra de desplaçament - desplaça la llista amunt/avall
@@ -777,7 +777,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C3_GAME_OPTIONS                                           :Opcions del Joc
 STR_02C5_DIFFICULTY_SETTINGS                                    :Paràmetres de dificultat
 STR_02C7_CONFIG_PATCHES                                         :Configura pedaços
-STR_NEWGRF_SETTINGS                                             :Configuracions de Newgrf
+STR_NEWGRF_SETTINGS                                             :Extensions NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Opcions de transparència
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostra els noms de les poblacions
@@ -904,7 +904,7 @@ STR_TOWNNAME_CATALAN                                            :Català
 
 STR_CURR_GBP                                                    :Lliures (£)
 STR_CURR_USD                                                    :Dòlars ($)
-STR_CURR_EUR                                                    :Euros (€)
+STR_CURR_EUR                                                    :Euro (€)
 STR_CURR_YEN                                                    :Iens (¥)
 STR_CURR_ATS                                                    :Shillings Austríacs (ATS)
 STR_CURR_BEF                                                    :Francs Belgues (BEF)
@@ -912,7 +912,7 @@ STR_CURR_CHF                                                    :Francs Suissos 
 STR_CURR_CZK                                                    :Corones Txeques (CZK)
 STR_CURR_DEM                                                    :Marcs Alemanys (DEM)
 STR_CURR_DKK                                                    :Corones Daneses (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
+STR_CURR_ESP                                                    :Pesseta (ESP)
 STR_CURR_FIM                                                    :Marcs Finesos (FIM)
 STR_CURR_FRF                                                    :Franc (FRF)
 STR_CURR_GRD                                                    :Dracmes Gregues (GRD)
@@ -1246,8 +1246,8 @@ STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Omple el
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}No es poden generar indústries...
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Obre la barra d'eines del terreny per elevar/rebaixar nivell, plantar arbres, etc.
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Creant paisatge
-STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Nivell de terreny
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Creació de paisatge
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Nivella el terreny
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres de tipus aleatori
@@ -2207,7 +2207,7 @@ STR_7018_TRAIN_INCOME                                           :{GOLD}Ingressos
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ingressos de Vehicles
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ingressos d'Avions
 STR_701B_SHIP_INCOME                                            :{GOLD}Ingressos de Vaixells
-STR_701C_LOAN_INTEREST                                          :{GOLD}Interessos del Prèstec
+STR_701C_LOAN_INTEREST                                          :{GOLD}Interessos del Préstec
 STR_701D_OTHER                                                  :{GOLD}Altres
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
@@ -2219,7 +2219,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gràfic de Rendiment d'Operacions
 STR_7026_BANK_BALANCE                                           :{WHITE}Balanç del Banc
 STR_7027_LOAN                                                   :{WHITE}Préstec
-STR_MAX_LOAN                                                    :{WHITE}Max. Prèstec:  {BLACK}{CURRENCY}
+STR_MAX_LOAN                                                    :{WHITE}Préstec Màxim:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Demana {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Amortitza {SKIP}{SKIP}{CURRENCY}
@@ -2765,7 +2765,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No es po
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que l'ordre marcada forci al vehicle a volcar la càrrega
 STR_886F_TRANSFER                                               :{BLACK}Transf.
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
-STR_RESET_LATENESS                                              :{BLACK}Reset. comptador de retràs
+STR_RESET_LATENESS                                              :{BLACK}Reset. control de retràs
 
 STR_TRAIN_STOPPING                                              :{RED}Parant
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a {VELOCITY}
@@ -3030,7 +3030,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. ing
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregat:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Càrrega:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Diner:
-STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prèstec:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstec:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Quantitat de vehicles. Inclou els automòbils, trens, vaixells i avions.
@@ -3044,12 +3044,12 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Quantita
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tens un prèstec elevat?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de punts sobre els punts possibles
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Paràmetres NewGRF
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuracions de Newgrf
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Extensions NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Extensions NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplica els canvis
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Estableix els paràmetres
-STR_NEWGRF_TIP                                                  :{BLACK}Llista de totes les opcions de Newgrf que has instal·lat. Prem en un grup d'opcions per canviar els seus atributs.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Ara no hi ha arxius de Newgrf instal·lats! Consulta el manual per a les instruccions d'instal·lació de nous gràfics.
+STR_NEWGRF_TIP                                                  :{BLACK}Llista de totes les opcions de NewGRF que has instal·lat. Prem en un grup d'opcions per canviar els seus atributs.
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Ara no hi ha arxius de NewGRF instal·lats! Consulta el manual per a les instruccions d'instal·lació de nous gràfics.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nom d'arxiu: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}Id de GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
@@ -3075,7 +3075,7 @@ STR_NEWGRF_MOVEUP                                               :{BLACK}Mou amun
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Mou amunt l'arxiu NewGRF seleccionat de la llista
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mou avall
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Mou avall l'arxiu NewGRF seleccionat de la llista
-STR_NEWGRF_FILE_TIP                                             :{BLACK}Una llista d'arxius NewGRF que ha estat instal·lada. Clica un arxiu per canviar els seus paràmetres
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Una llista d'arxius NewGRF que han estat instal·lats. Clica un arxiu per canviar els seus paràmetres
 STR_NEWGRF_PARAMETER                                            :{BLACK}Paràmetres: {SILVER}{STRING}
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Introdueix els paràmetres NewGRF
 STR_NEWGRF_NO_INFO                                              :{BLACK}No hi ha informació disponible
