@@ -9,6 +9,7 @@
 #include "macros.h"
 #include "table/control_codes.h"
 #include "helpers.hpp"
+#include "debug.h"
 
 #include <stdarg.h>
 #include <ctype.h> // required for tolower()
@@ -47,11 +48,14 @@ char* strecpy(char* dst, const char* src, const char* last)
 	assert(dst <= last);
 	for (; *src != '\0' && dst != last; ++dst, ++src) *dst = *src;
 	*dst = '\0';
-#if 1
 	if (dst == last && *src != '\0') {
+#ifdef STRGEN
 		error("String too long for destination buffer");
+#else /* STRGEN */
+		DEBUG(misc, 0, "String too long for destination buffer");
+		*dst = '\0';
+#endif /* STRGEN */
 	}
-#endif
 	return dst;
 }
 
