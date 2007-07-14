@@ -8,6 +8,7 @@
 #include "oldpool.h"
 
 enum {
+	ALL_GROUP     = 0xFFFD,
 	DEFAULT_GROUP = 0xFFFE,
 	INVALID_GROUP = 0xFFFF,
 };
@@ -50,7 +51,17 @@ static inline bool IsValidGroupID(GroupID index)
 
 static inline bool IsDefaultGroupID(GroupID index)
 {
-	return (index == DEFAULT_GROUP);
+	return index == DEFAULT_GROUP;
+}
+
+/**
+ * Checks if a GroupID stands for all vehicles of a player
+ * @param id_g The GroupID to check
+ * @return true is id_g is identical to ALL_GROUP
+ */
+static inline bool IsAllGroupID(GroupID id_g)
+{
+	return id_g == ALL_GROUP;
 }
 
 #define FOR_ALL_GROUPS_FROM(g, start) for (g = GetGroup(start); g != NULL; g = (g->index + 1U < GetGroupPoolSize()) ? GetGroup(g->index + 1) : NULL) if (IsValidGroup(g))
@@ -66,6 +77,25 @@ static inline uint GetGroupArraySize(void)
 
 	FOR_ALL_GROUPS(g) num++;
 
+	return num;
+}
+
+/**
+ * Get the number of engines with EngineID id_e in the group with GroupID
+ * id_g
+ * @param id_g The GroupID of the group used
+ * @param id_e The EngineID of the engine to count
+ * @return The number of engines with EngineID id_e in the group
+ */
+static inline uint GetGroupNumEngines(GroupID id_g, EngineID id_e)
+{
+	if (IsValidGroupID(id_g)) return GetGroup(id_g)->num_engines[id_e];
+
+	uint num = GetPlayer(_local_player)->num_engines[id_e];
+	if (!IsDefaultGroupID(id_g)) return num;
+
+	const Group *g;
+	FOR_ALL_GROUPS(g) num -= g->num_engines[id_e];
 	return num;
 }
 

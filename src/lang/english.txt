@@ -3333,6 +3333,10 @@ STR_GROUP_ALL_TRAINS                                            :All trains
 STR_GROUP_ALL_ROADS                                             :All road vehicles
 STR_GROUP_ALL_SHIPS                                             :All ships
 STR_GROUP_ALL_AIRCRAFTS                                         :All aircraft
+STR_GROUP_DEFAULT_TRAINS                                        :Ungrouped trains
+STR_GROUP_DEFAULT_ROADS                                         :Ungrouped road vehicles
+STR_GROUP_DEFAULT_SHIPS                                         :Ungrouped ships
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ungrouped aircraft
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Add shared vehicles
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remove all vehicles

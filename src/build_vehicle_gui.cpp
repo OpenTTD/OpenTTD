@@ -823,7 +823,6 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 	byte step_size = GetVehicleListHeight(type);
 	byte x_offset = 0;
 	byte y_offset = 0;
-	Player *p = GetPlayer(_local_player);
 
 	assert(max <= EngList_Count(&eng_list));
 
@@ -854,7 +853,7 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 
 	for (; min < max; min++, y += step_size) {
 		const EngineID engine = eng_list[min];
-		const uint num_engines = IsDefaultGroupID(selected_group) ? p->num_engines[engine] : GetGroup(selected_group)->num_engines[engine];
+		const uint num_engines = GetGroupNumEngines(selected_group, engine);
 
 		SetDParam(0, engine);
 		DrawString(x + x_offset, y, STR_ENGINE_NAME, engine == selected_id ? 0xC : 0x10);

@@ -112,6 +112,7 @@ enum GroupListWidgets {
 	GRP_WIDGET_STICKY,
 	GRP_WIDGET_EMPTY_TOP_LEFT,
 	GRP_WIDGET_ALL_VEHICLES,
+	GRP_WIDGET_DEFAULT_VEHICLES,
 	GRP_WIDGET_LIST_GROUP,
 	GRP_WIDGET_LIST_GROUP_SCROLLBAR,
 	GRP_WIDGET_SORT_BY_ORDER,
@@ -141,8 +142,9 @@ static const Widget _group_widgets[] = {
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   513,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   514,   525,     0,    13, 0x0,                  STR_STICKY_BUTTON},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   200,    14,    25, 0x0,                  STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   200,    26,    39, 0x0,                  STR_NULL},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   188,    39,   220, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   200,    26,    38, 0x0,                  STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   200,    39,    52, 0x0,                  STR_NULL},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   188,    52,   220, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   189,   200,    26,   220, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   201,   281,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,   282,   435,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
@@ -181,13 +183,13 @@ static void CreateVehicleGroupWindow(Window *w)
 		default: NOT_REACHED();
 		case VEH_TRAIN:
 		case VEH_ROAD:
-			w->vscroll.cap = 14;
+			w->vscroll.cap = 13;
 			w->vscroll2.cap = 8;
 			w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 			break;
 		case VEH_SHIP:
 		case VEH_AIRCRAFT:
-			w->vscroll.cap = 10;
+			w->vscroll.cap = 9;
 			w->vscroll2.cap = 4;
 			w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG2;
 			break;
@@ -214,7 +216,7 @@ static void CreateVehicleGroupWindow(Window *w)
 	gl->l.flags = VL_REBUILD | VL_NONE;
 	gl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
 
-	gv->group_sel = DEFAULT_GROUP;
+	gv->group_sel = ALL_GROUP;
 
 	switch (gv->vehicle_type) {
 		case VEH_TRAIN:
@@ -275,8 +277,8 @@ static void UpdateGroupActionDropdown(Window *w, GroupID gid, bool refresh = tru
 		INVALID_STRING_ID
 	};
 
-	action_str[3] = IsDefaultGroupID(gid) ? INVALID_STRING_ID : STR_GROUP_ADD_SHARED_VEHICLE;
-	action_str[4] = IsDefaultGroupID(gid) ? INVALID_STRING_ID : STR_GROUP_REMOVE_ALL_VEHICLES;
+	action_str[3] = IsValidGroupID(gid) ? STR_GROUP_ADD_SHARED_VEHICLE : INVALID_STRING_ID;
+	action_str[4] = IsValidGroupID(gid) ? STR_GROUP_REMOVE_ALL_VEHICLES : INVALID_STRING_ID;
 
 	ShowDropDownMenu(w, action_str, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN, 0, 0);
 }
@@ -314,9 +316,9 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			int max;
 			int i;
 
-			/* If we select the default group, gv->list will contain all vehicles of the player
+			/* If we select the all vehicles, gv->list will contain all vehicles of the player
 			 * else gv->list will contain all vehicles which belong to the selected group */
-			BuildVehicleList(gv, owner, gv->group_sel, IsDefaultGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST);
+			BuildVehicleList(gv, owner, gv->group_sel, IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST);
 			SortVehicleList(gv);
 
 
@@ -334,16 +336,16 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 					WIDGET_LIST_END);
 
-			/* Disable the group specific function when we select the default group */
-			SetWindowWidgetsDisabledState(w, IsDefaultGroupID(gv->group_sel),
+			/* Disable the group specific function when we select the default group or all vehicles */
+			SetWindowWidgetsDisabledState(w, IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel),
 					GRP_WIDGET_DELETE_GROUP,
 					GRP_WIDGET_RENAME_GROUP,
 					GRP_WIDGET_REPLACE_PROTECTION,
 					WIDGET_LIST_END);
 
-			/* If selected_group == DEFAULT_GROUP, draw the standard caption
-			   We list all vehicles */
-			if (IsDefaultGroupID(gv->group_sel)) {
+			/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
+			   We list all vehicles or ungrouped vehicles */
+			if (IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel)) {
 				SetDParam(0, p->index);
 				SetDParam(1, gv->l.list_length);
 
@@ -398,16 +400,32 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 			/* Draw Matrix Group
 			 * The selected group is drawn in white */
-			StringID str;
+			StringID str_all_veh, str_no_group_veh;
 
 			switch (gv->vehicle_type) {
-				case VEH_TRAIN:    str = STR_GROUP_ALL_TRAINS;    break;
-				case VEH_ROAD:     str = STR_GROUP_ALL_ROADS;     break;
-				case VEH_SHIP:     str = STR_GROUP_ALL_SHIPS;     break;
-				case VEH_AIRCRAFT: str = STR_GROUP_ALL_AIRCRAFTS; break;
+				case VEH_TRAIN:
+					str_all_veh = STR_GROUP_ALL_TRAINS;
+					str_no_group_veh = STR_GROUP_DEFAULT_TRAINS;
+					break;
+				case VEH_ROAD:
+					str_all_veh = STR_GROUP_ALL_ROADS;
+					str_no_group_veh = STR_GROUP_DEFAULT_ROADS;
+					break;
+				case VEH_SHIP:
+					str_all_veh = STR_GROUP_ALL_SHIPS;
+					str_no_group_veh = STR_GROUP_DEFAULT_SHIPS;
+					break;
+				case VEH_AIRCRAFT:
+					str_all_veh = STR_GROUP_ALL_AIRCRAFTS;
+					str_no_group_veh = STR_GROUP_DEFAULT_AIRCRAFTS;
+					break;
 				default: NOT_REACHED(); break;
 			}
-			DrawString(10, y1, str, IsDefaultGroupID(gv->group_sel) ? 12 : 16);
+			DrawString(10, y1, str_all_veh, IsAllGroupID(gv->group_sel) ? 12 : 16);
+
+			y1 += 13;
+
+			DrawString(10, y1, str_no_group_veh, IsDefaultGroupID(gv->group_sel) ? 12 : 16);
 
 			max = min(w->vscroll.pos + w->vscroll.cap, gl->l.list_length);
 			for (i = w->vscroll.pos ; i < max ; ++i) {
@@ -491,6 +509,15 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					return;
 
 				case GRP_WIDGET_ALL_VEHICLES: // All vehicles button
+					if (!IsAllGroupID(gv->group_sel)) {
+						gv->group_sel = ALL_GROUP;
+						gv->l.flags |= VL_REBUILD;
+						UpdateGroupActionDropdown(w, gv->group_sel);
+						SetWindowDirty(w);
+					}
+					break;
+
+				case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles button
 					if (!IsDefaultGroupID(gv->group_sel)) {
 						gv->group_sel = DEFAULT_GROUP;
 						gv->l.flags |= VL_REBUILD;
@@ -500,7 +527,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case GRP_WIDGET_LIST_GROUP: { // Matrix Group
-					uint16 id_g = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 13) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
+					uint16 id_g = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 26) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
 
 					if (id_g >= w->vscroll.cap) return;
 
@@ -544,14 +571,14 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				case GRP_WIDGET_DELETE_GROUP: { // Delete the selected group
 					GroupID group = gv->group_sel;
-					gv->group_sel = DEFAULT_GROUP;
+					gv->group_sel = ALL_GROUP;
 
 					DoCommandP(0, group, 0, NULL, CMD_DELETE_GROUP | CMD_MSG(STR_GROUP_CAN_T_DELETE));
 					break;
 				}
 
 				case GRP_WIDGET_RENAME_GROUP: { // Rename the selected roup
-					assert(!IsDefaultGroupID(gv->group_sel));
+					assert(IsValidGroupID(gv->group_sel));
 
 					const Group *g = GetGroup(gv->group_sel);
 
@@ -573,7 +600,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				case GRP_WIDGET_START_ALL:
 				case GRP_WIDGET_STOP_ALL: { // Start/stop all vehicles of the list
-					DoCommandP(0, gv->group_sel, ((IsDefaultGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
+					DoCommandP(0, gv->group_sel, ((IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
 														| (1 << 6)
 														| (e->we.click.widget == GRP_WIDGET_START_ALL ? (1 << 5) : 0)
 														| gv->vehicle_type, NULL, CMD_MASS_START_STOP);
@@ -582,7 +609,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				}
 
 				case GRP_WIDGET_REPLACE_PROTECTION:
-					if (!IsDefaultGroupID(gv->group_sel)) {
+					if (IsValidGroupID(gv->group_sel)) {
 						const Group *g = GetGroup(gv->group_sel);
 
 						DoCommandP(0, gv->group_sel, !g->replace_protection, NULL, CMD_SET_GROUP_REPLACE_PROTECTION);
@@ -594,7 +621,8 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 		case WE_DRAGDROP: {
 			switch (e->we.click.widget) {
-				case GRP_WIDGET_ALL_VEHICLES: // All trains
+				case GRP_WIDGET_ALL_VEHICLES: // All vehicles
+				case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles
 					DoCommandP(0, DEFAULT_GROUP, gv->vehicle_sel, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
 
 					gv->vehicle_sel = INVALID_VEHICLE;
@@ -604,7 +632,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case GRP_WIDGET_LIST_GROUP: { // Maxtrix group
-					uint16 id_g = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 13) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
+					uint16 id_g = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 26) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
 					const VehicleID vindex = gv->vehicle_sel;
 
 					gv->vehicle_sel = INVALID_VEHICLE;
@@ -691,21 +719,21 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 							ShowReplaceGroupVehicleWindow(gv->group_sel, gv->vehicle_type);
 							break;
 						case 1: // Send for servicing
-							DoCommandP(0, gv->group_sel, ((IsDefaultGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
+							DoCommandP(0, gv->group_sel, ((IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
 										| DEPOT_MASS_SEND
 										| DEPOT_SERVICE, NULL, GetCmdSendToDepot(gv->vehicle_type));
 							break;
 						case 2: // Send to Depots
-							DoCommandP(0, gv->group_sel, ((IsDefaultGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
+							DoCommandP(0, gv->group_sel, ((IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
 										| DEPOT_MASS_SEND, NULL, GetCmdSendToDepot(gv->vehicle_type));
 							break;
 						case 3: // Add shared Vehicles
-							assert(!IsDefaultGroupID(gv->group_sel));
+							assert(IsValidGroupID(gv->group_sel));
 
 							DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
 							break;
 						case 4: // Remove all Vehicles from the selected group
-							assert(!IsDefaultGroupID(gv->group_sel));
+							assert(IsValidGroupID(gv->group_sel));
 
 							DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
 							break;

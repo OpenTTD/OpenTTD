@@ -48,7 +48,7 @@ void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 {
 	Player *p = GetPlayer(_local_player);
 	byte type = GetEngine(e)->type;
-	uint num_engines = IsDefaultGroupID(id_g) ? p->num_engines[e] : GetGroup(id_g)->num_engines[e];
+	uint num_engines = GetGroupNumEngines(id_g, e);
 
 	if (num_engines == 0 || p->num_engines[e] == 0) {
 		/* We don't have any of this engine type.
@@ -140,7 +140,6 @@ static bool EnginesGotCargoInCommon(EngineID engine_a, EngineID engine_b)
  */
 static void GenerateReplaceVehList(Window *w, bool draw_left)
 {
-	Player *p = GetPlayer(_local_player);
 	EngineID e;
 	EngineID selected_engine = INVALID_ENGINE;
 	byte type = w->window_number;
@@ -154,7 +153,7 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 
 		if (draw_left) {
 			const GroupID selected_group = WP(w, replaceveh_d).sel_group;
-			const uint num_engines = IsDefaultGroupID(selected_group) ? p->num_engines[e] : GetGroup(selected_group)->num_engines[e];
+			const uint num_engines = GetGroupNumEngines(selected_group, e);
 
 			/* Skip drawing the engines we don't have any of and haven't set for replacement */
 			if (num_engines == 0 && EngineReplacementForPlayer(GetPlayer(_local_player), e, selected_group) == INVALID_ENGINE) continue;

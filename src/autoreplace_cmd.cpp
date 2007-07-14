@@ -138,11 +138,11 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 	 *  If not, chek if an global auto replacement is defined */
 	new_engine_type = (IsValidGroupID(old_v->group_id) && GetGroup(old_v->group_id)->replace_protection) ?
 			INVALID_ENGINE :
-			EngineReplacementForPlayer(p, old_v->engine_type, DEFAULT_GROUP);
+			EngineReplacementForPlayer(p, old_v->engine_type, ALL_GROUP);
 
 	/* If we don't set new_egnine_type previously, we try to check if an autoreplacement was defined
 	 *  for the group and the engine_type of the vehicle */
-	if (new_engine_type == INVALID_ENGINE && !IsDefaultGroupID(old_v->group_id)) {
+	if (new_engine_type == INVALID_ENGINE && !IsAllGroupID(old_v->group_id)) {
 		new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type, old_v->group_id);
 	}
 
@@ -346,10 +346,15 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 				if (IsValidGroupID(w->group_id)) {
 					if (!EngineHasReplacementForPlayer(p, w->engine_type, w->group_id) && (
 							GetGroup(w->group_id)->replace_protection ||
-							!EngineHasReplacementForPlayer(p, w->engine_type, DEFAULT_GROUP))) {
+							!EngineHasReplacementForPlayer(p, w->engine_type, ALL_GROUP))) {
 						continue;
 					}
-				} else if (!EngineHasReplacementForPlayer(p, w->engine_type, DEFAULT_GROUP)) {
+				} else if (IsDefaultGroupID(w->group_id)) {
+					if (!EngineHasReplacementForPlayer(p, w->engine_type, DEFAULT_GROUP) &&
+							!EngineHasReplacementForPlayer(p, w->engine_type, ALL_GROUP)) {
+						continue;
+					}
+				} else if (!EngineHasReplacementForPlayer(p, w->engine_type, ALL_GROUP)) {
 					continue;
 				}
 			}

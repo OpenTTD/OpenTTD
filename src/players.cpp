@@ -711,7 +711,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			GroupID id_g = GB(p1, 16, 16);
 			CommandCost cost;
 
-			if (!IsValidGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
+			if (!IsValidGroupID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
 			if (new_engine_type != INVALID_ENGINE) {
 				/* First we make sure that it's a valid type the user requested
 				 * check that it's an engine that is in the engine array */

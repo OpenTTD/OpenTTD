@@ -507,7 +507,7 @@ static EngineRenew *AllocateEngineRenew()
 
 		er->to = INVALID_ENGINE;
 		er->next = NULL;
-		er->group_id = DEFAULT_GROUP;
+		er->group_id = ALL_GROUP;
 		return er;
 	}
 
@@ -636,8 +636,12 @@ static void Load_ERNW()
 		er = GetEngineRenew(index);
 		SlObject(er, _engine_renew_desc);
 
-		/* Advanced vehicle lists got added */
-		if (CheckSavegameVersion(60)) er->group_id = DEFAULT_GROUP;
+		/* Advanced vehicle lists, ungrouped vehicles got added */
+		if (CheckSavegameVersion(60)) {
+			er->group_id = ALL_GROUP;
+		} else if (CheckSavegameVersion(71)) {
+			if (er->group_id == DEFAULT_GROUP) er->group_id = ALL_GROUP;
+		}
 	}
 }
 
