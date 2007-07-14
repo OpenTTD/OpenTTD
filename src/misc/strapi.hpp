@@ -6,12 +6,15 @@
 #define  STRAPI_HPP
 
 #include <string.h>
+
+#if defined(HAS_WCHAR)
 #include <wchar.h>
 
 #if !defined(_MSC_VER)
 #define _stricmp strcmp
 #define _wcsicmp wcscmp
-#endif //!_MSC_VER
+#endif /* !defined(_MSC_VER) */
+#endif /* HAS_WCHAR */
 
 /** String API mapper base - just mapping by character type, not by case sensitivity yet.
 	* Class template CStrApiBaseT declaration is general, but following inline method
@@ -32,20 +35,21 @@ template <> /*static*/ inline size_t CStrApiBaseT<char>::StrLen(const char *s)
 	return ::strlen(s);
 }
 
-/** ::strlen wrapper specialization for wchar_t */
-template <> /*static*/ inline size_t CStrApiBaseT<wchar_t>::StrLen(const wchar_t *s)
-{
-	return ::wcslen(s);
-}
-
 /** ::vsprintf wrapper specialization for char */
 template <> /*static*/ inline int CStrApiBaseT<char>::SPrintFL(char *buf, size_t count, const char *fmt, va_list args)
 {
 #if defined(_MSC_VER) && (_MSC_VER >= 1400) // VC 8.0 and above
 	return ::vsnprintf_s(buf, count, count - 1, fmt, args);
-#else // ! VC 8.0 and above
+#else /* ! VC 8.0 and above */
 	return ::vsnprintf(buf, count, fmt, args);
 #endif
+}
+
+#if defined(HAS_WCHAR)
+/** ::strlen wrapper specialization for wchar_t */
+template <> /*static*/ inline size_t CStrApiBaseT<wchar_t>::StrLen(const wchar_t *s)
+{
+	return ::wcslen(s);
 }
 
 /** ::vsprintf wrapper specialization for wchar_t */
@@ -53,14 +57,15 @@ template <> /*static*/ inline int CStrApiBaseT<wchar_t>::SPrintFL(wchar_t *buf, 
 {
 #if defined(_MSC_VER) && (_MSC_VER >= 1400) // VC 8.0 and above
 	return ::_vsnwprintf_s(buf, count, count - 1, fmt, args);
-#else // ! VC 8.0 and above
+#else /* ! VC 8.0 and above */
 # if defined(_WIN32)
 	 return ::_vsnwprintf(buf, count, fmt, args);
-# else // !_WIN32
+# else /* !_WIN32 */
 	 return ::vswprintf(buf, count, fmt, args);
-# endif // !_WIN32
+# endif /* !_WIN32 */
 #endif
 }
+#endif /* HAS_WCHAR */
 
 
 
@@ -81,6 +86,7 @@ template <> /*static*/ inline int CStrApiT<char, true>::StrCmp(const char *s1, c
 	return ::_stricmp(s1, s2);
 }
 
+#if defined(HAS_WCHAR)
 template <> /*static*/ inline int CStrApiT<wchar_t, false>::StrCmp(const wchar_t *s1, const wchar_t *s2)
 {
 	return ::wcscmp(s1, s2);
@@ -90,5 +96,6 @@ template <> /*static*/ inline int CStrApiT<wchar_t, true>::StrCmp(const wchar_t 
 {
 	return ::_wcsicmp(s1, s2);
 }
+#endif /* HAS_WCHAR */
 
 #endif /* STRAPI_HPP */

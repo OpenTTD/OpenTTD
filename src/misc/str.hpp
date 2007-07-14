@@ -183,7 +183,9 @@ struct CStrT : public CBlobT<Tchar>
 
 typedef CStrT<char   , false> CStrA;   ///< Case sensitive ANSI/UTF-8 string
 typedef CStrT<char   , true > CStrCiA; ///< Case insensitive ANSI/UTF-8 string
+#if defined(HAS_WCHAR)
 typedef CStrT<wchar_t, false> CStrW;   ///< Case sensitive unicode string
 typedef CStrT<wchar_t, true > CStrCiW; ///< Case insensitive unicode string
+#endif /* HAS_WCHAR */
 
 #endif /* STR_HPP */

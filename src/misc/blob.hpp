@@ -59,7 +59,9 @@ protected:
 	/** type used as class member */
 	union {
 		bitem_t    *m_pData;    ///< ptr to the first byte of data
+#if defined(HAS_WCHAR)
 		wchar_t    *m_pwData;   ///< ptr to the first byte of data
+#endif /* HAS_WCHAR */
 		CHdr       *m_pHdr_1;   ///< ptr just after the CHdr holding m_size and m_max_size
 	} ptr_u;
 
