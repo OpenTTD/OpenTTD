@@ -61,7 +61,10 @@ GCC295_FIX=sed -r 's/^(\t*)(.*)( const )([A-Za-z0-9_ ]+(\[.*\]){2,})(( = \{)|(;)
 #  gcc 2.95.3 and lower, as it should indicate that it is a C-linkage, but the
 #  compiler can't handle that information (just don't ask). So we remove it
 #  and then it compiles happily and without bitching :)
-GCC295_FIX_2=sed -e 's|\(^\# [0-9][0-9]* "[^"]*"[ 0-9]*\) 4$$|\1|g'
+# Furthermore gcc 2.95 has some trouble with protected and private when
+#  accessing the protected/private stuff of the enclosing class (or the
+#  super class of the enclosing class).
+GCC295_FIX_2=sed -e 's|\(^\# [0-9][0-9]* "[^"]*"[ 0-9]*\) 4$$|\1|g;s|private:|public:|g;s|protected:|public:|g'
 
 # Check if we want to show what we are doing
 ifdef VERBOSE
