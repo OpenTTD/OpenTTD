@@ -79,7 +79,11 @@ protected:
 		strecpy(buf, GetDriverTypeName(type), lastof(buf));
 		strecpy(buf + 5, name, lastof(buf));
 
-		std::pair<Drivers::iterator, bool> P = GetDrivers().insert(Drivers::value_type(buf, this));
+#if !defined(NDEBUG)
+		/* NDEBUG disables asserts and gives a warning: unused variable 'P' */
+		std::pair<Drivers::iterator, bool> P =
+#endif /* !NDEBUG */
+		GetDrivers().insert(Drivers::value_type(buf, this));
 		assert(P.second);
 	}
 

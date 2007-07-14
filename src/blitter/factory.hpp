@@ -39,7 +39,11 @@ protected:
 		if (name == NULL) return;
 
 		this->name = strdup(name);
-		std::pair<Blitters::iterator, bool> P = GetBlitters().insert(Blitters::value_type(name, this));
+#if !defined(NDEBUG)
+		/* NDEBUG disables asserts and gives a warning: unused variable 'P' */
+		std::pair<Blitters::iterator, bool> P =
+#endif /* !NDEBUG */
+		GetBlitters().insert(Blitters::value_type(name, this));
 		assert(P.second);
 	}
 
