@@ -1682,7 +1682,7 @@ void GenerateIndustries()
 			}
 
 			chance = ind_spc->appear_creation[_opt.landscape];
-			if (ind_spc->enabled) && chance > 0 {
+			if (ind_spc->enabled && chance > 0) {
 				/* once the chance of appearance is determind, it have to be scaled by
 				 * the difficulty level. The "chance" in question is more an index into
 				 * the _numof_industry_table,in fact */
