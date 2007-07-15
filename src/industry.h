@@ -49,11 +49,19 @@ enum CheckProc {
 	CHECK_END,
 };
 
+/** How was the industry created */
 enum IndustryConstructionType {
-	ICT_UNKNOWN,
-	ICT_NORMAL_GAMEPLAY,
-	ICT_MAP_GENERATION,
-	ICT_SCENARIO_EDITOR
+	ICT_UNKNOWN,          ///< in previous game version or without newindustries activated
+	ICT_NORMAL_GAMEPLAY,  ///< either by user or random creation proccess
+	ICT_MAP_GENERATION,   ///< during random map creation
+	ICT_SCENARIO_EDITOR   ///< while scenarion edition
+};
+
+/** From where is callback CBID_INDUSTRY_AVAILABLE been called */
+enum IndustryAvailabilityCallType {
+	IACT_MAPGENERATION,   ///< during random map generation
+	IACT_RANDOMCREATION,  ///< during creation of random ingame industry
+	IACT_USERCREATION,    ///< from the Fund/build window
 };
 
 enum IndustyBehaviour {
