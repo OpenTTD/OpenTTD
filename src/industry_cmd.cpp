@@ -68,6 +68,12 @@ void ResetIndustries()
 	memcpy(&_industry_tile_specs, &_origin_industry_tile_specs, sizeof(_origin_industry_tile_specs));
 }
 
+void ResetIndustryCreationProbility(IndustryType type)
+{
+	assert(type < INVALID_INDUSTRYTYPE);
+	_industry_specs[type].appear_creation[_opt.landscape] = 0;
+}
+
 /**
  * Called if a new block is added to the industry-pool
  */
@@ -1666,16 +1672,21 @@ void GenerateIndustries()
 	const IndustrySpec *ind_spc;
 
 	/* Find the total amount of industries */
-	for (it = IT_COAL_MINE; it < NUM_INDUSTRYTYPES; it++) {
+	if (_opt.diff.number_industries > 0) {
+		for (it = IT_COAL_MINE; it < NUM_INDUSTRYTYPES; it++) {
 
-		ind_spc = GetIndustrySpec(it);
-		if (ind_spc->enabled) {
+			ind_spc = GetIndustrySpec(it);
+
+			if (!CheckIfCallBackAllowsAvailability(it, IACT_MAPGENERATION)) {
+				ResetIndustryCreationProbility(it);
+			}
+
 			chance = ind_spc->appear_creation[_opt.landscape];
-			if (chance > 0) {
+			if (ind_spc->enabled) && chance > 0 {
 				/* once the chance of appearance is determind, it have to be scaled by
 				 * the difficulty level. The "chance" in question is more an index into
 				 * the _numof_industry_table,in fact */
-				int num = _numof_industry_table[_opt.diff.number_industries][chance];
+				int num = (chance < 11) ? chance : _numof_industry_table[_opt.diff.number_industries][chance];
 
 				/* These are always placed next to the coastline, so we scale by the perimeter instead. */
 				num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
@@ -1686,18 +1697,20 @@ void GenerateIndustries()
 
 	SetGeneratingWorldProgress(GWP_INDUSTRY, i);
 
-	for (it = IT_COAL_MINE; it < NUM_INDUSTRYTYPES; it++) {
-		/* Once the number of industries has been determined, let's really create them.
-		 * The test for chance allows us to try create industries that are available only
-		 * for this landscape.
-		 * @todo :  Do we really have to pass chance as un-scaled value, since we've already
-		 *          processed that scaling above? No, don't think so.  Will find a way. */
-		ind_spc = GetIndustrySpec(it);
-		if (ind_spc->enabled) {
-			chance = ind_spc->appear_creation[_opt.landscape];
-			if (chance > 0) PlaceInitialIndustry(it, chance);
+	if (_opt.diff.number_industries > 0) {
+		for (it = IT_COAL_MINE; it < NUM_INDUSTRYTYPES; it++) {
+			/* Once the number of industries has been determined, let's really create them.
+			 * The test for chance allows us to try create industries that are available only
+			 * for this landscape.
+			 * @todo :  Do we really have to pass chance as un-scaled value, since we've already
+			 *          processed that scaling above? No, don't think so.  Will find a way. */
+			ind_spc = GetIndustrySpec(it);
+			if (ind_spc->enabled) {
+				chance = ind_spc->appear_creation[_opt.landscape];
+				if (chance > 0) PlaceInitialIndustry(it, chance);
+			}
 		}
-	};
+	}
 }
 
 /* Change industry production or do closure */
@@ -1824,8 +1837,9 @@ static void MaybeNewIndustry(void)
 	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
 		byte chance = GetIndustrySpec(j)->appear_ingame[_opt.landscape];
 
-		/* if appearing chance for this landscape is above 0, this industry can be chosen */
-		if (chance != 0) {
+		/* If there is no Callback CBID_INDUSTRY_AVAILABLE or if this one did anot failed,
+		 * and if appearing chance for this landscape is above 0, this industry can be chosen */
+		if (CheckIfCallBackAllowsAvailability(j, IACT_RANDOMCREATION) && chance != 0) {
 			probability_max += chance;
 			/* adds the result for this industry */
 			cumulative_probs[num].ind = j;
