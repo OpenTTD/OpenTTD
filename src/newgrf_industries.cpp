@@ -380,6 +380,19 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 	return false;
 }
 
+bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCallType creation_type)
+{
+	const IndustrySpec *indspec = GetIndustrySpec(type);
+
+	if (HASBIT(indspec->callback_flags, CBM_IND_AVAILABLE)) {
+		uint16 res = GetIndustryCallback(CBID_INDUSTRY_AVAILABLE, 0, creation_type, NULL, type, INVALID_TILE);
+		if (res != CALLBACK_FAILED) {
+			return (res == 0);
+		}
+	}
+	return true;
+}
+
 static int32 DerefIndProd(uint field, bool use_register)
 {
 	return use_register ? (int32)GetRegister(field) : field;

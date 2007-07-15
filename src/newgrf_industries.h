@@ -14,6 +14,7 @@ uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Indust
 uint32 GetIndustryIDAtOffset(TileIndex new_tile, TileIndex old_tile, const Industry *i);
 void IndustryProductionCallback(Industry *ind, int reason);
 bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspec_index);
+bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCallType creation_type);
 
 IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id);
 
