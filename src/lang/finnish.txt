@@ -1034,6 +1034,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflaat
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Kuljeta rahti asemalle vain, kun on kysyntää: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Erittäin pitkien siltojen rakentaminen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Varikollemenomääräykset: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuaalinen raakateollisuuden rakentamistapa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ei mikään
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kuten muut tehtaat
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :koekaivaus
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Kaupungissa voi olla useita samanlaisia teollisuustyyppejä: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Samantyyppistä teollisuutta voidaan rakentaa lähekkäin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Näytä aina koko päiväys tilapalkissa: {ORANGE}{STRING}
@@ -1046,6 +1050,8 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Salli v
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Epäyhtenäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uusi globaali tienhakualgor. (NPF, korvaa NTP:n): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Kerroin rahdin painolle raskaiden junien simuilointiin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Läpiajettavat pysäkit kaupungin teille: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Vierekkäiset asemat: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Salli aina pienet lentokentät: {ORANGE}{STRING}
 
@@ -1086,6 +1092,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurin 
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Käänteinen vierityssuunta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Näkymän tasainen vieritys: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Näytä yrityksen tunnukset: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ei yhtään
@@ -1098,6 +1105,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Vieritä kartta
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Pois
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rullan nopeus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Uusi peli alkaa pysäytettynä: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Edistynyt ajoneuvolista: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Lastausindikaattorit: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Junia/pelaaja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Ajoneuvoja/pelaaja: {ORANGE}{STRING}
@@ -1950,6 +1959,11 @@ STR_4827_REQUIRES                                               :{BLACK}Tarvitse
 STR_4828_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
+
+############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Tuottaa: {YELLOW}{STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Tuotto viime kuussa:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}{NBSP}% kuljetettu)
@@ -3277,6 +3291,11 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Läpinä
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Läpinäkyvät sillat
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Läpinäkyvät rakenteet kuten majakat ja antennit
 
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Ryhmä {COMMA}
@@ -3314,6 +3333,22 @@ STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLAC
 STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Tulos tänä vuonna: {GREEN}{CURRENCY} {BLACK}(viime vuonna: {RED}{CURRENCY}{BLACK})
 STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Tulos tänä vuonna: {RED}{CURRENCY} {BLACK}(viime vuonna: {RED}{CURRENCY}{BLACK})
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nimen täytyy olla uniikki
+
+#### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Siirry seuraavaan kylttiin
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Siirry edelliseen kylttiin
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Perusta
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Koekaivaus
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Rakenna
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Valitse tehdas listasta

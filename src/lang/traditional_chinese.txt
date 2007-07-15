@@ -3333,6 +3333,10 @@ STR_GROUP_ALL_TRAINS                                            :所有列車
 STR_GROUP_ALL_ROADS                                             :所有車輛
 STR_GROUP_ALL_SHIPS                                             :所有船舶
 STR_GROUP_ALL_AIRCRAFTS                                         :所有飛機
+STR_GROUP_DEFAULT_TRAINS                                        :未分群組的列車
+STR_GROUP_DEFAULT_ROADS                                         :未分群組的車輛
+STR_GROUP_DEFAULT_SHIPS                                         :未分群組的船舶
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分群組的飛機
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :加入共用載具
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有載具

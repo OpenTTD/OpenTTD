@@ -3333,6 +3333,10 @@ STR_GROUP_ALL_TRAINS                                            :すべての列
 STR_GROUP_ALL_ROADS                                             :すべての道路車両
 STR_GROUP_ALL_SHIPS                                             :すべての船舶
 STR_GROUP_ALL_AIRCRAFTS                                         :すべての飛行機
+STR_GROUP_DEFAULT_TRAINS                                        :グループにされない列車
+STR_GROUP_DEFAULT_ROADS                                         :グループにされない道路車両
+STR_GROUP_DEFAULT_SHIPS                                         :グループにされない船舶
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :グループにされない飛行機
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :共有車両を追加
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :すべての車両を取り除く

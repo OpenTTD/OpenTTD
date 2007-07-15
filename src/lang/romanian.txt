@@ -1980,8 +1980,12 @@ STR_4828_REQUIRES                                               :{BLACK}Are nevo
 STR_4829_REQUIRES                                               :{BLACK}Are nevoie de: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Incarcatura in asteaptarea procesarii:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produce: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produce: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producţia lunii trecute:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportat)
@@ -3329,6 +3333,10 @@ STR_GROUP_ALL_TRAINS                                            :Toate trenurile
 STR_GROUP_ALL_ROADS                                             :Toate autovehiculele
 STR_GROUP_ALL_SHIPS                                             :Toate navele
 STR_GROUP_ALL_AIRCRAFTS                                         :Toate aeronavele
+STR_GROUP_DEFAULT_TRAINS                                        :Trenuri negrupate
+STR_GROUP_DEFAULT_ROADS                                         :Vehicule rutiere negrupate
+STR_GROUP_DEFAULT_SHIPS                                         :Nave negrupate
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronave negrupate
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adauga vehiculele partajate
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Elimina toate vehiculele
@@ -3372,3 +3380,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Mergi la
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Mergi la semnul anterior
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Finanteaza
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospecteaza
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Construieste
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Alege industria potrivita din acesta lista

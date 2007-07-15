@@ -1165,7 +1165,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlos
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Zastavit automaticky hru při začínání nové hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Používat pokročilý seznam vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Používat ukazatele naložení: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Povolit jizdní řády vozidel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Povolit jízdní řády vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazit jízdní řády v cyklech místo ve dnech: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standardní druh kolejí (v nové hře/po načtení hry): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normální koleje
@@ -2038,8 +2038,10 @@ STR_4828_REQUIRES                                               :{BLACK}Vyžaduj
 STR_4829_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Náklad čekající na zpracování:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkce minulý měsíc:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA} % přepraveno)
@@ -2694,8 +2696,8 @@ STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Jet bez zastave
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Údržba bez zastavení v železničním depu {TOWN}
 
 STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Výlet (mimo jízdní řád)
-STR_TIMETABLE_TRAVEL_FOR                                        :Výlet na {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
+STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
 STR_TIMETABLE_STAY_FOR                                          :a zůstat {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ny nů}
 STR_TIMETABLE_TICKS                                             :{COMMA} cykl{P us y ů}
@@ -3436,3 +3438,4 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Na dalš
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Na předešlý signál
 
 ########
+
