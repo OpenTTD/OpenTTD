@@ -105,7 +105,10 @@ public:
 		// base tile cost depending on distance
 		int c = IsDiagonalTrackdir(n.GetTrackdir()) ? 10 : 7;
 		// additional penalty for curves
-		if (n.m_parent != NULL && n.GetTrackdir() != n.m_parent->GetTrackdir()) c += 3;
+		if (n.m_parent != NULL && n.GetTrackdir() != NextTrackdir(n.m_parent->GetTrackdir())) {
+			/* new trackdir does not match the next one when going straight */
+			c += 10;
+		}
 		// apply it
 		n.m_cost = n.m_parent->m_cost + c;
 		return true;

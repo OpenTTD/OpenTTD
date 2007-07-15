@@ -134,13 +134,26 @@ public:
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	inline bool PfCalcEstimate(Node& n)
 	{
-		int dx = delta(TileX(n.GetTile()), TileX(m_destTile));
-		int dy = delta(TileY(n.GetTile()), TileY(m_destTile));
-		assert(dx >= 0 && dy >= 0);
-		int dd = min(dx, dy);
+		static int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
+		static int dg_dir_to_y_offs[] = {0, 1, 0, -1};
+		if (PfDetectDestination(n)) {
+			n.m_estimate = n.m_cost;
+			return true;
+		}
+
+		TileIndex tile = n.GetTile();
+		DiagDirection exitdir = TrackdirToExitdir(n.GetTrackdir());
+		int x1 = 2 * TileX(tile) + dg_dir_to_x_offs[(int)exitdir];
+		int y1 = 2 * TileY(tile) + dg_dir_to_y_offs[(int)exitdir];
+		int x2 = 2 * TileX(m_destTile);
+		int y2 = 2 * TileY(m_destTile);
+		int dx = abs(x1 - x2);
+		int dy = abs(y1 - y2);
+		int dmin = min(dx, dy);
 		int dxy = abs(dx - dy);
-		int d = 14 * dd + 10 * dxy;
-		n.m_estimate = n.m_cost + d /*+ d / 8*/;
+		int d = dmin * 7 + (dxy - 1) * (10 / 2);
+		n.m_estimate = n.m_cost + d;
+		assert(n.m_estimate >= n.m_parent->m_estimate);
 		return true;
 	}
 };
