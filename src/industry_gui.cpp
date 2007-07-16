@@ -264,53 +264,53 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 					} else if (HandlePlacePushButton(w, DYNA_INDU_FUND_WIDGET, SPR_CURSOR_INDUSTRY, 1, NULL)) {
 							WP(w, def_d).data_1 = _industrydata.select;
 					}
-				}
-				break;
-	} break;
-
-	case WE_RESIZE: {
-		w->vscroll.cap  += e->we.sizing.diff.y / (int)w->resize.step_height;
-		w->widget[DYNA_INDU_MATRIX_WIDGET].data = (w->vscroll.cap << 8) + 1;
-	} break;
-
-	case WE_PLACE_OBJ: {
-		IndustryType type = _industrydata.index[_industrydata.select];
-
-		if (WP(w, def_d).data_1 == -1) break;
-		if (_game_mode == GM_EDITOR) {
-			/* Show error if no town exists at all */
-			if (GetNumTowns() == 0) {
-				SetDParam(0, GetIndustrySpec(type)->name);
-				ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
-				return;
+				} break;
 			}
+			break;
 
-			_current_player = OWNER_NONE;
-			_generating_world = true;
-			_ignore_restrictions = true;
-			if (!TryBuildIndustry(e->we.place.tile, type)) {
-				SetDParam(0, GetIndustrySpec(type)->name);
-				ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
-			} else {
+		case WE_RESIZE: {
+			w->vscroll.cap  += e->we.sizing.diff.y / (int)w->resize.step_height;
+			w->widget[DYNA_INDU_MATRIX_WIDGET].data = (w->vscroll.cap << 8) + 1;
+		} break;
+
+		case WE_PLACE_OBJ: {
+			IndustryType type = _industrydata.index[_industrydata.select];
+
+			if (WP(w, def_d).data_1 == -1) break;
+			if (_game_mode == GM_EDITOR) {
+				/* Show error if no town exists at all */
+				if (GetNumTowns() == 0) {
+					SetDParam(0, GetIndustrySpec(type)->name);
+					ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
+					return;
+				}
+
+				_current_player = OWNER_NONE;
+				_generating_world = true;
+				_ignore_restrictions = true;
+				if (!TryBuildIndustry(e->we.place.tile, type)) {
+					SetDParam(0, GetIndustrySpec(type)->name);
+					ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
+				} else {
+					ResetObjectToPlace();
+				}
+				_ignore_restrictions = false;
+				_generating_world = false;
+			} else if (DoCommandP(e->we.place.tile, type, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY))) {
 				ResetObjectToPlace();
 			}
-			_ignore_restrictions = false;
-			_generating_world = false;
-		} else if (DoCommandP(e->we.place.tile, type, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY))) {
-			ResetObjectToPlace();
-		}
-	} break;
+		} break;
 
-	case WE_ABORT_PLACE_OBJ:
-		RaiseWindowButtons(w);
-		break;
-
-	case WE_TIMEOUT:
-		if (WP(w, def_d).data_1 == -1) {
+		case WE_ABORT_PLACE_OBJ:
 			RaiseWindowButtons(w);
-			WP(w, def_d).data_1 = 0;
-		}
-		break;
+			break;
+
+		case WE_TIMEOUT:
+			if (WP(w, def_d).data_1 == -1) {
+				RaiseWindowButtons(w);
+				WP(w, def_d).data_1 = 0;
+			}
+			break;
 	}
 }
 
