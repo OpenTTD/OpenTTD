@@ -5,8 +5,8 @@ autoreplace_cmd.cpp
 aystar.cpp
 bmp.cpp
 callback_table.cpp
-cargotype.cpp
 cargopacket.cpp
+cargotype.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
@@ -101,8 +101,8 @@ airport_movement.h
 articulated_vehicles.h
 aystar.h
 bmp.h
-cargotype.h
 cargopacket.h
+cargotype.h
 command.h
 console.h
 currency.h

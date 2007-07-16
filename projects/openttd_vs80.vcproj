@@ -468,11 +468,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\cargotype.cpp"
+				RelativePath=".\..\src\cargopacket.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\cargopacket.cpp"
+				RelativePath=".\..\src\cargotype.cpp"
 				>
 			</File>
 			<File
@@ -764,11 +764,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\cargotype.h"
+				RelativePath=".\..\src\cargopacket.h"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\cargopacket.h"
+				RelativePath=".\..\src\cargotype.h"
 				>
 			</File>
 			<File
