@@ -22,7 +22,7 @@ build-stamp:
 
 	# Add here commands to compile the package.
 	
-	./configure --prefix-dir=/usr --binary-dir=games --data-dir=share/games/openttd --icon-dir=share/pixmaps --personal-dir=.openttd --enable-install --install-dir=debian/openttd
+	./configure --prefix-dir=/usr --binary-dir=games --data-dir=share/games/openttd --icon-dir=share/pixmaps --personal-dir=.openttd --install-dir=debian/openttd
 	$(MAKE)
 
 	#/usr/bin/docbook-to-man debian/openttd.sgml > openttd.1
