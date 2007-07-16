@@ -169,7 +169,7 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(GetLockDirection(tile));
 
-	if (!CheckTileOwnership(tile)) return CMD_ERROR;
+	if (!CheckTileOwnership(tile) && GetTileOwner(tile) != OWNER_NONE) return CMD_ERROR;
 
 	/* make sure no vehicle is on the tile. */
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(tile + delta) || !EnsureNoVehicle(tile - delta))
@@ -296,7 +296,7 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 			}
 
-			if (GetTileOwner(tile) != OWNER_WATER && !CheckTileOwnership(tile)) return CMD_ERROR;
+			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE && !CheckTileOwnership(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			return CommandCost(_price.clear_water);
@@ -798,8 +798,10 @@ static void ChangeTileOwner_Water(TileIndex tile, PlayerID old_player, PlayerID 
 
 	if (new_player != PLAYER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
-	} else {
+	} else if (IsShipDepot(tile)) {
 		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+	} else {
+		SetTileOwner(tile, OWNER_NONE);
 	}
 }
 

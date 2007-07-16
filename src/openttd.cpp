@@ -2086,6 +2086,16 @@ bool AfterLoadGame()
 		FOR_ALL_INDUSTRIES(i) i->founder = OWNER_NONE;
 	}
 
+	if (CheckSavegameVersion(72)) {
+		/* Locks/shiplifts in very old savegames had OWNER_WATER as owner */
+		for (TileIndex t = 0; t < MapSize(); t++) {
+			if (IsTileType(t, MP_WATER) && GetWaterTileType(t) == WATER_TILE_LOCK &&
+					GetTileOwner(t) == OWNER_WATER) {
+				SetTileOwner(t, OWNER_NONE);
+			}
+		}
+	}
+
 	/* Recalculate */
 	Group *g;
 	FOR_ALL_GROUPS(g) {
