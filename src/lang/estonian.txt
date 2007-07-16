@@ -3433,6 +3433,10 @@ STR_GROUP_ALL_TRAINS                                            :Kõik raudteeve
 STR_GROUP_ALL_ROADS                                             :Kõik mootorsõidukid
 STR_GROUP_ALL_SHIPS                                             :Kõik laevad
 STR_GROUP_ALL_AIRCRAFTS                                         :Kõik lennukid
+STR_GROUP_DEFAULT_TRAINS                                        :Liigitamata rongid
+STR_GROUP_DEFAULT_ROADS                                         :Liigitamata sõidukid
+STR_GROUP_DEFAULT_SHIPS                                         :Liigitamata laevad
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Liigitamata õhusõidukid
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Kõik jagatud sõidukid
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik sõidukid

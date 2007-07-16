@@ -1980,6 +1980,13 @@ STR_4828_REQUIRES                                               :{BLACK}Equiresr
 STR_4829_REQUIRES                                               :{BLACK}Equiresray: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Argocay aitingway otay ebay ocessedpray:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Oducespray: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Oducespray: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Oductionpray astlay onthmay:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% ansportedtray)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Entrecay ethay ainmay iewvay onway industryway ocationlay
@@ -3326,6 +3333,10 @@ STR_GROUP_ALL_TRAINS                                            :Allway ainstray
 STR_GROUP_ALL_ROADS                                             :Allway oadray ehiclesvay
 STR_GROUP_ALL_SHIPS                                             :Allway ipsshay
 STR_GROUP_ALL_AIRCRAFTS                                         :Allway aircraftway
+STR_GROUP_DEFAULT_TRAINS                                        :Ungroupedway ainstray
+STR_GROUP_DEFAULT_ROADS                                         :Ungroupedway oadray ehiclesvay
+STR_GROUP_DEFAULT_SHIPS                                         :Ungroupedway ipsshay
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ungroupedway aircraftway
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Addway aredshay ehiclesvay
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Emoveray allway ehiclesvay
@@ -3369,3 +3380,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ogay ota
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ogay otay eviouspray ignsay
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Undfay
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Ospectpray
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Uildbay
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Oosechay ethay appropriateway industryway omfray isthay istlay

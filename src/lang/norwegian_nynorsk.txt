@@ -1035,6 +1035,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasj
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Lever varer til ein stasjon berre når varen trengst: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillat bygging av veldig lange bruer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillat 'køyr til jernbanestall'-ordre: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode for bygging av primærindustri: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :inga
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industriar
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekt
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillat fleire like industriar i samme by: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industriar av same type kan byggjast nær einannan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Alltid vis lang dato på statuslinja: {ORANGE}{STRING}
@@ -1976,6 +1980,13 @@ STR_4827_REQUIRES                                               :{BLACK}Treng: {
 STR_4828_REQUIRES                                               :{BLACK}Treng: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Treng: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
+
+############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Gods ventar på å bli behandla:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Lagar: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Lagar: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksjon førre månad:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA} % transportert)
@@ -3323,6 +3334,10 @@ STR_GROUP_ALL_TRAINS                                            :Alle tog
 STR_GROUP_ALL_ROADS                                             :Alle køyretøty
 STR_GROUP_ALL_SHIPS                                             :Alle skip
 STR_GROUP_ALL_AIRCRAFTS                                         :Alle fly
+STR_GROUP_DEFAULT_TRAINS                                        :Tog utan gruppe
+STR_GROUP_DEFAULT_ROADS                                         :køyretøy utan gruppe
+STR_GROUP_DEFAULT_SHIPS                                         :Skip utan gruppe
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Fly utan gruppe
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Legg til delte køyretøy
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle køyretøy
@@ -3366,3 +3381,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Gå til 
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Gå til førre skilt
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Finansier
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospekt
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Bygg
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Vel den rette industritypen frå lista

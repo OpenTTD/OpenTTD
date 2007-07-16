@@ -852,14 +852,14 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Vælg 't
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Vælg 'subarktisk' landskab
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Vælg 'subtropisk' landskab
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Vælg 'legetøjsland' landskab
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financiér opførelse af ny industri
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finansiér opførelse af ny industri
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industrioversigt
-STR_0313_FUND_NEW_INDUSTRY                                      :Opfør ny industri
+STR_0313_FUND_NEW_INDUSTRY                                      :Finansiér ny industri
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Opfør ny industri
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansiér ny industri
 STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan kun bygges i regnskovsområder
@@ -1762,17 +1762,17 @@ STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Handling
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Lille reklamekampagne
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Mellem reklamekampagne
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Stor reklamekampagne
-STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Betal for lokal vejfornyelse
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Finansiér lokal vejfornyelse
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Byg en statue af selskabets ejer
-STR_204B_FUND_NEW_BUILDINGS                                     :Betal for opførsel af nye bygninger
+STR_204B_FUND_NEW_BUILDINGS                                     :Finansiér opførsel af nye bygninger
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Køb eksklusive transportrettigheder i byen
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Bestik de lokale myndigheder
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Start en lille reklamekampagne for at tiltrække flere passagerer og last til dine stationer.{}  Pris: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Start en mellem reklamekampagne, for at tiltrække flere passagerer og last til dine stationer.{}  Pris: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Start en stor reklamekampagne, for at tiltrække flere passagerer og last til dine stationer.{}  Pris: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Betal for vejfornyelse i midtbyen. Forårsager stor forstyrrelse af vejnettet i de næste 6 måneder.{}  Pris: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Finansiér vejfornyelse i midtbyen. Forårsager stor forstyrrelse af vejnettet i de næste 6 måneder.{}  Pris: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Byg en statue til ære for dit selskab.{} Pris: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Betal for opførelse af forretningsbygninger i byen.{}  Pris: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finansiér opførelse af forretningsbygninger i byen.{}  Pris: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Køb et års eksklusive rettigheder til transport i byen. De lokale myndigheder vil kun tillade passagerer og last at bruge dine stationer.{} Prist: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestik de lokale myndigheder til at hæve din bedømmelse, med risiko for en stor straf hvis det bliver opdaget.{}  Pris: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i byen {TOWN}!{}{}Vejfornyelse betalt af {COMPANY} forårsager 6 måneders kaos i trafikken!
@@ -1980,8 +1980,12 @@ STR_4828_REQUIRES                                               :{BLACK}Kræver:
 STR_4829_REQUIRES                                               :{BLACK}Kræver: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Fragt der venter på forarbejdning:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Producerer: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Producerer: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion sidste måned:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporteret)
@@ -3329,6 +3333,10 @@ STR_GROUP_ALL_TRAINS                                            :Alle toge
 STR_GROUP_ALL_ROADS                                             :Alle vejkøretøjer
 STR_GROUP_ALL_SHIPS                                             :Alle skibe
 STR_GROUP_ALL_AIRCRAFTS                                         :Alle fly
+STR_GROUP_DEFAULT_TRAINS                                        :Ikke-grupperede tog
+STR_GROUP_DEFAULT_ROADS                                         :Ikke-grupperede vejkøretøjer
+STR_GROUP_DEFAULT_SHIPS                                         :Ikke-grupperede skibe
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ikke-grupperede fly
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Tilføj delte køretøjer
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle køretøjer
@@ -3372,3 +3380,8 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Gå til 
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Gå til forrige skilt
 
 ########
+
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Finansiér
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Efterforsk
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Byg
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Vælg passende industri fra denne liste

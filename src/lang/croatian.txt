@@ -2638,6 +2638,8 @@ STR_TIMETABLE_GO_TO                                             :{STRING} {STRIN
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (bez rasporeda)
 STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i boravak za {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} dan{P "" a a}
+STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" a ova}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE} Krećem za {TOWN} Željezničko Skladište
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE} Krećem za {TOWN} Željezničko Skladište, {VELOCITY}
@@ -2655,6 +2657,7 @@ STR_8815_NEW_VEHICLES                                           :{BLACK}Nova voz
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak predugačak
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlakovi mogu biti izmjenjeni jedino kad su zaustavljeni u spremištu
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Vlak{P "" a ova}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova željeznička vozila
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nova vozila električne pruge
@@ -2789,6 +2792,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Napuni r
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestovno vozilo na putu
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Cestovno vozilo{P "" a a}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Spremište cestovnih vozila
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nova vozila
@@ -3338,6 +3342,9 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj dijeljena vozila
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ukloni sva vozila
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Vlak{P "" a ova}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA}  Cestovno vozil{P o a a}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Brod{P "" a ova}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Zrakoplov
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj grupu
 STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Zamjeni vozila "{GROUP}"

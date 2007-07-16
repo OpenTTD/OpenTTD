@@ -3346,6 +3346,10 @@ STR_GROUP_ALL_TRAINS                                            :Все поез
 STR_GROUP_ALL_ROADS                                             :Весь автотранспорт
 STR_GROUP_ALL_SHIPS                                             :Все корабли
 STR_GROUP_ALL_AIRCRAFTS                                         :Все самолёты
+STR_GROUP_DEFAULT_TRAINS                                        :Без группы
+STR_GROUP_DEFAULT_ROADS                                         :Без группы
+STR_GROUP_DEFAULT_SHIPS                                         :Без группы
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Без группы
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добавить с общими заданиями
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Удалить всех

@@ -3333,10 +3333,10 @@ STR_GROUP_ALL_TRAINS                                            :Todos os Comboi
 STR_GROUP_ALL_ROADS                                             :Todos os veículos de estrada
 STR_GROUP_ALL_SHIPS                                             :Todos os barcos
 STR_GROUP_ALL_AIRCRAFTS                                         :Todas as aeronaves
-STR_GROUP_DEFAULT_TRAINS                                        :Comboios desagrupados
-STR_GROUP_DEFAULT_ROADS                                         :Veículos desagrupados
-STR_GROUP_DEFAULT_SHIPS                                         :Barcos desagrupados
-STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves desagrupadas
+STR_GROUP_DEFAULT_TRAINS                                        :Comboios sem grupo
+STR_GROUP_DEFAULT_ROADS                                         :Veículos sem grupo
+STR_GROUP_DEFAULT_SHIPS                                         :Barcos sem grupo
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sem grupo
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adic. veíc. partilh.
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos

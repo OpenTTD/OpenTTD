@@ -3334,6 +3334,10 @@ STR_GROUP_ALL_TRAINS                                            :모든 기차
 STR_GROUP_ALL_ROADS                                             :모든 차량
 STR_GROUP_ALL_SHIPS                                             :모든 선박
 STR_GROUP_ALL_AIRCRAFTS                                         :모든 항공기
+STR_GROUP_DEFAULT_TRAINS                                        :그룹에 속하지 않은 기차
+STR_GROUP_DEFAULT_ROADS                                         :그룹에 속하지 않은 차량
+STR_GROUP_DEFAULT_SHIPS                                         :그룹에 속하지 않은 선박
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :그룹에 속하지 않은 항공기
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :모든 공유된 차량
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거

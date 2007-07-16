@@ -3337,6 +3337,10 @@ STR_GROUP_ALL_TRAINS                                            :Todos os trens
 STR_GROUP_ALL_ROADS                                             :Todos os automóveis
 STR_GROUP_ALL_SHIPS                                             :Todos os navios
 STR_GROUP_ALL_AIRCRAFTS                                         :Todas as aeronaves
+STR_GROUP_DEFAULT_TRAINS                                        :Trens sem grupo
+STR_GROUP_DEFAULT_ROADS                                         :Automóveis sem grupo
+STR_GROUP_DEFAULT_SHIPS                                         :Navios sem grupo
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sem grupo
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adicionar veículos compartilhados
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos

@@ -3413,6 +3413,10 @@ STR_GROUP_ALL_TRAINS                                            :Vsi vlaki
 STR_GROUP_ALL_ROADS                                             :Vsa cestna vozila
 STR_GROUP_ALL_SHIPS                                             :Vse ladje
 STR_GROUP_ALL_AIRCRAFTS                                         :Vsa letala
+STR_GROUP_DEFAULT_TRAINS                                        :Vlaki brez skupine
+STR_GROUP_DEFAULT_ROADS                                         :Cestna vozila brez skupine
+STR_GROUP_DEFAULT_SHIPS                                         :Ladje brez skupine
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Letala brez skupine
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Vsa izmenljiva vozila
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstrani vsa vozila

@@ -1107,7 +1107,15 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rullan 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Uusi peli alkaa pysäytettynä: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Edistynyt ajoneuvolista: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Lastausindikaattorit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Tavallinen raide
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Sähköraide
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Yksiraiteinen
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Ensimmäinen
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Viimeinen
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Yleisin
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Näytä rakennustyökalut, kun sopivaa ajoneuvoa ei ole: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Junia/pelaaja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Ajoneuvoja/pelaaja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Lentokoneita/pelaaja: {ORANGE}{STRING}
@@ -1401,6 +1409,10 @@ STR_NETWORK_LANG_ANY                                            :mikä tahansa
 STR_NETWORK_LANG_ENGLISH                                        :englanti
 STR_NETWORK_LANG_GERMAN                                         :saksa
 STR_NETWORK_LANG_FRENCH                                         :ranska
+STR_NETWORK_LANG_BRAZILIAN                                      :brasilia
+STR_NETWORK_LANG_BULGARIAN                                      :bulgaria
+STR_NETWORK_LANG_CHINESE                                        :kiina
+STR_NETWORK_LANG_CZECH                                          :tšekki
 STR_NETWORK_LANG_DANISH                                         :tanska
 STR_NETWORK_LANG_DUTCH                                          :hollanti
 STR_NETWORK_LANG_ESPERANTO                                      :esperanto
@@ -1904,6 +1916,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Asemaa e
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Tallennus epäonnistui.{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Tiedostoa ei voi poistaa.
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Lataus epäonnistui.{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Sisäinen virhe: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Viallinen tallennus - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Tallennus on tehty uudemalla versiolla
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Tiedostoa ei voi lukea
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Tiedostoa ei voi kirjoittaa
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista asemista, hakemistoista ja tallennetuista peleistä.
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Valittu nimi pelitallenteelle.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Poista valittu pelitallenne.
@@ -1961,8 +1978,10 @@ STR_4829_REQUIRES                                               :{BLACK}Tarvitse
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Rahti odottaa käsittelyä:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
 STR_4827_PRODUCES                                               :{BLACK}Tuottaa: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Tuottaa: {YELLOW}{STRING}, {STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Tuotto viime kuussa:
@@ -2079,6 +2098,7 @@ STR_SV_STNAME_UPPER                                             :Ylä-{STRING}
 STR_SV_STNAME_LOWER                                             :Ala-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}, helikopterikenttä
 STR_SV_STNAME_FOREST                                            :{STRING}, metsä
+STR_SV_STNAME_FALLBACK                                          :{STRING} Asema {NUM}
 
 ############ end of savegame specific region!
 
@@ -2761,6 +2781,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuta ai
 STR_TIMETABLE_STATUS_ON_TIME                                    :Ajoneuvo on aikataulussa
 STR_TIMETABLE_STATUS_LATE                                       :Ajoneuvo on {STRING} myöhässä
 STR_TIMETABLE_STATUS_EARLY                                      :Ajoneuvo on {STRING} etuajassa
+STR_TIMETABLE_TOTAL_TIME                                        :Aikataulun kesto on {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Aikataulun kesto on vähintään {STRING}
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaattinen
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Luo aikataulu automaattisesti ensimmäisen matkan arvoilla
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Ajoneuvo tiellä.
@@ -3290,7 +3314,9 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Läpinä
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Läpinäkyvät asemat, varikot, rastit ja sähkölinjat
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Läpinäkyvät sillat
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Läpinäkyvät rakenteet kuten majakat ja antennit
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Läpinäkyvät lastausilmaisimet
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
@@ -3304,6 +3330,10 @@ STR_GROUP_ALL_TRAINS                                            :Kaikki junat
 STR_GROUP_ALL_ROADS                                             :Kaikki autot
 STR_GROUP_ALL_SHIPS                                             :Kaikki laivat
 STR_GROUP_ALL_AIRCRAFTS                                         :Kaikki lentoalukset
+STR_GROUP_DEFAULT_TRAINS                                        :Muut junat
+STR_GROUP_DEFAULT_ROADS                                         :Muut autot
+STR_GROUP_DEFAULT_SHIPS                                         :Muut laivat
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Muut lentokoneet
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Lisää jaettuja ajoneuvoja
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki ajoneuvot

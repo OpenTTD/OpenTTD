@@ -3333,6 +3333,10 @@ STR_GROUP_ALL_TRAINS                                            :Tots els trens
 STR_GROUP_ALL_ROADS                                             :Tots els vehicles
 STR_GROUP_ALL_SHIPS                                             :Tots els vaixells
 STR_GROUP_ALL_AIRCRAFTS                                         :Tots els avions
+STR_GROUP_DEFAULT_TRAINS                                        :Trens desagrupats
+STR_GROUP_DEFAULT_ROADS                                         :Vehicles desagrupats
+STR_GROUP_DEFAULT_SHIPS                                         :Vaixells desagrupats
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Avions desagrupats
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Afegeix vehicles compartits
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Treu tots els vehicles
