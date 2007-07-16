@@ -10,6 +10,7 @@
 #include "functions.h"
 #include "landscape.h"
 #include "station_map.h"
+#include "strings.h"
 #include "table/strings.h"
 #include "map.h"
 #include "tile.h"

@@ -11,6 +11,7 @@
 #include "gui.h"
 #include "station_map.h"
 #include "table/strings.h"
+#include "strings.h"
 #include "map.h"
 #include "tile.h"
 #include "tunnel_map.h"

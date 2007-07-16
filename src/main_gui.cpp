@@ -1917,7 +1917,7 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos)
 	if (ni->display_mode == 3) {
 		str = _get_news_string_callback[ni->callback](ni);
 	} else {
-		COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
+		CopyInDParam(0, ni->params, lengthof(ni->params));
 		str = ni->string_id;
 	}
 

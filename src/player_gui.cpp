@@ -6,6 +6,7 @@
 #include "openttd.h"
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "strings.h"
 #include "functions.h"
 #include "window.h"
 #include "gui.h"

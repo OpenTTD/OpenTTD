@@ -5,6 +5,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../string.h"
+#include "../openttd.h"
 #include "../strings.h"
 #include "network_data.h"
 #include "core/tcp.h"

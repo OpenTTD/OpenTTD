@@ -13,6 +13,7 @@
 #include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "strings.h"
 #include "table/tree_land.h"
 #include "map.h"
 #include "window.h"
@@ -500,9 +501,9 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		COPY_IN_DPARAM(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
+		CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
 		DrawWindowWidgets(w);
-		COPY_IN_DPARAM(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
+		CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
 		if (!IsWindowOfPrototype(w, _errmsg_face_widgets)) {
 			DrawStringMultiCenter(
 				120,
@@ -569,7 +570,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 
 	_errmsg_message_1 = msg_1;
 	_errmsg_message_2 = msg_2;
-	COPY_OUT_DPARAM(_errmsg_decode_params, 0, lengthof(_errmsg_decode_params));
+	CopyOutDParam(_errmsg_decode_params, 0, lengthof(_errmsg_decode_params));
 	_errmsg_duration = _patches.errmsg_duration;
 	if (!_errmsg_duration) return;
 
@@ -1235,9 +1236,9 @@ static void QueryWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 		case WE_PAINT:
-			COPY_IN_DPARAM(0, q->params, lengthof(q->params));
+			CopyInDParam(0, q->params, lengthof(q->params));
 			DrawWindowWidgets(w);
-			COPY_IN_DPARAM(0, q->params, lengthof(q->params));
+			CopyInDParam(0, q->params, lengthof(q->params));
 
 			DrawStringMultiCenter(w->width / 2, (w->height / 2) - 10, q->message, w->width - 2);
 			break;
@@ -1315,7 +1316,7 @@ void ShowQuery(StringID caption, StringID message, Window *parent, void (*callba
 
 	/* Create a backup of the variadic arguments to strings because it will be
 	 * overridden pretty often. We will copy these back for drawing */
-	COPY_OUT_DPARAM(WP(w, query_d).params, 0, lengthof(WP(w, query_d).params));
+	CopyOutDParam(WP(w, query_d).params, 0, lengthof(WP(w, query_d).params));
 	w->widget[QUERY_WIDGET_CAPTION].data = caption;
 	WP(w, query_d).message    = message;
 	WP(w, query_d).proc       = callback;

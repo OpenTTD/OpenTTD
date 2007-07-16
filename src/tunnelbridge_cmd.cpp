@@ -12,6 +12,7 @@
 #include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "strings.h"
 #include "functions.h"
 #include "map.h"
 #include "landscape.h"

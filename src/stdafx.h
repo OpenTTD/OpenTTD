@@ -349,4 +349,8 @@ CDECL error(const char *str, ...);
 #define _stricmp stricmp
 #endif /* !defined(MORHPOS) */
 
+#if !defined(MAX_PATH)
+# define MAX_PATH 260
+#endif
+
 #endif /* STDAFX_H */

@@ -10,6 +10,7 @@
 #include "ship.h"
 #include "aircraft.h"
 #include "table/strings.h"
+#include "strings.h"
 #include "table/sprites.h"
 #include "gui.h"
 #include "gfx.h"

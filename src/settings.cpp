@@ -29,6 +29,7 @@
 #include "string.h"
 #include "variables.h"
 #include "network/network.h"
+#include "strings.h"
 #include "settings.h"
 #include "command.h"
 #include "console.h"

@@ -8,9 +8,6 @@
 #include "yapf/yapf_settings.h"
 
 /* ********* START OF SAVE REGION */
-#if !defined(MAX_PATH)
-# define MAX_PATH 260
-#endif
 
 #include "gfx.h"
 
@@ -292,8 +289,6 @@ VARDEF bool _news_ticker_sound;
 VARDEF StringID _error_message;
 VARDEF Money _additional_cash_required;
 
-VARDEF uint64 _decode_parameters[20];
-
 VARDEF bool _rightclick_emulate;
 
 /* IN/OUT parameters to commands */
@@ -320,23 +315,6 @@ VARDEF Vehicle *_place_clicked_vehicle;
 
 VARDEF char _ini_videodriver[32], _ini_musicdriver[32], _ini_sounddriver[32];
 
-/** Information about a language */
-struct Language {
-	char *name; ///< The internal name of the language
-	char *file; ///< The name of the language as it appears on disk
-};
-
-/** Used for dynamic language support */
-struct DynamicLanguages {
-	int num;                         ///< Number of languages
-	int curr;                        ///< Currently selected language index
-	char curr_file[MAX_PATH];        ///< Currently selected language file name without path (needed for saving the filename of the loaded language).
-	StringID dropdown[MAX_LANG + 1]; ///< List of languages in the settings gui
-	Language ent[MAX_LANG];          ///< Information about the languages
-};
-
-extern DynamicLanguages _dynlang; // defined in strings.cpp
-
 VARDEF int _num_resolutions;
 VARDEF uint16 _resolutions[32][2];
 VARDEF uint16 _cur_resolution[2];
@@ -346,43 +324,6 @@ VARDEF char _savegame_format[8];
 VARDEF char *_config_file;
 VARDEF char *_highscore_file;
 VARDEF char *_log_file;
-
-
-static inline void SetDParamX(uint64 *s, uint n, uint64 v)
-{
-	s[n] = v;
-}
-
-static inline uint64 GetDParamX(const uint64 *s, uint n)
-{
-	return s[n];
-}
-
-static inline void SetDParam(uint n, uint64 v)
-{
-	assert(n < lengthof(_decode_parameters));
-	_decode_parameters[n] = v;
-}
-
-static inline uint64 GetDParam(uint n)
-{
-	assert(n < lengthof(_decode_parameters));
-	return _decode_parameters[n];
-}
-
-/* Used to bind a C string name to a dparam number.
- * NOTE: This has a short lifetime. You can't
- *       use this string much later or it will be gone. */
-void SetDParamStr(uint n, const char *str);
-
-/** This function takes a C-string and allocates a temporary string ID.
- * The duration of the bound string is valid only until the next acll to GetString,
- * so be careful. */
-StringID BindCString(const char *str);
-
-
-#define COPY_IN_DPARAM(offs, src, num) memcpy(_decode_parameters + offs, src, sizeof(uint64) * (num))
-#define COPY_OUT_DPARAM(dst, offs, num) memcpy(dst, _decode_parameters + offs, sizeof(uint64) * (num))
 
 
 #define SET_EXPENSES_TYPE(x) _yearly_expenses_type = x;

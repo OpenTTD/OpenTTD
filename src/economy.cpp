@@ -538,7 +538,7 @@ void DrawNewsBankrupcy(Window *w)
 		int32 price;
 
 		DrawStringCentered(w->width>>1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, 0);
-		COPY_IN_DPARAM(0,WP(w,news_d).ni->params, 2);
+		CopyInDParam(0,WP(w,news_d).ni->params, 2);
 		SetDParam(2, p->index);
 		price = WP(w,news_d).ni->params[2];
 		SetDParam(3, price);
@@ -552,7 +552,7 @@ void DrawNewsBankrupcy(Window *w)
 
 	case NB_BBANKRUPT:
 		DrawStringCentered(w->width>>1, 1, STR_705C_BANKRUPT, 0);
-		COPY_IN_DPARAM(0,WP(w,news_d).ni->params, 2);
+		CopyInDParam(0,WP(w,news_d).ni->params, 2);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
@@ -563,7 +563,7 @@ void DrawNewsBankrupcy(Window *w)
 	case NB_BNEWCOMPANY:
 		DrawStringCentered(w->width>>1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, 0);
 		SetDParam(0, p->index);
-		COPY_IN_DPARAM(1,WP(w,news_d).ni->params, 2);
+		CopyInDParam(1,WP(w,news_d).ni->params, 2);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
@@ -589,20 +589,20 @@ StringID GetNewsStringBankrupcy(const NewsItem *ni)
 	case NB_BMERGER:
 		SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
 		SetDParam(1, STR_705A_HAS_BEEN_SOLD_TO_FOR);
-		COPY_IN_DPARAM(2,ni->params, 2);
+		CopyInDParam(2,ni->params, 2);
 		SetDParam(4, p->index);
-		COPY_IN_DPARAM(5,ni->params + 2, 1);
+		CopyInDParam(5,ni->params + 2, 1);
 		return STR_02B6;
 	case NB_BBANKRUPT:
 		SetDParam(0, STR_705C_BANKRUPT);
 		SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
-		COPY_IN_DPARAM(2,ni->params, 2);
+		CopyInDParam(2,ni->params, 2);
 		return STR_02B6;
 	case NB_BNEWCOMPANY:
 		SetDParam(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
 		SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
 		SetDParam(2, p->index);
-		COPY_IN_DPARAM(3,ni->params, 2);
+		CopyInDParam(3,ni->params, 2);
 		return STR_02B6;
 	default:
 		NOT_REACHED();

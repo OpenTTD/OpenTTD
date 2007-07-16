@@ -124,7 +124,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 				DrawStringRightAligned(428, 1, STR_01FF, 0);
 
 				if (!(ni->flags & NF_VIEWPORT)) {
-					COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
+					CopyInDParam(0, ni->params, lengthof(ni->params));
 					DrawStringMultiCenter(215, ni->display_mode == NM_NORMAL ? 76 : 56,
 						ni->string_id, w->width - 4);
 				} else {
@@ -141,7 +141,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 						(ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY) | (1 << USE_COLORTABLE)
 					);
 
-					COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
+					CopyInDParam(0, ni->params, lengthof(ni->params));
 					DrawStringMultiCenter(w->width / 2, 20, ni->string_id, w->width - 4);
 				}
 				break;
@@ -155,11 +155,11 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 			default: {
 				DrawWindowWidgets(w);
 				if (!(ni->flags & NF_VIEWPORT)) {
-					COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
+					CopyInDParam(0, ni->params, lengthof(ni->params));
 					DrawStringMultiCenter(140, 38, ni->string_id, 276);
 				} else {
 					DrawWindowViewport(w);
-					COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
+					CopyInDParam(0, ni->params, lengthof(ni->params));
 					DrawStringMultiCenter(w->width / 2, w->height - 16, ni->string_id, w->width - 4);
 				}
 				break;
@@ -300,7 +300,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 		ni->data_a = data_a;
 		ni->data_b = data_b;
 		ni->date = _date;
-		COPY_OUT_DPARAM(ni->params, 0, lengthof(ni->params));
+		CopyOutDParam(ni->params, 0, lengthof(ni->params));
 
 		w = FindWindowById(WC_MESSAGE_HISTORY, 0);
 		if (w == NULL) return;
@@ -611,7 +611,7 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 	if (ni->display_mode == 3) {
 		str = _get_news_string_callback[ni->callback](ni);
 	} else {
-		COPY_IN_DPARAM(0, ni->params, lengthof(ni->params));
+		CopyInDParam(0, ni->params, lengthof(ni->params));
 		str = ni->string_id;
 	}
 

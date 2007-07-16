@@ -38,6 +38,7 @@
 
 DynamicLanguages _dynlang;
 char _userstring[128];
+uint64 _decode_parameters[20];
 
 static char *StationGetSpecialString(char *buff, int x, const char* last);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char* last);

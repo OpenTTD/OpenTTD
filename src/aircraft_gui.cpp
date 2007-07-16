@@ -9,6 +9,7 @@
 #include "functions.h"
 #include "table/sprites.h"
 #include "table/strings.h"
+#include "strings.h"
 #include "map.h"
 #include "window.h"
 #include "gui.h"

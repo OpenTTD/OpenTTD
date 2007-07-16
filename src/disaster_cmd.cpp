@@ -23,6 +23,7 @@
 #include "industry_map.h"
 #include "station_map.h"
 #include "table/strings.h"
+#include "strings.h"
 #include "map.h"
 #include "tile.h"
 #include "vehicle.h"
