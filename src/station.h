@@ -185,6 +185,16 @@ protected:
 	static Station *AllocateRaw();
 };
 
+enum StationType {
+	STATION_RAIL,
+	STATION_AIRPORT,
+	STATION_TRUCK,
+	STATION_BUS,
+	STATION_OILRIG,
+	STATION_DOCK,
+	STATION_BUOY
+};
+
 enum {
 	FACIL_TRAIN      = 0x01,
 	FACIL_TRUCK_STOP = 0x02,
@@ -263,8 +273,8 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
 
 
-const DrawTileSprites *GetStationTileLayout(byte gfx);
-void StationPickerDrawSprite(int x, int y, RailType railtype, RoadType roadtype, int image);
+const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx);
+void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStop::Type type);
 uint GetNumRoadStops(const Station* st, RoadStop::Type type);

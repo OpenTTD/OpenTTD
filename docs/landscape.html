@@ -744,7 +744,7 @@
      <li>m3 bits 7..4: persistent random data for newstations</li>
      <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway stations, must be 0 for all the other stations</li>
      <li>m4: custom station id; 0 means standard graphics</li>
-     <li>m5: tile type:
+     <li>m5: graphics index (range from 0..255 for each station type):
       <table>
        <tr>
         <td nowrap valign=top><tt>00</tt>..<tt>07</tt>&nbsp; </td>
@@ -770,121 +770,28 @@
        </tr>
 
        <tr>
-        <td nowrap valign=top><tt>08</tt>..<tt>33</tt>&nbsp; </td>
-        <td align=left>large airport
-         <table>
-          <tr>
-           <td nowrap valign=top><tt>0B</tt>&nbsp; </td>
-           <td align=left>pad 1</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>16</tt>..<tt>19</tt>&nbsp; </td>
-           <td align=left>runway middle</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>1A</tt>&nbsp; </td>
-           <td align=left>runway ending</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>1C</tt>&nbsp; </td>
-           <td align=left>control tower</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>20</tt>&nbsp; </td>
-           <td align=left>hangar</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>21</tt>&nbsp; </td>
-           <td align=left>pad 3</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>22</tt>&nbsp; </td>
-           <td align=left>pad 2</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>27</tt>..<tt>32</tt>&nbsp; </td>
-           <td align=left>radar (animated)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>33</tt>&nbsp; </td>
-           <td align=left>transmitter</td>
-          </tr>
-          <tr>
-           <td colspan=2>The initial layout of a large airport is (rows in Y direction, columns in X direction):
-<pre>
-1F 1B 1E 33 26 1A
-09 24 0B 0C 0D 16
-21 1D 23 0E 0F 17
-09 22 0D 11 10 18
-09 08 14 13 12 19
-20 0A 15 1C 27 1A
-</pre>
-           </td>
-          </tr>
-         </table>
-        </td>
+        <td nowrap valign=top><tt>00</tt>..<tt>8F</tt></td>
+        <td align=left>all airports</td>
        </tr>
 
        <tr>
-        <td nowrap valign=top><tt>34</tt>..<tt>41</tt>&nbsp; </td>
-        <td align=left>small airport
+        <td nowrap valign=top><tt>00</tt>..<tt>03</tt>&nbsp; </td>
+        <td align=left>lorry loading area/truck station : exit towards:
          <table>
           <tr>
-           <td nowrap valign=top><tt>3A</tt>..<tt>3D</tt>&nbsp; </td>
-           <td align=left>field with the wind meter (animated)</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>3E</tt>&nbsp; </td>
-           <td align=left>runway south ending</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>3F</tt>&nbsp; </td>
-           <td align=left>runway middle</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>40</tt>&nbsp; </td>
-           <td align=left>runway north ending</td>
-          </tr>
-          <tr>
-           <td nowrap valign=top><tt>41</tt>&nbsp; </td>
-           <td align=left>hangar</td>
-          </tr>
-          <tr>
-           <td colspan=2>The initial layout of a small airport is (rows in Y direction, columns in X direction):
-<pre>
-36 3A 40
-35 39 3F
-34 38 3F
-41 37 3E
-</pre>
-           </td>
-          </tr>
-         </table>
-        </td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>42</tt> </td>
-        <td align=left>heliport</td>
-       </tr>
-       <tr>
-        <td nowrap valign=top><tt>43</tt>..<tt>46</tt>&nbsp; </td>
-        <td align=left>lorry loading area : exit towards:
-         <table>
-          <tr>
-           <td><tt>43</tt>&nbsp; </td>
+           <td><tt>00</tt>&nbsp; </td>
            <td align=left>NE</td>
           </tr>
           <tr>
-           <td><tt>44</tt>&nbsp; </td>
+           <td><tt>01</tt>&nbsp; </td>
            <td align=left>SE</td>
           </tr>
           <tr>
-           <td><tt>45</tt>&nbsp; </td>
+           <td><tt>02</tt>&nbsp; </td>
            <td align=left>SW</td>
           </tr>
           <tr>
-           <td><tt>46</tt>&nbsp; </td>
+           <td><tt>03</tt>&nbsp; </td>
            <td align=left>NW</td>
           </tr>
          </table>
@@ -892,76 +799,40 @@
        </tr>
 
        <tr>
-        <td nowrap valign=top><tt>47</tt>..<tt>4A</tt>&nbsp; </td>
-        <td align=left>bus station : exit towards:
-         <table>
-          <tr>
-           <td><tt>47</tt>&nbsp; </td>
-           <td align=left>NE</td>
-          </tr>
-          <tr>
-           <td><tt>48</tt>&nbsp; </td>
-           <td align=left>SE</td>
-          </tr>
-          <tr>
-           <td><tt>49</tt>&nbsp; </td>
-           <td align=left>SW</td>
-          </tr>
-          <tr>
-           <td><tt>4A</tt>&nbsp; </td>
-           <td align=left>NW</td>
-          </tr>
-         </table>
-        </td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>4B</tt> </td>
-        <td align=left>oilfield</td>
-       </tr>
-
-       <tr>
-        <td nowrap valign=top><tt>4C</tt>..<tt>51</tt>&nbsp; </td>
+        <td nowrap valign=top><tt>00</tt>..<tt>05</tt>&nbsp; </td>
         <td align=left>ship dock
          <table>
           <tr>
-           <td><tt>4C</tt>&nbsp; </td>
+           <td><tt>00</tt>&nbsp; </td>
            <td align=left>SW coast part</td>
           </tr>
           <tr>
-           <td><tt>4D</tt>&nbsp; </td>
+           <td><tt>01</tt>&nbsp; </td>
            <td align=left>NW coast part</td>
           </tr>
           <tr>
-           <td><tt>4E</tt>&nbsp; </td>
+           <td><tt>02</tt>&nbsp; </td>
            <td align=left>NE coast part</td>
           </tr>
           <tr>
-           <td><tt>4F</tt>&nbsp; </td>
+           <td><tt>03</tt>&nbsp; </td>
            <td align=left>SE coast part</td>
           </tr>
           <tr>
-           <td><tt>50</tt>&nbsp; </td>
+           <td><tt>04</tt>&nbsp; </td>
            <td align=left>X direction water part</td>
           </tr>
           <tr>
-           <td><tt>51</tt>&nbsp; </td>
+           <td><tt>05</tt>&nbsp; </td>
            <td align=left>Y direction water part</td>
           </tr>
          </table>
         </td>
        </tr>
-       <tr>
-        <td nowrap valign=top><tt>52</tt> </td>
-        <td align=left>buoy</td>
-       </tr>
-       <tr>
-        <td nowrap valign=top><tt>53</tt>..<tt>A7</tt>&nbsp; </td>
-        <td align=left>used by RichK's larger airports</td>
-       </tr>
       </table>
      </li>
-     <li>m6 bit 3: 1 when a drive through road stop is built over a town owned road, otherwise 0</li>
+     <li>m6 bits 3..5: the station type (rail, airport, truck, bus, oilrig, dock, buoy)</li>
+     <li>m6 bit 2: 1 when a drive through road stop is built over a town owned road, otherwise 0</li>
      <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>

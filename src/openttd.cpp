@@ -1358,6 +1358,59 @@ bool AfterLoadGame()
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
 	MarkWholeScreenDirty();
 
+	if (CheckSavegameVersion(72)) {
+		/* Locks/shiplifts in very old savegames had OWNER_WATER as owner */
+		for (TileIndex t = 0; t < MapSize(); t++) {
+			switch (GetTileType(t)) {
+				default: break;
+
+				case MP_WATER:
+					if (GetWaterTileType(t) == WATER_TILE_LOCK && GetTileOwner(t) == OWNER_WATER) SetTileOwner(t, OWNER_NONE);
+					break;
+
+				case MP_STATION: {
+					if (HASBIT(_m[t].m6, 3)) SETBIT(_m[t].m6, 2);
+					StationGfx gfx = GetStationGfx(t);
+					StationType st;
+					if (       IS_INT_INSIDE(gfx,   0,   8)) { // Railway station
+						st = STATION_RAIL;
+						SetStationGfx(t, gfx - 0);
+					} else if (IS_INT_INSIDE(gfx,   8,  67)) { // Airport
+						st = STATION_AIRPORT;
+						SetStationGfx(t, gfx - 8);
+					} else if (IS_INT_INSIDE(gfx,  67,  71)) { // Truck
+						st = STATION_TRUCK;
+						SetStationGfx(t, gfx - 67);
+					} else if (IS_INT_INSIDE(gfx,  71,  75)) { // Bus
+						st = STATION_BUS;
+						SetStationGfx(t, gfx - 71);
+					} else if (gfx == 75) {                    // Oil rig
+						st = STATION_OILRIG;
+						SetStationGfx(t, gfx - 75);
+					} else if (IS_INT_INSIDE(gfx,  76,  82)) { // Dock
+						st = STATION_DOCK;
+						SetStationGfx(t, gfx - 76);
+					} else if (gfx == 82) {                    // Buoy
+						st = STATION_BUOY;
+						SetStationGfx(t, gfx - 82);
+					} else if (IS_INT_INSIDE(gfx,  83, 168)) { // Extended airport
+						st = STATION_AIRPORT;
+						SetStationGfx(t, gfx - 83 + 67 - 8);
+					} else if (IS_INT_INSIDE(gfx, 168, 170)) { // Drive through truck
+						st = STATION_TRUCK;
+						SetStationGfx(t, gfx - 168 + GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
+					} else if (IS_INT_INSIDE(gfx, 170, 172)) { // Drive through bus
+						st = STATION_BUS;
+						SetStationGfx(t, gfx - 170 + GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
+					} else {
+						return false;
+					}
+					SB(_m[t].m6, 3, 3, st);
+				} break;
+			}
+		}
+	}
+
 	for (TileIndex t = 0; t < map_size; t++) {
 		switch (GetTileType(t)) {
 			case MP_STATION: {
@@ -2084,16 +2137,6 @@ bool AfterLoadGame()
 		/* Added variables to support newindustries */
 		Industry *i;
 		FOR_ALL_INDUSTRIES(i) i->founder = OWNER_NONE;
-	}
-
-	if (CheckSavegameVersion(72)) {
-		/* Locks/shiplifts in very old savegames had OWNER_WATER as owner */
-		for (TileIndex t = 0; t < MapSize(); t++) {
-			if (IsTileType(t, MP_WATER) && GetWaterTileType(t) == WATER_TILE_LOCK &&
-					GetTileOwner(t) == OWNER_WATER) {
-				SetTileOwner(t, OWNER_NONE);
-			}
-		}
 	}
 
 	/* Recalculate */

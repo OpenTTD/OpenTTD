@@ -24,63 +24,37 @@ static inline Station* GetStationByTile(TileIndex t)
 
 
 enum {
-	GFX_RAILWAY_BASE              =   0,
-	GFX_AIRPORT_BASE              =   8,
-	GFX_RADAR_LARGE_FIRST         =  39,
-	GFX_RADAR_LARGE_LAST          =  50,
-	GFX_WINDSACK_FIRST            =  58,
-	GFX_WINDSACK_LAST             =  61,
-	GFX_TRUCK_BASE                =  67,
-	GFX_BUS_BASE                  =  71,
-	GFX_OILRIG_BASE               =  75,
-	GFX_DOCK_BASE                 =  76,
-	GFX_DOCK_BASE_WATER_PART      =  80,
-	GFX_BUOY_BASE                 =  82,
-	GFX_AIRPORT_BASE_EXTENDED     =  83,
-	GFX_RADAR_INTERNATIONAL_FIRST =  90,
-	GFX_RADAR_INTERNATIONAL_LAST  = 101,
-	GFX_RADAR_METROPOLITAN_FIRST  = 102,
-	GFX_RADAR_METROPOLITAN_LAST   = 113,
-	GFX_RADAR_DISTRICTWE_FIRST    = 145,
-	GFX_RADAR_DISTRICTWE_LAST     = 156,
-	GFX_WINDSACK_INTERCON_FIRST   = 164,
-	GFX_WINDSACK_INTERCON_LAST    = 167,
-	GFX_TRUCK_BASE_EXT            = 168,
-	GFX_BUS_BASE_EXT              = 170,
-	GFX_BASE_END                  = 172
-};
+	GFX_RADAR_LARGE_FIRST             =  31,
+	GFX_RADAR_LARGE_LAST              =  42,
+	GFX_WINDSACK_FIRST                =  50,
+	GFX_WINDSACK_LAST                 =  53,
 
-enum {
-	RAILWAY_SIZE = GFX_AIRPORT_BASE - GFX_RAILWAY_BASE,
-	AIRPORT_SIZE = GFX_TRUCK_BASE - GFX_AIRPORT_BASE,
-	TRUCK_SIZE = GFX_BUS_BASE - GFX_TRUCK_BASE,
-	BUS_SIZE = GFX_OILRIG_BASE - GFX_BUS_BASE,
-	DOCK_SIZE_TOTAL = GFX_BUOY_BASE - GFX_DOCK_BASE,
-	AIRPORT_SIZE_EXTENDED = GFX_TRUCK_BASE_EXT - GFX_AIRPORT_BASE_EXTENDED,
-	TRUCK_SIZE_EXT = GFX_BUS_BASE_EXT - GFX_TRUCK_BASE_EXT,
-	BUS_SIZE_EXT = GFX_BASE_END - GFX_BUS_BASE_EXT,
+	GFX_DOCK_BASE_WATER_PART          =  4,
+	GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET =  4,
+
+	GFX_RADAR_INTERNATIONAL_FIRST     =  66,
+	GFX_RADAR_INTERNATIONAL_LAST      =  77,
+	GFX_RADAR_METROPOLITAN_FIRST      =  78,
+	GFX_RADAR_METROPOLITAN_LAST       =  89,
+	GFX_RADAR_DISTRICTWE_FIRST        = 121,
+	GFX_RADAR_DISTRICTWE_LAST         = 132,
+	GFX_WINDSACK_INTERCON_FIRST       = 140,
+	GFX_WINDSACK_INTERCON_LAST        = 143,
 };
 
 enum HangarTile {
-	HANGAR_TILE_0 = 32,
-	HANGAR_TILE_1 = 65,
-	HANGAR_TILE_2 = 86,
-	HANGAR_TILE_3 = 129, // added for west facing hangar
-	HANGAR_TILE_4 = 130, // added for north facing hangar
-	HANGAR_TILE_5 = 131 // added for east facing hangar
+	HANGAR_TILE_0 = 24,
+	HANGAR_TILE_1 = 57,
+	HANGAR_TILE_2 = 62,
+	HANGAR_TILE_3 = 105, // added for west facing hangar
+	HANGAR_TILE_4 = 106, // added for north facing hangar
+	HANGAR_TILE_5 = 107  // added for east facing hangar
 };
 
-enum StationType {
-	STATION_RAIL,
-	STATION_AIRPORT,
-	STATION_TRUCK,
-	STATION_BUS,
-	STATION_OILRIG,
-	STATION_DOCK,
-	STATION_BUOY
-};
-
-StationType GetStationType(TileIndex);
+static inline StationType GetStationType(TileIndex t)
+{
+	return (StationType)GB(_m[t].m6, 3, 3);
+}
 
 static inline RoadStop::Type GetRoadStopType(TileIndex t)
 {
@@ -102,7 +76,7 @@ static inline void SetStationGfx(TileIndex t, StationGfx gfx)
 
 static inline bool IsRailwayStation(TileIndex t)
 {
-	return GetStationGfx(t) < GFX_RAILWAY_BASE + RAILWAY_SIZE;
+	return GetStationType(t) == STATION_RAIL;
 }
 
 static inline bool IsRailwayStationTile(TileIndex t)
@@ -110,40 +84,36 @@ static inline bool IsRailwayStationTile(TileIndex t)
 	return IsTileType(t, MP_STATION) && IsRailwayStation(t);
 }
 
+static inline bool IsAirport(TileIndex t)
+{
+	return GetStationType(t) == STATION_AIRPORT;
+}
+
 static inline bool IsHangar(TileIndex t)
 {
 	StationGfx gfx = GetStationGfx(t);
-	return
+	return IsAirport(t) && (
 		gfx == HANGAR_TILE_0 ||
 		gfx == HANGAR_TILE_1 ||
 		gfx == HANGAR_TILE_2 ||
 		gfx == HANGAR_TILE_3 ||
 		gfx == HANGAR_TILE_4 ||
-		gfx == HANGAR_TILE_5;
-}
-
-static inline bool IsAirport(TileIndex t)
-{
-	StationGfx gfx = GetStationGfx(t);
-	return
-		(IS_BYTE_INSIDE(gfx, GFX_AIRPORT_BASE, GFX_AIRPORT_BASE + AIRPORT_SIZE)) ||
-		(IS_BYTE_INSIDE(gfx, GFX_AIRPORT_BASE_EXTENDED, GFX_AIRPORT_BASE_EXTENDED + AIRPORT_SIZE_EXTENDED));
+		gfx == HANGAR_TILE_5);
 }
 
 static inline bool IsTruckStop(TileIndex t)
 {
-	return (IS_BYTE_INSIDE(GetStationGfx(t), GFX_TRUCK_BASE, GFX_TRUCK_BASE + TRUCK_SIZE)) ||
-		(IS_BYTE_INSIDE(GetStationGfx(t), GFX_TRUCK_BASE_EXT, GFX_TRUCK_BASE_EXT + TRUCK_SIZE_EXT));
+	return GetStationType(t) == STATION_TRUCK;
 }
 
 static inline bool IsBusStop(TileIndex t)
 {
-	return (IS_BYTE_INSIDE(GetStationGfx(t), GFX_BUS_BASE, GFX_BUS_BASE + BUS_SIZE)) ||
-		(IS_BYTE_INSIDE(GetStationGfx(t), GFX_BUS_BASE_EXT, GFX_BUS_BASE_EXT + BUS_SIZE_EXT));
+	return GetStationType(t) == STATION_BUS;
 }
 
 static inline bool IsRoadStop(TileIndex t)
 {
+	assert(IsTileType(t, MP_STATION));
 	return IsTruckStop(t) || IsBusStop(t);
 }
 
@@ -154,22 +124,18 @@ static inline bool IsRoadStopTile(TileIndex t)
 
 static inline bool IsStandardRoadStopTile(TileIndex t)
 {
-	return IsTileType(t, MP_STATION) &&
-		(IS_BYTE_INSIDE(GetStationGfx(t), GFX_TRUCK_BASE, GFX_TRUCK_BASE + TRUCK_SIZE) ||
-		IS_BYTE_INSIDE(GetStationGfx(t), GFX_BUS_BASE, GFX_BUS_BASE + BUS_SIZE));
+	return IsRoadStopTile(t) && GetStationGfx(t) < GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET;
 }
 
 static inline bool IsDriveThroughStopTile(TileIndex t)
 {
-	return IsTileType(t, MP_STATION) &&
-		(IS_BYTE_INSIDE(GetStationGfx(t), GFX_TRUCK_BASE_EXT, GFX_TRUCK_BASE_EXT + TRUCK_SIZE_EXT) ||
-		IS_BYTE_INSIDE(GetStationGfx(t), GFX_BUS_BASE_EXT, GFX_BUS_BASE_EXT + BUS_SIZE_EXT));
+	return IsRoadStopTile(t) && GetStationGfx(t) >= GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET;
 }
 
 static inline bool GetStopBuiltOnTownRoad(TileIndex t)
 {
 	assert(IsDriveThroughStopTile(t));
-	return HASBIT(_m[t].m6, 3);
+	return HASBIT(_m[t].m6, 2);
 }
 
 
@@ -180,26 +146,26 @@ static inline DiagDirection GetRoadStopDir(TileIndex t)
 {
 	StationGfx gfx = GetStationGfx(t);
 	assert(IsRoadStopTile(t));
-	if (gfx < GFX_TRUCK_BASE_EXT) {
-		return (DiagDirection)((gfx - GFX_TRUCK_BASE) & 3);
+	if (gfx < GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET) {
+		return (DiagDirection)(gfx);
 	} else {
-		return (DiagDirection)((gfx - GFX_TRUCK_BASE_EXT) & 1);
+		return (DiagDirection)(gfx - GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
 	}
 }
 
 static inline bool IsOilRig(TileIndex t)
 {
-	return GetStationGfx(t) == GFX_OILRIG_BASE;
+	return GetStationType(t) == STATION_OILRIG;
 }
 
 static inline bool IsDock(TileIndex t)
 {
-	return IS_BYTE_INSIDE(GetStationGfx(t), GFX_DOCK_BASE, GFX_DOCK_BASE + DOCK_SIZE_TOTAL);
+	return GetStationType(t) == STATION_DOCK;
 }
 
 static inline bool IsBuoy(TileIndex t)
 {
-	return GetStationGfx(t) == GFX_BUOY_BASE;
+	return GetStationType(t) == STATION_BUOY;
 }
 
 static inline bool IsBuoyTile(TileIndex t)
@@ -240,8 +206,8 @@ static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
 static inline DiagDirection GetDockDirection(TileIndex t)
 {
 	StationGfx gfx = GetStationGfx(t);
-	assert(gfx < GFX_DOCK_BASE_WATER_PART);
-	return (DiagDirection)(gfx - GFX_DOCK_BASE);
+	assert(IsDock(t) && gfx < GFX_DOCK_BASE_WATER_PART);
+	return (DiagDirection)(gfx);
 }
 
 static inline TileIndexDiffC GetDockOffset(TileIndex t)
@@ -294,38 +260,39 @@ static inline byte GetStationTileRandomBits(TileIndex t)
 	return GB(_m[t].m3, 4, 4);
 }
 
-static inline void MakeStation(TileIndex t, Owner o, StationID sid, byte m5)
+static inline void MakeStation(TileIndex t, Owner o, StationID sid, StationType st, byte section)
 {
 	SetTileType(t, MP_STATION);
 	SetTileOwner(t, o);
 	_m[t].m2 = sid;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
-	_m[t].m5 = m5;
+	_m[t].m5 = section;
+	SB(_m[t].m6, 3, 3, st);
 }
 
 static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, byte section, RailType rt)
 {
-	MakeStation(t, o, sid, section + a);
+	MakeStation(t, o, sid, STATION_RAIL, section + a);
 	SetRailType(t, rt);
 }
 
 static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, RoadTypes rt, DiagDirection d)
 {
-	MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE : GFX_TRUCK_BASE) + d);
+	MakeStation(t, o, sid, (rst == RoadStop::BUS ? STATION_BUS : STATION_TRUCK), d);
 	SetRoadTypes(t, rt);
 }
 
 static inline void MakeDriveThroughRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, RoadTypes rt, Axis a, bool on_town_road)
 {
-	MakeStation(t, o, sid, (rst == RoadStop::BUS ? GFX_BUS_BASE_EXT : GFX_TRUCK_BASE_EXT) + a);
-	SB(_m[t].m6, 3, 1, on_town_road);
+	MakeStation(t, o, sid, (rst == RoadStop::BUS ? STATION_BUS : STATION_TRUCK), GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + a);
+	SB(_m[t].m6, 2, 1, on_town_road);
 	SetRoadTypes(t, rt);
 }
 
 static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section)
 {
-	MakeStation(t, o, sid, section);
+	MakeStation(t, o, sid, STATION_AIRPORT, section);
 }
 
 static inline void MakeBuoy(TileIndex t, StationID sid)
@@ -333,18 +300,18 @@ static inline void MakeBuoy(TileIndex t, StationID sid)
 	/* Make the owner of the buoy tile the same as the current owner of the
 	 * water tile. In this way, we can reset the owner of the water to its
 	 * original state when the buoy gets removed. */
-	MakeStation(t, GetTileOwner(t), sid, GFX_BUOY_BASE);
+	MakeStation(t, GetTileOwner(t), sid, STATION_BUOY, 0);
 }
 
 static inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d)
 {
-	MakeStation(t, o, sid, GFX_DOCK_BASE + d);
-	MakeStation(t + TileOffsByDiagDir(d), o, sid, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d));
+	MakeStation(t, o, sid, STATION_DOCK, d);
+	MakeStation(t + TileOffsByDiagDir(d), o, sid, STATION_DOCK, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d));
 }
 
 static inline void MakeOilrig(TileIndex t, StationID sid)
 {
-	MakeStation(t, OWNER_NONE, sid, GFX_OILRIG_BASE);
+	MakeStation(t, OWNER_NONE, sid, STATION_OILRIG, 0);
 }
 
 #endif /* STATION_MAP_H */

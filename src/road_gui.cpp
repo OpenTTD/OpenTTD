@@ -554,8 +554,6 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PAINT: {
-		int image;
-
 		if (WP(w, def_d).close) return;
 
 		DrawWindowWidgets(w);
@@ -567,17 +565,15 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 			SetTileSelectSize(1, 1);
 		}
 
-		image = (w->window_class == WC_BUS_STATION) ? GFX_BUS_BASE : GFX_TRUCK_BASE;
+		StationType st = (w->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
 
-		StationPickerDrawSprite(103, 35, RAILTYPE_BEGIN, ROADTYPE_ROAD, image);
-		StationPickerDrawSprite(103, 85, RAILTYPE_BEGIN, ROADTYPE_ROAD, image + 1);
-		StationPickerDrawSprite(35, 85, RAILTYPE_BEGIN, ROADTYPE_ROAD, image + 2);
-		StationPickerDrawSprite(35, 35, RAILTYPE_BEGIN, ROADTYPE_ROAD, image + 3);
+		StationPickerDrawSprite(103, 35, st, RAILTYPE_BEGIN, ROADTYPE_ROAD, 0);
+		StationPickerDrawSprite(103, 85, st, RAILTYPE_BEGIN, ROADTYPE_ROAD, 1);
+		StationPickerDrawSprite( 35, 85, st, RAILTYPE_BEGIN, ROADTYPE_ROAD, 2);
+		StationPickerDrawSprite( 35, 35, st, RAILTYPE_BEGIN, ROADTYPE_ROAD, 3);
 
-		image = (w->window_class == WC_BUS_STATION) ? GFX_BUS_BASE_EXT : GFX_TRUCK_BASE_EXT;
-
-		StationPickerDrawSprite(171, 35, RAILTYPE_BEGIN, _cur_roadtype, image);
-		StationPickerDrawSprite(171, 85, RAILTYPE_BEGIN, _cur_roadtype, image + 1);
+		StationPickerDrawSprite(171, 35, st, RAILTYPE_BEGIN, _cur_roadtype, 4);
+		StationPickerDrawSprite(171, 85, st, RAILTYPE_BEGIN, _cur_roadtype, 5);
 
 		DrawStationCoverageAreaText(2, 146,
 			(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,

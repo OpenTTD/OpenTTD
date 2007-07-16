@@ -1469,7 +1469,7 @@ static void DrawTile_Track(TileInfo *ti)
 				}
 
 				if (statspec->renderdata == NULL) {
-					dts = GetStationTileLayout(gfx);
+					dts = GetStationTileLayout(STATION_RAIL, gfx);
 				} else {
 					dts = &statspec->renderdata[(gfx < statspec->tiles ? gfx : 0) + GetWaypointAxis(ti->tile)];
 				}

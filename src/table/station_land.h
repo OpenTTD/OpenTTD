@@ -987,7 +987,7 @@ static const DrawTileSeqStruct _station_display_datas_0171[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSprites _station_display_datas[] = {
+static const DrawTileSprites _station_display_datas_rail[] = {
 	{ SPR_RAIL_TRACK_X,               PAL_NONE, _station_display_datas_0 },
 	{ SPR_RAIL_TRACK_Y,               PAL_NONE, _station_display_datas_1 },
 	{ SPR_RAIL_TRACK_X,               PAL_NONE, _station_display_datas_2 },
@@ -996,6 +996,9 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_RAIL_TRACK_Y,               PAL_NONE, _station_display_datas_5 },
 	{ SPR_RAIL_TRACK_X,               PAL_NONE, _station_display_datas_6 },
 	{ SPR_RAIL_TRACK_Y,               PAL_NONE, _station_display_datas_7 },
+};
+
+static const DrawTileSprites _station_display_datas_airport[] = {
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_nothing },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_9 },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_10 },
@@ -1055,22 +1058,6 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_AIRFIELD_RUNWAY_FAR_END,    PAL_NONE, _station_display_datas_64 },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_65 },
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_66 },
-	{ SPR_TRUCK_STOP_NE_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_67 },
-	{ SPR_TRUCK_STOP_SE_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_68 },
-	{ SPR_TRUCK_STOP_SW_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_69 },
-	{ SPR_TRUCK_STOP_NW_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_70 },
-	{ SPR_BUS_STOP_NE_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_71 },
-	{ SPR_BUS_STOP_SE_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_72 },
-	{ SPR_BUS_STOP_SW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_73 },
-	{ SPR_BUS_STOP_NW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_74 },
-	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_nothing },
-	{ SPR_SHORE_TILEH_3,              PAL_NONE, _station_display_datas_76 },
-	{ SPR_SHORE_TILEH_9,              PAL_NONE, _station_display_datas_77 },
-	{ SPR_SHORE_TILEH_12,             PAL_NONE, _station_display_datas_78 },
-	{ SPR_SHORE_TILEH_6,              PAL_NONE, _station_display_datas_79 },
-	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_80 },
-	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_81 },
-	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_82 },
 	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_nothing },
 	{ SPR_AIRPORT_RUNWAY_EXIT_B,      PAL_NONE, _station_display_nothing },
 	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_085 },
@@ -1156,8 +1143,49 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_59 },
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_60 },
 	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_61 },
+};
+
+static const DrawTileSprites _station_display_datas_truck[] = {
+	{ SPR_TRUCK_STOP_NE_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_67 },
+	{ SPR_TRUCK_STOP_SE_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_68 },
+	{ SPR_TRUCK_STOP_SW_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_69 },
+	{ SPR_TRUCK_STOP_NW_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_70 },
 	{ SPR_ROAD_PAVED_STRAIGHT_X,      PAL_NONE, _station_display_datas_0168 },
 	{ SPR_ROAD_PAVED_STRAIGHT_Y,      PAL_NONE, _station_display_datas_0169 },
+};
+
+static const DrawTileSprites _station_display_datas_bus[] = {
+	{ SPR_BUS_STOP_NE_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_71 },
+	{ SPR_BUS_STOP_SE_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_72 },
+	{ SPR_BUS_STOP_SW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_73 },
+	{ SPR_BUS_STOP_NW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_74 },
 	{ SPR_ROAD_PAVED_STRAIGHT_X,      PAL_NONE, _station_display_datas_0170 },
 	{ SPR_ROAD_PAVED_STRAIGHT_Y,      PAL_NONE, _station_display_datas_0171 }
+};
+
+static const DrawTileSprites _station_display_datas_oilrig[] = {
+	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_nothing },
+};
+
+static const DrawTileSprites _station_display_datas_dock[] = {
+	{ SPR_SHORE_TILEH_3,              PAL_NONE, _station_display_datas_76 },
+	{ SPR_SHORE_TILEH_9,              PAL_NONE, _station_display_datas_77 },
+	{ SPR_SHORE_TILEH_12,             PAL_NONE, _station_display_datas_78 },
+	{ SPR_SHORE_TILEH_6,              PAL_NONE, _station_display_datas_79 },
+	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_80 },
+	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_81 },
+};
+
+static const DrawTileSprites _station_display_datas_buoy[] = {
+	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_82 },
+};
+
+static const DrawTileSprites *_station_display_datas[] = {
+	_station_display_datas_rail,
+	_station_display_datas_airport,
+	_station_display_datas_truck,
+	_station_display_datas_bus,
+	_station_display_datas_oilrig,
+	_station_display_datas_dock,
+	_station_display_datas_buoy,
 };

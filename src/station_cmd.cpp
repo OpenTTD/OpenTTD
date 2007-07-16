@@ -1658,7 +1658,8 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			const byte *b = _airport_sections[p1];
 
 			BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
-				MakeAirport(tile_cur, st->owner, st->index, *b++);
+				MakeAirport(tile_cur, st->owner, st->index, *b - ((*b < 67) ? 8 : 24));
+				b++;
 			} END_TILE_LOOP(tile_cur, w, h, tile)
 		}
 
@@ -1966,9 +1967,9 @@ static CommandCost RemoveDock(Station *st, uint32 flags)
 
 #include "table/station_land.h"
 
-const DrawTileSprites *GetStationTileLayout(byte gfx)
+const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx)
 {
-	return &_station_display_datas[gfx];
+	return &_station_display_datas[st][gfx];
 }
 
 /* For drawing canal edges on buoys */
@@ -2028,7 +2029,7 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 	}
 
-	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationGfx(ti->tile)];
+	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationType(ti->tile)][GetStationGfx(ti->tile)];
 
 	SpriteID image = t->ground_sprite;
 	if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
@@ -2084,11 +2085,11 @@ static void DrawTile_Station(TileInfo *ti)
 	}
 }
 
-void StationPickerDrawSprite(int x, int y, RailType railtype, RoadType roadtype, int image)
+void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID pal = PLAYER_SPRITE_COLOR(_local_player);
-	const DrawTileSprites *t = &_station_display_datas[image];
+	const DrawTileSprites *t = &_station_display_datas[st][image];
 
 	SpriteID img = t->ground_sprite;
 	DrawSprite(img + rti->total_offset, HASBIT(img, PALETTE_MODIFIER_COLOR) ? pal : PAL_NONE, x, y);
@@ -2180,18 +2181,22 @@ static void TileLoop_Station(TileIndex tile)
 {
 	// FIXME -- GetTileTrackStatus_Station -> animated stationtiles
 	// hardcoded.....not good
-	switch (GetStationGfx(tile)) {
-		case GFX_RADAR_LARGE_FIRST:
-		case GFX_WINDSACK_FIRST : // for small airport
-		case GFX_RADAR_INTERNATIONAL_FIRST:
-		case GFX_RADAR_METROPOLITAN_FIRST:
-		case GFX_RADAR_DISTRICTWE_FIRST: // radar district W-E airport
-		case GFX_WINDSACK_INTERCON_FIRST : // for intercontinental airport
-			AddAnimatedTile(tile);
+	switch (GetStationType(tile)) {
+		case STATION_AIRPORT:
+			switch (GetStationGfx(tile)) {
+				case GFX_RADAR_LARGE_FIRST:
+				case GFX_WINDSACK_FIRST : // for small airport
+				case GFX_RADAR_INTERNATIONAL_FIRST:
+				case GFX_RADAR_METROPOLITAN_FIRST:
+				case GFX_RADAR_DISTRICTWE_FIRST: // radar district W-E airport
+				case GFX_WINDSACK_INTERCON_FIRST : // for intercontinental airport
+					AddAnimatedTile(tile);
+					break;
+			}
 			break;
 
-		case GFX_OILRIG_BASE: //(station part)
-		case GFX_BUOY_BASE:
+		case STATION_OILRIG: //(station part)
+		case STATION_BUOY:
 			TileLoop_Water(tile);
 			break;
 

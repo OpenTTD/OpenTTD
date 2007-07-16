@@ -1578,12 +1578,11 @@ static bool LoadOldMain(LoadgameState *ls)
 				_m[i].m4 = 0; // We do not understand this TTDP station mapping (yet)
 				switch (_m[i].m5) {
 					/* We have drive through stops at a totally different place */
-					case 0x53: case 0x54: _m[i].m5 += GFX_BUS_BASE_EXT   - 0x53; break;
-					case 0x57: case 0x58: _m[i].m5 += GFX_TRUCK_BASE_EXT - 0x57; break;
-					case 0x55: case 0x56: // Bus tram stop
-					case 0x59: case 0x5A: // Truck tram stop
-						DEBUG(oldloader, 0, "Loading failed - we don't support trams (yet)");
-						return false;
+					case 0x53: case 0x54: _m[i].m5 += 170 - 0x53; break; // Bus drive through
+					case 0x57: case 0x58: _m[i].m5 += 168 - 0x57; break; // Truck drive through
+					case 0x55: case 0x56: _m[i].m5 += 170 - 0x55; break; // Bus tram stop
+					case 0x59: case 0x5A: _m[i].m5 += 168 - 0x59; break; // Truck tram stop
+					default: break;
 				}
 				break;
 

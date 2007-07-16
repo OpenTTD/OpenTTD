@@ -355,7 +355,6 @@ industry_map.h
 rail_map.h
 road_map.cpp
 road_map.h
-station_map.cpp
 station_map.h
 town_map.h
 tree_map.h

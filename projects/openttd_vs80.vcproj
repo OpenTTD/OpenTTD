@@ -1736,10 +1736,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\station_map.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\station_map.h"
 				>
 			</File>

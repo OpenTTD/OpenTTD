@@ -757,7 +757,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	}
 
 	if (statspec->renderdata == NULL) {
-		sprites = GetStationTileLayout(tile + axis);
+		sprites = GetStationTileLayout(STATION_RAIL, tile + axis);
 	} else {
 		sprites = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : (uint)axis];
 	}
