@@ -341,13 +341,18 @@ NORETURN
 CDECL error(const char *str, ...);
 #define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
 
-#if !defined(MORPHOS)
-/* MorphOS doesn't know wchars, the rest does :( */
-#define HAS_WCHAR
-#else
-/* And MorphOS doesn't have C++ conformant _stricmp... */
+#if defined(MORPHOS)
+/* MorphOS doesn't have C++ conformant _stricmp... */
 #define _stricmp stricmp
-#endif /* !defined(MORHPOS) */
+#elif defined(OPENBSD)
+/* OpenBSD uses strcasecmp(3) */
+#define _stricmp strcasecmp
+#endif
+
+#if !defined(MORPHOS) and !defined(OPENBSD)
+/* MorphOS & OpenBSD don't know wchars, the rest does :( */
+#define HAS_WCHAR
+#endif /* !defined(MORHPOS) and !defined(OPENBSD) */
 
 #if !defined(MAX_PATH)
 # define MAX_PATH 260
