@@ -503,7 +503,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 /* Draw road vehicle specific details */
 static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const RoadVehicleInfo *rvi)
 {
-	bool refittable = (_engine_info[engine_number].refit_mask != 0);
+	bool refittable = (EngInfo(engine_number)->refit_mask != 0);
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, GetEngineProperty(engine_number, 0x11, rvi->base_cost) * (_price.roadveh_base >> 3) >> 5);

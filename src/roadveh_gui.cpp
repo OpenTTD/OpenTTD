@@ -279,7 +279,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, 11, !is_localplayer);
 		/* Disable refit button if vehicle not refittable */
 		SetWindowWidgetDisabledState(w, 12, !is_localplayer ||
-				_engine_info[v->engine_type].refit_mask == 0);
+				EngInfo(v->engine_type)->refit_mask == 0);
 
 		/* draw widgets & caption */
 		SetDParam(0, v->index);

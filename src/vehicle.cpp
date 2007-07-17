@@ -2723,7 +2723,7 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 								scheme = LS_FREIGHT_WAGON;
 							}
 						} else {
-							bool is_mu = HASBIT(_engine_info[engine_type].misc_flags, EF_RAIL_IS_MU);
+							bool is_mu = HASBIT(EngInfo(engine_type)->misc_flags, EF_RAIL_IS_MU);
 
 							switch (rvi->engclass) {
 								default: NOT_REACHED();
