@@ -1532,11 +1532,11 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 				break;
 
 			case 0x09: /* String ID for cargo type name */
-				cs->name = grf_load_word(&buf);
+				cs->name_plural = grf_load_word(&buf);
 				break;
 
-			case 0x0A: /* String for cargo name, plural */
-				cs->name_plural = grf_load_word(&buf);
+			case 0x0A: /* String for 1 unit of cargo */
+				cs->name = grf_load_word(&buf);
 				break;
 
 			case 0x0B:

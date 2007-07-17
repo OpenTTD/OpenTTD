@@ -33,8 +33,8 @@ struct CargoSpec {
 	uint16 multipliertowngrowth;
 	uint8 callback_mask;
 
-	StringID name;
 	StringID name_plural;
+	StringID name;
 	StringID units_volume;
 	StringID quantifier;
 	StringID abbrev;
