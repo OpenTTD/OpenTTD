@@ -233,7 +233,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 						type = _industrydata.index[_industrydata.select];
 
 						SetWindowDirty(w);
-						if ((_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 &&	GetIndustrySpec(type)->IsRawIndustry()) ||
+						if ((_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(type)->IsRawIndustry()) ||
 								type == INVALID_INDUSTRYTYPE) {
 							/* Reset the button state if going to prospecting or "build many industries" */
 							RaiseWindowButtons(w);
@@ -573,6 +573,14 @@ void ShowIndustryViewWindow(int industry)
 	}
 }
 
+enum {
+	DIRECTORY_INDU_SORTBYNAME = 3,
+	DIRECTORY_INDU_SORTBYTYPE,
+	DIRECTORY_INDU_SORTBYPROD,
+	DIRECTORY_INDU_SORTBYTRANSPORT,
+	DIRECTORY_INDU_SHOWINDU = 8,
+};
+
 static const Widget _industry_directory_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,   495,     0,    13, STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -752,40 +760,41 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 3: {
-			_industry_sort_order = _industry_sort_order == 0 ? 1 : 0;
-			_industry_sort_dirty = true;
-			SetWindowDirty(w);
-		} break;
+			case DIRECTORY_INDU_SORTBYNAME: {
+				//byte current_sort = e->we.click.widget - DIRECTORY_INDU_SORTBYNAME;
+				_industry_sort_order = _industry_sort_order == 0 ? 1 : 0;
+				_industry_sort_dirty = true;
+				SetWindowDirty(w);
+			} break;
 
-		case 4: {
-			_industry_sort_order = _industry_sort_order == 2 ? 3 : 2;
-			_industry_sort_dirty = true;
-			SetWindowDirty(w);
-		} break;
+			case DIRECTORY_INDU_SORTBYTYPE: {
+				_industry_sort_order = _industry_sort_order == 2 ? 3 : 2;
+				_industry_sort_dirty = true;
+				SetWindowDirty(w);
+			} break;
 
-		case 5: {
-			_industry_sort_order = _industry_sort_order == 4 ? 5 : 4;
-			_industry_sort_dirty = true;
-			SetWindowDirty(w);
-		} break;
+			case DIRECTORY_INDU_SORTBYPROD: {
+				_industry_sort_order = _industry_sort_order == 4 ? 5 : 4;
+				_industry_sort_dirty = true;
+				SetWindowDirty(w);
+			} break;
 
-		case 6: {
-			_industry_sort_order = _industry_sort_order == 6 ? 7 : 6;
-			_industry_sort_dirty = true;
-			SetWindowDirty(w);
-		} break;
+			case DIRECTORY_INDU_SORTBYTRANSPORT: {
+				_industry_sort_order = _industry_sort_order == 6 ? 7 : 6;
+				_industry_sort_dirty = true;
+				SetWindowDirty(w);
+			} break;
 
-		case 8: {
-			int y = (e->we.click.pt.y - 28) / 10;
-			uint16 p;
+			case DIRECTORY_INDU_SHOWINDU: {
+				int y = (e->we.click.pt.y - 28) / 10;
+				uint16 p;
 
-			if (!IS_INT_INSIDE(y, 0, w->vscroll.cap)) return;
-			p = y + w->vscroll.pos;
-			if (p < _num_industry_sort) {
-				ScrollMainWindowToTile(_industry_sort[p]->xy);
-			}
-		} break;
+				if (!IS_INT_INSIDE(y, 0, w->vscroll.cap)) return;
+				p = y + w->vscroll.pos;
+				if (p < _num_industry_sort) {
+					ScrollMainWindowToTile(_industry_sort[p]->xy);
+				}
+			} break;
 		}
 		break;
 
