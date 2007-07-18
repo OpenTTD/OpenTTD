@@ -2,6 +2,7 @@
 ##ownname Galego
 ##isocode gl_ES
 ##plural 0
+##gender m f n
 
 #
 
@@ -281,6 +282,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...É propiedade de {STRING}
 STR_013C_CARGO                                                  :{BLACK}Carga
@@ -296,6 +298,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nova Par
 STR_0141_LOAD_GAME                                              :{BLACK}Cargar Partida
 STR_SINGLE_PLAYER                                               :{BLACK}Un Xogador
 STR_MULTIPLAYER                                                 :{BLACK}Multixogador
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor De Escenarios
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -389,6 +392,7 @@ STR_ENGINE_SORT_RUNNING_COST                                    :Coste Mantement
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potencia/Coste Mantemento
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade De Carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Non queda ningún tipo de carga en espera
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar tódolos edificios
 STR_MANAGE_LIST                                                 :{BLACK}Xestionar lista
 STR_REPLACE_VEHICLES                                            :Reemplazar Vehículos
 STR_SEND_TRAIN_TO_DEPOT                                         :Enviar o Depósito
@@ -728,6 +732,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...os fi
 STR_02A1_SMALL                                                  :{BLACK}Pequeno
 STR_02A2_MEDIUM                                                 :{BLACK}Mediano
 STR_02A3_LARGE                                                  :{BLACK}Grande
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Cidade
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecciona o tamaño da cidade:
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamaño da cidade:
 
@@ -751,7 +756,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C3_GAME_OPTIONS                                           :Opcións da Partida
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configuración de Dificultade
 STR_02C7_CONFIG_PATCHES                                         :Configuración dos Parches
-STR_NEWGRF_SETTINGS                                             :Configuración de Newgrf
+STR_NEWGRF_SETTINGS                                             :Configuración NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Amosar nomes de cidades
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Amosae nomes de estacións
@@ -1076,6 +1081,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Habilit
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permiti-la compra de accións por outras compañías
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cando se arrastre, colocar siniais cada: {ORANGE}{STRING} cadrado(s)
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :defecto
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1083,6 +1089,12 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Dereita
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Radio de captura da fiestra: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radio de agarre da fiestra: {ORANGE}desactivado
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Velocidade de crecemento das cidades: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ningún
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lento
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rápido
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Moi rápido
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcción
@@ -1161,6 +1173,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árbores
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Colocar árbores dun tipo aleatorio
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Non se pode construí-los canais aí...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construir canais.
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Non se pode construí-lo peche aí...
@@ -1314,6 +1327,25 @@ STR_NETWORK_LANG_ANY                                            :Calquera
 STR_NETWORK_LANG_ENGLISH                                        :Inglés
 STR_NETWORK_LANG_GERMAN                                         :Alemán
 STR_NETWORK_LANG_FRENCH                                         :Francés
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasileiro
+STR_NETWORK_LANG_BULGARIAN                                      :Búlgaro
+STR_NETWORK_LANG_CZECH                                          :Checo
+STR_NETWORK_LANG_DANISH                                         :Danés
+STR_NETWORK_LANG_DUTCH                                          :Holandés
+STR_NETWORK_LANG_FINNISH                                        :Finés
+STR_NETWORK_LANG_HUNGARIAN                                      :Húngaro
+STR_NETWORK_LANG_ITALIAN                                        :Italiano
+STR_NETWORK_LANG_JAPANESE                                       :Xaponés
+STR_NETWORK_LANG_KOREAN                                         :Coreano
+STR_NETWORK_LANG_POLISH                                         :Polaco
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugués
+STR_NETWORK_LANG_ROMANIAN                                       :Rumano
+STR_NETWORK_LANG_RUSSIAN                                        :Ruso
+STR_NETWORK_LANG_SLOVAK                                         :Eslovaco
+STR_NETWORK_LANG_SLOVENIAN                                      :Esloveno
+STR_NETWORK_LANG_SPANISH                                        :Español
+STR_NETWORK_LANG_SWEDISH                                        :Sueco
+STR_NETWORK_LANG_TURKISH                                        :Turco
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera de partida multixogador
@@ -1807,6 +1839,12 @@ STR_4827_REQUIRES                                               :{BLACK}Require:
 STR_4828_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}, {STRING}
 STR_4829_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
+
+############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produce: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produce: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producción no último mes:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportado)
@@ -2805,10 +2843,10 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Valor do
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Puntos totais de puntos posibles
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configuración NewGRF
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración Newgrf
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplica-los cambios
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Conf. parámetros
-STR_NEWGRF_TIP                                                  :{BLACK}Unha lista de tódolos sets Newgrf que tes instalados. Pincha nun set para cambia-la configuración
+STR_NEWGRF_TIP                                                  :{BLACK}Unha lista de tódolos sets NewGRF que tes instalados. Pincha nun set para cambia-la configuración
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}¡Non hai ficheiros newgrf instalados! Consulta no manual as instruccións para instalar novos gráficos
 STR_NEWGRF_FILENAME                                             :{BLACK}Ficheiro: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
@@ -2823,9 +2861,9 @@ STR_NEWGRF_ADD                                                  :{BLACK}Engadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Engadir un novo arquivo NewGRF á lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Eliminar
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Elimina-lo arquivo NewGRF seleccionado da lista
-STR_NEWGRF_MOVEUP                                               :{BLACK}Mover Arriba
+STR_NEWGRF_MOVEUP                                               :{BLACK}Subir
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Move-lo arquivo NewGRF seleccionado arriba na lista
-STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover Abaixo
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Baixar
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move-lo arquivo NewGRF seleccionado abaixo na lista
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parámetros: {SILVER}{STRING}
 
@@ -3048,3 +3086,4 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 #### Improved sign GUI
 
 ########
+

@@ -3397,6 +3397,10 @@ STR_GROUP_ALL_TRAINS                                            :Všetky vlaky
 STR_GROUP_ALL_ROADS                                             :Všetky cestné vozidlá
 STR_GROUP_ALL_SHIPS                                             :Všetky lode
 STR_GROUP_ALL_AIRCRAFTS                                         :Všetky lietadlá
+STR_GROUP_DEFAULT_TRAINS                                        :Nezaradené vlaky
+STR_GROUP_DEFAULT_ROADS                                         :Nezaradené vozidlá
+STR_GROUP_DEFAULT_SHIPS                                         :Nezaradené lode
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nezaradené lietadlá
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Pridat zdielané vozidlá
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstránit všetky vozidlá

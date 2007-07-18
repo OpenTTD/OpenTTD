@@ -1700,7 +1700,7 @@ STR_1007_ALREADY_BUILT                                          :{WHITE}...juba 
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rööbastee tuleb eelnevalt lammutada
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Rööbastee ehitamine
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifitseeritud rööbastee ehitus
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorööbastee ehitamine
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorelsi ehitamine
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Elektromageetilise rööbastee ehitamine
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Vali raudteesild
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Siia ei saa depood ehitada...
@@ -1712,7 +1712,7 @@ STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Siit ei 
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Depoo suund
 STR_1015_RAILROAD_CONSTRUCTION                                  :Rööbastee ehitamine
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrifitseeritud rööbastee ehitus
-STR_1016_MONORAIL_CONSTRUCTION                                  :Monorööbastee ehitamine
+STR_1016_MONORAIL_CONSTRUCTION                                  :Monorelsi ehitamine
 STR_1017_MAGLEV_CONSTRUCTION                                    :Elektromagneetilise rööbastee ehitamine
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Ehita rööbasteed
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Ehita rongidepoo (rongide ehitamiseks ja hoolduseks)
@@ -2416,7 +2416,7 @@ STR_LIVERY_DEFAULT                                              :Firmavärv
 STR_LIVERY_STEAM                                                :Aurumootorvedur
 STR_LIVERY_DIESEL                                               :Diiselmootorvedur
 STR_LIVERY_ELECTRIC                                             :Elektrimootorvedur
-STR_LIVERY_MONORAIL                                             :Monorelss-mootorvedur
+STR_LIVERY_MONORAIL                                             :Monorelssvedur
 STR_LIVERY_MAGLEV                                               :Elektromagneetiline mootorvedur
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
@@ -2684,7 +2684,7 @@ STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
 STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
 STR_80EE_DINGER_100                                             :Dinger 100
 STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
-STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-süstik
 STR_80F1_KELLING_K1                                             :Kelling K1
 STR_80F2_KELLING_K6                                             :Kelling K6
 STR_80F3_KELLING_K7                                             :Kelling K7
@@ -2697,9 +2697,9 @@ STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
 STR_80FA_FLASHBANG_X1                                           :Flashbang X1
 STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
 STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
-STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
-STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
-STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
+STR_80FD_TRICARIO_HELICOPTER                                    :Tricario helikopter
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 helikopter
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut helikopter
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Teade veovahendi tootjalt
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Me oleme just kujundanud uue {STRING}{P "" i} - kas te tahaksite testida seda aasta aega enne, kui see on saadaval kõigile?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :raudteevedur
@@ -2717,17 +2717,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on 
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Mine {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Mine {STATION} (Vea ja võta laadung)
-STR_8808_GO_TO_UNLOAD                                           :Mine {STATION} (Laadi maha)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mine {STATION} (Vea ja jäta tühjaks)
-STR_880A_GO_TO_LOAD                                             :Mine {STATION} (Laadi)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Mine {STATION} (Vea ja oota täislaadingut)
+STR_8807_GO_TO_TRANSFER                                         :Mine {STATION} (vea ja võta laadung peale)
+STR_8808_GO_TO_UNLOAD                                           :Mine {STATION} (laadi maha)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mine {STATION} (vea ja jäta tühjaks)
+STR_880A_GO_TO_LOAD                                             :Mine {STATION} (laadi)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Mine {STATION} (vea ja oota täislaadungit)
 STR_880C_GO_NON_STOP_TO                                         :Sõida läbi {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Sõida läbi {STATION} (Vea ja oota täislaadingut)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Sõida läbi {STATION} (Laadi maha)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Sõida läbi {STATION} (Vea ja jäta tühjaks)
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Sõida läbi {STATION} (vea ja oota täislaadungit)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Sõida läbi {STATION} (laadi maha)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Sõida läbi {STATION} (vea ja jäta tühjaks)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Sõida läbi {STATION} (laadi)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Sõida läbi {STATION} (Vea ja oota täislaadingut)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Sõida läbi {STATION} (vea ja oota täislaadungit)
 STR_GO_TO_TRAIN_DEPOT                                           :Mine linna {TOWN} rongidepoosse
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Hoolda linna {TOWN} rongidepoos
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi linna {TOWN} rongidepoo
@@ -2760,8 +2760,8 @@ STR_881B_TRAINS                                                 :{WHITE}{COMPANY
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Uus raudteeveerem
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Uus elektriraudteeveerem
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uus Monorelssi Sõiduk
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uus Maglevi Sõiduk
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uued monorelsi sõidukid
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uus maglevi sõiduk
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Raudteesõidukid
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Ehita veovahend
@@ -2774,7 +2774,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}See ehit
 STR_8820_RENAME                                                 :{BLACK}Muuda nime
 STR_8823_SKIP                                                   :{BLACK}Jäta vahele
 STR_8824_DELETE                                                 :{BLACK}Kustuta
-STR_8825_NON_STOP                                               :{BLACK}Peatuseta
+STR_8825_NON_STOP                                               :{BLACK}Peatusteta
 STR_8826_GO_TO                                                  :{BLACK}Mine
 STR_8827_FULL_LOAD                                              :{BLACK}Laadi täis
 STR_8828_UNLOAD                                                 :{BLACK}Laadi maha
@@ -2783,7 +2783,7 @@ STR_REFIT_TIP                                                   :{BLACK}Vali, mi
 STR_REFIT_ORDER                                                 :(Taasseadista {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Sõiduplaan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Näita sõiduplaani
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Käsud)
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (käsud)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Käskude Lõpp - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Hooldus

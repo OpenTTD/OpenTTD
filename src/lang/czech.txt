@@ -1032,7 +1032,7 @@ STR_TONS                                                        :tun
 STR_LITERS                                                      :litrů
 STR_ITEMS                                                       :kusů
 STR_CRATES                                                      :krabic
-STR_RES_OTHER                                                   :jiné
+STR_RES_OTHER                                                   :Jiné
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -1092,7 +1092,7 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflace
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vozit zboží do stanice jen když je poptávka: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Povolit stavbu velmi dlouhých mostů: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Povolit příkaz 'jeď do depa': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Způsob manuálního budování průmyslu těžby surovin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Způsob manuálního budování primárního průmyslu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žádný
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jako u ostatniho průmyslu
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :průzkum
@@ -1167,14 +1167,14 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použí
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Používat ukazatele naložení: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Povolit jízdní řády vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazit jízdní řády v cyklech místo ve dnech: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standardní druh kolejí (v nové hře/po načtení hry): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normální koleje
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifikované koleje
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :První dostupný
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Nejlepší dostupný
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Nejpoužívanější
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Výchozí druh kolejí (v nové hře/po načtení hry): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :normální koleje
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :elektrifikované koleje
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :první dostupný
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :poslední dostupný
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :nejpoužívanější
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje pro budování i bez dostupných vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaků na hráče: {ORANGE}{STRING}
@@ -2041,6 +2041,8 @@ STR_4829_REQUIRES                                               :{BLACK}Vyžaduj
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Náklad čekající na zpracování:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produkuje: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produkuje: {YELLOW}{STRING}, {STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkce minulý měsíc:
@@ -2801,7 +2803,7 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Provést
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vložit nový příkaz před označený příkaz nebo na konec seznamu
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označený příkaz provádět do plného naložení
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označený příkaz vyloží vozidlo
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní řád - příkaz vybrat kliknutím.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní řád - příkaz vybereš kliknutím.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Změnit čas pro splnění jízdního příkazu
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zrušit čas pro splnění jízdního příkazu
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat ukazatel zpoždění, takže vozidlo pojede na čas
@@ -2844,11 +2846,11 @@ STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozidla 
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Toto vozidlo v této stanici nestaví.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Změnit čas
 STR_TIMETABLE_STATUS_ON_TIME                                    :Vozidlo jede na čas
-STR_TIMETABLE_STATUS_LATE                                       :Vozidlo má  {STRING} zpoždění
+STR_TIMETABLE_STATUS_LATE                                       :Vozidlo má {STRING} zpoždění
 STR_TIMETABLE_STATUS_EARLY                                      :Vozidlo jede {STRING} napřed
 STR_TIMETABLE_TOTAL_TIME                                        :Tento jízdní řád bude trvat {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Tento jízdní řád bude trvat nejméně {STRING} (vozidla mimo jízdní řád)
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Vyplnit automaticky
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaticky
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vyplnit jízdní řád automaticky s hodnotami z první jízdy
 
 ##id 0x9000
@@ -3395,6 +3397,10 @@ STR_GROUP_ALL_TRAINS                                            :Všechny vlaky
 STR_GROUP_ALL_ROADS                                             :Všechna silniční vozidla
 STR_GROUP_ALL_SHIPS                                             :Všechny lodě
 STR_GROUP_ALL_AIRCRAFTS                                         :Všechna letadla
+STR_GROUP_DEFAULT_TRAINS                                        :Nezařazené vlaky
+STR_GROUP_DEFAULT_ROADS                                         :Nezařazená silniční vozidla
+STR_GROUP_DEFAULT_SHIPS                                         :Nezařazené lodě
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nezařazená letadla
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Přidat sdílená vozidla
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstranit všechna vozidla
@@ -3439,3 +3445,7 @@ STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Na před
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Financovat
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Hledat
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Postavit
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Vyber si vhodnou továrnu ze seznamu
