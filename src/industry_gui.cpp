@@ -761,7 +761,6 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 			case DIRECTORY_INDU_SORTBYNAME: {
-				//byte current_sort = e->we.click.widget - DIRECTORY_INDU_SORTBYNAME;
 				_industry_sort_order = _industry_sort_order == 0 ? 1 : 0;
 				_industry_sort_dirty = true;
 				SetWindowDirty(w);
