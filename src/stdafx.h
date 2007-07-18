@@ -349,10 +349,10 @@ CDECL error(const char *str, ...);
 #define _stricmp strcasecmp
 #endif
 
-#if !defined(MORPHOS) and !defined(OPENBSD)
+#if !defined(MORPHOS) && !defined(OPENBSD)
 /* MorphOS & OpenBSD don't know wchars, the rest does :( */
 #define HAS_WCHAR
-#endif /* !defined(MORHPOS) and !defined(OPENBSD) */
+#endif /* !defined(MORPHOS) && !defined(OPENBSD) */
 
 #if !defined(MAX_PATH)
 # define MAX_PATH 260
