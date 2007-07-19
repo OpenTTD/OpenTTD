@@ -75,7 +75,7 @@ enum CallbackID {
 	CBID_HOUSE_DESTRUCTION               = 0x21,
 
 	/** Called to determine if the given industry type is available */
-	CBID_INDUSTRY_AVAILABLE              = 0x22, // not implemented
+	CBID_INDUSTRY_AVAILABLE              = 0x22,
 
 	/** This callback is called from vehicle purchase lists. It returns a value to be
 	 * used as a custom string ID in the 0xD000 range. */

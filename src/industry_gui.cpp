@@ -24,6 +24,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_industries.h"
 #include "newgrf_text.h"
+#include "date.h"
 
 extern Industry *CreateNewIndustry(TileIndex tile, IndustryType type);
 
@@ -62,6 +63,8 @@ enum {
 struct fnd_d {
 	int index;             ///< index of the element in the matrix
 	IndustryType select;   ///< industry corresponding to the above index
+	uint16 callback_timer; ///< timer counter for callback eventual verification
+	bool timer_enabled;    ///< timer can be used
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(fnd_d));
 
@@ -70,6 +73,7 @@ static struct IndustryData {
 	uint16 count;                               ///< How many industries are loaded
 	IndustryType index[NUM_INDUSTRYTYPES + 1];  ///< Type of industry, in the order it was loaded
 	StringID text[NUM_INDUSTRYTYPES + 1];       ///< Text coming from CBM_IND_FUND_MORE_TEXT (if ever)
+	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_AVAILABLE (if ever)
 } _fund_gui;
 
 static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
@@ -91,9 +95,12 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				w->resize.height = w->height -= 44;
 			}
 
+			WP(w, fnd_d).timer_enabled = _loaded_newgrf_features.has_newindustries;
+
 			/* Initilialize structures */
 			memset(&_fund_gui.index, 0xFF, NUM_INDUSTRYTYPES);
 			memset(&_fund_gui.text, STR_NULL, NUM_INDUSTRYTYPES);
+			memset(&_fund_gui.enabled, false, NUM_INDUSTRYTYPES);
 			_fund_gui.count = 0;
 
 			w->vscroll.cap = 8; // rows in grid, same in scroller
@@ -102,6 +109,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
 				_fund_gui.index[_fund_gui.count] = INVALID_INDUSTRYTYPE;
 				_fund_gui.count++;
+				WP(w, fnd_d).timer_enabled = false;
 			}
 
 			/* We'll perform two distinct loops, one for secondary industries, and the other one for
@@ -110,6 +118,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				indsp = GetIndustrySpec(ind);
 				if (indsp->enabled && (!indsp->IsRawIndustry() || _game_mode == GM_EDITOR)) {
 					_fund_gui.index[_fund_gui.count] = ind;
+					_fund_gui.enabled[_fund_gui.count] = CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
 					_fund_gui.count++;
 				}
 			}
@@ -119,14 +128,17 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 					indsp = GetIndustrySpec(ind);
 					if (indsp->enabled && indsp->IsRawIndustry()) {
 						_fund_gui.index[_fund_gui.count] = ind;
+						_fund_gui.enabled[_fund_gui.count] = CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
 						_fund_gui.count++;
 					}
 				}
 			}
+
 			/* first indutry type is selected.
 			 * I'll be damned if there are none available ;) */
 			WP(w, fnd_d).index = 0;
 			WP(w, fnd_d).select = _fund_gui.index[0];
+			WP(w, fnd_d).callback_timer = DAY_TICKS;
 		} break;
 
 		case WE_PAINT: {
@@ -140,10 +152,15 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			/* Raw industries might be prospected. Show this fact by changing the string
 			 * In Editor, you just build, while ingame, or you fund or you prospect */
 			if (_game_mode == GM_EDITOR) {
+				/* We've chosen many random industries but no industries have been specified */
+				if (indsp == NULL && _patches.raw_industry_construction == 0) {
+					_fund_gui.enabled[WP(w, fnd_d).index] = false;
+				}
 				w->widget[DYNA_INDU_FUND_WIDGET].data = STR_BUILD_NEW_INDUSTRY;
 			} else {
 				w->widget[DYNA_INDU_FUND_WIDGET].data = (_patches.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
 			}
+			SetWindowWidgetDisabledState(w, DYNA_INDU_FUND_WIDGET, !_fund_gui.enabled[WP(w, fnd_d).index]);
 
 			SetVScrollCount(w, _fund_gui.count);
 
@@ -308,6 +325,25 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			ResetObjectToPlace();
 		} break;
 
+		case WE_TICK:
+			if (!WP(w, fnd_d).timer_enabled) break;
+			if (--WP(w, fnd_d).callback_timer == 0) {
+				/* We have just passed another day.
+				 * See if we need to update availability of currently selected industry */
+				WP(w, fnd_d).callback_timer = DAY_TICKS;  //restart counter
+
+				const IndustrySpec *indsp = GetIndustrySpec(WP(w, fnd_d).select);
+
+				if (indsp->enabled) {
+					bool call_back_result = CheckIfCallBackAllowsAvailability(WP(w, fnd_d).select, IACT_USERCREATION);
+
+					/* Only if result does match the previous state would it require a redraw. */
+					if (call_back_result != _fund_gui.enabled[WP(w, fnd_d).index]) {
+						_fund_gui.enabled[WP(w, fnd_d).index] = call_back_result;
+						SetWindowDirty(w);
+					}
+				}
+			}
 			break;
 
 		case WE_TIMEOUT:
