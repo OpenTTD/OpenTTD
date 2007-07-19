@@ -410,19 +410,6 @@ struct vp_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d));
 
-/* vp2_d is the same as vp_d, except for the data_# values.. */
-struct vp2_d {
-	VehicleID follow_vehicle;
-	int32 scrollpos_x;
-	int32 scrollpos_y;
-	int32 dest_scrollpos_x;
-	int32 dest_scrollpos_y;
-	byte data_1;
-	byte data_2;
-	byte data_3;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp2_d));
-
 struct news_d {
 	uint16 follow_vehicle;
 	int32 scrollpos_x;

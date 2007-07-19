@@ -380,11 +380,13 @@ void ShowBuildIndustryWindow()
 
 static void UpdateIndustryProduction(Industry *i);
 
-static inline bool isProductionMinimum(const Industry *i, int pt) {
+static inline bool isProductionMinimum(const Industry *i, int pt)
+{
 	return i->production_rate[pt] == 1;
 }
 
-static inline bool isProductionMaximum(const Industry *i, int pt) {
+static inline bool isProductionMaximum(const Industry *i, int pt)
+{
 	return i->production_rate[pt] == 255;
 }
 
@@ -395,12 +397,18 @@ static inline bool IsProductionAlterable(const Industry *i)
 			(ind->accepts_cargo[0] == CT_INVALID || ind->accepts_cargo[0] == CT_VALUABLES));
 }
 
+/** Information to store about the industry window */
+struct indview_d : public vp_d {
+	byte editbox_line;        ///< The line clicked to open the edit box
+	byte clicked_line;        ///< The line of the button that has been clicked
+	byte clicked_button;      ///< The button that has been clicked (to raise)
+	byte production_offset_y; ///< The offset of the production texts/buttons
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(indview_d));
+
+
 static void IndustryViewWndProc(Window *w, WindowEvent *e)
 {
-	/* WP(w,vp2_d).data_1 is for the editbox line
-	 * WP(w,vp2_d).data_2 is for the clickline
-	 * WP(w,vp2_d).data_3 is for the click pos (left or right) */
-
 	switch (e->event) {
 	case WE_CREATE: {
 		/* Count the number of lines that we need to resize the GUI with */
@@ -474,6 +482,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				if (ind->accepts_cargo[0] != CT_INVALID) y += 10;
 				DrawString(2, y, STR_482A_PRODUCTION_LAST_MONTH, 0);
 				y += 10;
+				WP(w, indview_d).production_offset_y = y;
 			}
 
 			SetDParam(0, ind->produced_cargo[j]);
@@ -483,7 +492,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), y, STR_482B_TRANSPORTED, 0);
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
-				DrawArrowButtons(5, y, 3, (WP(w, vp2_d).data_2 == j + 1) ? WP(w, vp2_d).data_3 : 0,
+				DrawArrowButtons(5, y, 3, (WP(w, indview_d).clicked_line == j + 1) ? WP(w, indview_d).clicked_button : 0,
 						!isProductionMinimum(i, j), !isProductionMaximum(i, j));
 			}
 			y += 10;
@@ -515,10 +524,9 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 			/* We should work if needed.. */
 			if (!IsProductionAlterable(i)) return;
-
 			x = e->we.click.pt.x;
-			line = (e->we.click.pt.y - 121) / 10;
-			if (e->we.click.pt.y >= 121 && IS_INT_INSIDE(line, 0, 2) &&
+			line = (e->we.click.pt.y - WP(w, indview_d).production_offset_y) / 10;
+			if (e->we.click.pt.y >= WP(w, indview_d).production_offset_y && IS_INT_INSIDE(line, 0, 2) &&
 					GetIndustrySpec(i->type)->produced_cargo[line] != CT_INVALID) {
 				if (IS_INT_INSIDE(x, 5, 25) ) {
 					/* Clicked buttons, decrease or increase production */
@@ -533,11 +541,11 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					UpdateIndustryProduction(i);
 					SetWindowDirty(w);
 					w->flags4 |= 5 << WF_TIMEOUT_SHL;
-					WP(w, vp2_d).data_2 = line + 1;
-					WP(w, vp2_d).data_3 = (x < 15 ? 1 : 2);
+					WP(w, indview_d).clicked_line = line + 1;
+					WP(w, indview_d).clicked_button = (x < 15 ? 1 : 2);
 				} else if (IS_INT_INSIDE(x, 34, 160)) {
 					/* clicked the text */
-					WP(w, vp2_d).data_1 = line;
+					WP(w, indview_d).editbox_line = line;
 					SetDParam(0, i->production_rate[line] * 8);
 					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_GAME_PRODUCTION, 10, 100, w, CS_ALPHANUMERAL);
 				}
@@ -551,15 +559,15 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_TIMEOUT:
-		WP(w, vp2_d).data_2 = 0;
-		WP(w, vp2_d).data_3 = 0;
+		WP(w, indview_d).clicked_line = 0;
+		WP(w, indview_d).clicked_button = 0;
 		SetWindowDirty(w);
 		break;
 
 	case WE_ON_EDIT_TEXT:
 		if (e->we.edittext.str[0] != '\0') {
 			Industry* i = GetIndustry(w->window_number);
-			int line = WP(w, vp2_d).data_1;
+			int line = WP(w, indview_d).editbox_line;
 
 			i->production_rate[line] = clampu(atoi(e->we.edittext.str), 0, 255);
 			UpdateIndustryProduction(i);
@@ -605,9 +613,9 @@ void ShowIndustryViewWindow(int industry)
 
 	if (w != NULL) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
-		WP(w, vp2_d).data_1 = 0;
-		WP(w, vp2_d).data_2 = 0;
-		WP(w, vp2_d).data_3 = 0;
+		WP(w, indview_d).editbox_line = 0;
+		WP(w, indview_d).clicked_line = 0;
+		WP(w, indview_d).clicked_button = 0;
 		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, GetIndustry(w->window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
 	}
 }
