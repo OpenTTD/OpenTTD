@@ -871,7 +871,7 @@ Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode)
 
 	/* if mode is false, use the singular form */
 	const CargoSpec *cs = GetCargo(s->cargo_type);
-	SetDParam(0, mode ? cs->name_plural : cs->name);
+	SetDParam(0, mode ? cs->name : cs->name_single);
 
 	if (s->age < 12) {
 		if (cs->town_effect != TE_PASSENGERS && cs->town_effect != TE_MAIL) {

@@ -1532,11 +1532,11 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 				break;
 
 			case 0x09: /* String ID for cargo type name */
-				cs->name_plural = grf_load_word(&buf);
+				cs->name = grf_load_word(&buf);
 				break;
 
 			case 0x0A: /* String for 1 unit of cargo */
-				cs->name = grf_load_word(&buf);
+				cs->name_single = grf_load_word(&buf);
 				break;
 
 			case 0x0B:
@@ -5259,7 +5259,7 @@ static void MapNewCargoStrings()
 		if (!cs->IsValid() || cs->grfid == 0) continue;
 
 		cs->name         = MapGRFStringID(cs->grfid, cs->name);
-		cs->name_plural  = MapGRFStringID(cs->grfid, cs->name_plural);
+		cs->name_single  = MapGRFStringID(cs->grfid, cs->name_single);
 		cs->units_volume = MapGRFStringID(cs->grfid, cs->units_volume);
 		cs->quantifier   = MapGRFStringID(cs->grfid, cs->quantifier);
 		cs->abbrev       = MapGRFStringID(cs->grfid, cs->abbrev);
