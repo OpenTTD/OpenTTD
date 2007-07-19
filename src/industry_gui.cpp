@@ -58,11 +58,17 @@ enum {
 	DYNA_INDU_RESIZE_WIDGET,
 };
 
+/** Attached struct to the window extended data */
+struct fnd_d {
+	int index;             ///< index of the element in the matrix
+	IndustryType select;   ///< industry corresponding to the above index
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(fnd_d));
+
 /** Helper struct holding the available industries for current situation */
 static struct IndustryData {
 	uint16 count;                               ///< How many industries are loaded
-	IndustryType select;
-	byte index[NUM_INDUSTRYTYPES + 1];          ///< Type of industry, in the order it was loaded
+	IndustryType index[NUM_INDUSTRYTYPES + 1];  ///< Type of industry, in the order it was loaded
 	StringID text[NUM_INDUSTRYTYPES + 1];       ///< Text coming from CBM_IND_FUND_MORE_TEXT (if ever)
 } _fund_gui;
 
@@ -90,9 +96,6 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			memset(&_fund_gui.text, STR_NULL, NUM_INDUSTRYTYPES);
 			_fund_gui.count = 0;
 
-			/* first indutry type is selected.
-			 * I'll be damned if there are none available ;) */
-			_fund_gui.select = 0;
 			w->vscroll.cap = 8; // rows in grid, same in scroller
 			w->resize.step_height = 13;
 
@@ -120,10 +123,14 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 					}
 				}
 			}
+			/* first indutry type is selected.
+			 * I'll be damned if there are none available ;) */
+			WP(w, fnd_d).index = 0;
+			WP(w, fnd_d).select = _fund_gui.index[0];
 		} break;
 
 		case WE_PAINT: {
-			const IndustrySpec *indsp = (_fund_gui.index[_fund_gui.select] == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(_fund_gui.index[_fund_gui.select]);
+			const IndustrySpec *indsp = (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(WP(w, fnd_d).select);
 			StringID str = STR_4827_REQUIRES;
 			int x_str = w->widget[DYNA_INDU_INFOPANEL].left + 3;
 			int y_str = w->widget[DYNA_INDU_INFOPANEL].top + 3;
@@ -147,7 +154,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				int offset = i * 13;
 				int x = 3;
 				int y = 16;
-				bool selected = _fund_gui.select == i + w->vscroll.pos;
+				bool selected = WP(w, fnd_d).index == i + w->vscroll.pos;
 
 				if (_fund_gui.index[i + w->vscroll.pos] == INVALID_INDUSTRYTYPE) {
 					DrawString(21, y + offset, STR_MANY_RANDOM_INDUSTRIES, selected ? 12 : 6);
@@ -161,7 +168,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				GfxFillRect(x + 1, y + 2 + offset,  x +  9, y + 6 + offset, indsp->map_colour);
 			}
 
-			if (_fund_gui.index[_fund_gui.select] == INVALID_INDUSTRYTYPE) {
+			if (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
 				DrawStringMultiLine(x_str, y_str, STR_RANDOM_INDUSTRIES_TIP, max_width, wi->bottom - wi->top - 40);
 				break;
 			}
@@ -203,12 +210,12 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			DrawStringTruncated(x_str, y_str, str, 0, max_width);
 
 			/* Get the additional purchase info text, if it has not already been */
-			if (_fund_gui.text[_fund_gui.select] == STR_NULL) {   // Have i been called already?
+			if (_fund_gui.text[WP(w, fnd_d).index] == STR_NULL) {   // Have i been called already?
 				if (HASBIT(indsp->callback_flags, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
-					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, _fund_gui.index[_fund_gui.select], INVALID_TILE);
+					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, WP(w, fnd_d).select, INVALID_TILE);
 					if (callback_res != CALLBACK_FAILED) {  // Did it failed?
 						StringID newtxt = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
-						_fund_gui.text[_fund_gui.select] = newtxt;   // Store it for further usage
+						_fund_gui.text[WP(w, fnd_d).index] = newtxt;   // Store it for further usage
 					}
 				}
 			}
@@ -216,7 +223,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			y_str += 11;
 			/* Draw the Additional purchase text, provided by newgrf callback, if any.
 			 * Otherwhise, will print Nothing */
-			str = _fund_gui.text[_fund_gui.select];
+			str = _fund_gui.text[WP(w, fnd_d).index];
 			if (str != STR_NULL && str != STR_UNDEFINED) {
 				SetDParam(0, str);
 				DrawStringMultiLine(x_str, y_str, STR_JUST_STRING, max_width, wi->bottom - wi->top - 40);
@@ -226,17 +233,18 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case DYNA_INDU_MATRIX_WIDGET: {
-					IndustryType type;
+					const IndustrySpec *indsp;
 					int y = (e->we.click.pt.y - w->widget[DYNA_INDU_MATRIX_WIDGET].top) / 13 + w->vscroll.pos ;
 
 					if (y >= 0 && y < _fund_gui.count) { // Is it within the boundaries of available data?
-						_fund_gui.select = y;
-						type = _fund_gui.index[_fund_gui.select];
+						WP(w, fnd_d).index = y;
+						WP(w, fnd_d).select = _fund_gui.index[WP(w, fnd_d).index];
+						indsp = (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(WP(w, fnd_d).select);
 
 						SetWindowDirty(w);
 
-						if ((_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(type)->IsRawIndustry()) ||
-								type == INVALID_INDUSTRYTYPE) {
+						if ((_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
+								WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
 							/* Reset the button state if going to prospecting or "build many industries" */
 							RaiseWindowButtons(w);
 							ResetObjectToPlace();
@@ -245,11 +253,8 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				} break;
 
 				case DYNA_INDU_FUND_WIDGET: {
-					IndustryType type = _fund_gui.index[_fund_gui.select];
-
-					if (type == INVALID_INDUSTRYTYPE) {
+					if (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
 						HandleButtonClick(w, DYNA_INDU_FUND_WIDGET);
-						WP(w, def_d).data_1 = -1;
 
 						if (GetNumTowns() == 0) {
 							ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
@@ -259,12 +264,11 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 							GenerateIndustries();
 							_generating_world = false;
 						}
-					} else if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(type)->IsRawIndustry()) {
-						DoCommandP(0, type, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+					} else if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(WP(w, fnd_d).select)->IsRawIndustry()) {
+						DoCommandP(0, WP(w, fnd_d).select, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 						HandleButtonClick(w, DYNA_INDU_FUND_WIDGET);
-						WP(w, def_d).data_1 = -1;
-					} else if (HandlePlacePushButton(w, DYNA_INDU_FUND_WIDGET, SPR_CURSOR_INDUSTRY, 1, NULL)) {
-							WP(w, def_d).data_1 = _fund_gui.select;
+					} else {
+						HandlePlacePushButton(w, DYNA_INDU_FUND_WIDGET, SPR_CURSOR_INDUSTRY, 1, NULL);
 					}
 				} break;
 			}
@@ -278,13 +282,12 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 
 		case WE_PLACE_OBJ: {
 			/* We do not need to protect ourselves against "Random Many Industries" in this mode */
-			IndustryType type = _fund_gui.index[_fund_gui.select];
+			const IndustrySpec *indsp = GetIndustrySpec(WP(w, fnd_d).select);
 
-			if (WP(w, def_d).data_1 == -1) break;
 			if (_game_mode == GM_EDITOR) {
 				/* Show error if no town exists at all */
 				if (GetNumTowns() == 0) {
-					SetDParam(0, GetIndustrySpec(type)->name);
+					SetDParam(0, indsp->name);
 					ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
 					return;
 				}
@@ -292,28 +295,24 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				_current_player = OWNER_NONE;
 				_generating_world = true;
 				_ignore_restrictions = true;
-				if (!TryBuildIndustry(e->we.place.tile, type)) {
-					SetDParam(0, GetIndustrySpec(type)->name);
+				if (!TryBuildIndustry(e->we.place.tile, WP(w, fnd_d).select)) {
+					SetDParam(0, indsp->name);
 					ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
-				} else {
-					ResetObjectToPlace();
 				}
+
 				_ignore_restrictions = false;
 				_generating_world = false;
-			} else if (DoCommandP(e->we.place.tile, type, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY))) {
-				ResetObjectToPlace();
-			}
+			} else DoCommandP(e->we.place.tile, WP(w, fnd_d).select, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+
+			/* Whatever the outcome of the actions, just reset the cursor and the system */
+			ResetObjectToPlace();
 		} break;
 
-		case WE_ABORT_PLACE_OBJ:
-			RaiseWindowButtons(w);
 			break;
 
 		case WE_TIMEOUT:
-			if (WP(w, def_d).data_1 == -1) {
-				RaiseWindowButtons(w);
-				WP(w, def_d).data_1 = 0;
-			}
+		case WE_ABORT_PLACE_OBJ:
+			RaiseWindowButtons(w);
 			break;
 	}
 }
