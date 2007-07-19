@@ -1726,7 +1726,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Autorita
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Afişează informaţii referitoare la autoritatea locală
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Autoritatea locală din {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Evaluarea companiilor de transport:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvenţii (F6)
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvenţii disponibile:
 STR_2027_FROM_TO                                                :{ORANGE}- {STRING} de la {STRING} la {STRING}
@@ -2212,7 +2212,7 @@ STR_701D_OTHER                                                  :{GOLD}Altele
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graficul veniturilor
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

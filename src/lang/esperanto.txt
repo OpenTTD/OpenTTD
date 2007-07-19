@@ -1658,7 +1658,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Lokaj es
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Montru informojn pri lokaj estroj
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Lokaj estroj de {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Takso de transportkompanioj:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencioj
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvencioj haveblas por jenaj servoj:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} al {STRING}
@@ -2125,7 +2125,7 @@ STR_701D_OTHER                                                  :{GOLD}Alia
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Entute:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Enspeza Grafiko
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

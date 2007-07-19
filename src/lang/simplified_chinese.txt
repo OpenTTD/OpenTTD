@@ -1648,7 +1648,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}地方�
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}显示地方政府的信息
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} 地方政府
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}对运输公司评价：
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}财政补贴项目
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}尚未中标的项目：
 STR_2027_FROM_TO                                                :{ORANGE}将 {STRING} 从 {STRING} 运送到 {STRING}
@@ -2113,7 +2113,7 @@ STR_701D_OTHER                                                  :{GOLD}其他费
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}总计：
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}收入图表
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

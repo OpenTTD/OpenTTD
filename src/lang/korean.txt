@@ -1727,7 +1727,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}지역 �
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}지역당국 정보 보기
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} 지역당국
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}회사 운송 성취도:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}보조금
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}제공되는 보조금:
 STR_2027_FROM_TO                                                :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송
@@ -2213,7 +2213,7 @@ STR_701D_OTHER                                                  :{GOLD}기타
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}총계:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}수익 그래프
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

@@ -1726,7 +1726,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}町議�
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}町議会の情報を表示します
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN}の町議会
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}会社の町内の世評：
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}：{ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}：{ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}助成金
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}次の運送経路に助成金を提案：
 STR_2027_FROM_TO                                                :{ORANGE}{STRING}を{STRING}から{STRING}へ
@@ -2212,7 +2212,7 @@ STR_701D_OTHER                                                  :{GOLD}その他
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}合計：
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}損益グラフ
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

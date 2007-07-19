@@ -1655,7 +1655,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Vietinė
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Rodyti informaciją apie valdzią
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} vietinė valdžia
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transporto kompanijų reitingai:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidijos
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Dar nepanaudotos subsidijos:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} iš {STRING} į {STRING}
@@ -2120,7 +2120,7 @@ STR_701D_OTHER                                                  :{GOLD}Kita
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Viso:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Pajamu diagrama
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

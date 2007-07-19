@@ -1625,7 +1625,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Bæjaryf
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Sýna upplýsingar um bæjaryfirvöld
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Bæjaryfirvöld {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Einkunnir flutningsfyrirtækis:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Samstarfssamningar
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Samstarfssamningar í boði fyrir eftirfarandi þjónustur:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} frá {STRING} til {STRING}
@@ -2090,7 +2090,7 @@ STR_701D_OTHER                                                  :{GOLD}Annað
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Summa:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Tekjulínurit
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

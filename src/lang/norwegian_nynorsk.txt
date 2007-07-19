@@ -1727,7 +1727,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Bystyre
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Vis informasjon om bystyret
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Bystyret i {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Vurdering av transportfirma:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidiar
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tilbydde subsidiar:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} frå {STRING} til {STRING}
@@ -2213,7 +2213,7 @@ STR_701D_OTHER                                                  :{GOLD}Anna
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totalt:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf over inntekter
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

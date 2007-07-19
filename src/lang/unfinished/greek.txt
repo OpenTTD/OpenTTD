@@ -1385,7 +1385,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Τοπι
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Εμφάνιση πληροφοριών για την τοπική αρχή
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Τοπική αρχή της πόλης {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ποσοστά εταιρείας μεταφορών:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Χρηματοδοτήσεις
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Τρέχουσες χρηματοδοτήσεις για υπηρεσίες παίρνοντας:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} από {STRING} πρός {STRING}
@@ -1794,7 +1794,7 @@ STR_701D_OTHER                                                  :{GOLD}Άλλα
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Σύνολο:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Γράφημα Εισοδήματος
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Γράφημα Ενεργών Εσόδων

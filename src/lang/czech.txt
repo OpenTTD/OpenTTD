@@ -1784,7 +1784,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Místní
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Ukázat informace o místní správě
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Místní správa města {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Hodnocení společností:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Dotace
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Nabídnuté dotace pro službu:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING.big} z {STRING} do {STRING}
@@ -2270,7 +2270,7 @@ STR_701D_OTHER                                                  :{GOLD}Další
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Celkem:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf příjmu
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

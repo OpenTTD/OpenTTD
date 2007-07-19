@@ -1726,7 +1726,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}地方�
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}顯示地方政府資訊
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} 地方政府
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}運輸公司評比：
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}：{ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}：{ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}補助
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}提供補助的運輸服務：
 STR_2027_FROM_TO                                                :{ORANGE}將 {STRING} 從 {STRING} 運到 {STRING}
@@ -2212,7 +2212,7 @@ STR_701D_OTHER                                                  :{GOLD}其它
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}總計：
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}收入圖
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

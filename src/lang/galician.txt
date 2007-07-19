@@ -1599,7 +1599,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Aut. Loc
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Mostra-la información sobre a autoridade local
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Autoridade local de {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Puntuacións das compañías de transporte:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidios
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Sibsidios en oferta para sevicios que transporten:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} dende {STRING} ata {STRING}
@@ -2069,7 +2069,7 @@ STR_701D_OTHER                                                  :{GOLD}Outros
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Total:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Gráfico de Ingresos
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

@@ -1710,7 +1710,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Belediye
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Belediye hakkında bilgi göster
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} belediyesi
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Taşıma şirketi reytingleri:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}İhaleler
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Beklenen ihaleler:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} {STRING} -> {STRING}
@@ -2190,7 +2190,7 @@ STR_701D_OTHER                                                  :{GOLD}Diğer
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Toplam:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Gelir Grafiği
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

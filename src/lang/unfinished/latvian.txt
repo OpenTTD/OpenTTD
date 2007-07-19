@@ -1437,7 +1437,7 @@ STR_2016_STATUE                                                 :Statuja
 STR_2017_FOUNTAIN                                               :Stru'klaka
 STR_2018_PARK                                                   :Parks
 STR_201E_STADIUM                                                :Stadions
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidijas
 STR_202A_NONE                                                   :{ORANGE}Neviens
 STR_2036_COTTAGES                                               :Kotedži
@@ -1662,7 +1662,7 @@ STR_701D_OTHER                                                  :{GOLD}Citi
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Kopā:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7027_LOAN                                                   :{WHITE}Aizdevums

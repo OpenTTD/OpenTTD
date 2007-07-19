@@ -1792,7 +1792,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Önkorm�
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Az önkormányzat adatainak megmutatása
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} önkormányzata
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Vélemény a szállítási cégekről:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Támogatások
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Támogatás jár
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} szállításáért {STRING} és {STRING} között
@@ -2315,7 +2315,7 @@ STR_701D_OTHER                                                  :{GOLD}Egyéb
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Összesen:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Jövedelem grafikon
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

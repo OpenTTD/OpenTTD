@@ -1790,7 +1790,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Miestna 
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Zobrazit informacie o miestnej sprave
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Miestna sprava {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Hodnotenie dopravnych spolocnosti:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Dotacie
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponuknute dotacie:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING} do {STRING}
@@ -2276,7 +2276,7 @@ STR_701D_OTHER                                                  :{GOLD}Ostatne
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Spolu:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf príjmov
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

@@ -1723,7 +1723,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Viranoma
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Näytä tietoja paikallisviranomaisista.
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN}: viranomaiset
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Kuljetusyhtiön arvioinnit:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Tuet
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tarjotut tuet:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} välille {STRING}-{STRING}
@@ -2209,7 +2209,7 @@ STR_701D_OTHER                                                  :{GOLD}Muuta
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Yhteensä:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Tulokuvaaja
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

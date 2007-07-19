@@ -1728,7 +1728,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Мест
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Информация о местных властях
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} местные власти
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейтинг транспортной компании
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидии
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Свободные субсидии
 STR_2027_FROM_TO                                                :{ORANGE}{STRING.p} по маршруту из {STRING} в {STRING}
@@ -2225,7 +2225,7 @@ STR_701D_OTHER                                                  :{GOLD}Друг�
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}ИТОГО:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}График доходов
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}

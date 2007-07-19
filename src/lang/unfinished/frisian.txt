@@ -910,7 +910,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Gemeente
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Lit ynformaasje sjen oer de gemeente
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} gemeente
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transportbedrieuw rang:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsydzjes
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsydzjes dy't oanbean wurde:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} fan {STRING} nei {STRING}
@@ -1196,7 +1196,7 @@ STR_701D_OTHER                                                  :{GOLD}Oaren
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totaal:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Ynkomsten Grafyk
 STR_7024                                                        :{COMMA}
 STR_7027_LOAN                                                   :{WHITE}Liening

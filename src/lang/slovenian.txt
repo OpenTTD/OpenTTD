@@ -1768,7 +1768,7 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Mestni s
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Pokaži informacije o mestni oblasti
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} mestni svet
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ocene prevoznega podjetja:
-STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencije
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponudba subvencije za storitev:
 STR_2027_FROM_TO                                                :{ORANGE}Prevoz {STRING.r} iz {STRING} v {STRING}
@@ -2292,7 +2292,7 @@ STR_701D_OTHER                                                  :{GOLD}Drugo
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Skupaj:
-STR_7021                                                        :{COMPANY}{COMPANYNUM}
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Graf prihodkov
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
