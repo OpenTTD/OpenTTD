@@ -31,6 +31,7 @@
 #include "water_map.h"
 #include "tree_map.h"
 #include "cargotype.h"
+#include "newgrf_commons.h"
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "newgrf_callbacks.h"
