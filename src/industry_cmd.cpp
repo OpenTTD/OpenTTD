@@ -2130,7 +2130,7 @@ static void Load_TIDS()
 	_industile_mngr.ResetMapping();
 
 	/* get boundary for the temporary map loader NUM_INDUSTILES? */
-	max_id = _industile_mngr.>GetMaxMapping();
+	max_id = _industile_mngr.GetMaxMapping();
 
 	while ((index = SlIterateArray()) != -1) {
 		if ((uint)index >= max_id) break;
