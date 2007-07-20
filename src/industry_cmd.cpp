@@ -276,7 +276,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	}
 
 	dits = &_industry_draw_tile_data[gfx << 2 | (indts->anim_state ?
-			GetIndustryAnimationState(ti->tile) & 3 :
+			GetIndustryAnimationState(ti->tile) & INDUSTRY_COMPLETED :
 			GetIndustryConstructionStage(ti->tile))];
 
 	image = dits->ground.sprite;
@@ -642,9 +642,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	SetIndustryConstructionCounter(tile, 0);
 	SetIndustryConstructionStage(tile, stage);
 	StartStopIndustryTileAnimation(tile, IAT_CONSTRUCTION_STATE_CHANGE);
-	if (stage == 3) {
-		SetIndustryCompleted(tile, true);
-	}
+	if (stage == INDUSTRY_COMPLETED) SetIndustryCompleted(tile, true);
 
 	MarkTileDirtyByTile(tile);
 

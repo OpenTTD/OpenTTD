@@ -20,6 +20,7 @@ enum {
 	INVALID_INDUSTRYTYPE   = NUM_INDUSTRYTYPES,          ///< one above amount is considered invalid
 	NUM_INDUSTRYTILES      = NEW_INDUSTRYTILEOFFSET,     ///< total number of industry tiles, new and old
 	INVALID_INDUSTRYTILE   = NUM_INDUSTRYTILES,          ///< one above amount is considered invalid
+	INDUSTRY_COMPLETED     = 3,                          ///< final stage of industry construction.
 };
 
 enum {
