@@ -2055,6 +2055,37 @@ static void Save_INDY()
 	}
 }
 
+/* Save and load the mapping between the industry/tile id on the map, and the grf file
+ * it came from. */
+static const SaveLoad _industries_id_mapping_desc[] = {
+	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
+	SLE_VAR(EntityIDMapping, entity_id,     SLE_UINT8),
+	SLE_VAR(EntityIDMapping, substitute_id, SLE_UINT8),
+	SLE_END()
+};
+
+static void Save_IIDS()
+{
+	uint i;
+	uint j = _industry_mngr.GetMaxMapping();
+
+	for (i = 0; i < j; i++) {
+		SlSetArrayIndex(i);
+		SlObject(&_industry_mngr.mapping_ID[i], _industries_id_mapping_desc);
+	}
+}
+
+static void Save_TIDS()
+{
+	uint i;
+	uint j = _industile_mngr.GetMaxMapping();
+
+	for (i = 0; i < j; i++) {
+		SlSetArrayIndex(i);
+		SlObject(&_industile_mngr.mapping_ID[i], _industries_id_mapping_desc);
+	}
+}
+
 static void Load_INDY()
 {
 	int index;
@@ -2073,6 +2104,44 @@ static void Load_INDY()
 	}
 }
 
+static void Load_IIDS()
+{
+	int index;
+	uint max_id;
+
+	/* clear the current mapping stored.
+	 * This will create the manager if ever it is not yet done */
+	_industry_mngr.ResetMapping();
+
+	/* get boundary for the temporary map loader NUM_INDUSTRYTYPES? */
+	max_id = _industry_mngr.GetMaxMapping();
+
+	while ((index = SlIterateArray()) != -1) {
+		if ((uint)index >= max_id) break;
+		SlObject(&_industry_mngr.mapping_ID[index], _industries_id_mapping_desc);
+	}
+}
+
+static void Load_TIDS()
+{
+	int index;
+	uint max_id;
+
+	/* clear the current mapping stored.
+	 * This will create the manager if ever it is not yet done */
+	_industile_mngr.ResetMapping();
+
+	/* get boundary for the temporary map loader NUM_INDUSTILES? */
+	max_id = _industile_mngr.>GetMaxMapping();
+
+	while ((index = SlIterateArray()) != -1) {
+		if ((uint)index >= max_id) break;
+		SlObject(&_industile_mngr.mapping_ID[index], _industries_id_mapping_desc);
+	}
+}
+
 extern const ChunkHandler _industry_chunk_handlers[] = {
-	{ 'INDY', Save_INDY, Load_INDY, CH_ARRAY | CH_LAST},
+	{ 'INDY', Save_INDY, Load_INDY, CH_ARRAY},
+	{ 'IIDS', Save_IIDS, Load_IIDS, CH_ARRAY},
+	{ 'TIDS', Save_TIDS, Load_TIDS, CH_ARRAY | CH_LAST},
 };
