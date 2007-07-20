@@ -18,6 +18,12 @@ struct Sign {
 	SignID       index;
 };
 
+enum {
+	INVALID_SIGN = 0xFFFF,
+};
+
+extern SignID _new_sign_id;
+
 DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
 
 static inline SignID GetMaxSignIndex()
@@ -32,7 +38,8 @@ static inline SignID GetMaxSignIndex()
 
 static inline uint GetNumSigns()
 {
-	return GetSignPoolSize();
+	extern uint _total_signs;
+	return _total_signs;
 }
 
 /**

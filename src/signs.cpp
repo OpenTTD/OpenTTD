@@ -14,7 +14,8 @@
 #include "command.h"
 #include "variables.h"
 
-static Sign *_new_sign;
+SignID _new_sign_id;
+uint _total_signs;
 
 /**
  * Called if a new block is added to the sign-pool
@@ -145,7 +146,8 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		MarkSignDirty(si);
 		InvalidateWindow(WC_SIGN_LIST, 0);
 		_sign_sort_dirty = true;
-		_new_sign = si;
+		_new_sign_id = si->index;
+		_total_signs++;
 	}
 
 	return CommandCost();
@@ -199,6 +201,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			InvalidateWindow(WC_SIGN_LIST, 0);
 			_sign_sort_dirty = true;
+			_total_signs--;
 		}
 	}
 
@@ -215,7 +218,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 void CcPlaceSign(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		ShowRenameSignWindow(_new_sign);
+		ShowRenameSignWindow(GetSign(_new_sign_id));
 		ResetObjectToPlace();
 	}
 }
@@ -238,6 +241,7 @@ void PlaceProc_Sign(TileIndex tile)
  */
 void InitializeSigns()
 {
+	_total_signs = 0;
 	CleanPool(&_Sign_pool);
 	AddBlockToPool(&_Sign_pool);
 }
@@ -275,6 +279,7 @@ static void Save_SIGN()
  */
 static void Load_SIGN()
 {
+	_total_signs = 0;
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Sign *si;
@@ -284,6 +289,8 @@ static void Load_SIGN()
 
 		si = GetSign(index);
 		SlObject(si, _sign_desc);
+
+		_total_signs++;
 	}
 
 	_sign_sort_dirty = true;
