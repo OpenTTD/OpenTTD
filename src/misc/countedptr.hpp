@@ -5,7 +5,6 @@
 #ifndef COUNTEDPTR_HPP
 #define COUNTEDPTR_HPP
 
-#if 0 // reenable when needed
 /** @file CCountedPtr - smart pointer implementation */
 
 /** CCountedPtr - simple reference counting smart pointer.
@@ -44,7 +43,7 @@ protected:
 
 public:
 	/** release smart pointer (and decrement ref count) if not null */
-	FORCEINLINE void Release() {if (m_pT != NULL) {m_pT->Release(); m_pT = NULL;}}
+	FORCEINLINE void Release() {if (m_pT != NULL) {Tcls* pT = m_pT; m_pT = NULL; pT->Release();}}
 
 	/** dereference of smart pointer - const way */
 	FORCEINLINE const Tcls* operator -> () const {assert(m_pT != NULL); return m_pT;};
@@ -56,7 +55,7 @@ public:
 	FORCEINLINE operator const Tcls*() const {assert(m_pT == NULL); return m_pT;}
 
 	/** raw pointer casting operator - non-const way */
-	FORCEINLINE operator Tcls*() {assert(m_pT == NULL); return m_pT;}
+	FORCEINLINE operator Tcls*() {return m_pT;}
 
 	/** operator & to support output arguments */
 	FORCEINLINE Tcls** operator &() {assert(m_pT == NULL); return &m_pT;}
@@ -65,7 +64,7 @@ public:
 	FORCEINLINE CCountedPtr& operator = (Tcls* pT) {Assign(pT); return *this;}
 
 	/** assignment operator from another smart ptr */
-	FORCEINLINE CCountedPtr& operator = (CCountedPtr& src) {Assign(src.m_pT); return *this;}
+	FORCEINLINE CCountedPtr& operator = (const CCountedPtr& src) {Assign(src.m_pT); return *this;}
 
 	/** assignment operator helper */
 	FORCEINLINE void Assign(Tcls* pT);
@@ -74,10 +73,10 @@ public:
 	FORCEINLINE bool IsNull() const {return m_pT == NULL;}
 
 	/** another way how to test for NULL value */
-	FORCEINLINE bool operator == (const CCountedPtr& sp) const {return m_pT == sp.m_pT;}
+	//FORCEINLINE bool operator == (const CCountedPtr& sp) const {return m_pT == sp.m_pT;}
 
 	/** yet another way how to test for NULL value */
-	FORCEINLINE bool operator != (const CCountedPtr& sp) const {return m_pT != sp.m_pT;}
+	//FORCEINLINE bool operator != (const CCountedPtr& sp) const {return m_pT != sp.m_pT;}
 
 	/** assign pointer w/o incrementing ref count */
 	FORCEINLINE void Attach(Tcls* pT) {Release(); m_pT = pT;}
@@ -98,5 +97,64 @@ FORCEINLINE void CCountedPtr<Tcls_>::Assign(Tcls* pT)
 	}
 }
 
-#endif /* 0 */
+/**
+ * Adapter wrapper for CCountedPtr like classes that can't be used directly by stl
+ * collections as item type. For example CCountedPtr has overloaded operator & which
+ * prevents using CCountedPtr in stl collections (i.e. std::list<CCountedPtr<MyType> >)
+ */
+template <class T> struct AdaptT {
+	T m_t;
+
+	/** construct by wrapping the given object */
+	AdaptT(const T &t)
+		: m_t(t)
+	{}
+
+	/** assignment operator */
+	T& operator = (const T &t)
+	{
+		m_t = t;
+		return t;
+	}
+
+	/** type-cast operator (used when AdaptT is used instead of T) */
+	operator T& ()
+	{
+		return m_t;
+	}
+
+	/** const type-cast operator (used when AdaptT is used instead of const T) */
+	operator const T& () const
+	{
+		return m_t;
+	}
+};
+
+
+/** Simple counted object. Use it as base of your struct/class if you want to use
+ *  basic reference counting. Your struct/class will destroy and free itself when
+ *  last reference to it is released (using Relese() method). The initial reference
+ *  count (when it is created) is zero (don't forget AddRef() at least one time if
+ *  not using CCountedPtr<T>.
+ *
+ *  @see misc/countedobj.cpp for implementation.
+ */
+struct SimpleCountedObject {
+	int32 m_ref_cnt;
+
+	SimpleCountedObject()
+		: m_ref_cnt(0)
+	{}
+
+	virtual ~SimpleCountedObject()
+	{};
+
+	virtual int32 AddRef();
+	virtual int32 Release();
+	virtual void FinalRelease() {};
+};
+
+
+
+
 #endif /* COUNTEDPTR_HPP */

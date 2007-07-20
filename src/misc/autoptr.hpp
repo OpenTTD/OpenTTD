@@ -38,8 +38,9 @@ public:
 	FORCEINLINE ~AutoPtrT()
 	{
 		if (m_p != NULL) {
-			delete m_p;
+			T *p = m_p;
 			m_p = NULL;
+			delete p;
 		}
 	}
 
