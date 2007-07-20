@@ -153,9 +153,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			 * In Editor, you just build, while ingame, or you fund or you prospect */
 			if (_game_mode == GM_EDITOR) {
 				/* We've chosen many random industries but no industries have been specified */
-				if (indsp == NULL && _patches.raw_industry_construction == 0) {
-					_fund_gui.enabled[WP(w, fnd_d).index] = false;
-				}
+				if (indsp == NULL) _fund_gui.enabled[WP(w, fnd_d).index] = _opt.diff.number_industries != 0;
 				w->widget[DYNA_INDU_FUND_WIDGET].data = STR_BUILD_NEW_INDUSTRY;
 			} else {
 				w->widget[DYNA_INDU_FUND_WIDGET].data = (_patches.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
