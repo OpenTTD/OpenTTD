@@ -64,7 +64,6 @@ void ResetIndustries()
 		_industry_specs[i].enabled = HASBIT(_origin_industry_specs[i].climate_availability, _opt.landscape);
 	}
 
-
 	memset(&_industry_tile_specs, 0, sizeof(_industry_tile_specs));
 	memcpy(&_industry_tile_specs, &_origin_industry_tile_specs, sizeof(_origin_industry_tile_specs));
 }
@@ -123,7 +122,7 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype)
  * Accessor for array _industry_tile_specs.
  * This will ensure at once : proper access and
  * not allowing modifications of it.
- * @param gfx of industrytile (which is the index in _industry_specs)
+ * @param gfx of industrytile (which is the index in _industry_tile_specs)
  * @pre gfx < INVALID_INDUSTRYTILE
  * @return a pointer to the corresponding industrytile spec
  **/
@@ -684,7 +683,6 @@ static void MakeIndustryTileBigger(TileIndex tile)
 	}
 }
 
-
 static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 {
 	int dir;
@@ -818,7 +816,6 @@ static void TileLoop_Industry(TileIndex tile)
 		break;
 	}
 }
-
 
 static void ClickTile_Industry(TileIndex tile)
 {
@@ -1060,7 +1057,6 @@ void OnTick_Industry()
 		ProduceIndustryGoods(i);
 	}
 }
-
 
 static bool CheckNewIndustry_NULL(TileIndex tile)
 {
@@ -1714,7 +1710,9 @@ void GenerateIndustries()
 	}
 }
 
-/* Change industry production or do closure */
+/** Change industry production or do closure
+ * @param i Industry for which changes are performed
+ */
 static void ExtChangeIndustryProduction(Industry *i)
 {
 	bool closeit = true;
@@ -2050,7 +2048,7 @@ static void Save_INDY()
 {
 	Industry *ind;
 
-	/* Write the vehicles */
+	/* Write the industries */
 	FOR_ALL_INDUSTRIES(ind) {
 		SlSetArrayIndex(ind->index);
 		SlObject(ind, _industry_desc);
