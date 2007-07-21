@@ -81,8 +81,16 @@ public:
 	/** assignment operator */
 	FORCEINLINE AutoPtrT& operator = (const AutoPtrT& src)
 	{
+		/* Save original pointer and replace it with the given one to avoid recursive calls. */
+		T* p = m_p;
 		m_p = src.m_p;
+
 		if (m_p != NULL) src.m_p = NULL;
+
+		if (p != NULL) {
+			/* Now we can safely delete the old one. */
+			delete p;
+		}
 		return *this;
 	}
 
