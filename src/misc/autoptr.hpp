@@ -45,7 +45,7 @@ public:
 	}
 
 	/** give-up ownership and NULLify the raw pointer */
-	FORCEINLINE T* Release()
+	FORCEINLINE T* Detach()
 	{
 		T* p = m_p;
 		m_p = NULL;

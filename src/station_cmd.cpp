@@ -982,7 +982,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station */
-		st_auto_delete.Release();
+		st_auto_delete.Detach();
 	}
 
 	return cost;
@@ -1361,8 +1361,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station and the new road stop */
-		st_auto_delete.Release();
-		rs_auto_delete.Release();
+		st_auto_delete.Detach();
+		rs_auto_delete.Detach();
 	}
 	return cost;
 }
@@ -1668,7 +1668,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station */
-		st_auto_delete.Release();
+		st_auto_delete.Detach();
 	}
 
 	return cost;
@@ -1764,7 +1764,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station */
-		st_auto_delete.Release();
+		st_auto_delete.Detach();
 	}
 
 	return CommandCost(_price.build_dock);
@@ -1931,7 +1931,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		/* success, so don't delete the new station */
-		st_auto_delete.Release();
+		st_auto_delete.Detach();
 	}
 	return CommandCost(_price.build_dock);
 }
