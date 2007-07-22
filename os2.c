@@ -1,5 +1,4 @@
 /* $Id$ */
-
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
@@ -41,6 +40,8 @@ void FiosGetDrives(void)
 	_dos_getdrive(&save); // save original drive
 #else
 	save = _getdrive(); // save original drive
+	char wd[MAX_PATH];
+	getcwd(wd, MAX_PATH);
 	total = 'z';
 #endif
 
@@ -52,7 +53,7 @@ void FiosGetDrives(void)
 	for (disk = 'A';; disk++) {
 		_chdrive(disk);
 #endif
-		if (disk >= total) return;
+		if (disk >= total)  break;
 
 #ifndef __INNOTEK_LIBC__
 		_dos_getdrive(&disk2);
@@ -77,8 +78,9 @@ void FiosGetDrives(void)
 #ifndef __INNOTEK_LIBC__
 	_dos_setdrive(save, &total);
 #else
-	_chdrive(save);
+	chdir(wd);
 #endif
+
 }
 
 bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
@@ -114,6 +116,7 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	char filename[MAX_PATH];
 
 	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, ent->d_name);
+
 	return stat(filename, sb) == 0;
 }
 
@@ -193,11 +196,12 @@ void DeterminePaths(void)
 	{
 		const char *homedir = getenv("HOME");
 
+#ifndef __KLIBC__
 		if (homedir == NULL) {
 			const struct passwd *pw = getpwuid(getuid());
 			if (pw != NULL) homedir = pw->pw_dir;
 		}
-
+#endif
 		_paths.personal_dir = str_fmt("%s" PATHSEP "%s", homedir, PERSONAL_DIR);
 	}
 
@@ -209,6 +213,7 @@ void DeterminePaths(void)
 	// check if absolute or relative path
 	s = strchr(_paths.personal_dir, PATHSEPCHAR);
 
+#ifndef __KLIBC__
 	// add absolute path
 	if (s == NULL || _paths.personal_dir != s) {
 		getcwd(_paths.personal_dir, MAX_PATH);
@@ -216,14 +221,15 @@ void DeterminePaths(void)
 		*s++ = PATHSEPCHAR;
 		ttd_strlcpy(s, PERSONAL_DIR, MAX_PATH);
 	}
-
+#endif
 #endif /* defined(USE_HOMEDIR) */
 
 	s = strchr(_paths.personal_dir, 0);
 
+#ifndef __KLIBC__
 	// append a / ?
 	if (s[-1] != PATHSEPCHAR) strcpy(s, PATHSEP);
-
+#endif
 	_paths.save_dir = str_fmt("%ssave", _paths.personal_dir);
 	_paths.autosave_dir = str_fmt("%s" PATHSEP "autosave", _paths.save_dir);
 	_paths.scenario_dir = str_fmt("%sscenario", _paths.personal_dir);
