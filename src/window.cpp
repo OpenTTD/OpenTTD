@@ -1619,14 +1619,14 @@ static void HandleAutoscroll()
 			/* here allows scrolling in both x and y axis */
 #define scrollspeed 3
 			if (x - 15 < 0) {
-				WP(w, vp_d).scrollpos_x += ScaleByZoom((x - 15) * scrollspeed, vp->zoom);
+				WP(w, vp_d).dest_scrollpos_x += ScaleByZoom((x - 15) * scrollspeed, vp->zoom);
 			} else if (15 - (vp->width - x) > 0) {
-				WP(w, vp_d).scrollpos_x += ScaleByZoom((15 - (vp->width - x)) * scrollspeed, vp->zoom);
+				WP(w, vp_d).dest_scrollpos_x += ScaleByZoom((15 - (vp->width - x)) * scrollspeed, vp->zoom);
 			}
 			if (y - 15 < 0) {
-				WP(w, vp_d).scrollpos_y += ScaleByZoom((y - 15) * scrollspeed, vp->zoom);
+				WP(w, vp_d).dest_scrollpos_y += ScaleByZoom((y - 15) * scrollspeed, vp->zoom);
 			} else if (15 - (vp->height - y) > 0) {
-				WP(w,vp_d).scrollpos_y += ScaleByZoom((15 - (vp->height - y)) * scrollspeed, vp->zoom);
+				WP(w, vp_d).dest_scrollpos_y += ScaleByZoom((15 - (vp->height - y)) * scrollspeed, vp->zoom);
 			}
 #undef scrollspeed
 		}
