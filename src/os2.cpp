@@ -44,6 +44,8 @@ void FiosGetDrives()
 	_dos_getdrive(&save); // save original drive
 #else
 	save = _getdrive(); // save original drive
+	char wd[MAX_PATH];
+	getcwd(wd, MAX_PATH);
 	total = 'z';
 #endif
 
@@ -55,7 +57,7 @@ void FiosGetDrives()
 	for (disk = 'A';; disk++) {
 		_chdrive(disk);
 #endif
-		if (disk >= total) return;
+		if (disk >= total)  break;
 
 #ifndef __INNOTEK_LIBC__
 		_dos_getdrive(&disk2);
@@ -80,7 +82,7 @@ void FiosGetDrives()
 #ifndef __INNOTEK_LIBC__
 	_dos_setdrive(save, &total);
 #else
-	_chdrive(save);
+	chdir(wd);
 #endif
 }
 
