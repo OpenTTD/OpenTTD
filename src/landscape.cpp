@@ -152,7 +152,7 @@ uint GetPartialZ(int x, int y, Slope corners)
 		break;
 
 	case SLOPE_STEEP_E:
-		z = 1 + (((x ^ 0xF) + (y ^ 0xF)) >> 1);
+		z = 1 + (((x ^ 0xF) + y) >> 1);
 		break;
 
 		default: break;
