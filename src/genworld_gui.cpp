@@ -255,7 +255,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, GLAND_START_DATE_DOWN, _patches_newgame.starting_year <= MIN_YEAR);
 		SetWindowWidgetDisabledState(w, GLAND_START_DATE_UP,   _patches_newgame.starting_year >= MAX_YEAR);
 		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_DOWN, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_ARCTIC);
-		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_UP,   _patches_newgame.snow_line_height >= 13 || _opt_newgame.landscape != LT_ARCTIC);
+		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_UP,   _patches_newgame.snow_line_height >= MAX_SNOWLINE_HEIGHT || _opt_newgame.landscape != LT_ARCTIC);
 
 		SetWindowWidgetLoweredState(w, GLAND_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
 		SetWindowWidgetLoweredState(w, GLAND_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
@@ -402,7 +402,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.snow_line_height = clamp(_patches_newgame.snow_line_height + e->we.click.widget - GLAND_SNOW_LEVEL_TEXT, 2, 13);
+				_patches_newgame.snow_line_height = clamp(_patches_newgame.snow_line_height + e->we.click.widget - GLAND_SNOW_LEVEL_TEXT, 2, MAX_SNOWLINE_HEIGHT);
 			}
 			_left_button_clicked = false;
 			break;
@@ -498,7 +498,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 				break;
 			case GLAND_SNOW_LEVEL_TEXT:
 				InvalidateWidget(w, GLAND_SNOW_LEVEL_TEXT);
-				_patches_newgame.snow_line_height = clamp(value, 2, 13);
+				_patches_newgame.snow_line_height = clamp(value, 2, MAX_SNOWLINE_HEIGHT);
 				break;
 			}
 
@@ -611,7 +611,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, CSCEN_START_DATE_DOWN,       _patches_newgame.starting_year <= MIN_YEAR);
 		SetWindowWidgetDisabledState(w, CSCEN_START_DATE_UP,         _patches_newgame.starting_year >= MAX_YEAR);
 		SetWindowWidgetDisabledState(w, CSCEN_FLAT_LAND_HEIGHT_DOWN, _patches_newgame.se_flat_world_height <= 0);
-		SetWindowWidgetDisabledState(w, CSCEN_FLAT_LAND_HEIGHT_UP,   _patches_newgame.se_flat_world_height >= 15);
+		SetWindowWidgetDisabledState(w, CSCEN_FLAT_LAND_HEIGHT_UP,   _patches_newgame.se_flat_world_height >= MAX_TILE_HEIGHT);
 
 		SetWindowWidgetLoweredState(w, CSCEN_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
 		SetWindowWidgetLoweredState(w, CSCEN_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
@@ -672,7 +672,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.se_flat_world_height = clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - CSCEN_FLAT_LAND_HEIGHT_TEXT, 0, 15);
+				_patches_newgame.se_flat_world_height = clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - CSCEN_FLAT_LAND_HEIGHT_TEXT, 0, MAX_TILE_HEIGHT);
 			}
 			_left_button_clicked = false;
 			break;
@@ -703,7 +703,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 				break;
 			case CSCEN_FLAT_LAND_HEIGHT_TEXT:
 				InvalidateWidget(w, CSCEN_FLAT_LAND_HEIGHT_TEXT);
-				_patches_newgame.se_flat_world_height = clamp(value, 0, 15);
+				_patches_newgame.se_flat_world_height = clamp(value, 0, MAX_TILE_HEIGHT);
 				break;
 			}
 

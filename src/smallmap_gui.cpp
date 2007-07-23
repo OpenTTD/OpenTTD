@@ -193,8 +193,10 @@ static inline void WRITE_PIXELS_OR(void *d, uint32 val)
 
 #define MKCOLOR(x) TO_LE32X(x)
 
-/* Height encodings; 16 levels XXX - needs updating for more/finer heights! */
-static const uint32 _map_height_bits[16] = {
+/**
+ * Height encodings; MAX_TILE_HEIGHT + 1 levels, from 0 to MAX_TILE_HEIGHT
+ */
+static const uint32 _map_height_bits[] = {
 	MKCOLOR(0x5A5A5A5A),
 	MKCOLOR(0x5A5B5A5B),
 	MKCOLOR(0x5B5B5B5B),
@@ -212,6 +214,7 @@ static const uint32 _map_height_bits[16] = {
 	MKCOLOR(0x27272727),
 	MKCOLOR(0x27272727),
 };
+assert_compile(lengthof(_map_height_bits) == MAX_TILE_HEIGHT + 1);
 
 struct AndOr {
 	uint32 mor;

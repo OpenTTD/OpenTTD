@@ -10,6 +10,12 @@
 #include "map.h"
 #include "slope.h"
 
+/** Maximum allowed tile height */
+#define MAX_TILE_HEIGHT 15
+
+/** Maximum allowed snowline height */
+#define MAX_SNOWLINE_HEIGHT (MAX_TILE_HEIGHT - 2)
+
 enum TileType {
 	MP_CLEAR,
 	MP_RAILWAY,

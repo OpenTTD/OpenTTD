@@ -179,7 +179,7 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 
 	_error_message = STR_1004_TOO_HIGH;
 
-	if (height > 15) return false;
+	if (height > MAX_TILE_HEIGHT) return false;
 
 	nh = TerraformGetHeightOfTile(ts, tile);
 	if (nh < 0 || height == nh) return false;
