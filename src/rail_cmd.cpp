@@ -1225,16 +1225,16 @@ static uint32 _drawtile_track_palette;
 
 static void DrawTrackFence_NW(const TileInfo *ti)
 {
-	SpriteID image = 0x515;
-	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x519 : 0x51B;
+	SpriteID image = SPR_TRACK_FENCE_FLAT_X;
+	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? SPR_TRACK_FENCE_SLOPE_SW : SPR_TRACK_FENCE_SLOPE_NE;
 	AddSortableSpriteToDraw(image, _drawtile_track_palette,
 		ti->x, ti->y + 1, 16, 1, 4, ti->z);
 }
 
 static void DrawTrackFence_SE(const TileInfo *ti)
 {
-	SpriteID image = 0x515;
-	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x519 : 0x51B;
+	SpriteID image = SPR_TRACK_FENCE_FLAT_X;
+	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? SPR_TRACK_FENCE_SLOPE_SW : SPR_TRACK_FENCE_SLOPE_NE;
 	AddSortableSpriteToDraw(image, _drawtile_track_palette,
 		ti->x, ti->y + TILE_SIZE - 1, 16, 1, 4, ti->z);
 }
@@ -1247,16 +1247,16 @@ static void DrawTrackFence_NW_SE(const TileInfo *ti)
 
 static void DrawTrackFence_NE(const TileInfo *ti)
 {
-	SpriteID image = 0x516;
-	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x51A : 0x51C;
+	SpriteID image = SPR_TRACK_FENCE_FLAT_Y;
+	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? SPR_TRACK_FENCE_SLOPE_SE : SPR_TRACK_FENCE_SLOPE_NW;
 	AddSortableSpriteToDraw(image, _drawtile_track_palette,
 		ti->x + 1, ti->y, 1, 16, 4, ti->z);
 }
 
 static void DrawTrackFence_SW(const TileInfo *ti)
 {
-	SpriteID image = 0x516;
-	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? 0x51A : 0x51C;
+	SpriteID image = SPR_TRACK_FENCE_FLAT_Y;
+	if (ti->tileh != SLOPE_FLAT) image = (ti->tileh & SLOPE_S) ? SPR_TRACK_FENCE_SLOPE_SE : SPR_TRACK_FENCE_SLOPE_NW;
 	AddSortableSpriteToDraw(image, _drawtile_track_palette,
 		ti->x + TILE_SIZE - 1, ti->y, 1, 16, 4, ti->z);
 }
@@ -1267,35 +1267,47 @@ static void DrawTrackFence_NE_SW(const TileInfo *ti)
 	DrawTrackFence_SW(ti);
 }
 
+/**
+ * Draw fence at eastern side of track.
+ */
 static void DrawTrackFence_NS_1(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_W) z += TILE_HEIGHT;
-	AddSortableSpriteToDraw(0x517, _drawtile_track_palette,
+	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
+/**
+ * Draw fence at western side of track.
+ */
 static void DrawTrackFence_NS_2(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_E) z += TILE_HEIGHT;
-	AddSortableSpriteToDraw(0x517, _drawtile_track_palette,
+	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
+/**
+ * Draw fence at southern side of track.
+ */
 static void DrawTrackFence_WE_1(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_N) z += TILE_HEIGHT;
-	AddSortableSpriteToDraw(0x518, _drawtile_track_palette,
+	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
+/**
+ * Draw fence at northern side of track.
+ */
 static void DrawTrackFence_WE_2(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_S) z += TILE_HEIGHT;
-	AddSortableSpriteToDraw(0x518, _drawtile_track_palette,
+	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 

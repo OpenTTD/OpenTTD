@@ -389,8 +389,8 @@ enum RailGroundType {
 	RAIL_GROUND_FENCE_NE     =  5, ///< Grass with a fence at the NE edge
 	RAIL_GROUND_FENCE_SW     =  6, ///< Grass with a fence at the SW edge
 	RAIL_GROUND_FENCE_NESW   =  7, ///< Grass with a fence at the NE and SW edges
-	RAIL_GROUND_FENCE_VERT1  =  8, ///< Grass with a fence at the western side
-	RAIL_GROUND_FENCE_VERT2  =  9, ///< Grass with a fence at the eastern side
+	RAIL_GROUND_FENCE_VERT1  =  8, ///< Grass with a fence at the eastern side
+	RAIL_GROUND_FENCE_VERT2  =  9, ///< Grass with a fence at the western side
 	RAIL_GROUND_FENCE_HORIZ1 = 10, ///< Grass with a fence at the southern side
 	RAIL_GROUND_FENCE_HORIZ2 = 11, ///< Grass with a fence at the northern side
 	RAIL_GROUND_ICE_DESERT   = 12, ///< Icy or sandy

@@ -303,6 +303,16 @@ enum Sprites {
 	OFFSET_TILEH_13             = 19,
 	OFFSET_TILEH_14             = 16,
 
+	/* Track fences */
+	SPR_TRACK_FENCE_FLAT_X    = 1301,
+	SPR_TRACK_FENCE_FLAT_Y    = 1302,
+	SPR_TRACK_FENCE_FLAT_VERT = 1303,
+	SPR_TRACK_FENCE_FLAT_HORZ = 1304,
+	SPR_TRACK_FENCE_SLOPE_SW  = 1305,
+	SPR_TRACK_FENCE_SLOPE_SE  = 1306,
+	SPR_TRACK_FENCE_SLOPE_NE  = 1307,
+	SPR_TRACK_FENCE_SLOPE_NW  = 1308,
+
 	/* Elrail stuff */
 	/* Wires. First identifier is the direction of the track, second is the required placement of the pylon.
 	 * "short" denotes a wire that requires a pylon on each end. Third identifier is the direction of the slope
