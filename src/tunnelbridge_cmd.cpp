@@ -505,6 +505,8 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	int tiles_coef = 3;
 	/** Number of tiles from start of tunnel */
 	int tiles = 0;
+	/** Number of tiles at which the cost increase coefficient per tile is halved */
+	int tiles_bump = 25;
 
 	for (;;) {
 		end_tile += delta;
@@ -517,7 +519,10 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 		}
 
 		tiles++;
-		if (tiles == 25 || tiles == 50 || tiles == 100 || tiles == 200 || tiles == 400 || tiles == 800) tiles_coef++;
+		if (tiles == tiles_bump) {
+			tiles_coef++;
+			tiles_bump *= 2;
+		}
 
 		cost.AddCost(_price.build_tunnel);
 		cost.AddCost(cost.GetCost() >> tiles_coef); // add a multiplier for longer tunnels
