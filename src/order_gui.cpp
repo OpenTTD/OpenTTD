@@ -115,7 +115,6 @@ static void DrawOrdersWindow(Window *w)
 	int sel;
 	int y, i;
 	bool shared_orders;
-	byte color;
 
 	v = GetVehicle(w->window_number);
 
@@ -192,6 +191,11 @@ static void DrawOrdersWindow(Window *w)
 			SetDParam(1, 6);
 
 			switch (order->type) {
+				case OT_DUMMY:
+					SetDParam(1, STR_INVALID_ORDER);
+					SetDParam(2, order->dest);
+					break;
+
 				case OT_GOTO_STATION:
 					SetDParam(1, StationOrderStrings[order->flags]);
 					SetDParam(2, order->dest);
@@ -234,15 +238,10 @@ static void DrawOrdersWindow(Window *w)
 				default: break;
 			}
 
-			color = (i == WP(w,order_d).sel) ? 0xC : 0x10;
+			const byte colour = (i == WP(w,order_d).sel) ? 0xC : 0x10;
 			SetDParam(0, i + 1);
-			if (order->type != OT_DUMMY) {
-				DrawString(2, y, str, color);
-			} else {
-				SetDParam(1, STR_INVALID_ORDER);
-				SetDParam(2, order->dest);
-				DrawString(2, y, str, color);
-			}
+			DrawString(2, y, str, colour);
+
 			y += 10;
 		}
 
@@ -252,8 +251,8 @@ static void DrawOrdersWindow(Window *w)
 
 	if (i - w->vscroll.pos < w->vscroll.cap) {
 		str = shared_orders ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
-		color = (i == WP(w,order_d).sel) ? 0xC : 0x10;
-		DrawString(2, y, str, color);
+		const byte colour = (i == WP(w,order_d).sel) ? 0xC : 0x10;
+		DrawString(2, y, str, colour);
 	}
 }
 

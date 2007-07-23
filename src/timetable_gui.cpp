@@ -96,6 +96,10 @@ static void DrawTimetableWindow(Window *w)
 			SetDParam(2, STR_EMPTY);
 
 			switch (order->type) {
+				case OT_DUMMY:
+					SetDParam(0, STR_INVALID_ORDER);
+					break;
+
 				case OT_GOTO_STATION:
 					SetDParam(0, (order->flags & OF_NON_STOP) ? STR_880C_GO_NON_STOP_TO : STR_8806_GO_TO);
 					SetDParam(1, order->dest);
@@ -137,14 +141,8 @@ static void DrawTimetableWindow(Window *w)
 				default: break;
 			}
 
-			byte colour = (i == selected) ? 0xC : 0x10;
-
-			if (order->type != OT_DUMMY) {
-				DrawString(2, y, STR_TIMETABLE_GO_TO, colour);
-			} else {
-				SetDParam(0, STR_INVALID_ORDER);
-				DrawString(2, y, STR_TIMETABLE_GO_TO, colour);
-			}
+			const byte colour = (i == selected) ? 0xC : 0x10;
+			DrawString(2, y, STR_TIMETABLE_GO_TO, colour);
 
 			order_id++;
 
@@ -164,7 +162,7 @@ static void DrawTimetableWindow(Window *w)
 				string = STR_TIMETABLE_TRAVEL_FOR;
 			}
 
-			byte colour = (i == selected) ? 0xC : 0x10;
+			const byte colour = (i == selected) ? 0xC : 0x10;
 			DrawString(12, y, string, colour);
 
 			if (final_order) break;
