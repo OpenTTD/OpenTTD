@@ -411,7 +411,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 			if (PathFinderInfo->rail_or_road) {
 				r = GetRailFoundation(parent_tileh, (TrackBits)(1 << AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile)));
 				// Maybe is BRIDGE_NO_FOUNDATION a bit strange here, but it contains just the right information..
-				if (r >= 15 || (r == 0 && HASBIT(BRIDGE_NO_FOUNDATION, tileh))) {
+				if (IS_INT_INSIDE(r,15,15+8) || (r == 0 && HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh))) {
 					res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 				} else {
 					res += AI_PATHFINDER_FOUNDATION_PENALTY;
@@ -419,7 +419,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 			} else {
 				if (!IsRoad(parent->path.node.tile) || !IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE)) {
 					r = GetRoadFoundation(parent_tileh, (RoadBits)AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
-					if (r >= 15 || r == 0) {
+					if (IS_INT_INSIDE(r,15,15+8) || (r == 0 && HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh))) {
 						res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 					} else {
 						res += AI_PATHFINDER_FOUNDATION_PENALTY;
