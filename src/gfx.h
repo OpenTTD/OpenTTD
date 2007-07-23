@@ -80,6 +80,21 @@ enum WindowKeyCodes {
 	/* 0-9 are mapped to 48-57
 	 * A-Z are mapped to 65-90
 	 * a-z are mapped to 97-122 */
+
+	/* Other keys, corresponding to their ascii values */
+	WKC_SLASH       = 47, // / Forward slash
+	WKC_SEMICOLON   = 59, // ; Semicolon
+	WKC_EQUALS      = 61, // = Equals
+	WKC_L_BRACKET   = 91, // [ Left square bracket
+	WKC_BACKSLASH   = 92, // \ Backslash
+	WKC_R_BRACKET   = 93, // ] Right square bracket
+
+	/* Other keys of which their ascii value is already taken
+	 * - use unused ascii value not present on keyboard directly */
+	WKC_SINGLEQUOTE = 58, // ' Single quote
+	WKC_COMMA       = 60, // , Comma
+	WKC_PERIOD      = 62, // . Period
+	WKC_MINUS       = 95, // - Minus
 };
 
 enum GameModes {

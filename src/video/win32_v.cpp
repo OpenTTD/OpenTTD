@@ -108,7 +108,20 @@ static const VkMapping _vk_mapping[] = {
 	AS(VK_MULTIPLY, WKC_NUM_MUL),
 	AS(VK_SUBTRACT, WKC_NUM_MINUS),
 	AS(VK_ADD,      WKC_NUM_PLUS),
-	AS(VK_DECIMAL,  WKC_NUM_DECIMAL)
+	AS(VK_DECIMAL,  WKC_NUM_DECIMAL),
+
+	// Other non-letter keys
+	AS(0xBF,  WKC_SLASH),
+	AS(0xBA,  WKC_SEMICOLON),
+	AS(0xBB,  WKC_EQUALS),
+	AS(0xDB,  WKC_L_BRACKET),
+	AS(0xDC,  WKC_BACKSLASH),
+	AS(0xDD,  WKC_R_BRACKET),
+
+	AS(0xDE,  WKC_SINGLEQUOTE),
+	AS(0xBC,  WKC_COMMA),
+	AS(0xBD,  WKC_MINUS),
+	AS(0xBE,  WKC_PERIOD)
 };
 
 static uint MapWindowsKey(uint sym)
