@@ -240,7 +240,7 @@ struct VkMapping {
 #define AM(x, y, z, w) {x, y - x, z}
 
 static const VkMapping _vk_mapping[] = {
-	// Pageup stuff + up/down
+	/* Pageup stuff + up/down */
 	AM(SDLK_PAGEUP, SDLK_PAGEDOWN, WKC_PAGEUP, WKC_PAGEDOWN),
 	AS(SDLK_UP,     WKC_UP),
 	AS(SDLK_DOWN,   WKC_DOWN),
@@ -253,7 +253,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(SDLK_INSERT, WKC_INSERT),
 	AS(SDLK_DELETE, WKC_DELETE),
 
-	// Map letters & digits
+	/* Map letters & digits */
 	AM(SDLK_a, SDLK_z, 'A', 'Z'),
 	AM(SDLK_0, SDLK_9, '0', '9'),
 
@@ -265,11 +265,10 @@ static const VkMapping _vk_mapping[] = {
 	AS(SDLK_RETURN,    WKC_RETURN),
 	AS(SDLK_TAB,       WKC_TAB),
 
-	// Function keys
+	/* Function keys */
 	AM(SDLK_F1, SDLK_F12, WKC_F1, WKC_F12),
 
-	// Numeric part.
-	// What is the virtual keycode for numeric enter??
+	/* Numeric part. */
 	AM(SDLK_KP0, SDLK_KP9, WKC_NUM_0, WKC_NUM_9),
 	AS(SDLK_KP_DIVIDE,   WKC_NUM_DIV),
 	AS(SDLK_KP_MULTIPLY, WKC_NUM_MUL),
@@ -278,7 +277,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(SDLK_KP_ENTER,    WKC_NUM_ENTER),
 	AS(SDLK_KP_PERIOD,   WKC_NUM_DECIMAL),
 
-	// Other non-letter keys
+	/* Other non-letter keys */
 	AS(SDLK_SLASH,        WKC_SLASH),
 	AS(SDLK_SEMICOLON,    WKC_SEMICOLON),
 	AS(SDLK_EQUALS,       WKC_EQUALS),
@@ -290,7 +289,6 @@ static const VkMapping _vk_mapping[] = {
 	AS(SDLK_COMMA,   WKC_COMMA),
 	AS(SDLK_MINUS,   WKC_MINUS),
 	AS(SDLK_PERIOD,  WKC_PERIOD)
-
 };
 
 static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)

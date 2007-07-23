@@ -237,8 +237,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(QZ_BACKQUOTE,  WKC_BACKQUOTE), // key left of '1'
 	AS(QZ_BACKQUOTE2, WKC_BACKQUOTE), // some keyboards have it on another scancode
 
-	// Pageup stuff + up/down
-	//AM(SDLK_PAGEUP, SDLK_PAGEDOWN, WKC_PAGEUP, WKC_PAGEDOWN),  <==== Does this include HOME/END?
+	/* Pageup stuff + up/down */
 	AS(QZ_PAGEUP,   WKC_PAGEUP),
 	AS(QZ_PAGEDOWN, WKC_PAGEDOWN),
 
@@ -253,7 +252,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(QZ_INSERT, WKC_INSERT),
 	AS(QZ_DELETE, WKC_DELETE),
 
-	// Letters. QZ_[a-z] is not in numerical order so we can't use AM(...)
+	/* Letters. QZ_[a-z] is not in numerical order so we can't use AM(...) */
 	AS(QZ_a, 'A'),
 	AS(QZ_b, 'B'),
 	AS(QZ_c, 'C'),
@@ -280,7 +279,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(QZ_x, 'X'),
 	AS(QZ_y, 'Y'),
 	AS(QZ_z, 'Z'),
-	// Same thing for digits
+	/* Same thing for digits */
 	AS(QZ_0, '0'),
 	AS(QZ_1, '1'),
 	AS(QZ_2, '2'),
@@ -300,7 +299,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(QZ_RETURN, WKC_RETURN),
 	AS(QZ_TAB,    WKC_TAB),
 
-	// Function keys
+	/* Function keys */
 	AS(QZ_F1,  WKC_F1),
 	AS(QZ_F2,  WKC_F2),
 	AS(QZ_F3,  WKC_F3),
@@ -314,7 +313,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(QZ_F11, WKC_F11),
 	AS(QZ_F12, WKC_F12),
 
-	// Numeric part.
+	/* Numeric part */
 	AS(QZ_KP0,         WKC_NUM_0),
 	AS(QZ_KP1,         WKC_NUM_1),
 	AS(QZ_KP2,         WKC_NUM_2),
@@ -332,7 +331,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(QZ_KP_ENTER,    WKC_NUM_ENTER),
 	AS(QZ_KP_PERIOD,   WKC_NUM_DECIMAL),
 
-	// Other non-letter keys
+	/* Other non-letter keys */
 	AS(QZ_SLASH,        WKC_SLASH),
 	AS(QZ_SEMICOLON,    WKC_SEMICOLON),
 	AS(QZ_EQUALS,       WKC_EQUALS),
@@ -344,7 +343,6 @@ static const VkMapping _vk_mapping[] = {
 	AS(QZ_COMMA,   WKC_COMMA),
 	AS(QZ_MINUS,   WKC_MINUS),
 	AS(QZ_PERIOD,  WKC_PERIOD)
-
 };
 
 

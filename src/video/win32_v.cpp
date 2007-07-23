@@ -83,9 +83,9 @@ struct VkMapping {
 #define AM(x, y, z, w) {x, y - x, z}
 
 static const VkMapping _vk_mapping[] = {
-	// Pageup stuff + up/down
+	/* Pageup stuff + up/down */
 	AM(VK_PRIOR,VK_DOWN, WKC_PAGEUP, WKC_DOWN),
-	// Map letters & digits
+	/* Map letters & digits */
 	AM('A','Z','A','Z'),
 	AM('0','9','0','9'),
 
@@ -98,11 +98,10 @@ static const VkMapping _vk_mapping[] = {
 	AS(VK_RETURN,   WKC_RETURN),
 	AS(VK_TAB,      WKC_TAB),
 
-	// Function keys
+	/* Function keys */
 	AM(VK_F1, VK_F12, WKC_F1, WKC_F12),
 
-	// Numeric part.
-	// What is the virtual keycode for numeric enter??
+	/* Numeric part */
 	AM(VK_NUMPAD0, VK_NUMPAD9, WKC_NUM_0, WKC_NUM_9),
 	AS(VK_DIVIDE,   WKC_NUM_DIV),
 	AS(VK_MULTIPLY, WKC_NUM_MUL),
@@ -110,7 +109,7 @@ static const VkMapping _vk_mapping[] = {
 	AS(VK_ADD,      WKC_NUM_PLUS),
 	AS(VK_DECIMAL,  WKC_NUM_DECIMAL),
 
-	// Other non-letter keys
+	/* Other non-letter keys */
 	AS(0xBF,  WKC_SLASH),
 	AS(0xBA,  WKC_SEMICOLON),
 	AS(0xBB,  WKC_EQUALS),

@@ -1649,13 +1649,13 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_player, VEH_ROAD); break;
 		case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_player, VEH_SHIP); break;
 		case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, VEH_AIRCRAFT); break;
-		case WKC_NUM_PLUS: /* Fall through */
-		case WKC_EQUALS: /* Fall through */
-		case WKC_SHIFT | WKC_EQUALS: /* Fall through */
+		case WKC_NUM_PLUS: // Fall through
+		case WKC_EQUALS: // Fall through
+		case WKC_SHIFT | WKC_EQUALS: // Fall through
 		case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
-		case WKC_NUM_MINUS: /* Fall through */
-		case WKC_MINUS: /* Fall through */
-		case WKC_SHIFT | WKC_MINUS: /* Fall through */
+		case WKC_NUM_MINUS: // Fall through
+		case WKC_MINUS: // Fall through
+		case WKC_SHIFT | WKC_MINUS: // Fall through
 		case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
 		case WKC_SHIFT | WKC_F7: if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, -1); break;
 		case WKC_SHIFT | WKC_F8: ShowBuildRoadToolbar(_last_built_roadtype); break;
@@ -1666,7 +1666,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_CTRL  | 'S': MenuClickSmallScreenshot(); break;
 		case WKC_CTRL  | 'G': MenuClickWorldScreenshot(); break;
 		case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
-		case 'A': if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, 4); break; /* Invoke Autorail */
+		case 'A': if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, 4); break; // Invoke Autorail
 		case 'L': ShowTerraformToolbar(); break;
 		case 'M': ShowSmallMap(); break;
 		case 'V': ShowExtraViewPortWindow(); break;
