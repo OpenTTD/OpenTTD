@@ -1079,6 +1079,8 @@ DEF_CONSOLE_CMD(ConExit)
 		return true;
 	}
 
+	if (_game_mode == GM_NORMAL && _patches.autosave_on_exit) DoExitSave();
+
 	_exit_game = true;
 	return true;
 }
