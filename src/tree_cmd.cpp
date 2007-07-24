@@ -560,7 +560,7 @@ static void TileLoop_Trees(TileIndex tile)
 					case 2: { /* add a neighbouring tree */
 						TreeType treetype = GetTreeType(tile);
 
-						tile += TileOffsByDir(Random() & 7);
+						tile += TileOffsByDir((Direction)(Random() & 7));
 
 						if (!IsTileType(tile, MP_CLEAR) || IsBridgeAbove(tile)) return;
 

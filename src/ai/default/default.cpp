@@ -1774,7 +1774,7 @@ static const byte _terraform_down_flags[] = {
 	8,  4
 };
 
-static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
+static void AiDoTerraformLand(TileIndex tile, DiagDirection dir, int unk, int mode)
 {
 	PlayerID old_player;
 	uint32 r;
@@ -1793,10 +1793,8 @@ static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
 
 		r >>= 2;
 		if (r & 2) {
-			dir++;
-			if (r & 1) dir -= 2;
+			dir = ChangeDiagDir(dir, (r & 1) ? DIAGDIRDIFF_90LEFT : DIAGDIRDIFF_90RIGHT);
 		}
-		dir &= 3;
 	} while (--unk >= 0);
 
 	slope = GetTileSlope(tile, &h);
@@ -1855,7 +1853,7 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 			if (rule == -1) {
 				// cannot build, terraform after a while
 				if (p->ai.state_counter >= 600) {
-					AiDoTerraformLand(aib->use_tile, Random() & 3, 3, (int8)p->ai.state_mode);
+					AiDoTerraformLand(aib->use_tile, (DiagDirection)(Random() & 3), 3, (int8)p->ai.state_mode);
 				}
 				// also try the other terraform direction
 				if (++p->ai.state_counter >= 1000) {
@@ -1888,7 +1886,7 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 	p->ai.state_mode = 255;
 }
 
-static TileIndex AiGetEdgeOfDefaultRailBlock(byte rule, TileIndex tile, byte cmd, int *dir)
+static TileIndex AiGetEdgeOfDefaultRailBlock(byte rule, TileIndex tile, byte cmd, DiagDirection *dir)
 {
 	const AiDefaultBlockData *p = _default_rail_track_data[rule]->data;
 
@@ -1926,18 +1924,18 @@ static bool AiDoFollowTrack(const Player* p)
 	arpfd.tile2 = p->ai.cur_tile_a;
 	arpfd.flag = false;
 	arpfd.count = 0;
-	FollowTrack(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a), 0x2000 | TRANSPORT_RAIL, 0, (DiagDirection)(p->ai.cur_dir_a ^ 2),
+	FollowTrack(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a), 0x2000 | TRANSPORT_RAIL, 0, ReverseDiagDir(p->ai.cur_dir_a),
 		(TPFEnumProc*)AiEnumFollowTrack, NULL, &arpfd);
 	return arpfd.count > 8;
 }
 
 struct AiRailFinder {
 	TileIndex final_tile;
-	byte final_dir;
+	DiagDirection final_dir;
 	byte depth;
 	byte recursive_mode;
-	byte cur_best_dir;
-	byte best_dir;
+	DiagDirection cur_best_dir;
+	DiagDirection best_dir;
 	byte cur_best_depth;
 	byte best_depth;
 	uint cur_best_dist;
@@ -1988,7 +1986,7 @@ static void AiBanTile(Player* p, TileIndex tile, byte val)
 	}
 }
 
-static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir);
+static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, DiagDirection dir);
 
 static bool AiCheckRailPathBetter(AiRailFinder *arf, const byte *p)
 {
@@ -2027,7 +2025,7 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 	uint z;
 	bool flag;
 
-	int dir2 = p[0] & 3;
+	DiagDirection dir2 = (DiagDirection)(p[0] & 3);
 
 	tileh = GetTileSlope(tile, &z);
 	if (tileh == _dir_table_1[dir2] || (tileh == SLOPE_FLAT && z != 0)) {
@@ -2071,14 +2069,14 @@ static inline void AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex tile,
 		CommandCost cost = DoCommand(tile, arf->player->ai.railtype_to_use, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (CmdSucceeded(cost) && cost.GetCost() <= (arf->player->player_money >> 4)) {
-			AiBuildRailRecursive(arf, _build_tunnel_endtile, p[0] & 3);
+			AiBuildRailRecursive(arf, _build_tunnel_endtile, (DiagDirection)(p[0] & 3));
 			if (arf->depth == 1) AiCheckRailPathBetter(arf, p);
 		}
 	}
 }
 
 
-static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
+static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, DiagDirection dir)
 {
 	const byte *p;
 
@@ -2086,7 +2084,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
 
 	// Reached destination?
 	if (tile == arf->final_tile) {
-		if (arf->final_dir != (dir ^ 2)) {
+		if (arf->final_dir != ReverseDiagDir(dir)) {
 			if (arf->recursive_mode != 2) arf->recursive_mode = 1;
 		} else if (arf->recursive_mode != 2) {
 			arf->recursive_mode = 2;
@@ -2125,7 +2123,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
 			// Make sure the tile is not in the list of banned tiles and that a rail can be built here.
 			if (!AiIsTileBanned(arf->player, tile, p[0]) &&
 					CmdSucceeded(DoCommand(tile, arf->player->ai.railtype_to_use, p[0], DC_AUTO | DC_NO_WATER | DC_NO_RAIL_OVERLAP, CMD_BUILD_SINGLE_RAIL))) {
-				AiBuildRailRecursive(arf, tile, p[1]);
+				AiBuildRailRecursive(arf, tile, (DiagDirection)p[1]);
 			}
 
 			// At the bottom depth?
@@ -2228,7 +2226,7 @@ static void AiBuildRailConstruct(Player *p)
 		p->ai.state_counter = 0;
 	} else {
 		// rail
-		p->ai.cur_dir_a = arf.best_ptr[1];
+		p->ai.cur_dir_a = (DiagDirection)(arf.best_ptr[1] & 3);
 		DoCommand(p->ai.cur_tile_a, p->ai.railtype_to_use, arf.best_ptr[0],
 			DC_EXEC | DC_AUTO | DC_NO_WATER | DC_NO_RAIL_OVERLAP, CMD_BUILD_SINGLE_RAIL);
 		p->ai.state_counter = 0;
@@ -2290,9 +2288,9 @@ static bool AiRemoveTileAndGoForward(Player *p)
 		return false;
 
 	// Find the direction at the other edge of the rail.
-	ptr = _ai_table_15[p->ai.cur_dir_a ^ 2];
+	ptr = _ai_table_15[ReverseDiagDir(p->ai.cur_dir_a)];
 	while (ptr[0] != bit) ptr += 2;
-	p->ai.cur_dir_a = ptr[1] ^ 2;
+	p->ai.cur_dir_a = ReverseDiagDir((DiagDirection)ptr[1]);
 
 	// And then also switch tile.
 	p->ai.cur_tile_a = TILE_MASK(p->ai.cur_tile_a - TileOffsByDiagDir(p->ai.cur_dir_a));
@@ -2351,7 +2349,7 @@ static void AiStateBuildRail(Player *p)
 	AiBuildRec *aib;
 	byte cmd;
 	TileIndex tile;
-	int dir;
+	DiagDirection dir;
 
 	// time out?
 	if (++p->ai.timeout_counter == 1388) {
@@ -2751,7 +2749,7 @@ static void AiStateBuildDefaultRoadBlocks(Player *p)
 			if (rule == -1) {
 				// cannot build, terraform after a while
 				if (p->ai.state_counter >= 600) {
-					AiDoTerraformLand(aib->use_tile, Random() & 3, 3, (int8)p->ai.state_mode);
+					AiDoTerraformLand(aib->use_tile, (DiagDirection)(Random() & 3), 3, (int8)p->ai.state_mode);
 				}
 				// also try the other terraform direction
 				if (++p->ai.state_counter >= 1000) {
@@ -2788,11 +2786,11 @@ static void AiStateBuildDefaultRoadBlocks(Player *p)
 
 struct AiRoadFinder {
 	TileIndex final_tile;
-	byte final_dir;
+	DiagDirection final_dir;
 	byte depth;
 	byte recursive_mode;
-	byte cur_best_dir;
-	byte best_dir;
+	DiagDirection cur_best_dir;
+	DiagDirection best_dir;
 	byte cur_best_depth;
 	byte best_depth;
 	uint cur_best_dist;
@@ -2810,13 +2808,13 @@ struct AiRoadEnum {
 	uint best_dist;
 };
 
-static const byte _dir_by_track[] = {
-	0, 1, 0, 1, 2, 1,
-	0, 0,
-	2, 3, 3, 2, 3, 0,
+static const DiagDirection _dir_by_track[] = {
+	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE,
+	DIAGDIR_NE, DIAGDIR_NE,
+	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,
 };
 
-static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir);
+static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, DiagDirection dir);
 
 static bool AiCheckRoadPathBetter(AiRoadFinder *arf, const byte *p)
 {
@@ -2880,7 +2878,7 @@ static bool AiCheckRoadFinished(Player *p)
 {
 	AiRoadEnum are;
 	TileIndex tile;
-	int dir = p->ai.cur_dir_a;
+	DiagDirection dir = p->ai.cur_dir_a;
 	uint32 bits;
 	int i;
 
@@ -2926,7 +2924,7 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 	uint z;
 	bool flag;
 
-	int dir2 = p[0] & 3;
+	DiagDirection dir2 = (DiagDirection)(p[0] & 3);
 
 	tileh = GetTileSlope(tile, &z);
 	if (tileh == _dir_table_1[dir2] || (tileh == SLOPE_FLAT && z != 0)) {
@@ -2971,7 +2969,7 @@ static inline void AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex tile,
 		CommandCost cost = DoCommand(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (CmdSucceeded(cost) && cost.GetCost() <= (arf->player->player_money >> 4)) {
-			AiBuildRoadRecursive(arf, _build_tunnel_endtile, p[0] & 3);
+			AiBuildRoadRecursive(arf, _build_tunnel_endtile, (DiagDirection)(p[0] & 3));
 			if (arf->depth == 1)  AiCheckRoadPathBetter(arf, p);
 		}
 	}
@@ -2979,7 +2977,7 @@ static inline void AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex tile,
 
 
 
-static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir)
+static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, DiagDirection dir)
 {
 	const byte *p;
 
@@ -2987,7 +2985,7 @@ static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir)
 
 	// Reached destination?
 	if (tile == arf->final_tile) {
-		if ((arf->final_dir ^ 2) == dir) {
+		if (ReverseDiagDir(arf->final_dir) == dir) {
 			arf->recursive_mode = 2;
 			arf->cur_best_depth = arf->depth;
 		}
@@ -3020,7 +3018,7 @@ static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir)
 		do {
 			// Make sure that a road can be built here.
 			if (AiBuildRoadHelper(tile, DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, p[0])) {
-				AiBuildRoadRecursive(arf, tile, p[1]);
+				AiBuildRoadRecursive(arf, tile, (DiagDirection)p[1]);
 			}
 
 			// At the bottom depth?
@@ -3081,7 +3079,7 @@ do_some_terraform:
 			p->ai.state_mode = 1;
 
 			p->ai.cur_tile_a = TILE_MASK(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a));
-			p->ai.cur_dir_a ^= 2;
+			p->ai.cur_dir_a = ReverseDiagDir(p->ai.cur_dir_a);
 			p->ai.state_counter = 0;
 		}
 		return;
@@ -3121,7 +3119,7 @@ do_some_terraform:
 		if (!AiBuildRoadHelper(tile, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, arf.best_ptr[0]))
 			goto do_some_terraform;
 
-		p->ai.cur_dir_a = arf.best_ptr[1];
+		p->ai.cur_dir_a = (DiagDirection)(arf.best_ptr[1] & 3);
 		p->ai.cur_tile_a = tile;
 		p->ai.state_counter = 0;
 	}
@@ -3157,7 +3155,7 @@ static void AiBuildRoad(Player *p)
 	}
 }
 
-static TileIndex AiGetRoadBlockEdge(byte rule, TileIndex tile, int *dir)
+static TileIndex AiGetRoadBlockEdge(byte rule, TileIndex tile, DiagDirection *dir)
 {
 	const AiDefaultBlockData *p = _road_default_block_data[rule]->data;
 	while (p->mode != 1) p++;
@@ -3172,7 +3170,7 @@ static void AiStateBuildRoad(Player *p)
 	AiBuildRec *aib;
 	byte cmd;
 	TileIndex tile;
-	int dir;
+	DiagDirection dir;
 
 	// time out?
 	if (++p->ai.timeout_counter == 1388) {
@@ -3477,7 +3475,7 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 			if (rule == -1) {
 				// cannot build, terraform after a while
 				if (p->ai.state_counter >= 600) {
-					AiDoTerraformLand(aib->use_tile, Random() & 3, 3, (int8)p->ai.state_mode);
+					AiDoTerraformLand(aib->use_tile, (DiagDirection)(Random() & 3), 3, (int8)p->ai.state_mode);
 				}
 				// also try the other terraform direction
 				if (++p->ai.state_counter >= 1000) {
@@ -3682,7 +3680,7 @@ is_rail_crossing:;
 			if (rails & TRACK_BIT_3WAY_NE) {
 pos_0:
 				if ((GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(1, 0))) & TRACK_BIT_3WAY_SW) == 0) {
-					p->ai.cur_dir_a = 0;
+					p->ai.cur_dir_a = DIAGDIR_NE;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
 					return;
@@ -3692,7 +3690,7 @@ pos_0:
 			if (rails & TRACK_BIT_3WAY_SE) {
 pos_1:
 				if ((GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(0, 1))) & TRACK_BIT_3WAY_NW) == 0) {
-					p->ai.cur_dir_a = 1;
+					p->ai.cur_dir_a = DIAGDIR_SE;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
 					return;
@@ -3702,7 +3700,7 @@ pos_1:
 			if (rails & TRACK_BIT_3WAY_SW) {
 pos_2:
 				if ((GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(1, 0))) & TRACK_BIT_3WAY_NE) == 0) {
-					p->ai.cur_dir_a = 2;
+					p->ai.cur_dir_a = DIAGDIR_SW;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
 					return;
@@ -3712,7 +3710,7 @@ pos_2:
 			if (rails & TRACK_BIT_3WAY_NW) {
 pos_3:
 				if ((GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(0, 1))) & TRACK_BIT_3WAY_SE) == 0) {
-					p->ai.cur_dir_a = 3;
+					p->ai.cur_dir_a = DIAGDIR_NW;
 					p->ai.cur_tile_a = tile;
 					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
 					return;

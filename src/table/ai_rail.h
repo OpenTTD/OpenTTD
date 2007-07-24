@@ -2,7 +2,7 @@
 
 struct AiDefaultBlockData {
 	byte mode;
-	byte attr;
+	DiagDirection attr;
 	TileIndexDiffC tileoffs;
 };
 
@@ -22,11 +22,11 @@ struct AiDefaultRoadBlock {
 
 
 #define MKHDR(a, b, c, d, e) a, b, c, d, e,
-#define MKDEPOT(a, b, c)   {0, a, {b, c}}
-#define MKSTATION(a, b, c) {1, a, {b, c}}
-#define MKRAIL(a, b, c)    {2, a, {b, c}}
-#define MKCLRRAIL(a, b, c) {3, a, {b, c}}
-#define MKEND              {4, 0, {0, 0}}
+#define MKDEPOT(a, b, c)   {0, (DiagDirection)a, {b, c}}
+#define MKSTATION(a, b, c) {1, (DiagDirection)a, {b, c}}
+#define MKRAIL(a, b, c)    {2, (DiagDirection)a, {b, c}}
+#define MKCLRRAIL(a, b, c) {3, (DiagDirection)a, {b, c}}
+#define MKEND              {4, (DiagDirection)0, {0, 0}}
 
 static const AiDefaultBlockData _raildata_ai_0_data[] = {
 	MKDEPOT(2, -1, 1),
@@ -555,37 +555,49 @@ static const AiDefaultRoadBlock * const _road_default_block_data[] = {
 	NULL
 };
 
-#define MKAIR(a, b, c) {0, a, {b, c}}
+#undef MKHDR
+#undef MKDEPOT
+#undef MKSTATION
+#undef MKRAIL
+#undef MKCLRRAIL
+#undef MKEND
+
+
+#define MKAIR(a, b, c) {0, (DiagDirection)a, {b, c}}
+#define MKEND() {1, (DiagDirection)0, {0, 0}}
 
 static const AiDefaultBlockData _airportdata_ai_0[] = {
 	MKAIR(1, 0, 0),
-	{1, 0, {0, 0}},
+	MKEND(),
 };
 
 static const AiDefaultBlockData _airportdata_ai_1[] = {
 	MKAIR(0, 0, 0),
-	{1, 0, {0, 0}}
+	MKEND(),
 };
 
 static const AiDefaultBlockData _airportdata_ai_3[] = {
 	MKAIR(3, 0, 0),
-	{1, 0, {0, 0}},
+	MKEND(),
 };
 
 static const AiDefaultBlockData _airportdata_ai_4[] = {
 	MKAIR(4, 0, 0),
-	{1, 0, {0, 0}},
+	MKEND(),
 };
 
 static const AiDefaultBlockData _airportdata_ai_5[] = {
 	MKAIR(5, 0, 0),
-	{1, 0, {0, 0}},
+	MKEND(),
 };
 
 static const AiDefaultBlockData _airportdata_ai_7[] = {
 	MKAIR(7, 0, 0),
-	{1, 0, {0, 0}}
+	MKEND(),
 };
+
+#undef MKAIR
+#undef MDEND
 
 static const AiDefaultBlockData * const _airport_default_block_data[] = {
 	_airportdata_ai_7, // intercontinental airport

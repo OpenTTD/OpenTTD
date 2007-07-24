@@ -53,13 +53,13 @@ struct PlayerAI {
 
 	TileIndex start_tile_a;
 	TileIndex cur_tile_a;
-	byte cur_dir_a;
-	byte start_dir_a;
+	DiagDirectionByte cur_dir_a;
+	DiagDirectionByte start_dir_a;
 
 	TileIndex start_tile_b;
 	TileIndex cur_tile_b;
-	byte cur_dir_b;
-	byte start_dir_b;
+	DiagDirectionByte cur_dir_b;
+	DiagDirectionByte start_dir_b;
 
 	Vehicle *cur_veh; ///< only used by some states
 
@@ -77,8 +77,8 @@ struct Ai_PathFinderInfo {
 	TileIndex start_tile_br; ///< br = bottom-right
 	TileIndex end_tile_tl;   ///< tl = top-left
 	TileIndex end_tile_br;   ///< br = bottom-right
-	byte start_direction;    ///< 0 to 3 or AI_PATHFINDER_NO_DIRECTION
-	byte end_direction;      ///< 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+	DiagDirection start_direction; ///< 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+	DiagDirection end_direction;   ///< 0 to 3 or AI_PATHFINDER_NO_DIRECTION
 
 	TileIndex route[500];
 	byte route_extra[500];   ///< Some extra information about the route like bridge/tunnel
@@ -127,8 +127,8 @@ struct PlayerAiNew {
 	TileIndex from_tile;
 	TileIndex to_tile;
 
-	byte from_direction;
-	byte to_direction;
+	DiagDirectionByte from_direction;
+	DiagDirectionByte to_direction;
 
 	bool from_deliver; ///< True if this is the station that GIVES cargo
 	bool to_deliver;

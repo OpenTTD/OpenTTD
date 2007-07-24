@@ -1481,7 +1481,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 		(_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
 	if (rd.x & RDE_NEXT_TILE) {
-		TileIndex tile = v->tile + TileOffsByDiagDir(rd.x & 3);
+		TileIndex tile = v->tile + TileOffsByDiagDir((DiagDirection)(rd.x & 3));
 		Trackdir dir;
 		uint32 r;
 		Direction newdir;

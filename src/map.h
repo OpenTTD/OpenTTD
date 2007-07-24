@@ -6,6 +6,7 @@
 #define MAP_H
 
 #include "stdafx.h"
+#include "direction.h"
 
 extern uint _map_tile_mask;
 
@@ -190,17 +191,19 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 
 uint TileAddWrap(TileIndex tile, int addx, int addy);
 
-static inline TileIndexDiffC TileIndexDiffCByDiagDir(uint dir) {
-	extern const TileIndexDiffC _tileoffs_by_diagdir[4];
+static inline TileIndexDiffC TileIndexDiffCByDiagDir(DiagDirection dir)
+{
+	extern const TileIndexDiffC _tileoffs_by_diagdir[DIAGDIR_END];
 
-	assert(dir < lengthof(_tileoffs_by_diagdir));
+	assert(IsValidDiagDirection(dir));
 	return _tileoffs_by_diagdir[dir];
 }
 
 /* Returns tile + the diff given in diff. If the result tile would end up
  * outside of the map, INVALID_TILE is returned instead.
  */
-static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC diff) {
+static inline TileIndex AddTileIndexDiffCWrap(TileIndex tile, TileIndexDiffC diff)
+{
 	int x = TileX(tile) + diff.x;
 	int y = TileY(tile) + diff.y;
 	if (x < 0 || y < 0 || x > (int)MapMaxX() || y > (int)MapMaxY())
@@ -247,19 +250,19 @@ uint DistanceFromEdge(TileIndex); ///< shortest distance from any edge of the ma
 		} while (var += TileDiffXY(0, 1) - (w), --h_cur != 0); \
 	}
 
-static inline TileIndexDiff TileOffsByDiagDir(uint dir)
+static inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
 {
-	extern const TileIndexDiffC _tileoffs_by_diagdir[4];
+	extern const TileIndexDiffC _tileoffs_by_diagdir[DIAGDIR_END];
 
-	assert(dir < lengthof(_tileoffs_by_diagdir));
+	assert(IsValidDiagDirection(dir));
 	return ToTileIndexDiff(_tileoffs_by_diagdir[dir]);
 }
 
-static inline TileIndexDiff TileOffsByDir(uint dir)
+static inline TileIndexDiff TileOffsByDir(Direction dir)
 {
-	extern const TileIndexDiffC _tileoffs_by_dir[8];
+	extern const TileIndexDiffC _tileoffs_by_dir[DIR_END];
 
-	assert(dir < lengthof(_tileoffs_by_dir));
+	assert(IsValidDirection(dir));
 	return ToTileIndexDiff(_tileoffs_by_dir[dir]);
 }
 
