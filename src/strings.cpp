@@ -241,7 +241,7 @@ static const uint32 _divisor_table[] = {
 // TODO
 static char *FormatCommaNumber(char *buff, int32 number, const char* last)
 {
-	uint32 quot,divisor;
+	uint32 quot;
 	int i;
 	uint32 tot;
 	uint32 num;
@@ -255,9 +255,8 @@ static char *FormatCommaNumber(char *buff, int32 number, const char* last)
 
 	tot = 0;
 	for (i = 0; i != 10; i++) {
-		divisor = _divisor_table[i];
 		quot = 0;
-		if (num >= divisor) {
+		if (num >= _divisor_table[i]) {
 			quot = num / _divisor_table[i];
 			num = num % _divisor_table[i];
 		}
@@ -275,7 +274,7 @@ static char *FormatCommaNumber(char *buff, int32 number, const char* last)
 // TODO
 static char *FormatNoCommaNumber(char *buff, int32 number, const char* last)
 {
-	uint32 quot,divisor;
+	uint32 quot;
 	int i;
 	uint32 tot;
 	uint32 num;
@@ -289,9 +288,8 @@ static char *FormatNoCommaNumber(char *buff, int32 number, const char* last)
 
 	tot = 0;
 	for (i = 0; i != 10; i++) {
-		divisor = _divisor_table[i];
 		quot = 0;
-		if (num >= divisor) {
+		if (num >= _divisor_table[i]) {
 			quot = num / _divisor_table[i];
 			num = num % _divisor_table[i];
 		}
