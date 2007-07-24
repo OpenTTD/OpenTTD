@@ -178,7 +178,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		}
 
 		/* Distance of nearest industry of given type */
-		case 0x64: return GetClosestIndustry(tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), industry); // Distance of nearest industry of given type
+		case 0x64: return GetClosestIndustry(tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), industry);
 		/* Get town zone and Manhattan distance of closest town */
  		case 0x65: return GetTownRadiusGroup(industry->town, tile) << 16 | min(DistanceManhattan(tile, industry->town->xy), 0xFFFF);
 		/* Get square of Euclidian distance of closes town */
@@ -189,6 +189,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		 * A lot more should be done, since it has to check for local id, grf id etc...
 		 * let's just say it is a beginning ;) */
 		case 0x67: return GetIndustryTypeCount(industry->type) << 16 | 0;
+		case 0x68: break;
 
 		/* Industry structure access*/
 		case 0x80: return industry->xy;
