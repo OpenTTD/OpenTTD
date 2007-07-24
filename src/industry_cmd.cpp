@@ -1669,7 +1669,7 @@ void GenerateIndustries()
 
 	/* Find the total amount of industries */
 	if (_opt.diff.number_industries > 0) {
-		for (it = IT_COAL_MINE; it < NUM_INDUSTRYTYPES; it++) {
+		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
 
 			ind_spc = GetIndustrySpec(it);
 
@@ -1694,7 +1694,7 @@ void GenerateIndustries()
 	SetGeneratingWorldProgress(GWP_INDUSTRY, i);
 
 	if (_opt.diff.number_industries > 0) {
-		for (it = IT_COAL_MINE; it < NUM_INDUSTRYTYPES; it++) {
+		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			/* Once the number of industries has been determined, let's really create them.
 			 * The test for chance allows us to try create industries that are available only
 			 * for this landscape.

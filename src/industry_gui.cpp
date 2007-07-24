@@ -114,7 +114,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 
 			/* We'll perform two distinct loops, one for secondary industries, and the other one for
 			 * primary ones. Each loop will fill the _fund_gui structure. */
-			for (ind = IT_COAL_MINE; ind < NUM_INDUSTRYTYPES; ind++) {
+			for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
 				indsp = GetIndustrySpec(ind);
 				if (indsp->enabled && (!indsp->IsRawIndustry() || _game_mode == GM_EDITOR)) {
 					_fund_gui.index[_fund_gui.count] = ind;
@@ -124,7 +124,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			}
 
 			if (_patches.raw_industry_construction != 0 && _game_mode != GM_EDITOR) {
-				for (ind = IT_COAL_MINE; ind < NUM_INDUSTRYTYPES; ind++) {
+				for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
 					indsp = GetIndustrySpec(ind);
 					if (indsp->enabled && indsp->IsRawIndustry()) {
 						_fund_gui.index[_fund_gui.count] = ind;

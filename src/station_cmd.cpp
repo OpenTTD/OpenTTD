@@ -137,6 +137,12 @@ static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest
 	return (closest_station == INVALID_STATION) ? NULL : GetStation(closest_station);
 }
 
+/**
+ * Function to check whether the given tile matches some criterion.
+ * @param tile the tile to check
+ * @return true if it matches, false otherwise
+ */
+typedef bool (*CMSAMatcher)(TileIndex tile);
 
 /**
  * Counts the numbers of tiles matching a specific type in the area around
@@ -146,37 +152,83 @@ static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest
  *                 in all other cases this parameter is ignored
  * @return the result the noumber of matching tiles around
  */
-static int CountMapSquareAround(TileIndex tile, TileType type, IndustryType industry)
+static int CountMapSquareAround(TileIndex tile, CMSAMatcher cmp)
 {
 	int num = 0;
 
 	for (int dx = -3; dx <= 3; dx++) {
 		for (int dy = -3; dy <= 3; dy++) {
-			TileIndex cur_tile = TILE_MASK(tile + TileDiffXY(dx, dy));
-
-			if (IsTileType(cur_tile, type)) {
-				switch (type) {
-					case MP_INDUSTRY:
-						if (GetIndustryType(cur_tile) == industry)
-							num++;
-						break;
-
-					case MP_WATER:
-						if (!IsWater(cur_tile))
-							break;
-						/* FALL THROUGH WHEN WATER TILE */
-					case MP_TREES:
-						num++;
-						break;
-
-					default:
-						break;
-				}
-			}
+			if (cmp(TILE_MASK(tile + TileDiffXY(dx, dy)))) num++;
 		}
 	}
 
 	return num;
+}
+
+/**
+ * Check whether the tile is a mine.
+ * @param tile the tile to investigate.
+ * @return true if and only if the tile is a mine
+ */
+static bool CMSAMine(TileIndex tile)
+{
+	/* No industry */
+	if (!IsTileType(tile, MP_INDUSTRY)) return false;
+
+	const IndustrySpec *indsp = GetIndustrySpec(GetIndustryByTile(tile)->type);
+
+	/* No extractive industry */
+	if ((indsp->life_type & INDUSTRYLIFE_EXTRACTIVE) == 0) return false;
+
+	for (uint i = 0; i < lengthof(indsp->produced_cargo); i++) {
+		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine */
+		if (indsp->produced_cargo[i] != CT_INVALID && (GetCargo(indsp->produced_cargo[i])->classes & CC_LIQUID) == 0) return true;
+	}
+
+	return false;
+}
+
+/**
+ * Check whether the tile is water.
+ * @param tile the tile to investigate.
+ * @return true if and only if the tile is a mine
+ */
+static bool CMSAWater(TileIndex tile)
+{
+	return IsTileType(tile, MP_WATER) && IsWater(tile);
+}
+
+/**
+ * Check whether the tile is a tree.
+ * @param tile the tile to investigate.
+ * @return true if and only if the tile is a mine
+ */
+static bool CMSATree(TileIndex tile)
+{
+	return IsTileType(tile, MP_TREES);
+}
+
+/**
+ * Check whether the tile is a forest.
+ * @param tile the tile to investigate.
+ * @return true if and only if the tile is a mine
+ */
+static bool CMSAForest(TileIndex tile)
+{
+	/* No industry */
+	if (!IsTileType(tile, MP_INDUSTRY)) return false;
+
+	const IndustrySpec *indsp = GetIndustrySpec(GetIndustryByTile(tile)->type);
+
+	/* No extractive industry */
+	if ((indsp->life_type & INDUSTRYLIFE_ORGANIC) == 0) return false;
+
+	for (uint i = 0; i < lengthof(indsp->produced_cargo); i++) {
+		/* The industry produces wood. */
+		if (indsp->produced_cargo[i] != CT_INVALID && GetCargo(indsp->produced_cargo[i])->label == 'WOOD') return true;
+	}
+
+	return false;
 }
 
 #define M(x) ((x) - STR_SV_STNAME)
@@ -221,11 +273,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 
 	/* check mine? */
 	if (HASBIT(free_names, M(STR_SV_STNAME_MINES))) {
-		if (CountMapSquareAround(tile, MP_INDUSTRY, IT_COAL_MINE) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, IT_IRON_MINE) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, IT_COPPER_MINE) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, IT_GOLD_MINE) >= 2 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, IT_DIAMOND_MINE) >= 2) {
+		if (CountMapSquareAround(tile, CMSAMine) >= 2) {
 			found = M(STR_SV_STNAME_MINES);
 			goto done;
 		}
@@ -243,15 +291,15 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	/* Check lakeside */
 	if (HASBIT(free_names, M(STR_SV_STNAME_LAKESIDE)) &&
 			DistanceFromEdge(tile) < 20 &&
-			CountMapSquareAround(tile, MP_WATER, 0) >= 5) {
+			CountMapSquareAround(tile, CMSAWater) >= 5) {
 		found = M(STR_SV_STNAME_LAKESIDE);
 		goto done;
 	}
 
 	/* Check woods */
 	if (HASBIT(free_names, M(STR_SV_STNAME_WOODS)) && (
-				CountMapSquareAround(tile, MP_TREES, 0) >= 8 ||
-				CountMapSquareAround(tile, MP_INDUSTRY, IT_FOREST) >= 2)
+				CountMapSquareAround(tile, CMSATree) >= 8 ||
+				CountMapSquareAround(tile, CMSAForest) >= 2)
 			) {
 		found = _opt.landscape == LT_TROPIC ?
 			M(STR_SV_STNAME_FOREST) : M(STR_SV_STNAME_WOODS);
