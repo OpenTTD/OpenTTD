@@ -42,15 +42,6 @@ enum {
 	GFX_WINDSACK_INTERCON_LAST        = 143,
 };
 
-enum HangarTile {
-	HANGAR_TILE_0 = 24,
-	HANGAR_TILE_1 = 57,
-	HANGAR_TILE_2 = 62,
-	HANGAR_TILE_3 = 105, // added for west facing hangar
-	HANGAR_TILE_4 = 106, // added for north facing hangar
-	HANGAR_TILE_5 = 107  // added for east facing hangar
-};
-
 static inline StationType GetStationType(TileIndex t)
 {
 	return (StationType)GB(_m[t].m6, 3, 3);
@@ -89,17 +80,7 @@ static inline bool IsAirport(TileIndex t)
 	return GetStationType(t) == STATION_AIRPORT;
 }
 
-static inline bool IsHangar(TileIndex t)
-{
-	StationGfx gfx = GetStationGfx(t);
-	return IsAirport(t) && (
-		gfx == HANGAR_TILE_0 ||
-		gfx == HANGAR_TILE_1 ||
-		gfx == HANGAR_TILE_2 ||
-		gfx == HANGAR_TILE_3 ||
-		gfx == HANGAR_TILE_4 ||
-		gfx == HANGAR_TILE_5);
-}
+bool IsHangar(TileIndex t);
 
 static inline bool IsTruckStop(TileIndex t)
 {

@@ -78,6 +78,26 @@ DEFINE_OLD_POOL(Station, Station, StationPoolNewBlock, StationPoolCleanBlock)
 DEFINE_OLD_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
 
 
+/**
+ * Check whether the given tile is a hangar.
+ * @param t the tile to of whether it is a hangar.
+ * @pre IsTileType(t, MP_STATION)
+ * @return true if and only if the tile is a hangar.
+ */
+bool IsHangar(TileIndex t)
+{
+	assert(IsTileType(t, MP_STATION));
+
+	const Station *st = GetStationByTile(t);
+	const AirportFTAClass *apc = st->Airport();
+
+	for (uint i = 0; i < apc->nof_depots; i++) {
+		if (st->airport_tile + ToTileIndexDiff(apc->airport_depots[i]) == t) return true;
+	}
+
+	return false;
+}
+
 RoadStop* GetRoadStopByTile(TileIndex tile, RoadStop::Type type)
 {
 	const Station* st = GetStationByTile(tile);
