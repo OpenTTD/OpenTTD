@@ -352,7 +352,7 @@ struct Vehicle {
 	 * @param v    the vehicle to use as 'storage' backend
 	 * @return the memory that is 'allocated'
 	 */
-	void* operator new(size_t size, Vehicle *v) { return v; }
+	void *operator new(size_t size, Vehicle *v) { return v; }
 
 	/**
 	 * 'Free' the memory allocated by the overriden new.
@@ -516,7 +516,7 @@ void AfterLoadVehicles();
 Vehicle *GetLastVehicleInChain(Vehicle *v);
 Vehicle *GetPrevVehicleInChain(const Vehicle *v);
 Vehicle *GetFirstVehicleInChain(const Vehicle *v);
-uint CountVehiclesInChain(const Vehicle* v);
+uint CountVehiclesInChain(const Vehicle *v);
 bool IsEngineCountable(const Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
@@ -592,7 +592,7 @@ enum {
 };
 
 struct GetNewVehiclePosResult {
-	int x,y;
+	int x, y;
 	TileIndex old_tile;
 	TileIndex new_tile;
 };
@@ -612,10 +612,10 @@ Trackdir GetVehicleTrackdir(const Vehicle* v);
 
 /* returns true if staying in the same tile */
 GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v);
-Direction GetDirectionTowards(const Vehicle* v, int x, int y);
+Direction GetDirectionTowards(const Vehicle *v, int x, int y);
 
 #define BEGIN_ENUM_WAGONS(v) do {
-#define END_ENUM_WAGONS(v) } while ( (v=v->next) != NULL);
+#define END_ENUM_WAGONS(v) } while ((v = v->next) != NULL);
 
 DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 

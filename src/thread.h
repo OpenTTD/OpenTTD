@@ -7,10 +7,10 @@
 
 struct OTTDThread;
 
-typedef void* (*OTTDThreadFunc)(void*);
+typedef void * (*OTTDThreadFunc)(void*);
 
-OTTDThread* OTTDCreateThread(OTTDThreadFunc, void*);
-void*       OTTDJoinThread(OTTDThread*);
+OTTDThread *OTTDCreateThread(OTTDThreadFunc, void*);
+void       *OTTDJoinThread(OTTDThread*);
 void        OTTDExitThread();
 
 #endif /* THREAD_H */

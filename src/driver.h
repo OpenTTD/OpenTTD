@@ -11,8 +11,8 @@
 #include <string>
 #include <map>
 
-bool GetDriverParamBool(const char* const* parm, const char* name);
-int GetDriverParamInt(const char* const* parm, const char* name, int def);
+bool GetDriverParamBool(const char * const *parm, const char *name);
+int GetDriverParamInt(const char * const *parm, const char *name, int def);
 
 class Driver {
 public:

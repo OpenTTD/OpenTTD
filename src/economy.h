@@ -61,7 +61,7 @@ extern int _score_part[MAX_PLAYERS][SCORE_END];
 int UpdateCompanyRatingAndValue(Player *p, bool update);
 
 VARDEF Subsidy _subsidies[MAX_PLAYERS];
-Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode);
+Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode);
 void DeleteSubsidyWithTown(TownID index);
 void DeleteSubsidyWithIndustry(IndustryID index);
 void DeleteSubsidyWithStation(StationID index);

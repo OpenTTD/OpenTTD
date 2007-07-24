@@ -41,7 +41,7 @@ void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte 
 
 static inline void MaxZoomInOut(int how, Window *w)
 {
-	while (DoZoomInOutWindow(how, w) ) {};
+	while (DoZoomInOutWindow(how, w)) {};
 }
 
 void OffsetGroundSprite(int x, int y);

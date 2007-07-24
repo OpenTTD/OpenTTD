@@ -68,7 +68,7 @@ static inline IndustryID GetIndustryIndex(TileIndex t)
  * @pre IsTileType(t, MP_INDUSTRY)
  * @return the industry
  */
-static inline Industry* GetIndustryByTile(TileIndex t)
+static inline Industry *GetIndustryByTile(TileIndex t)
 {
 	return GetIndustry(GetIndustryIndex(t));
 }

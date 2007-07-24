@@ -35,7 +35,7 @@ static inline bool IsNormalAircraft(const Vehicle *v)
  * @param v vehicle to check
  * @return true if in hangar
  */
-static inline bool IsAircraftInHangar(const Vehicle* v)
+static inline bool IsAircraftInHangar(const Vehicle *v)
 {
 	assert(v->type == VEH_AIRCRAFT);
 	return v->vehstatus & VS_HIDDEN && IsHangarTile(v->tile);
@@ -45,7 +45,7 @@ static inline bool IsAircraftInHangar(const Vehicle* v)
  * @param v vehicle to check
  * @return true if in hangar and stopped
  */
-static inline bool IsAircraftInHangarStopped(const Vehicle* v)
+static inline bool IsAircraftInHangarStopped(const Vehicle *v)
 {
 	return IsAircraftInHangar(v) && v->vehstatus & VS_STOPPED;
 }

@@ -24,10 +24,10 @@ void ttd_strlcpy(char *dst, const char *src, size_t size);
  *             if NULL no boundary check is performed
  * @return a pointer to the terminating \0 in the destination buffer
  */
-char* strecat(char* dst, const char* src, const char* last);
-char* strecpy(char* dst, const char* src, const char* last);
+char *strecat(char *dst, const char *src, const char *last);
+char *strecpy(char *dst, const char *src, const char *last);
 
-char* CDECL str_fmt(const char* str, ...);
+char *CDECL str_fmt(const char *str, ...);
 
 /** Scans the string for valid characters and if it finds invalid ones,
  * replaces them with a question mark '?' */
@@ -49,7 +49,7 @@ enum CharSetFilter {
 void strtolower(char *str);
 
 
-static inline bool StrEmpty(const char* s) { return s[0] == '\0'; }
+static inline bool StrEmpty(const char *s) { return s[0] == '\0'; }
 
 
 /** Get the length of a string, within a limited buffer */

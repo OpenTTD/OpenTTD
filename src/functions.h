@@ -96,7 +96,7 @@ void InitializeLandscapeVariables(bool only_constants);
 /* misc.cpp */
 bool IsCustomName(StringID id);
 void DeleteName(StringID id);
-char *GetName(char *buff, StringID id, const char* last);
+char *GetName(char *buff, StringID id, const char *last);
 
 #define AllocateName(name, skip) RealAllocateName(name, skip, false)
 StringID RealAllocateName(const char *name, byte skip, bool check_double);
@@ -117,7 +117,7 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window
 
 void ResetObjectToPlace();
 
-bool ScrollWindowTo(int x, int y, Window * w, bool instant = false);
+bool ScrollWindowTo(int x, int y, Window *w, bool instant = false);
 
 bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
 bool ScrollMainWindowTo(int x, int y, bool instant = false);

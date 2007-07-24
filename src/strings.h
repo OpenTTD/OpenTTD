@@ -6,7 +6,7 @@
 #define STRINGS_H
 
 char *InlineString(char *buf, StringID string);
-char *GetString(char *buffr, StringID string, const char* last);
+char *GetString(char *buffr, StringID string, const char *last);
 
 extern char _userstring[128];
 

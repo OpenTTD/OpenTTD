@@ -110,7 +110,7 @@ void CreateConsole();
 typedef int32 CursorID;
 
 struct Point {
-	int x,y;
+	int x, y;
 };
 
 struct Rect {

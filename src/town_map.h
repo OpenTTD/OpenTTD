@@ -38,7 +38,7 @@ static inline void SetTownIndex(TileIndex t, TownID index)
  * @param t the tile to get the town of
  * @return the town
  */
-static inline Town* GetTownByTile(TileIndex t)
+static inline Town *GetTownByTile(TileIndex t)
 {
 	return GetTown(GetTownIndex(t));
 }

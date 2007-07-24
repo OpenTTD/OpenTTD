@@ -212,8 +212,8 @@ uint16 GetDrawStringPlayerColor(PlayerID player);
 
 void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player);
 void GetNameOfOwner(Owner owner, TileIndex tile);
-Money CalculateCompanyValue(const Player* p);
-void InvalidatePlayerWindows(const Player* p);
+Money CalculateCompanyValue(const Player *p);
+void InvalidatePlayerWindows(const Player *p);
 void SetLocalPlayer(PlayerID new_player);
 #define FOR_ALL_PLAYERS(p) for (p = _players; p != endof(_players); p++)
 
@@ -236,7 +236,7 @@ static inline byte ActivePlayerCount()
 	return count;
 }
 
-static inline Player* GetPlayer(PlayerID i)
+static inline Player *GetPlayer(PlayerID i)
 {
 	assert(IS_INSIDE_1D(i, PLAYER_FIRST, lengthof(_players)));
 	return &_players[i];
@@ -282,7 +282,7 @@ static inline bool ValParamRailtype(uint32 rail) { return HASBIT(GetPlayer(_curr
  * @param p the player "in action"
  * @return The "best" railtype a player has available
  */
-static inline RailType GetBestRailtype(const Player* p)
+static inline RailType GetBestRailtype(const Player *p)
 {
 	if (HasRailtypeAvail(p, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
 	if (HasRailtypeAvail(p, RAILTYPE_MONO)) return RAILTYPE_MONO;

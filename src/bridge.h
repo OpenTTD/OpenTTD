@@ -35,6 +35,6 @@ static inline const Bridge *GetBridge(uint i)
 	return &_bridge[i];
 }
 
-void DrawBridgeMiddle(const TileInfo* ti);
+void DrawBridgeMiddle(const TileInfo *ti);
 
 #endif /* BRIDGE_H */

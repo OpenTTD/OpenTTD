@@ -24,7 +24,7 @@ struct DrawTileSeqStruct {
 struct DrawTileSprites {
 	SpriteID ground_sprite;
 	SpriteID ground_pal;
-	const DrawTileSeqStruct* seq;
+	const DrawTileSeqStruct *seq;
 };
 
 /**
