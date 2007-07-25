@@ -2480,7 +2480,8 @@ CommandCost CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 static Rect _old_vehicle_coords;
 
-void BeginVehicleMove(Vehicle *v) {
+void BeginVehicleMove(Vehicle *v)
+{
 	_old_vehicle_coords.left = v->left_coord;
 	_old_vehicle_coords.top = v->top_coord;
 	_old_vehicle_coords.right = v->right_coord;

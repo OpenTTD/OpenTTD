@@ -786,7 +786,8 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 	DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);
 }
 
-void DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad) {
+void DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad)
+{
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
 	AcceptedCargo accepts;
 	if (tile < MapSize()) {

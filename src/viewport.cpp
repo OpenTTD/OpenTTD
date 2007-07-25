@@ -134,7 +134,8 @@ static Point MapXYZToViewport(const ViewPort *vp, uint x, uint y, uint z)
 	return p;
 }
 
-void InitViewports() {
+void InitViewports()
+{
 	memset(_viewports, 0, sizeof(_viewports));
 	_active_viewports = 0;
 }

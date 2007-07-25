@@ -69,7 +69,8 @@ void CcCloneTrain(bool success, TileIndex tile, uint32 p1, uint32 p2)
  * @param len Length measured in 1/8ths of a standard wagon.
  * @return Number of pixels across.
  */
-int WagonLengthToPixels(int len) {
+int WagonLengthToPixels(int len)
+{
 	return (len * _traininfo_vehicle_width) / 8;
 }
 

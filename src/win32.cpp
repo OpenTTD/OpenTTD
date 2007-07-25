@@ -110,7 +110,8 @@ struct DebugFileInfo {
 
 static uint32 *_crc_table;
 
-static void MakeCRCTable(uint32 *table) {
+static void MakeCRCTable(uint32 *table)
+{
 	uint32 crc, poly = 0xEDB88320L;
 	int i;
 	int j;
@@ -126,7 +127,8 @@ static void MakeCRCTable(uint32 *table) {
 	}
 }
 
-static uint32 CalcCRC(byte *data, uint size, uint32 crc) {
+static uint32 CalcCRC(byte *data, uint size, uint32 crc)
+{
 	for (; size > 0; size--) {
 		crc = ((crc >> 8) & 0x00FFFFFF) ^ _crc_table[(crc ^ *data++) & 0xFF];
 	}

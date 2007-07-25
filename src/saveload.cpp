@@ -270,7 +270,8 @@ static void SlWriteSimpleGamma(uint i)
 }
 
 /** Return how many bytes used to encode a gamma value */
-static inline uint SlGetGammaLength(uint i) {
+static inline uint SlGetGammaLength(uint i)
+{
 	return 1 + (i >= (1 << 7)) + (i >= (1 << 14)) + (i >= (1 << 21));
 }
 

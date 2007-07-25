@@ -87,7 +87,8 @@ static const StringID _players_dropdown[] = {
 
 static StringID _language_dropdown[NETLANG_COUNT + 1] = {STR_NULL};
 
-void SortNetworkLanguages() {
+void SortNetworkLanguages()
+{
 	/* Init the strings */
 	if (_language_dropdown[0] == STR_NULL) {
 		for (int i = 0; i < NETLANG_COUNT; i++) _language_dropdown[i] = STR_NETWORK_LANG_ANY + i;
@@ -1133,7 +1134,8 @@ static void ClientList_None(byte client_no)
 
 
 // Help, a action is clicked! What do we do?
-static void HandleClientListPopupClick(byte index, byte clientno) {
+static void HandleClientListPopupClick(byte index, byte clientno)
+{
 	// A click on the Popup of the ClientList.. handle the command
 	if (index < MAX_CLIENTLIST_ACTION && _clientlist_proc[index] != NULL) {
 		_clientlist_proc[index](clientno);
@@ -1166,7 +1168,8 @@ static bool CheckClientListHeight(Window *w)
 }
 
 // Finds the amount of actions in the popup and set the height correct
-static uint ClientListPopupHeigth() {
+static uint ClientListPopupHeight()
+{
 	int i, num = 0;
 
 	// Find the amount of actions
@@ -1236,7 +1239,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	}
 
 	/* Calculate the height */
-	h = ClientListPopupHeigth();
+	h = ClientListPopupHeight();
 
 	// Allocate the popup
 	w = AllocateWindow(x, y, 150, h + 1, ClientListPopupWndProc, WC_TOOLBAR_MENU, _client_list_popup_widgets);
@@ -1486,7 +1489,7 @@ void ShowJoinStatusWindow()
 
 static void SendChat(const char *buf, DestType type, int dest)
 {
-	if (buf[0] == '\0') return;
+	if (StrEmpty(buf)) return;
 	if (!_network_server) {
 		SEND_COMMAND(PACKET_CLIENT_CHAT)((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf);
 	} else {

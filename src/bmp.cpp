@@ -9,7 +9,8 @@
 #include "macros.h"
 #include "helpers.hpp"
 
-void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file) {
+void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file)
+{
 	buffer->pos      = -1;
 	buffer->file     = file;
 	buffer->read     = 0;
