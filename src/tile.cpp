@@ -55,7 +55,7 @@ uint GetTileZ(TileIndex tile)
 
 uint GetTileMaxZ(TileIndex t)
 {
-	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) return 0;
+	if (TileX(t) == MapMaxX() || TileY(t) == MapMaxY()) return 0;
 
 	uint h = TileHeight(t);
 	h = max(h, TileHeight(t + TileDiffXY(1, 0)));
