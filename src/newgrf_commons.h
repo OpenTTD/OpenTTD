@@ -25,8 +25,7 @@ struct EntityIDMapping {
 	uint8  substitute_id;  ///< The (original) entity ID to use if this GRF is not available
 };
 
-class OverrideManagerBase
-{
+class OverrideManagerBase {
 protected:
 	uint16 *entity_overrides;
 
@@ -50,40 +49,38 @@ public:
 	uint16 GetSubstituteID(byte entity_id);
 	uint16 GetID(uint8 grf_local_id, uint32 grfid);
 
-	inline uint16 GetMaxMapping() { return max_new_entities; };
-	inline uint16 GetMaxOffset() { return max_offset; };
+	inline uint16 GetMaxMapping() { return max_new_entities; }
+	inline uint16 GetMaxOffset() { return max_offset; }
 };
 
 
 struct HouseSpec;
-class HouseOverrideManager : public OverrideManagerBase
-{
+class HouseOverrideManager : public OverrideManagerBase {
 public:
 	HouseOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
-			OverrideManagerBase(offset, maximum, invalid) {};
+			OverrideManagerBase(offset, maximum, invalid) {}
 	void SetEntitySpec(const HouseSpec *hs);
 };
 
 
 struct IndustrySpec;
-class IndustryOverrideManager : public OverrideManagerBase
-{
-	public:
-		IndustryOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
-				OverrideManagerBase(offset, maximum, invalid) {};
+class IndustryOverrideManager : public OverrideManagerBase {
+public:
+	IndustryOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {}
 
-		virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
-		void SetEntitySpec(const IndustrySpec *inds);
+	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
+	void SetEntitySpec(const IndustrySpec *inds);
 };
 
 
 struct IndustryTileSpec;
-class IndustryTileOverrideManager : public OverrideManagerBase
-{
-	public:
-		IndustryTileOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
-				OverrideManagerBase(offset, maximum, invalid) {};
-		void SetEntitySpec(const IndustryTileSpec *indts);
+class IndustryTileOverrideManager : public OverrideManagerBase {
+public:
+	IndustryTileOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {}
+
+	void SetEntitySpec(const IndustryTileSpec *indts);
 };
 
 extern HouseOverrideManager _house_mngr;
