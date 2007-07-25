@@ -1187,7 +1187,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	}
 
 	/* zero the distance (thus income) if it's the bank and very short transport. */
-	if (_opt.landscape == LT_NORMAL && cs->label == 'VALU' && dist < 10) return 0;
+	if (_opt.landscape == LT_TEMPERATE && cs->label == 'VALU' && dist < 10) return 0;
 
 
 	static const int MIN_TIME_FACTOR = 31;
