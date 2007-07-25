@@ -274,7 +274,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->u.house.town     = town;
 	res->u.house.house_id = house_id;
 
-	res->callback        = 0;
+	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
 	res->last_value      = 0;
@@ -282,7 +282,7 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->reseed          = 0;
 }
 
-uint16 GetHouseCallback(uint16 callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile)
+uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile)
 {
 	ResolverObject object;
 	const SpriteGroup *group;

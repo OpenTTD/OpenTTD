@@ -188,7 +188,7 @@ void InitializeSpriteGroupPool();
 
 
 struct ResolverObject {
-	uint16 callback;
+	CallbackID callback;
 	uint32 callback_param1;
 	uint32 callback_param2;
 

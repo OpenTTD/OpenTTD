@@ -15,6 +15,9 @@
  * Names are formatted as CBID_<CLASS>_<CALLBACK>
  */
 enum CallbackID {
+	/** Set when using the callback resolve system, but not to resolve a callback. */
+	CBID_NO_CALLBACK                     = 0x00,
+
 	/** Set when calling a randomizing trigger (almost undocumented). */
 	CBID_RANDOM_TRIGGER                  = 0x01,
 

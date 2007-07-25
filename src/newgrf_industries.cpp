@@ -275,7 +275,7 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->u.industry.ind  = indus;
 	res->u.industry.gfx  = INVALID_INDUSTRYTILE;
 
-	res->callback        = 0;
+	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
 	res->last_value      = 0;
@@ -283,7 +283,7 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->reseed          = 0;
 }
 
-uint16 GetIndustryCallback(uint16 callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile)
+uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile)
 {
 	ResolverObject object;
 	const SpriteGroup *group;

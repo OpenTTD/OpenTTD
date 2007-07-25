@@ -838,7 +838,7 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 
 	res->info_view = false;
 
-	res->callback        = 0;
+	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
 	res->last_value      = 0;
@@ -938,7 +938,7 @@ bool UsesWagonOverride(const Vehicle* v)
  * @param v        The vehicle to evaluate the callback for, or NULL if it doesnt exist yet
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
-uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v)
+uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
@@ -965,7 +965,7 @@ uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineI
  * @param parent   The vehicle to use for parent scope
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
-uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v, const Vehicle *parent)
+uint16 GetVehicleCallbackParent(CallbackID callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v, const Vehicle *parent)
 {
 	const SpriteGroup *group;
 	ResolverObject object;

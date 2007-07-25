@@ -142,7 +142,7 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->u.industry.ind  = indus;
 	res->u.industry.gfx  = gfx;
 
-	res->callback        = 0;
+	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
 	res->last_value      = 0;
@@ -188,7 +188,7 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 	}
 }
 
-uint16 GetIndustryTileCallback(uint16 callback, uint32 param1, uint32 param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile)
+uint16 GetIndustryTileCallback(CallbackID callback, uint32 param1, uint32 param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile)
 {
 	ResolverObject object;
 	const SpriteGroup *group;

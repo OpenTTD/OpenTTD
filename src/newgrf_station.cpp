@@ -555,7 +555,7 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->u.station.statspec = statspec;
 	res->u.station.tile     = tile;
 
-	res->callback        = 0;
+	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
 	res->last_value      = 0;
@@ -627,7 +627,7 @@ SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Sta
 }
 
 
-uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const StationSpec *statspec, const Station *st, TileIndex tile)
+uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, const Station *st, TileIndex tile)
 {
 	const SpriteGroup *group;
 	ResolverObject object;

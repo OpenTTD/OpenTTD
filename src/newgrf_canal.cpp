@@ -73,7 +73,7 @@ static void NewCanalResolver(ResolverObject *res, TileIndex tile)
 
 	res->u.canal.tile = tile;
 
-	res->callback        = 0;
+	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
 	res->last_value      = 0;

@@ -58,7 +58,7 @@ static void NewCargoResolver(ResolverObject *res, const CargoSpec *cs)
 
 	res->u.cargo.cs = cs;
 
-	res->callback        = 0;
+	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
 	res->last_value      = 0;
@@ -81,7 +81,7 @@ SpriteID GetCustomCargoSprite(const CargoSpec *cs)
 }
 
 
-uint16 GetCargoCallback(uint16 callback, uint32 param1, uint32 param2, const CargoSpec *cs)
+uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const CargoSpec *cs)
 {
 	ResolverObject object;
 	const SpriteGroup *group;

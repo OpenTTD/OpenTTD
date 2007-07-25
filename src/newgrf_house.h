@@ -6,6 +6,7 @@
 #define NEWGRF_HOUSE_H
 
 #include "town.h"
+#include "newgrf_callbacks.h"
 
 /**
  * Makes class IDs unique to each GRF file.
@@ -38,7 +39,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id);
 void AnimateNewHouseTile(TileIndex tile);
 void ChangeHouseAnimationFrame(TileIndex tile, uint16 callback_result);
 
-uint16 GetHouseCallback(uint16 callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile);
+uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile);
 
 bool CanDeleteHouse(TileIndex tile);
 

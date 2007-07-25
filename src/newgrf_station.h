@@ -6,6 +6,7 @@
 #define NEWGRF_STATION_H
 
 #include "engine.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_cargo.h"
 #include "helpers.hpp"
 
@@ -117,7 +118,7 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
  * for variational sprite groups. */
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile);
 SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Station *st, TileIndex tile);
-uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const StationSpec *statspec, const Station *st, TileIndex tile);
+uint16 GetStationCallback(CallbackID callback, uint32 param1, uint32 param2, const StationSpec *statspec, const Station *st, TileIndex tile);
 
 /* Check if a rail station tile is traversable. */
 bool IsStationTileBlocked(TileIndex tile);
