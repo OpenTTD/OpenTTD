@@ -23,11 +23,11 @@ Slope GetTileSlope(TileIndex tile, uint *h)
 
 	min = a = TileHeight(tile);
 	b = TileHeight(tile + TileDiffXY(1, 0));
-	if (min >= b) min = b;
+	if (min > b) min = b;
 	c = TileHeight(tile + TileDiffXY(0, 1));
-	if (min >= c) min = c;
+	if (min > c) min = c;
 	d = TileHeight(tile + TileDiffXY(1, 1));
-	if (min >= d) min = d;
+	if (min > d) min = d;
 
 	r = SLOPE_FLAT;
 	if ((a -= min) != 0) r += (--a << 4) + SLOPE_N;
@@ -42,24 +42,25 @@ Slope GetTileSlope(TileIndex tile, uint *h)
 
 uint GetTileZ(TileIndex tile)
 {
-	uint h;
-	GetTileSlope(tile, &h);
-	return h;
+	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) return 0;
+
+	uint h = TileHeight(tile);
+	h = min(h, TileHeight(tile + TileDiffXY(1, 0)));
+	h = min(h, TileHeight(tile + TileDiffXY(0, 1)));
+	h = min(h, TileHeight(tile + TileDiffXY(1, 1)));
+
+	return h * TILE_HEIGHT;
 }
 
 
 uint GetTileMaxZ(TileIndex t)
 {
-	uint max;
-	uint h;
+	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) return 0;
 
-	h = TileHeight(t);
-	max = h;
-	h = TileHeight(t + TileDiffXY(1, 0));
-	if (h > max) max = h;
-	h = TileHeight(t + TileDiffXY(0, 1));
-	if (h > max) max = h;
-	h = TileHeight(t + TileDiffXY(1, 1));
-	if (h > max) max = h;
-	return max * 8;
+	uint h = TileHeight(t);
+	h = max(h, TileHeight(t + TileDiffXY(1, 0)));
+	h = max(h, TileHeight(t + TileDiffXY(0, 1)));
+	h = max(h, TileHeight(t + TileDiffXY(1, 1)));
+
+	return h * TILE_HEIGHT;
 }
