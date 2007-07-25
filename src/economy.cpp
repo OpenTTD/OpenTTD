@@ -1168,7 +1168,6 @@ static void Load_SUBS()
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)
 {
 	const CargoSpec *cs = GetCargo(cargo_type);
-	byte f;
 
 	/* Use callback to calculate cargo profit, if available */
 	if (HASBIT(cs->callback_mask, CBM_CARGO_PROFIT_CALC)) {
@@ -1187,28 +1186,39 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 		}
 	}
 
-	/* zero the distance if it's the bank and very short transport. */
-	if (_opt.landscape == LT_TEMPERATE && cs->label == 'VALU' && dist < 10)
-		dist = 0;
+	/* zero the distance (thus income) if it's the bank and very short transport. */
+	if (_opt.landscape == LT_NORMAL && cs->label == 'VALU' && dist < 10) return 0;
 
-	f = 255;
-	if (transit_days > cs->transit_days[0]) {
-		transit_days -= cs->transit_days[0];
-		f -= transit_days;
 
-		if (transit_days > cs->transit_days[1]) {
-			transit_days -= cs->transit_days[1];
+	static const int MIN_TIME_FACTOR = 31;
+	static const int MAX_TIME_FACTOR = 255;
 
-			if (f < transit_days) {
-				f = 0;
-			} else {
-				f -= transit_days;
-			}
-		}
+	const int days1 = cs->transit_days[0];
+	const int days2 = cs->transit_days[1];
+	const int days_over_days1 = transit_days - days1;
+
+	/*
+	 * The time factor is calculated based on the time it took
+	 * (transit_days) compared two cargo-depending values. The
+	 * range is divided into three parts:
+	 *
+	 *  - constant for fast transits
+	 *  - linear decreasing with time with a slope of -1 for medium transports
+	 *  - linear decreasing with time with a slope of -2 for slow transports
+	 *
+	 */
+	int time_factor;
+	if (days_over_days1 <= 0) {
+		time_factor = MAX_TIME_FACTOR;
+	} else if (days_over_days1 <= days2) {
+		time_factor = MAX_TIME_FACTOR - days_over_days1;
+	} else {
+		time_factor = MAX_TIME_FACTOR - 2 * days_over_days1 + days2;
 	}
-	if (f < 31) f = 31;
 
-	return BIGMULSS(dist * f * num_pieces, _cargo_payment_rates[cargo_type], 21);
+	if (time_factor < MIN_TIME_FACTOR) time_factor = MIN_TIME_FACTOR;
+
+	return BIGMULSS(dist * time_factor * num_pieces, _cargo_payment_rates[cargo_type], 21);
 }
 
 static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pieces)
