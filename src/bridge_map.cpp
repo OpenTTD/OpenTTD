@@ -44,11 +44,11 @@ uint GetBridgeHeight(TileIndex t)
 {
 	uint h;
 	Slope tileh = GetTileSlope(t, &h);
-	uint f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(t)));
+	Foundation f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(t)));
 
 	/* one height level extra if the ramp is on a flat foundation */
 	return
 		h + TILE_HEIGHT +
-		(IS_INT_INSIDE(f, 1, 15) ? TILE_HEIGHT : 0) +
+		(IsLeveledFoundation(f) ? TILE_HEIGHT : 0) +
 		(IsSteepSlope(tileh) ? TILE_HEIGHT : 0);
 }
