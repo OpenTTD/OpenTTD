@@ -112,8 +112,6 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 static void DrawTile_Unmovable(TileInfo *ti)
 {
-	SpriteID image;
-	SpriteID pal;
 
 	switch (GetUnmovableType(ti->tile)) {
 		case UNMOVABLE_TRANSMITTER:
@@ -125,17 +123,10 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			dtus = &_draw_tile_unmovable_data[GetUnmovableType(ti->tile)];
 
-			image = dtus->image;
-			if (HASBIT(_transparent_opt, TO_STRUCTURES)) {
-				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-				pal = PALETTE_TO_TRANSPARENT;
-			} else {
-				pal = PAL_NONE;
-			}
-
 			AddSortableSpriteToDraw(
-				image, pal, ti->x | dtus->subcoord_x, ti->y | dtus->subcoord_y,
-				dtus->width, dtus->height, dtus->z_size, ti->z
+				dtus->image, PAL_NONE, ti->x | dtus->subcoord_x, ti->y | dtus->subcoord_y,
+				dtus->width, dtus->height, dtus->z_size, ti->z,
+				HASBIT(_transparent_opt, TO_STRUCTURES)
 			);
 			break;
 		}
@@ -143,23 +134,14 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		case UNMOVABLE_STATUE:
 			DrawGroundSprite(SPR_CONCRETE_GROUND, PAL_NONE);
 
-			image = SPR_STATUE_COMPANY;
-			if (HASBIT(_transparent_opt, TO_STRUCTURES)) {
-				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-				pal = PALETTE_TO_TRANSPARENT;
-			} else {
-				pal = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
-			}
-			AddSortableSpriteToDraw(image, pal, ti->x, ti->y, 16, 16, 25, ti->z);
+			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, HASBIT(_transparent_opt, TO_STRUCTURES));
 			break;
 
 		case UNMOVABLE_OWNED_LAND:
 			DrawClearLandTile(ti, 0);
 
-			image = SPR_BOUGHT_LAND;
-			pal = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 			AddSortableSpriteToDraw(
-				image, pal,
+				SPR_BOUGHT_LAND, PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)),
 				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 10, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
 			);
 			DrawBridgeMiddle(ti);
@@ -179,18 +161,12 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			DrawGroundSprite(t->ground_sprite, palette);
 
 			foreach_draw_tile_seq(dtss, t->seq) {
-				image = dtss->image;
-				if (HASBIT(_transparent_opt, TO_STRUCTURES)) {
-					SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-					pal = PALETTE_TO_TRANSPARENT;
-				} else {
-					pal = palette;
-				}
 				AddSortableSpriteToDraw(
-					image, pal,
+					dtss->image, palette,
 					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 					dtss->size_x, dtss->size_y,
-					dtss->size_z, ti->z + dtss->delta_z
+					dtss->size_z, ti->z + dtss->delta_z,
+					HASBIT(_transparent_opt, TO_STRUCTURES)
 				);
 			}
 			break;

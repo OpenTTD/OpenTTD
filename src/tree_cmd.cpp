@@ -374,13 +374,8 @@ static void DrawTile_Trees(TileInfo *ti)
 		i = GetTreeCount(ti->tile) + 1;
 		do {
 			SpriteID image = s[0].sprite + (--i == 0 ? GetTreeGrowth(ti->tile) : 3);
-			SpriteID pal;
-			if (HASBIT(_transparent_opt, TO_TREES)) {
-				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-				pal = PALETTE_TO_TRANSPARENT;
-			} else {
-				pal = s[0].pal;
-			}
+			SpriteID pal = s[0].pal;
+
 			te[i].image = image;
 			te[i].pal   = pal;
 			te[i].x = d->x;
@@ -404,7 +399,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 			if (tep == NULL) break;
 
-			AddSortableSpriteToDraw(tep->image, tep->pal, ti->x + tep->x, ti->y + tep->y, 5, 5, 0x10, z);
+			AddSortableSpriteToDraw(tep->image, tep->pal, ti->x + tep->x, ti->y + tep->y, 5, 5, 0x10, z, HASBIT(_transparent_opt, TO_TREES));
 			tep->image = 0;
 		}
 	}

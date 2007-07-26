@@ -918,15 +918,8 @@ void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 		front = SPR_TRAMWAY_BASE + _road_frontwire_sprites_1[tram];
 	}
 
-	SpriteID pal = PAL_NONE;
-	if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
-		SETBIT(front, PALETTE_MODIFIER_TRANSPARENT);
-		SETBIT(back,  PALETTE_MODIFIER_TRANSPARENT);
-		pal = PALETTE_TO_TRANSPARENT;
-	}
-
-	AddSortableSpriteToDraw(back,  pal, ti->x, ti->y, 16, 16, 0x1F, ti->z);
-	AddSortableSpriteToDraw(front, pal, ti->x, ti->y, 16, 16, 0x1F, ti->z);
+	AddSortableSpriteToDraw(back,  PAL_NONE, ti->x, ti->y, 16, 16, 0x1F, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
+	AddSortableSpriteToDraw(front, PAL_NONE, ti->x, ti->y, 16, 16, 0x1F, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
 }
 
 /**
@@ -1084,10 +1077,7 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID image = dtss->image;
 				SpriteID pal;
 
-				if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
-					SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-					pal = PALETTE_TO_TRANSPARENT;
-				} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+				if (!HASBIT(_transparent_opt, TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 					pal = palette;
 				} else {
 					pal = PAL_NONE;
@@ -1097,7 +1087,8 @@ static void DrawTile_Road(TileInfo *ti)
 					image, pal,
 					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 					dtss->size_x, dtss->size_y,
-					dtss->size_z, ti->z
+					dtss->size_z, ti->z,
+					HASBIT(_transparent_opt, TO_BUILDINGS)
 				);
 			}
 			break;

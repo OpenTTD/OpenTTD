@@ -2131,10 +2131,7 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 
 		SpriteID pal;
-		if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
-			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-			pal = PALETTE_TO_TRANSPARENT;
-		} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+		if (!HASBIT(_transparent_opt, TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 			pal = palette;
 		} else {
 			pal = dtss->pal;
@@ -2145,7 +2142,8 @@ static void DrawTile_Station(TileInfo *ti)
 				image, pal,
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
-				dtss->size_z, ti->z + dtss->delta_z
+				dtss->size_z, ti->z + dtss->delta_z,
+				HASBIT(_transparent_opt, TO_BUILDINGS)
 			);
 		} else {
 			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y);

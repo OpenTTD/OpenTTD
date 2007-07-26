@@ -166,10 +166,7 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 		image = dtss->image + stage;
 		pal   = dtss->pal;
 
-		if (!HASBIT(image, SPRITE_MODIFIER_OPAQUE) && HASBIT(_transparent_opt, TO_INDUSTRIES)) {
-			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-			pal = PALETTE_TO_TRANSPARENT;
-		} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+		if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 			pal = GENERAL_SPRITE_COLOR(rnd_color);
 		} else {
 			pal = PAL_NONE;
@@ -180,7 +177,8 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 				image, pal,
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
-				dtss->size_z, ti->z + dtss->delta_z
+				dtss->size_z, ti->z + dtss->delta_z,
+				!HASBIT(image, SPRITE_MODIFIER_OPAQUE) && HASBIT(_transparent_opt, TO_INDUSTRIES)
 			);
 		} else {
 			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y);

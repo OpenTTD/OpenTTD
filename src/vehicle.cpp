@@ -852,17 +852,14 @@ static void DoDrawVehicle(const Vehicle *v)
 	SpriteID image = v->cur_image;
 	SpriteID pal;
 
-	if (v->vehstatus & VS_SHADOW) {
-		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-		pal = PALETTE_TO_TRANSPARENT;
-	} else if (v->vehstatus & VS_DEFPAL) {
+	if (v->vehstatus & VS_DEFPAL) {
 		pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 	} else {
 		pal = PAL_NONE;
 	}
 
 	AddSortableSpriteToDraw(image, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
-		v->sprite_width, v->sprite_height, v->z_height, v->z_pos);
+		v->sprite_width, v->sprite_height, v->z_height, v->z_pos, v->vehstatus & VS_SHADOW);
 }
 
 void ViewportAddVehicles(DrawPixelInfo *dpi)

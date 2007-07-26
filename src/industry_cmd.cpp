@@ -299,22 +299,15 @@ static void DrawTile_Industry(TileInfo *ti)
 	/* Add industry on top of the ground? */
 	image = dits->building.sprite;
 	if (image != 0) {
-		if (HASBIT(_transparent_opt, TO_INDUSTRIES)) {
-			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-			pal = PALETTE_TO_TRANSPARENT;
-		} else if (HASBIT(image, PALETTE_MODIFIER_COLOR) && dits->building.pal == PAL_NONE) {
-			pal = GENERAL_SPRITE_COLOR(ind->random_color);
-		} else {
-			pal = dits->building.pal;
-		}
-
-		AddSortableSpriteToDraw(image, pal,
+		AddSortableSpriteToDraw(image,
+			(HASBIT(image, PALETTE_MODIFIER_COLOR) && dits->building.pal == PAL_NONE) ? GENERAL_SPRITE_COLOR(ind->random_color) : dits->building.pal,
 			ti->x + dits->subtile_x,
 			ti->y + dits->subtile_y,
 			dits->width  + 1,
 			dits->height + 1,
 			dits->dz,
-			z);
+			z,
+			HASBIT(_transparent_opt, TO_INDUSTRIES));
 
 		if (HASBIT(_transparent_opt, TO_INDUSTRIES)) return;
 	}

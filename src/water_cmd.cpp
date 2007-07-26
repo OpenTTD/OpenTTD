@@ -441,23 +441,11 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	DrawGroundSprite(image, PAL_NONE);
 
 	for (; wdts->delta_x != 0x80; wdts++) {
-		SpriteID image = wdts->image;
-		SpriteID pal;
-
-		if (image < 24) image += locks_base;
-		image += base;
-
-		if (HASBIT(_transparent_opt, TO_BUILDINGS)) {
-			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-			pal = PALETTE_TO_TRANSPARENT;
-		} else {
-			pal = palette;
-		}
-
-		AddSortableSpriteToDraw(image, pal,
+		AddSortableSpriteToDraw(wdts->image + base + ((wdts->image < 24) ? locks_base : 0), palette,
 			ti->x + wdts->delta_x, ti->y + wdts->delta_y,
 			wdts->width, wdts->height,
-			wdts->unk, ti->z + wdts->delta_z);
+			wdts->unk, ti->z + wdts->delta_z,
+			HASBIT(_transparent_opt, TO_BUILDINGS));
 	}
 }
 

@@ -314,10 +314,7 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 		image = dtss->image + stage;
 		pal   = dtss->pal;
 
-		if (!HASBIT(image, SPRITE_MODIFIER_OPAQUE) && HASBIT(_transparent_opt, TO_HOUSES)) {
-			SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
-			pal = PALETTE_TO_TRANSPARENT;
-		} else if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+		if ((HASBIT(image, SPRITE_MODIFIER_OPAQUE) || !HASBIT(_transparent_opt, TO_HOUSES)) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 			if (pal == 0) {
 				const HouseSpec *hs = GetHouseSpecs(house_id);
 				if (HASBIT(hs->callback_mask, CBM_BUILDING_COLOUR)) {
@@ -339,7 +336,8 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 				image, pal,
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
-				dtss->size_z, ti->z + dtss->delta_z
+				dtss->size_z, ti->z + dtss->delta_z,
+				HASBIT(_transparent_opt, TO_HOUSES)
 			);
 		} else {
 			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y);

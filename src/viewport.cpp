@@ -478,8 +478,18 @@ static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z
 	AddChildSpriteScreen(image, pal, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top);
 }
 
-
-void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, byte dz, byte z)
+/** Draw a (transparent) sprite at given coordinates
+ * @param image the image to combine and draw,
+ * @param pal the provided palette,
+ * @param x position x of the sprite,
+ * @param y position y of the sprite,
+ * @param w width of the sprite,
+ * @param h height of the sprite,
+ * @param dz delta z, difference of elevation between sprite and parent sprite,
+ * @param z elevation of the sprite,
+ * @param transparent if true, switch the palette between the provided palette and the transparent palette
+ */
+void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, byte dz, byte z, bool transparent)
 {
 	ViewportDrawer *vd = _cur_vd;
 	ParentSpriteToDraw *ps;
@@ -487,6 +497,12 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	Point pt;
 
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
+
+	/* make the sprites transparent with the right palette */
+	if (transparent) {
+		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+		pal = PALETTE_TO_TRANSPARENT;
+	}
 
 	if (vd->combine_sprites == 2) {
 		AddCombinedSprite(image, pal, x, y, z);
