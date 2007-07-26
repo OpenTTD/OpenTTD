@@ -202,13 +202,13 @@ struct VehicleRoad {
 };
 
 struct VehicleSpecial {
-	uint16 unk0;
-	byte unk2;
+	uint16 animation_state;
+	byte animation_substate;
 };
 
 struct VehicleDisaster {
 	uint16 image_override;
-	uint16 unk2;
+	VehicleID big_ufo_destroyer_target;
 };
 
 struct VehicleShip {

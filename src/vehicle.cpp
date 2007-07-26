@@ -1113,8 +1113,8 @@ static void BreakdownSmokeTick(Vehicle *v)
 		EndVehicleMove(v);
 	}
 
-	v->u.special.unk0--;
-	if (v->u.special.unk0 == 0) {
+	v->u.special.animation_state--;
+	if (v->u.special.animation_state == 0) {
 		BeginVehicleMove(v);
 		EndVehicleMove(v);
 		DeleteVehicle(v);
@@ -1147,8 +1147,8 @@ static void BulldozerInit(Vehicle *v)
 {
 	v->cur_image = SPR_BULLDOZER_NE;
 	v->progress = 0;
-	v->u.special.unk0 = 0;
-	v->u.special.unk2 = 0;
+	v->u.special.animation_state = 0;
+	v->u.special.animation_substate = 0;
 }
 
 struct BulldozerMovement {
@@ -1194,7 +1194,7 @@ static void BulldozerTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 7) == 0) {
-		const BulldozerMovement* b = &_bulldozer_movement[v->u.special.unk0];
+		const BulldozerMovement* b = &_bulldozer_movement[v->u.special.animation_state];
 
 		BeginVehicleMove(v);
 
@@ -1203,11 +1203,11 @@ static void BulldozerTick(Vehicle *v)
 		v->x_pos += _inc_by_dir[b->direction].x;
 		v->y_pos += _inc_by_dir[b->direction].y;
 
-		v->u.special.unk2++;
-		if (v->u.special.unk2 >= b->duration) {
-			v->u.special.unk2 = 0;
-			v->u.special.unk0++;
-			if (v->u.special.unk0 == lengthof(_bulldozer_movement)) {
+		v->u.special.animation_substate++;
+		if (v->u.special.animation_substate >= b->duration) {
+			v->u.special.animation_substate = 0;
+			v->u.special.animation_state++;
+			if (v->u.special.animation_state == lengthof(_bulldozer_movement)) {
 				EndVehicleMove(v);
 				DeleteVehicle(v);
 				return;
@@ -1399,7 +1399,7 @@ static void BubbleTick(Vehicle *v)
 			EndVehicleMove(v);
 			return;
 		}
-		if (v->u.special.unk2 != 0) {
+		if (v->u.special.animation_substate != 0) {
 			v->spritenum = GB(InteractiveRandom(), 0, 2) + 1;
 		} else {
 			v->spritenum = 6;
@@ -3042,8 +3042,8 @@ static const SaveLoad _special_desc[] = {
 	    SLE_VAR(Vehicle, progress,      SLE_UINT8),
 	    SLE_VAR(Vehicle, vehstatus,     SLE_UINT8),
 
-	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleSpecial, unk0), SLE_UINT16),
-	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleSpecial, unk2), SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleSpecial, animation_state),    SLE_UINT16),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleSpecial, animation_substate), SLE_UINT8),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
@@ -3080,8 +3080,8 @@ static const SaveLoad _disaster_desc[] = {
 	SLE_CONDVAR(Vehicle, age,           SLE_INT32,                  31, SL_MAX_VERSION),
 	    SLE_VAR(Vehicle, tick_counter,  SLE_UINT8),
 
-	   SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleDisaster, image_override), SLE_UINT16),
-	   SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleDisaster, unk2),           SLE_UINT16),
+	   SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleDisaster, image_override),           SLE_UINT16),
+	   SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleDisaster, big_ufo_destroyer_target), SLE_UINT16),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16,                                                 2, SL_MAX_VERSION),

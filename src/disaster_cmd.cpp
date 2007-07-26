@@ -607,7 +607,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		}
 
 		InitializeDisasterVehicle(u, -6 * TILE_SIZE, v->y_pos, 135, DIR_SW, ST_Big_Ufo_Destroyer);
-		u->u.disaster.unk2 = v->index;
+		u->u.disaster.big_ufo_destroyer_target = v->index;
 
 		w = ForceAllocateSpecialVehicle();
 		if (w == NULL) return;
@@ -667,7 +667,7 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 	}
 
 	if (v->current_order.dest == 0) {
-		u = GetVehicle(v->u.disaster.unk2);
+		u = GetVehicle(v->u.disaster.big_ufo_destroyer_target);
 		if (delta(v->x_pos, u->x_pos) > TILE_SIZE) return;
 		v->current_order.dest = 1;
 

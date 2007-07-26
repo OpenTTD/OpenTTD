@@ -1053,8 +1053,8 @@ static const OldChunks vehicle_air_chunk[] = {
 };
 
 static const OldChunks vehicle_special_chunk[] = {
-	OCL_SVAR( OC_UINT16, VehicleSpecial, unk0 ),
-	OCL_SVAR(  OC_UINT8, VehicleSpecial, unk2 ),
+	OCL_SVAR( OC_UINT16, VehicleSpecial, animation_state ),
+	OCL_SVAR(  OC_UINT8, VehicleSpecial, animation_substate ),
 
 	OCL_NULL( 7 ), // Junk
 
@@ -1063,7 +1063,7 @@ static const OldChunks vehicle_special_chunk[] = {
 
 static const OldChunks vehicle_disaster_chunk[] = {
 	OCL_SVAR( OC_UINT16, VehicleDisaster, image_override ),
-	OCL_SVAR( OC_UINT16, VehicleDisaster, unk2 ),
+	OCL_SVAR( OC_UINT16, VehicleDisaster, big_ufo_destroyer_target ),
 
 	OCL_NULL( 6 ), ///< Junk
 
