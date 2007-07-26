@@ -298,10 +298,11 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 	RoadBits road_bits;
 
 	if (IsSteepSlope(tileh)) {
-		if (existing == 0) {
-			/* force full pieces. */
-			*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
-			*pieces |= (RoadBits)((*pieces & 0x3) << 2);
+		/* force full pieces. */
+		*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
+		*pieces |= (RoadBits)((*pieces & 0x3) << 2);
+
+		if (existing == 0 || existing == *pieces) {
 			if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
 		}
 		return CMD_ERROR;
@@ -320,11 +321,12 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 		return CommandCost(existing != 0 ? 0 : _price.terraform);
 	}
 
+	*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
+	*pieces |= (RoadBits)((*pieces & 0x3) << 2);
+
 	/* partly leveled up tile, only if there's no road on that tile */
-	if (existing == 0 && (tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)) {
+	if ((existing == 0 || existing == *pieces) && (tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)) {
 		/* force full pieces. */
-		*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
-		*pieces |= (RoadBits)((*pieces & 0x3) << 2);
 		if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
 	}
 	return CMD_ERROR;
