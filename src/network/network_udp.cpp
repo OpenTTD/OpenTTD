@@ -490,10 +490,12 @@ void NetworkUDPQueryServer(const char* host, unsigned short port, bool manually)
 
 	// Clear item in gamelist
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(out_addr.sin_addr)), ntohs(out_addr.sin_port));
-	memset(&item->info, 0, sizeof(item->info));
-	ttd_strlcpy(item->info.server_name, host, lengthof(item->info.server_name));
-	ttd_strlcpy(item->info.hostname, host, lengthof(item->info.hostname));
-	item->online   = false;
+	if (StrEmpty(item->info.server_name)) {
+		memset(&item->info, 0, sizeof(item->info));
+		ttd_strlcpy(item->info.server_name, host, lengthof(item->info.server_name));
+		ttd_strlcpy(item->info.hostname, host, lengthof(item->info.hostname));
+		item->online = false;
+	}
 	item->manually = manually;
 
 	// Init the packet

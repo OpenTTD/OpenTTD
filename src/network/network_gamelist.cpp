@@ -18,9 +18,6 @@
 
 NetworkGameList *_network_game_list = NULL;
 
-/** Should we stop/contiue requerying of offline servers? */
-static bool _stop_requerying = false;
-
 /** Add a new item to the linked gamelist. If the IP and Port match
  * return the existing item instead of adding it again
  * @param ip the IP-address (inet_addr) of the to-be added item
@@ -50,7 +47,6 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 	DEBUG(net, 4, "[gamelist] added server to list");
 
 	UpdateNetworkGameWindow(false);
-	_stop_requerying = false;
 
 	return item;
 }
@@ -84,8 +80,9 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 }
 
 enum {
-	MAX_GAME_LIST_REQUERY_COUNT =  5,
-	REQUERY_EVERY_X_GAMELOOPS   = 60,
+	MAX_GAME_LIST_REQUERY_COUNT  =  5, ///< How often do we requery in number of times per server?
+	REQUERY_EVERY_X_GAMELOOPS    = 60, ///< How often do we requery in time?
+	REFRESH_GAMEINFO_X_REQUERIES = 50, ///< Refresh the game info itself after REFRESH_GAMEINFO_X_REQUERIES * REQUERY_EVERY_X_GAMELOOPS game loops
 };
 
 /** Requeries the (game) servers we have not gotten a reply from */
@@ -93,27 +90,23 @@ void NetworkGameListRequery()
 {
 	static uint8 requery_cnt = 0;
 
-	if (_stop_requerying || ++requery_cnt < REQUERY_EVERY_X_GAMELOOPS) return;
-
+	if (++requery_cnt < REQUERY_EVERY_X_GAMELOOPS) return;
 	requery_cnt = 0;
-	_stop_requerying = true;
 
 	struct in_addr ip;
 	NetworkGameList *item;
 
 	for (item = _network_game_list; item != NULL; item = item->next) {
-		if (item->online || item->retries >= MAX_GAME_LIST_REQUERY_COUNT) continue;
+		item->retries++;
+		if (item->retries < REFRESH_GAMEINFO_X_REQUERIES && (item->online || item->retries >= MAX_GAME_LIST_REQUERY_COUNT)) continue;
 
 		ip.s_addr = item->ip;
 
 		/* item gets mostly zeroed by NetworkUDPQueryServer */
 		uint8 retries = item->retries;
 		NetworkUDPQueryServer(inet_ntoa(ip), item->port);
-		item->retries = retries + 1;
-
-		_stop_requerying = false;
+		item->retries = (retries >= REFRESH_GAMEINFO_X_REQUERIES) ? 0 : retries;
 	}
-
 }
 
 #endif /* ENABLE_NETWORK */
