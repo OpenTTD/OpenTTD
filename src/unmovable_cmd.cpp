@@ -118,7 +118,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		case UNMOVABLE_LIGHTHOUSE: {
 			const DrawTileUnmovableStruct* dtus;
 
-			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 			DrawClearLandTile(ti, 2);
 
 			dtus = &_draw_tile_unmovable_data[GetUnmovableType(ti->tile)];
@@ -153,7 +153,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			SpriteID palette;
 
 			assert(IsCompanyHQ(ti->tile));
-			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
@@ -186,9 +186,9 @@ static uint GetSlopeZ_Unmovable(TileIndex tile, uint x, uint y)
 	}
 }
 
-static Slope GetSlopeTileh_Unmovable(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh)
 {
-	return IsOwnedLand(tile) ? tileh : SLOPE_FLAT;
+	return IsOwnedLand(tile) ? FOUNDATION_NONE : FlatteningFoundation(tileh);
 }
 
 static CommandCost ClearTile_Unmovable(TileIndex tile, byte flags)
@@ -411,5 +411,5 @@ extern const TileTypeProcs _tile_type_unmovable_procs = {
 	ChangeTileOwner_Unmovable,      /* change_tile_owner_clear */
 	NULL,                           /* get_produced_cargo_proc */
 	NULL,                           /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Unmovable,        /* get_slope_tileh_proc */
+	GetFoundation_Unmovable,        /* get_foundation_proc */
 };

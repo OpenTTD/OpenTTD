@@ -154,7 +154,7 @@ static void DrawTile_Town(TileInfo *ti)
 	/* Retrieve pointer to the draw town tile struct */
 	dcts = &_town_draw_tile_data[house_id << 4 | OriginalTileRandomiser(ti->x, ti->y) << 2 | GetHouseBuildingStage(ti->tile)];
 
-	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 	image = dcts->ground.sprite;
 	pal   = dcts->ground.pal;
@@ -188,9 +188,9 @@ static uint GetSlopeZ_Town(TileIndex tile, uint x, uint y)
 	return GetTileMaxZ(tile);
 }
 
-static Slope GetSlopeTileh_Town(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 {
-	return SLOPE_FLAT;
+	return FlatteningFoundation(tileh);
 }
 
 /**
@@ -2350,7 +2350,7 @@ extern const TileTypeProcs _tile_type_town_procs = {
 	ChangeTileOwner_Town,    /* change_tile_owner_clear */
 	NULL,                    /* get_produced_cargo_proc */
 	NULL,                    /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Town,      /* get_slope_tileh_proc */
+	GetFoundation_Town,      /* get_foundation_proc */
 };
 
 

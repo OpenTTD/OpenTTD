@@ -362,9 +362,9 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 }
 
 
-extern uint GetRailFoundation(Slope tileh, TrackBits bits); // XXX function declaration in .c
-extern uint GetRoadFoundation(Slope tileh, RoadBits bits); // XXX function declaration in .c
-extern uint GetBridgeFoundation(Slope tileh, Axis); // XXX function declaration in .c
+extern Foundation GetRailFoundation(Slope tileh, TrackBits bits); // XXX function declaration in .c
+extern Foundation GetRoadFoundation(Slope tileh, RoadBits bits); // XXX function declaration in .c
+extern Foundation GetBridgeFoundation(Slope tileh, Axis); // XXX function declaration in .c
 enum BridgeFoundation {
 	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
 };
@@ -373,7 +373,7 @@ enum BridgeFoundation {
 static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
 {
 	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
-	int r, res = 0;
+	int res = 0;
 	Slope tileh = GetTileSlope(current->tile, NULL);
 	Slope parent_tileh = GetTileSlope(parent->path.node.tile, NULL);
 
@@ -409,17 +409,17 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		// Skip if the tile was from a bridge or tunnel
 		if (parent->path.node.user_data[0] == 0 && current->user_data[0] == 0) {
 			if (PathFinderInfo->rail_or_road) {
-				r = GetRailFoundation(parent_tileh, (TrackBits)(1 << AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile)));
+				Foundation f = GetRailFoundation(parent_tileh, (TrackBits)(1 << AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile)));
 				// Maybe is BRIDGE_NO_FOUNDATION a bit strange here, but it contains just the right information..
-				if (IS_INT_INSIDE(r, 15, 15 + 8) || (r == 0 && HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh))) {
+				if (IsInclinedFoundation(f) || (!IsFoundation(f) && HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh))) {
 					res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 				} else {
 					res += AI_PATHFINDER_FOUNDATION_PENALTY;
 				}
 			} else {
 				if (!IsRoad(parent->path.node.tile) || !IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE)) {
-					r = GetRoadFoundation(parent_tileh, (RoadBits)AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
-					if (IS_INT_INSIDE(r, 15, 15 + 8) || (r == 0 && HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh))) {
+					Foundation f = GetRoadFoundation(parent_tileh, (RoadBits)AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
+					if (IsInclinedFoundation(f) || (!IsFoundation(f) == 0 && HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh))) {
 						res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 					} else {
 						res += AI_PATHFINDER_FOUNDATION_PENALTY;
@@ -431,6 +431,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 
 	// Are we part of a tunnel?
 	if ((AI_PATHFINDER_FLAG_TUNNEL & current->user_data[0]) != 0) {
+		int r;
 		// Tunnels are very expensive when build on long routes..
 		// Ironicly, we are using BridgeCode here ;)
 		r = AI_PATHFINDER_TUNNEL_PENALTY * GetBridgeLength(current->tile, parent->path.node.tile);
@@ -444,13 +445,13 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		// Check if we are going up or down, first for the starting point
 		// In user_data[0] is at the 8th bit the direction
 		if (!HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh)) {
-			if (GetBridgeFoundation(parent_tileh, (Axis)((current->user_data[0] >> 8) & 1)) < 15) {
+			if (IsLeveledFoundation(GetBridgeFoundation(parent_tileh, (Axis)((current->user_data[0] >> 8) & 1)))) {
 				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 			}
 		}
 		// Second for the end point
 		if (!HASBIT(BRIDGE_NO_FOUNDATION, tileh)) {
-			if (GetBridgeFoundation(tileh, (Axis)((current->user_data[0] >> 8) & 1)) < 15) {
+			if (IsLeveledFoundation(GetBridgeFoundation(tileh, (Axis)((current->user_data[0] >> 8) & 1)))) {
 				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 			}
 		}

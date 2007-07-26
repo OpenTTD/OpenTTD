@@ -2071,7 +2071,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	// don't show foundation for docks
 	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile))
-		DrawFoundation(ti, ti->tileh);
+		DrawFoundation(ti, FOUNDATION_LEVELED);
 
 	if (IsCustomStationSpecIndex(ti->tile)) {
 		// look for customization
@@ -2176,9 +2176,9 @@ static uint GetSlopeZ_Station(TileIndex tile, uint x, uint y)
 	return GetTileMaxZ(tile);
 }
 
-static Slope GetSlopeTileh_Station(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Station(TileIndex tile, Slope tileh)
 {
-	return SLOPE_FLAT;
+	return FlatteningFoundation(tileh);
 }
 
 static void GetAcceptedCargo_Station(TileIndex tile, AcceptedCargo ac)
@@ -2921,7 +2921,7 @@ extern const TileTypeProcs _tile_type_station_procs = {
 	ChangeTileOwner_Station,    /* change_tile_owner_clear */
 	NULL,                       /* get_produced_cargo_proc */
 	VehicleEnter_Station,       /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Station,      /* get_slope_tileh_proc */
+	GetFoundation_Station,      /* get_foundation_proc */
 };
 
 static const SaveLoad _roadstop_desc[] = {

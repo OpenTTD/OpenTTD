@@ -863,26 +863,11 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 	}
 }
 
-uint GetBridgeFoundation(Slope tileh, Axis axis)
+Foundation GetBridgeFoundation(Slope tileh, Axis axis)
 {
-	uint i;
-
-	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) return tileh;
-
-	/* inclined sloped building */
-	switch (tileh) {
-		case SLOPE_W:
-		case SLOPE_STEEP_W: i = 0; break;
-		case SLOPE_S:
-		case SLOPE_STEEP_S: i = 2; break;
-		case SLOPE_E:
-		case SLOPE_STEEP_E: i = 4; break;
-		case SLOPE_N:
-		case SLOPE_STEEP_N: i = 6; break;
-		default: return 0;
-	}
-	if (axis != AXIS_X) ++i;
-	return i + 15;
+	if (HASBIT(BRIDGE_NO_FOUNDATION, tileh)) return FOUNDATION_NONE;
+	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) return FlatteningFoundation(tileh);
+	return InclinedFoundation(axis);
 }
 
 /**
@@ -968,10 +953,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* as the lower 3 bits are used for other stuff, make sure they are clear */
 		assert( (base_offset & 0x07) == 0x00);
 
-		if (!HASBIT(BRIDGE_NO_FOUNDATION, ti->tileh)) {
-			int f = GetBridgeFoundation(ti->tileh, DiagDirToAxis(GetBridgeRampDirection(ti->tile)));
-			if (f != 0) DrawFoundation(ti, f);
-		}
+		DrawFoundation(ti, GetBridgeFoundation(ti->tileh, DiagDirToAxis(GetBridgeRampDirection(ti->tile))));
 
 		/* HACK Wizardry to convert the bridge ramp direction into a sprite offset */
 		base_offset += (6 - GetBridgeRampDirection(ti->tile)) % 4;
@@ -1156,14 +1138,14 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 		DiagDirection dir = GetBridgeRampDirection(tile);
 		uint pos = (DiagDirToAxis(dir) == AXIS_X ? y : x);
 
+		z += ApplyFoundationToSlope(GetBridgeFoundation(tileh, DiagDirToAxis(dir)), &tileh);
+
 		/* On the bridge ramp? */
 		if (5 <= pos && pos <= 10) {
 			uint delta;
 
-			if (IsSteepSlope(tileh)) return z + TILE_HEIGHT * 2;
 			if (HASBIT(BRIDGE_HORZ_RAMP, tileh)) return z + TILE_HEIGHT;
 
-			if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) z += TILE_HEIGHT;
 			switch (dir) {
 				default: NOT_REACHED();
 				case DIAGDIR_NE: delta = (TILE_SIZE - 1 - x) / 2; break;
@@ -1172,38 +1154,15 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 				case DIAGDIR_NW: delta = (TILE_SIZE - 1 - y) / 2; break;
 			}
 			return z + 1 + delta;
-		} else {
-			uint f = GetBridgeFoundation(tileh, DiagDirToAxis(dir));
-
-			if (f != 0) {
-				if (IsSteepSlope(tileh)) {
-					z += TILE_HEIGHT;
-				} else if (f < 15) {
-					return z + TILE_HEIGHT;
-				}
-				tileh = (Slope)_inclined_tileh[f - 15];
-			}
 		}
 	}
 
 	return z + GetPartialZ(x, y, tileh);
 }
 
-static Slope GetSlopeTileh_TunnelBridge(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_TunnelBridge(TileIndex tile, Slope tileh)
 {
-	if (IsTunnel(tile)) {
-		return tileh;
-	} else {
-		if (HASBIT(BRIDGE_NO_FOUNDATION, tileh)) {
-			return tileh;
-		} else {
-			uint f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(tile)));
-
-			if (f == 0) return tileh;
-			if (f < 15) return SLOPE_FLAT;
-			return (Slope)_inclined_tileh[f - 15];
-		}
-	}
+	return IsTunnel(tile) ? FOUNDATION_NONE : GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(tile)));
 }
 
 
@@ -1475,5 +1434,5 @@ extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	ChangeTileOwner_TunnelBridge,    /* change_tile_owner_clear */
 	NULL,                            /* get_produced_cargo_proc */
 	VehicleEnter_TunnelBridge,       /* vehicle_enter_tile_proc */
-	GetSlopeTileh_TunnelBridge,      /* get_slope_tileh_proc */
+	GetFoundation_TunnelBridge,      /* get_foundation_proc */
 };

@@ -839,34 +839,14 @@ struct DrawRoadTileStruct {
 #include "table/road_land.h"
 
 
-uint GetRoadFoundation(Slope tileh, RoadBits bits)
+Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 {
-	uint i;
-
-	/* normal level sloped building */
-	if (!IsSteepSlope(tileh) &&
-			(~_valid_tileh_slopes_road[1][tileh] & bits) == 0) {
-		return tileh;
+	if (!IsSteepSlope(tileh)) {
+		if ((~_valid_tileh_slopes_road[0][tileh] & bits) == 0) return FOUNDATION_NONE;
+		if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0) return FOUNDATION_LEVELED;
 	}
 
-	/* inclined sloped building */
-	switch (bits) {
-		case ROAD_X: i = 0; break;
-		case ROAD_Y: i = 1; break;
-		default:     return 0;
-	}
-	switch (tileh) {
-		case SLOPE_W:
-		case SLOPE_STEEP_W: i += 0; break;
-		case SLOPE_S:
-		case SLOPE_STEEP_S: i += 2; break;
-		case SLOPE_E:
-		case SLOPE_STEEP_E: i += 4; break;
-		case SLOPE_N:
-		case SLOPE_STEEP_N: i += 6; break;
-		default: return 0;
-	}
-	return i + 15;
+	return (bits == ROAD_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
 }
 
 const byte _road_sloped_sprites[14] = {
@@ -954,9 +934,7 @@ static void DrawRoadBits(TileInfo* ti)
 	Roadside roadside;
 
 	if (ti->tileh != SLOPE_FLAT) {
-		int foundation = GetRoadFoundation(ti->tileh, road | tram);
-
-		if (foundation != 0) DrawFoundation(ti, foundation);
+		DrawFoundation(ti, GetRoadFoundation(ti->tileh, road | tram));
 
 		/* DrawFoundation() modifies ti.
 		 * Default sloped sprites.. */
@@ -1029,7 +1007,7 @@ static void DrawTile_Road(TileInfo *ti)
 			SpriteID pal = PAL_NONE;
 			Roadside roadside = GetRoadside(ti->tile);
 
-			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 			image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.crossing;
 
@@ -1061,7 +1039,7 @@ static void DrawTile_Road(TileInfo *ti)
 			const DrawTileSeqStruct* dtss;
 			SpriteID palette;
 
-			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
@@ -1123,33 +1101,20 @@ static uint GetSlopeZ_Road(TileIndex tile, uint x, uint y)
 
 	if (tileh == SLOPE_FLAT) return z;
 	if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
-		uint f = GetRoadFoundation(tileh, GetAllRoadBits(tile));
-
-		if (f != 0) {
-			if (IsSteepSlope(tileh)) {
-				z += TILE_HEIGHT;
-			} else if (f < 15) {
-				return z + TILE_HEIGHT; // leveled foundation
-			}
-			tileh = _inclined_tileh[f - 15]; // inclined foundation
-		}
+		Foundation f = GetRoadFoundation(tileh, GetAllRoadBits(tile));
+		z += ApplyFoundationToSlope(f, &tileh);
 		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 	} else {
 		return z + TILE_HEIGHT;
 	}
 }
 
-static Slope GetSlopeTileh_Road(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Road(TileIndex tile, Slope tileh)
 {
-	if (tileh == SLOPE_FLAT) return SLOPE_FLAT;
 	if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
-		uint f = GetRoadFoundation(tileh, GetAllRoadBits(tile));
-
-		if (f == 0) return tileh;
-		if (f < 15) return SLOPE_FLAT; // leveled foundation
-		return _inclined_tileh[f - 15]; // inclined foundation
+		return GetRoadFoundation(tileh, GetAllRoadBits(tile));
 	} else {
-		return SLOPE_FLAT;
+		return FlatteningFoundation(tileh);
 	}
 }
 
@@ -1407,5 +1372,5 @@ extern const TileTypeProcs _tile_type_road_procs = {
 	ChangeTileOwner_Road,    /* change_tile_owner_clear */
 	NULL,                    /* get_produced_cargo_proc */
 	VehicleEnter_Road,       /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Road,      /* get_slope_tileh_proc */
+	GetFoundation_Road,      /* get_foundation_proc */
 };

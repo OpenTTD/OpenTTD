@@ -176,7 +176,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 	for (i = DIAGDIR_NE; i < DIAGDIR_END; i++) {
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
-		uint foundation = 0;
+		Foundation foundation = FOUNDATION_NONE;
 		int k;
 
 		/* Here's one of the main headaches. GetTileSlope does not correct for possibly
@@ -225,9 +225,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetBridgeRampDirection(neighbour)));
 		}
 
-		if (foundation != 0) {
-			tileh[TS_NEIGHBOUR] = foundation < 15 ? SLOPE_FLAT : _inclined_tileh[foundation - 15];
-		}
+		ApplyFoundationToSlope(foundation, &tileh[TS_NEIGHBOUR]);
 
 		AdjustTileh(neighbour, &tileh[TS_NEIGHBOUR]);
 

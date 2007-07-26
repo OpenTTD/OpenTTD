@@ -156,36 +156,22 @@ static const TrackBits _valid_tileh_slopes[][15] = {
 }
 };
 
-uint GetRailFoundation(Slope tileh, TrackBits bits)
+Foundation GetRailFoundation(Slope tileh, TrackBits bits)
 {
-	uint i;
-
 	if (!IsSteepSlope(tileh)) {
-		if ((~_valid_tileh_slopes[0][tileh] & bits) == 0) return 0;
-		if ((~_valid_tileh_slopes[1][tileh] & bits) == 0) return tileh;
+		if ((~_valid_tileh_slopes[0][tileh] & bits) == 0) return FOUNDATION_NONE;
+		if ((~_valid_tileh_slopes[1][tileh] & bits) == 0) return FOUNDATION_LEVELED;
 	}
 
 	switch (bits) {
 		default: NOT_REACHED();
-		case TRACK_BIT_X: i = 0; break;
-		case TRACK_BIT_Y: i = 1; break;
-		case TRACK_BIT_LEFT:  return 15 + 8 + (tileh == SLOPE_STEEP_W ? 4 : 0);
-		case TRACK_BIT_LOWER: return 15 + 8 + (tileh == SLOPE_STEEP_S ? 5 : 1);
-		case TRACK_BIT_RIGHT: return 15 + 8 + (tileh == SLOPE_STEEP_E ? 6 : 2);
-		case TRACK_BIT_UPPER: return 15 + 8 + (tileh == SLOPE_STEEP_N ? 7 : 3);
+		case TRACK_BIT_X:     return FOUNDATION_INCLINED_X;
+		case TRACK_BIT_Y:     return FOUNDATION_INCLINED_Y;
+		case TRACK_BIT_LEFT:  return (tileh == SLOPE_STEEP_W ? FOUNDATION_STEEP_HIGHER : FOUNDATION_STEEP_LOWER);
+		case TRACK_BIT_LOWER: return (tileh == SLOPE_STEEP_S ? FOUNDATION_STEEP_HIGHER : FOUNDATION_STEEP_LOWER);
+		case TRACK_BIT_RIGHT: return (tileh == SLOPE_STEEP_E ? FOUNDATION_STEEP_HIGHER : FOUNDATION_STEEP_LOWER);
+		case TRACK_BIT_UPPER: return (tileh == SLOPE_STEEP_N ? FOUNDATION_STEEP_HIGHER : FOUNDATION_STEEP_LOWER);
 	}
-	switch (tileh) {
-		case SLOPE_W:
-		case SLOPE_STEEP_W: i += 0; break;
-		case SLOPE_S:
-		case SLOPE_STEEP_S: i += 2; break;
-		case SLOPE_E:
-		case SLOPE_STEEP_E: i += 4; break;
-		case SLOPE_N:
-		case SLOPE_STEEP_N: i += 6; break;
-		default: return 0;
-	}
-	return i + 15;
 }
 
 
@@ -1362,14 +1348,11 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 	(image++, true);
 
 	if (ti->tileh != SLOPE_FLAT) {
-		uint foundation = GetRailFoundation(ti->tileh, track);
-
-		if (foundation != 0) DrawFoundation(ti, foundation);
+		DrawFoundation(ti, GetRailFoundation(ti->tileh, track));
 
 		/* DrawFoundation() modifies it.
 		 * Default sloped sprites.. */
-		if (ti->tileh != SLOPE_FLAT)
-			image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
+		if (ti->tileh != SLOPE_FLAT) image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
 	}
 
 	switch (GetRailGroundType(ti->tile)) {
@@ -1446,7 +1429,7 @@ static void DrawTile_Track(TileInfo *ti)
 		const DrawTileSeqStruct* dtss;
 		uint32 relocation;
 
-		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 		if (IsRailDepot(ti->tile)) {
 			dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
@@ -1850,34 +1833,16 @@ static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)
 
 	if (tileh == SLOPE_FLAT) return z;
 	if (IsPlainRailTile(tile)) {
-		uint f = GetRailFoundation(tileh, GetTrackBits(tile));
-
-		if (f != 0) {
-			if (IsSteepSlope(tileh)) {
-				z += TILE_HEIGHT;
-			} else if (f < 15) {
-				return z + TILE_HEIGHT; // leveled foundation
-			}
-			tileh = _inclined_tileh[f - 15]; // inclined foundation
-		}
+		z += ApplyFoundationToSlope(GetRailFoundation(tileh, GetTrackBits(tile)), &tileh);
 		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 	} else {
 		return z + TILE_HEIGHT;
 	}
 }
 
-static Slope GetSlopeTileh_Track(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Track(TileIndex tile, Slope tileh)
 {
-	if (tileh == SLOPE_FLAT) return SLOPE_FLAT;
-	if (IsPlainRailTile(tile)) {
-		uint f = GetRailFoundation(tileh, GetTrackBits(tile));
-
-		if (f == 0) return tileh;
-		if (f < 15) return SLOPE_FLAT; // leveled foundation
-		return _inclined_tileh[f - 15]; // inclined foundation
-	} else {
-		return SLOPE_FLAT;
-	}
+	return IsPlainRailTile(tile) ? GetRailFoundation(tileh, GetTrackBits(tile)) : FlatteningFoundation(tileh);
 }
 
 static void GetAcceptedCargo_Track(TileIndex tile, AcceptedCargo ac)
@@ -2186,5 +2151,5 @@ extern const TileTypeProcs _tile_type_rail_procs = {
 	ChangeTileOwner_Track,    /* change_tile_owner_clear */
 	NULL,                     /* get_produced_cargo_proc */
 	VehicleEnter_Track,       /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Track,      /* get_slope_tileh_proc */
+	GetFoundation_Track,      /* get_foundation_proc */
 };

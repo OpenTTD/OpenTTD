@@ -416,9 +416,9 @@ static uint GetSlopeZ_Trees(TileIndex tile, uint x, uint y)
 	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Slope GetSlopeTileh_Trees(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Trees(TileIndex tile, Slope tileh)
 {
-	return tileh;
+	return FOUNDATION_NONE;
 }
 
 static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
@@ -670,5 +670,5 @@ extern const TileTypeProcs _tile_type_trees_procs = {
 	ChangeTileOwner_Trees,    /* change_tile_owner_clear */
 	NULL,                     /* get_produced_cargo_proc */
 	NULL,                     /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Trees,      /* get_slope_tileh_proc */
+	GetFoundation_Trees,      /* get_foundation_proc */
 };

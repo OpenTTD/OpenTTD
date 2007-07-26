@@ -330,7 +330,6 @@ VARDEF char *_log_file;
 
 /* landscape.cpp */
 extern const byte _tileh_to_sprite[32];
-extern const Slope _inclined_tileh[16];
 
 extern const TileTypeProcs * const _tile_type_procs[16];
 

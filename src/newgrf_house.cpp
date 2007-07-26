@@ -351,7 +351,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 	const SpriteGroup *group;
 	ResolverObject object;
 
-	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 	NewHouseResolver(&object, house_id, ti->tile, GetTownByTile(ti->tile));
 

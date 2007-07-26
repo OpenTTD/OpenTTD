@@ -27,7 +27,7 @@ struct Bridge {
 extern const Bridge orig_bridge[MAX_BRIDGES];
 extern Bridge _bridge[MAX_BRIDGES];
 
-uint GetBridgeFoundation(Slope tileh, Axis axis);
+Foundation GetBridgeFoundation(Slope tileh, Axis axis);
 
 static inline const Bridge *GetBridge(uint i)
 {

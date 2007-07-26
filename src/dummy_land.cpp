@@ -21,9 +21,9 @@ static uint GetSlopeZ_Dummy(TileIndex tile, uint x, uint y)
 	return 0;
 }
 
-static Slope GetSlopeTileh_Dummy(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Dummy(TileIndex tile, Slope tileh)
 {
-	return SLOPE_FLAT;
+	return FOUNDATION_NONE;
 }
 
 static CommandCost ClearTile_Dummy(TileIndex tile, byte flags)
@@ -81,5 +81,5 @@ extern const TileTypeProcs _tile_type_dummy_procs = {
 	ChangeTileOwner_Dummy,    /* change_tile_owner_clear */
 	NULL,                     /* get_produced_cargo_proc */
 	NULL,                     /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Dummy,      /* get_slope_tileh_proc */
+	GetFoundation_Dummy,      /* get_foundation_proc */
 };

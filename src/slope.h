@@ -68,4 +68,97 @@ static inline Slope ComplementSlope(Slope s)
 	return (Slope)(0xF ^ s);
 }
 
+/**
+ * Returns the highest corner of a slope (one corner raised or a steep slope).
+ *
+ * @pre      The slope must be a slope with one corner raised or a steep slope.
+ * @param s  The #Slope.
+ * @return   Number of the highest corner. (0 west, 1 south, 2 east, 3 north)
+ */
+static inline byte GetHighestSlopeCorner(Slope s)
+{
+	switch (s) {
+		case SLOPE_W:
+		case SLOPE_STEEP_W: return 0;
+		case SLOPE_S:
+		case SLOPE_STEEP_S: return 1;
+		case SLOPE_E:
+		case SLOPE_STEEP_E: return 2;
+		case SLOPE_N:
+		case SLOPE_STEEP_N: return 3;
+		default: NOT_REACHED();
+	}
+}
+
+
+/**
+ * Enumeration for Foundations.
+ */
+enum Foundation {
+	FOUNDATION_NONE,             ///< The tile has no foundation, the slope remains unchanged.
+	FOUNDATION_LEVELED,          ///< The tile is leveled up to a flat slope.
+	FOUNDATION_INCLINED_X,       ///< The tile has an along X-axis inclined foundation.
+	FOUNDATION_INCLINED_Y,       ///< The tile has an along Y-axis inclined foundation.
+	FOUNDATION_STEEP_LOWER,      ///< The tile has a steep slope. The lowerst corner is raised by a foundation to allow building railroad on the lower halftile.
+	FOUNDATION_STEEP_HIGHER,     ///< The tile has a steep slope. Three corners are raised by a foundation to allow building railroad on the higher halftile.
+};
+
+/**
+ * Tests for FOUNDATION_NONE.
+ *
+ * @param f  Maybe a #Foundation.
+ * @return   true iff f is a foundation.
+ */
+static inline bool IsFoundation(Foundation f)
+{
+	return f != FOUNDATION_NONE;
+}
+
+/**
+ * Tests if the foundation is a leveled foundation.
+ *
+ * @param f  The #Foundation.
+ * @return   true iff f is a leveled foundation.
+ */
+static inline bool IsLeveledFoundation(Foundation f)
+{
+	return f == FOUNDATION_LEVELED;
+}
+
+/**
+ * Tests if the foundation is an inclined foundation.
+ *
+ * @param f  The #Foundation.
+ * @return   true iff f is an inclined foundation.
+ */
+static inline bool IsInclinedFoundation(Foundation f)
+{
+	return (f == FOUNDATION_INCLINED_X) || (f == FOUNDATION_INCLINED_Y);
+}
+
+/**
+ * Returns the foundation needed to flatten a slope.
+ * The returned foundation is either FOUNDATION_NONE if the tile was already flat, or FOUNDATION_LEVELED.
+ *
+ * @pre      The slope must not be steep.
+ * @param s  The current #Slope.
+ * @return   The needed #Foundation.
+ */
+static inline Foundation FlatteningFoundation(Slope s)
+{
+	assert(!IsSteepSlope(s));
+	return (s == SLOPE_FLAT ? FOUNDATION_NONE : FOUNDATION_LEVELED);
+}
+
+/**
+ * Returns the along a specific axis inclined foundation.
+ *
+ * @param axis  The #Axis.
+ * @return      The needed #Foundation.
+ */
+static inline Foundation InclinedFoundation(Axis axis)
+{
+	return (axis == AXIS_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
+}
+
 #endif /* SLOPE_H */

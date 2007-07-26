@@ -50,7 +50,13 @@ enum Sprites {
 	OPENTTD_SPRITES_COUNT = 112, // number of gfx-sprites in openttd.grf
 	SPR_SIGNALS_BASE  = 4896,
 	SPR_CANALS_BASE   = SPR_SIGNALS_BASE + 486,
-	SPR_SLOPES_BASE   = SPR_CANALS_BASE + 70,
+
+	SPR_SLOPES_BASE                    = SPR_CANALS_BASE + 70,
+	SPR_SLOPES_INCLINED_OFFSET         = 15,
+	SPR_SLOPES_VIRTUAL_BASE            = SPR_SLOPES_BASE - SPR_SLOPES_INCLINED_OFFSET, // The original foundations (see SPR_FOUNDATION_BASE below) are mapped before the additional foundations.
+	SPR_SLOPES_NO_FOUNDATION_NW_OFFSET = 22, // no wall on the NW edge of the tile.
+	SPR_SLOPES_NO_FOUNDATION_NE_OFFSET = 44, // no wall on the NE edge of the tile.
+
 	SPR_AUTORAIL_BASE = SPR_SLOPES_BASE + 78,
 	SPR_ELRAIL_BASE   = SPR_AUTORAIL_BASE + 55,
 	SPR_2CCMAP_BASE   = SPR_ELRAIL_BASE + 53,

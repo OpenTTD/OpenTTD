@@ -573,9 +573,9 @@ static uint GetSlopeZ_Clear(TileIndex tile, uint x, uint y)
 	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Slope GetSlopeTileh_Clear(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Clear(TileIndex tile, Slope tileh)
 {
-	return tileh;
+	return FOUNDATION_NONE;
 }
 
 static void GetAcceptedCargo_Clear(TileIndex tile, AcceptedCargo ac)
@@ -819,5 +819,5 @@ extern const TileTypeProcs _tile_type_clear_procs = {
 	ChangeTileOwner_Clear,    ///< change_tile_owner_clear
 	NULL,                     ///< get_produced_cargo_proc
 	NULL,                     ///< vehicle_enter_tile_proc
-	GetSlopeTileh_Clear,      ///< get_slope_tileh_proc
+	GetFoundation_Clear,      ///< get_foundation_proc
 };

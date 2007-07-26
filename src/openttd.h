@@ -472,7 +472,7 @@ typedef void TileLoopProc(TileIndex tile);
 typedef void ChangeTileOwnerProc(TileIndex tile, PlayerID old_player, PlayerID new_player);
 /** @see VehicleEnterTileStatus to see what the return values mean */
 typedef uint32 VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
-typedef Slope GetSlopeTilehProc(TileIndex, Slope tileh);
+typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
 
 struct TileTypeProcs {
 	DrawTileProc *draw_tile_proc;
@@ -487,7 +487,7 @@ struct TileTypeProcs {
 	ChangeTileOwnerProc *change_tile_owner_proc;
 	GetProducedCargoProc *get_produced_cargo_proc;
 	VehicleEnterTileProc *vehicle_enter_tile_proc;
-	GetSlopeTilehProc *get_slope_tileh_proc;
+	GetFoundationProc *get_foundation_proc;
 };
 
 

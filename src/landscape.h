@@ -39,7 +39,8 @@ static inline Point RemapCoords2(int x, int y)
 	return RemapCoords(x, y, GetSlopeZ(x, y));
 }
 
-void DrawFoundation(TileInfo *ti, uint f);
+uint ApplyFoundationToSlope(Foundation f, Slope *s);
+void DrawFoundation(TileInfo *ti, Foundation f);
 
 void DoClearSquare(TileIndex tile);
 void RunTileLoop();

@@ -255,7 +255,6 @@ static void DrawTile_Industry(TileInfo *ti)
 	Industry *ind = GetIndustryByTile(ti->tile);
 	const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
 	const DrawBuildingsTileStruct *dits;
-	byte z;
 	SpriteID image;
 	SpriteID pal;
 
@@ -287,12 +286,8 @@ static void DrawTile_Industry(TileInfo *ti)
 		pal = dits->ground.pal;
 	}
 
-	z = ti->z;
-	/* Add bricks below the industry? */
-	if (ti->tileh != SLOPE_FLAT) {
-		DrawFoundation(ti, ti->tileh);
-		z += TILE_HEIGHT;
-	}
+	/* DrawFoundation() modifes ti->z and ti->tileh */
+	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 	DrawGroundSprite(image, pal);
 
@@ -306,7 +301,7 @@ static void DrawTile_Industry(TileInfo *ti)
 			dits->width  + 1,
 			dits->height + 1,
 			dits->dz,
-			z,
+			ti->z,
 			HASBIT(_transparent_opt, TO_INDUSTRIES));
 
 		if (HASBIT(_transparent_opt, TO_INDUSTRIES)) return;
@@ -323,9 +318,9 @@ static uint GetSlopeZ_Industry(TileIndex tile, uint x, uint y)
 	return GetTileMaxZ(tile);
 }
 
-static Slope GetSlopeTileh_Industry(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 {
-	return SLOPE_FLAT;
+	return FlatteningFoundation(tileh);
 }
 
 static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
@@ -1995,7 +1990,7 @@ extern const TileTypeProcs _tile_type_industry_procs = {
 	ChangeTileOwner_Industry,    /* change_tile_owner_proc */
 	GetProducedCargo_Industry,   /* get_produced_cargo_proc */
 	NULL,                        /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Industry,      /* get_slope_tileh_proc */
+	GetFoundation_Industry,      /* get_foundation_proc */
 };
 
 static const SaveLoad _industry_desc[] = {

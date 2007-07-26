@@ -215,7 +215,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 			draw_old_one = callback_res != 0;
 		}
 
-		if (draw_old_one) DrawFoundation(ti, ti->tileh);
+		if (draw_old_one) DrawFoundation(ti, FOUNDATION_LEVELED);
 	}
 
 	NewIndustryTileResolver(&object, gfx, ti->tile, i);

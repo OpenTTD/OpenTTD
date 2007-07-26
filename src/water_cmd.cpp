@@ -500,9 +500,9 @@ static uint GetSlopeZ_Water(TileIndex tile, uint x, uint y)
 	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 }
 
-static Slope GetSlopeTileh_Water(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Water(TileIndex tile, Slope tileh)
 {
-	return tileh;
+	return FOUNDATION_NONE;
 }
 
 static void GetAcceptedCargo_Water(TileIndex tile, AcceptedCargo ac)
@@ -812,5 +812,5 @@ extern const TileTypeProcs _tile_type_water_procs = {
 	ChangeTileOwner_Water,    /* change_tile_owner_clear */
 	NULL,                     /* get_produced_cargo_proc */
 	VehicleEnter_Water,       /* vehicle_enter_tile_proc */
-	GetSlopeTileh_Water,      /* get_slope_tileh_proc */
+	GetFoundation_Water,      /* get_foundation_proc */
 };
