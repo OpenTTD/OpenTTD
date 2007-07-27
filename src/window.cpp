@@ -658,8 +658,15 @@ static Window *LocalAllocateWindow(
 
 	/* Try to make windows smaller when our window is too small */
 	if (min_width != def_width || min_height != def_height) {
-		int enlarge_x = max(min(def_width  - min_width,  _screen.width  - min_width),  0);
-		int enlarge_y = max(min(def_height - min_height, _screen.height - min_height), 0);
+		/* Think about the overlapping toolbars when determining the minimum window size */
+		int free_height = _screen.height;
+		const Window *wt = FindWindowById(WC_STATUS_BAR, 0);
+		if (wt != NULL) free_height -= wt->height;
+		wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
+		if (wt != NULL) free_height -= wt->height;
+
+		int enlarge_x = max(min(def_width  - min_width,  _screen.width - min_width),  0);
+		int enlarge_y = max(min(def_height - min_height, free_height   - min_height), 0);
 
 		/* X and Y has to go by step.. calculate it.
 		 * The cast to int is necessary else x/y are implicitly casted to
@@ -676,10 +683,11 @@ static Window *LocalAllocateWindow(
 		e.we.sizing.diff.x = enlarge_x;
 		e.we.sizing.diff.y = enlarge_y;
 		w->wndproc(w, &e);
-
-		if (w->left < 0) w->left = 0;
-		if (w->top  < 0) w->top  = 0;
 	}
+
+	const Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
+	w->top  = max(w->top, (wt == NULL || w == wt) ? 0 : wt->height);
+	w->left = max(w->left, 0);
 
 	SetWindowDirty(w);
 
