@@ -124,13 +124,19 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype)
  * This will ensure at once : proper access and
  * not allowing modifications of it.
  * @param gfx of industrytile (which is the index in _industry_tile_specs)
+ * @param full_check (default to true) verify if an override is available.
+ *  If so, use it instead of the gfx provided.
  * @pre gfx < INVALID_INDUSTRYTILE
  * @return a pointer to the corresponding industrytile spec
  **/
-const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx)
+const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx, bool full_check)
 {
 	assert(gfx < INVALID_INDUSTRYTILE);
-	return &_industry_tile_specs[gfx];
+	const IndustryTileSpec *its = &_industry_tile_specs[gfx];
+	if (full_check && its->grf_prop.override != INVALID_INDUSTRYTILE) {
+		its = &_industry_tile_specs[its->grf_prop.override];
+	}
+	return its;
 }
 
 void DestroyIndustry(Industry *i)

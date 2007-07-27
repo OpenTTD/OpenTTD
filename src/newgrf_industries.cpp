@@ -87,8 +87,8 @@ uint32 GetIndustryIDAtOffset(TileIndex new_tile, TileIndex old_tile, const Indus
 
 		if (GetIndustryIndex(new_tile) == i->index) {  // Does it belong to the same industry?
 			IndustryGfx gfx = GetIndustryGfx(new_tile);
-			const IndustryTileSpec *indtsp = GetIndustryTileSpec(gfx);
-			const IndustryTileSpec *indold = GetIndustryTileSpec(GetIndustryGfx(old_tile));
+			const IndustryTileSpec *indtsp = GetIndustryTileSpec(gfx, false);
+			const IndustryTileSpec *indold = GetIndustryTileSpec(GetIndustryGfx(old_tile), false);
 
 			if (gfx < NEW_INDUSTRYOFFSET) {  // Does it belongs to an old type?
 				/* It is an old tile.  We have to see if it's been overriden */
