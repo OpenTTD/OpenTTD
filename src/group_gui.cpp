@@ -139,32 +139,32 @@ enum GroupListWidgets {
 
 static const Widget _group_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   513,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   514,   525,     0,    13, 0x0,                  STR_STICKY_BUTTON},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   447,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   448,   459,     0,    13, 0x0,                  STR_STICKY_BUTTON},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   200,    14,    25, 0x0,                  STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   200,    26,    38, 0x0,                  STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   200,    39,    52, 0x0,                  STR_NULL},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   188,    52,   220, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   189,   200,    26,   220, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   188,    52,   168, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   189,   200,    26,   168, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   201,   281,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,   282,   435,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   436,   447,    14,    25, STR_0225,             STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,    14,   448,   525,    14,    25, 0x0,                  STR_NULL},
-{     WWT_MATRIX,     RESIZE_RB,    14,   201,   513,    26,   233, 0x701,                STR_NULL},
-{ WWT_SCROLL2BAR,    RESIZE_LRB,    14,   514,   525,    26,   233, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,     0,    23,   221,   245, 0x0,                  STR_GROUP_CREATE_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,    24,    47,   221,   245, 0x0,                  STR_GROUP_DELETE_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,    48,    71,   221,   245, 0x0,                  STR_GROUP_RENAME_TIP},
-{      WWT_PANEL,     RESIZE_TB,    14,    72,   164,   221,   245, 0x0,                  STR_NULL},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   165,   188,   221,   245, 0x0,                  STR_GROUP_REPLACE_PROTECTION_TIP},
-{      WWT_PANEL,     RESIZE_TB,    14,   189,   200,   221,   245, 0x0,                  STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   201,   306,   234,   245, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
-{    WWT_TEXTBTN,     RESIZE_TB,    14,   307,   411,   234,   245, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
-{    WWT_TEXTBTN,     RESIZE_TB,    14,   412,   423,   234,   245, STR_0225,             STR_MANAGE_LIST_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   424,   435,   234,   245, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   436,   447,   234,   245, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
-{      WWT_PANEL,    RESIZE_RTB,    14,   448,   513,   234,   245, 0x0,                  STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   514,   525,   234,   245, 0x0,                  STR_RESIZE_BUTTON},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   448,   459,    14,    25, 0x0,                  STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,   201,   447,    26,   181, 0x701,                STR_NULL},
+{ WWT_SCROLL2BAR,    RESIZE_LRB,    14,   448,   459,    26,   181, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,     0,    23,   169,   193, 0x0,                  STR_GROUP_CREATE_TIP},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,    24,    47,   169,   193, 0x0,                  STR_GROUP_DELETE_TIP},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,    48,    71,   169,   193, 0x0,                  STR_GROUP_RENAME_TIP},
+{      WWT_PANEL,     RESIZE_TB,    14,    72,   164,   169,   193, 0x0,                  STR_NULL},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   165,   188,   169,   193, 0x0,                  STR_GROUP_REPLACE_PROTECTION_TIP},
+{      WWT_PANEL,     RESIZE_TB,    14,   189,   200,   169,   193, 0x0,                  STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   201,   306,   182,   193, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
+{    WWT_TEXTBTN,     RESIZE_TB,    14,   307,   411,   182,   193, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
+{    WWT_TEXTBTN,     RESIZE_TB,    14,   412,   423,   182,   193, STR_0225,             STR_MANAGE_LIST_TIP},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   424,   435,   182,   193, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   436,   447,   182,   193, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
+{      WWT_PANEL,    RESIZE_RTB,    14,   448,   447,   182,   193, 0x0,                  STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   448,   459,   182,   193, 0x0,                  STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -176,15 +176,15 @@ static void CreateVehicleGroupWindow(Window *w)
 	grouplist_d *gl = &WP(w, groupveh_d).gl;
 
 	w->caption_color = owner;
-	w->hscroll.cap = 10 * 29;
+	w->hscroll.cap = 224;
 	w->resize.step_width = 1;
 
 	switch (gv->vehicle_type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:
 		case VEH_ROAD:
-			w->vscroll.cap = 13;
-			w->vscroll2.cap = 8;
+			w->vscroll.cap = 9;
+			w->vscroll2.cap = 6;
 			w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 			break;
 		case VEH_SHIP:
@@ -771,7 +771,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 
 static const WindowDesc _group_desc = {
-	WDP_AUTO, WDP_AUTO, 526, 246, 526, 246,
+	WDP_AUTO, WDP_AUTO, 460, 194, 526, 246,
 	WC_TRAINS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_group_widgets,
@@ -796,23 +796,4 @@ void ShowPlayerGroup(PlayerID player, VehicleType vehicle_type)
 	if (w == NULL) return;
 
 	w->window_class = wc;
-
-	switch (vehicle_type) {
-		default: NOT_REACHED();
-		case VEH_ROAD:
-			ResizeWindow(w, -66,   0);
-			/* FALL THROUGH */
-		case VEH_TRAIN:
-			w->resize.height = w->height - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 4); // Minimum of 4 vehicles
-			break;
-
-		case VEH_SHIP:
-		case VEH_AIRCRAFT:
-			ResizeWindow(w, -66, -52);
-			w->resize.height = w->height;  // Minimum of 4 vehicles
-			break;
-	}
-
-	/* Set the minimum window size to the current window size */
-	w->resize.width = w->width;
 }
