@@ -668,6 +668,15 @@ static Window *LocalAllocateWindow(
 		if (w->resize.step_height > 1) enlarge_y -= enlarge_y % (int)w->resize.step_height;
 
 		ResizeWindow(w, enlarge_x, enlarge_y);
+
+		WindowEvent e;
+		e.event = WE_RESIZE;
+		e.we.sizing.size.x = w->width;
+		e.we.sizing.size.y = w->height;
+		e.we.sizing.diff.x = enlarge_x;
+		e.we.sizing.diff.y = enlarge_y;
+		w->wndproc(w, &e);
+
 		if (w->left < 0) w->left = 0;
 		if (w->top  < 0) w->top  = 0;
 	}
@@ -1092,12 +1101,6 @@ void ResizeWindow(Window *w, int x, int y)
 	Widget *wi;
 	bool resize_height = false;
 	bool resize_width = false;
-
-	/* X and Y has to go by step.. calculate it.
-	 * The cast to int is necessary else x/y are implicitly casted to
-	 * unsigned int, which won't work. */
-	if (w->resize.step_width  > 1) x -= x % (int)w->resize.step_width;
-	if (w->resize.step_height > 1) y -= y % (int)w->resize.step_height;
 
 	if (x == 0 && y == 0) return;
 
