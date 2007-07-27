@@ -1264,3 +1264,18 @@ HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, 
 
 	return E_INVALIDARG;
 }
+
+/** Determine the current user's locale. */
+const char *GetCurrentLocale(const char *)
+{
+	char lang[32], country[32];
+	static char retbuf[64];
+	if (GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_SISO639LANGNAME, lang, lengthof(lang)) == 0 ||
+	    GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_SISO3166CTRYNAME, country, lengthof(country)) == 0) {
+		/* Unable to retrieve the locale. */
+		return NULL;
+	}
+	/* Format it as 'en_us'. */
+	sprintf(retbuf, "%c%c_%c%c\0", lang[0], lang[1], country[0], country[1]);
+	return retbuf;
+}

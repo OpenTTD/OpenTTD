@@ -1224,6 +1224,8 @@ bool ReadLanguagePack(int lang_index)
 	return true;
 }
 
+/* Win32 implementation in win32.cpp. */
+#ifndef WIN32
 /** Determine the current charset based on the environment
  * First check some default values, after this one we passed ourselves
  * and if none exist return the value for $LANG
@@ -1247,6 +1249,7 @@ const char *GetCurrentLocale(const char *param)
 
 	return getenv("LANG");
 }
+#endif /* ifndef WIN32 */
 
 static int CDECL LanguageCompareFunc(const void *a, const void *b)
 {
