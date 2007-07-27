@@ -25,90 +25,48 @@ STR_000D_ACCEPTS                                                :{BLACK}Prihvać
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :putnici
 STR_0010_COAL                                                   :ugljen
-STR_0010_COAL.gen                                               :ugljena
 STR_0011_MAIL                                                   :pošta
-STR_0011_MAIL.gen                                               :pošte
 STR_0012_OIL                                                    :nafta
-STR_0012_OIL.gen                                                :nafte
 STR_0013_LIVESTOCK                                              :domaće životinje
-STR_0013_LIVESTOCK.gen                                          :domaćih životinja
 STR_0014_GOODS                                                  :robe
-STR_0014_GOODS.gen                                              :roba
 STR_0015_GRAIN                                                  :žito
-STR_0015_GRAIN.gen                                              :žita
 STR_0016_WOOD                                                   :drvo
-STR_0016_WOOD.gen                                               :drva
 STR_0017_IRON_ORE                                               :željezo
-STR_0017_IRON_ORE.gen                                           :željeza
 STR_0018_STEEL                                                  :čelik
-STR_0018_STEEL.gen                                              :čelika
 STR_0019_VALUABLES                                              :dragocjenosti
-STR_0019_VALUABLES.gen                                          :dragocjenosti
 STR_001A_COPPER_ORE                                             :bakar
-STR_001A_COPPER_ORE.gen                                         :bakra
 STR_001B_MAIZE                                                  :kukuruz
-STR_001B_MAIZE.gen                                              :kukuruza
 STR_001C_FRUIT                                                  :voće
-STR_001C_FRUIT.gen                                              :voća
 STR_001D_DIAMONDS                                               :dijamanti
-STR_001D_DIAMONDS.gen                                           :dijamanata
 STR_001E_FOOD                                                   :hrana
-STR_001E_FOOD.gen                                               :hrane
 STR_001F_PAPER                                                  :papir
-STR_001F_PAPER.gen                                              :papira
 STR_0020_GOLD                                                   :zlato
-STR_0020_GOLD.gen                                               :zlata
 STR_0021_WATER                                                  :voda
-STR_0021_WATER.gen                                              :vode
 STR_0022_WHEAT                                                  :pšenica
-STR_0022_WHEAT.gen                                              :pšenice
 STR_0023_RUBBER                                                 :guma
-STR_0023_RUBBER.gen                                             :gume
 STR_0024_SUGAR                                                  :šećer
-STR_0024_SUGAR.gen                                              :šećera
 STR_0025_TOYS                                                   :igrače
-STR_0025_TOYS.gen                                               :igračaka
 STR_0026_CANDY                                                  :slatkiši
-STR_0026_CANDY.gen                                              :slatkiša
 STR_0027_COLA                                                   :cola
-STR_0027_COLA.gen                                               :cole
 STR_0028_COTTON_CANDY                                           :šećerna vuna
-STR_0028_COTTON_CANDY.gen                                       :šećerne vune
 STR_0029_BUBBLES                                                :baloni
-STR_0029_BUBBLES.gen                                            :balona
 STR_002A_TOFFEE                                                 :mliječne karamele
-STR_002A_TOFFEE.gen                                             :mliječnih karamela
 STR_002B_BATTERIES                                              :baterije
-STR_002B_BATTERIES.gen                                          :baterija
 STR_002C_PLASTIC                                                :plastika
-STR_002C_PLASTIC.gen                                            :plastike
 STR_002D_FIZZY_DRINKS                                           :gazirana pića
-STR_002D_FIZZY_DRINKS.gen                                       :gaziranih pića
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :putnik
-STR_002F_PASSENGER.gen                                          :putnika
 STR_0030_COAL                                                   :ugljen
-STR_0030_COAL.gen                                               :ugljena
 STR_0031_MAIL                                                   :pošta
-STR_0031_MAIL.gen                                               :pošte
 STR_0032_OIL                                                    :nafta
-STR_0032_OIL.gen                                                :nafte
 STR_0033_LIVESTOCK                                              :domaće životinje
-STR_0033_LIVESTOCK.gen                                          :domaćih životinja
 STR_0034_GOODS                                                  :robe
-STR_0034_GOODS.gen                                              :roba
 STR_0035_GRAIN                                                  :žito
-STR_0035_GRAIN.gen                                              :žita
 STR_0036_WOOD                                                   :drvo
-STR_0036_WOOD.gen                                               :drva
 STR_0037_IRON_ORE                                               :željezo
-STR_0037_IRON_ORE.gen                                           :željeza
 STR_0038_STEEL                                                  :čelik
-STR_0038_STEEL.gen                                              :čelika
 STR_0039_VALUABLES                                              :dragocjenosti
-STR_0039_VALUABLES.gen                                          :dragocjenosti
 STR_003A_COPPER_ORE                                             :bakar
-STR_003A_COPPER_ORE.gen                                         :bakra
 STR_003B_MAIZE                                                  :Kukuruz
 STR_003C_FRUIT                                                  :Voće
 STR_003D_DIAMOND                                                :Dijamant
@@ -1264,8 +1222,6 @@ STR_GO_NON_STOP_TO_WAYPOINT                                     :Idi non-stop pr
 STR_WAYPOINTNAME_CITY                                           : Čvorište{TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Čvorište {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Čvorište
-STR_LANDINFO_WAYPOINT.gen                                       :čvorišta
-STR_LANDINFO_WAYPOINT.dat                                       :čvorištu
 
 STR_WAYPOINT                                                    :{WHITE}Čvorište
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Odaberi vrstu čvorišta
@@ -2124,7 +2080,7 @@ STR_SV_STNAME_TRANSFER                                          :{STRING} Transf
 STR_SV_STNAME_HALT                                              :{STRING} Zaustavi
 STR_SV_STNAME_VALLEY                                            :{STRING} Dolina
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Visine
-STR_SV_STNAME_WOODS                                             :{STRING} Šume
+STR_SV_STNAME_WOODS                                             :{STRING} šume
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Jezero
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Burza
 STR_SV_STNAME_AIRPORT                                           :{STRING} Zračna luka
@@ -2424,7 +2380,7 @@ STR_801E_OIL_TANKER                                             :Naftna cisterna
 STR_801F_LIVESTOCK_VAN                                          :Kamion za stoku
 STR_8020_GOODS_VAN                                              :Kamion za robu
 STR_8021_GRAIN_HOPPER                                           :Tegljač žita
-STR_8022_WOOD_TRUCK                                             :Kamion za drvo
+STR_8022_WOOD_TRUCK                                             :Kamion za drva
 STR_8023_IRON_ORE_HOPPER                                        :Tegljač željeza
 STR_8024_STEEL_TRUCK                                            :Kamion za čelik
 STR_8025_ARMORED_VAN                                            :Oklopljeni kombi
@@ -2454,7 +2410,7 @@ STR_803C_OIL_TANKER                                             :Naftni tanker
 STR_803D_LIVESTOCK_VAN                                          :Kamion za stoku
 STR_803E_GOODS_VAN                                              :Kamion za robu
 STR_803F_GRAIN_HOPPER                                           :Tegljač žita
-STR_8040_WOOD_TRUCK                                             :Kamion za drvo
+STR_8040_WOOD_TRUCK                                             :Kamion za drva
 STR_8041_IRON_ORE_HOPPER                                        :Tegljač željeza
 STR_8042_STEEL_TRUCK                                            :Kamion za željezo
 STR_8043_ARMORED_VAN                                            :Oklopno vozilo
@@ -2534,9 +2490,9 @@ STR_808C_GOSS_GOODS_TRUCK                                       :Goss Robni Kami
 STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford Kamion za žitarice
 STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas Kamion za žitarice
 STR_808F_GOSS_GRAIN_TRUCK                                       :Goss Kamion za žitarice
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Kamion za drvo
-STR_8091_FOSTER_WOOD_TRUCK                                      :Foster Kamion za drvo
-STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Kamion za Drvo
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Kamion za drva
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster Kamion za drva
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Kamion za drva
 STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS Kamion za željeznu rudu
 STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl Kamion za željezu rudu
 STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy Kamion za željeznu rudu
