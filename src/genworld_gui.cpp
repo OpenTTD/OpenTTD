@@ -510,7 +510,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _generate_landscape_desc = {
-	WDP_CENTER, WDP_CENTER, 338, 268,
+	WDP_CENTER, WDP_CENTER, 338, 268, 338, 268,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_generate_landscape_widgets,
@@ -518,7 +518,7 @@ static const WindowDesc _generate_landscape_desc = {
 };
 
 static const WindowDesc _heightmap_load_desc = {
-	WDP_CENTER, WDP_CENTER, 338, 236,
+	WDP_CENTER, WDP_CENTER, 338, 236, 338, 236,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
 	_heightmap_load_widgets,
@@ -743,7 +743,7 @@ static const Widget _create_scenario_widgets[] = {
 };
 
 static const WindowDesc _create_scenario_desc = {
-	WDP_CENTER, WDP_CENTER, 338, 170,
+	WDP_CENTER, WDP_CENTER, 338, 170, 338, 170,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
 	_create_scenario_widgets,
@@ -823,7 +823,7 @@ static void ShowTerrainProgressProc(Window* w, WindowEvent* e)
 }
 
 static const WindowDesc _show_terrain_progress_desc = {
-	WDP_CENTER, WDP_CENTER, 181, 97,
+	WDP_CENTER, WDP_CENTER, 181, 97, 181, 97,
 	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_show_terrain_progress_widgets,

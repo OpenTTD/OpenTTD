@@ -219,22 +219,22 @@ static const Widget _newgrf_add_dlg_widgets[] = {
 {    WWT_CAPTION,   RESIZE_RIGHT, 14,  11, 306,   0,  13, STR_NEWGRF_ADD_CAPTION,  STR_018C_WINDOW_TITLE_DRAG_THIS },
 
 /* List of files */
-{      WWT_PANEL,      RESIZE_RB, 14,   0, 294,  14, 221, 0x0,                     STR_NULL },
-{      WWT_INSET,      RESIZE_RB, 14,   2, 292,  16, 219, 0x0,                     STR_NULL },
-{  WWT_SCROLLBAR,     RESIZE_LRB, 14, 295, 306,  14, 221, 0x0,                     STR_NULL },
+{      WWT_PANEL,      RESIZE_RB, 14,   0, 294,  14, 121, 0x0,                     STR_NULL },
+{      WWT_INSET,      RESIZE_RB, 14,   2, 292,  16, 119, 0x0,                     STR_NULL },
+{  WWT_SCROLLBAR,     RESIZE_LRB, 14, 295, 306,  14, 121, 0x0,                     STR_NULL },
 
 /* NewGRF file info */
-{      WWT_PANEL,     RESIZE_RTB, 14,   0, 306, 222, 324, 0x0,                     STR_NULL },
+{      WWT_PANEL,     RESIZE_RTB, 14,   0, 306, 122, 224, 0x0,                     STR_NULL },
 
-{ WWT_PUSHTXTBTN,     RESIZE_RTB, 14,   0, 146, 325, 336, STR_NEWGRF_ADD_FILE,     STR_NEWGRF_ADD_FILE_TIP },
-{ WWT_PUSHTXTBTN,    RESIZE_LRTB, 14, 147, 294, 325, 336, STR_NEWGRF_RESCAN_FILES, STR_NEWGRF_RESCAN_FILES_TIP },
-{  WWT_RESIZEBOX,    RESIZE_LRTB, 14, 295, 306, 325, 336, 0x0,                     STR_RESIZE_BUTTON },
+{ WWT_PUSHTXTBTN,     RESIZE_RTB, 14,   0, 146, 225, 236, STR_NEWGRF_ADD_FILE,     STR_NEWGRF_ADD_FILE_TIP },
+{ WWT_PUSHTXTBTN,    RESIZE_LRTB, 14, 147, 294, 225, 236, STR_NEWGRF_RESCAN_FILES, STR_NEWGRF_RESCAN_FILES_TIP },
+{  WWT_RESIZEBOX,    RESIZE_LRTB, 14, 295, 306, 225, 236, 0x0,                     STR_RESIZE_BUTTON },
 {   WIDGETS_END },
 };
 
 
 static const WindowDesc _newgrf_add_dlg_desc = {
-	WDP_CENTER, WDP_CENTER, 307, 337,
+	WDP_CENTER, WDP_CENTER, 307, 237, 307, 337,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_add_dlg_widgets,
@@ -549,7 +549,7 @@ static const Widget _newgrf_widgets[] = {
 
 
 static const WindowDesc _newgrf_desc = {
-	WDP_CENTER, WDP_CENTER, 300, 225,
+	WDP_CENTER, WDP_CENTER, 300, 225, 300, 225,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_widgets,

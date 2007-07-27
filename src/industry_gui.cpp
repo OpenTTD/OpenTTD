@@ -363,7 +363,7 @@ static const Widget _build_dynamic_industry_widgets[] = {
 };
 
 static const WindowDesc _build_industry_dynamic_desc = {
-	WDP_AUTO, WDP_AUTO, 170, 212,
+	WDP_AUTO, WDP_AUTO, 170, 212, 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_build_dynamic_industry_widgets,
@@ -598,7 +598,7 @@ static const Widget _industry_view_widgets[] = {
 };
 
 static const WindowDesc _industry_view_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 160,
+	WDP_AUTO, WDP_AUTO, 260, 160, 260, 160,
 	WC_INDUSTRY_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_industry_view_widgets,
@@ -855,7 +855,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 /* Industry List */
 static const WindowDesc _industry_directory_desc = {
-	WDP_AUTO, WDP_AUTO, 508, 190,
+	WDP_AUTO, WDP_AUTO, 508, 190, 508, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_industry_directory_widgets,

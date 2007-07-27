@@ -1404,7 +1404,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _scen_edit_land_gen_desc = {
-	WDP_AUTO, WDP_AUTO, 182, 103,
+	WDP_AUTO, WDP_AUTO, 182, 103, 182, 103,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_land_gen_widgets,
@@ -1525,7 +1525,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _scen_edit_town_gen_desc = {
-	WDP_AUTO, WDP_AUTO, 160, 95,
+	WDP_AUTO, WDP_AUTO, 160, 95, 160, 95,
 	WC_SCEN_TOWN_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_town_gen_widgets,
@@ -1751,7 +1751,7 @@ static const Widget _toolb_normal_widgets[] = {
 };
 
 static const WindowDesc _toolb_normal_desc = {
-	0, 0, 640, 22,
+	0, 0, 640, 22, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_toolb_normal_widgets,
@@ -1902,7 +1902,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _toolb_scen_desc = {
-	0, 0, 640, 22,
+	0, 0, 640, 22, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_toolb_scen_widgets,
@@ -2039,7 +2039,7 @@ static const Widget _main_status_widgets[] = {
 };
 
 static WindowDesc _main_status_desc = {
-	WDP_CENTER, 0, 640, 12,
+	WDP_CENTER, 0, 640, 12, 640, 12,
 	WC_STATUS_BAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_main_status_widgets,

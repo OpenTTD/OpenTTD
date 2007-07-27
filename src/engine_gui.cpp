@@ -104,7 +104,7 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _engine_preview_desc = {
-	WDP_CENTER, WDP_CENTER, 300, 192,
+	WDP_CENTER, WDP_CENTER, 300, 192, 300, 192,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_engine_preview_widgets,

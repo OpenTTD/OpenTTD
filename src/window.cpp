@@ -590,15 +590,17 @@ static Window *FindFreeWindow()
  * Only addition here is window_number, which is the window_number being assigned to the new window
  * @param x offset in pixels from the left of the screen
  * @param y offset in pixels from the top of the screen
- * @param width width in pixels of the window
- * @param height height in pixels of the window
+ * @param min_width minimum width in pixels of the window
+ * @param min_height minimum height in pixels of the window
+ * @param def_width default width in pixels of the window
+ * @param def_height default height in pixels of the window
  * @param *proc see WindowProc function to call when any messages/updates happen to the window
  * @param cls see WindowClass class of the window, used for identification and grouping
  * @param *widget see Widget pointer to the window layout and various elements
  * @param window_number number being assigned to the new window
  * @return Window pointer of the newly created window */
 static Window *LocalAllocateWindow(
-							int x, int y, int width, int height,
+							int x, int y, int min_width, int min_height, int def_width, int def_height,
 							WindowProc *proc, WindowClass cls, const Widget *widget, int window_number)
 {
 	Window *w = FindFreeWindow();
@@ -617,12 +619,12 @@ static Window *LocalAllocateWindow(
 	w->caption_color = 0xFF;
 	w->left = x;
 	w->top = y;
-	w->width = width;
-	w->height = height;
+	w->width = min_width;
+	w->height = min_height;
 	w->wndproc = proc;
 	AssignWidgetToWindow(w, widget);
-	w->resize.width = width;
-	w->resize.height = height;
+	w->resize.width = min_width;
+	w->resize.height = min_height;
 	w->resize.step_width = 1;
 	w->resize.step_height = 1;
 	w->window_number = window_number;
@@ -653,6 +655,23 @@ static Window *LocalAllocateWindow(
 	}
 
 	CallWindowEventNP(w, WE_CREATE);
+
+	/* Try to make windows smaller when our window is too small */
+	if (min_width != def_width || min_height != def_height) {
+		int enlarge_x = max(min(def_width  - min_width,  _screen.width  - min_width),  0);
+		int enlarge_y = max(min(def_height - min_height, _screen.height - min_height), 0);
+
+		/* X and Y has to go by step.. calculate it.
+		 * The cast to int is necessary else x/y are implicitly casted to
+		 * unsigned int, which won't work. */
+		if (w->resize.step_width  > 1) enlarge_x -= enlarge_x % (int)w->resize.step_width;
+		if (w->resize.step_height > 1) enlarge_y -= enlarge_y % (int)w->resize.step_height;
+
+		ResizeWindow(w, enlarge_x, enlarge_y);
+		if (w->left < 0) w->left = 0;
+		if (w->top  < 0) w->top  = 0;
+	}
+
 	SetWindowDirty(w);
 
 	return w;
@@ -675,7 +694,7 @@ Window *AllocateWindow(
 							int x, int y, int width, int height,
 							WindowProc *proc, WindowClass cls, const Widget *widget)
 {
-	return LocalAllocateWindow(x, y, width, height, proc, cls, widget, 0);
+	return LocalAllocateWindow(x, y, width, height, width, height, proc, cls, widget, 0);
 }
 
 struct SizeRect {
@@ -800,24 +819,24 @@ static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number
 			w->left < _screen.width - 20 && w->left > -60 && w->top < _screen.height - 20) {
 
 		pt.x = w->left + 10;
-		if (pt.x > _screen.width + 10 - desc->width) {
-			pt.x = (_screen.width + 10 - desc->width) - 20;
+		if (pt.x > _screen.width + 10 - desc->default_width) {
+			pt.x = (_screen.width + 10 - desc->default_width) - 20;
 		}
 		pt.y = w->top + 10;
 	} else {
 		switch (desc->left) {
 			case WDP_ALIGN_TBR: { /* Align the right side with the top toolbar */
 				w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-				pt.x = (w->left + w->width) - desc->width;
+				pt.x = (w->left + w->width) - desc->default_width;
 			} break;
 			case WDP_ALIGN_TBL: /* Align the left side with the top toolbar */
 				pt.x = FindWindowById(WC_MAIN_TOOLBAR, 0)->left;
 				break;
 			case WDP_AUTO: /* Find a good automatic position for the window */
-				pt = GetAutoPlacePosition(desc->width, desc->height);
+				pt = GetAutoPlacePosition(desc->default_width, desc->default_height);
 				goto allocate_window;
 			case WDP_CENTER: /* Centre the window horizontally */
-				pt.x = (_screen.width - desc->width) / 2;
+				pt.x = (_screen.width - desc->default_width) / 2;
 				break;
 			default:
 				pt.x = desc->left;
@@ -826,7 +845,7 @@ static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number
 
 		switch (desc->top) {
 			case WDP_CENTER: /* Centre the window vertically */
-				pt.y = (_screen.height - desc->height) / 2;
+				pt.y = (_screen.height - desc->default_height) / 2;
 				break;
 			/* WDP_AUTO sets the position at once and is controlled by desc->left.
 			 * Both left and top must be set to WDP_AUTO */
@@ -842,7 +861,7 @@ static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number
 	}
 
 allocate_window:
-	w = LocalAllocateWindow(pt.x, pt.y, desc->width, desc->height, desc->proc, desc->cls, desc->widgets, window_number);
+	w = LocalAllocateWindow(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->default_width, desc->default_height, desc->proc, desc->cls, desc->widgets, window_number);
 	w->desc_flags = desc->flags;
 	return w;
 }
@@ -1073,6 +1092,12 @@ void ResizeWindow(Window *w, int x, int y)
 	Widget *wi;
 	bool resize_height = false;
 	bool resize_width = false;
+
+	/* X and Y has to go by step.. calculate it.
+	 * The cast to int is necessary else x/y are implicitly casted to
+	 * unsigned int, which won't work. */
+	if (w->resize.step_width  > 1) x -= x % (int)w->resize.step_width;
+	if (w->resize.step_height > 1) y -= y % (int)w->resize.step_height;
 
 	if (x == 0 && y == 0) return;
 

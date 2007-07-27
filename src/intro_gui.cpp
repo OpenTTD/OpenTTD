@@ -99,7 +99,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _select_game_desc = {
-	WDP_CENTER, WDP_CENTER, 336, 195,
+	WDP_CENTER, WDP_CENTER, 336, 195, 336, 195,
 	WC_SELECT_GAME, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_game_widgets,

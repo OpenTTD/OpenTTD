@@ -156,7 +156,7 @@ static const Widget _ship_details_widgets[] = {
 };
 
 static const WindowDesc _ship_details_desc = {
-	WDP_AUTO, WDP_AUTO, 405, 113,
+	WDP_AUTO, WDP_AUTO, 405, 113, 405, 113,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_ship_details_widgets,
@@ -334,7 +334,7 @@ static const Widget _ship_view_widgets[] = {
 };
 
 static const WindowDesc _ship_view_desc = {
-	WDP_AUTO, WDP_AUTO, 250, 116,
+	WDP_AUTO, WDP_AUTO, 250, 116, 250, 116,
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_ship_view_widgets,

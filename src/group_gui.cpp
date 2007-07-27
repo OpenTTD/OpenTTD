@@ -771,7 +771,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 
 static const WindowDesc _group_desc = {
-	WDP_AUTO, WDP_AUTO, 526, 246,
+	WDP_AUTO, WDP_AUTO, 526, 246, 526, 246,
 	WC_TRAINS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_group_widgets,

@@ -191,7 +191,7 @@ struct WindowEvent {
 };
 
 struct WindowDesc {
-	int16 left, top, width, height;
+	int16 left, top, minimum_width, minimum_height, default_width, default_height;
 	WindowClass cls;
 	WindowClass parent_cls;
 	uint32 flags;
