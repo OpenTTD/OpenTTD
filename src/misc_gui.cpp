@@ -1331,11 +1331,11 @@ static const Widget _load_dialog_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE, STR_SORT_ORDER_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,              STR_NULL},
-{      WWT_PANEL,     RESIZE_RB,    14,     0,   256,    48,   293, 0x0,              STR_NULL},
+{      WWT_PANEL,     RESIZE_RB,    14,     0,   256,    48,   153, 0x0,              STR_NULL},
 { WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,   STR_SAVELOAD_HOME_BUTTON},
-{      WWT_INSET,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   281, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   282,   293, 0x0,              STR_RESIZE_BUTTON},
+{      WWT_INSET,     RESIZE_RB,    14,     2,   243,    50,   151, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   141, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   142,   153, 0x0,              STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1345,15 +1345,15 @@ static const Widget _save_dialog_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE, STR_SORT_ORDER_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,              STR_NULL},
-{      WWT_PANEL,     RESIZE_RB,    14,     0,   256,    48,   291, 0x0,              STR_NULL},
+{      WWT_PANEL,     RESIZE_RB,    14,     0,   256,    48,   151, 0x0,              STR_NULL},
 { WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,   STR_SAVELOAD_HOME_BUTTON},
-{      WWT_INSET,     RESIZE_RB,    14,     2,   243,    50,   290, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   291, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,    14,     0,   256,   292,   307, 0x0,              STR_NULL},
-{      WWT_PANEL,    RESIZE_RTB,    14,     2,   254,   294,   305, 0x0,              STR_400B_CURRENTLY_SELECTED_NAME},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   308,   319, STR_4003_DELETE,  STR_400C_DELETE_THE_CURRENTLY_SELECTED},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   244,   308,   319, STR_4002_SAVE,    STR_400D_SAVE_THE_CURRENT_GAME_USING},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   308,   319, 0x0,              STR_RESIZE_BUTTON},
+{      WWT_INSET,     RESIZE_RB,    14,     2,   243,    50,   150, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   151, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   256,   152,   167, 0x0,              STR_NULL},
+{      WWT_PANEL,    RESIZE_RTB,    14,     2,   254,   154,   165, 0x0,              STR_400B_CURRENTLY_SELECTED_NAME},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   168,   179, STR_4003_DELETE,  STR_400C_DELETE_THE_CURRENTLY_SELECTED},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   244,   168,   179, STR_4002_SAVE,    STR_400D_SAVE_THE_CURRENT_GAME_USING},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   168,   179, 0x0,              STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1437,6 +1437,10 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_CREATE: // Set up OPENTTD button
+		w->vscroll.cap = 10;
+		w->resize.step_width = 2;
+		w->resize.step_height = 10;
+
 		o_dir.type = FIOS_TYPE_DIRECT;
 		switch (_saveload_mode) {
 			case SLD_SAVE_GAME:
@@ -1627,7 +1631,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _load_dialog_desc = {
-	WDP_CENTER, WDP_CENTER, 257, 294, 257, 294,
+	WDP_CENTER, WDP_CENTER, 257, 154, 257, 294,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_load_dialog_widgets,
@@ -1635,7 +1639,7 @@ static const WindowDesc _load_dialog_desc = {
 };
 
 static const WindowDesc _save_dialog_desc = {
-	WDP_CENTER, WDP_CENTER, 257, 320, 257, 320,
+	WDP_CENTER, WDP_CENTER, 257, 180, 257, 320,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_save_dialog_widgets,
@@ -1672,10 +1676,6 @@ void ShowSaveLoadDialog(int mode)
 	assert((uint)mode < lengthof(saveload_captions));
 	w = AllocateWindowDesc(sld);
 	w->widget[1].data = saveload_captions[mode];
-	w->vscroll.cap = 24;
-	w->resize.step_width = 2;
-	w->resize.step_height = 10;
-	w->resize.height = w->height - 14 * 10; // Minimum of 10 items
 	LowerWindowWidget(w, 7);
 
 	WP(w, querystr_d).afilter = CS_ALPHANUMERAL;
