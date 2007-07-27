@@ -1268,14 +1268,13 @@ HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, 
 /** Determine the current user's locale. */
 const char *GetCurrentLocale(const char *)
 {
-	char lang[32], country[32];
-	static char retbuf[64];
+	char lang[9], country[9];
 	if (GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_SISO639LANGNAME, lang, lengthof(lang)) == 0 ||
 	    GetLocaleInfoA(LOCALE_USER_DEFAULT, LOCALE_SISO3166CTRYNAME, country, lengthof(country)) == 0) {
 		/* Unable to retrieve the locale. */
 		return NULL;
 	}
 	/* Format it as 'en_us'. */
-	sprintf(retbuf, "%c%c_%c%c", lang[0], lang[1], country[0], country[1]);
+	static char retbuf[6] = {lang[0], lang[1], '_', country[0], country[1], 0};
 	return retbuf;
 }
