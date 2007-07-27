@@ -1276,6 +1276,6 @@ const char *GetCurrentLocale(const char *)
 		return NULL;
 	}
 	/* Format it as 'en_us'. */
-	sprintf(retbuf, "%c%c_%c%c\0", lang[0], lang[1], country[0], country[1]);
+	sprintf(retbuf, "%c%c_%c%c", lang[0], lang[1], country[0], country[1]);
 	return retbuf;
 }
