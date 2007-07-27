@@ -1612,7 +1612,12 @@ Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table));
 }
 
-static const byte _numof_industry_table[5][11] = {
+enum {
+	NB_NUMOFINDUSTRY = 11,
+	NB_DIFFICULTY_LEVEL = 5,
+};
+
+static const byte _numof_industry_table[NB_DIFFICULTY_LEVEL][NB_NUMOFINDUSTRY] = {
 	/* difficulty settings for number of industries */
 	{0, 0, 0, 0, 0, 0, 0, 0,  0,  0,  0},   //none
 	{0, 1, 1, 1, 1, 1, 1, 1,  1,  1,  1},   //very low
@@ -1627,7 +1632,9 @@ static const byte _numof_industry_table[5][11] = {
  * @param amount of industries that need to be built */
 static void PlaceInitialIndustry(IndustryType type, int amount)
 {
-	int num = _numof_industry_table[_opt.diff.number_industries][amount];
+	/* We need to bypass the amount given in parameter if it exceeds the maximum dimension of the
+	 * _numof_industry_table.  newgrf can specify a big amount */
+	int num = (amount > NB_NUMOFINDUSTRY) ? amount : _numof_industry_table[_opt.diff.number_industries][amount];
 	const IndustrySpec *ind_spc = GetIndustrySpec(type);
 
 	/* These are always placed next to the coastline, so we scale by the perimeter instead. */
@@ -1676,7 +1683,7 @@ void GenerateIndustries()
 				/* once the chance of appearance is determind, it have to be scaled by
 				 * the difficulty level. The "chance" in question is more an index into
 				 * the _numof_industry_table,in fact */
-				int num = (chance < 11) ? chance : _numof_industry_table[_opt.diff.number_industries][chance];
+				int num = (chance > NB_NUMOFINDUSTRY) ? chance : _numof_industry_table[_opt.diff.number_industries][chance];
 
 				/* These are always placed next to the coastline, so we scale by the perimeter instead. */
 				num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
