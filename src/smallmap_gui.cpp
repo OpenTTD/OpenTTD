@@ -30,21 +30,21 @@
 
 static const Widget _smallmap_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{   WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   433,     0,    13, STR_00B0_MAP,            STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_STICKYBOX,     RESIZE_LR,    13,   434,   445,     0,    13, 0x0,                     STR_STICKY_BUTTON},
-{     WWT_PANEL,     RESIZE_RB,    13,     0,   445,    14,   257, 0x0,                     STR_NULL},
-{     WWT_INSET,     RESIZE_RB,    13,     2,   443,    16,   255, 0x0,                     STR_NULL},
-{    WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   258,   279, SPR_IMG_SHOW_COUNTOURS,  STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
-{    WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   258,   279, SPR_IMG_SHOW_VEHICLES,   STR_0192_SHOW_VEHICLES_ON_MAP},
-{    WWT_IMGBTN,   RESIZE_LRTB,    13,   424,   445,   258,   279, SPR_IMG_INDUSTRY,        STR_0193_SHOW_INDUSTRIES_ON_MAP},
-{    WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   280,   301, SPR_IMG_SHOW_ROUTES,     STR_0194_SHOW_TRANSPORT_ROUTES_ON},
-{    WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   280,   301, SPR_IMG_PLANTTREES,      STR_0195_SHOW_VEGETATION_ON_MAP},
-{    WWT_IMGBTN,   RESIZE_LRTB,    13,   424,   445,   280,   301, SPR_IMG_COMPANY_GENERAL, STR_0196_SHOW_LAND_OWNERS_ON_MAP},
-{    WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   258,   279, SPR_IMG_SMALLMAP,        STR_SMALLMAP_CENTER},
-{    WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   280,   301, SPR_IMG_TOWN,            STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
-{     WWT_PANEL,    RESIZE_RTB,    13,     0,   357,   258,   301, 0x0,                     STR_NULL},
-{     WWT_PANEL,    RESIZE_RTB,    13,     0,   433,   302,   313, 0x0,                     STR_NULL},
-{ WWT_RESIZEBOX,   RESIZE_LRTB,    13,   434,   445,   302,   313, 0x0,                     STR_RESIZE_BUTTON},
+{   WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   337,     0,    13, STR_00B0_MAP,            STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_STICKYBOX,     RESIZE_LR,    13,   338,   349,     0,    13, 0x0,                     STR_STICKY_BUTTON},
+{     WWT_PANEL,     RESIZE_RB,    13,     0,   349,    14,   157, 0x0,                     STR_NULL},
+{     WWT_INSET,     RESIZE_RB,    13,     2,   347,    16,   155, 0x0,                     STR_NULL},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   284,   305,   158,   179, SPR_IMG_SHOW_COUNTOURS,  STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   306,   327,   158,   179, SPR_IMG_SHOW_VEHICLES,   STR_0192_SHOW_VEHICLES_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   328,   349,   158,   179, SPR_IMG_INDUSTRY,        STR_0193_SHOW_INDUSTRIES_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   284,   307,   180,   201, SPR_IMG_SHOW_ROUTES,     STR_0194_SHOW_TRANSPORT_ROUTES_ON},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   306,   327,   180,   201, SPR_IMG_PLANTTREES,      STR_0195_SHOW_VEGETATION_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   328,   349,   180,   201, SPR_IMG_COMPANY_GENERAL, STR_0196_SHOW_LAND_OWNERS_ON_MAP},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   262,   283,   158,   179, SPR_IMG_SMALLMAP,        STR_SMALLMAP_CENTER},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   262,   283,   180,   201, SPR_IMG_TOWN,            STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
+{     WWT_PANEL,    RESIZE_RTB,    13,     0,   261,   158,   201, 0x0,                     STR_NULL},
+{     WWT_PANEL,    RESIZE_RTB,    13,     0,   337,   202,   213, 0x0,                     STR_NULL},
+{ WWT_RESIZEBOX,   RESIZE_LRTB,    13,   338,   349,   202,   213, 0x0,                     STR_RESIZE_BUTTON},
 {  WIDGETS_END},
 };
 
@@ -912,7 +912,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _smallmap_desc = {
-	WDP_AUTO, WDP_AUTO, 446, 314, 446, 314,
+	WDP_AUTO, WDP_AUTO, 350, 214, 446, 314,
 	WC_SMALLMAP, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_smallmap_widgets,
@@ -928,8 +928,6 @@ void ShowSmallMap()
 
 	LowerWindowWidget(w, _smallmap_type + 5);
 	SetWindowWidgetLoweredState(w, 12, _smallmap_show_towns);
-	w->resize.width = 350;
-	w->resize.height = 250;
 
 	SmallMapCenterOnCurrentPos(w);
 }
