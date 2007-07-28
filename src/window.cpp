@@ -690,7 +690,7 @@ static Window *LocalAllocateWindow(
 	}
 
 	const Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	w->top  = max(w->top, (wt == NULL || w == wt) ? 0 : wt->height);
+	w->top  = max(w->top, (wt == NULL || w == wt || y == 0) ? 0 : wt->height);
 	w->left = max(w->left, 0);
 
 	SetWindowDirty(w);
