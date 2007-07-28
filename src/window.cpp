@@ -656,8 +656,12 @@ static Window *LocalAllocateWindow(
 
 	CallWindowEventNP(w, WE_CREATE);
 
-	/* Try to make windows smaller when our window is too small */
-	if (min_width != def_width || min_height != def_height) {
+	/* Try to make windows smaller when our window is too small.
+	 * w->(width|height) is normally the same as min_(width|height),
+	 * but this way the GUIs can be made a little more dynamic;
+	 * one can use the same spec for multiple windows and those
+	 * can then determine the real minimum size of the window. */
+	if (w->width != def_width || w->height != def_height) {
 		/* Think about the overlapping toolbars when determining the minimum window size */
 		int free_height = _screen.height;
 		const Window *wt = FindWindowById(WC_STATUS_BAR, 0);
@@ -665,8 +669,8 @@ static Window *LocalAllocateWindow(
 		wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
 		if (wt != NULL) free_height -= wt->height;
 
-		int enlarge_x = max(min(def_width  - min_width,  _screen.width - min_width),  0);
-		int enlarge_y = max(min(def_height - min_height, free_height   - min_height), 0);
+		int enlarge_x = max(min(def_width  - w->width,  _screen.width - w->width),  0);
+		int enlarge_y = max(min(def_height - w->height, free_height   - w->height), 0);
 
 		/* X and Y has to go by step.. calculate it.
 		 * The cast to int is necessary else x/y are implicitly casted to
