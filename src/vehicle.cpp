@@ -859,7 +859,7 @@ static void DoDrawVehicle(const Vehicle *v)
 	}
 
 	AddSortableSpriteToDraw(image, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
-		v->sprite_width, v->sprite_height, v->z_height, v->z_pos, v->vehstatus & VS_SHADOW);
+		v->sprite_width, v->sprite_height, v->z_height, v->z_pos, (v->vehstatus & VS_SHADOW) != 0);
 }
 
 void ViewportAddVehicles(DrawPixelInfo *dpi)
