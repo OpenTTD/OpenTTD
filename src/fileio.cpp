@@ -66,8 +66,8 @@ static void FioRestoreFile(int slot)
 {
 	/* Do we still have the file open, or should we reopen it? */
 	if (_fio.handles[slot] == NULL) {
-		DEBUG(misc, 6, "Restoring file '%s' in slot '%d' from disk", _fio.filename[slot], slot);
-		FioOpenFile(slot, _fio.filename[slot]);
+		DEBUG(misc, 6, "Restoring file '%s' in slot '%d' from disk", _fio.filenames[slot], slot);
+		FioOpenFile(slot, _fio.filenames[slot]);
 	}
 	_fio.usage_count[slot]++;
 }
@@ -165,7 +165,7 @@ static void FioFreeHandle()
 			}
 		}
 		assert(slot != -1);
-		DEBUG(misc, 6, "Closing filehandler '%s' in slot '%d' because of fd-limit", _fio.filename[slot], slot);
+		DEBUG(misc, 6, "Closing filehandler '%s' in slot '%d' because of fd-limit", _fio.filenames[slot], slot);
 		FioCloseFile(slot);
 	}
 }
