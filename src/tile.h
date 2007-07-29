@@ -16,54 +16,115 @@
 /** Maximum allowed snowline height */
 #define MAX_SNOWLINE_HEIGHT (MAX_TILE_HEIGHT - 2)
 
+/**
+ * The different type of a tile.
+ *
+ * Each tile belongs to one type, according whatever is build on it.
+ *
+ * @note A railway with a crossing street is marked as MP_ROAD.
+ */
 enum TileType {
-	MP_CLEAR,
-	MP_RAILWAY,
-	MP_STREET,
-	MP_HOUSE,
-	MP_TREES,
-	MP_STATION,
-	MP_WATER,
-	MP_VOID, // invisible tiles at the SW and SE border
-	MP_INDUSTRY,
-	MP_TUNNELBRIDGE,
-	MP_UNMOVABLE,
+	MP_CLEAR,               ///< A tile without any structures, i.e. grass, rocks, farm fields etc.
+	MP_RAILWAY,             ///< A railway
+	MP_STREET,              ///< A street
+	MP_HOUSE,               ///< A house by a town
+	MP_TREES,               ///< Tile got trees
+	MP_STATION,             ///< A tile of a station
+	MP_WATER,               ///< Water tile
+	MP_VOID,                ///< Invisible tiles at the SW and SE border
+	MP_INDUSTRY,            ///< Part of an industry
+	MP_TUNNELBRIDGE,        ///< Tunnel entry/exit and bridge heads
+	MP_UNMOVABLE,           ///< Contains an object with cannot be removed like transmitters
 };
 
+/**
+ * Additional infos of a tile on a tropic game.
+ *
+ * Each non-water tile in a tropic game is either a rainforest tile or a
+ * desert one.
+ */
 enum TropicZone {
-	TROPICZONE_INVALID    = 0,
-	TROPICZONE_DESERT     = 1,
-	TROPICZONE_RAINFOREST = 2,
+	TROPICZONE_INVALID    = 0,      ///< Invalid tropiczone-type
+	TROPICZONE_DESERT     = 1,      ///< Tile is desert
+	TROPICZONE_RAINFOREST = 2,      ///< Normal grass tile
 };
 
 Slope GetTileSlope(TileIndex tile, uint *h);
 uint GetTileZ(TileIndex tile);
 uint GetTileMaxZ(TileIndex tile);
 
+/**
+ * Returns the height of a tile
+ *
+ * This function returns the height of the northern corner of a tile.
+ * This is saved in the global map-array. It does not take affect by
+ * any slope-data of the tile.
+ *
+ * @param tile The tile to get the height from
+ * @return the height of the tile
+ * @pre tile < MapSize()
+ */
 static inline uint TileHeight(TileIndex tile)
 {
 	assert(tile < MapSize());
 	return GB(_m[tile].type_height, 0, 4);
 }
 
+/**
+ * Sets the height of a tile.
+ *
+ * This function sets the height of the northern corner of a tile.
+ *
+ * @param tile The tile to change the height
+ * @param height The new height value of the tile
+ * @pre tile < MapSize()
+ * @pre heigth <= MAX_TILE_HEIGHT
+ */
 static inline void SetTileHeight(TileIndex tile, uint height)
 {
 	assert(tile < MapSize());
-	assert(height < 16);
+	assert(height <= MAX_TILE_HEIGHT);
 	SB(_m[tile].type_height, 0, 4, height);
 }
 
+/**
+ * Returns the height of a tile in pixels.
+ *
+ * This function returns the height of the northern corner of a tile in pixels.
+ *
+ * @param tile The tile to get the height
+ * @return The height of the tile in pixel
+ */
 static inline uint TilePixelHeight(TileIndex tile)
 {
 	return TileHeight(tile) * TILE_HEIGHT;
 }
 
+/**
+ * Get the tiletype of a given tile.
+ *
+ * @param tile The tile to get the TileType
+ * @return The tiletype of the tile
+ * @pre tile < MapSize()
+ */
 static inline TileType GetTileType(TileIndex tile)
 {
 	assert(tile < MapSize());
 	return (TileType)GB(_m[tile].type_height, 4, 4);
 }
 
+/**
+ * Set the type of a tile
+ *
+ * This functions sets the type of a tile. If the type
+ * MP_VOID is selected the tile must be at the south-west or
+ * south-east edges of the map and vice versa.
+ *
+ * @param tile The tile to save the new type
+ * @param type The type to save
+ * @pre tile < MapSize()
+ * @pre type MP_VOID <=> tile is on the south-east or south-west edge.
+ */
 static inline void SetTileType(TileIndex tile, TileType type)
 {
 	assert(tile < MapSize());
@@ -73,12 +134,32 @@ static inline void SetTileType(TileIndex tile, TileType type)
 	SB(_m[tile].type_height, 4, 4, type);
 }
 
+/**
+ * Checks if a tile is a give tiletype.
+ *
+ * This function checks if a tile got the given tiletype.
+ *
+ * @param tile The tile to check
+ * @param type The type to check agains
+ * @return true If the type matches agains the type of the tile
+ */
 static inline bool IsTileType(TileIndex tile, TileType type)
 {
 	return GetTileType(tile) == type;
 }
 
-
+/**
+ * Returns the owner of a tile
+ *
+ * This function returns the owner of a tile. This cannot used
+ * for tiles which type is one of MP_HOUSE, MP_VOID and MP_INDUSTRY
+ * as no player owned any of these buildings.
+ *
+ * @param tile The tile to check
+ * @return The owner of the tile
+ * @pre tile < MapSize()
+ * @pre The type of the tile must not be MP_HOUSE, MP_VOID and MP_INDUSTRY
+ */
 static inline Owner GetTileOwner(TileIndex tile)
 {
 	assert(tile < MapSize());
@@ -89,6 +170,17 @@ static inline Owner GetTileOwner(TileIndex tile)
 	return (Owner)_m[tile].m1;
 }
 
+/**
+ * Sets the owner of a tile
+ *
+ * This function sets the owner status of a tile. Note that you cannot
+ * set a owner for tiles of type MP_HOUSE, MP_VOID and MP_INDUSTRY.
+ *
+ * @param tile The tile to change the owner status.
+ * @param owner The new owner.
+ * @pre tile < MapSize()
+ * @pre The type of the tile must not be MP_HOUSE, MP_VOID and MP_INDUSTRY
+ */
 static inline void SetTileOwner(TileIndex tile, Owner owner)
 {
 	assert(tile < MapSize());
@@ -99,6 +191,13 @@ static inline void SetTileOwner(TileIndex tile, Owner owner)
 	_m[tile].m1 = owner;
 }
 
+/**
+ * Checks if a tile belongs to the given owner
+ *
+ * @param tile The tile to check
+ * @param owner The owner to check agains
+ * @return True if a tile belongs the the given owner
+ */
 static inline bool IsTileOwner(TileIndex tile, Owner owner)
 {
 	return GetTileOwner(tile) == owner;
