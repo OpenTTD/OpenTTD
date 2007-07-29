@@ -744,9 +744,9 @@ static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base
 	return w;
 }
 
-static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int gray)
+static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
 {
-	x += w->left;
+	int x = w->widget[main_button].left + w->left;
 
 	LowerWindowWidget(w, main_button);
 	InvalidateWidget(w, main_button);
@@ -795,17 +795,17 @@ static void ToolbarSubsidiesClick(Window *w)
 
 static void ToolbarStationsClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, 162, 7, 0);
+	PopupMainPlayerToolbMenu(w, 7, 0);
 }
 
 static void ToolbarMoneyClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, 191, 8, 0);
+	PopupMainPlayerToolbMenu(w, 8, 0);
 }
 
 static void ToolbarPlayersClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, 213, 9, 0);
+	PopupMainPlayerToolbMenu(w, 9, 0);
 }
 
 static void ToolbarGraphsClick(Window *w)
@@ -832,7 +832,7 @@ static void ToolbarTrainClick(Window *w)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFrontEngine(v)) CLRBIT(dis, v->owner);
 	}
-	PopupMainPlayerToolbMenu(w, 310, 13, dis);
+	PopupMainPlayerToolbMenu(w, 13, dis);
 }
 
 static void ToolbarRoadClick(Window *w)
@@ -843,7 +843,7 @@ static void ToolbarRoadClick(Window *w)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_ROAD && IsRoadVehFront(v)) CLRBIT(dis, v->owner);
 	}
-	PopupMainPlayerToolbMenu(w, 332, 14, dis);
+	PopupMainPlayerToolbMenu(w, 14, dis);
 }
 
 static void ToolbarShipClick(Window *w)
@@ -854,7 +854,7 @@ static void ToolbarShipClick(Window *w)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_SHIP) CLRBIT(dis, v->owner);
 	}
-	PopupMainPlayerToolbMenu(w, 354, 15, dis);
+	PopupMainPlayerToolbMenu(w, 15, dis);
 }
 
 static void ToolbarAirClick(Window *w)
@@ -865,7 +865,7 @@ static void ToolbarAirClick(Window *w)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_AIRCRAFT) CLRBIT(dis, v->owner);
 	}
-	PopupMainPlayerToolbMenu(w, 376, 16, dis);
+	PopupMainPlayerToolbMenu(w, 16, dis);
 }
 
 /* Zooms a viewport in a window in or out */
