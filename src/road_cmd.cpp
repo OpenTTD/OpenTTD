@@ -842,7 +842,14 @@ struct DrawRoadTileStruct {
 Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 {
 	if (!IsSteepSlope(tileh)) {
-		if ((~_valid_tileh_slopes_road[0][tileh] & bits) == 0) return FOUNDATION_NONE;
+		if ((~_valid_tileh_slopes_road[0][tileh] & bits) == 0) {
+			/* As one can remove a single road piece when in a corner on a foundation as
+			 * it is on a sloped piece of landscape, one creates a state that cannot be
+			 * created directly, but the state itself is still perfectly drawable.
+			 * However, as we do not want this to be build directly, we need to check
+			 * for that situation in here. */
+			return (tileh != 0 && HAS_SINGLE_BIT(bits)) ? FOUNDATION_LEVELED : FOUNDATION_NONE;
+		}
 		if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0) return FOUNDATION_LEVELED;
 	}
 
