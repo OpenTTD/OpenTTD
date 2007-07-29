@@ -224,27 +224,14 @@ void InjectDParam(int amount)
 	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint64));
 }
 
-static const uint32 _divisor_table[] = {
-	1000000000,
-	100000000,
-	10000000,
-	1000000,
-
-	100000,
-	10000,
-	1000,
-	100,
-	10,
-	1
-};
-
 // TODO
-static char *FormatCommaNumber(char *buff, int32 number, const char* last)
+static char *FormatCommaNumber(char *buff, int64 number, const char *last)
 {
-	uint32 quot;
+	uint64 divisor = 10000000000000000000ULL;
+	uint64 quot;
 	int i;
-	uint32 tot;
-	uint32 num;
+	uint64 tot;
+	uint64 num;
 
 	if (number < 0) {
 		*buff++ = '-';
@@ -254,16 +241,18 @@ static char *FormatCommaNumber(char *buff, int32 number, const char* last)
 	num = number;
 
 	tot = 0;
-	for (i = 0; i != 10; i++) {
+	for (i = 0; i < 20; i++) {
 		quot = 0;
-		if (num >= _divisor_table[i]) {
-			quot = num / _divisor_table[i];
-			num = num % _divisor_table[i];
+		if (num >= divisor) {
+			quot = num / divisor;
+			num = num % divisor;
 		}
-		if (tot |= quot || i == 9) {
+		if (tot |= quot || i == 19) {
 			*buff++ = '0' + quot;
-			if (i == 0 || i == 3 || i == 6) *buff++ = ',';
+			if ((i % 3) == 1 && i != 19) *buff++ = ',';
 		}
+
+		divisor /= 10;
 	}
 
 	*buff = '\0';
@@ -272,12 +261,13 @@ static char *FormatCommaNumber(char *buff, int32 number, const char* last)
 }
 
 // TODO
-static char *FormatNoCommaNumber(char *buff, int32 number, const char* last)
+static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
 {
-	uint32 quot;
+	uint64 divisor = 10000000000000000000ULL;
+	uint64 quot;
 	int i;
-	uint32 tot;
-	uint32 num;
+	uint64 tot;
+	uint64 num;
 
 	if (number < 0) {
 		buff = strecpy(buff, "-", last);
@@ -287,15 +277,17 @@ static char *FormatNoCommaNumber(char *buff, int32 number, const char* last)
 	num = number;
 
 	tot = 0;
-	for (i = 0; i != 10; i++) {
+	for (i = 0; i < 20; i++) {
 		quot = 0;
-		if (num >= _divisor_table[i]) {
-			quot = num / _divisor_table[i];
-			num = num % _divisor_table[i];
+		if (num >= divisor) {
+			quot = num / divisor;
+			num = num % divisor;
 		}
-		if (tot |= quot || i == 9) {
+		if (tot |= quot || i == 19) {
 			*buff++ = '0' + quot;
 		}
+
+		divisor /= 10;
 	}
 
 	*buff = '\0';
@@ -394,10 +386,11 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	return buff;
 }
 
-static int DeterminePluralForm(int32 n)
+static int DeterminePluralForm(int64 cnt)
 {
+	uint64 n = cnt;
 	/* The absolute value determines plurality */
-	if (n < 0) n = -n;
+	if (cnt < 0) n = -cnt;
 
 	switch (_langpack->plural_form) {
 	/* Two forms, singular used for one only
@@ -774,7 +767,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			}
 
 			case SCC_COMMA: // {COMMA}
-				buff = FormatCommaNumber(buff, GetInt32(&argv), last);
+				buff = FormatCommaNumber(buff, GetInt64(&argv), last);
 				break;
 
 			case SCC_ARG_INDEX: // Move argument pointer
@@ -782,7 +775,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 
 			case SCC_PLURAL_LIST: { // {P}
-				int32 v = argv_orig[(byte)*str++]; // contains the number that determines plural
+				int64 v = argv_orig[(byte)*str++]; // contains the number that determines plural
 				int len;
 				str = ParseStringChoice(str, DeterminePluralForm(v), buff, &len);
 				buff += len;
@@ -790,7 +783,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			}
 
 			case SCC_NUM: // {NUM}
-				buff = FormatNoCommaNumber(buff, GetInt32(&argv), last);
+				buff = FormatNoCommaNumber(buff, GetInt64(&argv), last);
 				break;
 
 			case SCC_CURRENCY: // {CURRENCY}
