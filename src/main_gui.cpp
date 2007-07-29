@@ -1710,16 +1710,16 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
 
 		for (uint i = 0, x = 0, j = 0; i < 27; i++) {
-			w->widget[i].left = x;
-			x += (spacing != 0) ? button_width : (w->width - x) / (27 - i);
-			w->widget[i].right = x - 1;
-
 			if (extra_spacing_at[j] == i) {
 				j++;
 				uint add = spacing / (lengthof(extra_spacing_at) - j);
 				spacing -= add;
 				x += add;
 			}
+
+			w->widget[i].left = x;
+			x += (spacing != 0) ? button_width : (w->width - x) / (27 - i);
+			w->widget[i].right = x - 1;
 		}
 	} break;
 

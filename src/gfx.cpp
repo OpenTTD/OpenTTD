@@ -1155,7 +1155,7 @@ bool ChangeResInGame(int width, int height)
 	int new_width = min(_screen.width, 640);
 	Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 	if (w != NULL && new_width != w->width) {
-		ResizeWindow(w,  new_width - w->width, 0);
+		ResizeWindow(w, new_width - w->width, 0);
 
 		Window *w2 = FindWindowById(WC_STATUS_BAR, 0);
 		if (w2 != NULL) ResizeWindow(w2, max(new_width, 320) - w2->width, 0);
