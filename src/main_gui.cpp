@@ -1912,7 +1912,7 @@ static const WindowDesc _toolb_scen_desc = {
 extern GetNewsStringCallbackProc * const _get_news_string_callback[];
 
 
-static bool DrawScrollingStatusText(const NewsItem *ni, int pos)
+static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 {
 	char buf[512];
 	StringID str;
@@ -1947,7 +1947,7 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos)
 		}
 	}
 
-	if (!FillDrawPixelInfo(&tmp_dpi, 141, 1, 358, 11)) return true;
+	if (!FillDrawPixelInfo(&tmp_dpi, 141, 1, width, 11)) return true;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
@@ -1973,29 +1973,35 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		if (p != NULL) {
 			/* Draw player money */
 			SetDParam(0, p->player_money);
-			DrawStringCentered(570, 1, p->player_money >= 0 ? STR_0004 : STR_0005, 0);
+			DrawStringCentered(w->widget[2].left + 70, 1, p->player_money >= 0 ? STR_0004 : STR_0005, 0);
 		}
 
 		/* Draw status bar */
 		if (w->message.msg) { // true when saving is active
-			DrawStringCentered(320, 1, STR_SAVING_GAME, 0);
+			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_SAVING_GAME, 0);
 		} else if (_do_autosave) {
-			DrawStringCentered(320, 1, STR_032F_AUTOSAVE, 0);
+			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_032F_AUTOSAVE, 0);
 		} else if (_pause_game) {
-			DrawStringCentered(320, 1, STR_0319_PAUSED, 0);
+			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_0319_PAUSED, 0);
 		} else if (WP(w,def_d).data_1 > -1280 && FindWindowById(WC_NEWS_WINDOW,0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
-			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w,def_d).data_1))
+			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w,def_d).data_1, w->widget[1].right - w->widget[1].left - 2)) {
 				WP(w,def_d).data_1 = -1280;
+				if (p != NULL) {
+					/* This is the default text */
+					SetDParam(0, p->index);
+					DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_02BA, 0);
+				}
+			}
 		} else {
 			if (p != NULL) {
 				/* This is the default text */
 				SetDParam(0, p->index);
-				DrawStringCentered(320, 1, STR_02BA, 0);
+				DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_02BA, 0);
 			}
 		}
 
-		if (WP(w, def_d).data_2 > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, 489, 2);
+		if (WP(w, def_d).data_2 > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, w->widget[1].right - 11, 2);
 	} break;
 
 	case WE_MESSAGE:
