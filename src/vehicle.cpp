@@ -2392,6 +2392,7 @@ static bool IsUniqueVehicleName(const char *name)
 				break;
 
 			case VEH_ROAD:
+				if (!IsRoadVehFront(v)) continue;
 				break;
 
 			case VEH_AIRCRAFT:
