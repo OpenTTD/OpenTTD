@@ -21,6 +21,7 @@
 #include "texteff.hpp"
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"
+#include "window.h"
 
 byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 bool _fullscreen;
@@ -1147,11 +1148,28 @@ void SetAnimatedMouseCursor(const AnimCursor *table)
 	SwitchAnimatedCursor();
 }
 
-bool ChangeResInGame(int w, int h)
+bool ChangeResInGame(int width, int height)
 {
-	return
-		(_screen.width == w && _screen.height == h) ||
-		_video_driver->ChangeResolution(w, h);
+	bool ret = (_screen.width == width && _screen.height == height) || _video_driver->ChangeResolution(width, height);
+
+	int new_width = min(_screen.width, 640);
+	Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+	if (w != NULL && new_width != w->width) {
+		ResizeWindow(w,  new_width - w->width, 0);
+
+		Window *w2 = FindWindowById(WC_STATUS_BAR, 0);
+		if (w2 != NULL) ResizeWindow(w2, max(new_width, 320) - w2->width, 0);
+
+		WindowEvent e;
+		e.event = WE_RESIZE;
+		e.we.sizing.size.x = w->width;
+		e.we.sizing.size.y = w->height;
+		e.we.sizing.diff.x = new_width - w->width;
+		e.we.sizing.diff.y = 0;
+		w->wndproc(w, &e);
+	}
+
+	return ret;
 }
 
 void ToggleFullScreen(bool fs)

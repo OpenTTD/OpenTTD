@@ -1696,6 +1696,33 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
+	case WE_RESIZE: {
+		/* There are 27 buttons plus some spacings if the space allows it */
+		uint button_width;
+		uint spacing;
+		if (w->width >= 27 * 22) {
+			button_width = 22;
+			spacing = w->width - (27 * button_width);
+		} else {
+			button_width = w->width / 27;
+			spacing = 0;
+		}
+		uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
+
+		for (uint i = 0, x = 0, j = 0; i < 27; i++) {
+			w->widget[i].left = x;
+			x += (spacing != 0) ? button_width : (w->width - x) / (27 - i);
+			w->widget[i].right = x - 1;
+
+			if (extra_spacing_at[j] == i) {
+				j++;
+				uint add = spacing / (lengthof(extra_spacing_at) - j);
+				spacing -= add;
+				x += add;
+			}
+		}
+	} break;
+
 	case WE_TIMEOUT: {
 		uint i;
 		for (i = 2; i < w->widget_count; i++) {
@@ -1714,44 +1741,44 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _toolb_normal_widgets[] = {
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,    21,     0,    21, SPR_IMG_PAUSE,           STR_0171_PAUSE_GAME},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    22,    43,     0,    21, SPR_IMG_FASTFORWARD,     STR_FAST_FORWARD},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    44,    65,     0,    21, SPR_IMG_SETTINGS,        STR_0187_OPTIONS},
-{   WWT_IMGBTN_2,   RESIZE_NONE,    14,    66,    87,     0,    21, SPR_IMG_SAVE,            STR_0172_SAVE_GAME_ABANDON_GAME},
+{     WWT_IMGBTN,   RESIZE_LEFT,    14,     0,     0,     0,    21, SPR_IMG_PAUSE,           STR_0171_PAUSE_GAME},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_FASTFORWARD,     STR_FAST_FORWARD},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_SETTINGS,        STR_0187_OPTIONS},
+{   WWT_IMGBTN_2,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_SAVE,            STR_0172_SAVE_GAME_ABANDON_GAME},
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    96,   117,     0,    21, SPR_IMG_SMALLMAP,        STR_0174_DISPLAY_MAP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   118,   139,     0,    21, SPR_IMG_TOWN,            STR_0176_DISPLAY_TOWN_DIRECTORY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   140,   161,     0,    21, SPR_IMG_SUBSIDIES,       STR_02DC_DISPLAY_SUBSIDIES},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   162,   183,     0,    21, SPR_IMG_COMPANY_LIST,    STR_0173_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_SMALLMAP,        STR_0174_DISPLAY_MAP},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_TOWN,            STR_0176_DISPLAY_TOWN_DIRECTORY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_SUBSIDIES,       STR_02DC_DISPLAY_SUBSIDIES},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_COMPANY_LIST,    STR_0173_DISPLAY_LIST_OF_COMPANY},
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   191,   212,     0,    21, SPR_IMG_COMPANY_FINANCE, STR_0177_DISPLAY_COMPANY_FINANCES},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   213,   235,     0,    21, SPR_IMG_COMPANY_GENERAL, STR_0178_DISPLAY_COMPANY_GENERAL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   236,   257,     0,    21, SPR_IMG_GRAPHS,          STR_0179_DISPLAY_GRAPHS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   258,   279,     0,    21, SPR_IMG_COMPANY_LEAGUE,  STR_017A_DISPLAY_COMPANY_LEAGUE},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   280,   301,     0,    21, SPR_IMG_INDUSTRY,        STR_0312_FUND_CONSTRUCTION_OF_NEW},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_COMPANY_FINANCE, STR_0177_DISPLAY_COMPANY_FINANCES},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_COMPANY_GENERAL, STR_0178_DISPLAY_COMPANY_GENERAL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_GRAPHS,          STR_0179_DISPLAY_GRAPHS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_COMPANY_LEAGUE,  STR_017A_DISPLAY_COMPANY_LEAGUE},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_INDUSTRY,        STR_0312_FUND_CONSTRUCTION_OF_NEW},
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   310,   331,     0,    21, SPR_IMG_TRAINLIST,       STR_017B_DISPLAY_LIST_OF_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   332,   353,     0,    21, SPR_IMG_TRUCKLIST,       STR_017C_DISPLAY_LIST_OF_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   354,   375,     0,    21, SPR_IMG_SHIPLIST,        STR_017D_DISPLAY_LIST_OF_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   376,   397,     0,    21, SPR_IMG_AIRPLANESLIST,   STR_017E_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_TRAINLIST,       STR_017B_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_TRUCKLIST,       STR_017C_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_SHIPLIST,        STR_017D_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_AIRPLANESLIST,   STR_017E_DISPLAY_LIST_OF_COMPANY},
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   406,   427,     0,    21, SPR_IMG_ZOOMIN,          STR_017F_ZOOM_THE_VIEW_IN},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   428,   449,     0,    21, SPR_IMG_ZOOMOUT,         STR_0180_ZOOM_THE_VIEW_OUT},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_ZOOMIN,          STR_017F_ZOOM_THE_VIEW_IN},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_ZOOMOUT,         STR_0180_ZOOM_THE_VIEW_OUT},
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   457,   478,     0,    21, SPR_IMG_BUILDRAIL,       STR_0181_BUILD_RAILROAD_TRACK},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   479,   500,     0,    21, SPR_IMG_BUILDROAD,       STR_0182_BUILD_ROADS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   501,   522,     0,    21, SPR_IMG_BUILDWATER,      STR_0183_BUILD_SHIP_DOCKS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   523,   544,     0,    21, SPR_IMG_BUILDAIR,        STR_0184_BUILD_AIRPORTS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   545,   566,     0,    21, SPR_IMG_LANDSCAPING,     STR_LANDSCAPING_TOOLBAR_TIP}, // tree icon is 0x2E6
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_BUILDRAIL,       STR_0181_BUILD_RAILROAD_TRACK},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_BUILDROAD,       STR_0182_BUILD_ROADS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_BUILDWATER,      STR_0183_BUILD_SHIP_DOCKS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_BUILDAIR,        STR_0184_BUILD_AIRPORTS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_LANDSCAPING,     STR_LANDSCAPING_TOOLBAR_TIP}, // tree icon is 0x2E6
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   574,   595,     0,    21, SPR_IMG_MUSIC,           STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   596,   617,     0,    21, SPR_IMG_MESSAGES,        STR_0203_SHOW_LAST_MESSAGE_NEWS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   618,   639,     0,    21, SPR_IMG_QUERY,           STR_0186_LAND_BLOCK_INFORMATION},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_MUSIC,           STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_MESSAGES,        STR_0203_SHOW_LAST_MESSAGE_NEWS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_QUERY,           STR_0186_LAND_BLOCK_INFORMATION},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _toolb_normal_desc = {
-	0, 0, 640, 22, 640, 22,
+	0, 0, 0, 22, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_toolb_normal_widgets,
@@ -1760,28 +1787,28 @@ static const WindowDesc _toolb_normal_desc = {
 
 
 static const Widget _toolb_scen_widgets[] = {
-{  WWT_IMGBTN, RESIZE_NONE, 14,   0,  21,  0, 21, SPR_IMG_PAUSE,       STR_0171_PAUSE_GAME},
-{  WWT_IMGBTN, RESIZE_NONE, 14,  22,  43,  0, 21, SPR_IMG_FASTFORWARD, STR_FAST_FORWARD},
-{  WWT_IMGBTN, RESIZE_NONE, 14,  44,  65,  0, 21, SPR_IMG_SETTINGS,    STR_0187_OPTIONS},
-{WWT_IMGBTN_2, RESIZE_NONE, 14,  66,  87,  0, 21, SPR_IMG_SAVE,        STR_0297_SAVE_SCENARIO_LOAD_SCENARIO},
+{  WWT_IMGBTN, RESIZE_LEFT, 14,   0,   0,  0, 21, SPR_IMG_PAUSE,       STR_0171_PAUSE_GAME},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_FASTFORWARD, STR_FAST_FORWARD},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_SETTINGS,    STR_0187_OPTIONS},
+{WWT_IMGBTN_2, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_SAVE,        STR_0297_SAVE_SCENARIO_LOAD_SCENARIO},
 
-{   WWT_PANEL, RESIZE_NONE, 14,  96, 225,  0, 21, 0x0,                 STR_NULL},
+{   WWT_PANEL, RESIZE_NONE, 14,   0,   0,  0, 21, 0x0,                 STR_NULL},
 
-{   WWT_PANEL, RESIZE_NONE, 14, 233, 362,  0, 21, 0x0,                 STR_NULL},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 236, 247,  5, 16, SPR_ARROW_DOWN,      STR_029E_MOVE_THE_STARTING_DATE},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 347, 358,  5, 16, SPR_ARROW_UP,        STR_029F_MOVE_THE_STARTING_DATE},
+{   WWT_PANEL, RESIZE_NONE, 14,   0, 129,  0, 21, 0x0,                 STR_NULL},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   3,  14,  5, 16, SPR_ARROW_DOWN,      STR_029E_MOVE_THE_STARTING_DATE},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 113, 125,  5, 16, SPR_ARROW_UP,        STR_029F_MOVE_THE_STARTING_DATE},
 
-{  WWT_IMGBTN, RESIZE_NONE, 14, 371, 392,  0, 21, SPR_IMG_SMALLMAP,    STR_0175_DISPLAY_MAP_TOWN_DIRECTORY},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_SMALLMAP,    STR_0175_DISPLAY_MAP_TOWN_DIRECTORY},
 
-{  WWT_IMGBTN, RESIZE_NONE, 14, 400, 421,  0, 21, SPR_IMG_ZOOMIN,      STR_017F_ZOOM_THE_VIEW_IN},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 422, 443,  0, 21, SPR_IMG_ZOOMOUT,     STR_0180_ZOOM_THE_VIEW_OUT},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_ZOOMIN,      STR_017F_ZOOM_THE_VIEW_IN},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_ZOOMOUT,     STR_0180_ZOOM_THE_VIEW_OUT},
 
-{  WWT_IMGBTN, RESIZE_NONE, 14, 452, 473,  0, 21, SPR_IMG_LANDSCAPING, STR_022E_LANDSCAPE_GENERATION},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 474, 495,  0, 21, SPR_IMG_TOWN,        STR_022F_TOWN_GENERATION},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 496, 517,  0, 21, SPR_IMG_INDUSTRY,    STR_0230_INDUSTRY_GENERATION},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 518, 539,  0, 21, SPR_IMG_BUILDROAD,   STR_0231_ROAD_CONSTRUCTION},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 540, 561,  0, 21, SPR_IMG_PLANTTREES,  STR_0288_PLANT_TREES},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 562, 583,  0, 21, SPR_IMG_SIGN,        STR_0289_PLACE_SIGN},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_LANDSCAPING, STR_022E_LANDSCAPE_GENERATION},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_TOWN,        STR_022F_TOWN_GENERATION},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_INDUSTRY,    STR_0230_INDUSTRY_GENERATION},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_BUILDROAD,   STR_0231_ROAD_CONSTRUCTION},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_PLANTTREES,  STR_0288_PLANT_TREES},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_SIGN,        STR_0289_PLACE_SIGN},
 
 {   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
 {   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
@@ -1790,9 +1817,9 @@ static const Widget _toolb_scen_widgets[] = {
 {   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
 {   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
 {   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 596, 617,  0, 21, SPR_IMG_MUSIC,       STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_MUSIC,       STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
 {   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_IMGBTN, RESIZE_NONE, 14, 618, 639,  0, 21, SPR_IMG_QUERY,       STR_0186_LAND_BLOCK_INFORMATION},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_QUERY,       STR_0186_LAND_BLOCK_INFORMATION},
 {WIDGETS_END},
 };
 
@@ -1840,11 +1867,13 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
-		DrawStringCentered(298, 6, STR_00AF, 0);
+		DrawStringCenteredTruncated(w->widget[6].right, w->widget[7].left, 6, STR_00AF, 0);
 
-		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
-		DrawStringCentered(161, 1, STR_0221_OPENTTD, 0);
-		DrawStringCentered(161, 11,STR_0222_SCENARIO_EDITOR, 0);
+		/* We hide this panel when the toolbar space gets too small */
+		if (w->widget[4].left != w->widget[4].right) {
+			DrawStringCenteredTruncated(w->widget[4].left + 1, w->widget[4].right - 1,  1, STR_0221_OPENTTD, 0);
+			DrawStringCenteredTruncated(w->widget[4].left + 1, w->widget[4].right - 1, 11, STR_0222_SCENARIO_EDITOR, 0);
+		}
 
 		break;
 
@@ -1883,6 +1912,72 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		SetWindowDirty(w);
 	} break;
 
+	case WE_RESIZE: {
+		/* There are 15 buttons plus some spacings if the space allows it.
+		 * Furthermore there are two panels of which one is non-essential
+		 * and that one can be removed is the space is too small. */
+		uint buttons_width;
+		uint spacing;
+
+		static int normal_min_width = (15 * 22) + (2 * 130);
+		static int one_less_panel_min_width = (15 * 22) + 130;
+
+		if (w->width >= one_less_panel_min_width) {
+			buttons_width = 15 * 22;
+			spacing = w->width - ((w->width >= normal_min_width) ? normal_min_width : one_less_panel_min_width);
+		} else {
+			buttons_width = w->width - 130;
+			spacing = 0;
+		}
+		uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 16, 0 };
+
+		/* Yes, it defines about 27 widgets for this toolbar */
+		for (uint i = 0, x = 0, j = 0, b = 0; i < 27; i++) {
+			switch (i) {
+				case 4:
+					w->widget[i].left = x;
+					if (w->width < normal_min_width) {
+						w->widget[i].right = x;
+						j++;
+						continue;
+					}
+
+					x += 130;
+					w->widget[i].right = x - 1;
+					break;
+
+				case 5: {
+					int offset = x - w->widget[i].left;
+					w->widget[i + 1].left  += offset;
+					w->widget[i + 1].right += offset;
+					w->widget[i + 2].left  += offset;
+					w->widget[i + 2].right += offset;
+					w->widget[i].left = x;
+					x += 130;
+					w->widget[i].right = x - 1;
+					i += 2;
+				} break;
+
+				default:
+					if (w->widget[i].bottom == 0) continue;
+
+					w->widget[i].left = x;
+					x += buttons_width / (15 - b);
+					w->widget[i].right = x - 1;
+					buttons_width -= buttons_width / (15 - b);
+					b++;
+					break;
+			}
+
+			if (extra_spacing_at[j] == i) {
+				j++;
+				uint add = spacing / (lengthof(extra_spacing_at) - j);
+				spacing -= add;
+				x += add;
+			}
+		}
+	} break;
+
 	case WE_MOUSELOOP:
 		if (IsWindowWidgetLowered(w, 0) != !!_pause_game) {
 			ToggleWidgetLoweredState(w, 0);
@@ -1902,7 +1997,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _toolb_scen_desc = {
-	0, 0, 640, 22, 640, 22,
+	0, 0, 130, 22, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_toolb_scen_widgets,
@@ -2039,13 +2134,13 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 
 static const Widget _main_status_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   139,     0,    11, 0x0, STR_NULL},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   140,   499,     0,    11, 0x0, STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   500,   639,     0,    11, 0x0, STR_NULL},
+{    WWT_PUSHBTN,   RESIZE_RIGHT,   14,   140,   179,     0,    11, 0x0, STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS},
+{    WWT_PUSHBTN,   RESIZE_LR,      14,   180,   319,     0,    11, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 
 static WindowDesc _main_status_desc = {
-	WDP_CENTER, 0, 640, 12, 640, 12,
+	WDP_CENTER, 0, 320, 12, 640, 12,
 	WC_STATUS_BAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_main_status_widgets,
