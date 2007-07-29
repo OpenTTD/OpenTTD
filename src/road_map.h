@@ -19,7 +19,7 @@ enum RoadTileType {
 
 static inline RoadTileType GetRoadTileType(TileIndex t)
 	{
-	assert(IsTileType(t, MP_STREET));
+	assert(IsTileType(t, MP_ROAD));
 	return (RoadTileType)GB(_m[t].m5, 6, 2);
 }
 
@@ -30,7 +30,7 @@ static inline bool IsLevelCrossing(TileIndex t)
 
 static inline bool IsLevelCrossingTile(TileIndex t)
 {
-	return IsTileType(t, MP_STREET) && IsLevelCrossing(t);
+	return IsTileType(t, MP_ROAD) && IsLevelCrossing(t);
 }
 
 static inline RoadBits GetRoadBits(TileIndex t, RoadType rt)
@@ -62,7 +62,7 @@ static inline void SetRoadBits(TileIndex t, RoadBits r, RoadType rt)
 
 static inline RoadTypes GetRoadTypes(TileIndex t)
 {
-	if (IsTileType(t, MP_STREET)) {
+	if (IsTileType(t, MP_ROAD)) {
 		return (RoadTypes)GB(_me[t].m7, 5, 3);
 	} else {
 		return (RoadTypes)GB(_m[t].m3, 0, 3);
@@ -71,7 +71,7 @@ static inline RoadTypes GetRoadTypes(TileIndex t)
 
 static inline void SetRoadTypes(TileIndex t, RoadTypes rt)
 {
-	if (IsTileType(t, MP_STREET)) {
+	if (IsTileType(t, MP_ROAD)) {
 		SB(_me[t].m7, 5, 3, rt);
 	} else {
 		assert(IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE));
@@ -81,7 +81,7 @@ static inline void SetRoadTypes(TileIndex t, RoadTypes rt)
 
 static inline Owner GetRoadOwner(TileIndex t, RoadType rt)
 {
-	if (!IsTileType(t, MP_STREET)) return GetTileOwner(t);
+	if (!IsTileType(t, MP_ROAD)) return GetTileOwner(t);
 
 	switch (GetRoadTileType(t)) {
 		default: NOT_REACHED();
@@ -115,7 +115,7 @@ static inline Owner GetRoadOwner(TileIndex t, RoadType rt)
 
 static inline void SetRoadOwner(TileIndex t, RoadType rt, Owner o)
 {
-	if (!IsTileType(t, MP_STREET)) return SetTileOwner(t, o);
+	if (!IsTileType(t, MP_ROAD)) return SetTileOwner(t, o);
 
 	switch (GetRoadTileType(t)) {
 		default: NOT_REACHED();
@@ -307,7 +307,7 @@ TrackBits GetAnyRoadTrackBits(TileIndex tile, RoadType rt);
 
 static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadTypes rot, TownID town, Owner road, Owner tram, Owner hway)
 {
-	SetTileType(t, MP_STREET);
+	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, road);
 	_m[t].m2 = town;
 	_m[t].m3 = 0;
@@ -321,7 +321,7 @@ static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadTypes rot, Tow
 
 static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner tram, Owner hway, Owner rail, Axis roaddir, RailType rat, RoadTypes rot, uint town)
 {
-	SetTileType(t, MP_STREET);
+	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, rail);
 	_m[t].m2 = town;
 	_m[t].m3 = rat;
@@ -335,7 +335,7 @@ static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner tram, Owner h
 
 static inline void MakeRoadDepot(TileIndex t, Owner owner, DiagDirection dir, RoadType rt)
 {
-	SetTileType(t, MP_STREET);
+	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, owner);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;

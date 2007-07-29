@@ -122,7 +122,7 @@ static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
 {
 	tile += TileOffsByDiagDir(direction);
 	// if there is a roadpiece just outside of the station entrance, build a connecting route
-	if (IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+	if (IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
 		if (GetRoadBits(tile, _cur_roadtype) != ROAD_NONE) {
 			DoCommandP(tile, _cur_roadtype << 4 | DiagDirToRoadBits(ReverseDiagDir(direction)), 0, NULL, CMD_BUILD_ROAD);
 		}

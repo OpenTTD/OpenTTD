@@ -11,25 +11,25 @@
 /**
  * Get the index of which town this house/street is attached to.
  * @param t the tile
- * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_STREET)
+ * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_ROAD)
  * @return TownID
  */
 static inline TownID GetTownIndex(TileIndex t)
 {
-	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_STREET)); // XXX incomplete
+	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_ROAD)); // XXX incomplete
 	return _m[t].m2;
 }
 
 /**
  * Set the town index for a road or house tile.
  * @param t the tile
- * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_STREET)
+ * @pre IsTileType(t, MP_HOUSE) or IsTileType(t, MP_ROAD)
  * @param index the index of the town
- * @pre IsTileType(t, MP_STREET) || IsTileType(t, MP_HOUSE)
+ * @pre IsTileType(t, MP_ROAD) || IsTileType(t, MP_HOUSE)
  */
 static inline void SetTownIndex(TileIndex t, TownID index)
 {
-	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_STREET));
+	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_ROAD));
 	_m[t].m2 = index;
 }
 

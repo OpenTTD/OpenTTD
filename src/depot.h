@@ -74,7 +74,7 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 			return IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile)  == RAIL_TILE_DEPOT;
 
 		case TRANSPORT_ROAD:
-			return IsTileType(tile, MP_STREET)  && GetRoadTileType(tile)  == ROAD_TILE_DEPOT;
+			return IsTileType(tile, MP_ROAD)  && GetRoadTileType(tile)  == ROAD_TILE_DEPOT;
 
 		case TRANSPORT_WATER:
 			return IsTileType(tile, MP_WATER)   && GetWaterTileType(tile) == WATER_TILE_DEPOT;

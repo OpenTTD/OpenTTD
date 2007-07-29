@@ -800,7 +800,7 @@ static void AiNew_State_FindDepot(Player *p)
 		for (j = DIAGDIR_BEGIN; j < DIAGDIR_END; j++) {
 			TileIndex t = tile + TileOffsByDiagDir(j);
 
-			if (IsTileType(t, MP_STREET) &&
+			if (IsTileType(t, MP_ROAD) &&
 					GetRoadTileType(t) == ROAD_TILE_DEPOT &&
 					IsTileOwner(t, _current_player) &&
 					GetRoadDepotDirection(t) == ReverseDiagDir(j)) {
@@ -1101,7 +1101,7 @@ static void AiNew_State_BuildDepot(Player *p)
 	CommandCost res;
 	assert(p->ainew.state == AI_STATE_BUILD_DEPOT);
 
-	if (IsTileType(p->ainew.depot_tile, MP_STREET) && GetRoadTileType(p->ainew.depot_tile) == ROAD_TILE_DEPOT) {
+	if (IsTileType(p->ainew.depot_tile, MP_ROAD) && GetRoadTileType(p->ainew.depot_tile) == ROAD_TILE_DEPOT) {
 		if (IsTileOwner(p->ainew.depot_tile, _current_player)) {
 			// The depot is already built
 			p->ainew.state = AI_STATE_BUILD_VEHICLE;

@@ -199,7 +199,7 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 					// Build the tile
 					res = AI_DoCommand(route[part], dir, 0, flag | DC_NO_WATER, CMD_BUILD_ROAD);
 					// Currently, we ignore CMD_ERRORs!
-					if (CmdFailed(res) && flag == DC_EXEC && !IsTileType(route[part], MP_STREET) && !EnsureNoVehicle(route[part])) {
+					if (CmdFailed(res) && flag == DC_EXEC && !IsTileType(route[part], MP_ROAD) && !EnsureNoVehicle(route[part])) {
 						// Problem.. let's just abort it all!
 						DEBUG(ai, 0, "[BuidPath] route building failed at tile 0x%X, aborting", route[part]);
 						p->ainew.state = AI_STATE_NOTHING;

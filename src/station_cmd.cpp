@@ -1312,7 +1312,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	bool type = HASBIT(p2, 0);
 	bool is_drive_through = HASBIT(p2, 1);
-	bool build_over_road  = is_drive_through && IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL;
+	bool build_over_road  = is_drive_through && IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_NORMAL;
 	bool town_owned_road  = build_over_road && IsTileOwner(tile, OWNER_TOWN);
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
 

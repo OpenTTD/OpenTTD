@@ -389,7 +389,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 				if (!IsPlainRailTile(tile)) goto not_valid_below;
 				break;
 
-			case MP_STREET:
+			case MP_ROAD:
 				if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) goto not_valid_below;
 				break;
 

@@ -124,7 +124,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Town *t = NULL;
 	switch (GetTileType(tile)) {
-		case MP_STREET:
+		case MP_ROAD:
 			if (_game_mode != GM_EDITOR && GetRoadOwner(tile, rt) == OWNER_TOWN) t = GetTownByTile(tile);
 			break;
 
@@ -154,7 +154,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	 * removal allowance depends on difficulty setting */
 	if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
 
-	if (!IsTileType(tile, MP_STREET)) {
+	if (!IsTileType(tile, MP_ROAD)) {
 		/* If it's the last roadtype, just clear the whole tile */
 		if (rts == RoadTypeToRoadTypes(rt)) return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
@@ -364,7 +364,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	tileh = GetTileSlope(tile, NULL);
 
 	switch (GetTileType(tile)) {
-		case MP_STREET:
+		case MP_ROAD:
 			switch (GetRoadTileType(tile)) {
 				case ROAD_TILE_NORMAL: {
 					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
@@ -481,7 +481,7 @@ do_clear:;
 		cost.AddCost(ret);
 	}
 
-	if (IsTileType(tile, MP_STREET)) {
+	if (IsTileType(tile, MP_ROAD)) {
 		/* Don't put the pieces that already exist */
 		pieces &= ComplementRoadBits(existing);
 	}
@@ -494,7 +494,7 @@ do_clear:;
 
 	if (flags & DC_EXEC) {
 		switch (GetTileType(tile)) {
-			case MP_STREET: {
+			case MP_ROAD: {
 				RoadTileType rtt = GetRoadTileType(tile);
 				if (existing == ROAD_NONE || rtt == ROAD_TILE_CROSSING) {
 					SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
@@ -529,7 +529,7 @@ do_clear:;
 				break;
 		}
 
-		if (rt != ROADTYPE_TRAM && IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+		if (rt != ROADTYPE_TRAM && IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
 			existing |= pieces;
 			SetDisallowedRoadDirections(tile, (existing == ROAD_X || existing == ROAD_Y) ?
 					GetDisallowedRoadDirections(tile) ^ toggle_drd : DRD_NONE);

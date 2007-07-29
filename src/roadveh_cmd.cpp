@@ -395,7 +395,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, Trackdir trackdi
 
 	tile += TileOffsByDiagDir(_road_pf_directions[trackdir]);
 
-	if (IsTileType(tile, MP_STREET) &&
+	if (IsTileType(tile, MP_ROAD) &&
 			GetRoadTileType(tile) == ROAD_TILE_DEPOT &&
 			IsTileOwner(tile, rfdd->owner) &&
 			length < rfdd->best_length) {
@@ -543,7 +543,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	if (IsTileType(v->tile, MP_STREET) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
+	if (IsTileType(v->tile, MP_ROAD) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
 
 	if (IsTunnelTile(v->tile) && DirToDiagDir(v->direction) == GetTunnelDirection(v->tile)) return CMD_ERROR;
 	if (IsBridgeTile(v->tile) && DirToDiagDir(v->direction) == GetBridgeRampDirection(v->tile)) return CMD_ERROR;
@@ -1145,7 +1145,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 	TrackdirBits signal    = (TrackdirBits)GB(r, 16, 16);
 	TrackdirBits trackdirs = (TrackdirBits)GB(r,  0, 16);
 
-	if (IsTileType(tile, MP_STREET)) {
+	if (IsTileType(tile, MP_ROAD)) {
 		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir || (GetRoadTypes(tile) & v->u.road.compatible_roadtypes) == 0)) {
 			/* Road depot owned by another player or with the wrong orientation */
 			trackdirs = TRACKDIR_BIT_NONE;
@@ -1232,7 +1232,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 	} else {
 		DiagDirection dir;
 
-		if (IsTileType(desttile, MP_STREET)) {
+		if (IsTileType(desttile, MP_ROAD)) {
 			if (GetRoadTileType(desttile) == ROAD_TILE_DEPOT) {
 				dir = GetRoadDepotDirection(desttile);
 				goto do_it;
@@ -1394,7 +1394,7 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 			diag_dir = GetTunnelDirection(tile);
 		} else if (IsBridgeTile(tile)) {
 			diag_dir = GetBridgeRampDirection(tile);
-		} else if (IsTileType(tile, MP_STREET) && GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
+		} else if (IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
 			diag_dir = ReverseDiagDir(GetRoadDepotDirection(tile));
 		}
 
@@ -1512,12 +1512,12 @@ again:
 					case TRACKDIR_RVREV_SW: needed = ROAD_NE; break;
 					case TRACKDIR_RVREV_NW: needed = ROAD_SE; break;
 				}
-				if (!IsTileType(tile, MP_STREET) || GetRoadTileType(tile) != ROAD_TILE_NORMAL || HasRoadWorks(tile) || (needed & GetRoadBits(tile, ROADTYPE_TRAM)) == ROAD_NONE) {
+				if (!IsTileType(tile, MP_ROAD) || GetRoadTileType(tile) != ROAD_TILE_NORMAL || HasRoadWorks(tile) || (needed & GetRoadBits(tile, ROADTYPE_TRAM)) == ROAD_NONE) {
 					/* The tram cannot turn here */
 					v->cur_speed = 0;
 					return false;
 				}
-			} else if (IsTileType(v->tile, MP_STREET) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) {
+			} else if (IsTileType(v->tile, MP_ROAD) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) {
 				v->cur_speed = 0;
 				return false;
 			} else {
@@ -1625,7 +1625,7 @@ again:
 	 * it's on a depot tile, check if it's time to activate the next vehicle in
 	 * the chain yet. */
 	if (v->next != NULL &&
-			IsTileType(v->tile, MP_STREET) && GetRoadTileType(v->tile) == ROAD_TILE_DEPOT) {
+			IsTileType(v->tile, MP_ROAD) && GetRoadTileType(v->tile) == ROAD_TILE_DEPOT) {
 
 		if (v->u.road.frame == v->u.road.cached_veh_length + RVC_DEPOT_START_FRAME) {
 			RoadVehLeaveDepot(v->next, false);

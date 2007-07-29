@@ -48,7 +48,7 @@ protected:
 		if (IsDiagonalTrackdir(trackdir)) {
 			cost += YAPF_TILE_LENGTH;
 			switch (GetTileType(tile)) {
-				case MP_STREET:
+				case MP_ROAD:
 					/* Increase the cost for level crossings */
 					if (IsLevelCrossing(tile))
 						cost += Yapf().PfGetSettings().road_crossing_penalty;
@@ -442,7 +442,7 @@ Depot* YapfFindNearestRoadDepot(const Vehicle *v)
 		return NULL;
 
 	// handle the case when our vehicle is already in the depot tile
-	if (IsTileType(tile, MP_STREET) && IsTileDepotType(tile, TRANSPORT_ROAD)) {
+	if (IsTileType(tile, MP_ROAD) && IsTileDepotType(tile, TRANSPORT_ROAD)) {
 		// only what we need to return is the Depot*
 		return GetDepotByTile(tile);
 	}

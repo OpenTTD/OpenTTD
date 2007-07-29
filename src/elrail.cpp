@@ -102,7 +102,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 				return AxisToTrackBits(DiagDirToAxis(GetBridgeRampDirection(t)));
 			}
 
-		case MP_STREET:
+		case MP_ROAD:
 			if (GetRoadTileType(t) != ROAD_TILE_CROSSING) return TRACK_BIT_NONE;
 			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
 			return GetCrossingRailBits(t);
@@ -393,7 +393,7 @@ void DrawCatenary(const TileInfo *ti)
 			break;
 
 		case MP_TUNNELBRIDGE:
-		case MP_STREET:
+		case MP_ROAD:
 		case MP_STATION:
 			break;
 

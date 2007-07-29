@@ -318,7 +318,7 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 		}
 		switch (tt) {
 			case TRANSPORT_RAIL: t = MP_RAILWAY; break;
-			case TRANSPORT_ROAD: t = MP_STREET;  break;
+			case TRANSPORT_ROAD: t = MP_ROAD;    break;
 			default:             t = MP_WATER;   break;
 		}
 	}

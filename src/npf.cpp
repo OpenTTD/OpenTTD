@@ -232,7 +232,7 @@ static void NPFMarkTile(TileIndex tile)
 			}
 			break;
 
-		case MP_STREET:
+		case MP_ROAD:
 			if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
 				SetRoadside(tile, ROADSIDE_BARREN);
 				MarkTileDirtyByTile(tile);
@@ -276,7 +276,7 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 			cost = IsTunnel(tile) ? NPFTunnelCost(current) : NPFBridgeCost(current);
 			break;
 
-		case MP_STREET:
+		case MP_ROAD:
 			cost = NPF_TILE_LENGTH;
 			/* Increase the cost for level crossings */
 			if (IsLevelCrossing(tile)) cost += _patches.npf_crossing_penalty;
@@ -327,7 +327,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 			cost = _trackdir_length[trackdir]; /* Should be different for diagonal tracks */
 			break;
 
-		case MP_STREET: /* Railway crossing */
+		case MP_ROAD: /* Railway crossing */
 			cost = NPF_TILE_LENGTH;
 			break;
 
@@ -468,7 +468,7 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 	}
 
 	switch (GetTileType(tile)) {
-		case MP_STREET:
+		case MP_ROAD:
 			/* rail-road crossing : are we looking at the railway part? */
 			if (IsLevelCrossing(tile) &&
 					DiagDirToAxis(enterdir) != GetCrossingRoadAxis(tile)) {

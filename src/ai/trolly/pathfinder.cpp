@@ -41,8 +41,8 @@ static bool TestCanBuildStationHere(TileIndex tile, byte dir)
 static bool IsRoad(TileIndex tile)
 {
 	return
-		// MP_STREET, but not a road depot?
-		(IsTileType(tile, MP_STREET) && !IsTileDepotType(tile, TRANSPORT_ROAD)) ||
+		// MP_ROAD, but not a road depot?
+		(IsTileType(tile, MP_ROAD) && !IsTileDepotType(tile, TRANSPORT_ROAD)) ||
 		(IsTileType(tile, MP_TUNNELBRIDGE) && (
 			(IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_ROAD) ||
 			(IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_ROAD)
@@ -319,7 +319,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 		// Bridges can only be build on land that is not flat
 		//  And if there is a road or rail blocking
 		if (tileh != SLOPE_FLAT ||
-				(PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDiagDir(dir), MP_STREET)) ||
+				(PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDiagDir(dir), MP_ROAD)) ||
 				(!PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDiagDir(dir), MP_RAILWAY))) {
 			for (;;) {
 				new_tile += TileOffsByDiagDir(dir);

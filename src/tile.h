@@ -26,7 +26,7 @@
 enum TileType {
 	MP_CLEAR,               ///< A tile without any structures, i.e. grass, rocks, farm fields etc.
 	MP_RAILWAY,             ///< A railway
-	MP_STREET,              ///< A street
+	MP_ROAD,                ///< A tile with road (or tram tracks)
 	MP_HOUSE,               ///< A house by a town
 	MP_TREES,               ///< Tile got trees
 	MP_STATION,             ///< A tile of a station
@@ -46,7 +46,7 @@ enum TileType {
 enum TropicZone {
 	TROPICZONE_INVALID    = 0,      ///< Invalid tropiczone-type
 	TROPICZONE_DESERT     = 1,      ///< Tile is desert
-	TROPICZONE_RAINFOREST = 2,      ///< Normal grass tile
+	TROPICZONE_RAINFOREST = 2,      ///< Rainforest tile
 };
 
 Slope GetTileSlope(TileIndex tile, uint *h);

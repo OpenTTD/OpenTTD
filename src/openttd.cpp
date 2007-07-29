@@ -1153,7 +1153,7 @@ static void ConvertTownOwner()
 
 	for (tile = 0; tile != MapSize(); tile++) {
 		switch (GetTileType(tile)) {
-			case MP_STREET:
+			case MP_ROAD:
 				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HASBIT(_m[tile].m4, 7)) {
 					_m[tile].m4 = OWNER_TOWN;
 				}
@@ -1473,7 +1473,7 @@ bool AfterLoadGame()
 					SetTownIndex(t, CalcClosestTownFromTile(t, (uint)-1)->index);
 					break;
 
-				case MP_STREET:
+				case MP_ROAD:
 					_m[t].m4 |= (_m[t].m2 << 4);
 					if (IsTileOwner(t, OWNER_TOWN)) {
 						SetTownIndex(t, CalcClosestTownFromTile(t, (uint)-1)->index);
@@ -1535,7 +1535,7 @@ bool AfterLoadGame()
 					}
 					break;
 
-				case MP_STREET:
+				case MP_ROAD:
 					/* Swap m3 and m4, so the track type for rail crossings is the
 					 * same as for normal rail. */
 					Swap(_m[t].m3, _m[t].m4);
@@ -1551,7 +1551,7 @@ bool AfterLoadGame()
 		bool old_bridge = CheckSavegameVersion(42);
 		for (TileIndex t = 0; t < map_size; t++) {
 			switch(GetTileType(t)) {
-				case MP_STREET:
+				case MP_ROAD:
 					SB(_m[t].m5, 6, 2, GB(_m[t].m5, 4, 2));
 					switch (GetRoadTileType(t)) {
 						default: NOT_REACHED();
@@ -1679,7 +1679,7 @@ bool AfterLoadGame()
 					SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 					break;
 
-				case MP_STREET:
+				case MP_ROAD:
 					if (IsLevelCrossing(t)) {
 						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 					}
@@ -1781,7 +1781,7 @@ bool AfterLoadGame()
 					}
 					break;
 
-				case MP_STREET: /* Clear PBS reservation on crossing */
+				case MP_ROAD: /* Clear PBS reservation on crossing */
 					if (IsLevelCrossing(t)) CLRBIT(_m[t].m5, 0);
 					break;
 

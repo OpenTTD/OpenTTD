@@ -46,7 +46,7 @@ static inline bool MayHaveBridgeAbove(TileIndex t)
 	return
 		IsTileType(t, MP_CLEAR) ||
 		IsTileType(t, MP_RAILWAY) ||
-		IsTileType(t, MP_STREET) ||
+		IsTileType(t, MP_ROAD) ||
 		IsTileType(t, MP_WATER) ||
 		IsTileType(t, MP_TUNNELBRIDGE) ||
 		IsTileType(t, MP_UNMOVABLE);

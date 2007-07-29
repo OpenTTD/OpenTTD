@@ -265,7 +265,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			}
 			break;
 
-		case MP_STREET:
+		case MP_ROAD:
 #define M(x) (1 << (x))
 			/* Level crossings may only be built on these slopes */
 			if (!HASBIT(M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT), tileh)) {
@@ -354,7 +354,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	switch (GetTileType(tile)) {
-		case MP_STREET: {
+		case MP_ROAD: {
 			if (!IsLevelCrossing(tile) ||
 					GetCrossingRailBits(tile) != trackbit ||
 					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
@@ -757,7 +757,7 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 			}
 			return true;
 
-		case MP_STREET:
+		case MP_ROAD:
 			if (!IsLevelCrossing(tile)) return false;
 			signal_ctr += 2;
 			return true;
@@ -1076,7 +1076,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			switch (GetTileType(tile)) {
 				case MP_RAILWAY:      proc = DoConvertRail;             break;
 				case MP_STATION:      proc = DoConvertStationRail;      break;
-				case MP_STREET:       proc = DoConvertStreetRail;       break;
+				case MP_ROAD:         proc = DoConvertStreetRail;       break;
 				case MP_TUNNELBRIDGE: proc = DoConvertTunnelBridgeRail; break;
 				default: continue;
 			}

@@ -110,7 +110,7 @@ RailType GetTileRailType(TileIndex tile)
 		case MP_RAILWAY:
 			return GetRailType(tile);
 
-		case MP_STREET:
+		case MP_ROAD:
 			/* rail/road crossing */
 			if (IsLevelCrossing(tile)) return GetRailType(tile);
 			break;

@@ -19,7 +19,7 @@ RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt)
 	if (!HASBIT(GetRoadTypes(tile), rt)) return ROAD_NONE;
 
 	switch (GetTileType(tile)) {
-		case MP_STREET:
+		case MP_ROAD:
 			switch (GetRoadTileType(tile)) {
 				default:
 				case ROAD_TILE_NORMAL:   return GetRoadBits(tile, rt);
@@ -51,7 +51,7 @@ TrackBits GetAnyRoadTrackBits(TileIndex tile, RoadType rt)
 	uint32 r;
 
 	/* Don't allow local authorities to build roads through road depots or road stops. */
-	if ((IsTileType(tile, MP_STREET) && IsTileDepotType(tile, TRANSPORT_ROAD)) || (IsTileType(tile, MP_STATION) && !IsDriveThroughStopTile(tile)) || !HASBIT(GetRoadTypes(tile), rt)) {
+	if ((IsTileType(tile, MP_ROAD) && IsTileDepotType(tile, TRANSPORT_ROAD)) || (IsTileType(tile, MP_STATION) && !IsDriveThroughStopTile(tile)) || !HASBIT(GetRoadTypes(tile), rt)) {
 		return TRACK_BIT_NONE;
 	}
 

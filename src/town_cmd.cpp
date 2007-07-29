@@ -82,7 +82,7 @@ void DestroyTown(Town *t)
 				if (GetTownByTile(tile) == t) DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 
-			case MP_STREET:
+			case MP_ROAD:
 			case MP_TUNNELBRIDGE:
 				if (IsTileOwner(tile, OWNER_TOWN) &&
 						ClosestTownFromTile(tile, (uint)-1) == t)
@@ -1151,7 +1151,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 		do block = Random() & 3; while (!HASBIT(mask, block));
 		tile += ToTileIndexDiff(_roadblock_tileadd[block]);
 
-		if (IsTileType(tile, MP_STREET)) {
+		if (IsTileType(tile, MP_ROAD)) {
 			/* Don't allow building over roads of other cities */
 			if (IsTileOwner(tile, OWNER_TOWN) && GetTownByTile(tile) != t) {
 				_grow_town_result = -1;
@@ -2233,7 +2233,7 @@ Town* CalcClosestTownFromTile(TileIndex tile, uint threshold)
 Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 {
 	if (IsTileType(tile, MP_HOUSE) || (
-				IsTileType(tile, MP_STREET) &&
+				IsTileType(tile, MP_ROAD) &&
 				GetRoadOwner(tile, ROADTYPE_ROAD) == OWNER_TOWN
 			)) {
 		return GetTownByTile(tile);

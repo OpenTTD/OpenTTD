@@ -1691,7 +1691,7 @@ clear_town_stuff:;
 			/* signals too? */
 			if (j & 3) {
 				// Can't build signals on a road.
-				if (IsTileType(c, MP_STREET)) return CMD_ERROR;
+				if (IsTileType(c, MP_ROAD)) return CMD_ERROR;
 
 				if (flag & DC_EXEC) {
 					j = 4 - j;
@@ -2044,7 +2044,7 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 				if (!flag) return;
 				break;
 			}
-			if (type != MP_WATER && type != MP_RAILWAY && type != MP_STREET) return;
+			if (type != MP_WATER && type != MP_RAILWAY && type != MP_ROAD) return;
 			flag = true;
 		}
 
@@ -2639,7 +2639,7 @@ static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBloc
 		_cleared_town = NULL;
 
 		if (p->mode == 2) {
-			if (IsTileType(c, MP_STREET) &&
+			if (IsTileType(c, MP_ROAD) &&
 					GetRoadTileType(c) == ROAD_TILE_NORMAL &&
 					(GetRoadBits(c, ROADTYPE_ROAD) & p->attr) != 0) {
 				roadflag |= 2;
@@ -2682,7 +2682,7 @@ clear_town_stuff:;
 
 			if (GetTileSlope(c, NULL) != SLOPE_FLAT) return CMD_ERROR;
 
-			if (!IsTileType(c, MP_STREET) || GetRoadTileType(c) != ROAD_TILE_NORMAL) {
+			if (!IsTileType(c, MP_ROAD) || GetRoadTileType(c) != ROAD_TILE_NORMAL) {
 				ret = DoCommand(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
 				if (CmdFailed(ret)) return CMD_ERROR;
 			}
@@ -2857,7 +2857,7 @@ static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint leng
 	if (dist <= a->best_dist) {
 		TileIndex tile2 = TILE_MASK(tile + TileOffsByDiagDir(_dir_by_track[track]));
 
-		if (IsTileType(tile2, MP_STREET) && GetRoadTileType(tile2) == ROAD_TILE_NORMAL) {
+		if (IsTileType(tile2, MP_ROAD) && GetRoadTileType(tile2) == ROAD_TILE_NORMAL) {
 			a->best_dist = dist;
 			a->best_tile = tile;
 			a->best_track = track;
@@ -2945,7 +2945,7 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 				if (!flag) return;
 				break;
 			}
-			if (type != MP_WATER && type != MP_RAILWAY && type != MP_STREET) return;
+			if (type != MP_WATER && type != MP_RAILWAY && type != MP_ROAD) return;
 			flag = true;
 		}
 
@@ -3726,7 +3726,7 @@ pos_3:
 
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		}
-	} else if (IsTileType(tile, MP_STREET)) {
+	} else if (IsTileType(tile, MP_ROAD)) {
 		if (!IsTileOwner(tile, _current_player)) return;
 
 		if (IsLevelCrossing(tile)) goto is_rail_crossing;
