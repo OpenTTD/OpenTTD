@@ -2047,6 +2047,18 @@ void RelocateAllWindows(int neww, int newh)
 		 * in a 'backup'-desc that the window should always be centred. */
 		switch (w->window_class) {
 			case WC_MAIN_TOOLBAR:
+				if (neww - w->width != 0) {
+					ResizeWindow(w, min(neww, 640) - w->width, 0);
+
+					WindowEvent e;
+					e.event = WE_RESIZE;
+					e.we.sizing.size.x = w->width;
+					e.we.sizing.size.y = w->height;
+					e.we.sizing.diff.x = neww - w->width;
+					e.we.sizing.diff.y = 0;
+					w->wndproc(w, &e);
+				}
+
 				top = w->top;
 				left = PositionMainToolbar(w); // changes toolbar orientation
 				break;
@@ -2064,6 +2076,7 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WC_STATUS_BAR:
+				ResizeWindow(w, clamp(neww, 320, 640) - w->width, 0);
 				top = newh - w->height;
 				left = (neww - w->width) >> 1;
 				break;
