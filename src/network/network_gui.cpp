@@ -1717,15 +1717,15 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _chat_window_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,  0, 13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{      WWT_PANEL, RESIZE_NONE, 14,  11, 639,  0, 13, 0x0,              STR_NULL}, // background
-{      WWT_PANEL, RESIZE_NONE, 14,  75, 577,  1, 12, 0x0,              STR_NULL}, // text box
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 14, 578, 639,  1, 12, STR_NETWORK_SEND, STR_NULL}, // send button
+{   WWT_CLOSEBOX, RESIZE_NONE,  14,   0,  10,  0, 13, STR_00C5,         STR_018B_CLOSE_WINDOW},
+{      WWT_PANEL, RESIZE_RIGHT, 14,  11, 319,  0, 13, 0x0,              STR_NULL}, // background
+{      WWT_PANEL, RESIZE_RIGHT, 14,  75, 257,  1, 12, 0x0,              STR_NULL}, // text box
+{ WWT_PUSHTXTBTN, RESIZE_LR,    14, 258, 319,  1, 12, STR_NETWORK_SEND, STR_NULL}, // send button
 {   WIDGETS_END},
 };
 
 static const WindowDesc _chat_window_desc = {
-	WDP_CENTER, -26, 640, 14, 640, 14, // x, y, width, height
+	WDP_CENTER, -26, 320, 14, 640, 14, // x, y, width, height
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_chat_window_widgets,

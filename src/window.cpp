@@ -2082,6 +2082,7 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WC_SEND_NETWORK_MSG:
+				ResizeWindow(w, clamp(neww, 320, 640) - w->width, 0);
 				top = (newh - 26); // 26 = height of status bar + height of chat bar
 				left = (neww - w->width) >> 1;
 				break;
