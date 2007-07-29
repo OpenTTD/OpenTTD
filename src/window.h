@@ -127,7 +127,11 @@ enum WindowEventCodes {
 struct WindowEvent {
 	byte event;
 	union {
-		struct{
+		struct {
+			void *data;
+		} create;
+
+		struct {
 			Point pt;
 			int widget;
 		} click;
@@ -581,10 +585,11 @@ Window *AllocateWindow(
 							int height,
 							WindowProc *proc,
 							WindowClass cls,
-							const Widget *widget);
+							const Widget *widget,
+							void *data = NULL);
 
-Window *AllocateWindowDesc(const WindowDesc *desc);
-Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number);
+Window *AllocateWindowDesc(const WindowDesc *desc, void *data = NULL);
+Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data = NULL);
 
 void DrawWindowViewport(const Window *w);
 void ResizeWindow(Window *w, int x, int y);

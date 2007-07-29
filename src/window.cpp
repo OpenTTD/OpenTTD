@@ -598,10 +598,11 @@ static Window *FindFreeWindow()
  * @param cls see WindowClass class of the window, used for identification and grouping
  * @param *widget see Widget pointer to the window layout and various elements
  * @param window_number number being assigned to the new window
+ * @param data the data to be given during the WE_CREATE message
  * @return Window pointer of the newly created window */
 static Window *LocalAllocateWindow(
 							int x, int y, int min_width, int min_height, int def_width, int def_height,
-							WindowProc *proc, WindowClass cls, const Widget *widget, int window_number)
+							WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data)
 {
 	Window *w = FindFreeWindow();
 
@@ -654,7 +655,10 @@ static Window *LocalAllocateWindow(
 		_last_z_window++;
 	}
 
-	CallWindowEventNP(w, WE_CREATE);
+	WindowEvent e;
+	e.event = WE_CREATE;
+	e.we.create.data = data;
+	w->wndproc(w, &e);
 
 	/* Try to make windows smaller when our window is too small.
 	 * w->(width|height) is normally the same as min_(width|height),
@@ -715,9 +719,9 @@ static Window *LocalAllocateWindow(
  * @return Window pointer of the newly created window */
 Window *AllocateWindow(
 							int x, int y, int width, int height,
-							WindowProc *proc, WindowClass cls, const Widget *widget)
+							WindowProc *proc, WindowClass cls, const Widget *widget, void *data)
 {
-	return LocalAllocateWindow(x, y, width, height, width, height, proc, cls, widget, 0);
+	return LocalAllocateWindow(x, y, width, height, width, height, proc, cls, widget, 0, data);
 }
 
 struct SizeRect {
@@ -829,7 +833,7 @@ restart:
 	}
 }
 
-static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number)
+static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number, void *data)
 {
 	Point pt;
 	Window *w;
@@ -884,7 +888,7 @@ static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number
 	}
 
 allocate_window:
-	w = LocalAllocateWindow(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->default_width, desc->default_height, desc->proc, desc->cls, desc->widgets, window_number);
+	w = LocalAllocateWindow(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->default_width, desc->default_height, desc->proc, desc->cls, desc->widgets, window_number, data);
 	w->desc_flags = desc->flags;
 	return w;
 }
@@ -892,25 +896,27 @@ allocate_window:
 /**
  * Open a new window.
  * @param *desc The pointer to the WindowDesc to be created
+ * @param data arbitrary data that is send with the WE_CREATE message
  * @return Window pointer of the newly created window
  */
-Window *AllocateWindowDesc(const WindowDesc *desc)
+Window *AllocateWindowDesc(const WindowDesc *desc, void *data)
 {
-	return LocalAllocateWindowDesc(desc, 0);
+	return LocalAllocateWindowDesc(desc, 0, data);
 }
 
 /**
  * Open a new window.
  * @param *desc The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
+ * @param data arbitrary data that is send with the WE_CREATE message
  * @return see Window pointer of the newly created window
  */
-Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
+Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data)
 {
 	Window *w;
 
 	if (BringWindowToFrontById(desc->cls, window_number)) return NULL;
-	w = LocalAllocateWindowDesc(desc, window_number);
+	w = LocalAllocateWindowDesc(desc, window_number, data);
 	return w;
 }
 
