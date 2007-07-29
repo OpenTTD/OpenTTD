@@ -934,18 +934,18 @@ void ShowSmallMap()
 
 /* Extra ViewPort Window Stuff */
 static const Widget _extra_view_port_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   287,     0,    13, STR_EXTRA_VIEW_PORT_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   288,   299,     0,    13, 0x0,                              STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_RB,    14,     0,   299,    14,   233, 0x0,                              STR_NULL},
-{      WWT_INSET,     RESIZE_RB,    14,     2,   297,    16,   231, 0x0,                              STR_NULL},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,     0,    21,   234,   255, SPR_IMG_ZOOMIN,                   STR_017F_ZOOM_THE_VIEW_IN},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,    22,    43,   234,   255, SPR_IMG_ZOOMOUT,                  STR_0180_ZOOM_THE_VIEW_OUT},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    44,   171,   234,   255, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   172,   298,   234,   255, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT},
-{      WWT_PANEL,    RESIZE_RTB,    14,   299,   299,   234,   255, 0x0,                              STR_NULL},
-{      WWT_PANEL,    RESIZE_RTB,    14,     0,   287,   256,   267, 0x0,                              STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   288,   299,   256,   267, 0x0,                              STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,    0,   13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   287,    0,   13, STR_EXTRA_VIEW_PORT_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   288,   299,    0,   13, 0x0,                              STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_RB,    14,     0,   299,   14,   33, 0x0,                              STR_NULL},
+{      WWT_INSET,     RESIZE_RB,    14,     2,   297,   16,   31, 0x0,                              STR_NULL},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,     0,    21,   34,   55, SPR_IMG_ZOOMIN,                   STR_017F_ZOOM_THE_VIEW_IN},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,    22,    43,   34,   55, SPR_IMG_ZOOMOUT,                  STR_0180_ZOOM_THE_VIEW_OUT},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    44,   171,   34,   55, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW, STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   172,   298,   34,   55, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN, STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT},
+{      WWT_PANEL,    RESIZE_RTB,    14,   299,   299,   34,   55, 0x0,                              STR_NULL},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   287,   56,   67, 0x0,                              STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   288,   299,   56,   67, 0x0,                              STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -953,6 +953,9 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE: /* Disable zoom in button */
+		/* New viewport start at (zero,zero) */
+		AssignWindowViewport(w, 3, 17, w->widget[4].right - w->widget[4].left - 1, w->widget[4].bottom - w->widget[4].top - 1, 0, ZOOM_LVL_VIEWPORT);
+
 		DisableWindowWidget(w, 5);
 		break;
 
@@ -1025,7 +1028,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _extra_view_port_desc = {
-	WDP_AUTO, WDP_AUTO, 300, 268, 300, 268,
+	WDP_AUTO, WDP_AUTO, 300, 68, 300, 268,
 	WC_EXTRA_VIEW_PORT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_extra_view_port_widgets,
@@ -1045,14 +1048,12 @@ void ShowExtraViewPortWindow()
 		int x, y;
 		/* the main window with the main view */
 		v = FindWindowById(WC_MAIN_WINDOW, 0);
-		/* New viewport start ats (zero,zero) */
-		AssignWindowViewport(w, 3, 17, 294, 214, 0 , ZOOM_LVL_VIEWPORT);
 
 		/* center on same place as main window (zoom is maximum, no adjustment needed) */
 		x = WP(v, vp_d).scrollpos_x;
 		y = WP(v, vp_d).scrollpos_y;
-		WP(w, vp_d).scrollpos_x = x + (v->viewport->virtual_width  - (294)) / 2;
-		WP(w, vp_d).scrollpos_y = y + (v->viewport->virtual_height - (214)) / 2;
+		WP(w, vp_d).scrollpos_x = x + (v->viewport->virtual_width  - (w->widget[4].right - w->widget[4].left) - 1) / 2;
+		WP(w, vp_d).scrollpos_y = y + (v->viewport->virtual_height - (w->widget[4].bottom - w->widget[4].top) - 1) / 2;
 		WP(w, vp_d).dest_scrollpos_x = WP(w, vp_d).scrollpos_x;
 		WP(w, vp_d).dest_scrollpos_y = WP(w, vp_d).scrollpos_y;
 	}
