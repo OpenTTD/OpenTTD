@@ -53,13 +53,13 @@ static const Widget _build_vehicle_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},
 	{      WWT_PANEL,  RESIZE_RIGHT,    14,    81,   227,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},
 	{    WWT_TEXTBTN,     RESIZE_LR,    14,   228,   239,    14,    25, STR_0225,                STR_SORT_CRITERIA_TIP},
-	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   227,    26,   121, 0x0,                     STR_NULL },
-	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   228,   239,    26,   121, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
-	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   239,   122,   243, 0x0,                     STR_NULL },
+	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   227,    26,    39, 0x101,                   STR_NULL },
+	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   228,   239,    26,    39, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
+	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   239,    40,   161, 0x0,                     STR_NULL },
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   244,   255, 0x0,                     STR_NULL },
-	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   115,   227,   244,   255, 0x0,                     STR_NULL },
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   228,   239,   244,   255, 0x0,                     STR_RESIZE_BUTTON },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   162,   173, 0x0,                     STR_NULL },
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   115,   227,   162,   173, 0x0,                     STR_NULL },
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   228,   239,   162,   173, 0x0,                     STR_RESIZE_BUTTON },
 	{   WIDGETS_END},
 };
 
@@ -979,6 +979,19 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
 	switch (e->event) {
+		case WE_CREATE: {
+			bv->vehicle_type = *(VehicleType*)e->we.create.data;
+			int vlh = GetVehicleListHeight(bv->vehicle_type);
+
+			ResizeWindow(w, 0, vlh - 14);
+			w->resize.step_height = vlh;
+			w->vscroll.cap = 1;
+			w->widget[BUILD_VEHICLE_WIDGET_LIST].data = 0x101;
+
+			w->resize.width  = w->width;
+			w->resize.height = w->height;
+		} break;
+
 		case WE_INVALIDATE_DATA:
 			bv->regenerate_list = true;
 			SetWindowDirty(w);
@@ -1044,7 +1057,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _build_vehicle_desc = {
-	WDP_AUTO, WDP_AUTO, 240, 256, 240, 256,
+	WDP_AUTO, WDP_AUTO, 240, 174, 240, 256,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_build_vehicle_widgets,
@@ -1065,20 +1078,16 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 
 	DeleteWindowById(WC_BUILD_VEHICLE, num);
 
-	w = AllocateWindowDescFront(&_build_vehicle_desc, num);
+	w = AllocateWindowDescFront(&_build_vehicle_desc, num, &type);
 
 	if (w == NULL) return;
 
 	w->caption_color = (tile != 0) ? GetTileOwner(tile) : _local_player;
-	w->resize.step_height = GetVehicleListHeight(type);
-	w->vscroll.cap = w->resize.step_height == 24 ? 4 : 8;
-	w->widget[BUILD_VEHICLE_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
 
 	bv = &WP(w, buildvehicle_d);
 	EngList_Create(&bv->eng_list);
 	bv->sel_engine      = INVALID_ENGINE;
 
-	bv->vehicle_type    = type;
 	bv->regenerate_list = false;
 
 	bv->sort_criteria         = _last_sort_criteria[type];
@@ -1088,11 +1097,9 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 		default: NOT_REACHED();
 		case VEH_TRAIN:
 			WP(w, buildvehicle_d).filter.railtype = (tile == 0) ? RAILTYPE_END : GetRailType(tile);
-			ResizeWindow(w, 0, 16);
 			break;
 		case VEH_ROAD:
 			WP(w, buildvehicle_d).filter.roadtypes = (tile == 0) ? ROADTYPES_ALL : GetRoadTypes(tile);
-			ResizeWindow(w, 0, 16);
 		case VEH_SHIP:
 			break;
 		case VEH_AIRCRAFT:
@@ -1102,9 +1109,6 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 	}
 	SetupWindowStrings(w, type);
 	ResizeButtons(w, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
-
-	w->resize.width  = w->width;
-	w->resize.height = w->height;
 
 	GenerateBuildList(w); // generate the list, since we need it in the next line
 	/* Select the first engine in the list as default when opening the window */
