@@ -603,7 +603,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informa
 STR_MESSAGES_ALL                                                :{YELLOW}Adjust per tots els tipus de missatge (actiu/inactiu/resum)
 STR_MESSAGE_SOUND                                               :{YELLOW}Emetre so per als nous missatges resumits
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...massa lluny del destí previ
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Principals Empreses en asolir el Nivell {NUM}{}({STRING} )
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Principals empreses en aconseguir el Nivell {NUM}{}({STRING} )
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Taula de Lliga d'Empreses a {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Empresari
@@ -2372,29 +2372,29 @@ STR_8018_SH_40_ELECTRIC                                         :SH '40' (Elèct
 STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Elèctric)
 STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Elèctric)
 STR_801B_PASSENGER_CAR                                          :Vagó per Passatgers
-STR_801C_MAIL_VAN                                               :Furgó per Correu
+STR_801C_MAIL_VAN                                               :Vagó per Correu
 STR_801D_COAL_CAR                                               :Vagó per Carbó
 STR_801E_OIL_TANKER                                             :Tanc de Petroli
-STR_801F_LIVESTOCK_VAN                                          :Furgó per Bestiar
-STR_8020_GOODS_VAN                                              :Furgó de Mercaderies
-STR_8021_GRAIN_HOPPER                                           :Furgó per Gra
+STR_801F_LIVESTOCK_VAN                                          :Vagó per Bestiar
+STR_8020_GOODS_VAN                                              :Vagó de Mercaderies
+STR_8021_GRAIN_HOPPER                                           :Vagó per Gra
 STR_8022_WOOD_TRUCK                                             :Vagó per Fusta
 STR_8023_IRON_ORE_HOPPER                                        :Vagó per Mineral de Ferro
 STR_8024_STEEL_TRUCK                                            :Vagó per Acer
-STR_8025_ARMORED_VAN                                            :Furgó Blindat
-STR_8026_FOOD_VAN                                               :Furgó per Queviures
+STR_8025_ARMORED_VAN                                            :Vagó Blindat
+STR_8026_FOOD_VAN                                               :Vagó per Queviures
 STR_8027_PAPER_TRUCK                                            :Vagó per Paper
-STR_8028_COPPER_ORE_HOPPER                                      :Furgó per Mineral de Coure
+STR_8028_COPPER_ORE_HOPPER                                      :Vagó per Mineral de Coure
 STR_8029_WATER_TANKER                                           :Tanc d'Aigua
 STR_802A_FRUIT_TRUCK                                            :Vagó per Fruita
 STR_802B_RUBBER_TRUCK                                           :Vagó per Cautxú
 STR_802C_SUGAR_TRUCK                                            :Vagó per Sucre
-STR_802D_COTTON_CANDY_HOPPER                                    :Furgó per Cotó de Sucre
-STR_802E_TOFFEE_HOPPER                                          :Furgó per Caramels
-STR_802F_BUBBLE_VAN                                             :Furgó per Bombolles
+STR_802D_COTTON_CANDY_HOPPER                                    :Vagó per Cotó de Sucre
+STR_802E_TOFFEE_HOPPER                                          :Vagó per Caramels
+STR_802F_BUBBLE_VAN                                             :Vagó per Bombolles
 STR_8030_COLA_TANKER                                            :Tanc per Refresc
-STR_8031_CANDY_VAN                                              :Furgó per Dolços
-STR_8032_TOY_VAN                                                :Furgó per Joguines
+STR_8031_CANDY_VAN                                              :Vagó per Dolços
+STR_8032_TOY_VAN                                                :Vagó per Joguines
 STR_8033_BATTERY_TRUCK                                          :Vagó per Piles
 STR_8034_FIZZY_DRINK_TRUCK                                      :Vagó per Begudes Gasoses
 STR_8035_PLASTIC_TRUCK                                          :Vagó per Plàstic
@@ -2402,29 +2402,29 @@ STR_8036_X2001_ELECTRIC                                         :'X2001' (Elèct
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elèctric)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 STR_8039_PASSENGER_CAR                                          :Vagó per Passatgers
-STR_803A_MAIL_VAN                                               :Furgó per Correu
+STR_803A_MAIL_VAN                                               :Vagó per Correu
 STR_803B_COAL_CAR                                               :Vagó per Carbó
 STR_803C_OIL_TANKER                                             :Tanc de Petroli
-STR_803D_LIVESTOCK_VAN                                          :Furgó per Bestiar
-STR_803E_GOODS_VAN                                              :Furgó de Mercaderies
-STR_803F_GRAIN_HOPPER                                           :Furgó per Gra
+STR_803D_LIVESTOCK_VAN                                          :Vagó per Bestiar
+STR_803E_GOODS_VAN                                              :Vagó de Mercaderies
+STR_803F_GRAIN_HOPPER                                           :Vagó per Gra
 STR_8040_WOOD_TRUCK                                             :Vagó per Fusta
 STR_8041_IRON_ORE_HOPPER                                        :Vagó per Mineral de Ferro
 STR_8042_STEEL_TRUCK                                            :Vagó per Acer
-STR_8043_ARMORED_VAN                                            :Furgó Blindat
-STR_8044_FOOD_VAN                                               :Furgó per Queviures
+STR_8043_ARMORED_VAN                                            :Vagó Blindat
+STR_8044_FOOD_VAN                                               :Vagó per Queviures
 STR_8045_PAPER_TRUCK                                            :Vagó per Paper
-STR_8046_COPPER_ORE_HOPPER                                      :Furgó per Mineral de Coure
+STR_8046_COPPER_ORE_HOPPER                                      :Vagó per Mineral de Coure
 STR_8047_WATER_TANKER                                           :Tanc d'Aigua
 STR_8048_FRUIT_TRUCK                                            :Vagó per Fruita
 STR_8049_RUBBER_TRUCK                                           :Vagó per Cautxú
 STR_804A_SUGAR_TRUCK                                            :Vagó per Sucre
-STR_804B_COTTON_CANDY_HOPPER                                    :Furgó per Cotó de Sucre
-STR_804C_TOFFEE_HOPPER                                          :Furgó per Caramels
-STR_804D_BUBBLE_VAN                                             :Furgó per Bombolles
+STR_804B_COTTON_CANDY_HOPPER                                    :Vagó per Cotó de Sucre
+STR_804C_TOFFEE_HOPPER                                          :Vagó per Caramels
+STR_804D_BUBBLE_VAN                                             :Vagó per Bombolles
 STR_804E_COLA_TANKER                                            :Tanc per Refresc
-STR_804F_CANDY_VAN                                              :Furgó per Dolços
-STR_8050_TOY_VAN                                                :Furgó per Joguines
+STR_804F_CANDY_VAN                                              :Vagó per Dolços
+STR_8050_TOY_VAN                                                :Vagó per Joguines
 STR_8051_BATTERY_TRUCK                                          :Vagó per Piles
 STR_8052_FIZZY_DRINK_TRUCK                                      :Vagó per Begudes Gasoses
 STR_8053_PLASTIC_TRUCK                                          :Vagó per Plàstic
@@ -2434,29 +2434,29 @@ STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' 
 STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Quimera' (Elèctric)
 STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
 STR_8059_PASSENGER_CAR                                          :Vagó per Passatgers
-STR_805A_MAIL_VAN                                               :Furgó per Correu
+STR_805A_MAIL_VAN                                               :Vagó per Correu
 STR_805B_COAL_CAR                                               :Vagó per Carbó
 STR_805C_OIL_TANKER                                             :Tanc de Petroli
-STR_805D_LIVESTOCK_VAN                                          :Furgó per Bestiar
-STR_805E_GOODS_VAN                                              :Furgó de Mercaderies
-STR_805F_GRAIN_HOPPER                                           :Furgó per Gra
+STR_805D_LIVESTOCK_VAN                                          :Vagó per Bestiar
+STR_805E_GOODS_VAN                                              :Vagó de Mercaderies
+STR_805F_GRAIN_HOPPER                                           :Vagó per Gra
 STR_8060_WOOD_TRUCK                                             :Vagó per Fusta
 STR_8061_IRON_ORE_HOPPER                                        :Vagó per Mineral de Ferro
 STR_8062_STEEL_TRUCK                                            :Vagó per Acer
-STR_8063_ARMORED_VAN                                            :Furgó Blindat
-STR_8064_FOOD_VAN                                               :Furgó per Queviures
+STR_8063_ARMORED_VAN                                            :Vagó Blindat
+STR_8064_FOOD_VAN                                               :Vagó per Queviures
 STR_8065_PAPER_TRUCK                                            :Vagó per Paper
-STR_8066_COPPER_ORE_HOPPER                                      :Furgó per Mineral de Coure
+STR_8066_COPPER_ORE_HOPPER                                      :Vagó per Mineral de Coure
 STR_8067_WATER_TANKER                                           :Tanc d'Aigua
 STR_8068_FRUIT_TRUCK                                            :Vagó per Fruita
 STR_8069_RUBBER_TRUCK                                           :Vagó per Cautxú
 STR_806A_SUGAR_TRUCK                                            :Vagó per Sucre
-STR_806B_COTTON_CANDY_HOPPER                                    :Furgó per Cotó de Sucre
-STR_806C_TOFFEE_HOPPER                                          :Furgó per Caramels
-STR_806D_BUBBLE_VAN                                             :Furgó per Bombolles
+STR_806B_COTTON_CANDY_HOPPER                                    :Vagó per Cotó de Sucre
+STR_806C_TOFFEE_HOPPER                                          :Vagó per Caramels
+STR_806D_BUBBLE_VAN                                             :Vagó per Bombolles
 STR_806E_COLA_TANKER                                            :Tanc per Refresc
-STR_806F_CANDY_VAN                                              :Furgó per Dolços
-STR_8070_TOY_VAN                                                :Furgó per Joguines
+STR_806F_CANDY_VAN                                              :Vagó per Dolços
+STR_8070_TOY_VAN                                                :Vagó per Joguines
 STR_8071_BATTERY_TRUCK                                          :Vagó per Piles
 STR_8072_FIZZY_DRINK_TRUCK                                      :Vagó per Begudes Gasoses
 STR_8073_PLASTIC_TRUCK                                          :Vagó per Plàstic
@@ -2479,9 +2479,9 @@ STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Camió per Corr
 STR_8084_WITCOMBE_OIL_TANKER                                    :Cuba de Petroli Witcombe
 STR_8085_FOSTER_OIL_TANKER                                      :Cuba de Petroli Foster
 STR_8086_PERRY_OIL_TANKER                                       :Cuba de Petroli Perry
-STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Furgó de Bestiar Talbott
-STR_8088_UHL_LIVESTOCK_VAN                                      :Furgó de Bestiar Uhl
-STR_8089_FOSTER_LIVESTOCK_VAN                                   :Furgó de Bestiar Foster
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Camió de Bestiar Talbott
+STR_8088_UHL_LIVESTOCK_VAN                                      :Vagó de Bestiar Uhl
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Camió de Bestiar Foster
 STR_808A_BALOGH_GOODS_TRUCK                                     :Camió de Mercaderies
 STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Camió de Mercaderies
 STR_808C_GOSS_GOODS_TRUCK                                       :Camió de Mercaderies Goss
@@ -2710,13 +2710,13 @@ STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Incapaç
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}No es pot parar/arrencar el tren...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}dies{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}%{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
-STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per informació
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per més informació
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Construeix nous trens (es necessita cotxera)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per info., arrossega el vehicle per afegir/treure del tren
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construeix un nou element de tren
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centra la vista de la pantalla principal en la situació de la cotxera
-STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Llista de selecció d'elements de tren - clica a l'element per informació
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Llista de selecció d'elements de tren - clica a l'element per més informació
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construeix l'element de tren seleccionat
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Reanomena el tipus d'element del tren
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Acció sobre el tren actual - clica aquí per parar/arrencar el tren
@@ -2815,7 +2815,7 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisi�
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No es pot enviar el vehicle a cotxera...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossible trobar la cotxera local
-STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automòbils - clica en un vehicle per informació
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automòbils - clica en un vehicle per més informació
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construeix nous automòbils (necessita una cotxera)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Acció sobre el vehicle actual - clica aquí per parar/arrencar el vehicle
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Mostra les ordres dels vehicles
@@ -2823,11 +2823,11 @@ STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centra l
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Envia el vehicle a cotxera
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Obliga al vehicle a tornar
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Mostra els detalls del vehicle
-STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vehicles - clica en un vehicle per informació
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vehicles - clica en un vehicle per més informació
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construeix un nou automòbil
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arrossega el vehicle fins aquí per vendre'l
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centra la pantalla principal en la situació de la cotxera
-STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per informació
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista de selecció de Vehicles - clica en un vehicle per més informació
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construeix l'automòbil seleccionat
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Velocitat: {VELOCITY}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacitat: {LTBLUE}
@@ -2891,13 +2891,13 @@ STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisi�
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Vaixell {COMMA} esperant en drassana
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construeix un port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construeix una drassana (per construir i revisar vaixells)
-STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per informació
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per més informació
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Construeix un nou vaixell
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrossega el vaixell fins aquí per vendre'l
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la pantalla principal en la situació de la drassana
-STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per informació
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per més informació
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construeix nous vaixells (necessites una drassana)
-STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}LLista de selecció de Vaixells - clica en un vaixell per informació
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construeix el vaixell seleccionat
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/arrencar el vaixell
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostra les ordres del vaixell
@@ -2963,13 +2963,13 @@ STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}L'avió 
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No es pot vendre l'avió...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construcció d'Aeroport
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construeix un aeroport
-STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per informació
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per més informació
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construeix nous avions (necessites un aeroport amb hangar)
-STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per informació
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per més informació
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construeix nous avions
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrossega l'avió fins aquí per vendre'l
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centra la pantalla principal en la situació de l'hangar
-STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Llista de selecció d'Avions - clica sobre l'avió per informació
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Llista de selecció d'Avions - clica sobre l'avió per més informació
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construeix l'avió seleccionat
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Accions sobre l'avió actual - clica aquí per parar/arrencar l'avió
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra les ordres de l'avió

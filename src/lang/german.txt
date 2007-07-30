@@ -1231,11 +1231,11 @@ STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Wegpunktename ändern
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Kann Wegpunktname nicht ändern...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Ändere Schiene in einen Wegpunkt
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Ändere Gleis in einen Wegpunkt
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Kann Wegpunkt hier nicht bauen...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kann Wegpunkt hier nicht entfernen...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bauen von Schienen unter Verwendung des Autoschienenmodus
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bauen von Gleisen unter Verwendung des Automatikmodus
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...in diesem Szenario gibt es keine Stadt
 
@@ -3158,7 +3158,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wähle d
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wähle den Fahrzeugtyp, der anstelle des links gewählten Fahrzeugs verwendet werden soll
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drücke diesen Button, wenn das Fahrzeug auf der linken Seite nicht ersetzt werden soll
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Drücke diesen Button, wenn das Fahrzeug auf der linken Seite durch das auf der rechten Seite gewählte ersetzt werden soll
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wähle einen Schienentyp für den Loks ersetzt werden sollen
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wähle einen Gleistyp für den Loks ersetzt werden sollen
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Hier wird angezeigt, gegen welches Fahrzeug das auf der linken Seite gewählte ersetzt wird
 STR_REPLACE_HELP                                                :{BLACK}Dieses Feature ermöglicht es, einen Fahrzeugtyp auszuwählen und ihn durch einen anderen ersetzen zu lassen. Dies geschieht automatisch, wenn das Fahrzeug regulär das Depot besucht.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{SKIP}{STRING}

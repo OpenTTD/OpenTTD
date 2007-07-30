@@ -2099,6 +2099,9 @@ STR_4828_REQUIRES                                               :{BLACK}Wymaga: 
 STR_4829_REQUIRES                                               :{BLACK}Wymaga: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
+############ range for produces ends
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Wyprodukowano w ostatnim miesiącu:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% przetransportowano)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centruj główny widok na przedsiębiorstwie
@@ -3451,6 +3454,10 @@ STR_GROUP_ALL_TRAINS                                            :Wszystkie poci�
 STR_GROUP_ALL_ROADS                                             :Wszystkie samochody
 STR_GROUP_ALL_SHIPS                                             :Wszystkie statki
 STR_GROUP_ALL_AIRCRAFTS                                         :Wszystkie samoloty
+STR_GROUP_DEFAULT_TRAINS                                        :Pociągi bez grupy
+STR_GROUP_DEFAULT_ROADS                                         :Samochody bez grupy
+STR_GROUP_DEFAULT_SHIPS                                         :Statki bez grupy
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Samoloty bez grupy
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj poj. współdzielące
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie pojazdy
@@ -3494,3 +3501,5 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Idź do 
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Idź do poprzedniej tablicy
 
 ########
+
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Wybierz przedsiębiorstwo z listy
