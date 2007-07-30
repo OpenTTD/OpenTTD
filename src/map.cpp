@@ -282,7 +282,7 @@ bool CircularTileSearch(TileIndex tile, uint size, TestTileOnSearchProc proc, ui
 		n = 2;
 		if (proc(TileXY(x, y), data)) return true;
 
-		/* If tile test is not successfull, get one tile down and left,
+		/* If tile test is not successful, get one tile down and left,
 		 * ready for a test in first circle around center tile */
 		x += _tileoffs_by_dir[DIR_W].x;
 		y += _tileoffs_by_dir[DIR_W].y;
@@ -300,7 +300,7 @@ bool CircularTileSearch(TileIndex tile, uint size, TestTileOnSearchProc proc, ui
 			uint j;
 			for (j = n; j != 0; j--) {
 				if (x <= MapMaxX() && y <= MapMaxY() && ///< Is the tile within the map?
-						proc(TileXY(x, y), data)) {     ///< Is the callback successfulll?
+						proc(TileXY(x, y), data)) {     ///< Is the callback successful?
 					return true;                        ///< then stop the search
 				}
 

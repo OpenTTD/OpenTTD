@@ -463,7 +463,7 @@ void IConsoleError(const char *string)
 /**
  * Change a string into its number representation. Supports
  * decimal and hexadecimal numbers as well as 'on'/'off' 'true'/'false'
- * @param *value the variable a successfull conversion will be put in
+ * @param *value the variable a successful conversion will be put in
  * @param *arg the string to be converted
  * @return Return true on success or false on failure
  */
@@ -517,7 +517,7 @@ static void IConsoleHookAdd(IConsoleHooks *hooks, IConsoleHookTypes type, IConso
  * there is a function associated with that and if so, execute it
  * @param hooks IConsoleHooks structure that will be checked
  * @param type type of hook, trigger that needs to be activated
- * @return true on a successfull execution of the hook command or if there
+ * @return true on a successful execution of the hook command or if there
  * is no hook/trigger present at all. False otherwise
  */
 static bool IConsoleHookHandle(const IConsoleHooks *hooks, IConsoleHookTypes type)

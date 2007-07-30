@@ -44,7 +44,7 @@ public:
 DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_ACK_REGISTER)
 {
 	_network_advertise_retries = 0;
-	DEBUG(net, 2, "[udp] advertising on master server successfull");
+	DEBUG(net, 2, "[udp] advertising on master server successful");
 
 	/* We are advertised, but we don't want to! */
 	if (!_network_advertise) NetworkUDPRemoveAdvertise();

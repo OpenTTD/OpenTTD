@@ -173,7 +173,7 @@ int CDECL main(int argc, char* argv[])
  * and append this up to the maximum length (either absolute or screenlength). If maxlength
  * is zero, we don't care about the screenlength but only about the physical length of the string
  * @param tb Textbuf type to be changed
- * @return Return true on successfull change of Textbuf, or false otherwise
+ * @return Return true on successful change of Textbuf, or false otherwise
  */
 bool InsertTextBufferClipboard(Textbuf *tb)
 {

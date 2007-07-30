@@ -859,7 +859,7 @@ static void DelChar(Textbuf *tb, bool backspace)
  * The character is delete from the position the caret is at
  * @param tb Textbuf type to be changed
  * @param delmode Type of deletion, either WKC_BACKSPACE or WKC_DELETE
- * @return Return true on successfull change of Textbuf, or false otherwise
+ * @return Return true on successful change of Textbuf, or false otherwise
  */
 bool DeleteTextBufferChar(Textbuf *tb, int delmode)
 {
@@ -891,7 +891,7 @@ void DeleteTextBufferAll(Textbuf *tb)
  * length of the string
  * @param tb Textbuf type to be changed
  * @param key Character to be inserted
- * @return Return true on successfull change of Textbuf, or false otherwise
+ * @return Return true on successful change of Textbuf, or false otherwise
  */
 bool InsertTextBufferChar(Textbuf *tb, WChar key)
 {
@@ -915,7 +915,7 @@ bool InsertTextBufferChar(Textbuf *tb, WChar key)
  * This defines where the caret will blink and the next characer interaction will occur
  * @param tb Textbuf type where navigation occurs
  * @param navmode Direction in which navigation occurs WKC_LEFT, WKC_RIGHT, WKC_END, WKC_HOME
- * @return Return true on successfull change of Textbuf, or false otherwise
+ * @return Return true on successful change of Textbuf, or false otherwise
  */
 bool MoveTextBufferPos(Textbuf *tb, int navmode)
 {
@@ -1589,7 +1589,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
 			} else {
 				BuildFileList();
-				/* Reset file name to current date on successfull delete */
+				/* Reset file name to current date on successful delete */
 				if (_saveload_mode == SLD_SAVE_GAME) GenerateFileName();
 			}
 
