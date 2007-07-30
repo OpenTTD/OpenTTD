@@ -1592,6 +1592,26 @@ bool AfterLoadGame(void)
 		SettingsDisableElrail(_patches.disable_elrails);
 	}
 
+	if (CheckSavegameVersion(41)) {
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (IsBridgeTile(v->tile) && IsBridgeRamp(v->tile) &&
+					(v->z_pos & (TILE_HEIGHT - 1)) == (TILE_HEIGHT - 1)) {
+				/* Under some circumstances the trains going up a ramp can be one
+				* pixel too low when they enter the bridge. This causes the train
+				* to "disappear" under the bridge, which causes the train to
+				* break into two pieces and crash slightly later.
+				*
+				* This "hack" will make the trains on those positions on the
+				* ramps run one pixel higher. This offset will be automatically
+				* "fixed" when it enters the bridge middle parts or when it
+				* drives down the ramp of the bridge.
+				*/
+				v->z_pos++;
+			}
+		}
+	}
+
 	/* Buoys do now store the owner of the previous water tile, which can never
 	 * be OWNER_NONE. So replace OWNER_NONE with OWNER_WATER. */
 	if (CheckSavegameVersion(46)) {
