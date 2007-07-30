@@ -1669,13 +1669,10 @@ static bool SignalVehicleCheck(TileIndex tile, uint track)
 		/* check for a vehicle with that trackdir on the end tile of the tunnel */
 		if (VehicleFromPos(end, &dest, SignalVehicleCheckProc) != NULL) return true;
 
-		/* now check all tiles from start to end for a warping vehicle
-		 * NOTE: the hashes for tiles may overlap, so this could maybe be optimised a bit by not checking every tile? */
+		/* now check all tiles from start to end for a warping vehicle */
 		dest.track = 0x40;   //Vehicle inside a tunnel or on a bridge
-		for (; tile != end; tile += TileOffsByDiagDir(direction)) {
-			if (VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL)
-				return true;
-		}
+		if (VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL) return true;
+		if (VehicleFromPos(end, &dest, SignalVehicleCheckProc) != NULL) return true;
 
 		/* no vehicle found */
 		return false;

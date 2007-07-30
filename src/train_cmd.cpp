@@ -2760,7 +2760,16 @@ static void CheckTrainCollision(Vehicle *v)
 	tcc.num = 0;
 
 	/* find colliding vehicles */
-	VehicleFromPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
+	if (v->u.rail.track == TRACK_BIT_WORMHOLE) {
+		VehicleFromPos(v->tile, &tcc, FindTrainCollideEnum);
+		if (IsBridgeTile(v->tile)) {
+			VehicleFromPos(GetOtherBridgeEnd(v->tile), &tcc, FindTrainCollideEnum);
+		} else {
+			VehicleFromPos(GetOtherTunnelEnd(v->tile), &tcc, FindTrainCollideEnum);
+		}
+	} else {
+		VehicleFromPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
+	}
 
 	/* any dead -> no crash */
 	if (tcc.num == 0) return;

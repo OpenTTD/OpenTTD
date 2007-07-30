@@ -471,8 +471,8 @@ static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)
 	if (remove) {
 		new_hash = NULL;
 	} else {
-		int x = GB(v->x_pos / TILE_SIZE, HASH_RES, HASH_BITS);
-		int y = GB(v->y_pos / TILE_SIZE, HASH_RES, HASH_BITS) << HASH_BITS;
+		int x = GB(TileX(v->tile), HASH_RES, HASH_BITS);
+		int y = GB(TileY(v->tile), HASH_RES, HASH_BITS) << HASH_BITS;
 		new_hash = &_new_vehicle_position_hash[(x + y) & TOTAL_HASH_MASK];
 	}
 
