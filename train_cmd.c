@@ -2769,10 +2769,11 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 			static const int INV_TILE_SIZE_MASK = ~(TILE_SIZE - 1);
 
 			byte middle_z = GetSlopeZ((v->x_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE, (v->y_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE);
+			TileIndex tile = TileVirtXY(v->x_pos, v->y_pos);
 
 			/* For some reason tunnel tiles are always given as sloped :(
 			 * But they are not sloped... */
-			if (middle_z != v->z_pos && !IsTunnelTile(TileVirtXY(v->x_pos, v->y_pos))) {
+			if (middle_z != v->z_pos && !IsTunnelTile(tile) && !(IsBridgeTile(tile) && IsBridgeMiddle(tile))) {
 				SETBIT(v->u.rail.flags, (middle_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
 			}
 		}
