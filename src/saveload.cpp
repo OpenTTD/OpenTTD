@@ -1552,7 +1552,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		uint count = 1 << Savegame_POOL_BLOCK_SIZE_BITS;
 
 		assert(_ts.count == _sl.offs_base);
-		for (i = 0; i != _Savegame_pool.current_blocks - 1; i++) {
+		for (i = 0; i != _Savegame_pool.GetBlockCount() - 1; i++) {
 			_sl.buf = _Savegame_pool.blocks[i];
 			fmt->writer(count);
 		}

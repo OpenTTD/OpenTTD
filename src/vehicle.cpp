@@ -355,7 +355,7 @@ static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * @todo - This is just a temporary stage, this will be removed. */
-	if (*skip_vehicles < (_Vehicle_pool.total_items - offset)) { // make sure the offset in the array is not larger than the array itself
+	if (*skip_vehicles < (_Vehicle_pool.GetSize() - offset)) { // make sure the offset in the array is not larger than the array itself
 		for (v = GetVehicle(offset + *skip_vehicles); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 			(*skip_vehicles)++;
 			if (!IsValidVehicle(v)) return InitializeVehicle(v);

@@ -5,8 +5,6 @@
 #ifndef OLDPOOL_H
 #define OLDPOOL_H
 
-struct OldMemoryPool;
-
 /* The function that is called after a new block is added
      start_item is the first item of the new made block */
 typedef void OldMemoryPoolNewBlock(uint start_item);
@@ -17,7 +15,18 @@ typedef void OldMemoryPoolCleanBlock(uint start_item, uint end_item);
  * Stuff for dynamic vehicles. Use the wrappers to access the OldMemoryPool
  *  please try to avoid manual calls!
  */
-struct OldMemoryPool {
+struct OldMemoryPoolBase {
+	void CleanPool();
+	bool AddBlockToPool();
+	bool AddBlockIfNeeded(uint index);
+
+protected:
+	OldMemoryPoolBase(const char *name, uint max_blocks, uint block_size_bits, uint item_size,
+				OldMemoryPoolNewBlock *new_block_proc, OldMemoryPoolCleanBlock *clean_block_proc) :
+		name(name), max_blocks(max_blocks), block_size_bits(block_size_bits), item_size(item_size),
+		new_block_proc(new_block_proc), clean_block_proc(clean_block_proc), current_blocks(0),
+		total_items(0), blocks(NULL) {}
+
 	const char* name;     ///< Name of the pool (just for debugging)
 
 	uint max_blocks;      ///< The max amount of blocks this pool can have
@@ -32,7 +41,37 @@ struct OldMemoryPool {
 	uint current_blocks;        ///< How many blocks we have in our pool
 	uint total_items;           ///< How many items we now have in this pool
 
+public:
 	byte **blocks;              ///< An array of blocks (one block hold all the items)
+
+	inline uint GetSize()
+	{
+		return this->total_items;
+	}
+
+	inline bool CanAllocateMoreBlocks()
+	{
+		return this->current_blocks < this->max_blocks;
+	}
+
+	inline uint GetBlockCount()
+	{
+		return this->current_blocks;
+	}
+};
+
+template <typename T>
+struct OldMemoryPool : public OldMemoryPoolBase {
+	OldMemoryPool(const char *name, uint max_blocks, uint block_size_bits, uint item_size,
+				OldMemoryPoolNewBlock *new_block_proc, OldMemoryPoolCleanBlock *clean_block_proc) :
+		OldMemoryPoolBase(name, max_blocks, block_size_bits, item_size, new_block_proc, clean_block_proc) {}
+
+	inline T *Get(uint index)
+	{
+		assert(index < this->GetSize());
+		return (T*)(this->blocks[index >> this->block_size_bits] +
+				(index & ((1 << this->block_size_bits) - 1)) * sizeof(T));
+	}
 };
 
 /**
@@ -42,15 +81,15 @@ struct OldMemoryPool {
  *   AddBlockToPool adds 1 more block to the pool. Returns false if there is no
  *     more room
  */
-void CleanPool(OldMemoryPool *array);
-bool AddBlockToPool(OldMemoryPool *array);
+static inline void CleanPool(OldMemoryPoolBase *array) { array->CleanPool(); }
+static inline bool AddBlockToPool(OldMemoryPoolBase *array) { return array->AddBlockToPool(); }
 
 /**
  * Adds blocks to the pool if needed (and possible) till index fits inside the pool
  *
  * @return Returns false if adding failed
  */
-bool AddBlockIfNeeded(OldMemoryPool *array, uint index);
+static inline bool AddBlockIfNeeded(OldMemoryPoolBase *array, uint index) { return array->AddBlockIfNeeded(index); }
 
 
 #define OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
@@ -61,33 +100,20 @@ bool AddBlockIfNeeded(OldMemoryPool *array, uint index);
 
 
 #define OLD_POOL_ACCESSORS(name, type) \
-	static inline type* Get##name(uint index) \
-	{ \
-		assert(index < _##name##_pool.total_items); \
-		return (type*)( \
-			_##name##_pool.blocks[index >> name##_POOL_BLOCK_SIZE_BITS] + \
-			(index & ((1 << name##_POOL_BLOCK_SIZE_BITS) - 1)) * sizeof(type) \
-		); \
-	} \
-\
-	static inline uint Get##name##PoolSize() \
-	{ \
-		return _##name##_pool.total_items; \
-	}
+	static inline type* Get##name(uint index) { return _##name##_pool.Get(index);  } \
+	static inline uint Get##name##PoolSize()  { return _##name##_pool.GetSize(); }
 
 
 #define DECLARE_OLD_POOL(name, type, block_size_bits, max_blocks) \
 	OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
-	extern OldMemoryPool _##name##_pool; \
+	extern OldMemoryPool<type> _##name##_pool; \
 	OLD_POOL_ACCESSORS(name, type)
 
 
 #define DEFINE_OLD_POOL(name, type, new_block_proc, clean_block_proc) \
-	OldMemoryPool _##name##_pool = { \
+	OldMemoryPool<type> _##name##_pool( \
 		#name, name##_POOL_MAX_BLOCKS, name##_POOL_BLOCK_SIZE_BITS, sizeof(type), \
-		new_block_proc, clean_block_proc, \
-		0, 0, NULL \
-	};
+		new_block_proc, clean_block_proc);
 
 
 #define STATIC_OLD_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \

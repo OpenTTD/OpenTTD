@@ -171,13 +171,9 @@ static inline bool HasOrderPoolFree(uint amount)
 	const Order *order;
 
 	/* There is always room if not all blocks in the pool are reserved */
-	if (_Order_pool.current_blocks < _Order_pool.max_blocks)
-		return true;
+	if (_Order_pool.CanAllocateMoreBlocks()) return true;
 
-	FOR_ALL_ORDERS(order)
-		if (!order->IsValid())
-			if (--amount == 0)
-				return true;
+	FOR_ALL_ORDERS(order) if (!order->IsValid() && --amount == 0) return true;
 
 	return false;
 }

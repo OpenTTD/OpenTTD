@@ -12,27 +12,27 @@
 /**
  * Clean a pool in a safe way (does free all blocks)
  */
-void CleanPool(OldMemoryPool *pool)
+void OldMemoryPoolBase::CleanPool()
 {
 	uint i;
 
-	DEBUG(misc, 4, "[Pool] (%s) cleaning pool..", pool->name);
+	DEBUG(misc, 4, "[Pool] (%s) cleaning pool..", this->name);
 
 	/* Free all blocks */
-	for (i = 0; i < pool->current_blocks; i++) {
-		if (pool->clean_block_proc != NULL) {
-			pool->clean_block_proc(i * (1 << pool->block_size_bits), (i + 1) * (1 << pool->block_size_bits) - 1);
+	for (i = 0; i < this->current_blocks; i++) {
+		if (this->clean_block_proc != NULL) {
+			this->clean_block_proc(i * (1 << this->block_size_bits), (i + 1) * (1 << this->block_size_bits) - 1);
 		}
-		free(pool->blocks[i]);
+		free(this->blocks[i]);
 	}
 
 	/* Free the block itself */
-	free(pool->blocks);
+	free(this->blocks);
 
 	/* Clear up some critical data */
-	pool->total_items = 0;
-	pool->current_blocks = 0;
-	pool->blocks = NULL;
+	this->total_items = 0;
+	this->current_blocks = 0;
+	this->blocks = NULL;
 }
 
 /**
@@ -41,34 +41,32 @@ void CleanPool(OldMemoryPool *pool)
  *
  * @return Returns false if the pool could not be increased
  */
-bool AddBlockToPool(OldMemoryPool *pool)
+bool OldMemoryPoolBase::AddBlockToPool()
 {
 	/* Is the pool at his max? */
-	if (pool->max_blocks == pool->current_blocks)
-		return false;
+	if (this->max_blocks == this->current_blocks) return false;
 
-	pool->total_items = (pool->current_blocks + 1) * (1 << pool->block_size_bits);
+	this->total_items = (this->current_blocks + 1) * (1 << this->block_size_bits);
 
-	DEBUG(misc, 4, "[Pool] (%s) increasing size of pool to %d items (%d bytes)", pool->name, pool->total_items, pool->total_items * pool->item_size);
+	DEBUG(misc, 4, "[Pool] (%s) increasing size of pool to %d items (%d bytes)", this->name, this->total_items, this->total_items * this->item_size);
 
 	/* Increase the poolsize */
-	pool->blocks = ReallocT(pool->blocks, pool->current_blocks + 1);
-	if (pool->blocks == NULL) error("Pool: (%s) could not allocate memory for blocks", pool->name);
+	this->blocks = ReallocT(this->blocks, this->current_blocks + 1);
+	if (this->blocks == NULL) error("Pool: (%s) could not allocate memory for blocks", this->name);
 
 	/* Allocate memory to the new block item */
-	pool->blocks[pool->current_blocks] = MallocT<byte>(pool->item_size * (1 << pool->block_size_bits));
-	if (pool->blocks[pool->current_blocks] == NULL)
-		error("Pool: (%s) could not allocate memory for blocks", pool->name);
+	this->blocks[this->current_blocks] = MallocT<byte>(this->item_size * (1 << this->block_size_bits));
+	if (this->blocks[this->current_blocks] == NULL)
+		error("Pool: (%s) could not allocate memory for blocks", this->name);
 
 	/* Clean the content of the new block */
-	memset(pool->blocks[pool->current_blocks], 0, pool->item_size * (1 << pool->block_size_bits));
+	memset(this->blocks[this->current_blocks], 0, this->item_size * (1 << this->block_size_bits));
 
 	/* Call a custom function if defined (e.g. to fill indexes) */
-	if (pool->new_block_proc != NULL)
-		pool->new_block_proc(pool->current_blocks * (1 << pool->block_size_bits));
+	if (this->new_block_proc != NULL) this->new_block_proc(this->current_blocks * (1 << this->block_size_bits));
 
 	/* We have a new block */
-	pool->current_blocks++;
+	this->current_blocks++;
 
 	return true;
 }
@@ -78,11 +76,10 @@ bool AddBlockToPool(OldMemoryPool *pool)
  *
  * @return Returns false if adding failed
  */
-bool AddBlockIfNeeded(OldMemoryPool *pool, uint index)
+bool OldMemoryPoolBase::AddBlockIfNeeded(uint index)
 {
-	while (index >= pool->total_items) {
-		if (!AddBlockToPool(pool))
-			return false;
+	while (index >= this->total_items) {
+		if (!this->AddBlockToPool()) return false;
 	}
 
 	return true;
