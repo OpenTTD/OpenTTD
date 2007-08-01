@@ -21,9 +21,9 @@ static void CargoPacketPoolNewBlock(uint cpart_item)
 	for (CargoPacket *cp = GetCargoPacket(cpart_item); cp != NULL; cp = (cp->index + 1U < GetCargoPacketPoolSize()) ? GetCargoPacket(cp->index + 1U) : NULL) cp->index = cpart_item++;
 }
 
-static void CargoPacketPoolCleanBlock(uint cpart_item, uint end_item)
+static void CargoPacketPoolCleanBlock(uint start_item, uint end_item)
 {
-	for (uint i = cpart_item; i <= end_item; i++) {
+	for (uint i = start_item; i <= end_item; i++) {
 		CargoPacket *cp = GetCargoPacket(i);
 		if (cp->IsValid()) cp->~CargoPacket();
 	}

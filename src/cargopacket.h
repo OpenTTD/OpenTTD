@@ -51,12 +51,12 @@ struct CargoPacket {
 	bool SameSource(CargoPacket *cp);
 
 
-	/* normal new/delete operators. Used when building/removing station */
-	void* operator new (size_t size);
+	/* normal new/delete operators. Used when building/removing cargo packet */
+	void *operator new (size_t size);
 	void operator delete(void *p);
 
-	/* new/delete operators accepting station index. Used when loading station from savegame. */
-	void* operator new (size_t size, CargoPacket::ID cp_idx);
+	/* new/delete operators accepting cargo packet index. Used when loading cargo packets from savegame. */
+	void *operator new (size_t size, CargoPacket::ID cp_idx);
 	void operator delete(void *p, CargoPacket::ID cp_idx);
 
 private:
