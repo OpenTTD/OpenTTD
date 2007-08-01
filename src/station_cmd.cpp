@@ -43,39 +43,8 @@
 #include "cargotype.h"
 #include "strings.h"
 
-/**
- * Called if a new block is added to the station-pool
- */
-static void StationPoolNewBlock(uint start_item)
-{
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (Station *st = GetStation(start_item); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) st->index = start_item++;
-}
-
-static void StationPoolCleanBlock(uint start_item, uint end_item)
-{
-	for (uint i = start_item; i <= end_item; i++) {
-		Station *st = GetStation(i);
-		if (st->IsValid()) st->~Station();
-	}
-}
-
-/**
- * Called if a new block is added to the roadstop-pool
- */
-static void RoadStopPoolNewBlock(uint start_item)
-{
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (RoadStop *rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) {
-		rs->xy    = INVALID_TILE;
-		rs->index = start_item++;
-	}
-}
-
-DEFINE_OLD_POOL(Station, Station, StationPoolNewBlock, StationPoolCleanBlock)
-DEFINE_OLD_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
+DEFINE_OLD_POOL_GENERIC(Station, Station)
+DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)
 
 
 /**

@@ -64,7 +64,6 @@ Station::~Station()
 {
 	DEBUG(station, cDebugCtorLevel, "I-%3d", index);
 
-	DeleteName(string_id);
 	MarkDirty();
 	RebuildStationLists();
 	InvalidateWindowClasses(WC_STATION_LIST);
@@ -77,21 +76,28 @@ Station::~Station()
 	/* Subsidies need removal as well */
 	DeleteSubsidyWithStation(index);
 
-	free(speclist);
 	xy = 0;
 
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		goods[c].cargo.Truncate(0);
 	}
+
+	this->QuickFree();
 }
 
-void* Station::operator new(size_t size)
+void Station::QuickFree()
+{
+	DeleteName(this->string_id);
+	free(this->speclist);
+}
+
+void *Station::operator new(size_t size)
 {
 	Station *st = AllocateRaw();
 	return st;
 }
 
-void* Station::operator new(size_t size, int st_idx)
+void *Station::operator new(size_t size, int st_idx)
 {
 	if (!AddBlockIfNeeded(&_Station_pool, st_idx))
 		error("Stations: failed loading savegame: too many stations");
@@ -479,7 +485,6 @@ RoadStop::~RoadStop()
 
 	xy = INVALID_TILE;
 }
-
 
 /** Low-level function for allocating a RoadStop on the pool */
 RoadStop *RoadStop::AllocateRaw()

@@ -55,6 +55,9 @@ struct RoadStop {
 	RoadStop(TileIndex tile);
 	~RoadStop();
 
+	void PreInit() { this->xy = INVALID_TILE; }
+	void QuickFree() {}
+
 	void *operator new (size_t size);
 	void operator delete(void *rs);
 
@@ -164,12 +167,15 @@ struct Station {
 	Station(TileIndex tile = 0);
 	~Station();
 
+	void PreInit() {}
+	void QuickFree();
+
 	/* normal new/delete operators. Used when building/removing station */
-	void* operator new (size_t size);
+	void *operator new (size_t size);
 	void operator delete(void *p);
 
 	/* new/delete operators accepting station index. Used when loading station from savegame. */
-	void* operator new (size_t size, int st_idx);
+	void *operator new (size_t size, int st_idx);
 	void operator delete(void *p, int st_idx);
 
 	void AddFacility(byte new_facility_bit, TileIndex facil_xy);

@@ -92,6 +92,40 @@ static inline bool AddBlockToPool(OldMemoryPoolBase *array) { return array->AddB
 static inline bool AddBlockIfNeeded(OldMemoryPoolBase *array, uint index) { return array->AddBlockIfNeeded(index); }
 
 
+/**
+ * Generic function to initialize a new block in a pool.
+ * @param start_item the first item that needs to be initialized
+ */
+template <typename T, OldMemoryPool<T> *Tpool>
+static void PoolNewBlock(uint start_item)
+{
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 *  TODO - This is just a temporary stage, this will be removed. */
+	for (T *t = Tpool->Get(start_item); t != NULL; t = (t->index + 1U < Tpool->GetSize()) ? Tpool->Get(t->index + 1U) : NULL) {
+		t->index = start_item++;
+		t->PreInit();
+	}
+}
+
+/**
+ * Generic function to free a new block in a pool.
+ * This function uses QuickFree that is intended to only free memory that would be lost if the pool is freed.
+ * @param start_item the first item that needs to be cleaned
+ * @param end_item   the last item that needs to be cleaned
+ */
+template <typename T, OldMemoryPool<T> *Tpool>
+static void PoolCleanBlock(uint start_item, uint end_item)
+{
+	for (uint i = start_item; i <= end_item; i++) {
+		T *t = Tpool->Get(i);
+		if (t->IsValid()) {
+			t->QuickFree();
+		}
+	}
+}
+
+
+
 #define OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
 	enum { \
 		name##_POOL_BLOCK_SIZE_BITS = block_size_bits, \
@@ -114,6 +148,11 @@ static inline bool AddBlockIfNeeded(OldMemoryPoolBase *array, uint index) { retu
 	OldMemoryPool<type> _##name##_pool( \
 		#name, name##_POOL_MAX_BLOCKS, name##_POOL_BLOCK_SIZE_BITS, sizeof(type), \
 		new_block_proc, clean_block_proc);
+
+#define DEFINE_OLD_POOL_GENERIC(name, type) \
+	OldMemoryPool<type> _##name##_pool( \
+		#name, name##_POOL_MAX_BLOCKS, name##_POOL_BLOCK_SIZE_BITS, sizeof(type), \
+		PoolNewBlock<type, &_##name##_pool>, PoolCleanBlock<type, &_##name##_pool>);
 
 
 #define STATIC_OLD_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \
