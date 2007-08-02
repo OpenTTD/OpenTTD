@@ -33,6 +33,7 @@ void OldMemoryPoolBase::CleanPool()
 	this->total_items = 0;
 	this->current_blocks = 0;
 	this->blocks = NULL;
+	this->first_free_index = 0;
 }
 
 /**

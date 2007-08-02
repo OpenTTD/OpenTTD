@@ -42,6 +42,7 @@ protected:
 	uint total_items;           ///< How many items we now have in this pool
 
 public:
+	uint first_free_index;      ///< The index of the first free pool item in this pool
 	byte **blocks;              ///< An array of blocks (one block hold all the items)
 
 	/**
@@ -170,6 +171,7 @@ struct PoolItem {
 	 */
 	virtual ~PoolItem()
 	{
+		if (this->index < Tpool->first_free_index) Tpool->first_free_index = this->index;
 	}
 
 	/**
@@ -259,8 +261,9 @@ private:
 	 */
 	static T *AllocateRaw()
 	{
-		for (T *t = Tpool->Get(0); t != NULL; t = (t->index + 1U < Tpool->GetSize()) ? Tpool->Get(t->index + 1U) : NULL) {
+		for (T *t = Tpool->Get(Tpool->first_free_index); t != NULL; t = (t->index + 1U < Tpool->GetSize()) ? Tpool->Get(t->index + 1U) : NULL) {
 			if (!t->IsValid()) {
+				Tpool->first_free_index = t->index;
 				Tid index = t->index;
 
 				memset(t, 0, sizeof(T));
