@@ -13,24 +13,29 @@
 #include "saveload.h"
 #include "command.h"
 #include "variables.h"
+#include "misc/autoptr.hpp"
 
 SignID _new_sign_id;
 uint _total_signs;
 
-/**
- * Called if a new block is added to the sign-pool
- */
-static void SignPoolNewBlock(uint start_item)
-{
-	Sign *si;
+/* Initialize the sign-pool */
+DEFINE_OLD_POOL_GENERIC(Sign, Sign)
 
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (si = GetSign(start_item); si != NULL; si = (si->index + 1U < GetSignPoolSize()) ? GetSign(si->index + 1U) : NULL) si->index = start_item++;
+Sign::Sign(StringID string)
+{
+	this->str = string;
 }
 
-/* Initialize the sign-pool */
-DEFINE_OLD_POOL(Sign, Sign, SignPoolNewBlock, NULL)
+Sign::~Sign()
+{
+	this->QuickFree();
+	this->str = STR_NULL;
+}
+
+void Sign::QuickFree()
+{
+	DeleteName(this->str);
+}
 
 /**
  *
@@ -77,45 +82,6 @@ static void MarkSignDirty(Sign *si)
 }
 
 /**
- *
- * Allocates a new sign
- *
- * @return The pointer to the new sign, or NULL if there is no more free space
- */
-static Sign *AllocateSign()
-{
-	Sign *si;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (si = GetSign(0); si != NULL; si = (si->index + 1U < GetSignPoolSize()) ? GetSign(si->index + 1U) : NULL) {
-		if (!IsValidSign(si)) {
-			uint index = si->index;
-
-			memset(si, 0, sizeof(Sign));
-			si->index = index;
-
-			return si;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_Sign_pool))
-		return AllocateSign();
-
-	return NULL;
-}
-
-/**
- * Destroy a sign placed on the map
- * @param si Pointer to the Sign to remove
- */
-void DestroySign(Sign *si)
-{
-	DeleteName(si->str);
-}
-
-/**
  * Place a sign at the given coordinates. Ownership of sign has
  * no effect whatsoever except for the colour the sign gets for easy recognition,
  * but everybody is able to rename/remove it.
@@ -126,18 +92,16 @@ void DestroySign(Sign *si)
  */
 CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Sign *si;
-
 	/* Try to locate a new sign */
-	si = AllocateSign();
+	Sign *si = new Sign(STR_280A_SIGN);
 	if (si == NULL) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
+	AutoPtrT<Sign> s_auto_delete = si;
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
 		int x = TileX(tile) * TILE_SIZE;
 		int y = TileY(tile) * TILE_SIZE;
 
-		si->str = STR_280A_SIGN;
 		si->x = x;
 		si->y = y;
 		si->owner = _current_player; // owner of the sign; just eyecandy
@@ -148,6 +112,7 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		_sign_sort_dirty = true;
 		_new_sign_id = si->index;
 		_total_signs++;
+		s_auto_delete.Detach();
 	}
 
 	return CommandCost();
@@ -197,7 +162,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			Sign *si = GetSign(p1);
 
 			MarkSignDirty(si);
-			DeleteSign(si);
+			delete si;
 
 			InvalidateWindow(WC_SIGN_LIST, 0);
 			_sign_sort_dirty = true;
@@ -242,8 +207,8 @@ void PlaceProc_Sign(TileIndex tile)
 void InitializeSigns()
 {
 	_total_signs = 0;
-	CleanPool(&_Sign_pool);
-	AddBlockToPool(&_Sign_pool);
+	_Sign_pool.CleanPool();
+	_Sign_pool.AddBlockToPool();
 }
 
 static const SaveLoad _sign_desc[] = {
@@ -282,12 +247,7 @@ static void Load_SIGN()
 	_total_signs = 0;
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Sign *si;
-
-		if (!AddBlockIfNeeded(&_Sign_pool, index))
-			error("Signs: failed loading savegame: too many signs");
-
-		si = GetSign(index);
+		Sign *si = new (index) Sign();
 		SlObject(si, _sign_desc);
 
 		_total_signs++;

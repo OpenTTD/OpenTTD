@@ -7,7 +7,10 @@
 
 #include "oldpool.h"
 
-struct Sign {
+struct Sign;
+DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
+
+struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
 	StringID     str;
 	ViewportSign sign;
 	int32        x;
@@ -15,7 +18,17 @@ struct Sign {
 	byte         z;
 	PlayerByte   owner; // placed by this player. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 
-	SignID       index;
+	/**
+	 * Creates a new sign
+	 */
+	Sign(StringID string = STR_NULL);
+
+	/** Destroy the sign */
+	~Sign();
+
+	bool IsValid() const { return this->str != STR_NULL; }
+
+	void QuickFree();
 };
 
 enum {
@@ -24,7 +37,6 @@ enum {
 
 extern SignID _new_sign_id;
 
-DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
 
 static inline SignID GetMaxSignIndex()
 {
@@ -42,28 +54,12 @@ static inline uint GetNumSigns()
 	return _total_signs;
 }
 
-/**
- * Check if a Sign really exists.
- */
-static inline bool IsValidSign(const Sign *si)
-{
-	return si->str != STR_NULL;
-}
-
 static inline bool IsValidSignID(uint index)
 {
-	return index < GetSignPoolSize() && IsValidSign(GetSign(index));
+	return index < GetSignPoolSize() && GetSign(index)->IsValid();
 }
 
-void DestroySign(Sign *si);
-
-static inline void DeleteSign(Sign *si)
-{
-	DestroySign(si);
-	si->str = STR_NULL;
-}
-
-#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1U < GetSignPoolSize()) ? GetSign(ss->index + 1U) : NULL) if (IsValidSign(ss))
+#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1U < GetSignPoolSize()) ? GetSign(ss->index + 1U) : NULL) if (ss->IsValid())
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
 VARDEF bool _sign_sort_dirty;
