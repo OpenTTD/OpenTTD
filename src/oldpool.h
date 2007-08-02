@@ -23,15 +23,14 @@ struct OldMemoryPoolBase {
 protected:
 	OldMemoryPoolBase(const char *name, uint max_blocks, uint block_size_bits, uint item_size,
 				OldMemoryPoolNewBlock *new_block_proc, OldMemoryPoolCleanBlock *clean_block_proc) :
-		name(name), max_blocks(max_blocks), block_size_bits(block_size_bits), item_size(item_size),
+		name(name), max_blocks(max_blocks), block_size_bits(block_size_bits),
 		new_block_proc(new_block_proc), clean_block_proc(clean_block_proc), current_blocks(0),
-		total_items(0), blocks(NULL) {}
+		total_items(0), item_size(item_size), first_free_index(0), blocks(NULL) {}
 
 	const char* name;     ///< Name of the pool (just for debugging)
 
 	const uint max_blocks;      ///< The max amount of blocks this pool can have
 	const uint block_size_bits; ///< The size of each block in bits
-	const uint item_size;       ///< How many bytes one block is
 
 	/// Pointer to a function that is called after a new block is added
 	OldMemoryPoolNewBlock *new_block_proc;
@@ -42,6 +41,7 @@ protected:
 	uint total_items;           ///< How many items we now have in this pool
 
 public:
+	const uint item_size;       ///< How many bytes one block is
 	uint first_free_index;      ///< The index of the first free pool item in this pool
 	byte **blocks;              ///< An array of blocks (one block hold all the items)
 
@@ -102,7 +102,7 @@ struct OldMemoryPool : public OldMemoryPoolBase {
 	{
 		assert(index < this->GetSize());
 		return (T*)(this->blocks[index >> this->block_size_bits] +
-				(index & ((1 << this->block_size_bits) - 1)) * sizeof(T));
+				(index & ((1 << this->block_size_bits) - 1)) * this->item_size);
 	}
 };
 
@@ -266,7 +266,7 @@ private:
 				Tpool->first_free_index = t->index;
 				Tid index = t->index;
 
-				memset(t, 0, sizeof(T));
+				memset(t, 0, Tpool->item_size);
 				t->index = index;
 				return t;
 			}
