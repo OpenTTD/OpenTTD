@@ -34,9 +34,9 @@ protected:
 	const uint item_size;       ///< How many bytes one block is
 
 	/// Pointer to a function that is called after a new block is added
-	const OldMemoryPoolNewBlock *new_block_proc;
+	OldMemoryPoolNewBlock *new_block_proc;
 	/// Pointer to a function that is called to clean a block
-	const OldMemoryPoolCleanBlock *clean_block_proc;
+	OldMemoryPoolCleanBlock *clean_block_proc;
 
 	uint current_blocks;        ///< How many blocks we have in our pool
 	uint total_items;           ///< How many items we now have in this pool
