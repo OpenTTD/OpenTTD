@@ -2849,12 +2849,12 @@ static CommandCost ClearTile_Station(TileIndex tile, byte flags)
 void InitializeStations()
 {
 	/* Clean the station pool and create 1 block in it */
-	CleanPool(&_Station_pool);
-	AddBlockToPool(&_Station_pool);
+	_Station_pool.CleanPool();
+	_Station_pool.AddBlockToPool();
 
 	/* Clean the roadstop pool and create 1 block in it */
-	CleanPool(&_RoadStop_pool);
-	AddBlockToPool(&_RoadStop_pool);
+	_RoadStop_pool.CleanPool();
+	_RoadStop_pool.AddBlockToPool();
 
 	_station_tick_ctr = 0;
 
