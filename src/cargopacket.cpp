@@ -8,36 +8,14 @@
 #include "cargopacket.h"
 #include "saveload.h"
 
-/** Cache for speeding up lookups in AllocateRaw */
-static uint _first_free_cargo_packet_index;
-
-/**
- * Called if a new block is added to the station-pool
- */
-static void CargoPacketPoolNewBlock(uint cpart_item)
-{
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (CargoPacket *cp = GetCargoPacket(cpart_item); cp != NULL; cp = (cp->index + 1U < GetCargoPacketPoolSize()) ? GetCargoPacket(cp->index + 1U) : NULL) cp->index = cpart_item++;
-}
-
-static void CargoPacketPoolCleanBlock(uint start_item, uint end_item)
-{
-	for (uint i = start_item; i <= end_item; i++) {
-		CargoPacket *cp = GetCargoPacket(i);
-		if (cp->IsValid()) cp->~CargoPacket();
-	}
-}
-
 /* Initialize the cargopacket-pool */
-DEFINE_OLD_POOL(CargoPacket, CargoPacket, CargoPacketPoolNewBlock, CargoPacketPoolCleanBlock)
+DEFINE_OLD_POOL_GENERIC(CargoPacket, CargoPacket)
 
 void InitializeCargoPackets()
 {
-	_first_free_cargo_packet_index = 0;
 	/* Clean the cargo packet pool and create 1 block in it */
-	CleanPool(&_CargoPacket_pool);
-	AddBlockToPool(&_CargoPacket_pool);
+	_CargoPacket_pool.CleanPool();
+	_CargoPacket_pool.AddBlockToPool();
 
 	/* Check whether our &cargolist == &cargolist.packets "hack" works */
 	CargoList::AssertOnWrongPacketOffset();
@@ -59,59 +37,12 @@ CargoPacket::CargoPacket(StationID source, uint16 count)
 
 CargoPacket::~CargoPacket()
 {
-	if (this->index < _first_free_cargo_packet_index) _first_free_cargo_packet_index = this->index;
 	this->count = 0;
 }
 
 bool CargoPacket::SameSource(CargoPacket *cp)
 {
 	return this->source_xy == cp->source_xy && this->days_in_transit == cp->days_in_transit && this->paid_for == cp->paid_for;
-}
-
-void *CargoPacket::operator new(size_t size)
-{
-	CargoPacket *cp = AllocateRaw();
-	return cp;
-}
-
-void *CargoPacket::operator new(size_t size, CargoPacket::ID cp_idx)
-{
-	if (!AddBlockIfNeeded(&_CargoPacket_pool, cp_idx))
-		error("CargoPackets: failed loading savegame: too many cargo packets");
-
-	CargoPacket *cp = GetCargoPacket(cp_idx);
-	return cp;
-}
-
-void CargoPacket::operator delete(void *p)
-{
-}
-
-void CargoPacket::operator delete(void *p, CargoPacket::ID cp_idx)
-{
-}
-
-/*static*/ CargoPacket *CargoPacket::AllocateRaw()
-{
-	CargoPacket *cp = NULL;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (cp = GetCargoPacket(_first_free_cargo_packet_index); cp != NULL; cp = (cp->index + 1U < GetCargoPacketPoolSize()) ? GetCargoPacket(cp->index + 1U) : NULL) {
-		if (!cp->IsValid()) {
-			CargoPacket::ID index = cp->index;
-
-			memset(cp, 0, sizeof(CargoPacket));
-			cp->index = index;
-			_first_free_cargo_packet_index = cp->index;
-			return cp;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_CargoPacket_pool)) return AllocateRaw();
-
-	error("CargoPackets: too many cargo packets");
 }
 
 static const SaveLoad _cargopacket_desc[] = {
@@ -141,11 +72,7 @@ static void Load_CAPA()
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		if (!AddBlockIfNeeded(&_CargoPacket_pool, index)) {
-			error("CargoPackets: failed loading savegame: too many cargo packets");
-		}
-
-		CargoPacket *cp = GetCargoPacket(index);
+		CargoPacket *cp = new (index) CargoPacket();
 		SlObject(cp, _cargopacket_desc);
 	}
 }

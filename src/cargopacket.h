@@ -7,14 +7,17 @@
 
 #include <list>
 
+typedef uint32 CargoPacketID;
+struct CargoPacket;
+
+/** We want to use a pool */
+DECLARE_OLD_POOL(CargoPacket, CargoPacket, 10, 1000)
+
+
 /**
  * Container for cargo from the same location and time
  */
-struct CargoPacket {
-	typedef uint32 ID;      ///< Type for cargopacket identifiers
-
-	ID index;               ///< The unique index of this packet
-
+struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
 	StationID source;       ///< The station where the cargo came from first
 	TileIndex source_xy;    ///< The origin of the cargo (first station in feeder chain)
 	TileIndex loaded_at_xy; ///< Location where this cargo has been loaded into the vehicle
@@ -33,7 +36,7 @@ struct CargoPacket {
 	CargoPacket(StationID source = INVALID_STATION, uint16 count = 0);
 
 	/** Destroy the packet */
-	~CargoPacket();
+	virtual ~CargoPacket();
 
 
 	/**
@@ -49,26 +52,7 @@ struct CargoPacket {
 	 * @return true if and only if days_in_transit and source_xy are equal
 	 */
 	bool SameSource(CargoPacket *cp);
-
-
-	/* normal new/delete operators. Used when building/removing cargo packet */
-	void *operator new (size_t size);
-	void operator delete(void *p);
-
-	/* new/delete operators accepting cargo packet index. Used when loading cargo packets from savegame. */
-	void *operator new (size_t size, CargoPacket::ID cp_idx);
-	void operator delete(void *p, CargoPacket::ID cp_idx);
-
-private:
-	/**
-	 * Allocate the raw memory for this cargo packet
-	 * @return the allocated memory
-	 */
-	static CargoPacket *AllocateRaw();
 };
-
-/** We want to use a pool */
-DECLARE_OLD_POOL(CargoPacket, CargoPacket, 10, 1000)
 
 /**
  * Iterate over all _valid_ cargo packets from the given start
