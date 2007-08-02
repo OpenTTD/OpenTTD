@@ -23,6 +23,7 @@
 #include "group.h"
 #include "string.h"
 #include "strings.h"
+#include "misc/autoptr.hpp"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
@@ -479,43 +480,7 @@ CargoID GetEngineCargoType(EngineID engine)
  * Engine Replacement stuff
  ************************************************************************/
 
-static void EngineRenewPoolNewBlock(uint start_item);
-
-DEFINE_OLD_POOL(EngineRenew, EngineRenew, EngineRenewPoolNewBlock, NULL)
-
-static void EngineRenewPoolNewBlock(uint start_item)
-{
-	EngineRenew *er;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (er = GetEngineRenew(start_item); er != NULL; er = (er->index + 1U < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1U) : NULL) {
-		er->index = start_item++;
-		er->from = INVALID_ENGINE;
-	}
-}
-
-
-static EngineRenew *AllocateEngineRenew()
-{
-	EngineRenew *er;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (er = GetEngineRenew(0); er != NULL; er = (er->index + 1U < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1U) : NULL) {
-		if (IsValidEngineRenew(er)) continue;
-
-		er->to = INVALID_ENGINE;
-		er->next = NULL;
-		er->group_id = ALL_GROUP;
-		return er;
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_EngineRenew_pool)) return AllocateEngineRenew();
-
-	return NULL;
-}
+DEFINE_OLD_POOL_GENERIC(EngineRenew, EngineRenew)
 
 /**
  * Retrieves the EngineRenew that specifies the replacement of the given
@@ -536,9 +501,9 @@ void RemoveAllEngineReplacement(EngineRenewList *erl)
 	EngineRenew *er = (EngineRenew *)(*erl);
 	EngineRenew *next;
 
-	while (er) {
+	while (er != NULL) {
 		next = er->next;
-		DeleteEngineRenew(er);
+		delete er;
 		er = next;
 	}
 	*erl = NULL; // Empty list
@@ -561,17 +526,19 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 		return CommandCost();
 	}
 
-	er = AllocateEngineRenew();
+	er = new EngineRenew(old_engine, new_engine);
 	if (er == NULL) return CMD_ERROR;
+	AutoPtrT<EngineRenew> er_auto_delete = er;
+
 
 	if (flags & DC_EXEC) {
-		er->from = old_engine;
-		er->to = new_engine;
 		er->group_id = group;
 
 		/* Insert before the first element */
 		er->next = (EngineRenew *)(*erl);
 		*erl = (EngineRenewList)er;
+
+		er_auto_delete.Detach();
 	}
 
 	return CommandCost();
@@ -593,7 +560,7 @@ CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, Group
 					/* Cut this element out */
 					prev->next = er->next;
 				}
-				DeleteEngineRenew(er);
+				delete er;
 			}
 			return CommandCost();
 		}
@@ -628,12 +595,7 @@ static void Load_ERNW()
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		EngineRenew *er;
-
-		if (!AddBlockIfNeeded(&_EngineRenew_pool, index))
-			error("EngineRenews: failed loading savegame: too many EngineRenews");
-
-		er = GetEngineRenew(index);
+		EngineRenew *er = new (index) EngineRenew();
 		SlObject(er, _engine_renew_desc);
 
 		/* Advanced vehicle lists, ungrouped vehicles got added */
@@ -704,6 +666,6 @@ extern const ChunkHandler _engine_chunk_handlers[] = {
 void InitializeEngines()
 {
 	/* Clean the engine renew pool and create 1 block in it */
-	CleanPool(&_EngineRenew_pool);
-	AddBlockToPool(&_EngineRenew_pool);
+	_EngineRenew_pool.CleanPool();
+	_EngineRenew_pool.AddBlockToPool();
 }

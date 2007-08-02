@@ -262,19 +262,7 @@ static inline const RoadVehicleInfo* RoadVehInfo(EngineID e)
  * Engine Replacement stuff
  ************************************************************************/
 
-/**
- * Struct to store engine replacements. DO NOT USE outside of engine.c. Is
- * placed here so the only exception to this rule, the saveload code, can use
- * it.
- */
-struct EngineRenew {
-	EngineRenewID index;
-	EngineID from;
-	EngineID to;
-	EngineRenew *next;
-	GroupID group_id;
-};
-
+struct EngineRenew;
 /**
  * Memory pool for engine renew elements. DO NOT USE outside of engine.c. Is
  * placed here so the only exception to this rule, the saveload code, can use
@@ -283,19 +271,23 @@ struct EngineRenew {
 DECLARE_OLD_POOL(EngineRenew, EngineRenew, 3, 8000)
 
 /**
- * Check if a EngineRenew really exists.
+ * Struct to store engine replacements. DO NOT USE outside of engine.c. Is
+ * placed here so the only exception to this rule, the saveload code, can use
+ * it.
  */
-static inline bool IsValidEngineRenew(const EngineRenew *er)
-{
-	return er->from != INVALID_ENGINE;
-}
+struct EngineRenew : PoolItem<EngineRenew, EngineRenewID, &_EngineRenew_pool> {
+	EngineID from;
+	EngineID to;
+	EngineRenew *next;
+	GroupID group_id;
 
-static inline void DeleteEngineRenew(EngineRenew *er)
-{
-	er->from = INVALID_ENGINE;
-}
+	EngineRenew(EngineID from = INVALID_ENGINE, EngineID to = INVALID_ENGINE) : from(from), to(to), next(NULL) {}
+	~EngineRenew() { this->from = INVALID_ENGINE; }
 
-#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1U < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1U) : NULL) if (er->from != INVALID_ENGINE) if (IsValidEngineRenew(er))
+	bool IsValid() const { return this->from != INVALID_ENGINE; }
+};
+
+#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1U < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1U) : NULL) if (er->IsValid())
 #define FOR_ALL_ENGINE_RENEWS(er) FOR_ALL_ENGINE_RENEWS_FROM(er, 0)
 
 
