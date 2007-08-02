@@ -188,7 +188,7 @@ struct PoolItem {
 	 * @param size the size of the variable (unused)
 	 * @return the memory that is 'allocated'
 	 */
-	void *operator new (size_t size)
+	void *operator new(size_t size)
 	{
 		return AllocateRaw();
 	}
@@ -208,7 +208,7 @@ struct PoolItem {
 	 * @param index the index of the object
 	 * @return the memory that is 'allocated'
 	 */
-	void *operator new (size_t size, int index)
+	void *operator new(size_t size, int index)
 	{
 		if (!Tpool->AddBlockIfNeeded(index)) error("%s: failed loading savegame: too many %s", Tpool->GetName(), Tpool->GetName());
 

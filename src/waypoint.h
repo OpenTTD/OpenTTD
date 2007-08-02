@@ -8,9 +8,11 @@
 #include "oldpool.h"
 #include "rail_map.h"
 
-struct Waypoint {
+struct Waypoint;
+DECLARE_OLD_POOL(Waypoint, Waypoint, 3, 8000)
+
+struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 	TileIndex xy;      ///< Tile of waypoint
-	WaypointID index;  ///< Index of waypoint
 
 	TownID town_index; ///< Town associated with the waypoint
 	byte town_cn;      ///< The Nth waypoint for this town (consecutive number)
@@ -24,34 +26,26 @@ struct Waypoint {
 	byte localidx;     ///< Index of station within GRF file
 
 	byte deleted;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
+
+	Waypoint(TileIndex tile = 0);
+	~Waypoint();
+
+	void QuickFree();
+
+	bool IsValid() const;
 };
-
-DECLARE_OLD_POOL(Waypoint, Waypoint, 3, 8000)
-
-/**
- * Check if a Waypoint really exists.
- * @param wp Waypoint to query
- * @return the validity of the waypoint
- */
-static inline bool IsValidWaypoint(const Waypoint *wp)
-{
-	return wp->xy != 0;
-}
 
 static inline bool IsValidWaypointID(WaypointID index)
 {
-	return index < GetWaypointPoolSize() && IsValidWaypoint(GetWaypoint(index));
+	return index < GetWaypointPoolSize() && GetWaypoint(index)->IsValid();
 }
-
-void DestroyWaypoint(Waypoint *wp);
 
 static inline void DeleteWaypoint(Waypoint *wp)
 {
-	DestroyWaypoint(wp);
-	wp->xy = 0;
+	wp->~Waypoint();
 }
 
-#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) if (IsValidWaypoint(wp))
+#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) if (wp->IsValid())
 #define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
 
 

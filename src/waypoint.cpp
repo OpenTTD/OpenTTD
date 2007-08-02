@@ -26,50 +26,14 @@
 #include "newgrf.h"
 #include "string.h"
 #include "strings.h"
+#include "misc/autoptr.hpp"
 
 enum {
 	MAX_WAYPOINTS_PER_TOWN = 64,
 };
 
-/**
- * Called if a new block is added to the waypoint-pool
- */
-static void WaypointPoolNewBlock(uint start_item)
-{
-	Waypoint *wp;
+DEFINE_OLD_POOL_GENERIC(Waypoint, Waypoint)
 
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (wp = GetWaypoint(start_item); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) wp->index = start_item++;
-}
-
-DEFINE_OLD_POOL(Waypoint, Waypoint, WaypointPoolNewBlock, NULL)
-
-/**
- * Create a new waypoint
- * @return a pointer to the newly created Waypoint */
-static Waypoint* AllocateWaypoint()
-{
-	Waypoint *wp;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (wp = GetWaypoint(0); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) {
-		if (!IsValidWaypoint(wp)) {
-			uint index = wp->index;
-
-			memset(wp, 0, sizeof(*wp));
-			wp->index = index;
-
-			return wp;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_Waypoint_pool)) return AllocateWaypoint();
-
-	return NULL;
-}
 
 /**
  * Update the sign for the waypoint
@@ -103,19 +67,6 @@ void UpdateAllWaypointSigns()
 	FOR_ALL_WAYPOINTS(wp) {
 		UpdateWaypointSign(wp);
 	}
-}
-
-/**
- * Internal handler to delete a waypoint
- * @param wp Waypoint to delete
- */
-void DestroyWaypoint(Waypoint *wp)
-{
-	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, wp->index);
-
-	if (wp->string != STR_NULL) DeleteName(wp->string);
-
-	RedrawWaypointSign(wp);
 }
 
 /**
@@ -206,6 +157,7 @@ void AfterLoadWaypoints()
 CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Waypoint *wp;
+	AutoPtrT<Waypoint> wp_auto_delete;
 	Slope tileh;
 	Axis axis;
 
@@ -236,8 +188,10 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
 	wp = FindDeletedWaypointCloseTo(tile);
 	if (wp == NULL) {
-		wp = AllocateWaypoint();
+		wp = new Waypoint(tile);
 		if (wp == NULL) return CMD_ERROR;
+
+		wp_auto_delete = wp;
 
 		wp->town_index = 0;
 		wp->string = STR_NULL;
@@ -264,7 +218,6 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		}
 
 		wp->deleted = 0;
-		wp->xy = tile;
 		wp->build_date = _date;
 
 		if (wp->town_index == 0) MakeDefaultWaypointName(wp);
@@ -272,6 +225,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		UpdateWaypointSign(wp);
 		RedrawWaypointSign(wp);
 		YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
+		wp_auto_delete.Detach();
 	}
 
 	return CommandCost(_price.build_train_depot);
@@ -443,6 +397,32 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 	}
 }
 
+Waypoint::Waypoint(TileIndex tile)
+{
+	this->xy = tile;
+}
+
+Waypoint::~Waypoint()
+{
+	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
+
+	RedrawWaypointSign(this);
+	this->xy = 0;
+
+	this->QuickFree();
+}
+
+void Waypoint::QuickFree()
+{
+	if (this->string != STR_NULL) DeleteName(this->string);
+}
+
+bool Waypoint::IsValid() const
+{
+	return this->xy != 0;
+}
+
+
 /**
  * Fix savegames which stored waypoints in their old format
  */
@@ -463,8 +443,8 @@ void FixOldWaypoints()
 
 void InitializeWaypoints()
 {
-	CleanPool(&_Waypoint_pool);
-	AddBlockToPool(&_Waypoint_pool);
+	_Waypoint_pool.CleanPool();
+	_Waypoint_pool.AddBlockToPool();
 }
 
 static const SaveLoad _waypoint_desc[] = {
@@ -498,12 +478,7 @@ static void Load_WAYP()
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		Waypoint *wp;
-
-		if (!AddBlockIfNeeded(&_Waypoint_pool, index))
-			error("Waypoints: failed loading savegame: too many waypoints");
-
-		wp = GetWaypoint(index);
+		Waypoint *wp = new (index) Waypoint();
 		SlObject(wp, _waypoint_desc);
 	}
 }
