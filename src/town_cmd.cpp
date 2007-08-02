@@ -40,52 +40,40 @@
 #include "newgrf_house.h"
 #include "newgrf_commons.h"
 #include "newgrf_townname.h"
-
-/**
- * Called if a new block is added to the town-pool
- */
-static void TownPoolNewBlock(uint start_item)
-{
-	Town *t;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (t = GetTown(start_item); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) t->index = start_item++;
-}
+#include "misc/autoptr.hpp"
 
 /* Initialize the town-pool */
-DEFINE_OLD_POOL(Town, Town, TownPoolNewBlock, NULL)
+DEFINE_OLD_POOL_GENERIC(Town, Town)
 
-/**
- * Removes a specific town as well as all industries
- * under its "juridiction"
- * @param t Town to remove
- */
-void DestroyTown(Town *t)
+Town::Town(TileIndex tile)
+{
+	this->xy = tile;
+}
+
+Town::~Town()
 {
 	Industry *i;
-	TileIndex tile;
 
 	/* Delete town authority window
 	 * and remove from list of sorted towns */
-	DeleteWindowById(WC_TOWN_VIEW, t->index);
+	DeleteWindowById(WC_TOWN_VIEW, this->index);
 	_town_sort_dirty = true;
 	_total_towns--;
 
 	/* Delete all industries belonging to the town */
-	FOR_ALL_INDUSTRIES(i) if (i->town == t) DeleteIndustry(i);
+	FOR_ALL_INDUSTRIES(i) if (i->town == this) DeleteIndustry(i);
 
 	/* Go through all tiles and delete those belonging to the town */
-	for (tile = 0; tile < MapSize(); ++tile) {
+	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
 		switch (GetTileType(tile)) {
 			case MP_HOUSE:
-				if (GetTownByTile(tile) == t) DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				if (GetTownByTile(tile) == this) DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 
 			case MP_ROAD:
 			case MP_TUNNELBRIDGE:
 				if (IsTileOwner(tile, OWNER_TOWN) &&
-						ClosestTownFromTile(tile, (uint)-1) == t)
+						ClosestTownFromTile(tile, (uint)-1) == this)
 					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 
@@ -94,10 +82,17 @@ void DestroyTown(Town *t)
 		}
 	}
 
-	DeleteName(t->townnametype);
-	DeleteSubsidyWithTown(t->index);
+	DeleteSubsidyWithTown(this->index);
 
 	MarkWholeScreenDirty();
+
+	this->QuickFree();
+	this->xy = 0;
+}
+
+void Town::QuickFree()
+{
+	DeleteName(this->townnametype);
 }
 
 // Local
@@ -1359,10 +1354,6 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	extern int _nb_orig_names;
 	int x, i;
 
-	/* clear the town struct */
-	i = t->index;
-	memset(t, 0, sizeof(Town));
-	t->index = i;
 	_total_towns++;
 
 	t->xy = tile;
@@ -1446,30 +1437,6 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	UpdateTownMaxPass(t);
 }
 
-static Town *AllocateTown()
-{
-	Town *t;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (t = GetTown(0); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) {
-		if (!IsValidTown(t)) {
-			TownID index = t->index;
-
-			memset(t, 0, sizeof(Town));
-			t->index = index;
-
-			return t;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_Town_pool))
-		return AllocateTown();
-
-	return NULL;
-}
-
 /** Create a new town.
  * This obviously only works in the scenario editor. Function not removed
  * as it might be possible in the future to fund your own town :)
@@ -1480,7 +1447,6 @@ static Town *AllocateTown()
  */
 CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Town *t;
 	uint32 townnameparts;
 
 	/* Only in the scenario editor */
@@ -1507,14 +1473,16 @@ CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_023A_TOO_MANY_TOWNS);
 
 	/* Allocate town struct */
-	t = AllocateTown();
+	Town *t = new Town(tile);
 	if (t == NULL) return_cmd_error(STR_023A_TOO_MANY_TOWNS);
+	AutoPtrT<Town> t_auto_delete = t;
 
 	/* Create the town */
 	if (flags & DC_EXEC) {
 		_generating_world = true;
 		DoCreateTown(t, tile, townnameparts, (TownSizeMode)p2, p1);
 		_generating_world = false;
+		t_auto_delete.Detach();
 	}
 	return CommandCost();
 }
@@ -1540,7 +1508,7 @@ Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size)
 		if (!CreateTownName(&townnameparts)) break;
 
 		/* Allocate a town struct */
-		t = AllocateTown();
+		t = new Town(tile);
 		if (t == NULL) break;
 
 		DoCreateTown(t, tile, townnameparts, mode, size);
@@ -2476,12 +2444,7 @@ static void Load_TOWN()
 	_total_towns = 0;
 
 	while ((index = SlIterateArray()) != -1) {
-		Town *t;
-
-		if (!AddBlockIfNeeded(&_Town_pool, index))
-			error("Towns: failed loading savegame: too many towns");
-
-		t = GetTown(index);
+		Town *t = new (index) Town();
 		SlObject(t, _town_desc);
 
 		_total_towns++;

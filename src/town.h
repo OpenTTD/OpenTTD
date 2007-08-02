@@ -75,7 +75,10 @@ struct BuildingCounts {
 	uint8 class_count[HOUSE_CLASS_MAX];
 };
 
-struct Town {
+struct Town;
+DECLARE_OLD_POOL(Town, Town, 3, 8000)
+
+struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	TileIndex xy;
 
 	/* Current population of people and amount of houses. */
@@ -139,9 +142,6 @@ struct Town {
 	/* Fund road reconstruction in action? */
 	byte road_build_months;
 
-	/* Index in town array */
-	TownID index;
-
 	/* If this is a larger town, and should grow more quickly. */
 	bool larger_town;
 
@@ -150,6 +150,18 @@ struct Town {
 
 	/* NOSAVE: The number of each type of building in the town. */
 	BuildingCounts building_counts;
+
+	/**
+	 * Creates a new town
+	 */
+	Town(TileIndex tile = 0);
+
+	/** Destroy the town */
+	~Town();
+
+	bool IsValid() const { return this->xy != 0; }
+
+	void QuickFree();
 };
 
 struct HouseSpec {
@@ -270,22 +282,10 @@ bool CheckforTownRating(uint32 flags, Town *t, byte type);
 
 VARDEF const Town** _town_sort;
 
-DECLARE_OLD_POOL(Town, Town, 3, 8000)
-
 static inline HouseSpec *GetHouseSpecs(HouseID house_id)
 {
 	assert(house_id < HOUSE_MAX);
 	return &_house_specs[house_id];
-}
-
-/**
- * Check if a Town really exists.
- * @param town to inquiry
- * @return true if it exists
- */
-static inline bool IsValidTown(const Town* town)
-{
-	return town->xy != 0;
 }
 
 /**
@@ -295,7 +295,7 @@ static inline bool IsValidTown(const Town* town)
  */
 static inline bool IsValidTownID(TownID index)
 {
-	return index < GetTownPoolSize() && IsValidTown(GetTown(index));
+	return index < GetTownPoolSize() && GetTown(index)->IsValid();
 }
 
 VARDEF uint _total_towns;
@@ -337,17 +337,9 @@ static inline Town *GetRandomTown()
 	return GetTown(index);
 }
 
-void DestroyTown(Town *t);
-
-static inline void DeleteTown(Town *t)
-{
-	DestroyTown(t);
-	t->xy = 0;
-}
-
 Town* CalcClosestTownFromTile(TileIndex tile, uint threshold);
 
-#define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) if (IsValidTown(t))
+#define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) if (t->IsValid())
 #define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
 
 VARDEF bool _town_sort_dirty;

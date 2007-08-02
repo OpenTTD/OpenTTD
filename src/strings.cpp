@@ -824,7 +824,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				const Town* t = GetTown(GetInt32(&argv));
 				int64 temp[1];
 
-				assert(IsValidTown(t));
+				assert(t->IsValid());
 
 				temp[0] = t->townnameparts;
 				uint32 grfid = t->townnamegrfid;

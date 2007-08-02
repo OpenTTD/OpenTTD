@@ -278,7 +278,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 				break;
 
 			case 10: /* delete town */
-				DeleteTown(t);
+				delete t;
 				break;
 		}
 		break;

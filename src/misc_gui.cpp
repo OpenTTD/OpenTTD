@@ -134,7 +134,7 @@ static void Place_LandInfo(TileIndex tile)
 	GetString(_landinfo_data[3], STR_LANDINFO_COORDS, lastof(_landinfo_data[3]));
 
 	SetDParam(0, STR_01A9_NONE);
-	if (t != NULL && IsValidTown(t)) {
+	if (t != NULL && t->IsValid()) {
 		SetDParam(0, STR_TOWN);
 		SetDParam(1, t->index);
 	}
