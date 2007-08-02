@@ -432,6 +432,8 @@ struct Vehicle {
 	 * Calls the tick handler of the vehicle
 	 */
 	virtual void Tick() = 0;
+
+	bool IsValid() const { return this->type != VEH_INVALID; }
 };
 
 /**
@@ -634,14 +636,6 @@ static inline uint GetNumVehicles()
 	return GetVehiclePoolSize();
 }
 
-/**
- * Check if a Vehicle really exists.
- */
-static inline bool IsValidVehicle(const Vehicle *v)
-{
-	return v->type != VEH_INVALID;
-}
-
 void DestroyVehicle(Vehicle *v);
 
 static inline void DeleteVehicle(Vehicle *v)
@@ -668,7 +662,7 @@ static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
 	return IsPlayerBuildableVehicleType(v->type);
 }
 
-#define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))
+#define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (v->IsValid())
 #define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
 
 /**
@@ -678,7 +672,7 @@ static inline bool IsPlayerBuildableVehicleType(const Vehicle *v)
  */
 static inline bool IsValidVehicleID(uint index)
 {
-	return index < GetVehiclePoolSize() && IsValidVehicle(GetVehicle(index));
+	return index < GetVehiclePoolSize() && GetVehicle(index)->IsValid();
 }
 
 /* Returns order 'index' of a vehicle or NULL when it doesn't exists */

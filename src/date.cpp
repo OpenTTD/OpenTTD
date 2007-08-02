@@ -220,7 +220,7 @@ static void RunVehicleDayProc(uint daytick)
 	for (i = daytick; i < total; i += DAY_TICKS) {
 		Vehicle *v = GetVehicle(i);
 
-		if (IsValidVehicle(v)) _on_new_vehicle_day_proc[v->type](v);
+		if (v->IsValid()) _on_new_vehicle_day_proc[v->type](v);
 	}
 }
 

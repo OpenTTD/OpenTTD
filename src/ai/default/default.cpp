@@ -426,7 +426,7 @@ static void AiStateCheckReplaceVehicle(Player *p)
 {
 	const Vehicle* v = p->ai.cur_veh;
 
-	if (!IsValidVehicle(v) ||
+	if (!v->IsValid() ||
 			v->owner != _current_player ||
 			v->type > VEH_SHIP ||
 			_veh_check_replace_proc[v->type - VEH_TRAIN](p, v) == INVALID_ENGINE) {
@@ -443,7 +443,7 @@ static void AiStateDoReplaceVehicle(Player *p)
 
 	p->ai.state = AIS_VEH_LOOP;
 	// vehicle is not owned by the player anymore, something went very wrong.
-	if (!IsValidVehicle(v) || v->owner != _current_player) return;
+	if (!v->IsValid() || v->owner != _current_player) return;
 	_veh_do_replace_proc[v->type - VEH_TRAIN](p);
 }
 

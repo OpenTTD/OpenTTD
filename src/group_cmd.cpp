@@ -358,7 +358,7 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1
  */
 void RemoveVehicleFromGroup(const Vehicle *v)
 {
-	if (!IsValidVehicle(v) || !(v->HasFront() && v->IsPrimaryVehicle())) return;
+	if (!v->IsValid() || !(v->HasFront() && v->IsPrimaryVehicle())) return;
 
 	if (!IsDefaultGroupID(v->group_id)) DecreaseGroupNumVehicle(v->group_id);
 }
@@ -374,7 +374,7 @@ void SetTrainGroupID(Vehicle *v, GroupID new_g)
 {
 	if (!IsValidGroupID(new_g) && !IsDefaultGroupID(new_g)) return;
 
-	assert(IsValidVehicle(v) && v->type == VEH_TRAIN && IsFrontEngine(v));
+	assert(v->IsValid() && v->type == VEH_TRAIN && IsFrontEngine(v));
 
 	for (Vehicle *u = v; u != NULL; u = u->next) {
 		if (IsEngineCountable(u)) UpdateNumEngineGroup(u->engine_type, u->group_id, new_g);
@@ -396,7 +396,7 @@ void SetTrainGroupID(Vehicle *v, GroupID new_g)
  */
 void UpdateTrainGroupID(Vehicle *v)
 {
-	assert(IsValidVehicle(v) && v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v)));
+	assert(v->IsValid() && v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v)));
 
 	GroupID new_g = IsFrontEngine(v) ? v->group_id : (GroupID)DEFAULT_GROUP;
 	for (Vehicle *u = v; u != NULL; u = u->next) {

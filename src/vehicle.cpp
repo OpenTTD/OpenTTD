@@ -332,7 +332,7 @@ Vehicle *ForceAllocateSpecialVehicle()
 		if (v->index >= (1 << Vehicle_POOL_BLOCK_SIZE_BITS) * BLOCKS_FOR_SPECIAL_VEHICLES)
 			return NULL;
 
-		if (!IsValidVehicle(v)) return InitializeVehicle(v);
+		if (!v->IsValid()) return InitializeVehicle(v);
 	}
 
 	return NULL;
@@ -358,7 +358,7 @@ static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
 	if (*skip_vehicles < (_Vehicle_pool.GetSize() - offset)) { // make sure the offset in the array is not larger than the array itself
 		for (v = GetVehicle(offset + *skip_vehicles); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 			(*skip_vehicles)++;
-			if (!IsValidVehicle(v)) return InitializeVehicle(v);
+			if (!v->IsValid()) return InitializeVehicle(v);
 		}
 	}
 

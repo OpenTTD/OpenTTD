@@ -557,7 +557,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					gv->vehicle_sel = v->index;
 
-					if (IsValidVehicle(v)) {
+					if (v->IsValid()) {
 						SetObjectToPlaceWnd(v->GetImage(DIR_W), GetVehiclePalette(v), 4, w);
 					}
 
