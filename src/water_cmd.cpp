@@ -28,6 +28,7 @@
 #include "water_map.h"
 #include "newgrf.h"
 #include "newgrf_canal.h"
+#include "misc/autoptr.hpp"
 
 static const SpriteID _water_shore_sprites[] = {
 	0,
@@ -62,7 +63,6 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	TileIndex tile2;
 
 	CommandCost cost, ret;
-	Depot *depot;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -83,17 +83,18 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 
-	depot = AllocateDepot();
+	Depot *depot = new Depot(tile);
 	if (depot == NULL) return CMD_ERROR;
+	AutoPtrT<Depot> d_auto_delete = depot;
 
 	if (flags & DC_EXEC) {
-		depot->xy = tile;
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis);
 		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
+		d_auto_delete.Detach();
 	}
 
 	return cost.AddCost(_price.build_ship_depot);
@@ -113,7 +114,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 
 	if (flags & DC_EXEC) {
 		/* Kill the depot, which is registered at the northernmost tile. Use that one */
-		DeleteDepot(GetDepotByTile(tile2 < tile ? tile2 : tile));
+		delete GetDepotByTile(tile2 < tile ? tile2 : tile);
 
 		MakeWater(tile);
 		MakeWater(tile2);

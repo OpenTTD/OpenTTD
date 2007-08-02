@@ -37,6 +37,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "train.h"
+#include "misc/autoptr.hpp"
 
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
@@ -574,7 +575,6 @@ CommandCost CmdRemoveRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint
  */
 CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Depot *d;
 	CommandCost cost;
 	Slope tileh;
 
@@ -609,18 +609,20 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	d = AllocateDepot();
+	Depot *d = new Depot(tile);
+
 	if (d == NULL) return CMD_ERROR;
+	AutoPtrT<Depot> d_auto_delete = d;
 
 	if (flags & DC_EXEC) {
 		MakeRailDepot(tile, _current_player, dir, (RailType)p1);
 		MarkTileDirtyByTile(tile);
 
-		d->xy = tile;
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		UpdateSignalsOnSegment(tile, dir);
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
+		d_auto_delete.Detach();
 	}
 
 	return cost.AddCost(_price.build_train_depot);
@@ -1110,7 +1112,8 @@ static CommandCost RemoveTrainDepot(TileIndex tile, uint32 flags)
 	if (flags & DC_EXEC) {
 		DiagDirection dir = GetRailDepotDirection(tile);
 
-		DeleteDepot(GetDepotByTile(tile));
+		DoClearSquare(tile);
+		delete GetDepotByTile(tile);
 		UpdateSignalsOnSegment(tile, dir);
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 	}

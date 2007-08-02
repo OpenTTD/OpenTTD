@@ -14,21 +14,7 @@
 #include "saveload.h"
 #include "order.h"
 
-
-/**
- * Called if a new block is added to the depot-pool
- */
-static void DepotPoolNewBlock(uint start_item)
-{
-	Depot *d;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (d = GetDepot(start_item); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) d->index = start_item++;
-}
-
-DEFINE_OLD_POOL(Depot, Depot, DepotPoolNewBlock, NULL)
-
+DEFINE_OLD_POOL_GENERIC(Depot, Depot)
 
 /**
  * Gets a depot from a tile
@@ -47,50 +33,22 @@ Depot *GetDepotByTile(TileIndex tile)
 }
 
 /**
- * Allocate a new depot
- */
-Depot *AllocateDepot()
-{
-	Depot *d;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (d = GetDepot(0); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) {
-		if (!IsValidDepot(d)) {
-			DepotID index = d->index;
-
-			memset(d, 0, sizeof(Depot));
-			d->index = index;
-
-			return d;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_Depot_pool)) return AllocateDepot();
-
-	return NULL;
-}
-
-/**
  * Clean up a depot
  */
-void DestroyDepot(Depot *depot)
+Depot::~Depot()
 {
-	/* Clear the tile */
-	DoClearSquare(depot->xy);
-
 	/* Clear the depot from all order-lists */
-	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, depot->index);
+	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->index);
 
 	/* Delete the depot-window */
-	DeleteWindowById(WC_VEHICLE_DEPOT, depot->xy);
+	DeleteWindowById(WC_VEHICLE_DEPOT, this->xy);
+	this->xy = 0;
 }
 
 void InitializeDepots()
 {
-	CleanPool(&_Depot_pool);
-	AddBlockToPool(&_Depot_pool);
+	_Depot_pool.CleanPool();
+	_Depot_pool.AddBlockToPool();
 }
 
 
@@ -116,12 +74,7 @@ static void Load_DEPT()
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		Depot *depot;
-
-		if (!AddBlockIfNeeded(&_Depot_pool, index))
-			error("Depots: failed loading savegame: too many depots");
-
-		depot = GetDepot(index);
+		Depot *depot = new (index) Depot();
 		SlObject(depot, _depot_desc);
 	}
 }

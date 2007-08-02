@@ -887,7 +887,7 @@ static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay)
 	static const uint size_x[6] = { 11, 16, 16, 16, 16, 16 };
 	static const uint size_y[6] = { 16, 11, 16, 16, 16, 16 };
 
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE, x, y, size_x[offset], size_y[offset], offset >= 2 ? 1 : 0, z);
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE, x, y, size_x[offset], size_y[offset], offset >= 2 ? 1 : 0, z, HASBIT(_transparent_opt, TO_BRIDGES));
 
 	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + back_offsets[offset],  PAL_NONE, x, y, size_x[offset], size_y[offset], 0, z, HASBIT(_transparent_opt, TO_BUILDINGS));
 	/* For sloped sprites the bounding box needs to be higher, as the pylons stop on a higher point */

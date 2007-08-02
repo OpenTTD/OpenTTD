@@ -520,7 +520,7 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 
 	if (!LoadChunk(ls, GetDepot(num), depot_chunk)) return false;
 
-	if (IsValidDepot(GetDepot(num))) {
+	if (IsValidDepotID(num)) {
 		GetDepot(num)->town_index = REMAP_TOWN_IDX(_old_town_index);
 	}
 

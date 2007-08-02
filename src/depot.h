@@ -13,38 +13,27 @@
 #include "rail_map.h"
 #include "water_map.h"
 
-struct Depot {
-	TileIndex xy;
-	TownID town_index;
-	DepotID index;
-};
-
+struct Depot;
 DECLARE_OLD_POOL(Depot, Depot, 3, 8000)
 
-/**
- * Check if a depot really exists.
- */
-static inline bool IsValidDepot(const Depot *depot)
-{
-	return depot != NULL && depot->xy != 0;
-}
+struct Depot : PoolItem<Depot, DepotID, &_Depot_pool> {
+	TileIndex xy;
+	TownID town_index;
 
-static inline bool IsValidDepotID(uint index)
-{
-	return index < GetDepotPoolSize() && IsValidDepot(GetDepot(index));
-}
+	Depot(TileIndex xy = 0) : xy(xy) {}
+	~Depot();
 
-void DestroyDepot(Depot *depot);
+	bool IsValid() const { return this->xy != 0; }
+};
 
-static inline void DeleteDepot(Depot *depot)
+static inline bool IsValidDepotID(DepotID index)
 {
-	DestroyDepot(depot);
-	depot->xy = 0;
+	return index < GetDepotPoolSize() && GetDepot(index)->IsValid();
 }
 
 void ShowDepotWindow(TileIndex tile, VehicleType type);
 
-#define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) if (IsValidDepot(d))
+#define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) if (d->IsValid())
 #define FOR_ALL_DEPOTS(d) FOR_ALL_DEPOTS_FROM(d, 0)
 
 #define MIN_SERVINT_PERCENT  5
@@ -108,7 +97,6 @@ static inline bool CanBuildDepotByTileh(DiagDirection direction, Slope tileh)
 
 Depot *GetDepotByTile(TileIndex tile);
 void InitializeDepots();
-Depot *AllocateDepot();
 
 void DeleteDepotHighlightOfVehicle(const Vehicle *v);
 
