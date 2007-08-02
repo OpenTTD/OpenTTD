@@ -15,6 +15,12 @@
 #include "cargopacket.h"
 #include <list>
 
+struct Station;
+struct RoadStop;
+
+DECLARE_OLD_POOL(Station, Station, 6, 1000)
+DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
+
 static const byte INITIAL_STATION_RATING = 175;
 
 struct GoodsEntry {
@@ -35,7 +41,7 @@ struct GoodsEntry {
 };
 
 /** A Stop for a Road Vehicle */
-struct RoadStop {
+struct RoadStop : PoolItem<RoadStop, RoadStopID, &_RoadStop_pool> {
 	/** Types of RoadStops */
 	enum Type {
 		BUS,                                ///< A standard stop for buses
@@ -47,23 +53,12 @@ struct RoadStop {
 	static const uint MAX_BAY_COUNT   =  2;  ///< The maximum number of loading bays
 
 	TileIndex        xy;                    ///< Position on the map
-	RoadStopID       index;                 ///< Global (i.e. pool-wide) index
 	byte             status;                ///< Current status of the Stop. Like which spot is taken. Access using *Bay and *Busy functions.
 	byte             num_vehicles;          ///< Number of vehicles currently slotted to this stop
 	struct RoadStop  *next;                 ///< Next stop of the given type at this station
 
-	RoadStop(TileIndex tile);
-	~RoadStop();
-
-	void PreInit() { this->xy = INVALID_TILE; }
-	void QuickFree() {}
-
-	void *operator new (size_t size);
-	void operator delete(void *rs);
-
-	/* For loading games */
-	void *operator new (size_t size, int index);
-	void operator delete(void *rs, int index);
+	RoadStop(TileIndex tile = 0);
+	virtual ~RoadStop();
 
 	bool IsValid() const;
 
@@ -75,8 +70,6 @@ struct RoadStop {
 	void FreeBay(uint nr);
 	bool IsEntranceBusy() const;
 	void SetEntranceBusy(bool busy);
-protected:
-	static RoadStop *AllocateRaw();
 };
 
 struct StationSpecList {
@@ -108,7 +101,7 @@ struct StationRect : public Rect {
 	StationRect& operator = (Rect src);
 };
 
-struct Station {
+struct Station : PoolItem<Station, StationID, &_Station_pool> {
 	public:
 		RoadStop *GetPrimaryRoadStop(RoadStop::Type type) const
 		{
@@ -151,7 +144,6 @@ struct Station {
 	Date build_date;
 
 	uint64 airport_flags;   ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
-	StationID index;
 
 	byte last_vehicle_type;
 	std::list<Vehicle *> loading_vehicles;
@@ -165,18 +157,9 @@ struct Station {
 	static const int cDebugCtorLevel = 3;
 
 	Station(TileIndex tile = 0);
-	~Station();
+	virtual ~Station();
 
-	void PreInit() {}
 	void QuickFree();
-
-	/* normal new/delete operators. Used when building/removing station */
-	void *operator new (size_t size);
-	void operator delete(void *p);
-
-	/* new/delete operators accepting station index. Used when loading station from savegame. */
-	void *operator new (size_t size, int st_idx);
-	void operator delete(void *p, int st_idx);
 
 	void AddFacility(byte new_facility_bit, TileIndex facil_xy);
 	void MarkDirty() const;
@@ -186,9 +169,6 @@ struct Station {
 	uint GetPlatformLength(TileIndex tile) const;
 	bool IsBuoy() const;
 	bool IsValid() const;
-
-protected:
-	static Station *AllocateRaw();
 };
 
 enum StationType {
@@ -238,8 +218,6 @@ void UpdateAllStationVirtCoord();
 void RebuildStationLists();
 void ResortStationLists();
 
-DECLARE_OLD_POOL(Station, Station, 6, 1000)
-
 static inline StationID GetMaxStationIndex()
 {
 	/* TODO - This isn't the real content of the function, but
@@ -265,8 +243,6 @@ static inline bool IsValidStationID(StationID index)
 
 
 /* Stuff for ROADSTOPS */
-
-DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
 
 #define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) if (rs->IsValid())
 #define FOR_ALL_ROADSTOPS(rs) FOR_ALL_ROADSTOPS_FROM(rs, 0)

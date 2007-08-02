@@ -29,14 +29,14 @@ protected:
 
 	const char* name;     ///< Name of the pool (just for debugging)
 
-	uint max_blocks;      ///< The max amount of blocks this pool can have
-	uint block_size_bits; ///< The size of each block in bits
-	uint item_size;       ///< How many bytes one block is
+	const uint max_blocks;      ///< The max amount of blocks this pool can have
+	const uint block_size_bits; ///< The size of each block in bits
+	const uint item_size;       ///< How many bytes one block is
 
 	/// Pointer to a function that is called after a new block is added
-	OldMemoryPoolNewBlock *new_block_proc;
+	const OldMemoryPoolNewBlock *new_block_proc;
 	/// Pointer to a function that is called to clean a block
-	OldMemoryPoolCleanBlock *clean_block_proc;
+	const OldMemoryPoolCleanBlock *clean_block_proc;
 
 	uint current_blocks;        ///< How many blocks we have in our pool
 	uint total_items;           ///< How many items we now have in this pool
@@ -44,19 +44,44 @@ protected:
 public:
 	byte **blocks;              ///< An array of blocks (one block hold all the items)
 
-	inline uint GetSize()
+	/**
+	 * Get the size of this pool, i.e. the total number of items you
+	 * can put into it at the current moment; the pool might still
+	 * be able to increase the size of the pool.
+	 * @return the size of the pool
+	 */
+	inline uint GetSize() const
 	{
 		return this->total_items;
 	}
 
-	inline bool CanAllocateMoreBlocks()
+	/**
+	 * Can this pool allocate more blocks, i.e. is the maximum amount
+	 * of allocated blocks not yet reached?
+	 * @return the if and only if the amount of allocable blocks is
+	 *         less than the amount of allocated blocks.
+	 */
+	inline bool CanAllocateMoreBlocks() const
 	{
 		return this->current_blocks < this->max_blocks;
 	}
 
-	inline uint GetBlockCount()
+	/**
+	 * Get the maximum number of allocable blocks.
+	 * @return the numebr of blocks
+	 */
+	inline uint GetBlockCount() const
 	{
 		return this->current_blocks;
+	}
+
+	/**
+	 * Get the name of this pool.
+	 * @return the name
+	 */
+	inline const char *GetName() const
+	{
+		return this->name;
 	}
 };
 
@@ -66,7 +91,13 @@ struct OldMemoryPool : public OldMemoryPoolBase {
 				OldMemoryPoolNewBlock *new_block_proc, OldMemoryPoolCleanBlock *clean_block_proc) :
 		OldMemoryPoolBase(name, max_blocks, block_size_bits, item_size, new_block_proc, clean_block_proc) {}
 
-	inline T *Get(uint index)
+	/**
+	 * Get the pool entry at the given index.
+	 * @param index the index into the pool
+	 * @pre index < this->GetSize()
+	 * @return the pool entry.
+	 */
+	inline T *Get(uint index) const
 	{
 		assert(index < this->GetSize());
 		return (T*)(this->blocks[index >> this->block_size_bits] +
@@ -99,11 +130,9 @@ static inline bool AddBlockIfNeeded(OldMemoryPoolBase *array, uint index) { retu
 template <typename T, OldMemoryPool<T> *Tpool>
 static void PoolNewBlock(uint start_item)
 {
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 *  TODO - This is just a temporary stage, this will be removed. */
 	for (T *t = Tpool->Get(start_item); t != NULL; t = (t->index + 1U < Tpool->GetSize()) ? Tpool->Get(t->index + 1U) : NULL) {
+		t = new (t) T();
 		t->index = start_item++;
-		t->PreInit();
 	}
 }
 
@@ -124,6 +153,128 @@ static void PoolCleanBlock(uint start_item, uint end_item)
 	}
 }
 
+
+/**
+ * Generalization for all pool items that are saved in the savegame.
+ * It specifies all the mechanics to access the pool easily.
+ */
+template <typename T, typename Tid, OldMemoryPool<T> *Tpool>
+struct PoolItem {
+	/**
+	 * The pool-wide index of this object.
+	 */
+	Tid index;
+
+	/**
+	 * We like to have the correct class destructed.
+	 */
+	virtual ~PoolItem()
+	{
+	}
+
+	/**
+	 * Called on each object when the pool is being destroyed, so one
+	 * can free allocated memory without the need for freeing for
+	 * example orders.
+	 */
+	virtual void QuickFree()
+	{
+	}
+
+	/**
+	 * An overriden version of new that allocates memory on the pool.
+	 * @param size the size of the variable (unused)
+	 * @return the memory that is 'allocated'
+	 */
+	void *operator new (size_t size)
+	{
+		return AllocateRaw();
+	}
+
+	/**
+	 * 'Free' the memory allocated by the overriden new.
+	 * @param p the memory to 'free'
+	 */
+	void operator delete(void *p)
+	{
+	}
+
+	/**
+	 * An overriden version of new, so you can directly allocate a new object with
+	 * the correct index when one is loading the savegame.
+	 * @param size  the size of the variable (unused)
+	 * @param index the index of the object
+	 * @return the memory that is 'allocated'
+	 */
+	void *operator new (size_t size, int index)
+	{
+		if (!Tpool->AddBlockIfNeeded(index)) error("%s: failed loading savegame: too many %s", Tpool->GetName(), Tpool->GetName());
+
+		return Tpool->Get(index);
+	}
+
+	/**
+	 * 'Free' the memory allocated by the overriden new.
+	 * @param p     the memory to 'free'
+	 * @param index the original parameter given to create the memory
+	 */
+	void operator delete(void *p, int index)
+	{
+	}
+
+	/**
+	 * An overriden version of new, so you can use the vehicle instance
+	 * instead of a newly allocated piece of memory.
+	 * @param size the size of the variable (unused)
+	 * @param pn   the already existing object to use as 'storage' backend
+	 * @return the memory that is 'allocated'
+	 */
+	void *operator new(size_t size, T *pn)
+	{
+		return pn;
+	}
+
+	/**
+	 * 'Free' the memory allocated by the overriden new.
+	 * @param p  the memory to 'free'
+	 * @param pn the pointer that was given to 'new' on creation.
+	 */
+	void operator delete(void *p, T *pn)
+	{
+	}
+
+	/**
+	 * Is this a valid object or not?
+	 * @return true if and only if it is valid
+	 */
+	virtual bool IsValid() const
+	{
+		return false;
+	}
+
+private:
+	/**
+	 * Allocate a pool item; possibly allocate a new block in the pool.
+	 * @return the allocated pool item (or NULL when the pool is full).
+	 */
+	static T *AllocateRaw()
+	{
+		for (T *t = Tpool->Get(0); t != NULL; t = (t->index + 1U < Tpool->GetSize()) ? Tpool->Get(t->index + 1U) : NULL) {
+			if (!t->IsValid()) {
+				Tid index = t->index;
+
+				memset(t, 0, sizeof(T));
+				t->index = index;
+				return t;
+			}
+		}
+
+		/* Check if we can add a block to the pool */
+		if (Tpool->AddBlockToPool()) return AllocateRaw();
+
+		return NULL;
+	}
+};
 
 
 #define OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \

@@ -927,7 +927,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	} else {
 		/* allocate and initialize new station */
 		st = new Station(tile_org);
-		if (st == NULL) return CMD_ERROR;
+		if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
 		st_auto_delete = st;
@@ -1358,7 +1358,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		/* allocate and initialize new station */
 		st = new Station(tile);
-		if (st == NULL) return CMD_ERROR;
+		if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 		/* ensure that in case of error (or no DC_EXEC) the new station gets deleted upon return */
 		st_auto_delete = st;
@@ -1652,7 +1652,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		/* allocate and initialize new station */
 		st = new Station(tile);
-		if (st == NULL) return CMD_ERROR;
+		if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
 		st_auto_delete = st;
@@ -1774,7 +1774,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* allocate and initialize new station */
 	Station *st = new Station(tile);
-	if (st == NULL) return CMD_ERROR;
+	if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 	/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
 	AutoPtrT<Station> st_auto_delete(st);
@@ -1939,7 +1939,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		/* allocate and initialize new station */
 		st = new Station(tile);
-		if (st == NULL) return CMD_ERROR;
+		if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
 		st_auto_delete = st;

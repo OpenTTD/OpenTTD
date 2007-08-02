@@ -91,29 +91,6 @@ void Station::QuickFree()
 	free(this->speclist);
 }
 
-void *Station::operator new(size_t size)
-{
-	Station *st = AllocateRaw();
-	return st;
-}
-
-void *Station::operator new(size_t size, int st_idx)
-{
-	if (!AddBlockIfNeeded(&_Station_pool, st_idx))
-		error("Stations: failed loading savegame: too many stations");
-
-	Station *st = GetStation(st_idx);
-	return st;
-}
-
-void Station::operator delete(void *p)
-{
-}
-
-void Station::operator delete(void *p, int st_idx)
-{
-}
-
 /** Called when new facility is built on the station. If it is the first facility
  * it initializes also 'xy' and 'random_bits' members */
 void Station::AddFacility(byte new_facility_bit, TileIndex facil_xy)
@@ -175,30 +152,6 @@ bool Station::TileBelongsToRailStation(TileIndex tile) const
 {
 	return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == index && IsRailwayStation(tile);
 }
-
-/*static*/ Station *Station::AllocateRaw()
-{
-	Station *st = NULL;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (st = GetStation(0); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) {
-		if (!st->IsValid()) {
-			StationID index = st->index;
-
-			memset(st, 0, sizeof(Station));
-			st->index = index;
-			return st;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_Station_pool)) return AllocateRaw();
-
-	_error_message = STR_3008_TOO_MANY_STATIONS_LOADING;
-	return NULL;
-}
-
 
 /** Obtain the length of a platform
  * @pre tile must be a railway station tile
@@ -426,36 +379,6 @@ StationRect& StationRect::operator = (Rect src)
 /*                     RoadStop implementation                          */
 /************************************************************************/
 
-/** Allocates a new RoadStop onto the pool, or recycles an unsed one
- *  @return a pointer to the new roadstop
- */
-void *RoadStop::operator new(size_t size)
-{
-	RoadStop *rs = AllocateRaw();
-	return rs;
-}
-
-/** Gets a RoadStop with a given index and allocates it when needed
-  * @return a pointer to the roadstop
-  */
-void *RoadStop::operator new(size_t size, int index)
-{
-	if (!AddBlockIfNeeded(&_RoadStop_pool, index)) {
-		error("RoadStops: failed loading savegame: too many RoadStops");
-	}
-
-	RoadStop *rs = GetRoadStop(index);
-	return rs;
-}
-
-void RoadStop::operator delete(void *p)
-{
-}
-
-void RoadStop::operator delete(void *p, int index)
-{
-}
-
 /** Initializes a RoadStop */
 RoadStop::RoadStop(TileIndex tile) :
 	xy(tile),
@@ -483,37 +406,13 @@ RoadStop::~RoadStop()
 
 	DEBUG(ms, cDebugCtorLevel , "I- at %d[0x%x]", xy, xy);
 
-	xy = INVALID_TILE;
-}
-
-/** Low-level function for allocating a RoadStop on the pool */
-RoadStop *RoadStop::AllocateRaw()
-{
-	RoadStop *rs;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (rs = GetRoadStop(0); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) {
-		if (!rs->IsValid()) {
-			RoadStopID index = rs->index;
-
-			memset(rs, 0, sizeof(*rs));
-			rs->index = index;
-
-			return rs;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_RoadStop_pool)) return AllocateRaw();
-
-	return NULL;
+	xy = 0;
 }
 
 /** Determines whether a RoadStop is a valid (i.e. existing) one */
 bool RoadStop::IsValid() const
 {
-	return xy != INVALID_TILE;
+	return xy != 0;
 }
 
 /** Checks whether there is a free bay in this road stop */
