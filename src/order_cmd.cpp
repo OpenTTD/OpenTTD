@@ -20,19 +20,7 @@
 #include "cargotype.h"
 #include "strings.h"
 
-/**
- * Called if a new block is added to the order-pool
- */
-static void OrderPoolNewBlock(uint start_item)
-{
-	Order *order;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (order = GetOrder(start_item); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) order->index = start_item++;
-}
-
-DEFINE_OLD_POOL(Order, Order, OrderPoolNewBlock, NULL)
+DEFINE_OLD_POOL_GENERIC(Order, Order)
 
 /**
  *
@@ -109,41 +97,6 @@ static void SwapOrders(Order *order1, Order *order2)
 	order1->next = order2->next;
 	AssignOrder(order2, temp_order);
 	order2->next = temp_order.next;
-}
-
-/**
- *
- * Allocate a new order
- *
- * @return Order* if a free space is found, else NULL.
- *
- */
-static Order *AllocateOrder()
-{
-	Order *order;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (order = GetOrder(0); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) {
-		if (!order->IsValid()) {
-			OrderID index = order->index;
-
-			memset(order, 0, sizeof(*order));
-			order->index = index;
-			order->next = NULL;
-			order->refit_cargo   = CT_NO_REFIT;
-			order->refit_subtype = 0;
-			order->wait_time     = 0;
-			order->travel_time   = 0;
-
-			return order;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_Order_pool)) return AllocateOrder();
-
-	return NULL;
 }
 
 /**
@@ -395,7 +348,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		Vehicle *u;
-		Order *new_o = AllocateOrder();
+		Order *new_o = new Order();
 		AssignOrder(new_o, new_order);
 
 		/* Create new order and link in list */
@@ -890,7 +843,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				order_dst = &dst->orders;
 				FOR_VEHICLE_ORDERS(src, order) {
-					*order_dst = AllocateOrder();
+					*order_dst = new Order();
 					AssignOrder(*order_dst, *order);
 					order_dst = &(*order_dst)->next;
 				}
@@ -1367,10 +1320,8 @@ static void Load_ORDR()
 			SlArray(orders, len, SLE_UINT16);
 
 			for (i = 0; i < len; ++i) {
-				if (!AddBlockIfNeeded(&_Order_pool, i))
-					error("Orders: failed loading savegame: too many orders");
-
-				AssignOrder(GetOrder(i), UnpackVersion4Order(orders[i]));
+				Order *order = new (i) Order();
+				AssignOrder(order, UnpackVersion4Order(orders[i]));
 			}
 		} else if (CheckSavegameVersionOldStyle(5, 2)) {
 			uint32 orders[5000];
@@ -1381,10 +1332,8 @@ static void Load_ORDR()
 			SlArray(orders, len, SLE_UINT32);
 
 			for (i = 0; i < len; ++i) {
-				if (!AddBlockIfNeeded(&_Order_pool, i))
-					error("Orders: failed loading savegame: too many orders");
-
-				AssignOrder(GetOrder(i), UnpackOrder(orders[i]));
+				Order *order = new (i) Order();
+				AssignOrder(order, UnpackOrder(orders[i]));
 			}
 		}
 
@@ -1400,12 +1349,7 @@ static void Load_ORDR()
 		int index;
 
 		while ((index = SlIterateArray()) != -1) {
-			Order *order;
-
-			if (!AddBlockIfNeeded(&_Order_pool, index))
-				error("Orders: failed loading savegame: too many orders");
-
-			order = GetOrder(index);
+			Order *order = new (index) Order();
 			SlObject(order, _order_desc);
 		}
 	}

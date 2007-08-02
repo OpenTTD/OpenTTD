@@ -83,25 +83,29 @@ enum {
 	CO_UNSHARE = 2
 };
 
+struct Order;
+DECLARE_OLD_POOL(Order, Order, 6, 1000)
+
 /* If you change this, keep in mind that it is saved on 3 places:
  * - Load_ORDR, all the global orders
  * - Vehicle -> current_order
  * - REF_ORDER (all REFs are currently limited to 16 bits!!)
  */
-struct Order {
+struct Order : PoolItem<Order, OrderID, &_Order_pool> {
 	Order *next;          ///< Pointer to next order. If NULL, end of list
 
 	OrderTypeByte type;
 	uint8  flags;
 	DestinationID dest;   ///< The destionation of the order.
 
-	OrderID index;         ///< Index of the order, is not saved or anything, just for reference
-
 	CargoID refit_cargo; // Refit CargoID
 	byte refit_subtype; // Refit subtype
 
 	uint16 wait_time;    ///< How long in ticks to wait at the destination.
 	uint16 travel_time;  ///< How long in ticks the journey to this destination should take.
+
+	Order() : refit_cargo(CT_NO_REFIT) {}
+	~Order() { this->type = OT_NOTHING; }
 
 	bool IsValid() const;
 	void Free();
@@ -120,8 +124,6 @@ struct BackuppedOrders {
 
 VARDEF TileIndex _backup_orders_tile;
 VARDEF BackuppedOrders _backup_orders_data[1];
-
-DECLARE_OLD_POOL(Order, Order, 6, 1000)
 
 static inline VehicleOrderID GetMaxOrderIndex()
 {
@@ -143,21 +145,21 @@ static inline VehicleOrderID GetNumOrders()
  */
 inline bool Order::IsValid() const
 {
-	return type != OT_NOTHING;
+	return this->type != OT_NOTHING;
 }
 
 inline void Order::Free()
 {
-	type  = OT_NOTHING;
-	flags = 0;
-	dest  = 0;
-	next  = NULL;
+	this->type  = OT_NOTHING;
+	this->flags = 0;
+	this->dest  = 0;
+	this->next  = NULL;
 }
 
 inline void Order::FreeChain()
 {
 	if (next != NULL) next->FreeChain();
-	Free();
+	delete this;
 }
 
 #define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) if (order->IsValid())
