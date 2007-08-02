@@ -849,7 +849,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				const Group *g = GetGroup(GetInt32(&argv));
 				int64 args[1];
 
-				assert(IsValidGroup(g));
+				assert(g->IsValid());
 
 				args[0] = g->index;
 				buff = GetStringWithArgs(buff, IsCustomName(g->string_id) ? g->string_id : (StringID)STR_GROUP_NAME_FORMAT, args, last);

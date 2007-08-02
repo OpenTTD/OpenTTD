@@ -19,6 +19,7 @@
 #include "window.h"
 #include "vehicle_gui.h"
 #include "strings.h"
+#include "misc/autoptr.hpp"
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one
@@ -39,41 +40,34 @@ static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g
 }
 
 
-/**
- * Called if a new block is added to the group-pool
- */
-static void GroupPoolNewBlock(uint start_item)
+DEFINE_OLD_POOL_GENERIC(Group, Group)
+
+
+Group::Group(StringID str)
 {
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (Group *g = GetGroup(start_item); g != NULL; g = (g->index + 1U < GetGroupPoolSize()) ? GetGroup(g->index + 1) : NULL) g->index = start_item++;
+	this->string_id = str;
 }
 
-DEFINE_OLD_POOL(Group, Group, GroupPoolNewBlock, NULL)
-
-static Group *AllocateGroup(void)
+Group::~Group()
 {
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (Group *g = GetGroup(0); g != NULL; g = (g->index + 1U < GetGroupPoolSize()) ? GetGroup(g->index + 1) : NULL) {
-		if (!IsValidGroup(g)) {
-			const GroupID index = g->index;
+	this->QuickFree();
+	this->string_id = STR_NULL;
+}
 
-			memset(g, 0, sizeof(*g));
-			g->index = index;
+void Group::QuickFree()
+{
+	DeleteName(this->string_id);
+}
 
-			return g;
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	return (AddBlockToPool(&_Group_pool)) ? AllocateGroup() : NULL;
+bool Group::IsValid() const
+{
+	return this->string_id != STR_NULL;
 }
 
 void InitializeGroup(void)
 {
-	CleanPool(&_Group_pool);
-	AddBlockToPool(&_Group_pool);
+	_Group_pool.CleanPool();
+	_Group_pool.AddBlockToPool();
 }
 
 
@@ -100,16 +94,21 @@ CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	VehicleType vt = (VehicleType)p1;
 	if (!IsPlayerBuildableVehicleType(vt)) return CMD_ERROR;
 
-	Group *g = AllocateGroup();
+	AutoPtrT<Group> g_auto_delete;
+
+	Group *g = new Group(STR_EMPTY);
 	if (g == NULL) return CMD_ERROR;
+
+	g_auto_delete = g;
 
 	if (flags & DC_EXEC) {
 		g->owner = _current_player;
-		g->string_id = STR_EMPTY;
 		g->replace_protection = false;
 		g->vehicle_type = vt;
 
 		InvalidateWindowData(GetWCForVT(vt), (vt << 11) | VLW_GROUP_LIST | _current_player);
+
+		g_auto_delete.Detach();
 	}
 
 	return CommandCost();
@@ -153,7 +152,7 @@ CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		/* Delete the Replace Vehicle Windows */
 		DeleteWindowById(WC_REPLACE_VEHICLE, g->vehicle_type);
-		DeleteGroup(g);
+		delete g;
 
 		InvalidateWindowData(GetWCForVT(vt), (vt << 11) | VLW_GROUP_LIST | _current_player);
 	}
@@ -416,7 +415,7 @@ void RemoveAllGroupsForPlayer(const Player *p)
 	Group *g;
 
 	FOR_ALL_GROUPS(g) {
-		if (p->index == g->owner) DeleteGroup(g);
+		if (p->index == g->owner) delete g;
 	}
 }
 
@@ -447,11 +446,7 @@ static void Load_GROUP(void)
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
-		if (!AddBlockIfNeeded(&_Group_pool, index)) {
-			error("Groups: failed loading savegame: too many groups");
-		}
-
-		Group *g = GetGroup(index);
+		Group *g = new (index) Group();
 		SlObject(g, _group_desc);
 	}
 }
