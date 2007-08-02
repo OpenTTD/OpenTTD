@@ -35,6 +35,7 @@
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "newgrf_callbacks.h"
+#include "misc/autoptr.hpp"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -75,19 +76,7 @@ void ResetIndustryCreationProbility(IndustryType type)
 	_industry_specs[type].appear_creation[_opt.landscape] = 0;
 }
 
-/**
- * Called if a new block is added to the industry-pool
- */
-static void IndustryPoolNewBlock(uint start_item)
-{
-	Industry *i;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (i = GetIndustry(start_item); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) i->index = start_item++;
-}
-
-DEFINE_OLD_POOL(Industry, Industry, IndustryPoolNewBlock, NULL)
+DEFINE_OLD_POOL_GENERIC(Industry, Industry)
 
 /**
  * Retrieve the type for this industry.  Although it is accessed by a tile,
@@ -102,7 +91,7 @@ IndustryType GetIndustryType(TileIndex tile)
 	assert(IsTileType(tile, MP_INDUSTRY));
 
 	const Industry *ind = GetIndustryByTile(tile);
-	return IsValidIndustry(ind) ? ind->type : (IndustryType)IT_INVALID;
+	return ind->IsValid() ? ind->type : (IndustryType)IT_INVALID;
 }
 
 /**
@@ -139,35 +128,43 @@ const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx, bool full_check)
 	return its;
 }
 
-void DestroyIndustry(Industry *i)
+Industry::~Industry()
 {
-	BEGIN_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
+	/* Industry can also be destroyed when not fully initialized.
+	 * This means that we do not have to clear tiles either. */
+	if (this->width == 0) {
+		this->xy = 0;
+		return;
+	}
+
+	BEGIN_TILE_LOOP(tile_cur, this->width, this->height, this->xy);
 		if (IsTileType(tile_cur, MP_INDUSTRY)) {
-			if (GetIndustryIndex(tile_cur) == i->index) {
+			if (GetIndustryIndex(tile_cur) == this->index) {
 				DoClearSquare(tile_cur);
 			}
 		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			DeleteOilRig(tile_cur);
 		}
-	END_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
+	END_TILE_LOOP(tile_cur, this->width, this->height, this->xy);
 
-	if (GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_PLANT_FIELDS) {
+	if (GetIndustrySpec(this->type)->behaviour & INDUSTRYBEH_PLANT_FIELDS) {
 		/* Remove the farmland and convert it to regular tiles over time. */
-		BEGIN_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiffXY(21, 21)) {
+		BEGIN_TILE_LOOP(tile_cur, 42, 42, this->xy - TileDiffXY(21, 21)) {
 			tile_cur = TILE_MASK(tile_cur);
 			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
-					GetIndustryIndexOfField(tile_cur) == i->index) {
+					GetIndustryIndexOfField(tile_cur) == this->index) {
 				SetIndustryIndexOfField(tile_cur, INVALID_INDUSTRY);
 			}
-		} END_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiff(21, 21))
+		} END_TILE_LOOP(tile_cur, 42, 42, this->xy - TileDiff(21, 21))
 	}
 
 	_industry_sort_dirty = true;
-	DecIndustryTypeCount(i->type);
+	DecIndustryTypeCount(this->type);
 
-	DeleteSubsidyWithIndustry(i->index);
-	DeleteWindowById(WC_INDUSTRY_VIEW, i->index);
+	DeleteSubsidyWithIndustry(this->index);
+	DeleteWindowById(WC_INDUSTRY_VIEW, this->index);
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
+	this->xy = 0;
 }
 
 static void IndustryDrawSugarMine(const TileInfo *ti)
@@ -393,7 +390,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
 
-	if (flags & DC_EXEC) DeleteIndustry(i);
+	if (flags & DC_EXEC) delete i;
 	return CommandCost();
 }
 
@@ -1397,27 +1394,6 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 	return true;
 }
 
-static Industry *AllocateIndustry()
-{
-	Industry *i;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (i = GetIndustry(0); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) {
-		IndustryID index = i->index;
-
-		if (IsValidIndustry(i)) continue;
-
-		memset(i, 0, sizeof(*i));
-		i->index = index;
-
-		return i;
-	}
-
-	/* Check if we can add a block to the pool */
-	return AddBlockToPool(&_Industry_pool) ? AllocateIndustry() : NULL;
-}
-
 static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, const Town *t, Owner owner)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
@@ -1530,12 +1506,14 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 	if (!CheckIfIndustryIsAllowed(tile, type, t)) return NULL;
 	if (!CheckSuitableIndustryPos(tile)) return NULL;
 
-	Industry *i = AllocateIndustry();
+	Industry *i = new Industry(tile);
 	if (i == NULL) return NULL;
+	AutoPtrT<Industry> i_auto_delete = i;
 
 	if (flags & DC_EXEC) {
 		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_EXEC, it, type);
 		DoCreateNewIndustry(i, tile, type, it, t, OWNER_NONE);
+		i_auto_delete.Detach();
 	}
 
 	return i;
@@ -1808,7 +1786,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		InvalidateWindow(WC_INDUSTRY_VIEW, i->index);
 
 	if (i->prod_level == 0) {
-		DeleteIndustry(i);
+		delete i;
 	} else if (_patches.smooth_economy) {
 		ExtChangeIndustryProduction(i);
 	}
@@ -2093,12 +2071,7 @@ static void Load_INDY()
 	ResetIndustryCounts();
 
 	while ((index = SlIterateArray()) != -1) {
-		Industry *i;
-
-		if (!AddBlockIfNeeded(&_Industry_pool, index))
-			error("Industries: failed loading savegame: too many industries");
-
-		i = GetIndustry(index);
+		Industry *i = new (index) Industry();
 		SlObject(i, _industry_desc);
 		IncIndustryTypeCount(i->type);
 	}

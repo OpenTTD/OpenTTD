@@ -86,10 +86,13 @@ enum IndustyBehaviour {
 
 DECLARE_ENUM_AS_BIT_SET(IndustyBehaviour);
 
+struct Industry;
+DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
+
 /**
  * Defines the internal data of a functionnal industry
  */
-struct Industry {
+struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
 	TileIndex xy;                       ///< coordinates of the primary tile the industry is built one
 	byte width;
 	byte height;
@@ -111,12 +114,15 @@ struct Industry {
 	Year last_prod_year;                ///< last year of production
 	byte was_cargo_delivered;           ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
 
-	IndustryID index;                   ///< index of the industry in the pool of industries
-
 	OwnerByte founder;                  ///< Founder of the industry
 	Date construction_date;             ///< Date of the construction of the industry
 	uint8 construction_type;            ///< Way the industry was constructed (@see IndustryConstructionType)
 	Date last_cargo_accepted_at;        ///< Last day cargo was accepted by this industry
+
+	Industry(TileIndex tile = 0) : xy(tile) {}
+	~Industry();
+
+	bool IsValid() const { return this->xy != 0; }
 };
 
 struct IndustryTileTable {
@@ -216,18 +222,6 @@ extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 /* smallmap_gui.cpp */
 void BuildIndustriesLegend();
 
-DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
-
-/**
- * Check if an Industry really exists.
- * @param industry to check
- * @return true if position is a valid one
- */
-static inline bool IsValidIndustry(const Industry *industry)
-{
-	return industry->xy != 0;
-}
-
 /**
  * Check if an Industry exists whithin the pool of industries
  * @param index of the desired industry
@@ -235,7 +229,7 @@ static inline bool IsValidIndustry(const Industry *industry)
  */
 static inline bool IsValidIndustryID(IndustryID index)
 {
-	return index < GetIndustryPoolSize() && IsValidIndustry(GetIndustry(index));
+	return index < GetIndustryPoolSize() && GetIndustry(index)->IsValid();
 }
 
 
@@ -318,15 +312,7 @@ static inline Industry *GetRandomIndustry()
 	return GetIndustry(index);
 }
 
-void DestroyIndustry(Industry *i);
-
-static inline void DeleteIndustry(Industry *i)
-{
-	DestroyIndustry(i);
-	i->xy = 0;
-}
-
-#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) if (IsValidIndustry(i))
+#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) if (i->IsValid())
 #define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
 
 extern const Industry **_industry_sort;

@@ -715,7 +715,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	i = GetIndustry(num);
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
-	if (IsValidIndustry(i)) {
+	if (i->IsValid()) {
 		i->town = GetTown(REMAP_TOWN_IDX(_old_town_index));
 	}
 

@@ -656,7 +656,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				int64 args[2];
 
 				/* industry not valid anymore? */
-				if (!IsValidIndustry(i)) break;
+				if (!i->IsValid()) break;
 
 				/* First print the town name and the industry type name
 				 * The string STR_INDUSTRY_PATTERN controls the formatting */

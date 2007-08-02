@@ -61,7 +61,7 @@ Town::~Town()
 	_total_towns--;
 
 	/* Delete all industries belonging to the town */
-	FOR_ALL_INDUSTRIES(i) if (i->town == this) DeleteIndustry(i);
+	FOR_ALL_INDUSTRIES(i) if (i->town == this) delete i;
 
 	/* Go through all tiles and delete those belonging to the town */
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {

@@ -462,7 +462,7 @@ static Town *AiFindRandomTown()
 static Industry *AiFindRandomIndustry()
 {
 	int num = RandomRange(GetMaxIndustryIndex());
-	if (IsValidIndustry(GetIndustry(num))) return GetIndustry(num);
+	if (IsValidIndustryID(num)) return GetIndustry(num);
 
 	return NULL;
 }
