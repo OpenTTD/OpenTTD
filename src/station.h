@@ -48,7 +48,7 @@ struct RoadStop : PoolItem<RoadStop, RoadStopID, &_RoadStop_pool> {
 		TRUCK                               ///< A standard stop for trucks
 	};
 
-	static const int  cDebugCtorLevel =  3;  ///< Debug level on which Contructor / Destructor messages are printed
+	static const int  cDebugCtorLevel =  5;  ///< Debug level on which Contructor / Destructor messages are printed
 	static const uint LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
 	static const uint MAX_BAY_COUNT   =  2;  ///< The maximum number of loading bays
 
@@ -154,7 +154,7 @@ struct Station : PoolItem<Station, StationID, &_Station_pool> {
 
 	StationRect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
 
-	static const int cDebugCtorLevel = 3;
+	static const int cDebugCtorLevel = 5;
 
 	Station(TileIndex tile = 0);
 	virtual ~Station();
