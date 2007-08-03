@@ -250,16 +250,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	tileh_end = GetTileSlope(tile_end, &z_end);
 
 	if (IsSteepSlope(tileh_start)) z_start += TILE_HEIGHT;
-	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_start)) {
-		z_start += TILE_HEIGHT;
-		tileh_start = SLOPE_FLAT;
-	}
+	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_start)) z_start += TILE_HEIGHT;
 
 	if (IsSteepSlope(tileh_end)) z_end += TILE_HEIGHT;
-	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_end)) {
-		z_end += TILE_HEIGHT;
-		tileh_end = SLOPE_FLAT;
-	}
+	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_end)) z_end += TILE_HEIGHT;
 
 	if (z_start != z_end) return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
 
