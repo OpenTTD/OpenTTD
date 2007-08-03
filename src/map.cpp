@@ -84,7 +84,7 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 
 		snprintf(buf, lengthof(buf), "TILE_ADD(%s) when adding 0x%.4X and 0x%.4X failed",
 			exp, tile, add);
-#if !defined(_MSC_VER)
+#if !defined(_MSC_VER) || defined(WINCE)
 		fprintf(stderr, "%s:%d %s\n", file, line, buf);
 #else
 		_assert(buf, (char*)file, line);

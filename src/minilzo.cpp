@@ -60,7 +60,7 @@
 #  define LZO_HAVE_CONFIG_H
 #endif
 
-#if !defined(LZO_NO_SYS_TYPES_H)
+#if !defined(LZO_NO_SYS_TYPES_H) && !defined(WINCE)
 #  include <sys/types.h>
 #endif
 #include <stdio.h>

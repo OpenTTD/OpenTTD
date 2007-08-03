@@ -142,7 +142,9 @@
 # define _WIN32_WINNT 0x0500       // Windows 2000
 
 # define _WIN32_WINDOWS 0x400      // Windows 95
+#if !defined(WINCE)
 # define WINVER 0x0400             // Windows NT 4.0 / Windows 95
+#endif
 # define _WIN32_IE_ 0x0401         // 4.01 (win98 and NT4SP5+)
 
 # define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
@@ -168,9 +170,11 @@
 # define NORETURN __declspec(noreturn)
 # define FORCEINLINE __forceinline
 # define inline _inline
-# define CDECL _cdecl
+# if !defined(WINCE)
+#  define CDECL _cdecl
+# endif
   int CDECL snprintf(char *str, size_t size, const char *format, ...);
-# if _MSC_VER < 1400
+# if _MSC_VER < 1400 || defined(WINCE)
    int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
 # endif
 
@@ -191,8 +195,14 @@
 #  endif
 # endif
 
-# define strcasecmp stricmp
-# define strncasecmp strnicmp
+# if defined(WINCE)
+#  define strcasecmp _stricmp
+#  define strncasecmp _strnicmp
+#  undef DEBUG
+# else
+#  define strcasecmp stricmp
+#  define strncasecmp strnicmp
+# endif
 /* suppress: warning C4005: 'offsetof' : macro redefinition (VC8) */
 #endif /* defined(_MSC_VER) */
 

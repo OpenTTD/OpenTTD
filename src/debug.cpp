@@ -94,7 +94,14 @@ void CDECL debug(const char *dbg, ...)
 		} else
 #endif /* ENABLE_NETWORK */
 		{
+#if defined(WINCE)
+			/* We need to do OTTD2FS twice, but as it uses a static buffer, we need to store one temporary */
+			TCHAR tbuf[512];
+			_sntprintf(tbuf, sizeof(tbuf), _T("%s"), OTTD2FS(dbg));
+			NKDbgPrintfW(_T("dbg: [%s] %s\n"), tbuf, OTTD2FS(buf));
+#else
 			fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
+#endif
 			IConsoleDebug(dbg, buf);
 		}
 	}
