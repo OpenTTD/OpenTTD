@@ -254,16 +254,28 @@ struct PoolItem {
 		return false;
 	}
 
-private:
+protected:
 	/**
 	 * Allocate a pool item; possibly allocate a new block in the pool.
 	 * @return the allocated pool item (or NULL when the pool is full).
 	 */
 	static T *AllocateRaw()
 	{
-		for (T *t = Tpool->Get(Tpool->first_free_index); t != NULL; t = (t->index + 1U < Tpool->GetSize()) ? Tpool->Get(t->index + 1U) : NULL) {
+		return AllocateRaw(Tpool->first_free_index);
+	}
+
+	/**
+	 * Allocate a pool item; possibly allocate a new block in the pool.
+	 * @param first the first pool item to start searching
+	 * @return the allocated pool item (or NULL when the pool is full).
+	 */
+	static T *AllocateRaw(uint &first)
+	{
+		uint last_minus_one = Tpool->GetSize();
+
+		for (T *t = Tpool->Get(first); t != NULL; t = (t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
 			if (!t->IsValid()) {
-				Tpool->first_free_index = t->index;
+				first = t->index;
 				Tid index = t->index;
 
 				memset(t, 0, Tpool->item_size);
@@ -273,7 +285,7 @@ private:
 		}
 
 		/* Check if we can add a block to the pool */
-		if (Tpool->AddBlockToPool()) return AllocateRaw();
+		if (Tpool->AddBlockToPool()) return AllocateRaw(first);
 
 		return NULL;
 	}
