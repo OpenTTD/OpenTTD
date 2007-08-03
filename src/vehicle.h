@@ -366,7 +366,7 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	 * Get a string 'representation' of the vehicle type.
 	 * @return the string representation.
 	 */
-	virtual const char* GetTypeString() const = 0;
+	virtual const char* GetTypeString() const { return "base vehicle"; }
 
 	/**
 	 * Marks the vehicles to be redrawn and updates cached variables
@@ -417,7 +417,7 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	/**
 	 * Calls the tick handler of the vehicle
 	 */
-	virtual void Tick() = 0;
+	virtual void Tick() {};
 
 	bool IsValid() const { return this->type != VEH_INVALID; }
 };

@@ -78,27 +78,8 @@ const uint32 _send_to_depot_proc_table[] = {
 };
 
 
-enum {
-	BLOCKS_FOR_SPECIAL_VEHICLES   = 2, ///< Blocks needed for special vehicles
-};
-
-/**
- * Called if a new block is added to the vehicle-pool
- */
-static void VehiclePoolNewBlock(uint start_item)
-{
-	Vehicle *v;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (v = GetVehicle(start_item); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
-		v->index = start_item++;
-		v = new (v) InvalidVehicle();
-	}
-}
-
 /* Initialize the vehicle-pool */
-DEFINE_OLD_POOL(Vehicle, Vehicle, VehiclePoolNewBlock, NULL)
+DEFINE_OLD_POOL_GENERIC(Vehicle, Vehicle)
 
 void VehicleServiceInDepot(Vehicle *v)
 {
@@ -473,16 +454,8 @@ void ResetVehiclePosHash()
 
 void InitializeVehicles()
 {
-	uint i;
-
-	/* Clean the vehicle pool, and reserve enough blocks
-	 *  for the special vehicles, plus one for all the other
-	 *  vehicles (which is increased on-the-fly) */
-	CleanPool(&_Vehicle_pool);
-	AddBlockToPool(&_Vehicle_pool);
-	for (i = 0; i < BLOCKS_FOR_SPECIAL_VEHICLES; i++) {
-		AddBlockToPool(&_Vehicle_pool);
-	}
+	_Vehicle_pool.CleanPool();
+	_Vehicle_pool.AddBlockToPool();
 
 	ResetVehiclePosHash();
 }
