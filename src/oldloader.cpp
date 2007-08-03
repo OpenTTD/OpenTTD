@@ -477,10 +477,7 @@ static const OldChunks town_chunk[] = {
 };
 static bool LoadOldTown(LoadgameState *ls, int num)
 {
-	if (!AddBlockIfNeeded(&_Town_pool, num))
-		error("Towns: failed loading savegame: too many towns");
-
-	return LoadChunk(ls, GetTown(num), town_chunk);
+	return LoadChunk(ls, new (num) Town(), town_chunk);
 }
 
 static uint16 _old_order;
@@ -491,12 +488,9 @@ static const OldChunks order_chunk[] = {
 
 static bool LoadOldOrder(LoadgameState *ls, int num)
 {
-	if (!AddBlockIfNeeded(&_Order_pool, num))
-		error("Orders: failed loading savegame: too many orders");
-
 	if (!LoadChunk(ls, NULL, order_chunk)) return false;
 
-	AssignOrder(GetOrder(num), UnpackOldOrder(_old_order));
+	AssignOrder(new (num) Order(), UnpackOldOrder(_old_order));
 
 	/* Relink the orders to eachother (in TTD(Patch) the orders for one
 	vehicle are behind eachother, with an invalid order (OT_NOTHING) as indication that
@@ -515,10 +509,7 @@ static const OldChunks depot_chunk[] = {
 
 static bool LoadOldDepot(LoadgameState *ls, int num)
 {
-	if (!AddBlockIfNeeded(&_Depot_pool, num))
-		error("Depots: failed loading savegame: too many depots");
-
-	if (!LoadChunk(ls, GetDepot(num), depot_chunk)) return false;
+	if (!LoadChunk(ls, new (num) Depot(), depot_chunk)) return false;
 
 	if (IsValidDepotID(num)) {
 		GetDepot(num)->town_index = REMAP_TOWN_IDX(_old_town_index);
@@ -707,12 +698,7 @@ static const OldChunks industry_chunk[] = {
 
 static bool LoadOldIndustry(LoadgameState *ls, int num)
 {
-	Industry *i;
-
-	if (!AddBlockIfNeeded(&_Industry_pool, num))
-		error("Industries: failed loading savegame: too many industries");
-
-	i = GetIndustry(num);
+	Industry *i = new (num) Industry();
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
 	if (i->IsValid()) {
@@ -1194,14 +1180,9 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 	ReadTTDPatchFlags();
 
 	for (i = 0; i < _old_vehicle_multiplier; i++) {
-		Vehicle *v;
-
 		_current_vehicle_id = num * _old_vehicle_multiplier + i;
 
-		if (!AddBlockIfNeeded(&_Vehicle_pool, _current_vehicle_id))
-			error("Vehicles: failed loading savegame: too many vehicles");
-
-		v = GetVehicle(_current_vehicle_id);
+		Vehicle *v = new (_current_vehicle_id) InvalidVehicle();
 		if (!LoadChunk(ls, v, vehicle_chunk)) return false;
 
 		/* This should be consistent, else we have a big problem... */
@@ -1252,10 +1233,7 @@ static const OldChunks sign_chunk[] = {
 
 static bool LoadOldSign(LoadgameState *ls, int num)
 {
-	if (!AddBlockIfNeeded(&_Sign_pool, num))
-		error("Signs: failed loading savegame: too many signs");
-
-	return LoadChunk(ls, GetSign(num), sign_chunk);
+	return LoadChunk(ls, new (num) Sign(), sign_chunk);
 }
 
 static const OldChunks engine_chunk[] = {
