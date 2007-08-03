@@ -253,7 +253,7 @@ protected:
 	 */
 	static T *AllocateRaw(uint &first)
 	{
-		uint last_minus_one = Tpool->GetSize();
+		uint last_minus_one = Tpool->GetSize() - 1;
 
 		for (T *t = Tpool->Get(first); t != NULL; t = (t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
 			if (!t->IsValid()) {
