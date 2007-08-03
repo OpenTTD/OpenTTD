@@ -121,7 +121,6 @@ static void DisasterVehicleUpdateImage(Vehicle *v)
  * and owned by nobody */
 static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Direction direction, byte subtype)
 {
-	v = new (v) DisasterVehicle();
 	v->x_pos = x;
 	v->y_pos = y;
 	v->z_pos = z;
@@ -600,7 +599,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 			v->tile,
 			0);
 
-		u = ForceAllocateSpecialVehicle();
+		u = new DisasterVehicle();
 		if (u == NULL) {
 			DeleteDisasterVeh(v);
 			return;
@@ -609,7 +608,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		InitializeDisasterVehicle(u, -6 * TILE_SIZE, v->y_pos, 135, DIR_SW, ST_Big_Ufo_Destroyer);
 		u->u.disaster.big_ufo_destroyer_target = v->index;
 
-		w = ForceAllocateSpecialVehicle();
+		w = new DisasterVehicle();
 		if (w == NULL) return;
 
 		u->next = w;
@@ -706,7 +705,7 @@ static void DisasterTick_Submarine(Vehicle *v)
 		VehiclePositionChanged(v);
 		BeginVehicleMove(v);
 		EndVehicleMove(v);
-		DeleteVehicle(v);
+		delete v;
 		return;
 	}
 
@@ -760,7 +759,7 @@ typedef void DisasterInitProc();
  * otherwise crashes on a random tile */
 static void Disaster_Zeppeliner_Init()
 {
-	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
+	Vehicle *v = new DisasterVehicle(), *u;
 	Station *st;
 	int x;
 
@@ -781,7 +780,7 @@ static void Disaster_Zeppeliner_Init()
 	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_Zeppeliner);
 
 	/* Allocate shadow too? */
-	u = ForceAllocateSpecialVehicle();
+	u = new DisasterVehicle();
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Zeppeliner_Shadow);
@@ -794,7 +793,7 @@ static void Disaster_Zeppeliner_Init()
  * until it locates a road vehicle which it targets and then destroys */
 static void Disaster_Small_Ufo_Init()
 {
-	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
+	Vehicle *v = new DisasterVehicle(), *u;
 	int x;
 
 	if (v == NULL) return;
@@ -806,7 +805,7 @@ static void Disaster_Small_Ufo_Init()
 	v->age = 0;
 
 	/* Allocate shadow too? */
-	u = ForceAllocateSpecialVehicle();
+	u = new DisasterVehicle();
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Small_Ufo_Shadow);
@@ -833,7 +832,7 @@ static void Disaster_Airplane_Init()
 
 	if (found == NULL) return;
 
-	v = ForceAllocateSpecialVehicle();
+	v = new DisasterVehicle();
 	if (v == NULL) return;
 
 	/* Start from the bottom (south side) of the map */
@@ -842,7 +841,7 @@ static void Disaster_Airplane_Init()
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_NE, ST_Airplane);
 
-	u = ForceAllocateSpecialVehicle();
+	u = new DisasterVehicle();
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, y, 0, DIR_SE, ST_Airplane_Shadow);
@@ -869,7 +868,7 @@ static void Disaster_Helicopter_Init()
 
 	if (found == NULL) return;
 
-	v = ForceAllocateSpecialVehicle();
+	v = new DisasterVehicle();
 	if (v == NULL) return;
 
 	x = -16 * TILE_SIZE;
@@ -877,13 +876,13 @@ static void Disaster_Helicopter_Init()
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, ST_Helicopter);
 
-	u = ForceAllocateSpecialVehicle();
+	u = new DisasterVehicle();
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, y, 0, DIR_SW, ST_Helicopter_Shadow);
 		u->vehstatus |= VS_SHADOW;
 
-		w = ForceAllocateSpecialVehicle();
+		w = new DisasterVehicle();
 		if (w != NULL) {
 			u->next = w;
 			InitializeDisasterVehicle(w, x, y, 140, DIR_SW, ST_Helicopter_Rotors);
@@ -896,7 +895,7 @@ static void Disaster_Helicopter_Init()
  * down by a combat airplane, destroying the surroundings */
 static void Disaster_Big_Ufo_Init()
 {
-	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
+	Vehicle *v = new DisasterVehicle(), *u;
 	int x, y;
 
 	if (v == NULL) return;
@@ -909,7 +908,7 @@ static void Disaster_Big_Ufo_Init()
 	v->age = 0;
 
 	/* Allocate shadow too? */
-	u = ForceAllocateSpecialVehicle();
+	u = new DisasterVehicle();
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, y, 0, DIR_NW, ST_Big_Ufo_Shadow);
@@ -921,7 +920,7 @@ static void Disaster_Big_Ufo_Init()
 /* Curious submarine #1, just floats around */
 static void Disaster_Small_Submarine_Init()
 {
-	Vehicle *v = ForceAllocateSpecialVehicle();
+	Vehicle *v = new DisasterVehicle();
 	int x, y;
 	Direction dir;
 	uint32 r;
@@ -946,7 +945,7 @@ static void Disaster_Small_Submarine_Init()
 /* Curious submarine #2, just floats around */
 static void Disaster_Big_Submarine_Init()
 {
-	Vehicle *v = ForceAllocateSpecialVehicle();
+	Vehicle *v = new DisasterVehicle();
 	int x, y;
 	Direction dir;
 	uint32 r;

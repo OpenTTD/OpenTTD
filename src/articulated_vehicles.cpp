@@ -42,7 +42,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 		/* Attempt to use pre-allocated vehicles until they run out. This can happen
 		 * if the callback returns different values depending on the cargo type. */
 		u->next = vl[i];
-		if (u->next == NULL) u->next = AllocateVehicle();
+		if (u->next == NULL) u->next = new InvalidVehicle();
 		if (u->next == NULL) return;
 
 		u = u->next;

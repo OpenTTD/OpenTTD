@@ -282,28 +282,12 @@ void AfterLoadVehicles()
 	}
 }
 
-static Vehicle *InitializeVehicle(Vehicle *v)
+Vehicle::Vehicle()
 {
-	VehicleID index = v->index;
-	memset(v, 0, sizeof(Vehicle));
-	v->index = index;
-
-	assert(v->orders == NULL);
-
-	v = new (v) InvalidVehicle();
-	v->left_coord = INVALID_COORD;
-	v->first = NULL;
-	v->next = NULL;
-	v->next_hash = NULL;
-	v->string_id = 0;
-	v->next_shared = NULL;
-	v->prev_shared = NULL;
-	v->depot_list  = NULL;
-	v->random_bits = 0;
-	v->group_id = DEFAULT_GROUP;
-	v->fill_percent_te_id = INVALID_TE_ID;
-
-	return v;
+	this->type               = VEH_INVALID;
+	this->left_coord         = INVALID_COORD;
+	this->group_id           = DEFAULT_GROUP;
+	this->fill_percent_te_id = INVALID_TE_ID;
 }
 
 /**
@@ -315,87 +299,21 @@ byte VehicleRandomBits()
 	return GB(Random(), 0, 8);
 }
 
-Vehicle *ForceAllocateSpecialVehicle()
+
+/* static */ bool Vehicle::AllocateList(Vehicle **vl, int num)
 {
-	/* This stays a strange story.. there should always be room for special
-	 * vehicles (special effects all over the map), but with 65k of vehicles
-	 * is this realistic to double-check for that? For now we just reserve
-	 * BLOCKS_FOR_SPECIAL_VEHICLES times block_size vehicles that may only
-	 * be used for special vehicles.. should work nicely :) */
+	uint counter = _Vehicle_pool.first_free_index;
 
-	Vehicle *v;
+	for (int i = 0; i != num; i++) {
+		Vehicle *v = AllocateRaw(counter);
 
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * TODO - This is just a temporary stage, this will be removed. */
-	for (v = GetVehicle(0); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
-		/* No more room for the special vehicles, return NULL */
-		if (v->index >= (1 << Vehicle_POOL_BLOCK_SIZE_BITS) * BLOCKS_FOR_SPECIAL_VEHICLES)
-			return NULL;
+		if (v == NULL) return false;
+		v = new (v) InvalidVehicle();
 
-		if (!v->IsValid()) return InitializeVehicle(v);
-	}
-
-	return NULL;
-}
-
-/**
- * finds a free vehicle in the memory or allocates a new one
- * returns a pointer to the first free vehicle or NULL if all vehicles are in use
- * *skip_vehicles is an offset to where in the array we should begin looking
- * this is to avoid looping though the same vehicles more than once after we learned that they are not free
- * this feature is used by AllocateVehicles() since it need to allocate more than one and when
- * another block is added to _Vehicle_pool, since we only do that when we know it's already full
- */
-static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
-{
-	/* See note by ForceAllocateSpecialVehicle() why we skip the
-	 * first blocks */
-	Vehicle *v;
-	const int offset = (1 << Vehicle_POOL_BLOCK_SIZE_BITS) * BLOCKS_FOR_SPECIAL_VEHICLES;
-
-	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 * @todo - This is just a temporary stage, this will be removed. */
-	if (*skip_vehicles < (_Vehicle_pool.GetSize() - offset)) { // make sure the offset in the array is not larger than the array itself
-		for (v = GetVehicle(offset + *skip_vehicles); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
-			(*skip_vehicles)++;
-			if (!v->IsValid()) return InitializeVehicle(v);
-		}
-	}
-
-	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_Vehicle_pool))
-		return AllocateSingleVehicle(skip_vehicles);
-
-	return NULL;
-}
-
-
-Vehicle *AllocateVehicle()
-{
-	VehicleID counter = 0;
-	return AllocateSingleVehicle(&counter);
-}
-
-
-/** Allocates a lot of vehicles and frees them again
- * @param vl pointer to an array of vehicles to get allocated. Can be NULL if the vehicles aren't needed (makes it test only)
- * @param num number of vehicles to allocate room for
- * @return true if there is room to allocate all the vehicles
- */
-bool AllocateVehicles(Vehicle **vl, int num)
-{
-	int i;
-	Vehicle *v;
-	VehicleID counter = 0;
-
-	for (i = 0; i != num; i++) {
-		v = AllocateSingleVehicle(&counter);
-		if (v == NULL) {
-			return false;
-		}
 		if (vl != NULL) {
 			vl[i] = v;
 		}
+		counter++;
 	}
 
 	return true;
@@ -671,44 +589,51 @@ bool IsEngineCountable(const Vehicle *v)
 	}
 }
 
-void DestroyVehicle(Vehicle *v)
+Vehicle::~Vehicle()
 {
-	if (IsValidStationID(v->last_station_visited)) {
-		GetStation(v->last_station_visited)->loading_vehicles.remove(v);
+	if (IsValidStationID(this->last_station_visited)) {
+		GetStation(this->last_station_visited)->loading_vehicles.remove(this);
 
-		HideFillingPercent(v->fill_percent_te_id);
-		v->fill_percent_te_id = INVALID_TE_ID;
+		HideFillingPercent(this->fill_percent_te_id);
+		this->fill_percent_te_id = INVALID_TE_ID;
 	}
 
-	if (IsEngineCountable(v)) {
-		GetPlayer(v->owner)->num_engines[v->engine_type]--;
-		if (v->owner == _local_player) InvalidateAutoreplaceWindow(v->engine_type, v->group_id);
+	if (IsEngineCountable(this)) {
+		GetPlayer(this->owner)->num_engines[this->engine_type]--;
+		if (this->owner == _local_player) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
 
-		if (IsValidGroupID(v->group_id)) GetGroup(v->group_id)->num_engines[v->engine_type]--;
-		if (v->IsPrimaryVehicle()) DecreaseGroupNumVehicle(v->group_id);
+		if (IsValidGroupID(this->group_id)) GetGroup(this->group_id)->num_engines[this->engine_type]--;
+		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
 
-	DeleteVehicleNews(v->index, INVALID_STRING_ID);
+	DeleteVehicleNews(this->index, INVALID_STRING_ID);
 
-	DeleteName(v->string_id);
-	if (v->type == VEH_ROAD) ClearSlot(v);
+	this->QuickFree();
+	if (this->type == VEH_ROAD) ClearSlot(this);
 
-	if (v->type != VEH_TRAIN || (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v)))) {
-		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+	if (this->type != VEH_TRAIN || (this->type == VEH_TRAIN && (IsFrontEngine(this) || IsFreeWagon(this)))) {
+		InvalidateWindowData(WC_VEHICLE_DEPOT, this->tile);
 	}
 
-	v->cargo.Truncate(0);
-	UpdateVehiclePosHash(v, INVALID_COORD, 0);
-	v->next_hash = NULL;
-	v->next_new_hash = NULL;
-	if (IsPlayerBuildableVehicleType(v)) DeleteVehicleOrders(v);
+	this->cargo.Truncate(0);
+	UpdateVehiclePosHash(this, INVALID_COORD, 0);
+	this->next_hash = NULL;
+	this->next_new_hash = NULL;
+	if (IsPlayerBuildableVehicleType(this)) DeleteVehicleOrders(this);
 
 	/* Now remove any artic part. This will trigger an other
 	 *  destroy vehicle, which on his turn can remove any
 	 *  other artic parts. */
-	if ((v->type == VEH_TRAIN && EngineHasArticPart(v)) || (v->type == VEH_ROAD && RoadVehHasArticPart(v))) {
-		DeleteVehicle(v->next);
+	if ((this->type == VEH_TRAIN && EngineHasArticPart(this)) || (this->type == VEH_ROAD && RoadVehHasArticPart(this))) {
+		delete this->next;
 	}
+
+	new (this) InvalidVehicle();
+}
+
+void Vehicle::QuickFree()
+{
+	DeleteName(this->string_id);
 }
 
 /**
@@ -725,7 +650,7 @@ void DeleteVehicleChain(Vehicle *v)
 	do {
 		Vehicle *u = v;
 		v = v->next;
-		DeleteVehicle(u);
+		delete u;
 	} while (v != NULL);
 }
 
@@ -932,7 +857,7 @@ static void ChimneySmokeTick(Vehicle *v)
 		tile = TileVirtXY(v->x_pos, v->y_pos);
 		if (!IsTileType(tile, MP_INDUSTRY)) {
 			EndVehicleMove(v);
-			DeleteVehicle(v);
+			delete v;
 			return;
 		}
 
@@ -971,7 +896,7 @@ static void SteamSmokeTick(Vehicle *v)
 			v->cur_image++;
 		} else {
 			EndVehicleMove(v);
-			DeleteVehicle(v);
+			delete v;
 			return;
 		}
 		moved = true;
@@ -1006,7 +931,7 @@ static void DieselSmokeTick(Vehicle *v)
 			EndVehicleMove(v);
 		} else {
 			EndVehicleMove(v);
-			DeleteVehicle(v);
+			delete v;
 		}
 	}
 }
@@ -1030,7 +955,7 @@ static void ElectricSparkTick(Vehicle *v)
 			EndVehicleMove(v);
 		} else {
 			EndVehicleMove(v);
-			DeleteVehicle(v);
+			delete v;
 		}
 	}
 }
@@ -1059,7 +984,7 @@ static void SmokeTick(Vehicle *v)
 			v->cur_image++;
 		} else {
 			EndVehicleMove(v);
-			DeleteVehicle(v);
+			delete v;
 			return;
 		}
 		moved = true;
@@ -1088,7 +1013,7 @@ static void ExplosionLargeTick(Vehicle *v)
 			EndVehicleMove(v);
 		} else {
 			EndVehicleMove(v);
-			DeleteVehicle(v);
+			delete v;
 		}
 	}
 }
@@ -1117,7 +1042,7 @@ static void BreakdownSmokeTick(Vehicle *v)
 	if (v->u.special.animation_state == 0) {
 		BeginVehicleMove(v);
 		EndVehicleMove(v);
-		DeleteVehicle(v);
+		delete v;
 	}
 }
 
@@ -1138,7 +1063,7 @@ static void ExplosionSmallTick(Vehicle *v)
 			EndVehicleMove(v);
 		} else {
 			EndVehicleMove(v);
-			DeleteVehicle(v);
+			delete v;
 		}
 	}
 }
@@ -1209,7 +1134,7 @@ static void BulldozerTick(Vehicle *v)
 			v->u.special.animation_state++;
 			if (v->u.special.animation_state == lengthof(_bulldozer_movement)) {
 				EndVehicleMove(v);
-				DeleteVehicle(v);
+				delete v;
 				return;
 			}
 		}
@@ -1413,7 +1338,7 @@ static void BubbleTick(Vehicle *v)
 
 	if (b->y == 4 && b->x == 0) {
 		EndVehicleMove(v);
-		DeleteVehicle(v);
+		delete v;
 		return;
 	}
 
@@ -1482,9 +1407,8 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type)
 {
 	Vehicle *v;
 
-	v = ForceAllocateSpecialVehicle();
+	v = new SpecialVehicle();
 	if (v != NULL) {
-		v = new (v) SpecialVehicle();
 		v->subtype = type;
 		v->x_pos = x;
 		v->y_pos = y;
@@ -1878,7 +1802,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			veh_counter++;
 		} while ((v = v->next) != NULL);
 
-		if (!AllocateVehicles(NULL, veh_counter)) {
+		if (!Vehicle::AllocateList(NULL, veh_counter)) {
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 		}
 	}
@@ -3091,7 +3015,7 @@ static const SaveLoad _disaster_desc[] = {
 };
 
 
-static const void *_veh_descs[] = {
+static const SaveLoad *_veh_descs[] = {
 	_train_desc,
 	_roadveh_desc,
 	_ship_desc,
@@ -3107,7 +3031,7 @@ static void Save_VEHS()
 	/* Write the vehicles */
 	FOR_ALL_VEHICLES(v) {
 		SlSetArrayIndex(v->index);
-		SlObject(v, (SaveLoad*)_veh_descs[v->type]);
+		SlObject(v, _veh_descs[v->type]);
 	}
 }
 
@@ -3121,25 +3045,20 @@ static void Load_VEHS()
 
 	while ((index = SlIterateArray()) != -1) {
 		Vehicle *v;
-
-		if (!AddBlockIfNeeded(&_Vehicle_pool, index))
-			error("Vehicles: failed loading savegame: too many vehicles");
-
-		v = GetVehicle(index);
 		VehicleType vtype = (VehicleType)SlReadByte();
 
 		switch (vtype) {
-			case VEH_TRAIN:    v = new (v) Train();           break;
-			case VEH_ROAD:     v = new (v) RoadVehicle();     break;
-			case VEH_SHIP:     v = new (v) Ship();            break;
-			case VEH_AIRCRAFT: v = new (v) Aircraft();        break;
-			case VEH_SPECIAL:  v = new (v) SpecialVehicle();  break;
-			case VEH_DISASTER: v = new (v) DisasterVehicle(); break;
-			case VEH_INVALID:  v = new (v) InvalidVehicle();  break;
+			case VEH_TRAIN:    v = new (index) Train();           break;
+			case VEH_ROAD:     v = new (index) RoadVehicle();     break;
+			case VEH_SHIP:     v = new (index) Ship();            break;
+			case VEH_AIRCRAFT: v = new (index) Aircraft();        break;
+			case VEH_SPECIAL:  v = new (index) SpecialVehicle();  break;
+			case VEH_DISASTER: v = new (index) DisasterVehicle(); break;
+			case VEH_INVALID:  v = new (index) InvalidVehicle();  break;
 			default: NOT_REACHED();
 		}
 
-		SlObject(v, (SaveLoad*)_veh_descs[vtype]);
+		SlObject(v, _veh_descs[vtype]);
 
 		if (_cargo_count != 0 && IsPlayerBuildableVehicleType(v)) {
 			/* Don't construct the packet with station here, because that'll fail with old savegames */

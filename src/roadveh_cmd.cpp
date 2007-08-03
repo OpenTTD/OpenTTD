@@ -185,7 +185,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *vl[11];
 	memset(&vl, 0, sizeof(vl));
 
-	if (!AllocateVehicles(vl, num_vehicles)) {
+	if (!Vehicle::AllocateList(vl, num_vehicles)) {
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
@@ -372,7 +372,7 @@ CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteDepotHighlightOfVehicle(v);
-		DeleteVehicle(v);
+		delete v;
 	}
 
 	return CommandCost(-v->value);
@@ -610,7 +610,7 @@ static void DeleteLastRoadVeh(Vehicle *v)
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
 
-	DeleteVehicle(v);
+	delete v;
 }
 
 static byte SetRoadVehPosition(Vehicle *v, int x, int y)

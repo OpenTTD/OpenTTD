@@ -215,12 +215,12 @@ struct VehicleShip {
 	TrackBitsByte state;
 };
 
+struct Vehicle;
+DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 
-struct Vehicle {
+struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	VehicleTypeByte type;    ///< Type of vehicle
 	byte subtype;            // subtype (Filled with values from EffectVehicles/TrainSubTypes/AircraftSubTypes)
-
-	VehicleID index;         // NOSAVE: Index in vehicle array
 
 	Vehicle *next;           // next
 	Vehicle *first;          // NOSAVE: pointer to the first vehicle in the chain
@@ -335,6 +335,23 @@ struct Vehicle {
 		VehicleShip ship;
 	} u;
 
+
+	/**
+	 * Allocates a lot of vehicles.
+	 * @param vl pointer to an array of vehicles to get allocated. Can be NULL if the vehicles aren't needed (makes it test only)
+	 * @param num number of vehicles to allocate room for
+	 * @return true if there is room to allocate all the vehicles
+	 */
+	static bool AllocateList(Vehicle **vl, int num);
+
+	/** Create a new vehicle */
+	Vehicle();
+
+	/** We want to 'destruct' the right class. */
+	virtual ~Vehicle();
+
+	void QuickFree();
+
 	void BeginLoading();
 	void LeaveStation();
 
@@ -344,37 +361,6 @@ struct Vehicle {
 	 * @param mode is the non-first call for this vehicle in this tick?
 	 */
 	void HandleLoading(bool mode = false);
-
-	/**
-	 * An overriden version of new, so you can use the vehicle instance
-	 * instead of a newly allocated piece of memory.
-	 * @param size the size of the variable (unused)
-	 * @param v    the vehicle to use as 'storage' backend
-	 * @return the memory that is 'allocated'
-	 */
-	void *operator new(size_t size, Vehicle *v) { return v; }
-
-	/**
-	 * 'Free' the memory allocated by the overriden new.
-	 * @param p the memory to 'free'
-	 * @param v the vehicle that was given to 'new' on creation.
-	 * @note This function isn't used (at the moment) and only added
-	 *       to please some compiler.
-	 */
-	void operator delete(void *p, Vehicle *v) {}
-
-	/**
-	 * 'Free' the memory allocated by the overriden new.
-	 * @param p the memory to 'free'
-	 * @note This function isn't used (at the moment) and only added
-	 *       as the above function was needed to please some compiler
-	 *       which made it necessary to add this to please yet
-	 *       another compiler...
-	 */
-	void operator delete(void *p) {}
-
-	/** We want to 'destruct' the right class. */
-	virtual ~Vehicle() {}
 
 	/**
 	 * Get a string 'representation' of the vehicle type.
@@ -509,10 +495,6 @@ struct InvalidVehicle : public Vehicle {
 typedef void *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
-Vehicle *AllocateVehicle();
-bool AllocateVehicles(Vehicle **vl, int num);
-Vehicle *ForceAllocateVehicle();
-Vehicle *ForceAllocateSpecialVehicle();
 void VehiclePositionChanged(Vehicle *v);
 void AfterLoadVehicles();
 Vehicle *GetLastVehicleInChain(Vehicle *v);
@@ -619,8 +601,6 @@ Direction GetDirectionTowards(const Vehicle *v, int x, int y);
 #define BEGIN_ENUM_WAGONS(v) do {
 #define END_ENUM_WAGONS(v) } while ((v = v->next) != NULL);
 
-DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
-
 static inline VehicleID GetMaxVehicleIndex()
 {
 	/* TODO - This isn't the real content of the function, but
@@ -634,14 +614,6 @@ static inline VehicleID GetMaxVehicleIndex()
 static inline uint GetNumVehicles()
 {
 	return GetVehiclePoolSize();
-}
-
-void DestroyVehicle(Vehicle *v);
-
-static inline void DeleteVehicle(Vehicle *v)
-{
-	DestroyVehicle(v);
-	v = new (v) InvalidVehicle();
 }
 
 static inline bool IsPlayerBuildableVehicleType(VehicleType type)

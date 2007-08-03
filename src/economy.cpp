@@ -355,14 +355,14 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 								Vehicle *u = v;
 								do {
 									Vehicle *next = GetNextVehicle(u);
-									DeleteVehicle(u);
+									delete u;
 									u = next;
 								} while (u != NULL);
 							} break;
 
 							case VEH_ROAD:
 							case VEH_SHIP:
-								DeleteVehicle(v);
+								delete v;
 								break;
 
 							case VEH_AIRCRAFT:

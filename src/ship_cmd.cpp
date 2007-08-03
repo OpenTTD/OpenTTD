@@ -33,6 +33,7 @@
 #include "newgrf_sound.h"
 #include "date.h"
 #include "spritecache.h"
+#include "misc/autoptr.hpp"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 
@@ -833,8 +834,9 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileDepotType(tile, TRANSPORT_WATER)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
-	v = AllocateVehicle();
+	v = new Ship();
 	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_SHIP);
+	AutoPtrT<Vehicle> v_auto_delete = v;
 
 	if (v == NULL || unit_num > _patches.max_ships)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
@@ -898,6 +900,8 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateAutoreplaceWindow(VEH_SHIP, v->group_id); // updates the replace Ship window
 
 		GetPlayer(_current_player)->num_engines[p1]++;
+
+		v_auto_delete.Detach();
 	}
 
 	return value;
@@ -931,7 +935,7 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteDepotHighlightOfVehicle(v);
-		DeleteVehicle(v);
+		delete v;
 	}
 
 	return CommandCost(-v->value);

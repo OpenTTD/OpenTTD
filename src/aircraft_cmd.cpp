@@ -287,7 +287,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Allocate 2 or 3 vehicle structs, depending on type
 	 * vl[0] = aircraft, vl[1] = shadow, [vl[2] = rotor] */
 	Vehicle *vl[3];
-	if (!AllocateVehicles(vl, avi->subtype & AIR_CTOL ? 2 : 3)) {
+	if (!Vehicle::AllocateList(vl, avi->subtype & AIR_CTOL ? 2 : 3)) {
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 	}
 

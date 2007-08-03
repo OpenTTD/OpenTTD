@@ -518,7 +518,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 
 		memset(&vl, 0, sizeof(vl));
 
-		if (!AllocateVehicles(vl, num_vehicles))
+		if (!Vehicle::AllocateList(vl, num_vehicles))
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		if (flags & DC_EXEC) {
@@ -686,7 +686,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 		memset(&vl, 0, sizeof(vl));
 
-		if (!AllocateVehicles(vl, num_vehicles))
+		if (!Vehicle::AllocateList(vl, num_vehicles))
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		Vehicle *v = vl[0];
@@ -1253,7 +1253,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (flags & DC_EXEC) {
 					UnlinkWagon(rear, first);
 					DeleteDepotHighlightOfVehicle(rear);
-					DeleteVehicle(rear);
+					delete rear;
 				}
 			}
 
@@ -1308,7 +1308,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (flags & DC_EXEC) {
 				first = UnlinkWagon(v, first);
 				DeleteDepotHighlightOfVehicle(v);
-				DeleteVehicle(v);
+				delete v;
 
 				/* 4 If the second wagon was an engine, update it to front_engine
 					* which UnlinkWagon() has changed to TS_Free_Car */
@@ -1367,7 +1367,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 							if (flags & DC_EXEC) {
 								first = UnlinkWagon(rear, first);
 								DeleteDepotHighlightOfVehicle(rear);
-								DeleteVehicle(rear);
+								delete rear;
 							}
 						}
 					} else if (v->u.rail.other_multiheaded_part != NULL) {
@@ -1380,7 +1380,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (flags & DC_EXEC) {
 					first = UnlinkWagon(v, first);
 					DeleteDepotHighlightOfVehicle(v);
-					DeleteVehicle(v);
+					delete v;
 					RemoveVehicleFromGroup(v);
 				}
 			}
@@ -3039,7 +3039,7 @@ static void DeleteLastWagon(Vehicle *v)
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
 
-	DeleteVehicle(v);
+	delete v;
 
 	if (v->u.rail.track != TRACK_BIT_DEPOT && v->u.rail.track != TRACK_BIT_WORMHOLE)
 		SetSignalsOnBothDir(v->tile, FIND_FIRST_BIT(v->u.rail.track));
@@ -3329,8 +3329,7 @@ void Train::Tick()
 			TrainLocoHandler(this, true);
 	} else if (IsFreeWagon(this) && HASBITS(this->vehstatus, VS_CRASHED)) {
 		/* Delete flooded standalone wagon */
-		if (++this->u.rail.crash_anim_pos >= 4400)
-			DeleteVehicle(this);
+		if (++this->u.rail.crash_anim_pos >= 4400) delete this;
 	}
 }
 
