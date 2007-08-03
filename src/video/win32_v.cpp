@@ -149,7 +149,7 @@ static void ClientSizeChanged(int w, int h)
 	if (AllocateDibSection(w, h)) {
 		// mark all palette colors dirty
 		_pal_first_dirty = 0;
-		_pal_count_dirty = 255;
+		_pal_count_dirty = 256;
 		GameSizeChanged();
 
 		// redraw screen

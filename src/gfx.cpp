@@ -662,7 +662,7 @@ void GfxInitPalettes()
 
 	DoPaletteAnimations();
 	_pal_first_dirty = 0;
-	_pal_count_dirty = 255;
+	_pal_count_dirty = 256;
 }
 
 #define EXTR(p, q) (((uint16)(_palette_animation_counter * (p)) * (q)) >> 16)

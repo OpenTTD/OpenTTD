@@ -128,7 +128,7 @@ void DisplaySplashImage()
 	_cur_palette[0xff].b = 0;
 
 	_pal_first_dirty = 0;
-	_pal_count_dirty = 255;
+	_pal_count_dirty = 256;
 
 	png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 	fclose(f);
