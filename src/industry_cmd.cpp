@@ -1943,8 +1943,8 @@ void IndustryMonthlyLoop()
 
 void InitializeIndustries()
 {
-	CleanPool(&_Industry_pool);
-	AddBlockToPool(&_Industry_pool);
+	_Industry_pool.CleanPool();
+	_Industry_pool.AddBlockToPool();
 
 	ResetIndustryCounts();
 	_industry_sort_dirty = true;

@@ -1269,8 +1269,8 @@ bool CheckForValidOrders(const Vehicle* v)
 
 void InitializeOrders()
 {
-	CleanPool(&_Order_pool);
-	AddBlockToPool(&_Order_pool);
+	_Order_pool.CleanPool();
+	_Order_pool.AddBlockToPool();
 
 	_backup_orders_tile = 0;
 }

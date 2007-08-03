@@ -1122,8 +1122,8 @@ static bool InitMem()
 {
 	_ts.count = 0;
 
-	CleanPool(&_Savegame_pool);
-	AddBlockToPool(&_Savegame_pool);
+	_Savegame_pool.CleanPool();
+	_Savegame_pool.AddBlockToPool();
 
 	/* A block from the pool is a contigious area of memory, so it is safe to write to it sequentially */
 	_sl.bufsize = GetSavegamePoolSize();
@@ -1133,14 +1133,14 @@ static bool InitMem()
 
 static void UnInitMem()
 {
-	CleanPool(&_Savegame_pool);
+	_Savegame_pool.CleanPool();
 }
 
 static void WriteMem(uint size)
 {
 	_ts.count += size;
 	/* Allocate new block and new buffer-pointer */
-	AddBlockIfNeeded(&_Savegame_pool, _ts.count);
+	_Savegame_pool.AddBlockIfNeeded(_ts.count);
 	_sl.buf = GetSavegame(_ts.count);
 }
 
@@ -1343,37 +1343,37 @@ static void *IntToReference(uint index, SLRefType rt)
 
 	switch (rt) {
 		case REF_ORDER: {
-			if (!AddBlockIfNeeded(&_Order_pool, index))
+			if (!_Order_pool.AddBlockIfNeeded(index))
 				error("Orders: failed loading savegame: too many orders");
 			return GetOrder(index);
 		}
 		case REF_VEHICLE: {
-			if (!AddBlockIfNeeded(&_Vehicle_pool, index))
+			if (!_Vehicle_pool.AddBlockIfNeeded(index))
 				error("Vehicles: failed loading savegame: too many vehicles");
 			return GetVehicle(index);
 		}
 		case REF_STATION: {
-			if (!AddBlockIfNeeded(&_Station_pool, index))
+			if (!_Station_pool.AddBlockIfNeeded(index))
 				error("Stations: failed loading savegame: too many stations");
 			return GetStation(index);
 		}
 		case REF_TOWN: {
-			if (!AddBlockIfNeeded(&_Town_pool, index))
+			if (!_Town_pool.AddBlockIfNeeded(index))
 				error("Towns: failed loading savegame: too many towns");
 			return GetTown(index);
 		}
 		case REF_ROADSTOPS: {
-			if (!AddBlockIfNeeded(&_RoadStop_pool, index))
+			if (!_RoadStop_pool.AddBlockIfNeeded(index))
 				error("RoadStops: failed loading savegame: too many RoadStops");
 			return GetRoadStop(index);
 		}
 		case REF_ENGINE_RENEWS: {
-			if (!AddBlockIfNeeded(&_EngineRenew_pool, index))
+			if (!_EngineRenew_pool.AddBlockIfNeeded(index))
 				error("EngineRenews: failed loading savegame: too many EngineRenews");
 			return GetEngineRenew(index);
 		}
 		case REF_CARGO_PACKET: {
-			if (!AddBlockIfNeeded(&_CargoPacket_pool, index))
+			if (!_CargoPacket_pool.AddBlockIfNeeded(index))
 				error("CargoPackets: failed loading savegame: too many Cargo packets");
 			return GetCargoPacket(index);
 		}
@@ -1386,7 +1386,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			if (index == INVALID_VEHICLE)
 				return NULL;
 
-			if (!AddBlockIfNeeded(&_Vehicle_pool, index))
+			if (!_Vehicle_pool.AddBlockIfNeeded(index))
 				error("Vehicles: failed loading savegame: too many vehicles");
 			return GetVehicle(index);
 		}

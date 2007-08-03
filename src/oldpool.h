@@ -107,24 +107,6 @@ struct OldMemoryPool : public OldMemoryPoolBase {
 };
 
 /**
- * Those are the wrappers:
- *   CleanPool cleans the pool up, but you can use AddBlockToPool directly again
- *     (no need to call CreatePool!)
- *   AddBlockToPool adds 1 more block to the pool. Returns false if there is no
- *     more room
- */
-static inline void CleanPool(OldMemoryPoolBase *array) { array->CleanPool(); }
-static inline bool AddBlockToPool(OldMemoryPoolBase *array) { return array->AddBlockToPool(); }
-
-/**
- * Adds blocks to the pool if needed (and possible) till index fits inside the pool
- *
- * @return Returns false if adding failed
- */
-static inline bool AddBlockIfNeeded(OldMemoryPoolBase *array, uint index) { return array->AddBlockIfNeeded(index); }
-
-
-/**
  * Generic function to initialize a new block in a pool.
  * @param start_item the first item that needs to be initialized
  */

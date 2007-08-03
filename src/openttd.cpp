@@ -302,14 +302,14 @@ static void UnInitializeGame()
 	UnInitializeAirports();
 
 	/* Uninitialize variables that are allocated dynamically */
-	CleanPool(&_Town_pool);
-	CleanPool(&_Industry_pool);
-	CleanPool(&_Station_pool);
-	CleanPool(&_Vehicle_pool);
-	CleanPool(&_Sign_pool);
-	CleanPool(&_Order_pool);
-	CleanPool(&_Group_pool);
-	CleanPool(&_CargoPacket_pool);
+	_Town_pool.CleanPool();
+	_Industry_pool.CleanPool();
+	_Station_pool.CleanPool();
+	_Vehicle_pool.CleanPool();
+	_Sign_pool.CleanPool();
+	_Order_pool.CleanPool();
+	_Group_pool.CleanPool();
+	_CargoPacket_pool.CleanPool();
 
 	free((void*)_town_sort);
 	free((void*)_industry_sort);

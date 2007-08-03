@@ -20,7 +20,7 @@ STATIC_OLD_POOL(SoundInternal, FileEntry, 3, 1000, NULL, NULL)
 FileEntry *AllocateFileEntry()
 {
 	if (_sound_count == GetSoundInternalPoolSize()) {
-		if (!AddBlockToPool(&_SoundInternal_pool)) return NULL;
+		if (!_SoundInternal_pool.AddBlockToPool()) return NULL;
 	}
 
 	return GetSoundInternal(_sound_count++);
@@ -29,7 +29,7 @@ FileEntry *AllocateFileEntry()
 
 void InitializeSoundPool()
 {
-	CleanPool(&_SoundInternal_pool);
+	_SoundInternal_pool.CleanPool();
 	_sound_count = 0;
 
 	/* Copy original sound data to the pool */

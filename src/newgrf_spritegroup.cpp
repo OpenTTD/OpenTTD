@@ -62,7 +62,7 @@ SpriteGroup *AllocateSpriteGroup()
 {
 	/* This is totally different to the other pool allocators, as we never remove an item from the pool. */
 	if (_spritegroup_count == GetSpriteGroupPoolSize()) {
-		if (!AddBlockToPool(&_SpriteGroup_pool)) return NULL;
+		if (!_SpriteGroup_pool.AddBlockToPool()) return NULL;
 	}
 
 	return GetSpriteGroup(_spritegroup_count++);
@@ -71,7 +71,7 @@ SpriteGroup *AllocateSpriteGroup()
 
 void InitializeSpriteGroupPool()
 {
-	CleanPool(&_SpriteGroup_pool);
+	_SpriteGroup_pool.CleanPool();
 
 	_spritegroup_count = 0;
 }

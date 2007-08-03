@@ -2292,8 +2292,8 @@ void InitializeTowns()
 	Subsidy *s;
 
 	/* Clean the town pool and create 1 block in it */
-	CleanPool(&_Town_pool);
-	AddBlockToPool(&_Town_pool);
+	_Town_pool.CleanPool();
+	_Town_pool.AddBlockToPool();
 
 	memset(_subsidies, 0, sizeof(_subsidies));
 	for (s=_subsidies; s != endof(_subsidies); s++)
