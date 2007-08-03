@@ -195,9 +195,9 @@ struct Command {
 static inline bool CmdFailed(CommandCost cost) { return cost.Failed(); }
 static inline bool CmdSucceeded(CommandCost cost) { return cost.Succeeded(); }
 
-static const CommandCost CMD_ERROR = CommandCost((StringID)INVALID_STRING_ID);
+static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
 
-#define return_cmd_error(errcode) do { return CommandCost((StringID)(errcode)); } while (0)
+#define return_cmd_error(errcode) do { return CommandCost(errcode); } while (0)
 
 /* command.cpp */
 typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);

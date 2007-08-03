@@ -696,7 +696,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				 *   8bit   - cargo type
 				 *   16-bit - cargo count */
 				CargoID cargo = GetInt32(&argv);
-				StringID cargo_str = (cargo == CT_INVALID) ? (StringID)STR_8838_N_A : GetCargo(cargo)->quantifier;
+				StringID cargo_str = (cargo == CT_INVALID) ? STR_8838_N_A : GetCargo(cargo)->quantifier;
 				buff = GetStringWithArgs(buff, cargo_str, argv++, last);
 				break;
 			}
@@ -852,7 +852,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				assert(g->IsValid());
 
 				args[0] = g->index;
-				buff = GetStringWithArgs(buff, IsCustomName(g->string_id) ? g->string_id : (StringID)STR_GROUP_NAME_FORMAT, args, last);
+				buff = GetStringWithArgs(buff, IsCustomName(g->string_id) ? g->string_id : STR_GROUP_NAME_FORMAT, args, last);
 
 				break;
 			}

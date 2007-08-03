@@ -51,7 +51,7 @@ struct PalSpriteID {
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 typedef uint16 StringID;
-#define INVALID_STRING_ID 0xFFFF
+static const StringID INVALID_STRING_ID = 0xFFFF;
 
 typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
 

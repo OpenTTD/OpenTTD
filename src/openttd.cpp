@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #define VARDEF
 #include "string.h"
-#include "table/strings.h"
 #include "debug.h"
 #include "driver.h"
 #include "saveload.h"
@@ -15,6 +14,7 @@
 #include "helpers.hpp"
 
 #include "openttd.h"
+#include "table/strings.h"
 #include "strings.h"
 #include "bridge_map.h"
 #include "functions.h"
