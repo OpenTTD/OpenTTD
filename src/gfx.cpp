@@ -840,6 +840,11 @@ void UndrawMouseCursor()
 
 void DrawMouseCursor()
 {
+#if defined(WINCE)
+	/* Don't ever draw the mouse for WinCE, as we work with a stylus */
+	return;
+#endif
+
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	int x;
 	int y;

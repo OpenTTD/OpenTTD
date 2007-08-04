@@ -108,7 +108,9 @@ char *FiosBrowseTo(const FiosItem *item)
 	char *path = _fios_path;
 
 	switch (item->type) {
-#if defined(WIN32) || defined(__OS2__)
+#if defined(WINCE)
+	case FIOS_TYPE_DRIVE: sprintf(path, PATHSEP ""); break;
+#elif defined(WIN32) || defined(__OS2__)
 	case FIOS_TYPE_DRIVE: sprintf(path, "%c:" PATHSEP, item->title[0]); break;
 #endif
 

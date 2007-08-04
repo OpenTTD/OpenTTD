@@ -94,7 +94,7 @@ void ShowOSErrorBox(const char *buf)
 #endif
 }
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && !defined(WINCE)
 
 static void *_safe_esp;
 static char *_crash_msg;
@@ -734,6 +734,14 @@ bool FiosIsRoot(const char *file)
 
 void FiosGetDrives()
 {
+#if defined(WINCE)
+	/* WinCE only knows one drive: / */
+	FiosItem *fios = FiosAlloc();
+	fios->type = FIOS_TYPE_DRIVE;
+	fios->mtime = 0;
+	snprintf(fios->name, lengthof(fios->name), PATHSEP "");
+	ttd_strlcpy(fios->title, fios->name, lengthof(fios->title));
+#else
 	TCHAR drives[256];
 	const TCHAR *s;
 
@@ -746,6 +754,7 @@ void FiosGetDrives()
 		ttd_strlcpy(fios->title, fios->name, lengthof(fios->title));
 		while (*s++ != '\0');
 	}
+#endif
 }
 
 bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
@@ -821,6 +830,9 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 
 void CreateConsole()
 {
+#if defined(WINCE)
+	/* WinCE doesn't support console stuff */
+#else
 	HANDLE hand;
 	CONSOLE_SCREEN_BUFFER_INFO coninfo;
 
@@ -849,6 +861,7 @@ void CreateConsole()
 	setvbuf(stdin, NULL, _IONBF, 0);
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
+#endif
 }
 
 void ShowInfo(const char *str)
@@ -882,7 +895,11 @@ void ShowInfo(const char *str)
 	int _set_error_mode(int);
 #endif
 
+#if defined(WINCE)
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
+#else
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+#endif
 {
 	int argc;
 	char *argv[64]; // max 64 command line arguments
@@ -893,8 +910,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 #endif /* UNICODE */
 
 #if defined(UNICODE)
+
+#if !defined(WINCE)
 	/* Check if a win9x user started the win32 version */
 	if (HASBIT(GetVersion(), 31)) error("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
+#endif
 
 	/* For UNICODE we need to convert the commandline to char* _AND_
 	 * save it because argv[] points into this buffer and thus needs to
@@ -908,7 +928,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	CreateConsole();
 #endif
 
+#if !defined(WINCE)
 	_set_error_mode(_OUT_TO_MSGBOX); // force assertion output to messagebox
+#endif
 
 	/* setup random seed to something quite random */
 	_random_seeds[1][0] = _random_seeds[0][0] = GetTickCount();
@@ -951,7 +973,14 @@ void GetCurrentDirectoryW(int length, wchar_t *path)
 
 char *getcwd(char *buf, size_t size)
 {
-#if defined(UNICODE)
+#if defined(WINCE)
+ 	TCHAR path[MAX_PATH];
+	GetModuleFileName(NULL, path, MAX_PATH);
+	convert_from_fs(path, buf, size);
+	/* GetModuleFileName returns dir with file, so remove everything behind latest '\\' */
+	char *p = strrchr(buf, '\\');
+	if (p != NULL) *p = '\0';
+#elif defined(UNICODE)
 	TCHAR path[MAX_PATH];
 	GetCurrentDirectory(MAX_PATH - 1, path);
 	convert_from_fs(path, buf, size);

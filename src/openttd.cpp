@@ -452,6 +452,11 @@ int ttd_main(int argc, char *argv[])
 		}
 	}
 
+#if defined(WINCE) && defined(_DEBUG)
+	/* Switch on debug lvl 4 for WinCE if Debug release, as you can't give params, and you most likely do want this information */
+	SetDebugString("4");
+#endif
+
 	DeterminePaths(argv[0]);
 	CheckExternalFiles();
 

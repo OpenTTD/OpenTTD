@@ -66,11 +66,13 @@ static void DedicatedSignalHandler(int sig)
 }
 #endif
 
-#ifdef WIN32
-#include <windows.h> /* GetTickCount */
-#include <conio.h>
-#include <time.h>
-#include <tchar.h>
+#if defined(WIN32)
+# include <windows.h> /* GetTickCount */
+# if !defined(WINCE)
+#  include <conio.h>
+# endif
+# include <time.h>
+# include <tchar.h>
 static HANDLE _hInputReady, _hWaitForInputHandling;
 static HANDLE _hThread; // Thread to close
 static char _win_console_thread_buffer[200];
@@ -78,6 +80,10 @@ static char _win_console_thread_buffer[200];
 /* Windows Console thread. Just loop and signal when input has been received */
 static void WINAPI CheckForConsoleInput()
 {
+#if defined(WINCE)
+	/* WinCE doesn't support console stuff */
+	return;
+#else
 	DWORD nb;
 	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
 	while (true) {
@@ -87,6 +93,7 @@ static void WINAPI CheckForConsoleInput()
 		SetEvent(_hInputReady);
 		WaitForSingleObject(_hWaitForInputHandling, INFINITE);
 	}
+#endif
 }
 
 static void CreateWindowsConsoleThread()
@@ -133,7 +140,9 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 
 	SetDebugString("net=6");
 
-#ifdef WIN32
+#if defined(WINCE)
+	/* WinCE doesn't support console stuff */
+#elif defined(WIN32)
 	// For win32 we need to allocate a console (debug mode does the same)
 	CreateConsole();
 	CreateWindowsConsoleThread();

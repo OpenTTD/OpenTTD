@@ -775,6 +775,8 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 
 	FindResolutions();
 
+	DEBUG(driver, 2, "Resolution for display: %dx%d", _cur_resolution[0], _cur_resolution[1]);
+
 	// fullscreen uses those
 	_wnd.width_org = _cur_resolution[0];
 	_wnd.height_org = _cur_resolution[1];
