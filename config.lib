@@ -838,6 +838,14 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -fno-strict-aliasing"
 	fi
 
+	# GCC 4.2+ automatically assumes that signed overflows do
+	# not occur in signed arithmetics, whereas we are not
+	# sure that they will not happen. It furthermore complains
+	# about it's own optimized code in some places.
+	if [ $cc_version -ge 42 ]; then
+		CFLAGS="$CFLAGS -fno-strict-overflow"
+	fi
+
 	if [ "$os" != "CYGWIN" ] && [ "$os" != "FREEBSD" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "WINCE" ] && [ "$os" != "PSP" ] && [ "$os" != "OS2" ]; then
 		LIBS="$LIBS -lpthread"
 		LIBS="$LIBS -lrt"
