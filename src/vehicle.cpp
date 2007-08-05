@@ -562,7 +562,7 @@ bool IsEngineCountable(const Vehicle *v)
 	}
 }
 
-Vehicle::~Vehicle()
+void Vehicle::PreDestructor()
 {
 	if (IsValidStationID(this->last_station_visited)) {
 		GetStation(this->last_station_visited)->loading_vehicles.remove(this);
@@ -579,8 +579,6 @@ Vehicle::~Vehicle()
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
 
-	DeleteVehicleNews(this->index, INVALID_STRING_ID);
-
 	this->QuickFree();
 	if (this->type == VEH_ROAD) ClearSlot(this);
 
@@ -589,10 +587,7 @@ Vehicle::~Vehicle()
 	}
 
 	this->cargo.Truncate(0);
-	UpdateVehiclePosHash(this, INVALID_COORD, 0);
-	this->next_hash = NULL;
-	this->next_new_hash = NULL;
-	if (IsPlayerBuildableVehicleType(this)) DeleteVehicleOrders(this);
+	DeleteVehicleOrders(this);
 
 	/* Now remove any artic part. This will trigger an other
 	 *  destroy vehicle, which on his turn can remove any
@@ -600,6 +595,15 @@ Vehicle::~Vehicle()
 	if ((this->type == VEH_TRAIN && EngineHasArticPart(this)) || (this->type == VEH_ROAD && RoadVehHasArticPart(this))) {
 		delete this->next;
 	}
+}
+
+Vehicle::~Vehicle()
+{
+	UpdateVehiclePosHash(this, INVALID_COORD, 0);
+	this->next_hash = NULL;
+	this->next_new_hash = NULL;
+
+	DeleteVehicleNews(this->index, INVALID_STRING_ID);
 
 	new (this) InvalidVehicle();
 }

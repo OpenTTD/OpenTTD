@@ -347,6 +347,8 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	/** Create a new vehicle */
 	Vehicle();
 
+	/** Destroy all stuff that (still) needs the virtual functions to work properly */
+	void PreDestructor();
 	/** We want to 'destruct' the right class. */
 	virtual ~Vehicle();
 

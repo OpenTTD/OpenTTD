@@ -37,7 +37,7 @@ struct Ship: public Vehicle {
 	Ship() { this->type = VEH_SHIP; }
 
 	/** We want to 'destruct' the right class. */
-	virtual ~Ship() {}
+	virtual ~Ship() { this->PreDestructor(); }
 
 	const char *GetTypeString() const { return "ship"; }
 	void MarkDirty();

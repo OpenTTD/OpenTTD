@@ -128,7 +128,7 @@ struct Aircraft : public Vehicle {
 	Aircraft() { this->type = VEH_AIRCRAFT; }
 
 	/** We want to 'destruct' the right class. */
-	virtual ~Aircraft() {}
+	virtual ~Aircraft() { this->PreDestructor(); }
 
 	const char *GetTypeString() const { return "aircraft"; }
 	void MarkDirty();
