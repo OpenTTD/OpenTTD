@@ -680,7 +680,18 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				const char* s = GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
 				int len;
 				int gender = 0;
-				if (s != NULL && Utf8Consume(&s) == SCC_GENDER_INDEX) gender = (byte)s[0];
+				if (s != NULL) {
+					wchar_t c = Utf8Consume(&s);
+					/* Switch case is always put before genders, so remove those bits */
+					if (c == SCC_SWITCH_CASE) {
+						/* Skip to the last (i.e. default) case */
+						for (uint num = (byte)*s++; num != 0; num--) s += 3 + (s[1] << 8) + s[2];
+
+						c = Utf8Consume(&s);
+					}
+					/* Does this string have a gender, if so, set it */
+					if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
+				}
 				str = ParseStringChoice(str, gender, buff, &len);
 				buff += len;
 				break;
