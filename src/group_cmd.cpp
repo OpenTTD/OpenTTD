@@ -50,13 +50,8 @@ Group::Group(StringID str)
 
 Group::~Group()
 {
-	this->QuickFree();
-	this->string_id = STR_NULL;
-}
-
-void Group::QuickFree()
-{
 	DeleteName(this->string_id);
+	this->string_id = STR_NULL;
 }
 
 bool Group::IsValid() const

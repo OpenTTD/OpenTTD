@@ -64,6 +64,11 @@ Station::~Station()
 {
 	DEBUG(station, cDebugCtorLevel, "I-%3d", index);
 
+	DeleteName(this->string_id);
+	free(this->speclist);
+
+	if (CleaningPool()) return;
+
 	MarkDirty();
 	RebuildStationLists();
 	InvalidateWindowClasses(WC_STATION_LIST);
@@ -81,14 +86,6 @@ Station::~Station()
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		goods[c].cargo.Truncate(0);
 	}
-
-	this->QuickFree();
-}
-
-void Station::QuickFree()
-{
-	DeleteName(this->string_id);
-	free(this->speclist);
 }
 
 /** Called when new facility is built on the station. If it is the first facility

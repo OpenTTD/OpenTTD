@@ -352,8 +352,6 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	/** We want to 'destruct' the right class. */
 	virtual ~Vehicle();
 
-	void QuickFree();
-
 	void BeginLoading();
 	void LeaveStation();
 

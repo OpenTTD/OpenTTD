@@ -160,8 +160,6 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	~Town();
 
 	bool IsValid() const { return this->xy != 0; }
-
-	void QuickFree();
 };
 
 struct HouseSpec {

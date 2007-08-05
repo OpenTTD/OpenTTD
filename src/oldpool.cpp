@@ -18,6 +18,7 @@ void OldMemoryPoolBase::CleanPool()
 
 	DEBUG(misc, 4, "[Pool] (%s) cleaning pool..", this->name);
 
+	this->cleaning_pool = true;
 	/* Free all blocks */
 	for (i = 0; i < this->current_blocks; i++) {
 		if (this->clean_block_proc != NULL) {
@@ -25,6 +26,7 @@ void OldMemoryPoolBase::CleanPool()
 		}
 		free(this->blocks[i]);
 	}
+	this->cleaning_pool = false;
 
 	/* Free the block itself */
 	free(this->blocks);

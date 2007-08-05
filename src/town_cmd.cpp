@@ -53,6 +53,10 @@ Town::Town(TileIndex tile)
 
 Town::~Town()
 {
+	DeleteName(this->townnametype);
+
+	if (CleaningPool()) return;
+
 	Industry *i;
 
 	/* Delete town authority window
@@ -87,13 +91,7 @@ Town::~Town()
 
 	MarkWholeScreenDirty();
 
-	this->QuickFree();
 	this->xy = 0;
-}
-
-void Town::QuickFree()
-{
-	DeleteName(this->townnametype);
 }
 
 // Local

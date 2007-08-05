@@ -25,7 +25,7 @@ protected:
 				OldMemoryPoolNewBlock *new_block_proc, OldMemoryPoolCleanBlock *clean_block_proc) :
 		name(name), max_blocks(max_blocks), block_size_bits(block_size_bits),
 		new_block_proc(new_block_proc), clean_block_proc(clean_block_proc), current_blocks(0),
-		total_items(0), item_size(item_size), first_free_index(0), blocks(NULL) {}
+		total_items(0), cleaning_pool(false), item_size(item_size), first_free_index(0), blocks(NULL) {}
 
 	const char* name;     ///< Name of the pool (just for debugging)
 
@@ -40,6 +40,7 @@ protected:
 	uint current_blocks;        ///< How many blocks we have in our pool
 	uint total_items;           ///< How many items we now have in this pool
 
+	bool cleaning_pool;         ///< Are we currently cleaning the pool?
 public:
 	const uint item_size;       ///< How many bytes one block is
 	uint first_free_index;      ///< The index of the first free pool item in this pool
@@ -84,6 +85,15 @@ public:
 	{
 		return this->name;
 	}
+
+	/**
+	 * Is the pool in the cleaning phase?
+	 * @return true if it is
+	 */
+	inline bool CleaningPool() const
+	{
+		return this->cleaning_pool;
+	}
 };
 
 template <typename T>
@@ -121,7 +131,6 @@ static void PoolNewBlock(uint start_item)
 
 /**
  * Generic function to free a new block in a pool.
- * This function uses QuickFree that is intended to only free memory that would be lost if the pool is freed.
  * @param start_item the first item that needs to be cleaned
  * @param end_item   the last item that needs to be cleaned
  */
@@ -130,9 +139,7 @@ static void PoolCleanBlock(uint start_item, uint end_item)
 {
 	for (uint i = start_item; i <= end_item; i++) {
 		T *t = Tpool->Get(i);
-		if (t->IsValid()) {
-			t->QuickFree();
-		}
+		delete t;
 	}
 }
 
@@ -154,15 +161,6 @@ struct PoolItem {
 	virtual ~PoolItem()
 	{
 		if (this->index < Tpool->first_free_index) Tpool->first_free_index = this->index;
-	}
-
-	/**
-	 * Called on each object when the pool is being destroyed, so one
-	 * can free allocated memory without the need for freeing for
-	 * example orders.
-	 */
-	virtual void QuickFree()
-	{
 	}
 
 	/**
@@ -241,7 +239,7 @@ protected:
 	 * Allocate a pool item; possibly allocate a new block in the pool.
 	 * @return the allocated pool item (or NULL when the pool is full).
 	 */
-	static T *AllocateRaw()
+	static inline T *AllocateRaw()
 	{
 		return AllocateRaw(Tpool->first_free_index);
 	}
@@ -251,7 +249,7 @@ protected:
 	 * @param first the first pool item to start searching
 	 * @return the allocated pool item (or NULL when the pool is full).
 	 */
-	static T *AllocateRaw(uint &first)
+	static inline T *AllocateRaw(uint &first)
 	{
 		uint last_minus_one = Tpool->GetSize() - 1;
 
@@ -270,6 +268,15 @@ protected:
 		if (Tpool->AddBlockToPool()) return AllocateRaw(first);
 
 		return NULL;
+	}
+
+	/**
+	 * Are we cleaning this pool?
+	 * @return true if we are
+	 */
+	static inline bool CleaningPool()
+	{
+		return Tpool->CleaningPool();
 	}
 };
 

@@ -159,8 +159,6 @@ struct Station : PoolItem<Station, StationID, &_Station_pool> {
 	Station(TileIndex tile = 0);
 	virtual ~Station();
 
-	void QuickFree();
-
 	void AddFacility(byte new_facility_bit, TileIndex facil_xy);
 	void MarkDirty() const;
 	void MarkTilesDirty(bool cargo_change) const;

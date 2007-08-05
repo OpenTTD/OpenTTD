@@ -404,17 +404,14 @@ Waypoint::Waypoint(TileIndex tile)
 
 Waypoint::~Waypoint()
 {
+	if (this->string != STR_NULL) DeleteName(this->string);
+
+	if (CleaningPool()) return;
+
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
 
 	RedrawWaypointSign(this);
 	this->xy = 0;
-
-	this->QuickFree();
-}
-
-void Waypoint::QuickFree()
-{
-	if (this->string != STR_NULL) DeleteName(this->string);
 }
 
 bool Waypoint::IsValid() const

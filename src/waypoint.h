@@ -30,8 +30,6 @@ struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 	Waypoint(TileIndex tile = 0);
 	~Waypoint();
 
-	void QuickFree();
-
 	bool IsValid() const;
 };
 

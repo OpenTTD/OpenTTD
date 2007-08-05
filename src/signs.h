@@ -27,8 +27,6 @@ struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
 	~Sign();
 
 	bool IsValid() const { return this->str != STR_NULL; }
-
-	void QuickFree();
 };
 
 enum {

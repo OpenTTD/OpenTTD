@@ -29,8 +29,6 @@ struct Group : PoolItem<Group, GroupID, &_Group_pool> {
 	Group(StringID str = STR_NULL);
 	virtual ~Group();
 
-	void QuickFree();
-
 	bool IsValid() const;
 };
 

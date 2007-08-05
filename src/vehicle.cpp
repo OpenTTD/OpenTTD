@@ -564,6 +564,8 @@ bool IsEngineCountable(const Vehicle *v)
 
 void Vehicle::PreDestructor()
 {
+	if (CleaningPool()) return;
+
 	if (IsValidStationID(this->last_station_visited)) {
 		GetStation(this->last_station_visited)->loading_vehicles.remove(this);
 
@@ -579,7 +581,6 @@ void Vehicle::PreDestructor()
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
 
-	this->QuickFree();
 	if (this->type == VEH_ROAD) ClearSlot(this);
 
 	if (this->type != VEH_TRAIN || (this->type == VEH_TRAIN && (IsFrontEngine(this) || IsFreeWagon(this)))) {
@@ -599,6 +600,10 @@ void Vehicle::PreDestructor()
 
 Vehicle::~Vehicle()
 {
+	DeleteName(this->string_id);
+
+	if (CleaningPool()) return;
+
 	UpdateVehiclePosHash(this, INVALID_COORD, 0);
 	this->next_hash = NULL;
 	this->next_new_hash = NULL;
@@ -606,11 +611,6 @@ Vehicle::~Vehicle()
 	DeleteVehicleNews(this->index, INVALID_STRING_ID);
 
 	new (this) InvalidVehicle();
-}
-
-void Vehicle::QuickFree()
-{
-	DeleteName(this->string_id);
 }
 
 /**

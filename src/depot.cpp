@@ -37,6 +37,8 @@ Depot *GetDepotByTile(TileIndex tile)
  */
 Depot::~Depot()
 {
+	if (CleaningPool()) return;
+
 	/* Clear the depot from all order-lists */
 	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, this->index);
 

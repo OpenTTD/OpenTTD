@@ -28,13 +28,8 @@ Sign::Sign(StringID string)
 
 Sign::~Sign()
 {
-	this->QuickFree();
-	this->str = STR_NULL;
-}
-
-void Sign::QuickFree()
-{
 	DeleteName(this->str);
+	this->str = STR_NULL;
 }
 
 /**
