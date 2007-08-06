@@ -533,7 +533,6 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & VS_STOPPED ||
-			v->u.road.roadtype == ROADTYPE_TRAM ||
 			v->u.road.crashed_ctr != 0 ||
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||

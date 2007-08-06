@@ -277,7 +277,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		bool is_localplayer = v->owner == _local_player;
 
 		SetWindowWidgetDisabledState(w,  7, !is_localplayer);
-		SetWindowWidgetDisabledState(w,  8, !is_localplayer || v->u.road.roadtype == ROADTYPE_TRAM);
+		SetWindowWidgetDisabledState(w,  8, !is_localplayer);
 		SetWindowWidgetDisabledState(w, 11, !is_localplayer);
 		/* Disable refit button if vehicle not refittable */
 		SetWindowWidgetDisabledState(w, 12, !is_localplayer ||
