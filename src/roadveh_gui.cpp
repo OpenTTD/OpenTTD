@@ -145,6 +145,8 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 
 					if (!first) strecat(capacity, ", ", lastof(capacity));
 					strecat(capacity, buffer, lastof(capacity));
+
+					first = false;
 				}
 			}
 
