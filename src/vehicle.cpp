@@ -2554,6 +2554,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 {
 	assert(IsPlayerBuildableVehicleType(type));
 
+	if (!IsValidPlayer(_current_player)) return false;
 	if (_patches.always_build_infrastructure) return true;
 
 	UnitID max;
