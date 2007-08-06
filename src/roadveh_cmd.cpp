@@ -556,8 +556,10 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 void RoadVehicle::MarkDirty()
 {
-	this->cur_image = this->GetImage(this->direction);
-	MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
+	for (Vehicle *v = this; v != NULL; v = v->next) {
+		v->cur_image = v->GetImage(v->direction);
+		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+	}
 }
 
 void RoadVehicle::UpdateDeltaXY(Direction direction)
