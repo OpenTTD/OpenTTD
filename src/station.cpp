@@ -391,6 +391,8 @@ RoadStop::RoadStop(TileIndex tile) :
   */
 RoadStop::~RoadStop()
 {
+	if (CleaningPool()) return;
+
 	/* Clear the slot assignment of all vehicles heading for this road stop */
 	if (num_vehicles != 0) {
 		Vehicle *v;

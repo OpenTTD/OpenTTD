@@ -130,6 +130,8 @@ const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx, bool full_check)
 
 Industry::~Industry()
 {
+	if (CleaningPool()) return;
+
 	/* Industry can also be destroyed when not fully initialized.
 	 * This means that we do not have to clear tiles either. */
 	if (this->width == 0) {
