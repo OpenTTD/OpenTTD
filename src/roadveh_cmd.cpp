@@ -1376,9 +1376,9 @@ static bool RoadVehLeaveDepot(Vehicle *v, bool first)
 	return true;
 }
 
-static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev, TileIndex tile, DiagDirection entry_dir)
+static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev, TileIndex tile, DiagDirection entry_dir, bool already_reversed)
 {
-	if (prev->tile == v->tile) {
+	if (prev->tile == v->tile && !already_reversed) {
 		/* If the previous vehicle is on the same tile as this vehicle is
 		 * then it must have reversed. */
 		return _road_reverse_table[entry_dir];
@@ -1491,7 +1491,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 			/* If this is the front engine, look for the right path. */
 			dir = RoadFindPathToDest(v, tile, (DiagDirection)(rd.x & 3));
 		} else {
-			dir = FollowPreviousRoadVehicle(v, prev, tile, (DiagDirection)(rd.x & 3));
+			dir = FollowPreviousRoadVehicle(v, prev, tile, (DiagDirection)(rd.x & 3), false);
 		}
 
 		if (dir == INVALID_TRACKDIR) {
@@ -1583,10 +1583,17 @@ again:
 
 	if (rd.x & RDE_TURNED) {
 		/* Vehicle has finished turning around, it will now head back onto the same tile */
-		Trackdir dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
+		Trackdir dir;
 		uint32 r;
 		Direction newdir;
 		const RoadDriveEntry *rdp;
+
+		if (IsRoadVehFront(v)) {
+			/* If this is the front engine, look for the right path. */
+			dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
+		} else {
+			dir = FollowPreviousRoadVehicle(v, prev, v->tile, (DiagDirection)(rd.x & 3), true);
+		}
 
 		if (dir == INVALID_TRACKDIR) {
 			v->cur_speed = 0;
