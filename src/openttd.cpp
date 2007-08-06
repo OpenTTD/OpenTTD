@@ -1023,7 +1023,7 @@ static void DoAutosave()
 		SetDParam(0, _local_player);
 		SetDParam(1, _date);
 		GetString(buf, STR_4004, lastof(buf));
-		ttd_strlcpy(buf, ".sav", sizeof(buf));
+		ttd_strlcat(buf, ".sav", lengthof(buf));
 	} else {
 		/* generate a savegame name and number according to _patches.max_num_autosaves */
 		snprintf(buf, sizeof(buf), "autosave%d.sav", _autosave_ctr);
