@@ -452,7 +452,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
-			InvalidateAutoreplaceWindow(VEH_AIRCRAFT, v->group_id); //updates the replace Aircraft window
+			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); //updates the replace Aircraft window
 
 		GetPlayer(_current_player)->num_engines[p1]++;
 	}
