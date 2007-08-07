@@ -308,9 +308,14 @@ check_params() {
 	# Check if all params have valid values
 
 	# Endian only allows AUTO, LE and, BE
-	if [ -z "`echo $endian | egrep '^(AUTO|LE|BE)$'`" ]; then
+	if [ -z "`echo $endian | egrep '^(AUTO|LE|BE|PREPROCESSOR)$'`" ]; then
 		echo "configure: error: invalid option --endian=$endian"
 		echo " Available options are: --endian=[AUTO|LE|BE]"
+		exit 1
+	fi
+	if [ "$endian" = "PREPROCESSOR" ] && [ "$os" != "OSX" ]; then
+		echo "configure: error: invalid option --endian=$endian"
+		echo " PREPROCESSOR is only available for OSX"
 		exit 1
 	fi
 	# OS only allows DETECT, UNIX, OSX, FREEBSD, OPENBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, WINCE, and PSP
