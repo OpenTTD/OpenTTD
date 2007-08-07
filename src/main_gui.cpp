@@ -2068,7 +2068,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		if (p != NULL) {
 			/* Draw player money */
 			SetDParam(0, p->player_money);
-			DrawStringCentered(w->widget[2].left + 70, 1, p->player_money >= 0 ? STR_0004 : STR_0005, 0);
+			DrawStringCentered(w->widget[2].left + 70, 1, STR_0004, 0);
 		}
 
 		/* Draw status bar */

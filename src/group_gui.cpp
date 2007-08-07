@@ -451,36 +451,20 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			max = min(w->vscroll2.pos + w->vscroll2.cap, gv->l.list_length);
 			for (i = w->vscroll2.pos ; i < max ; ++i) {
 				const Vehicle* v = gv->sort_list[i];
-				StringID str;
 
 				assert(v->type == gv->vehicle_type && v->owner == owner);
 
 				DrawVehicleImage(v, x + 19, y2 + 6, w->hscroll.cap, 0, gv->vehicle_sel);
 				DrawVehicleProfitButton(v, x, y2 + 13);
 
-				if (IsVehicleInDepot(v)) {
-					str = STR_021F;
-				} else {
-					str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
-				}
 				SetDParam(0, v->unitnumber);
-				DrawString(x, y2 + 2, str, 0);
+				DrawString(x, y2 + 2, IsVehicleInDepot(v) ? STR_021F : (v->age > v->max_age - 366 ? STR_00E3 : STR_00E2), 0);
 
 				if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG2) DrawSmallOrderList(v, x + 138, y2);
 
-				if (v->profit_this_year < 0) {
-					str = v->profit_last_year < 0 ?
-							STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR :
-							STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR;
-				} else {
-					str = v->profit_last_year < 0 ?
-							STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR :
-							STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR;
-				}
-
 				SetDParam(0, v->profit_this_year);
 				SetDParam(1, v->profit_last_year);
-				DrawString(x + 19, y2 + w->resize.step_height - 8, str, 0);
+				DrawString(x + 19, y2 + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
 				if (IsValidGroupID(v->group_id)) {
 					SetDParam(0, v->group_id);

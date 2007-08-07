@@ -343,6 +343,8 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 
 	/* convert from negative */
 	if (number < 0) {
+		if (buff + Utf8CharLen(SCC_RED) > last) return buff;
+		buff += Utf8Encode(buff, SCC_RED);
 		buff = strecpy(buff, "-", last);
 		number = -number;
 	}
@@ -382,6 +384,12 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	 * Here, it can can be either 1 (suffix) or 2 (both prefix anf suffix).
 	 * The only remaining value is 1 (prefix), so everything that is not 0 */
 	if (spec->symbol_pos != 0) buff = strecpy(buff, spec->suffix, last);
+
+	if (cs.GetCost() < 0) {
+		if (buff + Utf8CharLen(SCC_PREVIOUS_COLOUR) > last) return buff;
+		buff += Utf8Encode(buff, SCC_PREVIOUS_COLOUR);
+		*buff = '\0';
+	}
 
 	return buff;
 }

@@ -88,6 +88,7 @@ enum {
 	SCC_GRAY,
 	SCC_DKBLUE,
 	SCC_BLACK,
+	SCC_PREVIOUS_COLOUR,
 
 	/* Special printable symbols.
 	 * These are mapped to the original glyphs */

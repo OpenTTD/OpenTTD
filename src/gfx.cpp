@@ -495,10 +495,10 @@ int DoDrawString(const char *string, int x, int y, uint16 real_color)
 	DrawPixelInfo *dpi = _cur_dpi;
 	FontSize size = _cur_fontsize;
 	WChar c;
-	byte color;
 	int xo = x, yo = y;
 
-	color = real_color & 0xFF;
+	byte color = real_color & 0xFF;
+	byte previous_color = color;
 
 	if (color != 0xFE) {
 		if (x >= dpi->left + dpi->width ||
@@ -548,7 +548,11 @@ skip_cont:;
 			y += GetCharacterHeight(size);
 			goto check_bounds;
 		} else if (c >= SCC_BLUE && c <= SCC_BLACK) { // change color?
+			previous_color = color;
 			color = (byte)(c - SCC_BLUE);
+			goto switch_color;
+		} else if (c == SCC_PREVIOUS_COLOUR) { // revert to the previous color
+			Swap(color, previous_color);
 			goto switch_color;
 		} else if (c == SCC_SETX) { // {SETX}
 			x = xo + (byte)*string++;
