@@ -8,7 +8,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Bûten d
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Te ticht by de râne fan 'e map
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Net genôch jild - {CURRENCY} nedich
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flak lân nedich
 STR_0008_WAITING                                                :{BLACK}Wachtsjend: {WHITE}{STRING}

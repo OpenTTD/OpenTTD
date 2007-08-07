@@ -13,7 +13,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Извъ
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Края на картата е прекалено близо
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недостатъчно пари - трябват {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Трябва равна земя
 STR_0008_WAITING                                                :{BLACK}Чакане: {WHITE}{STRING}
@@ -3328,10 +3327,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Изтр
 STR_GROUP_RENAME_TIP                                            :{BLACK}Преименувай избраната група
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Щракни да защитиш тази група от глобална автоматична замяна
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Печалба тази година: {GREEN}{CURRENCY} {BLACK}(предишната година: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Печалба тази година: {RED}{CURRENCY} {BLACK}(предишната година: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Печалба тази година: {GREEN}{CURRENCY} {BLACK}(предишната година: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Печалба тази година: {RED}{CURRENCY} {BLACK}(предишната година: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

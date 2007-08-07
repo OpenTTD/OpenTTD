@@ -12,7 +12,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Zu weit 
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Zu nahe am Kartenrand
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nicht genug Geld - {CURRENCY} benötigt!
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ebenes Land erforderlich
 STR_0008_WAITING                                                :{BLACK}Wartend:  {WHITE}{STRING}
@@ -3362,10 +3361,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Die ausg
 STR_GROUP_RENAME_TIP                                            :{BLACK}Die ausgewählte Gruppe umbenennen
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Hier klicken um diese Gruppe aus der automatischen Fahrzeugersetzung zu nehmen
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Profit dieses Jahr: {GREEN}{CURRENCY} {BLACK}(letztes Jahr: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit dieses Jahr: {RED}{CURRENCY} {BLACK}(letztes Jahr: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit dieses Jahr: {GREEN}{CURRENCY} {BLACK}(letztes Jahr: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit dieses Jahr: {RED}{CURRENCY} {BLACK}(letztes Jahr: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

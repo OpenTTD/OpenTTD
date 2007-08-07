@@ -9,7 +9,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Oor kant
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Te naby aan kant van kaart
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nie genoeg kontant nie - vereis {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Platte land vereis
 STR_0008_WAITING                                                :{BLACK}Wagtend: {WHITE}{STRING}

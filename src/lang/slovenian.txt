@@ -12,7 +12,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Čez rob
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Preblizu roba zemljevida
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Premalo denarja - potrebuješ {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebno je ravno zemljišče
 STR_0008_WAITING                                                :{BLACK}Čaka: {WHITE}{STRING}
@@ -3441,10 +3440,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Izbriši
 STR_GROUP_RENAME_TIP                                            :{BLACK}Preimenuj izbrano skupino
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klikni za zaščito skupine pred splošno samoobnovo
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Dobiček letos: {GREEN}{CURRENCY} {BLACK}(lani: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Dobiček letos: {RED}{CURRENCY} {BLACK}(lani: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Dobiček letos: {GREEN}{CURRENCY} {BLACK}(lani: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Dobiček letos: {RED}{CURRENCY} {BLACK}(lani: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

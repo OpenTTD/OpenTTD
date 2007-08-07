@@ -13,7 +13,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}За м�
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Надто близько до краю карти
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недостатньо коштів - потрібно {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Потрібна рівна ділянка
 STR_0008_WAITING                                                :{BLACK}Чекає: {WHITE}{STRING}
@@ -3524,10 +3523,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Стер
 STR_GROUP_RENAME_TIP                                            :{BLACK}Перейменувати вибрану групу
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Клікніть, щоб захистити групу від глобальної автозаміни
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Прибуток цього року: {GREEN}{CURRENCY} {BLACK}(торік: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибуток цього року: {RED}{CURRENCY} {BLACK}(торік: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Прибуток цього року: {GREEN}{CURRENCY} {BLACK}(торік: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Прибуток цього року: {RED}{CURRENCY} {BLACK}(торік: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

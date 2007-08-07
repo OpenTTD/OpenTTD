@@ -11,7 +11,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}超过�
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}距离地图边界过近
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}没有足够的现金 - 需要 {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}需要平坦的地面
 STR_0008_WAITING                                                :{BLACK}等待：{WHITE}{STRING}

@@ -11,7 +11,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}地図�
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}地図の端に近すぎます
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}資金が足りません。{CURRENCY}がかかります
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}平地が必要です
 STR_0008_WAITING                                                :{BLACK}到着待ち：{WHITE}{STRING}
@@ -3361,10 +3360,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}選択�
 STR_GROUP_RENAME_TIP                                            :{BLACK}選択したグループの名称を変更します
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}このグループ内の車両を自動交換しません
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}今年の収益：{GREEN}{CURRENCY} {BLACK}（昨年：{GREEN}{CURRENCY}{BLACK}）
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}今年の収益：{RED}{CURRENCY} {BLACK}（昨年：{GREEN}{CURRENCY}{BLACK}）
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}今年の収益：{GREEN}{CURRENCY} {BLACK}（昨年：{RED}{CURRENCY}{BLACK}）
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}今年の収益：{RED}{CURRENCY} {BLACK}（昨年：{RED}{CURRENCY}{BLACK}）
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

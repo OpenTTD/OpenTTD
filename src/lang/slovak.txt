@@ -13,7 +13,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Za okraj
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Príliš blízko okraja mapy
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Malá hotovost - potrebných {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebný rovný terén
 STR_0008_WAITING                                                :{BLACK}Caka: {WHITE}{STRING}
@@ -3425,10 +3424,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Zrušit 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Premenovat vybranú skupinu
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknite pre znemoznenie automatického nahradzovania v skupine
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Zisk tento rok: {GREEN}{CURRENCY} {BLACK}(minulý rok: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Zisk tento rok: {RED}{CURRENCY} {BLACK}(lminulý rok: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Zisk tento rok: {GREEN}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Zisk tento rok: {RED}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

@@ -13,7 +13,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Mimo okr
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Moc blízko k okraji mapy
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nedostatek peněz - je potřeba {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Je potřeba plochá země
 STR_0008_WAITING                                                :{BLACK}Čeká tu: {WHITE}{STRING}
@@ -3425,10 +3424,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Vymazat 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Přejmenovat vybranou skupinu
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknutím nebude na tuto skupinu mít vliv automatická výměna vozidel
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Letošní příjem: {GREEN}{CURRENCY} {BLACK}(minulý rok: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Letošní příjem: {RED}{CURRENCY} {BLACK}(minulý rok: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Letošní příjem: {GREEN}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Letošní příjem: {RED}{CURRENCY} {BLACK}(minulý rok: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

@@ -12,7 +12,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}맵 가�
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}맵 가장자리와 너무 가깝습니다!
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}재정이 부족합니다 - {CURRENCY} 이(가) 필요합니다
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}평지가 필요합니다!
 STR_0008_WAITING                                                :{BLACK}대기: {WHITE}{STRING}
@@ -3362,10 +3361,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}선택�
 STR_GROUP_RENAME_TIP                                            :{BLACK}선택한 그룹 이름 바꾸기
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}전체 자동 교체로부터 이 그룹 보호
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}올해의 수입: {GREEN}{CURRENCY} {BLACK}(작년: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}올해의 수입: {RED}{CURRENCY} {BLACK}(작년: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}올해 수입: {GREEN}{CURRENCY} {BLACK}(작년: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}올해 수입: {RED}{CURRENCY} {BLACK}(작년: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

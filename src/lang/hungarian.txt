@@ -12,7 +12,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Kilóg a
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Túl közel van a térkép széléhez
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nincs elég pénzed - {CURRENCY} kellene
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sima talaj szükséges
 STR_0008_WAITING                                                :{BLACK}Várakozik: {WHITE}{STRING}
@@ -3464,10 +3463,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Kijelöl
 STR_GROUP_RENAME_TIP                                            :{BLACK}Kijelölt csoport átnevezése
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Csoport automata csere alóli mentességének beállításához kattints ide
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Idei profit: {GREEN}{CURRENCY} {BLACK}(tavalyi: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Idei profit: {RED}{CURRENCY} {BLACK}(tavalyi: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Idei profit: {GREEN}{CURRENCY} {BLACK}(tavalyi: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Idei profit: {RED}{CURRENCY} {BLACK}(tavalyi: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

@@ -13,7 +13,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Izvan ru
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Preblizu rubu karte
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nedovoljno gotovine - potrebno je {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebna ravna površina
 STR_0008_WAITING                                                :{BLACK}Čekanje: {WHITE}{STRING}
@@ -3363,10 +3362,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Obriši 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Preimenuj odabranu grupu
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klikni kako bi zaštitio ovu grupu od globalne automatske zamjene
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Dobit ove godine: {GREEN}{CURRENCY} {BLACK}(prošle godine: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Dobit ove godine: {RED}{CURRENCY} {BLACK}(prošle godine: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Dobit ove godine: {GREEN}{CURRENCY} {BLACK}(prošle godine: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Dobit ove godine: {RED}{CURRENCY} {BLACK}(prošle godine: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

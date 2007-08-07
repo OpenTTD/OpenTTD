@@ -11,7 +11,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}超越�
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}太接近版圖邊緣
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}現金不足 - 需要 {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}需要平地
 STR_0008_WAITING                                                :{BLACK}等候：{WHITE}{STRING}
@@ -3361,10 +3360,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}移除�
 STR_GROUP_RENAME_TIP                                            :{BLACK}為群組重新命名
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}點此可避免此群組內的設備被來自全域的設定替換
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}本年盈餘： {GREEN}{CURRENCY} {BLACK}(去年： {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}本年盈餘：{RED}{CURRENCY} {BLACK}(去年： {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}本年盈餘： {GREEN}{CURRENCY} {BLACK}(去年： {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}本年盈餘： {RED}{CURRENCY} {BLACK}(去年：{RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

@@ -11,7 +11,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Kartan r
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Liian lähellä kartan reunaa.
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Käteinen ei riitä - tarvitaan {CURRENCY}.
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Tarvitaan tasaista maata.
 STR_0008_WAITING                                                :{BLACK}Lähdössä: {WHITE}{STRING}
@@ -3358,10 +3357,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Poista v
 STR_GROUP_RENAME_TIP                                            :{BLACK}Nimeä valittu ryhmä
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Poista ryhmä automaattisesti korvattavien joukosta
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Tulos tänä vuonna: {GREEN}{CURRENCY} {BLACK}(viime vuonna: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Tulos tänä vuonna: {RED}{CURRENCY} {BLACK}(viime vuonna: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Tulos tänä vuonna: {GREEN}{CURRENCY} {BLACK}(viime vuonna: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Tulos tänä vuonna: {RED}{CURRENCY} {BLACK}(viime vuonna: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

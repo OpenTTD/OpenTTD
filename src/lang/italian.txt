@@ -13,7 +13,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fuori da
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Troppo vicino al bordo della mappa
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Denaro insufficiente - servono {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Richiesto terreno pianeggiante
 STR_0008_WAITING                                                :{BLACK}In attesa: {WHITE}{STRING}
@@ -3363,10 +3362,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Elimina 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Rinomina il gruppo selezionato
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Fare clic per proteggere questo gruppo dal rimpiazzo automatico
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Profitto quest'anno: {GREEN}{CURRENCY} {BLACK}(anno scorso: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profitto quest'anno: {RED}{CURRENCY} {BLACK}(anno scorso: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profitto quest'anno: {GREEN}{CURRENCY} {BLACK}(anno scorso: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profitto quest'anno: {RED}{CURRENCY} {BLACK}(anno scorso: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

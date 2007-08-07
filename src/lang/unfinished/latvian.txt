@@ -13,7 +13,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Ārpus k
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pārāk tuvu kartes malai
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietiek naudas - nepieciešami {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei jābūt plakanai
 STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING.a}

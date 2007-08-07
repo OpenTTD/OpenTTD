@@ -12,7 +12,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}For de l
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Tro proksime al la mapa rando
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Ne sufiĉe da mono - vi bezonas {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Necesas ebena lando
 STR_0008_WAITING                                                :{BLACK}Atendas: {WHITE}{STRING}

@@ -11,7 +11,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Už žem
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Per arti žemėlapio krašto
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Neužtenka lėšų: reikia {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Paviršius turi būti lygus
 STR_0008_WAITING                                                :{BLACK}Laukia: {WHITE}{STRING}

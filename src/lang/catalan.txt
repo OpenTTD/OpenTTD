@@ -11,7 +11,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Fora del
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Massa a prop del marc del mapa
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}No tens prou diners - et fan falta {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Es necessita un terreny pla
 STR_0008_WAITING                                                :{BLACK}Esperant: {WHITE}{STRING}
@@ -3361,10 +3360,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Elimina 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Canvia el nom del grup seleccionat
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clica per protegir aquest grup de l'autosubstitueix global
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Benefici aquest any: {GREEN}{CURRENCY} {BLACK}(any passat: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Benefici aquest any: {RED}{CURRENCY} {BLACK}(any passat: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Benefici aquest any: {GREEN}{CURRENCY} {BLACK}(any passat: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Benefici aquest any: {RED}{CURRENCY} {BLACK}(any passat: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

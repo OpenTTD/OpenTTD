@@ -11,7 +11,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Depăşe
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Prea aproape de marginea hărţii
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nu ai destui bani - îţi trebuie {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Necesită teren plat
 STR_0008_WAITING                                                :{BLACK}În aşteptare: {WHITE}{STRING}
@@ -3361,10 +3360,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Sterge g
 STR_GROUP_RENAME_TIP                                            :{BLACK}Redenumeste grupul selectat
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Click aici pentru a proteja acest grup de la inlocuirile automate globale
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Profit anul acesta: {GREEN}{CURRENCY} {BLACK}(anul trecut: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit anul acesta: {RED}{CURRENCY} {BLACK}(anul trecut: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Profit anul acesta: {GREEN}{CURRENCY} {BLACK}(anul trecut: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Profit anul acesta: {RED}{CURRENCY} {BLACK}(anul trecut: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

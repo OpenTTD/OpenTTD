@@ -12,7 +12,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Väljasp
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Kaardi äärele liiga lähedal
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Pole piisavalt raha - vajad {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Maapind peab olema tasane
 STR_0008_WAITING                                                :{BLACK}Ootel: {WHITE}{STRING}
@@ -3461,10 +3460,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Eemalda 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Nimeta valitud üksus ümber
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klõpsa, et seda üksust üldise iseväljavahetuse eest kaitsta
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Selle aasta kasum: {GREEN}{CURRENCY} {BLACK}(eelmisel aastal: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Selle aasta kasum: {RED}{CURRENCY} {BLACK}(eelmisel aastal: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Selle aasta kasum: {GREEN}{CURRENCY} {BLACK}(eelmisel aastal: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Selle aasta kasum: {RED}{CURRENCY} {BLACK}(eelmisel aastal: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

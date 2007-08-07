@@ -12,7 +12,6 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Utføre 
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}For nært kanten av kartet
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Du har ikkje nok pengar - du treng {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
-STR_0005                                                        :{RED}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flatt land er naudsynt
 STR_0008_WAITING                                                :{BLACK}Ventar: {WHITE}{STRING}
@@ -3362,10 +3361,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Slett de
 STR_GROUP_RENAME_TIP                                            :{BLACK}Gje den valde gruppa nytt namn
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klikk for å beskytte denne gruppa frå å global automatisk erstatning
 
-STR_PROFIT_GOOD_THIS_YEAR_GOOD_LAST_YEAR                        :{TINYFONT}{BLACK}Forteneste i år: {GREEN}{CURRENCY} {BLACK}(førre år: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_GOOD_LAST_YEAR                         :{TINYFONT}{BLACK}Forteneste i år: {RED}{CURRENCY} {BLACK}(førre år: {GREEN}{CURRENCY}{BLACK})
-STR_PROFIT_GOOD_THIS_YEAR_BAD_LAST_YEAR                         :{TINYFONT}{BLACK}Forteneste i år: {GREEN}{CURRENCY} {BLACK}(førre år: {RED}{CURRENCY}{BLACK})
-STR_PROFIT_BAD_THIS_YEAR_BAD_LAST_YEAR                          :{TINYFONT}{BLACK}Forteneste i år: {RED}{CURRENCY} {BLACK}(førre år: {RED}{CURRENCY}{BLACK})
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
