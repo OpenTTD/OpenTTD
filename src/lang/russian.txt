@@ -1142,7 +1142,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Обс�
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Обслуживание кораблей: {ORANGE}кажд{P 1 ый ые ые} {STRING} д{P 1 ень ня ней}/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Обслуживание кораблей: {ORANGE}не обслуживаются
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Не обслуживать транспорт, если отключены поломки: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Использовать органичение скорости у вагонов (если есть): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Использовать ограничение скорости у вагонов (если есть): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Выключить электрофицированную железную дорогу: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Цветные газеты появляются: {ORANGE}в {STRING} году
@@ -3372,7 +3372,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Созд
 STR_GROUP_DELETE_TIP                                            :{BLACK}Удалить выбранную группу
 STR_GROUP_RENAME_TIP                                            :{BLACK}Переименовать выбранную группу
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}В зажатом состоянии защищает группу от всеобщей автозамены
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

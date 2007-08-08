@@ -1998,9 +1998,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Custo: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Impossível construir este tipo de indústria aqui...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...a floresta só pode ser plantada acima do nível de neve
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anuncia falência iminente!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemas de abastecimento forçaram {INDUSTRY} a anunciar falência iminente!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Falta de árvores nas proximidades forçaram {INDUSTRY} a anunciar falência iminente!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anuncia o fechamento!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemas de abastecimento forçaram {INDUSTRY} a anunciar o fechamento!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Falta de árvores nas proximidades forçaram {INDUSTRY} a anunciar o fechamento!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} aumenta a produção!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova jazida de carvão encontrada em {INDUSTRY}!{}A expectativa é dobrar a produção!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Novas reservas de petróleo encontradas em {INDUSTRY}!{}A expectativa é dobrar a produção!
@@ -3363,7 +3363,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Clique p
 STR_GROUP_DELETE_TIP                                            :{BLACK}Remove o grupo selecionado
 STR_GROUP_RENAME_TIP                                            :{BLACK}Renomeia o grupo selecionado
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clique para excluir esse grupo da substituição automática
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

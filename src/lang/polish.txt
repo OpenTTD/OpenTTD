@@ -133,7 +133,7 @@ STR_QUANTITY_COAL                                               :{WEIGHT} węgla
 STR_QUANTITY_MAIL                                               :{COMMA} pacz{P ka ki ek} poczty
 STR_QUANTITY_OIL                                                :{VOLUME} ropy
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} sztuk{P a i ""} żywca
-STR_QUANTITY_GOODS                                              :{COMMA} towarów
+STR_QUANTITY_GOODS                                              :{COMMA} skrzy{P nia nie ń} towarów
 STR_QUANTITY_GRAIN                                              :{WEIGHT} zboża
 STR_QUANTITY_WOOD                                               :{WEIGHT} drewna
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} rudy żelaza
@@ -433,13 +433,13 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zysk w ostatnim
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zysk w tym roku
 STR_SORT_BY_AGE                                                 :Wiek
 STR_SORT_BY_RELIABILITY                                         :Niezawodność
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita pojemność typu towaru
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita pojemność typu ładunku
 STR_SORT_BY_MAX_SPEED                                           :Prędkość maks.
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartość
 STR_SORT_BY_FACILITY                                            :Typ stacji
-STR_SORT_BY_WAITING                                             :Wartość czekającego towaru
-STR_SORT_BY_RATING_MAX                                          :Ocena towaru
+STR_SORT_BY_WAITING                                             :Wartość czekającego ładunku
+STR_SORT_BY_RATING_MAX                                          :Ocena ładunku
 STR_ENGINE_SORT_ENGINE_ID                                       :ID pojazdu
 STR_ENGINE_SORT_COST                                            :Cena
 STR_ENGINE_SORT_POWER                                           :Moc
@@ -447,9 +447,9 @@ STR_ENGINE_SORT_INTRO_DATE                                      :Data wprowadzen
 STR_ENGINE_SORT_RUNNING_COST                                    :Koszty użytkowania
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Moc/Koszty użytkowania
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Pojemność
-STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma żadnego czekającego towaru
+STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma żadnego czekającego ładunku
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Zaznacz wszystkie typy stacji
-STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy towaru (oraz brak czekającego towaru)
+STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy ładunku (oraz brak czekającego ładunku)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Dostępne Lokomotywy
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Dostępne Samochody
 STR_AVAILABLE_SHIPS                                             :{BLACK}Dostępne Statki
@@ -698,7 +698,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nie moż
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nie ma więcej miejsca na mapie
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Zwiększ rozmiar miasta
 STR_023C_EXPAND                                                 :{BLACK}Rozszerz
-STR_023D_RANDOM_TOWN                                            :{BLACK}Dowolne miasto
+STR_023D_RANDOM_TOWN                                            :{BLACK}Losowe miasto
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Budowanie miasta w losowym miejscu
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Tworzenie przedsiębiorstw
 STR_0240_COAL_MINE                                              :{BLACK}{G=f}Kopalnia Węgla
@@ -809,7 +809,7 @@ STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...nale�
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...dozwolone jedno na miasto
 STR_0288_PLANT_TREES                                            :{BLACK}Posadź drzewa
 STR_0289_PLACE_SIGN                                             :{BLACK}Umieść napis
-STR_028A_RANDOM_TREES                                           :{BLACK}Dowolne drzewa
+STR_028A_RANDOM_TREES                                           :{BLACK}Losowe drzewa
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Pokryj krajobraz losowymi drzewami
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umieść kamieniste tereny
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umieść latarnię morską
@@ -1113,13 +1113,17 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Pozwól
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistyczne przyspieszenie pociągów: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zabroń pociągom i statkom skręcać o 90st: {ORANGE}{STRING} {LTBLUE} (wymaga NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Połącz stacje budowane jedna obok drugiej: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Opuść stację gdy dowolny towar jest pełny, gdy 'Załadunek': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Opuść stację gdy dowolny ładunek jest pełny, przy 'Załadunku': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Użyj ulepszonego algorytmu załadunku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Stopniowy załadunek pojazdów: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Dostarcz ładunek na stację tylko jeśli jest zapotrzebowanie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Pozwól budować bardzo długie mosty: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Zezwalaj na wysyłanie do zajezdni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metoda budowania przedsiębiorstw pierwszego stopnia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedostępna
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :przez poszukiwanie
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Pozwól na wiele podobnych przedsiębiorstw w mieście: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Przedsiębiorstwa jednego typu mogą być bud. obok siebie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zawsze pokazuj datę w długim formacie w pasku statusu: {ORANGE}{STRING}
@@ -1323,7 +1327,7 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nie m
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Jesteś pewien że chcesz stworzyć losowy krajobraz?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Wiele losowych miast
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryj mapę losowo położonymi miastami
-STR_MANY_RANDOM_INDUSTRIES                                      :Wiele losowych przedsiębiorstw
+STR_MANY_RANDOM_INDUSTRIES                                      :Wiele losowych
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryj mapę losowo położonymi przedsiębiorstwami
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nie można stworzyć przedsiębiorstw...
 
@@ -1391,10 +1395,10 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zbyt blisko innego przedsiębiorstwa
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa pociągu do przewozu innego typu towaru
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa pociągu do przewozu innego typu ładunku
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Przebudowa pociągu
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Przebuduj pociąg do przewozu zaznaczonego typu towaru
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Przebuduj pociąg do przewozu zaznaczonego typu ładunku
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nie można przebudować pociągu...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Okres między serwisowaniami w procentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji
@@ -1954,7 +1958,7 @@ STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Wybierz 
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centruj główny widok na stacji
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Pokaż ocenę stacji
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Zmień nazwę stacji
-STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Pokaż listę akceptowanych towarów
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Pokaż listę akceptowanych ładunków
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nazwa stacji - kliknij na nazwie aby wycentrować główny widok na stacji
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Wybierz wielkość/typ lotniska
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
@@ -2099,13 +2103,17 @@ STR_4829_REQUIRES                                               :{BLACK}Wymaga: 
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Ładunek oczekujący na przetworzenie:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produkuje: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produkuje: {YELLOW}{STRING}, {STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Wyprodukowano w ostatnim miesiącu:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% przetransportowano)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centruj główny widok na przedsiębiorstwie
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Rozpoczęto budowę nowe{G go j go} {STRING.d} blisko {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Now{G y a e} {STRING} został{G "" a o} posadzon{G y a e} blisko {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Now{G y a e} {STRING} został{G 0 "" a o} posadzon{G 0 y a e} blisko {TOWN}!
 STR_482F_COST                                                   :{BLACK}Koszt: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nie można tutaj wybudować tego przedsiębiorstwa...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...las może być posadzony tylko powyżej linii śniegu
@@ -2390,7 +2398,7 @@ STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nie można kupić firmy...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Stawki za Ładunek
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dni w transporcie
-STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Oplata za przewóz 10 jednostek (lub 10,000 litrów) towaru na odległość 20 pól
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Oplata za przewóz 10 jednostek (lub 10,000 litrów) ładunku na odległość 20 pól
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Przełącznik wykresu ładunku wł./wył.
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Inżynier
@@ -2737,15 +2745,15 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociąg 
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Idź do {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Idź do {STATION} (Przewieź i weź towar)
+STR_8807_GO_TO_TRANSFER                                         :Idź do {STATION} (Przewieź i weź ładunek)
 STR_8808_GO_TO_UNLOAD                                           :Idź do {STATION} (Wyładunek)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Idź do {STATION} (Przewieź i nie bierz towaru)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Idź do {STATION} (Przewieź i nie bierz ładunku)
 STR_880A_GO_TO_LOAD                                             :Idź do {STATION} (Załadunek)
 STR_880B_GO_TO_TRANSFER_LOAD                                    :Idź do {STATION} (Przewieź i czekaj na pełen załadunek)
 STR_880C_GO_NON_STOP_TO                                         :Idź bez zatrzymywania do {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Idź bez zatrzymywania do {STATION} (Przewieź i weź towar)
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Idź bez zatrzymywania do {STATION} (Przewieź i weź ładunek)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Idź bez zatrzymywania do {STATION} (Wyładunek)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Idź bez zatrzymywania do {STATION} (Przewieź i nie bierz towaru)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Idź bez zatrzymywania do {STATION} (Przewieź i nie bierz ładunku)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Idź bez zatrzymywania do {STATION} (Załadunek)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Idź bez zatrzymywania do {STATION} (Przewieź i czekaj na pełen załadunek)
 STR_GO_TO_TRAIN_DEPOT                                           :Idź do zajezdni w {TOWN}
@@ -2799,7 +2807,7 @@ STR_8826_GO_TO                                                  :{BLACK}Idź do
 STR_8827_FULL_LOAD                                              :{BLACK}Załadunek
 STR_8828_UNLOAD                                                 :{BLACK}Wyładunek
 STR_REFIT                                                       :{BLACK}Przebuduj
-STR_REFIT_TIP                                                   :{BLACK}Wybierz do przewozu jakiego towaru przebudować pojazd w tym zadaniu. CTRL+klik usuwa polecenie przebudowy
+STR_REFIT_TIP                                                   :{BLACK}Wybierz do przewozu jakiego ładunku przebudować pojazd w tym zadaniu. CTRL+klik usuwa polecenie przebudowy
 STR_REFIT_ORDER                                                 :(Przebuduj na {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Otwórz widok rozkładu jazdy
@@ -2848,7 +2856,7 @@ STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Odwróć
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Pokaż szczegóły pociągu
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Zwiększ okres między serwisowaniem
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Zmniejsz okres między serwisowaniem
-STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaż szczegóły przewożonych towarów
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaż szczegóły przewożonych ładunków
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaż szczegóły pociągu
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Pokaż pojemność każdego wagonu
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Pokaż całkowitą pojemność pociągu, według typu ładunku
@@ -2882,7 +2890,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nie można odwrócić kierunku jazdy pociągu...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana nazwy typu pociągu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie można zmienić nazwy typu pojazdu...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw by w zaznaczonym poleceniu pojazd był zmuszony do pozostawienia towaru dla kolejnego pojazdu
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw by w zaznaczonym poleceniu pojazd był zmuszony do pozostawienia ładunku dla kolejnego pojazdu
 STR_886F_TRANSFER                                               :{BLACK}Przewieź
 STR_CLEAR_TIME                                                  :{BLACK}Usuń czas
 STR_RESET_LATENESS                                              :{BLACK}Wyzeruj spóźnienia
@@ -2971,9 +2979,9 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nie moż
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Idź do zajezdni sam. w {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Serwisuj w zajezdni sam. w {TOWN}
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa samochodu do przewozu innego typu towaru
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa samochodu do przewozu innego typu ładunku
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Przebudowa samochodu
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Przebuduj samochód do przewozu zaznaczonego typu towaru
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Przebuduj samochód do przewozu zaznaczonego typu ładunku
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nie można przebudować samochodu...
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz ładunek jaki ma przewozić ten samochód
 
@@ -3036,11 +3044,11 @@ STR_9836_RENAME                                                 :{BLACK}Zmień n
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Zmień nazwę typu statku
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Zmień nazwę typu statku
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Nie można zmienić nazwy typu statku...
-STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Przebudowa statku do przewozu innego typu towaru
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Przebudowa statku do przewozu innego typu ładunku
 STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Przebudowa)
 STR_983C_REFIT_SHIP                                             :{BLACK}Przebudowa statku
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz jaki ładunek ma przewozić statek
-STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Przebuduj statek do przewozu zaznaczonego typu towaru
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Przebuduj statek do przewozu zaznaczonego typu ładunku
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ładunku do przewozu:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemność: {GOLD}{CARGO}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nie można przebudować statku...
@@ -3109,12 +3117,12 @@ STR_A037_RENAME                                                 :{BLACK}Zmień n
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Zmień nazwę typu samolotu
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Zmień nazwę typu samolotu
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Nie można zmienić nazwy typu samolotu...
-STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebudowa samolotu do przewozu innego typu towaru
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebudowa samolotu do przewozu innego typu ładunku
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Przebudowa)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Przebudowa samolotu
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz jaki ładunek ma przenosić samolot
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebuduj samolot do przewozu zaznaczonego typu towaru
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ towaru do przewozu:
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebuduj samolot do przewozu zaznaczonego typu ładunku
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ładunku do przewozu:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemność: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie można przebudować samolotu...
 STR_GO_TO_AIRPORT_HANGAR                                        :Idź do hangaru na {STATION}
@@ -3148,7 +3156,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. zys
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. przychód:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Maks. przychód:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Przewieziono:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Towar:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Ładunek:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Pieniądze:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Pożyczka:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Łącznie:
@@ -3158,8 +3166,8 @@ STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Liczba s
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Minimalny zysk spośród wszystkich pojazdów, które mają conajmniej 2 lata.
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Ilość pieniędzy zarobiona w miesiącu z najmniejszym zyskiem w ostatnich 12 kwartałach
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Ilość pieniędzy zarobiona w miesiącu z największym zyskiem w ostatnich 12 kwartałach
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Ilość towaru przewieziona w poprzednich 4 kwartałach
-STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Ilość rożnych towarów przewiezionych w ostatnim kwartale
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Ilość ładunku przewiezionego w poprzednich 4 kwartałach
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Ilość rożnych typów ładunku przewiezionych w ostatnim kwartale
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Ilość pieniędzy w ręku
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Wielkość pożyczki wziętej przez firmę
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Suma przyznanych punktów
@@ -3283,7 +3291,7 @@ STR_REPLACE_HELP                                                :{BLACK}Ta funkc
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usunięcie wagonów: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje długość pociągu poprzez usuwanie wagonów (począwszy od początku), jeśli wymiana lokomotywy spowoduje wydłużenie pociągu.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zastępowanie: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERYMENTALNE NARZEDZIE {}Przejdź pomiędzy oknami zamiany lokomotyw i wagonów.{}Wymiana wagonu nastąpi tylko jeśli nowy wagon może być przebudowany do przewożenia tego samego towaru co poprzedni. Każdy wagon pociągu jest sprawdzany podczas procesu zamiany.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERYMENTALNE NARZĘDZIE {}Przejdź pomiędzy oknami zamiany lokomotyw i wagonów.{}Wymiana wagonu nastąpi tylko jeśli nowy wagon może być przebudowany do przewożenia tego samego typu ładunku co poprzedni. Każdy wagon pociągu jest sprawdzany podczas procesu zamiany.
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Pojazd nie jest dostępny
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Pojazd nie jest dostępny
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Statek nie jest dostępny
@@ -3334,7 +3342,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Pojemność: {GOLD}{COMMA} pasażerów, {COMMA} paczek poczty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można przebudować na: {GOLD}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy towarów
+STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy ładunków
 STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprócz {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Siła Pociągowa: {GOLD}{FORCE}
 
@@ -3481,7 +3489,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Usuń za
 STR_GROUP_RENAME_TIP                                            :{BLACK}Zmień nazwę zaznaczonej grupy
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknij, aby ochronić tę grupę przed globalną zamianą pojazdów
 
-
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
@@ -3497,4 +3504,7 @@ STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Idź do 
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Ufunduj
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Zleć poszukiwanie
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Wybuduj
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Wybierz przedsiębiorstwo z listy

@@ -1660,6 +1660,7 @@ STR_180A_TRAMWAY_CONSTRUCTION                                   :Констру�
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Строене на път
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Построи секциа от трамвайна линиа
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Строене на гараж (за строене и сервиз на МПС-та)
+STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Построи трамвайно депо (за стройтелни и сервизни коли)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Строене на автогара
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Строене на товарна гара
 STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Построи пъгническа трамвайна гара
@@ -2628,6 +2629,7 @@ STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Отиди бе
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонт без спиране в {TOWN} влаково депо
 
 STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Патувай (без разписание)
 STR_TIMETABLE_TRAVEL_FOR                                        :Патувай за {STRING}
 STR_TIMETABLE_STAY_FOR                                          :и остани за {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} ден{P "" s}
@@ -2674,6 +2676,7 @@ STR_REFIT                                                       :{BLACK}Преу
 STR_REFIT_TIP                                                   :{BLACK}Избор какво преустройсто да се направи. Щракване със задържан контрол премахва инструкцията
 STR_REFIT_ORDER                                                 :(Преустройство към {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Разписание
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Виж разписанието
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Заповеди)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Край на Заповедите - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2690,6 +2693,9 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Прек
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Не може да зададеш нова заповед...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Не може да изтриеш тази заповед...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Не може да промениш тази заповед...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Не може да промениш тази заповед...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Не може да прескочиш настоящата заповед...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Не може да прескочиш до избраната заповед...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Не може да преместиш машината...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Задния локомотив ще следва винаги предния си събрат
 STR_8838_N_A                                                    :Не се предлага{SKIP}
@@ -2721,11 +2727,16 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Инфо
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Капацитет на влаковата композиция
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Общ капацитет на влака, разбит по типове товар
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Пътен лист - натиснете върху назначение за маркиране. CTRL + натискане - центрира върху станцията
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Прескачане на настоящата заповед и започване на цледващата. CTRL + клик прескача до избраната заповед
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Изтриване на избраното назначение
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Преминавай през избраното назначение без спиране
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Добавяне на назначение преди избраната или в края на списъка
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Изчакай на избраното назначение до пълно зареждане с товар
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Разтоварва на избраното назначение целия товар
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Времетаблица - кликни върху заповед за да я маркираш.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Промени времетраенето на маркираната заповед
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Изчисти времетраенето на маркираната заповед
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Преправи закъснялата бройка, такаче превозните средства да са на време
 STR_SERVICE_HINT                                                :{BLACK}Пропусни освен ако е необходим ремонт
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Тегло: {WEIGHT_S}{}Скорост: {VELOCITY}  Мощност: {POWER}{}Разход: {CURRENCY}/г.{}Капацитет: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Развален
@@ -2748,6 +2759,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Не м�
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Изхвърляне на товара при достигане на избраното назначение
 STR_886F_TRANSFER                                               :{BLACK}Транфер
 STR_CLEAR_TIME                                                  :{BLACK}Изчисти времето
+STR_RESET_LATENESS                                              :{BLACK}Преправи закъснялата бройка
 
 STR_TRAIN_STOPPING                                              :{RED}Спира
 STR_TRAIN_STOPPING_VEL                                          :{RED}Спира, {VELOCITY}
@@ -2759,7 +2771,13 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Нов {STRING} е на разположение! - {ENGINE}
 
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Превозни средства могат да чакат само на гари.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Това превознот средство не спира на тази гара.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Промени времето
+STR_TIMETABLE_STATUS_ON_TIME                                    :Това превознот средство е в момента на време
+STR_TIMETABLE_STATUS_LATE                                       :Това превознот средство е в момента с {STRING} закъснение
+STR_TIMETABLE_STATUS_EARLY                                      :Това превознот средство е в момента с {STRING} по-рано
+STR_TIMETABLE_TOTAL_TIME                                        :Ще трябва {STRING} за това разписание да бъде приклучено
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Афтонапълване
 
 ##id 0x9000
@@ -3288,6 +3306,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Изпо
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Използвай прозрачност за сгради като гари, депа, пътни точки и висящи жици
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Използвай прозрачност за мостове
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Използвай прозрачност за сгради като фарове и антени, може би в бъдеще за украси
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Вклучи прозрачност за товарещи указатели
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3303,6 +3322,10 @@ STR_GROUP_ALL_TRAINS                                            :Всички в
 STR_GROUP_ALL_ROADS                                             :Всички пътни превозни средства
 STR_GROUP_ALL_SHIPS                                             :Всички кораби
 STR_GROUP_ALL_AIRCRAFTS                                         :Всички самолети
+STR_GROUP_DEFAULT_TRAINS                                        :Безгрупни влакове
+STR_GROUP_DEFAULT_ROADS                                         :Безгрупни пътни превозни средства
+STR_GROUP_DEFAULT_SHIPS                                         :Безгрупни кораби
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Безгрупни самолети
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Добави споделени превозни средства
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Премахни всички превозни средсва
@@ -3327,7 +3350,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Изтр
 STR_GROUP_RENAME_TIP                                            :{BLACK}Преименувай избраната група
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Щракни да защитиш тази група от глобална автоматична замяна
 
-
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
@@ -3346,3 +3368,4 @@ STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Отид
 STR_FUND_NEW_INDUSTRY                                           :{BLACK}Фонд
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Перспектива
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Построи
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Избери правилната промишленост от следниат списък
