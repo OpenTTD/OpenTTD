@@ -219,9 +219,8 @@ static void MakeWindow(bool full_screen)
 
 	// recreate window?
 	if ((full_screen || _wnd.fullscreen) && _wnd.main_wnd) {
-		HWND wnd = _wnd.main_wnd;
+		DestroyWindow(_wnd.main_wnd);
 		_wnd.main_wnd = 0;
-		DestroyWindow(wnd);
 	}
 
 #if defined(WINCE)
@@ -520,9 +519,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			break;
 
 		case WM_SIZE:
-			/* Resizing a destroy window is NOT good */
-			if (_wnd.main_wnd == 0) return;
-
 			if (wParam != SIZE_MINIMIZED) {
 				/* Set maximized flag when we maximize (obviously), but also when we
 				 * switched to fullscreen from a maximized state */
@@ -796,9 +792,7 @@ void VideoDriver_Win32::Stop()
 {
 	DeleteObject(_wnd.gdi_palette);
 	DeleteObject(_wnd.dib_sect);
-	HWND wnd = _wnd.main_wnd;
-	_wnd.main_wnd = 0;
-	DestroyWindow(wnd);
+	DestroyWindow(_wnd.main_wnd);
 
 #if !defined(WINCE)
 	if (_wnd.fullscreen) ChangeDisplaySettings(NULL, 0);
