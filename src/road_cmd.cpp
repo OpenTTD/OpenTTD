@@ -588,6 +588,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 	TileIndex start_tile, tile;
 	CommandCost cost, ret;
 	bool had_bridge = false;
+	bool had_tunnel = false;
 	bool had_success = false;
 	DisallowedRoadDirections drd = DRD_NORTHBOUND;
 
@@ -633,12 +634,19 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 			_error_message = INVALID_STRING_ID;
 		} else {
 			had_success = true;
-			/* Only pay for the upgrade on one side of the bridge */
-			if (IsBridgeTile(tile)) {
-				if ((!had_bridge || GetBridgeRampDirection(tile) == DIAGDIR_SE || GetBridgeRampDirection(tile) == DIAGDIR_SW)) {
-					cost.AddCost(ret);
+			/* Only pay for the upgrade on one side of the bridges and tunnels */
+			if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+				if (IsBridge(tile)) {
+					if ((!had_bridge || GetBridgeRampDirection(tile) == DIAGDIR_SE || GetBridgeRampDirection(tile) == DIAGDIR_SW)) {
+						cost.AddCost(ret);
+					}
+					had_bridge = true;
+				} else {
+					if ((!had_tunnel || GetTunnelDirection(tile) == DIAGDIR_SE || GetTunnelDirection(tile) == DIAGDIR_SW)) {
+						cost.AddCost(ret);
+					}
+					had_tunnel = true;
 				}
-				had_bridge = true;
 			} else {
 				cost.AddCost(ret);
 			}
