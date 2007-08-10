@@ -1242,6 +1242,14 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				housespec->random_colour[2] = 0x0C;  // they stand for red, blue, orange and green
 				housespec->random_colour[3] = 0x06;
 
+				/* Make sure that the third cargo type is valid in this
+				 * climate. This can cause problems when copying the properties
+				 * of a house that accepts food, where the new house is valid
+				 * in the temperate climate. */
+				if (!GetCargo(housespec->accepts_cargo[2])->IsValid()) {
+					housespec->cargo_acceptance[2] = 0;
+				}
+
 				/**
 				 * New houses do not (currently) expect to have a default start
 				 * date before 1930, as this breaks the build date stuff.
@@ -1280,9 +1288,13 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 
 				/* If value of goods is negative, it means in fact food or, if in toyland, fizzy_drink acceptance.
 				 * Else, we have "standard" 3rd cargo type, goods or candy, for toyland once more */
-				housespec->accepts_cargo[2] = (goods >= 0) ? ((_opt.landscape == LT_TOYLAND) ? CT_CANDY : CT_GOODS) :
+				CargoID cid = (goods >= 0) ? ((_opt.landscape == LT_TOYLAND) ? CT_CANDY : CT_GOODS) :
 						((_opt.landscape == LT_TOYLAND) ? CT_FIZZY_DRINKS : CT_FOOD);
 
+				/* Make sure the cargo type is valid in this climate. */
+				if (!GetCargo(cid)->IsValid()) goods = 0;
+
+				housespec->accepts_cargo[2] = cid;
 				housespec->cargo_acceptance[2] = abs(goods); // but we do need positive value here
 			} break;
 
