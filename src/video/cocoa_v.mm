@@ -2064,14 +2064,16 @@ void CocoaDialog(const char* title, const char* message, const char* buttonLabel
 	_cocoa_video_dialog = true;
 
 	wasstarted = _cocoa_video_started;
-	if (!_cocoa_video_started && _video_driver->Start(NULL) != NULL) {
+	if (_video_driver == NULL) {
+		setupApplication(); // Setup application before showing dialog
+	} else if (!_cocoa_video_started && _video_driver->Start(NULL) != NULL) {
 		fprintf(stderr, "%s: %s\n", title, message);
 		return;
 	}
 
 	NSRunAlertPanel([NSString stringWithCString: title], [NSString stringWithCString: message], [NSString stringWithCString: buttonLabel], nil, nil);
 
-	if (!wasstarted) _video_driver->Stop();
+	if (!wasstarted && _video_driver != NULL) _video_driver->Stop();
 
 	_cocoa_video_dialog = false;
 }
