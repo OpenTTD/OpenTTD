@@ -5,11 +5,11 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Depăşeşte limita hărţii
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Prea aproape de marginea hărţii
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nu ai destui bani - îţi trebuie {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY64}
+STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Necesită teren plat
 STR_0008_WAITING                                                :{BLACK}În aşteptare: {WHITE}{STRING}
@@ -1623,11 +1623,11 @@ STR_201C_WAREHOUSE                                              :Depozit
 STR_201D_OFFICE_BLOCK                                           :Bloc de birouri
 STR_201E_STADIUM                                                :Stadion
 STR_201F_OLD_HOUSES                                             :Case vechi
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Autoritate locală
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Afişează informaţii referitoare la autoritatea locală
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Autoritatea locală din {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Evaluarea companiilor de transport:
+STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvenţii (F6)
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvenţii disponibile:
 STR_2027_FROM_TO                                                :{ORANGE}- {STRING} de la {STRING} la {STRING}
@@ -1745,12 +1745,12 @@ STR_303C_OUTSTANDING                                            :Fantastic
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientarea statiei
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} nu mai acceptă {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} nu mai acceptă {STRING} sau {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} acceptă acum {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} acceptă acum {STRING} si {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientarea staţiei
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientarea statiei
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Mai întâi trebuie demolată staţia de autobuz
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Mai întâi trebuie demolată platforma pentru camioane
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Staţi{P e i}
@@ -1809,11 +1809,11 @@ STR_4001_LOAD_GAME                                              :{WHITE}Încarc�
 STR_4002_SAVE                                                   :{BLACK}Salvează
 STR_4003_DELETE                                                 :{BLACK}Şterge
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Salvarea jocului esuatã
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Încãrcarea jocului esuatã
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} liberi
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nu pot citi acest disc
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Salvarea jocului esuatã
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Ştergerea jocului eşuată
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Încãrcarea jocului esuatã
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de discuri, directoare şi fişiere cu jocuri salvate
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Numele selectat pentru un joc salvat
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Şterge jocul salvat selectat
@@ -2073,8 +2073,8 @@ STR_7009_PRESIDENT_NAME                                         :{BLACK}Numele p
 STR_700A_COMPANY_NAME                                           :Noul nume al companiei
 STR_700B_PRESIDENT_S_NAME                                       :Noul nume al preşedintelui
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Nu pot schimba numele companiei...
-STR_700E_FINANCES                                               :{WHITE}Situatia financiarã a companiei {COMPANY} {BLACK}{PLAYERNAME}
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Nu pot schimba numele preşedintelui...
+STR_700E_FINANCES                                               :{WHITE}Situatia financiarã a companiei {COMPANY} {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Cheltuieli/Venituri
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Construcţii
@@ -2178,10 +2178,10 @@ STR_RELOCATE_HQ                                                 :{BLACK}Muta sed
 STR_COMPANY_PASSWORD                                            :{BLACK}Parola
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protejeaza-ti compania cu o parola pentru a preveni accesul neautorizat.
 STR_SET_COMPANY_PASSWORD                                        :Alege parola companiei
-STR_7076_COMPANY_VALUE                                          :{GOLD}Valoarea companiei: {WHITE}{CURRENCY64}
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recesiune mondială!{}{}Experţii financiari se tem de ceea ce e mai rău odată cu prăbuşirea economică!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesiunea s-a încheiat!{}{}Creşterea comerţului dă încredere industriei, iar economia se redresează!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Comutator pentru mărimea ferestrei
+STR_7076_COMPANY_VALUE                                          :{GOLD}Valoarea companiei: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Cumpără 25% din acţiunile companiei
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vinde 25% din acţiunile companiei
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Cumpără 25% din acţiunile acestei companii
@@ -2490,8 +2490,8 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotivă mag
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Depoul {TOWN}
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalii)
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetăţenii sărbătoresc {}sosirea primului tren la {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalii)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren în drum
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}

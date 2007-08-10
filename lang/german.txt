@@ -6,11 +6,11 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Zu weit vom Spielfeldrand entfernt
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Zu nahe am Spielfeldrand
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nicht genug Geld - {CURRENCY} erforderlich
+STR_0004                                                        :{WHITE}{CURRENCY64}
+STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ebenes Land erforderlich
 STR_0008_WAITING                                                :{BLACK}Im Wartezustand:  {WHITE}{STRING}
@@ -1154,9 +1154,9 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Subtropisch
 STR_TOYLAND_LANDSCAPE                                           :Fantastisch
 
 STR_CHEATS                                                      :{WHITE}Cheats
-STR_CHEAT_MONEY                                                 :{LTBLUE}Kontostand um {CURRENCY64} erhöhen
 STR_CHEATS_TIP                                                  :{BLACK}Die Kontrollkästchen zeigen an, ob dieser Cheat schonmal verwendet worden ist.
 STR_CHEATS_WARNING                                              :{BLACK}Achtung! Sie sind im Begriff, Ihre Mitspieler zu betrügen. Bedenken Sie, dass sie Ihnen das niemals verzeihen werden.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Kontostand um {CURRENCY64} erhöhen
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Folgenden Spieler steuern: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Mächtigeres Abrisswerkzeug: {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnel dürfen sich kreuzen {ORANGE}{STRING}
@@ -1195,8 +1195,8 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...in di
 
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Soll wirklich eine zufällige Landschaft erzeugt werden?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Viele zufällige Städte
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Viele zufällige Industrien
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Das Spielfeld mit zufällig platzierten Städten füllen
+STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Viele zufällige Industrien
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Das Spielfeld mit zufällig platzierten Industrien füllen
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Industrie kann nicht erzeugt werden...
 
@@ -1811,8 +1811,8 @@ STR_4002_SAVE                                                   :{BLACK}Speicher
 STR_4003_DELETE                                                 :{BLACK}Löschen
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Megabyte{P "" s} frei
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spielspeicherung fehlgeschlagen
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Laufwerk nicht betriebsbereit
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spielspeicherung fehlgeschlagen
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Datei kann nicht gelöscht werden
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden des Spieles fehlgeschlagen
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
@@ -2491,8 +2491,8 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=w}Magnetschw
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Zugdepot
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Der erste Zug erreicht {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Zug ist im Weg
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2558,9 +2558,9 @@ STR_8829_ORDERS                                                 :{WHITE}{VEHICLE
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ende der Aufträge - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Wartung
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Schienenfahrzeug kann nicht gebaut werden...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK}  Wert: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Wert: {LTBLUE}{CURRENCY}
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Schienenfahrzeug kann nicht gebaut werden...
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Laden / Entladen
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zug muss im Depot angehalten sein
@@ -2955,30 +2955,30 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Alle Sch
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gemeinsamer Fahrplan von {COMMA} Fahrzeug{P "" en}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Alle Fahrzeuge mit demselben Fahrplan anzeigen
-
-### depot strings
-
 STR_SELL                                                        :{BLACK}Verkaufen
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du bist dabei alle Fahrzeuge im Depot zu verkaufen
 STR_ARE_YOU_SURE                                                :{BLACK}Bist du sicher?
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bestätige bitte dass du alle Züge im Depot verkaufen möchtest
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bestätige bitte dass du alle Fahrzeuge im Depot verkaufen möchtest
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bestätige bitte dass du alle Schiffe in der Werft verkaufen möchtest
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bestätige bitte dass du alle Flugzeuge im Hangar verkaufen möchtest
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Verkaufe nicht alle Züge im Depot
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Verkaufe nicht alle Fahrzeuge im Depot
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Verkaufe nicht alle Schiffe in der Werft
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Verkaufe nicht alle Flugzeuge im Hangar
+
+### depot strings
+
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Alle Züge im Depot verkaufen
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Alle Fahrzeuge im Depot verkaufen
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Alle Schiffe in der Werft verkaufen
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Alle Flugzeuge im Hangar verkaufen
 
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bestätige bitte dass du alle Züge im Depot verkaufen möchtest
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bestätige bitte dass du alle Fahrzeuge im Depot verkaufen möchtest
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bestätige bitte dass du alle Schiffe in der Werft verkaufen möchtest
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bestätige bitte dass du alle Flugzeuge im Hangar verkaufen möchtest
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Züge, die dieses Depot anfahren, auflisten
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Fahrzeuge, die dieses Depot anfahren, auflisten
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Schiffe, die diese Werft anfahren, auflisten
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Flugzeuge, die diesen Flughafen anfliegen, auflisten
 
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Verkaufe nicht alle Züge im Depot
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Verkaufe nicht alle Fahrzeuge im Depot
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Verkaufe nicht alle Schiffe in der Werft
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Verkaufe nicht alle Flugzeuge im Hangar
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Alle Züge im Depot automatisch ersetzen
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Alle Fahrzeuge im Depot automatisch ersetzen
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Alle Schiffe in der Werft automatisch ersetzen

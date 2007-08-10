@@ -2947,6 +2947,17 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Sýna ö
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Samnýttar skipanir {COMMA} {P farartækis farartækja}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Sýna öll farartæki sem deila þessari áætlun
+STR_SELL                                                        :{BLACK}Selja
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Þú ert í þann mund að selja öll farartækin.
+STR_ARE_YOU_SURE                                                :{BLACK}Ertu viss?
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Staðfestu að þú viljir selja allar lestirnar í skýlinu
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Staðfestu að þú viljir selja allar bifreiðarnar í skýlinu
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Staðfestu að þú viljir selja öll skipin í slippnum
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Staðfestu að þú viljir selja allar flugvélarnar í skýlinu
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ekki selja allar lestirnar í skýlinu
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ekki selja allar bifreiðarnar í skýlinu
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ekki selja öll skipin í slippnum
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ekki selja allar flugvélarnar í skýlinu
 
 ### depot strings
 
@@ -2965,24 +2976,13 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Skipta �
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Skipta öllum skipum í slippnum sjálfvirkt út
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Skipta öllum flugvélum í skýlinu sjálfvirkt út
 
-STR_SELL                                                        :{BLACK}Selja
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Þú ert í þann mund að selja öll farartækin.
-STR_ARE_YOU_SURE                                                :{BLACK}Ertu viss?
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Lest{P "" ir}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Bifreið{P "" ar}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Skip
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flugvél{P "" ar}
 
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Staðfestu að þú viljir selja allar lestirnar í skýlinu
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Staðfestu að þú viljir selja allar bifreiðarnar í skýlinu
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Staðfestu að þú viljir selja öll skipin í slippnum
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Staðfestu að þú viljir selja allar flugvélarnar í skýlinu
 
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ekki selja allar lestirnar í skýlinu
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ekki selja allar bifreiðarnar í skýlinu
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ekki selja öll skipin í slippnum
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ekki selja allar flugvélarnar í skýlinu
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Hefja skipti

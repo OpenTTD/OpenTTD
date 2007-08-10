@@ -723,7 +723,6 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Grabar e
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Cargar Escenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Grabar Escenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Xogar Escenario
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}¿Estás seguro de que desexas saír deste escenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Saír do Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só se pode construír en cidades con polo menos 1200 hab.
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Move-lo ano de comezo un ano hacia atrás
@@ -2556,6 +2555,7 @@ STR_TRAIN_STOPPING                                              :{RED}Parando
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parando, {VELOCITY}
 STR_TRAIN_NO_POWER                                              :{RED}Sen enerxía
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}¡Novo {STRING} agora dispoñible!
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Haí un vehículo de estrada no camiño
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Vehículos de Estrada
@@ -2856,7 +2856,6 @@ STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender t
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender tódolos barcos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender tódalas aeronaves do hangar
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}¡Novo {STRING} agora dispoñible!
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autorreemprazar tódolos trens no depósito
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autorreemprazar tódolos vehículos no depósito

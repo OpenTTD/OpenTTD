@@ -740,13 +740,13 @@ STR_0293_LOAD_SCENARIO                                          :Carica scenario
 STR_0294_QUIT_EDITOR                                            :Esci dall'editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Esci
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sei sicuro di voler abbandonare questo scenario?
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Salva scenario, carica scenario, abbandona l'editor di scenari, esci
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Carica scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Salva scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Gioca scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Gioca con heightmap
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Inizia una nuova partita, utilizzando una heightmap per definire il terreno
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sei sicuro di voler abbandonare questo scenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Esci dall'editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...può essere costruita solo in città con una popolazione di almeno 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Sposta la data d'inizio indietro di 1 anno
@@ -2966,15 +2966,15 @@ STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Conferma
 STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Conferma la vendita di tutti gli veicoli stradali nel deposito
 STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Conferma la vendita di tutte le navi nel deposito
 STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Conferma la vendita di tutti gli aerei nell'hangar
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Non vendere tutti i treni nel deposito
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Non vendere tutti i veicoli stradali nel deposito
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Non vendere tutte le navi nel deposito
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Non vendere tutti gli aerei nell'hangar
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vende tutti i treni nel deposito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vende tutti gli automezzi nel deposito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vende tute le navi nel deposito
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vende tutti gli aeromobili nell'hangar
 
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Non vendere tutti i treni nel deposito
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Non vendere tutti i veicoli stradali nel deposito
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Non vendere tutte le navi nel deposito
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Non vendere tutti gli aerei nell'hangar
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Elenca tutti i treni che hanno questo deposito nei loro ordini
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Elenca tutti gli automezzi che hanno questo deposito nei loro ordini
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Elenca tutte le navi che hanno questo deposito nei loro ordini
@@ -3005,10 +3005,10 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Selezion
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotiva sarà rimpiazzato il modello eventualmente selezionato a sinistra
 STR_REPLACE_HELP                                                :{BLACK}Questa funzione permette di rimpiazzare un tipo di locomotiva con un altro, quando treni che usano il vecchio tipo entrano in un deposito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozione vagoni: {ORANGE}{SKIP}{STRING}
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi costruire la locomotiva
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fa sì che il rimpiazzamento automatico mantenga costante la lunghezza dei treni rimuovendo vagoni (iniziando dalla testa) nel caso in cui la sostituzione della locomotiva rendesse il treno più lungo
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Rimpiazza: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNZIONALITÀ SPERIMENTALE {}Scambia tra loro le finestre di rimpiazzamento delle locomotive e dei vagoni. {}Il rimpiazzamento del vagone avverrà solo se il nuovo vagone può essere riadattato per il trasporto dello stesso tipo di carico di quello vecchio. Questo controllo viene eseguito per ogni vagone al momento della sostituzione.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi costruire la locomotiva
 
 STR_ENGINES                                                     :Locomotive
 STR_WAGONS                                                      :Vagoni

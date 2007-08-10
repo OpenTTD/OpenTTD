@@ -2092,11 +2092,11 @@ STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Grafikon operativne dobiti
 STR_7026_BANK_BALANCE                                           :{WHITE}Bankovna bilanca
+STR_7027_LOAN                                                   :{WHITE}Zajam
 STR_MAX_LOAN                                                    :{WHITE}Maks zajam:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Pozajmi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Otplati {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_7027_LOAN                                                   :{WHITE}Zajam
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...najveći dopušteni zajam iznosi {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Ne možeš dobiti još kredita...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...nema zajma za otplatu
@@ -2173,8 +2173,8 @@ STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaštiti
 STR_SET_COMPANY_PASSWORD                                        :Postavi zaporku tvrtke
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svjetska recesija!{}{}Financijski stručnjaci očekuju najgore zbog ekonomske krize!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesija završena!{}{}Obrat  u trgovanu daje samopouzdanje gospodarstvu jer ekonomija jača!
-STR_7076_COMPANY_VALUE                                          :{GOLD}Vrijednost tvrtke: {WHITE}{CURRENCY64}
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Namjesti veliku/malu veličinu prozora
+STR_7076_COMPANY_VALUE                                          :{GOLD}Vrijednost tvrtke: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kupi 25% udjela u tvrtci
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Prodaj 25% udio u tvrtci
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kupi 25% udjela u ovoj tvrtci
@@ -2483,8 +2483,8 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :maglev lokomoti
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Spremište vlakova
-STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalji)
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi vlak je stigao na {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalji)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na putu
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
@@ -2589,11 +2589,11 @@ STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Prikaži
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Povećaj servisni interval
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Smanji servisni interval
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaži detalje prevoženog tereta
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutnu naredbu i počni sa sljedećom
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaži detalje vagona
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Pokaži kapacitet svakog vagona
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Pokaži potpuni kapacitet vlaka, podijeljen prema tipu tereta
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista naredbi - klikni na naredbu da ju označiš. CTRL + klik klizi na stanicu
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutnu naredbu i počni sa sljedećom
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Obriši označenu naredbu
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Napravi označenu naredbu da bude non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Umetni novu naredbu prije odabrane naredbe, ili dodaj na kraj liste
@@ -2626,6 +2626,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Nekompatibilan 
 STR_TRAIN_NO_POWER                                              :{RED}Nema struje
 STR_TRAIN_START_NO_CATENARY                                     :Ovim tračnicama nedostaje vučna užad, tako da vlak ne može krenuti
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novi {STRING} je sada dostupan!
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestovno vozilo na putu

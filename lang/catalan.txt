@@ -359,8 +359,8 @@ STR_015B_OPENTTD                                                :{WHITE}Quant a 
 STR_015C_SAVE_GAME                                              :Desa el joc
 STR_015D_LOAD_GAME                                              :Carrega el joc
 STR_015E_QUIT_GAME                                              :Abandona el joc
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur que vols abandonar aquest joc?
 STR_015F_QUIT                                                   :Surt
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur que vols abandonar aquest joc?
 STR_0161_QUIT_GAME                                              :{WHITE}Abandona el Joc
 STR_SORT_ORDER_TIP                                              :{BLACK}Selecciona ordre de classificació (descendent/ascendent)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Selecciona criteri de classificació

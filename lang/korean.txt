@@ -744,8 +744,8 @@ STR_0298_LOAD_SCENARIO                                          :{WHITE}시나�
 STR_0299_SAVE_SCENARIO                                          :{WHITE}시나리오 저장하기
 STR_029A_PLAY_SCENARIO                                          :{BLACK}시나리오 플레이
 STR_PLAY_HEIGHTMAP                                              :{BLACK}DEM지형 플레이
-STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}이 시나리오를 종료하시겠습니까?
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}DEM지형을 풍경으로 하여 게임을 시작합니다.
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}이 시나리오를 종료하시겠습니까?
 STR_029C_QUIT_EDITOR                                            :{WHITE}에디터 종료
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...1200명 이상의 도시에만 건설할 수 있습니다!
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}시작년도를 1년 앞당깁니다.
@@ -2634,9 +2634,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :알맞지 않�
 STR_TRAIN_NO_POWER                                              :{RED}기관차 없음
 STR_TRAIN_START_NO_CATENARY                                     :연결고리가 모자라 운행을 시작할 수 없습니다.
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 이(가) 출시되었습니다!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{STRING}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}신형 {STRING} 자동차가 출시되었습니다!  -  {STRING}
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 이(가) 출시되었습니다!
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}중간에 자동차가 있습니다.

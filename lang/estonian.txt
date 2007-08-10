@@ -2194,8 +2194,8 @@ STR_701E                                                        :{BLACK}-{CURREN
 STR_701F                                                        :{BLACK}+{CURRENCY64}
 STR_7020_TOTAL                                                  :{WHITE}Kokku:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Tulugraafik
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Opereerimiskasumi graafik
 STR_7026_BANK_BALANCE                                           :{WHITE}Kontojääk
@@ -2745,13 +2745,13 @@ STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Linna {T
 STR_9004_NEW_VEHICLES                                           :{BLACK}Uus mootorsõiduk
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uued mootorsõidukid
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Ehita veovahend
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Mootorsõidukit ei saa ehitada...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (üksikasjad)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY}/aastas
 STR_900E_MAX_SPEED                                              :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...peab garaaþis olema
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ei saa veokit müüa...
@@ -2822,8 +2822,8 @@ STR_9811_DETAILS                                                :{WHITE}{VEHICLE
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY}/aastas
 STR_9813_MAX_SPEED                                              :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (viimasel: {CURRENCY})
-STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitati: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitati: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ei saa peatada/käivitada laeva...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ei saa laeva paadikuuri saata...
@@ -2890,8 +2890,8 @@ STR_A00C_DETAILS                                                :{WHITE}{VEHICLE
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY}/aastas
 STR_A00E_MAX_SPEED                                              :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitusaasta: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitusaasta: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Ei saa lennukit angaari saata...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suundub {STATION} Angaari
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suundub {STATION} angaari, {VELOCITY}

@@ -1836,8 +1836,8 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} już nie akceptuje {STRING.d} ani {STRING.d}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} już akceptuje {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} już akceptuje {STRING} i {STRING}
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientacja st. załadunku
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Ukierunkowanie przystanku
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientacja st. załadunku
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Należy najpierw usunąć przystanek
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Należy najpierw usunąć stację załadunku ciężarówek
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA}
@@ -3134,8 +3134,8 @@ STR_REPLACE_HELP                                                :{BLACK}Ta funkc
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usunięcie wagonów: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje długość pociągu poprzez usuwanie wagonów (począwszy od początku), jeśli wymiana lokomotywy spowoduje wydłużenie pociągu.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zastępowanie: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotywa nie może być zbudowana
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERYMENTALNE NARZĘDZIE {}Przejdź pomiędzy oknami zamiany lokomotyw i wagonów.{}Wymiana wagonu nastąpi tylko jeśli nowy wagon może być przebudowany do przewożenia tego samego typu ładunku co poprzedni. Każdy wagon pociągu jest sprawdzany podczas procesu zamiany.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotywa nie może być zbudowana
 
 STR_ENGINES                                                     :Lokomotywy
 STR_WAGONS                                                      :Wagony

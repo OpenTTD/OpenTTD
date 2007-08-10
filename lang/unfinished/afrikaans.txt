@@ -2795,7 +2795,6 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Outoverv
 
 STR_NOT_REPLACING                                               :{BLACK}Word nie vervang nie
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Geen voertuig gekies
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Enjin is nie boubaar nie
 
 STR_ENGINES                                                     :Enjine
 
