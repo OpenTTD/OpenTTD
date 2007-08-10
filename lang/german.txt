@@ -2841,9 +2841,9 @@ STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wähle d
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Umrüstung des Flugzeuges auf die ausgewählte Frachtart
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wähle Frachtart für Umrüstung aus:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Neue Kapazität: {GOLD}{STRING}{}{BLACK}Kosten der Umrüstung: {GOLD}{CURRENCY}
-STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht umrüsten...
-STR_GO_TO_AIRPORT_HANGAR                                        :Fliege zu {STATION} Hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Wartung im {STATION} Hangar
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Flugzeug kann nicht umgerüstet werden...
+STR_GO_TO_AIRPORT_HANGAR                                        :Flug zum Hangar von {STATION}
+SERVICE_AT_AIRPORT_HANGAR                                       :Wartung im Hangar von {STATION}
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinabsturz bei {STATION}!
@@ -2851,7 +2851,7 @@ STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Explosion einer Ölraffinerie nahe {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabrik nahe {TOWN} unter mysteriösen Umständen zerstört!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' landet bei {TOWN}!
-STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Stolleneinbruch hinterläßt einen Pfad der Zerstörung bei {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Stolleneinbruch bei {TOWN} hinterlässt Pfad der Zerstörung!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Hochwasser!{}Mindestens {COMMA} Mensch{P "" en} vermisst oder tot nach schwerer Flut!
 
 STR_BRIBE_FAILED                                                :{WHITE}Ihr Bestechungsversuch wurde

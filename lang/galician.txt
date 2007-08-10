@@ -2800,21 +2800,23 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Amount o
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Valor do préstamo que ten a compañía
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Puntos totais de puntos posibles
 
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración Newgrf
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configuración NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplica-los cambios
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Conf. parámetros
-STR_NEWGRF_TIP                                                  :{BLACK}Unha lista de tódolos sets Newgrf que tes instalados. Pincha nun set para cambia-la configuración
+STR_NEWGRF_TIP                                                  :{BLACK}Unha lista de tódolos sets NewGRF que tes instalados. Pincha nun set para cambia-la configuración
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}¡Non hai ficheiros newgrf instalados! Consulta no manual as instruccións para instalar novos gráficos
 STR_NEWGRF_FILENAME                                             :{BLACK}Ficheiro: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}Suma MD5: {SILVER}{STRING}
 
 STR_NEWGRF_ADD                                                  :{BLACK}Engadir
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Engadir un novo arquivo NewGRF á lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Eliminar
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Elimina-lo arquivo NewGRF seleccionado da lista
-STR_NEWGRF_MOVEUP                                               :{BLACK}Mover Arriba
+STR_NEWGRF_MOVEUP                                               :{BLACK}Subir
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Move-lo arquivo NewGRF seleccionado arriba na lista
-STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover Abaixo
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Baixar
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move-lo arquivo NewGRF seleccionado abaixo na lista
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parámetros: {SILVER}{STRING}
 

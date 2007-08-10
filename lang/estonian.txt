@@ -1970,7 +1970,7 @@ STR_4828_REQUIRES                                               :{BLACK}Vajab: {
 STR_4829_REQUIRES                                               :{BLACK}Vajab: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
-STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Eelmise kuu toodang:
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Eelmise kuu valmistoodang:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% veetud)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Vaate keskendamine tööstusele
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Uus {STRING} on linna {TOWN} lähedal ehitamisel!
@@ -2596,26 +2596,26 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on 
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Mine {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Mine {STATION} (Vea ja võta laadung)
-STR_8808_GO_TO_UNLOAD                                           :Mine {STATION} (Laadi maha)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mine {STATION} (Vea ja jäta tühjaks)
-STR_880A_GO_TO_LOAD                                             :Mine {STATION} (Laadi)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Mine {STATION} (Vea ja oota täislaadingut)
+STR_8807_GO_TO_TRANSFER                                         :Mine {STATION} (vea ja võta laadung peale)
+STR_8808_GO_TO_UNLOAD                                           :Mine {STATION} (laadi maha)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mine {STATION} (vea ja jäta tühjaks)
+STR_880A_GO_TO_LOAD                                             :Mine {STATION} (laadi)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Mine {STATION} (vea ja oota täislaadungit)
 STR_880C_GO_NON_STOP_TO                                         :Sõida läbi {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Sõida läbi {STATION} (Vea ja oota täislaadingut)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Sõida läbi {STATION} (Laadi maha)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Sõida läbi {STATION} (Vea ja jäta tühjaks)
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Sõida läbi {STATION} (vea ja oota täislaadungit)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Sõida läbi {STATION} (laadi maha)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Sõida läbi {STATION} (vea ja jäta tühjaks)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Sõida läbi {STATION} (laadi)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Sõida läbi {STATION} (Vea ja oota täislaadingut)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Sõida läbi {STATION} (vea ja oota täislaadungit)
 STR_GO_TO_TRAIN_DEPOT                                           :Mine linna {TOWN} rongidepoosse
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Teeninda linna {TOWN} rongidepoos
+STR_SERVICE_AT_TRAIN_DEPOT                                      :Hoolda linna {TOWN} rongidepoos
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi linna {TOWN} rongidepoo
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Teenindus linna {TOWN} rongidepoost läbisõidul
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Hooldus linna {TOWN} rongidepoost läbisõidul
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Suundub linna {TOWN} rongidepoosse
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Suundub linna {TOWN} rongidepoosse, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Teenindus linna {TOWN} rongidepoos
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Teenindus linna {TOWN} rongidepoos, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Hooldus linna {TOWN} raudteedepoos
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Hooldus linna {TOWN} raudteedepoos, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ebasobiv järjekord)
 
@@ -2729,7 +2729,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transpor
 
 STR_TRAIN_STOPPING                                              :{RED}Peatub
 STR_TRAIN_STOPPING_VEL                                          :{RED}Peatub, {VELOCITY}
-STR_INCOMPATIBLE_RAIL_TYPES                                     :Ühildamatud raudtee tüübid
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Ühildamatud rööbasteetüübid
 STR_TRAIN_NO_POWER                                              :{RED}Vool puudub
 STR_TRAIN_START_NO_CATENARY                                     :Selle raja ahel puudub, rong ei saa sõitu alustada
 
@@ -2738,29 +2738,29 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Uus {STRING} saadaval!  -  {STRING}
 
 ##id 0x9000
-STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Maanteesõiduk on teel ees
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} maanteesõiduk{P "" it}
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Mootorsõiduk takistab teed
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} mootorsõiduk{P "" it}
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Linna {TOWN} maanteesõidukidepoo
-STR_9004_NEW_VEHICLES                                           :{BLACK}Uus maanteesõiduk
-STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uued maanteesõidukid
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Linna {TOWN} mootorsõidukidepoo
+STR_9004_NEW_VEHICLES                                           :{BLACK}Uus mootorsõiduk
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Uued mootorsõidukid
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Ehita veovahend
-STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Maanteesõidukit ei saa ehitada...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detailid)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Hoolduskulud: {LTBLUE}{CURRENCY}/aastas
-STR_900E_MAX_SPEED                                              :{BLACK}Maksimaalne kiirus: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (viimasel aastal: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Töökindlus: {LTBLUE}{COMMA}%  {BLACK}Lagunemisi alates viimasest hooldusest: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Mahutavus: {LTBLUE}{CARGO}
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Mootorsõidukit ei saa ehitada...
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (üksikasjad)
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vanus: {LTBLUE}{STRING}{BLACK}   Käituskulud: {LTBLUE}{CURRENCY}/aastas
+STR_900E_MAX_SPEED                                              :{BLACK}Tippkiirus: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (eelmisel aastal: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tehnoseisund: {LTBLUE}{COMMA}%  {BLACK}Rikkeid eelmisest hooldusest: {LTBLUE}{COMMA}
+STR_9012_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...peab garaaþis olema
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ei saa veokit müüa...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ei saa veokit peatada, ega startida...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Veok {COMMA} ootab garaaþi
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Suundub {TOWN} garaaþi
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Suundub {TOWN} garaaþi, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Teenindus linna {TOWN} depoos
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Teenindus linna {TOWN} depoos, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Hooldus linna {TOWN} depoos
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Hooldus linna {TOWN} depoos, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ei saa veokit garaaþi saata
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohalikku garaaþi üles
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Veokid - info saamiseks vajuta veokile
@@ -2939,14 +2939,14 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Seadista
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali kauba tüüp, mida lennuk hakkab kandma
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Seadista lennuk ümber, et kanda valitud kaubatüüpi
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kaubatüüp, mida kanda:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus mahutavus: {GOLD}{STRING}{}{BLACK}Ümber seadistamise maksumus: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus kandevõime: {GOLD}{STRING}{}{BLACK}Ümberseadistamise hind: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ei saa lennukit ümber seadistada...
-STR_GO_TO_AIRPORT_HANGAR                                        :Mine {STATION} Angaari
-SERVICE_AT_AIRPORT_HANGAR                                       :Teenindus {STATION} angaaris
+STR_GO_TO_AIRPORT_HANGAR                                        :Mine {STATION} angaari
+SERVICE_AT_AIRPORT_HANGAR                                       :Hooldus {STATION} angaaris
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Tsepeliini õnnetus {STATION}s!
-STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Maanteesõiduk plahvatas kokkupõrkes 'UFO-ga'!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Mootorsõiduk plahvatas kokkupõrkes 'UFO-ga'!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Naftapuhastusjaama plahvatus {TOWN} lähedal!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Tehas purunes teadmata põhjustel {TOWN} lähedal!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' maandus {TOWN} lähedal!

@@ -1106,16 +1106,22 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Pretpos
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Pretpostavljeni period servisiranja aviona: {ORANGE}onemogućeno
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Pretpostavljeni period servisiranja brodova: {ORANGE}{STRING} dana/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Pretpostavljeni period servisiranja brodova: {ORANGE}onemogućeno
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Isključi servisiranje kada su kvarovi postavljeni na nula: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Uključi ograničenje brzine za vagone: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Onemogući električne tračnice: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Vijesti u boji pojavljuju se: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Početna godina: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Završna godina: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Uključi tečnu ekonomiju (više manjih izazova)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Dopusti kupovanje udjela drugih tvrtki
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Kod povlačenja, postavi signale svakih/svaku; {ORANGE}{STRING}pločica/u
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Položaj glavne alatne trake: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Lijevo
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Sredina
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Desno
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Radijus hvatanja  prozora: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus hvatanja prozora: {ORANGE}isključen
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Sučelje
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Izgradnja
@@ -2497,19 +2503,28 @@ STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Idi non-stop do
 STR_GO_TO_TRAIN_DEPOT                                           :Idi do {TOWN} spremište vlakova
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Servisiraj u {TOWN} spremištu vlakova
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idi non-stop do {TOWN} spremišta vlakova
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Servisiraj non-stop u {TOWN} Željezničkom Skladištu
 
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE} Krećem za {TOWN} Željezničko Skladište
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE} Krećem za {TOWN} Željezničko Skladište, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servis u {TOWN} Željezničkom Skladištu
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servis kod {TOWN} spremište vlakova, {VELOCITY}
 
+STR_INVALID_ORDER                                               :{RED} (Neispravna naredba)
 
 STR_UNKNOWN_DESTINATION                                         :nepoznato odredište
 STR_8812_EMPTY                                                  :{LTBLUE}Prazan
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} iz {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} iz {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} čeka u spremištu
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nova vozila
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak predugačak
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlakovi mogu biti izmjenjeni jedino kad su zaustavljeni u spremištu
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Vlak{P "" a ova}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova željeznička vozila
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nova vozila električne pruge
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nova monorail vozila
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nova maglev vozila
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Željeznička vozila
@@ -2601,14 +2616,20 @@ STR_8867_NAME_TRAIN                                             :{BLACK}Imenuj v
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vlak se sudario!{}{COMMA} poginulih u eksploziji nakon sudara
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ne mogu promijeniti smjer vlaka...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenuj vrstu vlaka
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ne mogu preimenovati tip vagona...
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Naprvi da označeni red prisili vozilo da izbaci teret
 STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Zaustavljam
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zaustavljam, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Nekompatibilan tip tračnica
+STR_TRAIN_NO_POWER                                              :{RED}Nema struje
+STR_TRAIN_START_NO_CATENARY                                     :Ovim tračnicama nedostaje vučna užad, tako da vlak ne može krenuti
 
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestovno vozilo na putu
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Cestovno vozilo{P "" a a}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Spremište cestovnih vozila
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nova vozila
@@ -2808,9 +2829,10 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Prenamij
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izaberi vrstu tereta koju će zrakoplov nositi
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prenamijeni zrakoplov da nosi označenu vrstu tereta
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Označi vrstu tereta za prijenos:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Novi kapacitet: {GOLD}{STRING}{}{BLACK}Trošak prenamijene: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Novi kapacitet: {GOLD}{STRING}{}{BLACK}Trošak prenamjene: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ne mogu prenamijeniti zrakoplov...
-SERVICE_AT_AIRPORT_HANGAR                                       :Servisiranje u hangaru {STATION}
+STR_GO_TO_AIRPORT_HANGAR                                        :Idi u {STATION} Hangar
+SERVICE_AT_AIRPORT_HANGAR                                       :Servis u hangaru {STATION}
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Cepelin je pao kod {STATION}!
@@ -2818,6 +2840,7 @@ STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Eksplozija rafinerije nafte blizu {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Tvornica uništena pod sumnjivim okolnostima u blizini {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'NLO' sletio blizu {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Urušavanje rudnika ugljena ostavilo je trag blizu {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Poplave!{}Najmanje {COMMA} nestalih, pretpostavlja se poginulih nakon značajnih poplava!
 
 STR_BRIBE_FAILED                                                :{WHITE}Tvoj pokušaj podmićivanja je

@@ -1122,7 +1122,7 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Anul de
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Termina jocul in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Economie cu schimbãri de productie mai reduse, dar mai frecvente
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite cumpararea de actiuni de la alte companii
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasare automatã a semnalelor la fiecare: {ORANGE}{STRING} pãtrãtele
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasare automată a semafoarelor la fiecare: {ORANGE}{STRING} pătrăţele
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozitia listei cu instrumente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :stânga
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :centru
@@ -1131,7 +1131,7 @@ STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Distant
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Distanta de 'snap' pentru ferestre: {ORANGE}dezactivata
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfatã
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Constructie
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcţie
 STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vehicule
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Statii
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economie
@@ -1870,75 +1870,75 @@ STR_4828_REQUIRES                                               :{BLACK}Are nevo
 STR_4829_REQUIRES                                               :{BLACK}Are nevoie de: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
-STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Productia luna trecutã:
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producţia lunii trecute:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportat)
-STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreazã imaginea pe locatia industriei
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Un nou obiectiv industrial ({STRING}) se construieste lângã {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}O nouã {STRING} se planteazã lângã {TOWN}!
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrează imaginea pe locaţia industriei
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Un nou obiectiv industrial ({STRING}) se construieşte lângă {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}O nouă {STRING} se plantează lângă {TOWN}!
 STR_482F_COST                                                   :{BLACK}Cost: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Acest tip de industrie nu se poate construi aici...
-STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...pãdurile pot fi plantate doar in zonele inzãpezite
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anuntã inchiderea iminentã!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemele de aprovizionare provoacã închiderea {INDUSTRY}!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lipsa de teren împãdurit provoacã închiderea {INDUSTRY}!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} mãreste productia!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Rezerve noi de cãrbune la {INDUSTRY}!{}Se asteaptã dublarea productiei!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Rezerve noi de petrol la {INDUSTRY}!{}Se asteaptã dublarea productiei!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Noile tehnologii folosite la {INDUSTRY} vor aduce dublarea productiei!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} scade productia cu 50%
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insectele cauzeazã distrugeri masive la {INDUSTRY}!{}Productia scade cu 50%
-STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...se poate construi doar la marginea hãrtii
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...pădurile pot fi plantate doar în zonele înzăpezite
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anunţă închidere iminentă!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemele de aprovizionare provoacă închiderea {INDUSTRY}!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lipsa de teren împădurit provoacă închiderea {INDUSTRY}!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} măreşte producţia!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Rezerve noi de cărbune la {INDUSTRY}!{}Se preconizează dublarea producţiei!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Rezerve noi de petrol la {INDUSTRY}!{}Se preconizează dublarea producţiei!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Noile tehnologii folosite la {INDUSTRY} vor aduce dublarea producţiei!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} scade producţia cu 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insectele cauzează distrugeri masive la {INDUSTRY}!{}Producţia scade cu 50%
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...se poate construi doar la marginea hărţii
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Productia de {STRING} de la {INDUSTRY} creste cu {COMMA}%!
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Productia de {STRING} de la {INDUSTRY} scade cu {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren în tunel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Autovehicul în tunnel
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Autovehicul în tunel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Intersectare cu alt tunel
-STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Terenul de la celãlalt capãt al tunelului este imposibil de excavat
-STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Mai intâi trebuie demolat tunelul
-STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Mai intâi trebuie demolat podul
-STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Cele douã capete nu se pot situa în acelasi loc
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Sub pod trebuie sã existe teren nivelat
-STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Cele douã capete trebuie sã se situeze în linie
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Terenul de la celălalt capăt al tunelului este imposibil de excavat
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Mai întâi trebuie demolat tunelul
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Mai întâi trebuie demolat podul
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Cele două capete nu se pot situa în acelaşi loc
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Sub pod trebuie să existe teren plat sau apă
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Cele două capete trebuie să se situeze în linie
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Loc nepotrivit pentru intrarea într-un tunel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_500E_SUSPENSION_STEEL                                       :Suspensie (otel)
-STR_500F_GIRDER_STEEL                                           :Grindã (otel)
-STR_5010_CANTILEVER_STEEL                                       :Arc (otel)
+STR_500E_SUSPENSION_STEEL                                       :Suspensie (oţel)
+STR_500F_GIRDER_STEEL                                           :Grindă (oţel)
+STR_5010_CANTILEVER_STEEL                                       :Arc (oţel)
 STR_5011_SUSPENSION_CONCRETE                                    :Suspensie (beton)
 STR_5012_WOODEN                                                 :Lemn
 STR_5013_CONCRETE                                               :Beton
-STR_5014_TUBULAR_STEEL                                          :Tubular (otel)
+STR_5014_TUBULAR_STEEL                                          :Tubular (oţel)
 STR_BRIDGE_TUBULAR_SILICON                                      :Tubular (silicon)
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Nu pot construi pod aici...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Nu pot construi tunel aici...
 STR_5017_RAILROAD_TUNNEL                                        :Tunel feroviar
 STR_5018_ROAD_TUNNEL                                            :Tunel rutier
-STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Pod feroviar suspendat din otel
-STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Pod feroviar tip grindã din otel
-STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Pod feroviar tip arc din otel
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Pod feroviar suspendat din oţel
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Pod feroviar tip grindă din oţel
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Pod feroviar tip arc din oţel
 STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Pod feroviar suspendat din beton
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Pod feroviar din lemn
 STR_5020_CONCRETE_RAIL_BRIDGE                                   :Pod feroviar din beton
-STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Pod rutier suspendat din otel
-STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Pod rutier tip grindã din otel
-STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Pod rutier tip arc din otel
-STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Pod rutier suspendat din beton
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Pod rutier suspendat din oţel
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Pod rutier tip grindă din oţel
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Pod rutier tip arc din oţel
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Pod rutier suspendat din beton armat
 STR_5025_WOODEN_ROAD_BRIDGE                                     :Pod rutier din lemn
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Pod rutier din beton
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Pod feroviar tubular
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Pod rutier tubular
 
 ##id 0x5800
-STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Obiect in cale
-STR_5801_TRANSMITTER                                            :Transmitãtor
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Obiect în cale
+STR_5801_TRANSMITTER                                            :Transmiţător
 STR_5802_LIGHTHOUSE                                             :Far
 STR_5803_COMPANY_HEADQUARTERS                                   :Sediu companie
-STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...sediu de companie in cale
-STR_5805_COMPANY_OWNED_LAND                                     :Teren in posesia unei companii
-STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nu poti cumpãra teren aici...
-STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...este deja in posesia ta!
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...sediu de companie în cale
+STR_5805_COMPANY_OWNED_LAND                                     :Teren în proprietatea unei companii
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nu poţi cumpăra teren aici...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...este deja în proprietatea ta!
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame

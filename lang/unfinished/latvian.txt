@@ -5,24 +5,24 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}A'rpus kartes robez'as
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pa'ra'k tuvu kartes malai
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietiek naudas - vajag {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Ārpus kartes robežām
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pārāk tuvu kartes malai
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietiek naudas - nepieciešami {CURRENCY}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei ja'bu't plakanai
-STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei jābūt plakanai
+STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING.a}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (cel'a' no
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (ceļā no
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Pien'em: {WHITE}
-STR_000D_ACCEPTS                                                :{BLACK}Pien'em: {GOLD}
+STR_000C_ACCEPTS                                                :{BLACK}Pieņem: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Pieņem: {GOLD}
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :Pasaz'ierus
+STR_000F_PASSENGERS                                             :Pasažieri
 STR_0010_COAL                                                   :Ogles
-STR_0011_MAIL                                                   :Pastu
-STR_0012_OIL                                                    :Naftu
+STR_0011_MAIL                                                   :Pasts
+STR_0012_OIL                                                    :Nafta
 STR_0013_LIVESTOCK                                              :Liellopus
 STR_0014_GOODS                                                  :Preces
 STR_0015_GRAIN                                                  :Graudus
@@ -1021,6 +1021,33 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksima
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
+STR_UNITS_IMPERIAL                                              :Britu
+STR_UNITS_METRIC                                                :Metriska
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} jūdzes/h
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} zs
+STR_UNITS_POWER_METRIC                                          :{COMMA} zs
+STR_UNITS_POWER_SI                                              :{COMMA} kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}galoni
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ mārciņasf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnu spēks
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Aizliedz servisu kad saboja's'ana's izsle'gta: {ORANGE}{STRING}
@@ -1642,6 +1669,7 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Kuìi
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Nomaini transporta lîdzekïus
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomaini transporta lîdzekïus
@@ -1681,3 +1709,4 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} A'trums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpi'ba: {GOLD}{COMMA} pasaz'ieru, {COMMA} pasta somas
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{POWER}zs{BLACK} Sva'rs: {GOLD}+{WEIGHT_S}t
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Brīdināt, ja vilciens apmaldās: {ORANGE}{STRING}
