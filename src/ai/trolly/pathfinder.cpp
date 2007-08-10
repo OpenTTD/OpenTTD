@@ -419,7 +419,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 			} else {
 				if (!IsRoad(parent->path.node.tile) || !IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE)) {
 					Foundation f = GetRoadFoundation(parent_tileh, (RoadBits)AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
-					if (IsInclinedFoundation(f) || (!IsFoundation(f) == 0 && HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh))) {
+					if (IsInclinedFoundation(f) || (!IsFoundation(f) && HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh))) {
 						res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 					} else {
 						res += AI_PATHFINDER_FOUNDATION_PENALTY;
