@@ -56,7 +56,7 @@ void Blitter_32bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int 
 		stepx = 1;
 	}
 
-	this->SetPixel(video, x, y, color);
+	if (x > 0 && y > 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
 	if (dx > dy) {
 		frac = dy - (dx / 2);
 		while (x != x2) {
