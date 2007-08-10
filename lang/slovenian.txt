@@ -1844,6 +1844,7 @@ STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Obala ali nabrežje
 STR_3806_SHIP_DEPOT                                             :Ladjedelnica
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE} ... Nemogoča gradnja na vodi
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Najprej moraš porušiti kanal
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Shrani igro

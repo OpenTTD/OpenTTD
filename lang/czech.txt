@@ -1030,7 +1030,7 @@ STR_TONS                                                        :tun
 STR_LITERS                                                      :litrů
 STR_ITEMS                                                       :kusů
 STR_CRATES                                                      :krabic
-STR_RES_OTHER                                                   :jiné
+STR_RES_OTHER                                                   :Jiné
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -1123,7 +1123,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevidit
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Tvůrce krajiny: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :původní
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximální vzdálenost ropných rafinerií od okraje mapy {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximální vzdálenost ropných rafinerií od okraje mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Výška sněhové čáry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Členitost krajiny (jen TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :velmi rovná
@@ -1859,6 +1859,7 @@ STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Pobřeží nebo břeh
 STR_3806_SHIP_DEPOT                                             :Lodní depo
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}... nemohu stavět na vodě
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Nejprve je třeba zničit průplav
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Uložit hru

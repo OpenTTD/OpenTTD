@@ -229,7 +229,7 @@ STR_0104_STEEL_MILL                                             :{BLACK}{TINYFON
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Papierfabriek
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Goudmijn
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Voedselverwerkings fabriek
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Voedselverwerkingsfabriek
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantmijn
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kopermijn
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Fruitplantage
@@ -346,8 +346,8 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Winstgrafiek
-STR_0155_INCOME_GRAPH                                           :Inkomenstegrafiek
-STR_0156_DELIVERED_CARGO_GRAPH                                  :Afgeleverde lading-grafiek
+STR_0155_INCOME_GRAPH                                           :Inkomstengrafiek
+STR_0156_DELIVERED_CARGO_GRAPH                                  :Afgeleverde ladinggrafiek
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Prestatiegrafiek
 STR_0158_COMPANY_VALUE_GRAPH                                    :Bedrijfswaardegrafiek
 STR_0159_CARGO_PAYMENT_RATES                                    :Ladingsprijzen
@@ -355,7 +355,7 @@ STR_015A_COMPANY_LEAGUE_TABLE                                   :Bedrijfscompeti
 STR_PERFORMANCE_DETAIL_MENU                                     :Detail prestatiewaarde
 ############ range for menu ends
 
-STR_015B_OPENTTD                                                :{WHITE}OpenTTD
+STR_015B_OPENTTD                                                :{WHITE}Over OpenTTD
 STR_015C_SAVE_GAME                                              :Spel opslaan
 STR_015D_LOAD_GAME                                              :Spel laden
 STR_015E_QUIT_GAME                                              :Spel stoppen
@@ -394,7 +394,7 @@ STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Kracht/Operatie
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Vracht capaciteit
 STR_NO_WAITING_CARGO                                            :{BLACK}Er wacht geen vracht van enig type
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Kies alle faciliteiten
-STR_SELECT_ALL_TYPES                                            :{BLACK}Kies alle vracht typen (inclusief niet wachtende vracht)
+STR_SELECT_ALL_TYPES                                            :{BLACK}Kies alle vrachttypen (inclusief niet wachtende vracht)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Beschikbare Treinen
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Beschikbare Voertuigen
 STR_AVAILABLE_SHIPS                                             :{BLACK}Beschikbare Schepen
@@ -403,10 +403,10 @@ STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Bekijk e
 STR_MANAGE_LIST                                                 :{BLACK}Beheer lijst
 STR_MANAGE_LIST_TIP                                             :{BLACK}Stuur instructies naar alle voertuigen in de lijst
 STR_REPLACE_VEHICLES                                            :Vervang voertuigen
-STR_SEND_TRAIN_TO_DEPOT                                         :Stuur naar Depot
-STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Stuur naar Depot
-STR_SEND_SHIP_TO_DEPOT                                          :Stuur naar Depot
-STR_SEND_AIRCRAFT_TO_HANGAR                                     :Stuur naar Hangar
+STR_SEND_TRAIN_TO_DEPOT                                         :Stuur naar depot
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Stuur naar depot
+STR_SEND_SHIP_TO_DEPOT                                          :Stuur naar depot
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Stuur naar hangar
 STR_SEND_FOR_SERVICING                                          :Stuur naar onderhoud
 
 ############ range for months starts
@@ -455,9 +455,9 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Kan onderhoudsinterval niet aanpassen...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Sluit venster
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Vensternaam - sleep om venster te verplaatsen
-STR_STICKY_BUTTON                                               :{BLACK}Markeer dit venster als niet-verwijderbaar door de 'Sluit Alle Vensters' knop
+STR_STICKY_BUTTON                                               :{BLACK}Markeer dit venster als niet-sluitbaar door de 'Sluit alle vensters'-knop
 STR_RESIZE_BUTTON                                               :{BLACK}Klik en sleep om dit venster van grootte te veranderen
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard bewaar/laad directorie te gaan
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik hier om naar de standaard bewaar/laadmap te gaan
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Sloop gebouwen etc. op een stuk land
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Verlaag een hoek van het land
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Verhoog een hoek van het land
@@ -870,7 +870,7 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screensh
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Koop land voor toekomstig gebruik
 STR_032F_AUTOSAVE                                               :{RED}AUTOSAVE
 STR_SAVING_GAME                                                 :{RED}*  *  SPEL WORDT OPGESLAGEN  *  *
-STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Opslaan van spel is nog bezig,{}wacht tot dit voltooid is!
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Opslaan van spel is nog bezig,{}Wacht tot dit voltooid is!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Kies 'Ezy Street style music' programma
 
 STR_0335_6                                                      :{BLACK}6
@@ -991,10 +991,10 @@ STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trein {C
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trein {COMMA} heeft een lege opdracht
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trein {COMMA} heeft dubbele orders
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trein {COMMA} heeft een ongeldig station in de orders
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Wegvoertuig {COMMA} heeft te weinig orders in de orderlijst
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Wegvoertuig {COMMA} heeft lege order
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Wegvoertuig {COMMA} heeft dubbele orders
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Wegvoertuig {COMMA} heeft een ongeldig station in de orders
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Wagen {COMMA} heeft te weinig orders in de orderlijst
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Wagen {COMMA} heeft lege order
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Wagen {COMMA} heeft dubbele orders
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Wagen {COMMA} heeft een ongeldig station in de orders
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Schip {COMMA} heeft te weinig order is orderlijst
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Schip {COMMA} heeft lege order
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Schip {COMMA} heeft dubbele orders
@@ -1006,7 +1006,7 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Vliegtui
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisch vernieuwen mislukt bij trein {COMMA} (onvoldoende geld)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisch vernieuwen mislukt bij voertuig {COMMA} (onvoldoende geld)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisch vernieuwen mislukt bij wagen {COMMA} (onvoldoende geld)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisch vernieuwen mislukt bij schip {COMMA} (onvoldoende geld)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisch vernieuwen mislukt bij vliegtuig {COMMA} (onvoldoende geld)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {COMMA} is te lang na het vervangen
@@ -1150,7 +1150,7 @@ STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Gebruik
 STR_TEMPERATE_LANDSCAPE                                         :gematigd landschap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarctisch landschap
 STR_SUB_TROPICAL_LANDSCAPE                                      :subtropisch landschap
-STR_TOYLAND_LANDSCAPE                                           :speelgoed landschap
+STR_TOYLAND_LANDSCAPE                                           :Speelgoedlandschap
 
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Keuzevakjes geven aan of je deze cheat al ooit gebruikt hebt.
@@ -1227,7 +1227,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Sleep lo
 
 STR_DRAG_DROP                                                   :{BLACK}Slepen
 STR_STATION_DRAG_DROP                                           :{BLACK}Bouw een station door te slepen
-STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecteer een station type
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecteer een stationtype
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecteer het type station om te bouwen
 
 STR_FAST_FORWARD                                                :{BLACK}Verhoog de spelsnelheid
@@ -1801,6 +1801,7 @@ STR_3804_WATER                                                  :Water
 STR_3805_COAST_OR_RIVERBANK                                     :Kust of rivierbed
 STR_3806_SHIP_DEPOT                                             :Scheepswerf
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kan niet op water bouwen
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Het kanaal moet eerst verwijderd worden
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Spel Opslaan
@@ -1946,7 +1947,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...het i
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Geen naam
 STR_SV_TRAIN_NAME                                               :Trein {COMMA}
-STR_SV_ROADVEH_NAME                                             :Automobiel {COMMA}
+STR_SV_ROADVEH_NAME                                             :Wagen {COMMA}
 STR_SV_SHIP_NAME                                                :Schip {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Vliegtuig {COMMA}
 
@@ -2120,7 +2121,7 @@ STR_7037_PRESIDENT                                              :{WHITE}{PLAYERN
 STR_7038_INAUGURATED                                            :{GOLD}Gesticht: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Voertuigen:
 STR_TRAINS                                                      :{WHITE}{COMMA} trein{P "" en}
-STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} wegvoertuig{P "" en}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} wagen{P "" s}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} vliegtuig{P "" en}
 STR_SHIPS                                                       :{WHITE}{COMMA} sch{P ip epen}
 STR_7042_NONE                                                   :{WHITE}Geen
@@ -2507,9 +2508,9 @@ STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Ga non-stop naa
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Ga non-stop naar {STATION} (Laden)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Ga non-stop naar {STATION} (Overladen en wacht tot vol geladen)
 STR_GO_TO_TRAIN_DEPOT                                           :Ga naar {TOWN} Trein Depot
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Reparatie in {TOWN} Treindepot
+STR_SERVICE_AT_TRAIN_DEPOT                                      :Reparatie in {TOWN} treindepot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ga zonder tussenstop naar {TOWN} Treindepot
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Reparatie zonder tussentop in {TOWN} Treindepot
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Reparatie zonder tussentop in {TOWN} treindepot
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Op weg naar {TOWN} Trein Depot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Op weg naar {TOWN} Trein Depot, {VELOCITY}
@@ -2692,13 +2693,13 @@ STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernoem 
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Hernoem wegvoertuigtype
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan wegvoertuigtype niet hernoemen...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ga naar {TOWN} Wegvoertuig Depot
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Repareren in {TOWN} Wegvoertuig Depot
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :Repareren in {TOWN} wagendepot
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Verbouw het wegvoertuig om een andere lading the vervoeren
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Verbouw wegvoertuig
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Verbouw wegvoertuig om geselecteerd vrachttype te vervoeren
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan wegvoertuig niet verbouwen
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecteer welk type vracht het wegvoertuig moet vervoeren
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecteer welk type vracht het wagen moet vervoeren
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Dokbouw
@@ -2922,8 +2923,8 @@ STR_NEWGRF_DISABLED                                             :{RED}Uitgeschak
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbehorend bestand niet gevonden (compatibel GRF geladen)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatibele GRF(s) geladen voor ontbrekende bestanden
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ontbrekende GRF bestand(en) zijn uitgeschakeld
-STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}GRF bestand(en) om dit spel te kunnen laden ontbreken
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(e) GRF bestand(en) zijn uitgeschakeld
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Er zijn missende GRF bestanden om het spel te laden
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2941,13 +2942,13 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Treinen
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Wegvoertuigen
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trein{P "" en}
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Wagen{P "" s}
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Vliegtuigen
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Schepen
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Sch{P ip epen}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Geef alle treinen weer die dit station in hun opdrachtenlijst hebben
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Geef alle wegvoertuigen weer die dit station in hun opdrachtenlijst hebben
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Geef alle wagens weer die dit station in hun opdrachtenlijst hebben
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Geef alle vliegtuigen weer die dit station in hun opdrachtenlijst hebben
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Geef alle schepen weer die dit station in hun opdrachtenlijst hebben
 
@@ -3067,17 +3068,17 @@ STR_RANDOM_SEED_HELP                                            :{BLACK}Klik voo
 STR_LAND_GENERATOR                                              :{BLACK}Land generator:
 STR_TREE_PLACER                                                 :{BLACK}Bos algoritme:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Aantal graden hoogtekaart:
-STR_TERRAIN_TYPE                                                :{BLACK}Terrein type:
+STR_TERRAIN_TYPE                                                :{BLACK}Terreintype:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Zee niveau:
-STR_SMOOTHNESS                                                  :{BLACK}Vlakte:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sneeuwlijn hoogte:
+STR_SMOOTHNESS                                                  :{BLACK}Gladheid:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Hoogte van sneeuwlijn:
 STR_DATE                                                        :{BLACK}Datum:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Aantal steden:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Aantal Industrieën:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_SNOW_LINE_UP                                                :{BLACK}Verschuif de sneeuwlijn één omhoog
 STR_SNOW_LINE_DOWN                                              :{BLACK}Verschuif de sneeuwlijn één naar beneden
-STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander sneeuwlijn hoogte
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander hoogte van sneeuwlijn
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begin jaar
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Schaal waarschuwing
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaar is niet aan te bevelen. Toch doorgaan?
@@ -3099,17 +3100,17 @@ STR_PREPARING_TILELOOP                                          :{BLACK}Bezig me
 STR_PREPARING_GAME                                              :{BLACK}Voorbereiden spel
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Deze aktie past de moeilijkheidsgraag aan naam custom
 STR_SE_FLAT_WORLD                                               :{WHITE}Vlak land
-STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereer een platte kaart
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereer een vlakke kaart
 STR_SE_RANDOM_LAND                                              :{WHITE}Willekeurig land
 STR_SE_NEW_WORLD                                                :{BLACK}Maak nieuw scenario aan
-STR_SE_CAPTION                                                  :{WHITE}Scenario type
+STR_SE_CAPTION                                                  :{WHITE}Scenariotype
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Maak de hoogte van plat land een lager
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Maak de hoogte van plat land een hoger
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Verander hoogte van vlak land
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Hoogte van platte grond:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
-STR_SMALLMAP_CENTER                                             :{BLACK}Centreerd de kleine kaart op heidige positie
+STR_SMALLMAP_CENTER                                             :{BLACK}Centreer de kleine kaart op huidige positie
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Klein

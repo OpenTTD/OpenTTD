@@ -294,6 +294,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Nova Par
 STR_0141_LOAD_GAME                                              :{BLACK}Cargar Partida
 STR_SINGLE_PLAYER                                               :{BLACK}Un Xogador
 STR_MULTIPLAYER                                                 :{BLACK}Multixogador
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor De Escenarios
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -387,6 +388,7 @@ STR_ENGINE_SORT_RUNNING_COST                                    :Coste Mantement
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potencia/Coste Mantemento
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade De Carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Non queda ningún tipo de carga en espera
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar tódolos edificios
 STR_MANAGE_LIST                                                 :{BLACK}Xestionar lista
 STR_REPLACE_VEHICLES                                            :Reemplazar Vehículos
 STR_SEND_TRAIN_TO_DEPOT                                         :Enviar o Depósito
@@ -753,7 +755,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C3_GAME_OPTIONS                                           :Opcións da Partida
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configuración de Dificultade
 STR_02C7_CONFIG_PATCHES                                         :Configuración dos Parches
-STR_NEWGRF_SETTINGS                                             :Configuración de Newgrf
+STR_NEWGRF_SETTINGS                                             :Configuración NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Amosar nomes de cidades
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Amosae nomes de estacións
@@ -1162,6 +1164,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árbores
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Colocar árbores dun tipo aleatorio
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Non se pode construí-los canais aí...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construir canais.
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Non se pode construí-lo peche aí...
@@ -2815,6 +2818,7 @@ STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover Ab
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move-lo arquivo NewGRF seleccionado abaixo na lista
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parámetros: {SILVER}{STRING}
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}¡Novo {STRING} agora dispoñible!
 
 STR_NEWGRF_DISABLED                                             :{RED}Desactivado
 

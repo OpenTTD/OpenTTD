@@ -1803,6 +1803,7 @@ STR_3804_WATER                                                  :Вода
 STR_3805_COAST_OR_RIVERBANK                                     :Бряг или поречие
 STR_3806_SHIP_DEPOT                                             :Корабно депо
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Не може да бъде построено във водата
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Трябва да разрушиш каналът първо
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Запази играта

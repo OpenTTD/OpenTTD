@@ -146,12 +146,15 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}CP
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BT
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}BU
+STR_ABBREV_NONE                                                 :{TINYFONT}NAV
+STR_ABBREV_ALL                                                  :{TINYFONT}VISI
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karte - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spe'les parametri
 STR_00B2_MESSAGE                                                :{YELLOW}Zin'ojums
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Zin'ojums no {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Uzmanību!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ta' nevar dari't....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}S'o laukumu nevar noli'dzina't....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Org'ìina'la's autortiesi'bas {COPYRIGHT} 1995 Chris Sawyer, Visas tiesi'bas rezerve'tas
@@ -284,12 +287,15 @@ STR_013D_INFORMATION                                            :{BLACK}Informa'
 STR_013E_CAPACITIES                                             :{BLACK}Ietilpi'ba
 STR_013E_TOTAL_CARGO                                            :{BLACK}Krava kopa'
 STR_013F_CAPACITY                                               :{BLACK}Ietilpi'ba: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Kope'ja' vilciena kravas ietilpi'ba:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Jauna spe'le
 STR_0141_LOAD_GAME                                              :{BLACK}Iela'de't spe'li
 STR_SINGLE_PLAYER                                               :{BLACK}Viens spe'le'ta'js
 STR_MULTIPLAYER                                                 :{BLACK}Daudz-spe'le'ta'ju
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenāriju redaktors
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -1017,13 +1023,33 @@ STR_LANDINFO_CANAL                                              :Kanals
 
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boja jau tiek lietota!
+STR_UNITS_IMPERIAL                                              :Britu
+STR_UNITS_METRIC                                                :Metriska
+STR_UNITS_SI                                                    :SI
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} jūdzes/h
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} zs
+STR_UNITS_POWER_METRIC                                          :{COMMA} zs
+STR_UNITS_POWER_SI                                              :{COMMA} kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}galoni
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ mārciņasf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnu spēks
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrîjas
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
@@ -1053,6 +1079,34 @@ STR_NETWORK_INTERNET                                            :Internets
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internets
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_PLAYERS                                           :2 clienti
+STR_SORT_BY_MODEL                                               :Modelis
+STR_SORT_BY_VALUE                                               :Vērtība
+STR_SORT_BY_FACILITY                                            :Stacijas veids
+STR_SORT_BY_WAITING                                             :Gaidošās kravas vērtība
+STR_SORT_BY_RATING_MAX                                          :Kravas reitings
+STR_ENGINE_SORT_ENGINE_ID                                       :DzinējaID (klasiskais veids)
+STR_ENGINE_SORT_COST                                            :Izmaksas
+STR_ENGINE_SORT_POWER                                           :Jauda
+STR_ENGINE_SORT_INTRO_DATE                                      :Ieviešanas datums
+STR_ENGINE_SORT_RUNNING_COST                                    :Lietošanas izmaksas
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Jauda/lietošanas izmaksas
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kravnesība
+STR_NO_WAITING_CARGO                                            :{BLACK}Neviena veida krava negaida
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Izvēlēties visu aprīkojumu
+STR_SELECT_ALL_TYPES                                            :{BLACK}Izvēlēties visus kravas veidus (ieskaitot, kas negaida)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Pieejamie vilcieni
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Pieejamie transportlīdzekļi
+STR_AVAILABLE_SHIPS                                             :{BLACK}Pieejamie kuģi
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Pieejamās lidmašīnas
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Apskatīties visus vilcējus, kas pieejami šim transportlīdzekļu veidam.
+STR_MANAGE_LIST                                                 :{BLACK}Labot sarakstu
+STR_MANAGE_LIST_TIP                                             :{BLACK}Dot norādījumus visiem transportlīdzekļiem, kas ir šajā sarakstā
+STR_REPLACE_VEHICLES                                            :Nomainīt transportlīdzekļus
+STR_SEND_TRAIN_TO_DEPOT                                         :Sūtīt uz depo
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Sūtīt uz depo
+STR_SEND_SHIP_TO_DEPOT                                          :Sūtīt uz depo
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Sūtīt uz angāru
+STR_SEND_FOR_SERVICING                                          :Sūtīt uz apkalpošanu
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Sakt spçli
 
@@ -1219,6 +1273,7 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Saglabâ
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Viegls
 ############ range for difficulty levels ends
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Uzklikšķiniet uz dziemas, lai to izdzēstu no šībrīža programmas (tikai Pielāgotā1 un Pielāgotā2)
 
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
@@ -1234,6 +1289,7 @@ STR_6830_IMMEDIATE                                              :Uzreiz
 
 ##id 0x7000
 STR_7000                                                        :
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Atvērt / aizvērt industrijas
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7004_NEW_FACE                                               :{BLACK}Jauna Seja
 STR_7005_COLOR_SCHEME                                           :{BLACK}Krasas shçma
@@ -1409,6 +1465,7 @@ STR_A00A                                                        :{WHITE}{VEHICLE
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lidmaðînas avârija!{}Lidmaðînai pietrûka degviela, {COMMA} nogalinâti!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Pârsaukt
+STR_CHECKMARK                                                   :{CHECKMARK}
 STR_GO_TO_AIRPORT_HANGAR                                        :Uz {STATION} Angâru
 SERVICE_AT_AIRPORT_HANGAR                                       :Serviss  {STATION} Angarâ
 
@@ -1478,3 +1535,10 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} A'trums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpi'ba: {GOLD}{COMMA} pasaz'ieru, {COMMA} pasta somas
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{POWER}zs{BLACK} Sva'rs: {GOLD}+{WEIGHT_S}t
+STR_TOWNNAME_TURKISH                                            :Turku
+STR_TOWNNAME_ITALIAN                                            :Itāļu
+STR_CURR_YTL                                                    :Turcijas lira (YTL)
+STR_CURR_SKK                                                    :Slovākijas krona (SKK)
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Brīdināt, ja vilciens apmaldās: {ORANGE}{STRING}
+SERVICE_AT_SHIP_DEPOT                                           :Apkalpošana {TOWN} kuģubūvētavā

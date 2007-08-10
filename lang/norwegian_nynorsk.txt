@@ -1802,6 +1802,7 @@ STR_3804_WATER                                                  :Vatn
 STR_3805_COAST_OR_RIVERBANK                                     :Kyst eller elvebreidd
 STR_3806_SHIP_DEPOT                                             :Skipsdepot
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kan ikkje byggje på vatn
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Må fjerna kanal først
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Lagre spel

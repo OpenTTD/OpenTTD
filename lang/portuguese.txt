@@ -29,7 +29,7 @@ STR_0015_GRAIN                                                  :Cereais
 STR_0016_WOOD                                                   :Madeira
 STR_0017_IRON_ORE                                               :Minério de Ferro
 STR_0018_STEEL                                                  :Aço
-STR_0019_VALUABLES                                              :Valores
+STR_0019_VALUABLES                                              :Bens Valiosos
 STR_001A_COPPER_ORE                                             :Minério de Cobre
 STR_001B_MAIZE                                                  :Milho
 STR_001C_FRUIT                                                  :Fruta
@@ -1048,7 +1048,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multipl
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Alertar em caso de perda do combóio: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Alertar em caso de perda do comboio: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Analisar ordens dos veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
@@ -1085,7 +1085,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar uma dica de medição ao utilizar várias ferramentas de construção: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar as medidas nas várias ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar estampagens da companhia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia
@@ -1687,7 +1687,7 @@ STR_205C_PIGGY_BANK                                             :Mealheiro
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_INDUSTRY_FORMAT                                             :{1:STRING} de {0:TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -1801,6 +1801,7 @@ STR_3804_WATER                                                  :Água
 STR_3805_COAST_OR_RIVERBANK                                     :Costa ou margem
 STR_3806_SHIP_DEPOT                                             :Depósito naval
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Não é possível construir na água
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Precisa de demolir o canal primeiro
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Guardar Jogo
@@ -2213,7 +2214,7 @@ STR_LIVERY_SMALL_PLANE                                          :Aeronave de Peq
 STR_LIVERY_LARGE_PLANE                                          :Aeronave de Grandes Dimensões
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Exibir esquema de cores geral
-STR_LIVERY_TRAIN_TIP                                            :{BLACK}Exibir esquemas de cores dos combóios
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Exibir esquemas de cores dos comboios
 STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Exibir esquemas de cores dos veículos de estrada
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Exibir esquemas de cores dos navios
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Exibir esquema de cores da aeronave
@@ -2769,7 +2770,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova cap
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Não é possível adaptar barco...
 STR_9842_REFITTABLE                                             :(adaptável)
 STR_GO_TO_SHIP_DEPOT                                            :Ir para o depósito naval de {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Manutenção no depósito de {TOWN}
+SERVICE_AT_SHIP_DEPOT                                           :Manutenção no estaleiro de {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Aeroportos
@@ -2969,12 +2970,12 @@ STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Não ven
 STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Não vender os navios no depósito
 STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Não vender as aeronaves no hangar
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os combóios no depósito
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os comboios no depósito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos os veículos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender todos os navios no depósito
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender todos os aviões no hangar
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter uma lista de todos os combóios em cujas ordens conste este depósito
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter uma lista de todos os comboios em cujas ordens conste este depósito
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obter uma lista de todos os veículos em cujas ordens conste este depósito
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obter uma lista de todos os navios em cujas ordens conste este depósito
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obter uma lista de todas as aeronaves em cujas ordens conste um hangar deste aeroporto
@@ -3010,12 +3011,12 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomoti
 STR_ENGINES                                                     :Locomotivas
 STR_WAGONS                                                      :Vagões
 
-STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os combóios no depósito
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os comboios no depósito
 STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os veículos no depósito
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os navios no depósito
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pressione botão esquerdo do rato para imobilizar todas as aeronaves no hangar
 
-STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Pressione botão esquerdo do rato para iniciar todos os combóios no depósito
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Pressione botão esquerdo do rato para iniciar todos os comboios no depósito
 STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos de estrada no depósito
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Pressione botão esquerdo do rato para iniciar todos os navios no depósito
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Pressione botão esquerdo do rato para iniciar todas as aeronaves no hangar

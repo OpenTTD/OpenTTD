@@ -1801,6 +1801,7 @@ STR_3804_WATER                                                  :Su
 STR_3805_COAST_OR_RIVERBANK                                     :Sahil veya göl kenarı
 STR_3806_SHIP_DEPOT                                             :Tersane
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Suya yapılamaz
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Önce kanal kaldırılmalı
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Kaydet

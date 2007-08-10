@@ -1801,6 +1801,7 @@ STR_3804_WATER                                                  :水
 STR_3805_COAST_OR_RIVERBANK                                     :海岸または川岸
 STR_3806_SHIP_DEPOT                                             :造船所
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...水上に建設できません
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}先に運河を破壊しなければなりません
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}ゲームを保存
@@ -2121,8 +2122,8 @@ STR_7038_INAUGURATED                                            :{GOLD}開業日
 STR_7039_VEHICLES                                               :{GOLD}車両数：
 STR_TRAINS                                                      :{WHITE}列車{COMMA}本
 STR_ROAD_VEHICLES                                               :{WHITE}道路車両{COMMA}両
-STR_AIRCRAFT                                                    :{WHITE}{COMMA}台の飛行機
-STR_SHIPS                                                       :{WHITE}{COMMA}隻の船舶
+STR_AIRCRAFT                                                    :{WHITE}飛行機{COMMA}台
+STR_SHIPS                                                       :{WHITE}船舶{COMMA}隻
 STR_7042_NONE                                                   :{WHITE}なし
 STR_7043_FACE_SELECTION                                         :{WHITE}顔の選択
 STR_7044_MALE                                                   :{BLACK}男性
@@ -2706,7 +2707,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}埠頭�
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}ここに埠頭が建設できません...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}造船所
 STR_9804_NEW_SHIPS                                              :{BLACK}新規船舶
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA}隻の船舶
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - 船舶{COMMA}隻
 STR_9808_NEW_SHIPS                                              :{WHITE}新規船舶
 STR_9809_BUILD_SHIP                                             :{BLACK}船舶を購入
 STR_CLONE_SHIP                                                  :{BLACK}船舶をクローン
@@ -2782,7 +2783,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}飛行�
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}新規飛行機
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}飛行機を購入
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}飛行機が購入できません...
-STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA}台の飛行機
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - 飛行機{COMMA}台
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE}（指令）
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
@@ -2985,10 +2986,10 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}車庫�
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}造船所内のすべての船舶を自動的に交換します
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}格納庫内のすべての飛行機を自動的に交換します
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA}本の列車
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA}両の道路車両
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA}隻の船舶
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA}台の飛行機
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - 列車{COMMA}本
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - 道路車両{COMMA}両
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - 船舶{COMMA}隻
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - 飛行機{COMMA}台
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}を交換
 STR_REPLACE_VEHICLES_START                                      :{BLACK}車両の交換を開始

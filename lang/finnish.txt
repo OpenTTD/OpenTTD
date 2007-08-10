@@ -1801,6 +1801,7 @@ STR_3804_WATER                                                  :Vettä
 STR_3805_COAST_OR_RIVERBANK                                     :Rannikko tai joenpenkka
 STR_3806_SHIP_DEPOT                                             :Telakka
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...veteen ei voi rakentaa.
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Kanava täytyy purkaa ensin
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Tallenna peli
@@ -2052,8 +2053,8 @@ STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 kuukautta pel
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 kuukautta pelaajan jälkeen
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Radan päässä ja asemilla
 STR_6835_AT_END_OF_LINE_ONLY                                    :Vain radan päässä
-STR_6836_OFF                                                    :Päällä
-STR_6837_ON                                                     :Pois
+STR_6836_OFF                                                    :Pois
+STR_6837_ON                                                     :Päällä
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Näytä pistetaulukko
 STR_6839_PERMISSIVE                                             :Salliva
 STR_683A_TOLERANT                                               :Suvaitseva

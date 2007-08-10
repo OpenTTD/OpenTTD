@@ -1007,7 +1007,7 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}La aeron
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Auto renovar ha fallado con el tren {COMMA} (límite de dinero)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}AAuto renovar ha fallado con el vehículo de carretera {COMMA} (límite de dinero)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Auto renovar ha fallado con el vehículo de carretera {COMMA} (límite de dinero)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Auto renovar ha fallado con el barco {COMMA} (límite de dinero)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Auto renovar ha fallado con la aeronave {COMMA} (límite de dinero)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren {COMMA} es demasiado largo tras el cambio
@@ -1541,7 +1541,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}No se pu
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}No se pueden retirar señales de aquí...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientación del depósito
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construcción de ferrocarril
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construcción Línea Eléctrica de Ferrocarril
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construcción línea eléctrica de ferrocarril
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construcción de monorraíl
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construcción de maglev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir tramo de ferrocarril
@@ -1802,6 +1802,7 @@ STR_3804_WATER                                                  :Agua
 STR_3805_COAST_OR_RIVERBANK                                     :Costa o rivera
 STR_3806_SHIP_DEPOT                                             :Astillero
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...No se puede construir sobre el agua
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Debes demoler el canal primero
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Guardar Juego
@@ -3032,7 +3033,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}La orden
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Vehículos de rail
-STR_ELRAIL_VEHICLES                                             :Vehícules de Rail Eléctrico
+STR_ELRAIL_VEHICLES                                             :Vehículos de Rail Eléctrico
 STR_MONORAIL_VEHICLES                                           :Vehículos monorail
 STR_MAGLEV_VEHICLES                                             :Vehículos de Lev. Mag.
 

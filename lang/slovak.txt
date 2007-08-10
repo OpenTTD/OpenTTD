@@ -1865,6 +1865,7 @@ STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Pobrezie alebo nabrezie
 STR_3806_SHIP_DEPOT                                             :Lodenica
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}... nemoze byt postavene na vode
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Najprv sa musí zbúrat kanál
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Ulozit hru

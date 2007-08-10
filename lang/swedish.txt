@@ -1801,6 +1801,7 @@ STR_3804_WATER                                                  :Vatten
 STR_3805_COAST_OR_RIVERBANK                                     :Kust eller flodbank
 STR_3806_SHIP_DEPOT                                             :Skeppsdepå
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kan inte bygga på vatten
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Måste först ta bort kanalen
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Spara spel

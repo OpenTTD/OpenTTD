@@ -250,7 +250,7 @@ STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFON
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Carrière de Caramel
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Mine de Sucre
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Gare ferroviaire
-STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Zone de Chargement
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Aire de chargement
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Arrêt d'autobus
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aéroport/Héliport
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Port maritime
@@ -882,7 +882,7 @@ STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglais (Origin
 STR_TOWNNAME_FRENCH                                             :Français
 STR_TOWNNAME_GERMAN                                             :Allemand
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Anglais (Additionels)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latino-Americain
+STR_TOWNNAME_LATIN_AMERICAN                                     :Latino-Americains
 STR_TOWNNAME_SILLY                                              :Drôles
 STR_TOWNNAME_SWEDISH                                            :Suédois
 STR_TOWNNAME_DUTCH                                              :Hollandais
@@ -892,13 +892,13 @@ STR_TOWNNAME_SLOVAKISH                                          :Slovaques
 STR_TOWNNAME_NORWEGIAN                                          :Norvégiens
 STR_TOWNNAME_HUNGARIAN                                          :Hongrois
 STR_TOWNNAME_AUSTRIAN                                           :Autrichiens
-STR_TOWNNAME_ROMANIAN                                           :Roumain
+STR_TOWNNAME_ROMANIAN                                           :Roumains
 STR_TOWNNAME_CZECH                                              :Tchèques
-STR_TOWNNAME_SWISS                                              :Suisse
+STR_TOWNNAME_SWISS                                              :Suisses
 STR_TOWNNAME_DANISH                                             :Danois
 STR_TOWNNAME_TURKISH                                            :Turques
-STR_TOWNNAME_ITALIAN                                            :Italien
-STR_TOWNNAME_CATALAN                                            :Catalan
+STR_TOWNNAME_ITALIAN                                            :Italiens
+STR_TOWNNAME_CATALAN                                            :Catalans
 ############ end of townname region
 
 STR_CURR_GBP                                                    :Livre (£)
@@ -1527,7 +1527,7 @@ STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Déjà a
 STR_1004_TOO_HIGH                                               :{WHITE}Trop élevé
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Aucuns rails convenables
 STR_1007_ALREADY_BUILT                                          :{WHITE}...déjà construit
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Doit d'abord enlever les rails
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Vous devez d'abord enlever les rails
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construction de voie ferrée
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construction de voie ferrée électrifiée
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construction de Monorail
@@ -1539,7 +1539,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Impossib
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Impossible de construire des rails ici...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Impossible de retirer les rails d'ici...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Impossible de retirer les signaux d'ici...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientation du Dépôt
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientation du dépôt
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construction de voie ferrée
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construction de voie ferrée électrifiée
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construction de Monorail
@@ -1557,14 +1557,14 @@ STR_1021_RAILROAD_TRACK                                         :Rails
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Dépôt ferroviaire
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...appartient à une autre compagnie
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rails avec des signaux normaux
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rails avec des pré-signaux
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rails avec des signaux d'entrée
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rails avec des signaux de sortie
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rails avec des signaux combinés
 
 
 
 ##id 0x1800
-STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Doit d'abord retirer la route
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Vous devez d'abord retirer la route
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Route en travaux
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construction routière
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Choisir Pont Routier
@@ -1573,12 +1573,12 @@ STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Impossib
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépôt
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossible de construire un dépôt routier ici...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Impossible de construire un arrêt d'autobus...
-STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Impossible de construire une station de camions...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Impossible de construire une aire de chargement...
 STR_180A_ROAD_CONSTRUCTION                                      :Construction routière
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construire une section de route
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construire un dépôt routier (pour construire et entretenir les véhicules routiers)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construire un arrêt d'autobus
-STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construire une station de camions
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construire une aire de chargement
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construire un pont routier
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construire un tunnel routier
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Basculer construire/détruire routes
@@ -1752,14 +1752,14 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} accepte désormais: {STRING} et {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Arrêt d'autobus
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Station de camions
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Détruire d'abord l'arrêt d'autobus
-STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Détruisez d'abord la station
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" s}
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Vous devez d'abord détruire l'arrêt d'autobus
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Vous devez d'abord détruire l'aire de chargement
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P 2 "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Aucun -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...l'endroit ne convient pas
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Trop près d'un autre port
-STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Détruisez d'abord le port
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Vous devez d'abord détruire le port
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Choisir l'orientation de la gare ferroviaire
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Choix du nombre de voies
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Choisir la longueur de la gare
@@ -1794,7 +1794,7 @@ STR_STAT_CLASS_DFLT                                             :Station par dé
 STR_STAT_CLASS_WAYP                                             :Points de passage
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépot naval
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépôt
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...doit être construit sur l'eau
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Impossible de construire le dépôt naval ici...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Choisir l'orientation du dépôt naval
@@ -1802,6 +1802,7 @@ STR_3804_WATER                                                  :Eau
 STR_3805_COAST_OR_RIVERBANK                                     :Rivage ou berge
 STR_3806_SHIP_DEPOT                                             :Dépôt naval
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Impossible de construire sur l'eau
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Vous devez d'abord détruire le canal
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Sauvegarder la partie
@@ -1896,7 +1897,7 @@ STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Train da
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Véhicule dans le tunnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Autre tunnel présent
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Impossible de creuser pour faire déboucher le tunnel
-STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Vous devez démolir le tunnel avant
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Vous devez d'abord démolir le tunnel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Vous devez d'abord démolir le pont
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Impossible de commencer et de terminer au même endroit
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Crevasse ou eau requise sous le pont
@@ -2003,7 +2004,7 @@ STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Nombre 
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Arrivée des concurents: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Nombre de villes: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Nombre d'industries: {ORANGE}{STRING}
-STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Prêt initial maximum: {ORANGE}{CURRENCY}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Emprunt initial maximum: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Taux d'interêt initial: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Coûts d'entretien: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Vitesse de développement des concurents: {ORANGE}{STRING}
@@ -2099,14 +2100,14 @@ STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graphique du profit d'opération
 STR_7026_BANK_BALANCE                                           :{WHITE}Equilibre bancaire
-STR_7027_LOAN                                                   :{WHITE}Prêt
 STR_MAX_LOAN                                                    :{WHITE}Emprunt maximum :  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Emprunter {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Rembourser {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_7027_LOAN                                                   :{WHITE}Emprunt
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...le prêt maximum est de {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Impossible d'emprunter plus...
-STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...Prêt déjà remboursé
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...emprunt déjà remboursé
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} nécessaires
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Impossible de rembourser...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}On ne peut pas distribuer de l'argent qui est emprunté à la banque...
@@ -2713,7 +2714,7 @@ STR_9809_BUILD_SHIP                                             :{BLACK}Construi
 STR_CLONE_SHIP                                                  :{BLACK}Copier Navire
 STR_CLONE_SHIP_INFO                                             :{BLACK}Effectuer la copie d'un navire. Ctrl-clic partagera les ordres
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Effectuer la copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépôt. Ctrl-clic partagera les ordres
-STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Navire doit être arrêté au dépôt
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Le navire doit être arrêté au dépôt
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Impossible de vendre navire...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Impossible de construire navire...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Navire présent
@@ -2803,7 +2804,7 @@ STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Impossib
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}L'aéronef est en vol
 STR_A019_CAPACITY                                               :{BLACK}Capacité: {LTBLUE}{CARGO}, {CARGO}
 STR_A01A_CAPACITY                                               :{BLACK}Capacité: {LTBLUE}{CARGO}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aéronef doit être arrêté au hangar
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}L'aéronef doit être arrêté au hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Impossible de vendre l'aéronef...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construction d'aéroport
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construire un aéroport
@@ -2872,7 +2873,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Revenu m
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Livré :
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Cargo :
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Argent :
-STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prêt :
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprunt :
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total :
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Nombre de véhicules. Ceci inclut les véhicules routiers, les trains, les navies et les aéronefs.

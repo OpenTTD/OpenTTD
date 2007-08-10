@@ -299,7 +299,7 @@ STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
 STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
-STR_00D0_NOTHING                                                :Нічого
+STR_00D0_NOTHING                                                :нічого
 STR_00D1_DARK_BLUE                                              :Темно-синій
 STR_00D2_PALE_GREEN                                             :Світло-зелений
 STR_00D3_PINK                                                   :Рожевий
@@ -1927,6 +1927,7 @@ STR_3804_WATER                                                  :Вода
 STR_3805_COAST_OR_RIVERBANK                                     :Берег
 STR_3806_SHIP_DEPOT                                             :Корабельне депо
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Неможливо будувати на воді
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Спочатку потрібно прибрати канал
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Зберегти гру
