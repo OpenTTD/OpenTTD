@@ -619,6 +619,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 #if !defined(WINCE)
 		case WM_ACTIVATE: {
+			/* Don't do anything if we are closing openttd */
+			if (_exit_game) break;
+
 			bool active = (LOWORD(wParam) != WA_INACTIVE);
 			bool minimized = (HIWORD(wParam) != 0);
 			if (_wnd.fullscreen) {

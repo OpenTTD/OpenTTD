@@ -731,7 +731,6 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e) == 1) break; // enter pressed
 
 			ttd_strlcpy(_network_server_name, WP(w, network_ql_d).q.text.buf, sizeof(_network_server_name));
-			UpdateTextBufferSize(&WP(w, network_ql_d).q.text);
 		}
 		break;
 

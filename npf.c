@@ -868,7 +868,13 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 
 void InitializeNPF(void)
 {
-	init_AyStar(&_npf_aystar, NPFHash, NPF_HASH_SIZE);
+	static bool first_init = true;
+	if (first_init) {
+		first_init = false;
+		init_AyStar(&_npf_aystar, NPFHash, NPF_HASH_SIZE);
+	} else {
+		AyStarMain_Clear(&_npf_aystar);
+	}
 	_npf_aystar.loops_per_tick = 0;
 	_npf_aystar.max_path_cost = 0;
 	//_npf_aystar.max_search_nodes = 0;

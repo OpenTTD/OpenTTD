@@ -25,6 +25,7 @@
 #include "station_map.h"
 #include "town_map.h"
 #include "tunnel_map.h"
+#include "water_map.h"
 #include "vehicle.h"
 #include "viewport.h"
 #include "window.h"
@@ -1615,9 +1616,18 @@ bool AfterLoadGame(void)
 	/* Buoys do now store the owner of the previous water tile, which can never
 	 * be OWNER_NONE. So replace OWNER_NONE with OWNER_WATER. */
 	if (CheckSavegameVersion(46)) {
+		TileIndex t;
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (IsBuoy(st) && IsTileOwner(st->xy, OWNER_NONE)) SetTileOwner(st->xy, OWNER_WATER);
+		}
+
+		/* Locks/shiplifts in very old savegames had OWNER_WATER as owner */
+		for (t = 0; t < MapSize(); t++) {
+			if (IsTileType(t, MP_WATER) && GetWaterTileType(t) == WATER_LOCK &&
+					GetTileOwner(t) == OWNER_WATER) {
+				SetTileOwner(t, OWNER_NONE);
+			}
 		}
 	}
 
