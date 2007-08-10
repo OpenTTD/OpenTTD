@@ -348,6 +348,34 @@ STR_SORT_BY_AGE                                                 :Vecums
 STR_SORT_BY_RELIABILITY                                         :Dros'i'ba
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kope'ja' ietilpi'ba pe'c kravas tipa
 STR_SORT_BY_MAX_SPEED                                           :maksima'lais a'trums
+STR_SORT_BY_MODEL                                               :Modelis
+STR_SORT_BY_VALUE                                               :Vērtība
+STR_SORT_BY_FACILITY                                            :Stacijas veids
+STR_SORT_BY_WAITING                                             :Gaidošās kravas vērtība
+STR_SORT_BY_RATING_MAX                                          :Kravas reitings
+STR_ENGINE_SORT_ENGINE_ID                                       :DzinējaID (klasiskais veids)
+STR_ENGINE_SORT_COST                                            :Izmaksas
+STR_ENGINE_SORT_POWER                                           :Jauda
+STR_ENGINE_SORT_INTRO_DATE                                      :Ieviešanas datums
+STR_ENGINE_SORT_RUNNING_COST                                    :Lietošanas izmaksas
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Jauda/lietošanas izmaksas
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kravnesība
+STR_NO_WAITING_CARGO                                            :{BLACK}Neviena veida krava negaida
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Izvēlēties visu aprīkojumu
+STR_SELECT_ALL_TYPES                                            :{BLACK}Izvēlēties visus kravas veidus (ieskaitot, kas negaida)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Pieejamie vilcieni
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Pieejamie transportlīdzekļi
+STR_AVAILABLE_SHIPS                                             :{BLACK}Pieejamie kuģi
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Pieejamās lidmašīnas
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Apskatīties visus vilcējus, kas pieejami šim transportlīdzekļu veidam.
+STR_MANAGE_LIST                                                 :{BLACK}Labot sarakstu
+STR_MANAGE_LIST_TIP                                             :{BLACK}Dot norādījumus visiem transportlīdzekļiem, kas ir šajā sarakstā
+STR_REPLACE_VEHICLES                                            :Nomainīt transportlīdzekļus
+STR_SEND_TRAIN_TO_DEPOT                                         :Sūtīt uz depo
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Sūtīt uz depo
+STR_SEND_SHIP_TO_DEPOT                                          :Sūtīt uz depo
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Sūtīt uz angāru
+STR_SEND_FOR_SERVICING                                          :Sūtīt uz apkalpošanu
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -413,8 +441,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Iesle'gt
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}S'i' gada iena'kums: {CURRENCY} (paga'jus'aja' gada': {CURRENCY})
 
 ############ range for service numbers starts
-STR_AGE                                                         :{COMMA} gad{P s i} ({COMMA})
-STR_AGE_RED                                                     :{RED}{COMMA} gad{P s i} ({COMMA})
+STR_AGE                                                         :{COMMA} gad{P s i u} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} gad{P s i u} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Cel'u transporta li'dzeklis
@@ -514,6 +542,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Atzi'me'
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Dze'st tekos'o programmu (tikai 1.Specia'lo vai 2.Specia'lo)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Saglaba't muzikas rez'i'mus
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Uzkliks'k'ini uz muzikas treku lai to pievienotu tekos'ajai programmai (1.Specia'lai vai 2.Specia'lai)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Uzklikšķiniet uz dziemas, lai to izdzēstu no šībrīža programmas (tikai Pielāgotā1 un Pielāgotā2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Pa'rsle'gt muzikas saraksta sajauks'anu
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Para'di't muzikas saraksta atzi'me's'anas logu
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Uzkliks'k'ini uz servisa lai iecentre'tu skatu uz industriju vai pilse'tu
@@ -529,6 +558,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Spe'le'
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sa'ncens'a stacija' ierodas pirmais transporta li'dzeklis
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Negadijumi / ava'rijas
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Kompa'nijas informa'cija
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Atvērt / aizvērt industrijas
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomijas izmain'as
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Padoms / informa'cija par spe'le'ta'ja transporta li'dzekl'iem
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Jaunie transporta li'dzekl'i
@@ -704,6 +734,7 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Saglaba'
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Transporta li'dzekl'u dizaina nosaukumu izve'le
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Saglaba't specia'los transporta li'dzekl'a dizaina nosaukumus
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C3_GAME_OPTIONS                                           :Spe'les rez'i'mi
 STR_02C5_DIFFICULTY_SETTINGS                                    :Gru'ti'bas paka'pes
@@ -747,7 +778,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kope't a
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Naudas vieni'bas
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Naudas vieni'bu izve'le
+STR_MEASURING_UNITS                                             :{BLACK}Mērvienības
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Mērvienību izvēle
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cel'a satiksmes li'dzekl'i
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Braucama's cel'a puses izve'le
@@ -825,6 +858,8 @@ STR_TOWNNAME_ROMANIAN                                           :Ruma'nijas
 STR_TOWNNAME_CZECH                                              :C'ehijas
 STR_TOWNNAME_SWISS                                              :S'veices
 STR_TOWNNAME_DANISH                                             :Da'n'u
+STR_TOWNNAME_TURKISH                                            :Turku
+STR_TOWNNAME_ITALIAN                                            :Itāļu
 ############ end of townname region
 
 STR_CURR_GBP                                                    :Ma'rcin'as (£)
@@ -850,6 +885,8 @@ STR_CURR_PLN                                                    :Polijas zloti (
 STR_CURR_ROL                                                    :Ruma'nijas lejas (ROL)
 STR_CURR_RUR                                                    :Krievijas rubl'i (RUR)
 STR_CURR_SEK                                                    :Zviedru kronas (SEK)
+STR_CURR_YTL                                                    :Turcijas lira (YTL)
+STR_CURR_SKK                                                    :Slovākijas krona (SKK)
 
 STR_CURR_CUSTOM                                                 :Specia'la...
 
@@ -982,6 +1019,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neredza
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sniega li'nijas augstums: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksima'lais staciju izkaisijums: {ORANGE}{STRING} {RED}Uzmani'bu: augsts li'menis pale'lina spe'li
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 
 
@@ -1051,6 +1089,7 @@ STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ m�
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnu spēks
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrîjas
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Brīdināt, ja vilciens apmaldās: {ORANGE}{STRING}
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 
@@ -1208,27 +1247,76 @@ STR_STATION                                                     :{STATION}
 STR_2806                                                        :{WHITE}{STRING}
 STR_280A_SIGN                                                   :Zîme
 STR_280E_TREES                                                  :Koki
+STR_280F_RAINFOREST                                             :Lietus meži
+STR_2810_CACTUS_PLANTS                                          :Kaktusu plantācijas
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Dzelzceļa stacijas izvēle
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Lidostas izvēle
+STR_3002_ORIENTATION                                            :{BLACK}Virziens
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Mašīnu skaits
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platformas garums
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Pārāk tuvu citai dzelzceļa stacijai
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz staciju/iekrašanas zonu šajā pilsētā
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz stacijas/iekraušanas zonas
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Pa'ra'k daudz autobusa pieturu
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}pa'ra'k daudz kravas auto staciju
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Pārāk tuvu citai stacijai/iekraušanas zonai
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Jānojauc dzelzsceļa stacija vispirms
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Pārāk tuvu citai lidostai
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Vispirms jānosauc lidosta
 
+STR_3030_RENAME_STATION_LOADING                                 :Pārsaukt staciju/iekraušanas zonu
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Nevar pārsaukt staciju...
 STR_3032_RATINGS                                                :{BLACK}Reitingi
+STR_3033_ACCEPTS                                                :{BLACK}Pieņem
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Vietējais transporta pakalpojumu reitings:
 
 ############ range for rating starts
+STR_3035_APPALLING                                              :Drausmīgs
+STR_3036_VERY_POOR                                              :Ļoti vājš
+STR_3037_POOR                                                   :Vājš
+STR_3038_MEDIOCRE                                               :Viduvējs
+STR_3039_GOOD                                                   :Labs
+STR_303A_VERY_GOOD                                              :Ļoti labs
+STR_303B_EXCELLENT                                              :Lielisks
+STR_303C_OUTSTANDING                                            :Perfekts
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} vairs nepieņem {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} vairs nepieņem {STRING} vai {STRING}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} pieņem {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} pieņem {STRING} un {STRING}
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Autoostas virziens
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Virpirms jānojauc autoosta
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stacij{P a s u}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_304A_NONE                                                   :{YELLOW}- Nav -
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}...vieta nav piemērota
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Pārāk tuvu citam dokam
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Vispirms jānojauc doks
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Izvēlaties dzelzsceļa stacijas virzienu
+STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Izvēlaties platformu skaitu dzelzsceļa stacijai
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Izvēlaties autoostas virzienu
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrēt galveno skatījumu uz stacijas atrašanās vietu
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Parādīt stacijas reitingu
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Mainīt stacijas nosaukumu
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Rādīt pieņemamās kravas sarakstu
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Staciju nosaukumi - uzklišķiniet uz nosaukuma, lai centrētu galveno skatījumu uz staciju
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Izvēlaties lidostas izmēru/veidu
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
-STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
+STR_305E_RAILROAD_STATION                                       :Dzelzsceļa stacija
+STR_305F_AIRCRAFT_HANGAR                                        :Lidaparātu angārs
 STR_3060_AIRPORT                                                :Lidosta
 STR_3062_BUS_STATION                                            :Autoosta
 STR_3063_SHIP_DOCK                                              :Osta
 STR_3068_DOCK                                                   :{WHITE}Osta
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...neregula'ras stacijas nav atl'autas
 
+STR_UNDEFINED                                                   :(nedefinēta rinda)
 ##id 0x3800
 STR_3804_WATER                                                  :Ûdens
 
@@ -1240,13 +1328,37 @@ STR_4801                                                        :{WHITE}{INDUSTR
 STR_4804_SAWMILL                                                :Gateris
 STR_4805_FOREST                                                 :Mežs
 STR_480B_FARM                                                   :Ferma
+STR_480D_OIL_WELLS                                              :Naftas urbumi
+STR_480E_BANK                                                   :Banka
+STR_480F_FOOD_PROCESSING_PLANT                                  :Ēdiena apstrādes fabrika
+STR_4810_PAPER_MILL                                             :Papirfabrika
+STR_4811_GOLD_MINE                                              :Zelta raktuves
 STR_4812_BANK                                                   :Banka
+STR_4813_DIAMOND_MINE                                           :Dimantu raktuves
+STR_4814_IRON_ORE_MINE                                          :Dzelzs rūdas raktuves
+STR_4815_FRUIT_PLANTATION                                       :Augļu plantācija
+STR_4816_RUBBER_PLANTATION                                      :Gumijkoka plantācija
+STR_4817_WATER_SUPPLY                                           :Ūdens ieguve
+STR_4818_WATER_TOWER                                            :Ūdens tornis
 STR_4819_FACTORY                                                :Rûpnîca
+STR_481A_FARM                                                   :Ferma
+STR_481B_LUMBER_MILL                                            :Kokzāģētava
+STR_481D_CANDY_FACTORY                                          :Saldumu fabrika
+STR_481F_COLA_WELLS                                             :Kolas urbumi
+STR_4820_TOY_SHOP                                               :Rotaļlietu veikals
+STR_4821_TOY_FACTORY                                            :Rotaļlietu fabrika
+STR_4822_PLASTIC_FOUNTAINS                                      :Plastmasas strūklakas
+STR_4824_BUBBLE_GENERATOR                                       :Burbuļu ģenerātors
+STR_4826_SUGAR_MINE                                             :Cukura raktuve
 
 ############ range for requires starts
+STR_4827_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkcija iepriekšēja mēnesī:
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vilciens tunelî
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -1263,19 +1375,44 @@ STR_SV_EMPTY                                                    :
 STR_SV_TRAIN_NAME                                               :Vilciens {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_AIRPORT                                           :{STRING} Lidosta
+STR_SV_STNAME_MINES                                             :{STRING} Raktuves
+STR_SV_STNAME_DOCKS                                             :{STRING} Doki
+STR_SV_STNAME_BUOY_1                                            :{STRING} Boja 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Boja 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Boja 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Boja 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Boja 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Boja 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Boja 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Boja 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Boja 9
 STR_SV_STNAME_FOREST                                            :{STRING} Mežs
 
 ############ end of savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Grūtības līmenis
 STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Saglabât
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Viegls
+STR_6802_MEDIUM                                                 :{BLACK}Vidējs
+STR_6803_HARD                                                   :{BLACK}Grūts
+STR_6804_CUSTOM                                                 :{BLACK}Pielāgots
 ############ range for difficulty levels ends
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Uzklikšķiniet uz dziemas, lai to izdzēstu no šībrīža programmas (tikai Pielāgotā1 un Pielāgotā2)
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksimāls pretinieku daudzums: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Pretinieku sākuma laiks: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Pilsētu skaits: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Industriju skaits: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimāls sākotnējais kredīts: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Sākotnējā kredīta likme: {ORANGE}{COMMA}%
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Transportlīdzekļu lietošanas izdevumi: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Pretinieku būvniecības ātrums: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Pretinieku inteliģence: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Transportlīdzekļu lūšana: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
@@ -1289,18 +1426,27 @@ STR_6830_IMMEDIATE                                              :Uzreiz
 
 ##id 0x7000
 STR_7000                                                        :
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Atvērt / aizvērt industrijas
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7004_NEW_FACE                                               :{BLACK}Jauna Seja
 STR_7005_COLOR_SCHEME                                           :{BLACK}Krasas shçma
 STR_7006_COLOR_SCHEME                                           :{GOLD}Krasas shçma:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Jaunâ Krasas shçma
 STR_7010                                                        :{WHITE}{NUM}
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Ceļa transp. lietošanas izmaksas
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Lidaparātu lietošanas izmaksas
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Kuģu lietošanas izmaksas
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Īpašumu apkalpošana
+STR_7018_TRAIN_INCOME                                           :{GOLD}Vilcienu ienākumi
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ceļu transportlīdzekļu ienākumi
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Lidaparātu ienākumi
+STR_701B_SHIP_INCOME                                            :{GOLD}Kuģu ienākumi
+STR_701C_LOAN_INTEREST                                          :{GOLD}Kredīta likme
 STR_701D_OTHER                                                  :{GOLD}Citi
 STR_701E                                                        :{BLACK}-{CURRENCY64}
 STR_701F                                                        :{BLACK}+{CURRENCY64}
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
+STR_7020_TOTAL                                                  :{WHITE}Kopā:
 STR_7024                                                        :{COMMA}
 STR_7027_LOAN                                                   :{WHITE}Aizdevums
 STR_MAX_LOAN                                                    :{WHITE}Maksmalais Aizdevums:  {BLACK}{CURRENCY64}
@@ -1414,8 +1560,8 @@ STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helic
 STR_8104_AIRCRAFT                                               :lidmaðîna
 
 ##id 0x8800
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8807_GO_TO_TRANSFER                                         :Uz {STATION} (Pa'rvest un pan'emt kravu)
 STR_8808_GO_TO_UNLOAD                                           :Uz {STATION} (Nokraut)
 STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Uz {STATION} (Pa'rvest un atsta't tuks'u)
@@ -1458,6 +1604,7 @@ STR_980F                                                        :{WHITE}{VEHICLE
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Uzbûvet jauno kuìi
 
 STR_9836_RENAME                                                 :{BLACK}Pârsaukt
+SERVICE_AT_SHIP_DEPOT                                           :Apkalpošana {TOWN} kuģubūvētavā
 
 ##id 0xA000
 STR_A00A                                                        :{WHITE}{VEHICLE}
@@ -1465,9 +1612,8 @@ STR_A00A                                                        :{WHITE}{VEHICLE
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lidmaðînas avârija!{}Lidmaðînai pietrûka degviela, {COMMA} nogalinâti!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Pârsaukt
-STR_CHECKMARK                                                   :{CHECKMARK}
 STR_GO_TO_AIRPORT_HANGAR                                        :Uz {STATION} Angâru
-SERVICE_AT_AIRPORT_HANGAR                                       :Serviss  {STATION} Angarâ
+SERVICE_AT_AIRPORT_HANGAR                                       :Apkalpošana {STATION} angārā
 
 ##id 0xB000
 
@@ -1535,10 +1681,3 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} A'trums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpi'ba: {GOLD}{COMMA} pasaz'ieru, {COMMA} pasta somas
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{POWER}zs{BLACK} Sva'rs: {GOLD}+{WEIGHT_S}t
-STR_TOWNNAME_TURKISH                                            :Turku
-STR_TOWNNAME_ITALIAN                                            :Itāļu
-STR_CURR_YTL                                                    :Turcijas lira (YTL)
-STR_CURR_SKK                                                    :Slovākijas krona (SKK)
-STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Brīdināt, ja vilciens apmaldās: {ORANGE}{STRING}
-SERVICE_AT_SHIP_DEPOT                                           :Apkalpošana {TOWN} kuģubūvētavā

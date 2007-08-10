@@ -2818,8 +2818,6 @@ STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover Ab
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move-lo arquivo NewGRF seleccionado abaixo na lista
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parámetros: {SILVER}{STRING}
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}¡Novo {STRING} agora dispoñible!
-
 STR_NEWGRF_DISABLED                                             :{RED}Desactivado
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda persoalizada
@@ -2856,6 +2854,7 @@ STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender t
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender tódolos barcos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender tódalas aeronaves do hangar
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}¡Novo {STRING} agora dispoñible!
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autorreemprazar tódolos trens no depósito
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autorreemprazar tódolos vehículos no depósito
