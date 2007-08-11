@@ -1445,8 +1445,8 @@ void VehiclePayment(Vehicle *front_v)
 				/* handle end of route payment */
 				Money profit = DeliverGoods(cp->count, v->cargo_type, cp->source, last_visited, cp->source_xy, cp->days_in_transit);
 				cp->paid_for = true;
-				route_profit   += profit - cp->feeder_share; // display amount paid for final route delivery, A-D of a chain A-B-C-D
-				vehicle_profit += profit;                    // whole vehicle is not payed for transfers picked up earlier
+				route_profit   += profit; // display amount paid for final route delivery, A-D of a chain A-B-C-D
+				vehicle_profit += profit - cp->feeder_share;                    // whole vehicle is not payed for transfers picked up earlier
 
 				result |= 1;
 
