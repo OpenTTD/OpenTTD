@@ -1237,7 +1237,8 @@ bool ReadLanguagePack(int lang_index)
 }
 
 /* Win32 implementation in win32.cpp. */
-#ifndef WIN32
+/* OS X implementation in os/macosx/macos.mm. */
+#if !(defined(WIN32) || defined(__APPLE__))
 /** Determine the current charset based on the environment
  * First check some default values, after this one we passed ourselves
  * and if none exist return the value for $LANG
@@ -1261,7 +1262,7 @@ const char *GetCurrentLocale(const char *param)
 
 	return getenv("LANG");
 }
-#endif /* ifndef WIN32 */
+#endif /* !(defined(WIN32) || defined(__APPLE__)) */
 
 static int CDECL LanguageCompareFunc(const void *a, const void *b)
 {

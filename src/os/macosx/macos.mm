@@ -158,3 +158,16 @@ void ShowMacErrorDialog(const char *error)
 	ShowMacDialog(error, buffer, "Quit");
 	abort();
 }
+
+
+/** Determine the current user's locale. */
+const char *GetCurrentLocale(const char *)
+{
+	static char retbuf[32] = { '\0' };
+	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+	NSArray* languages = [defs objectForKey:@"AppleLanguages"];
+	NSString* preferredLang = [languages objectAtIndex:0];
+	/* preferredLang is either 2 or 5 characters long ("xx" or "xx_YY"). */
+	strncpy(retbuf, [preferredLang cString], 31);
+	return retbuf;
+}
