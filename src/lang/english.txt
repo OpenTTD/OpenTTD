@@ -1262,7 +1262,7 @@ STR_LANDINFO_LOCK                                               :Lock
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...buoy is in use!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Coordinates: {LTBLUE}{NUM}x{NUM} ({STRING})
+STR_LANDINFO_COORDS                                             :{BLACK}Coordinates: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Can't remove part of station...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Can't convert railtype here...

@@ -130,7 +130,8 @@ static void Place_LandInfo(TileIndex tile)
 	snprintf(_userstring, lengthof(_userstring), "0x%.4X", tile);
 	SetDParam(0, TileX(tile));
 	SetDParam(1, TileY(tile));
-	SetDParam(2, STR_SPEC_USERSTRING);
+	SetDParam(2, TileHeight(tile));
+	SetDParam(3, STR_SPEC_USERSTRING);
 	GetString(_landinfo_data[3], STR_LANDINFO_COORDS, lastof(_landinfo_data[3]));
 
 	SetDParam(0, STR_01A9_NONE);
