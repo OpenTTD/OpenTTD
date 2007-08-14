@@ -1262,6 +1262,7 @@ STR_LANDINFO_LOCK                                               :Sluis
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... boei is in gebruik!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Coördinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan deel van station niet weghalen...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan railtype hier niet veranderen...
@@ -1372,18 +1373,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Zet wach
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Bescherm je spel met een wachtwoord als je niet wil dat andere mensen meespelen
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecteer een kaart:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Op welke kaart wil je spelen?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximaal aantal spelers
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Kies een maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden.
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Netwerk
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (adverteren)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} client{P "" en}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximaal aantal spelers
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Kies een maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} bedr{P ijf ijven}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max bedrijven:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Beperk de server tot een bepaald aantal bedrijven
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} toeschouwer{P "" s}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max toeschouwers:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Beperk de server tot een bepaald aantal toeschouwers
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Gesproken taal:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start spel
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Laad spel
@@ -1611,9 +1617,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...gebie
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Spoor met normale seinen
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Spoor met voorseinen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Spoor met uitgangseinen
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Spoor met combinatieseinen
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Spoor met normale en pre-seinen
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Spoor met normale en uitgangs-signalen
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Spoor met normale en dubbele-signalen
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Spoor met pre- en uitgangs- signalen
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Spoor met pre- en dubbele- signalen
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Spoor met uitgangs- en dubbele- signalen
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Treinstation moet eerst verwijderd worden
 
 
@@ -3338,7 +3348,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Klik om 
 STR_GROUP_DELETE_TIP                                            :{BLACK}Verwijder de geselecteerde groep
 STR_GROUP_RENAME_TIP                                            :{BLACK}Hernoem de geselecteerde groep
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

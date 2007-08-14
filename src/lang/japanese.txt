@@ -1262,6 +1262,7 @@ STR_LANDINFO_LOCK                                               :水門
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...ブイは使用中です！
 
+STR_LANDINFO_COORDS                                             :{BLACK}座標：{LTBLUE}{NUM}x{NUM}x{NUM}（{STRING}）
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}駅の部分が破壊できません...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}ここに線路の種類が交換できません...
@@ -1372,12 +1373,12 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}パス�
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}ゲームをパスワードで保護することができます。正しいパスワードを入力しないと、接続できません。
 STR_NETWORK_SELECT_MAP                                          :{BLACK}地図を選択：
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}プレイするマップを選択してください
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}最大接続数：
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}接続できるコンピュータの最大数を選択します。
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :インターネット
 STR_NETWORK_LAN_INTERNET                                        :LAN／インターネット
 STR_NETWORK_INTERNET_ADVERTISE                                  :インターネット（公開）
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}最大接続数：
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}接続できるコンピュータの最大数を選択します。
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}最高交通会社数：
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}サーバ上の会社上限を指定します
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}最高傍観者人数：
@@ -1611,9 +1612,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...こ�
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :通常信号のある線路
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :前位信号のある線路
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :後位信号のある線路
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :統合信号のある線路
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :通常信号と入口従属信号のある鉄道
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :通常信号と出口従属信号のある鉄道
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :通常信号と結合信号のある鉄道
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :入口従属信号と出口従属信号のある鉄道
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :入口従属信号と結合信号のある鉄道
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :出口従属信号と結合信号のある鉄道
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}先に駅を破壊しなければなりません
 
 
@@ -3338,7 +3343,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}クリ�
 STR_GROUP_DELETE_TIP                                            :{BLACK}選択したグループを削除します
 STR_GROUP_RENAME_TIP                                            :{BLACK}選択したグループの名称を変更します
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}このグループ内の車両を自動交換しません
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

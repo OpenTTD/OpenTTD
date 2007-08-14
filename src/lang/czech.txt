@@ -1320,6 +1320,7 @@ STR_LANDINFO_LOCK                                               :Zdymadlo
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bójka je používána!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Souřadnice: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nemůžu odstranit část stanice...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Zde nemohu změnit typ kolejí...
@@ -1430,18 +1431,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nastavit
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Svoji hru si můžeš ochránit heslem, když nechceš, aby se ti do ni hlásili jiní lidé
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Ve které mapě si chceš zahrát?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximální počet hráčů:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Zvol maximální počet hráčů. Může se jich připojit i méně.
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznámit)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" i ů}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximální počet hráčů:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Zvol maximální počet hráčů. Může se jich připojit i méně.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} společnost{P "" i í}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximální počet společností:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Omezit serverem počet společností
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} pozorovatel{P "" é ů}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maximální počet pozorovatelů:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Omezit serverem pocet pozorovatelů
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Jazyk ve hře:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aby ostatní hráči věděli, jakým jazykem se bude ve hře mluvit.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Začít hru
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Hru po síti začít s náhodnou mapou nebo se scénářem
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Nahrát hru
@@ -1669,9 +1675,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}... úze
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Železniční trať s normálními signály
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Železniční trať s presignály
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Železniční trať s výstupními signály
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Železniční trať s kombinovanými signály
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Koleje s normálním a vjezdovým návěstím (pre-signal)
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Koleje s normálním a výjezdovým návěstím (exit-signal)
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Koleje s normálním a cestovým návěstím (combo-signal)
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Koleje s vjezdovým (pre-signal) a výjezdovým návěstím (exit-signal)
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Koleje s vjezdovým (pre-signal) a cestovým návěstím (combo-signal)
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Koleje s výjezdovým (exit-signal) a cestovým návěstím (combo-signal)
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je nejprve nutno odstranit stanici
 
 
@@ -3402,7 +3412,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Kliknut�
 STR_GROUP_DELETE_TIP                                            :{BLACK}Vymazat vybranou skupinu
 STR_GROUP_RENAME_TIP                                            :{BLACK}Přejmenovat vybranou skupinu
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknutím nebude na tuto skupinu mít vliv automatická výměna vozidel
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

@@ -1262,6 +1262,7 @@ STR_LANDINFO_LOCK                                               :Dique
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boia está em uso!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Não é possível remover parte da estação...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Não é possível converter o tipo de linha aqui...
@@ -1372,12 +1373,12 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Definir 
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas se juntem
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleccione um mapa:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Em que mapa deseja jogar?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não necessitam estar todos presentes.
 STR_NETWORK_LAN                                                 :Rede Local
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Rede Local / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não necessitam estar todos presentes.
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de Companhias:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar o servidor a um certo número de Companhias
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Máximo de espectadores:
@@ -1611,9 +1612,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a ár
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Caminhos-de-ferro com sinais normais
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Caminhos-de-ferro com pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Caminhos-de-ferro com sinais de saída
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Caminhos-de-ferro com sinais combinados
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Carris com sinais normais e pré-sinais
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Carris com sinais normais e de saída
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Carris com sinais normais e combinados
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Carris com pré-sinais e sinais de saída
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Carris com pré-sinais e sinais combinados
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Carris com sinais de saída e combinados
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}É preciso remover a estação primeiro
 
 
@@ -3338,7 +3343,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Clique p
 STR_GROUP_DELETE_TIP                                            :{BLACK}Remover o grupo seleccionado
 STR_GROUP_RENAME_TIP                                            :{BLACK}Mudar o nome do grupo seleccionado
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clique para proteger este grupo da autosubstituição global
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
