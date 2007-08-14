@@ -567,6 +567,9 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 						)) {
 					break;
 				}
+
+				Vehicle *v = FindFloodableVehicleOnTile(target);
+				if (v != NULL) FloodVehicle(v);
 			}
 			/* FALLTHROUGH */
 
