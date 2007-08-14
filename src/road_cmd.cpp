@@ -673,7 +673,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex start_tile, tile;
-	CommandCost cost, ret;
+	CommandCost cost, ret, money;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -695,6 +695,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 		p2 ^= IS_INT_INSIDE(p2 & 3, 1, 3) ? 3 : 0;
 	}
 
+	money.AddCost(GetAvailableMoneyForCommand());
 	tile = start_tile;
 	/* Start tile is the small number. */
 	for (;;) {
@@ -705,8 +706,18 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 
 		/* try to remove the halves. */
 		if (bits != 0) {
-			ret = DoCommand(tile, rt << 4 | bits, 0, flags, CMD_REMOVE_ROAD);
-			if (CmdSucceeded(ret)) cost.AddCost(ret);
+			ret = DoCommand(tile, rt << 4 | bits, 0, flags & ~DC_EXEC, CMD_REMOVE_ROAD);
+			if (CmdSucceeded(ret)) {
+				if (flags & DC_EXEC) {
+					money.AddCost(-ret.GetCost());
+					if (money.GetCost() < 0) {
+						_additional_cash_required = DoCommand(end_tile, start_tile, p2, flags & ~DC_EXEC, CMD_REMOVE_LONG_ROAD).GetCost();
+						return cost;
+					}
+					DoCommand(tile, rt << 4 | bits, 0, flags, CMD_REMOVE_ROAD);
+				}
+				cost.AddCost(ret);
+			}
 		}
 
 		if (tile == end_tile) break;
