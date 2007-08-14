@@ -35,9 +35,9 @@
 struct network_d {
 	PlayerID company;        // select company in network lobby
 	byte field;              // select text-field in start-server and game-listing
+	byte widget_id;          ///< The widget that has the pop-up input menu
 	NetworkGameList *server; // selected server in lobby and game-listing
 	FiosItem *map;           // selected map in start-server
-	byte widget_id;          ///< The widget that has the pop-up input menu
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_d));
 
