@@ -1262,7 +1262,6 @@ STR_LANDINFO_LOCK                                               :Заключв�
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...шамандурата се използва!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Координати: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Не може да се премахва част от гарата...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Тук не може да се променя типа на жп линията...
@@ -1375,32 +1374,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Избо
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Коя карта желаете да играете?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клиенти:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Избор на максималния брой клиенти. Не всички слотове трябва да се попълнят
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Интернет
 STR_NETWORK_LAN_INTERNET                                        :LAN / Интернет
 STR_NETWORK_INTERNET_ADVERTISE                                  :Интернет (реклама)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 играча
-STR_NETWORK_1_PLAYERS                                           :1 играч
-STR_NETWORK_2_PLAYERS                                           :2 играча
-STR_NETWORK_3_PLAYERS                                           :3 играча
-STR_NETWORK_4_PLAYERS                                           :4 играча
-STR_NETWORK_5_PLAYERS                                           :5 играча
-STR_NETWORK_6_PLAYERS                                           :6 играча
-STR_NETWORK_7_PLAYERS                                           :7 играча
-STR_NETWORK_8_PLAYERS                                           :8 играча
-STR_NETWORK_9_PLAYERS                                           :9 играча
-STR_NETWORK_10_PLAYERS                                          :10 играча
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Макс. компании:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ограничаване на играта до определен брой компании
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Макс. наблюдатели:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ограничаване на сървъра до определен брой наблюдатели
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Говорим език:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Другите играчи ще знаят езика на който се говори на сървъра
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Начало на игра
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Започване на нова мрежова игра от случайна карта или сценарий
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Зареждане на игра
@@ -1628,10 +1611,7 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...зе�
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :ЖП линия с нормални сигнали
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :ЖП линия с пре-сигнали
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :ЖП линия с изходни сигнали
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :ЖП линия с комбинирани сигнали
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Железопътна линиа с нормални и изходни сигнали
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Железопътна линиа с нормални и съединени сигнали
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Железопътна линиа с изходни и съединени сигнали
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Железопътната гара трябва да бъде премахната първо
 
 

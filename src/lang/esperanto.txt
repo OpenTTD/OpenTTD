@@ -1245,7 +1245,6 @@ STR_LANDINFO_LOCK                                               :Kluzo
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...buo estas uzata
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinatoj: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Ne povas forigi stacidomeron...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Ne povas transigi reltipon ĉi tie...
@@ -1358,32 +1357,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Elektu m
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kiun mapon vi volas ludi?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Klienta maksimumo:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Loka reto
 STR_NETWORK_INTERNET                                            :Interreto
 STR_NETWORK_LAN_INTERNET                                        :Loka reto / Interreto
 STR_NETWORK_INTERNET_ADVERTISE                                  :Interreto (reklamu)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 ludantoj
-STR_NETWORK_1_PLAYERS                                           :1 ludanto
-STR_NETWORK_2_PLAYERS                                           :2 ludantoj
-STR_NETWORK_3_PLAYERS                                           :3 ludantoj
-STR_NETWORK_4_PLAYERS                                           :4 ludantoj
-STR_NETWORK_5_PLAYERS                                           :5 ludantoj
-STR_NETWORK_6_PLAYERS                                           :6 ludantoj
-STR_NETWORK_7_PLAYERS                                           :7 ludantoj
-STR_NETWORK_8_PLAYERS                                           :8 ludantoj
-STR_NETWORK_9_PLAYERS                                           :9 ludantoj
-STR_NETWORK_10_PLAYERS                                          :10 ludantoj
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Kompania maksimumo:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limu la servilon al certa kvanto da kompanioj
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Spektanta maksimumo:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limigu la servilon al certa kvanto da spektantoj
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Parolata lingvo:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aliaj ludantoj scios kiu lingvo paroliĝas en la servilo
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Startu Ludon
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Komencu novan retan ludon de hazarda mapo, aŭ scenaro
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Ŝarĝu Ludon
@@ -1586,7 +1569,6 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...regio
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Reloj kun normalaj signaloj
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Reloj kun antaŭ-signaloj
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Reloj kun elir-signaloj
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Reloj kun kombin-signaloj
 
 
 

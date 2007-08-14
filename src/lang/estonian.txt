@@ -1362,7 +1362,6 @@ STR_LANDINFO_LOCK                                               :Lüüs
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...poi on kasutusel!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinaadid: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Siinset jaamablokki ei saa lammutada...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Siin ei saa raudteetüüpi muuta...
@@ -1475,32 +1474,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Vali kaa
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Millist kaarti sa tahad mängida?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Suurim klientide arv:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Määra suurim klientide arv. Kõik vabad kohad ei pea täidetud olema
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :kohtvõrk (LAN)
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (reklaami)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 mängijat
-STR_NETWORK_1_PLAYERS                                           :1 mängija
-STR_NETWORK_2_PLAYERS                                           :2 mängijat
-STR_NETWORK_3_PLAYERS                                           :3 mängijat
-STR_NETWORK_4_PLAYERS                                           :4 mängijat
-STR_NETWORK_5_PLAYERS                                           :5 mängijat
-STR_NETWORK_6_PLAYERS                                           :6 mängijat
-STR_NETWORK_7_PLAYERS                                           :7 mängijat
-STR_NETWORK_8_PLAYERS                                           :8 mängijat
-STR_NETWORK_9_PLAYERS                                           :9 mängijat
-STR_NETWORK_10_PLAYERS                                          :10 mängijat
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Enim ettevõtteid:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Luba serveris X mängijat
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Enim pealtvaatajaid
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Luba serveris X vaatajat
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Räägitav keel:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Teistele mängijatele teadmiseks, et mis keelt serveris räägitakse
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Alusta mängu
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Uue võrgumängu alustamine suvalise kaardiga
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Mängu laadimine
@@ -1728,13 +1711,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...ala k
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rööbastee läbisõidusignaalidega
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rööbastee sissesõidusignaalidega
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rööbastee väljasõidusignaalidega
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rööbastee mitmiksignaalidega
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Rööbastee läbisõidu- ja hoiatussignaalidega
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Rööbastee läbisõidu- ja väljasõidusignaalidega
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Rööbastee läbisõidu- ja mitmiksignaalidega
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Rööbastee hoiatus- ja väljasõidusignaalidega
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Rööbastee hoiatus- ja mitmiksignaalidega
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Rööbastee väljasõidu- ja mitmiksignaalidega
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Raudteejaama peab eelnevalt lammutama
 
 

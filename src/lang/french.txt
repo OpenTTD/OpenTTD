@@ -1263,7 +1263,6 @@ STR_LANDINFO_LOCK                                               :Ecluse
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bouée utilisée !
 
-STR_LANDINFO_COORDS                                             :{BLACK}Coordonnées: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Impossible de supprimer une partie de la gare...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Impossible de convertir le type de rail...
@@ -1376,32 +1375,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Choisir 
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Sur quelle carte désirez-vous jouer?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Nombre de clients max. :
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Choisir un nombre maximum de clients. Tous les emplacements n'auront pas besoin d'être remplis.
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publier)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 joueurs
-STR_NETWORK_1_PLAYERS                                           :1 joueur
-STR_NETWORK_2_PLAYERS                                           :2 joueurs
-STR_NETWORK_3_PLAYERS                                           :3 joueurs
-STR_NETWORK_4_PLAYERS                                           :4 joueurs
-STR_NETWORK_5_PLAYERS                                           :5 joueurs
-STR_NETWORK_6_PLAYERS                                           :6 joueurs
-STR_NETWORK_7_PLAYERS                                           :7 joueurs
-STR_NETWORK_8_PLAYERS                                           :8 joueurs
-STR_NETWORK_9_PLAYERS                                           :9 joueurs
-STR_NETWORK_10_PLAYERS                                          :10 joueurs
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max compagnies:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limiter le serveur à un certain nombre de compagnies
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max spectateurs:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limiter le serveur à un certain nombre de spectateurs
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Langue utilisée :
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur.
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Démarrer la partie
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire ou d'un scénario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Charger une partie
@@ -1629,13 +1612,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...appar
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rails avec des signaux normaux
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rails avec des signaux d'entrée
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rails avec des signaux de sortie
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rails avec des signaux combinés
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Rails avec des signaux normaux et d'entrée
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Rails avec des signaux normaux et de sortie
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Rails avec des signaux normaux et combinés
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Rails avec des signaux d'entrée et de sortie
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Rails avec des signaux d'entrée et combinés
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Rails avec des signaux de sortie et combinés
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Vous devez d'abord retirer la gare
 
 

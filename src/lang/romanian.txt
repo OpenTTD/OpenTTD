@@ -1262,7 +1262,6 @@ STR_LANDINFO_LOCK                                               :Ecluzã
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... baliza in uz!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Coordonate: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nu pot demola o parte din statie...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Nu pot converti linia aici...
@@ -1375,32 +1374,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Alege o 
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Ce hartã doresti sa joci?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Numar maxim de clienti
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Alege un numar maxim de clienti. Nu trebuie ocupate toate locurile.
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (fă reclamă)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 jucãtori
-STR_NETWORK_1_PLAYERS                                           :1 jucãtor
-STR_NETWORK_2_PLAYERS                                           :2 jucãtori
-STR_NETWORK_3_PLAYERS                                           :3 jucãtori
-STR_NETWORK_4_PLAYERS                                           :4 jucãtori
-STR_NETWORK_5_PLAYERS                                           :5 jucãtori
-STR_NETWORK_6_PLAYERS                                           :6 jucãtori
-STR_NETWORK_7_PLAYERS                                           :7 jucãtori
-STR_NETWORK_8_PLAYERS                                           :8 jucãtori
-STR_NETWORK_9_PLAYERS                                           :9 jucãtori
-STR_NETWORK_10_PLAYERS                                          :10 jucãtori
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximum companii:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limiteazã serverle la un anumit numãr companii
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maxim spectatori:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limiteazã serverul la un anumit numãr de spectatori
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Limba vorbită:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Începe jocul
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Incarca joc
@@ -1628,13 +1611,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...teren
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Cale ferată cu semafoare normale
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Cale ferată cu pre-semafoare
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Cale ferată cu semafoare de ieşire
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Cale ferată cu semafoare combinate
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Cale ferată cu semafoare normale şi pre-semafoare
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Cale ferată cu semafoare normale şi semafoare de ieşire
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Cale ferată cu semafoare normale şi semafoare combinate
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Cale ferată cu pre-semafoare şi semafoare de ieşire
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Cale ferată cu pre-semafoare şi semafoare combinate
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Sina de cale ferata cu semnale de iesire si combinate
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Trebuie mai intai sa demolati gara
 
 

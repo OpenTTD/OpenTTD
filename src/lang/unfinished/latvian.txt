@@ -1189,7 +1189,6 @@ STR_LANDINFO_LOCK                                               :Slūžas
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boja jau tiek lietota!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinātes: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nevar novākt daļu stacijas
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Nevar pārveidot sliežu veidu šeit...
@@ -1301,32 +1300,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Izvēlat
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kuru karti jūs vēlaties spēlēt?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maks. klientu sk.:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Izvēlaties maksimālo klientu skaitu. Ne visiem slotiem ir jābūt aizpildītiem
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internets
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internets
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internets (reklamēt)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 spēlētāju
-STR_NETWORK_1_PLAYERS                                           :1 spēlētājs
-STR_NETWORK_2_PLAYERS                                           :2 clienti
-STR_NETWORK_3_PLAYERS                                           :3 spēlētāji
-STR_NETWORK_4_PLAYERS                                           :4 spēlētāji
-STR_NETWORK_5_PLAYERS                                           :5 spēlētāji
-STR_NETWORK_6_PLAYERS                                           :6 spēlētāji
-STR_NETWORK_7_PLAYERS                                           :7 spēlētāji
-STR_NETWORK_8_PLAYERS                                           :8 spēlētāji
-STR_NETWORK_9_PLAYERS                                           :9 spēlētāji
-STR_NETWORK_10_PLAYERS                                          :10 spēlētāji
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks. uzņēmumu sk.:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ierobežo serveri noteiktam uzņēmumu daudzumam
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks. novērotāju sk.:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ierobēžo serveri noteiktam novērotāju skaitam
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Valodu, kurā runā:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Citi lietotāji zinās, kurā valodā tiek runāts uz servera
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Sakt spçli
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Sāk jaunu tīkla spēli ar nejaušu karti vai scenāriju
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Ielādēt spēli

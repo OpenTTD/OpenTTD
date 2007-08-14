@@ -1262,7 +1262,6 @@ STR_LANDINFO_LOCK                                               :Ocklay
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...uoybay isway inway useway!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Oordinatescay: {LTBLUE}{NUM}xay{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}An'tcay emoveray artpay ofway ationstay...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}An'tcay onvertcay ailtyperay erehay...
@@ -1375,32 +1374,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Electsay
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Ichwhay apmay oday ouyay antway otay ayplay?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Axmay ientsclay:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Oosechay ethay aximummay umbernay ofway ientsclay. Otnay allway otsslay eednay otay ebay illedfay
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LANay
 STR_NETWORK_INTERNET                                            :Internetway
 STR_NETWORK_LAN_INTERNET                                        :LANay / Internetway
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internetway (advertiseway)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 ayersplay
-STR_NETWORK_1_PLAYERS                                           :1 ayerplay
-STR_NETWORK_2_PLAYERS                                           :2 ayersplay
-STR_NETWORK_3_PLAYERS                                           :3 ayersplay
-STR_NETWORK_4_PLAYERS                                           :4 ayersplay
-STR_NETWORK_5_PLAYERS                                           :5 ayersplay
-STR_NETWORK_6_PLAYERS                                           :6 ayersplay
-STR_NETWORK_7_PLAYERS                                           :7 ayersplay
-STR_NETWORK_8_PLAYERS                                           :8 ayersplay
-STR_NETWORK_9_PLAYERS                                           :9 ayersplay
-STR_NETWORK_10_PLAYERS                                          :10 ayersplay
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Axmay ompaniescay:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Imitlay ethay erversay otay away ertaincay amountway ofway ompaniescay
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Axmay ectatorsspay:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Imitlay ethay erversay otay away ertaincay amountway ofway ectatorsspay
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Anguagelay okenspay:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Otherway ayersplay illway owknay ichwhay anguagelay isway okenspay onway ethay erversay
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Artstay Amegay
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Artstay away ewnay etworknay amegay omfray away andomray apmay, orway enarioscay
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Oadlay Amegay
@@ -1628,13 +1611,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...areaw
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ailwayray acktray ithway ormalnay ignalssay
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ailwayray acktray ithway epray-ignalssay
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ailwayray acktray ithway exitway-ignalssay
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ailwayray acktray ithway ombocay-ignalssay
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Ailwayray acktray ithway ormalnay andway epray-ignalssay
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ailwayray acktray ithway ormalnay andway exitway-ignalssay
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ailwayray acktray ithway ormalnay andway ombocay-ignalssay
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ailwayray acktray ithway epray- andway exitway-ignalssay
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ailwayray acktray ithway epray- andway ombocay-ignalssay
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ailwayray acktray ithway exitway- andway ombocay-ignalssay
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Ustmay emoveray ailwayray ationstay irstfay
 
 

@@ -1262,7 +1262,6 @@ STR_LANDINFO_LOCK                                               :Resclosa
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boia en ús!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Coordenades: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}No es pot treure part de la estació...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Aquí no es pot convertir el tipus de via...
@@ -1375,32 +1374,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleccio
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}amb quin mapa vols jugar?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Màxim de clients permesos:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Tria el nombre màxim de clients. No és necessari omplir tots els llocs.
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (anunci)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 jugadors
-STR_NETWORK_1_PLAYERS                                           :1 jugador
-STR_NETWORK_2_PLAYERS                                           :2 jugadors
-STR_NETWORK_3_PLAYERS                                           :3 jugadors
-STR_NETWORK_4_PLAYERS                                           :4 jugadors
-STR_NETWORK_5_PLAYERS                                           :5 jugadors
-STR_NETWORK_6_PLAYERS                                           :6 jugadors
-STR_NETWORK_7_PLAYERS                                           :7 jugadors
-STR_NETWORK_8_PLAYERS                                           :8 jugadors
-STR_NETWORK_9_PLAYERS                                           :9 jugadors
-STR_NETWORK_10_PLAYERS                                          :10 jugadors
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Màx companyies:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita el servidor a un cert nombre de companyies
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Màx espectadors:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limita el servidor a un cert nombre de espectadors
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma parlat:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Els altres jugadors sabran quin idioma es parla en aquest servidor.
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Inicia el Joc
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Inicia un nou joc de xarxa des de un mapa aleatori, o escenari
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Carrega Joc
@@ -1628,13 +1611,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...l'àr
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Via de tren amb senyals normals
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Via de tren amb pre-senyals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Via de tren amb senyals de sortida
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Via de tren amb senyals combinades
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Via de tren amb senyals normals i pre-senyals
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Via de tren amb senyals normals i senyals de sortida
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Via de tren amb senyals normals i senyals combinades
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Via de tren amb pre-senyals i senyals de sortida
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Via de tren amb pre-senyals i senyals combinades
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Via de tren amb senyals de sortida i senyals combinades
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Primer has de treure la via de l'estació
 
 

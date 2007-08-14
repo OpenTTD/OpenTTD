@@ -1181,7 +1181,6 @@ STR_LANDINFO_LOCK                                               :Peche
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...a boia está en uso!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Non se pode eliminar parte da estación...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Non se pode converti-lo tipo de vía aí...
@@ -1290,32 +1289,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleccio
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}¿Que mapa queres xogar?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes permitidos:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolle o máximo número de clientes. Non tódolas liñas teñen que estar cubertas
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (anunciar)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 xogadores
-STR_NETWORK_1_PLAYERS                                           :1 xogador
-STR_NETWORK_2_PLAYERS                                           :2 xogadores
-STR_NETWORK_3_PLAYERS                                           :3 xogadores
-STR_NETWORK_4_PLAYERS                                           :4 xogadores
-STR_NETWORK_5_PLAYERS                                           :5 xogadores
-STR_NETWORK_6_PLAYERS                                           :6 xogadores
-STR_NETWORK_7_PLAYERS                                           :7 xogadores
-STR_NETWORK_8_PLAYERS                                           :8 xogadores
-STR_NETWORK_9_PLAYERS                                           :9 xogadores
-STR_NETWORK_10_PLAYERS                                          :10 xogadores
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Nº máx. de compañías:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita-lo servidor a unha certa cantidade de compañías
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Nº máx. de espectadores:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limita-lo servidor a unha certa cantidade de espectadores
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros xogadores sabrán cal é o idioma que se fala no servidor
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Iniciar Partida
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Comezar unha nova partida en rede a partires dun mapa aleatorio, ou un escenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Cargar Partida
@@ -1530,7 +1513,6 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a ár
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía de ferrocarril con sinais normais
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vía de ferrocarril con pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :vía de ferrocarril con sinais de saída
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Via de ferrocarril con sinais combinados
 
 
 

@@ -1388,7 +1388,6 @@ STR_LANDINFO_LOCK                                               :Шлюз
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...бакен використовується!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Координати: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Не можна зруйнувати частину станції...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Тут не можна модернізувати колію...
@@ -1501,32 +1500,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Вибе
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}На якій карті бажаєте грати?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клієнтів:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Виберіть максимальну кількість клієнтів. Не всі слоти мають бути зайняті
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Локальна
 STR_NETWORK_INTERNET                                            :Інтернет
 STR_NETWORK_LAN_INTERNET                                        :Локальна/Інтернет
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertise)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 гравців
-STR_NETWORK_1_PLAYERS                                           :1 гравець
-STR_NETWORK_2_PLAYERS                                           :2 гравця
-STR_NETWORK_3_PLAYERS                                           :3 гравця
-STR_NETWORK_4_PLAYERS                                           :4 гравця
-STR_NETWORK_5_PLAYERS                                           :5 гравців
-STR_NETWORK_6_PLAYERS                                           :6 гравців
-STR_NETWORK_7_PLAYERS                                           :7 гравців
-STR_NETWORK_8_PLAYERS                                           :8 гравців
-STR_NETWORK_9_PLAYERS                                           :9 гравців
-STR_NETWORK_10_PLAYERS                                          :10 гравців
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Максимум компаній:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Обмежує кількість компаній на сервері
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Максмум глядачів:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Обмежує кількість глядачів на сервері
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Мова:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Інші гравці будуть знати якою мовою спілкуються на сервері
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Почати гру
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Почати нову мережну гру з випадковою картою або сценарієм
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Завантаження гри
@@ -1754,13 +1737,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...ця 
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Колія зі звичайними сигналами
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Колія з вхідними сигналами
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Колія з вихідними сигналами
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Колія з комбінованими сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Залізнична колія зі звичайним та пре-сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Залізнична колія зі звичайним та вихід-сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Залізнична колія зі звичайним та комбо-сигналами
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Залізнична колія з пре- та вихід-сигналами
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Залізнична колія з пре- та комбо-сигналами
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Залізнична колія з вихід- та комбо-сигналами
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Спочатку потрібно знести залізничну станцію
 
 

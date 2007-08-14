@@ -1262,7 +1262,6 @@ STR_LANDINFO_LOCK                                               :Dique
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boia está em uso!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Não é possível remover parte da estação...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Não é possível converter o tipo de linha aqui...
@@ -1375,32 +1374,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleccio
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Em que mapa deseja jogar?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não necessitam estar todos presentes.
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Rede Local
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Rede Local / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 jogadores
-STR_NETWORK_1_PLAYERS                                           :1 jogador
-STR_NETWORK_2_PLAYERS                                           :2 jogadores
-STR_NETWORK_3_PLAYERS                                           :3 jogadores
-STR_NETWORK_4_PLAYERS                                           :4 jogadores
-STR_NETWORK_5_PLAYERS                                           :5 jogadores
-STR_NETWORK_6_PLAYERS                                           :6 jogadores
-STR_NETWORK_7_PLAYERS                                           :7 jogadores
-STR_NETWORK_8_PLAYERS                                           :8 jogadores
-STR_NETWORK_9_PLAYERS                                           :9 jogadores
-STR_NETWORK_10_PLAYERS                                          :10 jogadores
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de Companhias:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar o servidor a um certo número de Companhias
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Máximo de espectadores:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar o servidor a um certo número de espectadores
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Iniciar Jogo
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Iniciar um novo jogo em rede de um mapa aleatório, ou cenário
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Abrir Jogo
@@ -1628,13 +1611,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a ár
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Caminhos-de-ferro com sinais normais
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Caminhos-de-ferro com pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Caminhos-de-ferro com sinais de saída
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Caminhos-de-ferro com sinais combinados
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Carris com sinais normais e pré-sinais
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Carris com sinais normais e de saída
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Carris com sinais normais e combinados
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Carris com pré-sinais e sinais de saída
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Carris com pré-sinais e sinais combinados
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Carris com sinais de saída e combinados
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}É preciso remover a estação primeiro
 
 

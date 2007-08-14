@@ -1263,7 +1263,6 @@ STR_LANDINFO_LOCK                                               :갑문
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...사용중인 부이입니다!
 
-STR_LANDINFO_COORDS                                             :{BLACK}고도 일치화: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}역의 일부를 제거할 수 없습니다...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}이곳의 철도 타입을 바꿀 수 없습니다...
@@ -1376,32 +1375,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}맵 선�
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}플레이할 맵을 선택합니다.
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}최대 접속자 수:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}최대 접속자수를 선택합니다. 모든 슬롯이 차있을 필요는 없습니다.
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :인터넷
 STR_NETWORK_LAN_INTERNET                                        :LAN / 인터넷
 STR_NETWORK_INTERNET_ADVERTISE                                  :인터넷 (광고 허용)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :허용 안함
-STR_NETWORK_1_PLAYERS                                           :1명
-STR_NETWORK_2_PLAYERS                                           :2명
-STR_NETWORK_3_PLAYERS                                           :3명
-STR_NETWORK_4_PLAYERS                                           :4명
-STR_NETWORK_5_PLAYERS                                           :5명
-STR_NETWORK_6_PLAYERS                                           :6명
-STR_NETWORK_7_PLAYERS                                           :7명
-STR_NETWORK_8_PLAYERS                                           :8명
-STR_NETWORK_9_PLAYERS                                           :9명
-STR_NETWORK_10_PLAYERS                                          :10명
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}최대 회사수:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}서버의 회사의 수를 제한합니다
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}최대 관전자수:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}게임을 관전하는 접속자의 수를 제한합니다
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}대화 언어:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}서버에서 주로 사용하는 언어를 고르십시오.
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}서버 열기
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}무작위 맵이나 시나리오로 새로운 네트워크 게임을 시작합니다.
 STR_NETWORK_LOAD_GAME                                           :{BLACK}맵 불러오기
@@ -1629,13 +1612,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...다�
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :일반 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :PRE 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :출구 신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :결합 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :일반 신호등과 PRE신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :일반 신호등과 출구신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :일반 신호등과 결합신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :PRE 신호등과 출구신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :PRE 신호등과 결합신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :출구 신호등과 결합신호등이 설치된 철도
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
 
 

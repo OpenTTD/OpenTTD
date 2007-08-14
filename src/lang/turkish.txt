@@ -1253,7 +1253,6 @@ STR_LANDINFO_LOCK                                               :Kilit
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...samandıra kullanımda!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinatlar: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}İstasyonun parçasi kaldırılamaz...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Ray türü değiştirilemiyor...
@@ -1366,32 +1365,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Harita s
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Hangi haritada oynamak istiyorsun?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}İzin verilen en fazla oyuncu:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}İzin verilen en fazla oyuncu sayısını seç. Her yerin dolması gerekmez
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :İnternet
 STR_NETWORK_LAN_INTERNET                                        :LAN / internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :İnternet (reklam vererek)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 oyuncu
-STR_NETWORK_1_PLAYERS                                           :1 oyuncu
-STR_NETWORK_2_PLAYERS                                           :2 oyuncu
-STR_NETWORK_3_PLAYERS                                           :3 oyuncu
-STR_NETWORK_4_PLAYERS                                           :4 oyuncu
-STR_NETWORK_5_PLAYERS                                           :5 oyuncu
-STR_NETWORK_6_PLAYERS                                           :6 oyuncu
-STR_NETWORK_7_PLAYERS                                           :7 oyuncu
-STR_NETWORK_8_PLAYERS                                           :8 oyuncu
-STR_NETWORK_9_PLAYERS                                           :9 oyuncu
-STR_NETWORK_10_PLAYERS                                          :10 oyuncu
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}En fazla şirket:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Sunucudaki şirket sayısını sınırla
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}En fazla izleyici:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Sunucudaki izleyici sayısını sınırla
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Konuşulan dil:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Diğer oyuncular sunucuda hangi dilin konuşulacağını bilecek
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Oyunu Başlat
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Rastgele harita ya da senaryoda network oyunu aç
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Oyun Yükle
@@ -1612,13 +1595,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...alan 
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Normal sinyalli ray
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ön-sinayalli ray
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Çıkış-sinyalli ray
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ön+çikis-sinyalli ray
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Normal ve ön sinyalli ray
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Normal ve çıkış sinyalli ray
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Normal ve birleşik sinyalli ray
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ön ve Çıkış sinyalli ray
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ön ve birleşik sinyalli ray
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Çıkış ve birleşik sinyalli ray
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Önce tren istasyonu kaldırılmalı
 
 

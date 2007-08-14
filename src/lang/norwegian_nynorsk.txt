@@ -1263,7 +1263,6 @@ STR_LANDINFO_LOCK                                               :Sluse
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...bøye er i bruk!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinatar: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan ikkje fjerne del av stasjonen...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan ikkje konvertere jernbanetype her...
@@ -1376,32 +1375,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Vel eit 
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kva kart vil du spele?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalt antal tillatne klientar
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Vel maksimalt antal klientar. Alle plassane treng ikkje å verte tekne
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internett
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internett
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internett (annonser)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 spelarar
-STR_NETWORK_1_PLAYERS                                           :1 spelar
-STR_NETWORK_2_PLAYERS                                           :2 spelarar
-STR_NETWORK_3_PLAYERS                                           :3 spelarar
-STR_NETWORK_4_PLAYERS                                           :4 spelarar
-STR_NETWORK_5_PLAYERS                                           :5 spelarar
-STR_NETWORK_6_PLAYERS                                           :6 spelarar
-STR_NETWORK_7_PLAYERS                                           :7 spelarar
-STR_NETWORK_8_PLAYERS                                           :8 spelarar
-STR_NETWORK_9_PLAYERS                                           :9 spelarar
-STR_NETWORK_10_PLAYERS                                          :10 spelarar
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks. antal firma:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrens tenaren til eit visst antal firma
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks antal tilskodarar
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrens tenaren til eit visst antal tilskodarar
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk som vert tala på tenaren:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andre spelarar skal vete kva språk ein talar på denne tenaren
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start spel
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start eit nytt nettverksspel frå ein tilfeldig bane, eller eit scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Last spel
@@ -1629,13 +1612,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...felte
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbanespor med normale signal
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbanespor med for-signal
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbanespor med ut-signal
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbanespor med samansette signal
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale- og pre-signal
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Jernbanespor med normale- og exit-spor
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Jernbanespor med normale- og blandingssignal
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Jernbanespor med pre- og exit-signal
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Jernbanespor med pre- og blandingssignal
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Jernbanespor med exit- og blandingssignal
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Må fjerne togstasjon først
 
 

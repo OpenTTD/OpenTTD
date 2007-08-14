@@ -1210,7 +1210,6 @@ STR_LANDINFO_CANAL                                              :Κανάλι
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...σημαδούρα σε χρήση
 
-STR_LANDINFO_COORDS                                             :{BLACK}Συντεταγμένες: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Δεν μπορεί να διαλειθεί μέρος του σταθμού...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Μετατρέψτε/Αλλάξτε τον τύπο της γραμμής

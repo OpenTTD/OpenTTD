@@ -1326,7 +1326,6 @@ STR_LANDINFO_LOCK                                               :Stavidlo
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... boja sa pouziva!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Suradnice: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nemozno odstranit cast stanice ...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Tu nemozno zkonvertovat typ zeleznice ...
@@ -1439,32 +1438,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Vyber ma
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Ktoru mapu chces hrat?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximalny pocet klientov:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Zvol maximalny pocet klientov. Moze sa ich pripojit aj menej.
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznamit)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 hracov
-STR_NETWORK_1_PLAYERS                                           :1 hrac
-STR_NETWORK_2_PLAYERS                                           :2 hráci
-STR_NETWORK_3_PLAYERS                                           :3 hráci
-STR_NETWORK_4_PLAYERS                                           :4 hráci
-STR_NETWORK_5_PLAYERS                                           :5 hrácov
-STR_NETWORK_6_PLAYERS                                           :6 hrácov
-STR_NETWORK_7_PLAYERS                                           :7 hrácov
-STR_NETWORK_8_PLAYERS                                           :8 hrácov
-STR_NETWORK_9_PLAYERS                                           :9 hrácov
-STR_NETWORK_10_PLAYERS                                          :10 hrácov
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max. pocet spolocnosti:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Obmedzi maximalny pocet spolocnosti na serveri
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max. pocet divakov:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Omedzi maximalny pocet divakov na serveri
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Jazyk hracov:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aby ostatni hraci vedeli, akym jazykom sa bude hovorit na serveri.
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Spustit hru
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenara
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Nahrat hru
@@ -1692,13 +1675,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}... obla
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kolaje so standartnym semaforom
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje s pre-signalmi
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje s exit-signalmi
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kolaje s combo-signalmi
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Železnicné kolaje s normálnymi a pre-signálmi
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Železnicné kolaje s normálnymi a exit-signálmi
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Železnicné kolaje s normálnymi a combo-signálmi
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Železnicné kolaje s pre- a exit-signálmi
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Železnicné kolaje s pre- a combo-signálmi
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Železnicné kolaje s exit- a combo-signálmi
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je potrebné najprv odstránit železnicnú stanicu
 
 

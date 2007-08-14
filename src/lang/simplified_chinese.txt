@@ -1235,7 +1235,6 @@ STR_LANDINFO_LOCK                                               :船闸
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}浮标正在被使用……
 
-STR_LANDINFO_COORDS                                             :{BLACK}坐标：{LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}不能拆除站台的一部分……
 STR_CANT_CONVERT_RAIL                                           :{WHITE}不能转换铁路的类型……
@@ -1348,32 +1347,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}选择�
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}选择你要玩的地图
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}玩家数目：
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}选择可以参加的玩家上限（达不到此数量仍然可以开始游戏）
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :局域网
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :局域网 / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertise)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 个
-STR_NETWORK_1_PLAYERS                                           :1 个
-STR_NETWORK_2_PLAYERS                                           :2 个
-STR_NETWORK_3_PLAYERS                                           :3 个
-STR_NETWORK_4_PLAYERS                                           :4 个
-STR_NETWORK_5_PLAYERS                                           :5 个
-STR_NETWORK_6_PLAYERS                                           :6 个
-STR_NETWORK_7_PLAYERS                                           :7 个
-STR_NETWORK_8_PLAYERS                                           :8 个
-STR_NETWORK_9_PLAYERS                                           :9 个
-STR_NETWORK_10_PLAYERS                                          :10个
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}公司数量：
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}限制服务器上可以创建的公司数量
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}旁观数量：
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}限制服务器上旁观者的数量
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}语言选项：
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}其他玩家可以知道服务器的官方语言
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}开始游戏
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}以指定场景或随机地图开始游戏
 STR_NETWORK_LOAD_GAME                                           :{BLACK}读取游戏
@@ -1576,7 +1559,6 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}此区�
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :带有普通信号的铁路
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :带有入口信号的铁路
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :带有出口新乡的铁路
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :带有组合信号的铁路
 
 
 

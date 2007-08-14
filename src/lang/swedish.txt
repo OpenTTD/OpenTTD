@@ -1262,7 +1262,6 @@ STR_LANDINFO_LOCK                                               :Sluss
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bojen används!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan ej ta bort del av station...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan inte konvertera spårtyp här...
@@ -1375,32 +1374,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Välj ka
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Vilken karta vill du spela?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max antal tillåtna klienter:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publik)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :Inga spelare
-STR_NETWORK_1_PLAYERS                                           :1 spelare
-STR_NETWORK_2_PLAYERS                                           :2 spelare
-STR_NETWORK_3_PLAYERS                                           :3 spelare
-STR_NETWORK_4_PLAYERS                                           :4 spelare
-STR_NETWORK_5_PLAYERS                                           :5 spelare
-STR_NETWORK_6_PLAYERS                                           :6 spelare
-STR_NETWORK_7_PLAYERS                                           :7 spelare
-STR_NETWORK_8_PLAYERS                                           :8 spelare
-STR_NETWORK_9_PLAYERS                                           :9 spelare
-STR_NETWORK_10_PLAYERS                                          :10 spelare
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max företag:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begränsa antalet företag på servern
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max observatörer:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begränsa antalet observatörer på servern
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk som talas:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Starta spelet
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Ladda spel
@@ -1628,13 +1611,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...områ
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Järnväg med vanliga signaler
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Järnväg med för-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Järnväg med utgående signaler
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Järnväg med kombinerade signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Järnväg med normala signaler och för-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Järnväg med normala signaler och utfarts-signaler
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Järnväg med normala signaler och kombo-signaler
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Järnväg med för- och utfarts-signaler
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Järnväg med för- och kombo-signaler
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Järnväg med utfards-signaler och kombo-signaler
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Måste ta bort tågstationen först
 
 

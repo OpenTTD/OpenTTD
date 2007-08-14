@@ -1244,7 +1244,6 @@ STR_LANDINFO_LOCK                                               :Sliuzai
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...pluduras naudojamas!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinates: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Neimanoma pasalinti stoties dalies...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Neimanoma cia pakeisti begio tipo...
@@ -1357,32 +1356,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Pasirink
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kuriame zemelapyje norite zaisti?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalus klientu skaicius:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Pasirinkite maksimalu klientu skaiciu. Nebutinai visos jungtys turi buti uzpildytos
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Vietinis tinklas
 STR_NETWORK_INTERNET                                            :Internetas
 STR_NETWORK_LAN_INTERNET                                        :Vietinis tinklas/ Internetas
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internetas (visiems)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 zaideju
-STR_NETWORK_1_PLAYERS                                           :1 zaidejas
-STR_NETWORK_2_PLAYERS                                           :2 zaidejai
-STR_NETWORK_3_PLAYERS                                           :3 zaidejai
-STR_NETWORK_4_PLAYERS                                           :4 zaidejai
-STR_NETWORK_5_PLAYERS                                           :5 zaidejai
-STR_NETWORK_6_PLAYERS                                           :6 zaidejai
-STR_NETWORK_7_PLAYERS                                           :7 zaidejai
-STR_NETWORK_8_PLAYERS                                           :8 zaidejai
-STR_NETWORK_9_PLAYERS                                           :9 zaidejai
-STR_NETWORK_10_PLAYERS                                          :10 zaideju
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maksimum kompaniju:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Riboti serveri iki tam tikro skaiciaus kompaniju
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksimum ziurovu:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Riboti serveri iki tam tikro skaiciaus ziurovu
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Kalba:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Kiti zaidejai zinos kokia kalba kalbama serveryje
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Pradeti zaidima
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Predeti nauja zaidima tinkle (atsitiktinis zemelapis ar scenarijus)
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Atverti zaidima
@@ -1585,7 +1568,6 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...Å¡i Å
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gelezinkelio begiai su paprastais sviesoforais
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gelezinkelio begiai su pre-sviesoforais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gelezinkelio begiai su exit-sviesoforais
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gelezinkelio begiai su combo-sviesoforais
 
 
 

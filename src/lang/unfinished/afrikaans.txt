@@ -1141,7 +1141,6 @@ STR_LANDINFO_LOCK                                               :Sluit
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...baken is in gebruik!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Neweskikke: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan nie deel van stasie verwyder nie...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan nie spoor tipe hier verdoel nie...
@@ -1242,32 +1241,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Kies 'n 
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Watter kaart wil jy speel?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max kliente:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Kies die maksimum nommer van kielnte. Alle gleufe hoef nie om vol te wees nie
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (adverteer)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 spelers
-STR_NETWORK_1_PLAYERS                                           :1 speler
-STR_NETWORK_2_PLAYERS                                           :2 spelers
-STR_NETWORK_3_PLAYERS                                           :3 spelers
-STR_NETWORK_4_PLAYERS                                           :4 spelers
-STR_NETWORK_5_PLAYERS                                           :5 spelers
-STR_NETWORK_6_PLAYERS                                           :6 spelers
-STR_NETWORK_7_PLAYERS                                           :7 spelers
-STR_NETWORK_8_PLAYERS                                           :8 spelers
-STR_NETWORK_9_PLAYERS                                           :9 spelers
-STR_NETWORK_10_PLAYERS                                          :10 spelers
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max maatskappye:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Beperk die bedinder na 'n sekere bedrag van maatskappye
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max aanskouers:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Beperk die bediender na 'n sekere bedrag van aanskouers
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Taal gepraat:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Ander spelers sal weet watter taal op die bediender gepraat is
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Begin Spel
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Begin 'n nuwe netwerk spel van 'n lukraak kaart, of draaiboek
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Laai Spel

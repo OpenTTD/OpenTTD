@@ -1212,7 +1212,6 @@ STR_LANDINFO_LOCK                                               :Skurðgátt
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bauja í notkun!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Hnit: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Get ekki fjarlægt hluta af stöð...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Get ekki breytt lestarteini...
@@ -1325,32 +1324,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Veldu ko
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Hvaða kort viltu spila?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Hámarksfjöldi notenda:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Veldu hámarksfjölda notenda. Ekki þarf að fylla öll pláss
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Staðarnet
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Staðarnet / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (auglýsa)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 leikmenn
-STR_NETWORK_1_PLAYERS                                           :1 leikmaður
-STR_NETWORK_2_PLAYERS                                           :2 leikmenn
-STR_NETWORK_3_PLAYERS                                           :3 leikmenn
-STR_NETWORK_4_PLAYERS                                           :4 leikmenn
-STR_NETWORK_5_PLAYERS                                           :5 leikmenn
-STR_NETWORK_6_PLAYERS                                           :6 leikmenn
-STR_NETWORK_7_PLAYERS                                           :7 leikmenn
-STR_NETWORK_8_PLAYERS                                           :8 leikmenn
-STR_NETWORK_9_PLAYERS                                           :9 leikmenn
-STR_NETWORK_10_PLAYERS                                          :10 leikmenn
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Hámarksfjöldi fyrirtækja:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Takmarka fjölda fyrirtækja á vefþjóni
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Hámarksfjöldi áhorfanda:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Takmarka fjölda áhorfanda á vefþjóninum
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Tungumál:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Hefja leik
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Hefja nýjan netleik í sérvöldu korti eða landslagi af handahófi
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Hlaða leik
@@ -1553,7 +1536,6 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...svæ�
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Lestarteinn með venjulegum ljósum
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Lestarteinn með forljósum
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Lestarteinn með útljósum
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Lestarteinn með samljósum
 
 
 

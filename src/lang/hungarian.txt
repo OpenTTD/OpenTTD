@@ -1328,7 +1328,6 @@ STR_LANDINFO_LOCK                                               :Zsilip
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... a bóját használják!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordináták: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nem lehet eltávolítani az állomás részét...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Itt nem lehet átalakítani a sínt...
@@ -1441,32 +1440,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Válassz
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Melyik terképen akarsz játszani?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximum hány játékos lehet:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Válaszd ki hány játékos kapcsolódhat maximum. Nem szükséges pont ennyi embernek éppen kapcsolódva lennie.
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Helyi hálózat
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Hálózat / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (reklámoz)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 játékos
-STR_NETWORK_1_PLAYERS                                           :1 játékos
-STR_NETWORK_2_PLAYERS                                           :2 játékos
-STR_NETWORK_3_PLAYERS                                           :3 játékos
-STR_NETWORK_4_PLAYERS                                           :4 játékos
-STR_NETWORK_5_PLAYERS                                           :5 játékos
-STR_NETWORK_6_PLAYERS                                           :6 játékos
-STR_NETWORK_7_PLAYERS                                           :7 játékos
-STR_NETWORK_8_PLAYERS                                           :8 játékos
-STR_NETWORK_9_PLAYERS                                           :9 játékos
-STR_NETWORK_10_PLAYERS                                          :10 játékos
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max cégszám:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}A cégek maximális száma
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max megfigyelő:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}A megfigyelők maximális száma
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Beszélt nyelv:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren.
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Játék elindítása
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Új hálózati játék kezdése véletlen térképpel vagy misszióval
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Játék betöltése
@@ -1694,13 +1677,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a ter
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vasúti sin szemaforral
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vasúti sin előrejelző szemaforral
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vasúti sin kijáratjelző szemaforral
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti sin vegyes szemaforral
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vasúti sín normál és előrejelzőlámpával
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vasúti sín normál és utójelzőlámpával
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vasúti sín normál és előutójelző lámpával
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vasúti sín elő és utójelző lámpával
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Vasúti sín elő és előutójelző lámpával
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Vasúti sín utó és előutójelző lámpával
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb a vasútállomást le kell rombolni
 
 

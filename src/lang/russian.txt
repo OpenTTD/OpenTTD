@@ -1264,7 +1264,6 @@ STR_LANDINFO_LOCK                                               :Шлюз
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...этот буй используется!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Координаты: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Невозможно удалить часть станции...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Невозможно преобразовать тип рельса здесь...
@@ -1377,32 +1376,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Выбо
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Какую карту вы хотите играть?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клиентов:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Выбор максимального числа клиентов. Не все места должны быть заняты
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Локальная сеть
 STR_NETWORK_INTERNET                                            :Интернет
 STR_NETWORK_LAN_INTERNET                                        :Лок. сеть/Интернет
 STR_NETWORK_INTERNET_ADVERTISE                                  :Интернет (объявл.)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 игроков
-STR_NETWORK_1_PLAYERS                                           :1 игрок
-STR_NETWORK_2_PLAYERS                                           :2 игрока
-STR_NETWORK_3_PLAYERS                                           :3 игрока
-STR_NETWORK_4_PLAYERS                                           :4 игрока
-STR_NETWORK_5_PLAYERS                                           :5 игроков
-STR_NETWORK_6_PLAYERS                                           :6 игроков
-STR_NETWORK_7_PLAYERS                                           :7 игроков
-STR_NETWORK_8_PLAYERS                                           :8 игроков
-STR_NETWORK_9_PLAYERS                                           :9 игроков
-STR_NETWORK_10_PLAYERS                                          :10 игроков
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Макс. компаний:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ограничить максимальное число компаний на сервере
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Макс. наблюдателей:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ограничить максимальное количество наблюдателей на сервере
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Язык общения:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Другие игроки будут знать, на каком языке говорят на сервере
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Запуск игры
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Запуск новой сетевой игры с произвольной карты или сценария
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Загрузка игры
@@ -1630,13 +1613,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...об�
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ж/Д путь с обычным сигналом
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ж/Д путь с пресигналами
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/Д путь с выходными сигналами
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/Д путь с комбинированными сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Рельсы и нормальными и пре-сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Рельсы и нормальными и выходными сигналами
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Рельсы с нормальными и комбо-сигналами
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Рельсы с пре- и выходными сигналами
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Рельсы с пре- и комбо-сигналами
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Рельсы с выходными и комбо-сигналами
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Сначала удалите ЖД станцию
 
 

@@ -1304,7 +1304,6 @@ STR_LANDINFO_LOCK                                               :Zapornica
 
 STR_BUOY_IS_IN_USE                                              :{WHITE} ... boja v uporabi!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinate: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Ni mogoče odstraniti dela postaje ...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Ni mogoče spremeniti tipa železnice tukaj ...
@@ -1417,32 +1416,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Izberi o
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kateri zemljevid želiš igrati?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Dovoljeno število gostov:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Izberite največje število gostov. Ni potrebno, da so vsi prisotni
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Lokalno omrežje
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Lokalno omrežje / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oglašuj)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 igralcev
-STR_NETWORK_1_PLAYERS                                           :1 igralec
-STR_NETWORK_2_PLAYERS                                           :2 igralca
-STR_NETWORK_3_PLAYERS                                           :3 igralci
-STR_NETWORK_4_PLAYERS                                           :4 igralci
-STR_NETWORK_5_PLAYERS                                           :5 igralcev
-STR_NETWORK_6_PLAYERS                                           :6 igralcev
-STR_NETWORK_7_PLAYERS                                           :7 igralcev
-STR_NETWORK_8_PLAYERS                                           :8 igralcev
-STR_NETWORK_9_PLAYERS                                           :9 igralcev
-STR_NETWORK_10_PLAYERS                                          :10 igralcev
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Dovoljeno število podjetij:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Omeji strežnik na določeno število podjetij
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Največje število opazovalcev:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Omeji strežnik na določeno število opazovalcev
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Govorni jezik:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Drugi igralci bodo lahko vedeli, kateri jezik se govori na strežniku
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Začni igro
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Poženi novo večigralsko igro na naključnem ozemlju
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Naloži igro
@@ -1670,13 +1653,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE} ... zem
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Železniški tiri z normalnimi signali
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Železniški tiri s pred-signali
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Železniški tiri z izhodnimi signali
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Železniški tiri s kombiniranimi signali
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Tiri z normalnimi in uvodnimi signali
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Tiri z normalnimi in izhodnimi signali
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tiri z normalnimi in kombiniranimi signali
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tiri z uvodnimi in izhodnimi signali
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tiri z uvodnimi in kombiniranimi signali
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tiri z izhodnimi in kombiniranimi signali
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Najprej moraš odstraniti železniško postajo
 
 

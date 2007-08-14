@@ -1262,7 +1262,6 @@ STR_LANDINFO_LOCK                                               :Sluse
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bøjen er i brug!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan ikke fjerne en del af en station...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan ikke konvertere jernbanetype her...
@@ -1375,32 +1374,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Vælg et
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Hvilket kort vil du spille?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalt antal tilladte klienter:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Vælg det maksimale antal klienter. Det er ikke nødvendigt at fylde dem alle
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (bekendtgør spillet)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 spillere
-STR_NETWORK_1_PLAYERS                                           :1 spiller
-STR_NETWORK_2_PLAYERS                                           :2 spillere
-STR_NETWORK_3_PLAYERS                                           :3 spillere
-STR_NETWORK_4_PLAYERS                                           :4 spillere
-STR_NETWORK_5_PLAYERS                                           :5 spillere
-STR_NETWORK_6_PLAYERS                                           :6 spillere
-STR_NETWORK_7_PLAYERS                                           :7 spillere
-STR_NETWORK_8_PLAYERS                                           :8 spillere
-STR_NETWORK_9_PLAYERS                                           :9 spillere
-STR_NETWORK_10_PLAYERS                                          :10 spillere
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks. selskaber:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begræns serveren til et bestemt antal selskaber
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks. tilskuere:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begræns serveren til et bestemt antal tilskurere
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Talt sprog:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andre spillere vil vide hvilket sprog, der bliver talt på serveren
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start spillet
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start et nyt netværksspil med et tilfældigt kort eller et scenarie
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Hent et spil
@@ -1628,13 +1611,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...områ
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbane med almindelige signaler
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbane med præ-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbane med exit-signaler
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med kombi-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale og præ-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Jernbanespor med normale og exit-signaler
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Jernbanespor med normale og kombi-signaler
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Jernbanespor med præ- og exit-signaler
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Jernbanespor med præ- og kombi-signaler
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Jernbanespor med exit- og kombi-signaler
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Jernbanestation skal fjernes først
 
 

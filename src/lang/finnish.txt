@@ -1259,7 +1259,6 @@ STR_LANDINFO_LOCK                                               :Sulku
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...poiju on käytössä!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Koordinaatit: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Aseman osaa ei voi poistaa...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Raidetyyppiä ei voi muuntaa...
@@ -1372,32 +1371,16 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Valitse 
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Mitä karttaa haluat pelata?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Pelaajien enimmäismäärä:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia.
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Lähiverkko
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Lähiverkko/Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (mainosta)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_0_PLAYERS                                           :0 pelaajaa
-STR_NETWORK_1_PLAYERS                                           :1 pelaaja
-STR_NETWORK_2_PLAYERS                                           :2 pelaajaa
-STR_NETWORK_3_PLAYERS                                           :3 pelaajaa
-STR_NETWORK_4_PLAYERS                                           :4 pelaajaa
-STR_NETWORK_5_PLAYERS                                           :5 pelaajaa
-STR_NETWORK_6_PLAYERS                                           :6 pelaajaa
-STR_NETWORK_7_PLAYERS                                           :7 pelaajaa
-STR_NETWORK_8_PLAYERS                                           :8 pelaajaa
-STR_NETWORK_9_PLAYERS                                           :9 pelaajaa
-STR_NETWORK_10_PLAYERS                                          :10 pelaajaa
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Yhtiöiden enimmäismäärä:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Rajoita yhtiöiden määrää palvelimella
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Katsojien enimmäismäärä:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Rajoita katsojien määrää palvelimella
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Puhuttu kieli:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Aloita peli
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Aloita uusi verkkopeli skenaariolla tai satunnaisella kartalla.
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Lataa peli
@@ -1625,13 +1608,9 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...aluee
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rautatie tavallisin opastimin
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rautatie esiopastimin
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rautatie poistumisopastimin
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatie yhdistetyin opastimin
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Rautatie esisignaaleilla
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Rautatie poistumis-signaaleilla
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Rautatie yhdistelmäsignaaleilla
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Rautatie esi- ja poistumissignaaleilla
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Rautatie esi- ja yhdistelmäsignaaleilla
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Rautatie poistumis- ja yhdistelmäsignaaleilla
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Poista asema ensin
 
 
