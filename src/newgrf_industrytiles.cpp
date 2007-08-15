@@ -35,7 +35,7 @@ uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, Industry
 	byte tile_type;
 	bool is_same_industry;
 
-	tile = GetNearbyTile(parameter, tile);
+	if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
 	is_same_industry = (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == index);
 	tile_type = GetTerrainType(tile) << 2 | (IsTileType(tile, MP_WATER) ? 1 : 0) << 1 | (is_same_industry ? 1 : 0);
 
@@ -236,6 +236,7 @@ bool PerformIndustryTileSlopeCheck(TileIndex tile, const IndustryTileSpec *its, 
 {
 	Industry ind;
 	ind.xy = 0;
+	ind.width = 0;
 	ind.type = type;
 
 	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, 0, gfx, &ind, tile);
