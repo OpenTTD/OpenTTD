@@ -160,6 +160,9 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Manhattan distance of closes dry/water tile */
 		case 0x43: return GetClosestWaterDistance(tile, (object->u.industry_location.spec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
 
+		/* Layout number */
+		case 0x44: return industry->selected_layout;
+
 		/* Get industry ID at offset param */
 		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->xy), tile, industry);
 

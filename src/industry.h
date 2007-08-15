@@ -118,6 +118,7 @@ struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
 	Date construction_date;             ///< Date of the construction of the industry
 	uint8 construction_type;            ///< Way the industry was constructed (@see IndustryConstructionType)
 	Date last_cargo_accepted_at;        ///< Last day cargo was accepted by this industry
+	byte selected_layout;               ///< Which tile layout was used when creating the industry
 
 	Industry(TileIndex tile = 0) : xy(tile) {}
 	~Industry();

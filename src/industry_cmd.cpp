@@ -1396,7 +1396,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 	return true;
 }
 
-static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, const Town *t, Owner owner)
+static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, byte layout, const Town *t, Owner owner)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	uint32 r;
@@ -1442,6 +1442,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->construction_date = _date;
 	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR :
 			(_generating_world ? ICT_MAP_GENERATION : ICT_NORMAL_GAMEPLAY);
+
+	/* Adding 1 here makes it conform to specs of var44 of varaction2 for industries
+	 * 0 = created prior of newindustries
+	 * else, chosen layout + 1 */
+	i->selected_layout = layout + 1;
 
 	if (!_generating_world) i->last_month_production[0] = i->last_month_production[1] = 0;
 
@@ -1514,7 +1519,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 
 	if (flags & DC_EXEC) {
 		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_EXEC, it, type);
-		DoCreateNewIndustry(i, tile, type, it, t, OWNER_NONE);
+		DoCreateNewIndustry(i, tile, type, it, itspec_index, t, OWNER_NONE);
 		i_auto_delete.Detach();
 	}
 
@@ -2017,6 +2022,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, construction_date,          SLE_INT32,                 70, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, construction_type,          SLE_UINT8,                 70, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, last_cargo_accepted_at,     SLE_INT32,                 70, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, selected_layout,            SLE_UINT8,                 73, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 32 bytes) */
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
