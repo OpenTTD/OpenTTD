@@ -335,7 +335,8 @@ static bool CheckRoadVehInDepotStopped(const Vehicle *v)
 {
 	TileIndex tile = v->tile;
 
-	if (!IsTileDepotType(tile, TRANSPORT_ROAD) || !(v->vehstatus & VS_STOPPED)) return false;
+	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return false;
+	if (IsRoadVehFront(v) && !(v->vehstatus & VS_STOPPED)) return false;
 
 	for (; v != NULL; v = v->next) {
 		if (v->u.road.state != RVSB_IN_DEPOT || v->tile != tile) return false;
