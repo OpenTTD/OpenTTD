@@ -78,6 +78,44 @@ const byte _track_sloped_sprites[14] = {
  *               11uuuudd => rail depot
  */
 
+/** Struct used in EnsureNoTrainOnTrack() */
+struct TrainOnTrackData {
+	TileIndex tile;       ///< tile to check
+	uint z;               ///< tile max Z
+	TrackBits rail_bits;  ///< trackbits of interest
+};
+
+static void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
+{
+	const TrainOnTrackData *info = (const TrainOnTrackData *)data;
+
+	if (v->tile != info->tile || v->type != VEH_TRAIN) return NULL;
+	if (v->z_pos > info->z) return NULL;
+
+	if ((v->u.rail.track != info->rail_bits) && !TracksOverlap(v->u.rail.track | info->rail_bits)) return NULL;
+
+	_error_message = VehicleInTheWayErrMsg(v);
+	return v;
+}
+
+/**
+ * Tests if a vehicle interacts with the specified track.
+ * All track bits interact except parallel TRACK_BIT_HORZ or TRACK_BIT_VERT.
+ *
+ * @param tile The tile.
+ * @param track The track.
+ */
+static bool EnsureNoTrainOnTrack(TileIndex tile, Track track)
+{
+	TrainOnTrackData info;
+
+	info.tile = tile;
+	info.z = GetTileMaxZ(tile);
+	info.rail_bits = TrackToTrackBits(track);
+
+	return VehicleFromPos(tile, &info, EnsureNoTrainOnTrackProc) == NULL;
+}
+
 static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags)
 {
 	TrackBits current; // The current track layout
@@ -239,7 +277,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			if (!CheckTrackCombination(tile, trackbit, flags) ||
-					!EnsureNoVehicleOnGround(tile)) {
+					!EnsureNoTrainOnTrack(tile, track)) {
 				return CMD_ERROR;
 			}
 			if (!IsTileOwner(tile, _current_player) ||
@@ -374,7 +412,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 			if (!IsPlainRailTile(tile) ||
 					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
-					!EnsureNoVehicleOnGround(tile)) {
+					!EnsureNoTrainOnTrack(tile, track)) {
 				return CMD_ERROR;
 			}
 
@@ -647,7 +685,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 	SignalVariant sigvar = (pre_signal ^ HASBIT(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC;
 	CommandCost cost;
 
-	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoVehicleOnGround(tile))
+	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoTrainOnTrack(tile, track))
 		return CMD_ERROR;
 
 	/* Protect against invalid signal copying */
@@ -935,7 +973,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	if (!ValParamTrackOrientation(track) ||
 			!IsTileType(tile, MP_RAILWAY) ||
-			!EnsureNoVehicleOnGround(tile) ||
+			!EnsureNoTrainOnTrack(tile, track) ||
 			!HasSignalOnTrack(tile, track)) {
 		return CMD_ERROR;
 	}
