@@ -27,7 +27,6 @@
 #include "variables.h"
 #include "table/strings.h"
 #include "strings.h"
-#include <setjmp.h>
 #include <list>
 
 extern const uint16 SAVEGAME_VERSION = 73;
@@ -68,7 +67,6 @@ static struct {
 	void (*excpt_uninit)();              ///< the function to execute on any encountered error
 	StringID error_str;                  ///< the translateable error message to show
 	char *extra_msg;                     ///< the error message
-	jmp_buf excpt;                       ///< @todo used to jump to "exception handler";  really ugly
 } _sl;
 
 
@@ -143,7 +141,7 @@ static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 	_sl.error_str = string;
 	free(_sl.extra_msg);
 	_sl.extra_msg = (extra_msg == NULL) ? NULL : strdup(extra_msg);
-	longjmp(_sl.excpt, 0);
+	throw std::exception();
 }
 
 /** Read in a single byte from file. If the temporary buffer is full,
@@ -1521,9 +1519,42 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 	uint32 hdr[2];
 
 	_sl.excpt_uninit = NULL;
-	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
-	 * loading/saving execute a longjmp() and continue execution here */
-	if (setjmp(_sl.excpt)) {
+	try {
+		fmt = GetSavegameFormat(_savegame_format);
+
+		/* We have written our stuff to memory, now write it to file! */
+		hdr[0] = fmt->tag;
+		hdr[1] = TO_BE32(SAVEGAME_VERSION << 16);
+		if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+
+		if (!fmt->init_write()) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
+
+		{
+			uint i;
+			uint count = 1 << Savegame_POOL_BLOCK_SIZE_BITS;
+
+			assert(_ts.count == _sl.offs_base);
+			for (i = 0; i != _Savegame_pool.GetBlockCount() - 1; i++) {
+				_sl.buf = _Savegame_pool.blocks[i];
+				fmt->writer(count);
+			}
+
+			/* The last block is (almost) always not fully filled, so only write away
+			 * as much data as it is in there */
+			_sl.buf = _Savegame_pool.blocks[i];
+			fmt->writer(_ts.count - (i * count));
+		}
+
+		fmt->uninit_write();
+		assert(_ts.count == _sl.offs_base);
+		GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
+		fclose(_sl.fh);
+
+		if (threaded) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
+
+		return SL_OK;
+	}
+	catch (...) {
 		AbortSaveLoad();
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
@@ -1537,40 +1568,6 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		}
 		return SL_ERROR;
 	}
-
-	fmt = GetSavegameFormat(_savegame_format);
-
-	/* We have written our stuff to memory, now write it to file! */
-	hdr[0] = fmt->tag;
-	hdr[1] = TO_BE32(SAVEGAME_VERSION << 16);
-	if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
-
-	if (!fmt->init_write()) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
-
-	{
-		uint i;
-		uint count = 1 << Savegame_POOL_BLOCK_SIZE_BITS;
-
-		assert(_ts.count == _sl.offs_base);
-		for (i = 0; i != _Savegame_pool.GetBlockCount() - 1; i++) {
-			_sl.buf = _Savegame_pool.blocks[i];
-			fmt->writer(count);
-		}
-
-		/* The last block is (almost) always not fully filled, so only write away
-		 * as much data as it is in there */
-		_sl.buf = _Savegame_pool.blocks[i];
-		fmt->writer(_ts.count - (i * count));
-	}
-
-	fmt->uninit_write();
-	assert(_ts.count == _sl.offs_base);
-	GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
-	fclose(_sl.fh);
-
-	if (threaded) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
-
-	return SL_OK;
 }
 
 static void* SaveFileToDiskThread(void *arg)
@@ -1616,10 +1613,128 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		return SL_OK;
 	}
 
-	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
-	 * loading/saving execute a longjmp() and continue execution here */
 	_sl.excpt_uninit = NULL;
-	if (setjmp(_sl.excpt)) {
+	try {
+		_sl.fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
+
+		/* Make it a little easier to load savegames from the console */
+		if (_sl.fh == NULL && mode == SL_LOAD) _sl.fh = FioFOpenFile(filename, "rb", SAVE_DIR);
+		if (_sl.fh == NULL && mode == SL_LOAD) _sl.fh = FioFOpenFile(filename, "rb", BASE_DIR);
+
+		if (_sl.fh == NULL) {
+			SlError(mode == SL_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+		}
+
+		_sl.bufe = _sl.bufp = NULL;
+		_sl.offs_base = 0;
+		_sl.save = (mode != 0);
+		_sl.includes = _desc_includes;
+		_sl.chs = _chunk_handlers;
+
+		/* General tactic is to first save the game to memory, then use an available writer
+		 * to write it to file, either in threaded mode if possible, or single-threaded */
+		if (mode == SL_SAVE) { /* SAVE game */
+			fmt = GetSavegameFormat("memory"); // write to memory
+
+			_sl.write_bytes = fmt->writer;
+			_sl.excpt_uninit = fmt->uninit_write;
+			if (!fmt->init_write()) {
+				DEBUG(sl, 0, "Initializing writer '%s' failed.", fmt->name);
+				return AbortSaveLoad();
+			}
+
+			_sl_version = SAVEGAME_VERSION;
+
+			BeforeSaveGame();
+			SlSaveChunks();
+			SlWriteFill(); // flush the save buffer
+
+			SaveFileStart();
+			if (_network_server ||
+						(save_thread = OTTDCreateThread(&SaveFileToDiskThread, NULL)) == NULL) {
+				if (!_network_server) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
+
+				SaveOrLoadResult result = SaveFileToDisk(false);
+				SaveFileDone();
+
+				return result;
+			}
+		} else { /* LOAD game */
+			assert(mode == SL_LOAD);
+	#ifdef DEBUG_DUMP_COMMANDS
+			debug_dump_commands("ddc:load:%s\n", filename);
+	#endif /* DUMP_COMMANDS */
+
+			if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+
+			/* see if we have any loader for this type. */
+			for (fmt = _saveload_formats; ; fmt++) {
+				/* No loader found, treat as version 0 and use LZO format */
+				if (fmt == endof(_saveload_formats)) {
+					DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
+	#if defined(WINCE)
+					/* Of course some system had not to support rewind ;) */
+					fseek(_sl.fh, 0L, SEEK_SET);
+					clearerr(_sl.fh);
+	#else
+					rewind(_sl.fh);
+	#endif
+					_sl_version = 0;
+					_sl_minor_version = 0;
+					fmt = _saveload_formats + 1; // LZO
+					break;
+				}
+
+				if (fmt->tag == hdr[0]) {
+					/* check version number */
+					_sl_version = TO_BE32(hdr[1]) >> 16;
+					/* Minor is not used anymore from version 18.0, but it is still needed
+					 * in versions before that (4 cases) which can't be removed easy.
+					 * Therefor it is loaded, but never saved (or, it saves a 0 in any scenario).
+					 * So never EVER use this minor version again. -- TrueLight -- 22-11-2005 */
+					_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
+
+					DEBUG(sl, 1, "Loading savegame version %d", _sl_version);
+
+					/* Is the version higher than the current? */
+					if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
+					break;
+				}
+			}
+
+			_sl.read_bytes = fmt->reader;
+			_sl.excpt_uninit = fmt->uninit_read;
+
+			/* loader for this savegame type is not implemented? */
+			if (fmt->init_read == NULL) {
+				char err_str[64];
+				snprintf(err_str, lengthof(err_str), "Loader for '%s' is not available.", fmt->name);
+				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
+			}
+
+			if (!fmt->init_read()) {
+				char err_str[64];
+				snprintf(err_str, lengthof(err_str), "Initializing loader '%s' failed", fmt->name);
+				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
+			}
+
+			/* Old maps were hardcoded to 256x256 and thus did not contain
+			 * any mapsize information. Pre-initialize to 256x256 to not to
+			 * confuse old games */
+			InitializeGame(IG_DATE_RESET, 256, 256);
+
+			SlLoadChunks();
+			fmt->uninit_read();
+			fclose(_sl.fh);
+
+			/* After loading fix up savegame for any internal changes that
+			 * might've occured since then. If it fails, load back the old game */
+			if (!AfterLoadGame()) return SL_REINIT;
+		}
+
+		return SL_OK;
+	}
+	catch (...) {
 		AbortSaveLoad();
 
 		/* deinitialize compressor. */
@@ -1631,125 +1746,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
 		return (mode == SL_LOAD) ? SL_REINIT : SL_ERROR;
 	}
-
-	_sl.fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
-
-	/* Make it a little easier to load savegames from the console */
-	if (_sl.fh == NULL && mode == SL_LOAD) _sl.fh = FioFOpenFile(filename, "rb", SAVE_DIR);
-	if (_sl.fh == NULL && mode == SL_LOAD) _sl.fh = FioFOpenFile(filename, "rb", BASE_DIR);
-
-	if (_sl.fh == NULL) {
-		SlError(mode == SL_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
-	}
-
-	_sl.bufe = _sl.bufp = NULL;
-	_sl.offs_base = 0;
-	_sl.save = (mode != 0);
-	_sl.includes = _desc_includes;
-	_sl.chs = _chunk_handlers;
-
-	/* General tactic is to first save the game to memory, then use an available writer
-	 * to write it to file, either in threaded mode if possible, or single-threaded */
-	if (mode == SL_SAVE) { /* SAVE game */
-		fmt = GetSavegameFormat("memory"); // write to memory
-
-		_sl.write_bytes = fmt->writer;
-		_sl.excpt_uninit = fmt->uninit_write;
-		if (!fmt->init_write()) {
-			DEBUG(sl, 0, "Initializing writer '%s' failed.", fmt->name);
-			return AbortSaveLoad();
-		}
-
-		_sl_version = SAVEGAME_VERSION;
-
-		BeforeSaveGame();
-		SlSaveChunks();
-		SlWriteFill(); // flush the save buffer
-
-		SaveFileStart();
-		if (_network_server ||
-					(save_thread = OTTDCreateThread(&SaveFileToDiskThread, NULL)) == NULL) {
-			if (!_network_server) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
-
-			SaveOrLoadResult result = SaveFileToDisk(false);
-			SaveFileDone();
-
-			return result;
-		}
-	} else { /* LOAD game */
-		assert(mode == SL_LOAD);
-#ifdef DEBUG_DUMP_COMMANDS
-		debug_dump_commands("ddc:load:%s\n", filename);
-#endif /* DUMP_COMMANDS */
-
-		if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
-
-		/* see if we have any loader for this type. */
-		for (fmt = _saveload_formats; ; fmt++) {
-			/* No loader found, treat as version 0 and use LZO format */
-			if (fmt == endof(_saveload_formats)) {
-				DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
-#if defined(WINCE)
-				/* Of course some system had not to support rewind ;) */
-				fseek(_sl.fh, 0L, SEEK_SET);
-				clearerr(_sl.fh);
-#else
-				rewind(_sl.fh);
-#endif
-				_sl_version = 0;
-				_sl_minor_version = 0;
-				fmt = _saveload_formats + 1; // LZO
-				break;
-			}
-
-			if (fmt->tag == hdr[0]) {
-				/* check version number */
-				_sl_version = TO_BE32(hdr[1]) >> 16;
-				/* Minor is not used anymore from version 18.0, but it is still needed
-				 * in versions before that (4 cases) which can't be removed easy.
-				 * Therefor it is loaded, but never saved (or, it saves a 0 in any scenario).
-				 * So never EVER use this minor version again. -- TrueLight -- 22-11-2005 */
-				_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
-
-				DEBUG(sl, 1, "Loading savegame version %d", _sl_version);
-
-				/* Is the version higher than the current? */
-				if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
-				break;
-			}
-		}
-
-		_sl.read_bytes = fmt->reader;
-		_sl.excpt_uninit = fmt->uninit_read;
-
-		/* loader for this savegame type is not implemented? */
-		if (fmt->init_read == NULL) {
-			char err_str[64];
-			snprintf(err_str, lengthof(err_str), "Loader for '%s' is not available.", fmt->name);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
-		}
-
-		if (!fmt->init_read()) {
-			char err_str[64];
-			snprintf(err_str, lengthof(err_str), "Initializing loader '%s' failed", fmt->name);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
-		}
-
-		/* Old maps were hardcoded to 256x256 and thus did not contain
-		 * any mapsize information. Pre-initialize to 256x256 to not to
-		 * confuse old games */
-		InitializeGame(IG_DATE_RESET, 256, 256);
-
-		SlLoadChunks();
-		fmt->uninit_read();
-		fclose(_sl.fh);
-
-		/* After loading fix up savegame for any internal changes that
-		 * might've occured since then. If it fails, load back the old game */
-		if (!AfterLoadGame()) return SL_REINIT;
-	}
-
-	return SL_OK;
 }
 
 /** Do a save when exiting the game (patch option) _patches.autosave_on_exit */
