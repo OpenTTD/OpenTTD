@@ -509,11 +509,10 @@ static void PlayersCheckBankrupt(Player *p)
 
 void DrawNewsBankrupcy(Window *w)
 {
-	Player *p;
-
 	DrawNewsBorder(w);
 
-	p = GetPlayer((PlayerID)GB(WP(w,news_d).ni->string_id, 0, 4));
+	const NewsItem *ni = WP(w, news_d).ni;
+	Player *p = GetPlayer((PlayerID)GB(ni->string_id, 0, 4));
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
 	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
 
@@ -521,9 +520,9 @@ void DrawNewsBankrupcy(Window *w)
 
 	DrawStringMultiCenter(49, 148, STR_7058_PRESIDENT, 94);
 
-	switch (WP(w,news_d).ni->string_id & 0xF0) {
+	switch (ni->string_id & 0xF0) {
 	case NB_BTROUBLE:
-		DrawStringCentered(w->width>>1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, 0);
+		DrawStringCentered(w->width >> 1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, 0);
 
 		SetDParam(0, p->index);
 
@@ -534,25 +533,21 @@ void DrawNewsBankrupcy(Window *w)
 			w->width - 101);
 		break;
 
-	case NB_BMERGER: {
-		int32 price;
-
-		DrawStringCentered(w->width>>1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, 0);
-		CopyInDParam(0,WP(w,news_d).ni->params, 2);
-		SetDParam(2, p->index);
-		price = WP(w,news_d).ni->params[2];
-		SetDParam(3, price);
+	case NB_BMERGER:
+		DrawStringCentered(w->width >> 1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, 0);
+		SetDParam(0, ni->params[0]);
+		SetDParam(1, p->index);
+		SetDParam(2, ni->params[1]);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
-			price==0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR,
+			ni->params[1] == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR,
 			w->width - 101);
 		break;
-	}
 
 	case NB_BBANKRUPT:
-		DrawStringCentered(w->width>>1, 1, STR_705C_BANKRUPT, 0);
-		CopyInDParam(0,WP(w,news_d).ni->params, 2);
+		DrawStringCentered(w->width >> 1, 1, STR_705C_BANKRUPT, 0);
+		SetDParam(0, ni->params[0]);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
@@ -561,9 +556,9 @@ void DrawNewsBankrupcy(Window *w)
 		break;
 
 	case NB_BNEWCOMPANY:
-		DrawStringCentered(w->width>>1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, 0);
+		DrawStringCentered(w->width >> 1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, 0);
 		SetDParam(0, p->index);
-		CopyInDParam(1,WP(w,news_d).ni->params, 2);
+		SetDParam(1, ni->params[0]);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
@@ -588,28 +583,25 @@ StringID GetNewsStringBankrupcy(const NewsItem *ni)
 		return STR_02B6;
 	case NB_BMERGER:
 		SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
-		SetDParam(1, STR_705A_HAS_BEEN_SOLD_TO_FOR);
-		CopyInDParam(2,ni->params, 2);
-		SetDParam(4, p->index);
-		CopyInDParam(5,ni->params + 2, 1);
+		SetDParam(1, ni->params[1] == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR);
+		SetDParam(2, ni->params[0]);
+		SetDParam(3, p->index);
+		SetDParam(4, ni->params[1]);
 		return STR_02B6;
 	case NB_BBANKRUPT:
 		SetDParam(0, STR_705C_BANKRUPT);
 		SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
-		CopyInDParam(2,ni->params, 2);
+		SetDParam(2, ni->params[0]);
 		return STR_02B6;
 	case NB_BNEWCOMPANY:
 		SetDParam(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
 		SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
 		SetDParam(2, p->index);
-		CopyInDParam(3,ni->params, 2);
+		SetDParam(3, ni->params[0]);
 		return STR_02B6;
 	default:
 		NOT_REACHED();
 	}
-
-	/* useless, but avoids compiler warning this way */
-	return 0;
 }
 
 static void PlayersGenStatistics()
