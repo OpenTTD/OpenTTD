@@ -78,7 +78,7 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 /** Make an analysis of a tile and check for its belonging to the same
  * industry, and/or the same grf file
  * @param new_tile TileIndex of the tile to query
- * @param old_tile TileINdex of teh reference tile
+ * @param old_tile TileIndex of the reference tile
  * @param i Industry to which old_tile belongs to
  * @return value encoded as per NFO specs */
 uint32 GetIndustryIDAtOffset(TileIndex new_tile, TileIndex old_tile, const Industry *i)
@@ -133,6 +133,56 @@ static uint32 GetClosestIndustry(TileIndex tile, IndustryType type, const Indust
 	return best_dist;
 }
 
+/** Implementation of both var 67 and 68
+ * since the mechanism is almost the same, it is easier to regroup them on the same
+ * function.
+ * @param param_setID parameter given to the callback, which is the set id, or the local id, in our terminology
+ * @param layout_filter on what layout do we filter?
+ * @param current Industry for which the inquiry is made
+ * @return the formatted answer to the callback : rr(reserved) cc(count) dddd(manhattan distance of closest sister)
+ */
+static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout_filter, const Industry *current)
+{
+	uint32 GrfID = GetRegister(0x100);  ///< Get the GRFID of the definition to look for in register 100h
+	IndustryType ind_index;
+	uint32 closest_dist = MAX_UVALUE(uint32);
+	byte count = 0;
+
+	/* Determine what will be the industry type to look for */
+	switch (GrfID) {
+		case 0:  // this is a default industry type
+			ind_index = param_setID;
+			break;
+
+		case 0xFFFFFFFF: // current grf
+			ind_index = GetIndustrySpec(current->type)->grf_prop.grffile->grfid;
+			/*Fall through*/
+
+		default: //use the grfid specified in register 100h
+			ind_index = MapNewGRFIndustryType(param_setID, GrfID);
+			break;
+	}
+
+	if (layout_filter == 0) {
+		/* If the filter is 0, it could be because none was specified as well as being really a 0.
+		 * In either case, just do the regular var67 */
+		closest_dist = GetClosestIndustry(current->xy, ind_index, current);
+		count = GetIndustryTypeCount(ind_index);
+	} else {
+		/* Count only those who match the same industry type and layout filter
+		 * Unfortunately, we have to do it manually */
+		const Industry *i;
+		FOR_ALL_INDUSTRIES(i) {
+			if (i->type == ind_index && i != current && i->selected_layout == layout_filter) {
+				closest_dist = min(closest_dist, DistanceManhattan(current->xy, i->xy));
+				count++;
+			}
+		}
+	}
+
+	return count << 16 | GB(closest_dist, 0, 16);
+}
+
 /** This function implements the industries variables that newGRF defines.
  * @param variable that is queried
  * @param parameter unused
@@ -172,7 +222,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY);
 
 		/* Animation stage of nearby tiles */
-		case 0x63 : {
+		case 0x63: {
 			tile = GetNearbyTile(parameter, tile);
 			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == industry) {
 				return GetIndustryAnimationState(tile);
@@ -188,11 +238,9 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x66: return GetTownRadiusGroup(industry->town, tile) << 16 | min(DistanceSquare(tile, industry->town->xy), 0xFFFF);
 
 		/* Count of industry, distance of closest instance
-		 * format is rr(reserved) cc(count)  dddd(manhattan distance of closest sister)
-		 * A lot more should be done, since it has to check for local id, grf id etc...
-		 * let's just say it is a beginning ;) */
-		case 0x67: return GetIndustryTypeCount(industry->type) << 16 | 0;
-		case 0x68: break;
+		 * 68 is the same as 67, but with a filtering on selected layout */
+		case 0x67:
+		case 0x68: return GetCountAndDistanceOfClosestInstance(parameter, variable == 0x68 ? GB(GetRegister(0x101), 0, 8) : 0, industry);
 
 		/* Industry structure access*/
 		case 0x80: return industry->xy;
