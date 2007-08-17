@@ -692,7 +692,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Mängij
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Konkurendi jaama saabus esimene veovahend
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Õnnetused / katastroofid
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Ettevõtte teave
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Ava / sulge tööstuseid
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Tööstuste avamised ja sulgemised
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Muutused majanduses
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Soovitused ja teated mängija veovahendite kohta
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Uus veerem
@@ -1362,6 +1362,7 @@ STR_LANDINFO_LOCK                                               :Lüüs
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...poi on kasutusel!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinaadid: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Siinset jaamablokki ei saa lammutada...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Siin ei saa raudteetüüpi muuta...
@@ -1472,18 +1473,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Sea paro
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Kaitse oma mäng parooliga, kui sa ei taha, et kõik sellele ligi pääseksid
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vali kaart:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Millist kaarti sa tahad mängida?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Suurim klientide arv:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Määra suurim klientide arv. Kõik vabad kohad ei pea täidetud olema
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :kohtvõrk (LAN)
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (reklaami)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" i}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Suurim klientide arv:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Määra suurim klientide arv. Kõik vabad kohad ei pea täidetud olema
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} ettevõte{P "" t}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Enim ettevõtteid:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Luba serveris X mängijat
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} pealtvaataja{P "" t}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Enim pealtvaatajaid
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Luba serveris X vaatajat
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Räägitav keel:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Teistele mängijatele teadmiseks, et mis keelt serveris räägitakse
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Alusta mängu
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Uue võrgumängu alustamine suvalise kaardiga
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Mängu laadimine
@@ -1711,9 +1717,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...ala k
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rööbastee läbisõidusignaalidega
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rööbastee sissesõidusignaalidega
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rööbastee väljasõidusignaalidega
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Raudtee mitmiksignaalidega
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Rööbastee läbisõidu- ja hoiatussignaalidega
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Rööbastee läbisõidu- ja väljasõidusignaalidega
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Raudtee tava- ja mitmiksignaalidega
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Rööbastee hoiatus- ja väljasõidusignaalidega
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Raudtee eel- ja mitmiksignaalidega
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Raudtee väljumis- ja mitmiksignaalidega
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Raudteejaama peab eelnevalt lammutama
 
 
@@ -3199,7 +3209,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Näita k
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Näita kõiki lennukeid, mille sõidugraafik sisaldab seda lennujaama
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näita kõiki laevu, mille sõidugraafik sisaldab seda sadamat
 
-STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Jagatud sõidugraafik{COMMA} Auto{P "" d}
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} sõiduki vahel jagatud sõidugraafik
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Näita kõiki sama sõidugraafikuga mootorsõidukeid
 
 ### depot strings

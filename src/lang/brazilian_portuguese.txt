@@ -1264,6 +1264,7 @@ STR_LANDINFO_LOCK                                               :Eclusa
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...bóia está em uso!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Impossível remover parte da estação...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Impossível converter o tipo de linha aqui...
@@ -1374,18 +1375,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Definir 
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteja o jogo com uma senha se não desejar que seja publicamente acessível
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecionar um mapa:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Em qual mapa deseja jogar?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não precisam estar todos preenchidos
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Rede Local
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Rede Local / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} cliente{P "" s}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não precisam estar todos preenchidos
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compan{P ia ias}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de empresas:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita o servidor para uma certa quantia de empresas
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} espectator{P "" es}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max espectadores:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limita o servidor para um certa quantia de espectadores
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores saberão o idioma utilizado no servidor.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Iniciar Jogo
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Iniciar um novo jogo em rede com mapa ou cenário aleatórios
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Abrir Jogo
@@ -1613,9 +1619,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a ár
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia com sinais normais
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia com pré-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia com sinais de saída
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia com sinais combo
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Linha de trem com sinais normais e pré-sinais
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Linha de trem com sinais normais e de saída
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ferrovia com sinais normais e combo
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Linha de trem com pré-sinais e de saída
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ferrovia com pré-sinais e combo
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ferrovia com sinais combo e de saída
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Remova a estação de trem antes
 
 

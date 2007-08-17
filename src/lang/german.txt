@@ -1263,6 +1263,7 @@ STR_LANDINFO_LOCK                                               :Schleuse
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... Boje ist in Benutzung
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Dieser Teil des Bahnhofs kann nicht entfernt werden...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Gleistyp kann hier nicht verändert werden...
@@ -1373,18 +1374,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Passwort
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Vergebe ein Passwort, um zu verhindern, dass unbefugte Leute beitreten können
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Spielfeld auswählen:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Welches Spielfeld soll verwendet werden?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Teilnehmeranzahl:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Auswahl der maximal erlaubten Anzahl von Teilnehmern. Nicht alle Slots müssen belegt werden.
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (ankündigen)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} Client{P "" s}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max. Teilnehmeranzahl:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Auswahl der maximal erlaubten Anzahl von Teilnehmern. Nicht alle Slots müssen belegt werden.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Firm{P a en}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max. Firmenanzahl:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Firmen
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} Beobachter
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max. Beobachteranzahl:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Beobachter
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Gesprochene Sprachen:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Damit andere Spieler wissen, welche Sprache auf diesem Server gesprochen wird.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Spiel beginnen
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Startet ein neues Mehrspielerspiel auf einem zufällig generierten Spielfeld oder einem Szenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Spiel Laden
@@ -1612,9 +1618,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...Gelä
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit normalen Signalen
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleise mit Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Gleis mit Vor- und Hauptsignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Gleis mit Haupt- und Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleise mit normalen und Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Gleis mit Vor- und Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleise mit Vor-  und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Gleise mit Ausfahr- und Kombinationssignalen
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bahnhof muss erst abgerissen werden
 
 
@@ -1862,9 +1872,9 @@ STR_3060_AIRPORT                                                :Flughafen
 STR_3061_TRUCK_LOADING_AREA                                     :Lkw-Ladeplatz
 STR_3062_BUS_STATION                                            :Busbahnhof
 STR_3063_SHIP_DOCK                                              :Schiffshafen
-STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Einzugsgebiet angezeigen
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Einzugsgebiet anzeigen
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Einzugsgebiet nicht angezeigen
-STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Zeige Einzugsgebiet
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Einzugsgebiet anzeigen
 STR_3068_DOCK                                                   :{WHITE}Hafen
 STR_3069_BUOY                                                   :Boje
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...Boje ist im Weg

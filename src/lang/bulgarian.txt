@@ -1372,12 +1372,13 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Пост
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Защитаване на вашата игра с парола за да не е публично достъпна
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Избор на карта:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Коя карта желаете да играете?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клиенти:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Избор на максималния брой клиенти. Не всички слотове трябва да се попълнят
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Интернет
 STR_NETWORK_LAN_INTERNET                                        :LAN / Интернет
 STR_NETWORK_INTERNET_ADVERTISE                                  :Интернет (реклама)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клиенти:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Избор на максималния брой клиенти. Не всички слотове трябва да се попълнят
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Макс. компании:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ограничаване на играта до определен брой компании
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Макс. наблюдатели:

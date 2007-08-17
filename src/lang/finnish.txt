@@ -1259,6 +1259,7 @@ STR_LANDINFO_LOCK                                               :Sulku
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...poiju on käytössä!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinaatit: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Aseman osaa ei voi poistaa...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Raidetyyppiä ei voi muuntaa...
@@ -1369,18 +1370,20 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Aseta sa
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Jos peliin ei halua ulkopuolisia, voi sen suojata salasanalla.
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Valitse kartta:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Mitä karttaa haluat pelata?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Pelaajien enimmäismäärä:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia.
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Lähiverkko
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Lähiverkko/Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (mainosta)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Pelaajien enimmäismäärä:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia.
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Yhtiöiden enimmäismäärä:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Rajoita yhtiöiden määrää palvelimella
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Katsojien enimmäismäärä:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Rajoita katsojien määrää palvelimella
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Puhuttu kieli:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Aloita peli
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Aloita uusi verkkopeli skenaariolla tai satunnaisella kartalla.
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Lataa peli
@@ -3335,7 +3338,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Luo ryhm
 STR_GROUP_DELETE_TIP                                            :{BLACK}Poista valittu ryhmä
 STR_GROUP_RENAME_TIP                                            :{BLACK}Nimeä valittu ryhmä
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Poista ryhmä automaattisesti korvattavien joukosta
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

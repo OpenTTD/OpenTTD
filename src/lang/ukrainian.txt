@@ -1388,6 +1388,7 @@ STR_LANDINFO_LOCK                                               :Шлюз
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...бакен використовується!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Координати: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Не можна зруйнувати частину станції...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Тут не можна модернізувати колію...
@@ -1498,18 +1499,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Вста
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Захистіть вашу гру паролем, якщо не бажаєте загального доступу
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Виберіть карту:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}На якій карті бажаєте грати?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клієнтів:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Виберіть максимальну кількість клієнтів. Не всі слоти мають бути зайняті
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Локальна
 STR_NETWORK_INTERNET                                            :Інтернет
 STR_NETWORK_LAN_INTERNET                                        :Локальна/Інтернет
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertise)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} клієнт{P "" а ів}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клієнтів:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Виберіть максимальну кількість клієнтів. Не всі слоти мають бути зайняті
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} компані{P я ї й}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Максимум компаній:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Обмежує кількість компаній на сервері
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} споглядач{P "" а ів}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Максмум глядачів:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Обмежує кількість глядачів на сервері
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Мова:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Інші гравці будуть знати якою мовою спілкуються на сервері
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Почати гру
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Почати нову мережну гру з випадковою картою або сценарієм
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Завантаження гри
@@ -1737,9 +1743,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...ця 
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Колія зі звичайними сигналами
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Колія з вхідними сигналами
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Колія з вихідними сигналами
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Колія з комбо-сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Залізнична колія зі звичайним та пре-сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Залізнична колія зі звичайним та вихід-сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Колія з нормальними і комбо-сигналами
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Залізнична колія з пре- та вихід-сигналами
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Колія з пре- і комбо-сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Колія з вихідними і комбо-сигналами
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Спочатку потрібно знести залізничну станцію
 
 
@@ -3501,7 +3511,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Клік
 STR_GROUP_DELETE_TIP                                            :{BLACK}Стерти вибрану групу
 STR_GROUP_RENAME_TIP                                            :{BLACK}Перейменувати вибрану групу
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Клікніть, щоб захистити групу від глобальної автозаміни
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
