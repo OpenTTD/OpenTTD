@@ -69,6 +69,10 @@ Station::~Station()
 
 	if (CleaningPool()) return;
 
+	while (!loading_vehicles.empty()) {
+		loading_vehicles.front()->LeaveStation();
+	}
+
 	MarkDirty();
 	RebuildStationLists();
 	InvalidateWindowClasses(WC_STATION_LIST);
