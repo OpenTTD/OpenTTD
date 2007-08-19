@@ -771,7 +771,7 @@ static void QZ_GameLoop()
 			st += GetTick() - st0;
 #endif
 			_screen.dst_ptr = _cocoa_video_data.pixels;
-			DrawTextMessage();
+			DrawChatMessage();
 			DrawMouseCursor();
 			QZ_Draw();
 		}
