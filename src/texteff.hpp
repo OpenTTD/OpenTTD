@@ -22,10 +22,10 @@ void DrawTextEffects(DrawPixelInfo *dpi);
 void UpdateTextEffect(TextEffectID effect_id, StringID msg);
 void RemoveTextEffect(TextEffectID effect_id);
 
-void InitTextMessage();
-void DrawTextMessage();
-void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...);
-void UndrawTextMessage();
+void InitChatMessage();
+void DrawChatMessage();
+void CDECL AddChatMessage(uint16 color, uint8 duration, const char *message, ...);
+void UndrawChatMessage();
 
 /* misc_gui.cpp */
 TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID color);

@@ -62,7 +62,7 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 	if (xo == 0 && yo == 0) return;
 
 	if (_cursor.visible) UndrawMouseCursor();
-	UndrawTextMessage();
+	UndrawChatMessage();
 
 	blitter->ScrollBuffer(_screen.dst_ptr, left, top, width, height, xo, yo);
 	/* This part of the screen is now dirty. */
@@ -912,7 +912,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 			UndrawMouseCursor();
 		}
 	}
-	UndrawTextMessage();
+	UndrawChatMessage();
 
 	DrawOverlappedWindowForAll(left, top, right, bottom);
 

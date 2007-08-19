@@ -41,31 +41,33 @@ struct TextEffect {
 };
 
 
-struct TextMessage {
+struct ChatMessage {
 	char message[MAX_TEXTMESSAGE_LENGTH];
 	uint16 color;
 	Date end_date;
 };
 
+/* used for text effects */
 static TextEffect *_text_effect_list = NULL;
-static TextMessage _textmsg_list[MAX_CHAT_MESSAGES];
+static uint16 _num_text_effects = INIT_NUM_TEXT_MESSAGES;
 TileIndex _animated_tile_list[MAX_ANIMATED_TILES];
 
-static bool _textmessage_dirty = false;
-static bool _textmessage_visible = false;
-static uint16 _num_text_effects = INIT_NUM_TEXT_MESSAGES;
+/* used for chat window */
+static ChatMessage _chatmsg_list[MAX_CHAT_MESSAGES];
+static bool _chatmessage_dirty = false;
+static bool _chatmessage_visible = false;
 
 /* The chatbox grows from the bottom so the coordinates are pixels from
  * the left and pixels from the bottom. The height is the maximum height */
-static const Oblong _textmsg_box = {10, 30, 500, 150};
-static uint8 _textmessage_backup[150 * 500 * 6]; // (height * width)
+static const Oblong _chatmsg_box = {10, 30, 500, 150};
+static uint8 _chatmessage_backup[150 * 500 * 6]; // (height * width)
 
-static inline uint GetTextMessageCount()
+static inline uint GetChatMessageCount()
 {
 	uint i;
 
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_textmsg_list[i].message[0] == '\0') break;
+		if (_chatmsg_list[i].message[0] == '\0') break;
 	}
 
 	return i;
@@ -75,7 +77,7 @@ static inline uint GetTextMessageCount()
  * @param color The colour this message is to be shown in
  * @param duration The duration of the chat message in game-days
  * @param message message itself in printf() style */
-void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...)
+void CDECL AddChatMessage(uint16 color, uint8 duration, const char *message, ...)
 {
 	char buf[MAX_TEXTMESSAGE_LENGTH];
 	const char *bufp;
@@ -91,45 +93,45 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	Utf8TrimString(buf, MAX_TEXTMESSAGE_LENGTH);
 
 	/* Force linebreaks for strings that are too long */
-	lines = GB(FormatStringLinebreaks(buf, _textmsg_box.width - 8), 0, 16) + 1;
+	lines = GB(FormatStringLinebreaks(buf, _chatmsg_box.width - 8), 0, 16) + 1;
 	if (lines >= MAX_CHAT_MESSAGES) return;
 
-	msg_count = GetTextMessageCount();
+	msg_count = GetChatMessageCount();
 	/* We want to add more chat messages than there is free space for, remove 'old' */
 	if (lines > MAX_CHAT_MESSAGES - msg_count) {
 		int i = lines - (MAX_CHAT_MESSAGES - msg_count);
-		memmove(&_textmsg_list[0], &_textmsg_list[i], sizeof(_textmsg_list[0]) * (msg_count - i));
+		memmove(&_chatmsg_list[0], &_chatmsg_list[i], sizeof(_chatmsg_list[0]) * (msg_count - i));
 		msg_count = MAX_CHAT_MESSAGES - lines;
 	}
 
 	for (bufp = buf; lines != 0; lines--) {
-		TextMessage *tmsg = &_textmsg_list[msg_count++];
-		ttd_strlcpy(tmsg->message, bufp, sizeof(tmsg->message));
+		ChatMessage *cmsg = &_chatmsg_list[msg_count++];
+		ttd_strlcpy(cmsg->message, bufp, sizeof(cmsg->message));
 
 		/* The default colour for a message is player colour. Replace this with
 		 * white for any additional lines */
-		tmsg->color = (bufp == buf && color & IS_PALETTE_COLOR) ? color : (0x1D - 15) | IS_PALETTE_COLOR;
-		tmsg->end_date = _date + duration;
+		cmsg->color = (bufp == buf && color & IS_PALETTE_COLOR) ? color : (0x1D - 15) | IS_PALETTE_COLOR;
+		cmsg->end_date = _date + duration;
 
 		bufp += strlen(bufp) + 1; // jump to 'next line' in the formatted string
 	}
 
-	_textmessage_dirty = true;
+	_chatmessage_dirty = true;
 }
 
-void InitTextMessage()
+void InitChatMessage()
 {
 	uint i;
 
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		_textmsg_list[i].message[0] = '\0';
+		_chatmsg_list[i].message[0] = '\0';
 	}
 }
 
-/** Hide the textbox */
-void UndrawTextMessage()
+/** Hide the chatbox */
+void UndrawChatMessage()
 {
-	if (_textmessage_visible) {
+	if (_chatmessage_visible) {
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		/* Sometimes we also need to hide the cursor
 		 *   This is because both textmessage and the cursor take a shot of the
@@ -143,20 +145,20 @@ void UndrawTextMessage()
 		 */
 
 		if (_cursor.visible) {
-			if (_cursor.draw_pos.x + _cursor.draw_size.x >= _textmsg_box.x &&
-				_cursor.draw_pos.x <= _textmsg_box.x + _textmsg_box.width &&
-				_cursor.draw_pos.y + _cursor.draw_size.y >= _screen.height - _textmsg_box.y - _textmsg_box.height &&
-				_cursor.draw_pos.y <= _screen.height - _textmsg_box.y) {
+			if (_cursor.draw_pos.x + _cursor.draw_size.x >= _chatmsg_box.x &&
+				_cursor.draw_pos.x <= _chatmsg_box.x + _chatmsg_box.width &&
+				_cursor.draw_pos.y + _cursor.draw_size.y >= _screen.height - _chatmsg_box.y - _chatmsg_box.height &&
+				_cursor.draw_pos.y <= _screen.height - _chatmsg_box.y) {
 				UndrawMouseCursor();
 			}
 		}
 
-		int x      = _textmsg_box.x;
-		int y      = _screen.height - _textmsg_box.y - _textmsg_box.height;
-		int width  = _textmsg_box.width;
-		int height = _textmsg_box.height;
+		int x      = _chatmsg_box.x;
+		int y      = _screen.height - _chatmsg_box.y - _chatmsg_box.height;
+		int width  = _chatmsg_box.width;
+		int height = _chatmsg_box.height;
 		if (y < 0) {
-			height = max(height + y, min(_textmsg_box.height, _screen.height));
+			height = max(height + y, min(_chatmsg_box.height, _screen.height));
 			y = 0;
 		}
 		if (x + width >= _screen.width) {
@@ -164,33 +166,33 @@ void UndrawTextMessage()
 		}
 		if (width <= 0 || height <= 0) return;
 
-		_textmessage_visible = false;
+		_chatmessage_visible = false;
 		/* Put our 'shot' back to the screen */
-		blitter->CopyFromBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _textmessage_backup, width, height);
+		blitter->CopyFromBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _chatmessage_backup, width, height);
 		/* And make sure it is updated next time */
 		_video_driver->MakeDirty(x, y, width, height);
 
-		_textmessage_dirty = true;
+		_chatmessage_dirty = true;
 	}
 }
 
 /** Check if a message is expired every day */
-void TextMessageDailyLoop()
+void ChatMessageDailyLoop()
 {
 	uint i;
 
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		TextMessage *tmsg = &_textmsg_list[i];
-		if (tmsg->message[0] == '\0') continue;
+		ChatMessage *cmsg = &_chatmsg_list[i];
+		if (cmsg->message[0] == '\0') continue;
 
 		/* Message has expired, remove from the list */
-		if (tmsg->end_date < _date) {
+		if (cmsg->end_date < _date) {
 			/* Move the remaining messages over the current message */
-			if (i != MAX_CHAT_MESSAGES - 1) memmove(tmsg, tmsg + 1, sizeof(*tmsg) * (MAX_CHAT_MESSAGES - i - 1));
+			if (i != MAX_CHAT_MESSAGES - 1) memmove(cmsg, cmsg + 1, sizeof(*cmsg) * (MAX_CHAT_MESSAGES - i - 1));
 
 			/* Mark the last item as empty */
-			_textmsg_list[MAX_CHAT_MESSAGES - 1].message[0] = '\0';
-			_textmessage_dirty = true;
+			_chatmsg_list[MAX_CHAT_MESSAGES - 1].message[0] = '\0';
+			_chatmessage_dirty = true;
 
 			/* Go one item back, because we moved the array 1 to the left */
 			i--;
@@ -198,27 +200,27 @@ void TextMessageDailyLoop()
 	}
 }
 
-/** Draw the textmessage-box */
-void DrawTextMessage()
+/** Draw the chat message-box */
+void DrawChatMessage()
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-	if (!_textmessage_dirty) return;
+	if (!_chatmessage_dirty) return;
 
 	/* First undraw if needed */
-	UndrawTextMessage();
+	UndrawChatMessage();
 
 	if (_iconsole_mode == ICONSOLE_FULL) return;
 
 	/* Check if we have anything to draw at all */
-	uint count = GetTextMessageCount();
+	uint count = GetChatMessageCount();
 	if (count == 0) return;
 
-	int x      = _textmsg_box.x;
-	int y      = _screen.height - _textmsg_box.y - _textmsg_box.height;
-	int width  = _textmsg_box.width;
-	int height = _textmsg_box.height;
+	int x      = _chatmsg_box.x;
+	int y      = _screen.height - _chatmsg_box.y - _chatmsg_box.height;
+	int width  = _chatmsg_box.width;
+	int height = _chatmsg_box.height;
 	if (y < 0) {
-		height = max(height + y, min(_textmsg_box.height, _screen.height));
+		height = max(height + y, min(_chatmsg_box.height, _screen.height));
 		y = 0;
 	}
 	if (x + width >= _screen.width) {
@@ -226,34 +228,35 @@ void DrawTextMessage()
 	}
 	if (width <= 0 || height <= 0) return;
 
-	assert(blitter->BufferSize(width, height) < (int)sizeof(_textmessage_backup));
+	assert(blitter->BufferSize(width, height) < (int)sizeof(_chatmessage_backup));
 
 	/* Make a copy of the screen as it is before painting (for undraw) */
-	blitter->CopyToBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _textmessage_backup, width, height);
+	blitter->CopyToBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _chatmessage_backup, width, height);
 
 	_cur_dpi = &_screen; // switch to _screen painting
 
-	/* Paint a half-transparent box behind the text messages */
+	/* Paint a half-transparent box behind the chat messages */
 	GfxFillRect(
-			_textmsg_box.x,
-			_screen.height - _textmsg_box.y - count * 13 - 2,
-			_textmsg_box.x + _textmsg_box.width - 1,
-			_screen.height - _textmsg_box.y - 2,
+			_chatmsg_box.x,
+			_screen.height - _chatmsg_box.y - count * 13 - 2,
+			_chatmsg_box.x + _chatmsg_box.width - 1,
+			_screen.height - _chatmsg_box.y - 2,
 			PALETTE_TO_TRANSPARENT | (1 << USE_COLORTABLE) // black, but with some alpha for background
 		);
 
-	/* Paint the messages starting with the lowest at the bottom */
+	/* Paint the chat messages starting with the lowest at the bottom */
 	for (uint y = 13; count-- != 0; y += 13) {
-		DoDrawString(_textmsg_list[count].message, _textmsg_box.x + 3, _screen.height - _textmsg_box.y - y + 1, _textmsg_list[count].color);
+		DoDrawString(_chatmsg_list[count].message, _chatmsg_box.x + 3, _screen.height - _chatmsg_box.y - y + 1, _chatmsg_list[count].color);
 	}
 
 	/* Make sure the data is updated next flush */
 	_video_driver->MakeDirty(x, y, width, height);
 
-	_textmessage_visible = true;
-	_textmessage_dirty = false;
+	_chatmessage_visible = true;
+	_chatmessage_dirty = false;
 }
 
+/** Text Effects */
 static void MarkTextEffectAreaDirty(TextEffect *te)
 {
 	MarkAllViewportsDirty(

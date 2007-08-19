@@ -1867,7 +1867,7 @@ void UpdateWindows()
 	FOR_ALL_WINDOWS(wz) {
 		if ((*wz)->viewport != NULL) UpdateViewportPosition(*wz);
 	}
-	DrawTextMessage();
+	DrawChatMessage();
 	/* Redraw mouse cursor in case it was hidden */
 	DrawMouseCursor();
 }

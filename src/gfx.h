@@ -194,7 +194,7 @@ void UpdateWindows();
 
 uint32 InteractiveRandom(); //< Used for random sequences that are not the same on the other end of the multiplayer link
 uint InteractiveRandomRange(uint max);
-void DrawTextMessage();
+void DrawChatMessage();
 void DrawMouseCursor();
 void ScreenSizeChanged();
 void HandleExitGameRequest();

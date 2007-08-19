@@ -151,7 +151,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeCheats();
 
 	InitTextEffects();
-	InitTextMessage();
+	InitChatMessage();
 	InitializeAnimatedTiles();
 
 	InitializeLandscapeVariables(false);

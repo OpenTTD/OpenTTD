@@ -182,7 +182,7 @@ static OnNewVehicleDayProc * _on_new_vehicle_day_proc[] = {
 };
 
 extern void WaypointsDailyLoop();
-extern void TextMessageDailyLoop();
+extern void ChatMessageDailyLoop();
 extern void EnginesDailyLoop();
 extern void DisasterDailyLoop();
 
@@ -245,7 +245,7 @@ void IncreaseDate()
 	/* yeah, increase day counter and call various daily loops */
 	_date++;
 
-	TextMessageDailyLoop();
+	ChatMessageDailyLoop();
 
 	DisasterDailyLoop();
 	WaypointsDailyLoop();
@@ -309,7 +309,7 @@ void IncreaseDate()
 
 		/* Because the _date wraps here, and text-messages expire by game-days, we have to clean out
 		 *  all of them if the date is set back, else those messages will hang for ever */
-		InitTextMessage();
+		InitChatMessage();
 	}
 
 	if (_patches.auto_euro) CheckSwitchToEuro();

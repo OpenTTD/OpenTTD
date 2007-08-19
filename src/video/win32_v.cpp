@@ -884,7 +884,7 @@ void VideoDriver_Win32::MainLoop()
 			GdiFlush();
 #endif
 			_screen.dst_ptr = _wnd.buffer_bits;
-			DrawTextMessage();
+			DrawChatMessage();
 			DrawMouseCursor();
 		}
 	}
