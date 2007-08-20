@@ -23,6 +23,10 @@
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#if defined(_MSC_VER) && !defined(WINCE)
+	#include <dbghelp.h>
+#endif
+
 
 static bool _has_console;
 
@@ -583,6 +587,43 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 			CloseHandle(file);
 		}
 	}
+
+#if !defined(_DEBUG)
+	{
+		HMODULE dbghelp = LoadLibrary(_T("dbghelp.dll"));
+		if (dbghelp != NULL) {
+			typedef BOOL (WINAPI *MiniDumpWriteDump_t)(HANDLE, DWORD, HANDLE,
+					MINIDUMP_TYPE,
+					CONST PMINIDUMP_EXCEPTION_INFORMATION,
+					CONST PMINIDUMP_USER_STREAM_INFORMATION,
+					CONST PMINIDUMP_CALLBACK_INFORMATION);
+			MiniDumpWriteDump_t funcMiniDumpWriteDump = (MiniDumpWriteDump_t)GetProcAddress(dbghelp, "MiniDumpWriteDump");
+			if (funcMiniDumpWriteDump != NULL) {
+				HANDLE file  = CreateFile(_T("crash.dmp"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
+				HANDLE proc  = GetCurrentProcess();
+				DWORD procid = GetCurrentProcessId();
+				MINIDUMP_EXCEPTION_INFORMATION mdei;
+				MINIDUMP_USER_STREAM userstream;
+				MINIDUMP_USER_STREAM_INFORMATION musi;
+				char msg[] = "****** Built on " __DATE__ " " __TIME__ ". ******";
+
+				userstream.Type        = LastReservedStream + 1;
+				userstream.Buffer      = msg;
+				userstream.BufferSize  = sizeof(msg);
+
+				musi.UserStreamCount   = 1;
+				musi.UserStreamArray   = &userstream;
+
+				mdei.ThreadId = GetCurrentThreadId();
+				mdei.ExceptionPointers  = ep;
+				mdei.ClientPointers     = false;
+
+				funcMiniDumpWriteDump(proc, procid, file, MiniDumpWithDataSegs, &mdei, &musi, NULL);
+			}
+			FreeLibrary(dbghelp);
+		}
+	}
+#endif
 
 	/* Close any possible log files */
 	CloseConsoleLogIfActive();

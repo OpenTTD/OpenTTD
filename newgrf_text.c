@@ -95,7 +95,7 @@ const iso_grf iso_codes[] = {
 	{"es_ES", GRFLX_SPANISH},
 	{"af_ZA", GRFLX_AFRIKAANS},
 	{"hr_HR", GRFLX_CROATIAN},
-	{"cs_CS", GRFLX_CZECH},
+	{"cs_CZ", GRFLX_CZECH},
 	{"ca_ES", GRFLX_CATALAN},
 	{"da_DA", GRFLX_DANISH},
 	{"nl_NL", GRFLX_DUTCH},

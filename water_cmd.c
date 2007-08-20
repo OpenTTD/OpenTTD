@@ -550,6 +550,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			case MP_RAILWAY: {
 				TrackBits tracks;
 				Slope slope;
+				Vehicle *v;
 
 				if (!IsPlainRailTile(target)) break;
 
@@ -563,6 +564,9 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 						)) {
 					break;
 				}
+
+				v = FindFloodableVehicleOnTile(target);
+				if (v != NULL) FloodVehicle(v);
 			}
 			/* FALLTHROUGH */
 

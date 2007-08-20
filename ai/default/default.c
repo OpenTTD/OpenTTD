@@ -239,14 +239,6 @@ static int32 AiGetBasePrice(const Player* p)
 	return base;
 }
 
-#if 0
-static EngineID AiChooseShipToBuild(byte cargo, int32 money)
-{
-	// XXX: not done
-	return INVALID_ENGINE;
-}
-#endif
-
 static EngineID AiChooseRoadVehToReplaceWith(const Player* p, const Vehicle* v)
 {
 	int32 avail_money = p->player_money + v->value;
@@ -277,9 +269,7 @@ static EngineID AiChooseTrainToReplaceWith(const Player* p, const Vehicle* v)
 
 static EngineID AiChooseShipToReplaceWith(const Player* p, const Vehicle* v)
 {
-	error("!AiChooseShipToReplaceWith");
-
-	/* maybe useless, but avoids compiler warning this way */
+	/* Ships are not implemented in this (broken) AI */
 	return INVALID_ENGINE;
 }
 
@@ -400,7 +390,7 @@ static void AiHandleReplaceAircraft(Player *p)
 
 static void AiHandleReplaceShip(Player *p)
 {
-	error("!AiHandleReplaceShip");
+	/* Ships are not implemented in this (broken) AI */
 }
 
 typedef EngineID CheckReplaceProc(const Player* p, const Vehicle* v);
@@ -1478,12 +1468,6 @@ static void AiWantAircraftRoute(Player *p)
 	}
 }
 
-static void AiWantShipRoute(Player *p)
-{
-	// XXX
-//	error("AiWaitShipRoute");
-}
-
 
 
 static void AiStateWantNewRoute(Player *p)
@@ -1517,8 +1501,7 @@ static void AiStateWantNewRoute(Player *p)
 			if (_patches.ai_disable_veh_aircraft) continue;
 			AiWantAircraftRoute(p);
 		} else {
-			if (_patches.ai_disable_veh_ship) continue;
-			AiWantShipRoute(p);
+			/* Ships are not implemented in this (broken) AI */
 		}
 
 		// got a route?
@@ -3510,20 +3493,17 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 static void AiStateCheckShipStuff(Player *p)
 {
-	// XXX
-	error("!AiStateCheckShipStuff");
+	/* Ships are not implemented in this (broken) AI */
 }
 
 static void AiStateBuildDefaultShipBlocks(Player *p)
 {
-	// XXX
-	error("!AiStateBuildDefaultShipBlocks");
+	/* Ships are not implemented in this (broken) AI */
 }
 
 static void AiStateDoShipStuff(Player *p)
 {
-	// XXX
-	error("!AiStateDoShipStuff");
+	/* Ships are not implemented in this (broken) AI */
 }
 
 static void AiStateSellVeh(Player *p)
@@ -3558,9 +3538,8 @@ static void AiStateSellVeh(Player *p)
 			}
 
 			DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_AIRCRAFT);
-			} else if (v->type == VEH_Ship) {
-			// XXX: not implemented
-			error("!v->type == VEH_Ship");
+		} else if (v->type == VEH_Ship) {
+			/* Ships are not implemented in this (broken) AI */
 		}
 	}
 

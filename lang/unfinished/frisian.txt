@@ -1,6 +1,6 @@
 ##name Frisian
 ##ownname Frysk
-##isocode fy
+##isocode fy_NL
 
 ##id 0x0000
 STR_NULL                                                        :

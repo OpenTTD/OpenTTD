@@ -1,6 +1,6 @@
 ##name Italian
 ##ownname Italiano
-##isocode it
+##isocode it_IT
 ##plural 0
 ##case ms mp fs fp
 ##gender m f

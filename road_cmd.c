@@ -520,7 +520,7 @@ int32 CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex start_tile, tile;
-	int32 cost, ret;
+	int32 cost, ret, money;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -541,6 +541,7 @@ int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	cost = 0;
+	money = GetAvailableMoneyForCommand();
 	tile = start_tile;
 	// Start tile is the small number.
 	for (;;) {
@@ -551,8 +552,18 @@ int32 CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 		// try to remove the halves.
 		if (bits != 0) {
-			ret = DoCommand(tile, bits, 0, flags, CMD_REMOVE_ROAD);
-			if (!CmdFailed(ret)) cost += ret;
+			ret = DoCommand(tile, bits, 0, flags& ~DC_EXEC, CMD_REMOVE_ROAD);
+			if (!CmdFailed(ret)) {
+				if (flags & DC_EXEC) {
+					money -= ret;
+					if (money < 0) {
+						_additional_cash_required = DoCommand(end_tile, start_tile, p2, flags & ~DC_EXEC, CMD_REMOVE_LONG_ROAD);
+						return cost;
+					}
+					DoCommand(tile, bits, 0, flags, CMD_REMOVE_ROAD);
+				}
+				cost += ret;
+			}
 		}
 
 		if (tile == end_tile) break;
