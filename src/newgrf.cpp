@@ -1724,12 +1724,7 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 				IndustryTileSpec **tilespec = &_cur_grffile->indtspec[indtid + i];
 				byte subs_id = grf_load_byte(&buf);
 
-				if (subs_id == 0xFF) {
-					/* Instead of defining a new industry, a substitute industry id
-					 * of 0xFF disables the old industry with the current id. */
-					tsp->enabled = false;
-					continue;
-				} else if (subs_id >= NEW_INDUSTRYTILEOFFSET) {
+				if (subs_id >= NEW_INDUSTRYTILEOFFSET) {
 					/* The substitute id must be one of the original industry tile. */
 					grfmsg(2, "IndustryTilesChangeInfo: Attempt to use new industry tile %u as substitute industry tile for %u. Ignoring.", subs_id, indtid + i);
 					return false;
