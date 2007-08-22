@@ -133,7 +133,7 @@ struct IndustryTileTable {
 
 /** Data related to the handling of grf files.  Common to both industry and industry tile */
 struct GRFFileProps {
-	uint8 subst_id;
+	uint16 subst_id;
 	uint16 local_id;                      ///< id defined by the grf file for this industry
 	struct SpriteGroup *spritegroup;      ///< pointer to the different sprites of the industry
 	const struct GRFFile *grffile;        ///< grf file that introduced this industry
