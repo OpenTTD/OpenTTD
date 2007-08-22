@@ -1374,18 +1374,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Establec
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteje tu juego con una contraseña si no quieres que otras personas se unan a él
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecciona mapa:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}¿En qué mapa desea jugar?
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (anuncio)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} cliente{P "" s}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máx. clientes permitidos:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Seleccione un número máximo de clientes. No todos los slots serán ocupados.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compañia{P y s}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo compañías:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar el servidor a un cierto número de compañías
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} espectador{P "" es}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Espectadores máximos
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar el servidor a un cierto número de espectadores
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma hablado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Otros jugadores sabrán cual es el idioma hablado en este servidor.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Empezar Juego
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Empezar un nuevo juego en red desde un mapa al azar o escenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Cargar Juego

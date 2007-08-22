@@ -1349,6 +1349,7 @@ STR_LANDINFO_LOCK                                               :Śluza
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boja w użyciu!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Współrzędne: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nie można usunąć części stacji...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Nie można zmienić typu torów w tym miejscu...
@@ -1459,18 +1460,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Ustaw ha
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Zabezpiecz grę hasłem jeśli nie chcesz, by była publicznie dostępna
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Wybierz mapę:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Na której mapie chcesz grac?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Dopuszczalna ilość klientów:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie pola muszą być wypełnione.
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publiczny)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" ów ów}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Dopuszczalna ilość klientów:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie pola muszą być wypełnione.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} firm{P a y ""}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maksymalna ilość firm:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ogranicz serwer do określonej ilości firm
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} widz{P "" ów ów}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksymalna ilość widzów:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ogranicz serwer do określonej ilości widzów
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Używany język:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Inni gracze będą poinformowani jaki język jest używany na serwerze
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Rozpocznij grę
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Uruchom nową grę sieciową z losową mapą lub scenariuszem
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Wczytaj Grę
@@ -1698,9 +1704,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...teren
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Tory kolejowe ze zwykłą sygnalizacją
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Tory kolejowe z pre-sygnałami
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Tory kolejowe z exit-sygnałami
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Torry kolejowe z normalnymi i pre-sygnałami
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Tory kolejowe z combo-sygnałami
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Tory kolejowe z normalnymi i pre-sygnałami
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Tory kolejowe z normalnymi i exit-sygnałami
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tory kolejowe z normalnymi i combo-sygnałami
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tory kolejowe z pre- i exit-sygnałami
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tory kolejowe z pre i combo-sygnałami
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tory kolejowe z exit i combo-sygnałami
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Należy najpierw usunąć stację kolejową
 
 
