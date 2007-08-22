@@ -274,9 +274,11 @@ static void DrawTile_Industry(TileInfo *ti)
 		} else {
 			/* No sprite group (or no valid one) found, meaning no graphics associated.
 			 * Use the substitute one instead */
-			gfx = indts->grf_prop.subst_id;
-			/* And point the industrytile spec accordingly */
-			indts = GetIndustryTileSpec(indts->grf_prop.subst_id);
+			if (indts->grf_prop.subst_id != INVALID_INDUSTRYTILE) {
+				gfx = indts->grf_prop.subst_id;
+				/* And point the industrytile spec accordingly */
+				indts = GetIndustryTileSpec(gfx);
+			}
 		}
 	}
 
