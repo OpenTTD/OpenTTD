@@ -212,7 +212,7 @@ struct IndustryTileSpec {
 
 /* industry_cmd.cpp*/
 const IndustrySpec *GetIndustrySpec(IndustryType thistype);    ///< Array of industries data
-const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx, bool full_check = true);  ///< Array of industry tiles data
+const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of industry tiles data
 void ResetIndustries();
 void PlantRandomFarmField(const Industry *i);
 

@@ -113,19 +113,13 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype)
  * This will ensure at once : proper access and
  * not allowing modifications of it.
  * @param gfx of industrytile (which is the index in _industry_tile_specs)
- * @param full_check (default to true) verify if an override is available.
- *  If so, use it instead of the gfx provided.
  * @pre gfx < INVALID_INDUSTRYTILE
  * @return a pointer to the corresponding industrytile spec
  **/
-const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx, bool full_check)
+const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx)
 {
 	assert(gfx < INVALID_INDUSTRYTILE);
-	const IndustryTileSpec *its = &_industry_tile_specs[gfx];
-	if (full_check && its->grf_prop.override != INVALID_INDUSTRYTILE) {
-		its = &_industry_tile_specs[its->grf_prop.override];
-	}
-	return its;
+	return &_industry_tile_specs[gfx];
 }
 
 Industry::~Industry()
@@ -334,6 +328,7 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
+	if (itspec->grf_prop.override != INVALID_INDUSTRYTILE) itspec = GetIndustryTileSpec(itspec->grf_prop.override);
 
 	/* When we have to use a callback, we put our data in the next two variables */
 	CargoID raw_accepts_cargo[lengthof(itspec->accepts_cargo)];
