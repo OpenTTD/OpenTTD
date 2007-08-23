@@ -693,11 +693,21 @@ static Window *LocalAllocateWindow(
 		w->wndproc(w, &e);
 	}
 
-	if (w->left + w->width > _screen.width) w->left -= (w->left + w->width - _screen.width);
+	int nx = w->left;
+	int ny = w->top;
+
+	if (nx + w->width > _screen.width) nx -= (nx + w->width - _screen.width);
 
 	const Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	w->top  = max(w->top, (wt == NULL || w == wt || y == 0) ? 0 : wt->height);
-	w->left = max(w->left, 0);
+	ny = max(ny, (wt == NULL || w == wt || y == 0) ? 0 : wt->height);
+	nx = max(nx, 0);
+
+	if (w->viewport != NULL) {
+		w->viewport->left += nx - w->left;
+		w->viewport->top  += ny - w->top;
+	}
+	w->left = nx;
+	w->top = ny;
 
 	SetWindowDirty(w);
 
