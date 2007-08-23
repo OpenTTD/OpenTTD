@@ -33,6 +33,8 @@ HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, HOUSE_MAX, INVALID_HOUSE_ID);
 
 void CheckHouseIDs()
 {
+	InitializeBuildingCounts();
+
 	for (TileIndex t = 0; t < MapSize(); t++) {
 		HouseID house_id;
 
@@ -42,13 +44,11 @@ void CheckHouseIDs()
 		if (!GetHouseSpecs(house_id)->enabled && house_id >= NEW_HOUSE_OFFSET) {
 			/* The specs for this type of house are not available any more, so
 			 * replace it with the substitute original house type. */
-			SetHouseType(t, _house_mngr.GetSubstituteID(house_id));
+			house_id = _house_mngr.GetSubstituteID(house_id);
+			SetHouseType(t, house_id);
 		}
+		IncreaseBuildingCount(GetTownByTile(t), house_id);
 	}
-
-	InitializeBuildingCounts();
-	AfterLoadCountBuildings();
-
 }
 
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32 grfid)
