@@ -2343,8 +2343,8 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 				}
 
 				/* For normal (non drive-through) road stops */
-				/* Check if station is busy or if there are no free bays. */
-				if (rs->IsEntranceBusy() || !rs->HasFreeBay()) return VETSB_CANNOT_ENTER;
+				/* Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
+				if (rs->IsEntranceBusy() || !rs->HasFreeBay() || RoadVehHasArticPart(v)) return VETSB_CANNOT_ENTER;
 
 				SETBIT(v->u.road.state, RVS_IN_ROAD_STOP);
 

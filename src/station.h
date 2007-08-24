@@ -70,6 +70,8 @@ struct RoadStop : PoolItem<RoadStop, RoadStopID, &_RoadStop_pool> {
 	void FreeBay(uint nr);
 	bool IsEntranceBusy() const;
 	void SetEntranceBusy(bool busy);
+
+	RoadStop *GetNextRoadStop(const Vehicle *v) const;
 };
 
 struct StationSpecList {
@@ -102,17 +104,19 @@ struct StationRect : public Rect {
 };
 
 struct Station : PoolItem<Station, StationID, &_Station_pool> {
-	public:
-		RoadStop *GetPrimaryRoadStop(RoadStop::Type type) const
-		{
-			return type == RoadStop::BUS ? bus_stops : truck_stops;
-		}
+public:
+	RoadStop *GetPrimaryRoadStop(RoadStop::Type type) const
+	{
+		return type == RoadStop::BUS ? bus_stops : truck_stops;
+	}
 
-		const AirportFTAClass *Airport() const
-		{
-			if (airport_tile == 0) return GetAirport(AT_DUMMY);
-			return GetAirport(airport_type);
-		}
+	RoadStop *GetPrimaryRoadStop(const Vehicle *v) const;
+
+	const AirportFTAClass *Airport() const
+	{
+		if (airport_tile == 0) return GetAirport(AT_DUMMY);
+		return GetAirport(airport_type);
+	}
 
 	TileIndex xy;
 	RoadStop *bus_stops;

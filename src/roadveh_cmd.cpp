@@ -794,24 +794,17 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 	switch (order->type) {
 		case OT_GOTO_STATION: {
-			const RoadStop* rs;
-
 			if (order->dest == v->last_station_visited) {
 				v->last_station_visited = INVALID_STATION;
 			}
 
-			rs = GetStation(order->dest)->GetPrimaryRoadStop(
-				IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK
-			);
+			const RoadStop *rs = GetStation(order->dest)->GetPrimaryRoadStop(v);
 
 			TileIndex dest = INVALID_TILE;
 			if (rs != NULL) {
 				uint mindist = MAX_UVALUE(uint);
 
-				for (; rs != NULL; rs = rs->next) {
-					/* The vehicle cannot go to this roadstop */
-					if ((GetRoadTypes(rs->xy) & v->u.road.compatible_roadtypes) == ROADTYPES_NONE) continue;
-
+				for (; rs != NULL; rs = rs->GetNextRoadStop(v)) {
 					uint dist = DistanceManhattan(v->tile, rs->xy);
 
 					if (dist < mindist) {
@@ -1143,7 +1136,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 	FindRoadToChooseData frd;
 	Trackdir best_track;
 
-	uint32 r  = GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
+	uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
 	TrackdirBits signal    = (TrackdirBits)GB(r, 16, 16);
 	TrackdirBits trackdirs = (TrackdirBits)GB(r,  0, 16);
 
@@ -1154,8 +1147,9 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 		}
 	} else if (IsTileType(tile, MP_STATION) && IsStandardRoadStopTile(tile)) {
 		/* Standard road stop (drive-through stops are treated as normal road) */
-		if (!IsTileOwner(tile, v->owner) || GetRoadStopDir(tile) == enterdir) {
-			/* different station owner or wrong orientation */
+
+		if (!IsTileOwner(tile, v->owner) || GetRoadStopDir(tile) == enterdir || RoadVehHasArticPart(v)) {
+			/* different station owner or wrong orientation or the vehicle has articulated parts */
 			trackdirs = TRACKDIR_BIT_NONE;
 		} else {
 			/* Our station */
@@ -1166,7 +1160,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 				trackdirs = TRACKDIR_BIT_NONE;
 			} else {
 				/* Proper station type, check if there is free loading bay */
-				if (!_patches.roadveh_queue &&  IsStandardRoadStopTile(tile) &&
+				if (!_patches.roadveh_queue && IsStandardRoadStopTile(tile) &&
 						!GetRoadStopByTile(tile, rstype)->HasFreeBay()) {
 					/* Station is full and RV queuing is off */
 					trackdirs = TRACKDIR_BIT_NONE;
@@ -1922,9 +1916,9 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED)) {
-		Station* st = GetStation(v->current_order.dest);
-		RoadStop* rs = st->GetPrimaryRoadStop(IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK);
-		RoadStop* best = NULL;
+		Station *st = GetStation(v->current_order.dest);
+		RoadStop *rs = st->GetPrimaryRoadStop(v);
+		RoadStop *best = NULL;
 
 		if (rs != NULL) {
 			/* We try to obtain a slot if:
@@ -1941,7 +1935,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 					v->unitnumber, v->index, st->index, st->xy
 				);
 				/* Now we find the nearest road stop that has a free slot */
-				for (; rs != NULL; rs = rs->next) {
+				for (; rs != NULL; rs = rs->GetNextRoadStop(v)) {
 					dist = RoadFindPathToStop(v, rs->xy);
 					if (dist == UINT_MAX) {
 						DEBUG(ms, 4, " stop 0x%X is unreachable, not treating further", rs->xy);

@@ -34,6 +34,8 @@
 #include "yapf/yapf.h"
 #include "date.h"
 #include "helpers.hpp"
+#include "cargotype.h"
+#include "roadveh.h"
 
 Station::Station(TileIndex tile)
 {
@@ -90,6 +92,29 @@ Station::~Station()
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		goods[c].cargo.Truncate(0);
 	}
+}
+
+
+/**
+ * Get the primary road stop (the first road stop) that the given vehicle can load/unload.
+ * @param v the vehicle to get the first road stop for
+ * @return the first roadstop that this vehicle can load at
+ */
+RoadStop *Station::GetPrimaryRoadStop(const Vehicle *v) const
+{
+	RoadStop *rs = this->GetPrimaryRoadStop(IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK);
+
+	for (; rs != NULL; rs = rs->next) {
+		/* The vehicle cannot go to this roadstop (different roadtype) */
+		if ((GetRoadTypes(rs->xy) & v->u.road.compatible_roadtypes) == ROADTYPES_NONE) continue;
+		/* The vehicle is articulated and can therefor not go the a standard road stop */
+		if (IsStandardRoadStopTile(rs->xy) && RoadVehHasArticPart(v)) continue;
+
+		/* The vehicle can actually go to this road stop. So, return it! */
+		break;
+	}
+
+	return rs;
 }
 
 /** Called when new facility is built on the station. If it is the first facility
@@ -479,4 +504,24 @@ bool RoadStop::IsEntranceBusy() const
 void RoadStop::SetEntranceBusy(bool busy)
 {
 	SB(status, 7, 1, busy);
+}
+
+/**
+ * Get the next road stop accessible by this vehicle.
+ * @param v the vehicle to get the next road stop for.
+ * @return the next road stop accessible.
+ */
+RoadStop *RoadStop::GetNextRoadStop(const Vehicle *v) const
+{
+	for (RoadStop *rs = this->next; rs != NULL; rs = rs->next) {
+		/* The vehicle cannot go to this roadstop (different roadtype) */
+		if ((GetRoadTypes(rs->xy) & v->u.road.compatible_roadtypes) != ROADTYPES_NONE) continue;
+		/* The vehicle is articulated and can therefor not go the a standard road stop */
+		if (IsStandardRoadStopTile(rs->xy) && RoadVehHasArticPart(v)) continue;
+
+		/* The vehicle can actually go to this road stop. So, return it! */
+		return rs;
+	}
+
+	return NULL;
 }
