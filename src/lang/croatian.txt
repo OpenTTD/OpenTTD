@@ -1625,6 +1625,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Tračnice sa no
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tračnice s normalnim i kombo znakovima
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tračnice sa prethodno postavljenim i izlaznim znakovima
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tračnice s prethodno postavljenim i kombo znakovima
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tračnice s izlaznim i kombo znakovima
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Morati prvo maknuti željezničku stanicu
 
 

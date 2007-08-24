@@ -401,7 +401,7 @@ STR_AVAILABLE_TRAINS                                            :{BLACK}Käytett
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Käytettävissä olevat ajoneuvot
 STR_AVAILABLE_SHIPS                                             :{BLACK}Käytettävissä olevat laivat
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Käytettävissä olevat ilma-alukset
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Näytä lista mahdollisista moottorimalleista tälle kulkuneuvolle.
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Näytä lista saatavilla olevista moottorityypeistä tälle ajoneuvotyypille.
 STR_MANAGE_LIST                                                 :{BLACK}Muokkaa listaa
 STR_MANAGE_LIST_TIP                                             :{BLACK}Ohjaa kaikkia listan ajoneuvoja
 STR_REPLACE_VEHICLES                                            :Korvaa liikennevälineitä
@@ -1357,7 +1357,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}Salasan
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}PALVELIN KIINNI
 STR_NETWORK_SERVER_FULL                                         :{SILVER}PALVELIN TÄYNNÄ
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIO EI TÄSMÄÄ
-STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF YHTEENSOPIMATTOMUUS
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF ei täsmää
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Liity peliin
 
@@ -2726,7 +2726,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kulu: {C
 STR_885C_BROKEN_DOWN                                            :{RED}Rikki
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannukset: {LTBLUE}{CURRENCY}/vuosi
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_S}  {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Huippunopeus: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Paino: {LTBLUE}{WEIGHT_S} {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Huippunopeus: {LTBLUE}{VELOCITY} {BLACK}Suurin vetokyky.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Massa: {LTBLUE}{WEIGHT_S} {BLACK}Voima: {LTBLUE}{POWER}{BLACK} Huippunopeus: {LTBLUE}{VELOCITY} {BLACK}Huippuvääntö: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Tuotto tänä vuonna: {LTBLUE}{CURRENCY}  (viime vuonna: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Luotettavuus: {LTBLUE}{COMMA}%  {BLACK}Hajoamisia viime huollon jälkeen: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Pysäytetty
@@ -3194,7 +3194,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoro
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit
 STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vetokyky: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vääntömomentti: {GOLD}{FORCE}
 
 ########### String for New Landscape Generator
 
