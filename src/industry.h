@@ -220,6 +220,13 @@ void PlantRandomFarmField(const Industry *i);
 extern IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 
+static inline IndustryGfx GetTranslatedIndustryTileID(IndustryGfx gfx)
+{
+	assert(gfx < INVALID_INDUSTRYTILE);
+	const IndustryTileSpec *it = &_industry_tile_specs[gfx];
+	return it->grf_prop.override == INVALID_INDUSTRYTILE ? gfx : it->grf_prop.override;
+}
+
 /* smallmap_gui.cpp */
 void BuildIndustriesLegend();
 

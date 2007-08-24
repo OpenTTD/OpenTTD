@@ -328,7 +328,6 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 {
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
-	if (itspec->grf_prop.override != INVALID_INDUSTRYTILE) itspec = GetIndustryTileSpec(itspec->grf_prop.override);
 
 	/* When we have to use a callback, we put our data in the next two variables */
 	CargoID raw_accepts_cargo[lengthof(itspec->accepts_cargo)];
@@ -1180,14 +1179,15 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 	_error_message = STR_0239_SITE_UNSUITABLE;
 
 	do {
+		IndustryGfx gfx = GetTranslatedIndustryTileID(it->gfx);
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 
 		if (!IsValidTile(cur_tile)) {
-			if (it->gfx == 0xff) continue;
+			if (gfx == 0xff) continue;
 			return false;
 		}
 
-		if (it->gfx == 0xFF) {
+		if (gfx == 0xFF) {
 			if (!IsTileType(cur_tile, MP_WATER) ||
 					GetTileSlope(cur_tile, NULL) != SLOPE_FLAT) {
 				return false;
@@ -1201,7 +1201,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 
 			if (HASBIT(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
 				if (custom_shape_check != NULL) *custom_shape_check = true;
-				if (!PerformIndustryTileSlopeCheck(cur_tile, its, type, it->gfx)) return false;
+				if (!PerformIndustryTileSlopeCheck(cur_tile, its, type, gfx)) return false;
 			} else {
 				if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
 					/* As soon as the tile is not water, bail out.

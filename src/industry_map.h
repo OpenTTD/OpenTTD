@@ -132,7 +132,7 @@ static inline void SetIndustryConstructionStage(TileIndex tile, byte value)
 static inline IndustryGfx GetIndustryGfx(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
-	return _m[t].m5;
+	return GetTranslatedIndustryTileID(_m[t].m5 | (GB(_m[t].m6, 2, 1) << 8));
 }
 
 /**
