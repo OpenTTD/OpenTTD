@@ -924,7 +924,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				static const SpriteID tunnel_sprites[2][4] = { { 28, 78, 79, 27 }, {  5, 76, 77,  4 } };
 
 				DrawGroundSprite(SPR_TRAMWAY_BASE + tunnel_sprites[rts - ROADTYPES_TRAM][dir], PAL_NONE);
-				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, 16, 16, 16, (byte)ti->z);
+				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, 16, 16, 16, (byte)ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
 			}
 		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
 			DrawCatenary(ti);

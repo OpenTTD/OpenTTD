@@ -293,7 +293,8 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 				AddSortableSpriteToDraw(
 					sss->image, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
 					sss->x_size, sss->y_size, sss->z_size,
-					GetTileZ(ti->tile) + sss->z_offset
+					GetTileZ(ti->tile) + sss->z_offset,
+					HASBIT(_transparent_opt, TO_BUILDINGS)
 				);
 				break;
 			}
