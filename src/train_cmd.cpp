@@ -301,7 +301,7 @@ static bool TrainShouldStop(const Vehicle* v, TileIndex tile)
 static int GetTrainAcceleration(Vehicle *v, bool mode)
 {
 	int max_speed = 2000;
-	int speed = v->cur_speed * 10 / 16; //[mph]
+	int speed = v->GetDisplaySpeed(); //[mph]
 	int curvecount[2] = {0, 0};
 
 	/*first find the curve speed limit */

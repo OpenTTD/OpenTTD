@@ -415,6 +415,12 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	virtual int GetImage(Direction direction) const { return 0; }
 
 	/**
+	 * Gets the speed in mph that can be sent into SetDParam for string processing.
+	 * @return the vehicle's speed
+	 */
+	virtual int GetDisplaySpeed() const { return 0; }
+
+	/**
 	 * Calls the tick handler of the vehicle
 	 */
 	virtual void Tick() {};

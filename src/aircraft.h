@@ -137,6 +137,7 @@ struct Aircraft : public Vehicle {
 	WindowClass GetVehicleListWindowClass() const { return WC_AIRCRAFT_LIST; }
 	bool IsPrimaryVehicle() const { return IsNormalAircraft(this); }
 	int GetImage(Direction direction) const;
+	int GetDisplaySpeed() const { return this->cur_speed * 10 / 16; }
 	void Tick();
 };
 

@@ -283,14 +283,14 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
 				SetDParam(0, v->current_order.dest);
-				SetDParam(1, v->cur_speed * 10 / 16);
+				SetDParam(1, v->GetDisplaySpeed());
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
 				/* Aircrafts always go to a station, even if you say depot */
 				SetDParam(0, v->current_order.dest);
-				SetDParam(1, v->cur_speed * 10 / 16);
+				SetDParam(1, v->GetDisplaySpeed());
 				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
 					str = STR_HEADING_FOR_HANGAR + _patches.vehicle_speed;
 				} else {
@@ -305,7 +305,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			default:
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SetDParam(0, v->cur_speed * 10 / 16);
+					SetDParam(0, v->GetDisplaySpeed());
 				} else {
 					str = STR_EMPTY;
 				}
