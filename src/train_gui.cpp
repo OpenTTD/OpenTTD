@@ -59,11 +59,6 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	ShowTrainViewWindow(v);
 }
 
-void CcCloneTrain(bool success, TileIndex tile, uint32 p1, uint32 p2)
-{
-	if (success) ShowTrainViewWindow(GetVehicle(_new_vehicle_id));
-}
-
 /**
  * Get the number of pixels for the given wagon length.
  * @param len Length measured in 1/8ths of a standard wagon.
@@ -268,7 +263,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);
 			break;
 		case 13:
-			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle, CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
 			break;
 		}
 	} break;

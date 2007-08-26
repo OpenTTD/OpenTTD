@@ -187,11 +187,6 @@ void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	ShowShipViewWindow(v);
 }
 
-void CcCloneShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
-{
-	if (success) ShowShipViewWindow(GetVehicle(_new_vehicle_id));
-}
-
 static void ShipViewWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -280,7 +275,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 					break;
 				case 11: {
 					/* clone vehicle */
-					DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneShip, CMD_CLONE_VEHICLE | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
+					DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle, CMD_CLONE_VEHICLE | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
 				} break;
 			}
 		} break;

@@ -13,7 +13,6 @@
 
 /* aircraft_gui.cpp */
 CommandCallback CcBuildAircraft;
-CommandCallback CcCloneAircraft;
 
 /* airport_gui.cpp */
 CommandCallback CcBuildAirport;
@@ -48,16 +47,13 @@ CommandCallback CcRoadDepot;
 
 /* roadveh_gui.cpp */
 CommandCallback CcBuildRoadVeh;
-CommandCallback CcCloneRoadVeh;
 
 /* ship_gui.cpp */
 CommandCallback CcBuildShip;
-CommandCallback CcCloneShip;
 
 /* train_gui.cpp */
 CommandCallback CcBuildWagon;
 CommandCallback CcBuildLoco;
-CommandCallback CcCloneTrain;
 
 CommandCallback CcAI;
 
@@ -83,13 +79,9 @@ CommandCallback *_callback_table[] = {
 	/* 0x12 */ CcPlaySound1E,
 	/* 0x13 */ CcStation,
 	/* 0x14 */ CcTerraform,
-	/* 0x15 */ CcCloneAircraft,
-	/* 0x16 */ CcCloneRoadVeh,
-	/* 0x17 */ CcCloneShip,
-	/* 0x18 */ CcCloneTrain,
-	/* 0x19 */ CcAI,
-	/* 0x1A */ CcCloneVehicle,
-	/* 0x1B */ CcGiveMoney,
+	/* 0x15 */ CcAI,
+	/* 0x16 */ CcCloneVehicle,
+	/* 0x17 */ CcGiveMoney,
 };
 
 const int _callback_table_count = lengthof(_callback_table);

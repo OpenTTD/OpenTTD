@@ -82,15 +82,6 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
  */
 void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
-/**
- * This is the Callback method after the cloning attempt of an aircraft
- * @param success indicates completion (or not) of the operation
- * @param tile unused
- * @param p1 unused
- * @param p2 unused
- */
-void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
-
 /** Handle Aircraft specific tasks when a an Aircraft enters a hangar
  * @param *v Vehicle that enters the hangar
  */

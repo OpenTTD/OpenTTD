@@ -263,11 +263,6 @@ static void ShowRoadVehDetailsWindow(const Vehicle *v)
 	w->caption_color = v->owner;
 }
 
-void CcCloneRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2)
-{
-	if (success) ShowRoadVehViewWindow(GetVehicle(_new_vehicle_id));
-}
-
 static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -357,7 +352,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			ShowRoadVehDetailsWindow(v);
 			break;
 		case 11: /* clone vehicle */
-			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneRoadVeh, CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle, CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
 			break;
 		case 12: /* Refit vehicle */
 			ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);

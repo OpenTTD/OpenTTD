@@ -130,14 +130,24 @@ static const WindowDesc _aircraft_depot_desc = {
 
 extern int WagonLengthToPixels(int len);
 
+/**
+ * This is the Callback method after the cloning attempt of a vehicle
+ * @param success indicates completion (or not) of the operation
+ * @param tile unused
+ * @param p1 unused
+ * @param p2 unused
+ */
 void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (!success) return;
+
+	Vehicle *v = GetVehicle(_new_vehicle_id);
+
 	switch(GetVehicle(p1)->type) {
-		case VEH_TRAIN:    CcCloneTrain(   true, tile, p1, p2); break;
-		case VEH_ROAD:     CcCloneRoadVeh( true, tile, p1, p2); break;
-		case VEH_SHIP:     CcCloneShip(    true, tile, p1, p2); break;
-		case VEH_AIRCRAFT: CcCloneAircraft(true, tile, p1, p2); break;
+		case VEH_TRAIN:    ShowTrainViewWindow(v);    break;
+		case VEH_ROAD:     ShowRoadVehViewWindow(v);  break;
+		case VEH_SHIP:     ShowShipViewWindow(v);     break;
+		case VEH_AIRCRAFT: ShowAircraftViewWindow(v); break;
 		default: NOT_REACHED();
 	}
 }

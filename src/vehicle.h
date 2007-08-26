@@ -572,6 +572,8 @@ void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g);
 CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs);
 bool CanBuildVehicleInfrastructure(VehicleType type);
 
+void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2);
+
 /* Flags to add to p2 for goto depot commands */
 /* Note: bits 8-10 are used for VLW flags */
 enum {

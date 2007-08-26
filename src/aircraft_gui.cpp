@@ -57,18 +57,6 @@ void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
-/**
- * This is the Callback method after the cloning attempt of an aircraft
- * @param success indicates completion (or not) of the operation
- * @param tile unused
- * @param p1 unused
- * @param p2 unused
- */
-void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
-{
-	if (success) ShowAircraftViewWindow(GetVehicle(_new_vehicle_id));
-}
-
 static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -343,7 +331,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			break;
 		case 11:
 			/* clone vehicle */
-			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneAircraft, CMD_CLONE_VEHICLE | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle, CMD_CLONE_VEHICLE | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
 			break;
 		}
 	} break;
