@@ -1429,7 +1429,7 @@ void VehiclePayment(Vehicle *front_v)
 			CargoPacket *cp = *it;
 			if (!cp->paid_for &&
 					cp->source != last_visited &&
-					ge->acceptance &&
+					HASBIT(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) &&
 					(front_v->current_order.flags & OF_TRANSFER) == 0) {
 				/* Deliver goods to the station */
 				st->time_since_unload = 0;
@@ -1545,13 +1545,14 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			uint amount_unloaded = _patches.gradual_loading ? min(cargo_count, load_amount) : cargo_count;
 			bool remaining; // Are there cargo entities in this vehicle that can still be unloaded here?
 
-			if (ge->acceptance && !(u->current_order.flags & OF_TRANSFER)) {
+			if (HASBIT(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.flags & OF_TRANSFER)) {
 				/* The cargo has reached it's final destination, the packets may now be destroyed */
 				remaining = v->cargo.MoveTo(NULL, amount_unloaded, CargoList::MTA_FINAL_DELIVERY, last_visited);
 
 				result |= 1;
 			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
 				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded);
+				SETBIT(ge->acceptance_pickup, GoodsEntry::PICKUP);
 
 				result |= 2;
 			} else {
@@ -1628,9 +1629,11 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			ge->cargo.MoveTo(&v->cargo, cap, CargoList::MTA_CARGO_LOAD, st->xy);
 
-			unloading_time += cap;
+			SETBIT(ge->acceptance_pickup, GoodsEntry::PICKUP);
 			st->time_since_load = 0;
 			st->last_vehicle_type = v->type;
+
+			unloading_time += cap;
 
 			result |= 2;
 		}

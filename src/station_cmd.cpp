@@ -389,7 +389,7 @@ static uint GetAcceptanceMask(const Station *st)
 	uint mask = 0;
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (st->goods[i].acceptance) mask |= 1 << i;
+		if (HASBIT(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) mask |= 1 << i;
 	}
 	return mask;
 }
@@ -570,7 +570,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 				(is_passengers && !(st->facilities & (byte)~FACIL_TRUCK_STOP)))
 			amt = 0;
 
-		st->goods[i].acceptance = (amt >= 8);
+		SB(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, amt >= 8);
 	}
 
 	// Only show a message in case the acceptance was actually changed.
@@ -2384,10 +2384,12 @@ static void UpdateStationRating(Station *st)
 		/* Slowly increase the rating back to his original level in the case we
 		 *  didn't deliver cargo yet to this station. This happens when a bribe
 		 *  failed while you didn't moved that cargo yet to a station. */
-		if (ge->days_since_pickup == 255 && ge->rating < INITIAL_STATION_RATING)
+		if (!HASBIT(ge->acceptance_pickup, GoodsEntry::PICKUP) && ge->rating < INITIAL_STATION_RATING) {
 			ge->rating++;
+		}
+
 		/* Only change the rating if we are moving this cargo */
-		if (ge->last_speed != 0) {
+		if (HASBIT(ge->acceptance_pickup, GoodsEntry::PICKUP)) {
 			byte_inc_sat(&ge->days_since_pickup);
 
 			int rating = 0;
@@ -2519,7 +2521,7 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				GoodsEntry* ge = &st->goods[i];
 
-				if (ge->days_since_pickup != 255) {
+				if (ge->acceptance_pickup != 0) {
 					ge->rating = clamp(ge->rating + amount, 0, 255);
 				}
 			}
@@ -2616,8 +2618,8 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 			if (around[i] == NULL) {
 				if (!st->IsBuoy() &&
 						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
-						st->goods[type].rating != 0 && st->goods[type].last_speed != 0 && // we actually service the station
-						(!_patches.selectgoods || st->goods[type].last_speed > 0) && // if last_speed is 0, no vehicle has been there.
+						st->goods[type].rating != 0 && // when you've got the lowest rating you can get, it's better not to give cargo anymore
+						(!_patches.selectgoods || st->goods[type].last_speed > 0) && // we are servicing the station (or cargo is dumped on all stations)
 						((st->facilities & ~FACIL_BUS_STOP)   != 0 || IsCargoInClass(type, CC_PASSENGERS)) && // if we have other fac. than a bus stop, or the cargo is passengers
 						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || !IsCargoInClass(type, CC_PASSENGERS))) { // if we have other fac. than a cargo bay or the cargo is not passengers
 					if (_patches.modified_catchment) {
@@ -2746,7 +2748,7 @@ void BuildOilRig(TileIndex tile)
 	st->build_date = _date;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		st->goods[j].acceptance = false;
+		st->goods[j].acceptance_pickup = 0;
 		st->goods[j].days_since_pickup = 255;
 		st->goods[j].rating = INITIAL_STATION_RATING;
 		st->goods[j].last_speed = 0;
@@ -2977,7 +2979,7 @@ static Money  _cargo_feeder_share;
 
 static const SaveLoad _goods_desc[] = {
 	SLEG_CONDVAR(            _waiting_acceptance, SLE_UINT16,                  0, 67),
-	 SLE_CONDVAR(GoodsEntry, acceptance,          SLE_BOOL,                   68, SL_MAX_VERSION),
+	 SLE_CONDVAR(GoodsEntry, acceptance_pickup,   SLE_UINT8,                  68, SL_MAX_VERSION),
 	SLE_CONDNULL(2,                                                           51, 67),
 	     SLE_VAR(GoodsEntry, days_since_pickup,   SLE_UINT8),
 	     SLE_VAR(GoodsEntry, rating,              SLE_UINT8),
@@ -3013,7 +3015,7 @@ static void SaveLoad_STNS(Station *st)
 		GoodsEntry *ge = &st->goods[i];
 		SlObject(ge, _goods_desc);
 		if (CheckSavegameVersion(68)) {
-			ge->acceptance = HASBIT(_waiting_acceptance, 15);
+			SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HASBIT(_waiting_acceptance, 15));
 			if (GB(_waiting_acceptance, 0, 12) != 0) {
 				/* Don't construct the packet with station here, because that'll fail with old savegames */
 				CargoPacket *cp = new CargoPacket();
@@ -3025,9 +3027,8 @@ static void SaveLoad_STNS(Station *st)
 				cp->source_xy       = _cargo_source_xy;
 				cp->days_in_transit = _cargo_days;
 				cp->feeder_share    = _cargo_feeder_share;
+				SB(ge->acceptance_pickup, GoodsEntry::PICKUP, 1, 1);
 				ge->cargo.Append(cp);
-			} else {
-				ge->days_since_pickup = 255;
 			}
 		}
 	}

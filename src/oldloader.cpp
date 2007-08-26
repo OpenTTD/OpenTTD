@@ -579,12 +579,15 @@ static bool LoadOldGood(LoadgameState *ls, int num)
 	Station *st = GetStation(_current_station_id);
 	GoodsEntry *ge = &st->goods[num];
 	bool ret = LoadChunk(ls, ge, goods_chunk);
-	if (ret && GB(_waiting_acceptance, 0, 12) != 0) {
+	if (!ret) return false;
+
+	SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HASBIT(_waiting_acceptance, 15));
+	SB(ge->acceptance_pickup, GoodsEntry::PICKUP, 1, _cargo_source != 0xFF);
+	if (GB(_waiting_acceptance, 0, 12) != 0) {
 		CargoPacket *cp = new CargoPacket();
 		cp->source          = (_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
 		cp->count           = GB(_waiting_acceptance, 0, 12);
 		cp->days_in_transit = _cargo_days;
-		ge->acceptance      = HASBIT(_waiting_acceptance, 15);
 		ge->cargo.Append(cp);
 	}
 	return ret;

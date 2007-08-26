@@ -24,15 +24,20 @@ DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
 static const byte INITIAL_STATION_RATING = 175;
 
 struct GoodsEntry {
+	enum AcceptancePickup {
+		ACCEPTANCE,
+		PICKUP
+	};
+
 	GoodsEntry() :
-		acceptance(false),
+		acceptance_pickup(0),
 		days_since_pickup(255),
 		rating(INITIAL_STATION_RATING),
 		last_speed(0),
 		last_age(255)
 	{}
 
-	bool acceptance;
+	byte acceptance_pickup;
 	byte days_since_pickup;
 	byte rating;
 	byte last_speed;

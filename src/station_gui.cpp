@@ -157,8 +157,8 @@ static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 	byte maxr2 = 0;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		if (st1->goods[j].days_since_pickup != 255) maxr1 = max(maxr1, st1->goods[j].rating);
-		if (st2->goods[j].days_since_pickup != 255) maxr2 = max(maxr2, st2->goods[j].rating);
+		if (HASBIT(st1->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr1 = max(maxr1, st1->goods[j].rating);
+		if (HASBIT(st2->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr2 = max(maxr2, st2->goods[j].rating);
 	}
 
 	return (_internal_sort_order & 1) ? maxr2 - maxr1 : maxr1 - maxr2;
@@ -771,7 +771,7 @@ static void DrawStationViewWindow(Window *w)
 
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (b >= endof(_userstring) - 5 - 1) break;
-			if (st->goods[i].acceptance) {
+			if (HASBIT(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) {
 				if (first) {
 					first = false;
 				} else {
@@ -797,7 +797,7 @@ static void DrawStationViewWindow(Window *w)
 			if (!cs->IsValid()) continue;
 
 			const GoodsEntry *ge = &st->goods[i];
-			if (ge->days_since_pickup == 255) continue;
+			if (!HASBIT(ge->acceptance_pickup, GoodsEntry::PICKUP)) continue;
 
 			SetDParam(0, cs->name);
 			SetDParam(2, ge->rating * 101 >> 8);
