@@ -534,7 +534,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->vehstatus & VS_STOPPED ||
-			v->u.road.crashed_ctr != 0 ||
+			v->vehstatus & VS_CRASHED ||
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
 			v->u.road.state == RVSB_WORMHOLE ||
@@ -1794,7 +1794,7 @@ static void RoadVehController(Vehicle *v)
 	if (v->u.road.reverse_ctr != 0) v->u.road.reverse_ctr--;
 
 	/* handle crashed */
-	if (v->u.road.crashed_ctr != 0) {
+	if (v->vehstatus & VS_CRASHED) {
 		RoadVehIsCrashed(v);
 		return;
 	}

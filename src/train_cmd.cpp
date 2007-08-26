@@ -1645,8 +1645,8 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		}
 	} else {
-		/*turn the whole train around */
-		if (v->u.rail.crash_anim_pos != 0 || v->breakdown_ctr != 0) return CMD_ERROR;
+		/* turn the whole train around */
+		if (v->vehstatus & VS_CRASHED || v->breakdown_ctr != 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
 			if (_patches.realistic_acceleration && v->cur_speed != 0) {
@@ -3255,7 +3255,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 static void TrainLocoHandler(Vehicle *v, bool mode)
 {
 	/* train has crashed? */
-	if (v->u.rail.crash_anim_pos != 0) {
+	if (v->vehstatus & VS_CRASHED) {
 		if (!mode) HandleCrashedTrain(v);
 		return;
 	}
