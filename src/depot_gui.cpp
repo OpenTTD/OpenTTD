@@ -143,7 +143,7 @@ void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 	Vehicle *v = GetVehicle(_new_vehicle_id);
 
-	switch(GetVehicle(p1)->type) {
+	switch (v->type) {
 		case VEH_TRAIN:    ShowTrainViewWindow(v);    break;
 		case VEH_ROAD:     ShowRoadVehViewWindow(v);  break;
 		case VEH_SHIP:     ShowShipViewWindow(v);     break;
