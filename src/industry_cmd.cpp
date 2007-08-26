@@ -1183,11 +1183,11 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 
 		if (!IsValidTile(cur_tile)) {
-			if (gfx == 0xff) continue;
+			if (gfx == GFX_WATERTILE_SPECIALCHECK) continue;
 			return false;
 		}
 
-		if (gfx == 0xFF) {
+		if (gfx == GFX_WATERTILE_SPECIALCHECK) {
 			if (!IsTileType(cur_tile, MP_WATER) ||
 					GetTileSlope(cur_tile, NULL) != SLOPE_FLAT) {
 				return false;
@@ -1452,7 +1452,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	do {
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 
-		if (it->gfx != 0xFF) {
+		if (it->gfx != GFX_WATERTILE_SPECIALCHECK) {
 			byte size;
 
 			size = it->ti.x;
