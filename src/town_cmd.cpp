@@ -672,7 +672,7 @@ static bool IsRoadAllowedHere(TileIndex tile, int dir)
 			/* No, try to build one in the direction.
 			 * if that fails clear the land, and if that fails exit.
 			 * This is to make sure that we can build a road here later. */
-			if (CmdFailed(DoCommand(tile, (dir & 1 ? ROAD_X : ROAD_Y), 0, DC_AUTO, CMD_BUILD_ROAD)) &&
+			if (CmdFailed(DoCommand(tile, (dir & ROAD_NW ? ROAD_X : ROAD_Y), 0, DC_AUTO, CMD_BUILD_ROAD)) &&
 					CmdFailed(DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
 				return false;
 		}
@@ -695,7 +695,7 @@ no_slope:
 
 		/* If the tile is not a slope in the right direction, then
 		 * maybe terraform some. */
-		k = (dir & 1) ? SLOPE_NE : SLOPE_NW;
+		k = (dir & ROAD_NW) ? SLOPE_NE : SLOPE_NW;
 		if (k != slope && ComplementSlope(k) != slope) {
 			uint32 r = Random();
 
@@ -939,7 +939,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 					 *  at any side of the new road. */
 				}
 
-				rcmd = (RoadBits)((1 << a) + (1 << b));
+				rcmd = (RoadBits)((ROAD_NW << a) + (ROAD_NW << b));
 				break;
 		}
 
@@ -961,7 +961,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 
 			case TL_BETTER_ROADS:
 			case TL_ORIGINAL:
-				rcmd = (RoadBits)(1 << (block ^ 2));
+				rcmd = (RoadBits)(ROAD_NW << (block ^ 2));
 				break;
 		}
 	} else {
@@ -1040,7 +1040,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 		}
 
 		_grow_town_result = 0;
-		rcmd = (RoadBits)(1 << i);
+		rcmd = (RoadBits)(ROAD_NW << i);
 	}
 
 	/* Return if a water tile */
@@ -1138,7 +1138,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 		/* Exclude the source position from the bitmask
 		 * and return if no more road blocks available */
 		ClrBitT(mask, (block ^ 2));
-		if (mask == 0)
+		if (mask == ROAD_NONE)
 			return _grow_town_result;
 
 		/* Select a random bit from the blockmask, walk a step
