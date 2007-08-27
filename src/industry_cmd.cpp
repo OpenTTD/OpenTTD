@@ -1339,7 +1339,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 			if (!CheckCanTerraformSurroundingTiles(tile_walk, h, 0)) return false;
 			/* This is not 100% correct check, but the best we can do without modifying the map.
 			 *  What is missing, is if the difference in height is more than 1.. */
-			if (CmdFailed(DoCommand(tile_walk, 8, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND))) return false;
+			if (CmdFailed(DoCommand(tile_walk, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND))) return false;
 		}
 	} END_TILE_LOOP(tile_walk, size_x, size_y, cur_tile)
 
@@ -1351,7 +1351,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 				/* We give the terraforming for free here, because we can't calculate
 				 *  exact cost in the test-round, and as we all know, that will cause
 				 *  a nice assert if they don't match ;) */
-				DoCommand(tile_walk, 8, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
+				DoCommand(tile_walk, SLOPE_N, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
 				curh += (curh > h) ? -1 : 1;
 			}
 		} END_TILE_LOOP(tile_walk, size_x, size_y, cur_tile)

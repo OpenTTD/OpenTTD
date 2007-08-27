@@ -706,6 +706,7 @@ no_slope:
 					res = DoCommand(tile, slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
 				} else {
+					/* Note: Do not replace " ^ 0xF" with ComplementSlope(). The slope might be steep. */
 					res = DoCommand(tile, slope ^ 0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER,
 					                      CMD_TERRAFORM_LAND);
 				}
