@@ -853,7 +853,8 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 
 	for (; min < max; min++, y += step_size) {
 		const EngineID engine = eng_list[min];
-		const uint num_engines = GetGroupNumEngines(selected_group, engine);
+		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_player here. */
+		const uint num_engines = GetGroupNumEngines(_local_player, selected_group, engine);
 
 		SetDParam(0, engine);
 		DrawString(x + x_offset, y, STR_ENGINE_NAME, engine == selected_id ? 0xC : 0x10);

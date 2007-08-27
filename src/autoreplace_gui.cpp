@@ -49,7 +49,7 @@ void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 {
 	Player *p = GetPlayer(_local_player);
 	byte type = GetEngine(e)->type;
-	uint num_engines = GetGroupNumEngines(id_g, e);
+	uint num_engines = GetGroupNumEngines(_local_player, id_g, e);
 
 	if (num_engines == 0 || p->num_engines[e] == 0) {
 		/* We don't have any of this engine type.
@@ -154,7 +154,7 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 
 		if (draw_left) {
 			const GroupID selected_group = WP(w, replaceveh_d).sel_group;
-			const uint num_engines = GetGroupNumEngines(selected_group, e);
+			const uint num_engines = GetGroupNumEngines(_local_player, selected_group, e);
 
 			/* Skip drawing the engines we don't have any of and haven't set for replacement */
 			if (num_engines == 0 && EngineReplacementForPlayer(GetPlayer(_local_player), e, selected_group) == INVALID_ENGINE) continue;
