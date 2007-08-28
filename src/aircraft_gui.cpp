@@ -86,7 +86,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw max speed */
 		{
-			SetDParam(0, v->max_speed * 10 / 16);
+			SetDParam(0, v->GetDisplayMaxSpeed());
 			DrawString(2, 25, STR_A00E_MAX_SPEED, 0);
 		}
 

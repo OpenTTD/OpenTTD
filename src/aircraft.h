@@ -129,6 +129,7 @@ struct Aircraft : public Vehicle {
 	bool IsPrimaryVehicle() const { return IsNormalAircraft(this); }
 	int GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 16; }
+	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 16; }
 	void Tick();
 };
 

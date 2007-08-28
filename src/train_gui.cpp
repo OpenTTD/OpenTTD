@@ -421,7 +421,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	SetDParam(3, GetTrainRunningCost(v) >> 8);
 	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
 
-	SetDParam(2, v->u.rail.cached_max_speed * 10 / 16);
+	SetDParam(2, v->GetDisplayMaxSpeed());
 	SetDParam(1, v->u.rail.cached_power);
 	SetDParam(0, v->u.rail.cached_weight);
 	SetDParam(3, v->u.rail.cached_max_te / 1000);

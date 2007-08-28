@@ -421,6 +421,12 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	virtual int GetDisplaySpeed() const { return 0; }
 
 	/**
+	 * Gets the maximum speed in mph that can be sent into SetDParam for string processing.
+	 * @return the vehicle's maximum speed
+	 */
+	virtual int GetDisplayMaxSpeed() const { return 0; }
+
+	/**
 	 * Calls the tick handler of the vehicle
 	 */
 	virtual void Tick() {};

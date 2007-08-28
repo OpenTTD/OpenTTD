@@ -56,7 +56,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 
 		/* Draw max speed */
 		{
-			SetDParam(0, v->max_speed * 10 / 32);
+			SetDParam(0, v->GetDisplayMaxSpeed());
 			DrawString(2, 25, STR_9813_MAX_SPEED, 0);
 		}
 
