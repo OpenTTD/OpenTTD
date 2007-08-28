@@ -647,7 +647,7 @@ static RoadBits GetTownRoadMask(TileIndex tile)
  * @return true if one of the neighboring tiles at the
  *  given distance is a road tile else
  */
-static bool NeighborIsRoadTile(TileIndex tile, int dir, RoadBlockTitleDistance dist_multi)
+static bool IsNeighborRoadTile(TileIndex tile, int dir, RoadBlockTitleDistance dist_multi)
 {
 	return (HASBIT(GetTownRoadMask(TILE_ADD(tile, dist_multi * ToTileIndexDiff(_roadblock_tileadd[dir + 1]))), dir ^ 2) ||
 			HASBIT(GetTownRoadMask(TILE_ADD(tile, dist_multi * ToTileIndexDiff(_roadblock_tileadd[dir + 3]))), dir ^ 2) ||
@@ -685,11 +685,11 @@ no_slope:
 				default: NOT_REACHED();
 
 				case TL_ORIGINAL: /* Disallow the road if any neighboring tile has a road (distance: 1) */
-					return !NeighborIsRoadTile(tile, dir, RB_TILE_DIST1);
+					return !IsNeighborRoadTile(tile, dir, RB_TILE_DIST1);
 
 				case TL_BETTER_ROADS: /* Disallow the road if any neighboring tile has a road (distance: 1 and 2). */
-					return !(NeighborIsRoadTile(tile, dir, RB_TILE_DIST1) ||
-							NeighborIsRoadTile(tile, dir, RB_TILE_DIST2));
+					return !(IsNeighborRoadTile(tile, dir, RB_TILE_DIST1) ||
+							IsNeighborRoadTile(tile, dir, RB_TILE_DIST2));
 			}
 		}
 
@@ -830,7 +830,7 @@ static RoadBits GetTownRoadGridElement(Town* t, TileIndex tile)
  * @return true if there are more than 2 house tiles next
  *  to the current one
  */
-static bool NeighborsAreHouseTiles(TileIndex tile)
+static bool AreNeighborsHouseTiles(TileIndex tile)
 {
 	uint counter = 0; ///< counts the house neighbor tiles
 
@@ -1000,7 +1000,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 			case TL_3X3_GRID: /* Use 2x2 grid afterwards! */
 				/* Fill gap if house has enougth neighbors */
 				tmptile2 = TILE_ADD(tmptile, ToTileIndexDiff(_roadblock_tileadd[i]));
-				if (NeighborsAreHouseTiles(tmptile2) && BuildTownHouse(t1, tmptile2)) {
+				if (AreNeighborsHouseTiles(tmptile2) && BuildTownHouse(t1, tmptile2)) {
 					_grow_town_result = -1;
 				}
 
@@ -1012,7 +1012,7 @@ static void GrowTownInTile(TileIndex* tile_ptr, RoadBits mask, int block, Town* 
 			case TL_BETTER_ROADS: /* Use original afterwards! */
 				/* Fill gap if house has enougth neighbors */
 				tmptile2 = TILE_ADD(tmptile, ToTileIndexDiff(_roadblock_tileadd[i]));
-				if (NeighborsAreHouseTiles(tmptile2) && BuildTownHouse(t1, tmptile2)) {
+				if (AreNeighborsHouseTiles(tmptile2) && BuildTownHouse(t1, tmptile2)) {
 					_grow_town_result = -1;
 				}
 
