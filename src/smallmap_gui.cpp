@@ -169,28 +169,6 @@ static const LegendAndColour * const _legend_table[] = {
 	_legend_land_owners,
 };
 
-static inline void WRITE_PIXELS(void *d, uint32 val)
-{
-	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-	uint8 *val8 = (uint8 *)&val;
-
-	blitter->SetPixel(d, 0, 0, val8[0]);
-	blitter->SetPixel(d, 1, 0, val8[1]);
-	blitter->SetPixel(d, 2, 0, val8[2]);
-	blitter->SetPixel(d, 3, 0, val8[3]);
-}
-
-static inline void WRITE_PIXELS_OR(void *d, uint32 val)
-{
-	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-	uint8 *val8 = (uint8 *)&val;
-
-	blitter->SetPixelIfEmpty(d, 0, 0, val8[0]);
-	blitter->SetPixelIfEmpty(d, 1, 0, val8[1]);
-	blitter->SetPixelIfEmpty(d, 2, 0, val8[2]);
-	blitter->SetPixelIfEmpty(d, 3, 0, val8[3]);
-}
-
 #define MKCOLOR(x) TO_LE32X(x)
 
 /**
@@ -290,14 +268,31 @@ typedef uint32 GetSmallMapPixels(TileIndex tile); // typedef callthrough functio
 static void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, uint32 mask, GetSmallMapPixels *proc)
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-	void *dst_ptr_end = blitter->MoveTo(_screen.dst_ptr, _screen.width, _screen.height - 1);
+	void *dst_ptr_abs_end = blitter->MoveTo(_screen.dst_ptr, 0, _screen.height);
+	void *dst_ptr_end = blitter->MoveTo(dst_ptr_abs_end, -4, 0);
 
 	do {
 		/* check if the tile (xc,yc) is within the map range */
 		if (xc < MapMaxX() && yc < MapMaxY()) {
 			/* check if the dst pointer points to a pixel inside the screen buffer */
-			if (dst > _screen.dst_ptr && dst < dst_ptr_end)
-				WRITE_PIXELS_OR(dst, proc(TileXY(xc, yc)) & mask);
+			if (dst < _screen.dst_ptr) continue;
+			if (dst >= dst_ptr_abs_end) continue;
+
+			uint32 val = proc(TileXY(xc, yc)) & mask;
+			uint8 *val8 = (uint8 *)&val;
+
+			if (dst <= dst_ptr_end) {
+				blitter->SetPixelIfEmpty(dst, 0, 0, val8[0]);
+				blitter->SetPixelIfEmpty(dst, 1, 0, val8[1]);
+				blitter->SetPixelIfEmpty(dst, 2, 0, val8[2]);
+				blitter->SetPixelIfEmpty(dst, 3, 0, val8[3]);
+			} else {
+				/* It happens that there are only 1, 2 or 3 pixels left to fill, so in that special case, write till the end of the video-buffer */
+				int i = 0;
+				do {
+					blitter->SetPixelIfEmpty(dst, 0, 0, val8[i]);
+				} while (i++, dst = blitter->MoveTo(dst, 1, 0), dst < dst_ptr_abs_end);
+			}
 		}
 	/* switch to next tile in the column */
 	} while (xc++, yc++, dst = blitter->MoveTo(dst, pitch, 0), --reps != 0);
