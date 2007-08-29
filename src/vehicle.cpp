@@ -1700,7 +1700,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 		CommandCost ret;
 
 		/* Ensure that the vehicle completely in the depot */
-		if (!IsVehicleInDepot(v)) continue;
+		if (!v->IsInDepot()) continue;
 
 		x = v->x_pos;
 		y = v->y_pos;
@@ -1958,7 +1958,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 
 		case VEH_ROAD:
 			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_ROAD && IsRoadVehInDepot(v) && IsRoadVehFront(v)) {
+				if (v->tile == tile && v->type == VEH_ROAD && v->IsInDepot() && IsRoadVehFront(v)) {
 					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
 				}
@@ -1967,7 +1967,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 
 		case VEH_SHIP:
 			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_SHIP && IsShipInDepot(v)) {
+				if (v->tile == tile && v->type == VEH_SHIP && v->IsInDepot()) {
 					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
 				}
@@ -1978,7 +1978,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 			FOR_ALL_VEHICLES(v) {
 				if (v->tile == tile &&
 						v->type == VEH_AIRCRAFT && IsNormalAircraft(v) &&
-						v->vehstatus & VS_HIDDEN) {
+						v->IsInDepot()) {
 					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
 				}
@@ -2131,30 +2131,6 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service,
 
 	free((void*)sort_list);
 	return (flags & DC_EXEC) ? CommandCost() : CMD_ERROR;
-}
-
-bool IsVehicleInDepot(const Vehicle *v)
-{
-	switch (v->type) {
-		case VEH_TRAIN:    return CheckTrainInDepot(v, false) != -1;
-		case VEH_ROAD:     return IsRoadVehInDepot(v);
-		case VEH_SHIP:     return IsShipInDepot(v);
-		case VEH_AIRCRAFT: return IsAircraftInHangar(v);
-		default: NOT_REACHED();
-	}
-	return false;
-}
-
-bool IsVehicleInDepotStopped(const Vehicle *v)
-{
-	switch (v->type) {
-		case VEH_TRAIN:    return CheckTrainStoppedInDepot(v) >= 0;
-		case VEH_ROAD:     return IsRoadVehInDepotStopped(v);
-		case VEH_SHIP:     return IsShipInDepotStopped(v);
-		case VEH_AIRCRAFT: return IsAircraftInHangarStopped(v);
-		default: NOT_REACHED();
-	}
-	return false;
 }
 
 /**
@@ -2472,14 +2448,14 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.rail.track), v->direction);
 
 		case VEH_SHIP:
-			if (IsShipInDepot(v))
+			if (v->IsInDepot())
 				// We'll assume the ship is facing outwards
 				return DiagdirToDiagTrackdir(GetShipDepotDirection(v->tile));
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.ship.state), v->direction);
 
 		case VEH_ROAD:
-			if (IsRoadVehInDepot(v)) // We'll assume the road vehicle is facing outwards
+			if (v->IsInDepot()) // We'll assume the road vehicle is facing outwards
 				return DiagdirToDiagTrackdir(GetRoadDepotDirection(v->tile));
 
 			if (IsStandardRoadStopTile(v->tile)) // We'll assume the road vehicle is facing outwards

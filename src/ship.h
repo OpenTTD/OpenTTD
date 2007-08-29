@@ -13,18 +13,6 @@ void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void RecalcShipStuff(Vehicle *v);
 void GetShipSpriteSize(EngineID engine, uint &width, uint &height);
 
-static inline bool IsShipInDepot(const Vehicle *v)
-{
-	assert(v->type == VEH_SHIP);
-	return v->u.ship.state == 0x80;
-}
-
-static inline bool IsShipInDepotStopped(const Vehicle *v)
-{
-	return IsShipInDepot(v) && v->vehstatus & VS_STOPPED;
-}
-
-
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
  * You create a Vehicle using AllocateVehicle, so it is added to the pool
@@ -51,6 +39,7 @@ struct Ship: public Vehicle {
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 32; }
 	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 32; }
 	Money GetRunningCost() const { return ShipVehInfo(this->engine_type)->running_cost * _price.ship_running; }
+	bool IsInDepot() const { return this->u.ship.state == 0x80; }
 	void Tick();
 };
 

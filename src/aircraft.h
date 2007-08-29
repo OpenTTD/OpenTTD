@@ -33,25 +33,6 @@ static inline bool IsNormalAircraft(const Vehicle *v)
 	return v->subtype <= AIR_AIRCRAFT;
 }
 
-/** Check if this aircraft is in a hangar
- * @param v vehicle to check
- * @return true if in hangar
- */
-static inline bool IsAircraftInHangar(const Vehicle *v)
-{
-	assert(v->type == VEH_AIRCRAFT);
-	return v->vehstatus & VS_HIDDEN && IsHangarTile(v->tile);
-}
-
-/** Check if this aircraft is in a hangar and stopped
- * @param v vehicle to check
- * @return true if in hangar and stopped
- */
-static inline bool IsAircraftInHangarStopped(const Vehicle *v)
-{
-	return IsAircraftInHangar(v) && v->vehstatus & VS_STOPPED;
-}
-
 /** Checks if an aircraft is buildable at the tile in question
  * @param engine The engine to test
  * @param tile The tile where the hangar is
@@ -133,6 +114,7 @@ struct Aircraft : public Vehicle {
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 16; }
 	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 16; }
 	Money GetRunningCost() const { return AircraftVehInfo(this->engine_type)->running_cost * _price.aircraft_running; }
+	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
 	void Tick();
 };
 

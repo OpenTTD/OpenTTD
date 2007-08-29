@@ -45,17 +45,6 @@ static inline bool RoadVehHasArticPart(const Vehicle *v)
 }
 
 
-static inline bool IsRoadVehInDepot(const Vehicle *v)
-{
-	assert(v->type == VEH_ROAD);
-	return v->u.road.state == 254;
-}
-
-static inline bool IsRoadVehInDepotStopped(const Vehicle *v)
-{
-	return IsRoadVehInDepot(v) && v->vehstatus & VS_STOPPED;
-}
-
 void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 
@@ -85,6 +74,7 @@ struct RoadVehicle : public Vehicle {
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 32; }
 	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 32; }
 	Money GetRunningCost() const { return RoadVehInfo(this->engine_type)->running_cost * _price.roadveh_running; }
+	bool IsInDepot() const { return this->u.road.state == RVSB_IN_DEPOT; }
 	void Tick();
 };
 

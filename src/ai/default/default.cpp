@@ -338,7 +338,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 	BackuppedOrders orderbak[1];
 	EngineID veh;
 
-	if (!IsRoadVehInDepotStopped(v)) {
+	if (!v->IsStoppedInDepot()) {
 		AiHandleGotoDepot(p, CMD_SEND_ROADVEH_TO_DEPOT);
 		return;
 	}
@@ -367,7 +367,7 @@ static void AiHandleReplaceAircraft(Player *p)
 	BackuppedOrders orderbak[1];
 	EngineID veh;
 
-	if (!IsAircraftInHangarStopped(v)) {
+	if (!v->IsStoppedInDepot()) {
 		AiHandleGotoDepot(p, CMD_SEND_AIRCRAFT_TO_HANGAR);
 		return;
 	}
@@ -3578,7 +3578,7 @@ static void AiStateSellVeh(Player *p)
 			DoCommand(v->tile, v->index, 1, DC_EXEC, CMD_SELL_RAIL_WAGON);
 
 		} else if (v->type == VEH_ROAD) {
-			if (!IsRoadVehInDepotStopped(v)) {
+			if (!v->IsStoppedInDepot()) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
 				goto going_to_depot;
@@ -3586,7 +3586,7 @@ static void AiStateSellVeh(Player *p)
 
 			DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
 		} else if (v->type == VEH_AIRCRAFT) {
-			if (!IsAircraftInHangarStopped(v)) {
+			if (!v->IsStoppedInDepot()) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
 				goto going_to_depot;

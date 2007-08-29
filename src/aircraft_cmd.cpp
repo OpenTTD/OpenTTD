@@ -485,7 +485,7 @@ CommandCost CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v = GetVehicle(p1);
 
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!IsAircraftInHangarStopped(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -526,7 +526,7 @@ CommandCost CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32
 	}
 
 	if (flags & DC_EXEC) {
-		if (IsAircraftInHangarStopped(v)) {
+		if (v->IsStoppedInDepot()) {
 			DeleteVehicleNews(p1, STR_A014_AIRCRAFT_IS_WAITING_IN);
 		}
 
@@ -560,7 +560,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner) || IsAircraftInHangar(v)) return CMD_ERROR;
+	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner) || v->IsInDepot()) return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT && !(p2 & DEPOT_LOCATE_HANGAR)) {
 		if (!!(p2 & DEPOT_SERVICE) == HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
@@ -634,7 +634,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v = GetVehicle(p1);
 
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!IsAircraftInHangarStopped(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	/* Check cargo */
 	CargoID new_cid = GB(p2, 0, 8);
@@ -706,7 +706,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 
 	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
 
-	if (IsAircraftInHangar(v)) {
+		if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}

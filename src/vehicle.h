@@ -433,6 +433,18 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	virtual Money GetRunningCost() const { return 0; }
 
 	/**
+	 * Check whether the vehicle is in the depot.
+	 * @return true if and only if the vehicle is in the depot.
+	 */
+	virtual bool IsInDepot() const { return false; }
+
+	/**
+	 * Check whether the vehicle is in the depot *and* stopped.
+	 * @return true if and only if the vehicle is in the depot and stopped.
+	 */
+	virtual bool IsStoppedInDepot() const { return this->IsInDepot() && (this->vehstatus & VS_STOPPED) != 0; }
+
+	/**
 	 * Calls the tick handler of the vehicle
 	 */
 	virtual void Tick() {};
@@ -573,15 +585,11 @@ void TrainConsistChanged(Vehicle *v);
 void TrainPowerChanged(Vehicle *v);
 Money GetTrainRunningCost(const Vehicle *v);
 
-int CheckTrainStoppedInDepot(const Vehicle *v);
-
 bool VehicleNeedsService(const Vehicle *v);
 
 uint GenerateVehicleSortList(const Vehicle*** sort_list, uint16 *length_of_array, VehicleType type, PlayerID owner, uint32 index, uint16 window_type);
 void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count);
 CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
-bool IsVehicleInDepot(const Vehicle *v);
-bool IsVehicleInDepotStopped(const Vehicle *v);
 void VehicleEnterDepot(Vehicle *v);
 
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g);

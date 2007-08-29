@@ -458,7 +458,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				DrawVehicleProfitButton(v, x, y2 + 13);
 
 				SetDParam(0, v->unitnumber);
-				DrawString(x, y2 + 2, IsVehicleInDepot(v) ? STR_021F : (v->age > v->max_age - 366 ? STR_00E3 : STR_00E2), 0);
+				DrawString(x, y2 + 2, v->IsInDepot() ? STR_021F : (v->age > v->max_age - 366 ? STR_00E3 : STR_00E2), 0);
 
 				if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG2) DrawSmallOrderList(v, x + 138, y2);
 

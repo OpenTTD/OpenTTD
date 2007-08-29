@@ -248,6 +248,9 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 byte FreightWagonMult(CargoID cargo);
 
+int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped);
+int CheckTrainStoppedInDepot(const Vehicle *v);
+
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
  * You create a Vehicle using AllocateVehicle, so it is added to the pool
@@ -275,6 +278,8 @@ struct Train : public Vehicle {
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 16; }
 	int GetDisplayMaxSpeed() const { return this->u.rail.cached_max_speed * 10 / 16; }
 	Money GetRunningCost() const;
+	bool IsInDepot() const { return CheckTrainInDepot(this, false) != -1; }
+	bool IsStoppedInDepot() const { return CheckTrainStoppedInDepot(this) >= 0; }
 	void Tick();
 };
 

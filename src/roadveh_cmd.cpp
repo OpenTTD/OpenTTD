@@ -304,7 +304,7 @@ CommandCost CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	}
 
 	if (flags & DC_EXEC) {
-		if (IsRoadVehInDepotStopped(v)) {
+		if (v->IsStoppedInDepot()) {
 			DeleteVehicleNews(p1, STR_9016_ROAD_VEHICLE_IS_WAITING);
 		}
 
@@ -469,7 +469,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
-	if (IsRoadVehInDepot(v)) return CMD_ERROR;
+	if (v->IsInDepot()) return CMD_ERROR;
 
 	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
@@ -538,7 +538,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
 			v->u.road.state == RVSB_WORMHOLE ||
-			IsRoadVehInDepot(v) ||
+			v->IsInDepot() ||
 			v->cur_speed < 5) {
 		return CMD_ERROR;
 	}
@@ -865,7 +865,7 @@ static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
 
 	return
 		v->type == VEH_ROAD &&
-		!IsRoadVehInDepot(v) &&
+		!v->IsInDepot() &&
 		myabs(v->z_pos - rvf->veh->z_pos) < 6 &&
 		v->direction == rvf->dir &&
 		GetFirstVehicleInChain(rvf->veh) != GetFirstVehicleInChain(v) &&
@@ -1439,7 +1439,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 	/* If this vehicle is in a depot and we've reached this point it must be
 	 * one of the articulated parts. It will stay in the depot until activated
 	 * by the previous vehicle in the chain when it gets to the right place. */
-	if (IsRoadVehInDepot(v)) return true;
+	if (v->IsInDepot()) return true;
 
 	/* Save old vehicle position to use at end of move to set viewport area dirty */
 	BeginVehicleMove(v);
@@ -1817,7 +1817,7 @@ static void RoadVehController(Vehicle *v)
 
 	if (v->current_order.type == OT_LOADING) return;
 
-	if (IsRoadVehInDepot(v) && RoadVehLeaveDepot(v, true)) return;
+	if (v->IsInDepot() && RoadVehLeaveDepot(v, true)) return;
 
 	/* Check if vehicle needs to proceed, return if it doesn't */
 	if (!RoadVehAccelerate(v)) return;
@@ -1858,7 +1858,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
 	if (v->u.road.slot != NULL) return;
 
-	if (IsRoadVehInDepot(v)) {
+	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}

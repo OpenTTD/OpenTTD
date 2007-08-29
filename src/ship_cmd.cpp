@@ -152,7 +152,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
 
-	if (IsShipInDepot(v)) {
+	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}
@@ -355,7 +355,7 @@ static void CheckShipLeaveDepot(Vehicle *v)
 	Axis axis;
 	uint m;
 
-	if (!IsShipInDepot(v)) return;
+	if (!v->IsInDepot()) return;
 
 	tile = v->tile;
 	axis = GetShipDepotAxis(tile);
@@ -678,7 +678,7 @@ static void ShipController(Vehicle *v)
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	if (gp.old_tile == gp.new_tile) {
 		/* Staying in tile */
-		if (IsShipInDepot(v)) {
+		if (v->IsInDepot()) {
 			gp.x = v->x_pos;
 			gp.y = v->y_pos;
 		} else {
@@ -925,7 +925,7 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	if (!IsShipInDepotStopped(v)) {
+	if (!v->IsStoppedInDepot()) {
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
 	}
 
@@ -967,7 +967,7 @@ CommandCost CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		if (IsShipInDepotStopped(v)) {
+		if (v->IsStoppedInDepot()) {
 			DeleteVehicleNews(p1, STR_981C_SHIP_IS_WAITING_IN_DEPOT);
 		}
 
@@ -1007,7 +1007,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
-	if (IsShipInDepot(v)) return CMD_ERROR;
+	if (v->IsInDepot()) return CMD_ERROR;
 
 	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
@@ -1079,7 +1079,7 @@ CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (!IsShipInDepotStopped(v)) {
+	if (!v->IsStoppedInDepot()) {
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
 	}
 

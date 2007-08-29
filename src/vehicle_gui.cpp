@@ -1021,7 +1021,7 @@ static void DrawVehicleListWindow(Window *w)
 
 		if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, y);
 
-		if (IsVehicleInDepot(v)) {
+		if (v->IsInDepot()) {
 			str = STR_021F;
 		} else {
 			str = (v->age > v->max_age - 366) ? STR_00E3 : STR_00E2;
@@ -1546,9 +1546,9 @@ static bool IsVehicleRefitable(const Vehicle *v)
 	 */
 	switch (v->type) {
 		case VEH_TRAIN:    return false;
-		case VEH_ROAD:     return EngInfo(v->engine_type)->refit_mask != 0 && IsVehicleInDepotStopped(v);
-		case VEH_SHIP:     return ShipVehInfo(v->engine_type)->refittable && IsVehicleInDepotStopped(v);
-		case VEH_AIRCRAFT: return IsVehicleInDepotStopped(v);
+		case VEH_ROAD:     return EngInfo(v->engine_type)->refit_mask != 0 && v->IsStoppedInDepot();
+		case VEH_SHIP:     return ShipVehInfo(v->engine_type)->refittable && v->IsStoppedInDepot();
+		case VEH_AIRCRAFT: return v->IsStoppedInDepot();
 		default: NOT_REACHED();
 	}
 }
@@ -1790,7 +1790,7 @@ static void VehicleViewWndProc(Window *w, WindowEvent *e)
 
 		case WE_MOUSELOOP: {
 			const Vehicle *v = GetVehicle(w->window_number);
-			bool veh_stopped = IsVehicleInDepotStopped(v);
+			bool veh_stopped = v->IsStoppedInDepot();
 
 			/* Widget VVW_WIDGET_GOTO_DEPOT must be hidden if the vehicle is already
 			 * stopped in depot.
