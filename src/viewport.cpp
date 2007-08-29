@@ -24,6 +24,7 @@
 #include "variables.h"
 #include "train.h"
 #include "roadveh.h"
+#include "vehicle_gui.h"
 #include "blitter/factory.hpp"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
@@ -1786,13 +1787,13 @@ static void CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 static void SafeShowTrainViewWindow(const Vehicle* v)
 {
 	if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
-	ShowTrainViewWindow(v);
+	ShowVehicleViewWindow(v);
 }
 
 static void SafeShowRoadVehViewWindow(const Vehicle *v)
 {
 	if (!IsRoadVehFront(v)) v = GetFirstVehicleInChain(v);
-	ShowRoadVehViewWindow(v);
+	ShowVehicleViewWindow(v);
 }
 
 static void Nop(const Vehicle *v) {}
@@ -1801,8 +1802,8 @@ typedef void OnVehicleClickProc(const Vehicle *v);
 static OnVehicleClickProc* const _on_vehicle_click_proc[] = {
 	SafeShowTrainViewWindow,
 	SafeShowRoadVehViewWindow,
-	ShowShipViewWindow,
-	ShowAircraftViewWindow,
+	ShowVehicleViewWindow,
+	ShowVehicleViewWindow,
 	Nop, // Special vehicles
 	Nop  // Disaster vehicles
 };

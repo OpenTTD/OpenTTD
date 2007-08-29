@@ -42,17 +42,14 @@ void PlaceProc_BuyLand(TileIndex tile);
 void ReinitGuiAfterToggleElrail(bool disable);
 
 /* train_gui.cpp */
-void ShowTrainViewWindow(const Vehicle *v);
 void ShowOrdersWindow(const Vehicle *v);
 
 /* road_gui.cpp */
 void ShowBuildRoadToolbar(RoadType roadtype);
 void ShowBuildRoadScenToolbar();
-void ShowRoadVehViewWindow(const Vehicle *v);
 
 /* dock_gui.cpp */
 void ShowBuildDocksToolbar();
-void ShowShipViewWindow(const Vehicle *v);
 
 /* aircraft_gui.cpp */
 void ShowBuildAirToolbar();

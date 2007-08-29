@@ -1080,13 +1080,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 					v = vl->sort_list[id_v];
 
-					switch (vl->vehicle_type) {
-						case VEH_TRAIN: ShowTrainViewWindow(v); break;
-						case VEH_ROAD: ShowRoadVehViewWindow(v); break;
-						case VEH_SHIP: ShowShipViewWindow(v); break;
-						case VEH_AIRCRAFT: ShowAircraftViewWindow(v); break;
-						default: NOT_REACHED(); break;
-					}
+					ShowVehicleViewWindow(v);
 				} break;
 
 				case VLW_WIDGET_AVAILABLE_VEHICLES:
@@ -1284,4 +1278,535 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex 
 		depot_airport_index = depot->index;
 	}
 	ShowVehicleListWindowLocal(player, VLW_DEPOT_LIST, vehicle_type, depot_airport_index);
+}
+
+
+/* Unified vehicle GUI - Vehicle View Window */
+
+/** Constants of vehicle view widget indices */
+enum VehicleViewWindowWidgets {
+	VVW_WIDGET_CLOSEBOX = 0,
+	VVW_WIDGET_CAPTION,
+	VVW_WIDGET_STICKY,
+	VVW_WIDGET_PANEL,
+	VVW_WIDGET_VIEWPORT,
+	VVW_WIDGET_START_STOP_VEH,
+	VVW_WIDGET_CENTER_MAIN_VIEH,
+	VVW_WIDGET_GOTO_DEPOT,
+	VVW_WIDGET_REFIT_VEH,
+	VVW_WIDGET_SHOW_ORDERS,
+	VVW_WIDGET_SHOW_DETAILS,
+	VVW_WIDGET_CLONE_VEH,
+	VVW_WIDGET_EMPTY_BOTTOM_RIGHT,
+	VVW_WIDGET_RESIZE,
+	VVW_WIDGET_TURN_AROUND,
+	VVW_WIDGET_FORCE_PROCEED,
+};
+
+/** Vehicle view widgets. */
+static const Widget _vehicle_view_widgets[] = {
+	{   WWT_CLOSEBOX,  RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,                 STR_018B_CLOSE_WINDOW },           // VVW_WIDGET_CLOSEBOX
+	{    WWT_CAPTION, RESIZE_RIGHT,  14,  11, 237,   0,  13, 0x0 /* filled later */,   STR_018C_WINDOW_TITLE_DRAG_THIS }, // VVW_WIDGET_CAPTION
+	{  WWT_STICKYBOX,    RESIZE_LR,  14, 238, 249,   0,  13, 0x0,                      STR_STICKY_BUTTON },               // VVW_WIDGET_STICKY
+	{      WWT_PANEL,    RESIZE_RB,  14,   0, 231,  14, 103, 0x0,                      STR_NULL },                        // VVW_WIDGET_PANEL
+	{      WWT_INSET,    RESIZE_RB,  14,   2, 229,  16, 101, 0x0,                      STR_NULL },                        // VVW_WIDGET_VIEWPORT
+	{    WWT_PUSHBTN,   RESIZE_RTB,  14,   0, 237, 104, 115, 0x0,                      0x0 /* filled later */ },          // VVW_WIDGET_START_STOP_VEH
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE,  0x0 /* filled later */ },          // VVW_WIDGET_CENTER_MAIN_VIEH
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  32,  49, 0x0 /* filled later */,   0x0 /* filled later */ },          // VVW_WIDGET_GOTO_DEPOT
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  50,  67, SPR_REFIT_VEHICLE,        0x0 /* filled later */ },          // VVW_WIDGET_REFIT_VEH
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  68,  85, SPR_SHOW_ORDERS,          0x0 /* filled later */ },          // VVW_WIDGET_SHOW_ORDERS
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS, 0x0 /* filled later */ },          // VVW_WIDGET_SHOW_DETAILS
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  32,  49, 0x0 /* filled later */,   0x0 /* filled later */ },          // VVW_WIDGET_CLONE_VEH
+	{      WWT_PANEL,   RESIZE_LRB,  14, 232, 249, 104, 103, 0x0,                      STR_NULL },                        // VVW_WIDGET_EMPTY_BOTTOM_RIGHT
+	{  WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,                      STR_NULL },                        // VVW_WIDGET_RESIZE
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  50,  67, SPR_FORCE_VEHICLE_TURN,   STR_9020_FORCE_VEHICLE_TO_TURN_AROUND }, // VVW_WIDGET_TURN_AROUND
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  50,  67, SPR_IGNORE_SIGNALS,       STR_884A_FORCE_TRAIN_TO_PROCEED },       // VVW_WIDGET_FORCE_PROCEED
+{   WIDGETS_END},
+};
+
+
+static void VehicleViewWndProc(Window *w, WindowEvent *e);
+
+/** Vehicle view window descriptor for all vehicles but trains. */
+static const WindowDesc _vehicle_view_desc = {
+	WDP_AUTO, WDP_AUTO, 250, 116, 250, 116,
+	WC_VEHICLE_VIEW, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	_vehicle_view_widgets,
+	VehicleViewWndProc
+};
+
+/** Vehicle view window descriptor for trains. Only minimum_height and
+ *  default_height are different for train view.
+ */
+static const WindowDesc _train_view_desc = {
+	WDP_AUTO, WDP_AUTO, 250, 134, 250, 134,
+	WC_VEHICLE_VIEW, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	_vehicle_view_widgets,
+	VehicleViewWndProc
+};
+
+
+/* Just to make sure, nobody has changed the vehicle type constants, as we are
+	 using them for array indexing in a number of places here. */
+assert_compile(VEH_TRAIN == 0);
+assert_compile(VEH_ROAD == 1);
+assert_compile(VEH_SHIP == 2);
+assert_compile(VEH_AIRCRAFT == 3);
+
+/** Zoom levels for vehicle views indexed by vehicle type. */
+static const ZoomLevel _vehicle_view_zoom_levels[] = {
+	ZOOM_LVL_TRAIN,
+	ZOOM_LVL_ROADVEH,
+	ZOOM_LVL_SHIP,
+	ZOOM_LVL_AIRCRAFT,
+};
+
+/* Constants for geometry of vehicle view viewport */
+static const int VV_VIEWPORT_X = 3;
+static const int VV_VIEWPORT_Y = 17;
+static const int VV_INITIAL_VIEWPORT_WIDTH = 226;
+static const int VV_INITIAL_VIEWPORT_HEIGHT = 84;
+static const int VV_INITIAL_VIEWPORT_HEIGHT_TRAIN = 102;
+
+/** Shows the vehicle view window of the given vehicle. */
+void ShowVehicleViewWindow(const Vehicle *v)
+{
+	Window *w = AllocateWindowDescFront((v->type == VEH_TRAIN) ? &_train_view_desc : &_vehicle_view_desc, v->index);
+
+	if (w != NULL) {
+		w->caption_color = v->owner;
+		AssignWindowViewport(w, VV_VIEWPORT_X, VV_VIEWPORT_Y, VV_INITIAL_VIEWPORT_WIDTH,
+												 (v->type == VEH_TRAIN) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT,
+												 w->window_number | (1 << 31), _vehicle_view_zoom_levels[v->type]);
+	}
+}
+
+/** Initialize a newly created vehicle view window */
+static void CreateVehicleViewWindow(Window *w)
+{
+	const Vehicle *v = GetVehicle(w->window_number);
+
+	/*
+	 * fill in data and tooltip codes for the widgets and
+	 * move some of the buttons for trains
+	 */
+	switch (v->type) {
+		case VEH_TRAIN:
+			w->widget[VVW_WIDGET_CAPTION].data = STR_882E;
+
+			w->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_8846_CURRENT_TRAIN_ACTION_CLICK;
+
+			w->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_8848_CENTER_MAIN_VIEW_ON_TRAIN;
+
+			w->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_TRAIN_TODEPOT;
+			w->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_8849_SEND_TRAIN_TO_DEPOT;
+
+			w->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_RAIL_REFIT_VEHICLE_TO_CARRY;
+
+			w->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_8847_SHOW_TRAIN_S_ORDERS;
+
+			w->widget[VVW_WIDGET_SHOW_DETAILS].tooltips = STR_884C_SHOW_TRAIN_DETAILS;
+
+			w->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_TRAIN;
+			w->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_TRAIN_INFO;
+
+			w->widget[VVW_WIDGET_TURN_AROUND].tooltips = STR_884B_REVERSE_DIRECTION_OF_TRAIN;
+
+
+			/* due to more buttons we must modify the layout a bit for trains */
+			w->widget[VVW_WIDGET_PANEL].bottom = 121;
+			w->widget[VVW_WIDGET_VIEWPORT].bottom = 119;
+
+			w->widget[VVW_WIDGET_START_STOP_VEH].top = 122;
+			w->widget[VVW_WIDGET_START_STOP_VEH].bottom = 133;
+
+			w->widget[VVW_WIDGET_REFIT_VEH].top = 68;
+			w->widget[VVW_WIDGET_REFIT_VEH].bottom = 85;
+
+			w->widget[VVW_WIDGET_SHOW_ORDERS].top = 86;
+			w->widget[VVW_WIDGET_SHOW_ORDERS].bottom = 103;
+
+			w->widget[VVW_WIDGET_SHOW_DETAILS].top = 104;
+			w->widget[VVW_WIDGET_SHOW_DETAILS].bottom = 121;
+
+			w->widget[VVW_WIDGET_EMPTY_BOTTOM_RIGHT].top = 122;
+			w->widget[VVW_WIDGET_EMPTY_BOTTOM_RIGHT].bottom = 121;
+
+			w->widget[VVW_WIDGET_RESIZE].top = 122;
+			w->widget[VVW_WIDGET_RESIZE].bottom = 133;
+
+			w->widget[VVW_WIDGET_TURN_AROUND].top = 68;
+			w->widget[VVW_WIDGET_TURN_AROUND].bottom = 85;
+			break;
+
+		case VEH_ROAD:
+			w->widget[VVW_WIDGET_CAPTION].data = STR_9002;
+
+			w->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_901C_CURRENT_VEHICLE_ACTION;
+
+			w->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE;
+
+			w->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_ROADVEH_TODEPOT;
+			w->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_901F_SEND_VEHICLE_TO_DEPOT;
+
+			w->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY;
+
+			w->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_901D_SHOW_VEHICLE_S_ORDERS;
+
+			w->widget[VVW_WIDGET_SHOW_DETAILS].tooltips = STR_9021_SHOW_ROAD_VEHICLE_DETAILS;
+
+			w->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_ROADVEH;
+			w->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_ROAD_VEHICLE_INFO;
+
+			SetWindowWidgetHiddenState(w, VVW_WIDGET_FORCE_PROCEED, true);
+			break;
+
+		case VEH_SHIP:
+			w->widget[VVW_WIDGET_CAPTION].data = STR_980F;
+
+			w->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_9827_CURRENT_SHIP_ACTION_CLICK;
+
+			w->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_9829_CENTER_MAIN_VIEW_ON_SHIP;
+
+			w->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_SHIP_TODEPOT;
+			w->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_982A_SEND_SHIP_TO_DEPOT;
+
+			w->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_983A_REFIT_CARGO_SHIP_TO_CARRY;
+
+			w->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_9828_SHOW_SHIP_S_ORDERS;
+
+			w->widget[VVW_WIDGET_SHOW_DETAILS].tooltips = STR_982B_SHOW_SHIP_DETAILS;
+
+			w->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_SHIP;
+			w->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_SHIP_INFO;
+
+			SetWindowWidgetsHiddenState(w, true,
+																	VVW_WIDGET_TURN_AROUND,
+																	VVW_WIDGET_FORCE_PROCEED,
+																	WIDGET_LIST_END);
+			break;
+
+		case VEH_AIRCRAFT:
+			w->widget[VVW_WIDGET_CAPTION].data = STR_A00A;
+
+			w->widget[VVW_WIDGET_START_STOP_VEH].tooltips = STR_A027_CURRENT_AIRCRAFT_ACTION;
+
+			w->widget[VVW_WIDGET_CENTER_MAIN_VIEH].tooltips = STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT;
+
+			w->widget[VVW_WIDGET_GOTO_DEPOT].data = SPR_SEND_AIRCRAFT_TODEPOT;
+			w->widget[VVW_WIDGET_GOTO_DEPOT].tooltips = STR_A02A_SEND_AIRCRAFT_TO_HANGAR;
+
+			w->widget[VVW_WIDGET_REFIT_VEH].tooltips = STR_A03B_REFIT_AIRCRAFT_TO_CARRY;
+
+			w->widget[VVW_WIDGET_SHOW_ORDERS].tooltips = STR_A028_SHOW_AIRCRAFT_S_ORDERS;
+
+			w->widget[VVW_WIDGET_SHOW_DETAILS].tooltips = STR_A02B_SHOW_AIRCRAFT_DETAILS;
+
+			w->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_AIRCRAFT;
+			w->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_AIRCRAFT_INFO;
+
+			SetWindowWidgetsHiddenState(w, true,
+																	VVW_WIDGET_TURN_AROUND,
+																	VVW_WIDGET_FORCE_PROCEED,
+																	WIDGET_LIST_END);
+			break;
+
+			default: NOT_REACHED();
+	}
+}
+
+
+/* When unified GUI is complete these functions will also be unified to one
+ * function in this module */
+void ShowAircraftDetailsWindow(const Vehicle *v);
+void ShowShipDetailsWindow(const Vehicle *v);
+void ShowRoadVehDetailsWindow(const Vehicle *v);
+void ShowTrainDetailsWindow(const Vehicle *v);
+
+
+/** Provisional dispatch to vehicle-specific detail window functions. */
+static void ShowVehicleDetailsWindow(const Vehicle *v)
+{
+	switch (v->type) {
+		case VEH_TRAIN:    ShowTrainDetailsWindow(v);    break;
+		case VEH_ROAD:     ShowRoadVehDetailsWindow(v);  break;
+		case VEH_SHIP:     ShowShipDetailsWindow(v);     break;
+		case VEH_AIRCRAFT: ShowAircraftDetailsWindow(v); break;
+		default: NOT_REACHED();
+	}
+}
+
+/** Checks whether the vehicle may be refitted at the moment.*/
+static bool IsVehicleRefitable(const Vehicle *v)
+{
+	/* Why is this so different for different vehicles?
+	 * Does maybe work one solution for all?
+	 */
+	switch (v->type) {
+		case VEH_TRAIN:    return false;
+		case VEH_ROAD:     return EngInfo(v->engine_type)->refit_mask != 0 && IsVehicleInDepotStopped(v);
+		case VEH_SHIP:     return ShipVehInfo(v->engine_type)->refittable && IsVehicleInDepotStopped(v);
+		case VEH_AIRCRAFT: return IsVehicleInDepotStopped(v);
+		default: NOT_REACHED();
+	}
+}
+
+/** Message strings for heading to depot indexed by vehicle type. */
+static const StringID _heading_for_depot_strings[] = {
+	STR_HEADING_FOR_TRAIN_DEPOT,
+	STR_HEADING_FOR_ROAD_DEPOT,
+	STR_HEADING_FOR_SHIP_DEPOT,
+	STR_HEADING_FOR_HANGAR,
+};
+
+/** Message strings for heading to depot and servicing indexed by vehicle type. */
+static const StringID _heading_for_depot_service_strings[] = {
+	STR_HEADING_FOR_TRAIN_DEPOT_SERVICE,
+	STR_HEADING_FOR_ROAD_DEPOT_SERVICE,
+	STR_HEADING_FOR_SHIP_DEPOT_SERVICE,
+	STR_HEADING_FOR_HANGAR_SERVICE,
+};
+
+/** Repaint vehicle view window. */
+static void DrawVehicleViewWindow(Window *w)
+{
+	const Vehicle *v = GetVehicle(w->window_number);
+	StringID str;
+	bool is_localplayer = v->owner == _local_player;
+	bool refitable_and_stopped_in_depot = IsVehicleRefitable(v);
+
+	SetWindowWidgetDisabledState(w, VVW_WIDGET_GOTO_DEPOT, !is_localplayer);
+	SetWindowWidgetDisabledState(w, VVW_WIDGET_REFIT_VEH,
+															 !refitable_and_stopped_in_depot || !is_localplayer);
+	SetWindowWidgetDisabledState(w, VVW_WIDGET_CLONE_VEH, !is_localplayer);
+
+	if (v->type == VEH_TRAIN) {
+		SetWindowWidgetDisabledState(w, VVW_WIDGET_FORCE_PROCEED, !is_localplayer);
+		SetWindowWidgetDisabledState(w, VVW_WIDGET_TURN_AROUND, !is_localplayer);
+
+		/* Cargo refit button is disabled, until we know we can enable it below. */
+
+		if (is_localplayer) {
+			/* See if any vehicle can be refitted */
+			for (const Vehicle *u = v; u != NULL; u = u->next) {
+				if (EngInfo(u->engine_type)->refit_mask != 0 ||
+						(RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON && v->cargo_cap != 0)) {
+					EnableWindowWidget(w, VVW_WIDGET_REFIT_VEH);
+					/* We have a refittable carriage, bail out */
+					break;
+				}
+			}
+		}
+	}
+
+	/* draw widgets & caption */
+	SetDParam(0, v->index);
+	DrawWindowWidgets(w);
+
+	if (v->vehstatus & VS_CRASHED) {
+		str = STR_8863_CRASHED;
+	} else if (v->type != VEH_AIRCRAFT && v->breakdown_ctr == 1) { // check for aircraft necessary?
+		str = STR_885C_BROKEN_DOWN;
+	} else if (v->vehstatus & VS_STOPPED) {
+		if (v->type == VEH_TRAIN) {
+			if (v->cur_speed == 0) {
+				if (v->u.rail.cached_power == 0) {
+					str = STR_TRAIN_NO_POWER;
+				} else {
+					str = STR_8861_STOPPED;
+				}
+			} else {
+				SetDParam(0, v->GetDisplaySpeed());
+				str = STR_TRAIN_STOPPING + _patches.vehicle_speed;
+			}
+		} else { // no train
+			str = STR_8861_STOPPED;
+		}
+	} else { // vehicle is in a "normal" state, show current order
+		switch (v->current_order.type) {
+			case OT_GOTO_STATION: {
+				SetDParam(0, v->current_order.dest);
+				SetDParam(1, v->GetDisplaySpeed());
+				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
+			} break;
+
+			case OT_GOTO_DEPOT: {
+				if (v->type == VEH_AIRCRAFT) {
+					/* Aircrafts always go to a station, even if you say depot */
+					SetDParam(0, v->current_order.dest);
+					SetDParam(1, v->GetDisplaySpeed());
+				} else {
+					Depot *depot = GetDepot(v->current_order.dest);
+					SetDParam(0, depot->town_index);
+					SetDParam(1, v->GetDisplaySpeed());
+				}
+				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
+					str = _heading_for_depot_strings[v->type] + _patches.vehicle_speed;
+				} else {
+					str = _heading_for_depot_service_strings[v->type] + _patches.vehicle_speed;
+				}
+			} break;
+
+			case OT_LOADING:
+				str = STR_882F_LOADING_UNLOADING;
+				break;
+
+			case OT_GOTO_WAYPOINT: {
+				assert(v->type == VEH_TRAIN);
+				SetDParam(0, v->current_order.dest);
+				str = STR_HEADING_FOR_WAYPOINT + _patches.vehicle_speed;
+				SetDParam(1, v->GetDisplaySpeed());
+				break;
+			}
+
+			case OT_LEAVESTATION:
+				if (v->type != VEH_AIRCRAFT) {
+					str = STR_882F_LOADING_UNLOADING;
+					break;
+				}
+				/* fall-through if aircraft. Does this even happen? */
+
+			default:
+				if (v->num_orders == 0) {
+					str = STR_NO_ORDERS + _patches.vehicle_speed;
+					SetDParam(0, v->GetDisplaySpeed());
+				} else {
+					str = STR_EMPTY;
+				}
+				break;
+		}
+	}
+
+	/* draw the flag plus orders */
+	DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, 2, w->widget[VVW_WIDGET_START_STOP_VEH].top + 1);
+	DrawStringCenteredTruncated(w->widget[VVW_WIDGET_START_STOP_VEH].left + 8, w->widget[VVW_WIDGET_START_STOP_VEH].right, w->widget[VVW_WIDGET_START_STOP_VEH].top + 1, str, 0);
+	DrawWindowViewport(w);
+}
+
+/** Command indices for the _vehicle_command_translation_table. */
+enum VehicleCommandTranslation {
+	VCT_CMD_START_STOP = 0,
+	VCT_CMD_GOTO_DEPOT,
+	VCT_CMD_CLONE_VEH,
+	VCT_CMD_TURN_AROUND,
+};
+
+/** Command codes for the shared buttons indexed by VehicleCommandTranslation and vehicle type. */
+static const uint32 _vehicle_command_translation_table[][4] = {
+	{ // VCT_CMD_START_STOP
+		CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN),
+		CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE),
+		CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP),
+		CMD_START_STOP_AIRCRAFT | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT)
+	},
+	{ // VCT_CMD_GOTO_DEPOT
+		/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
+		CMD_SEND_TRAIN_TO_DEPOT | CMD_NO_TEST_IF_IN_NETWORK | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT),
+		CMD_SEND_ROADVEH_TO_DEPOT | CMD_MSG(STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT),
+		CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT),
+		CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_A012_CAN_T_SEND_AIRCRAFT_TO)
+	},
+	{ // VCT_CMD_CLONE_VEH
+		CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE),
+		CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE),
+		CMD_CLONE_VEHICLE | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP),
+		CMD_CLONE_VEHICLE | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT)
+	},
+	{ // VCT_CMD_TURN_AROUND
+		CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_8869_CAN_T_REVERSE_DIRECTION),
+		CMD_TURN_ROADVEH | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN),
+		0xffffffff, // invalid for ships
+		0xffffffff  // invalid for aircrafts
+	},
+};
+
+/** Window event hook for vehicle view. */
+static void VehicleViewWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+		case WE_CREATE:
+			CreateVehicleViewWindow(w);
+			break;
+
+		case WE_PAINT:
+			DrawVehicleViewWindow(w);
+			break;
+
+		case WE_CLICK: {
+			const Vehicle *v = GetVehicle(w->window_number);
+
+			switch (e->we.click.widget) {
+				case VVW_WIDGET_START_STOP_VEH: /* start stop */
+					DoCommandP(v->tile, v->index, 0, NULL,
+										 _vehicle_command_translation_table[VCT_CMD_START_STOP][v->type]);
+					break;
+				case VVW_WIDGET_CENTER_MAIN_VIEH: /* center main view */
+					ScrollMainWindowTo(v->x_pos, v->y_pos);
+					break;
+				case VVW_WIDGET_GOTO_DEPOT: /* goto hangar */
+					DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, NULL,
+						_vehicle_command_translation_table[VCT_CMD_GOTO_DEPOT][v->type]);
+					break;
+				case VVW_WIDGET_REFIT_VEH: /* refit */
+					ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);
+					break;
+				case VVW_WIDGET_SHOW_ORDERS: /* show orders */
+					ShowOrdersWindow(v);
+					break;
+				case VVW_WIDGET_SHOW_DETAILS: /* show details */
+					ShowVehicleDetailsWindow(v);
+					break;
+				case VVW_WIDGET_CLONE_VEH: /* clone vehicle */
+					DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle,
+										 _vehicle_command_translation_table[VCT_CMD_CLONE_VEH][v->type]);
+					break;
+				case VVW_WIDGET_TURN_AROUND: /* turn around */
+					assert(v->type == VEH_TRAIN || v->type == VEH_ROAD);
+					DoCommandP(v->tile, v->index, 0, NULL,
+										 _vehicle_command_translation_table[VCT_CMD_TURN_AROUND][v->type]);
+					break;
+				case VVW_WIDGET_FORCE_PROCEED: /* force proceed */
+					assert(v->type == VEH_TRAIN);
+					DoCommandP(v->tile, v->index, 0, NULL, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL));
+					break;
+			}
+		} break;
+
+		case WE_RESIZE:
+			w->viewport->width          += e->we.sizing.diff.x;
+			w->viewport->height         += e->we.sizing.diff.y;
+			w->viewport->virtual_width  += e->we.sizing.diff.x;
+			w->viewport->virtual_height += e->we.sizing.diff.y;
+			break;
+
+		case WE_DESTROY:
+			DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
+			DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
+			DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
+			DeleteWindowById(WC_VEHICLE_TIMETABLE, w->window_number);
+			break;
+
+		case WE_MOUSELOOP: {
+			const Vehicle *v = GetVehicle(w->window_number);
+			bool veh_stopped = IsVehicleInDepotStopped(v);
+
+			/* Widget VVW_WIDGET_GOTO_DEPOT must be hidden if the vehicle is already
+			 * stopped in depot.
+			 * Widget VVW_WIDGET_CLONE_VEH should then be shown, since cloning is
+			 * allowed only while in depot and stopped.
+			 * This sytem allows to have two buttons, on top of each other.
+			 * The same system applies to widget VVW_WIDGET_REFIT_VEH and VVW_WIDGET_TURN_AROUND.*/
+			if (veh_stopped != IsWindowWidgetHidden(w, VVW_WIDGET_GOTO_DEPOT) || veh_stopped == IsWindowWidgetHidden(w, VVW_WIDGET_CLONE_VEH)) {
+				SetWindowWidgetHiddenState(w,  VVW_WIDGET_GOTO_DEPOT, veh_stopped);  // send to depot
+				SetWindowWidgetHiddenState(w, VVW_WIDGET_CLONE_VEH, !veh_stopped); // clone
+				if (v->type == VEH_ROAD || v->type == VEH_TRAIN) {
+					SetWindowWidgetHiddenState(w,  VVW_WIDGET_REFIT_VEH, !veh_stopped); // refit
+					SetWindowWidgetHiddenState(w, VVW_WIDGET_TURN_AROUND, veh_stopped);  // force turn around
+				}
+				SetWindowDirty(w);
+			}
+		} break;
+	}
 }

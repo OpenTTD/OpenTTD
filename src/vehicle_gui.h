@@ -87,4 +87,7 @@ static inline uint GetVehicleListHeight(VehicleType type)
 	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
 }
 
+/* Unified window procedure */
+void ShowVehicleViewWindow(const Vehicle *v);
+
 #endif /* VEHICLE_GUI_H */

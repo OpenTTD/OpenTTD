@@ -652,13 +652,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					v = gv->sort_list[id_v];
 
 					if (vindex == v->index) {
-						switch (gv->vehicle_type) {
-							default: NOT_REACHED(); break;
-							case VEH_TRAIN:    ShowTrainViewWindow(v);    break;
-							case VEH_ROAD:     ShowRoadVehViewWindow(v);  break;
-							case VEH_SHIP:     ShowShipViewWindow(v);     break;
-							case VEH_AIRCRAFT: ShowAircraftViewWindow(v); break;
-						}
+						ShowVehicleViewWindow(v);
 					}
 
 					break;

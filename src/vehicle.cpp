@@ -2145,6 +2145,18 @@ bool IsVehicleInDepot(const Vehicle *v)
 	return false;
 }
 
+bool IsVehicleInDepotStopped(const Vehicle *v)
+{
+	switch (v->type) {
+		case VEH_TRAIN:    return CheckTrainStoppedInDepot(v) >= 0;
+		case VEH_ROAD:     return IsRoadVehInDepotStopped(v);
+		case VEH_SHIP:     return IsShipInDepotStopped(v);
+		case VEH_AIRCRAFT: return IsAircraftInHangarStopped(v);
+		default: NOT_REACHED();
+	}
+	return false;
+}
+
 /**
  * Calculates how full a vehicle is.
  * @param v The Vehicle to check. For trains, use the first engine.

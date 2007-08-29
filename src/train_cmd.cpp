@@ -1299,7 +1299,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					first->next_shared = NULL;
 
 					/* If we deleted a window then open a new one for the 'new' train */
-					if (IsLocalPlayer() && w != NULL) ShowTrainViewWindow(new_f);
+					if (IsLocalPlayer() && w != NULL) ShowVehicleViewWindow(new_f);
 				}
 			}
 

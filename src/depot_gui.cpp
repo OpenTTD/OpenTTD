@@ -143,24 +143,7 @@ void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 	Vehicle *v = GetVehicle(_new_vehicle_id);
 
-	switch (v->type) {
-		case VEH_TRAIN:    ShowTrainViewWindow(v);    break;
-		case VEH_ROAD:     ShowRoadVehViewWindow(v);  break;
-		case VEH_SHIP:     ShowShipViewWindow(v);     break;
-		case VEH_AIRCRAFT: ShowAircraftViewWindow(v); break;
-		default: NOT_REACHED();
-	}
-}
-
-static inline void ShowVehicleViewWindow(const Vehicle *v)
-{
-	switch (v->type) {
-		case VEH_TRAIN:    ShowTrainViewWindow(v);    break;
-		case VEH_ROAD:     ShowRoadVehViewWindow(v);  break;
-		case VEH_SHIP:     ShowShipViewWindow(v);     break;
-		case VEH_AIRCRAFT: ShowAircraftViewWindow(v); break;
-		default: NOT_REACHED();
-	}
+	ShowVehicleViewWindow(v);
 }
 
 static void DepotSellAllConfirmationCallback(Window *w, bool confirmed)
@@ -912,7 +895,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 							} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 								TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 							} else if (gdvp.head != NULL && IsFrontEngine(gdvp.head)) {
-								ShowTrainViewWindow(gdvp.head);
+								ShowVehicleViewWindow(gdvp.head);
 							}
 						}
 					} else if (GetVehicleFromDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &v, NULL) == MODE_DRAG_VEHICLE &&

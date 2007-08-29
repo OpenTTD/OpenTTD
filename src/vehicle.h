@@ -555,8 +555,6 @@ void VehicleEnteredDepotThisTick(Vehicle *v);
 void BeginVehicleMove(Vehicle *v);
 void EndVehicleMove(Vehicle *v);
 
-void ShowAircraftViewWindow(const Vehicle* v);
-
 UnitID GetFreeUnitNumber(VehicleType type);
 
 void TrainConsistChanged(Vehicle *v);
@@ -571,6 +569,7 @@ uint GenerateVehicleSortList(const Vehicle*** sort_list, uint16 *length_of_array
 void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count);
 CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
 bool IsVehicleInDepot(const Vehicle *v);
+bool IsVehicleInDepotStopped(const Vehicle *v);
 void VehicleEnterDepot(Vehicle *v);
 
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g);

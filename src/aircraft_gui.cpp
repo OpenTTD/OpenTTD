@@ -53,7 +53,7 @@ void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 			_backup_orders_tile = 0;
 			RestoreVehicleOrders(v, _backup_orders_data);
 		}
-		ShowAircraftViewWindow(v);
+		ShowVehicleViewWindow(v);
 	}
 }
 
@@ -212,7 +212,7 @@ static const WindowDesc _aircraft_details_desc = {
 };
 
 
-static void ShowAircraftDetailsWindow(const Vehicle *v)
+void ShowAircraftDetailsWindow(const Vehicle *v)
 {
 	Window *w;
 	VehicleID veh = v->index;
@@ -224,164 +224,4 @@ static void ShowAircraftDetailsWindow(const Vehicle *v)
 	w->caption_color = v->owner;
 //	w->vscroll.cap = 6;
 //	w->traindetails_d.tab = 0;
-}
-
-
-static const Widget _aircraft_view_widgets[] = {
-{   WWT_CLOSEBOX,  RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,                 STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION, RESIZE_RIGHT,  14,  11, 237,   0,  13, STR_A00A,                 STR_018C_WINDOW_TITLE_DRAG_THIS },
-{  WWT_STICKYBOX,    RESIZE_LR,  14, 238, 249,   0,  13, 0x0,                      STR_STICKY_BUTTON },
-{      WWT_PANEL,    RESIZE_RB,  14,   0, 231,  14, 103, 0x0,                      STR_NULL },
-{      WWT_INSET,    RESIZE_RB,  14,   2, 229,  16, 101, 0x0,                      STR_NULL },
-{    WWT_PUSHBTN,   RESIZE_RTB,  14,   0, 237, 104, 115, 0x0,                      STR_A027_CURRENT_AIRCRAFT_ACTION },
-{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE,  STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT },
-{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  32,  49, SPR_SEND_AIRCRAFT_TODEPOT,STR_A02A_SEND_AIRCRAFT_TO_HANGAR },
-{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  50,  67, SPR_REFIT_VEHICLE,        STR_A03B_REFIT_AIRCRAFT_TO_CARRY },
-{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  68,  85, SPR_SHOW_ORDERS,          STR_A028_SHOW_AIRCRAFT_S_ORDERS },
-{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS, STR_A02B_SHOW_AIRCRAFT_DETAILS },
-{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  32,  49, SPR_CLONE_AIRCRAFT,       STR_CLONE_AIRCRAFT_INFO },
-{      WWT_PANEL,   RESIZE_LRB,  14, 232, 249, 104, 103, 0x0,                      STR_NULL },
-{  WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,                      STR_NULL },
-{   WIDGETS_END},
-};
-
-
-static void AircraftViewWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT: {
-		const Vehicle *v = GetVehicle(w->window_number);
-		StringID str;
-		bool is_localplayer = v->owner == _local_player;
-
-		SetWindowWidgetDisabledState(w,  7, !is_localplayer);
-		SetWindowWidgetDisabledState(w,  8, !IsAircraftInHangarStopped(v) || !is_localplayer);
-		SetWindowWidgetDisabledState(w, 11, !is_localplayer);
-
-
-		/* draw widgets & caption */
-		SetDParam(0, v->index);
-		DrawWindowWidgets(w);
-
-		if (v->vehstatus & VS_CRASHED) {
-			str = STR_8863_CRASHED;
-		} else if (v->vehstatus & VS_STOPPED) {
-			str = STR_8861_STOPPED;
-		} else {
-			switch (v->current_order.type) {
-			case OT_GOTO_STATION: {
-				SetDParam(0, v->current_order.dest);
-				SetDParam(1, v->GetDisplaySpeed());
-				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
-			} break;
-
-			case OT_GOTO_DEPOT: {
-				/* Aircrafts always go to a station, even if you say depot */
-				SetDParam(0, v->current_order.dest);
-				SetDParam(1, v->GetDisplaySpeed());
-				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
-					str = STR_HEADING_FOR_HANGAR + _patches.vehicle_speed;
-				} else {
-					str = STR_HEADING_FOR_HANGAR_SERVICE + _patches.vehicle_speed;
-				}
-			} break;
-
-			case OT_LOADING:
-				str = STR_882F_LOADING_UNLOADING;
-				break;
-
-			default:
-				if (v->num_orders == 0) {
-					str = STR_NO_ORDERS + _patches.vehicle_speed;
-					SetDParam(0, v->GetDisplaySpeed());
-				} else {
-					str = STR_EMPTY;
-				}
-				break;
-			}
-		}
-
-		/* draw the flag plus orders */
-		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, 2, w->widget[5].top + 1);
-		DrawStringCenteredTruncated(w->widget[5].left + 8, w->widget[5].right, w->widget[5].top + 1, str, 0);
-		DrawWindowViewport(w);
-	} break;
-
-	case WE_CLICK: {
-		const Vehicle *v = GetVehicle(w->window_number);
-
-		switch (e->we.click.widget) {
-		case 5: /* start stop */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_AIRCRAFT | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT));
-			break;
-		case 6: /* center main view */
-			ScrollMainWindowTo(v->x_pos, v->y_pos);
-			break;
-		case 7: /* goto hangar */
-			DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_A012_CAN_T_SEND_AIRCRAFT_TO));
-			break;
-		case 8: /* refit */
-			ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);
-			break;
-		case 9: /* show orders */
-			ShowOrdersWindow(v);
-			break;
-		case 10: /* show details */
-			ShowAircraftDetailsWindow(v);
-			break;
-		case 11:
-			/* clone vehicle */
-			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle, CMD_CLONE_VEHICLE | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
-			break;
-		}
-	} break;
-
-	case WE_RESIZE:
-		w->viewport->width          += e->we.sizing.diff.x;
-		w->viewport->height         += e->we.sizing.diff.y;
-		w->viewport->virtual_width  += e->we.sizing.diff.x;
-		w->viewport->virtual_height += e->we.sizing.diff.y;
-		break;
-
-	case WE_DESTROY:
-		DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
-		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
-		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
-		DeleteWindowById(WC_VEHICLE_TIMETABLE, w->window_number);
-		break;
-
-	case WE_MOUSELOOP: {
-		const Vehicle *v = GetVehicle(w->window_number);
-		bool plane_stopped = IsAircraftInHangarStopped(v);
-
-		/* Widget 7 (send to hangar) must be hidden if the plane is already stopped in hangar.
-		 * Widget 11 (clone) should then be shown, since cloning is allowed only while in hangar and stopped.
-		 * This sytem allows to have two buttons, on top of each other*/
-		if (plane_stopped != IsWindowWidgetHidden(w, 7) || plane_stopped == IsWindowWidgetHidden(w, 11)) {
-			SetWindowWidgetHiddenState(w,  7, plane_stopped);  // send to hangar
-			SetWindowWidgetHiddenState(w, 11, !plane_stopped); // clone
-			SetWindowDirty(w);
-		}
-	} break;
-	}
-}
-
-
-static const WindowDesc _aircraft_view_desc = {
-	WDP_AUTO, WDP_AUTO, 250, 116, 250, 116,
-	WC_VEHICLE_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_aircraft_view_widgets,
-	AircraftViewWndProc
-};
-
-
-void ShowAircraftViewWindow(const Vehicle *v)
-{
-	Window *w = AllocateWindowDescFront(&_aircraft_view_desc, v->index);
-
-	if (w != NULL) {
-		w->caption_color = v->owner;
-		AssignWindowViewport(w, 3, 17, 0xE2, 0x54, w->window_number | (1 << 31), ZOOM_LVL_AIRCRAFT);
-	}
 }
