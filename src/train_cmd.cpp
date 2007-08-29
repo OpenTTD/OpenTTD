@@ -3313,6 +3313,25 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 }
 
 
+
+Money Train::GetRunningCost() const
+{
+	Money cost = 0;
+	const Vehicle *v = this;
+
+	do {
+		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
+
+		byte cost_factor = GetVehicleProperty(v, 0x0D, rvi->running_cost_base);
+		if (cost_factor == 0) continue;
+
+		cost += cost_factor * _price.running_rail[rvi->running_cost_class];
+	} while ((v = GetNextVehicle(v)) != NULL);
+
+	return cost;
+}
+
+
 void Train::Tick()
 {
 	if (_age_cargo_skip_counter == 0) this->cargo.AgeCargo();
@@ -3384,22 +3403,6 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
 
-Money GetTrainRunningCost(const Vehicle *v)
-{
-	Money cost = 0;
-
-	do {
-		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-
-		byte cost_factor = GetVehicleProperty(v, 0x0D, rvi->running_cost_base);
-		if (cost_factor == 0) continue;
-
-		cost += cost_factor * _price.running_rail[rvi->running_cost_class];
-	} while ((v = GetNextVehicle(v)) != NULL);
-
-	return cost;
-}
-
 void OnNewDay_Train(Vehicle *v)
 {
 	if ((++v->day_counter & 7) == 0) DecreaseVehicleValue(v);
@@ -3420,7 +3423,7 @@ void OnNewDay_Train(Vehicle *v)
 
 		if ((v->vehstatus & VS_STOPPED) == 0) {
 			/* running costs */
-			CommandCost cost(GetTrainRunningCost(v) / 364);
+			CommandCost cost(v->GetRunningCost() / 364);
 
 			v->profit_this_year -= cost.GetCost() >> 8;
 

@@ -209,7 +209,7 @@ static void DrawTrainDetailsWindow(Window *w)
 
 	SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 	SetDParam(2, v->max_age / 366);
-	SetDParam(3, GetTrainRunningCost(v) >> 8);
+	SetDParam(3, v->GetDisplayRunningCost());
 	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
 
 	SetDParam(2, v->GetDisplayMaxSpeed());

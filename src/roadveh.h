@@ -6,7 +6,8 @@
 #define ROADVEH_H
 
 #include "vehicle.h"
-
+#include "engine.h"
+#include "variables.h"
 
 enum RoadVehicleSubType {
 	RVST_FRONT,
@@ -83,6 +84,7 @@ struct RoadVehicle : public Vehicle {
 	int GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 32; }
 	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 32; }
+	Money GetRunningCost() const { return RoadVehInfo(this->engine_type)->running_cost * _price.roadveh_running; }
 	void Tick();
 };
 

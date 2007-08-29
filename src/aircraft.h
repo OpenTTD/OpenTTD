@@ -7,6 +7,8 @@
 
 #include "station_map.h"
 #include "vehicle.h"
+#include "engine.h"
+#include "variables.h"
 
 /** An aircraft can be one ot those types */
 enum AircraftSubType {
@@ -130,6 +132,7 @@ struct Aircraft : public Vehicle {
 	int GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 16; }
 	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 16; }
+	Money GetRunningCost() const { return AircraftVehInfo(this->engine_type)->running_cost * _price.aircraft_running; }
 	void Tick();
 };
 

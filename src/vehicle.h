@@ -427,9 +427,21 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	virtual int GetDisplayMaxSpeed() const { return 0; }
 
 	/**
+	 * Gets the running cost of a vehicle
+	 * @return the vehicle's running cost
+	 */
+	virtual Money GetRunningCost() const { return 0; }
+
+	/**
 	 * Calls the tick handler of the vehicle
 	 */
 	virtual void Tick() {};
+
+	/**
+	 * Gets the running cost of a vehicle  that can be sent into SetDParam for string processing.
+	 * @return the vehicle's running cost
+	 */
+	Money GetDisplayRunningCost() const { return (this->GetRunningCost() >> 8); }
 
 	bool IsValid() const { return this->type != VEH_INVALID; }
 };

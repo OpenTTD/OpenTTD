@@ -6,6 +6,8 @@
 #define SHIP_H
 
 #include "vehicle.h"
+#include "engine.h"
+#include "variables.h"
 
 void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void RecalcShipStuff(Vehicle *v);
@@ -48,6 +50,7 @@ struct Ship: public Vehicle {
 	int GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 32; }
 	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 32; }
+	Money GetRunningCost() const { return ShipVehInfo(this->engine_type)->running_cost * _price.ship_running; }
 	void Tick();
 };
 

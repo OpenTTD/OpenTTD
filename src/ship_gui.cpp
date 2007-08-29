@@ -50,7 +50,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 			SetDParam(2, v->max_age / 366);
-			SetDParam(3, ShipVehInfo(v->engine_type)->running_cost * _price.ship_running >> 8);
+			SetDParam(3, v->GetDisplayRunningCost());
 			DrawString(2, 15, STR_9812_AGE_RUNNING_COST_YR, 0);
 		}
 

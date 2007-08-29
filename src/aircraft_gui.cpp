@@ -80,7 +80,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 			SetDParam(2, v->max_age / 366);
-			SetDParam(3, _price.aircraft_running * AircraftVehInfo(v->engine_type)->running_cost >> 8);
+			SetDParam(3, v->GetDisplayRunningCost());
 			DrawString(2, 15, STR_A00D_AGE_RUNNING_COST_YR, 0);
 		}
 
