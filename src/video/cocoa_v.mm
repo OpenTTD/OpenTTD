@@ -79,6 +79,14 @@ extern "C" void HideMenuBar();
 #undef Point
 #undef Rect
 
+/* Right Mouse Button Emulation enum */
+enum {
+	RMBE_COMMAND,
+	RMBE_CONTROL,
+	RMBE_OFF,
+};
+
+
 /* Subclass of NSWindow to fix genie effect and support resize events  */
 @interface OTTD_QuartzWindow : NSWindow
 - (void)miniaturize:(id)sender;
@@ -359,9 +367,9 @@ static uint32 QZ_MapKey(unsigned short sym)
 	}
 
 	if (_cocoa_video_data.current_mods & NSShiftKeyMask)     key |= WKC_SHIFT;
-	if (_cocoa_video_data.current_mods & NSControlKeyMask)   key |= WKC_CTRL;
+	if (_cocoa_video_data.current_mods & NSControlKeyMask)   key |= (_patches.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
 	if (_cocoa_video_data.current_mods & NSAlternateKeyMask) key |= WKC_ALT;
-	if (_cocoa_video_data.current_mods & NSCommandKeyMask)   key |= WKC_META;
+	if (_cocoa_video_data.current_mods & NSCommandKeyMask)   key |= (_patches.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_META : WKC_CTRL);
 
 	return key << 16;
 }
@@ -544,8 +552,14 @@ static bool QZ_PollEvent()
 			break;
 
 		case NSLeftMouseDown:
+		{
+			uint32 keymask = 0;
+			if (_patches.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSCommandKeyMask;
+			if (_patches.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSControlKeyMask;
+
 			pt = QZ_GetMouseLocation(event);
-			if (!([ event modifierFlags ] & NSCommandKeyMask) ||
+
+			if (!([ event modifierFlags ] & keymask) ||
 					!QZ_MouseIsInsideView(&pt)) {
 				[NSApp sendEvent:event];
 			}
@@ -559,14 +573,14 @@ static bool QZ_PollEvent()
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 
 			/* Right mouse button emulation */
-			if ([ event modifierFlags ] & NSCommandKeyMask) {
+			if ([ event modifierFlags ] & keymask) {
 				_cocoa_video_data.emulating_right_button = true;
 				QZ_MouseButtonEvent(1, YES);
 			} else {
 				QZ_MouseButtonEvent(0, YES);
 			}
 			break;
-
+		}
 		case NSLeftMouseUp:
 			[NSApp sendEvent:event];
 
@@ -750,7 +764,7 @@ static void QZ_GameLoop()
 			last_cur_ticks = cur_ticks;
 			next_tick = cur_ticks + 30;
 
-			_ctrl_pressed = !!(_cocoa_video_data.current_mods & NSControlKeyMask);
+			_ctrl_pressed = !!(_cocoa_video_data.current_mods & ( _patches.right_mouse_btn_emulation != RMBE_CONTROL ? NSControlKeyMask : NSCommandKeyMask));
 			_shift_pressed = !!(_cocoa_video_data.current_mods & NSShiftKeyMask);
 
 			GameLoop();

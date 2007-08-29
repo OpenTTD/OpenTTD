@@ -650,6 +650,10 @@ static const char *_patches_ui[] = {
 	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
 	"scrollwheel_scrolling",
 	"scrollwheel_multiplier",
+#ifdef __APPLE__
+	/* We might need to emulate a right mouse button on mac */
+	"right_mouse_btn_emulation",
+#endif
 	"pause_on_newgame",
 	"advanced_vehicle_list",
 	"loading_indicators",

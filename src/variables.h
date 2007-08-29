@@ -225,6 +225,8 @@ struct Patches {
 	/** YAPF settings */
 	YapfSettings  yapf;
 
+	uint8 right_mouse_btn_emulation;
+
 	uint8 scrollwheel_scrolling;
 	uint8 scrollwheel_multiplier;
 

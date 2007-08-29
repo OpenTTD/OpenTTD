@@ -1103,6 +1103,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom map
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Map scrollwheel speed: {ORANGE}{STRING1}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Right-click emulation: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-click
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the advanced vehicle list: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Use loading indicators: {ORANGE}{STRING1}
