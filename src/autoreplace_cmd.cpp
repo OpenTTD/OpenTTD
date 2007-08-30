@@ -42,9 +42,9 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 			dest->day_counter  = source->day_counter;
 			dest->tick_counter = source->tick_counter;
 
-		} while (source->cargo.Count() > 0 && (dest = dest->next) != NULL);
+		} while (source->cargo.Count() > 0 && (dest = dest->Next()) != NULL);
 		dest = v;
-	} while ((source = source->next) != NULL);
+	} while ((source = source->Next()) != NULL);
 
 	/*
 	 * The of the train will be incorrect at this moment. This is due
@@ -110,7 +110,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 		/* Now we found a cargo type being carried on the train and we will see if it is possible to carry to this one */
 		if (v->cargo_type == new_cargo_type) return CT_NO_REFIT;
 		if (CanRefitTo(engine_type, v->cargo_type)) return v->cargo_type;
-	} while ((v = v->next) != NULL);
+	} while ((v = v->Next()) != NULL);
 	return CT_NO_REFIT; // We failed to find a cargo type on the old vehicle and we will not refit the new one
 }
 
@@ -189,7 +189,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 			}
 		}
 
-		if (new_v->type == VEH_TRAIN && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->next != NULL && IsArticulatedPart(new_v->next))) {
+		if (new_v->type == VEH_TRAIN && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->Next() != NULL && IsArticulatedPart(new_v->Next()))) {
 			// we are autorenewing to a single engine, so we will turn it as the old one was turned as well
 			SETBIT(new_v->u.rail.flags, VRF_REVERSE_DIRECTION);
 		}
@@ -247,12 +247,12 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 		}
 	} else { // flags & DC_EXEC not set
 		CommandCost tmp_move;
-		if (old_v->type == VEH_TRAIN && IsFrontEngine(old_v) && old_v->next != NULL) {
+		if (old_v->type == VEH_TRAIN && IsFrontEngine(old_v) && old_v->Next() != NULL) {
 			/* Verify that the wagons can be placed on the engine in question.
 			 * This is done by building an engine, test if the wagons can be added and then sell the test engine. */
 			DoCommand(old_v->tile, new_engine_type, 3, DC_EXEC, GetCmdBuildVeh(old_v));
 			Vehicle *temp = GetVehicle(_new_vehicle_id);
-			tmp_move = DoCommand(0, (temp->index << 16) | old_v->next->index, 1, 0, CMD_MOVE_RAIL_VEHICLE);
+			tmp_move = DoCommand(0, (temp->index << 16) | old_v->Next()->index, 1, 0, CMD_MOVE_RAIL_VEHICLE);
 			DoCommand(0, temp->index, 0, DC_EXEC, GetCmdSellVeh(old_v));
 		}
 

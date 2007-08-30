@@ -100,7 +100,7 @@ void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, Vehicle
 		}
 		dx += width;
 
-		v = v->next;
+		v = v->Next();
 	} while (dx < count && v != NULL);
 
 	if (highlight_l != highlight_r) {
@@ -176,7 +176,7 @@ static void DrawTrainDetailsWindow(Window *w)
 		do {
 			act_cargo[u->cargo_type] += u->cargo.Count();
 			max_cargo[u->cargo_type] += u->cargo_cap;
-		} while ((u = u->next) != NULL);
+		} while ((u = u->Next()) != NULL);
 
 		/* Set scroll-amount seperately from counting, as to not compute num double
 		 * for more carriages of the same type
@@ -188,7 +188,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	} else {
 		do {
 			if (!IsArticulatedPart(u) || u->cargo_cap != 0) num++;
-		} while ((u = u->next) != NULL);
+		} while ((u = u->Next()) != NULL);
 	}
 
 	SetVScrollCount(w, num);
@@ -249,7 +249,7 @@ static void DrawTrainDetailsWindow(Window *w)
 					SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 					DrawSprite(u->GetImage(DIR_W), pal, x + WagonLengthToPixels(4 + dx), y + 6 + (is_custom_sprite(RailVehInfo(u->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 					dx += u->u.rail.cached_veh_length;
-					u = u->next;
+					u = u->Next();
 				} while (u != NULL && IsArticulatedPart(u) && u->cargo_cap == 0);
 
 				px = x + WagonLengthToPixels(dx) + 2;
@@ -271,7 +271,7 @@ static void DrawTrainDetailsWindow(Window *w)
 			} else {
 				/* Move to the next line */
 				do {
-					v = v->next;
+					v = v->Next();
 				} while (v != NULL && IsArticulatedPart(v) && v->cargo_cap == 0);
 			}
 			if (v == NULL) return;

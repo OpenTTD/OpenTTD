@@ -2156,7 +2156,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 			v->u.rail.track = TRACK_BIT_DEPOT,
 			v->vehstatus |= VS_HIDDEN; /* hide it */
 			v->direction = ReverseDir(v->direction);
-			if (v->next == NULL) VehicleEnterDepot(v);
+			if (v->Next() == NULL) VehicleEnterDepot(v);
 			v->tile = tile;
 
 			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -2165,7 +2165,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	} else if (fract_coord_leave == fract_coord) {
 		if (DiagDirToDir(dir) == v->direction) {
 			/* leave the depot? */
-			if ((v = v->next) != NULL) {
+			if ((v = v->Next()) != NULL) {
 				v->vehstatus &= ~VS_HIDDEN;
 				v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
 			}

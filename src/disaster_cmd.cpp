@@ -158,7 +158,7 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 	VehiclePositionChanged(v);
 	EndVehicleMove(v);
 
-	if ((u = v->next) != NULL) {
+	if ((u = v->Next()) != NULL) {
 		int safe_x = clamp(x, 0, MapMaxX() * TILE_SIZE);
 		int safe_y = clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
 		BeginVehicleMove(u);
@@ -173,7 +173,7 @@ static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 		VehiclePositionChanged(u);
 		EndVehicleMove(u);
 
-		if ((u = u->next) != NULL) {
+		if ((u = u->Next()) != NULL) {
 			BeginVehicleMove(u);
 			u->x_pos = x;
 			u->y_pos = y;

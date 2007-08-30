@@ -261,8 +261,8 @@ static EngineID AiChooseTrainToReplaceWith(const Player* p, const Vehicle* v)
 	const Vehicle* u = v;
 	int num = 0;
 
-	while (++num, u->next != NULL) {
-		u = u->next;
+	while (++num, u->Next() != NULL) {
+		u = u->Next();
 	}
 
 	// XXX: check if a wagon
@@ -2496,7 +2496,7 @@ handle_nocash:
 
 	// Sell a vehicle if the train is double headed.
 	v = GetVehicle(loco_id);
-	if (v->next != NULL) {
+	if (v->Next() != NULL) {
 		i = p->ai.wagon_list[p->ai.num_wagons * 2 - 2];
 		p->ai.wagon_list[p->ai.num_wagons * 2 - 2] = INVALID_VEHICLE;
 		DoCommand(tile, i, 0, DC_EXEC, CMD_SELL_RAIL_WAGON);

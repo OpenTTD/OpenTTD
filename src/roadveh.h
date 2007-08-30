@@ -41,7 +41,7 @@ static inline void SetRoadVehArticPart(Vehicle *v)
 static inline bool RoadVehHasArticPart(const Vehicle *v)
 {
 	assert(v->type == VEH_ROAD);
-	return v->next != NULL && IsRoadVehArticPart(v->next);
+	return v->Next() != NULL && IsRoadVehArticPart(v->Next());
 }
 
 

@@ -140,7 +140,7 @@ void RoadVehUpdateCache(Vehicle *v)
 	assert(v->type == VEH_ROAD);
 	assert(IsRoadVehFront(v));
 
-	for (Vehicle *u = v; u != NULL; u = u->next) {
+	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		/* Update the v->first cache. */
 		if (u->first == NULL) u->first = v;
 
@@ -338,7 +338,7 @@ static bool CheckRoadVehInDepotStopped(const Vehicle *v)
 	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return false;
 	if (IsRoadVehFront(v) && !(v->vehstatus & VS_STOPPED)) return false;
 
-	for (; v != NULL; v = v->next) {
+	for (; v != NULL; v = v->Next()) {
 		if (v->u.road.state != RVSB_IN_DEPOT || v->tile != tile) return false;
 	}
 	return true;
@@ -556,7 +556,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 void RoadVehicle::MarkDirty()
 {
-	for (Vehicle *v = this; v != NULL; v = v->next) {
+	for (Vehicle *v = this; v != NULL; v = v->Next()) {
 		v->cur_image = v->GetImage(v->direction);
 		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 	}
@@ -599,8 +599,8 @@ static void ClearCrashedStation(Vehicle *v)
 static void DeleteLastRoadVeh(Vehicle *v)
 {
 	Vehicle *u = v;
-	for (; v->next != NULL; v = v->next) u = v;
-	u->next = NULL;
+	for (; v->Next() != NULL; v = v->Next()) u = v;
+	u->SetNext(NULL);
 
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 
@@ -646,7 +646,7 @@ static void RoadVehSetRandomDirection(Vehicle *v)
 		v->UpdateDeltaXY(v->direction);
 		v->cur_image = v->GetImage(v->direction);
 		SetRoadVehPosition(v, v->x_pos, v->y_pos);
-	} while ((v = v->next) != NULL);
+	} while ((v = v->Next()) != NULL);
 }
 
 static void RoadVehIsCrashed(Vehicle *v)
@@ -679,7 +679,7 @@ static void RoadVehCrash(Vehicle *v)
 
 	v->u.road.crashed_ctr++;
 
-	for (Vehicle *u = v; u != NULL; u = u->next) {
+	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		if (IsCargoInClass(u->cargo_type, CC_PASSENGERS)) pass += u->cargo.Count();
 
 		u->vehstatus |= VS_CRASHED;
@@ -706,7 +706,7 @@ static void RoadVehCrash(Vehicle *v)
 
 static void RoadVehCheckTrainCrash(Vehicle *v)
 {
-	for (Vehicle *u = v; u != NULL; u = u->next) {
+	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		if (u->u.road.state == RVSB_WORMHOLE) continue;
 
 		TileIndex tile = u->tile;
@@ -1333,7 +1333,7 @@ static const byte _road_veh_data_1[] = {
 static bool RoadVehLeaveDepot(Vehicle *v, bool first)
 {
 	/* Don't leave if not all the wagons are in the depot. */
-	for (const Vehicle *u = v; u != NULL; u = u->next) {
+	for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 		if (u->u.road.state != RVSB_IN_DEPOT || u->tile != v->tile) return false;
 	}
 
@@ -1627,11 +1627,11 @@ again:
 	/* This vehicle is not in a wormhole and it hasn't entered a new tile. If
 	 * it's on a depot tile, check if it's time to activate the next vehicle in
 	 * the chain yet. */
-	if (v->next != NULL &&
+	if (v->Next() != NULL &&
 			IsTileType(v->tile, MP_ROAD) && GetRoadTileType(v->tile) == ROAD_TILE_DEPOT) {
 
 		if (v->u.road.frame == v->u.road.cached_veh_length + RVC_DEPOT_START_FRAME) {
-			RoadVehLeaveDepot(v->next, false);
+			RoadVehLeaveDepot(v->Next(), false);
 		}
 	}
 
@@ -1822,7 +1822,7 @@ static void RoadVehController(Vehicle *v)
 	/* Check if vehicle needs to proceed, return if it doesn't */
 	if (!RoadVehAccelerate(v)) return;
 
-	for (Vehicle *prev = NULL; v != NULL; prev = v, v = v->next) {
+	for (Vehicle *prev = NULL; v != NULL; prev = v, v = v->Next()) {
 		if (!IndividualRoadVehicleController(v, prev)) break;
 	}
 }
@@ -2029,7 +2029,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_ROADVEH_RUN);
 
-	for (; v != NULL; v = v->next) {
+	for (; v != NULL; v = v->Next()) {
 		/* XXX: We refit all the attached wagons en-masse if they can be
 		 * refitted. This is how TTDPatch does it.  TODO: Have some nice
 		 * [Refit] button near each wagon. */

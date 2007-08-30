@@ -1412,7 +1412,7 @@ void VehiclePayment(Vehicle *front_v)
 	/* Start unloading in at the first possible moment */
 	front_v->load_unload_time_rem = 1;
 
-	for (Vehicle *v = front_v; v != NULL; v = v->next) {
+	for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
 		/* No cargo to unload */
 		if (v->cargo_cap == 0 || v->cargo.Empty()) continue;
 
@@ -1499,7 +1499,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	if (--v->load_unload_time_rem != 0) {
 		if (_patches.improved_load && HASBIT(v->current_order.flags, OFB_FULL_LOAD)) {
 			/* 'Reserve' this cargo for this vehicle, because we were first. */
-			for (; v != NULL; v = v->next) {
+			for (; v != NULL; v = v->Next()) {
 				if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
 			}
 		}
@@ -1529,7 +1529,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	StationID last_visited = v->last_station_visited;
 	Station *st = GetStation(last_visited);
 
-	for (; v != NULL; v = v->next) {
+	for (; v != NULL; v = v->Next()) {
 		if (v->cargo_cap == 0) continue;
 
 		byte load_amount = EngInfo(v->engine_type)->load_amount;
@@ -1651,7 +1651,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	 * enough to fill the previous wagons) */
 	if (_patches.improved_load && HASBIT(u->current_order.flags, OFB_FULL_LOAD)) {
 		/* Update left cargo */
-		for (v = u; v != NULL; v = v->next) {
+		for (v = u; v != NULL; v = v->Next()) {
 			if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
 		}
 	}

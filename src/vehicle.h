@@ -222,9 +222,9 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	VehicleTypeByte type;    ///< Type of vehicle
 	byte subtype;            // subtype (Filled with values from EffectVehicles/TrainSubTypes/AircraftSubTypes)
 
-	Vehicle *next;           // next
+	Vehicle *next;           // pointer to the next vehicle in the chain
 	Vehicle *first;          // NOSAVE: pointer to the first vehicle in the chain
-	Vehicle *depot_list;     //NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
+	Vehicle *depot_list;     // NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
 
 	StringID string_id;      // Displayed string
 
@@ -455,7 +455,24 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	 */
 	Money GetDisplayRunningCost() const { return (this->GetRunningCost() >> 8); }
 
-	bool IsValid() const { return this->type != VEH_INVALID; }
+	/**
+	 * Is this vehicle a valid vehicle?
+	 * @return true if and only if the vehicle is valid.
+	 */
+	inline bool IsValid() const { return this->type != VEH_INVALID; }
+
+	/**
+	 * Set the next vehicle of this vehicle.
+	 * @param next the next vehicle. NULL removes the next vehicle.
+	 */
+	void SetNext(Vehicle *next) { this->next = next; }
+
+	/**
+	 * Get the next vehicle of this vehicle.
+	 * @note articulated parts are also counted as vehicles.
+	 * @return the next vehicle or NULL when there isn't a next vehicle.
+	 */
+	inline Vehicle *Next() const { return this->next; }
 };
 
 /**
@@ -632,7 +649,7 @@ GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v);
 Direction GetDirectionTowards(const Vehicle *v, int x, int y);
 
 #define BEGIN_ENUM_WAGONS(v) do {
-#define END_ENUM_WAGONS(v) } while ((v = v->next) != NULL);
+#define END_ENUM_WAGONS(v) } while ((v = v->Next()) != NULL);
 
 static inline VehicleID GetMaxVehicleIndex()
 {

@@ -133,7 +133,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 					SetDParam(0, v->cargo_type);
 					SetDParam(1, v->cargo_cap);
-					u = v->next;
+					u = v->Next();
 					SetDParam(2, u->cargo_type);
 					SetDParam(3, u->cargo_cap);
 					DrawString(60, y, (u->cargo_cap != 0) ? STR_A019_CAPACITY : STR_A01A_CAPACITY, 0);
@@ -151,7 +151,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 
 					y += 10;
 				}
-			} while ( (v=v->next) != NULL);
+			} while ((v = v->Next()) != NULL);
 		}
 	} break;
 

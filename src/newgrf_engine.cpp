@@ -516,14 +516,14 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				byte chain_before = 0;
 				byte chain_after  = 0;
 
-				for (u = GetFirstVehicleInChain(v); u != v; u = u->next) {
+				for (u = GetFirstVehicleInChain(v); u != v; u = u->Next()) {
 					chain_before++;
 					if (variable == 0x41 && u->engine_type != v->engine_type) chain_before = 0;
 				}
 
-				while (u->next != NULL && (variable == 0x40 || u->next->engine_type == v->engine_type)) {
+				while (u->Next() != NULL && (variable == 0x40 || u->Next()->engine_type == v->engine_type)) {
 					chain_after++;
-					u = u->next;
+					u = u->Next();
 				}
 
 				return chain_before | chain_after << 8 | (chain_before + chain_after + (variable == 0x41)) << 16;
@@ -544,7 +544,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			memset(common_cargos, 0, sizeof(common_cargos));
 			memset(common_subtypes, 0, sizeof(common_subtypes));
 
-			for (u = v; u != NULL; u = u->next) {
+			for (u = v; u != NULL; u = u->Next()) {
 				/* Skip empty engines */
 				if (u->cargo_cap == 0) continue;
 
@@ -579,7 +579,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			if (v->type != VEH_AIRCRAFT) return UINT_MAX;
 
 			{
-				const Vehicle *w = v->next;
+				const Vehicle *w = v->Next();
 				uint16 altitude = v->z_pos - w->z_pos; // Aircraft height - shadow height
 				byte airporttype;
 
@@ -611,7 +611,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			if (v->type != VEH_TRAIN) return 0;
 
 			const Vehicle *u_p = GetPrevVehicleInChain(v);
-			const Vehicle *u_n = v->next;
+			const Vehicle *u_n = v->Next();
 			DirDiff f = (u_p == NULL) ?  DIRDIFF_SAME : DirDifference(u_p->direction, v->direction);
 			DirDiff b = (u_n == NULL) ?  DIRDIFF_SAME : DirDifference(v->direction, u_n->direction);
 			DirDiff t = ChangeDirDiff(f, b);
@@ -644,7 +644,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 			{
 				uint count = 0;
-				for (; v != NULL; v = v->next) {
+				for (; v != NULL; v = v->Next()) {
 					if (v->engine_type == parameter) count++;
 				}
 				return count;
@@ -735,7 +735,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x57: return GB(ClampToI32(v->profit_last_year),  8, 24);
 		case 0x58: return GB(ClampToI32(v->profit_last_year), 16, 16);
 		case 0x59: return GB(ClampToI32(v->profit_last_year), 24,  8);
-		case 0x5A: return v->next == NULL ? INVALID_VEHICLE : v->next->index;
+		case 0x5A: return v->Next() == NULL ? INVALID_VEHICLE : v->Next()->index;
 		case 0x5C: return ClampToI32(v->value);
 		case 0x5D: return GB(ClampToI32(v->value),  8, 24);
 		case 0x5E: return GB(ClampToI32(v->value), 16, 16);
@@ -914,7 +914,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
 
 	if (v == NULL) return group->g.result.sprite;
 
-	return group->g.result.sprite + (info_view ? 0 : (v->next->next->u.air.state % group->g.result.num_sprites));
+	return group->g.result.sprite + (info_view ? 0 : (v->Next()->Next()->u.air.state % group->g.result.num_sprites));
 }
 
 
@@ -1040,7 +1040,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 			/* We now trigger the next vehicle in chain recursively.
 			 * The random bits portions may be different for each
 			 * vehicle in chain. */
-			if (v->next != NULL) DoTriggerVehicle(v->next, trigger, 0, true);
+			if (v->Next() != NULL) DoTriggerVehicle(v->Next(), trigger, 0, true);
 			break;
 
 		case VEHICLE_TRIGGER_EMPTY:
@@ -1048,14 +1048,14 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 			 * recursively.  The random bits portions must be same
 			 * for each vehicle in chain, so we give them all
 			 * first chained vehicle's portion of random bits. */
-			if (v->next != NULL) DoTriggerVehicle(v->next, trigger, first ? new_random_bits : base_random_bits, false);
+			if (v->Next() != NULL) DoTriggerVehicle(v->Next(), trigger, first ? new_random_bits : base_random_bits, false);
 			break;
 
 		case VEHICLE_TRIGGER_ANY_NEW_CARGO:
 			/* Now pass the trigger recursively to the next vehicle
 			 * in chain. */
 			assert(!first);
-			if (v->next != NULL) DoTriggerVehicle(v->next, VEHICLE_TRIGGER_ANY_NEW_CARGO, base_random_bits, false);
+			if (v->Next() != NULL) DoTriggerVehicle(v->Next(), VEHICLE_TRIGGER_ANY_NEW_CARGO, base_random_bits, false);
 			break;
 	}
 }

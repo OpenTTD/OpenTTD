@@ -171,7 +171,7 @@ SpriteID GetRotorImage(const Vehicle *v)
 {
 	assert(v->subtype == AIR_HELICOPTER);
 
-	const Vehicle *w = v->next->next;
+	const Vehicle *w = v->Next()->Next();
 	if (is_custom_sprite(v->spritenum)) {
 		SpriteID spritenum = GetCustomRotorSprite(v, false);
 		if (spritenum != 0) return spritenum;
@@ -678,7 +678,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		v->cargo_cap = pass;
 
-		Vehicle *u = v->next;
+		Vehicle *u = v->Next();
 		uint mail = IsCargoInClass(new_cid, CC_PASSENGERS) ? avi->mail_capacity : 0;
 		u->cargo_cap = mail;
 		v->cargo.Truncate(v->cargo_type == new_cid ? pass : 0);
@@ -771,13 +771,13 @@ static void AgeAircraftCargo(Vehicle *v)
 
 	do {
 		v->cargo.AgeCargo();
-		v = v->next;
+		v = v->Next();
 	} while (v != NULL);
 }
 
 static void HelicopterTickHandler(Vehicle *v)
 {
-	Vehicle *u = v->next->next;
+	Vehicle *u = v->Next()->Next();
 
 	if (u->vehstatus & VS_HIDDEN) return;
 
@@ -829,13 +829,13 @@ static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 	v->z_pos = z;
 
 	v->cur_image = v->GetImage(v->direction);
-	if (v->subtype == AIR_HELICOPTER) v->next->next->cur_image = GetRotorImage(v);
+	if (v->subtype == AIR_HELICOPTER) v->Next()->Next()->cur_image = GetRotorImage(v);
 
 	BeginVehicleMove(v);
 	VehiclePositionChanged(v);
 	EndVehicleMove(v);
 
-	Vehicle *u = v->next;
+	Vehicle *u = v->Next();
 
 	int safe_x = clamp(x, 0, MapMaxX() * TILE_SIZE);
 	int safe_y = clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
@@ -850,7 +850,7 @@ static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 	VehiclePositionChanged(u);
 	EndVehicleMove(u);
 
-	u = u->next;
+	u = u->Next();
 	if (u != NULL) {
 		u->x_pos = x;
 		u->y_pos = y;
@@ -870,9 +870,9 @@ void HandleAircraftEnterHangar(Vehicle *v)
 	v->subspeed = 0;
 	v->progress = 0;
 
-	Vehicle *u = v->next;
+	Vehicle *u = v->Next();
 	u->vehstatus |= VS_HIDDEN;
-	u = u->next;
+	u = u->Next();
 	if (u != NULL) {
 		u->vehstatus |= VS_HIDDEN;
 		u->cur_speed = 0;
@@ -1057,7 +1057,7 @@ static bool AircraftController(Vehicle *v)
 
 	/* Helicopter raise */
 	if (amd->flag & AMED_HELI_RAISE) {
-		Vehicle *u = v->next->next;
+		Vehicle *u = v->Next()->Next();
 
 		/* Make sure the rotors don't rotate too fast */
 		if (u->cur_speed > 32) {
@@ -1101,7 +1101,7 @@ static bool AircraftController(Vehicle *v)
 			int z = GetSlopeZ(x, y) + 1 + afc->delta_z;
 
 			if (z == v->z_pos) {
-				Vehicle *u = v->next->next;
+				Vehicle *u = v->Next()->Next();
 
 				/*  Increase speed of rotors. When speed is 80, we've landed. */
 				if (u->cur_speed >= 80) return true;
@@ -1411,7 +1411,7 @@ static void ProcessAircraftOrder(Vehicle *v)
 void Aircraft::MarkDirty()
 {
 		this->cur_image = this->GetImage(this->direction);
-		if (this->subtype == AIR_HELICOPTER) this->next->next->cur_image = GetRotorImage(this);
+		if (this->subtype == AIR_HELICOPTER) this->Next()->Next()->cur_image = GetRotorImage(this);
 		MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
 }
 
@@ -1429,7 +1429,7 @@ static void CrashAirplane(Vehicle *v)
 	SetDParam(0, amt);
 
 	v->cargo.Truncate(0);
-	v->next->cargo.Truncate(0);
+	v->Next()->cargo.Truncate(0);
 	const Station *st = GetStation(v->u.air.targetairport);
 	StringID newsitem;
 	if (st->airport_tile == 0) {
@@ -1527,11 +1527,11 @@ static void AircraftLeaveHangar(Vehicle *v)
 	v->direction = DIR_SE;
 	v->vehstatus &= ~VS_HIDDEN;
 	{
-		Vehicle *u = v->next;
+		Vehicle *u = v->Next();
 		u->vehstatus &= ~VS_HIDDEN;
 
 		/* Rotor blades */
-		u = u->next;
+		u = u->Next();
 		if (u != NULL) {
 			u->vehstatus &= ~VS_HIDDEN;
 			u->cur_speed = 80;
@@ -2155,7 +2155,7 @@ void UpdateOldAircraft()
 			v_oldstyle->tile = 0; // aircraft in air is tile=0
 
 			/* correct speed of helicopter-rotors */
-			if (v_oldstyle->subtype == AIR_HELICOPTER) v_oldstyle->next->next->cur_speed = 32;
+			if (v_oldstyle->subtype == AIR_HELICOPTER) v_oldstyle->Next()->Next()->cur_speed = 32;
 
 			/* set new position x,y,z */
 			SetAircraftPosition(v_oldstyle, gp.x, gp.y, GetAircraftFlyingAltitude(v_oldstyle));

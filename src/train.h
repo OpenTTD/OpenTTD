@@ -200,7 +200,7 @@ static inline void ClearMultiheaded(Vehicle *v)
 static inline bool EngineHasArticPart(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return (v->next != NULL && IsArticulatedPart(v->next));
+	return (v->Next() != NULL && IsArticulatedPart(v->Next()));
 }
 
 /**
@@ -211,7 +211,7 @@ static inline bool EngineHasArticPart(const Vehicle *v)
 static inline Vehicle *GetNextArticPart(const Vehicle *v)
 {
 	assert(EngineHasArticPart(v));
-	return v->next;
+	return v->Next();
 }
 
 /** Get the last part of a multi-part engine.
@@ -235,7 +235,7 @@ static inline Vehicle *GetNextVehicle(const Vehicle *v)
 	while (EngineHasArticPart(v)) v = GetNextArticPart(v);
 
 	/* v now contains the last artic part in the engine */
-	return v->next;
+	return v->Next();
 }
 
 void ConvertOldMultiheadToNew();

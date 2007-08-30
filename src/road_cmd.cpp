@@ -1342,7 +1342,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 				v->u.road.state = RVSB_IN_DEPOT;
 				v->vehstatus |= VS_HIDDEN;
 				v->direction = ReverseDir(v->direction);
-				if (v->next == NULL) VehicleEnterDepot(v);
+				if (v->Next() == NULL) VehicleEnterDepot(v);
 				v->tile = tile;
 
 				InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);

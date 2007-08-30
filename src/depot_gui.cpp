@@ -279,7 +279,7 @@ static void DrawDepotWindow(Window *w)
 		/*Draw the train counter */
 		i = 0;
 		u = v;
-		do i++; while ( (u=u->next) != NULL); // Determine length of train
+		do i++; while ((u = u->Next()) != NULL); // Determine length of train
 		SetDParam(0, i);                      // Set the counter
 		DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
 	}
@@ -356,7 +356,7 @@ static int GetVehicleFromDepotWndPt(const Window *w, int x, int y, Vehicle **veh
 			x += skip;
 
 			/* find the vehicle in this row that was clicked */
-			while (v != NULL && (x -= v->u.rail.cached_veh_length) >= 0) v = v->next;
+			while (v != NULL && (x -= v->u.rail.cached_veh_length) >= 0) v = v->Next();
 
 			/* if an articulated part was selected, find its parent */
 			while (v != NULL && IsArticulatedPart(v)) v = GetPrevVehicleInChain(v);

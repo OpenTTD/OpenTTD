@@ -41,11 +41,11 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 
 		/* Attempt to use pre-allocated vehicles until they run out. This can happen
 		 * if the callback returns different values depending on the cargo type. */
-		u->next = vl[i];
-		if (u->next == NULL) u->next = new InvalidVehicle();
-		if (u->next == NULL) return;
+		u->SetNext(vl[i]);
+		if (u->Next() == NULL) u->SetNext(new InvalidVehicle());
+		if (u->Next() == NULL) return;
 
-		u = u->next;
+		u = u->Next();
 
 		EngineID engine_type = GetFirstEngineOfType(type) + GB(callback, 0, 7);
 		bool flip_image = HASBIT(callback, 7);

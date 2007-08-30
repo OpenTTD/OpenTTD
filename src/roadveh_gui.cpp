@@ -46,7 +46,7 @@ void DrawRoadVehImage(const Vehicle *v, int x, int y, int count, VehicleID selec
 		}
 
 		dx += length;
-		v = v->next;
+		v = v->Next();
 	} while (v != NULL && dx < max_length);
 }
 
@@ -65,7 +65,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		/* Add space for the cargo amount for each part. */
 		do {
 			height_extension += 11;
-		} while ((v = v->next) != NULL);
+		} while ((v = v->Next()) != NULL);
 
 		ResizeWindow(w, 0, height_extension);
 	} break;
@@ -128,7 +128,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 
 			memset(max_cargo, 0, sizeof(max_cargo));
 
-			for (const Vehicle *u = v; u != NULL; u = u->next) {
+			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 				max_cargo[u->cargo_type] += u->cargo_cap;
 			}
 
@@ -153,7 +153,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 			SetDParamStr(0, capacity);
 			DrawStringTruncated(34, 67 + y_offset, STR_JUST_STRING, 0, w->width - 34);
 
-			for (const Vehicle *u = v; u != NULL; u = u->next) {
+			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 				str = STR_8812_EMPTY;
 				if (!u->cargo.Empty()) {
 					SetDParam(0, u->cargo_type);

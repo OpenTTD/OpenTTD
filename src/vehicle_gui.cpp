@@ -261,7 +261,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				}
 			}
 		}
-	} while (v->type == VEH_TRAIN && (u = u->next) != NULL && num_lines < max_lines);
+	} while (v->type == VEH_TRAIN && (u = u->Next()) != NULL && num_lines < max_lines);
 
 	list->num_lines = num_lines;
 	list->items = refit;
@@ -617,8 +617,8 @@ static int CDECL VehicleCargoSorter(const void *a, const void *b)
 
 	memset(cargoa, 0, sizeof(cargoa));
 	memset(cargob, 0, sizeof(cargob));
-	for (v = va; v != NULL; v = v->next) cargoa[v->cargo_type] += v->cargo_cap;
-	for (v = vb; v != NULL; v = v->next) cargob[v->cargo_type] += v->cargo_cap;
+	for (v = va; v != NULL; v = v->Next()) cargoa[v->cargo_type] += v->cargo_cap;
+	for (v = vb; v != NULL; v = v->Next()) cargob[v->cargo_type] += v->cargo_cap;
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		r = cargoa[i] - cargob[i];
@@ -653,12 +653,12 @@ static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 		do {
 			if (RailVehInfo(ua->engine_type)->max_speed != 0)
 				max_speed_a = min(max_speed_a, RailVehInfo(ua->engine_type)->max_speed);
-		} while ((ua = ua->next) != NULL);
+		} while ((ua = ua->Next()) != NULL);
 
 		do {
 			if (RailVehInfo(ub->engine_type)->max_speed != 0)
 				max_speed_b = min(max_speed_b, RailVehInfo(ub->engine_type)->max_speed);
-		} while ((ub = ub->next) != NULL);
+		} while ((ub = ub->Next()) != NULL);
 
 		r = max_speed_a - max_speed_b;
 	} else {
@@ -688,8 +688,8 @@ static int CDECL VehicleValueSorter(const void *a, const void *b)
 	const Vehicle *u;
 	Money valuea = 0, valueb = 0;
 
-	for (u = va; u != NULL; u = u->next) valuea += u->value;
-	for (u = vb; u != NULL; u = u->next) valueb += u->value;
+	for (u = va; u != NULL; u = u->Next()) valuea += u->value;
+	for (u = vb; u != NULL; u = u->Next()) valueb += u->value;
 
 	int r = ClampToI32(valuea - valueb);
 
@@ -1590,7 +1590,7 @@ static void DrawVehicleViewWindow(Window *w)
 
 		if (is_localplayer) {
 			/* See if any vehicle can be refitted */
-			for (const Vehicle *u = v; u != NULL; u = u->next) {
+			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 				if (EngInfo(u->engine_type)->refit_mask != 0 ||
 						(RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON && v->cargo_cap != 0)) {
 					EnableWindowWidget(w, VVW_WIDGET_REFIT_VEH);

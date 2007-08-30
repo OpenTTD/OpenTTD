@@ -243,12 +243,12 @@ void AfterLoadVehicles()
 					v->cur_image = v->GetImage(v->direction);
 
 					/* The plane's shadow will have the same image as the plane */
-					Vehicle *shadow = v->next;
+					Vehicle *shadow = v->Next();
 					shadow->cur_image = v->cur_image;
 
 					/* In the case of a helicopter we will update the rotor sprites */
 					if (v->subtype == AIR_HELICOPTER) {
-						Vehicle *rotor = shadow->next;
+						Vehicle *rotor = shadow->Next();
 						rotor->cur_image = GetRotorImage(v);
 					}
 
@@ -462,7 +462,7 @@ void InitializeVehicles()
 
 Vehicle *GetLastVehicleInChain(Vehicle *v)
 {
-	while (v->next != NULL) v = v->next;
+	while (v->Next() != NULL) v = v->Next();
 	return v;
 }
 
@@ -476,7 +476,7 @@ static Vehicle *GetPrevVehicleInChain_bruteforce(const Vehicle *v)
 {
 	Vehicle *u;
 
-	FOR_ALL_VEHICLES(u) if (u->type == v->type && u->next == v) return u;
+	FOR_ALL_VEHICLES(u) if (u->type == v->type && u->Next() == v) return u;
 
 	return NULL;
 }
@@ -495,7 +495,7 @@ Vehicle *GetPrevVehicleInChain(const Vehicle *v)
 	/* Check to see if this is the first */
 	if (v == u) return NULL;
 
-	for (; u->next != v; u = u->next) assert(u->next != NULL);
+	for (; u->Next() != v; u = u->Next()) assert(u->Next() != NULL);
 
 	return u;
 }
@@ -532,7 +532,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	/* Set the first pointer of all vehicles in that chain to the first wagon */
 	if ((v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) ||
 			(v->type == VEH_ROAD && IsRoadVehFront(v))) {
-		for (u = (Vehicle *)v; u != NULL; u = u->next) u->first = (Vehicle *)v;
+		for (u = (Vehicle *)v; u != NULL; u = u->Next()) u->first = (Vehicle *)v;
 	}
 
 	return (Vehicle*)v;
@@ -541,7 +541,7 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 uint CountVehiclesInChain(const Vehicle* v)
 {
 	uint count = 0;
-	do count++; while ((v = v->next) != NULL);
+	do count++; while ((v = v->Next()) != NULL);
 	return count;
 }
 
@@ -594,7 +594,7 @@ void Vehicle::PreDestructor()
 	 *  destroy vehicle, which on his turn can remove any
 	 *  other artic parts. */
 	if ((this->type == VEH_TRAIN && EngineHasArticPart(this)) || (this->type == VEH_ROAD && RoadVehHasArticPart(this))) {
-		delete this->next;
+		delete this->Next();
 	}
 }
 
@@ -626,7 +626,7 @@ void DeleteVehicleChain(Vehicle *v)
 
 	do {
 		Vehicle *u = v;
-		v = v->next;
+		v = v->Next();
 		delete u;
 	} while (v != NULL);
 }
@@ -1777,7 +1777,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		int veh_counter = 0;
 		do {
 			veh_counter++;
-		} while ((v = v->next) != NULL);
+		} while ((v = v->Next()) != NULL);
 
 		if (!Vehicle::AllocateList(NULL, veh_counter)) {
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
@@ -1861,7 +1861,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (w->type == VEH_TRAIN && EngineHasArticPart(w)) {
 					w = GetNextArticPart(w);
 				} else if (w->type == VEH_ROAD && RoadVehHasArticPart(w)) {
-					w = w->next;
+					w = w->Next();
 				} else {
 					break;
 				}
@@ -1876,7 +1876,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (v->type == VEH_TRAIN && EngineHasArticPart(v)) {
 				v = GetNextArticPart(v);
 			} else if (v->type == VEH_ROAD && RoadVehHasArticPart(v)) {
-				v = v->next;
+				v = v->Next();
 			} else {
 				break;
 			}
@@ -2153,7 +2153,7 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 	const Station *st = GetStation(v->last_station_visited);
 
 	/* Count up max and used */
-	for (; v != NULL; v = v->next) {
+	for (; v != NULL; v = v->Next()) {
 		count += v->cargo.Count();
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0) {
