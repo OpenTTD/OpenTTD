@@ -68,6 +68,11 @@ static uint32 GetTileTrackStatus_Dummy(TileIndex tile, TransportType mode, uint 
 	return 0;
 }
 
+static CommandCost TerraformTile_Dummy(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	return_cmd_error(STR_0001_OFF_EDGE_OF_MAP);
+}
+
 extern const TileTypeProcs _tile_type_dummy_procs = {
 	DrawTile_Dummy,           /* draw_tile_proc */
 	GetSlopeZ_Dummy,          /* get_slope_z_proc */
@@ -82,4 +87,5 @@ extern const TileTypeProcs _tile_type_dummy_procs = {
 	NULL,                     /* get_produced_cargo_proc */
 	NULL,                     /* vehicle_enter_tile_proc */
 	GetFoundation_Dummy,      /* get_foundation_proc */
+	TerraformTile_Dummy,      /* terraform_tile_proc */
 };

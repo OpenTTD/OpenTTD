@@ -33,9 +33,6 @@ struct TerraformerHeightMod {
 };
 
 struct TerraformerState {
-	uint32 flags;
-
-	int direction;
 	int modheight_count;                                         ///< amount of entries in "modheight".
 	int tile_table_count;                                        ///< amount of entries in "tile_table".
 
@@ -99,54 +96,6 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
 	TerraformAddDirtyTile(ts, tile + TileDiffXY(-1, -1));
 	TerraformAddDirtyTile(ts, tile + TileDiffXY(-1,  0));
 	TerraformAddDirtyTile(ts, tile);
-}
-
-/**
- * Checks if a tile can be terraformed, perform tiletype specific things (like clearing the tile) and compute their extra-cost.
- *
- * @param ts TerraformerState.
- * @param tile Tile.
- * @param mode Affected corner: 0 = north, 1 = east, 2 = south, 3 = west.
- * @return Error message or extra-cost.
- */
-static CommandCost TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
-{
-	/* Check if a tile can be terraformed. */
-	if (IsTileType(tile, MP_RAILWAY)) {
-		static const TrackBits safe_track[] = { TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER, TRACK_BIT_RIGHT };
-		static const Slope unsafe_slope[] = { SLOPE_S, SLOPE_W, SLOPE_N, SLOPE_E };
-
-		Slope tileh;
-		uint z;
-
-		/* Nothing could be built at the steep slope - this avoids a bug
-		 * when you have a single diagonal track in one corner on a
-		 * basement and then you raise/lower the other corner. */
-		tileh = GetTileSlope(tile, &z);
-		if (tileh == unsafe_slope[mode] ||
-				tileh == (SLOPE_STEEP | ComplementSlope(unsafe_slope[mode]))) {
-			_terraform_err_tile = tile;
-			_error_message = STR_1008_MUST_REMOVE_RAILROAD_TRACK;
-			return CMD_ERROR;
-		}
-
-		/* If we have a single diagonal track there, the other side of
-		 * tile can be terraformed. */
-		if (IsPlainRailTile(tile) && GetTrackBits(tile) == safe_track[mode]) {
-			/* Allow terraforming. */
-			return CommandCost();
-		}
-	}
-
-	/* Canals can't be terraformed */
-	if (IsClearWaterTile(tile) && IsCanal(tile)) {
-		_terraform_err_tile = tile;
-		_error_message = STR_MUST_DEMOLISH_CANAL_FIRST;
-		return CMD_ERROR;
-	}
-
-	/* Try to clear the tile. If the tile can be cleared, add the cost to the terraforming cost, else the terraforming fails. */
-	return DoCommand(tile, 0, 0, ts->flags, CMD_LANDSCAPE_CLEAR);
 }
 
 /**
@@ -269,8 +218,7 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	_terraform_err_tile = 0;
 
-	ts.direction = direction = p2 ? 1 : -1;
-	ts.flags = flags;
+	direction = p2 ? 1 : -1;
 	ts.modheight_count = ts.tile_table_count = 0;
 	ts.cost = CommandCost();
 
@@ -324,6 +272,13 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			uint z_min = min(min(z_N, z_W), min(z_S, z_E));
 			uint z_max = max(max(z_N, z_W), max(z_S, z_E));
 
+			/* Compute tile slope */
+			uint tileh = (z_max > z_min + 1 ? SLOPE_STEEP : SLOPE_FLAT);
+			if (z_W > z_min) tileh += SLOPE_W;
+			if (z_S > z_min) tileh += SLOPE_S;
+			if (z_E > z_min) tileh += SLOPE_E;
+			if (z_N > z_min) tileh += SLOPE_N;
+
 			/* Check if bridge would take damage */
 			if (direction == 1 && MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) &&
 					GetBridgeHeight(GetSouthernBridgeEnd(tile)) <= z_max * TILE_HEIGHT) {
@@ -336,34 +291,12 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
 			}
 			/* Check tiletype-specific things, and add extra-cost */
-			/* Start of temporary solution until TerraformProc() gets replaced with a TileTypeProc */
-			_terraform_err_tile = tile;
-			CommandCost cost_N = CommandCost();
-			CommandCost cost_W = CommandCost();
-			CommandCost cost_S = CommandCost();
-			CommandCost cost_E = CommandCost();
-
-			if (z_N != TileHeight(tile)) cost_N = TerraformProc(&ts, tile, 0);
-			if (CmdFailed(cost_N)) return cost_N;
-
-			if (z_E != TileHeight(tile + TileDiffXY(0, 1))) cost_E = TerraformProc(&ts, tile, 1);
-			if (CmdFailed(cost_E)) return cost_E;
-
-			if (z_S != TileHeight(tile + TileDiffXY(1, 1))) cost_S = TerraformProc(&ts, tile, 2);
-			if (CmdFailed(cost_S)) return cost_S;
-
-			if (z_W != TileHeight(tile + TileDiffXY(1, 0))) cost_W = TerraformProc(&ts, tile, 3);
-			if (CmdFailed(cost_W)) return cost_W;
-
-			_terraform_err_tile = 0; // no error, reset error tile.
-			/* Add extra cost. Currently this may only be for clearing the tile. And we only want to clear it once. */
-			CommandCost cost = CommandCost();
-			cost.AddCost(cost_N);
-			if (cost.GetCost() == 0) cost.AddCost(cost_W);
-			if (cost.GetCost() == 0) cost.AddCost(cost_S);
-			if (cost.GetCost() == 0) cost.AddCost(cost_E);
+			CommandCost cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, flags, z_min * TILE_HEIGHT, (Slope) tileh);
+			if (CmdFailed(cost)) {
+				_terraform_err_tile = tile;
+				return cost;
+			}
 			ts.cost.AddCost(cost);
-			/* End of temporary solution */
 		}
 	}
 
@@ -842,6 +775,11 @@ void InitializeClearLand()
 	_opt.snow_line = _patches.snow_line_height * TILE_HEIGHT;
 }
 
+static CommandCost TerraformTile_Clear(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+}
+
 extern const TileTypeProcs _tile_type_clear_procs = {
 	DrawTile_Clear,           ///< draw_tile_proc
 	GetSlopeZ_Clear,          ///< get_slope_z_proc
@@ -856,4 +794,5 @@ extern const TileTypeProcs _tile_type_clear_procs = {
 	NULL,                     ///< get_produced_cargo_proc
 	NULL,                     ///< vehicle_enter_tile_proc
 	GetFoundation_Clear,      ///< get_foundation_proc
+	TerraformTile_Clear,      ///< terraform_tile_proc
 };

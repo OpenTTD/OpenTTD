@@ -398,6 +398,14 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, PlayerID old_player, Playe
 	}
 }
 
+static CommandCost TerraformTile_Unmovable(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	/* Owned land remains unsold */
+	if (IsOwnedLand(tile) && CheckTileOwnership(tile)) return CommandCost();
+
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+}
+
 extern const TileTypeProcs _tile_type_unmovable_procs = {
 	DrawTile_Unmovable,             /* draw_tile_proc */
 	GetSlopeZ_Unmovable,            /* get_slope_z_proc */
@@ -412,4 +420,5 @@ extern const TileTypeProcs _tile_type_unmovable_procs = {
 	NULL,                           /* get_produced_cargo_proc */
 	NULL,                           /* vehicle_enter_tile_proc */
 	GetFoundation_Unmovable,        /* get_foundation_proc */
+	TerraformTile_Unmovable,        /* terraform_tile_proc */
 };

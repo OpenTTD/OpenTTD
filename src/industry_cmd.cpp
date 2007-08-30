@@ -1971,6 +1971,10 @@ Money IndustrySpec::GetConstructionCost() const
 			)) >> 8;
 }
 
+static CommandCost TerraformTile_Industry(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR); // funny magic bulldozer
+}
 
 extern const TileTypeProcs _tile_type_industry_procs = {
 	DrawTile_Industry,           /* draw_tile_proc */
@@ -1986,6 +1990,7 @@ extern const TileTypeProcs _tile_type_industry_procs = {
 	GetProducedCargo_Industry,   /* get_produced_cargo_proc */
 	NULL,                        /* vehicle_enter_tile_proc */
 	GetFoundation_Industry,      /* get_foundation_proc */
+	TerraformTile_Industry,      /* terraform_tile_proc */
 };
 
 static const SaveLoad _industry_desc[] = {

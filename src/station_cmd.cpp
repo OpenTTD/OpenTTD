@@ -2878,6 +2878,11 @@ void AfterLoadStations()
 	}
 }
 
+static CommandCost TerraformTile_Station(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+}
+
 
 extern const TileTypeProcs _tile_type_station_procs = {
 	DrawTile_Station,           /* draw_tile_proc */
@@ -2893,6 +2898,7 @@ extern const TileTypeProcs _tile_type_station_procs = {
 	NULL,                       /* get_produced_cargo_proc */
 	VehicleEnter_Station,       /* vehicle_enter_tile_proc */
 	GetFoundation_Station,      /* get_foundation_proc */
+	TerraformTile_Station,      /* terraform_tile_proc */
 };
 
 static const SaveLoad _roadstop_desc[] = {

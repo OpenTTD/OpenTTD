@@ -2303,6 +2303,11 @@ void InitializeTowns()
 	_town_sort_dirty = true;
 }
 
+static CommandCost TerraformTile_Town(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+}
+
 extern const TileTypeProcs _tile_type_town_procs = {
 	DrawTile_Town,           /* draw_tile_proc */
 	GetSlopeZ_Town,          /* get_slope_z_proc */
@@ -2317,6 +2322,7 @@ extern const TileTypeProcs _tile_type_town_procs = {
 	NULL,                    /* get_produced_cargo_proc */
 	NULL,                    /* vehicle_enter_tile_proc */
 	GetFoundation_Town,      /* get_foundation_proc */
+	TerraformTile_Town,      /* terraform_tile_proc */
 };
 
 

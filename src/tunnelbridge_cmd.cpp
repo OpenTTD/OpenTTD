@@ -1415,6 +1415,11 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 	return VETSB_CONTINUE;
 }
 
+static CommandCost TerraformTile_TunnelBridge(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+}
+
 extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	DrawTile_TunnelBridge,           /* draw_tile_proc */
 	GetSlopeZ_TunnelBridge,          /* get_slope_z_proc */
@@ -1429,4 +1434,5 @@ extern const TileTypeProcs _tile_type_tunnelbridge_procs = {
 	NULL,                            /* get_produced_cargo_proc */
 	VehicleEnter_TunnelBridge,       /* vehicle_enter_tile_proc */
 	GetFoundation_TunnelBridge,      /* get_foundation_proc */
+	TerraformTile_TunnelBridge,      /* terraform_tile_proc */
 };

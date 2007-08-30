@@ -473,6 +473,20 @@ typedef void ChangeTileOwnerProc(TileIndex tile, PlayerID old_player, PlayerID n
 /** @see VehicleEnterTileStatus to see what the return values mean */
 typedef uint32 VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
 typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
+/**
+ * Called when a tile is affected by a terraforming operation.
+ * The function has to check if terraforming of the tile is allowed and return extra terraform-cost that depend on the tiletype.
+ * With DC_EXEC in flags it has to perform tiletype-specific actions (like clearing land etc., but not the terraforming itself).
+ *
+ * @note The terraforming has not yet taken place. So GetTileZ() and GetTileSlope() refer to the landscape before the terraforming operation.
+ *
+ * @param tile      The involved tile.
+ * @param flags     Command flags passed to the terraform command (DC_EXEC, DC_QUERY_COST, etc.).
+ * @param z_new     TileZ after terraforming.
+ * @param tileh_new Slope after terraforming.
+ * @return Error code or extra cost for terraforming (like clearing land, building foundations, etc., but not the terraforming itself.)
+ */
+typedef CommandCost TerraformTileProc(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new);
 
 struct TileTypeProcs {
 	DrawTileProc *draw_tile_proc;
@@ -488,6 +502,7 @@ struct TileTypeProcs {
 	GetProducedCargoProc *get_produced_cargo_proc;
 	VehicleEnterTileProc *vehicle_enter_tile_proc;
 	GetFoundationProc *get_foundation_proc;
+	TerraformTileProc *terraform_tile_proc;
 };
 
 

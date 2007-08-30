@@ -656,6 +656,11 @@ void InitializeTrees()
 	_trees_tick_ctr = 0;
 }
 
+static CommandCost TerraformTile_Trees(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+}
+
 
 extern const TileTypeProcs _tile_type_trees_procs = {
 	DrawTile_Trees,           /* draw_tile_proc */
@@ -671,4 +676,5 @@ extern const TileTypeProcs _tile_type_trees_procs = {
 	NULL,                     /* get_produced_cargo_proc */
 	NULL,                     /* vehicle_enter_tile_proc */
 	GetFoundation_Trees,      /* get_foundation_proc */
+	TerraformTile_Trees,      /* terraform_tile_proc */
 };

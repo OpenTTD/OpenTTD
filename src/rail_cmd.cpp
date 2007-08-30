@@ -2175,6 +2175,73 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	return VETSB_CONTINUE;
 }
 
+static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	if (IsPlainRailTile(tile)) {
+		uint z_old;
+		Slope tileh_old = GetTileSlope(tile, &z_old);
+		TrackBits rail_bits = GetTrackBits(tile);
+
+		_error_message = STR_1008_MUST_REMOVE_RAILROAD_TRACK;
+
+		/* When there is only a single horizontal/vertical track, one corner can be terraformed. */
+		Slope allowed_corner;
+		switch (rail_bits) {
+			case TRACK_BIT_RIGHT: allowed_corner = SLOPE_W; break;
+			case TRACK_BIT_UPPER: allowed_corner = SLOPE_S; break;
+			case TRACK_BIT_LEFT:  allowed_corner = SLOPE_E; break;
+			case TRACK_BIT_LOWER: allowed_corner = SLOPE_N; break;
+			default: return CMD_ERROR;
+		}
+
+		Slope track_corners = ComplementSlope(allowed_corner);
+
+		Foundation f_old = GetRailFoundation(tileh_old, rail_bits);
+		switch (f_old) {
+			case FOUNDATION_NONE:
+				/* Everything is valid, which only changes allowed_corner */
+
+				/* Compute height of track */
+				if (tileh_old == track_corners) z_old += TILE_HEIGHT;
+				if (tileh_new == track_corners) {
+					z_new += TILE_HEIGHT;
+				} else {
+					/* do not build a foundation */
+					if ((tileh_new != SLOPE_FLAT) && (tileh_new != allowed_corner)) return CMD_ERROR;
+				}
+
+				/* Track height must remain unchanged */
+				if (z_old != z_new) return CMD_ERROR;
+				break;
+
+			case FOUNDATION_LEVELED:
+				/* Is allowed_corner covered by the foundation? */
+				if ((tileh_old & allowed_corner) == 0) return CMD_ERROR;
+
+				/* allowed_corner may only be raised -> steep slope */
+				if ((z_old != z_new) || (tileh_new != (tileh_old | SLOPE_STEEP))) return CMD_ERROR;
+				break;
+
+			case FOUNDATION_STEEP_LOWER:
+				/* Only allow to lower highest corner */
+				if ((z_old != z_new) || (tileh_new != (tileh_old & ~SLOPE_STEEP))) return CMD_ERROR;
+				break;
+
+			case FOUNDATION_STEEP_HIGHER:
+				return CMD_ERROR;
+
+			default: NOT_REACHED();
+		}
+
+		/* Make the ground dirty */
+		if ((flags & DC_EXEC) != 0) SetRailGroundType(tile, RAIL_GROUND_BARREN);
+
+		/* allow terraforming, no extra costs */
+		return CommandCost();
+	}
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+}
+
 
 extern const TileTypeProcs _tile_type_rail_procs = {
 	DrawTile_Track,           /* draw_tile_proc */
@@ -2190,4 +2257,5 @@ extern const TileTypeProcs _tile_type_rail_procs = {
 	NULL,                     /* get_produced_cargo_proc */
 	VehicleEnter_Track,       /* vehicle_enter_tile_proc */
 	GetFoundation_Track,      /* get_foundation_proc */
+	TerraformTile_Track,      /* terraform_tile_proc */
 };

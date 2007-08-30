@@ -1388,6 +1388,11 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	}
 }
 
+static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+}
+
 
 extern const TileTypeProcs _tile_type_road_procs = {
 	DrawTile_Road,           /* draw_tile_proc */
@@ -1403,4 +1408,5 @@ extern const TileTypeProcs _tile_type_road_procs = {
 	NULL,                    /* get_produced_cargo_proc */
 	VehicleEnter_Road,       /* vehicle_enter_tile_proc */
 	GetFoundation_Road,      /* get_foundation_proc */
+	TerraformTile_Road,      /* terraform_tile_proc */
 };

@@ -802,6 +802,14 @@ static uint32 VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
 	return VETSB_CONTINUE;
 }
 
+static CommandCost TerraformTile_Water(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
+{
+	/* Canals can't be terraformed */
+	if (IsClearWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_MUST_DEMOLISH_CANAL_FIRST);
+
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+}
+
 
 extern const TileTypeProcs _tile_type_water_procs = {
 	DrawTile_Water,           /* draw_tile_proc */
@@ -817,4 +825,5 @@ extern const TileTypeProcs _tile_type_water_procs = {
 	NULL,                     /* get_produced_cargo_proc */
 	VehicleEnter_Water,       /* vehicle_enter_tile_proc */
 	GetFoundation_Water,      /* get_foundation_proc */
+	TerraformTile_Water,      /* terraform_tile_proc */
 };
