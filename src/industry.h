@@ -123,7 +123,7 @@ struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
 	Industry(TileIndex tile = 0) : xy(tile) {}
 	~Industry();
 
-	bool IsValid() const { return this->xy != 0; }
+	inline bool IsValid() const { return this->xy != 0; }
 };
 
 struct IndustryTileTable {

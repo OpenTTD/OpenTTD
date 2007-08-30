@@ -237,14 +237,6 @@ bool Station::IsBuoy() const
 	return (had_vehicle_of_type & HVOT_BUOY) != 0;
 }
 
-/** Determines whether a station exists
- * @todo replace 0 by INVALID_TILE
- */
-bool Station::IsValid() const
-{
-	return xy != 0;
-}
-
 
 /************************************************************************/
 /*                     StationRect implementation                       */
@@ -435,12 +427,6 @@ RoadStop::~RoadStop()
 	DEBUG(ms, cDebugCtorLevel , "I- at %d[0x%x]", xy, xy);
 
 	xy = 0;
-}
-
-/** Determines whether a RoadStop is a valid (i.e. existing) one */
-bool RoadStop::IsValid() const
-{
-	return xy != 0;
 }
 
 /** Checks whether there is a free bay in this road stop */

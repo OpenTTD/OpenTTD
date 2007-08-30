@@ -107,7 +107,11 @@ struct Order : PoolItem<Order, OrderID, &_Order_pool> {
 	Order() : refit_cargo(CT_NO_REFIT) {}
 	~Order() { this->type = OT_NOTHING; }
 
-	bool IsValid() const;
+	/**
+	 * Check if a Order really exists.
+	 */
+	inline bool IsValid() const { return this->type != OT_NOTHING; }
+
 	void Free();
 	void FreeChain();
 };
@@ -138,14 +142,6 @@ static inline VehicleOrderID GetMaxOrderIndex()
 static inline VehicleOrderID GetNumOrders()
 {
 	return GetOrderPoolSize();
-}
-
-/**
- * Check if a Order really exists.
- */
-inline bool Order::IsValid() const
-{
-	return this->type != OT_NOTHING;
 }
 
 inline void Order::Free()

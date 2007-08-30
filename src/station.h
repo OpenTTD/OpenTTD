@@ -65,7 +65,11 @@ struct RoadStop : PoolItem<RoadStop, RoadStopID, &_RoadStop_pool> {
 	RoadStop(TileIndex tile = 0);
 	virtual ~RoadStop();
 
-	bool IsValid() const;
+	/**
+	 * Determines whether a road stop exists
+	 * @return true if and only is the road stop exists
+	 */
+	inline bool IsValid() const { return this->xy != 0; }
 
 	/* For accessing status */
 	bool HasFreeBay() const;
@@ -175,7 +179,12 @@ public:
 	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const;
 	uint GetPlatformLength(TileIndex tile) const;
 	bool IsBuoy() const;
-	bool IsValid() const;
+
+	/**
+	 * Determines whether a station exists
+	 * @return true if and only is the station exists
+	 */
+	inline bool IsValid() const { return this->xy != 0; }
 };
 
 enum StationType {

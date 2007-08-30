@@ -159,7 +159,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	/** Destroy the town */
 	~Town();
 
-	bool IsValid() const { return this->xy != 0; }
+	inline bool IsValid() const { return this->xy != 0; }
 };
 
 struct HouseSpec {

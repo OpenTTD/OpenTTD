@@ -26,7 +26,7 @@ struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
 	/** Destroy the sign */
 	~Sign();
 
-	bool IsValid() const { return this->str != STR_NULL; }
+	inline bool IsValid() const { return this->str != STR_NULL; }
 };
 
 enum {

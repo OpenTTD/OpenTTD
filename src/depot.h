@@ -23,7 +23,7 @@ struct Depot : PoolItem<Depot, DepotID, &_Depot_pool> {
 	Depot(TileIndex xy = 0) : xy(xy) {}
 	~Depot();
 
-	bool IsValid() const { return this->xy != 0; }
+	inline bool IsValid() const { return this->xy != 0; }
 };
 
 static inline bool IsValidDepotID(DepotID index)

@@ -43,7 +43,7 @@ struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
 	 * Is this a valid cargo packet ?
 	 * @return true if and only it is valid
 	 */
-	bool IsValid() const { return this->count != 0; }
+	inline bool IsValid() const { return this->count != 0; }
 
 	/**
 	 * Checks whether the cargo packet is from (exactly) the same source

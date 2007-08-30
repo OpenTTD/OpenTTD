@@ -418,12 +418,6 @@ Waypoint::~Waypoint()
 	this->xy = 0;
 }
 
-bool Waypoint::IsValid() const
-{
-	return this->xy != 0;
-}
-
-
 /**
  * Fix savegames which stored waypoints in their old format
  */

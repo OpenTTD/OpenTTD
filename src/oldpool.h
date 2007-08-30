@@ -225,15 +225,6 @@ struct PoolItem {
 	{
 	}
 
-	/**
-	 * Is this a valid object or not?
-	 * @return true if and only if it is valid
-	 */
-	virtual bool IsValid() const
-	{
-		return false;
-	}
-
 private:
 	/**
 	 * Allocate a pool item; possibly allocate a new block in the pool.

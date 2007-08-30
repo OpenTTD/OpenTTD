@@ -284,7 +284,7 @@ struct EngineRenew : PoolItem<EngineRenew, EngineRenewID, &_EngineRenew_pool> {
 	EngineRenew(EngineID from = INVALID_ENGINE, EngineID to = INVALID_ENGINE) : from(from), to(to), next(NULL) {}
 	~EngineRenew() { this->from = INVALID_ENGINE; }
 
-	bool IsValid() const { return this->from != INVALID_ENGINE; }
+	inline bool IsValid() const { return this->from != INVALID_ENGINE; }
 };
 
 #define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1U < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1U) : NULL) if (er->IsValid())
