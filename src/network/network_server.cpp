@@ -822,6 +822,11 @@ static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *
 		return false;
 	}
 
+	if (cp->cmd != CMD_PLAYER_CTRL && !IsValidPlayer(cp->player) && ci->client_index != NETWORK_SERVER_INDEX) {
+		IConsolePrintF(_icolour_err, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_index, GetPlayerIP(ci));
+		return false;
+	}
+
 	return true;
 }
 
