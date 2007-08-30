@@ -209,6 +209,9 @@ void AfterLoadVehicles()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
+		/* Reinstate the previous pointer */
+		if (v->Next() != NULL) v->Next()->previous = v;
+
 		v->UpdateDeltaXY(v->direction);
 
 		v->fill_percent_te_id = INVALID_TE_ID;
@@ -220,6 +223,17 @@ void AfterLoadVehicles()
 	}
 
 	FOR_ALL_VEHICLES(v) {
+		/* Fill the first pointers */
+		if (v->Previous() == NULL) {
+			for (Vehicle *u = v; u != NULL; u = u->Next()) {
+				u->first = v;
+			}
+		}
+	}
+
+	FOR_ALL_VEHICLES(v) {
+		assert(v->first != NULL);
+
 		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
 			TrainConsistChanged(v);
 		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
@@ -269,6 +283,7 @@ Vehicle::Vehicle()
 	this->left_coord         = INVALID_COORD;
 	this->group_id           = DEFAULT_GROUP;
 	this->fill_percent_te_id = INVALID_TE_ID;
+	this->first              = this;
 }
 
 /**
@@ -464,78 +479,6 @@ Vehicle *GetLastVehicleInChain(Vehicle *v)
 {
 	while (v->Next() != NULL) v = v->Next();
 	return v;
-}
-
-/** Finds the previous vehicle in a chain, by a brute force search.
- * This old function is REALLY slow because it searches through all vehicles to
- * find the previous vehicle, but if v->first has not been set, then this function
- * will need to be used to find the previous one. This function should never be
- * called by anything but GetFirstVehicleInChain
- */
-static Vehicle *GetPrevVehicleInChain_bruteforce(const Vehicle *v)
-{
-	Vehicle *u;
-
-	FOR_ALL_VEHICLES(u) if (u->type == v->type && u->Next() == v) return u;
-
-	return NULL;
-}
-
-/** Find the previous vehicle in a chain, by using the v->first cache.
- * While this function is fast, it cannot be used in the GetFirstVehicleInChain
- * function, otherwise you'll end up in an infinite loop call
- */
-Vehicle *GetPrevVehicleInChain(const Vehicle *v)
-{
-	Vehicle *u;
-	assert(v != NULL);
-
-	u = GetFirstVehicleInChain(v);
-
-	/* Check to see if this is the first */
-	if (v == u) return NULL;
-
-	for (; u->Next() != v; u = u->Next()) assert(u->Next() != NULL);
-
-	return u;
-}
-
-/** Finds the first vehicle in a chain.
- * This function reads out the v->first cache. Should the cache be dirty,
- * it determines the first vehicle in a chain, and updates the cache.
- */
-Vehicle *GetFirstVehicleInChain(const Vehicle *v)
-{
-	Vehicle* u;
-
-	assert(v != NULL);
-	assert(v->type == VEH_TRAIN || v->type == VEH_ROAD);
-
-	if (v->first != NULL) {
-		if (v->type == VEH_TRAIN) {
-			if (IsFrontEngine(v->first) || IsFreeWagon(v->first)) return v->first;
-		} else {
-			if (IsRoadVehFront(v->first)) return v->first;
-		}
-
-		DEBUG(misc, 0, "v->first cache faulty. We shouldn't be here, rebuilding cache!");
-	}
-
-	/* It is the fact (currently) that newly built vehicles do not have
-	 * their ->first pointer set. When this is the case, go up to the
-	 * first engine and set the pointers correctly. Also the first pointer
-	 * is not saved in a savegame, so this has to be fixed up after loading */
-
-	/* Find the 'locomotive' or the first wagon in a chain */
-	while ((u = GetPrevVehicleInChain_bruteforce(v)) != NULL) v = u;
-
-	/* Set the first pointer of all vehicles in that chain to the first wagon */
-	if ((v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) ||
-			(v->type == VEH_ROAD && IsRoadVehFront(v))) {
-		for (u = (Vehicle *)v; u != NULL; u = u->Next()) u->first = (Vehicle *)v;
-	}
-
-	return (Vehicle*)v;
 }
 
 uint CountVehiclesInChain(const Vehicle* v)
@@ -2179,14 +2122,14 @@ void VehicleEnterDepot(Vehicle *v)
 	switch (v->type) {
 		case VEH_TRAIN:
 			InvalidateWindowClasses(WC_TRAINS_LIST);
-			if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
+			if (!IsFrontEngine(v)) v = v->First();
 			UpdateSignalsOnSegment(v->tile, GetRailDepotDirection(v->tile));
 			v->load_unload_time_rem = 0;
 			break;
 
 		case VEH_ROAD:
 			InvalidateWindowClasses(WC_ROADVEH_LIST);
-			if (!IsRoadVehFront(v)) v = GetFirstVehicleInChain(v);
+			if (!IsRoadVehFront(v)) v = v->First();
 			break;
 
 		case VEH_SHIP:
@@ -3166,6 +3109,28 @@ void Vehicle::HandleLoading(bool mode)
 
 	this->cur_order_index++;
 	InvalidateVehicleOrder(this);
+}
+
+void Vehicle::SetNext(Vehicle *next)
+{
+	if (this->next != NULL) {
+		/* We had an old next vehicle. Update the first and previous pointers */
+		for (Vehicle *v = this->next; v != NULL; v = v->Next()) {
+			v->first = this->next;
+		}
+		this->next->previous = NULL;
+	}
+
+	this->next = next;
+
+	if (this->next != NULL) {
+		/* A new next vehicle. Update the first and previous pointers */
+		if (this->next->previous != NULL) this->next->previous->next = NULL;
+		this->next->previous = this;
+		for (Vehicle *v = this->next; v != NULL; v = v->Next()) {
+			v->first = this->first;
+		}
+	}
 }
 
 void SpecialVehicle::UpdateDeltaXY(Direction direction)

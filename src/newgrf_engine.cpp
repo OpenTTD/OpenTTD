@@ -516,7 +516,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				byte chain_before = 0;
 				byte chain_after  = 0;
 
-				for (u = GetFirstVehicleInChain(v); u != v; u = u->Next()) {
+				for (u = v->First(); u != v; u = u->Next()) {
 					chain_before++;
 					if (variable == 0x41 && u->engine_type != v->engine_type) chain_before = 0;
 				}
@@ -610,7 +610,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			 */
 			if (v->type != VEH_TRAIN) return 0;
 
-			const Vehicle *u_p = GetPrevVehicleInChain(v);
+			const Vehicle *u_p = v->Previous();
 			const Vehicle *u_n = v->Next();
 			DirDiff f = (u_p == NULL) ?  DIRDIFF_SAME : DirDifference(u_p->direction, v->direction);
 			DirDiff b = (u_n == NULL) ?  DIRDIFF_SAME : DirDifference(v->direction, u_n->direction);
@@ -758,8 +758,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				case 0x75: return GB(v->u.rail.cached_power,  8, 24);
 				case 0x76: return GB(v->u.rail.cached_power, 16, 16);
 				case 0x77: return GB(v->u.rail.cached_power, 24,  8);
-				case 0x7C: return v->first->index;
-				case 0x7D: return GB(v->first->index, 8, 8);
+				case 0x7C: return v->First()->index;
+				case 0x7D: return GB(v->First()->index, 8, 8);
 				case 0x7F: return 0; // Used for vehicle reversing hack in TTDP
 			}
 			break;
@@ -804,7 +804,7 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 	if (v == NULL) return group->g.real.loading[0];
 
 	if (v->type == VEH_TRAIN) {
-		in_motion = GetFirstVehicleInChain(v)->current_order.type != OT_LOADING;
+		in_motion = v->First()->current_order.type != OT_LOADING;
 	} else {
 		in_motion = v->current_order.type != OT_LOADING;
 	}
@@ -832,7 +832,7 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 	res->ResolveReal   = &VehicleResolveReal;
 
 	res->u.vehicle.self   = v;
-	res->u.vehicle.parent = (v != NULL && v->HasFront()) ? GetFirstVehicleInChain(v) : v;
+	res->u.vehicle.parent = (v != NULL && v->HasFront()) ? v->First() : v;
 
 	res->u.vehicle.self_type = engine_type;
 
@@ -1033,7 +1033,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 			 * i.e.), so we give them all the NEW_CARGO triggered
 			 * vehicle's portion of random bits. */
 			assert(first);
-			DoTriggerVehicle((v->type == VEH_TRAIN) ? GetFirstVehicleInChain(v) : v, VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
+			DoTriggerVehicle((v->type == VEH_TRAIN) ? v->First() : v, VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
 			break;
 
 		case VEHICLE_TRIGGER_DEPOT:

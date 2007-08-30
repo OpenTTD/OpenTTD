@@ -141,8 +141,8 @@ void RoadVehUpdateCache(Vehicle *v)
 	assert(IsRoadVehFront(v));
 
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		/* Update the v->first cache. */
-		if (u->first == NULL) u->first = v;
+		/* Check the v->first cache. */
+		assert(u->First() == v);
 
 		/* Update the 'first engine' */
 		u->u.road.first_engine = (v == u) ? INVALID_ENGINE : v->engine_type;
@@ -259,7 +259,6 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
-		v->first = NULL;
 		v->cargo_cap = GetVehicleProperty(v, 0x0F, rvi->capacity);
 
 		AddArticulatedParts(vl, VEH_ROAD);
@@ -868,7 +867,7 @@ static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
 		!v->IsInDepot() &&
 		myabs(v->z_pos - rvf->veh->z_pos) < 6 &&
 		v->direction == rvf->dir &&
-		GetFirstVehicleInChain(rvf->veh) != GetFirstVehicleInChain(v) &&
+		rvf->veh->First() != v->First() &&
 		(dist_x[v->direction] >= 0 || (x_diff > dist_x[v->direction] && x_diff <= 0)) &&
 		(dist_x[v->direction] <= 0 || (x_diff < dist_x[v->direction] && x_diff >= 0)) &&
 		(dist_y[v->direction] >= 0 || (y_diff > dist_y[v->direction] && y_diff <= 0)) &&

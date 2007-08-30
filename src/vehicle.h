@@ -219,7 +219,8 @@ struct Vehicle;
 DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 
 struct SaveLoad;
-extern const SaveLoad *GetVehicleDescription(VehicleType vt);
+const SaveLoad *GetVehicleDescription(VehicleType vt);
+void AfterLoadVehicles();
 
 struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	VehicleTypeByte type;    ///< Type of vehicle
@@ -227,10 +228,12 @@ struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 
 private:
 	Vehicle *next;           // pointer to the next vehicle in the chain
+	Vehicle *previous;       // NOSAVE: pointer to the previous vehicle in the chain
+	Vehicle *first;          // NOSAVE: pointer to the first vehicle in the chain
 public:
 	friend const SaveLoad *GetVehicleDescription(VehicleType vt); // So we can use private/protected variables in the saveload code
+	friend void AfterLoadVehicles();
 
-	Vehicle *first;          // NOSAVE: pointer to the first vehicle in the chain
 	Vehicle *depot_list;     // NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
 
 	StringID string_id;      // Displayed string
@@ -472,7 +475,7 @@ public:
 	 * Set the next vehicle of this vehicle.
 	 * @param next the next vehicle. NULL removes the next vehicle.
 	 */
-	void SetNext(Vehicle *next) { this->next = next; }
+	void SetNext(Vehicle *next);
 
 	/**
 	 * Get the next vehicle of this vehicle.
@@ -480,6 +483,19 @@ public:
 	 * @return the next vehicle or NULL when there isn't a next vehicle.
 	 */
 	inline Vehicle *Next() const { return this->next; }
+
+	/**
+	 * Get the previous vehicle of this vehicle.
+	 * @note articulated parts are also counted as vehicles.
+	 * @return the previous vehicle or NULL when there isn't a previous vehicle.
+	 */
+	inline Vehicle *Previous() const { return this->previous; }
+
+	/**
+	 * Get the first vehicle of this vehicle chain.
+	 * @return the first vehicle of the chain.
+	 */
+	inline Vehicle *First() const { return this->first; }
 };
 
 /**
@@ -556,10 +572,7 @@ typedef void *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
 void VehiclePositionChanged(Vehicle *v);
-void AfterLoadVehicles();
 Vehicle *GetLastVehicleInChain(Vehicle *v);
-Vehicle *GetPrevVehicleInChain(const Vehicle *v);
-Vehicle *GetFirstVehicleInChain(const Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
 bool IsEngineCountable(const Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);

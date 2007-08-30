@@ -161,8 +161,8 @@ void TrainConsistChanged(Vehicle* v)
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
 
-		/* Update the v->first cache. This is faster than having to brute force it later. */
-		if (u->first == NULL) u->first = v;
+		/* Check the v->first cache. */
+		assert(u->First() == v);
 
 		/* update the 'first engine' */
 		u->u.rail.first_engine = v == u ? INVALID_ENGINE : first_engine;
@@ -583,8 +583,8 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 			_new_vehicle_id = v->index;
 
 			VehiclePositionChanged(v);
-			TrainConsistChanged(GetFirstVehicleInChain(v));
-			UpdateTrainGroupID(GetFirstVehicleInChain(v));
+			TrainConsistChanged(v->First());
+			UpdateTrainGroupID(v->First());
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 			if (IsLocalPlayer()) {
@@ -620,6 +620,7 @@ static CommandCost EstimateTrainCost(EngineID engine, const RailVehicleInfo* rvi
 
 static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool building)
 {
+	u = new (u) Train();
 	u->direction = v->direction;
 	u->owner = v->owner;
 	u->tile = v->tile;
@@ -628,7 +629,6 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	u->z_pos = v->z_pos;
 	u->u.rail.track = TRACK_BIT_DEPOT;
 	u->vehstatus = v->vehstatus & ~VS_STOPPED;
-	u = new (u) Train();
 	u->subtype = 0;
 	SetMultiheaded(u);
 	u->spritenum = v->spritenum + 1;
@@ -841,7 +841,6 @@ static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 	Vehicle *u;
 	for (u = first; GetNextVehicle(u) != v; u = GetNextVehicle(u)) {}
 	GetLastEnginePart(u)->SetNext(GetNextVehicle(v));
-	v->first = NULL; // we shouldn't point to the old first, since the vehicle isn't in that chain anymore
 	return first;
 }
 
@@ -872,11 +871,12 @@ static Vehicle *FindGoodVehiclePos(const Vehicle *src)
  */
 static void AddWagonToConsist(Vehicle *v, Vehicle *dest)
 {
-	UnlinkWagon(v, GetFirstVehicleInChain(v));
+	UnlinkWagon(v, v->First());
 	if (dest == NULL) return;
 
-	v->SetNext(dest->Next());
+	Vehicle *next = dest->Next();
 	dest->SetNext(v);
+	v->SetNext(next);
 	ClearFreeWagon(v);
 	ClearFrontEngine(v);
 }
@@ -933,19 +933,19 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	}
 
 	/* if an articulated part is being handled, deal with its parent vehicle */
-	while (IsArticulatedPart(src)) src = GetPrevVehicleInChain(src);
+	while (IsArticulatedPart(src)) src = src->Previous();
 	if (dst != NULL) {
-		while (IsArticulatedPart(dst)) dst = GetPrevVehicleInChain(dst);
+		while (IsArticulatedPart(dst)) dst = dst->Previous();
 	}
 
 	/* don't move the same vehicle.. */
 	if (src == dst) return CommandCost();
 
 	/* locate the head of the two chains */
-	Vehicle *src_head = GetFirstVehicleInChain(src);
+	Vehicle *src_head = src->First();
 	Vehicle *dst_head;
 	if (dst != NULL) {
-		dst_head = GetFirstVehicleInChain(dst);
+		dst_head = dst->First();
 		if (dst_head->tile != src_head->tile) return CMD_ERROR;
 		/* Now deal with articulated part of destination wagon */
 		dst = GetLastEnginePart(dst);
@@ -1022,10 +1022,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	/* do it? */
 	if (flags & DC_EXEC) {
-		/* clear the ->first cache */
-		for (Vehicle *u = src_head; u != NULL; u = u->Next()) u->first = NULL;
-		for (Vehicle *u = dst_head; u != NULL; u = u->Next()) u->first = NULL;
-
 		/* If we move the front Engine and if the second vehicle is not an engine
 		   add the whole vehicle to the DEFAULT_GROUP */
 		if (IsFrontEngine(src) && !IsDefaultGroupID(src->group_id)) {
@@ -1101,13 +1097,12 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			}
 			dst->SetNext(src);
 		}
+
 		if (src->u.rail.other_multiheaded_part != NULL) {
 			if (src->u.rail.other_multiheaded_part == src_head) {
 				src_head = src_head->Next();
 			}
 			AddWagonToConsist(src->u.rail.other_multiheaded_part, src);
-			/* previous line set the front engine to the old front. We need to clear that */
-			src->u.rail.other_multiheaded_part->first = NULL;
 		}
 
 		/* If there is an engine behind first_engine we moved away, it should become new first_engine
@@ -1218,8 +1213,8 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	while (IsArticulatedPart(v)) v = GetPrevVehicleInChain(v);
-	Vehicle *first = GetFirstVehicleInChain(v);
+	while (IsArticulatedPart(v)) v = v->Previous();
+	Vehicle *first = v->First();
 
 	/* make sure the vehicle is stopped in the depot */
 	if (CheckTrainStoppedInDepot(first) < 0) {
@@ -1261,9 +1256,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * here, so take attention */
 			if ((flags & DC_EXEC) && v == first) {
 				Vehicle *new_f = GetNextVehicle(first);
-
-				/* 2.1 If the first wagon is sold, update the first-> pointers to NULL */
-				for (Vehicle *tmp = first; tmp != NULL; tmp = tmp->Next()) tmp->first = NULL;
 
 				/* 2.2 If there are wagons present after the deleted front engine, check
 				 * if the second wagon (which will be first) is an engine. If it is one,
@@ -1633,7 +1625,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 			return_cmd_error(STR_ONLY_TURN_SINGLE_UNIT);
 		}
 
-		Vehicle *front = GetFirstVehicleInChain(v);
+		Vehicle *front = v->First();
 		/* make sure the vehicle is stopped in the depot */
 		if (CheckTrainStoppedInDepot(front) < 0) {
 			return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
@@ -1777,7 +1769,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	_returned_refit_capacity = num;
 
 	/* Update the train's cached variables */
-	if (flags & DC_EXEC) TrainConsistChanged(GetFirstVehicleInChain(GetVehicle(p1)));
+	if (flags & DC_EXEC) TrainConsistChanged(GetVehicle(p1)->First());
 
 	return cost;
 }
@@ -2718,7 +2710,7 @@ static void *FindTrainCollideEnum(Vehicle *v, void *data)
 			myabs(v->x_pos - tcc->v->x_pos) < 6 &&
 			myabs(v->y_pos - tcc->v->y_pos) < 6 ) {
 
-		Vehicle *coll = GetFirstVehicleInChain(v);
+		Vehicle *coll = v->First();
 
 		/* it can't collide with its own wagons */
 		if (tcc->v == coll ||
@@ -2807,7 +2799,7 @@ static void TrainController(Vehicle *v, bool update_image)
 	Vehicle *prev;
 
 	/* For every vehicle after and including the given vehicle */
-	for (prev = GetPrevVehicleInChain(v); v != NULL; prev = v, v = v->Next()) {
+	for (prev = v->Previous(); v != NULL; prev = v, v = v->Next()) {
 		DiagDirection enterdir = DIAGDIR_BEGIN;
 		bool update_signals = false;
 		BeginVehicleMove(v);
@@ -2945,7 +2937,7 @@ static void TrainController(Vehicle *v, bool update_image)
 					v->tile = gp.new_tile;
 
 					if (GetTileRailType(gp.new_tile) != GetTileRailType(gp.old_tile)) {
-						TrainPowerChanged(GetFirstVehicleInChain(v));
+						TrainPowerChanged(v->First());
 					}
 
 					v->u.rail.track = chosen_track;

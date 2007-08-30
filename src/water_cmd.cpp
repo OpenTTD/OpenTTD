@@ -658,7 +658,7 @@ static void FloodVehicle(Vehicle *v)
 			}
 			Vehicle *u;
 
-			if (v->type != VEH_AIRCRAFT) v = GetFirstVehicleInChain(v);
+			if (v->type != VEH_AIRCRAFT) v = v->First();
 			u = v;
 
 			/* crash all wagons, and count passengers */

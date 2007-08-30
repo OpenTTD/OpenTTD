@@ -359,7 +359,7 @@ static int GetVehicleFromDepotWndPt(const Window *w, int x, int y, Vehicle **veh
 			while (v != NULL && (x -= v->u.rail.cached_veh_length) >= 0) v = v->Next();
 
 			/* if an articulated part was selected, find its parent */
-			while (v != NULL && IsArticulatedPart(v)) v = GetPrevVehicleInChain(v);
+			while (v != NULL && IsArticulatedPart(v)) v = v->Previous();
 
 			d->wagon = v;
 
@@ -398,7 +398,7 @@ static void TrainDepotMoveVehicle(Vehicle *wagon, VehicleID sel, Vehicle *head)
 	if (wagon == NULL) {
 		if (head != NULL) wagon = GetLastVehicleInChain(head);
 	} else  {
-		wagon = GetPrevVehicleInChain(wagon);
+		wagon = wagon->Previous();
 		if (wagon == NULL) return;
 	}
 
@@ -475,7 +475,7 @@ static void HandleCloneVehClick(const Vehicle *v, const Window *w)
 	if (v == NULL) return;
 
 	if (v->HasFront() && !v->IsPrimaryVehicle()) {
-		v = GetFirstVehicleInChain(v);
+		v = v->First();
 		/* Do nothing when clicking on a train in depot with no loc attached */
 		if (v->type == VEH_TRAIN && !IsFrontEngine(v)) return;
 	}

@@ -356,7 +356,7 @@ static bool HandleOrderVehClick(const Vehicle *v, const Vehicle *u, Window *w)
 	if (u->type != v->type) return false;
 
 	if (u->HasFront() && !u->IsPrimaryVehicle()) {
-		u = GetFirstVehicleInChain(u);
+		u = u->First();
 		if (!u->IsPrimaryVehicle()) return false;
 	}
 

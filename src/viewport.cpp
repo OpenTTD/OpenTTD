@@ -1786,13 +1786,13 @@ static void CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 
 static void SafeShowTrainViewWindow(const Vehicle* v)
 {
-	if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
+	if (!IsFrontEngine(v)) v = v->First();
 	ShowVehicleViewWindow(v);
 }
 
 static void SafeShowRoadVehViewWindow(const Vehicle *v)
 {
-	if (!IsRoadVehFront(v)) v = GetFirstVehicleInChain(v);
+	if (!IsRoadVehFront(v)) v = v->First();
 	ShowVehicleViewWindow(v);
 }
 

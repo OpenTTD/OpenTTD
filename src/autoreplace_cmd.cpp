@@ -52,7 +52,7 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 	 * the complete train, which is without the weight of cargo we just
 	 * moved back into some (of the) new wagon(s).
 	 */
-	if (dest->type == VEH_TRAIN) TrainConsistChanged(dest->first);
+	if (dest->type == VEH_TRAIN) TrainConsistChanged(dest->First());
 }
 
 static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID engine_type)
@@ -61,7 +61,7 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID eng
 	const Vehicle *u;
 
 	if (v->type == VEH_TRAIN) {
-		u = GetFirstVehicleInChain(v);
+		u = v->First();
 	} else {
 		u = v;
 	}
@@ -104,7 +104,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 
 	/* the old engine didn't have cargo capacity, but the new one does
 	 * now we will figure out what cargo the train is carrying and refit to fit this */
-	v = GetFirstVehicleInChain(v);
+	v = v->First();
 	do {
 		if (v->cargo_cap == 0) continue;
 		/* Now we found a cargo type being carried on the train and we will see if it is possible to carry to this one */
@@ -200,9 +200,9 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 			 * sell the old engine in a moment
 			 */
 			/* Get the vehicle in front of the one we move out */
-			Vehicle *front = GetPrevVehicleInChain(old_v);
+			Vehicle *front = old_v->Previous();
 			/* If the vehicle in front is the rear end of a dualheaded engine, then we need to use the one in front of that one */
-			if (IsMultiheaded(front) && !IsTrainEngine(front)) front = GetPrevVehicleInChain(front);
+			if (IsMultiheaded(front) && !IsTrainEngine(front)) front = front->Previous();
 			/* Now we move the old one out of the train */
 			DoCommand(0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 			/* Add the new vehicle */
@@ -236,7 +236,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 			}
 		}
 		/* We are done setting up the new vehicle. Now we move the cargo from the old one to the new one */
-		MoveVehicleCargo(new_v->type == VEH_TRAIN ? GetFirstVehicleInChain(new_v) : new_v, old_v);
+		MoveVehicleCargo(new_v->type == VEH_TRAIN ? new_v->First() : new_v, old_v);
 
 		// Get the name of the old vehicle if it has a custom name.
 		if (!IsCustomName(old_v->string_id)) {
