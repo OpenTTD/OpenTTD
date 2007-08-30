@@ -1,3 +1,22 @@
+0.5.3-RC3 (2007-30-07)
+------------------------------------------------------------------------
+- Fix: spectators are not allowed to issue commands (r11006)
+- Fix: Make the AI not crash when it has ships as the AI does not support them [FS#1133] (r10942)
+- Fix: Trains would not get flooded when they are at the lower part of a tile that would become a coast tile after flooding [FS#1127] (r10892)
+- Fix: Removing road with the road removal tool would also work with a negative bank account, making the bank account even more negative than it was [FS#1125] (r10890)
+- Fix: Some isocodes were wrong (r10877)
+- Fix: [Windows] Do not try to minimise or restore the window when closing OpenTTD [FS#998] (r10835)
+- Fix: trains going over bridges would get the "going down hill" accelerate bonus, which causes trains to go faster on bridges than they would be going on level land. [FS#1096] (r10739)
+- Fix: trains being split into two pieces when loading an old savegame. [FS#1062] (r10735)
+- Fix: [OS/2] Fix chdir problem with open/save dialog (r10650)
+- Fix: One could not remove locks that were build in a (very) old version of OpenTTD [FS#1038] (r10593)
+- Fix: One cannot navigate using arrow keys in the game name text box [FS#1038] (r10500)
+- Fix: Ship's maximum speed wrongly shown [FS#1013] (r10497)
+- Fix: [OSX] Of the resolution is changed to something that is too high for the monitor, then it is reduced to fit the monitor size, solving several crashes and graphical glitches [FS#458] (r10410)
+- Fix: NPF was leaking memory each time it got initialized, except for the first time (r10357)
+- Fix: [YAPF] 'target_seen' flag that is set prematurely in some cases (1 tile long cached segment followed by target station) which caused asserts to trigger [FS#884] (r10199)
+
+
 0.5.3-RC2 (2007-07-07)
 ------------------------------------------------------------------------
 - Fix: Visual glitches when a window is resized in the WE_CREATE callback (r10465)
