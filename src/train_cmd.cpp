@@ -558,7 +558,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 			SetTrainWagon(v);
 
 			if (u != NULL) {
-				u->next = v;
+				u->SetNext(v);
 			} else {
 				SetFreeWagon(v);
 				InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -636,7 +636,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	u->cargo_subtype = v->cargo_subtype;
 	u->cargo_cap = v->cargo_cap;
 	u->u.rail.railtype = v->u.rail.railtype;
-	if (building) v->next = u;
+	if (building) v->SetNext(u);
 	u->engine_type = v->engine_type;
 	u->build_year = v->build_year;
 	if (building) v->value >>= 1;
@@ -840,7 +840,7 @@ static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 
 	Vehicle *u;
 	for (u = first; GetNextVehicle(u) != v; u = GetNextVehicle(u)) {}
-	GetLastEnginePart(u)->next = GetNextVehicle(v);
+	GetLastEnginePart(u)->SetNext(GetNextVehicle(v));
 	v->first = NULL; // we shouldn't point to the old first, since the vehicle isn't in that chain anymore
 	return first;
 }
@@ -1041,7 +1041,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			if (src != src_head) {
 				Vehicle *v = src_head;
 				while (GetNextVehicle(v) != src) v = GetNextVehicle(v);
-				GetLastEnginePart(v)->next = NULL;
+				GetLastEnginePart(v)->SetNext(NULL);
 			} else {
 				InvalidateWindowData(WC_VEHICLE_DEPOT, src_head->tile); // We removed a line
 				src_head = NULL;
@@ -1051,7 +1051,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			if (src_head == dst_head) dst_head = NULL;
 			/* unlink single wagon from linked list */
 			src_head = UnlinkWagon(src, src_head);
-			GetLastEnginePart(src)->next = NULL;
+			GetLastEnginePart(src)->SetNext(NULL);
 		}
 
 		if (dst == NULL) {

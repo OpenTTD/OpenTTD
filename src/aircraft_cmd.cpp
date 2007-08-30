@@ -405,7 +405,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->u.air.state = HANGAR;
 		v->u.air.previous_pos = v->u.air.pos;
 		v->u.air.targetairport = GetStationIndex(tile);
-		v->next = u;
+		v->SetNext(u);
 
 		v->service_interval = _patches.servint_aircraft;
 
@@ -429,8 +429,6 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (v->subtype == AIR_HELICOPTER) {
 			Vehicle *w = vl[2];
 
-			u->next = w;
-
 			w = new (w) Aircraft();
 			w->direction = DIR_N;
 			w->owner = _current_player;
@@ -445,6 +443,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Use rotor's air.state to store the rotor animation frame */
 			w->u.air.state = HRS_ROTOR_STOPPED;
 			w->UpdateDeltaXY(INVALID_DIR);
+
+			u->SetNext(w);
 			VehiclePositionChanged(w);
 		}
 

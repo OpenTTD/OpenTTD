@@ -52,7 +52,6 @@ static struct {
 	ReaderProc *read_bytes;              ///< savegame loader function
 
 	const ChunkHandler* const *chs;      ///< the chunk of data that is being processed atm (vehicles, signs, etc.)
-	const SaveLoad* const *includes;     ///< the internal layouf of the given chunk
 
 	/* When saving/loading savegames, they are always saved to a temporary memory-place
 	 * to be flushed to file (save) or to final place (load) when full. */
@@ -755,7 +754,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 			}
 			break;
 		case SL_WRITEBYTE: return 1; // a byte is logically of size 1
-		case SL_INCLUDE: return SlCalcObjLength(object, _sl.includes[sld->version_from]);
+		case SL_VEH_INCLUDE: return SlCalcObjLength(object, GetVehicleDescription(VEH_END));
 		default: NOT_REACHED();
 	}
 	return 0;
@@ -804,11 +803,9 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		}
 		break;
 
-	/* SL_INCLUDE loads common code for a type
-	 * XXX - variable renaming abuse
-	 * include_index: common code to include from _desc_includes[], abused by sld->version_from */
-	case SL_INCLUDE:
-		SlObject(ptr, _sl.includes[sld->version_from]);
+	/* SL_VEH_INCLUDE loads common code for vehicles */
+	case SL_VEH_INCLUDE:
+		SlObject(ptr, GetVehicleDescription(VEH_END));
 		break;
 	default: NOT_REACHED();
 	}
@@ -1281,12 +1278,6 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	NULL,
 };
 
-/* used to include a vehicle desc in another desc. */
-extern const SaveLoad _common_veh_desc[];
-static const SaveLoad* const _desc_includes[] = {
-	_common_veh_desc
-};
-
 /**
  * Pointers cannot be saved to a savegame, so this functions gets
  * the index of the item, and if not available, it hussles with
@@ -1628,7 +1619,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		_sl.bufe = _sl.bufp = NULL;
 		_sl.offs_base = 0;
 		_sl.save = (mode != 0);
-		_sl.includes = _desc_includes;
 		_sl.chs = _chunk_handlers;
 
 		/* General tactic is to first save the game to memory, then use an available writer

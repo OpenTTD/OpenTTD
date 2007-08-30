@@ -2724,8 +2724,15 @@ static uint16 _cargo_paid_for;
 static Money  _cargo_feeder_share;
 static uint32 _cargo_loaded_at_xy;
 
+/**
+ * Make it possible to make the saveload tables "friends" of other classes.
+ * @param vt the vehicle type. Can be VEH_END for the common vehicle description data
+ * @return the saveload description
+ */
+const SaveLoad *GetVehicleDescription(VehicleType vt)
+{
 /** Save and load of vehicles */
-extern const SaveLoad _common_veh_desc[] = {
+static const SaveLoad _common_veh_desc[] = {
 	    SLE_VAR(Vehicle, subtype,              SLE_UINT8),
 
 	    SLE_REF(Vehicle, next,                 REF_VEHICLE_OLD),
@@ -2848,7 +2855,7 @@ extern const SaveLoad _common_veh_desc[] = {
 
 static const SaveLoad _train_desc[] = {
 	SLE_WRITEBYTE(Vehicle, type, VEH_TRAIN),
-	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
+	SLE_VEH_INCLUDEX(),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, crash_anim_pos),         SLE_UINT16),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, force_proceed),          SLE_UINT8),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRail, railtype),               SLE_UINT8),
@@ -2866,7 +2873,7 @@ static const SaveLoad _train_desc[] = {
 
 static const SaveLoad _roadveh_desc[] = {
 	SLE_WRITEBYTE(Vehicle, type, VEH_ROAD),
-	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
+	SLE_VEH_INCLUDEX(),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, state),          SLE_UINT8),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, frame),          SLE_UINT8),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleRoad, blocked_ctr),    SLE_UINT16),
@@ -2886,7 +2893,7 @@ static const SaveLoad _roadveh_desc[] = {
 
 static const SaveLoad _ship_desc[] = {
 	SLE_WRITEBYTE(Vehicle, type, VEH_SHIP),
-	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
+	SLE_VEH_INCLUDEX(),
 	SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleShip, state), SLE_UINT8),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
@@ -2897,7 +2904,7 @@ static const SaveLoad _ship_desc[] = {
 
 static const SaveLoad _aircraft_desc[] = {
 	SLE_WRITEBYTE(Vehicle, type, VEH_AIRCRAFT),
-	SLE_INCLUDEX(0, INC_VEHICLE_COMMON),
+	SLE_VEH_INCLUDEX(),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, crashed_counter), SLE_UINT16),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleAir, pos),             SLE_UINT8),
 
@@ -2988,7 +2995,11 @@ static const SaveLoad *_veh_descs[] = {
 	_aircraft_desc,
 	_special_desc,
 	_disaster_desc,
+	_common_veh_desc,
 };
+
+	return _veh_descs[vt];
+}
 
 /** Will be called when the vehicles need to be saved. */
 static void Save_VEHS()
@@ -2997,7 +3008,7 @@ static void Save_VEHS()
 	/* Write the vehicles */
 	FOR_ALL_VEHICLES(v) {
 		SlSetArrayIndex(v->index);
-		SlObject(v, _veh_descs[v->type]);
+		SlObject(v, GetVehicleDescription(v->type));
 	}
 }
 
@@ -3024,7 +3035,7 @@ static void Load_VEHS()
 			default: NOT_REACHED();
 		}
 
-		SlObject(v, _veh_descs[vtype]);
+		SlObject(v, GetVehicleDescription(vtype));
 
 		if (_cargo_count != 0 && IsPlayerBuildableVehicleType(v)) {
 			/* Don't construct the packet with station here, because that'll fail with old savegames */
@@ -3156,7 +3167,6 @@ void Vehicle::HandleLoading(bool mode)
 	this->cur_order_index++;
 	InvalidateVehicleOrder(this);
 }
-
 
 void SpecialVehicle::UpdateDeltaXY(Direction direction)
 {

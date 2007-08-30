@@ -1206,7 +1206,7 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 			default:   v->spritenum >>= 1; break;
 		}
 
-		if (_old_next_ptr != 0xFFFF) v->next = GetVehicle(_old_next_ptr);
+		if (_old_next_ptr != 0xFFFF) v->SetNext(GetVehicle(_old_next_ptr));
 
 		v->string_id = RemapOldStringID(_old_string_id);
 

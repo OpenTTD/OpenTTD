@@ -611,7 +611,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		w = new DisasterVehicle();
 		if (w == NULL) return;
 
-		u->next = w;
+		u->SetNext(w);
 		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, ST_Big_Ufo_Destroyer_Shadow);
 		w->vehstatus |= VS_SHADOW;
 	} else if (v->current_order.dest == 0) {
@@ -782,7 +782,7 @@ static void Disaster_Zeppeliner_Init()
 	/* Allocate shadow too? */
 	u = new DisasterVehicle();
 	if (u != NULL) {
-		v->next = u;
+		v->SetNext(u);
 		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Zeppeliner_Shadow);
 		u->vehstatus |= VS_SHADOW;
 	}
@@ -807,7 +807,7 @@ static void Disaster_Small_Ufo_Init()
 	/* Allocate shadow too? */
 	u = new DisasterVehicle();
 	if (u != NULL) {
-		v->next = u;
+		v->SetNext(u);
 		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Small_Ufo_Shadow);
 		u->vehstatus |= VS_SHADOW;
 	}
@@ -843,7 +843,7 @@ static void Disaster_Airplane_Init()
 
 	u = new DisasterVehicle();
 	if (u != NULL) {
-		v->next = u;
+		v->SetNext(u);
 		InitializeDisasterVehicle(u, x, y, 0, DIR_SE, ST_Airplane_Shadow);
 		u->vehstatus |= VS_SHADOW;
 	}
@@ -878,13 +878,13 @@ static void Disaster_Helicopter_Init()
 
 	u = new DisasterVehicle();
 	if (u != NULL) {
-		v->next = u;
+		v->SetNext(u);
 		InitializeDisasterVehicle(u, x, y, 0, DIR_SW, ST_Helicopter_Shadow);
 		u->vehstatus |= VS_SHADOW;
 
 		w = new DisasterVehicle();
 		if (w != NULL) {
-			u->next = w;
+			u->SetNext(w);
 			InitializeDisasterVehicle(w, x, y, 140, DIR_SW, ST_Helicopter_Rotors);
 		}
 	}
@@ -910,7 +910,7 @@ static void Disaster_Big_Ufo_Init()
 	/* Allocate shadow too? */
 	u = new DisasterVehicle();
 	if (u != NULL) {
-		v->next = u;
+		v->SetNext(u);
 		InitializeDisasterVehicle(u, x, y, 0, DIR_NW, ST_Big_Ufo_Shadow);
 		u->vehstatus |= VS_SHADOW;
 	}
