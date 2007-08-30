@@ -67,6 +67,8 @@ struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
  */
 #define FOR_ALL_CARGOPACKETS(cp) FOR_ALL_CARGOPACKETS_FROM(cp, 0)
 
+extern void SaveLoad_STNS(Station *st);
+
 /**
  * Simple collection class for a list of cargo packets
  */
@@ -93,21 +95,7 @@ private:
 	uint days_in_transit; ///< Cache for the number of days in transit
 
 public:
-	/**
-	 * Needed for an ugly hack:
-	 *  - vehicles and stations need to store cargo lists, so they use CargoList as container
-	 *  - this internals of the container should be protected, e.g. private (or protected) by C++
-	 *  - for saving/loading we need to pass pointer to objects
-	 *  -> so *if* the pointer to the cargo list is the same as the pointer to the packet list
-	 *     encapsulated in the CargoList, we can just pass the CargoList as "offset".
-	 *     Normally we would then just add the offset of the packets variable within the cargo list
-	 *     but that is not possible because the variable is private. Furthermore we are not sure
-	 *     that this works on all platforms, we need to check whether the offset is actually 0.
-	 *     This cannot be done compile time, because the variable is private. So we need to write
-	 *     a function that does actually check the offset runtime and call it somewhere where it
-	 *     is always called but it should not be called often.
-	 */
-	static void AssertOnWrongPacketOffset();
+	friend void SaveLoad_STNS(Station *st);
 
 	/** Create the cargo list */
 	CargoList() { this->InvalidateCache(); }

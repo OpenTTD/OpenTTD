@@ -16,9 +16,6 @@ void InitializeCargoPackets()
 	/* Clean the cargo packet pool and create 1 block in it */
 	_CargoPacket_pool.CleanPool();
 	_CargoPacket_pool.AddBlockToPool();
-
-	/* Check whether our &cargolist == &cargolist.packets "hack" works */
-	CargoList::AssertOnWrongPacketOffset();
 }
 
 CargoPacket::CargoPacket(StationID source, uint16 count)
@@ -86,13 +83,6 @@ extern const ChunkHandler _cargopacket_chunk_handlers[] = {
  * Cargo list implementation
  *
  */
-
-/* static */ void CargoList::AssertOnWrongPacketOffset()
-{
-	CargoList cl;
-	if ((void*)&cl != (void*)cl.Packets()) NOT_REACHED();
-}
-
 
 CargoList::~CargoList()
 {

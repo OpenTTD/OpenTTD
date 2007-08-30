@@ -2977,25 +2977,6 @@ static uint32 _cargo_source_xy;
 static uint16 _cargo_days;
 static Money  _cargo_feeder_share;
 
-static const SaveLoad _goods_desc[] = {
-	SLEG_CONDVAR(            _waiting_acceptance, SLE_UINT16,                  0, 67),
-	 SLE_CONDVAR(GoodsEntry, acceptance_pickup,   SLE_UINT8,                  68, SL_MAX_VERSION),
-	SLE_CONDNULL(2,                                                           51, 67),
-	     SLE_VAR(GoodsEntry, days_since_pickup,   SLE_UINT8),
-	     SLE_VAR(GoodsEntry, rating,              SLE_UINT8),
-	SLEG_CONDVAR(            _cargo_source,       SLE_FILE_U8 | SLE_VAR_U16,   0, 6),
-	SLEG_CONDVAR(            _cargo_source,       SLE_UINT16,                  7, 67),
-	SLEG_CONDVAR(            _cargo_source_xy,    SLE_UINT32,                 44, 67),
-	SLEG_CONDVAR(            _cargo_days,         SLE_UINT8,                   0, 67),
-	     SLE_VAR(GoodsEntry, last_speed,          SLE_UINT8),
-	     SLE_VAR(GoodsEntry, last_age,            SLE_UINT8),
-	SLEG_CONDVAR(            _cargo_feeder_share, SLE_FILE_U32 | SLE_VAR_I64, 14, 64),
-	SLEG_CONDVAR(            _cargo_feeder_share, SLE_INT64,                  65, 67),
-	 SLE_CONDLST(GoodsEntry, cargo,               REF_CARGO_PACKET,           68, SL_MAX_VERSION),
-
-	SLE_END()
-};
-
 static const SaveLoad _station_speclist_desc[] = {
 	SLE_CONDVAR(StationSpecList, grfid,    SLE_UINT32, 27, SL_MAX_VERSION),
 	SLE_CONDVAR(StationSpecList, localidx, SLE_UINT8,  27, SL_MAX_VERSION),
@@ -3004,8 +2985,28 @@ static const SaveLoad _station_speclist_desc[] = {
 };
 
 
-static void SaveLoad_STNS(Station *st)
+void SaveLoad_STNS(Station *st)
 {
+	static const SaveLoad _goods_desc[] = {
+		SLEG_CONDVAR(            _waiting_acceptance, SLE_UINT16,                  0, 67),
+		 SLE_CONDVAR(GoodsEntry, acceptance_pickup,   SLE_UINT8,                  68, SL_MAX_VERSION),
+		SLE_CONDNULL(2,                                                           51, 67),
+		     SLE_VAR(GoodsEntry, days_since_pickup,   SLE_UINT8),
+		     SLE_VAR(GoodsEntry, rating,              SLE_UINT8),
+		SLEG_CONDVAR(            _cargo_source,       SLE_FILE_U8 | SLE_VAR_U16,   0, 6),
+		SLEG_CONDVAR(            _cargo_source,       SLE_UINT16,                  7, 67),
+		SLEG_CONDVAR(            _cargo_source_xy,    SLE_UINT32,                 44, 67),
+		SLEG_CONDVAR(            _cargo_days,         SLE_UINT8,                   0, 67),
+		     SLE_VAR(GoodsEntry, last_speed,          SLE_UINT8),
+		     SLE_VAR(GoodsEntry, last_age,            SLE_UINT8),
+		SLEG_CONDVAR(            _cargo_feeder_share, SLE_FILE_U32 | SLE_VAR_I64, 14, 64),
+		SLEG_CONDVAR(            _cargo_feeder_share, SLE_INT64,                  65, 67),
+		 SLE_CONDLST(GoodsEntry, cargo.packets,       REF_CARGO_PACKET,           68, SL_MAX_VERSION),
+
+		SLE_END()
+};
+
+
 	SlObject(st, _station_desc);
 
 	_waiting_acceptance = 0;
