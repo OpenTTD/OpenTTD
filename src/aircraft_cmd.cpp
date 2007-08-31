@@ -696,17 +696,8 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static void CheckIfAircraftNeedsService(Vehicle *v)
 {
-	if (_patches.servint_aircraft == 0) return;
-	if (!VehicleNeedsService(v)) return;
-	if (v->vehstatus & VS_STOPPED) return;
-
-	if (v->current_order.type == OT_GOTO_DEPOT &&
-			v->current_order.flags & OF_HALT_IN_DEPOT)
-		return;
-
-	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
-
-		if (v->IsInDepot()) {
+	if (_patches.servint_aircraft == 0 || !VehicleNeedsService(v)) return;
+	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}
@@ -716,7 +707,6 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	if (st->IsValid() && st->airport_tile != 0 && st->Airport()->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
-		if (v->current_order.type == OT_LOADING) v->LeaveStation();
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);

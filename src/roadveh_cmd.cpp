@@ -1841,29 +1841,15 @@ void RoadVehicle::Tick()
 
 static void CheckIfRoadVehNeedsService(Vehicle *v)
 {
-	const Depot* depot;
-
-	if (_patches.servint_roadveh == 0) return;
-	if (!VehicleNeedsService(v)) return;
-	if (v->vehstatus & VS_STOPPED) return;
-	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
-
-	/* Don't interfere with a depot visit scheduled by the user, or a
-	 * depot visit by the order list. */
-	if (v->current_order.type == OT_GOTO_DEPOT &&
-			(v->current_order.flags & (OF_HALT_IN_DEPOT | OF_PART_OF_ORDERS)) != 0)
-		return;
-
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
-	if (v->u.road.slot != NULL) return;
-
+	if (v->u.road.slot != NULL || _patches.servint_roadveh == 0 || !VehicleNeedsService(v)) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}
 
 	/* XXX If we already have a depot order, WHY do we search over and over? */
-	depot = FindClosestRoadDepot(v);
+	const Depot *depot = FindClosestRoadDepot(v);
 
 	if (depot == NULL || DistanceManhattan(v->tile, depot->xy) > 12) {
 		if (v->current_order.type == OT_GOTO_DEPOT) {

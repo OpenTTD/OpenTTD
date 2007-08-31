@@ -3348,18 +3348,8 @@ void Train::Tick()
 
 static void CheckIfTrainNeedsService(Vehicle *v)
 {
-	if (_patches.servint_trains == 0)                   return;
-	if (!VehicleNeedsService(v))                        return;
-	if (v->vehstatus & VS_STOPPED)                      return;
-	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
-
-	/* Don't interfere with a depot visit scheduled by the user, or a
-	 * depot visit by the order list. */
-	if (v->current_order.type == OT_GOTO_DEPOT &&
-			(v->current_order.flags & (OF_HALT_IN_DEPOT | OF_PART_OF_ORDERS)) != 0)
-		return;
-
-	if (CheckTrainIsInsideDepot(v)) {
+	if (_patches.servint_trains == 0 || !VehicleNeedsService(v)) return;
+	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}
@@ -3385,8 +3375,6 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 			!CHANCE16(3, 16)) {
 		return;
 	}
-
-	if (v->current_order.type == OT_LOADING) v->LeaveStation();
 
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;

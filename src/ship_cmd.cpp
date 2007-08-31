@@ -140,24 +140,13 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 
 static void CheckIfShipNeedsService(Vehicle *v)
 {
-	const Depot* depot;
-
-	if (_patches.servint_ships == 0) return;
-	if (!VehicleNeedsService(v))     return;
-	if (v->vehstatus & VS_STOPPED)   return;
-
-	if (v->current_order.type == OT_GOTO_DEPOT &&
-			v->current_order.flags & OF_HALT_IN_DEPOT)
-		return;
-
-	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
-
+	if (_patches.servint_ships == 0 || !VehicleNeedsService(v)) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
 	}
 
-	depot = FindClosestShipDepot(v);
+	const Depot *depot = FindClosestShipDepot(v);
 
 	if (depot == NULL || DistanceManhattan(v->tile, depot->xy) > 12) {
 		if (v->current_order.type == OT_GOTO_DEPOT) {
@@ -168,7 +157,6 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		return;
 	}
 
-	if (v->current_order.type == OT_LOADING) v->LeaveStation();
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;
 	v->current_order.dest = depot->index;
