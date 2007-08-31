@@ -117,26 +117,6 @@ static const Widget _player_finances_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const Widget _other_player_finances_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,                    STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,                    STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,                    STR_NULL},
-{   WIDGETS_END},
-};
-
-static const Widget _other_player_finances_small_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   254,   267,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   268,   279,     0,    13, 0x0,                    STR_STICKY_BUTTON},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                    STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   279,    14,    47, 0x0,                    STR_NULL},
-{   WIDGETS_END},
-};
-
 static const Widget _player_finances_small_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -157,14 +137,23 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 		PlayerID player = (PlayerID)w->window_number;
 		const Player *p = GetPlayer(player);
 
-		/* Borrow/repay buttons only exist for local player */
-		if (player == _local_player) {
-			/* Borrow button only shows when there is any more money to loan */
-			SetWindowWidgetDisabledState(w, 6, p->current_loan == _economy.max_loan);
+		/* Recheck the size of the window as it might need to be resized due to the local player changing */
+		int new_height = ((player != _local_player) ? 0 : 12) + ((WP(w, def_d).data_1 != 0) ? 48 : 204);
+		if (w->height != new_height) {
+			/* Make window dirty before and after resizing */
+			SetWindowDirty(w);
+			w->height = new_height;
+			SetWindowDirty(w);
 
-			/* Repay button only shows when there is any more money to repay */
-			SetWindowWidgetDisabledState(w, 7, p->current_loan == 0);
+			SetWindowWidgetHiddenState(w, 6, player != _local_player);
+			SetWindowWidgetHiddenState(w, 7, player != _local_player);
 		}
+
+		/* Borrow button only shows when there is any more money to loan */
+		SetWindowWidgetDisabledState(w, 6, p->current_loan == _economy.max_loan);
+
+		/* Repay button only shows when there is any more money to repay */
+		SetWindowWidgetDisabledState(w, 7, player != _local_player || p->current_loan == 0);
 
 		SetDParam(0, p->index);
 		SetDParam(1, p->index);
@@ -212,39 +201,14 @@ static const WindowDesc _player_finances_small_desc = {
 	PlayerFinancesWndProc
 };
 
-static const WindowDesc _other_player_finances_desc = {
-	WDP_AUTO, WDP_AUTO, 407, 204, 407, 204,
-	WC_FINANCES, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_other_player_finances_widgets,
-	PlayerFinancesWndProc
-};
-
-static const WindowDesc _other_player_finances_small_desc = {
-	WDP_AUTO, WDP_AUTO, 280, 48, 280, 48,
-	WC_FINANCES, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_other_player_finances_small_widgets,
-	PlayerFinancesWndProc
-};
-
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied)
 {
-	Window *w;
-	int mode;
-
-	static const WindowDesc * const desc_table[2 * 2] = {
-		&_player_finances_desc, &_player_finances_small_desc,
-		&_other_player_finances_desc, &_other_player_finances_small_desc,
-	};
-
 	if (!IsValidPlayer(player)) return;
 
-	mode = (player != _local_player) * 2 + show_small;
-	w = AllocateWindowDescFront(desc_table[mode], player);
+	Window *w = AllocateWindowDescFront(show_small ? &_player_finances_small_desc : &_player_finances_desc, player);
 	if (w != NULL) {
 		w->caption_color = w->window_number;
-		WP(w, def_d).data_1 = mode;
+		WP(w, def_d).data_1 = show_small;
 		if (show_stickied) w->flags4 |= WF_STICKY;
 	}
 }
