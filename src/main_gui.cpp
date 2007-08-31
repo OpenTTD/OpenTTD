@@ -90,7 +90,7 @@ void HandleOnEditText(const char *str)
 #ifdef ENABLE_NETWORK
 	case 3: { // Give money, you can only give money in excess of loan
 		const Player *p = GetPlayer(_current_player);
-		Money money = min(p->player_money - p->current_loan, atoi(str) / _currency->rate);
+		Money money = min(p->player_money - p->current_loan, (Money)(atoi(str) / _currency->rate));
 
 		uint32 money_c = clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
 
