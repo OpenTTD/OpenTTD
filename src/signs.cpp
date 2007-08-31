@@ -13,6 +13,7 @@
 #include "saveload.h"
 #include "command.h"
 #include "variables.h"
+#include "string.h"
 #include "misc/autoptr.hpp"
 
 SignID _new_sign_id;
@@ -128,7 +129,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* If _cmd_text 0 means the new text for the sign is non-empty.
 	 * So rename the sign. If it is empty, it has no name, so delete it */
-	if (_cmd_text[0] != '\0') {
+	if (!StrEmpty(_cmd_text)) {
 		/* Create the name */
 		StringID str = AllocateName(_cmd_text, 0);
 		if (str == 0) return CMD_ERROR;
