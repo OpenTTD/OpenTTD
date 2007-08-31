@@ -12,6 +12,7 @@
 #include "road_map.h"
 #include "rail_map.h"
 #include "water_map.h"
+#include "station_map.h"
 
 struct Depot;
 DECLARE_OLD_POOL(Depot, Depot, 3, 8000)
@@ -63,7 +64,7 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 			return IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile)  == RAIL_TILE_DEPOT;
 
 		case TRANSPORT_ROAD:
-			return IsTileType(tile, MP_ROAD)  && GetRoadTileType(tile)  == ROAD_TILE_DEPOT;
+			return IsTileType(tile, MP_ROAD)    && GetRoadTileType(tile)  == ROAD_TILE_DEPOT;
 
 		case TRANSPORT_WATER:
 			return IsTileType(tile, MP_WATER)   && GetWaterTileType(tile) == WATER_TILE_DEPOT;
@@ -74,6 +75,21 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 	}
 }
 
+/**
+ * Is the given tile a tile with a depot on it?
+ * @param tile the tile to check
+ * @return true if and only if there is a depot on the tile.
+ */
+static inline bool IsDepotTile(TileIndex tile)
+{
+	switch (GetTileType(tile)) {
+		case MP_ROAD:    return GetRoadTileType(tile)  == ROAD_TILE_DEPOT;
+		case MP_WATER:   return GetWaterTileType(tile) == WATER_TILE_DEPOT;
+		case MP_RAILWAY: return GetRailTileType(tile)  == RAIL_TILE_DEPOT;
+		case MP_STATION: return IsHangar(tile);
+		default:         return false;
+	}
+}
 
 /**
  * Find out if the slope of the tile is suitable to build a depot of given direction

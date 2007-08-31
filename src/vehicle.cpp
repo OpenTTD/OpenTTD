@@ -1634,7 +1634,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 	CommandCost cost;
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
-	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
+	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
