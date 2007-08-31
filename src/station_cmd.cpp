@@ -2619,7 +2619,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 				if (!st->IsBuoy() &&
 						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
 						st->goods[type].rating != 0 && // when you've got the lowest rating you can get, it's better not to give cargo anymore
-						(!_patches.selectgoods || st->goods[type].last_speed > 0) && // we are servicing the station (or cargo is dumped on all stations)
+						(!_patches.selectgoods || HASBIT(st->goods[type].acceptance_pickup, GoodsEntry::PICKUP)) && // we are servicing the station (or cargo is dumped on all stations)
 						((st->facilities & ~FACIL_BUS_STOP)   != 0 || IsCargoInClass(type, CC_PASSENGERS)) && // if we have other fac. than a bus stop, or the cargo is passengers
 						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || !IsCargoInClass(type, CC_PASSENGERS))) { // if we have other fac. than a cargo bay or the cargo is not passengers
 					if (_patches.modified_catchment) {
