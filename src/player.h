@@ -217,8 +217,8 @@ void InvalidatePlayerWindows(const Player *p);
 void SetLocalPlayer(PlayerID new_player);
 #define FOR_ALL_PLAYERS(p) for (p = _players; p != endof(_players); p++)
 
-VARDEF PlayerID _local_player;
-VARDEF PlayerID _current_player;
+VARDEF PlayerByte _local_player;
+VARDEF PlayerByte _current_player;
 
 VARDEF Player _players[MAX_PLAYERS];
 /* NOSAVE: can be determined from player structs */
