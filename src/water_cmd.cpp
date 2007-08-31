@@ -26,6 +26,7 @@
 #include "train.h"
 #include "roadveh.h"
 #include "water_map.h"
+#include "industry_map.h"
 #include "newgrf.h"
 #include "newgrf_canal.h"
 #include "misc/autoptr.hpp"
@@ -362,8 +363,9 @@ static bool IsWateredTile(TileIndex tile)
 					return false;
 			}
 
-		case MP_STATION: return IsOilRig(tile) || IsDock(tile) || IsBuoy(tile);
-		default:         return false;
+		case MP_STATION:  return IsOilRig(tile) || IsDock(tile) || IsBuoy(tile);
+		case MP_INDUSTRY: return (GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
+		default:          return false;
 	}
 }
 
@@ -377,10 +379,10 @@ void DrawCanalWater(TileIndex tile)
 	if (dikes_base == 0) dikes_base = SPR_CANALS_BASE + 57;
 
 	/* determine the edges around with water. */
-	wa = IsWateredTile(TILE_ADDXY(tile, -1, 0)) << 0;
-	wa += IsWateredTile(TILE_ADDXY(tile, 0, 1)) << 1;
-	wa += IsWateredTile(TILE_ADDXY(tile, 1, 0)) << 2;
-	wa += IsWateredTile(TILE_ADDXY(tile, 0, -1)) << 3;
+	wa  = IsWateredTile(TILE_ADDXY(tile, -1,  0)) << 0;
+	wa += IsWateredTile(TILE_ADDXY(tile,  0,  1)) << 1;
+	wa += IsWateredTile(TILE_ADDXY(tile,  1,  0)) << 2;
+	wa += IsWateredTile(TILE_ADDXY(tile,  0, -1)) << 3;
 
 	if (!(wa & 1)) DrawGroundSprite(dikes_base,     PAL_NONE);
 	if (!(wa & 2)) DrawGroundSprite(dikes_base + 1, PAL_NONE);
