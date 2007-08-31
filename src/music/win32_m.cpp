@@ -11,6 +11,7 @@ static struct {
 	bool playing;
 	int new_vol;
 	HANDLE wait_obj;
+	HANDLE thread;
 	UINT_PTR devid;
 	char start_song[260];
 } _midi;
@@ -84,8 +85,6 @@ static bool MidiIntIsSongPlaying()
 
 static DWORD WINAPI MidiThread(LPVOID arg)
 {
-	_midi.wait_obj = CreateEvent(NULL, FALSE, FALSE, NULL);
-
 	do {
 		char *s;
 		int vol;
@@ -102,7 +101,7 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 			s[0] = '\0';
 
 			// Delay somewhat in case we don't manage to play.
-			if (!_midi.playing) Sleep(5000);
+			if (!_midi.playing) WaitForMultipleObjects(1, &_midi.wait_obj, FALSE, 5000);
 		}
 
 		if (_midi.stop_song && _midi.playing) {
@@ -116,14 +115,13 @@ static DWORD WINAPI MidiThread(LPVOID arg)
 		WaitForMultipleObjects(1, &_midi.wait_obj, FALSE, 1000);
 	} while (!_midi.terminate);
 
-	DeleteObject(_midi.wait_obj);
+	MidiIntStopSong();
 	return 0;
 }
 
 const char *MusicDriver_Win32::Start(const char * const *parm)
 {
 	MIDIOUTCAPS midicaps;
-	DWORD threadId;
 	UINT nbdev;
 	UINT_PTR dev;
 	char buf[16];
@@ -143,7 +141,8 @@ const char *MusicDriver_Win32::Start(const char * const *parm)
 		}
 	}
 
-	if (CreateThread(NULL, 8192, MidiThread, 0, 0, &threadId) == NULL) return "Failed to create thread";
+	if (NULL == (_midi.wait_obj = CreateEvent(NULL, FALSE, FALSE, NULL))) return "Failed to create event";
+	if (NULL == (_midi.thread = CreateThread(NULL, 8192, MidiThread, 0, 0, NULL))) return "Failed to create thread";
 
 	return NULL;
 }
@@ -152,4 +151,7 @@ void MusicDriver_Win32::Stop()
 {
 	_midi.terminate = true;
 	SetEvent(_midi.wait_obj);
+	WaitForMultipleObjects(1, &_midi.thread, true, INFINITE);
+	CloseHandle(_midi.wait_obj);
+	CloseHandle(_midi.thread);
 }
