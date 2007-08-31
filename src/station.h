@@ -222,7 +222,9 @@ enum CatchmentArea {
 	CA_BUS             =  3,
 	CA_TRUCK           =  3,
 	CA_TRAIN           =  4,
-	CA_DOCK            =  5
+	CA_DOCK            =  5,
+
+	MAX_CATCHMENT      = 10, ///< Airports have a catchment up to this number.
 };
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);

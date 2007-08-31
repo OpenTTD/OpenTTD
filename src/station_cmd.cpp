@@ -2597,9 +2597,9 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 	if (_patches.modified_catchment) {
 		w_prod = w;
 		h_prod = h;
-		w += 16;
-		h += 16;
-		max_rad = 8;
+		w += 2 * MAX_CATCHMENT;
+		h += 2 * MAX_CATCHMENT;
+		max_rad = MAX_CATCHMENT;
 	} else {
 		w_prod = 0;
 		h_prod = 0;
@@ -2624,10 +2624,10 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || !IsCargoInClass(type, CC_PASSENGERS))) { // if we have other fac. than a cargo bay or the cargo is not passengers
 					if (_patches.modified_catchment) {
 						// min and max coordinates of the producer relative
-						const int x_min_prod = 9;
-						const int x_max_prod = 8 + w_prod;
-						const int y_min_prod = 9;
-						const int y_max_prod = 8 + h_prod;
+						const int x_min_prod = max_rad + 1;
+						const int x_max_prod = max_rad + w_prod;
+						const int y_min_prod = max_rad + 1;
+						const int y_max_prod = max_rad + h_prod;
 
 						int rad = FindCatchmentRadius(st);
 
