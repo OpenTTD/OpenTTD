@@ -403,8 +403,6 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
-
 	if (IsOwnedLandTile(tile) && IsTileOwner(tile, _current_player)) {
 		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
 	}

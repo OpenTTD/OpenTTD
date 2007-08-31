@@ -255,6 +255,11 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					cost.AddCost(_price.build_trees * 2);
 					break;
 
+				case MP_WATER:
+					msg = STR_3807_CAN_T_BUILD_ON_WATER;
+					continue;
+					break;
+
 				case MP_CLEAR:
 					if (!IsTileOwner(tile, OWNER_NONE) ||
 							IsBridgeAbove(tile)) {
