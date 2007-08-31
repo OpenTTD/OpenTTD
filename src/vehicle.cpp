@@ -547,6 +547,7 @@ Vehicle::~Vehicle()
 
 	if (CleaningPool()) return;
 
+	this->SetNext(NULL);
 	UpdateVehiclePosHash(this, INVALID_COORD, 0);
 	this->next_hash = NULL;
 	this->next_new_hash = NULL;
