@@ -1802,11 +1802,16 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
 	Player *p;
 	CommandCost cost;
 
-	/* Check if buying shares is allowed (protection against modified clients */
-	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
+	/* Check if buying shares is allowed (protection against modified clients) */
+	/* Cannot buy own shares */
+	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+
+	p = GetPlayer((PlayerID)p1);
+
+	/* Cannot buy shares of non-existent nor bankrupted company */
+	if (!p->is_active) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = GetPlayer((PlayerID)p1);
 
 	/* Protect new companies from hostile takeovers */
 	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
@@ -1848,11 +1853,16 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
 	Player *p;
 	Money cost;
 
-	/* Check if buying shares is allowed (protection against modified clients */
-	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
+	/* Check if selling shares is allowed (protection against modified clients) */
+	/* Cannot sell own shares */
+	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+
+	p = GetPlayer((PlayerID)p1);
+
+	/* Cannot sell shares of non-existent nor bankrupted company */
+	if (!p->is_active) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = GetPlayer((PlayerID)p1);
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, _current_player) == 0) return CommandCost();
