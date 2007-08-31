@@ -1084,19 +1084,17 @@ build_road_and_exit:
 
 	/* Quit if it selecting an appropiate bridge type fails a large number of times. */
 	j = 22;
-	{
-		int32 bridge_len = GetBridgeLength(tile, tmptile);
-		do {
-			byte bridge_type = RandomRange(MAX_BRIDGES - 1);
-			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
-				if (CmdSucceeded(DoCommand(tile, tmptile, bridge_type | ((0x80 | ROADTYPES_ROAD) << 8), DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE)))
-					_grow_town_result = -1;
+	do {
+		byte bridge_type = RandomRange(MAX_BRIDGES - 1);
+		/* Can we actually build the bridge? */
+		if (CmdSucceeded(DoCommand(tile, tmptile, bridge_type | ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE))) {
+			DoCommand(tile, tmptile, bridge_type | ((0x80 | ROADTYPES_ROAD) << 8), DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE);
+				_grow_town_result = -1;
 
-				/* obviously, if building any bridge would fail, there is no need to try other bridge-types */
-				return;
-			}
-		} while (--j != 0);
-	}
+			/* obviously, if building any bridge would fail, there is no need to try other bridge-types */
+			return;
+		}
+	} while (--j != 0);
 }
 
 /** Returns "growth" if a house was built, or no if the build failed.
