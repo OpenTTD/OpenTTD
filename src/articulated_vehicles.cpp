@@ -45,6 +45,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 		if (u->Next() == NULL) u->SetNext(new InvalidVehicle());
 		if (u->Next() == NULL) return;
 
+		Vehicle *previous = u;
 		u = u->Next();
 
 		EngineID engine_type = GetFirstEngineOfType(type) + GB(callback, 0, 7);
@@ -105,6 +106,8 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 				SetRoadVehArticPart(u);
 			} break;
 		}
+
+		previous->SetNext(u);
 
 		if (flip_image) u->spritenum++;
 
