@@ -421,6 +421,28 @@ static inline int KillFirstBit2x64(int value)
 }
 
 /**
+ * Counts the number of set bits in a variable.
+ *
+ * @param value the value to count the number of bits in.
+ * @return the number of bits.
+ */
+template<typename T> static inline uint COUNTBITS(T value)
+{
+	uint num;
+
+	/* This loop is only called once for every bit set by clearing the lowest
+	 * bit in each loop. The number of bits is therefore equal to the number of
+	 * times the loop was called. It was found at the following website:
+	 * http://graphics.stanford.edu/~seander/bithacks.html */
+
+	for (num = 0; value != 0; num++) {
+		value &= (T)(value - 1);
+	}
+
+	return num;
+}
+
+/**
  * Returns true if value a has only one bit set to 1
  *
  * This macro returns true if only one bit is set.

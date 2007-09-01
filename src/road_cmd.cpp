@@ -33,19 +33,6 @@
 #include "tunnel_map.h"
 #include "misc/autoptr.hpp"
 
-
-static uint CountRoadBits(RoadBits r)
-{
-	uint count = 0;
-
-	if (r & ROAD_NW) ++count;
-	if (r & ROAD_SW) ++count;
-	if (r & ROAD_SE) ++count;
-	if (r & ROAD_NE) ++count;
-	return count;
-}
-
-
 bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road, RoadType rt)
 {
 	RoadBits present;
@@ -225,7 +212,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					MarkTileDirtyByTile(tile);
 				}
 			}
-			return CommandCost(CountRoadBits(c) * _price.remove_road);
+			return CommandCost(COUNTBITS(c) * _price.remove_road);
 		}
 
 		case ROAD_TILE_CROSSING: {
@@ -487,7 +474,7 @@ do_clear:;
 		pieces &= ComplementRoadBits(existing);
 	}
 
-	cost.AddCost(CountRoadBits(pieces) * _price.build_road);
+	cost.AddCost(COUNTBITS(pieces) * _price.build_road);
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* Pay for *every* tile of the bridge or tunnel */
 		cost.MultiplyCost(DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile));

@@ -475,14 +475,6 @@ uint ShowAdditionalText(int x, int y, uint w, EngineID engine)
 	return DrawStringMultiLine(x, y, STR_02BD, w);
 }
 
-/** Count the number of bits that are set in a mask */
-static uint CountBits(uint32 mask)
-{
-	uint c = 0;
-	for (; mask != 0; mask >>= 1) if (HASBIT(mask, 0)) c++;
-	return c;
-}
-
 /** Display list of cargo types of the engine, for the purchase information window */
 uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 {
@@ -493,7 +485,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	char *b = _userstring;
 
 	/* Draw nothing if the engine is not refittable */
-	if (CountBits(cmask) <= 1) return 0;
+	if (COUNTBITS(cmask) <= 1) return 0;
 
 	b = InlineString(b, STR_PURCHASE_INFO_REFITTABLE_TO);
 
@@ -503,7 +495,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	} else {
 		/* Check if we are able to refit to more cargo types and unable to. If
 		 * so, invert the cargo types to list those that we can't refit to. */
-		if (CountBits(cmask ^ lmask) < CountBits(cmask)) {
+		if (COUNTBITS(cmask ^ lmask) < COUNTBITS(cmask)) {
 			cmask ^= lmask;
 			b = InlineString(b, STR_PURCHASE_INFO_ALL_BUT);
 		}

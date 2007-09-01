@@ -70,7 +70,7 @@ Money CalculateCompanyValue(const Player* p)
 		uint num = 0;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->owner == owner) num += CountBitsSet(st->facilities);
+			if (st->owner == owner) num += COUNTBITS(st->facilities);
 		}
 
 		value.AddCost(num * _price.station_value * 25);
@@ -146,7 +146,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		const Station* st;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->owner == owner) num += CountBitsSet(st->facilities);
+			if (st->owner == owner) num += COUNTBITS(st->facilities);
 		}
 		_score_part[owner][SCORE_STATIONS] = num;
 	}
@@ -191,7 +191,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 /* Generate score for variety of cargo */
 	{
-		uint num = CountBitsSet(p->cargo_types);
+		uint num = COUNTBITS(p->cargo_types);
 		_score_part[owner][SCORE_CARGO] = num;
 		if (update) p->cargo_types = 0;
 	}

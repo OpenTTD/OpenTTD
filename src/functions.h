@@ -136,7 +136,6 @@ uint GetTownRadiusGroup(const Town* t, TileIndex tile);
 void ShowHighscoreTable(int difficulty, int8 rank);
 
 int FindFirstBit(uint32 x);
-int CountBitsSet(uint32 value);
 
 void AfterLoadTown();
 void UpdatePatches();
