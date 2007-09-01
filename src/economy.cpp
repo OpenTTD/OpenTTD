@@ -1629,7 +1629,6 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			ge->cargo.MoveTo(&v->cargo, cap, CargoList::MTA_CARGO_LOAD, st->xy);
 
-			SETBIT(ge->acceptance_pickup, GoodsEntry::PICKUP);
 			st->time_since_load = 0;
 			st->last_vehicle_type = v->type;
 

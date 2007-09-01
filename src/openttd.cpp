@@ -2169,6 +2169,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(74)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			for (CargoID c = 0; c < NUM_CARGO; c++) {
+				st->goods[c].last_speed = 0;
+				if (st->goods[c].cargo.Count() != 0) SETBIT(st->goods[c].acceptance_pickup, GoodsEntry::PICKUP);
+			}
+		}
+	}
+
 
 	return true;
 }
