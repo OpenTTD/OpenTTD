@@ -1006,13 +1006,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, 0);
 
 				/* Calculate the %-bar */
-				if (val > needed) {
-					x = 50;
-				} else if (val == 0) {
-					x = 0;
-				} else {
-					x = val * 50 / needed;
-				}
+				x = clamp(val, 0, needed) * 50 / needed;
 
 				/* SCORE_LOAN is inversed */
 				if (val < 0 && i == SCORE_LOAN) x = 0;
@@ -1022,7 +1016,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				if (x != 50) GfxFillRect(112 + x, y - 2, 112 + 50, y + 10, color_notdone);
 
 				/* Calculate the % */
-				x = (val <= needed) ? val * 100 / needed : 100;
+				x = clamp(val, 0, needed) * 100 / needed;
 
 				/* SCORE_LOAN is inversed */
 				if (val < 0 && i == SCORE_LOAN) x = 0;

@@ -217,10 +217,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 			/* Skip the total */
 			if (i == SCORE_TOTAL) continue;
 			/*  Check the score */
-			s = (_score_part[owner][i] >= _score_info[i].needed) ?
-				_score_info[i].score :
-				_score_part[owner][i] * _score_info[i].score / _score_info[i].needed;
-			if (s < 0) s = 0;
+			s = clamp(_score_part[owner][i], 0, _score_info[i].needed) * _score_info[i].score / _score_info[i].needed;
 			score += s;
 			total_score += _score_info[i].score;
 		}
