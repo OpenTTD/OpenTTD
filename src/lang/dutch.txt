@@ -1103,6 +1103,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kaart
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kaart
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Uit
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaart muiswiel snelheid: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Rechts-klik emulatie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Opdracht-klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisch pauzeren wanneer je een nieuw spel start: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik de geavanceerde voertuigenlijst: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Gebruik laad indicatoren: {ORANGE}{STRING}

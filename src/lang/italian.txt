@@ -795,8 +795,8 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nomi s
 STR_02D5_LAND_BLOCK_INFO                                        :Informazioni sull'area di terreno
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Apri/chiudi console
-STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Screenshot Gigante (Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (CTRL+S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Screenshot Gigante (CTRL+G)
 STR_02D9_ABOUT_OPENTTD                                          :Informazioni su 'OpenTTD'
 ############ range ends here
 
@@ -1105,6 +1105,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom della mapp
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scorri la mappa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocità rotellina mappa: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulazione clic destro: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :COMANDO+clic
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :CTRL+clic
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Metti in pausa all'inizio di una nuova partita: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilizza la lista veicoli avanzata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Utilizza gli indicatori di caricamento: {ORANGE}{STRING}

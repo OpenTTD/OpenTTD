@@ -1104,6 +1104,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Промени 
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Разгледай картата
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Изклучен
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollwheel скорост на картата: {ORANGE}{STRING}
+
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматична пауза стартирайки нова игра: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Използваи напредналиат списък на превозни средства: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Използвай товарни индикатори: {ORANGE}{STRING}
@@ -1385,6 +1387,7 @@ STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Макс
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ограничаване на сървъра до определен брой наблюдатели
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Говорим език:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Другите играчи ще знаят езика на който се говори на сървъра
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Начало на игра
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Започване на нова мрежова игра от случайна карта или сценарий
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Зареждане на игра

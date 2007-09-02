@@ -413,18 +413,18 @@ STR_SEND_AIRCRAFT_TO_HANGAR                                     :격납고로 �
 STR_SEND_FOR_SERVICING                                          :점검하러 보냄
 
 ############ range for months starts
-STR_0162_JAN                                                    :1월
-STR_0163_FEB                                                    :2월
-STR_0164_MAR                                                    :3월
-STR_0165_APR                                                    :4월
-STR_0166_MAY                                                    :5월
-STR_0167_JUN                                                    :6월
-STR_0168_JUL                                                    :7월
-STR_0169_AUG                                                    :8월
-STR_016A_SEP                                                    :9월
-STR_016B_OCT                                                    :10월
-STR_016C_NOV                                                    :11월
-STR_016D_DEC                                                    :12월
+STR_0162_JAN                                                    :1
+STR_0163_FEB                                                    :2
+STR_0164_MAR                                                    :3
+STR_0165_APR                                                    :4
+STR_0166_MAY                                                    :5
+STR_0167_JUN                                                    :6
+STR_0168_JUL                                                    :7
+STR_0169_AUG                                                    :8
+STR_016A_SEP                                                    :9
+STR_016B_OCT                                                    :10
+STR_016C_NOV                                                    :11
+STR_016D_DEC                                                    :12
 ############ range for months ends
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
@@ -488,9 +488,9 @@ STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA}의 수명이 다되어 갑니다.
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA}의 수명이 다되어 긴급 교체가 필요합니다.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}이 지역의 지형 정보
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}초기화 가격: {LTBLUE}N/A
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}초기화 가격: {LTBLUE}없음
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}초기화 가격: {LTBLUE}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
+STR_01A6_N_A                                                    :없음
 STR_01A7_OWNER                                                  :{BLACK}소유자: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}지역 당국: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :없음
@@ -1104,11 +1104,17 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :맵 줌
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :맵 스크롤
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :끄기
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}맵 스크롤 속도: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}오른쪽 클릭 매크로: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :커맨드 + 클릭
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :컨트롤 + 클릭
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}새로운 게임 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}적재 정도 표시: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 날보다 틱로 표시: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}기본 철도 종류 (새 게임/불러오기 후): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :보통 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :전개 철도
@@ -1263,6 +1269,7 @@ STR_LANDINFO_LOCK                                               :갑문
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...사용중인 부이입니다!
 
+STR_LANDINFO_COORDS                                             :{BLACK}좌표: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}역의 일부를 제거할 수 없습니다...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}이곳의 철도 타입을 바꿀 수 없습니다...
@@ -1373,18 +1380,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}암호 �
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}자유로운 접근을 막고 싶을 때 게임 접근시 암호를 설정할 수 있습니다
 STR_NETWORK_SELECT_MAP                                          :{BLACK}맵 선택:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}플레이할 맵을 선택합니다.
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}최대 접속자 수:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}최대 접속자수를 선택합니다. 모든 슬롯이 차있을 필요는 없습니다.
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :인터넷
 STR_NETWORK_LAN_INTERNET                                        :LAN / 인터넷
 STR_NETWORK_INTERNET_ADVERTISE                                  :인터넷 (광고 허용)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM}명 접속중
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}최대 접속자 수:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}최대 접속자수를 선택합니다. 모든 슬롯이 차있을 필요는 없습니다.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}개의 회사
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}최대 회사수:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}서버의 회사의 수를 제한합니다
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM}명 참관중
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}최대 관전자수:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}게임을 관전하는 접속자의 수를 제한합니다
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}대화 언어:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}서버에서 주로 사용하는 언어를 고르십시오.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}서버 열기
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}무작위 맵이나 시나리오로 새로운 네트워크 게임을 시작합니다.
 STR_NETWORK_LOAD_GAME                                           :{BLACK}맵 불러오기
@@ -1612,9 +1624,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...다�
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :일반 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :PRE 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :출구 신호등이 설치된 철도
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :콤보-신호등을 가진 철로
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :일반 신호등과 PRE신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :일반 신호등과 출구신호등이 설치된 철도
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :일반, 콤보-신호등을 가진 철로
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :PRE 신호등과 출구신호등이 설치된 철도
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :프리, 콤보-신호등을 가진 철로
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :출구, 콤보-신호등을 가진 철로
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
 
 
@@ -1714,8 +1730,8 @@ STR_202A_NONE                                                   :{ORANGE}없음
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}이미 지급된 보조금:
 STR_202C_FROM_TO                                                :{ORANGE}{1:STATION}에서 {2:STATION}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT}까지)
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}보조금 제공 계약 파기:{}{}{0:STRING}에서 {1:STRING}까지의 {2:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}보조금 제공 철회:{}{}{1:STATION}에서 {2:STATION}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}보조금 제공 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은 더이상 보조금을 지급하지 않습니다.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}보조금 제공 철회:{}{}지역 당국은 {1:STATION}에서 {2:STATION}까지의 {0:STRING} 수송에 대한 보조금을 철회하였습니다.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}보조금 제공 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지의 {0:STRING}을/를 수송하는 회사는 지역 당국으로부터 보조금을 받게 될 것입니다!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
@@ -2060,7 +2076,7 @@ STR_SV_STNAME_HEIGHTS                                           :{STRING} 언덕
 STR_SV_STNAME_WOODS                                             :{STRING} 숲
 STR_SV_STNAME_LAKESIDE                                          :{STRING} 호숫가
 STR_SV_STNAME_EXCHANGE                                          :{STRING} 교환
-STR_SV_STNAME_AIRPORT                                           :{STRING}공항
+STR_SV_STNAME_AIRPORT                                           :{STRING}
 STR_SV_STNAME_OILFIELD                                          :{STRING} 유전
 STR_SV_STNAME_MINES                                             :{STRING} 광산
 STR_SV_STNAME_DOCKS                                             :{STRING}항
@@ -2794,7 +2810,7 @@ STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 차고로 점검하러 가는중 ({VELOCITY})
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}차량을 차고로 보낼 수 없습니다...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}인접한 차고를 찾을 수 없습니다
-STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}자동차 - click on vehicle for information
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}자동차 - 자세히 보려면 클릭
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}새 자동차 만들기 (차고 필요)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}현재 차량 행동 - 운행/정지시키려면 클릭하세요
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}차량 경로 보이기
@@ -3278,9 +3294,9 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}길이: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}넓이: {NUM} x {NUM}{}고도차: {NUM} m
 
 ############ Date formatting
-STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
-STR_DATE_SHORT                                                  :{STRING} {NUM}
-STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_TINY                                                   :{2:NUM}.{1:STRING}.{0:STRING}
+STR_DATE_SHORT                                                  :{1:NUM}년 {0:STRING}월
+STR_DATE_LONG                                                   :{2:NUM}년 {1:STRING}월 {0:STRING}일
 
 ########
 
@@ -3339,7 +3355,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}그룹 �
 STR_GROUP_DELETE_TIP                                            :{BLACK}선택한 그룹 삭제
 STR_GROUP_RENAME_TIP                                            :{BLACK}선택한 그룹 이름 바꾸기
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}전체 자동 교체로부터 이 그룹 보호
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
