@@ -39,7 +39,9 @@ uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, Industry
 	is_same_industry = (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == index);
 	tile_type = GetTerrainType(tile) << 2 | (IsTileType(tile, MP_WATER) ? 1 : 0) << 1 | (is_same_industry ? 1 : 0);
 
-	return GetTileType(tile) << 24 | (TileHeight(tile) * 8) << 16 | tile_type << 8 | GetTileSlope(tile, NULL);
+	uint z;
+	Slope tileh = GetTileSlope(tile, &z);
+	return GetTileType(tile) << 24 | z << 16 | tile_type << 8 | tileh;
 }
 
 /** This is the position of the tile relative to the northernmost tile of the industry.

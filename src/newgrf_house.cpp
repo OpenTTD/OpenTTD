@@ -185,7 +185,9 @@ uint32 GetNearbyTileInformation(byte parameter, TileIndex tile)
 	tile = GetNearbyTile(parameter, tile);
 	tile_type = GetTerrainType(tile) << 2 | (IsTileType(tile, MP_WATER) ? 1 : 0) << 1;
 
-	return GetTileType(tile) << 24 | (TileHeight(tile) * 8) << 16 | tile_type << 8 | GetTileSlope(tile, NULL);
+	uint z;
+	Slope tileh = GetTileSlope(tile, &z);
+	return GetTileType(tile) << 24 | z << 16 | tile_type << 8 | tileh;
 }
 
 /**

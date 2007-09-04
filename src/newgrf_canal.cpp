@@ -42,7 +42,7 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte
 
 	switch (variable) {
 		case 0x80:
-			return TileHeight(tile);
+			return GetTileZ(tile) / TILE_HEIGHT;
 
 		case 0x81:
 			return GetTerrainType(tile);
