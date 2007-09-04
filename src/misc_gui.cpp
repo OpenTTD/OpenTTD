@@ -396,7 +396,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 	case WE_PLACE_MOUSEUP:
 		if (e->we.place.pt.x != -1 && e->we.place.select_proc == DDSP_PLANT_TREES) {
 			DoCommandP(e->we.place.tile, _tree_to_plant, e->we.place.starttile, NULL,
-				CMD_PLANT_TREE | CMD_AUTO | CMD_MSG(STR_2805_CAN_T_PLANT_TREE_HERE));
+				CMD_PLANT_TREE | CMD_MSG(STR_2805_CAN_T_PLANT_TREE_HERE));
 		}
 		break;
 

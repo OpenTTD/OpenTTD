@@ -172,7 +172,6 @@ enum {
 #define CMD_MSG(x) ((x) << 16)
 
 enum {
-	CMD_AUTO                  = 0x0200,
 	CMD_NO_WATER              = 0x0400,
 	CMD_NETWORK_COMMAND       = 0x0800, ///< execute the command without sending it on the network
 	CMD_NO_TEST_IF_IN_NETWORK = 0x1000, ///< When enabled, the command will bypass the no-DC_EXEC round if in network
@@ -183,6 +182,7 @@ enum {
 enum {
 	CMD_SERVER  = 0x1, ///< the command can only be initiated by the server
 	CMD_OFFLINE = 0x2, ///< the command cannot be executed in a multiplayer game; single-player only
+	CMD_AUTO    = 0x4, ///< set the DC_AUTO flag on this command
 };
 
 typedef CommandCost CommandProc(TileIndex tile, uint32 flags, uint32 p1, uint32 p2);

@@ -106,7 +106,6 @@ CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, u
 
 	/* If we did a DC_EXEC, and the command did not return an error, execute it
 	 * over the network */
-	if (flags & DC_AUTO)     procc |= CMD_AUTO;
 	if (flags & DC_NO_WATER) procc |= CMD_NO_WATER;
 
 	/* NetworkSend_Command needs _local_player to be set correctly, so

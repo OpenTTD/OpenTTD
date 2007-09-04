@@ -1086,7 +1086,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 		StringID msg =
 			mode ? STR_0808_CAN_T_RAISE_LAND_HERE : STR_0809_CAN_T_LOWER_LAND_HERE;
 
-		DoCommandP(tile, SLOPE_N, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(msg));
+		DoCommandP(tile, SLOPE_N, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_MSG(msg));
 	} else {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 
@@ -1113,7 +1113,7 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 
 		BEGIN_TILE_LOOP(tile2, sizex, sizey, tile) {
 			if (TileHeight(tile2) == h) {
-				DoCommandP(tile2, SLOPE_N, (uint32)mode, NULL, CMD_TERRAFORM_LAND | CMD_AUTO);
+				DoCommandP(tile2, SLOPE_N, (uint32)mode, NULL, CMD_TERRAFORM_LAND);
 			}
 		} END_TILE_LOOP(tile2, sizex, sizey, tile)
 	}

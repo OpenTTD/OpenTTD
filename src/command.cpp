@@ -184,20 +184,20 @@ DEF_COMMAND(CmdAutofillTimetable);
 
 /* The master command table */
 static const Command _command_proc_table[] = {
-	{CmdBuildRailroadTrack,                  0}, /*   0 */
-	{CmdRemoveRailroadTrack,                 0}, /*   1 */
-	{CmdBuildSingleRail,                     0}, /*   2 */
-	{CmdRemoveSingleRail,                    0}, /*   3 */
+	{CmdBuildRailroadTrack,           CMD_AUTO}, /*   0 */
+	{CmdRemoveRailroadTrack,          CMD_AUTO}, /*   1 */
+	{CmdBuildSingleRail,              CMD_AUTO}, /*   2 */
+	{CmdRemoveSingleRail,             CMD_AUTO}, /*   3 */
 	{CmdLandscapeClear,                      0}, /*   4 */
-	{CmdBuildBridge,                         0}, /*   5 */
-	{CmdBuildRailroadStation,                0}, /*   6 */
-	{CmdBuildTrainDepot,                     0}, /*   7 */
-	{CmdBuildSingleSignal,                   0}, /*   8 */
-	{CmdRemoveSingleSignal,                  0}, /*   9 */
-	{CmdTerraformLand,                       0}, /*  10 */
-	{CmdPurchaseLandArea,                    0}, /*  11 */
+	{CmdBuildBridge,                  CMD_AUTO}, /*   5 */
+	{CmdBuildRailroadStation,         CMD_AUTO}, /*   6 */
+	{CmdBuildTrainDepot,              CMD_AUTO}, /*   7 */
+	{CmdBuildSingleSignal,            CMD_AUTO}, /*   8 */
+	{CmdRemoveSingleSignal,           CMD_AUTO}, /*   9 */
+	{CmdTerraformLand,                CMD_AUTO}, /*  10 */
+	{CmdPurchaseLandArea,             CMD_AUTO}, /*  11 */
 	{CmdSellLandArea,                        0}, /*  12 */
-	{CmdBuildTunnel,                         0}, /*  13 */
+	{CmdBuildTunnel,                  CMD_AUTO}, /*  13 */
 	{CmdRemoveFromRailroadStation,           0}, /*  14 */
 	{CmdConvertRail,                         0}, /*  15 */
 	{CmdBuildTrainWaypoint,                  0}, /*  16 */
@@ -205,19 +205,19 @@ static const Command _command_proc_table[] = {
 	{CmdRemoveTrainWaypoint,                 0}, /*  18 */
 	{NULL,                                   0}, /*  19 */
 	{NULL,                                   0}, /*  20 */
-	{CmdBuildRoadStop,                       0}, /*  21 */
+	{CmdBuildRoadStop,                CMD_AUTO}, /*  21 */
 	{CmdRemoveRoadStop,                      0}, /*  22 */
-	{CmdBuildLongRoad,                       0}, /*  23 */
-	{CmdRemoveLongRoad,                      0}, /*  24 */
+	{CmdBuildLongRoad,                CMD_AUTO}, /*  23 */
+	{CmdRemoveLongRoad,               CMD_AUTO}, /*  24 */
 	{CmdBuildRoad,                           0}, /*  25 */
 	{CmdRemoveRoad,                          0}, /*  26 */
-	{CmdBuildRoadDepot,                      0}, /*  27 */
+	{CmdBuildRoadDepot,               CMD_AUTO}, /*  27 */
 	{NULL,                                   0}, /*  28 */
-	{CmdBuildAirport,                        0}, /*  29 */
-	{CmdBuildDock,                           0}, /*  30 */
-	{CmdBuildShipDepot,                      0}, /*  31 */
-	{CmdBuildBuoy,                           0}, /*  32 */
-	{CmdPlantTree,                           0}, /*  33 */
+	{CmdBuildAirport,                 CMD_AUTO}, /*  29 */
+	{CmdBuildDock,                    CMD_AUTO}, /*  30 */
+	{CmdBuildShipDepot,               CMD_AUTO}, /*  31 */
+	{CmdBuildBuoy,                    CMD_AUTO}, /*  32 */
+	{CmdPlantTree,                    CMD_AUTO}, /*  33 */
 	{CmdBuildRailVehicle,                    0}, /*  34 */
 	{CmdMoveRailVehicle,                     0}, /*  35 */
 	{CmdStartStopTrain,                      0}, /*  36 */
@@ -235,7 +235,7 @@ static const Command _command_proc_table[] = {
 	{CmdChangeServiceInt,                    0}, /*  46 */
 
 	{CmdBuildIndustry,                       0}, /*  47 */
-	{CmdBuildCompanyHQ,                      0}, /*  48 */
+	{CmdBuildCompanyHQ,               CMD_AUTO}, /*  48 */
 	{CmdSetPlayerFace,                       0}, /*  49 */
 	{CmdSetPlayerColor,                      0}, /*  50 */
 
@@ -308,17 +308,17 @@ static const Command _command_proc_table[] = {
 	{NULL,                                   0}, /* 101 */
 
 	{CmdMoneyCheat,                CMD_OFFLINE}, /* 102 */
-	{CmdBuildCanal,                          0}, /* 103 */
+	{CmdBuildCanal,                   CMD_AUTO}, /* 103 */
 	{CmdPlayerCtrl,                          0}, /* 104 */
 
-	{CmdLevelLand,                           0}, /* 105 */
+	{CmdLevelLand,                    CMD_AUTO}, /* 105 */
 
 	{CmdRefitRailVehicle,                    0}, /* 106 */
 	{CmdRestoreOrderIndex,                   0}, /* 107 */
-	{CmdBuildLock,                           0}, /* 108 */
+	{CmdBuildLock,                    CMD_AUTO}, /* 108 */
 	{NULL,                                   0}, /* 109 */
-	{CmdBuildSignalTrack,                    0}, /* 110 */
-	{CmdRemoveSignalTrack,                   0}, /* 111 */
+	{CmdBuildSignalTrack,             CMD_AUTO}, /* 110 */
+	{CmdRemoveSignalTrack,            CMD_AUTO}, /* 111 */
 	{NULL,                                   0}, /* 112 */
 	{CmdGiveMoney,                           0}, /* 113 */
 	{CmdChangePatchSetting,         CMD_SERVER}, /* 114 */
@@ -462,7 +462,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	}
 
 	flags = 0;
-	if (cmd & CMD_AUTO) flags |= DC_AUTO;
 	if (cmd & CMD_NO_WATER) flags |= DC_NO_WATER;
 
 	/* get pointer to command handler */
@@ -472,6 +471,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		_cmd_text = NULL;
 		return false;
 	}
+
+	if (GetCommandFlags(cmd) & CMD_AUTO) flags |= DC_AUTO;
 
 	/* Some commands have a different output in dryrun than the realrun
 	 *  e.g.: if you demolish a whole town, the dryrun would say okay.
