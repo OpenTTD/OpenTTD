@@ -247,13 +247,17 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 		}
 	} else { // flags & DC_EXEC not set
 		CommandCost tmp_move;
-		if (old_v->type == VEH_TRAIN && IsFrontEngine(old_v) && old_v->Next() != NULL) {
-			/* Verify that the wagons can be placed on the engine in question.
-			 * This is done by building an engine, test if the wagons can be added and then sell the test engine. */
-			DoCommand(old_v->tile, new_engine_type, 3, DC_EXEC, GetCmdBuildVeh(old_v));
-			Vehicle *temp = GetVehicle(_new_vehicle_id);
-			tmp_move = DoCommand(0, (temp->index << 16) | old_v->Next()->index, 1, 0, CMD_MOVE_RAIL_VEHICLE);
-			DoCommand(0, temp->index, 0, DC_EXEC, GetCmdSellVeh(old_v));
+
+		if (old_v->type == VEH_TRAIN && IsFrontEngine(old_v)) {
+			Vehicle *next_veh = IsMultiheaded(old_v) ? old_v->Next()->Next() : old_v->Next();
+			if (next_veh != NULL) {
+				/* Verify that the wagons can be placed on the engine in question.
+				 * This is done by building an engine, test if the wagons can be added and then sell the test engine. */
+				DoCommand(old_v->tile, new_engine_type, 3, DC_EXEC, GetCmdBuildVeh(old_v));
+				Vehicle *temp = GetVehicle(_new_vehicle_id);
+				tmp_move = DoCommand(0, (temp->index << 16) | next_veh->index, 1, 0, CMD_MOVE_RAIL_VEHICLE);
+				DoCommand(0, temp->index, 0, DC_EXEC, GetCmdSellVeh(old_v));
+			}
 		}
 
 		/* Ensure that the player will not end up having negative money while autoreplacing
