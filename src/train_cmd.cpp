@@ -1025,10 +1025,11 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		/* If we move the front Engine and if the second vehicle is not an engine
 		   add the whole vehicle to the DEFAULT_GROUP */
 		if (IsFrontEngine(src) && !IsDefaultGroupID(src->group_id)) {
-			const Vehicle *v = GetNextVehicle(src);
+			Vehicle *v = GetNextVehicle(src);
 
-			if (v != NULL && !IsTrainEngine(v)) {
-				DoCommand(tile, DEFAULT_GROUP, v->index, flags, CMD_ADD_VEHICLE_GROUP);
+			if (v != NULL && IsTrainEngine(v)) {
+				v->group_id   = src->group_id;
+				src->group_id = DEFAULT_GROUP;
 			}
 		}
 
@@ -1079,6 +1080,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 				/* the vehicle was previously a loco. need to free the order list and delete vehicle windows etc. */
 				DeleteWindowById(WC_VEHICLE_VIEW, src->index);
 				DeleteVehicleOrders(src);
+				RemoveVehicleFromGroup(src);
 			}
 
 			if (IsFrontEngine(src) || IsFreeWagon(src)) {
@@ -1268,6 +1270,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					new_f->cur_order_index = first->cur_order_index;
 					new_f->orders          = first->orders;
 					new_f->num_orders      = first->num_orders;
+					new_f->group_id        = first->group_id;
 
 					if (first->prev_shared != NULL) {
 						first->prev_shared->next_shared = new_f;
@@ -1277,8 +1280,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (first->next_shared != NULL) {
 						first->next_shared->prev_shared = new_f;
 						new_f->next_shared = first->next_shared;
-					} else {
-						RemoveVehicleFromGroup(v);
 					}
 
 					/*
@@ -1289,6 +1290,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					first->orders      = NULL;
 					first->prev_shared = NULL;
 					first->next_shared = NULL;
+					first->group_id    = DEFAULT_GROUP;
 
 					/* If we deleted a window then open a new one for the 'new' train */
 					if (IsLocalPlayer() && w != NULL) ShowVehicleViewWindow(new_f);
@@ -1372,8 +1374,8 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (flags & DC_EXEC) {
 					first = UnlinkWagon(v, first);
 					DeleteDepotHighlightOfVehicle(v);
-					delete v;
 					RemoveVehicleFromGroup(v);
+					delete v;
 				}
 			}
 
