@@ -378,10 +378,10 @@ struct order_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(order_d));
 
-struct traindetails_d {
+struct vehicledetails_d {
 	byte tab;
 };
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(traindetails_d));
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehicledetails_d));
 
 struct smallmap_d {
 	int32 scroll_x;

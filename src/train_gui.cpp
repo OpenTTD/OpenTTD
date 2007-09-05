@@ -152,31 +152,20 @@ static void TrainDetailsCapacityTab(const Vehicle *v, int x, int y)
 	}
 }
 
-
-static void DrawTrainDetailsWindow(Window *w)
+int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab)
 {
-	byte det_tab = WP(w, traindetails_d).tab;
-	const Vehicle *v;
-	const Vehicle *u;
 	AcceptedCargo act_cargo;
 	AcceptedCargo max_cargo;
-	int num;
-	int x;
-	int y;
-	int sel;
+	int num = 0;
 
-	num = 0;
-	u = v = GetVehicle(w->window_number);
 	if (det_tab == 3) { // Total cargo tab
-		for (CargoID i = 0; i < lengthof(act_cargo); i++) {
-			act_cargo[i] = 0;
-			max_cargo[i] = 0;
-		}
+		memset(max_cargo, 0, sizeof(max_cargo));
+		memset(act_cargo, 0, sizeof(act_cargo));
 
-		do {
-			act_cargo[u->cargo_type] += u->cargo.Count();
-			max_cargo[u->cargo_type] += u->cargo_cap;
-		} while ((u = u->Next()) != NULL);
+		for (const Vehicle *v = GetVehicle(veh_id) ; v != NULL ; v = v->Next()) {
+			act_cargo[v->cargo_type] += v->cargo.Count();
+			max_cargo[v->cargo_type] += v->cargo_cap;
+		}
 
 		/* Set scroll-amount seperately from counting, as to not compute num double
 		 * for more carriages of the same type
@@ -186,60 +175,22 @@ static void DrawTrainDetailsWindow(Window *w)
 		}
 		num++; // needs one more because first line is description string
 	} else {
-		do {
-			if (!IsArticulatedPart(u) || u->cargo_cap != 0) num++;
-		} while ((u = u->Next()) != NULL);
+		for (const Vehicle *v = GetVehicle(veh_id) ; v != NULL ; v = v->Next()) {
+			if (!IsArticulatedPart(v) || v->cargo_cap != 0) num++;
+		}
 	}
 
-	SetVScrollCount(w, num);
+	return num;
+}
 
-	DisableWindowWidget(w, det_tab + 9);
-	SetWindowWidgetDisabledState(w, 2, v->owner != _local_player);
-
-	/* disable service-scroller when interval is set to disabled */
-	SetWindowWidgetDisabledState(w, 6, !_patches.servint_trains);
-	SetWindowWidgetDisabledState(w, 7, !_patches.servint_trains);
-
-	SetDParam(0, v->index);
-	DrawWindowWidgets(w);
-
-	SetDParam(1, v->age / 366);
-
-	x = 2;
-
-	SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
-	SetDParam(2, v->max_age / 366);
-	SetDParam(3, v->GetDisplayRunningCost());
-	DrawString(x, 15, STR_885D_AGE_RUNNING_COST_YR, 0);
-
-	SetDParam(2, v->GetDisplayMaxSpeed());
-	SetDParam(1, v->u.rail.cached_power);
-	SetDParam(0, v->u.rail.cached_weight);
-	SetDParam(3, v->u.rail.cached_max_te / 1000);
-	DrawString(x, 25, (_patches.realistic_acceleration && v->u.rail.railtype != RAILTYPE_MAGLEV) ?
-		STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
-		STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, 0);
-
-	SetDParam(0, v->profit_this_year);
-	SetDParam(1, v->profit_last_year);
-	DrawString(x, 35, STR_885F_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-
-	SetDParam(0, 100 * (v->reliability>>8) >> 8);
-	SetDParam(1, v->breakdowns_since_last_service);
-	DrawString(x, 45, STR_8860_RELIABILITY_BREAKDOWNS, 0);
-
-	SetDParam(0, v->service_interval);
-	SetDParam(1, v->date_of_last_service);
-	DrawString(x + 11, 57 + (w->vscroll.cap * 14), _patches.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, 0);
-
-	y = 57;
-	sel = w->vscroll.pos;
-
+void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vscroll_cap, byte det_tab)
+{
 	/* draw the first 3 details tabs */
 	if (det_tab != 3) {
+		const Vehicle *u = v;
 		x = 1;
 		for (;;) {
-			if (--sel < 0 && sel >= -w->vscroll.cap) {
+			if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
 				int dx = 0;
 				int px;
 				int py;
@@ -277,10 +228,21 @@ static void DrawTrainDetailsWindow(Window *w)
 			if (v == NULL) return;
 		}
 	} else {
+		AcceptedCargo act_cargo;
+		AcceptedCargo max_cargo;
+
+		memset(max_cargo, 0, sizeof(max_cargo));
+		memset(act_cargo, 0, sizeof(act_cargo));
+
+		for (const Vehicle *u = v; u != NULL ; u = u->Next()) {
+			act_cargo[u->cargo_type] += u->cargo.Count();
+			max_cargo[u->cargo_type] += u->cargo_cap;
+		}
+
 		/* draw total cargo tab */
 		DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY_TEXT, 0);
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (max_cargo[i] > 0 && --sel < 0 && sel > -w->vscroll.cap) {
+			if (max_cargo[i] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
 				y += 14;
 				SetDParam(0, i);            // {CARGO} #1
 				SetDParam(1, act_cargo[i]); // {CARGO} #2
@@ -293,115 +255,4 @@ static void DrawTrainDetailsWindow(Window *w)
 		SetDParam(0, v->cargo.FeederShare());
 		DrawString(x, y + 15, STR_FEEDER_CARGO_VALUE, 0);
 	}
-}
-
-static void TrainDetailsWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT:
-		DrawTrainDetailsWindow(w);
-		break;
-	case WE_CLICK: {
-		int mod;
-		const Vehicle *v;
-		switch (e->we.click.widget) {
-		case 2: /* name train */
-			v = GetVehicle(w->window_number);
-			SetDParam(0, v->index);
-			ShowQueryString(STR_VEHICLE_NAME, STR_8865_NAME_TRAIN, 31, 150, w, CS_ALPHANUMERAL);
-			break;
-		case 6: /* inc serv interval */
-			mod = _ctrl_pressed? 5 : 10;
-			goto do_change_service_int;
-
-		case 7: /* dec serv interval */
-			mod = _ctrl_pressed? -5 : -10;
-do_change_service_int:
-			v = GetVehicle(w->window_number);
-
-			mod = GetServiceIntervalClamped(mod + v->service_interval);
-			if (mod == v->service_interval) return;
-
-			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
-			break;
-		/* details buttons*/
-		case 9:  // Cargo
-		case 10: // Information
-		case 11: // Capacities
-		case 12: // Total cargo
-			EnableWindowWidget(w,  9);
-			EnableWindowWidget(w, 10);
-			EnableWindowWidget(w, 11);
-			EnableWindowWidget(w, 12);
-			EnableWindowWidget(w, e->we.click.widget);
-			WP(w,traindetails_d).tab = e->we.click.widget - 9;
-			SetWindowDirty(w);
-			break;
-		}
-	} break;
-
-	case WE_ON_EDIT_TEXT:
-		if (e->we.edittext.str[0] != '\0') {
-			_cmd_text = e->we.edittext.str;
-			DoCommandP(0, w->window_number, 0, NULL,
-				CMD_NAME_VEHICLE | CMD_MSG(STR_8866_CAN_T_NAME_TRAIN));
-		}
-		break;
-
-	case WE_RESIZE:
-		if (e->we.sizing.diff.x != 0) ResizeButtons(w, 9, 12);
-		if (e->we.sizing.diff.y == 0) break;
-
-		w->vscroll.cap += e->we.sizing.diff.y / 14;
-		w->widget[4].data = (w->vscroll.cap << 8) + 1;
-		break;
-	}
-}
-
-static const Widget _train_details_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE,   14,   0,  10,   0,  13, STR_00C5,             STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION, RESIZE_RIGHT,  14,  11, 329,   0,  13, STR_8802_DETAILS,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN, RESIZE_LR,     14, 330, 369,   0,  13, STR_01AA_NAME,        STR_8867_NAME_TRAIN},
-{      WWT_PANEL, RESIZE_RIGHT,  14,   0, 369,  14,  55, 0x0,                  STR_NULL},
-{     WWT_MATRIX, RESIZE_RB,     14,   0, 357,  56, 139, 0x601,                STR_NULL},
-{  WWT_SCROLLBAR, RESIZE_LRB,    14, 358, 369,  56, 139, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  10, 140, 145, STR_0188,             STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  10, 146, 151, STR_0189,             STR_884E_DECREASE_SERVICING_INTERVAL},
-{      WWT_PANEL, RESIZE_RTB,    14,  11, 369, 140, 151, 0x0,                  STR_NULL},
-{ WWT_PUSHTXTBTN, RESIZE_TB,     14,   0,  89, 152, 163, STR_013C_CARGO,       STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED},
-{ WWT_PUSHTXTBTN, RESIZE_TB,     14,  90, 178, 152, 163, STR_013D_INFORMATION, STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},
-{ WWT_PUSHTXTBTN, RESIZE_TB,     14, 179, 268, 152, 163, STR_013E_CAPACITIES,  STR_8851_SHOW_CAPACITIES_OF_EACH},
-{ WWT_PUSHTXTBTN, RESIZE_RTB,    14, 269, 357, 152, 163, STR_013E_TOTAL_CARGO, STR_8852_SHOW_TOTAL_CARGO},
-{  WWT_RESIZEBOX, RESIZE_LRTB,   14, 358, 369, 152, 163, 0x0,                  STR_RESIZE_BUTTON},
-{   WIDGETS_END},
-};
-
-
-static const WindowDesc _train_details_desc = {
-	WDP_AUTO, WDP_AUTO, 370, 164, 370, 164,
-	WC_VEHICLE_DETAILS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_train_details_widgets,
-	TrainDetailsWndProc
-};
-
-
-void ShowTrainDetailsWindow(const Vehicle *v)
-{
-	Window *w;
-	VehicleID veh = v->index;
-
-	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
-	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
-
-	w = AllocateWindowDescFront(&_train_details_desc, veh);
-
-	w->caption_color = v->owner;
-	w->vscroll.cap = 6;
-	w->widget[4].data = (w->vscroll.cap << 8) + 1;
-
-	w->resize.step_height = 14;
-	w->resize.height = w->height - 14 * 2; /* Minimum of 4 wagons in the display */
-
-	WP(w,traindetails_d).tab = 0;
 }
