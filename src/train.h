@@ -248,6 +248,19 @@ static inline Vehicle *GetNextVehicle(const Vehicle *v)
 	return v->Next();
 }
 
+/** Get the next real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
+ * @param v Vehicle.
+ * @return Next vehicle in the consist.
+ */
+static inline Vehicle *GetNextUnit(Vehicle *v)
+{
+	assert(v->type == VEH_TRAIN);
+	v = GetNextVehicle(v);
+	if (v != NULL && IsRearDualheaded(v)) v = v->Next();
+
+	return v;
+}
+
 void ConvertOldMultiheadToNew();
 void ConnectMultiheadedTrains();
 uint CountArticulatedParts(EngineID engine_type);
