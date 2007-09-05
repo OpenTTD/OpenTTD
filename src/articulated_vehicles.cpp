@@ -77,6 +77,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 				const RailVehicleInfo *rvi_artic = RailVehInfo(engine_type);
 
 				u = new (u) Train();
+				previous->SetNext(u);
 				u->u.rail.track = v->u.rail.track;
 				u->u.rail.railtype = v->u.rail.railtype;
 				u->u.rail.first_engine = v->engine_type;
@@ -92,6 +93,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 				const RoadVehicleInfo *rvi_artic = RoadVehInfo(engine_type);
 
 				u = new (u) RoadVehicle();
+				previous->SetNext(u);
 				u->u.road.first_engine = v->engine_type;
 				u->u.road.cached_veh_length = GetRoadVehLength(u);
 				u->u.road.state = RVSB_IN_DEPOT;
@@ -106,8 +108,6 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 				SetRoadVehArticPart(u);
 			} break;
 		}
-
-		previous->SetNext(u);
 
 		if (flip_image) u->spritenum++;
 
