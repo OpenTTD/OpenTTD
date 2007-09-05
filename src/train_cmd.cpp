@@ -798,7 +798,7 @@ int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped)
 		 * engines with more articulated parts than before works correctly.
 		 *
 		 * Also skip counting rear ends of multiheaded engines */
-		if (!IsArticulatedPart(v) && !(!IsTrainEngine(v) && IsMultiheaded(v))) count++;
+		if (!IsArticulatedPart(v) && !IsRearDualheaded(v)) count++;
 		if (v->u.rail.track != TRACK_BIT_DEPOT || v->tile != tile ||
 				(IsFrontEngine(v) && needs_to_be_stopped && !(v->vehstatus & VS_STOPPED))) {
 			return -1;
@@ -953,7 +953,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		dst_head = NULL;
 	}
 
-	if (IsMultiheaded(src) && !IsTrainEngine(src)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
+	if (IsRearDualheaded(src)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
 
 	/* when moving all wagons, we can't have the same src_head and dst_head */
 	if (HASBIT(p2, 0) && src_head == dst_head) return CommandCost();
@@ -1221,7 +1221,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
 	}
 
-	if (IsMultiheaded(v) && !IsTrainEngine(v)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
+	if (IsRearDualheaded(v)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
 
 	if (flags & DC_EXEC) {
 		if (v == first && IsFrontEngine(first)) {

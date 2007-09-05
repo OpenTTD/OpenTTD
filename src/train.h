@@ -225,6 +225,16 @@ static inline Vehicle *GetLastEnginePart(Vehicle *v)
 	return v;
 }
 
+/** Tell if we are dealing with the rear end of a multiheaded engine.
+ * @param v Vehicle.
+ * @return True if the engine is the rear part of a dualheaded engine.
+ */
+static inline bool IsRearDualheaded(const Vehicle *v)
+{
+	assert(v->type == VEH_TRAIN);
+	return (IsMultiheaded(v) && !IsTrainEngine(v));
+}
+
 /** Get the next real (non-articulated part) vehicle in the consist.
  * @param v Vehicle.
  * @return Next vehicle in the consist.

@@ -500,7 +500,7 @@ bool IsEngineCountable(const Vehicle *v)
 		case VEH_AIRCRAFT: return IsNormalAircraft(v); // don't count plane shadows and helicopter rotors
 		case VEH_TRAIN:
 			return !IsArticulatedPart(v) && // tenders and other articulated parts
-			(!IsMultiheaded(v) || IsTrainEngine(v)); // rear parts of multiheaded engines
+			!IsRearDualheaded(v); // rear parts of multiheaded engines
 		case VEH_ROAD: return IsRoadVehFront(v);
 		case VEH_SHIP: return true;
 		default: return false; // Only count player buildable vehicles
@@ -1733,7 +1733,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	v = v_front;
 
 	do {
-		if (v->type == VEH_TRAIN && IsMultiheaded(v) && !IsTrainEngine(v)) {
+		if (v->type == VEH_TRAIN && IsRearDualheaded(v)) {
 			/* we build the rear ends of multiheaded trains with the front ones */
 			continue;
 		}

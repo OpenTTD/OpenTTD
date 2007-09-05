@@ -202,7 +202,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 			/* Get the vehicle in front of the one we move out */
 			Vehicle *front = old_v->Previous();
 			/* If the vehicle in front is the rear end of a dualheaded engine, then we need to use the one in front of that one */
-			if (IsMultiheaded(front) && !IsTrainEngine(front)) front = front->Previous();
+			if (IsRearDualheaded(front)) front = front->Previous();
 			/* Now we move the old one out of the train */
 			DoCommand(0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 			/* Add the new vehicle */
@@ -250,7 +250,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 
 		if (old_v->type == VEH_TRAIN && IsFrontEngine(old_v)) {
 			Vehicle *next_veh = GetNextVehicle(old_v);
-			if (IsMultiheaded(next_veh) && !IsTrainEngine(next_veh)) next_veh = next_veh->Next(); // don't try to move the rear multiheaded engine
+			if (IsRearDualheaded(next_veh)) next_veh = next_veh->Next(); // don't try to move the rear multiheaded engine
 			if (next_veh != NULL) {
 				/* Verify that the wagons can be placed on the engine in question.
 				 * This is done by building an engine, test if the wagons can be added and then sell the test engine. */
@@ -337,7 +337,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 		cost = CommandCost();
 		w = v;
 		do {
-			if (w->type == VEH_TRAIN && IsMultiheaded(w) && !IsTrainEngine(w)) {
+			if (w->type == VEH_TRAIN && IsRearDualheaded(w)) {
 				/* we build the rear ends of multiheaded trains with the front ones */
 				continue;
 			}
