@@ -249,7 +249,8 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 		CommandCost tmp_move;
 
 		if (old_v->type == VEH_TRAIN && IsFrontEngine(old_v)) {
-			Vehicle *next_veh = IsMultiheaded(old_v) ? old_v->Next()->Next() : old_v->Next();
+			Vehicle *next_veh = GetNextVehicle(old_v);
+			if (IsMultiheaded(next_veh) && !IsTrainEngine(next_veh)) next_veh = next_veh->Next(); // don't try to move the rear multiheaded engine
 			if (next_veh != NULL) {
 				/* Verify that the wagons can be placed on the engine in question.
 				 * This is done by building an engine, test if the wagons can be added and then sell the test engine. */
