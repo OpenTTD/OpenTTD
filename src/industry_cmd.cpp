@@ -1196,7 +1196,8 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			if (!EnsureNoVehicle(cur_tile)) return false;
 			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return false;
 
-			const IndustryTileSpec *its = GetIndustryTileSpec(it->gfx);
+			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
+
 			IndustyBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
 			if (HASBIT(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
