@@ -229,13 +229,13 @@ static const Direction PPPorder[DIAGDIR_END][TLG_END][DIR_END] = {    /*  X  -  
 	}
 };
 /* Geometric placement of the PCP relative to the tile origin */
-static const int8 x_pcp_offsets[DIAGDIR_END] = {0,  8, 15, 8};
-static const int8 y_pcp_offsets[DIAGDIR_END] = {8, 15,  8, 0};
+static const int8 x_pcp_offsets[DIAGDIR_END] = {0,  8, 16, 8};
+static const int8 y_pcp_offsets[DIAGDIR_END] = {8, 16,  8, 0};
 /* Geometric placement of the PPP relative to the PCP*/
-static const int8 x_ppp_offsets[DIR_END] = {-3, -4, -3,  0,  3,  4,  3,  0};
-static const int8 y_ppp_offsets[DIR_END] = {-3,  0,  3,  4,  3,  0, -3, -4};
+static const int8 x_ppp_offsets[DIR_END] = {-2, -4, -2,  0,  2,  4,  2,  0};
+static const int8 y_ppp_offsets[DIR_END] = {-2,  0,  2,  4,  2,  0, -2, -4};
 /* The type of pylon to draw at each PPP */
-static const SpriteID pylons_normal[] = {
+static const SpriteID pylon_sprites[] = {
 	SPR_PYLON_EW_N,
 	SPR_PYLON_Y_NE,
 	SPR_PYLON_NS_E,
@@ -244,13 +244,6 @@ static const SpriteID pylons_normal[] = {
 	SPR_PYLON_Y_SW,
 	SPR_PYLON_NS_W,
 	SPR_PYLON_X_NW
-};
-
-static const SpriteID pylons_bridge[] = {
-	SPR_PYLON_X_NW,
-	SPR_PYLON_X_SE,
-	SPR_PYLON_Y_NE,
-	SPR_PYLON_Y_SW
 };
 
 struct SortableSpriteStruct {
@@ -265,9 +258,7 @@ struct SortableSpriteStruct {
 
 enum {
 	/** Distance between wire and rail */
-	ELRAIL_ELEVATION = 8,
-	/** Corrects an off-by-one error in some places (tileh 12 and 9) (TODO -- find source of error) */
-	ELRAIL_ELEV_CORR = ELRAIL_ELEVATION + 1,
+	ELRAIL_ELEVATION = 10,
 	/** Wires that a draw one level higher than the north corner. */
 	ELRAIL_ELEVRAISE = ELRAIL_ELEVATION + TILE_HEIGHT
 };
@@ -276,41 +267,41 @@ static const SortableSpriteStruct CatenarySpriteData[] = {
 /* X direction */
 	/* Flat tiles: */
 		/* Wires */
-	{ SPR_WIRE_X_SW,          0,  8, 16,  1,  1, ELRAIL_ELEVATION }, //! 0: Wire in X direction, pylon on the SW end only
-	{ SPR_WIRE_X_NE,          0,  8, 16,  1,  1, ELRAIL_ELEVATION }, //! 1: Wire in X direction, pylon on the NE end
-	{ SPR_WIRE_X_SHORT,       0,  8, 16,  1,  1, ELRAIL_ELEVATION }, //! 2: Wire in X direction, pylon on both ends
+	{ SPR_WIRE_X_SW,          0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! 0: Wire in X direction, pylon on the SW end only
+	{ SPR_WIRE_X_NE,          0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! 1: Wire in X direction, pylon on the NE end
+	{ SPR_WIRE_X_SHORT,       0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! 2: Wire in X direction, pylon on both ends
 
 	/* "up" tiles */
 		/* Wires */
-	{ SPR_WIRE_X_SW_UP,       0,  8, 16,  8,  1, ELRAIL_ELEVRAISE }, //! 3: Wire in X pitch up, pylon on the SW end only
-	{ SPR_WIRE_X_NE_UP,       0,  8, 16,  8,  1, ELRAIL_ELEVRAISE }, //! 4: Wire in X pitch up, pylon on the NE end
-	{ SPR_WIRE_X_SHORT_UP,    0,  8, 16,  8,  1, ELRAIL_ELEVRAISE }, //! 5: Wire in X pitch up, pylon on both ends
+	{ SPR_WIRE_X_SW_UP,       0,  7, 15,  8,  1, ELRAIL_ELEVRAISE }, //! 3: Wire in X pitch up, pylon on the SW end only
+	{ SPR_WIRE_X_NE_UP,       0,  7, 15,  8,  1, ELRAIL_ELEVRAISE }, //! 4: Wire in X pitch up, pylon on the NE end
+	{ SPR_WIRE_X_SHORT_UP,    0,  7, 15,  8,  1, ELRAIL_ELEVRAISE }, //! 5: Wire in X pitch up, pylon on both ends
 
 	/* "down" tiles */
 		/* Wires */
-	{ SPR_WIRE_X_SW_DOWN,     0,  8, 16,  8,  1, ELRAIL_ELEV_CORR }, //! 6: Wire in X pitch down, pylon on the SW end
-	{ SPR_WIRE_X_NE_DOWN,     0,  8, 16,  8,  1, ELRAIL_ELEV_CORR }, //! 7: Wire in X pitch down, pylon on the NE end
-	{ SPR_WIRE_X_SHORT_DOWN,  0,  8, 16,  8,  1, ELRAIL_ELEV_CORR }, //! 8: Wire in X pitch down, pylon on both ends
+	{ SPR_WIRE_X_SW_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 6: Wire in X pitch down, pylon on the SW end
+	{ SPR_WIRE_X_NE_DOWN,     0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 7: Wire in X pitch down, pylon on the NE end
+	{ SPR_WIRE_X_SHORT_DOWN,  0,  7, 15,  8,  1, ELRAIL_ELEVATION }, //! 8: Wire in X pitch down, pylon on both ends
 
 
 /* Y direction */
 	/* Flat tiles: */
 		/* Wires */
-	{ SPR_WIRE_Y_SE,          8,  0,  1, 16,  1, ELRAIL_ELEVATION }, //! 9: Wire in Y direction, pylon on the SE end only
-	{ SPR_WIRE_Y_NW,          8,  0,  1, 16,  1, ELRAIL_ELEVATION }, //!10: Wire in Y direction, pylon on the NW end
-	{ SPR_WIRE_Y_SHORT,       8,  0,  1, 16,  1, ELRAIL_ELEVATION }, //!11: Wire in Y direction, pylon on both ends
+	{ SPR_WIRE_Y_SE,          7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! 9: Wire in Y direction, pylon on the SE end only
+	{ SPR_WIRE_Y_NW,          7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //!10: Wire in Y direction, pylon on the NW end
+	{ SPR_WIRE_Y_SHORT,       7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //!11: Wire in Y direction, pylon on both ends
 
 	/* "up" tiles */
 		/* Wires */
-	{ SPR_WIRE_Y_SE_UP,       8,  0,  8, 16,  1, ELRAIL_ELEVRAISE }, //!12: Wire in Y pitch up, pylon on the SE end only
-	{ SPR_WIRE_Y_NW_UP,       8,  0,  8, 16,  1, ELRAIL_ELEVRAISE }, //!13: Wire in Y pitch up, pylon on the NW end
-	{ SPR_WIRE_Y_SHORT_UP,    8,  0,  8, 16,  1, ELRAIL_ELEVRAISE }, //!14: Wire in Y pitch up, pylon on both ends
+	{ SPR_WIRE_Y_SE_UP,       7,  0,  8, 15,  1, ELRAIL_ELEVRAISE }, //!12: Wire in Y pitch up, pylon on the SE end only
+	{ SPR_WIRE_Y_NW_UP,       7,  0,  8, 15,  1, ELRAIL_ELEVRAISE }, //!13: Wire in Y pitch up, pylon on the NW end
+	{ SPR_WIRE_Y_SHORT_UP,    7,  0,  8, 15,  1, ELRAIL_ELEVRAISE }, //!14: Wire in Y pitch up, pylon on both ends
 
 	/* "down" tiles */
 		/* Wires */
-	{ SPR_WIRE_Y_SE_DOWN,     8,  0,  8, 16,  1, ELRAIL_ELEV_CORR }, //!15: Wire in Y pitch down, pylon on the SE end
-	{ SPR_WIRE_Y_NW_DOWN,     8,  0,  8, 16,  1, ELRAIL_ELEV_CORR }, //!16: Wire in Y pitch down, pylon on the NW end
-	{ SPR_WIRE_Y_SHORT_DOWN,  8,  0,  8, 16,  1, ELRAIL_ELEV_CORR }, //!17: Wire in Y pitch down, pylon on both ends
+	{ SPR_WIRE_Y_SE_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!15: Wire in Y pitch down, pylon on the SE end
+	{ SPR_WIRE_Y_NW_DOWN,     7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!16: Wire in Y pitch down, pylon on the NW end
+	{ SPR_WIRE_Y_SHORT_DOWN,  7,  0,  8, 15,  1, ELRAIL_ELEVATION }, //!17: Wire in Y pitch down, pylon on both ends
 
 /* NS Direction */
 	{ SPR_WIRE_NS_SHORT,      8,  0,  8,  8,  1, ELRAIL_ELEVATION }, //!18: LEFT  trackbit wire, pylon on both ends
@@ -323,28 +314,28 @@ static const SortableSpriteStruct CatenarySpriteData[] = {
 	{ SPR_WIRE_NS_S,          0,  8,  8,  8,  1, ELRAIL_ELEVATION }, //!23: RIGHT trackbit wire, pylon on S end
 
 /* EW Direction */
-	{ SPR_WIRE_EW_SHORT,      8,  0,  8,  8,  1, ELRAIL_ELEVATION }, //!24: UPPER trackbit wire, pylon on both ends
-	{ SPR_WIRE_EW_SHORT,     16,  8,  8,  8,  1, ELRAIL_ELEVATION }, //!25: LOWER trackbit wire, pylon on both ends
+	{ SPR_WIRE_EW_SHORT,      7,  0,  1,  1,  1, ELRAIL_ELEVATION }, //!24: UPPER trackbit wire, pylon on both ends
+	{ SPR_WIRE_EW_SHORT,     15,  8,  3,  3,  1, ELRAIL_ELEVATION }, //!25: LOWER trackbit wire, pylon on both ends
 
-	{ SPR_WIRE_EW_W,          8,  0,  8,  8,  1, ELRAIL_ELEVATION }, //!28: UPPER trackbit wire, pylon on both ends
-	{ SPR_WIRE_EW_W,         16,  8,  8,  8,  1, ELRAIL_ELEVATION }, //!29: LOWER trackbit wire, pylon on both ends
+	{ SPR_WIRE_EW_W,          7,  0,  1,  1,  1, ELRAIL_ELEVATION }, //!28: UPPER trackbit wire, pylon on both ends
+	{ SPR_WIRE_EW_W,         15,  8,  3,  3,  1, ELRAIL_ELEVATION }, //!29: LOWER trackbit wire, pylon on both ends
 
-	{ SPR_WIRE_EW_E,          8,  0,  8,  8,  1, ELRAIL_ELEVATION }, //!32: UPPER trackbit wire, pylon on both ends
-	{ SPR_WIRE_EW_E,         16,  8,  8,  8,  1, ELRAIL_ELEVATION }  //!33: LOWER trackbit wire, pylon on both ends
+	{ SPR_WIRE_EW_E,          7,  0,  1,  1,  1, ELRAIL_ELEVATION }, //!32: UPPER trackbit wire, pylon on both ends
+	{ SPR_WIRE_EW_E,         15,  8,  3,  3,  1, ELRAIL_ELEVATION }  //!33: LOWER trackbit wire, pylon on both ends
 };
 
 static const SortableSpriteStruct CatenarySpriteData_Depot[] = {
-	{ SPR_WIRE_DEPOT_NE,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE depot exit
-	{ SPR_WIRE_DEPOT_SE,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }, //! Wire for SE depot exit
-	{ SPR_WIRE_DEPOT_SW,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW depot exit
-	{ SPR_WIRE_DEPOT_NW,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }  //! Wire for NW depot exit
+	{ SPR_WIRE_DEPOT_NE,      0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE depot exit
+	{ SPR_WIRE_DEPOT_SE,      7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! Wire for SE depot exit
+	{ SPR_WIRE_DEPOT_SW,      0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW depot exit
+	{ SPR_WIRE_DEPOT_NW,      7,  0,  1, 15,  1, ELRAIL_ELEVATION }  //! Wire for NW depot exit
 };
 
 static const SortableSpriteStruct CatenarySpriteData_Tunnel[] = {
-	{ SPR_WIRE_TUNNEL_NE,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE tunnel exit
-	{ SPR_WIRE_TUNNEL_SE,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }, //! Wire for SE tunnel exit
-	{ SPR_WIRE_TUNNEL_SW,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW tunnel exit
-	{ SPR_WIRE_TUNNEL_NW,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }  //! Wire for NW tunnel exit
+	{ SPR_WIRE_TUNNEL_NE,      0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE tunnel exit
+	{ SPR_WIRE_TUNNEL_SE,      7,  0,  1, 15,  1, ELRAIL_ELEVATION }, //! Wire for SE tunnel exit
+	{ SPR_WIRE_TUNNEL_SW,      0,  7, 15,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW tunnel exit
+	{ SPR_WIRE_TUNNEL_NW,      7,  0,  1, 15,  1, ELRAIL_ELEVATION }  //! Wire for NW tunnel exit
 };
 
 
