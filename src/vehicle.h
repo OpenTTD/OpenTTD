@@ -218,9 +218,12 @@ struct VehicleShip {
 struct Vehicle;
 DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 
+/* Some declarations of functions, so we can make them friendly */
 struct SaveLoad;
-const SaveLoad *GetVehicleDescription(VehicleType vt);
-void AfterLoadVehicles();
+extern const SaveLoad *GetVehicleDescription(VehicleType vt);
+extern void AfterLoadVehicles();
+struct LoadgameState;
+extern bool LoadOldVehicle(LoadgameState *ls, int num);
 
 struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool> {
 	VehicleTypeByte type;    ///< Type of vehicle
@@ -232,7 +235,8 @@ private:
 	Vehicle *first;          // NOSAVE: pointer to the first vehicle in the chain
 public:
 	friend const SaveLoad *GetVehicleDescription(VehicleType vt); // So we can use private/protected variables in the saveload code
-	friend void AfterLoadVehicles();
+	friend void AfterLoadVehicles();                              // So we can set the previous and first pointers while loading
+	friend bool LoadOldVehicle(LoadgameState *ls, int num);       // So we can set the proper next pointer while loading
 
 	Vehicle *depot_list;     // NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
 
