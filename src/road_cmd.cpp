@@ -198,10 +198,12 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (present == ROAD_NONE) {
 					RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
 					if (rts == ROADTYPES_NONE) {
+						/* Includes MarkTileDirtyByTile() */
 						DoClearSquare(tile);
 					} else {
 						SetRoadBits(tile, ROAD_NONE, rt);
 						SetRoadTypes(tile, rts);
+						MarkTileDirtyByTile(tile);
 					}
 				} else {
 					/* When bits are removed, you *always* end up with something that
