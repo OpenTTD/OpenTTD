@@ -92,9 +92,11 @@ void VehicleServiceInDepot(Vehicle *v)
 bool VehicleNeedsService(const Vehicle *v)
 {
 	if (v->vehstatus & (VS_STOPPED | VS_CRASHED))       return false;
-	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return false;
-	if (v->current_order.type == OT_LOADING)            return false;
-	if (v->current_order.type == OT_GOTO_DEPOT && v->current_order.flags & OF_HALT_IN_DEPOT) return false;
+	if (v->current_order.type != OT_GOTO_DEPOT || !(v->current_order.flags & OF_PART_OF_ORDERS)) { // Don't interfere with a depot visit by the order list
+		if (_patches.gotodepot && VehicleHasDepotOrders(v)) return false;
+		if (v->current_order.type == OT_LOADING)            return false;
+		if (v->current_order.type == OT_GOTO_DEPOT && v->current_order.flags & OF_HALT_IN_DEPOT) return false;
+	}
 
 	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0) {
 		return EngineHasReplacementForPlayer(GetPlayer(v->owner), v->engine_type, v->group_id);  /* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off */
