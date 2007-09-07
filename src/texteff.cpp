@@ -259,6 +259,7 @@ void DrawChatMessage()
 /** Text Effects */
 static void MarkTextEffectAreaDirty(TextEffect *te)
 {
+	/* Width and height of the text effect are doubled, so they are correct in both zoom out levels 1x and 2x. */
 	MarkAllViewportsDirty(
 		te->x,
 		te->y - 1,
@@ -320,6 +321,15 @@ void UpdateTextEffect(TextEffectID te_id, StringID msg)
 	te->string_id = msg;
 	te->params_1 = GetDParam(0);
 	te->params_2 = GetDParam(4);
+
+	/* Update width of text effect */
+	char buffer[100];
+	GetString(buffer, msg, lastof(buffer));
+	int w = GetStringBoundingBox(buffer).width;
+
+	/* Only allow to make it broader, so it completely covers the old text. That avoids remnants of the old text. */
+	int right_new = te->x + w;
+	if (te->right < right_new) te->right = right_new;
 
 	MarkTextEffectAreaDirty(te);
 }
