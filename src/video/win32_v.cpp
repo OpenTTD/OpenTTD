@@ -494,6 +494,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			 * WM_KEYDOWN only handles CTRL+ commands and special keys like VK_LEFT, etc. */
 			if (keycode == 0 || (keycode > WKC_PAUSE && GB(keycode, 13, 4) == 0)) return 0;
 
+			/* Keys handled in WM_CHAR */
+			if ((uint)(GB(keycode, 0, 12) - WKC_NUM_DIV) <= WKC_MINUS - WKC_NUM_DIV) return 0;
+
 			HandleKeypress(0 | (keycode << 16));
 			return 0;
 		}

@@ -36,24 +36,6 @@ enum WindowKeyCodes {
 	WKC_RETURN      = 13,
 	WKC_TAB         = 14,
 
-	/* Numerical keyboard */
-	WKC_NUM_0       = 16,
-	WKC_NUM_1       = 17,
-	WKC_NUM_2       = 18,
-	WKC_NUM_3       = 19,
-	WKC_NUM_4       = 20,
-	WKC_NUM_5       = 21,
-	WKC_NUM_6       = 22,
-	WKC_NUM_7       = 23,
-	WKC_NUM_8       = 24,
-	WKC_NUM_9       = 25,
-	WKC_NUM_DIV     = 26,
-	WKC_NUM_MUL     = 27,
-	WKC_NUM_MINUS   = 28,
-	WKC_NUM_PLUS    = 29,
-	WKC_NUM_ENTER   = 30,
-	WKC_NUM_DECIMAL = 31,
-
 	/* Space */
 	WKC_SPACE       = 32,
 
@@ -81,20 +63,35 @@ enum WindowKeyCodes {
 	 * A-Z are mapped to 65-90
 	 * a-z are mapped to 97-122 */
 
-	/* Other keys, corresponding to their ascii values */
-	WKC_SLASH       = 47, ///< / Forward slash
-	WKC_SEMICOLON   = 59, ///< ; Semicolon
-	WKC_EQUALS      = 61, ///< = Equals
-	WKC_L_BRACKET   = 91, ///< [ Left square bracket
-	WKC_BACKSLASH   = 92, ///< \ Backslash
-	WKC_R_BRACKET   = 93, ///< ] Right square bracket
+	/* Numerical keyboard */
+	WKC_NUM_0       = 128,
+	WKC_NUM_1       = 129,
+	WKC_NUM_2       = 130,
+	WKC_NUM_3       = 131,
+	WKC_NUM_4       = 132,
+	WKC_NUM_5       = 133,
+	WKC_NUM_6       = 134,
+	WKC_NUM_7       = 135,
+	WKC_NUM_8       = 136,
+	WKC_NUM_9       = 137,
+	WKC_NUM_DIV     = 138,
+	WKC_NUM_MUL     = 139,
+	WKC_NUM_MINUS   = 140,
+	WKC_NUM_PLUS    = 141,
+	WKC_NUM_ENTER   = 142,
+	WKC_NUM_DECIMAL = 143,
 
-	/* Other keys of which their ascii value is already taken
-	 * - use unused ascii value not present on keyboard directly */
-	WKC_SINGLEQUOTE = 58, ///< ' Single quote
-	WKC_COMMA       = 60, ///< , Comma
-	WKC_PERIOD      = 62, ///< . Period
-	WKC_MINUS       = 95, ///< - Minus
+	/* Other keys */
+	WKC_SLASH       = 144, ///< / Forward slash
+	WKC_SEMICOLON   = 145, ///< ; Semicolon
+	WKC_EQUALS      = 146, ///< = Equals
+	WKC_L_BRACKET   = 147, ///< [ Left square bracket
+	WKC_BACKSLASH   = 148, ///< \ Backslash
+	WKC_R_BRACKET   = 149, ///< ] Right square bracket
+	WKC_SINGLEQUOTE = 150, ///< ' Single quote
+	WKC_COMMA       = 151, ///< , Comma
+	WKC_PERIOD      = 152, ///< . Period
+	WKC_MINUS       = 153, ///< - Minus
 };
 
 enum GameModes {
