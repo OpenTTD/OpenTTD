@@ -1457,7 +1457,7 @@ static void DrawVehicleDetailsWindow(Window *w)
 	SetWindowWidgetDisabledState(w, VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_player);
 
 	if (v->type == VEH_TRAIN) {
-		DisableWindowWidget(w, det_tab + 9);
+		DisableWindowWidget(w, det_tab + VLD_WIDGET_DETAILS_CARGO_CARRIED);
 		SetVScrollCount(w, GetTrainDetailsWndVScroll(v->index, det_tab));
 	}
 
@@ -1600,7 +1600,7 @@ static void VehicleDetailsWndProc(Window *w, WindowEvent *e)
 						e->we.click.widget,
 						WIDGET_LIST_END);
 
-					WP(w, vehicledetails_d).tab = e->we.click.widget - 9;
+					WP(w, vehicledetails_d).tab = e->we.click.widget - VLD_WIDGET_DETAILS_CARGO_CARRIED;
 					SetWindowDirty(w);
 					break;
 			}
@@ -1614,7 +1614,7 @@ static void VehicleDetailsWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_RESIZE:
-			if (e->we.sizing.diff.x != 0) ResizeButtons(w, 9, 12);
+			if (e->we.sizing.diff.x != 0) ResizeButtons(w, VLD_WIDGET_DETAILS_CARGO_CARRIED, VLD_WIDGET_DETAILS_TOTAL_CARGO);
 			if (e->we.sizing.diff.y == 0) break;
 
 			w->vscroll.cap += e->we.sizing.diff.y / 14;
