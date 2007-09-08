@@ -778,6 +778,7 @@ static inline bool TracksOverlap(TrackBits bits)
 	return bits != TRACK_BIT_HORZ && bits != TRACK_BIT_VERT;
 }
 
+void *UpdateTrainPowerProc(Vehicle *v, void *data);
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
 

@@ -95,6 +95,9 @@ void TrainPowerChanged(Vehicle* v)
 	}
 
 	if (v->u.rail.cached_power != total_power || v->u.rail.cached_max_te != max_te) {
+		/* If it has no power (no catenary), stop the train */
+		if (total_power == 0) v->vehstatus |= VS_STOPPED;
+
 		v->u.rail.cached_power = total_power;
 		v->u.rail.cached_max_te = max_te;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);

@@ -34,6 +34,7 @@
 #include "railtypes.h" // include table for railtypes
 #include "newgrf.h"
 #include "yapf/yapf.h"
+#include "newgrf_engine.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "train.h"
@@ -1024,6 +1025,18 @@ CommandCost CmdRemoveSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 typedef CommandCost DoConvertRailProc(TileIndex tile, RailType totype, bool exec);
 
+void *UpdateTrainPowerProc(Vehicle *v, void *data)
+{
+	/* Similiar checks as in TrainPowerChanged() */
+
+	if (v->type == VEH_TRAIN && v->tile == *(TileIndex*)data && !IsArticulatedPart(v)) {
+		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
+		if (GetVehicleProperty(v, 0x0B, rvi->power) != 0) TrainPowerChanged(v->First());
+	}
+
+	return NULL;
+}
+
 /**
  * Switches the rail type.
  * Railtypes are stored on a per-tile basis, not on a per-track basis, so
@@ -1036,15 +1049,6 @@ typedef CommandCost DoConvertRailProc(TileIndex tile, RailType totype, bool exec
  */
 static CommandCost DoConvertRail(TileIndex tile, RailType totype, bool exec)
 {
-	if (!CheckTileOwnership(tile)) return CMD_ERROR;
-
-	if (GetRailType(tile) == totype) return CMD_ERROR;
-
-	if (!EnsureNoVehicleOnGround(tile) && (!IsCompatibleRail(GetRailType(tile), totype) || IsPlainRailTile(tile))) return CMD_ERROR;
-
-	/* 'hidden' elrails can't be downgraded to normal rail when elrails are disabled */
-	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
-
 	/* change type. */
 	if (exec) {
 		SetRailType(tile, totype);
@@ -1057,18 +1061,12 @@ static CommandCost DoConvertRail(TileIndex tile, RailType totype, bool exec)
 		}
 
 		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
-			Vehicle *v;
-
 			/* Update build vehicle window related to this depot */
 			InvalidateWindowData(WC_BUILD_VEHICLE, tile);
-
-			/* update power of trains in this depot */
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == VEH_TRAIN && IsFrontEngine(v) && v->tile == tile && v->u.rail.track == 0x80) {
-					TrainPowerChanged(v);
-				}
-			}
 		}
+
+		/* update power of train engines on this tile */
+		VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
 	}
 
 	return CommandCost(_price.build_rail / 2);
@@ -1111,7 +1109,8 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	for (x = sx; x <= ex; ++x) {
 		for (y = sy; y <= ey; ++y) {
 			TileIndex tile = TileXY(x, y);
-			DoConvertRailProc* proc;
+			DoConvertRailProc *proc;
+			RailType totype = (RailType)p2;
 
 			switch (GetTileType(tile)) {
 				case MP_RAILWAY:      proc = DoConvertRail;             break;
@@ -1121,7 +1120,22 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				default: continue;
 			}
 
-			ret = proc(tile, (RailType)p2, false);
+			/* It is possible that 'type' is invalid when there is no rail on the tile,
+			 * but this situation will be detected in proc()
+			 */
+			RailType type = GetRailType(tile);
+
+			/* Not own tile or track is already converted */
+			if ((!CheckTileOwnership(tile) || type == totype) ||
+				/* 'hidden' elrails can't be downgraded to normal rail when elrails are disabled */
+				(_patches.disable_elrails && totype == RAILTYPE_RAIL && type == RAILTYPE_ELECTRIC) ||
+				/* Vehicle on a tile while not converting Rail <-> ElRail */
+				(!IsCompatibleRail(type, totype) && !EnsureNoVehicleOnGround(tile))) {
+					ret = CMD_ERROR;
+					continue;
+			}
+
+			ret = proc(tile, totype, false);
 			if (CmdFailed(ret)) continue;
 
 			if (flags & DC_EXEC) {
@@ -1130,7 +1144,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					_additional_cash_required = ret.GetCost();
 					return cost;
 				}
-				proc(tile, (RailType)p2, true);
+				proc(tile, totype, true);
 			}
 			cost.AddCost(ret);
 		}

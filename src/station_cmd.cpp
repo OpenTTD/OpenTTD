@@ -1227,22 +1227,14 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
  */
 CommandCost DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 {
-	const Station* st = GetStationByTile(tile);
-
-	if (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile)) return CMD_ERROR;
-
-	// tile is not a railroad station?
+	/* Tile is not a railroad station? */
 	if (!IsRailwayStation(tile)) return CMD_ERROR;
-
-	if (GetRailType(tile) == totype) return CMD_ERROR;
-
-	// 'hidden' elrails can't be downgraded to normal rail when elrails are disabled
-	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
 
 	if (exec) {
 		SetRailType(tile, totype);
 		MarkTileDirtyByTile(tile);
 		YapfNotifyTrackLayoutChange(tile, GetRailStationTrack(tile));
+		VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
 	}
 
 	return CommandCost(_price.build_rail / 2);

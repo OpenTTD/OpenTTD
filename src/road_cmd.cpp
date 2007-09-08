@@ -543,18 +543,11 @@ CommandCost DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 	/* not a railroad crossing? */
 	if (!IsLevelCrossing(tile)) return CMD_ERROR;
 
-	/* not owned by me? */
-	if (!CheckTileOwnership(tile) || !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
-
-	if (GetRailType(tile) == totype) return CMD_ERROR;
-
-	/* 'hidden' elrails can't be downgraded to normal rail when elrails are disabled */
-	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
-
 	if (exec) {
 		SetRailType(tile, totype);
 		MarkTileDirtyByTile(tile);
 		YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetCrossingRailBits(tile)));
+		VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
 	}
 
 	return CommandCost(_price.build_rail / 2);

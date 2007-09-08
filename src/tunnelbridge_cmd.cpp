@@ -749,68 +749,67 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
  */
 CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 {
-	TileIndex endtile;
-
 	if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
 		uint length;
+		TileIndex endtile;
 
-		if (!CheckTileOwnership(tile)) return CMD_ERROR;
-
-		if (GetRailType(tile) == totype) return CMD_ERROR;
-
-		/* 'hidden' elrails can't be downgraded to normal rail when elrails are disabled */
-		if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
-
-		endtile = CheckTunnelBusy(tile, &length);
-		if (endtile == INVALID_TILE) return CMD_ERROR;
+		/* If not coverting rail <-> el. rail, any vehicle cannot be in tunnel */
+		if (!IsCompatibleRail(GetRailType(tile), totype)) {
+			endtile = CheckTunnelBusy(tile, &length);
+			if (endtile == INVALID_TILE) return CMD_ERROR;
+		} else {
+			endtile = GetOtherTunnelEnd(tile);
+			length = DistanceManhattan(tile, endtile);
+		}
 
 		if (exec) {
-			Track track;
 			SetRailType(tile, totype);
 			SetRailType(endtile, totype);
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
 
-			track = AxisToTrack(DiagDirToAxis(GetTunnelDirection(tile)));
+			Track track = AxisToTrack(DiagDirToAxis(GetTunnelDirection(tile)));
+
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
+
+			VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
+			VehicleFromPos(endtile, &endtile, UpdateTrainPowerProc);
 		}
-		return CommandCost((length + 1) * (_price.build_rail / 2));
+
+		return CommandCost((length + 1) * (_price.build_rail >> 1));
 	} else if (IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
-
-		if (!CheckTileOwnership(tile)) return CMD_ERROR;
-
-		endtile = GetOtherBridgeEnd(tile);
+		TileIndex endtile = GetOtherBridgeEnd(tile);
 		byte bridge_height = GetBridgeHeight(tile);
 
-		if (FindVehicleOnTileZ(tile, bridge_height) != NULL ||
+		if (!IsCompatibleRail(GetRailType(tile), totype) &&
+				(FindVehicleOnTileZ(tile, bridge_height) != NULL ||
 				FindVehicleOnTileZ(endtile, bridge_height) != NULL ||
-				IsVehicleOnBridge(tile, endtile, bridge_height)) {
+				IsVehicleOnBridge(tile, endtile, bridge_height))) {
 			return CMD_ERROR;
 		}
 
-		if (GetRailType(tile) == totype) return CMD_ERROR;
-
 		if (exec) {
-			TileIndexDiff delta;
-			Track track;
-
 			SetRailType(tile, totype);
 			SetRailType(endtile, totype);
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
 
-			track = AxisToTrack(DiagDirToAxis(GetBridgeRampDirection(tile)));
+			Track track = AxisToTrack(DiagDirToAxis(GetBridgeRampDirection(tile)));
+			TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
+
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 
-			delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
+			VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
+			VehicleFromPos(endtile, &endtile, UpdateTrainPowerProc);
+
 			for (tile += delta; tile != endtile; tile += delta) {
 				MarkTileDirtyByTile(tile); // TODO encapsulate this into a function
 			}
 		}
 
-		return CommandCost((DistanceManhattan(tile, endtile) + 1) * (_price.build_rail / 2));
+		return CommandCost((DistanceManhattan(tile, endtile) + 1) * (_price.build_rail >> 1));
 	} else {
 		return CMD_ERROR;
 	}
