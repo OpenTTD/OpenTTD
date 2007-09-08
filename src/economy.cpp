@@ -1690,8 +1690,13 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 	}
 
-	/* Calculate the loading indicator fill percent and display */
-	if (_patches.loading_indicators && _game_mode != GM_MENU && v->owner == _local_player) {
+	/* Calculate the loading indicator fill percent and display
+	 * In the Game Menu do not display indicators
+	 * If _patches.loading_indicators == 2, show indicators (bool can be promoted to int as 0 or 1 - results in 2 > 0,1 )
+	 * if _patches.loading_indicators == 1, _local_player must be the owner or must be a spectator to show ind., so 1 > 0
+	 * if _patches.loading_indicators == 0, do not display indicators ... 0 is never greater than anything
+	 */
+	if (_game_mode != GM_MENU && (_patches.loading_indicators > (v->owner != _local_player && _local_player != PLAYER_SPECTATOR))) {
 		StringID percent_up_down = STR_NULL;
 		int percent = CalcPercentVehicleFilled(v, &percent_up_down);
 		if (v->fill_percent_te_id == INVALID_TE_ID) {

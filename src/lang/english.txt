@@ -1112,6 +1112,9 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the advanced vehicle list: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Use loading indicators: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Off
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Own company
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :All companies
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Default rail type (after new game/game load): {ORANGE}{STRING1}
