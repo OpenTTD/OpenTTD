@@ -1229,6 +1229,10 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Масштаб 
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Прокрутка карти
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Відкл.
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Швидкість прокрутки колесом миші: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Емуляція за правим клацом миші: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Відкл.
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Використовувати покращений список транспорту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Використовувати індикатори завантаження: {ORANGE}{STRING}

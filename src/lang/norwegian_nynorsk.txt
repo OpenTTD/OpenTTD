@@ -1104,6 +1104,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kart
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll kart
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :av
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Fart på rullehjul: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Høgreklikk emulering: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando klikk
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontroll klikk
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert køyretøyliste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Bruk lasteindikatorar: {ORANGE}{STRING}
@@ -1263,6 +1269,7 @@ STR_LANDINFO_LOCK                                               :Sluse
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...bøye er i bruk!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinatar: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan ikkje fjerne del av stasjonen...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan ikkje konvertere jernbanetype her...
@@ -1373,18 +1380,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Set pass
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Beskytt spelet ditt med passord så ikkje kven som helst kan verte med på det
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vel eit kart:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kva kart vil du spele?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalt antal tillatne klientar
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Vel maksimalt antal klientar. Alle plassane treng ikkje å verte tekne
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internett
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internett
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internett (annonser)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" s}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalt antal tillatne klientar
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Vel maksimalt antal klientar. Alle plassane treng ikkje å verte tekne
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} firma
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks. antal firma:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrens tenaren til eit visst antal firma
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} tilskodar{P "" ar}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks antal tilskodarar
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrens tenaren til eit visst antal tilskodarar
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk som vert tala på tenaren:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andre spelarar skal vete kva språk ein talar på denne tenaren
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start spel
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start eit nytt nettverksspel frå ein tilfeldig bane, eller eit scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Last spel
@@ -1612,9 +1624,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...felte
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbanespor med normale signal
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbanespor med for-signal
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbanespor med ut-signal
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med kombinasjonssignal
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale- og pre-signal
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Jernbanespor med normale- og exit-spor
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Jernbane med vanlege og kombinasjonssignal
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Jernbanespor med pre- og exit-signal
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Jernbane med pre- og kombinasjonssignal
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Jernbane med utgangs- og kombinasjonssignal
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Må fjerne togstasjon først
 
 
@@ -3339,7 +3355,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Klikk fo
 STR_GROUP_DELETE_TIP                                            :{BLACK}Slett den valde gruppa
 STR_GROUP_RENAME_TIP                                            :{BLACK}Gje den valde gruppa nytt namn
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klikk for å beskytte denne gruppa frå å global automatisk erstatning
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

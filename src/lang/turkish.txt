@@ -1099,6 +1099,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Haritayı yakı
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Haritayı kaydır
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Kapalı
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Tekerlek hızı: {ORANGE}{STRING}
+
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Yeni bir oyun başlatırken zamanı duraklat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gelişmiş araç listesini kullan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Araç yükleme bilgisini göster: {ORANGE}{STRING}
@@ -1111,6 +1113,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :En eskisi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :En yenisi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :En çok kullanılan
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Hiç uygun araç olmasa da inşa araçlarını göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Her oyuncu için en fazla uçak: {ORANGE}{STRING}
@@ -1145,6 +1148,7 @@ STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Sürük
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bu tarihten önce ışık yerine semafor kullan: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Senaryo düzenleyicisinde "yolsuz" şehir seçeneği kullanılamaz
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Şehir yol yerleşimini seç: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :yolsuz
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :varsayılan
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :daha iyi yollar
@@ -1164,6 +1168,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Hızlı
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Çok Hızlı
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Kasabaların şehir olması için gerekli nüfus: {ORANGE}1 in {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Şehir olacak kasabaların oranı: {ORANGE}Hiçbiri
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Birincil şehir büyüklüğü çarpanı: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Arayüz
@@ -1253,6 +1258,7 @@ STR_LANDINFO_LOCK                                               :Kilit
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...samandıra kullanımda!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinatlar: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}İstasyonun parçasi kaldırılamaz...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Ray türü değiştirilemiyor...
@@ -1363,18 +1369,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Parola k
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Erişimi kısıtlamak için oyuna parola koy
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Harita seç:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Hangi haritada oynamak istiyorsun?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}İzin verilen en fazla oyuncu:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}İzin verilen en fazla oyuncu sayısını seç. Her yerin dolması gerekmez
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :İnternet
 STR_NETWORK_LAN_INTERNET                                        :LAN / internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :İnternet (reklam vererek)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} istemci
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}İzin verilen en fazla oyuncu:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}İzin verilen en fazla oyuncu sayısını seç. Her yerin dolması gerekmez
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} şirket
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}En fazla şirket:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Sunucudaki şirket sayısını sınırla
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} seyirci
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}En fazla izleyici:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Sunucudaki izleyici sayısını sınırla
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Konuşulan dil:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Diğer oyuncular sunucuda hangi dilin konuşulacağını bilecek
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Oyunu Başlat
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Rastgele harita ya da senaryoda network oyunu aç
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Oyun Yükle
@@ -1385,22 +1396,28 @@ STR_NETWORK_LANG_ANY                                            :Farketmez
 STR_NETWORK_LANG_ENGLISH                                        :İngilizce
 STR_NETWORK_LANG_GERMAN                                         :Almanca
 STR_NETWORK_LANG_FRENCH                                         :Fransızca
+STR_NETWORK_LANG_BRAZILIAN                                      :Brezilyaca
 STR_NETWORK_LANG_BULGARIAN                                      :Bulgarca
 STR_NETWORK_LANG_CHINESE                                        :Çince
 STR_NETWORK_LANG_CZECH                                          :Çekce
+STR_NETWORK_LANG_DANISH                                         :Danimarkaca
+STR_NETWORK_LANG_DUTCH                                          :Hollandaca
 STR_NETWORK_LANG_FINNISH                                        :Fince
 STR_NETWORK_LANG_HUNGARIAN                                      :Bulgarca
+STR_NETWORK_LANG_ICELANDIC                                      :İzlandaca
 STR_NETWORK_LANG_ITALIAN                                        :İtalyanca
 STR_NETWORK_LANG_JAPANESE                                       :Japonca
 STR_NETWORK_LANG_KOREAN                                         :Korece
 STR_NETWORK_LANG_LITHUANIAN                                     :Litvanyaca
 STR_NETWORK_LANG_NORWEGIAN                                      :Norveççe
+STR_NETWORK_LANG_POLISH                                         :Lehçe
 STR_NETWORK_LANG_PORTUGUESE                                     :Portekizce
 STR_NETWORK_LANG_ROMANIAN                                       :Romanca
 STR_NETWORK_LANG_RUSSIAN                                        :Rusça
 STR_NETWORK_LANG_SLOVAK                                         :Slovakça
 STR_NETWORK_LANG_SLOVENIAN                                      :Slovence
 STR_NETWORK_LANG_SPANISH                                        :İspanyolca
+STR_NETWORK_LANG_SWEDISH                                        :İsveççe
 STR_NETWORK_LANG_TURKISH                                        :Türkçe
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukraynaca
 ############ End of leave-in-this-order
@@ -1595,9 +1612,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...alan 
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Normal sinyalli ray
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ön-sinayalli ray
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Çıkış-sinyalli ray
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Birleşik sinyalli ray
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Normal ve ön sinyalli ray
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Normal ve çıkış sinyalli ray
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Normal ve birleşik sinyalli ray
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ön ve Çıkış sinyalli ray
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ön ve birleşik sinyalli ray
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Çıkış ve birleşik sinyalli ray
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Önce tren istasyonu kaldırılmalı
 
 
@@ -1942,6 +1963,12 @@ STR_4828_REQUIRES                                               :{BLACK}İstenen
 STR_4829_REQUIRES                                               :{BLACK}İstenenler: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}İşlenmeyi bekleyen kargo:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Üretir: {YELLOW}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Üretir: {YELLOW}{STRING}, {STRING}
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Geçen ayki üretim:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} (%{COMMA} tasindi)
@@ -3284,6 +3311,10 @@ STR_GROUP_ALL_TRAINS                                            :Bütün trenler
 STR_GROUP_ALL_ROADS                                             :Bütün arabalar
 STR_GROUP_ALL_SHIPS                                             :Bütün Gemiler
 STR_GROUP_ALL_AIRCRAFTS                                         :Bütün uçaklar
+STR_GROUP_DEFAULT_TRAINS                                        :Gruplanmamış trenler
+STR_GROUP_DEFAULT_ROADS                                         :Gruplanmamış arabalar
+STR_GROUP_DEFAULT_SHIPS                                         :Gruplanmamış gemiler
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Gruplanmamış uçaklar
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Bütün paylaşılan araçlar
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Bütün araçları çıkar
@@ -3308,7 +3339,6 @@ STR_GROUP_DELETE_TIP                                            :{BLACK}Seçili 
 STR_GROUP_RENAME_TIP                                            :{BLACK}Seçili grubun ismini değiştir
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Bu grubu otomatik yenilemeden ayrı tutmak için tıklayın
 
-
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
@@ -3323,3 +3353,4 @@ STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Sonraki 
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Önceki tabelaya git
 
 ########
+

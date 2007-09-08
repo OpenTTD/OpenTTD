@@ -1103,6 +1103,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :地図をズー
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :地図をスクロール
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :切
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}地図のスクロール速度：{ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}右ボタンのエミュレーション：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :コマンド＋クリック
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :コントロール＋クリック
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :切
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}新規ゲームを開始したときに自動的にポーズ：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}詳細の車両リストを使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}積み降ろしを表示：{ORANGE}{STRING}

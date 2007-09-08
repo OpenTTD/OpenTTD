@@ -732,7 +732,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Kas oled
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Maastiku loomine
 STR_022F_TOWN_GENERATION                                        :{BLACK}Linnade loomine
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Tööstuste loomine
-STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Teeehitus
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Tee-ehitus
 STR_0233_TOWN_GENERATION                                        :{WHITE}Linnade loomine
 STR_0234_NEW_TOWN                                               :{BLACK}Uus linn
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Ehita uus linn
@@ -1147,7 +1147,7 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Mootors
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Keri vaadet, kui hiir on viidud ekraani serva: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Luba kohalikule omavalitsusele altkäemaksu maksmine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Luba suvalise kujuga jaamad: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uus teeotsimise algoritm(NPF asendab NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uus trassi otsimise algoritm(NPF asendab NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Raskete rongide simuleerimiseks kasutatav raskuse korrutaja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Luba läbisõidupeatused linnateedel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Luba jaamu lähestikku ehitada: {ORANGE}{STRING}
@@ -1203,6 +1203,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Suurenda kaarti
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Keri kaarti
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Väljas
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaardi kerimisrulliku kiirus: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Paremklõpsu matkimine: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klikk
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+klikk
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Mängu isepeatamine uue mängu alustamisel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Kasuta laiendatud sõidukinimekirja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Kasuta laadimisnäidikuid: {ORANGE}{STRING}
@@ -1767,7 +1773,7 @@ STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vali dep
 STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Vali trammidepoo suund
 STR_1814_ROAD                                                   :Sõidutee
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Valgustatud sõidutee
-STR_1816_TREE_LINED_ROAD                                        :Kolmerajaline tee
+STR_1816_TREE_LINED_ROAD                                        :Puiestee
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Depoo
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Raudteeületuskoht
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Siinset bussijaama ei saa lammutada...

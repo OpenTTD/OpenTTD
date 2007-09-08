@@ -1106,8 +1106,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Désactivé
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Vitesse de défilement avec molette: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulation du clic droit: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Clique-Commande
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique-Contrôle
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Commande-clic
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl-clic
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Désactivé
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatique en début de nouvelle partie: {ORANGE}{STRING}

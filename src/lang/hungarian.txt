@@ -1169,6 +1169,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Térkép nagyí
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Térkép mozgatás
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Ki
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollgomb sebessége a térképen: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Jobb-klikk emuláció: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+klikk
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control+klikk
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Kikapcsolva
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatikus pause-mode új játék esetén: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Továbbfejlesztett járműlista használata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Betöltésjelző használata: {ORANGE}{STRING}

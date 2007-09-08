@@ -1145,6 +1145,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Približaj zeml
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Premikaj zemljevid
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Izklopljeno
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Hitrost premika s kolescem miške: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulacija desnega gumba miške: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ukaz-klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrola-klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Izklop
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Avtomatsko pavziraj ob zagonu nove igre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uporabi napreden seznam vozil: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Uporabi pregledno polnenje: {ORANGE}{STRING}

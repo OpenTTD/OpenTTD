@@ -1167,6 +1167,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zvacšit mapu
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Posúvat mapu
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Vypnuté
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlost posúvania pohladu: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Funkcia pravého tlacidla myši: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Príkaz - klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control - klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Ziadna
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticka pauza pri štarte novej hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použit vylepšený zoznam vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Zobrazovat ukazovatele nakladania a vykladania: {ORANGE}{STRING}

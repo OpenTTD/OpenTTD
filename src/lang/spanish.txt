@@ -1104,6 +1104,12 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom sobre el m
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scroll sobre el mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Nada
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidad del scroll sobre el mapa: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulación del botón derecho: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Tecla Command
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Tecla Control
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivado
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticamente hace pausa cuando empieza un juego nuevo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar la lista avanza de vehículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
