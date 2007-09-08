@@ -1470,8 +1470,8 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 {
 	if (v->owner != _local_player) return;
 
-	/* Do not show getting-old message if autorenew is active */
-	if (GetPlayer(v->owner)->engine_renew) return;
+	/* Do not show getting-old message if autorenew is active (and it can replace the vehicle) */
+	if (GetPlayer(v->owner)->engine_renew && GetEngine(v->engine_type)->player_avail != 0) return;
 
 	SetDParam(0, _vehicle_type_names[v->type]);
 	SetDParam(1, v->unitnumber);
@@ -1480,14 +1480,10 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 
 void AgeVehicle(Vehicle *v)
 {
-	int age;
+	if (v->age < 65535) v->age++;
 
-	if (v->age < 65535)
-		v->age++;
-
-	age = v->age - v->max_age;
-	if (age == 366*0 || age == 366*1 || age == 366*2 || age == 366*3 || age == 366*4)
-		v->reliability_spd_dec <<= 1;
+	int age = v->age - v->max_age;
+	if (age == 366*0 || age == 366*1 || age == 366*2 || age == 366*3 || age == 366*4) v->reliability_spd_dec <<= 1;
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
@@ -1495,7 +1491,7 @@ void AgeVehicle(Vehicle *v)
 		ShowVehicleGettingOld(v, STR_01A0_IS_GETTING_OLD);
 	} else if (age == 0) {
 		ShowVehicleGettingOld(v, STR_01A1_IS_GETTING_VERY_OLD);
-	} else if (age == 366*1 || age == 366*2 || age == 366*3 || age == 366*4 || age == 366*5) {
+	} else if ((age % 366) == 0) {
 		ShowVehicleGettingOld(v, STR_01A2_IS_GETTING_VERY_OLD_AND);
 	}
 }
