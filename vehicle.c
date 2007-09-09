@@ -2098,6 +2098,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 			new_v->profit_this_year = old_v->profit_this_year;
 			new_v->profit_last_year = old_v->profit_last_year;
 			new_v->service_interval = old_v->service_interval;
+			new_v->load_status      = old_v->load_status;
 			new_front = true;
 			new_v->unitnumber = old_v->unitnumber; // use the same unit number
 			new_v->dest_tile  = old_v->dest_tile;

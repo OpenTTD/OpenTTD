@@ -1864,9 +1864,10 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		break;
 	}
 
-		case WE_MESSAGE:
-			HandleZoomMessage(w, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 17, 18);
-			break;
+		case WE_MESSAGE: {
+			Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
+			if (w2 != NULL) HandleZoomMessage(w, w2->viewport, 17, 18);
+		} break;
 	}
 }
 
