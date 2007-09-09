@@ -1353,7 +1353,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_VAR(Patches,right_mouse_btn_emulation,SLE_UINT8,S,MS,0, 0, 2, 0, STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU,   NULL),
 #endif
 	SDT_BOOL(Patches, pause_on_newgame,              S, 0, false,        STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME,     NULL),
-	SDT_BOOL(Patches, advanced_vehicle_list,         S, 0, true,         STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS,     NULL),
+	 SDT_VAR(Patches,advanced_vehicle_list,SLE_UINT8,S,MS, 1,  0,  2, 0, STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS,NULL),
 	SDT_BOOL(Patches, timetable_in_ticks,            S, 0, false,        STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS,    NULL),
 	 SDT_VAR(Patches, loading_indicators, SLE_UINT8, S,MS,  1, 0,  2, 0, STR_CONFIG_PATCHES_LOADING_INDICATORS,    RedrawScreen),
 	 SDT_VAR(Patches, default_rail_type,  SLE_UINT8, S,MS,  4, 0,  6, 0, STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE,     NULL),

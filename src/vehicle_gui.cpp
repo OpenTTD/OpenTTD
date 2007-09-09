@@ -1240,7 +1240,12 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, Vehicle
 
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
 {
-	if (player == _local_player && _patches.advanced_vehicle_list) {
+	/* If _patches.advanced_vehicle_list > 1, display the Advanced list
+	 * if _patches.advanced_vehicle_list == 1, display Advanced list only for local player
+	 * if _ctrl_pressed, do the opposite action (Advanced list x Normal list)
+	 */
+
+	if ((_patches.advanced_vehicle_list > (player != _local_player)) != _ctrl_pressed) {
 		ShowPlayerGroup(player, vehicle_type);
 	} else {
 		ShowVehicleListWindowLocal(player, VLW_STANDARD, vehicle_type, 0);

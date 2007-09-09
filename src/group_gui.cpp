@@ -329,7 +329,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			SetVScroll2Count(w, gv->l.list_length);
 
 			/* Disable all lists management button when the list is empty */
-			SetWindowWidgetsDisabledState(w, gv->l.list_length == 0,
+			SetWindowWidgetsDisabledState(w, gv->l.list_length == 0 || _local_player != owner,
 					GRP_WIDGET_STOP_ALL,
 					GRP_WIDGET_START_ALL,
 					GRP_WIDGET_MANAGE_VEHICLES,
@@ -337,11 +337,23 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					WIDGET_LIST_END);
 
 			/* Disable the group specific function when we select the default group or all vehicles */
-			SetWindowWidgetsDisabledState(w, IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel),
+			SetWindowWidgetsDisabledState(w, IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel) || _local_player != owner,
 					GRP_WIDGET_DELETE_GROUP,
 					GRP_WIDGET_RENAME_GROUP,
 					GRP_WIDGET_REPLACE_PROTECTION,
 					WIDGET_LIST_END);
+
+			/* Disable remaining buttons for non-local player
+			 * Needed while changing _local_player, eg. by cheats
+			 * All procedures (eg. move vehicle to another group)
+			 *  verify, whether you are the owner of the vehicle,
+			 *  so it doesn't have to be disabled
+			 */
+			SetWindowWidgetsDisabledState(w, _local_player != owner,
+					GRP_WIDGET_CREATE_GROUP,
+					GRP_WIDGET_AVAILABLE_VEHICLES,
+					WIDGET_LIST_END);
+
 
 			/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
 			   We list all vehicles or ungrouped vehicles */

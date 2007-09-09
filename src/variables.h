@@ -129,7 +129,7 @@ struct Patches {
 	bool measure_tooltip;               // Show a permanent tooltip when dragging tools
 	byte liveries;                      // Options for displaying company liveries, 0=none, 1=self, 2=all
 	bool prefer_teamchat;               // Choose the chat message target with <ENTER>, true=all players, false=your team
-	bool advanced_vehicle_list;         // Use the "advanced" vehicle list
+	uint8 advanced_vehicle_list;        // Use the "advanced" vehicle list
 	uint8 loading_indicators;           // Show loading indicators
 	uint8 default_rail_type;            ///< The default rail type for the rail GUI
 
