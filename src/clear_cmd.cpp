@@ -47,7 +47,14 @@ struct TerraformerState {
 	int modheight_count;                                         ///< amount of entries in "modheight".
 	int tile_table_count;                                        ///< amount of entries in "tile_table".
 
-	TileIndex tile_table[TERRAFORMER_TILE_TABLE_SIZE];           ///< Dirty tiles, i.e. at least one corner changed.
+	/**
+	 * Dirty tiles, i.e.\ at least one corner changed.
+	 *
+	 * This array contains the tiles which are or will be marked as dirty.
+	 *
+	 * @ingroup dirty
+	 */
+	TileIndex tile_table[TERRAFORMER_TILE_TABLE_SIZE];
 	TerraformerHeightMod modheight[TERRAFORMER_MODHEIGHT_SIZE];  ///< Height modifications.
 };
 
@@ -106,6 +113,7 @@ static void TerraformSetHeightOfTile(TerraformerState *ts, TileIndex tile, int h
  *
  * @param ts TerraformerState.
  * @param tile Tile.
+ * @ingroup dirty
  */
 static void TerraformAddDirtyTile(TerraformerState *ts, TileIndex tile)
 {
@@ -128,6 +136,7 @@ static void TerraformAddDirtyTile(TerraformerState *ts, TileIndex tile)
  *
  * @param ts TerraformerState.
  * @param tile Tile.
+ * @ingroup dirty
  */
 static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
 {

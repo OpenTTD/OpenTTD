@@ -384,6 +384,11 @@ public:
 
 	/**
 	 * Marks the vehicles to be redrawn and updates cached variables
+	 *
+	 * This method marks the area of the vehicle on the screen as dirty.
+	 * It can be use to repaint the vehicle.
+	 *
+	 * @ingroup dirty
 	 */
 	virtual void MarkDirty() {}
 

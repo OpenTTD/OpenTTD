@@ -173,7 +173,19 @@ public:
 	virtual ~Station();
 
 	void AddFacility(byte new_facility_bit, TileIndex facil_xy);
+
+	/**
+	 * Mark the sign of a station dirty for repaint.
+	 *
+	 * @ingroup dirty
+	 */
 	void MarkDirty() const;
+
+	/**
+	 * Marks the tiles of the station as dirty.
+	 *
+	 * @ingroup dirty
+	 */
 	void MarkTilesDirty(bool cargo_change) const;
 	bool TileBelongsToRailStation(TileIndex tile) const;
 	uint GetPlatformLength(TileIndex tile, DiagDirection dir) const;

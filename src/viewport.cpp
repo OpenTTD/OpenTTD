@@ -1440,6 +1440,14 @@ void UpdateViewportPosition(Window *w)
 	}
 }
 
+/**
+ * Marks a viewport as dirty for repaint.
+ *
+ * @param vp The viewport to mark as dirty
+ * @todo documents the missing parameters @c left, @c top, @c right and @c bottom
+ * @todo detailed description missing
+ * @ingroup dirty
+ */
 static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, int bottom)
 {
 	right -= vp->virtual_left;
@@ -1505,6 +1513,14 @@ void MarkTileDirty(int x, int y)
 	);
 }
 
+/**
+ * Marks the selected tiles as dirty.
+ *
+ * This function marks the selected tiles as dirty for repaint
+ *
+ * @note Documentation may be wrong (Progman)
+ * @ingroup dirty
+ */
 static void SetSelectionTilesDirty()
 {
 	int y_size, x_size;

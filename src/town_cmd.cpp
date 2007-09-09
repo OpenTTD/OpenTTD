@@ -256,8 +256,12 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
 }
 
 /**
- * Marks the town sign as needing a repaint
- * @param t Town requesting repaint
+ * Marks the town sign as needing a repaint.
+ *
+ * This function marks the area of the sign of a town as dirty for repaint.
+ *
+ * @param t Town requesting town sign for repaint
+ * @ingroup dirty
  */
 static void MarkTownSignDirty(Town *t)
 {

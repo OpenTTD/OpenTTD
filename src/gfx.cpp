@@ -48,6 +48,14 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
 FontSize _cur_fontsize;
 static FontSize _last_fontsize;
 static uint8 _cursor_backup[64 * 64 * 4];
+
+/**
+ * The rect for repaint.
+ *
+ * This rectangle defines the area which should be repaint by the video driver.
+ *
+ * @ingroup dirty
+ */
 static Rect _invalid_rect;
 static const byte *_color_remap_ptr;
 static byte _string_colorremap[3];
@@ -269,7 +277,8 @@ void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, uin
 	GfxFillRect((xl + xr - w) / 2, y + 10, (xl + xr + w) / 2, y + 10, _string_colorremap[1]);
 }
 
-/** 'Correct' a string to a maximum length. Longer strings will be cut into
+/**
+ * 'Correct' a string to a maximum length. Longer strings will be cut into
  * additional lines at whitespace characters if possible. The string parameter
  * is modified with terminating characters mid-string which are the
  * placeholders for the newlines.
@@ -284,7 +293,8 @@ void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, uin
  * @param maxw the maximum width the string can have on one line
  * @return return a 32bit wide number consisting of 2 packed values:
  *  0 - 15 the number of lines ADDED to the string
- * 16 - 31 the fontsize in which the length calculation was done at */
+ * 16 - 31 the fontsize in which the length calculation was done at
+ */
 uint32 FormatStringLinebreaks(char *str, int maxw)
 {
 	FontSize size = _cur_fontsize;
@@ -919,6 +929,11 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 	_video_driver->MakeDirty(left, top, right - left, bottom - top);
 }
 
+/*!
+ * Repaints the rectangle blocks which are marked as 'dirty'.
+ *
+ * @see SetDirtyBlocks
+ */
 void DrawDirtyBlocks()
 {
 	byte *b = _dirty_blocks;
@@ -1003,7 +1018,21 @@ void DrawDirtyBlocks()
 	}
 }
 
-
+/*!
+ * This function extends the internal _invalid_rect rectangle as it
+ * now contains the rectangle defined by the given parameters. Note
+ * the point (0,0) is top left.
+ *
+ * @param left The left edge of the rectangle
+ * @param top The top edge of the rectangle
+ * @param right The right edge of the rectangle
+ * @param bottom The bottm edge of the rectangle
+ * @see DrawDirtyBlocks
+ *
+ * @todo The name of the function should be called like @c AddDirtyBlock as
+ *       it neither set a dirty rect nor add several dirty rects although
+ *       the function name is in plural. (Progman)
+ */
 void SetDirtyBlocks(int left, int top, int right, int bottom)
 {
 	byte *b;
@@ -1041,6 +1070,11 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 	} while (--height != 0);
 }
 
+/*!
+ * This function mark the whole screen as dirty. This results in repainting
+ * the whole screen. Use this with care as this function will break the
+ * idea about marking only parts of the screen as 'dirty'.
+ */
 void MarkWholeScreenDirty()
 {
 	SetDirtyBlocks(0, 0, _screen.width, _screen.height);

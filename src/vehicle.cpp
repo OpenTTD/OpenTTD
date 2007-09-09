@@ -1491,7 +1491,7 @@ void AgeVehicle(Vehicle *v)
 		ShowVehicleGettingOld(v, STR_01A0_IS_GETTING_OLD);
 	} else if (age == 0) {
 		ShowVehicleGettingOld(v, STR_01A1_IS_GETTING_VERY_OLD);
-	} else if ((age % 366) == 0) {
+	} else if (age > 0 && (age % 366) == 0) {
 		ShowVehicleGettingOld(v, STR_01A2_IS_GETTING_VERY_OLD_AND);
 	}
 }

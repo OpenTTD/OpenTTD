@@ -2,6 +2,36 @@
 
 /** @file gfx.h */
 
+/**
+ * @defgroup dirty Dirty
+ *
+ * Handles the repaint of some part of the screen.
+ *
+ * Some places in the code are called functions which makes something "dirty".
+ * This has nothing to do with making a Tile or Window darker or less visible.
+ * This term comes from memory caching and is used to define an object must
+ * be repaint. If some data of an object (like a Tile, Window, Vehicle, whatever)
+ * are changed which are so extensive the object must be repaint its marked
+ * as "dirty". The video driver repaint this object instead of the whole screen
+ * (this is btw. also possible if needed). This is used to avoid a
+ * flickering of the screen by the video driver constantly repainting it.
+ *
+ * This whole mechanism is controlled by an rectangle defined in #_invalid_rect. This
+ * rectangle defines the area on the screen which must be repaint. If a new object
+ * needs to be repainted this rectangle is extended to 'catch' the object on the
+ * screen. At some point (which is normaly uninteressted for patch writers) this
+ * rectangle is send to the video drivers method
+ * VideoDriver::MakeDirty and it is truncated back to an empty rectangle. At some
+ * later point (which is uninteressted, too) the video driver
+ * repaints all these saved rectangle instead of the whole screen and drop the
+ * rectangle informations. Then a new round begins by marking objects "dirty".
+ *
+ * @see VideoDriver::MakeDirty
+ * @see _invalid_rect
+ * @see _screen
+ */
+
+
 #ifndef GFX_H
 #define GFX_H
 
@@ -244,8 +274,26 @@ uint32 FormatStringLinebreaks(char *str, int maxw);
 void LoadStringWidthTable();
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw);
 uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh = -1);
+
+/**
+ * Let the dirty blocks repainting by the video driver.
+ *
+ * @ingroup dirty
+ */
 void DrawDirtyBlocks();
+
+/**
+ * Set a new dirty block.
+ *
+ * @ingroup dirty
+ */
 void SetDirtyBlocks(int left, int top, int right, int bottom);
+
+/**
+ * Marks the whole screen as dirty.
+ *
+ * @ingroup dirty
+ */
 void MarkWholeScreenDirty();
 
 void GfxInitPalettes();

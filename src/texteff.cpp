@@ -256,7 +256,15 @@ void DrawChatMessage()
 	_chatmessage_dirty = false;
 }
 
-/** Text Effects */
+/* Text Effects */
+/**
+ * Mark the area of the text effect as dirty.
+ *
+ * This function marks the area of a text effect as dirty for repaint.
+ *
+ * @param te The TextEffect to mark the area dirty
+ * @ingroup dirty
+ */
 static void MarkTextEffectAreaDirty(TextEffect *te)
 {
 	/* Width and height of the text effect are doubled, so they are correct in both zoom out levels 1x and 2x. */

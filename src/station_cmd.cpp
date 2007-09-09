@@ -375,7 +375,14 @@ void UpdateAllStationVirtCoord()
 	}
 }
 
-// Update the station virt coords while making the modified parts dirty.
+/**
+ * Update the station virt coords while making the modified parts dirty.
+ *
+ * This function updates the virt coords and mark the modified parts as dirty
+ *
+ * @param st The station to update the virt coords
+ * @ingroup dirty
+ */
 static void UpdateStationVirtCoordDirty(Station *st)
 {
 	st->MarkDirty();

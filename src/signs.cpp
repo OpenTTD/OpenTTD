@@ -60,10 +60,12 @@ void UpdateAllSignVirtCoords()
 }
 
 /**
+ * Marks the region of a sign as dirty.
  *
- * Marks the region of a sign as dirty
+ * This function marks the sign in all viewports as dirty for repaint.
  *
  * @param si Pointer to the Sign
+ * @ingroup dirty
  */
 static void MarkSignDirty(Sign *si)
 {

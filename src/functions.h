@@ -103,7 +103,18 @@ StringID RealAllocateName(const char *name, byte skip, bool check_double);
 void ConvertNameArray();
 
 /* misc functions */
+/**
+ * Mark a tile given by its coordinate dirty for repaint.
+ *
+ * @ingroup dirty
+ */
 void MarkTileDirty(int x, int y);
+
+/**
+ * Mark a tile given by its index dirty for repaint.
+ *
+ * @ingroup dirty
+ */
 void MarkTileDirtyByTile(TileIndex tile);
 void InvalidateWindow(WindowClass cls, WindowNumber number);
 void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index);
@@ -124,6 +135,12 @@ bool ScrollMainWindowTo(int x, int y, bool instant = false);
 void DrawSprite(SpriteID img, SpriteID pal, int x, int y);
 bool EnsureNoVehicle(TileIndex tile);
 bool EnsureNoVehicleOnGround(TileIndex tile);
+
+/**
+ * Mark all viewports dirty for repaint.
+ *
+ * @ingroup dirty
+ */
 void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
 void ShowFeederIncomeAnimation(int x, int y, int z, Money cost);

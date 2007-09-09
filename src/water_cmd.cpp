@@ -183,6 +183,15 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
 	return CommandCost(_price.clear_water * 2);
 }
 
+/**
+ * Marks the tiles around a tile as dirty.
+ *
+ * This functions marks the tiles around a given tile as dirty for repaint.
+ *
+ * @param tile The center of the tile where all other tiles are marked as dirty
+ * @ingroup dirty
+ * @see TerraformAddDirtyTileAround
+ */
 static void MarkTilesAroundDirty(TileIndex tile)
 {
 	MarkTileDirtyByTile(TILE_ADDXY(tile, 0, 1));
