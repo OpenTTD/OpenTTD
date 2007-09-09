@@ -26,7 +26,7 @@ Tile *_m = NULL;          ///< Tiles of the map
 TileExtended *_me = NULL; ///< Extended Tiles of the map
 
 
-/**
+/*!
  * (Re)allocates a map with the given dimension
  * @param size_x the width of the map along the NE/SW edge
  * @param size_y the 'height' of the map along the SE/NW edge
@@ -97,9 +97,9 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 }
 #endif
 
-/**
+/*!
  * Scales the given value by the map size, where the given value is
- * for a 256 by 256 map
+ * for a 256 by 256 map.
  * @param n the value to scale
  * @return the scaled size
  */
@@ -112,7 +112,7 @@ uint ScaleByMapSize(uint n)
 }
 
 
-/**
+/*!
  * Scales the given value by the maps circumference, where the given
  * value is for a 256 by 256 map
  * @param n the value to scale
@@ -128,13 +128,14 @@ uint ScaleByMapSize1D(uint n)
 }
 
 
-/**
+/*!
  * This function checks if we add addx/addy to tile, if we
- *  do wrap around the edges. For example, tile = (10,2) and
- *  addx = +3 and addy = -4. This function will now return
- *  INVALID_TILE, because the y is wrapped. This is needed in
- *  for example, farmland. When the tile is not wrapped,
- *  the result will be tile + TileDiffXY(addx, addy)
+ * do wrap around the edges. For example, tile = (10,2) and
+ * addx = +3 and addy = -4. This function will now return
+ * INVALID_TILE, because the y is wrapped. This is needed in
+ * for example, farmland. When the tile is not wrapped,
+ * the result will be tile + TileDiffXY(addx, addy)
+ *
  * @param tile the 'starting' point of the adding
  * @param addx the amount of tiles in the X direction to add
  * @param addy the amount of tiles in the Y direction to add
@@ -172,7 +173,7 @@ extern const TileIndexDiffC _tileoffs_by_dir[] = {
 	{ 0, -1}  ///< DIR_NW
 };
 
-/**
+/*!
  * Gets the Manhattan distance between the two given tiles.
  * The Manhattan distance is the sum of the delta of both the
  * X and Y component.
@@ -189,7 +190,7 @@ uint DistanceManhattan(TileIndex t0, TileIndex t1)
 }
 
 
-/**
+/*!
  * Gets the 'Square' distance between the two given tiles.
  * The 'Square' distance is the square of the shortest (straight line)
  * distance between the two tiles.
@@ -206,7 +207,7 @@ uint DistanceSquare(TileIndex t0, TileIndex t1)
 }
 
 
-/**
+/*!
  * Gets the biggest distance component (x or y) between the two given tiles.
  * Also known as L-Infinity-Norm.
  * @param t0 the start tile
@@ -221,7 +222,7 @@ uint DistanceMax(TileIndex t0, TileIndex t1)
 }
 
 
-/**
+/*!
  * Gets the biggest distance component (x or y) between the two given tiles
  * plus the Manhattan distance, i.e. two times the biggest distance component
  * and once the smallest component.
@@ -236,7 +237,7 @@ uint DistanceMaxPlusManhattan(TileIndex t0, TileIndex t1)
 	return dx > dy ? 2 * dx + dy : 2 * dy + dx;
 }
 
-/**
+/*!
  * Param the minimum distance to an edge
  * @param tile the tile to get the distance from
  * @return the distance from the edge in tiles
@@ -252,7 +253,7 @@ uint DistanceFromEdge(TileIndex tile)
 	return minl < minh ? minl : minh;
 }
 
-/**
+/*!
  * Function performing a search around a center tile and going outward, thus in circle.
  * Although it really is a square search...
  * Every tile will be tested by means of the callback function proc,
