@@ -110,6 +110,8 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	return cost;
 }
 
+static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
+
 static void DrawTile_Unmovable(TileInfo *ti)
 {
 
@@ -132,6 +134,9 @@ static void DrawTile_Unmovable(TileInfo *ti)
 		}
 
 		case UNMOVABLE_STATUE:
+			/* This should prevent statues from sinking into the ground when on a slope. */
+			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, GetFoundation_Unmovable(ti->tile, ti->tileh));
+
 			DrawGroundSprite(SPR_CONCRETE_GROUND, PAL_NONE);
 
 			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, HASBIT(_transparent_opt, TO_STRUCTURES));

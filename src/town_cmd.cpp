@@ -1928,7 +1928,8 @@ static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
 	PlayerID old;
 	CommandCost r;
 
-	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return false;
+	/* Statues can be build on slopes, just like houses. Only the steep slopes is a no go. */
+	if (IsSteepSlope(GetTileSlope(tile, NULL))) return false;
 
 	if (!IsTileType(tile, MP_HOUSE) &&
 			!IsTileType(tile, MP_CLEAR) &&
