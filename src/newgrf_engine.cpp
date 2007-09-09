@@ -548,7 +548,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 				cargo_classes |= GetCargo(u->cargo_type)->classes;
 				common_cargos[u->cargo_type]++;
-				user_def_data |= RailVehInfo(u->engine_type)->user_def_data;
+				if (v->type == VEH_TRAIN) user_def_data |= RailVehInfo(u->engine_type)->user_def_data;
 				common_subtypes[u->cargo_subtype]++;
 			}
 
@@ -797,15 +797,10 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 	const Vehicle *v = object->u.vehicle.self;
 	uint totalsets;
 	uint set;
-	bool in_motion;
 
 	if (v == NULL) return group->g.real.loading[0];
 
-	if (v->type == VEH_TRAIN) {
-		in_motion = v->First()->current_order.type != OT_LOADING;
-	} else {
-		in_motion = v->current_order.type != OT_LOADING;
-	}
+	bool in_motion = v->First()->current_order.type != OT_LOADING;
 
 	totalsets = in_motion ? group->g.real.num_loaded : group->g.real.num_loading;
 
@@ -1031,7 +1026,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 			 * i.e.), so we give them all the NEW_CARGO triggered
 			 * vehicle's portion of random bits. */
 			assert(first);
-			DoTriggerVehicle((v->type == VEH_TRAIN) ? v->First() : v, VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
+			DoTriggerVehicle(v->First(), VEHICLE_TRIGGER_ANY_NEW_CARGO, new_random_bits, false);
 			break;
 
 		case VEHICLE_TRIGGER_DEPOT:
