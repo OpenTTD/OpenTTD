@@ -12,7 +12,7 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 {
 	const SpriteLoader::CommonPixel *src, *src_line;
 	uint32 *dst, *dst_line;
-	uint8 *anim, *anim_line;
+	uint8 *anim, *anim_line, *anim_end;
 
 	if (_screen.width != this->anim_buf_width || _screen.height != this->anim_buf_height) {
 		/* The size of the screen changed; we can assume we can wipe all data from our buffer */
@@ -21,6 +21,7 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 		this->anim_buf_width = _screen.width;
 		this->anim_buf_height = _screen.height;
 	}
+	anim_end = this->anim_buf + this->anim_buf_width + this->anim_buf_height * this->anim_buf_width;
 
 	/* Find where to start reading in the source sprite */
 	src_line = (const SpriteLoader::CommonPixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
@@ -44,7 +45,7 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 				dst  += skip;
 				/* Make sure the anim-buffer is cleared */
-				memset(anim, 0, skip);
+				if (anim < anim_end) memset(anim, 0, skip);
 				anim += skip;
 				x    += skip - 1;
 				src  += ScaleByZoom(1, zoom) * skip;
@@ -56,11 +57,11 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 					/* In case the m-channel is zero, do not remap this pixel in any way */
 					if (src->m == 0) {
 						*dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
-						*anim = 0;
+						if (anim < anim_end) *anim = 0;
 					} else {
 						if (bp->remap[src->m] != 0) {
 							*dst = ComposeColourPA(this->LookupColourInPalette(bp->remap[src->m]), src->a, *dst);
-							*anim = bp->remap[src->m];
+							if (anim < anim_end) *anim = bp->remap[src->m];
 						}
 					}
 					break;
@@ -72,14 +73,14 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 					/* Make the current color a bit more black, so it looks like this image is transparent */
 					*dst = MakeTransparent(*dst, 192);
-					*anim = bp->remap[*anim];
+					if (anim < anim_end) *anim = bp->remap[*anim];
 					break;
 
 				default:
 					/* Above 217 is palette animation */
 					if (src->m >= 217) *dst = ComposeColourPA(this->LookupColourInPalette(src->m), src->a, *dst);
 					else               *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
-					*anim = src->m;
+					if (anim < anim_end) *anim = src->m;
 					break;
 			}
 			dst++;
