@@ -1373,7 +1373,7 @@ int32 CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	StringID str;
 	Town *t;
 
-	if (!IsValidTownID(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
+	if (!IsValidTownID(p1) || _cmd_text == NULL || _cmd_text[0] == '\0') return CMD_ERROR;
 
 	t = GetTown(p1);
 

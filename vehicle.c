@@ -2633,7 +2633,7 @@ int32 CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	StringID str;
 
-	if (!IsValidVehicleID(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
+	if (!IsValidVehicleID(p1) || _cmd_text == NULL || _cmd_text[0] == '\0') return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
