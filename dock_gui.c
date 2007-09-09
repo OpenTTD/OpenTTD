@@ -36,17 +36,17 @@ void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceDocks_Dock(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_DOCK | CMD_AUTO | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE));
+	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_DOCK | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE));
 }
 
 static void PlaceDocks_Depot(TileIndex tile)
 {
-	DoCommandP(tile, _ship_depot_direction, 0, CcBuildDocks, CMD_BUILD_SHIP_DEPOT | CMD_AUTO | CMD_MSG(STR_3802_CAN_T_BUILD_SHIP_DEPOT));
+	DoCommandP(tile, _ship_depot_direction, 0, CcBuildDocks, CMD_BUILD_SHIP_DEPOT | CMD_MSG(STR_3802_CAN_T_BUILD_SHIP_DEPOT));
 }
 
 static void PlaceDocks_Buoy(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_BUOY | CMD_AUTO | CMD_MSG(STR_9835_CAN_T_POSITION_BUOY_HERE));
+	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_BUOY | CMD_MSG(STR_9835_CAN_T_POSITION_BUOY_HERE));
 }
 
 static void PlaceDocks_DemolishArea(TileIndex tile)
@@ -61,7 +61,7 @@ static void PlaceDocks_BuildCanal(TileIndex tile)
 
 static void PlaceDocks_BuildLock(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_LOCK | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_LOCKS));
+	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_LOCK | CMD_MSG(STR_CANT_BUILD_LOCKS));
 }
 
 
@@ -160,7 +160,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 			if ((e->we.place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
 				GUIPlaceProcDragXY(e);
 			} else if (e->we.place.userdata == VPM_X_OR_Y) {
-				DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+				DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
 			}
 		}
 		break;

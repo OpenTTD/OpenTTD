@@ -35,7 +35,7 @@ static void BuildBridge(Window *w, int i)
 	DeleteWindow(w);
 	DoCommandP(_bridgedata.end_tile, _bridgedata.start_tile,
 		_bridgedata.indexes[i] | (_bridgedata.type << 8), CcBuildBridge,
-		CMD_BUILD_BRIDGE | CMD_AUTO | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
+		CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
 }
 
 static void BuildBridgeWndProc(Window *w, WindowEvent *e)

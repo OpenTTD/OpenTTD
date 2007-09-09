@@ -66,7 +66,7 @@ void CcBuildRoadTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRoad_Tunnel(TileIndex tile)
 {
-	DoCommandP(tile, 0x200, 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_AUTO | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
+	DoCommandP(tile, 0x200, 0, CcBuildRoadTunnel, CMD_BUILD_TUNNEL | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
 }
 
 static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
@@ -89,17 +89,17 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRoad_Depot(TileIndex tile)
 {
-	DoCommandP(tile, _road_depot_orientation, 0, CcRoadDepot, CMD_BUILD_ROAD_DEPOT | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1807_CAN_T_BUILD_ROAD_VEHICLE));
+	DoCommandP(tile, _road_depot_orientation, 0, CcRoadDepot, CMD_BUILD_ROAD_DEPOT | CMD_NO_WATER | CMD_MSG(STR_1807_CAN_T_BUILD_ROAD_VEHICLE));
 }
 
 static void PlaceRoad_BusStation(TileIndex tile)
 {
-	DoCommandP(tile, _road_station_picker_orientation, RS_BUS, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
+	DoCommandP(tile, _road_station_picker_orientation, RS_BUS, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(STR_1808_CAN_T_BUILD_BUS_STATION));
 }
 
 static void PlaceRoad_TruckStation(TileIndex tile)
 {
-	DoCommandP(tile, _road_station_picker_orientation, RS_TRUCK, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
+	DoCommandP(tile, _road_station_picker_orientation, RS_TRUCK, CcRoadDepot, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(STR_1809_CAN_T_BUILD_TRUCK_STATION));
 }
 
 static void PlaceRoad_DemolishArea(TileIndex tile)
@@ -283,8 +283,8 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 			} else if (e->we.place.userdata != 4) {
 				DoCommandP(end_tile, start_tile, _place_road_flag, CcPlaySound1D,
 					_remove_button_clicked ?
-					CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1805_CAN_T_REMOVE_ROAD_FROM) :
-					CMD_BUILD_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1804_CAN_T_BUILD_ROAD_HERE));
+					CMD_REMOVE_LONG_ROAD | CMD_NO_WATER | CMD_MSG(STR_1805_CAN_T_REMOVE_ROAD_FROM) :
+					CMD_BUILD_LONG_ROAD | CMD_NO_WATER | CMD_MSG(STR_1804_CAN_T_BUILD_ROAD_HERE));
 			} else {
 				DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 			}

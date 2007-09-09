@@ -101,7 +101,7 @@ bool GUIPlaceProcDragXY(const WindowEvent *e)
 		DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 		break;
 	case GUI_PlaceProc_LevelArea >> 4:
-		DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND | CMD_AUTO);
+		DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND);
 		break;
 	case GUI_PlaceProc_RockyArea >> 4:
 		GenerateRockyArea(end_tile, start_tile);
@@ -110,7 +110,7 @@ bool GUIPlaceProcDragXY(const WindowEvent *e)
 		GenerateDesertArea(end_tile, start_tile);
 		break;
 	case GUI_PlaceProc_WaterArea >> 4:
-		DoCommandP(end_tile, start_tile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+		DoCommandP(end_tile, start_tile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
 		break;
 	default: return false;
 	}
@@ -139,7 +139,7 @@ static void PlaceProc_RaiseLand(TileIndex tile)
 {
 	DoCommandP(
 		tile, SLOPE_N, 1, CcTerraform,
-		CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE)
+		CMD_TERRAFORM_LAND | CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE)
 	);
 }
 
@@ -147,7 +147,7 @@ static void PlaceProc_LowerLand(TileIndex tile)
 {
 	DoCommandP(
 		tile, SLOPE_N, 0, CcTerraform,
-		CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE)
+		CMD_TERRAFORM_LAND | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE)
 	);
 }
 
