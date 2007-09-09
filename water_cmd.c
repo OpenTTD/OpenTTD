@@ -61,10 +61,7 @@ int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 > 1) return CMD_ERROR;
 
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
-
 	tile2 = tile + (p1 ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
-	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
 
 	if (!IsClearWaterTile(tile) || !IsClearWaterTile(tile2))
 		return_cmd_error(STR_3801_MUST_BE_BUILT_ON_WATER);
@@ -294,14 +291,14 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 		case WATER_CLEAR:
 			if (flags & DC_NO_WATER) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
-			// Make sure no vehicle is on the tile
-			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
-
 			// Make sure it's not an edge tile.
 			if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
 					!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
 				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 			}
+
+			/* Make sure no vehicle is on the tile */
+			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE && !CheckTileOwnership(tile)) return CMD_ERROR;
 
@@ -313,12 +310,6 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 
 			// Make sure no vehicle is on the tile
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
-
-			// Make sure it's not an edge tile.
-			if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
-					!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
-				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
-			}
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			if (slope == SLOPE_N || slope == SLOPE_E || slope == SLOPE_S || slope == SLOPE_W) {

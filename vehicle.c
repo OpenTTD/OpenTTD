@@ -1740,7 +1740,7 @@ int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	byte vehicle_type = GB(p1, 0, 8);
 
 
-	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
+	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);

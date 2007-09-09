@@ -217,10 +217,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 			// Skip the total
 			if (i == SCORE_TOTAL) continue;
 			// Check the score
-			s = (_score_part[owner][i] >= _score_info[i].needed) ?
-				_score_info[i].score :
-				_score_part[owner][i] * _score_info[i].score / _score_info[i].needed;
-			if (s < 0) s = 0;
+			s = clamp(_score_part[owner][i], 0, _score_info[i].needed) * _score_info[i].score / _score_info[i].needed;
 			score += s;
 			total_score += _score_info[i].score;
 		}
@@ -648,6 +645,8 @@ static void AddInflation(void)
 {
 	int i;
 	int32 inf = _economy.infl_amount * 54;
+
+	if ((_cur_year - _patches.starting_year) >= (ORIGINAL_MAX_YEAR - ORIGINAL_BASE_YEAR)) return;
 
 	for (i = 0; i != NUM_PRICES; i++) {
 		AddSingleInflation((int32*)&_price + i, _price_frac + i, inf);
@@ -1633,11 +1632,16 @@ int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Player *p;
 	int64 cost;
 
-	/* Check if buying shares is allowed (protection against modified clients */
-	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
+	/* Check if buying shares is allowed (protection against modified clients) */
+	/* Cannot buy own shares */
+	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+
+	p = GetPlayer((PlayerID)p1);
+
+	/* Cannot buy shares of non-existent nor bankrupted company */
+	if (!p->is_active) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = GetPlayer(p1);
 
 	/* Protect new companies from hostile takeovers */
 	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
@@ -1678,11 +1682,16 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Player *p;
 	int64 cost;
 
-	/* Check if buying shares is allowed (protection against modified clients */
-	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
+	/* Check if selling shares is allowed (protection against modified clients) */
+	/* Cannot sell own shares */
+	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+
+	p = GetPlayer((PlayerID)p1);
+
+	/* Cannot sell shares of non-existent nor bankrupted company */
+	if (!p->is_active) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	p = GetPlayer(p1);
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, _current_player) == 0) return 0;

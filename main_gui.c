@@ -88,7 +88,7 @@ void HandleOnEditText(WindowEvent *e)
 #ifdef ENABLE_NETWORK
 	case 3: { /* Give money, you can only give money in excess of loan */
 		const Player *p = GetPlayer(_current_player);
-		int32 money = min(p->money64 - p->current_loan, atoi(e->we.edittext.str) / _currency->rate);
+		int32 money = min(p->money64 - p->current_loan, (int64)(atoi(e->we.edittext.str) / _currency->rate));
 
 		money = clamp(money, 0, 20000000); // Clamp between 20 million and 0
 

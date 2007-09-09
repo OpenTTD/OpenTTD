@@ -10,6 +10,7 @@
 #include "oldpool.h"
 #include "tile.h"
 #include "variables.h"
+#include "station_map.h"
 
 struct Depot {
 	TileIndex xy;
@@ -82,6 +83,21 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 	}
 }
 
+/**
+ * Is the given tile a tile with a depot on it?
+ * @param tile the tile to check
+ * @return true if and only if there is a depot on the tile.
+ */
+static inline bool IsDepotTile(TileIndex tile)
+{
+	switch (GetTileType(tile)) {
+		case MP_STREET:  return (_m[tile].m5 & 0xF0) == 0x20;
+		case MP_WATER:   return (_m[tile].m5 &   ~3) == 0x80;
+		case MP_RAILWAY: return (_m[tile].m5 & 0xFC) == 0xC0;
+		case MP_STATION: return IsHangar(tile);
+		default:         return false;
+	}
+}
 
 /**
  * Find out if the slope of the tile is suitable to build a depot of given direction

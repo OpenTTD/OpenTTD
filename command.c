@@ -537,7 +537,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	SubtractMoneyFromPlayer(res2);
 
 	if (IsLocalPlayer() && _game_mode != GM_EDITOR) {
-		if (res2 != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2);
+		if (res2 != 0 && tile != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2);
 		if (_additional_cash_required) {
 			SetDParam(0, _additional_cash_required);
 			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x,y);
