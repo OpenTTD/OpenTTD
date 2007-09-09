@@ -474,7 +474,7 @@ static void HandleCloneVehClick(const Vehicle *v, const Window *w)
 
 	if (v == NULL) return;
 
-	if (v->HasFront() && !v->IsPrimaryVehicle()) {
+	if (!v->IsPrimaryVehicle()) {
 		v = v->First();
 		/* Do nothing when clicking on a train in depot with no loc attached */
 		if (v->type == VEH_TRAIN && !IsFrontEngine(v)) return;

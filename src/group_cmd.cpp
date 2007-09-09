@@ -354,7 +354,7 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1
  */
 void RemoveVehicleFromGroup(const Vehicle *v)
 {
-	if (!v->IsValid() || !(v->HasFront() && v->IsPrimaryVehicle())) return;
+	if (!v->IsValid() || !v->IsPrimaryVehicle()) return;
 
 	if (!IsDefaultGroupID(v->group_id)) DecreaseGroupNumVehicle(v->group_id);
 }

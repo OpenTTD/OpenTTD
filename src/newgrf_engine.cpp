@@ -509,8 +509,6 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	switch (variable) {
 		case 0x40: // Get length of consist
 		case 0x41: // Get length of same consecutive wagons
-			if (!v->HasFront()) return 1;
-
 			{
 				const Vehicle* u;
 				byte chain_before = 0;
@@ -832,7 +830,7 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 	res->ResolveReal   = &VehicleResolveReal;
 
 	res->u.vehicle.self   = v;
-	res->u.vehicle.parent = (v != NULL && v->HasFront()) ? v->First() : v;
+	res->u.vehicle.parent = (v != NULL) ? v->First() : v;
 
 	res->u.vehicle.self_type = engine_type;
 

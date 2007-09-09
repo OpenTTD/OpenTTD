@@ -421,12 +421,6 @@ public:
 	virtual bool IsPrimaryVehicle() const { return false; }
 
 	/**
-	 * Whether this vehicle understands the concept of a front engine, so
-	 * basically, if GetFirstVehicleInChain() can be called for it.
-	 */
-	virtual bool HasFront() const { return false; }
-
-	/**
 	 * Gets the sprite to show for the given direction
 	 * @param direction the direction the vehicle is facing
 	 * @return the sprite for the given vehicle in the given direction
