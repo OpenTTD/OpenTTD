@@ -38,11 +38,24 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 		anim_line += this->anim_buf_width;
 
 		for (int x = 0; x < bp->width; x++) {
+			if (src->a == 0) {
+				/* src->r is 'misused' here to indicate how much more pixels are following with an alpha of 0 */
+				int skip = UnScaleByZoom(src->r, zoom);
+
+				dst  += skip;
+				/* Make sure the anim-buffer is cleared */
+				memset(anim, 0, skip);
+				anim += skip;
+				x    += skip - 1;
+				src  += ScaleByZoom(1, zoom) * skip;
+				continue;
+			}
+
 			switch (mode) {
 				case BM_COLOUR_REMAP:
 					/* In case the m-channel is zero, do not remap this pixel in any way */
 					if (src->m == 0) {
-						if (src->a != 0) *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
+						*dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
 						*anim = 0;
 					} else {
 						if (bp->remap[src->m] != 0) {
@@ -58,19 +71,15 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 					 *  we produce a result the newgrf maker didn't expect ;) */
 
 					/* Make the current color a bit more black, so it looks like this image is transparent */
-					if (src->a != 0) {
-						*dst = MakeTransparent(*dst, 192);
-						*anim = bp->remap[*anim];
-					}
+					*dst = MakeTransparent(*dst, 192);
+					*anim = bp->remap[*anim];
 					break;
 
 				default:
-					if (src->a != 0) {
-						/* Above 217 is palette animation */
-						if (src->m >= 217) *dst = ComposeColourPA(this->LookupColourInPalette(src->m), src->a, *dst);
-						else               *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
-						*anim = src->m;
-					}
+					/* Above 217 is palette animation */
+					if (src->m >= 217) *dst = ComposeColourPA(this->LookupColourInPalette(src->m), src->a, *dst);
+					else               *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
+					*anim = src->m;
 					break;
 			}
 			dst++;

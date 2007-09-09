@@ -5,10 +5,10 @@
 #ifndef BLITTER_32BPP_ANIM_HPP
 #define BLITTER_32BPP_ANIM_HPP
 
-#include "32bpp_simple.hpp"
+#include "32bpp_optimized.hpp"
 #include "factory.hpp"
 
-class Blitter_32bppAnim : public Blitter_32bppSimple {
+class Blitter_32bppAnim : public Blitter_32bppOptimized {
 private:
 	uint8 *anim_buf; ///< In this buffer we keep track of the 8bpp indexes so we can do palette animation
 	int anim_buf_width;

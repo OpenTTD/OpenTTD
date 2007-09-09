@@ -992,6 +992,12 @@
 				RelativePath=".\..\src\blitter\32bpp_base.hpp">
 			</File>
 			<File
+				RelativePath=".\..\src\blitter\32bpp_optimized.hpp">
+			</File>
+			<File
+				RelativePath=".\..\src\blitter\32bpp_optimized.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\blitter\32bpp_simple.cpp">
 			</File>
 			<File
