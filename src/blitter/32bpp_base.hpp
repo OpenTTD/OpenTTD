@@ -48,15 +48,19 @@ public:
 	 */
 	static inline uint ComposeColourRGBA(uint r, uint g, uint b, uint a, uint current)
 	{
+		if (a == 0) return current;
+		if (a >= 255) return ComposeColour(0xFF, r, g, b);
+
 		uint cr, cg, cb;
 		cr = GB(current, 16, 8);
 		cg = GB(current, 8,  8);
 		cb = GB(current, 0,  8);
 
+		/* The 256 is wrong, it should be 255, but 256 is much faster... */
 		return ComposeColour(0xFF,
-												(r * a + cr * (255 - a)) / 255,
-												(g * a + cg * (255 - a)) / 255,
-												(b * a + cb * (255 - a)) / 255);
+												(r * a + cr * (256 - a)) / 256,
+												(g * a + cg * (256 - a)) / 256,
+												(b * a + cb * (256 - a)) / 256);
 	}
 
 	/**
@@ -64,24 +68,28 @@ public:
 	*/
 	static inline uint ComposeColourPA(uint colour, uint a, uint current)
 	{
+		if (a == 0) return current;
+		if (a >= 255) return (colour | 0xFF000000);
+
 		uint r, g, b, cr, cg, cb;
-		r  = GB(colour,   16, 8);
-		g  = GB(colour,   8,  8);
-		b  = GB(colour,   0,  8);
+		r  = GB(colour,  16, 8);
+		g  = GB(colour,  8,  8);
+		b  = GB(colour,  0,  8);
 		cr = GB(current, 16, 8);
 		cg = GB(current, 8,  8);
 		cb = GB(current, 0,  8);
 
+		/* The 256 is wrong, it should be 255, but 256 is much faster... */
 		return ComposeColour(0xFF,
-												(r * a + cr * (255 - a)) / 255,
-												(g * a + cg * (255 - a)) / 255,
-												(b * a + cb * (255 - a)) / 255);
+												(r * a + cr * (256 - a)) / 256,
+												(g * a + cg * (256 - a)) / 256,
+												(b * a + cb * (256 - a)) / 256);
 	}
 
 	/**
 	* Make a pixel looks like it is transparent.
 	* @param colour the colour already on the screen.
-	* @param amount the amount of transparency, times 100.
+	* @param amount the amount of transparency, times 256.
 	* @return the new colour for the screen.
 	*/
 	static inline uint MakeTransparent(uint colour, uint amount)
@@ -91,7 +99,7 @@ public:
 		g = GB(colour, 8,  8);
 		b = GB(colour, 0,  8);
 
-		return ComposeColour(0xFF, r * amount / 100, g * amount / 100, b * amount / 100);
+		return ComposeColour(0xFF, r * amount / 256, g * amount / 256, b * amount / 256);
 	}
 
 	/**

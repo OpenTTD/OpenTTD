@@ -40,7 +40,7 @@ void Blitter_32bppSimple::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Zoo
 					 *  we produce a result the newgrf maker didn't expect ;) */
 
 					/* Make the current color a bit more black, so it looks like this image is transparent */
-					if (src->a != 0) *dst = MakeTransparent(*dst, 75);
+					if (src->a != 0) *dst = MakeTransparent(*dst, 192);
 					break;
 
 				default:
@@ -60,7 +60,7 @@ void Blitter_32bppSimple::DrawColorMappingRect(void *dst, int width, int height,
 	if (pal == PALETTE_TO_TRANSPARENT) {
 		do {
 			for (int i = 0; i != width; i++) {
-				*udst = MakeTransparent(*udst, 60);
+				*udst = MakeTransparent(*udst, 154);
 				udst++;
 			}
 			udst = udst - width + _screen.pitch;

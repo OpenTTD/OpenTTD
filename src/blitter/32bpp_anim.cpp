@@ -59,7 +59,7 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 					/* Make the current color a bit more black, so it looks like this image is transparent */
 					if (src->a != 0) {
-						*dst = MakeTransparent(*dst, 75);
+						*dst = MakeTransparent(*dst, 192);
 						*anim = bp->remap[*anim];
 					}
 					break;
@@ -90,7 +90,7 @@ void Blitter_32bppAnim::DrawColorMappingRect(void *dst, int width, int height, i
 	if (pal == PALETTE_TO_TRANSPARENT) {
 		do {
 			for (int i = 0; i != width; i++) {
-				*udst = MakeTransparent(*udst, 60);
+				*udst = MakeTransparent(*udst, 154);
 				*anim = 0;
 				udst++;
 				anim++;
