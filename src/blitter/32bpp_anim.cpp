@@ -21,7 +21,7 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 		this->anim_buf_width = _screen.width;
 		this->anim_buf_height = _screen.height;
 	}
-	anim_end = this->anim_buf + this->anim_buf_width + this->anim_buf_height * this->anim_buf_width;
+	anim_end = this->anim_buf + this->anim_buf_height * this->anim_buf_width - 1;
 
 	/* Find where to start reading in the source sprite */
 	src_line = (const SpriteLoader::CommonPixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
@@ -37,6 +37,9 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 		anim = anim_line;
 		anim_line += this->anim_buf_width;
+		/* Don't allow values of 'anim' greater than 'anim_end' to avoid buffer overflows.
+		 *  This only happens when we are doing a big-screenshot, so it should be relative safe */
+		if (anim >= anim_end || anim < this->anim_buf) anim = anim_end;
 
 		for (int x = 0; x < bp->width; x++) {
 			if (src->a == 0) {
@@ -45,8 +48,10 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 				dst  += skip;
 				/* Make sure the anim-buffer is cleared */
-				if (anim < anim_end) memset(anim, 0, skip);
-				anim += skip;
+				if (anim < anim_end - skip) {
+					memset(anim, 0, skip);
+					anim += skip;
+				}
 				x    += skip - 1;
 				src  += ScaleByZoom(1, zoom) * skip;
 				continue;
@@ -57,11 +62,11 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 					/* In case the m-channel is zero, do not remap this pixel in any way */
 					if (src->m == 0) {
 						*dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
-						if (anim < anim_end) *anim = 0;
+						*anim = 0;
 					} else {
 						if (bp->remap[src->m] != 0) {
 							*dst = ComposeColourPA(this->LookupColourInPalette(bp->remap[src->m]), src->a, *dst);
-							if (anim < anim_end) *anim = bp->remap[src->m];
+							*anim = bp->remap[src->m];
 						}
 					}
 					break;
@@ -73,18 +78,20 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 					/* Make the current color a bit more black, so it looks like this image is transparent */
 					*dst = MakeTransparent(*dst, 192);
-					if (anim < anim_end) *anim = bp->remap[*anim];
+					*anim = bp->remap[*anim];
 					break;
 
 				default:
 					/* Above 217 is palette animation */
 					if (src->m >= 217) *dst = ComposeColourPA(this->LookupColourInPalette(src->m), src->a, *dst);
 					else               *dst = ComposeColourRGBA(src->r, src->g, src->b, src->a, *dst);
-					if (anim < anim_end) *anim = src->m;
+					*anim = src->m;
 					break;
 			}
 			dst++;
-			anim++;
+			/* Don't increase the anim buffer anymore if we tend to run out of the buffer...
+			 *  This only happens when we are doing a big-screenshot, so it should be relative safe */
+			if (anim < anim_end) anim++;
 			src += ScaleByZoom(1, zoom);
 		}
 	}
