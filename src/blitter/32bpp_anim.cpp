@@ -49,8 +49,6 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 				int skip = UnScaleByZoom(src->r, zoom);
 
 				dst  += skip;
-				/* Make sure the anim-buffer is cleared */
-				memset(anim, 0, skip);
 				anim += skip;
 				x    += skip - 1;
 				src  += ScaleByZoom(1, zoom) * skip;
