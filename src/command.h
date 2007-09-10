@@ -16,27 +16,27 @@
  * @see _command_proc_table
  */
 enum {
-	CMD_BUILD_RAILROAD_TRACK         =   0,	///< build a rail track
-	CMD_REMOVE_RAILROAD_TRACK        =   1,	///< remove a rail track
-	CMD_BUILD_SINGLE_RAIL            =   2,	///< build a single rail track
-	CMD_REMOVE_SINGLE_RAIL           =   3,	///< remove a single rail track
-	CMD_LANDSCAPE_CLEAR              =   4,	///< demolish a tile
-	CMD_BUILD_BRIDGE                 =   5,	///< build a bridge
-	CMD_BUILD_RAILROAD_STATION       =   6,	///< build a railroad station
-	CMD_BUILD_TRAIN_DEPOT            =   7,	///< build a train depot
-	CMD_BUILD_SIGNALS                =   8,	///< build a signal
-	CMD_REMOVE_SIGNALS               =   9,	///< remove a signal
-	CMD_TERRAFORM_LAND               =  10,	///< terraform a tile
-	CMD_PURCHASE_LAND_AREA           =  11,	///< purchase a tile
-	CMD_SELL_LAND_AREA               =  12,	///< sell a bought tile before
-	CMD_BUILD_TUNNEL                 =  13,	///< build a tunnel
+	CMD_BUILD_RAILROAD_TRACK         =   0, ///< build a rail track
+	CMD_REMOVE_RAILROAD_TRACK        =   1, ///< remove a rail track
+	CMD_BUILD_SINGLE_RAIL            =   2, ///< build a single rail track
+	CMD_REMOVE_SINGLE_RAIL           =   3, ///< remove a single rail track
+	CMD_LANDSCAPE_CLEAR              =   4, ///< demolish a tile
+	CMD_BUILD_BRIDGE                 =   5, ///< build a bridge
+	CMD_BUILD_RAILROAD_STATION       =   6, ///< build a railroad station
+	CMD_BUILD_TRAIN_DEPOT            =   7, ///< build a train depot
+	CMD_BUILD_SIGNALS                =   8, ///< build a signal
+	CMD_REMOVE_SIGNALS               =   9, ///< remove a signal
+	CMD_TERRAFORM_LAND               =  10, ///< terraform a tile
+	CMD_PURCHASE_LAND_AREA           =  11, ///< purchase a tile
+	CMD_SELL_LAND_AREA               =  12, ///< sell a bought tile before
+	CMD_BUILD_TUNNEL                 =  13, ///< build a tunnel
 
-	CMD_REMOVE_FROM_RAILROAD_STATION =  14,	///< remove a tile station
-	CMD_CONVERT_RAIL                 =  15,	///< convert a rail type
+	CMD_REMOVE_FROM_RAILROAD_STATION =  14, ///< remove a tile station
+	CMD_CONVERT_RAIL                 =  15, ///< convert a rail type
 
-	CMD_BUILD_TRAIN_WAYPOINT         =  16,	///< build a waypoint
+	CMD_BUILD_TRAIN_WAYPOINT         =  16, ///< build a waypoint
 	CMD_RENAME_WAYPOINT              =  17, ///< rename a waypoint
-	CMD_REMOVE_TRAIN_WAYPOINT        =  18,	///< remove a waypoint
+	CMD_REMOVE_TRAIN_WAYPOINT        =  18, ///< remove a waypoint
 
 	CMD_BUILD_ROAD_STOP              =  21, ///< build a road stop
 	CMD_REMOVE_ROAD_STOP             =  22, ///< remove a road stop
@@ -46,11 +46,11 @@ enum {
 	CMD_REMOVE_ROAD                  =  26, ///< remove a "half" road
 	CMD_BUILD_ROAD_DEPOT             =  27, ///< build a road depot
 
-	CMD_BUILD_AIRPORT                =  29,	///< build an airport
+	CMD_BUILD_AIRPORT                =  29, ///< build an airport
 
-	CMD_BUILD_DOCK                   =  30,	///< build a dock
+	CMD_BUILD_DOCK                   =  30, ///< build a dock
 
-	CMD_BUILD_SHIP_DEPOT             =  31,	///< build a ship depot
+	CMD_BUILD_SHIP_DEPOT             =  31, ///< build a ship depot
 	CMD_BUILD_BUOY                   =  32, ///< build a buoy
 
 	CMD_PLANT_TREE                   =  33, ///< plant a tree
@@ -69,103 +69,103 @@ enum {
 	CMD_MODIFY_ORDER                 =  42, ///< modify an order (like set full-load)
 	CMD_SKIP_TO_ORDER                =  43, ///< skip an order to the next of specific one
 	CMD_DELETE_ORDER                 =  44, ///< delete an order
-	CMD_INSERT_ORDER                 =  45,	///< insert a new order
+	CMD_INSERT_ORDER                 =  45, ///< insert a new order
 
-	CMD_CHANGE_SERVICE_INT           =  46,	///< change the server interval of a vehicle
+	CMD_CHANGE_SERVICE_INT           =  46, ///< change the server interval of a vehicle
 
 	CMD_BUILD_INDUSTRY               =  47, ///< build a new industry
 
-	CMD_BUILD_COMPANY_HQ             =  48,	///< build the company headquarter
-	CMD_SET_PLAYER_FACE              =  49,	///< set the face of the player/company
-	CMD_SET_PLAYER_COLOR             =  50,	///< set the color of the player/company
+	CMD_BUILD_COMPANY_HQ             =  48, ///< build the company headquarter
+	CMD_SET_PLAYER_FACE              =  49, ///< set the face of the player/company
+	CMD_SET_PLAYER_COLOR             =  50, ///< set the color of the player/company
 
-	CMD_INCREASE_LOAN                =  51,	///< increase the loan from the bank
-	CMD_DECREASE_LOAN                =  52,	///< decrease the loan from the bank
+	CMD_INCREASE_LOAN                =  51, ///< increase the loan from the bank
+	CMD_DECREASE_LOAN                =  52, ///< decrease the loan from the bank
 
-	CMD_WANT_ENGINE_PREVIEW          =  53,	///< confirm the preview of an engine
+	CMD_WANT_ENGINE_PREVIEW          =  53, ///< confirm the preview of an engine
 
-	CMD_NAME_VEHICLE                 =  54,	///< rename a whole vehicle
-	CMD_RENAME_ENGINE                =  55,	///< rename a engine (in the engine list)
-	CMD_CHANGE_COMPANY_NAME          =  56,	///< change the company name
-	CMD_CHANGE_PRESIDENT_NAME        =  57,	///< change the president name
-	CMD_RENAME_STATION               =  58,	///< rename a station
+	CMD_NAME_VEHICLE                 =  54, ///< rename a whole vehicle
+	CMD_RENAME_ENGINE                =  55, ///< rename a engine (in the engine list)
+	CMD_CHANGE_COMPANY_NAME          =  56, ///< change the company name
+	CMD_CHANGE_PRESIDENT_NAME        =  57, ///< change the president name
+	CMD_RENAME_STATION               =  58, ///< rename a station
 
-	CMD_SELL_AIRCRAFT                =  59,	///< sell an aircraft
-	CMD_START_STOP_AIRCRAFT          =  60,	///< start/stop an aircraft
-	CMD_BUILD_AIRCRAFT               =  61,	///< build an aircraft
-	CMD_SEND_AIRCRAFT_TO_HANGAR      =  62,	///< send an aircraft to a hanger
-	CMD_REFIT_AIRCRAFT               =  64,	///< refit the cargo space of an aircraft
+	CMD_SELL_AIRCRAFT                =  59, ///< sell an aircraft
+	CMD_START_STOP_AIRCRAFT          =  60, ///< start/stop an aircraft
+	CMD_BUILD_AIRCRAFT               =  61, ///< build an aircraft
+	CMD_SEND_AIRCRAFT_TO_HANGAR      =  62, ///< send an aircraft to a hanger
+	CMD_REFIT_AIRCRAFT               =  64, ///< refit the cargo space of an aircraft
 
 	CMD_PLACE_SIGN                   =  65, ///< place a sign
-	CMD_RENAME_SIGN                  =  66,	///< rename a sign
+	CMD_RENAME_SIGN                  =  66, ///< rename a sign
 
-	CMD_BUILD_ROAD_VEH               =  67,	///< build a road vehicle
-	CMD_START_STOP_ROADVEH           =  68,	///< start/stop a road vehicle
-	CMD_SELL_ROAD_VEH                =  69,	///< sell a road vehicle
-	CMD_SEND_ROADVEH_TO_DEPOT        =  70,	///< send a road vehicle to the depot
-	CMD_TURN_ROADVEH                 =  71,	///< turn a road vehicle around
-	CMD_REFIT_ROAD_VEH               =  72,	///< refit the cargo space of a road vehicle
+	CMD_BUILD_ROAD_VEH               =  67, ///< build a road vehicle
+	CMD_START_STOP_ROADVEH           =  68, ///< start/stop a road vehicle
+	CMD_SELL_ROAD_VEH                =  69, ///< sell a road vehicle
+	CMD_SEND_ROADVEH_TO_DEPOT        =  70, ///< send a road vehicle to the depot
+	CMD_TURN_ROADVEH                 =  71, ///< turn a road vehicle around
+	CMD_REFIT_ROAD_VEH               =  72, ///< refit the cargo space of a road vehicle
 
-	CMD_PAUSE                        =  73,	///< pause the game
+	CMD_PAUSE                        =  73, ///< pause the game
 
-	CMD_BUY_SHARE_IN_COMPANY         =  74,	///< buy a share from a company
-	CMD_SELL_SHARE_IN_COMPANY        =  75,	///< sell a share from a company
-	CMD_BUY_COMPANY                  =  76,	///< buy a company which is bankrupt
+	CMD_BUY_SHARE_IN_COMPANY         =  74, ///< buy a share from a company
+	CMD_SELL_SHARE_IN_COMPANY        =  75, ///< sell a share from a company
+	CMD_BUY_COMPANY                  =  76, ///< buy a company which is bankrupt
 
-	CMD_BUILD_TOWN                   =  77,	///< build a town
+	CMD_BUILD_TOWN                   =  77, ///< build a town
 
-	CMD_RENAME_TOWN                  =  80,	///< rename a town
-	CMD_DO_TOWN_ACTION               =  81,	///< do a action from the town detail window (like advertises or bribe)
+	CMD_RENAME_TOWN                  =  80, ///< rename a town
+	CMD_DO_TOWN_ACTION               =  81, ///< do a action from the town detail window (like advertises or bribe)
 
-	CMD_SET_ROAD_DRIVE_SIDE          =  82,	///< set the side where the road vehicles drive
+	CMD_SET_ROAD_DRIVE_SIDE          =  82, ///< set the side where the road vehicles drive
 
-	CMD_CHANGE_DIFFICULTY_LEVEL      =  85,	///< change the difficult of a game (each setting for it own)
+	CMD_CHANGE_DIFFICULTY_LEVEL      =  85, ///< change the difficult of a game (each setting for it own)
 
-	CMD_START_STOP_SHIP              =  86,	///< start/stop a ship
-	CMD_SELL_SHIP                    =  87,	///< sell a ship
-	CMD_BUILD_SHIP                   =  88,	///< build a new ship
-	CMD_SEND_SHIP_TO_DEPOT           =  89,	///< send a ship to a depot
-	CMD_REFIT_SHIP                   =  91,	///< refit the cargo space of a ship
+	CMD_START_STOP_SHIP              =  86, ///< start/stop a ship
+	CMD_SELL_SHIP                    =  87, ///< sell a ship
+	CMD_BUILD_SHIP                   =  88, ///< build a new ship
+	CMD_SEND_SHIP_TO_DEPOT           =  89, ///< send a ship to a depot
+	CMD_REFIT_SHIP                   =  91, ///< refit the cargo space of a ship
 
 	CMD_ORDER_REFIT                  =  98, ///< change the refit informaction of an order (for "goto depot" )
 	CMD_CLONE_ORDER                  =  99, ///< clone (and share) an order
-	CMD_CLEAR_AREA                   = 100,	///< clear an area
+	CMD_CLEAR_AREA                   = 100, ///< clear an area
 
-	CMD_MONEY_CHEAT                  = 102,	///< do the money cheat
-	CMD_BUILD_CANAL                  = 103,	///< build a canal
+	CMD_MONEY_CHEAT                  = 102, ///< do the money cheat
+	CMD_BUILD_CANAL                  = 103, ///< build a canal
 
 	CMD_PLAYER_CTRL                  = 104, ///< used in multiplayer to create a new player etc.
 	CMD_LEVEL_LAND                   = 105, ///< level land
 
-	CMD_REFIT_RAIL_VEHICLE           = 106,	///< refit the cargo space of a train
-	CMD_RESTORE_ORDER_INDEX          = 107,	///< restore vehicle order-index and service interval
-	CMD_BUILD_LOCK                   = 108,	///< build a lock
+	CMD_REFIT_RAIL_VEHICLE           = 106, ///< refit the cargo space of a train
+	CMD_RESTORE_ORDER_INDEX          = 107, ///< restore vehicle order-index and service interval
+	CMD_BUILD_LOCK                   = 108, ///< build a lock
 
-	CMD_BUILD_SIGNAL_TRACK           = 110,	///< add signals along a track (by dragging)
-	CMD_REMOVE_SIGNAL_TRACK          = 111,	///< remove signals along a track (by dragging)
+	CMD_BUILD_SIGNAL_TRACK           = 110, ///< add signals along a track (by dragging)
+	CMD_REMOVE_SIGNAL_TRACK          = 111, ///< remove signals along a track (by dragging)
 
-	CMD_GIVE_MONEY                   = 113,	///< give money to an other player
-	CMD_CHANGE_PATCH_SETTING         = 114,	///< change a patch setting
+	CMD_GIVE_MONEY                   = 113, ///< give money to an other player
+	CMD_CHANGE_PATCH_SETTING         = 114, ///< change a patch setting
 
-	CMD_SET_AUTOREPLACE              = 115,	///< set an autoreplace entry
+	CMD_SET_AUTOREPLACE              = 115, ///< set an autoreplace entry
 
-	CMD_CLONE_VEHICLE                = 116,	///< clone a vehicle
-	CMD_MASS_START_STOP              = 117,	///< start/stop all vehicles (in a depot)
-	CMD_DEPOT_SELL_ALL_VEHICLES      = 118,	///< sell all vehicles which are in a given depot
-	CMD_DEPOT_MASS_AUTOREPLACE       = 119,	///< force the autoreplace to take action in a given depot
+	CMD_CLONE_VEHICLE                = 116, ///< clone a vehicle
+	CMD_MASS_START_STOP              = 117, ///< start/stop all vehicles (in a depot)
+	CMD_DEPOT_SELL_ALL_VEHICLES      = 118, ///< sell all vehicles which are in a given depot
+	CMD_DEPOT_MASS_AUTOREPLACE       = 119, ///< force the autoreplace to take action in a given depot
 
-	CMD_CREATE_GROUP                 = 120,	///< create a new group
-	CMD_DELETE_GROUP                 = 121,	///< delete a group
-	CMD_RENAME_GROUP                 = 122,	///< rename a group
-	CMD_ADD_VEHICLE_GROUP            = 123,	///< add a vehicle to a group
-	CMD_ADD_SHARED_VEHICLE_GROUP     = 124,	///< add all other shared vehicles to a group which are missing
-	CMD_REMOVE_ALL_VEHICLES_GROUP    = 125,	///< remove all vehicles from a group
-	CMD_SET_GROUP_REPLACE_PROTECTION = 126,	///< set the autoreplace-protection for a group
+	CMD_CREATE_GROUP                 = 120, ///< create a new group
+	CMD_DELETE_GROUP                 = 121, ///< delete a group
+	CMD_RENAME_GROUP                 = 122, ///< rename a group
+	CMD_ADD_VEHICLE_GROUP            = 123, ///< add a vehicle to a group
+	CMD_ADD_SHARED_VEHICLE_GROUP     = 124, ///< add all other shared vehicles to a group which are missing
+	CMD_REMOVE_ALL_VEHICLES_GROUP    = 125, ///< remove all vehicles from a group
+	CMD_SET_GROUP_REPLACE_PROTECTION = 126, ///< set the autoreplace-protection for a group
 
-	CMD_MOVE_ORDER                   = 127,	///< move an order
-	CMD_CHANGE_TIMETABLE             = 128,	///< change the timetable for a vehicle
-	CMD_SET_VEHICLE_ON_TIME          = 129,	///< set the vehicle on time feature (timetable)
-	CMD_AUTOFILL_TIMETABLE           = 130,	///< autofill the timetable
+	CMD_MOVE_ORDER                   = 127, ///< move an order
+	CMD_CHANGE_TIMETABLE             = 128, ///< change the timetable for a vehicle
+	CMD_SET_VEHICLE_ON_TIME          = 129, ///< set the vehicle on time feature (timetable)
+	CMD_AUTOFILL_TIMETABLE           = 130, ///< autofill the timetable
 };
 
 /**
