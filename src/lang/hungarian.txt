@@ -1177,7 +1177,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Kikapcsolva
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatikus pause-mode új játék esetén: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Továbbfejlesztett járműlista használata: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Kikapcsolva
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Saját vállalat
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Minden vállalat
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Betöltésjelző használata: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Kikapcsolva
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Saját vállalat
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Minden vállalat
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Időalapú menetrend engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetrendi idő-alapegység tick a nap helyett: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Alapértelmezett síntipus (játéktöltés/új játék után): {ORANGE}{STRING}

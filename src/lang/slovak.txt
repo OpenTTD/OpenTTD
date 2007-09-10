@@ -1175,7 +1175,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Ziadna
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticka pauza pri štarte novej hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použit vylepšený zoznam vozidiel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Vypnutý
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Vlastná spolocnost
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Všetky spolocnosti
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Zobrazovat ukazovatele nakladania a vykladania: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Vypnuté
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Vlastná spolocnost
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Všetky spolocnosti
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Povolit cestovné poriadky pre vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazovat cestovné poriadky v tikoch namiesto dní: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Predvolený typ kolají (v novej/nahranej hre): {ORANGE}{STRING}

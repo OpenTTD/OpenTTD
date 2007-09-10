@@ -1235,7 +1235,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Відкл.
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Використовувати покращений список транспорту: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :відкл.
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Власна компанія
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Усі компанії
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Використовувати індикатори завантаження: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :відкл.
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Власна компанія
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Усі компанії
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Дозволити розклад руху для транспорту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Показувати розклад в одиницях, а не в днях: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип колії за замовчанням (при новій грі/завантаженні): {ORANGE}{STRING}

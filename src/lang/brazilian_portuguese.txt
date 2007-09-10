@@ -1113,7 +1113,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausar automaticamente ao inicar um novo jogo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Desligado
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Própria Compania
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Todas as companias
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Desligado
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Própria Compania
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Todas as Companias
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Ativar plano de horário para veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Exibir plano de horário em tiques ao invés de dias: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar um jogo): {ORANGE}{STRING}

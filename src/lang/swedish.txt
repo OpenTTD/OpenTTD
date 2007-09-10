@@ -1103,9 +1103,21 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zooma kartan
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scrolla kartan
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Avstängd
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mushjulshastighet: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Högerklicksemulering: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klick
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-klick
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automatiskt vid start av nytt spel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Använd den avancerade fordonslistan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Av
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Eget företag
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Alla företag
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Använd lastningsindikatörer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Av
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eget företag
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alla företag
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aktivera Tidtabeller för fordon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Visa tidtabeller räknat i ticks istället för dagar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard järnvägsräls (efter nytt/laddat spel): {ORANGE}{STRING}
@@ -1262,6 +1274,7 @@ STR_LANDINFO_LOCK                                               :Sluss
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bojen används!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan ej ta bort del av station...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan inte konvertera spårtyp här...
@@ -1372,18 +1385,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Bestäm 
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Skydda spelet med ett lösenord så att inte andra än dom som har lösenordet kan gå med i spelet
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Välj karta:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Vilken karta vill du spela?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max antal tillåtna klienter:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (publik)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" s}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max antal tillåtna klienter:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Välj max antal tillåtna klienter. Alla platser måste inte fyllas.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} företag{P y ies}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max företag:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begränsa antalet företag på servern
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} åskådare{P "" s}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max observatörer:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begränsa antalet observatörer på servern
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk som talas:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Starta spelet
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Starta ett nytt spel med en slumpmässig karta eller från ett scenario
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Ladda spel
@@ -1611,9 +1629,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...områ
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Järnväg med vanliga signaler
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Järnväg med för-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Järnväg med utgående signaler
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Tågspår med kombinationsignaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Järnväg med normala signaler och för-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Järnväg med normala signaler och utfarts-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tågspår med normal- och kombinationsignaler
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Järnväg med för- och utfarts-signaler
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tågspår med för- och kombinationsignaler
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tågspår med utgångs- och kombinationsignaler
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Måste ta bort tågstationen först
 
 
@@ -3311,6 +3333,10 @@ STR_GROUP_ALL_TRAINS                                            :Alla tåg
 STR_GROUP_ALL_ROADS                                             :Alla vägfordon
 STR_GROUP_ALL_SHIPS                                             :Alla skepp
 STR_GROUP_ALL_AIRCRAFTS                                         :Alla flygplan
+STR_GROUP_DEFAULT_TRAINS                                        :Ogrupperade tåg
+STR_GROUP_DEFAULT_ROADS                                         :Ogrupperade vägfordon
+STR_GROUP_DEFAULT_SHIPS                                         :Ogrupperade skepp
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ogrupperade flygmaskiner
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Lägg till delade fordon
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ta bort alla fordon
@@ -3334,7 +3360,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Klicka f
 STR_GROUP_DELETE_TIP                                            :{BLACK}Ta bort den valda gruppen
 STR_GROUP_RENAME_TIP                                            :{BLACK}Döp om den valda gruppen
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klicka för att skydda denna grupp från globalt autoutbyte
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

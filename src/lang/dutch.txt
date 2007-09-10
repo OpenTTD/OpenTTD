@@ -1111,7 +1111,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisch pauzeren wanneer je een nieuw spel start: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik de geavanceerde voertuigenlijst: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Uit
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Eigen bedrijf
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Alle bedrijven
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Gebruik laad indicatoren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Uit
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eigen bedrijf
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alle bedrijven
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activeer dienstregeling voor voertuigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon dienstregeling in tikken ipv in dagen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standaard spoorsoort (bij nieuw of opgeslagen spel): {ORANGE}{STRING}

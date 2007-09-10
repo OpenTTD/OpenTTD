@@ -1111,7 +1111,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivat
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Posa en pausa automàticament en començar un joc nou: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilitza la llista de vehicles avançada: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Off
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Pròpia companyia
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Totes les companyies
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Utilitza indicadors de carregament: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Off
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Pròpia companyia
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Totes les companyies
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Habilita horaris dels vehicles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra horaris en marques enlloc de dies: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipus de via predeterminada (en un joc nou/joc desat): {ORANGE}{STRING}

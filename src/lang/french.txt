@@ -1112,7 +1112,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Désactivé
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatique en début de nouvelle partie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utiliser la liste de véhicules avancée: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Désactivé
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Propre compagnie
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Toutes les compagnies
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Utiliser les indicateurs de chargement: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Désactivé
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Propre compagnie
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Toutes les compagnies
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activer les horaires pour les véhicules: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Afficher l'horaire en ticks plutôt qu'en jours: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Type de rail par défaut (après nouvelle partie/chargement): {ORANGE}{STRING}
