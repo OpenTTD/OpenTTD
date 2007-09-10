@@ -10,9 +10,14 @@ static FBlitter_32bppAnim iFBlitter_32bppAnim;
 
 void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
+	if (bp->dst < _screen.dst_ptr || bp->dst > (uint32 *)_screen.dst_ptr + _screen.width * _screen.height) {
+		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
+		Blitter_32bppOptimized::Draw(bp, mode, zoom);
+		return;
+	}
 	const SpriteLoader::CommonPixel *src, *src_line;
 	uint32 *dst, *dst_line;
-	uint8 *anim, *anim_line, *anim_end;
+	uint8 *anim, *anim_line;
 
 	if (_screen.width != this->anim_buf_width || _screen.height != this->anim_buf_height) {
 		/* The size of the screen changed; we can assume we can wipe all data from our buffer */
@@ -21,7 +26,6 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 		this->anim_buf_width = _screen.width;
 		this->anim_buf_height = _screen.height;
 	}
-	anim_end = this->anim_buf + this->anim_buf_height * this->anim_buf_width - 1;
 
 	/* Find where to start reading in the source sprite */
 	src_line = (const SpriteLoader::CommonPixel *)bp->sprite + (bp->skip_top * bp->sprite_width + bp->skip_left) * ScaleByZoom(1, zoom);
@@ -37,9 +41,6 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 		anim = anim_line;
 		anim_line += this->anim_buf_width;
-		/* Don't allow values of 'anim' greater than 'anim_end' to avoid buffer overflows.
-		 *  This only happens when we are doing a big-screenshot, so it should be relative safe */
-		if (anim >= anim_end || anim < this->anim_buf) anim = anim_end;
 
 		for (int x = 0; x < bp->width; x++) {
 			if (src->a == 0) {
@@ -48,10 +49,8 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 				dst  += skip;
 				/* Make sure the anim-buffer is cleared */
-				if (anim < anim_end - skip) {
-					memset(anim, 0, skip);
-					anim += skip;
-				}
+				memset(anim, 0, skip);
+				anim += skip;
 				x    += skip - 1;
 				src  += ScaleByZoom(1, zoom) * skip;
 				continue;
@@ -89,9 +88,7 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 					break;
 			}
 			dst++;
-			/* Don't increase the anim buffer anymore if we tend to run out of the buffer...
-			 *  This only happens when we are doing a big-screenshot, so it should be relative safe */
-			if (anim < anim_end) anim++;
+			anim++;
 			src += ScaleByZoom(1, zoom);
 		}
 	}
