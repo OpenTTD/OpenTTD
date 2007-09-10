@@ -15,6 +15,7 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 		Blitter_32bppOptimized::Draw(bp, mode, zoom);
 		return;
 	}
+
 	const SpriteLoader::CommonPixel *src, *src_line;
 	uint32 *dst, *dst_line;
 	uint8 *anim, *anim_line;
