@@ -1245,7 +1245,7 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
 	 * if _ctrl_pressed, do the opposite action (Advanced list x Normal list)
 	 */
 
-	if ((_patches.advanced_vehicle_list > (player != _local_player)) != _ctrl_pressed) {
+	if ((_patches.advanced_vehicle_list > (uint)(player != _local_player)) != _ctrl_pressed) {
 		ShowPlayerGroup(player, vehicle_type);
 	} else {
 		ShowVehicleListWindowLocal(player, VLW_STANDARD, vehicle_type, 0);
