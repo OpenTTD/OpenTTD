@@ -126,7 +126,7 @@ static inline RoadBits ComplementRoadBits(RoadBits r)
  */
 static inline RoadBits DiagDirToRoadBits(DiagDirection d)
 {
-	return (RoadBits)(1U << (3 ^ d));
+	return (RoadBits)(ROAD_NW << (3 ^ d));
 }
 
 /**
