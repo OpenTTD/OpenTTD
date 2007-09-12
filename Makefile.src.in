@@ -249,15 +249,15 @@ $(OBJS_RC): %.o: $(SRC_DIR)/%.rc $(FILE_DEP)
 $(BIN_DIR)/$(TTD): $(TTD)
 	$(Q)cp $< $@
 
-$(TTD): rev.o $(OBJS) $(CONFIG_CACHE_LINKER)
+$(TTD): $(OBJS) $(CONFIG_CACHE_LINKER)
 	$(E) '$(STAGE) Linking $@'
 ifeq ($(OS), PSP)
 	# Because of a bug in the PSP GCC tools, linking via CXX results
 	#  in total chaos and more problems then you can handle. So we need
 	#  CC to link OpenTTD for PSP
-	$(Q)$(CC_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@
+	$(Q)$(CC_HOST) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
 else
-	$(Q)$(CXX_HOST) $(LDFLAGS) rev.o $(OBJS) $(LIBS) -o $@
+	$(Q)$(CXX_HOST) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
 endif
 ifdef STRIP
 	$(Q)$(STRIP) $@
@@ -275,19 +275,11 @@ $(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
 
 # Revision files
 
-rev.cpp: $(CONFIG_CACHE_VERSION)
-# setting the revision number in a place, there the binary can read it
-	@echo 'extern const char _openttd_revision[] = "$(REV)";' > rev.cpp
-# Some additions for MorphOS versions tag
-ifeq ($(OS),MORPHOS)
-	@echo '#ifdef __MORPHOS__' >> rev.cpp
-	@echo 'extern const char morphos_versions_tag[] = "\\0$$VER: OpenTTD $(REV) ('`date +%d.%m.%y`') (C) OpenTTD Team [MorphOS, PowerPC]";' >> rev.cpp
-	@echo '#endif' >> rev.cpp
-endif
+$(SRC_DIR)/rev.cpp: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/rev.cpp.in
+	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s#@@VERSION@@#$(REV)#g;s#@@DATE@@#`date +%d.%m.%y`#g" > $(SRC_DIR)/rev.cpp
 
-rev.o: rev.cpp $(FILE_DEP)
-	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
-	$(Q)$(CXX_HOST) $(CFLAGS) -c -o $@ $<
+$(SRC_DIR)/ottdres.rc: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/ottdres.rc.in
+	$(Q)cat $(SRC_DIR)/ottdres.rc.in | sed "s#@@VERSION@@#$(REV)#g;s#@@DATE@@#`date +%d.%m.%y`#g" > $(SRC_DIR)/ottdres.rc
 
 FORCE:
 
@@ -295,10 +287,10 @@ depend: $(DEPS)
 
 clean:
 	$(E) '$(STAGE) Cleaning up object files'
-	$(Q)rm -f $(DEPS) $(OBJS) $(TTD) $(TTD:%=$(BIN_DIR)/%) $(CONFIG_CACHE_COMPILER) $(CONFIG_CACHE_LINKER) $(CONFIG_CACHE_ENDIAN) $(CONFIG_CACHE_SOURCE) $(ENDIAN_TARGETS) rev.o rev.cpp
+	$(Q)rm -f $(DEPS) $(OBJS) $(TTD) $(TTD:%=$(BIN_DIR)/%) $(CONFIG_CACHE_COMPILER) $(CONFIG_CACHE_LINKER) $(CONFIG_CACHE_ENDIAN) $(CONFIG_CACHE_SOURCE) $(ENDIAN_TARGETS)
 
 mrproper: clean
-	$(Q)rm -f rev.cpp
+	$(Q)rm -f $(SRC_DIR)/rev.cpp $(SRC_DIR)/ottdres.rc
 
 %.o:
 	@echo '$(STAGE) No such source-file: $(@:%.o=%).[c|cpp|mm|rc]'

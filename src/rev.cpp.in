@@ -1,0 +1,4 @@
+extern const char _openttd_revision[] = "@@VERSION@@";
+#ifdef __MORPHOS__
+extern const char morphos_versions_tag[] = "\\0$VER: OpenTTD @@VERSION@@ (@@DATE@@)  OpenTTD Team [MorphOS, PowerPC]";
+#endif

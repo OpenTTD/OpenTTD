@@ -745,7 +745,7 @@ make_cflags_and_ldflags() {
 	# General CFlags for BUILD
 	CFLAGS_BUILD=""
 	# General CFlags for HOST
-	CFLAGS="$CFLAGS -D$os -DWITH_REV"
+	CFLAGS="$CFLAGS -D$os"
 	# CFlags for HOST and C-Compiler
 	CC_FLAGS=""
 	# Libs to compile. In fact this is just LDFLAGS

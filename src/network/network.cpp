@@ -3,15 +3,7 @@
 #include "../stdafx.h"
 #include "network_data.h"
 
-#if defined(WITH_REV)
-	extern const char _openttd_revision[];
-#elif defined(WITH_REV_HACK)
-	#define WITH_REV
-	extern const char _openttd_revision[] = WITH_REV_HACK;
-#else
-	extern const char _openttd_revision[] = NOREV_STRING;
-#endif
-
+extern const char _openttd_revision[];
 
 #ifdef ENABLE_NETWORK
 
@@ -1463,8 +1455,6 @@ void NetworkShutDown()
 
 /**
  * Checks whether the given version string is compatible with our version.
- * It'll check the first NETWORK_REVISION_LENGTH - 1 characters (-1 for '\0')
- * against the current version and the NOREV_STRING.
  * @param other the version string to compare to
  */
 bool IsNetworkCompatibleVersion(const char *other)

@@ -57,6 +57,7 @@ pathfind.cpp
 players.cpp
 queue.cpp
 rail.cpp
+rev.cpp
 saveload.cpp
 screenshot.cpp
 #if SDL

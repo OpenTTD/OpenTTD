@@ -3,8 +3,6 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#define NOREV_STRING "norev000"
-
 #ifdef ENABLE_NETWORK
 
 #include "../player.h"
