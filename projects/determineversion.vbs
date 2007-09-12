@@ -40,7 +40,7 @@ Function DetermineSVNVersion()
 	Dim file
 	' Write some "magic" to a temporary file so we can acquire the svn revision/state
 	Set file = FSO.CreateTextFile("tsvn_tmp", -1, 0)
-	file.WriteLine "$WCREV$$WCMODS?M:$"
+	file.WriteLine "r$WCREV$$WCMODS?M:$"
 	file.WriteLine "$WCURL$"
 	file.Close
 	Set oExec = WshShell.Exec(sTortoise & "\bin\SubWCRev.exe ../src tsvn_tmp tsvn_tmp")
@@ -85,7 +85,7 @@ Function DetermineSVNVersion()
 						url = line
 					End If
 					If InStr(line, "Last Changed Rev") Then
-						version = Mid(line, 19) & modified
+						version = "r" & Mid(line, 19) & modified
 					End If
 				Loop While Not OExec.StdOut.atEndOfStream
 			End If

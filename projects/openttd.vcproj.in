@@ -75,7 +75,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Determining version number"
-				CommandLine="$(InputDir)/determineversion.vbs"/>
+				CommandLine="&quot;$(InputDir)/determineversion.vbs&quot;"/>
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool
@@ -139,7 +139,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Determining version number"
-				CommandLine="$(InputDir)/determineversion.vbs"/>
+				CommandLine="&quot;$(InputDir)/determineversion.vbs&quot;"/>
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool
