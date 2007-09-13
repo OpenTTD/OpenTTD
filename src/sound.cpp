@@ -45,6 +45,7 @@ static void OpenBankFile(const char *filename)
 	FioSeekTo(0, SEEK_SET);
 
 	for (i = 0; i != count; i++) {
+		fe[i].file_slot = SOUND_SLOT;
 		fe[i].file_offset = FioReadDword();
 		fe[i].file_size = FioReadDword();
 	}
@@ -75,7 +76,8 @@ static void OpenBankFile(const char *filename)
 					FioSeekTo(size - (2 + 2 + 4 + 4 + 2 + 1), SEEK_CUR);
 				} else if (tag == 'atad') {
 					fe->file_size = size;
-					fe->file_offset = FioGetPos() | (SOUND_SLOT << 24);
+					fe->file_slot = SOUND_SLOT;
+					fe->file_offset = FioGetPos();
 					break;
 				} else {
 					fe->file_size = 0;
@@ -91,7 +93,8 @@ static void OpenBankFile(const char *filename)
 			fe->channels = 1;
 			fe->rate = 11025;
 			fe->bits_per_sample = 8;
-			fe->file_offset = FioGetPos() | (SOUND_SLOT << 24);
+			fe->file_slot = SOUND_SLOT;
+			fe->file_offset = FioGetPos();
 		}
 	}
 }
@@ -114,7 +117,7 @@ static bool SetBankSource(MixerChannel *mc, uint bank)
 	int8 *mem = MallocT<int8>(fe->file_size);
 	if (mem == NULL) return false;
 
-	FioSeekToFile(fe->file_offset);
+	FioSeekToFile(fe->file_slot, fe->file_offset);
 	FioReadBlock(mem, fe->file_size);
 
 	for (i = 0; i != fe->file_size; i++)

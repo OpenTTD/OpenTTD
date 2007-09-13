@@ -8,7 +8,7 @@
 #include "helpers.hpp"
 
 void FioSeekTo(uint32 pos, int mode);
-void FioSeekToFile(uint32 pos);
+void FioSeekToFile(uint8 slot, uint32 pos);
 uint32 FioGetPos();
 const char *FioGetFilename();
 byte FioReadByte();

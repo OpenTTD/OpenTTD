@@ -74,18 +74,18 @@ static void FioRestoreFile(int slot)
 #endif /* LIMITED_FDS */
 
 /* Seek to a file and a position */
-void FioSeekToFile(uint32 pos)
+void FioSeekToFile(uint8 slot, uint32 pos)
 {
 	FILE *f;
 #if defined(LIMITED_FDS)
 	/* Make sure we have this file open */
-	FioRestoreFile(pos >> 24);
+	FioRestoreFile(slot);
 #endif /* LIMITED_FDS */
-	f = _fio.handles[pos >> 24];
+	f = _fio.handles[slot];
 	assert(f != NULL);
 	_fio.cur_fh = f;
-	_fio.filename = _fio.filenames[pos >> 24];
-	FioSeekTo(GB(pos, 0, 24), SEEK_SET);
+	_fio.filename = _fio.filenames[slot];
+	FioSeekTo(pos, SEEK_SET);
 }
 
 byte FioReadByte()
@@ -180,6 +180,7 @@ void FioOpenFile(int slot, const char *filename)
 #endif /* LIMITED_FDS */
 	f = FioFOpenFile(filename);
 	if (f == NULL) error("Cannot open file '%s'", filename);
+	uint32 pos = ftell(f);
 
 	FioCloseFile(slot); // if file was opened before, close it
 	_fio.handles[slot] = f;
@@ -188,7 +189,7 @@ void FioOpenFile(int slot, const char *filename)
 	_fio.usage_count[slot] = 0;
 	_fio.open_handles++;
 #endif /* LIMITED_FDS */
-	FioSeekToFile(slot << 24);
+	FioSeekToFile(slot, pos);
 }
 
 const char *_subdirs[NUM_SUBDIRS] = {

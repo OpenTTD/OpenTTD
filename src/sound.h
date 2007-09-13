@@ -21,6 +21,7 @@ struct MusicFileSettings {
 VARDEF MusicFileSettings msf;
 
 struct FileEntry {
+	uint8 file_slot;
 	uint32 file_offset;
 	uint32 file_size;
 	uint16 rate;

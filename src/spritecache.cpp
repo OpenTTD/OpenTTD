@@ -25,6 +25,7 @@ uint _sprite_cache_size = 4;
 
 struct SpriteCache {
 	void *ptr;
+	uint8 file_slot;
 	uint32 file_pos;
 	int16 lru;
 	uint32 id;
@@ -127,6 +128,7 @@ void* AllocSprite(size_t);
 
 static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 {
+	uint8 file_slot = sc->file_slot;
 	uint32 file_pos = sc->file_pos;
 
 	DEBUG(sprite, 9, "Load sprite %d", id);
@@ -136,7 +138,8 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 
 		/* SPR_IMG_QUERY is a BIG FAT RED ? */
 		id = SPR_IMG_QUERY;
-		file_pos = GetSpriteCache(SPR_IMG_QUERY)->file_pos;
+		file_slot = GetSpriteCache(SPR_IMG_QUERY)->file_slot;
+		file_pos  = GetSpriteCache(SPR_IMG_QUERY)->file_pos;
 	}
 
 	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
@@ -145,7 +148,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 		SpriteLoaderPNG sprite_loader;
 		SpriteLoader::Sprite sprite;
 
-		if (sprite_loader.LoadSprite(&sprite, sc->grf_name, sc->id)) {
+		if (sprite_loader.LoadSprite(&sprite, sc->grf_name, 0, sc->id)) {
 			sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 			free(sprite.data);
 
@@ -161,7 +164,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 #endif /* WITH_PNG */
 	}
 
-	FioSeekToFile(file_pos);
+	FioSeekToFile(file_slot, file_pos);
 
 	/* Read the size and type */
 	int num  = FioReadWord();
@@ -232,7 +235,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 	SpriteLoaderGrf sprite_loader;
 	SpriteLoader::Sprite sprite;
 
-	if (!sprite_loader.LoadSprite(&sprite, sc->grf_name, file_pos)) return NULL;
+	if (!sprite_loader.LoadSprite(&sprite, sc->grf_name, file_slot, file_pos)) return NULL;
 	if (id == 142) sprite.height = 10; // Compensate for a TTD bug
 	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 	free(sprite.data);
@@ -241,10 +244,10 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 }
 
 
-bool LoadNextSprite(int load_index, byte file_index, uint file_sprite_id)
+bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 {
 	SpriteCache *sc;
-	uint32 file_pos = FioGetPos() | (file_index << 24);
+	uint32 file_pos = FioGetPos();
 
 	if (!ReadSpriteHeaderSkipData()) return false;
 
@@ -253,6 +256,7 @@ bool LoadNextSprite(int load_index, byte file_index, uint file_sprite_id)
 	}
 
 	sc = AllocateSpriteCache(load_index);
+	sc->file_slot = file_slot;
 	sc->file_pos = file_pos;
 	sc->ptr = NULL;
 	sc->lru = 0;
@@ -280,6 +284,7 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 	SpriteCache *scold = GetSpriteCache(old_spr);
 	SpriteCache *scnew = AllocateSpriteCache(new_spr);
 
+	scnew->file_slot = scold->file_slot;
 	scnew->file_pos = scold->file_pos;
 	scnew->ptr = NULL;
 	scnew->id = scold->id;
