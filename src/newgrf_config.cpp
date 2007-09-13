@@ -315,9 +315,14 @@ static uint ScanPath(const char *path, int basepath_length)
 					/* Insert file into list at a position determined by its
 					 * name, so the list is sorted as we go along */
 					GRFConfig **pd, *d;
+					bool stop = false;
 					for (pd = &_all_grfs; (d = *pd) != NULL; pd = &d->next) {
 						if (c->grfid == d->grfid && memcmp(c->md5sum, d->md5sum, sizeof(c->md5sum)) == 0) added = false;
-						if (strcasecmp(c->name, d->name) <= 0) break;
+						/* Because there can be multiple grfs with the same name, make sure we checked all grfs with the same name,
+						*  before inserting the entry. So insert a new grf at the end of all grfs with the same name, instead of
+						*  just after the first with the same name. Avoids doubles in the list. */
+						if (strcasecmp(c->name, d->name) <= 0) stop = true;
+						else if (stop) break;
 					}
 					if (added) {
 						c->next = d;
