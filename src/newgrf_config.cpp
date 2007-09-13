@@ -270,12 +270,54 @@ compatible_grf:
 	return res;
 }
 
+static bool ScanPathAddGrf(const char *filename)
+{
+	GRFConfig *c = CallocT<GRFConfig>(1);
+	c->filename = strdup(filename);
 
-extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
+	bool added = true;
+	if (FillGRFDetails(c, false)) {
+		if (_all_grfs == NULL) {
+			_all_grfs = c;
+		} else {
+			/* Insert file into list at a position determined by its
+				* name, so the list is sorted as we go along */
+			GRFConfig **pd, *d;
+			bool stop = false;
+			for (pd = &_all_grfs; (d = *pd) != NULL; pd = &d->next) {
+				if (c->grfid == d->grfid && memcmp(c->md5sum, d->md5sum, sizeof(c->md5sum)) == 0) added = false;
+				/* Because there can be multiple grfs with the same name, make sure we checked all grfs with the same name,
+				*  before inserting the entry. So insert a new grf at the end of all grfs with the same name, instead of
+				*  just after the first with the same name. Avoids doubles in the list. */
+				if (strcasecmp(c->name, d->name) <= 0) stop = true;
+				else if (stop) break;
+			}
+			if (added) {
+				c->next = d;
+				*pd = c;
+			}
+		}
+	} else {
+		added = false;
+	}
+
+	if (!added) {
+		/* File couldn't be opened, or is either not a NewGRF or is a
+			* 'system' NewGRF or it's already known, so forget about it. */
+		free(c->filename);
+		free(c->name);
+		free(c->info);
+		free(c);
+	}
+
+	return added;
+}
 
 /* Scan a path for NewGRFs */
 static uint ScanPath(const char *path, int basepath_length)
 {
+	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
+
 	uint num = 0;
 	struct stat sb;
 	struct dirent *dirent;
@@ -304,45 +346,7 @@ static uint ScanPath(const char *path, int basepath_length)
 			if (ext == NULL) continue;
 			if (strcasecmp(ext, ".grf") != 0) continue;
 
-			GRFConfig *c = CallocT<GRFConfig>(1);
-			c->filename = strdup(filename + basepath_length);
-
-			bool added = true;
-			if (FillGRFDetails(c, false)) {
-				if (_all_grfs == NULL) {
-					_all_grfs = c;
-				} else {
-					/* Insert file into list at a position determined by its
-					 * name, so the list is sorted as we go along */
-					GRFConfig **pd, *d;
-					bool stop = false;
-					for (pd = &_all_grfs; (d = *pd) != NULL; pd = &d->next) {
-						if (c->grfid == d->grfid && memcmp(c->md5sum, d->md5sum, sizeof(c->md5sum)) == 0) added = false;
-						/* Because there can be multiple grfs with the same name, make sure we checked all grfs with the same name,
-						*  before inserting the entry. So insert a new grf at the end of all grfs with the same name, instead of
-						*  just after the first with the same name. Avoids doubles in the list. */
-						if (strcasecmp(c->name, d->name) <= 0) stop = true;
-						else if (stop) break;
-					}
-					if (added) {
-						c->next = d;
-						*pd = c;
-					}
-				}
-			} else {
-				added = false;
-			}
-
-			if (!added) {
-				/* File couldn't be opened, or is either not a NewGRF or is a
-				 * 'system' NewGRF or it's already known, so forget about it. */
-				free(c->filename);
-				free(c->name);
-				free(c->info);
-				free(c);
-			} else {
-				num++;
-			}
+			if (ScanPathAddGrf(filename + basepath_length)) num++;
 		}
 	}
 
