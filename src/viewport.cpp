@@ -81,20 +81,23 @@ struct ChildScreenSpriteToDraw {
 };
 
 struct ParentSpriteToDraw {
-	SpriteID image;
-	SpriteID pal;
-	int32 left;
-	int32 top;
+	SpriteID image;                 ///< sprite to draw
+	SpriteID pal;                   ///< palette to use
+
+	int32 left;                     ///< minimal screen X coordinate of sprite (= x + sprite->x_offs), reference point for child sprites
+	int32 top;                      ///< minimal screen Y coordinate of sprite (= y + sprite->y_offs), reference point for child sprites
 	int32 right;
 	int32 bottom;
-	int32 xmin;
-	int32 ymin;
-	int32 xmax;
-	int32 ymax;
-	ChildScreenSpriteToDraw *child;
-	byte unk16;
-	byte zmin;
-	byte zmax;
+
+	int32 xmin;                     ///< minimal world X coordinate of bounding box
+	int32 xmax;                     ///< maximal world X coordinate of bounding box
+	int32 ymin;                     ///< minimal world Y coordinate of bounding box
+	int32 ymax;                     ///< maximal world Y coordinate of bounding box
+	byte zmin;                      ///< minimal world Z coordinate of bounding box
+	byte zmax;                      ///< maximal world Z coordinate of bounding box
+
+	ChildScreenSpriteToDraw *child; ///< head of child list;
+	bool comparaison_done;          ///< Used during sprite sorting: true if sprite has been compared with all other sprites
 };
 
 /* Quick hack to know how much memory to reserve when allocating from the spritelist
@@ -551,7 +554,7 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	ps->zmin = z;
 	ps->zmax = z + dz - 1;
 
-	ps->unk16 = 0;
+	ps->comparaison_done = false;
 	ps->child = NULL;
 	vd->last_child = &ps->child;
 
@@ -1130,16 +1133,16 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 	while (*psd != NULL) {
 		ParentSpriteToDraw* ps = *psd;
 
-		if (!(ps->unk16 & 1)) {
+		if (!ps->comparaison_done) {
 			ParentSpriteToDraw** psd2 = psd;
 
-			ps->unk16 |= 1;
+			ps->comparaison_done = true;
 
 			while (*++psd2 != NULL) {
 				ParentSpriteToDraw* ps2 = *psd2;
 				ParentSpriteToDraw** psd3;
 
-				if (ps2->unk16 & 1) continue;
+				if (ps2->comparaison_done) continue;
 
 				/* Decide which comparator to use, based on whether the bounding
 				 * boxes overlap
