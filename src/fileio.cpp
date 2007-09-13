@@ -303,7 +303,7 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 }
 
 /** Opens OpenTTD files somewhere in a personal or global directory */
-FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *size)
+FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize)
 {
 	FILE *f = NULL;
 	Searchpath sp;
@@ -311,7 +311,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 	assert(subdir < NUM_SUBDIRS || subdir == NO_DIRECTORY);
 
 	FOR_ALL_SEARCHPATHS(sp) {
-		f = FioFOpenFileSp(filename, mode, sp, subdir, size);
+		f = FioFOpenFileSp(filename, mode, sp, subdir, filesize);
 		if (f != NULL || subdir == NO_DIRECTORY) break;
 	}
 
