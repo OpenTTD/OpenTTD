@@ -287,8 +287,8 @@ static bool ScanPathAddGrf(const char *filename)
 			for (pd = &_all_grfs; (d = *pd) != NULL; pd = &d->next) {
 				if (c->grfid == d->grfid && memcmp(c->md5sum, d->md5sum, sizeof(c->md5sum)) == 0) added = false;
 				/* Because there can be multiple grfs with the same name, make sure we checked all grfs with the same name,
-				*  before inserting the entry. So insert a new grf at the end of all grfs with the same name, instead of
-				*  just after the first with the same name. Avoids doubles in the list. */
+				 *  before inserting the entry. So insert a new grf at the end of all grfs with the same name, instead of
+				 *  just after the first with the same name. Avoids doubles in the list. */
 				if (strcasecmp(c->name, d->name) <= 0) stop = true;
 				else if (stop) break;
 			}
