@@ -1245,6 +1245,7 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	  SDTG_STR("videodriver",      SLE_STRB,C|S,0, _ini_videodriver,       NULL,    STR_NULL, NULL),
 	  SDTG_STR("musicdriver",      SLE_STRB,C|S,0, _ini_musicdriver,       NULL,    STR_NULL, NULL),
 	  SDTG_STR("sounddriver",      SLE_STRB,C|S,0, _ini_sounddriver,       NULL,    STR_NULL, NULL),
+	  SDTG_STR("blitter",          SLE_STRB,C|S,0, _ini_blitter,           NULL,    STR_NULL, NULL),
 	  SDTG_STR("language",         SLE_STRB, S, 0, _dynlang.curr_file,     NULL,    STR_NULL, NULL),
 	 SDTG_LIST("resolution",     SLE_UINT16, S, 0, _cur_resolution,   "640,480",    STR_NULL, NULL),
 	  SDTG_STR("screenshot_format",SLE_STRB, S, 0, _screenshot_format_name,NULL,    STR_NULL, NULL),

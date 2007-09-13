@@ -89,8 +89,6 @@ extern Player* DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
 extern void SetDefaultRailGui();
 
-const char *_default_blitter = "8bpp-optimized";
-
 /* TODO: usrerror() for errors which are not of an internal nature but
  * caused by the user, i.e. missing files or fatal configuration errors.
  * Post-0.4.0 since Celestar doesn't want this in SVN before. --pasky */
@@ -474,7 +472,7 @@ int ttd_main(int argc, char *argv[])
 	if (!StrEmpty(musicdriver)) ttd_strlcpy(_ini_musicdriver, musicdriver, sizeof(_ini_musicdriver));
 	if (!StrEmpty(sounddriver)) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
 	if (!StrEmpty(videodriver)) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
-	if (StrEmpty(blitter)) ttd_strlcpy(blitter, _default_blitter, sizeof(blitter));
+	if (!StrEmpty(blitter))     ttd_strlcpy(_ini_blitter, blitter, sizeof(_ini_blitter));
 	if (resolution[0] != 0) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startyear != INVALID_YEAR) _patches_newgame.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _patches_newgame.generation_seed = generation_seed;
@@ -519,9 +517,11 @@ int ttd_main(int argc, char *argv[])
 	/* Initialize game palette */
 	GfxInitPalettes();
 
-	DEBUG(misc, 1, "Loading blitter '%s'...", blitter);
-	if (BlitterFactoryBase::SelectBlitter(blitter) == NULL)
-		error("Failed to select requested blitter '%s'; does it exist?", blitter);
+	DEBUG(misc, 1, "Loading blitter...");
+	if (BlitterFactoryBase::SelectBlitter(_ini_blitter) == NULL)
+		StrEmpty(_ini_blitter) ?
+			error("Failed to autoprobe blitter") :
+			error("Failed to select requested blitter '%s'; does it exist?", _ini_blitter);
 
 	DEBUG(driver, 1, "Loading drivers...");
 

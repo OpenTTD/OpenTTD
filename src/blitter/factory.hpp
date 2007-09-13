@@ -4,6 +4,7 @@
 #define BLITTER_FACTORY_HPP
 
 #include "base.hpp"
+#include "../string.h"
 #include <string>
 #include <map>
 
@@ -61,12 +62,15 @@ public:
 	 */
 	static Blitter *SelectBlitter(const char *name)
 	{
+		const char *default_blitter = "8bpp-optimized";
+
 		if (GetBlitters().size() == 0) return NULL;
+		const char *bname = (StrEmpty(name)) ? default_blitter : name;
 
 		Blitters::iterator it = GetBlitters().begin();
 		for (; it != GetBlitters().end(); it++) {
 			BlitterFactoryBase *b = (*it).second;
-			if (strcasecmp(name, b->name) == 0) {
+			if (strcasecmp(bname, b->name) == 0) {
 				Blitter *newb = b->CreateInstance();
 				delete *GetActiveBlitter();
 				*GetActiveBlitter() = newb;

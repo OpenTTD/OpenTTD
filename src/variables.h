@@ -315,7 +315,7 @@ VARDEF SmallFiosItem _file_to_saveload;
 
 VARDEF Vehicle *_place_clicked_vehicle;
 
-VARDEF char _ini_videodriver[32], _ini_musicdriver[32], _ini_sounddriver[32];
+VARDEF char _ini_videodriver[32], _ini_musicdriver[32], _ini_sounddriver[32], _ini_blitter[32];
 
 VARDEF int _num_resolutions;
 VARDEF uint16 _resolutions[32][2];
