@@ -37,15 +37,16 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 	FILE *f;
 	md5_state_t md5state;
 	md5_byte_t buffer[1024];
-	size_t len;
+	size_t len, size;
 
 	/* open the file */
-	f = FioFOpenFile(config->filename);
+	f = FioFOpenFile(config->filename, "rb", DATA_DIR, &size);
 	if (f == NULL) return false;
 
 	/* calculate md5sum */
 	md5_init(&md5state);
-	while ((len = fread(buffer, 1, sizeof(buffer), f)) != 0) {
+	while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
+		size -= len;
 		md5_append(&md5state, buffer, len);
 	}
 	md5_finish(&md5state, config->md5sum);

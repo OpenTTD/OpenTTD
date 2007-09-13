@@ -114,7 +114,8 @@ static bool CheckMD5Digest(const MD5File file, md5_byte_t *digest, bool warn)
  * returns true if the checksum is correct */
 static bool FileMD5(const MD5File file, bool warn)
 {
-	FILE *f = FioFOpenFile(file.filename);
+	size_t size;
+	FILE *f = FioFOpenFile(file.filename, "rb", DATA_DIR, &size);
 
 	if (f != NULL) {
 		md5_state_t filemd5state;
@@ -123,8 +124,10 @@ static bool FileMD5(const MD5File file, bool warn)
 		size_t len;
 
 		md5_init(&filemd5state);
-		while ((len = fread(buffer, 1, sizeof(buffer), f)) != 0)
+		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
+			size -= len;
 			md5_append(&filemd5state, buffer, len);
+		}
 
 		if (ferror(f) && warn) ShowInfoF("Error Reading from %s \n", file.filename);
 		fclose(f);

@@ -267,7 +267,7 @@ char *FioGetDirectory(char *buf, size_t buflen, Subdirectory subdir)
 	return buf;
 }
 
-FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subdirectory subdir)
+FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
 {
 #if defined(WIN32) && defined(UNICODE)
 	/* fopen is implemented as a define with ellipses for
@@ -293,11 +293,17 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 		f = fopen(buf, mode);
 	}
 #endif
+	if (f != NULL && filesize != NULL) {
+		/* Find the size of the file */
+		fseek(f, 0, SEEK_END);
+		*filesize = ftell(f);
+		fseek(f, 0, SEEK_SET);
+	}
 	return f;
 }
 
 /** Opens OpenTTD files somewhere in a personal or global directory */
-FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir)
+FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *size)
 {
 	FILE *f = NULL;
 	Searchpath sp;
@@ -305,7 +311,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir)
 	assert(subdir < NUM_SUBDIRS || subdir == NO_DIRECTORY);
 
 	FOR_ALL_SEARCHPATHS(sp) {
-		f = FioFOpenFileSp(filename, mode, sp, subdir);
+		f = FioFOpenFileSp(filename, mode, sp, subdir, size);
 		if (f != NULL || subdir == NO_DIRECTORY) break;
 	}
 
