@@ -121,7 +121,7 @@ bool SpriteExists(SpriteID id)
 	/* Special case for Sprite ID zero -- its position is also 0... */
 	if (id == 0) return true;
 	if (id >= _spritecache_items) return false;
-	return GetSpriteCache(id)->file_pos != 0;
+	return !(GetSpriteCache(id)->file_pos == 0 && GetSpriteCache(id)->file_slot == 0);
 }
 
 void* AllocSprite(size_t);
