@@ -36,6 +36,7 @@
 #include "newgrf_industrytiles.h"
 #include "newgrf_callbacks.h"
 #include "misc/autoptr.hpp"
+#include "autoslope.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -1974,6 +1975,30 @@ Money IndustrySpec::GetConstructionCost() const
 
 static CommandCost TerraformTile_Industry(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
+	if (AutoslopeEnabled()) {
+		/* We imitate here TTDP's behaviour:
+		 *  - Both new and old slope must not be steep.
+		 *  - TileMaxZ must not be changed.
+		 *  - Allow autoslope by default.
+		 *  - Disallow autoslope if callback succeeds and returns non-zero.
+		 */
+		Slope tileh_old = GetTileSlope(tile, NULL);
+		/* TileMaxZ must not be changed. Slopes must not be steep. */
+		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
+			const IndustryGfx gfx = GetIndustryGfx(tile);
+			const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
+
+			/* Call callback 3C 'disable autosloping for industry tiles'. */
+			if (HASBIT(itspec->callback_flags, CBM_INDT_AUTOSLOPE)) {
+				/* If the callback fails, allow autoslope. */
+				uint16 res = GetIndustryTileCallback(CBID_INDUSTRY_AUTOSLOPE, 0, 0, gfx, GetIndustryByTile(tile), tile);
+				if ((res == 0) || (res == CALLBACK_FAILED)) return _price.terraform;
+			} else {
+				// allow autoslope
+				return _price.terraform;
+			}
+		}
+	}
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR); // funny magic bulldozer
 }
 

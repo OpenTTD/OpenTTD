@@ -160,7 +160,7 @@ enum CallbackID {
 	CBID_INDUSTRY_SPECIAL_EFFECT         = 0x3B,
 
 	/** Called to determine if industry can alter the ground below industry tile */
-	CBID_INDUSTRY_AUTOSLOPE              = 0x3C, // not implemented
+	CBID_INDUSTRY_AUTOSLOPE              = 0x3C,
 
 	/** Called to determine if the industry can still accept or refuse more cargo arrival */
 	CBID_INDUSTRY_REFUSE_CARGO           = 0x3D,

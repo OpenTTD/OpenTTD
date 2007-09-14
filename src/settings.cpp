@@ -1362,6 +1362,7 @@ const SettingDesc _patch_settings[] = {
 	/***************************************************************************/
 	/* Construction section of the GUI-configure patches window */
 	SDT_BOOL(Patches, build_on_slopes,               0, 0,  true,        STR_CONFIG_PATCHES_BUILDONSLOPES,       NULL),
+	SDT_CONDBOOL(Patches, autoslope,                75, SL_MAX_VERSION, 0, 0, true,  STR_CONFIG_PATCHES_AUTOSLOPE,            NULL),
 	SDT_BOOL(Patches, extra_dynamite,                0, 0, false,        STR_CONFIG_PATCHES_EXTRADYNAMITE,       NULL),
 	SDT_BOOL(Patches, longbridges,                   0, 0,  true,        STR_CONFIG_PATCHES_LONGBRIDGES,         NULL),
 	SDT_BOOL(Patches, signal_side,                   N, 0,  true,        STR_CONFIG_PATCHES_SIGNALSIDE,          RedrawScreen),

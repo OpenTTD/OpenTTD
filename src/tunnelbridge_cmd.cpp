@@ -32,6 +32,7 @@
 #include "yapf/yapf.h"
 #include "date.h"
 #include "newgrf_sound.h"
+#include "autoslope.h"
 
 #include "table/bridge_land.h"
 
@@ -1416,6 +1417,30 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 
 static CommandCost TerraformTile_TunnelBridge(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
+	if (_patches.build_on_slopes && AutoslopeEnabled() && IsBridge(tile)) {
+		DiagDirection direction = GetBridgeRampDirection(tile);
+		Axis axis = DiagDirToAxis(direction);
+		CommandCost res;
+
+		/* Check if new slope is valid for bridges in general (so we can savely call GetBridgeFoundation()) */
+		if ((direction == DIAGDIR_NW) || (direction == DIAGDIR_NE)) {
+			res = CheckBridgeSlopeSouth(axis, tileh_new);
+		} else {
+			res = CheckBridgeSlopeNorth(axis, tileh_new);
+		}
+
+		if (!CmdFailed(res)) {
+			uint z_old;
+			Slope tileh_old = GetTileSlope(tile, &z_old);
+
+			z_old += ApplyFoundationToSlope(GetBridgeFoundation(tileh_old, axis), &tileh_old);
+			z_new += ApplyFoundationToSlope(GetBridgeFoundation(tileh_new, axis), &tileh_new);
+
+			/* Surface slope remains unchanged? */
+			if ((z_old == z_new) && (tileh_old == tileh_new)) return _price.terraform;
+		}
+	}
+
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }
 

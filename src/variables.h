@@ -240,6 +240,8 @@ struct Patches {
 
 	bool timetabling;        ///< Whether to allow timetabling.
 	bool timetable_in_ticks; ///< Whether to show the timetable in ticks rather than days.
+
+	bool autoslope;          ///< Allow terraforming under things.
 };
 
 VARDEF Patches _patches;

@@ -32,6 +32,12 @@
 #include "station_map.h"
 #include "tunnel_map.h"
 #include "misc/autoptr.hpp"
+#include "autoslope.h"
+
+#define M(x) (1 << (x))
+/* Level crossings may only be built on these slopes */
+static const uint32 VALID_LEVEL_CROSSING_SLOPES = (M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT));
+#undef M
 
 bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road, RoadType rt)
 {
@@ -405,12 +411,10 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 
-#define M(x) (1 << (x))
 			/* Level crossings may only be built on these slopes */
-			if (!HASBIT(M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT), tileh)) {
+			if (!HASBIT(VALID_LEVEL_CROSSING_SLOPES, tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
-#undef M
 
 			if (GetRailTileType(tile) != RAIL_TILE_NORMAL) goto do_clear;
 			switch (GetTrackBits(tile)) {
@@ -1372,6 +1376,41 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 
 static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
+	if (_patches.build_on_slopes && AutoslopeEnabled()) {
+		switch (GetRoadTileType(tile)) {
+			case ROAD_TILE_CROSSING:
+				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HASBIT(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return _price.terraform;
+				break;
+
+			case ROAD_TILE_DEPOT:
+				if (AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRoadDepotDirection(tile))) return _price.terraform;
+				break;
+
+			case ROAD_TILE_NORMAL: {
+				RoadBits bits = GetAllRoadBits(tile);
+				RoadBits bits_copy = bits;
+				/* Check if the slope-road_bits combination is valid at all, i.e. it is save to call GetRoadFoundation(). */
+				if (!CmdFailed(CheckRoadSlope(tileh_new, &bits_copy, ROAD_NONE))) {
+					/* CheckRoadSlope() sometimes changes the road_bits, if it does not agree with them. */
+					if (bits == bits_copy) {
+						uint z_old;
+						Slope tileh_old = GetTileSlope(tile, &z_old);
+
+						/* Get the slope on top of the foundation */
+						z_old += ApplyFoundationToSlope(GetRoadFoundation(tileh_old, bits), &tileh_old);
+						z_new += ApplyFoundationToSlope(GetRoadFoundation(tileh_new, bits), &tileh_new);
+
+						/* The surface slope must not be changed */
+						if ((z_old == z_new) && (tileh_old == tileh_new)) return _price.terraform;
+					}
+				}
+				break;
+			}
+
+			default: NOT_REACHED();
+		}
+	}
+
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }
 

@@ -39,6 +39,7 @@
 #include "newgrf_station.h"
 #include "train.h"
 #include "misc/autoptr.hpp"
+#include "autoslope.h"
 
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
@@ -219,8 +220,11 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 {
 	if (IsSteepSlope(tileh)) {
 		if (_patches.build_on_slopes && existing == 0) {
-			TrackBits valid = TRACK_BIT_CROSS | (HASBIT(1 << SLOPE_STEEP_W | 1 << SLOPE_STEEP_E, tileh) ? TRACK_BIT_VERT : TRACK_BIT_HORZ);
-			if (valid & rail_bits) return _price.terraform;
+			/* There may only be one track on steep slopes. (Autoslope calls with multiple bits in rail_bits) */
+			if (KILL_FIRST_BIT(rail_bits & TRACK_BIT_MASK) == 0) {
+				TrackBits valid = TRACK_BIT_CROSS | (HASBIT(1 << SLOPE_STEEP_W | 1 << SLOPE_STEEP_E, tileh) ? TRACK_BIT_VERT : TRACK_BIT_HORZ);
+				if (valid & rail_bits) return _price.terraform;
+			}
 		}
 	} else {
 		rail_bits |= existing;
@@ -2189,14 +2193,61 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	return VETSB_CONTINUE;
 }
 
+/**
+ * Tests if autoslope is allowed.
+ *
+ * @param tile The tile.
+ * @param flags Terraform command flags.
+ * @param z_old Old TileZ.
+ * @param tileh_old Old TileSlope.
+ * @param z_new New TileZ.
+ * @param tileh_new New TileSlope.
+ * @param rail_bits Trackbits.
+ */
+static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_old, Slope tileh_old, uint z_new, Slope tileh_new, TrackBits rail_bits)
+{
+	if (!_patches.build_on_slopes || !AutoslopeEnabled()) return CMD_ERROR;
+
+	/* Is the slope-rail_bits combination valid in general? I.e. is it save to call GetRailFoundation() ? */
+	if (CmdFailed(CheckRailSlope(tileh_new, rail_bits, TRACK_BIT_NONE, tile))) return CMD_ERROR;
+
+	/* Get the slopes on top of the foundations */
+	z_old += ApplyFoundationToSlope(GetRailFoundation(tileh_old, rail_bits), &tileh_old);
+	z_new += ApplyFoundationToSlope(GetRailFoundation(tileh_new, rail_bits), &tileh_new);
+
+	Slope track_corner;
+	switch (rail_bits) {
+		case TRACK_BIT_LEFT:  track_corner = SLOPE_W; break;
+		case TRACK_BIT_LOWER: track_corner = SLOPE_S; break;
+		case TRACK_BIT_RIGHT: track_corner = SLOPE_E; break;
+		case TRACK_BIT_UPPER: track_corner = SLOPE_N; break;
+
+		/* Surface slope must not be changed */
+		default: return (((z_old != z_new) || (tileh_old != tileh_new)) ? CMD_ERROR : _price.terraform);
+	}
+
+	/* The height of the track_corner must not be changed. The rest ensures GetRailFoundation() already. */
+	if ((tileh_old & track_corner) != 0) z_old += TILE_HEIGHT;
+	if ((tileh_new & track_corner) != 0) z_new += TILE_HEIGHT;
+	if (z_old != z_new) return CMD_ERROR;
+
+	/* Make the ground dirty, if surface slope has changed */
+	if ((tileh_old != tileh_new) && ((flags & DC_EXEC) != 0)) SetRailGroundType(tile, RAIL_GROUND_BARREN);
+
+	return _price.terraform;
+}
+
 static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
+	uint z_old;
+	Slope tileh_old = GetTileSlope(tile, &z_old);
 	if (IsPlainRailTile(tile)) {
-		uint z_old;
-		Slope tileh_old = GetTileSlope(tile, &z_old);
 		TrackBits rail_bits = GetTrackBits(tile);
 
 		_error_message = STR_1008_MUST_REMOVE_RAILROAD_TRACK;
+
+		/* First test autoslope. However if it succeeds we still have to test the rest, because non-autoslope terraforming is cheaper. */
+		CommandCost autoslope_result = TestAutoslopeOnRailTile(tile, flags, z_old, tileh_old, z_new, tileh_new, rail_bits);
 
 		/* When there is only a single horizontal/vertical track, one corner can be terraformed. */
 		Slope allowed_corner;
@@ -2205,7 +2256,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new,
 			case TRACK_BIT_UPPER: allowed_corner = SLOPE_S; break;
 			case TRACK_BIT_LEFT:  allowed_corner = SLOPE_E; break;
 			case TRACK_BIT_LOWER: allowed_corner = SLOPE_N; break;
-			default: return CMD_ERROR;
+			default: return autoslope_result;
 		}
 
 		Slope track_corners = ComplementSlope(allowed_corner);
@@ -2221,28 +2272,28 @@ static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new,
 					z_new += TILE_HEIGHT;
 				} else {
 					/* do not build a foundation */
-					if ((tileh_new != SLOPE_FLAT) && (tileh_new != allowed_corner)) return CMD_ERROR;
+					if ((tileh_new != SLOPE_FLAT) && (tileh_new != allowed_corner)) return autoslope_result;
 				}
 
 				/* Track height must remain unchanged */
-				if (z_old != z_new) return CMD_ERROR;
+				if (z_old != z_new) return autoslope_result;
 				break;
 
 			case FOUNDATION_LEVELED:
 				/* Is allowed_corner covered by the foundation? */
-				if ((tileh_old & allowed_corner) == 0) return CMD_ERROR;
+				if ((tileh_old & allowed_corner) == 0) return autoslope_result;
 
 				/* allowed_corner may only be raised -> steep slope */
-				if ((z_old != z_new) || (tileh_new != (tileh_old | SLOPE_STEEP))) return CMD_ERROR;
+				if ((z_old != z_new) || (tileh_new != (tileh_old | SLOPE_STEEP))) return autoslope_result;
 				break;
 
 			case FOUNDATION_STEEP_LOWER:
 				/* Only allow to lower highest corner */
-				if ((z_old != z_new) || (tileh_new != (tileh_old & ~SLOPE_STEEP))) return CMD_ERROR;
+				if ((z_old != z_new) || (tileh_new != (tileh_old & ~SLOPE_STEEP))) return autoslope_result;
 				break;
 
 			case FOUNDATION_STEEP_HIGHER:
-				return CMD_ERROR;
+				return autoslope_result;
 
 			default: NOT_REACHED();
 		}
@@ -2252,6 +2303,22 @@ static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new,
 
 		/* allow terraforming, no extra costs */
 		return CommandCost();
+	} else {
+		if (_patches.build_on_slopes && AutoslopeEnabled()) {
+			switch (GetRailTileType(tile)) {
+				case RAIL_TILE_WAYPOINT: {
+					CommandCost cost = TestAutoslopeOnRailTile(tile, flags, z_old, tileh_old, z_new, tileh_new, GetRailWaypointBits(tile));
+					if (!CmdFailed(cost)) return cost; // allow autoslope
+					break;
+				}
+
+				case RAIL_TILE_DEPOT:
+					if (AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) return _price.terraform;
+					break;
+
+				default: NOT_REACHED();
+			}
+		}
 	}
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }

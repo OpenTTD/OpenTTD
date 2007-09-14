@@ -90,6 +90,19 @@ static inline byte GetHighestSlopeCorner(Slope s)
 	}
 }
 
+/**
+ * Returns the height of the highest corner of a slope relative to TileZ (= minimal height)
+ *
+ * @param s The #Slope.
+ * @return Relative height of highest corner.
+ */
+static inline uint GetSlopeMaxZ(Slope s)
+{
+	if (s == SLOPE_FLAT) return 0;
+	if (IsSteepSlope(s)) return 2 * TILE_HEIGHT;
+	return TILE_HEIGHT;
+}
+
 
 /**
  * Enumeration for Foundations.

@@ -24,6 +24,7 @@
 #include "table/unmovable_land.h"
 #include "genworld.h"
 #include "bridge.h"
+#include "autoslope.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
@@ -407,6 +408,10 @@ static CommandCost TerraformTile_Unmovable(TileIndex tile, uint32 flags, uint z_
 {
 	/* Owned land remains unsold */
 	if (IsOwnedLand(tile) && CheckTileOwnership(tile)) return CommandCost();
+
+	if (AutoslopeEnabled() && (IsStatue(tile) || IsCompanyHQ(tile))) {
+		if (!IsSteepSlope(tileh_new) && (z_new + GetSlopeMaxZ(tileh_new) == GetTileMaxZ(tile))) return _price.terraform;
+	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }

@@ -41,6 +41,7 @@
 #include "newgrf_commons.h"
 #include "newgrf_townname.h"
 #include "misc/autoptr.hpp"
+#include "autoslope.h"
 
 /* Initialize the town-pool */
 DEFINE_OLD_POOL_GENERIC(Town, Town)
@@ -2309,6 +2310,15 @@ void InitializeTowns()
 
 static CommandCost TerraformTile_Town(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
+	if (AutoslopeEnabled()) {
+		HouseID house = GetHouseType(tile);
+		HouseSpec *hs = GetHouseSpecs(house);
+
+		/* Here we differ from TTDP by checking TILE_NOT_SLOPED */
+		if (((hs->building_flags & TILE_NOT_SLOPED) == 0) && !IsSteepSlope(tileh_new) &&
+			(GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) return _price.terraform;
+	}
+
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }
 

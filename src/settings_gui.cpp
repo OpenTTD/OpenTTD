@@ -664,6 +664,7 @@ static const char *_patches_ui[] = {
 
 static const char *_patches_construction[] = {
 	"build_on_slopes",
+	"autoslope",
 	"extra_dynamite",
 	"longbridges",
 	"signal_side",

@@ -42,6 +42,7 @@
 #include "road.h"
 #include "cargotype.h"
 #include "strings.h"
+#include "autoslope.h"
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)
@@ -2880,6 +2881,36 @@ void AfterLoadStations()
 
 static CommandCost TerraformTile_Station(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
+	if (_patches.build_on_slopes && AutoslopeEnabled()) {
+		/* TODO: If you implement newgrf callback 149 'land slope check', you have to decide what to do with it here.
+		 *       TTDP does not call it.
+		 */
+		if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
+			switch (GetStationType(tile)) {
+				case STATION_RAIL: {
+					DiagDirection direction = AxisToDiagDir(GetRailStationAxis(tile));
+					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction)) break;
+					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction))) break;
+					return _price.terraform;
+				}
+
+				case STATION_AIRPORT:
+					return _price.terraform;
+
+				case STATION_TRUCK:
+				case STATION_BUS: {
+					DiagDirection direction = GetRoadStopDir(tile);
+					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction)) break;
+					if (IsDriveThroughStopTile(tile)) {
+						if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction))) break;
+					}
+					return _price.terraform;
+				}
+
+				default: break;
+			}
+		}
+	}
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }
 
