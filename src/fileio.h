@@ -6,7 +6,7 @@
 #define FILEIO_H
 
 #include "helpers.hpp"
-#include <list>
+#include <vector>
 
 void FioSeekTo(uint32 pos, int mode);
 void FioSeekToFile(uint8 slot, uint32 pos);
@@ -64,7 +64,7 @@ extern const char *_searchpaths[NUM_SEARCHPATHS];
 /**
  * All the tar-files OpenTTD could search through.
  */
-extern std::list<const char *>_tar_list;
+extern std::vector<const char *>_tar_list;
 
 /**
  * Checks whether the given search path is a valid search path
@@ -78,7 +78,7 @@ static inline bool IsValidSearchPath(Searchpath sp)
 
 /** Iterator for all the search paths */
 #define FOR_ALL_SEARCHPATHS(sp) for (sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) if (IsValidSearchPath(sp))
-#define FOR_ALL_TARS(tar) for (std::list<const char *>::iterator it = _tar_list.begin(); it != _tar_list.end(); it++) if (tar = *it, true)
+#define FOR_ALL_TARS(tar) for (std::vector<const char *>::iterator it = _tar_list.begin(); it != _tar_list.end(); it++) if (tar = *it, true)
 
 typedef bool FioTarFileListCallback(const char *filename, int size, void *userdata);
 FILE *FioTarFileList(const char *tar, const char *mode, size_t *filesize, FioTarFileListCallback *callback, void *userdata);

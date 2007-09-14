@@ -204,7 +204,7 @@ const char *_subdirs[NUM_SUBDIRS] = {
 };
 
 const char *_searchpaths[NUM_SEARCHPATHS];
-std::list<const char *> _tar_list;
+std::vector<const char *> _tar_list;
 
 /**
  * Check whether the given file exists
