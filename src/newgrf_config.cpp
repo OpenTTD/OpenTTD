@@ -356,12 +356,35 @@ static uint ScanPath(const char *path, int basepath_length)
 	return num;
 }
 
+bool FioTarFileListScanNewGRFCallback(const char *filename, int size, void *userdata)
+{
+	uint *num = (uint *)userdata;
+	char *ext = strrchr(filename, '.');
+
+	/* If no extension or extension isn't .grf, skip the file */
+	if (ext == NULL) return false;
+	if (strcasecmp(ext, ".grf") != 0) return false;
+
+	if (ScanPathAddGrf(filename)) (*num)++;
+
+	/* Always return false, as we don't want to stop with listing all the files */
+	return false;
+}
+
+static uint ScanTar(const char *filename)
+{
+	uint num = 0;
+
+	FioTarFileList(filename, "rb", NULL, FioTarFileListScanNewGRFCallback, &num);
+	return num;
+}
 
 /* Scan for all NewGRFs */
 void ScanNewGRFFiles()
 {
 	Searchpath sp;
 	char path[MAX_PATH];
+	const char *tar;
 	uint num = 0;
 
 	ClearGRFConfigList(&_all_grfs);
@@ -370,6 +393,9 @@ void ScanNewGRFFiles()
 	FOR_ALL_SEARCHPATHS(sp) {
 		FioAppendDirectory(path, MAX_PATH, sp, DATA_DIR);
 		num += ScanPath(path, strlen(path));
+	}
+	FOR_ALL_TARS(tar) {
+		num += ScanTar(tar);
 	}
 	DEBUG(grf, 1, "Scan complete, found %d files", num);
 }

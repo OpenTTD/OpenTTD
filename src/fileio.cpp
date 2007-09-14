@@ -204,6 +204,7 @@ const char *_subdirs[NUM_SUBDIRS] = {
 };
 
 const char *_searchpaths[NUM_SEARCHPATHS];
+std::list<const char *> _tar_list;
 
 /**
  * Check whether the given file exists
@@ -302,6 +303,99 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 	return f;
 }
 
+FILE *FioTarFileList(const char *tar, const char *mode, size_t *filesize, FioTarFileListCallback *callback, void *userdata)
+{
+	/* The TAR-header, repeated for every file */
+	typedef struct TarHeader {
+		char name[100];      ///< Name of the file
+		char mode[8];
+		char uid[8];
+		char gid[8];
+		char size[12];       ///< Size of the file, in ASCII
+		char mtime[12];
+		char chksum[8];
+		char typeflag;
+		char linkname[100];
+		char magic[6];
+		char version[2];
+		char uname[32];
+		char gname[32];
+		char devmajor[8];
+		char devminor[8];
+		char prefix[155];    ///< Path of the file
+
+		char unused[12];
+	} TarHeader;
+
+	assert(mode[0] == 'r'); // Only reading is supported
+	assert(callback != NULL); // We need a callback, else this function doens't do much
+
+#if defined(WIN32) && defined(UNICODE)
+	/* fopen is implemented as a define with ellipses for
+	 * Unicode support (prepend an L). As we are not sending
+	 * a string, but a variable, it 'renames' the variable,
+	 * so make that variable to makes it compile happily */
+	wchar_t Lmode[5];
+	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, lengthof(Lmode));
+#endif
+
+	FILE *f = fopen(tar, mode);
+	assert(f != NULL);
+
+	TarHeader th;
+	char buf[sizeof(th.name) + 1], *end;
+	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1];
+
+	while (!feof(f)) {
+		/* Read the header and make sure it is a valid one */
+		fread(&th, 1, 512, f);
+		if (strncmp(th.magic, "ustar", 5) != 0) return NULL;
+
+		name[0] = '\0';
+		int len = 0;
+
+		/* The prefix contains the directory-name */
+		if (th.prefix[0] != '\0') {
+			memcpy(name, th.prefix, sizeof(th.prefix));
+			name[sizeof(th.prefix)] = '\0';
+			len = strlen(name);
+			name[len] = PATHSEPCHAR;
+			len++;
+		}
+
+		/* Copy the name of the file in a safe way at the end of 'name' */
+		memcpy(&name[len], th.name, sizeof(th.name));
+		name[len + sizeof(th.name)] = '\0';
+
+		/* Calculate the size of the file.. for some strange reason this is stored as a string */
+		memcpy(buf, th.size, sizeof(th.size));
+		buf[sizeof(th.size)] = '\0';
+		int skip = strtol(buf, &end, 8);
+
+		/* Check in the callback if this is the file we want */
+		if (callback(name, skip, userdata)) {
+			if (filesize != NULL) *filesize = skip;
+			return f;
+		}
+
+		/* Skip to the next block.. */
+		fseek(f, ALIGN(skip, 512), SEEK_CUR);
+	}
+
+	fclose(f);
+	return NULL;
+}
+
+bool FioFOpenFileTarFileListCallback(const char *filename, int size, void *search_filename)
+{
+	return strcasecmp(filename, (const char *)search_filename) == 0;
+}
+
+FILE *FioFOpenFileTar(const char *filename, const char *tar_filename, size_t *filesize)
+{
+	return FioTarFileList(tar_filename, "rb", filesize, FioFOpenFileTarFileListCallback, (void *)filename);
+}
+
 /** Opens OpenTTD files somewhere in a personal or global directory */
 FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize)
 {
@@ -313,6 +407,14 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 	FOR_ALL_SEARCHPATHS(sp) {
 		f = FioFOpenFileSp(filename, mode, sp, subdir, filesize);
 		if (f != NULL || subdir == NO_DIRECTORY) break;
+	}
+	/* We can only use .tar in case of data-dir, and read-mode */
+	if (f == NULL && subdir == DATA_DIR && mode[0] == 'r') {
+		const char *tar;
+		FOR_ALL_TARS(tar) {
+			f = FioFOpenFileTar(filename, tar, filesize);
+			if (f != NULL) break;
+		}
 	}
 
 	return f;
@@ -410,6 +512,74 @@ void ChangeWorkingDirectory(const char *exe)
 #endif /* WITH_COCOA */
 }
 
+static bool TarListAddFile(const char *filename)
+{
+	/* See if we already have a tar by that name; useless to have double entries in our list */
+	const char *tar;
+	FOR_ALL_TARS(tar) {
+		if (strcmp(tar, filename) == 0) return false;
+	}
+
+	DEBUG(misc, 1, "Found tar: %s", filename);
+	_tar_list.push_back(strdup(filename));
+
+	return true;
+}
+
+static int ScanPathForTarFiles(const char *path, int basepath_length)
+{
+	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
+
+	uint num = 0;
+	struct stat sb;
+	struct dirent *dirent;
+	DIR *dir;
+
+	if (path == NULL || (dir = ttd_opendir(path)) == NULL) return 0;
+
+	while ((dirent = readdir(dir)) != NULL) {
+		const char *d_name = FS2OTTD(dirent->d_name);
+		char filename[MAX_PATH];
+
+		if (!FiosIsValidFile(path, dirent, &sb)) continue;
+
+		snprintf(filename, lengthof(filename), "%s%s", path, d_name);
+
+		if (sb.st_mode & S_IFDIR) {
+			/* Directory */
+			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
+			AppendPathSeparator(filename, lengthof(filename));
+			num += ScanPathForTarFiles(filename, basepath_length);
+		} else if (sb.st_mode & S_IFREG) {
+			/* File */
+			char *ext = strrchr(filename, '.');
+
+			/* If no extension or extension isn't .tar, skip the file */
+			if (ext == NULL) continue;
+			if (strcasecmp(ext, ".tar") != 0) continue;
+
+			if (TarListAddFile(filename)) num++;
+		}
+	}
+
+	closedir(dir);
+	return num;
+}
+
+static void ScanForTarFiles()
+{
+	Searchpath sp;
+	char path[MAX_PATH];
+	uint num = 0;
+
+	DEBUG(misc, 1, "Scanning for tars");
+	FOR_ALL_SEARCHPATHS(sp) {
+		FioAppendDirectory(path, MAX_PATH, sp, DATA_DIR);
+		num += ScanPathForTarFiles(path, strlen(path));
+	}
+	DEBUG(misc, 1, "Scan complete, found %d files", num);
+}
+
 /**
  * Determine the base (personal dir and game data dir) paths
  * @param exe the path to the executable
@@ -461,6 +631,8 @@ extern void cocoaSetApplicationBundleDir();
 #else
 	_searchpaths[SP_APPLICATION_BUNDLE_DIR] = NULL;
 #endif
+
+	ScanForTarFiles();
 }
 #endif /* defined(WIN32) || defined(WINCE) */
 
