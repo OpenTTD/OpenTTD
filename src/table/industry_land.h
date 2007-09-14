@@ -39,7 +39,7 @@ struct DrawIndustryCoordinates {
  * @param dz virtual height of the sprite
  * @param p this allows to specify a special drawing procedure.
  * @see DrawBuildingsTileStruct */
-#define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w - 1, h - 1, dz, p }
+#define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w, h, dz, p }
 
 /** Structure for industry tiles drawing */
 static const DrawBuildingsTileStruct _industry_draw_tile_data[NEW_INDUSTRYTILEOFFSET * 4] = {

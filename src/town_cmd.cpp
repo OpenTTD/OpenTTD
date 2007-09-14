@@ -182,8 +182,8 @@ static void DrawTile_Town(TileInfo *ti)
 		AddSortableSpriteToDraw(image, dcts->building.pal,
 			ti->x + dcts->subtile_x,
 			ti->y + dcts->subtile_y,
-			dcts->width + 1,
-			dcts->height + 1,
+			dcts->width,
+			dcts->height,
 			dcts->dz,
 			ti->z,
 			HASBIT(_transparent_opt, TO_HOUSES)

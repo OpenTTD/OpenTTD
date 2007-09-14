@@ -15,7 +15,7 @@
  * @param dz the virtual height of the sprite
  * @param p set to 1 if a lift is present ()
  * @see DrawBuildingsTileStruct */
-#define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w - 1, h - 1, dz, p}
+#define M(s1, p1, s2, p2, sx, sy, w, h, dz, p) { { s1, p1 }, { s2, p2 }, sx, sy, w, h, dz, p}
 
 /** structure of houses graphics*/
 static const DrawBuildingsTileStruct _town_draw_tile_data[] = {
