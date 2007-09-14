@@ -1161,13 +1161,13 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 						continue;
 					}
 				} else {
+					/* We only change the order, if it is definite.
+					 * I.e. every single order of X, Y, Z says ps2 is behind ps or they overlap.
+					 * That is: If one partial order says ps behind ps2, do not change the order.
+					 */
 					if (ps->xmax < ps2->xmin ||
 							ps->ymax < ps2->ymin ||
-							ps->zmax < ps2->zmin || (
-								ps->xmin < ps2->xmax &&
-								ps->ymin < ps2->ymax &&
-								ps->zmin < ps2->zmax
-							)) {
+							ps->zmax < ps2->zmin) {
 						continue;
 					}
 				}
