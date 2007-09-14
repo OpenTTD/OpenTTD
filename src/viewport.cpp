@@ -84,25 +84,30 @@ struct ParentSpriteToDraw {
 	SpriteID image;                 ///< sprite to draw
 	SpriteID pal;                   ///< palette to use
 
+	int32 x;                        ///< screen X coordinate of sprite
+	int32 y;                        ///< screen Y coordinate of sprite
+
 	int32 left;                     ///< minimal screen X coordinate of sprite (= x + sprite->x_offs), reference point for child sprites
 	int32 top;                      ///< minimal screen Y coordinate of sprite (= y + sprite->y_offs), reference point for child sprites
-	int32 right;
-	int32 bottom;
 
 	int32 xmin;                     ///< minimal world X coordinate of bounding box
 	int32 xmax;                     ///< maximal world X coordinate of bounding box
 	int32 ymin;                     ///< minimal world Y coordinate of bounding box
 	int32 ymax;                     ///< maximal world Y coordinate of bounding box
-	byte zmin;                      ///< minimal world Z coordinate of bounding box
-	byte zmax;                      ///< maximal world Z coordinate of bounding box
+	int zmin;                       ///< minimal world Z coordinate of bounding box
+	int zmax;                       ///< maximal world Z coordinate of bounding box
 
 	ChildScreenSpriteToDraw *child; ///< head of child list;
-	bool comparaison_done;          ///< Used during sprite sorting: true if sprite has been compared with all other sprites
+	bool comparison_done;           ///< Used during sprite sorting: true if sprite has been compared with all other sprites
 };
 
 /* Quick hack to know how much memory to reserve when allocating from the spritelist
  * to prevent a buffer overflow. */
 #define LARGEST_SPRITELIST_STRUCT ParentSpriteToDraw
+assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(StringSpriteToDraw));
+assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(TileSpriteToDraw));
+assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(ChildScreenSpriteToDraw));
+assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(ParentSpriteToDraw));
 
 struct ViewportDrawer {
 	DrawPixelInfo dpi;
@@ -482,18 +487,29 @@ static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z
 	AddChildSpriteScreen(image, pal, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top);
 }
 
-/** Draw a (transparent) sprite at given coordinates
+/** Draw a (transparent) sprite at given coordinates with a given bounding box.
+ * The bounding box extends from (x + bb_offset_x, y + bb_offset_y, z + bb_offset_z) to (x + w - 1, y + h - 1, z + dz - 1), both corners included.
+ *
+ * @note Bounding boxes are normally specified with bb_offset_x = bb_offset_y = bb_offset_z = 0. The extent of the bounding box in negative direction is
+ *       defined by the sprite offset in the grf file.
+ *       However if modifying the sprite offsets is not suitable (e.g. when using existing graphics), the bounding box can be tuned by bb_offset.
+ *
+ * @pre w > bb_offset_x, h > bb_offset_y, dz > bb_offset_z. Else w, h or dz are ignored.
+ *
  * @param image the image to combine and draw,
  * @param pal the provided palette,
- * @param x position x of the sprite,
- * @param y position y of the sprite,
- * @param w width of the sprite,
- * @param h height of the sprite,
- * @param dz delta z, difference of elevation between sprite and parent sprite,
- * @param z elevation of the sprite,
- * @param transparent if true, switch the palette between the provided palette and the transparent palette
+ * @param x position X (world) of the sprite,
+ * @param y position Y (world) of the sprite,
+ * @param w bounding box extent towards positive X (world),
+ * @param h bounding box extent towards positive Y (world),
+ * @param dz bounding box extent towards positive Z (world),
+ * @param z position Z (world) of the sprite,
+ * @param transparent if true, switch the palette between the provided palette and the transparent palette,
+ * @param bb_offset_x bounding box extent towards negative X (world),
+ * @param bb_offset_y bounding box extent towards negative Y (world),
+ * @param bb_offset_z bounding box extent towards negative Z (world)
  */
-void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, byte dz, byte z, bool transparent)
+void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, int dz, int z, bool transparent, int bb_offset_x, int bb_offset_y, int bb_offset_z)
 {
 	ViewportDrawer *vd = _cur_vd;
 	ParentSpriteToDraw *ps;
@@ -533,11 +549,13 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	}
 
 	pt = RemapCoords(x, y, z);
+	ps->x = pt.x;
+	ps->y = pt.y;
 	spr = GetSprite(image & SPRITE_MASK);
 	if ((ps->left   = (pt.x += spr->x_offs)) >= vd->dpi.left + vd->dpi.width ||
-			(ps->right  = (pt.x +  spr->width )) <= vd->dpi.left ||
+			(             (pt.x +  spr->width )) <= vd->dpi.left ||
 			(ps->top    = (pt.y += spr->y_offs)) >= vd->dpi.top + vd->dpi.height ||
-			(ps->bottom = (pt.y +  spr->height)) <= vd->dpi.top) {
+			(             (pt.y +  spr->height)) <= vd->dpi.top) {
 		return;
 	}
 
@@ -545,16 +563,16 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 
 	ps->image = image;
 	ps->pal = pal;
-	ps->xmin = x;
-	ps->xmax = x + w - 1;
+	ps->xmin = x + bb_offset_x;
+	ps->xmax = x + max(bb_offset_x, w - 1);
 
-	ps->ymin = y;
-	ps->ymax = y + h - 1;
+	ps->ymin = y + bb_offset_y;
+	ps->ymax = y + max(bb_offset_y, h - 1);
 
-	ps->zmin = z;
-	ps->zmax = z + dz - 1;
+	ps->zmin = z + bb_offset_z;
+	ps->zmax = z + max(bb_offset_z, dz - 1);
 
-	ps->comparaison_done = false;
+	ps->comparison_done = false;
 	ps->child = NULL;
 	vd->last_child = &ps->child;
 
@@ -1133,16 +1151,16 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 	while (*psd != NULL) {
 		ParentSpriteToDraw* ps = *psd;
 
-		if (!ps->comparaison_done) {
+		if (!ps->comparison_done) {
 			ParentSpriteToDraw** psd2 = psd;
 
-			ps->comparaison_done = true;
+			ps->comparison_done = true;
 
 			while (*++psd2 != NULL) {
 				ParentSpriteToDraw* ps2 = *psd2;
 				ParentSpriteToDraw** psd3;
 
-				if (ps2->comparaison_done) continue;
+				if (ps2->comparison_done) continue;
 
 				/* Decide which comparator to use, based on whether the bounding
 				 * boxes overlap
@@ -1192,10 +1210,9 @@ static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
 {
 	for (; *psd != NULL; psd++) {
 		const ParentSpriteToDraw* ps = *psd;
-		Point pt = RemapCoords(ps->xmin, ps->ymin, ps->zmin);
 		const ChildScreenSpriteToDraw* cs;
 
-		DrawSprite(ps->image, ps->pal, pt.x, pt.y);
+		DrawSprite(ps->image, ps->pal, ps->x, ps->y);
 
 		for (cs = ps->child; cs != NULL; cs = cs->next) {
 			DrawSprite(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y);
