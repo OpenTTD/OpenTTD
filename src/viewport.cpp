@@ -1147,9 +1147,9 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 				/* Decide which comparator to use, based on whether the bounding
 				 * boxes overlap
 				 */
-				if (ps->xmax > ps2->xmin && ps->xmin < ps2->xmax && // overlap in X?
-						ps->ymax > ps2->ymin && ps->ymin < ps2->ymax && // overlap in Y?
-						ps->zmax > ps2->zmin && ps->zmin < ps2->zmax) { // overlap in Z?
+				if (ps->xmax >= ps2->xmin && ps->xmin <= ps2->xmax && // overlap in X?
+						ps->ymax >= ps2->ymin && ps->ymin <= ps2->ymax && // overlap in Y?
+						ps->zmax >= ps2->zmin && ps->zmin <= ps2->zmax) { // overlap in Z?
 					/* Use X+Y+Z as the sorting order, so sprites closer to the bottom of
 					 * the screen and with higher Z elevation, are drawn in front.
 					 * Here X,Y,Z are the coordinates of the "center of mass" of the sprite,
