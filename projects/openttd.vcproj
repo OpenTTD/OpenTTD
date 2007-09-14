@@ -403,6 +403,9 @@
 				RelativePath=".\..\src\articulated_vehicles.h">
 			</File>
 			<File
+				RelativePath=".\..\src\autoslope.h">
+			</File>
+			<File
 				RelativePath=".\..\src\aystar.h">
 			</File>
 			<File
