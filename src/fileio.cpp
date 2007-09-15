@@ -16,8 +16,8 @@
 #else
 #include <pwd.h>
 #include <unistd.h>
-#include <sys/stat.h>
 #endif
+#include <sys/stat.h>
 
 /*************************************************/
 /* FILE IO ROUTINES ******************************/
@@ -477,41 +477,6 @@ char *BuildWithFullPath(const char *dir)
 	return dest;
 }
 
-#if defined(WIN32) || defined(WINCE)
-/**
- * Determine the base (personal dir and game data dir) paths
- * @param exe the path from the current path to the executable
- * @note defined in the OS related files (os2.cpp, win32.cpp, unix.cpp etc)
- */
-extern void DetermineBasePaths(const char *exe);
-#else /* defined(WIN32) || defined(WINCE) */
-
-/**
- * Changes the working directory to the path of the give executable.
- * For OSX application bundles '.app' is the required extension of the bundle,
- * so when we crop the path to there, when can remove the name of the bundle
- * in the same way we remove the name from the executable name.
- * @param exe the path to the executable
- */
-void ChangeWorkingDirectory(const char *exe)
-{
-#ifdef WITH_COCOA
-	char *app_bundle = strchr(exe, '.');
-	while (app_bundle != NULL && strncasecmp(app_bundle, ".app", 4) != 0) app_bundle = strchr(&app_bundle[1], '.');
-
-	if (app_bundle != NULL) app_bundle[0] = '\0';
-#endif /* WITH_COCOA */
-	char *s = strrchr(exe, PATHSEPCHAR);
-	if (s != NULL) {
-		*s = '\0';
-		chdir(exe);
-		*s = PATHSEPCHAR;
-	}
-#ifdef WITH_COCOA
-	if (app_bundle != NULL) app_bundle[0] = '.';
-#endif /* WITH_COCOA */
-}
-
 static bool TarListAddFile(const char *filename)
 {
 	/* See if we already have a tar by that name; useless to have double entries in our list */
@@ -566,7 +531,7 @@ static int ScanPathForTarFiles(const char *path, int basepath_length)
 	return num;
 }
 
-static void ScanForTarFiles()
+void ScanForTarFiles()
 {
 	Searchpath sp;
 	char path[MAX_PATH];
@@ -578,6 +543,41 @@ static void ScanForTarFiles()
 		num += ScanPathForTarFiles(path, strlen(path));
 	}
 	DEBUG(misc, 1, "Scan complete, found %d files", num);
+}
+
+#if defined(WIN32) || defined(WINCE)
+/**
+ * Determine the base (personal dir and game data dir) paths
+ * @param exe the path from the current path to the executable
+ * @note defined in the OS related files (os2.cpp, win32.cpp, unix.cpp etc)
+ */
+extern void DetermineBasePaths(const char *exe);
+#else /* defined(WIN32) || defined(WINCE) */
+
+/**
+ * Changes the working directory to the path of the give executable.
+ * For OSX application bundles '.app' is the required extension of the bundle,
+ * so when we crop the path to there, when can remove the name of the bundle
+ * in the same way we remove the name from the executable name.
+ * @param exe the path to the executable
+ */
+void ChangeWorkingDirectory(const char *exe)
+{
+#ifdef WITH_COCOA
+	char *app_bundle = strchr(exe, '.');
+	while (app_bundle != NULL && strncasecmp(app_bundle, ".app", 4) != 0) app_bundle = strchr(&app_bundle[1], '.');
+
+	if (app_bundle != NULL) app_bundle[0] = '\0';
+#endif /* WITH_COCOA */
+	char *s = strrchr(exe, PATHSEPCHAR);
+	if (s != NULL) {
+		*s = '\0';
+		chdir(exe);
+		*s = PATHSEPCHAR;
+	}
+#ifdef WITH_COCOA
+	if (app_bundle != NULL) app_bundle[0] = '.';
+#endif /* WITH_COCOA */
 }
 
 /**
