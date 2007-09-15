@@ -7,7 +7,7 @@
 	extern const char _openttd_revision[];
 #elif defined(WITH_REV_HACK)
 	#define WITH_REV
-	const char _openttd_revision[] = WITH_REV_HACK;
+	const char _openttd_revision[] = "0.5.3";
 #else
 	const char _openttd_revision[] = NOREV_STRING;
 #endif
