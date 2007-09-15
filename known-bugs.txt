@@ -14,6 +14,7 @@ Bugs for 0.5.3
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+-944	Incorrect el-rail catenary pole/wire offsets
 -917	Load scenario with no towns failed without proper warning
 -873	Assertion window fails to open on OSX
 -820	Pillar drawing order glich, with newbridges
@@ -30,7 +31,6 @@ URL: http://bugs.openttd.org
 -501	Mouse pointer gets hidden, when draging out of window and back again. Only affects Wacom etc.
 -494	Get free money abusing a stock bug
 -474	Overtaking car doesn't hit the against-riding car.
--458	Crash when changing Resolution on Mac OS X (x86)
 -435	Assertion window doesn't show when in fullscreen on Mac OS X
 -423	Improved loading causes high CPU use with long trains
 -410	Openttd in dedicated mode don't run without data files
