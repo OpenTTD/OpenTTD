@@ -359,7 +359,7 @@ static uint ScanPath(const char *path, int basepath_length)
 bool FioTarFileListScanNewGRFCallback(const char *filename, int size, void *userdata)
 {
 	uint *num = (uint *)userdata;
-	char *ext = strrchr(filename, '.');
+	const char *ext = strrchr(filename, '.');
 
 	/* If no extension or extension isn't .grf, skip the file */
 	if (ext == NULL) return false;
