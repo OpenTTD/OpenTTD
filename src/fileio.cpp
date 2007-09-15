@@ -349,7 +349,8 @@ FILE *FioTarFileList(const char *tar, const char *mode, size_t *filesize, FioTar
 	while (!feof(f)) {
 		/* Read the header and make sure it is a valid one */
 		fread(&th, 1, 512, f);
-		if (strncmp(th.magic, "ustar", 5) != 0) return NULL;
+		/* 'ustar' is the new format, '\0' is the old format */
+		if (th.magic[0] != '\0' && strncmp(th.magic, "ustar", 5) != 0) return NULL;
 
 		name[0] = '\0';
 		int len = 0;
@@ -371,6 +372,9 @@ FILE *FioTarFileList(const char *tar, const char *mode, size_t *filesize, FioTar
 		memcpy(buf, th.size, sizeof(th.size));
 		buf[sizeof(th.size)] = '\0';
 		int skip = strtol(buf, &end, 8);
+
+		/* 0 byte sized files can be skipped (dirs, symlinks, ..) */
+		if (skip == 0) continue;
 
 		/* Check in the callback if this is the file we want */
 		if (callback(name, skip, userdata)) {
