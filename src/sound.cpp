@@ -30,6 +30,7 @@ static void OpenBankFile(const char *filename)
 	uint i;
 
 	FioOpenFile(SOUND_SLOT, filename);
+	uint pos = FioGetPos();
 	count = FioReadDword() / 8;
 	FileEntry *fe = CallocT<FileEntry>(count);
 
@@ -42,11 +43,11 @@ static void OpenBankFile(const char *filename)
 	_file_count = count;
 	_files = fe;
 
-	FioSeekTo(0, SEEK_SET);
+	FioSeekTo(pos, SEEK_SET);
 
 	for (i = 0; i != count; i++) {
 		fe[i].file_slot = SOUND_SLOT;
-		fe[i].file_offset = FioReadDword();
+		fe[i].file_offset = FioReadDword() + pos;
 		fe[i].file_size = FioReadDword();
 	}
 
