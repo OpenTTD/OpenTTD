@@ -243,7 +243,7 @@ struct ResolverObject {
 
 
 /* Base sprite group resolver */
-const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object);
+const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object, bool first_call = true);
 
 
 #endif /* NEWGRF_SPRITEGROUP_H */

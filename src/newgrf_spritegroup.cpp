@@ -162,7 +162,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		bool available = true;
 		if (adjust->variable == 0x7E) {
 			ResolverObject subobject = *object;
-			const SpriteGroup *subgroup = Resolve(adjust->subroutine, &subobject);
+			const SpriteGroup *subgroup = Resolve(adjust->subroutine, &subobject, false);
 			if (subgroup == NULL || subgroup->type != SGT_CALLBACK) {
 				value = CALLBACK_FAILED;
 			} else {
@@ -175,7 +175,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		if (!available) {
 			/* Unsupported property: skip further processing and return either
 			 * the group from the first range or the default group. */
-			return Resolve(group->g.determ.num_ranges > 0 ? group->g.determ.ranges[0].group : group->g.determ.default_group, object);
+			return Resolve(group->g.determ.num_ranges > 0 ? group->g.determ.ranges[0].group : group->g.determ.default_group, object, false);
 		}
 
 		switch (group->g.determ.size) {
@@ -198,11 +198,11 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 
 	for (i = 0; i < group->g.determ.num_ranges; i++) {
 		if (group->g.determ.ranges[i].low <= value && value <= group->g.determ.ranges[i].high) {
-			return Resolve(group->g.determ.ranges[i].group, object);
+			return Resolve(group->g.determ.ranges[i].group, object, false);
 		}
 	}
 
-	return Resolve(group->g.determ.default_group, object);
+	return Resolve(group->g.determ.default_group, object, false);
 }
 
 
@@ -236,15 +236,18 @@ static inline const SpriteGroup *ResolveRandom(const SpriteGroup *group, Resolve
 	mask  = (group->g.random.num_groups - 1) << group->g.random.lowest_randbit;
 	index = (object->GetRandomBits(object) & mask) >> group->g.random.lowest_randbit;
 
-	return Resolve(group->g.random.groups[index], object);
+	return Resolve(group->g.random.groups[index], object, false);
 }
 
 
 /* ResolverObject (re)entry point */
-const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object)
+const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object, bool first_call)
 {
 	/* We're called even if there is no group, so quietly return nothing */
 	if (group == NULL) return NULL;
+
+	/* Zero the temporary storage to make sure there are no desyncs */
+	if (first_call) memset(_temp_store, 0, sizeof(_temp_store));
 
 	switch (group->type) {
 		case SGT_REAL:          return object->ResolveReal(object, group);
