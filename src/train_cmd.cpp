@@ -517,9 +517,9 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 	uint num_vehicles = 1 + CountArticulatedParts(engine);
 
 	if (!(flags & DC_QUERY_COST)) {
-		Vehicle *vl[11]; // Allow for wagon and upto 10 artic parts.
-
-		memset(&vl, 0, sizeof(vl));
+		/* Allow for the wagon and the articulated parts. */
+		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * num_vehicles);
+		memset(vl, 0, sizeof(*vl) * num_vehicles);
 
 		if (!Vehicle::AllocateList(vl, num_vehicles))
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
@@ -685,9 +685,9 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		CountArticulatedParts(p1);
 
 	if (!(flags & DC_QUERY_COST)) {
-		Vehicle *vl[12]; // Allow for upto 10 artic parts and dual-heads
-
-		memset(&vl, 0, sizeof(vl));
+		/* Allow for the dual-heads and the articulated parts. */
+		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * num_vehicles);
+		memset(vl, 0, sizeof(*vl) * num_vehicles);
 
 		if (!Vehicle::AllocateList(vl, num_vehicles))
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);

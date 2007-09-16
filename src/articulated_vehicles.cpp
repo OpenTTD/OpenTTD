@@ -20,7 +20,7 @@ uint CountArticulatedParts(EngineID engine_type)
 	if (!HASBIT(EngInfo(engine_type)->callbackmask, CBM_ARTIC_ENGINE)) return 0;
 
 	uint i;
-	for (i = 1; i < 10; i++) {
+	for (i = 1; i < MAX_UVALUE(EngineID); i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine_type, NULL);
 		if (callback == CALLBACK_FAILED || callback == 0xFF) break;
 	}
@@ -35,7 +35,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 
 	if (!HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) return;
 
-	for (uint i = 1; i < 10; i++) {
+	for (uint i = 1; i < MAX_UVALUE(EngineID); i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, v->engine_type, v);
 		if (callback == CALLBACK_FAILED || callback == 0xFF) return;
 

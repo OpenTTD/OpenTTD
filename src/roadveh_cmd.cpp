@@ -181,9 +181,9 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	uint num_vehicles = 1 + CountArticulatedParts(p1);
 
-	/* Allow for the front and up to 10 articulated parts. */
-	Vehicle *vl[11];
-	memset(&vl, 0, sizeof(vl));
+	/* Allow for the front and the articulated parts. */
+	Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * num_vehicles);
+	memset(vl, 0, sizeof(*vl) * num_vehicles);
 
 	if (!Vehicle::AllocateList(vl, num_vehicles)) {
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
