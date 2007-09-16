@@ -204,7 +204,8 @@ const char *_subdirs[NUM_SUBDIRS] = {
 };
 
 const char *_searchpaths[NUM_SEARCHPATHS];
-std::vector<const char *> _tar_list;
+TarList _tar_list;
+TarFileList _tar_filelist;
 
 /**
  * Check whether the given file exists
@@ -217,8 +218,16 @@ bool FioCheckFileExists(const char *filename, Subdirectory subdir)
 	FILE *f = FioFOpenFile(filename, "rb", subdir);
 	if (f == NULL) return false;
 
-	fclose(f);
+	FioFCloseFile(f);
 	return true;
+}
+
+/**
+ * Close a file in a safe way.
+ */
+void FioFCloseFile(FILE *f)
+{
+	fclose(f);
 }
 
 char *FioGetFullPath(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir, const char *filename)
@@ -303,101 +312,14 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 	return f;
 }
 
-FILE *FioTarFileList(const char *tar, const char *mode, size_t *filesize, FioTarFileListCallback *callback, void *userdata)
+FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
 {
-	/* The TAR-header, repeated for every file */
-	typedef struct TarHeader {
-		char name[100];      ///< Name of the file
-		char mode[8];
-		char uid[8];
-		char gid[8];
-		char size[12];       ///< Size of the file, in ASCII
-		char mtime[12];
-		char chksum[8];
-		char typeflag;
-		char linkname[100];
-		char magic[6];
-		char version[2];
-		char uname[32];
-		char gname[32];
-		char devmajor[8];
-		char devminor[8];
-		char prefix[155];    ///< Path of the file
-
-		char unused[12];
-	} TarHeader;
-
-	assert(mode[0] == 'r'); // Only reading is supported
-	assert(callback != NULL); // We need a callback, else this function doens't do much
-
-#if defined(WIN32) && defined(UNICODE)
-	/* fopen is implemented as a define with ellipses for
-	 * Unicode support (prepend an L). As we are not sending
-	 * a string, but a variable, it 'renames' the variable,
-	 * so make that variable to makes it compile happily */
-	wchar_t Lmode[5];
-	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, lengthof(Lmode));
-#endif
-
-	FILE *f = fopen(tar, mode);
+	FILE *f = fopen(entry->tar->filename, "rb");
 	assert(f != NULL);
 
-	TarHeader th;
-	char buf[sizeof(th.name) + 1], *end;
-	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1];
-
-	while (!feof(f)) {
-		/* Read the header and make sure it is a valid one */
-		fread(&th, 1, 512, f);
-		/* 'ustar' is the new format, '\0' is the old format */
-		if (th.magic[0] != '\0' && strncmp(th.magic, "ustar", 5) != 0) return NULL;
-
-		name[0] = '\0';
-		int len = 0;
-
-		/* The prefix contains the directory-name */
-		if (th.prefix[0] != '\0') {
-			memcpy(name, th.prefix, sizeof(th.prefix));
-			name[sizeof(th.prefix)] = '\0';
-			len = strlen(name);
-			name[len] = PATHSEPCHAR;
-			len++;
-		}
-
-		/* Copy the name of the file in a safe way at the end of 'name' */
-		memcpy(&name[len], th.name, sizeof(th.name));
-		name[len + sizeof(th.name)] = '\0';
-
-		/* Calculate the size of the file.. for some strange reason this is stored as a string */
-		memcpy(buf, th.size, sizeof(th.size));
-		buf[sizeof(th.size)] = '\0';
-		int skip = strtol(buf, &end, 8);
-
-		/* 0 byte sized files can be skipped (dirs, symlinks, ..) */
-		if (skip == 0) continue;
-
-		/* Check in the callback if this is the file we want */
-		if (callback(name, skip, userdata)) {
-			if (filesize != NULL) *filesize = skip;
-			return f;
-		}
-
-		/* Skip to the next block.. */
-		fseek(f, ALIGN(skip, 512), SEEK_CUR);
-	}
-
-	fclose(f);
-	return NULL;
-}
-
-bool FioFOpenFileTarFileListCallback(const char *filename, int size, void *search_filename)
-{
-	return strcasecmp(filename, (const char *)search_filename) == 0;
-}
-
-FILE *FioFOpenFileTar(const char *filename, const char *tar_filename, size_t *filesize)
-{
-	return FioTarFileList(tar_filename, "rb", filesize, FioFOpenFileTarFileListCallback, (void *)filename);
+	fseek(f, entry->position, SEEK_SET);
+	if (filesize != NULL) *filesize = entry->size;
+	return f;
 }
 
 /** Opens OpenTTD files somewhere in a personal or global directory */
@@ -412,12 +334,16 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 		f = FioFOpenFileSp(filename, mode, sp, subdir, filesize);
 		if (f != NULL || subdir == NO_DIRECTORY) break;
 	}
+
 	/* We can only use .tar in case of data-dir, and read-mode */
 	if (f == NULL && subdir == DATA_DIR && mode[0] == 'r') {
-		const char *tar;
-		FOR_ALL_TARS(tar) {
-			f = FioFOpenFileTar(filename, tar, filesize);
-			if (f != NULL) break;
+		/* Filenames in tars are always forced to be lowercase */
+		char *lcfilename = strdup(filename);
+		strtolower(lcfilename);
+		TarFileList::iterator it = _tar_filelist.find(lcfilename);
+		free(lcfilename);
+		if (it != _tar_filelist.end()) {
+			f = FioFOpenFileTar(&((*it).second), filesize);
 		}
 	}
 
@@ -483,14 +409,109 @@ char *BuildWithFullPath(const char *dir)
 
 static bool TarListAddFile(const char *filename)
 {
-	/* See if we already have a tar by that name; useless to have double entries in our list */
-	const char *tar;
-	FOR_ALL_TARS(tar) {
-		if (strcmp(tar, filename) == 0) return false;
+	/* The TAR-header, repeated for every file */
+	typedef struct TarHeader {
+		char name[100];      ///< Name of the file
+		char mode[8];
+		char uid[8];
+		char gid[8];
+		char size[12];       ///< Size of the file, in ASCII
+		char mtime[12];
+		char chksum[8];
+		char typeflag;
+		char linkname[100];
+		char magic[6];
+		char version[2];
+		char uname[32];
+		char gname[32];
+		char devmajor[8];
+		char devminor[8];
+		char prefix[155];    ///< Path of the file
+
+		char unused[12];
+	} TarHeader;
+
+	/* Check if we already seen this file */
+	TarList::iterator it = _tar_list.find(filename);
+	if (it != _tar_list.end()) return false;
+
+	FILE *f = fopen(filename, "rb");
+	assert(f != NULL);
+
+	TarListEntry *tar_entry = MallocT<TarListEntry>(1);
+	tar_entry->filename = strdup(filename);
+	_tar_list.insert(TarList::value_type(filename, tar_entry));
+
+	TarHeader th;
+	char buf[sizeof(th.name) + 1], *end;
+	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1];
+	int num = 0, pos = 0;
+
+	/* Make a char of 512 empty bytes */
+	char empty[512];
+	memset(&empty[0], 0, sizeof(empty));
+
+	while (!feof(f)) {
+		fread(&th, 1, 512, f);
+		pos += 512;
+
+		/* Check if we have the new tar-format (ustar) or the old one (a lot of zeros after 'link' field) */
+		if (strncmp(th.magic, "ustar", 5) != 0 && memcmp(&th.magic, &empty[0], 512 - offsetof(TarHeader, magic)) != 0) {
+			/* If we have only zeros in the block, it can be an end-of-file indicator */
+			if (memcmp(&th, &empty[0], 512) == 0) continue;
+
+			DEBUG(misc, 0, "The file '%s' isn't a valid tar-file", filename);
+			return false;
+		}
+
+		name[0] = '\0';
+		int len = 0;
+
+		/* The prefix contains the directory-name */
+		if (th.prefix[0] != '\0') {
+			memcpy(name, th.prefix, sizeof(th.prefix));
+			name[sizeof(th.prefix)] = '\0';
+			len = strlen(name);
+			name[len] = PATHSEPCHAR;
+			len++;
+		}
+
+		/* Copy the name of the file in a safe way at the end of 'name' */
+		memcpy(&name[len], th.name, sizeof(th.name));
+		name[len + sizeof(th.name)] = '\0';
+
+		/* Calculate the size of the file.. for some strange reason this is stored as a string */
+		memcpy(buf, th.size, sizeof(th.size));
+		buf[sizeof(th.size)] = '\0';
+		int skip = strtol(buf, &end, 8);
+
+		/* 0 byte sized files can be skipped (dirs, symlinks, ..) */
+		if (skip == 0) continue;
+
+		/* Store this entry in the list */
+		TarFileListEntry entry;
+		entry.tar      = tar_entry;
+		entry.size     = skip;
+		entry.position = pos;
+		/* Force lowercase */
+		strtolower(name);
+
+		/* Tar-files always have '/' path-seperator, but we want our PATHSEPCHAR */
+#if (PATHSEPCHAR != '/')
+		for (char *n = name; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
+#endif
+
+		DEBUG(misc, 6, "Found file in tar: %s (%d bytes, %d offset)", name, skip, pos);
+		if (_tar_filelist.insert(TarFileList::value_type(name, entry)).second) num++;
+
+		/* Skip to the next block.. */
+		skip = ALIGN(skip, 512);
+		fseek(f, skip, SEEK_CUR);
+		pos += skip;
 	}
 
-	DEBUG(misc, 1, "Found tar: %s", filename);
-	_tar_list.push_back(strdup(filename));
+	DEBUG(misc, 1, "Found tar '%s' with %d new files", filename, num);
+	fclose(f);
 
 	return true;
 }

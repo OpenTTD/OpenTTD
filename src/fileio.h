@@ -6,7 +6,8 @@
 #define FILEIO_H
 
 #include "helpers.hpp"
-#include <vector>
+#include <map>
+#include <string>
 
 void FioSeekTo(uint32 pos, int mode);
 void FioSeekToFile(uint8 slot, uint32 pos);
@@ -62,9 +63,20 @@ DECLARE_POSTFIX_INCREMENT(Searchpath);
 extern const char *_searchpaths[NUM_SEARCHPATHS];
 
 /**
- * All the tar-files OpenTTD could search through.
+ * The define of a TarList.
  */
-extern std::vector<const char *>_tar_list;
+struct TarListEntry {
+	const char *filename;
+};
+struct TarFileListEntry {
+	TarListEntry *tar;
+	int size;
+	int position;
+};
+typedef std::map<std::string, TarListEntry *> TarList;
+typedef std::map<std::string, TarFileListEntry> TarFileList;
+extern TarList _tar_list;
+extern TarFileList _tar_filelist;
 
 /**
  * Checks whether the given search path is a valid search path
@@ -78,11 +90,12 @@ static inline bool IsValidSearchPath(Searchpath sp)
 
 /** Iterator for all the search paths */
 #define FOR_ALL_SEARCHPATHS(sp) for (sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) if (IsValidSearchPath(sp))
-#define FOR_ALL_TARS(tar) for (std::vector<const char *>::iterator it = _tar_list.begin(); it != _tar_list.end(); it++) if (tar = *it, true)
+#define FOR_ALL_TARS(tar) for (tar = _tar_filelist.begin(); tar != _tar_filelist.end(); tar++)
 
 typedef bool FioTarFileListCallback(const char *filename, int size, void *userdata);
 FILE *FioTarFileList(const char *tar, const char *mode, size_t *filesize, FioTarFileListCallback *callback, void *userdata);
 
+void FioFCloseFile(FILE *f);
 FILE *FioFOpenFile(const char *filename, const char *mode = "rb", Subdirectory subdir = DATA_DIR, size_t *filesize = NULL);
 bool FioCheckFileExists(const char *filename, Subdirectory subdir = DATA_DIR);
 char *FioGetFullPath(char *buf, size_t buflen, Searchpath sp, Subdirectory subdir, const char *filename);

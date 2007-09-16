@@ -130,7 +130,7 @@ static bool FileMD5(const MD5File file, bool warn)
 		}
 
 		if (ferror(f) && warn) ShowInfoF("Error Reading from %s \n", file.filename);
-		fclose(f);
+		FioFCloseFile(f);
 
 		md5_finish(&filemd5state, digest);
 		return CheckMD5Digest(file, digest, warn);

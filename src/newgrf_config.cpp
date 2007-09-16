@@ -51,7 +51,7 @@ static bool CalcGRFMD5Sum(GRFConfig *config)
 	}
 	md5_finish(&md5state, config->md5sum);
 
-	fclose(f);
+	FioFCloseFile(f);
 
 	return true;
 }
@@ -356,26 +356,18 @@ static uint ScanPath(const char *path, int basepath_length)
 	return num;
 }
 
-bool FioTarFileListScanNewGRFCallback(const char *filename, int size, void *userdata)
+static uint ScanTar(TarFileList::iterator tar)
 {
-	uint *num = (uint *)userdata;
+	uint num = 0;
+	const char *filename = (*tar).first.c_str();
 	const char *ext = strrchr(filename, '.');
 
 	/* If no extension or extension isn't .grf, skip the file */
 	if (ext == NULL) return false;
 	if (strcasecmp(ext, ".grf") != 0) return false;
 
-	if (ScanPathAddGrf(filename)) (*num)++;
+	if (ScanPathAddGrf(filename)) num++;
 
-	/* Always return false, as we don't want to stop with listing all the files */
-	return false;
-}
-
-static uint ScanTar(const char *filename)
-{
-	uint num = 0;
-
-	FioTarFileList(filename, "rb", NULL, FioTarFileListScanNewGRFCallback, &num);
 	return num;
 }
 
@@ -384,7 +376,7 @@ void ScanNewGRFFiles()
 {
 	Searchpath sp;
 	char path[MAX_PATH];
-	const char *tar;
+	TarFileList::iterator tar;
 	uint num = 0;
 
 	ClearGRFConfigList(&_all_grfs);
