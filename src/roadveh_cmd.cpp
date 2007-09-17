@@ -179,11 +179,11 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM) != HASBIT(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_DEPOT_WRONG_DEPOT_TYPE);
 
-	uint num_vehicles = 1 + CountArticulatedParts(p1);
+	uint num_vehicles = 1 + CountArticulatedParts(p1, false);
 
-	/* Allow for the front and the articulated parts. */
-	Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * num_vehicles);
-	memset(vl, 0, sizeof(*vl) * num_vehicles);
+	/* Allow for the front and the articulated parts, plus one to "terminate" the list. */
+	Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * (num_vehicles + 1));
+	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
 	if (!Vehicle::AllocateList(vl, num_vehicles)) {
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);

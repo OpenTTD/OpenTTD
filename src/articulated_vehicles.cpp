@@ -15,15 +15,23 @@
 #include "newgrf_engine.h"
 
 
-uint CountArticulatedParts(EngineID engine_type)
+uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
 	if (!HASBIT(EngInfo(engine_type)->callbackmask, CBM_ARTIC_ENGINE)) return 0;
 
+	Vehicle *v = NULL;;
+	if (!purchase_window) {
+		v = new InvalidVehicle();
+		v->engine_type = engine_type;
+	}
+
 	uint i;
 	for (i = 1; i < MAX_UVALUE(EngineID); i++) {
-		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine_type, NULL);
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine_type, v);
 		if (callback == CALLBACK_FAILED || callback == 0xFF) break;
 	}
+
+	delete v;
 
 	return i - 1;
 }
@@ -42,7 +50,6 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 		/* Attempt to use pre-allocated vehicles until they run out. This can happen
 		 * if the callback returns different values depending on the cargo type. */
 		u->SetNext(vl[i]);
-		if (u->Next() == NULL) u->SetNext(new InvalidVehicle());
 		if (u->Next() == NULL) return;
 
 		Vehicle *previous = u;

@@ -514,12 +514,12 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
 	CommandCost value((GetEngineProperty(engine, 0x17, rvi->base_cost) * _price.build_railwagon) >> 8);
 
-	uint num_vehicles = 1 + CountArticulatedParts(engine);
+	uint num_vehicles = 1 + CountArticulatedParts(engine, false);
 
 	if (!(flags & DC_QUERY_COST)) {
-		/* Allow for the wagon and the articulated parts. */
-		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * num_vehicles);
-		memset(vl, 0, sizeof(*vl) * num_vehicles);
+		/* Allow for the wagon and the articulated parts, plus one to "terminate" the list. */
+		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * (num_vehicles + 1));
+		memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
 		if (!Vehicle::AllocateList(vl, num_vehicles))
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
@@ -682,12 +682,12 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	uint num_vehicles =
 		(rvi->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) +
-		CountArticulatedParts(p1);
+		CountArticulatedParts(p1, false);
 
 	if (!(flags & DC_QUERY_COST)) {
-		/* Allow for the dual-heads and the articulated parts. */
-		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * num_vehicles);
-		memset(vl, 0, sizeof(*vl) * num_vehicles);
+		/* Allow for the dual-heads and the articulated parts, plus one to "terminate" the list. */
+		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * (num_vehicles + 1));
+		memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
 		if (!Vehicle::AllocateList(vl, num_vehicles))
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);

@@ -621,7 +621,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 				int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
 
 				SetDParam(0, rvi->cargo_type);
-				SetDParam(1, (capacity * (CountArticulatedParts(engine_number) + 1)) << multihead);
+				SetDParam(1, (capacity * (CountArticulatedParts(engine_number, true) + 1)) << multihead);
 				SetDParam(2, refitable ? STR_9842_REFITTABLE : STR_EMPTY);
 			}
 			DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
