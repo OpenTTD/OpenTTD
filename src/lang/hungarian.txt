@@ -1086,6 +1086,7 @@ STR_CONFIG_PATCHES_OFF                                          :Ki
 STR_CONFIG_PATCHES_ON                                           :Be
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Járművek sebességének kijelzése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Lejtőre es partokra építés: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Épületek, sinek alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett befogadókörzetek bekapcsolása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Engedélyezi az ipari létesítmények és utak rombolását, stb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}

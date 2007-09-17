@@ -1111,7 +1111,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :切
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}新規ゲームを開始したときに自動的にポーズ：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}詳細の車両リストを使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :切
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :自分
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :すべて
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}積み降ろしを表示：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :切
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :自分
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :すべて
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}車両の時刻表を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}日の代わりに時刻表をティックで表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}デフォルトの鉄道の種類（新規ゲーム後／ゲームの読み込み後）：{ORANGE}{STRING}

@@ -1062,6 +1062,7 @@ STR_CONFIG_PATCHES_OFF                                          :Izklopi
 STR_CONFIG_PATCHES_ON                                           :Vklopi
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Prikaz hitrosti vozil v vrstici stanja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Dovoli gradnjo hiš na nagibih ali obali: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Dovoli oblikovanje terena pod objekti (tiri, hiše) (samonaklon): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest, mostov, itd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Omogoči gradnjo zelo dolgih vlakov: {ORANGE}{STRING}
@@ -1153,7 +1154,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Izklop
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Avtomatsko pavziraj ob zagonu nove igre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uporabi napreden seznam vozil: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Izklop
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Lastno podjetje
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Vsa podjetja
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Uporabi pregledno polnenje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Izklop
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Lastno podjetje
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Vsa podjetja
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Omogoči časovne tabele vozil: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikaz časovnih tabel v pikah namesto dneh: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Privzeta vrsta železnice (ob zagonu nove igre): {ORANGE}{STRING}

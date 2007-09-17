@@ -1103,9 +1103,21 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom kort
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Rul kort
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Slået fra
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rulleknap-hastighed på kort: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Højreklik-emulering: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommandoklik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrolklik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Fra
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Sæt automatisk på pause når nyt spil startes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Brug avanceret køretøjsliste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Fra
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Eget firma
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Alle firmaer
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Benyt laste-indikatorer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Fra
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eget firma
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alle firmaer
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Slå køreplaner for transportmidler til: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis køreplan i tik i stedet for dage: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard skinnetype (efter nyt spil/hentet spil): {ORANGE}{STRING}
@@ -1262,6 +1274,7 @@ STR_LANDINFO_LOCK                                               :Sluse
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bøjen er i brug!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan ikke fjerne en del af en station...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan ikke konvertere jernbanetype her...
@@ -1372,18 +1385,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Sæt kod
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Beskyt dit spil med et kodeord hvis du ikke vil have fremmede med
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vælg et kort:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Hvilket kort vil du spille?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalt antal tilladte klienter:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Vælg det maksimale antal klienter. Det er ikke nødvendigt at fylde dem alle
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (bekendtgør spillet)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" er}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalt antal tilladte klienter:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Vælg det maksimale antal klienter. Det er ikke nødvendigt at fylde dem alle
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} firma{P "" er}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks. selskaber:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begræns serveren til et bestemt antal selskaber
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} tilskuer{P "" e}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks. tilskuere:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begræns serveren til et bestemt antal tilskurere
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Talt sprog:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andre spillere vil vide hvilket sprog, der bliver talt på serveren
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Start spillet
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Start et nyt netværksspil med et tilfældigt kort eller et scenarie
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Hent et spil
@@ -1611,9 +1629,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...områ
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbane med almindelige signaler
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbane med præ-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbane med exit-signaler
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbaneskinne med kombi-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale og præ-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Jernbanespor med normale og exit-signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Jernbaneskinne med normale og kombi-signaler
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Jernbanespor med præ- og exit-signaler
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Jernbaneskinne med præ- og kombi-signaler
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Jernbaneskinne med exit- og kombi-signaler
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Jernbanestation skal fjernes først
 
 
@@ -3338,7 +3360,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Klik for
 STR_GROUP_DELETE_TIP                                            :{BLACK}Slet den valgte gruppe
 STR_GROUP_RENAME_TIP                                            :{BLACK}Omdøb den valgte gruppe
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klik for at beskytte denne gruppe mod global auto-udskiftning
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

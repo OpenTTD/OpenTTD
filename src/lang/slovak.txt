@@ -1084,6 +1084,7 @@ STR_CONFIG_PATCHES_OFF                                          :Vyp.
 STR_CONFIG_PATCHES_ON                                           :Zap.
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Zobrazit rychlost vozidla v stavovej liste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Umoznit vystavbu na svahoch a na pobrezi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Povolit úpravy terénu pod budovami, kolajami, ... : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit realistickejsiu velkost oblasti pokrytia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Umoznit odstranenie viacerych mestskych ciest, mostov, ... : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Umoznit stavbu dlhych vlakov: {ORANGE}{STRING}

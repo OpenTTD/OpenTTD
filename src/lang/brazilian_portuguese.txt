@@ -14,7 +14,7 @@ STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Muito pr
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Não há dinheiro - requer {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Precisa de terreno plano
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Necessita de terreno plano
 STR_0008_WAITING                                                :{BLACK}Aguardando: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW} (em rota de
@@ -487,7 +487,7 @@ STR_019E_SHIP                                                   :{G=m}Embarcaç�
 STR_019F_TRAIN                                                  :{G=m}Trem
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} está ficando velho
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} está ficando muito velho
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} está ficando muito velho e precisa ser substituído urgentemente
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} está ficando muito velho e necessita substituição urgente
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informações do Terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Custo para limpar: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Custo para limpar: {LTBLUE}{CURRENCY}
@@ -720,7 +720,7 @@ STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Construi
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Construir Extração de Caramelo
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construir Mina de Açúcar
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Impossível construir {STRING} aqui...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...precisa construir uma cidade primeiro
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...necessário construir uma cidade primeiro
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...só é permitido uma por cidade
 STR_0288_PLANT_TREES                                            :{BLACK}Plantar árvores
 STR_0289_PLACE_SIGN                                             :{BLACK}Colocar placas
@@ -750,7 +750,7 @@ STR_029C_QUIT_EDITOR                                            :{WHITE}Sair do 
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só pode ser construído em cidades com pelo menos 1200 habitantes
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Retroceder data de inicio em 1 ano
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Avançar data de inicio em 1 ano
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...os extremos da ponte precisam estar sobre a terra
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...os extremos da ponte necessitam estar sobre a terra
 STR_02A1_SMALL                                                  :{BLACK}Pequena
 STR_02A2_MEDIUM                                                 :{BLACK}Média
 STR_02A3_LARGE                                                  :{BLACK}Grande
@@ -1394,7 +1394,7 @@ STR_NETWORK_LAN_INTERNET                                        :Rede Local / In
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} cliente{P "" s}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não precisam estar todos preenchidos
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não necessita estarem todos preenchidos
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compan{P ia ias}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de empresas:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita o servidor para uma certa quantia de empresas
@@ -1599,7 +1599,7 @@ STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Já est�
 STR_1004_TOO_HIGH                                               :{WHITE}Muito alto
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo de linha não apropriado
 STR_1007_ALREADY_BUILT                                          :{WHITE}...já construído
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Precisa remover a ferrovia primeiro
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Necessário remover a ferrovia primeiro
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construir ferrovias
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construir ferrovias (elétricas)
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construir ferrovias (monotrilho)
@@ -1643,7 +1643,7 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Remova a
 
 
 ##id 0x1800
-STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Precisa remover a rodovia primeiro
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Necessário remover a rodovia primeiro
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Recapeamento rodoviário em progresso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construir rodovias
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construção de Bonde
@@ -1696,7 +1696,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
-STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}O edifício precisa ser demolido primeiro
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}O edifício necessita ser demolido primeiro
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Renomear Cidade
@@ -1826,9 +1826,9 @@ STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Muitas e
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Muitos locais de carga
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Muito perto de outra estação/local de carga
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
-STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Precisa demolir a estação primeiro
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Necessário demolir a estação primeiro
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Muito perto de outro aeroporto
-STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Precisa demolir o aeroporto primeiro
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Necessário demolir o aeroporto primeiro
 
 STR_3030_RENAME_STATION_LOADING                                 :Renomear estação/área de carga
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Impossível renomear a estação...
@@ -1856,16 +1856,16 @@ STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orienta�
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientação da estação de caminhão
 STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orientação da Estação de Bonde
 STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orientação da Estação de Bonde
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Precisa demolir a estação de ônibus primeiro
-STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Precisa demolir a estação de caminhão
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Precisa demolir estação de bonde primeiro
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Precisa demolir estação de bonde primeiro
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Necessário demolir a estação de ônibus primeiro
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Necessário demolir a estação de caminhão
+STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Necessário demolir estação de bonde primeiro
+STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Necessário demolir estação de bonde primeiro
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estações
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nenhuma -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...local inadequado
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Muito perto de outra doca
-STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Precisa demolir a doca primeiro
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Necessário demolir a doca primeiro
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Selecionar a orientação da estação ferroviária
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Selecionar o número de linhas da estação ferroviária
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Selecionar o tamanho da estação ferroviária
@@ -1903,7 +1903,7 @@ STR_STAT_CLASS_WAYP                                             :Pontos de contr
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientação do Depósito Naval
-STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...precisa ser construído na água
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...necessita ser construído na água
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Impossível construir depósito naval aqui...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selecionar orientação do depósito naval
 STR_3804_WATER                                                  :Água
@@ -2017,11 +2017,11 @@ STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Há um t
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Automóvel no túnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Há outro túnel no caminho
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Incapaz de escavar o terreno para o outro lado do túnel
-STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Precisa demolir o túnel primeiro
-STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Precisa demolir a ponte primeiro
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Necessário demolir o túnel primeiro
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Necessário demolir a ponte primeiro
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Impossível iniciar e terminar no mesmo ponto
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Debaixo da ponte é necessário um terreno plano ou água
-STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Inicio e fim precisam estar alinhados
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Inicio e fim necessitam estar alinhados
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}O local não é adequado para a entrada do túnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Suspensa, Aço
@@ -2696,7 +2696,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Carregando / descarregando
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O trem precisa estar parado dentro do depósito
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O trem necessita estar parado dentro do depósito
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Impossível enviar o trem para o depósito...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Não há espaço para mais ordens
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Muitas ordens
@@ -2809,7 +2809,7 @@ STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros d
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
-STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...precisa estar parado dentro de uma garagem
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...necessita estar parado dentro de uma garagem
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossível vender automóvel...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossível iniciar/parar automóvel...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automóvel {COMMA} está aguardando na garagem
@@ -2873,7 +2873,7 @@ STR_9809_BUILD_SHIP                                             :{BLACK}Construi
 STR_CLONE_SHIP                                                  :{BLACK}Clonar Embarcação
 STR_CLONE_SHIP_INFO                                             :{BLACK}Isso vai construir uma cópia da embarcação. Control-clique vai compartilhar as ordens
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Isso irá construir uma cópia da embarcação. Clique neste botão e depois em uma embarcação dentro ou fora do depósito naval. Control-clique vai compartilhar as ordens
-STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}A embarcação precisa estar parado no depósito naval
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}A embarcação necessita estar parado no depósito naval
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Impossível vender embarcação...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Impossível construir embarcação...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Embarcação no caminho
@@ -2963,7 +2963,7 @@ STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Impossí
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronave está em voo
 STR_A019_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}, {CARGO}
 STR_A01A_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}A aeronave precisa estar parada no hangar
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}A aeronave necessita estar parada no hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Impossível vender aeronave...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construir aeroporto
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construir aeroporto

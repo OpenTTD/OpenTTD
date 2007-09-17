@@ -1112,7 +1112,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert køyretøyliste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Av
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Eige firma
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Alle firma
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Bruk lasteindikatorar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Av
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eige firma
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alle firma
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Bruk rutetabellar for køyretøy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis rutetabell i klikk i staden for dagar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard Jernbane / etter nytt spel / lasta spel: {ORANGE}{STRING}

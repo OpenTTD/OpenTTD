@@ -1105,10 +1105,17 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Разглед�
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Изклучен
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollwheel скорост на картата: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключен
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматична пауза стартирайки нова игра: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Използваи напредналиат списък на превозни средства: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Изключен
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Собствена компания
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Всички компаний
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Използвай товарни индикатори: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Изключен
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Собствена компания
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Всички компаний
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Включи времеслуженето на ПС-та: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Покажи времеслуженето в случаи, а не в дни: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Стандартни релси (след нова игра/отваряне на запазена игра): {ORANGE}{STRING}
@@ -1264,6 +1271,7 @@ STR_LANDINFO_LOCK                                               :Заключв�
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...шамандурата се използва!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Координати: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Не може да се премахва част от гарата...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Тук не може да се променя типа на жп линията...
@@ -1379,10 +1387,12 @@ STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Интернет
 STR_NETWORK_LAN_INTERNET                                        :LAN / Интернет
 STR_NETWORK_INTERNET_ADVERTISE                                  :Интернет (реклама)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} клиент{P "" s}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клиенти:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Избор на максималния брой клиенти. Не всички слотове трябва да се попълнят
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Макс. компании:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ограничаване на играта до определен брой компании
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM}  зрител{P "" s}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Макс. наблюдатели:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Ограничаване на сървъра до определен брой наблюдатели
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Говорим език:
@@ -1615,7 +1625,10 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...зе�
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :ЖП линия с нормални сигнали
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :ЖП линия с пре-сигнали
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :ЖП линия с изходни сигнали
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Железопътна линиа с комбинирани знаци
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Железопътна линиа с нормални и изходни сигнали
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Железопътна линиа с нормални и комбинирани знаци
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Железопътна линиа с изходни и комбинирани знаци
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Железопътната гара трябва да бъде премахната първо
 
 
@@ -2762,6 +2775,7 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :Това пре
 STR_TIMETABLE_STATUS_LATE                                       :Това превознот средство е в момента с {STRING} закъснение
 STR_TIMETABLE_STATUS_EARLY                                      :Това превознот средство е в момента с {STRING} по-рано
 STR_TIMETABLE_TOTAL_TIME                                        :Ще трябва {STRING} за това разписание да бъде приклучено
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Това разписание ще вземе най-малко {STRING} за да приклучи (не всичко е планирано)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Афтонапълване
 
 ##id 0x9000

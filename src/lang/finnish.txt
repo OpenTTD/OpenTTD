@@ -1103,9 +1103,24 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoomaa karttaa
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Vieritä karttaa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Pois
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rullan nopeus: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Oikean painikkeen emulointi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Pois
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Uusi peli alkaa pysäytettynä: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Edistynyt ajoneuvolista: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Pois
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Oma yhtiö
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Kaikki yhtiöt
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Lastausindikaattorit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Pois
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Oma yhtiö
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Kaikki yhtiöt
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aikataulut ajoneuvoille: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä aikataulu tickseissä päivien sijaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Raidetyyppi oletuksena: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Tavallinen raide
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Sähköraide
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Yksiraiteinen
@@ -1375,10 +1390,13 @@ STR_NETWORK_LAN                                                 :Lähiverkko
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Lähiverkko/Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (mainosta)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} asiakas{P "" ta}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Pelaajien enimmäismäärä:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} yritys{P "" tä}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Yhtiöiden enimmäismäärä:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Rajoita yhtiöiden määrää palvelimella
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} katsoja{P "" a}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Katsojien enimmäismäärä:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Rajoita katsojien määrää palvelimella
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Puhuttu kieli:
@@ -1611,9 +1629,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...aluee
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rautatie tavallisin opastimin
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rautatie esiopastimin
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rautatie poistumisopastimin
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatie yhdistelmäopastein
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Rautatie esisignaaleilla
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Rautatie poistumis-signaaleilla
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Rautatie normaali- ja yhdistelmäopastein
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Rautatie esi- ja poistumissignaaleilla
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Rautatie esi- ja yhdistelmäopastein
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Rautatie poistumis- ja yhdistelmäopastein
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Poista asema ensin
 
 

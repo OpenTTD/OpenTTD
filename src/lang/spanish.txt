@@ -1337,7 +1337,7 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Atenció
 
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multijugador
 
-STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nombre Jugad.:
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nombre del Jugador:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Este es el nombre con el que otros jugadores le identificarán
 STR_NETWORK_CONNECTION                                          :{BLACK}Conexión:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Seleccione entre un juego en Internet o en una Red de Área Local

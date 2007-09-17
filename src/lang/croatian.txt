@@ -1113,7 +1113,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Isključeno
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatski pauziraj prilikom pokretanja nove igre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Koristi napredni popis vozila: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Isključeno
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Vlastita tvrtka
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Sve tvrtke
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Koristi indikatore utovara: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Isključeno
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Vlastita tvrtka
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Sve tvrtke
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Omogući red vožnje za vozila: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokaži raspored u otkucajima rađe nego u danima: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Inicijalna vrsta pruge (poslije nove igre/podizanja igre): {ORANGE}{STRING}
@@ -2532,18 +2538,18 @@ STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzwow Kamion 
 STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover Kamona za slatkiše
 STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught Kamion za slatkiše
 STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzwow Kamion za slatkiše
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover Kamiona za baterije
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught Kamion za baterije
-STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzwwow Kamion za baterije
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover Kamion za gazirana pića
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught Kamion za gazirana pića
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzwow Kamion za gazirana pića
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover kamion s plastikom
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught kamion s plastikom
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow kamion s plastikom
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover kamion s žvakačim gumama
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught kamion s žvakačim gumama
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow kamion s žvakačim gumama
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover kamion za baterije
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught kamion za baterije
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzwwow kamion za baterije
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover kamion za gazirana pića
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught kamion za gazirana pića
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzwow kamion za gazirana pića
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover Plastični Kamion
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught Plastični Kamion
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzwow Plastični kamion
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover kamion sa žvakačim gumama
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught kamion sa žvakačim gumama
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow kamion sa žvakačim gumama
 STR_80CC_MPS_OIL_TANKER                                         :MPS naftna cisterna
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. naftna cisterna
 STR_80CE_MPS_PASSENGER_FERRY                                    :MPS putnički trajekt

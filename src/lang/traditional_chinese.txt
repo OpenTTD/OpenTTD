@@ -1020,6 +1020,7 @@ STR_CONFIG_PATCHES_OFF                                          :關
 STR_CONFIG_PATCHES_ON                                           :開
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}於狀態列顯示速度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}於斜坡和岸邊興建：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}允許在建物或是軌道底下改變地形斜度 (autoslope)：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}真實大小的收集範圍：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}可移除更城鎮擁有的道路，橋樑等：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}提高列車長度限制：{ORANGE}{STRING}
@@ -1103,9 +1104,21 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :放大地圖
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :捲動地圖
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :關閉
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}滾輪地圖捲動速度： {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}右鍵模擬：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :命令鍵
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :控制鍵
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :無
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}自動在開始新遊戲時暫停：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用進階載具名單： {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :無
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :自家公司
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :所有公司
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}使用載入指示：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :無
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :自家公司
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :所有公司
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}啟用運具時刻表功能：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 為單位而不是日：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}預設的路軌類型 (將在新遊戲或載入遊戲時生效)：{ORANGE}{STRING}
@@ -1262,6 +1275,7 @@ STR_LANDINFO_LOCK                                               :水閘
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...浮標正被使用!
 
+STR_LANDINFO_COORDS                                             :{BLACK}座標：{LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}不能移除車站部份...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}無法轉換軌道種類...
@@ -1372,18 +1386,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}設定�
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}如果您不想讓大眾連線的話，可以用密碼保護遊戲
 STR_NETWORK_SELECT_MAP                                          :{BLACK}選擇地圖：
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}您想玩哪個地圖？
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}客戶端上限：
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}選擇連線人數上限。未必每個名額都需連線
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :局域網絡(LAN)
 STR_NETWORK_INTERNET                                            :互聯網
 STR_NETWORK_LAN_INTERNET                                        :局域網/互聯網
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (廣告)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} 玩家
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}客戶端上限：
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}選擇連線人數上限。未必每個名額都需連線
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} 公司
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}公司上限：
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}限制伺服器可以建立的公司數
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} 觀戰
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}觀看者上限：
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}限制可加入的觀察者數量
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}所用的語言：
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}讓其他人知道這個伺服器使用的交談語言
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}開始遊戲
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}以隨機地圖或劇本開始新的網路遊戲
 STR_NETWORK_LOAD_GAME                                           :{BLACK}載入遊戲
@@ -1611,9 +1630,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...此�
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :有一般號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :有入口號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :有出口號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :有組合號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :有一般號誌及入口號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :有一般號誌及出口號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :有一般號誌及組合號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :有入口號誌及出口號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :有入口號誌及組合號誌的鐵軌
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :有出口號誌及組合號誌的鐵軌
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}必須先移除火車站
 
 
@@ -3338,7 +3361,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}單擊�
 STR_GROUP_DELETE_TIP                                            :{BLACK}移除選擇群組
 STR_GROUP_RENAME_TIP                                            :{BLACK}為群組重新命名
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}點此可避免此群組內的設備被來自全域的設定替換
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

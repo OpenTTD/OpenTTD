@@ -1104,9 +1104,21 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Spielfeld vergr
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Hauptansicht verschieben
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Aus
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mausradgeschwindigkeit auf dem Spielfeld: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Rechtsklick-Emulation: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando-Klick
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Strg-Klick
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatische Pause bei Spielstart: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Erweiterte Fahrzeugliste benutzen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Aus
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Eigene Firma
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Alle Firmen
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Ladestandanzeiger verwenden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Aus
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eigene Firma
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alle Firmen
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Fahrpläne für Fahrzeuge aktivieren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zeitpläne in Ticks anstatt in Tagen anzeigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard-Gleistyp (bei Spielbeginn/geladenem Spiel): {ORANGE}{STRING}
