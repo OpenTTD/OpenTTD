@@ -21,12 +21,28 @@
 #include "variables.h"
 #include "genworld.h"
 
+/**
+ * List of tree placer algorithm.
+ *
+ * This enumeration defines all possible tree placer algorithm in the game.
+ */
 enum TreePlacer {
-	TP_NONE,
-	TP_ORIGINAL,
-	TP_IMPROVED,
+	TP_NONE,     ///< No tree placer algorithm
+	TP_ORIGINAL, ///< The original algorithm
+	TP_IMPROVED, ///< A 'improved' algorithm
 };
 
+/**
+ * Get a random TreeType for the given tile based on a given seed
+ *
+ * This function returns a random TreeType which can be placed on the given tile.
+ * The seed for randomness must be less or equal 256, use #GB on the value of Random()
+ * to get such a value.
+ *
+ * @param tile The tile to get a random TreeType from
+ * @param seed The seed for randomness, must be less or equal 256
+ * @return The random tree type
+ */
 static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 {
 	switch (_opt.landscape) {
@@ -48,6 +64,15 @@ static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 	}
 }
 
+/**
+ * Make a random tree tile of the given tile
+ *
+ * Create a new tree-tile for the given tile. The second parameter is used for
+ * randomness like type and number of trees.
+ *
+ * @param tile The tile to make a tree-tile from
+ * @param r The randomness value from a Random() value
+ */
 static void PlaceTree(TileIndex tile, uint32 r)
 {
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
@@ -66,6 +91,15 @@ static void PlaceTree(TileIndex tile, uint32 r)
 	}
 }
 
+/**
+ * Place some amount of trees around a given tile.
+ *
+ * This function adds some trees around a given tile. As this function use
+ * the Random() call it depends on the random how many trees are actually placed
+ * around the given tile.
+ *
+ * @param tile The center of the trees to add
+ */
 static void DoPlaceMoreTrees(TileIndex tile)
 {
 	uint i;
@@ -87,6 +121,11 @@ static void DoPlaceMoreTrees(TileIndex tile)
 	}
 }
 
+/**
+ * Place more trees on the map.
+ *
+ * This function add more trees to the map.
+ */
 static void PlaceMoreTrees()
 {
 	uint i = ScaleByMapSize(GB(Random(), 0, 5) + 25);
@@ -97,7 +136,12 @@ static void PlaceMoreTrees()
 
 /**
  * Place a tree at the same height as an existing tree.
- *  This gives cool effects to the map.
+ *
+ * Add a new tree around the given tile which is at the same
+ * height or at some offset (2 units) of it.
+ *
+ * @param tile The base tile to add a new tree somewhere around
+ * @param height The height (like the one from the tile)
  */
 void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 {
@@ -127,6 +171,11 @@ void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 	}
 }
 
+/**
+ * Place some trees randomly
+ *
+ * This function just place some trees randomly on the map.
+ */
 void PlaceTreesRandomly()
 {
 	uint i, j, ht;
@@ -183,6 +232,12 @@ void PlaceTreesRandomly()
 	}
 }
 
+/**
+ * Place new trees.
+ *
+ * This function takes care of the selected tree placer algorithm and
+ * place randomly the trees for a new game.
+ */
 void GenerateTrees()
 {
 	uint i, total;
