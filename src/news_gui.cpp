@@ -1,6 +1,5 @@
 /* $Id$ */
 
-/** @file news_gui.cpp */
 
 #include "stdafx.h"
 #include "openttd.h"
@@ -19,42 +18,50 @@
 #include "date.h"
 #include "string.h"
 
-/* News system
+/** @file news_gui.cpp
+ *
  * News system is realized as a FIFO queue (in an array)
  * The positions in the queue can't be rearranged, we only access
  * the array elements through pointers to the elements. Once the
- * array is full, the oldest entry (_oldest_news) is being overwritten
- * by the newest (_latest news).
+ * array is full, the oldest entry (\a _oldest_news) is being overwritten
+ * by the newest (\a _latest_news).
  *
+ * \verbatim
  * oldest                   current   lastest
  *  |                          |         |
  * [O------------F-------------C---------L           ]
  *               |
  *            forced
+ * \endverbatim
  *
  * Of course by using an array we can have situations like
  *
+ * \verbatim
  * [----L          O-----F---------C-----------------]
  * This is where we have wrapped around the array and have
  * (MAX_NEWS - O) + L news items
+ * \endverbatim
  */
 
+/** Number of news items in the FIFO queue */
 #define MAX_NEWS 30
 #define NB_WIDG_PER_SETTING 4
 
 typedef byte NewsID;
 #define INVALID_NEWS 255
 
-static NewsItem _news_items[MAX_NEWS];
-static NewsID _current_news = INVALID_NEWS; // points to news item that should be shown next
-static NewsID _oldest_news = 0;    // points to first item in fifo queue
-static NewsID _latest_news = INVALID_NEWS;  // points to last item in fifo queue
-/* if the message being shown was forced by the user, its index is stored in
- * _forced_news. forced_news is INVALID_NEWS otherwise.
- * (Users can force messages through history or "last message") */
+static NewsItem _news_items[MAX_NEWS];      ///< The news FIFO queue
+static NewsID _current_news = INVALID_NEWS; ///< points to news item that should be shown next
+static NewsID _oldest_news = 0;             ///< points to first item in fifo queue
+static NewsID _latest_news = INVALID_NEWS;  ///< points to last item in fifo queue
+
+/** Forced news item.
+ * Users can force an item by accessing the history or "last message".
+ * If the message being shown was forced by the user, its index is stored in
+ * _forced_news. Otherwise, \a _forced_news variable is INVALID_NEWS. */
 static NewsID _forced_news = INVALID_NEWS;
 
-static byte _total_news = 0; // total news count
+static byte _total_news = 0; ///< Number of news items in FIFO queue @see _news_items
 
 void DrawNewsNewVehicleAvail(Window *w);
 void DrawNewsBankrupcy(Window *w);
@@ -64,8 +71,8 @@ StringID GetNewsStringNewVehicleAvail(const NewsItem *ni);
 StringID GetNewsStringBankrupcy(const NewsItem *ni);
 
 static DrawNewsCallbackProc * const _draw_news_callback[] = {
-	DrawNewsNewVehicleAvail,  //< DNC_VEHICLEAVAIL
-	DrawNewsBankrupcy,        //< DNC_BANKRUPCY
+	DrawNewsNewVehicleAvail,  ///< DNC_VEHICLEAVAIL
+	DrawNewsBankrupcy,        ///< DNC_BANKRUPCY
 };
 
 extern GetNewsStringCallbackProc * const _get_news_string_callback[];
@@ -74,6 +81,7 @@ GetNewsStringCallbackProc * const _get_news_string_callback[] = {
 	GetNewsStringBankrupcy,        ///< DNC_BANKRUPCY
 };
 
+/** Initialize the news-items data structures */
 void InitNewsItemStructs()
 {
 	memset(_news_items, 0, sizeof(_news_items));
@@ -219,42 +227,52 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 	}
 }
 
-/** Return the correct index in the pseudo-fifo
- * queue and deals with overflows when increasing the index */
+/**
+ * Return the correct index in the pseudo-fifo
+ * queue and deals with overflows when increasing the index
+ */
 static inline NewsID increaseIndex(NewsID i)
 {
 	assert(i != INVALID_NEWS);
 	return (i + 1) % MAX_NEWS;
 }
 
-/** Return the correct index in the pseudo-fifo
- * queue and deals with overflows when decreasing the index */
+/**
+ * Return the correct index in the pseudo-fifo
+ * queue and deals with overflows when decreasing the index
+ */
 static inline NewsID decreaseIndex(NewsID i)
 {
 	assert(i != INVALID_NEWS);
 	return (i + MAX_NEWS - 1) % MAX_NEWS;
 }
 
-/** Add a new newsitem to be shown.
- * @param string String to display, can have special values based on parameter 'flags'
+/**
+ * Add a new newsitem to be shown.
+ * @param string String to display, can have special values based on parameter \a flags
  * @param flags various control bits that will show various news-types. See macro NEWS_FLAGS()
  * @param data_a news-specific value based on news type
  * @param data_b news-specific value based on news type
  * @note flags exists of 4 byte-sized extra parameters.
- * 1.  0 -  7 display_mode, any of the NewsMode enums (NM_)
- * 2.  8 - 15 news flags, any of the NewsFlags enums (NF_) NF_INCOLOR are set automatically if needed
- * 3. 16 - 23 news category, any of the NewsType enums (NT_)
- * 4. 24 - 31 news callback function, any of the NewsCallback enums (DNC_)
- * If the display mode is NM_CALLBACK special news is shown and parameter
- * stringid has a special meaning.
- * DNC_TRAINAVAIL, DNC_ROADAVAIL, DNC_SHIPAVAIL, DNC_AIRCRAFTAVAIL: StringID is
- * the index of the engine that is shown
- * DNC_BANKRUPCY: bytes 0-3 of StringID contains the player that is in trouble,
- * and 4-7 contains what kind of bankrupcy message is shown, NewsBankrupcy enum (NB_)
+ *  -# Bits  0 -  7 display_mode, any of the NewsMode enums (NM_)
+ *  -# Bits  8 - 15 news flags, any of the NewsFlags enums (NF_)
+ *  -# Bits 16 - 23 news category, any of the NewsType enums (NT_)
+ *  -# Bits 24 - 31 news callback function, any of the NewsCallback enums (DNC_)
+ *
+ * If the display mode is NM_CALLBACK, special news is shown and parameter
+ * \a string has a special meaning.
+ *  - For DNC_TRAINAVAIL, DNC_ROADAVAIL, DNC_SHIPAVAIL, DNC_AIRCRAFTAVAIL messages: StringID is
+ *    the index of the engine that is shown
+ *
+ *  - For DNC_BANKRUPCY: bytes 0-3 of StringID contains the player that is in trouble,
+ *    and 4-7 contains what kind of bankrupcy message is shown.
+ *    @see NewsBankrupcy
+ *
  * @see NewsMode
  * @see NewsFlags
  * @see NewsType
- * @see NewsCallback */
+ * @see NewsCallback
+ */
 void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 {
 	NewsID l_news;
@@ -310,8 +328,25 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 }
 
 
-/* Don't show item if it's older than x days, corresponds with NewsType in news.h */
-static const byte _news_items_age[] = {60, 60, 90, 60, 90, 30, 150, 30, 90, 180};
+/**
+ * Maximum age of news items.
+ * Don't show item if it's older than x days, corresponds with NewsType in news.h
+ * @see NewsType
+ */
+static const byte _news_items_age[NT_END] = {
+	60,  ///< NT_ARRIVAL_PLAYER
+	60,  ///< NT_ARRIVAL_OTHER
+	90,  ///< NT_ACCIDENT
+	60,  ///< NT_COMPANY_INFO
+	90,  ///< NT_OPENCLOSE
+	30,  ///< NT_ECONOMY
+	150, ///< NT_ADVICE
+	30,  ///< NT_NEW_VEHICLES
+	90,  ///< NT_ACCEPTANCE
+	180, ///< NT_SUBSIDIES
+	60   ///< NT_GENERAL
+};
+
 
 static const Widget _news_type13_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    15,     0,   429,     0,   169, 0x0, STR_NULL},
@@ -385,7 +420,8 @@ const char *_news_display_name[NT_END] = {
 	"general",
 };
 
-/** Get the value of an item of the news-display settings. This is
+/**
+ * Get the value of an item of the news-display settings. This is
  * a little tricky since on/off/summary must use 2 bits to store the value
  * @param item the item whose value is requested
  * @return return the found value which is between 0-2
@@ -396,7 +432,8 @@ static inline byte GetNewsDisplayValue(byte item)
 	return GB(_news_display_opt, item * 2, 2);
 }
 
-/** Set the value of an item in the news-display settings. This is
+/**
+ * Set the value of an item in the news-display settings. This is
  * a little tricky since on/off/summary must use 2 bits to store the value
  * @param item the item whose value is being set
  * @param val new value
@@ -407,7 +444,7 @@ static inline void SetNewsDisplayValue(byte item, byte val)
 	SB(_news_display_opt, item * 2, 2, val);
 }
 
-/* open up an own newspaper window for the news item */
+/** Open up an own newspaper window for the news item */
 static void ShowNewspaper(NewsItem *ni)
 {
 	Window *w;
@@ -457,7 +494,7 @@ static void ShowNewspaper(NewsItem *ni)
 	w->flags4 |= WF_DISABLE_VP_SCROLL;
 }
 
-/* show news item in the ticker */
+/** Show news item in the ticker */
 static void ShowTicker(const NewsItem *ni)
 {
 	Window *w;
@@ -470,8 +507,10 @@ static void ShowTicker(const NewsItem *ni)
 }
 
 
-/** Are we ready to show another news item?
- * Only if nothing is in the newsticker and no newspaper is displayed */
+/**
+ * Are we ready to show another news item?
+ * Only if nothing is in the newsticker and no newspaper is displayed
+ */
 static bool ReadyForNextItem()
 {
 	const Window *w;
@@ -493,6 +532,7 @@ static bool ReadyForNextItem()
 	return (ni->duration == 0 || FindWindowById(WC_NEWS_WINDOW, 0) == NULL);
 }
 
+/** Move to the next news item */
 static void MoveToNextItem()
 {
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
@@ -509,26 +549,27 @@ static void MoveToNextItem()
 		if (_date - _news_items_age[ni->type] > ni->date) return;
 
 		switch (GetNewsDisplayValue(ni->type)) {
-		case 0: { // Off - show nothing only a small reminder in the status bar
-			Window *w = FindWindowById(WC_STATUS_BAR, 0);
+			default: NOT_REACHED();
+			case 0: { // Off - show nothing only a small reminder in the status bar
+				Window *w = FindWindowById(WC_STATUS_BAR, 0);
 
-			if (w != NULL) {
-				WP(w, def_d).data_2 = 91;
-				SetWindowDirty(w);
-			}
-			break;
-		}
-
-		case 1: // Summary - show ticker, but if forced big, cascade to full
-			if (!(ni->flags & NF_FORCE_BIG)) {
-				ShowTicker(ni);
+				if (w != NULL) {
+					WP(w, def_d).data_2 = 91;
+					SetWindowDirty(w);
+				}
 				break;
 			}
-			/* Fallthrough */
 
-		case 2: // Full - show newspaper
-			ShowNewspaper(ni);
-			break;
+			case 1: // Summary - show ticker, but if forced big, cascade to full
+				if (!(ni->flags & NF_FORCE_BIG)) {
+					ShowTicker(ni);
+					break;
+				}
+				/* Fallthrough */
+
+			case 2: // Full - show newspaper
+				ShowNewspaper(ni);
+				break;
 		}
 	}
 }
@@ -541,7 +582,7 @@ void NewsLoop()
 	if (ReadyForNextItem()) MoveToNextItem();
 }
 
-/* Do a forced show of a specific message */
+/** Do a forced show of a specific message */
 static void ShowNewsMessage(NewsID i)
 {
 	if (_total_news == 0) return;
@@ -561,6 +602,7 @@ static void ShowNewsMessage(NewsID i)
 	}
 }
 
+/** Show previous news item */
 void ShowLastNewsMessage()
 {
 	if (_forced_news == INVALID_NEWS) {
@@ -594,7 +636,8 @@ static NewsID getNews(NewsID i)
 	return i;
 }
 
-/** Draw an unformatted news message truncated to a maximum length. If
+/**
+ * Draw an unformatted news message truncated to a maximum length. If
  * length exceeds maximum length it will be postfixed by '...'
  * @param x,y position of the string
  * @param color the color the string will be shown in
@@ -707,6 +750,7 @@ static const WindowDesc _message_history_desc = {
 	MessageHistoryWndProc
 };
 
+/** Display window with news messages history */
 void ShowMessageHistory()
 {
 	Window *w;
@@ -733,7 +777,8 @@ enum {
 	WIDGET_NEWSOPT_START_OPTION = 9,  ///< First widget that is part of a group [<] .. [.]
 };
 
-/** Setup the disabled/enabled buttons in the message window
+/**
+ * Setup the disabled/enabled buttons in the message window
  * If the value is 'off' disable the [<] widget, and enable the [>] one
  * Same-wise for all the others. Starting value of 4 is the first widget
  * group. These are grouped as [<][>] .. [<][>], etc.
