@@ -13,6 +13,9 @@
  * bit is set in the callback flags/trigger for a vehicle, house,
  * industry, etc.
  * Names are formatted as CBID_<CLASS>_<CALLBACK>
+ *
+ * @note Do not forget to add 15 bits callbacks to the switch in
+ *       newgrf_spritegroup.cpp (search for "15 bits callback").
  */
 enum CallbackID {
 	/** Set when using the callback resolve system, but not to resolve a callback. */

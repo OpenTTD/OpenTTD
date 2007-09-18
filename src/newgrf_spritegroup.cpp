@@ -192,7 +192,25 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 	if (group->g.determ.num_ranges == 0) {
 		/* nvar == 0 is a special case -- we turn our value into a callback result */
 		nvarzero.type = SGT_CALLBACK;
-		nvarzero.g.callback.result = GB(value, 0, 15);
+		switch (object->callback) {
+			/* All these functions are 15 bit callbacks */
+			case CBID_VEHICLE_REFIT_CAPACITY:
+			case CBID_BUILDING_COLOUR:
+			case CBID_HOUSE_CARGO_ACCEPTANCE:
+			case CBID_INDUSTRY_LOCATION:
+			case CBID_INDTILE_CARGO_ACCEPTANCE:
+			case CBID_VEHICLE_COLOUR_MAPPING:
+			case CBID_HOUSE_PRODUCE_CARGO:
+			case CBID_VEHICLE_SOUND_EFFECT:
+			case CBID_SOUNDS_AMBIENT_EFFECT:
+				nvarzero.g.callback.result = GB(value, 0, 15);
+				break;
+
+			/* The rest is a 8 bit callback, which should be truncated properly */
+			default:
+				nvarzero.g.callback.result = GB(value, 0, 8);
+				break;
+		}
 		return &nvarzero;
 	}
 
