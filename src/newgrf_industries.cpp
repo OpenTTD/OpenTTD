@@ -48,6 +48,7 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 	for (t = 0; t < MapSize(); t++) {
 		if (IsTileType(t, MP_WATER) == water) break;
 	}
+	if (t == MapSize() && !water) return 0x200;
 	best_dist = DistanceManhattan(tile, t);
 
 	for (; t < MapSize(); t++) {
@@ -72,7 +73,7 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 		}
 	}
 
-	return best_dist;
+	return min(best_dist, water ? 0x7F : 0x1FF);
 }
 
 /** Make an analysis of a tile and check for its belonging to the same
