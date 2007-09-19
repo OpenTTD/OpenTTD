@@ -44,6 +44,17 @@ static inline void MaxZoomInOut(int how, Window *w)
 	while (DoZoomInOutWindow(how, w)) {};
 }
 
+/**
+ * Some values for constructing bounding boxes (BB). The Z positions under bridges are:
+ * z=0..5  Everything that can be built under low bridges.
+ * z=6     reserved, currently unused.
+ * z=7     Z separator between bridge/tunnel and the things under/above it.
+ */
+enum {
+	BB_HEIGHT_UNDER_BRIDGE = 6, ///< Everything that can be built under low bridges, must not exceed this Z height.
+	BB_Z_SEPARATOR  = 7,        ///< Separates the bridge/tunnel from the things under/above it.
+};
+
 void OffsetGroundSprite(int x, int y);
 
 void DrawGroundSprite(SpriteID image, SpriteID pal);

@@ -168,6 +168,38 @@ static byte GetPCPElevation(TileIndex tile, DiagDirection PCPpos)
 	return (z + 2) & ~3; // this means z = (z + TILE_HEIGHT / 4) / (TILE_HEIGHT / 2) * (TILE_HEIGHT / 2);
 }
 
+/**
+ * Draws wires on a tunnel tile
+ *
+ * DrawTile_TunnelBridge() calls this function to draw the wires as SpriteCombine with the tunnel roof.
+ *
+ * @param ti The Tileinfo to draw the tile for
+ */
+void DrawCatenaryOnTunnel(const TileInfo *ti)
+{
+	/* xmin, ymin, xmax + 1, ymax + 1 of BB */
+	static const int _tunnel_wire_BB[4][4] = {
+		{ 0, 1, 16, 15 }, // NE
+		{ 1, 0, 15, 16 }, // SE
+		{ 0, 1, 16, 15 }, // SW
+		{ 1, 0, 15, 16 }, // NW
+	};
+
+	if ((GetRailType(ti->tile) != RAILTYPE_ELECTRIC) || _patches.disable_elrails) return;
+
+	DiagDirection dir = GetTunnelDirection(ti->tile);
+
+	const SortableSpriteStruct *sss = &CatenarySpriteData_Tunnel[dir];
+	const int *BB_data = _tunnel_wire_BB[dir];
+	AddSortableSpriteToDraw(
+		sss->image, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
+		BB_data[2] - sss->x_offset, BB_data[3] - sss->y_offset, BB_Z_SEPARATOR - sss->z_offset + 1,
+		GetTileZ(ti->tile) + sss->z_offset,
+		HASBIT(_transparent_opt, TO_BUILDINGS),
+		BB_data[0] - sss->x_offset, BB_data[1] - sss->y_offset, BB_Z_SEPARATOR - sss->z_offset
+	);
+}
+
 /** Draws wires and, if required, pylons on a given tile
  * @param ti The Tileinfo to draw the tile for
  */
@@ -300,9 +332,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 						continue; /* No neighbour, go looking for a better position */
 					}
 
-					AddSortableSpriteToDraw(pylon_sprites[temp], PAL_NONE, x, y, 1, 1, 10,
+					AddSortableSpriteToDraw(pylon_sprites[temp], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE,
 							GetPCPElevation(ti->tile, i),
-							HASBIT(_transparent_opt, TO_BUILDINGS));
+							HASBIT(_transparent_opt, TO_BUILDINGS), -1, -1);
 					break; /* We already have drawn a pylon, bail out */
 				}
 			}
@@ -319,17 +351,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	/* Drawing of pylons is finished, now draw the wires */
 	for (t = TRACK_BEGIN; t < TRACK_END; t++) {
 		if (HASBIT(trackconfig[TS_HOME], t)) {
-			if (IsTunnelTile(ti->tile)) {
-				const SortableSpriteStruct *sss = &CatenarySpriteData_Tunnel[GetTunnelDirection(ti->tile)];
-
-				AddSortableSpriteToDraw(
-					sss->image, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
-					sss->x_size, sss->y_size, sss->z_size,
-					GetTileZ(ti->tile) + sss->z_offset,
-					HASBIT(_transparent_opt, TO_BUILDINGS)
-				);
-				break;
-			}
+			if (IsTunnelTile(ti->tile)) break; // drawn together with tunnel-roof (see DrawCatenaryOnTunnel())
 			byte PCPconfig = HASBIT(PCPstatus, PCPpositions[t][0]) +
 				(HASBIT(PCPstatus, PCPpositions[t][1]) << 1);
 
@@ -391,7 +413,7 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 		if (HASBIT(tlg, (axis == AXIS_X ? 0 : 1))) PPPpos = ReverseDir(PPPpos);
 		uint x = ti->x + x_pcp_offsets[PCPpos] + x_ppp_offsets[PPPpos];
 		uint y = ti->y + y_pcp_offsets[PCPpos] + y_ppp_offsets[PPPpos];
-		AddSortableSpriteToDraw(pylon_sprites[PPPpos], PAL_NONE, x, y, 1, 1, 10, height, HASBIT(_transparent_opt, TO_BUILDINGS));
+		AddSortableSpriteToDraw(pylon_sprites[PPPpos], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, height, HASBIT(_transparent_opt, TO_BUILDINGS), -1, -1);
 	}
 
 	/* need a pylon on the southern end of the bridge */
@@ -401,7 +423,7 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 		if (HASBIT(tlg, (axis == AXIS_X ? 0 : 1))) PPPpos = ReverseDir(PPPpos);
 		uint x = ti->x + x_pcp_offsets[PCPpos] + x_ppp_offsets[PPPpos];
 		uint y = ti->y + y_pcp_offsets[PCPpos] + y_ppp_offsets[PPPpos];
-		AddSortableSpriteToDraw(pylon_sprites[PPPpos], PAL_NONE, x, y, 1, 1, 10, height, HASBIT(_transparent_opt, TO_BUILDINGS));
+		AddSortableSpriteToDraw(pylon_sprites[PPPpos], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, height, HASBIT(_transparent_opt, TO_BUILDINGS), -1, -1);
 	}
 }
 

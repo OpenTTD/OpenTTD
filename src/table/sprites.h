@@ -176,8 +176,11 @@ enum Sprites {
 	/* One way road sprites */
 	SPR_ONEWAY_BASE = SPR_TRAMWAY_BASE + 113,
 
+	/* Not really a sprite, but an empty bounding box. Used to construct bounding boxes, that help sorting the sprites, but do not have a sprite associated. */
+	SPR_EMPTY_BOUNDING_BOX = SPR_ONEWAY_BASE + 6,
+
 	/* Flags sprites (in same order as enum NetworkLanguage) */
-	SPR_FLAGS_BASE = SPR_ONEWAY_BASE + 6,
+	SPR_FLAGS_BASE = SPR_EMPTY_BOUNDING_BOX + 1,
 
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face

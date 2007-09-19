@@ -914,8 +914,8 @@ void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 		front = SPR_TRAMWAY_BASE + _road_frontwire_sprites_1[tram];
 	}
 
-	AddSortableSpriteToDraw(back,  PAL_NONE, ti->x, ti->y, 16, 16, 0x1F, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
-	AddSortableSpriteToDraw(front, PAL_NONE, ti->x, ti->y, 16, 16, 0x1F, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
+	AddSortableSpriteToDraw(back,  PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
+	AddSortableSpriteToDraw(front, PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
 }
 
 /**

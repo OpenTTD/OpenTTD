@@ -459,7 +459,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 			if (tep == NULL) break;
 
-			AddSortableSpriteToDraw(tep->image, tep->pal, ti->x + tep->x, ti->y + tep->y, 5, 5, 0x10, z, HASBIT(_transparent_opt, TO_TREES));
+			AddSortableSpriteToDraw(tep->image, tep->pal, ti->x + tep->x, ti->y + tep->y, 16 - tep->x, 16 - tep->y, 0x30, z, HASBIT(_transparent_opt, TO_TREES), -tep->x, -tep->y);
 			tep->image = 0;
 		}
 	}

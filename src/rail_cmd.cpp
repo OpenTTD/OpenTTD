@@ -1262,7 +1262,7 @@ static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint i
 		sprite = _signal_base + (GetSignalType(tile, track) - 1) * 16 + GetSignalVariant(tile, track) * 64 + image + condition;
 	}
 
-	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, 10, GetSlopeZ(x,y));
+	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSlopeZ(x,y));
 }
 
 static uint32 _drawtile_track_palette;

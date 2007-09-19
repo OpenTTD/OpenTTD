@@ -859,11 +859,11 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 			 * sprites is at the top
 			 */
 			if (z >= front_height) { // front facing pillar
-				AddSortableSpriteToDraw(image, psid->pal, x, y, p[4], p[5], 1, z, HASBIT(_transparent_opt, TO_BRIDGES));
+				AddSortableSpriteToDraw(image, psid->pal, x, y, p[4], p[5], BB_HEIGHT_UNDER_BRIDGE - 5, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, -5);
 			}
 
 			if (drawfarpillar && z >= back_height && z < i - TILE_HEIGHT) { // back facing pillar
-				AddSortableSpriteToDraw(image, psid->pal, x - p[6], y - p[7], p[4], p[5], 1, z, HASBIT(_transparent_opt, TO_BRIDGES));
+				AddSortableSpriteToDraw(image, psid->pal, x - p[6], y - p[7], p[4], p[5], BB_HEIGHT_UNDER_BRIDGE - 5, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, -5);
 			}
 		}
 	}
@@ -890,14 +890,23 @@ static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay)
 	static const SpriteID back_offsets[6]    =   {  95,  96,  99, 102, 100, 101 };
 	static const SpriteID front_offsets[6]   =   {  97,  98, 103, 106, 104, 105 };
 
-	static const uint size_x[6] = { 11, 16, 16, 16, 16, 16 };
-	static const uint size_y[6] = { 16, 11, 16, 16, 16, 16 };
+	static const uint size_x[6] = {  1, 16, 16,  1, 16,  1 };
+	static const uint size_y[6] = { 16,  1,  1, 16,  1, 16 };
+	static const uint front_bb_offset_x[6] = { 15,  0,  0, 15,  0, 15 };
+	static const uint front_bb_offset_y[6] = {  0, 15, 15,  0, 15,  0 };
 
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE, x, y, size_x[offset], size_y[offset], offset >= 2 ? 1 : 0, z, HASBIT(_transparent_opt, TO_BRIDGES));
+	/* The sprites under the vehicles are drawn as SpriteCombine. StartSpriteCombine() has already been called
+	 * The bounding boxes here are the same as for bridge front/roof */
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES));
 
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + back_offsets[offset],  PAL_NONE, x, y, size_x[offset], size_y[offset], 0, z, HASBIT(_transparent_opt, TO_BUILDINGS));
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + back_offsets[offset],  PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, HASBIT(_transparent_opt, TO_BUILDINGS));
+
+	/* Start a new SpriteCombine for the front part */
+	EndSpriteCombine();
+	StartSpriteCombine();
+
 	/* For sloped sprites the bounding box needs to be higher, as the pylons stop on a higher point */
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + front_offsets[offset], PAL_NONE, x, y, size_x[offset], size_y[offset], offset >= 2 ? 0x30 : 0x10, z, HASBIT(_transparent_opt, TO_BUILDINGS));
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + front_offsets[offset], PAL_NONE, x, y, size_x[offset] + front_bb_offset_x[offset], size_y[offset] + front_bb_offset_y[offset], 0x28, z, HASBIT(_transparent_opt, TO_BUILDINGS), front_bb_offset_x[offset], front_bb_offset_y[offset]);
 }
 
 /**
@@ -918,6 +927,27 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 	SpriteID image;
 
 	if (IsTunnel(ti->tile)) {
+		/* Front view of tunnel bounding boxes:
+		 *
+		 *   122223  <- BB_Z_SEPARATOR
+		 *   1    3
+		 *   1    3                1,3 = empty helper BB
+		 *   1    3                  2 = SpriteCombine of tunnel-roof and catenary (tram & elrail)
+		 *
+		 */
+
+		static const int _tunnel_BB[4][12] = {
+			/*  tunnnel-roof  |  Z-separator  | tram-catenary
+			 * w  h  bb_x bb_y| x   y   w   h |bb_x bb_y w h */
+			{  1,  0, -15, -14,  0, 15, 16,  1, 0, 1, 16, 15 }, // NE
+			{  0,  1, -14, -15, 15,  0,  1, 16, 1, 0, 15, 16 }, // SE
+			{  1,  0, -15, -14,  0, 15, 16,  1, 0, 1, 16, 15 }, // SW
+			{  0,  1, -14, -15, 15,  0,  1, 16, 1, 0, 15, 16 }, // NW
+		};
+		static const int *BB_data = _tunnel_BB[GetTunnelDirection(ti->tile)];
+
+		bool catenary = false;
+
 		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL) {
 			image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.tunnel;
 		} else {
@@ -936,13 +966,27 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				static const SpriteID tunnel_sprites[2][4] = { { 28, 78, 79, 27 }, {  5, 76, 77,  4 } };
 
 				DrawGroundSprite(SPR_TRAMWAY_BASE + tunnel_sprites[rts - ROADTYPES_TRAM][dir], PAL_NONE);
-				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, 16, 16, 16, (byte)ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
+
+				catenary = true;
+				StartSpriteCombine();
+				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
 			}
 		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
 			DrawCatenary(ti);
+
+			catenary = true;
+			StartSpriteCombine();
+			DrawCatenaryOnTunnel(ti);
 		}
 
-		AddSortableSpriteToDraw(image + 1, PAL_NONE, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, 1, 1, 8, (byte)ti->z);
+		AddSortableSpriteToDraw(image + 1, PAL_NONE, ti->x + TILE_SIZE - 1, ti->y + TILE_SIZE - 1, BB_data[0], BB_data[1], TILE_HEIGHT, ti->z, false, BB_data[2], BB_data[3], BB_Z_SEPARATOR);
+
+		if (catenary) EndSpriteCombine();
+
+		/* Add helper BB for sprite sorting, that separate the tunnel from things beside of it */
+		AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, ti->x             , ti->y             , BB_data[6], BB_data[7], TILE_HEIGHT, ti->z);
+		AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, ti->x + BB_data[4], ti->y + BB_data[5], BB_data[6], BB_data[7], TILE_HEIGHT, ti->z);
+
 		DrawBridgeMiddle(ti);
 	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
 		const PalSpriteID *psid;
@@ -977,6 +1021,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		/* draw ramp */
 
+		/* Draw Trambits as SpriteCombine */
+		if (GetBridgeTransportType(ti->tile) == TRANSPORT_ROAD) StartSpriteCombine();
+
 		/* HACK set the height of the BB of a sloped ramp to 1 so a vehicle on
 		 * it doesn't disappear behind it
 		 */
@@ -996,8 +1043,10 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				} else {
 					offset += 2;
 				}
+				/* DrawBridgeTramBits() calls EndSpriteCombine() and StartSpriteCombine() */
 				DrawBridgeTramBits(ti->x, ti->y, z, offset, HASBIT(rts, ROADTYPE_ROAD));
 			}
+			EndSpriteCombine();
 		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
 			DrawCatenary(ti);
 		}
@@ -1043,6 +1092,25 @@ static uint CalcBridgePiece(uint north, uint south)
 
 void DrawBridgeMiddle(const TileInfo* ti)
 {
+	/* Sectional view of bridge bounding boxes:
+	 *
+	 *  1           2                                1,2 = SpriteCombine of Bridge front/(back&floor) and TramCatenary
+	 *  1           2                                  3 = empty helper BB
+	 *  1     7     2                                4,5 = pillars under higher bridges
+	 *  1 6 88888 6 2                                  6 = elrail-pylons
+	 *  1 6 88888 6 2                                  7 = elrail-wire
+	 *  1 6 88888 6 2  <- TILE_HEIGHT                  8 = rail-vehicle on bridge
+	 *  3333333333333  <- BB_Z_SEPARATOR
+	 *                 <- unused
+	 *    4       5    <- BB_HEIGHT_UNDER_BRIDGE
+	 *    4       5
+	 *    4       5
+	 *
+	 */
+
+	/* Z position of the bridge sprites relative to bridge height (downwards) */
+	static const int BRIDGE_Z_START = 3;
+
 	const PalSpriteID* psid;
 	uint base_offset;
 	TileIndex rampnorth;
@@ -1078,12 +1146,19 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	x = ti->x;
 	y = ti->y;
 	uint bridge_z = GetBridgeHeight(rampsouth);
-	z = bridge_z - 3;
+	z = bridge_z - BRIDGE_Z_START;
 
+	/* Add a bounding box, that separates the bridge from things below it. */
+	AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, x, y, 16, 16, 1, bridge_z - TILE_HEIGHT + BB_Z_SEPARATOR);
+
+	/* Draw Trambits as SpriteCombine */
+	if (GetBridgeTransportType(rampsouth) == TRANSPORT_ROAD) StartSpriteCombine();
+
+	/* Draw floor and far part of bridge*/
 	if (axis == AXIS_X) {
-		AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 16, 11, 1, z, HASBIT(_transparent_opt, TO_BRIDGES));
+		AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 16, 1, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, BRIDGE_Z_START);
 	} else {
-		AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 11, 16, 1, z, HASBIT(_transparent_opt, TO_BRIDGES));
+		AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 1, 16, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, BRIDGE_Z_START);
 	}
 
 	psid++;
@@ -1092,7 +1167,11 @@ void DrawBridgeMiddle(const TileInfo* ti)
 		RoadTypes rts = GetRoadTypes(rampsouth);
 
 		if (HASBIT(rts, ROADTYPE_TRAM)) {
+			/* DrawBridgeTramBits() calls EndSpriteCombine() and StartSpriteCombine() */
 			DrawBridgeTramBits(x, y, bridge_z, axis ^ 1, HASBIT(rts, ROADTYPE_ROAD));
+		} else {
+			EndSpriteCombine();
+			StartSpriteCombine();
 		}
 	} else if (GetRailType(rampsouth) == RAILTYPE_ELECTRIC) {
 		DrawCatenary(ti);
@@ -1101,11 +1180,14 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	/* draw roof, the component of the bridge which is logically between the vehicle and the camera */
 	if (axis == AXIS_X) {
 		y += 12;
-		if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 16, 1, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES));
+		if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 16, 4, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 3, BRIDGE_Z_START);
 	} else {
 		x += 12;
-		if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 1, 16, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES));
+		if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 4, 16, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES), 3, 0, BRIDGE_Z_START);
 	}
+
+	/* Draw TramFront as SpriteCombine */
+	if (GetBridgeTransportType(rampsouth) == TRANSPORT_ROAD) EndSpriteCombine();
 
 	psid++;
 	if (ti->z + 5 == z) {

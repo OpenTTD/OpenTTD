@@ -148,7 +148,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			AddSortableSpriteToDraw(
 				SPR_BOUGHT_LAND, PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)),
-				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 10, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
+				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
 			);
 			DrawBridgeMiddle(ti);
 			break;

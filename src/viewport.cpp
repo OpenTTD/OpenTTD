@@ -513,8 +513,8 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 {
 	ViewportDrawer *vd = _cur_vd;
 	ParentSpriteToDraw *ps;
-	const Sprite *spr;
 	Point pt;
+	int32 right, bottom;
 
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
@@ -551,11 +551,22 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	pt = RemapCoords(x, y, z);
 	ps->x = pt.x;
 	ps->y = pt.y;
-	spr = GetSprite(image & SPRITE_MASK);
-	if ((ps->left   = (pt.x += spr->x_offs)) >= vd->dpi.left + vd->dpi.width ||
-			(             (pt.x +  spr->width )) <= vd->dpi.left ||
-			(ps->top    = (pt.y += spr->y_offs)) >= vd->dpi.top + vd->dpi.height ||
-			(             (pt.y +  spr->height)) <= vd->dpi.top) {
+	if (image == SPR_EMPTY_BOUNDING_BOX) {
+		ps->left = RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x;
+		right    = RemapCoords(x + bb_offset_x, y + h          , z + bb_offset_z).x;
+		ps->top  = RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y;
+		bottom   = RemapCoords(x + w          , y + h          , z + bb_offset_z).y;
+	} else {
+		const Sprite *spr = GetSprite(image & SPRITE_MASK);
+		ps->left = (pt.x += spr->x_offs);
+		right    = (pt.x +  spr->width );
+		ps->top  = (pt.y += spr->y_offs);
+		bottom   = (pt.y +  spr->height);
+	}
+	if (ps->left >= vd->dpi.left + vd->dpi.width ||
+	    right    <= vd->dpi.left ||
+	    ps->top  >= vd->dpi.top + vd->dpi.height ||
+	    bottom   <= vd->dpi.top) {
 		return;
 	}
 
@@ -1212,7 +1223,7 @@ static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
 		const ParentSpriteToDraw* ps = *psd;
 		const ChildScreenSpriteToDraw* cs;
 
-		DrawSprite(ps->image, ps->pal, ps->x, ps->y);
+		if (ps->image != SPR_EMPTY_BOUNDING_BOX) DrawSprite(ps->image, ps->pal, ps->x, ps->y);
 
 		for (cs = ps->child; cs != NULL; cs = cs->next) {
 			DrawSprite(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y);

@@ -788,6 +788,7 @@ void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
  * @see DrawCatenaryRailway
  */
 void DrawCatenary(const TileInfo *ti);
+void DrawCatenaryOnTunnel(const TileInfo *ti);
 
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);
 
