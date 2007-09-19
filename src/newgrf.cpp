@@ -272,6 +272,8 @@ static StringID MapGRFStringID(uint32 grfid, StringID str)
 	TEXID_TO_STRINGID(0x482A, 0x483B, STR_482A_PRODUCTION_LAST_MONTH);
 #undef TEXTID_TO_STRINGID
 
+	if (str == STR_NULL) return STR_EMPTY;
+
 	return str;
 }
 
