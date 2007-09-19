@@ -253,17 +253,24 @@ static StringID MapGRFStringID(uint32 grfid, StringID str)
 	if (GB(str, 8, 8) == 0xD0 || GB(str, 8, 8) == 0xDC) {
 		return GetGRFStringID(grfid, str);
 	}
-
+#define TEXID_TO_STRINGID(begin, end, stringid) if (str >= begin && str <= end) return str + (stringid - begin)
 	/* We have some changes in our cargo strings, resulting in some missing. */
-	if (str >= 0x006E && str <= 0x008D) return str - 0x20;
-	if (str >= 0x008E && str <= 0x00AD) return str - 0x20;
+	TEXID_TO_STRINGID(0x000E, 0x002D, STR_000E);
+	TEXID_TO_STRINGID(0x002E, 0x004D, STR_002E);
+	TEXID_TO_STRINGID(0x004E, 0x006D, STR_QUANTITY_NOTHING);
+	TEXID_TO_STRINGID(0x006E, 0x008D, STR_QUANTITY_NOTHING);
+	TEXID_TO_STRINGID(0x008E, 0x00AD, STR_ABBREV_NOTHING);
 
 	/* Map building names according to our lang file changes
 	 * 0x200F = Tall Office Block, first house name in the original data, the one that TTDPatch stil uses
 	 * 0x201F = Old houses is the last house name.
 	 * OpenTTD does not have exactly the same order aymore, so, the code below allows
 	 * to compensate for the difference */
-	if (str >= 0x200F && str <= 0x201F) return str + (STR_200F_TALL_OFFICE_BLOCK - 0x200F);
+	TEXID_TO_STRINGID(0x200F, 0x201F, STR_200F_TALL_OFFICE_BLOCK);
+
+	/* Same thing for industries, since the introduction of 4 new strings above STR_482A_PRODUCTION_LAST_MONTH */
+	TEXID_TO_STRINGID(0x482A, 0x483B, STR_482A_PRODUCTION_LAST_MONTH);
+#undef TEXTID_TO_STRINGID
 
 	return str;
 }
