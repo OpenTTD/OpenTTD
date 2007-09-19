@@ -814,32 +814,38 @@ static RoadBits GetTownRoadGridElement(Town* t, TileIndex tile, DiagDirection di
 			break;
 	}
 
-	/* Skip slope optimisations */
+	/* Stop if the tile is not a part of the grid lines */
 	if (rcmd == ROAD_NONE) return rcmd;
 
-	RoadBits rb_template;
-	switch (GetTileSlope(tile, NULL)) {
-		default:       rb_template = ROAD_ALL; break;
-		case SLOPE_W:  rb_template = ROAD_NW | ROAD_SW; break;
-		case SLOPE_SW: rb_template = ROAD_Y | ROAD_SW;  break;
-		case SLOPE_S:  rb_template = ROAD_SE | ROAD_SW; break;
-		case SLOPE_SE: rb_template = ROAD_X | ROAD_SE;  break;
-		case SLOPE_E:  rb_template = ROAD_NE | ROAD_SE; break;
-		case SLOPE_NE: rb_template = ROAD_Y | ROAD_NE;  break;
-		case SLOPE_N:  rb_template = ROAD_NW | ROAD_NE; break;
-		case SLOPE_NW: rb_template = ROAD_X | ROAD_NW;  break;
-		case SLOPE_STEEP_W:
-		case SLOPE_STEEP_S:
-		case SLOPE_STEEP_E:
-		case SLOPE_STEEP_N:
-			rb_template = (dir == DIAGDIR_NE || dir == DIAGDIR_SW) ? ROAD_X : ROAD_Y;
-			break;
+	/* Optimise only X-junctions */
+	if (COUNTBITS(rcmd) != 2) {
+		RoadBits rb_template;
+
+		switch (GetTileSlope(tile, NULL)) {
+			default:       rb_template = ROAD_ALL; break;
+			case SLOPE_W:  rb_template = ROAD_NW | ROAD_SW; break;
+			case SLOPE_SW: rb_template = ROAD_Y  | ROAD_SW; break;
+			case SLOPE_S:  rb_template = ROAD_SW | ROAD_SE; break;
+			case SLOPE_SE: rb_template = ROAD_X  | ROAD_SE; break;
+			case SLOPE_E:  rb_template = ROAD_SE | ROAD_NE; break;
+			case SLOPE_NE: rb_template = ROAD_Y  | ROAD_NE; break;
+			case SLOPE_N:  rb_template = ROAD_NE | ROAD_NW; break;
+			case SLOPE_NW: rb_template = ROAD_X  | ROAD_NW; break;
+			case SLOPE_STEEP_W:
+			case SLOPE_STEEP_S:
+			case SLOPE_STEEP_E:
+			case SLOPE_STEEP_N:
+				rb_template = ROAD_NONE;
+				break;
+		}
+
+		/* Stop if the template is compatible to the growth dir */
+		if (DiagDirToRoadBits(ReverseDiagDir(dir)) & rb_template) return rb_template;
+		/* If not generate a straight road in the direction of the growth */
+		return DiagDirToRoadBits(dir) | DiagDirToRoadBits(ReverseDiagDir(dir));
 	}
 
-	/* Check for the right growth dir */
-	if (DiagDirToRoadBits(ReverseDiagDir(dir)) & (rcmd & rb_template)) return rb_template & rcmd;
-
-	return (dir == DIAGDIR_NE || dir == DIAGDIR_SW) ? ROAD_X : ROAD_Y;
+	return rcmd;
 }
 
 /**
