@@ -59,12 +59,12 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 			/* When the Y distance between the current row and the 'source' tile
 			 * is larger than the best distance, we've found the best distance */
 			if ((int)TileY(t) - (int)TileY(tile) > best_dist) break;
-			if (TileX(tile) > TileX(t)) {
+			if ((int)TileX(t) - (int)TileX(tile) > best_dist) {
 				/* We can safely skip this many tiles; from here all tiles have a
 				 * higher or equal distance than the best distance */
 				t |= MapMaxX();
 				continue;
-			} else {
+			} else if (TileX(tile) < TileX(t)) {
 				/* We can safely skip this many tiles; up to here all tiles have a
 				 * higher or equal distance than the best distance */
 				t += max(best_dist - dist, 0);
