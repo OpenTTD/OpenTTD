@@ -34,10 +34,10 @@ struct DrawTileSprites {
 struct DrawBuildingsTileStruct {
 	PalSpriteID ground;
 	PalSpriteID building;
-	byte subtile_x:4;
-	byte subtile_y:4;
-	byte width:4;
-	byte height:4;
+	byte subtile_x;
+	byte subtile_y;
+	byte width;
+	byte height;
 	byte dz;
 	byte draw_proc;  /* this allows to specify a special drawing procedure.*/
 };
