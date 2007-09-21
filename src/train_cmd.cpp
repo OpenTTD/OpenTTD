@@ -1377,7 +1377,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (flags & DC_EXEC) {
 					first = UnlinkWagon(v, first);
 					DeleteDepotHighlightOfVehicle(v);
-					RemoveVehicleFromGroup(v);
 					delete v;
 				}
 			}
