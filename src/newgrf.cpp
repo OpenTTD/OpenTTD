@@ -244,7 +244,7 @@ static GRFFile *GetFileByFilename(const char *filename)
  * @param str StringID that we want to have the equivalent in OoenTTD
  * @return the properly adjusted StringID
  */
-static StringID MapGRFStringID(uint32 grfid, StringID str)
+StringID MapGRFStringID(uint32 grfid, StringID str)
 {
 	/* 0xD0 and 0xDC stand for all the TextIDs in the range
 	 * of 0xD000 (misc graphics texts) and 0xDC00 (misc persistent texts).

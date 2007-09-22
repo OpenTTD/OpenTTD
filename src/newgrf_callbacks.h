@@ -103,7 +103,7 @@ enum CallbackID {
 	CBID_INDUSTRY_LOCATION               = 0x28,
 
 	/** Called on production changes, so it can be adjusted. */
-	CBID_INDUSTRY_PRODUCTION_CHANGE      = 0x29, // not implemented
+	CBID_INDUSTRY_PRODUCTION_CHANGE      = 0x29,
 
 	/** Called to determine which cargoes a town building should accept. */
 	CBID_HOUSE_ACCEPT_CARGO              = 0x2A,
@@ -141,7 +141,7 @@ enum CallbackID {
 	CBID_VEHICLE_AUTOREPLACE_SELECTION   = 0x34,
 
 	/** Called monthly on production changes, so it can be adjusted more frequently */
-	CBID_INDUSTRY_MONTHLYPROD_CHANGE     = 0x35, // not implemented
+	CBID_INDUSTRY_MONTHLYPROD_CHANGE     = 0x35,
 
 	/** Called to modify various vehicle properties. Callback parameter 1
 	 * specifies the property index, as used in Action 0, to change. */

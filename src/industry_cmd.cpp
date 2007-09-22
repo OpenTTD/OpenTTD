@@ -31,6 +31,7 @@
 #include "water_map.h"
 #include "tree_map.h"
 #include "cargotype.h"
+#include "newgrf.h"
 #include "newgrf_commons.h"
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
@@ -1802,15 +1803,43 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
  */
 static void ChangeIndustryProduction(Industry *i, bool monthly)
 {
-	if (monthly != _patches.smooth_economy) return;
-
+	extern StringID MapGRFStringID(uint32 grfid, StringID str);
 	StringID str = STR_NULL;
 	bool closeit = false;
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
+	bool standard = true;
+	bool suppress_message = false;
+	byte div = 0;
+	byte mul = 0;
 
-	if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
+	if (HASBIT(indspec->callback_flags, monthly ? CBM_IND_MONTHLYPROD_CHANGE : CBM_IND_PRODUCTION_CHANGE)) {
+		uint16 res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->xy);
+		if (res != CALLBACK_FAILED) {
+			standard = false;
+			suppress_message = HASBIT(res, 7);
+			/* Get the custom message if any */
+			if (HASBIT(res, 8)) str = MapGRFStringID(indspec->grf_prop.grffile->grfid, GB(GetRegister(0x100), 0, 16));
+			res = GB(res, 0, 4);
+			switch(res) {
+				default: NOT_REACHED();
+				case 0x0: break;                  // Do nothing, but show the custom message if any
+				case 0x1: div = 1; break;         // Halve industry production. If production reaches the quarter of the default, the industry is closed instead.
+				case 0x2: mul = 1; break;         // Double industry production if it hasn't reached eight times of the original yet.
+				case 0x3: closeit = true; break;  // The industry announces imminent closure, and is physically removed from the map next month.
+				case 0x4: standard = true; break; // Do the standard random production change as if this industry was a primary one.
+				case 0x5: case 0x6: case 0x7:     // Divide production by 4, 8, 16
+				case 0x8: div = res - 0x5; break; // Divide production by 32
+				case 0x9: case 0xA: case 0xB:     // Multiply production by 4, 8, 16
+				case 0xC: mul = res - 0x9; break; // Multiply production by 32
+			}
+		}
+	}
 
-	if ((indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0) {
+	if (standard && monthly != _patches.smooth_economy) return;
+
+	if (standard && indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
+
+	if (standard && (indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0) {
 		/* decrease or increase */
 		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE;
 
@@ -1858,31 +1887,37 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			if (only_decrease || CHANCE16(1, 3)) {
 				/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
 				if (!only_decrease && (i->last_month_pct_transported[0] > 153) != CHANCE16(1, 3)) {
-					/* Increase production */
-					if (i->prod_level != 0x80) {
-						i->prod_level <<= 1;
-						i->production_rate[0] = min(i->production_rate[0] * 2, 0xFF);
-						i->production_rate[1] = min(i->production_rate[1] * 2, 0xFF);
-						if (str == STR_NULL) str = indspec->production_up_text;
-					}
+					mul = 1; // Increase production
 				} else {
-					/* Decrease production */
-					if (i->prod_level == 4) {
-						closeit = true;
-					} else {
-						i->prod_level >>= 1;
-						i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
-						i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
-						if (str == STR_NULL) str = indspec->production_down_text;
-					}
+					div = 1; // Decrease production
 				}
 			}
 		}
 	}
 
-	if (indspec->life_type & INDUSTRYLIFE_PROCESSING) {
+	if (standard && indspec->life_type & INDUSTRYLIFE_PROCESSING) {
 		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, _patches.smooth_economy ? 180 : 2)) {
 			closeit = true;
+		}
+	}
+
+	/* Increase if needed */
+	while (mul-- != 0 && i->prod_level < 0x80) {
+		i->prod_level <<= 1;
+		i->production_rate[0] = min(i->production_rate[0] * 2, 0xFF);
+		i->production_rate[1] = min(i->production_rate[1] * 2, 0xFF);
+		if (str == STR_NULL) str = indspec->production_up_text;
+	}
+
+	/* Decrease if needed */
+	while (div-- != 0 && !closeit) {
+		if (i->prod_level == 4) {
+			closeit = true;
+		} else {
+			i->prod_level >>= 1;
+			i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
+			i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
+			if (str == STR_NULL) str = indspec->production_down_text;
 		}
 	}
 
@@ -1892,7 +1927,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		str = indspec->closure_text;
 	}
 
-	if (str != STR_NULL) {
+	if (!suppress_message && str != STR_NULL) {
 		SetDParam(0, i->index);
 		AddNewsItem(str,
 			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, closeit ? NT_OPENCLOSE : NT_ECONOMY, 0),
