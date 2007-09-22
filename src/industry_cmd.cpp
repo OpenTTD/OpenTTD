@@ -1694,6 +1694,24 @@ void GenerateIndustries()
 	}
 }
 
+/**
+ * Protects an industry from closure if the appropriate flags and conditions are met
+ * INDUSTRYBEH_CANCLOSE_LASTINSTANCE must be set (which, by default, it is not) and the
+ * count of industries of this type must one (or lower) in order to be protected
+ * against closure.
+ * @param type IndustryType been queried
+ * @result true if protection is on, false otherwise (except for oil wells)
+ */
+static bool CheckIndustryCloseDownProtection(IndustryType type)
+{
+	const IndustrySpec *indspec = GetIndustrySpec(type);
+
+	/* oil wells (or the industries with that flag set) are always allowed to closedown */
+	if (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD && _opt.landscape == LT_TEMPERATE) return false;
+	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE && GetIndustryTypeCount(type) <= 1);
+}
+
+
 /** Change industry production or do closure
  * @param i Industry for which changes are performed
  */
@@ -1752,7 +1770,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 	}
 
 	/* If industry will be closed down, show this */
-	if (closeit) {
+	if (closeit && !CheckIndustryCloseDownProtection(i->type)) {
 		i->prod_level = 0;
 		SetDParam(0, i->index);
 		AddNewsItem(
@@ -1895,8 +1913,12 @@ static void ChangeIndustryProduction(Industry *i)
 			} else {
 				/* Decrease production */
 				if (i->prod_level == 4) {
-					i->prod_level = 0;
-					str = indspec->closure_text;
+					/* Really set the production to 0 when the industrytype allows it,
+					 * since it is equivalent to closing it. */
+					if (!CheckIndustryCloseDownProtection(i->type)) {
+						i->prod_level = 0;
+						str = indspec->closure_text;
+					}
 				} else {
 					i->prod_level >>= 1;
 					i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
@@ -1909,7 +1931,7 @@ static void ChangeIndustryProduction(Industry *i)
 	}
 	if (indspec->life_type & INDUSTRYLIFE_PROCESSING) {
 		/* maybe close */
-		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, 2)) {
+		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, 2) && !CheckIndustryCloseDownProtection(i->type)) {
 			i->prod_level = 0;
 			str = indspec->closure_text;
 		}
