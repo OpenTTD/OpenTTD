@@ -1694,94 +1694,6 @@ void GenerateIndustries()
 	}
 }
 
-/**
- * Protects an industry from closure if the appropriate flags and conditions are met
- * INDUSTRYBEH_CANCLOSE_LASTINSTANCE must be set (which, by default, it is not) and the
- * count of industries of this type must one (or lower) in order to be protected
- * against closure.
- * @param type IndustryType been queried
- * @result true if protection is on, false otherwise (except for oil wells)
- */
-static bool CheckIndustryCloseDownProtection(IndustryType type)
-{
-	const IndustrySpec *indspec = GetIndustrySpec(type);
-
-	/* oil wells (or the industries with that flag set) are always allowed to closedown */
-	if (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD && _opt.landscape == LT_TEMPERATE) return false;
-	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE && GetIndustryTypeCount(type) <= 1);
-}
-
-
-/** Change industry production or do closure
- * @param i Industry for which changes are performed
- */
-static void ExtChangeIndustryProduction(Industry *i)
-{
-	bool closeit = true;
-	int j;
-	const IndustrySpec *indspec = GetIndustrySpec(i->type);
-
-	if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
-
-	if ((indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0) {
-		for (j = 0; j < 2 && indspec->produced_cargo[j] != CT_INVALID; j++){
-			uint32 r = Random();
-			int old_prod, new_prod, percent;
-			int mag;
-
-			new_prod = old_prod = i->production_rate[j];
-
-			if (CHANCE16I(20, 1024, r)) new_prod -= max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
-			/* Chance of increasing becomes better when more is transported */
-			if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16) &&
-					((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) == 0 || _opt.landscape != LT_TEMPERATE)) {
-				new_prod += max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
-			}
-
-			new_prod = clamp(new_prod, 1, 255);
-			/* Do not stop closing the industry when it has the lowest possible production rate */
-			if (new_prod == old_prod && old_prod > 1) {
-				closeit = false;
-				continue;
-			}
-
-			percent = (old_prod == 0) ? 100 : (new_prod * 100 / old_prod - 100);
-			i->production_rate[j] = new_prod;
-
-			/* Close the industry when it has the lowest possible production rate */
-			if (new_prod > 1) closeit = false;
-
-			mag = abs(percent);
-			if (mag >= 10) {
-				SetDParam(2, mag);
-				SetDParam(0, GetCargo(indspec->produced_cargo[j])->name);
-				SetDParam(1, i->index);
-				AddNewsItem(
-					percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
-					NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ECONOMY, 0),
-					i->xy + TileDiffXY(1, 1), 0
-				);
-			}
-		}
-	}
-
-	if ((indspec->life_type & INDUSTRYLIFE_PROCESSING) != 0) {
-		if ((byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1, 180)) closeit = false;
-	}
-
-	/* If industry will be closed down, show this */
-	if (closeit && !CheckIndustryCloseDownProtection(i->type)) {
-		i->prod_level = 0;
-		SetDParam(0, i->index);
-		AddNewsItem(
-			indspec->closure_text,
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, 0),
-			i->xy + TileDiffXY(1, 1), 0
-		);
-	}
-}
-
-
 static void UpdateIndustryStatistics(Industry *i)
 {
 	byte pct;
@@ -1806,14 +1718,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		}
 	}
 
-	if (refresh)
-		InvalidateWindow(WC_INDUSTRY_VIEW, i->index);
-
-	if (i->prod_level == 0) {
-		delete i;
-	} else if (_patches.smooth_economy) {
-		ExtChangeIndustryProduction(i);
-	}
+	if (refresh) InvalidateWindow(WC_INDUSTRY_VIEW, i->index);
 }
 
 /** Simple helper that will collect data for the generation of industries */
@@ -1874,72 +1779,124 @@ static void MaybeNewIndustry(void)
 		NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, 0), ind->xy, 0);
 }
 
-static void ChangeIndustryProduction(Industry *i)
+/**
+ * Protects an industry from closure if the appropriate flags and conditions are met
+ * INDUSTRYBEH_CANCLOSE_LASTINSTANCE must be set (which, by default, it is not) and the
+ * count of industries of this type must one (or lower) in order to be protected
+ * against closure.
+ * @param type IndustryType been queried
+ * @result true if protection is on, false otherwise (except for oil wells)
+ */
+static bool CheckIndustryCloseDownProtection(IndustryType type)
 {
-	StringID str = STR_NULL;
-	int type = i->type;
 	const IndustrySpec *indspec = GetIndustrySpec(type);
+
+	/* oil wells (or the industries with that flag set) are always allowed to closedown */
+	if (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD && _opt.landscape == LT_TEMPERATE) return false;
+	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE && GetIndustryTypeCount(type) <= 1);
+}
+
+/** Change industry production or do closure
+ * @param i Industry for which changes are performed
+ * @param monthly true if it's the monthly call, false if it's the random call
+ */
+static void ChangeIndustryProduction(Industry *i, bool monthly)
+{
+	if (monthly != _patches.smooth_economy) return;
+
+	StringID str = STR_NULL;
+	bool closeit = false;
+	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 
 	if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 
 	if ((indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0) {
-		bool only_decrease = false;
-
 		/* decrease or increase */
-		if ((indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE)
-			only_decrease = true;
+		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE;
 
-		if (only_decrease || CHANCE16(1, 3)) {
-			/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
-			if (!only_decrease && (i->last_month_pct_transported[0] > 153) != CHANCE16(1, 3)) {
-				/* Increase production */
-				if (i->prod_level != 0x80) {
-					byte b;
+		if (_patches.smooth_economy) {
+			closeit = true;
+			for (byte j = 0; j < 2 && indspec->produced_cargo[j] != CT_INVALID; j++){
+				uint32 r = Random();
+				int old_prod, new_prod, percent;
+				int mag;
 
-					i->prod_level <<= 1;
+				new_prod = old_prod = i->production_rate[j];
 
-					b = i->production_rate[0] * 2;
-					if (i->production_rate[0] >= 128)
-						b = 0xFF;
-					i->production_rate[0] = b;
-
-					b = i->production_rate[1] * 2;
-					if (i->production_rate[1] >= 128)
-						b = 0xFF;
-					i->production_rate[1] = b;
-
-					str = indspec->production_up_text;
+				if (CHANCE16I(20, 1024, r)) new_prod -= max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
+				/* Chance of increasing becomes better when more is transported */
+				if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16) && !only_decrease) {
+					new_prod += max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
 				}
-			} else {
-				/* Decrease production */
-				if (i->prod_level == 4) {
-					/* Really set the production to 0 when the industrytype allows it,
-					 * since it is equivalent to closing it. */
-					if (!CheckIndustryCloseDownProtection(i->type)) {
-						i->prod_level = 0;
-						str = indspec->closure_text;
+
+				new_prod = clamp(new_prod, 1, 255);
+				/* Do not stop closing the industry when it has the lowest possible production rate */
+				if (new_prod == old_prod && old_prod > 1) {
+					closeit = false;
+					continue;
+				}
+
+				percent = (old_prod == 0) ? 100 : (new_prod * 100 / old_prod - 100);
+				i->production_rate[j] = new_prod;
+
+				/* Close the industry when it has the lowest possible production rate */
+				if (new_prod > 1) closeit = false;
+
+				mag = abs(percent);
+				if (mag >= 10) {
+					SetDParam(2, mag);
+					SetDParam(0, GetCargo(indspec->produced_cargo[j])->name);
+					SetDParam(1, i->index);
+					AddNewsItem(
+						percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
+						NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ECONOMY, 0),
+						i->xy + TileDiffXY(1, 1), 0
+					);
+				}
+			}
+		} else {
+			if (only_decrease || CHANCE16(1, 3)) {
+				/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
+				if (!only_decrease && (i->last_month_pct_transported[0] > 153) != CHANCE16(1, 3)) {
+					/* Increase production */
+					if (i->prod_level != 0x80) {
+						i->prod_level <<= 1;
+						i->production_rate[0] = min(i->production_rate[0] * 2, 0xFF);
+						i->production_rate[1] = min(i->production_rate[1] * 2, 0xFF);
+						if (str == STR_NULL) str = indspec->production_up_text;
 					}
 				} else {
-					i->prod_level >>= 1;
-					i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
-					i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
-
-					str = indspec->production_down_text;
+					/* Decrease production */
+					if (i->prod_level == 4) {
+						closeit = true;
+					} else {
+						i->prod_level >>= 1;
+						i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
+						i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
+						if (str == STR_NULL) str = indspec->production_down_text;
+					}
 				}
 			}
 		}
 	}
+
 	if (indspec->life_type & INDUSTRYLIFE_PROCESSING) {
-		/* maybe close */
-		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, 2) && !CheckIndustryCloseDownProtection(i->type)) {
-			i->prod_level = 0;
-			str = indspec->closure_text;
+		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, _patches.smooth_economy ? 180 : 2)) {
+			closeit = true;
 		}
+	}
+
+	/* Close if needed and allowed */
+	if (closeit && !CheckIndustryCloseDownProtection(i->type)) {
+		i->prod_level = 0;
+		str = indspec->closure_text;
 	}
 
 	if (str != STR_NULL) {
 		SetDParam(0, i->index);
-		AddNewsItem(str, NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, str == indspec->closure_text ? NT_OPENCLOSE : NT_ECONOMY, 0), i->xy + TileDiffXY(1, 1), 0);
+		AddNewsItem(str,
+			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, closeit ? NT_OPENCLOSE : NT_ECONOMY, 0),
+			i->xy + TileDiffXY(1, 1), 0);
 	}
 }
 
@@ -1951,14 +1908,19 @@ void IndustryMonthlyLoop()
 
 	FOR_ALL_INDUSTRIES(i) {
 		UpdateIndustryStatistics(i);
+		if (i->prod_level == 0) {
+			delete i;
+		} else {
+			ChangeIndustryProduction(i, true);
+		}
 	}
 
 	/* 3% chance that we start a new industry */
 	if (CHANCE16(3, 100)) {
 		MaybeNewIndustry();
-	} else if (!_patches.smooth_economy) {
+	} else {
 		i = GetRandomIndustry();
-		if (i != NULL) ChangeIndustryProduction(i);
+		if (i != NULL) ChangeIndustryProduction(i, false);
 	}
 
 	_current_player = old_player;
