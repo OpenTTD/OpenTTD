@@ -77,6 +77,9 @@ enum DeterministicSpriteGroupAdjustOperation {
 	DSGA_OP_STO,  ///< store a into temporary storage, indexed by b. return a
 	DSGA_OP_RST,  ///< return b
 	DSGA_OP_STOP, ///< store a into persistent storage, indexed by b, return a
+	DSGA_OP_ROR,  ///< rotate a b positions to the right
+	DSGA_OP_SCMP, ///< (signed) comparision (a < b -> 0, a == b = 1, a > b = 2)
+	DSGA_OP_UCMP, ///< (unsigned) comparision (a < b -> 0, a == b = 1, a > b = 2)
 };
 
 
