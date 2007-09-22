@@ -140,6 +140,7 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->GetVariable   = IndustryTileGetVariable;
 	res->ResolveReal   = IndustryTileResolveReal;
 
+	res->psa             = &indus->psa;
 	res->u.industry.tile = tile;
 	res->u.industry.ind  = indus;
 	res->u.industry.gfx  = gfx;

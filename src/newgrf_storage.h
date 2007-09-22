@@ -21,7 +21,14 @@ struct BaseStorageArray
 	 *  - reverting to the previous version
 	 * @param keep_changes do we save or revert the changes since the last ClearChanges?
 	 */
-	virtual void ClearChanges(bool keep_changes) {}
+	virtual void ClearChanges(bool keep_changes) = 0;
+
+	/**
+	 * Stores some value at a given position.
+	 * @param pos   the position to write at
+	 * @param value the value to write
+	 */
+	virtual void Store(uint pos, uint32 value) = 0;
 };
 
 /**
@@ -54,7 +61,7 @@ struct PersistentStorageArray : BaseStorageArray {
 	 * @param pos   the position to write at
 	 * @param value the value to write
 	 */
-	void Store(uint pos, TYPE value)
+	void Store(uint pos, uint32 value)
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return;
@@ -83,7 +90,7 @@ struct PersistentStorageArray : BaseStorageArray {
 	 * @param pos the position to get the data from
 	 * @return the data from that position
 	 */
-	TYPE Get(uint pos)
+	TYPE Get(uint pos) const
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return 0;
@@ -124,7 +131,7 @@ struct TemporaryStorageArray : BaseStorageArray {
 	 * @param pos   the position to write at
 	 * @param value the value to write
 	 */
-	void Store(uint pos, TYPE value)
+	void Store(uint pos, uint32 value)
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return;
@@ -138,7 +145,7 @@ struct TemporaryStorageArray : BaseStorageArray {
 	 * @param pos the position to get the data from
 	 * @return the data from that position
 	 */
-	TYPE Get(uint pos)
+	TYPE Get(uint pos) const
 	{
 		/* Out of the scope of the array */
 		if (pos >= SIZE) return 0;

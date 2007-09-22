@@ -76,6 +76,7 @@ enum DeterministicSpriteGroupAdjustOperation {
 	DSGA_OP_XOR,  ///< a ^ b
 	DSGA_OP_STO,  ///< store a into temporary storage, indexed by b. return a
 	DSGA_OP_RST,  ///< return b
+	DSGA_OP_STOP, ///< store a into persistent storage, indexed by b, return a
 };
 
 
@@ -198,6 +199,8 @@ struct ResolverObject {
 	VarSpriteGroupScope scope;
 
 	bool info_view; ///< Indicates if the item is being drawn in an info window
+
+	BaseStorageArray *psa; ///< The persistent storage array of this resolved object.
 
 	union {
 		struct {

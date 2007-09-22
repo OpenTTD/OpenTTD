@@ -243,6 +243,9 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x67:
 		case 0x68: return GetCountAndDistanceOfClosestInstance(parameter, variable == 0x68 ? GB(GetRegister(0x101), 0, 8) : 0, industry);
 
+		/* Get a variable from the persistent storage */
+		case 0x7C: return industry->psa.Get(parameter);
+
 		/* Industry structure access*/
 		case 0x80: return industry->xy;
 		case 0x81: return GB(industry->xy, 8, 8);
@@ -323,6 +326,7 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->GetVariable   = IndustryGetVariable;
 	res->ResolveReal   = IndustryResolveReal;
 
+	res->psa             = &indus->psa;
 	res->u.industry.tile = tile;
 	res->u.industry.ind  = indus;
 	res->u.industry.gfx  = INVALID_INDUSTRYTILE;

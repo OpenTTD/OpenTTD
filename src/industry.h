@@ -7,6 +7,7 @@
 
 #include "oldpool.h"
 #include "helpers.hpp"
+#include "newgrf_storage.h"
 
 typedef byte IndustryGfx;
 typedef uint8 IndustryType;
@@ -94,6 +95,8 @@ DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
  * Defines the internal data of a functionnal industry
  */
 struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
+	typedef PersistentStorageArray<uint32, 16> PersistentStorage;
+
 	TileIndex xy;                       ///< coordinates of the primary tile the industry is built one
 	byte width;
 	byte height;
@@ -120,6 +123,8 @@ struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
 	uint8 construction_type;            ///< Way the industry was constructed (@see IndustryConstructionType)
 	Date last_cargo_accepted_at;        ///< Last day cargo was accepted by this industry
 	byte selected_layout;               ///< Which tile layout was used when creating the industry
+
+	PersistentStorage psa;              ///< Persistent storage for NewGRF industries.
 
 	Industry(TileIndex tile = 0) : xy(tile) {}
 	~Industry();

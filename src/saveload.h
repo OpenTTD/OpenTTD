@@ -211,15 +211,16 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_WRITEBYTE(base, variable, value) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, value, value)
 
 /* The same as the ones at the top, only the offset is given directly; used for unions */
-#define SLE_GENERALX(cmd, offset, type, param1, param2) {false, cmd, type, 0, param1, param2, (void*)(offset)}
-#define SLE_CONDVARX(offset, type, from, to) SLE_GENERALX(SL_VAR, offset, type, from, to)
-#define SLE_CONDREFX(offset, type, from, to) SLE_GENERALX(SL_REF, offset, type, from, to)
+#define SLE_GENERALX(cmd, offset, type, length, param1, param2) {false, cmd, type, length, param1, param2, (void*)(offset)}
+#define SLE_CONDVARX(offset, type, from, to) SLE_GENERALX(SL_VAR, offset, type, 0, from, to)
+#define SLE_CONDARRX(offset, type, length, from, to) SLE_GENERALX(SL_ARR, offset, type, length, from, to)
+#define SLE_CONDREFX(offset, type, from, to) SLE_GENERALX(SL_REF, offset, type, 0, from, to)
 
 #define SLE_VARX(offset, type) SLE_CONDVARX(offset, type, 0, SL_MAX_VERSION)
 #define SLE_REFX(offset, type) SLE_CONDREFX(offset, type, 0, SL_MAX_VERSION)
 
-#define SLE_WRITEBYTEX(offset, something) SLE_GENERALX(SL_WRITEBYTE, offset, 0, something, 0)
-#define SLE_VEH_INCLUDEX() SLE_GENERALX(SL_VEH_INCLUDE, 0, 0, 0, SL_MAX_VERSION)
+#define SLE_WRITEBYTEX(offset, something) SLE_GENERALX(SL_WRITEBYTE, offset, 0, 0, something, 0)
+#define SLE_VEH_INCLUDEX() SLE_GENERALX(SL_VEH_INCLUDE, 0, 0, 0, 0, SL_MAX_VERSION)
 
 /* End marker */
 #define SLE_END() {false, SL_END, 0, 0, 0, 0, NULL}

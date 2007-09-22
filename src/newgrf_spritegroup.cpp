@@ -109,7 +109,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 /* Evaluate an adjustment for a variable of the given size.
 * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
-static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value, uint32 value)
+static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ResolverObject *object, U last_value, uint32 value)
 {
 	value >>= adjust->shift_num;
 	value  &= adjust->and_mask;
@@ -139,6 +139,7 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value,
 		case DSGA_OP_XOR:  return last_value ^ value;
 		case DSGA_OP_STO:  _temp_store.Store(value, last_value); return last_value;
 		case DSGA_OP_RST:  return value;
+		case DSGA_OP_STOP: if (object->psa != NULL) object->psa->Store(value, last_value); return last_value;
 		default:           return value;
 	}
 }
@@ -177,9 +178,9 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		}
 
 		switch (group->g.determ.size) {
-			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8, int8>(adjust, last_value, value); break;
-			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16, int16>(adjust, last_value, value); break;
-			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32, int32>(adjust, last_value, value); break;
+			case DSG_SIZE_BYTE:  value = EvalAdjustT<uint8,  int8> (adjust, object, last_value, value); break;
+			case DSG_SIZE_WORD:  value = EvalAdjustT<uint16, int16>(adjust, object, last_value, value); break;
+			case DSG_SIZE_DWORD: value = EvalAdjustT<uint32, int32>(adjust, object, last_value, value); break;
 			default: NOT_REACHED(); break;
 		}
 		last_value = value;
