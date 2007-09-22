@@ -531,6 +531,12 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 	uint modifier = 0;
 
 	while ((b = Utf8Consume(&str)) != '\0') {
+		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
+			/* We need to pass some stuff as it might be modified; oh boy. */
+			b = RemapNewGRFStringControlCode(b, &buff, &str, (int64*)argv);
+			if (b == 0) continue;
+		}
+
 		switch (b) {
 			case SCC_SETX: // {SETX}
 				if (buff + Utf8CharLen(SCC_SETX) + 1 < last) {

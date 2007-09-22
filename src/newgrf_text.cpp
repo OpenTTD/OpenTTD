@@ -21,6 +21,7 @@
 #include "newgrf_text.h"
 #include "table/control_codes.h"
 #include "helpers.hpp"
+#include "date.h"
 
 #define GRFTAB  28
 #define TABSIZE 11
@@ -228,9 +229,9 @@ char *TranslateTTDPatchCodes(const char *str)
 			case 0x7B:
 			case 0x7C:
 			case 0x7D:
-			case 0x7E: d += Utf8Encode(d, SCC_NUM); break;
-			case 0x7F: d += Utf8Encode(d, SCC_CURRENCY); break;
-			case 0x80: d += Utf8Encode(d, SCC_STRING); break;
+			case 0x7E:
+			case 0x7F:
+			case 0x80: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD + c - 0x7B); break;
 			case 0x81: {
 				StringID string;
 				string  = *str++;
@@ -239,12 +240,12 @@ char *TranslateTTDPatchCodes(const char *str)
 				d += Utf8Encode(d, string);
 				break;
 			}
-			case 0x82: d += Utf8Encode(d, SCC_DATE_TINY); break;
-			case 0x83: d += Utf8Encode(d, SCC_DATE_SHORT); break;
-			case 0x84: d += Utf8Encode(d, SCC_VELOCITY); break;
-			case 0x85: d += Utf8Encode(d, SCC_SKIP);    break;
-			case 0x86: /* "Rotate down top 4 words on stack" */ break;
-			case 0x87: d += Utf8Encode(d, SCC_VOLUME);  break;
+			case 0x82:
+			case 0x83:
+			case 0x84: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_SPEED + c - 0x82); break;
+			case 0x85: d += Utf8Encode(d, SCC_NEWGRF_DISCARD_WORD);       break;
+			case 0x86: d += Utf8Encode(d, SCC_NEWGRF_ROTATE_TOP_4_WORDS); break;
+			case 0x87: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_LITRES);  break;
 			case 0x88: d += Utf8Encode(d, SCC_BLUE);    break;
 			case 0x89: d += Utf8Encode(d, SCC_SILVER);  break;
 			case 0x8A: d += Utf8Encode(d, SCC_GOLD);    break;
@@ -262,6 +263,20 @@ char *TranslateTTDPatchCodes(const char *str)
 			case 0x96: d += Utf8Encode(d, SCC_GRAY);    break;
 			case 0x97: d += Utf8Encode(d, SCC_DKBLUE);  break;
 			case 0x98: d += Utf8Encode(d, SCC_BLACK);   break;
+			case 0x9A:
+				switch (*str++) {
+					case 0: /* FALL THROUGH */
+					case 1: d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
+					case 3: {
+						uint16 tmp = *str++;
+						tmp |= (*str++) << 8;
+						d += Utf8Encode(d, SCC_NEWGRF_PUSH_WORD); d += Utf8Encode(d, tmp);
+					} break;
+					case 4: d += Utf8Encode(d, SCC_NEWGRF_UNPRINT); d += Utf8Encode(d, *str++); break;
+					default: grfmsg(1, "missing handler for extended format code"); break;
+				}
+				break;
+
 			case 0x9E: d += Utf8Encode(d, 0x20AC); break; // Euro
 			case 0x9F: d += Utf8Encode(d, 0x0178); break; // Y with diaeresis
 			case 0xA0: d += Utf8Encode(d, SCC_UPARROW); break;
@@ -480,4 +495,143 @@ void CleanUpStrings()
 	}
 
 	_num_grf_texts = 0;
+}
+
+struct TextRefStack {
+	byte stack[0x30];
+	byte position;
+	bool used;
+
+	TextRefStack() : used(false) {}
+
+	uint8  PopUnsignedByte()  { assert(this->position < lengthof(this->stack)); return this->stack[this->position++]; }
+	int8   PopSignedByte()    { return (int8)this->PopUnsignedByte(); }
+
+	uint16 PopUnsignedWord()  { return this->PopUnsignedByte()  | (((uint16)this->PopUnsignedByte())  <<  8); }
+	int16  PopSignedWord()    { return (int32)this->PopUnsignedWord(); }
+
+	uint32 PopUnsignedDWord() { return this->PopUnsignedWord()  | (((uint32)this->PopUnsignedWord())  << 16); }
+	int32  PopSignedDWord()   { return (int32)this->PopUnsignedDWord(); }
+
+	uint64 PopUnsignedQWord() { return this->PopUnsignedDWord() | (((uint64)this->PopUnsignedDWord()) << 32); }
+	int64  PopSignedQWord()   { return (int64)this->PopUnsignedQWord(); }
+
+	/** Rotate the top four words down: W1, W2, W3, W4 -> W4, W1, W2, W3 */
+	void RotateTop4Words()
+	{
+		byte tmp[2];
+		for (int i = 0; i  < 2; i++) tmp[i] = this->stack[this->position + i + 6];
+		for (int i = 5; i >= 0; i--) this->stack[this->position + i + 2] = this->stack[this->position + i];
+		for (int i = 0; i  < 2; i++) this->stack[this->position + i] = tmp[i];
+	}
+
+	void PushWord(uint16 word)
+	{
+		if (this->position >= 2) {
+			this->position -= 2;
+		} else {
+			for (uint i = lengthof(stack) - 3; i >= this->position; i--) {
+				this->stack[this->position + 2] = this->stack[this->position];
+			}
+		}
+		this->stack[this->position]     = GB(word, 0, 8);
+		this->stack[this->position + 1] = GB(word, 8, 8);
+	}
+
+	void ResetStack() { this->used = true; this->position = 0; }
+};
+
+/** The stack that is used for TTDP compatible string code parsing */
+static TextRefStack _newgrf_textrefstack;
+
+/** Prepare the TTDP compatible string code parsing */
+void PrepareTextRefStackUsage()
+{
+	extern TemporaryStorageArray<uint32, 0x110> _temp_store;
+
+	_newgrf_textrefstack.ResetStack();
+
+	byte *p = _newgrf_textrefstack.stack;
+	for (uint i = 0; i < 6; i++) {
+		for (uint j = 0; j < 32; j += 8) {
+			*p = GB(_temp_store.Get(0x100 + i), 32 - j, 8);
+			p++;
+		}
+	}
+}
+
+/** Stop using the TTDP compatible string code parsing */
+void StopTextRefStackUsage() { _newgrf_textrefstack.used = false; }
+
+/**
+ * FormatString for NewGRF specific "magic" string control codes
+ * @param scc   the string control code that has been read
+ * @param stack the current "stack"
+ * @return the string control code to "execute" now
+ */
+uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64 *argv)
+{
+	if (_newgrf_textrefstack.used) {
+		switch (scc) {
+			default: NOT_REACHED();
+			case SCC_NEWGRF_PRINT_SIGNED_BYTE:    *argv = _newgrf_textrefstack.PopSignedByte();    break;
+			case SCC_NEWGRF_PRINT_SIGNED_WORD:    *argv = _newgrf_textrefstack.PopSignedWord();    break;
+			case SCC_NEWGRF_PRINT_QWORD_CURRENCY: *argv = _newgrf_textrefstack.PopUnsignedQWord(); break;
+
+			case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
+			case SCC_NEWGRF_PRINT_DWORD:          *argv = _newgrf_textrefstack.PopSignedDWord();   break;
+
+			case SCC_NEWGRF_PRINT_WORD_SPEED:
+			case SCC_NEWGRF_PRINT_WORD_LITRES:
+			case SCC_NEWGRF_PRINT_UNSIGNED_WORD:  *argv = _newgrf_textrefstack.PopUnsignedWord(); break;
+
+			case SCC_NEWGRF_PRINT_DATE:
+			case SCC_NEWGRF_PRINT_MONTH_YEAR:     *argv = _newgrf_textrefstack.PopSignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
+
+			case SCC_NEWGRF_DISCARD_WORD:         _newgrf_textrefstack.PopUnsignedWord(); break;
+
+			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:   _newgrf_textrefstack.RotateTop4Words(); break;
+			case SCC_NEWGRF_PUSH_WORD:            _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
+			case SCC_NEWGRF_UNPRINT:              *buff -= Utf8Consume(str); break;
+
+			case SCC_NEWGRF_PRINT_STRING_ID:
+				*argv = _newgrf_textrefstack.PopUnsignedWord();
+				if (*argv == STR_NULL) *argv = STR_EMPTY;
+				break;
+		}
+	}
+
+	switch (scc) {
+		default: NOT_REACHED();
+		case SCC_NEWGRF_PRINT_DWORD:
+		case SCC_NEWGRF_PRINT_SIGNED_WORD:
+		case SCC_NEWGRF_PRINT_SIGNED_BYTE:
+		case SCC_NEWGRF_PRINT_UNSIGNED_WORD:
+			return SCC_NUM;
+
+		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
+		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:
+			return SCC_CURRENCY;
+
+		case SCC_NEWGRF_PRINT_STRING_ID:
+			return SCC_STRING;
+
+		case SCC_NEWGRF_PRINT_DATE:
+			return SCC_DATE_LONG;
+
+		case SCC_NEWGRF_PRINT_MONTH_YEAR:
+			return SCC_DATE_TINY;
+
+		case SCC_NEWGRF_PRINT_WORD_SPEED:
+			return SCC_VELOCITY;
+
+		case SCC_NEWGRF_PRINT_WORD_LITRES:
+			return SCC_VOLUME;
+
+		case SCC_NEWGRF_DISCARD_WORD:
+		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:
+		case SCC_NEWGRF_PUSH_WORD:
+		case SCC_NEWGRF_UNPRINT:
+			return 0;
+	}
 }

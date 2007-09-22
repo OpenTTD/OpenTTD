@@ -6,7 +6,7 @@
 /* List of string control codes used for string formatting, displaying, and
  * by strgen to generate the language files. */
 
-enum {
+enum StringControlCode {
 	SCC_CONTROL_START = 0xE000,
 	SCC_CONTROL_END   = 0xE1FF,
 
@@ -89,6 +89,28 @@ enum {
 	SCC_DKBLUE,
 	SCC_BLACK,
 	SCC_PREVIOUS_COLOUR,
+
+	/**
+	 * The next variables are part of a NewGRF subsystem for creating text strings.
+	 * It uses a "stack" of bytes and reads from there.
+	 */
+	SCC_NEWGRF_FIRST,
+	SCC_NEWGRF_PRINT_DWORD = SCC_NEWGRF_FIRST, ///< Read 4 bytes from the stack
+	SCC_NEWGRF_PRINT_SIGNED_WORD,              ///< Read 2 bytes from the stack as signed value
+	SCC_NEWGRF_PRINT_SIGNED_BYTE,              ///< Read 1 bytes from the stack as signed value
+	SCC_NEWGRF_PRINT_UNSIGNED_WORD,            ///< Read 2 bytes from the stack as unsigned value
+	SCC_NEWGRF_PRINT_DWORD_CURRENCY,           ///< Read 4 bytes from the stack as currency
+	SCC_NEWGRF_PRINT_STRING_ID,                ///< Read 2 bytes from the stack as String ID
+	SCC_NEWGRF_PRINT_DATE,                     ///< Read 2 bytes from the stack as base 1920 date
+	SCC_NEWGRF_PRINT_MONTH_YEAR,               ///< Read 2 bytes from the stack as base 1920 date
+	SCC_NEWGRF_PRINT_WORD_SPEED,               ///< Read 2 bytes from the stack as signed speed
+	SCC_NEWGRF_PRINT_WORD_LITRES,              ///< Read 2 bytes from the stack as signed litres
+	SCC_NEWGRF_PRINT_QWORD_CURRENCY,           ///< Read 8 bytes from the stack as currency
+	SCC_NEWGRF_PUSH_WORD,                      ///< Pushes 2 bytes onto the stack
+	SCC_NEWGRF_UNPRINT,                        ///< "Unprints" the given number of bytes from the string
+	SCC_NEWGRF_DISCARD_WORD,                   ///< Discard the next two bytes
+	SCC_NEWGRF_ROTATE_TOP_4_WORDS,             ///< Rotate the top 4 words of the stack (W4 W1 W2 W3)
+	SCC_NEWGRF_LAST = SCC_NEWGRF_ROTATE_TOP_4_WORDS,
 
 	/* Special printable symbols.
 	 * These are mapped to the original glyphs */

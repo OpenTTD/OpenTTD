@@ -503,7 +503,10 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
 				if (message != STR_NULL && message != STR_UNDEFINED) {
 					y += 10;
+
+					PrepareTextRefStackUsage();
 					DrawString(2, y, message, 0);
+					StopTextRefStackUsage();
 				}
 			}
 		}
