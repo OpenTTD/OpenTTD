@@ -462,13 +462,15 @@ static int32 DerefIndProd(uint field, bool use_register)
  */
 void IndustryProductionCallback(Industry *ind, int reason)
 {
+	const IndustrySpec *spec = GetIndustrySpec(ind->type);
 	ResolverObject object;
 	NewIndustryResolver(&object, ind->xy, ind);
+	if ((spec->behaviour & INDUSTRYBEH_PRODCALLBACK_RANDOM) != 0) object.callback_param1 = Random();
 	object.callback_param2 = reason;
 
 	for (uint loop = 0;; loop++) {
 		SB(object.callback_param2, 8, 16, loop);
-		const SpriteGroup *group = Resolve(GetIndustrySpec(ind->type)->grf_prop.spritegroup, &object);
+		const SpriteGroup *group = Resolve(spec->grf_prop.spritegroup, &object);
 		if (group == NULL || group->type != SGT_INDUSTRY_PRODUCTION) break;
 
 		bool deref = (group->g.indprod.version == 1);
