@@ -571,6 +571,9 @@
 				RelativePath=".\..\src\newgrf_station.h">
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_storage.h">
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_text.h">
 			</File>
 			<File
@@ -1120,6 +1123,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_station.cpp">
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_storage.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_text.cpp">

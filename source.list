@@ -156,6 +156,7 @@ newgrf_industrytiles.h
 newgrf_sound.h
 newgrf_spritegroup.h
 newgrf_station.h
+newgrf_storage.h
 newgrf_text.h
 newgrf_town.h
 newgrf_townname.h
@@ -347,6 +348,7 @@ newgrf_industrytiles.cpp
 newgrf_sound.cpp
 newgrf_spritegroup.cpp
 newgrf_station.cpp
+newgrf_storage.cpp
 newgrf_text.cpp
 newgrf_town.cpp
 newgrf_townname.cpp

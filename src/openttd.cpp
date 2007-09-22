@@ -61,6 +61,7 @@
 #include "newgrf_config.h"
 #include "newgrf_house.h"
 #include "newgrf_commons.h"
+#include "newgrf_storage.h"
 #include "player_face.h"
 #include "group.h"
 #include "blitter/factory.hpp"
@@ -977,6 +978,8 @@ void SwitchMode(int new_mode)
  * That check is enforced in DoCommand. */
 void StateGameLoop()
 {
+	ClearStorageChanges(false);
+
 	/* dont execute the state loop during pause */
 	if (_pause_game) return;
 	if (IsGeneratingWorld()) return;

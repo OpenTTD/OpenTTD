@@ -7,6 +7,7 @@
 
 #include "town.h"
 #include "industry.h"
+#include "newgrf_storage.h"
 
 /**
  * Gets the value of a so-called newgrf "register".
@@ -16,9 +17,8 @@
  */
 static inline uint32 GetRegister(uint i)
 {
-	assert(i < 0x110);
-	extern uint32 _temp_store[0x110];
-	return _temp_store[i];
+	extern TemporaryStorageArray<uint, 0x110> _temp_store;
+	return _temp_store.Get(i);
 }
 
 struct SpriteGroup;
@@ -243,7 +243,7 @@ struct ResolverObject {
 
 
 /* Base sprite group resolver */
-const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object, bool first_call = true);
+const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object);
 
 
 #endif /* NEWGRF_SPRITEGROUP_H */

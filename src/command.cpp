@@ -15,6 +15,7 @@
 #include "network/network.h"
 #include "variables.h"
 #include "genworld.h"
+#include "newgrf_storage.h"
 
 const char *_cmd_text = NULL;
 
@@ -573,6 +574,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 		_docommand_recursive = 0;
 		_cmd_text = NULL;
+		ClearStorageChanges(false);
 		return false;
 	}
 
@@ -603,6 +605,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		if (_network_dedicated || (_network_server && pbck == PLAYER_SPECTATOR)) _local_player = pbck;
 		_docommand_recursive = 0;
 		_cmd_text = NULL;
+		ClearStorageChanges(false);
 		return true;
 	}
 #endif /* ENABLE_NETWORK */
@@ -643,6 +646,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	if (callback) callback(true, tile, p1, p2);
 	_cmd_text = NULL;
+	ClearStorageChanges(true);
 	return true;
 
 show_error:
@@ -656,6 +660,7 @@ callb_err:
 
 	if (callback) callback(false, tile, p1, p2);
 	_cmd_text = NULL;
+	ClearStorageChanges(false);
 	return false;
 }
 

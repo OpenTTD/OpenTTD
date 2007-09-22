@@ -76,7 +76,7 @@ void InitializeSpriteGroupPool()
 	_spritegroup_count = 0;
 }
 
-uint32 _temp_store[0x110];
+TemporaryStorageArray<uint, 0x110> _temp_store;
 
 
 static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
@@ -98,7 +98,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 		case 0x1C: return object->last_value;
 		case 0x20: return _opt.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
 
-		case 0x7D: return _temp_store[parameter];
+		case 0x7D: return _temp_store.Get(parameter);
 
 		/* Not a common variable, so evalute the feature specific variables */
 		default: return object->GetVariable(object, variable, parameter, available);
@@ -137,9 +137,7 @@ static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, U last_value,
 		case DSGA_OP_AND:  return last_value & value;
 		case DSGA_OP_OR:   return last_value | value;
 		case DSGA_OP_XOR:  return last_value ^ value;
-		case DSGA_OP_STO:
-			if (value < lengthof(_temp_store)) _temp_store[value] = last_value;
-			return last_value;
+		case DSGA_OP_STO:  _temp_store.Store(value, last_value); return last_value;
 		case DSGA_OP_RST:  return value;
 		default:           return value;
 	}
@@ -162,7 +160,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		bool available = true;
 		if (adjust->variable == 0x7E) {
 			ResolverObject subobject = *object;
-			const SpriteGroup *subgroup = Resolve(adjust->subroutine, &subobject, false);
+			const SpriteGroup *subgroup = Resolve(adjust->subroutine, &subobject);
 			if (subgroup == NULL || subgroup->type != SGT_CALLBACK) {
 				value = CALLBACK_FAILED;
 			} else {
@@ -175,7 +173,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		if (!available) {
 			/* Unsupported property: skip further processing and return either
 			 * the group from the first range or the default group. */
-			return Resolve(group->g.determ.num_ranges > 0 ? group->g.determ.ranges[0].group : group->g.determ.default_group, object, false);
+			return Resolve(group->g.determ.num_ranges > 0 ? group->g.determ.ranges[0].group : group->g.determ.default_group, object);
 		}
 
 		switch (group->g.determ.size) {
@@ -216,11 +214,11 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 
 	for (i = 0; i < group->g.determ.num_ranges; i++) {
 		if (group->g.determ.ranges[i].low <= value && value <= group->g.determ.ranges[i].high) {
-			return Resolve(group->g.determ.ranges[i].group, object, false);
+			return Resolve(group->g.determ.ranges[i].group, object);
 		}
 	}
 
-	return Resolve(group->g.determ.default_group, object, false);
+	return Resolve(group->g.determ.default_group, object);
 }
 
 
@@ -254,18 +252,15 @@ static inline const SpriteGroup *ResolveRandom(const SpriteGroup *group, Resolve
 	mask  = (group->g.random.num_groups - 1) << group->g.random.lowest_randbit;
 	index = (object->GetRandomBits(object) & mask) >> group->g.random.lowest_randbit;
 
-	return Resolve(group->g.random.groups[index], object, false);
+	return Resolve(group->g.random.groups[index], object);
 }
 
 
 /* ResolverObject (re)entry point */
-const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object, bool first_call)
+const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object)
 {
 	/* We're called even if there is no group, so quietly return nothing */
 	if (group == NULL) return NULL;
-
-	/* Zero the temporary storage to make sure there are no desyncs */
-	if (first_call) memset(_temp_store, 0, sizeof(_temp_store));
 
 	switch (group->type) {
 		case SGT_REAL:          return object->ResolveReal(object, group);
