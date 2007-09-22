@@ -1020,6 +1020,7 @@ STR_CONFIG_PATCHES_OFF                                          :Kapalı
 STR_CONFIG_PATCHES_ON                                           :Açık
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Durum çubuğunda arabanın hızını göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Sahile ve eğimli araziye inşaat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Binaların, yolların, vb. altında kazıya izin ver (otomatik betonlama): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Daha gerçekçi kapsama alanı: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Şehrin yollarını, köprülerini yıkma izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlere izin ver: {ORANGE}{STRING}
@@ -1033,6 +1034,9 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Enflasy
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Sadece istek varsa kargo kabul edilsin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Çok uzun köprülere izin ver: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Garaja git talimati etkin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Üretim fabrikalarının yapım yöntemi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :hiçbiri
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :diğer fabrikalar gibi
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Bir şehirde birden fazla aynı fabrika olması izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Aynı tür fabrikalar yan yana yapılabilir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Durum çubuğunda uzun tarih göster: {ORANGE}{STRING}
@@ -1100,10 +1104,19 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Haritayı kayd�
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Kapalı
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Tekerlek hızı: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Sağ tıklama öykünümü: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komut-tıklama
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrol-tıklama
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Kapalı
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Yeni bir oyun başlatırken zamanı duraklat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gelişmiş araç listesini kullan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Kendi şirketim
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Tüm şirketler
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Araç yükleme bilgisini göster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Kapalı
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Kendi şirketim
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Tüm şirketler
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Araç zaman çizelgesi açık: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal Ray
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrikli Ray
@@ -2731,7 +2744,7 @@ STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Yaş: {L
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_S}  {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Mak. hız: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Ağırlık: {LTBLUE}{WEIGHT_S} {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Mak. hız: {LTBLUE}{VELOCITY} {BLACK}Max. Ç.G.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kâr: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Son servisteki bozulmalar: {LTBLUE}{COMMA}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Son servisteki bozulmalar: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Durdu
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Tehlikedeki tren sinyali geçemez...
 STR_8863_CRASHED                                                :{RED}Çarptı!
@@ -2783,7 +2796,7 @@ STR_900C_DETAILS                                                :{WHITE}{VEHICLE
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Yaş: {LTBLUE}{STRING}{BLACK}   Bakım: {LTBLUE}{CURRENCY}/sene
 STR_900E_MAX_SPEED                                              :{BLACK}Mak. hız: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kâr: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Yapım yılı: {LTBLUE}{NUM}{BLACK} Değeri: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...bir araba garajında duruyor olmalı
@@ -3354,3 +3367,6 @@ STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Önceki 
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Parayla Yap
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}İnşa et
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Bu listeden uygun fabrikayı seçin

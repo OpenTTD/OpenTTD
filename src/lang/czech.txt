@@ -1078,6 +1078,7 @@ STR_CONFIG_PATCHES_OFF                                          :vypnuto
 STR_CONFIG_PATCHES_ON                                           :zapnuto
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Ukazovat rychlost vozidla ve stavové liště: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Povolit výstavbu na svazích kopců a na pobřežích: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Úpravy terénu pod budovami, kolejemi atd. (tzv. autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit u oblasti pokrytí realističtější velikost: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů, tunelů, atp.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Povolit stavbu dlouhých vlaků: {ORANGE}{STRING}
@@ -1169,7 +1170,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :vypnutá
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Zastavit automaticky hru při začínání nové hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Používat pokročilý seznam vozidel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :ne
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :u vlastní společnosti
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :u všech společností
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Používat ukazatele naložení: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :ne
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :u vlastní společnosti
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :u všech společností
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Povolit jízdní řády vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazit jízdní řády v cyklech místo ve dnech: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Výchozí druh kolejí (v nové hře/po načtení hry): {ORANGE}{STRING}
@@ -3246,7 +3253,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknut�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Přestavba se nezdařila. Konec.{STRING} {COMMA}
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Selhání refitu příkazu zastavilo {STRING} {COMMA}
 
 ############ Lists rail types
 

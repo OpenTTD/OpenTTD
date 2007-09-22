@@ -1020,6 +1020,7 @@ STR_CONFIG_PATCHES_OFF                                          :Uit
 STR_CONFIG_PATCHES_ON                                           :Aan
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Geef snelheid in statusbalk weer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Bouwen op hellingen toestaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Omgeving aanpassen onder gebouwen, spoorweg, enz. toestaan (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Gebruik realistisch handelsgebied: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Sta verwijderen van meer stedelijke wegen, bruggen, tunnels, enz. toe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}

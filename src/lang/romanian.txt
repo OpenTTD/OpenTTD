@@ -1020,6 +1020,7 @@ STR_CONFIG_PATCHES_OFF                                          :inactiv
 STR_CONFIG_PATCHES_ON                                           :activ
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Afiseazã viteza vehiculelor in bara de jos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permite construirea pe coastã si in pantã: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permite terra-formarea sub cladiri, sine, etc. (auto-pante): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realistice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permite demolarea unui nr. mai mare constructii: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permite constructia de trenuri foarte lungi: {ORANGE}{STRING}
@@ -1103,9 +1104,21 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Focus harta
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Ruleaza harta
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :inactiva
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Viteza harta la rotita mouse: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulatie click-dreapta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Comanda-click
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Oprit
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}La pornirea unui joc nou, pune-l pe pauza: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Foloseste lista avanata de vehicule: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Oprit
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Propria companie
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Toate companiile
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Foloseste indicatorii de incarcare: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Oprit
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Propria companie
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Toate companiile
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Foloseste orarul pentru vehicule: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Arata orarul per programari, nu per zile: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipul implicit de sina (dupa joc nou/incarcare joc): {ORANGE}{STRING}
@@ -1262,6 +1275,7 @@ STR_LANDINFO_LOCK                                               :Ecluzã
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... baliza in uz!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Coordonate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nu pot demola o parte din statie...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Nu pot converti linia aici...
@@ -1372,18 +1386,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Pune par
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protejeazã-ti jocul cu o parolã dacã nu vrei sã intre jucãtori neautorizati
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Alege o hartã:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Ce hartã doresti sa joci?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Numar maxim de clienti
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Alege un numar maxim de clienti. Nu trebuie ocupate toate locurile.
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (fă reclamă)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} client{P "" i}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Numar maxim de clienti
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Alege un numar maxim de clienti. Nu trebuie ocupate toate locurile.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compan{P ie ii}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximum companii:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limiteazã serverle la un anumit numãr companii
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} spectator{P "" i}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maxim spectatori:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limiteazã serverul la un anumit numãr de spectatori
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Limba vorbită:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Începe jocul
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Incarca joc
@@ -1611,9 +1630,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...teren
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Cale ferată cu semafoare normale
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Cale ferată cu pre-semafoare
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Cale ferată cu semafoare de ieşire
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Cale ferata cu semnale combinate
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Cale ferată cu semafoare normale şi pre-semafoare
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Cale ferată cu semafoare normale şi semafoare de ieşire
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Cale ferata cu semnale normale si combinate
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Cale ferată cu pre-semafoare şi semafoare de ieşire
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Cale ferata cu pre-semnalizate si cu semnale combinate
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Cale ferata cu post-semnalizate si cu semnale combinate
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Trebuie mai intai sa demolati gara
 
 
@@ -3338,7 +3361,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Da click
 STR_GROUP_DELETE_TIP                                            :{BLACK}Sterge grupul selectat
 STR_GROUP_RENAME_TIP                                            :{BLACK}Redenumeste grupul selectat
 STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Click aici pentru a proteja acest grup de la inlocuirile automate globale
-
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

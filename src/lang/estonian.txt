@@ -258,7 +258,7 @@ STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Ettevaatust!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Seda ei saa teha....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Seda ala ei saa puhastada....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originaali autorikaitse {COPYRIGHT} 1995 Chris Sawyer, kõik õigused kaitstud
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Algupärane autorikaitse {COPYRIGHT} 1995 Chris Sawyer, kõik õigused kaitstud
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versioon {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD meeskond
 STR_TRANSLATED_BY                                               :{BLACK}  Tõlgi(d) -
@@ -724,7 +724,7 @@ STR_0224                                                        :{BLACK}{UPARROW
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Suurenda kõrgendatava/madaldatava maa-ala pindala
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Vähenda kõrgendatava/madaldatava maa-ala pindala
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Juhusliku kaardi loomine
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Suvalise kaardi tekitamine
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nulli maastik
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nulli maastik
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Eemalda kõik mängija omandid
@@ -741,11 +741,11 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...liiga
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...liiga lähedal teisele linnale
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...ebasobiv koht
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...liiga palju linnu
-STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ei saa ühtegi linna ehitada
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Ühtegi linna ei saa ehitada...
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...pole enam ruumi kaardil
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Linna suuruse suurendamine
 STR_023C_EXPAND                                                 :{BLACK}Laienda
-STR_023D_RANDOM_TOWN                                            :{BLACK}Juhuslik linn
+STR_023D_RANDOM_TOWN                                            :{BLACK}Suvaline linn
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Ehita linn suvalisse kohta
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Tööstuste loomine
 STR_0240_COAL_MINE                                              :{BLACK}Kivisöekaevandus
@@ -822,8 +822,8 @@ STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...enne 
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...iga linna kohta lubatud ainult üks
 STR_0288_PLANT_TREES                                            :{BLACK}Istuta puid
 STR_0289_PLACE_SIGN                                             :{BLACK}Paigalda silt
-STR_028A_RANDOM_TREES                                           :{BLACK}Juhuslikud puud
-STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Istutab puid juhuslikult üle kogu maa
+STR_028A_RANDOM_TREES                                           :{BLACK}Suvalised puud
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Istutab puid suvaliselt üle kogu maa
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Loo maastikule kivised alad
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Ehita tuletorn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Paigalda saatjamast
@@ -1120,6 +1120,7 @@ STR_CONFIG_PATCHES_OFF                                          :Väljas
 STR_CONFIG_PATCHES_ON                                           :Sees
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Näita olekuribal veovahendi kiirust: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Luba ehitised nõlvadele ja kallastele: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Võimalda maastikujunduse teostust majade, rööbaste jms. all (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Võimalda reaalsemaid veekogu alasid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Luba linnateede, -sildade, -tunnelite jne lammutamine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Luba väga pikkade rongide ehitamine: {ORANGE}{STRING}
@@ -1462,12 +1463,12 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}MÄNGU 
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Kliendid:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Keel:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Maastikuühikud:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Ruudustik:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaardi suurus:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serveri versioon:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveri aadress:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Algus aeg:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Hetke aeg:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Aeg alguses:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aeg hetkel:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Parooliga kaitstud!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER ON MAAS
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER ON TÄIS
@@ -2030,7 +2031,7 @@ STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Kustuta 
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Salvesta mäng valitud nimega
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vali uue mängu tüüp
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vali valmis kaart (roheline), eelseadistatud mäng (sinine), või juhusliku kaardiga uus mäng
-STR_4010_GENERATE_RANDOM_NEW_GAME                               :Tekita juhuslik kaart
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :Tekita suvaline kaart
 STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Laadi kõrguskaart
 
 ##id 0x4800
@@ -2174,7 +2175,7 @@ STR_SV_STNAME_SOUTH                                             : Lõuna {STRING
 STR_SV_STNAME_EAST                                              : Ida {STRING}
 STR_SV_STNAME_WEST                                              : Lääne {STRING}
 STR_SV_STNAME_CENTRAL                                           :{STRING} keskus
-STR_SV_STNAME_TRANSFER                                          :{STRING} ülekanne
+STR_SV_STNAME_TRANSFER                                          :{STRING} ümberlaadimispaik
 STR_SV_STNAME_HALT                                              :{STRING} peatus
 STR_SV_STNAME_VALLEY                                            :{STRING} org
 STR_SV_STNAME_HEIGHTS                                           :{STRING} kõrgendikud
@@ -2352,7 +2353,7 @@ STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Katkesta
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Uue näo valimine
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Vali mehe nägu
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Vali naise nägu
-STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Loo uus juhuslik nägu
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Tekita uus suvaline nägu
 STR_704C_KEY                                                    :{BLACK}Selgitus
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Näita selgitust graafikute juures
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Ettevõttegraafiku selgitus
@@ -2700,8 +2701,8 @@ STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizze
 STR_80FD_TRICARIO_HELICOPTER                                    :Tricario helikopter
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 helikopter
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut helikopter
-STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Teade veovahendi tootjalt
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Me oleme just kujundanud uue {STRING}{P "" i} - kas te tahaksite testida seda aasta aega enne, kui see on saadaval kõigile?
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Teade veovahendite tootjalt
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Me töötasime välja uue {STRING}{P "" i}. Kas te oleksite huvitatud selle ainuõiguslikust katsetamisest järgneva aasta jooksul, et me saaksime jälgida kuidas see toimib?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :raudteevedur
 STR_8103_ROAD_VEHICLE                                           :mootorsõiduk
 STR_8104_AIRCRAFT                                               :lennuk
@@ -2717,17 +2718,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on 
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Mine {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Mine {STATION} (vea ja võta laadung peale)
+STR_8807_GO_TO_TRANSFER                                         :Mine {STATION} (laadi ümber ja võta laadung peale)
 STR_8808_GO_TO_UNLOAD                                           :Mine {STATION} (laadi maha)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mine {STATION} (vea ja jäta tühjaks)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mine {STATION} (laadi ümber ja jäta tühjaks)
 STR_880A_GO_TO_LOAD                                             :Mine {STATION} (laadi)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Mine {STATION} (vea ja oota täislaadungit)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Mine {STATION} (laadi ümber ja oota täislaadungit)
 STR_880C_GO_NON_STOP_TO                                         :Sõida läbi {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Sõida läbi {STATION} (vea ja oota täislaadungit)
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Sõida läbi {STATION} (laadi ümber ja oota täislaadungit)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Sõida läbi {STATION} (laadi maha)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Sõida läbi {STATION} (vea ja jäta tühjaks)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Sõida läbi {STATION} (laadi ümber ja jäta tühjaks)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Sõida läbi {STATION} (laadi)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Sõida läbi {STATION} (vea ja oota täislaadungit)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Sõida läbi {STATION} (laadi ümber ja oota täislaadungit)
 STR_GO_TO_TRAIN_DEPOT                                           :Mine linna {TOWN} rongidepoosse
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Hoolda linna {TOWN} rongidepoos
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi linna {TOWN} rongidepoo
@@ -2820,7 +2821,7 @@ STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Nimekiri
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Ehita valitud raudteesõiduk
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Muuda raudteesõiduki tüübinime
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Praegune rongi tegevus - vajuta siia et peatada/käivitada rong
-STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Näita rongi käske
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Näita rongi sihtpunkte
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vaate viimine rongi asukohale
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Saada rong depoosse
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Sunni rongi signaale eirama
@@ -2835,10 +2836,10 @@ STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Näita k
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Sihtpunktide nimekiri - vajuta käsul et see valida. CTRL + klik kerib jaama juurde
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Jäta praegune järjestus vahele ja alusta järgmisega. CTRL + klõps jätab vahele kuni valitud järjestuseni
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Kustuta valitud käsk
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Märgi valitud käsk ilma peatusetta peatuseks
-STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Lisa uus käsk enne valitud käsku või nimekirja lõppu
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni valitud käsu juures oodata täis laadingut
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni valitud käsu juures maha laadida.
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Muuda valitud käsk peatuseta sihtpunktiks
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Lisa uus käsk nimekirja lõppu, või enne valitud käsku
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Käsi valitud sihtpunktis sõiduk täis laadida
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Käsi valitud sihtpunktis sõiduk tühjaks laadida
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Sõiduplaan - esiletõstmiseks klõpsa sihtpunktil
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda, kaua esile tõstetud sihtpunkti peale aega peaks kuluma
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Tühista esile tõstetud sihtpunkti ajaperiood
@@ -2862,8 +2863,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ei saa rongi ümber pöörata.
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Muuda rongivaguni tüübinime
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Raudteesõiduki tüübinime ei saa muuta...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Sunni valitud käsul visata maha laadung
-STR_886F_TRANSFER                                               :{BLACK}Transpordi
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Käsi valitud sihtpunktis sõiduki laadung kõrvaldada
+STR_886F_TRANSFER                                               :{BLACK}Laadi ümber
 STR_CLEAR_TIME                                                  :{BLACK}Tühista aeg
 STR_RESET_LATENESS                                              :{BLACK}Tühista hilinemisloendur
 
@@ -3234,7 +3235,7 @@ STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Müü k�
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Müü kõik lennukid angaarist
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Võta nimekiri kõikidest rongidest selles jaamas nende käskude järgi
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Võta nimekiri kõikidest autodest selles garaažis nende käskude järgi
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Hangi kõikidest autodest nimekiri, kus käskude all on nende praegune depoo
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Võta nimekiri kõikidest laevadest selles sadamas nende käskude järgi
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Võta nimekiri kõikidest lennukitest suvalistest angaaridest selles lennujaamas nende käskude järgi
 
@@ -3320,12 +3321,12 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurim v
 
 ########### String for New Landscape Generator
 
-STR_GENERATE                                                    :{WHITE}Genereeri
-STR_RANDOM                                                      :{BLACK}Muuda juhuslikuks
-STR_RANDOM_HELP                                                 :{BLACK}Muuda maastikuloomisel kasutatavat suvalist seemet
+STR_GENERATE                                                    :{WHITE}Tekita
+STR_RANDOM                                                      :{BLACK}Muuda suvaliseks
+STR_RANDOM_HELP                                                 :{BLACK}Muuda maastiku loomisel kasutatavat suvalist seemet
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Maailma genereerimine
-STR_RANDOM_SEED                                                 :{BLACK}Suvaline seeme:
-STR_RANDOM_SEED_HELP                                            :{BLACK}Klõpsa, et sisestada juhuslik seeme
+STR_RANDOM_SEED                                                 :{BLACK}Juhuarv:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Klõpsa juhuarvu sisestamiseks
 STR_LAND_GENERATOR                                              :{BLACK}Maa generaator:
 STR_TREE_PLACER                                                 :{BLACK}Puu algoritm:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Kõrgustekaardi pööre:

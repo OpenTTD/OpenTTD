@@ -1020,6 +1020,7 @@ STR_CONFIG_PATCHES_OFF                                          :Fra
 STR_CONFIG_PATCHES_ON                                           :Til
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Vis køretøjets fart i statusbaren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Tillad bygning på skråninger og kyster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Tillad landskabsformning under bygninger, spor, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Tillad mere realistisk størrelse på stationernes opland: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Tillad nedriving af industribygninger, flere veje, osv: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Aktiver bygning af meget lange tog: {ORANGE}{STRING}
