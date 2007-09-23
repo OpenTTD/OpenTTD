@@ -489,12 +489,13 @@ static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z
 
 /** Draw a (transparent) sprite at given coordinates with a given bounding box.
  * The bounding box extends from (x + bb_offset_x, y + bb_offset_y, z + bb_offset_z) to (x + w - 1, y + h - 1, z + dz - 1), both corners included.
+ * Bounding boxes with bb_offset_x == w or bb_offset_y == h or bb_offset_z == dz are allowed and produce thin slices.
  *
  * @note Bounding boxes are normally specified with bb_offset_x = bb_offset_y = bb_offset_z = 0. The extent of the bounding box in negative direction is
  *       defined by the sprite offset in the grf file.
  *       However if modifying the sprite offsets is not suitable (e.g. when using existing graphics), the bounding box can be tuned by bb_offset.
  *
- * @pre w > bb_offset_x, h > bb_offset_y, dz > bb_offset_z. Else w, h or dz are ignored.
+ * @pre w >= bb_offset_x, h >= bb_offset_y, dz >= bb_offset_z. Else w, h or dz are ignored.
  *
  * @param image the image to combine and draw,
  * @param pal the provided palette,
@@ -575,13 +576,13 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	ps->image = image;
 	ps->pal = pal;
 	ps->xmin = x + bb_offset_x;
-	ps->xmax = x + max(bb_offset_x, w - 1);
+	ps->xmax = x + max(bb_offset_x, w) - 1;
 
 	ps->ymin = y + bb_offset_y;
-	ps->ymax = y + max(bb_offset_y, h - 1);
+	ps->ymax = y + max(bb_offset_y, h) - 1;
 
 	ps->zmin = z + bb_offset_z;
-	ps->zmax = z + max(bb_offset_z, dz - 1);
+	ps->zmax = z + max(bb_offset_z, dz) - 1;
 
 	ps->comparison_done = false;
 	ps->child = NULL;
