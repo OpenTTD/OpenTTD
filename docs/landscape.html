@@ -973,7 +973,7 @@
       </ul>
      </li>
      <li>m2: index into the array of industries</li>
-     <li>m5: type:<br>
+     <li>m5: type (plus m6 bit 2):<br>
       <small>(note: this is not the same as the industry type, which is stored in the array of industries)</small>
 
       <table>
@@ -1272,9 +1272,17 @@
          </table>
         </td>
        </tr>
+       <tr>
+        <td nowrap valign=top><tt>AF</tt>..<tt>1FF</tt>&nbsp; </td>
+        <td align=left>NewGRF industries industry</td>
+       </tr>
       </table>
      </li>
      <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
+     <li>m3: animation state</li>
+     <li>m4: animation loop</li>
+     <li>m6 bits 3..5: random triggers (NewGRF)</li>
+     <li>m7: random bits (NewGRF)</li>
     </ul>
    </td>
   </tr>

@@ -253,12 +253,24 @@ static inline void SetIndustryAnimationState(TileIndex tile, byte state)
  * @param tile TileIndex of the tile to query
  * @pre IsTileType(tile, MP_INDUSTRY)
  * @return requested bits
- * @todo implement the storage in map array
  */
 static inline byte GetIndustryRandomBits(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
-	return 0;
+	return _me[tile].m7;
+}
+
+/**
+ * Set the random bits for this tile.
+ * Used for grf callbacks
+ * @param tile TileIndex of the tile to query
+ * @param bits the random bits
+ * @pre IsTileType(tile, MP_INDUSTRY)
+ */
+static inline byte GetIndustryRandomBits(TileIndex tile, byte bits)
+{
+	assert(IsTileType(tile, MP_INDUSTRY));
+	_me[tile].m7 = bits;
 }
 
 /**
@@ -267,12 +279,11 @@ static inline byte GetIndustryRandomBits(TileIndex tile)
  * @param tile TileIndex of the tile to query
  * @pre IsTileType(tile, MP_INDUSTRY)
  * @return requested triggers
- * @todo implement the storage in map array
  */
 static inline byte GetIndustryTriggers(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
-	return 0;
+	return GB(_m[tile].m6, 3, 3);
 }
 
 
@@ -280,12 +291,13 @@ static inline byte GetIndustryTriggers(TileIndex tile)
  * Set the activated triggers bits for this industry tile
  * Used for grf callbacks
  * @param tile TileIndex of the tile to query
+ * @param triggers the triggers to set
  * @pre IsTileType(tile, MP_INDUSTRY)
- * @todo implement the storage in map array
  */
 static inline void SetIndustryTriggers(TileIndex tile, byte triggers)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
+	SB(_m[tile].m6, 3, 3, triggers);
 }
 
 #endif /* INDUSTRY_MAP_H */

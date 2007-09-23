@@ -114,22 +114,30 @@ static const SpriteGroup *IndustryTileResolveReal(const ResolverObject *object, 
 	return NULL;
 }
 
-uint32 IndustryTileGetRandomBits(const ResolverObject *object)
+static uint32 IndustryTileGetRandomBits(const ResolverObject *object)
 {
 	const TileIndex tile = object->u.industry.tile;
-	return (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) ? 0 : GetIndustryRandomBits(tile);
+	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return 0;
+	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryRandomBits(tile) : 0; //GetIndustryByTile(tile)->random_bits;
 }
 
-uint32 IndustryTileGetTriggers(const ResolverObject *object)
+static uint32 IndustryTileGetTriggers(const ResolverObject *object)
 {
 	const TileIndex tile = object->u.industry.tile;
-	return (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) ? 0 : GetIndustryTriggers(tile);
+	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return 0;
+	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryTriggers(tile) : 0; //GetIndustryByTile(tile)->triggers;
 }
 
-void IndustryTileSetTriggers(const ResolverObject *object, int triggers)
+static void IndustryTileSetTriggers(const ResolverObject *object, int triggers)
 {
 	const TileIndex tile = object->u.industry.tile;
-	if (IsTileType(tile, MP_INDUSTRY)) SetIndustryTriggers(tile, triggers);
+	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return;
+
+	if (object->scope != VSG_SCOPE_SELF) {
+		SetIndustryTriggers(tile, triggers);
+	} else {
+		//GetIndustryByTile(tile)->triggers = triggers;
+	}
 }
 
 static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIndex tile, Industry *indus)

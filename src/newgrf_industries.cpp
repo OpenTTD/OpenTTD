@@ -217,19 +217,21 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Get industry ID at offset param */
 		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->xy), tile, industry);
 
-		case 0x61: return 0; // Get random tile bits at offset param
+		/* Get random tile bits at offset param */
+		case 0x61:
+			tile = GetNearbyTile(parameter, tile);
+			return (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == industry) ? GetIndustryRandomBits(tile) : 0;
 
 		/* Land info of nearby tiles */
 		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY);
 
 		/* Animation stage of nearby tiles */
-		case 0x63: {
+		case 0x63:
 			tile = GetNearbyTile(parameter, tile);
 			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryByTile(tile) == industry) {
 				return GetIndustryAnimationState(tile);
 			}
 			return 0xFFFFFFFF;
-		}
 
 		/* Distance of nearest industry of given type */
 		case 0x64: return GetClosestIndustry(tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), industry);
@@ -318,11 +320,27 @@ static const SpriteGroup *IndustryResolveReal(const ResolverObject *object, cons
 	return NULL;
 }
 
+static uint32 IndustryGetRandomBits(const ResolverObject *object)
+{
+	return object->u.industry.ind == NULL ? 0 : 0; //object->u.industry.ind->random_bits;
+}
+
+static uint32 IndustryGetTriggers(const ResolverObject *object)
+{
+	return object->u.industry.ind == NULL ? 0 : 0; //object->u.industry.ind->triggers;
+}
+
+static void IndustrySetTriggers(const ResolverObject *object, int triggers)
+{
+	if (object->u.industry.ind == NULL) return;
+	//object->u.industry.ind->triggers = triggers;
+}
+
 static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *indus)
 {
-	res->GetRandomBits = IndustryTileGetRandomBits;
-	res->GetTriggers   = IndustryTileGetTriggers;
-	res->SetTriggers   = IndustryTileSetTriggers;
+	res->GetRandomBits = IndustryGetRandomBits;
+	res->GetTriggers   = IndustryGetTriggers;
+	res->SetTriggers   = IndustrySetTriggers;
 	res->GetVariable   = IndustryGetVariable;
 	res->ResolveReal   = IndustryResolveReal;
 

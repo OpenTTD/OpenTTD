@@ -8,6 +8,16 @@
 #include "industry.h"
 #include "newgrf_spritegroup.h"
 
+/** When should the industry(tile) be triggered for random bits? */
+enum IndustryTrigger {
+	/** Triggered each tile loop */
+	INDUSTRY_TRIGGER_TILELOOP_PROCESS = 1,
+	/** Triggered (whole industry) each 256 ticks */
+	INDUSTRY_TRIGGER_256_TICKS        = 2,
+	/** Triggered on cargo delivery */
+	INDUSTRY_TRIGGER_CARGO_DELIVERY   = 4,
+};
+
 /* in newgrf_industry.cpp */
 uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available);
 uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile);
@@ -19,10 +29,6 @@ bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCa
 IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id);
 
 /* in newgrf_industrytiles.cpp*/
-uint32 IndustryTileGetRandomBits(const ResolverObject *object);
-uint32 IndustryTileGetTriggers(const ResolverObject *object);
-void IndustryTileSetTriggers(const ResolverObject *object, int triggers);
-
 uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index);
 
 #endif /* NEWGRF_INDUSTRIES_H */
