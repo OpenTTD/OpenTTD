@@ -3056,8 +3056,8 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d",
 			feature, idcount, cidcount, wagover);
 
-	if (_cur_grffile->spriteset_start == 0 || _cur_grffile->spritegroups == 0) {
-		grfmsg(1, "FeatureMapSpriteGroup: No sprite set to work on! Skipping");
+	if (_cur_grffile->spritegroups == 0) {
+		grfmsg(1, "FeatureMapSpriteGroup: No sprite groups to work on! Skipping");
 		return;
 	}
 
