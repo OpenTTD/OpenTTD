@@ -78,47 +78,44 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 /** Make an analysis of a tile and check for its belonging to the same
  * industry, and/or the same grf file
- * @param new_tile TileIndex of the tile to query
- * @param old_tile TileIndex of the reference tile
- * @param i Industry to which old_tile belongs to
+ * @param tile TileIndex of the tile to query
+ * @param i Industry to which to compare the tile to
  * @return value encoded as per NFO specs */
-uint32 GetIndustryIDAtOffset(TileIndex new_tile, TileIndex old_tile, const Industry *i)
+uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i)
 {
-	if (IsTileType(new_tile, MP_INDUSTRY)) {  // Is this an industry tile?
-
-		if (GetIndustryIndex(new_tile) == i->index) {  // Does it belong to the same industry?
-			IndustryGfx gfx = GetIndustryGfx(new_tile);
-			const IndustryTileSpec *indtsp = GetIndustryTileSpec(gfx);
-			const IndustryTileSpec *indold = GetIndustryTileSpec(GetIndustryGfx(old_tile));
-
-			if (gfx < NEW_INDUSTRYOFFSET) {  // Does it belongs to an old type?
-				/* It is an old tile.  We have to see if it's been overriden */
-				if (indtsp->grf_prop.override == INVALID_INDUSTRYTILE) {  // has it been overridden?
-					return 0xFF << 8 | gfx; // no. Tag FF + the gfx id of that tile
-				} else { // yes.  FInd out if it is from the same grf file or not
-					const IndustryTileSpec *old_tile_ovr = GetIndustryTileSpec(indtsp->grf_prop.override);
-
-					if (old_tile_ovr->grf_prop.grffile->grfid == indold->grf_prop.grffile->grfid) {
-						return old_tile_ovr->grf_prop.local_id; // same grf file
-					} else {
-						return 0xFFFE; // not the same grf file
-					}
-				}
-			} else {
-				if (indtsp->grf_prop.spritegroup != NULL) {  // tile has a spritegroup ?
-					if (indtsp->grf_prop.grffile->grfid == indold->grf_prop.grffile->grfid) {  // same industry, same grf ?
-						return indtsp->grf_prop.local_id;
-					} else {
-						return 0xFFFE;  // Defined in another grf file
-					}
-				} else {  // tile has no spritegroup
-					return 0xFF << 8 | indtsp->grf_prop.subst_id;  // so just give him the substitute
-				}
-			}
-		}
+	if (!IsTileType(tile, MP_INDUSTRY) || GetIndustryIndex(tile) == i->index) {
+		/* No industry and/or the tile does not have the same industry as the one we match it with */
+		return 0xFFFF;
 	}
 
-	return 0xFFFF; // tile is not an industry one or  does not belong to the current industry
+	IndustryGfx gfx = GetCleanIndustryGfx(tile);
+	const IndustryTileSpec *indtsp = GetIndustryTileSpec(gfx);
+	const IndustrySpec *indold = GetIndustrySpec(i->type);
+
+	if (gfx < NEW_INDUSTRYOFFSET) { // Does it belongs to an old type?
+		/* It is an old tile.  We have to see if it's been overriden */
+		if (indtsp->grf_prop.override == INVALID_INDUSTRYTILE) { // has it been overridden?
+			return 0xFF << 8 | gfx; // no. Tag FF + the gfx id of that tile
+		}
+		/* Not overriden */
+		const IndustryTileSpec *tile_ovr = GetIndustryTileSpec(indtsp->grf_prop.override);
+
+		if (tile_ovr->grf_prop.grffile->grfid == indold->grf_prop.grffile->grfid) {
+			return tile_ovr->grf_prop.local_id; // same grf file
+		} else {
+			return 0xFFFE; // not the same grf file
+		}
+	}
+	/* Not an 'old type' tile */
+	if (indtsp->grf_prop.spritegroup != NULL) { // tile has a spritegroup ?
+		if (indtsp->grf_prop.grffile->grfid == indold->grf_prop.grffile->grfid) { // same industry, same grf ?
+			return indtsp->grf_prop.local_id;
+		} else {
+			return 0xFFFE; // Defined in another grf file
+		}
+	}
+	/* The tile has no spritegroup */
+	return 0xFF << 8 | indtsp->grf_prop.subst_id; // so just give him the substitute
 }
 
 static uint32 GetClosestIndustry(TileIndex tile, IndustryType type, const Industry *current)
@@ -215,7 +212,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x44: return industry->selected_layout;
 
 		/* Get industry ID at offset param */
-		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->xy), tile, industry);
+		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->xy), industry);
 
 		/* Get random tile bits at offset param */
 		case 0x61:

@@ -124,6 +124,12 @@ static inline void SetIndustryConstructionStage(TileIndex tile, byte value)
 	SB(_m[tile].m1, 0, 2, value);
 }
 
+static inline IndustryGfx GetCleanIndustryGfx(TileIndex t)
+{
+	assert(IsTileType(t, MP_INDUSTRY));
+	return _m[t].m5 | (GB(_m[t].m6, 2, 1) << 8);
+}
+
 /**
  * Get the industry graphics ID for the given industry tile
  * @param t the tile to get the gfx for
@@ -133,7 +139,7 @@ static inline void SetIndustryConstructionStage(TileIndex tile, byte value)
 static inline IndustryGfx GetIndustryGfx(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
-	return GetTranslatedIndustryTileID(_m[t].m5 | (GB(_m[t].m6, 2, 1) << 8));
+	return GetTranslatedIndustryTileID(GetCleanIndustryGfx(t));
 }
 
 /**
@@ -145,7 +151,8 @@ static inline IndustryGfx GetIndustryGfx(TileIndex t)
 static inline void SetIndustryGfx(TileIndex t, IndustryGfx gfx)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
-	_m[t].m5 = gfx;
+	_m[t].m5 = GB(gfx, 0, 8);
+	SB(_m[t].m6, 2, 1, GB(gfx, 8, 1));
 }
 
 /**
