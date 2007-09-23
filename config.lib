@@ -702,6 +702,9 @@ check_params() {
 		elif [ -d "$ROOT_DIR/.git" ] && [ -n "`git help`" ]; then
 			revision=""
 			log 1 "checking revision... git detection"
+		elif [ -d "$ROOT_DIR/.hg" ] && [ -n "`hg help`" ]; then
+			revision=""
+			log 1 "checking revision... hg detection"
 		else
 			revision=""
 			log 1 "checking revision... no detection"

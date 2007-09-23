@@ -102,8 +102,14 @@ REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branch/ { split($$
 else
 # Are we a git dir?
 ifeq ($(shell if test -d $(SRC_DIR)/../.git; then echo 1; fi), 1)
-# Find the revision like: rXXXXM
-REV := g$(shell if head=`git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(shell if git diff-index HEAD | read dummy; then echo M; fi)$(shell git branch|grep '[*]'|sed 's/\* /-/;s/^-master$$//')
+# Find the revision like: gXXXXM-branch
+REV := g$(shell if head=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(shell if git diff-index HEAD | read dummy; then echo M; fi)$(shell git branch|grep '[*]' | sed 's/\* /-/;s/^-master$$//')
+else
+# Are we a hg (Mercurial) dir?
+ifeq ($(shell if test -d $(SRC_DIR)/../.hg; then echo 1; fi), 1)
+# Find the revision like: hXXXXM-branch
+REV := h$(shell if head=`LC_ALL=C hg tip 2>/dev/null`; then echo "$$head" | head -n 1 | cut -c19-26; fi)$(shell if hg status | grep -v '^?' | read dummy; then echo M; fi)$(shell hg branch | sed 's/^/-/;s/^-default$$//')
+endif
 endif
 endif
 endif
