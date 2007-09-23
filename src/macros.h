@@ -341,6 +341,15 @@ template<typename T> static inline T TOGGLEBIT(T& x, int y)
 #define GENERAL_SPRITE_COLOR(color) ((color) + PALETTE_RECOLOR_START)
 #define PLAYER_SPRITE_COLOR(owner) (GENERAL_SPRITE_COLOR(_player_colors[owner]))
 
+/**
+ * Whether a sprite comes from the original graphics files or a new grf file
+ * (either supplied by OpenTTD or supplied by the user).
+ *
+ * @param sprite The sprite to check
+ * @return True if it is a new sprite, or false if it is original.
+ */
+#define IS_CUSTOM_SPRITE(sprite) ((sprite) >= SPR_SIGNALS_BASE)
+
 extern const byte _ffb_64[128];
 
 /**
