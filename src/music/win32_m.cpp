@@ -142,7 +142,11 @@ const char *MusicDriver_Win32::Start(const char * const *parm)
 	}
 
 	if (NULL == (_midi.wait_obj = CreateEvent(NULL, FALSE, FALSE, NULL))) return "Failed to create event";
-	if (NULL == (_midi.thread = CreateThread(NULL, 8192, MidiThread, 0, 0, NULL))) return "Failed to create thread";
+
+	/* The lpThreadId parameter of CreateThread (the last parameter)
+	 * may NOT be NULL on Windows 95, 98 and ME. */
+	DWORD threadId;
+	if (NULL == (_midi.thread = CreateThread(NULL, 8192, MidiThread, 0, 0, &threadId))) return "Failed to create thread";
 
 	return NULL;
 }
