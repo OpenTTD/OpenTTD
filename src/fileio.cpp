@@ -297,7 +297,7 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 	}
 
 #if defined(WIN32)
-	if (GetFileAttributes(OTTD2FS(buf)) == -1) return NULL;
+	if (GetFileAttributes(OTTD2FS(buf)) == INVALID_FILE_ATTRIBUTES) return NULL;
 #endif
 
 	f = fopen(buf, mode);
