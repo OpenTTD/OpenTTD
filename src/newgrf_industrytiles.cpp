@@ -358,8 +358,11 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
 	uint32 random = Random();
 	BEGIN_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
-			ret &= StartStopIndustryTileAnimation(tile, iat, random);
-			SB(random, 0, 16, Random());
+			if (StartStopIndustryTileAnimation(tile, iat, random)) {
+				SB(random, 0, 16, Random());
+			} else {
+				ret = false;
+			}
 		}
 	END_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
 
