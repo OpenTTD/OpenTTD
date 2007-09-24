@@ -41,7 +41,7 @@ uint32 t;
 
 #ifdef RANDOM_DEBUG
 	if (_networking && (DEREF_CLIENT(0)->status != STATUS_INACTIVE || !_network_server))
-		printf("Random [%d/%d] %s:%d\n",_frame_counter, _current_player, file, line);
+		printf("Random [%d/%d] %s:%d\n",_frame_counter, (byte)_current_player, file, line);
 #endif
 
 	s = _random_seeds[0][0];
