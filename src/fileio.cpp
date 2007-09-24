@@ -296,6 +296,10 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 		snprintf(buf, lengthof(buf), "%s%s%s", _searchpaths[sp], _subdirs[subdir], filename);
 	}
 
+#if defined(WIN32)
+	if (GetFileAttributes(OTTD2FS(buf)) == -1) return NULL;
+#endif
+
 	f = fopen(buf, mode);
 #if !defined(WIN32)
 	if (f == NULL) {
