@@ -33,6 +33,7 @@ protected:
 	uint16 max_new_entities; ///< what is the amount of entities, old and new summed
 
 	uint16 invalid_ID;       ///< ID used to dected invalid entities;
+	virtual bool CheckValidNewID(uint16 testid) { return true; }
 
 public:
 	EntityIDMapping *mapping_ID; ///< mapping of ids from grf files.  Public out of convenience
@@ -76,6 +77,8 @@ public:
 
 struct IndustryTileSpec;
 class IndustryTileOverrideManager : public OverrideManagerBase {
+protected:
+	virtual bool CheckValidNewID(uint16 testid) { return testid != 0xFF; }
 public:
 	IndustryTileOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
 			OverrideManagerBase(offset, maximum, invalid) {}

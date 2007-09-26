@@ -105,7 +105,7 @@ uint16 OverrideManagerBase::AddEntityID(byte grf_local_id, uint32 grfid, byte su
 	for (id = max_offset; id < max_new_entities; id++) {
 		map = &mapping_ID[id];
 
-		if (map->entity_id == 0 && map->grfid == 0) {
+		if (CheckValidNewID(id) && map->entity_id == 0 && map->grfid == 0) {
 			map->entity_id     = grf_local_id;
 			map->grfid         = grfid;
 			map->substitute_id = substitute_id;
