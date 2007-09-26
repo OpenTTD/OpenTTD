@@ -751,7 +751,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 	relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE);
 
-	if (HASBIT(statspec->callbackmask, CBM_CUSTOM_LAYOUT)) {
+	if (HASBIT(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
 		uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0x2110000, 0, statspec, NULL, INVALID_TILE);
 		if (callback != CALLBACK_FAILED) tile = callback;
 	}

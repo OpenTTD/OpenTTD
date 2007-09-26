@@ -2054,7 +2054,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 			relocation = GetCustomStationRelocation(statspec, st, ti->tile);
 
-			if (HASBIT(statspec->callbackmask, CBM_CUSTOM_LAYOUT)) {
+			if (HASBIT(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
 				uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
 				if (callback != CALLBACK_FAILED) tile = (callback & ~1) + GetRailStationAxis(ti->tile);
 			}

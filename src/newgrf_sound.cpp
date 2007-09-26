@@ -59,7 +59,7 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 	if (file == NULL) return false;
 
 	/* Check that the vehicle type uses the sound effect callback */
-	if (!HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_SOUND_EFFECT)) return false;
+	if (!HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_SOUND_EFFECT)) return false;
 
 	callback = GetVehicleCallback(CBID_VEHICLE_SOUND_EFFECT, event, 0, v->engine_type, v);
 	if (callback == CALLBACK_FAILED) return false;

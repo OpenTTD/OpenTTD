@@ -193,7 +193,7 @@ void TrainConsistChanged(Vehicle* v)
 
 		if (!IsArticulatedPart(u)) {
 			/* Check powered wagon / visual effect callback */
-			if (HASBIT(EngInfo(u->engine_type)->callbackmask, CBM_WAGON_POWER)) {
+			if (HASBIT(EngInfo(u->engine_type)->callbackmask, CBM_TRAIN_WAGON_POWER)) {
 				uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
 
 				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = callback;
@@ -1625,7 +1625,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 	if (p2) {
 		/* turn a single unit around */
 
-		if (IsMultiheaded(v) || HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) {
+		if (IsMultiheaded(v) || HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) {
 			return_cmd_error(STR_ONLY_TURN_SINGLE_UNIT);
 		}
 
@@ -1716,7 +1716,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		if (v->cargo_cap != 0) {
 			uint16 amount = CALLBACK_FAILED;
 
-			if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_REFIT_CAPACITY)) {
+			if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 				/* Back up the vehicle's cargo type */
 				CargoID temp_cid = v->cargo_type;
 				byte temp_subtype = v->cargo_subtype;

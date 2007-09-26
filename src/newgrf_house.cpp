@@ -323,8 +323,8 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 		if ((HASBIT(image, SPRITE_MODIFIER_OPAQUE) || !HASBIT(_transparent_opt, TO_HOUSES)) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 			if (pal == 0) {
 				const HouseSpec *hs = GetHouseSpecs(house_id);
-				if (HASBIT(hs->callback_mask, CBM_BUILDING_COLOUR)) {
-					uint16 callback = GetHouseCallback(CBID_BUILDING_COLOUR, 0, 0, house_id, GetTownByTile(ti->tile), ti->tile);
+				if (HASBIT(hs->callback_mask, CBM_HOUSE_COLOUR)) {
+					uint16 callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, GetTownByTile(ti->tile), ti->tile);
 					if (callback != CALLBACK_FAILED) {
 						/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
 						pal = HASBIT(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
@@ -379,7 +379,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	byte animation_speed = hs->animation_speed;
 	bool frame_set_by_callback = false;
 
-	if (HASBIT(hs->callback_mask, CBM_ANIMATION_SPEED)) {
+	if (HASBIT(hs->callback_mask, CBM_HOUSE_ANIMATION_SPEED)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_SPEED, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED) animation_speed = clamp(callback_res & 0xFF, 2, 16);
 	}
@@ -393,7 +393,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	byte frame      = GetHouseAnimationFrame(tile);
 	byte num_frames = GB(hs->animation_frames, 0, 7);
 
-	if (HASBIT(hs->callback_mask, CBM_ANIMATION_NEXT_FRAME)) {
+	if (HASBIT(hs->callback_mask, CBM_HOUSE_ANIMATION_NEXT_FRAME)) {
 		uint32 param = (hs->extra_flags & CALLBACK_1A_RANDOM_BITS) ? Random() : 0;
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_NEXT_FRAME, param, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 
@@ -472,7 +472,7 @@ static void AnimationControl(TileIndex tile, uint16 random_bits)
 {
 	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
 
-	if (HASBIT(hs->callback_mask, CBM_ANIMATION_START_STOP)) {
+	if (HASBIT(hs->callback_mask, CBM_HOUSE_ANIMATION_START_STOP)) {
 		uint32 param = (hs->extra_flags & SYNCHRONISED_CALLBACK_1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_START_STOP, param, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 
@@ -495,7 +495,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	 * MarkTileDirtyByTile(tile);
 	 */
 
-	if (HASBIT(hs->callback_mask, CBM_ANIMATION_START_STOP)) {
+	if (HASBIT(hs->callback_mask, CBM_HOUSE_ANIMATION_START_STOP)) {
 		/* If this house is marked as having a synchronised callback, all the
 		 * tiles will have the callback called at once, rather than when the
 		 * tile loop reaches them. This should only be enabled for the northern

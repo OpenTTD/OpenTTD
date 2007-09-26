@@ -17,7 +17,7 @@
 
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
-	if (!HASBIT(EngInfo(engine_type)->callbackmask, CBM_ARTIC_ENGINE)) return 0;
+	if (!HASBIT(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return 0;
 
 	Vehicle *v = NULL;;
 	if (!purchase_window) {
@@ -41,7 +41,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 	const Vehicle *v = vl[0];
 	Vehicle *u = vl[0];
 
-	if (!HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) return;
+	if (!HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return;
 
 	for (uint i = 1; i < MAX_UVALUE(EngineID); i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, v->engine_type, v);

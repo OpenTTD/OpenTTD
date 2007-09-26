@@ -1518,7 +1518,7 @@ static void DrawTile_Track(TileInfo *ti)
 				const Station* st = ComposeWaypointStation(ti->tile);
 				uint gfx = 2;
 
-				if (HASBIT(statspec->callbackmask, CBM_CUSTOM_LAYOUT)) {
+				if (HASBIT(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
 					uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
 					if (callback != CALLBACK_FAILED) gfx = callback;
 				}

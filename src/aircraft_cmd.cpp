@@ -364,7 +364,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			v->cargo_type = cargo;
 
-			if (HASBIT(EngInfo(p1)->callbackmask, CBM_REFIT_CAPACITY)) {
+			if (HASBIT(EngInfo(p1)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 				callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
 			}
 
@@ -645,7 +645,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Check the refit capacity callback */
 	uint16 callback = CALLBACK_FAILED;
-	if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_REFIT_CAPACITY)) {
+	if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 		/* Back up the existing cargo type */
 		CargoID temp_cid = v->cargo_type;
 		byte temp_subtype = v->cargo_subtype;

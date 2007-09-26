@@ -24,6 +24,8 @@ enum CallbackID {
 	/** Set when calling a randomizing trigger (almost undocumented). */
 	CBID_RANDOM_TRIGGER                  = 0x01,
 
+	/* There are no callbacks 0x02 - 0x0F. */
+
 	/** Powered wagons, if the result is lower as 0x40 then the wagon is powered
 	 * @todo : interpret the rest of the result, aka "visual effects". */
 	CBID_TRAIN_WAGON_POWER               = 0x10,
@@ -69,7 +71,7 @@ enum CallbackID {
 	CBID_TRAIN_ALLOW_WAGON_ATTACH        = 0x1D,
 
 	/** Called to determine the colour of a town building. */
-	CBID_BUILDING_COLOUR                 = 0x1E,
+	CBID_HOUSE_COLOUR                    = 0x1E,
 
 	/** Called to decide how much cargo a town building can accept. */
 	CBID_HOUSE_CARGO_ACCEPTANCE          = 0x1F,
@@ -168,6 +170,8 @@ enum CallbackID {
 	/** Called to determine if the industry can still accept or refuse more cargo arrival */
 	CBID_INDUSTRY_REFUSE_CARGO           = 0x3D,
 
+	/* There are no callbacks 0x3E - 0x142. */
+
 	/** Called to determine whether a town building can be destroyed. */
 	CBID_HOUSE_DENY_DESTRUCTION          = 0x143,
 
@@ -182,6 +186,20 @@ enum CallbackID {
 
 	/** Add an offset to the default sprite numbers to show another sprite. */
 	CBID_CANALS_SPRITE_OFFSET            = 0x147, // not implemented
+
+	/* There is no callback 0x148.*/
+
+	/** Callback done for each tile of a station to check the slope. */
+	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // not implemented
+
+	/** Called to determine the color of an industry. */
+	CBID_INDUSTRY_DECIDE_COLOUR          = 0x14A, // not implemented
+
+	/** Customize the input cargo types of a newly build industry. */
+	CBID_INDUSTRY_INPUT_CARGO_TYPES      = 0x14B, // not implemented
+
+	/** Customize the output cargo types of a newly build industry. */
+	CBID_INDUSTRY_OUTPUT_CARGO_TYPES     = 0x14C, // not implemented
 };
 
 /**
@@ -189,64 +207,70 @@ enum CallbackID {
  * Some callbacks are always used and don't have a mask.
  */
 enum VehicleCallbackMask {
-	CBM_WAGON_POWER    = 0, ///< Powered wagons (trains only)
-	CBM_VEHICLE_LENGTH = 1, ///< Vehicle length (trains only)
-	CBM_LOAD_AMOUNT    = 2, ///< Load amount
-	CBM_REFIT_CAPACITY = 3, ///< Cargo capacity after refit
-	CBM_ARTIC_ENGINE   = 4, ///< Add articulated engines (trains only)
-	CBM_CARGO_SUFFIX   = 5, ///< Show suffix after cargo name
-	CBM_COLOUR_REMAP   = 6, ///< Change colour mapping of vehicle
-	CBM_SOUND_EFFECT   = 7, ///< Vehicle uses custom sound effects
+	CBM_TRAIN_WAGON_POWER      = 0, ///< Powered wagons (trains only)
+	CBM_VEHICLE_LENGTH         = 1, ///< Vehicle length (trains and road vehicles)
+	CBM_VEHICLE_LOAD_AMOUNT    = 2, ///< Load amount
+	CBM_VEHICLE_REFIT_CAPACITY = 3, ///< Cargo capacity after refit
+	CBM_VEHICLE_ARTIC_ENGINE   = 4, ///< Add articulated engines (trains only)
+	CBM_VEHICLE_CARGO_SUFFIX   = 5, ///< Show suffix after cargo name
+	CBM_VEHICLE_COLOUR_REMAP   = 6, ///< Change colour mapping of vehicle
+	CBM_VEHICLE_SOUND_EFFECT   = 7, ///< Vehicle uses custom sound effects
 };
 
 /**
  * Callback masks for stations.
  */
 enum StationCallbackMask {
-	CBM_STATION_AVAIL = 0, ///< Availability of station in construction window
-	CBM_CUSTOM_LAYOUT = 1, ///< Use callback to select a tile layout to use
+	CBM_STATION_AVAIL                = 0, ///< Availability of station in construction window
+	CBM_STATION_SPRITE_LAYOUT        = 1, ///< Use callback to select a sprite layout to use
+	CBM_STATION_ANIMATION_NEXT_FRAME = 2, ///< Use a custom next frame callback
+	CBM_STATION_ANIMATION_SPEED      = 3, ///< Customize the animation speed of the station
+	CBM_STATION_SLOPE_CHECK          = 4, ///< Check slope of new station tiles
 };
 
 /**
  * Callback masks for houses.
  */
 enum HouseCallbackMask {
-	CBM_HOUSE_ALLOW_CONSTRUCTION  = 0,
-	CBM_ANIMATION_NEXT_FRAME      = 1,
-	CBM_ANIMATION_START_STOP      = 2,
-	CBM_CONSTRUCTION_STATE_CHANGE = 3,
-	CBM_BUILDING_COLOUR           = 4,
-	CBM_CARGO_ACCEPTANCE          = 5,
-	CBM_ANIMATION_SPEED           = 6,
-	CBM_HOUSE_DESTRUCTION         = 7,
-	CBM_HOUSE_ACCEPT_CARGO        = 8,
-	CBM_HOUSE_PRODUCE_CARGO       = 9,
-	CBM_HOUSE_DENY_DESTRUCTION    = 10,
+	CBM_HOUSE_ALLOW_CONSTRUCTION        =  0,
+	CBM_HOUSE_ANIMATION_NEXT_FRAME      =  1,
+	CBM_HOUSE_ANIMATION_START_STOP      =  2,
+	CBM_HOUSE_CONSTRUCTION_STATE_CHANGE =  3,
+	CBM_HOUSE_COLOUR                    =  4,
+	CBM_HOUSE_CARGO_ACCEPTANCE          =  5,
+	CBM_HOUSE_ANIMATION_SPEED           =  6,
+	CBM_HOUSE_DESTRUCTION               =  7,
+	CBM_HOUSE_ACCEPT_CARGO              =  8,
+	CBM_HOUSE_PRODUCE_CARGO             =  9,
+	CBM_HOUSE_DENY_DESTRUCTION          = 10,
 };
 
 /**
  * Callback masks for cargos.
  */
 enum CargoCallbackMask {
-	CBM_CARGO_PROFIT_CALC         = 0,
-	CBM_CARGO_STATION_RATING_CALC = 1,
+	CBM_CARGO_PROFIT_CALC         = 0, ///< custom profit calculation
+	CBM_CARGO_STATION_RATING_CALC = 1, ///< custom station rating for this cargo type
 };
 
 /**
  * Callback masks for Industries
  */
 enum IndustryCallbackMask {
-	CBM_IND_AVAILABLE                 = 0,  ///< industry availability callback
-	CBM_IND_PRODUCTION_CARGO_ARRIVAL  = 1,  ///< call production callback when cargo arrives at the industry
-	CBM_IND_PRODUCTION_256_TICKS      = 2,  ///< call production callback every 256 ticks
-	CBM_IND_LOCATION                  = 3,  ///< check industry construction on given area
-	CBM_IND_PRODUCTION_CHANGE         = 4,  ///< controls random production change
-	CBM_IND_MONTHLYPROD_CHANGE        = 5,  ///< controls monthly random production change
-	CBM_IND_CARGO_SUFFIX              = 6,  ///< cargo sub-type display
-	CBM_IND_FUND_MORE_TEXT            = 7,  ///< additional text in fund window
-	CBM_IND_WINDOW_MORE_TEXT          = 8,  ///< additional text in industry window
-	CBM_IND_SPECIAL_EFFECT            = 9,  ///< control special effects
+	CBM_IND_AVAILABLE                 =  0, ///< industry availability callback
+	CBM_IND_PRODUCTION_CARGO_ARRIVAL  =  1, ///< call production callback when cargo arrives at the industry
+	CBM_IND_PRODUCTION_256_TICKS      =  2, ///< call production callback every 256 ticks
+	CBM_IND_LOCATION                  =  3, ///< check industry construction on given area
+	CBM_IND_PRODUCTION_CHANGE         =  4, ///< controls random production change
+	CBM_IND_MONTHLYPROD_CHANGE        =  5, ///< controls monthly random production change
+	CBM_IND_CARGO_SUFFIX              =  6, ///< cargo sub-type display
+	CBM_IND_FUND_MORE_TEXT            =  7, ///< additional text in fund window
+	CBM_IND_WINDOW_MORE_TEXT          =  8, ///< additional text in industry window
+	CBM_IND_SPECIAL_EFFECT            =  9, ///< control special effects
 	CBM_IND_REFUSE_CARGO              = 10, ///< option out of accepting cargo
+	CBM_IND_DECIDE_COLOUR             = 11, ///< give a custom colour to newly build industries
+	CBM_IND_INPUT_CARGO_TYPES         = 12, ///< customize the cargos the industry requires
+	CBM_IND_OUTPUT_CARGO_TYPES        = 13, ///< customize the cargos the industry produces
 };
 
 /**

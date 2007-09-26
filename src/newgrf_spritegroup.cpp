@@ -212,7 +212,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		switch (object->callback) {
 			/* All these functions are 15 bit callbacks */
 			case CBID_VEHICLE_REFIT_CAPACITY:
-			case CBID_BUILDING_COLOUR:
+			case CBID_HOUSE_COLOUR:
 			case CBID_HOUSE_CARGO_ACCEPTANCE:
 			case CBID_INDUSTRY_LOCATION:
 			case CBID_INDTILE_CARGO_ACCEPTANCE:

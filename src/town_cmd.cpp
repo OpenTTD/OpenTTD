@@ -347,7 +347,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	if (GetHouseConstructionTick(tile) != 0) return;
 
 	/* Check and/or  */
-	if (HASBIT(GetHouseSpecs(GetHouseType(tile))->callback_mask, CBM_CONSTRUCTION_STATE_CHANGE)) {
+	if (HASBIT(GetHouseSpecs(GetHouseType(tile))->callback_mask, CBM_HOUSE_CONSTRUCTION_STATE_CHANGE)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(tile, callback_res);
 	}
@@ -535,7 +535,7 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 	}
 
 	/* Check for custom cargo acceptance */
-	if (HASBIT(hs->callback_mask, CBM_CARGO_ACCEPTANCE)) {
+	if (HASBIT(hs->callback_mask, CBM_HOUSE_CARGO_ACCEPTANCE)) {
 		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
 			if (accepts[0] != CT_INVALID) ac[accepts[0]] = GB(callback, 0, 4);

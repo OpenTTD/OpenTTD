@@ -208,7 +208,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
 			if (!HASBIT(cmask, cid)) continue;
 
 			/* Check the vehicle's callback mask for cargo suffixes */
-			if (HASBIT(callbackmask, CBM_CARGO_SUFFIX)) {
+			if (HASBIT(callbackmask, CBM_VEHICLE_CARGO_SUFFIX)) {
 				/* Make a note of the original cargo type. It has to be
 				 * changed to test the cargo & subtype... */
 				CargoID temp_cargo = u->cargo_type;
