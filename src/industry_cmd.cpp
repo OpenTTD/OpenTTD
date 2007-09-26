@@ -1336,15 +1336,26 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 	/* Check if we don't leave the map */
 	if (TileX(cur_tile) == 0 || TileY(cur_tile) == 0 || TileX(cur_tile) + size_x >= MapMaxX() || TileY(cur_tile) + size_y >= MapMaxY()) return false;
 
+	/* _current_player is OWNER_NONE for randomly generated industries and in editor, or the player who funded or prospected the industry.
+	 * Perform terraforming as OWNER_TOWN to disable autoslope. */
+	PlayerID old_player = _current_player;
+	_current_player = OWNER_TOWN;
+
 	BEGIN_TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
 		curh = TileHeight(tile_walk);
 		if (curh != h) {
 			/* This tile needs terraforming. Check if we can do that without
 			 *  damaging the surroundings too much. */
-			if (!CheckCanTerraformSurroundingTiles(tile_walk, h, 0)) return false;
+			if (!CheckCanTerraformSurroundingTiles(tile_walk, h, 0)) {
+				_current_player = old_player;
+				return false;
+			}
 			/* This is not 100% correct check, but the best we can do without modifying the map.
 			 *  What is missing, is if the difference in height is more than 1.. */
-			if (CmdFailed(DoCommand(tile_walk, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND))) return false;
+			if (CmdFailed(DoCommand(tile_walk, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND))) {
+				_current_player = old_player;
+				return false;
+			}
 		}
 	} END_TILE_LOOP(tile_walk, size_x, size_y, cur_tile)
 
@@ -1362,6 +1373,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 		} END_TILE_LOOP(tile_walk, size_x, size_y, cur_tile)
 	}
 
+	_current_player = old_player;
 	return true;
 }
 
