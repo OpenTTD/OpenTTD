@@ -339,6 +339,8 @@ extern const byte _tileh_to_sprite[32];
 
 extern const TileTypeProcs * const _tile_type_procs[16];
 
+extern bool _draw_bounding_boxes;
+
 /* misc */
 VARDEF char _screenshot_name[128];
 VARDEF byte _vehicle_design_names;

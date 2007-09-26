@@ -59,6 +59,8 @@ static int _scengen_town_size = 1; // depress medium-sized towns per default
 extern void GenerateIndustries();
 extern bool GenerateTowns();
 
+bool _draw_bounding_boxes = false;
+
 
 void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -2205,6 +2207,13 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 		if (e->we.keypress.keycode == WKC_BACKQUOTE) {
 			IConsoleSwitch();
 			e->we.keypress.cont = false;
+			break;
+		}
+
+		if (e->we.keypress.keycode == ('B' | WKC_CTRL)) {
+			e->we.keypress.cont = false;
+			_draw_bounding_boxes = !_draw_bounding_boxes;
+			MarkWholeScreenDirty();
 			break;
 		}
 

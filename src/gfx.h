@@ -268,6 +268,7 @@ void DrawStringRightAlignedUnderline(int x, int y, StringID str, uint16 color);
 
 void GfxFillRect(int left, int top, int right, int bottom, int color);
 void GfxDrawLine(int left, int top, int right, int bottom, int color);
+void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
 BoundingRect GetStringBoundingBox(const char *str);
 uint32 FormatStringLinebreaks(char *str, int maxw);

@@ -139,6 +139,50 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 	blitter->DrawLine(dpi->dst_ptr, x, y, x2, y2, dpi->width, dpi->height, color);
 }
 
+/**
+ * Draws the projection of a parallelepiped.
+ * This can be used to draw boxes in world coordinates.
+ *
+ * @param x   Screen X-coordinate of top front corner.
+ * @param y   Screen Y-coordinate of top front corner.
+ * @param dx1 Screen X-length of first edge.
+ * @param dy1 Screen Y-length of first edge.
+ * @param dx2 Screen X-length of second edge.
+ * @param dy2 Screen Y-length of second edge.
+ * @param dx3 Screen X-length of third edge.
+ * @param dy3 Screen Y-length of third edge.
+ */
+void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
+{
+	/*           ....
+	 *         ..    ....
+	 *       ..          ....
+	 *     ..                ^
+	 *   <--__(dx1,dy1)    /(dx2,dy2)
+	 *   :    --__       /   :
+	 *   :        --__ /     :
+	 *   :            *(x,y) :
+	 *   :            |      :
+	 *   :            |     ..
+	 *    ....        |(dx3,dy3)
+	 *        ....    | ..
+	 *            ....V.
+	 */
+
+	static const byte color = 255;
+
+	GfxDrawLine(x, y, x + dx1, y + dy1, color);
+	GfxDrawLine(x, y, x + dx2, y + dy2, color);
+	GfxDrawLine(x, y, x + dx3, y + dy3, color);
+
+	GfxDrawLine(x + dx1, y + dy1, x + dx1 + dx2, y + dy1 + dy2, color);
+	GfxDrawLine(x + dx1, y + dy1, x + dx1 + dx3, y + dy1 + dy3, color);
+	GfxDrawLine(x + dx2, y + dy2, x + dx2 + dx1, y + dy2 + dy1, color);
+	GfxDrawLine(x + dx2, y + dy2, x + dx2 + dx3, y + dy2 + dy3, color);
+	GfxDrawLine(x + dx3, y + dy3, x + dx3 + dx1, y + dy3 + dy1, color);
+	GfxDrawLine(x + dx3, y + dy3, x + dx3 + dx2, y + dy3 + dy2, color);
+}
+
 
 /** Truncate a given string to a maximum width if neccessary.
  * If the string is truncated, add three dots ('...') to show this.

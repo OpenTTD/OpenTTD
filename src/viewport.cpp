@@ -515,7 +515,7 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	ViewportDrawer *vd = _cur_vd;
 	ParentSpriteToDraw *ps;
 	Point pt;
-	int32 right, bottom;
+	int32 left, right, top, bottom;
 
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
@@ -552,22 +552,32 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	pt = RemapCoords(x, y, z);
 	ps->x = pt.x;
 	ps->y = pt.y;
+
+	/* Compute screen extents of sprite */
 	if (image == SPR_EMPTY_BOUNDING_BOX) {
-		ps->left = RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x;
-		right    = RemapCoords(x + bb_offset_x, y + h          , z + bb_offset_z).x;
-		ps->top  = RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y;
-		bottom   = RemapCoords(x + w          , y + h          , z + bb_offset_z).y;
+		left = ps->left = RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x;
+		right           = RemapCoords(x + bb_offset_x, y + h          , z + bb_offset_z).x + 1;
+		top  = ps->top  = RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y;
+		bottom          = RemapCoords(x + w          , y + h          , z + bb_offset_z).y + 1;
 	} else {
 		const Sprite *spr = GetSprite(image & SPRITE_MASK);
-		ps->left = (pt.x += spr->x_offs);
-		right    = (pt.x +  spr->width );
-		ps->top  = (pt.y += spr->y_offs);
-		bottom   = (pt.y +  spr->height);
+		left = ps->left = (pt.x += spr->x_offs);
+		right           = (pt.x +  spr->width );
+		top  = ps->top  = (pt.y += spr->y_offs);
+		bottom          = (pt.y +  spr->height);
 	}
-	if (ps->left >= vd->dpi.left + vd->dpi.width ||
-	    right    <= vd->dpi.left ||
-	    ps->top  >= vd->dpi.top + vd->dpi.height ||
-	    bottom   <= vd->dpi.top) {
+	if (_draw_bounding_boxes && (image != SPR_EMPTY_BOUNDING_BOX)) {
+		/* Compute maximal extents of sprite and it's bounding box */
+		left   = min(left  , RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x);
+		right  = max(right , RemapCoords(x + bb_offset_x, y + h          , z + bb_offset_z).x + 1);
+		top    = min(top   , RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y);
+		bottom = max(bottom, RemapCoords(x + w          , y + h          , z + bb_offset_z).y + 1);
+	}
+	/* Do not add the sprite to the viewport, if it is outside */
+	if (left   >= vd->dpi.left + vd->dpi.width ||
+	    right  <= vd->dpi.left ||
+	    top    >= vd->dpi.top + vd->dpi.height ||
+	    bottom <= vd->dpi.top) {
 		return;
 	}
 
@@ -616,6 +626,7 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y)
 	}
 	cs = (ChildScreenSpriteToDraw*)vd->spritelist_mem;
 
+	/* If the ParentSprite was clipped by the viewport bounds, do not draw the ChildSprites either */
 	if (vd->last_child == NULL) return;
 
 	vd->spritelist_mem += sizeof(ChildScreenSpriteToDraw);
@@ -1232,6 +1243,26 @@ static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
 	}
 }
 
+/**
+ * Draws the bounding boxes of all ParentSprites
+ * @param psd Array of ParentSprites
+ */
+static void ViewportDrawBoundingBoxes(ParentSpriteToDraw *psd[])
+{
+	for (; *psd != NULL; psd++) {
+		const ParentSpriteToDraw* ps = *psd;
+		Point pt1 = RemapCoords(ps->xmax + 1, ps->ymax + 1, ps->zmax + 1); // top front corner
+		Point pt2 = RemapCoords(ps->xmin    , ps->ymax + 1, ps->zmax + 1); // top left corner
+		Point pt3 = RemapCoords(ps->xmax + 1, ps->ymin    , ps->zmax + 1); // top right corner
+		Point pt4 = RemapCoords(ps->xmax + 1, ps->ymax + 1, ps->zmin    ); // bottom front corner
+
+		DrawBox(        pt1.x,         pt1.y,
+		        pt2.x - pt1.x, pt2.y - pt1.y,
+		        pt3.x - pt1.x, pt3.y - pt1.y,
+		        pt4.x - pt1.x, pt4.y - pt1.y);
+	}
+}
+
 static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss)
 {
 	DrawPixelInfo dp;
@@ -1355,6 +1386,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	ViewportSortParentSprites(parent_list);
 	ViewportDrawParentSprites(parent_list);
+	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(parent_list);
 
 	if (vd.first_string != NULL) ViewportDrawStrings(&vd.dpi, vd.first_string);
 
