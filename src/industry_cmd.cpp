@@ -385,6 +385,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
 	 */
 	if ((_current_player != OWNER_WATER && _game_mode != GM_EDITOR &&
 			!_cheats.magic_bulldozer.value) ||
+			((flags & DC_AUTO) != 0) ||
 			(_current_player == OWNER_WATER && (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER))) {
 		SetDParam(0, indspec->name);
 		return_cmd_error(STR_4800_IN_THE_WAY);
@@ -2019,7 +2020,7 @@ static CommandCost TerraformTile_Industry(TileIndex tile, uint32 flags, uint z_n
 			}
 		}
 	}
-	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR); // funny magic bulldozer
+	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }
 
 extern const TileTypeProcs _tile_type_industry_procs = {

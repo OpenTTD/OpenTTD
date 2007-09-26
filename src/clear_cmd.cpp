@@ -314,7 +314,7 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
 			}
 			/* Check tiletype-specific things, and add extra-cost */
-			CommandCost cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, flags, z_min * TILE_HEIGHT, (Slope) tileh);
+			CommandCost cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, flags | DC_AUTO, z_min * TILE_HEIGHT, (Slope) tileh);
 			if (CmdFailed(cost)) {
 				_terraform_err_tile = tile;
 				return cost;
