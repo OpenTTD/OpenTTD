@@ -1318,6 +1318,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 
 	/* Finds dimensions of largest variant of this industry */
 	do {
+		if (it->gfx == 0xFF) continue;  //  FF been a marquer for a check on clear water, skip it
 		if (it->ti.x > max_x) max_x = it->ti.x;
 		if (it->ti.y > max_y) max_y = it->ti.y;
 	} while ((++it)->ti.x != MKEND);
