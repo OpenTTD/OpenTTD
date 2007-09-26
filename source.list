@@ -304,8 +304,8 @@ blitter/32bpp_anim.cpp
 blitter/32bpp_anim.hpp
 blitter/32bpp_base.cpp
 blitter/32bpp_base.hpp
-blitter/32bpp_optimized.hpp
 blitter/32bpp_optimized.cpp
+blitter/32bpp_optimized.hpp
 blitter/32bpp_simple.cpp
 blitter/32bpp_simple.hpp
 blitter/8bpp_base.cpp

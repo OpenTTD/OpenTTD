@@ -314,7 +314,7 @@
 				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib libfreetype2.lib"
 				LinkIncremental="0"
 				SuppressStartupBanner="true"
-				IgnoreDefaultLibraryNames="LIBCMT.lib;LIBC.lib"
+				IgnoreDefaultLibraryNames="LIBCMT.lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
