@@ -1066,6 +1066,7 @@ static CommandCost DoConvertRail(TileIndex tile, RailType totype, bool exec)
 
 		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
 			/* Update build vehicle window related to this depot */
+			InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
 			InvalidateWindowData(WC_BUILD_VEHICLE, tile);
 		}
 
