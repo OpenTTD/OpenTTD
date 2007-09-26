@@ -259,70 +259,121 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 static const RoadBits _valid_tileh_slopes_road[][15] = {
 	/* set of normal ones */
 	{
-		ROAD_ALL, ROAD_NONE, ROAD_NONE,
-		ROAD_X,   ROAD_NONE, ROAD_NONE,  // 3, 4, 5
-		ROAD_Y,   ROAD_NONE, ROAD_NONE,
-		ROAD_Y,   ROAD_NONE, ROAD_NONE,  // 9, 10, 11
-		ROAD_X,   ROAD_NONE, ROAD_NONE
+		ROAD_ALL,  // SLOPE_FLAT
+		ROAD_NONE, // SLOPE_W
+		ROAD_NONE, // SLOPE_S
+
+		ROAD_X,    // SLOPE_SW
+		ROAD_NONE, // SLOPE_E
+		ROAD_NONE, // SLOPE_EW
+
+		ROAD_Y,    // SLOPE_SE
+		ROAD_NONE, // SLOPE_WSE
+		ROAD_NONE, // SLOPE_N
+
+		ROAD_Y,    // SLOPE_NW
+		ROAD_NONE, // SLOPE_NS
+		ROAD_NONE, // SLOPE_NE
+
+		ROAD_X,    // SLOPE_ENW
+		ROAD_NONE, // SLOPE_SEN
+		ROAD_NONE  // SLOPE_ELEVATED
 	},
 	/* allowed road for an evenly raised platform */
 	{
-		ROAD_NONE,
-		ROAD_SW | ROAD_NW,
-		ROAD_SW | ROAD_SE,
-		ROAD_Y  | ROAD_SW,
+		ROAD_NONE,         // SLOPE_FLAT
+		ROAD_SW | ROAD_NW, // SLOPE_W
+		ROAD_SW | ROAD_SE, // SLOPE_S
 
-		ROAD_SE | ROAD_NE, // 4
-		ROAD_ALL,
-		ROAD_X  | ROAD_SE,
-		ROAD_ALL,
+		ROAD_Y  | ROAD_SW, // SLOPE_SW
+		ROAD_SE | ROAD_NE, // SLOPE_E
+		ROAD_ALL,          // SLOPE_EW
 
-		ROAD_NW | ROAD_NE, // 8
-		ROAD_X  | ROAD_NW,
-		ROAD_ALL,
-		ROAD_ALL,
+		ROAD_X  | ROAD_SE, // SLOPE_SE
+		ROAD_ALL,          // SLOPE_WSE
+		ROAD_NW | ROAD_NE, // SLOPE_N
 
-		ROAD_Y  | ROAD_NE, // 12
-		ROAD_ALL,
-		ROAD_ALL
+		ROAD_X  | ROAD_NW, // SLOPE_NW
+		ROAD_ALL,          // SLOPE_NS
+		ROAD_ALL,          // SLOPE_NE
+
+		ROAD_Y  | ROAD_NE, // SLOPE_ENW
+		ROAD_ALL,          // SLOPE_SEN
+		ROAD_ALL           // SLOPE_ELEVATED
+	},
+	/* Singe bits on slopes */
+	{
+		ROAD_ALL,          // SLOPE_FLAT
+		ROAD_NE | ROAD_SE, // SLOPE_W
+		ROAD_NE | ROAD_NW, // SLOPE_S
+
+		ROAD_NE,           // SLOPE_SW
+		ROAD_NW | ROAD_SW, // SLOPE_E
+		ROAD_ALL,          // SLOPE_EW
+
+		ROAD_NW,           // SLOPE_SE
+		ROAD_ALL,          // SLOPE_WSE
+		ROAD_SE | ROAD_SW, // SLOPE_N
+
+		ROAD_SE,           // SLOPE_NW
+		ROAD_ALL,          // SLOPE_NS
+		ROAD_ALL,          // SLOPE_NE
+
+		ROAD_SW,           // SLOPE_ENW
+		ROAD_ALL,          // SLOPE_SEN
+		ROAD_ALL,          // SLOPE_ELEVATED
 	},
 };
 
-
+/**
+ * Calculate the costs for roads on slopes
+ *  Aside modify the RoadBits to fit on the slopes
+ *
+ * @note The RoadBits are modified too!
+ * @param tileh The current slope
+ * @param pieces The RoadBits we want to add
+ * @param existing The existent RoadBits
+ * @return The costs for these RoadBits on this slope
+ */
 static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 {
-	RoadBits road_bits;
-
 	if (IsSteepSlope(tileh)) {
-		/* force full pieces. */
-		*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
-		*pieces |= (RoadBits)((*pieces & 0x3) << 2);
+		/* Force straight roads. */
+		*pieces |= MirrorRoadBits(*pieces);
 
-		if (existing == 0 || existing == *pieces) {
+		if (existing == ROAD_NONE || existing == *pieces) {
 			if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
 		}
 		return CMD_ERROR;
 	}
-	road_bits = *pieces | existing;
+
+	RoadBits road_bits = *pieces | existing;
+
+	/* Single bits on slopes.
+	 * We check for the roads that need at least 2 bits */
+	if (_patches.build_on_slopes && !_is_old_ai_player &&
+			existing == ROAD_NONE && COUNTBITS(*pieces) == 1 &&
+			(_valid_tileh_slopes_road[2][tileh] & *pieces) == ROAD_NONE) {
+		return CommandCost(_price.terraform);
+	}
 
 	/* no special foundation */
-	if ((~_valid_tileh_slopes_road[0][tileh] & road_bits) == 0) {
+	if ((~_valid_tileh_slopes_road[0][tileh] & road_bits) == ROAD_NONE) {
 		/* force that all bits are set when we have slopes */
 		if (tileh != SLOPE_FLAT) *pieces |= _valid_tileh_slopes_road[0][tileh];
 		return CommandCost(); // no extra cost
 	}
 
 	/* foundation is used. Whole tile is leveled up */
-	if ((~_valid_tileh_slopes_road[1][tileh] & road_bits) == 0) {
-		return CommandCost(existing != 0 ? 0 : _price.terraform);
+	if ((~_valid_tileh_slopes_road[1][tileh] & road_bits) == ROAD_NONE) {
+		return CommandCost(existing != ROAD_NONE ? 0 : _price.terraform);
 	}
 
-	*pieces |= (RoadBits)((*pieces & 0xC) >> 2);
-	*pieces |= (RoadBits)((*pieces & 0x3) << 2);
+	/* Force straight roads. */
+	*pieces |= MirrorRoadBits(*pieces);
 
 	/* partly leveled up tile, only if there's no road on that tile */
-	if ((existing == 0 || existing == *pieces) && (tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)) {
-		/* force full pieces. */
+	if ((existing == ROAD_NONE || existing == *pieces) && (tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)) {
 		if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
 	}
 	return CMD_ERROR;
@@ -1182,8 +1233,8 @@ static void TileLoop_Road(TileIndex tile)
 
 	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) return;
 
+	const Town* t = ClosestTownFromTile(tile, (uint)-1);
 	if (!HasRoadWorks(tile)) {
-		const Town* t = ClosestTownFromTile(tile, (uint)-1);
 		int grp = 0;
 
 		if (t != NULL) {
@@ -1192,8 +1243,8 @@ static void TileLoop_Road(TileIndex tile)
 			/* Show an animation to indicate road work */
 			if (t->road_build_months != 0 &&
 					(DistanceManhattan(t->xy, tile) < 8 || grp != 0) &&
-					GetRoadTileType(tile) == ROAD_TILE_NORMAL && (GetAllRoadBits(tile) == ROAD_X || GetAllRoadBits(tile) == ROAD_Y)) {
-				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile) && CHANCE16(1, 20)) {
+					GetRoadTileType(tile) == ROAD_TILE_NORMAL && COUNTBITS(GetAllRoadBits(tile)) > 1 ) {
+				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile) && CHANCE16(1, 40)) {
 					StartRoadWorks(tile);
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);
@@ -1231,6 +1282,17 @@ static void TileLoop_Road(TileIndex tile)
 		}
 	} else if (IncreaseRoadWorksCounter(tile)) {
 		TerminateRoadWorks(tile);
+
+		if (_patches.mod_road_rebuild) {
+			/* Generate a nicer town surface */
+			const RoadBits old_rb = GetAnyRoadBits(tile, ROADTYPE_ROAD);
+			const RoadBits new_rb = CleanUpRoadBits(tile, old_rb);
+
+			if (old_rb != new_rb) {
+				DoCommand(tile, (old_rb ^ new_rb), t->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_REMOVE_ROAD);
+			}
+		}
+
 		MarkTileDirtyByTile(tile);
 	}
 }

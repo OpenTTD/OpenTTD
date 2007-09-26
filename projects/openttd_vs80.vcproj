@@ -668,6 +668,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\road.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\saveload.cpp"
 				>
 			</File>

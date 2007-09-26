@@ -242,6 +242,8 @@ struct Patches {
 	bool timetable_in_ticks; ///< Whether to show the timetable in ticks rather than days.
 
 	bool autoslope;          ///< Allow terraforming under things.
+
+	bool mod_road_rebuild;   ///< Roadworks remove unneccesary RoadBits
 };
 
 VARDEF Patches _patches;

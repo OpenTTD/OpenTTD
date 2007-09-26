@@ -165,6 +165,9 @@ enum DiagDirDiff {
 	DIAGDIRDIFF_90LEFT  = 3         ///< 90 degrees left
 };
 
+/** Allow incrementing of DiagDirDiff variables */
+DECLARE_POSTFIX_INCREMENT(DiagDirDiff);
+
 /**
  * Applies a difference on a DiagDirection
  *

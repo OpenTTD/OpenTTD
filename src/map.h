@@ -390,6 +390,18 @@ static inline TileIndexDiff TileOffsByDir(Direction dir)
 }
 
 /**
+ * Adds a DiagDir to a tile.
+ *
+ * @param tile The current tile
+ * @param dir The direction in which we want to step
+ * @return the moved tile
+ */
+static inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
+{
+	return TILE_ADD(tile, TileOffsByDiagDir(dir));
+}
+
+/**
  * A callback function type for searching tiles.
  *
  * @param tile The tile to test

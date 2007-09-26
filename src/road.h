@@ -116,6 +116,36 @@ static inline RoadBits ComplementRoadBits(RoadBits r)
 }
 
 /**
+ * Calculate the mirrored RoadBits
+ *
+ * Simply move the bits to their new position.
+ *
+ * @param r The given RoadBits value
+ * @return the mirrored
+ */
+static inline RoadBits MirrorRoadBits(RoadBits r)
+{
+	return (RoadBits)(GB(r, 0, 2) << 2 | GB(r, 2, 2));
+}
+
+/**
+ * Calculate rotated RoadBits
+ *
+ * Move the Roadbits clockwise til they are in their final position.
+ *
+ * @param r The given RoadBits value
+ * @param rot The given Rotation angle
+ * @return the rotated
+ */
+static inline RoadBits RotateRoadBits(RoadBits r, DiagDirDiff rot)
+{
+	for (; rot > (DiagDirDiff)0; rot--){
+		r = (RoadBits)(GB(r, 0, 1) << 3 | GB(r, 1, 3));
+	}
+	return r;
+}
+
+/**
  * Create the road-part which belongs to the given DiagDirection
  *
  * This function returns a RoadBits value which belongs to
@@ -128,6 +158,16 @@ static inline RoadBits DiagDirToRoadBits(DiagDirection d)
 {
 	return (RoadBits)(ROAD_NW << (3 ^ d));
 }
+
+/**
+ * Return if the tile is a valid tile for a crossing.
+ *
+ * @note function is overloaded
+ * @param tile the curent tile
+ * @param ax the axis of the road over the rail
+ * @return true if it is a valid tile
+ */
+bool IsPossibleCrossing(const TileIndex tile, Axis ax);
 
 /**
  * Checks whether the trackdir means that we are reversing.
@@ -148,6 +188,14 @@ static inline bool IsStraightRoadTrackdir(Trackdir dir)
 {
 	return (dir & 0x06) == 0;
 }
+
+/**
+ * Clean up unneccesary RoadBits of a planed tile.
+ * @param tile current tile
+ * @param org_rb planed RoadBits
+ * @return optimised RoadBits
+ */
+RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb);
 
 /**
  * Is it allowed to remove the given road bits from the given tile?

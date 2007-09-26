@@ -58,6 +58,7 @@ players.cpp
 queue.cpp
 rail.cpp
 rev.cpp
+road.cpp
 saveload.cpp
 screenshot.cpp
 #if SDL

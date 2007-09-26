@@ -672,7 +672,6 @@ static const char *_patches_construction[] = {
 	"drag_signals_density",
 	"oil_refinery_limit",
 	"semaphore_build_before",
-	"town_layout",
 };
 
 static const char *_patches_stations[] = {
@@ -700,6 +699,8 @@ static const char *_patches_economy[] = {
 	"ending_year",
 	"smooth_economy",
 	"allow_shares",
+	"town_layout",
+	"mod_road_rebuild",
 	"town_growth_rate",
 	"larger_towns",
 	"initial_city_size",

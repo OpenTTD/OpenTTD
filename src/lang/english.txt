@@ -1187,6 +1187,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Very fast
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportion of towns that will become cities: {ORANGE}1 in {STRING1}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion of towns that will become cities: {ORANGE}None
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial city size multiplier: {ORANGE}{STRING1}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Remove absurd road-elements during the road construction
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construction

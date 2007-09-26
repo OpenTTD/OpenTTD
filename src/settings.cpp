@@ -1438,6 +1438,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDVAR(Patches, town_growth_rate,  SLE_UINT8, 54, SL_MAX_VERSION, 0, MS, 2, 0,   4, 0, STR_CONFIG_PATCHES_TOWN_GROWTH,          NULL),
 	SDT_CONDVAR(Patches, larger_towns,      SLE_UINT8, 54, SL_MAX_VERSION, 0, D0, 4, 0, 255, 1, STR_CONFIG_PATCHES_LARGER_TOWNS,         NULL),
 	SDT_CONDVAR(Patches, initial_city_size, SLE_UINT8, 56, SL_MAX_VERSION, 0, 0,  2, 1,  10, 1, STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER, NULL),
+	SDT_CONDBOOL(Patches, mod_road_rebuild,            77, SL_MAX_VERSION, 0, 0, false,         STR_CONFIG_MODIFIED_ROAD_REBUILD,        NULL),
 
 	/***************************************************************************/
 	/* AI section of the GUI-configure patches window */
