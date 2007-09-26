@@ -1938,7 +1938,10 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 								size = k + 1;
 								copy_from = itt;
 							}
-						}
+						} else if (itt[k].gfx == 0xFF) {
+							itt[k].ti.x = (int8)GB(itt[k].ti.x, 0, 8);
+							itt[k].ti.y = (int8)GB(itt[k].ti.y, 0, 8);
+ 						}
 					}
 					tile_table[j] = CallocT<IndustryTileTable>(size);
 					memcpy(tile_table[j], copy_from, sizeof(*copy_from) * size);
