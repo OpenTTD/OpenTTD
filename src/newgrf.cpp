@@ -1772,7 +1772,7 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 			case 0x0C: {
 				uint16 acctp = grf_load_word(&buf);
 				tsp->accepts_cargo[prop - 0x0A] = GetCargoTranslation(GB(acctp, 0, 8), _cur_grffile);
-				tsp->acceptance[prop - 0x0A] = GetCargoTranslation(GB(acctp, 8, 8), _cur_grffile);
+				tsp->acceptance[prop - 0x0A] = GB(acctp, 8, 8);
 			} break;
 
 			case 0x0D: // Land shape flags
