@@ -9,7 +9,7 @@
 #include "helpers.hpp"
 #include "newgrf_storage.h"
 
-typedef byte IndustryGfx;
+typedef uint16 IndustryGfx;
 typedef uint8 IndustryType;
 
 enum {
