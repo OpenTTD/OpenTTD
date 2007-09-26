@@ -60,7 +60,7 @@ void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int s
 		stepx = 1;
 	}
 
-	if (x > 0 && y > 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
+	if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
 	if (dx > dy) {
 		frac = dy - (dx / 2);
 		while (x != x2) {
@@ -70,7 +70,7 @@ void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int s
 			}
 			x += stepx;
 			frac += dy;
-			if (x > 0 && y > 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
+			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
 		}
 	} else {
 		frac = dx - (dy / 2);
@@ -81,7 +81,7 @@ void Blitter_8bppBase::DrawLine(void *video, int x, int y, int x2, int y2, int s
 			}
 			y += stepy;
 			frac += dx;
-			if (x > 0 && y > 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
+			if (x >= 0 && y >= 0 && x < screen_width && y < screen_height) this->SetPixel(video, x, y, color);
 		}
 	}
 }
