@@ -257,7 +257,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x87: return industry->height;// xy dimensions
 		/*  */
 		case 0x88:
-		case 0x89: return indspec->produced_cargo[variable - 0x88];
+		case 0x89: return industry->produced_cargo[variable - 0x88];
 		case 0x8A: return industry->produced_cargo_waiting[0];
 		case 0x8B: return GB(industry->produced_cargo_waiting[0], 8, 8);
 		case 0x8C: return industry->produced_cargo_waiting[1];
@@ -266,7 +266,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x8F: return industry->production_rate[variable - 0x8E];
 		case 0x90:
 		case 0x91:
-		case 0x92: return indspec->accepts_cargo[variable - 0x90];
+		case 0x92: return industry->accepts_cargo[variable - 0x90];
 		case 0x93: return industry->prod_level;
 		/* amount of cargo produced so far THIS month. */
 		case 0x94: return industry->this_month_production[0];

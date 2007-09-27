@@ -410,7 +410,7 @@ static void TransportIndustryGoods(TileIndex tile)
 
 		i->this_month_production[0] += cw;
 
-		am = MoveGoodsToStation(i->xy, i->width, i->height, indspec->produced_cargo[0], cw);
+		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[0], cw);
 		i->this_month_transported[0] += am;
 		if (am != 0 && !StartStopIndustryTileAnimation(i, IAT_INDUSTRY_DISTRIBUTES_CARGO)) {
 			uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
@@ -432,7 +432,7 @@ static void TransportIndustryGoods(TileIndex tile)
 
 		i->this_month_production[1] += cw;
 
-		am = MoveGoodsToStation(i->xy, i->width, i->height, indspec->produced_cargo[1], cw);
+		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[1], cw);
 		i->this_month_transported[1] += am;
 	}
 }
@@ -820,7 +820,7 @@ static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode, ui
 
 static void GetProducedCargo_Industry(TileIndex tile, CargoID *b)
 {
-	const IndustrySpec *i = GetIndustrySpec(GetIndustryByTile(tile)->type);
+	const Industry *i = GetIndustryByTile(tile);
 
 	b[0] = i->produced_cargo[0];
 	b[1] = i->produced_cargo[1];
@@ -1391,7 +1391,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 		/* check if an industry that accepts the same goods is nearby */
 		if (DistanceMax(tile, i->xy) <= 14 &&
 				indspec->accepts_cargo[0] != CT_INVALID &&
-				indspec->accepts_cargo[0] == GetIndustrySpec(i->type)->accepts_cargo[0] && (
+				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
 					_game_mode != GM_EDITOR ||
 					!_patches.same_industry_close ||
 					!_patches.multiple_industry_per_town
@@ -1421,6 +1421,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->type = type;
 	IncIndustryTypeCount(type);
 
+	i->produced_cargo[0] = indspec->produced_cargo[0];
+	i->produced_cargo[1] = indspec->produced_cargo[1];
+	i->accepts_cargo[0] = indspec->accepts_cargo[0];
+	i->accepts_cargo[1] = indspec->accepts_cargo[1];
+	i->accepts_cargo[2] = indspec->accepts_cargo[2];
 	i->production_rate[0] = indspec->production_rate[0];
 	i->production_rate[1] = indspec->production_rate[1];
 
@@ -1713,10 +1718,9 @@ static void UpdateIndustryStatistics(Industry *i)
 {
 	byte pct;
 	bool refresh = false;
-	const IndustrySpec *indsp = GetIndustrySpec(i->type);
 
-	for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
-		if (indsp->produced_cargo[j] != CT_INVALID) {
+	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+		if (i->produced_cargo[j] != CT_INVALID) {
 			pct = 0;
 			if (i->this_month_production[j] != 0) {
 				i->last_prod_year = _cur_year;
@@ -1859,7 +1863,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 		if (_patches.smooth_economy) {
 			closeit = true;
-			for (byte j = 0; j < 2 && indspec->produced_cargo[j] != CT_INVALID; j++){
+			for (byte j = 0; j < 2 && i->produced_cargo[j] != CT_INVALID; j++){
 				uint32 r = Random();
 				int old_prod, new_prod, percent;
 				int mag;
@@ -1888,7 +1892,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				mag = abs(percent);
 				if (mag >= 10) {
 					SetDParam(2, mag);
-					SetDParam(0, GetCargo(indspec->produced_cargo[j])->name);
+					SetDParam(0, GetCargo(i->produced_cargo[j])->name);
 					SetDParam(1, i->index);
 					AddNewsItem(
 						percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
@@ -2059,10 +2063,12 @@ static const SaveLoad _industry_desc[] = {
 	    SLE_VAR(Industry, height,                     SLE_UINT8),
 	    SLE_REF(Industry, town,                       REF_TOWN),
 	SLE_CONDNULL( 2, 2, 60),       ///< used to be industry's produced_cargo
+	SLE_CONDARR(Industry, produced_cargo,             SLE_UINT8,  2,              78, SL_MAX_VERSION),
 	SLE_CONDARR(Industry, incoming_cargo_waiting,     SLE_UINT16, 3,              70, SL_MAX_VERSION),
 	    SLE_ARR(Industry, produced_cargo_waiting,     SLE_UINT16, 2),
 	    SLE_ARR(Industry, production_rate,            SLE_UINT8,  2),
 	SLE_CONDNULL( 3, 2, 60),       ///< used to be industry's accepts_cargo
+	SLE_CONDARR(Industry, accepts_cargo,              SLE_UINT8,  3,              78, SL_MAX_VERSION),
 	    SLE_VAR(Industry, prod_level,                 SLE_UINT8),
 	    SLE_ARR(Industry, this_month_production,      SLE_UINT16, 2),
 	    SLE_ARR(Industry, this_month_transported,     SLE_UINT16, 2),

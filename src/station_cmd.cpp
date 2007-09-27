@@ -165,14 +165,14 @@ static bool CMSAMine(TileIndex tile)
 	/* No industry */
 	if (!IsTileType(tile, MP_INDUSTRY)) return false;
 
-	const IndustrySpec *indsp = GetIndustrySpec(GetIndustryByTile(tile)->type);
+	const Industry *ind = GetIndustryByTile(tile);
 
 	/* No extractive industry */
-	if ((indsp->life_type & INDUSTRYLIFE_EXTRACTIVE) == 0) return false;
+	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_EXTRACTIVE) == 0) return false;
 
-	for (uint i = 0; i < lengthof(indsp->produced_cargo); i++) {
+	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
 		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine */
-		if (indsp->produced_cargo[i] != CT_INVALID && (GetCargo(indsp->produced_cargo[i])->classes & CC_LIQUID) == 0) return true;
+		if (ind->produced_cargo[i] != CT_INVALID && (GetCargo(ind->produced_cargo[i])->classes & CC_LIQUID) == 0) return true;
 	}
 
 	return false;
@@ -208,14 +208,14 @@ static bool CMSAForest(TileIndex tile)
 	/* No industry */
 	if (!IsTileType(tile, MP_INDUSTRY)) return false;
 
-	const IndustrySpec *indsp = GetIndustrySpec(GetIndustryByTile(tile)->type);
+	const Industry *ind = GetIndustryByTile(tile);
 
 	/* No extractive industry */
-	if ((indsp->life_type & INDUSTRYLIFE_ORGANIC) == 0) return false;
+	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_ORGANIC) == 0) return false;
 
-	for (uint i = 0; i < lengthof(indsp->produced_cargo); i++) {
+	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
 		/* The industry produces wood. */
-		if (indsp->produced_cargo[i] != CT_INVALID && GetCargo(indsp->produced_cargo[i])->label == 'WOOD') return true;
+		if (ind->produced_cargo[i] != CT_INVALID && GetCargo(ind->produced_cargo[i])->label == 'WOOD') return true;
 	}
 
 	return false;

@@ -2182,6 +2182,19 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(78)) {
+		Industry *i;
+		uint j;
+		FOR_ALL_INDUSTRIES(i) {
+			const IndustrySpec *indsp = GetIndustrySpec(i->type);
+			for (j = 0; j < lengthof(i->produced_cargo); j++) {
+				i->produced_cargo[j] = indsp->produced_cargo[j];
+			}
+			for (j = 0; j < lengthof(i->accepts_cargo); j++) {
+				i->accepts_cargo[j] = indsp->accepts_cargo[j];
+			}
+		}
+	}
 
 	return true;
 }

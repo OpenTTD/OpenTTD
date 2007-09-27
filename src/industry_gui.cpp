@@ -390,9 +390,8 @@ static inline bool isProductionMaximum(const Industry *i, int pt)
 
 static inline bool IsProductionAlterable(const Industry *i)
 {
-	const IndustrySpec *ind = GetIndustrySpec(i->type);
 	return ((_game_mode == GM_EDITOR || _cheats.setup_prod.value) &&
-			(ind->accepts_cargo[0] == CT_INVALID || ind->accepts_cargo[0] == CT_VALUABLES));
+			(i->accepts_cargo[0] == CT_INVALID || i->accepts_cargo[0] == CT_VALUABLES));
 }
 
 /** Information to store about the industry window */
@@ -410,21 +409,22 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE: {
 		/* Count the number of lines that we need to resize the GUI with */
-		const IndustrySpec *ind = GetIndustrySpec(GetIndustry(w->window_number)->type);
+		const Industry *i = GetIndustry(w->window_number);
+		const IndustrySpec *ind = GetIndustrySpec(i->type);
 		int lines = -3;
 
 		if (HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
-			for (uint j = 0; j < 3 && ind->accepts_cargo[j] != CT_INVALID; j++) {
+			for (uint j = 0; j < lengthof(i->accepts_cargo) && i->accepts_cargo[j] != CT_INVALID; j++) {
 				if (j == 0) lines++;
 				lines++;
 			}
-		} else if (ind->accepts_cargo[0] != CT_INVALID) {
+		} else if (i->accepts_cargo[0] != CT_INVALID) {
 			lines++;
 		}
 
-		for (uint j = 0; j < 2 && ind->produced_cargo[j] != CT_INVALID; j++) {
+		for (uint j = 0; j < lengthof(i->produced_cargo) && i->produced_cargo[j] != CT_INVALID; j++) {
 			if (j == 0) {
-				if (ind->accepts_cargo[0] != CT_INVALID) lines++;
+				if (i->accepts_cargo[0] != CT_INVALID) lines++;
 				lines++;
 			}
 			lines++;
@@ -448,26 +448,26 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		if (HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
-			for (uint j = 0; j < 3 && ind->accepts_cargo[j] != CT_INVALID; j++) {
+			for (uint j = 0; j < lengthof(i->accepts_cargo) && i->accepts_cargo[j] != CT_INVALID; j++) {
 				if (j == 0) {
 					DrawString(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, 0);
 					y += 10;
 				}
-				SetDParam(0, ind->accepts_cargo[j]);
+				SetDParam(0, i->accepts_cargo[j]);
 				SetDParam(1, i->incoming_cargo_waiting[j]);
 				DrawString(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, 0);
 				y += 10;
 			}
-		} else if (ind->accepts_cargo[0] != CT_INVALID) {
+		} else if (i->accepts_cargo[0] != CT_INVALID) {
 			StringID str;
 
-			SetDParam(0, GetCargo(ind->accepts_cargo[0])->name);
+			SetDParam(0, GetCargo(i->accepts_cargo[0])->name);
 			str = STR_4827_REQUIRES;
-			if (ind->accepts_cargo[1] != CT_INVALID) {
-				SetDParam(1, GetCargo(ind->accepts_cargo[1])->name);
+			if (i->accepts_cargo[1] != CT_INVALID) {
+				SetDParam(1, GetCargo(i->accepts_cargo[1])->name);
 				str = STR_4828_REQUIRES;
-				if (ind->accepts_cargo[2] != CT_INVALID) {
-					SetDParam(2, GetCargo(ind->accepts_cargo[2])->name);
+				if (i->accepts_cargo[2] != CT_INVALID) {
+					SetDParam(2, GetCargo(i->accepts_cargo[2])->name);
 					str = STR_4829_REQUIRES;
 				}
 			}
@@ -475,15 +475,15 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			y += 10;
 		}
 
-		for (uint j = 0; j < 2 && ind->produced_cargo[j] != CT_INVALID; j++) {
+		for (uint j = 0; j < lengthof(i->produced_cargo) && i->produced_cargo[j] != CT_INVALID; j++) {
 			if (j == 0) {
-				if (ind->accepts_cargo[0] != CT_INVALID) y += 10;
+				if (i->accepts_cargo[0] != CT_INVALID) y += 10;
 				DrawString(2, y, STR_482A_PRODUCTION_LAST_MONTH, 0);
 				y += 10;
 				WP(w, indview_d).production_offset_y = y;
 			}
 
-			SetDParam(0, ind->produced_cargo[j]);
+			SetDParam(0, i->produced_cargo[j]);
 			SetDParam(1, i->last_month_production[j]);
 
 			SetDParam(2, i->last_month_pct_transported[j] * 100 >> 8);
@@ -527,8 +527,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			if (!IsProductionAlterable(i)) return;
 			x = e->we.click.pt.x;
 			line = (e->we.click.pt.y - WP(w, indview_d).production_offset_y) / 10;
-			if (e->we.click.pt.y >= WP(w, indview_d).production_offset_y && IS_INT_INSIDE(line, 0, 2) &&
-					GetIndustrySpec(i->type)->produced_cargo[line] != CT_INVALID) {
+			if (e->we.click.pt.y >= WP(w, indview_d).production_offset_y && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
 				if (IS_INT_INSIDE(x, 5, 25) ) {
 					/* Clicked buttons, decrease or increase production */
 					if (x < 15) {
@@ -579,10 +578,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 static void UpdateIndustryProduction(Industry *i)
 {
-	const IndustrySpec *ind = GetIndustrySpec(i->type);
-
-	for (byte j = 0; j < lengthof(ind->produced_cargo); j++) {
-		if (ind->produced_cargo[j] != CT_INVALID) {
+	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+		if (i->produced_cargo[j] != CT_INVALID) {
 			i->last_month_production[j] = 8 * i->production_rate[j];
 		}
 	}
@@ -655,8 +652,6 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
 	const Industry* i = *(const Industry**)a;
 	const Industry* j = *(const Industry**)b;
-	const IndustrySpec *ind_i = GetIndustrySpec(i->type);
-	const IndustrySpec *ind_j = GetIndustrySpec(j->type);
 	int r;
 
 	switch (_industry_sort_order >> 1) {
@@ -670,10 +665,10 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 			break;
 
 		case 2: /* Sort by Production */
-			if (ind_i->produced_cargo[0] == CT_INVALID) {
-				r = (ind_j->produced_cargo[0] == CT_INVALID ? 0 : -1);
+			if (i->produced_cargo[0] == CT_INVALID) {
+				r = (j->produced_cargo[0] == CT_INVALID ? 0 : -1);
 			} else {
-				if (ind_j->produced_cargo[0] == CT_INVALID) {
+				if (j->produced_cargo[0] == CT_INVALID) {
 					r = 1;
 				} else {
 					r =
@@ -684,23 +679,23 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 			break;
 
 		case 3: /* Sort by transported fraction */
-			if (ind_i->produced_cargo[0] == CT_INVALID) {
-				r = (ind_j->produced_cargo[0] == CT_INVALID ? 0 : -1);
+			if (i->produced_cargo[0] == CT_INVALID) {
+				r = (j->produced_cargo[0] == CT_INVALID ? 0 : -1);
 			} else {
-				if (ind_j->produced_cargo[0] == CT_INVALID) {
+				if (j->produced_cargo[0] == CT_INVALID) {
 					r = 1;
 				} else {
 					int pi;
 					int pj;
 
 					pi = i->last_month_pct_transported[0] * 100 >> 8;
-					if (ind_i->produced_cargo[1] != CT_INVALID) {
+					if (i->produced_cargo[1] != CT_INVALID) {
 						int p = i->last_month_pct_transported[1] * 100 >> 8;
 						if (p < pi) pi = p;
 					}
 
 					pj = j->last_month_pct_transported[0] * 100 >> 8;
-					if (ind_j->produced_cargo[1] != CT_INVALID) {
+					if (j->produced_cargo[1] != CT_INVALID) {
 						int p = j->last_month_pct_transported[1] * 100 >> 8;
 						if (p < pj) pj = p;
 					}
@@ -781,15 +776,14 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 		while (p < _num_industry_sort) {
 			const Industry* i = _industry_sort[p];
-			const IndustrySpec *ind = GetIndustrySpec(i->type);
 
 			SetDParam(0, i->index);
-			if (ind->produced_cargo[0] != CT_INVALID) {
-				SetDParam(1, ind->produced_cargo[0]);
+			if (i->produced_cargo[0] != CT_INVALID) {
+				SetDParam(1, i->produced_cargo[0]);
 				SetDParam(2, i->last_month_production[0]);
 
-				if (ind->produced_cargo[1] != CT_INVALID) {
-					SetDParam(3, ind->produced_cargo[1]);
+				if (i->produced_cargo[1] != CT_INVALID) {
+					SetDParam(3, i->produced_cargo[1]);
 					SetDParam(4, i->last_month_production[1]);
 					SetDParam(5, i->last_month_pct_transported[0] * 100 >> 8);
 					SetDParam(6, i->last_month_pct_transported[1] * 100 >> 8);

@@ -105,10 +105,12 @@ struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
 	byte width;
 	byte height;
 	const Town *town;                   ///< Nearest town
+	CargoID produced_cargo[2];          ///< 2 production cargo slots
 	uint16 produced_cargo_waiting[2];   ///< amount of cargo produced per cargo
 	uint16 incoming_cargo_waiting[3];   ///< incoming cargo waiting to be processed
 	byte production_rate[2];            ///< production rate for each cargo
 	byte prod_level;                    ///< general production level
+	CargoID accepts_cargo[3];           ///< 3 input cargo slots
 	uint16 this_month_production[2];    ///< stats of this month's production per cargo
 	uint16 this_month_transported[2];   ///< stats of this month's transport per cargo
 	byte last_month_pct_transported[2]; ///< percentage transported per cargo in the last full month

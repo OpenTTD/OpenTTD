@@ -270,7 +270,6 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 	}
 	if (type == AI_INDUSTRY) {
 		const Industry* i = GetIndustry(ic);
-		const IndustrySpec *indsp = GetIndustrySpec(i->type);
 		const Station* st;
 		int count = 0;
 		int j = 0;
@@ -279,7 +278,7 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 
 		// No limits on delevering stations!
 		//  Or for industry that does not give anything yet
-		if (indsp->produced_cargo[0] == CT_INVALID || i->last_month_production[0] == 0) return true;
+		if (i->produced_cargo[0] == CT_INVALID || i->last_month_production[0] == 0) return true;
 
 		if (i->last_month_production[0] - i->last_month_transported[0] < AI_CHECKCITY_NEEDED_CARGO) return false;
 
@@ -302,13 +301,13 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 				//  we want to know if this station gets the same good. If so,
 				//  we want to know its rating. If it is too high, we are not going
 				//  to build there
-				if (indsp->produced_cargo[0] == CT_INVALID) continue;
+				if (i->produced_cargo[0] == CT_INVALID) continue;
 				// It does not take this cargo
-				if (!st->goods[indsp->produced_cargo[0]].last_speed) continue;
+				if (!st->goods[i->produced_cargo[0]].last_speed) continue;
 				// Is it around our industry
 				if (DistanceManhattan(st->xy, i->xy) > 5) continue;
 				// It does take this cargo.. what is his rating?
-				if (st->goods[indsp->produced_cargo[0]].rating < AI_CHECKCITY_CARGO_RATING) continue;
+				if (st->goods[i->produced_cargo[0]].rating < AI_CHECKCITY_CARGO_RATING) continue;
 				j++;
 				// The rating is high.. a little chance that we still continue
 				//  But if there are 2 stations of this size, we never go on...
@@ -458,19 +457,17 @@ static void AiNew_State_LocateRoute(Player *p)
 			}
 		} else if (p->ainew.tbt == AI_TRUCK) {
 			const Industry* ind_from = GetIndustry(p->ainew.from_ic);
-			const IndustrySpec *indsp_from = GetIndustrySpec(ind_from->type);
 			const Industry* ind_temp = GetIndustry(p->ainew.temp);
-			const IndustrySpec *indsp_temp = GetIndustrySpec(ind_temp->type);
 			bool found = false;
 			int max_cargo = 0;
 			uint i;
 
 			// TODO: in max_cargo, also check other cargo (beside [0])
 			// First we check if the from_ic produces cargo that this ic accepts
-			if (indsp_from->produced_cargo[0] != CT_INVALID && ind_from->last_month_production[0] != 0) {
-				for (i = 0; i < lengthof(indsp_temp->accepts_cargo); i++) {
-					if (indsp_temp->accepts_cargo[i] == CT_INVALID) break;
-					if (indsp_from->produced_cargo[0] == indsp_temp->accepts_cargo[i]) {
+			if (ind_from->produced_cargo[0] != CT_INVALID && ind_from->last_month_production[0] != 0) {
+				for (i = 0; i < lengthof(ind_temp->accepts_cargo); i++) {
+					if (ind_temp->accepts_cargo[i] == CT_INVALID) break;
+					if (ind_from->produced_cargo[0] == ind_temp->accepts_cargo[i]) {
 						// Found a compatible industry
 						max_cargo = ind_from->last_month_production[0] - ind_from->last_month_transported[0];
 						found = true;
@@ -480,11 +477,11 @@ static void AiNew_State_LocateRoute(Player *p)
 					}
 				}
 			}
-			if (!found && indsp_temp->produced_cargo[0] != CT_INVALID && ind_temp->last_month_production[0] != 0) {
+			if (!found && ind_temp->produced_cargo[0] != CT_INVALID && ind_temp->last_month_production[0] != 0) {
 				// If not check if the current ic produces cargo that the from_ic accepts
-				for (i = 0; i < lengthof(indsp_from->accepts_cargo); i++) {
-					if (indsp_from->accepts_cargo[i] == CT_INVALID) break;
-					if (indsp_from->produced_cargo[0] == indsp_from->accepts_cargo[i]) {
+				for (i = 0; i < lengthof(ind_from->accepts_cargo); i++) {
+					if (ind_from->accepts_cargo[i] == CT_INVALID) break;
+					if (ind_from->produced_cargo[0] == ind_from->accepts_cargo[i]) {
 						// Found a compatbiel industry
 						found = true;
 						max_cargo = ind_temp->last_month_production[0] - ind_temp->last_month_transported[0];
@@ -503,9 +500,9 @@ static void AiNew_State_LocateRoute(Player *p)
 						distance <= max_cargo * AI_LOCATEROUTE_TRUCK_CARGO_DISTANCE) {
 					p->ainew.to_ic = p->ainew.temp;
 					if (p->ainew.from_deliver) {
-						p->ainew.cargo = indsp_from->produced_cargo[0];
+						p->ainew.cargo = ind_from->produced_cargo[0];
 					} else {
-						p->ainew.cargo = indsp_temp->produced_cargo[0];
+						p->ainew.cargo = ind_temp->produced_cargo[0];
 					}
 					p->ainew.state = AI_STATE_FIND_STATION;
 
