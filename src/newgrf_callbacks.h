@@ -196,10 +196,10 @@ enum CallbackID {
 	CBID_INDUSTRY_DECIDE_COLOUR          = 0x14A, // not implemented
 
 	/** Customize the input cargo types of a newly build industry. */
-	CBID_INDUSTRY_INPUT_CARGO_TYPES      = 0x14B, // not implemented
+	CBID_INDUSTRY_INPUT_CARGO_TYPES      = 0x14B,
 
 	/** Customize the output cargo types of a newly build industry. */
-	CBID_INDUSTRY_OUTPUT_CARGO_TYPES     = 0x14C, // not implemented
+	CBID_INDUSTRY_OUTPUT_CARGO_TYPES     = 0x14C,
 };
 
 /**

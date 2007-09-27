@@ -1414,7 +1414,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	uint32 r;
-	int j;
+	uint j;
 
 	i->xy = tile;
 	i->width = i->height = 0;
@@ -1458,6 +1458,25 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->last_month_production[0] = i->production_rate[0] * 8;
 	i->last_month_production[1] = i->production_rate[1] * 8;
 	i->founder = _current_player;
+
+	if (HASBIT(indspec->callback_flags, CBM_IND_INPUT_CARGO_TYPES)) {
+		for (j = 0; j < lengthof(i->accepts_cargo); j++) i->accepts_cargo[j] = CT_INVALID;
+		for (j = 0; j < lengthof(i->accepts_cargo); j++) {
+			uint16 res = GetIndustryCallback(CBID_INDUSTRY_INPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
+			if (res == CALLBACK_FAILED || GB(res, 0, 8) == CT_INVALID) break;
+			i->accepts_cargo[j] = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+		}
+	}
+
+	if (HASBIT(indspec->callback_flags, CBM_IND_OUTPUT_CARGO_TYPES)) {
+		for (j = 0; j < lengthof(i->produced_cargo); j++) i->produced_cargo[j] = CT_INVALID;
+		for (j = 0; j < lengthof(i->produced_cargo); j++) {
+			uint16 res = GetIndustryCallback(CBID_INDUSTRY_OUTPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
+			if (res == CALLBACK_FAILED || GB(res, 0, 8) == CT_INVALID) break;
+			i->produced_cargo[j] = GetCargoTranslation(GB(res, 0, 8), indspec->grf_prop.grffile);
+		}
+	}
+
 	i->construction_date = _date;
 	i->construction_type = (_game_mode == GM_EDITOR) ? ICT_SCENARIO_EDITOR :
 			(_generating_world ? ICT_MAP_GENERATION : ICT_NORMAL_GAMEPLAY);
