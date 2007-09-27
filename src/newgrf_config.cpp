@@ -371,6 +371,21 @@ static uint ScanTar(TarFileList::iterator tar)
 	return num;
 }
 
+/**
+ * Simple sorter for GRFS
+ * @param p1 the first GRFConfig *
+ * @param p2 the second GRFConfig *
+ * @return the same strcmp would return for the name of the NewGRF.
+ */
+static int GRFSorter(const void *p1, const void *p2)
+{
+	const GRFConfig *c1 = *(const GRFConfig **)p1;
+	const GRFConfig *c2 = *(const GRFConfig **)p2;
+
+	return strcmp(c1->name != NULL ? c1->name : c1->filename,
+		c2->name != NULL ? c2->name : c2->filename);
+}
+
 /* Scan for all NewGRFs */
 void ScanNewGRFFiles()
 {
@@ -389,7 +404,29 @@ void ScanNewGRFFiles()
 	FOR_ALL_TARS(tar) {
 		num += ScanTar(tar);
 	}
+
 	DEBUG(grf, 1, "Scan complete, found %d files", num);
+
+	/* Sort the linked list using quicksort.
+	 * For that we first have to make an array, the qsort and
+	 * then remake the linked list. */
+	GRFConfig **to_sort = MallocT<GRFConfig*>(num);
+	if (to_sort == NULL) return; // No memory, then don't sort
+
+	uint i = 0;
+	for (GRFConfig *p = _all_grfs; p != NULL; p = p->next, i++) {
+		to_sort[i] = p;
+	}
+	/* Number of files is not necessarily right */
+	num = i;
+
+	qsort(to_sort, num, sizeof(GRFConfig*), GRFSorter);
+
+	for (i = 1; i < num; i++) {
+		to_sort[i - 1]->next = to_sort[i];
+	}
+	to_sort[num - 1]->next = NULL;
+	_all_grfs = to_sort[0];
 }
 
 
