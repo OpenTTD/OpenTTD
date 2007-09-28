@@ -139,6 +139,27 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 	blitter->DrawLine(dpi->dst_ptr, x, y, x2, y2, dpi->width, dpi->height, color);
 }
 
+void GfxDrawLineUnscaled(int x, int y, int x2, int y2, int color)
+{
+	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+	DrawPixelInfo *dpi = _cur_dpi;
+
+	x -= dpi->left;
+	x2 -= dpi->left;
+	y -= dpi->top;
+	y2 -= dpi->top;
+
+	/* Check clipping */
+	if (x < 0 && x2 < 0) return;
+	if (y < 0 && y2 < 0) return;
+	if (x > dpi->width  && x2 > dpi->width)  return;
+	if (y > dpi->height && y2 > dpi->height) return;
+
+	blitter->DrawLine(dpi->dst_ptr, UnScaleByZoom(x, dpi->zoom), UnScaleByZoom(y, dpi->zoom),
+			UnScaleByZoom(x2, dpi->zoom), UnScaleByZoom(y2, dpi->zoom),
+			UnScaleByZoom(dpi->width, dpi->zoom), UnScaleByZoom(dpi->height, dpi->zoom), color);
+}
+
 /**
  * Draws the projection of a parallelepiped.
  * This can be used to draw boxes in world coordinates.
@@ -171,16 +192,16 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 
 	static const byte color = 255;
 
-	GfxDrawLine(x, y, x + dx1, y + dy1, color);
-	GfxDrawLine(x, y, x + dx2, y + dy2, color);
-	GfxDrawLine(x, y, x + dx3, y + dy3, color);
+	GfxDrawLineUnscaled(x, y, x + dx1, y + dy1, color);
+	GfxDrawLineUnscaled(x, y, x + dx2, y + dy2, color);
+	GfxDrawLineUnscaled(x, y, x + dx3, y + dy3, color);
 
-	GfxDrawLine(x + dx1, y + dy1, x + dx1 + dx2, y + dy1 + dy2, color);
-	GfxDrawLine(x + dx1, y + dy1, x + dx1 + dx3, y + dy1 + dy3, color);
-	GfxDrawLine(x + dx2, y + dy2, x + dx2 + dx1, y + dy2 + dy1, color);
-	GfxDrawLine(x + dx2, y + dy2, x + dx2 + dx3, y + dy2 + dy3, color);
-	GfxDrawLine(x + dx3, y + dy3, x + dx3 + dx1, y + dy3 + dy1, color);
-	GfxDrawLine(x + dx3, y + dy3, x + dx3 + dx2, y + dy3 + dy2, color);
+	GfxDrawLineUnscaled(x + dx1, y + dy1, x + dx1 + dx2, y + dy1 + dy2, color);
+	GfxDrawLineUnscaled(x + dx1, y + dy1, x + dx1 + dx3, y + dy1 + dy3, color);
+	GfxDrawLineUnscaled(x + dx2, y + dy2, x + dx2 + dx1, y + dy2 + dy1, color);
+	GfxDrawLineUnscaled(x + dx2, y + dy2, x + dx2 + dx3, y + dy2 + dy3, color);
+	GfxDrawLineUnscaled(x + dx3, y + dy3, x + dx3 + dx1, y + dy3 + dy1, color);
+	GfxDrawLineUnscaled(x + dx3, y + dy3, x + dx3 + dx2, y + dy3 + dy2, color);
 }
 
 
