@@ -377,7 +377,7 @@ static uint ScanTar(TarFileList::iterator tar)
  * @param p2 the second GRFConfig *
  * @return the same strcmp would return for the name of the NewGRF.
  */
-static int GRFSorter(const void *p1, const void *p2)
+static int CDECL GRFSorter(const void *p1, const void *p2)
 {
 	const GRFConfig *c1 = *(const GRFConfig **)p1;
 	const GRFConfig *c2 = *(const GRFConfig **)p2;
