@@ -317,10 +317,6 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!HasOrderPoolFree(1)) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
-	/* XXX - This limit is only here because the backuppedorders can't
-	 * handle any more then this.. */
-	if (v->num_orders >= MAX_BACKUP_ORDER_COUNT) return_cmd_error(STR_8832_TOO_MANY_ORDERS);
-
 	if (v->type == VEH_SHIP &&
 			IsHumanPlayer(v->owner) &&
 			!_patches.new_pathfinding_all) {
@@ -920,6 +916,10 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 {
+	/* Make sure we always have freed the stuff */
+	free(bak->order);
+	bak->order = NULL;
+
 	/* Save general info */
 	bak->orderindex       = v->cur_order_index;
 	bak->service_interval = v->service_interval;
@@ -939,12 +939,20 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 		bak->clone = u->index;
 	} else {
 		/* Else copy the orders */
-		Order *order, *dest;
-
-		dest = bak->order;
 
 		/* We do not have shared orders */
 		bak->clone = INVALID_VEHICLE;
+
+
+		/* Count the number of orders */
+		uint cnt = 0;
+		const Order *order;
+		FOR_VEHICLE_ORDERS(v, order) cnt++;
+
+		/* Allocate memory for the orders plus an end-of-orders marker */
+		bak->order = MallocT<Order>(cnt + 1);
+
+		Order *dest = bak->order;
 
 		/* Copy the orders */
 		FOR_VEHICLE_ORDERS(v, order) {
@@ -961,12 +969,10 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
  * Restore vehicle orders that are backupped via BackupVehicleOrders
  *
  */
-void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
+void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 {
-	uint i;
-
 	/* If we have a custom name, process that */
-	if (bak->name[0] != 0) {
+	if (!StrEmpty(bak->name)) {
 		_cmd_text = bak->name;
 		DoCommandP(0, v->index, 0, NULL, CMD_NAME_VEHICLE);
 	}
@@ -981,7 +987,7 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
 	 *  order number is one more than the current amount of orders, and because
 	 *  in network the commands are queued before send, the second insert always
 	 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
-	for (i = 0; bak->order[i].IsValid(); i++) {
+	for (uint i = 0; bak->order[i].IsValid(); i++) {
 		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
 	}

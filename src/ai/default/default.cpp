@@ -305,7 +305,7 @@ static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 static void AiHandleReplaceTrain(Player *p)
 {
 	const Vehicle* v = p->ai.cur_veh;
-	BackuppedOrders orderbak[1];
+	BackuppedOrders orderbak;
 	EngineID veh;
 
 	// wait until the vehicle reaches the depot.
@@ -318,13 +318,13 @@ static void AiHandleReplaceTrain(Player *p)
 	if (veh != INVALID_ENGINE) {
 		TileIndex tile;
 
-		BackupVehicleOrders(v, orderbak);
+		BackupVehicleOrders(v, &orderbak);
 		tile = v->tile;
 
 		if (CmdSucceeded(DoCommand(0, v->index, 2, DC_EXEC, CMD_SELL_RAIL_WAGON)) &&
 				CmdSucceeded(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE))) {
 			VehicleID veh = _new_vehicle_id;
-			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
+			AiRestoreVehicleOrders(GetVehicle(veh), &orderbak);
 			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_TRAIN);
 
 			DoCommand(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);

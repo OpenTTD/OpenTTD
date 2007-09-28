@@ -928,7 +928,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 						if (is_engine) {
 							_backup_orders_tile = v->tile;
-							BackupVehicleOrders(v, _backup_orders_data);
+							BackupVehicleOrders(v);
 						}
 
 						switch (v->type) {

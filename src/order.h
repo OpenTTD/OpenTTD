@@ -116,18 +116,18 @@ struct Order : PoolItem<Order, OrderID, &_Order_pool> {
 	void FreeChain();
 };
 
-#define MAX_BACKUP_ORDER_COUNT 40
-
 struct BackuppedOrders {
+	BackuppedOrders() : order(NULL) { }
+
 	VehicleID clone;
 	VehicleOrderID orderindex;
-	Order order[MAX_BACKUP_ORDER_COUNT + 1];
+	Order *order;
 	uint16 service_interval;
 	char name[32];
 };
 
 VARDEF TileIndex _backup_orders_tile;
-VARDEF BackuppedOrders _backup_orders_data[1];
+VARDEF BackuppedOrders _backup_orders_data;
 
 static inline VehicleOrderID GetMaxOrderIndex()
 {
@@ -200,8 +200,8 @@ static inline Order UnpackOrder(uint32 packed)
 }
 
 /* Functions */
-void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *order);
-void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* order);
+void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *order = &_backup_orders_data);
+void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *order = &_backup_orders_data);
 void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination);
 void InvalidateVehicleOrder(const Vehicle *v);
 bool VehicleHasDepotOrders(const Vehicle *v);
