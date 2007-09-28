@@ -1732,7 +1732,7 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
 	}
 
 	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
-		if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
+		if (!EnsureNoVehicleOnGround(tile_cur)) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
 			DeleteAnimatedTile(tile_cur);
