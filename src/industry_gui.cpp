@@ -118,7 +118,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				indsp = GetIndustrySpec(ind);
 				if (indsp->enabled && (!indsp->IsRawIndustry() || _game_mode == GM_EDITOR)) {
 					_fund_gui.index[_fund_gui.count] = ind;
-					_fund_gui.enabled[_fund_gui.count] = CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
+					_fund_gui.enabled[_fund_gui.count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
 					_fund_gui.count++;
 				}
 			}
@@ -128,7 +128,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 					indsp = GetIndustrySpec(ind);
 					if (indsp->enabled && indsp->IsRawIndustry()) {
 						_fund_gui.index[_fund_gui.count] = ind;
-						_fund_gui.enabled[_fund_gui.count] = CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
+						_fund_gui.enabled[_fund_gui.count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
 						_fund_gui.count++;
 					}
 				}
