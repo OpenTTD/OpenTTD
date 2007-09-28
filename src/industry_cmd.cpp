@@ -65,7 +65,8 @@ void ResetIndustries()
 
 	/* once performed, enable only the current climate industries */
 	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
-		_industry_specs[i].enabled = HASBIT(_origin_industry_specs[i].climate_availability, _opt.landscape);
+		_industry_specs[i].enabled = i < NEW_INDUSTRYOFFSET &&
+				HASBIT(_origin_industry_specs[i].climate_availability, _opt.landscape);
 	}
 
 	memset(&_industry_tile_specs, 0, sizeof(_industry_tile_specs));

@@ -109,7 +109,7 @@ static inline void SetIndustryCompleted(TileIndex tile, bool isCompleted)
 static inline byte GetIndustryConstructionStage(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
-	return GB(_m[tile].m1, 0, 2);
+	return IsIndustryCompleted(tile) ? (byte)INDUSTRY_COMPLETED : GB(_m[tile].m1, 0, 2);
 }
 
 /**
