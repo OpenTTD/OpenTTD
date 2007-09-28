@@ -1459,6 +1459,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->last_month_production[1] = i->production_rate[1] * 8;
 	i->founder = _current_player;
 
+	if (HASBIT(indspec->callback_flags, CBM_IND_DECIDE_COLOUR)) {
+		uint16 res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
+		if (res != CALLBACK_FAILED) i->random_color = GB(res, 0, 4);
+	}
+
 	if (HASBIT(indspec->callback_flags, CBM_IND_INPUT_CARGO_TYPES)) {
 		for (j = 0; j < lengthof(i->accepts_cargo); j++) i->accepts_cargo[j] = CT_INVALID;
 		for (j = 0; j < lengthof(i->accepts_cargo); j++) {

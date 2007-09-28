@@ -193,7 +193,7 @@ enum CallbackID {
 	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // not implemented
 
 	/** Called to determine the color of an industry. */
-	CBID_INDUSTRY_DECIDE_COLOUR          = 0x14A, // not implemented
+	CBID_INDUSTRY_DECIDE_COLOUR          = 0x14A,
 
 	/** Customize the input cargo types of a newly build industry. */
 	CBID_INDUSTRY_INPUT_CARGO_TYPES      = 0x14B,
