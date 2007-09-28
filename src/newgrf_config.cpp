@@ -406,6 +406,7 @@ void ScanNewGRFFiles()
 	}
 
 	DEBUG(grf, 1, "Scan complete, found %d files", num);
+	if (num == 0 || _all_grfs == NULL) return;
 
 	/* Sort the linked list using quicksort.
 	 * For that we first have to make an array, the qsort and
