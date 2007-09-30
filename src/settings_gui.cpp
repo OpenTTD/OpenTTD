@@ -695,6 +695,8 @@ static const char *_patches_economy[] = {
 	"multiple_industry_per_town",
 	"same_industry_close",
 	"bribe",
+	"exclusive_rights",
+	"give_money",
 	"colored_news_year",
 	"ending_year",
 	"smooth_economy",

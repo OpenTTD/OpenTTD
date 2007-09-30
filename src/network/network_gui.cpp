@@ -1264,8 +1264,8 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	_clientlist_proc[i++] = &ClientList_SpeakToAll;
 
 	if (_network_own_client_index != ci->client_index) {
-		/* We are no spectator and the player we want to give money to is no spectator */
-		if (IsValidPlayer(_network_playas) && IsValidPlayer(ci->client_playas)) {
+		/* We are no spectator and the player we want to give money to is no spectator and money gifts are allowed */
+		if (IsValidPlayer(_network_playas) && IsValidPlayer(ci->client_playas) && _patches.give_money) {
 			GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY, lastof(_clientlist_action[i]));
 			_clientlist_proc[i++] = &ClientList_GiveMoney;
 		}

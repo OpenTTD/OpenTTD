@@ -341,6 +341,8 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
+	if (!_patches.give_money) return CMD_ERROR;
+
 	const Player *p = GetPlayer(_current_player);
 	CommandCost amount(min((Money)p1, (Money)20000000LL));
 

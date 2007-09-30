@@ -244,6 +244,9 @@ struct Patches {
 	bool autoslope;          ///< Allow terraforming under things.
 
 	bool mod_road_rebuild;   ///< Roadworks remove unneccesary RoadBits
+
+	bool exclusive_rights;   ///< allow buying exclusive rights
+	bool give_money;         ///< allow giving other players money
 };
 
 VARDEF Patches _patches;

@@ -2014,6 +2014,9 @@ static void TownActionFundBuildings(Town* t)
 
 static void TownActionBuyRights(Town* t)
 {
+	/* Check if it's allowed to by the rights */
+	if (!_patches.exclusive_rights) return;
+
 	t->exclusive_counter = 12;
 	t->exclusivity = _current_player;
 

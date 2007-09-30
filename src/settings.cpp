@@ -1429,6 +1429,8 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, multiple_industry_per_town, 0, 0, false,            STR_CONFIG_PATCHES_MULTIPINDTOWN,    NULL),
 	SDT_BOOL(Patches, same_industry_close,        0, 0, false,            STR_CONFIG_PATCHES_SAMEINDCLOSE,     NULL),
 	SDT_BOOL(Patches, bribe,                      0, 0,  true,            STR_CONFIG_PATCHES_BRIBE,            NULL),
+	SDT_CONDBOOL(Patches, exclusive_rights,           79, SL_MAX_VERSION, 0, 0, true,           STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE, NULL),
+	SDT_CONDBOOL(Patches, give_money,                 79, SL_MAX_VERSION, 0, 0, true,           STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY, NULL),
 	 SDT_VAR(Patches, snow_line_height,SLE_UINT8, 0, 0,     7,  2, 13, 0, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,  NULL),
 	 SDT_VAR(Patches, colored_news_year,SLE_INT32, 0,NC,  2000, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_COLORED_NEWS_YEAR,NULL),
 	 SDT_VAR(Patches, starting_year,    SLE_INT32, 0,NC,  1950, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_STARTING_YEAR,NULL),

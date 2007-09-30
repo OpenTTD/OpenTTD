@@ -20,18 +20,48 @@
 #include "variables.h"
 #include "helpers.hpp"
 
+enum TownAuthorityWidget {
+	TWA_CLOSEBOX = 0,
+	TWA_CAPTION,
+	TWA_RATING_INFO,
+	TWA_COMMAND_LIST,
+	TWA_SCROLLBAR,
+	TWA_ACTION_INFO,
+	TWA_EXECUTE,
+};
+
 static const Widget _town_authority_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,   316,    14,   105, 0x0,                      STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,   304,   106,   157, 0x0,                      STR_2043_LIST_OF_THINGS_TO_DO_AT},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    13,   305,   316,   106,   157, 0x0,                      STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,   316,   158,   209, 0x0,                      STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,   316,   210,   221, STR_2042_DO_IT,           STR_2044_CARRY_OUT_THE_HIGHLIGHTED},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},              // TWA_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},    // TWA_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,    13,     0,   316,    14,   105, 0x0,                      STR_NULL},                           // TWA_RATING_INFO
+{      WWT_PANEL,   RESIZE_NONE,    13,     0,   304,   106,   157, 0x0,                      STR_2043_LIST_OF_THINGS_TO_DO_AT},   // TWA_COMMAND_LIST
+{  WWT_SCROLLBAR,   RESIZE_NONE,    13,   305,   316,   106,   157, 0x0,                      STR_0190_SCROLL_BAR_SCROLLS_LIST},   // TWA_SCROLLBAR
+{      WWT_PANEL,   RESIZE_NONE,    13,     0,   316,   158,   209, 0x0,                      STR_NULL},                           // TWA_ACTION_INFO
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,   316,   210,   221, STR_2042_DO_IT,           STR_2044_CARRY_OUT_THE_HIGHLIGHTED}, // TWA_EXECUTE
 {   WIDGETS_END},
 };
 
 extern const byte _town_action_costs[8];
+
+enum TownActions {
+	TACT_NONE             = 0x00,
+
+	TACT_ADVERTISE_SMALL  = 0x01,
+	TACT_ADVERTISE_MEDIUM = 0x02,
+	TACT_ADVERTISE_LARGE  = 0x04,
+	TACT_ROAD_REBUILD     = 0x08,
+	TACT_BUILD_STATUE     = 0x10,
+	TACT_FOUND_BUILDINGS  = 0x20,
+	TACT_BUY_RIGHTS       = 0x40,
+	TACT_BRIBE            = 0x80,
+
+	TACT_ADVERTISE        = TACT_ADVERTISE_SMALL | TACT_ADVERTISE_MEDIUM | TACT_ADVERTISE_LARGE,
+	TACT_CONSTRUCTION     = TACT_ROAD_REBUILD | TACT_BUILD_STATUE | TACT_FOUND_BUILDINGS,
+	TACT_FUNDS            = TACT_BUY_RIGHTS | TACT_BRIBE,
+	TACT_ALL              = TACT_ADVERTISE | TACT_CONSTRUCTION | TACT_FUNDS,
+};
+
+DECLARE_ENUM_AS_BIT_SET(TownActions);
 
 /** Get a list of available actions to do at a town.
  * @param nump if not NULL add put the number of available actions in it
@@ -41,41 +71,38 @@ extern const byte _town_action_costs[8];
  */
 uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 {
-	Money avail, ref;
 	int num = 0;
-	uint avail_buttons = 0x7F; // by default all buttons except bribe are enabled.
-	uint buttons = 0;
+	TownActions buttons = TACT_NONE;
 
-	if (pid != PLAYER_SPECTATOR) {
-		uint i;
-
-		/* bribe option enabled? */
-		if (_patches.bribe) {
-			/* if unwanted, disable everything. */
-			if (t->unwanted[pid]) {
-				avail_buttons = 0;
-			} else if (t->ratings[pid] < RATING_BRIBE_MAXIMUM) {
-				SETBIT(avail_buttons, 7); // Allow bribing
-			}
-		}
+	/* Spectators and unwanted have no options */
+	if (pid != PLAYER_SPECTATOR && !(_patches.bribe && t->unwanted[pid])) {
 
 		/* Things worth more than this are not shown */
-		avail = GetPlayer(pid)->player_money + _price.station_value * 200;
-		ref = _price.build_industry >> 8;
+		Money avail = GetPlayer(pid)->player_money + _price.station_value * 200;
+		Money ref = _price.build_industry >> 8;
 
-		for (i = 0; i != lengthof(_town_action_costs); i++, avail_buttons >>= 1) {
-			if (HASBIT(avail_buttons, 0) && avail >= _town_action_costs[i] * ref) {
-				SETBIT(buttons, i);
+		/* Check the action bits for validity and
+		 * if they are valid add them */
+		for (uint i = 0; i != lengthof(_town_action_costs); i++) {
+			const TownActions cur = (TownActions)(1 << i);
+
+			/* Is the player not able to bribe ? */
+			if (cur == TACT_BRIBE && (!_patches.bribe || t->ratings[pid] >= RATING_BRIBE_MAXIMUM))
+				continue;
+
+			/* Is the player not able to buy exclusive rights ? */
+			if (cur == TACT_BUY_RIGHTS && !_patches.exclusive_rights)
+				continue;
+
+			/* Is the player not able to build a statue ? */
+			if (cur == TACT_BUILD_STATUE && HASBIT(t->statues, pid))
+				continue;
+
+			if (avail >= _town_action_costs[i] * ref) {
+				buttons |= cur;
 				num++;
 			}
 		}
-
-		/* Disable build statue if already built */
-		if (HASBIT(t->statues, pid)) {
-			CLRBIT(buttons, 4);
-			num--;
-		}
-
 	}
 
 	if (nump != NULL) *nump = num;
@@ -161,9 +188,9 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 				y += 10;
 			}
 			for (i = 0; buttons; i++, buttons >>= 1) {
-				if (pos <= -5) break;
+				if (pos <= -5) break; ///< Draw only the 5 fitting lines
 
-				if (buttons&1 && --pos < 0) {
+				if ((buttons & 1) && --pos < 0) {
 					DrawString(3, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, 6);
 					y += 10;
 				}
@@ -185,7 +212,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 	case WE_DOUBLE_CLICK:
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 3: { /* listbox */
+		case TWA_COMMAND_LIST: {
 			const Town *t = GetTown(w->window_number);
 			int y = (e->we.click.pt.y - 0x6B) / 10;
 
@@ -200,7 +227,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			if (e->event != WE_DOUBLE_CLICK || y < 0) break;
 		}
 
-		case 6: { /* carry out the action */
+		case TWA_EXECUTE: {
 			DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w,def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 			break;
 		}

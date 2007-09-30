@@ -65,7 +65,7 @@ bool _draw_bounding_boxes = false;
 void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 #ifdef ENABLE_NETWORK
-	if (!success) return;
+	if (!success || !_patches.give_money) return;
 
 	char msg[20];
 	/* Inform the player of this action */
