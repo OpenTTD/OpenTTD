@@ -439,7 +439,9 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 
 	group = Resolve(GetIndustrySpec(type)->grf_prop.spritegroup, &object);
 
-	if (group == NULL || group->type != SGT_CALLBACK) return false;
+	/* Unlike the "normal" cases, not having a valid result means we allow
+	 * the building of the industry, as that's how it's done in TTDP. */
+	if (group == NULL || group->type != SGT_CALLBACK) return true;
 
 	switch (group->g.callback.result) {
 		case 0x400: return true;
