@@ -358,7 +358,8 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 
 	for (byte i = 0; i < lengthof(itspec->accepts_cargo); i++) {
 		CargoID a = accepts_cargo[i];
-		if (a != CT_INVALID) ac[a] = acceptance[i];
+		/* Only set the value once. */
+		if (a != CT_INVALID && ac[a] == 0) ac[a] = acceptance[i];
 	}
 }
 
