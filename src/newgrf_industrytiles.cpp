@@ -169,13 +169,17 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 	SpriteID image = dts->ground_sprite;
 	SpriteID pal   = dts->ground_pal;
 
+	if (IS_CUSTOM_SPRITE(image)) image += stage;
+
 	if (GB(image, 0, SPRITE_WIDTH) != 0) DrawGroundSprite(image, pal);
 
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		if (GB(dtss->image, 0, SPRITE_WIDTH) == 0) continue;
 
-		image = dtss->image + stage;
+		image = dtss->image;
 		pal   = dtss->pal;
+
+		if (IS_CUSTOM_SPRITE(image)) image += stage;
 
 		if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 			pal = GENERAL_SPRITE_COLOR(rnd_color);
