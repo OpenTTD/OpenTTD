@@ -613,12 +613,18 @@ void EndSpriteCombine()
 	_cur_vd->combine_sprites = 0;
 }
 
-void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y)
+void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool transparent)
 {
 	ViewportDrawer *vd = _cur_vd;
 	ChildScreenSpriteToDraw *cs;
 
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
+
+	/* make the sprites transparent with the right palette */
+	if (transparent) {
+		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+		pal = PALETTE_TO_TRANSPARENT;
+	}
 
 	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
 		DEBUG(sprite, 0, "Out of sprite memory");

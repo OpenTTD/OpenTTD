@@ -2115,7 +2115,7 @@ static void DrawTile_Station(TileInfo *ti)
 				HASBIT(_transparent_opt, TO_BUILDINGS)
 			);
 		} else {
-			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y);
+			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, HASBIT(_transparent_opt, TO_BUILDINGS));
 		}
 	}
 }
