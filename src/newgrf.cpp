@@ -5495,7 +5495,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 	/* Load newgrf sprites
 	 * in each loading stage, (try to) open each file specified in the config
 	 * and load information from it. */
-	for (GrfLoadingStage stage = GLS_LABELSCAN; stage <= GLS_ACTIVATION; stage++) {
+	for (GrfLoadingStage stage = GLS_LABELSCAN; stage < GLS_ACTIVATION; stage++) {
 		uint slot = file_index;
 
 		_cur_stage = stage;
@@ -5511,7 +5511,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			LoadNewGRFFile(c, slot++, stage);
 			if (stage == GLS_RESERVE) {
 				if (c->status == GCS_ACTIVATED) c->status = GCS_INITIALISED;
-			} else if (stage == GLS_ACTIVATION) {
+				LoadNewGRFFile(c, slot++, GLS_ACTIVATION);
 				ClearTemporaryNewGRFData();
 				BuildCargoTranslationMap();
 				DEBUG(sprite, 2, "LoadNewGRF: Currently %i sprites are loaded", _cur_spriteid);
