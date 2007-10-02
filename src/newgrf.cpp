@@ -4974,7 +4974,7 @@ static void ResetNewGRFData()
 
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.has_newhouses     = false;
-	_loaded_newgrf_features.has_newindustries = false,
+	_loaded_newgrf_features.has_newindustries = false;
 
 	_signal_base = 0;
 	_coast_base = 0;
