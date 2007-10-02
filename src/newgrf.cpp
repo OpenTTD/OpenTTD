@@ -5508,13 +5508,17 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (!FioCheckFileExists(c->filename)) error("NewGRF file is missing '%s'", c->filename);
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
-			LoadNewGRFFile(c, slot++, stage);
+			LoadNewGRFFile(c, slot, stage);
 			if (stage == GLS_RESERVE) {
 				if (c->status == GCS_ACTIVATED) c->status = GCS_INITIALISED;
+				_cur_stage = GLS_ACTIVATION;
 				LoadNewGRFFile(c, slot++, GLS_ACTIVATION);
+				_cur_stage = stage;
 				ClearTemporaryNewGRFData();
 				BuildCargoTranslationMap();
 				DEBUG(sprite, 2, "LoadNewGRF: Currently %i sprites are loaded", _cur_spriteid);
+			} else {
+				slot++;
 			}
 		}
 	}
