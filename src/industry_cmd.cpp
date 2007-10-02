@@ -1198,6 +1198,8 @@ bool IsSlopeRefused(Slope current, Slope refused)
 static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, uint itspec_index, int type, bool *custom_shape_check = NULL)
 {
 	_error_message = STR_0239_SITE_UNSUITABLE;
+	bool refused_slope = false;
+	bool custom_shape = false;
 
 	do {
 		IndustryGfx gfx = GetTranslatedIndustryTileID(it->gfx);
@@ -1222,7 +1224,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			IndustyBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
 			if (HASBIT(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
-				if (custom_shape_check != NULL) *custom_shape_check = true;
+				custom_shape = true;
 				if (!PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index)) return false;
 			} else {
 				if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
@@ -1238,12 +1240,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 					tileh = GetTileSlope(cur_tile, NULL);
 					if (IsSteepSlope(tileh)) return false;
 
-					if (_patches.land_generator != LG_TERRAGENESIS || !_generating_world) {
-						/* It is almost impossible to have a fully flat land in TG, so what we
-						*  do is that we check if we can make the land flat later on. See
-						*  CheckIfCanLevelIndustryPlatform(). */
-						if (IsSlopeRefused(tileh, its->slopes_refused)) return false;
-					}
+					refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
 				}
 			}
 
@@ -1259,7 +1256,12 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 		}
 	} while ((++it)->ti.x != -0x80);
 
-	return true;
+	if (custom_shape_check != NULL) *custom_shape_check = custom_shape;
+
+	/* It is almost impossible to have a fully flat land in TG, so what we
+	 *  do is that we check if we can make the land flat later on. See
+	 *  CheckIfCanLevelIndustryPlatform(). */
+	return !refused_slope || (_patches.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape);
 }
 
 static bool CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
