@@ -247,18 +247,23 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 	}
 }
 
-bool PerformIndustryTileSlopeCheck(TileIndex tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx)
+extern bool IsSlopeRefused(Slope current, Slope refused);
+
+bool PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, const IndustryTileSpec *its, IndustryType type, IndustryGfx gfx, uint itspec_index)
 {
 	Industry ind;
-	ind.xy = 0;
+	ind.index = INVALID_INDUSTRY;
+	ind.xy = ind_base_tile;
 	ind.width = 0;
 	ind.type = type;
 
-	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, 0, gfx, &ind, tile);
+	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_SHAPE_CHECK, 0, itspec_index, gfx, &ind, ind_tile);
+	if (callback_res == CALLBACK_FAILED) {
+		return !IsSlopeRefused(GetTileSlope(ind_tile, NULL), its->slopes_refused);
+	}
 	if (its->grf_prop.grffile->grf_version < 7) {
 		return callback_res != 0;
 	}
-	if (callback_res == CALLBACK_FAILED) return false;
 
 	switch (callback_res) {
 		case 0x400: return true;

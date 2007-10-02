@@ -1179,7 +1179,23 @@ static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 	return t;
 }
 
-static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, int type, bool *custom_shape_check = NULL)
+bool IsSlopeRefused(Slope current, Slope refused)
+{
+	if (current != SLOPE_FLAT) {
+		if (refused & SLOPE_STEEP) return true;
+
+		Slope t = ComplementSlope(current);
+
+		if (refused & 1 && (t & SLOPE_NW)) return false;
+		if (refused & 2 && (t & SLOPE_NE)) return false;
+		if (refused & 4 && (t & SLOPE_SW)) return false;
+		if (refused & 8 && (t & SLOPE_SE)) return false;
+	}
+
+	return false;
+}
+
+static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, uint itspec_index, int type, bool *custom_shape_check = NULL)
 {
 	_error_message = STR_0239_SITE_UNSUITABLE;
 
@@ -1207,7 +1223,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 
 			if (HASBIT(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
 				if (custom_shape_check != NULL) *custom_shape_check = true;
-				if (!PerformIndustryTileSlopeCheck(cur_tile, its, type, gfx)) return false;
+				if (!PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index)) return false;
 			} else {
 				if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
 					/* As soon as the tile is not water, bail out.
@@ -1226,19 +1242,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 						/* It is almost impossible to have a fully flat land in TG, so what we
 						*  do is that we check if we can make the land flat later on. See
 						*  CheckIfCanLevelIndustryPlatform(). */
-						if (tileh != SLOPE_FLAT) {
-							Slope t;
-							byte bits = its->slopes_refused;
-
-							if (bits & 0x10) return false;
-
-							t = ComplementSlope(tileh);
-
-							if (bits & 1 && (t & SLOPE_NW)) return false;
-							if (bits & 2 && (t & SLOPE_NE)) return false;
-							if (bits & 4 && (t & SLOPE_SW)) return false;
-							if (bits & 8 && (t & SLOPE_SE)) return false;
-						}
+						if (IsSlopeRefused(tileh, its->slopes_refused)) return false;
 					}
 				}
 			}
@@ -1541,7 +1545,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 	const IndustryTileTable *it = indspec->table[itspec_index];
 	bool custom_shape_check = false;
 
-	if (!CheckIfIndustryTilesAreFree(tile, it, type, &custom_shape_check)) return NULL;
+	if (!CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, &custom_shape_check)) return NULL;
 
 	if (HASBIT(GetIndustrySpec(type)->callback_flags, CBM_IND_LOCATION)) {
 		if (!CheckIfCallBackAllowsCreation(tile, type, itspec_index)) return NULL;
@@ -1582,7 +1586,6 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	int num;
 	const IndustryTileTable * const *itt;
-	const IndustryTileTable *it;
 	const IndustrySpec *indspec;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
@@ -1626,7 +1629,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		do {
 			if (--num < 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
-		} while (!CheckIfIndustryTilesAreFree(tile, it = itt[num], p1));
+		} while (!CheckIfIndustryTilesAreFree(tile, itt[num], num, p1));
 
 		if (CreateNewIndustryHelper(tile, p1, flags, indspec, num) == NULL) return CMD_ERROR;
 	}
