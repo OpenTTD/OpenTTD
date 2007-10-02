@@ -2008,11 +2008,11 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				break;
 
 			case 0x17: // Probability in random game
-				indsp->appear_ingame[_opt.landscape] = grf_load_byte(&buf);
+				indsp->appear_creation[_opt.landscape] = grf_load_byte(&buf);
 				break;
 
 			case 0x18: // Probability during gameplay
-				indsp->appear_creation[_opt.landscape] = grf_load_byte(&buf);
+				indsp->appear_ingame[_opt.landscape] = grf_load_byte(&buf);
 				break;
 
 			case 0x19: // Map color
