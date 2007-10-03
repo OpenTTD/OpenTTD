@@ -1206,9 +1206,6 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 	/* Allocate house specs if they haven't been allocated already. */
 	if (_cur_grffile->housespec == NULL) {
 		_cur_grffile->housespec = CallocT<HouseSpec*>(HOUSE_MAX);
-
-		/* Reset any overrides that have been set. */
-		_house_mngr.ResetOverride();
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -1715,9 +1712,6 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 	/* Allocate industry tile specs if they haven't been allocated already. */
 	if (_cur_grffile->indtspec == NULL) {
 		_cur_grffile->indtspec = CallocT<IndustryTileSpec*>(NUM_INDUSTRYTILES);
-
-		/* Reset any overrides that have been set. */
-		_industile_mngr.ResetOverride();
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -1826,9 +1820,6 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 	/* Allocate industry specs if they haven't been allocated already. */
 	if (_cur_grffile->industryspec == NULL) {
 		_cur_grffile->industryspec = CallocT<IndustrySpec*>(NUM_INDUSTRYTYPES);
-
-		/* Reset any overrides that have been set. */
-		_industry_mngr.ResetOverride();
 	}
 
 	for (int i = 0; i < numinfo; i++) {

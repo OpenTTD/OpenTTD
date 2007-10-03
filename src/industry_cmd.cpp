@@ -71,6 +71,10 @@ void ResetIndustries()
 
 	memset(&_industry_tile_specs, 0, sizeof(_industry_tile_specs));
 	memcpy(&_industry_tile_specs, &_origin_industry_tile_specs, sizeof(_origin_industry_tile_specs));
+
+	/* Reset any overrides that have been set. */
+	_industile_mngr.ResetOverride();
+	_industry_mngr.ResetOverride();
 }
 
 void ResetIndustryCreationProbility(IndustryType type)

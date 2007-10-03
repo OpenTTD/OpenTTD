@@ -2522,4 +2522,7 @@ void ResetHouses()
 {
 	memset(&_house_specs, 0, sizeof(_house_specs));
 	memcpy(&_house_specs, &_original_house_specs, sizeof(_original_house_specs));
+
+	/* Reset any overrides that have been set. */
+	_house_mngr.ResetOverride();
 }
