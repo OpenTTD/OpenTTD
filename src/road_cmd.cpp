@@ -653,7 +653,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 	/* On the X-axis, we have to swap the initial bits, so they
 	 * will be interpreted correctly in the GTTS. Futhermore
 	 * when you just 'click' on one tile to build them. */
-	if (HASBIT(p2, 2) == (start_tile == end_tile)) drd ^= DRD_BOTH;
+	if (HASBIT(p2, 2) == (start_tile == end_tile && HASBIT(p2, 0) == HASBIT(p2, 1))) drd ^= DRD_BOTH;
 	/* No disallowed direction bits have to be toggled */
 	if (!HASBIT(p2, 5)) drd = DRD_NONE;
 
