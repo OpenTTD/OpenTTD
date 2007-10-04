@@ -153,8 +153,8 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			break;
 
 		case 0xFFFFFFFF: // current grf
-			ind_index = GetIndustrySpec(current->type)->grf_prop.grffile->grfid;
-			/*Fall through*/
+			GrfID = GetIndustrySpec(current->type)->grf_prop.grffile->grfid;
+			/* Fall through */
 
 		default: //use the grfid specified in register 100h
 			ind_index = MapNewGRFIndustryType(param_setID, GrfID);
@@ -206,7 +206,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		}
 
 		/* Manhattan distance of closes dry/water tile */
-		case 0x43: return GetClosestWaterDistance(tile, (object->u.industry_location.spec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
+		case 0x43: return GetClosestWaterDistance(tile, (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
 
 		/* Layout number */
 		case 0x44: return industry->selected_layout;
@@ -372,55 +372,47 @@ uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, In
 
 uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
-	TileIndex tile = object->u.industry_location.tile;
+	const Industry *industry = object->u.industry.ind;
+	TileIndex tile = object->u.industry.tile;
 
 	if (object->scope == VSG_SCOPE_PARENT) {
-		return TownGetVariable(variable, parameter, available, ClosestTownFromTile(tile, (uint)-1));
+		return TownGetVariable(variable, parameter, available, industry->town);
 	}
 
 	switch (variable) {
-		/* Land info of nearby tiles */
-		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY);
-
-		/* Distance of nearest industry of given type */
-		case 0x64: return GetClosestIndustry(tile, MapNewGRFIndustryType(parameter, object->u.industry_location.spec->grf_prop.grffile->grfid), NULL);
-
-		/* Location where to build the industry */
 		case 0x80: return tile;
 		case 0x81: return GB(tile, 8, 8);
 
 		/* Pointer to the town the industry is associated with */
-		case 0x82: return ClosestTownFromTile(tile, (uint)-1)->index;
+		case 0x82: return industry->town->index;
 		case 0x83:
 		case 0x84:
 		case 0x85: DEBUG(grf, 0, "NewGRFs shouldn't be doing pointer magic"); break; // not supported
 
 		/* Number of the layout */
-		case 0x86: return object->u.industry_location.itspec_index;
+		case 0x86: return industry->selected_layout;
 
 		/* Ground type */
 		case 0x87: return GetTerrainType(tile);
 
 		/* Town zone */
-		case 0x88: return GetTownRadiusGroup(ClosestTownFromTile(tile, (uint)-1), tile);
+		case 0x88: return GetTownRadiusGroup(industry->town, tile);
 
 		/* Manhattan distance of the closest town */
-		case 0x89: return min(DistanceManhattan(ClosestTownFromTile(tile, (uint)-1)->xy, tile), 255);
+		case 0x89: return min(DistanceManhattan(industry->town->xy, tile), 255);
 
 		/* Lowest height of the tile */
 		case 0x8A: return GetTileZ(tile);
 
 		/* Distance to the nearest water/land tile */
-		case 0x8B: return GetClosestWaterDistance(tile, (object->u.industry_location.spec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
+		case 0x8B: return GetClosestWaterDistance(tile, (GetIndustrySpec(industry->type)->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
 
 		/* Square of Euclidian distance from town */
-		case 0x8D: return min(DistanceSquare(ClosestTownFromTile(tile, (uint)-1)->xy, tile), 65535);
+		case 0x8D: return min(DistanceSquare(industry->town->xy, tile), 65535);
 	}
 
-	DEBUG(grf, 1, "Unhandled location industry property 0x%X", variable);
-
-	*available = false;
-	return (uint32)-1;
+	/* None of the special ones, so try the general ones */
+	return IndustryGetVariable(object, variable, parameter, available);
 }
 
 bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspec_index)
@@ -430,12 +422,17 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 	ResolverObject object;
 	const SpriteGroup *group;
 
-	NewIndustryResolver(&object, tile, NULL);
+	Industry ind;
+	ind.index = INVALID_INDUSTRY;
+	ind.xy = tile;
+	ind.width = 0;
+	ind.type = type;
+	ind.selected_layout = itspec_index;
+	ind.town = ClosestTownFromTile(tile, (uint)-1);
+
+	NewIndustryResolver(&object, tile, &ind);
 	object.GetVariable = IndustryLocationGetVariable;
 	object.callback = CBID_INDUSTRY_LOCATION;
-	object.u.industry_location.tile = tile;
-	object.u.industry_location.spec = indspec;
-	object.u.industry_location.itspec_index = itspec_index;
 
 	group = Resolve(GetIndustrySpec(type)->grf_prop.spritegroup, &object);
 
