@@ -998,7 +998,7 @@ struct OvertakeData {
 	const Vehicle* u;
 	const Vehicle* v;
 	TileIndex tile;
-	byte tilebits;
+	uint16 tilebits;
 };
 
 static void* EnumFindVehToOvertake(Vehicle* v, void* data)
@@ -1014,9 +1014,10 @@ static bool FindRoadVehToOvertake(OvertakeData *od)
 {
 	uint32 bits;
 
-	bits = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, od->v->u.road.compatible_roadtypes) & 0x3F;
+	bits = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, od->v->u.road.compatible_roadtypes);
+	bits |= bits >> 8;
 
-	if (!(od->tilebits & bits) || (bits & 0x3C) || (bits & 0x3F3F0000))
+	if (!(od->tilebits & bits) || (bits & 0x3C3C) || (bits & 0x3F3F0000))
 		return true;
 	return VehicleFromPos(od->tile, od, EnumFindVehToOvertake) != NULL;
 }
@@ -1024,7 +1025,7 @@ static bool FindRoadVehToOvertake(OvertakeData *od)
 static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 {
 	OvertakeData od;
-	byte tt;
+	uint16 tt;
 
 	od.v = v;
 	od.u = u;
@@ -1038,6 +1039,9 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	/* Trams can't overtake other trams */
 	if (v->u.road.roadtype == ROADTYPE_TRAM) return;
 
+	/* Don't overtake in stations */
+	if (IsTileType(v->tile, MP_STATION)) return;
+
 	/* For now, articulated road vehicles can't overtake anything. */
 	if (RoadVehHasArticPart(v)) return;
 
@@ -1046,7 +1050,10 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */
 	if (v->u.road.state >= RVSB_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->u.road.state & RVSB_TRACKDIR_MASK))) return;
 
-	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes) & 0x3F;
+	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
+	tt |= tt >> 8;
+	tt &= 0x3F;
+
 	if ((tt & 3) == 0) return;
 	if ((tt & 0x3C) != 0) return;
 
@@ -1647,9 +1654,9 @@ again:
 		Vehicle* u = RoadVehFindCloseTo(v, x, y, new_dir);
 
 		if (u != NULL) {
-			v->cur_speed = u->cur_speed;
 			/* There is a vehicle in front overtake it if possible */
 			if (v->u.road.overtaking == 0) RoadVehCheckOvertake(v, u);
+			if (v->u.road.overtaking == 0) v->cur_speed = u->cur_speed;
 			return false;
 		}
 	}
