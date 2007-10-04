@@ -71,7 +71,7 @@ public:
 			OverrideManagerBase(offset, maximum, invalid) {}
 
 	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
-	void SetEntitySpec(const IndustrySpec *inds);
+	void SetEntitySpec(IndustrySpec *inds);
 };
 
 

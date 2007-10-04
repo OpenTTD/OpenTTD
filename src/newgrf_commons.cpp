@@ -188,7 +188,7 @@ uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byt
  * checking what is available
  * @param inds Industryspec that comes from the grf decoding process
  */
-void IndustryOverrideManager::SetEntitySpec(const IndustrySpec *inds)
+void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 {
 	/* First step : We need to find if this industry is already specified in the savegame data */
 	IndustryType ind_id = this->GetID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid);
@@ -206,6 +206,7 @@ void IndustryOverrideManager::SetEntitySpec(const IndustrySpec *inds)
 			 * Or it is a simple substitute.
 			 * In both case, we need to find a free available slot */
 			ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid, inds->grf_prop.subst_id);
+			inds->grf_prop.override = invalid_ID;  // make sure it will not be detected as overriden
 		}
 	}
 
