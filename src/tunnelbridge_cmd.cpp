@@ -532,29 +532,12 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 
 	/* slope of end tile must be complementary to the slope of the start tile */
 	if (end_tileh != ComplementSlope(start_tileh)) {
-		/*
-		 * A lot of things can be autosloped, but then there is still a structure with
-		 * on top of a tunnel entrance which is bad. Therefor we disallow those.
-		 * Furthermore half road bits (not tram bits) can always be removed, so we
-		 * need to preserve that behaviour here too.
-		 */
-		switch (GetTileType(end_tile)) {
-			default: return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
+		/* Check if there is a structure on the terraformed tile. Do not add the cost, that will be done by the terraforming */
+		ret = DoCommand(end_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR);
+		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
 
-			/* Tiles that can be (safely) "auto" terraformed for tunnels */
-			case MP_ROAD:
-				if (GetRoadTileType(end_tile) != ROAD_TILE_NORMAL ||       // Depots and crossings can't be removed
-						(GetRoadTypes(end_tile) & ROADTYPES_TRAMHWAY) != 0 ||      // Half tram bits must not be removed
-						COUNTBITS(GetRoadBits(end_tile, ROADTYPE_ROAD)) > 1) { // Non-half road bits must not be removed either
-					return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
-				}
-				/* FALL THROUGH */
-			case MP_CLEAR:
-			case MP_TREES:
-				ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
-				if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
-				break;
-		}
+		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
+		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
 	} else {
 		ret = DoCommand(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
