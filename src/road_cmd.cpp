@@ -836,10 +836,9 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 		case ROAD_TILE_NORMAL: {
 			RoadBits b = GetAllRoadBits(tile);
 
-#define M(x) (1 << (x))
 			/* Clear the road if only one piece is on the tile OR the AI tries
 			 * to clear town road OR we are not using the DC_AUTO flag */
-			if ((M(b) & (M(ROAD_NW) | M(ROAD_SW) | M(ROAD_SE) | M(ROAD_NE))) ||
+			if ((COUNTBITS(b) == 1 && GetRoadBits(tile, ROADTYPE_TRAM) == ROAD_NONE) ||
 			    ((flags & DC_AI_BUILDING) && IsTileOwner(tile, OWNER_TOWN)) ||
 			    !(flags & DC_AUTO)
 				) {
@@ -856,7 +855,6 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 			}
 			return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 		}
-#undef M
 
 		case ROAD_TILE_CROSSING: {
 			RoadTypes rts = GetRoadTypes(tile);
