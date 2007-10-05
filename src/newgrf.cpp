@@ -1699,8 +1699,6 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 
 static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **bufp, int len)
 {
-	if (!HASBIT(_ttdpatch_flags[3], 0x07)) return true;
-
 	byte *buf = *bufp;
 	bool ret = false;
 
@@ -1805,8 +1803,6 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 
 static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp, int len)
 {
-	if (!HASBIT(_ttdpatch_flags[3], 0x07)) return true;
-
 	byte *buf = *bufp;
 	bool ret = false;
 
@@ -2937,8 +2933,6 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 
 static void IndustryMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 {
-	if (!HASBIT(_ttdpatch_flags[3], 0x07)) return;
-
 	byte *bp = &buf[4 + idcount + cidcount * 3];
 	uint16 groupid = grf_load_word(&bp);
 
@@ -2963,8 +2957,6 @@ static void IndustryMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 
 static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 {
-	if (!HASBIT(_ttdpatch_flags[3], 0x07)) return;
-
 	byte *bp = &buf[4 + idcount + cidcount * 3];
 	uint16 groupid = grf_load_word(&bp);
 
