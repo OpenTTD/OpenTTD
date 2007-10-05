@@ -685,6 +685,17 @@ static void DrawSelectionSprite(SpriteID image, SpriteID pal, const TileInfo *ti
 	}
 }
 
+/**
+ * Draws a selection rectangle on a tile.
+ *
+ * @param ti TileInfo Tile that is being drawn
+ * @param pal Palette to apply.
+ */
+static void DrawTileSelectionRect(const TileInfo *ti, SpriteID pal)
+{
+	DrawSelectionSprite(SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh], pal, ti);
+}
+
 static bool IsPartOfAutoLine(int px, int py)
 {
 	px -= _thd.selstart.x;
@@ -718,17 +729,38 @@ static const int _AutorailType[6][2] = {
 #include "table/autorail.h"
 
 /**
+ * Draws autorail highlights.
+ *
+ * @param *ti TileInfo Tile that is being drawn
+ * @param autorail_type Offset into _AutorailTilehSprite[][]
+ */
+static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
+{
+	SpriteID image;
+	SpriteID pal;
+	int offset;
+
+	offset = _AutorailTilehSprite[ti->tileh][autorail_type];
+	if (offset >= 0) {
+		image = SPR_AUTORAIL_BASE + offset;
+		pal = PAL_NONE;
+	} else {
+		image = SPR_AUTORAIL_BASE - offset;
+		pal = PALETTE_SEL_TILE_RED;
+	}
+
+	DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti);
+}
+
+/**
  * Checks if the specified tile is selected and if so draws selection using correct selectionstyle.
  * @param *ti TileInfo Tile that is being drawn
  */
 static void DrawTileSelection(const TileInfo *ti)
 {
-	SpriteID image;
-	SpriteID pal;
-
 	/* Draw a red error square? */
 	if (_thd.redsq != 0 && _thd.redsq == ti->tile) {
-		DrawSelectionSprite(SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh], PALETTE_TILE_RED_PULSATING, ti);
+		DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);
 		return;
 	}
 
@@ -739,8 +771,7 @@ static void DrawTileSelection(const TileInfo *ti)
 	if (IS_INSIDE_1D(ti->x, _thd.pos.x, _thd.size.x) &&
 			IS_INSIDE_1D(ti->y, _thd.pos.y, _thd.size.y)) {
 		if (_thd.drawstyle & HT_RECT) {
-			image = SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh];
-			DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE, ti);
+			DrawTileSelectionRect(ti, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE);
 		} else if (_thd.drawstyle & HT_POINT) {
 			/* Figure out the Z coordinate for the single dot. */
 			byte z = ti->z;
@@ -752,25 +783,12 @@ static void DrawTileSelection(const TileInfo *ti)
 		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) {
 			/* autorail highlight piece under cursor */
 			uint type = _thd.drawstyle & 0xF;
-			int offset;
-
 			assert(type <= 5);
-
-			offset = _AutorailTilehSprite[ti->tileh][_AutorailType[type][0]];
-			if (offset >= 0) {
-				image = SPR_AUTORAIL_BASE + offset;
-				pal = PAL_NONE;
-			} else {
-				image = SPR_AUTORAIL_BASE - offset;
-				pal = PALETTE_TO_RED;
-			}
-
-			DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti);
+			DrawAutorailSelection(ti, _AutorailType[type][0]);
 
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) {
 			/* autorail highlighting long line */
 			int dir = _thd.drawstyle & ~0xF0;
-			int offset;
 			uint side;
 
 			if (dir < 2) {
@@ -780,16 +798,7 @@ static void DrawTileSelection(const TileInfo *ti)
 				side = delta(delta(TileX(start), TileX(ti->tile)), delta(TileY(start), TileY(ti->tile)));
 			}
 
-			offset = _AutorailTilehSprite[ti->tileh][_AutorailType[dir][side]];
-			if (offset >= 0) {
-				image = SPR_AUTORAIL_BASE + offset;
-				pal = PAL_NONE;
-			} else {
-				image = SPR_AUTORAIL_BASE - offset;
-				pal = PALETTE_TO_RED;
-			}
-
-			DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti);
+			DrawAutorailSelection(ti, _AutorailType[dir][side]);
 		}
 		return;
 	}
@@ -800,7 +809,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			IS_INSIDE_1D(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
 			IS_INSIDE_1D(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
 		/* Draw a blue rect. */
-		DrawSelectionSprite(SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh], PALETTE_SEL_TILE_BLUE, ti);
+		DrawTileSelectionRect(ti, PALETTE_SEL_TILE_BLUE);
 		return;
 	}
 }
