@@ -1441,7 +1441,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->production_rate[0] = indspec->production_rate[0];
 	i->production_rate[1] = indspec->production_rate[1];
 
-	if (_patches.smooth_economy) {
+	/* don't use smooth economy for industries using production callbacks */
+	if (_patches.smooth_economy  && !(HASBIT(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HASBIT(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL))) {
 		i->production_rate[0] = min((RandomRange(256) + 128) * i->production_rate[0] >> 8 , 255);
 		i->production_rate[1] = min((RandomRange(256) + 128) * i->production_rate[1] >> 8 , 255);
 	}
@@ -1862,6 +1863,8 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 	bool standard = true;
 	bool suppress_message = false;
+	/* don't use smooth economy for industries using production callbacks */
+	bool smooth_economy = _patches.smooth_economy && !(HASBIT(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HASBIT(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL));
 	byte div = 0;
 	byte mul = 0;
 
@@ -1888,7 +1891,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		}
 	}
 
-	if (standard && monthly != _patches.smooth_economy) return;
+	if (standard && monthly != smooth_economy) return;
 
 	if (standard && indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 
@@ -1896,7 +1899,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		/* decrease or increase */
 		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE;
 
-		if (_patches.smooth_economy) {
+		if (smooth_economy) {
 			closeit = true;
 			for (byte j = 0; j < 2 && i->produced_cargo[j] != CT_INVALID; j++){
 				uint32 r = Random();
@@ -1949,7 +1952,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 
 	if (standard && indspec->life_type & INDUSTRYLIFE_PROCESSING) {
-		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, _patches.smooth_economy ? 180 : 2)) {
+		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, smooth_economy ? 180 : 2)) {
 			closeit = true;
 		}
 	}
