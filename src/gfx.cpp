@@ -43,7 +43,7 @@ int _pal_count_dirty;
 Colour _cur_palette[256];
 byte _stringwidth_table[FS_END][224];
 
-static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode);
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL);
 
 FontSize _cur_fontsize;
 static FontSize _last_fontsize;
@@ -652,23 +652,32 @@ int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw
 	return DoDrawString(buffer, x, y, color);
 }
 
-void DrawSprite(SpriteID img, SpriteID pal, int x, int y)
+void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub)
 {
 	if (HASBIT(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH)) + 1;
-		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_TRANSPARENT);
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_TRANSPARENT, sub);
 	} else if (pal != PAL_NONE) {
 		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH)) + 1;
-		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_COLOUR_REMAP);
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_COLOUR_REMAP, sub);
 	} else {
-		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_NORMAL);
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_NORMAL, sub);
 	}
 }
 
-static inline void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode)
+static inline void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub)
 {
 	const DrawPixelInfo *dpi = _cur_dpi;
 	Blitter::BlitterParams bp;
+
+	/* Amount of pixels to clip from the source sprite */
+	int clip_left   = (sub != NULL ? max(0,                   -sprite->x_offs + sub->left       ) : 0);
+	int clip_top    = (sub != NULL ? max(0,                   -sprite->y_offs + sub->top        ) : 0);
+	int clip_right  = (sub != NULL ? max(0, sprite->width  - (-sprite->x_offs + sub->right  + 1)) : 0);
+	int clip_bottom = (sub != NULL ? max(0, sprite->height - (-sprite->y_offs + sub->bottom + 1)) : 0);
+
+	if (clip_left + clip_right >= sprite->width) return;
+	if (clip_top + clip_bottom >= sprite->height) return;
 
 	/* Move to the correct offset */
 	x += sprite->x_offs;
@@ -678,12 +687,16 @@ static inline void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMod
 	bp.sprite = sprite->data;
 	bp.sprite_width = sprite->width;
 	bp.sprite_height = sprite->height;
-	bp.width = UnScaleByZoom(sprite->width, dpi->zoom);
-	bp.height = UnScaleByZoom(sprite->height, dpi->zoom);
+	bp.width = UnScaleByZoom(sprite->width - clip_left - clip_right, dpi->zoom);
+	bp.height = UnScaleByZoom(sprite->height - clip_top - clip_bottom, dpi->zoom);
 	bp.top = 0;
 	bp.left = 0;
-	bp.skip_left = 0;
-	bp.skip_top = 0;
+	bp.skip_left = UnScaleByZoom(clip_left, dpi->zoom);
+	bp.skip_top = UnScaleByZoom(clip_top, dpi->zoom);
+
+	x += ScaleByZoom(bp.skip_left, dpi->zoom);
+	y += ScaleByZoom(bp.skip_top, dpi->zoom);
+
 	bp.dst = dpi->dst_ptr;
 	bp.pitch = dpi->pitch;
 	bp.remap = _color_remap_ptr;

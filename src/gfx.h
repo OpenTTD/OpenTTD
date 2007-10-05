@@ -242,6 +242,16 @@ DECLARE_POSTFIX_INCREMENT(FontSize);
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
+/**
+ * Used to only draw a part of the sprite.
+ * Draw the subsprite in the rect (sprite_x_offset + left, sprite_y_offset + top) to (sprite_x_offset + right, sprite_y_offset + bottom).
+ * Both corners are included in the drawing area.
+ */
+struct SubSprite {
+	int left, top, right, bottom;
+};
+
+void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub = NULL);
 
 /* XXX doesn't really belong here, but the only
  * consumers always use it in conjunction with DoDrawString() */

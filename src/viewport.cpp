@@ -66,6 +66,7 @@ struct StringSpriteToDraw {
 struct TileSpriteToDraw {
 	SpriteID image;
 	SpriteID pal;
+	const SubSprite *sub;           ///< only draw a rectangular part of the sprite
 	TileSpriteToDraw *next;
 	int32 x;
 	int32 y;
@@ -75,6 +76,7 @@ struct TileSpriteToDraw {
 struct ChildScreenSpriteToDraw {
 	SpriteID image;
 	SpriteID pal;
+	const SubSprite *sub;           ///< only draw a rectangular part of the sprite
 	int32 x;
 	int32 y;
 	ChildScreenSpriteToDraw *next;
@@ -83,6 +85,7 @@ struct ChildScreenSpriteToDraw {
 struct ParentSpriteToDraw {
 	SpriteID image;                 ///< sprite to draw
 	SpriteID pal;                   ///< palette to use
+	const SubSprite *sub;           ///< only draw a rectangular part of the sprite
 
 	int32 x;                        ///< screen X coordinate of sprite
 	int32 y;                        ///< screen Y coordinate of sprite
@@ -428,7 +431,18 @@ void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte 
 	InvalidateWidget(w, widget_zoom_out);
 }
 
-void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z)
+/**
+ * Draws a ground sprite at a specific world-coordinate.
+ *
+ * @param image the image to draw.
+ * @param pal the provided palette.
+ * @param x position x of the sprite.
+ * @param y position y of the sprite.
+ * @param z position z of the sprite.
+ * @param sub Only draw a part of the sprite.
+ *
+ */
+void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, const SubSprite *sub)
 {
 	ViewportDrawer *vd = _cur_vd;
 	TileSpriteToDraw *ts;
@@ -445,6 +459,7 @@ void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z)
 
 	ts->image = image;
 	ts->pal = pal;
+	ts->sub = sub;
 	ts->next = NULL;
 	ts->x = x;
 	ts->y = y;
@@ -453,14 +468,22 @@ void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z)
 	vd->last_tile = &ts->next;
 }
 
-void DrawGroundSprite(SpriteID image, SpriteID pal)
+/**
+ * Draws a ground sprite for the current tile.
+ * If the current tile is drawn on top of a foundation the sprite is added as child sprite to the "foundation"-ParentSprite.
+ *
+ * @param image the image to draw.
+ * @param pal the provided palette.
+ * @param sub Only draw a part of the sprite.
+ */
+void DrawGroundSprite(SpriteID image, SpriteID pal, const SubSprite *sub)
 {
 	if (_offset_ground_sprites) {
 		/* offset ground sprite because of foundation? */
-		AddChildSpriteScreen(image, pal, _cur_vd->offs_x, _cur_vd->offs_y);
+		AddChildSpriteScreen(image, pal, _cur_vd->offs_x, _cur_vd->offs_y, false, sub);
 	} else {
 		_added_tile_sprite = true;
-		DrawGroundSpriteAt(image, pal, _cur_ti->x, _cur_ti->y, _cur_ti->z);
+		DrawGroundSpriteAt(image, pal, _cur_ti->x, _cur_ti->y, _cur_ti->z, sub);
 	}
 }
 
@@ -472,7 +495,18 @@ void OffsetGroundSprite(int x, int y)
 	_offset_ground_sprites = true;
 }
 
-static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z)
+/**
+ * Adds a child sprite to a parent sprite.
+ * In contrast to "AddChildSpriteScreen()" the sprite position is in world coordinates
+ *
+ * @param image the image to draw.
+ * @param pal the provided palette.
+ * @param x position x of the sprite.
+ * @param y position y of the sprite.
+ * @param z position z of the sprite.
+ * @param sub Only draw a part of the sprite.
+ */
+static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z, const SubSprite *sub)
 {
 	const ViewportDrawer *vd = _cur_vd;
 	Point pt = RemapCoords(x, y, z);
@@ -484,7 +518,7 @@ static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z
 			pt.y + spr->y_offs + spr->height <= vd->dpi.top)
 		return;
 
-	AddChildSpriteScreen(image, pal, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top);
+	AddChildSpriteScreen(image, pal, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top, false, sub);
 }
 
 /** Draw a (transparent) sprite at given coordinates with a given bounding box.
@@ -509,8 +543,9 @@ static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z
  * @param bb_offset_x bounding box extent towards negative X (world),
  * @param bb_offset_y bounding box extent towards negative Y (world),
  * @param bb_offset_z bounding box extent towards negative Z (world)
+ * @param sub Only draw a part of the sprite.
  */
-void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, int dz, int z, bool transparent, int bb_offset_x, int bb_offset_y, int bb_offset_z)
+void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, int dz, int z, bool transparent, int bb_offset_x, int bb_offset_y, int bb_offset_z, const SubSprite *sub)
 {
 	ViewportDrawer *vd = _cur_vd;
 	ParentSpriteToDraw *ps;
@@ -526,7 +561,7 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	}
 
 	if (vd->combine_sprites == 2) {
-		AddCombinedSprite(image, pal, x, y, z);
+		AddCombinedSprite(image, pal, x, y, z, sub);
 		return;
 	}
 
@@ -585,6 +620,7 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 
 	ps->image = image;
 	ps->pal = pal;
+	ps->sub = sub;
 	ps->xmin = x + bb_offset_x;
 	ps->xmax = x + max(bb_offset_x, w) - 1;
 
@@ -613,7 +649,17 @@ void EndSpriteCombine()
 	_cur_vd->combine_sprites = 0;
 }
 
-void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool transparent)
+/**
+ * Add a child sprite to a parent sprite.
+ *
+ * @param image the image to draw.
+ * @param pal the provided palette.
+ * @param x sprite x-offset (screen coordinates) relative to parent sprite.
+ * @param y sprite y-offset (screen coordinates) relative to parent sprite.
+ * @param transparent if true, switch the palette between the provided palette and the transparent palette,
+ * @param sub Only draw a part of the sprite.
+ */
+void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool transparent, const SubSprite *sub)
 {
 	ViewportDrawer *vd = _cur_vd;
 	ChildScreenSpriteToDraw *cs;
@@ -642,6 +688,7 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 
 	cs->image = image;
 	cs->pal = pal;
+	cs->sub = sub;
 	cs->x = x;
 	cs->y = y;
 	cs->next = NULL;
@@ -1179,7 +1226,7 @@ static void ViewportDrawTileSprites(TileSpriteToDraw *ts)
 {
 	do {
 		Point pt = RemapCoords(ts->x, ts->y, ts->z);
-		DrawSprite(ts->image, ts->pal, pt.x, pt.y);
+		DrawSprite(ts->image, ts->pal, pt.x, pt.y, ts->sub);
 		ts = ts->next;
 	} while (ts != NULL);
 }
@@ -1250,10 +1297,10 @@ static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
 		const ParentSpriteToDraw* ps = *psd;
 		const ChildScreenSpriteToDraw* cs;
 
-		if (ps->image != SPR_EMPTY_BOUNDING_BOX) DrawSprite(ps->image, ps->pal, ps->x, ps->y);
+		if (ps->image != SPR_EMPTY_BOUNDING_BOX) DrawSprite(ps->image, ps->pal, ps->x, ps->y, ps->sub);
 
 		for (cs = ps->child; cs != NULL; cs = cs->next) {
-			DrawSprite(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y);
+			DrawSprite(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y, cs->sub);
 		}
 	}
 }

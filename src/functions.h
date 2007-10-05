@@ -132,7 +132,6 @@ bool ScrollWindowTo(int x, int y, Window *w, bool instant = false);
 
 bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
 bool ScrollMainWindowTo(int x, int y, bool instant = false);
-void DrawSprite(SpriteID img, SpriteID pal, int x, int y);
 bool EnsureNoVehicle(TileIndex tile);
 bool EnsureNoVehicleOnGround(TileIndex tile);
 
