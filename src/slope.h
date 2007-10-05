@@ -41,6 +41,16 @@ enum Slope {
 };
 
 /**
+ * Enumeration of tile corners
+ */
+enum Corner {
+	CORNER_W = 0,
+	CORNER_S = 1,
+	CORNER_E = 2,
+	CORNER_N = 3,
+};
+
+/**
  * Checks if a slope is steep.
  *
  * @param s The given #Slope.
@@ -73,19 +83,19 @@ static inline Slope ComplementSlope(Slope s)
  *
  * @pre      The slope must be a slope with one corner raised or a steep slope.
  * @param s  The #Slope.
- * @return   Number of the highest corner. (0 west, 1 south, 2 east, 3 north)
+ * @return   Highest corner.
  */
-static inline byte GetHighestSlopeCorner(Slope s)
+static inline Corner GetHighestSlopeCorner(Slope s)
 {
 	switch (s) {
 		case SLOPE_W:
-		case SLOPE_STEEP_W: return 0;
+		case SLOPE_STEEP_W: return CORNER_W;
 		case SLOPE_S:
-		case SLOPE_STEEP_S: return 1;
+		case SLOPE_STEEP_S: return CORNER_S;
 		case SLOPE_E:
-		case SLOPE_STEEP_E: return 2;
+		case SLOPE_STEEP_E: return CORNER_E;
 		case SLOPE_N:
-		case SLOPE_STEEP_N: return 3;
+		case SLOPE_STEEP_N: return CORNER_N;
 		default: NOT_REACHED();
 	}
 }
@@ -101,6 +111,40 @@ static inline uint GetSlopeMaxZ(Slope s)
 	if (s == SLOPE_FLAT) return 0;
 	if (IsSteepSlope(s)) return 2 * TILE_HEIGHT;
 	return TILE_HEIGHT;
+}
+
+/**
+ * Returns the opposite corner.
+ *
+ * @param corner A #Corner.
+ * @return The opposite corner to "corner".
+ */
+static inline Corner OppositeCorner(Corner corner)
+{
+	return (Corner)(corner ^ 2);
+}
+
+/**
+ * Returns the slope with a specific corner raised.
+ *
+ * @param corner The #Corner.
+ * @return The #Slope with corner "corner" raised.
+ */
+static inline Slope SlopeWithOneCornerRaised(Corner corner)
+{
+	assert(IS_INT_INSIDE(corner, 0, 4));
+	return (Slope)(1 << corner);
+}
+
+/**
+ * Returns the slope with all except one corner raised.
+ *
+ * @param corner The #Corner.
+ * @return The #Slope with all corners but "corner" raised.
+ */
+static inline Slope SlopeWithThreeCornersRaised(Corner corner)
+{
+	return ComplementSlope(SlopeWithOneCornerRaised(corner));
 }
 
 

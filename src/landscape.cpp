@@ -77,23 +77,23 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s)
 	}
 
 	uint dz = IsSteepSlope(*s) ? TILE_HEIGHT : 0;
-	byte highest_corner = GetHighestSlopeCorner(*s);
+	Corner highest_corner = GetHighestSlopeCorner(*s);
 
 	switch (f) {
 		case FOUNDATION_INCLINED_X:
-			*s = (highest_corner <= 1 ? SLOPE_SW : SLOPE_NE);
+			*s = (((highest_corner == CORNER_W) || (highest_corner == CORNER_S)) ? SLOPE_SW : SLOPE_NE);
 			break;
 
 		case FOUNDATION_INCLINED_Y:
-			*s = (((highest_corner == 1) || (highest_corner == 2)) ? SLOPE_SE : SLOPE_NW);
+			*s = (((highest_corner == CORNER_S) || (highest_corner == CORNER_E)) ? SLOPE_SE : SLOPE_NW);
 			break;
 
 		case FOUNDATION_STEEP_LOWER:
-			*s = (Slope) (1 << highest_corner);
+			*s = SlopeWithOneCornerRaised(highest_corner);
 			break;
 
 		case FOUNDATION_STEEP_HIGHER:
-			*s = (Slope) (*s & ~SLOPE_STEEP);
+			*s = SlopeWithThreeCornersRaised(OppositeCorner(highest_corner));
 			break;
 
 		default: NOT_REACHED();
@@ -271,7 +271,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			lower_base + (ti->tileh & ~SLOPE_STEEP), PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z
 		);
 
-		byte highest_corner = GetHighestSlopeCorner(ti->tileh);
+		Corner highest_corner = GetHighestSlopeCorner(ti->tileh);
 		ti->z += ApplyFoundationToSlope(f, &ti->tileh);
 
 		if (IsInclinedFoundation(f)) {
