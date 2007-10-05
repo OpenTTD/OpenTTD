@@ -515,6 +515,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 		case WE_RESIZE:
 			w->vscroll.cap += e->we.sizing.diff.y / 14;
 			w->widget[SNGRFS_FILE_LIST].data = (w->vscroll.cap << 8) + 1;
+			SetupNewGRFWindow(w);
 			break;
 	}
 }
