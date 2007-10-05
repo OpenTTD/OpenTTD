@@ -98,6 +98,13 @@ Town::~Town()
 // Local
 static int _grow_town_result;
 
+/* Describe the possible states */
+enum TownGrowthResult {
+	GROWTH_SUCCEED         = -1,
+	GROWTH_SEARCH_STOPPED  =  0
+//	GROWTH_SEARCH_RUNNING >=  1
+};
+
 static bool BuildTownHouse(Town *t, TileIndex tile);
 static void DoBuildTownHouse(Town *t, TileIndex tile);
 
@@ -861,7 +868,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 		/* If there are enough neighbors stop here */
 		if (counter >= 3) {
 			if (BuildTownHouse(t, tile)) {
-				_grow_town_result = -1;
+				_grow_town_result = GROWTH_SUCCEED;
 				return true;
 			}
 			return false;
@@ -881,7 +888,7 @@ static bool GrowTownWithExtraHouse(Town *t, TileIndex tile)
 static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
 {
 	if (CmdSucceeded(DoCommand(tile, rcmd, t->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD))) {
-		_grow_town_result = -1;
+		_grow_town_result = GROWTH_SUCCEED;
 		return true;
 	}
 	return false;
@@ -936,7 +943,7 @@ static bool GrowTownWithBridge(const Town *t, TileIndex tile, RoadBits rcmd)
 		/* Can we actually build the bridge? */
 		if (CmdSucceeded(DoCommand(tile, bridge_tile, bridge_type | ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE))) {
 			DoCommand(tile, bridge_tile, bridge_type | ((0x80 | ROADTYPES_ROAD) << 8), DC_EXEC | DC_AUTO, CMD_BUILD_BRIDGE);
-			_grow_town_result--;
+			_grow_town_result = GROWTH_SUCCEED;
 			return true;
 		}
 	}
@@ -972,7 +979,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	if (cur_rb == ROAD_NONE) {
 		/* Tile has no road. First reset the status counter
 		 * to say that this is the last iteration. */
-		_grow_town_result = 0;
+		_grow_town_result = GROWTH_SEARCH_STOPPED;
 
 		/* Remove hills etc */
 		LevelTownLand(tile);
@@ -1024,7 +1031,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		/* Continue building on a partial road.
 		 * Should be allways OK, so we only generate
 		 * the fitting RoadBits */
-		_grow_town_result = 0;
+		_grow_town_result = GROWTH_SEARCH_STOPPED;
 
 		switch (_patches.town_layout) {
 			default: NOT_REACHED();
@@ -1103,13 +1110,13 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 				/* And build a house.
 				 * Set result to -1 if we managed to build it. */
 				if (BuildTownHouse(t1, house_tile)) {
-					_grow_town_result = -1;
+					_grow_town_result = GROWTH_SUCCEED;
 				}
 			}
 			return;
 		}
 
-		_grow_town_result = 0;
+		_grow_town_result = GROWTH_SEARCH_STOPPED;
 	}
 
 	/* Return if a water tile */
@@ -1176,7 +1183,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 		if (IsTileType(tile, MP_ROAD)) {
 			/* Don't allow building over roads of other cities */
 			if (IsTileOwner(tile, OWNER_TOWN) && GetTownByTile(tile) != t) {
-				_grow_town_result = -1;
+				_grow_town_result = GROWTH_SUCCEED;
 			} else if (_game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
 				 * owner :) (happy happy happy road now) */
