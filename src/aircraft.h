@@ -33,18 +33,27 @@ static inline bool IsNormalAircraft(const Vehicle *v)
 	return v->subtype <= AIR_AIRCRAFT;
 }
 
-/** Checks if an aircraft is buildable at the tile in question
+/** Checks if an aircraft can use the station in question
  * @param engine The engine to test
- * @param tile The tile where the hangar is
- * @return true if the aircraft can be build
+ * @param st The station
+ * @return true if the aircraft can use the station
  */
-static inline bool IsAircraftBuildableAtStation(EngineID engine, TileIndex tile)
+static inline bool CanAircraftUseStation(EngineID engine, const Station *st)
 {
-	const Station *st = GetStationByTile(tile);
 	const AirportFTAClass *apc = st->Airport();
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
 
 	return (apc->flags & (avi->subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS)) != 0;
+}
+
+/** Checks if an aircraft can use the station at the tile in question
+ * @param engine The engine to test
+ * @param tile The tile where the station is
+ * @return true if the aircraft can use the station
+ */
+static inline bool CanAircraftUseStation(EngineID engine, TileIndex tile)
+{
+	return CanAircraftUseStation(engine, GetStationByTile(tile));
 }
 
 /**

@@ -19,6 +19,7 @@
 #include "vehicle_gui.h"
 #include "cargotype.h"
 #include "strings.h"
+#include "aircraft.h"
 
 DEFINE_OLD_POOL_GENERIC(Order, Order)
 
@@ -198,7 +199,9 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					break;
 
 				case VEH_AIRCRAFT:
-					if (!(st->facilities & FACIL_AIRPORT)) return CMD_ERROR;
+					if (!(st->facilities & FACIL_AIRPORT) || !CanAircraftUseStation(v->engine_type, st)) {
+						return CMD_ERROR;
+					}
 					break;
 
 				default: return CMD_ERROR;
@@ -239,7 +242,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				if (!CheckOwnership(st->owner) ||
 						!(st->facilities & FACIL_AIRPORT) ||
-						st->Airport()->nof_depots == 0) {
+						st->Airport()->nof_depots == 0 ||
+						!CanAircraftUseStation(v->engine_type, st)) {
 					return CMD_ERROR;
 				}
 			} else {
@@ -1038,7 +1042,7 @@ static TileIndex GetStationTileForVehicle(const Vehicle* v, const Station* st)
 	switch (v->type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:     return st->train_tile;
-		case VEH_AIRCRAFT:  return st->airport_tile;
+		case VEH_AIRCRAFT:  return CanAircraftUseStation(v->engine_type, st) ? st->airport_tile : 0;
 		case VEH_SHIP:      return st->dock_tile;
 		case VEH_ROAD:
 			if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {

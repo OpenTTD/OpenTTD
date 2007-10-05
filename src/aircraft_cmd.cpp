@@ -282,7 +282,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	/* Prevent building aircraft types at places which can't handle them */
-	if (!IsAircraftBuildableAtStation(p1, tile)) return CMD_ERROR;
+	if (!CanAircraftUseStation(p1, tile)) return CMD_ERROR;
 
 	/* Allocate 2 or 3 vehicle structs, depending on type
 	 * vl[0] = aircraft, vl[1] = shadow, [vl[2] = rotor] */

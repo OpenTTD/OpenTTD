@@ -765,7 +765,7 @@ static void GenerateBuildAircraftList(Window *w)
 	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
 		if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_player)) continue;
 		/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
-		if (w->window_number > VEH_END && !IsAircraftBuildableAtStation(eid, w->window_number)) continue;
+		if (w->window_number > VEH_END && !CanAircraftUseStation(eid, w->window_number)) continue;
 
 		EngList_Add(&bv->eng_list, eid);
 		if (eid == bv->sel_engine) sel_id = eid;
