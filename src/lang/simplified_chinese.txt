@@ -1900,7 +1900,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}隧道�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}必须先拆除隧道
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}必须先拆除桥梁
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}起止点不能相同
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}桥下必须有不平整的地面或水面
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}起止两端必须在一条线上
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}此处不适合作为隧道入口
 STR_500D                                                        :{GOLD}{STRING}，{} {VELOCITY} {WHITE}{CURRENCY}

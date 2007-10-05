@@ -2075,7 +2075,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nemohu v
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Nutno nejprve zničit tunel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Nutno nejprve zničit most
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nelze začít a skončit na stejném místě
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Pod mostem je nutná rovná země nebo voda
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Začátek a konec musí být ve stejné výšce
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Místo nevhodné pro vjezd do tunelu
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

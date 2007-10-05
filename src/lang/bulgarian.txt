@@ -2008,7 +2008,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Не м�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Първо разрушете тунела
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Първо трябва да разрушите моста
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Не може да започва и да свърша на едно и също място
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Равна земя или вода е необходима под моста
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Началото и краят трябва да са на една линия
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Мястото е неподходящо за вход на тунел
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

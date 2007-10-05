@@ -2017,7 +2017,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Land kan
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Der Tunnel muss zuerst abgerissen werden
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Die Brücke muss erst abgerissen werden
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Anfang und Ende können nicht im selben Feld liegen
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Unter der Brücke ist ebenes Land oder Wasser erforderlich
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Anfang und Ende müssen auf einer Ebene liegen
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Platz ist nicht für einen Tunnel geeignet
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

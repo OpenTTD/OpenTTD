@@ -2017,7 +2017,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Terenul 
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Mai întâi trebuie demolat tunelul
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Mai întâi trebuie demolat podul
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Cele două capete nu se pot situa în acelaşi loc
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Sub pod trebuie să existe teren plat sau apă
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Cele două capete trebuie să se situeze în linie
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Loc nepotrivit pentru intrarea într-un tunel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

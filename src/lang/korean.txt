@@ -2011,7 +2011,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}지형 �
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}터널을 먼저 제거하십시오
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}다리를 먼저 제거하십시오
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}같은 위치에서 시작하고 끝낼 수 없습니다
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}다리 아래에는 평평한 땅이나 물이 있어야 합니다!
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}시작과 끝은 한 줄 위에 있어야 합니다
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}터널 입구에 알맞지 않은 장소입니다
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

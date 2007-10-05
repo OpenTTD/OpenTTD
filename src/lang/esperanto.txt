@@ -1910,7 +1910,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Ne eblas
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Antaŭe forigu tunelon
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Antaŭe forigu ponton
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Ne povas komenci kaj fini en la sama loko
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Ebena lando aŭ akvo necesas sub la ponto
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Komenco kaj fino devas esti samliniaj
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nekonvena loko por tunelkomenco
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

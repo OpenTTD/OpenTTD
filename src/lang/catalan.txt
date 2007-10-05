@@ -2017,7 +2017,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Impossib
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Primer has d'enderrocar el túnel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Primer has d'enderrocar el pont
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}No es pot començar i acabar a la mateixa posició
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Es necessita una certa elevació sobre el terreny o aigua sota el pont
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Inici i final han d'estar en línia recta
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Lloc inadequat per l'entrada del túnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

@@ -2017,7 +2017,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Det er u
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Det er nødvendigt at rive tunnelen ned først
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Det er nødvendigt at rive broen ned først
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Kan ikke starte og slutte på samme position
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Der skal være fladt land eller vand under broen
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Start- og slutposition skal være på linje
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Dette sted er ikke brugbart til starten af en tunnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

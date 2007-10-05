@@ -2120,7 +2120,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nem lehe
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Előbb le kell rombolnod az alagutat
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Előbb le kell rombolnod a hidat
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nem kezdődhet és végződhet ugyanott
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Sima talaj vagy víz kell, hogy legyen a híd alatt
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}A kezdetének és a végének egy vonalban kell lennie
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nem alkalmas a hely alagút bejáratának
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

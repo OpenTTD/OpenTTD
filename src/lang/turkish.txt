@@ -2012,7 +2012,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Tünelin
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Önce tünel yıkılmalı
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Önce köprü yıkılmalı
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Aynı noktada başlayıp bitemez
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Köprü altınin düz olması gerekiyor
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Başlangıç ve bitiş aynı çizgi üzerinde olmalı
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Yer tünel girişi için uygun değil
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

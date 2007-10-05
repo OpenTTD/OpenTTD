@@ -2117,7 +2117,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Ei saa t
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Enne tuleb tunnel hävitada
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Enne tuleb sild hävitada
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Ei saa alata ja lõppeda samas kohas
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Silla otsade kõrgus peab sama olema
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Algus ja lõpp peavad samal joonel olema
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Koht ei sobi tunneli sissekäiguks
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

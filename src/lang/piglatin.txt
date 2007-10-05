@@ -2016,7 +2016,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Unablewa
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Ustmay emolishday unneltay irstfay
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Ustmay emolishday idgebray irstfay
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Annotcay artstay andway endway inway ethay amesay otspay
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Evellay andlay orway aterway equiredray underway idgebray
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Artstay andway endway ustmay ebay inway inelay
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Itesay unsuitableway orfay unneltay entranceway
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

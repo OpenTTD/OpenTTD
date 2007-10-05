@@ -2017,7 +2017,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}無法�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}必須先摧毀隧道
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}必須先摧毀橋樑
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}不能結束在開始地點
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}橋樑下需要平地或水面
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}開始與結束地點必須位在同一直線
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}隧道入口地點不適合
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

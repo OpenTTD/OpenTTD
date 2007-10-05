@@ -2097,7 +2097,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nemogoč
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Najprej moraš porušiti predor
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Najprej moraš porušiti most
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Ni mogoče začeti in končati v isti točki
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Raven teren ali vodovje zahtevano pod mostom
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Začetek in konec morata biti na isti višini
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Lokacija neprimerna za vhod v predor
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

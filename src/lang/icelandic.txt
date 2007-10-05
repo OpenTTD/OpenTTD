@@ -1877,7 +1877,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Get ekki
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Verður að eyða göngum fyrst
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Verður að eyða brú fyrst
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Getur ekki byrjað og endað á sama stað
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Sléttlendi eða vatn nauðsynlegt undir brú
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Verður að byrja og enda í sömu línu
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Óhentug staðsetning fyrir enda gangnanna
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

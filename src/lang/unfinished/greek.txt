@@ -1640,7 +1640,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Αδύν
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Πρέπει πρώτα να καταστραφεί το τούνελ
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Πρέπει πρώτα να καταστραφεί η γέφυρα
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Δεν γίνεται να ξεκινάει και να τελειώνει στο ίδιο σημείο
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Απαιτείται επίπεδο έδαφος ή νερό κάτω από τη γέφυρα
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Η αρχή και το τέλος πρέπει να είναι σε ευθεία
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

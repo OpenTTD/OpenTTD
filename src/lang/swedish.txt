@@ -2016,7 +2016,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kan inte
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Måste riva tunnel först
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Måste riva bro först
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Kan inte börja och sluta på samma plats
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Platt land eller vatten krävs under bro
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Start- och slutpunkt måste ligga i linje
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Platsen passar inte för tunnelentré
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

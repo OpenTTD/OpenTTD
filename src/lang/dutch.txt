@@ -2017,7 +2017,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kan geen
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunnel moet eerst afgebroken worden
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Brug moet eerst afgebroken worden
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Kan niet beginnen en eindigen op dezelfde plaats
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Vlak land of water vereist onder brug
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Begin en einde moeten op een lijn staan
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Locatie ongeschikt voor ingang tunnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

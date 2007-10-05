@@ -1907,7 +1907,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nepavyko
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Pirmiau reikia pasalinti tuneli
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Pirmiau reikia pasalinti tilta
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Negalima pradeti ir baigti tuo paciu metu
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Po tiltu turi buti lygi zeme arba vanduo
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Pradzia ir pabaiga turi buti vienoje linijoje
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Vieta netinkama įvaziavimui į tunelį
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

@@ -2016,7 +2016,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}向こ�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}先にトンネルを破壊しなければなりません
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}先に橋を破壊しなければなりません
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}開始点と終了点が同じ位置に建設できません
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}橋下に平地もしくは水がなければなりません
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}一直線の橋しか建設できません
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}この土地はトンネルの入り口に不適当です
 STR_500D                                                        :{GOLD}{STRING}、{}　{VELOCITY} {WHITE}{CURRENCY}

@@ -2018,7 +2018,6 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}No se pu
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Primero debe demolerse el túnel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Primero debe demolerse el puente
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}No se puede comenzar y acabar en la misma posición
-STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Se requiere tierra a nivel o agua bajo el puente
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Comienzo y final deben estar en línea
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Lugar inapropiado para entrada de túnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

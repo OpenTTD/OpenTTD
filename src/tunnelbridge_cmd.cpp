@@ -256,7 +256,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	if (IsSteepSlope(tileh_end)) z_end += TILE_HEIGHT;
 	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_end)) z_end += TILE_HEIGHT;
 
-	if (z_start != z_end) return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
+	if (z_start != z_end) return_cmd_error(STR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
 	/* Towns are not allowed to use bridges on slopes. */
 	allow_on_slopes = (!_is_old_ai_player
@@ -367,7 +367,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	for (tile = tile_start + delta; tile != tile_end; tile += delta) {
 		uint z;
 
-		if (GetTileSlope(tile, &z) != SLOPE_FLAT && z >= z_start) return_cmd_error(STR_5009_LEVEL_LAND_OR_WATER_REQUIRED);
+		if (GetTileSlope(tile, &z) != SLOPE_FLAT && z >= z_start) return_cmd_error(STR_BRIDGE_TOO_LOW_FOR_TERRAIN);
 
 		if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) && !replace_bridge) {
 			/* Disallow crossing bridges for the time being */
