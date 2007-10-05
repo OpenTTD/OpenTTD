@@ -211,6 +211,20 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Layout number */
 		case 0x44: return industry->selected_layout;
 
+		/* player info */
+		case 0x45: {
+			byte colour1, colour2;  ///< Not initializing these two will give some kind of random
+			bool is_ai = false;
+			if (IsValidPlayer(industry->founder)) {
+				const Player *p = GetPlayer(industry->founder);
+				const Livery *l = &p->livery[LS_DEFAULT];
+				is_ai = p->is_ai;
+				colour1 = l->colour1;
+				colour2 = l->colour2;
+			}
+			return industry->founder | (is_ai ? 0x10000 : 0) | ((colour1 + colour2 * 16) << 24);
+		}
+
 		/* Get industry ID at offset param */
 		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->xy), industry);
 
