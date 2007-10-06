@@ -10,7 +10,7 @@ Table of Contents:
 2.0) Contacting
  * 2.1 Reporting Bugs
 3.0) Supported Platforms
-4.0) Running OpenTTD
+4.0) Installing and running OpenTTD
 5.0) OpenTTD features
 6.0) Configuration File
 7.0) Compiling
@@ -80,12 +80,19 @@ are:
   Windows              - Win32 GDI (faster) or SDL
 
 
-4.0) Running OpenTTD:
----- ----------------
+4.0) Installing and running OpenTTD:
+---- -------------------------------
+
+Installing OpenTTD is fairly straightforward. Either you have downloaded an
+archive which you have to extract to a directory where you want OpenTTD to
+be installed, or you have downloaded an installer, which will automatically
+extract OpenTTD in the given directory.
 
 Before you run OpenTTD, you need to put the game's datafiles into the data/
 subdirectory. You need the following files from the original version
-of TTD as OpenTTD makes use of the original TTD artwork.
+of TTD as OpenTTD makes use of the original TTD artwork. The Windows
+installer optionally can copy these files from your Transport Tycoon Deluxe
+CD-ROM.
 
 List of the required files:
 sample.cat
@@ -103,9 +110,6 @@ look as nice as with the Windows graphics.)
 If you want music you need to copy the gm/ folder from Windows TTD into your
 OpenTTD folder, not your data folder.
 
-You can change the data path (which contains savegames as well) in
-Makefile.config by setting DATA_DIR_PREFIX and USE_HOMEDIR.
-
 
 5.0) OpenTTD features:
 ---- -----------------
@@ -119,7 +123,6 @@ features known from TTDPatch (http://www.ttdpatch.net/).
 Several important non-standard controls:
 
 * Use Ctrl to place semaphore signals
-* Ctrl-D toggles double mode in the Windows version
 * Ingame console. More information at
   http://wiki.openttd.org/index.php/Console
 
@@ -210,10 +213,6 @@ Here are some translation guidelines which you should follow closely.
     * Please contact the development team before beginning the translation
       process! This avoids double work, as someone else may have already
       started translating to the same language.
-    * Translators must use the character set ISO 8859-15.
-      Otherwise, some characters will not display correctly in the game.
-    * Currently it is not possible to translate into character sets other than
-      Latin.
 
 8.2) Translation:
 ---- -------------------
@@ -306,7 +305,6 @@ Retired Developers:
 Thanks to:
   Josef Drexler                  - For his great work on TTDPatch.
   Marcin Grzegorczyk             - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
-  Matthijs Kooijman (blathijs)   - For his many patches, suggestions and major work on maprewrite
   Petr Baudis (pasky)            - Many patches, newgrf support, etc.
   Simon Sasburg (HackyKid)       - For the many bugfixes he has blessed us with (and future PBS)
   Stefan Meißner (sign_de)       - For his work on the console
