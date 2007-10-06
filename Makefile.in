@@ -210,7 +210,7 @@ endif
 ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/scenario/heightmaps/\"* 2>/dev/null`"; then echo 1; fi), 1)
 	$(Q)cp "$(BIN_DIR)/scenario/heightmaps/"* "$(BUNDLE_DIR)/scenario/heightmap/"
 endif
-ifeq ($(TTD), "openttd.exe")
+ifeq ($(TTD), openttd.exe)
 	$(Q)unix2dos "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/readme.txt" "$(BUNDLE_DIR)/COPYING"
 endif
 
