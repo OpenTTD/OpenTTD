@@ -2140,6 +2140,8 @@ showhelp() {
 	echo "  --enable-translator            enable extra output for translators"
 	echo "  --enable-universal             enable universal builds (OSX ONLY)"
 	echo "  --enable-osx-g5                enables optimalizations for G5 (OSX ONLY)"
+	echo "  --disable-unicode              disable unicode support to build win9x"
+	echo "                                 version (Win32 ONLY)"
 	echo "  --disable-network              disable network support"
 	echo "  --disable-assert               disable asserts (continue on errors)"
 	echo "  --disable-strip                disable any possible stripping"
