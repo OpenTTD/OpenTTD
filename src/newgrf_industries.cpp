@@ -213,16 +213,20 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 
 		/* player info */
 		case 0x45: {
-			byte colour1, colour2;  ///< Not initializing these two will give some kind of random
+			byte colours;
 			bool is_ai = false;
+
 			if (IsValidPlayer(industry->founder)) {
 				const Player *p = GetPlayer(industry->founder);
 				const Livery *l = &p->livery[LS_DEFAULT];
+
 				is_ai = p->is_ai;
-				colour1 = l->colour1;
-				colour2 = l->colour2;
+				colours = l->colour1 + l->colour2 * 16;
+			} else {
+				colours = GB(Random(), 0, 8);
 			}
-			return industry->founder | (is_ai ? 0x10000 : 0) | ((colour1 + colour2 * 16) << 24);
+
+			return industry->founder | (is_ai ? 0x10000 : 0) | (colours << 24);
 		}
 
 		/* Get industry ID at offset param */
