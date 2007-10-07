@@ -252,7 +252,7 @@ STR_ABBREV_ALL                                                  :{TINYFONT}KÕIK
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Mängu seaded
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Mängu valikud
 STR_00B2_MESSAGE                                                :{YELLOW}Sõnum
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}{STRING} teatab
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Ettevaatust!
@@ -407,7 +407,7 @@ STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Kaardi suurus:
 STR_BY                                                          :{BLACK}*
-STR_0148_GAME_OPTIONS                                           :{BLACK}Mängu seaded
+STR_0148_GAME_OPTIONS                                           :{BLACK}Mängu valikud
 
 STR_0150_SOMEONE                                                :keegi{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Maailmakaart
@@ -551,7 +551,7 @@ STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Ehita la
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Ehita lennuvälju
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Puude istutamine, siltide paigaldamine jne.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Maa-ala andmed
-STR_0187_OPTIONS                                                :{BLACK}Seaded
+STR_0187_OPTIONS                                                :{BLACK}Valikud
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Hooldusperioodi ei saa muuta...
@@ -685,8 +685,8 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Viimane teade
 STR_0201_MESSAGE_SETTINGS                                       :Teadete seadistused
 STR_MESSAGE_HISTORY_MENU                                        :Teadete ajalugu
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Näita viimast teadet, kuva teadete seaded
-STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Teadete seaded
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Näita viimast teadet, kuva teadete valikud
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Teadete valikud
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Teate tüüp:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Mängija jaama saabus esimene veovahend
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Konkurendi jaama saabus esimene veovahend
@@ -873,10 +873,10 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salvesta
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Mängu seaded
-STR_02C5_DIFFICULTY_SETTINGS                                    :Raskusastme seaded
-STR_02C7_CONFIG_PATCHES                                         :Paranduste seaded
-STR_NEWGRF_SETTINGS                                             :Newgrf seaded
+STR_02C3_GAME_OPTIONS                                           :Mängu valikud
+STR_02C5_DIFFICULTY_SETTINGS                                    :Raskusastme seadistused
+STR_02C7_CONFIG_PATCHES                                         :Seadista paikasid
+STR_NEWGRF_SETTINGS                                             :NewGRF seadistused
 STR_TRANSPARENCY_OPTIONS                                        :Läbipaistvuse valikud
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Näidatavad linnanimed
@@ -940,8 +940,8 @@ STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Laadi sa
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Loo oma mängukaart
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vali üksikmäng
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vali 2-8 mängijaga mitmikmäng
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Näita mängu seadeid
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vaata raskusastmete seadeid
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Kuva mängu valikuid
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Kuva raskusastmete valikuid
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Alusta omatehtud stsenaariumit kasutades uut mängu
 STR_0304_QUIT                                                   :{BLACK}Välju
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Välju 'OpenTTD'st
@@ -1033,18 +1033,18 @@ STR_CURR_CUSTOM                                                 :Omatehtud...
 
 STR_OPTIONS_LANG                                                :{BLACK}Keel
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Mängus kasutatava keele valik
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Vali kasutajaliideses kasutatav keel
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Täisekraan
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Märgistades selle kasti, toimub mäng täisekraanis
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Märgi see kast, et OpenTTD täisekraanirežiimis mängida
 
-STR_OPTIONS_RES                                                 :{BLACK}Kuvari eraldusvõime
+STR_OPTIONS_RES                                                 :{BLACK}Ekraanilahutus
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Kuvari eraldusvõime valimine
+STR_OPTIONS_RES_TIP                                             :{BLACK}Ekraanilahutuse valimine
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekraanitõmmise formaat
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Ekraanipildi vorming
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Valik, millises formaadis salvestatakse ekraanitõmmis
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vali kasutatav ekraanipildi vorming
 
 STR_AUTOSAVE_1_MONTH                                            :Iga kuu
 STR_AUTOSAVE_FAILED                                             :{WHITE}Isesalvestus ebaõnnestus
@@ -1112,9 +1112,9 @@ STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laeva is
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Õhusõiduki iseuuendamine ebaõnnestus{COMMA} (rahapiirang)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Rong {COMMA} on peale asendust liiga pikk
 
-STR_CONFIG_PATCHES                                              :{BLACK}Paranduste seaded
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Paranduste seadistamine
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Paranduste seaded
+STR_CONFIG_PATCHES                                              :{BLACK}Seadista paikasid
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Seadista paikasid
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Seadista paikasid
 
 STR_CONFIG_PATCHES_OFF                                          :Väljas
 STR_CONFIG_PATCHES_ON                                           :Sees
@@ -1147,6 +1147,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Mootorsõidukite järjekorrad (koos mahueffektidega): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Keri vaadet, kui hiir on viidud ekraani serva: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Luba kohalikule omavalitsusele altkäemaksu maksmine: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Luba eksklusiivseid veoõiguseid osta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Luba teistele ettevõtetele raha saata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Luba suvalise kujuga jaamad: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uus trassi otsimise algoritm(NPF asendab NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Raskete rongide simuleerimiseks kasutatav raskuse korrutaja: {ORANGE}{STRING}
@@ -1188,7 +1190,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastu-päevapid
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Päevapidi
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kõrguse level kui kõrgele lapik kaart läheb: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurim jaama ala: {ORANGE}{STRING} {RED}Hoiatus: kõrged seaded aeglustavad mängu
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurim jaama ala: {ORANGE}{STRING} {RED}Hoiatus: kõrged seadistused aeglustavad mängu
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hoolda maandumisplatsidel ise helikoptereid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Liida maastikuriba raudtee/tee/vee/lennujaamade tööriistaribaga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Kui kerid hiirega, liiguta vaade vastassuunda: {ORANGE}{STRING}
@@ -1287,6 +1289,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Väga Kiire
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Topeltkiirusel kasvavaid linnu: {ORANGE}1 iga {STRING} linna kohta
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Topeltkiirusel kasvavaid linnu: {ORANGE}puudub
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Algne linna suuruse kordaja: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Eemalda teedeehituse ajal esinevad tarbetud elemendid
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Välimus
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Ehitamine
@@ -3144,9 +3147,9 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Raha arv
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Selle ettevõtte kogulaen
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Kokku punkte võimalikest punktidest
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF seaded
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF seadistused
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Uue graafika sätted
-STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Kinnita sätted
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Rakenda muudatused
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Vali parameetrid
 STR_NEWGRF_TIP                                                  :{BLACK}Nimekiri kõikidest uue graafika sätted mida oled installeerinud. Vajuta komplektile et vahetada sätteid
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Sa ei ole installeerinud ühtegi uue graafika komplekti! Vaata õpetust et vaadata juhendit uue graafika installeerimisek

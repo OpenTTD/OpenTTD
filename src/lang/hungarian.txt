@@ -1113,6 +1113,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Közúti járművek sorbanállása (quantum effektektus): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ablakmozgatás, ha az egér a képernyő szélén van: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetősége: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Lehessen exkluzív szállítási jogot venni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Lehessen más vállalatoknak pénzt küldeni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Különböző vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Új útvonalkereső (NPF, felülbírálja az NTP-t): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak (szimulációs célból): {ORANGE}{STRING}
@@ -1253,6 +1255,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Nagyon gyors
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Dupla gyorsan növekvő városok aránya: {ORANGE}{STRING} városból 1
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Dupla gyorsan növekvő városok aránya: {ORANGE}Nincsennek
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Kezdeti városméret-szorzó: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Abszurd útrészletek útépítés közbeni eltávolítása
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Megjelenítés
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Építkezés
@@ -2120,6 +2123,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nem lehe
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Előbb le kell rombolnod az alagutat
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Előbb le kell rombolnod a hidat
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nem kezdődhet és végződhet ugyanott
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}A híd túl alacsony a terepre
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}A kezdetének és a végének egy vonalban kell lennie
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nem alkalmas a hely alagút bejáratának
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

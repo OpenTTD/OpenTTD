@@ -1048,6 +1048,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Compati
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Mise en file Véhicules Routiers (+ effets quantiques): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Défiler la vue horizontalement avec le pointeur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permettre la corruption de la municipalité: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Autoriser l'achat des droits de transports exclusifs: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Autoriser l'envoi d'argent aux autres compagnies: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Gares non uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nouvelle recherche de chemin global (NPF, écrase NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplier le poid pour les trains fret (simule des trains lourds): {ORANGE}{STRING}
@@ -1188,6 +1190,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Très rapide
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportion des villes qui deviendront des métropoles: {ORANGE}1 sur {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportion des villes qui deviendront des métropoles: {ORANGE}Aucune
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicateur de taille de ville initial: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Retirer les éléments absurdes pendant la reconstruction des routes
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construction
@@ -2018,6 +2021,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Impossib
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Vous devez d'abord démolir le tunnel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Vous devez d'abord démolir le pont
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Impossible de commencer et de terminer au même endroit
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Les extrémités du pont ne sont pas au même niveau
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Le pont est trop bas pour le terrain
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Le début et la fin doivent être alignés
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Le site pour l'entrée du tunnel ne convient pas
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

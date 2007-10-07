@@ -1047,6 +1047,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Gestió
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Cues d'automòbils (amb efectes quàntics): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Finestra d'avis quan el ratolí és al marc del programa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permet subornar a les autoritats locals: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Permet comprar els drets del transport en exclusiva: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Permet enviar diners a altres companyies: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacions no uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova cerca de rutes global (NPF, anul·la NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de pes per contenidor per simular trens pesats: {ORANGE}{STRING}
@@ -1187,6 +1189,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Molt ràpida
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}1 de cada {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}Cap
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador de mida de ciutat inicial: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Treu els elements de carretera absurds durant la reconstrucció de carretera
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interficie
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcció
@@ -2017,6 +2020,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Impossib
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Primer has d'enderrocar el túnel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Primer has d'enderrocar el pont
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}No es pot començar i acabar a la mateixa posició
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Les capçaleres del pont no són al mateix nivell
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}El pont és massa baix pel terreny
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Inici i final han d'estar en línia recta
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Lloc inadequat per l'entrada del túnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

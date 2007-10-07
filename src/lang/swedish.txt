@@ -1020,6 +1020,7 @@ STR_CONFIG_PATCHES_OFF                                          :Av
 STR_CONFIG_PATCHES_ON                                           :På
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Visa fordonshastighet i statusfältet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Tillåt byggnation på sluttningar och kuster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Tillåt terraformning under byggnader, spår, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Tillåt mer realistiska uppsamlingsområden för stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Tillåt borttagning av mera stadsägda vägar etc.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Tillåt väldigt långa tåg: {ORANGE}{STRING}
@@ -1046,6 +1047,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Vägfordonsköer (med kvanteffekter): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Scrolla vyn när musen är vid kanten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillåt mutning av de lokala myndigheterna: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillåt köp av exklusiva transporträttigheter: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillåt skicka pengar till andra företag: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-rektangulära stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny globalt sätt att hitta rutt (NPF, åsidosätter NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
@@ -1186,6 +1189,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Väldigt snabbt
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}1 av {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}Inga
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial stadsstorleks multiplikator: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Ta bort absurda väg-element under vägkonstruktion
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Gränssnitt
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruktion
@@ -2016,6 +2020,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kan inte
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Måste riva tunnel först
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Måste riva bro först
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Kan inte börja och sluta på samma plats
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Broändar ej på samma höjd
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Bro är för låg för terrängen
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Start- och slutpunkt måste ligga i linje
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Platsen passar inte för tunnelentré
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2772,7 +2778,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Fel järnvägst
 STR_TRAIN_NO_POWER                                              :{RED}Ingen Kraft
 STR_TRAIN_START_NO_CATENARY                                     :Detta spår saknar kedjekurva, så tåget kan inte starta
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nya {STRING} är nu tillgänglig!
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING} tillgänglig!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nya {STRING} är nu tillgänglig  -  {ENGINE}
 
@@ -2783,10 +2789,10 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra T
 STR_TIMETABLE_STATUS_ON_TIME                                    :Detta fordon ligger efter i tidtabellen
 STR_TIMETABLE_STATUS_LATE                                       :Detta fordon är för tillfället {STRING} sen
 STR_TIMETABLE_STATUS_EARLY                                      :Detta fordon är för tillfället {STRING} tidig
-STR_TIMETABLE_TOTAL_TIME                                        :Denna tidtabell kommer ta {STRING} att slutföra
+STR_TIMETABLE_TOTAL_TIME                                        :Den här tidtabellen kommer ta {STRING} att slutföra
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Denna tidtabell kommer att ta åtminstonde {STRING} att slutföra (allt är inte inlagt i en tidtabell)
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatisk ifyllning
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll tidtabellen automatiskt med värdet från den första resan
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofyll
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll tidtabellen automatiskt med värdena från första resan
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vägfordon i vägen
@@ -3304,7 +3310,7 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 ########
 
-STR_FEEDER_CARGO_VALUE                                          :{BLACK}Överföringingskredit: {LTBLUE}{CURRENCY}
+STR_FEEDER_CARGO_VALUE                                          :{BLACK} Överför kredit: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...detta är en stadsägd väg
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...vägen pekar i fel riktning
 
@@ -3350,15 +3356,15 @@ STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Byt ut f
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Kan inte skapa grupp...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Kan inte ta bort denna grupp...
 STR_GROUP_CAN_T_RENAME                                          :{WHITE}Kan inte döpa om grupp...
-STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kan inte ta bort alla fordon från denna grupp...
-STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kan inte lägga till fordonet till denna grupp...
-STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Kan inte lägga till delade fordon till grupp...
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Kan inte ta bort alla fordon i denna grupp...
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Kan inte lägga till fordon i denna grupp...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Kan inte lägga till delade fordon i denna grupp...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupper - Klicka på en grupp för att lista alla fordon i denna grupp
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Gripper - Klicka på en grupp för att lista alla fordon i gruppen
 STR_GROUP_CREATE_TIP                                            :{BLACK}Klicka för att skapa en grupp
-STR_GROUP_DELETE_TIP                                            :{BLACK}Ta bort den valda gruppen
-STR_GROUP_RENAME_TIP                                            :{BLACK}Döp om den valda gruppen
-STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klicka för att skydda denna grupp från globalt autoutbyte
+STR_GROUP_DELETE_TIP                                            :{BLACK}Ta bort vald grupp
+STR_GROUP_RENAME_TIP                                            :{BLACK}Byt namn på vald grupp
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klicka för att skydda denna grupp mot allmän autoreplace
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}

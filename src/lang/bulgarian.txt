@@ -1390,6 +1390,7 @@ STR_NETWORK_INTERNET_ADVERTISE                                  :Интерне�
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} клиент{P "" s}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клиенти:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Избор на максималния брой клиенти. Не всички слотове трябва да се попълнят
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} компани{P а ий}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Макс. компании:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ограничаване на играта до определен брой компании
 STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM}  зрител{P "" s}
