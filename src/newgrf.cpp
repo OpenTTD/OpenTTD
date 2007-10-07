@@ -4060,7 +4060,8 @@ static void ParamSet(byte *buf, int len)
 							break;
 
 						case 0x0B: // Cargo
-							src1 = PerformGRM(_grm_cargos, NUM_CARGO, count, op, target, "cargos");
+							/* There are two ranges: one for cargo IDs and one for cargo bitmasks */
+							src1 = PerformGRM(_grm_cargos, NUM_CARGO * 2, count, op, target, "cargos");
 							if (_skip_sprites == -1) return;
 							break;
 
