@@ -346,7 +346,7 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 				HASBIT(_transparent_opt, TO_HOUSES)
 			);
 		} else {
-			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, HASBIT(_transparent_opt, TO_HOUSES));
+			AddChildSpriteScreen(image, pal, (byte)dtss->delta_x, (byte)dtss->delta_y, HASBIT(_transparent_opt, TO_HOUSES));
 		}
 	}
 }
