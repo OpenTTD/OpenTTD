@@ -274,7 +274,7 @@ static inline byte GetIndustryRandomBits(TileIndex tile)
  * @param bits the random bits
  * @pre IsTileType(tile, MP_INDUSTRY)
  */
-static inline byte GetIndustryRandomBits(TileIndex tile, byte bits)
+static inline void SetIndustryRandomBits(TileIndex tile, byte bits)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
 	_me[tile].m7 = bits;
