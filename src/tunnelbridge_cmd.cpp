@@ -927,7 +927,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			{  1,  0, -15, -14,  0, 15, 16,  1, 0, 1, 16, 15 }, // SW
 			{  0,  1, -14, -15, 15,  0,  1, 16, 1, 0, 15, 16 }, // NW
 		};
-		static const int *BB_data = _tunnel_BB[GetTunnelDirection(ti->tile)];
+		const int *BB_data = _tunnel_BB[GetTunnelDirection(ti->tile)];
 
 		bool catenary = false;
 
