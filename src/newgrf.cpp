@@ -4705,7 +4705,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (1 << 0x19)  // newhouses
 	                   |                                        (1 << 0x1A)  // newbridges
 	                   |                                        (1 << 0x1B)  // newtownnames
-	                   |                                        (0 << 0x1C)  // moreanimations
+	                   |                                        (1 << 0x1C)  // moreanimation
 	                   |    ((_patches.wagon_speed_limits ? 1 : 0) << 0x1D)  // wagonspeedlimits
 	                   |                                        (1 << 0x1E)  // newshistory
 	                   |                                        (0 << 0x1F); // custombridgeheads

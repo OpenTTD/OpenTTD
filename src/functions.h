@@ -78,7 +78,7 @@ uint32 InteractiveRandom(); // Used for random sequences that are not the same o
 uint InteractiveRandomRange(uint max);
 
 /* texteff.cpp */
-bool AddAnimatedTile(TileIndex tile);
+void AddAnimatedTile(TileIndex tile);
 void DeleteAnimatedTile(TileIndex tile);
 void AnimateAnimatedTiles();
 void InitializeAnimatedTiles();

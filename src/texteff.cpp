@@ -25,7 +25,6 @@ enum {
 	MAX_TEXTMESSAGE_LENGTH = 200,
 	INIT_NUM_TEXT_MESSAGES =  20,
 	MAX_CHAT_MESSAGES      =  10,
-	MAX_ANIMATED_TILES     = 256,
 };
 
 struct TextEffect {
@@ -50,7 +49,6 @@ struct ChatMessage {
 /* used for text effects */
 static TextEffect *_text_effect_list = NULL;
 static uint16 _num_text_effects = INIT_NUM_TEXT_MESSAGES;
-TileIndex _animated_tile_list[MAX_ANIMATED_TILES];
 
 /* used for chat window */
 static ChatMessage _chatmsg_list[MAX_CHAT_MESSAGES];
@@ -422,62 +420,112 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 	}
 }
 
+/** The table/list with animated tiles. */
+TileIndex *_animated_tile_list = NULL;
+/** The number of animated tiles in the current state. */
+uint _animated_tile_count = 0;
+/** The number of slots for animated tiles allocated currently. */
+static uint _animated_tile_allocated = 0;
+
+/**
+ * Removes the given tile from the animated tile table.
+ * @param tile the tile to remove
+ */
 void DeleteAnimatedTile(TileIndex tile)
 {
-	TileIndex *ti;
-
-	for (ti = _animated_tile_list; ti != endof(_animated_tile_list); ti++) {
+	for (TileIndex *ti = _animated_tile_list; ti < _animated_tile_list + _animated_tile_count; ti++) {
 		if (tile == *ti) {
-			/* remove the hole */
-			memmove(ti, ti + 1, (lastof(_animated_tile_list) - ti) * sizeof(*ti));
-			/* and clear last item */
-			*lastof(_animated_tile_list) = 0;
+			/* Remove the hole */
+			*ti = _animated_tile_list[_animated_tile_count - 1];
+			_animated_tile_count--;
 			MarkTileDirtyByTile(tile);
 			return;
 		}
 	}
 }
 
-bool AddAnimatedTile(TileIndex tile)
+/**
+ * Add the given tile to the animated tile table (if it does not exist
+ * on that table yet). Also increases the size of the table if necessary.
+ * @param tile the tile to make animated
+ */
+void AddAnimatedTile(TileIndex tile)
 {
-	TileIndex *ti;
+	MarkTileDirtyByTile(tile);
 
-	for (ti = _animated_tile_list; ti != endof(_animated_tile_list); ti++) {
-		if (tile == *ti || *ti == 0) {
-			*ti = tile;
-			MarkTileDirtyByTile(tile);
-			return true;
-		}
+	for (const TileIndex *ti = _animated_tile_list; ti < _animated_tile_list + _animated_tile_count; ti++) {
+		if (tile == *ti) return;
 	}
 
-	return false;
+	/* Table not large enough, so make it larger */
+	if (_animated_tile_count == _animated_tile_allocated) {
+		_animated_tile_allocated *= 2;
+		_animated_tile_list = ReallocT<TileIndex>(_animated_tile_list, _animated_tile_allocated);
+	}
+
+	_animated_tile_list[_animated_tile_count] = tile;
+	_animated_tile_count++;
 }
 
+/**
+ * Animate all tiles in the animated tile list, i.e.\ call AnimateTile on them.
+ */
 void AnimateAnimatedTiles()
 {
-	const TileIndex* ti;
-
-	for (ti = _animated_tile_list; ti != endof(_animated_tile_list) && *ti != 0; ti++) {
+	for (const TileIndex *ti = _animated_tile_list; ti < _animated_tile_list + _animated_tile_count; ti++) {
 		AnimateTile(*ti);
 	}
 }
 
+/**
+ * Initialize all animated tile variables to some known begin point
+ */
 void InitializeAnimatedTiles()
 {
-	memset(_animated_tile_list, 0, sizeof(_animated_tile_list));
+	_animated_tile_list = ReallocT<TileIndex>(_animated_tile_list, 256);
+	_animated_tile_count = 0;
+	_animated_tile_allocated = 256;
 }
 
-static void SaveLoad_ANIT()
+/**
+ * Save the ANIT chunk.
+ */
+static void Save_ANIT()
 {
-	/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
-	if (CheckSavegameVersion(6)) {
-		SlArray(_animated_tile_list, lengthof(_animated_tile_list), SLE_FILE_U16 | SLE_VAR_U32);
-	} else {
-		SlArray(_animated_tile_list, lengthof(_animated_tile_list), SLE_UINT32);
-	}
+	SlSetLength(_animated_tile_count * sizeof(*_animated_tile_list));
+	SlArray(_animated_tile_list, _animated_tile_count, SLE_UINT32);
 }
 
+/**
+ * Load the ANIT chunk; the chunk containing the animated tiles.
+ */
+static void Load_ANIT()
+{
+	/* Before version 80 we did NOT have a variable length animated tile table */
+	if (CheckSavegameVersion(80)) {
+		/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
+		SlArray(_animated_tile_list, 256, CheckSavegameVersion(6) ? (SLE_FILE_U16 | SLE_VAR_U32) : SLE_UINT32);
 
+		for (_animated_tile_count = 0; _animated_tile_count < 256; _animated_tile_count++) {
+			if (_animated_tile_list[_animated_tile_count] == 0) break;
+		}
+		return;
+	}
+
+	_animated_tile_count = SlGetFieldLength() / sizeof(*_animated_tile_list);
+
+	/* Determine a nice rounded size for the amount of allocated tiles */
+	_animated_tile_allocated = 256;
+	while (_animated_tile_allocated < _animated_tile_count) _animated_tile_allocated *= 2;
+
+	_animated_tile_list = ReallocT<TileIndex>(_animated_tile_list, _animated_tile_allocated);
+	SlArray(_animated_tile_list, _animated_tile_count, SLE_UINT32);
+}
+
+/**
+ * "Definition" imported by the saveload code to be able to load and save
+ * the animated tile table.
+ */
 extern const ChunkHandler _animated_tile_chunk_handlers[] = {
-	{ 'ANIT', SaveLoad_ANIT, SaveLoad_ANIT, CH_RIFF | CH_LAST},
+	{ 'ANIT', Save_ANIT, Load_ANIT, CH_RIFF | CH_LAST},
 };

@@ -376,7 +376,8 @@ static void FixOldVehicles()
 #define REMAP_TOWN_IDX(x) ((x) - (0x0459154 - 0x0458EF0)) / 94
 #define REMAP_ORDER_IDX(x) ((x) - (0x045AB08 - 0x0458EF0)) / 2
 
-extern TileIndex _animated_tile_list[256];
+extern TileIndex *_animated_tile_list;
+extern uint _animated_tile_count;
 extern char _name_array[512][32];
 
 static byte   _old_vehicle_multiplier;
@@ -1422,7 +1423,7 @@ static const OldChunks main_chunk[] = {
 	OCL_CHUNK(5000, LoadOldOrder ),
 	OCL_ASSERT( 0x4328 ),
 
-	OCL_VAR (   OC_TILE, 256, &_animated_tile_list[0] ),
+	OCL_VAR (   OC_TILE, 256, _animated_tile_list ),
 	OCL_NULL( 4 ),              ///< old end-of-order-list-pointer, no longer in use
 
 	OCL_CHUNK( 255, LoadOldDepot ),
@@ -1551,6 +1552,10 @@ static bool LoadOldMain(LoadgameState *ls)
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
 		_m[i].m3 = _old_map3[i * 2];
 		_m[i].m4 = _old_map3[i * 2 + 1];
+	}
+
+	for (_animated_tile_count = 0; _animated_tile_count < 256; _animated_tile_count++) {
+		if (_animated_tile_list[_animated_tile_count] == 0) break;
 	}
 
 	for (i = 0; i < OLD_MAP_SIZE; i ++) {
