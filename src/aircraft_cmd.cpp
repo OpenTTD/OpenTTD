@@ -487,6 +487,8 @@ CommandCost CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (!v->IsStoppedInDepot()) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
+	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
+
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	if (flags & DC_EXEC) {
