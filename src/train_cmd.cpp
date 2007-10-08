@@ -533,7 +533,8 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 			Vehicle *w;
 			FOR_ALL_VEHICLES(w) {
 				if (w->type == VEH_TRAIN && w->tile == tile &&
-				    IsFreeWagon(w) && w->engine_type == engine) {
+				    IsFreeWagon(w) && w->engine_type == engine &&
+				    !HASBITS(w->vehstatus, VS_CRASHED)) {          /// do not connect new wagon with crashed/flooded consists
 					u = GetLastVehicleInChain(w);
 					break;
 				}
@@ -854,7 +855,7 @@ static Vehicle *FindGoodVehiclePos(const Vehicle *src)
 	TileIndex tile = src->tile;
 
 	FOR_ALL_VEHICLES(dst) {
-		if (dst->type == VEH_TRAIN && IsFreeWagon(dst) && dst->tile == tile) {
+		if (dst->type == VEH_TRAIN && IsFreeWagon(dst) && dst->tile == tile && !HASBITS(dst->vehstatus, VS_CRASHED)) {
 			/* check so all vehicles in the line have the same engine. */
 			Vehicle *v = dst;
 
@@ -925,6 +926,9 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (src->type != VEH_TRAIN || !CheckOwnership(src->owner)) return CMD_ERROR;
 
+	/* Do not allow moving crashed vehicles inside the depot, it is likely to cause asserts later */
+	if (HASBITS(src->vehstatus, VS_CRASHED)) return CMD_ERROR;
+
 	/* if nothing is selected as destination, try and find a matching vehicle to drag to. */
 	Vehicle *dst;
 	if (d == INVALID_VEHICLE) {
@@ -933,6 +937,9 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		if (!IsValidVehicleID(d)) return CMD_ERROR;
 		dst = GetVehicle(d);
 		if (dst->type != VEH_TRAIN || !CheckOwnership(dst->owner)) return CMD_ERROR;
+
+		/* Do not allow appending to crashed vehicles, too */
+		if (HASBITS(dst->vehstatus, VS_CRASHED)) return CMD_ERROR;
 	}
 
 	/* if an articulated part is being handled, deal with its parent vehicle */
@@ -3346,8 +3353,8 @@ void Train::Tick()
 		if (this->type == VEH_TRAIN && IsFrontEngine(this))
 			TrainLocoHandler(this, true);
 	} else if (IsFreeWagon(this) && HASBITS(this->vehstatus, VS_CRASHED)) {
-		/* Delete flooded standalone wagon */
-		if (++this->u.rail.crash_anim_pos >= 4400) delete this;
+		/* Delete flooded standalone wagon chain */
+		if (++this->u.rail.crash_anim_pos >= 4400) DeleteVehicleChain(this);
 	}
 }
 
