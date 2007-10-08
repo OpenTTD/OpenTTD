@@ -2084,6 +2084,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nemozno 
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunel musi byt najskor zburany
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Most musi byt najskor zburany
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nemozno zacat a skoncit na tom istom mieste
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Konce mosta nie sú v rovnakej výške
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Most je príliš nízky pre tento terén
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Zaciatok a koniec musi byt v rovine
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}To miesto je nepouzitelne ako vstup do tunela
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}

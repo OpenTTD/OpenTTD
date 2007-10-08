@@ -1191,7 +1191,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Molto veloce
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Città che diventeranno metropoli: {ORANGE}1 su {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Città che diventeranno metropoli: {ORANGE}Nessuna
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Moltiplicatore iniziale dimensioni metropoli: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Rimuovi i segmenti isolati durante la ricostruzione delle strade cittadine:
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Rimuovi segmenti isolati con la ricostruzione delle strade cittadine
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaccia
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Costruzione

@@ -1049,6 +1049,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Nizanje cestovnih vozila (s kvantnim učincima): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pomakni prozor kada je miš na rubu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Dopusti potkupljivanje lokalne samouprave: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Dopusti kupovinu ekskluzivnih prijevoznih prava: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Dopusti slanje novca drugim tvrtkama: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Neujednačene stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo globalno pronalaženje puteva (NPF, isključuje NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Težinski množitelj za teret za simulaciju teških vlakova: {ORANGE}{STRING}
@@ -1189,6 +1191,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Vrlo brzo
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Omjer gradova koji će postati metropole: {ORANGE}1 u {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Omjer gradova koji će postati metropole: {ORANGE}Nijedan
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Početni množitelj veličine grada: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Ukloni apsurne cestovne elemente tijekom konstrukcije prometnica
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Sučelje
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Izgradnja
@@ -2019,6 +2022,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Ne mogu�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Najprije moraš srušiti tunel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Najprije moraš srušiti most
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Početak i kraj ne mogu biti na istom mjestu
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Glave mosta nisu na istoj razini
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Most je prenizak za teren
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Početak i kraj moraju biti u ravnini
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Neprikladan teren za ulaz u tunel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
