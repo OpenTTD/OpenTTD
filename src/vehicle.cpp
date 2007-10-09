@@ -564,13 +564,10 @@ Vehicle::~Vehicle()
 /**
  * Deletes all vehicles in a chain.
  * @param v The first vehicle in the chain.
- *
- * @warning This function is not valid for any vehicle containing articulated
- * parts.
  */
 void DeleteVehicleChain(Vehicle *v)
 {
-	assert(v->type != VEH_TRAIN && v->type != VEH_ROAD);
+	assert(v->First() == v);
 
 	do {
 		Vehicle *u = v;
