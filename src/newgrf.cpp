@@ -2864,6 +2864,12 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 	for (uint i = 0; i < idcount; i++) {
 		uint8 stid = buf[3 + i];
 		StationSpec *statspec = _cur_grffile->stations[stid];
+
+		if (statspec == NULL) {
+			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stid);
+			return;
+		}
+
 		byte *bp = &buf[4 + idcount];
 
 		for (uint c = 0; c < cidcount; c++) {
@@ -2896,6 +2902,10 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 		for (uint i = 0; i < idcount; i++) {
 			uint8 stid = buf[3 + i];
 			StationSpec *statspec = _cur_grffile->stations[stid];
+			if (statspec == NULL) {
+				grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stid);
+				continue;
+			}
 
 			statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
 			statspec->grffile = _cur_grffile;
