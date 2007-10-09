@@ -2884,6 +2884,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Új {STRING} elérhető!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}A megsemmisült jármű nem eladható...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}A jármű nem időzíthető
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}A járművek csak az állomáson várakozhatnak
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Ez a jármű nem áll meg ezen az állomáson
