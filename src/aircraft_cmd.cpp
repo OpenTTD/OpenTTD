@@ -1261,8 +1261,8 @@ static void HandleCrashedAircraft(Vehicle *v)
 			SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 			r = Random();
 			CreateEffectVehicleRel(v,
-				GB(r, 0, 4) + 4,
-				GB(r, 4, 4) + 4,
+				GB(r, 0, 4) - 4,
+				GB(r, 4, 4) - 4,
 				GB(r, 8, 4),
 				EV_EXPLOSION_SMALL);
 		}
