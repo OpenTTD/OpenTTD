@@ -197,7 +197,20 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		wp->string = STR_NULL;
 		wp->town_cn = 0;
 	} else if (flags & DC_EXEC) {
-		/* move existing (recently deleted) waypoint to the new location */
+		/* Move existing (recently deleted) waypoint to the new location */
+
+		/* First we update the destination for all vehicles that
+		 * have the old waypoint in their orders. */
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_TRAIN &&
+					v->First() == v &&
+					v->current_order.type == OT_GOTO_WAYPOINT &&
+					v->dest_tile == wp->xy) {
+				v->dest_tile = tile;
+			}
+		}
+
 		RedrawWaypointSign(wp);
 		wp->xy = tile;
 	}
