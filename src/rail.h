@@ -120,6 +120,19 @@ static inline TrackBits AxisToTrackBits(Axis a)
 	return TrackToTrackBits(AxisToTrack(a));
 }
 
+/**
+ * Returns a single horizontal/vertical trackbit, that is in a specific tile corner.
+ *
+ * @param corner The corner of a tile.
+ * @return The TrackBits of the track in the corner.
+ */
+static inline TrackBits CornerToTrackBits(Corner corner)
+{
+	extern const TrackBits _corner_to_trackbits[];
+	assert(IsValidCorner(corner));
+	return _corner_to_trackbits[corner];
+}
+
 
 /**
  * Enumeration for tracks and directions.

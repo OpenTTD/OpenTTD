@@ -48,7 +48,19 @@ enum Corner {
 	CORNER_S = 1,
 	CORNER_E = 2,
 	CORNER_N = 3,
+	CORNER_END
 };
+
+/**
+ * Rangecheck for Corner enumeration.
+ *
+ * @param corner A #Corner.
+ * @return true iff corner is in a valid range.
+ */
+static inline bool IsValidCorner(Corner corner)
+{
+	return IS_INT_INSIDE(corner, 0, CORNER_END);
+}
 
 /**
  * Checks if a slope is steep.
@@ -76,6 +88,17 @@ static inline Slope ComplementSlope(Slope s)
 {
 	assert(!IsSteepSlope(s));
 	return (Slope)(0xF ^ s);
+}
+
+/**
+ * Tests if a slope has a highest corner (i.e. one corner raised or a steep slope).
+ *
+ * @param s The #Slope.
+ * @return  true iff the slope has a highest corner.
+ */
+static inline bool HasSlopeHighestCorner(Slope s)
+{
+	return IsSteepSlope(s) || (s == SLOPE_W) || (s == SLOPE_S) || (s == SLOPE_E) || (s == SLOPE_N);
 }
 
 /**
@@ -132,7 +155,7 @@ static inline Corner OppositeCorner(Corner corner)
  */
 static inline Slope SlopeWithOneCornerRaised(Corner corner)
 {
-	assert(IS_INT_INSIDE(corner, 0, 4));
+	assert(IsValidCorner(corner));
 	return (Slope)(1 << corner);
 }
 
@@ -158,6 +181,8 @@ enum Foundation {
 	FOUNDATION_INCLINED_Y,       ///< The tile has an along Y-axis inclined foundation.
 	FOUNDATION_STEEP_LOWER,      ///< The tile has a steep slope. The lowerst corner is raised by a foundation to allow building railroad on the lower halftile.
 	FOUNDATION_STEEP_HIGHER,     ///< The tile has a steep slope. Three corners are raised by a foundation to allow building railroad on the higher halftile.
+
+	FOUNDATION_INVALID = 0xFF    ///< Used inside "rail_cmd.cpp" to indicate invalid slope/track combination.
 };
 
 /**

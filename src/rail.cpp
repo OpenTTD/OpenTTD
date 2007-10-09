@@ -103,6 +103,10 @@ extern const Trackdir _dir_to_diag_trackdir[] = {
 	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW,
 };
 
+extern const TrackBits _corner_to_trackbits[] = {
+	TRACK_BIT_LEFT, TRACK_BIT_LOWER, TRACK_BIT_RIGHT, TRACK_BIT_UPPER,
+};
+
 
 RailType GetTileRailType(TileIndex tile)
 {

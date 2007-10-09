@@ -150,10 +150,8 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 }
 
 
-static const TrackBits _valid_tileh_slopes[][15] = {
-
-/* set of normal ones */
-{
+/** Valid TrackBits on a specific (non-steep)-slope without foundation */
+static const TrackBits _valid_tracks_without_foundation[15] = {
 	TRACK_BIT_ALL,
 	TRACK_BIT_RIGHT,
 	TRACK_BIT_UPPER,
@@ -172,10 +170,10 @@ static const TrackBits _valid_tileh_slopes[][15] = {
 	TRACK_BIT_X,
 	TRACK_BIT_UPPER,
 	TRACK_BIT_RIGHT,
-},
+};
 
-/* allowed rail for an evenly raised platform */
-{
+/** Valid TrackBits on a specific (non-steep)-slope with leveled foundation */
+static const TrackBits _valid_tracks_on_leveled_foundation[15] = {
 	TRACK_BIT_NONE,
 	TRACK_BIT_LEFT,
 	TRACK_BIT_LOWER,
@@ -194,62 +192,82 @@ static const TrackBits _valid_tileh_slopes[][15] = {
 	TRACK_BIT_Y | TRACK_BIT_UPPER | TRACK_BIT_RIGHT,
 	TRACK_BIT_ALL,
 	TRACK_BIT_ALL
-}
 };
 
+/**
+ * Checks if a track combination is valid on a specific slope and returns the needed foundation.
+ *
+ * @param tileh Tile slope.
+ * @param bits  Trackbits.
+ * @return Needed foundation or FOUNDATION_INVALID if track/slope combination is not allowed.
+ */
 Foundation GetRailFoundation(Slope tileh, TrackBits bits)
 {
-	if (!IsSteepSlope(tileh)) {
-		if ((~_valid_tileh_slopes[0][tileh] & bits) == 0) return FOUNDATION_NONE;
-		if ((~_valid_tileh_slopes[1][tileh] & bits) == 0) return FOUNDATION_LEVELED;
-	}
+	if (bits == TRACK_BIT_NONE) return FOUNDATION_NONE;
 
-	switch (bits) {
-		default: NOT_REACHED();
-		case TRACK_BIT_X:     return FOUNDATION_INCLINED_X;
-		case TRACK_BIT_Y:     return FOUNDATION_INCLINED_Y;
-		case TRACK_BIT_LEFT:  return (tileh == SLOPE_STEEP_W ? FOUNDATION_STEEP_HIGHER : FOUNDATION_STEEP_LOWER);
-		case TRACK_BIT_LOWER: return (tileh == SLOPE_STEEP_S ? FOUNDATION_STEEP_HIGHER : FOUNDATION_STEEP_LOWER);
-		case TRACK_BIT_RIGHT: return (tileh == SLOPE_STEEP_E ? FOUNDATION_STEEP_HIGHER : FOUNDATION_STEEP_LOWER);
-		case TRACK_BIT_UPPER: return (tileh == SLOPE_STEEP_N ? FOUNDATION_STEEP_HIGHER : FOUNDATION_STEEP_LOWER);
+	if (IsSteepSlope(tileh)) {
+		/* Test for inclined foundations */
+		if (bits == TRACK_BIT_X) return FOUNDATION_INCLINED_X;
+		if (bits == TRACK_BIT_Y) return FOUNDATION_INCLINED_Y;
+
+		/* Get higher track */
+		Corner highest_corner = GetHighestSlopeCorner(tileh);
+		TrackBits higher_track = CornerToTrackBits(highest_corner);
+
+		/* Only higher track? */
+		if (bits == higher_track) return FOUNDATION_STEEP_HIGHER;
+
+		/* Overlap with higher track? */
+		if (TracksOverlap(bits | higher_track)) return FOUNDATION_INVALID;
+
+		/* either lower track or both higher and lower track */
+		return ((bits & higher_track) != 0 ? FOUNDATION_INVALID : FOUNDATION_STEEP_LOWER);
+	} else {
+		if ((~_valid_tracks_without_foundation[tileh] & bits) == 0) return FOUNDATION_NONE;
+
+		bool valid_on_leveled = ((~_valid_tracks_on_leveled_foundation[tileh] & bits) == 0);
+
+		switch (bits) {
+			case TRACK_BIT_X:
+				if (HasSlopeHighestCorner(tileh)) return FOUNDATION_INCLINED_X;
+				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+
+			case TRACK_BIT_Y:
+				if (HasSlopeHighestCorner(tileh)) return FOUNDATION_INCLINED_Y;
+				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+
+			default:
+				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+		}
 	}
 }
 
 
+/**
+ * Tests if a track can be build on a tile.
+ *
+ * @param tileh Tile slope.
+ * @param rail_bits Tracks to build.
+ * @param existing Tracks already built.
+ * @param tile Tile (used for water test)
+ * @return Error message or cost for foundation building.
+ */
 static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits existing, TileIndex tile)
 {
-	if (IsSteepSlope(tileh)) {
-		if (_patches.build_on_slopes && existing == 0) {
-			/* There may only be one track on steep slopes. (Autoslope calls with multiple bits in rail_bits) */
-			if (KILL_FIRST_BIT(rail_bits & TRACK_BIT_MASK) == 0) {
-				TrackBits valid = TRACK_BIT_CROSS | (HASBIT(1 << SLOPE_STEEP_W | 1 << SLOPE_STEEP_E, tileh) ? TRACK_BIT_VERT : TRACK_BIT_HORZ);
-				if (valid & rail_bits) return _price.terraform;
-			}
-		}
-	} else {
-		rail_bits |= existing;
-
-		/* don't allow building on the lower side of a coast */
-		if (IsTileType(tile, MP_WATER) &&
-				~_valid_tileh_slopes[1][tileh] & rail_bits) {
-			return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
-		}
-
-		/* no special foundation */
-		if ((~_valid_tileh_slopes[0][tileh] & rail_bits) == 0) {
-			return CommandCost();
-		} else if (!_patches.build_on_slopes || _is_old_ai_player) {
-			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-		}
-
-		if ((~_valid_tileh_slopes[1][tileh] & rail_bits) == 0 || ( // whole tile is leveled up
-					(rail_bits == TRACK_BIT_X || rail_bits == TRACK_BIT_Y) &&
-					(tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)
-				)) { // partly up
-			return CommandCost((existing != 0) ? 0 : _price.terraform);
-		}
+	/* don't allow building on the lower side of a coast */
+	if (IsTileType(tile, MP_WATER)) {
+		if (!IsSteepSlope(tileh) && ((~_valid_tracks_on_leveled_foundation[tileh] & (rail_bits | existing)) != 0)) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 	}
-	return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+
+	Foundation f_new = GetRailFoundation(tileh, rail_bits | existing);
+
+	/* check track/slope combination */
+	if ((f_new == FOUNDATION_INVALID) ||
+	    ((f_new != FOUNDATION_NONE) && (!_patches.build_on_slopes || _is_old_ai_player))
+	   ) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+
+	Foundation f_old = GetRailFoundation(tileh, existing);
+	return CommandCost(f_new != f_old ? _price.terraform : 0);
 }
 
 /* Validate functions for rail building */
