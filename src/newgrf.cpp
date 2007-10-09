@@ -1755,7 +1755,6 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 					return false;
 				}
 
-				tsp->grf_prop.override = ovrid;
 				_industile_mngr.Add(indtid + i, ovrid);
 			} break;
 
