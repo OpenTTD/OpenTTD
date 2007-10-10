@@ -112,25 +112,20 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				WP(w, fnd_d).timer_enabled = false;
 			}
 
-			/* We'll perform two distinct loops, one for secondary industries, and the other one for
-			 * primary ones. Each loop will fill the _fund_gui structure. */
+			/* Fill the _fund_gui structure with industries.
+			 * The tests performed after the enabled allow to load the industries
+			 * In the same way they are inserted by grf (if any)
+			 */
 			for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
 				indsp = GetIndustrySpec(ind);
-				if (indsp->enabled && (!indsp->IsRawIndustry() || _game_mode == GM_EDITOR)) {
+				if (indsp->enabled){
+					/* Rule is that editor mode loads all industries.
+					 * In game mode, all non raw industries are loaded too
+					 * and raw ones are loaded only when setting allows it */
+					if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _patches.raw_industry_construction == 0) continue;
 					_fund_gui.index[_fund_gui.count] = ind;
 					_fund_gui.enabled[_fund_gui.count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
 					_fund_gui.count++;
-				}
-			}
-
-			if (_patches.raw_industry_construction != 0 && _game_mode != GM_EDITOR) {
-				for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
-					indsp = GetIndustrySpec(ind);
-					if (indsp->enabled && indsp->IsRawIndustry()) {
-						_fund_gui.index[_fund_gui.count] = ind;
-						_fund_gui.enabled[_fund_gui.count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
-						_fund_gui.count++;
-					}
 				}
 			}
 
