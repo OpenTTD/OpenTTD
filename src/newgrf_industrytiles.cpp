@@ -294,7 +294,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 
 	bool frame_set_by_callback = false;
 	byte frame = GetIndustryAnimationState(tile);
-	uint16 num_frames = GB(itspec->animation_info, 0, 8) + 1;
+	uint16 num_frames = GB(itspec->animation_info, 0, 8);
 
 	if (HASBIT(itspec->callback_flags, CBM_INDT_ANIM_NEXT_FRAME)) {
 		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIM_NEXT_FRAME, HASBIT(itspec->animation_special_flags, 0) ? Random() : 0, 0, gfx, ind, tile);
