@@ -83,7 +83,7 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
  * @return value encoded as per NFO specs */
 uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i)
 {
-	if (!IsTileType(tile, MP_INDUSTRY) || GetIndustryIndex(tile) == i->index) {
+	if (!IsTileType(tile, MP_INDUSTRY) || GetIndustryIndex(tile) != i->index) {
 		/* No industry and/or the tile does not have the same industry as the one we match it with */
 		return 0xFFFF;
 	}
