@@ -42,6 +42,7 @@
 #include "newgrf_townname.h"
 #include "misc/autoptr.hpp"
 #include "autoslope.h"
+#include "waypoint.h"
 
 /* Initialize the town-pool */
 DEFINE_OLD_POOL_GENERIC(Town, Town)
@@ -1899,6 +1900,7 @@ CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateTownVirtCoord(t);
 		_town_sort_dirty = true;
 		UpdateAllStationVirtCoord();
+		UpdateAllWaypointSigns();
 		MarkWholeScreenDirty();
 	} else {
 		DeleteName(str);
