@@ -85,7 +85,7 @@ static void PlaceTree(TileIndex tile, uint32 r)
 			SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, 3);
 			SetTreeCounter(tile, (TreeGround)GB(r, 24, 3));
 		} else {
-			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 0);
+			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
 			SetTreeCounter(tile, (TreeGround)GB(r, 24, 4));
 		}
 	}
@@ -346,9 +346,10 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 						growth = _game_mode == GM_EDITOR ? 3 : 0;
 						switch (GetClearGround(tile)) {
-							case CLEAR_ROUGH: MakeTree(tile, treetype, 0, growth, TREE_GROUND_ROUGH, 0); break;
-							case CLEAR_SNOW:  MakeTree(tile, treetype, 0, growth, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
-							default:          MakeTree(tile, treetype, 0, growth, TREE_GROUND_GRASS, 0); break;
+							case CLEAR_ROUGH:  MakeTree(tile, treetype, 0, growth, TREE_GROUND_ROUGH, 3); break;
+							case CLEAR_SNOW:
+							case CLEAR_DESERT: MakeTree(tile, treetype, 0, growth, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
+							default:           MakeTree(tile, treetype, 0, growth, TREE_GROUND_GRASS, GetClearDensity(tile)); break;
 						}
 						MarkTileDirtyByTile(tile);
 
@@ -385,7 +386,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	byte z;
 
 	switch (GetTreeGround(ti->tile)) {
-		case TREE_GROUND_GRASS: DrawClearLandTile(ti, 3); break;
+		case TREE_GROUND_GRASS: DrawClearLandTile(ti, GetTreeDensity(ti->tile)); break;
 		case TREE_GROUND_ROUGH: DrawHillyLandTile(ti); break;
 		default: DrawGroundSprite(_tree_sprites_1[GetTreeDensity(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE); break;
 	}
@@ -557,7 +558,7 @@ static void TileLoopTreesAlps(TileIndex tile)
 
 	if (k < 0) {
 		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT) return;
-		SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 0);
+		SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 3);
 	} else {
 		uint density = min((uint)k / TILE_HEIGHT, 3);
 
@@ -586,6 +587,16 @@ static void TileLoop_Trees(TileIndex tile)
 
 	TileLoopClearHelper(tile);
 
+	uint treeCounter = GetTreeCounter(tile);
+
+	/* Handle growth of grass at every 8th processings, like it's done for grass */
+	if ((treeCounter & 7) == 7 && GetTreeGround(tile) == TREE_GROUND_GRASS) {
+		uint density = GetTreeDensity(tile);
+		if (density < 3) {
+			SetTreeGroundDensity(tile, TREE_GROUND_GRASS, density + 1);
+			MarkTileDirtyByTile(tile);
+		}
+	}
 	if (GetTreeCounter(tile) < 15) {
 		AddTreeCounter(tile, 1);
 		return;
@@ -622,11 +633,12 @@ static void TileLoop_Trees(TileIndex tile)
 						switch (GetClearGround(tile)) {
 							case CLEAR_GRASS:
 								if (GetClearDensity(tile) != 3) return;
-								MakeTree(tile, treetype, 0, 0, TREE_GROUND_GRASS, 0);
+								MakeTree(tile, treetype, 0, 0, TREE_GROUND_GRASS, 3);
 								break;
 
-							case CLEAR_ROUGH: MakeTree(tile, treetype, 0, 0, TREE_GROUND_ROUGH, 0); break;
-							case CLEAR_SNOW:  MakeTree(tile, treetype, 0, 0, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
+							case CLEAR_ROUGH: MakeTree(tile, treetype, 0, 0, TREE_GROUND_ROUGH, 3); break;
+							case CLEAR_DESERT: return; // Cacti don't spread
+							case CLEAR_SNOW: MakeTree(tile, treetype, 0, 0, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
 							default: return;
 						}
 						break;
@@ -646,9 +658,12 @@ static void TileLoop_Trees(TileIndex tile)
 			} else {
 				/* just one tree, change type into MP_CLEAR */
 				switch (GetTreeGround(tile)) {
-					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, 3); break;
+					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
 					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
-					default: MakeClear(tile, CLEAR_SNOW, GetTreeDensity(tile)); break;
+					default: // snow or desert
+						if (_opt.landscape == LT_TROPIC) MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
+						else                             MakeClear(tile, CLEAR_SNOW,   GetTreeDensity(tile));
+						break;
 				}
 			}
 			break;
@@ -675,7 +690,7 @@ void OnTick_Trees()
 			!IsBridgeAbove(tile) &&
 			(ct = GetClearGround(tile), ct == CLEAR_GRASS || ct == CLEAR_ROUGH) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
-		MakeTree(tile, tree, 0, 0, ct == CLEAR_ROUGH ? TREE_GROUND_ROUGH : TREE_GROUND_GRASS, 0);
+			MakeTree(tile, tree, 0, 0, ct == CLEAR_ROUGH ? TREE_GROUND_ROUGH : TREE_GROUND_GRASS, GetClearDensity(tile));
 	}
 
 	/* byte underflow */
@@ -689,8 +704,8 @@ void OnTick_Trees()
 			(ct = GetClearGround(tile), ct == CLEAR_GRASS || ct == CLEAR_ROUGH || ct == CLEAR_SNOW) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
 		switch (ct) {
-			case CLEAR_GRASS: MakeTree(tile, tree, 0, 0, TREE_GROUND_GRASS, 0); break;
-			case CLEAR_ROUGH: MakeTree(tile, tree, 0, 0, TREE_GROUND_ROUGH, 0); break;
+			case CLEAR_GRASS: MakeTree(tile, tree, 0, 0, TREE_GROUND_GRASS, GetClearDensity(tile)); break;
+			case CLEAR_ROUGH: MakeTree(tile, tree, 0, 0, TREE_GROUND_ROUGH, 3); break;
 			default: MakeTree(tile, tree, 0, 0, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
 		}
 	}

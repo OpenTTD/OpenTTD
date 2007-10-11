@@ -76,6 +76,7 @@
 #include "water_map.h"
 #include "industry_map.h"
 #include "unmovable_map.h"
+#include "tree_map.h"
 
 #include <stdarg.h>
 
@@ -2192,6 +2193,19 @@ bool AfterLoadGame()
 			}
 			for (j = 0; j < lengthof(i->accepts_cargo); j++) {
 				i->accepts_cargo[j] = indsp->accepts_cargo[j];
+			}
+		}
+	}
+
+	/* Before version 81, the density of grass was always stored as zero, and
+	 * grassy trees were always drawn fully grassy. Furthermore, trees on rough
+	 * land used to have zero density, now they have full density. Therefore,
+	 * make all grassy/rough land trees have a density of 3. */
+	if (CheckSavegameVersion(81)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (GetTileType(t) == MP_TREES) {
+				TreeGround groundType = GetTreeGround(t);
+				if (groundType != TREE_GROUND_SNOW_DESERT) SetTreeGroundDensity(t, groundType, 3);
 			}
 		}
 	}
