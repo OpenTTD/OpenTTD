@@ -502,6 +502,29 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 	return true;
 }
 
+static bool LoadOldAnimTileList(LoadgameState *ls, int num)
+{
+	/* This is sligthly hackish - we must load a chunk into an array whose
+	 * address isn't static, but instead pointed to by _animated_tile_list.
+	 * To achieve that, create an OldChunks list on the stack on the fly.
+	 * The list cannot be static because the value of _animated_tile_list
+	 * can change between calls. */
+
+	const OldChunks anim_chunk[] = {
+		OCL_VAR (   OC_TILE, 256, _animated_tile_list ),
+		OCL_END ()
+	};
+
+	if (!LoadChunk(ls, NULL, anim_chunk)) return false;
+
+	/* Update the animated tile counter by counting till the first zero in the array */
+	for (_animated_tile_count = 0; _animated_tile_count < 256; _animated_tile_count++) {
+		if (_animated_tile_list[_animated_tile_count] == 0) break;
+	}
+
+	return true;
+}
+
 static const OldChunks depot_chunk[] = {
 	OCL_SVAR(   OC_TILE, Depot, xy ),
 	OCL_VAR ( OC_UINT32,   1, &_old_town_index ),
@@ -1423,7 +1446,7 @@ static const OldChunks main_chunk[] = {
 	OCL_CHUNK(5000, LoadOldOrder ),
 	OCL_ASSERT( 0x4328 ),
 
-	OCL_VAR (   OC_TILE, 256, _animated_tile_list ),
+	OCL_CHUNK( 1, LoadOldAnimTileList ),
 	OCL_NULL( 4 ),              ///< old end-of-order-list-pointer, no longer in use
 
 	OCL_CHUNK( 255, LoadOldDepot ),
@@ -1552,10 +1575,6 @@ static bool LoadOldMain(LoadgameState *ls)
 	for (i = 0; i < OLD_MAP_SIZE; i++) {
 		_m[i].m3 = _old_map3[i * 2];
 		_m[i].m4 = _old_map3[i * 2 + 1];
-	}
-
-	for (_animated_tile_count = 0; _animated_tile_count < 256; _animated_tile_count++) {
-		if (_animated_tile_list[_animated_tile_count] == 0) break;
 	}
 
 	for (i = 0; i < OLD_MAP_SIZE; i ++) {
