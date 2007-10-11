@@ -511,10 +511,8 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 
 	if (IS_INT_INSIDE(tt, TREE_RAINFOREST, TREE_CACTUS)) {
 		td->str = STR_280F_RAINFOREST;
-	} else if (tt == TREE_CACTUS) {
-		td->str = STR_2810_CACTUS_PLANTS;
 	} else {
-		td->str = STR_280E_TREES;
+		td->str = tt == TREE_CACTUS ? STR_2810_CACTUS_PLANTS : STR_280E_TREES;
 	}
 
 	td->owner = GetTileOwner(tile);
@@ -661,8 +659,7 @@ static void TileLoop_Trees(TileIndex tile)
 					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
 					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
 					default: // snow or desert
-						if (_opt.landscape == LT_TROPIC) MakeClear(tile, CLEAR_DESERT, GetTreeDensity(tile));
-						else                             MakeClear(tile, CLEAR_SNOW,   GetTreeDensity(tile));
+						MakeClear(tile, _opt.landscape == LT_TROPIC ? CLEAR_DESERT : CLEAR_SNOW, GetTreeDensity(tile));
 						break;
 				}
 			}
@@ -690,7 +687,7 @@ void OnTick_Trees()
 			!IsBridgeAbove(tile) &&
 			(ct = GetClearGround(tile), ct == CLEAR_GRASS || ct == CLEAR_ROUGH) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
-			MakeTree(tile, tree, 0, 0, ct == CLEAR_ROUGH ? TREE_GROUND_ROUGH : TREE_GROUND_GRASS, GetClearDensity(tile));
+		MakeTree(tile, tree, 0, 0, ct == CLEAR_ROUGH ? TREE_GROUND_ROUGH : TREE_GROUND_GRASS, GetClearDensity(tile));
 	}
 
 	/* byte underflow */
