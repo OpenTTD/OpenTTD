@@ -173,7 +173,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				const IndustrySpec *indsp = GetIndustrySpec(_fund_gui.index[i + w->vscroll.pos]);
 
 				/* Draw the name of the industry in white is selected, otherwise, in orange */
-				DrawString(20,     y + offset, indsp->name, selected ? 12 : 6);
+				DrawStringTruncated(20, y + offset, indsp->name, selected ? 12 : 6, max_width - 25);
 				GfxFillRect(x,     y + 1 + offset,  x + 10, y + 7 + offset, selected ? 15 : 0);
 				GfxFillRect(x + 1, y + 2 + offset,  x +  9, y + 6 + offset, indsp->map_colour);
 			}
