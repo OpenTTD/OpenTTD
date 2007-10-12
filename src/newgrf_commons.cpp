@@ -195,10 +195,10 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 
 	if (ind_id == invalid_ID) { // not found?  So this is the introduction of a new industry
 		/* Second step is dealing with the override. */
-		if (inds->grf_prop.override != invalid_ID && _industry_specs[inds->grf_prop.override].grf_prop.override == invalid_ID) {
+		if (inds->grf_prop.override != invalid_ID && _industry_specs[inds->grf_prop.override].grf_prop.grffile == NULL) {
 			/* this is an override, which means it will take the place of the industry it is
 			 * designed to replace. Before we conclude that the override is allowed,
-			* we first need to verify that the slot is not holding another override
+			* we first need to verify that the slot is not holding another industry from a grf
 			* If it's the case,it will be considered as a normal substitute */
 			ind_id = inds->grf_prop.override;
 		} else {
