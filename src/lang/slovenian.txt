@@ -2862,6 +2862,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo! {STRING} sedaj na razpolago!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Ni mogoča prodaja uničenega vozila...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nemogoče določiti časa vozilu...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozila lahko čakajo le na postajah.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}To vozilo se ne ustavlja na tej postaji.

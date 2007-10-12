@@ -2844,6 +2844,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nov{G á ý é} {STRING} k dispozici!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Nelze prodat zničené vozidlo...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Tomuto vozidlu nejde nastavit jízdní řád...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozidla mohou čekat jen ve stanicích.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Toto vozidlo v této stanici nestaví.

@@ -2181,6 +2181,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Немо
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Спочатку зруйнуйте тунель
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Спочатку зруйнуйте міст
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Початок та кінець не можуть бути в одному місці
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Кінці мостів на різних рівнях
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Міст дуже низький для цього місця
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Початок та кінець мають бути на одній лінії
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Невідповідне місце для початку тунеля
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2940,6 +2942,8 @@ STR_TRAIN_START_NO_CATENARY                                     :Нема еле
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Став доступним новий {STRING}!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Став доступним новий {STRING}!  -  {ENGINE}
+
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Не можна продати знищений транспорт...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не можна встановити розклад для транспорту...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт може чекати тільки на станціях.

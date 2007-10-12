@@ -1046,6 +1046,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Karayolu taşıtları kuyruğa girsin (içiçe geçerek): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Fare kenardayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Belediye rüşveti izinli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Şehrin ulaşım haklarını satın alma izinli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Diğer şirketlere para gönderme izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni evrensel yol bulma (NPF, NTP üzerinde): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
@@ -1111,6 +1113,7 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Kapalı
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Yeni bir oyun başlatırken zamanı duraklat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gelişmiş araç listesini kullan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Kapalı
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Kendi şirketim
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Tüm şirketler
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Araç yükleme bilgisini göster: {ORANGE}{STRING}
@@ -1118,6 +1121,8 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Kapalı
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Kendi şirketim
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Tüm şirketler
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Araç zaman çizelgesi açık: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zaman tablosunda gün yerine işlemci zamanı kullan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Öntanımlı ray türü (yeni oyundan/oyun yüklemeden sonra): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal Ray
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrikli Ray
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monoray
@@ -1183,6 +1188,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Çok Hızlı
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Kasabaların şehir olması için gerekli nüfus: {ORANGE}1 in {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Şehir olacak kasabaların oranı: {ORANGE}Hiçbiri
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Birincil şehir büyüklüğü çarpanı: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Yol yapımı sırasında gerçekçi olmayan yerleri kaldır
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Arayüz
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}İnşaat
@@ -1415,6 +1421,7 @@ STR_NETWORK_LANG_CHINESE                                        :Çince
 STR_NETWORK_LANG_CZECH                                          :Çekce
 STR_NETWORK_LANG_DANISH                                         :Danimarkaca
 STR_NETWORK_LANG_DUTCH                                          :Hollandaca
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
 STR_NETWORK_LANG_FINNISH                                        :Fince
 STR_NETWORK_LANG_HUNGARIAN                                      :Bulgarca
 STR_NETWORK_LANG_ICELANDIC                                      :İzlandaca
@@ -2012,6 +2019,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Tünelin
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Önce tünel yıkılmalı
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Önce köprü yıkılmalı
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Aynı noktada başlayıp bitemez
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Köprü bu arazi için çok alçakta
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Başlangıç ve bitiş aynı çizgi üzerinde olmalı
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Yer tünel girişi için uygun değil
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2735,6 +2743,8 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili 
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren dolana kadar beklesin
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren mutlaka yükünü boşaltsın
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman çizelgesi - işaretlemek için bir talimata tıklayın.
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Seçili talimatın harcaması gereken süreyi değiştir
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Seçili talimatın harcaması gereken süreyi sil
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Geç kalma sayacını sıfırla, böylece araç zamanında gitmiş sayılacak
 STR_SERVICE_HINT                                                :{BLACK}Bakım gerekmiyorsa bunu atla
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {CURRENCY} Ağırlık: {WEIGHT_S}{}Hız: {VELOCITY}  Güç: {POWER}{}Bakım: {CURRENCY}/sene{}Kapasite: {CARGO}
@@ -2769,6 +2779,8 @@ STR_TRAIN_START_NO_CATENARY                                     :Bu rayda elektr
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} artık kullanılabilir!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} artık kullanılabilir!  -  {ENGINE}
+
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Hurda araçlar satılamaz...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Aracın zaman çizelgesi oluşturulamıyor...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Araçlar sadece istasyonlarda bekleyebilir.

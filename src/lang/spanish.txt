@@ -2783,6 +2783,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuevo {STRING} ahora disponible!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}No se puede vender un vehículo destruido...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}No se puede ajustar horarios al vehículo...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Los vehículos solo pueden esperar en las estaciones.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Este vehículo no está parando en esta estación.
