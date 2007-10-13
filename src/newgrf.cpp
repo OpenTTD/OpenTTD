@@ -1853,6 +1853,9 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 					indsp->grf_prop.local_id = indid + i;
 					indsp->grf_prop.subst_id = subs_id;
 					indsp->grf_prop.grffile = _cur_grffile;
+					/* If the grf industry needs to check its surounding upon creation, it should
+					 * rely on callbacks, not on the original placement functions */
+					indsp->check_proc = CHECK_NOTHING;
 				}
 			} break;
 
