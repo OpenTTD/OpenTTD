@@ -882,6 +882,10 @@ make_cflags_and_ldflags() {
 		LIBS="$LIBS -pthread"
 	fi
 
+	if [ "$os" = "FREEBSD" ]; then
+		LIBS="$LIBS -lpthread"
+	fi
+
 	if [ "$os" = "OSX" ]; then
 		LDFLAGS="$LDFLAGS -framework Cocoa"
 		if [ "$enable_dedicated" = "0" ]; then
