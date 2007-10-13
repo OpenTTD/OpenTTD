@@ -730,6 +730,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 
 	if (i->IsValid()) {
 		i->town = GetTown(REMAP_TOWN_IDX(_old_town_index));
+		IncIndustryTypeCount(i->type);
 	}
 
 	return true;
