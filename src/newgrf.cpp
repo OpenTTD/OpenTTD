@@ -1541,8 +1541,8 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 		switch (prop) {
 			case 0x08: /* Bit number of cargo */
 				cs->bitnum = grf_load_byte(&buf);
-				cs->grfid = _cur_grffile->grfid;
 				if (cs->IsValid()) {
+					cs->grfid = _cur_grffile->grfid;
 					SETBIT(_cargo_mask, cid + i);
 				} else {
 					CLRBIT(_cargo_mask, cid + i);
@@ -5271,7 +5271,7 @@ static void MapNewCargoStrings()
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		CargoSpec *cs = &_cargo[c];
 		/* Don't map if the cargo is unavailable or not from NewGRF */
-		if (!cs->IsValid() || cs->grfid == 0) continue;
+		if (cs->grfid == 0) continue;
 
 		cs->name         = MapGRFStringID(cs->grfid, cs->name);
 		cs->name_single  = MapGRFStringID(cs->grfid, cs->name_single);
