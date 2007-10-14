@@ -119,7 +119,7 @@ StringID VehicleInTheWayErrMsg(const Vehicle* v)
 
 static void *EnsureNoVehicleProc(Vehicle *v, void *data)
 {
-	if (v->tile != *(const TileIndex*)data || v->type == VEH_DISASTER)
+	if (v->tile != *(const TileIndex*)data || v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW))
 		return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
@@ -135,7 +135,7 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
 	const TileInfo *ti = (const TileInfo*)data;
 
-	if (v->tile != ti->tile || v->type == VEH_DISASTER) return NULL;
+	if (v->tile != ti->tile || v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
 	if (v->z_pos > ti->z) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
