@@ -1525,7 +1525,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		byte load_amount = EngInfo(v->engine_type)->load_amount;
 		if (_patches.gradual_loading && HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_LOAD_AMOUNT)) {
 			uint16 cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
-			if (cb_load_amount != CALLBACK_FAILED) load_amount = cb_load_amount & 0xFF;
+			if (cb_load_amount != CALLBACK_FAILED && cb_load_amount != 0) load_amount = cb_load_amount & 0xFF;
 		}
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
