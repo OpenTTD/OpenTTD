@@ -593,10 +593,8 @@ DEF_CONSOLE_CMD(ConServerInfo)
 
 DEF_CONSOLE_HOOK(ConHookValidateMaxClientsCount)
 {
-	/* XXX - hardcoded, string limiation -- TrueLight
-	 * XXX - also see network.c:NetworkStartup ~1356 */
-	if (_network_game_info.clients_max > 10) {
-		_network_game_info.clients_max = 10;
+	if (_network_game_info.clients_max > MAX_CLIENTS) {
+		_network_game_info.clients_max = MAX_CLIENTS;
 		IConsoleError("Maximum clients out of bounds, truncating to limit.");
 	}
 
