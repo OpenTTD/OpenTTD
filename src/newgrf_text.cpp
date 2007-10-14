@@ -554,7 +554,7 @@ void PrepareTextRefStackUsage()
 	byte *p = _newgrf_textrefstack.stack;
 	for (uint i = 0; i < 6; i++) {
 		for (uint j = 0; j < 32; j += 8) {
-			*p = GB(_temp_store.Get(0x100 + i), 32 - j, 8);
+			*p = GB(_temp_store.Get(0x100 + i), j, 8);
 			p++;
 		}
 	}
