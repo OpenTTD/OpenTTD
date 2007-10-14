@@ -812,41 +812,59 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 }
 
 
-static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis axis, uint type, int x, int y, int z)
+/**
+ * Draws the pillars under high bridges.
+ *
+ * @param psid Image and palette of a bridge pillar.
+ * @param ti #TileInfo of current bridge-middle-tile.
+ * @param axis Orientation of bridge.
+ * @param type Bridge type.
+ * @param x Sprite X position of front pillar.
+ * @param y Sprite Y position of front pillar.
+ * @param z_bridge Absolute height of bridge bottom.
+ */
+static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis axis, uint type, int x, int y, int z_bridge)
 {
 	SpriteID image = psid->sprite;
 	if (image != 0) {
 		bool drawfarpillar = !HASBIT(GetBridgeFlags(type), 0);
-		int back_height, front_height;
-		int i = z;
-		const byte *p;
 
-		static const byte _tileh_bits[4][8] = {
-			{ 2, 1, 8, 4,  16,  2, 0, 9 },
-			{ 1, 8, 4, 2,   2, 16, 9, 0 },
-			{ 4, 8, 1, 2,  16,  2, 0, 9 },
-			{ 2, 4, 8, 1,   2, 16, 9, 0 }
-		};
+		/* "side" specifies the side the pillars stand on.
+		 * The length of the pillars is then set to the height of the bridge over the corners of this edge.
+		 *
+		 *                axis==AXIS_X  axis==AXIS_Y
+		 *   side==false      SW            NW
+		 *   side==true       NE            SE
+		 *
+		 * I have no clue, why this was done this way.
+		 */
+		bool side = HASBIT(image, 0);
 
-		p = _tileh_bits[(image & 1) * 2 + (axis == AXIS_X ? 0 : 1)];
-		front_height = ti->z + (ti->tileh & p[0] ? TILE_HEIGHT : 0);
-		back_height  = ti->z + (ti->tileh & p[1] ? TILE_HEIGHT : 0);
+		/* "dir" means the edge the pillars stand on */
+		DiagDirection dir = AxisToDiagDir(axis);
+		if (side != (axis == AXIS_Y)) dir = ReverseDiagDir(dir);
 
-		if (IsSteepSlope(ti->tileh)) {
-			if (!(ti->tileh & p[2])) front_height += TILE_HEIGHT;
-			if (!(ti->tileh & p[3])) back_height  += TILE_HEIGHT;
-		}
+		/* Determine ground height under pillars */
+		int front_height = ti->z;
+		int back_height = ti->z;
+		GetSlopeZOnEdge(ti->tileh, dir, &front_height, &back_height);
 
-		for (; z >= front_height || z >= back_height; z -= TILE_HEIGHT) {
-			/* HACK set height of the BB of pillars to 1, because the origin of the
-			 * sprites is at the top
-			 */
-			if (z >= front_height) { // front facing pillar
-				AddSortableSpriteToDraw(image, psid->pal, x, y, p[4], p[5], BB_HEIGHT_UNDER_BRIDGE - 5, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, -5);
+		/* x and y size of bounding-box of pillars */
+		int w = (axis == AXIS_X ? 16 : 2);
+		int h = (axis == AXIS_X ? 2 : 16);
+		/* sprite position of back facing pillar */
+		int x_back = x - (axis == AXIS_X ? 0 : 9);
+		int y_back = y - (axis == AXIS_X ? 9 : 0);
+
+		for (int cur_z = z_bridge; cur_z >= front_height || cur_z >= back_height; cur_z -= TILE_HEIGHT) {
+			/* Draw front facing pillar */
+			if (cur_z >= front_height) {
+				AddSortableSpriteToDraw(image, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - 5, cur_z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, -5);
 			}
 
-			if (drawfarpillar && z >= back_height && z < i - TILE_HEIGHT) { // back facing pillar
-				AddSortableSpriteToDraw(image, psid->pal, x - p[6], y - p[7], p[4], p[5], BB_HEIGHT_UNDER_BRIDGE - 5, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, -5);
+			/* Draw back facing pillar, but not the highest part directly under the bridge-floor */
+			if (drawfarpillar && cur_z >= back_height && cur_z < z_bridge - TILE_HEIGHT) {
+				AddSortableSpriteToDraw(image, psid->pal, x_back, y_back, w, h, BB_HEIGHT_UNDER_BRIDGE - 5, cur_z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, -5);
 			}
 		}
 	}

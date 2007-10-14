@@ -206,6 +206,32 @@ uint GetSlopeZ(int x, int y)
 	return _tile_type_procs[GetTileType(tile)]->get_slope_z_proc(tile, x, y);
 }
 
+/**
+ * Determine the Z height of the corners of a specific tile edge
+ *
+ * @pre z1 and z2 must be initialized (typ. with TileZ). The corner heights just get added.
+ *
+ * @param tileh The slope of the tile.
+ * @param edge The edge of interest.
+ * @param z1 Gets incremented by the height of the first corner of the edge. (near corner wrt. the camera)
+ * @param z2 Gets incremented by the height of the second corner of the edge. (far corner wrt. the camera)
+ */
+void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
+{
+	static const Slope corners[4][4] = {
+		/*    corner     |          steep slope
+		 *  z1      z2   |       z1             z2        */
+		{SLOPE_E, SLOPE_N, SLOPE_STEEP_E, SLOPE_STEEP_N}, // DIAGDIR_NE, z1 = E, z2 = N
+		{SLOPE_S, SLOPE_E, SLOPE_STEEP_S, SLOPE_STEEP_E}, // DIAGDIR_SE, z1 = S, z2 = E
+		{SLOPE_S, SLOPE_W, SLOPE_STEEP_S, SLOPE_STEEP_W}, // DIAGDIR_SW, z1 = S, z2 = W
+		{SLOPE_W, SLOPE_N, SLOPE_STEEP_W, SLOPE_STEEP_N}, // DIAGDIR_NW, z1 = W, z2 = N
+	};
+
+	if ((tileh & corners[edge][0]) != 0) *z1 += TILE_HEIGHT; // z1 is raised
+	if ((tileh & corners[edge][1]) != 0) *z2 += TILE_HEIGHT; // z2 is raised
+	if (tileh == corners[edge][2]) *z1 += TILE_HEIGHT; // z1 is highest corner of a steep slope
+	if (tileh == corners[edge][3]) *z2 += TILE_HEIGHT; // z2 is highest corner of a steep slope
+}
 
 static Slope GetFoundationSlope(TileIndex tile, uint* z)
 {
@@ -219,32 +245,34 @@ static Slope GetFoundationSlope(TileIndex tile, uint* z)
 static bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 {
 	uint z;
-	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, 0, -1), &z);
 
-	return
-		(
-			z_here + (slope_here & SLOPE_N ? TILE_HEIGHT : 0) + (slope_here == SLOPE_STEEP_N ? TILE_HEIGHT : 0) >
-			z      + (slope      & SLOPE_E ? TILE_HEIGHT : 0) + (slope      == SLOPE_STEEP_E ? TILE_HEIGHT : 0)
-		) || (
-			z_here + (slope_here & SLOPE_W ? TILE_HEIGHT : 0) + (slope_here == SLOPE_STEEP_W ? TILE_HEIGHT : 0) >
-			z      + (slope      & SLOPE_S ? TILE_HEIGHT : 0) + (slope      == SLOPE_STEEP_S ? TILE_HEIGHT : 0)
-		);
+	int z_W_here = z_here;
+	int z_N_here = z_here;
+	GetSlopeZOnEdge(slope_here, DIAGDIR_NW, &z_W_here, &z_N_here);
+
+	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, 0, -1), &z);
+	int z_W = z;
+	int z_N = z;
+	GetSlopeZOnEdge(slope, DIAGDIR_SE, &z_W, &z_N);
+
+	return (z_N_here > z_N) || (z_W_here > z_W);
 }
 
 
 static bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 {
 	uint z;
-	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, -1, 0), &z);
 
-	return
-		(
-			z_here + (slope_here & SLOPE_N ? TILE_HEIGHT : 0) + (slope_here == SLOPE_STEEP_N ? TILE_HEIGHT : 0) >
-			z      + (slope      & SLOPE_W ? TILE_HEIGHT : 0) + (slope      == SLOPE_STEEP_W ? TILE_HEIGHT : 0)
-		) || (
-			z_here + (slope_here & SLOPE_E ? TILE_HEIGHT : 0) + (slope_here == SLOPE_STEEP_E ? TILE_HEIGHT : 0) >
-			z      + (slope      & SLOPE_S ? TILE_HEIGHT : 0) + (slope      == SLOPE_STEEP_S ? TILE_HEIGHT : 0)
-		);
+	int z_E_here = z_here;
+	int z_N_here = z_here;
+	GetSlopeZOnEdge(slope_here, DIAGDIR_NE, &z_E_here, &z_N_here);
+
+	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, -1, 0), &z);
+	int z_E = z;
+	int z_N = z;
+	GetSlopeZOnEdge(slope, DIAGDIR_SW, &z_E, &z_N);
+
+	return (z_N_here > z_N) || (z_E_here > z_E);
 }
 
 

@@ -25,6 +25,7 @@ bool IsValidTile(TileIndex tile);
 
 uint GetPartialZ(int x, int y, Slope corners);
 uint GetSlopeZ(int x, int y);
+void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);
 
 static inline Point RemapCoords(int x, int y, int z)
 {
