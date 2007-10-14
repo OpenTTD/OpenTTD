@@ -174,7 +174,11 @@ void MusicLoop()
 	if (!msf.playing && _song_is_active) {
 		StopMusic();
 	} else if (msf.playing && !_song_is_active) {
-		PlayPlaylistSong();
+		if (_game_mode != GM_MENU) {
+			PlayPlaylistSong();
+		} else {
+			ResetMusic();
+		}
 	}
 
 	if (!_song_is_active) return;
