@@ -394,7 +394,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
-	return cost.AddCost(_price.build_rail);
+	return cost.AddCost(RailBuildCost(railtype));
 }
 
 /** Remove a single piece of track
@@ -1092,7 +1092,7 @@ static CommandCost DoConvertRail(TileIndex tile, RailType totype, bool exec)
 		VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
 	}
 
-	return CommandCost(_price.build_rail / 2);
+	return CommandCost(RailBuildCost(totype) / 2);
 }
 
 extern CommandCost DoConvertStationRail(TileIndex tile, RailType totype, bool exec);

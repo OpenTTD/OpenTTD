@@ -8,6 +8,7 @@
 #include "gfx.h"
 #include "direction.h"
 #include "tile.h"
+#include "variables.h"
 
 /**
  * Enumeration for all possible railtypes.
@@ -789,6 +790,21 @@ static inline bool TracksOverlap(TrackBits bits)
 	 * than 2 tracks, they will surely overlap. When there are two, they will
 	 * always overlap unless they are lower & upper or right & left. */
 	return bits != TRACK_BIT_HORZ && bits != TRACK_BIT_VERT;
+}
+
+
+extern int _railtype_cost_multiplier[RAILTYPE_END];
+extern const int _default_railtype_cost_multiplier[RAILTYPE_END];
+
+/**
+ * Returns the cost of building the specified railtype.
+ * @param railtype The railtype being built.
+ * @return The cost multiplier.
+ */
+static inline Money RailBuildCost(RailType railtype)
+{
+	assert(railtype < RAILTYPE_END);
+	return (_price.build_rail * _railtype_cost_multiplier[railtype]) >> 3;
 }
 
 void *UpdateTrainPowerProc(Vehicle *v, void *data);

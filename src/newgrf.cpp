@@ -4192,8 +4192,19 @@ static void ParamSet(byte *buf, int len)
 			_traininfo_vehicle_pitch = res;
 			break;
 
-		/* @todo implement */
 		case 0x8F: // Rail track type cost factors
+			_railtype_cost_multiplier[0] = GB(res, 0, 8);
+			if (_patches.disable_elrails) {
+				_railtype_cost_multiplier[1] = GB(res, 0, 8);
+				_railtype_cost_multiplier[2] = GB(res, 8, 8);
+			} else {
+				_railtype_cost_multiplier[1] = GB(res, 8, 8);
+				_railtype_cost_multiplier[2] = GB(res, 16, 8);
+			}
+			_railtype_cost_multiplier[3] = GB(res, 16, 8);
+			break;
+
+		/* @todo implement */
 		case 0x93: // Tile refresh offset to left
 		case 0x94: // Tile refresh offset to right
 		case 0x95: // Tile refresh offset upwards
@@ -4696,7 +4707,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (1 << 0x19)  // newships
 	                   |                                        (1 << 0x1A)  // newplanes
 	                   |           ((_patches.signal_side ? 1 : 0) << 0x1B)  // signalsontrafficside
-	                   |                                        (1 << 0x1C); // electrifiedrailway
+	                   |       ((_patches.disable_elrails ? 0 : 1) << 0x1C); // electrifiedrailway
 
 	_ttdpatch_flags[2] =                                        (1 << 0x01)  // loadallgraphics - obsolote
 	                   |                                        (1 << 0x03)  // semaphores
@@ -4708,7 +4719,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (0 << 0x10)  // moreindustriesperclimate - obsolete
 	                   |                                        (0 << 0x11)  // moretoylandfeatures
 	                   |                                        (1 << 0x12)  // newstations
-	                   |                                        (0 << 0x13)  // tracktypecostdiff
+	                   |                                        (1 << 0x13)  // tracktypecostdiff
 	                   |                                        (1 << 0x14)  // manualconvert
 	                   |       ((_patches.build_on_slopes ? 1 : 0) << 0x15)  // buildoncoasts
 	                   |                                        (1 << 0x16)  // canals
@@ -4967,6 +4978,9 @@ static void ResetNewGRFData()
 	_misc_grf_features = 0;
 	_traininfo_vehicle_pitch = 0;
 	_traininfo_vehicle_width = 29;
+
+	/* Reset track cost multipliers. */
+	memcpy(&_railtype_cost_multiplier, &_default_railtype_cost_multiplier, sizeof(_default_railtype_cost_multiplier));
 
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.has_newhouses     = false;

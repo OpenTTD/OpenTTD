@@ -1245,7 +1245,7 @@ CommandCost DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 		VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
 	}
 
-	return CommandCost(_price.build_rail / 2);
+	return CommandCost(RailBuildCost(totype) / 2);
 }
 
 /**
