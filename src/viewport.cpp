@@ -36,9 +36,6 @@ static ViewPort _viewports[25 - 2];
 static uint32 _active_viewports;    ///< bitmasked variable where each bit signifies if a viewport is in use or not
 assert_compile(lengthof(_viewports) < sizeof(_active_viewports) * 8);
 
-static bool _added_tile_sprite;
-static bool _offset_ground_sprites;
-
 /* The in-game coordiante system looks like this *
  *                                               *
  *                    ^ Z                        *
@@ -128,7 +125,9 @@ struct ViewportDrawer {
 
 	byte combine_sprites;
 
-	int offs_x, offs_y; // used when drawing ground sprites relative
+	ParentSpriteToDraw *foundation;                      ///< Foundation sprite.
+	ChildScreenSpriteToDraw **last_foundation_child;     ///< Tail of ChildSprite list of active foundation.
+	Point foundation_offset;                             ///< Pixeloffset of ground sprites on the foundation.
 };
 
 static ViewportDrawer *_cur_vd;
@@ -469,6 +468,33 @@ void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, 
 }
 
 /**
+ * Adds a child sprite to the active foundation.
+ *
+ * The pixel offset of the sprite relative to the ParentSprite is the sum of the offset passed to OffsetGroundSprite() and extra_offs_?.
+ *
+ * @param image the image to draw.
+ * @param pal the provided palette.
+ * @param sub Only draw a part of the sprite.
+ * @param extra_offs_x Pixel X offset for the sprite position.
+ * @param extra_offs_y Pixel Y offset for the sprite position.
+ */
+static void AddChildSpriteToFoundation(SpriteID image, SpriteID pal, const SubSprite *sub, int extra_offs_x, int extra_offs_y)
+{
+	ViewportDrawer *vd = _cur_vd;
+	assert(vd->foundation != NULL);
+	Point offs = vd->foundation_offset;
+
+	/* Change the active ChildSprite list to the one of the foundation */
+	ChildScreenSpriteToDraw **old_child = vd->last_child;
+	vd->last_child = vd->last_foundation_child;
+
+	AddChildSpriteScreen(image, pal, offs.x + extra_offs_x, offs.y + extra_offs_y, false, sub);
+
+	/* Switch back to last ChildSprite list */
+	vd->last_child = old_child;
+}
+
+/**
  * Draws a ground sprite for the current tile.
  * If the current tile is drawn on top of a foundation the sprite is added as child sprite to the "foundation"-ParentSprite.
  *
@@ -478,21 +504,33 @@ void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, 
  */
 void DrawGroundSprite(SpriteID image, SpriteID pal, const SubSprite *sub)
 {
-	if (_offset_ground_sprites) {
-		/* offset ground sprite because of foundation? */
-		AddChildSpriteScreen(image, pal, _cur_vd->offs_x, _cur_vd->offs_y, false, sub);
+	ViewportDrawer *vd = _cur_vd;
+	if (vd->foundation != NULL) {
+		AddChildSpriteToFoundation(image, pal, sub, 0, 0);
 	} else {
-		_added_tile_sprite = true;
 		DrawGroundSpriteAt(image, pal, _cur_ti->x, _cur_ti->y, _cur_ti->z, sub);
 	}
 }
 
 
+/**
+ * Called when a foundation has been drawn for the current tile.
+ * Successive ground sprites for the current tile will be drawn as child sprites of the "foundation"-ParentSprite, not as TileSprites.
+ *
+ * @param x sprite x-offset (screen coordinates) of ground sprites relative to the "foundation"-ParentSprite.
+ * @param y sprite y-offset (screen coordinates) of ground sprites relative to the "foundation"-ParentSprite.
+ */
 void OffsetGroundSprite(int x, int y)
 {
-	_cur_vd->offs_x = x;
-	_cur_vd->offs_y = y;
-	_offset_ground_sprites = true;
+	ViewportDrawer *vd = _cur_vd;
+	assert(vd->foundation == NULL);
+
+	/* vd->last_child == NULL if foundation sprite was clipped by the viewport bounds */
+	if (vd->last_child != NULL) vd->foundation = vd->parent_list[-1];
+
+	vd->foundation_offset.x = x;
+	vd->foundation_offset.y = y;
+	vd->last_foundation_child = vd->last_child;
 }
 
 /**
@@ -683,7 +721,10 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 
 	vd->spritelist_mem += sizeof(ChildScreenSpriteToDraw);
 
+	/* Append the sprite to the active ChildSprite list.
+	 * If the active ParentSprite is a foundation, update last_foundation_child as well. */
 	*vd->last_child = cs;
+	if (vd->last_foundation_child == vd->last_child) vd->last_foundation_child = &cs->next;
 	vd->last_child = &cs->next;
 
 	cs->image = image;
@@ -723,12 +764,25 @@ void *AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 par
 }
 
 
-static void DrawSelectionSprite(SpriteID image, SpriteID pal, const TileInfo *ti)
+/**
+ * Draws sprites between ground sprite and everything above.
+ *
+ * The sprite is either drawn as TileSprite or as ChildSprite of the active foundation.
+ *
+ * @param image the image to draw.
+ * @param pal the provided palette.
+ * @param ti TileInfo Tile that is being drawn
+ * @param z_offset Z offset relative to the groundsprite. Only used for the sprite position, not for sprite sorting.
+ */
+static void DrawSelectionSprite(SpriteID image, SpriteID pal, const TileInfo *ti, int z_offset)
 {
-	if (_added_tile_sprite && !(_thd.drawstyle & HT_LINE)) { // draw on real ground
-		DrawGroundSpriteAt(image, pal, ti->x, ti->y, ti->z + 7);
-	} else { // draw on top of foundation
-		AddSortableSpriteToDraw(image, pal, ti->x, ti->y, 0x10, 0x10, 1, ti->z + 7);
+	/* FIXME: This is not totally valid for some autorail highlights, that extent over the edges of the tile. */
+	if (_cur_vd->foundation == NULL) {
+		/* draw on real ground */
+		DrawGroundSpriteAt(image, pal, ti->x, ti->y, ti->z + z_offset);
+	} else {
+		/* draw on top of foundation */
+		AddChildSpriteToFoundation(image, pal, NULL, 0, -z_offset);
 	}
 }
 
@@ -740,7 +794,7 @@ static void DrawSelectionSprite(SpriteID image, SpriteID pal, const TileInfo *ti
  */
 static void DrawTileSelectionRect(const TileInfo *ti, SpriteID pal)
 {
-	DrawSelectionSprite(SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh], pal, ti);
+	DrawSelectionSprite(SPR_SELECT_TILE + _tileh_to_sprite[ti->tileh], pal, ti, 7);
 }
 
 static bool IsPartOfAutoLine(int px, int py)
@@ -796,7 +850,7 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 		pal = PALETTE_SEL_TILE_RED;
 	}
 
-	DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti);
+	DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti, 7);
 }
 
 /**
@@ -821,12 +875,12 @@ static void DrawTileSelection(const TileInfo *ti)
 			DrawTileSelectionRect(ti, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE);
 		} else if (_thd.drawstyle & HT_POINT) {
 			/* Figure out the Z coordinate for the single dot. */
-			byte z = ti->z;
+			byte z = 0;
 			if (ti->tileh & SLOPE_N) {
 				z += TILE_HEIGHT;
 				if (ti->tileh == SLOPE_STEEP_N) z += TILE_HEIGHT;
 			}
-			DrawGroundSpriteAt(_cur_dpi->zoom <= ZOOM_LVL_DETAIL ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti->x, ti->y, z);
+			DrawSelectionSprite(_cur_dpi->zoom <= ZOOM_LVL_DETAIL ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti, z);
 		} else if (_thd.drawstyle & HT_RAIL /*&& _thd.place_mode == VHM_RAIL*/) {
 			/* autorail highlight piece under cursor */
 			uint type = _thd.drawstyle & 0xF;
@@ -913,8 +967,8 @@ static void ViewportAddLandscape()
 			y_cur += 0x10;
 			x_cur -= 0x10;
 
-			_added_tile_sprite = false;
-			_offset_ground_sprites = false;
+			vd->foundation = NULL;
+			vd->last_foundation_child = NULL;
 
 			_tile_type_procs[tt]->draw_tile_proc(&ti);
 			DrawTileSelection(&ti);
