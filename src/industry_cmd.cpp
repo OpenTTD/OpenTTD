@@ -1185,6 +1185,7 @@ static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 
 bool IsSlopeRefused(Slope current, Slope refused)
 {
+	if (IsSteepSlope(current)) return true;
 	if (current != SLOPE_FLAT) {
 		if (refused & SLOPE_STEEP) return true;
 
@@ -1242,7 +1243,6 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 					if (IsClearWaterTile(cur_tile)) return false;
 
 					tileh = GetTileSlope(cur_tile, NULL);
-					if (IsSteepSlope(tileh)) return false;
 
 					refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
 				}
