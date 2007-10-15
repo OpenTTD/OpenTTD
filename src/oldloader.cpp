@@ -1617,6 +1617,16 @@ static bool LoadOldMain(LoadgameState *ls)
 		}
 	}
 
+	/* Make sure the available engines are really available, otherwise
+	 * we will get a "new vehicle"-spree. */
+	for (Engine *e = _engines; e != endof(_engines); e++) {
+		if (_date >= (e->intro_date + 365)) {
+			e->flags = (e->flags & ~ENGINE_EXCLUSIVE_PREVIEW) | ENGINE_AVAILABLE;
+			AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
+			e->player_avail = (byte)-1;
+		}
+	}
+
 	/* Fix the game to be compatible with OpenTTD */
 	FixOldTowns();
 	FixOldStations();
