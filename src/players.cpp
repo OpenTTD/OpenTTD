@@ -94,7 +94,7 @@ PlayerFace ConvertFromOldPlayerFace(uint32 face)
 
 	SetPlayerFaceBits(pf, PFV_GEN_ETHN,    ge, ge);
 	SetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge, GB(face, 28, 3) <= 1);
-	SetPlayerFaceBits(pf, PFV_EYE_COLOUR,  ge, clampu(GB(face, 20, 3), 5, 7) - 5);
+	SetPlayerFaceBits(pf, PFV_EYE_COLOUR,  ge, HASBIT(ge, ETHNICITY_BLACK) ? 0 : clampu(GB(face, 20, 3), 5, 7) - 5);
 	SetPlayerFaceBits(pf, PFV_CHIN,        ge, ScalePlayerFaceValue(PFV_CHIN,     ge, GB(face,  4, 2)));
 	SetPlayerFaceBits(pf, PFV_EYEBROWS,    ge, ScalePlayerFaceValue(PFV_EYEBROWS, ge, GB(face,  6, 4)));
 	SetPlayerFaceBits(pf, PFV_HAIR,        ge, ScalePlayerFaceValue(PFV_HAIR,     ge, GB(face, 16, 4)));
