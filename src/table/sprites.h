@@ -538,14 +538,14 @@ enum Sprites {
 
 	/* Shores */
 	SPR_NO_SHORE                = 0,  //used for tileh which have no shore
-	SPR_SHORE_TILEH_4           = 4062,
-	SPR_SHORE_TILEH_1           = 4063,
-	SPR_SHORE_TILEH_2           = 4064,
-	SPR_SHORE_TILEH_8           = 4065,
-	SPR_SHORE_TILEH_6           = 4066,
-	SPR_SHORE_TILEH_12          = 4067,
-	SPR_SHORE_TILEH_3           = 4068,
-	SPR_SHORE_TILEH_9           = 4069,
+	SPR_SHORE_TILEH_4           = 4062, // SLOPE_E
+	SPR_SHORE_TILEH_1           = 4063, // SLOPE_W
+	SPR_SHORE_TILEH_2           = 4064, // SLOPE_S
+	SPR_SHORE_TILEH_8           = 4065, // SLOPE_N
+	SPR_SHORE_TILEH_6           = 4066, // SLOPE_SE
+	SPR_SHORE_TILEH_12          = 4067, // SLOPE_NE
+	SPR_SHORE_TILEH_3           = 4068, // SLOPE_SW
+	SPR_SHORE_TILEH_9           = 4069, // SLOPE_NW
 
 	/* Water-related sprites */
 	SPR_SHIP_DEPOT_SE_FRONT     = 4070,

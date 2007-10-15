@@ -31,20 +31,21 @@
 #include "newgrf_canal.h"
 #include "misc/autoptr.hpp"
 
+/** Array for the shore sprites */
 static const SpriteID _water_shore_sprites[] = {
 	0,
-	SPR_SHORE_TILEH_1,
-	SPR_SHORE_TILEH_2,
-	SPR_SHORE_TILEH_3,
-	SPR_SHORE_TILEH_4,
+	SPR_SHORE_TILEH_1,  // SLOPE_W
+	SPR_SHORE_TILEH_2,  // SLOPE_S
+	SPR_SHORE_TILEH_3,  // SLOPE_SW
+	SPR_SHORE_TILEH_4,  // SLOPE_E
 	0,
-	SPR_SHORE_TILEH_6,
+	SPR_SHORE_TILEH_6,  // SLOPE_SE
 	0,
-	SPR_SHORE_TILEH_8,
-	SPR_SHORE_TILEH_9,
+	SPR_SHORE_TILEH_8,  // SLOPE_N
+	SPR_SHORE_TILEH_9,  // SLOPE_NW
 	0,
 	0,
-	SPR_SHORE_TILEH_12,
+	SPR_SHORE_TILEH_12, // SLOPE_NE
 	0,
 	0
 };
@@ -708,7 +709,12 @@ static void FloodVehicle(Vehicle *v)
 	}
 }
 
-/** called from tunnelbridge_cmd, and by TileLoop_Industry() */
+/**
+ * Let a water tile floods its diagonal adjoining tiles
+ * called from tunnelbridge_cmd, and by TileLoop_Industry()
+ *
+ * @param tile the water/shore tile that floods
+ */
 void TileLoop_Water(TileIndex tile)
 {
 	static const TileIndexDiffC _tile_loop_offs_array[][5] = {
@@ -722,6 +728,7 @@ void TileLoop_Water(TileIndex tile)
 	/* Ensure sea-level canals and buoys on canal borders do not flood */
 	if ((IsTileType(tile, MP_WATER) || IsBuoyTile(tile)) && !IsTileOwner(tile, OWNER_WATER)) return;
 
+	/* floods in all four diagonal directions with the exception of the edges */
 	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
 			IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) {
 		uint i;
@@ -730,6 +737,7 @@ void TileLoop_Water(TileIndex tile)
 			TileLoopWaterHelper(tile, _tile_loop_offs_array[i]);
 		}
 	}
+
 	/* _current_player can be changed by TileLoopWaterHelper.. reset it back here */
 	_current_player = OWNER_NONE;
 
