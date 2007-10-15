@@ -59,7 +59,7 @@ static const PlayerFaceBitsInfo _pf_info[] = {
 	/* PFV_HAS_MOUSTACHE   */ {  3, 1, {  2,  0,  2,  0 }, {     0,     0,     0,     0 } }, ///< Females do not have a moustache
 	/* PFV_HAS_TIE_EARRING */ {  3, 1, {  0,  2,  0,  2 }, {     0,     0,     0,     0 } }, ///< Draw the earring for females or not. For males the tie is always drawn.
 	/* PFV_HAS_GLASSES     */ {  4, 1, {  2,  2,  2,  2 }, {     0,     0,     0,     0 } }, ///< Whether to draw glasses or not
-	/* PFV_EYE_COLOUR      */ {  5, 2, {  3,  3,  3,  3 }, {     0,     0,     0,     0 } }, ///< Palette modification
+	/* PFV_EYE_COLOUR      */ {  5, 2, {  3,  3,  1,  1 }, {     0,     0,     0,     0 } }, ///< Palette modification
 	/* PFV_CHEEKS          */ {  0, 0, {  1,  1,  1,  1 }, { 0x325, 0x326, 0x390, 0x3B0 } }, ///< Cheeks are only indexed by their gender/ethnicity
 	/* PFV_CHIN            */ {  7, 2, {  4,  1,  2,  2 }, { 0x327, 0x327, 0x391, 0x3B1 } },
 	/* PFV_EYEBROWS        */ {  9, 4, { 12, 16, 11, 16 }, { 0x32B, 0x337, 0x39A, 0x3B8 } },
@@ -105,6 +105,32 @@ static inline void SetPlayerFaceBits(PlayerFace &pf, PlayerFaceVariable pfv, Gen
 }
 
 /**
+ * Increase/Decrease the player face variable by the given amount.
+ * If the new value greater than the max value for this variable it will be set to 0.
+ * Or is it negativ (< 0) it will be set to max value.
+ *
+ * @param pf     the player face to write the bits to
+ * @param pfv    the player face variable to write the data of
+ * @param ge     the gender and ethnicity of the player face
+ * @param amount the amount which change the value
+ *
+ * @pre 0 <= val < _pf_info[pfv].valid_values[ge]
+ */
+static inline void IncreasePlayerFaceBits(PlayerFace &pf, PlayerFaceVariable pfv, GenderEthnicity ge, int8 amount)
+{
+	int8 val = GetPlayerFaceBits(pf, pfv, ge) + amount; // the new value for the pfv
+
+	/* scales the new value to the correct scope */
+	if (val >= _pf_info[pfv].valid_values[ge]) {
+		val = 0;
+	} else if (val < 0) {
+		val = _pf_info[pfv].valid_values[ge] - 1;
+	}
+
+	SetPlayerFaceBits(pf, pfv, ge, val); // save the new value
+}
+
+/**
  * Checks whether the player bits have a valid range
  * @param pf  the face to extract the bits from
  * @param pfv the face variable to get the data of
@@ -132,6 +158,58 @@ static inline uint ScalePlayerFaceValue(PlayerFaceVariable pfv, GenderEthnicity 
 }
 
 /**
+ * Scales all player face bits to the correct scope
+ *
+ * @param pf the player face to write the bits to
+ */
+static inline void ScaleAllPlayerFaceBits(PlayerFace &pf)
+{
+	IncreasePlayerFaceBits(pf, PFV_ETHNICITY, GE_WM, 0); // scales the ethnicity
+
+	GenderEthnicity ge = (GenderEthnicity)GB(pf, _pf_info[PFV_GEN_ETHN].offset, _pf_info[PFV_GEN_ETHN].length); // gender & ethnicity of the face
+
+	/* Is a male face with moustache. Need to reduce CPU load in the loop. */
+	bool is_moust_male = !HASBIT(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE, ge) != 0;
+
+	for (PlayerFaceVariable pfv = PFV_EYE_COLOUR; pfv < PFV_END; pfv++) { // scales all other variables
+
+		/* The moustache variable will be scaled only if it is a male face with has a moustache */
+		if (pfv != PFV_MOUSTACHE || is_moust_male) {
+			IncreasePlayerFaceBits(pf, pfv, ge, 0);
+		}
+	}
+}
+
+/**
+ * Make a random new face.
+ * If it is for the advanced player face window then the new face have the same gender
+ * and ethnicity as the old one, else the gender is equal and the ethnicity is random.
+ *
+ * @param pf  the player face to write the bits to
+ * @param ge  the gender and ethnicity of the old player face
+ * @param adv if it for the advanced player face window
+ *
+ * @pre scale 'ge' to a valid gender/ethnicity combination
+ */
+static inline void RandomPlayerFaceBits(PlayerFace &pf, GenderEthnicity ge, bool adv)
+{
+	pf = Random(); // random all player face bits
+
+	/* scale ge: 0 == GE_WM, 1 == GE_WF, 2 == GE_BM, 3 == GE_BF (and maybe in future: ...) */
+	ge = (GenderEthnicity)(ge % GE_END);
+
+	/* set the gender (and ethnicity) for the new player face */
+	if (adv) {
+		SetPlayerFaceBits(pf, PFV_GEN_ETHN, ge, ge);
+	} else {
+		SetPlayerFaceBits(pf, PFV_GENDER, ge, HASBIT(ge, GENDER_FEMALE));
+	}
+
+	/* scales all player face bits to the correct scope */
+	ScaleAllPlayerFaceBits(pf);
+}
+
+/**
  * Gets the sprite to draw for the given player face variable
  * @param pf  the face to extract the data from
  * @param pfv the face variable to get the sprite of
@@ -149,5 +227,6 @@ static inline SpriteID GetPlayerFaceSprite(PlayerFace pf, PlayerFaceVariable pfv
 void DrawPlayerFace(PlayerFace face, int color, int x, int y);
 PlayerFace ConvertFromOldPlayerFace(uint32 face);
 bool IsValidPlayerFace(PlayerFace pf);
+void DrawFaceStringLabel(const Window *w, byte widget_index, StringID str, uint8 val, bool is_bool_widget);
 
 #endif /* PLAYER_FACE_H */

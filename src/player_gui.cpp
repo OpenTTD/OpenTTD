@@ -28,6 +28,7 @@
 #include "player_face.h"
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
+static void DoSelectPlayerFace(PlayerID player, bool show_big);
 
 static void DrawPlayerEconomyStats(const Player *p, byte mode)
 {
@@ -493,11 +494,17 @@ void DrawPlayerFace(PlayerFace pf, int color, int x, int y)
 	bool has_tie_earring = !HASBIT(ge, GENDER_FEMALE) || GetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge) != 0;
 	bool has_glasses     = GetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge) != 0;
 	SpriteID pal;
-	switch (GetPlayerFaceBits(pf, PFV_EYE_COLOUR, ge)) {
-		default: NOT_REACHED();
-		case 0: pal = PALETTE_TO_BROWN; break;
-		case 1: pal = PALETTE_TO_BLUE;  break;
-		case 2: pal = PALETTE_TO_GREEN; break;
+
+	/* Modify eye colour palette only if 2 or more valid values exist */
+	if (_pf_info[PFV_EYE_COLOUR].valid_values[ge] < 2) {
+		pal = PAL_NONE;
+	} else {
+		switch (GetPlayerFaceBits(pf, PFV_EYE_COLOUR, ge)) {
+			default: NOT_REACHED();
+			case 0: pal = PALETTE_TO_BROWN; break;
+			case 1: pal = PALETTE_TO_BLUE;  break;
+			case 2: pal = PALETTE_TO_GREEN; break;
+		}
 	}
 
 	/* Draw the gradient (background) */
@@ -516,59 +523,425 @@ void DrawPlayerFace(PlayerFace pf, int color, int x, int y)
 	}
 }
 
-static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT: {
-		Player *p;
-		LowerWindowWidget(w, WP(w, facesel_d).gender + 5);
-		DrawWindowWidgets(w);
-		p = GetPlayer((PlayerID)w->window_number);
-		DrawPlayerFace(WP(w, facesel_d).face, p->player_color, 2, 16);
-	} break;
+/**
+ * Names of the widgets. Keep them in the same order as in the widget array.
+ * Do not change the order of the widgets from PFW_WIDGET_HAS_MOUSTACHE_EARRING to PFW_WIDGET_GLASSES_R,
+ * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
+ */
+enum PlayerFaceWindowWidgets {
+	PFW_WIDGET_CLOSEBOX = 0,
+	PFW_WIDGET_CAPTION,
+	PFW_WIDGET_TOGGLE_LARGE_SMALL,
+	PFW_WIDGET_SELECT_FACE,
+	PFW_WIDGET_CANCEL,
+	PFW_WIDGET_ACCEPT,
+	PFW_WIDGET_MALE,
+	PFW_WIDGET_FEMALE,
+	PFW_WIDGET_RANDOM_NEW_FACE,
+	PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON,
+	/* from here is the advanced player face selection window */
+	PFW_WIDGET_LOAD,
+	PFW_WIDGET_FACECODE,
+	PFW_WIDGET_SAVE,
+	PFW_WIDGET_ETHNICITY_EUR,
+	PFW_WIDGET_ETHNICITY_AFR,
+	PFW_WIDGET_HAS_MOUSTACHE_EARRING,
+	PFW_WIDGET_HAS_GLASSES,
+	PFW_WIDGET_EYECOLOUR_L,
+	PFW_WIDGET_EYECOLOUR,
+	PFW_WIDGET_EYECOLOUR_R,
+	PFW_WIDGET_CHIN_L,
+	PFW_WIDGET_CHIN,
+	PFW_WIDGET_CHIN_R,
+	PFW_WIDGET_EYEBROWS_L,
+	PFW_WIDGET_EYEBROWS,
+	PFW_WIDGET_EYEBROWS_R,
+	PFW_WIDGET_LIPS_MOUSTACHE_L,
+	PFW_WIDGET_LIPS_MOUSTACHE,
+	PFW_WIDGET_LIPS_MOUSTACHE_R,
+	PFW_WIDGET_NOSE_L,
+	PFW_WIDGET_NOSE,
+	PFW_WIDGET_NOSE_R,
+	PFW_WIDGET_HAIR_L,
+	PFW_WIDGET_HAIR,
+	PFW_WIDGET_HAIR_R,
+	PFW_WIDGET_JACKET_L,
+	PFW_WIDGET_JACKET,
+	PFW_WIDGET_JACKET_R,
+	PFW_WIDGET_COLLAR_L,
+	PFW_WIDGET_COLLAR,
+	PFW_WIDGET_COLLAR_R,
+	PFW_WIDGET_TIE_EARRING_L,
+	PFW_WIDGET_TIE_EARRING,
+	PFW_WIDGET_TIE_EARRING_R,
+	PFW_WIDGET_GLASSES_L,
+	PFW_WIDGET_GLASSES,
+	PFW_WIDGET_GLASSES_R,
+};
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 3: DeleteWindow(w); break;
-		case 4: /* ok click */
-			DoCommandP(0, 0, WP(w, facesel_d).face, NULL, CMD_SET_PLAYER_FACE);
-			DeleteWindow(w);
-			break;
-		case 5: /* male click */
-		case 6: /* female click */
-			RaiseWindowWidget(w, WP(w, facesel_d).gender + 5);
-			WP(w, facesel_d).gender = e->we.click.widget - 5;
-			LowerWindowWidget(w, WP(w, facesel_d).gender + 5);
-			SetWindowDirty(w);
-			break;
-		case 7:
-			WP(w, facesel_d).face = ConvertFromOldPlayerFace((WP(w, facesel_d).gender << 31) + GB(InteractiveRandom(), 0, 31));
-			SetWindowDirty(w);
-			break;
-		}
-		break;
-	}
-}
-
+/** Widget description for the normal/simple player face selection dialog */
 static const Widget _select_player_face_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   189,     0,    13, STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   189,    14,   136, 0x0,                     STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    94,   137,   148, STR_012E_CANCEL,         STR_7047_CANCEL_NEW_FACE_SELECTION},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   189,   137,   148, STR_012F_OK,             STR_7048_ACCEPT_NEW_FACE_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    25,    36, STR_7044_MALE,           STR_7049_SELECT_MALE_FACES},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    37,    48, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   187,    79,    90, STR_7046_NEW_FACE,       STR_704B_GENERATE_RANDOM_NEW_FACE},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},              // PFW_WIDGET_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   174,     0,    13, STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},    // PFW_WIDGET_CAPTION
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   175,   189,     0,    13, SPR_LARGE_SMALL_WINDOW,  STR_FACE_ADVANCED_TIP},              // PFW_WIDGET_TOGGLE_LARGE_SMALL
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   189,    14,   150, 0x0,                     STR_NULL},                           // PFW_WIDGET_SELECT_FACE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    94,   151,   162, STR_012E_CANCEL,         STR_7047_CANCEL_NEW_FACE_SELECTION}, // PFW_WIDGET_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   189,   151,   162, STR_012F_OK,             STR_7048_ACCEPT_NEW_FACE_SELECTION}, // PFW_WIDGET_ACCEPT
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    75,    86, STR_7044_MALE,           STR_7049_SELECT_MALE_FACES},         // PFW_WIDGET_MALE
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    87,    98, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},       // PFW_WIDGET_FEMALE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     2,    93,   137,   148, STR_7046_NEW_FACE,       STR_704B_GENERATE_RANDOM_NEW_FACE},  // PFW_WIDGET_RANDOM_NEW_FACE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   187,    16,    27, STR_FACE_ADVANCED,       STR_FACE_ADVANCED_TIP},              // PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON
 {   WIDGETS_END},
 };
 
+/** Widget description for the advanced player face selection dialog */
+static const Widget _select_player_face_adv_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},              // PFW_WIDGET_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   204,     0,    13, STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},    // PFW_WIDGET_CAPTION
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   205,   219,     0,    13, SPR_LARGE_SMALL_WINDOW,  STR_FACE_SIMPLE_TIP},                // PFW_WIDGET_TOGGLE_LARGE_SMALL
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   219,    14,   207, 0x0,                     STR_NULL},                           // PFW_WIDGET_SELECT_FACE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    94,   208,   219, STR_012E_CANCEL,         STR_7047_CANCEL_NEW_FACE_SELECTION}, // PFW_WIDGET_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   219,   208,   219, STR_012F_OK,             STR_7048_ACCEPT_NEW_FACE_SELECTION}, // PFW_WIDGET_ACCEPT
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    96,   156,    32,    43, STR_7044_MALE,           STR_7049_SELECT_MALE_FACES},         // PFW_WIDGET_MALE
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   157,   217,    32,    43, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},       // PFW_WIDGET_FEMALE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     2,    93,   137,   148, STR_RANDOM,              STR_704B_GENERATE_RANDOM_NEW_FACE},  // PFW_WIDGET_RANDOM_NEW_FACE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   217,    16,    27, STR_FACE_SIMPLE,         STR_FACE_SIMPLE_TIP},                // PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     2,    93,   158,   169, STR_FACE_LOAD,           STR_FACE_LOAD_TIP},                  // PFW_WIDGET_LOAD
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     2,    93,   170,   181, STR_FACE_FACECODE,       STR_FACE_FACECODE_TIP},              // PFW_WIDGET_FACECODE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     2,    93,   182,   193, STR_FACE_SAVE,           STR_FACE_SAVE_TIP},                  // PFW_WIDGET_SAVE
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    96,   156,    46,    57, STR_FACE_EUROPEAN,       STR_FACE_SELECT_EUROPEAN},           // PFW_WIDGET_ETHNICITY_EUR
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   157,   217,    46,    57, STR_FACE_AFRICAN,        STR_FACE_SELECT_AFRICAN},            // PFW_WIDGET_ETHNICITY_AFR
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   175,   217,    60,    71, STR_EMPTY,               STR_FACE_MOUSTACHE_EARRING_TIP},     // PFW_WIDGET_HAS_MOUSTACHE_EARRING
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   175,   217,    72,    83, STR_EMPTY,               STR_FACE_GLASSES_TIP},               // PFW_WIDGET_HAS_GLASSES
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,   110,   121, SPR_ARROW_LEFT,          STR_FACE_EYECOLOUR_TIP},             // PFW_WIDGET_EYECOLOUR_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,   110,   121, STR_EMPTY,               STR_FACE_EYECOLOUR_TIP},             // PFW_WIDGET_EYECOLOUR
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,   110,   121, SPR_ARROW_RIGHT,         STR_FACE_EYECOLOUR_TIP},             // PFW_WIDGET_EYECOLOUR_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,   158,   169, SPR_ARROW_LEFT,          STR_FACE_CHIN_TIP},                  // PFW_WIDGET_CHIN_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,   158,   169, STR_EMPTY,               STR_FACE_CHIN_TIP},                  // PFW_WIDGET_CHIN
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,   158,   169, SPR_ARROW_RIGHT,         STR_FACE_CHIN_TIP},                  // PFW_WIDGET_CHIN_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,    98,   109, SPR_ARROW_LEFT,          STR_FACE_EYEBROWS_TIP},              // PFW_WIDGET_EYEBROWS_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,    98,   109, STR_EMPTY,               STR_FACE_EYEBROWS_TIP},              // PFW_WIDGET_EYEBROWS
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,    98,   109, SPR_ARROW_RIGHT,         STR_FACE_EYEBROWS_TIP},              // PFW_WIDGET_EYEBROWS_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,   146,   157, SPR_ARROW_LEFT,          STR_FACE_LIPS_MOUSTACHE_TIP},        // PFW_WIDGET_LIPS_MOUSTACHE_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,   146,   157, STR_EMPTY,               STR_FACE_LIPS_MOUSTACHE_TIP},        // PFW_WIDGET_LIPS_MOUSTACHE
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,   146,   157, SPR_ARROW_RIGHT,         STR_FACE_LIPS_MOUSTACHE_TIP},        // PFW_WIDGET_LIPS_MOUSTACHE_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,   134,   145, SPR_ARROW_LEFT,          STR_FACE_NOSE_TIP},                  // PFW_WIDGET_NOSE_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,   134,   145, STR_EMPTY,               STR_FACE_NOSE_TIP},                  // PFW_WIDGET_NOSE
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,   134,   145, SPR_ARROW_RIGHT,         STR_FACE_NOSE_TIP},                  // PFW_WIDGET_NOSE_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,    86,    97, SPR_ARROW_LEFT,          STR_FACE_HAIR_TIP},                  // PFW_WIDGET_HAIR_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,    86,    97, STR_EMPTY,               STR_FACE_HAIR_TIP},                  // PFW_WIDGET_HAIR
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,    86,    97, SPR_ARROW_RIGHT,         STR_FACE_HAIR_TIP},                  // PFW_WIDGET_HAIR_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,   170,   181, SPR_ARROW_LEFT,          STR_FACE_JACKET_TIP},                // PFW_WIDGET_JACKET_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,   170,   181, STR_EMPTY,               STR_FACE_JACKET_TIP},                // PFW_WIDGET_JACKET
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,   170,   181, SPR_ARROW_RIGHT,         STR_FACE_JACKET_TIP},                // PFW_WIDGET_JACKET_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,   182,   193, SPR_ARROW_LEFT,          STR_FACE_COLLAR_TIP},                // PFW_WIDGET_COLLAR_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,   182,   193, STR_EMPTY,               STR_FACE_COLLAR_TIP},                // PFW_WIDGET_COLLAR
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,   182,   193, SPR_ARROW_RIGHT,         STR_FACE_COLLAR_TIP},                // PFW_WIDGET_COLLAR_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,   194,   205, SPR_ARROW_LEFT,          STR_FACE_TIE_EARRING_TIP},           // PFW_WIDGET_TIE_EARRING_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,   194,   205, STR_EMPTY,               STR_FACE_TIE_EARRING_TIP},           // PFW_WIDGET_TIE_EARRING
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,   194,   205, SPR_ARROW_RIGHT,         STR_FACE_TIE_EARRING_TIP},           // PFW_WIDGET_TIE_EARRING_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    175,  183,   122,   133, SPR_ARROW_LEFT,          STR_FACE_GLASSES_TIP_2},             // PFW_WIDGET_GLASSES_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    184,  208,   122,   133, STR_EMPTY,               STR_FACE_GLASSES_TIP_2},             // PFW_WIDGET_GLASSES
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    209,  217,   122,   133, SPR_ARROW_RIGHT,         STR_FACE_GLASSES_TIP_2},             // PFW_WIDGET_GLASSES_R
+{   WIDGETS_END},
+};
+
+/**
+ * Draw dynamic a label to the left of the button and a value in the button
+ *
+ * @param w              Window on which the widget is located
+ * @param widget_index   index of this widget in the window
+ * @param str            the label which will be draw
+ * @param val            the value which will be draw
+ * @param is_bool_widget is it a bool button
+ */
+void DrawFaceStringLabel(const Window *w, byte widget_index, StringID str, uint8 val, bool is_bool_widget)
+{
+	/* Write the label in gold (0x2) to the left of the button. */
+	DrawStringRightAligned(w->widget[widget_index].left - (is_bool_widget ? 5 : 14), w->widget[widget_index].top + 1, str, 0x2);
+
+	if (!IsWindowWidgetDisabled(w, widget_index)) {
+		if (is_bool_widget) {
+			/* if it a bool button write yes or no */
+			str = (val != 0) ? STR_FACE_YES : STR_FACE_NO;
+		} else {
+			/* else write the value + 1 */
+			SetDParam(0, val + 1);
+			str = STR_JUST_INT;
+		}
+
+		/* Draw the value/bool in white (0xC). If the button clicked adds 1px to x and y text coordinates (IsWindowWidgetLowered()). */
+		DrawStringCentered(w->widget[widget_index].left + (w->widget[widget_index].right - w->widget[widget_index].left) / 2 +
+			IsWindowWidgetLowered(w, widget_index), w->widget[widget_index].top + 1 + IsWindowWidgetLowered(w, widget_index), str, 0xC);
+	}
+}
+
+/**
+ * Player face selection window event definition
+ *
+ * @param w window pointer
+ * @param e event been triggered
+ */
+static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
+{
+	PlayerFace *pf = &WP(w, facesel_d).face; // pointer to the player face bits
+	GenderEthnicity ge = (GenderEthnicity)GB(*pf, _pf_info[PFV_GEN_ETHN].offset, _pf_info[PFV_GEN_ETHN].length); // get the gender and ethnicity
+	bool is_female = HASBIT(ge, GENDER_FEMALE); // get the gender: 0 == male and 1 == female
+	bool is_moust_male = !is_female && GetPlayerFaceBits(*pf, PFV_HAS_MOUSTACHE, ge) != 0; // is a male face with moustache
+
+	switch (e->event) {
+		case WE_PAINT:
+			/* lower the non-selected gender button */
+			SetWindowWidgetLoweredState(w, PFW_WIDGET_MALE,  !is_female);
+			SetWindowWidgetLoweredState(w, PFW_WIDGET_FEMALE, is_female);
+
+			/* advanced player face selection window */
+			if (WP(w, facesel_d).advanced) {
+				/* lower the non-selected ethnicity button */
+				SetWindowWidgetLoweredState(w, PFW_WIDGET_ETHNICITY_EUR, !HASBIT(ge, ETHNICITY_BLACK));
+				SetWindowWidgetLoweredState(w, PFW_WIDGET_ETHNICITY_AFR,  HASBIT(ge, ETHNICITY_BLACK));
+
+
+				/* Disable dynamically the widgets which PlayerFaceVariable has less than 2 options
+				* (or in other words you haven't any choice).
+				* If the widgets depend on a HAS-variable and this is false the widgets will be disabled, too. */
+
+				/* Eye colour buttons */
+				SetWindowWidgetsDisabledState(w, _pf_info[PFV_EYE_COLOUR].valid_values[ge] < 2,
+					PFW_WIDGET_EYECOLOUR, PFW_WIDGET_EYECOLOUR_L, PFW_WIDGET_EYECOLOUR_R, WIDGET_LIST_END);
+
+				/* Chin buttons */
+				SetWindowWidgetsDisabledState(w, _pf_info[PFV_CHIN].valid_values[ge] < 2,
+					PFW_WIDGET_CHIN, PFW_WIDGET_CHIN_L, PFW_WIDGET_CHIN_R, WIDGET_LIST_END);
+
+				/* Eyebrows buttons */
+				SetWindowWidgetsDisabledState(w, _pf_info[PFV_EYEBROWS].valid_values[ge] < 2,
+					PFW_WIDGET_EYEBROWS, PFW_WIDGET_EYEBROWS_L, PFW_WIDGET_EYEBROWS_R, WIDGET_LIST_END);
+
+				/* Lips or (if it a male face with a moustache) moustache buttons */
+				SetWindowWidgetsDisabledState(w, _pf_info[is_moust_male ? PFV_MOUSTACHE : PFV_LIPS].valid_values[ge] < 2,
+					PFW_WIDGET_LIPS_MOUSTACHE, PFW_WIDGET_LIPS_MOUSTACHE_L, PFW_WIDGET_LIPS_MOUSTACHE_R, WIDGET_LIST_END);
+
+				/* Nose buttons | male faces with moustache haven't any nose options */
+				SetWindowWidgetsDisabledState(w, _pf_info[PFV_NOSE].valid_values[ge] < 2 || is_moust_male,
+					PFW_WIDGET_NOSE, PFW_WIDGET_NOSE_L, PFW_WIDGET_NOSE_R, WIDGET_LIST_END);
+
+				/* Hair buttons */
+				SetWindowWidgetsDisabledState(w, _pf_info[PFV_HAIR].valid_values[ge] < 2,
+					PFW_WIDGET_HAIR, PFW_WIDGET_HAIR_L, PFW_WIDGET_HAIR_R, WIDGET_LIST_END);
+
+				/* Jacket buttons */
+				SetWindowWidgetsDisabledState(w, _pf_info[PFV_JACKET].valid_values[ge] < 2,
+					PFW_WIDGET_JACKET, PFW_WIDGET_JACKET_L, PFW_WIDGET_JACKET_R, WIDGET_LIST_END);
+
+				/* Collar buttons */
+				SetWindowWidgetsDisabledState(w, _pf_info[PFV_COLLAR].valid_values[ge] < 2,
+					PFW_WIDGET_COLLAR, PFW_WIDGET_COLLAR_L, PFW_WIDGET_COLLAR_R, WIDGET_LIST_END);
+
+				/* Tie/earring buttons | female faces without earring haven't any earring options */
+				SetWindowWidgetsDisabledState(w, _pf_info[PFV_TIE_EARRING].valid_values[ge] < 2 ||
+						(is_female && GetPlayerFaceBits(*pf, PFV_HAS_TIE_EARRING, ge) == 0),
+					PFW_WIDGET_TIE_EARRING, PFW_WIDGET_TIE_EARRING_L, PFW_WIDGET_TIE_EARRING_R, WIDGET_LIST_END);
+
+				/* Glasses buttons | faces without glasses haven't any glasses options */
+				SetWindowWidgetsDisabledState(w, _pf_info[PFV_GLASSES].valid_values[ge] < 2 || GetPlayerFaceBits(*pf, PFV_HAS_GLASSES, ge) == 0,
+					PFW_WIDGET_GLASSES, PFW_WIDGET_GLASSES_L, PFW_WIDGET_GLASSES_R, WIDGET_LIST_END);
+			}
+
+			DrawWindowWidgets(w);
+
+			/* Draw dynamic button value and labels for the advanced player face selection window */
+			if (WP(w, facesel_d).advanced) {
+				if (is_female) {
+					/* Only for female faces */
+					DrawFaceStringLabel(w, PFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_EARRING,   GetPlayerFaceBits(*pf, PFV_HAS_TIE_EARRING, ge), true );
+					DrawFaceStringLabel(w, PFW_WIDGET_TIE_EARRING,           STR_FACE_EARRING,   GetPlayerFaceBits(*pf, PFV_TIE_EARRING,     ge), false);
+				} else {
+					/* Only for male faces */
+					DrawFaceStringLabel(w, PFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_MOUSTACHE, GetPlayerFaceBits(*pf, PFV_HAS_MOUSTACHE,   ge), true );
+					DrawFaceStringLabel(w, PFW_WIDGET_TIE_EARRING,           STR_FACE_TIE,       GetPlayerFaceBits(*pf, PFV_TIE_EARRING,     ge), false);
+				}
+				if (is_moust_male) {
+					/* Only for male faces with moustache */
+					DrawFaceStringLabel(w, PFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_MOUSTACHE, GetPlayerFaceBits(*pf, PFV_MOUSTACHE,       ge), false);
+				} else {
+					/* Only for female faces or male faces without moustache */
+					DrawFaceStringLabel(w, PFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_LIPS,      GetPlayerFaceBits(*pf, PFV_LIPS,            ge), false);
+				}
+				/* For all faces */
+				DrawFaceStringLabel(w, PFW_WIDGET_HAS_GLASSES,           STR_FACE_GLASSES,     GetPlayerFaceBits(*pf, PFV_HAS_GLASSES,     ge), true );
+				DrawFaceStringLabel(w, PFW_WIDGET_HAIR,                  STR_FACE_HAIR,        GetPlayerFaceBits(*pf, PFV_HAIR,            ge), false);
+				DrawFaceStringLabel(w, PFW_WIDGET_EYEBROWS,              STR_FACE_EYEBROWS,    GetPlayerFaceBits(*pf, PFV_EYEBROWS,        ge), false);
+				DrawFaceStringLabel(w, PFW_WIDGET_EYECOLOUR,             STR_FACE_EYECOLOUR,   GetPlayerFaceBits(*pf, PFV_EYE_COLOUR,      ge), false);
+				DrawFaceStringLabel(w, PFW_WIDGET_GLASSES,               STR_FACE_GLASSES,     GetPlayerFaceBits(*pf, PFV_GLASSES,         ge), false);
+				DrawFaceStringLabel(w, PFW_WIDGET_NOSE,                  STR_FACE_NOSE,        GetPlayerFaceBits(*pf, PFV_NOSE,            ge), false);
+				DrawFaceStringLabel(w, PFW_WIDGET_CHIN,                  STR_FACE_CHIN,        GetPlayerFaceBits(*pf, PFV_CHIN,            ge), false);
+				DrawFaceStringLabel(w, PFW_WIDGET_JACKET,                STR_FACE_JACKET,      GetPlayerFaceBits(*pf, PFV_JACKET,          ge), false);
+				DrawFaceStringLabel(w, PFW_WIDGET_COLLAR,                STR_FACE_COLLAR,      GetPlayerFaceBits(*pf, PFV_COLLAR,          ge), false);
+			}
+
+			/* Draw the player face picture */
+			DrawPlayerFace(*pf, GetPlayer((PlayerID)w->window_number)->player_color, 2, 16);
+			break;
+
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				/* Toggle size, advanced/simple face selection */
+				case PFW_WIDGET_TOGGLE_LARGE_SMALL:
+				case PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON:
+					DoCommandP(0, 0, *pf, NULL, CMD_SET_PLAYER_FACE);
+					DeleteWindow(w);
+					DoSelectPlayerFace((PlayerID)w->window_number, !WP(w, facesel_d).advanced);
+					break;
+
+				/* Cancel button */
+				case PFW_WIDGET_CANCEL:
+					DeleteWindow(w);
+					break;
+
+				/* OK button */
+				case PFW_WIDGET_ACCEPT:
+					DoCommandP(0, 0, *pf, NULL, CMD_SET_PLAYER_FACE);
+					DeleteWindow(w);
+					break;
+
+				/* Load button */
+				case PFW_WIDGET_LOAD:
+					*pf = _player_face;
+					ScaleAllPlayerFaceBits(*pf);
+					ShowErrorMessage(INVALID_STRING_ID, STR_FACE_LOAD_DONE, 0, 0);
+					SetWindowDirty(w);
+					break;
+
+				/* 'Player face number' button, view and/or set player face number */
+				case PFW_WIDGET_FACECODE:
+					SetDParam(0, *pf);
+					ShowQueryString(STR_JUST_INT, STR_FACE_FACECODE_CAPTION, 10 + 1, 0, w, CS_NUMERAL);
+					break;
+
+				/* Save button */
+				case PFW_WIDGET_SAVE:
+					_player_face = *pf;
+					ShowErrorMessage(INVALID_STRING_ID, STR_FACE_SAVE_DONE, 0, 0);
+					break;
+
+				/* Toggle gender (male/female) button */
+				case PFW_WIDGET_MALE:
+				case PFW_WIDGET_FEMALE:
+					SetPlayerFaceBits(*pf, PFV_GENDER, ge, e->we.click.widget - PFW_WIDGET_MALE);
+					ScaleAllPlayerFaceBits(*pf);
+					SetWindowDirty(w);
+					break;
+
+				/* Randomize face button */
+				case PFW_WIDGET_RANDOM_NEW_FACE:
+					RandomPlayerFaceBits(*pf, ge, WP(w, facesel_d).advanced);
+					SetWindowDirty(w);
+					break;
+
+				/* Toggle ethnicity (european/african) button */
+				case PFW_WIDGET_ETHNICITY_EUR:
+				case PFW_WIDGET_ETHNICITY_AFR:
+					SetPlayerFaceBits(*pf, PFV_ETHNICITY, ge, e->we.click.widget - PFW_WIDGET_ETHNICITY_EUR);
+					ScaleAllPlayerFaceBits(*pf);
+					SetWindowDirty(w);
+					break;
+
+				default:
+					/* For all buttons from PFW_WIDGET_HAS_MOUSTACHE_EARRING to PFW_WIDGET_GLASSES_R is the same function.
+					* Therefor is this combined function.
+					* First it checks which PlayerFaceVariable will be change and then
+					* a: invert the value for boolean variables
+					* or b: it checks inside of IncreasePlayerFaceBits() if a left (_L) butten is pressed and then decrease else increase the variable */
+					if (WP(w, facesel_d).advanced && e->we.click.widget >= PFW_WIDGET_HAS_MOUSTACHE_EARRING && e->we.click.widget <= PFW_WIDGET_GLASSES_R) {
+						PlayerFaceVariable pfv; // which PlayerFaceVariable shall be edited
+
+						if (e->we.click.widget < PFW_WIDGET_EYECOLOUR_L) { // Bool buttons
+							switch (e->we.click.widget - PFW_WIDGET_HAS_MOUSTACHE_EARRING) {
+								default: NOT_REACHED();
+								case 0: pfv = is_female ? PFV_HAS_TIE_EARRING : PFV_HAS_MOUSTACHE; break; // Has earring/moustache button
+								case 1: pfv = PFV_HAS_GLASSES; break; // Has glasses button
+							}
+							SetPlayerFaceBits(*pf, pfv, ge, !GetPlayerFaceBits(*pf, pfv, ge));
+							ScaleAllPlayerFaceBits(*pf);
+
+						} else { // Value buttons
+							switch ((e->we.click.widget - PFW_WIDGET_EYECOLOUR_L) / 3) {
+								default: NOT_REACHED();
+								case 0: pfv = PFV_EYE_COLOUR; break;  // Eye colour buttons
+								case 1: pfv = PFV_CHIN; break;        // Chin buttons
+								case 2: pfv = PFV_EYEBROWS; break;    // Eyebrows buttons
+								case 3: pfv = is_moust_male ? PFV_MOUSTACHE : PFV_LIPS; break; // Moustache or lips buttons
+								case 4: pfv = PFV_NOSE; break;        // Nose buttons
+								case 5: pfv = PFV_HAIR; break;        // Hair buttons
+								case 6: pfv = PFV_JACKET; break;      // Jacket buttons
+								case 7: pfv = PFV_COLLAR; break;      // Collar buttons
+								case 8: pfv = PFV_TIE_EARRING; break; // Tie/earring buttons
+								case 9: pfv = PFV_GLASSES; break;     // Glasses buttons
+							}
+							/* 0 == left (_L), 1 == middle or 2 == right (_R) - button click */
+							IncreasePlayerFaceBits(*pf, pfv, ge, (((e->we.click.widget - PFW_WIDGET_EYECOLOUR_L) % 3) != 0) ? 1 : -1);
+						}
+
+						SetWindowDirty(w);
+					}
+					break;
+			}
+			break;
+
+		case WE_ON_EDIT_TEXT:
+			/* Set a new player face number */
+			if (!StrEmpty(e->we.edittext.str)) {
+				*pf = strtoul(e->we.edittext.str, NULL, 10);
+				ScaleAllPlayerFaceBits(*pf);
+				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_FACECODE_SET, 0, 0);
+				SetWindowDirty(w);
+			} else {
+				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_FACECODE_ERR, 0, 0);
+			}
+			break;
+	}
+}
+
+/** normal/simple player face selection window description */
 static const WindowDesc _select_player_face_desc = {
-	WDP_AUTO, WDP_AUTO, 190, 149, 190, 149,
+	WDP_AUTO, WDP_AUTO, 190, 163, 190, 163,
 	WC_PLAYER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_player_face_widgets,
 	SelectPlayerFaceWndProc
 };
+
+/** advanced player face selection window description */
+static const WindowDesc _select_player_face_adv_desc = {
+	WDP_AUTO, WDP_AUTO, 220, 220, 220, 220,
+	WC_PLAYER_FACE, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_select_player_face_adv_widgets,
+	SelectPlayerFaceWndProc
+};
+
+/**
+ * Open the simple/advanced player face selection window
+ *
+ * @param player the player which face shall be edited
+ * @param adv    simple or advanced player face selection window
+ *
+ * @pre is player a valid player
+ */
+static void DoSelectPlayerFace(PlayerID player, bool adv)
+{
+	if (!IsValidPlayer(player)) return;
+
+	Window *w = AllocateWindowDescFront(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, player); // simple or advanced window
+
+	if (w != NULL) {
+		w->caption_color = w->window_number;
+		WP(w, facesel_d).face = GetPlayer((PlayerID)w->window_number)->face;
+		WP(w, facesel_d).advanced = adv;
+	}
+}
+
 
 /* Names of the widgets. Keep them in the same order as in the widget array */
 enum PlayerCompanyWindowWidgets {
@@ -682,6 +1055,12 @@ static void DrawCompanyOwnerText(const Player *p)
 	if (num >= 0) DrawString(120, 124, STR_707D_OWNED_BY + num, 0);
 }
 
+/**
+ * Player company window event definition
+ *
+ * @param w window pointer
+ * @param e event been triggered
+ */
 static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -749,15 +1128,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case PCW_WIDGET_NEW_FACE: {
-					Window *wf = AllocateWindowDescFront(&_select_player_face_desc, w->window_number);
-					if (wf != NULL) {
-						wf->caption_color = w->window_number;
-						WP(wf, facesel_d).face = GetPlayer((PlayerID)wf->window_number)->face;
-						WP(wf, facesel_d).gender = 0;
-					}
-					break;
-				}
+				case PCW_WIDGET_NEW_FACE: DoSelectPlayerFace((PlayerID)w->window_number, false); break;
 
 				case PCW_WIDGET_COLOR_SCHEME: {
 					Window *wf = AllocateWindowDescFront(_loaded_newgrf_features.has_2CC ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, w->window_number);

@@ -155,8 +155,6 @@ enum {
 	LOAN_INTERVAL_OLD_AI = 50000,
 };
 
-typedef uint32 PlayerFace;
-
 struct Player {
 	uint32 name_2;
 	uint16 name_1;

@@ -300,6 +300,8 @@ VARDEF Money _additional_cash_required;
 
 VARDEF bool _rightclick_emulate;
 
+VARDEF PlayerFace _player_face; ///< for player face storage in openttd.cfg
+
 /* IN/OUT parameters to commands */
 VARDEF byte _yearly_expenses_type;
 VARDEF TileIndex _terraform_err_tile;

@@ -88,6 +88,7 @@ enum {
 typedef int32 Year;
 typedef int32 Date;
 
+typedef uint32 PlayerFace; ///< player face bits, info see in player_face.h
 
 enum SwitchModes {
 	SM_NONE            =  0,

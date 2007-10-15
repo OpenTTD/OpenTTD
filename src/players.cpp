@@ -455,6 +455,12 @@ void ResetPlayerLivery(Player *p)
 	}
 }
 
+/**
+ * Create a new player and sets all player variables default values
+ *
+ * @param is_ai is a ai player?
+ * @return the player struct
+ */
 Player *DoStartupNewPlayer(bool is_ai)
 {
 	Player *p;
@@ -478,7 +484,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->avail_railtypes = GetPlayerRailtypes(p->index);
 	p->avail_roadtypes = GetPlayerRoadtypes(p->index);
 	p->inaugurated_year = _cur_year;
-	p->face = ConvertFromOldPlayerFace(Random());
+	RandomPlayerFaceBits(p->face, (GenderEthnicity)Random(), false); // create a random player face
 
 	/* Engine renewal settings */
 	p->engine_renew_list = NULL;

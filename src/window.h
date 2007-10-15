@@ -390,9 +390,10 @@ struct smallmap_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(smallmap_d));
 
+/* player face selection window */
 struct facesel_d {
-	uint32 face;
-	byte gender;
+	PlayerFace face; // player face bits
+	bool advanced;   // advance player face selection window
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 
