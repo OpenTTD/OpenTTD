@@ -2782,6 +2782,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nya {STRING} är nu tillgänglig  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan inte sälja förstört fordon...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan inte lägga till fordonet i en tidtabell...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Fordon kan enbart vänta vid stationer.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Detta fordon stannar inte vid denna station.

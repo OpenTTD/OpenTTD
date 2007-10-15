@@ -1047,6 +1047,7 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Опашка на колите (със сумарен ефект): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Преместване на прозореца когато мишката е в края: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Позволи изпращане на пари до други компаний: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Нестандартни станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Нов глобален навигатор (NPF, отменя NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Теглови множител към товарите за симулация на тежки влакове: {ORANGE}{STRING}
@@ -1105,6 +1106,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Разглед�
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Изклучен
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Scrollwheel скорост на картата: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Дясно-щракане емулациа: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-щракане
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол-щракане
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключен
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматична пауза стартирайки нова игра: {ORANGE}{STRING}
@@ -1627,8 +1631,11 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :ЖП линия
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :ЖП линия с пре-сигнали
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :ЖП линия с изходни сигнали
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Железопътна линиа с комбинирани знаци
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Железопътна линиа с нормални и пре-сигнали
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Железопътна линиа с нормални и изходни сигнали
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Железопътна линиа с нормални и комбинирани знаци
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Железопътна линиа с пре- и изходни сигнали
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Железопътна линиа с пре- и комбинирани сигнали
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Железопътна линиа с изходни и комбинирани знаци
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Железопътната гара трябва да бъде премахната първо
 
@@ -2009,6 +2016,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Не м�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Първо разрушете тунела
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Първо трябва да разрушите моста
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Не може да започва и да свърша на едно и също място
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Мостни начала не са на същото ниво
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Мостът е ту нисък за теренът
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Началото и краят трябва да са на една линия
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Мястото е неподходящо за вход на тунел
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2768,6 +2777,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Нов {STRING} е на разположение! - {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Унищожено превозно средство не може да се продаде...
+
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Превозни средства могат да чакат само на гари.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Това превознот средство не спира на тази гара.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Промени времето
@@ -2827,6 +2838,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Не м�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Преименувай МПС-то
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи автобус пристигна на {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи камион пристигна на {STATION}!
+STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първиат пътнически трамвай пристига на {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първиат товарен трамвай пристига на {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}Шофьор загина на място при екплозия на МПС след сблъсък с влак
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}{COMMA} загинаха на място при екплозия на МПС след сблъсък с влак
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Не може да обърнеш МПС-то...
