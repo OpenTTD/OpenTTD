@@ -243,7 +243,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	/* retrieve landscape height and ensure it's on land */
 	tile_start = TileXY(x, y);
 	tile_end = TileXY(sx, sy);
-	if (IsClearWaterTile(tile_start) || IsClearWaterTile(tile_end)) {
+	if (IsWaterTile(tile_start) || IsWaterTile(tile_end)) {
 		return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);
 	}
 

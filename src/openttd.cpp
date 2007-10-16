@@ -1626,7 +1626,7 @@ bool AfterLoadGame()
 						if (GB(_m[t].m5, 3, 2) == 0) {
 							MakeClear(t, CLEAR_GRASS, 3);
 						} else {
-							MakeCanal(t, GetTileOwner(t));
+							MakeCanal(t, (GetTileOwner(t) == OWNER_WATER) ? OWNER_NONE : GetTileOwner(t));
 						}
 					}
 					SetBridgeMiddle(t, axis);
@@ -2158,6 +2158,19 @@ bool AfterLoadGame()
 		/* Added variables to support newindustries */
 		Industry *i;
 		FOR_ALL_INDUSTRIES(i) i->founder = OWNER_NONE;
+	}
+
+	/* From version 82, old style canals (above sealevel (0), WATER owner) are no longer supported.
+	    Replace the owner for those by OWNER_NONE. */
+	if (CheckSavegameVersion(82)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_WATER) &&
+					GetWaterTileType(t) == WATER_TILE_CLEAR &&
+					GetTileOwner(t) == OWNER_WATER &&
+					TileHeight(t) != 0) {
+				SetTileOwner(t, OWNER_NONE);
+			}
+		}
 	}
 
 	/* Recalculate */

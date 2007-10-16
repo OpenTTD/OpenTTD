@@ -154,6 +154,15 @@ static inline bool IsBuoyTile(TileIndex t)
 	return IsTileType(t, MP_STATION) && IsBuoy(t);
 }
 
+static inline bool IsCanalBuoyTile(TileIndex t)
+{
+	return IsBuoyTile(t) && !IsTileOwner(t, OWNER_WATER);
+}
+
+static inline bool IsSeaBuoyTile(TileIndex t)
+{
+	return IsBuoyTile(t) && IsTileOwner(t, OWNER_WATER);
+}
 
 static inline bool IsHangarTile(TileIndex t)
 {

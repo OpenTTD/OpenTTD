@@ -1236,11 +1236,11 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 					/* As soon as the tile is not water, bail out.
 					* But that does not mean the search is over.  You have
 					* to make sure every tile of the industry will be only water*/
-					if (!IsClearWaterTile(cur_tile)) return false;
+					if (!IsWaterTile(cur_tile)) return false;
 				} else {
 					Slope tileh;
 
-					if (IsClearWaterTile(cur_tile)) return false;
+					if (IsWaterTile(cur_tile)) return false;
 
 					tileh = GetTileSlope(cur_tile, NULL);
 

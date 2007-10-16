@@ -933,7 +933,7 @@ static bool GrowTownWithBridge(const Town *t, TileIndex tile, RoadBits rcmd)
 			return false;
 		}
 		bridge_tile = TILE_MASK(bridge_tile + TileOffsByDiagDir(bridge_dir));
-	} while (IsClearWaterTile(bridge_tile));
+	} while (IsWaterTile(bridge_tile));
 
 	/* no water tiles in between? */
 	if (bridge_length == 1) return false;
@@ -1072,7 +1072,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		TileIndex house_tile = TileAddByDiagDir(tile, target_dir); // position of a possible house
 
 		/* Don't walk into water. */
-		if (IsClearWaterTile(house_tile)) return;
+		if (IsWaterTile(house_tile)) return;
 
 		switch (_patches.town_layout) {
 			default: NOT_REACHED();
@@ -1121,7 +1121,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	}
 
 	/* Return if a water tile */
-	if (IsClearWaterTile(tile)) return;
+	if (IsWaterTile(tile)) return;
 
 	/* Make the roads look nicer */
 	rcmd = CleanUpRoadBits(tile, rcmd);

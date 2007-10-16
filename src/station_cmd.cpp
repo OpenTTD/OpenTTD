@@ -1769,7 +1769,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	if (!IsClearWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	/* allocate and initialize new station */
@@ -2088,7 +2088,7 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawTramCatenary(ti, axis == AXIS_X ? ROAD_X : ROAD_Y);
 	}
 
-	if (IsBuoyTile(ti->tile) && (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER))) DrawCanalWater(ti->tile);
+	if (IsCanalBuoyTile(ti->tile)) DrawCanalWater(ti->tile);
 
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {

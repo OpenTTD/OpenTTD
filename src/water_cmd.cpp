@@ -72,7 +72,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
-	if (!IsClearWaterTile(tile) || !IsClearWaterTile(tile2))
+	if (!IsWaterTile(tile) || !IsWaterTile(tile2))
 		return_cmd_error(STR_3801_MUST_BE_BUILT_ON_WATER);
 
 	if (IsBridgeAbove(tile) || IsBridgeAbove(tile2)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -458,7 +458,7 @@ static void DrawTile_Water(TileInfo *ti)
 	switch (GetWaterTileType(ti->tile)) {
 		case WATER_TILE_CLEAR:
 			DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
-			if (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER)) DrawCanalWater(ti->tile);
+			if (IsCanal(ti->tile)) DrawCanalWater(ti->tile);
 			DrawBridgeMiddle(ti);
 			break;
 
@@ -518,7 +518,7 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
-			if (TilePixelHeight(tile) == 0 || IsTileOwner(tile, OWNER_WATER)) {
+			if (!IsCanal(tile)) {
 				td->str = STR_3804_WATER;
 			} else {
 				td->str = STR_LANDINFO_CANAL;
@@ -725,8 +725,10 @@ void TileLoop_Water(TileIndex tile)
 		{{ 0, -1}, {0, 0}, {1, 0}, { 0, -1}, { 1, -1}}
 	};
 
-	/* Ensure sea-level canals and buoys on canal borders do not flood */
-	if ((IsTileType(tile, MP_WATER) || IsBuoyTile(tile)) && !IsTileOwner(tile, OWNER_WATER)) return;
+	/* Ensure buoys on canal borders do not flood */
+	if (IsCanalBuoyTile(tile)) return;
+	/* Ensure only sea and coast floods, not canals or rivers */
+	if (IsTileType(tile, MP_WATER) && !(IsSea(tile) || IsCoast(tile))) return;
 
 	/* floods in all four diagonal directions with the exception of the edges */
 	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
@@ -815,7 +817,7 @@ static uint32 VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
 static CommandCost TerraformTile_Water(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
 	/* Canals can't be terraformed */
-	if (IsClearWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_MUST_DEMOLISH_CANAL_FIRST);
+	if (IsWaterTile(tile) && IsCanal(tile)) return_cmd_error(STR_MUST_DEMOLISH_CANAL_FIRST);
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }

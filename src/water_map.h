@@ -27,6 +27,8 @@ enum LockPart {
 
 static inline WaterTileType GetWaterTileType(TileIndex t)
 {
+	assert(IsTileType(t, MP_WATER));
+
 	if (_m[t].m5 == 0) return WATER_TILE_CLEAR;
 	if (_m[t].m5 == 1) return WATER_TILE_COAST;
 	if (IS_INT_INSIDE(_m[t].m5, LOCK_MIDDLE, LOCK_END)) return WATER_TILE_LOCK;
@@ -35,9 +37,17 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
 	return WATER_TILE_DEPOT;
 }
 
+/** IsWater return true if any type of clear water like ocean, river, canal */
 static inline bool IsWater(TileIndex t)
 {
 	return GetWaterTileType(t) == WATER_TILE_CLEAR;
+}
+
+static inline bool IsSea(TileIndex t)
+{
+	if (GetWaterTileType(t) != WATER_TILE_CLEAR) return false;
+	if (!IsTileOwner(t, OWNER_WATER)) return false; // 'Human' built water = canal, not sea
+	return true;
 }
 
 static inline bool IsCoast(TileIndex t)
@@ -50,9 +60,9 @@ static inline bool IsCanal(TileIndex t)
 	return GetWaterTileType(t) == WATER_TILE_CLEAR && GetTileOwner(t) != OWNER_WATER;
 }
 
-static inline bool IsClearWaterTile(TileIndex t)
+static inline bool IsWaterTile(TileIndex t)
 {
-	return IsTileType(t, MP_WATER) && IsWater(t) && GetTileSlope(t, NULL) == SLOPE_FLAT;
+	return IsTileType(t, MP_WATER) && IsWater(t);
 }
 
 static inline TileIndex GetOtherShipDepotTile(TileIndex t)
@@ -109,6 +119,7 @@ static inline void MakeShore(TileIndex t)
 
 static inline void MakeCanal(TileIndex t, Owner o)
 {
+	assert(o != OWNER_WATER);
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
