@@ -280,25 +280,27 @@ struct Prices {
 
 #define GAME_DIFFICULTY_NUM 18
 
+/** Specific type for Game Difficulty to ease changing the type */
+typedef uint16 GDType;
 struct GameDifficulty {
-	int max_no_competitors;
-	int competitor_start_time;
-	int number_towns;
-	int number_industries;
-	int max_loan;
-	int initial_interest;
-	int vehicle_costs;
-	int competitor_speed;
-	int competitor_intelligence; // no longer in use
-	int vehicle_breakdowns;
-	int subsidy_multiplier;
-	int construction_cost;
-	int terrain_type;
-	int quantity_sea_lakes;
-	int economy;
-	int line_reverse_mode;
-	int disasters;
-	int town_council_tolerance; // minimum required town ratings to be allowed to demolish stuff
+	GDType max_no_competitors;
+	GDType competitor_start_time;
+	GDType number_towns;
+	GDType number_industries;
+	GDType max_loan;
+	GDType initial_interest;
+	GDType vehicle_costs;
+	GDType competitor_speed;
+	GDType competitor_intelligence; // no longer in use
+	GDType vehicle_breakdowns;
+	GDType subsidy_multiplier;
+	GDType construction_cost;
+	GDType terrain_type;
+	GDType quantity_sea_lakes;
+	GDType economy;
+	GDType line_reverse_mode;
+	GDType disasters;
+	GDType town_council_tolerance; // minimum required town ratings to be allowed to demolish stuff
 };
 
 enum {

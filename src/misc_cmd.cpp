@@ -380,7 +380,7 @@ CommandCost CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, ui
 
 	if (flags & DC_EXEC) {
 		if (p1 != (uint32)-1L) {
-			((int*)&_opt_ptr->diff)[p1] = p2;
+			((GDType*)&_opt_ptr->diff)[p1] = p2;
 			_opt_ptr->diff_level = 3; // custom difficulty level
 		} else {
 			_opt_ptr->diff_level = p2;

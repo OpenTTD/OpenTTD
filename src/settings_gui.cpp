@@ -399,7 +399,7 @@ static const GameSettingData _game_setting_info[] = {
  * Q: disasters
  * R: area restructuring (0 = permissive, 2 = hostile)
  */
-static const int16 _default_game_diff[3][GAME_DIFFICULTY_NUM] = { /*
+static const GDType _default_game_diff[3][GAME_DIFFICULTY_NUM] = { /*
 	 A, B, C, D,   E, F, G, H, I, J, K, L, M, N, O, P, Q, R*/
 	{2, 2, 1, 4, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0}, ///< easy
 	{4, 1, 1, 3, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1}, ///< medium
@@ -414,7 +414,7 @@ void SetDifficultyLevel(int mode, GameOptions *gm_opt)
 	gm_opt->diff_level = mode;
 	if (mode != 3) { // not custom
 		for (i = 0; i != GAME_DIFFICULTY_NUM; i++)
-			((int*)&gm_opt->diff)[i] = _default_game_diff[mode][i];
+			((GDType*)&gm_opt->diff)[i] = _default_game_diff[mode][i];
 	}
 }
 
@@ -428,7 +428,7 @@ void CheckDifficultyLevels()
 		SetDifficultyLevel(_opt_newgame.diff_level, &_opt_newgame);
 	} else {
 		for (uint i = 0; i < GAME_DIFFICULTY_NUM; i++) {
-			int *diff = ((int*)&_opt_newgame.diff) + i;
+			GDType *diff = ((GDType*)&_opt_newgame.diff) + i;
 			*diff = clamp(*diff, _game_setting_info[i].min, _game_setting_info[i].max);
 			*diff -= *diff % _game_setting_info[i].step;
 		}
@@ -489,7 +489,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			DrawStringCentered(20, y, STR_681A, 0);
 
 
-			value = _game_setting_info[i].str + ((int*)&_opt_mod_temp.diff)[i];
+			value = _game_setting_info[i].str + ((GDType*)&_opt_mod_temp.diff)[i];
 			if (i == 4) value *= 1000; // XXX - handle currency option
 			SetDParam(0, value);
 			DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, 0);
@@ -531,7 +531,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 			_difficulty_timeout = 5;
 
-			val = ((int*)&_opt_mod_temp.diff)[btn];
+			val = ((GDType*)&_opt_mod_temp.diff)[btn];
 
 			info = &_game_setting_info[btn]; // get information about the difficulty setting
 			if (x >= 10) {
@@ -546,7 +546,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			}
 
 			// save value in temporary variable
-			((int*)&_opt_mod_temp.diff)[btn] = val;
+			((GDType*)&_opt_mod_temp.diff)[btn] = val;
 			RaiseWindowWidget(w, _opt_mod_temp.diff_level + 3);
 			SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
 			LowerWindowWidget(w, _opt_mod_temp.diff_level + 3);
@@ -563,11 +563,11 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			ShowHighscoreTable(_opt_mod_temp.diff_level, -1);
 			break;
 		case 10: { /* Save button - save changes */
-			int btn, val;
+			GDType btn, val;
 			for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
-				val = ((int*)&_opt_mod_temp.diff)[btn];
+				val = ((GDType*)&_opt_mod_temp.diff)[btn];
 				// if setting has changed, change it
-				if (val != ((int*)&_opt_ptr->diff)[btn])
+				if (val != ((GDType*)&_opt_ptr->diff)[btn])
 					DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 			}
 			DoCommandP(0, UINT_MAX, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
