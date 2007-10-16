@@ -342,6 +342,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 				if (i >= w->vscroll.pos && i < w->vscroll.pos + w->vscroll.cap) {
 					const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
 					SpriteID pal;
+					byte txtoffset;
 
 					/* Pick a colour */
 					switch (c->status) {
@@ -365,7 +366,8 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 
 					DrawSprite(SPR_SQUARE, pal, 5, y + 2);
 					if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, 20, y + 2);
-					DoDrawString(text, c->error != NULL ? 35 : 25, y + 3, WP(w, newgrf_d).sel == c ? 0xC : 0x10);
+					txtoffset = c->error != NULL ? 35 : 25;
+					DoDrawStringTruncated(text, txtoffset, y + 3, WP(w, newgrf_d).sel == c ? 0xC : 0x10, w->width - txtoffset - 10);
 					y += 14;
 				}
 			}
