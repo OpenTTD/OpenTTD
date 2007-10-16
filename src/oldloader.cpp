@@ -224,7 +224,7 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 					default: break;
 				}
 			} else {
-				uint32 res = 0;
+				uint64 res = 0;
 
 				/* Reading from the file: bits 16 to 23 have the FILE type */
 				switch (GetOldChunkFileType(chunk->type)) {
@@ -759,8 +759,8 @@ static bool OldPlayerYearly(LoadgameState *ls, int num)
 }
 
 static const OldChunks player_economy_chunk[] = {
-	OCL_SVAR( OC_INT32, PlayerEconomyEntry, income ),
-	OCL_SVAR( OC_INT32, PlayerEconomyEntry, expenses ),
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, PlayerEconomyEntry, income ),
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, PlayerEconomyEntry, expenses ),
 	OCL_SVAR( OC_INT32, PlayerEconomyEntry, delivered_cargo ),
 	OCL_SVAR( OC_INT32, PlayerEconomyEntry, performance_history ),
 	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, PlayerEconomyEntry, company_value ),
@@ -943,7 +943,7 @@ static const OldChunks player_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Player, player_money_fraction ),
 	OCL_SVAR(  OC_UINT8, Player, quarters_of_bankrupcy ),
 	OCL_SVAR(  OC_UINT8, Player, bankrupt_asked ),
-	OCL_SVAR( OC_UINT32, Player, bankrupt_value ),
+	OCL_SVAR( OC_FILE_U32 | OC_VAR_I64, Player, bankrupt_value ),
 	OCL_SVAR( OC_UINT16, Player, bankrupt_timeout ),
 
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Player, cargo_types ),
@@ -1184,8 +1184,8 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR( OC_UINT16, Vehicle, reliability ),
 	OCL_SVAR( OC_UINT16, Vehicle, reliability_spd_dec ),
 
-	OCL_SVAR(  OC_INT32, Vehicle, profit_this_year ),
-	OCL_SVAR(  OC_INT32, Vehicle, profit_last_year ),
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, Vehicle, profit_this_year ),
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, Vehicle, profit_last_year ),
 
 	OCL_VAR ( OC_UINT16,   1, &_old_next_ptr ),
 
@@ -1313,23 +1313,23 @@ static inline bool LoadOldSubsidy(LoadgameState *ls, int num)
 }
 
 static const OldChunks game_difficulty_chunk[] = {
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, max_no_competitors ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, competitor_start_time ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, number_towns ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, number_industries ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, max_loan ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, initial_interest ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, vehicle_costs ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, competitor_speed ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, competitor_intelligence ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, vehicle_breakdowns ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, subsidy_multiplier ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, construction_cost ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, terrain_type ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, quantity_sea_lakes ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, economy ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, line_reverse_mode ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, GameDifficulty, disasters ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, max_no_competitors ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, competitor_start_time ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, number_towns ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, number_industries ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, max_loan ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, initial_interest ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, vehicle_costs ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, competitor_speed ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, competitor_intelligence ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, vehicle_breakdowns ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, subsidy_multiplier ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, construction_cost ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, terrain_type ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, quantity_sea_lakes ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, economy ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, line_reverse_mode ),
+	OCL_SVAR( OC_UINT16, GameDifficulty, disasters ),
 	OCL_END()
 };
 
@@ -1496,9 +1496,9 @@ static const OldChunks main_chunk[] = {
 	OCL_VAR ( OC_FILE_I16 | OC_VAR_I32,   1, &_saved_scrollpos_y ),
 	OCL_VAR ( OC_FILE_U16 | OC_VAR_U8,    1, &_saved_scrollpos_zoom ),
 
-	OCL_VAR ( OC_UINT32,    1, &_economy.max_loan ),
-	OCL_VAR ( OC_UINT32,    1, &_economy.max_loan_unround ),
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,    1, &_economy.fluct ),
+	OCL_VAR ( OC_FILE_U32 | OC_VAR_I64,   1, &_economy.max_loan ),
+	OCL_VAR ( OC_FILE_U32 | OC_VAR_I64,   1, &_economy.max_loan_unround ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_economy.fluct ),
 
 	OCL_VAR ( OC_UINT16,    1, &_disaster_delay ),
 
