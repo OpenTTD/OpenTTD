@@ -1448,9 +1448,9 @@ bool AfterLoadGame()
 						 * an oil rig which got shut down, but not completly removed from
 						 * the map
 						 */
-						TileIndex t1 = TILE_ADDXY(t, 1, 0);
+						TileIndex t1 = TILE_ADDXY(t, 0, 1);
 						if (IsTileType(t1, MP_INDUSTRY) &&
-								GetIndustryGfx(t1) == GFX_OILRIG_3) {
+								GetIndustryGfx(t1) == GFX_OILRIG_1) {
 							/* The internal encoding of oil rigs was changed twice.
 							 * It was 3 (till 2.2) and later 5 (till 5.1).
 							 * Setting it unconditionally does not hurt.
