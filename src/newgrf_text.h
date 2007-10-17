@@ -15,8 +15,11 @@ char *TranslateTTDPatchCodes(const char *str);
 
 bool CheckGrfLangID(byte lang_id, byte grf_version);
 
-void PrepareTextRefStackUsage();
+void PrepareTextRefStackUsage(byte numEntries);
 void StopTextRefStackUsage();
+void SwitchToNormalRefStack();
+void SwitchToErrorRefStack();
+void RewindTextRefStack();
 uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64 *argv);
 
 #endif /* NEWGRF_TEXT_H */

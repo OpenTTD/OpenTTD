@@ -538,21 +538,28 @@ struct TextRefStack {
 		this->stack[this->position + 1] = GB(word, 8, 8);
 	}
 
-	void ResetStack() { this->used = true; this->position = 0; }
+	void ResetStack()  { this->position = 0; this->used = true; }
+	void RewindStack() { this->position = 0; }
 };
 
-/** The stack that is used for TTDP compatible string code parsing */
-static TextRefStack _newgrf_textrefstack;
+static TextRefStack _newgrf_normal_textrefstack;
+static TextRefStack _newgrf_error_textrefstack;
 
-/** Prepare the TTDP compatible string code parsing */
-void PrepareTextRefStackUsage()
+/** The stack that is used for TTDP compatible string code parsing */
+static TextRefStack *_newgrf_textrefstack = &_newgrf_normal_textrefstack;
+
+/**
+ * Prepare the TTDP compatible string code parsing
+ * @param numEntries number of entries to copy from the registers
+ */
+void PrepareTextRefStackUsage(byte numEntries)
 {
 	extern TemporaryStorageArray<uint32, 0x110> _temp_store;
 
-	_newgrf_textrefstack.ResetStack();
+	_newgrf_textrefstack->ResetStack();
 
-	byte *p = _newgrf_textrefstack.stack;
-	for (uint i = 0; i < 6; i++) {
+	byte *p = _newgrf_textrefstack->stack;
+	for (uint i = 0; i < numEntries; i++) {
 		for (uint j = 0; j < 32; j += 8) {
 			*p = GB(_temp_store.Get(0x100 + i), j, 8);
 			p++;
@@ -561,7 +568,22 @@ void PrepareTextRefStackUsage()
 }
 
 /** Stop using the TTDP compatible string code parsing */
-void StopTextRefStackUsage() { _newgrf_textrefstack.used = false; }
+void StopTextRefStackUsage() { _newgrf_textrefstack->used = false; }
+
+void SwitchToNormalRefStack()
+{
+	_newgrf_textrefstack = &_newgrf_normal_textrefstack;
+}
+
+void SwitchToErrorRefStack()
+{
+	_newgrf_textrefstack = &_newgrf_error_textrefstack;
+}
+
+void RewindTextRefStack()
+{
+	_newgrf_textrefstack->RewindStack();
+}
 
 /**
  * FormatString for NewGRF specific "magic" string control codes
@@ -571,31 +593,31 @@ void StopTextRefStackUsage() { _newgrf_textrefstack.used = false; }
  */
 uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64 *argv)
 {
-	if (_newgrf_textrefstack.used) {
+	if (_newgrf_textrefstack->used) {
 		switch (scc) {
 			default: NOT_REACHED();
-			case SCC_NEWGRF_PRINT_SIGNED_BYTE:    *argv = _newgrf_textrefstack.PopSignedByte();    break;
-			case SCC_NEWGRF_PRINT_SIGNED_WORD:    *argv = _newgrf_textrefstack.PopSignedWord();    break;
-			case SCC_NEWGRF_PRINT_QWORD_CURRENCY: *argv = _newgrf_textrefstack.PopUnsignedQWord(); break;
+			case SCC_NEWGRF_PRINT_SIGNED_BYTE:    *argv = _newgrf_textrefstack->PopSignedByte();    break;
+			case SCC_NEWGRF_PRINT_SIGNED_WORD:    *argv = _newgrf_textrefstack->PopSignedWord();    break;
+			case SCC_NEWGRF_PRINT_QWORD_CURRENCY: *argv = _newgrf_textrefstack->PopUnsignedQWord(); break;
 
 			case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
-			case SCC_NEWGRF_PRINT_DWORD:          *argv = _newgrf_textrefstack.PopSignedDWord();   break;
+			case SCC_NEWGRF_PRINT_DWORD:          *argv = _newgrf_textrefstack->PopSignedDWord();   break;
 
 			case SCC_NEWGRF_PRINT_WORD_SPEED:
 			case SCC_NEWGRF_PRINT_WORD_LITRES:
-			case SCC_NEWGRF_PRINT_UNSIGNED_WORD:  *argv = _newgrf_textrefstack.PopUnsignedWord(); break;
+			case SCC_NEWGRF_PRINT_UNSIGNED_WORD:  *argv = _newgrf_textrefstack->PopUnsignedWord();  break;
 
 			case SCC_NEWGRF_PRINT_DATE:
-			case SCC_NEWGRF_PRINT_MONTH_YEAR:     *argv = _newgrf_textrefstack.PopSignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
+			case SCC_NEWGRF_PRINT_MONTH_YEAR:     *argv = _newgrf_textrefstack->PopSignedWord() + DAYS_TILL_ORIGINAL_BASE_YEAR; break;
 
-			case SCC_NEWGRF_DISCARD_WORD:         _newgrf_textrefstack.PopUnsignedWord(); break;
+			case SCC_NEWGRF_DISCARD_WORD:         _newgrf_textrefstack->PopUnsignedWord(); break;
 
-			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:   _newgrf_textrefstack.RotateTop4Words(); break;
-			case SCC_NEWGRF_PUSH_WORD:            _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
+			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:   _newgrf_textrefstack->RotateTop4Words(); break;
+			case SCC_NEWGRF_PUSH_WORD:            _newgrf_textrefstack->PushWord(Utf8Consume(str)); break;
 			case SCC_NEWGRF_UNPRINT:              *buff -= Utf8Consume(str); break;
 
 			case SCC_NEWGRF_PRINT_STRING_ID:
-				*argv = _newgrf_textrefstack.PopUnsignedWord();
+				*argv = _newgrf_textrefstack->PopUnsignedWord();
 				if (*argv == STR_NULL) *argv = STR_EMPTY;
 				break;
 		}

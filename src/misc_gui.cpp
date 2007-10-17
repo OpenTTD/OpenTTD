@@ -9,6 +9,7 @@
 #include "functions.h"
 #include "landscape.h"
 #include "newgrf.h"
+#include "newgrf_text.h"
 #include "saveload.h"
 #include "strings.h"
 #include "table/sprites.h"
@@ -505,6 +506,13 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 		CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
 		DrawWindowWidgets(w);
 		CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
+
+		/* If the error message comes from a NewGRF, we must use the text ref. stack reserved for error messages.
+		 * If the message doesn't come from a NewGRF, it won't use the TTDP-style text ref. stack, so we won't hurt anything
+		 */
+		SwitchToErrorRefStack();
+		RewindTextRefStack();
+
 		if (!IsWindowOfPrototype(w, _errmsg_face_widgets)) {
 			DrawStringMultiCenter(
 				120,
@@ -533,6 +541,9 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 					_errmsg_message_1,
 					w->width - 2);
 		}
+
+		/* Switch back to the normal text ref. stack for NewGRF texts */
+		SwitchToNormalRefStack();
 		break;
 
 	case WE_MOUSELOOP:

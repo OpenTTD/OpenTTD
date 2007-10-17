@@ -265,6 +265,11 @@ bool PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, 
 		return callback_res != 0;
 	}
 
+	/* Copy some parameters from the registers to the error message text ref. stack */
+	SwitchToErrorRefStack();
+	PrepareTextRefStackUsage(4);
+	SwitchToNormalRefStack();
+
 	switch (callback_res) {
 		case 0x400: return true;
 		case 0x401: _error_message = STR_0239_SITE_UNSUITABLE;                 return false;

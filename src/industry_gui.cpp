@@ -503,7 +503,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				if (message != STR_NULL && message != STR_UNDEFINED) {
 					y += 10;
 
-					PrepareTextRefStackUsage();
+					PrepareTextRefStackUsage(6);
 					DrawString(2, y, message, 0);
 					StopTextRefStackUsage();
 				}

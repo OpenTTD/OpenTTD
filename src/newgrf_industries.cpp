@@ -458,6 +458,11 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 	 * the building of the industry, as that's how it's done in TTDP. */
 	if (group == NULL || group->type != SGT_CALLBACK) return true;
 
+	/* Copy some parameters from the registers to the error message text ref. stack */
+	SwitchToErrorRefStack();
+	PrepareTextRefStackUsage(4);
+	SwitchToNormalRefStack();
+
 	switch (group->g.callback.result) {
 		case 0x400: return true;
 		case 0x401: _error_message = STR_0239_SITE_UNSUITABLE; break;
