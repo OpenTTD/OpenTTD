@@ -1633,9 +1633,9 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		num = indspec->num_table;
 		itt = indspec->table;
 
-
+		_error_message = STR_0239_SITE_UNSUITABLE;
 		do {
-			if (--num < 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
+			if (--num < 0) return CMD_ERROR;
 		} while (!CheckIfIndustryTilesAreFree(tile, itt[num], num, p1));
 
 		if (CreateNewIndustryHelper(tile, p1, flags, indspec, num) == NULL) return CMD_ERROR;
