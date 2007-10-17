@@ -902,6 +902,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financiraj novo
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Odpri novo industrijo
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE} ... gradnja mogoča samo v mestih
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE} ... gradnja mogoča samo v območju deževnega gozda
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE} ... gradnja mogoča samo v puščavi
@@ -3467,3 +3468,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Ustanovi
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Obetajoča
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Zgradi
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Izberi primerno industrijo iz tega seznama
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Napredno
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Napredna izbira obraza.
+STR_FACE_SIMPLE                                                 :{BLACK}Enostavno
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Enostavna izbira obraza.
+STR_FACE_LOAD                                                   :{BLACK}Naloži
+STR_FACE_LOAD_TIP                                               :{BLACK}Naloži piljubljen obraz
+STR_FACE_LOAD_DONE                                              :{WHITE}Tvoj priljubljen obraz je bil naložen iz OpenTTD konfiguracije.
+STR_FACE_FACECODE                                               :{BLACK}Obraz igralca št.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Prikaži in/ali nastavi številko obraza igralca
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Prikaži in/ali nastavi številko obraza igralca
+STR_FACE_FACECODE_SET                                           :{WHITE}Nova koda številke obraza je nastavljena.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nemogoča nastavitev številke obraza igralca - izbor mogoč med 0 in 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Shrani
+STR_FACE_SAVE_TIP                                               :{BLACK}Shrani priljubljen obraz
+STR_FACE_SAVE_DONE                                              :{WHITE}Ta obraz bo shranjen kot tvoj priljubljen v konfiguracijo OpenTTD.
+STR_FACE_EUROPEAN                                               :{BLACK}Evropski
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Izbor evropskih obrazov
+STR_FACE_AFRICAN                                                :{BLACK}Afriški
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Izbor afriških obrazov
+STR_FACE_YES                                                    :Da
+STR_FACE_NO                                                     :Ne
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Vklop brk ali uhanov
+STR_FACE_HAIR                                                   :Lasje:
+STR_FACE_HAIR_TIP                                               :{BLACK}Spremeni lase
+STR_FACE_EYEBROWS                                               :Obrvi:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Spremeni obrvi
+STR_FACE_EYECOLOUR                                              :Barva oči:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Spremeni barvo oči
+STR_FACE_GLASSES                                                :Očala:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Vklopi očala
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Spremeni očala
+STR_FACE_NOSE                                                   :Nos:
+STR_FACE_NOSE_TIP                                               :{BLACK}Spremeni nos
+STR_FACE_LIPS                                                   :Ustnice:
+STR_FACE_MOUSTACHE                                              :Brke:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Spremeni ustnice ali brke
+STR_FACE_CHIN                                                   :Brada:
+STR_FACE_CHIN_TIP                                               :{BLACK}Spremeni brado
+STR_FACE_JACKET                                                 :Jakna:
+STR_FACE_JACKET_TIP                                             :{BLACK}Spremeni jakno
+STR_FACE_COLLAR                                                 :Ovratnik:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Spremeni ovratnik
+STR_FACE_TIE                                                    :Kravata:
+STR_FACE_EARRING                                                :Uhani:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Spremeni kravato ali uhane
+########

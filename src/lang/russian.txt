@@ -862,6 +862,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Создать 
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Создать новое предприятие
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можно строить только в городах
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...можно строить только в тропиках
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...можно строить только в пустыне
@@ -1022,6 +1023,7 @@ STR_CONFIG_PATCHES_OFF                                          :нет
 STR_CONFIG_PATCHES_ON                                           :да
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показывать скорость в панели статуса транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и на берегу: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Разрешить терраформ. под зданиями, дорогами и т.д.. (автоспуски): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Зона покрытия зависит от типа станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрешить снос (почти) всех городских объектов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Разрешить очень длинные поезда: {ORANGE}{STRING}
@@ -1048,6 +1050,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Исп�
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Автотранспорт строится в очередь у станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Разрешить подкупать муниципальную власть: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Разрешить покупать эксклюзивные трансп. права: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Разрешить передачу денег другим компаниям: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть произвольной формы: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Алгоритм навигации NPF (замена оригинального): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
@@ -1188,6 +1192,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :очень бы
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Соотношение городов, которые растут вдвое быстрее: {ORANGE}1 из {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Соотношение городов, которые растут вдвое быстрее: {ORANGE}Выкл.
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Изначальный множитель размера города: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Удалять абсурдные элементы дорог во время строительства
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Интерфейс
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Строительство
@@ -2018,6 +2023,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Нево
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Сначала удалите туннель
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Сначала удалите мост
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Не может начинаться и заканчиваться в той же точке
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Опоры мостов должны быть на одном уровне
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Слишком низкий мост
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Начало и конец должны быть на одной линии
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Неподходящее место для строительства туннеля
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2789,6 +2796,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появился новый {STRING}!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Не могу продать разбитый транспорт ...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не могу составить расписание для этого транспорта...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт может только ждать на станции.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Этот транспорт не останавливается на этой станции.
@@ -3392,3 +3401,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Проф
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Разведать
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Построить
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Выберите тип производства из списка
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Расш.
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Расширенный выбор лиц.
+STR_FACE_SIMPLE                                                 :{BLACK}Простые
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Выбор простых лиц.
+STR_FACE_LOAD                                                   :{BLACK}Загруз.
+STR_FACE_LOAD_TIP                                               :{BLACK}Загрузить любимое лицо
+STR_FACE_LOAD_DONE                                              :{WHITE}Ваше любимое лицо будет загружено из конфиг-файла.
+STR_FACE_FACECODE                                               :{BLACK}Лицо игрока.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Посмотреть и/или установить номер лица
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Посмотреть и/или установить номер лица
+STR_FACE_FACECODE_SET                                           :{WHITE}Цифровой код нового лица будет установлен
+STR_FACE_FACECODE_ERR                                           :{WHITE}Не могу установить номер лица - значение должно быть целым и лежать в диапазоне от 0 до 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Сохр.
+STR_FACE_SAVE_TIP                                               :{BLACK}Сохр. любимое лицо
+STR_FACE_SAVE_DONE                                              :{WHITE}Это лицо будет сохранено как ваше любимое в конфиг-файле.
+STR_FACE_EUROPEAN                                               :{BLACK}Европеоидное
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Выбор европеоидного типа лица
+STR_FACE_AFRICAN                                                :{BLACK}Африканское
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Выбор африканского типа лица
+STR_FACE_YES                                                    :Да
+STR_FACE_NO                                                     :Нет
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Включить усы или серьги
+STR_FACE_HAIR                                                   :Волосы:
+STR_FACE_HAIR_TIP                                               :{BLACK}Изменить волосы
+STR_FACE_EYEBROWS                                               :Брови
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Изменить брови
+STR_FACE_EYECOLOUR                                              :Цвет глаз:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Изменить цвет глаз
+STR_FACE_GLASSES                                                :Очки:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Добавить очки
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Изменить очки
+STR_FACE_NOSE                                                   :Нос:
+STR_FACE_NOSE_TIP                                               :{BLACK}Изменить нос
+STR_FACE_LIPS                                                   :Губы
+STR_FACE_MOUSTACHE                                              :Усы
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Изменить губы или усы
+STR_FACE_CHIN                                                   :Подбородок:
+STR_FACE_CHIN_TIP                                               :{BLACK}Изменить подбородок
+STR_FACE_JACKET                                                 :Жакет:
+STR_FACE_JACKET_TIP                                             :{BLACK}Изменить жакет
+STR_FACE_COLLAR                                                 :Воротник:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Изменить воротник
+STR_FACE_TIE                                                    :Галстук:
+STR_FACE_EARRING                                                :Серьга:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Изменить галстук или серьгу
+########

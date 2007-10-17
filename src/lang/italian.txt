@@ -862,6 +862,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finanzia nuova 
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finanzia nuova industria
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...può essere costruita solo in città
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...può essere costruita solo nella foresta pluviale
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...può essere costruita solo in aree desertiche
@@ -3268,7 +3269,7 @@ STR_TREE_GENERATION                                             :{BLACK}Generazi
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Generazione oggetti inamovibili
 STR_CLEARING_TILES                                              :{BLACK}Generazione di aree brulle e rocciose
 STR_SETTINGUP_GAME                                              :{BLACK}Impostazione partita
-STR_PREPARING_TILELOOP                                          :{BLACK}Ciclo generazione riquadri del terreno
+STR_PREPARING_TILELOOP                                          :{BLACK}Generazione riquadri del terreno
 STR_PREPARING_GAME                                              :{BLACK}Preparazione della partita
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Questa azione ha cambiato il livello di difficolta in 'Personalizzata'
 STR_SE_FLAT_WORLD                                               :{WHITE}Pianeggiante
@@ -3389,3 +3390,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Finanzia
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Esegui prospezione
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Costruisci
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Selezionare l'industria appropriata dalla lista
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Avanzata
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Selezione avanzata della faccia
+STR_FACE_SIMPLE                                                 :{BLACK}Semplice
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Selezione semplice della faccia
+STR_FACE_LOAD                                                   :{BLACK}Carica
+STR_FACE_LOAD_TIP                                               :{BLACK}Carica la faccia preferita
+STR_FACE_LOAD_DONE                                              :{WHITE}La faccia preferita è stata caricata dal file di configurazione di OpenTTD
+STR_FACE_FACECODE                                               :{BLACK}Numero faccia
+STR_FACE_FACECODE_TIP                                           :{BLACK}Visualizza e/o imposta il numero della faccia del giocatore
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Visualizza e/o imposta il numero della faccia
+STR_FACE_FACECODE_SET                                           :{WHITE}Nuovo codice numerico faccia impostato
+STR_FACE_FACECODE_ERR                                           :{WHITE}Impossibile impostare il numero della faccia - deve essere un numero fra 0 e 4.294.967.295!
+STR_FACE_SAVE                                                   :{BLACK}Salva
+STR_FACE_SAVE_TIP                                               :{BLACK}Salva come faccia preferita
+STR_FACE_SAVE_DONE                                              :{WHITE}La faccia corrente è stata salvata come preferita nel file di configurazione di OpenTTD
+STR_FACE_EUROPEAN                                               :{BLACK}Europea
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Seleziona le facce europee
+STR_FACE_AFRICAN                                                :{BLACK}Africana
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Seleziona le facce africane
+STR_FACE_YES                                                    :Sì
+STR_FACE_NO                                                     :No
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Abilita i baffi o l'orecchino
+STR_FACE_HAIR                                                   :Capelli:
+STR_FACE_HAIR_TIP                                               :{BLACK}Cambia i capelli
+STR_FACE_EYEBROWS                                               :Sopracciglia:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Cambia le sopracciglia
+STR_FACE_EYECOLOUR                                              :Colore occhi:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Cambia il colore degli occhi
+STR_FACE_GLASSES                                                :Occhiali:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Abilita gli occhiali
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Cambia gli occhiali
+STR_FACE_NOSE                                                   :Naso:
+STR_FACE_NOSE_TIP                                               :{BLACK}Cambia il naso
+STR_FACE_LIPS                                                   :Labbra:
+STR_FACE_MOUSTACHE                                              :Baffi:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Cambia le labbra o i baffi
+STR_FACE_CHIN                                                   :Mento:
+STR_FACE_CHIN_TIP                                               :{BLACK}Cambia il mento
+STR_FACE_JACKET                                                 :Giacca:
+STR_FACE_JACKET_TIP                                             :{BLACK}Cambia la giacca
+STR_FACE_COLLAR                                                 :Colletto:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Cambia il colletto
+STR_FACE_TIE                                                    :Cravatta:
+STR_FACE_EARRING                                                :Orecchino:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambia la cravatta o l'orecchino
+########

@@ -926,6 +926,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Új gazdasági 
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Új gazdasági épület
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...csak városban építhető
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...csak esőerdőben építhető
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...csak sivatagban építhető
@@ -3489,3 +3490,33 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Alapít
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Támogat
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Épít
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Válaszd ki a megfelelő ipartípust a listából
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Fejlett
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Fejlett arcválasztó.
+STR_FACE_SIMPLE                                                 :{BLACK}Egyszerű
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Egyszerű arcválasztó.
+STR_FACE_LOAD                                                   :{BLACK}Betölt
+STR_FACE_LOAD_TIP                                               :{BLACK}Kedvenc arcd betöltése
+STR_FACE_LOAD_DONE                                              :{WHITE}A kedvenc arcod az OpenTTD konfig-fájlból be lett töltve.
+STR_FACE_FACECODE                                               :{BLACK}Játékos arc szám
+STR_FACE_SAVE                                                   :{BLACK}Mentés
+STR_FACE_SAVE_TIP                                               :{BLACK}Kedvenc arc elmentése
+STR_FACE_SAVE_DONE                                              :{WHITE}Ez az arc mint a kedvenc arcod fog az OpenTTD konfig-fájlba elmentődni.
+STR_FACE_EUROPEAN                                               :{BLACK}Európai
+STR_FACE_AFRICAN                                                :{BLACK}Afrikai
+STR_FACE_YES                                                    :Igen
+STR_FACE_NO                                                     :Nem
+STR_FACE_HAIR                                                   :Haj:
+STR_FACE_HAIR_TIP                                               :{BLACK}Haj váltása
+STR_FACE_GLASSES                                                :Szemüveg:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Szemüveg engedélyezése
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Szemüveg váltása
+STR_FACE_NOSE                                                   :Orr:
+STR_FACE_NOSE_TIP                                               :{BLACK}Orr váltása
+STR_FACE_LIPS                                                   :Ajkak:
+STR_FACE_MOUSTACHE                                              :Bajusz:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Ajkak vagy bajusz váltása
+STR_FACE_CHIN                                                   :Ál:
+STR_FACE_CHIN_TIP                                               :{BLACK}Ál váltása
+########

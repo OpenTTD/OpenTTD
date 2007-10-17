@@ -924,6 +924,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financovat novy
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financovat novy priemysel
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... moze byt postavene len v meste
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}... moze byt postavene len v dazdovom pralese
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}... moze byt postavene len v pusti
@@ -1080,8 +1081,8 @@ STR_CONFIG_PATCHES                                              :{BLACK}Nastaven
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Nastavenia patchov
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Nastavenia patchov
 
-STR_CONFIG_PATCHES_OFF                                          :Vyp.
-STR_CONFIG_PATCHES_ON                                           :Zap.
+STR_CONFIG_PATCHES_OFF                                          :nie
+STR_CONFIG_PATCHES_ON                                           :áno
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Zobrazit rychlost vozidla v stavovej liste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Umoznit vystavbu na svahoch a na pobrezi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Povolit úpravy terénu pod budovami, kolajami, ... : {ORANGE}{STRING}
@@ -1111,7 +1112,7 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Radenie cestnych vozidiel (podla mnozstva tovaru): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posúvat pohlad ked je kurzor myši na okraji okna: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Povolit zakúpenie exlizívných dopravných práv: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Povolit zakúpenie exkluzívnych dopravných práv: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožnit posielanie penazí ostatným spolocnostiam: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy globalny algoritmus hladania cesty (NPF namiesto NTP): {ORANGE}{STRING}
@@ -1256,11 +1257,11 @@ STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Násobo
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Odstránit nezmyselné casti pri rekonštrukcii ciest
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Rozhranie
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Vystavba
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Výstavba
 STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vozidlá
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stanice
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomika
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Protivnici
+STR_CONFIG_PATCHES_AI                                           :{BLACK}Konkurenti
 
 STR_CONFIG_PATCHES_DISABLED                                     :zakazane
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1711,7 +1712,7 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je potre
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Cesta musi byt najskor odstranena
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Prebiehaju cestne prace
-STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vystavba cesty
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Výstavba cesty
 STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Výstavba elektrickovej trate
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vyber cestny most
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... na jednosmerných cestách nie sú dovolené križovatky
@@ -1727,7 +1728,7 @@ STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nemozno 
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nemozno postavit vykladku ...
 STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Nie je možné postavit elektrickovú osobnú stanicu ...
 STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nie je možné postavit elektrickovú nákladnú stanicu ...
-STR_180A_ROAD_CONSTRUCTION                                      :Vystavba cesty
+STR_180A_ROAD_CONSTRUCTION                                      :Výstavba cesty
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Výstavba elektrickovej dráhy
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Postavit cast cesty
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Postavit cast elektrickovej dráhy
@@ -3032,7 +3033,7 @@ STR_A019_CAPACITY                                               :{BLACK}Kapacita
 STR_A01A_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lietadlo musi byt zastavene v hangari
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nie je mozne predat lietadlo ...
-STR_A01D_AIRPORT_CONSTRUCTION                                   :Vystavba letiska
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Výstavba letiska
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Postavit letisko
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lietadlo - kliknut pre informacie
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Vyrobit nove lietadlo (potrebne letisko z hangarom)
@@ -3451,3 +3452,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Založit
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Vyhladat
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Postavit
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Vyberte vhodný typ priemyslu zo zoznamu
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Rozšírený
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Rozšírený výber tváre.
+STR_FACE_SIMPLE                                                 :{BLACK}Jednoduchý
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Jednoduchý výber tváre.
+STR_FACE_LOAD                                                   :{BLACK}Nahrat
+STR_FACE_LOAD_TIP                                               :{BLACK}Nahrat oblúbenú tvár
+STR_FACE_LOAD_DONE                                              :{WHITE}Vaša oblúbená tvár bola nahratá z kofiguracného súboru.
+STR_FACE_FACECODE                                               :{BLACK}Kód tváre
+STR_FACE_FACECODE_TIP                                           :{BLACK}Zobrazit/nastavit kód tváre
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Zobrazit/nastavit kód tváre
+STR_FACE_FACECODE_SET                                           :{WHITE}Nový kód tváre bol nastavený.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nie je možné nastavit kód tváre - povolené je číslo od 0 do 4 294 967 295!
+STR_FACE_SAVE                                                   :{BLACK}Uložit
+STR_FACE_SAVE_TIP                                               :{BLACK}Uložit oblúbenú tvár
+STR_FACE_SAVE_DONE                                              :{WHITE}Táto tvár bude uložená ako oblúbená do konfiguracného súboru.
+STR_FACE_EUROPEAN                                               :{BLACK}Európan
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vybrat európske tváre
+STR_FACE_AFRICAN                                                :{BLACK}African
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vybrat africké tváre
+STR_FACE_YES                                                    :áno
+STR_FACE_NO                                                     :nie
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Povolit fúzy alebo náušnicu
+STR_FACE_HAIR                                                   :Vlasy:
+STR_FACE_HAIR_TIP                                               :{BLACK}Zmenit vlasy
+STR_FACE_EYEBROWS                                               :Obocie:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Zmenit obocie
+STR_FACE_EYECOLOUR                                              :Farba ocí:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Zmenit farbu ocí
+STR_FACE_GLASSES                                                :Okuliare:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Povolit okuliare
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Zmenit okuliare
+STR_FACE_NOSE                                                   :Nos:
+STR_FACE_NOSE_TIP                                               :{BLACK}Zmenit nos
+STR_FACE_LIPS                                                   :Pery:
+STR_FACE_MOUSTACHE                                              :Fúzy:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Zmenit pery alebo fúzy
+STR_FACE_CHIN                                                   :Brada:
+STR_FACE_CHIN_TIP                                               :{BLACK}Zmenit bradu
+STR_FACE_JACKET                                                 :Sako
+STR_FACE_JACKET_TIP                                             :{BLACK}Zmenit sako
+STR_FACE_COLLAR                                                 :Golier:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Zmenit golier
+STR_FACE_TIE                                                    :Kravata:
+STR_FACE_EARRING                                                :Náušnica:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Zmenit kravatu alebo náušnicu
+########

@@ -861,6 +861,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financer une no
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financer une nouvelle industrie
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...peut seulement être construit en ville
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...peut seulement être construit en forêt tropicale
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...peut seulement être construit dans les endroits désertiques
@@ -3388,3 +3389,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Fonder
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospecter
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Construire
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Choisissez l'industrie appropriée dans cette liste
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Avancé
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Sélection avancée du visage.
+STR_FACE_SIMPLE                                                 :{BLACK}Simple
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Sélection simple du visage.
+STR_FACE_LOAD                                                   :{BLACK}Charger
+STR_FACE_LOAD_TIP                                               :{BLACK}Charger visage favori
+STR_FACE_LOAD_DONE                                              :{WHITE}Votre visage favori a été chargé depuis le fichier de configuration d'OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}No. de visage
+STR_FACE_FACECODE_TIP                                           :{BLACK}Voir et/ou définir le numéro de visage
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Voir et/ou définir le numéro de visage
+STR_FACE_FACECODE_SET                                           :{WHITE}Le nouveau numéro de visage a été défini.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Impossibe de définir le numéro de visage - doit être un nombre entre 0 et 4.294.967.295!
+STR_FACE_SAVE                                                   :{BLACK}Enregistrer
+STR_FACE_SAVE_TIP                                               :{BLACK}Enregistrer visage favori
+STR_FACE_SAVE_DONE                                              :{WHITE}Ce visage sera enregistré comme favori dans le fichier de configuration d'OpenTTD.
+STR_FACE_EUROPEAN                                               :{BLACK}Européen
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Choisir les visages européens
+STR_FACE_AFRICAN                                                :{BLACK}Africain
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Choisir les visages africains
+STR_FACE_YES                                                    :Oui
+STR_FACE_NO                                                     :Non
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Activer la moustache ou la boucle d'oreille
+STR_FACE_HAIR                                                   :Cheveux:
+STR_FACE_HAIR_TIP                                               :{BLACK}Modifier les cheveux
+STR_FACE_EYEBROWS                                               :Yeux:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Modifier les yeux
+STR_FACE_EYECOLOUR                                              :Couleur des yeux:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Modifier la couleur des yeux
+STR_FACE_GLASSES                                                :Lunettes:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Activer les lunettes
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Modifier les lunettes
+STR_FACE_NOSE                                                   :Nez:
+STR_FACE_NOSE_TIP                                               :{BLACK}Modifier le nez
+STR_FACE_LIPS                                                   :Lèvres:
+STR_FACE_MOUSTACHE                                              :Moustache:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Modifier les lèvres ou la moustache
+STR_FACE_CHIN                                                   :Menton:
+STR_FACE_CHIN_TIP                                               :{BLACK}Modifier le menton
+STR_FACE_JACKET                                                 :Veste:
+STR_FACE_JACKET_TIP                                             :{BLACK}Modifier la veste
+STR_FACE_COLLAR                                                 :Col:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Modifier le col
+STR_FACE_TIE                                                    :Cravate:
+STR_FACE_EARRING                                                :Boucle d'oreille:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Modifier la cravate ou la boucle d'oreille
+########

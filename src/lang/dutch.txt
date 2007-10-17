@@ -860,6 +860,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Subsidieer nieu
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Betaal nieuwe industrie
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan alleen in steden gebouwd worden
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan alleen in het regenwoud gebouwd worden
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kan alleen in woestijngebieden gebouwd worden
@@ -3387,3 +3388,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Investee
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Onderzoek
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Bouw
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Kies de aangewezen industrie van de lijst
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Geavanceerd
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Geavanceerde gezichtskeuze
+STR_FACE_SIMPLE                                                 :{BLACK}Eenvoudig
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Eenvoudige gezichtskeuze.
+STR_FACE_LOAD                                                   :{BLACK}Laden
+STR_FACE_LOAD_TIP                                               :{BLACK}Laad favoriet gezicht
+STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicfht op geladen van het OpenTTD configuratie bestand.
+STR_FACE_FACECODE                                               :{BLACK}Speler gezichtsnummer.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Bekijk en/of bewaar spelers gezichtsnummer
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Bekijken en/of bewaar gezichtnummer
+STR_FACE_FACECODE_SET                                           :{WHITE}Nieuw gezicht nummercode is opgeslagen.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kon gezichtsnummer niet bewaren - het moet een nummer zijn tussen 0 en 4.294.967.295!
+STR_FACE_SAVE                                                   :{BLACK}Opslaan
+STR_FACE_SAVE_TIP                                               :{BLACK}Sla favoriet gezicht op
+STR_FACE_SAVE_DONE                                              :{WHITE}Dit gezicht wordt zal worden opgeslagen als jouw favoriet in het OpenTTD configuratie bestand.
+STR_FACE_EUROPEAN                                               :{BLACK}Europeaan
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Kies europeaan gezicht
+STR_FACE_AFRICAN                                                :{BLACK}Africaan
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Kies africaans gezicht
+STR_FACE_YES                                                    :Ja
+STR_FACE_NO                                                     :Nee
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Activeer snor of oorbel
+STR_FACE_HAIR                                                   :Haar:
+STR_FACE_HAIR_TIP                                               :{BLACK}Varander haar
+STR_FACE_EYEBROWS                                               :Wenkbrauwen:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Verander wenkbrauwen
+STR_FACE_EYECOLOUR                                              :Kleur ogen
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Verander kleur ogen
+STR_FACE_GLASSES                                                :Bril:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Brillen aan
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Verander bril
+STR_FACE_NOSE                                                   :Neus:
+STR_FACE_NOSE_TIP                                               :{BLACK}Verander neus
+STR_FACE_LIPS                                                   :Lippen:
+STR_FACE_MOUSTACHE                                              :Snor:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Verander lippen of snor
+STR_FACE_CHIN                                                   :Kin:
+STR_FACE_CHIN_TIP                                               :{BLACK}Verander kin
+STR_FACE_JACKET                                                 :Jas:
+STR_FACE_JACKET_TIP                                             :{BLACK}Verander jas
+STR_FACE_COLLAR                                                 :Kraag:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Verander kraag
+STR_FACE_TIE                                                    :Stropdas:
+STR_FACE_EARRING                                                :Oorbel:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Verander das of oorbel
+########

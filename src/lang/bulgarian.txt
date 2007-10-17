@@ -862,6 +862,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Инвести�
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Инвестирай в нова индустрия
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да бъде построено само в градовете
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...може да бъде построено само около и в джунглите
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...може да бъде построено само около и в пустините
@@ -1047,6 +1048,7 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Опашка на колите (със сумарен ефект): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Преместване на прозореца когато мишката е в края: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Позволи купуване на изклучителни транспортни права: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Позволи изпращане на пари до други компаний: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Нестандартни станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Нов глобален навигатор (NPF, отменя NTP): {ORANGE}{STRING}
@@ -2639,6 +2641,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Патувай 
 STR_TIMETABLE_TRAVEL_FOR                                        :Патувай за {STRING}
 STR_TIMETABLE_STAY_FOR                                          :и остани за {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} ден{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} щракане{P "" та}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Отиващ към Влаковото депо на {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Отиващ към Влаковото депо на {TOWN}, {VELOCITY}
@@ -3380,3 +3383,50 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Фонд
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Перспектива
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Построи
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Избери правилната промишленост от следниат списък
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Hапреднат
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Напредната лице селекциа.
+STR_FACE_SIMPLE                                                 :{BLACK}Прост
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Проста лице селекциа.
+STR_FACE_LOAD                                                   :{BLACK}Зареди
+STR_FACE_LOAD_TIP                                               :{BLACK}Зареди любимо лице
+STR_FACE_LOAD_DONE                                              :{WHITE}Твоето любимо лице е заредено от OpenTTD config файлът.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Виж и/или избери номер на лицето на играчът
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Виж и/или избери номер на лицето на играчът
+STR_FACE_FACECODE_SET                                           :{WHITE}Нов номер на лицето е избран.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Нов номер на лицето неможе да бъде избран - трябва да бъде номер между 0 и 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Запази
+STR_FACE_SAVE_TIP                                               :{BLACK}Запази любимо лице
+STR_FACE_SAVE_DONE                                              :{WHITE}Това лице ще бъде запазено като твоето любимо в OpenTTD config файлът.
+STR_FACE_EUROPEAN                                               :{BLACK}Eвропеец
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Избери Европейски лица
+STR_FACE_AFRICAN                                                :{BLACK}Aфриканец
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Избери Африкански лица
+STR_FACE_YES                                                    :Дa
+STR_FACE_NO                                                     :He
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Позволи мустак или обица
+STR_FACE_HAIR                                                   :Kоса:
+STR_FACE_HAIR_TIP                                               :{BLACK}Cмени kocaтa
+STR_FACE_EYEBROWS                                               :Вежди:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Смени веждите
+STR_FACE_EYECOLOUR                                              :Цвят на очи:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Смени цветът на очите
+STR_FACE_GLASSES                                                :Oчила:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Позволи oчила
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Cмени очилатa
+STR_FACE_NOSE                                                   :Hoc:
+STR_FACE_NOSE_TIP                                               :{BLACK}Cмени носът
+STR_FACE_LIPS                                                   :Устни:
+STR_FACE_MOUSTACHE                                              :Mустак :
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Cмени устните или mустакът
+STR_FACE_CHIN                                                   :Брада:
+STR_FACE_CHIN_TIP                                               :{BLACK}Cмени брадатa
+STR_FACE_JACKET                                                 :Cако:
+STR_FACE_JACKET_TIP                                             :{BLACK}Cмени cakoтo
+STR_FACE_COLLAR                                                 :Яка:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Cмени якатa
+STR_FACE_TIE                                                    :Вратовръзкa:
+STR_FACE_EARRING                                                :Oбица:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cмени вратовръзкатa или oбицатa
+########
