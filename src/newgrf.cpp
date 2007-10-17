@@ -1890,8 +1890,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 
 							copy_from = (IndustryTileTable*)_origin_industry_specs[type].table[laynbr];
 							for (size = 1;; size++) {
-								if (_origin_industry_specs[type].table[laynbr + (size - 1)]->ti.x == -0x80 &&
-										_origin_industry_specs[type].table[laynbr + (size - 1)]->ti.y == 0) break;
+								if (copy_from[size - 1].ti.x == -0x80 && copy_from[size - 1].ti.y) break;
 							}
 							break;
 						}
