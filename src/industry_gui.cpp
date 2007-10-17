@@ -291,6 +291,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_PLACE_OBJ: {
+			bool success = true;
 			/* We do not need to protect ourselves against "Random Many Industries" in this mode */
 			const IndustrySpec *indsp = GetIndustrySpec(WP(w, fnd_d).select);
 
@@ -305,17 +306,20 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				_current_player = OWNER_NONE;
 				_generating_world = true;
 				_ignore_restrictions = true;
-				if (!TryBuildIndustry(e->we.place.tile, WP(w, fnd_d).select)) {
+				success = TryBuildIndustry(e->we.place.tile, WP(w, fnd_d).select);
+				if (!success) {
 					SetDParam(0, indsp->name);
 					ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
 				}
 
 				_ignore_restrictions = false;
 				_generating_world = false;
-			} else DoCommandP(e->we.place.tile, WP(w, fnd_d).select, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+			} else {
+				success = DoCommandP(e->we.place.tile, WP(w, fnd_d).select, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+			}
 
-			/* Whatever the outcome of the actions, just reset the cursor and the system */
-			ResetObjectToPlace();
+			/* If an industry has been built, just reset the cursor and the system */
+			if (success) ResetObjectToPlace();
 		} break;
 
 		case WE_TICK:
