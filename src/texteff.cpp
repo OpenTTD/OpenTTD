@@ -435,8 +435,11 @@ void DeleteAnimatedTile(TileIndex tile)
 {
 	for (TileIndex *ti = _animated_tile_list; ti < _animated_tile_list + _animated_tile_count; ti++) {
 		if (tile == *ti) {
-			/* Remove the hole */
-			*ti = _animated_tile_list[_animated_tile_count - 1];
+			/* Remove the hole
+			 * The order of the remaining elements must stay the same, otherwise the animation loop
+			 * may miss a tile; that's why we must use memmove instead of just moving the last element.
+			 */
+			memmove(ti, ti + 1, (_animated_tile_list + _animated_tile_count - (ti + 1)) * sizeof(*ti));
 			_animated_tile_count--;
 			MarkTileDirtyByTile(tile);
 			return;
@@ -472,8 +475,20 @@ void AddAnimatedTile(TileIndex tile)
  */
 void AnimateAnimatedTiles()
 {
-	for (const TileIndex *ti = _animated_tile_list; ti < _animated_tile_list + _animated_tile_count; ti++) {
-		AnimateTile(*ti);
+	const TileIndex *ti = _animated_tile_list;
+	while (ti < _animated_tile_list + _animated_tile_count) {
+		const TileIndex curr = *ti;
+		AnimateTile(curr);
+		/* During the AnimateTile call, DeleteAnimatedTile could have been called,
+		 * deleting an element we've already processed and pushing the rest one
+		 * slot to the left. We can detect this by checking whether the index
+		 * in the current slot has changed - if it has, an element has been deleted,
+		 * and we should process the current slot again instead of going forward.
+		 * NOTE: this will still break if more than one animated tile is being
+		 *       deleted during the same AnimateTile call, but no code seems to
+		 *       be doing this anyway.
+		 */
+		if (*ti == curr) ++ti;
 	}
 }
 
