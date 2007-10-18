@@ -133,7 +133,8 @@ void Packet::Send_uint64(uint64 data)
 void Packet::Send_string(const char* data)
 {
 	assert(data != NULL);
-	assert(this->size < sizeof(this->buffer) - strlen(data) - 1);
+	/* The <= *is* valid due to the fact that we are comparing sizes and not the index. */
+	assert(this->size + strlen(data) + 1 <= sizeof(this->buffer));
 	while ((this->buffer[this->size++] = *data++) != '\0') {}
 }
 
