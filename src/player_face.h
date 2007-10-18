@@ -193,7 +193,7 @@ static inline void ScaleAllPlayerFaceBits(PlayerFace &pf)
  */
 static inline void RandomPlayerFaceBits(PlayerFace &pf, GenderEthnicity ge, bool adv)
 {
-	pf = Random(); // random all player face bits
+	pf = InteractiveRandom(); // random all player face bits
 
 	/* scale ge: 0 == GE_WM, 1 == GE_WF, 2 == GE_BM, 3 == GE_BF (and maybe in future: ...) */
 	ge = (GenderEthnicity)((uint)ge % GE_END);
