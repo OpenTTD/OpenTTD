@@ -1621,7 +1621,12 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					const Industry *ind = CreateNewIndustryHelper(RandomTile(), p1, flags, indspec, tilespec_index);
 					if (ind != NULL) {
 						SetDParam(0, indspec->name);
-						SetDParam(1, ind->town->index);
+						if (indspec->new_industry_text > STR_LAST_STRINGID) {
+							SetDParam(1, STR_TOWN);
+							SetDParam(2, ind->town->index);
+						} else {
+							SetDParam(1, ind->town->index);
+						}
 						AddNewsItem(indspec->new_industry_text,
 								NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, 0), ind->xy, 0);
 						break;
@@ -1829,7 +1834,12 @@ static void MaybeNewIndustry(void)
 	}
 
 	SetDParam(0, ind_spc->name);
-	SetDParam(1, ind->town->index);
+	if (ind_spc->new_industry_text > STR_LAST_STRINGID) {
+		SetDParam(1, STR_TOWN);
+		SetDParam(2, ind->town->index);
+	} else {
+		SetDParam(1, ind->town->index);
+	}
 	AddNewsItem(ind_spc->new_industry_text,
 		NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, 0), ind->xy, 0);
 }
@@ -1984,7 +1994,13 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 
 	if (!suppress_message && str != STR_NULL) {
-		SetDParam(0, i->index);
+		if (str > STR_LAST_STRINGID) {
+			SetDParam(0, STR_TOWN);
+			SetDParam(1, i->town->index);
+			SetDParam(2, indspec->name);
+		} else {
+			SetDParam(0, i->index);
+		}
 		AddNewsItem(str,
 			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, closeit ? NT_OPENCLOSE : NT_ECONOMY, 0),
 			i->xy + TileDiffXY(1, 1), 0);

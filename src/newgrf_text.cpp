@@ -636,7 +636,7 @@ uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64
 			return SCC_CURRENCY;
 
 		case SCC_NEWGRF_PRINT_STRING_ID:
-			return SCC_STRING;
+			return SCC_STRING1;
 
 		case SCC_NEWGRF_PRINT_DATE:
 			return SCC_DATE_LONG;

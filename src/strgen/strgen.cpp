@@ -1014,7 +1014,6 @@ static void WriteStringsH(const char *filename)
 	FILE *out;
 	int i;
 	int next = -1;
-	int lastgrp;
 
 	out = fopen("tmp.xxx", "w");
 	if (out == NULL) fatal("can't open tmp.xxx");
@@ -1023,8 +1022,6 @@ static void WriteStringsH(const char *filename)
 	fprintf(out, "#ifndef TABLE_STRINGS_H\n");
 	fprintf(out, "#define TABLE_STRINGS_H\n");
 
-	lastgrp = 0;
-
 	for (i = 0; i != lengthof(_strings); i++) {
 		if (_strings[i] != NULL) {
 			if (next != i) fprintf(out, "\n");
@@ -1032,6 +1029,8 @@ static void WriteStringsH(const char *filename)
 			next = i + 1;
 		}
 	}
+
+	fprintf(out, "\nstatic const StringID STR_LAST_STRINGID = 0x%X;\n", next - 1);
 
 	fprintf(out,
 		"\nenum {\n"
