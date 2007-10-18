@@ -41,6 +41,7 @@
 #include "genworld.h"
 #include "date.h"
 #include "rail.h"
+#include "train.h"
 #include "helpers.hpp"
 #include "news.h"
 #ifdef WITH_FREETYPE
@@ -1135,6 +1136,16 @@ static int32 InvalidateStationBuildWindow(int32 p1)
 	return 0;
 }
 
+static int32 UpdateConsists(int32 p1)
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		/* Update the consist of all trains so the maximum speed is set correctly. */
+		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v);
+	}
+	return 0;
+}
+
 /* Check service intervals of vehicles, p1 is value of % or day based servicing */
 static int32 CheckInterval(int32 p1)
 {
@@ -1403,7 +1414,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, servint_ships,     SLE_UINT16, 0,D0,   360,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_SHIPS,        InValidateDetailsWindow),
 	 SDT_VAR(Patches, servint_aircraft,  SLE_UINT16, 0,D0,   100,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,     InValidateDetailsWindow),
 	SDT_BOOL(Patches, no_servicing_if_no_breakdowns, 0, 0, false,                    STR_CONFIG_PATCHES_NOSERVICE,            NULL),
-	SDT_BOOL(Patches, wagon_speed_limits,            0, 0,  true,                    STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,     NULL),
+	SDT_BOOL(Patches, wagon_speed_limits,            0, 0,  true,                    STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,     UpdateConsists),
 	SDT_CONDBOOL(Patches, disable_elrails, 38, SL_MAX_VERSION, 0, 0, false,          STR_CONFIG_PATCHES_DISABLE_ELRAILS,      SettingsDisableElrail),
 	SDT_CONDVAR(Patches, freight_trains, SLE_UINT8, 39, SL_MAX_VERSION, 0, 0, 1, 1, 255, 1, STR_CONFIG_PATCHES_FREIGHT_TRAINS, NULL),
 	SDT_CONDBOOL(Patches, timetabling,              67, SL_MAX_VERSION, 0, 0, true,  STR_CONFIG_PATCHES_TIMETABLE_ALLOW,      NULL),
