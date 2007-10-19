@@ -1228,24 +1228,15 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 
 			IndustyBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
+			/* Perform land/water check if not disabled */
+			if (!HASBIT(its->slopes_refused, 5) && (IsWaterTile(cur_tile) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return false;
+
 			if (HASBIT(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
 				custom_shape = true;
 				if (!PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index)) return false;
 			} else {
-				if (ind_behav & INDUSTRYBEH_BUILT_ONWATER) {
-					/* As soon as the tile is not water, bail out.
-					* But that does not mean the search is over.  You have
-					* to make sure every tile of the industry will be only water*/
-					if (!IsWaterTile(cur_tile)) return false;
-				} else {
-					Slope tileh;
-
-					if (IsWaterTile(cur_tile)) return false;
-
-					tileh = GetTileSlope(cur_tile, NULL);
-
-					refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
-				}
+				Slope tileh = GetTileSlope(cur_tile, NULL);
+				refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
 			}
 
 			if (ind_behav & INDUSTRYBEH_ONLY_INTOWN) {
