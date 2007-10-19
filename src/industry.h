@@ -66,7 +66,7 @@ enum IndustryAvailabilityCallType {
 	IACT_USERCREATION,    ///< from the Fund/build window
 };
 
-enum IndustyBehaviour {
+enum IndustryBehaviour {
 	INDUSTRYBEH_NONE                  =      0,
 	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fileds around itself (temp and artic farms)
 	INDUSTRYBEH_CUT_TREES             = 1 << 1,  ///< cuts trees and produce first output cargo from them (lumber mill)
@@ -90,7 +90,7 @@ enum IndustyBehaviour {
 };
 
 
-DECLARE_ENUM_AS_BIT_SET(IndustyBehaviour);
+DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour);
 
 struct Industry;
 DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
@@ -171,7 +171,7 @@ struct IndustrySpec {
 	uint16 input_cargo_multiplier[3][2];  ///< Input cargo multipliers (multiply amount of incoming cargo for the produced cargos)
 	IndustryLifeType life_type;           ///< This is also known as Industry production flag, in newgrf specs
 	byte climate_availability;            ///< Bitmask, giving landscape enums as bit position
-	IndustyBehaviour behaviour;           ///< How this industry will behave, and how others entities can use it
+	IndustryBehaviour behaviour;           ///< How this industry will behave, and how others entities can use it
 	byte map_colour;                      ///< colour used for the small map
 	StringID name;                        ///< Displayed name of the industry
 	StringID new_industry_text;           ///< Message appearing when the industry is built

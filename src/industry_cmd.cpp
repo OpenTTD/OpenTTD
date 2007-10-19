@@ -1007,7 +1007,7 @@ static void ProduceIndustryGoods(Industry *i)
 	if ((i->counter & 0xFF) == 0) {
 		if (HASBIT(indsp->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) IndustryProductionCallback(i, 1);
 
-		IndustyBehaviour indbehav = indsp->behaviour;
+		IndustryBehaviour indbehav = indsp->behaviour;
 		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + i->production_rate[0]);
 		i->produced_cargo_waiting[1] = min(0xffff, i->produced_cargo_waiting[1] + i->production_rate[1]);
 
@@ -1226,7 +1226,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 
 			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
 
-			IndustyBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
+			IndustryBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
 			/* Perform land/water check if not disabled */
 			if (!HASBIT(its->slopes_refused, 5) && (IsWaterTile(cur_tile) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return false;

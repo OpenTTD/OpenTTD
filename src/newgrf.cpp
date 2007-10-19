@@ -2008,7 +2008,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				break;
 
 			case 0x1A: // Special industry flags to define special behavior
-				indsp->behaviour = (IndustyBehaviour)grf_load_dword(&buf);
+				indsp->behaviour = (IndustryBehaviour)grf_load_dword(&buf);
 				break;
 
 			case 0x1B: // New industry text ID
