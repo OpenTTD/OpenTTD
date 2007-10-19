@@ -117,20 +117,6 @@ StringID VehicleInTheWayErrMsg(const Vehicle* v)
 	}
 }
 
-static void *EnsureNoVehicleProc(Vehicle *v, void *data)
-{
-	if (v->tile != *(const TileIndex*)data || v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW))
-		return NULL;
-
-	_error_message = VehicleInTheWayErrMsg(v);
-	return v;
-}
-
-bool EnsureNoVehicle(TileIndex tile)
-{
-	return VehicleFromPos(tile, &tile, EnsureNoVehicleProc) == NULL;
-}
-
 static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
 	const TileInfo *ti = (const TileInfo*)data;

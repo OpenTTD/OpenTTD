@@ -820,7 +820,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, uint32 flags)
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
 		return CMD_ERROR;
 
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile);

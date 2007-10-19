@@ -175,7 +175,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 	}
 
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT &&
@@ -276,7 +276,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 	if (!IsTileType(tile, MP_RAILWAY) ||
 			!IsRailWaypoint(tile) ||
 			(!CheckTileOwnership(tile) && _current_player != OWNER_WATER) ||
-			!EnsureNoVehicle(tile)) {
+			!EnsureNoVehicleOnGround(tile)) {
 		return CMD_ERROR;
 	}
 

@@ -105,11 +105,11 @@ static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 
 	if (!IsShipDepot(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	tile2 = GetOtherShipDepotTile(tile);
 
-	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile2)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Kill the depot, which is registered at the northernmost tile. Use that one */
@@ -172,7 +172,7 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
 	if (!CheckTileOwnership(tile) && GetTileOwner(tile) != OWNER_NONE) return CMD_ERROR;
 
 	/* make sure no vehicle is on the tile. */
-	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(tile + delta) || !EnsureNoVehicle(tile - delta))
+	if (!EnsureNoVehicleOnGround(tile) || !EnsureNoVehicleOnGround(tile + delta) || !EnsureNoVehicleOnGround(tile - delta))
 		return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -303,7 +303,7 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 			}
 
 			/* Make sure no vehicle is on the tile */
-			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE && !CheckTileOwnership(tile)) return CMD_ERROR;
 
@@ -314,7 +314,7 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 			Slope slope = GetTileSlope(tile, NULL);
 
 			/* Make sure no vehicle is on the tile */
-			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			if (slope == SLOPE_N || slope == SLOPE_E || slope == SLOPE_S || slope == SLOPE_W) {

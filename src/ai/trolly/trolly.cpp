@@ -1111,7 +1111,7 @@ static void AiNew_State_BuildDepot(Player *p)
 	}
 
 	// There is a bus on the tile we want to build road on... idle till he is gone! (BAD PERSON! :p)
-	if (!EnsureNoVehicle(p->ainew.depot_tile + TileOffsByDiagDir(p->ainew.depot_direction)))
+	if (!EnsureNoVehicleOnGround(p->ainew.depot_tile + TileOffsByDiagDir(p->ainew.depot_direction)))
 		return;
 
 	res = AiNew_Build_Depot(p, p->ainew.depot_tile, p->ainew.depot_direction, DC_EXEC);

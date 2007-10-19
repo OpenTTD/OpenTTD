@@ -1221,7 +1221,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				return false;
 			}
 		} else {
-			if (!EnsureNoVehicle(cur_tile)) return false;
+			if (!EnsureNoVehicleOnGround(cur_tile)) return false;
 			if (MayHaveBridgeAbove(cur_tile) && IsBridgeAbove(cur_tile)) return false;
 
 			const IndustryTileSpec *its = GetIndustryTileSpec(gfx);

@@ -185,10 +185,10 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 
 		// Build normal road
 		// Keep it doing till we go an other way
-		// EnsureNoVehicle makes sure we don't build on a tile where a vehicle is. This way
+		// EnsureNoVehicleOnGround makes sure we don't build on a tile where a vehicle is. This way
 		//  it will wait till the vehicle is gone..
-		if (route_extra[part-1] == 0 && route_extra[part] == 0 && (flag != DC_EXEC || EnsureNoVehicle(route[part]))) {
-			while (route_extra[part] == 0 && (flag != DC_EXEC || EnsureNoVehicle(route[part]))) {
+		if (route_extra[part-1] == 0 && route_extra[part] == 0 && (flag != DC_EXEC || EnsureNoVehicleOnGround(route[part]))) {
+			while (route_extra[part] == 0 && (flag != DC_EXEC || EnsureNoVehicleOnGround(route[part]))) {
 				// Get the current direction
 				dir = AiNew_GetRoadDirection(route[part-1], route[part], route[part+1]);
 				// Is it the same as the last one?
@@ -199,7 +199,7 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 					// Build the tile
 					res = AI_DoCommand(route[part], dir, 0, flag | DC_NO_WATER, CMD_BUILD_ROAD);
 					// Currently, we ignore CMD_ERRORs!
-					if (CmdFailed(res) && flag == DC_EXEC && !IsTileType(route[part], MP_ROAD) && !EnsureNoVehicle(route[part])) {
+					if (CmdFailed(res) && flag == DC_EXEC && !IsTileType(route[part], MP_ROAD) && !EnsureNoVehicleOnGround(route[part])) {
 						// Problem.. let's just abort it all!
 						DEBUG(ai, 0, "[BuidPath] route building failed at tile 0x%X, aborting", route[part]);
 						p->ainew.state = AI_STATE_NOTHING;
@@ -216,7 +216,7 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 			part--;
 			// We want to return the last position, so we go back one
 		}
-		if (!EnsureNoVehicle(route[part]) && flag == DC_EXEC) part--;
+		if (!EnsureNoVehicleOnGround(route[part]) && flag == DC_EXEC) part--;
 		PathFinderInfo->position = part;
 	}
 

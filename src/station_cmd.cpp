@@ -1128,7 +1128,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 
 		/* Check ownership of station */
 		Station *st = GetStationByTile(tile2);
-		if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicle(tile2))) {
+		if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicleOnGround(tile2))) {
 			continue;
 		}
 
@@ -1191,7 +1191,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 		do {
 			// for nonuniform stations, only remove tiles that are actually train station tiles
 			if (st->TileBelongsToRailStation(tile)) {
-				if (!EnsureNoVehicle(tile))
+				if (!EnsureNoVehicleOnGround(tile))
 					return CMD_ERROR;
 				cost.AddCost(_price.remove_rail_station);
 				if (flags & DC_EXEC) {
@@ -1425,7 +1425,7 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 	assert(cur_stop != NULL);
 
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (*primary_stop == cur_stop) {
@@ -1832,7 +1832,7 @@ static CommandCost RemoveBuoy(Station *st, uint32 flags)
 	TileIndex tile = st->dock_tile;
 
 	if (CheckShipsOnBuoy(st))   return_cmd_error(STR_BUOY_IS_IN_USE);
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		st->dock_tile = 0;
@@ -1980,8 +1980,8 @@ static CommandCost RemoveDock(Station *st, uint32 flags)
 	TileIndex tile1 = st->dock_tile;
 	TileIndex tile2 = tile1 + TileOffsByDiagDir(GetDockDirection(tile1));
 
-	if (!EnsureNoVehicle(tile1)) return CMD_ERROR;
-	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile1)) return CMD_ERROR;
+	if (!EnsureNoVehicleOnGround(tile2)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile1);

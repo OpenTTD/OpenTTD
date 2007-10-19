@@ -60,7 +60,7 @@ enum DisasterSubType {
 
 static void DisasterClearSquare(TileIndex tile)
 {
-	if (!EnsureNoVehicle(tile)) return;
+	if (!EnsureNoVehicleOnGround(tile)) return;
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
