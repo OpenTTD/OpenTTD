@@ -538,6 +538,16 @@ static void AnimateTile_Water(TileIndex tile)
 	/* not used */
 }
 
+/**
+ * Floods neighboured floodable tiles
+ *
+ * @param tile The water source tile that causes the flooding.
+ * @param offs[0] Destination tile to flood.
+ * @param offs[1] First corner of edge between source and dest tile.
+ * @param offs[2] Second corder of edge between source and dest tile.
+ * @param offs[3] Third corner of dest tile.
+ * @param offs[4] Fourth corner of dest tile.
+ */
 static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 {
 	TileIndex target = TILE_ADD(tile, ToTileIndexDiff(offs[0]));
@@ -545,36 +555,27 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 	/* type of this tile mustn't be water already. */
 	if (IsTileType(target, MP_WATER)) return;
 
+	/* Are both corners of the edge between source and dest on height 0 ? */
 	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[1]))) != 0 ||
 			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[2]))) != 0) {
 		return;
 	}
 
+	/* Is any corner of the dest tile raised? (First two corners already checked above. */
 	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[3]))) != 0 ||
 			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[4]))) != 0) {
 		/* make coast.. */
 		switch (GetTileType(target)) {
 			case MP_RAILWAY: {
-				TrackBits tracks;
-				Slope slope;
-
 				if (!IsPlainRailTile(target)) break;
 
-				tracks = GetTrackBits(target);
-				slope = GetTileSlope(target, NULL);
-				if (!(
-							(slope == SLOPE_W && tracks == TRACK_BIT_RIGHT) ||
-							(slope == SLOPE_S && tracks == TRACK_BIT_UPPER) ||
-							(slope == SLOPE_E && tracks == TRACK_BIT_LEFT)  ||
-							(slope == SLOPE_N && tracks == TRACK_BIT_LOWER)
-						)) {
-					break;
-				}
+				FloodHalftile(target);
 
 				Vehicle *v = FindFloodableVehicleOnTile(target);
 				if (v != NULL) FloodVehicle(v);
+
+				break;
 			}
-			/* FALLTHROUGH */
 
 			case MP_CLEAR:
 			case MP_TREES:
@@ -589,11 +590,13 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 				break;
 		}
 	} else {
+		/* Flood vehicles */
 		_current_player = OWNER_WATER;
 
 		Vehicle *v = FindFloodableVehicleOnTile(target);
 		if (v != NULL) FloodVehicle(v);
 
+		/* flood flat tile */
 		if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 			MakeWater(target);
 			MarkTileDirtyByTile(target);
@@ -711,7 +714,7 @@ static void FloodVehicle(Vehicle *v)
 
 /**
  * Let a water tile floods its diagonal adjoining tiles
- * called from tunnelbridge_cmd, and by TileLoop_Industry()
+ * called from tunnelbridge_cmd, and by TileLoop_Industry() and TileLoop_Track()
  *
  * @param tile the water/shore tile that floods
  */

@@ -821,6 +821,8 @@ void DrawCatenaryOnTunnel(const TileInfo *ti);
 
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);
 
+void FloodHalftile(TileIndex t);
+
 int32 SettingsDisableElrail(int32 p1); ///< _patches.disable_elrail callback
 
 #endif /* RAIL_H */
