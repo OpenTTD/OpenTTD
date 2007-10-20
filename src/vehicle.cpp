@@ -529,6 +529,14 @@ void Vehicle::PreDestructor()
 	if ((this->type == VEH_TRAIN && EngineHasArticPart(this)) || (this->type == VEH_ROAD && RoadVehHasArticPart(this))) {
 		delete this->Next();
 	}
+
+	Window **wp;
+	FOR_ALL_WINDOWS(wp) {
+		Window *w = *wp;
+		if (w->viewport != NULL && WP(w, vp_d).follow_vehicle == this->index) {
+			WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
+		}
+	}
 }
 
 Vehicle::~Vehicle()
