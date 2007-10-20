@@ -267,7 +267,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 	   ) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	Foundation f_old = GetRailFoundation(tileh, existing);
-	return CommandCost(f_new != f_old ? _price.terraform : 0);
+	return CommandCost(f_new != f_old ? _price.terraform : (Money)0);
 }
 
 /* Validate functions for rail building */

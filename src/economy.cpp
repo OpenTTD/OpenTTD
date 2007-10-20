@@ -95,7 +95,7 @@ Money CalculateCompanyValue(const Player* p)
 	value.AddCost(-p->current_loan);
 	value.AddCost(p->player_money);
 
-	return max(value.GetCost(), 1LL);
+	return max(value.GetCost(), (Money)1);
 }
 
 /** if update is set to true, the economy is updated with this score

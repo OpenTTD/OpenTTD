@@ -366,7 +366,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 
 	/* foundation is used. Whole tile is leveled up */
 	if ((~_valid_tileh_slopes_road[1][tileh] & road_bits) == ROAD_NONE) {
-		return CommandCost(existing != ROAD_NONE ? 0 : _price.terraform);
+		return CommandCost(existing != ROAD_NONE ? (Money)0 : _price.terraform);
 	}
 
 	/* Force straight roads. */

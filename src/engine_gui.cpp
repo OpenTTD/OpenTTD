@@ -120,7 +120,7 @@ void ShowEnginePreviewWindow(EngineID engine)
 static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
-	uint multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD) ? 1 : 0;
+	int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD) ? 1 : 0;
 
 	SetDParam(0, (_price.build_railvehicle >> 3) * rvi->base_cost >> 5);
 	SetDParam(2, rvi->max_speed * 10 / 16);

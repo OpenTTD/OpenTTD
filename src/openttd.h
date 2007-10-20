@@ -69,7 +69,9 @@ typedef uint16 SignID;
 typedef uint16 GroupID;
 typedef uint16 EngineRenewID;
 typedef uint16 DestinationID;
-typedef int64 Money;
+
+typedef OverflowSafeInt<int64, INT64_MAX, INT64_MIN> OverflowSafeInt64;
+typedef OverflowSafeInt64 Money;
 
 /* DestinationID must be at least as large as every these below, because it can
  * be any of them

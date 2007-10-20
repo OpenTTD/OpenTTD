@@ -331,15 +331,15 @@ static char *FormatTinyDate(char *buff, Date date, const char* last)
 
 static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money number, bool compact, const char* last)
 {
-	const char* multiplier = "";
+	/* We are going to make number absolute for printing, so
+	 * keep this piece of data as we need it later on */
+	bool negative = number < 0;
+	const char *multiplier = "";
 	char buf[40];
-	char* p;
+	char *p;
 	int j;
 
-	/* Multiply by exchange rate, but do it safely. */
-	CommandCost cs(number);
-	cs.MultiplyCost(spec->rate);
-	number = cs.GetCost();
+	number *= spec->rate;
 
 	/* convert from negative */
 	if (number < 0) {
@@ -374,7 +374,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 			*--p = spec->separator;
 			j = 3;
 		}
-		*--p = '0' + number % 10;
+		*--p = '0' + (char)(number % 10);
 	} while ((number /= 10) != 0);
 	buff = strecpy(buff, p, last);
 
@@ -385,7 +385,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	 * The only remaining value is 1 (prefix), so everything that is not 0 */
 	if (spec->symbol_pos != 0) buff = strecpy(buff, spec->suffix, last);
 
-	if (cs.GetCost() < 0) {
+	if (negative) {
 		if (buff + Utf8CharLen(SCC_PREVIOUS_COLOUR) > last) return buff;
 		buff += Utf8Encode(buff, SCC_PREVIOUS_COLOUR);
 		*buff = '\0';

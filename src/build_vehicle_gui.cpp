@@ -226,8 +226,8 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 		* Because of this, the return value have to be reversed as well and we return b - a instead of a - b.
 		* Another thing is that both power and running costs should be doubled for multiheaded engines.
 		* Since it would be multipling with 2 in both numerator and denumerator, it will even themselves out and we skip checking for multiheaded. */
-	Money va = (rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class]) / max((uint16)1, rvi_a->power);
-	Money vb = (rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class]) / max((uint16)1, rvi_b->power);
+	Money va = (rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class]) / max(1U, (uint)rvi_a->power);
+	Money vb = (rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class]) / max(1U, (uint)rvi_b->power);
 	int r = ClampToI32(vb - va);
 
 	return _internal_sort_order ? -r : r;

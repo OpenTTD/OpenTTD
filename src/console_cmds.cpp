@@ -1249,7 +1249,7 @@ DEF_CONSOLE_CMD(ConPlayers)
 
 		GetString(buffer, STR_00D1_DARK_BLUE + _player_colors[p->index], lastof(buffer));
 		IConsolePrintF(8, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %" OTTD_PRINTF64 "d  Loan: %" OTTD_PRINTF64 "d  Value: %" OTTD_PRINTF64 "d  (T:%d, R:%d, P:%d, S:%d) %sprotected",
-			p->index + 1, buffer, npi->company_name, p->inaugurated_year, p->player_money, p->current_loan, CalculateCompanyValue(p),
+			p->index + 1, buffer, npi->company_name, p->inaugurated_year, (int64)p->player_money, (int64)p->current_loan, (int64)CalculateCompanyValue(p),
 			/* trains      */ npi->num_vehicle[0],
 			/* lorry + bus */ npi->num_vehicle[1] + npi->num_vehicle[2],
 			/* planes      */ npi->num_vehicle[3],

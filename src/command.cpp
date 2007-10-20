@@ -677,25 +677,13 @@ CommandCost CommandCost::AddCost(CommandCost ret)
 
 CommandCost CommandCost::AddCost(Money cost)
 {
-	/* Overflow protection */
-	if (cost < 0 && (this->cost + cost) > this->cost) {
-		this->cost = INT64_MIN;
-	} else if (cost > 0 && (this->cost + cost) < this->cost) {
-		this->cost = INT64_MAX;
-	} else  {
-		this->cost += cost;
-	}
+	this->cost += cost;
 	return *this;
 }
 
 CommandCost CommandCost::MultiplyCost(int factor)
 {
-	/* Overflow protection */
-	if (factor != 0 && (INT64_MAX / myabs(factor)) < myabs(this->cost)) {
-		this->cost = (this->cost < 0 == factor < 0) ? INT64_MAX : INT64_MIN;
-	} else {
-		this->cost *= factor;
-	}
+	this->cost *= factor;
 	return *this;
 }
 

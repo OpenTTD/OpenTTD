@@ -41,8 +41,8 @@ enum {
 };
 
 /* Apparently these don't play well with enums. */
-static const int64 INVALID_DATAPOINT     = INT64_MAX; // Value used for a datapoint that shouldn't be drawn.
-static const uint  INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
+static const OverflowSafeInt64 INVALID_DATAPOINT = INT64_MAX; // Value used for a datapoint that shouldn't be drawn.
+static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
 
 struct GraphDrawer {
 	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
@@ -70,9 +70,9 @@ struct GraphDrawer {
 
 static void DrawGraph(const GraphDrawer *gw)
 {
-	uint x, y;            ///< Reused whenever x and y coordinates are needed.
-	int64 highest_value;  ///< Highest value to be drawn.
-	int x_axis_offset;    ///< Distance from the top of the graph to the x axis.
+	uint x, y;                       ///< Reused whenever x and y coordinates are needed.
+	OverflowSafeInt64 highest_value; ///< Highest value to be drawn.
+	int x_axis_offset;               ///< Distance from the top of the graph to the x axis.
 
 	/* the colors and cost array of GraphDrawer must accomodate
 	 * both values for cargo and players. So if any are higher, quit */
@@ -515,7 +515,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 				if (p->is_active) {
 					gd.colors[numd] = _colour_gradient[p->player_color][6];
 					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].delivered_cargo;
+						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : (OverflowSafeInt64)p->old_economy[j].delivered_cargo;
 						i++;
 					}
 				}
@@ -582,7 +582,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 				if (p->is_active) {
 					gd.colors[numd] = _colour_gradient[p->player_color][6];
 					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].performance_history;
+						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : (OverflowSafeInt64)p->old_economy[j].performance_history;
 						i++;
 					}
 				}

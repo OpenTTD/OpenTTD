@@ -954,7 +954,7 @@ static void AiNew_State_VerifyRoute(Player *p)
 	//  Check if we have enough money for it!
 	if (p->ainew.new_cost > p->player_money - AI_MINIMUM_MONEY) {
 		// Too bad..
-		DEBUG(ai, 1, "Insufficient funds to build route (%d)", p->ainew.new_cost);
+		DEBUG(ai, 1, "Insufficient funds to build route (%" OTTD_PRINTF64 "d)", (int64)p->ainew.new_cost);
 		p->ainew.state = AI_STATE_NOTHING;
 		return;
 	}
@@ -1086,7 +1086,7 @@ static void AiNew_State_BuildPath(Player *p)
 			}
 		}
 
-		DEBUG(ai, 1, "Finished building path, cost: %d", p->ainew.new_cost);
+		DEBUG(ai, 1, "Finished building path, cost: %" OTTD_PRINTF64 "d", (int64)p->ainew.new_cost);
 		p->ainew.state = AI_STATE_BUILD_DEPOT;
 	}
 }
