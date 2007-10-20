@@ -215,19 +215,35 @@ Foundation GetRailFoundation(Slope tileh, TrackBits bits)
 		TrackBits higher_track = CornerToTrackBits(highest_corner);
 
 		/* Only higher track? */
-		if (bits == higher_track) return FOUNDATION_STEEP_HIGHER;
+		if (bits == higher_track) return HalftileFoundation(highest_corner);
 
 		/* Overlap with higher track? */
 		if (TracksOverlap(bits | higher_track)) return FOUNDATION_INVALID;
 
 		/* either lower track or both higher and lower track */
-		return ((bits & higher_track) != 0 ? FOUNDATION_INVALID : FOUNDATION_STEEP_LOWER);
+		return ((bits & higher_track) != 0 ? FOUNDATION_STEEP_BOTH : FOUNDATION_STEEP_LOWER);
 	} else {
 		if ((~_valid_tracks_without_foundation[tileh] & bits) == 0) return FOUNDATION_NONE;
 
 		bool valid_on_leveled = ((~_valid_tracks_on_leveled_foundation[tileh] & bits) == 0);
 
+		Corner track_corner;
 		switch (bits) {
+			case TRACK_BIT_LEFT:  track_corner = CORNER_W; break;
+			case TRACK_BIT_LOWER: track_corner = CORNER_S; break;
+			case TRACK_BIT_RIGHT: track_corner = CORNER_E; break;
+			case TRACK_BIT_UPPER: track_corner = CORNER_N; break;
+
+			case TRACK_BIT_HORZ:
+				if (tileh == SLOPE_N) return HalftileFoundation(CORNER_N);
+				if (tileh == SLOPE_S) return HalftileFoundation(CORNER_S);
+				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+
+			case TRACK_BIT_VERT:
+				if (tileh == SLOPE_W) return HalftileFoundation(CORNER_W);
+				if (tileh == SLOPE_E) return HalftileFoundation(CORNER_E);
+				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
+
 			case TRACK_BIT_X:
 				if (HasSlopeHighestCorner(tileh)) return FOUNDATION_INCLINED_X;
 				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
@@ -239,6 +255,19 @@ Foundation GetRailFoundation(Slope tileh, TrackBits bits)
 			default:
 				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
 		}
+		/* Single diagonal track */
+
+		/* Track must be at least valid on leveled foundation */
+		if (!valid_on_leveled) return FOUNDATION_INVALID;
+
+		/* If slope has three raised corners, build leveled foundation */
+		if (HasSlopeHighestCorner(ComplementSlope(tileh))) return FOUNDATION_LEVELED;
+
+		/* If neighboured corners of track_corner are lowered, build halftile foundation */
+		if ((tileh & SlopeWithThreeCornersRaised(OppositeCorner(track_corner))) == SlopeWithOneCornerRaised(track_corner)) return HalftileFoundation(track_corner);
+
+		/* else special anti-zig-zag foundation */
+		return SpecialRailFoundation(track_corner);
 	}
 }
 
@@ -1422,41 +1451,64 @@ static void DrawTrackDetails(const TileInfo* ti)
 static void DrawTrackBits(TileInfo* ti, TrackBits track)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+	RailGroundType rgt = GetRailGroundType(ti->tile);
+	Foundation f = GetRailFoundation(ti->tileh, track);
+	Corner halftile_corner = CORNER_INVALID;
+
+	if (IsNonContinuousFoundation(f)) {
+		/* Save halftile corner */
+		halftile_corner = (f == FOUNDATION_STEEP_BOTH ? GetHighestSlopeCorner(ti->tileh) : GetHalftileFoundationCorner(f));
+		/* Draw lower part first */
+		track &= ~CornerToTrackBits(halftile_corner);
+		f = (f == FOUNDATION_STEEP_BOTH ? FOUNDATION_STEEP_LOWER : FOUNDATION_NONE);
+	}
+
+	DrawFoundation(ti, f);
+	/* DrawFoundation modifies ti */
+
 	SpriteID image;
 	SpriteID pal = PAL_NONE;
 	bool junction = false;
 
 	/* Select the sprite to use. */
-	(image = rti->base_sprites.track_y, track == TRACK_BIT_Y) ||
-	(image++,                           track == TRACK_BIT_X) ||
-	(image++,                           track == TRACK_BIT_UPPER) ||
-	(image++,                           track == TRACK_BIT_LOWER) ||
-	(image++,                           track == TRACK_BIT_RIGHT) ||
-	(image++,                           track == TRACK_BIT_LEFT) ||
-	(image++,                           track == TRACK_BIT_CROSS) ||
+	if (track == 0) {
+		/* Clear ground (only track on halftile foundation) */
+		switch (rgt) {
+			case RAIL_GROUND_BARREN:     image = SPR_FLAT_BARE_LAND;  break;
+			case RAIL_GROUND_ICE_DESERT: image = SPR_FLAT_SNOWY_TILE; break;
+			default:                     image = SPR_FLAT_GRASS_TILE; break;
+		}
+		image += _tileh_to_sprite[ti->tileh];
+	} else {
+		if (ti->tileh != SLOPE_FLAT) {
+			/* track on non-flat ground */
+			image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
+		} else {
+			/* track on flat ground */
+			(image = rti->base_sprites.track_y, track == TRACK_BIT_Y) ||
+			(image++,                           track == TRACK_BIT_X) ||
+			(image++,                           track == TRACK_BIT_UPPER) ||
+			(image++,                           track == TRACK_BIT_LOWER) ||
+			(image++,                           track == TRACK_BIT_RIGHT) ||
+			(image++,                           track == TRACK_BIT_LEFT) ||
+			(image++,                           track == TRACK_BIT_CROSS) ||
 
-	(image = rti->base_sprites.track_ns, track == TRACK_BIT_HORZ) ||
-	(image++,                            track == TRACK_BIT_VERT) ||
+			(image = rti->base_sprites.track_ns, track == TRACK_BIT_HORZ) ||
+			(image++,                            track == TRACK_BIT_VERT) ||
 
-	(junction = true, false) ||
-	(image = rti->base_sprites.ground, (track & TRACK_BIT_3WAY_NE) == 0) ||
-	(image++,                          (track & TRACK_BIT_3WAY_SW) == 0) ||
-	(image++,                          (track & TRACK_BIT_3WAY_NW) == 0) ||
-	(image++,                          (track & TRACK_BIT_3WAY_SE) == 0) ||
-	(image++, true);
+			(junction = true, false) ||
+			(image = rti->base_sprites.ground, (track & TRACK_BIT_3WAY_NE) == 0) ||
+			(image++,                          (track & TRACK_BIT_3WAY_SW) == 0) ||
+			(image++,                          (track & TRACK_BIT_3WAY_NW) == 0) ||
+			(image++,                          (track & TRACK_BIT_3WAY_SE) == 0) ||
+			(image++, true);
+		}
 
-	if (ti->tileh != SLOPE_FLAT) {
-		DrawFoundation(ti, GetRailFoundation(ti->tileh, track));
-
-		/* DrawFoundation() modifies it.
-		 * Default sloped sprites.. */
-		if (ti->tileh != SLOPE_FLAT) image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
-	}
-
-	switch (GetRailGroundType(ti->tile)) {
-		case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
-		case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset; break;
-		default: break;
+		switch (rgt) {
+			case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
+			case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset;  break;
+			default: break;
+		}
 	}
 
 	DrawGroundSprite(image, pal);
@@ -1469,6 +1521,30 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 		if (track & TRACK_BIT_LOWER) DrawGroundSprite(rti->base_sprites.single_s, PAL_NONE);
 		if (track & TRACK_BIT_LEFT)  DrawGroundSprite(rti->base_sprites.single_w, PAL_NONE);
 		if (track & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e, PAL_NONE);
+	}
+
+	if (IsValidCorner(halftile_corner)) {
+		DrawFoundation(ti, HalftileFoundation(halftile_corner));
+
+		/* Draw higher halftile-overlay: Use the sloped sprites with three corners raised. They probably best fit the lightning. */
+		Slope fake_slope = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
+		image = _track_sloped_sprites[fake_slope - 1] + rti->base_sprites.track_y;
+		pal = PAL_NONE;
+		switch (rgt) {
+			case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
+			case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset;  break;
+			default: break;
+		}
+
+		static const int INF = 1000; // big number compared to tilesprite size
+		static const SubSprite _halftile_sub_sprite[4] = {
+			{ -INF    , -INF  , 32 - 33, INF     }, // CORNER_W, clip 33 pixels from right
+			{ -INF    ,  0 + 7, INF    , INF     }, // CORNER_S, clip 7 pixels from top
+			{ -31 + 33, -INF  , INF    , INF     }, // CORNER_E, clip 33 pixels from left
+			{ -INF    , -INF  , INF    , 30 - 23 }  // CORNER_N, clip 23 pixels from bottom
+		};
+
+		DrawGroundSprite(image, pal, &(_halftile_sub_sprite[halftile_corner]));
 	}
 }
 
@@ -2289,52 +2365,24 @@ static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new,
 		CommandCost autoslope_result = TestAutoslopeOnRailTile(tile, flags, z_old, tileh_old, z_new, tileh_new, rail_bits);
 
 		/* When there is only a single horizontal/vertical track, one corner can be terraformed. */
-		Slope allowed_corner;
+		Corner allowed_corner;
 		switch (rail_bits) {
-			case TRACK_BIT_RIGHT: allowed_corner = SLOPE_W; break;
-			case TRACK_BIT_UPPER: allowed_corner = SLOPE_S; break;
-			case TRACK_BIT_LEFT:  allowed_corner = SLOPE_E; break;
-			case TRACK_BIT_LOWER: allowed_corner = SLOPE_N; break;
+			case TRACK_BIT_RIGHT: allowed_corner = CORNER_W; break;
+			case TRACK_BIT_UPPER: allowed_corner = CORNER_S; break;
+			case TRACK_BIT_LEFT:  allowed_corner = CORNER_E; break;
+			case TRACK_BIT_LOWER: allowed_corner = CORNER_N; break;
 			default: return autoslope_result;
 		}
 
-		Slope track_corners = ComplementSlope(allowed_corner);
-
 		Foundation f_old = GetRailFoundation(tileh_old, rail_bits);
-		switch (f_old) {
-			case FOUNDATION_NONE:
-				/* Everything is valid, which only changes allowed_corner */
 
-				/* Compute height of track */
-				if (tileh_old == track_corners) z_old += TILE_HEIGHT;
-				if (tileh_new == track_corners) {
-					z_new += TILE_HEIGHT;
-				} else {
-					/* do not build a foundation */
-					if ((tileh_new != SLOPE_FLAT) && (tileh_new != allowed_corner)) return autoslope_result;
-				}
+		/* Do not allow terraforming if allowed_corner is part of anti-zig-zag foundations */
+		if (tileh_old != SLOPE_NS && tileh_old != SLOPE_EW && IsSpecialRailFoundation(f_old)) return autoslope_result;
 
-				/* Track height must remain unchanged */
-				if (z_old != z_new) return autoslope_result;
-				break;
-
-			case FOUNDATION_LEVELED:
-				/* Is allowed_corner covered by the foundation? */
-				if ((tileh_old & allowed_corner) == 0) return autoslope_result;
-
-				/* allowed_corner may only be raised -> steep slope */
-				if ((z_old != z_new) || (tileh_new != (tileh_old | SLOPE_STEEP))) return autoslope_result;
-				break;
-
-			case FOUNDATION_STEEP_LOWER:
-				/* Only allow to lower highest corner */
-				if ((z_old != z_new) || (tileh_new != (tileh_old & ~SLOPE_STEEP))) return autoslope_result;
-				break;
-
-			case FOUNDATION_STEEP_HIGHER:
-				return autoslope_result;
-
-			default: NOT_REACHED();
+		/* Everything is valid, which only changes allowed_corner */
+		for (Corner corner = (Corner)0; corner < CORNER_END; corner = (Corner)(corner + 1)) {
+			if (allowed_corner == corner) continue;
+			if (z_old + GetSlopeZInCorner(tileh_old, corner) != z_new + GetSlopeZInCorner(tileh_new, corner)) return autoslope_result;
 		}
 
 		/* Make the ground dirty */

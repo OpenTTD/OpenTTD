@@ -76,6 +76,16 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s)
 		return TILE_HEIGHT;
 	}
 
+	if (f != FOUNDATION_STEEP_BOTH && IsNonContinuousFoundation(f)) {
+		*s = HalftileSlope(*s, GetHalftileFoundationCorner(f));
+		return 0;
+	}
+
+	if (IsSpecialRailFoundation(f)) {
+		*s = SlopeWithThreeCornersRaised(OppositeCorner(GetRailFoundationCorner(f)));
+		return 0;
+	}
+
 	uint dz = IsSteepSlope(*s) ? TILE_HEIGHT : 0;
 	Corner highest_corner = GetHighestSlopeCorner(*s);
 
@@ -92,8 +102,8 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s)
 			*s = SlopeWithOneCornerRaised(highest_corner);
 			break;
 
-		case FOUNDATION_STEEP_HIGHER:
-			*s = SlopeWithThreeCornersRaised(OppositeCorner(highest_corner));
+		case FOUNDATION_STEEP_BOTH:
+			*s = HalftileSlope(SlopeWithOneCornerRaised(highest_corner), highest_corner);
 			break;
 
 		default: NOT_REACHED();
@@ -229,6 +239,24 @@ uint GetSlopeZ(int x, int y)
 }
 
 /**
+ * Determine the Z height of a corner relative to TileZ.
+ *
+ * @pre The slope must not be a halftile slope.
+ *
+ * @param tileh The slope.
+ * @param corner The corner.
+ * @return Z position of corner relative to TileZ.
+ */
+int GetSlopeZInCorner(Slope tileh, Corner corner)
+{
+	assert(!IsHalftileSlope(tileh));
+	static const int _corner_slopes[4][2] = {
+		{ SLOPE_W, SLOPE_STEEP_W }, { SLOPE_S, SLOPE_STEEP_S }, { SLOPE_E, SLOPE_STEEP_E }, { SLOPE_N, SLOPE_STEEP_N }
+	};
+	return ((tileh & _corner_slopes[corner][0]) != 0 ? TILE_HEIGHT : 0) + (tileh == _corner_slopes[corner][1] ? TILE_HEIGHT : 0);
+}
+
+/**
  * Determine the Z height of the corners of a specific tile edge
  *
  * @note If a tile has a non-continuous halftile foundation, a corner can have different heights wrt. it's edges.
@@ -308,6 +336,9 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 {
 	if (!IsFoundation(f)) return;
 
+	/* Two part foundations must be drawn separately */
+	assert(f != FOUNDATION_STEEP_BOTH);
+
 	uint sprite_block = 0;
 	uint z;
 	Slope slope = GetFoundationSlope(ti->tile, &z);
@@ -324,13 +355,15 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 	/* Use the original slope sprites if NW and NE borders should be visible */
 	SpriteID leveled_base = (sprite_block == 0 ? (int)SPR_FOUNDATION_BASE : (SPR_SLOPES_VIRTUAL_BASE + sprite_block * SPR_TRKFOUND_BLOCK_SIZE));
 	SpriteID inclined_base = SPR_SLOPES_VIRTUAL_BASE + SPR_SLOPES_INCLINED_OFFSET + sprite_block * SPR_TRKFOUND_BLOCK_SIZE;
-	//SpriteID halftile_base = SPR_HALFTILE_FOUNDATION_BASE + sprite_block * SPR_HALFTILE_BLOCK_SIZE;
+	SpriteID halftile_base = SPR_HALFTILE_FOUNDATION_BASE + sprite_block * SPR_HALFTILE_BLOCK_SIZE;
 
 	if (IsSteepSlope(ti->tileh)) {
-		/* Lower part of foundation */
-		AddSortableSpriteToDraw(
-			leveled_base + (ti->tileh & ~SLOPE_STEEP), PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z
-		);
+		if (!IsNonContinuousFoundation(f)) {
+			/* Lower part of foundation */
+			AddSortableSpriteToDraw(
+				leveled_base + (ti->tileh & ~SLOPE_STEEP), PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z
+			);
+		}
 
 		Corner highest_corner = GetHighestSlopeCorner(ti->tileh);
 		ti->z += ApplyFoundationToSlope(f, &ti->tileh);
@@ -341,24 +374,42 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 
 			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			OffsetGroundSprite(31, 9);
-		} else if (f >= FOUNDATION_STEEP_HIGHER) {
-			/* three corners raised:
-			 * Draw inclined foundations for both axes, that results in the needed image.
-			 */
-			SpriteID upper = inclined_base + highest_corner * 2;
-
-			AddSortableSpriteToDraw(upper, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
-			AddChildSpriteScreen(upper + 1, PAL_NONE, 31, 9);
-			OffsetGroundSprite(31, 9);
-		} else {
+		} else if (f == FOUNDATION_STEEP_LOWER) {
 			/* one corner raised */
 			OffsetGroundSprite(31, 1);
+		} else {
+			/* halftile foundation */
+			int x_bb = (((highest_corner == CORNER_W) || (highest_corner == CORNER_S)) ? 8 : 0);
+			int y_bb = (((highest_corner == CORNER_S) || (highest_corner == CORNER_E)) ? 8 : 0);
+
+			AddSortableSpriteToDraw(halftile_base + highest_corner, PAL_NONE, ti->x + x_bb, ti->y + y_bb, 8, 8, 7, ti->z + TILE_HEIGHT);
+			OffsetGroundSprite(31, 9);
 		}
 	} else {
 		if (IsLeveledFoundation(f)) {
 			/* leveled foundation */
 			AddSortableSpriteToDraw(leveled_base + ti->tileh, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
 			OffsetGroundSprite(31, 1);
+		} else if (IsNonContinuousFoundation(f)) {
+			/* halftile foundation */
+			Corner halftile_corner = GetHalftileFoundationCorner(f);
+			int x_bb = (((halftile_corner == CORNER_W) || (halftile_corner == CORNER_S)) ? 8 : 0);
+			int y_bb = (((halftile_corner == CORNER_S) || (halftile_corner == CORNER_E)) ? 8 : 0);
+
+			AddSortableSpriteToDraw(halftile_base + halftile_corner, PAL_NONE, ti->x + x_bb, ti->y + y_bb, 8, 8, 7, ti->z);
+			OffsetGroundSprite(31, 9);
+		} else if (IsSpecialRailFoundation(f)) {
+			/* anti-zig-zag foundation */
+			SpriteID spr;
+			if (ti->tileh == SLOPE_NS || ti->tileh == SLOPE_EW) {
+				/* half of leveled foundation under track corner */
+				spr = leveled_base + SlopeWithThreeCornersRaised(GetRailFoundationCorner(f));
+			} else {
+				/* tile-slope = sloped along X/Y, foundation-slope = three corners raised */
+				spr = inclined_base + 2 * GetRailFoundationCorner(f) + ((ti->tileh == SLOPE_SW || ti->tileh == SLOPE_NE) ? 1 : 0);
+			}
+			AddSortableSpriteToDraw(spr, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
+			OffsetGroundSprite(31, 9);
 		} else {
 			/* inclined foundation */
 			byte inclined = GetHighestSlopeCorner(ti->tileh) * 2 + (f == FOUNDATION_INCLINED_Y ? 1 : 0);

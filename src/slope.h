@@ -16,7 +16,8 @@ enum Corner {
 	CORNER_S = 1,
 	CORNER_E = 2,
 	CORNER_N = 3,
-	CORNER_END
+	CORNER_END,
+	CORNER_INVALID = 0xFF
 };
 
 /**
@@ -234,8 +235,20 @@ enum Foundation {
 	FOUNDATION_LEVELED,          ///< The tile is leveled up to a flat slope.
 	FOUNDATION_INCLINED_X,       ///< The tile has an along X-axis inclined foundation.
 	FOUNDATION_INCLINED_Y,       ///< The tile has an along Y-axis inclined foundation.
-	FOUNDATION_STEEP_LOWER,      ///< The tile has a steep slope. The lowerst corner is raised by a foundation to allow building railroad on the lower halftile.
-	FOUNDATION_STEEP_HIGHER,     ///< The tile has a steep slope. Three corners are raised by a foundation to allow building railroad on the higher halftile.
+	FOUNDATION_STEEP_LOWER,      ///< The tile has a steep slope. The lowest corner is raised by a foundation to allow building railroad on the lower halftile.
+
+/* Halftile foundations */
+	FOUNDATION_STEEP_BOTH,       ///< The tile has a steep slope. The lowest corner is raised by a foundation and the upper halftile is leveled.
+	FOUNDATION_HALFTILE_W,       ///< Level west halftile non-continuously.
+	FOUNDATION_HALFTILE_S,       ///< Level south halftile non-continuously.
+	FOUNDATION_HALFTILE_E,       ///< Level east halftile non-continuously.
+	FOUNDATION_HALFTILE_N,       ///< Level north halftile non-continuously.
+
+/* Special anti-zig-zag foundations for single horizontal/vertical track */
+	FOUNDATION_RAIL_W,           ///< Foundation for TRACK_BIT_LEFT, but not a leveled foundation.
+	FOUNDATION_RAIL_S,           ///< Foundation for TRACK_BIT_LOWER, but not a leveled foundation.
+	FOUNDATION_RAIL_E,           ///< Foundation for TRACK_BIT_RIGHT, but not a leveled foundation.
+	FOUNDATION_RAIL_N,           ///< Foundation for TRACK_BIT_UPPER, but not a leveled foundation.
 
 	FOUNDATION_INVALID = 0xFF    ///< Used inside "rail_cmd.cpp" to indicate invalid slope/track combination.
 };
@@ -274,6 +287,54 @@ static inline bool IsInclinedFoundation(Foundation f)
 }
 
 /**
+ * Tests if a foundation is a non-continuous foundation, i.e. halftile-foundation or FOUNDATION_STEEP_BOTH.
+ *
+ * @param f  The #Foundation.
+ * @return   true iff f is a non-continuous foundation
+ */
+static inline bool IsNonContinuousFoundation(Foundation f)
+{
+	return IS_INT_INSIDE(f, FOUNDATION_STEEP_BOTH, FOUNDATION_HALFTILE_N + 1);
+}
+
+/**
+ * Returns the halftile corner of a halftile-foundation
+ *
+ * @pre f != FOUNDATION_STEEP_BOTH
+ *
+ * @param f  The #Foundation.
+ * @return   The #Corner with track.
+ */
+static inline Corner GetHalftileFoundationCorner(Foundation f)
+{
+	assert(IS_INT_INSIDE(f, FOUNDATION_HALFTILE_W, FOUNDATION_HALFTILE_N + 1));
+	return (Corner)(f - FOUNDATION_HALFTILE_W);
+}
+
+/**
+ * Tests if a foundation is a special rail foundation for single horizontal/vertical track.
+ *
+ * @param f  The #Foundation.
+ * @return   true iff f is a special rail foundation for single horizontal/vertical track.
+ */
+static inline bool IsSpecialRailFoundation(Foundation f)
+{
+	return IS_INT_INSIDE(f, FOUNDATION_RAIL_W, FOUNDATION_RAIL_N + 1);
+}
+
+/**
+ * Returns the track corner of a special rail foundation
+ *
+ * @param f  The #Foundation.
+ * @return   The #Corner with track.
+ */
+static inline Corner GetRailFoundationCorner(Foundation f)
+{
+	assert(IsSpecialRailFoundation(f));
+	return (Corner)(f - FOUNDATION_RAIL_W);
+}
+
+/**
  * Returns the foundation needed to flatten a slope.
  * The returned foundation is either FOUNDATION_NONE if the tile was already flat, or FOUNDATION_LEVELED.
  *
@@ -296,6 +357,30 @@ static inline Foundation FlatteningFoundation(Slope s)
 static inline Foundation InclinedFoundation(Axis axis)
 {
 	return (axis == AXIS_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
+}
+
+/**
+ * Returns the halftile foundation for single horizontal/vertical track.
+ *
+ * @param corner The #Corner with the track.
+ * @return       The wanted #Foundation.
+ */
+static inline Foundation HalftileFoundation(Corner corner)
+{
+	assert(IsValidCorner(corner));
+	return (Foundation)(FOUNDATION_HALFTILE_W + corner);
+}
+
+/**
+ * Returns the special rail foundation for single horizontal/vertical track.
+ *
+ * @param corner The #Corner with the track.
+ * @return       The wanted #Foundation.
+ */
+static inline Foundation SpecialRailFoundation(Corner corner)
+{
+	assert(IsValidCorner(corner));
+	return (Foundation)(FOUNDATION_RAIL_W + corner);
 }
 
 #endif /* SLOPE_H */
