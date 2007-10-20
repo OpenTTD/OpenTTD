@@ -54,8 +54,9 @@ enum Sprites {
 	SPR_SLOPES_BASE                    = SPR_CANALS_BASE + 70,
 	SPR_SLOPES_INCLINED_OFFSET         = 15,
 	SPR_SLOPES_VIRTUAL_BASE            = SPR_SLOPES_BASE - SPR_SLOPES_INCLINED_OFFSET, // The original foundations (see SPR_FOUNDATION_BASE below) are mapped before the additional foundations.
-	SPR_SLOPES_NO_FOUNDATION_NW_OFFSET = 22, // no wall on the NW edge of the tile.
-	SPR_SLOPES_NO_FOUNDATION_NE_OFFSET = 44, // no wall on the NE edge of the tile.
+	SPR_TRKFOUND_BLOCK_SIZE            = 22, // The sprites in trkfoundw.grf are organized in blocks of 22.
+
+	/* between slopes and autorail are 4 unused sprites */
 
 	SPR_AUTORAIL_BASE = SPR_SLOPES_BASE + 78,
 	SPR_ELRAIL_BASE   = SPR_AUTORAIL_BASE + 55,
@@ -179,8 +180,18 @@ enum Sprites {
 	/* Not really a sprite, but an empty bounding box. Used to construct bounding boxes, that help sorting the sprites, but do not have a sprite associated. */
 	SPR_EMPTY_BOUNDING_BOX = SPR_ONEWAY_BASE + 6,
 
+	/* Halftile foundations */
+	SPR_HALFTILE_FOUNDATION_BASE     = SPR_EMPTY_BOUNDING_BOX + 1,
+	SPR_HALFTILE_BLOCK_SIZE          = 4,  // The sprites in halffndw.grf are organized in blocks of 4.
+
+	/* Halftile-selection sprites */
+	SPR_HALFTILE_SELECTION_BASE      = SPR_HALFTILE_FOUNDATION_BASE + 4 * SPR_HALFTILE_BLOCK_SIZE,
+	SPR_HALFTILE_SELECTION_FLAT      = SPR_HALFTILE_SELECTION_BASE,
+	SPR_HALFTILE_SELECTION_DOWN      = SPR_HALFTILE_SELECTION_BASE + 4,
+	SPR_HALFTILE_SELECTION_UP        = SPR_HALFTILE_SELECTION_BASE + 8,
+
 	/* Flags sprites (in same order as enum NetworkLanguage) */
-	SPR_FLAGS_BASE = SPR_EMPTY_BOUNDING_BOX + 1,
+	SPR_FLAGS_BASE = SPR_HALFTILE_SELECTION_BASE + 12,
 
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face

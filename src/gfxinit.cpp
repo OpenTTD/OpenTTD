@@ -28,11 +28,6 @@ struct FileList {
 	MD5File landscape[3];      ///< landscape specific grf files
 };
 
-enum {
-	SKIP = 0xFFFE,
-	END  = 0xFFFF
-};
-
 #include "table/files.h"
 #include "table/landscape_sprite.h"
 
@@ -47,6 +42,13 @@ static const SpriteID * const _slopes_spriteindexes[] = {
 	_slopes_spriteindexes_1,
 	_slopes_spriteindexes_2,
 	_slopes_spriteindexes_3,
+};
+
+static const SpriteID * const _halftile_foundation_spriteindexes[] = {
+	_halftile_foundation_spriteindexes_0,
+	_halftile_foundation_spriteindexes_1,
+	_halftile_foundation_spriteindexes_2,
+	_halftile_foundation_spriteindexes_3,
 };
 
 
@@ -385,6 +387,12 @@ static void LoadSpriteTables()
 	load_index += LoadGrfFile("oneway.grf", load_index, i++);
 
 	load_index++; // SPR_EMPTY_BOUNDING_BOX
+
+	assert(load_index == SPR_HALFTILE_FOUNDATION_BASE);
+	LoadGrfIndexed("halffndw.grf", _halftile_foundation_spriteindexes[_opt.landscape], i++);
+
+	load_index = SPR_HALFTILE_SELECTION_BASE;
+	load_index += LoadGrfFile("halfselw.grf", load_index, i++);
 
 	assert(load_index == SPR_FLAGS_BASE);
 	load_index += LoadGrfFile("flags.grf", load_index, i++);

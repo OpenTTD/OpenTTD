@@ -308,23 +308,28 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 {
 	if (!IsFoundation(f)) return;
 
-	SpriteID sprite_base = SPR_SLOPES_VIRTUAL_BASE;
+	uint sprite_block = 0;
 	uint z;
 	Slope slope = GetFoundationSlope(ti->tile, &z);
 
-	if (!HasFoundationNW(ti->tile, slope, z)) sprite_base += SPR_SLOPES_NO_FOUNDATION_NW_OFFSET;
-	if (!HasFoundationNE(ti->tile, slope, z)) sprite_base += SPR_SLOPES_NO_FOUNDATION_NE_OFFSET;
+	/* Select the needed block of foundations sprites
+	 * Block 0: Walls at NW and NE edge
+	 * Block 1: Wall  at        NE edge
+	 * Block 2: Wall  at NW        edge
+	 * Block 3: No walls at NW or NE edge
+	 */
+	if (!HasFoundationNW(ti->tile, slope, z)) sprite_block += 1;
+	if (!HasFoundationNE(ti->tile, slope, z)) sprite_block += 2;
+
+	/* Use the original slope sprites if NW and NE borders should be visible */
+	SpriteID leveled_base = (sprite_block == 0 ? (int)SPR_FOUNDATION_BASE : (SPR_SLOPES_VIRTUAL_BASE + sprite_block * SPR_TRKFOUND_BLOCK_SIZE));
+	SpriteID inclined_base = SPR_SLOPES_VIRTUAL_BASE + SPR_SLOPES_INCLINED_OFFSET + sprite_block * SPR_TRKFOUND_BLOCK_SIZE;
+	//SpriteID halftile_base = SPR_HALFTILE_FOUNDATION_BASE + sprite_block * SPR_HALFTILE_BLOCK_SIZE;
 
 	if (IsSteepSlope(ti->tileh)) {
-		SpriteID lower_base;
-
-		/* Lower part of foundation
-		 * Use the original slope sprites if NW and NE borders should be visible
-		 */
-		lower_base = sprite_base;
-		if (lower_base == SPR_SLOPES_VIRTUAL_BASE) lower_base = SPR_FOUNDATION_BASE;
+		/* Lower part of foundation */
 		AddSortableSpriteToDraw(
-			lower_base + (ti->tileh & ~SLOPE_STEEP), PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z
+			leveled_base + (ti->tileh & ~SLOPE_STEEP), PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z
 		);
 
 		Corner highest_corner = GetHighestSlopeCorner(ti->tileh);
@@ -334,13 +339,13 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			/* inclined foundation */
 			byte inclined = highest_corner * 2 + (f == FOUNDATION_INCLINED_Y ? 1 : 0);
 
-			AddSortableSpriteToDraw(sprite_base + SPR_SLOPES_INCLINED_OFFSET + inclined, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
+			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			OffsetGroundSprite(31, 9);
 		} else if (f >= FOUNDATION_STEEP_HIGHER) {
 			/* three corners raised:
 			 * Draw inclined foundations for both axes, that results in the needed image.
 			 */
-			SpriteID upper = sprite_base + SPR_SLOPES_INCLINED_OFFSET + highest_corner * 2;
+			SpriteID upper = inclined_base + highest_corner * 2;
 
 			AddSortableSpriteToDraw(upper, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			AddChildSpriteScreen(upper + 1, PAL_NONE, 31, 9);
@@ -351,18 +356,14 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 		}
 	} else {
 		if (IsLeveledFoundation(f)) {
-			/* leveled foundation
-			 * Use the original slope sprites if NW and NE borders should be visible
-			 */
-			if (sprite_base == SPR_SLOPES_VIRTUAL_BASE) sprite_base = SPR_FOUNDATION_BASE;
-
-			AddSortableSpriteToDraw(sprite_base + ti->tileh, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
+			/* leveled foundation */
+			AddSortableSpriteToDraw(leveled_base + ti->tileh, PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z);
 			OffsetGroundSprite(31, 1);
 		} else {
 			/* inclined foundation */
 			byte inclined = GetHighestSlopeCorner(ti->tileh) * 2 + (f == FOUNDATION_INCLINED_Y ? 1 : 0);
 
-			AddSortableSpriteToDraw(sprite_base + SPR_SLOPES_INCLINED_OFFSET + inclined, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
+			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			OffsetGroundSprite(31, 9);
 		}
 		ti->z += ApplyFoundationToSlope(f, &ti->tileh);

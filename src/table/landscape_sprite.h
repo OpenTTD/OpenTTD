@@ -1,5 +1,10 @@
 /* $Id$ */
 
+enum {
+	SKIP = 0xFFFE,
+	END  = 0xFFFF
+};
+
 static const SpriteID _landscape_spriteindexes_1[] = {
  0xF67,  0xF9F,
  0xAAD,  0xAB0,
@@ -138,7 +143,7 @@ END
 Skip first 3 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_0[] = {
 	SKIP, 3,
-	SPR_SLOPES_BASE, SPR_SLOPES_BASE + 73,
+	SPR_SLOPES_VIRTUAL_BASE + 15, SPR_SLOPES_VIRTUAL_BASE + 4 * SPR_TRKFOUND_BLOCK_SIZE,
 	END
 };
 
@@ -146,7 +151,7 @@ static const SpriteID _slopes_spriteindexes_0[] = {
 Skip first 79 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_1[] = {
 	SKIP, 79,
-	SPR_SLOPES_BASE, SPR_SLOPES_BASE + 73,
+	SPR_SLOPES_VIRTUAL_BASE + 15, SPR_SLOPES_VIRTUAL_BASE + 4 * SPR_TRKFOUND_BLOCK_SIZE,
 	END
 };
 
@@ -154,7 +159,7 @@ static const SpriteID _slopes_spriteindexes_1[] = {
 Skip first 155 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_2[] = {
 	SKIP, 155,
-	SPR_SLOPES_BASE, SPR_SLOPES_BASE + 73,
+	SPR_SLOPES_VIRTUAL_BASE + 15, SPR_SLOPES_VIRTUAL_BASE + 4 * SPR_TRKFOUND_BLOCK_SIZE,
 	END
 };
 
@@ -162,6 +167,33 @@ static const SpriteID _slopes_spriteindexes_2[] = {
 Skip first 231 sprites and only load the proper set */
 static const SpriteID _slopes_spriteindexes_3[] = {
 	SKIP, 231,
-	SPR_SLOPES_BASE, SPR_SLOPES_BASE + 73,
+	SPR_SLOPES_VIRTUAL_BASE + 15, SPR_SLOPES_VIRTUAL_BASE + 4 * SPR_TRKFOUND_BLOCK_SIZE,
+	END
+};
+
+/* Halftile foundation indexes for temperate climate */
+static const SpriteID _halftile_foundation_spriteindexes_0[] = {
+	SPR_HALFTILE_FOUNDATION_BASE, SPR_HALFTILE_FOUNDATION_BASE + 4 * SPR_HALFTILE_BLOCK_SIZE - 1,
+	END
+};
+
+/* Halftile foundation indexes for arctic climate */
+static const SpriteID _halftile_foundation_spriteindexes_1[] = {
+	SKIP, 16,
+	SPR_HALFTILE_FOUNDATION_BASE, SPR_HALFTILE_FOUNDATION_BASE + 4 * SPR_HALFTILE_BLOCK_SIZE - 1,
+	END
+};
+
+/* Halftile foundation indexes for tropic climate */
+static const SpriteID _halftile_foundation_spriteindexes_2[] = {
+	SKIP, 32,
+	SPR_HALFTILE_FOUNDATION_BASE, SPR_HALFTILE_FOUNDATION_BASE + 4 * SPR_HALFTILE_BLOCK_SIZE - 1,
+	END
+};
+
+/* Halftile foundation indexes for toyland climate */
+static const SpriteID _halftile_foundation_spriteindexes_3[] = {
+	SKIP, 48,
+	SPR_HALFTILE_FOUNDATION_BASE, SPR_HALFTILE_FOUNDATION_BASE + 4 * SPR_HALFTILE_BLOCK_SIZE - 1,
 	END
 };
