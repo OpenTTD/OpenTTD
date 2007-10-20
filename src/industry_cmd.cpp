@@ -1582,8 +1582,6 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
  */
 CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int num;
-	const IndustryTileTable * const *itt;
 	const IndustrySpec *indspec;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
@@ -1608,8 +1606,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * is nothing we can really do about that. */
 			if (Random() <= indspec->prospecting_chance) {
 				for (int i = 0; i < 5000; i++) {
-					uint tilespec_index = RandomRange(indspec->num_table);
-					const Industry *ind = CreateNewIndustryHelper(RandomTile(), p1, flags, indspec, tilespec_index);
+					const Industry *ind = CreateNewIndustryHelper(RandomTile(), p1, flags, indspec, RandomRange(indspec->num_table));
 					if (ind != NULL) {
 						SetDParam(0, indspec->name);
 						if (indspec->new_industry_text > STR_LAST_STRINGID) {
@@ -1626,12 +1623,14 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 	} else {
-		num = indspec->num_table;
-		itt = indspec->table;
+		int count = indspec->num_table;
+		const IndustryTileTable * const *itt = indspec->table;
+		int num = RandomRange(count);
 
 		_error_message = STR_0239_SITE_UNSUITABLE;
 		do {
-			if (--num < 0) return CMD_ERROR;
+			if (--count < 0) return CMD_ERROR;
+			if (--num < 0) num = indspec->num_table - 1;
 		} while (!CheckIfIndustryTilesAreFree(tile, itt[num], num, p1));
 
 		if (CreateNewIndustryHelper(tile, p1, flags, indspec, num) == NULL) return CMD_ERROR;
