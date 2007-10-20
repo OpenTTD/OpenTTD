@@ -986,6 +986,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Нова про
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Нова промисловість
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можна будувати лише у містах
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...можна будувати лише у джунглях
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...можна будувати лише у пустелі
@@ -3548,3 +3549,14 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Фіна
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Огляд
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Будувати
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Виберіть необхідне виробництво
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Детальний
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Детальний вибір обличчя
+STR_FACE_SIMPLE                                                 :{BLACK}Простий
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Простий вибір обличчя
+STR_FACE_LOAD                                                   :{BLACK}Завантажити
+STR_FACE_LOAD_TIP                                               :{BLACK}Завантажити обране обличчя
+STR_FACE_LOAD_DONE                                              :{WHITE}Обране обличчя було завантажене з файлу конфігурації OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}Обличчя №
+########

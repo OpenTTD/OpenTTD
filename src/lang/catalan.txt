@@ -3397,7 +3397,7 @@ STR_FACE_SIMPLE_TIP                                             :{BLACK}Selecci�
 STR_FACE_LOAD                                                   :{BLACK}Carrega
 STR_FACE_LOAD_TIP                                               :{BLACK}Carrega la cara preferida
 STR_FACE_LOAD_DONE                                              :{WHITE}La teva cara preferida ha estat carregada des de l'arxiu de configuració d'OpenTTD.
-STR_FACE_FACECODE                                               :{BLACK}Cara del jugador nu.
+STR_FACE_FACECODE                                               :{BLACK}Cara jugador nu.
 STR_FACE_FACECODE_TIP                                           :{BLACK}Veure i/o assigna la cara del jugador número
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna la cara del jugador número
 STR_FACE_FACECODE_SET                                           :{WHITE}El número de la nova cara ha estat assignat.
@@ -3405,7 +3405,7 @@ STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha 
 STR_FACE_SAVE                                                   :{BLACK}Desa
 STR_FACE_SAVE_TIP                                               :{BLACK}Desa la cara preferida
 STR_FACE_SAVE_DONE                                              :{WHITE}Aquesta cara serà desada com a preferida a l'arxiu de configuració d'OpenTTD.
-STR_FACE_EUROPEAN                                               :{BLACK}Europeu
+STR_FACE_EUROPEAN                                               :{BLACK}Europea
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecciona cares europees
 STR_FACE_AFRICAN                                                :{BLACK}Africana
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selecciona cares africanes
@@ -3416,7 +3416,7 @@ STR_FACE_HAIR                                                   :Cabell:
 STR_FACE_HAIR_TIP                                               :{BLACK}Canvia el cabell
 STR_FACE_EYEBROWS                                               :Celles
 STR_FACE_EYEBROWS_TIP                                           :{BLACK}Canvia les celles
-STR_FACE_EYECOLOUR                                              :Color del ulls:
+STR_FACE_EYECOLOUR                                              :Color dels ulls:
 STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Canvia el color del ulls:
 STR_FACE_GLASSES                                                :Ulleres:
 STR_FACE_GLASSES_TIP                                            :{BLACK}Activa les ulleres

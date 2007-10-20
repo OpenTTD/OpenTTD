@@ -1103,8 +1103,15 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Ampliar mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Percorrer mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel no mapa: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Clique para comando
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique para controlo
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automática ao iniciar um novo jogo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Desligado
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Sua companhia
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activar plano de horários para veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horário em tics em vez dias: {ORANGE}{STRING}
@@ -2759,6 +2766,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível! - {ENGINE}
 
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Impossível programar veículo...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Veículos apenas podem esperar em estações.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Este veículo não pára nesta estação.
@@ -3362,3 +3370,6 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Criar
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospectar
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Construir
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Escolha a indústria apropriada desta lista
+
+############ Face formatting
+########

@@ -862,6 +862,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financiar nova 
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financiar nova indústria
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só pode ser construído em cidades
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...só pode ser construído em zonas florestais
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...só pode ser construído em áreas desérticas
@@ -3391,3 +3392,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Fundar
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prosperir
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Construir
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Escolha a indústria apropriada
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Avançado
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Seleção de face avançada.
+STR_FACE_SIMPLE                                                 :{BLACK}Simples
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Seleção de face simples.
+STR_FACE_LOAD                                                   :{BLACK}Carregar
+STR_FACE_LOAD_TIP                                               :{BLACK}Carregar face favorita
+STR_FACE_LOAD_DONE                                              :{WHITE}Sua face favorita foi carregada do arquivo de configuração do OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}Número da face do jogador.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Ver e/ou alterar número da face do jogador
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou alterar número da face do jogador
+STR_FACE_FACECODE_SET                                           :{WHITE}Novo código de número da face face foi alterado
+STR_FACE_FACECODE_ERR                                           :{WHITE}Não pode alterar o número de face do jogador  precisa ser um número entre 0 e 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Salvar
+STR_FACE_SAVE_TIP                                               :{BLACK}Salvar face favorita
+STR_FACE_SAVE_DONE                                              :{WHITE}Esta face irá ser salva como sua face favorita no arquivo de configuração do OpenTTD.
+STR_FACE_EUROPEAN                                               :{BLACK}Europeu
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecione faces européias
+STR_FACE_AFRICAN                                                :{BLACK}Africano
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Selecione faces africanas
+STR_FACE_YES                                                    :Sim
+STR_FACE_NO                                                     :Não
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Ativar bigode ou brinco
+STR_FACE_HAIR                                                   :Cabelo:
+STR_FACE_HAIR_TIP                                               :{BLACK}Alterar cabelo
+STR_FACE_EYEBROWS                                               :Sombrancelhas:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Alterar sombrancelhas
+STR_FACE_EYECOLOUR                                              :Cor do olho:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Alterar cor do olho
+STR_FACE_GLASSES                                                :Óculos:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Ativar óculos
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Alterar óculos
+STR_FACE_NOSE                                                   :Nariz:
+STR_FACE_NOSE_TIP                                               :{BLACK}Alterar nariz
+STR_FACE_LIPS                                                   :Boca:
+STR_FACE_MOUSTACHE                                              :Bigode:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Alterar boca ou bigode
+STR_FACE_CHIN                                                   :Queixo:
+STR_FACE_CHIN_TIP                                               :{BLACK}Alterar queixo
+STR_FACE_JACKET                                                 :Casaco:
+STR_FACE_JACKET_TIP                                             :{BLACK}Alterar casaco
+STR_FACE_COLLAR                                                 :Colarinho:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Alterar colarinho
+STR_FACE_TIE                                                    :Gravata:
+STR_FACE_EARRING                                                :Brinco:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Alterar gravata ou brinco
+########

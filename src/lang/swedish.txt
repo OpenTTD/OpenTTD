@@ -860,6 +860,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Bekosta ny indu
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Bekosta ny industri
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan bara byggas i städer
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan bara byggas i regnskog
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kan bara byggas i öken
@@ -3387,3 +3388,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Grunda
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospektera
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Bygga
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Välj lämplig industri från denna lista
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Avancerad
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Avancerat ansiktsval.
+STR_FACE_SIMPLE                                                 :{BLACK}Enkelt
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Enkelt ansiktsval.
+STR_FACE_LOAD                                                   :{BLACK}Ladda
+STR_FACE_LOAD_TIP                                               :{BLACK}Ladda favoritansikte
+STR_FACE_LOAD_DONE                                              :{WHITE}Ditt favoritansikte har laddats från OpenTTDs konfigurationsfil.
+STR_FACE_FACECODE                                               :{BLACK}Spelaransikte nummer.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Visa och/eller välj ansiktsnummer
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Visa och/eller välj ansiktsnummer
+STR_FACE_FACECODE_SET                                           :{WHITE}Nytt kod för ansiktsnumret har valts
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kunde inte ange ansiktsnumret. Det måste vara en siffra mellan 0 och 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Spara
+STR_FACE_SAVE_TIP                                               :{BLACK}Spara favoritansikte
+STR_FACE_SAVE_DONE                                              :{WHITE}Det här ansiktet kommer att sparas som ditt favoritansikte i OpenTTDs konfigurationsfil.
+STR_FACE_EUROPEAN                                               :{BLACK}Europeisk
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Välj europeiska ansikten
+STR_FACE_AFRICAN                                                :{BLACK}Afrikanska
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Välj afrikanska ansikten
+STR_FACE_YES                                                    :Ja
+STR_FACE_NO                                                     :Nej
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Aktivera mustasch eller örhänge
+STR_FACE_HAIR                                                   :Hår:
+STR_FACE_HAIR_TIP                                               :{BLACK}Ändra hår
+STR_FACE_EYEBROWS                                               :Ögonbryn:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Ändra ögonbryn
+STR_FACE_EYECOLOUR                                              :Ögonfärg:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Ändra ögonfärg
+STR_FACE_GLASSES                                                :Glasögon:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Aktivera glasögon
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Ändra glasögon
+STR_FACE_NOSE                                                   :Näsa:
+STR_FACE_NOSE_TIP                                               :{BLACK}Ändra näsa
+STR_FACE_LIPS                                                   :Läppar:
+STR_FACE_MOUSTACHE                                              :Mustasch:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Ändra läppar eller mustasch
+STR_FACE_CHIN                                                   :Haka:
+STR_FACE_CHIN_TIP                                               :{BLACK}Ändra haka
+STR_FACE_JACKET                                                 :Jacka:
+STR_FACE_JACKET_TIP                                             :{BLACK}Ändra jacka
+STR_FACE_COLLAR                                                 :Krage:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Ändra krage
+STR_FACE_TIE                                                    :Slips:
+STR_FACE_EARRING                                                :Örhänge:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Ändra slips eller örhänge
+########

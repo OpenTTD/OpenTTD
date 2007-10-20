@@ -860,6 +860,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Fund new indust
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fund new industry
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...can only be built in rainforest areas
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...can only be built in desert areas
@@ -2782,6 +2783,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}New {STRING} now available!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Can't sell destroyed vehicle...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Can't timetable vehicle...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehicles can only wait at stations.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}This vehicle is not stopping at this station.
@@ -3385,3 +3388,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Fund
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospect
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Build
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Choose the appropriate industry from this list
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Advanced
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Advanced face selection.
+STR_FACE_SIMPLE                                                 :{BLACK}Simple
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Simple face selection.
+STR_FACE_LOAD                                                   :{BLACK}Load
+STR_FACE_LOAD_TIP                                               :{BLACK}Load favorite face
+STR_FACE_LOAD_DONE                                              :{WHITE}Your favorite face has been loaded from the OpenTTD config file.
+STR_FACE_FACECODE                                               :{BLACK}Player face no.
+STR_FACE_FACECODE_TIP                                           :{BLACK}View and/or set player face number
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}View and/or set player face number
+STR_FACE_FACECODE_SET                                           :{WHITE}New face number code has been set.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Couldn't set player face number - must be numeric between 0 and 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Save
+STR_FACE_SAVE_TIP                                               :{BLACK}Save favorite face
+STR_FACE_SAVE_DONE                                              :{WHITE}This face will be saved as your favorite in the OpenTTD config file.
+STR_FACE_EUROPEAN                                               :{BLACK}European
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Select European faces
+STR_FACE_AFRICAN                                                :{BLACK}African
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Select African faces
+STR_FACE_YES                                                    :Yes
+STR_FACE_NO                                                     :No
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Enable mustache or earring
+STR_FACE_HAIR                                                   :Hair:
+STR_FACE_HAIR_TIP                                               :{BLACK}Change hair
+STR_FACE_EYEBROWS                                               :Eyebrows:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Change eyebrows
+STR_FACE_EYECOLOUR                                              :Eye color:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Change eyecolor
+STR_FACE_GLASSES                                                :Glasses:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Enable glasses
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Change glasses
+STR_FACE_NOSE                                                   :Nose:
+STR_FACE_NOSE_TIP                                               :{BLACK}Change nose
+STR_FACE_LIPS                                                   :Lips:
+STR_FACE_MOUSTACHE                                              :Mustache:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Change lips or mustache
+STR_FACE_CHIN                                                   :Chin:
+STR_FACE_CHIN_TIP                                               :{BLACK}Change chin
+STR_FACE_JACKET                                                 :Jacket:
+STR_FACE_JACKET_TIP                                             :{BLACK}Change jacket
+STR_FACE_COLLAR                                                 :Collar:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Change collar
+STR_FACE_TIE                                                    :Tie:
+STR_FACE_EARRING                                                :Earring:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Change tie or earring
+########

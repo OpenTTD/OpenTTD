@@ -3267,7 +3267,7 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Generazione mondo
 STR_TREE_GENERATION                                             :{BLACK}Generazione alberi
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Generazione oggetti inamovibili
-STR_CLEARING_TILES                                              :{BLACK}Generazione di aree brulle e rocciose
+STR_CLEARING_TILES                                              :{BLACK}Generazione aree brulle e rocciose
 STR_SETTINGUP_GAME                                              :{BLACK}Impostazione partita
 STR_PREPARING_TILELOOP                                          :{BLACK}Generazione riquadri del terreno
 STR_PREPARING_GAME                                              :{BLACK}Preparazione della partita

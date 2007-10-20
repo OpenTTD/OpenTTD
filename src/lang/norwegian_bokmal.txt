@@ -861,6 +861,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finansier ny in
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansier ny industri
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan kun bygges i regnskogområder
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kan kun bygges i ørkenområder
@@ -1021,6 +1022,7 @@ STR_CONFIG_PATCHES_OFF                                          :Av
 STR_CONFIG_PATCHES_ON                                           :På
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Vis kjøretøyets hastighet på statuslinja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Tillat bygging på skråninger og i vannkanten: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Tillat landskapsendring under bygninger, spor, etc.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Mer realistisk størrelse på oppfangingsområder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Tillat riving av industri, mer vei, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Tillat bygging av veldig lange tog : {ORANGE}{STRING}
@@ -1034,8 +1036,10 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasj
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Lever varer til en stasjon bare når varen trengs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillat bygging av veldig lange broer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillat 'gå til jernbanestall'-ordre: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstruksjonsmetode for manuell primærindustri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre næringer
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekterer
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillat flere like industrier i samme by: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrier av samme type kan bygges nær hverandre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vis alltid lang dato på statuslinjen: {ORANGE}{STRING}
@@ -1045,6 +1049,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kjøretøykø (med kvantumseffekter): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillat kjøp av eksklusive transportrettigheter: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillat pengeoverføring til andre firmaer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Uensartede stasjoner: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global rutesøking (NGR, overstyrer NTK): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
@@ -1090,6 +1096,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks st
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk vedlikehold ved helikopterlandingsteder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til tog-/vei-/vann- og flyplassverktøylinjene: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musen, flytt synsvinkelen i den motsatte retning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Myk scrolling i ekstravindu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Vis målingsverktøy ved bruk av byggingsverktøy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis firmaovertakelser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
@@ -1102,6 +1109,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Rull kartet
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Av
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rullehjulets hastighet på kartet: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Høyreklikkemulasjon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando-klikk
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl-klikk
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
@@ -1652,7 +1661,7 @@ STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Retning 
 STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Trikkestallretning
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge garasje her...
 STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Kan ikke bygge trikkestall her...
-STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan ikke bygge busstatsjon...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan ikke bygge busstasjon...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan ikke bygge lasteterminal...
 STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Kan ikke bygge trikkestasjon for passasjerer...
 STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan ikke bygge trikkestasjon for frakt...
@@ -3380,3 +3389,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Fond
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospekt
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Bygg
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Velg passende industri fra listen
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Avansert
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Avansert ansiktsvalg
+STR_FACE_SIMPLE                                                 :{BLACK}Enkelt
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Enkelt ansiktsvalg.
+STR_FACE_LOAD                                                   :{BLACK}Last
+STR_FACE_LOAD_TIP                                               :{BLACK}Last favorittansikt
+STR_FACE_LOAD_DONE                                              :{WHITE}Ditt favorittansikt har blitt lastet fra OpenTTDs konfigurasjonsfil.
+STR_FACE_FACECODE                                               :{BLACK}Ansiktsnummer
+STR_FACE_FACECODE_TIP                                           :{BLACK}Vis og/eller endre ansiktsnummer
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller endre ansiktsnummer
+STR_FACE_FACECODE_SET                                           :{WHITE}Ny ansiktsnummerkode har blitt fastsatt.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikke endre ansiktsnummer - må være numerisk mellom 0 og 4 294 967 295!
+STR_FACE_SAVE                                                   :{BLACK}Lagre
+STR_FACE_SAVE_TIP                                               :{BLACK}Lagre favorittansikt
+STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansiktet vil bli lagret som din favoritt i OpenTTDs konfigurasjonsfil.
+STR_FACE_EUROPEAN                                               :{BLACK}Europeisk
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Velg europeiske ansikter
+STR_FACE_AFRICAN                                                :{BLACK}Afrikansk
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Velg afrikanske ansikter
+STR_FACE_YES                                                    :Ja
+STR_FACE_NO                                                     :Nei
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Slå på bart eller ørering
+STR_FACE_HAIR                                                   :Hår:
+STR_FACE_HAIR_TIP                                               :{BLACK}Endre hår
+STR_FACE_EYEBROWS                                               :Øyenbryn:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Endre øyenbryn
+STR_FACE_EYECOLOUR                                              :Øyefarge:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Endre øyefarge
+STR_FACE_GLASSES                                                :Briller:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Slå på briller
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Endre briller
+STR_FACE_NOSE                                                   :Nese:
+STR_FACE_NOSE_TIP                                               :{BLACK}Endre nese
+STR_FACE_LIPS                                                   :Lepper:
+STR_FACE_MOUSTACHE                                              :Bart:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Endre lepper eller bart
+STR_FACE_CHIN                                                   :Hake:
+STR_FACE_CHIN_TIP                                               :{BLACK}Endre hake
+STR_FACE_JACKET                                                 :Jakke:
+STR_FACE_JACKET_TIP                                             :{BLACK}Endre jakke
+STR_FACE_COLLAR                                                 :Krage:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Endre krage
+STR_FACE_TIE                                                    :Slips:
+STR_FACE_EARRING                                                :Ørering:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Endre slips eller ørering
+########
