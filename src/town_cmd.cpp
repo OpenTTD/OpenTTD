@@ -1707,7 +1707,10 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 			hs = GetHouseSpecs(house);
 
 			if (_loaded_newgrf_features.has_newhouses) {
-				if (hs->override != 0) hs = GetHouseSpecs(hs->override);
+				if (hs->override != 0) {
+					house = hs->override;
+					hs = GetHouseSpecs(house);
+				}
 
 				if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world) continue;
 
