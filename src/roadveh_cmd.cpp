@@ -367,6 +367,8 @@ CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
 	}
 
+	CommandCost ret(-v->value);
+
 	if (flags & DC_EXEC) {
 		// Invalidate depot
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
@@ -377,7 +379,7 @@ CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		delete v;
 	}
 
-	return CommandCost(-v->value);
+	return ret;
 }
 
 struct RoadFindDepotData {
