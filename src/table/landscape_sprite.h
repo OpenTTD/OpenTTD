@@ -197,3 +197,10 @@ static const SpriteID _halftile_foundation_spriteindexes_3[] = {
 	SPR_HALFTILE_FOUNDATION_BASE, SPR_HALFTILE_FOUNDATION_BASE + 4 * SPR_HALFTILE_BLOCK_SIZE - 1,
 	END
 };
+
+/* Slope graphics indexes for Action 05 type 06, 90 sprites */
+static const SpriteID _slopes_action05_90[] = {
+	SPR_SLOPES_VIRTUAL_BASE + 15, SPR_SLOPES_VIRTUAL_BASE + 4 * SPR_TRKFOUND_BLOCK_SIZE,
+	SPR_HALFTILE_FOUNDATION_BASE, SPR_HALFTILE_FOUNDATION_BASE + 4 * SPR_HALFTILE_BLOCK_SIZE - 1,
+	END
+};

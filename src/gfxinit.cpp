@@ -74,33 +74,38 @@ static uint LoadGrfFile(const char* filename, uint load_index, int file_index)
 }
 
 
-static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int file_index)
+void LoadSpritesIndexed(int file_index, uint *sprite_id, const SpriteID *index_tbl)
 {
 	uint start;
+	while ((start = *index_tbl++) != END) {
+		uint end = *index_tbl++;
+
+		if (start == SKIP) { // skip sprites (amount in second var)
+			SkipSprites(end);
+			(*sprite_id) += end;
+		} else { // load sprites and use indexes from start to end
+			do {
+			#ifdef NDEBUG
+				LoadNextSprite(start, file_index, *sprite_id);
+			#else
+				bool b = LoadNextSprite(start, file_index, *sprite_id);
+				assert(b);
+			#endif
+				(*sprite_id)++;
+			} while (++start <= end);
+		}
+	}
+}
+
+static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int file_index)
+{
 	uint sprite_id = 0;
 
 	FioOpenFile(file_index, filename);
 
 	DEBUG(sprite, 2, "Reading indexed grf-file '%s'", filename);
 
-	while ((start = *index_tbl++) != END) {
-		uint end = *index_tbl++;
-
-		if (start == SKIP) { // skip sprites (amount in second var)
-			SkipSprites(end);
-			sprite_id += end;
-		} else { // load sprites and use indexes from start to end
-			do {
-			#ifdef NDEBUG
-				LoadNextSprite(start, file_index, sprite_id);
-			#else
-				bool b = LoadNextSprite(start, file_index, sprite_id);
-				assert(b);
-			#endif
-				sprite_id++;
-			} while (++start <= end);
-		}
-	}
+	LoadSpritesIndexed(file_index, &sprite_id, index_tbl);
 }
 
 

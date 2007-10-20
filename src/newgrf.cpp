@@ -45,6 +45,8 @@
 #include "newgrf_commons.h"
 #include "newgrf_townname.h"
 #include "newgrf_industries.h"
+#include "table/landscape_sprite.h"
+#include "gfxinit.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -3232,6 +3234,7 @@ static void GraphicsNew(byte *buf, int len)
 	/* TODO */
 
 	SpriteID replace = 0;
+	const SpriteID *index_tbl = NULL;
 
 	if (!check_length(len, 2, "GraphicsNew")) return;
 	buf++;
@@ -3256,11 +3259,13 @@ static void GraphicsNew(byte *buf, int len)
 			break;
 
 		case 0x06: // Foundations
-			if (num != 74) {
-				grfmsg(1, "GraphicsNew: Foundation graphics sprite count must be 74, skipping");
-				return;
+			switch (num) {
+				case 74: replace = SPR_SLOPES_BASE; break;
+				case 90: index_tbl = _slopes_action05_90; break;
+				default:
+					grfmsg(1, "GraphicsNew: Foundation graphics sprite count must be 74 or 90, skipping");
+					return;
 			}
-			replace = SPR_SLOPES_BASE;
 			break;
 
 		case 0x08: // Canal graphics
@@ -3324,6 +3329,12 @@ static void GraphicsNew(byte *buf, int len)
 					type, num);
 			_skip_sprites = num;
 			return;
+	}
+
+	if (index_tbl != NULL) {
+		grfmsg(2, "GraphicsNew: Loading %u sprites of type 0x%02X at indexed SpriteIDs", num, type);
+		LoadSpritesIndexed(_file_index, &_nfo_line, index_tbl);
+		return;
 	}
 
 	if (replace == 0) {
