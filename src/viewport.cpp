@@ -362,11 +362,17 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	a = clamp(a, 0, (int)(MapMaxX() * TILE_SIZE) - 1);
 	b = clamp(b, 0, (int)(MapMaxY() * TILE_SIZE) - 1);
 
-	z = GetSlopeZ(a,     b    ) / 2;
-	z = GetSlopeZ(a + z, b + z) / 2;
-	z = GetSlopeZ(a + z, b + z) / 2;
-	z = GetSlopeZ(a + z, b + z) / 2;
-	z = GetSlopeZ(a + z, b + z) / 2;
+	/* (a, b) is the X/Y-world coordinate that belongs to (x,y) if the landscape would be completely flat on height 0.
+	 * Now find the Z-world coordinate by fix point iteration.
+	 * This is a bit tricky because the tile height is non-continuous at foundations.
+	 * The clicked point should be approached from the back, otherwise there are regions that are not clickable.
+	 * (FOUNDATION_HALFTILE_LOWER on SLOPE_STEEP_S hides north halftile completely)
+	 * So give it a z-malus of 4 in the first iterations.
+	 */
+	z = 0;
+	for (int i = 0; i < 5; i++) z = GetSlopeZ(a + max(z, 4u) - 4, b + max(z, 4u) - 4) / 2;
+	for (uint malus = 3; malus > 0; malus--) z = GetSlopeZ(a + max(z, malus) - malus, b + max(z, malus) - malus) / 2;
+	for (int i = 0; i < 5; i++) z = GetSlopeZ(a + z, b + z) / 2;
 
 	pt.x = a + z;
 	pt.y = b + z;

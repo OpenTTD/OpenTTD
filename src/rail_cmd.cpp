@@ -1238,6 +1238,22 @@ static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 
 #include "table/track_land.h"
 
+/**
+ * Get surface height in point (x,y)
+ * On tiles with halftile foundations move (x,y) to a save point wrt. track
+ */
+static uint GetSaveSlopeZ(uint x, uint y, Track track)
+{
+	switch (track) {
+		case TRACK_UPPER: x &= ~0xF; y &= ~0xF; break;
+		case TRACK_LOWER: x |=  0xF; y |=  0xF; break;
+		case TRACK_LEFT:  x |=  0xF; y &= ~0xF; break;
+		case TRACK_RIGHT: x &= ~0xF; y |=  0xF; break;
+		default: break;
+	}
+	return GetSlopeZ(x, y);
+}
+
 static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint image, uint pos)
 {
 	bool side = (_opt.road_side != 0) && _patches.signal_side;
@@ -1281,7 +1297,7 @@ static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint i
 		sprite = _signal_base + (GetSignalType(tile, track) - 1) * 16 + GetSignalVariant(tile, track) * 64 + image + condition;
 	}
 
-	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSlopeZ(x,y));
+	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSaveSlopeZ(x, y, track));
 }
 
 static uint32 _drawtile_track_palette;
@@ -1338,6 +1354,7 @@ static void DrawTrackFence_NS_1(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_W) z += TILE_HEIGHT;
+	if (IsSteepSlope(ti->tileh)) z += TILE_HEIGHT;
 	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1349,6 +1366,7 @@ static void DrawTrackFence_NS_2(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_E) z += TILE_HEIGHT;
+	if (IsSteepSlope(ti->tileh)) z += TILE_HEIGHT;
 	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1360,6 +1378,7 @@ static void DrawTrackFence_WE_1(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_N) z += TILE_HEIGHT;
+	if (IsSteepSlope(ti->tileh)) z += TILE_HEIGHT;
 	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1371,6 +1390,7 @@ static void DrawTrackFence_WE_2(const TileInfo *ti)
 {
 	int z = ti->z;
 	if (ti->tileh & SLOPE_S) z += TILE_HEIGHT;
+	if (IsSteepSlope(ti->tileh)) z += TILE_HEIGHT;
 	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }

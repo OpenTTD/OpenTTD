@@ -213,6 +213,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	/* Note that ti->tileh has already been adjusted for Foundations */
 	Slope tileh[TS_END] = { ti->tileh, SLOPE_FLAT };
 
+	/* Half tile slopes coincide only with horizontal/vertical track.
+	 * Faking a flat slope results in the correct sprites on positions. */
+	if (IsHalftileSlope(tileh[TS_HOME])) tileh[TS_HOME] = SLOPE_FLAT;
+
 	TLG tlg = GetTLG(ti->tile);
 	byte PCPstatus = 0;
 	byte OverridePCP = 0;
@@ -290,6 +294,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		}
 
 		ApplyFoundationToSlope(foundation, &tileh[TS_NEIGHBOUR]);
+
+	/* Half tile slopes coincide only with horizontal/vertical track.
+	 * Faking a flat slope results in the correct sprites on positions. */
+		if (IsHalftileSlope(tileh[TS_NEIGHBOUR])) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
 
 		AdjustTileh(neighbour, &tileh[TS_NEIGHBOUR]);
 

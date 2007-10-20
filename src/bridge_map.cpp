@@ -7,6 +7,7 @@
 #include "bridge_map.h"
 #include "bridge.h"
 #include "variables.h"
+#include "landscape.h"
 
 
 TileIndex GetBridgeEnd(TileIndex tile, DiagDirection dir)
@@ -46,9 +47,6 @@ uint GetBridgeHeight(TileIndex t)
 	Slope tileh = GetTileSlope(t, &h);
 	Foundation f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(t)));
 
-	/* one height level extra if the ramp is on a flat foundation */
-	return
-		h + TILE_HEIGHT +
-		(IsLeveledFoundation(f) ? TILE_HEIGHT : 0) +
-		(IsSteepSlope(tileh) ? TILE_HEIGHT : 0);
+	/* one height level extra for the ramp */
+	return h + TILE_HEIGHT + ApplyFoundationToSlope(f, &tileh);
 }

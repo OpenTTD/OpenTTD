@@ -192,18 +192,21 @@ static inline uint NPFBridgeCost(AyStarNode *current)
 static uint NPFSlopeCost(AyStarNode* current)
 {
 	TileIndex next = current->tile + TileOffsByDiagDir(TrackdirToExitdir((Trackdir)current->direction));
-	int x,y;
-	int8 z1,z2;
 
-	x = TileX(current->tile) * TILE_SIZE;
-	y = TileY(current->tile) * TILE_SIZE;
-	/* get the height of the center of the current tile */
-	z1 = GetSlopeZ(x + TILE_SIZE / 2, y + TILE_SIZE / 2);
+	/* Get center of tiles */
+	int x1 = TileX(current->tile) * TILE_SIZE + TILE_SIZE / 2;
+	int y1 = TileY(current->tile) * TILE_SIZE + TILE_SIZE / 2;
+	int x2 = TileX(next) * TILE_SIZE + TILE_SIZE / 2;
+	int y2 = TileY(next) * TILE_SIZE + TILE_SIZE / 2;
 
-	x = TileX(next) * TILE_SIZE;
-	y = TileY(next) * TILE_SIZE;
-	/* get the height of the center of the next tile */
-	z2 = GetSlopeZ(x + TILE_SIZE / 2, y + TILE_SIZE / 2);
+	int dx4 = (x2 - x1) / 4;
+	int dy4 = (y2 - y1) / 4;
+
+	/* Get the height on both sides of the tile edge.
+	 * Avoid testing the height on the tile-center. This will fail for halftile-foundations.
+	 */
+	int z1 = GetSlopeZ(x1 + dx4, y1 + dy4);
+	int z2 = GetSlopeZ(x2 - dx4, y2 - dy4);
 
 	if (z2 - z1 > 1) {
 		/* Slope up */
