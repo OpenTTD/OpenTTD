@@ -732,16 +732,14 @@ no_slope:
 		if (desired_slope != cur_slope && ComplementSlope(desired_slope) != cur_slope) {
 			uint32 r = Random();
 
-			if (CHANCE16I(1, 8, r) && !_generating_world) {
-				CommandCost res;
-
-				if (CHANCE16I(1, 16, r)) {
-					res = DoCommand(tile, cur_slope, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
-				} else {
+			if (CHANCE16I(1, 8, r)) {
+				CommandCost res = CMD_ERROR;
+				if (!_generating_world && CHANCE16I(1, 10, r >> 4)) {
 					/* Note: Do not replace " ^ 0xF" with ComplementSlope(). The slope might be steep. */
-					res = DoCommand(tile, cur_slope ^ 0xF, 1, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
+					res = DoCommand(tile, CHANCE16I(1, 16, r >> 8) ? cur_slope : cur_slope ^ 0xF, 0,
+							DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
 				}
-				if (CmdFailed(res) && CHANCE16I(1, 3, r)) {
+				if (CmdFailed(res) && CHANCE16I(1, 3, r >> 16)) {
 					/* We can consider building on the slope, though. */
 					goto no_slope;
 				}
@@ -810,38 +808,33 @@ static RoadBits GetTownRoadGridElement(Town* t, TileIndex tile, DiagDirection di
 			break;
 	}
 
-	/* Stop if the tile is not a part of the grid lines */
-	if (rcmd == ROAD_NONE) return rcmd;
-
 	/* Optimise only X-junctions */
-	if (COUNTBITS(rcmd) != 2) {
-		RoadBits rb_template;
+	if (rcmd != ROAD_ALL) return rcmd;
 
-		switch (GetTileSlope(tile, NULL)) {
-			default:       rb_template = ROAD_ALL; break;
-			case SLOPE_W:  rb_template = ROAD_NW | ROAD_SW; break;
-			case SLOPE_SW: rb_template = ROAD_Y  | ROAD_SW; break;
-			case SLOPE_S:  rb_template = ROAD_SW | ROAD_SE; break;
-			case SLOPE_SE: rb_template = ROAD_X  | ROAD_SE; break;
-			case SLOPE_E:  rb_template = ROAD_SE | ROAD_NE; break;
-			case SLOPE_NE: rb_template = ROAD_Y  | ROAD_NE; break;
-			case SLOPE_N:  rb_template = ROAD_NE | ROAD_NW; break;
-			case SLOPE_NW: rb_template = ROAD_X  | ROAD_NW; break;
-			case SLOPE_STEEP_W:
-			case SLOPE_STEEP_S:
-			case SLOPE_STEEP_E:
-			case SLOPE_STEEP_N:
-				rb_template = ROAD_NONE;
-				break;
-		}
+	RoadBits rb_template;
 
-		/* Stop if the template is compatible to the growth dir */
-		if (DiagDirToRoadBits(ReverseDiagDir(dir)) & rb_template) return rb_template;
-		/* If not generate a straight road in the direction of the growth */
-		return DiagDirToRoadBits(dir) | DiagDirToRoadBits(ReverseDiagDir(dir));
+	switch (GetTileSlope(tile, NULL)) {
+		default:       rb_template = ROAD_ALL; break;
+		case SLOPE_W:  rb_template = ROAD_NW | ROAD_SW; break;
+		case SLOPE_SW: rb_template = ROAD_Y  | ROAD_SW; break;
+		case SLOPE_S:  rb_template = ROAD_SW | ROAD_SE; break;
+		case SLOPE_SE: rb_template = ROAD_X  | ROAD_SE; break;
+		case SLOPE_E:  rb_template = ROAD_SE | ROAD_NE; break;
+		case SLOPE_NE: rb_template = ROAD_Y  | ROAD_NE; break;
+		case SLOPE_N:  rb_template = ROAD_NE | ROAD_NW; break;
+		case SLOPE_NW: rb_template = ROAD_X  | ROAD_NW; break;
+		case SLOPE_STEEP_W:
+		case SLOPE_STEEP_S:
+		case SLOPE_STEEP_E:
+		case SLOPE_STEEP_N:
+			rb_template = ROAD_NONE;
+			break;
 	}
 
-	return rcmd;
+	/* Stop if the template is compatible to the growth dir */
+	if (DiagDirToRoadBits(ReverseDiagDir(dir)) & rb_template) return rb_template;
+	/* If not generate a straight road in the direction of the growth */
+	return DiagDirToRoadBits(dir) | DiagDirToRoadBits(ReverseDiagDir(dir));
 }
 
 /**
@@ -1106,7 +1099,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 			/* Build a house, but not if there already is a house there. */
 			if (!IsTileType(house_tile, MP_HOUSE)) {
 				/* Level the land if possible */
-				LevelTownLand(house_tile);
+				if (CHANCE16(1, 6)) LevelTownLand(house_tile);
 
 				/* And build a house.
 				 * Set result to -1 if we managed to build it. */
