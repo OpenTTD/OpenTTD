@@ -540,6 +540,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 				}
 			}
 
+			v = new (v) Train();
 			v->engine_type = engine;
 
 			DiagDirection dir = GetRailDepotDirection(tile);
@@ -557,7 +558,6 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 			v->u.rail.track = TRACK_BIT_DEPOT;
 			v->vehstatus = VS_HIDDEN | VS_DEFPAL;
 
-			v = new (v) Train();
 			v->subtype = 0;
 			SetTrainWagon(v);
 

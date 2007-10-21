@@ -299,9 +299,9 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Vehicle *v = vl[0]; // aircraft
 		Vehicle *u = vl[1]; // shadow
 
-		v->unitnumber = unit_num;
 		v = new (v) Aircraft();
 		u = new (u) Aircraft();
+		v->unitnumber = unit_num;
 		v->direction = DIR_SE;
 
 		v->owner = u->owner = _current_player;
@@ -491,13 +491,15 @@ CommandCost CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
+	CommandCost ret(-v->value);
+
 	if (flags & DC_EXEC) {
 		// Invalidate depot
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		DoDeleteAircraft(v);
 	}
 
-	return CommandCost(-v->value);
+	return ret;
 }
 
 /** Start/Stop an aircraft.

@@ -835,6 +835,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		const ShipVehicleInfo *svi = ShipVehInfo(p1);
 
+		v = new (v) Ship();
 		v->unitnumber = unit_num;
 
 		v->owner = _current_player;
@@ -871,7 +872,6 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 		v->cur_image = 0x0E5E;
-		v = new (v) Ship();
 		v->random_bits = VehicleRandomBits();
 
 		v->vehicle_flags = 0;
@@ -919,6 +919,8 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
 	}
 
+	CommandCost ret(-v->value);
+
 	if (flags & DC_EXEC) {
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
@@ -928,7 +930,7 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		delete v;
 	}
 
-	return CommandCost(-v->value);
+	return ret;
 }
 
 /** Start/Stop a ship.

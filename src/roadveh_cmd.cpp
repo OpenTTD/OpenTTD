@@ -202,6 +202,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		const RoadVehicleInfo *rvi = RoadVehInfo(p1);
 
+		v = new (v) RoadVehicle();
 		v->unitnumber = unit_num;
 		v->direction = DiagDirToDir(GetRoadDepotDirection(tile));
 		v->owner = _current_player;
@@ -247,7 +248,6 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 
-		v = new (v) RoadVehicle();
 		v->cur_image = 0xC15;
 		v->random_bits = VehicleRandomBits();
 		SetRoadVehFront(v);
