@@ -92,7 +92,7 @@ $(LANG_OBJS_DIR)/table/strings.h: $(LANG_DIR)/english.txt $(LANG_OBJS_DIR)/$(STR
 # Make the revision number
 ifdef REVISION
 REV := $(REVISION)
-REV_NR := $(shell echo $(REVISION) | sed "s#[^0-9]##g")
+REV_NR := $(shell echo $(REVISION) | sed "s/[^0-9]//g")
 else
 # Are we a SVN dir?
 ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
