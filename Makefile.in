@@ -250,7 +250,10 @@ bundle_lha: bundle
 bundle_dmg: bundle
 	@echo '[BUNDLE] Creating $(BUNDLE_NAME).dmg'
 	$(Q)mkdir -p "$(BUNDLES_DIR)"
-	$(Q)hdiutil create -ov -format UDZO -srcfolder "$(BUNDLE_DIR)" "$(BUNDLES_DIR)/$(BUNDLE_NAME).dmg"
+	$(Q)mkdir -p "$(BUNDLES_DIR)/OpenTTD $(REV)"
+	$(Q)cp -R "$(BUNDLE_DIR)/" "$(BUNDLES_DIR)/OpenTTD $(REV)"
+	$(Q)hdiutil create -ov -format UDZO -srcfolder "$(BUNDLES_DIR)/OpenTTD $(REV)" "$(BUNDLES_DIR)/$(BUNDLE_NAME).dmg"
+	$(Q)rm -fr "$(BUNDLES_DIR)/OpenTTD $(REV)"
 
 ifdef OSXAPP
 install:
