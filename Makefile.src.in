@@ -111,7 +111,7 @@ else
 # Are we a hg (Mercurial) dir?
 ifeq ($(shell if test -d $(SRC_DIR)/../.hg; then echo 1; fi), 1)
 # Find the revision like: hXXXXM-branch
-REV := h$(shell if head=`LC_ALL=C hg tip 2>/dev/null`; then echo "$$head" | head -n 1 | cut -c19-26; fi)$(shell if hg status | grep -v '^?' | read dummy; then echo M; fi)$(shell hg branch | sed 's/^/-/;s/^-default$$//')
+REV := h$(shell if head=`LC_ALL=C hg tip 2>/dev/null`; then echo "$$head" | head -n 1 | cut -c19-26; fi)$(shell if hg status $(SRC_DIR) | grep -v '^?' | read dummy; then echo M; fi)$(shell hg branch | sed 's/^/-/;s/^-default$$//')
 REV_NR := $(shell LC_ALL=C hg log -k "svn" -l 1 --template "{desc}\n" $(SRC_DIR) | grep "^(svn r[0-9]*)" | head -n 1 | sed "s/.*(svn r\([0-9]*\)).*/\1/" )
 endif
 endif
