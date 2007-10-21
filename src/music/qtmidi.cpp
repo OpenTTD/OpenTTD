@@ -27,7 +27,6 @@
 #undef   WindowClass
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "qtmidi.h"
 
 /*

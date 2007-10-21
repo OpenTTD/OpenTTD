@@ -14,21 +14,11 @@
 #define Rect        OTTDRect
 #define Point       OTTDPoint
 #define WindowClass OTTDWindowClass
-/* Defined in stdbool.h */
-#ifndef __cplusplus
-# ifndef __BEOS__
-#  undef bool
-#  undef false
-#  undef true
-# endif
-#endif
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../debug.h"
 #include "../driver.h"
 #include "../mixer.h"
-#include "../sdl.h"
 
 #include "cocoa_s.h"
 
