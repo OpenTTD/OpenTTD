@@ -358,10 +358,13 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 							break;
 					}
 
-					if (HASBIT(c->flags, GCF_STATIC)) {
-						pal = PALETTE_TO_GREY;
-					} else if (HASBIT(c->flags, GCF_COMPATIBLE)) {
-						pal = PALETTE_TO_ORANGE;
+					/* Do not show a "not-failure" colour when it actually failed to load */
+					if (pal != PALETTE_TO_RED) {
+						if (HASBIT(c->flags, GCF_STATIC)) {
+							pal = PALETTE_TO_GREY;
+						} else if (HASBIT(c->flags, GCF_COMPATIBLE)) {
+							pal = PALETTE_TO_ORANGE;
+						}
 					}
 
 					DrawSprite(SPR_SQUARE, pal, 5, y + 2);
