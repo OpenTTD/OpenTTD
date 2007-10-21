@@ -8,8 +8,11 @@
 /* It seems that we need to include stdint.h before anything else
  * We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC
  * does not have stdint.h and apparently neither does MorphOS, so define
- * INT64_MAX for them ourselves. */
-#if !defined(_MSC_VER) && !defined( __MORPHOS__)
+ * INT64_MAX for them ourselves.
+ * Sometimes OSX headers manages to include stdint.h before this but without
+ * __STDC_LIMIT_MACROS so it will be without INT64_*. We need to define those
+ * too if this is the case. */
+#if !defined(_MSC_VER) && !defined( __MORPHOS__) && !defined(_STDINT_H_)
 # if defined (SUNOS)
 /* SunOS/Solaris does not have stdint.h, but inttypes.h defines everything
  * stdint.h defines and we need. */
@@ -20,7 +23,7 @@
 # endif
 #else
 # define INT64_MAX 9223372036854775807LL
-# define INT64_MIN -9223372036854775808LL
+# define INT64_MIN (-INT64_MAX - 1)
 #endif
 
 #include <cstdio>
