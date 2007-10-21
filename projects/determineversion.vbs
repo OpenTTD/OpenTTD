@@ -22,27 +22,33 @@ Sub UpdateFile(revision, version, cur_date, filename)
 End Sub
 
 Sub UpdateFiles(version)
-	Dim cur_date
+	Dim WshShell, cur_date, revision, oExec
+	Set WshShell = CreateObject("WScript.Shell")
 	cur_date = DatePart("D", Date) & "." & DatePart("M", Date) & "." & DatePart("YYYY", Date)
-	Dim revision
-	If version = "norev000" Then
-		revision = 0
-	Else
-		revision = Mid(version, 2)
-		If InStr(revision, "M") Then
-			revision = Mid(revision, 1, InStr(revision, "M") - 1)
-		End If
-		If InStr(revision, "-") Then
-			revision = Mid(revision, 1, InStr(revision, "-") - 1)
-		End If
-	End If
+	revision = 0
+	Select Case Mid(version, 1, 1)
+		Case "r" ' svn
+			revision = Mid(version, 2)
+			If InStr(revision, "M") Then
+				revision = Mid(revision, 1, InStr(revision, "M") - 1)
+			End If
+			If InStr(revision, "-") Then
+				revision = Mid(revision, 1, InStr(revision, "-") - 1)
+			End If
+		Case "h" ' mercurial (hg)
+			Set oExec = WshShell.Exec("hg log -k " & Chr(34) & "svn" & Chr(34) & " -l 1 --template " & Chr(34) & "{desc}\n" & Chr(34) & " ../src")
+			If Err.Number = 0 Then
+				revision = Mid(OExec.StdOut.ReadLine(), 7)
+				revision = Mid(revision, 1, InStr(revision, ")") - 1)
+			End If
+	End Select
 
 	UpdateFile revision, version, cur_date, "../src/rev.cpp"
 	UpdateFile revision, version, cur_date, "../src/ottdres.rc"
 End Sub
 
 Function DetermineSVNVersion()
-	Dim WshShell, version, url, oExec
+	Dim WshShell, version, url, oExec, line
 	Set WshShell = CreateObject("WScript.Shell")
 	On Error Resume Next
 
@@ -92,7 +98,6 @@ Function DetermineSVNVersion()
 			' And use svn info to get the correct revision and branch information.
 			Set oExec = WshShell.Exec("svn info ../src")
 			If Err.Number = 0 Then
-				Dim line
 				Do
 					line = OExec.StdOut.ReadLine()
 					If InStr(line, "URL") Then
@@ -111,6 +116,28 @@ Function DetermineSVNVersion()
 			url = Mid(url, InStr(url, "branches") + 8)
 			url = Mid(url, 1, InStr(2, url, "/") - 1)
 			version = version & Replace(url, "/", "-")
+		End If
+	Else
+		' svn detection failed, reset error and try mercurial (hg)
+		Err.Clear
+		Set oExec = WshShell.Exec("hg tip")
+		If Err.Number = 0 Then
+			version = "h" & Mid(OExec.StdOut.ReadLine(), 19, 8)
+			Set oExec = WshShell.Exec("hg status ../src")
+			If Err.Number = 0 Then
+				Do
+					line = OExec.StdOut.ReadLine()
+					If Mid(line, 1, 1) <> "?" Then
+						version = version & "M"
+						Exit Do
+					End If
+				Loop While Not OExec.StdOut.atEndOfStream
+			End If
+			Set oExec = WshShell.Exec("hg branch")
+			If Err.Number = 0 Then
+					line = OExec.StdOut.ReadLine()
+					If line <> "default" Then version = version & "-" & line
+			End If
 		End If
 	End If
 
