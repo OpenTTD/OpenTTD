@@ -704,6 +704,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			int x = TileX(tile) * TILE_SIZE + _vehicle_initial_x_fract[dir];
 			int y = TileY(tile) * TILE_SIZE + _vehicle_initial_y_fract[dir];
 
+			v = new (v) Train();
 			v->unitnumber = unit_num;
 			v->direction = DiagDirToDir(dir);
 			v->tile = tile;
@@ -736,7 +737,6 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			v->service_interval = _patches.servint_trains;
 			v->date_of_last_service = _date;
 			v->build_year = _cur_year;
-			v = new (v) Train();
 			v->cur_image = 0xAC2;
 			v->random_bits = VehicleRandomBits();
 
