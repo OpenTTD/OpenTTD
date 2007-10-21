@@ -912,14 +912,36 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		case BRSW_PLATFORM_DRAG_N_DROP:
+		case BRSW_PLATFORM_DRAG_N_DROP: {
 			_railstation.dragdrop ^= true;
 			ToggleWidgetLoweredState(w, BRSW_PLATFORM_DRAG_N_DROP);
+
+			/* get the first allowed length/number of platforms */
+			const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+			if (statspec != NULL && HASBIT(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+				for (uint i = 0; i < 7; i++) {
+					if (!HASBIT(statspec->disallowed_lengths, i)) {
+						RaiseWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+						_railstation.platlength = i + 1;
+						break;
+					}
+				}
+			}
+			if (statspec != NULL && HASBIT(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+				for (uint i = 0; i < 7; i++) {
+					if (!HASBIT(statspec->disallowed_platforms, i)) {
+						RaiseWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+						_railstation.numtracks = i + 1;
+						break;
+					}
+				}
+			}
+
 			SetWindowWidgetLoweredState(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN, !_railstation.dragdrop);
 			SetWindowWidgetLoweredState(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN, !_railstation.dragdrop);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
-			break;
+		} break;
 
 		case BRSW_HIGHLIGHT_OFF:
 		case BRSW_HIGHLIGHT_ON:
