@@ -805,6 +805,7 @@ make_cflags_and_ldflags() {
 	if [ $cc_version -ge 29 ]; then
 		CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
 		CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
+		CFLAGS="$CFLAGS -Wno-uninitialized"
 
 		CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
 	fi
