@@ -3424,6 +3424,11 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 		case 0x9E: // Miscellaneous GRF features
 			return _misc_grf_features;
 
+		case 0xA1: { // OpenTTD version
+			extern uint32 _openttd_newgrf_version;
+			return _openttd_newgrf_version;
+		}
+
 		default:
 			/* GRF Parameter */
 			if (param < 0x80) return _cur_grffile->param[param];
@@ -3790,7 +3795,8 @@ static void GRFLoadError(byte *buf, int len)
 		STR_NEWGRF_ERROR_UNSET_SWITCH,
 		STR_NEWGRF_ERROR_INVALID_PARAMETER,
 		STR_NEWGRF_ERROR_LOAD_BEFORE,
-		STR_NEWGRF_ERROR_LOAD_AFTER
+		STR_NEWGRF_ERROR_LOAD_AFTER,
+		STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER,
 	};
 
 	static const StringID sevstr[] = {

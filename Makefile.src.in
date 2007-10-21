@@ -92,6 +92,7 @@ $(LANG_OBJS_DIR)/table/strings.h: $(LANG_DIR)/english.txt $(LANG_OBJS_DIR)/$(STR
 # Make the revision number
 ifdef REVISION
 REV := $(REVISION)
+REV_NR := $(shell echo $(REVISION) | sed "s#[^0-9]##g")
 else
 # Are we a SVN dir?
 ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
@@ -99,16 +100,19 @@ ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
 REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
 # Find the revision like: rXXXX-branch
 REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branch/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+REV_NR := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^Last Changed Rev:/ { print $$4 }')
 else
 # Are we a git dir?
 ifeq ($(shell if test -d $(SRC_DIR)/../.git; then echo 1; fi), 1)
 # Find the revision like: gXXXXM-branch
 REV := g$(shell if head=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(shell if git diff-index HEAD | read dummy; then echo M; fi)$(shell git branch|grep '[*]' | sed 's/\* /-/;s/^-master$$//')
+REV_NR := $(shell echo `LC_ALL=C cd "$(SRC_DIR)/.." && git log --pretty=format:%s src | grep "^(svn r[0-9]*)" | head -n 1 | sed "s/.*(svn r\([0-9]*\)).*/\1/"` )
 else
 # Are we a hg (Mercurial) dir?
 ifeq ($(shell if test -d $(SRC_DIR)/../.hg; then echo 1; fi), 1)
 # Find the revision like: hXXXXM-branch
 REV := h$(shell if head=`LC_ALL=C hg tip 2>/dev/null`; then echo "$$head" | head -n 1 | cut -c19-26; fi)$(shell if hg status | grep -v '^?' | read dummy; then echo M; fi)$(shell hg branch | sed 's/^/-/;s/^-default$$//')
+REV_NR := $(shell LC_ALL=C hg log -k "svn" -l 1 --template "{desc}\n" $(SRC_DIR) | grep "^(svn r[0-9]*)" | head -n 1 | sed "s/.*(svn r\([0-9]*\)).*/\1/" )
 endif
 endif
 endif
@@ -117,6 +121,7 @@ endif
 # Make sure we have something in REV
 ifeq ($(REV),)
 REV := norev000
+REV_NR := 0
 endif
 
 # This helps to recompile if flags change
@@ -282,10 +287,10 @@ $(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
 # Revision files
 
 $(SRC_DIR)/rev.cpp: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/rev.cpp.in
-	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s#@@VERSION@@#$(REV)#g;s#@@DATE@@#`date +%d.%m.%y`#g" > $(SRC_DIR)/rev.cpp
+	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s#@@REVISION@@#$(REV_NR)#g;s#@@VERSION@@#$(REV)#g;s#@@DATE@@#`date +%d.%m.%y`#g" > $(SRC_DIR)/rev.cpp
 
 $(SRC_DIR)/ottdres.rc: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/ottdres.rc.in
-	$(Q)cat $(SRC_DIR)/ottdres.rc.in | sed "s#@@VERSION@@#$(REV)#g;s#@@DATE@@#`date +%d.%m.%y`#g" > $(SRC_DIR)/ottdres.rc
+	$(Q)cat $(SRC_DIR)/ottdres.rc.in | sed "s#@@REVISION@@#$(REV_NR)#g;s#@@VERSION@@#$(REV)#g;s#@@DATE@@#`date +%d.%m.%y`#g" > $(SRC_DIR)/ottdres.rc
 
 FORCE:
 

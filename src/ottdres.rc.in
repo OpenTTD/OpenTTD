@@ -1,4 +1,5 @@
 //Microsoft Developer Studio generated resource script.
+// $Id$
 //
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -65,8 +66,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,5,99,0
- PRODUCTVERSION 0,5,99,0
+ FILEVERSION 0,6,0,@@REVISION@@
+ PRODUCTVERSION 0,6,0,@@REVISION@@
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L

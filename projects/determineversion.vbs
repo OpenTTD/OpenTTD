@@ -14,8 +14,9 @@ Sub FindReplaceInFile(filename, to_find, replacement)
 	file.Close
 End Sub
 
-Sub UpdateFile(version, cur_date, filename)
+Sub UpdateFile(revision, version, cur_date, filename)
 	FSO.CopyFile filename & ".in", filename
+	FindReplaceInFile filename, "@@REVISION@@", revision
 	FindReplaceInFile filename, "@@VERSION@@", version
 	FindReplaceInFile filename, "@@DATE@@", cur_date
 End Sub
@@ -23,8 +24,21 @@ End Sub
 Sub UpdateFiles(version)
 	Dim cur_date
 	cur_date = DatePart("D", Date) & "." & DatePart("M", Date) & "." & DatePart("YYYY", Date)
-	UpdateFile version, cur_date, "../src/rev.cpp"
-	UpdateFile version, cur_date, "../src/ottdres.rc"
+	Dim revision
+	If version = "norev000" Then
+		revision = 0
+	Else
+		revision = Mid(version, 2)
+		If InStr(revision, "M") Then
+			revision = Mid(revision, 1, InStr(revision, "M") - 1)
+		End If
+		If InStr(revision, "-") Then
+			revision = Mid(revision, 1, InStr(revision, "-") - 1)
+		End If
+	End If
+
+	UpdateFile revision, version, cur_date, "../src/rev.cpp"
+	UpdateFile revision, version, cur_date, "../src/ottdres.rc"
 End Sub
 
 Function DetermineSVNVersion()
