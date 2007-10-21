@@ -63,39 +63,34 @@ Money CalculateCompanyValue(const Player* p)
 {
 	PlayerID owner = p->index;
 	/* Do a little nasty by using CommandCost, so we can use the "overflow" protection of CommandCost */
-	CommandCost value;
+	Money value = 0;
 
-	{
-		Station *st;
-		uint num = 0;
+	Station *st;
+	uint num = 0;
 
-		FOR_ALL_STATIONS(st) {
-			if (st->owner == owner) num += COUNTBITS(st->facilities);
-		}
-
-		value.AddCost(num * _price.station_value * 25);
+	FOR_ALL_STATIONS(st) {
+		if (st->owner == owner) num += COUNTBITS(st->facilities);
 	}
 
-	{
-		Vehicle *v;
+	value += num * _price.station_value * 25;
 
-		FOR_ALL_VEHICLES(v) {
-			if (v->owner != owner) continue;
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->owner != owner) continue;
 
-			if (v->type == VEH_TRAIN ||
-					v->type == VEH_ROAD ||
-					(v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) ||
-					v->type == VEH_SHIP) {
-				value.AddCost(v->value * 3 >> 1);
-			}
+		if (v->type == VEH_TRAIN ||
+				v->type == VEH_ROAD ||
+				(v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) ||
+				v->type == VEH_SHIP) {
+			value += v->value * 3 >> 1;
 		}
 	}
 
 	/* Add real money value */
-	value.AddCost(-p->current_loan);
-	value.AddCost(p->player_money);
+	value -= p->current_loan;
+	value += p->player_money;
 
-	return max(value.GetCost(), (Money)1);
+	return max(value, (Money)1);
 }
 
 /** if update is set to true, the economy is updated with this score
