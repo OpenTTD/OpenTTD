@@ -3068,6 +3068,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} е п�
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Невалиден параметър за {STRING}: параметър {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} трябва да бъде зареден преди {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} трябва да бъде зареден след {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} поискай OpenTTD версиа {STRING} или по-добра.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF файлат беше предназначен да преведе
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добави
@@ -3392,6 +3393,7 @@ STR_FACE_SIMPLE_TIP                                             :{BLACK}Прос
 STR_FACE_LOAD                                                   :{BLACK}Зареди
 STR_FACE_LOAD_TIP                                               :{BLACK}Зареди любимо лице
 STR_FACE_LOAD_DONE                                              :{WHITE}Твоето любимо лице е заредено от OpenTTD config файлът.
+STR_FACE_FACECODE                                               :{BLACK}Номер на лице на играч.
 STR_FACE_FACECODE_TIP                                           :{BLACK}Виж и/или избери номер на лицето на играчът
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Виж и/или избери номер на лицето на играчът
 STR_FACE_FACECODE_SET                                           :{WHITE}Нов номер на лицето е избран.

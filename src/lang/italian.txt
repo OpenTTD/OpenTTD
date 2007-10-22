@@ -3075,6 +3075,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} è pro
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametro non valido per {STRING}: parametro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve essere caricato prima di {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve essere caricato dopo {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} richiede OpenTTD versione {STRING} o superiore.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :il file GRF che era progettato per tradurre
 
 STR_NEWGRF_ADD                                                  :{BLACK}Aggiungi

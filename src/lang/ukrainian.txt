@@ -1235,6 +1235,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Відкл.
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Швидкість прокрутки колесом миші: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Емуляція за правим клацом миші: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Комманд-клік
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол-клік
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Відкл.
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
@@ -3559,4 +3561,41 @@ STR_FACE_LOAD                                                   :{BLACK}Зава
 STR_FACE_LOAD_TIP                                               :{BLACK}Завантажити обране обличчя
 STR_FACE_LOAD_DONE                                              :{WHITE}Обране обличчя було завантажене з файлу конфігурації OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Обличчя №
+STR_FACE_FACECODE_TIP                                           :{BLACK}Подивитись та/чи змінити номер обличчя гравця
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Подивитись та/чи змінити номер обличчя гравця
+STR_FACE_FACECODE_SET                                           :{WHITE}Було встановлено новий номер
+STR_FACE_FACECODE_ERR                                           :{WHITE}Не можна встановити номер обличчя гравця - це має бути число  від 0 до 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Зберегти
+STR_FACE_SAVE_TIP                                               :{BLACK}Зберегти обране обличчя
+STR_FACE_SAVE_DONE                                              :{WHITE}Це обличчя буде збережене як обране у файлі конфігурації OpenTTD.
+STR_FACE_EUROPEAN                                               :{BLACK}Європейські
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Вибрати європейські обличчя
+STR_FACE_AFRICAN                                                :{BLACK}Африканські
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Вибрати африканські обличчя
+STR_FACE_YES                                                    :Так
+STR_FACE_NO                                                     :Ні
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Дозволити вуса або сережки
+STR_FACE_HAIR                                                   :Волосся:
+STR_FACE_HAIR_TIP                                               :{BLACK}Змінити волосся
+STR_FACE_EYEBROWS                                               :Брова:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Змінити брова
+STR_FACE_EYECOLOUR                                              :Колір очей:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Змінити колір очей:
+STR_FACE_GLASSES                                                :Окуляри:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Дозволити окуляри
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Змінити окуляри
+STR_FACE_NOSE                                                   :Ніс:
+STR_FACE_NOSE_TIP                                               :{BLACK}Змінити ніс
+STR_FACE_LIPS                                                   :Губи:
+STR_FACE_MOUSTACHE                                              :Вуса:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Змінити губи або вуса
+STR_FACE_CHIN                                                   :Підборіддя:
+STR_FACE_CHIN_TIP                                               :{BLACK}Змінити підборіддя
+STR_FACE_JACKET                                                 :Жакет:
+STR_FACE_JACKET_TIP                                             :{BLACK}Змінити жакет
+STR_FACE_COLLAR                                                 :Комір
+STR_FACE_COLLAR_TIP                                             :{BLACK}Змінити комір
+STR_FACE_TIE                                                    :Краватка:
+STR_FACE_EARRING                                                :Сережки:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Змінити комір або сережки
 ########

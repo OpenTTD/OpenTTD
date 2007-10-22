@@ -3137,6 +3137,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je nav
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parameter {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musí byt nahratý pred {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí byt nahratý po {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} vyžaduje verziu OpenTTD {STRING} alebo vyššiu.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 
 STR_NEWGRF_ADD                                                  :{BLACK}Pridat
