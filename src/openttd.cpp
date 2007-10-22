@@ -2052,7 +2052,7 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(46)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->IsBuoy() && IsTileOwner(st->xy, OWNER_NONE)) SetTileOwner(st->xy, OWNER_WATER);
+			if (st->IsBuoy() && IsTileOwner(st->xy, OWNER_NONE) && TileHeight(st->xy) == 0) SetTileOwner(st->xy, OWNER_WATER);
 		}
 	}
 
