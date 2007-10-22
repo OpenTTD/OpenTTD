@@ -47,7 +47,7 @@ enum Sprites {
 	SPR_ASCII_SPACE_BIG   = 450,
 
 	/* Extra graphic spritenumbers */
-	OPENTTD_SPRITES_COUNT = 112, // number of gfx-sprites in openttd.grf
+	OPENTTD_SPRITES_COUNT = 116, // number of gfx-sprites in openttd.grf
 	SPR_SIGNALS_BASE  = 4896,
 	SPR_CANALS_BASE   = SPR_SIGNALS_BASE + 486,
 
@@ -1225,6 +1225,7 @@ enum Sprites {
 	/* road_gui.c */
 	SPR_IMG_ROAD_NW       = 1309,
 	SPR_IMG_ROAD_NE       = 1310,
+	SPR_IMG_AUTOROAD      = SPR_OPENTTD_BASE + 112,
 	SPR_IMG_ROAD_DEPOT    = 1295,
 	SPR_IMG_BUS_STATION   = 749,
 	SPR_IMG_TRUCK_BAY     = 750,
@@ -1233,6 +1234,7 @@ enum Sprites {
 	SPR_IMG_REMOVE        = 714,
 	SPR_IMG_TRAMWAY_NW    = SPR_TRAMWAY_BASE + 0,
 	SPR_IMG_TRAMWAY_NE    = SPR_TRAMWAY_BASE + 1,
+	SPR_IMG_AUTOTRAM      = SPR_OPENTTD_BASE + 114,
 
 	/* rail_gui.c */
 	SPR_IMG_RAIL_NS    = 1251,
@@ -1349,8 +1351,10 @@ enum CursorSprite {
 	/* road cursors */
 	SPR_CURSOR_ROAD_NESW      = 1311,
 	SPR_CURSOR_ROAD_NWSE      = 1312,
+	SPR_CURSOR_AUTOROAD       = SPR_OPENTTD_BASE + 113,
 	SPR_CURSOR_TRAMWAY_NESW   = SPR_TRAMWAY_BASE + 2,
 	SPR_CURSOR_TRAMWAY_NWSE   = SPR_TRAMWAY_BASE + 3,
+	SPR_CURSOR_AUTOTRAM       = SPR_OPENTTD_BASE + 115,
 
 	SPR_CURSOR_ROAD_DEPOT     = 1297,
 	SPR_CURSOR_BUS_STATION    = 2725,

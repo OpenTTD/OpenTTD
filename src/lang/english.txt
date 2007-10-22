@@ -1667,7 +1667,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Can't bu
 STR_180A_ROAD_CONSTRUCTION                                      :Road construction
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Tramway construction
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Build road section
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Build road section using the Autoroad mode
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Build tramway section
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Build tramway section using the Autotram mode
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Build road vehicle depot (for building and servicing vehicles)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Build tram vehicle depot (for building and servicing vehicles)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Build bus station

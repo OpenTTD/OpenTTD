@@ -30,7 +30,22 @@ static void ShowRoadDepotPicker();
 
 static bool _remove_button_clicked;
 
-static byte _place_road_flag;
+/**
+ * Define the values of the RoadFlags
+ * @see CmdBuildLongRoad
+ */
+enum RoadFlags {
+	RF_NONE             = 0x00,
+	RF_START_HALFROAD_Y = 0x01,    // The start tile in Y-dir should have only a half hoad
+	RF_END_HALFROAD_Y   = 0x02,    // The end tile in Y-dir should have only a half hoad
+	RF_DIR_Y            = 0x04,    // The direction is Y-dir
+	RF_DIR_X            = RF_NONE, // Dummy; Dir X is set when RF_DIR_Y is not set
+	RF_START_HALFROAD_X = 0x08,    // The start tile in X-dir should have only a half hoad
+	RF_END_HALFROAD_X   = 0x10,    // The end tile in X-dir should have only a half hoad
+};
+DECLARE_ENUM_AS_BIT_SET(RoadFlags);
+
+static RoadFlags _place_road_flag;
 
 static RoadType _cur_roadtype;
 
@@ -42,16 +57,50 @@ void CcPlaySound1D(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (success) SndPlayTileFx(SND_1F_SPLAT, tile);
 }
 
+/**
+ * Set the initial flags for the road constuction.
+ * The flags are:
+ * @li The direction is the Y-dir
+ * @li The first tile has a partitial RoadBit (true or false)
+ *
+ * @param tile The start tile
+ */
 static void PlaceRoad_NE(TileIndex tile)
 {
-	_place_road_flag = (_tile_fract_coords.y >= 8) + 4;
+	_place_road_flag = RF_DIR_Y;
+	if (_tile_fract_coords.y >= 8) _place_road_flag |= RF_START_HALFROAD_Y;
 	VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_ROAD_NE);
 }
 
+/**
+ * Set the initial flags for the road constuction.
+ * The flags are:
+ * @li The direction is the X-dir
+ * @li The first tile has a partitial RoadBit (true or false)
+ *
+ * @param tile The start tile
+ */
 static void PlaceRoad_NW(TileIndex tile)
 {
-	_place_road_flag = (_tile_fract_coords.x >= 8) + 0;
+	_place_road_flag = RF_DIR_X;
+	if (_tile_fract_coords.x >= 8) _place_road_flag |= RF_START_HALFROAD_X;
 	VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_ROAD_NW);
+}
+
+/**
+ * Set the initial flags for the road constuction.
+ * The flags are:
+ * @li The direction is not set.
+ * @li The first tile has a partitial RoadBit (true or false)
+ *
+ * @param tile The start tile
+ */
+static void PlaceRoad_AutoRoad(TileIndex tile)
+{
+	_place_road_flag = RF_NONE;
+	if (_tile_fract_coords.x >= 8) _place_road_flag |= RF_START_HALFROAD_X;
+	if (_tile_fract_coords.y >= 8) _place_road_flag |= RF_START_HALFROAD_Y;
+	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_PLACE_AUTOROAD);
 }
 
 static void PlaceRoad_Bridge(TileIndex tile)
@@ -83,6 +132,7 @@ struct RoadTypeInfo {
 
 	SpriteID cursor_nesw;           ///< Cursor for building NE and SW bits
 	SpriteID cursor_nwse;           ///< Cursor for building NW and SE bits
+	SpriteID cursor_autoroad;       ///< Cursor for building autoroad
 };
 
 /** What errors/cursors must be shown for several types of roads */
@@ -98,6 +148,7 @@ static const RoadTypeInfo _road_type_infos[] = {
 
 		SPR_CURSOR_ROAD_NESW,
 		SPR_CURSOR_ROAD_NWSE,
+		SPR_CURSOR_AUTOROAD,
 	},
 	{
 		STR_1804_CAN_T_BUILD_TRAMWAY_HERE,
@@ -110,6 +161,7 @@ static const RoadTypeInfo _road_type_infos[] = {
 
 		SPR_CURSOR_TRAMWAY_NESW,
 		SPR_CURSOR_TRAMWAY_NWSE,
+		SPR_CURSOR_AUTOTRAM,
 	},
 };
 
@@ -187,6 +239,7 @@ enum RoadToolbarWidgets {
 	RTW_STICKY,
 	RTW_ROAD_X,
 	RTW_ROAD_Y,
+	RTW_AUTOROAD,
 	RTW_DEMOLISH,
 	RTW_DEPOT,
 	RTW_BUS_STATION,
@@ -198,16 +251,38 @@ enum RoadToolbarWidgets {
 
 typedef void OnButtonClick(Window *w);
 
+/**
+ * Function that handles the click on the
+ *  X road placement button.
+ *
+ * @param w The current window
+ */
 static void BuildRoadClick_NE(Window *w)
 {
 	HandlePlacePushButton(w, RTW_ROAD_X, _road_type_infos[_cur_roadtype].cursor_nesw, 1, PlaceRoad_NE);
 }
 
+/**
+ * Function that handles the click on the
+ *  Y road placement button.
+ *
+ * @param w The current window
+ */
 static void BuildRoadClick_NW(Window *w)
 {
 	HandlePlacePushButton(w, RTW_ROAD_Y, _road_type_infos[_cur_roadtype].cursor_nwse, 1, PlaceRoad_NW);
 }
 
+/**
+ * Function that handles the click on the
+ *  autoroad placement button.
+ *
+ * @param w The current window
+ */
+static void BuildRoadClick_AutoRoad(Window *w)
+{
+	HandlePlacePushButton(w, RTW_AUTOROAD, _road_type_infos[_cur_roadtype].cursor_autoroad, 1, PlaceRoad_AutoRoad);
+}
 
 static void BuildRoadClick_Demolish(Window *w)
 {
@@ -251,9 +326,11 @@ static void BuildRoadClick_Remove(Window *w)
 	SetSelectionRed(IsWindowWidgetLowered(w, RTW_REMOVE));
 }
 
+/** Array with the handlers of the button-clicks for the road-toolbar */
 static OnButtonClick* const _build_road_button_proc[] = {
 	BuildRoadClick_NE,
 	BuildRoadClick_NW,
+	BuildRoadClick_AutoRoad,
 	BuildRoadClick_Demolish,
 	BuildRoadClick_Depot,
 	BuildRoadClick_BusStation,
@@ -263,6 +340,7 @@ static OnButtonClick* const _build_road_button_proc[] = {
 	BuildRoadClick_Remove
 };
 
+/** Array with the keycode of the button-clicks for the road-toolbar */
 static const uint16 _road_keycodes[] = {
 	'1',
 	'2',
@@ -270,6 +348,7 @@ static const uint16 _road_keycodes[] = {
 	'4',
 	'5',
 	'6',
+	'7',
 	'B',
 	'T',
 	'R',
@@ -291,6 +370,7 @@ static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
 			break;
 		case RTW_ROAD_X:
 		case RTW_ROAD_Y:
+		case RTW_AUTOROAD:
 		case RTW_BUS_STATION:
 		case RTW_TRUCK_STATION:
 			/* Removal button is enabled only if the road/station
@@ -361,13 +441,38 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_DRAG:
+		/* Here we update the end tile flags
+		 * of the road placement actions.
+		 * At first we reset the end halfroad
+		 * bits and if needed we set them again. */
 		switch (e->we.place.select_proc) {
 			case DDSP_PLACE_ROAD_NE:
-				_place_road_flag = (_place_road_flag & ~2) | ((e->we.place.pt.y & 8) >> 2);
+				_place_road_flag &= ~RF_END_HALFROAD_Y;
+				if (e->we.place.pt.y & 8) _place_road_flag |= RF_END_HALFROAD_Y;
 				break;
 
 			case DDSP_PLACE_ROAD_NW:
-				_place_road_flag = (_place_road_flag & ~2) | ((e->we.place.pt.x & 8) >> 2);
+				_place_road_flag &= ~RF_END_HALFROAD_X;
+				if (e->we.place.pt.x & 8) _place_road_flag |= RF_END_HALFROAD_X;
+				break;
+
+			case DDSP_PLACE_AUTOROAD:
+				_place_road_flag &= ~(RF_END_HALFROAD_Y | RF_END_HALFROAD_X);
+				if (e->we.place.pt.y & 8) _place_road_flag |= RF_END_HALFROAD_Y;
+				if (e->we.place.pt.x & 8) _place_road_flag |= RF_END_HALFROAD_X;
+
+				/* For autoroad we need to update the
+				 * direction of the road */
+				if (_thd.size.x > _thd.size.y || (_thd.size.x == _thd.size.y &&
+						(_tile_fract_coords.x < _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) < 16) ||
+						(_tile_fract_coords.x > _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) > 16) )) {
+					/* Set dir = X */
+					_place_road_flag &= ~RF_DIR_Y;
+				} else {
+					/* Set dir = Y */
+					_place_road_flag |= RF_DIR_Y;
+				}
+
 				break;
 		}
 
@@ -391,6 +496,13 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 				case DDSP_PLACE_ROAD_NE:
 				case DDSP_PLACE_ROAD_NW:
+				case DDSP_PLACE_AUTOROAD:
+					/* Flag description:
+					 * Use the first three bits (0x07) if dir == Y
+					 * else use the last 2 bits (X dir has
+					 * not the 3rd bit set) */
+					_place_road_flag = (RoadFlags)((_place_road_flag & RF_DIR_Y) ? (_place_road_flag & 0x07) : (_place_road_flag >> 3));
+
 					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | _ctrl_pressed << 5, CcPlaySound1D,
 						_remove_button_clicked ?
 						CMD_REMOVE_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
@@ -417,23 +529,25 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 /** Widget definition of the build road toolbar */
 static const Widget _build_road_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},             // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   205,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   206,   217,     0,    13, 0x0,                        STR_STICKY_BUTTON},                 // RTW_STICKY
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   227,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   228,   239,     0,    13, 0x0,                        STR_STICKY_BUTTON},                 // RTW_STICKY
 
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_ROAD_NW,            STR_180B_BUILD_ROAD_SECTION},       // RTW_ROAD_X
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_ROAD_NE,            STR_180B_BUILD_ROAD_SECTION},       // RTW_ROAD_Y
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},   // RTW_DEMOLISH
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_ROAD_VEHICLE_DEPOT}, // RTW_DEPOT
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_BUS_STATION},        // RTW_BUS_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_TRUCK_LOADING_BAY},  // RTW_TRUCK_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   173,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},        // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   174,   195,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},        // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   196,   217,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR},  // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_AUTOROAD,           STR_BUILD_AUTOROAD_TIP},            // RTW_AUTOROAD
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},   // RTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_ROAD_VEHICLE_DEPOT}, // RTW_DEPOT
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_BUS_STATION},        // RTW_BUS_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_TRUCK_LOADING_BAY},  // RTW_TRUCK_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   153,   195,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},        // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   196,   217,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},        // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   218,   239,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR},  // RTW_REMOVE
+
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_road_desc = {
-	WDP_ALIGN_TBR, 22, 218, 36, 218, 36,
+	WDP_ALIGN_TBR, 22, 240, 36, 240, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_widgets,
@@ -443,23 +557,25 @@ static const WindowDesc _build_road_desc = {
 /** Widget definition of the build tram toolbar */
 static const Widget _build_tramway_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                     // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   205,     0,    13, STR_1802_TRAMWAY_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   206,   217,     0,    13, 0x0,                        STR_STICKY_BUTTON},                         // RTW_STICKY
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   227,     0,    13, STR_1802_TRAMWAY_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   228,   239,     0,    13, 0x0,                        STR_STICKY_BUTTON},                         // RTW_STICKY
 
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_TRAMWAY_NW,         STR_180B_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_X
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_TRAMWAY_NE,         STR_180B_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_Y
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},           // RTW_DEMOLISH
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_TRAM_VEHICLE_DEPOT},         // RTW_DEPOT
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_PASSENGER_TRAM_STATION},     // RTW_BUS_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_CARGO_TRAM_STATION},         // RTW_TRUCK_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   173,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_TRAMWAY_BRIDGE},             // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   174,   195,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_TRAMWAY_TUNNEL},             // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   196,   217,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS}, // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_AUTOTRAM,           STR_BUILD_AUTOTRAM_TIP},                    // RTW_AUTOROAD
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},           // RTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_TRAM_VEHICLE_DEPOT},         // RTW_DEPOT
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_PASSENGER_TRAM_STATION},     // RTW_BUS_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_CARGO_TRAM_STATION},         // RTW_TRUCK_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   153,   195,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_TRAMWAY_BRIDGE},             // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   196,   217,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_TRAMWAY_TUNNEL},             // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   218,   239,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS}, // RTW_REMOVE
+
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_tramway_desc = {
-	WDP_ALIGN_TBR, 22, 218, 36, 218, 36,
+	WDP_ALIGN_TBR, 22, 240, 36, 240, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_tramway_widgets,
@@ -479,23 +595,24 @@ void ShowBuildRoadToolbar(RoadType roadtype)
 /** Widget definition of the build road toolbar in the scenario editor */
 static const Widget _build_road_scen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},            // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},  // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   140,   151,     0,    13, 0x0,                        STR_STICKY_BUTTON},                // RTW_STICKY
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   161,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},  // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   162,   173,     0,    13, 0x0,                        STR_STICKY_BUTTON},                // RTW_STICKY
 
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_ROAD_NW,            STR_180B_BUILD_ROAD_SECTION},      // RTW_ROAD_X
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_ROAD_NE,            STR_180B_BUILD_ROAD_SECTION},      // RTW_ROAD_Y
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},  // RTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_AUTOROAD,           STR_BUILD_AUTOROAD_TIP},           // RTW_AUTOROAD
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},  // RTW_DEMOLISH
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_DEPOT
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_BUS_STATION
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_TRUCK_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,   107,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},       // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   108,   129,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},       // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   130,   151,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR}, // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   130,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},       // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   131,   151,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},       // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   152,   173,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR}, // RTW_REMOVE
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_road_scen_desc = {
-	WDP_AUTO, WDP_AUTO, 152, 36, 152, 36,
+	WDP_AUTO, WDP_AUTO, 174, 36, 174, 36,
 	WC_SCEN_BUILD_ROAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_scen_widgets,

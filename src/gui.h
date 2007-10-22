@@ -88,6 +88,7 @@ enum {
 	/* Road specific actions */
 	DDSP_PLACE_ROAD_NE,
 	DDSP_PLACE_ROAD_NW,
+	DDSP_PLACE_AUTOROAD,
 };
 
 /* misc_gui.cpp */
