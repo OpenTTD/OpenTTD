@@ -497,6 +497,12 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi->tractive_effort = grf_load_byte(&buf);
 				break;
 
+			case 0x20: // Air drag
+				/** @todo Air drag for trains. */
+				grf_load_byte(&buf);
+				ret = true;
+				break;
+
 			case 0x21: // Shorter vehicle
 				rvi->shorten_factor = grf_load_byte(&buf);
 				break;
@@ -543,12 +549,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 			case 0x2A: // Long format introduction date (days since year 0)
 				ei->base_intro = grf_load_dword(&buf);
-				break;
-
-			case 0x20: // Air drag
-				/** @todo Air drag for trains. */
-				grf_load_byte(&buf);
-				ret = true;
 				break;
 
 			default:
@@ -638,6 +638,13 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				ei->callbackmask = grf_load_byte(&buf);
 				break;
 
+			case 0x18: // Tractive effort
+			case 0x19: // Air drag
+				/** @todo Tractive effort and air drag for road vehicles. */
+				grf_load_byte(&buf);
+				ret = true;
+				break;
+
 			case 0x1A: // Refit cost
 				ei->refit_cost = grf_load_byte(&buf);
 				break;
@@ -661,13 +668,6 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 			case 0x1F: // Long format introduction date (days since year 0)
 				ei->base_intro = grf_load_dword(&buf);
-				break;
-
-			case 0x18: // Tractive effort
-			case 0x19: // Air drag
-				/** @todo Tractive effort and air drag for road vehicles. */
-				grf_load_byte(&buf);
-				ret = true;
 				break;
 
 			default:
@@ -748,6 +748,13 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				ei->refit_cost = grf_load_byte(&buf);
 				break;
 
+			case 0x14: // Ocean speed fraction
+			case 0x15: // Canal speed fraction
+				/** @todo Speed fractions for ships on oceans and canals */
+				grf_load_byte(&buf);
+				ret = true;
+				break;
+
 			case 0x16: // Retire vehicle early
 				ei->retire_early = grf_load_byte(&buf);
 				break;
@@ -767,13 +774,6 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 			case 0x1A: // Long format introduction date (days since year 0)
 				ei->base_intro = grf_load_dword(&buf);
-				break;
-
-			case 0x14: // Ocean speed fraction
-			case 0x15: // Canal speed fraction
-				/** @todo Speed fractions for ships on oceans and canals */
-				grf_load_byte(&buf);
-				ret = true;
 				break;
 
 			default:
@@ -1393,6 +1393,12 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 			case 0x1F: // Minimum life span
 				housespec->minimum_life = grf_load_byte(&buf);
 				break;
+
+			case 0x20: { // @todo Cargo acceptance watch list
+				byte count = grf_load_byte(&buf);
+				for (byte j = 0; j < count; j++) grf_load_byte(&buf);
+				ret = true;
+			} break;
 
 			default:
 				ret = true;

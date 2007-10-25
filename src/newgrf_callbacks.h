@@ -170,7 +170,16 @@ enum CallbackID {
 	/** Called to determine if the industry can still accept or refuse more cargo arrival */
 	CBID_INDUSTRY_REFUSE_CARGO           = 0x3D,
 
-	/* There are no callbacks 0x3E - 0x142. */
+	/* There are no callbacks 0x3E - 0x13F */
+
+	/** Called for periodically starting or stopping the animation. */
+	CBID_STATION_ANIM_START_STOP         = 0x140, // not implemented
+
+	/** Called to determine station tile next animation frame. */
+	CBID_STATION_ANIM_NEXT_FRAME         = 0x141, // not implemented
+
+	/** Called to indicate how long the current animation frame should last. */
+	CBID_STATION_ANIMATION_SPEED         = 0x142, // not implemented
 
 	/** Called to determine whether a town building can be destroyed. */
 	CBID_HOUSE_DENY_DESTRUCTION          = 0x143,
@@ -187,7 +196,8 @@ enum CallbackID {
 	/** Add an offset to the default sprite numbers to show another sprite. */
 	CBID_CANALS_SPRITE_OFFSET            = 0x147, // not implemented
 
-	/* There is no callback 0x148.*/
+	/** Called when a cargo type specified in property 20 is accepted. */
+	CBID_HOUSE_WATCHED_CARGO_ACCEPTED    = 0x148, // not implemented
 
 	/** Callback done for each tile of a station to check the slope. */
 	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // not implemented
