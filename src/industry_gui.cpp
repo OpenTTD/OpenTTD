@@ -379,12 +379,12 @@ static void UpdateIndustryProduction(Industry *i);
 
 static inline bool isProductionMinimum(const Industry *i, int pt)
 {
-	return i->production_rate[pt] == 1;
+	return i->production_rate[pt] == 0;
 }
 
 static inline bool isProductionMaximum(const Industry *i, int pt)
 {
-	return i->production_rate[pt] == 255;
+	return i->production_rate[pt] >= 255;
 }
 
 static inline bool IsProductionAlterable(const Industry *i)
@@ -531,10 +531,12 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					/* Clicked buttons, decrease or increase production */
 					if (x < 15) {
 						if (isProductionMinimum(i, line)) return;
-						i->production_rate[line] = max(i->production_rate[line] / 2, 1);
+						i->production_rate[line] = max(i->production_rate[line] / 2, 0);
 					} else {
+						/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
+						int new_prod = i->production_rate[line] == 0 ? 1 : i->production_rate[line] * 2;
 						if (isProductionMaximum(i, line)) return;
-						i->production_rate[line] = minu(i->production_rate[line] * 2, 255);
+						i->production_rate[line] = minu(new_prod, 255);
 					}
 
 					UpdateIndustryProduction(i);
