@@ -8,6 +8,7 @@
 #include "../../functions.h"
 #include "../../gfx.h"
 #include "../../fileio.h"
+#include "../../blitter/factory.hpp"
 
 #include "splash.h"
 
@@ -36,7 +37,7 @@ void DisplaySplashImage()
 	png_colorp palette;
 	int num_palette;
 	png_bytep *row_pointers;
-	uint8 *src, *dst;
+	uint8 *src;
 	uint y;
 	uint xoff, yoff;
 	int i;
@@ -103,32 +104,55 @@ void DisplaySplashImage()
 
 	row_pointers = png_get_rows(png_ptr, info_ptr);
 
-	memset(_screen.dst_ptr, 0xff, _screen.pitch * _screen.height);
-
 	if (width > (uint) _screen.width) width = _screen.width;
 	if (height > (uint) _screen.height) height = _screen.height;
 
 	xoff = (_screen.width - width) / 2;
 	yoff = (_screen.height - height) / 2;
-	for (y = 0; y < height; y++) {
-		src = row_pointers[y];
-		dst = ((uint8 *) _screen.dst_ptr) + (yoff + y) * _screen.pitch + xoff;
 
-		memcpy(dst, src, width);
+	switch (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth()) {
+		case 8: {
+				uint8 *dst;
+
+				memset(_screen.dst_ptr, 0xff, _screen.pitch * _screen.height);
+
+				for (y = 0; y < height; y++) {
+					src = row_pointers[y];
+					dst = ((uint8 *) _screen.dst_ptr) + (yoff + y) * _screen.pitch + xoff;
+
+					memcpy(dst, src, width);
+				}
+
+				for (i = 0; i < num_palette; i++) {
+					_cur_palette[i].r = palette[i].red;
+					_cur_palette[i].g = palette[i].green;
+					_cur_palette[i].b = palette[i].blue;
+				}
+
+				_cur_palette[0xff].r = 0;
+				_cur_palette[0xff].g = 0;
+				_cur_palette[0xff].b = 0;
+
+				_pal_first_dirty = 0;
+				_pal_count_dirty = 256;
+			}
+			break;
+		case 32: {
+				uint32 *dst;
+				int x;
+
+				memset(_screen.dst_ptr, 0xff000000, _screen.pitch * _screen.height * 4);
+
+				for (y = 0; y < height; y++) {
+					src = row_pointers[y];
+					dst = ((uint32 *) _screen.dst_ptr) + (yoff + y) * _screen.pitch + xoff;
+
+					for (x = 0; x < width; x++)
+						dst[x] = palette[src[x]].blue | (palette[src[x]].green << 8) | (palette[src[x]].red << 16) | 0xff000000;
+				}
+			}
+			break;
 	}
-
-	for (i = 0; i < num_palette; i++) {
-		_cur_palette[i].r = palette[i].red;
-		_cur_palette[i].g = palette[i].green;
-		_cur_palette[i].b = palette[i].blue;
-	}
-
-	_cur_palette[0xff].r = 0;
-	_cur_palette[0xff].g = 0;
-	_cur_palette[0xff].b = 0;
-
-	_pal_first_dirty = 0;
-	_pal_count_dirty = 256;
 
 	png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 	fclose(f);

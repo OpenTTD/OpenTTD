@@ -157,12 +157,14 @@ static struct CocoaVideoData {
 	CFArrayRef         mode_list;          /* list of available fullscreen modes */
 	CGDirectPaletteRef palette;            /* palette of an 8-bit display */
 
+	uint32 blitter_bpp;
+
 	uint32 device_width;
 	uint32 device_height;
 	uint32 device_bpp;
 
 	void *realpixels;
-	uint8 *pixels;
+	void *pixels;
 	uint32 width;
 	uint32 height;
 	uint32 pitch;
@@ -900,7 +902,7 @@ static void QZ_SetPortAlphaOpaque()
 
 	/* Allocate new buffer */
 	free(_cocoa_video_data.pixels);
-	_cocoa_video_data.pixels = (uint8*)malloc(newViewFrame.size.width * newViewFrame.size.height);
+	_cocoa_video_data.pixels = malloc(newViewFrame.size.width * newViewFrame.size.height * _cocoa_video_data.blitter_bpp / 8);
 	assert(_cocoa_video_data.pixels != NULL);
 
 
@@ -1019,28 +1021,54 @@ static void QZ_UpdateWindowPalette(uint start, uint count)
 
 static inline void QZ_WindowBlitIndexedPixelsToView32(uint left, uint top, uint right, uint bottom)
 {
-	const uint32* pal = _cocoa_video_data.palette32;
-	const uint8* src = _cocoa_video_data.pixels;
 	uint32* dst = (uint32*)_cocoa_video_data.realpixels;
 	uint width = _cocoa_video_data.width;
 	uint pitch = _cocoa_video_data.pitch / 4;
 	uint x;
 	uint y;
 
-	for (y = top; y < bottom; y++) {
-		for (x = left; x < right; x++) {
-			dst[y * pitch + x] = pal[src[y * width + x]];
-		}
+	switch (_cocoa_video_data.blitter_bpp) {
+		case 8: {
+				const uint32* pal = _cocoa_video_data.palette32;
+				const uint8*  src = (uint8*) _cocoa_video_data.pixels;
+
+				for (y = top; y < bottom; y++) {
+					for (x = left; x < right; x++) {
+						dst[y * pitch + x] = pal[src[y * width + x]];
+					}
+				}
+			}
+			break;
+		case 32: {
+				const uint32* src = (uint32*) _cocoa_video_data.pixels;
+
+				dst += top * pitch + left;
+				src += top * width + left;
+
+				for (y = top; y < bottom; y++, dst+= pitch, src+= width)
+					memcpy(dst, src, (right - left) * 4);
+			}
+			break;
 	}
 }
 
+/**
+ * This function copies pixels from the screen buffer in 16bpp windowed mode. It assumes
+ * that the blitter is 8bpp since the driver only supports 8 and 32 bpp blitters, and we
+ * don't allow a blitter with a higer bpp than the display in windowed mode.
+ *
+ * @param left The x coord for the left edge of the box to blit.
+ * @param top The y coord for the top edge of the box to blit.
+ * @param right The x coord for the right edge of the box to blit.
+ * @param bottom The y coord for the bottom edge of the box to blit.
+ */
 static inline void QZ_WindowBlitIndexedPixelsToView16(uint left, uint top, uint right, uint bottom)
 {
-	const uint16* pal = _cocoa_video_data.palette16;
-	const uint8* src = _cocoa_video_data.pixels;
-	uint16* dst = (uint16*)_cocoa_video_data.realpixels;
-	uint width = _cocoa_video_data.width;
-	uint pitch = _cocoa_video_data.pitch / 2;
+	const uint16* pal   = _cocoa_video_data.palette16;
+	const uint8*  src   = (uint8*) _cocoa_video_data.pixels;
+	uint16*       dst   = (uint16*)_cocoa_video_data.realpixels;
+	uint          width = _cocoa_video_data.width;
+	uint          pitch = _cocoa_video_data.pitch / 2;
 	uint x;
 	uint y;
 
@@ -1164,6 +1192,10 @@ static const char* QZ_SetVideoWindowed(uint width, uint height)
 	NSRect contentRect;
 	BOOL isCustom = NO;
 
+	if (_cocoa_video_data.blitter_bpp > _cocoa_video_data.device_bpp) {
+		error("Cocoa: Cannot use a blitter with a higer screen depth than the display when running in windowed mode.");
+	}
+
 	if (width > _cocoa_video_data.device_width)
 		width = _cocoa_video_data.device_width;
 	if (height > _cocoa_video_data.device_height)
@@ -1251,7 +1283,7 @@ static const char* QZ_SetVideoWindowed(uint width, uint height)
 	}
 
 	free(_cocoa_video_data.pixels);
-	_cocoa_video_data.pixels = (uint8*)malloc(width * height);
+	_cocoa_video_data.pixels = malloc(width * height * _cocoa_video_data.blitter_bpp / 8);
 	if (_cocoa_video_data.pixels == NULL) return "Failed to allocate 8-bit buffer";
 
 	_cocoa_video_data.fullscreen = false;
@@ -1362,13 +1394,13 @@ static const char* QZ_SetVideoFullScreen(int width, int height)
 	if (_cocoa_video_data.isset) QZ_UnsetVideoMode();
 
 	/* See if requested mode exists */
-	_cocoa_video_data.mode = CGDisplayBestModeForParameters(_cocoa_video_data.display_id, 8, width, height, &exact_match);
+	_cocoa_video_data.mode = CGDisplayBestModeForParameters(_cocoa_video_data.display_id, _cocoa_video_data.blitter_bpp, width, height, &exact_match);
 
 	/* If the mode wasn't an exact match, check if it has the right bpp, and update width and height */
 	if (!exact_match) {
 		number = (const __CFNumber*) CFDictionaryGetValue(_cocoa_video_data.mode, kCGDisplayBitsPerPixel);
 		CFNumberGetValue(number, kCFNumberSInt32Type, &bpp);
-		if (bpp != 8) {
+		if ((uint) bpp != _cocoa_video_data.blitter_bpp) {
 			errstr = "Failed to find display resolution";
 			goto ERR_NO_MATCH;
 		}
@@ -1397,7 +1429,7 @@ static const char* QZ_SetVideoFullScreen(int width, int height)
 		goto ERR_NO_SWITCH;
 	}
 
-	_cocoa_video_data.realpixels = (uint8*)CGDisplayBaseAddress(_cocoa_video_data.display_id);
+	_cocoa_video_data.realpixels = CGDisplayBaseAddress(_cocoa_video_data.display_id);
 	_cocoa_video_data.pitch  = CGDisplayBytesPerRow(_cocoa_video_data.display_id);
 
 	_cocoa_video_data.width = CGDisplayPixelsWide(_cocoa_video_data.display_id);
@@ -1405,13 +1437,13 @@ static const char* QZ_SetVideoFullScreen(int width, int height)
 	_cocoa_video_data.fullscreen = true;
 
 	/* Setup double-buffer emulation */
-	_cocoa_video_data.pixels = (uint8*)malloc(width * height);
+	_cocoa_video_data.pixels = malloc(width * height * _cocoa_video_data.blitter_bpp / 8);
 	if (_cocoa_video_data.pixels == NULL) {
 		errstr = "Failed to allocate memory for double buffering";
 		goto ERR_DOUBLEBUF;
 	}
 
-	if (!CGDisplayCanSetPalette(_cocoa_video_data.display_id)) {
+	if (_cocoa_video_data.blitter_bpp == 8 && !CGDisplayCanSetPalette(_cocoa_video_data.display_id)) {
 		errstr = "Not an indexed display mode.";
 		goto ERR_NOT_INDEXED;
 	}
@@ -1507,11 +1539,12 @@ static void QZ_WaitForVerticalBlank()
 
 static void QZ_DrawScreen()
 {
-	const uint8* src = _cocoa_video_data.pixels;
-	uint8* dst       = (uint8*)_cocoa_video_data.realpixels;
-	uint pitch       = _cocoa_video_data.pitch;
-	uint width       = _cocoa_video_data.width;
-	uint num_dirty   = _cocoa_video_data.num_dirty_rects;
+	const uint8* src   = (uint8*) _cocoa_video_data.pixels;
+	uint8* dst         = (uint8*)_cocoa_video_data.realpixels;
+	uint pitch         = _cocoa_video_data.pitch;
+	uint width         = _cocoa_video_data.width;
+	uint num_dirty     = _cocoa_video_data.num_dirty_rects;
+	uint bytesperpixel = _cocoa_video_data.blitter_bpp / 8;
 	uint i;
 
 	/* Check if we need to do anything */
@@ -1534,7 +1567,7 @@ static void QZ_DrawScreen()
 		uint bottom = _cocoa_video_data.dirty_rects[i].bottom;
 
 		for (; y < bottom; y++) {
-			memcpy(dst + y * pitch + left, src + y * width + left, length);
+			memcpy(dst + y * pitch + left * bytesperpixel, src + y * width * bytesperpixel + left * bytesperpixel, length * bytesperpixel);
 		}
 	}
 
@@ -1563,7 +1596,7 @@ static int QZ_ListFullscreenModes(OTTDPoint* mode_list, int max_modes)
 		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayBitsPerPixel);
 		CFNumberGetValue (number, kCFNumberSInt32Type, &bpp);
 
-		if (bpp != 8) continue;
+		if ((uint) bpp != _cocoa_video_data.blitter_bpp) continue;
 
 		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayWidth);
 		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
@@ -1774,9 +1807,18 @@ static const char* QZ_SetVideoModeAndRestoreOnFailure(uint width, uint height, b
 
 static void QZ_VideoInit()
 {
-	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 0) error("Can't use a blitter that blits 0 bpp for normal visuals");
 
 	memset(&_cocoa_video_data, 0, sizeof(_cocoa_video_data));
+
+	_cocoa_video_data.blitter_bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
+	DEBUG(driver, 1, "Cocoa: Blitter bpp %d", _cocoa_video_data.blitter_bpp);
+
+	if (_cocoa_video_data.blitter_bpp == 0) error("Can't use a blitter that blits 0 bpp for normal visuals");
+
+
+	if (_cocoa_video_data.blitter_bpp != 8 && _cocoa_video_data.blitter_bpp != 32) {
+		error("Cocoa: This video driver only supports 8 and 32 bpp blitters.");
+	}
 
 	/* Initialize the video settings; this data persists between mode switches */
 	_cocoa_video_data.display_id = kCGDirectMainDisplay;
