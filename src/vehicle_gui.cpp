@@ -1418,12 +1418,13 @@ void CreateVehicleDetailsWindow(Window *w)
 static bool inline IsVehicleServiceIntervalEnabled(const VehicleType vehicle_type)
 {
 	switch (vehicle_type) {
+		default: NOT_REACHED();
 		case VEH_TRAIN:    return _patches.servint_trains   != 0; break;
 		case VEH_ROAD:     return _patches.servint_roadveh  != 0; break;
 		case VEH_SHIP:     return _patches.servint_ships    != 0; break;
 		case VEH_AIRCRAFT: return _patches.servint_aircraft != 0; break;
-		default: NOT_REACHED();
 	}
+	return false; // kill a compiler warning
 }
 
 extern int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab);
