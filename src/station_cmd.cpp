@@ -92,8 +92,11 @@ static uint GetNumRoadStopsInStation(const Station* st, RoadStop::Type type)
 }
 
 
-/* Calculate the radius of the station. Basicly it is the biggest
- *  radius that is available within the station */
+/** Calculate the radius of the station. Basicly it is the biggest
+ *  radius that is available within the station
+ * @param st Station to query
+ * @return the so calculated radius
+ */
 static uint FindCatchmentRadius(const Station* st)
 {
 	uint ret = CA_NONE;
@@ -352,8 +355,9 @@ static Station* GetClosestStationFromTile(TileIndex tile)
 	return best_station;
 }
 
-// Update the virtual coords needed to draw the station sign.
-// st = Station to update for.
+/** Update the virtual coords needed to draw the station sign.
+ * @param st Station to update for.
+ */
 static void UpdateStationVirtCoord(Station *st)
 {
 	Point pt = RemapCoords2(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE);
@@ -366,7 +370,7 @@ static void UpdateStationVirtCoord(Station *st)
 	UpdateViewportSignPos(&st->sign, pt.x, pt.y, STR_305C_0);
 }
 
-// Update the virtual coords needed to draw the station sign for all stations.
+/** Update the virtual coords needed to draw the station sign for all stations. */
 void UpdateAllStationVirtCoord()
 {
 	Station* st;
@@ -391,7 +395,10 @@ static void UpdateStationVirtCoordDirty(Station *st)
 	st->MarkDirty();
 }
 
-// Get a mask of the cargo types that the station accepts.
+/** Get a mask of the cargo types that the station accepts.
+ * @param st Station to query
+ * @return the expected mask
+ */
 static uint GetAcceptanceMask(const Station *st)
 {
 	uint mask = 0;
@@ -402,8 +409,9 @@ static uint GetAcceptanceMask(const Station *st)
 	return mask;
 }
 
-// Items contains the two cargo names that are to be accepted or rejected.
-// msg is the string id of the message to display.
+/** Items contains the two cargo names that are to be accepted or rejected.
+ * msg is the string id of the message to display.
+ */
 static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *cargo, StringID msg)
 {
 	for (uint i = 0; i < num_items; i++) {
@@ -414,7 +422,7 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 	AddNewsItem(msg, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT | NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
 }
 
-// Get a list of the cargo types being produced around the tile.
+/** Get a list of the cargo types being produced around the tile.*/
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	int w, int h, int rad)
 {
@@ -423,8 +431,8 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	int x = TileX(tile);
 	int y = TileY(tile);
 
-	// expand the region by rad tiles on each side
-	// while making sure that we remain inside the board.
+	/* expand the region by rad tiles on each side
+	 * while making sure that we remain inside the board. */
 	int x2 = min(x + w + rad, MapSizeX());
 	int x1 = max(x - rad, 0);
 
@@ -458,7 +466,7 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	}
 }
 
-// Get a list of the cargo types that are accepted around the tile.
+/** Get a list of the cargo types that are accepted around the tile.*/
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	int w, int h, int rad)
 {
@@ -467,8 +475,8 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	int x = TileX(tile);
 	int y = TileY(tile);
 
-	// expand the region by rad tiles on each side
-	// while making sure that we remain inside the board.
+	/* expand the region by rad tiles on each side
+	 * while making sure that we remain inside the board. */
 	int x2 = min(x + w + rad, MapSizeX());
 	int y2 = min(y + h + rad, MapSizeY());
 	int x1 = max(x - rad, 0);
@@ -511,11 +519,13 @@ static inline void MergePoint(ottd_Rectangle* rect, TileIndex tile)
 	if (rect->max_y < y) rect->max_y = y;
 }
 
-// Update the acceptance for a station.
-// show_msg controls whether to display a message that acceptance was changed.
+/** Update the acceptance for a station.
+ * @param st Station to update
+ * @param show_msg controls whether to display a message that acceptance was changed.
+ */
 static void UpdateStationAcceptance(Station *st, bool show_msg)
 {
-	// Don't update acceptance for a buoy
+	/* Don't update acceptance for a buoy */
 	if (st->IsBuoy()) return;
 
 	ottd_Rectangle rect;
@@ -527,7 +537,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	/* old accepted goods types */
 	uint old_acc = GetAcceptanceMask(st);
 
-	// Put all the tiles that span an area in the table.
+	/* Put all the tiles that span an area in the table. */
 	if (st->train_tile != 0) {
 		MergePoint(&rect, st->train_tile);
 		MergePoint(&rect,
@@ -554,7 +564,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 		MergePoint(&rect, rs->xy);
 	}
 
-	// And retrieve the acceptance.
+	/* And retrieve the acceptance. */
 	AcceptedCargo accepts;
 	if (rect.max_x >= rect.min_x) {
 		GetAcceptanceAroundTiles(
@@ -568,11 +578,11 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 		memset(accepts, 0, sizeof(accepts));
 	}
 
-	// Adjust in case our station only accepts fewer kinds of goods
+	/* Adjust in case our station only accepts fewer kinds of goods */
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		uint amt = min(accepts[i], 15);
 
-		// Make sure the station can accept the goods type.
+		/* Make sure the station can accept the goods type. */
 		bool is_passengers = IsCargoInClass(i, CC_PASSENGERS);
 		if ((!is_passengers && !(st->facilities & (byte)~FACIL_BUS_STOP)) ||
 				(is_passengers && !(st->facilities & (byte)~FACIL_TRUCK_STOP)))
@@ -581,12 +591,12 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 		SB(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, amt >= 8);
 	}
 
-	// Only show a message in case the acceptance was actually changed.
+	/* Only show a message in case the acceptance was actually changed. */
 	uint new_acc = GetAcceptanceMask(st);
 	if (old_acc == new_acc)
 		return;
 
-	// show a message to report that the acceptance was changed?
+	/* show a message to report that the acceptance was changed? */
 	if (show_msg && st->owner == _local_player && st->facilities) {
 		/* List of accept and reject strings for different number of
 		 * cargo types */
@@ -625,7 +635,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 		if (num_rej > 0) ShowRejectOrAcceptNews(st, num_rej, rejects, reject_msg[num_rej - 1]);
 	}
 
-	// redraw the station view since acceptance changed
+	/* redraw the station view since acceptance changed */
 	InvalidateWindowWidget(WC_STATION_VIEW, st->index, 4);
 }
 
@@ -633,17 +643,19 @@ static void UpdateStationSignCoord(Station *st)
 {
 	const StationRect *r = &st->rect;
 
-	if (r->IsEmpty()) return; // no tiles belong to this station
+	if (r->IsEmpty()) return; /* no tiles belong to this station */
 
-	// clamp sign coord to be inside the station rect
+	/* clamp sign coord to be inside the station rect */
 	st->xy = TileXY(clampu(TileX(st->xy), r->left, r->right), clampu(TileY(st->xy), r->top, r->bottom));
 	UpdateStationVirtCoordDirty(st);
 }
 
-// This is called right after a station was deleted.
-// It checks if the whole station is free of substations, and if so, the station will be
-// deleted after a little while.
-static void DeleteStationIfEmpty(Station* st)
+/** This is called right after a station was deleted.
+ * It checks if the whole station is free of substations, and if so, the station will be
+ * deleted after a little while.
+ * @param st Station
+ */
+static void DeleteStationIfEmpty(Station *st)
 {
 	if (st->facilities == 0) {
 		st->delete_ctr = 0;
@@ -656,9 +668,17 @@ static void DeleteStationIfEmpty(Station* st)
 
 static CommandCost ClearTile_Station(TileIndex tile, byte flags);
 
-// Tries to clear the given area. Returns the cost in case of success.
-// Or an error code if it failed.
-CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID* station, bool check_clear = true)
+/** Tries to clear the given area.
+ * @param tile TileIndex to start check
+ * @param w width of search area
+ * @param h height of search area
+ * @param flags operation to perform
+ * @param invalid_dirs prohibited directions
+ * @param station StationID to be queried and returned if available
+ * @param check_clear if clearing tile should be performed (in wich case, cost will be added)
+ * @return the cost in case of success, or an error code if it failed.
+ */
+CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID *station, bool check_clear = true)
 {
 	CommandCost cost;
 	int allowed_z = -1;
@@ -688,7 +708,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint 
 
 		int flat_z = z;
 		if (tileh != SLOPE_FLAT) {
-			// need to check so the entrance to the station is not pointing at a slope.
+			/* need to check so the entrance to the station is not pointing at a slope. */
 			if ((invalid_dirs & 1 && !(tileh & SLOPE_NE) && (uint)w_cur == w) ||
 					(invalid_dirs & 2 && !(tileh & SLOPE_SE) && h_cur == 1) ||
 					(invalid_dirs & 4 && !(tileh & SLOPE_SW) && w_cur == 1) ||
@@ -699,17 +719,17 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint 
 			flat_z += TILE_HEIGHT;
 		}
 
-		// get corresponding flat level and make sure that all parts of the station have the same level.
+		/* get corresponding flat level and make sure that all parts of the station have the same level. */
 		if (allowed_z == -1) {
-			// first tile
+			/* first tile */
 			allowed_z = flat_z;
 		} else if (allowed_z != flat_z) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
-		// if station is set, then we have special handling to allow building on top of already existing stations.
-		// so station points to INVALID_STATION if we can build on any station. or it points to a station if we're only allowed to build
-		// on exactly that station.
+		/* if station is set, then we have special handling to allow building on top of already existing stations.
+		 * so station points to INVALID_STATION if we can build on any station.
+		 * Or it points to a station if we're only allowed to build on exactly that station. */
 		if (station != NULL && IsTileType(tile_cur, MP_STATION)) {
 			if (!IsRailwayStation(tile_cur)) {
 				return ClearTile_Station(tile_cur, DC_AUTO); // get error message
@@ -740,32 +760,32 @@ static bool CanExpandRailroadStation(const Station* st, uint* fin, Axis axis)
 	uint h = fin[2];
 
 	if (_patches.nonuniform_stations) {
-		// determine new size of train station region..
+		/* determine new size of train station region.. */
 		int x = min(TileX(st->train_tile), TileX(tile));
 		int y = min(TileY(st->train_tile), TileY(tile));
 		curw = max(TileX(st->train_tile) + curw, TileX(tile) + w) - x;
 		curh = max(TileY(st->train_tile) + curh, TileY(tile) + h) - y;
 		tile = TileXY(x, y);
 	} else {
-		// check so the orientation is the same
+		/* check so the orientation is the same */
 		if (GetRailStationAxis(st->train_tile) != axis) {
 			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
 
-		// check if the new station adjoins the old station in either direction
+		/* check if the new station adjoins the old station in either direction */
 		if (curw == w && st->train_tile == tile + TileDiffXY(0, h)) {
-			// above
+			/* above */
 			curh += h;
 		} else if (curw == w && st->train_tile == tile - TileDiffXY(0, curh)) {
-			// below
+			/* below */
 			tile -= TileDiffXY(0, curh);
 			curh += h;
 		} else if (curh == h && st->train_tile == tile + TileDiffXY(w, 0)) {
-			// to the left
+			/* to the left */
 			curw += w;
 		} else if (curh == h && st->train_tile == tile - TileDiffXY(curw, 0)) {
-			// to the right
+			/* to the right */
 			tile -= TileDiffXY(curw, 0);
 			curw += w;
 		} else {
@@ -773,14 +793,14 @@ static bool CanExpandRailroadStation(const Station* st, uint* fin, Axis axis)
 			return false;
 		}
 	}
-	// make sure the final size is not too big.
+	/* make sure the final size is not too big. */
 	if (curw > _patches.station_spread || curh > _patches.station_spread) {
 		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
 		return false;
 	}
 
-	// now tile contains the new value for st->train_tile
-	// curw, curh contain the new value for width and height
+	/* now tile contains the new value for st->train_tile
+	 * curw, curh contain the new value for width and height */
 	fin[0] = tile;
 	fin[1] = curw;
 	fin[2] = curh;
@@ -868,16 +888,17 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 	if (h_org > _patches.station_spread || w_org > _patches.station_spread) return CMD_ERROR;
 
-	// these values are those that will be stored in train_tile and station_platforms
+	/* these values are those that will be stored in train_tile and station_platforms */
 	uint finalvalues[3];
 	finalvalues[0] = tile_org;
 	finalvalues[1] = w_org;
 	finalvalues[2] = h_org;
 
-	// Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station)
+	/* Make sure the area below consists of clear tiles. (OR tiles belonging to a certain rail station) */
 	StationID est = INVALID_STATION;
-	// If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
-	//  for detail info, see: https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365
+	/* If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
+	 * for detail info, see:
+	 * https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365 */
 	ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags & ~DC_EXEC, 5 << axis, _patches.nonuniform_stations ? &est : NULL);
 	if (CmdFailed(ret)) return ret;
 	CommandCost cost(ret.GetCost() + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len);
@@ -905,12 +926,12 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	}
 
 	if (check_surrounding) {
-		// Make sure there are no similar stations around us.
+		/* Make sure there are no similar stations around us. */
 		st = GetStationAround(tile_org, w_org, h_org, est);
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	}
 
-	// See if there is a deleted station close to us.
+	/* See if there is a deleted station close to us. */
 	if (st == NULL) st = GetClosestStationFromTile(tile_org);
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
@@ -918,19 +939,19 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	AutoPtrT<Station> st_auto_delete;
 
 	if (st != NULL) {
-		// Reuse an existing station.
+		/* Reuse an existing station. */
 		if (st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
 		if (st->train_tile != 0) {
-			// check if we want to expanding an already existing station?
+			/* check if we want to expanding an already existing station? */
 			if (_is_old_ai_player || !_patches.join_stations)
 				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
 			if (!CanExpandRailroadStation(st, finalvalues, axis))
 				return CMD_ERROR;
 		}
 
-		//XXX can't we pack this in the "else" part of the if above?
+		/* XXX can't we pack this in the "else" part of the if above? */
 		if (!st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TEST)) return CMD_ERROR;
 	} else {
 		/* allocate and initialize new station */
@@ -976,9 +997,9 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		byte numtracks_orig;
 		Track track;
 
-		// Now really clear the land below the station
-		// It should never return CMD_ERROR.. but you never know ;)
-		//  (a bit strange function name for it, but it really does clear the land, when DC_EXEC is in flags)
+		/* Now really clear the land below the station
+		 * It should never return CMD_ERROR.. but you never know ;)
+		 * (a bit strange function name for it, but it really does clear the land, when DC_EXEC is in flags) */
 		ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _patches.nonuniform_stations ? &est : NULL);
 		if (CmdFailed(ret)) return ret;
 
@@ -1041,11 +1062,11 @@ static void MakeRailwayStationAreaSmaller(Station *st)
 
 restart:
 
-	// too small?
+	/* too small? */
 	if (w != 0 && h != 0) {
-		// check the left side, x = constant, y changes
+		/* check the left side, x = constant, y changes */
 		for (uint i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(0, i));) {
-			// the left side is unused?
+			/* the left side is unused? */
 			if (++i == h) {
 				tile += TileDiffXY(1, 0);
 				w--;
@@ -1053,18 +1074,18 @@ restart:
 			}
 		}
 
-		// check the right side, x = constant, y changes
+		/* check the right side, x = constant, y changes */
 		for (uint i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(w - 1, i));) {
-			// the right side is unused?
+			/* the right side is unused? */
 			if (++i == h) {
 				w--;
 				goto restart;
 			}
 		}
 
-		// check the upper side, y = constant, x changes
+		/* check the upper side, y = constant, x changes */
 		for (uint i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(i, 0));) {
-			// the left side is unused?
+			/* the left side is unused? */
 			if (++i == w) {
 				tile += TileDiffXY(0, 1);
 				h--;
@@ -1072,9 +1093,9 @@ restart:
 			}
 		}
 
-		// check the lower side, y = constant, x changes
+		/* check the lower side, y = constant, x changes */
 		for (uint i = 0; !st->TileBelongsToRailStation(tile + TileDiffXY(i, h - 1));) {
-			// the left side is unused?
+			/* the left side is unused? */
 			if (++i == w) {
 				h--;
 				goto restart;
@@ -1145,13 +1166,14 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 
 			DeallocateSpecFromStation(st, specindex);
 
-			// now we need to make the "spanned" area of the railway station smaller if we deleted something at the edges.
-			// we also need to adjust train_tile.
+			/* now we need to make the "spanned" area of the railway station smaller
+			 * if we deleted something at the edges.
+			 * we also need to adjust train_tile. */
 			MakeRailwayStationAreaSmaller(st);
 			st->MarkTilesDirty(false);
 			UpdateStationSignCoord(st);
 
-			// if we deleted the whole station, delete the train facility.
+			/* if we deleted the whole station, delete the train facility. */
 			if (st->train_tile == 0) {
 				st->facilities &= ~FACIL_TRAIN;
 				UpdateStationVirtCoordDirty(st);
@@ -1331,7 +1353,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Find a station close to us */
 	if (st == NULL) st = GetClosestStationFromTile(tile);
 
-	//give us a road stop in the list, and check if something went wrong
+	/* give us a road stop in the list, and check if something went wrong */
 	RoadStop *road_stop = new RoadStop(tile);
 	if (road_stop == NULL) {
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
@@ -1346,7 +1368,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
-	* to test if everything is OK. In this case we need to delete it before return. */
+	 * to test if everything is OK. In this case we need to delete it before return. */
 	AutoPtrT<Station> st_auto_delete;
 
 	if (st != NULL) {
@@ -1377,11 +1399,11 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost.AddCost((type) ? _price.build_truck_station : _price.build_bus_station);
 
 	if (flags & DC_EXEC) {
-		// Insert into linked list of RoadStops
+		/* Insert into linked list of RoadStops */
 		RoadStop **currstop = FindRoadStopSpot(type, st);
 		*currstop = road_stop;
 
-		//initialize an empty station
+		/*initialize an empty station */
 		st->AddFacility((type) ? FACIL_TRUCK_STOP : FACIL_BUS_STOP, tile);
 
 		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
@@ -1404,7 +1426,12 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-// Remove a bus station
+/** Remove a bus station
+ * @param st Station to remove
+ * @param flags operation to perform
+ * @param tile TileIndex been queried
+ * @return cost or failure of operation
+ */
 static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 {
 	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner)) {
@@ -1429,14 +1456,14 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 	if (flags & DC_EXEC) {
 		if (*primary_stop == cur_stop) {
-			// removed the first stop in the list
+			/* removed the first stop in the list */
 			*primary_stop = cur_stop->next;
-			// removed the only stop?
+			/* removed the only stop? */
 			if (*primary_stop == NULL) {
 				st->facilities &= (is_truck ? ~FACIL_TRUCK_STOP : ~FACIL_BUS_STOP);
 			}
 		} else {
-			// tell the predecessor in the list to skip this stop
+			/* tell the predecessor in the list to skip this stop */
 			RoadStop *pred = *primary_stop;
 			while (pred->next != cur_stop) pred = pred->next;
 			pred->next = cur_stop->next;
@@ -1486,15 +1513,16 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	return ret;
 }
 
-// FIXME -- need to move to its corresponding Airport variable
-// Country Airfield (small)
+/* FIXME -- need to move to its corresponding Airport variable*/
+
+/* Country Airfield (small) */
 static const byte _airport_sections_country[] = {
 	54, 53, 52, 65,
 	58, 57, 56, 55,
 	64, 63, 63, 62
 };
 
-// City Airport (large)
+/* City Airport (large) */
 static const byte _airport_sections_town[] = {
 	31,  9, 33,  9,  9, 32,
 	27, 36, 29, 34,  8, 10,
@@ -1504,7 +1532,7 @@ static const byte _airport_sections_town[] = {
 	26, 22, 23, 24, 25, 26
 };
 
-// Metropolitain Airport (large) - 2 runways
+/* Metropolitain Airport (large) - 2 runways */
 static const byte _airport_sections_metropolitan[] = {
 	 31,  9, 33,  9,  9, 32,
 	 27, 36, 29, 34,  8, 10,
@@ -1514,7 +1542,7 @@ static const byte _airport_sections_metropolitan[] = {
 	 26, 23, 23, 23, 23, 26
 };
 
-// International Airport (large) - 2 runways
+/* International Airport (large) - 2 runways */
 static const byte _airport_sections_international[] = {
 	88, 89, 89, 89, 89, 89,  88,
 	51,  8,  8,  8,  8,  8,  32,
@@ -1525,7 +1553,7 @@ static const byte _airport_sections_international[] = {
 	26, 23, 23, 23, 23, 23,  26
 };
 
-// Intercontinental Airport (vlarge) - 4 runways
+/* Intercontinental Airport (vlarge) - 4 runways */
 static const byte _airport_sections_intercontinental[] = {
 	102, 120,  89,  89,  89,  89,  89,  89, 118,
 	120,  23,  23,  23,  23,  23,  23, 119, 117,
@@ -1541,7 +1569,7 @@ static const byte _airport_sections_intercontinental[] = {
 };
 
 
-// Commuter Airfield (small)
+/* Commuter Airfield (small) */
 static const byte _airport_sections_commuter[] = {
 	85, 30, 115, 115, 32,
 	87, 8,    8,   8, 10,
@@ -1549,18 +1577,18 @@ static const byte _airport_sections_commuter[] = {
 	26, 23,  23,  23, 26
 };
 
-// Heliport
+/* Heliport */
 static const byte _airport_sections_heliport[] = {
 	66,
 };
 
-// Helidepot
+/* Helidepot */
 static const byte _airport_sections_helidepot[] = {
 	124, 32,
 	122, 123
 };
 
-// Helistation
+/* Helistation */
 static const byte _airport_sections_helistation[] = {
 	 32, 134, 159, 158,
 	161, 142, 142, 157
@@ -1926,7 +1954,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
-	* to test if everything is OK. In this case we need to delete it before return. */
+	 * to test if everything is OK. In this case we need to delete it before return. */
 	AutoPtrT<Station> st_auto_delete;
 
 	if (st != NULL) {
@@ -2034,16 +2062,16 @@ static void DrawTile_Station(TileInfo *ti)
 	if (IsValidPlayer(owner)) {
 		palette = PLAYER_SPRITE_COLOR(owner);
 	} else {
-		// Some stations are not owner by a player, namely oil rigs
+		/* Some stations are not owner by a player, namely oil rigs */
 		palette = PALETTE_TO_GREY;
 	}
 
-	// don't show foundation for docks
+	/* don't show foundation for docks */
 	if (ti->tileh != SLOPE_FLAT && !IsDock(ti->tile))
 		DrawFoundation(ti, FOUNDATION_LEVELED);
 
 	if (IsCustomStationSpecIndex(ti->tile)) {
-		// look for customization
+		/* look for customization */
 		st = GetStationByTile(ti->tile);
 		statspec = st->speclist[GetCustomStationSpecIndex(ti->tile)].spec;
 
@@ -2076,8 +2104,8 @@ static void DrawTile_Station(TileInfo *ti)
 		image += rti->total_offset;
 	}
 
-	// station_land array has been increased from 82 elements to 114
-	// but this is something else. If AI builds station with 114 it looks all weird
+	/* station_land array has been increased from 82 elements to 114
+	 * but this is something else. If AI builds station with 114 it looks all weird */
 	DrawGroundSprite(image, HASBIT(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
 
 	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
@@ -2187,12 +2215,12 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode, uin
 			break;
 
 		case TRANSPORT_WATER:
-			// buoy is coded as a station, it is always on open water
+			/* buoy is coded as a station, it is always on open water */
 			if (IsBuoy(tile)) {
 				TrackBits ts = TRACK_BIT_ALL;
-				// remove tracks that connect NE map edge
+				/* remove tracks that connect NE map edge */
 				if (TileX(tile) == 0) ts &= ~(TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT);
-				// remove tracks that connect NW map edge
+				/* remove tracks that connect NW map edge */
 				if (TileY(tile) == 0) ts &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
 				return uint32(ts) * 0x101;
 			}
@@ -2214,8 +2242,8 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode, uin
 
 static void TileLoop_Station(TileIndex tile)
 {
-	// FIXME -- GetTileTrackStatus_Station -> animated stationtiles
-	// hardcoded.....not good
+	/* FIXME -- GetTileTrackStatus_Station -> animated stationtiles
+	 * hardcoded.....not good */
 	switch (GetStationType(tile)) {
 		case STATION_AIRPORT:
 			switch (GetStationGfx(tile)) {
@@ -2412,8 +2440,7 @@ static void UpdateStationRating(Station *st)
 
 			{
 				byte days = ge->days_since_pickup;
-				if (st->last_vehicle_type == VEH_SHIP)
-							days >>= 2;
+				if (st->last_vehicle_type == VEH_SHIP) days >>= 2;
 				(days > 21) ||
 				(rating += 25, days > 12) ||
 				(rating += 25, days > 6) ||
@@ -2432,10 +2459,11 @@ static void UpdateStationRating(Station *st)
 			{
 				int or_ = ge->rating; // old rating
 
-				// only modify rating in steps of -2, -1, 0, 1 or 2
+				/* only modify rating in steps of -2, -1, 0, 1 or 2 */
 				ge->rating = rating = or_ + clamp(clamp(rating, 0, 255) - or_, -2, 2);
 
-				// if rating is <= 64 and more than 200 items waiting, remove some random amount of goods from the station
+				/* if rating is <= 64 and more than 200 items waiting,
+				 * remove some random amount of goods from the station */
 				if (rating <= 64 && waiting >= 200) {
 					int dec = Random() & 0x1F;
 					if (waiting < 400) dec &= 7;
@@ -2443,7 +2471,7 @@ static void UpdateStationRating(Station *st)
 					waiting_changed = true;
 				}
 
-				// if rating is <= 127 and there are any items waiting, maybe remove some goods.
+				/* if rating is <= 127 and there are any items waiting, maybe remove some goods. */
 				if (rating <= 127 && waiting != 0) {
 					uint32 r = Random();
 					if (rating <= (int)GB(r, 0, 7)) {
@@ -2624,7 +2652,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 						((st->facilities & ~FACIL_BUS_STOP)   != 0 || IsCargoInClass(type, CC_PASSENGERS)) && // if we have other fac. than a bus stop, or the cargo is passengers
 						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || !IsCargoInClass(type, CC_PASSENGERS))) { // if we have other fac. than a cargo bay or the cargo is not passengers
 					if (_patches.modified_catchment) {
-						// min and max coordinates of the producer relative
+						/* min and max coordinates of the producer relative */
 						const int x_min_prod = max_rad + 1;
 						const int x_max_prod = max_rad + w_prod;
 						const int y_min_prod = max_rad + 1;
@@ -2964,7 +2992,7 @@ static const SaveLoad _station_desc[] = {
 	    SLE_VAR(Station, trainst_w,                  SLE_UINT8),
 	SLE_CONDVAR(Station, trainst_h,                  SLE_UINT8,                   2, SL_MAX_VERSION),
 
-	// alpha_order was stored here in savegame format 0 - 3
+	/* alpha_order was stored here in savegame format 0 - 3 */
 	SLE_CONDNULL(1, 0, 3),
 
 	    SLE_VAR(Station, string_id,                  SLE_STRINGID),
@@ -2987,7 +3015,7 @@ static const SaveLoad _station_desc[] = {
 	SLE_CONDNULL(2, 0, 25), /* Ex last-vehicle */
 	SLE_CONDVAR(Station, last_vehicle_type,          SLE_UINT8,                  26, SL_MAX_VERSION),
 
-	// Was custom station class and id
+	/* Was custom station class and id */
 	SLE_CONDNULL(2, 3, 25),
 	SLE_CONDVAR(Station, build_date,                 SLE_FILE_U16 | SLE_VAR_I32,  3, 30),
 	SLE_CONDVAR(Station, build_date,                 SLE_INT32,                  31, SL_MAX_VERSION),
@@ -3002,7 +3030,7 @@ static const SaveLoad _station_desc[] = {
 
 	SLE_CONDLST(Station, loading_vehicles,           REF_VEHICLE,                57, SL_MAX_VERSION),
 
-	// reserve extra space in savegame here. (currently 32 bytes)
+	/* reserve extra space in savegame here. (currently 32 bytes) */
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -3083,7 +3111,7 @@ void SaveLoad_STNS(Station *st)
 static void Save_STNS()
 {
 	Station *st;
-	// Write the stations
+	/* Write the stations */
 	FOR_ALL_STATIONS(st) {
 		SlSetArrayIndex(st->index);
 		SlAutolength((AutolengthProc*)SaveLoad_STNS, st);
@@ -3098,7 +3126,7 @@ static void Load_STNS()
 
 		SaveLoad_STNS(st);
 
-		// this means it's an oldstyle savegame without support for nonuniform stations
+		/* this means it's an oldstyle savegame without support for nonuniform stations */
 		if (st->train_tile != 0 && st->trainst_h == 0) {
 			uint w = GB(st->trainst_w, 4, 4);
 			uint h = GB(st->trainst_w, 0, 4);
