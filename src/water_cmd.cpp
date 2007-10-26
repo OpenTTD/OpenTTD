@@ -464,7 +464,7 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WATER_TILE_COAST:
 			assert(!IsSteepSlope(ti->tileh));
-			if (_coast_base != 0) {
+			if (_loaded_newgrf_features.has_newwater) {
 				DrawGroundSprite(_coast_base + ti->tileh, PAL_NONE);
 			} else {
 				DrawGroundSprite(_water_shore_sprites[ti->tileh], PAL_NONE);
