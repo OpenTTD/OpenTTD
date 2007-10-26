@@ -2407,29 +2407,28 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 	z_old += ApplyFoundationToSlope(GetRailFoundation(tileh_old, rail_bits), &tileh_old);
 	z_new += ApplyFoundationToSlope(GetRailFoundation(tileh_new, rail_bits), &tileh_new);
 
-	Slope track_corner;
+	Corner track_corner;
 	switch (rail_bits) {
-		case TRACK_BIT_LEFT:  track_corner = SLOPE_W; break;
-		case TRACK_BIT_LOWER: track_corner = SLOPE_S; break;
-		case TRACK_BIT_RIGHT: track_corner = SLOPE_E; break;
-		case TRACK_BIT_UPPER: track_corner = SLOPE_N; break;
+		case TRACK_BIT_LEFT:  track_corner = CORNER_W; break;
+		case TRACK_BIT_LOWER: track_corner = CORNER_S; break;
+		case TRACK_BIT_RIGHT: track_corner = CORNER_E; break;
+		case TRACK_BIT_UPPER: track_corner = CORNER_N; break;
 
 		/* Surface slope must not be changed */
 		default: return (((z_old != z_new) || (tileh_old != tileh_new)) ? CMD_ERROR : _price.terraform);
 	}
 
 	/* The height of the track_corner must not be changed. The rest ensures GetRailFoundation() already. */
-	if ((tileh_old & track_corner) != 0) z_old += TILE_HEIGHT;
-	if ((tileh_new & track_corner) != 0) z_new += TILE_HEIGHT;
+	z_old += GetSlopeZInCorner((Slope)(tileh_old & ~SLOPE_HALFTILE_MASK), track_corner);
+	z_new += GetSlopeZInCorner((Slope)(tileh_new & ~SLOPE_HALFTILE_MASK), track_corner);
 	if (z_old != z_new) return CMD_ERROR;
 
-	bool was_water = GetRailGroundType(tile) == RAIL_GROUND_WATER;
-
-	/* Make the ground dirty, if surface slope has changed */
-	if ((tileh_old != tileh_new) && ((flags & DC_EXEC) != 0)) SetRailGroundType(tile, RAIL_GROUND_BARREN);
-
 	CommandCost cost = CommandCost(_price.terraform);
-	if (was_water) cost.AddCost(_price.clear_water);
+	/* Make the ground dirty, if surface slope has changed */
+	if (tileh_old != tileh_new) {
+		if (GetRailGroundType(tile) == RAIL_GROUND_WATER) cost.AddCost(_price.clear_water);
+		if ((flags & DC_EXEC) != 0) SetRailGroundType(tile, RAIL_GROUND_BARREN);
+	}
 	return  cost;
 }
 
