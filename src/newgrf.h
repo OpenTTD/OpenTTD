@@ -92,6 +92,7 @@ struct GRFLoadedFeatures {
 	bool has_2CC;             ///< Set if any vehicle is loaded which uses 2cc (two company colours).
 	bool has_newhouses;       ///< Set if there are any newhouses loaded.
 	bool has_newindustries;   ///< Set if there are any newindustries loaded.
+	bool has_newwater;        ///< Set it there are any newwater grf loaded
 };
 
 /* Indicates which are the newgrf features currently loaded ingame */

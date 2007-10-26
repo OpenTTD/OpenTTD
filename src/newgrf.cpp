@@ -3312,6 +3312,7 @@ static void GraphicsNew(byte *buf, int len)
 				return;
 			}
 			_coast_base = _cur_spriteid;
+			_loaded_newgrf_features.has_newwater = true;
 			break;
 
 		case 0x10: // New airport sprites
@@ -5007,7 +5008,7 @@ static void ResetNewGRFData()
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.has_newhouses     = false;
 	_loaded_newgrf_features.has_newindustries = false;
-
+	_loaded_newgrf_features.has_newwater      = false;
 	_signal_base = 0;
 	_coast_base = 0;
 
