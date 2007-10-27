@@ -324,7 +324,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	377, 377, ///<  · small
 	153, 153, ///<  · medium
 	601, 601, ///<  · large
-	SPR_WARNING_SIGN, SPR_CURSOR_AUTOTRAM,
+	SPR_WARNING_SIGN, SPR_CURSOR_ELRAIL_DEPOT,
 	END
 };
 
