@@ -139,7 +139,7 @@ void DisplaySplashImage()
 			break;
 		case 32: {
 				uint32 *dst;
-				int x;
+				uint x;
 
 				memset(_screen.dst_ptr, 0xff000000, _screen.pitch * _screen.height * 4);
 
