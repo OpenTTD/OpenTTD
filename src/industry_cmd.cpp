@@ -405,41 +405,34 @@ static void TransportIndustryGoods(TileIndex tile)
 {
 	Industry *i = GetIndustryByTile(tile);
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
-	uint cw, am;
+	bool moved_cargo = false;
 
-	cw = min(i->produced_cargo_waiting[0], 255);
-	if (cw > indspec->minimal_cargo/* && i->produced_cargo[0] != 0xFF*/) {
-		i->produced_cargo_waiting[0] -= cw;
+	for (uint j = 0; j < lengthof(i->produced_cargo_waiting); j++) {
+		uint cw = min(i->produced_cargo_waiting[j], 255);
+		if (cw > indspec->minimal_cargo && i->produced_cargo[j] != CT_INVALID) {
+			i->produced_cargo_waiting[j] -= cw;
 
-		/* fluctuating economy? */
-		if (_economy.fluct <= 0) cw = (cw + 1) / 2;
+			/* fluctuating economy? */
+			if (_economy.fluct <= 0) cw = (cw + 1) / 2;
 
-		i->this_month_production[0] += cw;
+			i->this_month_production[j] += cw;
 
-		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[0], cw);
-		i->this_month_transported[0] += am;
-		if (am != 0 && !StartStopIndustryTileAnimation(i, IAT_INDUSTRY_DISTRIBUTES_CARGO)) {
-			uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
+			uint am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[j], cw);
+			i->this_month_transported[j] += am;
 
-			if (newgfx != INDUSTRYTILE_NOANIM) {
-				ResetIndustryConstructionStage(tile);
-				SetIndustryCompleted(tile, true);
-				SetIndustryGfx(tile, newgfx);
-				MarkTileDirtyByTile(tile);
-			}
+			moved_cargo |= (am != 0);
 		}
 	}
 
-	cw = min(i->produced_cargo_waiting[1], 255);
-	if (cw > indspec->minimal_cargo) {
-		i->produced_cargo_waiting[1] -= cw;
+	if (moved_cargo && !StartStopIndustryTileAnimation(i, IAT_INDUSTRY_DISTRIBUTES_CARGO)) {
+		uint newgfx = GetIndustryTileSpec(GetIndustryGfx(tile))->anim_production;
 
-		if (_economy.fluct <= 0) cw = (cw + 1) / 2;
-
-		i->this_month_production[1] += cw;
-
-		am = MoveGoodsToStation(i->xy, i->width, i->height, i->produced_cargo[1], cw);
-		i->this_month_transported[1] += am;
+		if (newgfx != INDUSTRYTILE_NOANIM) {
+			ResetIndustryConstructionStage(tile);
+			SetIndustryCompleted(tile, true);
+			SetIndustryGfx(tile, newgfx);
+			MarkTileDirtyByTile(tile);
+		}
 	}
 }
 
