@@ -134,7 +134,7 @@ enum CallbackID {
 	CBID_VEHICLE_START_STOP_CHECK        = 0x31,
 
 	/** Called for every vehicle every 32 days (not all on same date though). */
-	CBID_VEHICLE_32DAY_CALLBACK          = 0x32, // not implemented
+	CBID_VEHICLE_32DAY_CALLBACK          = 0x32,
 
 	/** Called to play a special sound effect */
 	CBID_VEHICLE_SOUND_EFFECT            = 0x33,

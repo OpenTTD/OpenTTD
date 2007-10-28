@@ -1050,6 +1050,10 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 			assert(!first);
 			if (v->Next() != NULL) DoTriggerVehicle(v->Next(), VEHICLE_TRIGGER_ANY_NEW_CARGO, base_random_bits, false);
 			break;
+
+		case VEHICLE_TRIGGER_CALLBACK_32:
+			/* Do not do any recursion */
+			break;
 	}
 }
 

@@ -591,6 +591,7 @@ void InitializeTrains();
 byte VehicleRandomBits();
 void ResetVehiclePosHash();
 void ResetVehicleColorMap();
+void CheckVehicle32Day(Vehicle *v);
 
 bool CanRefitTo(EngineID engine_type, CargoID cid_to);
 CargoID FindFirstRefittableCargo(EngineID engine_type);

@@ -1398,6 +1398,15 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 	return found;
 }
 
+void CheckVehicle32Day(Vehicle *v)
+{
+	if ((v->day_counter & 0x1F) != 0) return;
+
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
+	if (callback == CALLBACK_FAILED) return;
+	if (HASBIT(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
+	if (HASBIT(callback, 1)) v->colormap = PAL_NONE;                         // Update colormap via callback 2D
+}
 
 void DecreaseVehicleValue(Vehicle *v)
 {

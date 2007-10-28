@@ -49,6 +49,8 @@ enum VehicleTrigger {
 	VEHICLE_TRIGGER_EMPTY         = 4,
 	/* Not triggered externally (called for the whole chain if we got NEW_CARGO) */
 	VEHICLE_TRIGGER_ANY_NEW_CARGO = 8,
+	/* Externally triggered for each vehicle in chain */
+	VEHICLE_TRIGGER_CALLBACK_32   = 10,
 };
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
