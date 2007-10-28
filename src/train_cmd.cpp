@@ -41,6 +41,7 @@
 #include "date.h"
 #include "cargotype.h"
 #include "group.h"
+#include "table/sprites.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, bool update_image);
@@ -175,6 +176,9 @@ void TrainConsistChanged(Vehicle* v)
 
 		/* Cache wagon override sprite group. NULL is returned if there is none */
 		u->u.rail.cached_override = GetWagonOverrideSpriteSet(u->engine_type, u->cargo_type, u->u.rail.first_engine);
+
+		/* Reset color map */
+		u->colormap = PAL_NONE;
 
 		if (rvi_u->visual_effect != 0) {
 			u->u.rail.cached_vis_effect = rvi_u->visual_effect;

@@ -340,6 +340,8 @@ public:
 	uint32 current_order_time;     ///< How many ticks have passed since this order started.
 	int32 lateness_counter;        ///< How many ticks late (or early if negative) this vehicle is.
 
+	SpriteID colormap; // NOSAVE: cached color mapping
+
 	union {
 		VehicleRail rail;
 		VehicleAir air;
@@ -588,6 +590,7 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color);
 void InitializeTrains();
 byte VehicleRandomBits();
 void ResetVehiclePosHash();
+void ResetVehicleColorMap();
 
 bool CanRefitTo(EngineID engine_type, CargoID cid_to);
 CargoID FindFirstRefittableCargo(EngineID engine_type);

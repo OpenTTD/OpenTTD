@@ -274,6 +274,7 @@ Vehicle::Vehicle()
 	this->group_id           = DEFAULT_GROUP;
 	this->fill_percent_te_id = INVALID_TE_ID;
 	this->first              = this;
+	this->colormap           = PAL_NONE;
 }
 
 /**
@@ -455,6 +456,12 @@ void ResetVehiclePosHash()
 	FOR_ALL_VEHICLES(v) { v->old_new_hash = NULL; }
 	memset(_vehicle_position_hash, 0, sizeof(_vehicle_position_hash));
 	memset(_new_vehicle_position_hash, 0, sizeof(_new_vehicle_position_hash));
+}
+
+void ResetVehicleColorMap()
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) { v->colormap = PAL_NONE; }
 }
 
 void InitializeVehicles()
@@ -2607,7 +2614,10 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 
 static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v)
 {
-	SpriteID map = PAL_NONE;
+	SpriteID map = (v != NULL) ? v->colormap : PAL_NONE;
+
+	/* Return cached value if any */
+	if (map != PAL_NONE) return map;
 
 	/* Check if we should use the colour map callback */
 	if (HASBIT(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_COLOUR_REMAP)) {
@@ -2618,7 +2628,11 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 			map = GB(callback, 0, 14);
 			/* If bit 14 is set, then the company colours are applied to the
 			 * map else it's returned as-is. */
-			if (!HASBIT(callback, 14)) return map;
+			if (!HASBIT(callback, 14)) {
+				/* Update cache */
+				if (v != NULL) ((Vehicle*)v)->colormap = map;
+				return map;
+			}
 		}
 	}
 
@@ -2631,6 +2645,8 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 	map += livery->colour1;
 	if (twocc) map += livery->colour2 * 16;
 
+	/* Update cache */
+	if (v != NULL) ((Vehicle*)v)->colormap = map;
 	return map;
 }
 
