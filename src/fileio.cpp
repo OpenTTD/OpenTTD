@@ -24,19 +24,18 @@
 /*************************************************/
 
 #define FIO_BUFFER_SIZE 512
-#define MAX_HANDLES 64
 
 struct Fio {
-	byte *buffer, *buffer_end;          ///< position pointer in local buffer and last valid byte of buffer
-	uint32 pos;                         ///< current (system) position in file
-	FILE *cur_fh;                       ///< current file handle
-	const char *filename;               ///< current filename
-	FILE *handles[MAX_HANDLES];         ///< array of file handles we can have open
-	byte buffer_start[FIO_BUFFER_SIZE]; ///< local buffer when read from file
-	const char *filenames[MAX_HANDLES]; ///< array of filenames we (should) have open
+	byte *buffer, *buffer_end;             ///< position pointer in local buffer and last valid byte of buffer
+	uint32 pos;                            ///< current (system) position in file
+	FILE *cur_fh;                          ///< current file handle
+	const char *filename;                  ///< current filename
+	FILE *handles[MAX_FILE_SLOTS];         ///< array of file handles we can have open
+	byte buffer_start[FIO_BUFFER_SIZE];    ///< local buffer when read from file
+	const char *filenames[MAX_FILE_SLOTS]; ///< array of filenames we (should) have open
 #if defined(LIMITED_FDS)
-	uint open_handles;                  ///< current amount of open handles
-	uint usage_count[MAX_HANDLES];      ///< count how many times this file has been opened
+	uint open_handles;                     ///< current amount of open handles
+	uint usage_count[MAX_FILE_SLOTS];      ///< count how many times this file has been opened
 #endif /* LIMITED_FDS */
 };
 

@@ -66,9 +66,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 	}
 
 	/* Find and load the Action 8 information */
-	/* 62 is the last file slot before sample.cat.
-	 * Should perhaps be some "don't care" value */
-	LoadNewGRFFile(config, 62, GLS_FILESCAN);
+	LoadNewGRFFile(config, CONFIG_SLOT, GLS_FILESCAN);
 
 	/* Skip if the grfid is 0 (not read) or 0xFFFFFFFF (ttdp system grf) */
 	if (config->grfid == 0 || config->grfid == 0xFFFFFFFF) return false;

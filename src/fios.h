@@ -5,6 +5,24 @@
 #ifndef FIOS_H
 #define FIOS_H
 
+enum {
+	/**
+	 * Slot used for the GRF scanning and such. This slot cannot be reused
+	 * as it will otherwise cause issues when pressing "rescan directories".
+	 * It can furthermore not be larger than LAST_GRF_SLOT as that complicates
+	 * the testing for "too much NewGRFs".
+	 */
+	CONFIG_SLOT    =  0,
+	/** Slot for the sound. */
+	SOUND_SLOT     =  1,
+	/** First slot useable for (New)GRFs used during the game. */
+	FIRST_GRF_SLOT =  2,
+	/** Last slot useable for (New)GRFs used during the game. */
+	LAST_GRF_SLOT  = 63,
+	/** Maximum number of slots. */
+	MAX_FILE_SLOTS = 64
+};
+
 /* Deals with finding savegames */
 struct FiosItem {
 	byte type;

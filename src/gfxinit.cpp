@@ -11,6 +11,7 @@
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "fileio.h"
+#include "fios.h"
 #include "string.h"
 #include "newgrf.h"
 #include "md5.h"
@@ -333,16 +334,16 @@ static void LoadSpriteTables()
 {
 	const FileList* files = _use_dos_palette ? &files_dos : &files_win;
 	uint load_index;
-	uint i;
+	uint i = FIRST_GRF_SLOT;
 
-	LoadGrfIndexed(files->basic[0].filename, trg1idx, 0);
+	LoadGrfIndexed(files->basic[0].filename, trg1idx, i++);
 	DupSprite(  2, 130); // non-breaking space medium
 	DupSprite(226, 354); // non-breaking space tiny
 	DupSprite(450, 578); // non-breaking space large
 	load_index = 4793;
 
-	for (i = 1; files->basic[i].filename != NULL; i++) {
-		load_index += LoadGrfFile(files->basic[i].filename, load_index, i);
+	for (uint j = 1; files->basic[j].filename != NULL; j++) {
+		load_index += LoadGrfFile(files->basic[j].filename, load_index, i++);
 	}
 
 	/* Load additional sprites for climates other than temperate */

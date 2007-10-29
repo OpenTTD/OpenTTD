@@ -47,6 +47,7 @@
 #include "newgrf_industries.h"
 #include "table/landscape_sprite.h"
 #include "gfxinit.h"
+#include "fios.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
@@ -5419,6 +5420,15 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 		if (_cur_grffile == NULL) error("File '%s' lost in cache.\n", filename);
 		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
 		if (stage == GLS_ACTIVATION && config->status != GCS_INITIALISED) return;
+	}
+
+	if (file_index > LAST_GRF_SLOT) {
+		DEBUG(grf, 0, "'%s' is not loaded as the maximum number of GRFs has been reached", filename);
+		config->status = GCS_DISABLED;
+		config->error  = CallocT<GRFError>(1);
+		config->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+		config->error->message  = STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED;
+		return;
 	}
 
 	FioOpenFile(file_index, filename);
