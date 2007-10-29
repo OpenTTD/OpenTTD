@@ -1570,7 +1570,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
  * @param tile tile where industry is built
  * @param flags of operations to conduct
  * @param p1 industry type see build_industry.h and see industry.h
- * @param p2 unused
+ * @param p2 first layout to try
  * @return index of the newly create industry, or CMD_ERROR if it failed
  */
 CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -1618,7 +1618,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		int count = indspec->num_table;
 		const IndustryTileTable * const *itt = indspec->table;
-		int num = RandomRange(count);
+		int num = clamp(p2, 0, count - 1);
 
 		_error_message = STR_0239_SITE_UNSUITABLE;
 		do {

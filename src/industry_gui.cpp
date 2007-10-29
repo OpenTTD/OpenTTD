@@ -315,7 +315,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				_ignore_restrictions = false;
 				_generating_world = false;
 			} else {
-				success = DoCommandP(e->we.place.tile, WP(w, fnd_d).select, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+				success = DoCommandP(e->we.place.tile, WP(w, fnd_d).select, InteractiveRandomRange(indsp->num_table), NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 			}
 
 			/* If an industry has been built, just reset the cursor and the system */
