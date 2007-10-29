@@ -192,6 +192,7 @@ void InitializeAirports()
 
 void UnInitializeAirports()
 {
+	delete DummyAirport;
 	delete CountryAirport;
 	delete CityAirport;
 	delete Heliport;
