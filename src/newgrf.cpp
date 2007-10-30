@@ -3577,7 +3577,14 @@ static void SkipIf(byte *buf, int len)
 
 	grfmsg(7, "SkipIf: Test condtype %d, param 0x%08X, condval 0x%08X", condtype, param_val, cond_val);
 
-	if (param == 0x88) {
+	/*
+	 * Parameter (variable in specs) 0x88 can only have GRF ID checking
+	 * conditions, except conditions 0x0B and 0x0C (cargo availability)
+	 * as those ignore the parameter. So, when the condition type is
+	 * either of those, the specific variable 0x88 code is skipped, so
+	 * the "general" code for the cargo availability conditions kicks in.
+	 */
+	if (param == 0x88 && condtype != 0x0B && condtype != 0x0C) {
 		/* GRF ID checks */
 
 		const GRFConfig *c = GetGRFConfig(cond_val);
@@ -3588,51 +3595,51 @@ static void SkipIf(byte *buf, int len)
 		}
 
 		switch (condtype) {
-			/* Tests 6 to 10 are only for param 0x88, GRFID checks */
-			case 6: // Is GRFID active?
+			/* Tests 0x06 to 0x0A are only for param 0x88, GRFID checks */
+			case 0x06: // Is GRFID active?
 				result = c->status == GCS_ACTIVATED;
 				break;
 
-			case 7: // Is GRFID non-active?
+			case 0x07: // Is GRFID non-active?
 				result = c->status != GCS_ACTIVATED;
 				break;
 
-			case 8: // GRFID is not but will be active?
+			case 0x08: // GRFID is not but will be active?
 				result = c->status == GCS_INITIALISED;
 				break;
 
-			case 9: // GRFID is or will be active?
+			case 0x09: // GRFID is or will be active?
 				result = c->status == GCS_ACTIVATED || c->status == GCS_INITIALISED;
 				break;
 
-			case 10: // GRFID is not nor will be active
+			case 0x0A: // GRFID is not nor will be active
 				/* This is the only condtype that doesn't get ignored if the GRFID is not found */
 				result = c == NULL || c->flags == GCS_DISABLED || c->status == GCS_NOT_FOUND;
 				break;
 
-			default: grfmsg(1, "SkipIf: Unsupported GRF test %d. Ignoring", condtype); return;
+			default: grfmsg(1, "SkipIf: Unsupported GRF condition type %02X. Ignoring", condtype); return;
 		}
 	} else {
 		/* Parameter or variable tests */
 		switch (condtype) {
-			case 0: result = !!(param_val & (1 << cond_val));
+			case 0x00: result = !!(param_val & (1 << cond_val));
 				break;
-			case 1: result = !(param_val & (1 << cond_val));
+			case 0x01: result = !(param_val & (1 << cond_val));
 				break;
-			case 2: result = (param_val & mask) == cond_val;
+			case 0x02: result = (param_val & mask) == cond_val;
 				break;
-			case 3: result = (param_val & mask) != cond_val;
+			case 0x03: result = (param_val & mask) != cond_val;
 				break;
-			case 4: result = (param_val & mask) < cond_val;
+			case 0x04: result = (param_val & mask) < cond_val;
 				break;
-			case 5: result = (param_val & mask) > cond_val;
+			case 0x05: result = (param_val & mask) > cond_val;
 				break;
-			case 11: result = GetCargoIDByLabel(BSWAP32(cond_val)) == CT_INVALID;
+			case 0x0B: result = GetCargoIDByLabel(BSWAP32(cond_val)) == CT_INVALID;
 				break;
-			case 12: result = GetCargoIDByLabel(BSWAP32(cond_val)) != CT_INVALID;
+			case 0x0C: result = GetCargoIDByLabel(BSWAP32(cond_val)) != CT_INVALID;
 				break;
 
-			default: grfmsg(1, "SkipIf: Unsupported test %d. Ignoring", condtype); return;
+			default: grfmsg(1, "SkipIf: Unsupported condition type %02X. Ignoring", condtype); return;
 		}
 	}
 
