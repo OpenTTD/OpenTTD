@@ -1667,7 +1667,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}No puc c
 STR_180A_ROAD_CONSTRUCTION                                      :Construcció de Carreteres
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Construcció de Tramvies
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construeix una secció de carretera
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construeix secció de carretera utilitzant el mode Autocarretera
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construeix una secció de via de tramvia
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construeix secció de tramvia utilitzant el mode Autotramvia
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construeix una cotxera (per construir i mantenir vehicles)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construeix cotxeres de tramvies (per construir i revisar tramvies)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Constueix una parada d'autobús
@@ -3073,6 +3075,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} està 
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paràmetre invàlid per {STRING}: paràmetre {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} ha de ser carregat abans de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} ha de ser carregat després de {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} necessita OpenTTD versió {STRING} o més modern.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :l'arxiu GRF dissenyat està pendent de traduir
 
 STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
@@ -3430,7 +3433,7 @@ STR_FACE_CHIN                                                   :Barbeta:
 STR_FACE_CHIN_TIP                                               :{BLACK}Canvia la barbeta
 STR_FACE_JACKET                                                 :Jaqueta:
 STR_FACE_JACKET_TIP                                             :{BLACK}Canvia la jaqueta
-STR_FACE_COLLAR                                                 :Collaret:
+STR_FACE_COLLAR                                                 :Coll:
 STR_FACE_COLLAR_TIP                                             :{BLACK}Canvia el collaret
 STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Arracades:

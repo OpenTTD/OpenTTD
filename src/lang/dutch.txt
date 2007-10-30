@@ -1667,7 +1667,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan geen
 STR_180A_ROAD_CONSTRUCTION                                      :Wegenbouw
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Tramrails constructie
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Bouw weg
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Bouw weg met de Autoweg-methode
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Bouw tramrails onderdeel
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Bouw tramrails met de Autotram-methode
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Bouw wegvoertuigdepot (om voertuigen te bouwen en te repareren)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Bouw tram voertuig depot (voor de bouw en onderhoud)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Bouw bushalte

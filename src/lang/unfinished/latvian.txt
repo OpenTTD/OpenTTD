@@ -1021,6 +1021,7 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infla'c
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Transporte't kravu uz staciju tikai tad ja ir pieprasijums: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Atl'aut l'oti garu tiltu cels'anu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Atl'aut "iet uz depo" komandu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kā citas industrijas
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Atl'aut vaira'kas li'dzi'gas industrijas vienai pilse'tai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Viena veida industrijas var tikt celtas tuvu viena no otras: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vienme'r ra'di't garu datumu statusa josla': {ORANGE}{STRING}
@@ -1073,6 +1074,8 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Parād�
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nav
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Paša uzņēmums
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Visi uzņēmumi
+
+
 
 
 
@@ -1298,12 +1301,12 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Uzstād�
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Aizsargā jūsu spēli ar paroli, ja jūs nevēlaties, lai tā būtu publiski pieejama
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Izvēlaties karti:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kuru karti jūs vēlaties spēlēt?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maks. klientu sk.:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Izvēlaties maksimālo klientu skaitu. Ne visiem slotiem ir jābūt aizpildītiem
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internets
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internets
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internets (reklamēt)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maks. klientu sk.:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Izvēlaties maksimālo klientu skaitu. Ne visiem slotiem ir jābūt aizpildītiem
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks. uzņēmumu sk.:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ierobežo serveri noteiktam uzņēmumu daudzumam
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks. novērotāju sk.:
@@ -1343,20 +1346,42 @@ STR_NETWORK_LANG_ROMANIAN                                       :Rumāņu
 
 
 
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Kompānijas nosaukums:  {WHITE}{STRING}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Pagājušā gada ienākumi:  {WHITE}{CURRENCY}
 
+STR_NETWORK_PLAYERS                                             :{SILVER}Spēlētāji:  {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Savienojas...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Lejupielādē trasi
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Reģistrējas...
 
 ############ End of leave-in-this-order
 
+STR_NETWORK_DISCONNECT                                          :{BLACK}Disconnect
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ieraksti cik daudz naudu tu gribi dot
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris ir aizsargāts. Ieraksti paroli
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmums ir aizsargāts. Ieraksti paroli
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klientu saraksts
 
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nevar atrast nevienu interneta spēli
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE}Serveris neadbildēja uz pieprasījumu
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Interneta spēlei pazudis savienojums
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nevar ielādēt saglabāto spēli
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Nevar uzsākt servara darbību
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Nevar savienot
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Savienojums #{NUM} beidzies
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Nepareiza Parole
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Serveris ir pilns
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Jûs esat izraidîts no ðî servera
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Tu esi izmests no šīs spēles
+STR_NETWORK_ERR_CHEATER                                         :{WHITE} Krāpšanās nav atļauta uz šī servera
 
+STR_NETWORK_ERR_LEFT                                            :ir atstājis spēli
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL                                  :Galvanā kļūda
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :ðo vârdu jau lieto
 ############ End of leave-in-this-order
 
@@ -1797,17 +1822,32 @@ STR_886F_TRANSFER                                               :{BLACK}Tranzi't
 
 
 
+
 ##id 0x9000
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9012_CAPACITY                                               :{BLACK}Capacitâte: {LTBLUE}{CARGO}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Atrums: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
 
 STR_9034_RENAME                                                 :{BLACK}Pârsaukt
+STR_9038_GO_TO_ROADVEH_DEPOT                                    :Dodas uz {TOWN} ceļa mašīnu depo
 
 
 ##id 0x9800
+STR_9800_DOCK_CONSTRUCTION                                      :Ostas uzbūve
+STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Ostas uzbūve
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nevar uzbūvēt ostu šeit
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Kuģu depo
+STR_9804_NEW_SHIPS                                              :{BLACK}Jauni kuģi
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Kuìi
+STR_9808_NEW_SHIPS                                              :{WHITE}Jauni kuģi
+STR_9809_BUILD_SHIP                                             :{BLACK}Uzbūvēt kuģi
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Kuģim jābūt apstādinātam depo
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nevar pārdot kuģi...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nevar uzbūvēt kuģi...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kuģis ir ceļā
 STR_980F                                                        :{WHITE}{VEHICLE}
+STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaļas)
+STR_9813_MAX_SPEED                                              :{BLACK}Maksimālais ātrums: {LTBLUE}{VELOCITY}
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Uzbûvet jauno kuìi
 
 STR_9836_RENAME                                                 :{BLACK}Pârsaukt
@@ -1930,8 +1970,10 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-va
 
 
 
-
 #### Improved sign GUI
 
 ########
 
+
+############ Face formatting
+########

@@ -1668,7 +1668,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Impossib
 STR_180A_ROAD_CONSTRUCTION                                      :Construction routière
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Construction de tramway
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construire une section de route
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construire une route avec le mode Auto-route
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construire une section de tramway
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construire une section de tramway avec le mode Auto-tram
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construire un dépôt routier (pour construire et entretenir les véhicules routiers)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construire un dépôt de tramway (pour la construction et l'entretien des véhicules)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construire un arrêt d'autobus

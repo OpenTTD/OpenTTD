@@ -860,6 +860,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :投資成立工
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}投資成立工廠
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...只能建在城鎮裡
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...只能建在雨林區
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...只能建在沙漠區
@@ -1047,6 +1048,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}與 TTD
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}車輛排隊 (量子效應)：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}滑鼠在視窗邊緣時移動視窗：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}可以向地方政府行賄：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}允許購買運輸公司股份：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}允許資金流通給其他公司：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不規則形狀車站：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新路徑搜尋演算法 (NPF 將覆蓋 NTP)：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}貨物重量系數，以模擬較重列車：{ORANGE}{STRING}
@@ -1187,6 +1190,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :非常快
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}雙倍速增長城市比例： {ORANGE}{STRING} 分之一
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}雙倍速增長城市比例： {ORANGE}沒有
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}市鎮規模初始倍率：{ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}在鋪設道路時移除不合理的路面
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}介面
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}建築
@@ -1663,7 +1667,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}不可�
 STR_180A_ROAD_CONSTRUCTION                                      :鋪設道路
 STR_180A_TRAMWAY_CONSTRUCTION                                   :鋪設電車軌
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}鋪設一段公路
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}鋪設道路區段時使用自動模式
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}興建電車站
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}鋪設輕軌區段時使用自動模式
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}設置車庫 (用來購置與維護公路車輛)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}興建電車維修廠 (供製造及維修用)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}設置公車站
@@ -2017,6 +2023,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}無法�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}必須先摧毀隧道
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}必須先摧毀橋樑
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}不能結束在開始地點
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}橋樑兩端不在同個海拔
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}橋樑太接近地面
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}開始與結束地點必須位在同一直線
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}隧道入口地點不適合
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2777,6 +2785,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} 問世了! -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}損毀的運具不能出售...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}無法為運具加入時刻表...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}運具只能等待於站點。
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}此運具將不停靠此站點。
@@ -3065,6 +3075,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} 必須
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              : {STRING} 的參數無效：{STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :載入前 {1:STRING} 必須先載入 {0:STRING}。
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} 必須在 {STRING} 之後載入。
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} 需要 {STRING} 或更新的 OpenTTD 版本。
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 檔案翻譯後出現錯誤
 
 STR_NEWGRF_ADD                                                  :{BLACK}新增
@@ -3380,3 +3391,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}投資
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}探勘
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}設立
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}從列表中選擇適合的工業
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}進階
+STR_FACE_ADVANCED_TIP                                           :{BLACK}進階地選擇新臉孔
+STR_FACE_SIMPLE                                                 :{BLACK}簡易
+STR_FACE_SIMPLE_TIP                                             :{BLACK}簡易地選擇新臉孔
+STR_FACE_LOAD                                                   :{BLACK}載入
+STR_FACE_LOAD_TIP                                               :{BLACK}載入喜愛的臉孔
+STR_FACE_LOAD_DONE                                              :{WHITE}您喜愛的臉孔已從 OpenTTD 設定檔中載入
+STR_FACE_FACECODE                                               :{BLACK}玩家臉孔 No.
+STR_FACE_FACECODE_TIP                                           :{BLACK}檢視與(或)設定玩家臉孔編號
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}檢視與(或)設定玩家臉孔編號
+STR_FACE_FACECODE_SET                                           :{WHITE}新的臉孔編號已設定
+STR_FACE_FACECODE_ERR                                           :{WHITE}無法設定臉孔編號 - 應該要介於 0 到 4,294,967,295 之間！
+STR_FACE_SAVE                                                   :{BLACK}儲存
+STR_FACE_SAVE_TIP                                               :{BLACK}儲存喜愛的臉孔
+STR_FACE_SAVE_DONE                                              :{WHITE}這將被當成您喜愛的臉孔存入 OpenTTD 設定檔
+STR_FACE_EUROPEAN                                               :{BLACK}歐洲人
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}選擇歐洲人臉孔
+STR_FACE_AFRICAN                                                :{BLACK}非洲
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}選擇非洲人臉孔
+STR_FACE_YES                                                    :確定
+STR_FACE_NO                                                     :取消
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}增加鬍鬚或耳飾
+STR_FACE_HAIR                                                   :髮型：
+STR_FACE_HAIR_TIP                                               :{BLACK}改變髮型
+STR_FACE_EYEBROWS                                               :眉毛：
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}改變眉毛
+STR_FACE_EYECOLOUR                                              :眼珠顏色：
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}改變眼珠顏色
+STR_FACE_GLASSES                                                :眼鏡：
+STR_FACE_GLASSES_TIP                                            :{BLACK}增加眼鏡
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}改變眼鏡
+STR_FACE_NOSE                                                   :鼻子：
+STR_FACE_NOSE_TIP                                               :{BLACK}改變鼻子
+STR_FACE_LIPS                                                   :嘴唇：
+STR_FACE_MOUSTACHE                                              :鬍鬚：
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}改變嘴唇或鬍鬚
+STR_FACE_CHIN                                                   :下巴：
+STR_FACE_CHIN_TIP                                               :{BLACK}改變下巴
+STR_FACE_JACKET                                                 :夾克：
+STR_FACE_JACKET_TIP                                             :{BLACK}改變夾克
+STR_FACE_COLLAR                                                 :衣領：
+STR_FACE_COLLAR_TIP                                             :{BLACK}改變衣領
+STR_FACE_TIE                                                    :領帶：
+STR_FACE_EARRING                                                :耳飾：
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}改變領帶或耳飾
+########

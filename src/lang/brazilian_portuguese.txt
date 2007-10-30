@@ -1669,6 +1669,7 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Impossí
 STR_180A_ROAD_CONSTRUCTION                                      :Construir rodovias
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Construção de Bonde
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir trecho rodoviário
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construir estradas usando o modo Autoestrada
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construir linha de bonde
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir garagem (para construção e manutenção de automóveis)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construir depósito de bonde (para construção e manutenção de bondes)
@@ -3077,6 +3078,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} é pro
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :parâmetro inválido para {STRING}: parâmetro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve ser carregado antes de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve ser carregado depois de {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} requer versão {STRING} ou maior do OpenTTD.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar

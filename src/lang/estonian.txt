@@ -960,6 +960,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Rahasta uue tö
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Rahasta uue tööstuse ehitamist
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...saab ehitada ainult linnadesse
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...saab ehitada ainult vihmametsadesse
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...saab ehitada ainult kõrbesse
@@ -1766,7 +1767,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Siia ei 
 STR_180A_ROAD_CONSTRUCTION                                      :Tee-ehitus
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Trammitee ehitamine
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Ehita sõidutee blokk
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Ehita autotee osa kasutades Autoroad režiimi
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Ehita trammitee blokk
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Ehita trammitee osa kasutades Autotram režiimi
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Depoo ehitamine (veovahendite ehitamiseks ja hooldamiseks)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Ehita trammidepoo (veeremi ehitamiseks ja hoolduseks)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Ehita bussijaam
@@ -2120,6 +2123,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Ei saa t
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Enne tuleb tunnel hävitada
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Enne tuleb sild hävitada
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Ei saa alata ja lõppeda samas kohas
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Sillaotsad pole samal kõrgusel
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Sild on maastiku suhtes liiga madal
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Algus ja lõpp peavad samal joonel olema
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Koht ei sobi tunneli sissekäiguks
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2880,6 +2885,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Uus {STRING} saadaval!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Hävinenud sõidukit ei saa müüa...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Sõidukile ei saa sõiduplaani anda...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Sõidukid saavad ainult peatustes oodata.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Sellel sõidukil pole ühtegi peatust.
@@ -3168,6 +3175,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} on mõ
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :vigane parameeter {STRING} jaoks: parameeter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} peab olema laetud enne {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} peab olema laetud pärast{STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} nõuab OpenTTD versiooni {STRING} või uuemat.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
 
 STR_NEWGRF_ADD                                                  :{BLACK}Lisa
@@ -3483,3 +3491,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Rahasta
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Uuri
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Ehita
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Vali siit nimistust sobiv tööstus
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Täpsem
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Täpsem näovalik
+STR_FACE_SIMPLE                                                 :{BLACK}Lihtne
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Lihtne näo valik.
+STR_FACE_LOAD                                                   :{BLACK}Lae
+STR_FACE_LOAD_TIP                                               :{BLACK}Lae lemmik nägu
+STR_FACE_LOAD_DONE                                              :{WHITE}Sinu lemmik nägu on laetud OpenTTD konfiguratsiooni failist.
+STR_FACE_FACECODE                                               :{BLACK}Mängja nägu no.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Vaata või säti näonumbrit
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vaata või säti näonumbrit
+STR_FACE_FACECODE_SET                                           :{WHITE}Uus näonumbri kood on sätitud.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Ei saanud näonumbrit sättida - peab olema number 0 ja 4,494,967,295 vahel!
+STR_FACE_SAVE                                                   :{BLACK}Salvesta
+STR_FACE_SAVE_TIP                                               :{BLACK}Salvesta lemmiknägu
+STR_FACE_SAVE_DONE                                              :{WHITE}See nägu salvestatakse sinu lemmikuna OpenTTD seadete faili.
+STR_FACE_EUROPEAN                                               :{BLACK}Eurooplane
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vali euroopa näod
+STR_FACE_AFRICAN                                                :{BLACK}Aafriklane
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vali aafrika näod
+STR_FACE_YES                                                    :Jah
+STR_FACE_NO                                                     :Ei
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Vuntsid või kõrvarõngad on lubatud
+STR_FACE_HAIR                                                   :Juuksed:
+STR_FACE_HAIR_TIP                                               :{BLACK}Vaheta juukseid
+STR_FACE_EYEBROWS                                               :Kulmud:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Vaheta kulmusid
+STR_FACE_EYECOLOUR                                              :Silmavärv:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Vaheta silmavärvi:
+STR_FACE_GLASSES                                                :Prillid:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Prillid on lubatud
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Vaheta prille
+STR_FACE_NOSE                                                   :Nina:
+STR_FACE_NOSE_TIP                                               :{BLACK}Vaheta nina
+STR_FACE_LIPS                                                   :Huuled:
+STR_FACE_MOUSTACHE                                              :Vuntsid:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Vaheta huuli või vuntse
+STR_FACE_CHIN                                                   :Lõug:
+STR_FACE_CHIN_TIP                                               :{BLACK}Vaheta lõuga
+STR_FACE_JACKET                                                 :Pintsak:
+STR_FACE_JACKET_TIP                                             :{BLACK}Vaheta pintsakut
+STR_FACE_COLLAR                                                 :Krae:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Vaheta kraed
+STR_FACE_TIE                                                    :Lips:
+STR_FACE_EARRING                                                :Kõrvarõngas:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Vaheta kraed või kõrvarõngast
+########

@@ -1668,7 +1668,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}No puede
 STR_180A_ROAD_CONSTRUCTION                                      :Construcción de carretera
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Construcción de tranvía
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir sección de carretera
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construir carretera usando el modo de Autocarretera
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construir sección de tranvía
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construir metro usando el modo de Autometro
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir depósito de carretera (para construir y despachar vehículos)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construir depósito de tranvías (para vehículos de contrucción y servicio)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construir estación de autobús
@@ -3074,7 +3076,9 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} está 
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parámetro incorrecto para {STRING}: parametro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} debe ser cargado antes de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} debe ser cargado después de {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} requiere OpenTTD versión {STRING} o superior.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :el fichero GRF ha sido diseñado para ser traducido
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Añadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Añadir un NewGRF a la lista

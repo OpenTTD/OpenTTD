@@ -862,6 +862,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financiraj novu
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financiraj novu industriju
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...može biti izgrađen samo u gradovima
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...može biti izgrađen samo u predjelima kišnih šuma
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...može biti izgrađen samo u pustinjskim područjima
@@ -1668,7 +1669,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nije mog
 STR_180A_ROAD_CONSTRUCTION                                      :Izgradnja ceste
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Izgradnja tramvaja
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Izgradi dio ceste
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Izgradi cestu koristeći Autoroad način gradnje
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Izgradi tramvajski dio
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Izgradi tramvajsku prugu koristeći Autotram način gradnje
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Izgradi spremište cestovnih vozila (za izgradnju i servisiranje vozila)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Izgradi spremište tramvajskih vozila (za izgradnju i servisiranje vozila)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Izgradi autobusnu stanicu
@@ -3074,6 +3077,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je nap
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nevažeći parametar za  {STRING}: parametar {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} se mora učitati prije {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} se mora učitati nakon {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} zahtijeva OpenTTD verziju {STRING} ili bolju.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je dizajnirana za prijevod
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
@@ -3389,3 +3393,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Financir
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospekt
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Izgradi
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Izaberi prikladnu industriju s ovog popisa
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Napredno
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Napredan odabir lica.
+STR_FACE_SIMPLE                                                 :{BLACK}Jednostavno
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Jednostavan odabir lica.
+STR_FACE_LOAD                                                   :{BLACK}Učitaj
+STR_FACE_LOAD_TIP                                               :{BLACK}Učitaj omiljeno lice
+STR_FACE_LOAD_DONE                                              :{WHITE}Tvoje omiljeno lice je učitano iz OpenTTD konfiguracijske datoteke.
+STR_FACE_FACECODE                                               :{BLACK}Broj igračevog lica
+STR_FACE_FACECODE_TIP                                           :{BLACK}Pogledaj i/ili postavi broj igračevog lica
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Pogledaj i/ili postavi broj igračevog lica
+STR_FACE_FACECODE_SET                                           :{WHITE}Novi kod za broj igračevog lica je postavljen.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Ne mogu postaviti broj igračevog lica - mora biti numerička vrijednost između 0 i 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Spremi
+STR_FACE_SAVE_TIP                                               :{BLACK}Izaberi omiljeno lice
+STR_FACE_SAVE_DONE                                              :{WHITE}Ovo lice bit će spremljeno kao tvoje omiljeno u OpenTTD konfiguracijsku datoteku.
+STR_FACE_EUROPEAN                                               :{BLACK}Europljanin
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Izaberi europska lica
+STR_FACE_AFRICAN                                                :{BLACK}Afrikanac
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Izaberi afrička lica
+STR_FACE_YES                                                    :Da
+STR_FACE_NO                                                     :Ne
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Uključi brkove ili naušnicu
+STR_FACE_HAIR                                                   :Kosa:
+STR_FACE_HAIR_TIP                                               :{BLACK}Promijeni kosu
+STR_FACE_EYEBROWS                                               :Obrve:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Promijeni obrve
+STR_FACE_EYECOLOUR                                              :Boja očiju:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Promijeni boju očiju
+STR_FACE_GLASSES                                                :Naočale:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Omogući naočale
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Promijeni naočale
+STR_FACE_NOSE                                                   :Nos:
+STR_FACE_NOSE_TIP                                               :{BLACK}Promijeni nos
+STR_FACE_LIPS                                                   :Usne:
+STR_FACE_MOUSTACHE                                              :Brkovi:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Promijeni usne ili brkove
+STR_FACE_CHIN                                                   :Brada:
+STR_FACE_CHIN_TIP                                               :{BLACK}Promijeni bradu
+STR_FACE_JACKET                                                 :Jakna
+STR_FACE_JACKET_TIP                                             :{BLACK}Promijeni jaknu
+STR_FACE_COLLAR                                                 :Kragna:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Promijeni kragnu
+STR_FACE_TIE                                                    :Kravata:
+STR_FACE_EARRING                                                :Naušnica:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Promijeni kravatu ili naušnicu
+########

@@ -1252,7 +1252,7 @@ STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Trasform
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Impossibile costruire qui un waypoint ferroviario...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Impossibile rimuovere il waypoint ferroviario da qui...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Costruisci binario usando la modalità automatica
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Costruisce binari usando la modalità automatica
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...non ci sono città in questo scenario
 
@@ -1669,7 +1669,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Impossib
 STR_180A_ROAD_CONSTRUCTION                                      :Costruzione strade
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Costruzione tranvie
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Costruisce una sezione di strada
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Costruisce sezioni di strada usando la modalità automatica
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Costruisce una sezione di tranvia
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Costruisce sezioni di tranvia usando la modalità automatica
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Costruisce un deposito automezzi (per costruire e manutenere i veicoli)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Costruisce un deposito tranviario (per costruire e manutenere i veicoli)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Costruisce una stazione degli autobus
@@ -3077,6 +3079,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve e
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve essere caricato dopo {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} richiede OpenTTD versione {STRING} o superiore.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :il file GRF che era progettato per tradurre
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Troppi file NewGRF caricati.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Aggiungi
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Aggiunge un file NewGRF all'elenco

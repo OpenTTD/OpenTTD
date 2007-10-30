@@ -860,6 +860,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :新規産業の
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}新規産業の建設を出資
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...町内のみに建設できます
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...雨林地域のみに建設できます
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...砂漠地域のみに建設できます
@@ -1020,6 +1021,7 @@ STR_CONFIG_PATCHES_OFF                                          :切
 STR_CONFIG_PATCHES_ON                                           :入
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}状況バーに車両速度を表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}傾斜地／海岸上の建設を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}建物、道路、鉄道などの下に地形変更を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}より現実的な受入れる地域を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの破壊を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}超長型列車の作成を許容：{ORANGE}{STRING}
@@ -1046,6 +1048,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}車両の待ち行列を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}マウスが端にあるとき画面を移動：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}町議会の買収を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}独占的運送権の購入を許容：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}他社への送金を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不統一の駅を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新型グローバルパスファインダー（NPF）：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}重い列車のシミュレーションのための重量乗数の設定：{ORANGE}{STRING}
@@ -1186,6 +1190,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :特に早い
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}市に展開する町の割合：{ORANGE}{STRING}の１
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}市に展開する町の割合：{ORANGE}なし
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}初期の市町村のサイズの乗数：{ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}道路建設時に変な部分を破壊
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}インターフェース
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}建設
@@ -1662,7 +1667,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}貨物�
 STR_180A_ROAD_CONSTRUCTION                                      :道路の建設
 STR_180A_TRAMWAY_CONSTRUCTION                                   :路面電車線の建設
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}道路の部分を建設します
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}自動道路建設モードを用いて道路を建設
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}路面電車線を建設します
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}自動路面電車線建設モードを用いて路面電車線を建設
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}（バス、トラックの建設、整備のための）車庫を建設します
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}（路面電車の購入や修理のため）路面電車庫を建設します
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}バス停を建設します
@@ -2016,6 +2023,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}向こ�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}先にトンネルを破壊しなければなりません
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}先に橋を破壊しなければなりません
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}開始点と終了点が同じ位置に建設できません
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}橋端は同じ高さではありません
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}橋は低すぎて、地形に対応していません
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}一直線の橋しか建設できません
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}この土地はトンネルの入り口に不適当です
 STR_500D                                                        :{GOLD}{STRING}、{}　{VELOCITY} {WHITE}{CURRENCY}
@@ -2776,6 +2785,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING}が新登場！ー{ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}破壊した車両が売却できません...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}この車両に時刻表が設定できません...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}車両が駅／バス停のみで停車できます。
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}この車両はこの駅／バス停で停車しません。
@@ -3064,6 +3075,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING}を使�
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING}のパラメータが不正：パラメータ　{STRING}（{NUM}）
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}を読み込む前、{0:STRING}を読み込まなければなりません。
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING}は{STRING}の読み込み後のみに読み込めます。
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} は OpenTTD バージョン {STRING} もしくはそれ以降のバージョンが必要です。
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :訳しにデザインされたGRFファイル
 
 STR_NEWGRF_ADD                                                  :{BLACK}追加
@@ -3379,3 +3391,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}出資
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}調査
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}建設
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}適当な産業を選択します
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}詳しい
+STR_FACE_ADVANCED_TIP                                           :{BLACK}顔を詳しく選択します。
+STR_FACE_SIMPLE                                                 :{BLACK}簡単
+STR_FACE_SIMPLE_TIP                                             :{BLACK}顔を簡単に選択します。
+STR_FACE_LOAD                                                   :{BLACK}開く
+STR_FACE_LOAD_TIP                                               :{BLACK}お好みの顔を開きます。
+STR_FACE_LOAD_DONE                                              :{WHITE}お好みの顔は OpenTTD の設定ファイルから読み込みました。
+STR_FACE_FACECODE                                               :{BLACK}プレヤーの顔番号
+STR_FACE_FACECODE_TIP                                           :{BLACK}プレヤーの顔番号を表示／変更
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}プレヤーの顔番号を表示／変更
+STR_FACE_FACECODE_SET                                           :{WHITE}新しい顔番号が設定されました。
+STR_FACE_FACECODE_ERR                                           :{WHITE}顔記号が設定できませんでした - 0 と 4,294,967,295 の間の数値ではありません。
+STR_FACE_SAVE                                                   :{BLACK}保存
+STR_FACE_SAVE_TIP                                               :{BLACK}お好みの顔を保存します。
+STR_FACE_SAVE_DONE                                              :{WHITE}この顔はお好みの顔として OpenTTD の設定ファイルに保存します。
+STR_FACE_EUROPEAN                                               :{BLACK}白人
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}白人の顔を選択します
+STR_FACE_AFRICAN                                                :{BLACK}黒人
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}黒人の顔を選択します
+STR_FACE_YES                                                    :はい
+STR_FACE_NO                                                     :いいえ
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}口ひげもしくはイヤリングを表示
+STR_FACE_HAIR                                                   :髪の毛：
+STR_FACE_HAIR_TIP                                               :{BLACK}髪の毛を変更
+STR_FACE_EYEBROWS                                               :まゆ：
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}まゆを変更
+STR_FACE_EYECOLOUR                                              :目の色：
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}目の色を変更
+STR_FACE_GLASSES                                                :眼鏡：
+STR_FACE_GLASSES_TIP                                            :{BLACK}眼鏡をかける
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}眼鏡を変更
+STR_FACE_NOSE                                                   :鼻：
+STR_FACE_NOSE_TIP                                               :{BLACK}鼻を変更：
+STR_FACE_LIPS                                                   :口唇：
+STR_FACE_MOUSTACHE                                              :口ひげ：
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}口唇／口ひげを変更
+STR_FACE_CHIN                                                   :顎：
+STR_FACE_CHIN_TIP                                               :{BLACK}顎を変更
+STR_FACE_JACKET                                                 :ジャケット：
+STR_FACE_JACKET_TIP                                             :{BLACK}ジャケットを変更：
+STR_FACE_COLLAR                                                 :襟：
+STR_FACE_COLLAR_TIP                                             :{BLACK}襟を変更：
+STR_FACE_TIE                                                    :ネクタイ：
+STR_FACE_EARRING                                                :イヤリング：
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}ネクタイ／イヤリングを変更
+########

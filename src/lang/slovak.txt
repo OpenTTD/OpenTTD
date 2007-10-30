@@ -1211,7 +1211,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Zakazat
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Povolit nove AI (alpha verzia): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v multiplayeri (experimentalne): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}{STRING} dni
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Implicitný servisný interval pre vlaky: {ORANGE}{STRING} dní/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}vypnuty
 STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}vypnuty
@@ -1599,11 +1599,11 @@ STR_NETWORK_GAVE_MONEY_AWAY                                     :poslal si {STRI
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tim] :
 STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privany] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Súkromne] :
 STR_NETWORK_CHAT_CLIENT                                         :[Osobny] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_ALL_CAPTION                                    :[Vsetci] :
-STR_NETWORK_CHAT_ALL                                            :[Vsetci] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Všetkým] :
+STR_NETWORK_CHAT_ALL                                            :[Všetkým] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :si zmenil meno na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server ukoncil relaciu
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server sa restartuje ...{}Cakajte prosim ...
@@ -1731,7 +1731,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nie je m
 STR_180A_ROAD_CONSTRUCTION                                      :Výstavba cesty
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Výstavba elektrickovej dráhy
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Postavit cast cesty
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Stavat casti ciest použitím automatického módu
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Postavit cast elektrickovej dráhy
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Stavat casti elektrickovej trate použitím automatického módu
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Postavit garaz (na vyroby a opravy automobilov)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Postavit elektrickové depo
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Postavit autobusovu zastavku

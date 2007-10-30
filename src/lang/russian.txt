@@ -1669,7 +1669,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Не м�
 STR_180A_ROAD_CONSTRUCTION                                      :Строительство дорог
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Трамваи
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Проложить дорогу
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Строить автотрассу, используя авто-режим
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Проложить трамвайные пути
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Строить трамвайный путь, используя авто-режим
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Построить гараж (для закупки и обслуживания машин)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Построить трамвайное депо (для закупки и обслуживания трамваев)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Построить автобусную остановку
@@ -3086,6 +3088,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} сде
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Неверный параметр {STRING}: параметр {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} должен быть загружен перед {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} должен быть загружен после {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} требует OpenTTD версии {STRING} или выше.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добавить

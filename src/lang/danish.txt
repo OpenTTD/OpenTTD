@@ -860,6 +860,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finansiér ny i
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansiér ny industri
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan kun bygges i regnskovsområder
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kan kun bygges i ørkenområder
@@ -1047,6 +1048,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatc
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kødannelse af køretøjer (med kvanteeffekt): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pannorer vindue når musen er ved kanten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillad bestikkelse af de lokale myndigheder: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillad køb af eksklusive transportrettigheder: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillad at sende penge til andre firmaer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global ruteplanlægger (NPF, tilsidesætter NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vægtfaktor for fragt for at simulere tunge tog: {ORANGE}{STRING}
@@ -1187,6 +1190,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Meget hurtig
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel af byer der vil vokse dobbelt så hurtigt: {ORANGE}1 af {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel af byer der vil vokse dobbelt så hurtigt: {ORANGE}Ingen
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Startværdi for bystørrelsesfaktor: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Fjern absurde vejelementer under opførelse af vej
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Brugerflade
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruktion
@@ -1663,7 +1667,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan ikke
 STR_180A_ROAD_CONSTRUCTION                                      :Vejkonstruktion
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Sporvejskonstruktion
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Byg en sektion vej
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Byg vejsektion ved hjælp af 'Auto-vej'
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Byg sporvejssektion
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Byg sporvejssektion ved hjælp af 'Auto-sporvej'
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Byg værksted (til bygning og servicering af vejkøretøjer)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Byg sporvognsremise (til konstruktion og service af vogne)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Byg rutebilstation
@@ -2017,6 +2023,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Det er u
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Det er nødvendigt at rive tunnelen ned først
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Det er nødvendigt at rive broen ned først
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Kan ikke starte og slutte på samme position
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Brohoveder er ikke i samme niveau
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Broen er for lav til terrænet
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Start- og slutposition skal være på linje
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Dette sted er ikke brugbart til starten af en tunnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2777,6 +2785,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING} er nu tilgængelig!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan ikke sælge ødelagt køretøj...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan ikke lave køreplan for transportmiddel...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Transportmidler kan kun vente ved stationer.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Dette transportmiddel stopper ikke ved denne station.
@@ -3065,6 +3075,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} er des
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} skal indlæses før {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} skal indlæses efter {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} kræver OpenTTD version {STRING} eller højere.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen, som den er lavet til at oversætte,
 
 STR_NEWGRF_ADD                                                  :{BLACK}Tilføj
@@ -3380,3 +3391,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Finansi�
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Efterforsk
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Byg
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Vælg passende industri fra denne liste
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Avanceret
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Avanceret valg af ansigt.
+STR_FACE_SIMPLE                                                 :{BLACK}Simpel
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Simpelt valg af ansigt.
+STR_FACE_LOAD                                                   :{BLACK}Hent
+STR_FACE_LOAD_TIP                                               :{BLACK}Hent favoritansigt
+STR_FACE_LOAD_DONE                                              :{WHITE}Dit favoritansigt er hentet fra OpenTTD-konfigurationsfilen.
+STR_FACE_FACECODE                                               :{BLACK}Spiller ansigtsnr.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Vis og/eller indstil spillers ansigtsnummer
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vis og/eller indstil spillers ansigtsnummer
+STR_FACE_FACECODE_SET                                           :{WHITE}Ny ansigtsnummer-kode er indstillet.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Kunne ikke indstille spillers ansigtsnummer - skal være et nummer mellem 0 og 4.294.967.295!
+STR_FACE_SAVE                                                   :{BLACK}Gem
+STR_FACE_SAVE_TIP                                               :{BLACK}Gem favoritansigt
+STR_FACE_SAVE_DONE                                              :{WHITE}Dette ansigt bliver gemt som din favorit i OpenTTD konfigurationsfilen.
+STR_FACE_EUROPEAN                                               :{BLACK}Europæisk
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vælg europæiske ansigter
+STR_FACE_AFRICAN                                                :{BLACK}Afrikansk
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vælg afrikanske ansigter
+STR_FACE_YES                                                    :Ja
+STR_FACE_NO                                                     :Nej
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Slå overskæg eller ørering til
+STR_FACE_HAIR                                                   :Hår:
+STR_FACE_HAIR_TIP                                               :{BLACK}Ændre hår
+STR_FACE_EYEBROWS                                               :Øjenbryn:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Ændre øjenbryn
+STR_FACE_EYECOLOUR                                              :Øjenfarve:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Ændre øjenfarve
+STR_FACE_GLASSES                                                :Briller:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Slå briller til
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Ændre briller
+STR_FACE_NOSE                                                   :Næse:
+STR_FACE_NOSE_TIP                                               :{BLACK}Ændre næse
+STR_FACE_LIPS                                                   :Læber:
+STR_FACE_MOUSTACHE                                              :Overskæg:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Ændre læber eller overskæg
+STR_FACE_CHIN                                                   :Hage:
+STR_FACE_CHIN_TIP                                               :{BLACK}Ændre hage
+STR_FACE_JACKET                                                 :Jakke:
+STR_FACE_JACKET_TIP                                             :{BLACK}Ændre jakke
+STR_FACE_COLLAR                                                 :Krave:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Ændre krave
+STR_FACE_TIE                                                    :Slips:
+STR_FACE_EARRING                                                :Ørering:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Ændre slips eller ørering
+########

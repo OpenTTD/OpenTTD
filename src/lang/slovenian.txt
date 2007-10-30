@@ -1709,7 +1709,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nemogoč
 STR_180A_ROAD_CONSTRUCTION                                      :Gradnja ceste
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Gradnja tramvaj proge
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Zgradi cestni odsek
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Gradnja cestnega odseka v avtomatskem načinu
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Zgradi odsek proge
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Gradnja tramvaj proge v avtomatskem načinu
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Zgradi garažo (za izdelavo in servis vozil)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Zgradi tramvaj garažo (za izdelavo in servisiranje vozil)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Zgradi avtobusno postajo
@@ -3153,6 +3155,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je izd
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neveljavna nastavitev za {STRING}: nastavitev {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} je potrebno naložiti pred {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} je potrebno naložiti po {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} potrebuje OpenTTD različico {STRING} ali boljšo.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj

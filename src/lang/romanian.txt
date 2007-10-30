@@ -338,8 +338,8 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galoane{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litri{P "" s}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galo{P n ane}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P u i}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ livre-forţă
@@ -860,6 +860,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Obiectiv indust
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Construieşte un nou obiectiv industrial
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...se poate construi doar în oraşe
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...se poate construi doar in padurile ecuatoriale
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...se poate construi doar în zonele de deşert
@@ -902,7 +903,7 @@ STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of townname region
 
 STR_CURR_GBP                                                    :Liră sterlină (£)
-STR_CURR_USD                                                    :Dolar ($)
+STR_CURR_USD                                                    :Dolar American ($)
 STR_CURR_EUR                                                    :Euro (€)
 STR_CURR_YEN                                                    :Yen japonez (¥)
 STR_CURR_ATS                                                    :Şiling austriac (ATS)
@@ -1047,6 +1048,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Utilize
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Autovehiculele formeazã o coadã (cu efecte cuantice): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Mutã imaginea când mouse-ul este la marginea ecranului: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permite mituirea autoritãtilor locale: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Permite cumpararea de drepturi exclusive de transport: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Permite transfer de bani catre alte companii: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Statii neuniforme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nou pathfinding global(NPF, dezactiveaza NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicator greutate pt marfar pt simularea trenurilor grele: {ORANGE}{STRING}
@@ -1187,6 +1190,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Foarte rapida
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proportia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}1 in {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proportia oraselor care se vor dezvolta de doua ori mai repede: {ORANGE}None
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicator initial dimensiune oras: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Elimina elementele de drum absurde pe durata constructiei drumului
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfatã
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcţie
@@ -1663,7 +1667,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nu pot c
 STR_180A_ROAD_CONSTRUCTION                                      :Construcţii rutiere
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Construcţie tramvai
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construieşte secţiune de şosea
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construieste sectiune de sosea folosind modul Auto-sosea
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construcieşte şină de tramvai
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construieste sectiune de sina de tramvai folosind modul Auto-tramvai
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construieşte o autobază (pentru construire şi întreţinere de autovehicule)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construieste depou tramvaie (pentru constructii si reparatii vehicule)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Plasează staţie de autobuz
@@ -2017,6 +2023,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Terenul 
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Mai întâi trebuie demolat tunelul
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Mai întâi trebuie demolat podul
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Cele două capete nu se pot situa în acelaşi loc
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Capetele podului nu sunt la acelasi nivel
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Podul este prea jos pentru terenul corespunzator
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Cele două capete trebuie să se situeze în linie
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Loc nepotrivit pentru intrarea într-un tunel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2777,6 +2785,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Un nou {STRING} este acum disponibil!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Vehiculul distrus nu poate fi vandut...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nu pot programa vehiculul...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehiculele pot astepta numai in statii.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Acest vehicul nu opreste in aceasta statie.
@@ -3065,6 +3075,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} este c
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametru invalid pentru {STRING}: parametrul {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} trebuie sa fie incarcat inaintea {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} trebuie sa fie incarcat dupa {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} necesita OpenTTD versiunea {STRING} sau mai noua.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fisierul GRF conceput pentru traducere
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adauga
@@ -3380,3 +3391,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Finantea
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospecteaza
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Construieste
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Alege industria potrivita din acesta lista
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Avansat
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Selectie avansata a fetei.
+STR_FACE_SIMPLE                                                 :{BLACK}Simplu
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Selectie simplă a fetei.
+STR_FACE_LOAD                                                   :{BLACK}Incarcare
+STR_FACE_LOAD_TIP                                               :{BLACK}Incarca o fata preferata
+STR_FACE_LOAD_DONE                                              :{WHITE}Fata dvs. preferata a fost incarcata din fisierul de configurare al OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}Nr. fetei pentru jucator
+STR_FACE_FACECODE_TIP                                           :{BLACK}Vizualizeaza si/sau seteaza numarul fetei pentru jucator
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vizualizeaza si/sau seteaza numărul fetei pentru jucator
+STR_FACE_FACECODE_SET                                           :{WHITE}Noul cod numeric pentru fata a fost stabilit.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nu am putut stabili numarul de fata al jucatorului - trebuie sa fie un numar intre 0 si 4.294.967.295!
+STR_FACE_SAVE                                                   :{BLACK}Salveaza
+STR_FACE_SAVE_TIP                                               :{BLACK}Salveaza fata preferata
+STR_FACE_SAVE_DONE                                              :{WHITE}Aceasta fata va fi salvata ca fata preferata în fisierul de configurare al OpenTTD.
+STR_FACE_EUROPEAN                                               :{BLACK}European
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Alege fete europene
+STR_FACE_AFRICAN                                                :{BLACK}African
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Alege fete africane
+STR_FACE_YES                                                    :Da
+STR_FACE_NO                                                     :Nu
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Permite mustata sau cercei
+STR_FACE_HAIR                                                   :Par:
+STR_FACE_HAIR_TIP                                               :{BLACK}Schimba parul
+STR_FACE_EYEBROWS                                               :Sprancene:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Schimba sprancenele
+STR_FACE_EYECOLOUR                                              :Culoarea ochilor:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Schimba culoarea ochilor
+STR_FACE_GLASSES                                                :Ochelari:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Permite ochelari
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Schimba ochelari
+STR_FACE_NOSE                                                   :Nas:
+STR_FACE_NOSE_TIP                                               :{BLACK}Schimba nasul
+STR_FACE_LIPS                                                   :Buze:
+STR_FACE_MOUSTACHE                                              :Mustata:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Schimba buzele sau mustata
+STR_FACE_CHIN                                                   :Barbie:
+STR_FACE_CHIN_TIP                                               :{BLACK}Schimba barbia
+STR_FACE_JACKET                                                 :Jacheta
+STR_FACE_JACKET_TIP                                             :{BLACK}Schimba jacheta
+STR_FACE_COLLAR                                                 :Guler:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Schimba gulerul
+STR_FACE_TIE                                                    :Cravata:
+STR_FACE_EARRING                                                :Cercei:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Schimba cravata sau cerceii
+########

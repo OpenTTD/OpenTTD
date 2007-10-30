@@ -1189,6 +1189,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Много бъ
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}1 в {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}Нито един
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Множител за големината на града: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Премахни абсурдни пътни-елементи по пътниат строеж
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Интерфейс
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Строене
@@ -1665,7 +1666,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Това
 STR_180A_ROAD_CONSTRUCTION                                      :Пътно строителство
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Конструкциа на трамвайна линиа
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Строене на път
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Построи отсечка от шосе използвайки Афто-шосе методът
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Построи секциа от трамвайна линиа
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Построи отсечка от железопътна линиа използвайки Афто-линиа методът
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Строене на гараж (за строене и сервиз на МПС-та)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Построи трамвайно депо (за стройтелни и сервизни коли)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Строене на автогара

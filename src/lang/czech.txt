@@ -918,6 +918,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Investovat do p
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Investovat do průmyslu
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... může být budováno jen ve městech
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}... může být budováno jen v pralesech
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}... může být budováno jen na pouštích
@@ -1724,7 +1725,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Není mo
 STR_180A_ROAD_CONSTRUCTION                                      :Výstavba silnic
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Výstavba tramvajové tratě
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Postavit silnici
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Postavit úsek silnice pomocí módu Autoroad
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Položit kus kolejí pro tramvaje
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Postavit úsek tramvajové tratě pomocí módu Autoroad
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Postavit garáž (pro nákup a servis vozidel)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Vystavět tramvajové depo (na kupování a servis tramvají)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Postavit autobusovou stanici
@@ -2078,6 +2081,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nemohu v
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Nutno nejprve zničit tunel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Nutno nejprve zničit most
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nelze začít a skončit na stejném místě
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Nájezdy na most nejsou ve stejné výšce
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Most je pro terén moc nízký
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Začátek a konec musí být ve stejné výšce
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Místo nevhodné pro vjezd do tunelu
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -3134,6 +3139,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je nav
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parametr pro {STRING}: parametr {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musí být nahráván před {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí být nahráván po {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF soubor, který se měl přeložit
 
 STR_NEWGRF_ADD                                                  :{BLACK}Přidat
@@ -3449,3 +3455,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Financov
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Hledat
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Postavit
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Vyber si vhodnou továrnu ze seznamu
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Podrobně
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Pokročilý výběr tváře.
+STR_FACE_SIMPLE                                                 :{BLACK}Jednodušše
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Základní výběr tváře.
+STR_FACE_LOAD                                                   :{BLACK}Nahrát
+STR_FACE_LOAD_TIP                                               :{BLACK}Nahrát oblíbený obličej
+STR_FACE_LOAD_DONE                                              :{WHITE}Tvůj oblíbený obličej se nahrál z konfiguračního souboru.
+STR_FACE_FACECODE                                               :{BLACK}Číslo tváře
+STR_FACE_FACECODE_TIP                                           :{BLACK}Zobrazit a/nebo nastavit číslo tváře
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Zobrazit a/nebo nastavit číslo tváře
+STR_FACE_FACECODE_SET                                           :{WHITE}Nové číslo obličeje bylo nastaveno.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nešlo nastavit číslo tváře - musí jít o číslo mezi 0 a 4 294 967 295!
+STR_FACE_SAVE                                                   :{BLACK}Uložit
+STR_FACE_SAVE_TIP                                               :{BLACK}Uložit oblíbený obličej
+STR_FACE_SAVE_DONE                                              :{WHITE}Tato tvář bude uložena jako tvá oblíbená do konfiguračního souboru.
+STR_FACE_EUROPEAN                                               :{BLACK}Europoidní
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vybrat europoidní tváře
+STR_FACE_AFRICAN                                                :{BLACK}Africká
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vybrat africké tváře
+STR_FACE_YES                                                    :Ano
+STR_FACE_NO                                                     :Ne
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Povolit knír nebo náušnici
+STR_FACE_HAIR                                                   :Vlasy:
+STR_FACE_HAIR_TIP                                               :{BLACK}Změnit vlasy
+STR_FACE_EYEBROWS                                               :Obočí:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Změnit obočí
+STR_FACE_EYECOLOUR                                              :Barva očí:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Změnit barvu očí
+STR_FACE_GLASSES                                                :Brýle:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Povolit brýle
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Změnit brýle
+STR_FACE_NOSE                                                   :Nos:
+STR_FACE_NOSE_TIP                                               :{BLACK}Změnit nos
+STR_FACE_LIPS                                                   :Rty:
+STR_FACE_MOUSTACHE                                              :Knír:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Změnit rty nebo knír
+STR_FACE_CHIN                                                   :Brada:
+STR_FACE_CHIN_TIP                                               :{BLACK}Změnit bradu
+STR_FACE_JACKET                                                 :Sako:
+STR_FACE_JACKET_TIP                                             :{BLACK}Změnit sako
+STR_FACE_COLLAR                                                 :Límec:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Změnit límec
+STR_FACE_TIE                                                    :Kravata:
+STR_FACE_EARRING                                                :Náušnice:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Změnit kravatu nebo náušnice
+########

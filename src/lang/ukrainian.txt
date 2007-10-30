@@ -1793,7 +1793,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Не м�
 STR_180A_ROAD_CONSTRUCTION                                      :Будувати дороги
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Будівництво трамвайної колії
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Будувати дорогу
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Будувати дорогу в режимі Автобудування
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Будувати трамвайну колію
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Будувати трамвайну лінію в режимі Автобудування
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Будувати автомобільне депо
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Будувати трамвайне депо (для будівництва та обслуговування трамваїв)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Будувати зупинку
@@ -2602,24 +2604,24 @@ STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' 
 STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (електричка)
 STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (електричка)
 STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
-STR_8059_PASSENGER_CAR                                          :Пасажирський катер
+STR_8059_PASSENGER_CAR                                          :пасажирський вагон
 STR_805A_MAIL_VAN                                               :поштовий вагон
-STR_805B_COAL_CAR                                               :вугільний фургон
-STR_805C_OIL_TANKER                                             :нафтовий танкер
+STR_805B_COAL_CAR                                               :вагон для вугілля
+STR_805C_OIL_TANKER                                             :нафтова цистерна
 STR_805D_LIVESTOCK_VAN                                          :вагон для худоби
-STR_805E_GOODS_VAN                                              :вагон для товарів
+STR_805E_GOODS_VAN                                              :товарний вагон
 STR_805F_GRAIN_HOPPER                                           :вагон для зерна
 STR_8060_WOOD_TRUCK                                             :лісовіз
 STR_8061_IRON_ORE_HOPPER                                        :вагон для залізної руди
-STR_8062_STEEL_TRUCK                                            :вантажівка для сталі
-STR_8063_ARMORED_VAN                                            :броноване авто
-STR_8064_FOOD_VAN                                               :вантажівка для їжі
-STR_8065_PAPER_TRUCK                                            :вантажівка для паперу
+STR_8062_STEEL_TRUCK                                            :платформа для сталі
+STR_8063_ARMORED_VAN                                            :броньований вагон
+STR_8064_FOOD_VAN                                               :вагон для їжі
+STR_8065_PAPER_TRUCK                                            :платформа для паперу
 STR_8066_COPPER_ORE_HOPPER                                      :вагон для мідної руди
 STR_8067_WATER_TANKER                                           :цистерна для води
 STR_8068_FRUIT_TRUCK                                            :фургон для фруктів
-STR_8069_RUBBER_TRUCK                                           :вантажівка для каучуку
-STR_806A_SUGAR_TRUCK                                            :вантажівка для цукру
+STR_8069_RUBBER_TRUCK                                           :платформа для каучуку
+STR_806A_SUGAR_TRUCK                                            :вагон для цукру
 STR_806B_COTTON_CANDY_HOPPER                                    :вагон для цукрової вати
 STR_806C_TOFFEE_HOPPER                                          :вагон для ірису
 STR_806D_BUBBLE_VAN                                             :вагон для кульок
@@ -3236,6 +3238,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} роз
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Помилковий параметр для {STRING}: параметр {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} має бути завантажений до {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} має бути завантажений після {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} потребує версію OpenTTD не нижче {STRING}.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-файл, для якого це призначалось перекласти
 
 STR_NEWGRF_ADD                                                  :{BLACK}Додати
