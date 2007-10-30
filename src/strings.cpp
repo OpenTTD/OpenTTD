@@ -116,11 +116,11 @@ static const char *GetStringPtr(StringID string)
  */
 static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, const char* last)
 {
+	if (GB(string, 0, 16) == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, argv, last);
+
 	uint index = GB(string,  0, 11);
 	uint tab   = GB(string, 11,  5);
 	char buff[512];
-
-	if (GB(string, 0, 16) == 0) error("!invalid string id 0 in GetString");
 
 	switch (tab) {
 		case 4:
