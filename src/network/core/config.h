@@ -27,6 +27,7 @@ enum {
 
 	NETWORK_NAME_LENGTH           =   80, ///< The maximum length of the server name and map name, in bytes including '\0'
 	NETWORK_HOSTNAME_LENGTH       =   80, ///< The maximum length of the host name, in bytes including '\0'
+	NETWORK_UNIQUE_ID_LENGTH      =   33, ///< The maximum length of the unique id of the clients, in bytes including '\0'
 	NETWORK_REVISION_LENGTH       =   15, ///< The maximum length of the revision, in bytes including '\0'
 	NETWORK_PASSWORD_LENGTH       =   20, ///< The maximum length of the password, in bytes including '\0'
 	NETWORK_PLAYERS_LENGTH        =  200, ///< The maximum length for the list of players that controls a company, in bytes including '\0'

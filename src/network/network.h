@@ -71,7 +71,7 @@ struct NetworkClientInfo {
 	PlayerID client_playas;                         // As which player is this client playing (PlayerID)
 	uint32 client_ip;                               // IP-address of the client (so he can be banned)
 	Date join_date;                                 // Gamedate the player has joined
-	char unique_id[NETWORK_NAME_LENGTH];            // Every play sends an unique id so we can indentify him
+	char unique_id[NETWORK_UNIQUE_ID_LENGTH];       // Every play sends an unique id so we can indentify him
 };
 
 enum NetworkJoinStatus {
@@ -127,7 +127,7 @@ VARDEF char _network_player_name[NETWORK_CLIENT_NAME_LENGTH];
 VARDEF char _network_default_ip[NETWORK_HOSTNAME_LENGTH];
 
 VARDEF uint16 _network_own_client_index;
-VARDEF char _network_unique_id[NETWORK_NAME_LENGTH]; // Our own unique ID
+VARDEF char _network_unique_id[NETWORK_UNIQUE_ID_LENGTH]; // Our own unique ID
 
 VARDEF uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 VARDEF uint32 _frame_counter_max; // To where we may go with our clients

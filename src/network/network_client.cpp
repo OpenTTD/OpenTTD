@@ -341,7 +341,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	uint16 index = p->Recv_uint16();
 	PlayerID playas = (Owner)p->Recv_uint8();
 	char name[NETWORK_NAME_LENGTH];
-	char unique_id[NETWORK_NAME_LENGTH];
+	char unique_id[NETWORK_UNIQUE_ID_LENGTH];
 
 	p->Recv_string(name, sizeof(name));
 	p->Recv_string(unique_id, sizeof(unique_id));
