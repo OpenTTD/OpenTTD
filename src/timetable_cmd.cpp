@@ -31,7 +31,9 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
 		}
 	}
 
-	InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
+	for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
+		InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
+	}
 }
 
 /**
@@ -134,6 +136,10 @@ CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32
 		}
 	}
 
+	for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
+		InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
+	}
+
 	return CommandCost();
 }
 
@@ -178,5 +184,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	v->lateness_counter -= (timetabled - time_taken);
 
-	InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
+	for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
+		InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
+	}
 }
