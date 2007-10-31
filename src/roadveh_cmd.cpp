@@ -1015,7 +1015,7 @@ static void* EnumFindVehToOvertake(Vehicle* v, void* data)
 	const OvertakeData* od = (OvertakeData*)data;
 
 	return
-		v->tile == od->tile && v->type == VEH_ROAD && v != od->u && v != od->v ?
+		v->tile == od->tile && v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v ?
 			v : NULL;
 }
 
@@ -1465,8 +1465,8 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
 		const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
-		if (u != NULL && u->cur_speed < v->cur_speed) {
-			v->cur_speed = u->cur_speed;
+		if (u != NULL && u->First()->cur_speed < v->cur_speed) {
+			v->cur_speed = u->First()->cur_speed;
 			return false;
 		}
 
@@ -1663,6 +1663,7 @@ again:
 		Vehicle* u = RoadVehFindCloseTo(v, x, y, new_dir);
 
 		if (u != NULL) {
+			u = u->First();
 			/* There is a vehicle in front overtake it if possible */
 			if (v->u.road.overtaking == 0) RoadVehCheckOvertake(v, u);
 			if (v->u.road.overtaking == 0) v->cur_speed = u->cur_speed;
