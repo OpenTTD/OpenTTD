@@ -884,25 +884,30 @@ static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
 {
 	RoadVehFindData rvf;
 	Vehicle *u;
+	Vehicle *front = v->First();
 
-	if (v->u.road.reverse_ctr != 0) return NULL;
+	if (front->u.road.reverse_ctr != 0) return NULL;
 
 	rvf.x = x;
 	rvf.y = y;
 	rvf.dir = dir;
 	rvf.veh = v;
-	u = (Vehicle*)VehicleFromPosXY(x, y, &rvf, EnumCheckRoadVehClose);
+	if (front->u.road.state == RVSB_WORMHOLE) {
+		u = (Vehicle*)VehicleFromPos(v->tile, &rvf, EnumCheckRoadVehClose);
+	} else {
+		u = (Vehicle*)VehicleFromPosXY(x, y, &rvf, EnumCheckRoadVehClose);
+	}
 
 	/* This code protects a roadvehicle from being blocked for ever
 	 * If more than 1480 / 74 days a road vehicle is blocked, it will
 	 * drive just through it. The ultimate backup-code of TTD.
 	 * It can be disabled. */
 	if (u == NULL) {
-		v->u.road.blocked_ctr = 0;
+		front->u.road.blocked_ctr = 0;
 		return NULL;
 	}
 
-	if (++v->u.road.blocked_ctr > 1480) return NULL;
+	if (++front->u.road.blocked_ctr > 1480) return NULL;
 
 	return u;
 }
