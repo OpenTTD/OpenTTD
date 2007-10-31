@@ -226,7 +226,7 @@ static bool CMSAForest(TileIndex tile)
 
 #define M(x) ((x) - STR_SV_STNAME)
 
-enum StationNaming = {
+enum StationNaming {
 	STATIONNAMING_RAIL = 0,
 	STATIONNAMING_ROAD = 0,
 	STATIONNAMING_AIRPORT,
@@ -234,7 +234,7 @@ enum StationNaming = {
 	STATIONNAMING_DOCK,
 	STATIONNAMING_BUOY,
 	STATIONNAMING_HELIPORT,
-}
+};
 
 static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 {
