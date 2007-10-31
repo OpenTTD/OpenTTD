@@ -964,6 +964,7 @@ CommandCost CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		v->vehstatus ^= VS_STOPPED;
+		v->cur_speed = 0;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClasses(WC_SHIPS_LIST);
