@@ -226,6 +226,16 @@ static bool CMSAForest(TileIndex tile)
 
 #define M(x) ((x) - STR_SV_STNAME)
 
+enum StationNaming = {
+	STATIONNAMING_RAIL = 0,
+	STATIONNAMING_ROAD = 0,
+	STATIONNAMING_AIRPORT,
+	STATIONNAMING_OILRIG,
+	STATIONNAMING_DOCK,
+	STATIONNAMING_BUOY,
+	STATIONNAMING_HELIPORT,
+}
+
 static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 {
 	static const uint32 _gen_station_name_bits[] = {
@@ -962,7 +972,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		st_auto_delete = st;
 
 		st->town = ClosestTownFromTile(tile_org, (uint)-1);
-		if (!GenerateStationName(st, tile_org, 0)) return CMD_ERROR;
+		if (!GenerateStationName(st, tile_org, STATIONNAMING_RAIL)) return CMD_ERROR;
 
 		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
 			SETBIT(st->town->have_ratings, _current_player);
@@ -1387,7 +1397,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 
 		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
-		if (!GenerateStationName(st, tile, 0)) return CMD_ERROR;
+		if (!GenerateStationName(st, tile, STATIONNAMING_ROAD)) return CMD_ERROR;
 
 		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
 			SETBIT(t->have_ratings, _current_player);
@@ -1695,7 +1705,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		/* If only helicopters may use the airport generate a helicopter related (5)
 		 * station name, otherwise generate a normal airport name (1) */
-		if (!GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? 5 : 1)) {
+		if (!GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT)) {
 			return CMD_ERROR;
 		}
 	}
@@ -1810,7 +1820,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	st->town = ClosestTownFromTile(tile, (uint)-1);
 	st->sign.width_1 = 0;
 
-	if (!GenerateStationName(st, tile, 4)) return CMD_ERROR;
+	if (!GenerateStationName(st, tile, STATIONNAMING_BUOY)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		st->dock_tile = tile;
@@ -1980,7 +1990,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->sign.width_1 = 0;
 
-		if (!GenerateStationName(st, tile, 3)) return CMD_ERROR;
+		if (!GenerateStationName(st, tile, STATIONNAMING_DOCK)) return CMD_ERROR;
 	}
 
 	if (flags & DC_EXEC) {
@@ -2749,7 +2759,7 @@ void BuildOilRig(TileIndex tile)
 		DEBUG(misc, 0, "Can't allocate station for oilrig at 0x%X, reverting to oilrig only", tile);
 		return;
 	}
-	if (!GenerateStationName(st, tile, 2)) {
+	if (!GenerateStationName(st, tile, STATIONNAMING_OILRIG)) {
 		DEBUG(misc, 0, "Can't allocate station-name for oilrig at 0x%X, reverting to oilrig only", tile);
 		return;
 	}
