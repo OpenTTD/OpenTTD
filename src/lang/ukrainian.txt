@@ -3240,6 +3240,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} має
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} має бути завантажений після {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} потребує версію OpenTTD не нижче {STRING}.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-файл, для якого це призначалось перекласти
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Завантажено забагато NewGRF-файлів.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Додати
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Додати файли NewGRF до списку

@@ -3080,6 +3080,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve s
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve ser carregado depois de {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} requer versão {STRING} ou maior do OpenTTD.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Muitos NewGRFs foram carregados.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista

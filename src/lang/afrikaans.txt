@@ -546,7 +546,7 @@ STR_01D9_CUSTOM_1                                               :{TINYFONT}Gewoo
 STR_01DA_CUSTOM_2                                               :{TINYFONT}Gewoonte 2
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Musiek Volume
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Effekte Volume
-STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAKS
 STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Gaan terug na vorig liedjie in keuse
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Gaan voor na volgende liedjie in keuse
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Ophou musiek speel
@@ -990,7 +990,9 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trein {COMMA} het te paar opdrae in die skedule
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trein {COMMA} het 'n leemte opdrag
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trein {COMMA} het dupliseer opdrae
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trein {COMMA} het 'n ongeldig stasie in sy opdrae
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Pad Voertuig {COMMA} het te paar opdrae in die skedule
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Pad Voertuig {COMMA} het 'n leemte opdrag
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Pad voertuig {COMMA} het dupliseer opdrae
@@ -1036,6 +1038,7 @@ STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Laattoe
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manual primêre nywerheid konstruksie metode: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as ander nywerhede
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vooruitsigting
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Laattoe vele soortgelyke nywerhede per dorp: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Nywerhede van die selfde tipe kan naby aan mekaar gebou word: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Toon altyd lang datum in die standbaan: {ORANGE}{STRING}
@@ -3074,6 +3077,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} moet v
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} moet na {STRING} gelaai word.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} vereis OpenTTD uitgawe {STRING} of beter.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :die GRF lêer dit was ontwerp om te vertaal
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Te veel NewGRFs gelaai
 
 STR_NEWGRF_ADD                                                  :{BLACK}Voeg
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg 'n NewGRF na die lys
@@ -3209,9 +3213,14 @@ STR_MAGLEV_VEHICLES                                             :Maglev Voertuie
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Gewig: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Spoed: {GOLD}{VELOCITY}{BLACK}   Krag: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Spoed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Loopkoste: {GOLD}{CURRENCY}/jr
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteit: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Ontwerp: {GOLD}{NUM}{BLACK} Lewe: {GOLD}{COMMA} jare
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. Betroubaarheid: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Kos: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewig: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kos: {GOLD}{CURRENCY}{BLACK} Spoed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteit: {GOLD}{COMMA} passasiers, {COMMA} sakke van pos
