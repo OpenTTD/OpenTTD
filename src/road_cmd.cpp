@@ -906,7 +906,7 @@ Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 			 * created directly, but the state itself is still perfectly drawable.
 			 * However, as we do not want this to be build directly, we need to check
 			 * for that situation in here. */
-			return (tileh != 0 && HAS_SINGLE_BIT(bits)) ? FOUNDATION_LEVELED : FOUNDATION_NONE;
+			return (tileh != 0 && COUNTBITS(bits) == 1) ? FOUNDATION_LEVELED : FOUNDATION_NONE;
 		}
 		if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0) return FOUNDATION_LEVELED;
 	}

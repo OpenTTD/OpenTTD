@@ -76,8 +76,7 @@
  * @param b The second value
  * @return The greater value or a if equals
  */
-template <typename T>
-static inline T max(T a, T b)
+template<typename T> static inline T max(const T a, const T b)
 {
 	return a >= b ? a : b;
 }
@@ -92,8 +91,7 @@ static inline T max(T a, T b)
  * @param b The second value
  * @return The smaller value or b if equals
  */
-template <typename T>
-static inline T min(T a, T b)
+template<typename T> static inline T min(const T a, const T b)
 {
 	return a < b ? a : b;
 }
@@ -107,7 +105,11 @@ static inline T min(T a, T b)
  * @param b The second integer
  * @return The smaller value
  */
-static inline int min(int a, int b) { if (a <= b) return a; return b; }
+static inline int min(const int a, const int b)
+{
+	if (a <= b) return a;
+	return b;
+}
 
 /**
  * Returns the minimum of two unsigned integers.
@@ -118,7 +120,11 @@ static inline int min(int a, int b) { if (a <= b) return a; return b; }
  * @param b The second unsigned integer
  * @return The smaller value
  */
-static inline uint minu(uint a, uint b) { if (a <= b) return a; return b; }
+static inline uint minu(const uint a, const uint b)
+{
+	if (a <= b) return a;
+	return b;
+}
 
 /**
  * Clamp an integer between an interval.
@@ -136,7 +142,7 @@ static inline uint minu(uint a, uint b) { if (a <= b) return a; return b; }
  * @returns A value between min and max which is closest to a.
  * @see clampu(uint, uint, uint)
  */
-static inline int clamp(int a, int min, int max)
+static inline int clamp(const int a, const int min, const int max)
 {
 	if (a <= min) return min;
 	if (a >= max) return max;
@@ -159,7 +165,7 @@ static inline int clamp(int a, int min, int max)
  * @returns A value between min and max which is closest to a.
  * @see clamp(int, int, int)
  */
-static inline uint clampu(uint a, uint min, uint max)
+static inline uint clampu(const uint a, const uint min, const uint max)
 {
 	if (a <= min) return min;
 	if (a >= max) return max;
@@ -180,7 +186,7 @@ static inline uint clampu(uint a, uint min, uint max)
  * @return The 64-bit value reduced to a 32-bit value
  * @see clamp(int, int, int)
  */
-static inline int32 ClampToI32(int64 a)
+static inline int32 ClampToI32(const int64 a)
 {
 	if (a <= (int32)0x80000000) return 0x80000000;
 	if (a >= (int32)0x7FFFFFFF) return 0x7FFFFFFF;
@@ -198,7 +204,7 @@ static inline int32 ClampToI32(int64 a)
  * @param shift The amount to shift the value to right.
  * @return The shifted result
  */
-static inline int32 BIGMULSS(int32 a, int32 b, int shift)
+static inline int32 BIGMULSS(const int32 a, const int32 b, const int8 shift)
 {
 	return (int32)((int64)a * (int64)b >> shift);
 }
@@ -214,7 +220,7 @@ static inline int32 BIGMULSS(int32 a, int32 b, int shift)
  * @param shift The amount to shift the value to right.
  * @return The shifted result
  */
-static inline uint32 BIGMULUS(uint32 a, uint32 b, int shift)
+static inline uint32 BIGMULUS(const uint32 a, const uint32 b, const int8 shift)
 {
 	return (uint32)((uint64)a * (uint64)b >> shift);
 }
@@ -247,9 +253,9 @@ static inline uint32 BIGMULUS(uint32 a, uint32 b, int shift)
  * @param y The position of the bit to check, started from the LSB
  * @return True if the bit is set, false else.
  */
-template<typename T> static inline bool HASBIT(T x, int y)
+template<typename T> static inline bool HASBIT(const T x, const int8 y)
 {
-	return (x & ((T)1 << y)) != 0;
+	return (x & ((T)1U << y)) != 0;
 }
 
 /**
@@ -263,9 +269,9 @@ template<typename T> static inline bool HASBIT(T x, int y)
  * @param y The bit position to set
  * @return The new value of the old value with the bit set
  */
-template<typename T> static inline T SETBIT(T& x, int y)
+template<typename T> static inline T SETBIT(T& x, const int8 y)
 {
-	return x |= (T)1 << y;
+	return x |= (T)1U << y;
 }
 
 /**
@@ -279,9 +285,9 @@ template<typename T> static inline T SETBIT(T& x, int y)
  * @param y The bit position to clear
  * @return The new value of the old value with the bit cleared
  */
-template<typename T> static inline T CLRBIT(T& x, int y)
+template<typename T> static inline T CLRBIT(T& x, const int8 y)
 {
-	return x &= ~((T)1 << y);
+	return x &= ~((T)1U << y);
 }
 
 /**
@@ -295,9 +301,9 @@ template<typename T> static inline T CLRBIT(T& x, int y)
  * @param y The bit position to toggle
  * @return The new value of the old value with the bit toggled
  */
-template<typename T> static inline T TOGGLEBIT(T& x, int y)
+template<typename T> static inline T TOGGLEBIT(T& x, const int8 y)
 {
-	return x ^= (T)1 << y;
+	return x ^= (T)1U << y;
 }
 
 
@@ -437,7 +443,7 @@ static inline int KillFirstBit2x64(int value)
  */
 template<typename T> static inline uint COUNTBITS(T value)
 {
-	uint num;
+	register uint num;
 
 	/* This loop is only called once for every bit set by clearing the lowest
 	 * bit in each loop. The number of bits is therefore equal to the number of
@@ -450,16 +456,6 @@ template<typename T> static inline uint COUNTBITS(T value)
 
 	return num;
 }
-
-/**
- * Returns true if value a has only one bit set to 1
- *
- * This macro returns true if only one bit is set.
- *
- * @param a The value to check
- * @return True if only one bit is set, false else
- */
-#define HAS_SINGLE_BIT(a) ( ((a) & ((a) - 1)) == 0)
 
 /**
  * Checks if a byte is in an interval.
