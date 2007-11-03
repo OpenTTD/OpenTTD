@@ -1841,7 +1841,7 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 
 	/* oil wells (or the industries with that flag set) are always allowed to closedown */
 	if (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD && _opt.landscape == LT_TEMPERATE) return false;
-	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE && GetIndustryTypeCount(type) <= 1);
+	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) == 0 && GetIndustryTypeCount(type) <= 1;
 }
 
 /** Change industry production or do closure
