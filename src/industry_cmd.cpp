@@ -1784,11 +1784,14 @@ static void MaybeNewIndustry(void)
 
 	/* Generate a list of all possible industries that can be built. */
 	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
-		byte chance = GetIndustrySpec(j)->appear_ingame[_opt.landscape];
+		ind_spc = GetIndustrySpec(j);
+		byte chance = ind_spc->appear_ingame[_opt.landscape];
+
+		if (!ind_spc->enabled || chance == 0) continue;
 
 		/* If there is no Callback CBID_INDUSTRY_AVAILABLE or if this one did anot failed,
 		 * and if appearing chance for this landscape is above 0, this industry can be chosen */
-		if (CheckIfCallBackAllowsAvailability(j, IACT_RANDOMCREATION) && chance != 0) {
+		if (CheckIfCallBackAllowsAvailability(j, IACT_RANDOMCREATION)) {
 			probability_max += chance;
 			/* adds the result for this industry */
 			cumulative_probs[num].ind = j;
