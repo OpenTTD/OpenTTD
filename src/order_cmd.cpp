@@ -984,16 +984,17 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 	/* If we had shared orders, recover that */
 	if (bak->clone != INVALID_VEHICLE) {
 		DoCommandP(0, v->index | (bak->clone << 16), 0, NULL, CMD_CLONE_ORDER);
-		return;
-	}
+	} else {
 
-	/* CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
-	 *  order number is one more than the current amount of orders, and because
-	 *  in network the commands are queued before send, the second insert always
-	 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
-	for (uint i = 0; bak->order[i].IsValid(); i++) {
-		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
-			break;
+		/* CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
+		 *  order number is one more than the current amount of orders, and because
+		 *  in network the commands are queued before send, the second insert always
+		 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
+		for (uint i = 0; bak->order[i].IsValid(); i++) {
+			if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL,
+					CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
+				break;
+		}
 	}
 
 	/* Restore vehicle order-index and service interval */
