@@ -138,7 +138,6 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 
 		case WE_PAINT: {
 			const IndustrySpec *indsp = (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(WP(w, fnd_d).select);
-			StringID str = STR_4827_REQUIRES;
 			int x_str = w->widget[DYNA_INDU_INFOPANEL].left + 3;
 			int y_str = w->widget[DYNA_INDU_INFOPANEL].top + 3;
 			const Widget *wi = &w->widget[DYNA_INDU_INFOPANEL];
@@ -190,34 +189,28 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			}
 
 			/* Draw the accepted cargos, if any. Otherwhise, will print "Nothing" */
-			if (indsp->accepts_cargo[0] != CT_INVALID) {
-				SetDParam(0, GetCargo(indsp->accepts_cargo[0])->name);
-				if (indsp->accepts_cargo[1] != CT_INVALID) {
-					SetDParam(1, GetCargo(indsp->accepts_cargo[1])->name);
-					str = STR_4828_REQUIRES;
-					if (indsp->accepts_cargo[2] != CT_INVALID) {
-						SetDParam(2, GetCargo(indsp->accepts_cargo[2])->name);
-						str = STR_4829_REQUIRES;
-					}
-				}
-			} else {
-				SetDParam(0, STR_00D0_NOTHING);
+			StringID str = STR_4827_REQUIRES;
+			byte p = 0;
+			SetDParam(0, STR_00D0_NOTHING);
+			for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
+				if (indsp->accepts_cargo[j] == CT_INVALID) continue;
+				if (p > 0) str++;
+				SetDParam(p++, GetCargo(indsp->accepts_cargo[j])->name);
 			}
 			DrawStringTruncated(x_str, y_str, str, 0, max_width);
-
 			y_str += 11;
+
 			/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
 			str = STR_4827_PRODUCES;
-			if (indsp->produced_cargo[0] != CT_INVALID) {
-				SetDParam(0, GetCargo(indsp->produced_cargo[0])->name);
-				if (indsp->produced_cargo[1] != CT_INVALID) {
-					SetDParam(1, GetCargo(indsp->produced_cargo[1])->name);
-					str = STR_4828_PRODUCES;
-				}
-			} else {
-				SetDParam(0, STR_00D0_NOTHING);
+			p = 0;
+			SetDParam(0, STR_00D0_NOTHING);
+			for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
+				if (indsp->produced_cargo[j] == CT_INVALID) continue;
+				if (p > 0) str++;
+				SetDParam(p++, GetCargo(indsp->produced_cargo[j])->name);
 			}
 			DrawStringTruncated(x_str, y_str, str, 0, max_width);
+			y_str += 11;
 
 			/* Get the additional purchase info text, if it has not already been */
 			if (_fund_gui.text[WP(w, fnd_d).index] == STR_NULL) {   // Have i been called already?
@@ -230,7 +223,6 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				}
 			}
 
-			y_str += 11;
 			/* Draw the Additional purchase text, provided by newgrf callback, if any.
 			 * Otherwhise, will print Nothing */
 			str = _fund_gui.text[WP(w, fnd_d).index];
@@ -411,27 +403,42 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		const Industry *i = GetIndustry(w->window_number);
 		const IndustrySpec *ind = GetIndustrySpec(i->type);
 		int lines = -3;
+		bool first = true;
+		bool has_accept = false;
 
 		if (HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
-			for (uint j = 0; j < lengthof(i->accepts_cargo) && i->accepts_cargo[j] != CT_INVALID; j++) {
-				if (j == 0) lines++;
+			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+				if (i->accepts_cargo[j] == CT_INVALID) continue;
+				has_accept = true;
+				if (first) {
+					lines++;
+					first = false;
+				}
 				lines++;
 			}
-		} else if (i->accepts_cargo[0] != CT_INVALID) {
-			lines++;
+		} else {
+			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+				if (i->accepts_cargo[j] == CT_INVALID) continue;
+				has_accept = true;
+				lines++;
+				break;
+			}
 		}
 
-		for (uint j = 0; j < lengthof(i->produced_cargo) && i->produced_cargo[j] != CT_INVALID; j++) {
-			if (j == 0) {
-				if (i->accepts_cargo[0] != CT_INVALID) lines++;
+		first = true;
+		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+			if (i->produced_cargo[j] == CT_INVALID) continue;
+			if (first) {
+				if (has_accept) lines++;
 				lines++;
+				first = false;
 			}
 			lines++;
 		}
 
 		if (HASBIT(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) lines += 2;
 
-		for (uint j = 5; j <= 7; j++) {
+		for (byte j = 5; j <= 7; j++) {
 			if (j != 5) w->widget[j].top += lines * 10;
 			w->widget[j].bottom += lines * 10;
 		}
@@ -442,44 +449,50 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		Industry *i = GetIndustry(w->window_number);
 		const IndustrySpec *ind = GetIndustrySpec(i->type);
 		int y = 111;
+		bool first = true;
+		bool has_accept = false;
 
 		SetDParam(0, w->window_number);
 		DrawWindowWidgets(w);
 
 		if (HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
-			for (uint j = 0; j < lengthof(i->accepts_cargo) && i->accepts_cargo[j] != CT_INVALID; j++) {
-				if (j == 0) {
+			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+				if (i->accepts_cargo[j] == CT_INVALID) continue;
+				has_accept = true;
+				if (first) {
 					DrawString(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, 0);
 					y += 10;
+					first = false;
 				}
 				SetDParam(0, i->accepts_cargo[j]);
 				SetDParam(1, i->incoming_cargo_waiting[j]);
 				DrawString(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, 0);
 				y += 10;
 			}
-		} else if (i->accepts_cargo[0] != CT_INVALID) {
-			StringID str;
-
-			SetDParam(0, GetCargo(i->accepts_cargo[0])->name);
-			str = STR_4827_REQUIRES;
-			if (i->accepts_cargo[1] != CT_INVALID) {
-				SetDParam(1, GetCargo(i->accepts_cargo[1])->name);
-				str = STR_4828_REQUIRES;
-				if (i->accepts_cargo[2] != CT_INVALID) {
-					SetDParam(2, GetCargo(i->accepts_cargo[2])->name);
-					str = STR_4829_REQUIRES;
-				}
+		} else {
+			StringID str = STR_4827_REQUIRES;
+			byte p = 0;
+			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+				if (i->accepts_cargo[j] == CT_INVALID) continue;
+				has_accept = true;
+				if (p > 0) str++;
+				SetDParam(p++, GetCargo(i->accepts_cargo[j])->name);
 			}
-			DrawString(2, y, str, 0);
-			y += 10;
+			if (has_accept) {
+				DrawString(2, y, str, 0);
+				y += 10;
+			}
 		}
 
-		for (uint j = 0; j < lengthof(i->produced_cargo) && i->produced_cargo[j] != CT_INVALID; j++) {
-			if (j == 0) {
-				if (i->accepts_cargo[0] != CT_INVALID) y += 10;
+		first = true;
+		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+			if (i->produced_cargo[j] == CT_INVALID) continue;
+			if (first) {
+				if (has_accept) y += 10;
 				DrawString(2, y, STR_482A_PRODUCTION_LAST_MONTH, 0);
 				y += 10;
 				WP(w, indview_d).production_offset_y = y;
+				first = false;
 			}
 
 			SetDParam(0, i->produced_cargo[j]);
