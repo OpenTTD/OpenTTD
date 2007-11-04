@@ -288,10 +288,10 @@ static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint 
 
 	/* Draw the list, and find the selected cargo (by its position in list) */
 	for (i = 0; i < num_lines; i++) {
-		byte colour = 16;
+		TextColour colour = TC_BLACK;
 		if (sel == 0) {
 			selected = &refit[i];
-			colour = 12;
+			colour = TC_WHITE;
 		}
 
 		if (i >= pos && i < pos + rows) {
@@ -346,7 +346,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 					SetDParam(0, WP(w, refit_d).cargo->cargo);
 					SetDParam(1, _returned_refit_capacity);
 					SetDParam(2, cost.GetCost());
-					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
+					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, TC_FROMSTRING);
 				}
 			}
 		} break;
@@ -906,14 +906,14 @@ void DrawSmallOrderList(const Vehicle *v, int x, int y)
 	sel = v->cur_order_index;
 
 	FOR_VEHICLE_ORDERS(v, order) {
-		if (sel == 0) DrawString(x - 6, y, STR_SMALL_RIGHT_ARROW, 16);
+		if (sel == 0) DrawString(x - 6, y, STR_SMALL_RIGHT_ARROW, TC_BLACK);
 		sel--;
 
 		if (order->type == OT_GOTO_STATION) {
 			if (v->type == VEH_SHIP && GetStation(order->dest)->IsBuoy()) continue;
 
 			SetDParam(0, order->dest);
-			DrawString(x, y, STR_A036, 0);
+			DrawString(x, y, STR_A036, TC_FROMSTRING);
 
 			y += 6;
 			if (++i == 4) break;
@@ -986,9 +986,9 @@ static void DrawVehicleListWindow(Window *w)
 	DrawWindowWidgets(w);
 
 	/* draw sorting criteria string */
-	DrawString(85, 15, _vehicle_sort_listing[vl->l.sort_type], 0x10);
+	DrawString(85, 15, _vehicle_sort_listing[vl->l.sort_type], TC_BLACK);
 	/* draw arrow pointing up/down for ascending/descending sorting */
-	DoDrawString(vl->l.flags & VL_DESC ? DOWNARROW : UPARROW, 69, 15, 0x10);
+	DoDrawString(vl->l.flags & VL_DESC ? DOWNARROW : UPARROW, 69, 15, TC_BLACK);
 
 	max = min(w->vscroll.pos + w->vscroll.cap, vl->l.list_length);
 	for (i = w->vscroll.pos; i < max; ++i) {
@@ -999,7 +999,7 @@ static void DrawVehicleListWindow(Window *w)
 		SetDParam(1, v->profit_last_year);
 
 		DrawVehicleImage(v, x + 19, y + 6, w->widget[VLW_WIDGET_LIST].right - w->widget[VLW_WIDGET_LIST].left - 20, 0, INVALID_VEHICLE);
-		DrawString(x + 19, y + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
+		DrawString(x + 19, y + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
 
 		if ((v->type == VEH_TRAIN    && v->string_id != STR_SV_TRAIN_NAME)   ||
 			(v->type == VEH_ROAD     && v->string_id != STR_SV_ROADVEH_NAME) ||
@@ -1008,7 +1008,7 @@ static void DrawVehicleListWindow(Window *w)
 
 			/* The vehicle got a name so we will print it */
 			SetDParam(0, v->index);
-			DrawString(x + 19, y, STR_01AB, 0);
+			DrawString(x + 19, y, STR_01AB, TC_FROMSTRING);
 		}
 
 		if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, y);
@@ -1020,7 +1020,7 @@ static void DrawVehicleListWindow(Window *w)
 		}
 
 		SetDParam(0, v->unitnumber);
-		DrawString(x, y + 2, str, 0);
+		DrawString(x, y + 2, str, TC_FROMSTRING);
 
 		DrawVehicleProfitButton(v, x, y + 13);
 
@@ -1491,7 +1491,7 @@ static void DrawVehicleDetailsWindow(Window *w)
 	SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
 	SetDParam(2, v->max_age / 366);
 	SetDParam(3, v->GetDisplayRunningCost());
-	DrawString(2, 15, _vehicle_translation_table[VST_VEHICLE_AGE_RUNNING_COST_YR][v->type], 0);
+	DrawString(2, 15, _vehicle_translation_table[VST_VEHICLE_AGE_RUNNING_COST_YR][v->type], TC_FROMSTRING);
 
 	/* Draw max speed */
 	switch (v->type) {
@@ -1502,14 +1502,14 @@ static void DrawVehicleDetailsWindow(Window *w)
 			SetDParam(3, v->u.rail.cached_max_te / 1000);
 			DrawString(2, 25, (_patches.realistic_acceleration && v->u.rail.railtype != RAILTYPE_MAGLEV) ?
 				STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
-				STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, 0);
+				STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, TC_FROMSTRING);
 			break;
 
 		case VEH_ROAD:
 		case VEH_SHIP:
 		case VEH_AIRCRAFT:
 			SetDParam(0, v->GetDisplayMaxSpeed());
-			DrawString(2, 25, _vehicle_translation_table[VST_VEHICLE_MAX_SPEED][v->type], 0);
+			DrawString(2, 25, _vehicle_translation_table[VST_VEHICLE_MAX_SPEED][v->type], TC_FROMSTRING);
 			break;
 
 		default: NOT_REACHED();
@@ -1518,17 +1518,17 @@ static void DrawVehicleDetailsWindow(Window *w)
 	/* Draw profit */
 	SetDParam(0, v->profit_this_year);
 	SetDParam(1, v->profit_last_year);
-	DrawString(2, 35, _vehicle_translation_table[VST_VEHICLE_PROFIT_THIS_YEAR_LAST_YEAR][v->type], 0);
+	DrawString(2, 35, _vehicle_translation_table[VST_VEHICLE_PROFIT_THIS_YEAR_LAST_YEAR][v->type], TC_FROMSTRING);
 
 	/* Draw breakdown & reliability */
 	SetDParam(0, v->reliability * 100 >> 16);
 	SetDParam(1, v->breakdowns_since_last_service);
-	DrawString(2, 45, _vehicle_translation_table[VST_VEHICLE_RELIABILITY_BREAKDOWNS][v->type], 0);
+	DrawString(2, 45, _vehicle_translation_table[VST_VEHICLE_RELIABILITY_BREAKDOWNS][v->type], TC_FROMSTRING);
 
 	/* Draw service interval text */
 	SetDParam(0, v->service_interval);
 	SetDParam(1, v->date_of_last_service);
-	DrawString(13, w->height - (v->type != VEH_TRAIN ? 11 : 23), _patches.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, 0);
+	DrawString(13, w->height - (v->type != VEH_TRAIN ? 11 : 23), _patches.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, TC_FROMSTRING);
 
 	switch (v->type) {
 		case VEH_TRAIN:
@@ -2026,7 +2026,7 @@ static void DrawVehicleViewWindow(Window *w)
 
 	/* draw the flag plus orders */
 	DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, 2, w->widget[VVW_WIDGET_START_STOP_VEH].top + 1);
-	DrawStringCenteredTruncated(w->widget[VVW_WIDGET_START_STOP_VEH].left + 8, w->widget[VVW_WIDGET_START_STOP_VEH].right, w->widget[VVW_WIDGET_START_STOP_VEH].top + 1, str, 0);
+	DrawStringCenteredTruncated(w->widget[VVW_WIDGET_START_STOP_VEH].left + 8, w->widget[VVW_WIDGET_START_STOP_VEH].right, w->widget[VVW_WIDGET_START_STOP_VEH].top + 1, str, TC_FROMSTRING);
 	DrawWindowViewport(w);
 }
 

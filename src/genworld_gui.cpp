@@ -265,47 +265,47 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 		y = (mode == GLWP_HEIGHTMAP) ? 22 : 0;
 
-		DrawString( 12,  91 + y, STR_MAPSIZE, 0);
-		DrawString(119,  91 + y, mapsizes[_patches_newgame.map_x - 6], 0x10);
-		DrawString(168,  91 + y, STR_BY, 0);
-		DrawString(182,  91 + y, mapsizes[_patches_newgame.map_y - 6], 0x10);
+		DrawString( 12,  91 + y, STR_MAPSIZE, TC_FROMSTRING);
+		DrawString(119,  91 + y, mapsizes[_patches_newgame.map_x - 6], TC_BLACK);
+		DrawString(168,  91 + y, STR_BY, TC_FROMSTRING);
+		DrawString(182,  91 + y, mapsizes[_patches_newgame.map_y - 6], TC_BLACK);
 
-		DrawString( 12, 113 + y, STR_NUMBER_OF_TOWNS, 0);
-		DrawString( 12, 131 + y, STR_NUMBER_OF_INDUSTRIES, 0);
+		DrawString( 12, 113 + y, STR_NUMBER_OF_TOWNS, TC_FROMSTRING);
+		DrawString( 12, 131 + y, STR_NUMBER_OF_INDUSTRIES, TC_FROMSTRING);
 		if (_game_mode == GM_EDITOR) {
-			DrawString(118, 113 + y, STR_6836_OFF, 0x10);
-			DrawString(118, 131 + y, STR_6836_OFF, 0x10);
+			DrawString(118, 113 + y, STR_6836_OFF, TC_BLACK);
+			DrawString(118, 131 + y, STR_6836_OFF, TC_BLACK);
 		} else {
-			DrawString(118, 113 + y, num_towns[_opt_newgame.diff.number_towns], 0x10);
-			DrawString(118, 131 + y, num_inds[_opt_newgame.diff.number_industries], 0x10);
+			DrawString(118, 113 + y, num_towns[_opt_newgame.diff.number_towns], TC_BLACK);
+			DrawString(118, 131 + y, num_inds[_opt_newgame.diff.number_industries], TC_BLACK);
 		}
 
-		DrawString( 12, 153 + y, STR_RANDOM_SEED, 0);
+		DrawString( 12, 153 + y, STR_RANDOM_SEED, TC_FROMSTRING);
 		DrawEditBox(w, &_genseed_query, GLAND_RANDOM_EDITBOX);
 
-		DrawString(182, 113 + y, STR_DATE, 0);
+		DrawString(182, 113 + y, STR_DATE, TC_FROMSTRING);
 		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
-		DrawStringCentered(271, 113 + y, STR_GENERATE_DATE, 0);
+		DrawStringCentered(271, 113 + y, STR_GENERATE_DATE, TC_FROMSTRING);
 
-		DrawString(182, 131 + y, STR_SNOW_LINE_HEIGHT, 0);
+		DrawString(182, 131 + y, STR_SNOW_LINE_HEIGHT, TC_FROMSTRING);
 		SetDParam(0, _patches_newgame.snow_line_height);
-		DrawStringCentered(303, 131 + y, STR_SNOW_LINE_HEIGHT_NUM, 0x10);
+		DrawStringCentered(303, 131 + y, STR_SNOW_LINE_HEIGHT_NUM, TC_BLACK);
 
 		if (mode == GLWP_GENERATE) {
-			DrawString( 12, 175, STR_LAND_GENERATOR, 0);
-			DrawString(118, 175, landscape[_patches_newgame.land_generator], 0x10);
+			DrawString( 12, 175, STR_LAND_GENERATOR, TC_FROMSTRING);
+			DrawString(118, 175, landscape[_patches_newgame.land_generator], TC_BLACK);
 
-			DrawString( 12, 193, STR_TREE_PLACER, 0);
-			DrawString(118, 193, tree_placer[_patches_newgame.tree_placer], 0x10);
+			DrawString( 12, 193, STR_TREE_PLACER, TC_FROMSTRING);
+			DrawString(118, 193, tree_placer[_patches_newgame.tree_placer], TC_BLACK);
 
-			DrawString( 12, 211, STR_TERRAIN_TYPE, 0);
-			DrawString(118, 211, elevations[_opt_newgame.diff.terrain_type], 0x10);
+			DrawString( 12, 211, STR_TERRAIN_TYPE, TC_FROMSTRING);
+			DrawString(118, 211, elevations[_opt_newgame.diff.terrain_type], TC_BLACK);
 
-			DrawString( 12, 229, STR_QUANTITY_OF_SEA_LAKES, 0);
-			DrawString(118, 229, sea_lakes[_opt_newgame.diff.quantity_sea_lakes], 0x10);
+			DrawString( 12, 229, STR_QUANTITY_OF_SEA_LAKES, TC_FROMSTRING);
+			DrawString(118, 229, sea_lakes[_opt_newgame.diff.quantity_sea_lakes], TC_BLACK);
 
-			DrawString( 12, 247, STR_SMOOTHNESS, 0);
-			DrawString(118, 247, smoothness[_patches_newgame.tgen_smoothness], 0x10);
+			DrawString( 12, 247, STR_SMOOTHNESS, TC_FROMSTRING);
+			DrawString(118, 247, smoothness[_patches_newgame.tgen_smoothness], TC_BLACK);
 		} else {
 			char buffer[512];
 
@@ -317,17 +317,17 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 				SetDParam(1, WP(w, generate_d).y);
 			}
 			GetString(buffer, STR_HEIGHTMAP_SIZE, lastof(buffer));
-			DrawStringRightAligned(326, 91, STR_HEIGHTMAP_SIZE, 0x10);
+			DrawStringRightAligned(326, 91, STR_HEIGHTMAP_SIZE, TC_BLACK);
 
-			DrawString( 12,  91, STR_HEIGHTMAP_NAME, 0x10);
+			DrawString( 12,  91, STR_HEIGHTMAP_NAME, TC_BLACK);
 			SetDParamStr(0, WP(w, generate_d).name);
-			DrawStringTruncated(114,  91, STR_ORANGE, 0x10, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
+			DrawStringTruncated(114,  91, STR_ORANGE, TC_BLACK, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
 
-			DrawString( 12, 197, STR_TREE_PLACER, 0);
-			DrawString(118, 197, tree_placer[_patches_newgame.tree_placer], 0x10);
+			DrawString( 12, 197, STR_TREE_PLACER, TC_FROMSTRING);
+			DrawString(118, 197, tree_placer[_patches_newgame.tree_placer], TC_BLACK);
 
-			DrawString( 12, 215, STR_HEIGHTMAP_ROTATION, 0);
-			DrawString(118, 215, rotation[_patches_newgame.heightmap_rotation], 0x10);
+			DrawString( 12, 215, STR_HEIGHTMAP_ROTATION, TC_FROMSTRING);
+			DrawString(118, 215, rotation[_patches_newgame.heightmap_rotation], TC_BLACK);
 		}
 
 		break;
@@ -619,18 +619,18 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetLoweredState(w, CSCEN_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
 		DrawWindowWidgets(w);
 
-		DrawStringRightAligned(211, 97, STR_MAPSIZE, 0);
-		DrawString(            221, 97, mapsizes[_patches_newgame.map_x - 6], 0x10);
-		DrawStringCentered(    272, 97, STR_BY, 0);
-		DrawString(            284, 97, mapsizes[_patches_newgame.map_y - 6], 0x10);
+		DrawStringRightAligned(211, 97, STR_MAPSIZE, TC_FROMSTRING);
+		DrawString(            221, 97, mapsizes[_patches_newgame.map_x - 6], TC_BLACK);
+		DrawStringCentered(    272, 97, STR_BY, TC_FROMSTRING);
+		DrawString(            284, 97, mapsizes[_patches_newgame.map_y - 6], TC_BLACK);
 
-		DrawStringRightAligned(211, 115, STR_DATE, 0);
+		DrawStringRightAligned(211, 115, STR_DATE, TC_FROMSTRING);
 		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
-		DrawStringCentered(271, 115, STR_GENERATE_DATE, 0);
+		DrawStringCentered(271, 115, STR_GENERATE_DATE, TC_FROMSTRING);
 
-		DrawStringRightAligned(278, 133, STR_FLAT_WORLD_HEIGHT, 0);
+		DrawStringRightAligned(278, 133, STR_FLAT_WORLD_HEIGHT, TC_FROMSTRING);
 		SetDParam(0, _patches_newgame.se_flat_world_height);
-		DrawStringCentered(303, 133, STR_FLAT_WORLD_HEIGHT_NUM, 0x10);
+		DrawStringCentered(303, 133, STR_FLAT_WORLD_HEIGHT_NUM, TC_BLACK);
 
 		break;
 	case WE_CLICK:
@@ -807,15 +807,15 @@ static void ShowTerrainProgressProc(Window* w, WindowEvent* e)
 		DrawFrameRect(19, 20, (w->width - 18), 37, 14, FR_BORDERONLY);
 		DrawFrameRect(20, 21, (int)((w->width - 40) * _tp.percent / 100) + 20, 36, 10, FR_NONE);
 		SetDParam(0, _tp.percent);
-		DrawStringCentered(90, 25, STR_PROGRESS, 0);
+		DrawStringCentered(90, 25, STR_PROGRESS, TC_FROMSTRING);
 
 		/* Tell which class we are generating */
-		DrawStringCentered(90, 46, _tp.cls, 0);
+		DrawStringCentered(90, 46, _tp.cls, TC_FROMSTRING);
 
 		/* And say where we are in that class */
 		SetDParam(0, _tp.current);
 		SetDParam(1, _tp.total);
-		DrawStringCentered(90, 58, STR_GENERATION_PROGRESS, 0);
+		DrawStringCentered(90, 58, STR_GENERATION_PROGRESS, TC_FROMSTRING);
 
 		SetWindowDirty(w);
 		break;

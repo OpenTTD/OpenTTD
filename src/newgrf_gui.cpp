@@ -143,7 +143,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 
 					/* Draw selection background */
 					if (h) GfxFillRect(3, y, w->width - 15, y + 9, 156);
-					DoDrawStringTruncated(text, 4, y, h ? 0xC : 0x6, w->width - 18);
+					DoDrawStringTruncated(text, 4, y, h ? TC_WHITE : TC_ORANGE, w->width - 18);
 					y += 10;
 				}
 				n++;
@@ -370,7 +370,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					DrawSprite(SPR_SQUARE, pal, 5, y + 2);
 					if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, 20, y + 2);
 					txtoffset = c->error != NULL ? 35 : 25;
-					DoDrawStringTruncated(text, txtoffset, y + 3, WP(w, newgrf_d).sel == c ? 0xC : 0x10, w->width - txtoffset - 10);
+					DoDrawStringTruncated(text, txtoffset, y + 3, WP(w, newgrf_d).sel == c ? TC_WHITE : TC_BLACK, w->width - txtoffset - 10);
 					y += 14;
 				}
 			}

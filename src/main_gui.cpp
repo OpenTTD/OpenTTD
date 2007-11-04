@@ -465,7 +465,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		y = 1;
 
 		for (; count != 0; count--, string++, sel--) {
-			byte color = HASBIT(dis, 0) ? 14 : (sel == 0) ? 12 : 16;
+			TextColour color = HASBIT(dis, 0) ? TC_GREY : (sel == 0) ? TC_WHITE : TC_BLACK;
 			if (sel == 0) GfxFillRect(x, y, x + w->width - 3, y + 9, 0);
 
 			if (HASBIT(chk, 0)) DrawString(x + 2, y, STR_CHECKMARK, color);
@@ -566,7 +566,8 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		int x,y;
-		byte sel, color;
+		byte sel;
+		TextColour color;
 		Player *p;
 		uint16 chk;
 
@@ -583,7 +584,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 			if (sel == 0) {
 				GfxFillRect(x, y, x + 238, y + 9, 0);
 			}
-			DrawString(x + 19, y, STR_NETWORK_CLIENT_LIST, 0x0);
+			DrawString(x + 19, y, STR_NETWORK_CLIENT_LIST, TC_FROMSTRING);
 			y += 10;
 			sel--;
 		}
@@ -599,8 +600,8 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 				SetDParam(0, p->index);
 				SetDParam(1, p->index);
 
-				color = (p->index == sel) ? 0xC : 0x10;
-				if (chk&1) color = 14;
+				color = (p->index == sel) ? TC_WHITE : TC_BLACK;
+				if (chk&1) color = TC_GREY;
 				DrawString(x + 19, y, STR_7021, color);
 
 				y += 10;
@@ -1869,12 +1870,12 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
-		DrawStringCenteredTruncated(w->widget[6].right, w->widget[7].left, 6, STR_00AF, 0);
+		DrawStringCenteredTruncated(w->widget[6].right, w->widget[7].left, 6, STR_00AF, TC_FROMSTRING);
 
 		/* We hide this panel when the toolbar space gets too small */
 		if (w->widget[4].left != w->widget[4].right) {
-			DrawStringCenteredTruncated(w->widget[4].left + 1, w->widget[4].right - 1,  1, STR_0221_OPENTTD, 0);
-			DrawStringCenteredTruncated(w->widget[4].left + 1, w->widget[4].right - 1, 11, STR_0222_SCENARIO_EDITOR, 0);
+			DrawStringCenteredTruncated(w->widget[4].left + 1, w->widget[4].right - 1,  1, STR_0221_OPENTTD, TC_FROMSTRING);
+			DrawStringCenteredTruncated(w->widget[4].left + 1, w->widget[4].right - 1, 11, STR_0222_SCENARIO_EDITOR, TC_FROMSTRING);
 		}
 
 		break;
@@ -2049,7 +2050,7 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 
-	x = DoDrawString(buffer, pos, 0, 13);
+	x = DoDrawString(buffer, pos, 0, TC_LIGHT_BLUE);
 	_cur_dpi = old_dpi;
 
 	return x > 0;
@@ -2064,22 +2065,22 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 		SetDParam(0, _date);
 		DrawStringCentered(
-			70, 1, (_pause_game || _patches.status_long_date) ? STR_00AF : STR_00AE, 0
+			70, 1, (_pause_game || _patches.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING
 		);
 
 		if (p != NULL) {
 			/* Draw player money */
 			SetDParam(0, p->player_money);
-			DrawStringCentered(w->widget[2].left + 70, 1, STR_0004, 0);
+			DrawStringCentered(w->widget[2].left + 70, 1, STR_0004, TC_FROMSTRING);
 		}
 
 		/* Draw status bar */
 		if (w->message.msg) { // true when saving is active
-			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_SAVING_GAME, 0);
+			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_SAVING_GAME, TC_FROMSTRING);
 		} else if (_do_autosave) {
-			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_032F_AUTOSAVE, 0);
+			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING);
 		} else if (_pause_game) {
-			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_0319_PAUSED, 0);
+			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_0319_PAUSED, TC_FROMSTRING);
 		} else if (WP(w,def_d).data_1 > -1280 && FindWindowById(WC_NEWS_WINDOW,0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
 			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w,def_d).data_1, w->widget[1].right - w->widget[1].left - 2)) {
@@ -2087,14 +2088,14 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 				if (p != NULL) {
 					/* This is the default text */
 					SetDParam(0, p->index);
-					DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_02BA, 0);
+					DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
 				}
 			}
 		} else {
 			if (p != NULL) {
 				/* This is the default text */
 				SetDParam(0, p->index);
-				DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_02BA, 0);
+				DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
 			}
 		}
 
@@ -2414,6 +2415,7 @@ void InitializeMainGui()
 	_last_built_railtype = RAILTYPE_RAIL;
 	_last_built_roadtype = ROADTYPE_ROAD;
 }
+
 
 
 

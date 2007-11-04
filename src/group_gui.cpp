@@ -433,11 +433,11 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					break;
 				default: NOT_REACHED(); break;
 			}
-			DrawString(10, y1, str_all_veh, IsAllGroupID(gv->group_sel) ? 12 : 16);
+			DrawString(10, y1, str_all_veh, IsAllGroupID(gv->group_sel) ? TC_WHITE : TC_BLACK);
 
 			y1 += 13;
 
-			DrawString(10, y1, str_no_group_veh, IsDefaultGroupID(gv->group_sel) ? 12 : 16);
+			DrawString(10, y1, str_no_group_veh, IsDefaultGroupID(gv->group_sel) ? TC_WHITE : TC_BLACK);
 
 			max = min(w->vscroll.pos + w->vscroll.cap, gl->l.list_length);
 			for (i = w->vscroll.pos ; i < max ; ++i) {
@@ -449,16 +449,16 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				/* draw the selected group in white, else we draw it in black */
 				SetDParam(0, g->index);
-				DrawString(10, y1, STR_GROUP_NAME, (gv->group_sel == g->index) ? 12 : 16);
+				DrawString(10, y1, STR_GROUP_NAME, (gv->group_sel == g->index) ? TC_WHITE : TC_BLACK);
 
 				/* draw the number of vehicles of the group */
 				SetDParam(0, g->num_vehicle);
-				DrawStringRightAligned(187, y1 + 1, STR_GROUP_TINY_NUM, (gv->group_sel == g->index) ? 12 : 16);
+				DrawStringRightAligned(187, y1 + 1, STR_GROUP_TINY_NUM, (gv->group_sel == g->index) ? TC_WHITE : TC_BLACK);
 			}
 
 			/* Draw Matrix Vehicle according to the vehicle list built before */
-			DrawString(285, 15, _vehicle_sort_listing[gv->l.sort_type], 0x10);
-			DoDrawString(gv->l.flags & VL_DESC ? DOWNARROW : UPARROW, 269, 15, 0x10);
+			DrawString(285, 15, _vehicle_sort_listing[gv->l.sort_type], TC_BLACK);
+			DoDrawString(gv->l.flags & VL_DESC ? DOWNARROW : UPARROW, 269, 15, TC_BLACK);
 
 			max = min(w->vscroll2.pos + w->vscroll2.cap, gv->l.list_length);
 			for (i = w->vscroll2.pos ; i < max ; ++i) {
@@ -470,17 +470,17 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				DrawVehicleProfitButton(v, x, y2 + 13);
 
 				SetDParam(0, v->unitnumber);
-				DrawString(x, y2 + 2, v->IsInDepot() ? STR_021F : (v->age > v->max_age - 366 ? STR_00E3 : STR_00E2), 0);
+				DrawString(x, y2 + 2, v->IsInDepot() ? STR_021F : (v->age > v->max_age - 366 ? STR_00E3 : STR_00E2), TC_FROMSTRING);
 
 				if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG2) DrawSmallOrderList(v, x + 138, y2);
 
 				SetDParam(0, v->profit_this_year);
 				SetDParam(1, v->profit_last_year);
-				DrawString(x + 19, y2 + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
+				DrawString(x + 19, y2 + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
 
 				if (IsValidGroupID(v->group_id)) {
 					SetDParam(0, v->group_id);
-					DrawString(x + 19, y2, STR_GROUP_TINY_NAME, 16);
+					DrawString(x + 19, y2, STR_GROUP_TINY_NAME, TC_BLACK);
 				}
 
 				y2 += w->resize.step_height;

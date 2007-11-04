@@ -207,25 +207,25 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 		GfxFillRect(3, 23, 3 + 177, 23 + 191, 0);
 		GfxFillRect(251, 23, 251 + 177, 23 + 191, 0);
 
-		DrawStringCentered(92, 15, STR_01EE_TRACK_INDEX, 0);
+		DrawStringCentered(92, 15, STR_01EE_TRACK_INDEX, TC_FROMSTRING);
 
 		SetDParam(0, STR_01D5_ALL + msf.playlist);
-		DrawStringCentered(340, 15, STR_01EF_PROGRAM, 0);
+		DrawStringCentered(340, 15, STR_01EF_PROGRAM, TC_FROMSTRING);
 
 		for (i = 1; i <= NUM_SONGS_AVAILABLE; i++) {
 			SetDParam(0, i);
 			SetDParam(2, i);
 			SetDParam(1, SPECSTR_SONGNAME);
-			DrawString(4, 23 + (i - 1) * 6, (i < 10) ? STR_01EC_0 : STR_01ED, 0);
+			DrawString(4, 23 + (i - 1) * 6, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
 		}
 
 		for (i = 0; i != 6; i++) {
-			DrawStringCentered(216, 45 + i * 8, STR_01D5_ALL + i, (i == msf.playlist) ? 0xC : 0x10);
+			DrawStringCentered(216, 45 + i * 8, STR_01D5_ALL + i, (i == msf.playlist) ? TC_WHITE : TC_BLACK);
 		}
 
-		DrawStringCentered(216, 45 + 8 * 6 + 16, STR_01F0_CLEAR, 0);
+		DrawStringCentered(216, 45 + 8 * 6 + 16, STR_01F0_CLEAR, TC_FROMSTRING);
 #if 0
-		DrawStringCentered(216, 45 + 8 * 6 + 16 * 2, STR_01F1_SAVE, 0);
+		DrawStringCentered(216, 45 + 8 * 6 + 16 * 2, STR_01F1_SAVE, TC_FROMSTRING);
 #endif
 
 		y = 23;
@@ -233,7 +233,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, i);
 			SetDParam(1, SPECSTR_SONGNAME);
 			SetDParam(2, i);
-			DrawString(252, y, (i < 10) ? STR_01EC_0 : STR_01ED, 0);
+			DrawString(252, y, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
 			y += 6;
 		}
 		break;
@@ -367,7 +367,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, _music_wnd_cursong);
 			str = (_music_wnd_cursong < 10) ? STR_01E4_0 : STR_01E5;
 		}
-		DrawString(62, 46, str, 0);
+		DrawString(62, 46, str, TC_FROMSTRING);
 
 		str = STR_01E6;
 		if (_song_is_active != 0 && _music_wnd_cursong != 0) {
@@ -375,21 +375,21 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, SPECSTR_SONGNAME);
 			SetDParam(1, _music_wnd_cursong);
 		}
-		DrawStringCentered(155, 46, str, 0);
+		DrawStringCentered(155, 46, str, TC_FROMSTRING);
 
 
-		DrawString(60, 38, STR_01E8_TRACK_XTITLE, 0);
+		DrawString(60, 38, STR_01E8_TRACK_XTITLE, TC_FROMSTRING);
 
 		for (i = 0; i != 6; i++) {
-			DrawStringCentered(25 + i * 50, 59, STR_01D5_ALL + i, msf.playlist == i ? 0xC : 0x10);
+			DrawStringCentered(25 + i * 50, 59, STR_01D5_ALL + i, msf.playlist == i ? TC_WHITE : TC_BLACK);
 		}
 
-		DrawStringCentered(31, 43, STR_01E9_SHUFFLE, (msf.shuffle ? 0xC : 0x10));
-		DrawStringCentered(269, 43, STR_01EA_PROGRAM, 0);
-		DrawStringCentered(141, 15, STR_01DB_MUSIC_VOLUME, 0);
-		DrawStringCentered(141, 29, STR_01DD_MIN_MAX, 0);
-		DrawStringCentered(247, 15, STR_01DC_EFFECTS_VOLUME, 0);
-		DrawStringCentered(247, 29, STR_01DD_MIN_MAX, 0);
+		DrawStringCentered(31, 43, STR_01E9_SHUFFLE, (msf.shuffle ? TC_WHITE : TC_BLACK));
+		DrawStringCentered(269, 43, STR_01EA_PROGRAM, TC_FROMSTRING);
+		DrawStringCentered(141, 15, STR_01DB_MUSIC_VOLUME, TC_FROMSTRING);
+		DrawStringCentered(141, 29, STR_01DD_MIN_MAX, TC_FROMSTRING);
+		DrawStringCentered(247, 15, STR_01DC_EFFECTS_VOLUME, TC_FROMSTRING);
+		DrawStringCentered(247, 29, STR_01DD_MIN_MAX, TC_FROMSTRING);
 
 		DrawFrameRect(108, 23, 174, 26, 14, FR_LOWERED);
 		DrawFrameRect(214, 23, 280, 26, 14, FR_LOWERED);

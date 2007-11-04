@@ -79,7 +79,7 @@ static void StationsWndShowStationRating(int x, int y, CargoID type, uint amount
 		}
 	}
 
-	DrawString(x + 1, y, cs->abbrev, 0x10);
+	DrawString(x + 1, y, cs->abbrev, TC_BLACK);
 
 	/* Draw green/red ratings bar (fits into 14 pixels) */
 	y += 8;
@@ -314,9 +314,9 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 
 			/* draw sorting criteria string */
-			DrawString(85, 26, _station_sort_listing[sl->sort_type], 0x10);
+			DrawString(85, 26, _station_sort_listing[sl->sort_type], TC_BLACK);
 			/* draw arrow pointing up/down for ascending/descending sorting */
-			DoDrawString(sl->flags & SL_ORDER ? DOWNARROW : UPARROW, 69, 26, 0x10);
+			DoDrawString(sl->flags & SL_ORDER ? DOWNARROW : UPARROW, 69, 26, TC_BLACK);
 
 			int cg_ofst;
 			int x = 89;
@@ -330,23 +330,23 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				cg_ofst = HASBIT(_cargo_filter, c) ? 2 : 1;
 				GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, cs->rating_colour);
-				DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, 0x10);
+				DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, TC_BLACK);
 				x += 14;
 				i++;
 			}
 
 			x += 6;
 			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_NOCARGOWAITING) ? 2 : 1;
-			DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_NONE, 16);
+			DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_NONE, TC_BLACK);
 			x += 14;
 			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_CARGOALL) ? 2 : 1;
-			DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, 16);
+			DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
 
 			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_FACILALL) ? 2 : 1;
-			DrawString(71 + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, 16);
+			DrawString(71 + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
 
 			if (w->vscroll.count == 0) { // player has no stations
-				DrawString(xb, 40, STR_304A_NONE, 0);
+				DrawString(xb, 40, STR_304A_NONE, TC_FROMSTRING);
 				return;
 			}
 
@@ -362,7 +362,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				SetDParam(0, st->index);
 				SetDParam(1, st->facilities);
-				x = DrawString(xb, y, STR_3049_0, 0) + 5;
+				x = DrawString(xb, y, STR_3049_0, TC_FROMSTRING) + 5;
 
 				/* show cargo waiting and station ratings */
 				for (CargoID j = 0; j < NUM_CARGO; j++) {
@@ -729,7 +729,7 @@ static void DrawStationViewWindow(Window *w)
 			if (!st->goods[i].cargo.Empty()) str = STR_EMPTY;
 		}
 		SetDParam(0, str);
-		DrawString(x, y, STR_0008_WAITING, 0);
+		DrawString(x, y, STR_0008_WAITING, TC_FROMSTRING);
 		y += 10;
 	}
 
@@ -742,7 +742,7 @@ static void DrawStationViewWindow(Window *w)
 				DrawCargoIcons(i, waiting, x, y);
 				SetDParam(1, waiting);
 				SetDParam(0, i);
-				DrawStringRightAligned(x + 234, y, STR_0009, 0);
+				DrawStringRightAligned(x + 234, y, STR_0009, TC_FROMSTRING);
 				y += 10;
 			}
 		} else {
@@ -751,13 +751,13 @@ static void DrawStationViewWindow(Window *w)
 				DrawCargoIcons(i, waiting, x, y);
 				SetDParam(1, waiting);
 				SetDParam(0, i);
-				DrawStringRightAligned(x + 234, y, STR_000A_EN_ROUTE_FROM, 0);
+				DrawStringRightAligned(x + 234, y, STR_000A_EN_ROUTE_FROM, TC_FROMSTRING);
 				y += 10;
 			}
 
 			if (pos > -5 && --pos < 0) {
 				SetDParam(0, st->goods[i].cargo.Source());
-				DrawStringRightAligned(x + 234, y, STR_000B, 0);
+				DrawStringRightAligned(x + 234, y, STR_000B, TC_FROMSTRING);
 				y += 10;
 			}
 		}
@@ -789,7 +789,7 @@ static void DrawStationViewWindow(Window *w)
 		*b = '\0';
 		DrawStringMultiLine(2, 67, STR_SPEC_USERSTRING, 245);
 	} else {
-		DrawString(2, 67, STR_3034_LOCAL_RATING_OF_TRANSPORT, 0);
+		DrawString(2, 67, STR_3034_LOCAL_RATING_OF_TRANSPORT, TC_FROMSTRING);
 
 		y = 77;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
@@ -802,7 +802,7 @@ static void DrawStationViewWindow(Window *w)
 			SetDParam(0, cs->name);
 			SetDParam(2, ge->rating * 101 >> 8);
 			SetDParam(1, STR_3035_APPALLING + (ge->rating >> 5));
-			DrawString(8, y, STR_303D, 0);
+			DrawString(8, y, STR_303D, TC_FROMSTRING);
 			y += 10;
 		}
 	}

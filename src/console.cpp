@@ -88,7 +88,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 			DoDrawString(_iconsole_cmdline.buf, 10 + delta, w->height - ICON_LINE_HEIGHT, _icolour_cmd);
 
 			if (_iconsole_cmdline.caret)
-				DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, w->height - ICON_LINE_HEIGHT, 12);
+				DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, w->height - ICON_LINE_HEIGHT, TC_WHITE);
 			break;
 		}
 		case WE_MOUSELOOP:
@@ -215,7 +215,7 @@ void IConsoleInit()
 	_icolour_err  =  3;
 	_icolour_warn = 13;
 	_icolour_dbg  =  5;
-	_icolour_cmd  =  2;
+	_icolour_cmd  = TC_GOLD;
 	_iconsole_historypos = ICON_HISTORY_SIZE - 1;
 	_iconsole_mode = ICONSOLE_CLOSED;
 

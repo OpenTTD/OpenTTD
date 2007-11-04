@@ -175,7 +175,7 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 
 			/* Number of wagons relative to a standard length wagon (rounded up) */
 			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
-			DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
+			DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING); // Draw the counter
 			break;
 
 		case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, 1, WP(w, depot_d).sel); break;
@@ -200,7 +200,7 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 	DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, x + diff_x, y + diff_y);
 
 	SetDParam(0, v->unitnumber);
-	DrawString(x, y + 2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
+	DrawString(x, y + 2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, TC_FROMSTRING);
 }
 
 static void DrawDepotWindow(Window *w)
@@ -274,14 +274,14 @@ static void DrawDepotWindow(Window *w)
 		const Vehicle *u;
 
 		DrawTrainImage(v, x + 50, y, w->hscroll.cap - 29, 0, WP(w,depot_d).sel);
-		DrawString(x, y + 2, STR_8816, 0);
+		DrawString(x, y + 2, STR_8816, TC_FROMSTRING);
 
 		/*Draw the train counter */
 		i = 0;
 		u = v;
 		do i++; while ((u = u->Next()) != NULL); // Determine length of train
 		SetDParam(0, i);                      // Set the counter
-		DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
+		DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING); // Draw the counter
 	}
 }
 

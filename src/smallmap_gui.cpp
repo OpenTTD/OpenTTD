@@ -681,7 +681,7 @@ skip_column:
 					y < dpi->top + dpi->height) {
 				/* And draw it. */
 				SetDParam(0, t->index);
-				DrawString(x, y, STR_2056, 12);
+				DrawString(x, y, STR_2056, TC_WHITE);
 			}
 		}
 	}
@@ -752,9 +752,9 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					/* Industry name must be formated, since it's not in tiny font in the specs.
 					* So, draw with a parameter and use the STR_7065 string, which is tiny, black */
 					SetDParam(0, tbl->legend);
-					DrawString(x + 11, y, STR_7065, 0);
+					DrawString(x + 11, y, STR_7065, TC_FROMSTRING);
 				} else {
-					DrawString(x + 11, y, tbl->legend, 0);
+					DrawString(x + 11, y, tbl->legend, TC_FROMSTRING);
 				}
 
 				tbl += 1;

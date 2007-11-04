@@ -146,7 +146,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, w->window_number);
 			DrawWindowWidgets(w);
 
-			DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, 0);
+			DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
 
 			/* Draw list of players */
 			y = 25;
@@ -172,7 +172,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 						DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
 					}
 
-					DrawString(28, y, STR_2024, 0);
+					DrawString(28, y, STR_2024, TC_FROMSTRING);
 					y += 10;
 				}
 			}
@@ -184,14 +184,14 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			int pos = w->vscroll.pos;
 
 			if (--pos < 0) {
-				DrawString(2, y, STR_2045_ACTIONS_AVAILABLE, 0);
+				DrawString(2, y, STR_2045_ACTIONS_AVAILABLE, TC_FROMSTRING);
 				y += 10;
 			}
 			for (i = 0; buttons; i++, buttons >>= 1) {
 				if (pos <= -5) break; ///< Draw only the 5 fitting lines
 
 				if ((buttons & 1) && --pos < 0) {
-					DrawString(3, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, 6);
+					DrawString(3, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
 					y += 10;
 				}
 			}
@@ -272,15 +272,15 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 		SetDParam(0, t->population);
 		SetDParam(1, t->num_houses);
-		DrawString(2, 107, STR_2006_POPULATION, 0);
+		DrawString(2, 107, STR_2006_POPULATION, TC_FROMSTRING);
 
 		SetDParam(0, t->act_pass);
 		SetDParam(1, t->max_pass);
-		DrawString(2, 117, STR_200D_PASSENGERS_LAST_MONTH_MAX, 0);
+		DrawString(2, 117, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
 
 		SetDParam(0, t->act_mail);
 		SetDParam(1, t->max_mail);
-		DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, 0);
+		DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
 
 		DrawWindowViewport(w);
 		break;
@@ -466,7 +466,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, _num_town_sort);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_town_sort_order & 1 ? DOWNARROW : UPARROW, (_town_sort_order <= 1) ? 88 : 187, 15, 0x10);
+		DoDrawString(_town_sort_order & 1 ? DOWNARROW : UPARROW, (_town_sort_order <= 1) ? 88 : 187, 15, TC_BLACK);
 
 		{
 			int n = 0;
@@ -480,14 +480,14 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 
 				SetDParam(0, t->index);
 				SetDParam(1, t->population);
-				DrawString(2, y, STR_2057, 0);
+				DrawString(2, y, STR_2057, TC_FROMSTRING);
 
 				y += 10;
 				i++;
 				if (++n == w->vscroll.cap) break; // max number of towns in 1 window
 			}
 			SetDParam(0, GetWorldPopulation());
-			DrawString(3, w->height - 12 + 2, STR_TOWN_POPULATION, 0);
+			DrawString(3, w->height - 12 + 2, STR_TOWN_POPULATION, TC_FROMSTRING);
 		}
 	} break;
 

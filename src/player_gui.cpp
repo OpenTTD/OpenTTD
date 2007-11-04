@@ -39,10 +39,10 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 
 	if (!(mode & 1)) { // normal sized economics window (mode&1) is minimized status
 		/* draw categories */
-		DrawStringCenterUnderline(61, 15, STR_700F_EXPENDITURE_INCOME, 0);
+		DrawStringCenterUnderline(61, 15, STR_700F_EXPENDITURE_INCOME, TC_FROMSTRING);
 		for (i = 0; i != 13; i++)
-			DrawString(2, 27 + i * 10, STR_7011_CONSTRUCTION + i, 0);
-		DrawStringRightAligned(111, 27 + 10 * 13 + 2, STR_7020_TOTAL, 0);
+			DrawString(2, 27 + i * 10, STR_7011_CONSTRUCTION + i, TC_FROMSTRING);
+		DrawStringRightAligned(111, 27 + 10 * 13 + 2, STR_7020_TOTAL, TC_FROMSTRING);
 
 		/* draw the price columns */
 		year = _cur_year - 2;
@@ -52,7 +52,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 		do {
 			if (year >= p->inaugurated_year) {
 				SetDParam(0, year);
-				DrawStringRightAlignedUnderline(x, 15, STR_7010, 0);
+				DrawStringRightAlignedUnderline(x, 15, STR_7010, TC_FROMSTRING);
 				sum = 0;
 				for (i = 0; i != 13; i++) {
 					/* draw one row in the price column */
@@ -63,14 +63,14 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 						str = STR_701E;
 						if (cost < 0) { cost = -cost; str++; }
 						SetDParam(0, cost);
-						DrawStringRightAligned(x, 27 + i * 10, str, 0);
+						DrawStringRightAligned(x, 27 + i * 10, str, TC_FROMSTRING);
 					}
 				}
 
 				str = STR_701E;
 				if (sum < 0) { sum = -sum; str++; }
 				SetDParam(0, sum);
-				DrawStringRightAligned(x, 27 + 13 * 10 + 2, str, 0);
+				DrawStringRightAligned(x, 27 + 13 * 10 + 2, str, TC_FROMSTRING);
 
 				GfxFillRect(x - 75, 27 + 10 * 13, x, 27 + 10 * 13, 215);
 				x += 95;
@@ -83,27 +83,27 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 
 		/* draw max loan aligned to loan below (y += 10) */
 		SetDParam(0, _economy.max_loan);
-		DrawString(202, y + 10, STR_MAX_LOAN, 0);
+		DrawString(202, y + 10, STR_MAX_LOAN, TC_FROMSTRING);
 	} else {
 		y = 15;
 	}
 
-	DrawString(2, y, STR_7026_BANK_BALANCE, 0);
+	DrawString(2, y, STR_7026_BANK_BALANCE, TC_FROMSTRING);
 	SetDParam(0, p->player_money);
-	DrawStringRightAligned(182, y, STR_7028, 0);
+	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
 
 	y += 10;
 
-	DrawString(2, y, STR_7027_LOAN, 0);
+	DrawString(2, y, STR_7027_LOAN, TC_FROMSTRING);
 	SetDParam(0, p->current_loan);
-	DrawStringRightAligned(182, y, STR_7028, 0);
+	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
 
 	y += 12;
 
 	GfxFillRect(182 - 75, y - 2, 182, y - 2, 215);
 
 	SetDParam(0, p->player_money - p->current_loan);
-	DrawStringRightAligned(182, y, STR_7028, 0);
+	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
 }
 
 static const Widget _player_finances_widgets[] = {
@@ -331,14 +331,14 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 						DrawSprite(p->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, 2, y);
 					}
 
-					DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? 0xC : 0x10);
+					DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
 
 					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour1), 152, y);
-					DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? 0xC : 2);
+					DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
 
 					if (_loaded_newgrf_features.has_2CC) {
 						DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour2), 277, y);
-						DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? 0xC : 2);
+						DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
 					}
 
 					y += 14;
@@ -658,7 +658,7 @@ static const Widget _select_player_face_adv_widgets[] = {
 void DrawFaceStringLabel(const Window *w, byte widget_index, StringID str, uint8 val, bool is_bool_widget)
 {
 	/* Write the label in gold (0x2) to the left of the button. */
-	DrawStringRightAligned(w->widget[widget_index].left - (is_bool_widget ? 5 : 14), w->widget[widget_index].top + 1, str, 0x2);
+	DrawStringRightAligned(w->widget[widget_index].left - (is_bool_widget ? 5 : 14), w->widget[widget_index].top + 1, str, TC_GOLD);
 
 	if (!IsWindowWidgetDisabled(w, widget_index)) {
 		if (is_bool_widget) {
@@ -672,7 +672,7 @@ void DrawFaceStringLabel(const Window *w, byte widget_index, StringID str, uint8
 
 		/* Draw the value/bool in white (0xC). If the button clicked adds 1px to x and y text coordinates (IsWindowWidgetLowered()). */
 		DrawStringCentered(w->widget[widget_index].left + (w->widget[widget_index].right - w->widget[widget_index].left) / 2 +
-			IsWindowWidgetLowered(w, widget_index), w->widget[widget_index].top + 1 + IsWindowWidgetLowered(w, widget_index), str, 0xC);
+			IsWindowWidgetLowered(w, widget_index), w->widget[widget_index].top + 1 + IsWindowWidgetLowered(w, widget_index), str, TC_WHITE);
 	}
 }
 
@@ -985,7 +985,7 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 	uint air   = 0;
 	uint ship  = 0;
 
-	DrawString(x, y, STR_7039_VEHICLES, 0);
+	DrawString(x, y, STR_7039_VEHICLES, TC_FROMSTRING);
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->owner == player) {
@@ -1000,29 +1000,29 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 	}
 
 	if (train + road + air + ship == 0) {
-		DrawString(x + 70, y, STR_7042_NONE, 0);
+		DrawString(x + 70, y, STR_7042_NONE, TC_FROMSTRING);
 	} else {
 		if (train != 0) {
 			SetDParam(0, train);
-			DrawString(x + 70, y, STR_TRAINS, 0);
+			DrawString(x + 70, y, STR_TRAINS, TC_FROMSTRING);
 			y += 10;
 		}
 
 		if (road != 0) {
 			SetDParam(0, road);
-			DrawString(x + 70, y, STR_ROAD_VEHICLES, 0);
+			DrawString(x + 70, y, STR_ROAD_VEHICLES, TC_FROMSTRING);
 			y += 10;
 		}
 
 		if (air != 0) {
 			SetDParam(0, air);
-			DrawString(x + 70, y, STR_AIRCRAFT, 0);
+			DrawString(x + 70, y, STR_AIRCRAFT, TC_FROMSTRING);
 			y += 10;
 		}
 
 		if (ship != 0) {
 			SetDParam(0, ship);
-			DrawString(x + 70, y, STR_SHIPS, 0);
+			DrawString(x + 70, y, STR_SHIPS, TC_FROMSTRING);
 		}
 	}
 }
@@ -1052,7 +1052,7 @@ static void DrawCompanyOwnerText(const Player *p)
 		}
 	}
 
-	if (num >= 0) DrawString(120, 124, STR_707D_OWNED_BY + num, 0);
+	if (num >= 0) DrawString(120, 124, STR_707D_OWNED_BY + num, TC_FROMSTRING);
 }
 
 /**
@@ -1105,11 +1105,11 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 
 			SetDParam(0, p->inaugurated_year);
-			DrawString(110, 25, STR_7038_INAUGURATED, 0);
+			DrawString(110, 25, STR_7038_INAUGURATED, TC_FROMSTRING);
 
 			DrawPlayerVehiclesAmount((PlayerID)w->window_number);
 
-			DrawString(110, 48, STR_7006_COLOR_SCHEME, 0);
+			DrawString(110, 48, STR_7006_COLOR_SCHEME, TC_FROMSTRING);
 			/* Draw company-colour bus */
 			DrawSprite(SPR_VEH_BUS_SW_VIEW, PLAYER_SPRITE_COLOR(p->index), 215, 49);
 
@@ -1119,7 +1119,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
 
 			SetDParam(0, CalculateCompanyValue(p));
-			DrawString(110, 114, STR_7076_COMPANY_VALUE, 0);
+			DrawString(110, 114, STR_7076_COMPANY_VALUE, TC_FROMSTRING);
 
 			DrawCompanyOwnerText(p);
 
@@ -1396,10 +1396,10 @@ static void HighScoreWndProc(Window *w, WindowEvent *e)
 		/* Draw Highscore peepz */
 		for (i = 0; i < lengthof(_highscore_table[0]); i++) {
 			SetDParam(0, i + 1);
-			DrawString(x + 40, y + 140 + (i * 55), STR_0212, 0x10);
+			DrawString(x + 40, y + 140 + (i * 55), STR_0212, TC_BLACK);
 
 			if (hs[i].company[0] != '\0') {
-				uint16 colour = (WP(w, highscore_d).rank == (int8)i) ? 0x3 : 0x10; // draw new highscore in red
+				TextColour colour = (WP(w, highscore_d).rank == (int8)i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
 				DoDrawString(hs[i].company, x + 71, y + 140 + (i * 55), colour);
 				SetDParam(0, hs[i].title);

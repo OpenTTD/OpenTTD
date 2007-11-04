@@ -166,13 +166,13 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				bool selected = WP(w, fnd_d).index == i + w->vscroll.pos;
 
 				if (_fund_gui.index[i + w->vscroll.pos] == INVALID_INDUSTRYTYPE) {
-					DrawString(21, y + offset, STR_MANY_RANDOM_INDUSTRIES, selected ? 12 : 6);
+					DrawString(21, y + offset, STR_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
 					continue;
 				}
 				const IndustrySpec *indsp = GetIndustrySpec(_fund_gui.index[i + w->vscroll.pos]);
 
 				/* Draw the name of the industry in white is selected, otherwise, in orange */
-				DrawStringTruncated(20, y + offset, indsp->name, selected ? 12 : 6, max_width - 25);
+				DrawStringTruncated(20, y + offset, indsp->name, selected ? TC_WHITE : TC_ORANGE, max_width - 25);
 				GfxFillRect(x,     y + 1 + offset,  x + 10, y + 7 + offset, selected ? 15 : 0);
 				GfxFillRect(x + 1, y + 2 + offset,  x +  9, y + 6 + offset, indsp->map_colour);
 			}
@@ -184,7 +184,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 
 			if (_game_mode != GM_EDITOR) {
 				SetDParam(0, indsp->GetConstructionCost());
-				DrawStringTruncated(x_str, y_str, STR_482F_COST, 0, max_width);
+				DrawStringTruncated(x_str, y_str, STR_482F_COST, TC_FROMSTRING, max_width);
 				y_str += 11;
 			}
 
@@ -197,7 +197,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				if (p > 0) str++;
 				SetDParam(p++, GetCargo(indsp->accepts_cargo[j])->name);
 			}
-			DrawStringTruncated(x_str, y_str, str, 0, max_width);
+			DrawStringTruncated(x_str, y_str, str, TC_FROMSTRING, max_width);
 			y_str += 11;
 
 			/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
@@ -209,7 +209,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				if (p > 0) str++;
 				SetDParam(p++, GetCargo(indsp->produced_cargo[j])->name);
 			}
-			DrawStringTruncated(x_str, y_str, str, 0, max_width);
+			DrawStringTruncated(x_str, y_str, str, TC_FROMSTRING, max_width);
 			y_str += 11;
 
 			/* Get the additional purchase info text, if it has not already been */
@@ -460,13 +460,13 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				if (i->accepts_cargo[j] == CT_INVALID) continue;
 				has_accept = true;
 				if (first) {
-					DrawString(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, 0);
+					DrawString(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, TC_FROMSTRING);
 					y += 10;
 					first = false;
 				}
 				SetDParam(0, i->accepts_cargo[j]);
 				SetDParam(1, i->incoming_cargo_waiting[j]);
-				DrawString(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, 0);
+				DrawString(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING);
 				y += 10;
 			}
 		} else {
@@ -479,7 +479,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				SetDParam(p++, GetCargo(i->accepts_cargo[j])->name);
 			}
 			if (has_accept) {
-				DrawString(2, y, str, 0);
+				DrawString(2, y, str, TC_FROMSTRING);
 				y += 10;
 			}
 		}
@@ -489,7 +489,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			if (i->produced_cargo[j] == CT_INVALID) continue;
 			if (first) {
 				if (has_accept) y += 10;
-				DrawString(2, y, STR_482A_PRODUCTION_LAST_MONTH, 0);
+				DrawString(2, y, STR_482A_PRODUCTION_LAST_MONTH, TC_FROMSTRING);
 				y += 10;
 				WP(w, indview_d).production_offset_y = y;
 				first = false;
@@ -499,7 +499,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			SetDParam(1, i->last_month_production[j]);
 
 			SetDParam(2, i->last_month_pct_transported[j] * 100 >> 8);
-			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), y, STR_482B_TRANSPORTED, 0);
+			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), y, STR_482B_TRANSPORTED, TC_FROMSTRING);
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
 				DrawArrowButtons(5, y, 3, (WP(w, indview_d).clicked_line == j + 1) ? WP(w, indview_d).clicked_button : 0,
@@ -517,7 +517,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					y += 10;
 
 					PrepareTextRefStackUsage(6);
-					DrawString(2, y, message, 0);
+					DrawString(2, y, message, TC_FROMSTRING);
 					StopTextRefStackUsage();
 				}
 			}
@@ -783,7 +783,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, _num_industry_sort);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_industry_sort_order & 1 ? DOWNARROW : UPARROW, _indicator_positions[_industry_sort_order >> 1], 15, 0x10);
+		DoDrawString(_industry_sort_order & 1 ? DOWNARROW : UPARROW, _indicator_positions[_industry_sort_order >> 1], 15, TC_BLACK);
 
 		p = w->vscroll.pos;
 		n = 0;
@@ -801,13 +801,13 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 					SetDParam(4, i->last_month_production[1]);
 					SetDParam(5, i->last_month_pct_transported[0] * 100 >> 8);
 					SetDParam(6, i->last_month_pct_transported[1] * 100 >> 8);
-					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_TWO, 0);
+					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_TWO, TC_FROMSTRING);
 				} else {
 					SetDParam(3, i->last_month_pct_transported[0] * 100 >> 8);
-					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM, 0);
+					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM, TC_FROMSTRING);
 				}
 			} else {
-				DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_NOPROD, 0);
+				DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_NOPROD, TC_FROMSTRING);
 			}
 			p++;
 			if (++n == w->vscroll.cap) break;

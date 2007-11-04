@@ -106,7 +106,7 @@ void DrawNewsBorder(const Window *w)
 	GfxFillRect(left, top, right, top, 0xD7);
 	GfxFillRect(left, bottom, right, bottom, 0xD7);
 
-	DrawString(left + 2, top + 1, STR_00C6, 0);
+	DrawString(left + 2, top + 1, STR_00C6, TC_FROMSTRING);
 }
 
 static void NewsWindowProc(Window *w, WindowEvent *e)
@@ -126,10 +126,10 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 			case NM_THIN: {
 				DrawNewsBorder(w);
 
-				DrawString(2, 1, STR_00C6, 0);
+				DrawString(2, 1, STR_00C6, TC_FROMSTRING);
 
 				SetDParam(0, ni->date);
-				DrawStringRightAligned(428, 1, STR_01FF, 0);
+				DrawStringRightAligned(428, 1, STR_01FF, TC_FROMSTRING);
 
 				if (!(ni->flags & NF_VIEWPORT)) {
 					CopyInDParam(0, ni->params, lengthof(ni->params));
@@ -704,9 +704,9 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 			const NewsItem *ni = &_news_items[getNews(p)];
 
 			SetDParam(0, ni->date);
-			DrawString(4, y, STR_SHORT_DATE, 12);
+			DrawString(4, y, STR_SHORT_DATE, TC_WHITE);
 
-			DrawNewsString(82, y, 12, ni, w->width - 95);
+			DrawNewsString(82, y, TC_WHITE, ni, w->width - 95);
 			y += 12;
 		}
 		break;
@@ -832,11 +832,11 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			for (i = 0, y = 26; i < NT_END; i++, y += 12, val >>= 2) {
 				/* 51 comes from 13 + 89 (left and right of the button)+1, shiefted by one as to get division,
 				 * which will give centered position */
-				DrawStringCentered(51, y + 1, message_opt[val & 0x3], 0x10);
+				DrawStringCentered(51, y + 1, message_opt[val & 0x3], TC_BLACK);
 			}
 
 			/* Draw the general bottom button string as well */
-			DrawStringCentered(51, y + 10, message_opt[WP(w, def_d).data_1], 0x10);
+			DrawStringCentered(51, y + 10, message_opt[WP(w, def_d).data_1], TC_BLACK);
 		} break;
 
 		case WE_CLICK:

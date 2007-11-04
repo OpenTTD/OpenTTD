@@ -28,7 +28,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 	SetDParam(0, v->engine_type);
 	SetDParam(1, v->build_year);
 	SetDParam(2, v->value);
-	DrawString(x, y + y_offset, STR_9011_BUILT_VALUE, 0);
+	DrawString(x, y + y_offset, STR_9011_BUILT_VALUE, TC_FROMSTRING);
 
 	if (RoadVehHasArticPart(v)) {
 		AcceptedCargo max_cargo;
@@ -58,7 +58,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 		}
 
 		SetDParamStr(0, capacity);
-		DrawStringTruncated(x, y + 10 + y_offset, STR_JUST_STRING, 0, 380 - x);
+		DrawStringTruncated(x, y + 10 + y_offset, STR_JUST_STRING, TC_BLUE, 380 - x);
 
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			str = STR_8812_EMPTY;
@@ -68,7 +68,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 				SetDParam(2, u->cargo.Source());
 				str = STR_8813_FROM;
 			}
-			DrawString(x, y + 21 + y_offset, str, 0);
+			DrawString(x, y + 21 + y_offset, str, TC_FROMSTRING);
 
 			y_offset += 11;
 		}
@@ -77,7 +77,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 	} else {
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
-		DrawString(x, y + 10 + y_offset, STR_9012_CAPACITY, 0);
+		DrawString(x, y + 10 + y_offset, STR_9012_CAPACITY, TC_FROMSTRING);
 
 		str = STR_8812_EMPTY;
 		if (!v->cargo.Empty()) {
@@ -86,12 +86,12 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 			SetDParam(2, v->cargo.Source());
 			str = STR_8813_FROM;
 		}
-		DrawString(x, y + 21 + y_offset, str, 0);
+		DrawString(x, y + 21 + y_offset, str, TC_FROMSTRING);
 	}
 
 	/* Draw Transfer credits text */
 	SetDParam(0, v->cargo.FeederShare());
-	DrawString(x, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE, 0);
+	DrawString(x, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
 }
 
 

@@ -562,7 +562,7 @@ BoundingRect GetStringBoundingBox(const char *str)
  * @param x offset from left side of the screen, if negative offset from the right side
  * @param y offset from top side of the screen, if negative offset from the bottom
  * @param real_color colour of the string, see _string_colormap in
- * table/palettes.h or docs/ottd-colourtext-palette.png
+ * table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx.h
  * @return the x-coordinates where the drawing has finished. If nothing is drawn
  * the originally passed x-coordinate is returned */
 int DoDrawString(const char *string, int x, int y, uint16 real_color)

@@ -361,6 +361,28 @@ enum {
 	COLOUR_WHITE
 };
 
+/** Colour of the strings, see _string_colormap in table/palettes.h or docs/ottd-colourtext-palette.png */
+enum TextColour {
+	TC_FROMSTRING  = 0x00,
+	TC_BLUE        = 0x00,
+	TC_SILVER      = 0x01,
+	TC_GOLD        = 0x02,
+	TC_RED         = 0x03,
+	TC_PURPLE      = 0x04,
+	TC_LIGHT_BROWN = 0x05,
+	TC_ORANGE      = 0x06,
+	TC_GREEN       = 0x07,
+	TC_YELLOW      = 0x08,
+	TC_DARK_GREEN  = 0x09,
+	TC_CREAM       = 0x0A,
+	TC_BROWN       = 0x0B,
+	TC_WHITE       = 0x0C,
+	TC_LIGHT_BLUE  = 0x0D,
+	TC_GREY        = 0x0E,
+	TC_DARK_BLUE   = 0x0F,
+	TC_BLACK       = 0x10,
+};
+
 /**
  * All 16 colour gradients
  * 8 colours per gradient from darkest (0) to lightest (7)

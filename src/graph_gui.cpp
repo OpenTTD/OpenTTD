@@ -28,7 +28,7 @@ static uint _legend_excluded_cargo;
 
 enum {
 	GRAPH_MAX_DATASETS = 32,
-	GRAPH_AXIS_LABEL_COLOUR = 16,
+	GRAPH_AXIS_LABEL_COLOUR = TC_BLACK,
 	GRAPH_AXIS_LINE_COLOUR  = 215,
 
 	GRAPH_X_POSITION_BEGINNING  = 44,  ///< Start the graph 44 pixels from gw->left
@@ -273,7 +273,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 
 				SetDParam(0, p->index);
 				SetDParam(1, p->index);
-				DrawString(21, 17 + p->index * 12, STR_7021, HASBIT(_legend_excluded_players, p->index) ? 0x10 : 0xC);
+				DrawString(21, 17 + p->index * 12, STR_7021, HASBIT(_legend_excluded_players, p->index) ? TC_BLACK : TC_WHITE);
 			}
 			break;
 		}
@@ -738,7 +738,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 					GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
 					GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
 					SetDParam(0, cs->name);
-					DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, 0);
+					DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, TC_FROMSTRING);
 					y += 8;
 				}
 
@@ -753,8 +753,8 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 
 			DrawGraph(&gd);
 
-			DrawString(2 + 46, 24 + gd.height + 7, STR_7062_DAYS_IN_TRANSIT, 0);
-			DrawString(2 + 84, 24 - 9, STR_7063_PAYMENT_FOR_DELIVERING, 0);
+			DrawString(2 + 46, 24 + gd.height + 7, STR_7062_DAYS_IN_TRANSIT, TC_FROMSTRING);
+			DrawString(2 + 84, 24 - 9, STR_7063_PAYMENT_FOR_DELIVERING, TC_FROMSTRING);
 			break;
 		}
 
@@ -879,7 +879,7 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 				SetDParam(2, p->index);
 				SetDParam(3, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
 
-				DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, 0);
+				DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, TC_FROMSTRING);
 				DrawPlayerIcon(p->index, 27, 16 + i * 10);
 			}
 
@@ -999,11 +999,11 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 					total_score += score;
 				}
 
-				DrawString(7, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, 0);
+				DrawString(7, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, TC_FROMSTRING);
 
 				/* Draw the score */
 				SetDParam(0, score);
-				DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, 0);
+				DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, TC_FROMSTRING);
 
 				/* Calculate the %-bar */
 				x = clamp(val, 0, needed) * 50 / needed;
@@ -1023,7 +1023,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
 				/* Draw it */
 				SetDParam(0, x);
-				DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, 0);
+				DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING);
 
 				/* SCORE_LOAN is inversed */
 				if (i == SCORE_LOAN) val = needed - val;
@@ -1038,10 +1038,10 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 					case SCORE_MAX_INCOME:
 					case SCORE_MONEY:
 					case SCORE_LOAN:
-						DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, 0);
+						DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, TC_FROMSTRING);
 						break;
 					default:
-						DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_INT, 0);
+						DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_INT, TC_FROMSTRING);
 				}
 			}
 

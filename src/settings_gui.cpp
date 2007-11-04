@@ -155,7 +155,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetLoweredState(w, 28, _fullscreen);
 
 		DrawWindowWidgets(w);
-		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, 0); // fullscreen
+		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
 	} break;
 
 	case WE_CLICK:
@@ -485,14 +485,14 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 				GfxFillRect(16, y + 1, 16 + 8, y + 8, color);
 			}
 
-			DrawStringCentered(10, y, STR_6819, 0);
-			DrawStringCentered(20, y, STR_681A, 0);
+			DrawStringCentered(10, y, STR_6819, TC_FROMSTRING);
+			DrawStringCentered(20, y, STR_681A, TC_FROMSTRING);
 
 
 			value = _game_setting_info[i].str + ((GDType*)&_opt_mod_temp.diff)[i];
 			if (i == 4) value *= 1000; // XXX - handle currency option
 			SetDParam(0, value);
-			DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, 0);
+			DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, TC_FROMSTRING);
 
 			y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
 		}
@@ -857,7 +857,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 					SetDParam(1, value);
 				}
 			}
-			DrawString(30, y, (sdb->str) + disabled, 0);
+			DrawString(30, y, (sdb->str) + disabled, TC_FROMSTRING);
 			y += 11;
 		}
 		break;
@@ -1031,8 +1031,8 @@ void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, b
 
 	DrawFrameRect(x,      y + 1, x +  9, y + 9, ctab, (state == 1) ? FR_LOWERED : FR_NONE);
 	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, ctab, (state == 2) ? FR_LOWERED : FR_NONE);
-	DrawStringCentered(x +  5, y + 1, STR_6819, 0); // [<]
-	DrawStringCentered(x + 15, y + 1, STR_681A, 0); // [>]
+	DrawStringCentered(x +  5, y + 1, STR_6819, TC_FROMSTRING); // [<]
+	DrawStringCentered(x + 15, y + 1, STR_681A, TC_FROMSTRING); // [>]
 
 	/* Grey out the buttons that aren't clickable */
 	if (!clickable_left)
@@ -1056,37 +1056,37 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			DrawArrowButtons(10, y, 3, GB(clk, 0, 2), true, true);
 			SetDParam(0, 1);
 			SetDParam(1, 1);
-			DrawString(35, y + 1, STR_CURRENCY_EXCHANGE_RATE, 0);
+			DrawString(35, y + 1, STR_CURRENCY_EXCHANGE_RATE, TC_FROMSTRING);
 			y += 12;
 
 			// separator
 			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 2, 2) ? FR_LOWERED : FR_NONE);
-			x = DrawString(35, y + 1, STR_CURRENCY_SEPARATOR, 0);
-			DoDrawString(_str_separator, x + 4, y + 1, 6);
+			x = DrawString(35, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
+			DoDrawString(_str_separator, x + 4, y + 1, TC_ORANGE);
 			y += 12;
 
 			// prefix
 			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 4, 2) ? FR_LOWERED : FR_NONE);
-			x = DrawString(35, y + 1, STR_CURRENCY_PREFIX, 0);
-			DoDrawString(_custom_currency.prefix, x + 4, y + 1, 6);
+			x = DrawString(35, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
+			DoDrawString(_custom_currency.prefix, x + 4, y + 1, TC_ORANGE);
 			y += 12;
 
 			// suffix
 			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 6, 2) ? FR_LOWERED : FR_NONE);
-			x = DrawString(35, y + 1, STR_CURRENCY_SUFFIX, 0);
-			DoDrawString(_custom_currency.suffix, x + 4, y + 1, 6);
+			x = DrawString(35, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
+			DoDrawString(_custom_currency.suffix, x + 4, y + 1, TC_ORANGE);
 			y += 12;
 
 			// switch to euro
 			DrawArrowButtons(10, y, 3, GB(clk, 8, 2), true, true);
 			SetDParam(0, _custom_currency.to_euro);
-			DrawString(35, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, 0);
+			DrawString(35, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, TC_FROMSTRING);
 			y += 12;
 
 			// Preview
 			y += 12;
 			SetDParam(0, 10000);
-			DrawString(35, y + 1, STR_CURRENCY_PREVIEW, 0);
+			DrawString(35, y + 1, STR_CURRENCY_PREVIEW, TC_FROMSTRING);
 			break;
 		}
 

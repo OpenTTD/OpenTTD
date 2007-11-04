@@ -282,7 +282,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			if (w->window_number == VEH_TRAIN) {
 				/* Draw the selected railtype in the pulldown menu */
 				RailType railtype = _railtype_selected_in_replace_gui;
-				DrawString(157, w->widget[14].top + 1, _rail_types_list[railtype], 0x10);
+				DrawString(157, w->widget[14].top + 1, _rail_types_list[railtype], TC_BLACK);
 			}
 
 			/* sets up the string for the vehicle that is being replaced to */
@@ -297,7 +297,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 			}
 
-			DrawString(145, w->widget[5].top + 1, STR_02BD, 0x10);
+			DrawString(145, w->widget[5].top + 1, STR_02BD, TC_BLACK);
 
 			/* Draw the lists */
 			for(byte i = 0; i < 2; i++) {

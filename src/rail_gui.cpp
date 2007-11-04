@@ -809,10 +809,10 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			_cur_dpi = old_dpi;
 		}
 
-		DrawStringCentered(74, 15 + y_offset, STR_3002_ORIENTATION, 0);
-		DrawStringCentered(74, 76 + y_offset, STR_3003_NUMBER_OF_TRACKS, 0);
-		DrawStringCentered(74, 101 + y_offset, STR_3004_PLATFORM_LENGTH, 0);
-		DrawStringCentered(74, 141 + y_offset, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
+		DrawStringCentered(74, 15 + y_offset, STR_3002_ORIENTATION, TC_FROMSTRING);
+		DrawStringCentered(74, 76 + y_offset, STR_3003_NUMBER_OF_TRACKS, TC_FROMSTRING);
+		DrawStringCentered(74, 101 + y_offset, STR_3004_PLATFORM_LENGTH, TC_FROMSTRING);
+		DrawStringCentered(74, 141 + y_offset, STR_3066_COVERAGE_AREA_HIGHLIGHT, TC_FROMSTRING);
 
 		DrawStationCoverageAreaText(2, 166 + y_offset, SCT_ALL, rad);
 
@@ -827,9 +827,9 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 						GfxFillRect(8, y - 2, 127, y + 10, (1 << PALETTE_MODIFIER_GREYOUT));
 					}
 
-					DrawStringTruncated(9, y, statspec->name, i == _railstation.station_type ? 12 : 16, 118);
+					DrawStringTruncated(9, y, statspec->name, i == _railstation.station_type ? TC_WHITE : TC_BLACK, 118);
 				} else {
-					DrawStringTruncated(9, y, STR_STAT_CLASS_DFLT, i == _railstation.station_type ? 12 : 16, 118);
+					DrawStringTruncated(9, y, STR_STAT_CLASS_DFLT, i == _railstation.station_type ? TC_WHITE : TC_BLACK, 118);
 				}
 
 				y += 14;
@@ -1368,4 +1368,5 @@ void SetDefaultRailGui()
 		SetWindowDirty(w);
 	}
 }
+
 

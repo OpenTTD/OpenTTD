@@ -60,13 +60,13 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 	if (e->event == WE_PAINT) {
 		DrawWindowWidgets(w);
 
-		DoDrawStringCentered(140, 16, _landinfo_data[0], 13);
-		DoDrawStringCentered(140, 27, _landinfo_data[1], 0);
-		DoDrawStringCentered(140, 38, _landinfo_data[2], 0);
-		DoDrawStringCentered(140, 49, _landinfo_data[3], 0);
-		DoDrawStringCentered(140, 60, _landinfo_data[4], 0);
+		DoDrawStringCentered(140, 16, _landinfo_data[0], TC_LIGHT_BLUE);
+		DoDrawStringCentered(140, 27, _landinfo_data[1], TC_FROMSTRING);
+		DoDrawStringCentered(140, 38, _landinfo_data[2], TC_FROMSTRING);
+		DoDrawStringCentered(140, 49, _landinfo_data[3], TC_FROMSTRING);
+		DoDrawStringCentered(140, 60, _landinfo_data[4], TC_FROMSTRING);
 		if (_landinfo_data[5][0] != '\0') DrawStringMultiCenter(140, 76, BindCString(_landinfo_data[5]), w->width - 4);
-		if (_landinfo_data[6][0] != '\0') DoDrawStringCentered(140, 71, _landinfo_data[6], 0);
+		if (_landinfo_data[6][0] != '\0') DoDrawStringCentered(140, 71, _landinfo_data[6], TC_FROMSTRING);
 	}
 }
 
@@ -265,13 +265,13 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		/* Show original copyright and revision version */
-		DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, 0);
-		DrawStringCentered(210, 17 + 10, STR_00B7_VERSION, 0);
+		DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, TC_FROMSTRING);
+		DrawStringCentered(210, 17 + 10, STR_00B7_VERSION, TC_FROMSTRING);
 
 		/* Show all scrolling credits */
 		for (i = 0; i < lengthof(credits); i++) {
 			if (y >= 50 && y < (w->height - 40)) {
-				DoDrawString(credits[i], 10, y, 0x10);
+				DoDrawString(credits[i], 10, y, TC_BLACK);
 			}
 			y += 10;
 		}
@@ -279,8 +279,8 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		/* If the last text has scrolled start anew from the start */
 		if (y < 50) WP(w, scroller_d).height = w->height - 40;
 
-		DoDrawStringCentered(210, w->height - 25, "Website: http://www.openttd.org", 16);
-		DrawStringCentered(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, 0);
+		DoDrawStringCentered(210, w->height - 25, "Website: http://www.openttd.org", TC_BLACK);
+		DrawStringCentered(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, TC_FROMSTRING);
 	} break;
 	case WE_MOUSELOOP: // Timer to scroll the text and adjust the new top
 		if (WP(w, scroller_d).counter++ % 3 == 0) {
@@ -1087,8 +1087,8 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 
-	DoDrawString(tb->buf, delta, 0, 8);
-	if (tb->caret) DoDrawString("_", tb->caretxoffs + delta, 0, 12);
+	DoDrawString(tb->buf, delta, 0, TC_YELLOW);
+	if (tb->caret) DoDrawString("_", tb->caretxoffs + delta, 0, TC_WHITE);
 
 	_cur_dpi = old_dpi;
 }
@@ -1370,7 +1370,10 @@ static const Widget _save_dialog_widgets[] = {
 };
 
 /* Colors for fios types */
-const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5, 6, 6, 8};
+const TextColour _fios_colors[] = {
+	TC_LIGHT_BLUE, TC_DARK_GREEN,  TC_DARK_GREEN, TC_ORANGE, TC_LIGHT_BROWN,
+	TC_ORANGE,     TC_LIGHT_BROWN, TC_ORANGE,     TC_ORANGE, TC_YELLOW
+};
 
 void BuildFileList()
 {
@@ -1401,8 +1404,8 @@ static void DrawFiosTexts(uint maxw)
 	}
 
 	if (str != STR_4006_UNABLE_TO_READ_DRIVE) SetDParam(0, tot);
-	DrawString(2, 37, str, 0);
-	DoDrawStringTruncated(path, 2, 27, 16, maxw);
+	DrawString(2, 37, str, TC_FROMSTRING);
+	DoDrawStringTruncated(path, 2, 27, TC_BLACK, maxw);
 }
 
 static void MakeSortedSaveGameList()
@@ -1491,7 +1494,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		DoDrawString(
 			_savegame_sort_order & SORT_DESCENDING ? DOWNARROW : UPARROW,
 			_savegame_sort_order & SORT_BY_NAME ? w->widget[2].right - 9 : w->widget[3].right - 9,
-			15, 16
+			15, TC_BLACK
 		);
 
 		y = w->widget[7].top + 1;
@@ -1900,7 +1903,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 			} break;
 			}
 
-			DrawString(50, y + 1, ce->str, 0);
+			DrawString(50, y + 1, ce->str, TC_FROMSTRING);
 
 			y += 12;
 		}

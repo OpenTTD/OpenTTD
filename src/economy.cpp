@@ -514,7 +514,7 @@ void DrawNewsBankrupcy(Window *w)
 
 	switch (ni->string_id & 0xF0) {
 	case NB_BTROUBLE:
-		DrawStringCentered(w->width >> 1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, 0);
+		DrawStringCentered(w->width >> 1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, TC_FROMSTRING);
 
 		SetDParam(0, p->index);
 
@@ -526,7 +526,7 @@ void DrawNewsBankrupcy(Window *w)
 		break;
 
 	case NB_BMERGER:
-		DrawStringCentered(w->width >> 1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, 0);
+		DrawStringCentered(w->width >> 1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, TC_FROMSTRING);
 		SetDParam(0, ni->params[0]);
 		SetDParam(1, p->index);
 		SetDParam(2, ni->params[1]);
@@ -538,7 +538,7 @@ void DrawNewsBankrupcy(Window *w)
 		break;
 
 	case NB_BBANKRUPT:
-		DrawStringCentered(w->width >> 1, 1, STR_705C_BANKRUPT, 0);
+		DrawStringCentered(w->width >> 1, 1, STR_705C_BANKRUPT, TC_FROMSTRING);
 		SetDParam(0, ni->params[0]);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
@@ -548,7 +548,7 @@ void DrawNewsBankrupcy(Window *w)
 		break;
 
 	case NB_BNEWCOMPANY:
-		DrawStringCentered(w->width >> 1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, 0);
+		DrawStringCentered(w->width >> 1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, TC_FROMSTRING);
 		SetDParam(0, p->index);
 		SetDParam(1, ni->params[0]);
 		DrawStringMultiCenter(

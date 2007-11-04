@@ -53,7 +53,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 				SetDParam(0, b->material);
 				DrawSprite(b->sprite, b->pal, 3, 15 + i * 22);
 
-				DrawString(44, 15 + i * 22 , STR_500D, 0);
+				DrawString(44, 15 + i * 22 , STR_500D, TC_FROMSTRING);
 			}
 			break;
 

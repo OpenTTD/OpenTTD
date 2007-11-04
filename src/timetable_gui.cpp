@@ -141,8 +141,7 @@ static void DrawTimetableWindow(Window *w)
 				default: break;
 			}
 
-			const byte colour = (i == selected) ? 0xC : 0x10;
-			DrawString(2, y, STR_TIMETABLE_GO_TO, colour);
+			DrawString(2, y, STR_TIMETABLE_GO_TO, (i == selected) ? TC_WHITE : TC_BLACK);
 
 			order_id++;
 
@@ -162,8 +161,7 @@ static void DrawTimetableWindow(Window *w)
 				string = STR_TIMETABLE_TRAVEL_FOR;
 			}
 
-			const byte colour = (i == selected) ? 0xC : 0x10;
-			DrawString(12, y, string, colour);
+			DrawString(12, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
 
 			if (final_order) break;
 		}
@@ -186,16 +184,16 @@ static void DrawTimetableWindow(Window *w)
 
 		if (total_time != 0) {
 			SetTimetableParams(0, 1, total_time);
-			DrawString(2, y, complete ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE, 0x10);
+			DrawString(2, y, complete ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE, TC_BLACK);
 		}
 	}
 	y += 10;
 
 	if (v->lateness_counter == 0 || (!_patches.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
-		DrawString(2, y, STR_TIMETABLE_STATUS_ON_TIME, 0x10);
+		DrawString(2, y, STR_TIMETABLE_STATUS_ON_TIME, TC_BLACK);
 	} else {
 		SetTimetableParams(0, 1, abs(v->lateness_counter));
-		DrawString(2, y, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE, 0x10);
+		DrawString(2, y, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE, TC_BLACK);
 	}
 }
 

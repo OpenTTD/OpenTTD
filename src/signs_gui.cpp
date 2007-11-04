@@ -75,7 +75,7 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 
 		/* No signs? */
 		if (w->vscroll.count == 0) {
-			DrawString(2, y, STR_304A_NONE, 0);
+			DrawString(2, y, STR_304A_NONE, TC_FROMSTRING);
 			return;
 		}
 
@@ -90,7 +90,7 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 					DrawPlayerIcon(si->owner, 4, y + 1);
 
 				SetDParam(0, si->index);
-				DrawString(22, y, STR_SIGN_NAME, 8);
+				DrawString(22, y, STR_SIGN_NAME, TC_YELLOW);
 				y += 10;
 			}
 		}
@@ -319,5 +319,6 @@ void ShowRenameSignWindow(const Sign *si)
 
 	UpdateSignEditWindow(w, si);
 }
+
 
 

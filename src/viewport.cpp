@@ -1500,7 +1500,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 			 * otherwise colors from _string_colormap are assumed. */
 			colour = _colour_gradient[ss->color][6] | IS_PALETTE_COLOR;
 		} else {
-			colour = 16;
+			colour = TC_BLACK;
 		}
 		DrawString(
 			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),

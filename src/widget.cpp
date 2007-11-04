@@ -229,7 +229,7 @@ void DrawWindowWidgets(const Window *w)
 
 			if ((wi->type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
 
-			DrawStringCentered(((r.left + r.right + 1) >> 1) + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, 0);
+			DrawStringCentered(((r.left + r.right + 1) >> 1) + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, TC_FROMSTRING);
 			goto draw_default;
 		}
 
@@ -244,7 +244,7 @@ void DrawWindowWidgets(const Window *w)
 			StringID str = wi->data;
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
 
-			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, 0, r.right - r.left - 10);
+			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, TC_FROMSTRING, r.right - r.left - 10);
 			goto draw_default;
 		}
 
@@ -302,11 +302,11 @@ void DrawWindowWidgets(const Window *w)
 			/* draw up/down buttons */
 			clicked = ((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP);
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
-			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, 0x10);
+			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, TC_BLACK);
 
 			clicked = (((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN));
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
-			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
+			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, TC_BLACK);
 
 			c1 = _colour_gradient[wi->color&0xF][3];
 			c2 = _colour_gradient[wi->color&0xF][7];
@@ -334,11 +334,11 @@ void DrawWindowWidgets(const Window *w)
 			/* draw up/down buttons */
 			clicked = ((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2));
 			DrawFrameRect(r.left, r.top, r.right, r.top + 9, wi->color,  (clicked) ? FR_LOWERED : FR_NONE);
-			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, 0x10);
+			DoDrawString(UPARROW, r.left + 2 + clicked, r.top + clicked, TC_BLACK);
 
 			clicked = ((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2));
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color,  (clicked) ? FR_LOWERED : FR_NONE);
-			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
+			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, TC_BLACK);
 
 			c1 = _colour_gradient[wi->color&0xF][3];
 			c2 = _colour_gradient[wi->color&0xF][7];
@@ -397,7 +397,7 @@ void DrawWindowWidgets(const Window *w)
 			int c1,c2;
 			int x2 = r.left; // by default the left side is the left side of the widget
 
-			if (wi->data != 0) x2 = DrawString(r.left + 6, r.top, wi->data, 0);
+			if (wi->data != 0) x2 = DrawString(r.left + 6, r.top, wi->data, TC_FROMSTRING);
 
 			c1 = _colour_gradient[wi->color][3];
 			c2 = _colour_gradient[wi->color][7];
@@ -446,7 +446,7 @@ void DrawWindowWidgets(const Window *w)
 			assert(r.right - r.left == 10); // ensure the same sizes are used everywhere
 
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_NONE);
-			DrawString(r.left + 2, r.top + 2, STR_00C5, 0);
+			DrawString(r.left + 2, r.top + 2, STR_00C5, TC_FROMSTRING);
 			break;
 		}
 
@@ -530,7 +530,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 				if (y >= 0 && y <= height) {
 					if (WP(w,dropdown_d).items[i] != STR_NULL) {
 						if (sel == 0) GfxFillRect(x + 1, y, x + width, y + 9, 0);
-						DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16, x + width);
+						DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? TC_WHITE : TC_BLACK, x + width);
 
 						if (HASBIT(WP(w,dropdown_d).disabled_state, i)) {
 							GfxFillRect(x, y, x + width, y + 9,

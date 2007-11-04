@@ -94,7 +94,7 @@ static void DrawSubsidiesWindow(const Window *w)
 
 	y = 15;
 	x = 1;
-	DrawString(x, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, 0);
+	DrawString(x, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, TC_FROMSTRING);
 	y += 10;
 	num = 0;
 
@@ -103,21 +103,21 @@ static void DrawSubsidiesWindow(const Window *w)
 			int x2;
 
 			SetupSubsidyDecodeParam(s, 1);
-			x2 = DrawString(x + 2, y, STR_2027_FROM_TO, 0);
+			x2 = DrawString(x + 2, y, STR_2027_FROM_TO, TC_FROMSTRING);
 
 			SetDParam(0, _date - ymd.day + 384 - s->age * 32);
-			DrawString(x2, y, STR_2028_BY, 0);
+			DrawString(x2, y, STR_2028_BY, TC_FROMSTRING);
 			y += 10;
 			num++;
 		}
 	}
 
 	if (num == 0) {
-		DrawString(x + 2, y, STR_202A_NONE, 0);
+		DrawString(x + 2, y, STR_202A_NONE, TC_FROMSTRING);
 		y += 10;
 	}
 
-	DrawString(x, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, 0);
+	DrawString(x, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, TC_FROMSTRING);
 	y += 10;
 	num = 0;
 
@@ -130,16 +130,16 @@ static void DrawSubsidiesWindow(const Window *w)
 			PlayerID player = GetStation(s->to)->owner;
 			SetDParam(3, player);
 
-			xt = DrawString(x + 2, y, STR_202C_FROM_TO, 0);
+			xt = DrawString(x + 2, y, STR_202C_FROM_TO, TC_FROMSTRING);
 
 			SetDParam(0, _date - ymd.day + 768 - s->age * 32);
-			DrawString(xt, y, STR_202D_UNTIL, 0);
+			DrawString(xt, y, STR_202D_UNTIL, TC_FROMSTRING);
 			y += 10;
 			num++;
 		}
 	}
 
-	if (num == 0) DrawString(x + 2, y, STR_202A_NONE, 0);
+	if (num == 0) DrawString(x + 2, y, STR_202A_NONE, TC_FROMSTRING);
 }
 
 static void SubsidiesListWndProc(Window *w, WindowEvent *e)

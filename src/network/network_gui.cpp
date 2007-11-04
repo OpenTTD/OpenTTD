@@ -255,14 +255,14 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 		DrawEditBox(w, &WP(w, network_ql_d).q, 3);
 
-		DrawString(9, 23, STR_NETWORK_CONNECTION, 2);
-		DrawString(w->widget[3].left - 100, 23, STR_NETWORK_PLAYER_NAME, 2);
+		DrawString(9, 23, STR_NETWORK_CONNECTION, TC_GOLD);
+		DrawString(w->widget[3].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
 
 		/* Sort based on widgets: name, clients, compatibility */
 		switch (ld->sort_type) {
-			case 6 - 6: DoDrawString(arrow, w->widget[6].right - 10, 42, 0x10); break;
-			case 7 - 6: DoDrawString(arrow, w->widget[7].right - 10, 42, 0x10); break;
-			case 8 - 6: DoDrawString(arrow, w->widget[8].right - 10, 42, 0x10); break;
+			case 6 - 6: DoDrawString(arrow, w->widget[6].right - 10, 42, TC_BLACK); break;
+			case 7 - 6: DoDrawString(arrow, w->widget[7].right - 10, 42, TC_BLACK); break;
+			case 8 - 6: DoDrawString(arrow, w->widget[8].right - 10, 42, TC_BLACK); break;
 		}
 
 		{ // draw list of games
@@ -282,13 +282,13 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				if (cur_item == sel) GfxFillRect(w->widget[6].left + 1, y - 2, w->widget[8].right - 1, y + 9, 10);
 
 				SetDParamStr(0, cur_item->info.server_name);
-				DrawStringTruncated(w->widget[6].left + 5, y, STR_02BD, 16, max_name_width);
+				DrawStringTruncated(w->widget[6].left + 5, y, STR_02BD, TC_BLACK, max_name_width);
 
 				SetDParam(0, cur_item->info.clients_on);
 				SetDParam(1, cur_item->info.clients_max);
 				SetDParam(2, cur_item->info.companies_on);
 				SetDParam(3, cur_item->info.companies_max);
-				DrawStringCentered(w->widget[7].left + 39, y, STR_NETWORK_GENERAL_ONLINE, 2);
+				DrawStringCentered(w->widget[7].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
 
 				// only draw icons if the server is online
 				if (cur_item->online) {
@@ -311,71 +311,71 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		/* Draw the right menu */
 		GfxFillRect(w->widget[15].left + 1, 43, w->widget[15].right - 1, 92, 157);
 		if (sel == NULL) {
-			DrawStringCentered(w->widget[15].left + 115, 58, STR_NETWORK_GAME_INFO, 0);
+			DrawStringCentered(w->widget[15].left + 115, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
 		} else if (!sel->online) {
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringCentered(w->widget[15].left + 115, 68, STR_ORANGE, 0); // game name
+			DrawStringCentered(w->widget[15].left + 115, 68, STR_ORANGE, TC_FROMSTRING); // game name
 
-			DrawStringCentered(w->widget[15].left + 115, 132, STR_NETWORK_SERVER_OFFLINE, 0); // server offline
+			DrawStringCentered(w->widget[15].left + 115, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING); // server offline
 		} else { // show game info
 			uint16 y = 100;
 			const uint16 x = w->widget[15].left + 5;
 
-			DrawStringCentered(w->widget[15].left + 115, 48, STR_NETWORK_GAME_INFO, 0);
+			DrawStringCentered(w->widget[15].left + 115, 48, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
 
 
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringCenteredTruncated(w->widget[15].left, w->widget[15].right, 62, STR_ORANGE, 16); // game name
+			DrawStringCenteredTruncated(w->widget[15].left, w->widget[15].right, 62, STR_ORANGE, TC_BLACK); // game name
 
 			SetDParamStr(0, sel->info.map_name);
-			DrawStringCenteredTruncated(w->widget[15].left, w->widget[15].right, 74, STR_02BD, 16); // map name
+			DrawStringCenteredTruncated(w->widget[15].left, w->widget[15].right, 74, STR_02BD, TC_BLACK); // map name
 
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
 			SetDParam(2, sel->info.companies_on);
 			SetDParam(3, sel->info.companies_max);
-			DrawString(x, y, STR_NETWORK_CLIENTS, 2);
+			DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
 			y += 10;
 
 			SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
-			DrawString(x, y, STR_NETWORK_LANGUAGE, 2); // server language
+			DrawString(x, y, STR_NETWORK_LANGUAGE, TC_GOLD); // server language
 			y += 10;
 
 			SetDParam(0, STR_TEMPERATE_LANDSCAPE + sel->info.map_set);
-			DrawString(x, y, STR_NETWORK_TILESET, 2); // tileset
+			DrawString(x, y, STR_NETWORK_TILESET, TC_GOLD); // tileset
 			y += 10;
 
 			SetDParam(0, sel->info.map_width);
 			SetDParam(1, sel->info.map_height);
-			DrawString(x, y, STR_NETWORK_MAP_SIZE, 2); // map size
+			DrawString(x, y, STR_NETWORK_MAP_SIZE, TC_GOLD); // map size
 			y += 10;
 
 			SetDParamStr(0, sel->info.server_revision);
-			DrawString(x, y, STR_NETWORK_SERVER_VERSION, 2); // server version
+			DrawString(x, y, STR_NETWORK_SERVER_VERSION, TC_GOLD); // server version
 			y += 10;
 
 			SetDParamStr(0, sel->info.hostname);
 			SetDParam(1, sel->port);
-			DrawString(x, y, STR_NETWORK_SERVER_ADDRESS, 2); // server address
+			DrawString(x, y, STR_NETWORK_SERVER_ADDRESS, TC_GOLD); // server address
 			y += 10;
 
 			SetDParam(0, sel->info.start_date);
-			DrawString(x, y, STR_NETWORK_START_DATE, 2); // start date
+			DrawString(x, y, STR_NETWORK_START_DATE, TC_GOLD); // start date
 			y += 10;
 
 			SetDParam(0, sel->info.game_date);
-			DrawString(x, y, STR_NETWORK_CURRENT_DATE, 2); // current date
+			DrawString(x, y, STR_NETWORK_CURRENT_DATE, TC_GOLD); // current date
 			y += 10;
 
 			y += 2;
 
 			if (!sel->info.compatible) {
-				DrawStringCentered(w->widget[15].left + 115, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, 0); // server mismatch
+				DrawStringCentered(w->widget[15].left + 115, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, TC_FROMSTRING); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				// Show: server full, when clients_on == clients_max
-				DrawStringCentered(w->widget[15].left + 115, y, STR_NETWORK_SERVER_FULL, 0); // server full
+				DrawStringCentered(w->widget[15].left + 115, y, STR_NETWORK_SERVER_FULL, TC_FROMSTRING); // server full
 			} else if (sel->info.use_password) {
-				DrawStringCentered(w->widget[15].left + 115, y, STR_NETWORK_PASSWORD, 0); // password warning
+				DrawStringCentered(w->widget[15].left + 115, y, STR_NETWORK_PASSWORD, TC_FROMSTRING); // password warning
 			}
 
 			y += 10;
@@ -627,17 +627,17 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		GfxFillRect(11, 63, 258, 215, 0xD7);
 		DrawEditBox(w, &WP(w, network_ql_d).q, 3);
 
-		DrawString(10, 22, STR_NETWORK_NEW_GAME_NAME, 2);
+		DrawString(10, 22, STR_NETWORK_NEW_GAME_NAME, TC_GOLD);
 
-		DrawString(10, 43, STR_NETWORK_SELECT_MAP, 2);
+		DrawString(10, 43, STR_NETWORK_SELECT_MAP, TC_GOLD);
 
-		DrawString(280,  63, STR_NETWORK_CONNECTION, 2);
-		DrawString(280,  95, STR_NETWORK_NUMBER_OF_CLIENTS, 2);
-		DrawString(280, 127, STR_NETWORK_NUMBER_OF_COMPANIES, 2);
-		DrawString(280, 159, STR_NETWORK_NUMBER_OF_SPECTATORS, 2);
-		DrawString(280, 191, STR_NETWORK_LANGUAGE_SPOKEN, 2);
+		DrawString(280,  63, STR_NETWORK_CONNECTION, TC_GOLD);
+		DrawString(280,  95, STR_NETWORK_NUMBER_OF_CLIENTS, TC_GOLD);
+		DrawString(280, 127, STR_NETWORK_NUMBER_OF_COMPANIES, TC_GOLD);
+		DrawString(280, 159, STR_NETWORK_NUMBER_OF_SPECTATORS, TC_GOLD);
+		DrawString(280, 191, STR_NETWORK_LANGUAGE_SPOKEN, TC_GOLD);
 
-		if (_network_game_info.use_password) DoDrawString("*", 408, 23, 3);
+		if (_network_game_info.use_password) DoDrawString("*", 408, 23, TC_RED);
 
 		// draw list of maps
 		pos = w->vscroll.pos;
@@ -647,7 +647,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 				GfxFillRect(11, y - 1, 258, y + 10, 155); // show highlighted item with a different colour
 
 			if (pos == 0) {
-				DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
+				DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
 			} else {
 				DoDrawString(item->title, 14, y, _fios_colors[item->type] );
 			}
@@ -896,7 +896,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		SetDParamStr(0, gi->server_name);
-		DrawString(10, 22, STR_NETWORK_PREPARE_TO_JOIN, 2);
+		DrawString(10, 22, STR_NETWORK_PREPARE_TO_JOIN, TC_GOLD);
 
 		/* Draw company list */
 		pos = w->vscroll.pos;
@@ -906,7 +906,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			if (nd->company == company)
 				GfxFillRect(11, y - 1, 154, y + 10, 10); // show highlighted item with a different colour
 
-			DoDrawStringTruncated(_network_player_info[company].company_name, 13, y, 16, 135 - 13);
+			DoDrawStringTruncated(_network_player_info[company].company_name, 13, y, TC_BLACK, 135 - 13);
 			if (_network_player_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
@@ -920,7 +920,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 		/* Draw info about selected company when it is selected in the left window */
 		GfxFillRect(174, 39, 403, 75, 157);
-		DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, 0);
+		DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING);
 		if (nd->company != (byte)-1) {
 			const uint x = 183;
 			const uint trunc_width = w->widget[6].right - x;
@@ -930,31 +930,31 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			SetDParam(1, nd->server->info.clients_max);
 			SetDParam(2, nd->server->info.companies_on);
 			SetDParam(3, nd->server->info.companies_max);
-			DrawString(x, y, STR_NETWORK_CLIENTS, 2);
+			DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
 			y += 10;
 
 			SetDParamStr(0, _network_player_info[nd->company].company_name);
-			DrawStringTruncated(x, y, STR_NETWORK_COMPANY_NAME, 2, trunc_width);
+			DrawStringTruncated(x, y, STR_NETWORK_COMPANY_NAME, TC_GOLD, trunc_width);
 			y += 10;
 
 			SetDParam(0, _network_player_info[nd->company].inaugurated_year);
-			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, 2); // inauguration year
+			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, TC_GOLD); // inauguration year
 			y += 10;
 
 			SetDParam(0, _network_player_info[nd->company].company_value);
-			DrawString(x, y, STR_NETWORK_VALUE, 2); // company value
+			DrawString(x, y, STR_NETWORK_VALUE, TC_GOLD); // company value
 			y += 10;
 
 			SetDParam(0, _network_player_info[nd->company].money);
-			DrawString(x, y, STR_NETWORK_CURRENT_BALANCE, 2); // current balance
+			DrawString(x, y, STR_NETWORK_CURRENT_BALANCE, TC_GOLD); // current balance
 			y += 10;
 
 			SetDParam(0, _network_player_info[nd->company].income);
-			DrawString(x, y, STR_NETWORK_LAST_YEARS_INCOME, 2); // last year's income
+			DrawString(x, y, STR_NETWORK_LAST_YEARS_INCOME, TC_GOLD); // last year's income
 			y += 10;
 
 			SetDParam(0, _network_player_info[nd->company].performance);
-			DrawString(x, y, STR_NETWORK_PERFORMANCE, 2); // performance
+			DrawString(x, y, STR_NETWORK_PERFORMANCE, TC_GOLD); // performance
 			y += 10;
 
 			SetDParam(0, _network_player_info[nd->company].num_vehicle[0]);
@@ -962,7 +962,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			SetDParam(2, _network_player_info[nd->company].num_vehicle[2]);
 			SetDParam(3, _network_player_info[nd->company].num_vehicle[3]);
 			SetDParam(4, _network_player_info[nd->company].num_vehicle[4]);
-			DrawString(x, y, STR_NETWORK_VEHICLES, 2); // vehicles
+			DrawString(x, y, STR_NETWORK_VEHICLES, TC_GOLD); // vehicles
 			y += 10;
 
 			SetDParam(0, _network_player_info[nd->company].num_station[0]);
@@ -970,11 +970,11 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			SetDParam(2, _network_player_info[nd->company].num_station[2]);
 			SetDParam(3, _network_player_info[nd->company].num_station[3]);
 			SetDParam(4, _network_player_info[nd->company].num_station[4]);
-			DrawString(x, y, STR_NETWORK_STATIONS, 2); // stations
+			DrawString(x, y, STR_NETWORK_STATIONS, TC_GOLD); // stations
 			y += 10;
 
 			SetDParamStr(0, _network_player_info[nd->company].players);
-			DrawStringTruncated(x, y, STR_NETWORK_PLAYERS, 2, trunc_width); // players
+			DrawStringTruncated(x, y, STR_NETWORK_PLAYERS, TC_GOLD, trunc_width); // players
 		}
 	} break;
 
@@ -1311,7 +1311,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		int i, y, sel;
-		byte colour;
+		TextColour colour;
 		DrawWindowWidgets(w);
 
 		// Draw the actions
@@ -1323,9 +1323,9 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 
 			if (sel-- == 0) { // Selected item, highlight it
 				GfxFillRect(1, y, 150 - 2, y + CLNWND_ROWSIZE - 1, 0);
-				colour = 0xC;
+				colour = TC_WHITE;
 			} else {
-				colour = 0x10;
+				colour = TC_BLACK;
 			}
 
 			DoDrawString(_clientlist_action[i], 4, y, colour);
@@ -1362,7 +1362,7 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		NetworkClientInfo *ci;
 		int y, i = 0;
-		byte colour;
+		TextColour colour;
 
 		// Check if we need to reset the height
 		if (!CheckClientListHeight(w)) break;
@@ -1374,9 +1374,9 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 		FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
 			if (_selected_clientlist_item == i++) { // Selected item, highlight it
 				GfxFillRect(1, y, 248, y + CLNWND_ROWSIZE - 1, 0);
-				colour = 0xC;
+				colour = TC_WHITE;
 			} else {
-				colour = 0x10;
+				colour = TC_BLACK;
 			}
 
 			if (ci->client_index == NETWORK_SERVER_INDEX) {
@@ -1463,7 +1463,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 		uint8 progress; // used for progress bar
 		DrawWindowWidgets(w);
 
-		DrawStringCentered(125, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, 14);
+		DrawStringCentered(125, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_GREY);
 		switch (_network_join_status) {
 			case NETWORK_JOIN_STATUS_CONNECTING: case NETWORK_JOIN_STATUS_AUTHORIZING:
 			case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
@@ -1471,13 +1471,13 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 				break;
 			case NETWORK_JOIN_STATUS_WAITING:
 				SetDParam(0, _network_join_waiting);
-				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_WAITING, 14);
+				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_WAITING, TC_GREY);
 				progress = 15; // third stage is 15%
 				break;
 			case NETWORK_JOIN_STATUS_DOWNLOADING:
 				SetDParam(0, _network_join_kbytes);
 				SetDParam(1, _network_join_kbytes_total);
-				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_DOWNLOADING, 14);
+				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_GREY);
 				/* Fallthrough */
 			default: /* Waiting is 15%, so the resting receivement of map is maximum 70% */
 				progress = 15 + _network_join_kbytes * (100 - 15) / _network_join_kbytes_total;
@@ -1701,7 +1701,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 		assert(WP(w, chatquerystr_d).caption < lengthof(chat_captions));
 		msg = chat_captions[WP(w, chatquerystr_d).caption];
-		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, msg, 16);
+		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, msg, TC_BLACK);
 		DrawEditBox(w, &WP(w, chatquerystr_d), 2);
 	} break;
 

@@ -80,7 +80,7 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 		DrawStringMultiCenter(150, 44, STR_8101_WE_HAVE_JUST_DESIGNED_A, 296);
 
 		SetDParam(0, engine);
-		DrawStringCentered(w->width >> 1, 80, STR_ENGINE_NAME, 0x10);
+		DrawStringCentered(w->width >> 1, 80, STR_ENGINE_NAME, TC_BLACK);
 
 		dei = &_draw_engine_list[GetEngine(engine)->type];
 

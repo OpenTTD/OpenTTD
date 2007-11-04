@@ -238,9 +238,8 @@ static void DrawOrdersWindow(Window *w)
 				default: break;
 			}
 
-			const byte colour = (i == WP(w,order_d).sel) ? 0xC : 0x10;
 			SetDParam(0, i + 1);
-			DrawString(2, y, str, colour);
+			DrawString(2, y, str, (i == WP(w,order_d).sel) ? TC_WHITE : TC_BLACK);
 
 			y += 10;
 		}
@@ -251,8 +250,7 @@ static void DrawOrdersWindow(Window *w)
 
 	if (i - w->vscroll.pos < w->vscroll.cap) {
 		str = shared_orders ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
-		const byte colour = (i == WP(w,order_d).sel) ? 0xC : 0x10;
-		DrawString(2, y, str, colour);
+		DrawString(2, y, str, (i == WP(w,order_d).sel) ? TC_WHITE : TC_BLACK);
 	}
 }
 
