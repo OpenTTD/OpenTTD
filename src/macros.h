@@ -107,8 +107,7 @@ template<typename T> static inline T min(const T a, const T b)
  */
 static inline int min(const int a, const int b)
 {
-	if (a <= b) return a;
-	return b;
+	return a <= b ? a : b;
 }
 
 /**
@@ -122,8 +121,7 @@ static inline int min(const int a, const int b)
  */
 static inline uint minu(const uint a, const uint b)
 {
-	if (a <= b) return a;
-	return b;
+	return a <= b ? a : b;
 }
 
 /**
@@ -204,7 +202,7 @@ static inline int32 ClampToI32(const int64 a)
  * @param shift The amount to shift the value to right.
  * @return The shifted result
  */
-static inline int32 BIGMULSS(const int32 a, const int32 b, const int8 shift)
+static inline int32 BIGMULSS(const int32 a, const int32 b, const uint8 shift)
 {
 	return (int32)((int64)a * (int64)b >> shift);
 }
@@ -220,7 +218,7 @@ static inline int32 BIGMULSS(const int32 a, const int32 b, const int8 shift)
  * @param shift The amount to shift the value to right.
  * @return The shifted result
  */
-static inline uint32 BIGMULUS(const uint32 a, const uint32 b, const int8 shift)
+static inline uint32 BIGMULUS(const uint32 a, const uint32 b, const uint8 shift)
 {
 	return (uint32)((uint64)a * (uint64)b >> shift);
 }
@@ -253,7 +251,7 @@ static inline uint32 BIGMULUS(const uint32 a, const uint32 b, const int8 shift)
  * @param y The position of the bit to check, started from the LSB
  * @return True if the bit is set, false else.
  */
-template<typename T> static inline bool HASBIT(const T x, const int8 y)
+template<typename T> static inline bool HASBIT(const T x, const uint8 y)
 {
 	return (x & ((T)1U << y)) != 0;
 }
@@ -269,7 +267,7 @@ template<typename T> static inline bool HASBIT(const T x, const int8 y)
  * @param y The bit position to set
  * @return The new value of the old value with the bit set
  */
-template<typename T> static inline T SETBIT(T& x, const int8 y)
+template<typename T> static inline T SETBIT(T& x, const uint8 y)
 {
 	return x |= (T)1U << y;
 }
@@ -285,7 +283,7 @@ template<typename T> static inline T SETBIT(T& x, const int8 y)
  * @param y The bit position to clear
  * @return The new value of the old value with the bit cleared
  */
-template<typename T> static inline T CLRBIT(T& x, const int8 y)
+template<typename T> static inline T CLRBIT(T& x, const uint8 y)
 {
 	return x &= ~((T)1U << y);
 }
@@ -301,7 +299,7 @@ template<typename T> static inline T CLRBIT(T& x, const int8 y)
  * @param y The bit position to toggle
  * @return The new value of the old value with the bit toggled
  */
-template<typename T> static inline T TOGGLEBIT(T& x, const int8 y)
+template<typename T> static inline T TOGGLEBIT(T& x, const uint8 y)
 {
 	return x ^= (T)1U << y;
 }
