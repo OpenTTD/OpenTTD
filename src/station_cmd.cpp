@@ -2759,13 +2759,15 @@ void BuildOilRig(TileIndex tile)
 		DEBUG(misc, 0, "Can't allocate station for oilrig at 0x%X, reverting to oilrig only", tile);
 		return;
 	}
-	if (!GenerateStationName(st, tile, STATIONNAMING_OILRIG)) {
-		DEBUG(misc, 0, "Can't allocate station-name for oilrig at 0x%X, reverting to oilrig only", tile);
-		return;
-	}
 
 	st->town = ClosestTownFromTile(tile, (uint)-1);
 	st->sign.width_1 = 0;
+
+	if (!GenerateStationName(st, tile, STATIONNAMING_OILRIG)) {
+		DEBUG(misc, 0, "Can't allocate station-name for oilrig at 0x%X, reverting to oilrig only", tile);
+		delete st;
+		return;
+	}
 
 	MakeOilrig(tile, st->index);
 
