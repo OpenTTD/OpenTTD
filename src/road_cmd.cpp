@@ -220,7 +220,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					MarkTileDirtyByTile(tile);
 				}
 			}
-			return CommandCost(COUNTBITS(c) * _price.remove_road);
+			return CommandCost(CountBits(c) * _price.remove_road);
 		}
 
 		case ROAD_TILE_CROSSING: {
@@ -352,7 +352,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 	/* Single bits on slopes.
 	 * We check for the roads that need at least 2 bits */
 	if (_patches.build_on_slopes && !_is_old_ai_player &&
-			existing == ROAD_NONE && COUNTBITS(*pieces) == 1 &&
+			existing == ROAD_NONE && CountBits(*pieces) == 1 &&
 			(_valid_tileh_slopes_road[2][tileh] & *pieces) == ROAD_NONE) {
 		return CommandCost(_price.terraform);
 	}
@@ -531,7 +531,7 @@ do_clear:;
 		pieces &= ComplementRoadBits(existing);
 	}
 
-	cost.AddCost(COUNTBITS(pieces) * _price.build_road);
+	cost.AddCost(CountBits(pieces) * _price.build_road);
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* Pay for *every* tile of the bridge or tunnel */
 		cost.MultiplyCost(DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile));
@@ -838,7 +838,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 
 			/* Clear the road if only one piece is on the tile OR the AI tries
 			 * to clear town road OR we are not using the DC_AUTO flag */
-			if ((COUNTBITS(b) == 1 && GetRoadBits(tile, ROADTYPE_TRAM) == ROAD_NONE) ||
+			if ((CountBits(b) == 1 && GetRoadBits(tile, ROADTYPE_TRAM) == ROAD_NONE) ||
 			    ((flags & DC_AI_BUILDING) && IsTileOwner(tile, OWNER_TOWN)) ||
 			    !(flags & DC_AUTO)
 				) {
@@ -906,7 +906,7 @@ Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 			 * created directly, but the state itself is still perfectly drawable.
 			 * However, as we do not want this to be build directly, we need to check
 			 * for that situation in here. */
-			return (tileh != 0 && COUNTBITS(bits) == 1) ? FOUNDATION_LEVELED : FOUNDATION_NONE;
+			return (tileh != 0 && CountBits(bits) == 1) ? FOUNDATION_LEVELED : FOUNDATION_NONE;
 		}
 		if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0) return FOUNDATION_LEVELED;
 	}
@@ -1241,7 +1241,7 @@ static void TileLoop_Road(TileIndex tile)
 			/* Show an animation to indicate road work */
 			if (t->road_build_months != 0 &&
 					(DistanceManhattan(t->xy, tile) < 8 || grp != 0) &&
-					GetRoadTileType(tile) == ROAD_TILE_NORMAL && COUNTBITS(GetAllRoadBits(tile)) > 1 ) {
+					GetRoadTileType(tile) == ROAD_TILE_NORMAL && CountBits(GetAllRoadBits(tile)) > 1 ) {
 				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile) && CHANCE16(1, 40)) {
 					StartRoadWorks(tile);
 

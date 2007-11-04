@@ -432,7 +432,7 @@ static inline uint KillFirstBit2x64(uint value)
  * @param value the value to count the number of bits in.
  * @return the number of bits.
  */
-template<typename T> static inline uint COUNTBITS(T value)
+template<typename T> static inline uint CountBits(T value)
 {
 	register uint num;
 
