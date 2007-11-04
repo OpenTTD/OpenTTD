@@ -182,7 +182,9 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 		if (IS_CUSTOM_SPRITE(image)) image += stage;
 
 		if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
-			pal = GENERAL_SPRITE_COLOR(rnd_color);
+			if (pal == 0) {
+				pal = GENERAL_SPRITE_COLOR(rnd_color);
+			}
 		} else {
 			pal = PAL_NONE;
 		}
