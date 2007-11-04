@@ -416,21 +416,14 @@ Faster ( or at least cleaner ) implementation below?
  * Clear the first bit in an integer.
  *
  * This function returns a value where the first bit (from LSB)
- * is cleared. This function checks, similar to FindFirstBit2x64,
- * the bits at 0x3F3F.
+ * is cleared. This function checks only the bits of 0x3F3F!
  *
  * @param value The value to clear the first bit
  * @return The new value with the first bit cleared
- * @see KILL_FIRST_BIT
- * @see FindFirstBit2x64
  */
 static inline int KillFirstBit2x64(int value)
 {
-	if (GB(value, 0, 8) == 0) {
-		return KILL_FIRST_BIT(GB(value, 8, 6)) << 8;
-	} else {
-		return value & (KILL_FIRST_BIT(GB(value, 0, 6)) | 0x3F00);
-	}
+	return value &= (int)(value - 1) | 0x3FFFC0C0;
 }
 
 /**
