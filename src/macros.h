@@ -421,9 +421,9 @@ Faster ( or at least cleaner ) implementation below?
  * @param value The value to clear the first bit
  * @return The new value with the first bit cleared
  */
-static inline int KillFirstBit2x64(int value)
+static inline uint KillFirstBit2x64(uint value)
 {
-	return value &= (int)(value - 1) | 0x3FFFC0C0;
+	return value &= (uint)(value - 1) | 0x3FFFC0C0;
 }
 
 /**
