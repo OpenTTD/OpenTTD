@@ -370,7 +370,7 @@ static inline Track FindFirstTrack(TrackBits tracks)
  */
 static inline Track TrackBitsToTrack(TrackBits tracks)
 {
-	assert(tracks == INVALID_TRACK_BIT || (tracks != TRACK_BIT_NONE && KILL_FIRST_BIT(tracks & TRACK_BIT_MASK) == 0));
+	assert(tracks == INVALID_TRACK_BIT || (tracks != TRACK_BIT_NONE && KillFirstBit(tracks & TRACK_BIT_MASK) == TRACK_BIT_NONE));
 	return tracks != INVALID_TRACK_BIT ? (Track)FIND_FIRST_BIT(tracks & TRACK_BIT_MASK) : INVALID_TRACK;
 }
 
@@ -785,7 +785,7 @@ static inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
 static inline bool TracksOverlap(TrackBits bits)
 {
 	/* With no, or only one track, there is no overlap */
-	if (bits == 0 || KILL_FIRST_BIT(bits) == 0) return false;
+	if (bits == TRACK_BIT_NONE || KillFirstBit(bits) == TRACK_BIT_NONE) return false;
 	/* We know that there are at least two tracks present. When there are more
 	 * than 2 tracks, they will surely overlap. When there are two, they will
 	 * always overlap unless they are lower & upper or right & left. */

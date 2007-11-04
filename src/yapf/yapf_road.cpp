@@ -97,7 +97,7 @@ public:
 			if (!F.Follow(tile, trackdir)) break;
 
 			// if there are more trackdirs available & reachable, we are at the end of segment
-			if (KillFirstBit2x64(F.m_new_td_bits) != 0) break;
+			if (KillFirstBit(F.m_new_td_bits) != TRACKDIR_BIT_NONE) break;
 
 			Trackdir new_td = (Trackdir)FindFirstBit2x64(F.m_new_td_bits);
 

@@ -234,7 +234,7 @@ static uint SkipToEndOfTunnel(TrackPathFinder* tpf, TileIndex tile, DiagDirectio
 	return flotr.tile;
 }
 
-const byte _ffb_64[128] = {
+const byte _ffb_64[64] = {
  0,  0,  1,  0,  2,  0,  1,  0,
  3,  0,  1,  0,  2,  0,  1,  0,
  4,  0,  1,  0,  2,  0,  1,  0,
@@ -243,15 +243,6 @@ const byte _ffb_64[128] = {
  3,  0,  1,  0,  2,  0,  1,  0,
  4,  0,  1,  0,  2,  0,  1,  0,
  3,  0,  1,  0,  2,  0,  1,  0,
-
- 0,  0,  0,  2,  0,  4,  4,  6,
- 0,  8,  8, 10,  8, 12, 12, 14,
- 0, 16, 16, 18, 16, 20, 20, 22,
-16, 24, 24, 26, 24, 28, 28, 30,
- 0, 32, 32, 34, 32, 36, 36, 38,
-32, 40, 40, 42, 40, 44, 44, 46,
-32, 48, 48, 50, 48, 52, 52, 54,
-48, 56, 56, 58, 56, 60, 60, 62,
 };
 
 static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction);
@@ -307,10 +298,10 @@ static inline void TPFMode1_NormalCase(TrackPathFinder* tpf, TileIndex tile, Til
 	bits &= 0xBF;
 
 	if (bits != 0) {
-		if (!tpf->disable_tile_hash || (tpf->rd.cur_length <= 64 && (KILL_FIRST_BIT(bits) == 0 || ++tpf->rd.depth <= 7))) {
+		if (!tpf->disable_tile_hash || (tpf->rd.cur_length <= 64 && (KillFirstBit(bits) == 0 || ++tpf->rd.depth <= 7))) {
 			do {
 				int i = FIND_FIRST_BIT(bits);
-				bits = KILL_FIRST_BIT(bits);
+				bits = KillFirstBit(bits);
 
 				tpf->the_dir = (Trackdir)((_otherdir_mask[direction] & (byte)(1 << i)) ? (i + 8) : i);
 				RememberData rd = tpf->rd;
@@ -391,7 +382,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 	do {
 		uint i = FIND_FIRST_BIT(bits);
-		bits = KILL_FIRST_BIT(bits);
+		bits = KillFirstBit(bits);
 
 		tpf->the_dir = (Trackdir)((_otherdir_mask[direction] & (byte)(1 << i)) ? (i + 8) : i);
 		RememberData rd = tpf->rd;
@@ -803,7 +794,7 @@ start_at:
 				bits = TrackdirBitsToTrackBits((TrackdirBits)(ts & TRACKDIR_BIT_MASK));
 
 				/* Check that the tile contains exactly one track */
-				if (bits == 0 || KILL_FIRST_BIT(bits) != 0) break;
+				if (bits == 0 || KillFirstBit(bits) != 0) break;
 
 				if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
 					bits = TRACK_BIT_NONE;

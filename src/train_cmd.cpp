@@ -2188,10 +2188,10 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	TIC()
 #endif
 
-	assert((tracks & ~0x3F) == 0);
+	assert((tracks & ~TRACK_BIT_MASK) == 0);
 
 	/* quick return in case only one possible track is available */
-	if (KILL_FIRST_BIT(tracks) == 0) return FindFirstTrack(tracks);
+	if (KillFirstBit(tracks) == TRACK_BIT_NONE) return FindFirstTrack(tracks);
 
 	if (_patches.yapf.rail_use_yapf) {
 		Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, &path_not_found);

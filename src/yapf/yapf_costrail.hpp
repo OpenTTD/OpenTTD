@@ -387,7 +387,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			}
 
 			/* Check if the next tile is not a choice. */
-			if (KillFirstBit2x64(tf_local.m_new_td_bits) != 0) {
+			if (KillFirstBit(tf_local.m_new_td_bits) != TRACKDIR_BIT_NONE) {
 				/* More than one segment will follow. Close this one. */
 				end_segment_reason |= ESRB_CHOICE_FOLLOWS;
 				break;

@@ -802,7 +802,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 	{
 		/* See if this is a valid track combination for signals, (ie, no overlap) */
 		TrackBits trackbits = GetTrackBits(tile);
-		if (KILL_FIRST_BIT(trackbits) != 0 && /* More than one track present */
+		if (KillFirstBit(trackbits) != TRACK_BIT_NONE && /* More than one track present */
 				trackbits != TRACK_BIT_HORZ &&
 				trackbits != TRACK_BIT_VERT) {
 			return CMD_ERROR;

@@ -354,7 +354,7 @@ template<typename T> static inline T TOGGLEBIT(T& x, const uint8 y)
  */
 #define IS_CUSTOM_SPRITE(sprite) ((sprite) >= SPR_SIGNALS_BASE)
 
-extern const byte _ffb_64[128];
+extern const byte _ffb_64[64];
 
 /**
  * Returns the first occure of a bit in a 6-bit value (from right).
@@ -367,17 +367,6 @@ extern const byte _ffb_64[128];
  * @return The first position of a bit started from the LSB or 0 if x is 0.
  */
 #define FIND_FIRST_BIT(x) _ffb_64[(x)]
-
-/**
- * Returns a value with the first occured of a bit set to zero.
- *
- * Returns x with the first bit from LSB that is not zero set
- * to zero. So, 110100 returns 110000, 000001 returns 000000, etc.
- *
- * @param x The value to returned a new value
- * @return The value which the first bit is set to zero
- */
-#define KILL_FIRST_BIT(x) _ffb_64[(x) + 64]
 
 /**
  * Finds the position of the first bit in an integer.
@@ -416,14 +405,15 @@ Faster ( or at least cleaner ) implementation below?
  * Clear the first bit in an integer.
  *
  * This function returns a value where the first bit (from LSB)
- * is cleared. This function checks only the bits of 0x3F3F!
+ * is cleared.
+ * So, 110100 returns 110000, 000001 returns 000000, etc.
  *
  * @param value The value to clear the first bit
  * @return The new value with the first bit cleared
  */
-static inline uint KillFirstBit2x64(uint value)
+template<typename T> static inline T KillFirstBit(T value)
 {
-	return value &= (uint)(value - 1) | 0x3FFFC0C0;
+	return value &= (T)(value - 1);
 }
 
 /**

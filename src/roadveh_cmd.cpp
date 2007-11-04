@@ -1211,7 +1211,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 	}
 
 	/* Only one track to choose between? */
-	if (!(KillFirstBit2x64(trackdirs))) {
+	if (KillFirstBit(trackdirs) != TRACKDIR_BIT_NONE) {
 		return_track(FindFirstBit2x64(trackdirs));
 	}
 

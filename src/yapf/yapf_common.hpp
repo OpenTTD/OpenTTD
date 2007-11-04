@@ -32,8 +32,8 @@ public:
 	/// Called when YAPF needs to place origin nodes into open list
 	void PfSetStartupNodes()
 	{
-		bool is_choice = (KillFirstBit2x64(m_orgTrackdirs) != 0);
-		for (TrackdirBits tdb = m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = (TrackdirBits)KillFirstBit2x64(tdb)) {
+		bool is_choice = (KillFirstBit(m_orgTrackdirs) != TRACKDIR_BIT_NONE);
+		for (TrackdirBits tdb = m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = KillFirstBit(tdb)) {
 			Trackdir td = (Trackdir)FindFirstBit2x64(tdb);
 			Node& n1 = Yapf().CreateNewNode();
 			n1.Set(NULL, m_orgTile, td, is_choice);
