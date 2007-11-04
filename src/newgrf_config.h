@@ -15,6 +15,7 @@ enum GCF_Flags {
 	GCF_COMPATIBLE,///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
 	GCF_COPY,      ///< The data is copied from a grf in _all_grfs
 	GCF_INIT_ONLY, ///< GRF file is processed up to GLS_INIT
+	GCF_RESERVED,  ///< GRF file passed GLS_RESERVE stage
 };
 
 enum GRFStatus {
