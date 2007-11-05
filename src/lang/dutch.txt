@@ -3077,6 +3077,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} moet g
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} moet geladen zijn na {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} heeft OpenTTD versie {STRING} of beter nodig.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF bestand is bedoelt voor het vertalen van
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn teveel NewGRFs geladen.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Toevoegen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg een NewGRF bestand toe aan te lijst

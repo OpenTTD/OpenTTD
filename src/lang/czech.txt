@@ -3141,6 +3141,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musí 
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí být nahráván po {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF soubor, který se měl přeložit
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Přidat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Přidat NewGRF soubor do seznamu

@@ -1,5 +1,5 @@
 ##name Norwegian
-##ownname Norsk, bokmål
+##ownname Norsk (bokmål)
 ##isocode nb_NO
 ##plural 0
 ##gender masculinum neutrium femininum
@@ -1067,7 +1067,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :av alle kjøret
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et tog går i underskudd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kjøretøy utgår aldri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Bytt automatisk ut kjøretøy når det blir gammelt:
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny når kjøretøy er {ORANGE}{STRING}{LTBLUE} måneder før/etter maks alder
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny når kjøretøy er {ORANGE}{STRING}{LTBLUE}{NBSP}måneder før/etter maks alder
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autoforny minimum penger trengst for fornying: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Varighet til feilmelding: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis byers folketall i tittel: {ORANGE}{STRING}
@@ -1205,7 +1205,7 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Noen eller alle av standard vedlikeholdsintervall(ene) under er inkompatible med valgte instillinger! 5-90 % og 30-800 dager er gyldige
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Noen eller alle av standard vedlikeholdsintervall(ene) under er inkompatible med valgte instillinger! 5-90{NBSP}% og 30-800 dager er gyldige
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Skip skal bruke YAPF: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Kjøretøy skal bruke YAPF: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Tog skal bruke YAPF: {ORANGE}{STRING}
@@ -1320,8 +1320,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Finansie
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Bygg sukkergruve
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrier
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA} % transportert)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA} %/{COMMA} % transportert)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}{NBSP}% transportert)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transportert)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for nært en annen industri
@@ -1668,7 +1668,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan ikke
 STR_180A_ROAD_CONSTRUCTION                                      :Bygg vei
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Trikkesporkonstruksjon
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Bygg vei
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Bygg veiseksjon ved bruk av autovei-modusen
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Bygg trikkestasjon
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Bygg trikkespor ved bruk av autotrikkespor-modusen
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Bygg garasje (trengs for bygging og vedlikehold av kjøretøy)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Bygg trikkevognstall (for kjøp og vedlikehold av kjøretøy)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Bygg bussstasjon
@@ -1741,12 +1743,12 @@ STR_202A_NONE                                                   :{ORANGE}Ingen
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Tjenester som allerede subsidieres:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, inntil {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} subsidieres ikke lenger.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke lenger gi subsidier.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie trukket tilbake:{}{}Frakt av {STRING} fra {STATION} til {STATION} subsidieres ikke lenger.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidietilbud:{}{}Første frakt av {STRING} fra {STRING} til {STRING} vil subsidieres i et år av bystyret!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50% mer inntekt i løpet av ett år!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50{NBSP}% mer inntekt i løpet av ett år!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi dobbelt så mye inntekt i løpet av et år!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi tippelt så mye inntekt i løpet av et år!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Frakt av {STRING} fra {STATION} til {STATION} vil gi trippel betaling i løpet i ett år fra nå!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi fire ganger så mye inntekt i løpet av et år!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}s bystyre tillater ikke flere flyplasser i denne byen
 STR_2036_COTTAGES                                               :Hytter
@@ -1849,7 +1851,7 @@ STR_303B_EXCELLENT                                              :Utmerket
 STR_303C_OUTSTANDING                                            :Fremragende
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}{NBSP}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} godtar ikke lenger {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} godtar ikke lenger {STRING} eller {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} godtar nå {STRING}
@@ -1994,7 +1996,7 @@ STR_4828_PRODUCES                                               :{BLACK}Produser
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksjon forrige måned:
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA} % transportert)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}{NBSP}% transportert)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Sentrer bildet på industriområdet
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Ny {STRING} under bygging i nærheten av {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Ny {STRING} plantes i nærheten av {TOWN}!
@@ -2008,11 +2010,11 @@ STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Ny kullåre funnet i {INDUSTRY}!{}En dobling i produksjonen er ventet!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nye oljereserver funnet i {INDUSTRY}!{}En dobling i produksjonen er ventet!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Forbedring i gårdbruksmetoder på {INDUSTRY} er forventet å doble produksjonen!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} sin produksjon har sunket med 50 %
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insektinvasjon på {INDUSTRY}!{}Produksjonen synker med 50 %
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} sin produksjon har sunket med 50{NBSP}%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insektinvasjon på {INDUSTRY}!{}Produksjonen synker med 50{NBSP}%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kan kun plasseres i nærheten av kartkanten
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produksjonen av {STRING} ved {INDUSTRY} øker med {COMMA} %!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING}produksjon ved {INDUSTRY} synker med {COMMA} %!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING}produksjon ved {INDUSTRY} øker med {COMMA}{NBSP}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING}produksjon ved {INDUSTRY} synker med {COMMA}{NBSP}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tog i tunnelen
@@ -2129,7 +2131,7 @@ STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Konkurr
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Antall byer: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Antall industrier: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimalt startlån: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Startrente: {ORANGE}{COMMA}%
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Startrente: {ORANGE}{COMMA}{NBSP}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Driftskostnader for kjøretøy: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Konstruksjonshastighet hos konkurrenter: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Konkurrentenes intelligens: {ORANGE}{STRING}
@@ -2157,9 +2159,9 @@ STR_681D_MEDIUM                                                 :Middels
 STR_681E_FAST                                                   :Rask
 STR_681F_VERY_FAST                                              :Veldig rask
 STR_VERY_LOW                                                    :Veldig lavt
-STR_6820_LOW                                                    :Lavt
+STR_6820_LOW                                                    :Lav
 STR_6821_MEDIUM                                                 :Middels
-STR_6822_HIGH                                                   :Høyt
+STR_6822_HIGH                                                   :Høy
 STR_6823_NONE                                                   :Ingen
 STR_6824_REDUCED                                                :Redusert
 STR_6825_NORMAL                                                 :Normalt
@@ -2174,9 +2176,9 @@ STR_682D_MOUNTAINOUS                                            :Berglendt
 STR_682E_STEADY                                                 :Stødig
 STR_682F_FLUCTUATING                                            :Flytende
 STR_6830_IMMEDIATE                                              :Øyeblikkelig
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 måneder etter spiller
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 måneder etter spiller
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 måneder etter spiller
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :3{NBSP}måneder etter spiller
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :6{NBSP}måneder etter spiller
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :9{NBSP}måneder etter spiller
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Ved linjeslutt og på stasjoner
 STR_6835_AT_END_OF_LINE_ONLY                                    :Bare ved linjeslutt
 STR_6836_OFF                                                    :Av
@@ -2297,7 +2299,7 @@ STR_706D_PRESIDENT                                              :President
 STR_706E_TYCOON                                                 :Finansfyrste
 STR_706F_BUILD_HQ                                               :{BLACK}Bygg hovedkontor
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Bygg firmaets hovedkontor/se firmaets hovedkontor
-STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Gjenoppbygg spelskapets hovedkvarter en annen plass for 1 % av selskapsverdien
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Gjenoppbygg spelskapets hovedkvarter en annen plass for 1{NBSP}% av selskapsverdien
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kan ikke bygge hovedkontor...
 STR_7072_VIEW_HQ                                                :{BLACK}Se hovedkontor
 STR_RELOCATE_HQ                                                 :{BLACK}Omplasser hovedkvarter
@@ -2308,14 +2310,14 @@ STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Verdenskrise over!{}{}Opptur i markedet gir industrien selvsikkerheten tilbake.
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Bytte mellom stor/liten vindustørrelse
 STR_7076_COMPANY_VALUE                                          :{GOLD}Firmaverdi: {WHITE}{CURRENCY}
-STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kjøp 25 % av aksjene i firmaet
-STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Selg 25 % av aksjene du eier
-STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kjøp 25 % av aksjene i firmaet
-STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Selg 25% av aksjene du eier
-STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan ikke kjøpe 25 % av aksjene...
-STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan ikke selge 25 % av aksjene...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA} % eies av {COMPANY})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA} % eies av {COMPANY}{}   {COMMA} % eies av {COMPANY})
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kjøp 25{NBSP}% av aksjene i firmaet
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Selg 25{NBSP}% av aksjene du eier
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kjøp 25{NBSP}% av aksjene i firmaet
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Selg 25{NBSP}% av aksjene du eier
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan ikke kjøpe 25{NBSP}% av aksjene...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan ikke selge 25{NBSP}% av aksjene...
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}{NBSP}% eies av {COMPANY})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}{NBSP}% eies av {COMPANY}{}   {COMMA}{NBSP}% eies av {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} har blitt kjøpt opp av {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Dette selskapet selger ikke aksjer enda...
 
@@ -2715,8 +2717,8 @@ STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan ikke selge jernbanekjøretøy...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan ikke finne en togstall i nærheten
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan ikke stoppe/starte tog...
-STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}dager{BLACK}   Forrige vedlikehold: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA} %{BLACK}   Forrige vedlikehold: {LTBLUE}{DATE_LONG}
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}{NBSP}dager{BLACK}   Forrige vedlikehold: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Vedlikeholdsintervall: {LTBLUE}{COMMA}{NBSP}%{BLACK}   Forrige vedlikehold: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Tog - trykk på tog for mer informasjon
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Bygg nye tog (trenger en togstall)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Tog - trykk på tog for mer info. Dra vogn for å legge til/fjerne fra tog
@@ -2757,7 +2759,7 @@ STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vekt: {LTBLUE}{WEIGHT_S}  {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Maks. fart: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vekt: {LTBLUE}{WEIGHT_S} {BLACK}Kraft: {LTBLUE}{POWER}{BLACK} Høyeste fart: {LTBLUE}{VELOCITY} {BLACK}Høyeste hastighet.: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA} %  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppet
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan ikke tvinge tog til å kjøre på rødt lys ved fare...
 STR_8863_CRASHED                                                :{RED}Krasjet
@@ -2811,7 +2813,7 @@ STR_900C_DETAILS                                                :{WHITE}{VEHICLE
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
 STR_900E_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA} %  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...må være stoppet i en garasje
@@ -2887,7 +2889,7 @@ STR_9811_DETAILS                                                :{WHITE}{VEHICLE
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
 STR_9813_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (sist år: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA} %  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke starte/stoppe skip...
@@ -2955,7 +2957,7 @@ STR_A00C_DETAILS                                                :{WHITE}{VEHICLE
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Driftkostnader: {LTBLUE}{CURRENCY}/år
 STR_A00E_MAX_SPEED                                              :{BLACK}Maks. fart: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Inntekt i år: {LTBLUE}{CURRENCY}  (forrige år: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA} %  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålitelighet: {LTBLUE}{COMMA}{NBSP}%  {BLACK}Havarier siden forrige vedlikehold: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Verdi: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan ikke sende fly til hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Er på vei til {STATION} hangar
@@ -3028,7 +3030,7 @@ STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljer
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalj
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
-STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM} %
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kjøretøy:
@@ -3074,7 +3076,9 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} er des
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} må være lastet før {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} må være lastet etter {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} krever OpenTTD versjon {STRING} eller bedre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen den var laget for å oversette
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF-er er lastet.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Legg til
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Legg en ny NewGRF-fil til listen
@@ -3216,7 +3220,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighe
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftskostnad: {GOLD}{CURRENCY}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasitet: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Markedsintrodusert: {GOLD}{NUM}{BLACK} Levetid: {GOLD}{COMMA} år
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks pålitelighet: {GOLD}{COMMA} %
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks pålitelighet: {GOLD}{COMMA}{NBSP}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
@@ -3261,7 +3265,7 @@ STR_GENERATION_WORLD                                            :{WHITE}Generere
 STR_GENERATION_ABORT                                            :{BLACK}Avbryt
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Avbryt verdensgenerering
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil du virkelig avbryte verdensgenereringen?
-STR_PROGRESS                                                    :{WHITE}{NUM} % ferdig
+STR_PROGRESS                                                    :{WHITE}{NUM}{NBSP}% ferdig
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Generer en verden
 STR_TREE_GENERATION                                             :{BLACK}Tregenerering
@@ -3328,12 +3332,12 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Skru på
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Skru på gjennomsiktighet for fyrtårn og antenner
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Velg gjennomsiktighet for lastingsindikatorer
 
-STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
-STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
-STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
-STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}{NBSP}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}{NBSP}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}{NBSP}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}{NBSP}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}{NBSP}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}{NBSP}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Gruppe {COMMA}

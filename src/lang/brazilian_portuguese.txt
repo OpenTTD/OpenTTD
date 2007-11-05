@@ -1671,6 +1671,7 @@ STR_180A_TRAMWAY_CONSTRUCTION                                   :Construção de
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir trecho rodoviário
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construir estradas usando o modo Autoestrada
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construir linha de bonde
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construir linha de bonde usando o modo Automático
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir garagem (para construção e manutenção de automóveis)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construir depósito de bonde (para construção e manutenção de bondes)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construir estação de ônibus

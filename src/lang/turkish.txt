@@ -860,6 +860,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Yeni fabrika a�
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Yeni fabrika aç
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...sadece şehirlere yapılabilir
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...sadece yağmur ormanlarına yapılabilir
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...sadece çöllere yapılabilir
@@ -1665,7 +1666,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Yük tra
 STR_180A_ROAD_CONSTRUCTION                                      :Yol yapımı
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Tramvay yapımı
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Yol bölmesi yap
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Otoyol modunu kullanarak yol yap
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Tramvay yolu yap
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Otoray modunu kullanarak tramvay yolu yap
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Garaj yap (araç alımı ve bakımlar için)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Tramvay garı yap (araç alımı ve tamiri için)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Otobüs durağı yap
@@ -2019,6 +2022,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Tünelin
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Önce tünel yıkılmalı
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Önce köprü yıkılmalı
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Aynı noktada başlayıp bitemez
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Köprü uçları aynı seviyede değil
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Köprü bu arazi için çok alçakta
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Başlangıç ve bitiş aynı çizgi üzerinde olmalı
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Yer tünel girişi için uygun değil
@@ -3070,6 +3074,7 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING}, {STRI
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING} için geçersiz parametre: {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} önce, {STRING} ondan sonra yüklenmeli.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} sonra, {STRING} ondan önce yüklenmeli.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ekle
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle
@@ -3381,3 +3386,29 @@ STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Önceki 
 STR_FUND_NEW_INDUSTRY                                           :{BLACK}Parayla Yap
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}İnşa et
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Bu listeden uygun fabrikayı seçin
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Gelişmiş
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Gelişmiş yüz seçimi.
+STR_FACE_SIMPLE                                                 :{BLACK}Basit
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Basit yüz seçimi.
+STR_FACE_LOAD                                                   :{BLACK}Yükle
+STR_FACE_LOAD_TIP                                               :{BLACK}Tercih edilen yüzü yükle
+STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi.
+STR_FACE_FACECODE                                               :{BLACK}Oyuncu yüzü no.
+STR_FACE_SAVE                                                   :{BLACK}Kaydet
+STR_FACE_SAVE_TIP                                               :{BLACK}Tercih edilen yüzü kaydet
+STR_FACE_EUROPEAN                                               :{BLACK}Avrupalı
+STR_FACE_AFRICAN                                                :{BLACK}Afrikalı
+STR_FACE_YES                                                    :Evet
+STR_FACE_NO                                                     :Hayır
+STR_FACE_HAIR                                                   :Saç:
+STR_FACE_EYEBROWS                                               :Kaşlar:
+STR_FACE_EYECOLOUR                                              :Göz rengi:
+STR_FACE_GLASSES                                                :Gözlük:
+STR_FACE_NOSE                                                   :Burun:
+STR_FACE_LIPS                                                   :Dudak:
+STR_FACE_MOUSTACHE                                              :Bıyık:
+STR_FACE_CHIN                                                   :Çene:
+STR_FACE_JACKET                                                 :Ceket:
+########
