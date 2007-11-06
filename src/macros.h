@@ -8,7 +8,7 @@
 /**
  * Fetch n bits from x, started at bit s.
  *
- * This macro can be used to fetch n bits from the value x. The
+ * This function can be used to fetch n bits from the value x. The
  * s value set the startposition to read. The startposition is
  * count from the LSB and starts at 0. The result starts at a
  * LSB, as this isn't just an and-bitmask but also some
@@ -21,11 +21,14 @@
  * @param n The number of bits to read.
  * @return The selected bits, aligned to a LSB.
  */
-#define GB(x, s, n) (((x) >> (s)) & ((1U << (n)) - 1))
+template<typename T> static inline uint GB(const T x, const uint8 s, const uint8 n)
+{
+	return (x >> s) & ((1U << n) - 1);
+}
 
 /** Set n bits from x starting at bit s to d
  *
- * This macro sets n bits from x which started as bit s to the value of
+ * This function sets n bits from x which started as bit s to the value of
  * d. The parameters x, s and n works the same as the parameters of
  * #GB. The result is saved in x again. Unused bits in the window
  * provided by n are set to 0 if the value of b isn't "big" enough.
@@ -40,7 +43,12 @@
  * @param d The actually new bits to save in the defined position.
  * @return The new value of x
  */
-#define SB(x, s, n, d) ((x) = ((x) & ~(((1U << (n)) - 1) << (s))) | ((d) << (s)))
+template<typename T, typename U> static inline T SB(T& x, const uint8 s, const uint8 n, const U d)
+{
+	x &= (T)(~(((1U << n) - 1) << s));
+	x |= (T)(d << s);
+	return x;
+}
 
 /** Add i to n bits of x starting at bit s.
  *
@@ -56,7 +64,13 @@
  * @param i The value to add at the given startposition in the given window.
  * @return The new value of x
  */
-#define AB(x, s, n, i) ((x) = ((x) & ~(((1U << (n)) - 1) << (s))) | (((x) + ((i) << (s))) & (((1U << (n)) - 1) << (s))))
+template<typename T, typename U> static inline T AB(T& x, const uint8 s, const uint8 n, const U i)
+{
+	const T tmp = (T)(((1U << n) - 1) << s);
+	x &= ~tmp;
+	x |= (T)((x + (i << s)) & tmp);
+	return x;
+}
 
 #ifdef min
 #undef min
@@ -223,23 +237,6 @@ static inline uint32 BIGMULUS(const uint32 a, const uint32 b, const uint8 shift)
 	return (uint32)((uint64)a * (uint64)b >> shift);
 }
 
-
-/**
- * Checks if a value is between a window started at some base point.
- *
- * This macro checks if the value x is between the value of base
- * and base+size. If x equals base this returns true. If x equals
- * base+size this returns false.
- *
- * @param x The value to check
- * @param base The base value of the interval
- * @param size The size of the interval
- * @return True if the value is in the interval, false else.
- */
-/* OPT: optimized into an unsigned comparison */
-//#define IS_INSIDE_1D(x, base, size) ((x) >= (base) && (x) < (base) + (size))
-#define IS_INSIDE_1D(x, base, size) ( (uint)((x) - (base)) < ((uint)(size)) )
-
 /**
  * Checks if a bit in a value is set.
  *
@@ -384,20 +381,10 @@ extern const byte _ffb_64[64];
  */
 static inline int FindFirstBit2x64(int value)
 {
-/*
-	int i = 0;
-	if ( (byte) value == 0) {
-		i += 8;
-		value >>= 8;
-	}
-	return i + FIND_FIRST_BIT(value & 0x3F);
-
-Faster ( or at least cleaner ) implementation below?
-*/
-	if (GB(value, 0, 8) == 0) {
-		return FIND_FIRST_BIT(GB(value, 8, 6)) + 8;
+	if ((value & 0xFF) == 0) {
+		return FIND_FIRST_BIT((value >> 8) & 0x3F) + 8;
 	} else {
-		return FIND_FIRST_BIT(GB(value, 0, 6));
+		return FIND_FIRST_BIT(value & 0x3F);
 	}
 }
 
@@ -424,7 +411,7 @@ template<typename T> static inline T KillFirstBit(T value)
  */
 template<typename T> static inline uint CountBits(T value)
 {
-	register uint num;
+	uint num;
 
 	/* This loop is only called once for every bit set by clearing the lowest
 	 * bit in each loop. The number of bits is therefore equal to the number of
@@ -436,6 +423,23 @@ template<typename T> static inline uint CountBits(T value)
 	}
 
 	return num;
+}
+
+/**
+ * Checks if a value is between a window started at some base point.
+ *
+ * This function checks if the value x is between the value of base
+ * and base+size. If x equals base this returns true. If x equals
+ * base+size this returns false.
+ *
+ * @param x The value to check
+ * @param base The base value of the interval
+ * @param size The size of the interval
+ * @return True if the value is in the interval, false else.
+ */
+template<typename T> static inline bool IS_INSIDE_1D(const T x, const int base, const uint size)
+{
+	return (uint)(x - base) < size;
 }
 
 /**
@@ -496,10 +500,13 @@ template<typename T> static inline uint CountBits(T value)
  *
  * @param a The numerator of the fraction, see CHANCE16
  * @param b The denominator of the fraction, see CHANCE16
- * @param v The given randomize-number
+ * @param r The given randomize-number
  * @return True if v is less or equals (a/b)
  */
-#define CHANCE16I(a, b, v) ((uint16)(v) <= (uint16)((65536 * (a)) / (b)))
+static inline bool CHANCE16I(const uint a, const uint b, const uint32 r)
+{
+	return (uint16)r <= (uint16)((65536 * a) / b);
+}
 
 
 #define for_each_bit(_i, _b)            \
@@ -525,17 +532,43 @@ static inline uint16 ReadLE16Unaligned(const void* x)
 
 
 /**
- * ROtate x Left/Right by n (must be >= 0)
+ * ROtate x Left by n
+ *
  * @note Assumes a byte has 8 bits
+ * @param x The value which we want to rotate
+ * @param n The number how many we waht to rotate
+ * @return A bit rotated number
  */
-#define ROL(x, n) ((x) << (n) | (x) >> (sizeof(x) * 8 - (n)))
-#define ROR(x, n) ((x) >> (n) | (x) << (sizeof(x) * 8 - (n)))
+template<typename T> static inline T ROL(const T x, const uint8 n)
+{
+	return (T)(x << n | x >> (sizeof(x) * 8 - n));
+}
+
+/**
+ * ROtate x Right by n
+ *
+ * @note Assumes a byte has 8 bits
+ * @param x The value which we want to rotate
+ * @param n The number how many we waht to rotate
+ * @return A bit rotated number
+ */
+template<typename T> static inline T ROR(const T x, const uint8 n)
+{
+	return (T)(x >> n | x << (sizeof(x) * 8 - n));
+}
 
 /**
  * Return the smallest multiple of n equal or greater than x
+ *
  * @note n must be a power of 2
+ * @param x The min value
+ * @param n The base of the number we are searching
+ * @return The smallest multiple of n equal or greater than x
  */
-#define ALIGN(x, n) (((x) + (n) - 1) & ~((n) - 1))
+template<typename T> static inline T ALIGN(const T x, uint n) {
+	n--;
+	return (T)((x + n) & ~(n));
+}
 
 /** return the largest value that can be entered in a variable.
  */
