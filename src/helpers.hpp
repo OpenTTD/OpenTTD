@@ -136,7 +136,15 @@ template <typename Tenum_t> struct TinyEnumT
 	}
 
 	/** postfix ++ operator on tiny type */
-	FORCEINLINE TinyEnumT& operator ++ (int)
+	FORCEINLINE TinyEnumT operator ++ (int)
+	{
+		TinyEnumT org = *this;
+		if (++m_val >= end) m_val -= (storage_type)(end - begin);
+		return org;
+	}
+
+	/** prefix ++ operator on tiny type */
+	FORCEINLINE TinyEnumT& operator ++ ()
 	{
 		if (++m_val >= end) m_val -= (storage_type)(end - begin);
 		return *this;
@@ -208,8 +216,10 @@ public:
 	FORCEINLINE OverflowSafeInt  operator -  (const int              other) const { OverflowSafeInt result = *this; result -= (int64)other; return result; }
 	FORCEINLINE OverflowSafeInt  operator -  (const uint             other) const { OverflowSafeInt result = *this; result -= (int64)other; return result; }
 
-	FORCEINLINE OverflowSafeInt& operator ++ (int) { return *this += 1; }
-	FORCEINLINE OverflowSafeInt& operator -- (int) { return *this += -1; }
+	FORCEINLINE OverflowSafeInt& operator ++ () { return *this += 1; }
+	FORCEINLINE OverflowSafeInt& operator -- () { return *this += -1; }
+	FORCEINLINE OverflowSafeInt operator ++ (int) { OverflowSafeInt org = *this; *this += 1; return org; }
+	FORCEINLINE OverflowSafeInt operator -- (int) { OverflowSafeInt org = *this; *this += -1; return org; }
 
 	/**
 	 * Safe implementation of multiplication.
