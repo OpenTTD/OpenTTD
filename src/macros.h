@@ -66,9 +66,8 @@ template<typename T, typename U> static inline T SB(T& x, const uint8 s, const u
  */
 template<typename T, typename U> static inline T AB(T& x, const uint8 s, const uint8 n, const U i)
 {
-	const T tmp = (T)(((1U << n) - 1) << s);
-	x &= ~tmp;
-	x |= (T)((x + (i << s)) & tmp);
+	const T mask = (T)(((1U << n) - 1) << s);
+	x = (T)((x & ~mask) | ((x + (i << s)) & mask));
 	return x;
 }
 
