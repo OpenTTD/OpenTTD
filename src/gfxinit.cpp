@@ -25,7 +25,7 @@ struct MD5File {
 };
 
 struct FileList {
-	MD5File basic[4];          ///< grf files that always have to be loaded
+	MD5File basic[2];          ///< grf files that always have to be loaded
 	MD5File landscape[3];      ///< landscape specific grf files
 };
 
@@ -53,7 +53,7 @@ static const SpriteID * const _halftile_foundation_spriteindexes[] = {
 };
 
 
-static uint LoadGrfFile(const char* filename, uint load_index, int file_index)
+static uint LoadGrfFile(const char *filename, uint load_index, int file_index)
 {
 	uint load_index_org = load_index;
 	uint sprite_id = 0;
@@ -110,17 +110,12 @@ static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int 
 }
 
 
-/* Check that the supplied MD5 hash matches that stored for the supplied filename */
-static bool CheckMD5Digest(const MD5File file, md5_byte_t *digest, bool warn)
-{
-	if (memcmp(file.hash, digest, sizeof(file.hash)) == 0) return true;
-	if (warn) fprintf(stderr, "MD5 of %s is ****INCORRECT**** - File Corrupt.\n", file.filename);
-	return false;
-}
-
-/* Calculate and check the MD5 hash of the supplied filename.
- * returns true if the checksum is correct */
-static bool FileMD5(const MD5File file, bool warn)
+/**
+ * Calculate and check the MD5 hash of the supplied filename.
+ * @param file filename and expected MD5 hash for the given filename.
+ * @return true if the checksum is correct.
+ */
+static bool FileMD5(const MD5File file)
 {
 	size_t size;
 	FILE *f = FioFOpenFile(file.filename, "rb", DATA_DIR, &size);
@@ -137,59 +132,84 @@ static bool FileMD5(const MD5File file, bool warn)
 			md5_append(&filemd5state, buffer, len);
 		}
 
-		if (ferror(f) && warn) ShowInfoF("Error Reading from %s \n", file.filename);
 		FioFCloseFile(f);
 
 		md5_finish(&filemd5state, digest);
-		return CheckMD5Digest(file, digest, warn);
+		return memcmp(file.hash, digest, sizeof(file.hash)) == 0;
 	} else { // file not found
 		return false;
 	}
 }
 
-/* Checks, if either the Windows files exist (TRG1R.GRF) or the DOS files (TRG1.GRF)
- * by comparing the MD5 checksums of the files. _use_dos_palette is set accordingly.
- * If neither are found, Windows palette is assumed.
- *
- * (Note: Also checks sample.cat for corruption) */
-void CheckExternalFiles()
+/**
+ * Determine the palette that has to be used.
+ *  - forced DOS palette via command line -> leave it that way
+ *  - all Windows files present -> Windows palette
+ *  - all DOS files present -> DOS palette
+ *  - no Windows files present and any DOS file present -> DOS palette
+ *  - otherwise -> Windows palette
+ */
+static void DeterminePalette()
 {
-	uint i;
-	/* count of files from this version */
+	if (_use_dos_palette) return;
+
+	/* Count of files from the different versions. */
 	uint dos = 0;
 	uint win = 0;
 
-	for (i = 0; i < 2; i++) if (FileMD5(files_dos.basic[i], true)) dos++;
-	for (i = 0; i < 3; i++) if (FileMD5(files_dos.landscape[i], true)) dos++;
+	for (uint i = 0; i < lengthof(files_dos.basic); i++) if (FioCheckFileExists(files_dos.basic[i].filename)) dos++;
+	for (uint i = 0; i < lengthof(files_dos.landscape); i++) if (FioCheckFileExists(files_dos.landscape[i].filename)) dos++;
 
-	for (i = 0; i < 2; i++) if (FileMD5(files_win.basic[i], true)) win++;
-	for (i = 0; i < 3; i++) if (FileMD5(files_win.landscape[i], true)) win++;
+	for (uint i = 0; i < lengthof(files_win.basic); i++) if (FioCheckFileExists(files_win.basic[i].filename)) win++;
+	for (uint i = 0; i < lengthof(files_win.landscape); i++) if (FioCheckFileExists(files_win.landscape[i].filename)) win++;
 
-	if (!FileMD5(sample_cat_win, false) && !FileMD5(sample_cat_dos, false))
-		ShowInfo("Your 'sample.cat' file is corrupted or missing!");
-
-	for (i = 0; i < lengthof(files_openttd); i++) {
-		if (!FileMD5(files_openttd[i], false)) {
-			ShowInfoF("Your '%s' file is corrupted or missing!", files_openttd[i].filename);
-		}
-	}
-
-	/*
-	 * forced DOS palette via command line -> leave it that way
-	 * all Windows files present -> Windows palette
-	 * all DOS files present -> DOS palette
-	 * no Windows files present and any DOS file present -> DOS palette
-	 * otherwise -> Windows palette
-	 */
-	if (_use_dos_palette) {
-		return;
-	} else if (win == 5) {
+	if (win == 5) {
 		_use_dos_palette = false;
 	} else if (dos == 5 || (win == 0 && dos > 0)) {
 		_use_dos_palette = true;
 	} else {
 		_use_dos_palette = false;
 	}
+}
+
+/**
+ * Checks whether the MD5 checksums of the files are correct.
+ *
+ * @note Also checks sample.cat and other required non-NewGRF GRFs for corruption.
+ */
+void CheckExternalFiles()
+{
+	DeterminePalette();
+
+	static const size_t ERROR_MESSAGE_LENGTH = 128;
+	const FileList *files = _use_dos_palette ? &files_dos : &files_win;
+	char error_msg[ERROR_MESSAGE_LENGTH * (lengthof(files->basic) + lengthof(files->landscape) + lengthof(files_openttd) + 1)];
+	error_msg[0] = '\0';
+	char *add_pos = error_msg;
+
+	for (uint i = 0; i < lengthof(files->basic); i++) {
+		if (!FileMD5(files->basic[i])) {
+			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! You can find '%s' on your Transport Tycoon Deluxe CD-ROM.\n", files->basic[i].filename, files->basic[i].filename);
+		}
+	}
+
+	for (uint i = 0; i < lengthof(files->landscape); i++) {
+		if (!FileMD5(files->landscape[i])) {
+			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! You can find '%s' on your Transport Tycoon Deluxe CD-ROM.\n", files->landscape[i].filename, files->landscape[i].filename);
+		}
+	}
+
+	if (!FileMD5(sample_cat_win) && !FileMD5(sample_cat_dos)) {
+		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
+	}
+
+	for (uint i = 0; i < lengthof(files_openttd); i++) {
+		if (!FileMD5(files_openttd[i])) {
+			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! The file was part of your installation.\n", files_openttd[i].filename);
+		}
+	}
+
+	if (add_pos != error_msg) ShowInfoF(error_msg);
 }
 
 
@@ -332,7 +352,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 
 static void LoadSpriteTables()
 {
-	const FileList* files = _use_dos_palette ? &files_dos : &files_win;
+	const FileList *files = _use_dos_palette ? &files_dos : &files_win;
 	uint load_index;
 	uint i = FIRST_GRF_SLOT;
 
@@ -340,13 +360,20 @@ static void LoadSpriteTables()
 	DupSprite(  2, 130); // non-breaking space medium
 	DupSprite(226, 354); // non-breaking space tiny
 	DupSprite(450, 578); // non-breaking space large
-	load_index = 4793;
 
-	for (uint j = 1; files->basic[j].filename != NULL; j++) {
-		load_index += LoadGrfFile(files->basic[j].filename, load_index, i++);
-	}
+	/*
+	 * The second basic file always starts at the given location and does
+	 * contain a different amount of sprites depending on the "type"; DOS
+	 * has a few sprites less. However, we do not care about those missing
+	 * sprites as they are not shown anyway (logos in intro game).
+	 */
+	LoadGrfFile(files->basic[1].filename, 4793, i++);
 
-	/* Load additional sprites for climates other than temperate */
+	/*
+	 * Load additional sprites for climates other than temperate.
+	 * This overwrites some of the temperate sprites, such as foundations
+	 * and the ground sprites.
+	 */
 	if (_opt.landscape != LT_TEMPERATE) {
 		LoadGrfIndexed(
 			files->landscape[_opt.landscape - 1].filename,
@@ -355,7 +382,8 @@ static void LoadSpriteTables()
 		);
 	}
 
-	assert(load_index == SPR_SIGNALS_BASE);
+	/* Start loading the extra, non-TTD, base GRFs for the given index. */
+	load_index = SPR_SIGNALS_BASE;
 	load_index += LoadGrfFile("nsignalsw.grf", load_index, i++);
 
 	assert(load_index == SPR_CANALS_BASE);
