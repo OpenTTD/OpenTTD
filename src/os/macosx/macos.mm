@@ -168,6 +168,6 @@ const char *GetCurrentLocale(const char *)
 	NSArray* languages = [defs objectForKey:@"AppleLanguages"];
 	NSString* preferredLang = [languages objectAtIndex:0];
 	/* preferredLang is either 2 or 5 characters long ("xx" or "xx_YY"). */
-	strncpy(retbuf, [preferredLang cString], 31);
+	[ preferredLang getCString:retbuf maxLength:32 encoding:NSASCIIStringEncoding ];
 	return retbuf;
 }

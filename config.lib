@@ -1008,6 +1008,10 @@ make_cflags_and_ldflags() {
 			CFLAGS="$CFLAGS -I$with_iconv/include"
 			LIBS="$LIBS -L$with_iconv/lib"
 		fi
+
+		if [ "$have_broken_iconv" != "no" ]; then
+			CFLAGS="$CFLAGS -DHAVE_BROKEN_ICONV"
+		fi
 	fi
 
 	if [ -n "$with_midi" ]; then
@@ -1854,6 +1858,32 @@ detect_iconv() {
 	log 2 "found iconv in $iconv"
 
 	log 1 "checking iconv... found"
+
+	# Check if we need to work around buggy iconv implementation where inbuf
+	# is wrongly typed as non-const. Correct implementation is at
+	# http://www.opengroup.org/onlinepubs/007908799/xsh/iconv.html
+
+	cat > tmp.iconv.cpp << EOF
+#include "src/stdafx.h"
+#include <iconv.h>
+int main() {
+	static char buf[1024];
+	iconv_t convd = 0;
+	const char *inbuf = "";
+	char *outbuf  = buf;
+	size_t outlen = 1023;
+	size_t inlen  = 0;
+	return iconv(convd, &inbuf, &inlen, &outbuf, &outlen);
+}
+EOF
+	execute="$cxx_host $CFLAGS -c tmp.iconv.cpp -o tmp.iconv -DTESTING 2>&1"
+	eval $execute >&/dev/null
+	ret=$?
+	log 2 "executing $execute"
+	log 2 "  exit code $ret"
+	if [ "$ret" = "0" ]; then have_broken_iconv="no"; else have_broken_iconv="yes"; fi
+	log 1 "checking if iconv has non-const inbuf... $have_broken_iconv"
+	rm -f tmp.iconv tmp.iconv.cpp
 }
 
 _detect_sort() {

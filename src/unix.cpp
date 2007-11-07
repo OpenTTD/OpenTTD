@@ -230,7 +230,7 @@ static const char *convert_tofrom_fs(iconv_t convd, const char *name)
 	/* Work around buggy iconv implementation where inbuf is wrongly typed as
 	 * non-const. Correct implementation is at
 	 * http://www.opengroup.org/onlinepubs/007908799/xsh/iconv.html */
-#if defined (__GLIBC__) || defined (__GNU_LIBRARY__)
+#ifdef HAVE_BROKEN_ICONV
 	char *inbuf = (char*)name;
 #else
 	const char *inbuf = name;

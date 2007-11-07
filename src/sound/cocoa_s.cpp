@@ -31,9 +31,9 @@ static FSoundDriver_Cocoa iFSoundDriver_Cocoa;
 static AudioUnit _outputAudioUnit;
 
 /* The CoreAudio callback */
-static OSStatus audioCallback(void *inRefCon, AudioUnitRenderActionFlags inActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, AudioBuffer *ioData)
+static OSStatus audioCallback(void *inRefCon, AudioUnitRenderActionFlags *inActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList * ioData)
 {
-	MxMixSamples(ioData->mData, ioData->mDataByteSize / 4);
+	MxMixSamples(ioData->mBuffers[0].mData, ioData->mBuffers[0].mDataByteSize / 4);
 
 	return noErr;
 }
@@ -43,7 +43,7 @@ const char *SoundDriver_Cocoa::Start(const char * const *parm)
 {
 	Component comp;
 	ComponentDescription desc;
-	struct AudioUnitInputCallback callback;
+	struct AURenderCallbackStruct callback;
 	AudioStreamBasicDescription requestedDesc;
 
 	/* Setup a AudioStreamBasicDescription with the requested format */
@@ -65,9 +65,9 @@ const char *SoundDriver_Cocoa::Start(const char * const *parm)
 
 
 	/* Locate the default output audio unit */
-	desc.componentType = kAudioUnitComponentType;
-	desc.componentSubType = kAudioUnitSubType_Output;
-	desc.componentManufacturer = kAudioUnitID_DefaultOutput;
+	desc.componentType = kAudioUnitType_Output;
+	desc.componentSubType = kAudioUnitSubType_HALOutput;
+	desc.componentManufacturer = kAudioUnitManufacturer_Apple;
 	desc.componentFlags = 0;
 	desc.componentFlagsMask = 0;
 
@@ -93,8 +93,8 @@ const char *SoundDriver_Cocoa::Start(const char * const *parm)
 	/* Set the audio callback */
 	callback.inputProc = audioCallback;
 	callback.inputProcRefCon = NULL;
-	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetInputCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr) {
-		return "cocoa_s: Failed to start CoreAudio: AudioUnitSetProperty (kAudioUnitProperty_SetInputCallback)";
+	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetRenderCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr) {
+		return "cocoa_s: Failed to start CoreAudio: AudioUnitSetProperty (kAudioUnitProperty_SetRenderCallback)";
 	}
 
 	/* Finally, start processing of the audio unit */
@@ -109,7 +109,7 @@ const char *SoundDriver_Cocoa::Start(const char * const *parm)
 
 void SoundDriver_Cocoa::Stop()
 {
-	struct AudioUnitInputCallback callback;
+	struct AURenderCallbackStruct callback;
 
 	/* stop processing the audio unit */
 	if (AudioOutputUnitStop(_outputAudioUnit) != noErr) {
@@ -120,8 +120,8 @@ void SoundDriver_Cocoa::Stop()
 	/* Remove the input callback */
 	callback.inputProc = 0;
 	callback.inputProcRefCon = 0;
-	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetInputCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr) {
-		DEBUG(driver, 0, "cocoa_s: Core_CloseAudio: AudioUnitSetProperty (kAudioUnitProperty_SetInputCallback) failed");
+	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetRenderCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr) {
+		DEBUG(driver, 0, "cocoa_s: Core_CloseAudio: AudioUnitSetProperty (kAudioUnitProperty_SetRenderCallback) failed");
 		return;
 	}
 

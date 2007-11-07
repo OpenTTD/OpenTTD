@@ -55,48 +55,24 @@ enum {
 
 
 /**
- * Converts a Unix-like pathname to a @c FSSpec structure which may be
- * used with functions from several MacOS X frameworks (Carbon, QuickTime,
- * etc). The pointed file or directory must exist.
- *
- * @param *path A string containing a Unix-like path.
- * @param *spec Pointer to a @c FSSpec structure where the result will be
- *              stored.
- * @return Wether the conversion was successful.
- */
-static bool PathToFSSpec(const char *path, FSSpec *spec)
-{
-	FSRef ref;
-	assert(spec != NULL);
-	assert(path != NULL);
-
-	return
-		FSPathMakeRef((UInt8*)path, &ref, NULL) == noErr &&
-		FSGetCatalogInfo(&ref, kFSCatInfoNone, NULL, NULL, spec, NULL) == noErr;
-}
-
-
-/**
  * Sets the @c OSType of a given file to @c 'Midi', but only if it's not
  * already set.
  *
  * @param *spec A @c FSSpec structure referencing a file.
  */
-static void SetMIDITypeIfNeeded(const FSSpec *spec)
+static void SetMIDITypeIfNeeded(const FSRef *ref)
 {
-	FSRef ref;
 	FSCatalogInfo catalogInfo;
 
-	assert(spec);
+	assert(ref);
 
-	if (noErr != FSpMakeFSRef(spec, &ref)) return;
-	if (noErr != FSGetCatalogInfo(&ref, kFSCatInfoNodeFlags | kFSCatInfoFinderInfo, &catalogInfo, NULL, NULL, NULL)) return;
+	if (noErr != FSGetCatalogInfo(ref, kFSCatInfoNodeFlags | kFSCatInfoFinderInfo, &catalogInfo, NULL, NULL, NULL)) return;
 	if (!(catalogInfo.nodeFlags & kFSNodeIsDirectoryMask)) {
 		FileInfo * const info = (FileInfo *) catalogInfo.finderInfo;
 		if (info->fileType != midiType && !(info->finderFlags & kIsAlias)) {
 			OSErr e;
 			info->fileType = midiType;
-			e = FSSetCatalogInfo(&ref, kFSCatInfoFinderInfo, &catalogInfo);
+			e = FSSetCatalogInfo(ref, kFSCatInfoFinderInfo, &catalogInfo);
 			if (e == noErr) {
 				DEBUG(driver, 3, "qtmidi: changed filetype to 'Midi'");
 			} else {
@@ -119,6 +95,7 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	int fd;
 	int ret;
 	char magic[4];
+	FSRef fsref;
 	FSSpec fsspec;
 	short refnum = 0;
 	short resid  = 0;
@@ -144,9 +121,10 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	if (magic[0] != 'M' || magic[1] != 'T' || magic[2] != 'h' || magic[3] != 'd')
 		return false;
 
-	if (!PathToFSSpec(path, &fsspec)) return false;
-	SetMIDITypeIfNeeded(&fsspec);
+	if (noErr != FSPathMakeRef((const UInt8 *) path, &fsref, NULL)) return false;
+	SetMIDITypeIfNeeded(&fsref);
 
+	if (noErr != FSGetCatalogInfo(&fsref, kFSCatInfoNone, NULL, NULL, &fsspec, NULL)) return false;
 	if (OpenMovieFile(&fsspec, &refnum, fsRdPerm) != noErr) return false;
 	DEBUG(driver, 3, "qtmidi: '%s' successfully opened", path);
 
