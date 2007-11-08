@@ -443,7 +443,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				case STATIONLIST_WIDGET_SORTBY: /*flip sorting method asc/desc*/
 					sl->flags ^= SL_ORDER; //DESC-flag
-					station_sort.order = GB(sl->flags, 0, 1);
+					station_sort.order = HASBIT(sl->flags, 0);
 					sl->flags |= SL_RESORT;
 					w->flags4 |= 5 << WF_TIMEOUT_SHL;
 					LowerWindowWidget(w, STATIONLIST_WIDGET_SORTBY);

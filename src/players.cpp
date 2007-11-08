@@ -676,11 +676,11 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	p = GetPlayer(_current_player);
 	switch (GB(p1, 0, 3)) {
 		case 0:
-			if (p->engine_renew == (bool)GB(p2, 0, 1))
+			if (p->engine_renew == HASBIT(p2, 0))
 				return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->engine_renew = (bool)GB(p2, 0, 1);
+				p->engine_renew = HASBIT(p2, 0);
 				if (IsLocalPlayer()) {
 					_patches.autorenew = p->engine_renew;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
@@ -749,7 +749,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 		case 4:
 			if (flags & DC_EXEC) {
-				p->engine_renew = (bool)GB(p1, 15, 1);
+				p->engine_renew = HASBIT(p1, 15);
 				p->engine_renew_months = (int16)GB(p1, 16, 16);
 				p->engine_renew_money = (uint32)p2;
 
@@ -762,11 +762,11 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			}
 			break;
 		case 5:
-			if (p->renew_keep_length == (bool)GB(p2, 0, 1))
+			if (p->renew_keep_length == HASBIT(p2, 0))
 				return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->renew_keep_length = (bool)GB(p2, 0, 1);
+				p->renew_keep_length = HASBIT(p2, 0);
 				if (IsLocalPlayer()) {
 					InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
 				}
