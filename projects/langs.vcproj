@@ -39,6 +39,19 @@
 	<Files>
 
 		<File
+			RelativePath="..\src\lang\afrikaans.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating afrikaans language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;
+"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\afrikaans.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\src\lang\american.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
