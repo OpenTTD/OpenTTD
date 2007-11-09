@@ -1415,7 +1415,7 @@ void CreateVehicleDetailsWindow(Window *w)
 }
 
 /** Checks whether service interval is enabled for the vehicle. */
-static bool inline IsVehicleServiceIntervalEnabled(const VehicleType vehicle_type)
+static inline bool IsVehicleServiceIntervalEnabled(const VehicleType vehicle_type)
 {
 	switch (vehicle_type) {
 		default: NOT_REACHED();
