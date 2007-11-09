@@ -907,7 +907,8 @@ static bool GrowTownWithBridge(const Town *t, TileIndex tile, DiagDirection brid
 
 	/* Make sure the direction is compatible with the slope.
 	 * If any of the following bits match, the slope is forbidden for
-	 * that diagdir. Total of 5 slopes per direction.
+	 *  that diagdir. This means 5 non-steep slopes, and 3 steep-slopes
+	 *  per diagdir.
 	 * 0 -> 0b1100
 	 * 1 -> 0b0110
 	 * 2 -> 0b0011
@@ -916,8 +917,11 @@ static bool GrowTownWithBridge(const Town *t, TileIndex tile, DiagDirection brid
 	 * the direction to get the forbidden slope mask. */
 	if (HASBITS(slope & 0x0F, 0xCC >> bridge_dir)) return false;
 
+	/* Assure that the bridge is connectable to the start side */
+	if (!(GetTownRoadBits(TileAddByDiagDir(tile, ReverseDiagDir(bridge_dir))) & DiagDirToRoadBits(bridge_dir))) return false;
+
 	/* We are in the right direction */
-	uint32 bridge_length = 0;     // This value stores the length of the possible bridge
+	uint8 bridge_length = 0;     // This value stores the length of the possible bridge
 	TileIndex bridge_tile = tile; // Used to store the other waterside
 
 	do {
@@ -925,7 +929,7 @@ static bool GrowTownWithBridge(const Town *t, TileIndex tile, DiagDirection brid
 			/* Max 11 tile long bridges */
 			return false;
 		}
-		bridge_tile = TILE_MASK(bridge_tile + TileOffsByDiagDir(bridge_dir));
+		bridge_tile = TileAddByDiagDir(bridge_tile, bridge_dir);
 	} while (IsWaterTile(bridge_tile));
 
 	/* no water tiles in between? */
