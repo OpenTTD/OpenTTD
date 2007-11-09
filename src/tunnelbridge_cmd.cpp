@@ -258,9 +258,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 
 	if (z_start != z_end) return_cmd_error(STR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
-	/* Towns are not allowed to use bridges on slopes. */
 	allow_on_slopes = (!_is_old_ai_player
-	                   && _current_player != OWNER_TOWN && _patches.build_on_slopes);
+	                   && _patches.build_on_slopes);
 
 	TransportType transport_type = railtype == INVALID_RAILTYPE ? TRANSPORT_ROAD : TRANSPORT_RAIL;
 

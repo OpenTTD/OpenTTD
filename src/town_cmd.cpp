@@ -895,26 +895,26 @@ static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
  *
  * @param t The current town
  * @param tile The current tile
- * @param rcmd The RoadBits which are possible on this tile
+ * @param bridge_dir The valid direction in which to grow a bridge
  * @return true if a bridge has been build else false
  */
-static bool GrowTownWithBridge(const Town *t, TileIndex tile, RoadBits rcmd)
+static bool GrowTownWithBridge(const Town *t, TileIndex tile, DiagDirection bridge_dir)
 {
-	DiagDirection bridge_dir; // The direction of a bridge we maybe want to build
+	assert(bridge_dir < DIAGDIR_END);
 
-	/* Determine direction of slope,
-	 *  and build a road if not a special slope. */
-	switch (GetTileSlope(tile, NULL)) {
-		case SLOPE_SW: bridge_dir = DIAGDIR_NE; break;
-		case SLOPE_SE: bridge_dir = DIAGDIR_NW; break;
-		case SLOPE_NW: bridge_dir = DIAGDIR_SE; break;
-		case SLOPE_NE: bridge_dir = DIAGDIR_SW; break;
+	const Slope slope = GetTileSlope(tile, NULL);
+	if (slope == SLOPE_FLAT) return false; // no slope, no bridge
 
-		default: return false;
-	}
-
-	/* Check if the bridge will be compatible to the RoadBits */
-	if (!(rcmd & DiagDirToRoadBits(ReverseDiagDir(bridge_dir)))) return false;
+	/* Make sure the direction is compatible with the slope.
+	 * If any of the following bits match, the slope is forbidden for
+	 * that diagdir. Total of 5 slopes per direction.
+	 * 0 -> 0b1100
+	 * 1 -> 0b0110
+	 * 2 -> 0b0011
+	 * 3 -> 0b1001
+	 * 0xCC is 0b11001100, so we just shift it right with
+	 * the direction to get the forbidden slope mask. */
+	if (HASBITS(slope & 0x0F, 0xCC >> bridge_dir)) return false;
 
 	/* We are in the right direction */
 	uint32 bridge_length = 0;     // This value stores the length of the possible bridge
@@ -1120,7 +1120,10 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 	rcmd = CleanUpRoadBits(tile, rcmd);
 	if (rcmd == ROAD_NONE) return;
 
-	if (GrowTownWithBridge(t1, tile, rcmd)) return;
+	/* Only use the target direction for bridges to ensure they're connected.
+	 * The target_dir is as computed previously according to town layout, so
+	 * it will match it perfectly. */
+	if (GrowTownWithBridge(t1, tile, target_dir)) return;
 
 	GrowTownWithRoad(t1, tile, rcmd);
 }
