@@ -157,6 +157,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			/* Fall through */
 
 		default: //use the grfid specified in register 100h
+			SETBIT(param_setID, 7); // bit 7 means it is not an old type
 			ind_index = MapNewGRFIndustryType(param_setID, GrfID);
 			break;
 	}
