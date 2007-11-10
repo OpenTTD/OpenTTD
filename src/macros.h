@@ -120,7 +120,7 @@ template<typename T> static inline T min(const T a, const T b)
  */
 static inline int min(const int a, const int b)
 {
-	return a <= b ? a : b;
+	return a < b ? a : b;
 }
 
 /**
@@ -134,7 +134,7 @@ static inline int min(const int a, const int b)
  */
 static inline uint minu(const uint a, const uint b)
 {
-	return a <= b ? a : b;
+	return a < b ? a : b;
 }
 
 /**
