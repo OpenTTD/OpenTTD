@@ -1769,10 +1769,9 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					return result; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
 				}
 			} else {
-				/* this is a front engine or not a train. It need orders */
+				/* this is a front engine or not a train. */
 				w_front = w;
 				w->service_interval = v->service_interval;
-				DoCommand(0, (v->index << 16) | w->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
 			}
 			w_rear = w; // trains needs to know the last car in the train, so they can add more in next loop
 		}
@@ -1835,6 +1834,15 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if ((flags & DC_EXEC) && v->type == VEH_TRAIN) w = GetNextVehicle(w);
 	} while (v->type == VEH_TRAIN && (v = GetNextVehicle(v)) != NULL);
+
+	if (flags & DC_EXEC) {
+		/*
+		 * Set the orders of the vehicle. Cannot do it earlier as we need
+		 * the vehicle refitted before doing this, otherwise the moved
+		 * cargo types might not match (passenger vs non-passenger)
+		 */
+		DoCommand(0, (v_front->index << 16) | w_front->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
+	}
 
 	/* Since we can't estimate the cost of cloning a vehicle accurately we must
 	 * check whether the player has enough money manually. */
