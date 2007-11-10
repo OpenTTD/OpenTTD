@@ -26,6 +26,7 @@
 #include "roadveh.h"
 #include "vehicle_gui.h"
 #include "blitter/factory.hpp"
+#include "transparency.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
@@ -1483,10 +1484,10 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 
 		/* Draw the rectangle if 'tranparent station signs' is off,
 		 * or if we are drawing a general text sign (STR_2806) */
-			if (!HASBIT(_transparent_opt, TO_SIGNS) || ss->string == STR_2806) {
+			if (!IsTransparencySet(TO_SIGNS) || ss->string == STR_2806) {
 				DrawFrameRect(
 					x, y, x + w, bottom, ss->color,
-					HASBIT(_transparent_opt, TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
+					IsTransparencySet(TO_SIGNS) ? FR_TRANSPARENT : FR_NONE
 				);
 			}
 		}
@@ -1495,7 +1496,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 		SetDParam(1, ss->params[1]);
 		/* if we didn't draw a rectangle, or if transparant building is on,
 		 * draw the text in the color the rectangle would have */
-		if (HASBIT(_transparent_opt, TO_SIGNS) && ss->string != STR_2806 && ss->width != 0) {
+		if (IsTransparencySet(TO_SIGNS) && ss->string != STR_2806 && ss->width != 0) {
 			/* Real colors need the IS_PALETTE_COLOR flag
 			 * otherwise colors from _string_colormap are assumed. */
 			colour = _colour_gradient[ss->color][6] | IS_PALETTE_COLOR;

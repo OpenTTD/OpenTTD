@@ -40,6 +40,7 @@
 #include "train.h"
 #include "misc/autoptr.hpp"
 #include "autoslope.h"
+#include "transparency.h"
 
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
@@ -1755,7 +1756,7 @@ default_waypoint:
 				image += relocation;
 			}
 
-			if (!HASBIT(_transparent_opt, TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+			if (!IsTransparencySet(TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 				pal = _drawtile_track_palette;
 			} else {
 				pal = dtss->pal;
@@ -1767,7 +1768,7 @@ default_waypoint:
 					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 					dtss->size_x, dtss->size_y,
 					dtss->size_z, ti->z + dtss->delta_z,
-					HASBIT(_transparent_opt, TO_BUILDINGS)
+					IsTransparencySet(TO_BUILDINGS)
 				);
 			} else {
 				AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y);

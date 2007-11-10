@@ -25,6 +25,7 @@
 #include "genworld.h"
 #include "bridge.h"
 #include "autoslope.h"
+#include "transparency.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
@@ -129,7 +130,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			AddSortableSpriteToDraw(
 				dtus->image, PAL_NONE, ti->x | dtus->subcoord_x, ti->y | dtus->subcoord_y,
 				dtus->width, dtus->height, dtus->z_size, ti->z,
-				HASBIT(_transparent_opt, TO_STRUCTURES)
+				IsTransparencySet(TO_STRUCTURES)
 			);
 			break;
 		}
@@ -140,7 +141,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			DrawGroundSprite(SPR_CONCRETE_GROUND, PAL_NONE);
 
-			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, HASBIT(_transparent_opt, TO_STRUCTURES));
+			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, IsTransparencySet(TO_STRUCTURES));
 			break;
 
 		case UNMOVABLE_OWNED_LAND:
@@ -172,7 +173,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 					dtss->size_x, dtss->size_y,
 					dtss->size_z, ti->z + dtss->delta_z,
-					HASBIT(_transparent_opt, TO_STRUCTURES)
+					IsTransparencySet(TO_STRUCTURES)
 				);
 			}
 			break;

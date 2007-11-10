@@ -30,6 +30,7 @@
 #include "newgrf.h"
 #include "newgrf_canal.h"
 #include "misc/autoptr.hpp"
+#include "transparency.h"
 
 /** Array for the shore sprites */
 static const SpriteID _water_shore_sprites[] = {
@@ -449,7 +450,7 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 			ti->x + wdts->delta_x, ti->y + wdts->delta_y,
 			wdts->width, wdts->height,
 			wdts->unk, ti->z + wdts->delta_z,
-			HASBIT(_transparent_opt, TO_BUILDINGS));
+			IsTransparencySet(TO_BUILDINGS));
 	}
 }
 

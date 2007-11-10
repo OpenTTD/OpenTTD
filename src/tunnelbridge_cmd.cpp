@@ -33,6 +33,7 @@
 #include "date.h"
 #include "newgrf_sound.h"
 #include "autoslope.h"
+#include "transparency.h"
 
 #include "table/bridge_land.h"
 
@@ -858,12 +859,12 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 		for (int cur_z = z_bridge; cur_z >= front_height || cur_z >= back_height; cur_z -= TILE_HEIGHT) {
 			/* Draw front facing pillar */
 			if (cur_z >= front_height) {
-				AddSortableSpriteToDraw(image, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - 5, cur_z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, -5);
+				AddSortableSpriteToDraw(image, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - 5, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -5);
 			}
 
 			/* Draw back facing pillar, but not the highest part directly under the bridge-floor */
 			if (drawfarpillar && cur_z >= back_height && cur_z < z_bridge - TILE_HEIGHT) {
-				AddSortableSpriteToDraw(image, psid->pal, x_back, y_back, w, h, BB_HEIGHT_UNDER_BRIDGE - 5, cur_z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, -5);
+				AddSortableSpriteToDraw(image, psid->pal, x_back, y_back, w, h, BB_HEIGHT_UNDER_BRIDGE - 5, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -5);
 			}
 		}
 	}
@@ -897,16 +898,16 @@ static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay)
 
 	/* The sprites under the vehicles are drawn as SpriteCombine. StartSpriteCombine() has already been called
 	 * The bounding boxes here are the same as for bridge front/roof */
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES));
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, IsTransparencySet(TO_BRIDGES));
 
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + back_offsets[offset],  PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, HASBIT(_transparent_opt, TO_BUILDINGS));
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + back_offsets[offset],  PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, IsTransparencySet(TO_BUILDINGS));
 
 	/* Start a new SpriteCombine for the front part */
 	EndSpriteCombine();
 	StartSpriteCombine();
 
 	/* For sloped sprites the bounding box needs to be higher, as the pylons stop on a higher point */
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + front_offsets[offset], PAL_NONE, x, y, size_x[offset] + front_bb_offset_x[offset], size_y[offset] + front_bb_offset_y[offset], 0x28, z, HASBIT(_transparent_opt, TO_BUILDINGS), front_bb_offset_x[offset], front_bb_offset_y[offset]);
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + front_offsets[offset], PAL_NONE, x, y, size_x[offset] + front_bb_offset_x[offset], size_y[offset] + front_bb_offset_y[offset], 0x28, z, IsTransparencySet(TO_BUILDINGS), front_bb_offset_x[offset], front_bb_offset_y[offset]);
 }
 
 /**
@@ -969,7 +970,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 				catenary = true;
 				StartSpriteCombine();
-				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
+				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, IsTransparencySet(TO_BUILDINGS), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
 			}
 		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
 			DrawCatenary(ti);
@@ -1028,7 +1029,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		 * it doesn't disappear behind it
 		 */
 		AddSortableSpriteToDraw(
-			psid->sprite, psid->pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 0 : 8, ti->z, HASBIT(_transparent_opt, TO_BRIDGES)
+			psid->sprite, psid->pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 0 : 8, ti->z, IsTransparencySet(TO_BRIDGES)
 		);
 
 		if (GetBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
@@ -1156,9 +1157,9 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 	/* Draw floor and far part of bridge*/
 	if (axis == AXIS_X) {
-		AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 16, 1, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, BRIDGE_Z_START);
+		AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 16, 1, 0x28, z, IsTransparencySet(TO_BRIDGES), 0, 0, BRIDGE_Z_START);
 	} else {
-		AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 1, 16, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 0, BRIDGE_Z_START);
+		AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 1, 16, 0x28, z, IsTransparencySet(TO_BRIDGES), 0, 0, BRIDGE_Z_START);
 	}
 
 	psid++;
@@ -1180,10 +1181,10 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	/* draw roof, the component of the bridge which is logically between the vehicle and the camera */
 	if (axis == AXIS_X) {
 		y += 12;
-		if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 16, 4, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES), 0, 3, BRIDGE_Z_START);
+		if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 16, 4, 0x28, z, IsTransparencySet(TO_BRIDGES), 0, 3, BRIDGE_Z_START);
 	} else {
 		x += 12;
-		if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 4, 16, 0x28, z, HASBIT(_transparent_opt, TO_BRIDGES), 3, 0, BRIDGE_Z_START);
+		if (psid->sprite & SPRITE_MASK) AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, 4, 16, 0x28, z, IsTransparencySet(TO_BRIDGES), 3, 0, BRIDGE_Z_START);
 	}
 
 	/* Draw TramFront as SpriteCombine */
@@ -1195,7 +1196,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 		if (psid->sprite != 0) {
 			SpriteID image = psid->sprite;
 			SpriteID pal   = psid->pal;
-			if (HASBIT(_transparent_opt, TO_BRIDGES)) {
+			if (IsTransparencySet(TO_BRIDGES)) {
 				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 				pal = PALETTE_TO_TRANSPARENT;
 			}

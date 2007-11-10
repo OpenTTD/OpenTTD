@@ -43,6 +43,7 @@
 #include "cargotype.h"
 #include "strings.h"
 #include "autoslope.h"
+#include "transparency.h"
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)
@@ -2138,7 +2139,7 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 
 		SpriteID pal;
-		if (!HASBIT(_transparent_opt, TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+		if (!IsTransparencySet(TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 			pal = palette;
 		} else {
 			pal = dtss->pal;
@@ -2150,10 +2151,10 @@ static void DrawTile_Station(TileInfo *ti)
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
 				dtss->size_z, ti->z + dtss->delta_z,
-				HASBIT(_transparent_opt, TO_BUILDINGS)
+				IsTransparencySet(TO_BUILDINGS)
 			);
 		} else {
-			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, HASBIT(_transparent_opt, TO_BUILDINGS));
+			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, IsTransparencySet(TO_BUILDINGS));
 		}
 	}
 }

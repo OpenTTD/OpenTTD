@@ -187,17 +187,6 @@ enum {
 	DO_WAYPOINTS          = 6,
 };
 
-enum {
-	TO_SIGNS,
-	TO_TREES,
-	TO_HOUSES,
-	TO_INDUSTRIES,
-	TO_BUILDINGS,
-	TO_BRIDGES,
-	TO_STRUCTURES,
-	TO_LOADING,
-};
-
 /* Landscape types */
 enum {
 	LT_TEMPERATE  = 0,

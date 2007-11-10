@@ -33,6 +33,7 @@
 #include "tunnel_map.h"
 #include "misc/autoptr.hpp"
 #include "autoslope.h"
+#include "transparency.h"
 
 #define M(x) (1 << (x))
 /* Level crossings may only be built on these slopes */
@@ -946,7 +947,7 @@ static bool AlwaysDrawUnpavedRoads(TileIndex tile, Roadside roadside)
 void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 {
 	/* Don't draw the catenary under a low bridge */
-	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !HASBIT(_transparent_opt, TO_BUILDINGS)) {
+	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_BUILDINGS)) {
 		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
 		if (height <= GetTileMaxZ(ti->tile) + TILE_HEIGHT) return;
@@ -963,8 +964,8 @@ void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 		front = SPR_TRAMWAY_BASE + _road_frontwire_sprites_1[tram];
 	}
 
-	AddSortableSpriteToDraw(back,  PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
-	AddSortableSpriteToDraw(front, PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, HASBIT(_transparent_opt, TO_BUILDINGS));
+	AddSortableSpriteToDraw(back,  PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, IsTransparencySet(TO_BUILDINGS));
+	AddSortableSpriteToDraw(front, PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, IsTransparencySet(TO_BUILDINGS));
 }
 
 /**
@@ -1120,7 +1121,7 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID image = dtss->image;
 				SpriteID pal;
 
-				if (!HASBIT(_transparent_opt, TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+				if (!IsTransparencySet(TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 					pal = palette;
 				} else {
 					pal = PAL_NONE;
@@ -1131,7 +1132,7 @@ static void DrawTile_Road(TileInfo *ti)
 					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 					dtss->size_x, dtss->size_y,
 					dtss->size_z, ti->z,
-					HASBIT(_transparent_opt, TO_BUILDINGS)
+					IsTransparencySet(TO_BUILDINGS)
 				);
 			}
 			break;

@@ -11,6 +11,9 @@
 #include "gfx.h"
 #include "sound.h"
 #include "variables.h"
+#include "transparency.h"
+
+TransparencyOptionBits _transparency_opt;
 
 enum TransparencyToolbarWidgets{
 	/* Widgets not toggled when pressing the X key */
@@ -27,16 +30,6 @@ enum TransparencyToolbarWidgets{
 	TTW_WIDGET_END,          ///< End of toggle buttons
 };
 
-/** Toggle the bits of the transparencies variable
- * when clicking on a widget, and play a sound
- * @param widget been clicked.
- */
-static void Transparent_Click(byte widget)
-{
-	TOGGLEBIT(_transparent_opt, widget);
-	SndPlayFx(SND_15_BEEP);
-}
-
 static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -44,14 +37,16 @@ static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 			/* must be sure that the widgets show the transparency variable changes
 			 * also when we use shortcuts */
 			for (uint i = TTW_WIDGET_SIGNS; i < TTW_WIDGET_END; i++) {
-				SetWindowWidgetLoweredState(w, i, HASBIT(_transparent_opt, i - TTW_WIDGET_SIGNS));
+				SetWindowWidgetLoweredState(w, i, IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_SIGNS)));
 			}
 			DrawWindowWidgets(w);
 			break;
 
 		case WE_CLICK:
 			if (e->we.click.widget >= TTW_WIDGET_SIGNS) {
-				Transparent_Click(e->we.click.widget - TTW_WIDGET_SIGNS);
+				/* toggle the bit of the transparencies variable when clicking on a widget, and play a sound */
+				ToggleTransparency((TransparencyOption)(e->we.click.widget - TTW_WIDGET_SIGNS));
+				SndPlayFx(SND_15_BEEP);
 				MarkWholeScreenDirty();
 			}
 			break;

@@ -290,7 +290,6 @@ VARDEF bool _do_autosave;
 VARDEF int _autosave_ctr;
 
 VARDEF byte _display_opt;
-VARDEF byte _transparent_opt;
 VARDEF int _caret_timer;
 VARDEF uint32 _news_display_opt;
 VARDEF bool _news_ticker_sound;

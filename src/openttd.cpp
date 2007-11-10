@@ -321,9 +321,6 @@ static void LoadIntroGame()
 {
 	_game_mode = GM_MENU;
 
-	/* Clear transparency options */
-	_transparent_opt = 0;
-
 	_opt_ptr = &_opt_newgame;
 	ResetGRFConfig(false);
 

@@ -43,6 +43,7 @@
 #include "misc/autoptr.hpp"
 #include "autoslope.h"
 #include "waypoint.h"
+#include "transparency.h"
 
 /* Initialize the town-pool */
 DEFINE_OLD_POOL_GENERIC(Town, Town)
@@ -183,10 +184,10 @@ static void DrawTile_Town(TileInfo *ti)
 			dcts->height,
 			dcts->dz,
 			ti->z,
-			HASBIT(_transparent_opt, TO_HOUSES)
+			IsTransparencySet(TO_HOUSES)
 		);
 
-		if (HASBIT(_transparent_opt, TO_HOUSES)) return;
+		if (IsTransparencySet(TO_HOUSES)) return;
 	}
 
 	{

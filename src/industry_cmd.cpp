@@ -38,6 +38,7 @@
 #include "newgrf_callbacks.h"
 #include "misc/autoptr.hpp"
 #include "autoslope.h"
+#include "transparency.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -310,9 +311,9 @@ static void DrawTile_Industry(TileInfo *ti)
 			dits->height,
 			dits->dz,
 			ti->z,
-			HASBIT(_transparent_opt, TO_INDUSTRIES));
+			IsTransparencySet(TO_INDUSTRIES));
 
-		if (HASBIT(_transparent_opt, TO_INDUSTRIES)) return;
+		if (IsTransparencySet(TO_INDUSTRIES)) return;
 	}
 
 	{

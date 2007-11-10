@@ -25,6 +25,7 @@
 #include "newgrf_town.h"
 #include "newgrf_sound.h"
 #include "newgrf_commons.h"
+#include "transparency.h"
 
 static BuildingCounts    _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
@@ -320,7 +321,7 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 
 		if (IS_CUSTOM_SPRITE(image)) image += stage;
 
-		if ((HASBIT(image, SPRITE_MODIFIER_OPAQUE) || !HASBIT(_transparent_opt, TO_HOUSES)) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+		if ((HASBIT(image, SPRITE_MODIFIER_OPAQUE) || !IsTransparencySet(TO_HOUSES)) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
 			if (pal == 0) {
 				const HouseSpec *hs = GetHouseSpecs(house_id);
 				if (HASBIT(hs->callback_mask, CBM_HOUSE_COLOUR)) {
@@ -343,10 +344,10 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
 				dtss->size_z, ti->z + dtss->delta_z,
-				HASBIT(_transparent_opt, TO_HOUSES)
+				IsTransparencySet(TO_HOUSES)
 			);
 		} else {
-			AddChildSpriteScreen(image, pal, (byte)dtss->delta_x, (byte)dtss->delta_y, HASBIT(_transparent_opt, TO_HOUSES));
+			AddChildSpriteScreen(image, pal, (byte)dtss->delta_x, (byte)dtss->delta_y, IsTransparencySet(TO_HOUSES));
 		}
 	}
 }

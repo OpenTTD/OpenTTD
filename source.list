@@ -194,6 +194,7 @@ tile.h
 timetable.h
 town.h
 train.h
+transparency.h
 transparency_gui.h
 variables.h
 vehicle.h

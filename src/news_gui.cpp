@@ -17,6 +17,7 @@
 #include "variables.h"
 #include "date.h"
 #include "string.h"
+#include "transparency.h"
 
 /** @file news_gui.cpp
  *
@@ -137,10 +138,10 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 						ni->string_id, w->width - 4);
 				} else {
 					/* Back up transparency options to draw news view */
-					byte to_backup = _transparent_opt;
-					_transparent_opt = 0;
+					TransparencyOptionBits to_backup = _transparency_opt;
+					_transparency_opt = 0;
 					DrawWindowViewport(w);
-					_transparent_opt = to_backup;
+					_transparency_opt = to_backup;
 
 					/* Shade the viewport into gray, or color*/
 					vp = w->viewport;

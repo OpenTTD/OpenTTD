@@ -22,6 +22,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "sprite.h"
+#include "transparency.h"
 
 /**
  * Based on newhouses equivalent, but adapted for newindustries
@@ -195,10 +196,10 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
 				dtss->size_z, ti->z + dtss->delta_z,
-				!HASBIT(image, SPRITE_MODIFIER_OPAQUE) && HASBIT(_transparent_opt, TO_INDUSTRIES)
+				!HASBIT(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_INDUSTRIES)
 			);
 		} else {
-			AddChildSpriteScreen(image, pal, (byte)dtss->delta_x, (byte)dtss->delta_y, HASBIT(_transparent_opt, TO_INDUSTRIES));
+			AddChildSpriteScreen(image, pal, (byte)dtss->delta_x, (byte)dtss->delta_y, IsTransparencySet(TO_INDUSTRIES));
 		}
 	}
 }

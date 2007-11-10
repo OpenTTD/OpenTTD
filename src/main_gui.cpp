@@ -47,6 +47,7 @@
 #include "network/network_server.h"
 #include "network/network_gui.h"
 #include "industry.h"
+#include "transparency.h"
 
 static int _rename_id = 1;
 static int _rename_what = -1;
@@ -156,22 +157,6 @@ static void ToolbarFastForwardClick(Window *w)
 }
 
 
-/** Toggle all transparency options, except for signs */
-static void ToggleTransparency()
-{
-	static byte trans_opt = ~0;
-
-	if (GB(_transparent_opt, 1, 7) == 0) {
-		SB(_transparent_opt, 1, 7, GB(trans_opt, 1, 7));
-	} else {
-		trans_opt = _transparent_opt;
-		SB(_transparent_opt, 1, 7, 0);
-	}
-
-	MarkWholeScreenDirty();
-}
-
-
 static void MenuClickSettings(int index)
 {
 	switch (index) {
@@ -187,8 +172,11 @@ static void MenuClickSettings(int index)
 		case  9: TOGGLEBIT(_display_opt, DO_WAYPOINTS);          break;
 		case 10: TOGGLEBIT(_display_opt, DO_FULL_ANIMATION);     break;
 		case 11: TOGGLEBIT(_display_opt, DO_FULL_DETAIL);        break;
-		case 12: ToggleTransparency(); break;
-		case 13: TOGGLEBIT(_transparent_opt, TO_SIGNS); break;
+		case 12:
+			ToggleTransparency(TO_TREES);
+			ToggleTransparency(TO_HOUSES);
+			break;
+		case 13: ToggleTransparency(TO_SIGNS);                   break;
 	}
 	MarkWholeScreenDirty();
 }
@@ -988,8 +976,8 @@ static void ToolbarOptionsClick(Window *w)
 	if (HASBIT(_display_opt, DO_WAYPOINTS))          SETBIT(x,  9);
 	if (HASBIT(_display_opt, DO_FULL_ANIMATION))     SETBIT(x, 10);
 	if (HASBIT(_display_opt, DO_FULL_DETAIL))        SETBIT(x, 11);
-	if (GB(_transparent_opt, 1, 7) != 0)      SETBIT(x, 12);
-	if (HASBIT(_transparent_opt, TO_SIGNS))   SETBIT(x, 13);
+	if (IsTransparencySet(TO_HOUSES) && IsTransparencySet(TO_TREES)) SETBIT(x, 12);
+	if (IsTransparencySet(TO_SIGNS))                     SETBIT(x, 13);
 	WP(w,menu_d).checked_items = x;
 }
 
@@ -2259,8 +2247,9 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 			case '5' | WKC_CTRL:
 			case '6' | WKC_CTRL:
 			case '7' | WKC_CTRL:
+			case '8' | WKC_CTRL:
 				/* Transparency toggle hot keys */
-				TOGGLEBIT(_transparent_opt, e->we.keypress.keycode - ('1' | WKC_CTRL));
+				ToggleTransparency((TransparencyOption)(e->we.keypress.keycode - ('1' | WKC_CTRL)));
 				MarkWholeScreenDirty();
 				break;
 
@@ -2269,7 +2258,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				break;
 
 			case 'X':
-				ToggleTransparency();
+				ResetRestoreAllTransparency();
 				break;
 
 #ifdef ENABLE_NETWORK
