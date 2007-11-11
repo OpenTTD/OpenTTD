@@ -213,7 +213,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	if (HASBIT(p2, 15)) {
 		railtype = INVALID_RAILTYPE; // road bridge
 		roadtypes = (RoadTypes)GB(p2, 8, 3);
-		if (!AreValidRoadTypes(roadtypes)) return CMD_ERROR;
+		if (!AreValidRoadTypes(roadtypes) || !HasRoadTypesAvail(_current_player, roadtypes)) return CMD_ERROR;
 	} else {
 		if (!ValParamRailtype(GB(p2, 8, 8))) return CMD_ERROR;
 		railtype = (RailType)GB(p2, 8, 8);
@@ -464,8 +464,9 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	_build_tunnel_endtile = 0;
 	if (!HASBIT(p1, 9)) {
 		if (!ValParamRailtype(p1)) return CMD_ERROR;
-	} else if (!AreValidRoadTypes((RoadTypes)GB(p1, 0, 3))) {
-		return CMD_ERROR;
+	} else {
+		const RoadTypes rts = (RoadTypes)GB(p1, 0, 3);
+		if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_player, rts)) return CMD_ERROR;
 	}
 
 	start_tileh = GetTileSlope(start_tile, &start_z);

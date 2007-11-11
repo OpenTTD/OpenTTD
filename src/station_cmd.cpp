@@ -1318,7 +1318,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool town_owned_road  = build_over_road && IsTileOwner(tile, OWNER_TOWN);
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
 
-	if (rts == ROADTYPES_NONE || HASBIT(rts, ROADTYPE_HWAY)) return CMD_ERROR;
+	if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_player, rts)) return CMD_ERROR;
 
 	/* Trams only have drive through stops */
 	if (!is_drive_through && HASBIT(rts, ROADTYPE_TRAM)) return CMD_ERROR;

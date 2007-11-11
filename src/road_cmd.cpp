@@ -405,7 +405,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	RoadBits pieces = Extract<RoadBits, 0>(p1);
 
 	RoadType rt = (RoadType)GB(p1, 4, 2);
-	if (!IsValidRoadType(rt)) return CMD_ERROR;
+	if (!IsValidRoadType(rt) || !ValParamRoadType(rt)) return CMD_ERROR;
 
 	DisallowedRoadDirections toggle_drd = (DisallowedRoadDirections)GB(p1, 6, 2);
 
@@ -636,7 +636,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 
 	start_tile = p1;
 	RoadType rt = (RoadType)GB(p2, 3, 2);
-	if (!IsValidRoadType(rt)) return CMD_ERROR;
+	if (!IsValidRoadType(rt) || !ValParamRoadType(rt)) return CMD_ERROR;
 
 	/* Only drag in X or Y direction dictated by the direction variable */
 	if (!HASBIT(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
@@ -786,7 +786,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	DiagDirection dir = Extract<DiagDirection, 0>(p1);
 	RoadType rt = (RoadType)GB(p1, 2, 2);
 
-	if (!IsValidRoadType(rt)) return CMD_ERROR;
+	if (!IsValidRoadType(rt) || !ValParamRoadType(rt)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT && (

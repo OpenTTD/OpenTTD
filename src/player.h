@@ -8,8 +8,11 @@
 #include "oldpool.h"
 #include "aystar.h"
 #include "rail.h"
+#include "road.h"
 #include "engine.h"
 #include "livery.h"
+#include "genworld.h"
+#include "gfx.h"
 
 struct PlayerEconomyEntry {
 	Money income;
@@ -253,10 +256,32 @@ static inline bool IsValidPlayer(PlayerID pi)
 byte GetPlayerRailtypes(PlayerID p);
 byte GetPlayerRoadtypes(PlayerID p);
 
-/** Finds out if a Player has a certain railtype available */
-static inline bool HasRailtypeAvail(const Player *p, RailType Railtype)
+/** Finds out if a Player has a certain railtype available
+ * @param p Player in question
+ * @param Railtype requested RailType
+ * @return true if player has requested RailType available
+ */
+static inline bool HasRailtypeAvail(const Player *p, const RailType Railtype)
 {
 	return HASBIT(p->avail_railtypes, Railtype);
+}
+
+/** Finds out, whether given player has all given RoadTypes available
+ * @param PlayerID ID of player
+ * @param rts RoadTypes to test
+ * @return true if player has all requested RoadTypes available
+ */
+static inline bool HasRoadTypesAvail(const PlayerID p, const RoadTypes rts)
+{
+	RoadTypes avail_roadtypes;
+
+	if (p == OWNER_TOWN || _game_mode == GM_EDITOR || IsGeneratingWorld()) {
+		avail_roadtypes = ROADTYPES_ROAD;
+	} else {
+		if (!IsValidPlayer(p)) return false;
+		avail_roadtypes = (RoadTypes)GetPlayer(p)->avail_roadtypes | ROADTYPES_ROAD; // road is available for always for everybody
+	}
+	return (rts & ~avail_roadtypes) == 0;
 }
 
 static inline bool IsHumanPlayer(PlayerID pi)
@@ -272,7 +297,10 @@ static inline bool IsInteractivePlayer(PlayerID pi)
 void DrawPlayerIcon(PlayerID p, int x, int y);
 
 /* Validate functions for rail building */
-static inline bool ValParamRailtype(uint32 rail) { return HASBIT(GetPlayer(_current_player)->avail_railtypes, rail);}
+static inline bool ValParamRailtype(const uint32 rail) { return HASBIT(GetPlayer(_current_player)->avail_railtypes, rail);}
+
+/* Validate functions for road building */
+static inline bool ValParamRoadType(const RoadType rt) { return HasRoadTypesAvail(_current_player, RoadTypeToRoadTypes(rt));}
 
 /** Returns the "best" railtype a player can build.
  * As the AI doesn't know what the BEST one is, we have our own priority list
