@@ -843,11 +843,12 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 /** Retrieve the SpriteGroup for the specified vehicle.
  * If the vehicle is not specified, the purchase list group for the engine is
  * chosen. For trains, an additional engine override lookup is performed.
- * @param engine Engine type of the vehicle.
- * @param v      The vehicle itself.
- * @returns      The selected SpriteGroup for the vehicle.
+ * @param engine    Engine type of the vehicle.
+ * @param v         The vehicle itself.
+ * @param use_cache Use cached override
+ * @returns         The selected SpriteGroup for the vehicle.
  */
-static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *v)
+static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *v, bool use_cache = true)
 {
 	const SpriteGroup *group;
 	CargoID cargo;
@@ -858,7 +859,10 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 		cargo = v->cargo_type;
 
 		if (v->type == VEH_TRAIN) {
-			group = v->u.rail.cached_override;
+			/* We always use cached value, except for callbacks because the override spriteset
+			 * to use may be different than the one cached. It happens for callback 0x15 (refit engine),
+			 * as v->cargo_type is temporary changed to the new type */
+			group = use_cache ? v->u.rail.cached_override : GetWagonOverrideSpriteSet(v->engine_type, v->cargo_type, v->u.rail.first_engine);
 			if (group != NULL) return group;
 		}
 	}
@@ -942,7 +946,7 @@ uint16 GetVehicleCallback(CallbackID callback, uint32 param1, uint32 param2, Eng
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = Resolve(GetVehicleSpriteGroup(engine, v), &object);
+	group = Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
@@ -971,7 +975,7 @@ uint16 GetVehicleCallbackParent(CallbackID callback, uint32 param1, uint32 param
 
 	object.u.vehicle.parent = parent;
 
-	group = Resolve(GetVehicleSpriteGroup(engine, v), &object);
+	group = Resolve(GetVehicleSpriteGroup(engine, v, false), &object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
