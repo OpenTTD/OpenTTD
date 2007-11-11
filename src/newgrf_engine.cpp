@@ -1011,6 +1011,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	object.trigger = trigger;
 
 	group = Resolve(GetVehicleSpriteGroup(v->engine_type, v), &object);
+	if (group == NULL) return;
 
 	new_random_bits = Random();
 	v->random_bits &= ~object.reseed;

@@ -490,11 +490,8 @@ bool NewHouseTileLoop(TileIndex tile)
 		return true;
 	}
 
-	/* @todo: Magic with triggers goes here.  Got to implement that, one day. ..
-	 * Process randomizing of tiles following specs.
-	 * Once done, redraw the house
-	 * MarkTileDirtyByTile(tile);
-	 */
+	TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP);
+	TriggerHouse(tile, HOUSE_TRIGGER_TILE_LOOP_TOP);
 
 	if (HASBIT(hs->callback_mask, CBM_HOUSE_ANIMATION_START_STOP)) {
 		/* If this house is marked as having a synchronised callback, all the
@@ -524,4 +521,48 @@ bool NewHouseTileLoop(TileIndex tile)
 
 	SetHouseProcessingTime(tile, hs->processing_time);
 	return true;
+}
+
+static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_random, bool first)
+{
+	ResolverObject object;
+
+	/* We can't trigger a non-existent building... */
+	assert(IsTileType(tile, MP_HOUSE));
+
+	HouseID hid = GetHouseType(tile);
+	HouseSpec *hs = GetHouseSpecs(hid);
+
+	NewHouseResolver(&object, hid, tile, GetTownByTile(tile));
+
+	object.callback = CBID_RANDOM_TRIGGER;
+	object.trigger = trigger;
+
+	const SpriteGroup *group = Resolve(hs->spritegroup, &object);
+	if (group == NULL) return;
+
+	byte new_random_bits = Random();
+	byte random_bits = GetHouseRandomBits(tile);
+	random_bits &= ~object.reseed;
+	random_bits |= (first ? new_random_bits : base_random) & object.reseed;
+	SetHouseRandomBits(tile, random_bits);
+
+	switch (trigger) {
+		case HOUSE_TRIGGER_TILE_LOOP:
+			/* Random value already set. */
+			break;
+
+		case HOUSE_TRIGGER_TILE_LOOP_TOP:
+			if (!first) break;
+			/* Random value of first tile already set. */
+			if (hs->building_flags & BUILDING_2_TILES_Y)   DoTriggerHouse(TILE_ADDXY(tile, 0, 1), trigger, false, random_bits);
+			if (hs->building_flags & BUILDING_2_TILES_X)   DoTriggerHouse(TILE_ADDXY(tile, 1, 0), trigger, false, random_bits);
+			if (hs->building_flags & BUILDING_HAS_4_TILES) DoTriggerHouse(TILE_ADDXY(tile, 1, 1), trigger, false, random_bits);
+			break;
+	}
+}
+
+void TriggerHouse(TileIndex t, HouseTrigger trigger)
+{
+	DoTriggerHouse(t, trigger, true, 0);
 }

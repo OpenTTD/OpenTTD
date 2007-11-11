@@ -300,6 +300,19 @@ static inline Year GetHouseConstructionYear(TileIndex t)
 }
 
 /**
+ * Set the random bits for this house.
+ * This is required for newgrf house
+ * @param t      the tile of this house
+ * @param random the new random bits
+ * @pre IsTileType(t, MP_HOUSE)
+ */
+static inline void SetHouseRandomBits(TileIndex t, byte random)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	_m[t].m1 = random;
+}
+
+/**
  * Get the random bits for this house.
  * This is required for newgrf house
  * @param t the tile of this house

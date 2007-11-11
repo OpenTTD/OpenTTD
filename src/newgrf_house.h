@@ -45,4 +45,15 @@ bool CanDeleteHouse(TileIndex tile);
 
 bool NewHouseTileLoop(TileIndex tile);
 
+enum HouseTrigger {
+	/* The tile of the house has been triggered during the tileloop. */
+	HOUSE_TRIGGER_TILE_LOOP     = 0x01,
+	/*
+	 * The top tile of a (multitile) building has been triggered during and all
+	 * the tileloop other tiles of the same building get the same random value.
+	 */
+	HOUSE_TRIGGER_TILE_LOOP_TOP = 0x02,
+};
+void TriggerHouse(TileIndex t, HouseTrigger trigger);
+
 #endif /* NEWGRF_HOUSE_H */
