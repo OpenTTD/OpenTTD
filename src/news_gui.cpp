@@ -652,7 +652,7 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 	char *dest;
 	StringID str;
 
-	if (ni->display_mode == 3) {
+	if (ni->display_mode == NM_CALLBACK) {
 		str = _get_news_string_callback[ni->callback](ni);
 	} else {
 		CopyInDParam(0, ni->params, lengthof(ni->params));

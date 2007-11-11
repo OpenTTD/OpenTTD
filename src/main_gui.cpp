@@ -2008,7 +2008,7 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 	int x;
 	char buffer[256];
 
-	if (ni->display_mode == 3) {
+	if (ni->display_mode == NM_CALLBACK) {
 		str = _get_news_string_callback[ni->callback](ni);
 	} else {
 		CopyInDParam(0, ni->params, lengthof(ni->params));
