@@ -72,7 +72,7 @@ static const AirportMovingData _airport_moving_data_commuter[37] = {
 	{  145,   54, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 16 Fly to landing position in air
 	{   73,   54, AMED_NOSPDCLAMP | AMED_LAND,     {DIR_N} }, // 17 Going down for land
 	{    3,   54, AMED_NOSPDCLAMP | AMED_BRAKE,    {DIR_N} }, // 18 Just landed, brake until end of runway
-	{   12,   54, 0,                               {DIR_NW} }, // 19 Just landed, turn around and taxi
+	{   12,   54, AMED_SLOWTURN,                   {DIR_NW} }, // 19 Just landed, turn around and taxi
 	{    8,   32, 0,                               {DIR_NW} }, // 20 Taxi from runway to crossing
 	{  -31,  149, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 21 Fly around waiting for a landing spot (north-east)
 	{    1,    6, AMED_NOSPDCLAMP | AMED_SLOWTURN, {DIR_N} }, // 22 Fly around waiting for a landing spot (north-west)
