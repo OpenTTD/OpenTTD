@@ -169,6 +169,7 @@ static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx)
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	SetIndustryGfx(t, gfx);
+	_me[t].m7 = Random();
 }
 
 /**

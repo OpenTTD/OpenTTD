@@ -252,7 +252,7 @@ static inline const SpriteGroup *ResolveRandom(const SpriteGroup *group, Resolve
 		/* Handle triggers */
 		/* Magic code that may or may not do the right things... */
 		byte waiting_triggers = object->GetTriggers(object);
-		byte match = group->g.random.triggers & (waiting_triggers | object->trigger) || group->g.random.triggers == 0;
+		byte match = group->g.random.triggers & (waiting_triggers | object->trigger);
 		bool res;
 
 		res = (group->g.random.cmp_mode == RSG_CMP_ANY) ?

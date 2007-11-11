@@ -1437,8 +1437,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->owner = owner;
 
 	r = Random();
-	i->random_color = GB(r, 8, 4);
-	i->counter = GB(r, 0, 12);
+	i->random_color = GB(r, 0, 4);
+	i->counter = GB(r, 4, 12);
+	i->random = GB(r, 16, 16);
 	i->produced_cargo_waiting[0] = 0;
 	i->produced_cargo_waiting[1] = 0;
 	i->incoming_cargo_waiting[0] = 0;
@@ -1512,7 +1513,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 			if (_generating_world) {
 				SetIndustryConstructionCounter(cur_tile, 3);
 				SetIndustryConstructionStage(cur_tile, 2);
-			} else if (it->gfx >= NEW_INDUSTRYTILEOFFSET) {
+			}
+			if (it->gfx >= NEW_INDUSTRYTILEOFFSET) {
 				/* New industry */
 				const IndustryTileSpec *its = GetIndustryTileSpec(it->gfx);
 				if (its->animation_info != 0xFFFF) AddAnimatedTile(cur_tile);
