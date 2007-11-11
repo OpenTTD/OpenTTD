@@ -1335,7 +1335,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change p
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Welcome to the new AI under development. If you encounter problems, take a screenshot and post it in the forum.
 TEMP_AI_ACTIVATED                                               :{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Warning: implementation is still experimental (using new AI). Please report any problems to truelight@openttd.org.
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Warning: implementation is still experimental (using new AI).
 
 ############ network gui strings
 

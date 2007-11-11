@@ -295,10 +295,10 @@ The OpenTTD team (in alphabetical order):
   Peter Nelson (peter1138)       - Spiritual descendant from newgrf gods
   Remko Bijker (Rubidium)        - THE desync hunter
   Christoph Mallon (Tron)        - Programmer, code correctness police
-  Patric Stout (TrueLight)       - Programmer, network guru, SVN-,  MS-, and website host
 
 Retired Developers:
   Dominik Scherer (dominik81)    - Lead programmer, GUI expert (0.3.0 - 0.3.6)
+  Patric Stout (TrueLight)       - Programmer, webhoster (0.3 - pre0.6)
   Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
   Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
 
