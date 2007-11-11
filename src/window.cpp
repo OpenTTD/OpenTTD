@@ -1466,16 +1466,16 @@ static bool HandleViewportScroll()
 
 	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
+	if (!(_right_button_down || scrollwheel_scrolling) || w == NULL) {
+		_cursor.fix_at = false;
+		_scrolling_viewport = false;
+		return true;
+	}
+
 	if (WP(w, vp_d).follow_vehicle != INVALID_VEHICLE && w == FindWindowById(WC_MAIN_WINDOW, 0)) {
 		/* If the main window is following a vehicle, then first let go of it! */
 		const Vehicle *veh = GetVehicle(WP(w, vp_d).follow_vehicle);
 		ScrollMainWindowTo(veh->x_pos, veh->y_pos, true); /* This also resets follow_vehicle */
-		return true;
-	}
-
-	if (!(_right_button_down || scrollwheel_scrolling) || w == NULL) {
-		_cursor.fix_at = false;
-		_scrolling_viewport = false;
 		return true;
 	}
 
