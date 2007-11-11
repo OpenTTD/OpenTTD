@@ -643,9 +643,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
-		/* New industry */
-		const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
-		if (its->animation_info != 0xFFFF) AddAnimatedTile(tile);
+		/* New industries are already animated on construction. */
 		return;
 	}
 
@@ -1507,9 +1505,14 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 			DoCommand(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
 			MakeIndustry(cur_tile, i->index, it->gfx);
+
 			if (_generating_world) {
 				SetIndustryConstructionCounter(cur_tile, 3);
 				SetIndustryConstructionStage(cur_tile, 2);
+			} else if (it->gfx >= NEW_INDUSTRYTILEOFFSET) {
+				/* New industry */
+				const IndustryTileSpec *its = GetIndustryTileSpec(it->gfx);
+				if (its->animation_info != 0xFFFF) AddAnimatedTile(cur_tile);
 			}
 		}
 	} while ((++it)->ti.x != -0x80);
