@@ -28,6 +28,7 @@
 #include "window.h"
 #include "player_face.h"
 #include "group.h"
+#include "settings.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a
@@ -489,9 +490,9 @@ Player *DoStartupNewPlayer(bool is_ai)
 	/* Engine renewal settings */
 	p->engine_renew_list = NULL;
 	p->renew_keep_length = false;
-	p->engine_renew = false;
-	p->engine_renew_months = -6;
-	p->engine_renew_money = 100000;
+	p->engine_renew = _patches_newgame.autorenew;
+	p->engine_renew_months = _patches_newgame.autorenew_months;
+	p->engine_renew_money = _patches_newgame.autorenew_money;
 
 	GeneratePresidentName(p);
 
