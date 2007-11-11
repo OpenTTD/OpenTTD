@@ -42,15 +42,15 @@ uint GetVehicleProperty(const Vehicle *v, uint8 property, uint orig_value);
 uint GetEngineProperty(EngineID engine, uint8 property, uint orig_value);
 
 enum VehicleTrigger {
-	VEHICLE_TRIGGER_NEW_CARGO     = 1,
+	VEHICLE_TRIGGER_NEW_CARGO     = 0x01,
 	/* Externally triggered only for the first vehicle in chain */
-	VEHICLE_TRIGGER_DEPOT         = 2,
+	VEHICLE_TRIGGER_DEPOT         = 0x02,
 	/* Externally triggered only for the first vehicle in chain, only if whole chain is empty */
-	VEHICLE_TRIGGER_EMPTY         = 4,
+	VEHICLE_TRIGGER_EMPTY         = 0x04,
 	/* Not triggered externally (called for the whole chain if we got NEW_CARGO) */
-	VEHICLE_TRIGGER_ANY_NEW_CARGO = 8,
+	VEHICLE_TRIGGER_ANY_NEW_CARGO = 0x08,
 	/* Externally triggered for each vehicle in chain */
-	VEHICLE_TRIGGER_CALLBACK_32   = 10,
+	VEHICLE_TRIGGER_CALLBACK_32   = 0x10,
 };
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
