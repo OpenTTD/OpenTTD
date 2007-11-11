@@ -119,14 +119,14 @@ static uint32 IndustryTileGetRandomBits(const ResolverObject *object)
 {
 	const TileIndex tile = object->u.industry.tile;
 	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return 0;
-	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryRandomBits(tile) : 0; //GetIndustryByTile(tile)->random_bits;
+	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryRandomBits(tile) : GetIndustryByTile(tile)->random;
 }
 
 static uint32 IndustryTileGetTriggers(const ResolverObject *object)
 {
 	const TileIndex tile = object->u.industry.tile;
 	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return 0;
-	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryTriggers(tile) : 0; //GetIndustryByTile(tile)->triggers;
+	return (object->scope == VSG_SCOPE_SELF) ? GetIndustryTriggers(tile) : GetIndustryByTile(tile)->random_triggers;
 }
 
 static void IndustryTileSetTriggers(const ResolverObject *object, int triggers)
@@ -134,10 +134,10 @@ static void IndustryTileSetTriggers(const ResolverObject *object, int triggers)
 	const TileIndex tile = object->u.industry.tile;
 	if (tile == INVALID_TILE || !IsTileType(tile, MP_INDUSTRY)) return;
 
-	if (object->scope != VSG_SCOPE_SELF) {
+	if (object->scope == VSG_SCOPE_SELF) {
 		SetIndustryTriggers(tile, triggers);
 	} else {
-		//GetIndustryByTile(tile)->triggers = triggers;
+		GetIndustryByTile(tile)->random_triggers = triggers;
 	}
 }
 
@@ -384,4 +384,44 @@ bool StartStopIndustryTileAnimation(const Industry *ind, IndustryAnimationTrigge
 	END_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
 
 	return ret;
+}
+
+static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, Industry *ind)
+{
+	ResolverObject object;
+
+	IndustryGfx gfx = GetIndustryGfx(tile);
+	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
+
+	NewIndustryTileResolver(&object, gfx, tile, ind);
+
+	object.callback = CBID_RANDOM_TRIGGER;
+	object.trigger = trigger;
+
+	const SpriteGroup *group = Resolve(itspec->grf_prop.spritegroup, &object);
+	if (group == NULL) return;
+
+	byte new_random_bits = Random();
+	byte random_bits = GetIndustryRandomBits(tile);
+	random_bits &= ~object.reseed;
+	random_bits |= new_random_bits & object.reseed;
+	SetIndustryRandomBits(tile, random_bits);
+}
+
+void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
+{
+	DoTriggerIndustryTile(tile, trigger, GetIndustryByTile(tile));
+}
+
+extern void DoTriggerIndustry(Industry *ind, IndustryTileTrigger trigger);
+
+void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
+{
+	BEGIN_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
+		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == ind->index) {
+			DoTriggerIndustryTile(tile, trigger, ind);
+		}
+	END_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
+
+	DoTriggerIndustry(ind, trigger);
 }

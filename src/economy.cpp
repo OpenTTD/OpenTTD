@@ -1256,6 +1256,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 			best->produced_cargo_waiting[1] = min(best->produced_cargo_waiting[1] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][1] / 256), 0xFFFF);
 		}
 
+		TriggerIndustry(best, INDUSTRY_TRIGGER_RECEIVED_CARGO);
 		StartStopIndustryTileAnimation(best, IAT_INDUSTRY_RECEIVED_CARGO);
 	}
 }

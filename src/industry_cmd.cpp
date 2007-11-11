@@ -701,6 +701,8 @@ static void TileLoop_Industry(TileIndex tile)
 	IndustryGfx newgfx;
 	IndustryGfx gfx;
 
+	TriggerIndustryTile(tile, INDTILE_TRIGGER_TILE_LOOP);
+
 	if (!IsIndustryCompleted(tile)) {
 		MakeIndustryTileBigger(tile);
 		return;
@@ -1042,6 +1044,7 @@ void OnTick_Industry()
 	if (_game_mode == GM_EDITOR) return;
 
 	FOR_ALL_INDUSTRIES(i) {
+		TriggerIndustry(i, INDUSTRY_TRIGGER_INDUSTRY_TICK);
 		StartStopIndustryTileAnimation(i, IAT_INDUSTRY_TICK);
 		ProduceIndustryGoods(i);
 	}
@@ -2136,6 +2139,9 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, selected_layout,            SLE_UINT8,                 73, SL_MAX_VERSION),
 
 	SLE_CONDARRX(cpp_offsetof(Industry, psa) + cpp_offsetof(Industry::PersistentStorage, storage), SLE_UINT32, 16, 76, SL_MAX_VERSION),
+
+	SLE_CONDVAR(Industry, random_triggers,            SLE_UINT8,                 82, SL_MAX_VERSION),
+	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                82, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 32 bytes) */
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),

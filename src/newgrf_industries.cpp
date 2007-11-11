@@ -16,6 +16,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_industries.h"
+#include "newgrf_industrytiles.h"
 #include "newgrf_commons.h"
 #include "newgrf_text.h"
 #include "newgrf_town.h"
@@ -338,18 +339,18 @@ static const SpriteGroup *IndustryResolveReal(const ResolverObject *object, cons
 
 static uint32 IndustryGetRandomBits(const ResolverObject *object)
 {
-	return object->u.industry.ind == NULL ? 0 : 0; //object->u.industry.ind->random_bits;
+	return object->u.industry.ind == NULL ? 0 : object->u.industry.ind->random;
 }
 
 static uint32 IndustryGetTriggers(const ResolverObject *object)
 {
-	return object->u.industry.ind == NULL ? 0 : 0; //object->u.industry.ind->triggers;
+	return object->u.industry.ind == NULL ? 0 : object->u.industry.ind->random_triggers;
 }
 
 static void IndustrySetTriggers(const ResolverObject *object, int triggers)
 {
 	if (object->u.industry.ind == NULL) return;
-	//object->u.industry.ind->triggers = triggers;
+	object->u.industry.ind->random_triggers = triggers;
 }
 
 static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *indus)
@@ -527,4 +528,20 @@ void IndustryProductionCallback(Industry *ind, int reason)
 	}
 
 	InvalidateWindow(WC_INDUSTRY_VIEW, ind->index);
+}
+
+void DoTriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
+{
+	ResolverObject object;
+
+	NewIndustryResolver(&object, ind->xy, ind);
+	object.callback = CBID_RANDOM_TRIGGER;
+	object.trigger = trigger;
+
+	const SpriteGroup *group = Resolve(GetIndustrySpec(ind->type)->grf_prop.spritegroup, &object);
+	if (group == NULL) return;
+
+	byte new_random_bits = Random();
+	ind->random &= ~object.reseed;
+	ind->random |= new_random_bits & object.reseed;
 }

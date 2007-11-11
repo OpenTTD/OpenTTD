@@ -29,7 +29,7 @@
 #include "strings.h"
 #include <list>
 
-extern const uint16 SAVEGAME_VERSION = 81;
+extern const uint16 SAVEGAME_VERSION = 82;
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 

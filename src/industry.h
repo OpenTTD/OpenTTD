@@ -130,6 +130,9 @@ struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
 	Date last_cargo_accepted_at;        ///< Last day cargo was accepted by this industry
 	byte selected_layout;               ///< Which tile layout was used when creating the industry
 
+	byte random_triggers;               ///< Triggers for the random
+	uint16 random;                      ///< Random value used for randomisation of all kinds of things
+
 	PersistentStorage psa;              ///< Persistent storage for NewGRF industries.
 
 	Industry(TileIndex tile = 0) : xy(tile) {}
