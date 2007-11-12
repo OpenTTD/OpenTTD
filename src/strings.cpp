@@ -691,7 +691,8 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			}
 
 			case SCC_GENDER_LIST: { // {G 0 Der Die Das}
-				const char* s = GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
+				char buffr[512];
+				const char *s = GetStringWithArgs(buffr, argv_orig[(byte)*str++], argv, last); // contains the string that determines gender.
 				int len;
 				int gender = 0;
 				if (s != NULL) {
