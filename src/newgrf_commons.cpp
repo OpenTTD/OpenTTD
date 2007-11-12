@@ -50,6 +50,8 @@ OverrideManagerBase::~OverrideManagerBase()
 void OverrideManagerBase::Add(uint8 local_id, uint32 grfid, uint entity_type)
 {
 	assert(entity_type < max_offset);
+	/* An override can be set only once */
+	if (entity_overrides[entity_type] != invalid_ID) return;
 	entity_overrides[entity_type] = local_id;
 	grfid_overrides[entity_type] = grfid;
 }
