@@ -925,12 +925,14 @@ static bool GrowTownWithBridge(const Town *t, TileIndex tile, DiagDirection brid
 	uint8 bridge_length = 0;     // This value stores the length of the possible bridge
 	TileIndex bridge_tile = tile; // Used to store the other waterside
 
+	int delta = TileOffsByDiagDir(bridge_dir);
+
 	do {
 		if (bridge_length++ >= 11) {
 			/* Max 11 tile long bridges */
 			return false;
 		}
-		bridge_tile = TileAddByDiagDir(bridge_tile, bridge_dir);
+		bridge_tile += delta;
 	} while (IsWaterTile(bridge_tile));
 
 	/* no water tiles in between? */
