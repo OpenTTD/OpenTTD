@@ -1336,7 +1336,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 					continue;
 				}
 
-				_house_mngr.Add(hid + i, override);
+				_house_mngr.Add(hid + i, _cur_grffile->grfid, override);
 			} break;
 
 			case 0x16: // Periodic refresh multiplier
@@ -1764,7 +1764,7 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 					return false;
 				}
 
-				_industile_mngr.Add(indtid + i, ovrid);
+				_industile_mngr.Add(indtid + i, _cur_grffile->grfid, ovrid);
 			} break;
 
 			case 0x0A: // Tile acceptance
@@ -1877,7 +1877,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 					return false;
 				}
 				indsp->grf_prop.override = ovrid;
-				_industry_mngr.Add(indid + i, ovrid);
+				_industry_mngr.Add(indid + i, _cur_grffile->grfid, ovrid);
 			} break;
 
 			case 0x0A: { // Set industry layout(s)

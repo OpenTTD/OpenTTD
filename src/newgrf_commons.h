@@ -28,6 +28,7 @@ struct EntityIDMapping {
 class OverrideManagerBase {
 protected:
 	uint16 *entity_overrides;
+	uint32 *grfid_overrides;
 
 	uint16 max_offset;       ///< what is the length of the original entity's array of specs
 	uint16 max_new_entities; ///< what is the amount of entities, old and new summed
@@ -44,7 +45,7 @@ public:
 	void ResetOverride();
 	void ResetMapping();
 
-	void Add(uint8 local_id, uint entity_type);
+	void Add(uint8 local_id, uint32 grfid, uint entity_type);
 	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
 
 	uint16 GetSubstituteID(byte entity_id);

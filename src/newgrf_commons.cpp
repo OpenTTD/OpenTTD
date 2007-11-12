@@ -27,6 +27,7 @@ OverrideManagerBase::OverrideManagerBase(uint16 offset, uint16 maximum, uint16 i
 	mapping_ID = CallocT<EntityIDMapping>(max_new_entities);
 	entity_overrides = MallocT<uint16>(max_offset);
 	memset(entity_overrides, invalid, sizeof(entity_overrides));
+	grfid_overrides = CallocT<uint32>(max_offset);
 }
 
 /** Destructor of the generic class.
@@ -36,18 +37,21 @@ OverrideManagerBase::~OverrideManagerBase()
 {
 	free(mapping_ID);
 	free(entity_overrides);
+	free(grfid_overrides);
 }
 
 /** Since the entity IDs defined by the GRF file does not necessarily correlate
  * to those used by the game, the IDs used for overriding old entities must be
  * translated when the entity spec is set.
- * @param local_id id in grf file
+ * @param local_id ID in grf file
+ * @param grfid  ID of the grf file
  * @param entity_type original entity type
  */
-void OverrideManagerBase::Add(uint8 local_id, uint entity_type)
+void OverrideManagerBase::Add(uint8 local_id, uint32 grfid, uint entity_type)
 {
 	assert(entity_type < max_offset);
 	entity_overrides[entity_type] = local_id;
+	grfid_overrides[entity_type] = grfid;
 }
 
 /** Resets the mapping, which is used while initializing game */
@@ -61,6 +65,7 @@ void OverrideManagerBase::ResetOverride()
 {
 	for (uint16 i = 0; i < max_offset; i++) {
 		entity_overrides[i] = invalid_ID;
+		grfid_overrides[i] = 0;
 	}
 }
 
@@ -144,10 +149,11 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 	for (int i = 0; i != max_offset; i++) {
 		HouseSpec *overridden_hs = GetHouseSpecs(i);
 
-		if (entity_overrides[i] != hs->local_id) continue;
+		if (entity_overrides[i] != hs->local_id || grfid_overrides[i] != hs->grffile->grfid) continue;
 
 		overridden_hs->override = house_id;
 		entity_overrides[i] = invalid_ID;
+		grfid_overrides[i] = 0;
 	}
 }
 
@@ -236,11 +242,12 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 	for (int i = 0; i < max_offset; i++) {
 		IndustryTileSpec *overridden_its = &_industry_tile_specs[i];
 
-		if (entity_overrides[i] != its->grf_prop.local_id) continue;
+		if (entity_overrides[i] != its->grf_prop.local_id || grfid_overrides[i] != its->grf_prop.grffile->grfid) continue;
 
 		overridden_its->grf_prop.override = indt_id;
 		overridden_its->enabled = false;
 		entity_overrides[i] = invalid_ID;
+		grfid_overrides[i] = 0;
 	}
 }
 
