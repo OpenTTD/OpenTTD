@@ -541,6 +541,7 @@ void Vehicle::PreDestructor()
 	FOR_ALL_WINDOWS(wp) {
 		Window *w = *wp;
 		if (w->viewport != NULL && WP(w, vp_d).follow_vehicle == this->index) {
+			ScrollMainWindowTo(this->x_pos, this->y_pos); // lock the main view on the vehicle's last position
 			WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
 		}
 	}
