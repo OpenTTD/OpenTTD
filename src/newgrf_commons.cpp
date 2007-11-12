@@ -86,6 +86,12 @@ uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid)
 			return id;
 		}
 	}
+
+	/* No mapping found, try the overrides */
+	for (uint16 id = 0; id < max_offset; id++) {
+		if (entity_overrides[id] == grf_local_id && grfid_overrides[id] == grfid) return id;
+	}
+
 	return invalid_ID;
 }
 
@@ -169,6 +175,9 @@ uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byt
 {
 	/* This entity hasn't been defined before, so give it an ID now. */
 	for (uint16 id = 0; id < max_new_entities; id++) {
+		/* Skip overriden industries */
+		if (id < max_offset && entity_overrides[id] != invalid_ID) continue;
+
 		/* Get the real live industry */
 		const IndustrySpec *inds = GetIndustrySpec(id);
 
@@ -201,21 +210,13 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 	/* First step : We need to find if this industry is already specified in the savegame data */
 	IndustryType ind_id = this->GetID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid);
 
-	if (ind_id == invalid_ID) { // not found?  So this is the introduction of a new industry
-		/* Second step is dealing with the override. */
-		if (inds->grf_prop.override != invalid_ID && _industry_specs[inds->grf_prop.override].grf_prop.grffile == NULL) {
-			/* this is an override, which means it will take the place of the industry it is
-			 * designed to replace. Before we conclude that the override is allowed,
-			* we first need to verify that the slot is not holding another industry from a grf
-			* If it's the case,it will be considered as a normal substitute */
-			ind_id = inds->grf_prop.override;
-		} else {
-			/* It has already been overriden, so you've lost your place old boy.
-			 * Or it is a simple substitute.
-			 * In both case, we need to find a free available slot */
-			ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid, inds->grf_prop.subst_id);
-			inds->grf_prop.override = invalid_ID;  // make sure it will not be detected as overriden
-		}
+	if (ind_id == invalid_ID) {
+		/* Not found.
+		 * Or it has already been overriden, so you've lost your place old boy.
+		 * Or it is a simple substitute.
+		 * We need to find a free available slot */
+		ind_id = this->AddEntityID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid, inds->grf_prop.subst_id);
+		inds->grf_prop.override = invalid_ID;  // make sure it will not be detected as overriden
 	}
 
 	if (ind_id == invalid_ID) {
