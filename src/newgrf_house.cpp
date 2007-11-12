@@ -564,5 +564,5 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 
 void TriggerHouse(TileIndex t, HouseTrigger trigger)
 {
-	DoTriggerHouse(t, trigger, true, 0);
+	DoTriggerHouse(t, trigger, 0, true);
 }
