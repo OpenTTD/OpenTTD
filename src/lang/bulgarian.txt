@@ -2000,9 +2000,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Цена: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Този вид индустия не може да бъде построена тук...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...гора може да се засажда само над линията на снега
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} обяви незабавно закриване!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Проблеми с доставките предизвикаха незабавно закриване на {INDUSTRY}!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Липса на дървета предизвикаха незабавно закриване на {INDUSTRY}!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} обяви незабавно закриване!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Проблеми с доставките предизвикаха незабавно закриване на {STRING}!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Липса на дървета предизвикаха незабавно закриване на {STRING}!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} увеличава прозводството!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Нови залежи на въглища са намерени в {INDUSTRY}!{}Очаква се производството  да се удвои!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Нови залежи на Нефт са намерени в {INDUSTRY}!{}Очаква се производстото да се удвои!

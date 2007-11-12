@@ -2002,9 +2002,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}価格：{YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}この産業がここに建設できません...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...雪線上のみに植林できます
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY}が間近く閉鎖！
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}供給不足によって{INDUSTRY}が間近く閉鎖！
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}周辺の森林不足によって{INDUSTRY}が間近く閉鎖！
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING}が間近く閉鎖！
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}供給不足によって{STRING}が間近く閉鎖！
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}周辺の森林不足によって{STRING}が間近く閉鎖！
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY}の生産量が増えた！
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}{INDUSTRY}で新しい石炭層の発見！{}予報：生産量2倍！
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}{INDUSTRY}で新しい油層の発見！{}予報：生産量 2倍！

@@ -2004,9 +2004,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Цена: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Невозможно построить это предприятие здесь...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...лес можно сажать только выше линии снега
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} объявляет о немедленном закрытии!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Проблемы с поставками вынуждают {INDUSTRY} объявить о неизбежном закрытии!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Недостаток деревьев в округе вынуждает {INDUSTRY} объявить о неизбежном закрытии!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} объявляет о немедленном закрытии!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Проблемы с поставками вынуждают {STRING} объявить о неизбежном закрытии!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Недостаток деревьев в округе вынуждает {STRING} объявить о неизбежном закрытии!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} увеличивает объемы производства!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Найден новый угольный пласт в {INDUSTRY}!{}Добыча увеличена вдвое!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Обнаружены новые запасы нефти на {INDUSTRY} !{}Добыча увеличена вдвое!

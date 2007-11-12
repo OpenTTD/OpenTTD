@@ -2000,9 +2000,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Kostnad: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Kan inte bygga denna typ av industri här...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...skog kan bara planteras ovanför snölinjen
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} meddelar att de stänger ner snarast!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Leveransproblem får {INDUSTRY} att meddela att de stänger ner snarast!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Avsaknad av träd får {INDUSTRY} att meddela att de stänger ner snarast!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} meddelar att de stänger ner snarast!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Leveransproblem får {STRING} att meddela att de stänger ner snarast!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Avsaknad av träd får {STRING} att meddela att de stänger ner snarast!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} ökar produktionen!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nytt lager av kol funnet vid {INDUSTRY}!{}Produktionen fördubblas!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nya oljereserver funna vid {INDUSTRY}!{}Produktionen fördubblas!

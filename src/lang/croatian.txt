@@ -2004,9 +2004,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Trošak: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Ovdje nije moguće izgraditi ovu vrstu industrije...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...šume mogu jedino biti posađene iznad linije snijega
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} objavljuje skoro zatvaranje!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zbog problema u nabavi {INDUSTRY} se uskoro zatvara!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Manjak drveća u glavni je razlog što se {INDUSTRY} se uskoro zatvara!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} objavljuje skoro zatvaranje!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zbog problema u nabavi {STRING} se uskoro zatvara!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Manjak drveća u glavni je razlog što se {STRING} se uskoro zatvara!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} povećava proizvodnju!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}{INDUSTRY} očekuje udvostručenje proizvodnje!{}Pronađena je nova pukotina ugljena!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}{INDUSTRY} očekuje udvostručenje proizvodnje!{}Pronađene su nove rezerve nafte!

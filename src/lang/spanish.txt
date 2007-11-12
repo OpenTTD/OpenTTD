@@ -2003,9 +2003,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Coste: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}No se puede construir este tipo de industria aquí...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...sólo se puede plantar un bosque sobre la línea nevada
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}¡La industria de {INDUSTRY} anuncia cierre inminente!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemas con el suministro causa que {INDUSTRY} anuncie su cierre inminente!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}¡La falta de árboles cercanos causa que  {INDUSTRY} anuncie su cierre inmediato!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}¡La industria de {STRING} anuncia cierre inminente!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemas con el suministro causa que {STRING} anuncie su cierre inminente!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}¡La falta de árboles cercanos causa que  {STRING} anuncie su cierre inmediato!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}¡{INDUSTRY} incrementa su producción!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}¡Nueva veta de carbón encontrada en {INDUSTRY}!{}¡Se espera doblar la producción!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}¡Nuevas reservas de petróleo encontradas en {INDUSTRY}!{}¡Se espera doblar la producción!

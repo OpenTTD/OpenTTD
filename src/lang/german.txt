@@ -2003,9 +2003,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Kosten: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Industrie kann hier nicht gebaut werden...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Wald kann nur oberhalb der Schneegrenze gepflanzt werden
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} gibt bevorstehende Schließung bekannt!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Wegen fehlender Rohstoffe kündigt {INDUSTRY} die drohende Schließung an!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Wegen Holzmangel gibt {INDUSTRY} die bevorstehende Schließung bekannt!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} gibt bevorstehende Schließung bekannt!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Wegen fehlender Rohstoffe kündigt {STRING} die drohende Schließung an!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Wegen Holzmangel gibt {STRING} die bevorstehende Schließung bekannt!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} erhöht die Produktion!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Neue Kohlevorkommen bei {INDUSTRY} gefunden!{}Förderung verdoppelt!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Neue Ölfunde bei {INDUSTRY}!{}Förderung wird vermutlich verdoppelt!

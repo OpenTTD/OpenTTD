@@ -2082,9 +2082,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Cena: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nemogoča gradnja tega tipa industrije tukaj...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE} ... gozd je mogoče posaditi samo nad nivojem snežne odeje
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} napoveduje preteče zapiranje!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zaradi težav z dobavo zalog, {INDUSTRY} napoveduje preteč stečaj!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Zaradi pomanjkanja bližnjih dreves, {INDUSTRY} napoveduje stečajni postopek!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} napoveduje preteče zapiranje!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zaradi težav z dobavo zalog, {STRING} napoveduje preteč stečaj!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Zaradi pomanjkanja bližnjih dreves, {STRING} napoveduje stečajni postopek!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} povečuje proizvodnjo!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova žila premoga odkrita v {INDUSTRY}!{}Pričakuje se podvojitev proizvodnje!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nove rezerve nafte odkrite v {INDUSTRY}!{}Predvidena podvojitev proizvodnje!

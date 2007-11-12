@@ -1621,9 +1621,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Κόστος: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Αδύνατο να χτιστεί αυτός ο τύπος βιομηχανίας εδώ...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...το δάσος μπορεί να φυτευτεί μόνο πάνω από την γραμμή χιονιού
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}Η βιομηχανία {INDUSTRY} ανακοίνωσε άμεσο κλείσιμο!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Προβλήματα στην προμήθεια αναγκάζουν την εταιρεία {INDUSTRY} να κλείσει αμέσως!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {INDUSTRY} να κλείσει αμέσως!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}Η βιομηχανία {STRING} ανακοίνωσε άμεσο κλείσιμο!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Προβλήματα στην προμήθεια αναγκάζουν την εταιρεία {STRING} να κλείσει αμέσως!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {STRING} να κλείσει αμέσως!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Η βιομηχανία {INDUSTRY} ανεβάζει την παραγωγή!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Νέα φλέβα άνθρακα βρέθηκε στο {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!

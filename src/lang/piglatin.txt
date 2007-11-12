@@ -1995,9 +1995,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Ostcay: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}An'tcay onstructcay isthay industryway ypetay erehay...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...orestfay ancay onlyway ebay antedplay aboveway owsnay-inelay
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} announcesway imminentway osureclay!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Upplysay oblemspray ausecay {INDUSTRY} otay announceway imminentway osureclay!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Acklay ofway earbynay eestray ausescay {INDUSTRY} otay announceway imminentway osureclay!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} announcesway imminentway osureclay!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Upplysay oblemspray ausecay {STRING} otay announceway imminentway osureclay!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Acklay ofway earbynay eestray ausescay {STRING} otay announceway imminentway osureclay!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} increasesway oductionpray!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Ewnay oalcay eamsay oundfay atway {INDUSTRY}!{}Oductionpray isway expectedway otay oubleday!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Ewnay oilway eservesray oundfay atway {INDUSTRY}!{}Oductionpray isway expectedway otay oubleday!

@@ -2002,9 +2002,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Pris: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Kan ikke bygge denne industritype her...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...skov kan kun plantes over snelinjen
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} rapporterer om øjeblikkelig nedlukning!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Forsyningsproblemer får {INDUSTRY} til at lukke omgående!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Mangel på træer i nærheden får {INDUSTRY} til at lukke omgående!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} rapporterer om øjeblikkelig nedlukning!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Forsyningsproblemer får {STRING} til at lukke omgående!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Mangel på træer i nærheden får {STRING} til at lukke omgående!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} øger produktionen!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Ny kulåre fundet tæt på {INDUSTRY}!{}Produktionen forventes fordoblet!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nye oliereserver fundet tæt ved {INDUSTRY}!{}Produktionen forventes fordoblet!

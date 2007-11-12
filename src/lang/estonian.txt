@@ -2102,9 +2102,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Hind: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Seda tüüpi tööstust ei saa siia ehitada...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...metsa saab istutada ainult lumepiirist kõrgemale
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} juhtkond teatab sulgemisest!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{INDUSTRY} teatab sulgemisest varustusprobleemide tõttu!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lähiümbruse puude puudumine põhjustab {INDUSTRY} sulgemise!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} juhtkond teatab sulgemisest!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{STRING} teatab sulgemisest varustusprobleemide tõttu!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lähiümbruse puude puudumine põhjustab {STRING} sulgemise!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} kasvab toodang!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}{INDUSTRY} lähedal avati uus kivisöe kiht!{}Toodang kahekordistub!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}{INDUSTRY} lähedal avastati uusi naftareserve!{}Toodang kahekordistub!

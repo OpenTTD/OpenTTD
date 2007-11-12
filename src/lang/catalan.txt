@@ -2002,9 +2002,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Cost: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...els boscos només es poden plantar sota la cota de neu
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anuncia el seu inminent tancament!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemes de subministrament fan que {INDUSTRY} anuncïi el seu inminent tancament!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}La falta d'arbres propers fan que {INDUSTRY} anuncïi el seu inminent tancament!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} anuncia el seu inminent tancament!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemes de subministrament fan que {STRING} anuncïi el seu inminent tancament!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}La falta d'arbres propers fan que {STRING} anuncïi el seu inminent tancament!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} incrementa la producció!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova veta de carbó trobada a {INDUSTRY}!{}Es preveu doblar la producció!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Noves reserves de petroli trobades a {INDUSTRY}!{}Es preveu doblar la producció!

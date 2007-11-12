@@ -1990,9 +1990,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}가격: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}여기에 이 산업시설을 건설할 수 없습니다...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY}의 긴급폐쇄를 알립니다!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}연결된 수요가 없는 관계로 {INDUSTRY}의 긴급 폐쇄를 알립니다!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}근처에 나무 고갈로 인한 {INDUSTRY}의 긴급 폐쇄를 알립니다!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING}의 긴급폐쇄를 알립니다!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}연결된 수요가 없는 관계로 {STRING}의 긴급 폐쇄를 알립니다!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}근처에 나무 고갈로 인한 {STRING}의 긴급 폐쇄를 알립니다!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY}이/가 생산량을 늘렸습니다!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}{INDUSTRY}에서 새로운 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}{INDUSTRY}에서 새로운 유전을 찾았습니다!{}생산량이 2배가 되었습니다!

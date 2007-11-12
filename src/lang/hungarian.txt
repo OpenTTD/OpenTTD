@@ -2103,9 +2103,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Ár: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nem építheted ide ezt a gazdasági épületet...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...erdő csak a hóhatár fölé ültethető
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} bejelentette, hogy hamarosan bezár!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{INDUSTRY} bejelentette, hogy ellátási gondok miatt hamarosan bezár!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}{INDUSTRY} bejelentette, hogy a közeli fák hiánya miatt hamarosan bezár!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} bejelentette, hogy hamarosan bezár!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{STRING} bejelentette, hogy ellátási gondok miatt hamarosan bezár!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}{STRING} bejelentette, hogy a közeli fák hiánya miatt hamarosan bezár!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} növeli a termelését!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Új szénréteget találtak {INDUSTRY}ban!{}A termelés megkétszereződik!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Új olajtartalékokat találtak {INDUSTRY} alatt!{}A termelés megkétszereződik!

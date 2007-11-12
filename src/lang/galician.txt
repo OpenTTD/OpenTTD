@@ -1835,9 +1835,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Coste: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Non se pode construír ese tipo de industria aí...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...o bosqur só se pode plantar sobre a liña de neve
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}¡{INDUSTRY} anuncia o seu peche inminente!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}¡Problemas de suministro en {INDUSTRY} provocan o seu peche inminente!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}¡A falta de árbores provoca que {INDUSTRY} anuncie o peche inminente!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}¡{STRING} anuncia o seu peche inminente!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}¡Problemas de suministro en {STRING} provocan o seu peche inminente!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}¡A falta de árbores provoca que {STRING} anuncie o peche inminente!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}¡{INDUSTRY} incrementa a súa producción!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}¡Nova veta de carbón atopada en {INDUSTRY}!{}¡Espérase que a producción dóbrese!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}¡Novas reservas de petróleo atopadas en {INDUSTRY}!{}¡Espérase que a producción dóbrese!

@@ -2003,9 +2003,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Kostnad: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Kan ikkje byggje denne typen industri her...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...skog kan berre plantast over snøgrensa
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} legg ned verksemda straks!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Leveringsproblem gjer at {INDUSTRY} legg ned verksemda straks!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Mangel på tre i nærleiken gjer at {INDUSTRY} legg ned verksemda straks!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} legg ned verksemda straks!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Leveringsproblem gjer at {STRING} legg ned verksemda straks!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Mangel på tre i nærleiken gjer at {STRING} legg ned verksemda straks!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY}aukar produksjonen!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Ny kolåre funnen i {INDUSTRY}!{}Ei dobling i produksjon er venta!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nye oljereservar funne i {INDUSTRY}!{}Ei dobling i produksjon er venta!

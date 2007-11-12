@@ -2003,9 +2003,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Prix: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Impossible de construire cette industrie ici...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...les forêts ne peuvent pas être plantées sur de la neige
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} annonce une fermeture imminente!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Des problèmes d'approvisionnement obligent {INDUSTRY} à fermer bientôt!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Le manque d'arbres proches oblige {INDUSTRY} à fermer bientôt!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} annonce une fermeture imminente!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Des problèmes d'approvisionnement obligent {STRING} à fermer bientôt!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Le manque d'arbres proches oblige {STRING} à fermer bientôt!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} augmente la production!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nouveau filon de charbon trouvé à {INDUSTRY}!{}La production devrait doubler!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nouveaux gisements pétrolifères découverts à {INDUSTRY}!{}La production devrait doubler!

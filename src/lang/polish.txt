@@ -2106,9 +2106,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Koszt: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nie można tutaj wybudować tego przedsiębiorstwa...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...las może być posadzony tylko powyżej linii śniegu
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} ogłasza bliskie zamkniecie!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemy z zaopatrzeniem {INDUSTRY} powodują ogłoszenie zamknięcia!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Niedobór drzew powoduje ogłoszenie zamknięcia {INDUSTRY}!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} ogłasza bliskie zamkniecie!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemy z zaopatrzeniem {STRING} powodują ogłoszenie zamknięcia!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Niedobór drzew powoduje ogłoszenie zamknięcia {STRING}!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zwiększa produkcję!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Odkryto nowy pokład węgla w {INDUSTRY}!{} Podwojenie produkcji!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Odkryte nowe rezerwy ropy w {INDUSTRY}!{} Podwojenie produkcji!

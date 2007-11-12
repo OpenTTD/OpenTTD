@@ -1993,6 +1993,10 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			SetDParam(0, STR_TOWN);
 			SetDParam(1, i->town->index);
 			SetDParam(2, indspec->name);
+		} else if (closeit) {
+			SetDParam(0, STR_INDUSTRY_FORMAT);
+			SetDParam(1, i->town->index);
+			SetDParam(2, indspec->name);
 		} else {
 			SetDParam(0, i->index);
 		}

@@ -2002,9 +2002,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Cost: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Acest tip de industrie nu se poate construi aici...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...pădurile pot fi plantate doar în zonele înzăpezite
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anunţă închidere iminentă!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemele de aprovizionare provoacă închiderea {INDUSTRY}!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lipsa de teren împădurit provoacă închiderea {INDUSTRY}!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} anunţă închidere iminentă!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemele de aprovizionare provoacă închiderea {STRING}!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Lipsa de teren împădurit provoacă închiderea {STRING}!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} măreşte producţia!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Rezerve noi de cărbune la {INDUSTRY}!{}Se preconizează dublarea producţiei!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Rezerve noi de petrol la {INDUSTRY}!{}Se preconizează dublarea producţiei!

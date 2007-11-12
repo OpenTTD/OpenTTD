@@ -1889,9 +1889,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Kosto: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Industritipo ne konstrueblas ĉi tie...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...arbaro nur planteblas super neĝa limlinio
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anoncas tre baldaŭan fermiĝon!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Liverproblemoj devigas al {INDUSTRY} anonci tre baldaŭan fermiĝon!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Pro manko da proksimaj arboj {INDUSTRY} devas anonci tre baldaŭan fermiĝon!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} anoncas tre baldaŭan fermiĝon!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Liverproblemoj devigas al {STRING} anonci tre baldaŭan fermiĝon!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Pro manko da proksimaj arboj {STRING} devas anonci tre baldaŭan fermiĝon!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} pliigas produktadon!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova karbo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nova oleo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!

@@ -2002,9 +2002,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Koste: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Nywerheid tipe kan nie hier gebou word nie...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...woud kan net bo sneeu-lyn beplant word
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} aankondig dreigend sluiting!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Lewering probleme veroorsaak {INDUSTRY} om dreigend sluting te aankondig!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Gemis van naby boome veroorsaak {INDUSTRY} om dreigend sluiting te aankondig!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} aankondig dreigend sluiting!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Lewering probleme veroorsaak {STRING} om dreigend sluting te aankondig!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Gemis van naby boome veroorsaak {STRING} om dreigend sluiting te aankondig!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} vermeerder produksie!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nuwe kool laag gevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nuwe olie reserwes gevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!

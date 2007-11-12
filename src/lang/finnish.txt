@@ -1995,9 +1995,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Kustannus: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Teollisuustyyppiä ei voi rakentaa tähän...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...metsää voi istuttaa vain lumirajan yläpuolelle.
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY}: sulkeminen uhkaavan lähellä!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{INDUSTRY}: toimitusongelmista johtuen sulkeminen uhkaavan lähellä!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}{INDUSTRY}: puiden puutteesta johtuen sulkeminen uhkaavan lähellä!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING}: sulkeminen uhkaavan lähellä!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{STRING}: toimitusongelmista johtuen sulkeminen uhkaavan lähellä!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}{STRING}: puiden puutteesta johtuen sulkeminen uhkaavan lähellä!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY}: tuotantoa lisätään!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}{INDUSTRY}: uusi hiilijuonne löytynyt!{}Tuotannon odotetaan kaksinkertaistuvan!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}{INDUSTRY}: uusia öljyvaroja löydetty!{}Tuotannon odotetaan kaksinkertaistuvan!

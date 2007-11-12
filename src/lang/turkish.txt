@@ -2001,9 +2001,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Fiyat: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Buraya bu fabrikadan yapılamaz...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Orman sadece kar sınırı üzerinde olabilir
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} tükendi, kapaniyor!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{INDUSTRY} kaynak sorunları yüzünden kapaniyor!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Yakında ağaç olmadığı için {INDUSTRY} kapanıyor!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} tükendi, kapaniyor!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{STRING} kaynak sorunları yüzünden kapaniyor!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Yakında ağaç olmadığı için {STRING} kapanıyor!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} üretimi arttırdi!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}{INDUSTRY}nde yeni kömür tabakasi bulundu!{} Üretimin ikiye katlanması bekleniyor!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}{INDUSTRY}nda yeni petrol rezervi bulundu!{} Üretimin ikiye katlanması bekleniyor!

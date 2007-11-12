@@ -2002,9 +2002,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Kosten: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Kan dit type industrie hier niet bouwen...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...bossen kunnen alleen worden geplant boven de sneeuwgrens
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} kondigt dreigend faillissement aan!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Leveringsproblemen noodzaken {INDUSTRY} dreigend faillissement aan te kondigen!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Gebrek aan nabije bomen noodzaakt {INDUSTRY} dreigend faillissement aan te kondigen!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} kondigt dreigend faillissement aan!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Leveringsproblemen noodzaken {STRING} dreigend faillissement aan te kondigen!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Gebrek aan nabije bomen noodzaakt {STRING} dreigend faillissement aan te kondigen!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} verhoogt productie!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nieuwe kolenader gevonden bij {INDUSTRY}!{}Men verwacht productieverdubbeling!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nieuwe oliebronnen gevonden bij {INDUSTRY}!{}Men verwacht productieverdubbeling!

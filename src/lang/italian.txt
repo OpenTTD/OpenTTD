@@ -2004,9 +2004,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Costo: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Imposibile costruire l'industria qui...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...una foresta può essere piantata solo in una zona innevata
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} annuncia imminente chiusura!!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Per problemi di rifornimenti {INDUSTRY} annuncia imminente chiusura!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}La mancanza di alberi vicini costringe la {INDUSTRY} ad imminente chiusura!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} annuncia imminente chiusura!!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Per problemi di rifornimenti {STRING} annuncia imminente chiusura!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}La mancanza di alberi vicini costringe la {STRING} ad imminente chiusura!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} incrementa la produzione!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Trovato nuovo giacimento di carbone alla {INDUSTRY}!{}Atteso un raddoppiamento della produzione!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Trovato nuovo giacimento di petrolio al {INDUSTRY}!{}Atteso un raddoppiamento della produzione!

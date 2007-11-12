@@ -2060,9 +2060,9 @@ STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT
 STR_482F_COST                                                   :{BLACK}Cena: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tento druh průmyslu zde nemohu postavit...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... lesy lze vysadit jen nad sněhovou čáru
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} ohlašuje okamžité uzavření!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zásobovací problémy způsobily uzavření {INDUSTRY}!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostatek stromů způsobil uzavření {INDUSTRY}!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} ohlašuje okamžité uzavření!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zásobovací problémy způsobily uzavření {STRING}!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostatek stromů způsobil uzavření {STRING}!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zvyšuje produkci!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nové ložisko uhlí nalezené v {INDUSTRY}!{}Zdvojnásobí se produkce!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nové zásoby ropy nalezené v {INDUSTRY}!{}Zdvojnásobí se produkce!
