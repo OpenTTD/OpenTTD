@@ -1415,7 +1415,29 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 	} else if (HASBIT(prev_state, RVS_IN_DT_ROAD_STOP)) {
 		dir = (Trackdir)(prev_state & RVSB_ROAD_STOP_TRACKDIR_MASK);
 	} else if (prev_state < TRACKDIR_END) {
-		dir = (Trackdir)prev_state;
+		if (already_reversed && prev->tile != tile) {
+			/*
+			 * The vehicle has reversed, but did not go straight back.
+			 * It immediatelly turn onto another tile. This means that
+			 * the roadstate of the previous vehicle cannot be used
+			 * as the direction we have to go with this vehicle.
+			 *
+			 * Next table is build in the following way:
+			 *  - first row for when the vehicle in front went to the northern or
+			 *    western tile, second for southern and eastern.
+			 *  - columns represent the entry direction.
+			 *  - cell values are determined by the Trackdir one has to take from
+			 *    the entry dir (column) to the tile in north or south by only
+			 *    going over the trackdirs used for turning 90 degrees, i.e.
+			 *    TRACKDIR_{UPPER,RIGHT,LOWER,LEFT}_{N,E,S,W}.
+			 */
+			Trackdir reversed_turn_lookup[2][DIAGDIR_END] = {
+				{ TRACKDIR_UPPER_W, TRACKDIR_RIGHT_N, TRACKDIR_LEFT_N,  TRACKDIR_UPPER_E },
+				{ TRACKDIR_RIGHT_S, TRACKDIR_LOWER_W, TRACKDIR_LOWER_E, TRACKDIR_LEFT_S  }};
+			dir = reversed_turn_lookup[prev->tile < tile ? 0 : 1][ReverseDiagDir(entry_dir)];
+		} else {
+			dir = (Trackdir)prev_state;
+		}
 	} else {
 		return INVALID_TRACKDIR;
 	}
