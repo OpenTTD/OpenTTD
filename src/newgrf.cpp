@@ -249,6 +249,17 @@ static GRFFile *GetFileByFilename(const char *filename)
  */
 StringID MapGRFStringID(uint32 grfid, StringID str)
 {
+	/* StringID table for TextIDs 0x4E->0x6D */
+	static StringID units_volume[] = {
+		STR_NOTHING,    STR_PASSENGERS, STR_TONS,       STR_BAGS,
+		STR_LITERS,     STR_ITEMS,      STR_CRATES,     STR_TONS,
+		STR_TONS,       STR_TONS,       STR_TONS,       STR_BAGS,
+		STR_TONS,       STR_TONS,       STR_TONS,       STR_BAGS,
+		STR_TONS,       STR_TONS,       STR_BAGS,       STR_LITERS,
+		STR_TONS,       STR_LITERS,     STR_TONS,       STR_NOTHING,
+		STR_BAGS,       STR_LITERS,     STR_TONS,       STR_NOTHING,
+		STR_TONS,       STR_NOTHING,    STR_LITERS,     STR_NOTHING
+	};
 	/* 0xD0 and 0xDC stand for all the TextIDs in the range
 	 * of 0xD000 (misc graphics texts) and 0xDC00 (misc persistent texts).
 	 * These strings are unique to each grf file, and thus require to be used with the
@@ -260,7 +271,7 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 	/* We have some changes in our cargo strings, resulting in some missing. */
 	TEXID_TO_STRINGID(0x000E, 0x002D, STR_000E);
 	TEXID_TO_STRINGID(0x002E, 0x004D, STR_002E);
-	TEXID_TO_STRINGID(0x004E, 0x006D, STR_QUANTITY_NOTHING);
+	if (str >= 0x004E && str <= 0x006D) str = units_volume[str - 0x004E];
 	TEXID_TO_STRINGID(0x006E, 0x008D, STR_QUANTITY_NOTHING);
 	TEXID_TO_STRINGID(0x008E, 0x00AD, STR_ABBREV_NOTHING);
 
