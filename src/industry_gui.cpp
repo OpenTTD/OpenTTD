@@ -166,7 +166,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				bool selected = WP(w, fnd_d).index == i + w->vscroll.pos;
 
 				if (_fund_gui.index[i + w->vscroll.pos] == INVALID_INDUSTRYTYPE) {
-					DrawString(21, y + offset, STR_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
+					DrawStringTruncated(20, y + offset, STR_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE, max_width - 25);
 					continue;
 				}
 				const IndustrySpec *indsp = GetIndustrySpec(_fund_gui.index[i + w->vscroll.pos]);
