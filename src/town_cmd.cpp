@@ -933,7 +933,7 @@ static bool GrowTownWithBridge(const Town *t, TileIndex tile, DiagDirection brid
 			return false;
 		}
 		bridge_tile += delta;
-	} while (IsWaterTile(bridge_tile));
+	} while (TileX(bridge_tile) != 0 && TileY(bridge_tile) != 0 && IsWaterTile(bridge_tile) && TileX(bridge_tile) != 0);
 
 	/* no water tiles in between? */
 	if (bridge_length == 1) return false;
