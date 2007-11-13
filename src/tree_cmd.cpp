@@ -428,7 +428,7 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	StartSpriteCombine();
 
-	if (!IsTransparencySet(TO_TREES) || !_patches.invisible_trees) {
+	if (!(IsTransparencySet(TO_TREES) && _patches.invisible_trees)) {
 		TreeListEnt te[4];
 		uint i;
 
