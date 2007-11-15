@@ -658,11 +658,23 @@ void ConvertGroundTilesIntoWaterTiles()
 				case SLOPE_E:
 				case SLOPE_S:
 				case SLOPE_W:
-				case SLOPE_NW:
-				case SLOPE_SW:
-				case SLOPE_SE:
-				case SLOPE_NE:
 					MakeShore(tile);
+					break;
+
+				case SLOPE_NW:
+					if (GetTileSlope(TileAddByDiagDir(tile, DIAGDIR_SE), NULL) != SLOPE_SE) MakeShore(tile);
+					break;
+
+				case SLOPE_SW:
+					if (GetTileSlope(TileAddByDiagDir(tile, DIAGDIR_NE), NULL) != SLOPE_NE) MakeShore(tile);
+					break;
+
+				case SLOPE_SE:
+					if (GetTileSlope(TileAddByDiagDir(tile, DIAGDIR_NW), NULL) != SLOPE_NW) MakeShore(tile);
+					break;
+
+				case SLOPE_NE:
+					if (GetTileSlope(TileAddByDiagDir(tile, DIAGDIR_SW), NULL) != SLOPE_SW) MakeShore(tile);
 					break;
 
 				default:
