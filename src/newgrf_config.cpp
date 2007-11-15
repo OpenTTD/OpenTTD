@@ -69,7 +69,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 	LoadNewGRFFile(config, CONFIG_SLOT, GLS_FILESCAN);
 
 	/* Skip if the grfid is 0 (not read) or 0xFFFFFFFF (ttdp system grf) */
-	if (config->grfid == 0 || config->grfid == 0xFFFFFFFF) return false;
+	if (config->grfid == 0 || config->grfid == 0xFFFFFFFF || config->IsOpenTTDBaseGRF()) return false;
 
 	if (is_static) {
 		/* Perform a 'safety scan' for static GRFs */
@@ -520,6 +520,18 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last)
 		dst += snprintf(dst, last - dst, "%d", c->param[i]);
 	}
 	return dst;
+}
+
+/** Base GRF ID for OpenTTD's base graphics GRFs. */
+static const uint32 OPENTTD_GRAPHICS_BASE_GRF_ID = BSWAP32(0xFF4F5400);
+
+/**
+ * Checks whether this GRF is a OpenTTD base graphic GRF.
+ * @return true if and only if it is a base GRF.
+ */
+bool GRFConfig::IsOpenTTDBaseGRF() const
+{
+	return (this->grfid & 0x00FFFFFF) == OPENTTD_GRAPHICS_BASE_GRF_ID;
 }
 
 

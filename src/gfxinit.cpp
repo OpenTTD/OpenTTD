@@ -25,8 +25,11 @@ struct MD5File {
 };
 
 struct FileList {
-	MD5File basic[2];          ///< grf files that always have to be loaded
-	MD5File landscape[3];      ///< landscape specific grf files
+	MD5File basic[2];     ///< GRF files that always have to be loaded
+	MD5File landscape[3]; ///< Landscape specific grf files
+	MD5File sound;        ///< Sound samples
+	MD5File chars;        ///< GRF File with character replacements
+	MD5File openttd;      ///< GRF File with OTTD specific graphics
 };
 
 #include "table/files.h"
@@ -37,21 +40,6 @@ static const SpriteID * const _landscape_spriteindexes[] = {
 	_landscape_spriteindexes_2,
 	_landscape_spriteindexes_3,
 };
-
-static const SpriteID * const _slopes_spriteindexes[] = {
-	_slopes_spriteindexes_0,
-	_slopes_spriteindexes_1,
-	_slopes_spriteindexes_2,
-	_slopes_spriteindexes_3,
-};
-
-static const SpriteID * const _halftile_foundation_spriteindexes[] = {
-	_halftile_foundation_spriteindexes_0,
-	_halftile_foundation_spriteindexes_1,
-	_halftile_foundation_spriteindexes_2,
-	_halftile_foundation_spriteindexes_3,
-};
-
 
 static uint LoadGrfFile(const char *filename, uint load_index, int file_index)
 {
@@ -183,7 +171,7 @@ void CheckExternalFiles()
 
 	static const size_t ERROR_MESSAGE_LENGTH = 128;
 	const FileList *files = _use_dos_palette ? &files_dos : &files_win;
-	char error_msg[ERROR_MESSAGE_LENGTH * (lengthof(files->basic) + lengthof(files->landscape) + lengthof(files_openttd) + 1)];
+	char error_msg[ERROR_MESSAGE_LENGTH * (lengthof(files->basic) + lengthof(files->landscape) + 3)];
 	error_msg[0] = '\0';
 	char *add_pos = error_msg;
 
@@ -199,14 +187,16 @@ void CheckExternalFiles()
 		}
 	}
 
-	if (!FileMD5(sample_cat_win) && !FileMD5(sample_cat_dos)) {
+	if (!FileMD5(files_win.sound) && !FileMD5(files_dos.sound)) {
 		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
 	}
 
-	for (uint i = 0; i < lengthof(files_openttd); i++) {
-		if (!FileMD5(files_openttd[i])) {
-			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! The file was part of your installation.\n", files_openttd[i].filename);
-		}
+	if (!FileMD5(files->chars)) {
+		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! The file was part of your installation.\n", files->chars.filename);
+	}
+
+	if (!FileMD5(files->openttd)) {
+		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! The file was part of your installation.\n", files->openttd.filename);
 	}
 
 	if (add_pos != error_msg) ShowInfoF(error_msg);
@@ -293,22 +283,15 @@ static const SpriteID trg1idx[] = {
 	END
 };
 
-/* NOTE: When adding a normal sprite, increase OPENTTD_SPRITES_COUNT with the
- * amount of sprites and add them to the end of the list, with the index of
- * the old sprite-count offset from SPR_OPENTTD_BASE. With this there is no
- * correspondence of any kind with the ID's in the grf file, but results in
- * a maximum use of sprite slots. */
-static const SpriteID _openttd_grf_indexes[] = {
-	SPR_IMG_AUTORAIL, SPR_CURSOR_WAYPOINT, // icons etc
-	134, 134,  ///< euro symbol medium size
-	582, 582,  ///<  euro symbol large size
-	358, 358,  ///<  euro symbol tiny
-	SPR_CURSOR_CANAL, SPR_IMG_FASTFORWARD, // more icons
+/** Replace some letter sprites with some other letters */
+static const SpriteID _chars_grf_indexes[] = {
+	134, 134, ///<  euro symbol medium size
+	582, 582, ///<  euro symbol large size
+	358, 358, ///<  euro symbol tiny
 	648, 648, ///<  nordic char: æ
 	616, 616, ///<  nordic char: Æ
 	666, 666, ///<  nordic char: ø
 	634, 634, ///<  nordic char: Ø
-	SPR_PIN_UP, SPR_CURSOR_CLONE_TRAIN, // more icons
 	382, 383, ///<  Œ œ tiny
 	158, 159, ///<  Œ œ medium
 	606, 607, ///<  Œ œ large
@@ -334,18 +317,15 @@ static const SpriteID _openttd_grf_indexes[] = {
 	317, 320, ///<  { | } ~ tiny
 	 93,  96, ///<  { | } ~ medium
 	541, 544, ///<  { | } ~ large
-	SPR_HOUSE_ICON, SPR_HOUSE_ICON,
 	585, 585, ///<  § large
 	587, 587, ///<  © large
 	592, 592, ///<  ® large
 	594, 597, ///<  ° ± ² ³ large
 	633, 633, ///<  × large
 	665, 665, ///<  ÷ large
-	SPR_SELL_TRAIN, SPR_SHARED_ORDERS_ICON,
 	377, 377, ///<  · small
 	153, 153, ///<  · medium
 	601, 601, ///<  · large
-	SPR_WARNING_SIGN, SPR_CURSOR_ELRAIL_DEPOT,
 	END
 };
 
@@ -353,7 +333,6 @@ static const SpriteID _openttd_grf_indexes[] = {
 static void LoadSpriteTables()
 {
 	const FileList *files = _use_dos_palette ? &files_dos : &files_win;
-	uint load_index;
 	uint i = FIRST_GRF_SLOT;
 
 	LoadGrfIndexed(files->basic[0].filename, trg1idx, i++);
@@ -382,59 +361,29 @@ static void LoadSpriteTables()
 		);
 	}
 
-	/* Start loading the extra, non-TTD, base GRFs for the given index. */
-	load_index = SPR_SIGNALS_BASE;
-	load_index += LoadGrfFile("nsignalsw.grf", load_index, i++);
-
-	assert(load_index == SPR_CANALS_BASE);
-	load_index += LoadGrfFile("canalsw.grf", load_index, i++);
-
-	assert(load_index == SPR_SLOPES_BASE);
-	LoadGrfIndexed("trkfoundw.grf", _slopes_spriteindexes[_opt.landscape], i++);
-
-	load_index = SPR_AUTORAIL_BASE;
-	load_index += LoadGrfFile("autorail.grf", load_index, i++);
-
-	assert(load_index == SPR_ELRAIL_BASE);
-	load_index += LoadGrfFile("elrailsw.grf", load_index, i++);
-
-	assert(load_index == SPR_2CCMAP_BASE);
-	load_index += LoadGrfFile("2ccmap.grf", load_index, i++);
-
-	assert(load_index == SPR_OPENTTD_BASE);
-	LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
-	load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT;
-
-	assert(load_index == SPR_AIRPORTX_BASE);
-	load_index += LoadGrfFile("airports.grf", load_index, i++);
-
-	assert(load_index == SPR_ROADSTOP_BASE);
-	load_index += LoadGrfFile("roadstops.grf", load_index, i++);
-
-	assert(load_index == SPR_GROUP_BASE);
-	load_index += LoadGrfFile("group.grf", load_index, i++);
-
-	assert(load_index == SPR_TRAMWAY_BASE);
-	load_index += LoadGrfFile("tramtrkw.grf", load_index, i++);
-
-	assert(load_index == SPR_ONEWAY_BASE);
-	load_index += LoadGrfFile("oneway.grf", load_index, i++);
-
-	load_index++; // SPR_EMPTY_BOUNDING_BOX
-
-	assert(load_index == SPR_HALFTILE_FOUNDATION_BASE);
-	LoadGrfIndexed("halffndw.grf", _halftile_foundation_spriteindexes[_opt.landscape], i++);
-
-	load_index = SPR_HALFTILE_SELECTION_BASE;
-	load_index += LoadGrfFile("halfselw.grf", load_index, i++);
-
-	assert(load_index == SPR_FLAGS_BASE);
-	load_index += LoadGrfFile("flags.grf", load_index, i++);
+	LoadGrfIndexed(files->chars.filename, _chars_grf_indexes, i++);
 
 	/* Initialize the unicode to sprite mapping table */
 	InitializeUnicodeGlyphMap();
 
-	LoadNewGRF(load_index, i);
+	/*
+	 * Load the base NewGRF with OTTD required graphics as first NewGRF.
+	 * However, we do not want it to show up in the list of used NewGRFs,
+	 * so we have to manually add it, and then remove it later.
+	 */
+	GRFConfig *top = _grfconfig;
+	GRFConfig *master = CallocT<GRFConfig>(1);
+	master->filename = strdup(files->openttd.filename);
+	FillGRFDetails(master, false);
+	ClrBitT(master->flags, GCF_INIT_ONLY);
+	master->next = top;
+	_grfconfig = master;
+
+	LoadNewGRF(SPR_NEWGRFS_BASE, i);
+
+	/* Free and remove the top element. */
+	ClearGRFConfig(&master);
+	_grfconfig = top;
 }
 
 

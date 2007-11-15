@@ -1376,13 +1376,10 @@ static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint i
 
 	SpriteID sprite;
 
-	/* _signal_base is set by our NewGRF Action 5 loader. If it is 0 then we
-	 * just draw the standard signals, else we get the offset from _signal_base
-	 * and draw that sprite. All the signal sprites are loaded sequentially. */
-	if (_signal_base == 0 || (GetSignalType(tile, track) == SIGTYPE_NORMAL && GetSignalVariant(tile, track) == SIG_ELECTRIC)) {
+	if (GetSignalType(tile, track) == SIGTYPE_NORMAL && GetSignalVariant(tile, track) == SIG_ELECTRIC) {
 		sprite = SignalBase[side][GetSignalVariant(tile, track)][GetSignalType(tile, track)] + image + condition;
 	} else {
-		sprite = _signal_base + (GetSignalType(tile, track) - 1) * 16 + GetSignalVariant(tile, track) * 64 + image + condition;
+		sprite = SPR_SIGNALS_BASE + (GetSignalType(tile, track) - 1) * 16 + GetSignalVariant(tile, track) * 64 + image + condition;
 	}
 
 	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSaveSlopeZ(x, y, track));

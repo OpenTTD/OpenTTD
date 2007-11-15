@@ -61,7 +61,6 @@
 
 static int _skip_sprites; // XXX
 static uint _file_index; // XXX
-SpriteID _signal_base;
 SpriteID _coast_base;
 
 static GRFFile *_cur_grffile;
@@ -3241,6 +3240,34 @@ static void FeatureNewName(byte *buf, int len)
 	}
 }
 
+/**
+ * Sanitize incoming sprite offsets for Action 5 graphics replacements.
+ * @param num         the number of sprites to load.
+ * @param offset      offset from the base.
+ * @param max_sprites the maximum number of sprites that can be loaded in this action 5.
+ * @param name        used for error warnings.
+ * @return the number of sprites that is going to be skipped
+ */
+static uint16 SanitizeSpriteOffset(uint16& num, uint16 offset, int max_sprites, const char *name)
+{
+
+	if (offset >= max_sprites) {
+		grfmsg(1, "GraphicsNew: %s sprite offset must be less than %i, skipping", name, max_sprites);
+		uint orig_num = num;
+		num = 0;
+		return orig_num;
+	}
+
+	if (offset + num > max_sprites) {
+		grfmsg(4, "GraphicsNew: %s sprite overflow, truncating...", name);
+		uint orig_num = num;
+		num = max(max_sprites - offset, 0);
+		return orig_num - num;
+	}
+
+	return 0;
+}
+
 /* Action 0x05 */
 static void GraphicsNew(byte *buf, int len)
 {
@@ -3252,50 +3279,52 @@ static void GraphicsNew(byte *buf, int len)
 	/* TODO */
 
 	SpriteID replace = 0;
-	const SpriteID *index_tbl = NULL;
 
 	if (!check_length(len, 2, "GraphicsNew")) return;
 	buf++;
 	uint8 type = grf_load_byte(&buf);
 	uint16 num = grf_load_extended(&buf);
+	uint16 skip_num = 0;
+	uint16 offset = HASBIT(type, 7) ? grf_load_extended(&buf) : 0;
+	CLRBIT(type, 7); // Clear the high bit as that only indicates whether there is an offset.
 
 	switch (type) {
 		case 0x04: // Signal graphics
-			if (num != 112 && num != 240) {
-				grfmsg(1, "GraphicsNew: Signal graphics sprite count must be 112 or 240, skipping");
+			if (num != PRESIGNAL_SPRITE_COUNT && num != PRESIGNAL_AND_SEMAPHORE_SPRITE_COUNT && num != PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT) {
+				grfmsg(1, "GraphicsNew: Signal graphics sprite count must be 48, 112 or 240, skipping");
 				return;
 			}
-			_signal_base = _cur_spriteid;
+			replace = SPR_SIGNALS_BASE;
 			break;
 
 		case 0x05: // Catenary graphics
-			if (num != 48) {
+			if (num != ELRAIL_SPRITE_COUNT) {
 				grfmsg(1, "GraphicsNew: Catenary graphics sprite count must be 48, skipping");
 				return;
 			}
-			replace = SPR_ELRAIL_BASE + 3;
+			replace = SPR_ELRAIL_BASE;
 			break;
 
 		case 0x06: // Foundations
-			switch (num) {
-				case 74: replace = SPR_SLOPES_BASE; break;
-				case 90: index_tbl = _slopes_action05_90; break;
-				default:
-					grfmsg(1, "GraphicsNew: Foundation graphics sprite count must be 74 or 90, skipping");
-					return;
+			if (num != NORMAL_FOUNDATION_SPRITE_COUNT && num != NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT) {
+				grfmsg(1, "GraphicsNew: Foundation graphics sprite count must be 74 or 90, skipping");
+				return;
 			}
+			replace = SPR_SLOPES_BASE; break;
 			break;
 
+		/* case 0x07: // TTDP GUI sprites. Not used by OTTD. */
+
 		case 0x08: // Canal graphics
-			if (num != 65) {
+			if (num != CANALS_SPRITE_COUNT) {
 				grfmsg(1, "GraphicsNew: Canal graphics sprite count must be 65, skipping");
 				return;
 			}
-			replace = SPR_CANALS_BASE + 5;
+			replace = SPR_CANALS_BASE;
 			break;
 
 		case 0x09: // One way graphics
-			if (num != 6) {
+			if (num != ONEWAY_SPRITE_COUNT) {
 				grfmsg(1, "GraphicsNew: One way road graphics sprite count must be 6, skipping");
 				return;
 			}
@@ -3303,7 +3332,7 @@ static void GraphicsNew(byte *buf, int len)
 			break;
 
 		case 0x0A: // 2CC colour maps
-			if (num != 256) {
+			if (num != TWOCCMAP_SPRITE_COUNT) {
 				grfmsg(1, "GraphicsNew: 2CC colour maps sprite count must be 256, skipping");
 				return;
 			}
@@ -3311,12 +3340,14 @@ static void GraphicsNew(byte *buf, int len)
 			break;
 
 		case 0x0B: // tramways
-			if (num != 113) {
+			if (num != TRAMWAY_SPRITE_COUNT) {
 				grfmsg(1, "GraphicsNew: Tramway graphics sprite count must be 113, skipping");
 				return;
 			}
 			replace = SPR_TRAMWAY_BASE;
 			break;
+
+		/* case 0x0C: // Snowy temperate trees. Not yet used by OTTD. */
 
 		case 0x0D: // Coast graphics
 			if (num != 16) {
@@ -3327,8 +3358,12 @@ static void GraphicsNew(byte *buf, int len)
 			_loaded_newgrf_features.has_newwater = true;
 			break;
 
+		/* case 0x0E: // New Signals. Not yet used by OTTD. */
+
+		/* case 0x0F: // Tracks for marking sloped rail. Not yet used by OTTD. */
+
 		case 0x10: // New airport sprites
-			if (num != 15) {
+			if (num != AIRPORTX_SPRITE_COUNT) {
 				grfmsg(1, "GraphicsNew: Airport graphics sprite count must be 15, skipping");
 				return;
 			}
@@ -3336,11 +3371,31 @@ static void GraphicsNew(byte *buf, int len)
 			break;
 
 		case 0x11: // Road stop sprites
-			if (num != 8) {
+			if (num != ROADSTOP_SPRITE_COUNT) {
 				grfmsg(1, "GraphicsNew: Road stop graphics sprite count must be 8, skipping");
 				return;
 			}
 			replace = SPR_ROADSTOP_BASE;
+			break;
+
+		/* case 0x12: // Aqueduct sprites. Not yet used by OTTD. */
+
+		case 0x13: // Autorail sprites
+			if (num != AUTORAIL_SPRITE_COUNT) {
+				grfmsg(1, "GraphicsNew: Autorail graphics sprite count must be 55, skipping");
+				return;
+			}
+			replace = SPR_AUTORAIL_BASE;
+			break;
+
+		case 0x14: // Flag sprites
+			skip_num = SanitizeSpriteOffset(num, offset, FLAGS_SPRITE_COUNT, "Flag graphics");
+			replace = SPR_FLAGS_BASE + offset;
+			break;
+
+		case 0x15: // OpenTTD GUI sprites
+			skip_num = SanitizeSpriteOffset(num, offset, OPENTTD_SPRITE_COUNT, "OpenTTD graphics");
+			replace = SPR_OPENTTD_BASE + offset;
 			break;
 
 		default:
@@ -3348,12 +3403,6 @@ static void GraphicsNew(byte *buf, int len)
 					type, num);
 			_skip_sprites = num;
 			return;
-	}
-
-	if (index_tbl != NULL) {
-		grfmsg(2, "GraphicsNew: Loading %u sprites of type 0x%02X at indexed SpriteIDs", num, type);
-		LoadSpritesIndexed(_file_index, &_nfo_line, index_tbl);
-		return;
 	}
 
 	if (replace == 0) {
@@ -3366,6 +3415,8 @@ static void GraphicsNew(byte *buf, int len)
 		LoadNextSprite(replace == 0 ? _cur_spriteid++ : replace++, _file_index, _nfo_line);
 		_nfo_line++;
 	}
+
+	_skip_sprites = skip_num;
 }
 
 /* Action 0x05 (SKIP) */
@@ -5028,7 +5079,6 @@ static void ResetNewGRFData()
 	_loaded_newgrf_features.has_newhouses     = false;
 	_loaded_newgrf_features.has_newindustries = false;
 	_loaded_newgrf_features.has_newwater      = false;
-	_signal_base = 0;
 	_coast_base = 0;
 
 	InitializeSoundPool();

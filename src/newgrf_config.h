@@ -58,6 +58,8 @@ struct GRFConfig : public GRFIdentifier {
 	uint8 num_params;
 
 	struct GRFConfig *next;
+
+	bool IsOpenTTDBaseGRF() const;
 };
 
 /* First item in list of all scanned NewGRFs */

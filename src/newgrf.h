@@ -85,7 +85,6 @@ struct GRFFile {
 
 extern GRFFile *_first_grffile;
 
-extern SpriteID _signal_base;
 extern SpriteID _coast_base;
 
 struct GRFLoadedFeatures {

@@ -378,7 +378,7 @@ void DrawCanalWater(TileIndex tile)
 
 	/* Test for custom graphics, else use the default */
 	SpriteID dikes_base = GetCanalSprite(CF_DIKES, tile);
-	if (dikes_base == 0) dikes_base = SPR_CANALS_BASE + 57;
+	if (dikes_base == 0) dikes_base = SPR_CANAL_DIKES_BASE;
 
 	/* determine the edges around with water. */
 	wa  = IsWateredTile(TILE_ADDXY(tile, -1,  0)) << 0;
@@ -433,9 +433,9 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	SpriteID locks_base = GetCanalSprite(CF_LOCKS, ti->tile);
 
 	/* If no custom graphics, use defaults */
-	if (water_base == 0) water_base = SPR_CANALS_BASE + 5;
+	if (water_base == 0) water_base = SPR_CANALS_BASE;
 	if (locks_base == 0) {
-		locks_base = SPR_CANALS_BASE + 9;
+		locks_base = SPR_SHIPLIFT_BASE;
 	} else {
 		/* If using custom graphics, ignore the variation on height */
 		base = 0;

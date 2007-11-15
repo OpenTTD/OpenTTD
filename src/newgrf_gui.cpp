@@ -16,7 +16,6 @@
 #include "strings.h"
 #include "helpers.hpp"
 
-
 /** Parse an integerlist string and set each found value
  * @param p the string to be parsed. Each element in the list is seperated by a
  * comma or a space character
@@ -128,7 +127,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 			w->vscroll.cap = (w->widget[3].bottom - w->widget[3].top) / 10;
 			SetVScrollCount(w, n);
 
-			SetWindowWidgetDisabledState(w, 6, WP(w, newgrf_add_d).sel == NULL);
+			SetWindowWidgetDisabledState(w, 6, WP(w, newgrf_add_d).sel == NULL || WP(w, newgrf_add_d).sel->IsOpenTTDBaseGRF());
 			DrawWindowWidgets(w);
 
 			GfxFillRect(w->widget[3].left + 1, w->widget[3].top + 1, w->widget[3].right, w->widget[3].bottom, 0xD7);
@@ -283,6 +282,7 @@ static void SetupNewGRFState(Window *w)
 		/* All widgets are now enabled, so disable widgets we can't use */
 		if (WP(w, newgrf_d).sel == *WP(w, newgrf_d).list) DisableWindowWidget(w, SNGRFS_MOVE_UP);
 		if (WP(w, newgrf_d).sel->next == NULL) DisableWindowWidget(w, SNGRFS_MOVE_DOWN);
+		if (WP(w, newgrf_d).sel->IsOpenTTDBaseGRF()) DisableWindowWidget(w, SNGRFS_REMOVE);
 	}
 }
 
