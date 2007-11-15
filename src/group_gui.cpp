@@ -328,6 +328,19 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			SetVScrollCount(w, gl->l.list_length);
 			SetVScroll2Count(w, gv->l.list_length);
 
+			/* The drop down menu is out, *but* it may not be used, retract it. */
+			if (gv->l.list_length == 0 && IsWindowWidgetLowered(w, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
+				RaiseWindowWidget(w, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
+				Window **w2;
+				FOR_ALL_WINDOWS(w2) {
+					if (w->window_class  == WP(*w2, dropdown_d).parent_wnd_class &&
+							w->window_number == WP(*w2, dropdown_d).parent_wnd_num) {
+						DeleteWindow(*w2);
+						break;
+					}
+				}
+			}
+
 			/* Disable all lists management button when the list is empty */
 			SetWindowWidgetsDisabledState(w, gv->l.list_length == 0 || _local_player != owner,
 					GRP_WIDGET_STOP_ALL,
