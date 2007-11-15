@@ -2294,7 +2294,7 @@ void UpdateTileSelection()
 }
 
 /** highlighting tiles while only going over them with the mouse */
-void VpStartPlaceSizing(TileIndex tile, byte method, byte process)
+void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, byte process)
 {
 	_thd.select_method = method;
 	_thd.select_proc   = process;
@@ -2631,7 +2631,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
  * @param y Y coordinate of end of selection
  * @param method modifies the way tiles are selected. Possible
  * methods are VPM_* in viewport.h */
-void VpSelectTilesWithMethod(int x, int y, int method)
+void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 {
 	int sx, sy;
 	HighLightStyle style;

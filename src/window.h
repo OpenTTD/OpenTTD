@@ -12,6 +12,7 @@
 #include "road.h"
 #include "airport.h"
 #include "vehicle.h"
+#include "viewport.h"
 
 struct WindowEvent;
 
@@ -140,7 +141,7 @@ struct WindowEvent {
 			Point pt;
 			TileIndex tile;
 			TileIndex starttile;
-			byte select_method;
+			ViewportPlaceMethod select_method;
 			byte select_proc;
 		} place;
 

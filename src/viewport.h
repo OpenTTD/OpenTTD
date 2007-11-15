@@ -73,20 +73,17 @@ void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
 
-void VpStartPlaceSizing(TileIndex tile, byte method, byte process);
-void VpSetPresizeRange(uint from, uint to);
-void VpSetPlaceSizingLimit(int limit);
-
 Vehicle *CheckMouseOverVehicle();
 
-enum {
-	VPM_X_OR_Y          = 0,
-	VPM_FIX_X           = 1,
-	VPM_FIX_Y           = 2,
-	VPM_RAILDIRS        = 3,
-	VPM_X_AND_Y         = 4,
-	VPM_X_AND_Y_LIMITED = 5,
-	VPM_SIGNALDIRS      = 6
+/** Viewport place method (type of highlighted area and placed objects) */
+enum ViewportPlaceMethod {
+	VPM_X_OR_Y          = 0, ///< drag in X or Y direction
+	VPM_FIX_X           = 1, ///< drag only in X axis
+	VPM_FIX_Y           = 2, ///< drag only in Y axis
+	VPM_RAILDIRS        = 3, ///< all rail directions
+	VPM_X_AND_Y         = 4, ///< area of land in X and Y directions
+	VPM_X_AND_Y_LIMITED = 5, ///< area of land of limited size
+	VPM_SIGNALDIRS      = 6, ///< similiar to VMP_RAILDIRS, but with different cursor
 };
 
 /* viewport highlight mode (for highlighting tiles below cursor) */
@@ -99,7 +96,10 @@ enum {
 	VHM_RAIL    = 5, ///< rail pieces
 };
 
-void VpSelectTilesWithMethod(int x, int y, int method);
+void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method);
+void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, byte process);
+void VpSetPresizeRange(uint from, uint to);
+void VpSetPlaceSizingLimit(int limit);
 
 /* highlighting draw styles */
 typedef byte HighLightStyle;
@@ -148,7 +148,7 @@ struct TileHighlightData {
 	WindowClass window_class;
 	WindowNumber window_number;
 
-	byte select_method;
+	ViewportPlaceMethod select_method;
 	byte select_proc;
 
 	TileIndex redsq;
