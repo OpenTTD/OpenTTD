@@ -2610,7 +2610,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :maglev-veturin
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}: veturitalli
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupungilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle ({STATION})!
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle ({STATION})!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (yksityiskohdat)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna on tiellä.
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
