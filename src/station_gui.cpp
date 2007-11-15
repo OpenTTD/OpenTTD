@@ -127,6 +127,9 @@ static int CDECL StationTypeSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? st2->facilities - st1->facilities : st1->facilities - st2->facilities;
 }
 
+static const uint32 _cargo_filter_max = ~0;
+static uint32 _cargo_filter = _cargo_filter_max;
+
 static int CDECL StationWaitingSorter(const void *a, const void *b)
 {
 	const Station* st1 = *(const Station**)a;
@@ -134,6 +137,7 @@ static int CDECL StationWaitingSorter(const void *a, const void *b)
 	Money sum1 = 0, sum2 = 0;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
+		if (!HASBIT(_cargo_filter, j)) continue;
 		if (!st1->goods[j].cargo.Empty()) sum1 += GetTransportedGoodsIncome(st1->goods[j].cargo.Count(), 20, 50, j);
 		if (!st2->goods[j].cargo.Empty()) sum2 += GetTransportedGoodsIncome(st2->goods[j].cargo.Count(), 20, 50, j);
 	}
@@ -271,9 +275,6 @@ static void SortStationsList(plstations_d *sl)
 	sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 	sl->flags &= ~SL_RESORT;
 }
-
-static const uint32 _cargo_filter_max = ~0;
-static uint32 _cargo_filter = _cargo_filter_max;
 
 static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 {
