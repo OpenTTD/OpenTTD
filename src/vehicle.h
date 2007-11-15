@@ -136,6 +136,7 @@ struct VehicleRail {
 	 * bit     7 = disable powered wagons.
 	 */
 	byte cached_vis_effect;
+	byte user_def_data;
 
 	/* NOSAVE: for wagon override - id of the first engine in train
 	 * 0xffff == not in train */

@@ -548,7 +548,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 				cargo_classes |= GetCargo(u->cargo_type)->classes;
 				common_cargos[u->cargo_type]++;
-				if (v->type == VEH_TRAIN) user_def_data |= RailVehInfo(u->engine_type)->user_def_data;
+				if (v->type == VEH_TRAIN) user_def_data |= u->u.rail.user_def_data;
 				common_subtypes[u->cargo_subtype]++;
 			}
 
