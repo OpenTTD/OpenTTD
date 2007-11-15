@@ -258,22 +258,22 @@ enum RailToolbarWidgets {
 
 static void BuildRailClick_N(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, 1, PlaceRail_N);
+	HandlePlacePushButton(w, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, VHM_RECT, PlaceRail_N);
 }
 
 static void BuildRailClick_NE(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, 1, PlaceRail_NE);
+	HandlePlacePushButton(w, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, VHM_RECT, PlaceRail_NE);
 }
 
 static void BuildRailClick_E(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, 1, PlaceRail_E);
+	HandlePlacePushButton(w, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, VHM_RECT, PlaceRail_E);
 }
 
 static void BuildRailClick_NW(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, 1, PlaceRail_NW);
+	HandlePlacePushButton(w, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, VHM_RECT, PlaceRail_NW);
 }
 
 static void BuildRailClick_AutoRail(Window *w)
@@ -283,12 +283,12 @@ static void BuildRailClick_AutoRail(Window *w)
 
 static void BuildRailClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
 }
 
 static void BuildRailClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, 1, PlaceRail_Depot)) {
+	if (HandlePlacePushButton(w, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, VHM_RECT, PlaceRail_Depot)) {
 		ShowBuildTrainDepotPicker();
 	}
 }
@@ -296,7 +296,7 @@ static void BuildRailClick_Depot(Window *w)
 static void BuildRailClick_Waypoint(Window *w)
 {
 	_waypoint_count = GetNumCustomStations(STAT_CLASS_WAYP);
-	if (HandlePlacePushButton(w, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, 1, PlaceRail_Waypoint) &&
+	if (HandlePlacePushButton(w, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, VHM_RECT, PlaceRail_Waypoint) &&
 			_waypoint_count > 1) {
 		ShowBuildWaypointPicker();
 	}
@@ -304,7 +304,7 @@ static void BuildRailClick_Waypoint(Window *w)
 
 static void BuildRailClick_Station(Window *w)
 {
-	if (HandlePlacePushButton(w, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, 1, PlaceRail_Station)) ShowStationBuilder();
+	if (HandlePlacePushButton(w, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, VHM_RECT, PlaceRail_Station)) ShowStationBuilder();
 }
 
 static void BuildRailClick_AutoSignals(Window *w)
@@ -314,12 +314,12 @@ static void BuildRailClick_AutoSignals(Window *w)
 
 static void BuildRailClick_Bridge(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, 1, PlaceRail_Bridge);
+	HandlePlacePushButton(w, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, VHM_RECT, PlaceRail_Bridge);
 }
 
 static void BuildRailClick_Tunnel(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, 3, PlaceRail_Tunnel);
+	HandlePlacePushButton(w, RTW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, VHM_SPECIAL, PlaceRail_Tunnel);
 }
 
 static void BuildRailClick_Remove(Window *w)
@@ -340,7 +340,7 @@ static void BuildRailClick_Remove(Window *w)
 
 static void BuildRailClick_Convert(Window *w)
 {
-	HandlePlacePushButton(w, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, 1, PlaceRail_ConvertRail);
+	HandlePlacePushButton(w, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, VHM_RECT, PlaceRail_ConvertRail);
 }
 
 

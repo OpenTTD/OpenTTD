@@ -199,7 +199,7 @@ void PlaceLandBlockInfo()
 		ResetObjectToPlace();
 	} else {
 		_place_proc = Place_LandInfo;
-		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, 1, WC_MAIN_TOOLBAR, 0);
+		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, VHM_RECT, WC_MAIN_TOOLBAR, 0);
 	}
 }
 
@@ -366,12 +366,12 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 		case 11:case 12: case 13: case 14:
 			if (wid - 3 >= WP(w,tree_d).count) break;
 
-			if (HandlePlacePushButton(w, wid, SPR_CURSOR_TREE, 1, NULL))
+			if (HandlePlacePushButton(w, wid, SPR_CURSOR_TREE, VHM_RECT, NULL))
 				_tree_to_plant = WP(w,tree_d).base + wid - 3;
 			break;
 
 		case 15: // tree of random type.
-			if (HandlePlacePushButton(w, 15, SPR_CURSOR_TREE, 1, NULL))
+			if (HandlePlacePushButton(w, 15, SPR_CURSOR_TREE, VHM_RECT, NULL))
 				_tree_to_plant = -1;
 			break;
 
@@ -1675,7 +1675,7 @@ void ShowSaveLoadDialog(int mode)
 	const WindowDesc *sld = &_save_dialog_desc;
 
 
-	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, WC_MAIN_WINDOW, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 

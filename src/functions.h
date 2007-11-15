@@ -6,6 +6,7 @@
 #define FUNCTIONS_H
 
 #include "gfx.h"
+#include "viewport.h"
 
 void UpdateTownMaxPass(Town *t);
 
@@ -123,8 +124,8 @@ void InvalidateWindowClassesData(WindowClass cls);
 void DeleteWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindowByClass(WindowClass cls);
 
-void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, byte mode, Window *w);
-void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window_class, WindowNumber window_num);
+void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode, Window *w);
+void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, WindowClass window_class, WindowNumber window_num);
 
 void ResetObjectToPlace();
 

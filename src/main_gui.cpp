@@ -119,7 +119,7 @@ void HandleOnEditText(const char *str)
  * @param placeproc Procedure which will be called when someone clicks on the map
  * @return true if the button is clicked, false if it's unclicked
  */
-bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, PlaceProc *placeproc)
+bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, ViewportHighlightMode mode, PlaceProc *placeproc)
 {
 	if (IsWindowWidgetDisabled(w, widget)) return false;
 
@@ -352,7 +352,7 @@ static void SelectSignTool()
 	if (_cursor.sprite == SPR_CURSOR_SIGN) {
 		ResetObjectToPlace();
 	} else {
-		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, 1, WC_MAIN_TOOLBAR, 0);
+		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, VHM_RECT, WC_MAIN_TOOLBAR, 0);
 		_place_proc = PlaceProc_Sign;
 	}
 }
@@ -1197,42 +1197,42 @@ static const int8 _multi_terraform_coords[][2] = {
  */
 static void EditorTerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, 4, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, 4, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
 }
 
 static void EditorTerraformClick_LowerBigLand(Window *w)
 {
-	HandlePlacePushButton(w, 5, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerBigLand);
+	HandlePlacePushButton(w, 5, ANIMCURSOR_LOWERLAND, VHM_POINT, PlaceProc_LowerBigLand);
 }
 
 static void EditorTerraformClick_RaiseBigLand(Window *w)
 {
-	HandlePlacePushButton(w, 6, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseBigLand);
+	HandlePlacePushButton(w, 6, ANIMCURSOR_RAISELAND, VHM_POINT, PlaceProc_RaiseBigLand);
 }
 
 static void EditorTerraformClick_LevelLand(Window *w)
 {
-	HandlePlacePushButton(w, 7, SPR_CURSOR_LEVEL_LAND, 2, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, 7, SPR_CURSOR_LEVEL_LAND, VHM_POINT, PlaceProc_LevelLand);
 }
 
 static void EditorTerraformClick_WaterArea(Window *w)
 {
-	HandlePlacePushButton(w, 8, SPR_CURSOR_CANAL, 1, PlaceProc_WaterArea);
+	HandlePlacePushButton(w, 8, SPR_CURSOR_CANAL, VHM_RECT, PlaceProc_WaterArea);
 }
 
 static void EditorTerraformClick_RockyArea(Window *w)
 {
-	HandlePlacePushButton(w, 9, SPR_CURSOR_ROCKY_AREA, 1, PlaceProc_RockyArea);
+	HandlePlacePushButton(w, 9, SPR_CURSOR_ROCKY_AREA, VHM_RECT, PlaceProc_RockyArea);
 }
 
 static void EditorTerraformClick_DesertLightHouse(Window *w)
 {
-	HandlePlacePushButton(w, 10, SPR_CURSOR_LIGHTHOUSE, 1, (_opt.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
+	HandlePlacePushButton(w, 10, SPR_CURSOR_LIGHTHOUSE, VHM_RECT, (_opt.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
 }
 
 static void EditorTerraformClick_Transmitter(Window *w)
 {
-	HandlePlacePushButton(w, 11, SPR_CURSOR_TRANSMITTER, 1, PlaceProc_Transmitter);
+	HandlePlacePushButton(w, 11, SPR_CURSOR_TRANSMITTER, VHM_RECT, PlaceProc_Transmitter);
 }
 
 static const uint16 _editor_terraform_keycodes[] = {
@@ -1462,7 +1462,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 4: // new town
-			HandlePlacePushButton(w, 4, SPR_CURSOR_TOWN, 1, PlaceProc_Town);
+			HandlePlacePushButton(w, 4, SPR_CURSOR_TOWN, VHM_RECT, PlaceProc_Town);
 			break;
 		case 5: {// random town
 			Town *t;

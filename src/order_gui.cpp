@@ -401,7 +401,7 @@ static void OrderClick_Goto(Window *w, const Vehicle *v)
 	ToggleWidgetLoweredState(w, ORDER_WIDGET_GOTO);
 	if (IsWindowWidgetLowered(w, ORDER_WIDGET_GOTO)) {
 		_place_clicked_vehicle = NULL;
-		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, 1, w);
+		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, VHM_RECT, w);
 	} else {
 		ResetObjectToPlace();
 	}
@@ -591,7 +591,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 					if (v->owner == _local_player) {
 						/* Activate drag and drop */
-						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, 4, w);
+						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, VHM_DRAG, w);
 					}
 				}
 			}

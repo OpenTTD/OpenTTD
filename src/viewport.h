@@ -87,7 +87,7 @@ enum ViewportPlaceMethod {
 };
 
 /* viewport highlight mode (for highlighting tiles below cursor) */
-enum {
+enum ViewportHighlightMode {
 	VHM_NONE    = 0, ///< default
 	VHM_RECT    = 1, ///< rectangle (stations, depots, ...)
 	VHM_POINT   = 2, ///< point (lower land, raise land, level land, ...)
@@ -156,7 +156,7 @@ struct TileHighlightData {
 
 
 /* common button handler */
-bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, PlaceProc *placeproc);
+bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, ViewportHighlightMode mode, PlaceProc *placeproc);
 
 VARDEF Point _tile_fract_coords;
 

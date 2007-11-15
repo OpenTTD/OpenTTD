@@ -270,7 +270,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 						DoCommandP(0, WP(w, fnd_d).select, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 						HandleButtonClick(w, DYNA_INDU_FUND_WIDGET);
 					} else {
-						HandlePlacePushButton(w, DYNA_INDU_FUND_WIDGET, SPR_CURSOR_INDUSTRY, 1, NULL);
+						HandlePlacePushButton(w, DYNA_INDU_FUND_WIDGET, SPR_CURSOR_INDUSTRY, VHM_RECT, NULL);
 					}
 				} break;
 			}

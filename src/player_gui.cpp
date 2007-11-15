@@ -1159,7 +1159,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					if (tile == 0) {
 						if ((byte)w->window_number != _local_player)
 							return;
-						SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, 1, w);
+						SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, w);
 						SetTileSelectSize(2, 2);
 						LowerWindowWidget(w, PCW_WIDGET_BUILD_VIEW_HQ);
 						InvalidateWidget(w, PCW_WIDGET_BUILD_VIEW_HQ);
@@ -1170,7 +1170,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				}
 
 				case PCW_WIDGET_RELOCATE_HQ:
-					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, 1, w);
+					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, w);
 					SetTileSelectSize(2, 2);
 					LowerWindowWidget(w, PCW_WIDGET_RELOCATE_HQ);
 					InvalidateWidget(w, PCW_WIDGET_RELOCATE_HQ);

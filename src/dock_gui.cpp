@@ -79,35 +79,35 @@ enum {
 
 static void BuildDocksClick_Canal(Window *w)
 {
-	HandlePlacePushButton(w, DTW_CANAL, SPR_CURSOR_CANAL, 1, PlaceDocks_BuildCanal);
+	HandlePlacePushButton(w, DTW_CANAL, SPR_CURSOR_CANAL, VHM_RECT, PlaceDocks_BuildCanal);
 }
 
 static void BuildDocksClick_Lock(Window *w)
 {
-	HandlePlacePushButton(w, DTW_LOCK, SPR_CURSOR_LOCK, 1, PlaceDocks_BuildLock);
+	HandlePlacePushButton(w, DTW_LOCK, SPR_CURSOR_LOCK, VHM_RECT, PlaceDocks_BuildLock);
 }
 
 static void BuildDocksClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, 1, PlaceDocks_DemolishArea);
+	HandlePlacePushButton(w, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceDocks_DemolishArea);
 }
 
 static void BuildDocksClick_Depot(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-	if (HandlePlacePushButton(w, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, 1, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
+	if (HandlePlacePushButton(w, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, VHM_RECT, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
 }
 
 static void BuildDocksClick_Dock(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-	if (HandlePlacePushButton(w, DTW_STATION, SPR_CURSOR_DOCK, 3, PlaceDocks_Dock)) ShowBuildDockStationPicker();
+	if (HandlePlacePushButton(w, DTW_STATION, SPR_CURSOR_DOCK, VHM_SPECIAL, PlaceDocks_Dock)) ShowBuildDockStationPicker();
 }
 
 static void BuildDocksClick_Buoy(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, 1, PlaceDocks_Buoy);
+	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, VHM_RECT, PlaceDocks_Buoy);
 }
 
 

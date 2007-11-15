@@ -2799,14 +2799,14 @@ bool VpHandlePlaceSizingDrag()
 	return false;
 }
 
-void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, byte mode, Window *w)
+void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode, Window *w)
 {
 	SetObjectToPlace(icon, pal, mode, w->window_class, w->window_number);
 }
 
 #include "table/animcursors.h"
 
-void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window_class, WindowNumber window_num)
+void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, WindowClass window_class, WindowNumber window_num)
 {
 	Window *w;
 
@@ -2821,8 +2821,8 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, byte mode, WindowClass window
 
 	_thd.make_square_red = false;
 
-	if (mode == VHM_DRAG) { // mode 4 is for dragdropping trains in the depot window
-		mode = 0;
+	if (mode == VHM_DRAG) { // VHM_DRAG is for dragdropping trains in the depot window
+		mode = VHM_NONE;
 		_special_mouse_mode = WSM_DRAGDROP;
 	} else {
 		_special_mouse_mode = WSM_NONE;

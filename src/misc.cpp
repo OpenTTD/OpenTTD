@@ -23,6 +23,7 @@
 #include "date.h"
 #include "cargotype.h"
 #include "group.h"
+#include "viewport.h"
 
 char _name_array[512][32];
 
@@ -105,7 +106,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 
 	AddTypeToEngines(); // make sure all engines have a type
 
-	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, WC_MAIN_WINDOW, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 
 	_pause_game = 0;
 	_fast_forward = 0;

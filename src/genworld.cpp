@@ -20,6 +20,7 @@
 #include "settings.h"
 #include "heightmap.h"
 #include "date.h"
+#include "viewport.h"
 
 void GenerateClearTile();
 void GenerateIndustries();
@@ -85,7 +86,7 @@ static void *_GenerateWorld(void *arg)
 	if (_patches.generation_seed == GENERATE_NEW_SEED) _patches.generation_seed = _patches_newgame.generation_seed = InteractiveRandom();
 	_random_seeds[0][0] = _random_seeds[0][1] = _patches.generation_seed;
 	SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
-	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, 0, WC_MAIN_WINDOW, 0);
+	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 
 	IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
 	/* Must start economy early because of the costs. */

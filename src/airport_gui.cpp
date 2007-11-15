@@ -51,12 +51,12 @@ enum {
 
 static void BuildAirClick_Airport(Window *w)
 {
-	if (HandlePlacePushButton(w, ATW_AIRPORT, SPR_CURSOR_AIRPORT, 1, PlaceAirport)) ShowBuildAirportPicker();
+	if (HandlePlacePushButton(w, ATW_AIRPORT, SPR_CURSOR_AIRPORT, VHM_RECT, PlaceAirport)) ShowBuildAirportPicker();
 }
 
 static void BuildAirClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, 1, PlaceAir_DemolishArea);
+	HandlePlacePushButton(w, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceAir_DemolishArea);
 }
 
 

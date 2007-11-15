@@ -436,7 +436,7 @@ static void DepotClick(Window *w, int x, int y)
 
 				WP(w, depot_d).sel = v->index;
 				SetWindowDirty(w);
-				SetObjectToPlaceWnd(image, GetVehiclePalette(v), 4, w);
+				SetObjectToPlaceWnd(image, GetVehiclePalette(v), VHM_DRAG, w);
 			}
 			}
 			break;

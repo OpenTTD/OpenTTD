@@ -167,27 +167,27 @@ void PlaceProc_LevelLand(TileIndex tile)
 
 static void TerraformClick_Lower(Window *w)
 {
-	HandlePlacePushButton(w, 4, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
+	HandlePlacePushButton(w, 4, ANIMCURSOR_LOWERLAND, VHM_POINT, PlaceProc_LowerLand);
 }
 
 static void TerraformClick_Raise(Window *w)
 {
-	HandlePlacePushButton(w, 5, ANIMCURSOR_RAISELAND, 2, PlaceProc_RaiseLand);
+	HandlePlacePushButton(w, 5, ANIMCURSOR_RAISELAND, VHM_POINT, PlaceProc_RaiseLand);
 }
 
 static void TerraformClick_Level(Window *w)
 {
-	HandlePlacePushButton(w, 6, SPR_CURSOR_LEVEL_LAND, 2, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, 6, SPR_CURSOR_LEVEL_LAND, VHM_POINT, PlaceProc_LevelLand);
 }
 
 static void TerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, 7, ANIMCURSOR_DEMOLISH , 1, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, 7, ANIMCURSOR_DEMOLISH , VHM_RECT, PlaceProc_DemolishArea);
 }
 
 static void TerraformClick_BuyLand(Window *w)
 {
-	HandlePlacePushButton(w, 8, SPR_CURSOR_BUY_LAND, 1, PlaceProc_BuyLand);
+	HandlePlacePushButton(w, 8, SPR_CURSOR_BUY_LAND, VHM_RECT, PlaceProc_BuyLand);
 }
 
 static void TerraformClick_Trees(Window *w)
@@ -198,7 +198,7 @@ static void TerraformClick_Trees(Window *w)
 
 static void TerraformClick_PlaceSign(Window *w)
 {
-	HandlePlacePushButton(w, 10, SPR_CURSOR_SIGN, 1, PlaceProc_Sign);
+	HandlePlacePushButton(w, 10, SPR_CURSOR_SIGN, VHM_RECT, PlaceProc_Sign);
 }
 
 static OnButtonClick * const _terraform_button_proc[] = {
