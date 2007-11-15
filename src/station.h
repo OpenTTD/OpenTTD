@@ -14,6 +14,7 @@
 #include "newgrf_station.h"
 #include "cargopacket.h"
 #include <list>
+#include <set>
 
 struct Station;
 struct RoadStop;
@@ -240,6 +241,11 @@ enum CatchmentArea {
 };
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
+
+/** A set of stations (\c const \c Station* ) */
+typedef std::set<Station*> StationSet;
+
+StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h);
 
 void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord();

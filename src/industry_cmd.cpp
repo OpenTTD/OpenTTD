@@ -13,6 +13,7 @@
 #include "table/sprites.h"
 #include "map.h"
 #include "tile.h"
+#include "train.h"
 #include "landscape.h"
 #include "viewport.h"
 #include "command.h"
@@ -1856,6 +1857,134 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) == 0 && GetIndustryTypeCount(type) <= 1;
 }
 
+/**
+* Can given cargo type be accepted or produced by the industry?
+* @param cargo: Cargo type
+* @param ind: Industry
+* @param *c_accepts: Pointer to boolean for acceptance of cargo
+* @param *c_produces: Pointer to boolean for production of cargo
+* @return: \c *c_accepts is set when industry accepts the cargo type,
+*          \c *c_produces is set when the industry produces the cargo type
+*/
+static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accepts, bool *c_produces)
+{
+	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
+
+	/* Check for acceptance of cargo */
+	for (uint j = 0; j < lengthof(ind->accepts_cargo) && ind->accepts_cargo[j] != CT_INVALID; j++) {
+		if (cargo == ind->accepts_cargo[j]) {
+			if (HASBIT(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
+				uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO,
+						0, GetReverseCargoTranslation(cargo, indspec->grf_prop.grffile),
+						ind, ind->type, ind->xy);
+				if (res == 0) continue;
+			}
+			*c_accepts = true;
+			break;
+		}
+	}
+
+	/* Check for produced cargo */
+	for (uint j = 0; j < lengthof(ind->produced_cargo) && ind->produced_cargo[j] != CT_INVALID; j++) {
+		if (cargo == ind->produced_cargo[j]) {
+			*c_produces = true;
+			break;
+		}
+	}
+}
+
+/**
+* Compute who can service the industry.
+*
+* Here, 'can service' means that he/she has trains and stations close enough
+* to the industry with the right cargo type and the right orders (ie has the
+* technical means).
+*
+* @param ind: Industry being investigated.
+*
+* @return: 0 if nobody can service the industry, 2 if the local player can
+* service the industry, and 1 otherwise (only competitors can service the
+* industry)
+*/
+int WhoCanServiceIndustry(Industry* ind)
+{
+	/* Find all stations within reach of the industry */
+	StationSet stations = FindStationsAroundIndustryTile(ind->xy, ind->width, ind->height);
+
+	if (stations.size() == 0) return 0; // No stations found at all => nobody services
+
+	const Vehicle *v;
+	int result = 0;
+	FOR_ALL_VEHICLES(v) {
+		/* Is it worthwhile to try this vehicle? */
+		if (v->owner != _local_player && result != 0) continue;
+
+		/* Check whether it accepts the right kind of cargo */
+		bool c_accepts = false;
+		bool c_produces = false;
+		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
+			const Vehicle *u = v;
+			BEGIN_ENUM_WAGONS(u)
+				CanCargoServiceIndustry(u->cargo_type, ind, &c_accepts, &c_produces);
+			END_ENUM_WAGONS(u)
+		} else if (v->type == VEH_ROAD || v->type == VEH_SHIP || v->type == VEH_AIRCRAFT) {
+			CanCargoServiceIndustry(v->cargo_type, ind, &c_accepts, &c_produces);
+		} else {
+			continue;
+		}
+		if (!c_accepts && !c_produces) continue; // Wrong cargo
+
+		/* Check orders of the vehicle.
+		 * We cannot check the first of shared orders only, since the first vehicle in such a chain
+		 * may have a different cargo type.
+		 */
+		const Order *o;
+		FOR_VEHICLE_ORDERS(v, o) {
+			if (o->type == OT_GOTO_STATION && !HASBIT(o->flags, OFB_TRANSFER)) {
+				/* Vehicle visits a station to load or unload */
+				Station *st = GetStation(o->dest);
+				if (!st->IsValid()) continue;
+
+				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
+				if (HASBIT(o->flags, OFB_UNLOAD) && !c_accepts) break;
+
+				if (stations.find(st) != stations.end()) {
+					if (v->owner == _local_player) return 2; // Player services industry
+					result = 1; // Competitor services industry
+				}
+			}
+		}
+	}
+	return result;
+}
+
+/**
+* Report news that industry production has changed significantly
+*
+* @param ind: Industry with changed production
+* @param type: Cargo type that has changed
+* @param percent: Percentage of change (>0 means increase, <0 means decrease)
+*/
+static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int percent)
+{
+	NewsType nt;
+
+	switch (WhoCanServiceIndustry(ind)) {
+		case 0: nt = NT_INDUSTRY_NOBODY; break;
+		case 1: nt = NT_INDUSTRY_OTHER;  break;
+		case 2: nt = NT_INDUSTRY_PLAYER; break;
+		default: NOT_REACHED(); break;
+	}
+	SetDParam(2, abs(percent));
+	SetDParam(0, GetCargo(type)->name);
+	SetDParam(1, ind->index);
+	AddNewsItem(
+		percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
+		NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, nt, 0),
+		ind->xy + TileDiffXY(1, 1), 0
+	);
+}
+
 /** Change industry production or do closure
  * @param i Industry for which changes are performed
  * @param monthly true if it's the monthly call, false if it's the random call
@@ -1909,7 +2038,6 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			for (byte j = 0; j < 2 && i->produced_cargo[j] != CT_INVALID; j++){
 				uint32 r = Random();
 				int old_prod, new_prod, percent;
-				int mag;
 
 				new_prod = old_prod = i->production_rate[j];
 
@@ -1932,16 +2060,8 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				/* Close the industry when it has the lowest possible production rate */
 				if (new_prod > 1) closeit = false;
 
-				mag = abs(percent);
-				if (mag >= 10) {
-					SetDParam(2, mag);
-					SetDParam(0, GetCargo(i->produced_cargo[j])->name);
-					SetDParam(1, i->index);
-					AddNewsItem(
-						percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
-						NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ECONOMY, 0),
-						i->xy + TileDiffXY(1, 1), 0
-					);
+				if (abs(percent) >= 10) {
+					ReportNewsProductionChangeIndustry(i, i->produced_cargo[j], percent);
 				}
 			}
 		} else {
@@ -1989,6 +2109,19 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 
 	if (!suppress_message && str != STR_NULL) {
+		NewsType nt;
+		/* Compute news category */
+		if (closeit) {
+			nt = NT_OPENCLOSE;
+		} else {
+			switch (WhoCanServiceIndustry(i)) {
+				case 0: nt = NT_INDUSTRY_NOBODY; break;
+				case 1: nt = NT_INDUSTRY_OTHER;  break;
+				case 2: nt = NT_INDUSTRY_PLAYER; break;
+				default: NOT_REACHED(); break;
+			}
+		}
+		/* Set parameters of news string */
 		if (str > STR_LAST_STRINGID) {
 			SetDParam(0, STR_TOWN);
 			SetDParam(1, i->town->index);
@@ -2000,8 +2133,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		} else {
 			SetDParam(0, i->index);
 		}
+		/* and report the news to the user */
 		AddNewsItem(str,
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, closeit ? NT_OPENCLOSE : NT_ECONOMY, 0),
+			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, nt, 0),
 			i->xy + TileDiffXY(1, 1), 0);
 	}
 }
@@ -2084,7 +2218,7 @@ static CommandCost TerraformTile_Industry(TileIndex tile, uint32 flags, uint z_n
 				uint16 res = GetIndustryTileCallback(CBID_INDUSTRY_AUTOSLOPE, 0, 0, gfx, GetIndustryByTile(tile), tile);
 				if ((res == 0) || (res == CALLBACK_FAILED)) return _price.terraform;
 			} else {
-				// allow autoslope
+				/* allow autoslope */
 				return _price.terraform;
 			}
 		}

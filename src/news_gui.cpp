@@ -341,6 +341,9 @@ static const byte _news_items_age[NT_END] = {
 	60,  ///< NT_COMPANY_INFO
 	90,  ///< NT_OPENCLOSE
 	30,  ///< NT_ECONOMY
+	30,  ///< NT_INDUSTRY_PLAYER
+	30,  ///< NT_INDUSTRY_OTHER
+	30,  ///< NT_INDUSTRY_NOBODY
 	150, ///< NT_ADVICE
 	30,  ///< NT_NEW_VEHICLES
 	90,  ///< NT_ACCEPTANCE
@@ -394,17 +397,20 @@ static WindowDesc _news_type0_desc = {
 };
 
 static const SoundFx _news_sounds[NT_END] = {
-	SND_1D_APPLAUSE,
-	SND_1D_APPLAUSE,
-	SND_BEGIN,
-	SND_BEGIN,
-	SND_BEGIN,
-	SND_BEGIN,
-	SND_BEGIN,
-	SND_1E_OOOOH,
-	SND_BEGIN,
-	SND_BEGIN,
-	SND_BEGIN,
+	SND_1D_APPLAUSE,	///< NT_ARRIVAL_PLAYER
+	SND_1D_APPLAUSE,	///< NT_ARRIVAL_OTHER
+	SND_BEGIN,		///< NT_ACCIDENT
+	SND_BEGIN,		///< NT_COMPANY_INFO
+	SND_BEGIN,		///< NT_OPENCLOSE
+	SND_BEGIN,		///< NT_ECONOMY
+	SND_BEGIN,		///< NT_INDUSTRY_PLAYER
+	SND_BEGIN,		///< NT_INDUSTRY_OTHER
+	SND_BEGIN,		///< NT_INDUSTRY_NOBODY
+	SND_BEGIN,		///< NT_ADVICE
+	SND_1E_OOOOH,		///< NT_NEW_VEHICLES
+	SND_BEGIN,		///< NT_ACCEPTANCE
+	SND_BEGIN,		///< NT_SUBSIDIES
+	SND_BEGIN,		///< NT_GENERAL
 };
 
 const char *_news_display_name[NT_END] = {
@@ -414,6 +420,9 @@ const char *_news_display_name[NT_END] = {
 	"company_info",
 	"openclose",
 	"economy",
+	"production_player",
+	"production_other",
+	"production_nobody",
 	"advice",
 	"new_vehicles",
 	"acceptance",
@@ -771,6 +780,7 @@ void ShowMessageHistory()
 }
 
 
+/** News settings window widget offset constants */
 enum {
 	WIDGET_NEWSOPT_BTN_SUMMARY  = 4,  ///< Button that adjusts at once the level for all settings
 	WIDGET_NEWSOPT_DROP_SUMMARY,      ///< Drop down button for same upper button
@@ -880,83 +890,106 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 	}
 }
 
+
+/*
+* The news settings window widgets
+*
+* Main part of the window is a list of news-setting lines, one for each news category.
+* Each line is constructed by an expansion of the \c NEWS_SETTINGS_LINE macro
+*/
+
+/**
+* Macro to construct one news-setting line in the news-settings window.
+* One line consists of four widgets, namely
+* - A [<] button
+* - A [...] label
+* - A [>] button
+* - A text label describing the news category
+* Horizontal positions of the widgets are hard-coded, vertical start position is (\a basey + \a linenum * \c NEWS_SETTING_BASELINE_SKIP).
+* Height of one line is 12, with the text label shifted 1 pixel down.
+*
+* First line should be widget number WIDGET_NEWSOPT_START_OPTION
+*
+* @param basey: Base Y coordinate
+* @param linenum: Count, news-setting is the \a linenum-th line
+* @param text: StringID for the text label to display
+*/
+#define NEWS_SETTINGS_LINE(basey, linenum, text) \
+	{ WWT_PUSHIMGBTN, RESIZE_NONE, COLOUR_YELLOW, \
+	    4,  12,  basey     + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 11 + linenum * NEWS_SETTING_BASELINE_SKIP, \
+	  SPR_ARROW_LEFT, STR_HSCROLL_BAR_SCROLLS_LIST}, \
+	{ WWT_PUSHTXTBTN, RESIZE_NONE, COLOUR_YELLOW, \
+	   13,  89,  basey     + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 11 + linenum * NEWS_SETTING_BASELINE_SKIP, \
+	  STR_EMPTY, STR_NULL}, \
+	{ WWT_PUSHIMGBTN, RESIZE_NONE, COLOUR_YELLOW, \
+	   90,  98,  basey     + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 11 + linenum * NEWS_SETTING_BASELINE_SKIP, \
+	  SPR_ARROW_RIGHT, STR_HSCROLL_BAR_SCROLLS_LIST}, \
+        { WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW, \
+	  103, 409,  basey + 1 + linenum * NEWS_SETTING_BASELINE_SKIP,  basey + 13 + linenum * NEWS_SETTING_BASELINE_SKIP, \
+	  text, STR_NULL}
+
+static const int NEWS_SETTING_BASELINE_SKIP = 12; ///< Distance between two news-setting lines, should be at least 12
+
+
 static const Widget _message_options_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,   10,     0,    13, STR_00C5,                              STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    13,    11,  409,     0,    13, STR_0204_MESSAGE_OPTIONS,              STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   196, 0x0,                                   STR_NULL},
+{ WWT_CLOSEBOX, RESIZE_NONE, COLOUR_BROWN,   0,  10,  0, 13,
+	STR_00C5,                 STR_018B_CLOSE_WINDOW},
+{  WWT_CAPTION, RESIZE_NONE, COLOUR_BROWN,  11, 409,  0, 13,
+	STR_0204_MESSAGE_OPTIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,   0, 409, 14, 64 + NT_END * NEWS_SETTING_BASELINE_SKIP,
+	0x0,                      STR_NULL},
 
 /* Text at the top of the main panel, in black */
-{      WWT_LABEL,   RESIZE_NONE,    13,     0,  409,    13,    26, STR_0205_MESSAGE_TYPES,                STR_NULL},
+{    WWT_LABEL, RESIZE_NONE, COLOUR_BROWN,
+	  0, 409, 13, 26,
+	STR_0205_MESSAGE_TYPES,   STR_NULL},
 
-/* General drop down and sound button */
-{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   166,   177, 0x0,                                   STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   166,   177, STR_0225,                              STR_NULL},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   167,   179, STR_MESSAGES_ALL,                      STR_NULL},
+/* General drop down and sound button, widgets WIDGET_NEWSOPT_BTN_SUMMARY and WIDGET_NEWSOPT_DROP_SUMMARY */
+{     WWT_PANEL, RESIZE_NONE, COLOUR_YELLOW,
+	  4,  86,  34 + NT_END * NEWS_SETTING_BASELINE_SKIP,  45 + NT_END * NEWS_SETTING_BASELINE_SKIP,
+	0x0, STR_NULL},
 
-{  WWT_TEXTBTN_2,   RESIZE_NONE,     3,     4,   98,   178,   189, STR_02DB_OFF,                          STR_NULL},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   179,   191, STR_MESSAGE_SOUND,                     STR_NULL},
+{   WWT_TEXTBTN, RESIZE_NONE, COLOUR_YELLOW,
+	 87,  98,  34 + NT_END * NEWS_SETTING_BASELINE_SKIP,  45 + NT_END * NEWS_SETTING_BASELINE_SKIP,
+	STR_0225, STR_NULL},
 
-/* Each four group is composed of the buttons [<] [..] [>] and the descriptor of the setting */
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    26,    37, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    26,    37, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    26,    37, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    27,    39, STR_0206_ARRIVAL_OF_FIRST_VEHICLE,     STR_NULL},
+{      WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW,
+	103, 409,  35 + NT_END * NEWS_SETTING_BASELINE_SKIP,  47 + NT_END * NEWS_SETTING_BASELINE_SKIP,
+	STR_MESSAGES_ALL, STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    38,    49, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    38,    49, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    38,    49, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    39,    51, STR_0207_ARRIVAL_OF_FIRST_VEHICLE,     STR_NULL},
+/* Below is widget WIDGET_NEWSOPT_SOUNDTICKER */
+{ WWT_TEXTBTN_2, RESIZE_NONE, COLOUR_YELLOW,
+	  4,  98,  46 + NT_END * NEWS_SETTING_BASELINE_SKIP,  57 + NT_END * NEWS_SETTING_BASELINE_SKIP,
+	STR_02DB_OFF,  STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    50,    61, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    50,    61, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    50,    61, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    51,    63, STR_0208_ACCIDENTS_DISASTERS,          STR_NULL},
+{      WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW,
+	103, 409,  47 + NT_END * NEWS_SETTING_BASELINE_SKIP,  59 + NT_END * NEWS_SETTING_BASELINE_SKIP,
+	STR_MESSAGE_SOUND, STR_NULL},
 
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    62,    73, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    62,    73, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    62,    73, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    63,    75, STR_0209_COMPANY_INFORMATION,          STR_NULL},
-
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    74,    85, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    74,    85, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    74,    85, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    75,    87, STR_NEWS_OPEN_CLOSE,                   STR_NULL},
-
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    86,    97, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    86,    97, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    86,    97, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    87,    99, STR_020A_ECONOMY_CHANGES,              STR_NULL},
-
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    98,   109, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,    98,   109, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    98,   109, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,    99,   111, STR_020B_ADVICE_INFORMATION_ON_PLAYER, STR_NULL},
-
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   110,   121, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   110,   121, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   110,   121, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   111,   123, STR_020C_NEW_VEHICLES,                 STR_NULL},
-
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   122,   133, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   122,   133, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   122,   133, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   123,   135, STR_020D_CHANGES_OF_CARGO_ACCEPTANCE,  STR_NULL},
-
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   134,   145, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   134,   145, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   134,   145, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   135,   147, STR_020E_SUBSIDIES,                    STR_NULL},
-
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   146,   157, SPR_ARROW_LEFT,                        STR_HSCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    13,   89,   146,   157, STR_EMPTY,                             STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   146,   157, SPR_ARROW_RIGHT,                       STR_HSCROLL_BAR_SCROLLS_LIST},
-{       WWT_TEXT,   RESIZE_NONE,     3,    103, 409,   147,   159, STR_020F_GENERAL_INFORMATION,          STR_NULL},
+/* List of news-setting lines (4 widgets for each line).
+ * First widget must be number WIDGET_NEWSOPT_START_OPTION
+ */
+NEWS_SETTINGS_LINE(26, NT_ARRIVAL_PLAYER, STR_0206_ARRIVAL_OF_FIRST_VEHICLE),
+NEWS_SETTINGS_LINE(26, NT_ARRIVAL_OTHER,  STR_0207_ARRIVAL_OF_FIRST_VEHICLE),
+NEWS_SETTINGS_LINE(26, NT_ACCIDENT, STR_0208_ACCIDENTS_DISASTERS),
+NEWS_SETTINGS_LINE(26, NT_COMPANY_INFO, STR_0209_COMPANY_INFORMATION),
+NEWS_SETTINGS_LINE(26, NT_OPENCLOSE, STR_NEWS_OPEN_CLOSE),
+NEWS_SETTINGS_LINE(26, NT_ECONOMY, STR_020A_ECONOMY_CHANGES),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_PLAYER, STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OTHER, STR_INDUSTRY_CHANGES_SERVED_BY_OTHER),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_NOBODY, STR_OTHER_INDUSTRY_PRODUCTION_CHANGES),
+NEWS_SETTINGS_LINE(26, NT_ADVICE, STR_020B_ADVICE_INFORMATION_ON_PLAYER),
+NEWS_SETTINGS_LINE(26, NT_NEW_VEHICLES, STR_020C_NEW_VEHICLES),
+NEWS_SETTINGS_LINE(26, NT_ACCEPTANCE, STR_020D_CHANGES_OF_CARGO_ACCEPTANCE),
+NEWS_SETTINGS_LINE(26, NT_SUBSIDIES, STR_020E_SUBSIDIES),
+NEWS_SETTINGS_LINE(26, NT_GENERAL, STR_020F_GENERAL_INFORMATION),
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _message_options_desc = {
-	270, 22, 410, 197, 410, 197,
+	270,  22,  410,  65 + NT_END * NEWS_SETTING_BASELINE_SKIP,
+	           410,  65 + NT_END * NEWS_SETTING_BASELINE_SKIP,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_message_options_widgets,

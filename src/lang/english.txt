@@ -594,6 +594,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acciden
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Company information
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Open / close of industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Economy changes
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Production changes of industries served by the player
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Production changes of industries served by competitor(s)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Other industry production changes
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Advice / information on player's vehicles
 STR_020C_NEW_VEHICLES                                           :{YELLOW}New vehicles
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changes to cargo acceptance

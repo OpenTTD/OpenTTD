@@ -433,7 +433,14 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 	AddNewsItem(msg, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT | NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
 }
 
-/** Get a list of the cargo types being produced around the tile.*/
+/**
+* Get a list of the cargo types being produced around the tile (in a rectangle).
+* @param produced: Destination array of produced cargo
+* @param tile: Center of the search area
+* @param w: Width of the center
+* @param h: Height of the center
+* @param rad: Radius of the search area
+*/
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	int w, int h, int rad)
 {
@@ -477,7 +484,14 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	}
 }
 
-/** Get a list of the cargo types that are accepted around the tile.*/
+/**
+* Get a list of the cargo types that are accepted around the tile.
+* @param accepts: Destination array of accepted cargo
+* @param tile: Center of the search area
+* @param w: Width of the center
+* @param h: Height of the center
+* @param rad: Radius of the rectangular search area
+*/
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	int w, int h, int rad)
 {
@@ -2626,14 +2640,20 @@ CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return CommandCost();
 }
 
-
-uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
+/**
+* Find all (non-buoy) stations around an industry tile
+*
+* @param tile: Center tile to search from
+* @param w: Width of the center
+* @param h: Height of the center
+*
+* @return: Set of found stations
+*/
+StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h)
 {
-	Station* around[8];
+	StationSet station_set;
 
-	for (uint i = 0; i < lengthof(around); i++) around[i] = NULL;
-
-	int w_prod; //width and height of the "producer" of the cargo
+	int w_prod; // width and height of the "producer" of the cargo
 	int h_prod;
 	int max_rad;
 	if (_patches.modified_catchment) {
@@ -2656,91 +2676,103 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 
 		Station *st = GetStationByTile(cur_tile);
 
-		for (uint i = 0; i != lengthof(around); i++) {
-			if (around[i] == NULL) {
-				if (!st->IsBuoy() &&
-						(st->town->exclusive_counter == 0 || st->town->exclusivity == st->owner) && // check exclusive transport rights
-						st->goods[type].rating != 0 && // when you've got the lowest rating you can get, it's better not to give cargo anymore
-						(!_patches.selectgoods || st->goods[type].last_speed != 0) && // we are servicing the station (or cargo is dumped on all stations)
-						((st->facilities & ~FACIL_BUS_STOP)   != 0 || IsCargoInClass(type, CC_PASSENGERS)) && // if we have other fac. than a bus stop, or the cargo is passengers
-						((st->facilities & ~FACIL_TRUCK_STOP) != 0 || !IsCargoInClass(type, CC_PASSENGERS))) { // if we have other fac. than a cargo bay or the cargo is not passengers
-					if (_patches.modified_catchment) {
-						/* min and max coordinates of the producer relative */
-						const int x_min_prod = max_rad + 1;
-						const int x_max_prod = max_rad + w_prod;
-						const int y_min_prod = max_rad + 1;
-						const int y_max_prod = max_rad + h_prod;
+		if (st->IsBuoy()) continue; // bouys don't accept cargo
 
-						int rad = FindCatchmentRadius(st);
 
-						int x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
-						if (w_cur < x_min_prod) {
-							x_dist = x_min_prod - w_cur;
-						} else if (w_cur > x_max_prod) {
-							x_dist = w_cur - x_max_prod;
-						}
+		if (_patches.modified_catchment) {
+			/* min and max coordinates of the producer relative */
+			const int x_min_prod = max_rad + 1;
+			const int x_max_prod = max_rad + w_prod;
+			const int y_min_prod = max_rad + 1;
+			const int y_max_prod = max_rad + h_prod;
 
-						int y_dist = min(h_cur - y_min_prod, y_max_prod - h_cur);
-						if (h_cur < y_min_prod) {
-							y_dist = y_min_prod - h_cur;
-						} else if (h_cur > y_max_prod) {
-							y_dist = h_cur - y_max_prod;
-						}
+			int rad = FindCatchmentRadius(st);
 
-						if (x_dist > rad || y_dist > rad) break;
-					}
-
-					around[i] = st;
-				}
-				break;
-			} else if (around[i] == st) {
-				break;
+			int x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
+			if (w_cur < x_min_prod) {
+				x_dist = x_min_prod - w_cur;
+			} else if (w_cur > x_max_prod) {
+				x_dist = w_cur - x_max_prod;
 			}
+
+			if (x_dist > rad) continue;
+
+			int y_dist = min(h_cur - y_min_prod, y_max_prod - h_cur);
+			if (h_cur < y_min_prod) {
+				y_dist = y_min_prod - h_cur;
+			} else if (h_cur > y_max_prod) {
+				y_dist = h_cur - y_max_prod;
+			}
+
+			if (y_dist > rad) continue;
 		}
+
+		/* Insert the station in the set. This will fail if it has
+		 * already been added.
+		 */
+		station_set.insert(st);
+
 	END_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
 
-	/* no stations around at all? */
-	if (around[0] == NULL) return 0;
+	return station_set;
+}
 
-	if (around[1] == NULL) {
+uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
+{
+	Station *st1 = NULL;	// Station with best rating
+	Station *st2 = NULL;	// Second best station
+	uint best_rating1 = 0;	// rating of st1
+	uint best_rating2 = 0;	// rating of st2
+
+	StationSet all_stations = FindStationsAroundIndustryTile(tile, w, h);
+	for (StationSet::iterator st_iter = all_stations.begin(); st_iter != all_stations.end(); ++st_iter) {
+		Station *st = *st_iter;
+
+		/* Is the station reserved exclusively for somebody else? */
+		if (st->town->exclusive_counter > 0 && st->town->exclusivity != st->owner) continue;
+
+		if (st->goods[type].rating == 0) continue; // Lowest possible rating, better not to give cargo anymore
+
+		if (_patches.selectgoods && st->goods[type].last_speed == 0) continue; // Selectively servicing stations, and not this one
+
+		if (IsCargoInClass(type, CC_PASSENGERS)) {
+			if (st->facilities == FACIL_TRUCK_STOP) continue; // passengers are never served by just a truck stop
+		} else {
+			if (st->facilities == FACIL_BUS_STOP) continue; // non-passengers are never served by just a bus stop
+		}
+
+		/* This station can be used, add it to st1/st2 */
+		if (st1 == NULL || st->goods[type].rating >= best_rating1) {
+			st2 = st1; best_rating2 = best_rating1; st1 = st; best_rating1 = st->goods[type].rating;
+		} else if (st2 == NULL || st->goods[type].rating >= best_rating2) {
+			st2 = st; best_rating2 = st->goods[type].rating;
+		}
+	}
+
+	/* no stations around at all? */
+	if (st1 == NULL) return 0;
+
+	if (st2 == NULL) {
 		/* only one station around */
-		uint moved = (amount * around[0]->goods[type].rating >> 8) + 1;
-		UpdateStationWaiting(around[0], type, moved);
+		uint moved = amount * best_rating1 / 256 + 1;
+		UpdateStationWaiting(st1, type, moved);
 		return moved;
 	}
 
-	/* several stations around, find the two with the highest rating */
-	Station *st1 = NULL;
-	Station *st2 = NULL;
-	uint best_rating  = 0;
-	uint best_rating2 = 0;
-
-	for (uint i = 0; i != lengthof(around) && around[i] != NULL; i++) {
-		if (around[i]->goods[type].rating >= best_rating) {
-			best_rating2 = best_rating;
-			st2 = st1;
-
-			best_rating = around[i]->goods[type].rating;
-			st1 = around[i];
-		} else if (around[i]->goods[type].rating >= best_rating2) {
-			best_rating2 = around[i]->goods[type].rating;
-			st2 = around[i];
-		}
-	}
-
+	/* several stations around, the best two (highest rating) are in st1 and st2 */
 	assert(st1 != NULL);
 	assert(st2 != NULL);
-	assert(best_rating != 0 || best_rating2 != 0);
+	assert(best_rating1 != 0 || best_rating2 != 0);
 
 	/* the 2nd highest one gets a penalty */
 	best_rating2 >>= 1;
 
 	/* amount given to station 1 */
-	uint t = (best_rating * (amount + 1)) / (best_rating + best_rating2);
+	uint t = (best_rating1 * (amount + 1)) / (best_rating1 + best_rating2);
 
 	uint moved = 0;
 	if (t != 0) {
-		moved = t * best_rating / 256 + 1;
+		moved = t * best_rating1 / 256 + 1;
 		amount -= t;
 		UpdateStationWaiting(st1, type, moved);
 	}

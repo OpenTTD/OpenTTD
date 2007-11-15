@@ -53,6 +53,9 @@ enum NewsType {
 	NT_COMPANY_INFO,    ///< Company info (new companies, bankrupcy messages)
 	NT_OPENCLOSE,       ///< Opening and closing of industries
 	NT_ECONOMY,         ///< Economic changes (recession, industry up/dowm)
+	NT_INDUSTRY_PLAYER, ///< Production changes of industry serviced by local player
+	NT_INDUSTRY_OTHER,  ///< Production changes of industry serviced by competitor(s)
+	NT_INDUSTRY_NOBODY, ///< Other industry production changes
 	NT_ADVICE,          ///< Bits of news about vehicles of the player
 	NT_NEW_VEHICLES,    ///< New vehicle has become available
 	NT_ACCEPTANCE,      ///< A type of cargo is (no longer) accepted
