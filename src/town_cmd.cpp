@@ -729,7 +729,7 @@ no_slope:
 
 		/* If the tile is not a slope in the right direction, then
 		 * maybe terraform some. */
-		desired_slope = (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? SLOPE_NE : SLOPE_NW;
+		desired_slope = (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? SLOPE_NW : SLOPE_NE;
 		if (desired_slope != cur_slope && ComplementSlope(desired_slope) != cur_slope) {
 			uint32 r = Random();
 
