@@ -1038,21 +1038,18 @@ int GetAmountOwnedBy(const Player *p, PlayerID owner)
 static void DrawCompanyOwnerText(const Player *p)
 {
 	const Player *p2;
-	int num = -1;
+	uint num = 0;
+	const byte height = GetCharacterHeight(FS_NORMAL);
 
 	FOR_ALL_PLAYERS(p2) {
 		uint amt = GetAmountOwnedBy(p, p2->index);
 		if (amt != 0) {
-			num++;
+			SetDParam(0, amt * 25);
+			SetDParam(1, p2->index);
 
-			SetDParam(num * 2 + 0, amt * 25);
-			SetDParam(num * 2 + 1, p2->index);
-
-			if (num != 0) break;
+			DrawString(120, (num++) * height + 116, STR_707D_OWNED_BY, TC_FROMSTRING);
 		}
 	}
-
-	if (num >= 0) DrawString(120, 124, STR_707D_OWNED_BY + num, TC_FROMSTRING);
 }
 
 /**
@@ -1119,7 +1116,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
 
 			SetDParam(0, CalculateCompanyValue(p));
-			DrawString(110, 114, STR_7076_COMPANY_VALUE, TC_FROMSTRING);
+			DrawString(110, 106, STR_7076_COMPANY_VALUE, TC_FROMSTRING);
 
 			DrawCompanyOwnerText(p);
 
