@@ -2077,7 +2077,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 	 *                 4 for defining new train station sets
 	 * B num-props     how many properties to change per vehicle/station
 	 * B num-info      how many vehicles/stations to change
-	 * B id            ID of first vehicle/station to change, if num-info is
+	 * E id            ID of first vehicle/station to change, if num-info is
 	 *                 greater than one, this one and the following
 	 *                 vehicles/stations will be changed
 	 * B property      what property to change, depends on the feature
@@ -2105,7 +2105,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 	uint8 feature  = grf_load_byte(&buf);
 	uint8 numprops = grf_load_byte(&buf);
 	uint numinfo  = grf_load_byte(&buf);
-	uint engine   = grf_load_byte(&buf);
+	uint engine   = grf_load_extended(&buf);
 
 	grfmsg(6, "FeatureChangeInfo: feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
@@ -2192,8 +2192,8 @@ static void SafeChangeInfo(byte *buf, int len)
 	buf++;
 	uint8 feature  = grf_load_byte(&buf);
 	uint8 numprops = grf_load_byte(&buf);
-	grf_load_byte(&buf);
-	grf_load_byte(&buf);
+	grf_load_byte(&buf);     // num-info
+	grf_load_extended(&buf); // id
 
 	if (feature == GSF_BRIDGE && numprops == 1) {
 		uint8 prop = grf_load_byte(&buf);
@@ -2218,7 +2218,7 @@ static void InitChangeInfo(byte *buf, int len)
 	uint8 feature  = grf_load_byte(&buf);
 	uint8 numprops = grf_load_byte(&buf);
 	uint8 numinfo  = grf_load_byte(&buf);
-	uint8 index    = grf_load_byte(&buf);
+	uint8 index    = grf_load_extended(&buf);
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
@@ -2260,7 +2260,7 @@ static void ReserveChangeInfo(byte *buf, int len)
 
 	uint8 numprops = grf_load_byte(&buf);
 	uint8 numinfo  = grf_load_byte(&buf);
-	uint8 index    = grf_load_byte(&buf);
+	uint8 index    = grf_load_extended(&buf);
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
