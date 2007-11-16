@@ -1393,7 +1393,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Změnit 
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Představujeme ti novou umělou inteligenci (pracovní). Není ještě OK, takže s ní jsou problémy. Kdykoli můžeš, udělej screenshot a přispěj s ním do fóra. Ať se ti líbí!
 TEMP_AI_ACTIVATED                                               :{WHITE}Pozor: tato nová umělá inteligence je ještě v alfa verzi (= nebyla moc testována)! Zatím umí pracovat jen se silničními vozidly!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Varování: tato funkce je stále experimentální. Prosím posílejte jakékoli problémy na truelight@openttd.org.
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Varování: tato funkce je stále experimentální (při použití nové umělé inteligence).
 
 ############ network gui strings
 

@@ -3176,6 +3176,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} peab o
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} peab olema laetud pärast{STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} nõuab OpenTTD versiooni {STRING} või uuemat.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju NewGRF-e on laaditud.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Lisa
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lisa nimekirja NewGRF fail

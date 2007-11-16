@@ -3156,6 +3156,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} je pot
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} je potrebno naložiti po {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} potrebuje OpenTTD različico {STRING} ali boljšo.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj NewGRF datoteko na seznam

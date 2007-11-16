@@ -847,9 +847,9 @@ STR_0304_QUIT                                                   :{BLACK}Avsluta
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Avsluta 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan bara byggas i städer
-STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Välj 'tempererad' typ av landskap
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Välj 'sub-arktiskt' typ av landskap
-STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Välj 'sub-tropiskt' typ av landskap
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Välj 'tempererad' som typ av landskap
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Välj 'sub-arktiskt' som typ av landskap
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Välj 'sub-tropiskt' som typ av landskap
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Välj 'leksaksland' som typ av landskap
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Bekosta bygget av en ny industri
 
@@ -1667,7 +1667,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan inte
 STR_180A_ROAD_CONSTRUCTION                                      :Bygg väg
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Spårvagnskonstruktion
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Bygg väg
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Använd Automatvägläge för att bygga vägsektion
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Bygg spårvagnssektion
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Använd Automatspårläge för att bygga spårväg
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Bygg bussgarage (för att bygga eller reparera vägfordon)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Bygg spårvagnsdepå (för att konstruera och serva fordon)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Bygg busshållplats
@@ -2665,7 +2667,7 @@ STR_881B_TRAINS                                                 :{WHITE}{COMPANY
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nytt tågfordon
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nya elektriska järnvägsfordon
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nytt monorail-fordon
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nytt monorailfordon
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nytt maglevfordon
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rälsfordon
 
@@ -3072,7 +3074,9 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} är de
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Felaktig parameter för {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} måste laddas innan {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} måste laddas efter {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} kräver OpenTTD version {STRING} eller bättre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Lägg till
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lägg till en ny NewGRF-fil till listan

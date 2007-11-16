@@ -108,7 +108,7 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT} de bl�
 STR_QUANTITY_RUBBER                                             :{VOLUME} de caoutchouc
 STR_QUANTITY_SUGAR                                              :{WEIGHT} de sucre
 STR_QUANTITY_TOYS                                               :{COMMA} jouet{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} sac{P "" s} de jouets
+STR_QUANTITY_SWEETS                                             :{COMMA} sac{P "" s} de bonbons
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de barbe à papa
 STR_QUANTITY_BUBBLES                                            :{COMMA} bulle{P "" s}
@@ -708,7 +708,7 @@ STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construi
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construire une mine de diamants
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construire une mine de cuivre
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Semer une Forêt de Barbe à Papa
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construire une usine de sucreries
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Construire une usine de bonbons
 STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Construire une ferme de batteries
 STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Construire un puit de cola
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Construire une boutique de jouets
@@ -1336,7 +1336,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer 
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Bienvenue dans la nouvelle IA en élaboration. Si vous rencontrez des problèmes, postez-les sur le forum. Bonne partie!
 TEMP_AI_ACTIVATED                                               :{WHITE}Attention: cette nouvelle IA est en version alpha ! Pour le moment seuls les camions et les bus fonctionnent !
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Attention: cette fonction est encore expérimentale. Veuillez reporter tout problème à truelight@openttd.org.
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Attention: cette fonction est encore expérimentale.
 
 ############ network gui strings
 
@@ -2401,7 +2401,7 @@ STR_802D_COTTON_CANDY_HOPPER                                    :Wagon à barbe 
 STR_802E_TOFFEE_HOPPER                                          :Wagon à caramel
 STR_802F_BUBBLE_VAN                                             :Wagon à bulles
 STR_8030_COLA_TANKER                                            :Wagon-citerne de cola
-STR_8031_CANDY_VAN                                              :Wagon à sucreries
+STR_8031_CANDY_VAN                                              :Wagon à bonbons
 STR_8032_TOY_VAN                                                :Wagon à jouets
 STR_8033_BATTERY_TRUCK                                          :Wagon à batteries
 STR_8034_FIZZY_DRINK_TRUCK                                      :Wagon à boisson gazeuses
@@ -2431,7 +2431,7 @@ STR_804B_COTTON_CANDY_HOPPER                                    :Wagon à barbe 
 STR_804C_TOFFEE_HOPPER                                          :Wagon à caramel
 STR_804D_BUBBLE_VAN                                             :Wagon à bulles
 STR_804E_COLA_TANKER                                            :Wagon-citerne de cola
-STR_804F_CANDY_VAN                                              :Wagon à sucreries
+STR_804F_CANDY_VAN                                              :Wagon à bonbons
 STR_8050_TOY_VAN                                                :Wagon à jouets
 STR_8051_BATTERY_TRUCK                                          :Wagon à batteries
 STR_8052_FIZZY_DRINK_TRUCK                                      :Wagon à boisson gazeuses
@@ -2463,7 +2463,7 @@ STR_806B_COTTON_CANDY_HOPPER                                    :Wagon à barbe 
 STR_806C_TOFFEE_HOPPER                                          :Wagon à caramel
 STR_806D_BUBBLE_VAN                                             :Wagon à bulles
 STR_806E_COLA_TANKER                                            :Wagon-citerne de cola
-STR_806F_CANDY_VAN                                              :Wagon à sucreries
+STR_806F_CANDY_VAN                                              :Wagon à bonbons
 STR_8070_TOY_VAN                                                :Wagon à jouets
 STR_8071_BATTERY_TRUCK                                          :Wagon à batteries
 STR_8072_FIZZY_DRINK_TRUCK                                      :Wagon à boisson gazeuses
@@ -2537,13 +2537,13 @@ STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Camion de barbe
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Camion de barbe à papa Wizzowow
 STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :Camion de caramel MightyMover
 STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Camion de caramel Powernaught
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Camion de sucreries Wizzowow
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Camion de caramel Wizzowow
 STR_80BA_MIGHTYMOVER_TOY_VAN                                    :Camion de jouets MightyMover
 STR_80BB_POWERNAUGHT_TOY_VAN                                    :Camion de jouets Powernaught
 STR_80BC_WIZZOWOW_TOY_VAN                                       :Camion de jouets Wizzowow
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :Camion de sucreries MightyMover
-STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Camion de sucreries Powernaught
-STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Camion de sucreries Wizzowow
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :Camion de bonbons MightyMover
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Camion de bonbons Powernaught
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Camion de bonbons Wizzowow
 STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :Camion de batteries MightyMover
 STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Camion de batteries Powernaught
 STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Camion de batteries Wizzowow

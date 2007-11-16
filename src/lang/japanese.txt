@@ -3076,6 +3076,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}を�
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING}は{STRING}の読み込み後のみに読み込めます。
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} は OpenTTD バージョン {STRING} もしくはそれ以降のバージョンが必要です。
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :訳しにデザインされたGRFファイル
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :読み込んだ NewGRF が多すぎます。
 
 STR_NEWGRF_ADD                                                  :{BLACK}追加
 STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRFファイルをリストに追加します

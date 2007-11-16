@@ -596,6 +596,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Inciden
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informazioni sulla compagnia
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Apertura / chiusura delle industrie
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambiamenti economici
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Cambiamenti produzione industrie servite dal giocatore
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Cambiamenti produzione industrie servite dagli avversari
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Altri cambiamenti di produzione industrie
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Avvisi / informazioni sui veicoli del giocatore
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nuovi veicoli
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Cambiamenti della merce accettata
@@ -1337,7 +1340,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia p
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Benvenuti nella nuova IA, in sviluppo. Se si incontrano dei problemi, fare uno screenshot e inviarlo sul forum.
 TEMP_AI_ACTIVATED                                               :{WHITE}Attenzione: la nuova IA è ancora in alpha! Attualmente funzionano solo camion e autobus!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Attenzione: l'implementazione è ancora sperimentale (utilizza la nuova IA). Segnalare qualsiasi problema a: truelight@openttd.org.
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Attenzione: l'implementazione è ancora sperimentale (utilizza la nuova IA).
 
 ############ network gui strings
 
