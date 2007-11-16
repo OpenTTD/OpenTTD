@@ -18,7 +18,7 @@ fi
 # openttd_vs80.sln    is for MSVC 2005
 # openttd_vs80.vcproj is for MSVC 2005
 # langs_vs80.vcproj   is for MSVC 2005
-# strgen_vs80.vcprojc is vor MSVC 2005
+# strgen_vs80.vcproj  is for MSVC 2005
 
 # openttd.sln         is for MSVC 2003
 # openttd.vcproj      is for MSVC 2003
