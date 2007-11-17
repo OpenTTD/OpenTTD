@@ -1791,7 +1791,7 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 			case 0x0B:
 			case 0x0C: {
 				uint16 acctp = grf_load_word(&buf);
-				tsp->accepts_cargo[prop - 0x0A] = GetCargoTranslation(GB(acctp, 0, 8), _cur_grffile);
+				tsp->accepts_cargo[prop - 0x0A] = GB(acctp, 0, 8);
 				tsp->acceptance[prop - 0x0A] = GB(acctp, 8, 8);
 			} break;
 
@@ -1991,13 +1991,13 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 
 			case 0x10: // Production cargo types
 				for (byte j = 0; j < 2; j++) {
-					indsp->produced_cargo[j] = GetCargoTranslation(grf_load_byte(&buf), _cur_grffile);
+					indsp->produced_cargo[j] = grf_load_byte(&buf);
 				}
 				break;
 
 			case 0x11: // Acceptance cargo types
 				for (byte j = 0; j < 3; j++) {
-					indsp->accepts_cargo[j] = GetCargoTranslation(grf_load_byte(&buf), _cur_grffile);
+					indsp->accepts_cargo[j] = grf_load_byte(&buf);
 				}
 				grf_load_byte(&buf); // Unnused, eat it up
 				break;
@@ -5314,6 +5314,15 @@ static void FinaliseIndustriesArray()
 					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->new_industry_text);
 					if (strid != STR_UNDEFINED) indsp->new_industry_text = strid;
 
+					for (byte j = 0; j < 2; j++) {
+						CargoID c = GetCargoTranslation(indsp->produced_cargo[j], indsp->grf_prop.grffile);
+						indsp->produced_cargo[j] = c;
+					}
+					for (byte j = 0; j < 3; j++) {
+						CargoID c = GetCargoTranslation(indsp->accepts_cargo[j], indsp->grf_prop.grffile);
+						indsp->accepts_cargo[j] = c;
+					}
+
 					_industry_mngr.SetEntitySpec(indsp);
 					_loaded_newgrf_features.has_newindustries = true;
 				}
@@ -5324,6 +5333,10 @@ static void FinaliseIndustriesArray()
 			for (int i = 0; i < NUM_INDUSTRYTILES; i++) {
 				IndustryTileSpec *indtsp = file->indtspec[i];
 				if (indtsp != NULL) {
+					for (byte j = 0; j < 3; j++) {
+						CargoID c = GetCargoTranslation(indtsp->accepts_cargo[j], indtsp->grf_prop.grffile);
+						indtsp->accepts_cargo[j] = c;
+					}
 					_industile_mngr.SetEntitySpec(indtsp);
 				}
 			}
