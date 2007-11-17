@@ -15,6 +15,11 @@ then
 	exit 1
 fi
 
+# openttd_vs90.sln    is for MSVC 2008
+# openttd_vs90.vcproj is for MSVC 2008
+# langs_vs90.vcproj   is for MSVC 2008
+# strgen_vs90.vcproj  is for MSVC 2008
+
 # openttd_vs80.sln    is for MSVC 2005
 # openttd_vs80.vcproj is for MSVC 2005
 # langs_vs80.vcproj   is for MSVC 2005
@@ -196,5 +201,7 @@ load_lang_data "$ROOT_DIR/src/lang/*.txt" lang
 
 generate "$openttd" "openttd.vcproj"      "msvc2003"
 generate "$openttd" "openttd_vs80.vcproj" "msvc2005"
+generate "$openttd" "openttd_vs90.vcproj" "msvc2005"
 generate "$lang" "langs.vcproj"           "msvc2003"
 generate "$lang" "langs_vs80.vcproj"      "msvc2005"
+generate "$lang" "langs_vs90.vcproj"      "msvc2005"
