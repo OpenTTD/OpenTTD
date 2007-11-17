@@ -1439,11 +1439,21 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 				}
 			} break;
 
-			case 0x09: // Cargo translation table
-				/* This is loaded during the initialisation stage, so just skip it here. */
-				/* Each entry is 4 bytes. */
-				buf += 4;
-				break;
+			case 0x09: { // Cargo translation table
+				if (gvid != 0) {
+					if (i == 0) grfmsg(1, "InitChangeInfo: Cargo translation table must start at zero");
+					/* Skip data */
+					buf += 4;
+					break;
+				}
+				if (i == 0) {
+					free(_cur_grffile->cargo_list);
+					_cur_grffile->cargo_max = numinfo;
+					_cur_grffile->cargo_list = MallocT<CargoLabel>(numinfo);
+				}
+				CargoLabel cl = grf_load_dword(&buf);
+				_cur_grffile->cargo_list[i] = BSWAP32(cl);
+			} break;
 
 			case 0x0A: { // Currency display names
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
@@ -2206,45 +2216,6 @@ static void SafeChangeInfo(byte *buf, int len)
 
 	/* Skip remainder of GRF */
 	_skip_sprites = -1;
-}
-
-/* Action 0x00 (GLS_INIT) */
-static void InitChangeInfo(byte *buf, int len)
-{
-	byte *bufend = buf + len;
-
-	if (!check_length(len, 6, "InitChangeInfo")) return;
-	buf++;
-	uint8 feature  = grf_load_byte(&buf);
-	uint8 numprops = grf_load_byte(&buf);
-	uint8 numinfo  = grf_load_byte(&buf);
-	uint8 index    = grf_load_extended(&buf);
-
-	while (numprops-- && buf < bufend) {
-		uint8 prop = grf_load_byte(&buf);
-
-		switch (feature) {
-			case GSF_GLOBALVAR:
-				switch (prop) {
-					case 0x09: // Cargo Translation Table
-						if (index != 0) {
-							grfmsg(1, "InitChangeInfo: Cargo translation table must start at zero");
-							return;
-						}
-
-						free(_cur_grffile->cargo_list);
-						_cur_grffile->cargo_max = numinfo;
-						_cur_grffile->cargo_list = MallocT<CargoLabel>(numinfo);
-
-						for (uint i = 0; i < numinfo; i++) {
-							CargoLabel cl = grf_load_dword(&buf);
-							_cur_grffile->cargo_list[i] = BSWAP32(cl);
-						}
-						break;
-				}
-				break;
-		}
-	}
 }
 
 /* Action 0x00 (GLS_RESERVE) */
@@ -5409,7 +5380,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
 	static const SpecialSpriteHandler handlers[][GLS_END] = {
-		/* 0x00 */ { NULL,     SafeChangeInfo, NULL,       InitChangeInfo, ReserveChangeInfo, FeatureChangeInfo, },
+		/* 0x00 */ { NULL,     SafeChangeInfo, NULL,       NULL,           ReserveChangeInfo, FeatureChangeInfo, },
 		/* 0x01 */ { SkipAct1, SkipAct1,  SkipAct1,        SkipAct1,       SkipAct1,          NewSpriteSet, },
 		/* 0x02 */ { NULL,     NULL,      NULL,            NULL,           NULL,              NewSpriteGroup, },
 		/* 0x03 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              FeatureMapSpriteGroup, },
@@ -5455,7 +5426,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		grfmsg(7, "DecodeSpecialSprite: Handling data block in stage %d", stage);
 		GRFDataBlock(buf, num);
 	} else if (action == 0xFE) {
-		grfmsg(7, "DecodeSpecialSprite: andling import block in stage %d", stage);
+		grfmsg(7, "DecodeSpecialSprite: Handling import block in stage %d", stage);
 		GRFImportBlock(buf, num);
 	} else if (action >= lengthof(handlers)) {
 		grfmsg(7, "DecodeSpecialSprite: Skipping unknown action 0x%02X", action);
