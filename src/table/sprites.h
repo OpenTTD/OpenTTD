@@ -456,7 +456,7 @@ enum Sprites {
 	SPR_AIRPORT_RADAR_A             = 2689,
 	SPR_AIRPORT_RADAR_B             = 2690,
 	SPR_AIRPORT_RADAR_C             = 2691,
-	SPR_AIRPORT_HELIPAD             = SPR_OPENTTD_BASE + 82,
+	SPR_AIRPORT_HELIPAD             = SPR_OPENTTD_BASE + 86,
 	SPR_AIRPORT_HELIDEPOT_OFFICE    = 2095,
 
 	/* Road Stops */
