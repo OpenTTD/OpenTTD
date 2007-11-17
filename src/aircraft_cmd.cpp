@@ -1154,7 +1154,7 @@ static bool AircraftController(Vehicle *v)
 
 		GetNewVehiclePosResult gp;
 
-		if (dist < 4) {
+		if (dist < 4 || amd->flag & AMED_LAND) {
 			/* move vehicle one pixel towards target */
 			gp.x = (v->x_pos != (x + amd->x)) ?
 					v->x_pos + ((x + amd->x > v->x_pos) ? 1 : -1) :
