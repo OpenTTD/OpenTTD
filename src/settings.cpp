@@ -1080,6 +1080,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 #define MS SGF_MULTISTRING
 #define NO SGF_NETWORK_ONLY
 #define CR SGF_CURRENCY
+#define NN SGF_NO_NETWORK
 
 #include "table/strings.h"
 
@@ -1375,12 +1376,12 @@ const SettingDesc _patch_settings[] = {
 
 	/***************************************************************************/
 	/* Construction section of the GUI-configure patches window */
-	SDT_BOOL(Patches, build_on_slopes,               0, 0,  true,        STR_CONFIG_PATCHES_BUILDONSLOPES,       NULL),
+	SDT_BOOL(Patches, build_on_slopes,               0,NN,  true,        STR_CONFIG_PATCHES_BUILDONSLOPES,       NULL),
 	SDT_CONDBOOL(Patches, autoslope,                75, SL_MAX_VERSION, 0, 0, true,  STR_CONFIG_PATCHES_AUTOSLOPE,            NULL),
 	SDT_BOOL(Patches, extra_dynamite,                0, 0, false,        STR_CONFIG_PATCHES_EXTRADYNAMITE,       NULL),
-	SDT_BOOL(Patches, longbridges,                   0, 0,  true,        STR_CONFIG_PATCHES_LONGBRIDGES,         NULL),
-	SDT_BOOL(Patches, signal_side,                   N, 0,  true,        STR_CONFIG_PATCHES_SIGNALSIDE,          RedrawScreen),
-	SDT_BOOL(Patches, always_small_airport,          0, 0, false,        STR_CONFIG_PATCHES_SMALL_AIRPORTS,      NULL),
+	SDT_BOOL(Patches, longbridges,                   0,NN,  true,        STR_CONFIG_PATCHES_LONGBRIDGES,         NULL),
+	SDT_BOOL(Patches, signal_side,                   N,NN,  true,        STR_CONFIG_PATCHES_SIGNALSIDE,          RedrawScreen),
+	SDT_BOOL(Patches, always_small_airport,          0,NN, false,        STR_CONFIG_PATCHES_SMALL_AIRPORTS,      NULL),
 	 SDT_VAR(Patches, drag_signals_density,SLE_UINT8,S, 0,  4, 1, 20, 0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,NULL),
 	 SDT_VAR(Patches, semaphore_build_before,SLE_INT32, S, NC, 1975, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE, NULL),
 	SDT_CONDVAR(Patches, town_layout, SLE_UINT8, 59, SL_MAX_VERSION, 0, MS, TL_ORIGINAL, TL_NO_ROADS, NUM_TLS - 1, 1, STR_CONFIG_PATCHES_TOWN_LAYOUT, CheckTownLayout),
@@ -1389,7 +1390,7 @@ const SettingDesc _patch_settings[] = {
 	/* Vehicle section of the GUI-configure patches window */
 	SDT_BOOL(Patches, realistic_acceleration,        0, 0, false,                    STR_CONFIG_PATCHES_REALISTICACCEL,       NULL),
 	SDT_BOOL(Patches, forbid_90_deg,                 0, 0, false,                    STR_CONFIG_PATCHES_FORBID_90_DEG,        NULL),
-	SDT_BOOL(Patches, mammoth_trains,                0, 0,  true,                    STR_CONFIG_PATCHES_MAMMOTHTRAINS,        NULL),
+	SDT_BOOL(Patches, mammoth_trains,                0,NN,  true,                    STR_CONFIG_PATCHES_MAMMOTHTRAINS,        NULL),
 	SDT_BOOL(Patches, gotodepot,                     0, 0,  true,                    STR_CONFIG_PATCHES_GOTODEPOT,            NULL),
 	SDT_BOOL(Patches, roadveh_queue,                 0, 0,  true,                    STR_CONFIG_PATCHES_ROADVEH_QUEUE,        NULL),
 	SDT_BOOL(Patches, new_pathfinding_all,           0, 0, false,                    STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL,  NULL),
@@ -1400,7 +1401,7 @@ const SettingDesc _patch_settings[] = {
 
 	SDT_BOOL(Patches, train_income_warn,             S, 0,  true,                    STR_CONFIG_PATCHES_WARN_INCOME_LESS,     NULL),
 	 SDT_VAR(Patches, order_review_system,SLE_UINT8, S,MS,     2,     0,       2, 0, STR_CONFIG_PATCHES_ORDER_REVIEW,         NULL),
-	SDT_BOOL(Patches, never_expire_vehicles,         0, 0, false,                    STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES,NULL),
+	SDT_BOOL(Patches, never_expire_vehicles,         0,NN, false,                    STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES,NULL),
 	SDT_BOOL(Patches, lost_train_warn,               S, 0,  true,                    STR_CONFIG_PATCHES_WARN_LOST_TRAIN,      NULL),
 	SDT_BOOL(Patches, autorenew,                     S, 0, false,                    STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,    EngineRenewUpdate),
 	 SDT_VAR(Patches, autorenew_months,   SLE_INT16, S, 0,     6,   -12,      12, 0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,     EngineRenewMonthsUpdate),
@@ -1416,19 +1417,19 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, servint_ships,     SLE_UINT16, 0,D0,   360,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_SHIPS,        InValidateDetailsWindow),
 	 SDT_VAR(Patches, servint_aircraft,  SLE_UINT16, 0,D0,   100,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,     InValidateDetailsWindow),
 	SDT_BOOL(Patches, no_servicing_if_no_breakdowns, 0, 0, false,                    STR_CONFIG_PATCHES_NOSERVICE,            NULL),
-	SDT_BOOL(Patches, wagon_speed_limits,            0, 0,  true,                    STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,     UpdateConsists),
-	SDT_CONDBOOL(Patches, disable_elrails, 38, SL_MAX_VERSION, 0, 0, false,          STR_CONFIG_PATCHES_DISABLE_ELRAILS,      SettingsDisableElrail),
-	SDT_CONDVAR(Patches, freight_trains, SLE_UINT8, 39, SL_MAX_VERSION, 0, 0, 1, 1, 255, 1, STR_CONFIG_PATCHES_FREIGHT_TRAINS, NULL),
+	SDT_BOOL(Patches, wagon_speed_limits,            0,NN,  true,                    STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,     UpdateConsists),
+	SDT_CONDBOOL(Patches, disable_elrails, 38, SL_MAX_VERSION, 0, NN, false,         STR_CONFIG_PATCHES_DISABLE_ELRAILS,      SettingsDisableElrail),
+	SDT_CONDVAR(Patches, freight_trains, SLE_UINT8, 39, SL_MAX_VERSION, 0,NN, 1, 1, 255, 1, STR_CONFIG_PATCHES_FREIGHT_TRAINS, NULL),
 	SDT_CONDBOOL(Patches, timetabling,              67, SL_MAX_VERSION, 0, 0, true,  STR_CONFIG_PATCHES_TIMETABLE_ALLOW,      NULL),
 
 	/***************************************************************************/
 	/* Station section of the GUI-configure patches window */
 	SDT_BOOL(Patches, join_stations,           0, 0,  true,        STR_CONFIG_PATCHES_JOINSTATIONS,       NULL),
-	SDT_BOOL(Patches, full_load_any,           0, 0,  true,        STR_CONFIG_PATCHES_FULLLOADANY,        NULL),
-	SDT_BOOL(Patches, improved_load,           0, 0, false,        STR_CONFIG_PATCHES_IMPROVEDLOAD,       NULL),
+	SDT_BOOL(Patches, full_load_any,           0,NN,  true,        STR_CONFIG_PATCHES_FULLLOADANY,        NULL),
+	SDT_BOOL(Patches, improved_load,           0,NN, false,        STR_CONFIG_PATCHES_IMPROVEDLOAD,       NULL),
 	SDT_BOOL(Patches, selectgoods,             0, 0,  true,        STR_CONFIG_PATCHES_SELECTGOODS,        NULL),
 	SDT_BOOL(Patches, new_nonstop,             0, 0, false,        STR_CONFIG_PATCHES_NEW_NONSTOP,        NULL),
-	SDT_BOOL(Patches, nonuniform_stations,     0, 0,  true,        STR_CONFIG_PATCHES_NONUNIFORM_STATIONS,NULL),
+	SDT_BOOL(Patches, nonuniform_stations,     0,NN,  true,        STR_CONFIG_PATCHES_NONUNIFORM_STATIONS,NULL),
 	 SDT_VAR(Patches, station_spread,SLE_UINT8,0, 0, 12, 4, 64, 0, STR_CONFIG_PATCHES_STATION_SPREAD,     InvalidateStationBuildWindow),
 	SDT_BOOL(Patches, serviceathelipad,        0, 0,  true,        STR_CONFIG_PATCHES_SERVICEATHELIPAD,   NULL),
 	SDT_BOOL(Patches, modified_catchment,      0, 0,  true,        STR_CONFIG_PATCHES_CATCHMENT,          NULL),
@@ -1802,6 +1803,8 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	if (sd == NULL) return CMD_ERROR;
 	if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) return CMD_ERROR;
+
+	if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Patches *patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;

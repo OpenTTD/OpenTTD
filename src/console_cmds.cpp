@@ -1423,7 +1423,11 @@ DEF_CONSOLE_CMD(ConPatch)
 
 		if (GetArgumentInteger(&val, argv[2])) {
 			if (!IConsoleSetPatchSetting(argv[1], val)) {
-				IConsoleError("This command/variable is only available to a network server.");
+				if (_network_server) {
+					IConsoleError("This command/variable is not available during network games.");
+				} else {
+					IConsoleError("This command/variable is only available to a network server.");
+				}
 			}
 		}
 	}

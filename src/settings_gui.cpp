@@ -827,6 +827,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			// We do not allow changes of some items when we are a client in a networkgame
 			if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) editable = false;
 			if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
+			if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
 
 			if (sdb->cmd == SDT_BOOLX) {
 				static const int _bool_ctabs[2][2] = {{9, 4}, {7, 6}};
@@ -886,8 +887,9 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			sd = page->entries[btn].setting;
 
 			/* return if action is only active in network, or only settable by server */
-			if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
 			if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
+			if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
+			if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
 
 			var = GetVariableAddress(patches_ptr, &sd->save);
 			value = (int32)ReadValue(var, sd->save.conv);
