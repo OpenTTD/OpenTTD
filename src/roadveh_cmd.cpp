@@ -1325,12 +1325,16 @@ enum {
 
 	/* Start frames for when a vehicle enters a tile/changes its state.
 	 * The start frame is different for vehicles that turned around or
-	 * are leaving the depot as the do not start at the edge of the tile */
-	RVC_DEFAULT_START_FRAME      = 0,
-	RVC_TURN_AROUND_START_FRAME  = 1,
-	RVC_DEPOT_START_FRAME        = 6,
+	 * are leaving the depot as the do not start at the edge of the tile.
+	 * For trams there are a few different start frames as there are two
+	 * places where trams can turn. */
+	RVC_DEFAULT_START_FRAME                =  0,
+	RVC_TURN_AROUND_START_FRAME            =  1,
+	RVC_DEPOT_START_FRAME                  =  6,
+	RVC_START_FRAME_AFTER_LONG_TRAM        = 22,
+	RVC_TURN_AROUND_START_FRAME_SHORT_TRAM = 16,
 	/* Stop frame for a vehicle in a drive-through stop */
-	RVC_DRIVE_THROUGH_STOP_FRAME = 7
+	RVC_DRIVE_THROUGH_STOP_FRAME           =  7
 };
 
 struct RoadDriveEntry {
@@ -1456,6 +1460,29 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 	return dir;
 }
 
+/**
+ * Can a tram track build without destruction on the given tile?
+ * @param t the tile to build on.
+ * @return true when a track track can be build on 't'
+ */
+static bool CanBuildTramTrackOnTile(TileIndex t)
+{
+	switch (GetTileType(t)) {
+		case MP_CLEAR:
+		case MP_TREES:
+			return true;
+
+		case MP_ROAD:
+			return GetRoadTileType(t) == ROAD_TILE_NORMAL;
+
+		case MP_WATER:
+			return IsCoast(t);
+
+		default:
+			return false;
+	}
+}
+
 static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 {
 	Direction new_dir;
@@ -1535,10 +1562,13 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 		}
 
 again:
+		uint start_frame = RVC_DEFAULT_START_FRAME;
 		if (IsReversingRoadTrackdir(dir)) {
 			/* Turning around */
 			if (v->u.road.roadtype == ROADTYPE_TRAM) {
-				RoadBits needed; // The road bits the tram needs to be able to turn around
+				/* Determine the road bits the tram needs to be able to turn around
+				 * using the 'big' corner loop. */
+				RoadBits needed;
 				switch (dir) {
 					default: NOT_REACHED();
 					case TRACKDIR_RVREV_NE: needed = ROAD_SW; break;
@@ -1546,8 +1576,36 @@ again:
 					case TRACKDIR_RVREV_SW: needed = ROAD_NE; break;
 					case TRACKDIR_RVREV_NW: needed = ROAD_SE; break;
 				}
-				if (!IsTileType(tile, MP_ROAD) || GetRoadTileType(tile) != ROAD_TILE_NORMAL || HasRoadWorks(tile) || (needed & GetRoadBits(tile, ROADTYPE_TRAM)) == ROAD_NONE) {
-					/* The tram cannot turn here */
+				if ((v->Previous() != NULL && v->Previous()->tile == tile) ||
+						(IsRoadVehFront(v) && IsTileType(tile, MP_ROAD) &&
+							GetRoadTileType(tile) == ROAD_TILE_NORMAL && !HasRoadWorks(tile) &&
+							(needed & GetRoadBits(tile, ROADTYPE_TRAM)) != ROAD_NONE)) {
+					/*
+					 * Taking the 'big' corner for trams only happens when:
+					 * - The previous vehicle in this (articulated) tram chain is
+					 *   already on the 'next' tile, we just follow them regardless of
+					 *   anything. When it is NOT on the 'next' tile, the tram started
+					 *   doing a reversing turn when the piece of tram track on the next
+					 *   tile did not exist yet. Do not use the big tram loop as that is
+					 *   going to cause the tram to split up.
+					 * - Or the front of the tram can drive over the next tile.
+					 */
+				} else if (!IsRoadVehFront(v) || !CanBuildTramTrackOnTile(tile)) {
+					/*
+					 * Taking the 'small' corner for trams only happens when:
+					 * - We are not the from vehicle of an articulated tram.
+					 * - Or when the player cannot build on the next tile.
+					 *
+					 * The 'small' corner means that the vehicle is on the end of a
+					 * tram track and needs to start turning there. To do this properly
+					 * the tram needs to start at an offset in the tram turning 'code'
+					 * for 'big' corners. It furthermore does not go to the next tile,
+					 * so that needs to be fixed too.
+					 */
+					tile = v->tile;
+					start_frame = RVC_TURN_AROUND_START_FRAME_SHORT_TRAM;
+				} else {
+					/* The player can build on the next tile, so wait till (s)he does. */
 					v->cur_speed = 0;
 					return false;
 				}
@@ -1562,8 +1620,8 @@ again:
 		/* Get position data for first frame on the new tile */
 		rdp = _road_drive_data[v->u.road.roadtype][(dir + (_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
 
-		x = TileX(tile) * TILE_SIZE + rdp[RVC_DEFAULT_START_FRAME].x;
-		y = TileY(tile) * TILE_SIZE + rdp[RVC_DEFAULT_START_FRAME].y;
+		x = TileX(tile) * TILE_SIZE + rdp[start_frame].x;
+		y = TileY(tile) * TILE_SIZE + rdp[start_frame].y;
 
 		newdir = RoadVehGetSlidingDirection(v, x, y);
 		if (IsRoadVehFront(v) && RoadVehFindCloseTo(v, x, y, newdir) != NULL) return false;
@@ -1602,7 +1660,7 @@ again:
 		if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) {
 			v->tile = tile;
 			v->u.road.state = (byte)dir;
-			v->u.road.frame = RVC_DEFAULT_START_FRAME;
+			v->u.road.frame = start_frame;
 		}
 		if (newdir != v->direction) {
 			v->direction = newdir;
@@ -1622,11 +1680,34 @@ again:
 		Direction newdir;
 		const RoadDriveEntry *rdp;
 
-		if (IsRoadVehFront(v)) {
-			/* If this is the front engine, look for the right path. */
-			dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
+		uint turn_around_start_frame = RVC_TURN_AROUND_START_FRAME;
+
+		RoadBits tram = GetRoadBits(v->tile, ROADTYPE_TRAM);
+		if (v->u.road.roadtype == ROADTYPE_TRAM && CountBits(tram) == 1) {
+			/*
+			 * The tram is turning around with one tram 'roadbit'. This means that
+			 * it is using the 'big' corner 'drive data'. However, to support the
+			 * trams to take a small corner, there is a 'turned' marker in the middle
+			 * of the turning 'drive data'. When the tram took the long corner, we
+			 * will still use the 'big' corner drive data, but we advance it one
+			 * frame. We furthermore set the driving direction so the turning is
+			 * going to be properly shown.
+			 */
+			turn_around_start_frame = RVC_START_FRAME_AFTER_LONG_TRAM;
+			switch (tram) {
+				default: NOT_REACHED();
+				case ROAD_SW: dir = TRACKDIR_RVREV_NE; break;
+				case ROAD_NW: dir = TRACKDIR_RVREV_SE; break;
+				case ROAD_NE: dir = TRACKDIR_RVREV_SW; break;
+				case ROAD_SE: dir = TRACKDIR_RVREV_NW; break;
+			}
 		} else {
-			dir = FollowPreviousRoadVehicle(v, prev, v->tile, (DiagDirection)(rd.x & 3), true);
+			if (IsRoadVehFront(v)) {
+				/* If this is the front engine, look for the right path. */
+				dir = RoadFindPathToDest(v, v->tile, (DiagDirection)(rd.x & 3));
+			} else {
+				dir = FollowPreviousRoadVehicle(v, prev, v->tile, (DiagDirection)(rd.x & 3), true);
+			}
 		}
 
 		if (dir == INVALID_TRACKDIR) {
@@ -1636,8 +1717,8 @@ again:
 
 		rdp = _road_drive_data[v->u.road.roadtype][(_opt.road_side << RVS_DRIVE_SIDE) + dir];
 
-		x = TileX(v->tile) * TILE_SIZE + rdp[RVC_TURN_AROUND_START_FRAME].x;
-		y = TileY(v->tile) * TILE_SIZE + rdp[RVC_TURN_AROUND_START_FRAME].y;
+		x = TileX(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].x;
+		y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
 
 		newdir = RoadVehGetSlidingDirection(v, x, y);
 		if (IsRoadVehFront(v) && RoadVehFindCloseTo(v, x, y, newdir) != NULL) return false;
@@ -1649,7 +1730,7 @@ again:
 		}
 
 		v->u.road.state = dir;
-		v->u.road.frame = RVC_TURN_AROUND_START_FRAME;
+		v->u.road.frame = turn_around_start_frame;
 
 		if (newdir != v->direction) {
 			v->direction = newdir;
