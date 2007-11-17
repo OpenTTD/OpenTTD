@@ -731,16 +731,14 @@ no_slope:
 		 * maybe terraform some. */
 		desired_slope = (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? SLOPE_NW : SLOPE_NE;
 		if (desired_slope != cur_slope && ComplementSlope(desired_slope) != cur_slope) {
-			uint32 r = Random();
-
-			if (CHANCE16I(1, 8, r)) {
+			if (CHANCE16(1, 8)) {
 				CommandCost res = CMD_ERROR;
-				if (!_generating_world && CHANCE16I(1, 10, r >> 4)) {
+				if (!_generating_world && CHANCE16(1, 10)) {
 					/* Note: Do not replace " ^ 0xF" with ComplementSlope(). The slope might be steep. */
-					res = DoCommand(tile, CHANCE16I(1, 16, r >> 8) ? cur_slope : cur_slope ^ 0xF, 0,
+					res = DoCommand(tile, CHANCE16(1, 16) ? cur_slope : cur_slope ^ 0xF, 0,
 							DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
 				}
-				if (CmdFailed(res) && CHANCE16I(1, 3, r >> 16)) {
+				if (CmdFailed(res) && CHANCE16(1, 3)) {
 					/* We can consider building on the slope, though. */
 					goto no_slope;
 				}
