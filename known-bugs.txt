@@ -1,49 +1,30 @@
 README
 ------------------------------------------------------------------------
 All bugs listed below are marked as known. Please do not submit any bugs
-that are the same as these. If you do, don't act surprised, because
+that are the same as these. If you do, do not act surprised, because
 we WILL flame you!!
 
 Of course if you have more knowledge about any of these bugs, have more
 specifics, we welcome you to report them. React to the given bug indicated
 by the number below on http://bugs.openttd.org.
-If the bug report is closed, it has been fixed, which then can be verified
-in the latest SVN version.
 
-Bugs for 0.5.3
+If the bug report is closed, it has been fixed, which then can be verified
+in the latest SVN version of /trunk.
+
+Bugs for 0.6.0-beta1
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
--944	Incorrect el-rail catenary pole/wire offsets
--917	Load scenario with no towns failed without proper warning
--873	Assertion window fails to open on OSX
--820	Pillar drawing order glich, with newbridges
--716	Train Crash in Depot
--674	Map signs allow less nonenglish characters than english ones
--669	Docks/Airports/RV Stations can be built without available vehicles
--646	AI builds useless stations
--599	Reloaded game lost company passwords
--591	Autorenew fails under certain conditions
--553	Autorenew doesn't warn when replacement isn't available
--546	Overflows due to inflation
--522	Overflow on vehicle costs
--502	OSX can incorrectly print "dbg: [sl] Cannot open savegame 'data/opntitle.dat' for saving/loading."
--501	Mouse pointer gets hidden, when draging out of window and back again. Only affects Wacom etc.
--494	Get free money abusing a stock bug
--474	Overtaking car doesn't hit the against-riding car.
--435	Assertion window doesn't show when in fullscreen on Mac OS X
--423	Improved loading causes high CPU use with long trains
--410	Openttd in dedicated mode don't run without data files
--365	Blimp Stuck at airport
--362	Changing signal type affects whole square
--355	graphics bugs with trains - water, tunnels
--354	Maglev Trains faster than All Planes
--339	Crash in Quicktime when exiting game
--299	Disable 90 deg turns patch - AI builds 90 deg turns
--282	AI Players do not clear loans as soon as they could
--259	AIs start unnamed companies that do nothing
--202	2 Locomotives in 1 Train - Selling one results in Age of the other one Being 0
--193	Inconsistent directory usage on Mac OS X
--153	Language crash with app renaming OSX
--119	Clipping problems with vehicles on slopes
-- 51	Windows doesn't support CUSTOM_LANG_DIR
+- 1434	Network game crashes when player builds SH40
+- 1404	Spinner widget interprets one click as many
+- 1401	Crash while scrolling screen
+- 1386	Mac OS X fails to compile out of the box on 10.5
+- 1264	Autoreplace for multiple NewGRF DMU sets fails
+- 1200	Illegal names skip comparisons for uniquity
+- 1141	[OSX] Not smooth moving map with touchpad
+- 1109	[OSX] Choppy mouse cursor movement in fullscreen mode
+- 1094	Foundations showing on 'build on slopes'
+- 1074	Large slowdown when building tracks
+- 1072	Text overflows in several windows
+-  716	Train crash in depot with long long tracks
+-  119	Clipping problems with vehicles on slopes

@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2007-09-15
-Release version: 0.5.3
+Last updated:    2007-11-18
+Release version: 0.6.0-beta1
 ------------------------------------------------------------------------
 
 
@@ -40,7 +40,7 @@ on irc.oftc.net).
 The OpenTTD homepage is http://www.openttd.org/.
 
 You can also find the OpenTTD forums at
-http://www.tt-forums.net/index.php?c=20
+http://forum.openttd.org/
 
 
 2.1) Reporting Bugs:
@@ -57,7 +57,7 @@ Please include the following information in your bug report:
         - OpenTTD version (PLEASE test the latest SVN/nightly build)
         - Bug details, including instructions how to reproduce it
         - Platform and compiler (Win32, Linux, FreeBSD, ...)
-        - Attach a saved game or a screenshot if possible
+        - Attach a saved game *and* a screenshot if possible
         - If this bug only occurred recently please note the last
           version without the bug and the first version including
           the bug. That way we can fix it quicker by looking at the
@@ -103,9 +103,7 @@ trgir.grf
 trgtr.grf
 
 (Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF,
-TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. A few minor graphical glitches with
-the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't
-look as nice as with the Windows graphics.)
+TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF.
 
 If you want music you need to copy the gm/ folder from Windows TTD into your
 OpenTTD folder, not your data folder.
