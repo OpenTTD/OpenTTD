@@ -2241,8 +2241,8 @@ void UpdateTileSelection()
 		x1 = _thd.selend.x;
 		y1 = _thd.selend.y;
 		if (x1 != -1) {
-			int x2 = _thd.selstart.x;
-			int y2 = _thd.selstart.y;
+			int x2 = _thd.selstart.x & ~0xF;
+			int y2 = _thd.selstart.y & ~0xF;
 			x1 &= ~0xF;
 			y1 &= ~0xF;
 
@@ -2305,6 +2305,17 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, byte process
 	_thd.selstart.x = TileX(tile) * TILE_SIZE;
 	_thd.selend.y = TileY(tile) * TILE_SIZE;
 	_thd.selstart.y = TileY(tile) * TILE_SIZE;
+
+	/* Needed so several things (road, autoroad, bridges, ...) are placed correctly.
+	 * In effect, placement starts from the centre of a tile
+	 */
+	if (method == VPM_X_OR_Y || method == VPM_FIX_X || method == VPM_FIX_Y) {
+		_thd.selend.x += TILE_SIZE / 2;
+		_thd.selend.y += TILE_SIZE / 2;
+		_thd.selstart.x += TILE_SIZE / 2;
+		_thd.selstart.y += TILE_SIZE / 2;
+	}
+
 	if (_thd.place_mode == VHM_RECT) {
 		_thd.place_mode = VHM_SPECIAL;
 		_thd.next_drawstyle = HT_RECT;
@@ -2652,6 +2663,7 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 		return;
 	}
 
+	/* Needed so level-land is placed correctly */
 	if (_thd.next_drawstyle == HT_POINT) {
 		x += TILE_SIZE / 2;
 		y += TILE_SIZE / 2;
