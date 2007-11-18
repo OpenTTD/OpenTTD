@@ -296,10 +296,13 @@ static void SetViewportPosition(Window *w, int x, int y)
 	vp->virtual_left = x;
 	vp->virtual_top = y;
 
-	old_left = UnScaleByZoom(old_left, vp->zoom);
-	old_top = UnScaleByZoom(old_top, vp->zoom);
-	x = UnScaleByZoom(x, vp->zoom);
-	y = UnScaleByZoom(y, vp->zoom);
+	/* viewport is bound to its left top corner, so it must be rounded down (UnScaleByZoomLower)
+	 * else glitch described in FS#1412 will happen (offset by 1 pixel with zoom level > NORMAL)
+	 */
+	old_left = UnScaleByZoomLower(old_left, vp->zoom);
+	old_top = UnScaleByZoomLower(old_top, vp->zoom);
+	x = UnScaleByZoomLower(x, vp->zoom);
+	y = UnScaleByZoomLower(y, vp->zoom);
 
 	old_left -= x;
 	old_top -= y;
