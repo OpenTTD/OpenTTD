@@ -504,7 +504,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 					_place_road_flag = (RoadFlags)((_place_road_flag & RF_DIR_Y) ? (_place_road_flag & 0x07) : (_place_road_flag >> 3));
 
 					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | _ctrl_pressed << 5, CcPlaySound1D,
-						_remove_button_clicked ?
+						(_ctrl_pressed || _remove_button_clicked) ?
 						CMD_REMOVE_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
 						CMD_BUILD_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road));
 					break;

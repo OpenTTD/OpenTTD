@@ -516,8 +516,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 					if (_ctrl_pressed) _remove_button_clicked = true;
 					HandleAutodirPlacement();
 					_remove_button_clicked = old;
-					break;
-				}
+				} break;
 
 				case DDSP_BUILD_SIGNALS:
 					HandleAutoSignalPlacement();
@@ -540,9 +539,12 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case DDSP_PLACE_RAIL_NE:
-				case DDSP_PLACE_RAIL_NW:
+				case DDSP_PLACE_RAIL_NW: {
+					bool old = _remove_button_clicked;
+					if (_ctrl_pressed) _remove_button_clicked = true;
 					DoRailroadTrack(e->we.place.select_proc == DDSP_PLACE_RAIL_NE ? TRACK_X : TRACK_Y);
-					break;
+					_remove_button_clicked = old;
+				} break;
 			}
 		}
 		break;
