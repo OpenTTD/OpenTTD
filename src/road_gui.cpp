@@ -320,6 +320,7 @@ static void BuildRoadClick_OneWay(Window *w)
 	if (IsWindowWidgetDisabled(w, RTW_ONE_WAY)) return;
 	SetWindowDirty(w);
 	ToggleWidgetLoweredState(w, RTW_ONE_WAY);
+	SetSelectionRed(false);
 }
 
 static void BuildRoadClick_Bridge(Window *w)
