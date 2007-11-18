@@ -86,7 +86,7 @@ enum ViewportPlaceMethod {
 	VPM_SIGNALDIRS      = 6, ///< similiar to VMP_RAILDIRS, but with different cursor
 };
 
-/* viewport highlight mode (for highlighting tiles below cursor) */
+/** Viewport highlight mode (for highlighting tiles below cursor) */
 enum ViewportHighlightMode {
 	VHM_NONE    = 0, ///< default
 	VHM_RECT    = 1, ///< rectangle (stations, depots, ...)
@@ -143,7 +143,7 @@ struct TileHighlightData {
 	byte new_drawstyle;  // only used in UpdateTileSelection() to as a buffer to compare if there was a change between old and new
 	byte next_drawstyle; // queued, but not yet drawn style
 
-	byte place_mode;
+	ViewportHighlightMode place_mode;
 	bool make_square_red;
 	WindowClass window_class;
 	WindowNumber window_number;

@@ -2270,6 +2270,10 @@ void UpdateTileSelection()
 					break;
 				case VHM_RAIL:
 					_thd.new_drawstyle = GetAutorailHT(pt.x, pt.y); // draw one highlighted tile
+					break;
+				default:
+					NOT_REACHED();
+					break;
 			}
 			_thd.new_pos.x = x1 & ~0xF;
 			_thd.new_pos.y = y1 & ~0xF;
@@ -2826,8 +2830,8 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, W
 	Window *w;
 
 	/* undo clicking on button */
-	if (_thd.place_mode != 0) {
-		_thd.place_mode = 0;
+	if (_thd.place_mode != VHM_NONE) {
+		_thd.place_mode = VHM_NONE;
 		w = FindWindowById(_thd.window_class, _thd.window_number);
 		if (w != NULL) CallWindowEventNP(w, WE_ABORT_PLACE_OBJ);
 	}

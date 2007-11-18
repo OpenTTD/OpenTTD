@@ -1772,7 +1772,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 			case MC_DOUBLE_LEFT:
 			case MC_LEFT:
 				DEBUG(misc, 2, "Cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
-				if (_thd.place_mode != 0 &&
+				if (_thd.place_mode != VHM_NONE &&
 						/* query button and place sign button work in pause mode */
 						_cursor.sprite != SPR_CURSOR_QUERY &&
 						_cursor.sprite != SPR_CURSOR_SIGN &&
@@ -1781,7 +1781,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 					return;
 				}
 
-				if (_thd.place_mode == 0) {
+				if (_thd.place_mode == VHM_NONE) {
 					HandleViewportClicked(vp, x, y);
 				} else {
 					PlaceObject();

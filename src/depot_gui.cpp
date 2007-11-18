@@ -414,7 +414,7 @@ static void DepotClick(Window *w, int x, int y)
 	int mode = GetVehicleFromDepotWndPt(w, x, y, &v, &gdvp);
 
 	/* share / copy orders */
-	if (_thd.place_mode && mode <= 0) {
+	if (_thd.place_mode != VHM_NONE && mode <= 0) {
 		_place_clicked_vehicle = (WP(w, depot_d).type == VEH_TRAIN ? gdvp.head : v);
 		return;
 	}
