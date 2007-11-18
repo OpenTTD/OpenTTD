@@ -105,7 +105,7 @@ else
 # Are we a git dir?
 ifeq ($(shell if test -d $(SRC_DIR)/../.git; then echo 1; fi), 1)
 # Find the revision like: gXXXXM-branch
-REV := g$(shell if head=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(shell if git diff-index HEAD | read dummy; then echo M; fi)$(shell git branch|grep '[*]' | sed 's/\* /-/;s/^-master$$//')
+REV := g$(shell if head=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(shell if cd "$(SRC_DIR)/.." && git diff-index HEAD src | read dummy; then echo M; fi)$(shell git branch|grep '[*]' | sed 's/\* /-/;s/^-master$$//')
 REV_NR := $(shell LC_ALL=C cd "$(SRC_DIR)/.." && git log --pretty=format:%s src | grep -m 1 "^(svn r[0-9]*)" | sed "s/.*(svn r\([0-9]*\)).*/\1/" )
 else
 # Are we a hg (Mercurial) dir?
