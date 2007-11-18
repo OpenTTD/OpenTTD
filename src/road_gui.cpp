@@ -29,6 +29,7 @@ static void ShowRVStationPicker(RoadStop::Type rs);
 static void ShowRoadDepotPicker();
 
 static bool _remove_button_clicked;
+static bool _one_way_button_clicked;
 
 /**
  * Define the values of the RoadFlags
@@ -244,6 +245,7 @@ enum RoadToolbarWidgets {
 	RTW_DEPOT,
 	RTW_BUS_STATION,
 	RTW_TRUCK_STATION,
+	RTW_ONE_WAY,
 	RTW_BUILD_BRIDGE,
 	RTW_BUILD_TUNNEL,
 	RTW_REMOVE,
@@ -307,6 +309,19 @@ static void BuildRoadClick_TruckStation(Window *w)
 	if (HandlePlacePushButton(w, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, VHM_RECT, PlaceRoad_TruckStation)) ShowRVStationPicker(RoadStop::TRUCK);
 }
 
+/**
+ * Function that handles the click on the
+ *  one way road button.
+ *
+ * @param w The current window
+ */
+static void BuildRoadClick_OneWay(Window *w)
+{
+	if (IsWindowWidgetDisabled(w, RTW_ONE_WAY)) return;
+	SetWindowDirty(w);
+	ToggleWidgetLoweredState(w, RTW_ONE_WAY);
+}
+
 static void BuildRoadClick_Bridge(Window *w)
 {
 	HandlePlacePushButton(w, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, VHM_RECT, PlaceRoad_Bridge);
@@ -335,6 +350,7 @@ static OnButtonClick* const _build_road_button_proc[] = {
 	BuildRoadClick_Depot,
 	BuildRoadClick_BusStation,
 	BuildRoadClick_TruckStation,
+	BuildRoadClick_OneWay,
 	BuildRoadClick_Bridge,
 	BuildRoadClick_Tunnel,
 	BuildRoadClick_Remove
@@ -349,6 +365,7 @@ static const uint16 _road_keycodes[] = {
 	'5',
 	'6',
 	'7',
+	'8',
 	'B',
 	'T',
 	'R',
@@ -360,29 +377,42 @@ static const uint16 _road_keycodes[] = {
  * @param w The toolbar window
  * @param clicked_widget The widget which the player clicked just now
  */
-static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
+static void UpdateOptionWidgetStatus(Window *w, int clicked_widget)
 {
+	/* The remove and the one way button state is driven
+	 * by the other buttons so they don't act on themselfs.
+	 * Both are only valid if they are able to apply as options. */
 	switch (clicked_widget) {
 		case RTW_REMOVE:
-			/* If it is the removal button that has been clicked, do nothing,
-			 * as it is up to the other buttons to drive removal status */
-			return;
+			RaiseWindowWidget(w, RTW_ONE_WAY);
+			break;
+		case RTW_ONE_WAY:
+			RaiseWindowWidget(w, RTW_REMOVE);
+			break;
+		case RTW_BUS_STATION:
+		case RTW_TRUCK_STATION:
+			DisableWindowWidget(w, RTW_ONE_WAY);
+			SetWindowWidgetDisabledState(w, RTW_REMOVE, !IsWindowWidgetLowered(w, clicked_widget));
 			break;
 		case RTW_ROAD_X:
 		case RTW_ROAD_Y:
 		case RTW_AUTOROAD:
-		case RTW_BUS_STATION:
-		case RTW_TRUCK_STATION:
-			/* Removal button is enabled only if the road/station
-			 * button is still lowered.  Once raised, it has to be disabled */
-			SetWindowWidgetDisabledState(w, RTW_REMOVE, !IsWindowWidgetLowered(w, clicked_widget));
+			SetWindowWidgetsDisabledState(w, !IsWindowWidgetLowered(w, clicked_widget),
+				RTW_REMOVE,
+				RTW_ONE_WAY,
+				WIDGET_LIST_END);
 			break;
-
 		default:
 			/* When any other buttons than road/station, raise and
 			 * disable the removal button */
-			DisableWindowWidget(w, RTW_REMOVE);
-			RaiseWindowWidget(w, RTW_REMOVE);
+			SetWindowWidgetsDisabledState(w, true,
+				RTW_REMOVE,
+				RTW_ONE_WAY,
+				WIDGET_LIST_END);
+			SetWindowWidgetsLoweredState (w, false,
+				RTW_REMOVE,
+				RTW_ONE_WAY,
+				WIDGET_LIST_END);
 			break;
 	}
 }
@@ -390,7 +420,12 @@ static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
 static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: DisableWindowWidget(w, RTW_REMOVE); break;
+	case WE_CREATE:
+		SetWindowWidgetsDisabledState(w, true,
+			RTW_REMOVE,
+			RTW_ONE_WAY,
+			WIDGET_LIST_END);
+		break;
 
 	case WE_PAINT:
 		SetWindowWidgetsDisabledState(w, !CanBuildVehicleInfrastructure(VEH_ROAD),
@@ -404,9 +439,10 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		if (e->we.click.widget >= RTW_ROAD_X) {
 			_remove_button_clicked = false;
+			_one_way_button_clicked = false;
 			_build_road_button_proc[e->we.click.widget - RTW_ROAD_X](w);
 		}
-		UpdateRemoveWidgetStatus(w, e->we.click.widget);
+		UpdateOptionWidgetStatus(w, e->we.click.widget);
 		break;
 
 	case WE_KEYPRESS:
@@ -414,8 +450,9 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 			if (e->we.keypress.keycode == _road_keycodes[i]) {
 				e->we.keypress.cont = false;
 				_remove_button_clicked = false;
+				_one_way_button_clicked = false;
 				_build_road_button_proc[i](w);
-				UpdateRemoveWidgetStatus(w, i + RTW_ROAD_X);
+				UpdateOptionWidgetStatus(w, i + RTW_ROAD_X);
 				break;
 			}
 		}
@@ -424,6 +461,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_OBJ:
 		_remove_button_clicked = IsWindowWidgetLowered(w, RTW_REMOVE);
+		_one_way_button_clicked = IsWindowWidgetLowered(w, RTW_ONE_WAY);
 		_place_proc(e->we.place.tile);
 		break;
 
@@ -503,7 +541,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 					 * not the 3rd bit set) */
 					_place_road_flag = (RoadFlags)((_place_road_flag & RF_DIR_Y) ? (_place_road_flag & 0x07) : (_place_road_flag >> 3));
 
-					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | _ctrl_pressed << 5, CcPlaySound1D,
+					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 5), CcPlaySound1D,
 						(_ctrl_pressed || _remove_button_clicked) ?
 						CMD_REMOVE_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
 						CMD_BUILD_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road));
@@ -529,8 +567,8 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 /** Widget definition of the build road toolbar */
 static const Widget _build_road_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},             // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   227,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   228,   239,     0,    13, 0x0,                        STR_STICKY_BUTTON},                 // RTW_STICKY
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   250,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   251,   262,     0,    13, 0x0,                        STR_STICKY_BUTTON},                 // RTW_STICKY
 
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_ROAD_X_DIR,         STR_180B_BUILD_ROAD_SECTION},       // RTW_ROAD_X
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_ROAD_Y_DIR,         STR_180B_BUILD_ROAD_SECTION},       // RTW_ROAD_Y
@@ -539,15 +577,16 @@ static const Widget _build_road_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_ROAD_VEHICLE_DEPOT}, // RTW_DEPOT
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_BUS_STATION},        // RTW_BUS_STATION
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_TRUCK_LOADING_BAY},  // RTW_TRUCK_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   153,   195,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},        // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   196,   217,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},        // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   218,   239,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR},  // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   154,   175,    14,    35, SPR_IMG_ROAD_ONE_WAY,       STR_TOGGLE_ONE_WAY_ROAD},           // RTW_ONE_WAY
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   176,   218,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},        // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   219,   240,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},        // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   241,   262,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR},  // RTW_REMOVE
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_road_desc = {
-	WDP_ALIGN_TBR, 22, 240, 36, 240, 36,
+	WDP_ALIGN_TBR, 22, 263, 36, 263, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_widgets,
@@ -557,8 +596,8 @@ static const WindowDesc _build_road_desc = {
 /** Widget definition of the build tram toolbar */
 static const Widget _build_tramway_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                     // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   227,     0,    13, STR_1802_TRAMWAY_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   228,   239,     0,    13, 0x0,                        STR_STICKY_BUTTON},                         // RTW_STICKY
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   228,     0,    13, STR_1802_TRAMWAY_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   229,   240,     0,    13, 0x0,                        STR_STICKY_BUTTON},                         // RTW_STICKY
 
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_TRAMWAY_X_DIR,      STR_180B_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_X
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_TRAMWAY_Y_DIR,      STR_180B_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_Y
@@ -567,15 +606,16 @@ static const Widget _build_tramway_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_TRAM_VEHICLE_DEPOT},         // RTW_DEPOT
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_PASSENGER_TRAM_STATION},     // RTW_BUS_STATION
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_CARGO_TRAM_STATION},         // RTW_TRUCK_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   153,   195,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_TRAMWAY_BRIDGE},             // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   196,   217,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_TRAMWAY_TUNNEL},             // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   218,   239,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS}, // RTW_REMOVE
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                                  // RTW_ONE_WAY
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   154,   196,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_TRAMWAY_BRIDGE},             // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   197,   218,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_TRAMWAY_TUNNEL},             // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   219,   240,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS}, // RTW_REMOVE
 
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_tramway_desc = {
-	WDP_ALIGN_TBR, 22, 240, 36, 240, 36,
+	WDP_ALIGN_TBR, 22, 241, 36, 241, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_tramway_widgets,
@@ -595,8 +635,8 @@ void ShowBuildRoadToolbar(RoadType roadtype)
 /** Widget definition of the build road toolbar in the scenario editor */
 static const Widget _build_road_scen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},            // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   161,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},  // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   162,   173,     0,    13, 0x0,                        STR_STICKY_BUTTON},                // RTW_STICKY
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   184,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},  // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   185,   196,     0,    13, 0x0,                        STR_STICKY_BUTTON},                // RTW_STICKY
 
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_ROAD_X_DIR,         STR_180B_BUILD_ROAD_SECTION},      // RTW_ROAD_X
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_ROAD_Y_DIR,         STR_180B_BUILD_ROAD_SECTION},      // RTW_ROAD_Y
@@ -605,14 +645,15 @@ static const Widget _build_road_scen_widgets[] = {
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_DEPOT
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_BUS_STATION
 {      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_TRUCK_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   130,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},       // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   131,   151,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},       // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   152,   173,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR}, // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_ONE_WAY,       STR_TOGGLE_ONE_WAY_ROAD},          // RTW_ONE_WAY
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   152,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},       // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   153,   174,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},       // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   175,   196,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR}, // RTW_REMOVE
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_road_scen_desc = {
-	WDP_AUTO, WDP_AUTO, 174, 36, 174, 36,
+	WDP_AUTO, WDP_AUTO, 197, 36, 197, 36,
 	WC_SCEN_BUILD_ROAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_scen_widgets,

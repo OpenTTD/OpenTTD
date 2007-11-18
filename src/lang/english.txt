@@ -1683,6 +1683,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Build ro
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Build tramway bridge
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Build road tunnel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Build tramway tunnel
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activate/Deactivate one way roads
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Toggle build/remove for road construction
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Toggle build/remove for tramway construction
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Select road vehicle depot orientation
