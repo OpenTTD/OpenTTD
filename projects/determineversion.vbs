@@ -41,6 +41,12 @@ Sub UpdateFiles(version)
 				revision = Mid(OExec.StdOut.ReadLine(), 7)
 				revision = Mid(revision, 1, InStr(revision, ")") - 1)
 			End If
+		Case "g" ' git
+			Set oExec = WshShell.Exec("git log --pretty=format:%s --grep=" & Chr(34) & "^(svn r[0-9]*)" & Chr(34) & " -1 ../src")
+			if Err.Number = 0 Then
+				revision = Mid(oExec.StdOut.ReadLine(), 7)
+				revision = Mid(revision, 1, InStr(revision, ")") - 1)
+			End If
 	End Select
 
 	UpdateFile revision, version, cur_date, "../src/rev.cpp"
@@ -118,25 +124,52 @@ Function DetermineSVNVersion()
 			version = version & Replace(url, "/", "-")
 		End If
 	Else
-		' svn detection failed, reset error and try mercurial (hg)
+		' svn detection failed, reset error and try git
 		Err.Clear
-		Set oExec = WshShell.Exec("hg tip")
-		If Err.Number = 0 Then
-			version = "h" & Mid(OExec.StdOut.ReadLine(), 19, 8)
-			Set oExec = WshShell.Exec("hg status ../src")
-			If Err.Number = 0 Then
-				Do
-					line = OExec.StdOut.ReadLine()
-					If Mid(line, 1, 1) <> "?" Then
-						version = version & "M"
-						Exit Do
-					End If
-				Loop While Not OExec.StdOut.atEndOfStream
+		Set oExec = WshShell.Exec("git rev-parse --verify --short=8 HEAD")
+		Do While oExec.Status = 0 And Err.Number = 0
+			' Wait till command has finished
+		Loop
+		If Err.Number = 0 And oExec.ExitCode = 0 Then
+			version = "g" & oExec.StdOut.ReadLine()
+			Set oExec = WshShell.Exec("git diff-index --exit-code --quiet HEAD ../src")
+			Do While oExec.Status = 0 And Err.Number = 0
+			Loop
+			If Err.Number = 0 And oExec.ExitCode = 1 Then
+				version = version & "M"
 			End If
-			Set oExec = WshShell.Exec("hg branch")
+
+			Set oExec = WshShell.Exec("git symbolic-ref HEAD")
 			If Err.Number = 0 Then
-					line = OExec.StdOut.ReadLine()
-					If line <> "default" Then version = version & "-" & line
+				line = oExec.StdOut.ReadLine()
+				line = Mid(line, InStrRev(line, "/")+1)
+				If line <> "master" Then
+					version = version & "-" & line
+				End If
+			End If
+		Else
+			' try mercurial (hg)
+			Err.Clear
+			Set oExec = WshShell.Exec("hg tip")
+			If Err.Number = 0 Then
+				version = "h" & Mid(OExec.StdOut.ReadLine(), 19, 8)
+				Set oExec = WshShell.Exec("hg status ../src")
+				If Err.Number = 0 Then
+					Do
+						line = OExec.StdOut.ReadLine()
+						If Mid(line, 1, 1) <> "?" Then
+							version = version & "M"
+							Exit Do
+						End If
+					Loop While Not OExec.StdOut.atEndOfStream
+				End If
+				Set oExec = WshShell.Exec("hg branch")
+				If Err.Number = 0 Then
+						line = OExec.StdOut.ReadLine()
+						If line <> "default" Then
+							version = version & "-" & line
+						End If
+				End If
 			End If
 		End If
 	End If
