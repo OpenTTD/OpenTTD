@@ -363,6 +363,16 @@ void FioCreateDirectory(const char *name)
 	CreateDirectory(OTTD2FS(name), NULL);
 #elif defined(OS2) && !defined(__INNOTEK_LIBC__)
 	mkdir(OTTD2FS(name));
+#elif defined(__MORPHOS__) || defined(__AMIGAOS__)
+	char buf[MAX_PATH];
+	ttd_strlcpy(buf, name, MAX_PATH);
+
+	size_t len = strlen(name) - 1;
+	if (buf[len] == '/') {
+		buf[len] = '\0'; // Kill pathsep, so mkdir() will not fail
+	}
+
+	mkdir(OTTD2FS(buf), 0755);
 #else
 	mkdir(OTTD2FS(name), 0755);
 #endif
@@ -720,7 +730,10 @@ void DeterminePaths(const char *exe)
 	char *autosave_dir = str_fmt("%s%s", _personal_dir, FioGetSubdirectory(AUTOSAVE_DIR));
 
 	/* Make the necessary folders */
+#if !defined(__MORPHOS__) && !defined(__AMIGA__) && defined(WITH_PERSONAL_DIR)
 	FioCreateDirectory(_personal_dir);
+#endif
+
 	FioCreateDirectory(save_dir);
 	FioCreateDirectory(autosave_dir);
 

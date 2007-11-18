@@ -145,15 +145,7 @@ char *FiosBrowseTo(const FiosItem *item)
 	case FIOS_TYPE_BMP:
 	{
 		static char str_buffr[512];
-
-#if defined(__MORPHOS__) || defined(__AMIGAOS__)
-		/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
-		if (FiosIsRoot(path)) {
-			snprintf(str_buffr, lengthof(str_buffr), "%s:%s", path, item->name);
-		} else // XXX - only next line!
-#endif
 		snprintf(str_buffr, lengthof(str_buffr), "%s%s", path, item->name);
-
 		return str_buffr;
 	}
 	}
@@ -170,8 +162,21 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 	/* Don't append the extension if it is already there */
 	period = strrchr(name, '.');
 	if (period != NULL && strcasecmp(period, extension) == 0) extension = "";
+#if  defined(__MORPHOS__) || defined(__AMIGAOS__)
+	if (_fios_path != NULL) {
+		unsigned char sepchar = _fios_path[(strlen(_fios_path) - 1)];
 
+		if (sepchar != ':' && sepchar != '/') {
+			snprintf(buf, size, "%s" PATHSEP "%s%s", _fios_path, name, extension);
+		} else {
+			snprintf(buf, size, "%s%s%s", _fios_path, name, extension);
+		}
+	} else {
+		snprintf(buf, size, "%s%s", name, extension);
+	}
+#else
 	snprintf(buf, size, "%s" PATHSEP "%s%s", _fios_path, name, extension);
+#endif
 }
 
 #if defined(WIN32)
