@@ -47,7 +47,7 @@ static SpriteCache *AllocateSpriteCache(uint index)
 {
 	if (index >= _spritecache_items) {
 		/* Add another 1024 items to the 'pool' */
-		uint items = ALIGN(index + 1, 1024);
+		uint items = Align(index + 1, 1024);
 
 		DEBUG(sprite, 4, "Increasing sprite cache to %d items (%d bytes)", items, items * sizeof(*_spritecache));
 
@@ -436,7 +436,7 @@ void* AllocSprite(size_t mem_req)
 
 	/* Align this to an uint32 boundary. This also makes sure that the 2 least
 	 * bits are not used, so we could use those for other things. */
-	mem_req = ALIGN(mem_req, sizeof(uint32));
+	mem_req = Align(mem_req, sizeof(uint32));
 
 	for (;;) {
 		MemBlock* s;

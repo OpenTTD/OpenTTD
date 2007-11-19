@@ -97,7 +97,7 @@ static void *pool_alloc(SettingsMemoryPool **pool, uint size)
 	uint pos;
 	SettingsMemoryPool *p = *pool;
 
-	size = ALIGN(size, sizeof(void*));
+	size = Align(size, sizeof(void*));
 
 	/* first check if there's memory in the next pool */
 	if (p->next && p->next->pos + size <= p->next->size) {

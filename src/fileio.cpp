@@ -518,7 +518,7 @@ static bool TarListAddFile(const char *filename)
 		if (_tar_filelist.insert(TarFileList::value_type(name, entry)).second) num++;
 
 		/* Skip to the next block.. */
-		skip = ALIGN(skip, 512);
+		skip = Align(skip, 512);
 		fseek(f, skip, SEEK_CUR);
 		pos += skip;
 	}

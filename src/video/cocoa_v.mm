@@ -52,8 +52,6 @@ extern "C" void HideMenuBar();
 #endif
 
 
-/* Defined in ppc/param.h or i386/param.h included from sys/param.h */
-#undef ALIGN
 /* Defined in stdbool.h */
 #ifndef __cplusplus
 # ifndef __BEOS__

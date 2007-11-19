@@ -360,8 +360,6 @@ CDECL error(const char *str, ...);
 #elif defined(OPENBSD)
 /* OpenBSD uses strcasecmp(3) */
 #define _stricmp strcasecmp
-/* OpenBSD furthermore already has an ALIGN macro. */
-#undef ALIGN
 #endif
 
 #if !defined(MORPHOS) && !defined(OPENBSD)

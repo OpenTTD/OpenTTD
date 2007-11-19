@@ -553,7 +553,7 @@ template<typename T> static inline T ROR(const T x, const uint8 n)
  * @param n The base of the number we are searching
  * @return The smallest multiple of n equal or greater than x
  */
-template<typename T> static inline T ALIGN(const T x, uint n) {
+template<typename T> static inline T Align(const T x, uint n) {
 	n--;
 	return (T)((x + n) & ~(n));
 }
