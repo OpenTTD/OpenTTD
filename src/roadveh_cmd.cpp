@@ -671,9 +671,9 @@ static void* EnumCheckRoadVehCrashTrain(Vehicle* v, void* data)
 
 	return
 		v->type == VEH_TRAIN &&
-		myabs(v->z_pos - u->z_pos) <= 6 &&
-		myabs(v->x_pos - u->x_pos) <= 4 &&
-		myabs(v->y_pos - u->y_pos) <= 4 ?
+		abs(v->z_pos - u->z_pos) <= 6 &&
+		abs(v->x_pos - u->x_pos) <= 4 &&
+		abs(v->y_pos - u->y_pos) <= 4 ?
 			v : NULL;
 }
 
@@ -870,7 +870,7 @@ static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
 	return
 		v->type == VEH_ROAD &&
 		!v->IsInDepot() &&
-		myabs(v->z_pos - rvf->veh->z_pos) < 6 &&
+		abs(v->z_pos - rvf->veh->z_pos) < 6 &&
 		v->direction == rvf->dir &&
 		rvf->veh->First() != v->First() &&
 		(dist_x[v->direction] >= 0 || (x_diff > dist_x[v->direction] && x_diff <= 0)) &&

@@ -1396,7 +1396,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 {
 	int z = GetSlopeZ(x, y) - v->z_pos;
 
-	if (myabs(z) > 2) return VETSB_CANNOT_ENTER;
+	if (abs(z) > 2) return VETSB_CANNOT_ENTER;
 
 	if (IsTunnel(tile)) {
 		byte fc;

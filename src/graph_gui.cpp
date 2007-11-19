@@ -139,7 +139,7 @@ static void DrawGraph(const GraphDrawer *gw)
 					/* For now, if the graph has negative values the scaling is
 					 * symmetrical about the x axis, so take the absolute value
 					 * of each data point. */
-					highest_value = max(highest_value, myabs(datapoint));
+					highest_value = max(highest_value, abs(datapoint));
 				}
 			}
 		}

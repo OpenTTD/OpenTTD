@@ -2522,8 +2522,8 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 
 	int dx = thd->selstart.x - (thd->selend.x & ~0xF);
 	int dy = thd->selstart.y - (thd->selend.y & ~0xF);
-	w = myabs(dx) + 16;
-	h = myabs(dy) + 16;
+	w = abs(dx) + 16;
+	h = abs(dy) + 16;
 
 	if (TileVirtXY(thd->selstart.x, thd->selstart.y) == TileVirtXY(x, y)) { // check if we're only within one tile
 		if (method == VPM_RAILDIRS) {
@@ -2678,7 +2678,7 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 
 	switch (method) {
 		case VPM_X_OR_Y: /* drag in X or Y direction */
-			if (myabs(sy - y) < myabs(sx - x)) {
+			if (abs(sy - y) < abs(sx - x)) {
 				y = sy;
 				style = HT_DIR_X;
 			} else {

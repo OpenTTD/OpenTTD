@@ -79,6 +79,10 @@ template<typename T, typename U> static inline T AB(T& x, const uint8 s, const u
 #undef max
 #endif
 
+#ifdef abs
+#undef abs
+#endif
+
 /**
  * Returns the maximum of two values.
  *
@@ -135,6 +139,18 @@ static inline int min(const int a, const int b)
 static inline uint minu(const uint a, const uint b)
 {
 	return a < b ? a : b;
+}
+
+/**
+ * Returns the absolute value of (scalar) variable.
+ *
+ * @note assumes variable to be signed
+ * @param a The value we want to unsign
+ * @return The unsigned value
+ */
+template <typename T> static inline T abs(T a)
+{
+	return (a < (T)0) ? -a : a;
 }
 
 /**
@@ -518,8 +534,6 @@ static inline bool CHANCE16I(const uint a, const uint b, const uint32 r)
 #define for_each_bit(_i, _b)            \
 	for (_i = 0; _b != 0; _i++, _b >>= 1) \
 		if (_b & 1)
-
-#define abs myabs
 
 
 static inline uint16 ReadLE16Aligned(const void* x)

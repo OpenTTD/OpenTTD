@@ -1112,7 +1112,7 @@ static bool AircraftController(Vehicle *v)
 	}
 
 	/* Get distance from destination pos to current pos. */
-	uint dist = myabs(x + amd->x - v->x_pos) +  myabs(y + amd->y - v->y_pos);
+	uint dist = abs(x + amd->x - v->x_pos) +  abs(y + amd->y - v->y_pos);
 
 	/* Need exact position? */
 	if (!(amd->flag & AMED_EXACTPOS) && dist <= (amd->flag & AMED_SLOWTURN ? 8U : 4U)) return true;

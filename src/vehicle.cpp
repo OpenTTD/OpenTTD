@@ -1385,8 +1385,8 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 				y >= v->top_coord && y <= v->bottom_coord) {
 
 			dist = max(
-				myabs( ((v->left_coord + v->right_coord)>>1) - x ),
-				myabs( ((v->top_coord + v->bottom_coord)>>1) - y )
+				abs( ((v->left_coord + v->right_coord)>>1) - x ),
+				abs( ((v->top_coord + v->bottom_coord)>>1) - y )
 			);
 
 			if (dist < best_dist) {

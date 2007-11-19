@@ -39,8 +39,6 @@ template<typename T> void Swap(T& a, T& b)
 }
 
 
-/** returns the absolute value of (scalar) variable. @note assumes variable to be signed */
-template <typename T> static inline T myabs(T a) { return a < (T)0 ? -a : a; }
 /** returns the (absolute) difference between two (scalar) variables */
 template <typename T> static inline T delta(T a, T b) { return a < b ? b - a : a - b; }
 
@@ -198,7 +196,7 @@ public:
 	 */
 	FORCEINLINE OverflowSafeInt& operator += (const OverflowSafeInt& other)
 	{
-		if ((T_MAX - myabs(other.m_value)) < myabs(this->m_value) &&
+		if ((T_MAX - abs(other.m_value)) < abs(this->m_value) &&
 				(this->m_value < 0) == (other.m_value < 0)) {
 			this->m_value = (this->m_value < 0) ? T_MIN : T_MAX ;
 		} else {
@@ -229,7 +227,7 @@ public:
 	 */
 	FORCEINLINE OverflowSafeInt& operator *= (const int factor)
 	{
-		if (factor != 0 && (T_MAX / myabs(factor)) < myabs(this->m_value)) {
+		if (factor != 0 && (T_MAX / abs(factor)) < abs(this->m_value)) {
 			 this->m_value = ((this->m_value < 0) == (factor < 0)) ? T_MAX : T_MIN ;
 		} else {
 			this->m_value *= factor ;

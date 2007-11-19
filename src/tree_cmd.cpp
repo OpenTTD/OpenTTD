@@ -109,7 +109,7 @@ static void DoPlaceMoreTrees(TileIndex tile)
 		uint32 r = Random();
 		int x = GB(r, 0, 5) - 16;
 		int y = GB(r, 8, 5) - 16;
-		uint dist = myabs(x) + myabs(y);
+		uint dist = abs(x) + abs(y);
 		TileIndex cur_tile = TILE_MASK(tile + TileDiffXY(x, y));
 
 		if (dist <= 13 &&
@@ -155,7 +155,7 @@ void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 		TileIndex cur_tile = TILE_MASK(tile + TileDiffXY(x, y));
 
 		/* Keep in range of the existing tree */
-		if (myabs(x) + myabs(y) > 16) continue;
+		if (abs(x) + abs(y) > 16) continue;
 
 		/* Clear tile, no farm-tiles or rocks */
 		if (!IsTileType(cur_tile, MP_CLEAR) ||
