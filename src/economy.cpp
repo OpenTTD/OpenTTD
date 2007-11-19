@@ -43,6 +43,38 @@
 #include "player_face.h"
 #include "group.h"
 
+/**
+ * Multiply two integer values and shift the results to right.
+ *
+ * This function multiplies two integer values. The result is
+ * shifted by the amount of shift to right.
+ *
+ * @param a The first integer
+ * @param b The second integer
+ * @param shift The amount to shift the value to right.
+ * @return The shifted result
+ */
+static inline int32 BigMulS(const int32 a, const int32 b, const uint8 shift)
+{
+	return (int32)((int64)a * (int64)b >> shift);
+}
+
+/**
+ * Multiply two unsigned integers and shift the results to right.
+ *
+ * This function multiplies two unsigned integers. The result is
+ * shifted by the amount of shift to right.
+ *
+ * @param a The first unsigned integer
+ * @param b The second unsigned integer
+ * @param shift The amount to shift the value to right.
+ * @return The shifted result
+ */
+static inline uint32 BigMulSU(const uint32 a, const uint32 b, const uint8 shift)
+{
+	return (uint32)((uint64)a * (uint64)b >> shift);
+}
+
 /* Score info */
 const ScoreInfo _score_info[] = {
 	{ SCORE_VEHICLES,        120, 100 },
@@ -706,7 +738,7 @@ static void PlayersPayInterest()
 		_current_player = p->index;
 		SET_EXPENSES_TYPE(EXPENSES_LOAN_INT);
 
-		SubtractMoneyFromPlayer(CommandCost((Money)BIGMULUS(p->current_loan, interest, 16)));
+		SubtractMoneyFromPlayer(CommandCost((Money)BigMulSU(p->current_loan, interest, 16)));
 
 		SET_EXPENSES_TYPE(EXPENSES_OTHER);
 		SubtractMoneyFromPlayer(_price.station_value >> 2);
@@ -1195,7 +1227,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 
 	if (time_factor < MIN_TIME_FACTOR) time_factor = MIN_TIME_FACTOR;
 
-	return BIGMULSS(dist * time_factor * num_pieces, _cargo_payment_rates[cargo_type], 21);
+	return BigMulS(dist * time_factor * num_pieces, _cargo_payment_rates[cargo_type], 21);
 }
 
 static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pieces)
