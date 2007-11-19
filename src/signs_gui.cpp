@@ -276,7 +276,7 @@ static void QuerySignEditWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_DESTROY:
-			CLRBIT(_no_scroll, SCROLL_EDIT);
+			ClrBit(_no_scroll, SCROLL_EDIT);
 			break;
 	}
 }

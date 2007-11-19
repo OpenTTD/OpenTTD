@@ -949,7 +949,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					dts->ground_pal = grf_load_word(&buf);
 					if (dts->ground_sprite == 0) continue;
 					if (HasBit(dts->ground_pal, 15)) {
-						CLRBIT(dts->ground_pal, 15);
+						ClrBit(dts->ground_pal, 15);
 						SETBIT(dts->ground_sprite, SPRITE_MODIFIER_USE_OFFSET);
 					}
 
@@ -972,16 +972,16 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 						/* Remap flags as ours collide */
 						if (HasBit(dtss->pal, 15)) {
-							CLRBIT(dtss->pal, 15);
+							ClrBit(dtss->pal, 15);
 							SETBIT(dtss->image, SPRITE_MODIFIER_USE_OFFSET);
 						}
 
 						if (HasBit(dtss->image, 15)) {
-							CLRBIT(dtss->image, 15);
+							ClrBit(dtss->image, 15);
 							SETBIT(dtss->image, PALETTE_MODIFIER_COLOR);
 						}
 						if (HasBit(dtss->image, 14)) {
-							CLRBIT(dtss->image, 14);
+							ClrBit(dtss->image, 14);
 							SETBIT(dtss->image, PALETTE_MODIFIER_TRANSPARENT);
 						}
 					}
@@ -1180,7 +1180,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 						}
 
 						/* Clear old color modifer bit */
-						CLRBIT(image, 15);
+						ClrBit(image, 15);
 
 						bridge->sprite_table[tableid][sprite].sprite = image;
 						bridge->sprite_table[tableid][sprite].pal    = pal;
@@ -1574,7 +1574,7 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 					cs->grfid = _cur_grffile->grfid;
 					SETBIT(_cargo_mask, cid + i);
 				} else {
-					CLRBIT(_cargo_mask, cid + i);
+					ClrBit(_cargo_mask, cid + i);
 				}
 				break;
 
@@ -2583,15 +2583,15 @@ static void NewSpriteGroup(byte *buf, int len)
 					group->g.layout.dts->ground_pal    = grf_load_word(&buf);
 					/* Remap transparent/colour modifier bits */
 					if (HasBit(group->g.layout.dts->ground_sprite, 14)) {
-						CLRBIT(group->g.layout.dts->ground_sprite, 14);
+						ClrBit(group->g.layout.dts->ground_sprite, 14);
 						SETBIT(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_TRANSPARENT);
 					}
 					if (HasBit(group->g.layout.dts->ground_sprite, 15)) {
-						CLRBIT(group->g.layout.dts->ground_sprite, 15);
+						ClrBit(group->g.layout.dts->ground_sprite, 15);
 						SETBIT(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_COLOR);
 					}
 					if (HasBit(group->g.layout.dts->ground_pal, 14)) {
-						CLRBIT(group->g.layout.dts->ground_pal, 14);
+						ClrBit(group->g.layout.dts->ground_pal, 14);
 						SETBIT(group->g.layout.dts->ground_sprite, SPRITE_MODIFIER_OPAQUE);
 					}
 					if (HasBit(group->g.layout.dts->ground_pal, 15)) {
@@ -2599,7 +2599,7 @@ static void NewSpriteGroup(byte *buf, int len)
 						 * last spriteset defined. */
 						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->g.layout.dts->ground_sprite, 0, 14) * sprites;
 						SB(group->g.layout.dts->ground_sprite, 0, SPRITE_WIDTH, sprite);
-						CLRBIT(group->g.layout.dts->ground_pal, 15);
+						ClrBit(group->g.layout.dts->ground_pal, 15);
 					}
 
 					group->g.layout.dts->seq = CallocT<DrawTileSeqStruct>(num_sprites + 1);
@@ -2613,15 +2613,15 @@ static void NewSpriteGroup(byte *buf, int len)
 						seq->delta_y = grf_load_byte(&buf);
 
 						if (HasBit(seq->image, 14)) {
-							CLRBIT(seq->image, 14);
+							ClrBit(seq->image, 14);
 							SETBIT(seq->image, PALETTE_MODIFIER_TRANSPARENT);
 						}
 						if (HasBit(seq->image, 15)) {
-							CLRBIT(seq->image, 15);
+							ClrBit(seq->image, 15);
 							SETBIT(seq->image, PALETTE_MODIFIER_COLOR);
 						}
 						if (HasBit(seq->pal, 14)) {
-							CLRBIT(seq->pal, 14);
+							ClrBit(seq->pal, 14);
 							SETBIT(seq->image, SPRITE_MODIFIER_OPAQUE);
 						}
 						if (HasBit(seq->pal, 15)) {
@@ -2629,7 +2629,7 @@ static void NewSpriteGroup(byte *buf, int len)
 							 * last spriteset defined. */
 							SpriteID sprite = _cur_grffile->spriteset_start + GB(seq->image, 0, 14) * sprites;
 							SB(seq->image, 0, SPRITE_WIDTH, sprite);
-							CLRBIT(seq->pal, 15);
+							ClrBit(seq->pal, 15);
 						}
 
 						if (type > 0) {
@@ -3115,7 +3115,7 @@ static void FeatureNewName(byte *buf, int len)
 	bool generic   = HasBit(lang, 7);
 	uint16 id      = generic ? grf_load_word(&buf) : grf_load_byte(&buf);
 
-	CLRBIT(lang, 7);
+	ClrBit(lang, 7);
 
 	if (feature <= GSF_AIRCRAFT && id < _vehcounts[feature]) {
 		id += _vehshifts[feature];
@@ -3257,7 +3257,7 @@ static void GraphicsNew(byte *buf, int len)
 	uint16 num = grf_load_extended(&buf);
 	uint16 skip_num = 0;
 	uint16 offset = HasBit(type, 7) ? grf_load_extended(&buf) : 0;
-	CLRBIT(type, 7); // Clear the high bit as that only indicates whether there is an offset.
+	ClrBit(type, 7); // Clear the high bit as that only indicates whether there is an offset.
 
 	switch (type) {
 		case 0x04: // Signal graphics
@@ -3874,7 +3874,7 @@ static void GRFLoadError(byte *buf, int len)
 		grfmsg(7, "GRFLoadError: Skipping non-fatal GRFLoadError in stage %d", _cur_stage);
 		return;
 	}
-	CLRBIT(severity, 7);
+	ClrBit(severity, 7);
 
 	if (severity >= lengthof(sevstr)) {
 		grfmsg(7, "GRFLoadError: Invalid severity id %d. Setting to 2 (non-fatal error).", severity);
@@ -4371,7 +4371,7 @@ static void FeatureTownName(byte *buf, int len)
 
 	if (HasBit(id, 7)) {
 		/* Final definition */
-		CLRBIT(id, 7);
+		ClrBit(id, 7);
 		bool new_scheme = _cur_grffile->grf_version >= 7;
 
 		if (!check_length(len, 1, "FeatureTownName: lang_id")) return;
@@ -4380,7 +4380,7 @@ static void FeatureTownName(byte *buf, int len)
 
 		byte nb_gen = townname->nb_gen;
 		do {
-			CLRBIT(lang, 7);
+			ClrBit(lang, 7);
 
 			if (!check_length(len, 1, "FeatureTownName: style name")) return;
 			const char *name = grf_load_string(&buf, len);
@@ -5607,7 +5607,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (stage == GLS_RESERVE) {
 				SETBIT(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {
-				CLRBIT(c->flags, GCF_RESERVED);
+				ClrBit(c->flags, GCF_RESERVED);
 				ClearTemporaryNewGRFData();
 				BuildCargoTranslationMap();
 				DEBUG(sprite, 2, "LoadNewGRF: Currently %i sprites are loaded", _cur_spriteid);

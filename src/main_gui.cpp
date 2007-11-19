@@ -822,7 +822,7 @@ static void ToolbarTrainClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && IsFrontEngine(v)) CLRBIT(dis, v->owner);
+		if (v->type == VEH_TRAIN && IsFrontEngine(v)) ClrBit(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 13, dis);
 }
@@ -833,7 +833,7 @@ static void ToolbarRoadClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_ROAD && IsRoadVehFront(v)) CLRBIT(dis, v->owner);
+		if (v->type == VEH_ROAD && IsRoadVehFront(v)) ClrBit(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 14, dis);
 }
@@ -844,7 +844,7 @@ static void ToolbarShipClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_SHIP) CLRBIT(dis, v->owner);
+		if (v->type == VEH_SHIP) ClrBit(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 15, dis);
 }
@@ -855,7 +855,7 @@ static void ToolbarAirClick(Window *w)
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_AIRCRAFT) CLRBIT(dis, v->owner);
+		if (v->type == VEH_AIRCRAFT) ClrBit(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 16, dis);
 }

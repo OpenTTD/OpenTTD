@@ -1536,8 +1536,8 @@ bool AfterLoadGame()
 						SB(_m[t].m2, 0, 4, tmp);
 					} else if (HasBit(_m[t].m5, 2)) {
 						/* Split waypoint and depot rail type and remove the subtype. */
-						CLRBIT(_m[t].m5, 2);
-						CLRBIT(_m[t].m5, 6);
+						ClrBit(_m[t].m5, 2);
+						ClrBit(_m[t].m5, 6);
 					}
 					break;
 
@@ -1776,23 +1776,23 @@ bool AfterLoadGame()
 
 						/* move the signal variant back */
 						SetSignalVariant(t, TRACK_X, HasBit(_m[t].m2, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
-						CLRBIT(_m[t].m2, 3);
+						ClrBit(_m[t].m2, 3);
 					}
 
 					/* Clear PBS reservation on track */
 					if (!IsTileDepotType(t, TRANSPORT_RAIL)) {
 						SB(_m[t].m4, 4, 4, 0);
 					} else {
-						CLRBIT(_m[t].m3, 6);
+						ClrBit(_m[t].m3, 6);
 					}
 					break;
 
 				case MP_ROAD: /* Clear PBS reservation on crossing */
-					if (IsLevelCrossing(t)) CLRBIT(_m[t].m5, 0);
+					if (IsLevelCrossing(t)) ClrBit(_m[t].m5, 0);
 					break;
 
 				case MP_STATION: /* Clear PBS reservation on station */
-					CLRBIT(_m[t].m3, 6);
+					ClrBit(_m[t].m3, 6);
 					break;
 
 				default: break;
@@ -1939,11 +1939,11 @@ bool AfterLoadGame()
 					/* The "lift has destination" bit has been moved from
 					 * m5[7] to m7[0]. */
 					SB(_me[t].m7, 0, 1, HasBit(_m[t].m5, 7));
-					CLRBIT(_m[t].m5, 7);
+					ClrBit(_m[t].m5, 7);
 
 					/* The "lift is moving" bit has been removed, as it does
 					 * the same job as the "lift has destination" bit. */
-					CLRBIT(_m[t].m1, 7);
+					ClrBit(_m[t].m1, 7);
 
 					/* The position of the lift goes from m1[7..0] to m6[7..2],
 					 * making m1 totally free, now. The lift position does not
@@ -2039,7 +2039,7 @@ bool AfterLoadGame()
 				CargoPacket *cp = *it;
 				cp->paid_for = HasBit(v->vehicle_flags, 2);
 			}
-			CLRBIT(v->vehicle_flags, 2);
+			ClrBit(v->vehicle_flags, 2);
 			v->cargo.InvalidateCache();
 		}
 	}
@@ -2101,7 +2101,7 @@ bool AfterLoadGame()
 
 				/* The loading finished flag is *only* set when actually completely
 				 * finished. Because the vehicle is loading, it is not finished. */
-				CLRBIT(v->vehicle_flags, VF_LOADING_FINISHED);
+				ClrBit(v->vehicle_flags, VF_LOADING_FINISHED);
 			}
 		}
 	} else if (CheckSavegameVersion(59)) {
@@ -2136,7 +2136,7 @@ bool AfterLoadGame()
 				SetSignalStates(t, GB(_m[t].m2, 4, 4));
 				SetSignalVariant(t, INVALID_TRACK, GetSignalVariant(t, TRACK_X));
 				SetSignalType(t, INVALID_TRACK, GetSignalType(t, TRACK_X));
-				CLRBIT(_m[t].m2, 7);
+				ClrBit(_m[t].m2, 7);
 			}
 		}
 	}

@@ -163,7 +163,7 @@ void InitViewports()
 
 void DeleteWindowViewport(Window *w)
 {
-	CLRBIT(_active_viewports, w->viewport - _viewports);
+	ClrBit(_active_viewports, w->viewport - _viewports);
 	w->viewport->width = 0;
 	w->viewport = NULL;
 }

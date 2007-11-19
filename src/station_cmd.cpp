@@ -262,7 +262,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 				if (str <= 0x20) {
 					if (str == M(STR_SV_STNAME_FOREST))
 						str = M(STR_SV_STNAME_WOODS);
-					CLRBIT(free_names, str);
+					ClrBit(free_names, str);
 				}
 			}
 		}

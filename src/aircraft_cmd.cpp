@@ -573,7 +573,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 			 * Now we change the setting to apply the new one and let the vehicle head for the same hangar.
 			 * Note: the if is (true for requesting service == true for ordered to stop in hangar) */
 			if (flags & DC_EXEC) {
-				CLRBIT(v->current_order.flags, OFB_PART_OF_ORDERS);
+				ClrBit(v->current_order.flags, OFB_PART_OF_ORDERS);
 				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}

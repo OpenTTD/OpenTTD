@@ -685,7 +685,7 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, u
  */
 CommandCost CmdBuildRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	return CmdRailTrackHelper(tile, flags, p1, CLRBIT(p2, 7));
+	return CmdRailTrackHelper(tile, flags, p1, ClrBit(p2, 7));
 }
 
 /** Build rail on a stretch of track.
@@ -895,7 +895,7 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 			if (IsDiagonalTrackdir(trackdir)) {
 				signal_ctr++;
 				/* Ensure signal_ctr even so X and Y pieces get signals */
-				CLRBIT(signal_ctr, 0);
+				ClrBit(signal_ctr, 0);
 			}
 			return true;
 

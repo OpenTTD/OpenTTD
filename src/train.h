@@ -50,7 +50,7 @@ static inline void SetFrontEngine(Vehicle *v)
 static inline void ClearFrontEngine(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	CLRBIT(v->subtype, Train_Front);
+	ClrBit(v->subtype, Train_Front);
 }
 
 /** Check if a vehicle is an articulated part of an engine
@@ -78,7 +78,7 @@ static inline void SetArticulatedPart(Vehicle *v)
 static inline void ClearArticulatedPart(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	CLRBIT(v->subtype, Train_Articulated_Part);
+	ClrBit(v->subtype, Train_Articulated_Part);
 }
 
 /** Check if a vehicle is a wagon
@@ -106,7 +106,7 @@ static inline void SetTrainWagon(Vehicle *v)
 static inline void ClearTrainWagon(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	CLRBIT(v->subtype, Train_Wagon);
+	ClrBit(v->subtype, Train_Wagon);
 }
 
 /** Check if a vehicle is an engine (can be first in a train)
@@ -134,7 +134,7 @@ static inline void SetTrainEngine(Vehicle *v)
 static inline void ClearTrainEngine(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	CLRBIT(v->subtype, Train_Engine);
+	ClrBit(v->subtype, Train_Engine);
 }
 
 /** Check if a vehicle is a free wagon (got no engine in front of it)
@@ -162,7 +162,7 @@ static inline void SetFreeWagon(Vehicle *v)
 static inline void ClearFreeWagon(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	CLRBIT(v->subtype, Train_Free_Wagon);
+	ClrBit(v->subtype, Train_Free_Wagon);
 }
 
 /** Check if a vehicle is a multiheaded engine
@@ -190,7 +190,7 @@ static inline void SetMultiheaded(Vehicle *v)
 static inline void ClearMultiheaded(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	CLRBIT(v->subtype, Train_Multiheaded);
+	ClrBit(v->subtype, Train_Multiheaded);
 }
 
 /** Check if an engine has an articulated part.

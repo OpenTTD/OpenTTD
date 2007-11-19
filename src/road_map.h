@@ -194,7 +194,7 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
 static inline void UnbarCrossing(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	CLRBIT(_m[t].m4, 5);
+	ClrBit(_m[t].m4, 5);
 }
 
 static inline void BarCrossing(TileIndex t)

@@ -375,7 +375,7 @@ static void LoadSpriteTables()
 	GRFConfig *master = CallocT<GRFConfig>(1);
 	master->filename = strdup(files->openttd.filename);
 	FillGRFDetails(master, false);
-	ClrBitT(master->flags, GCF_INIT_ONLY);
+	ClrBit(master->flags, GCF_INIT_ONLY);
 	master->next = top;
 	_grfconfig = master;
 

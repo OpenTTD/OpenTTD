@@ -208,7 +208,7 @@ void TrainConsistChanged(Vehicle* v)
 				/* wagon is powered */
 				SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
 			} else {
-				CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
+				ClrBit(u->u.rail.flags, VRF_POWEREDWAGON);
 			}
 
 			/* Do not count powered wagons for the compatible railtypes, as wagons always
@@ -1458,10 +1458,10 @@ static void SwapTrainFlags(byte *swap_flag1, byte *swap_flag2)
 	byte flag2 = *swap_flag2;
 
 	/* Clear the flags */
-	CLRBIT(*swap_flag1, VRF_GOINGUP);
-	CLRBIT(*swap_flag1, VRF_GOINGDOWN);
-	CLRBIT(*swap_flag2, VRF_GOINGUP);
-	CLRBIT(*swap_flag2, VRF_GOINGDOWN);
+	ClrBit(*swap_flag1, VRF_GOINGUP);
+	ClrBit(*swap_flag1, VRF_GOINGDOWN);
+	ClrBit(*swap_flag2, VRF_GOINGUP);
+	ClrBit(*swap_flag2, VRF_GOINGDOWN);
 
 	/* Reverse the rail-flags (if needed) */
 	if (HasBit(flag1, VRF_GOINGUP)) {
@@ -1620,7 +1620,7 @@ static void ReverseTrainDirection(Vehicle *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
-	CLRBIT(v->u.rail.flags, VRF_REVERSING);
+	ClrBit(v->u.rail.flags, VRF_REVERSING);
 }
 
 /** Reverse train.
@@ -1907,7 +1907,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
 			if (flags & DC_EXEC) {
-				CLRBIT(v->current_order.flags, OFB_PART_OF_ORDERS);
+				ClrBit(v->current_order.flags, OFB_PART_OF_ORDERS);
 				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
@@ -2277,7 +2277,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		/* route found, is the train marked with "path not found" flag? */
 		if (HasBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
 			/* clear the flag as the PF's problem was solved */
-			CLRBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
+			ClrBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
 			/* can we also delete the "News" item somehow? */
 		}
 	}
@@ -2553,8 +2553,8 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 	v->z_pos = GetSlopeZ(v->x_pos, v->y_pos);
 
 	if (new_tile) {
-		CLRBIT(v->u.rail.flags, VRF_GOINGUP);
-		CLRBIT(v->u.rail.flags, VRF_GOINGDOWN);
+		ClrBit(v->u.rail.flags, VRF_GOINGUP);
+		ClrBit(v->u.rail.flags, VRF_GOINGDOWN);
 
 		if (v->u.rail.track == TRACK_BIT_X || v->u.rail.track == TRACK_BIT_Y) {
 			/* Any track that isn't TRACK_BIT_X or TRACK_BIT_Y cannot be sloped.
@@ -3538,7 +3538,7 @@ void ConvertOldMultiheadToNew()
 				BEGIN_ENUM_WAGONS(u) {
 					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 
-					CLRBIT(u->subtype, 7);
+					ClrBit(u->subtype, 7);
 					switch (u->subtype) {
 						case 0: /* TS_Front_Engine */
 							if (rvi->railveh_type == RAILVEH_MULTIHEAD) SetMultiheaded(u);

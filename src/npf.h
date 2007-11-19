@@ -123,7 +123,7 @@ static inline void NPFSetFlag(AyStarNode* node, NPFNodeFlag flag, bool value)
 	if (value)
 		SETBIT(node->user_data[NPF_NODE_FLAGS], flag);
 	else
-		CLRBIT(node->user_data[NPF_NODE_FLAGS], flag);
+		ClrBit(node->user_data[NPF_NODE_FLAGS], flag);
 }
 
 #endif /* NPF_H */

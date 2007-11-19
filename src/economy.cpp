@@ -341,7 +341,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 
 		/* Reset the ratings for the old player */
 		t->ratings[old_player] = 500;
-		CLRBIT(t->have_ratings, old_player);
+		ClrBit(t->have_ratings, old_player);
 	}
 
 	{
@@ -1425,7 +1425,7 @@ void VehiclePayment(Vehicle *front_v)
 	_current_player = front_v->owner;
 
 	/* At this moment loading cannot be finished */
-	CLRBIT(front_v->vehicle_flags, VF_LOADING_FINISHED);
+	ClrBit(front_v->vehicle_flags, VF_LOADING_FINISHED);
 
 	/* Start unloading in at the first possible moment */
 	front_v->load_unload_time_rem = 1;
@@ -1576,7 +1576,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			} else {
 				/* The order changed while unloading (unset unload/transfer) or the
 				 * station does not accept goods anymore. */
-				CLRBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+				ClrBit(v->vehicle_flags, VF_CARGO_UNLOADING);
 				continue;
 			}
 
@@ -1590,7 +1590,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 				completely_empty = false;
 			} else {
 				/* We have finished unloading (cargo count == 0) */
-				CLRBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+				ClrBit(v->vehicle_flags, VF_CARGO_UNLOADING);
 			}
 
 			continue;

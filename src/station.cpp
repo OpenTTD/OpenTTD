@@ -455,7 +455,7 @@ uint RoadStop::AllocateBay()
 	uint bay_nr = 0;
 	while (!HasBit(status, bay_nr)) bay_nr++;
 
-	CLRBIT(status, bay_nr);
+	ClrBit(status, bay_nr);
 	return bay_nr;
 }
 
@@ -466,7 +466,7 @@ uint RoadStop::AllocateBay()
 void RoadStop::AllocateDriveThroughBay(uint nr)
 {
 	assert(nr < MAX_BAY_COUNT);
-	CLRBIT(status, nr);
+	ClrBit(status, nr);
 }
 
 /**

@@ -307,7 +307,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		/* Level means that the slope is the same, or the track is flat */
 		if (tileh[TS_HOME] == tileh[TS_NEIGHBOUR] || (isflat[TS_HOME] && isflat[TS_NEIGHBOUR])) {
 			for (k = 0; k < NUM_IGNORE_GROUPS; k++)
-				if (PPPpreferred[i] == IgnoredPCP[k][tlg][i]) CLRBIT(PCPstatus, i);
+				if (PPPpreferred[i] == IgnoredPCP[k][tlg][i]) ClrBit(PCPstatus, i);
 		}
 
 		/* Now decide where we draw our pylons. First try the preferred PPPs, but they may not exist.

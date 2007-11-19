@@ -1738,7 +1738,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_DESTROY, 0, 0);
-		CLRBIT(_no_scroll, SCROLL_CHAT);
+		ClrBit(_no_scroll, SCROLL_CHAT);
 		break;
 	}
 }

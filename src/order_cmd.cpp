@@ -686,11 +686,11 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		switch (p2) {
 		case OFB_FULL_LOAD:
 			TOGGLEBIT(order->flags, OFB_FULL_LOAD);
-			if (order->type != OT_GOTO_DEPOT) CLRBIT(order->flags, OFB_UNLOAD);
+			if (order->type != OT_GOTO_DEPOT) ClrBit(order->flags, OFB_UNLOAD);
 			break;
 		case OFB_UNLOAD:
 			TOGGLEBIT(order->flags, OFB_UNLOAD);
-			CLRBIT(order->flags, OFB_FULL_LOAD);
+			ClrBit(order->flags, OFB_FULL_LOAD);
 			break;
 		case OFB_NON_STOP:
 			TOGGLEBIT(order->flags, OFB_NON_STOP);

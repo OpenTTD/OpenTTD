@@ -310,7 +310,7 @@ void IConsoleSwitch()
 		case ICONSOLE_OPENED: case ICONSOLE_FULL:
 			DeleteWindowById(WC_CONSOLE, 0);
 			_iconsole_mode = ICONSOLE_CLOSED;
-			CLRBIT(_no_scroll, SCROLL_CON);
+			ClrBit(_no_scroll, SCROLL_CON);
 			break;
 	}
 

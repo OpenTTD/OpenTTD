@@ -1485,8 +1485,8 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			}
 			if (v->type == VEH_TRAIN) {
 				v->u.rail.track = TRACK_BIT_WORMHOLE;
-				CLRBIT(v->u.rail.flags, VRF_GOINGUP);
-				CLRBIT(v->u.rail.flags, VRF_GOINGDOWN);
+				ClrBit(v->u.rail.flags, VRF_GOINGUP);
+				ClrBit(v->u.rail.flags, VRF_GOINGDOWN);
 			} else {
 				v->u.road.state = RVSB_WORMHOLE;
 			}

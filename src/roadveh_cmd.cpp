@@ -481,7 +481,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot) */
 			if (flags & DC_EXEC) {
-				CLRBIT(v->current_order.flags, OFB_PART_OF_ORDERS);
+				ClrBit(v->current_order.flags, OFB_PART_OF_ORDERS);
 				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
@@ -1657,7 +1657,7 @@ again:
 				 * For drive-through stops, only do it if the vehicle stopped here */
 				if (IsStandardRoadStopTile(v->tile) || HasBit(v->u.road.state, RVS_IS_STOPPING)) {
 					rs->FreeBay(HasBit(v->u.road.state, RVS_USING_SECOND_BAY));
-					CLRBIT(v->u.road.state, RVS_IS_STOPPING);
+					ClrBit(v->u.road.state, RVS_IS_STOPPING);
 				}
 				if (IsStandardRoadStopTile(v->tile)) rs->SetEntranceBusy(false);
 			}

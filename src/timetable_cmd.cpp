@@ -122,7 +122,7 @@ CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32
 			/* Start autofilling the timetable, which clears all the current
 			 * timings and clears the "timetable has started" bit. */
 			SETBIT(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-			CLRBIT(v->vehicle_flags, VF_TIMETABLE_STARTED);
+			ClrBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
 
 			for (Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
 				order->wait_time = 0;
@@ -132,7 +132,7 @@ CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32
 			v->current_order.wait_time = 0;
 			v->current_order.travel_time = 0;
 		} else {
-			CLRBIT(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
 		}
 	}
 
@@ -173,7 +173,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		} else if (v->cur_order_index == 0) {
 			/* Otherwise if we're at the beginning and it already has a value,
 			 * assume that autofill is finished and turn it off again. */
-			CLRBIT(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
 		}
  	}
 

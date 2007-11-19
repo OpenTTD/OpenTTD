@@ -184,7 +184,7 @@ uint GetBridgeHeight(TileIndex tile);
 static inline void ClearSingleBridgeMiddle(TileIndex t, Axis a)
 {
 	assert(MayHaveBridgeAbove(t));
-	CLRBIT(_m[t].m6, 6 + a);
+	ClrBit(_m[t].m6, 6 + a);
 }
 
 

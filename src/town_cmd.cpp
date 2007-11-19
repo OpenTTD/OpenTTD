@@ -1849,9 +1849,9 @@ void ClearTownHouse(Town *t, TileIndex tile)
 
 	/* Clear flags for houses that only may exist once/town. */
 	if (hs->building_flags & BUILDING_IS_CHURCH) {
-		CLRBIT(t->flags12, TOWN_HAS_CHURCH);
+		ClrBit(t->flags12, TOWN_HAS_CHURCH);
 	} else if (hs->building_flags & BUILDING_IS_STADIUM) {
-		CLRBIT(t->flags12, TOWN_HAS_STADIUM);
+		ClrBit(t->flags12, TOWN_HAS_STADIUM);
 	}
 
 	/* Do the actual clearing of tiles */
@@ -2140,7 +2140,7 @@ static void UpdateTownGrowRate(Town *t)
 		}
 	}
 
-	CLRBIT(t->flags12, TOWN_IS_FUNDED);
+	ClrBit(t->flags12, TOWN_IS_FUNDED);
 	if (_patches.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
 
 	/** Towns are processed every TOWN_GROWTH_FREQUENCY ticks, and this is the

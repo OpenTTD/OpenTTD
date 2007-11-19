@@ -333,7 +333,7 @@ static void FixOldVehicles()
 		if (v->type == VEH_ROAD &&
 				v->u.road.state != RVSB_IN_DEPOT &&
 				v->u.road.state != RVSB_WORMHOLE) {
-			CLRBIT(v->u.road.state, RVS_IS_STOPPING);
+			ClrBit(v->u.road.state, RVS_IS_STOPPING);
 		}
 
 		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {

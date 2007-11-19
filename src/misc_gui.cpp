@@ -1162,7 +1162,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 				e.event = WE_ON_EDIT_TEXT_CANCEL;
 				parent->wndproc(parent, &e);
 			}
-			CLRBIT(_no_scroll, SCROLL_EDIT);
+			ClrBit(_no_scroll, SCROLL_EDIT);
 			break;
 		}
 }
@@ -1624,7 +1624,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		}
 		FiosFreeSavegameList();
-		CLRBIT(_no_scroll, SCROLL_SAVE);
+		ClrBit(_no_scroll, SCROLL_SAVE);
 		break;
 	case WE_RESIZE: {
 		/* Widget 2 and 3 have to go with halve speed, make it so obiwan */

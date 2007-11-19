@@ -218,7 +218,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, byte flags)
 
 	if (IsStatue(tile)) {
 		TownID town = GetStatueTownID(tile);
-		CLRBIT(GetTown(town)->statues, _current_player);
+		ClrBit(GetTown(town)->statues, _current_player);
 		InvalidateWindow(WC_TOWN_AUTHORITY, town);
 	}
 
