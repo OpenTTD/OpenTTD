@@ -499,6 +499,26 @@ static void DrawHorizMapIndicator(int x, int y, int x2, int y2)
 	GfxFillRect(x2 - 3, y, x2,    y2, 69);
 }
 
+enum SmallMapWindowWidgets {
+	SM_WIDGET_MAP = 4,
+	SM_WIDGET_CONTOUR,
+	SM_WIDGET_VEHICLES,
+	SM_WIDGET_INDUSTRIES,
+	SM_WIDGET_ROUTES,
+	SM_WIDGET_VEGETATION,
+	SM_WIDGET_OWNERS,
+	SM_WIDGET_CENTERMAP,
+	SM_WIDGET_TOGGLETOWNNAME,
+	SM_WIDGET_LEGEND,
+};
+
+enum SmallMapType {
+	SMT_CONTOUR,
+	SMT_VEHICLES,
+	SMT_INDUSTRY,
+	SMT_OWNER = 5,
+};
+
 /**
  * Draws the small map.
  *
@@ -530,7 +550,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 	GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, 0);
 
 	/* setup owner table */
-	if (type == 5) {
+	if (type == SMT_OWNER) {
 		const Player *p;
 
 		/* fill with some special colors */
@@ -615,7 +635,7 @@ skip_column:
 	}
 
 	/* draw vehicles? */
-	if (type == 0 || type == 1) {
+	if (type == SMT_CONTOUR || type == SMT_VEHICLES) {
 		Vehicle *v;
 		bool skip;
 		byte color;
@@ -653,7 +673,7 @@ skip_column:
 				}
 
 				/* Calculate pointer to pixel and the color */
-				color = (type == 1) ? _vehicle_type_colors[v->type] : 0xF;
+				color = (type == SMT_VEHICLES) ? _vehicle_type_colors[v->type] : 0xF;
 
 				/* And draw either one or two pixels depending on clipping */
 				blitter->SetPixel(dpi->dst_ptr, x, y, color);
@@ -720,8 +740,8 @@ void SmallMapCenterOnCurrentPos(Window *w)
 	ViewPort *vp;
 	vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-	x  = ((vp->virtual_width  - (w->widget[4].right  - w->widget[4].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
-	y  = ((vp->virtual_height - (w->widget[4].bottom - w->widget[4].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
+	x  = ((vp->virtual_width  - (w->widget[SM_WIDGET_MAP].right  - w->widget[SM_WIDGET_MAP].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
+	y  = ((vp->virtual_height - (w->widget[SM_WIDGET_MAP].bottom - w->widget[SM_WIDGET_MAP].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
 	WP(w, smallmap_d).scroll_x = (y - x) & ~0xF;
 	WP(w, smallmap_d).scroll_y = (x + y) & ~0xF;
 	SetWindowDirty(w);
@@ -748,7 +768,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 				GfxFillRect(x,     y + 1, x + 8, y + 5, 0);
 				GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour);
 
-				if (_smallmap_type == 2) {
+				if (_smallmap_type == SMT_INDUSTRY) {
 					/* Industry name must be formated, since it's not in tiny font in the specs.
 					* So, draw with a parameter and use the STR_7065 string, which is tiny, black */
 					SetDParam(0, tbl->legend);
@@ -777,7 +797,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case 4: { // Map window
+				case SM_WIDGET_MAP: { // Map window
 					Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 					Point pt;
 
@@ -798,30 +818,30 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 				} break;
 
-				case 5:  // Show land contours
-				case 6:  // Show vehicles
-				case 7:  // Show industries
-				case 8:  // Show transport routes
-				case 9:  // Show vegetation
-				case 10: // Show land owners
-					RaiseWindowWidget(w, _smallmap_type + 5);
-					_smallmap_type = e->we.click.widget - 5;
-					LowerWindowWidget(w, _smallmap_type + 5);
+				case SM_WIDGET_CONTOUR:    // Show land contours
+				case SM_WIDGET_VEHICLES:   // Show vehicles
+				case SM_WIDGET_INDUSTRIES: // Show industries
+				case SM_WIDGET_ROUTES:     // Show transport routes
+				case SM_WIDGET_VEGETATION: // Show vegetation
+				case SM_WIDGET_OWNERS:     // Show land owners
+					RaiseWindowWidget(w, _smallmap_type + SM_WIDGET_CONTOUR);
+					_smallmap_type = e->we.click.widget - SM_WIDGET_CONTOUR;
+					LowerWindowWidget(w, _smallmap_type + SM_WIDGET_CONTOUR);
 
 					SetWindowDirty(w);
 					SndPlayFx(SND_15_BEEP);
 					break;
 
-				case 11: // Center the smallmap again
+				case SM_WIDGET_CENTERMAP: // Center the smallmap again
 					SmallMapCenterOnCurrentPos(w);
 
 					SetWindowDirty(w);
 					SndPlayFx(SND_15_BEEP);
 					break;
 
-				case 12: // Toggle town names
-					ToggleWidgetLoweredState(w, 12);
-					_smallmap_show_towns = IsWindowWidgetLowered(w, 12);
+				case SM_WIDGET_TOGGLETOWNNAME: // Toggle town names
+					ToggleWidgetLoweredState(w, SM_WIDGET_TOGGLETOWNNAME);
+					_smallmap_show_towns = IsWindowWidgetLowered(w, SM_WIDGET_TOGGLETOWNNAME);
 
 					SetWindowDirty(w);
 					SndPlayFx(SND_15_BEEP);
@@ -830,7 +850,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_RCLICK:
-			if (e->we.click.widget == 4) {
+			if (e->we.click.widget == SM_WIDGET_MAP) {
 				if (_scrolling_viewport) return;
 				_scrolling_viewport = true;
 				_cursor.delta.x = 0;
@@ -876,8 +896,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 				}
 			}
 
-			hx = (w->widget[4].right  - w->widget[4].left) / 2;
-			hy = (w->widget[4].bottom - w->widget[4].top ) / 2;
+			hx = (w->widget[SM_WIDGET_MAP].right  - w->widget[SM_WIDGET_MAP].left) / 2;
+			hy = (w->widget[SM_WIDGET_MAP].bottom - w->widget[SM_WIDGET_MAP].top ) / 2;
 			hvx = hx * -4 + hy * 8;
 			hvy = hx *  4 + hy * 8;
 			if (x < -hvx) {
