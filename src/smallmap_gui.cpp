@@ -8,6 +8,7 @@
 #include "bridge_map.h"
 #include "clear_map.h"
 #include "industry_map.h"
+#include "industry.h"
 #include "station_map.h"
 #include "table/strings.h"
 #include "strings.h"
@@ -43,28 +44,36 @@ static const Widget _smallmap_widgets[] = {
 {    WWT_IMGBTN,   RESIZE_LRTB,    13,   262,   283,   158,   179, SPR_IMG_SMALLMAP,        STR_SMALLMAP_CENTER},
 {    WWT_IMGBTN,   RESIZE_LRTB,    13,   262,   283,   180,   201, SPR_IMG_TOWN,            STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
 {     WWT_PANEL,    RESIZE_RTB,    13,     0,   261,   158,   201, 0x0,                     STR_NULL},
+{     WWT_PANEL,   RESIZE_LRTB,    13,   262,   349,   202,   202, 0x0,                     STR_NULL},
 {     WWT_PANEL,    RESIZE_RTB,    13,     0,   337,   202,   213, 0x0,                     STR_NULL},
+{   WWT_TEXTBTN,     RESIZE_TB,    13,     0,    99,   202,   213, STR_MESSAGES_ENABLE_ALL, STR_NULL},
+{   WWT_TEXTBTN,     RESIZE_TB,    13,   100,   201,   202,   213, STR_MESSAGES_DISABLE_ALL,STR_NULL},
 { WWT_RESIZEBOX,   RESIZE_LRTB,    13,   338,   349,   202,   213, 0x0,                     STR_RESIZE_BUTTON},
 {  WIDGETS_END},
 };
 
 static int _smallmap_type;
 static bool _smallmap_show_towns = true;
+/* number of used industries */
+static int _smallmap_industry_count;
+/* number of industries per column*/
+static uint _industries_per_column;
 
 /** Macro for ordinary entry of LegendAndColor */
-#define MK(a,b) {a, b, false, false}
+#define MK(a,b) {a, b, true, false, false}
 /** Macro for end of list marker in arrays of LegendAndColor */
-#define MKEND() {0, STR_NULL, true, false}
+#define MKEND() {0, STR_NULL, true, true, false}
 /** Macro for break marker in arrays of LegendAndColor.
  * It will have valid data, though */
-#define MS(a,b) {a, b, false, true}
+#define MS(a,b) {a, b, true, false, true}
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
 	uint16 colour;     ///< color of the item on the map
 	StringID legend;   ///< string corresponding to the colored item
-	bool end;         ///< this is the end of the list
-	bool col_break;   ///< perform a break and go one collumn further
+	bool show_on_map;  ///< for filtering industries, if true is shown on map in color
+	bool end;          ///< this is the end of the list
+	bool col_break;    ///< perform a break and go one collumn further
 };
 
 /** Legend text giving the colours to look for on the minimap */
@@ -136,6 +145,8 @@ static const LegendAndColour _legend_land_owners[] = {
 /** Allow room for all industries, plus a terminator entry
  * This is required in order to have the indutry slots all filled up */
 static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES+1];
+/* For connecting industry type to position in industries list(small map legend) */
+static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];
 
 /**
  * Fills an array for the industries legends.
@@ -144,6 +155,7 @@ void BuildIndustriesLegend()
 {
 	const IndustrySpec *indsp;
 	uint j = 0;
+	uint free_slot, diff;
 
 	/* Add each name */
 	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
@@ -151,13 +163,32 @@ void BuildIndustriesLegend()
 		if (indsp->enabled) {
 			_legend_from_industries[j].legend = indsp->name;
 			_legend_from_industries[j].colour = indsp->map_colour;
-			_legend_from_industries[j].col_break = (j % 6) == 0;  // break is performed on the 7th item
+			_legend_from_industries[j].show_on_map = true;
+			_legend_from_industries[j].col_break = false;
 			_legend_from_industries[j].end = false;
+
+			/* Store widget number for this industry type */
+			_industry_to_list_pos[i] = j;
 			j++;
 		}
 	}
 	/* Terminate the list */
 	_legend_from_industries[j].end = true;
+
+	/* Store number of enabled industries */
+	_smallmap_industry_count = j;
+
+	_industries_per_column = _smallmap_industry_count / 3;
+	free_slot = _smallmap_industry_count % 3;
+
+	/* recalculate column break for first two columns(i) */
+	diff = 0;
+	for (int i = 1; i <= 2; i++) {
+		if (free_slot > 0) diff = diff + 1;
+		_legend_from_industries[i * _industries_per_column + diff].col_break = true;
+		if (free_slot > 0) free_slot--;
+	}
+
 }
 
 static const LegendAndColour * const _legend_table[] = {
@@ -357,7 +388,13 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 	TileType t = GetEffectiveTileType(tile);
 
 	if (t == MP_INDUSTRY) {
-		return GetIndustrySpec(GetIndustryByTile(tile)->type)->map_colour * 0x01010101;
+		/* If industry is allowed to be seen, use its color on the map */
+		if (_legend_from_industries[_industry_to_list_pos[GetIndustryByTile(tile)->type]].show_on_map) {
+			return GetIndustrySpec(GetIndustryByTile(tile)->type)->map_colour * 0x01010101;
+		} else {
+			/* otherwise, return the color of the clear tiles, which will make it disappear */
+			return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[MP_CLEAR]);
+		}
 	}
 
 	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
@@ -510,6 +547,11 @@ enum SmallMapWindowWidgets {
 	SM_WIDGET_CENTERMAP,
 	SM_WIDGET_TOGGLETOWNNAME,
 	SM_WIDGET_LEGEND,
+	SM_WIDGET_BUTTONSPANEL,
+	SM_WIDGET_BOTTOMPANEL,
+	SM_WIDGET_ENABLEINDUSTRIES,
+	SM_WIDGET_DISABLEINDUSTRIES,
+	SM_WIDGET_RESIZEBOX,
 };
 
 enum SmallMapType {
@@ -747,13 +789,22 @@ void SmallMapCenterOnCurrentPos(Window *w)
 	SetWindowDirty(w);
 }
 
+enum {
+	BASE_NB_PER_COLUMN = 6,
+};
+
 static void SmallMapWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT: {
 			const LegendAndColour *tbl;
 			int x, y, y_org;
+			uint diff;
 			DrawPixelInfo new_dpi;
+
+			/* Hide Enable all/Disable all buttons if is not industry type small map*/
+			SetWindowWidgetHiddenState(w, SM_WIDGET_ENABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
+			SetWindowWidgetHiddenState(w, SM_WIDGET_DISABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
 
 			/* draw the window */
 			SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
@@ -761,23 +812,38 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 			tbl = _legend_table[_smallmap_type];
 
+			/* difference in window size */
+			diff = (_industries_per_column > BASE_NB_PER_COLUMN) ? ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1 : 0;
+
 			x = 4;
-			y_org = w->height - 44 - 11;
+			y_org = w->height - 44 - 11 - diff;
 			y = y_org;
+
+			uint i = 0;
 			for (;;) {
-				GfxFillRect(x,     y + 1, x + 8, y + 5, 0);
-				GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour);
 
 				if (_smallmap_type == SMT_INDUSTRY) {
 					/* Industry name must be formated, since it's not in tiny font in the specs.
-					* So, draw with a parameter and use the STR_7065 string, which is tiny, black */
+					 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font.*/
 					SetDParam(0, tbl->legend);
-					DrawString(x + 11, y, STR_7065, TC_FROMSTRING);
+					SetDParam(1, _industry_counts[_industry_to_list_pos[i]]);
+					if (!_legend_from_industries[i].show_on_map) {
+						/* Simply draw the string, not the black border of the legend color.
+						 * This will enforce the idea of the disabled item */
+						DrawString(x + 11, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
+					} else {
+						DrawString(x + 11, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
+						GfxFillRect(x, y + 1, x + 8, y + 5, 0); // outer border of the legend color
+					}
 				} else {
+					/* Anything hat is not an industry is using normal process */
+					GfxFillRect(x, y + 1, x + 8, y + 5, 0);
 					DrawString(x + 11, y, tbl->legend, TC_FROMSTRING);
 				}
+				GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // legend color
 
 				tbl += 1;
+				i++;
 				y += 6;
 
 				if (tbl->end) { // end of the list
@@ -789,7 +855,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 				}
 			}
 
-			if (!FillDrawPixelInfo(&new_dpi, 3, 17, w->width - 28 + 22, w->height - 64 - 11))
+			if (!FillDrawPixelInfo(&new_dpi, 3, 17, w->width - 28 + 22, w->height - 64 - 11 - diff))
 				return;
 
 			DrawSmallMap(&new_dpi, w, _smallmap_type, _smallmap_show_towns);
@@ -845,6 +911,58 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 					SetWindowDirty(w);
 					SndPlayFx(SND_15_BEEP);
+					break;
+
+				case SM_WIDGET_LEGEND: // Legend
+					/* if industry type small map*/
+					if (_smallmap_type == SMT_INDUSTRY) {
+						/* if click on industries label, find right industry type and enable/disable it */
+						Widget *wi = &w->widget[SM_WIDGET_LEGEND]; // label panel
+						uint column = (e->we.click.pt.x - 4) / 123;
+						uint line = (e->we.click.pt.y - wi->top - 2) / 6;
+						uint free = _smallmap_industry_count % 3;
+
+						if (column <= 3) {
+							/* check if click is on industry label*/
+							uint industry_pos = 0;
+							for (uint i = 0; i <= column; i++) {
+								uint diff = (free > 0) ? 1 : 0;
+								uint max_column_lines = _industries_per_column + diff;
+
+								if (i < column) industry_pos = industry_pos + _industries_per_column + diff;
+
+								if (i == column && line <= max_column_lines - 1) {
+									industry_pos = industry_pos + line;
+									_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
+								}
+								if( free > 0) free--;
+							}
+						}
+						/* Raise the two buttons "all", as we have done a specific choice */
+						RaiseWindowWidget(w, SM_WIDGET_ENABLEINDUSTRIES);
+						RaiseWindowWidget(w, SM_WIDGET_DISABLEINDUSTRIES);
+						SetWindowDirty(w);
+					}
+					break;
+
+				case SM_WIDGET_ENABLEINDUSTRIES: // Enable all industries
+					for (int i = 0; i != _smallmap_industry_count; i++) {
+						_legend_from_industries[i].show_on_map = true;
+					}
+					/* toggle appeareance indicating the choice */
+					LowerWindowWidget(w, SM_WIDGET_ENABLEINDUSTRIES);
+					RaiseWindowWidget(w, SM_WIDGET_DISABLEINDUSTRIES);
+					SetWindowDirty(w);
+					break;
+
+				case SM_WIDGET_DISABLEINDUSTRIES: // disable all industries
+					for (int i = 0; i != _smallmap_industry_count; i++) {
+						_legend_from_industries[i].show_on_map = false;
+					}
+					/* toggle appeareance indicating the choice */
+					RaiseWindowWidget(w, SM_WIDGET_ENABLEINDUSTRIES);
+					LowerWindowWidget(w, SM_WIDGET_DISABLEINDUSTRIES);
+					SetWindowDirty(w);
 					break;
 				}
 			break;
@@ -940,6 +1058,31 @@ void ShowSmallMap()
 
 	w = AllocateWindowDescFront(&_smallmap_desc, 0);
 	if (w == NULL) return;
+
+	/* Resize the window to fit industries list */
+	if (_industries_per_column > BASE_NB_PER_COLUMN) {
+		uint diff = ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1;
+
+		w->height = w->height + diff;
+
+		Widget *wi = &w->widget[SM_WIDGET_LEGEND]; // label panel
+		wi->bottom = wi->bottom + diff;
+
+		wi = &w->widget[SM_WIDGET_BUTTONSPANEL]; // filler panel under smallmap buttons
+		wi->bottom = wi->bottom + diff - 1;
+
+		/* Change widget position
+		 * - footer panel
+		 * - enable all industry
+		 * - disable all industry
+		 * - resize window button
+		 */
+		for (uint i = SM_WIDGET_BOTTOMPANEL; i <= SM_WIDGET_RESIZEBOX; i++) {
+			wi           = &w->widget[i];
+			wi->top      = wi->top + diff;
+			wi->bottom   = wi->bottom + diff;
+		}
+	}
 
 	LowerWindowWidget(w, _smallmap_type + SMT_OWNER);
 	SetWindowWidgetLoweredState(w, SM_WIDGET_TOGGLETOWNNAME, _smallmap_show_towns);

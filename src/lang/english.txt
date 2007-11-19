@@ -3289,6 +3289,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Height o
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Center the smallmap on the current position
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Small
