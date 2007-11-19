@@ -1624,7 +1624,13 @@ again:
 		y = TileY(tile) * TILE_SIZE + rdp[start_frame].y;
 
 		newdir = RoadVehGetSlidingDirection(v, x, y);
-		if (IsRoadVehFront(v) && RoadVehFindCloseTo(v, x, y, newdir) != NULL) return false;
+		if (IsRoadVehFront(v)) {
+			Vehicle *u = RoadVehFindCloseTo(v, x, y, newdir);
+			if (u != NULL) {
+				v->cur_speed = u->First()->cur_speed;
+				return false;
+			}
+		}
 
 		r = VehicleEnterTile(v, tile, x, y);
 		if (HASBIT(r, VETS_CANNOT_ENTER)) {
