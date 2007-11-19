@@ -387,7 +387,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + e->we.click.widget - GLAND_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
+				_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + e->we.click.widget - GLAND_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
 			}
 			_left_button_clicked = false;
 			break;
@@ -402,7 +402,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.snow_line_height = clamp(_patches_newgame.snow_line_height + e->we.click.widget - GLAND_SNOW_LEVEL_TEXT, 2, MAX_SNOWLINE_HEIGHT);
+				_patches_newgame.snow_line_height = Clamp(_patches_newgame.snow_line_height + e->we.click.widget - GLAND_SNOW_LEVEL_TEXT, 2, MAX_SNOWLINE_HEIGHT);
 			}
 			_left_button_clicked = false;
 			break;
@@ -494,11 +494,11 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			switch (WP(w, generate_d).widget_id) {
 			case GLAND_START_DATE_TEXT:
 				InvalidateWidget(w, GLAND_START_DATE_TEXT);
-				_patches_newgame.starting_year = clamp(value, MIN_YEAR, MAX_YEAR);
+				_patches_newgame.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
 				break;
 			case GLAND_SNOW_LEVEL_TEXT:
 				InvalidateWidget(w, GLAND_SNOW_LEVEL_TEXT);
-				_patches_newgame.snow_line_height = clamp(value, 2, MAX_SNOWLINE_HEIGHT);
+				_patches_newgame.snow_line_height = Clamp(value, 2, MAX_SNOWLINE_HEIGHT);
 				break;
 			}
 
@@ -657,7 +657,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + e->we.click.widget - CSCEN_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
+				_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + e->we.click.widget - CSCEN_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
 			}
 			_left_button_clicked = false;
 			break;
@@ -672,7 +672,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.se_flat_world_height = clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - CSCEN_FLAT_LAND_HEIGHT_TEXT, 0, MAX_TILE_HEIGHT);
+				_patches_newgame.se_flat_world_height = Clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - CSCEN_FLAT_LAND_HEIGHT_TEXT, 0, MAX_TILE_HEIGHT);
 			}
 			_left_button_clicked = false;
 			break;
@@ -699,11 +699,11 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 			switch (WP(w, generate_d).widget_id) {
 			case CSCEN_START_DATE_TEXT:
 				InvalidateWidget(w, CSCEN_START_DATE_TEXT);
-				_patches_newgame.starting_year = clamp(value, MIN_YEAR, MAX_YEAR);
+				_patches_newgame.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
 				break;
 			case CSCEN_FLAT_LAND_HEIGHT_TEXT:
 				InvalidateWidget(w, CSCEN_FLAT_LAND_HEIGHT_TEXT);
-				_patches_newgame.se_flat_world_height = clamp(value, 0, MAX_TILE_HEIGHT);
+				_patches_newgame.se_flat_world_height = Clamp(value, 0, MAX_TILE_HEIGHT);
 				break;
 			}
 

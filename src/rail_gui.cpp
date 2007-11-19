@@ -1109,7 +1109,7 @@ static void ShowStationBuilder()
 
 		w->vscroll.count = _railstation.station_count;
 		w->vscroll.cap   = 5;
-		w->vscroll.pos   = clamp(_railstation.station_type - 2, 0, w->vscroll.count - w->vscroll.cap);
+		w->vscroll.pos   = Clamp(_railstation.station_type - 2, 0, w->vscroll.count - w->vscroll.cap);
 	}
 }
 

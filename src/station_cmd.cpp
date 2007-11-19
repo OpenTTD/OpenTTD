@@ -671,7 +671,7 @@ static void UpdateStationSignCoord(Station *st)
 	if (r->IsEmpty()) return; /* no tiles belong to this station */
 
 	/* clamp sign coord to be inside the station rect */
-	st->xy = TileXY(clampu(TileX(st->xy), r->left, r->right), clampu(TileY(st->xy), r->top, r->bottom));
+	st->xy = TileXY(ClampU(TileX(st->xy), r->left, r->right), ClampU(TileY(st->xy), r->top, r->bottom));
 	UpdateStationVirtCoordDirty(st);
 }
 
@@ -2487,7 +2487,7 @@ static void UpdateStationRating(Station *st)
 				int or_ = ge->rating; // old rating
 
 				/* only modify rating in steps of -2, -1, 0, 1 or 2 */
-				ge->rating = rating = or_ + clamp(clamp(rating, 0, 255) - or_, -2, 2);
+				ge->rating = rating = or_ + Clamp(Clamp(rating, 0, 255) - or_, -2, 2);
 
 				/* if rating is <= 64 and more than 200 items waiting,
 				 * remove some random amount of goods from the station */
@@ -2577,7 +2577,7 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 				GoodsEntry* ge = &st->goods[i];
 
 				if (ge->acceptance_pickup != 0) {
-					ge->rating = clamp(ge->rating + amount, 0, 255);
+					ge->rating = Clamp(ge->rating + amount, 0, 255);
 				}
 			}
 		}

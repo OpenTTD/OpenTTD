@@ -96,7 +96,7 @@ void HandleOnEditText(const char *str)
 		const Player *p = GetPlayer(_current_player);
 		Money money = min(p->player_money - p->current_loan, (Money)(atoi(str) / _currency->rate));
 
-		uint32 money_c = clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
+		uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
 
 		/* Give 'id' the money, and substract it from ourself */
 		DoCommandP(0, money_c, id, CcGiveMoney, CMD_GIVE_MONEY | CMD_MSG(STR_INSUFFICIENT_FUNDS));
@@ -716,7 +716,7 @@ static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base
 	 * we clicked on and w->left the toolbar window itself. So meaning that
 	 * the default position is aligned with the left side of the clicked button */
 	width = max(GetStringListMaxWidth(base_string, item_count) + 6, 140);
-	x = w->left + clamp(x, 0, w->width - width); // or alternatively '_screen.width - width'
+	x = w->left + Clamp(x, 0, w->width - width); // or alternatively '_screen.width - width'
 
 	w = AllocateWindow(x, 22, width, item_count * 10 + 2, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
 	w->widget[0].bottom = item_count * 10 + 1;
@@ -995,7 +995,7 @@ static void ToolbarScenDateBackward(Window *w)
 		HandleButtonClick(w, 6);
 		SetWindowDirty(w);
 
-		_patches_newgame.starting_year = clamp(_patches_newgame.starting_year - 1, MIN_YEAR, MAX_YEAR);
+		_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year - 1, MIN_YEAR, MAX_YEAR);
 		SetDate(ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;
@@ -1008,7 +1008,7 @@ static void ToolbarScenDateForward(Window *w)
 		HandleButtonClick(w, 7);
 		SetWindowDirty(w);
 
-		_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + 1, MIN_YEAR, MAX_YEAR);
+		_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + 1, MIN_YEAR, MAX_YEAR);
 		SetDate(ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;

@@ -211,7 +211,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		case 0x40: return (IsTileType(tile, MP_HOUSE) ? GetHouseBuildingStage(tile) : 0) | OriginalTileRandomiser(TileX(tile), TileY(tile)) << 2;
 
 		/* Building age. */
-		case 0x41: return clamp(_cur_year - GetHouseConstructionYear(tile), 0, 0xFF);
+		case 0x41: return Clamp(_cur_year - GetHouseConstructionYear(tile), 0, 0xFF);
 
 		/* Town zone */
 		case 0x42: return GetTownRadiusGroup(town, tile);
@@ -369,7 +369,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 	} else {
 		/* Limit the building stage to the number of stages supplied. */
 		byte stage = GetHouseBuildingStage(ti->tile);
-		stage = clamp(stage - 4 + group->g.layout.num_sprites, 0, group->g.layout.num_sprites - 1);
+		stage = Clamp(stage - 4 + group->g.layout.num_sprites, 0, group->g.layout.num_sprites - 1);
 		DrawTileLayout(ti, group, stage, house_id);
 	}
 }
@@ -382,7 +382,7 @@ void AnimateNewHouseTile(TileIndex tile)
 
 	if (HASBIT(hs->callback_mask, CBM_HOUSE_ANIMATION_SPEED)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_SPEED, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
-		if (callback_res != CALLBACK_FAILED) animation_speed = clamp(callback_res & 0xFF, 2, 16);
+		if (callback_res != CALLBACK_FAILED) animation_speed = Clamp(callback_res & 0xFF, 2, 16);
 	}
 
 	/* An animation speed of 2 means the animation frame changes 4 ticks, and

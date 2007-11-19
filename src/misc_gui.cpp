@@ -609,8 +609,8 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 		if ( (x|y) != 0) {
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-			pt.x = clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (334/2), 0, _screen.width - 334);
-			pt.y = clamp(UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top - (137/2), 22, _screen.height - 137);
+			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (334/2), 0, _screen.width - 334);
+			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top - (137/2), 22, _screen.height - 137);
 		} else {
 			pt.x = (_screen.width - 334) >> 1;
 			pt.y = (_screen.height - 137) >> 1;
@@ -746,9 +746,9 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 	/* Correctly position the tooltip position, watch out for window and cursor size
 	 * Clamp value to below main toolbar and above statusbar. If tooltip would
 	 * go below window, flip it so it is shown above the cursor */
-	y = clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
+	y = Clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
 	if (y + br.height > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - br.height - 5;
-	x = clamp(_cursor.pos.x - (br.width >> 1), 0, _screen.width - br.width);
+	x = Clamp(_cursor.pos.x - (br.width >> 1), 0, _screen.width - br.width);
 
 	w = AllocateWindow(x, y, br.width, br.height, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
 
@@ -1938,7 +1938,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 				/* Increase or decrease the value and clamp it to extremes */
 				value += (x >= 30) ? step : -step;
-				value = clamp(value, ce->min, ce->max);
+				value = Clamp(value, ce->min, ce->max);
 
 				/* take whatever the function returns */
 				value = ce->proc(value, (x >= 30) ? 1 : -1);

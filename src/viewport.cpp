@@ -372,8 +372,8 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	/* we need to move variables in to the valid range, as the
 	 * GetTileZoomCenterWindow() function can call here with invalid x and/or y,
 	 * when the user tries to zoom out along the sides of the map */
-	a = clamp(a, 0, (int)(MapMaxX() * TILE_SIZE) - 1);
-	b = clamp(b, 0, (int)(MapMaxY() * TILE_SIZE) - 1);
+	a = Clamp(a, 0, (int)(MapMaxX() * TILE_SIZE) - 1);
+	b = Clamp(b, 0, (int)(MapMaxY() * TILE_SIZE) - 1);
 
 	/* (a, b) is the X/Y-world coordinate that belongs to (x,y) if the landscape would be completely flat on height 0.
 	 * Now find the Z-world coordinate by fix point iteration.
@@ -1649,8 +1649,8 @@ static inline void ClampViewportToMap(const ViewPort *vp, int &x, int &y)
 	int vy =  x + y * 2;
 
 	/* clamp to size of map */
-	vx = clamp(vx, 0, MapMaxX() * TILE_SIZE * 4);
-	vy = clamp(vy, 0, MapMaxY() * TILE_SIZE * 4);
+	vx = Clamp(vx, 0, MapMaxX() * TILE_SIZE * 4);
+	vy = Clamp(vy, 0, MapMaxY() * TILE_SIZE * 4);
 
 	/* Convert map coordinates to viewport coordinates */
 	x = (-vx + vy) / 2;
@@ -1681,8 +1681,8 @@ void UpdateViewportPosition(Window *w)
 			if (_patches.smooth_scroll) {
 				int max_scroll = ScaleByMapSize1D(512);
 				/* Not at our desired positon yet... */
-				WP(w, vp_d).scrollpos_x += clamp(delta_x / 4, -max_scroll, max_scroll);
-				WP(w, vp_d).scrollpos_y += clamp(delta_y / 4, -max_scroll, max_scroll);
+				WP(w, vp_d).scrollpos_x += Clamp(delta_x / 4, -max_scroll, max_scroll);
+				WP(w, vp_d).scrollpos_y += Clamp(delta_y / 4, -max_scroll, max_scroll);
 			} else {
 				WP(w, vp_d).scrollpos_x = WP(w, vp_d).dest_scrollpos_x;
 				WP(w, vp_d).scrollpos_y = WP(w, vp_d).dest_scrollpos_y;
@@ -2719,8 +2719,8 @@ calc_heightdiff_single_direction:;
 
 		case VPM_X_AND_Y_LIMITED: { /* drag an X by Y constrained rect area */
 			int limit = (_thd.sizelimit - 1) * TILE_SIZE;
-			x = sx + clamp(x - sx, -limit, limit);
-			y = sy + clamp(y - sy, -limit, limit);
+			x = sx + Clamp(x - sx, -limit, limit);
+			y = sy + Clamp(y - sy, -limit, limit);
 			} /* Fallthrough */
 		case VPM_X_AND_Y: { /* drag an X by Y area */
 			if (_patches.measure_tooltip) {

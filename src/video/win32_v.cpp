@@ -545,8 +545,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 			w = r->right - r->left - (r2.right - r2.left);
 			h = r->bottom - r->top - (r2.bottom - r2.top);
-			w = clamp(w, 64, MAX_SCREEN_WIDTH);
-			h = clamp(h, 64, MAX_SCREEN_HEIGHT);
+			w = Clamp(w, 64, MAX_SCREEN_WIDTH);
+			h = Clamp(h, 64, MAX_SCREEN_HEIGHT);
 			SetRect(&r2, 0, 0, w, h);
 
 			AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
@@ -677,8 +677,8 @@ static bool AllocateDibSection(int w, int h)
 	HDC dc;
 	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 
-	w = clamp(w, 64, MAX_SCREEN_WIDTH);
-	h = clamp(h, 64, MAX_SCREEN_HEIGHT);
+	w = Clamp(w, 64, MAX_SCREEN_WIDTH);
+	h = Clamp(h, 64, MAX_SCREEN_HEIGHT);
 
 	if (bpp == 0) error("Can't use a blitter that blits 0 bpp for normal visuals");
 

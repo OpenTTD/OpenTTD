@@ -283,7 +283,7 @@ static inline void IncHouseConstructionTick(TileIndex t)
 		/* House is now completed.
 		 * Store the year of construction as well, for newgrf house purpose */
 		SetHouseCompleted(t, true);
-		_m[t].m5 = clamp(_cur_year - ORIGINAL_BASE_YEAR, 0, 0xFF);
+		_m[t].m5 = Clamp(_cur_year - ORIGINAL_BASE_YEAR, 0, 0xFF);
 	}
 }
 

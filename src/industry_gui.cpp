@@ -583,7 +583,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			Industry* i = GetIndustry(w->window_number);
 			int line = WP(w, indview_d).editbox_line;
 
-			i->production_rate[line] = clampu(atoi(e->we.edittext.str), 0, 255);
+			i->production_rate[line] = ClampU(atoi(e->we.edittext.str), 0, 255);
 			UpdateIndustryProduction(i);
 			SetWindowDirty(w);
 		}

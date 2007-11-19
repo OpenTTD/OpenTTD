@@ -244,7 +244,7 @@ void TrainConsistChanged(Vehicle* v)
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
-		veh_len = clamp(veh_len, 0, u->Next() == NULL ? 7 : 5); // the clamp on vehicles not the last in chain is stricter, as too short wagons can break the 'follow next vehicle' code
+		veh_len = Clamp(veh_len, 0, u->Next() == NULL ? 7 : 5); // the clamp on vehicles not the last in chain is stricter, as too short wagons can break the 'follow next vehicle' code
 		u->u.rail.cached_veh_length = 8 - veh_len;
 		v->u.rail.cached_total_length += u->u.rail.cached_veh_length;
 	}
@@ -352,7 +352,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		if (curvecount[0] == 1 && curvecount[1] == 1) {
 			max_speed = 0xFFFF;
 		} else if (total > 1) {
-			max_speed = 232 - (13 - clamp(sum, 1, 12)) * (13 - clamp(sum, 1, 12));
+			max_speed = 232 - (13 - Clamp(sum, 1, 12)) * (13 - Clamp(sum, 1, 12));
 		}
 	}
 
@@ -455,7 +455,7 @@ static void UpdateTrainAcceleration(Vehicle* v)
 	uint power = v->u.rail.cached_power;
 	uint weight = v->u.rail.cached_weight;
 	assert(weight != 0);
-	v->acceleration = clamp(power / weight * 4, 1, 255);
+	v->acceleration = Clamp(power / weight * 4, 1, 255);
 }
 
 int Train::GetImage(Direction direction) const
@@ -2513,7 +2513,7 @@ static int UpdateTrainSpeed(Vehicle *v)
 		int tempmax = v->max_speed;
 		if (v->cur_speed > v->max_speed)
 			tempmax = v->cur_speed - (v->cur_speed / 10) - 1;
-		v->cur_speed = spd = clamp(v->cur_speed + ((int)spd >> 8), 0, tempmax);
+		v->cur_speed = spd = Clamp(v->cur_speed + ((int)spd >> 8), 0, tempmax);
 	}
 
 	if (!(v->direction & 1)) spd = spd * 3 >> 2;

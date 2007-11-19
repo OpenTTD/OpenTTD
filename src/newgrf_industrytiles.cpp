@@ -244,7 +244,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 	} else {
 		/* Limit the building stage to the number of stages supplied. */
 		byte stage = GetIndustryConstructionStage(ti->tile);
-		stage = clamp(stage - 4 + group->g.layout.num_sprites, 0, group->g.layout.num_sprites - 1);
+		stage = Clamp(stage - 4 + group->g.layout.num_sprites, 0, group->g.layout.num_sprites - 1);
 		IndustryDrawTileLayout(ti, group, i->random_color, stage, gfx);
 		return true;
 	}
@@ -291,7 +291,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 
 	if (HASBIT(itspec->callback_flags, CBM_INDT_ANIM_SPEED)) {
 		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIMATION_SPEED, 0, 0, gfx, ind, tile);
-		if (callback_res != CALLBACK_FAILED) animation_speed = clamp(callback_res & 0xFF, 0, 16);
+		if (callback_res != CALLBACK_FAILED) animation_speed = Clamp(callback_res & 0xFF, 0, 16);
 	}
 
 	/* An animation speed of 2 means the animation frame changes 4 ticks, and

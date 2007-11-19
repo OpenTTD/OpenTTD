@@ -833,12 +833,12 @@ static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 
 	Vehicle *u = v->Next();
 
-	int safe_x = clamp(x, 0, MapMaxX() * TILE_SIZE);
-	int safe_y = clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
+	int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
+	int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
 	u->x_pos = x;
 	u->y_pos = y - ((v->z_pos-GetSlopeZ(safe_x, safe_y)) >> 3);;
 
-	safe_y = clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
+	safe_y = Clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
 	u->z_pos = GetSlopeZ(safe_x, safe_y);
 	u->cur_image = v->cur_image;
 

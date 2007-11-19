@@ -420,8 +420,8 @@ static int PollEvent()
 			break;
 
 		case SDL_VIDEORESIZE: {
-			int w = clamp(ev.resize.w, 64, MAX_SCREEN_WIDTH);
-			int h = clamp(ev.resize.h, 64, MAX_SCREEN_HEIGHT);
+			int w = Clamp(ev.resize.w, 64, MAX_SCREEN_WIDTH);
+			int h = Clamp(ev.resize.h, 64, MAX_SCREEN_HEIGHT);
 			ChangeResInGame(w, h);
 			break;
 		}

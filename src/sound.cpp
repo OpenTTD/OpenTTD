@@ -148,7 +148,7 @@ static void StartSound(uint sound, int panning, uint volume)
 	if (mc == NULL) return;
 	if (!SetBankSource(mc, sound)) return;
 
-	panning = clamp(panning, -PANNING_LEVELS, PANNING_LEVELS);
+	panning = Clamp(panning, -PANNING_LEVELS, PANNING_LEVELS);
 	left_vol = (volume * PANNING_LEVELS) - (volume * panning);
 	right_vol = (volume * PANNING_LEVELS) + (volume * panning);
 	MxSetChannelVolume(mc, left_vol * 128 / PANNING_LEVELS, right_vol * 128 / PANNING_LEVELS);

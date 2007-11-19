@@ -496,7 +496,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			case 0x43: return _current_player | (LiveryHelper(object->u.vehicle.self_type, NULL) << 24); // Owner information
 			case 0x46: return 0;               // Motion counter
 			case 0x48: return GetEngine(object->u.vehicle.self_type)->flags; // Vehicle Type Info
-			case 0xC4: return clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
+			case 0xC4: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
 			case 0xDA: return INVALID_VEHICLE; // Next vehicle
 			case 0x7F: return GetGRFParameter(object->u.vehicle.self_type, parameter); // Read GRF parameter
 		}
@@ -711,7 +711,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x41: return GB(v->age, 8, 8);
 		case 0x42: return v->max_age;
 		case 0x43: return GB(v->max_age, 8, 8);
-		case 0x44: return clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
+		case 0x44: return Clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x45: return v->unitnumber;
 		case 0x46: return v->engine_type;
 		case 0x47: return GB(v->engine_type, 8, 8);

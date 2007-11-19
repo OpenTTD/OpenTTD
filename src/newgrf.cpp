@@ -1193,7 +1193,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 				break;
 
 			case 0x0F: // Long format year of availability (year since year 0)
-				bridge->avail_year = clamp(grf_load_dword(&buf), MIN_YEAR, MAX_YEAR);
+				bridge->avail_year = Clamp(grf_load_dword(&buf), MIN_YEAR, MAX_YEAR);
 				break;
 
 			default:
@@ -1370,7 +1370,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				break;
 
 			case 0x1B: // Animation speed
-				housespec->animation_speed = clamp(grf_load_byte(&buf), 2, 16);
+				housespec->animation_speed = Clamp(grf_load_byte(&buf), 2, 16);
 				break;
 
 			case 0x1C: // Class of the building type
@@ -3409,7 +3409,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 {
 	switch (param) {
 		case 0x81: // current year
-			return clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
+			return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 
 		case 0x83: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
 			return _opt.landscape;

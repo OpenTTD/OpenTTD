@@ -196,7 +196,7 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 			(sb = &w->vscroll2, wi2->type == WWT_SCROLL2BAR) || (sb = &w->vscroll, wi2->type == WWT_SCROLLBAR) ) {
 
 		if (sb->count > sb->cap) {
-			int pos = clamp(sb->pos + wheel, 0, sb->count - sb->cap);
+			int pos = Clamp(sb->pos + wheel, 0, sb->count - sb->cap);
 			if (pos != sb->pos) {
 				sb->pos = pos;
 				SetWindowDirty(w);
@@ -1295,8 +1295,8 @@ static bool HandleWindowDragging()
 
 			/* Make sure the window doesn't leave the screen
 			 * 13 is the height of the title bar */
-			nx = clamp(nx, 13 - t->right, _screen.width - 13 - t->left);
-			ny = clamp(ny, 0, _screen.height - 13);
+			nx = Clamp(nx, 13 - t->right, _screen.width - 13 - t->left);
+			ny = Clamp(ny, 0, _screen.height - 13);
 
 			/* Make sure the title bar isn't hidden by behind the main tool bar */
 			v = FindWindowById(WC_MAIN_TOOLBAR, 0);
@@ -2113,13 +2113,13 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WC_STATUS_BAR:
-				ResizeWindow(w, clamp(neww, 320, 640) - w->width, 0);
+				ResizeWindow(w, Clamp(neww, 320, 640) - w->width, 0);
 				top = newh - w->height;
 				left = (neww - w->width) >> 1;
 				break;
 
 			case WC_SEND_NETWORK_MSG:
-				ResizeWindow(w, clamp(neww, 320, 640) - w->width, 0);
+				ResizeWindow(w, Clamp(neww, 320, 640) - w->width, 0);
 				top = (newh - 26); // 26 = height of status bar + height of chat bar
 				left = (neww - w->width) >> 1;
 				break;

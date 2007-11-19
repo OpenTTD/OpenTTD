@@ -1635,7 +1635,7 @@ static bool LoadOldMain(LoadgameState *ls)
 	AddTypeToEngines();
 
 	/* We have a new difficulty setting */
-	_opt.diff.town_council_tolerance = clamp(_opt.diff_level, 0, 2);
+	_opt.diff.town_council_tolerance = Clamp(_opt.diff_level, 0, 2);
 
 	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");

@@ -151,9 +151,9 @@ static inline uint minu(const uint a, const uint b)
  * @param min The minimum of the interval.
  * @param max the maximum of the interval.
  * @returns A value between min and max which is closest to a.
- * @see clampu(uint, uint, uint)
+ * @see ClampU(uint, uint, uint)
  */
-static inline int clamp(const int a, const int min, const int max)
+static inline int Clamp(const int a, const int min, const int max)
 {
 	if (a <= min) return min;
 	if (a >= max) return max;
@@ -174,9 +174,9 @@ static inline int clamp(const int a, const int min, const int max)
  * @param min The minimum of the interval.
  * @param max the maximum of the interval.
  * @returns A value between min and max which is closest to a.
- * @see clamp(int, int, int)
+ * @see Clamp(int, int, int)
  */
-static inline uint clampu(const uint a, const uint min, const uint max)
+static inline uint ClampU(const uint a, const uint min, const uint max)
 {
 	if (a <= min) return min;
 	if (a >= max) return max;
@@ -195,7 +195,7 @@ static inline uint clampu(const uint a, const uint min, const uint max)
  *
  * @param a The 64-bit value to clamps
  * @return The 64-bit value reduced to a 32-bit value
- * @see clamp(int, int, int)
+ * @see Clamp(int, int, int)
  */
 static inline int32 ClampToI32(const int64 a)
 {

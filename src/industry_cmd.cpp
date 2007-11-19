@@ -1628,7 +1628,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		int count = indspec->num_table;
 		const IndustryTileTable * const *itt = indspec->table;
-		int num = clamp(p2, 0, count - 1);
+		int num = Clamp(p2, 0, count - 1);
 
 		_error_message = STR_0239_SITE_UNSUITABLE;
 		do {
@@ -2047,7 +2047,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 					new_prod += max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
 				}
 
-				new_prod = clamp(new_prod, 1, 255);
+				new_prod = Clamp(new_prod, 1, 255);
 				/* Do not stop closing the industry when it has the lowest possible production rate */
 				if (new_prod == old_prod && old_prod > 1) {
 					closeit = false;

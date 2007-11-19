@@ -104,10 +104,10 @@ static TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
 
 	/* we are going the aim for the x coordinate of the closest corner
 	 * but if we are between those coordinates, we will aim for our own x coordinate */
-	x = clamp(TileX(tile), minx, maxx);
+	x = Clamp(TileX(tile), minx, maxx);
 
 	/* same for y coordinate, see above comment */
-	y = clamp(TileY(tile), miny, maxy);
+	y = Clamp(TileY(tile), miny, maxy);
 
 	/* return the tile of our target coordinates */
 	return TileXY(x, y);

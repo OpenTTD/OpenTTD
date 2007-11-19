@@ -315,14 +315,14 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0xA6: return industry->type;
 		case 0xA7: return industry->founder;
 		case 0xA8: return industry->random_color;
-		case 0xA9: return clamp(0, industry->last_prod_year - 1920, 255);
+		case 0xA9: return Clamp(0, industry->last_prod_year - 1920, 255);
 		case 0xAA: return industry->counter;
 		case 0xAB: return GB(industry->counter, 8, 8);
 		case 0xAC: return industry->was_cargo_delivered;
 
-		case 0xB0: return clamp(0, industry->construction_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 65535); // Date when built since 1920 (in days)
+		case 0xB0: return Clamp(0, industry->construction_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 65535); // Date when built since 1920 (in days)
 		case 0xB3: return industry->construction_type; // Construction type
-		case 0xB4: return clamp(0, industry->last_cargo_accepted_at - DAYS_TILL_ORIGINAL_BASE_YEAR, 65535); // Date last cargo accepted since 1920 (in days)
+		case 0xB4: return Clamp(0, industry->last_cargo_accepted_at - DAYS_TILL_ORIGINAL_BASE_YEAR, 65535); // Date last cargo accepted since 1920 (in days)
 	}
 
 	DEBUG(grf, 1, "Unhandled industry property 0x%X", variable);
@@ -515,10 +515,10 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		bool deref = (group->g.indprod.version == 1);
 
 		for (uint i = 0; i < 3; i++) {
-			ind->incoming_cargo_waiting[i] = clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->g.indprod.substract_input[i], deref), 0, 0xFFFF);
+			ind->incoming_cargo_waiting[i] = Clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->g.indprod.substract_input[i], deref), 0, 0xFFFF);
 		}
 		for (uint i = 0; i < 2; i++) {
-			ind->produced_cargo_waiting[i] = clamp(ind->produced_cargo_waiting[i] + DerefIndProd(group->g.indprod.add_output[i], deref), 0, 0xFFFF);
+			ind->produced_cargo_waiting[i] = Clamp(ind->produced_cargo_waiting[i] + DerefIndProd(group->g.indprod.add_output[i], deref), 0, 0xFFFF);
 		}
 
 		int32 again = DerefIndProd(group->g.indprod.again, deref);

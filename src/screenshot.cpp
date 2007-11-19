@@ -123,7 +123,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat == 8) if (fwrite(rq, sizeof(rq), 1, f) != 1) return false;
 
 	/* use by default 64k temp memory */
-	maxlines = clamp(65536 / padw, 16, 128);
+	maxlines = Clamp(65536 / padw, 16, 128);
 
 	/* now generate the bitmap bits */
 	void *buff = MallocT<uint8>(padw * maxlines * bpp); // by default generate 128 lines at a time.
@@ -251,7 +251,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	}
 
 	/* use by default 64k temp memory */
-	maxlines = clamp(65536 / w, 16, 128);
+	maxlines = Clamp(65536 / w, 16, 128);
 
 	/* now generate the bitmap bits */
 	void *buff = MallocT<uint8>(w * maxlines * bpp); // by default generate 128 lines at a time.
@@ -351,7 +351,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	}
 
 	/* use by default 64k temp memory */
-	maxlines = clamp(65536 / w, 16, 128);
+	maxlines = Clamp(65536 / w, 16, 128);
 
 	/* now generate the bitmap bits */
 	uint8 *buff = MallocT<uint8>(w * maxlines); // by default generate 128 lines at a time.

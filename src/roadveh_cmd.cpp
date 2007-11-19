@@ -129,7 +129,7 @@ byte GetRoadVehLength(const Vehicle *v)
 
 	uint16 veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, v->engine_type, v);
 	if (veh_len != CALLBACK_FAILED) {
-		length -= clamp(veh_len, 0, 7);
+		length -= Clamp(veh_len, 0, 7);
 	}
 
 	return length;

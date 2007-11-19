@@ -692,9 +692,9 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 				SetWindowDirty(w);
 				switch (e->we.click.widget) {
 					default: NOT_REACHED();
-					case  9: case 11: _network_game_info.clients_max    = clamp(_network_game_info.clients_max    + e->we.click.widget - 10, 2, MAX_CLIENTS); break;
-					case 12: case 14: _network_game_info.companies_max  = clamp(_network_game_info.companies_max  + e->we.click.widget - 13, 1, MAX_PLAYERS); break;
-					case 15: case 17: _network_game_info.spectators_max = clamp(_network_game_info.spectators_max + e->we.click.widget - 16, 0, MAX_CLIENTS); break;
+					case  9: case 11: _network_game_info.clients_max    = Clamp(_network_game_info.clients_max    + e->we.click.widget - 10, 2, MAX_CLIENTS); break;
+					case 12: case 14: _network_game_info.companies_max  = Clamp(_network_game_info.companies_max  + e->we.click.widget - 13, 1, MAX_PLAYERS); break;
+					case 15: case 17: _network_game_info.spectators_max = Clamp(_network_game_info.spectators_max + e->we.click.widget - 16, 0, MAX_CLIENTS); break;
 				}
 			}
 			_left_button_clicked = false;
@@ -789,9 +789,9 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			InvalidateWidget(w, nd->widget_id);
 			switch (nd->widget_id) {
 				default: NOT_REACHED();
-				case 10: _network_game_info.clients_max    = clamp(value, 2, MAX_CLIENTS); break;
-				case 13: _network_game_info.companies_max  = clamp(value, 1, MAX_PLAYERS); break;
-				case 16: _network_game_info.spectators_max = clamp(value, 0, MAX_CLIENTS); break;
+				case 10: _network_game_info.clients_max    = Clamp(value, 2, MAX_CLIENTS); break;
+				case 13: _network_game_info.companies_max  = Clamp(value, 1, MAX_PLAYERS); break;
+				case 16: _network_game_info.spectators_max = Clamp(value, 0, MAX_CLIENTS); break;
 			}
 		}
 

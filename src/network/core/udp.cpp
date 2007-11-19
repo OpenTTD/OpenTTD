@@ -230,8 +230,8 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 			}
 		} /* Fallthrough */
 		case 3:
-			info->game_date      = clamp(p->Recv_uint32(), 0, MAX_DATE);
-			info->start_date     = clamp(p->Recv_uint32(), 0, MAX_DATE);
+			info->game_date      = Clamp(p->Recv_uint32(), 0, MAX_DATE);
+			info->start_date     = Clamp(p->Recv_uint32(), 0, MAX_DATE);
 			/* Fallthrough */
 		case 2:
 			info->companies_max  = p->Recv_uint8 ();

@@ -392,7 +392,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			case 0x42: return 0;               // Rail type (XXX Get current type from GUI?)
 			case 0x43: return _current_player; // Station owner
 			case 0x44: return 2;               // PBS status
-			case 0xFA: return clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Build date, clamped to a 16 bit value
+			case 0xFA: return Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Build date, clamped to a 16 bit value
 		}
 
 		*available = false;
@@ -451,7 +451,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0xF3: return st->bus_stops->status;
 		case 0xF6: return st->airport_flags;
 		case 0xF7: return GB(st->airport_flags, 8, 8);
-		case 0xFA: return clamp(st->build_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535);
+		case 0xFA: return Clamp(st->build_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535);
 	}
 
 	/* Handle cargo variables with parameter, 0x60 to 0x65 */

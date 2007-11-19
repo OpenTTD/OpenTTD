@@ -429,7 +429,7 @@ void CheckDifficultyLevels()
 	} else {
 		for (uint i = 0; i < GAME_DIFFICULTY_NUM; i++) {
 			GDType *diff = ((GDType*)&_opt_newgame.diff) + i;
-			*diff = clamp(*diff, _game_setting_info[i].min, _game_setting_info[i].max);
+			*diff = Clamp(*diff, _game_setting_info[i].min, _game_setting_info[i].max);
 			*diff -= *diff % _game_setting_info[i].step;
 		}
 	}
@@ -1149,7 +1149,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 							WP(w,def_d).data_1 = 1 << (line * 2 + 0);
 						} else {
 							_custom_currency.to_euro =
-								clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
+								Clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
 							WP(w,def_d).data_1 = 1 << (line * 2 + 1);
 						}
 					} else { // enter text
@@ -1176,7 +1176,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 
 				switch (WP(w,def_d).data_2) {
 					case 0: /* Exchange rate */
-						_custom_currency.rate = clamp(atoi(b), 1, 5000);
+						_custom_currency.rate = Clamp(atoi(b), 1, 5000);
 						break;
 
 					case 1: /* Thousands seperator */
