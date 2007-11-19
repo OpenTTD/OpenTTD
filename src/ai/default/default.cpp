@@ -146,7 +146,7 @@ static EngineID AiChooseTrainToBuild(RailType railtype, Money money, byte flag, 
 		if (!IsCompatibleRail(rvi->railtype, railtype) ||
 				rvi->railveh_type == RAILVEH_WAGON ||
 				(rvi->railveh_type == RAILVEH_MULTIHEAD && flag & 1) ||
-				!HASBIT(e->player_avail, _current_player) ||
+				!HasBit(e->player_avail, _current_player) ||
 				e->reliability < 0x8A3D) {
 			continue;
 		}
@@ -174,7 +174,7 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, Money money, TileIndex til
 		int32 rating;
 		CommandCost ret;
 
-		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
+		if (!HasBit(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
 			continue;
 		}
 
@@ -209,7 +209,7 @@ static EngineID AiChooseAircraftToBuild(Money money, byte flag)
 		const Engine* e = GetEngine(i);
 		CommandCost ret;
 
-		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
+		if (!HasBit(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
 			continue;
 		}
 
@@ -2412,7 +2412,7 @@ static EngineID AiFindBestWagon(CargoID cargo, RailType railtype)
 
 		if (!IsCompatibleRail(rvi->railtype, railtype) ||
 				rvi->railveh_type != RAILVEH_WAGON ||
-				!HASBIT(e->player_avail, _current_player)) {
+				!HasBit(e->player_avail, _current_player)) {
 			continue;
 		}
 
@@ -3366,7 +3366,7 @@ static CommandCost AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultB
 	CommandCost total_cost, ret;
 
 	for (; p->mode == 0; p++) {
-		if (!HASBIT(avail_airports, p->attr)) return CMD_ERROR;
+		if (!HasBit(avail_airports, p->attr)) return CMD_ERROR;
 		ret = DoCommand(TILE_MASK(tile + ToTileIndexDiff(p->tileoffs)), p->attr, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_AIRPORT);
 		if (CmdFailed(ret)) return CMD_ERROR;
 		total_cost.AddCost(ret);

@@ -1133,7 +1133,7 @@ void GameLoop()
 	StateGameLoop();
 #endif /* ENABLE_NETWORK */
 
-	if (!_pause_game && HASBIT(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
+	if (!_pause_game && HasBit(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
 
 	if (!_pause_game || _cheats.build_in_pause.value) MoveAllTextEffects();
 
@@ -1160,7 +1160,7 @@ static void ConvertTownOwner()
 	for (tile = 0; tile != MapSize(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_ROAD:
-				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HASBIT(_m[tile].m4, 7)) {
+				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HasBit(_m[tile].m4, 7)) {
 					_m[tile].m4 = OWNER_TOWN;
 				}
 				/* FALLTHROUGH */
@@ -1375,7 +1375,7 @@ bool AfterLoadGame()
 					break;
 
 				case MP_STATION: {
-					if (HASBIT(_m[t].m6, 3)) SETBIT(_m[t].m6, 2);
+					if (HasBit(_m[t].m6, 3)) SETBIT(_m[t].m6, 2);
 					StationGfx gfx = GetStationGfx(t);
 					StationType st;
 					if (       IS_INT_INSIDE(gfx,   0,   8)) { // Railway station
@@ -1534,7 +1534,7 @@ bool AfterLoadGame()
 						uint tmp = GB(_m[t].m4, 0, 4);
 						SB(_m[t].m4, 0, 4, GB(_m[t].m2, 0, 4));
 						SB(_m[t].m2, 0, 4, tmp);
-					} else if (HASBIT(_m[t].m5, 2)) {
+					} else if (HasBit(_m[t].m5, 2)) {
 						/* Split waypoint and depot rail type and remove the subtype. */
 						CLRBIT(_m[t].m5, 2);
 						CLRBIT(_m[t].m5, 6);
@@ -1580,7 +1580,7 @@ bool AfterLoadGame()
 
 				case MP_TUNNELBRIDGE:
 					/* Middle part of "old" bridges */
-					if (old_bridge && IsBridgeTile(t) && HASBIT(_m[t].m5, 6)) break;
+					if (old_bridge && IsBridgeTile(t) && HasBit(_m[t].m5, 6)) break;
 					if ((IsTunnel(t) ? GetTunnelTransportType(t) : (old_bridge ? (TransportType)GB(_m[t].m5, 1, 2) : GetBridgeTransportType(t))) == TRANSPORT_ROAD) {
 						SetRoadTypes(t, ROADTYPES_ROAD);
 					}
@@ -1597,10 +1597,10 @@ bool AfterLoadGame()
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);
 			if (IsBridgeTile(t)) {
-				if (HASBIT(_m[t].m5, 6)) { // middle part
+				if (HasBit(_m[t].m5, 6)) { // middle part
 					Axis axis = (Axis)GB(_m[t].m5, 0, 1);
 
-					if (HASBIT(_m[t].m5, 5)) { // transport route under bridge?
+					if (HasBit(_m[t].m5, 5)) { // transport route under bridge?
 						if (GB(_m[t].m5, 3, 2) == TRANSPORT_RAIL) {
 							MakeRailNormal(
 								t,
@@ -1738,7 +1738,7 @@ bool AfterLoadGame()
 			if (wp->deleted == 0) {
 				const StationSpec *statspec = NULL;
 
-				if (HASBIT(_m[wp->xy].m3, 4))
+				if (HasBit(_m[wp->xy].m3, 4))
 					statspec = GetCustomStationSpec(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1);
 
 				if (statspec != NULL) {
@@ -1772,10 +1772,10 @@ bool AfterLoadGame()
 				case MP_RAILWAY:
 					if (HasSignals(t)) {
 						/* convert PBS signals to combo-signals */
-						if (HASBIT(_m[t].m2, 2)) SetSignalType(t, TRACK_X, SIGTYPE_COMBO);
+						if (HasBit(_m[t].m2, 2)) SetSignalType(t, TRACK_X, SIGTYPE_COMBO);
 
 						/* move the signal variant back */
-						SetSignalVariant(t, TRACK_X, HASBIT(_m[t].m2, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
+						SetSignalVariant(t, TRACK_X, HasBit(_m[t].m2, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
 						CLRBIT(_m[t].m2, 3);
 					}
 
@@ -1938,7 +1938,7 @@ bool AfterLoadGame()
 				} else {
 					/* The "lift has destination" bit has been moved from
 					 * m5[7] to m7[0]. */
-					SB(_me[t].m7, 0, 1, HASBIT(_m[t].m5, 7));
+					SB(_me[t].m7, 0, 1, HasBit(_m[t].m5, 7));
 					CLRBIT(_m[t].m5, 7);
 
 					/* The "lift is moving" bit has been removed, as it does
@@ -2037,7 +2037,7 @@ bool AfterLoadGame()
 			const CargoList::List *packets = v->cargo.Packets();
 			for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
 				CargoPacket *cp = *it;
-				cp->paid_for = HASBIT(v->vehicle_flags, 2);
+				cp->paid_for = HasBit(v->vehicle_flags, 2);
 			}
 			CLRBIT(v->vehicle_flags, 2);
 			v->cargo.InvalidateCache();

@@ -231,7 +231,7 @@ static inline int32 ClampToI32(const int64 a)
  * @param y The position of the bit to check, started from the LSB
  * @return True if the bit is set, false else.
  */
-template<typename T> static inline bool HASBIT(const T x, const uint8 y)
+template<typename T> static inline bool HasBit(const T x, const uint8 y)
 {
 	return (x & ((T)1U << y)) != 0;
 }

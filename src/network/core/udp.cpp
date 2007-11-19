@@ -160,13 +160,13 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
 
 		/* Count number of GRFs to send information about */
 		for (c = info->grfconfig; c != NULL; c = c->next) {
-			if (!HASBIT(c->flags, GCF_STATIC)) count++;
+			if (!HasBit(c->flags, GCF_STATIC)) count++;
 		}
 		p->Send_uint8 (count); // Send number of GRFs
 
 		/* Send actual GRF Identifications */
 		for (c = info->grfconfig; c != NULL; c = c->next) {
-			if (!HASBIT(c->flags, GCF_STATIC)) this->Send_GRFIdentifier(p, c);
+			if (!HasBit(c->flags, GCF_STATIC)) this->Send_GRFIdentifier(p, c);
 		}
 	}
 

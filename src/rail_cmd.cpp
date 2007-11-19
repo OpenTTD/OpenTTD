@@ -360,7 +360,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		case MP_ROAD:
 #define M(x) (1 << (x))
 			/* Level crossings may only be built on these slopes */
-			if (!HASBIT(M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT), tileh)) {
+			if (!HasBit(M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT), tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 #undef M
@@ -601,7 +601,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 		(trdy <= 0 && dy > 0) ||
 		(trdy >= 0 && dy < 0)
 	) {
-		if (!HASBIT(*trackdir, 3)) { // first direction is invalid, try the other
+		if (!HasBit(*trackdir, 3)) { // first direction is invalid, try the other
 			SetBitT(*trackdir, 3); // reverse the direction
 			trdx = -trdx;
 			trdy = -trdy;
@@ -636,7 +636,7 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, u
 	CommandCost ret, total_cost;
 	Track track = (Track)GB(p2, 4, 3);
 	Trackdir trackdir;
-	byte mode = HASBIT(p2, 7);
+	byte mode = HasBit(p2, 7);
 	RailType railtype = (RailType)GB(p2, 0, 4);
 	TileIndex end_tile;
 
@@ -783,8 +783,8 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Track track = (Track)GB(p1, 0, 3);
-	bool pre_signal = HASBIT(p1, 3);
-	SignalVariant sigvar = (pre_signal ^ HASBIT(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC;
+	bool pre_signal = HasBit(p1, 3);
+	SignalVariant sigvar = (pre_signal ^ HasBit(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC;
 	CommandCost cost;
 
 	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoTrainOnTrack(tile, track))
@@ -946,10 +946,10 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	TileIndex start_tile = tile;
 
 	Track track = (Track)GB(p2, 0, 3);
-	bool mode = HASBIT(p2, 3);
-	bool semaphores = HASBIT(p2, 4);
-	bool remove = HASBIT(p2, 5);
-	bool autofill = HASBIT(p2, 6);
+	bool mode = HasBit(p2, 3);
+	bool semaphores = HasBit(p2, 4);
+	bool remove = HasBit(p2, 5);
+	bool autofill = HasBit(p2, 6);
 	Trackdir trackdir = TrackToTrackdir(track);
 	byte signal_density = GB(p2, 24, 8);
 
@@ -1006,8 +1006,8 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 
 			/* Pick the correct orientation for the track direction */
 			signals = 0;
-			if (HASBIT(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
-			if (HASBIT(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
+			if (HasBit(signal_dir, 0)) signals |= SignalAlongTrackdir(trackdir);
+			if (HasBit(signal_dir, 1)) signals |= SignalAgainstTrackdir(trackdir);
 
 			ret = DoCommand(tile, p1, signals, flags, remove ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
@@ -1662,7 +1662,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		DrawTrackBits(ti, rails);
 
-		if (HASBIT(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti);
+		if (HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti);
 
 		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
@@ -1702,7 +1702,7 @@ static void DrawTile_Track(TileInfo *ti)
 				const Station* st = ComposeWaypointStation(ti->tile);
 				uint gfx = 2;
 
-				if (HASBIT(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
+				if (HasBit(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
 					uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
 					if (callback != CALLBACK_FAILED) gfx = callback;
 				}
@@ -1717,7 +1717,7 @@ static void DrawTile_Track(TileInfo *ti)
 					relocation = GetCustomStationRelocation(statspec, st, ti->tile);
 
 					image = dts->ground_sprite;
-					if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
+					if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 						image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 						image += rti->custom_ground_offset;
 					} else {
@@ -1747,13 +1747,13 @@ default_waypoint:
 			/* Unlike stations, our default waypoint has no variation for
 			 * different railtype, so don't use the railtype offset if
 			 * no relocation is set */
-			if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
+			if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 				image += rti->total_offset;
 			} else {
 				image += relocation;
 			}
 
-			if (!IsTransparencySet(TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+			if (!IsTransparencySet(TO_BUILDINGS) && HasBit(image, PALETTE_MODIFIER_COLOR)) {
 				pal = _drawtile_track_palette;
 			} else {
 				pal = dtss->pal;
@@ -1785,7 +1785,7 @@ static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStr
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
 		SpriteID image = dtss->image + offset;
 
-		DrawSprite(image, HASBIT(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
+		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
 	}
 }
 

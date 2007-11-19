@@ -263,7 +263,7 @@ byte GetPlayerRoadtypes(PlayerID p);
  */
 static inline bool HasRailtypeAvail(const Player *p, const RailType Railtype)
 {
-	return HASBIT(p->avail_railtypes, Railtype);
+	return HasBit(p->avail_railtypes, Railtype);
 }
 
 /** Finds out, whether given player has all given RoadTypes available
@@ -297,7 +297,7 @@ static inline bool IsInteractivePlayer(PlayerID pi)
 void DrawPlayerIcon(PlayerID p, int x, int y);
 
 /* Validate functions for rail building */
-static inline bool ValParamRailtype(const uint32 rail) { return HASBIT(GetPlayer(_current_player)->avail_railtypes, rail);}
+static inline bool ValParamRailtype(const uint32 rail) { return HasBit(GetPlayer(_current_player)->avail_railtypes, rail);}
 
 /* Validate functions for road building */
 static inline bool ValParamRoadType(const RoadType rt) { return HasRoadTypesAvail(_current_player, RoadTypeToRoadTypes(rt));}

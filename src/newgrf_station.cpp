@@ -402,26 +402,26 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 	switch (variable) {
 		/* Calculated station variables */
 		case 0x40:
-			if (!HASBIT(_svc.valid, 0)) { _svc.v40 = GetPlatformInfoHelper(tile, false, false, false); SETBIT(_svc.valid, 0); }
+			if (!HasBit(_svc.valid, 0)) { _svc.v40 = GetPlatformInfoHelper(tile, false, false, false); SETBIT(_svc.valid, 0); }
 			return _svc.v40;
 
 		case 0x41:
-			if (!HASBIT(_svc.valid, 1)) { _svc.v41 = GetPlatformInfoHelper(tile, true,  false, false); SETBIT(_svc.valid, 1); }
+			if (!HasBit(_svc.valid, 1)) { _svc.v41 = GetPlatformInfoHelper(tile, true,  false, false); SETBIT(_svc.valid, 1); }
 			return _svc.v41;
 
 		case 0x42: return GetTerrainType(tile) | (GetRailType(tile) << 8);
 		case 0x43: return st->owner; // Station owner
 		case 0x44: return 2;         // PBS status
 		case 0x45:
-			if (!HASBIT(_svc.valid, 2)) { _svc.v45 = GetRailContinuationInfo(tile); SETBIT(_svc.valid, 2); }
+			if (!HasBit(_svc.valid, 2)) { _svc.v45 = GetRailContinuationInfo(tile); SETBIT(_svc.valid, 2); }
 			return _svc.v45;
 
 		case 0x46:
-			if (!HASBIT(_svc.valid, 3)) { _svc.v46 = GetPlatformInfoHelper(tile, false, false, true); SETBIT(_svc.valid, 3); }
+			if (!HasBit(_svc.valid, 3)) { _svc.v46 = GetPlatformInfoHelper(tile, false, false, true); SETBIT(_svc.valid, 3); }
 			return _svc.v46;
 
 		case 0x47:
-			if (!HASBIT(_svc.valid, 4)) { _svc.v47 = GetPlatformInfoHelper(tile, true,  false, true); SETBIT(_svc.valid, 4); }
+			if (!HasBit(_svc.valid, 4)) { _svc.v47 = GetPlatformInfoHelper(tile, true,  false, true); SETBIT(_svc.valid, 4); }
 			return _svc.v47;
 
 		case 0x48: { // Accepted cargo types
@@ -429,12 +429,12 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			uint32 value = 0;
 
 			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				if (HASBIT(st->goods[cargo_type].acceptance_pickup, GoodsEntry::PICKUP)) SETBIT(value, cargo_type);
+				if (HasBit(st->goods[cargo_type].acceptance_pickup, GoodsEntry::PICKUP)) SETBIT(value, cargo_type);
 			}
 			return value;
 		}
 		case 0x49:
-			if (!HASBIT(_svc.valid, 5)) { _svc.v49 = GetPlatformInfoHelper(tile, false, true, false); SETBIT(_svc.valid, 5); }
+			if (!HasBit(_svc.valid, 5)) { _svc.v49 = GetPlatformInfoHelper(tile, false, true, false); SETBIT(_svc.valid, 5); }
 			return _svc.v49;
 
 		/* Variables which use the parameter */
@@ -524,7 +524,7 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 			break;
 	}
 
-	if (HASBIT(statspec->flags, 1)) cargo /= (st->trainst_w + st->trainst_h);
+	if (HasBit(statspec->flags, 1)) cargo /= (st->trainst_w + st->trainst_h);
 	cargo = min(0xfff, cargo);
 
 	if (cargo > statspec->cargo_threshold) {
@@ -751,7 +751,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 	relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE);
 
-	if (HASBIT(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
+	if (HasBit(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
 		uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0x2110000, 0, statspec, NULL, INVALID_TILE);
 		if (callback != CALLBACK_FAILED) tile = callback;
 	}
@@ -763,7 +763,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	}
 
 	image = sprites->ground_sprite;
-	if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
+	if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
 		image += rti->custom_ground_offset;
 	} else {
@@ -775,7 +775,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	foreach_draw_tile_seq(seq, sprites->seq) {
 		Point pt;
 		image = seq->image;
-		if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
+		if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += rti->total_offset;
 		} else {
 			image += relocation;
@@ -810,7 +810,7 @@ bool IsStationTileBlocked(TileIndex tile)
 {
 	const StationSpec* statspec = GetStationSpec(tile);
 
-	return statspec != NULL && HASBIT(statspec->blocked, GetStationGfx(tile));
+	return statspec != NULL && HasBit(statspec->blocked, GetStationGfx(tile));
 }
 
 /* Check if a rail station tile is electrifiable.
@@ -821,6 +821,6 @@ bool IsStationTileElectrifiable(TileIndex tile)
 
 	return
 		statspec == NULL ||
-		HASBIT(statspec->pylons, GetStationGfx(tile)) ||
-		!HASBIT(statspec->wires, GetStationGfx(tile));
+		HasBit(statspec->pylons, GetStationGfx(tile)) ||
+		!HasBit(statspec->wires, GetStationGfx(tile));
 }

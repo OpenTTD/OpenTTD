@@ -105,8 +105,8 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 
 	dst = blitter->MoveTo(dpi->dst_ptr, left, top);
 
-	if (!HASBIT(color, PALETTE_MODIFIER_GREYOUT)) {
-		if (!HASBIT(color, USE_COLORTABLE)) {
+	if (!HasBit(color, PALETTE_MODIFIER_GREYOUT)) {
+		if (!HasBit(color, USE_COLORTABLE)) {
 			blitter->DrawRect(dst, right, bottom, (uint8)color);
 		} else {
 			blitter->DrawColorMappingRect(dst, right, bottom, GB(color, 0, PALETTE_WIDTH));
@@ -654,7 +654,7 @@ int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw
 
 void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub)
 {
-	if (HASBIT(img, PALETTE_MODIFIER_TRANSPARENT)) {
+	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
 		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH)) + 1;
 		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_TRANSPARENT, sub);
 	} else if (pal != PAL_NONE) {

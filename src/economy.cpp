@@ -328,8 +328,8 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	FOR_ALL_TOWNS(t) {
 		/* If a player takes over, give the ratings to that player. */
 		if (new_player != PLAYER_SPECTATOR) {
-			if (HASBIT(t->have_ratings, old_player)) {
-				if (HASBIT(t->have_ratings, new_player)) {
+			if (HasBit(t->have_ratings, old_player)) {
+				if (HasBit(t->have_ratings, new_player)) {
 					// use max of the two ratings.
 					t->ratings[new_player] = max(t->ratings[new_player], t->ratings[old_player]);
 				} else {
@@ -639,7 +639,7 @@ static void PlayersGenStatistics()
 		SubtractMoneyFromPlayer(_price.station_value >> 1);
 	}
 
-	if (!HASBIT(1<<0|1<<3|1<<6|1<<9, _cur_month))
+	if (!HasBit(1<<0|1<<3|1<<6|1<<9, _cur_month))
 		return;
 
 	FOR_ALL_PLAYERS(p) {
@@ -1009,7 +1009,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	if (i == NULL) return;
 
 	/* Randomize cargo type */
-	if (HASBIT(Random(), 0) && i->produced_cargo[1] != CT_INVALID) {
+	if (HasBit(Random(), 0) && i->produced_cargo[1] != CT_INVALID) {
 		cargo = i->produced_cargo[1];
 		trans = i->last_month_pct_transported[1];
 		total = i->last_month_production[1];
@@ -1179,14 +1179,14 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	const CargoSpec *cs = GetCargo(cargo_type);
 
 	/* Use callback to calculate cargo profit, if available */
-	if (HASBIT(cs->callback_mask, CBM_CARGO_PROFIT_CALC)) {
+	if (HasBit(cs->callback_mask, CBM_CARGO_PROFIT_CALC)) {
 		uint32 var18 = min(dist, 0xFFFF) | (min(num_pieces, 0xFF) << 16) | (transit_days << 24);
 		uint16 callback = GetCargoCallback(CBID_CARGO_PROFIT_CALC, 0, var18, cs);
 		if (callback != CALLBACK_FAILED) {
 			int result = GB(callback, 0, 14);
 
 			/* Simulate a 15 bit signed value */
-			if (HASBIT(callback, 14)) result = 0x4000 - result;
+			if (HasBit(callback, 14)) result = 0x4000 - result;
 
 			/* "The result should be a signed multiplier that gets multiplied
 			 * by the amount of cargo moved and the price factor, then gets
@@ -1254,7 +1254,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 		/* Check if matching cargo has been found */
 		if (i == lengthof(ind->accepts_cargo)) continue;
 
-		if (HASBIT(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
+		if (HasBit(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
 			uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile), ind, ind->type, ind->xy);
 			if (res == 0) continue;
 		}
@@ -1276,9 +1276,9 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 		best->was_cargo_delivered = true;
 		best->last_cargo_accepted_at = _date;
 
-		if (HASBIT(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(callback, CBM_IND_PRODUCTION_256_TICKS)) {
+		if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 			best->incoming_cargo_waiting[accepted_cargo_index] = min(num_pieces + best->incoming_cargo_waiting[accepted_cargo_index], 0xFFFF);
-			if (HASBIT(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) {
+			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) {
 				IndustryProductionCallback(best, 0);
 			} else {
 				InvalidateWindow(WC_INDUSTRY_VIEW, best->index);
@@ -1447,7 +1447,7 @@ void VehiclePayment(Vehicle *front_v)
 			CargoPacket *cp = *it;
 			if (!cp->paid_for &&
 					cp->source != last_visited &&
-					HASBIT(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) &&
+					HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) &&
 					(front_v->current_order.flags & OF_TRANSFER) == 0) {
 				/* Deliver goods to the station */
 				st->time_since_unload = 0;
@@ -1515,7 +1515,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	/* We have not waited enough time till the next round of loading/unloading */
 	if (--v->load_unload_time_rem != 0) {
-		if (_patches.improved_load && HASBIT(v->current_order.flags, OFB_FULL_LOAD)) {
+		if (_patches.improved_load && HasBit(v->current_order.flags, OFB_FULL_LOAD)) {
 			/* 'Reserve' this cargo for this vehicle, because we were first. */
 			for (; v != NULL; v = v->Next()) {
 				if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
@@ -1551,19 +1551,19 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		if (v->cargo_cap == 0) continue;
 
 		byte load_amount = EngInfo(v->engine_type)->load_amount;
-		if (_patches.gradual_loading && HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_LOAD_AMOUNT)) {
+		if (_patches.gradual_loading && HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_LOAD_AMOUNT)) {
 			uint16 cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
 			if (cb_load_amount != CALLBACK_FAILED && cb_load_amount != 0) load_amount = cb_load_amount & 0xFF;
 		}
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
 
-		if (HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING)) {
+		if (HasBit(v->vehicle_flags, VF_CARGO_UNLOADING)) {
 			uint cargo_count = v->cargo.Count();
 			uint amount_unloaded = _patches.gradual_loading ? min(cargo_count, load_amount) : cargo_count;
 			bool remaining; // Are there cargo entities in this vehicle that can still be unloaded here?
 
-			if (HASBIT(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.flags & OF_TRANSFER)) {
+			if (HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.flags & OF_TRANSFER)) {
 				/* The cargo has reached it's final destination, the packets may now be destroyed */
 				remaining = v->cargo.MoveTo(NULL, amount_unloaded, CargoList::MTA_FINAL_DELIVERY, last_visited);
 
@@ -1666,7 +1666,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	 * all wagons at the same time instead of using the same 'improved'
 	 * loading algorithm for the wagons (only fill wagon when there is
 	 * enough to fill the previous wagons) */
-	if (_patches.improved_load && HASBIT(u->current_order.flags, OFB_FULL_LOAD)) {
+	if (_patches.improved_load && HasBit(u->current_order.flags, OFB_FULL_LOAD)) {
 		/* Update left cargo */
 		for (v = u; v != NULL; v = v->Next()) {
 			if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
@@ -1685,7 +1685,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 	} else {
 		bool finished_loading = true;
-		if (HASBIT(v->current_order.flags, OFB_FULL_LOAD)) {
+		if (HasBit(v->current_order.flags, OFB_FULL_LOAD)) {
 			if (_patches.full_load_any) {
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */

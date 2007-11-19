@@ -189,7 +189,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 			}
 		}
 
-		if (new_v->type == VEH_TRAIN && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->Next() != NULL && IsArticulatedPart(new_v->Next()))) {
+		if (new_v->type == VEH_TRAIN && HasBit(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->Next() != NULL && IsArticulatedPart(new_v->Next()))) {
 			// we are autorenewing to a single engine, so we will turn it as the old one was turned as well
 			SETBIT(new_v->u.rail.flags, VRF_REVERSE_DIRECTION);
 		}

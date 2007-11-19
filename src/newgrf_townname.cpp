@@ -44,7 +44,7 @@ void DelGRFTownName(uint32 grfid)
 		for (int i = 0; i < 128; i++) {
 			for (int j = 0; j < t->nbparts[i]; j++) {
 				for (int k = 0; k < t->partlist[i][j].partcount; k++) {
-					if (!HASBIT(t->partlist[i][j].parts[k].prob, 7)) free(t->partlist[i][j].parts[k].data.text);
+					if (!HasBit(t->partlist[i][j].parts[k].prob, 7)) free(t->partlist[i][j].parts[k].data.text);
 				}
 				free(t->partlist[i][j].parts);
 			}
@@ -70,7 +70,7 @@ static char *RandomPart(char *buf, GRFTownName *t, uint32 seed, byte id, const c
 			byte prob = t->partlist[id][i].parts[j].prob;
 			maxprob -= GB(prob, 0, 7);
 			if (maxprob > r) continue;
-			if (HASBIT(prob, 7)) {
+			if (HasBit(prob, 7)) {
 				buf = RandomPart(buf, t, seed, t->partlist[id][i].parts[j].data.id, last);
 			} else {
 				buf = strecat(buf, t->partlist[id][i].parts[j].data.text, last);

@@ -221,7 +221,7 @@ size_t Utf8Validate(const char *s)
 {
 	uint32 c;
 
-	if (!HASBIT(s[0], 7)) {
+	if (!HasBit(s[0], 7)) {
 		/* 1 byte */
 		return 1;
 	} else if (GB(s[0], 5, 3) == 6 && IsUtf8Part(s[1])) {

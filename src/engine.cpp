@@ -165,7 +165,7 @@ void StartupEngines()
 		e->lifelength = ei->lifelength + _patches.extend_vehicle_life;
 
 		/* prevent certain engines from ever appearing. */
-		if (!HASBIT(ei->climates, _opt.landscape)) {
+		if (!HasBit(ei->climates, _opt.landscape)) {
 			e->flags |= ENGINE_AVAILABLE;
 			e->player_avail = 0;
 		}
@@ -190,7 +190,7 @@ static void AcceptEnginePreview(EngineID eid, PlayerID player)
 		assert(rvi->railtype < RAILTYPE_END);
 		SETBIT(p->avail_railtypes, rvi->railtype);
 	} else if (e->type == VEH_ROAD) {
-		SETBIT(p->avail_roadtypes, HASBIT(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		SETBIT(p->avail_roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
 	e->preview_player = INVALID_PLAYER;
@@ -210,7 +210,7 @@ static PlayerID GetBestPlayer(PlayerID pp)
 		best_hist = -1;
 		best_player = PLAYER_SPECTATOR;
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && p->block_preview == 0 && !HASBIT(mask, p->index) &&
+			if (p->is_active && p->block_preview == 0 && !HasBit(mask, p->index) &&
 					p->old_economy[0].performance_history > best_hist) {
 				best_hist = p->old_economy[0].performance_history;
 				best_player = p->index;
@@ -300,7 +300,7 @@ static void NewVehicleAvailable(Engine *e)
 		FOR_ALL_PLAYERS(p) {
 			uint block_preview = p->block_preview;
 
-			if (!HASBIT(e->player_avail, p->index)) continue;
+			if (!HasBit(e->player_avail, p->index)) continue;
 
 			/* We assume the user did NOT build it.. prove me wrong ;) */
 			p->block_preview = 20;
@@ -338,7 +338,7 @@ static void NewVehicleAvailable(Engine *e)
 	if ((index - NUM_TRAIN_ENGINES) < NUM_ROAD_ENGINES) {
 		/* maybe make another road type available */
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) SETBIT(p->avail_roadtypes, HASBIT(EngInfo(index)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+			if (p->is_active) SETBIT(p->avail_roadtypes, HasBit(EngInfo(index)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}
 	}
 	AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL), 0, 0);
@@ -436,12 +436,12 @@ bool IsEngineBuildable(EngineID engine, byte type, PlayerID player)
 	if (e->type != type) return false;
 
 	/* check if it's available */
-	if (!HASBIT(e->player_avail, player)) return false;
+	if (!HasBit(e->player_avail, player)) return false;
 
 	if (type == VEH_TRAIN) {
 		/* Check if the rail type is available to this player */
 		const Player *p = GetPlayer(player);
-		if (!HASBIT(p->avail_railtypes, RailVehInfo(engine)->railtype)) return false;
+		if (!HasBit(p->avail_railtypes, RailVehInfo(engine)->railtype)) return false;
 	}
 
 	return true;

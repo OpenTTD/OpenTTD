@@ -250,7 +250,7 @@ EngineID AiNew_PickVehicle(Player *p)
 
 			// Is it availiable?
 			// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
-			if (!HASBIT(e->player_avail, _current_player) || e->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
+			if (!HasBit(e->player_avail, _current_player) || e->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
 
 			/* Rate and compare the engine by speed & capacity */
 			rating = rvi->max_speed * rvi->capacity;

@@ -177,7 +177,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
-	if (HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM) != HASBIT(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_DEPOT_WRONG_DEPOT_TYPE);
+	if (HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) != HasBit(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_DEPOT_WRONG_DEPOT_TYPE);
 
 	uint num_vehicles = 1 + CountArticulatedParts(p1, false);
 
@@ -192,7 +192,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	v = vl[0];
 
 	/* find the first free roadveh id */
-	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_ROAD);
+	unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_ROAD);
 	if (unit_num > _patches.max_roadveh)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -252,7 +252,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->random_bits = VehicleRandomBits();
 		SetRoadVehFront(v);
 
-		v->u.road.roadtype = HASBIT(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
+		v->u.road.roadtype = HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 		v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
 		v->u.road.cached_veh_length = GetRoadVehLength(v);
 
@@ -476,7 +476,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
-		if (!!(p2 & DEPOT_SERVICE) == HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot) */
@@ -492,7 +492,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 		if (flags & DC_EXEC) {
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
-			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS))
+			if (HasBit(v->current_order.flags, OFB_PART_OF_ORDERS))
 				v->cur_order_index++;
 
 			v->current_order.type = OT_DUMMY;
@@ -597,7 +597,7 @@ static void ClearCrashedStation(Vehicle *v)
 	rs->SetEntranceBusy(false);
 
 	/* Free the parking bay */
-	rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY));
+	rs->FreeBay(HasBit(v->u.road.state, RVS_USING_SECOND_BAY));
 }
 
 static void DeleteLastRoadVeh(Vehicle *v)
@@ -1274,7 +1274,7 @@ do_it:;
 		uint best_maxlen = (uint)-1;
 		uint bitmask = (uint)trackdirs;
 		for (int i = 0; bitmask != 0; bitmask >>= 1, i++) {
-			if (HASBIT(bitmask, 0)) {
+			if (HasBit(bitmask, 0)) {
 				if (best_track == INVALID_TRACKDIR) best_track = (Trackdir)i; // in case we don't find the path, just pick a track
 				frd.maxtracklen = (uint)-1;
 				frd.mindist = (uint)-1;
@@ -1291,7 +1291,7 @@ do_it:;
 
 found_best_track:;
 
-	if (HASBIT(signal, best_track)) return INVALID_TRACKDIR;
+	if (HasBit(signal, best_track)) return INVALID_TRACKDIR;
 
 	return best_track;
 }
@@ -1416,7 +1416,7 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 
 		if (diag_dir == INVALID_DIAGDIR) return INVALID_TRACKDIR;
 		dir = DiagdirToDiagTrackdir(diag_dir);
-	} else if (HASBIT(prev_state, RVS_IN_DT_ROAD_STOP)) {
+	} else if (HasBit(prev_state, RVS_IN_DT_ROAD_STOP)) {
 		dir = (Trackdir)(prev_state & RVSB_ROAD_STOP_TRACKDIR_MASK);
 	} else if (prev_state < TRACKDIR_END) {
 		if (already_reversed && prev->tile != tile) {
@@ -1519,7 +1519,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 			return false;
 		}
 
-		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && HASBIT(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			/* Vehicle has just entered a bridge or tunnel */
 			v->cur_image = v->GetImage(v->direction);
 			v->UpdateDeltaXY(v->direction);
@@ -1538,7 +1538,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 	 * For a drive-through road stop use 'straight road' move data.
 	 * In this case v->u.road.state is masked to give the road stop entry direction. */
 	rd = _road_drive_data[v->u.road.roadtype][(
-		(HASBIT(v->u.road.state, RVS_IN_DT_ROAD_STOP) ? v->u.road.state & RVSB_ROAD_STOP_TRACKDIR_MASK : v->u.road.state) +
+		(HasBit(v->u.road.state, RVS_IN_DT_ROAD_STOP) ? v->u.road.state & RVSB_ROAD_STOP_TRACKDIR_MASK : v->u.road.state) +
 		(_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
 	if (rd.x & RDE_NEXT_TILE) {
@@ -1633,7 +1633,7 @@ again:
 		}
 
 		r = VehicleEnterTile(v, tile, x, y);
-		if (HASBIT(r, VETS_CANNOT_ENTER)) {
+		if (HasBit(r, VETS_CANNOT_ENTER)) {
 			if (!IsTileType(tile, MP_TUNNELBRIDGE)) {
 				v->cur_speed = 0;
 				return false;
@@ -1655,15 +1655,15 @@ again:
 
 				/* Vehicle is leaving a road stop tile, mark bay as free
 				 * For drive-through stops, only do it if the vehicle stopped here */
-				if (IsStandardRoadStopTile(v->tile) || HASBIT(v->u.road.state, RVS_IS_STOPPING)) {
-					rs->FreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY));
+				if (IsStandardRoadStopTile(v->tile) || HasBit(v->u.road.state, RVS_IS_STOPPING)) {
+					rs->FreeBay(HasBit(v->u.road.state, RVS_USING_SECOND_BAY));
 					CLRBIT(v->u.road.state, RVS_IS_STOPPING);
 				}
 				if (IsStandardRoadStopTile(v->tile)) rs->SetEntranceBusy(false);
 			}
 		}
 
-		if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) {
+		if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
 			v->tile = tile;
 			v->u.road.state = (byte)dir;
 			v->u.road.frame = start_frame;
@@ -1730,7 +1730,7 @@ again:
 		if (IsRoadVehFront(v) && RoadVehFindCloseTo(v, x, y, newdir) != NULL) return false;
 
 		r = VehicleEnterTile(v, v->tile, x, y);
-		if (HASBIT(r, VETS_CANNOT_ENTER)) {
+		if (HasBit(r, VETS_CANNOT_ENTER)) {
 			v->cur_speed = 0;
 			return false;
 		}
@@ -1826,7 +1826,7 @@ again:
 				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type)) {
 					RoadStop *rs_n = GetRoadStopByTile(next_tile, type);
 
-					if (rs_n->IsFreeBay(HASBIT(v->u.road.state, RVS_USING_SECOND_BAY))) {
+					if (rs_n->IsFreeBay(HasBit(v->u.road.state, RVS_USING_SECOND_BAY))) {
 						/* Bay in next stop along is free - use it */
 						ClearSlot(v);
 						rs_n->num_vehicles++;
@@ -1897,14 +1897,14 @@ again:
 	/* Check tile position conditions - i.e. stop position in depot,
 	 * entry onto bridge or into tunnel */
 	r = VehicleEnterTile(v, v->tile, x, y);
-	if (HASBIT(r, VETS_CANNOT_ENTER)) {
+	if (HasBit(r, VETS_CANNOT_ENTER)) {
 		v->cur_speed = 0;
 		return false;
 	}
 
 	/* Move to next frame unless vehicle arrived at a stop position
 	 * in a depot or entered a tunnel/bridge */
-	if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) v->u.road.frame++;
+	if (!HasBit(r, VETS_ENTERED_WORMHOLE)) v->u.road.frame++;
 
 	v->cur_image = v->GetImage(v->direction);
 	v->UpdateDeltaXY(v->direction);
@@ -2126,7 +2126,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	CommandCost cost;
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
-	bool only_this = HASBIT(p2, 16);
+	bool only_this = HasBit(p2, 16);
 	uint16 capacity = CALLBACK_FAILED;
 	uint total_capacity = 0;
 
@@ -2149,7 +2149,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (v->cargo_cap == 0) continue;
 
-		if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
+		if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 			/* Back up the cargo type */
 			CargoID temp_cid = v->cargo_type;
 			byte temp_subtype = v->cargo_subtype;

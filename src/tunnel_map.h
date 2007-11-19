@@ -20,7 +20,7 @@
 static inline bool IsTunnel(TileIndex t)
 {
 	assert(IsTileType(t, MP_TUNNELBRIDGE));
-	return !HASBIT(_m[t].m5, 7);
+	return !HasBit(_m[t].m5, 7);
 }
 
 
@@ -67,7 +67,7 @@ static inline TransportType GetTunnelTransportType(TileIndex t)
 static inline bool HasTunnelSnowOrDesert(TileIndex t)
 {
 	assert(IsTunnelTile(t));
-	return HASBIT(_m[t].m4, 7);
+	return HasBit(_m[t].m4, 7);
 }
 
 /**

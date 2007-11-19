@@ -31,7 +31,7 @@ IndustryTileOverrideManager _industile_mngr(NEW_INDUSTRYTILEOFFSET, NUM_INDUSTRY
 IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id)
 {
 	if (grf_type == IT_INVALID) return IT_INVALID;
-	if (!HASBIT(grf_type, 7)) return GB(grf_type, 0, 6);
+	if (!HasBit(grf_type, 7)) return GB(grf_type, 0, 6);
 
 	return _industry_mngr.GetID(GB(grf_type, 0, 6), grf_id);
 }
@@ -200,7 +200,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x41:
 		case 0x42: { // waiting cargo, but only if those two callback flags are set
 			uint16 callback = indspec->callback_flags;
-			if (HASBIT(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(callback, CBM_IND_PRODUCTION_256_TICKS)) {
+			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
 				return min(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0xFFFF);
 			} else {
 				return 0;
@@ -480,7 +480,7 @@ bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCa
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
-	if (HASBIT(indspec->callback_flags, CBM_IND_AVAILABLE)) {
+	if (HasBit(indspec->callback_flags, CBM_IND_AVAILABLE)) {
 		uint16 res = GetIndustryCallback(CBID_INDUSTRY_AVAILABLE, 0, creation_type, NULL, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) {
 			return (res == 0);

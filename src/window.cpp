@@ -1908,7 +1908,7 @@ int GetMenuItemIndex(const Window *w, int x, int y)
 		y /= 10;
 
 		if (y < WP(w, const menu_d).item_count &&
-				!HASBIT(WP(w, const menu_d).disabled_items, y)) {
+				!HasBit(WP(w, const menu_d).disabled_items, y)) {
 			return y;
 		}
 	}

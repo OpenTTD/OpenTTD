@@ -722,7 +722,7 @@ static void GenerateBuildRoadVehList(Window *w)
 
 	for (eid = ROAD_ENGINES_INDEX; eid < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; eid++) {
 		if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
-		if (!HASBIT(bv->filter.roadtypes, HASBIT(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
+		if (!HasBit(bv->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
 		EngList_Add(&bv->eng_list, eid);
 
 		if (eid == bv->sel_engine) sel_id = eid;

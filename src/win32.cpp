@@ -951,7 +951,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 #if !defined(WINCE)
 	/* Check if a win9x user started the win32 version */
-	if (HASBIT(GetVersion(), 31)) error("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
+	if (HasBit(GetVersion(), 31)) error("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
 #endif
 
 	/* For UNICODE we need to convert the commandline to char* _AND_

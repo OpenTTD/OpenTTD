@@ -185,7 +185,7 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		}
 
 continue_here:;
-		tpf->the_dir = (Trackdir)(i + (HASBIT(_otherdir_mask[direction], i) ? 8 : 0));
+		tpf->the_dir = (Trackdir)(i + (HasBit(_otherdir_mask[direction], i) ? 8 : 0));
 
 		if (!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, NULL)) {
 			TPFMode2(tpf, tile, _tpf_new_direction[tpf->the_dir]);
@@ -410,16 +410,16 @@ void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection dire
 	tpf.rd.depth = 0;
 	tpf.rd.pft_var6 = 0;
 
-	tpf.var2 = HASBIT(flags, 15) ? 0x43 : 0xFF; // 0x8000
+	tpf.var2 = HasBit(flags, 15) ? 0x43 : 0xFF; // 0x8000
 
-	tpf.disable_tile_hash = HASBIT(flags, 12);  // 0x1000
-	tpf.hasbit_13         = HASBIT(flags, 13);  // 0x2000
+	tpf.disable_tile_hash = HasBit(flags, 12);  // 0x1000
+	tpf.hasbit_13         = HasBit(flags, 13);  // 0x2000
 
 
 	tpf.tracktype = (TransportType)(flags & 0xFF);
 	tpf.sub_type = sub_type;
 
-	if (HASBIT(flags, 11)) {
+	if (HasBit(flags, 11)) {
 		tpf.rd.pft_var6 = 0xFF;
 		tpf.enum_proc(tile, data, INVALID_TRACKDIR, 0, 0);
 		TPFMode2(&tpf, tile, direction);
@@ -746,7 +746,7 @@ start_at:
 						/* We are not driving into the tunnel, or it is an invalid tunnel */
 						continue;
 					}
-					if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
+					if (!HasBit(tpf->railtypes, GetRailType(tile))) {
 						bits = TRACK_BIT_NONE;
 						break;
 					}
@@ -796,7 +796,7 @@ start_at:
 				/* Check that the tile contains exactly one track */
 				if (bits == 0 || KillFirstBit(bits) != 0) break;
 
-				if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
+				if (!HasBit(tpf->railtypes, GetRailType(tile))) {
 					bits = TRACK_BIT_NONE;
 					break;
 				}
@@ -822,7 +822,7 @@ start_at:
 			 * bits, not just reachable ones, to prevent infinite loops. */
 			if (bits == TRACK_BIT_NONE || TracksOverlap(allbits)) break;
 
-			if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
+			if (!HasBit(tpf->railtypes, GetRailType(tile))) {
 				bits = TRACK_BIT_NONE;
 				break;
 			}

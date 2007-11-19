@@ -428,7 +428,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			case 0x15: { // Cargo type
 				uint8 ctype = grf_load_byte(&buf);
 
-				if (ctype < NUM_CARGO && HASBIT(_cargo_mask, ctype)) {
+				if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
 					rvi->cargo_type = ctype;
 				} else {
 					rvi->cargo_type = CT_INVALID;
@@ -547,7 +547,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 			case 0x27: // Miscellaneous flags
 				ei->misc_flags = grf_load_byte(&buf);
-				_loaded_newgrf_features.has_2CC |= HASBIT(ei->misc_flags, EF_USES_2CC);
+				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
 				break;
 
 			case 0x28: // Cargo classes allowed
@@ -615,7 +615,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			case 0x10: { // Cargo type
 				uint8 cargo = grf_load_byte(&buf);
 
-				if (cargo < NUM_CARGO && HASBIT(_cargo_mask, cargo)) {
+				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
 					rvi->cargo_type = cargo;
 				} else {
 					rvi->cargo_type = CT_INVALID;
@@ -666,7 +666,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 			case 0x1C: // Miscellaneous flags
 				ei->misc_flags = grf_load_byte(&buf);
-				_loaded_newgrf_features.has_2CC |= HASBIT(ei->misc_flags, EF_USES_2CC);
+				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
 				break;
 
 			case 0x1D: // Cargo classes allowed
@@ -727,7 +727,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			case 0x0C: { // Cargo type
 				uint8 cargo = grf_load_byte(&buf);
 
-				if (cargo < NUM_CARGO && HASBIT(_cargo_mask, cargo)) {
+				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
 					svi->cargo_type = cargo;
 				} else {
 					svi->cargo_type = CT_INVALID;
@@ -772,7 +772,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 			case 0x17: // Miscellaneous flags
 				ei->misc_flags = grf_load_byte(&buf);
-				_loaded_newgrf_features.has_2CC |= HASBIT(ei->misc_flags, EF_USES_2CC);
+				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
 				break;
 
 			case 0x18: // Cargo classes allowed
@@ -876,7 +876,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 			case 0x17: // Miscellaneous flags
 				ei->misc_flags = grf_load_byte(&buf);
-				_loaded_newgrf_features.has_2CC |= HASBIT(ei->misc_flags, EF_USES_2CC);
+				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
 				break;
 
 			case 0x18: // Cargo classes allowed
@@ -948,7 +948,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					dts->ground_sprite = grf_load_word(&buf);
 					dts->ground_pal = grf_load_word(&buf);
 					if (dts->ground_sprite == 0) continue;
-					if (HASBIT(dts->ground_pal, 15)) {
+					if (HasBit(dts->ground_pal, 15)) {
 						CLRBIT(dts->ground_pal, 15);
 						SETBIT(dts->ground_sprite, SPRITE_MODIFIER_USE_OFFSET);
 					}
@@ -971,16 +971,16 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						dtss->pal = grf_load_word(&buf);
 
 						/* Remap flags as ours collide */
-						if (HASBIT(dtss->pal, 15)) {
+						if (HasBit(dtss->pal, 15)) {
 							CLRBIT(dtss->pal, 15);
 							SETBIT(dtss->image, SPRITE_MODIFIER_USE_OFFSET);
 						}
 
-						if (HASBIT(dtss->image, 15)) {
+						if (HasBit(dtss->image, 15)) {
 							CLRBIT(dtss->image, 15);
 							SETBIT(dtss->image, PALETTE_MODIFIER_COLOR);
 						}
-						if (HASBIT(dtss->image, 14)) {
+						if (HasBit(dtss->image, 14)) {
 							CLRBIT(dtss->image, 14);
 							SETBIT(dtss->image, PALETTE_MODIFIER_TRANSPARENT);
 						}
@@ -1175,7 +1175,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 						SpriteID image = grf_load_word(&buf);
 						SpriteID pal   = grf_load_word(&buf);
 
-						if (HASBIT(pal, 15)) {
+						if (HasBit(pal, 15)) {
 							SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
 						}
 
@@ -2335,7 +2335,7 @@ static void SkipAct1(byte *buf, int len)
  * defined spritegroup. */
 static const SpriteGroup* GetGroupFromGroupID(byte setid, byte type, uint16 groupid)
 {
-	if (HASBIT(groupid, 15)) return NewCallBackResultSpriteGroup(groupid);
+	if (HasBit(groupid, 15)) return NewCallBackResultSpriteGroup(groupid);
 
 	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
 		grfmsg(1, "GetGroupFromGroupID(0x%02X:0x%02X): Groupid 0x%04X does not exist, leaving empty", setid, type, groupid);
@@ -2348,7 +2348,7 @@ static const SpriteGroup* GetGroupFromGroupID(byte setid, byte type, uint16 grou
 /* Helper function to either create a callback or a result sprite group. */
 static const SpriteGroup* CreateGroupFromGroupID(byte feature, byte setid, byte type, uint16 spriteid, uint16 num_sprites)
 {
-	if (HASBIT(spriteid, 15)) return NewCallBackResultSpriteGroup(spriteid);
+	if (HasBit(spriteid, 15)) return NewCallBackResultSpriteGroup(spriteid);
 
 	if (spriteid >= _cur_grffile->spriteset_numsets) {
 		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Sprite set %u invalid, max %u", setid, type, spriteid, _cur_grffile->spriteset_numsets);
@@ -2424,7 +2424,7 @@ static void NewSpriteGroup(byte *buf, int len)
 
 			group = AllocateSpriteGroup();
 			group->type = SGT_DETERMINISTIC;
-			group->g.determ.var_scope = HASBIT(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+			group->g.determ.var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
 			switch (GB(type, 2, 2)) {
 				default: NOT_REACHED();
@@ -2473,7 +2473,7 @@ static void NewSpriteGroup(byte *buf, int len)
 				}
 
 				/* Continue reading var adjusts while bit 5 is set. */
-			} while (HASBIT(varadjust, 5));
+			} while (HasBit(varadjust, 5));
 
 			group->g.determ.num_ranges = grf_load_byte(&buf);
 			if (group->g.determ.num_ranges > 0) group->g.determ.ranges = CallocT<DeterministicSpriteGroupRange>(group->g.determ.num_ranges);
@@ -2498,11 +2498,11 @@ static void NewSpriteGroup(byte *buf, int len)
 
 			group = AllocateSpriteGroup();
 			group->type = SGT_RANDOMIZED;
-			group->g.random.var_scope = HASBIT(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+			group->g.random.var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
 			uint8 triggers = grf_load_byte(&buf);
 			group->g.random.triggers       = GB(triggers, 0, 7);
-			group->g.random.cmp_mode       = HASBIT(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
+			group->g.random.cmp_mode       = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
 			group->g.random.lowest_randbit = grf_load_byte(&buf);
 			group->g.random.num_groups     = grf_load_byte(&buf);
 			group->g.random.groups = CallocT<const SpriteGroup*>(group->g.random.num_groups);
@@ -2582,19 +2582,19 @@ static void NewSpriteGroup(byte *buf, int len)
 					group->g.layout.dts->ground_sprite = grf_load_word(&buf);
 					group->g.layout.dts->ground_pal    = grf_load_word(&buf);
 					/* Remap transparent/colour modifier bits */
-					if (HASBIT(group->g.layout.dts->ground_sprite, 14)) {
+					if (HasBit(group->g.layout.dts->ground_sprite, 14)) {
 						CLRBIT(group->g.layout.dts->ground_sprite, 14);
 						SETBIT(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_TRANSPARENT);
 					}
-					if (HASBIT(group->g.layout.dts->ground_sprite, 15)) {
+					if (HasBit(group->g.layout.dts->ground_sprite, 15)) {
 						CLRBIT(group->g.layout.dts->ground_sprite, 15);
 						SETBIT(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_COLOR);
 					}
-					if (HASBIT(group->g.layout.dts->ground_pal, 14)) {
+					if (HasBit(group->g.layout.dts->ground_pal, 14)) {
 						CLRBIT(group->g.layout.dts->ground_pal, 14);
 						SETBIT(group->g.layout.dts->ground_sprite, SPRITE_MODIFIER_OPAQUE);
 					}
-					if (HASBIT(group->g.layout.dts->ground_pal, 15)) {
+					if (HasBit(group->g.layout.dts->ground_pal, 15)) {
 						/* Bit 31 set means this is a custom sprite, so rewrite it to the
 						 * last spriteset defined. */
 						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->g.layout.dts->ground_sprite, 0, 14) * sprites;
@@ -2612,19 +2612,19 @@ static void NewSpriteGroup(byte *buf, int len)
 						seq->delta_x = grf_load_byte(&buf);
 						seq->delta_y = grf_load_byte(&buf);
 
-						if (HASBIT(seq->image, 14)) {
+						if (HasBit(seq->image, 14)) {
 							CLRBIT(seq->image, 14);
 							SETBIT(seq->image, PALETTE_MODIFIER_TRANSPARENT);
 						}
-						if (HASBIT(seq->image, 15)) {
+						if (HasBit(seq->image, 15)) {
 							CLRBIT(seq->image, 15);
 							SETBIT(seq->image, PALETTE_MODIFIER_COLOR);
 						}
-						if (HASBIT(seq->pal, 14)) {
+						if (HasBit(seq->pal, 14)) {
 							CLRBIT(seq->pal, 14);
 							SETBIT(seq->image, SPRITE_MODIFIER_OPAQUE);
 						}
-						if (HASBIT(seq->pal, 15)) {
+						if (HasBit(seq->pal, 15)) {
 							/* Bit 31 set means this is a custom sprite, so rewrite it to the
 							 * last spriteset defined. */
 							SpriteID sprite = _cur_grffile->spriteset_start + GB(seq->image, 0, 14) * sprites;
@@ -3112,7 +3112,7 @@ static void FeatureNewName(byte *buf, int len)
 	uint8 feature  = grf_load_byte(&buf);
 	uint8 lang     = grf_load_byte(&buf);
 	uint8 num      = grf_load_byte(&buf);
-	bool generic   = HASBIT(lang, 7);
+	bool generic   = HasBit(lang, 7);
 	uint16 id      = generic ? grf_load_word(&buf) : grf_load_byte(&buf);
 
 	CLRBIT(lang, 7);
@@ -3256,7 +3256,7 @@ static void GraphicsNew(byte *buf, int len)
 	uint8 type = grf_load_byte(&buf);
 	uint16 num = grf_load_extended(&buf);
 	uint16 skip_num = 0;
-	uint16 offset = HASBIT(type, 7) ? grf_load_extended(&buf) : 0;
+	uint16 offset = HasBit(type, 7) ? grf_load_extended(&buf) : 0;
 	CLRBIT(type, 7); // Clear the high bit as that only indicates whether there is an offset.
 
 	switch (type) {
@@ -3533,7 +3533,7 @@ static void CfgApply(byte *buf, int len)
 
 		/* Bit 7 of param_size indicates we should add to the original value
 		 * instead of replacing it. */
-		add_value  = HASBIT(param_size, 7);
+		add_value  = HasBit(param_size, 7);
 		param_size = GB(param_size, 0, 7);
 
 		/* Where to apply the data to within the pseudo sprite data. */
@@ -3870,7 +3870,7 @@ static void GRFLoadError(byte *buf, int len)
 
 	/* Skip the error until the activation stage unless bit 7 of the severity
 	 * is set. */
-	if (!HASBIT(severity, 7) && _cur_stage == GLS_INIT) {
+	if (!HasBit(severity, 7) && _cur_stage == GLS_INIT) {
 		grfmsg(7, "GRFLoadError: Skipping non-fatal GRFLoadError in stage %d", _cur_stage);
 		return;
 	}
@@ -4075,7 +4075,7 @@ static void ParamSet(byte *buf, int len)
 	 * - it has been set to any value in the newgrf(w).cfg parameter list
 	 * - it OR A PARAMETER WITH HIGHER NUMBER has been set to any value by
 	 *   an earlier action D */
-	if (HASBIT(oper, 7)) {
+	if (HasBit(oper, 7)) {
 		if (target < 0x80 && target < _cur_grffile->param_end) {
 			grfmsg(7, "ParamSet: Param %u already defined, skipping", target);
 			return;
@@ -4369,7 +4369,7 @@ static void FeatureTownName(byte *buf, int len)
 	len--;
 	grfmsg(6, "FeatureTownName: definition 0x%02X", id & 0x7F);
 
-	if (HASBIT(id, 7)) {
+	if (HasBit(id, 7)) {
 		/* Final definition */
 		CLRBIT(id, 7);
 		bool new_scheme = _cur_grffile->grf_version >= 7;
@@ -4421,7 +4421,7 @@ static void FeatureTownName(byte *buf, int len)
 			byte prob = grf_load_byte(&buf);
 			len--;
 
-			if (HASBIT(prob, 7)) {
+			if (HasBit(prob, 7)) {
 				byte ref_id = grf_load_byte(&buf);
 				len--;
 
@@ -4893,12 +4893,12 @@ static void ResetCustomIndustries()
 
 				if (ind != NULL) {
 					/* We need to remove the sounds array */
-					if (HASBIT(ind->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
+					if (HasBit(ind->cleanup_flag, CLEAN_RANDOMSOUNDS)) {
 						free((void*)ind->random_sounds);
 					}
 
 					/* We need to remove the tiles layouts */
-					if (HASBIT(ind->cleanup_flag, CLEAN_TILELSAYOUT) && ind->table != NULL) {
+					if (HasBit(ind->cleanup_flag, CLEAN_TILELSAYOUT) && ind->table != NULL) {
 						for (int j = 0; j < ind->num_table; j++) {
 							/* remove the individual layouts */
 							if (ind->table[j] != NULL) {
@@ -4952,7 +4952,7 @@ static void ResetNewGRF()
 static void ResetNewGRFErrors()
 {
 	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
-		if (!HASBIT(c->flags, GCF_COPY) && c->error != NULL) {
+		if (!HasBit(c->flags, GCF_COPY) && c->error != NULL) {
 			free(c->error->custom_message);
 			free(c->error->data);
 			free(c->error);
@@ -5176,7 +5176,7 @@ static void CalculateRefitMasks()
 				/* Apply cargo translation table to the refit mask */
 				uint num_cargo = min(32, file->cargo_max);
 				for (uint i = 0; i < num_cargo; i++) {
-					if (!HASBIT(_engine_info[engine].refit_mask, i)) continue;
+					if (!HasBit(_engine_info[engine].refit_mask, i)) continue;
 
 					CargoID c = GetCargoIDByLabel(file->cargo_list[i]);
 					if (c == CT_INVALID) continue;
@@ -5189,7 +5189,7 @@ static void CalculateRefitMasks()
 					const CargoSpec *cs = GetCargo(c);
 					if (!cs->IsValid()) continue;
 
-					if (HASBIT(_engine_info[engine].refit_mask, cs->bitnum)) SETBIT(xor_mask, c);
+					if (HasBit(_engine_info[engine].refit_mask, cs->bitnum)) SETBIT(xor_mask, c);
 				}
 			}
 		}
@@ -5471,7 +5471,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 		_cur_grffile = GetFileByFilename(filename);
 		if (_cur_grffile == NULL) error("File '%s' lost in cache.\n", filename);
 		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
-		if (stage == GLS_ACTIVATION && !HASBIT(config->flags, GCF_RESERVED)) return;
+		if (stage == GLS_ACTIVATION && !HasBit(config->flags, GCF_RESERVED)) return;
 	}
 
 	if (file_index > LAST_GRF_SLOT) {
@@ -5597,7 +5597,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 		_cur_spriteid = load_index;
 		for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
-			if (stage > GLS_INIT && HASBIT(c->flags, GCF_INIT_ONLY)) continue;
+			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
 
 			/* @todo usererror() */
 			if (!FioCheckFileExists(c->filename)) error("NewGRF file is missing '%s'", c->filename);
@@ -5621,5 +5621,5 @@ void LoadNewGRF(uint load_index, uint file_index)
 
 bool HasGrfMiscBit(GrfMiscBit bit)
 {
-	return HASBIT(_misc_grf_features, bit);
+	return HasBit(_misc_grf_features, bit);
 }

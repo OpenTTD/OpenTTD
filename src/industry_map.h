@@ -83,7 +83,7 @@ static inline Industry *GetIndustryByTile(TileIndex t)
 static inline bool IsIndustryCompleted(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
-	return HASBIT(_m[t].m1, 7);
+	return HasBit(_m[t].m1, 7);
 }
 
 IndustryType GetIndustryType(TileIndex tile);

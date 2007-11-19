@@ -1062,7 +1062,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 	Town *t;
 	int left, top, right, bottom;
 
-	if (!HASBIT(_display_opt, DO_SHOW_TOWN_NAMES) || _game_mode == GM_MENU)
+	if (!HasBit(_display_opt, DO_SHOW_TOWN_NAMES) || _game_mode == GM_MENU)
 		return;
 
 	left = dpi->left;
@@ -1138,7 +1138,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 	int left, top, right, bottom;
 	const Station *st;
 
-	if (!HASBIT(_display_opt, DO_SHOW_STATION_NAMES) || _game_mode == GM_MENU)
+	if (!HasBit(_display_opt, DO_SHOW_STATION_NAMES) || _game_mode == GM_MENU)
 		return;
 
 	left = dpi->left;
@@ -1208,7 +1208,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 	const Sign *si;
 	int left, top, right, bottom;
 
-	if (!HASBIT(_display_opt, DO_SHOW_SIGNS))
+	if (!HasBit(_display_opt, DO_SHOW_SIGNS))
 		return;
 
 	left = dpi->left;
@@ -1278,7 +1278,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 	const Waypoint *wp;
 	int left, top, right, bottom;
 
-	if (!HASBIT(_display_opt, DO_WAYPOINTS))
+	if (!HasBit(_display_opt, DO_WAYPOINTS))
 		return;
 
 	left = dpi->left;
@@ -1818,7 +1818,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 {
 	const Town *t;
 
-	if (!HASBIT(_display_opt, DO_SHOW_TOWN_NAMES)) return false;
+	if (!HasBit(_display_opt, DO_SHOW_TOWN_NAMES)) return false;
 
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:
@@ -1876,7 +1876,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 {
 	const Station *st;
 
-	if (!HASBIT(_display_opt, DO_SHOW_STATION_NAMES)) return false;
+	if (!HasBit(_display_opt, DO_SHOW_STATION_NAMES)) return false;
 
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:
@@ -1934,7 +1934,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 {
 	const Sign *si;
 
-	if (!HASBIT(_display_opt, DO_SHOW_SIGNS) || _current_player == PLAYER_SPECTATOR) return false;
+	if (!HasBit(_display_opt, DO_SHOW_SIGNS) || _current_player == PLAYER_SPECTATOR) return false;
 
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:
@@ -1992,7 +1992,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 {
 	const Waypoint *wp;
 
-	if (!HASBIT(_display_opt, DO_WAYPOINTS)) return false;
+	if (!HasBit(_display_opt, DO_WAYPOINTS)) return false;
 
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:

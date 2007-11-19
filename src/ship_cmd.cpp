@@ -672,7 +672,7 @@ static void ShipController(Vehicle *v)
 		} else {
 			/* Not inside depot */
 			r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-			if (HASBIT(r, VETS_CANNOT_ENTER)) goto reverse_direction;
+			if (HasBit(r, VETS_CANNOT_ENTER)) goto reverse_direction;
 
 			/* A leave station order only needs one tick to get processed, so we can
 			 * always skip ahead. */
@@ -742,9 +742,9 @@ static void ShipController(Vehicle *v)
 
 		/* Call the landscape function and tell it that the vehicle entered the tile */
 		r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-		if (HASBIT(r, VETS_CANNOT_ENTER)) goto reverse_direction;
+		if (HasBit(r, VETS_CANNOT_ENTER)) goto reverse_direction;
 
-		if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) {
+		if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
 			v->tile = gp.new_tile;
 			v->u.ship.state = TrackToTrackBits(track);
 		}
@@ -823,7 +823,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	v = new Ship();
-	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_SHIP);
+	unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_SHIP);
 	AutoPtrT<Vehicle> v_auto_delete = v;
 
 	if (v == NULL || unit_num > _patches.max_ships)
@@ -1004,7 +1004,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
-		if (!!(p2 & DEPOT_SERVICE) == HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
@@ -1020,7 +1020,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		if (flags & DC_EXEC) {
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
-			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS))
+			if (HasBit(v->current_order.flags, OFB_PART_OF_ORDERS))
 				v->cur_order_index++;
 
 			v->current_order.type = OT_DUMMY;
@@ -1084,7 +1084,7 @@ CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
 
 	/* Check the refit capacity callback */
-	if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
+	if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 		/* Back up the existing cargo type */
 		CargoID temp_cid = v->cargo_type;
 		byte temp_subtype = v->cargo_subtype;

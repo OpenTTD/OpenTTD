@@ -77,7 +77,7 @@ static inline void SetHouseType(TileIndex t, HouseID house_id)
  */
 static inline bool LiftHasDestination(TileIndex t)
 {
-	return HASBIT(_me[t].m7, 0);
+	return HasBit(_me[t].m7, 0);
 }
 
 /**
@@ -166,7 +166,7 @@ static inline void SetHouseAnimationFrame(TileIndex t, byte frame)
 static inline bool IsHouseCompleted(TileIndex t)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	return HASBIT(_m[t].m3, 7);
+	return HasBit(_m[t].m3, 7);
 }
 
 /**

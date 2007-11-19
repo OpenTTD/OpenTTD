@@ -112,7 +112,7 @@ void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v);
  */
 static inline bool NPFGetFlag(const AyStarNode* node, NPFNodeFlag flag)
 {
-	return HASBIT(node->user_data[NPF_NODE_FLAGS], flag);
+	return HasBit(node->user_data[NPF_NODE_FLAGS], flag);
 }
 
 /**

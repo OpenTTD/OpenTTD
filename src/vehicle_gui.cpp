@@ -205,10 +205,10 @@ static RefitList *BuildRefitList(const Vehicle *v)
 		/* Loop through all cargos in the refit mask */
 		for (CargoID cid = 0; cid < NUM_CARGO && num_lines < max_lines; cid++) {
 			/* Skip cargo type if it's not listed */
-			if (!HASBIT(cmask, cid)) continue;
+			if (!HasBit(cmask, cid)) continue;
 
 			/* Check the vehicle's callback mask for cargo suffixes */
-			if (HASBIT(callbackmask, CBM_VEHICLE_CARGO_SUFFIX)) {
+			if (HasBit(callbackmask, CBM_VEHICLE_CARGO_SUFFIX)) {
 				/* Make a note of the original cargo type. It has to be
 				 * changed to test the cargo & subtype... */
 				CargoID temp_cargo = u->cargo_type;
@@ -504,7 +504,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 
 		/* Add each cargo type to the list */
 		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-			if (!HASBIT(cmask, cid)) continue;
+			if (!HasBit(cmask, cid)) continue;
 
 			if (!first) b = strecpy(b, ", ", lastof(_userstring));
 			first = false;
@@ -1987,7 +1987,7 @@ static void DrawVehicleViewWindow(Window *w)
 					SetDParam(0, depot->town_index);
 					SetDParam(1, v->GetDisplaySpeed());
 				}
-				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
+				if (HasBit(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HasBit(v->current_order.flags, OFB_PART_OF_ORDERS)) {
 					str = _heading_for_depot_strings[v->type] + _patches.vehicle_speed;
 				} else {
 					str = _heading_for_depot_service_strings[v->type] + _patches.vehicle_speed;

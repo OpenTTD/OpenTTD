@@ -131,7 +131,7 @@ static void DrawGraph(const GraphDrawer *gw)
 	highest_value = x_axis_offset * 2;
 
 	for (int i = 0; i < gw->num_dataset; i++) {
-		if (!HASBIT(gw->excluded_data, i)) {
+		if (!HasBit(gw->excluded_data, i)) {
 			for (int j = 0; j < gw->num_on_x_axis; j++) {
 				Money datapoint = gw->cost[i][j];
 
@@ -206,7 +206,7 @@ static void DrawGraph(const GraphDrawer *gw)
 
 	/* draw lines and dots */
 	for (int i = 0; i < gw->num_dataset; i++) {
-		if (!HASBIT(gw->excluded_data, i)) {
+		if (!HasBit(gw->excluded_data, i)) {
 			/* Centre the dot between the grid lines. */
 			x = gw->left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
 
@@ -250,7 +250,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_CREATE:
 			for (uint i = 3; i < w->widget_count; i++) {
-				if (!HASBIT(_legend_excluded_players, i - 3)) LowerWindowWidget(w, i);
+				if (!HasBit(_legend_excluded_players, i - 3)) LowerWindowWidget(w, i);
 			}
 			break;
 
@@ -273,7 +273,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 
 				SetDParam(0, p->index);
 				SetDParam(1, p->index);
-				DrawString(21, 17 + p->index * 12, STR_7021, HASBIT(_legend_excluded_players, p->index) ? TC_BLACK : TC_WHITE);
+				DrawString(21, 17 + p->index * 12, STR_7021, HasBit(_legend_excluded_players, p->index) ? TC_BLACK : TC_WHITE);
 			}
 			break;
 		}
@@ -816,7 +816,7 @@ void ShowCargoPaymentRates()
 		wi->data     = 0;
 		wi->tooltips = STR_7064_TOGGLE_GRAPH_FOR_CARGO;
 
-		if (!HASBIT(_legend_excluded_cargo, i)) LowerWindowWidget(w, i + 3);
+		if (!HasBit(_legend_excluded_cargo, i)) LowerWindowWidget(w, i + 3);
 	}
 
 	SetWindowDirty(w);

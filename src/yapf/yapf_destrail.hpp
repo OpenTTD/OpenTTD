@@ -18,7 +18,7 @@ public:
 
 	bool IsCompatibleRailType(RailType rt)
 	{
-		return HASBIT(m_compatible_railtypes, rt);
+		return HasBit(m_compatible_railtypes, rt);
 	}
 };
 

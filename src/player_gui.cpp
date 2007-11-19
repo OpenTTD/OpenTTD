@@ -171,7 +171,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 			bool stickied = !!(w->flags4 & WF_STICKY);
 			PlayerID player = (PlayerID)w->window_number;
 			DeleteWindow(w);
-			DoShowPlayerFinances(player, !HASBIT(mode, 0), stickied);
+			DoShowPlayerFinances(player, !HasBit(mode, 0), stickied);
 		} break;
 
 		case 6: /* increase loan */
@@ -272,7 +272,7 @@ static void ShowColourDropDownMenu(Window *w, uint32 widget)
 	LiveryScheme scheme;
 
 	/* Disallow other player colours for the primary colour */
-	if (HASBIT(WP(w, livery_d).sel, LS_DEFAULT) && widget == 10) {
+	if (HasBit(WP(w, livery_d).sel, LS_DEFAULT) && widget == 10) {
 		const Player *p;
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active && p->index != _local_player) SETBIT(used_colours, p->player_color);
@@ -281,7 +281,7 @@ static void ShowColourDropDownMenu(Window *w, uint32 widget)
 
 	/* Get the first selected livery to use as the default dropdown item */
 	for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-		if (HASBIT(WP(w, livery_d).sel, scheme)) break;
+		if (HasBit(WP(w, livery_d).sel, scheme)) break;
 	}
 	if (scheme == LS_END) scheme = LS_DEFAULT;
 	livery = &GetPlayer((PlayerID)w->window_number)->livery[scheme];
@@ -313,7 +313,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 
 			if (!(WP(w, livery_d).sel == 0)) {
 				for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-					if (HASBIT(WP(w, livery_d).sel, scheme)) break;
+					if (HasBit(WP(w, livery_d).sel, scheme)) break;
 				}
 				if (scheme == LS_END) scheme = LS_DEFAULT;
 			}
@@ -325,7 +325,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 
 			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				if (livery_class[scheme] == WP(w, livery_d).livery_class) {
-					bool sel = HASBIT(WP(w, livery_d).sel, scheme) != 0;
+					bool sel = HasBit(WP(w, livery_d).sel, scheme) != 0;
 
 					if (scheme != LS_DEFAULT) {
 						DrawSprite(p->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, 2, y);
@@ -417,7 +417,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 			LiveryScheme scheme;
 
 			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-				if (HASBIT(WP(w, livery_d).sel, scheme)) {
+				if (HasBit(WP(w, livery_d).sel, scheme)) {
 					DoCommandP(0, scheme | (e->we.dropdown.button == 10 ? 0 : 256), e->we.dropdown.index, NULL, CMD_SET_PLAYER_COLOR);
 				}
 			}
@@ -490,8 +490,8 @@ void DrawPlayerFace(PlayerFace pf, int color, int x, int y)
 {
 	GenderEthnicity ge = (GenderEthnicity)GetPlayerFaceBits(pf, PFV_GEN_ETHN, GE_WM);
 
-	bool has_moustache   = !HASBIT(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE,   ge) != 0;
-	bool has_tie_earring = !HASBIT(ge, GENDER_FEMALE) || GetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge) != 0;
+	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE,   ge) != 0;
+	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge) != 0;
 	bool has_glasses     = GetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge) != 0;
 	SpriteID pal;
 
@@ -686,7 +686,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 {
 	PlayerFace *pf = &WP(w, facesel_d).face; // pointer to the player face bits
 	GenderEthnicity ge = (GenderEthnicity)GB(*pf, _pf_info[PFV_GEN_ETHN].offset, _pf_info[PFV_GEN_ETHN].length); // get the gender and ethnicity
-	bool is_female = HASBIT(ge, GENDER_FEMALE); // get the gender: 0 == male and 1 == female
+	bool is_female = HasBit(ge, GENDER_FEMALE); // get the gender: 0 == male and 1 == female
 	bool is_moust_male = !is_female && GetPlayerFaceBits(*pf, PFV_HAS_MOUSTACHE, ge) != 0; // is a male face with moustache
 
 	switch (e->event) {
@@ -698,8 +698,8 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 			/* advanced player face selection window */
 			if (WP(w, facesel_d).advanced) {
 				/* lower the non-selected ethnicity button */
-				SetWindowWidgetLoweredState(w, PFW_WIDGET_ETHNICITY_EUR, !HASBIT(ge, ETHNICITY_BLACK));
-				SetWindowWidgetLoweredState(w, PFW_WIDGET_ETHNICITY_AFR,  HASBIT(ge, ETHNICITY_BLACK));
+				SetWindowWidgetLoweredState(w, PFW_WIDGET_ETHNICITY_EUR, !HasBit(ge, ETHNICITY_BLACK));
+				SetWindowWidgetLoweredState(w, PFW_WIDGET_ETHNICITY_AFR,  HasBit(ge, ETHNICITY_BLACK));
 
 
 				/* Disable dynamically the widgets which PlayerFaceVariable has less than 2 options

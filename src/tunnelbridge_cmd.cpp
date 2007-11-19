@@ -118,12 +118,12 @@ static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope tileh)
 	uint32 valid;
 
 	valid = M(SLOPE_FLAT) | (axis == AXIS_X ? M(SLOPE_NE) : M(SLOPE_NW));
-	if (HASBIT(valid, tileh)) return CommandCost();
+	if (HasBit(valid, tileh)) return CommandCost();
 
 	valid =
 		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_N) | M(SLOPE_STEEP_N) |
 		(axis == AXIS_X ? M(SLOPE_E) | M(SLOPE_STEEP_E) : M(SLOPE_W) | M(SLOPE_STEEP_W));
-	if (HASBIT(valid, tileh)) return CommandCost(_price.terraform);
+	if (HasBit(valid, tileh)) return CommandCost(_price.terraform);
 
 	return CMD_ERROR;
 }
@@ -133,12 +133,12 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope tileh)
 	uint32 valid;
 
 	valid = M(SLOPE_FLAT) | (axis == AXIS_X ? M(SLOPE_SW) : M(SLOPE_SE));
-	if (HASBIT(valid, tileh)) return CommandCost();
+	if (HasBit(valid, tileh)) return CommandCost();
 
 	valid =
 		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_S) | M(SLOPE_STEEP_S) |
 		(axis == AXIS_X ? M(SLOPE_W) | M(SLOPE_STEEP_W) : M(SLOPE_E) | M(SLOPE_STEEP_E));
-	if (HASBIT(valid, tileh)) return CommandCost(_price.terraform);
+	if (HasBit(valid, tileh)) return CommandCost(_price.terraform);
 
 	return CMD_ERROR;
 }
@@ -210,7 +210,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	/* type of bridge */
-	if (HASBIT(p2, 15)) {
+	if (HasBit(p2, 15)) {
 		railtype = INVALID_RAILTYPE; // road bridge
 		roadtypes = (RoadTypes)GB(p2, 8, 3);
 		if (!AreValidRoadTypes(roadtypes) || !HasRoadTypesAvail(_current_player, roadtypes)) return CMD_ERROR;
@@ -252,10 +252,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	tileh_end = GetTileSlope(tile_end, &z_end);
 
 	if (IsSteepSlope(tileh_start)) z_start += TILE_HEIGHT;
-	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_start)) z_start += TILE_HEIGHT;
+	if (HasBit(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_start)) z_start += TILE_HEIGHT;
 
 	if (IsSteepSlope(tileh_end)) z_end += TILE_HEIGHT;
-	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_end)) z_end += TILE_HEIGHT;
+	if (HasBit(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_end)) z_end += TILE_HEIGHT;
 
 	if (z_start != z_end) return_cmd_error(STR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
@@ -462,7 +462,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	CommandCost ret;
 
 	_build_tunnel_endtile = 0;
-	if (!HASBIT(p1, 9)) {
+	if (!HasBit(p1, 9)) {
 		if (!ValParamRailtype(p1)) return CMD_ERROR;
 	} else {
 		const RoadTypes rts = (RoadTypes)GB(p1, 0, 3);
@@ -828,7 +828,7 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 {
 	SpriteID image = psid->sprite;
 	if (image != 0) {
-		bool drawfarpillar = !HASBIT(GetBridgeFlags(type), 0);
+		bool drawfarpillar = !HasBit(GetBridgeFlags(type), 0);
 
 		/* "side" specifies the side the pillars stand on.
 		 * The length of the pillars is then set to the height of the bridge over the corners of this edge.
@@ -839,7 +839,7 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 		 *
 		 * I have no clue, why this was done this way.
 		 */
-		bool side = HASBIT(image, 0);
+		bool side = HasBit(image, 0);
 
 		/* "dir" means the edge the pillars stand on */
 		DiagDirection dir = AxisToDiagDir(axis);
@@ -873,8 +873,8 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 
 Foundation GetBridgeFoundation(Slope tileh, Axis axis)
 {
-	if (HASBIT(BRIDGE_NO_FOUNDATION, tileh)) return FOUNDATION_NONE;
-	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) return FlatteningFoundation(tileh);
+	if (HasBit(BRIDGE_NO_FOUNDATION, tileh)) return FOUNDATION_NONE;
+	if (HasBit(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) return FlatteningFoundation(tileh);
 	return InclinedFoundation(axis);
 }
 
@@ -964,7 +964,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			DiagDirection dir = GetTunnelDirection(ti->tile);
 			RoadTypes rts = GetRoadTypes(ti->tile);
 
-			if (HASBIT(rts, ROADTYPE_TRAM)) {
+			if (HasBit(rts, ROADTYPE_TRAM)) {
 				static const SpriteID tunnel_sprites[2][4] = { { 28, 78, 79, 27 }, {  5, 76, 77,  4 } };
 
 				DrawGroundSprite(SPR_TRAMWAY_BASE + tunnel_sprites[rts - ROADTYPES_TRAM][dir], PAL_NONE);
@@ -1036,7 +1036,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		if (GetBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
 			RoadTypes rts = GetRoadTypes(ti->tile);
 
-			if (HASBIT(rts, ROADTYPE_TRAM)) {
+			if (HasBit(rts, ROADTYPE_TRAM)) {
 				uint offset = GetBridgeRampDirection(ti->tile);
 				uint z = ti->z;
 				if (ti->tileh != SLOPE_FLAT) {
@@ -1046,7 +1046,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					offset += 2;
 				}
 				/* DrawBridgeTramBits() calls EndSpriteCombine() and StartSpriteCombine() */
-				DrawBridgeTramBits(ti->x, ti->y, z, offset, HASBIT(rts, ROADTYPE_ROAD));
+				DrawBridgeTramBits(ti->x, ti->y, z, offset, HasBit(rts, ROADTYPE_ROAD));
 			}
 			EndSpriteCombine();
 		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
@@ -1168,9 +1168,9 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	if (GetBridgeTransportType(rampsouth) == TRANSPORT_ROAD) {
 		RoadTypes rts = GetRoadTypes(rampsouth);
 
-		if (HASBIT(rts, ROADTYPE_TRAM)) {
+		if (HasBit(rts, ROADTYPE_TRAM)) {
 			/* DrawBridgeTramBits() calls EndSpriteCombine() and StartSpriteCombine() */
-			DrawBridgeTramBits(x, y, bridge_z, axis ^ 1, HASBIT(rts, ROADTYPE_ROAD));
+			DrawBridgeTramBits(x, y, bridge_z, axis ^ 1, HasBit(rts, ROADTYPE_ROAD));
 		} else {
 			EndSpriteCombine();
 			StartSpriteCombine();
@@ -1234,7 +1234,7 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 		if (5 <= pos && pos <= 10) {
 			uint delta;
 
-			if (HASBIT(BRIDGE_HORZ_RAMP, tileh)) return z + TILE_HEIGHT;
+			if (HasBit(BRIDGE_HORZ_RAMP, tileh)) return z + TILE_HEIGHT;
 
 			switch (dir) {
 				default: NOT_REACHED();

@@ -719,19 +719,19 @@ static void CheckSelectedSize(Window *w, const StationSpec *statspec)
 {
 	if (statspec == NULL || _railstation.dragdrop) return;
 
-	if (HASBIT(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+	if (HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
 		RaiseWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 		_railstation.numtracks = 1;
-		while (HASBIT(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+		while (HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
 			_railstation.numtracks++;
 		}
 		LowerWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 	}
 
-	if (HASBIT(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+	if (HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
 		RaiseWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 		_railstation.platlength = 1;
-		while (HASBIT(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+		while (HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
 			_railstation.platlength++;
 		}
 		LowerWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
@@ -781,8 +781,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_NUM_1, disable);
 				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_LEN_1, disable);
 			} else {
-				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_NUM_1, HASBIT(statspec->disallowed_platforms, bits) || disable);
-				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_LEN_1, HASBIT(statspec->disallowed_lengths,   bits) || disable);
+				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_NUM_1, HasBit(statspec->disallowed_platforms, bits) || disable);
+				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_LEN_1, HasBit(statspec->disallowed_lengths,   bits) || disable);
 			}
 		}
 
@@ -825,7 +825,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 				const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
 
 				if (statspec != NULL && statspec->name != 0) {
-					if (HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) && GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
+					if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
 						GfxFillRect(8, y - 2, 127, y + 10, (1 << PALETTE_MODIFIER_GREYOUT));
 					}
 
@@ -864,10 +864,10 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			_railstation.dragdrop = false;
 
 			const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
-			if (statspec != NULL && HASBIT(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+			if (statspec != NULL && HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
 				/* The previously selected number of platforms in invalid */
 				for (uint i = 0; i < 7; i++) {
-					if (!HASBIT(statspec->disallowed_lengths, i)) {
+					if (!HasBit(statspec->disallowed_lengths, i)) {
 						RaiseWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 						_railstation.platlength = i + 1;
 						break;
@@ -896,10 +896,10 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			_railstation.dragdrop = false;
 
 			const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
-			if (statspec != NULL && HASBIT(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+			if (statspec != NULL && HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
 				/* The previously selected number of tracks in invalid */
 				for (uint i = 0; i < 7; i++) {
-					if (!HASBIT(statspec->disallowed_platforms, i)) {
+					if (!HasBit(statspec->disallowed_platforms, i)) {
 						RaiseWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 						_railstation.numtracks = i + 1;
 						break;
@@ -920,18 +920,18 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 			/* get the first allowed length/number of platforms */
 			const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
-			if (statspec != NULL && HASBIT(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+			if (statspec != NULL && HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
 				for (uint i = 0; i < 7; i++) {
-					if (!HASBIT(statspec->disallowed_lengths, i)) {
+					if (!HasBit(statspec->disallowed_lengths, i)) {
 						RaiseWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 						_railstation.platlength = i + 1;
 						break;
 					}
 				}
 			}
-			if (statspec != NULL && HASBIT(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+			if (statspec != NULL && HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
 				for (uint i = 0; i < 7; i++) {
-					if (!HASBIT(statspec->disallowed_platforms, i)) {
+					if (!HasBit(statspec->disallowed_platforms, i)) {
 						RaiseWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 						_railstation.numtracks = i + 1;
 						break;
@@ -970,7 +970,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			/* Check station availability callback */
 			statspec = GetCustomStationSpec(_railstation.station_class, y);
 			if (statspec != NULL &&
-				HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) &&
+				HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
 				GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) return;
 
 			_railstation.station_type = y;
@@ -1221,7 +1221,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 				DrawWaypointSprite(2 + i * 68, 25, w->hscroll.pos + i, _cur_railtype);
 
 				if (statspec != NULL &&
-						HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) &&
+						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
 						GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
 					GfxFillRect(4 + i * 68, 18, 67 + i * 68, 75, (1 << PALETTE_MODIFIER_GREYOUT));
 				}
@@ -1241,7 +1241,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 				/* Check station availability callback */
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, type);
 				if (statspec != NULL &&
-						HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) &&
+						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
 						GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) return;
 
 				_cur_waypoint_type = type;

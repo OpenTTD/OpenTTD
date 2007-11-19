@@ -140,7 +140,7 @@ static inline void SetTrackBits(TileIndex t, TrackBits b)
  */
 static inline bool HasTrack(TileIndex tile, Track track)
 {
-	return HASBIT(GetTrackBits(tile), track);
+	return HasBit(GetTrackBits(tile), track);
 }
 
 /**
@@ -298,7 +298,7 @@ static inline uint GetSignalStates(TileIndex tile)
  */
 static inline SignalState GetSingleSignalState(TileIndex t, byte signalbit)
 {
-	return (SignalState)HASBIT(GetSignalStates(t), signalbit);
+	return (SignalState)HasBit(GetSignalStates(t), signalbit);
 }
 
 /**
@@ -329,7 +329,7 @@ static inline uint GetPresentSignals(TileIndex tile)
  */
 static inline bool IsSignalPresent(TileIndex t, byte signalbit)
 {
-	return HASBIT(GetPresentSignals(t), signalbit);
+	return HasBit(GetPresentSignals(t), signalbit);
 }
 
 /**

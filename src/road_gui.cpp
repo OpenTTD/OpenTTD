@@ -190,7 +190,7 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 		ResetObjectToPlace();
 		BuildRoadOutsideStation(tile, dir);
 		/* For a drive-through road stop build connecting road for other entrance */
-		if (HASBIT(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir(dir));
+		if (HasBit(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir(dir));
 	}
 }
 

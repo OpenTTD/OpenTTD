@@ -90,7 +90,7 @@ void TrainPowerChanged(Vehicle* v)
 			}
 		}
 
-		if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON) && (wagon_has_power)) {
+		if (HasBit(u->u.rail.flags, VRF_POWEREDWAGON) && (wagon_has_power)) {
 			total_power += RailVehInfo(u->u.rail.first_engine)->pow_wag_power;
 		}
 	}
@@ -125,7 +125,7 @@ static void TrainCargoChanged(Vehicle* v)
 			vweight += GetVehicleProperty(u, 0x16, RailVehInfo(u->engine_type)->weight);
 
 			/* powered wagons have extra weight added */
-			if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON))
+			if (HasBit(u->u.rail.flags, VRF_POWEREDWAGON))
 				vweight += RailVehInfo(u->u.rail.first_engine)->pow_wag_weight;
 		}
 
@@ -197,14 +197,14 @@ void TrainConsistChanged(Vehicle* v)
 
 		if (!IsArticulatedPart(u)) {
 			/* Check powered wagon / visual effect callback */
-			if (HASBIT(EngInfo(u->engine_type)->callbackmask, CBM_TRAIN_WAGON_POWER)) {
+			if (HasBit(EngInfo(u->engine_type)->callbackmask, CBM_TRAIN_WAGON_POWER)) {
 				uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
 
 				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = callback;
 			}
 
 			if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
-				UsesWagonOverride(u) && !HASBIT(u->u.rail.cached_vis_effect, 7)) {
+				UsesWagonOverride(u) && !HasBit(u->u.rail.cached_vis_effect, 7)) {
 				/* wagon is powered */
 				SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
 			} else {
@@ -219,7 +219,7 @@ void TrainConsistChanged(Vehicle* v)
 
 			/* Some electric engines can be allowed to run on normal rail. It happens to all
 			 * existing electric engines when elrails are disabled and then re-enabled */
-			if (HASBIT(u->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL)) {
+			if (HasBit(u->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL)) {
 				u->u.rail.railtype = RAILTYPE_RAIL;
 				u->u.rail.compatible_railtypes |= (1 << RAILTYPE_RAIL);
 			}
@@ -240,7 +240,7 @@ void TrainConsistChanged(Vehicle* v)
 
 		/* check the vehicle length (callback) */
 		uint16 veh_len = CALLBACK_FAILED;
-		if (HASBIT(EngInfo(u->engine_type)->callbackmask, CBM_VEHICLE_LENGTH)) {
+		if (HasBit(EngInfo(u->engine_type)->callbackmask, CBM_VEHICLE_LENGTH)) {
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
@@ -386,9 +386,9 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 
 		if (u->u.rail.track == TRACK_BIT_DEPOT) max_speed = min(max_speed, 61);
 
-		if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
+		if (HasBit(u->u.rail.flags, VRF_GOINGUP)) {
 			incl += u->u.rail.cached_veh_weight * 60; //3% slope, quite a bit actually
-		} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
+		} else if (HasBit(u->u.rail.flags, VRF_GOINGDOWN)) {
 			incl -= u->u.rail.cached_veh_weight * 60;
 		}
 	}
@@ -463,7 +463,7 @@ int Train::GetImage(Direction direction) const
 	int img = this->spritenum;
 	int base;
 
-	if (HASBIT(this->u.rail.flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
+	if (HasBit(this->u.rail.flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
 
 	if (is_custom_sprite(img)) {
 		base = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
@@ -701,7 +701,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 		Vehicle *v = vl[0];
 
-		UnitID unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
+		UnitID unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
 		if (unit_num > _patches.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -774,7 +774,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			UpdateTrainAcceleration(v);
 			UpdateTrainGroupID(v);
 
-			if (!HASBIT(p2, 1)) { // check if the cars should be added to the new vehicle
+			if (!HasBit(p2, 1)) { // check if the cars should be added to the new vehicle
 				NormalizeTrainVehInDepot(v);
 			}
 
@@ -972,7 +972,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	if (IsRearDualheaded(src)) return_cmd_error(STR_REAR_ENGINE_FOLLOW_FRONT_ERROR);
 
 	/* when moving all wagons, we can't have the same src_head and dst_head */
-	if (HASBIT(p2, 0) && src_head == dst_head) return CommandCost();
+	if (HasBit(p2, 0) && src_head == dst_head) return CommandCost();
 
 	{
 		int max_len = _patches.mammoth_trains ? 100 : 9;
@@ -993,7 +993,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 			/* We are moving between rows, so only count the wagons from the source
 			 * row that are being moved. */
-			if (HASBIT(p2, 0)) {
+			if (HasBit(p2, 0)) {
 				const Vehicle *u;
 				for (u = src_head; u != src && u != NULL; u = GetNextVehicle(u))
 					src_len--;
@@ -1049,7 +1049,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			}
 		}
 
-		if (HASBIT(p2, 0)) {
+		if (HasBit(p2, 0)) {
 			/* unlink ALL wagons */
 			if (src != src_head) {
 				Vehicle *v = src_head;
@@ -1343,7 +1343,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 * up on a new line to be added to the newly built loco. Replace it is.
 				 * Totally braindead cause building a new engine adds all loco-less
 				 * engines to its train anyways */
-				if (p2 == 2 && HASBIT(ori_subtype, Train_Front)) {
+				if (p2 == 2 && HasBit(ori_subtype, Train_Front)) {
 					Vehicle *tmp;
 					for (v = first; v != NULL; v = tmp) {
 						tmp = GetNextVehicle(v);
@@ -1464,14 +1464,14 @@ static void SwapTrainFlags(byte *swap_flag1, byte *swap_flag2)
 	CLRBIT(*swap_flag2, VRF_GOINGDOWN);
 
 	/* Reverse the rail-flags (if needed) */
-	if (HASBIT(flag1, VRF_GOINGUP)) {
+	if (HasBit(flag1, VRF_GOINGUP)) {
 		SETBIT(*swap_flag2, VRF_GOINGDOWN);
-	} else if (HASBIT(flag1, VRF_GOINGDOWN)) {
+	} else if (HasBit(flag1, VRF_GOINGDOWN)) {
 		SETBIT(*swap_flag2, VRF_GOINGUP);
 	}
-	if (HASBIT(flag2, VRF_GOINGUP)) {
+	if (HasBit(flag2, VRF_GOINGUP)) {
 		SETBIT(*swap_flag1, VRF_GOINGDOWN);
-	} else if (HASBIT(flag2, VRF_GOINGDOWN)) {
+	} else if (HasBit(flag2, VRF_GOINGDOWN)) {
 		SETBIT(*swap_flag1, VRF_GOINGUP);
 	}
 }
@@ -1640,7 +1640,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 	if (p2) {
 		/* turn a single unit around */
 
-		if (IsMultiheaded(v) || HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) {
+		if (IsMultiheaded(v) || HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) {
 			return_cmd_error(STR_ONLY_TURN_SINGLE_UNIT);
 		}
 
@@ -1705,7 +1705,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 {
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
-	bool only_this = HASBIT(p2, 16);
+	bool only_this = HasBit(p2, 16);
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
@@ -1731,7 +1731,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		if (v->cargo_cap != 0) {
 			uint16 amount = CALLBACK_FAILED;
 
-			if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
+			if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 				/* Back up the vehicle's cargo type */
 				CargoID temp_cid = v->cargo_type;
 				byte temp_subtype = v->cargo_subtype;
@@ -1902,7 +1902,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
-		if (!!(p2 & DEPOT_SERVICE) == HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
@@ -1916,7 +1916,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
 		if (flags & DC_EXEC) {
-			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
+			if (HasBit(v->current_order.flags, OFB_PART_OF_ORDERS)) {
 				v->cur_order_index++;
 			}
 
@@ -1974,7 +1974,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 		int effect_offset = GB(v->u.rail.cached_vis_effect, 0, 4) - 8;
 		byte effect_type = GB(v->u.rail.cached_vis_effect, 4, 2);
-		bool disable_effect = HASBIT(v->u.rail.cached_vis_effect, 6);
+		bool disable_effect = HasBit(v->u.rail.cached_vis_effect, 6);
 
 		/* no smoke? */
 		if ((rvi->railveh_type == RAILVEH_WAGON && effect_type == 0) ||
@@ -1999,7 +1999,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 		int x = _vehicle_smoke_pos[v->direction] * effect_offset;
 		int y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
 
-		if (HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
+		if (HasBit(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
 			x = -x;
 			y = -y;
 		}
@@ -2260,7 +2260,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	/* handle "path not found" state */
 	if (path_not_found) {
 		/* PF didn't find the route */
-		if (!HASBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
+		if (!HasBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
 			/* it is first time the problem occurred, set the "path not found" flag */
 			SETBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
 			/* and notify user about the event */
@@ -2275,7 +2275,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		}
 	} else {
 		/* route found, is the train marked with "path not found" flag? */
-		if (HASBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
+		if (HasBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
 			/* clear the flag as the PF's problem was solved */
 			CLRBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
 			/* can we also delete the "News" item somehow? */
@@ -2493,7 +2493,7 @@ static int UpdateTrainSpeed(Vehicle *v)
 {
 	uint accel;
 
-	if (v->vehstatus & VS_STOPPED || HASBIT(v->u.rail.flags, VRF_REVERSING)) {
+	if (v->vehstatus & VS_STOPPED || HasBit(v->u.rail.flags, VRF_REVERSING)) {
 		if (_patches.realistic_acceleration) {
 			accel = GetTrainAcceleration(v, AM_BRAKE) * 2;
 		} else {
@@ -2629,7 +2629,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 	return
 		IsTileOwner(tile, v->owner) && (
 			!IsFrontEngine(v) ||
-			HASBIT(v->u.rail.compatible_railtypes, GetRailType(tile))
+			HasBit(v->u.rail.compatible_railtypes, GetRailType(tile))
 		);
 }
 
@@ -2839,10 +2839,10 @@ static void TrainController(Vehicle *v, bool update_image)
 					if (IsFrontEngine(v) && !TrainCheckIfLineEnds(v)) return;
 
 					uint32 r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-					if (HASBIT(r, VETS_CANNOT_ENTER)) {
+					if (HasBit(r, VETS_CANNOT_ENTER)) {
 						goto invalid_rail;
 					}
-					if (HASBIT(r, VETS_ENTERED_STATION)) {
+					if (HasBit(r, VETS_ENTERED_STATION)) {
 						TrainEnterStation(v, r >> VETS_STATION_ID_OFFSET);
 						return;
 					}
@@ -2942,7 +2942,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				/* Call the landscape function and tell it that the vehicle entered the tile */
 				uint32 r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-				if (HASBIT(r, VETS_CANNOT_ENTER)) {
+				if (HasBit(r, VETS_CANNOT_ENTER)) {
 					goto invalid_rail;
 				}
 
@@ -2953,7 +2953,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				if (IsFrontEngine(v)) v->load_unload_time_rem = 0;
 
-				if (!HASBIT(r, VETS_ENTERED_WORMHOLE)) {
+				if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
 					v->tile = gp.new_tile;
 
 					if (GetTileRailType(gp.new_tile) != GetTileRailType(gp.old_tile)) {
@@ -2979,7 +2979,7 @@ static void TrainController(Vehicle *v, bool update_image)
 					min(v->cur_speed, GetBridge(GetBridgeType(v->tile))->speed);
 			}
 
-			if (!(IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) || !HASBIT(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+			if (!(IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				VehiclePositionChanged(v);
@@ -3283,7 +3283,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		v->breakdown_ctr--;
 	}
 
-	if (HASBIT(v->u.rail.flags, VRF_REVERSING) && v->cur_speed == 0) {
+	if (HasBit(v->u.rail.flags, VRF_REVERSING) && v->cur_speed == 0) {
 		ReverseTrainDirection(v);
 	}
 
@@ -3532,7 +3532,7 @@ void ConvertOldMultiheadToNew()
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN) {
-			if (HASBIT(v->subtype, 7) && ((v->subtype & ~0x80) == 0 || (v->subtype & ~0x80) == 4)) {
+			if (HasBit(v->subtype, 7) && ((v->subtype & ~0x80) == 0 || (v->subtype & ~0x80) == 4)) {
 				Vehicle *u = v;
 
 				BEGIN_ENUM_WAGONS(u) {

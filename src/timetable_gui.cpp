@@ -76,7 +76,7 @@ static void DrawTimetableWindow(Window *w)
 		DisableWindowWidget(w, 9);
 	}
 
-	SetWindowWidgetLoweredState(w, 9, HASBIT(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
+	SetWindowWidgetLoweredState(w, 9, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
 
 	SetDParam(0, v->index);
 	DrawWindowWidgets(w);
@@ -262,7 +262,7 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 					break;
 
 				case 9: /* Autofill the timetable. */
-					DoCommandP(0, v->index, HASBIT(v->vehicle_flags, VF_AUTOFILL_TIMETABLE) ? 0 : 1, NULL, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
+					DoCommandP(0, v->index, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE) ? 0 : 1, NULL, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 					break;
 			}
 

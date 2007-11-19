@@ -645,7 +645,7 @@ static inline void EnableWindowWidget(Window *w, byte widget_index)
 static inline bool IsWindowWidgetDisabled(const Window *w, byte widget_index)
 {
 	assert(widget_index < w->widget_count);
-	return HASBIT(w->widget[widget_index].display_flags, WIDG_DISABLED);
+	return HasBit(w->widget[widget_index].display_flags, WIDG_DISABLED);
 }
 
 /**
@@ -691,7 +691,7 @@ static inline void ShowWindowWidget(Window *w, byte widget_index)
 static inline bool IsWindowWidgetHidden(const Window *w, byte widget_index)
 {
 	assert(widget_index < w->widget_count);
-	return HASBIT(w->widget[widget_index].display_flags, WIDG_HIDDEN);
+	return HasBit(w->widget[widget_index].display_flags, WIDG_HIDDEN);
 }
 
 /**
@@ -746,7 +746,7 @@ static inline void RaiseWindowWidget(Window *w, byte widget_index)
 static inline bool IsWindowWidgetLowered(const Window *w, byte widget_index)
 {
 	assert(widget_index < w->widget_count);
-	return HASBIT(w->widget[widget_index].display_flags, WIDG_LOWERED);
+	return HasBit(w->widget[widget_index].display_flags, WIDG_LOWERED);
 }
 
 void InitWindowSystem();

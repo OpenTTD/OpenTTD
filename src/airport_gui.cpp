@@ -160,8 +160,8 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		avail_airports = GetValidAirports();
 
 		RaiseWindowWidget(w, _selected_airport_type + 7);
-		if (!HASBIT(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
-		if (!HASBIT(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
+		if (!HasBit(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
+		if (!HasBit(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
 		LowerWindowWidget(w, _selected_airport_type + 7);
 
 		/* 'Country Airport' starts at widget 7, and if its bit is set, it is
@@ -170,7 +170,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		 * XXX TODO : all airports should be held in arrays, with all relevant data.
 		 * This should be part of newgrf-airports, i suppose
 		 */
-		for (i = 0; i < 9; i++) SetWindowWidgetDisabledState(w, i + 7, !HASBIT(avail_airports, i));
+		for (i = 0; i < 9; i++) SetWindowWidgetDisabledState(w, i + 7, !HasBit(avail_airports, i));
 
 		// select default the coverage area to 'Off' (16)
 		airport = GetAirport(_selected_airport_type);

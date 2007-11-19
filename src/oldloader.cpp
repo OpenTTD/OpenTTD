@@ -605,7 +605,7 @@ static bool LoadOldGood(LoadgameState *ls, int num)
 	bool ret = LoadChunk(ls, ge, goods_chunk);
 	if (!ret) return false;
 
-	SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HASBIT(_waiting_acceptance, 15));
+	SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HasBit(_waiting_acceptance, 15));
 	SB(ge->acceptance_pickup, GoodsEntry::PICKUP, 1, _cargo_source != 0xFF);
 	if (GB(_waiting_acceptance, 0, 12) != 0) {
 		CargoPacket *cp = new CargoPacket();

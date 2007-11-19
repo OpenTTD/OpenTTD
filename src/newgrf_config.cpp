@@ -76,7 +76,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 		LoadNewGRFFile(config, 62, GLS_SAFETYSCAN);
 
 		/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
-		if (HASBIT(config->flags, GCF_UNSAFE)) return false;
+		if (HasBit(config->flags, GCF_UNSAFE)) return false;
 	}
 
 	return CalcGRFMD5Sum(config);
@@ -86,7 +86,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 void ClearGRFConfig(GRFConfig **config)
 {
 	/* GCF_COPY as in NOT strdupped/alloced the filename, name and info */
-	if (!HASBIT((*config)->flags, GCF_COPY)) {
+	if (!HasBit((*config)->flags, GCF_COPY)) {
 		free((*config)->filename);
 		free((*config)->name);
 		free((*config)->info);
@@ -255,7 +255,7 @@ compatible_grf:
 			 * in any case and set the name and info when it is not set already.
 			 * When the GCF_COPY flag is set, it is certain that the filename is
 			 * already a local one, so there is no need to replace it. */
-			if (!HASBIT(c->flags, GCF_COPY)) {
+			if (!HasBit(c->flags, GCF_COPY)) {
 				free(c->filename);
 				c->filename = strdup(f->filename);
 				memcpy(c->md5sum, f->md5sum, sizeof(c->md5sum));
@@ -550,7 +550,7 @@ static void Save_NGRF()
 	int index = 0;
 
 	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
-		if (HASBIT(c->flags, GCF_STATIC)) continue;
+		if (HasBit(c->flags, GCF_STATIC)) continue;
 		SlSetArrayIndex(index++);
 		SlObject(c, _grfconfig_desc);
 	}

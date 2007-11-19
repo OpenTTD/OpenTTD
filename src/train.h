@@ -32,7 +32,7 @@ enum TrainSubtype {
 static inline bool IsFrontEngine(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HASBIT(v->subtype, Train_Front);
+	return HasBit(v->subtype, Train_Front);
 }
 
 /** Set front engine state
@@ -60,7 +60,7 @@ static inline void ClearFrontEngine(Vehicle *v)
 static inline bool IsArticulatedPart(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HASBIT(v->subtype, Train_Articulated_Part);
+	return HasBit(v->subtype, Train_Articulated_Part);
 }
 
 /** Set a vehicle to be an articulated part
@@ -88,7 +88,7 @@ static inline void ClearArticulatedPart(Vehicle *v)
 static inline bool IsTrainWagon(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HASBIT(v->subtype, Train_Wagon);
+	return HasBit(v->subtype, Train_Wagon);
 }
 
 /** Set a vehicle to be a wagon
@@ -116,7 +116,7 @@ static inline void ClearTrainWagon(Vehicle *v)
 static inline bool IsTrainEngine(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HASBIT(v->subtype, Train_Engine);
+	return HasBit(v->subtype, Train_Engine);
 }
 
 /** Set engine status
@@ -144,7 +144,7 @@ static inline void ClearTrainEngine(Vehicle *v)
 static inline bool IsFreeWagon(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HASBIT(v->subtype, Train_Free_Wagon);
+	return HasBit(v->subtype, Train_Free_Wagon);
 }
 
 /** Set if a vehicle is a free wagon
@@ -172,7 +172,7 @@ static inline void ClearFreeWagon(Vehicle *v)
 static inline bool IsMultiheaded(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HASBIT(v->subtype, Train_Multiheaded);
+	return HasBit(v->subtype, Train_Multiheaded);
 }
 
 /** Set if a vehicle is a multiheaded engine

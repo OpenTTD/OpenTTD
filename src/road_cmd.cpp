@@ -139,7 +139,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	RoadBits pieces = Extract<RoadBits, 0>(p1);
 	RoadTypes rts = GetRoadTypes(tile);
 	/* The tile doesn't have the given road type */
-	if (!HASBIT(rts, rt)) return CMD_ERROR;
+	if (!HasBit(rts, rt)) return CMD_ERROR;
 
 	if (!CheckAllowRemoveRoad(tile, pieces, &edge_road, rt)) return CMD_ERROR;
 
@@ -231,7 +231,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Don't allow road to be removed from the crossing when there is tram;
 			 * we can't draw the crossing without trambits ;) */
-			if (rt == ROADTYPE_ROAD && HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM) && ((flags & DC_EXEC) || !HASBIT(p1, 6))) return CMD_ERROR;
+			if (rt == ROADTYPE_ROAD && HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) && ((flags & DC_EXEC) || !HasBit(p1, 6))) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
 				if (rt == ROADTYPE_ROAD) {
@@ -419,7 +419,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 					all_bits = GetAllRoadBits(tile);
-					if (!HASBIT(GetRoadTypes(tile), rt)) break;
+					if (!HasBit(GetRoadTypes(tile), rt)) break;
 
 					existing = GetRoadBits(tile, rt);
 					RoadBits merged = existing | pieces;
@@ -445,7 +445,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				} break;
 
 				case ROAD_TILE_CROSSING:
-					if (HASBIT(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+					if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 					all_bits = GetCrossingRoadBits(tile);
 					if (pieces & ComplementRoadBits(all_bits)) goto do_clear;
 					break;
@@ -464,7 +464,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			/* Level crossings may only be built on these slopes */
-			if (!HASBIT(VALID_LEVEL_CROSSING_SLOPES, tileh)) {
+			if (!HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh)) {
 				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 			}
 
@@ -496,7 +496,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		case MP_STATION:
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
-			if (HASBIT(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 			/* Don't allow "upgrading" the roadstop when vehicles are already driving on it */
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
@@ -504,7 +504,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MP_TUNNELBRIDGE:
 			if ((IsTunnel(tile) && GetTunnelTransportType(tile) != TRANSPORT_ROAD) ||
 					(IsBridge(tile) && GetBridgeTransportType(tile) != TRANSPORT_ROAD)) return CMD_ERROR;
-			if (HASBIT(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 			/* Don't allow "upgrading" the bridge/tunnel when vehicles are already driving on it */
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
@@ -639,11 +639,11 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 	if (!IsValidRoadType(rt) || !ValParamRoadType(rt)) return CMD_ERROR;
 
 	/* Only drag in X or Y direction dictated by the direction variable */
-	if (!HASBIT(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
-	if (HASBIT(p2, 2)  && TileX(start_tile) != TileX(end_tile)) return CMD_ERROR; // y-axis
+	if (!HasBit(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
+	if (HasBit(p2, 2)  && TileX(start_tile) != TileX(end_tile)) return CMD_ERROR; // y-axis
 
 	/* Swap start and ending tile, also the half-tile drag var (bit 0 and 1) */
-	if (start_tile > end_tile || (start_tile == end_tile && HASBIT(p2, 0))) {
+	if (start_tile > end_tile || (start_tile == end_tile && HasBit(p2, 0))) {
 		TileIndex t = start_tile;
 		start_tile = end_tile;
 		end_tile = t;
@@ -654,17 +654,17 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 	/* On the X-axis, we have to swap the initial bits, so they
 	 * will be interpreted correctly in the GTTS. Futhermore
 	 * when you just 'click' on one tile to build them. */
-	if (HASBIT(p2, 2) == (start_tile == end_tile && HASBIT(p2, 0) == HASBIT(p2, 1))) drd ^= DRD_BOTH;
+	if (HasBit(p2, 2) == (start_tile == end_tile && HasBit(p2, 0) == HasBit(p2, 1))) drd ^= DRD_BOTH;
 	/* No disallowed direction bits have to be toggled */
-	if (!HASBIT(p2, 5)) drd = DRD_NONE;
+	if (!HasBit(p2, 5)) drd = DRD_NONE;
 
 	tile = start_tile;
 	/* Start tile is the small number. */
 	for (;;) {
-		RoadBits bits = HASBIT(p2, 2) ? ROAD_Y : ROAD_X;
+		RoadBits bits = HasBit(p2, 2) ? ROAD_Y : ROAD_X;
 
-		if (tile == end_tile && !HASBIT(p2, 1)) bits &= ROAD_NW | ROAD_NE;
-		if (tile == start_tile && HASBIT(p2, 0)) bits &= ROAD_SE | ROAD_SW;
+		if (tile == end_tile && !HasBit(p2, 1)) bits &= ROAD_NW | ROAD_NE;
+		if (tile == start_tile && HasBit(p2, 0)) bits &= ROAD_SE | ROAD_SW;
 
 		ret = DoCommand(tile, drd << 6 | rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
 		if (CmdFailed(ret)) {
@@ -692,7 +692,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 
 		if (tile == end_tile) break;
 
-		tile += HASBIT(p2, 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+		tile += HasBit(p2, 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	}
 
 	return !had_success ? CMD_ERROR : cost;
@@ -722,11 +722,11 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
 	/* Only drag in X or Y direction dictated by the direction variable */
-	if (!HASBIT(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
-	if (HASBIT(p2, 2)  && TileX(start_tile) != TileX(end_tile)) return CMD_ERROR; // y-axis
+	if (!HasBit(p2, 2) && TileY(start_tile) != TileY(end_tile)) return CMD_ERROR; // x-axis
+	if (HasBit(p2, 2)  && TileX(start_tile) != TileX(end_tile)) return CMD_ERROR; // y-axis
 
 	/* Swap start and ending tile, also the half-tile drag var (bit 0 and 1) */
-	if (start_tile > end_tile || (start_tile == end_tile && HASBIT(p2, 0))) {
+	if (start_tile > end_tile || (start_tile == end_tile && HasBit(p2, 0))) {
 		TileIndex t = start_tile;
 		start_tile = end_tile;
 		end_tile = t;
@@ -737,10 +737,10 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 	tile = start_tile;
 	/* Start tile is the small number. */
 	for (;;) {
-		RoadBits bits = HASBIT(p2, 2) ? ROAD_Y : ROAD_X;
+		RoadBits bits = HasBit(p2, 2) ? ROAD_Y : ROAD_X;
 
-		if (tile == end_tile && !HASBIT(p2, 1)) bits &= ROAD_NW | ROAD_NE;
-		if (tile == start_tile && HASBIT(p2, 0)) bits &= ROAD_SE | ROAD_SW;
+		if (tile == end_tile && !HasBit(p2, 1)) bits &= ROAD_NW | ROAD_NE;
+		if (tile == start_tile && HasBit(p2, 0)) bits &= ROAD_SE | ROAD_SW;
 
 		/* try to remove the halves. */
 		if (bits != 0) {
@@ -760,7 +760,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 
 		if (tile == end_tile) break;
 
-		tile += HASBIT(p2, 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+		tile += HasBit(p2, 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
 	}
 
 	return (cost.GetCost() == 0) ? CMD_ERROR : cost;
@@ -846,7 +846,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 				RoadTypes rts = GetRoadTypes(tile);
 				CommandCost ret;
 				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
-					if (HASBIT(rts, rt)) {
+					if (HasBit(rts, rt)) {
 						CommandCost tmp_ret = DoCommand(tile, rt << 4 | GetRoadBits(tile, rt), 0, flags, CMD_REMOVE_ROAD);
 						if (CmdFailed(tmp_ret)) return tmp_ret;
 						ret.AddCost(tmp_ret);
@@ -866,7 +866,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 			/* Must iterate over the roadtypes in a reverse manner because
 			 * tram tracks must be removed before the road bits. */
 			for (RoadType rt = ROADTYPE_HWAY; rt >= ROADTYPE_ROAD; rt--) {
-				if (HASBIT(rts, rt)) {
+				if (HasBit(rts, rt)) {
 					CommandCost tmp_ret = DoCommand(tile, 1 << 6 | rt << 4 | GetCrossingRoadBits(tile), 0, flags, CMD_REMOVE_ROAD);
 					if (CmdFailed(tmp_ret)) return tmp_ret;
 					ret.AddCost(tmp_ret);
@@ -1053,7 +1053,7 @@ static void DrawRoadBits(TileInfo* ti)
 	if (tram != ROAD_NONE) DrawTramCatenary(ti, tram);
 
 	/* Return if full detail is disabled, or we are zoomed fully out. */
-	if (!HASBIT(_display_opt, DO_FULL_DETAIL) || _cur_dpi->zoom > ZOOM_LVL_DETAIL) return;
+	if (!HasBit(_display_opt, DO_FULL_DETAIL) || _cur_dpi->zoom > ZOOM_LVL_DETAIL) return;
 
 	/* Draw extra details. */
 	for (drts = _road_display_table[roadside][road]; drts->image != 0; drts++) {
@@ -1091,7 +1091,7 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(image, pal);
-			if (HASBIT(GetRoadTypes(ti->tile), ROADTYPE_TRAM)) {
+			if (HasBit(GetRoadTypes(ti->tile), ROADTYPE_TRAM)) {
 				DrawGroundSprite(SPR_TRAMWAY_OVERLAY + (GetCrossingRoadAxis(ti->tile) ^ 1), pal);
 				DrawTramCatenary(ti, GetCrossingRoadBits(ti->tile));
 			}
@@ -1109,7 +1109,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
-			if (HASBIT(GetRoadTypes(ti->tile), ROADTYPE_TRAM)) {
+			if (HasBit(GetRoadTypes(ti->tile), ROADTYPE_TRAM)) {
 				dts =  &_tram_depot[GetRoadDepotDirection(ti->tile)];
 			} else {
 				dts =  &_road_depot[GetRoadDepotDirection(ti->tile)];
@@ -1121,7 +1121,7 @@ static void DrawTile_Road(TileInfo *ti)
 				SpriteID image = dtss->image;
 				SpriteID pal;
 
-				if (!IsTransparencySet(TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+				if (!IsTransparencySet(TO_BUILDINGS) && HasBit(image, PALETTE_MODIFIER_COLOR)) {
 					pal = palette;
 				} else {
 					pal = PAL_NONE;
@@ -1156,7 +1156,7 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
 		SpriteID image = dtss->image;
 
-		DrawSprite(image, HASBIT(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
+		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
 	}
 }
 
@@ -1417,7 +1417,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	}
 
 	for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
-		if (!HASBIT(GetRoadTypes(tile), rt)) continue;
+		if (!HasBit(GetRoadTypes(tile), rt)) continue;
 
 		if (GetRoadOwner(tile, rt) == old_player) {
 			SetRoadOwner(tile, rt, new_player == PLAYER_SPECTATOR ? OWNER_NONE : new_player);
@@ -1440,7 +1440,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, 
 	if (_patches.build_on_slopes && AutoslopeEnabled()) {
 		switch (GetRoadTileType(tile)) {
 			case ROAD_TILE_CROSSING:
-				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HASBIT(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return _price.terraform;
+				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return _price.terraform;
 				break;
 
 			case ROAD_TILE_DEPOT:

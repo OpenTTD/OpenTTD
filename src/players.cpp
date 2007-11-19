@@ -90,12 +90,12 @@ PlayerFace ConvertFromOldPlayerFace(uint32 face)
 	PlayerFace pf = 0;
 	GenderEthnicity ge = GE_WM;
 
-	if (HASBIT(face, 31)) SetBitT(ge, GENDER_FEMALE);
-	if (HASBIT(face, 27) && (HASBIT(face, 26) == HASBIT(face, 19))) SetBitT(ge, ETHNICITY_BLACK);
+	if (HasBit(face, 31)) SetBitT(ge, GENDER_FEMALE);
+	if (HasBit(face, 27) && (HasBit(face, 26) == HasBit(face, 19))) SetBitT(ge, ETHNICITY_BLACK);
 
 	SetPlayerFaceBits(pf, PFV_GEN_ETHN,    ge, ge);
 	SetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge, GB(face, 28, 3) <= 1);
-	SetPlayerFaceBits(pf, PFV_EYE_COLOUR,  ge, HASBIT(ge, ETHNICITY_BLACK) ? 0 : ClampU(GB(face, 20, 3), 5, 7) - 5);
+	SetPlayerFaceBits(pf, PFV_EYE_COLOUR,  ge, HasBit(ge, ETHNICITY_BLACK) ? 0 : ClampU(GB(face, 20, 3), 5, 7) - 5);
 	SetPlayerFaceBits(pf, PFV_CHIN,        ge, ScalePlayerFaceValue(PFV_CHIN,     ge, GB(face,  4, 2)));
 	SetPlayerFaceBits(pf, PFV_EYEBROWS,    ge, ScalePlayerFaceValue(PFV_EYEBROWS, ge, GB(face,  6, 4)));
 	SetPlayerFaceBits(pf, PFV_HAIR,        ge, ScalePlayerFaceValue(PFV_HAIR,     ge, GB(face, 16, 4)));
@@ -104,14 +104,14 @@ PlayerFace ConvertFromOldPlayerFace(uint32 face)
 	SetPlayerFaceBits(pf, PFV_GLASSES,     ge, GB(face, 28, 1));
 
 	uint lips = GB(face, 10, 4);
-	if (!HASBIT(ge, GENDER_FEMALE) && lips < 4) {
+	if (!HasBit(ge, GENDER_FEMALE) && lips < 4) {
 		SetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE, ge, true);
 		SetPlayerFaceBits(pf, PFV_MOUSTACHE,     ge, max(lips, 1U) - 1);
 	} else {
-		if (!HASBIT(ge, GENDER_FEMALE)) {
+		if (!HasBit(ge, GENDER_FEMALE)) {
 			lips = lips * 15 / 16;
 			lips -= 3;
-			if (HASBIT(ge, ETHNICITY_BLACK) && lips > 8) lips = 0;
+			if (HasBit(ge, ETHNICITY_BLACK) && lips > 8) lips = 0;
 		} else {
 			lips = ScalePlayerFaceValue(PFV_LIPS, ge, lips);
 		}
@@ -127,9 +127,9 @@ PlayerFace ConvertFromOldPlayerFace(uint32 face)
 	}
 
 	uint tie_earring = GB(face, 24, 4);
-	if (!HASBIT(ge, GENDER_FEMALE) || tie_earring < 3) { // Not all females have an earring
-		if (HASBIT(ge, GENDER_FEMALE)) SetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge, true);
-		SetPlayerFaceBits(pf, PFV_TIE_EARRING, ge, HASBIT(ge, GENDER_FEMALE) ? tie_earring : ScalePlayerFaceValue(PFV_TIE_EARRING, ge, tie_earring / 2));
+	if (!HasBit(ge, GENDER_FEMALE) || tie_earring < 3) { // Not all females have an earring
+		if (HasBit(ge, GENDER_FEMALE)) SetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge, true);
+		SetPlayerFaceBits(pf, PFV_TIE_EARRING, ge, HasBit(ge, GENDER_FEMALE) ? tie_earring : ScalePlayerFaceValue(PFV_TIE_EARRING, ge, tie_earring / 2));
 	}
 
 	return pf;
@@ -146,8 +146,8 @@ bool IsValidPlayerFace(PlayerFace pf)
 	if (!ArePlayerFaceBitsValid(pf, PFV_GEN_ETHN, GE_WM)) return false;
 
 	GenderEthnicity ge   = (GenderEthnicity)GetPlayerFaceBits(pf, PFV_GEN_ETHN, GE_WM);
-	bool has_moustache   = !HASBIT(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE,   ge) != 0;
-	bool has_tie_earring = !HASBIT(ge, GENDER_FEMALE) || GetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge) != 0;
+	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE,   ge) != 0;
+	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge) != 0;
 	bool has_glasses     = GetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge) != 0;
 
 	if (!ArePlayerFaceBitsValid(pf, PFV_EYE_COLOUR, ge)) return false;
@@ -197,14 +197,14 @@ static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
 	tmp.AddCost(cost);
 	p->yearly_expenses[0][_yearly_expenses_type] = tmp.GetCost();
 
-	if (HASBIT(1 << EXPENSES_TRAIN_INC    |
+	if (HasBit(1 << EXPENSES_TRAIN_INC    |
 	           1 << EXPENSES_ROADVEH_INC  |
 	           1 << EXPENSES_AIRCRAFT_INC |
 	           1 << EXPENSES_SHIP_INC, _yearly_expenses_type)) {
 		tmp = CommandCost(p->cur_economy.income);
 		tmp.AddCost(-cost.GetCost());
 		p->cur_economy.income = tmp.GetCost();
-	} else if (HASBIT(1 << EXPENSES_TRAIN_RUN    |
+	} else if (HasBit(1 << EXPENSES_TRAIN_RUN    |
 	                  1 << EXPENSES_ROADVEH_RUN  |
 	                  1 << EXPENSES_AIRCRAFT_RUN |
 	                  1 << EXPENSES_SHIP_RUN     |
@@ -597,8 +597,8 @@ byte GetPlayerRailtypes(PlayerID p)
 		const Engine* e = GetEngine(i);
 		const EngineInfo *ei = EngInfo(i);
 
-		if (e->type == VEH_TRAIN && HASBIT(ei->climates, _opt.landscape) &&
-				(HASBIT(e->player_avail, p) || _date >= e->intro_date + 365)) {
+		if (e->type == VEH_TRAIN && HasBit(ei->climates, _opt.landscape) &&
+				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
 			const RailVehicleInfo *rvi = RailVehInfo(i);
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
@@ -620,9 +620,9 @@ byte GetPlayerRoadtypes(PlayerID p)
 		const Engine* e = GetEngine(i);
 		const EngineInfo *ei = EngInfo(i);
 
-		if (e->type == VEH_ROAD && HASBIT(ei->climates, _opt.landscape) &&
-				(HASBIT(e->player_avail, p) || _date >= e->intro_date + 365)) {
-			SETBIT(rt, HASBIT(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		if (e->type == VEH_ROAD && HasBit(ei->climates, _opt.landscape) &&
+				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
+			SETBIT(rt, HasBit(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}
 	}
 
@@ -677,11 +677,11 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	p = GetPlayer(_current_player);
 	switch (GB(p1, 0, 3)) {
 		case 0:
-			if (p->engine_renew == HASBIT(p2, 0))
+			if (p->engine_renew == HasBit(p2, 0))
 				return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->engine_renew = HASBIT(p2, 0);
+				p->engine_renew = HasBit(p2, 0);
 				if (IsLocalPlayer()) {
 					_patches.autorenew = p->engine_renew;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
@@ -735,7 +735,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 					return CMD_ERROR;
 
 				/* make sure that the player can actually buy the new engine */
-				if (!HASBIT(GetEngine(new_engine_type)->player_avail, _current_player))
+				if (!HasBit(GetEngine(new_engine_type)->player_avail, _current_player))
 					return CMD_ERROR;
 
 				cost = AddEngineReplacementForPlayer(p, old_engine_type, new_engine_type, id_g, flags);
@@ -750,7 +750,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 		case 4:
 			if (flags & DC_EXEC) {
-				p->engine_renew = HASBIT(p1, 15);
+				p->engine_renew = HasBit(p1, 15);
 				p->engine_renew_months = (int16)GB(p1, 16, 16);
 				p->engine_renew_money = (uint32)p2;
 
@@ -763,11 +763,11 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			}
 			break;
 		case 5:
-			if (p->renew_keep_length == HASBIT(p2, 0))
+			if (p->renew_keep_length == HasBit(p2, 0))
 				return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->renew_keep_length = HASBIT(p2, 0);
+				p->renew_keep_length = HasBit(p2, 0);
 				if (IsLocalPlayer()) {
 					InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
 				}

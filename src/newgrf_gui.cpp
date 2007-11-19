@@ -94,7 +94,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 	/* Show flags */
 	if (c->status == GCS_NOT_FOUND)        y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w, bottom - y);
 	if (c->status == GCS_DISABLED)         y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w, bottom - y);
-	if (HASBIT(c->flags, GCF_COMPATIBLE)) y += DrawStringMultiLine(x, y, STR_NEWGRF_COMPATIBLE_LOADED, w, bottom - y);
+	if (HasBit(c->flags, GCF_COMPATIBLE)) y += DrawStringMultiLine(x, y, STR_NEWGRF_COMPATIBLE_LOADED, w, bottom - y);
 
 	/* Draw GRF info if it exists */
 	if (c->info != NULL && !StrEmpty(c->info)) {
@@ -360,9 +360,9 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 
 					/* Do not show a "not-failure" colour when it actually failed to load */
 					if (pal != PALETTE_TO_RED) {
-						if (HASBIT(c->flags, GCF_STATIC)) {
+						if (HasBit(c->flags, GCF_STATIC)) {
 							pal = PALETTE_TO_GREY;
-						} else if (HASBIT(c->flags, GCF_COMPATIBLE)) {
+						} else if (HasBit(c->flags, GCF_COMPATIBLE)) {
 							pal = PALETTE_TO_ORANGE;
 						}
 					}

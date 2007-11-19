@@ -137,7 +137,7 @@ static int CDECL StationWaitingSorter(const void *a, const void *b)
 	Money sum1 = 0, sum2 = 0;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		if (!HASBIT(_cargo_filter, j)) continue;
+		if (!HasBit(_cargo_filter, j)) continue;
 		if (!st1->goods[j].cargo.Empty()) sum1 += GetTransportedGoodsIncome(st1->goods[j].cargo.Count(), 20, 50, j);
 		if (!st2->goods[j].cargo.Empty()) sum2 += GetTransportedGoodsIncome(st2->goods[j].cargo.Count(), 20, 50, j);
 	}
@@ -161,8 +161,8 @@ static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 	byte maxr2 = 0;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		if (HASBIT(st1->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr1 = max(maxr1, st1->goods[j].rating);
-		if (HASBIT(st2->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr2 = max(maxr2, st2->goods[j].rating);
+		if (HasBit(st1->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr1 = max(maxr1, st1->goods[j].rating);
+		if (HasBit(st2->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr2 = max(maxr2, st2->goods[j].rating);
 	}
 
 	return (_internal_sort_order & 1) ? maxr2 - maxr1 : maxr1 - maxr2;
@@ -231,7 +231,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 				for (CargoID j = 0; j < NUM_CARGO; j++) {
 					if (!st->goods[j].cargo.Empty()) {
 						num_waiting_cargo++; //count number of waiting cargo
-						if (HASBIT(cargo_filter, j)) {
+						if (HasBit(cargo_filter, j)) {
 							station_sort[n++] = st;
 							break;
 						}
@@ -290,7 +290,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			if (_cargo_filter == _cargo_filter_max) _cargo_filter = _cargo_mask;
 
 			for (uint i = 0; i < 5; i++) {
-				if (HASBIT(facilities, i)) LowerWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
+				if (HasBit(facilities, i)) LowerWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
 			}
 			SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
 			SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
@@ -329,7 +329,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				const CargoSpec *cs = GetCargo(c);
 				if (!cs->IsValid()) continue;
 
-				cg_ofst = HASBIT(_cargo_filter, c) ? 2 : 1;
+				cg_ofst = HasBit(_cargo_filter, c) ? 2 : 1;
 				GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, cs->rating_colour);
 				DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, TC_BLACK);
 				x += 14;
@@ -404,7 +404,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 						ToggleWidgetLoweredState(w, e->we.click.widget);
 					} else {
 						for (uint i = 0; facilities != 0; i++, facilities >>= 1) {
-							if (HASBIT(facilities, 0)) RaiseWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
+							if (HasBit(facilities, 0)) RaiseWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
 						}
 						SETBIT(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
 						LowerWindowWidget(w, e->we.click.widget);
@@ -444,7 +444,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				case STATIONLIST_WIDGET_SORTBY: /*flip sorting method asc/desc*/
 					sl->flags ^= SL_ORDER; //DESC-flag
-					station_sort.order = HASBIT(sl->flags, 0);
+					station_sort.order = HasBit(sl->flags, 0);
 					sl->flags |= SL_RESORT;
 					w->flags4 |= 5 << WF_TIMEOUT_SHL;
 					LowerWindowWidget(w, STATIONLIST_WIDGET_SORTBY);
@@ -615,7 +615,7 @@ void ShowPlayerStations(PlayerID player)
 		wi->data     = 0;
 		wi->tooltips = STR_USE_CTRL_TO_SELECT_MORE;
 
-		if (HASBIT(_cargo_filter, c)) LowerWindowWidget(w, STATIONLIST_WIDGET_CARGOSTART + i);
+		if (HasBit(_cargo_filter, c)) LowerWindowWidget(w, STATIONLIST_WIDGET_CARGOSTART + i);
 		i++;
 	}
 
@@ -772,7 +772,7 @@ static void DrawStationViewWindow(Window *w)
 
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (b >= endof(_userstring) - 5 - 1) break;
-			if (HASBIT(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) {
+			if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) {
 				if (first) {
 					first = false;
 				} else {
@@ -798,7 +798,7 @@ static void DrawStationViewWindow(Window *w)
 			if (!cs->IsValid()) continue;
 
 			const GoodsEntry *ge = &st->goods[i];
-			if (!HASBIT(ge->acceptance_pickup, GoodsEntry::PICKUP)) continue;
+			if (!HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) continue;
 
 			SetDParam(0, cs->name);
 			SetDParam(2, ge->rating * 101 >> 8);

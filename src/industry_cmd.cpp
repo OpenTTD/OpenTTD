@@ -68,7 +68,7 @@ void ResetIndustries()
 	/* once performed, enable only the current climate industries */
 	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
 		_industry_specs[i].enabled = i < NEW_INDUSTRYOFFSET &&
-				HASBIT(_origin_industry_specs[i].climate_availability, _opt.landscape);
+				HasBit(_origin_industry_specs[i].climate_availability, _opt.landscape);
 	}
 
 	memset(&_industry_tile_specs, 0, sizeof(_industry_tile_specs));
@@ -290,7 +290,7 @@ static void DrawTile_Industry(TileInfo *ti)
 			GetIndustryConstructionStage(ti->tile))];
 
 	image = dits->ground.sprite;
-	if (HASBIT(image, PALETTE_MODIFIER_COLOR) && dits->ground.pal == PAL_NONE) {
+	if (HasBit(image, PALETTE_MODIFIER_COLOR) && dits->ground.pal == PAL_NONE) {
 		pal = GENERAL_SPRITE_COLOR(ind->random_color);
 	} else {
 		pal = dits->ground.pal;
@@ -305,7 +305,7 @@ static void DrawTile_Industry(TileInfo *ti)
 	image = dits->building.sprite;
 	if (image != 0) {
 		AddSortableSpriteToDraw(image,
-			(HASBIT(image, PALETTE_MODIFIER_COLOR) && dits->building.pal == PAL_NONE) ? GENERAL_SPRITE_COLOR(ind->random_color) : dits->building.pal,
+			(HasBit(image, PALETTE_MODIFIER_COLOR) && dits->building.pal == PAL_NONE) ? GENERAL_SPRITE_COLOR(ind->random_color) : dits->building.pal,
 			ti->x + dits->subtile_x,
 			ti->y + dits->subtile_y,
 			dits->width,
@@ -346,7 +346,7 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 	const CargoID *accepts_cargo = itspec->accepts_cargo;
 	const uint8 *acceptance = itspec->acceptance;
 
-	if (HASBIT(itspec->callback_flags, CBM_INDT_ACCEPT_CARGO)) {
+	if (HasBit(itspec->callback_flags, CBM_INDT_ACCEPT_CARGO)) {
 		uint16 res = GetIndustryTileCallback(CBID_INDTILE_ACCEPT_CARGO, 0, 0, gfx, GetIndustryByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
 			accepts_cargo = raw_accepts_cargo;
@@ -354,7 +354,7 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 		}
 	}
 
-	if (HASBIT(itspec->callback_flags, CBM_INDT_CARGO_ACCEPTANCE)) {
+	if (HasBit(itspec->callback_flags, CBM_INDT_CARGO_ACCEPTANCE)) {
 		uint16 res = GetIndustryTileCallback(CBID_INDTILE_CARGO_ACCEPTANCE, 0, 0, gfx, GetIndustryByTile(tile), tile);
 		if (res != CALLBACK_FAILED) {
 			acceptance = raw_acceptance;
@@ -1000,7 +1000,7 @@ static void ProduceIndustryGoods(Industry *i)
 
 	/* produce some cargo */
 	if ((i->counter & 0xFF) == 0) {
-		if (HASBIT(indsp->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) IndustryProductionCallback(i, 1);
+		if (HasBit(indsp->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) IndustryProductionCallback(i, 1);
 
 		IndustryBehaviour indbehav = indsp->behaviour;
 		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + i->production_rate[0]);
@@ -1008,7 +1008,7 @@ static void ProduceIndustryGoods(Industry *i)
 
 		if ((indbehav & INDUSTRYBEH_PLANT_FIELDS) != 0) {
 			bool plant;
-			if (HASBIT(indsp->callback_flags, CBM_IND_SPECIAL_EFFECT)) {
+			if (HasBit(indsp->callback_flags, CBM_IND_SPECIAL_EFFECT)) {
 				plant = (GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 0, i, i->type, i->xy) != 0);
 			} else {
 				plant = CHANCE16(1, 8);
@@ -1018,7 +1018,7 @@ static void ProduceIndustryGoods(Industry *i)
 		}
 		if ((indbehav & INDUSTRYBEH_CUT_TREES) != 0) {
 			bool cut = ((i->counter & 0x1FF) == 0);
-			if (HASBIT(indsp->callback_flags, CBM_IND_SPECIAL_EFFECT)) {
+			if (HasBit(indsp->callback_flags, CBM_IND_SPECIAL_EFFECT)) {
 				cut = (GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, 0, 1, i, i->type, i->xy) != 0);
 			}
 
@@ -1225,9 +1225,9 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			IndustryBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
 			/* Perform land/water check if not disabled */
-			if (!HASBIT(its->slopes_refused, 5) && (IsWaterTile(cur_tile) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return false;
+			if (!HasBit(its->slopes_refused, 5) && (IsWaterTile(cur_tile) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return false;
 
-			if (HASBIT(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
+			if (HasBit(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
 				custom_shape = true;
 				if (!PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index)) return false;
 			} else {
@@ -1429,7 +1429,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->production_rate[1] = indspec->production_rate[1];
 
 	/* don't use smooth economy for industries using production callbacks */
-	if (_patches.smooth_economy  && !(HASBIT(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HASBIT(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL))) {
+	if (_patches.smooth_economy  && !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL))) {
 		i->production_rate[0] = min((RandomRange(256) + 128) * i->production_rate[0] >> 8 , 255);
 		i->production_rate[1] = min((RandomRange(256) + 128) * i->production_rate[1] >> 8 , 255);
 	}
@@ -1460,12 +1460,12 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->last_month_production[1] = i->production_rate[1] * 8;
 	i->founder = _current_player;
 
-	if (HASBIT(indspec->callback_flags, CBM_IND_DECIDE_COLOUR)) {
+	if (HasBit(indspec->callback_flags, CBM_IND_DECIDE_COLOUR)) {
 		uint16 res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
 		if (res != CALLBACK_FAILED) i->random_color = GB(res, 0, 4);
 	}
 
-	if (HASBIT(indspec->callback_flags, CBM_IND_INPUT_CARGO_TYPES)) {
+	if (HasBit(indspec->callback_flags, CBM_IND_INPUT_CARGO_TYPES)) {
 		for (j = 0; j < lengthof(i->accepts_cargo); j++) i->accepts_cargo[j] = CT_INVALID;
 		for (j = 0; j < lengthof(i->accepts_cargo); j++) {
 			uint16 res = GetIndustryCallback(CBID_INDUSTRY_INPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
@@ -1474,7 +1474,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 		}
 	}
 
-	if (HASBIT(indspec->callback_flags, CBM_IND_OUTPUT_CARGO_TYPES)) {
+	if (HasBit(indspec->callback_flags, CBM_IND_OUTPUT_CARGO_TYPES)) {
 		for (j = 0; j < lengthof(i->produced_cargo); j++) i->produced_cargo[j] = CT_INVALID;
 		for (j = 0; j < lengthof(i->produced_cargo); j++) {
 			uint16 res = GetIndustryCallback(CBID_INDUSTRY_OUTPUT_CARGO_TYPES, j, 0, i, type, INVALID_TILE);
@@ -1548,7 +1548,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 
 	if (!CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, &custom_shape_check)) return NULL;
 
-	if (HASBIT(GetIndustrySpec(type)->callback_flags, CBM_IND_LOCATION)) {
+	if (HasBit(GetIndustrySpec(type)->callback_flags, CBM_IND_LOCATION)) {
 		if (!CheckIfCallBackAllowsCreation(tile, type, itspec_index)) return NULL;
 	} else {
 		if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
@@ -1873,7 +1873,7 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 	/* Check for acceptance of cargo */
 	for (uint j = 0; j < lengthof(ind->accepts_cargo) && ind->accepts_cargo[j] != CT_INVALID; j++) {
 		if (cargo == ind->accepts_cargo[j]) {
-			if (HASBIT(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
+			if (HasBit(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
 				uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO,
 						0, GetReverseCargoTranslation(cargo, indspec->grf_prop.grffile),
 						ind, ind->type, ind->xy);
@@ -1940,13 +1940,13 @@ int WhoCanServiceIndustry(Industry* ind)
 		 */
 		const Order *o;
 		FOR_VEHICLE_ORDERS(v, o) {
-			if (o->type == OT_GOTO_STATION && !HASBIT(o->flags, OFB_TRANSFER)) {
+			if (o->type == OT_GOTO_STATION && !HasBit(o->flags, OFB_TRANSFER)) {
 				/* Vehicle visits a station to load or unload */
 				Station *st = GetStation(o->dest);
 				if (!st->IsValid()) continue;
 
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
-				if (HASBIT(o->flags, OFB_UNLOAD) && !c_accepts) break;
+				if (HasBit(o->flags, OFB_UNLOAD) && !c_accepts) break;
 
 				if (stations.find(st) != stations.end()) {
 					if (v->owner == _local_player) return 2; // Player services industry
@@ -1998,17 +1998,17 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	bool standard = true;
 	bool suppress_message = false;
 	/* don't use smooth economy for industries using production callbacks */
-	bool smooth_economy = _patches.smooth_economy && !(HASBIT(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HASBIT(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL));
+	bool smooth_economy = _patches.smooth_economy && !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL));
 	byte div = 0;
 	byte mul = 0;
 
-	if (HASBIT(indspec->callback_flags, monthly ? CBM_IND_MONTHLYPROD_CHANGE : CBM_IND_PRODUCTION_CHANGE)) {
+	if (HasBit(indspec->callback_flags, monthly ? CBM_IND_MONTHLYPROD_CHANGE : CBM_IND_PRODUCTION_CHANGE)) {
 		uint16 res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->xy);
 		if (res != CALLBACK_FAILED) {
 			standard = false;
-			suppress_message = HASBIT(res, 7);
+			suppress_message = HasBit(res, 7);
 			/* Get the custom message if any */
-			if (HASBIT(res, 8)) str = MapGRFStringID(indspec->grf_prop.grffile->grfid, GB(GetRegister(0x100), 0, 16));
+			if (HasBit(res, 8)) str = MapGRFStringID(indspec->grf_prop.grffile->grfid, GB(GetRegister(0x100), 0, 16));
 			res = GB(res, 0, 4);
 			switch(res) {
 				default: NOT_REACHED();
@@ -2213,7 +2213,7 @@ static CommandCost TerraformTile_Industry(TileIndex tile, uint32 flags, uint z_n
 			const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 
 			/* Call callback 3C 'disable autosloping for industry tiles'. */
-			if (HASBIT(itspec->callback_flags, CBM_INDT_AUTOSLOPE)) {
+			if (HasBit(itspec->callback_flags, CBM_INDT_AUTOSLOPE)) {
 				/* If the callback fails, allow autoslope. */
 				uint16 res = GetIndustryTileCallback(CBID_INDUSTRY_AUTOSLOPE, 0, 0, gfx, GetIndustryByTile(tile), tile);
 				if ((res == 0) || (res == CALLBACK_FAILED)) return _price.terraform;

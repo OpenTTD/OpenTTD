@@ -206,13 +206,13 @@ static inline void BarCrossing(TileIndex t)
 static inline bool IsCrossingBarred(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	return HASBIT(_m[t].m4, 5);
+	return HasBit(_m[t].m4, 5);
 }
 
 #define IsOnDesert IsOnSnow
 static inline bool IsOnSnow(TileIndex t)
 {
-	return HASBIT(_m[t].m3, 7);
+	return HasBit(_m[t].m3, 7);
 }
 
 #define ToggleDesert ToggleSnow
@@ -311,10 +311,10 @@ static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadTypes rot, Tow
 	SetTileOwner(t, road);
 	_m[t].m2 = town;
 	_m[t].m3 = 0;
-	_m[t].m4 = (HASBIT(rot, ROADTYPE_TRAM) ? bits : 0) << 4 | (HASBIT(rot, ROADTYPE_ROAD) ? bits : 0);
+	_m[t].m4 = (HasBit(rot, ROADTYPE_TRAM) ? bits : 0) << 4 | (HasBit(rot, ROADTYPE_ROAD) ? bits : 0);
 	_m[t].m5 = ROAD_TILE_NORMAL << 6;
 	SetRoadOwner(t, ROADTYPE_TRAM, tram);
-	SB(_m[t].m6, 2, 4, HASBIT(rot, ROADTYPE_HWAY) ? bits : 0);
+	SB(_m[t].m6, 2, 4, HasBit(rot, ROADTYPE_HWAY) ? bits : 0);
 	_me[t].m7 = rot << 5 | hway;
 }
 

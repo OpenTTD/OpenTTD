@@ -496,12 +496,12 @@ static int GetDropdownItem(const Window *w)
 		return - 1;
 
 	item = y / 10;
-	if (item >= WP(w,dropdown_d).num_items || (HASBIT(WP(w,dropdown_d).disabled_state, item) && !HASBIT(WP(w,dropdown_d).hidden_state, item)) || WP(w,dropdown_d).items[item] == 0)
+	if (item >= WP(w,dropdown_d).num_items || (HasBit(WP(w,dropdown_d).disabled_state, item) && !HasBit(WP(w,dropdown_d).hidden_state, item)) || WP(w,dropdown_d).items[item] == 0)
 		return - 1;
 
 	/* Skip hidden items -- +1 for each hidden item before the clicked item. */
 	for (counter = 0; item >= counter; ++counter)
-		if (HASBIT(WP(w,dropdown_d).hidden_state, counter)) item++;
+		if (HasBit(WP(w,dropdown_d).hidden_state, counter)) item++;
 
 	return item;
 }
@@ -525,14 +525,14 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 			height = w->widget[0].bottom - 3;
 
 			for (i = 0; WP(w,dropdown_d).items[i] != INVALID_STRING_ID; i++, sel--) {
-				if (HASBIT(WP(w,dropdown_d).hidden_state, i)) continue;
+				if (HasBit(WP(w,dropdown_d).hidden_state, i)) continue;
 
 				if (y >= 0 && y <= height) {
 					if (WP(w,dropdown_d).items[i] != STR_NULL) {
 						if (sel == 0) GfxFillRect(x + 1, y, x + width, y + 9, 0);
 						DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? TC_WHITE : TC_BLACK, x + width);
 
-						if (HASBIT(WP(w,dropdown_d).disabled_state, i)) {
+						if (HasBit(WP(w,dropdown_d).disabled_state, i)) {
 							GfxFillRect(x, y, x + width, y + 9,
 								(1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[_dropdown_menu_widgets[0].color][5]
 							);
@@ -630,7 +630,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 		uint j;
 
 		for (j = 0; strings[j] != INVALID_STRING_ID; j++) {
-			if (HASBIT(hidden_mask, j)) i--;
+			if (HasBit(hidden_mask, j)) i--;
 		}
 	}
 

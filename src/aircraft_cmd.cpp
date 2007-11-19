@@ -291,7 +291,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
-	UnitID unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_AIRCRAFT);
+	UnitID unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_AIRCRAFT);
 	if (unit_num > _patches.max_aircraft)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -364,7 +364,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			v->cargo_type = cargo;
 
-			if (HASBIT(EngInfo(p1)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
+			if (HasBit(EngInfo(p1)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 				callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
 			}
 
@@ -568,7 +568,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner) || v->IsInDepot()) return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT && !(p2 & DEPOT_LOCATE_HANGAR)) {
-		if (!!(p2 & DEPOT_SERVICE) == HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same hangar.
 			 * Note: the if is (true for requesting service == true for ordered to stop in hangar) */
@@ -650,7 +650,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Check the refit capacity callback */
 	uint16 callback = CALLBACK_FAILED;
-	if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
+	if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
 		/* Back up the existing cargo type */
 		CargoID temp_cid = v->cargo_type;
 		byte temp_subtype = v->cargo_subtype;
@@ -1680,7 +1680,7 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 	if (v->owner == _local_player && (
 				EngineHasReplacementForPlayer(p, v->engine_type, v->group_id) ||
 				((p->engine_renew && v->age - v->max_age > p->engine_renew_months * 30) &&
-				HASBIT(GetEngine(v->engine_type)->player_avail, _local_player))
+				HasBit(GetEngine(v->engine_type)->player_avail, _local_player))
 			)) {
 		_current_player = _local_player;
 		DoCommandP(v->tile, v->index, DEPOT_SERVICE | DEPOT_LOCATE_HANGAR, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
@@ -1957,7 +1957,7 @@ static bool FreeTerminal(Vehicle *v, byte i, byte last_terminal)
 {
 	Station *st = GetStation(v->u.air.targetairport);
 	for (; i < last_terminal; i++) {
-		if (!HASBIT(st->airport_flags, _airport_terminal_flag[i])) {
+		if (!HasBit(st->airport_flags, _airport_terminal_flag[i])) {
 			/* TERMINAL# HELIPAD# */
 			v->u.air.state = _airport_terminal_state[i]; // start moving to that terminal/helipad
 			SETBIT(st->airport_flags, _airport_terminal_flag[i]); // occupy terminal/helipad

@@ -218,13 +218,13 @@ static inline void SlWriteUint64(uint64 x)
 static uint SlReadSimpleGamma()
 {
 	uint i = SlReadByte();
-	if (HASBIT(i, 7)) {
+	if (HasBit(i, 7)) {
 		i &= ~0x80;
-		if (HASBIT(i, 6)) {
+		if (HasBit(i, 6)) {
 			i &= ~0x40;
-			if (HASBIT(i, 5)) {
+			if (HasBit(i, 5)) {
 				i &= ~0x20;
-				if (HASBIT(i, 4))
+				if (HasBit(i, 4))
 					SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unsupported gamma");
 				i = (i << 8) | SlReadByte();
 			}

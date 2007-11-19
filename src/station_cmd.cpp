@@ -276,7 +276,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	}
 
 	/* check mine? */
-	if (HASBIT(free_names, M(STR_SV_STNAME_MINES))) {
+	if (HasBit(free_names, M(STR_SV_STNAME_MINES))) {
 		if (CountMapSquareAround(tile, CMSAMine) >= 2) {
 			found = M(STR_SV_STNAME_MINES);
 			goto done;
@@ -286,14 +286,14 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	/* check close enough to town to get central as name? */
 	if (DistanceMax(tile, t->xy) < 8) {
 		found = M(STR_SV_STNAME);
-		if (HASBIT(free_names, M(STR_SV_STNAME))) goto done;
+		if (HasBit(free_names, M(STR_SV_STNAME))) goto done;
 
 		found = M(STR_SV_STNAME_CENTRAL);
-		if (HASBIT(free_names, M(STR_SV_STNAME_CENTRAL))) goto done;
+		if (HasBit(free_names, M(STR_SV_STNAME_CENTRAL))) goto done;
 	}
 
 	/* Check lakeside */
-	if (HASBIT(free_names, M(STR_SV_STNAME_LAKESIDE)) &&
+	if (HasBit(free_names, M(STR_SV_STNAME_LAKESIDE)) &&
 			DistanceFromEdge(tile) < 20 &&
 			CountMapSquareAround(tile, CMSAWater) >= 5) {
 		found = M(STR_SV_STNAME_LAKESIDE);
@@ -301,7 +301,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 	}
 
 	/* Check woods */
-	if (HASBIT(free_names, M(STR_SV_STNAME_WOODS)) && (
+	if (HasBit(free_names, M(STR_SV_STNAME_WOODS)) && (
 				CountMapSquareAround(tile, CMSATree) >= 8 ||
 				CountMapSquareAround(tile, CMSAForest) >= 2)
 			) {
@@ -316,10 +316,10 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 		uint z2 = GetTileZ(t->xy);
 		if (z < z2) {
 			found = M(STR_SV_STNAME_VALLEY);
-			if (HASBIT(free_names, M(STR_SV_STNAME_VALLEY))) goto done;
+			if (HasBit(free_names, M(STR_SV_STNAME_VALLEY))) goto done;
 		} else if (z > z2) {
 			found = M(STR_SV_STNAME_HEIGHTS);
-			if (HASBIT(free_names, M(STR_SV_STNAME_HEIGHTS))) goto done;
+			if (HasBit(free_names, M(STR_SV_STNAME_HEIGHTS))) goto done;
 		}
 	}
 
@@ -415,7 +415,7 @@ static uint GetAcceptanceMask(const Station *st)
 	uint mask = 0;
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (HASBIT(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) mask |= 1 << i;
+		if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) mask |= 1 << i;
 	}
 	return mask;
 }
@@ -642,13 +642,13 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 
 		/* Test each cargo type to see if its acceptange has changed */
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (HASBIT(new_acc, i)) {
-				if (!HASBIT(old_acc, i) && num_acc < lengthof(accepts)) {
+			if (HasBit(new_acc, i)) {
+				if (!HasBit(old_acc, i) && num_acc < lengthof(accepts)) {
 					/* New cargo is accepted */
 					accepts[num_acc++] = i;
 				}
 			} else {
-				if (HASBIT(old_acc, i) && num_rej < lengthof(rejects)) {
+				if (HasBit(old_acc, i) && num_rej < lengthof(rejects)) {
 					/* Old cargo is no longer accepted */
 					rejects[num_rej++] = i;
 				}
@@ -933,7 +933,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 	if (_patches.adjacent_stations) {
 		if (est != INVALID_STATION) {
-			if (HASBIT(p1, 24)) {
+			if (HasBit(p1, 24)) {
 				/* You can't build an adjacent station over the top of one that
 				 * already exists. */
 				return_cmd_error(STR_MUST_REMOVE_RAILWAY_STATION_FIRST);
@@ -946,7 +946,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		} else {
 			/* There's no station here. Don't check the tiles surrounding this
 			 * one if the player wanted to build an adjacent station. */
-			if (HASBIT(p1, 24)) check_surrounding = false;
+			if (HasBit(p1, 24)) check_surrounding = false;
 		}
 	}
 
@@ -1006,12 +1006,12 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		/* Perform NewStation checks */
 
 		/* Check if the station size is permitted */
-		if (HASBIT(statspec->disallowed_platforms, numtracks - 1) || HASBIT(statspec->disallowed_lengths, plat_len - 1)) {
+		if (HasBit(statspec->disallowed_platforms, numtracks - 1) || HasBit(statspec->disallowed_lengths, plat_len - 1)) {
 			return CMD_ERROR;
 		}
 
 		/* Check if the station is buildable */
-		if (HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) && GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
+		if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
 			return CMD_ERROR;
 		}
 	}
@@ -1328,8 +1328,8 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station* st)
  */
 CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	bool type = HASBIT(p2, 0);
-	bool is_drive_through = HASBIT(p2, 1);
+	bool type = HasBit(p2, 0);
+	bool is_drive_through = HasBit(p2, 1);
 	bool build_over_road  = is_drive_through && IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_NORMAL;
 	bool town_owned_road  = build_over_road && IsTileOwner(tile, OWNER_TOWN);
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
@@ -1337,7 +1337,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_player, rts)) return CMD_ERROR;
 
 	/* Trams only have drive through stops */
-	if (!is_drive_through && HASBIT(rts, ROADTYPE_TRAM)) return CMD_ERROR;
+	if (!is_drive_through && HasBit(rts, ROADTYPE_TRAM)) return CMD_ERROR;
 
 	/* Saveguard the parameters */
 	if (!IsValidDiagDirection((DiagDirection)p1)) return CMD_ERROR;
@@ -1361,8 +1361,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 		RoadTypes cur_rts = GetRoadTypes(tile);
-		if (GetRoadOwner(tile, ROADTYPE_ROAD) != OWNER_TOWN && HASBIT(cur_rts, ROADTYPE_ROAD) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_ROAD))) return CMD_ERROR;
-		if (HASBIT(cur_rts, ROADTYPE_TRAM) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_TRAM))) return CMD_ERROR;
+		if (GetRoadOwner(tile, ROADTYPE_ROAD) != OWNER_TOWN && HasBit(cur_rts, ROADTYPE_ROAD) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_ROAD))) return CMD_ERROR;
+		if (HasBit(cur_rts, ROADTYPE_TRAM) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_TRAM))) return CMD_ERROR;
 
 		/* Do not remove roadtypes! */
 		rts |= cur_rts;
@@ -1372,7 +1372,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Station *st = NULL;
 
-	if (!_patches.adjacent_stations || !HASBIT(p2, 5)) {
+	if (!_patches.adjacent_stations || !HasBit(p2, 5)) {
 		st = GetStationAround(tile, 1, 1, INVALID_STATION);
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	}
@@ -1646,7 +1646,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* Check if a valid, buildable airport was chosen for construction */
-	if (p1 > lengthof(_airport_sections) || !HASBIT(GetValidAirports(), p1)) return CMD_ERROR;
+	if (p1 > lengthof(_airport_sections) || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile))
 		return CMD_ERROR;
@@ -1677,7 +1677,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Station *st = NULL;
 
-	if (!_patches.adjacent_stations || !HASBIT(p2, 0)) {
+	if (!_patches.adjacent_stations || !HasBit(p2, 0)) {
 		st = GetStationAround(tile, w, h, INVALID_STATION);
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	}
@@ -1970,7 +1970,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* middle */
 	Station *st = NULL;
 
-	if (!_patches.adjacent_stations || !HASBIT(p1, 0)) {
+	if (!_patches.adjacent_stations || !HasBit(p1, 0)) {
 		st = GetStationAround(
 				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 				_dock_w_chk[direction], _dock_h_chk[direction], INVALID_STATION);
@@ -2109,7 +2109,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 			relocation = GetCustomStationRelocation(statspec, st, ti->tile);
 
-			if (HASBIT(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
+			if (HasBit(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
 				uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
 				if (callback != CALLBACK_FAILED) tile = (callback & ~1) + GetRailStationAxis(ti->tile);
 			}
@@ -2124,7 +2124,7 @@ static void DrawTile_Station(TileInfo *ti)
 	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationType(ti->tile)][GetStationGfx(ti->tile)];
 
 	SpriteID image = t->ground_sprite;
-	if (HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
+	if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 		image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 		image += rti->custom_ground_offset;
 	} else {
@@ -2133,13 +2133,13 @@ static void DrawTile_Station(TileInfo *ti)
 
 	/* station_land array has been increased from 82 elements to 114
 	 * but this is something else. If AI builds station with 114 it looks all weird */
-	DrawGroundSprite(image, HASBIT(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
+	DrawGroundSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
 
 	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
 
-	if (HASBIT(roadtypes, ROADTYPE_TRAM)) {
+	if (HasBit(roadtypes, ROADTYPE_TRAM)) {
 		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;
-		DrawGroundSprite((HASBIT(roadtypes, ROADTYPE_ROAD) ? SPR_TRAMWAY_OVERLAY : SPR_TRAMWAY_TRAM) + (axis ^ 1), PAL_NONE);
+		DrawGroundSprite((HasBit(roadtypes, ROADTYPE_ROAD) ? SPR_TRAMWAY_OVERLAY : SPR_TRAMWAY_TRAM) + (axis ^ 1), PAL_NONE);
 		DrawTramCatenary(ti, axis == AXIS_X ? ROAD_X : ROAD_Y);
 	}
 
@@ -2148,14 +2148,14 @@ static void DrawTile_Station(TileInfo *ti)
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {
 		image = dtss->image;
-		if (relocation == 0 || HASBIT(image, SPRITE_MODIFIER_USE_OFFSET)) {
+		if (relocation == 0 || HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += rti->total_offset;
 		} else {
 			image += relocation;
 		}
 
 		SpriteID pal;
-		if (!IsTransparencySet(TO_BUILDINGS) && HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+		if (!IsTransparencySet(TO_BUILDINGS) && HasBit(image, PALETTE_MODIFIER_COLOR)) {
 			pal = palette;
 		} else {
 			pal = dtss->pal;
@@ -2182,7 +2182,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	const DrawTileSprites *t = &_station_display_datas[st][image];
 
 	SpriteID img = t->ground_sprite;
-	DrawSprite(img + rti->total_offset, HASBIT(img, PALETTE_MODIFIER_COLOR) ? pal : PAL_NONE, x, y);
+	DrawSprite(img + rti->total_offset, HasBit(img, PALETTE_MODIFIER_COLOR) ? pal : PAL_NONE, x, y);
 
 	if (roadtype == ROADTYPE_TRAM) {
 		DrawSprite(SPR_TRAMWAY_TRAM + (t->ground_sprite == SPR_ROAD_PAVED_STRAIGHT_X ? 1 : 0), PAL_NONE, x, y);
@@ -2439,12 +2439,12 @@ static void UpdateStationRating(Station *st)
 		/* Slowly increase the rating back to his original level in the case we
 		 *  didn't deliver cargo yet to this station. This happens when a bribe
 		 *  failed while you didn't moved that cargo yet to a station. */
-		if (!HASBIT(ge->acceptance_pickup, GoodsEntry::PICKUP) && ge->rating < INITIAL_STATION_RATING) {
+		if (!HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP) && ge->rating < INITIAL_STATION_RATING) {
 			ge->rating++;
 		}
 
 		/* Only change the rating if we are moving this cargo */
-		if (HASBIT(ge->acceptance_pickup, GoodsEntry::PICKUP)) {
+		if (HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) {
 			byte_inc_sat(&ge->days_since_pickup);
 
 			int rating = 0;
@@ -2463,7 +2463,7 @@ static void UpdateStationRating(Station *st)
 				(rating += 13, true);
 			}
 
-			if (IsValidPlayer(st->owner) && HASBIT(st->town->statues, st->owner)) rating += 26;
+			if (IsValidPlayer(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
 
 			{
 				byte days = ge->days_since_pickup;
@@ -2893,8 +2893,8 @@ static CommandCost ClearTile_Station(TileIndex tile, byte flags)
 		switch (GetStationType(tile)) {
 			case STATION_RAIL:    return_cmd_error(STR_300B_MUST_DEMOLISH_RAILROAD);
 			case STATION_AIRPORT: return_cmd_error(STR_300E_MUST_DEMOLISH_AIRPORT_FIRST);
-			case STATION_TRUCK:   return_cmd_error(HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION : STR_3047_MUST_DEMOLISH_TRUCK_STATION);
-			case STATION_BUS:     return_cmd_error(HASBIT(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION : STR_3046_MUST_DEMOLISH_BUS_STATION);
+			case STATION_TRUCK:   return_cmd_error(HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION : STR_3047_MUST_DEMOLISH_TRUCK_STATION);
+			case STATION_BUS:     return_cmd_error(HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION : STR_3046_MUST_DEMOLISH_BUS_STATION);
 			case STATION_BUOY:    return_cmd_error(STR_306A_BUOY_IN_THE_WAY);
 			case STATION_DOCK:    return_cmd_error(STR_304D_MUST_DEMOLISH_DOCK_FIRST);
 			case STATION_OILRIG:
@@ -3128,7 +3128,7 @@ void SaveLoad_STNS(Station *st)
 		GoodsEntry *ge = &st->goods[i];
 		SlObject(ge, _goods_desc);
 		if (CheckSavegameVersion(68)) {
-			SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HASBIT(_waiting_acceptance, 15));
+			SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HasBit(_waiting_acceptance, 15));
 			if (GB(_waiting_acceptance, 0, 12) != 0) {
 				/* Don't construct the packet with station here, because that'll fail with old savegames */
 				CargoPacket *cp = new CargoPacket();

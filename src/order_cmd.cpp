@@ -507,7 +507,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* NON-stop flag is misused to see if a train is in a station that is
 			 * on his order list or not */
 			if (sel_ord == u->cur_order_index && u->current_order.type == OT_LOADING &&
-					HASBIT(u->current_order.flags, OFB_NON_STOP)) {
+					HasBit(u->current_order.flags, OFB_NON_STOP)) {
 				u->current_order.flags = 0;
 			}
 
@@ -549,7 +549,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->LeaveStation();
 			/* NON-stop flag is misused to see if a train is in a station that is
 			 * on his order list or not */
-			if (HASBIT(v->current_order.flags, OFB_NON_STOP)) v->current_order.flags = 0;
+			if (HasBit(v->current_order.flags, OFB_NON_STOP)) v->current_order.flags = 0;
 		}
 
 		InvalidateVehicleOrder(v);
@@ -719,7 +719,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 */
 				if (sel_ord == u->cur_order_index &&
 						u->current_order.type != OT_GOTO_DEPOT &&
-						HASBIT(u->current_order.flags, OFB_FULL_LOAD) != HASBIT(order->flags, OFB_FULL_LOAD)) {
+						HasBit(u->current_order.flags, OFB_FULL_LOAD) != HasBit(order->flags, OFB_FULL_LOAD)) {
 					TOGGLEBIT(u->current_order.flags, OFB_FULL_LOAD);
 				}
 				InvalidateVehicleOrder(u);
@@ -902,7 +902,7 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateVehicleOrder(u);
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
-			if (u->cur_order_index == order_number && HASBIT(u->current_order.flags, OFB_PART_OF_ORDERS)) {
+			if (u->cur_order_index == order_number && HasBit(u->current_order.flags, OFB_PART_OF_ORDERS)) {
 				u->current_order.refit_cargo = cargo;
 				u->current_order.refit_subtype = subtype;
 			}

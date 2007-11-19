@@ -54,7 +54,7 @@ static inline bool IsValidRoadType(RoadType rt)
  */
 static inline bool AreValidRoadTypes(RoadTypes rts)
 {
-	return HASBIT(rts, ROADTYPE_ROAD) || HASBIT(rts, ROADTYPE_TRAM);
+	return HasBit(rts, ROADTYPE_ROAD) || HasBit(rts, ROADTYPE_TRAM);
 }
 
 /**

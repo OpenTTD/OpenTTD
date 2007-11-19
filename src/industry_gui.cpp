@@ -214,7 +214,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 
 			/* Get the additional purchase info text, if it has not already been */
 			if (_fund_gui.text[WP(w, fnd_d).index] == STR_NULL) {   // Have i been called already?
-				if (HASBIT(indsp->callback_flags, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
+				if (HasBit(indsp->callback_flags, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
 					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, WP(w, fnd_d).select, INVALID_TILE);
 					if (callback_res != CALLBACK_FAILED) {  // Did it failed?
 						StringID newtxt = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
@@ -406,7 +406,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		bool first = true;
 		bool has_accept = false;
 
-		if (HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
+		if (HasBit(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
 				if (i->accepts_cargo[j] == CT_INVALID) continue;
 				has_accept = true;
@@ -436,7 +436,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			lines++;
 		}
 
-		if (HASBIT(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) lines += 2;
+		if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) lines += 2;
 
 		for (byte j = 5; j <= 7; j++) {
 			if (j != 5) w->widget[j].top += lines * 10;
@@ -455,7 +455,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		SetDParam(0, w->window_number);
 		DrawWindowWidgets(w);
 
-		if (HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HASBIT(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
+		if (HasBit(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
 				if (i->accepts_cargo[j] == CT_INVALID) continue;
 				has_accept = true;
@@ -509,7 +509,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* Get the extra message for the GUI */
-		if (HASBIT(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
+		if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
 			uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->xy);
 			if (callback_res != CALLBACK_FAILED) {
 				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);

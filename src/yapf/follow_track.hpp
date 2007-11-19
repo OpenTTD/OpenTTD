@@ -197,7 +197,7 @@ protected:
 		// rail transport is possible only on compatible rail types
 		if (IsRailTT()) {
 			RailType rail_type = GetTileRailType(m_new_tile);
-			if (!HASBIT(m_veh->u.rail.compatible_railtypes, rail_type)) {
+			if (!HasBit(m_veh->u.rail.compatible_railtypes, rail_type)) {
 				// incompatible rail type
 				m_err = EC_RAIL_TYPE;
 				return false;

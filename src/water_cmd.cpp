@@ -240,7 +240,7 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 	/* Outside of the editor you can only build canals, not oceans */
-	if (HASBIT(p2, 0) && _game_mode != GM_EDITOR) return CMD_ERROR;
+	if (HasBit(p2, 0) && _game_mode != GM_EDITOR) return CMD_ERROR;
 
 	x = TileX(tile);
 	y = TileY(tile);
@@ -265,14 +265,14 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		/* can't make water of water! */
-		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || HASBIT(p2, 0))) continue;
+		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || HasBit(p2, 0))) continue;
 
 		ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
 		cost.AddCost(ret);
 
 		if (flags & DC_EXEC) {
-			if (TileHeight(tile) == 0 && HASBIT(p2, 0)) {
+			if (TileHeight(tile) == 0 && HasBit(p2, 0)) {
 				MakeWater(tile);
 			} else {
 				MakeCanal(tile, _current_player);

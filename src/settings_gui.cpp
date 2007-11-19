@@ -477,9 +477,9 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 		y = GAMEDIFF_WND_TOP_OFFSET;
 		for (i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, HASBIT(click_a, i) ? FR_LOWERED : FR_NONE);
-			DrawFrameRect(15, y, 15 + 8, y + 8, 3, HASBIT(click_b, i) ? FR_LOWERED : FR_NONE);
-			if (HASBIT(disabled, i) || (_networking && !_network_server)) {
+			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, HasBit(click_a, i) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(15, y, 15 + 8, y + 8, 3, HasBit(click_b, i) ? FR_LOWERED : FR_NONE);
+			if (HasBit(disabled, i) || (_networking && !_network_server)) {
 				int color = (1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[COLOUR_YELLOW][2];
 				GfxFillRect( 6, y + 1,  6 + 8, y + 8, color);
 				GfxFillRect(16, y + 1, 16 + 8, y + 8, color);
@@ -526,7 +526,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			/* Clicked disabled button? */
 			dis = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
 
-			if (HASBIT(dis, btn))
+			if (HasBit(dis, btn))
 				return;
 
 			_difficulty_timeout = 5;

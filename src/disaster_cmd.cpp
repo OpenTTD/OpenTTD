@@ -202,7 +202,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	v->tick_counter++;
 
 	if (v->current_order.dest < 2) {
-		if (HASBIT(v->tick_counter, 0)) return;
+		if (HasBit(v->tick_counter, 0)) return;
 
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
@@ -305,7 +305,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 	uint dist;
 	byte z;
 
-	v->u.disaster.image_override = (HASBIT(++v->tick_counter, 3)) ? SPR_UFO_SMALL_SCOUT_DARKER : SPR_UFO_SMALL_SCOUT;
+	v->u.disaster.image_override = (HasBit(++v->tick_counter, 3)) ? SPR_UFO_SMALL_SCOUT_DARKER : SPR_UFO_SMALL_SCOUT;
 
 	if (v->current_order.dest == 0) {
 		/* Fly around randomly */
@@ -400,7 +400,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 {
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.dest == 1 && HASBIT(v->tick_counter, 2)) ? SPR_F_15_FIRING : 0;
+		(v->current_order.dest == 1 && HasBit(v->tick_counter, 2)) ? SPR_F_15_FIRING : 0;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -473,7 +473,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 {
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.dest == 1 && HASBIT(v->tick_counter, 2)) ? SPR_AH_64A_FIRING : 0;
+		(v->current_order.dest == 1 && HasBit(v->tick_counter, 2)) ? SPR_AH_64A_FIRING : 0;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -539,7 +539,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 static void DisasterTick_Helicopter_Rotors(Vehicle *v)
 {
 	v->tick_counter++;
-	if (HASBIT(v->tick_counter, 0)) return;
+	if (HasBit(v->tick_counter, 0)) return;
 
 	if (++v->cur_image > SPR_ROTOR_MOVING_3) v->cur_image = SPR_ROTOR_MOVING_1;
 
@@ -709,7 +709,7 @@ static void DisasterTick_Submarine(Vehicle *v)
 		return;
 	}
 
-	if (!HASBIT(v->tick_counter, 0)) return;
+	if (!HasBit(v->tick_counter, 0)) return;
 
 	tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (IsValidTile(tile)) {
@@ -930,7 +930,7 @@ static void Disaster_Small_Submarine_Init()
 	r = Random();
 	x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
 
-	if (HASBIT(r, 31)) {
+	if (HasBit(r, 31)) {
 		y = MapMaxX() * TILE_SIZE - TILE_SIZE / 2 - 1;
 		dir = DIR_NW;
 	} else {
@@ -955,7 +955,7 @@ static void Disaster_Big_Submarine_Init()
 	r = Random();
 	x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
 
-	if (HASBIT(r, 31)) {
+	if (HasBit(r, 31)) {
 		y = MapMaxX() * TILE_SIZE - TILE_SIZE / 2 - 1;
 		dir = DIR_NW;
 	} else {

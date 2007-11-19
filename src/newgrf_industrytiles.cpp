@@ -182,7 +182,7 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 
 		if (IS_CUSTOM_SPRITE(image)) image += stage;
 
-		if (HASBIT(image, PALETTE_MODIFIER_COLOR)) {
+		if (HasBit(image, PALETTE_MODIFIER_COLOR)) {
 			if (pal == 0) {
 				pal = GENERAL_SPRITE_COLOR(rnd_color);
 			}
@@ -196,7 +196,7 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 				dtss->size_x, dtss->size_y,
 				dtss->size_z, ti->z + dtss->delta_z,
-				!HASBIT(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_INDUSTRIES)
+				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_INDUSTRIES)
 			);
 		} else {
 			AddChildSpriteScreen(image, pal, (byte)dtss->delta_x, (byte)dtss->delta_y, IsTransparencySet(TO_INDUSTRIES));
@@ -227,7 +227,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 
 	if (ti->tileh != SLOPE_FLAT) {
 		bool draw_old_one = true;
-		if (HASBIT(inds->callback_flags, CBM_INDT_DRAW_FOUNDATIONS)) {
+		if (HasBit(inds->callback_flags, CBM_INDT_DRAW_FOUNDATIONS)) {
 			/* Called to determine the type (if any) of foundation to draw for industry tile */
 			uint32 callback_res = GetIndustryTileCallback(CBID_INDUSTRY_DRAW_FOUNDATIONS, 0, 0, gfx, i, ti->tile);
 			draw_old_one = callback_res != 0;
@@ -289,7 +289,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 	byte animation_speed = itspec->animation_speed;
 
-	if (HASBIT(itspec->callback_flags, CBM_INDT_ANIM_SPEED)) {
+	if (HasBit(itspec->callback_flags, CBM_INDT_ANIM_SPEED)) {
 		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIMATION_SPEED, 0, 0, gfx, ind, tile);
 		if (callback_res != CALLBACK_FAILED) animation_speed = Clamp(callback_res & 0xFF, 0, 16);
 	}
@@ -304,8 +304,8 @@ void AnimateNewIndustryTile(TileIndex tile)
 	byte frame = GetIndustryAnimationState(tile);
 	uint16 num_frames = GB(itspec->animation_info, 0, 8);
 
-	if (HASBIT(itspec->callback_flags, CBM_INDT_ANIM_NEXT_FRAME)) {
-		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIM_NEXT_FRAME, HASBIT(itspec->animation_special_flags, 0) ? Random() : 0, 0, gfx, ind, tile);
+	if (HasBit(itspec->callback_flags, CBM_INDT_ANIM_NEXT_FRAME)) {
+		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIM_NEXT_FRAME, HasBit(itspec->animation_special_flags, 0) ? Random() : 0, 0, gfx, ind, tile);
 
 		if (callback_res != CALLBACK_FAILED) {
 			frame_set_by_callback = true;
@@ -362,7 +362,7 @@ bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 
-	if (!HASBIT(itspec->animation_triggers, iat)) return false;
+	if (!HasBit(itspec->animation_triggers, iat)) return false;
 
 	Industry *ind = GetIndustryByTile(tile);
 	ChangeIndustryTileAnimationFrame(tile, iat, random, gfx, ind);

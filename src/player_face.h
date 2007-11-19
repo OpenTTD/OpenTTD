@@ -169,7 +169,7 @@ static inline void ScaleAllPlayerFaceBits(PlayerFace &pf)
 	GenderEthnicity ge = (GenderEthnicity)GB(pf, _pf_info[PFV_GEN_ETHN].offset, _pf_info[PFV_GEN_ETHN].length); // gender & ethnicity of the face
 
 	/* Is a male face with moustache. Need to reduce CPU load in the loop. */
-	bool is_moust_male = !HASBIT(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE, ge) != 0;
+	bool is_moust_male = !HasBit(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE, ge) != 0;
 
 	for (PlayerFaceVariable pfv = PFV_EYE_COLOUR; pfv < PFV_END; pfv++) { // scales all other variables
 
@@ -202,7 +202,7 @@ static inline void RandomPlayerFaceBits(PlayerFace &pf, GenderEthnicity ge, bool
 	if (adv) {
 		SetPlayerFaceBits(pf, PFV_GEN_ETHN, ge, ge);
 	} else {
-		SetPlayerFaceBits(pf, PFV_GENDER, ge, HASBIT(ge, GENDER_FEMALE));
+		SetPlayerFaceBits(pf, PFV_GENDER, ge, HasBit(ge, GENDER_FEMALE));
 	}
 
 	/* scales all player face bits to the correct scope */

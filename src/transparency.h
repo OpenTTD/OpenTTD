@@ -35,7 +35,7 @@ extern TransparencyOptionBits _transparency_opt;
  */
 static inline bool IsTransparencySet(TransparencyOption to)
 {
-	return (HASBIT(_transparency_opt, to) && _game_mode != GM_MENU);
+	return (HasBit(_transparency_opt, to) && _game_mode != GM_MENU);
 }
 
 /**

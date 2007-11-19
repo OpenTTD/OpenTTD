@@ -660,7 +660,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			 *   bit 8: (Maybe?) Toggled whenever the train reverses.
 			 */
 
-			if (HASBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE)) SETBIT(modflags, 10);
+			if (HasBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE)) SETBIT(modflags, 10);
 
 			return variable == 0xFE ? modflags : GB(modflags, 8, 8);
 		}

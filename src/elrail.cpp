@@ -69,7 +69,7 @@
 
 static inline TLG GetTLG(TileIndex t)
 {
-	return (TLG)((HASBIT(TileX(t), 0) << 1) + HASBIT(TileY(t), 0));
+	return (TLG)((HasBit(TileX(t), 0) << 1) + HasBit(TileY(t), 0));
 }
 
 /** Finds which Rail Bits are present on a given tile. For bridge tiles,
@@ -270,7 +270,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 			/* We check whether the track in question (k) is present in the tile
 			 * (TrackSourceTile) */
-			if (HASBIT(trackconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
+			if (HasBit(trackconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
 				/* track found, if track is in the neighbour tile, adjust the number
 				 * of the PCP for preferred/allowed determination*/
 				DiagDirection PCPpos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
@@ -282,8 +282,8 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		}
 
 		/* Deactivate all PPPs if PCP is not used */
-		PPPpreferred[i] *= HASBIT(PCPstatus, i);
-		PPPallowed[i] *= HASBIT(PCPstatus, i);
+		PPPpreferred[i] *= HasBit(PCPstatus, i);
+		PPPallowed[i] *= HasBit(PCPstatus, i);
 
 		/* A station is always "flat", so adjust the tileh accordingly */
 		if (IsTileType(neighbour, MP_STATION)) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
@@ -326,16 +326,16 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			}
 		}
 
-		if (PPPallowed[i] != 0 && HASBIT(PCPstatus, i) && !HASBIT(OverridePCP, i)) {
+		if (PPPallowed[i] != 0 && HasBit(PCPstatus, i) && !HasBit(OverridePCP, i)) {
 			for (k = 0; k < DIR_END; k++) {
 				byte temp = PPPorder[i][GetTLG(ti->tile)][k];
 
-				if (HASBIT(PPPallowed[i], temp)) {
+				if (HasBit(PPPallowed[i], temp)) {
 					uint x  = ti->x + x_pcp_offsets[i] + x_ppp_offsets[temp];
 					uint y  = ti->y + y_pcp_offsets[i] + y_ppp_offsets[temp];
 
 					/* Don't build the pylon if it would be outside the tile */
-					if (!HASBIT(OwnedPPPonPCP[i], temp)) {
+					if (!HasBit(OwnedPPPonPCP[i], temp)) {
 						/* We have a neighour that will draw it, bail out */
 						if (trackconfig[TS_NEIGHBOUR] != 0) break;
 						continue; /* No neighbour, go looking for a better position */
@@ -359,10 +359,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 	/* Drawing of pylons is finished, now draw the wires */
 	for (t = TRACK_BEGIN; t < TRACK_END; t++) {
-		if (HASBIT(trackconfig[TS_HOME], t)) {
+		if (HasBit(trackconfig[TS_HOME], t)) {
 			if (IsTunnelTile(ti->tile)) break; // drawn together with tunnel-roof (see DrawCatenaryOnTunnel())
-			byte PCPconfig = HASBIT(PCPstatus, PCPpositions[t][0]) +
-				(HASBIT(PCPstatus, PCPpositions[t][1]) << 1);
+			byte PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
+				(HasBit(PCPstatus, PCPpositions[t][1]) << 1);
 
 			const SortableSpriteStruct *sss;
 			int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; /* tileh for the slopes, 0 otherwise */
@@ -419,7 +419,7 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 	if (num % 2) {
 		DiagDirection PCPpos = (axis == AXIS_X ? DIAGDIR_NE : DIAGDIR_NW);
 		Direction PPPpos = (axis == AXIS_X ? DIR_NW : DIR_NE);
-		if (HASBIT(tlg, (axis == AXIS_X ? 0 : 1))) PPPpos = ReverseDir(PPPpos);
+		if (HasBit(tlg, (axis == AXIS_X ? 0 : 1))) PPPpos = ReverseDir(PPPpos);
 		uint x = ti->x + x_pcp_offsets[PCPpos] + x_ppp_offsets[PPPpos];
 		uint y = ti->y + y_pcp_offsets[PCPpos] + y_ppp_offsets[PPPpos];
 		AddSortableSpriteToDraw(pylon_sprites[PPPpos], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, height, IsTransparencySet(TO_BUILDINGS), -1, -1);
@@ -429,7 +429,7 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 	if (DistanceMax(ti->tile, start) == length) {
 		DiagDirection PCPpos = (axis == AXIS_X ? DIAGDIR_SW : DIAGDIR_SE);
 		Direction PPPpos = (axis == AXIS_X ? DIR_NW : DIR_NE);
-		if (HASBIT(tlg, (axis == AXIS_X ? 0 : 1))) PPPpos = ReverseDir(PPPpos);
+		if (HasBit(tlg, (axis == AXIS_X ? 0 : 1))) PPPpos = ReverseDir(PPPpos);
 		uint x = ti->x + x_pcp_offsets[PCPpos] + x_ppp_offsets[PPPpos];
 		uint y = ti->y + y_pcp_offsets[PCPpos] + y_ppp_offsets[PPPpos];
 		AddSortableSpriteToDraw(pylon_sprites[PPPpos], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, height, IsTransparencySet(TO_BUILDINGS), -1, -1);

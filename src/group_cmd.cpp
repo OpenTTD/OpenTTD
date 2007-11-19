@@ -339,7 +339,7 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1
 	if (g->owner != _current_player) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		g->replace_protection = HASBIT(p2, 0);
+		g->replace_protection = HasBit(p2, 0);
 
 		InvalidateWindowData(GetWCForVT(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_player);
 	}

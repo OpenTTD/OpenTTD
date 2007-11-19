@@ -139,7 +139,7 @@ static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, cons
 
 		case 26:
 			/* Include string within newgrf text (format code 81) */
-			if (HASBIT(index, 10)) {
+			if (HasBit(index, 10)) {
 				StringID string = GetGRFStringID(0, 0xD000 + GB(index, 0, 10));
 				return GetStringWithArgs(buffr, string, argv, last);
 			}

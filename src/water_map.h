@@ -67,7 +67,7 @@ static inline bool IsWaterTile(TileIndex t)
 
 static inline TileIndex GetOtherShipDepotTile(TileIndex t)
 {
-	return t + (HASBIT(_m[t].m5, 0) ? -1 : 1) * (HASBIT(_m[t].m5, 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
+	return t + (HasBit(_m[t].m5, 0) ? -1 : 1) * (HasBit(_m[t].m5, 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
 }
 
 static inline TileIndex IsShipDepot(TileIndex t)

@@ -570,7 +570,7 @@ static void make_manyofmany(char *buf, const char *many, uint32 x)
 		start = many;
 		while (*many != 0 && *many != '|') many++; // advance to the next element
 
-		if (HASBIT(x, 0)) { // item found, copy it
+		if (HasBit(x, 0)) { // item found, copy it
 			if (!init) *buf++ = '|';
 			init = false;
 			if (start == many) {
@@ -1670,9 +1670,9 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 
 			if (c->status == GCS_NOT_FOUND) {
 				msg = "not found";
-			} else if (HASBIT(c->flags, GCF_UNSAFE)) {
+			} else if (HasBit(c->flags, GCF_UNSAFE)) {
 				msg = "unsafe for static use";
-			} else if (HASBIT(c->flags, GCF_SYSTEM)) {
+			} else if (HasBit(c->flags, GCF_SYSTEM)) {
 				msg = "system NewGRF";
 			} else {
 				msg = "unknown";

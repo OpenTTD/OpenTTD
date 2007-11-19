@@ -23,7 +23,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
 		order->wait_time = time;
 	}
 
-	if (v->cur_order_index == order_number && HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
+	if (v->cur_order_index == order_number && HasBit(v->current_order.flags, OFB_PART_OF_ORDERS)) {
 		if (is_journey) {
 			v->current_order.travel_time = time;
 		} else {
@@ -61,7 +61,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	Order *order = GetVehicleOrder(v, order_number);
 	if (order == NULL) return CMD_ERROR;
 
-	bool is_journey = HASBIT(p1, 24);
+	bool is_journey = HasBit(p1, 24);
 	if (!is_journey) {
 		if (order->type != OT_GOTO_STATION) return_cmd_error(STR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
 		if (_patches.new_nonstop && (order->flags & OF_NON_STOP)) return_cmd_error(STR_TIMETABLE_NOT_STOPPING_HERE);
@@ -154,14 +154,14 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	/* Make sure the timetable only starts when the vehicle reaches the first
  	 * order, not when travelling from the depot to the first station. */
- 	if (v->cur_order_index == 0 && !HASBIT(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
+ 	if (v->cur_order_index == 0 && !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
  		SETBIT(v->vehicle_flags, VF_TIMETABLE_STARTED);
  		return;
  	}
 
-	if (!HASBIT(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;
+	if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;
 
- 	if (HASBIT(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) {
+ 	if (HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) {
 		if (timetabled == 0) {
 			/* Round the time taken up to the nearest day, as this will avoid
 			 * confusion for people who are timetabling in days, and can be

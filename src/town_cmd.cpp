@@ -356,7 +356,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	if (GetHouseConstructionTick(tile) != 0) return;
 
 	/* Check and/or  */
-	if (HASBIT(GetHouseSpecs(GetHouseType(tile))->callback_mask, CBM_HOUSE_CONSTRUCTION_STATE_CHANGE)) {
+	if (HasBit(GetHouseSpecs(GetHouseType(tile))->callback_mask, CBM_HOUSE_CONSTRUCTION_STATE_CHANGE)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(tile, callback_res);
 	}
@@ -413,7 +413,7 @@ static void TileLoop_Town(TileIndex tile)
 
 	r = Random();
 
-	if (HASBIT(hs->callback_mask, CBM_HOUSE_PRODUCE_CARGO)) {
+	if (HasBit(hs->callback_mask, CBM_HOUSE_PRODUCE_CARGO)) {
 		for (uint i = 0; i < 256; i++) {
 			uint16 callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, r, house_id, t, tile);
 
@@ -467,7 +467,7 @@ static void TileLoop_Town(TileIndex tile)
 	_current_player = OWNER_TOWN;
 
 	if (hs->building_flags & BUILDING_HAS_1_TILE &&
-			HASBIT(t->flags12, TOWN_IS_FUNDED) &&
+			HasBit(t->flags12, TOWN_IS_FUNDED) &&
 			CanDeleteHouse(tile) &&
 			max(_cur_year - GetHouseConstructionYear(tile), 0) >= hs->minimum_life &&
 			--t->time_until_rebuild == 0) {
@@ -533,7 +533,7 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 	}
 
 	/* Check for custom accepted cargo types */
-	if (HASBIT(hs->callback_mask, CBM_HOUSE_ACCEPT_CARGO)) {
+	if (HasBit(hs->callback_mask, CBM_HOUSE_ACCEPT_CARGO)) {
 		uint16 callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
 			/* Replace accepted cargo types with translated values from callback */
@@ -544,12 +544,12 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 	}
 
 	/* Check for custom cargo acceptance */
-	if (HASBIT(hs->callback_mask, CBM_HOUSE_CARGO_ACCEPTANCE)) {
+	if (HasBit(hs->callback_mask, CBM_HOUSE_CARGO_ACCEPTANCE)) {
 		uint16 callback = GetHouseCallback(CBID_HOUSE_CARGO_ACCEPTANCE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
 			if (accepts[0] != CT_INVALID) ac[accepts[0]] = GB(callback, 0, 4);
 			if (accepts[1] != CT_INVALID) ac[accepts[1]] = GB(callback, 4, 4);
-			if (_opt.landscape != LT_TEMPERATE && HASBIT(callback, 12)) {
+			if (_opt.landscape != LT_TEMPERATE && HasBit(callback, 12)) {
 				/* The 'S' bit indicates food instead of goods */
 				ac[CT_FOOD] = GB(callback, 8, 4);
 			} else {
@@ -591,7 +591,7 @@ static bool GrowTown(Town *t);
 
 static void TownTickHandler(Town *t)
 {
-	if (HASBIT(t->flags12, TOWN_IS_FUNDED)) {
+	if (HasBit(t->flags12, TOWN_IS_FUNDED)) {
 		int i = t->grow_counter - 1;
 		if (i < 0) {
 			if (GrowTown(t)) {
@@ -1715,7 +1715,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 
 				if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world) continue;
 
-				if (HASBIT(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
+				if (HasBit(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
 					uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile);
 					if (callback_res != CALLBACK_FAILED && callback_res == 0) continue;
 				}
@@ -2098,7 +2098,7 @@ CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	t = GetTown(p1);
 
-	if (!HASBIT(GetMaskOfTownActions(NULL, _current_player, t), p2)) return CMD_ERROR;
+	if (!HasBit(GetMaskOfTownActions(NULL, _current_player, t), p2)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 

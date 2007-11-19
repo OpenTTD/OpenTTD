@@ -234,7 +234,7 @@ void AfterLoadVehicles()
 	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
 			case VEH_ROAD:
-				v->u.road.roadtype = HASBIT(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
+				v->u.road.roadtype = HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 				v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
 				/* FALL THROUGH */
 			case VEH_TRAIN:
@@ -587,7 +587,7 @@ static Vehicle* _first_veh_in_depot_list;
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	/* we need to set v->leave_depot_instantly as we have no control of it's contents at this time */
-	if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS) && v->current_order.type == OT_GOTO_DEPOT) {
+	if (HasBit(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HasBit(v->current_order.flags, OFB_PART_OF_ORDERS) && v->current_order.type == OT_GOTO_DEPOT) {
 		/* we keep the vehicle in the depot since the user ordered it to stay */
 		v->leave_depot_instantly = false;
 	} else {
@@ -655,7 +655,7 @@ void CallVehicleTicks()
  */
 bool CanRefitTo(EngineID engine_type, CargoID cid_to)
 {
-	return HASBIT(EngInfo(engine_type)->refit_mask, cid_to);
+	return HasBit(EngInfo(engine_type)->refit_mask, cid_to);
 }
 
 /** Find the first cargo type that an engine can be refitted to.
@@ -668,7 +668,7 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 
 	if (refit_mask != 0) {
 		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-			if (HASBIT(refit_mask, cid)) return cid;
+			if (HasBit(refit_mask, cid)) return cid;
 		}
 	}
 
@@ -1405,8 +1405,8 @@ void CheckVehicle32Day(Vehicle *v)
 
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_32DAY_CALLBACK, 0, 0, v->engine_type, v);
 	if (callback == CALLBACK_FAILED) return;
-	if (HASBIT(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
-	if (HASBIT(callback, 1)) v->colormap = PAL_NONE;                         // Update colormap via callback 2D
+	if (HasBit(callback, 0)) TriggerVehicle(v, VEHICLE_TRIGGER_CALLBACK_32); // Trigger vehicle trigger 10
+	if (HasBit(callback, 1)) v->colormap = PAL_NONE;                         // Update colormap via callback 2D
 }
 
 void DecreaseVehicleValue(Vehicle *v)
@@ -1523,8 +1523,8 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 	uint i;
 	uint stop_command;
 	VehicleType vehicle_type = (VehicleType)GB(p2, 0, 5);
-	bool start_stop = HASBIT(p2, 5);
-	bool vehicle_list_window = HASBIT(p2, 6);
+	bool start_stop = HasBit(p2, 5);
+	bool vehicle_list_window = HasBit(p2, 6);
 
 	switch (vehicle_type) {
 		case VEH_TRAIN:    stop_command = CMD_START_STOP_TRAIN;    break;
@@ -1754,7 +1754,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			w = GetVehicle(_new_vehicle_id);
 
-			if (v->type == VEH_TRAIN && HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
+			if (v->type == VEH_TRAIN && HasBit(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
 				SETBIT(w->u.rail.flags, VRF_REVERSE_DIRECTION);
 			}
 
@@ -2117,7 +2117,7 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 		count += v->cargo.Count();
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0) {
-			unloading += HASBIT(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
+			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
 			loading |= (u->current_order.flags & OF_UNLOAD) == 0 && st->goods[v->cargo_type].days_since_pickup != 255;
 			cars++;
 		}
@@ -2204,11 +2204,11 @@ void VehicleEnterDepot(Vehicle *v)
 			}
 		}
 
-		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
+		if (HasBit(t.flags, OFB_PART_OF_ORDERS)) {
 			/* Part of orders */
 			UpdateVehicleTimetable(v, true);
 			v->cur_order_index++;
-		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
+		} else if (HasBit(t.flags, OFB_HALT_IN_DEPOT)) {
 			/* Force depot visit */
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
@@ -2520,7 +2520,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 		/* Can we actually build the vehicle type? */
 		EngineID e;
 		FOR_ALL_ENGINEIDS_OF_TYPE(e, type) {
-			if (HASBIT(GetEngine(e)->player_avail, _local_player)) return true;
+			if (HasBit(GetEngine(e)->player_avail, _local_player)) return true;
 		}
 		return false;
 	}
@@ -2572,7 +2572,7 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 								scheme = LS_FREIGHT_WAGON;
 							}
 						} else {
-							bool is_mu = HASBIT(EngInfo(engine_type)->misc_flags, EF_RAIL_IS_MU);
+							bool is_mu = HasBit(EngInfo(engine_type)->misc_flags, EF_RAIL_IS_MU);
 
 							switch (rvi->engclass) {
 								default: NOT_REACHED();
@@ -2593,7 +2593,7 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 			case VEH_ROAD: {
 				const RoadVehicleInfo *rvi = RoadVehInfo(engine_type);
 				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
-				if (HASBIT(EngInfo(engine_type)->misc_flags, EF_ROAD_TRAM)) {
+				if (HasBit(EngInfo(engine_type)->misc_flags, EF_ROAD_TRAM)) {
 					/* Tram */
 					scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_TRAM : LS_FREIGHT_TRAM;
 				} else {
@@ -2638,7 +2638,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 	if (map != PAL_NONE) return map;
 
 	/* Check if we should use the colour map callback */
-	if (HASBIT(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_COLOUR_REMAP)) {
+	if (HasBit(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_COLOUR_REMAP)) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
 		/* A return value of 0xC000 is stated to "use the default two-color
 		 * maps" which happens to be the failure action too... */
@@ -2646,7 +2646,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 			map = GB(callback, 0, 14);
 			/* If bit 14 is set, then the company colours are applied to the
 			 * map else it's returned as-is. */
-			if (!HASBIT(callback, 14)) {
+			if (!HasBit(callback, 14)) {
 				/* Update cache */
 				if (v != NULL) ((Vehicle*)v)->colormap = map;
 				return map;
@@ -2654,7 +2654,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 		}
 	}
 
-	bool twocc = HASBIT(EngInfo(engine_type)->misc_flags, EF_USES_2CC);
+	bool twocc = HasBit(EngInfo(engine_type)->misc_flags, EF_USES_2CC);
 
 	if (map == PAL_NONE) map = twocc ? (SpriteID)SPR_2CCMAP_BASE : (SpriteID)PALETTE_RECOLOR_START;
 
@@ -3115,7 +3115,7 @@ void Vehicle::HandleLoading(bool mode)
 			uint wait_time = max(this->current_order.wait_time - this->lateness_counter, 0);
 
 			/* Not the first call for this tick, or still loading */
-			if (mode || !HASBIT(this->vehicle_flags, VF_LOADING_FINISHED) ||
+			if (mode || !HasBit(this->vehicle_flags, VF_LOADING_FINISHED) ||
 					(_patches.timetabling && this->current_order_time < wait_time)) return;
 
 			this->PlayLeaveStationSound();

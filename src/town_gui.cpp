@@ -95,7 +95,7 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 				continue;
 
 			/* Is the player not able to build a statue ? */
-			if (cur == TACT_BUILD_STATUE && HASBIT(t->statues, pid))
+			if (cur == TACT_BUILD_STATUE && HasBit(t->statues, pid))
 				continue;
 
 			if (avail >= _town_action_costs[i] * ref) {
@@ -132,7 +132,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 		SetVScrollCount(w, numact + 1);
 
-		if (WP(w,def_d).data_1 != -1 && !HASBIT(buttons, WP(w,def_d).data_1))
+		if (WP(w,def_d).data_1 != -1 && !HasBit(buttons, WP(w,def_d).data_1))
 			WP(w,def_d).data_1 = -1;
 
 		SetWindowWidgetDisabledState(w, 6, WP(w, def_d).data_1 == -1);
@@ -151,7 +151,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			/* Draw list of players */
 			y = 25;
 			FOR_ALL_PLAYERS(p) {
-				if (p->is_active && (HASBIT(t->have_ratings, p->index) || t->exclusivity == p->index)) {
+				if (p->is_active && (HasBit(t->have_ratings, p->index) || t->exclusivity == p->index)) {
 					DrawPlayerIcon(p->index, 2, y);
 
 					SetDParam(0, p->index);
