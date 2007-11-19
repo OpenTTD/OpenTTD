@@ -941,8 +941,8 @@ void ShowSmallMap()
 	w = AllocateWindowDescFront(&_smallmap_desc, 0);
 	if (w == NULL) return;
 
-	LowerWindowWidget(w, _smallmap_type + 5);
-	SetWindowWidgetLoweredState(w, 12, _smallmap_show_towns);
+	LowerWindowWidget(w, _smallmap_type + SMT_OWNER);
+	SetWindowWidgetLoweredState(w, SM_WIDGET_TOGGLETOWNNAME, _smallmap_show_towns);
 
 	SmallMapCenterOnCurrentPos(w);
 }
