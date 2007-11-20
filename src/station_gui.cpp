@@ -400,7 +400,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				case STATIONLIST_WIDGET_AIRPLANE:
 				case STATIONLIST_WIDGET_SHIP:
 					if (_ctrl_pressed) {
-						TOGGLEBIT(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
+						ToggleBit(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
 						ToggleWidgetLoweredState(w, e->we.click.widget);
 					} else {
 						for (uint i = 0; facilities != 0; i++, facilities >>= 1) {
@@ -487,7 +487,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 						}
 
 						if (_ctrl_pressed) {
-							TOGGLEBIT(_cargo_filter, c);
+							ToggleBit(_cargo_filter, c);
 							ToggleWidgetLoweredState(w, e->we.click.widget);
 						} else {
 							for (uint i = STATIONLIST_WIDGET_CARGOSTART; i < w->widget_count; i++) {

@@ -402,7 +402,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 					}
 
 					if (_ctrl_pressed) {
-						TOGGLEBIT(WP(w, livery_d).sel, j);
+						ToggleBit(WP(w, livery_d).sel, j);
 					} else {
 						WP(w, livery_d).sel = 1 << j;
 					}

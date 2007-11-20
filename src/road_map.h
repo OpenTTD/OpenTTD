@@ -218,7 +218,7 @@ static inline bool IsOnSnow(TileIndex t)
 #define ToggleDesert ToggleSnow
 static inline void ToggleSnow(TileIndex t)
 {
-	TOGGLEBIT(_m[t].m3, 7);
+	ToggleBit(_m[t].m3, 7);
 }
 
 

@@ -685,18 +685,18 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		switch (p2) {
 		case OFB_FULL_LOAD:
-			TOGGLEBIT(order->flags, OFB_FULL_LOAD);
+			ToggleBit(order->flags, OFB_FULL_LOAD);
 			if (order->type != OT_GOTO_DEPOT) ClrBit(order->flags, OFB_UNLOAD);
 			break;
 		case OFB_UNLOAD:
-			TOGGLEBIT(order->flags, OFB_UNLOAD);
+			ToggleBit(order->flags, OFB_UNLOAD);
 			ClrBit(order->flags, OFB_FULL_LOAD);
 			break;
 		case OFB_NON_STOP:
-			TOGGLEBIT(order->flags, OFB_NON_STOP);
+			ToggleBit(order->flags, OFB_NON_STOP);
 			break;
 		case OFB_TRANSFER:
-			TOGGLEBIT(order->flags, OFB_TRANSFER);
+			ToggleBit(order->flags, OFB_TRANSFER);
 			break;
 		default: NOT_REACHED();
 		}
@@ -720,7 +720,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (sel_ord == u->cur_order_index &&
 						u->current_order.type != OT_GOTO_DEPOT &&
 						HasBit(u->current_order.flags, OFB_FULL_LOAD) != HasBit(order->flags, OFB_FULL_LOAD)) {
-					TOGGLEBIT(u->current_order.flags, OFB_FULL_LOAD);
+					ToggleBit(u->current_order.flags, OFB_FULL_LOAD);
 				}
 				InvalidateVehicleOrder(u);
 			}

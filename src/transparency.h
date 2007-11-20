@@ -45,7 +45,7 @@ static inline bool IsTransparencySet(TransparencyOption to)
  */
 static inline void ToggleTransparency(TransparencyOption to)
 {
-	TOGGLEBIT(_transparency_opt, to);
+	ToggleBit(_transparency_opt, to);
 }
 
 /** Toggle all transparency options (except signs) or restore the stored transparencies */

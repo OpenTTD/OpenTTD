@@ -167,12 +167,12 @@ static void MenuClickSettings(int index)
 		case 3: ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
 		case 4: ShowTransparencyToolbar(); break;
 
-		case  6: TOGGLEBIT(_display_opt, DO_SHOW_TOWN_NAMES);    break;
-		case  7: TOGGLEBIT(_display_opt, DO_SHOW_STATION_NAMES); break;
-		case  8: TOGGLEBIT(_display_opt, DO_SHOW_SIGNS);         break;
-		case  9: TOGGLEBIT(_display_opt, DO_WAYPOINTS);          break;
-		case 10: TOGGLEBIT(_display_opt, DO_FULL_ANIMATION);     break;
-		case 11: TOGGLEBIT(_display_opt, DO_FULL_DETAIL);        break;
+		case  6: ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);    break;
+		case  7: ToggleBit(_display_opt, DO_SHOW_STATION_NAMES); break;
+		case  8: ToggleBit(_display_opt, DO_SHOW_SIGNS);         break;
+		case  9: ToggleBit(_display_opt, DO_WAYPOINTS);          break;
+		case 10: ToggleBit(_display_opt, DO_FULL_ANIMATION);     break;
+		case 11: ToggleBit(_display_opt, DO_FULL_DETAIL);        break;
 		case 12:
 			ToggleTransparency(TO_TREES);
 			ToggleTransparency(TO_HOUSES);

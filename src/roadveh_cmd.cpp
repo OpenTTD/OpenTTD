@@ -482,7 +482,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot) */
 			if (flags & DC_EXEC) {
 				ClrBit(v->current_order.flags, OFB_PART_OF_ORDERS);
-				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
+				ToggleBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
 			return CommandCost();

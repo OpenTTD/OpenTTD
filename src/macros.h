@@ -279,9 +279,9 @@ template<typename T> static inline T ClrBit(T& x, const uint8 y)
  * @param y The bit position to toggle
  * @return The new value of the old value with the bit toggled
  */
-template<typename T> static inline T TOGGLEBIT(T& x, const uint8 y)
+template<typename T> static inline T ToggleBit(T& x, const uint8 y)
 {
-	return x ^= (T)1U << y;
+	return x = (T)(x ^ (T)(1U << y));
 }
 
 

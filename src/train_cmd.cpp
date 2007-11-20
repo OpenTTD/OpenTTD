@@ -1651,7 +1651,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 		}
 
 		if (flags & DC_EXEC) {
-			TOGGLEBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION);
+			ToggleBit(v->u.rail.flags, VRF_REVERSE_DIRECTION);
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		}
@@ -1661,7 +1661,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 
 		if (flags & DC_EXEC) {
 			if (_patches.realistic_acceleration && v->cur_speed != 0) {
-				TOGGLEBIT(v->u.rail.flags, VRF_REVERSING);
+				ToggleBit(v->u.rail.flags, VRF_REVERSING);
 			} else {
 				v->cur_speed = 0;
 				SetLastSpeed(v, 0);
@@ -1908,7 +1908,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
 			if (flags & DC_EXEC) {
 				ClrBit(v->current_order.flags, OFB_PART_OF_ORDERS);
-				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
+				ToggleBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
 			return CommandCost();

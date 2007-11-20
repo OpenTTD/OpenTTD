@@ -281,7 +281,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			if (!IS_INT_INSIDE(e->we.click.widget, 3, 11)) return;
 
-			TOGGLEBIT(_legend_excluded_players, e->we.click.widget - 3);
+			ToggleBit(_legend_excluded_players, e->we.click.widget - 3);
 			ToggleWidgetLoweredState(w, e->we.click.widget);
 			SetWindowDirty(w);
 			InvalidateWindow(WC_INCOME_GRAPH, 0);
@@ -760,7 +760,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			if (e->we.click.widget >= 3) {
-				TOGGLEBIT(_legend_excluded_cargo, e->we.click.widget - 3);
+				ToggleBit(_legend_excluded_cargo, e->we.click.widget - 3);
 				ToggleWidgetLoweredState(w, e->we.click.widget);
 				SetWindowDirty(w);
 			}

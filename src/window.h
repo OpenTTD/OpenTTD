@@ -714,7 +714,7 @@ static inline void SetWindowWidgetLoweredState(Window *w, byte widget_index, boo
 static inline void ToggleWidgetLoweredState(Window *w, byte widget_index)
 {
 	assert(widget_index < w->widget_count);
-	TOGGLEBIT(w->widget[widget_index].display_flags, WIDG_LOWERED);
+	ToggleBit(w->widget[widget_index].display_flags, WIDG_LOWERED);
 }
 
 /**

@@ -149,11 +149,6 @@ template <typename Tenum_t> struct TinyEnumT
 	}
 };
 
-template <typename T> void ToggleBitT(T &t, int bit_index)
-{
-	t = (T)(t ^ ((T)1 << bit_index));
-}
-
 /**
  * Overflow safe template for integers, i.e. integers that will never overflow
  * you multiply the maximum value with 2, or add 2, or substract somethng from

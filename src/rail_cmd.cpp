@@ -666,7 +666,7 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, u
 		tile += ToTileIndexDiff(_trackdelta[trackdir]);
 
 		/* toggle railbit for the non-diagonal tracks */
-		if (!IsDiagonalTrackdir(trackdir)) ToggleBitT(trackdir, 0);
+		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
 	}
 
 	return (total_cost.GetCost() == 0) ? CMD_ERROR : total_cost;
@@ -1033,7 +1033,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 			if (IsDiagonalTrackdir(trackdir)) {
 				signal_ctr++;
 			} else {
-				ToggleBitT(trackdir, 0);
+				ToggleBit(trackdir, 0);
 			}
 		}
 	}
