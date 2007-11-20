@@ -179,7 +179,7 @@ void AssignWindowViewport(Window *w, int x, int y,
 		assert(vp != endof(_viewports));
 		if (vp->width == 0) break;
 	}
-	SETBIT(_active_viewports, bit);
+	SetBit(_active_viewports, bit);
 
 	vp->left = x + w->left;
 	vp->top = y + w->top;
@@ -627,7 +627,7 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 
 	/* make the sprites transparent with the right palette */
 	if (transparent) {
-		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+		SetBit(image, PALETTE_MODIFIER_TRANSPARENT);
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 
@@ -739,7 +739,7 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 
 	/* make the sprites transparent with the right palette */
 	if (transparent) {
-		SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+		SetBit(image, PALETTE_MODIFIER_TRANSPARENT);
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 

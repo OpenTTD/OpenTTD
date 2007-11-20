@@ -418,7 +418,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		u->random_bits = VehicleRandomBits();
 
 		v->vehicle_flags = 0;
-		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
+		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
 		UpdateAircraftCache(v);
 
@@ -606,7 +606,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 
 			v->current_order.type = OT_GOTO_DEPOT;
 			v->current_order.flags = OF_NON_STOP;
-			if (!(p2 & DEPOT_SERVICE)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
+			if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
 			v->current_order.refit_cargo = CT_INVALID;
 			v->current_order.dest = next_airport_index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -1960,7 +1960,7 @@ static bool FreeTerminal(Vehicle *v, byte i, byte last_terminal)
 		if (!HasBit(st->airport_flags, _airport_terminal_flag[i])) {
 			/* TERMINAL# HELIPAD# */
 			v->u.air.state = _airport_terminal_state[i]; // start moving to that terminal/helipad
-			SETBIT(st->airport_flags, _airport_terminal_flag[i]); // occupy terminal/helipad
+			SetBit(st->airport_flags, _airport_terminal_flag[i]); // occupy terminal/helipad
 			return true;
 		}
 	}

@@ -88,7 +88,7 @@ static inline bool LiftHasDestination(TileIndex t)
  */
 static inline void SetLiftDestination(TileIndex t, byte dest)
 {
-	SETBIT(_me[t].m7, 0);
+	SetBit(_me[t].m7, 0);
 	SB(_me[t].m7, 1, 3, dest);
 }
 

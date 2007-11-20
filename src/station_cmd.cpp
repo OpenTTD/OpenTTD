@@ -990,7 +990,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		if (!GenerateStationName(st, tile_org, STATIONNAMING_RAIL)) return CMD_ERROR;
 
 		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
-			SETBIT(st->town->have_ratings, _current_player);
+			SetBit(st->town->have_ratings, _current_player);
 		}
 	}
 
@@ -1417,7 +1417,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!GenerateStationName(st, tile, STATIONNAMING_ROAD)) return CMD_ERROR;
 
 		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
-			SETBIT(t->have_ratings, _current_player);
+			SetBit(t->have_ratings, _current_player);
 		}
 
 		st->sign.width_1 = 0;
@@ -1715,7 +1715,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st->town = t;
 
 		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
-			SETBIT(t->have_ratings, _current_player);
+			SetBit(t->have_ratings, _current_player);
 		}
 
 		st->sign.width_1 = 0;
@@ -2002,7 +2002,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
 
 		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
-			SETBIT(t->have_ratings, _current_player);
+			SetBit(t->have_ratings, _current_player);
 		}
 
 		st->sign.width_1 = 0;
@@ -2386,14 +2386,14 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 					/* Check if the vehicle is stopping at this road stop */
 					if (GetRoadStopType(tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK) &&
 							v->current_order.dest == GetStationIndex(tile)) {
-						SETBIT(v->u.road.state, RVS_IS_STOPPING);
+						SetBit(v->u.road.state, RVS_IS_STOPPING);
 						rs->AllocateDriveThroughBay(side);
 					}
 
 					/* Indicate if vehicle is using second bay. */
-					if (side == 1) SETBIT(v->u.road.state, RVS_USING_SECOND_BAY);
+					if (side == 1) SetBit(v->u.road.state, RVS_USING_SECOND_BAY);
 					/* Indicate a drive-through stop */
-					SETBIT(v->u.road.state, RVS_IN_DT_ROAD_STOP);
+					SetBit(v->u.road.state, RVS_IN_DT_ROAD_STOP);
 					return VETSB_CONTINUE;
 				}
 
@@ -2401,7 +2401,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 				/* Check if station is busy or if there are no free bays or whether it is a articulated vehicle. */
 				if (rs->IsEntranceBusy() || !rs->HasFreeBay() || RoadVehHasArticPart(v)) return VETSB_CANNOT_ENTER;
 
-				SETBIT(v->u.road.state, RVS_IN_ROAD_STOP);
+				SetBit(v->u.road.state, RVS_IN_ROAD_STOP);
 
 				/* Allocate a bay and update the road state */
 				uint bay_nr = rs->AllocateBay();
@@ -2587,7 +2587,7 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
 {
 	st->goods[type].cargo.Append(new CargoPacket(st->index, amount));
-	SETBIT(st->goods[type].acceptance_pickup, GoodsEntry::PICKUP);
+	SetBit(st->goods[type].acceptance_pickup, GoodsEntry::PICKUP);
 
 	InvalidateWindow(WC_STATION_VIEW, st->index);
 	st->MarkTilesDirty(true);

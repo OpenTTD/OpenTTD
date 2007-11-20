@@ -1755,7 +1755,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			w = GetVehicle(_new_vehicle_id);
 
 			if (v->type == VEH_TRAIN && HasBit(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
-				SETBIT(w->u.rail.flags, VRF_REVERSE_DIRECTION);
+				SetBit(w->u.rail.flags, VRF_REVERSE_DIRECTION);
 			}
 
 			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) {

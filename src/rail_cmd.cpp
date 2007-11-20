@@ -602,7 +602,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
 		(trdy >= 0 && dy < 0)
 	) {
 		if (!HasBit(*trackdir, 3)) { // first direction is invalid, try the other
-			SetBitT(*trackdir, 3); // reverse the direction
+			SetBit(*trackdir, 3); // reverse the direction
 			trdx = -trdx;
 			trdy = -trdy;
 		} else { // other direction is invalid too, invalid drag
@@ -701,7 +701,7 @@ CommandCost CmdBuildRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint3
  */
 CommandCost CmdRemoveRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	return CmdRailTrackHelper(tile, flags, p1, SETBIT(p2, 7));
+	return CmdRailTrackHelper(tile, flags, p1, SetBit(p2, 7));
 }
 
 /** Build a train depot
@@ -985,8 +985,8 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	}
 
 	byte signal_dir = 0;
-	if (signals & SignalAlongTrackdir(trackdir))   SETBIT(signal_dir, 0);
-	if (signals & SignalAgainstTrackdir(trackdir)) SETBIT(signal_dir, 1);
+	if (signals & SignalAlongTrackdir(trackdir))   SetBit(signal_dir, 0);
+	if (signals & SignalAgainstTrackdir(trackdir)) SetBit(signal_dir, 1);
 
 	/* signal_ctr         - amount of tiles already processed
 	 * signals_density    - patch setting to put signal on every Nth tile (double space on |, -- tracks)
@@ -1121,7 +1121,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
  */
 CommandCost CmdRemoveSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	return CmdSignalTrackHelper(tile, flags, p1, SETBIT(p2, 5)); // bit 5 is remove bit
+	return CmdSignalTrackHelper(tile, flags, p1, SetBit(p2, 5)); // bit 5 is remove bit
 }
 
 typedef CommandCost DoConvertRailProc(TileIndex tile, RailType totype, bool exec);

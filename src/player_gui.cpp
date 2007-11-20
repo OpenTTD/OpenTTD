@@ -275,7 +275,7 @@ static void ShowColourDropDownMenu(Window *w, uint32 widget)
 	if (HasBit(WP(w, livery_d).sel, LS_DEFAULT) && widget == 10) {
 		const Player *p;
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && p->index != _local_player) SETBIT(used_colours, p->player_color);
+			if (p->is_active && p->index != _local_player) SetBit(used_colours, p->player_color);
 		}
 	}
 

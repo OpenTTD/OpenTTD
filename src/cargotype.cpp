@@ -37,7 +37,7 @@ void SetupCargoForClimate(LandscapeID l)
 		if (cl < lengthof(_default_cargo)) {
 			/* Copy the indexed cargo */
 			_cargo[i] = _default_cargo[cl];
-			SETBIT(_cargo_mask, i);
+			SetBit(_cargo_mask, i);
 			continue;
 		}
 
@@ -48,7 +48,7 @@ void SetupCargoForClimate(LandscapeID l)
 				_cargo[i] = _default_cargo[j];
 
 				/* Populate the available cargo mask */
-				SETBIT(_cargo_mask, i);
+				SetBit(_cargo_mask, i);
 				break;
 			}
 		}

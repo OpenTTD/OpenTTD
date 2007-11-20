@@ -41,7 +41,7 @@ static inline bool IsFrontEngine(const Vehicle *v)
 static inline void SetFrontEngine(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SETBIT(v->subtype, Train_Front);
+	SetBit(v->subtype, Train_Front);
 }
 
 /** Remove the front engine state
@@ -69,7 +69,7 @@ static inline bool IsArticulatedPart(const Vehicle *v)
 static inline void SetArticulatedPart(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SETBIT(v->subtype, Train_Articulated_Part);
+	SetBit(v->subtype, Train_Articulated_Part);
 }
 
 /** Clear a vehicle from being an articulated part
@@ -97,7 +97,7 @@ static inline bool IsTrainWagon(const Vehicle *v)
 static inline void SetTrainWagon(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SETBIT(v->subtype, Train_Wagon);
+	SetBit(v->subtype, Train_Wagon);
 }
 
 /** Clear wagon property
@@ -125,7 +125,7 @@ static inline bool IsTrainEngine(const Vehicle *v)
 static inline void SetTrainEngine(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SETBIT(v->subtype, Train_Engine);
+	SetBit(v->subtype, Train_Engine);
 }
 
 /** Clear engine status
@@ -153,7 +153,7 @@ static inline bool IsFreeWagon(const Vehicle *v)
 static inline void SetFreeWagon(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SETBIT(v->subtype, Train_Free_Wagon);
+	SetBit(v->subtype, Train_Free_Wagon);
 }
 
 /** Clear a vehicle from being a free wagon
@@ -181,7 +181,7 @@ static inline bool IsMultiheaded(const Vehicle *v)
 static inline void SetMultiheaded(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SETBIT(v->subtype, Train_Multiheaded);
+	SetBit(v->subtype, Train_Multiheaded);
 }
 
 /** Clear multiheaded engine property

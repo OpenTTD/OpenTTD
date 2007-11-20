@@ -260,7 +260,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 			FOR_ALL_PLAYERS(p) {
 				if (p->is_active) continue;
 
-				SETBIT(_legend_excluded_players, p->index);
+				SetBit(_legend_excluded_players, p->index);
 				RaiseWindowWidget(w, p->index + 3);
 			}
 
@@ -334,7 +334,7 @@ static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
 
 	/* Exclude the players which aren't valid */
 	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) SETBIT(excluded_players, p->index);
+		if (!p->is_active) SetBit(excluded_players, p->index);
 	}
 	gd->excluded_data = excluded_players;
 	gd->num_vert_lines = 24;

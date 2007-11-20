@@ -121,7 +121,7 @@ static inline bool NPFGetFlag(const AyStarNode* node, NPFNodeFlag flag)
 static inline void NPFSetFlag(AyStarNode* node, NPFNodeFlag flag, bool value)
 {
 	if (value)
-		SETBIT(node->user_data[NPF_NODE_FLAGS], flag);
+		SetBit(node->user_data[NPF_NODE_FLAGS], flag);
 	else
 		ClrBit(node->user_data[NPF_NODE_FLAGS], flag);
 }

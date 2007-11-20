@@ -311,10 +311,10 @@ static uint32 GetRailContinuationInfo(TileIndex tile)
 		uint32 ts = GetTileTrackStatus(tile + TileOffsByDir(*dir), TRANSPORT_RAIL, 0);
 		if (ts != 0) {
 			/* If there is any track on the tile, set the bit in the second byte */
-			SETBIT(res, i + 8);
+			SetBit(res, i + 8);
 
 			/* If any track reaches our exit direction, set the bit in the lower byte */
-			if (ts & DiagdirReachesTracks(*diagdir)) SETBIT(res, i);
+			if (ts & DiagdirReachesTracks(*diagdir)) SetBit(res, i);
 		}
 	}
 
@@ -402,26 +402,26 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 	switch (variable) {
 		/* Calculated station variables */
 		case 0x40:
-			if (!HasBit(_svc.valid, 0)) { _svc.v40 = GetPlatformInfoHelper(tile, false, false, false); SETBIT(_svc.valid, 0); }
+			if (!HasBit(_svc.valid, 0)) { _svc.v40 = GetPlatformInfoHelper(tile, false, false, false); SetBit(_svc.valid, 0); }
 			return _svc.v40;
 
 		case 0x41:
-			if (!HasBit(_svc.valid, 1)) { _svc.v41 = GetPlatformInfoHelper(tile, true,  false, false); SETBIT(_svc.valid, 1); }
+			if (!HasBit(_svc.valid, 1)) { _svc.v41 = GetPlatformInfoHelper(tile, true,  false, false); SetBit(_svc.valid, 1); }
 			return _svc.v41;
 
 		case 0x42: return GetTerrainType(tile) | (GetRailType(tile) << 8);
 		case 0x43: return st->owner; // Station owner
 		case 0x44: return 2;         // PBS status
 		case 0x45:
-			if (!HasBit(_svc.valid, 2)) { _svc.v45 = GetRailContinuationInfo(tile); SETBIT(_svc.valid, 2); }
+			if (!HasBit(_svc.valid, 2)) { _svc.v45 = GetRailContinuationInfo(tile); SetBit(_svc.valid, 2); }
 			return _svc.v45;
 
 		case 0x46:
-			if (!HasBit(_svc.valid, 3)) { _svc.v46 = GetPlatformInfoHelper(tile, false, false, true); SETBIT(_svc.valid, 3); }
+			if (!HasBit(_svc.valid, 3)) { _svc.v46 = GetPlatformInfoHelper(tile, false, false, true); SetBit(_svc.valid, 3); }
 			return _svc.v46;
 
 		case 0x47:
-			if (!HasBit(_svc.valid, 4)) { _svc.v47 = GetPlatformInfoHelper(tile, true,  false, true); SETBIT(_svc.valid, 4); }
+			if (!HasBit(_svc.valid, 4)) { _svc.v47 = GetPlatformInfoHelper(tile, true,  false, true); SetBit(_svc.valid, 4); }
 			return _svc.v47;
 
 		case 0x48: { // Accepted cargo types
@@ -429,12 +429,12 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			uint32 value = 0;
 
 			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-				if (HasBit(st->goods[cargo_type].acceptance_pickup, GoodsEntry::PICKUP)) SETBIT(value, cargo_type);
+				if (HasBit(st->goods[cargo_type].acceptance_pickup, GoodsEntry::PICKUP)) SetBit(value, cargo_type);
 			}
 			return value;
 		}
 		case 0x49:
-			if (!HasBit(_svc.valid, 5)) { _svc.v49 = GetPlatformInfoHelper(tile, false, true, false); SETBIT(_svc.valid, 5); }
+			if (!HasBit(_svc.valid, 5)) { _svc.v49 = GetPlatformInfoHelper(tile, false, true, false); SetBit(_svc.valid, 5); }
 			return _svc.v49;
 
 		/* Variables which use the parameter */

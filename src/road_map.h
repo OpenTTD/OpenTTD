@@ -200,7 +200,7 @@ static inline void UnbarCrossing(TileIndex t)
 static inline void BarCrossing(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	SETBIT(_m[t].m4, 5);
+	SetBit(_m[t].m4, 5);
 }
 
 static inline bool IsCrossingBarred(TileIndex t)

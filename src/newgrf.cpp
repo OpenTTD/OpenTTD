@@ -950,7 +950,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					if (dts->ground_sprite == 0) continue;
 					if (HasBit(dts->ground_pal, 15)) {
 						ClrBit(dts->ground_pal, 15);
-						SETBIT(dts->ground_sprite, SPRITE_MODIFIER_USE_OFFSET);
+						SetBit(dts->ground_sprite, SPRITE_MODIFIER_USE_OFFSET);
 					}
 
 					while (buf < *bufp + len) {
@@ -973,16 +973,16 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						/* Remap flags as ours collide */
 						if (HasBit(dtss->pal, 15)) {
 							ClrBit(dtss->pal, 15);
-							SETBIT(dtss->image, SPRITE_MODIFIER_USE_OFFSET);
+							SetBit(dtss->image, SPRITE_MODIFIER_USE_OFFSET);
 						}
 
 						if (HasBit(dtss->image, 15)) {
 							ClrBit(dtss->image, 15);
-							SETBIT(dtss->image, PALETTE_MODIFIER_COLOR);
+							SetBit(dtss->image, PALETTE_MODIFIER_COLOR);
 						}
 						if (HasBit(dtss->image, 14)) {
 							ClrBit(dtss->image, 14);
-							SETBIT(dtss->image, PALETTE_MODIFIER_TRANSPARENT);
+							SetBit(dtss->image, PALETTE_MODIFIER_TRANSPARENT);
 						}
 					}
 				}
@@ -1176,7 +1176,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 						SpriteID pal   = grf_load_word(&buf);
 
 						if (HasBit(pal, 15)) {
-							SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+							SetBit(image, PALETTE_MODIFIER_TRANSPARENT);
 						}
 
 						/* Clear old color modifer bit */
@@ -1572,7 +1572,7 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 				cs->bitnum = grf_load_byte(&buf);
 				if (cs->IsValid()) {
 					cs->grfid = _cur_grffile->grfid;
-					SETBIT(_cargo_mask, cid + i);
+					SetBit(_cargo_mask, cid + i);
 				} else {
 					ClrBit(_cargo_mask, cid + i);
 				}
@@ -1965,7 +1965,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				}
 				/* Install final layout construction in the industry spec */
 				indsp->table = tile_table;
-				SETBIT(indsp->cleanup_flag, 1);
+				SetBit(indsp->cleanup_flag, 1);
 				free(itt);
 			} break;
 
@@ -2017,7 +2017,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 
 				for (uint8 j = 0; j < indsp->number_of_sounds; j++) sounds[j] = grf_load_byte(&buf);
 				indsp->random_sounds = sounds;
-				SETBIT(indsp->cleanup_flag, 0);
+				SetBit(indsp->cleanup_flag, 0);
 			} break;
 
 			case 0x16: // Conflicting industry types
@@ -2212,7 +2212,7 @@ static void SafeChangeInfo(byte *buf, int len)
 		if (prop == 0x0D) return;
 	}
 
-	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+	SetBit(_cur_grfconfig->flags, GCF_UNSAFE);
 
 	/* Skip remainder of GRF */
 	_skip_sprites = -1;
@@ -2584,15 +2584,15 @@ static void NewSpriteGroup(byte *buf, int len)
 					/* Remap transparent/colour modifier bits */
 					if (HasBit(group->g.layout.dts->ground_sprite, 14)) {
 						ClrBit(group->g.layout.dts->ground_sprite, 14);
-						SETBIT(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_TRANSPARENT);
+						SetBit(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_TRANSPARENT);
 					}
 					if (HasBit(group->g.layout.dts->ground_sprite, 15)) {
 						ClrBit(group->g.layout.dts->ground_sprite, 15);
-						SETBIT(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_COLOR);
+						SetBit(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_COLOR);
 					}
 					if (HasBit(group->g.layout.dts->ground_pal, 14)) {
 						ClrBit(group->g.layout.dts->ground_pal, 14);
-						SETBIT(group->g.layout.dts->ground_sprite, SPRITE_MODIFIER_OPAQUE);
+						SetBit(group->g.layout.dts->ground_sprite, SPRITE_MODIFIER_OPAQUE);
 					}
 					if (HasBit(group->g.layout.dts->ground_pal, 15)) {
 						/* Bit 31 set means this is a custom sprite, so rewrite it to the
@@ -2614,15 +2614,15 @@ static void NewSpriteGroup(byte *buf, int len)
 
 						if (HasBit(seq->image, 14)) {
 							ClrBit(seq->image, 14);
-							SETBIT(seq->image, PALETTE_MODIFIER_TRANSPARENT);
+							SetBit(seq->image, PALETTE_MODIFIER_TRANSPARENT);
 						}
 						if (HasBit(seq->image, 15)) {
 							ClrBit(seq->image, 15);
-							SETBIT(seq->image, PALETTE_MODIFIER_COLOR);
+							SetBit(seq->image, PALETTE_MODIFIER_COLOR);
 						}
 						if (HasBit(seq->pal, 14)) {
 							ClrBit(seq->pal, 14);
-							SETBIT(seq->image, SPRITE_MODIFIER_OPAQUE);
+							SetBit(seq->image, SPRITE_MODIFIER_OPAQUE);
 						}
 						if (HasBit(seq->pal, 15)) {
 							/* Bit 31 set means this is a custom sprite, so rewrite it to the
@@ -3417,9 +3417,9 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 		case 0x84: { // GRF loading stage
 			uint32 res = 0;
 
-			if (_cur_stage > GLS_INIT) SETBIT(res, 0);
-			if (_cur_stage == GLS_RESERVE) SETBIT(res, 8);
-			if (_cur_stage == GLS_ACTIVATION) SETBIT(res, 9);
+			if (_cur_stage > GLS_INIT) SetBit(res, 0);
+			if (_cur_stage == GLS_RESERVE) SetBit(res, 8);
+			if (_cur_stage == GLS_ACTIVATION) SetBit(res, 9);
 			return res;
 		}
 
@@ -3734,7 +3734,7 @@ static void ScanInfo(byte *buf, int len)
 	_cur_grfconfig->grfid = grfid;
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
-	if (GB(grfid, 24, 8) == 0xFF) SETBIT(_cur_grfconfig->flags, GCF_SYSTEM);
+	if (GB(grfid, 24, 8) == 0xFF) SetBit(_cur_grfconfig->flags, GCF_SYSTEM);
 
 	len -= 6;
 	const char *name = grf_load_string(&buf, len);
@@ -3958,7 +3958,7 @@ static void SafeParamSet(byte *buf, int len)
 	 * reserved, it would be marked unsafe anyway. GRM for (e.g. bridge)
 	 * sprites  is considered safe. */
 
-	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+	SetBit(_cur_grfconfig->flags, GCF_UNSAFE);
 
 	/* Skip remainder of GRF */
 	_skip_sprites = -1;
@@ -4313,7 +4313,7 @@ static void SafeGRFInhibit(byte *buf, int len)
 
 		/* GRF is unsafe it if tries to deactivate other GRFs */
 		if (grfid != _cur_grfconfig->grfid) {
-			SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+			SetBit(_cur_grfconfig->flags, GCF_UNSAFE);
 
 			/* Skip remainder of GRF */
 			_skip_sprites = -1;
@@ -4736,7 +4736,7 @@ static void GRFDataBlock(byte *buf, int len)
 /* Used during safety scan on unsafe actions */
 static void GRFUnsafe(byte *buf, int len)
 {
-	SETBIT(_cur_grfconfig->flags, GCF_UNSAFE);
+	SetBit(_cur_grfconfig->flags, GCF_UNSAFE);
 
 	/* Skip remainder of GRF */
 	_skip_sprites = -1;
@@ -5181,7 +5181,7 @@ static void CalculateRefitMasks()
 					CargoID c = GetCargoIDByLabel(file->cargo_list[i]);
 					if (c == CT_INVALID) continue;
 
-					SETBIT(xor_mask, c);
+					SetBit(xor_mask, c);
 				}
 			} else {
 				/* No cargo table, so use the cargo bitnum values */
@@ -5189,7 +5189,7 @@ static void CalculateRefitMasks()
 					const CargoSpec *cs = GetCargo(c);
 					if (!cs->IsValid()) continue;
 
-					if (HasBit(_engine_info[engine].refit_mask, cs->bitnum)) SETBIT(xor_mask, c);
+					if (HasBit(_engine_info[engine].refit_mask, cs->bitnum)) SetBit(xor_mask, c);
 				}
 			}
 		}
@@ -5198,8 +5198,8 @@ static void CalculateRefitMasks()
 			/* Build up the list of cargo types from the set cargo classes. */
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				const CargoSpec *cs = GetCargo(i);
-				if (cargo_allowed[engine]    & cs->classes) SETBIT(mask,     i);
-				if (cargo_disallowed[engine] & cs->classes) SETBIT(not_mask, i);
+				if (cargo_allowed[engine]    & cs->classes) SetBit(mask,     i);
+				if (cargo_disallowed[engine] & cs->classes) SetBit(not_mask, i);
 			}
 		} else {
 			/* Don't apply default refit mask to wagons or engines with no capacity */
@@ -5216,7 +5216,7 @@ static void CalculateRefitMasks()
 					CargoID cargo = GetCargoIDByLabel(cl[i]);
 					if (cargo == CT_INVALID) continue;
 
-					SETBIT(xor_mask, cargo);
+					SetBit(xor_mask, cargo);
 				}
 			}
 		}
@@ -5605,7 +5605,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
 			LoadNewGRFFile(c, slot++, stage);
 			if (stage == GLS_RESERVE) {
-				SETBIT(c->flags, GCF_RESERVED);
+				SetBit(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {
 				ClrBit(c->flags, GCF_RESERVED);
 				ClearTemporaryNewGRFData();

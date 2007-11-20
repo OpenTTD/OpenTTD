@@ -257,7 +257,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->u.road.cached_veh_length = GetRoadVehLength(v);
 
 		v->vehicle_flags = 0;
-		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
+		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
 		v->cargo_cap = GetVehicleProperty(v, 0x0F, rvi->capacity);
 
@@ -511,7 +511,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 		ClearSlot(v);
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP;
-		if (!(p2 & DEPOT_SERVICE)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
+		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
 		v->current_order.refit_cargo = CT_INVALID;
 		v->current_order.dest = dep->index;
 		v->dest_tile = dep->xy;

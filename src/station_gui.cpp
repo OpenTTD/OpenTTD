@@ -406,7 +406,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 						for (uint i = 0; facilities != 0; i++, facilities >>= 1) {
 							if (HasBit(facilities, 0)) RaiseWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
 						}
-						SETBIT(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
+						SetBit(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
 						LowerWindowWidget(w, e->we.click.widget);
 					}
 					SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
@@ -498,7 +498,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 							_cargo_filter = 0;
 							include_empty = false;
 
-							SETBIT(_cargo_filter, c);
+							SetBit(_cargo_filter, c);
 							LowerWindowWidget(w, e->we.click.widget);
 						}
 						sl->flags |= SL_REBUILD;

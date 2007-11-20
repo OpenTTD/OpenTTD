@@ -204,7 +204,7 @@ static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
 	uint32 p1 = _road_station_picker_orientation;
 
 	if (p1 >= DIAGDIR_END) {
-		SETBIT(p2, 1); // It's a drive-through stop
+		SetBit(p2, 1); // It's a drive-through stop
 		p1 -= DIAGDIR_END; // Adjust picker result to actual direction
 	}
 	DoCommandP(tile, p1, p2, CcRoadDepot, cmd);

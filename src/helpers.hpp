@@ -149,11 +149,6 @@ template <typename Tenum_t> struct TinyEnumT
 	}
 };
 
-template <typename T> void SetBitT(T &t, int bit_index)
-{
-	t = (T)(t | ((T)1 << bit_index));
-}
-
 template <typename T> void ToggleBitT(T &t, int bit_index)
 {
 	t = (T)(t ^ ((T)1 << bit_index));

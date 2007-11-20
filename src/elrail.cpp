@@ -274,7 +274,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 				/* track found, if track is in the neighbour tile, adjust the number
 				 * of the PCP for preferred/allowed determination*/
 				DiagDirection PCPpos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
-				SETBIT(PCPstatus, i); // This PCP is in use
+				SetBit(PCPstatus, i); // This PCP is in use
 
 				PPPpreferred[i] &= PreferredPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
 				PPPallowed[i] &= ~DisallowedPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
@@ -322,7 +322,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 			if ((height <= GetTileMaxZ(ti->tile) + TILE_HEIGHT) &&
 					(i == PCPpositions[bridgetrack][0] || i == PCPpositions[bridgetrack][1])) {
-				SETBIT(OverridePCP, i);
+				SetBit(OverridePCP, i);
 			}
 		}
 
@@ -504,7 +504,7 @@ int32 SettingsDisableElrail(int32 p1)
 				*  so add there also normal rail compatibility */
 				v->u.rail.compatible_railtypes |= (1 << RAILTYPE_RAIL);
 				v->u.rail.railtype = RAILTYPE_RAIL;
-				SETBIT(v->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
+				SetBit(v->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
 			}
 		}
 	}

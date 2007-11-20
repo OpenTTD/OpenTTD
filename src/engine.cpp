@@ -183,14 +183,14 @@ static void AcceptEnginePreview(EngineID eid, PlayerID player)
 	Engine *e = GetEngine(eid);
 	Player *p = GetPlayer(player);
 
-	SETBIT(e->player_avail, player);
+	SetBit(e->player_avail, player);
 	if (e->type == VEH_TRAIN) {
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
 
 		assert(rvi->railtype < RAILTYPE_END);
-		SETBIT(p->avail_railtypes, rvi->railtype);
+		SetBit(p->avail_railtypes, rvi->railtype);
 	} else if (e->type == VEH_ROAD) {
-		SETBIT(p->avail_roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		SetBit(p->avail_roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
 	e->preview_player = INVALID_PLAYER;
@@ -219,7 +219,7 @@ static PlayerID GetBestPlayer(PlayerID pp)
 
 		if (best_player == PLAYER_SPECTATOR) return PLAYER_SPECTATOR;
 
-		SETBIT(mask, best_player);
+		SetBit(mask, best_player);
 	} while (pp--, pp != 0);
 
 	return best_player;
@@ -332,13 +332,13 @@ static void NewVehicleAvailable(Engine *e)
 		RailType railtype = RailVehInfo(index)->railtype;
 		assert(railtype < RAILTYPE_END);
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) SETBIT(p->avail_railtypes, railtype);
+			if (p->is_active) SetBit(p->avail_railtypes, railtype);
 		}
 	}
 	if ((index - NUM_TRAIN_ENGINES) < NUM_ROAD_ENGINES) {
 		/* maybe make another road type available */
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) SETBIT(p->avail_roadtypes, HasBit(EngInfo(index)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+			if (p->is_active) SetBit(p->avail_roadtypes, HasBit(EngInfo(index)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}
 	}
 	AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL), 0, 0);

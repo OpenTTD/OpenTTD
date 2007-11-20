@@ -476,7 +476,7 @@ void RoadStop::AllocateDriveThroughBay(uint nr)
 void RoadStop::FreeBay(uint nr)
 {
 	assert(nr < MAX_BAY_COUNT);
-	SETBIT(status, nr);
+	SetBit(status, nr);
 }
 
 

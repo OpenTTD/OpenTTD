@@ -333,7 +333,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					// use max of the two ratings.
 					t->ratings[new_player] = max(t->ratings[new_player], t->ratings[old_player]);
 				} else {
-					SETBIT(t->have_ratings, new_player);
+					SetBit(t->have_ratings, new_player);
 					t->ratings[new_player] = t->ratings[old_player];
 				}
 			}
@@ -1371,7 +1371,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	{
 		Player *p = GetPlayer(_current_player);
 		p->cur_economy.delivered_cargo += num_pieces;
-		SETBIT(p->cargo_types, cargo_type);
+		SetBit(p->cargo_types, cargo_type);
 	}
 
 	/* Get station pointers. */
@@ -1436,7 +1436,7 @@ void VehiclePayment(Vehicle *front_v)
 
 		/* All cargo has already been paid for, no need to pay again */
 		if (!v->cargo.UnpaidCargo()) {
-			SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+			SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
 			continue;
 		}
 
@@ -1460,7 +1460,7 @@ void VehiclePayment(Vehicle *front_v)
 
 				result |= 1;
 
-				SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+				SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
 			} else if (front_v->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
 				if (!cp->paid_for && (front_v->current_order.flags & OF_TRANSFER) != 0) {
 					Money profit = GetTransportedGoodsIncome(
@@ -1477,7 +1477,7 @@ void VehiclePayment(Vehicle *front_v)
 				}
 				result |= 2;
 
-				SETBIT(v->vehicle_flags, VF_CARGO_UNLOADING);
+				SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
 			}
 		}
 		v->cargo.InvalidateCache();
@@ -1527,7 +1527,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	if (v->type == VEH_TRAIN && !IsTileType(v->tile, MP_STATION)) {
 		/* The train reversed in the station. Take the "easy" way
 		 * out and let the train just leave as it always did. */
-		SETBIT(v->vehicle_flags, VF_LOADING_FINISHED);
+		SetBit(v->vehicle_flags, VF_LOADING_FINISHED);
 		return;
 	}
 
@@ -1570,7 +1570,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 				result |= 1;
 			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
 				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded);
-				SETBIT(ge->acceptance_pickup, GoodsEntry::PICKUP);
+				SetBit(ge->acceptance_pickup, GoodsEntry::PICKUP);
 
 				result |= 2;
 			} else {
@@ -1621,7 +1621,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			/* Skip loading this vehicle if another train/vehicle is already handling
 			 * the same cargo type at this station */
 			if (_patches.improved_load && cargo_left[v->cargo_type] <= 0) {
-				SETBIT(cargo_not_full, v->cargo_type);
+				SetBit(cargo_not_full, v->cargo_type);
 				continue;
 			}
 
@@ -1656,9 +1656,9 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 
 		if (v->cargo.Count() == v->cargo_cap) {
-			SETBIT(cargo_full, v->cargo_type);
+			SetBit(cargo_full, v->cargo_type);
 		} else {
-			SETBIT(cargo_not_full, v->cargo_type);
+			SetBit(cargo_not_full, v->cargo_type);
 		}
 	}
 

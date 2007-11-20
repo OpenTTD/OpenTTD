@@ -971,14 +971,14 @@ static void ToolbarOptionsClick(Window *w)
 
 	w = PopupMainToolbMenu(w, 2, STR_02C3_GAME_OPTIONS, 14, 0);
 
-	if (HasBit(_display_opt, DO_SHOW_TOWN_NAMES))    SETBIT(x,  6);
-	if (HasBit(_display_opt, DO_SHOW_STATION_NAMES)) SETBIT(x,  7);
-	if (HasBit(_display_opt, DO_SHOW_SIGNS))         SETBIT(x,  8);
-	if (HasBit(_display_opt, DO_WAYPOINTS))          SETBIT(x,  9);
-	if (HasBit(_display_opt, DO_FULL_ANIMATION))     SETBIT(x, 10);
-	if (HasBit(_display_opt, DO_FULL_DETAIL))        SETBIT(x, 11);
-	if (IsTransparencySet(TO_HOUSES) && IsTransparencySet(TO_TREES)) SETBIT(x, 12);
-	if (IsTransparencySet(TO_SIGNS))                     SETBIT(x, 13);
+	if (HasBit(_display_opt, DO_SHOW_TOWN_NAMES))    SetBit(x,  6);
+	if (HasBit(_display_opt, DO_SHOW_STATION_NAMES)) SetBit(x,  7);
+	if (HasBit(_display_opt, DO_SHOW_SIGNS))         SetBit(x,  8);
+	if (HasBit(_display_opt, DO_WAYPOINTS))          SetBit(x,  9);
+	if (HasBit(_display_opt, DO_FULL_ANIMATION))     SetBit(x, 10);
+	if (HasBit(_display_opt, DO_FULL_DETAIL))        SetBit(x, 11);
+	if (IsTransparencySet(TO_HOUSES) && IsTransparencySet(TO_TREES)) SetBit(x, 12);
+	if (IsTransparencySet(TO_SIGNS))                     SetBit(x, 13);
 	WP(w,menu_d).checked_items = x;
 }
 

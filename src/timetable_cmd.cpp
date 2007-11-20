@@ -121,7 +121,7 @@ CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32
 		if (p2 == 1) {
 			/* Start autofilling the timetable, which clears all the current
 			 * timings and clears the "timetable has started" bit. */
-			SETBIT(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+			SetBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
 			ClrBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
 
 			for (Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
@@ -155,7 +155,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	/* Make sure the timetable only starts when the vehicle reaches the first
  	 * order, not when travelling from the depot to the first station. */
  	if (v->cur_order_index == 0 && !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
- 		SETBIT(v->vehicle_flags, VF_TIMETABLE_STARTED);
+ 		SetBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
  		return;
  	}
 

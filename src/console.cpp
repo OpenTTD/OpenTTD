@@ -305,7 +305,7 @@ void IConsoleSwitch()
 			w->height = _screen.height / 3;
 			w->width = _screen.width;
 			_iconsole_mode = ICONSOLE_OPENED;
-			SETBIT(_no_scroll, SCROLL_CON); // override cursor arrows; the gamefield will not scroll
+			SetBit(_no_scroll, SCROLL_CON); // override cursor arrows; the gamefield will not scroll
 		} break;
 		case ICONSOLE_OPENED: case ICONSOLE_FULL:
 			DeleteWindowById(WC_CONSOLE, 0);

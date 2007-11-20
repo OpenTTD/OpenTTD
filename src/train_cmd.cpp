@@ -206,7 +206,7 @@ void TrainConsistChanged(Vehicle* v)
 			if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
 				UsesWagonOverride(u) && !HasBit(u->u.rail.cached_vis_effect, 7)) {
 				/* wagon is powered */
-				SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
+				SetBit(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
 			} else {
 				ClrBit(u->u.rail.flags, VRF_POWEREDWAGON);
 			}
@@ -747,7 +747,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			v->random_bits = VehicleRandomBits();
 
 			v->vehicle_flags = 0;
-			if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SETBIT(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
+			if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
 			v->group_id = DEFAULT_GROUP;
 
@@ -1465,14 +1465,14 @@ static void SwapTrainFlags(byte *swap_flag1, byte *swap_flag2)
 
 	/* Reverse the rail-flags (if needed) */
 	if (HasBit(flag1, VRF_GOINGUP)) {
-		SETBIT(*swap_flag2, VRF_GOINGDOWN);
+		SetBit(*swap_flag2, VRF_GOINGDOWN);
 	} else if (HasBit(flag1, VRF_GOINGDOWN)) {
-		SETBIT(*swap_flag2, VRF_GOINGUP);
+		SetBit(*swap_flag2, VRF_GOINGUP);
 	}
 	if (HasBit(flag2, VRF_GOINGUP)) {
-		SETBIT(*swap_flag1, VRF_GOINGDOWN);
+		SetBit(*swap_flag1, VRF_GOINGDOWN);
 	} else if (HasBit(flag2, VRF_GOINGDOWN)) {
-		SETBIT(*swap_flag1, VRF_GOINGUP);
+		SetBit(*swap_flag1, VRF_GOINGUP);
 	}
 }
 
@@ -1940,7 +1940,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		v->dest_tile = tfdd.tile;
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP;
-		if (!(p2 & DEPOT_SERVICE)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
+		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
 		v->current_order.dest = GetDepotByTile(tfdd.tile)->index;
 		v->current_order.refit_cargo = CT_INVALID;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -2262,7 +2262,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		/* PF didn't find the route */
 		if (!HasBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
 			/* it is first time the problem occurred, set the "path not found" flag */
-			SETBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
+			SetBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
 			/* and notify user about the event */
 			if (_patches.lost_train_warn && v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
@@ -2570,7 +2570,7 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 			/* For some reason tunnel tiles are always given as sloped :(
 			 * But they are not sloped... */
 			if (middle_z != v->z_pos && !IsTunnelTile(TileVirtXY(v->x_pos, v->y_pos))) {
-				SETBIT(v->u.rail.flags, (middle_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
+				SetBit(v->u.rail.flags, (middle_z > old_z) ? VRF_GOINGUP : VRF_GOINGDOWN);
 			}
 		}
 	}
@@ -3526,7 +3526,7 @@ void ConvertOldMultiheadToNew()
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN) {
-			SETBIT(v->subtype, 7); // indicates that it's the old format and needs to be converted in the next loop
+			SetBit(v->subtype, 7); // indicates that it's the old format and needs to be converted in the next loop
 		}
 	}
 

@@ -1686,7 +1686,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_CREATE, w->height, 0);
-		SETBIT(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
+		SetBit(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
 		break;
 
 	case WE_PAINT: {

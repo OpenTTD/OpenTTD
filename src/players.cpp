@@ -90,8 +90,8 @@ PlayerFace ConvertFromOldPlayerFace(uint32 face)
 	PlayerFace pf = 0;
 	GenderEthnicity ge = GE_WM;
 
-	if (HasBit(face, 31)) SetBitT(ge, GENDER_FEMALE);
-	if (HasBit(face, 27) && (HasBit(face, 26) == HasBit(face, 19))) SetBitT(ge, ETHNICITY_BLACK);
+	if (HasBit(face, 31)) SetBit(ge, GENDER_FEMALE);
+	if (HasBit(face, 27) && (HasBit(face, 26) == HasBit(face, 19))) SetBit(ge, ETHNICITY_BLACK);
 
 	SetPlayerFaceBits(pf, PFV_GEN_ETHN,    ge, ge);
 	SetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge, GB(face, 28, 3) <= 1);
@@ -603,7 +603,7 @@ byte GetPlayerRailtypes(PlayerID p)
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
 				assert(rvi->railtype < RAILTYPE_END);
-				SETBIT(rt, rvi->railtype);
+				SetBit(rt, rvi->railtype);
 			}
 		}
 	}
@@ -622,7 +622,7 @@ byte GetPlayerRoadtypes(PlayerID p)
 
 		if (e->type == VEH_ROAD && HasBit(ei->climates, _opt.landscape) &&
 				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
-			SETBIT(rt, HasBit(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+			SetBit(rt, HasBit(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}
 	}
 

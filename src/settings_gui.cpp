@@ -537,12 +537,12 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			if (x >= 10) {
 				// Increase button clicked
 				val = min(val + info->step, info->max);
-				SETBIT(_difficulty_click_b, btn);
+				SetBit(_difficulty_click_b, btn);
 			} else {
 				// Decrease button clicked
 				val -= info->step;
 				val = max(val,  info->min);
-				SETBIT(_difficulty_click_a, btn);
+				SetBit(_difficulty_click_a, btn);
 			}
 
 			// save value in temporary variable

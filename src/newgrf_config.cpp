@@ -137,7 +137,7 @@ GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_o
 		}
 
 		ClrBit(c->flags, GCF_INIT_ONLY);
-		if (init_only) SETBIT(c->flags, GCF_INIT_ONLY);
+		if (init_only) SetBit(c->flags, GCF_INIT_ONLY);
 
 		*dst = c;
 		dst = &c->next;
@@ -234,7 +234,7 @@ GRFListCompatibility IsGoodGRFConfigList()
 			if (f != NULL) {
 				md5sumToString(buf, lastof(buf), c->md5sum);
 				DEBUG(grf, 1, "NewGRF %08X (%s) not found; checksum %s. Compatibility mode on", BSWAP32(c->grfid), c->filename, buf);
-				SETBIT(c->flags, GCF_COMPATIBLE);
+				SetBit(c->flags, GCF_COMPATIBLE);
 
 				/* Non-found has precedence over compatibility load */
 				if (res != GLC_NOT_FOUND) res = GLC_COMPATIBLE;

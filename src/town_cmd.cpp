@@ -1725,9 +1725,9 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 
 			/* Special houses that there can be only one of. */
 			if (hs->building_flags & BUILDING_IS_CHURCH) {
-				SETBIT(oneof, TOWN_HAS_CHURCH);
+				SetBit(oneof, TOWN_HAS_CHURCH);
 			} else if (hs->building_flags & BUILDING_IS_STADIUM) {
-				SETBIT(oneof, TOWN_HAS_STADIUM);
+				SetBit(oneof, TOWN_HAS_STADIUM);
 			} else {
 				oneof = 0;
 			}
@@ -2012,7 +2012,7 @@ static void TownActionBuildStatue(Town* t)
 	TileIndex tile = t->xy;
 
 	if (CircularTileSearch(tile, 9, SearchTileForStatue, t->index))
-		SETBIT(t->statues, _current_player); // Once found and built, "inform" the Town
+		SetBit(t->statues, _current_player); // Once found and built, "inform" the Town
 }
 
 static void TownActionFundBuildings(Town* t)
@@ -2020,7 +2020,7 @@ static void TownActionFundBuildings(Town* t)
 	/* Build next tick */
 	t->grow_counter = 1;
 	/* If we were not already growing */
-	SETBIT(t->flags12, TOWN_IS_FUNDED);
+	SetBit(t->flags12, TOWN_IS_FUNDED);
 	/* And grow for 3 months */
 	t->fund_buildings_months = 3;
 }
@@ -2177,7 +2177,7 @@ static void UpdateTownGrowRate(Town *t)
 	if (m <= t->grow_counter)
 		t->grow_counter = m;
 
-	SETBIT(t->flags12, TOWN_IS_FUNDED);
+	SetBit(t->flags12, TOWN_IS_FUNDED);
 }
 
 static void UpdateTownAmounts(Town *t)
@@ -2267,7 +2267,7 @@ void ChangeTownRating(Town *t, int add, int max)
 		return;
 	}
 
-	SETBIT(t->have_ratings, _current_player);
+	SetBit(t->have_ratings, _current_player);
 
 	rating = t->ratings[_current_player];
 

@@ -208,7 +208,7 @@ static inline void ClearBridgeMiddle(TileIndex t)
 static inline void SetBridgeMiddle(TileIndex t, Axis a)
 {
 	assert(MayHaveBridgeAbove(t));
-	SETBIT(_m[t].m6, 6 + a);
+	SetBit(_m[t].m6, 6 + a);
 }
 
 /**

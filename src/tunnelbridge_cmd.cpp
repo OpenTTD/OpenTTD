@@ -1198,7 +1198,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 			SpriteID image = psid->sprite;
 			SpriteID pal   = psid->pal;
 			if (IsTransparencySet(TO_BRIDGES)) {
-				SETBIT(image, PALETTE_MODIFIER_TRANSPARENT);
+				SetBit(image, PALETTE_MODIFIER_TRANSPARENT);
 				pal = PALETTE_TO_TRANSPARENT;
 			}
 

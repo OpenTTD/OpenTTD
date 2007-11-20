@@ -3847,7 +3847,7 @@ static void AiHandleTakeover(Player *p)
 			return;
 		}
 
-		SETBIT(p->bankrupt_asked, best_pl->index);
+		SetBit(p->bankrupt_asked, best_pl->index);
 
 		if (best_pl->index == _local_player) {
 			p->bankrupt_timeout = 4440;

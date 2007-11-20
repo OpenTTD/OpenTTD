@@ -201,7 +201,7 @@ static void QuerySignEditWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 		case WE_CREATE:
-			SETBIT(_no_scroll, SCROLL_EDIT);
+			SetBit(_no_scroll, SCROLL_EDIT);
 			break;
 
 		case WE_PAINT:

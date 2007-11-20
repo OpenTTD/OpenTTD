@@ -247,9 +247,9 @@ template<typename T> static inline bool HasBit(const T x, const uint8 y)
  * @param y The bit position to set
  * @return The new value of the old value with the bit set
  */
-template<typename T> static inline T SETBIT(T& x, const uint8 y)
+template<typename T> static inline T SetBit(T& x, const uint8 y)
 {
-	return x |= (T)1U << y;
+	return x = (T)(x | (T)(1U << y));
 }
 
 /**

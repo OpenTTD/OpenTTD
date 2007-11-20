@@ -435,7 +435,7 @@ static uint32 lookup_manyofmany(const char *many, const char *str)
 		r = lookup_oneofmany(many, str, s - str);
 		if (r == -1) return (uint32)-1;
 
-		SETBIT(res, r); // value found, set it
+		SetBit(res, r); // value found, set it
 		if (*s == 0) break;
 		str = s + 1;
 	}
@@ -1684,7 +1684,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 		}
 
 		/* Mark file as static to avoid saving in savegame. */
-		if (is_static) SETBIT(c->flags, GCF_STATIC);
+		if (is_static) SetBit(c->flags, GCF_STATIC);
 
 		/* Add item to list */
 		*curr = c;

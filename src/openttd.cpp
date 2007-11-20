@@ -1375,7 +1375,7 @@ bool AfterLoadGame()
 					break;
 
 				case MP_STATION: {
-					if (HasBit(_m[t].m6, 3)) SETBIT(_m[t].m6, 2);
+					if (HasBit(_m[t].m6, 3)) SetBit(_m[t].m6, 2);
 					StationGfx gfx = GetStationGfx(t);
 					StationType st;
 					if (       IS_INT_INSIDE(gfx,   0,   8)) { // Railway station
@@ -2146,7 +2146,7 @@ bool AfterLoadGame()
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_ROAD && (v->u.road.state == 250 || v->u.road.state == 251)) {
-				SETBIT(v->u.road.state, RVS_IS_STOPPING);
+				SetBit(v->u.road.state, RVS_IS_STOPPING);
 			}
 		}
 	}
@@ -2188,7 +2188,7 @@ bool AfterLoadGame()
 		FOR_ALL_STATIONS(st) {
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				st->goods[c].last_speed = 0;
-				if (st->goods[c].cargo.Count() != 0) SETBIT(st->goods[c].acceptance_pickup, GoodsEntry::PICKUP);
+				if (st->goods[c].cargo.Count() != 0) SetBit(st->goods[c].acceptance_pickup, GoodsEntry::PICKUP);
 			}
 		}
 	}

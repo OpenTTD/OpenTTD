@@ -1106,7 +1106,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 		case WE_CREATE:
-			SETBIT(_no_scroll, SCROLL_EDIT);
+			SetBit(_no_scroll, SCROLL_EDIT);
 			break;
 
 		case WE_PAINT:
@@ -1680,7 +1680,7 @@ void ShowSaveLoadDialog(int mode)
 	DeleteWindowById(WC_SAVELOAD, 0);
 
 	_saveload_mode = mode;
-	SETBIT(_no_scroll, SCROLL_SAVE);
+	SetBit(_no_scroll, SCROLL_SAVE);
 
 	switch (mode) {
 		case SLD_SAVE_GAME:     GenerateFileName(); break;

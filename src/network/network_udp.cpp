@@ -398,7 +398,7 @@ void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFCo
 		config->name      = f->name;
 		config->info      = f->info;
 	}
-	SETBIT(config->flags, GCF_COPY);
+	SetBit(config->flags, GCF_COPY);
 }
 
 // Close UDP connection
