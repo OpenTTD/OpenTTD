@@ -140,7 +140,6 @@ static const byte _otherdir_mask[4] = {
 static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
 	uint bits;
-	int i;
 	RememberData rd;
 
 	assert(tpf->tracktype == TRANSPORT_WATER);
@@ -160,19 +159,16 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 	assert(TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY());
 
-	if ( (bits & (bits - 1)) == 0 ) {
-		/* only one direction */
-		i = 0;
-		while (!(bits & 1))
-			i++, bits >>= 1;
-
+	uint i = 0;
+	/* only one direction */
+	if (KillFirstBit(bits) == 0) {
+		i = FindFirstBit(bits);
 		rd = tpf->rd;
 		goto continue_here;
 	}
 	/* several directions */
-	i=0;
 	do {
-		if (!(bits & 1)) continue;
+		i = FindFirstBit(bits);
 		rd = tpf->rd;
 
 		/* Change direction 4 times only */
@@ -184,7 +180,7 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 			tpf->rd.pft_var6 = (byte)i;
 		}
 
-continue_here:;
+continue_here:
 		tpf->the_dir = (Trackdir)(i + (HasBit(_otherdir_mask[direction], i) ? 8 : 0));
 
 		if (!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, NULL)) {
@@ -192,7 +188,7 @@ continue_here:;
 		}
 
 		tpf->rd = rd;
-	} while (++i, bits >>= 1);
+	} while (ClrBit(bits, i) != 0);
 
 }
 
@@ -293,7 +289,7 @@ static inline void TPFMode1_NormalCase(TrackPathFinder* tpf, TileIndex tile, Til
 
 	if ((byte)bits != tpf->var2) {
 		bits &= _tpfmode1_and[direction];
-		bits = bits | (bits >> 8);
+		bits |= bits >> 8;
 	}
 	bits &= 0xBF;
 

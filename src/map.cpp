@@ -218,7 +218,7 @@ uint DistanceMax(TileIndex t0, TileIndex t1)
 {
 	const uint dx = delta(TileX(t0), TileX(t1));
 	const uint dy = delta(TileY(t0), TileY(t1));
-	return dx > dy ? dx : dy;
+	return max(dx, dy);
 }
 
 
@@ -248,9 +248,9 @@ uint DistanceFromEdge(TileIndex tile)
 	const uint yl = TileY(tile);
 	const uint xh = MapSizeX() - 1 - xl;
 	const uint yh = MapSizeY() - 1 - yl;
-	const uint minl = xl < yl ? xl : yl;
-	const uint minh = xh < yh ? xh : yh;
-	return minl < minh ? minl : minh;
+	const uint minl = min(xl, yl);
+	const uint minh = min(xh, yh);
+	return min(minl, minh);
 }
 
 /*!
