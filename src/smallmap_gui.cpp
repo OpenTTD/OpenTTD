@@ -60,17 +60,18 @@ static int _smallmap_industry_count;
 static uint _industries_per_column;
 
 /** Macro for ordinary entry of LegendAndColor */
-#define MK(a,b) {a, b, true, false, false}
+#define MK(a,b) {a, b, INVALID_INDUSTRYTYPE, true, false, false}
 /** Macro for end of list marker in arrays of LegendAndColor */
-#define MKEND() {0, STR_NULL, true, true, false}
+#define MKEND() {0, STR_NULL, INVALID_INDUSTRYTYPE, true, true, false}
 /** Macro for break marker in arrays of LegendAndColor.
  * It will have valid data, though */
-#define MS(a,b) {a, b, true, false, true}
+#define MS(a,b) {a, b, INVALID_INDUSTRYTYPE, true, false, true}
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
 	uint16 colour;     ///< color of the item on the map
 	StringID legend;   ///< string corresponding to the colored item
+	IndustryType type; ///< type of industry
 	bool show_on_map;  ///< for filtering industries, if true is shown on map in color
 	bool end;          ///< this is the end of the list
 	bool col_break;    ///< perform a break and go one collumn further
@@ -163,6 +164,7 @@ void BuildIndustriesLegend()
 		if (indsp->enabled) {
 			_legend_from_industries[j].legend = indsp->name;
 			_legend_from_industries[j].colour = indsp->map_colour;
+			_legend_from_industries[j].type = i;
 			_legend_from_industries[j].show_on_map = true;
 			_legend_from_industries[j].col_break = false;
 			_legend_from_industries[j].end = false;
@@ -819,15 +821,15 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			y_org = w->height - 44 - 11 - diff;
 			y = y_org;
 
-			uint i = 0;
 			for (;;) {
 
 				if (_smallmap_type == SMT_INDUSTRY) {
 					/* Industry name must be formated, since it's not in tiny font in the specs.
 					 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font.*/
 					SetDParam(0, tbl->legend);
-					SetDParam(1, _industry_counts[_industry_to_list_pos[i]]);
-					if (!_legend_from_industries[i].show_on_map) {
+					assert(tbl->type < NUM_INDUSTRYTYPES);
+					SetDParam(1, _industry_counts[tbl->type]);
+					if (!tbl->show_on_map) {
 						/* Simply draw the string, not the black border of the legend color.
 						 * This will enforce the idea of the disabled item */
 						DrawString(x + 11, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
@@ -836,14 +838,13 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 						GfxFillRect(x, y + 1, x + 8, y + 5, 0); // outer border of the legend color
 					}
 				} else {
-					/* Anything hat is not an industry is using normal process */
+					/* Anything that is not an industry is using normal process */
 					GfxFillRect(x, y + 1, x + 8, y + 5, 0);
 					DrawString(x + 11, y, tbl->legend, TC_FROMSTRING);
 				}
 				GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // legend color
 
 				tbl += 1;
-				i++;
 				y += 6;
 
 				if (tbl->end) { // end of the list
