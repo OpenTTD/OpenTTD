@@ -975,10 +975,15 @@ static const Widget _player_company_widgets[] = {
 {   WIDGETS_END},
 };
 
+
+/**
+ * Draws text "Vehicles:" and number of all vehicle types, or "(none)"
+ * @param player ID of player to print statistics of
+ */
 static void DrawPlayerVehiclesAmount(PlayerID player)
 {
 	const int x = 110;
-	int y = 72;
+	int y = 63;
 	const Vehicle *v;
 	uint train = 0;
 	uint road  = 0;
@@ -1035,6 +1040,10 @@ int GetAmountOwnedBy(const Player *p, PlayerID owner)
 				 (p->share_owners[3] == owner);
 }
 
+/**
+ * Draws list of all companies with shares
+ * @param p pointer to the Player structure
+ */
 static void DrawCompanyOwnerText(const Player *p)
 {
 	const Player *p2;
@@ -1101,23 +1110,30 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 			DrawWindowWidgets(w);
 
-			SetDParam(0, p->inaugurated_year);
-			DrawString(110, 25, STR_7038_INAUGURATED, TC_FROMSTRING);
-
-			DrawPlayerVehiclesAmount((PlayerID)w->window_number);
-
-			DrawString(110, 48, STR_7006_COLOR_SCHEME, TC_FROMSTRING);
-			/* Draw company-colour bus */
-			DrawSprite(SPR_VEH_BUS_SW_VIEW, PLAYER_SPRITE_COLOR(p->index), 215, 49);
-
+			/* Player face */
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
+			/* "xxx (Manager)" */
 			SetDParam(0, p->index);
 			DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
 
+			/* "Inaugurated:" */
+			SetDParam(0, p->inaugurated_year);
+			DrawString(110, 23, STR_7038_INAUGURATED, TC_FROMSTRING);
+
+			/* "Colour scheme:" */
+			DrawString(110, 43, STR_7006_COLOR_SCHEME, TC_FROMSTRING);
+			/* Draw company-colour bus */
+			DrawSprite(SPR_VEH_BUS_SW_VIEW, PLAYER_SPRITE_COLOR(p->index), 215, 44);
+
+			/* "Vehicles:" */
+			DrawPlayerVehiclesAmount((PlayerID)w->window_number);
+
+			/* "Company value:" */
 			SetDParam(0, CalculateCompanyValue(p));
 			DrawString(110, 106, STR_7076_COMPANY_VALUE, TC_FROMSTRING);
 
+			/* Shares list */
 			DrawCompanyOwnerText(p);
 
 			break;
