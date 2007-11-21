@@ -198,6 +198,9 @@
 				RelativePath=".\..\src\console_cmds.cpp">
 			</File>
 			<File
+				RelativePath=".\..\src\core\random_func.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\currency.cpp">
 			</File>
 			<File
@@ -256,9 +259,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\md5.cpp">
-			</File>
-			<File
-				RelativePath=".\..\src\mersenne.cpp">
 			</File>
 			<File
 				RelativePath=".\..\src\minilzo.cpp">
@@ -425,6 +425,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\console.h">
+			</File>
+			<File
+				RelativePath=".\..\src\core\random_func.hpp">
 			</File>
 			<File
 				RelativePath=".\..\src\currency.h">

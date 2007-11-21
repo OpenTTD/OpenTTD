@@ -10,6 +10,7 @@ cargotype.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
+core/random_func.cpp
 currency.cpp
 date.cpp
 debug.cpp
@@ -30,7 +31,6 @@ helpers.cpp
 landscape.cpp
 map.cpp
 md5.cpp
-mersenne.cpp
 minilzo.cpp
 misc.cpp
 mixer.cpp
@@ -108,6 +108,7 @@ cargopacket.h
 cargotype.h
 command.h
 console.h
+core/random_func.hpp
 currency.h
 date.h
 debug.h

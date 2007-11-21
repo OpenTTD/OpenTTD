@@ -7,6 +7,7 @@
 
 #include "gfx.h"
 #include "viewport.h"
+#include "core/random_func.hpp"
 
 void UpdateTownMaxPass(Town *t);
 
@@ -32,51 +33,8 @@ void ShowInfo(const char *str);
 void CDECL ShowInfoF(const char *str, ...);
 
 /* openttd.cpp */
-
-/**************
- * Warning: DO NOT enable this unless you understand what it does
- *
- * If enabled, in a network game all randoms will be dumped to the
- *  stdout if the first client joins (or if you are a client). This
- *  is to help finding desync problems.
- *
- * Warning: DO NOT enable this unless you understand what it does
- **************/
-
-//#define RANDOM_DEBUG
-
-
-// Enable this to produce higher quality random numbers.
-// Doesn't work with network yet.
-//#define MERSENNE_TWISTER
-
-// Mersenne twister functions
-void SeedMT(uint32 seed);
-uint32 RandomMT();
-
-
-#ifdef MERSENNE_TWISTER
-	static inline uint32 Random() { return RandomMT(); }
-	uint RandomRange(uint max);
-#else
-
-#ifdef RANDOM_DEBUG
-	#define Random() DoRandom(__LINE__, __FILE__)
-	uint32 DoRandom(int line, const char *file);
-	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
-	uint DoRandomRange(uint max, int line, const char *file);
-#else
-	uint32 Random();
-	uint RandomRange(uint max);
-#endif
-#endif // MERSENNE_TWISTER
-
 static inline TileIndex RandomTileSeed(uint32 r) { return TILE_MASK(r); }
 static inline TileIndex RandomTile() { return TILE_MASK(Random()); }
-
-
-uint32 InteractiveRandom(); // Used for random sequences that are not the same on the other end of the multiplayer link
-uint InteractiveRandomRange(uint max);
 
 /* texteff.cpp */
 void AddAnimatedTile(TileIndex tile);

@@ -163,7 +163,7 @@ void ShowOSErrorBox(const char *buf)
 
 int CDECL main(int argc, char* argv[])
 {
-	_random_seeds[1][1] = _random_seeds[1][0] = _random_seeds[0][1] = _random_seeds[0][0] = time(NULL);
+	SetRandomSeed(time(NULL));
 
 	return ttd_main(argc, argv);
 }

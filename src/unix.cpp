@@ -136,8 +136,7 @@ int CDECL main(int argc, char* argv[])
 	}
 #endif
 
-	_random_seeds[1][1] = _random_seeds[1][0] = _random_seeds[0][1] = _random_seeds[0][0] = time(NULL);
-	SeedMT(_random_seeds[0][1]);
+	SetRandomSeed(time(NULL));
 
 	signal(SIGPIPE, SIG_IGN);
 

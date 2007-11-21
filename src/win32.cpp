@@ -971,9 +971,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 #endif
 
 	/* setup random seed to something quite random */
-	_random_seeds[1][0] = _random_seeds[0][0] = GetTickCount();
-	_random_seeds[1][1] = _random_seeds[0][1] = _random_seeds[0][0] * 0x1234567;
-	SeedMT(_random_seeds[0][0]);
+	SetRandomSeed(GetTickCount());
 
 	argc = ParseCommandLine(cmdline, argv, lengthof(argv));
 

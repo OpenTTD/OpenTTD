@@ -27,57 +27,6 @@
 
 char _name_array[512][32];
 
-#ifndef MERSENNE_TWISTER
-
-#ifdef RANDOM_DEBUG
-#include "network/network_data.h"
-uint32 DoRandom(int line, const char *file)
-#else // RANDOM_DEBUG
-uint32 Random()
-#endif // RANDOM_DEBUG
-{
-
-uint32 s;
-uint32 t;
-
-#ifdef RANDOM_DEBUG
-	if (_networking && (DEREF_CLIENT(0)->status != STATUS_INACTIVE || !_network_server))
-		printf("Random [%d/%d] %s:%d\n",_frame_counter, (byte)_current_player, file, line);
-#endif
-
-	s = _random_seeds[0][0];
-	t = _random_seeds[0][1];
-	_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
-	return _random_seeds[0][1] = ROR(s, 3) - 1;
-}
-#endif // MERSENNE_TWISTER
-
-#if defined(RANDOM_DEBUG) && !defined(MERSENNE_TWISTER)
-uint DoRandomRange(uint max, int line, const char *file)
-{
-	return GB(DoRandom(line, file), 0, 16) * max >> 16;
-}
-#else
-uint RandomRange(uint max)
-{
-	return GB(Random(), 0, 16) * max >> 16;
-}
-#endif
-
-
-uint32 InteractiveRandom()
-{
-	uint32 t = _random_seeds[1][1];
-	uint32 s = _random_seeds[1][0];
-	_random_seeds[1][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
-	return _random_seeds[1][1] = ROR(s, 3) - 1;
-}
-
-uint InteractiveRandomRange(uint max)
-{
-	return GB(InteractiveRandom(), 0, 16) * max >> 16;
-}
-
 void InitializeVehicles();
 void InitializeWaypoints();
 void InitializeDepots();
