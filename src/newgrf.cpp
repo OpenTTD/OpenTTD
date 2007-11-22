@@ -2103,7 +2103,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 		/* GSF_CANAL */        NULL,
 		/* GSF_BRIDGE */       BridgeChangeInfo,
 		/* GSF_TOWNHOUSE */    TownHouseChangeInfo,
-		/* GSF_GLOBALVAR */    GlobalVarChangeInfo,
+		/* GSF_GLOBALVAR */    NULL, /* Global variables are handled during reservation */
 		/* GSF_INDUSTRYTILES */IndustrytilesChangeInfo,
 		/* GSF_INDUSTRIES */   IndustriesChangeInfo,
 		/* GSF_CARGOS */       NULL, /* Cargo is handled during reservation */
@@ -2227,7 +2227,7 @@ static void ReserveChangeInfo(byte *buf, int len)
 	buf++;
 	uint8 feature  = grf_load_byte(&buf);
 
-	if (feature != GSF_CARGOS) return;
+	if (feature != GSF_CARGOS && feature != GSF_GLOBALVAR) return;
 
 	uint8 numprops = grf_load_byte(&buf);
 	uint8 numinfo  = grf_load_byte(&buf);
@@ -2235,10 +2235,19 @@ static void ReserveChangeInfo(byte *buf, int len)
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
+		bool ignoring = false;
 
-		if (CargoChangeInfo(index, numinfo, prop, &buf, bufend - buf)) {
-			grfmsg(2, "ReserveChangeInfo: Ignoring property 0x%02X (not implemented)", prop);
+		switch (feature) {
+			default: NOT_REACHED();
+			case GSF_CARGOS:
+				ignoring = CargoChangeInfo(index, numinfo, prop, &buf, bufend - buf);
+				break;
+			case GSF_GLOBALVAR:
+				ignoring = GlobalVarChangeInfo(index, numinfo, prop, &buf, bufend - buf);
+				break;
 		}
+
+		if (ignoring) grfmsg(2, "ReserveChangeInfo: Ignoring property 0x%02X (not implemented)", prop);
 	}
 }
 
