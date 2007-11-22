@@ -1331,22 +1331,6 @@ bool AfterLoadGame()
 		return false;
 	}
 
-	/* Initialize windows */
-	ResetWindowSystem();
-	SetupColorsAndInitialWindow();
-
-	w = FindWindowById(WC_MAIN_WINDOW, 0);
-
-	WP(w,vp_d).scrollpos_x = _saved_scrollpos_x;
-	WP(w,vp_d).scrollpos_y = _saved_scrollpos_y;
-	WP(w,vp_d).dest_scrollpos_x = _saved_scrollpos_x;
-	WP(w,vp_d).dest_scrollpos_y = _saved_scrollpos_y;
-
-	vp = w->viewport;
-	vp->zoom = (ZoomLevel)min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
-	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
-	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
-
 	/* in version 4.1 of the savegame, is_active was introduced to determine
 	 * if a player does exist, rather then checking name_1 */
 	if (CheckSavegameVersionOldStyle(4, 1)) CheckIsPlayerActive();
@@ -2170,19 +2154,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Recalculate */
-	Group *g;
-	FOR_ALL_GROUPS(g) {
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (!IsEngineCountable(v)) continue;
-
-			if (v->group_id != g->index || v->type != g->vehicle_type || v->owner != g->owner) continue;
-
-			g->num_engines[v->engine_type]++;
-		}
-	}
-
 	if (CheckSavegameVersion(74)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) {
@@ -2217,6 +2188,35 @@ bool AfterLoadGame()
 				TreeGround groundType = GetTreeGround(t);
 				if (groundType != TREE_GROUND_SNOW_DESERT) SetTreeGroundDensity(t, groundType, 3);
 			}
+		}
+	}
+
+	/* Initialize windows */
+	ResetWindowSystem();
+	SetupColorsAndInitialWindow();
+
+	w = FindWindowById(WC_MAIN_WINDOW, 0);
+
+	WP(w,vp_d).scrollpos_x = _saved_scrollpos_x;
+	WP(w,vp_d).scrollpos_y = _saved_scrollpos_y;
+	WP(w,vp_d).dest_scrollpos_x = _saved_scrollpos_x;
+	WP(w,vp_d).dest_scrollpos_y = _saved_scrollpos_y;
+
+	vp = w->viewport;
+	vp->zoom = (ZoomLevel)min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
+	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
+	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+
+	/* Recalculate */
+	Group *g;
+	FOR_ALL_GROUPS(g) {
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (!IsEngineCountable(v)) continue;
+
+			if (v->group_id != g->index || v->type != g->vehicle_type || v->owner != g->owner) continue;
+
+			g->num_engines[v->engine_type]++;
 		}
 	}
 
