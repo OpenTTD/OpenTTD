@@ -1246,8 +1246,6 @@ static inline RailType UpdateRailType(RailType rt, RailType min)
 bool AfterLoadGame()
 {
 	TileIndex map_size = MapSize();
-	Window *w;
-	ViewPort *vp;
 	Player *p;
 
 	/* in version 2.1 of the savegame, town owner was unified. */
@@ -1344,9 +1342,6 @@ bool AfterLoadGame()
 	 *   But this exeption is not true for non dedicated network_servers! */
 	if (!_players[0].is_active && (!_networking || (_networking && _network_server && !_network_dedicated)))
 		DoStartupNewPlayer(false);
-
-	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
-	MarkWholeScreenDirty();
 
 	if (CheckSavegameVersion(72)) {
 		/* Locks/shiplifts in very old savegames had OWNER_WATER as owner */
@@ -2195,17 +2190,20 @@ bool AfterLoadGame()
 	ResetWindowSystem();
 	SetupColorsAndInitialWindow();
 
-	w = FindWindowById(WC_MAIN_WINDOW, 0);
+	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 
-	WP(w,vp_d).scrollpos_x = _saved_scrollpos_x;
-	WP(w,vp_d).scrollpos_y = _saved_scrollpos_y;
-	WP(w,vp_d).dest_scrollpos_x = _saved_scrollpos_x;
-	WP(w,vp_d).dest_scrollpos_y = _saved_scrollpos_y;
+	WP(w, vp_d).scrollpos_x = _saved_scrollpos_x;
+	WP(w, vp_d).scrollpos_y = _saved_scrollpos_y;
+	WP(w, vp_d).dest_scrollpos_x = _saved_scrollpos_x;
+	WP(w, vp_d).dest_scrollpos_y = _saved_scrollpos_y;
 
-	vp = w->viewport;
+	ViewPort *vp = w->viewport;
 	vp->zoom = (ZoomLevel)min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
 	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+
+	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
+	MarkWholeScreenDirty();
 
 	/* Recalculate */
 	Group *g;
