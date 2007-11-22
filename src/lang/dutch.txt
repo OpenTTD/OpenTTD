@@ -594,6 +594,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongeluk
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Bedrijfsinformatie
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Openen / sluiten van industrieën
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Veranderingen in de economie
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Productie veranderingen van industriën bezocht door speler
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Productie veranderingen van industriën bezocht door tegenstander(s)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andere productie aanpassingen van industriën
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Advies/informatie over voertuigen van de speler
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nieuwe voertuigen
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Verandering geaccepteerde goederen
@@ -1680,6 +1683,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bouw bru
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Bouw tramrails brug
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bouw wegtunnel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Bouw tramrails tunnel
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activeer/Deactiveer eenrichtingsverkeer
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Schakel tussen bouwen en verwijderen voor wegbouw
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Schakelaar tussen bouwen/verwijderen van tramrails
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selecteer richting van wegvoertuigdepot
@@ -3285,6 +3289,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Hoogte v
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centreer de kleine kaart op huidige positie
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Klein

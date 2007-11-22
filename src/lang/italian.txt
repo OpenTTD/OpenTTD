@@ -1685,6 +1685,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Costruis
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Costruisce un ponte tranviario
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Costruisce un tunnel stradale
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Costruisce un tunnel tranviario
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Attiva/disattiva strade a senso unico
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Seleziona fra costruzione/rimozione di strade
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Seleziona fra costruzione/rimozione di tranvie
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Seleziona l'orientamento del deposito automezzi
@@ -3290,6 +3291,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altezza 
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra la minimappa sulla posizione corrente
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Piccolo

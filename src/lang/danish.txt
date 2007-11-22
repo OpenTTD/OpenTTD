@@ -594,6 +594,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Uheld /
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Selskabsinformation
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Åbning / lukning af industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiændringer
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produktionsændringer for industrier forsynet af spilleren
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsændringer for industrier forsynet af deltager(e)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andre produktionsændringer for industri
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rådgivning / information om spillerens køretøjer
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køretøjer
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ændring i accepteret last
@@ -821,7 +824,7 @@ STR_02E4                                                        :{BLACK}{SKIP}{S
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Vælg måleenheder
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Vejkøretøjer
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Vælg den side af vejen, køretøjer skal køre i
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Vælg den side af vejen, køretøjer skal kører i
 STR_02E9_DRIVE_ON_LEFT                                          :Kør i venstre side
 STR_02EA_DRIVE_ON_RIGHT                                         :Kør i højre side
 STR_02EB_TOWN_NAMES                                             :{BLACK}Bynavne
@@ -1327,7 +1330,7 @@ STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for t
 
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Ombyg toget til at køre med en anden lasttype
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Ombyg toget
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den lasttype toget skal køre med
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den lasttype toget skal kører med
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ombyg toget til at køre med den markerede lasttype
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke ombygge toget...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
@@ -1680,6 +1683,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Byg bro
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Byg sporvejsbro
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Byg tunnel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Byg sporvejstunnel
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktiver/Deaktiver ensrettede veje
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Skift mellem bygning/fjernelse af veje
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Skift mellem bygning/fjernelse af sporveje
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vælg retning for værksted
@@ -2778,7 +2782,7 @@ STR_TRAIN_STOPPING                                              :{RED}Stopper
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Skinnetyperne passer ikke sammen
 STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
-STR_TRAIN_START_NO_CATENARY                                     :Toget kan ikke køre, fordi sporet ikke har køreledninger
+STR_TRAIN_START_NO_CATENARY                                     :Toget kan ikke kører, fordi sporet ikke har køreledninger
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING} er nu tilgængelig!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -3076,6 +3080,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} skal i
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} skal indlæses efter {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} kræver OpenTTD version {STRING} eller højere.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen, som den er lavet til at oversætte,
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF sæt er indlæst.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Tilføj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Tilføj et NewGRF sæt til listen
@@ -3284,6 +3289,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde a
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer det lille kort ved den nuværende position
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Lille

@@ -594,6 +594,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}事故�
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}会社情報
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}産業の開業／閉業
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}経済の変化
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}プレヤーが運送している産業の生産量が変更したとき
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}競争者が運送している産業の生産量が変更したとき
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}その他の産業の生産量が変更したとき
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}プレヤーの車両についての情報
 STR_020C_NEW_VEHICLES                                           :{YELLOW}車両の新登場
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}貨物の受入れの変化
@@ -1680,6 +1683,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}道路�
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}路面電車用橋を建設
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}道路のトンネルを建設します
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}路面電車用トンネルを建設
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}一方通行の道路を入／切
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}道路の建設／破壊を切り替えます
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}路面電車線の建設／破壊を切り替えます
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}車庫の配置の選択
@@ -3285,6 +3289,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}平地�
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}予約地図を現在の場所に移動します
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}町空港

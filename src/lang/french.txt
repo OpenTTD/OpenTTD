@@ -595,6 +595,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acciden
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informations corporatives
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Ouvertures/fermetures d'industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Changements économiques
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Changements de production des industries desservies par vous
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Changements de production des industries desservies par les autres
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Changement de production des industries non desservies
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Conseils / information sur les véhicules du joueur
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nouveaux véhicules
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changements d'acceptation de marchandises
@@ -1681,6 +1684,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construi
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construire un pont
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construire un tunnel routier
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construire un tunnel
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activer/Désactiver les routes à sens unique
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Basculer construire/détruire routes
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Basculer construire/retirer pour tramways
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Choisir orientation du dépôt routier
@@ -3286,6 +3290,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altitude
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer la carte sur la position actuelle
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Petit

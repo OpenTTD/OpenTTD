@@ -594,6 +594,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Olyckor
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Företagsinformation
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Öppning / stängning av industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Förändringar av ekonomin
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Förändringar i produktion vid industrier trafikerad av spelaren
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Förändringar i produktion vid industrier trafikerad av motståndare
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andra förändringar i produktion vid industrier.
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd / information om spelarens fordon
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nya fordon
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ändringar i godsacceptans
@@ -1680,6 +1683,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bygg vä
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Bygg spårvagnsbro
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bygg vägtunnel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Bygg spårvagnstunnel
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktivera/Deaktivera enkelriktade vägar
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Växla mellan att bygga/ta bort väg
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Växla byggande/rivande av spårvagnskonstruktion
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Välj riktning för bussgarage
@@ -3285,6 +3289,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Höjd av
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrera den lilla kartan på den nuvarande positionen
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Liten

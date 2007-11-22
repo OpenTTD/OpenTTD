@@ -594,6 +594,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acciden
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informació de l'Empresa
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Obrir / tancar d'indústries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Canvis de l'Economia
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Canvis de producció de l'indústria controlats pel jugador
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Canvis de producció de l'indústria controlats pel competidor(s)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Altres canvis de producció de l'indústria
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Avisos / informació dels teus vehicles
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nous vehicles
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Canvis en admisió de càrrega
@@ -1680,6 +1683,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construe
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construeix pont per tramvies
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construeix un túnel per carretera
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construeix túnel per tramvies
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activa/Desactiva les carreteres d'un sentit
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Intercanvia funció construeix/treu per la construcció de carreteres
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Canvia construeix/treu de la construcció de vies de tramvia
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selecciona la orientació de les Cotxeres
@@ -3285,6 +3289,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Alçada 
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar el mapa petit a la posició actual
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Petit

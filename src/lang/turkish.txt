@@ -594,6 +594,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kazalar
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Şirket bilgisi
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Fabrika açılış/kapanışları
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomi değişimleri
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Oyuncunun hizmet ettiği fabrikalardaki üretim değişiklikleri
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Rakiplerin hizmet ettiği fabrikalardaki üretim değişiklikleri
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Diğer fabrikalardaki üretim değişiklikleri
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Oyuncunun araçlarıyla ilgili ögüt / bilgi
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Yeni araçlar
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Kargo isteğindeki değişiklik
@@ -1679,6 +1682,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Köprü 
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Tramvay köprüsü yap
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Tünel Yap
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Tramvay tüneli yap
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Tek yönlü yolları etkinleştir/kapat
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Yol yap/sil arasında geçiş yap
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Tramvay yapımı/yıkımı
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Garaj yönünü seç
@@ -3074,6 +3078,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING} için 
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} önce, {STRING} ondan sonra yüklenmeli.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} sonra, {STRING} ondan önce yüklenmeli.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ekle
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle

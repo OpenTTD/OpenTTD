@@ -652,6 +652,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nehody 
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informace o společnosti
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Otevření / zavření továren
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Změny v ekonomice
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Změny produkce průmyslu obsluhovaného hráčem
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Změny produkce průmyslu obsluhovaného konkurencí
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Jiné změny produkce průmyslu
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rady / informace o hráčových vozidlech
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nový dopravní prostředek
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Změny příjmu zboží
@@ -1738,6 +1741,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Postavit
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Postavit tramvajový most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Postavit silniční tunel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Postavit tramvajový tunel
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Povolit / zakázat jednosměrné silnice
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Přepnout stavba / odstranění silnice
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Přepínání mezi výstavbou a bouráním tramvajové tratě
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Výběr orientace garáže
@@ -3349,6 +3353,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Výška 
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovat malou mapu na tomto místě
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Malé

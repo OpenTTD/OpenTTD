@@ -1113,6 +1113,9 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}새로운 게임 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}적재 정도 표시: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :끄기
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :소유한 회사
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :모든 회사
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}기본 철도 종류 (새 게임/불러오기 후): {ORANGE}{STRING}
@@ -1181,6 +1184,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :매우 빠름
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}2배 빠르게 성장하는 마을의 비율: {ORANGE}1 대 {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}2배 빠르게 성장하는 마을의 비율: {ORANGE}없음
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}초기의 도시 크기 배수: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}도로 건설 중 부조리한 도로 요소를 제거
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}인터페이스
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}건설
@@ -1657,7 +1661,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}여기�
 STR_180A_ROAD_CONSTRUCTION                                      :도로 건설
 STR_180A_TRAMWAY_CONSTRUCTION                                   :전찻길 건설
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}도로 섹션 건설
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}자동건설 모드로 도로 섹션 건설
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}전찻길 섹션 건설
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}자동건설 모드로 전차 섹션 건설
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}차고 건설 (차량의 제작/점검용)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}차량기지 건설 (차량 건설/점검용)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}버스 정류장 건설
@@ -1668,6 +1674,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}교량 �
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}철교 건설
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}터널 건설
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}터널 건설
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}일방통행 활성/비활성화
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}도로 제거툴 켜기/끄기
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}전찻길/신호등 제거툴 켜기/끄기
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}차고의 방향을 선택하십시오
@@ -2011,6 +2018,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}지형 �
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}터널을 먼저 제거하십시오
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}다리를 먼저 제거하십시오
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}같은 위치에서 시작하고 끝낼 수 없습니다
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}다리는 같은 높이를 연결해야 합니다
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}그 지형은 다리를 건설하기에 너무 낮습니다
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}시작과 끝은 한 줄 위에 있어야 합니다
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}터널 입구에 알맞지 않은 장소입니다
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2770,6 +2779,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}신형 {STRING} 이(가) 출시되었습니다!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}폭발한 차량을 팔 수 없습니다...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}차량의 시간표를 정할 수 없습니다...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}정거장에서만 기다릴 수 있습니다.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}이 차량은 이 정거장에 서지 않습니다.
@@ -3058,7 +3069,9 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING}(은)�
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING}의 부적절한 파라미터: 파라미터 {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING}은/는 반드시 {STRING}이전에 불러와야 합니다.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING}은/는 반드시 {STRING}다음에 불러와야 합니다.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING}는 OpenTTD {STRING} 버전이나 그 이상이 필요합니다.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일 자체는 번역용으로 디자인됨
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF이 너무 많습니다.
 
 STR_NEWGRF_ADD                                                  :{BLACK}추가
 STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRF 파일을 목록에 추가
@@ -3267,6 +3280,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}평지�
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}소형맵을 현재 위치에 위치시킵니다
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}소형 공항
@@ -3373,3 +3387,51 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}투자
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}예측
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}건설
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}목록에서 적당한 산업시설을 선택하십시오
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}고급
+STR_FACE_ADVANCED_TIP                                           :{BLACK}고급 얼굴 선택
+STR_FACE_SIMPLE                                                 :{BLACK}간단
+STR_FACE_SIMPLE_TIP                                             :{BLACK}간단한 얼굴 선택
+STR_FACE_LOAD                                                   :{BLACK}불러오기
+STR_FACE_LOAD_TIP                                               :{BLACK}즐겨찾는 얼굴 불러오기
+STR_FACE_LOAD_DONE                                              :{WHITE}당신이 즐겨찾는 얼굴을 OpenTTD 설정 파일로부터 불러왔습니다.
+STR_FACE_FACECODE                                               :{BLACK}플레이어 얼굴 없음.
+STR_FACE_FACECODE_TIP                                           :{BLACK}플레이어 얼굴 번호 보기/설정
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}플레이어 얼굴 번호 보기/설정
+STR_FACE_FACECODE_SET                                           :{WHITE}새 얼굴 번호 코드가 설정되었습니다.
+STR_FACE_FACECODE_ERR                                           :{WHITE}플레이어 얼굴 번호를 설정할 수 없습니다 - 0에서 4,294,967,295 사이의 값을 입력하십시오!
+STR_FACE_SAVE                                                   :{BLACK}저장
+STR_FACE_SAVE_TIP                                               :{BLACK}즐겨찾는 얼굴로 저장
+STR_FACE_SAVE_DONE                                              :{WHITE}이 얼굴이 OpenTTD 설정 파일에 즐겨찾는 얼굴로 저장될 것입니다.
+STR_FACE_EUROPEAN                                               :{BLACK}유럽인
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}유럽인 얼굴 선택
+STR_FACE_AFRICAN                                                :{BLACK}흑인
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}흑인 얼굴 선택
+STR_FACE_YES                                                    :예
+STR_FACE_NO                                                     :아니요
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}콧수염이나 귀걸이 착용
+STR_FACE_HAIR                                                   :머리:
+STR_FACE_HAIR_TIP                                               :{BLACK}머리 변경
+STR_FACE_EYEBROWS                                               :눈썹:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}눈썹 변경
+STR_FACE_EYECOLOUR                                              :눈동자 색:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}눈동자색 변경
+STR_FACE_GLASSES                                                :안경:
+STR_FACE_GLASSES_TIP                                            :{BLACK}안경 착용
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}안경 변경
+STR_FACE_NOSE                                                   :코:
+STR_FACE_NOSE_TIP                                               :{BLACK}코 변경
+STR_FACE_LIPS                                                   :입술:
+STR_FACE_MOUSTACHE                                              :콧수염:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}입술/콧수염 변경
+STR_FACE_CHIN                                                   :턱:
+STR_FACE_CHIN_TIP                                               :{BLACK}턱 변경
+STR_FACE_JACKET                                                 :자켓:
+STR_FACE_JACKET_TIP                                             :{BLACK}자켓 변경
+STR_FACE_COLLAR                                                 :옷깃:
+STR_FACE_COLLAR_TIP                                             :{BLACK}옷깃 변경
+STR_FACE_TIE                                                    :넥타이:
+STR_FACE_EARRING                                                :귀걸이:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}넥타이/귀걸이 변경
+########

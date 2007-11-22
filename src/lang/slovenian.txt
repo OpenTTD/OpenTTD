@@ -636,6 +636,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nesreč
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacije o podjetju
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Odpiranje / zapiranje industrij
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomske spremembe
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Proizvodne spremembe industrij v igralčevi oskrbi
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Proizvodne spremembe industrij v oskrbi tekmecev
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Spremembe proizvodnje drugih industrij
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Nasveti / informacije o igralčevem vozilu
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vozila
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Spremebe v sprejemanju tovora
@@ -1722,6 +1725,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Zgradi c
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Zgradi most za tramvaj
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Zgradi cestni predor
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Zgradi predor za tramvaj
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Omogoči/onemogoči enosmerne ceste
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Preklopi gradnja/rušenje cestnih konstrukcij
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Preklop gradi/odstrani za tramvaj progo
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Izberi smer garaže
@@ -3365,6 +3369,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Višina 
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrira majhen zemljevid na trenutno točko
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Majno letališče

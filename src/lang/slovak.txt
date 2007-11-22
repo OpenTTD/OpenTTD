@@ -480,9 +480,9 @@ STR_0162_JAN                                                    :Jan
 STR_0163_FEB                                                    :Feb
 STR_0164_MAR                                                    :Mar
 STR_0165_APR                                                    :Apr
-STR_0166_MAY                                                    :Maj
-STR_0167_JUN                                                    :Jun
-STR_0168_JUL                                                    :Jul
+STR_0166_MAY                                                    :Máj
+STR_0167_JUN                                                    :Jún
+STR_0168_JUL                                                    :Júl
 STR_0169_AUG                                                    :Aug
 STR_016A_SEP                                                    :Sep
 STR_016B_OCT                                                    :Okt
@@ -658,12 +658,15 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Havarie
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacie o spolocnosti
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Vznik a zánik priemyslu
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmeny v ekonomike
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Zmeny produkcie priemyslu obsluhovaného hrácom
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Zmeny produkcie priemyslu obsluhovaného konkurenciou
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Ostatné zmeny produkcie priemyslu
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Oznamenia / Informacie o vozidlach hraca
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nove vozidla
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Zmeny prijmu nakladu
 STR_020E_SUBSIDIES                                              :{YELLOW}Dotacie
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Hlavne informacie
-STR_MESSAGES_ALL                                                :{YELLOW}Nastavenie vs. typov sprav (vypnute/strucne/zapnute)
+STR_MESSAGES_ALL                                                :{YELLOW}Nastavenie všetkých správ (vypnuté/obsah/plné)
 STR_MESSAGE_SOUND                                               :{YELLOW}Prehrat zvuk pre strucne novinove spravy
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...prilis daleko z predchadzajuceho ciela
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Najlepsie spolocnosti, ktore dosiahli {NUM}{}({STRING} uroven)
@@ -880,7 +883,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Mena
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Vyber meny
-STR_MEASURING_UNITS                                             :{BLACK}Jednotky vzdialenosti
+STR_MEASURING_UNITS                                             :{BLACK}Merné jednotky
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Výber jednotiek vzdialenosti
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cestné vozidlá
@@ -896,7 +899,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Automati
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Vyber interval automatickeho ukladania
 STR_02F7_OFF                                                    :Vypnute
-STR_02F8_EVERY_3_MONTHS                                         :Kazde 3 mesiace
+STR_02F8_EVERY_3_MONTHS                                         :Každé 3 mesiace
 STR_02F9_EVERY_6_MONTHS                                         :Každých 6 mesiacov
 STR_02FA_EVERY_12_MONTHS                                        :Každých 12 mesiacov
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Spustit novu hru
@@ -1018,9 +1021,9 @@ STR_MONTH_JAN                                                   :Januar
 STR_MONTH_FEB                                                   :Februar
 STR_MONTH_MAR                                                   :Marec
 STR_MONTH_APR                                                   :April
-STR_MONTH_MAY                                                   :Maj
-STR_MONTH_JUN                                                   :Jun
-STR_MONTH_JUL                                                   :Jul
+STR_MONTH_MAY                                                   :Máj
+STR_MONTH_JUN                                                   :Jún
+STR_MONTH_JUL                                                   :Júl
 STR_MONTH_AUG                                                   :August
 STR_MONTH_SEP                                                   :September
 STR_MONTH_OCT                                                   :Oktober
@@ -1038,7 +1041,7 @@ STR_TONS                                                        :ton
 STR_LITERS                                                      :litrov
 STR_ITEMS                                                       :kusov
 STR_CRATES                                                      :debien
-STR_RES_OTHER                                                   :ine
+STR_RES_OTHER                                                   :iné
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -1083,33 +1086,33 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Nastaven
 
 STR_CONFIG_PATCHES_OFF                                          :nie
 STR_CONFIG_PATCHES_ON                                           :áno
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Zobrazit rychlost vozidla v stavovej liste: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Umoznit vystavbu na svahoch a na pobrezi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Zobrazovat rýchlost v stavovej lište vozidla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Umožnit výstavbu na svahoch a na pobreží: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Povolit úpravy terénu pod budovami, kolajami, ... : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit realistickejsiu velkost oblasti pokrytia: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Umoznit odstranenie viacerych mestskych ciest, mostov, ... : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Umoznit stavbu dlhych vlakov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit realistickejšiu velkost oblasti pokrytia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Umožnit odstránenie viacerých mestských ciest, mostov, ... : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Umožnit stavbu dlhých vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakazat vlakom a lodiam otacanie o 90 st.: {ORANGE}{STRING} {LTBLUE} (vyzaduje NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakom a lodiam otácanie o 90 st.: {ORANGE}{STRING} {LTBLUE} (vyžaduje NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Umoznit spajanie stanic: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Opustit stanicu ked jeden z nakladov je plny, pri 'plne naloz': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Pouzit vylepseny algoritmus nakladania: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Postupné nakladanie vozidiel: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacia: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vykladat tovar len v stanici kde je dopyt: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Umoznit stavbu dlhych mostov: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Umoznit zaradenie depa do zoznamu prikazov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflácia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vykladat náklad len v stanici kde je dopyt: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Umožnit stavbu dlhých mostov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Umožnit zaradenie depa do zoznamu príkazov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Sposob výstavby priemyslu produkujúceho suroviny: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žiadny
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :normálny
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vyhladávací
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Umoznit viac priemyslu rovnakeho typu v jednom meste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Umoznit viac priemyslu rovnakeho typu pri jednom meste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Rovnaky priemysel moze byt stavany blizko seba: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zobrazit dlhy format datumu v stavovej liste: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Zobrazit zel. signaly na strane, kde jazdia vozidla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zobrazovat dátum v stavovej lište v dlhom formáte: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Zobrazovat žel. signály na rovnakej strane ako jazdia vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Zobrazit rozpocet na konci roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch kompatibilna interpretacia prikazu nonstop: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Radenie cestnych vozidiel (podla mnozstva tovaru): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Radenie cestných vozidiel (podla množstva nákladu): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posúvat pohlad ked je kurzor myši na okraji okna: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Povolit zakúpenie exkluzívnych dopravných práv: {ORANGE}{STRING}
@@ -1120,26 +1123,26 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Váhov�
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit prejazdné zastávky na mestských cestách: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavbu oddelených staníc: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vzdy povolit stavbu malych letisk: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vždy povolit stavbu malých letísk: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Upozornit na stratu vlaku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Upozornit ak vlak nedokáže nájst cestu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Obnovenie prikazov vozidla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ano, okrem zastavenych vozidiel
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ano, u vsetkych vozidiel
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Upozornit ak je vlak stratovy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Upozornit ak je vlak stratový: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nikdy neprestat s vyrobou starych vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred/po dosiahnuti max. veku
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. mnozstvo penazi pre aut. obnovovanie vozidiel: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Dlzka zobrazenia chybovej spravy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Dĺžka zobrazenia chybovej správy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazit pocet obyvatelov mesta v jeho nazve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neviditelne stromy (pri priesvitnych budovach): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generátor uzemia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Povodny
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max. vzdialenost ropnych rafinerii od okraja mapy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximálna vzdialenost ropných rafinérií od okraja mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Clenitost terenu (len pre TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Velmi rovny
@@ -1157,19 +1160,19 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Vyskova
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoke hodnoty spomaluju hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatické opravy vrtulníkov v heliporte: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvarat panel uprav terenu s panelom stavby trati, ciest, ... : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvárat panel úprav terénu s panelmi výstavby: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pri posúvaní pohladu myšou posúvat mapu opacným smerom: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Plynulé posúvanie pohladu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Zobrazit údaje o rozmeroch pri výstavbe: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Zobrazit farebne schemy spolocnosti: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ziadne
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Vlastná spolocnost
-STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Vsetky spolocnosti
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Zobrazit farebné schémy spolocnosti: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :žiadne
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :vlastná spolocnost
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :všetky spolocnosti
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferovaný teamový chat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funkcia scrolovacieho kolieska: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zvacšit mapu
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Posúvat mapu
-STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Vypnuté
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :zvacšit mapu
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :posúvat pohlad
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :vypnuté
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Rychlost posúvania pohladu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Funkcia pravého tlacidla myši: {ORANGE}{STRING}
@@ -1182,20 +1185,20 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použit
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Vypnutý
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Vlastná spolocnost
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Všetky spolocnosti
-STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Zobrazovat ukazovatele nakladania a vykladania: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Vypnuté
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Vlastná spolocnost
-STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Všetky spolocnosti
-STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Povolit cestovné poriadky pre vozidlá: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Zobrazovat ukazovatele nakladania/vykladania: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :vypnuté
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :vlastná spolocnost
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :všetky spolocnosti
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Používat cestovné poriadky pre vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazovat cestovné poriadky v tikoch namiesto dní: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Predvolený typ kolají (v novej/nahranej hre): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normálne
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifikované
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :normálne
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :elektrifikované
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Prvé dostupné
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Posledné dostupné
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Najpoužívanejšie
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :prvé dostupné
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :posledné dostupné
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :najpoužívanejšie
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje výstavby ak nie sú dostupné vhodné vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
@@ -1220,39 +1223,39 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Implici
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}vypnuty
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Vypnut servisy, ak su vypnute poruchy: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Obmedzenie rychlosti pre vagony: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Obmedzenie rýchlosti pre vagóny: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Zakázat elektrifikovanú železnicu: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Farebne spravy sa prvykrat objavia v roku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Zobrazovat správy farebne od roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Zaciatok hry v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Koniec hry v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Mierne zmeny ekonomiky (viac mensich zmien)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit nakup akcii ostatnych spolocnosti
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri stavbe tahanim umiestnit semafory na kazde: {ORANGE}{STRING}. pole
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatická stavba semafórov pred: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit kupovanie podielov v ostatných spolocnostiach
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri stavbe tahaním umiestnit signály na každé: {ORANGE}{STRING}. pole
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticky stavat semafóry namiesto signálov pred rokom: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Struktúra mesta "žiadne cesty naviac" nie je platná v editore scenárov
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Struktúra mestských ciest: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :žiadne cesty naviac
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :žiadne cesty
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :štandardná
-STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepšie cesty
-STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :mriežka 2x2
-STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :mriežka 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :zdokonalená
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :bloky 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :bloky 3x3
 
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozicia hlavneho menu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Nalavo
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :V strede
-STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Napravo
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozícia hlavného menu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vlavo
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :v strede
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :vpravo
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Vzdialenost pre prichytenie okna: {ORANGE}{STRING} bodov
-STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vzdialenost pre prichytenie okna: {ORANGE}vypnute
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vzdialenost pre prichytenie okna: {ORANGE}vypnuté
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Rozvoj miest: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Žiadny
-STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Pomalý
-STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normálny
-STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rýchly
-STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Velmi rýchly
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :žiadny
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :pomalý
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :normálny
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :rýchly
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :velmi rýchly
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Pomer miest, ktoré sa budú rozvíjat rýchlejšie: {ORANGE}1 z {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Pomer miest, ktoré sa budú rozvíjat rýchlejšie: {ORANGE}Žiadny
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Pomer miest, ktoré sa budú rozvíjat rýchlejšie: {ORANGE}žiadne
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Násobok pociatocnej velkosti mesta: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Odstránit nezmyselné casti pri rekonštrukcii ciest
 
@@ -1744,6 +1747,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Postavit
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Postavit most s elektrickovou dráhou
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Postavit cestny tunel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Postavit tunel s elektrickovou dráhou
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Prepnút stavbu jednosmerných ciest
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Prepnut stavbu/odstranovanie cesty
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Prepnút stavbu/odstranovanie elektrickovej dráhy
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vybrat orientaciu garaze
@@ -2067,7 +2071,7 @@ STR_482F_COST                                                   :{BLACK}Cena: {Y
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tento typ priemyslu sa tu neda postavit ...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... les sa moze sadit len pod ciarou snehu
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} oznamuje skore uzavretie!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zasobovacie problemy donutili {STRING} oznamit skore uzavretie!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Kvôli zásobovacím problémom {STRING} oznamuje skoré uzavretie!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostatok dostupnej drevnej suroviny donutil {STRING} oznamit skore uzavretie!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zvyšuje produkciu!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nove nalezisko uhlia sa objavilo v {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
@@ -2122,7 +2126,7 @@ STR_5028_TUBULAR_ROAD_BRIDGE                                    :Kryty cestny mo
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}V ceste je prekazka
 STR_5801_TRANSMITTER                                            :Vysielac
-STR_5802_LIGHTHOUSE                                             :Majak
+STR_5802_LIGHTHOUSE                                             :Maják
 STR_5803_COMPANY_HEADQUARTERS                                   :Sidlo firmy
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}... sidlo firmy v ceste
 STR_5805_COMPANY_OWNED_LAND                                     :Spolocnostou vlastneny pozemok
@@ -2189,20 +2193,20 @@ STR_6804_CUSTOM                                                 :{BLACK}Vlastná
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Max. pocet konkurentov: {ORANGE}{COMMA}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maximálny pocet konkurentov: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Vznik konkurencie: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Pocet miest: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Pocet priemyslu: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximálny prvotný úver: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Pociatocny urok: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Náklady na prevádzku vozidiel: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Nákladnost prevádzky vozidiel: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Rychlost konkurencie: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligencia konkurencie: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Poruchy vozidiel: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Nasobok dotacii: {ORANGE}{STRING}
-STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Náklady na výstavbu: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Nákladnost výstavby: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Typ terénu: {ORANGE}{STRING}
-STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Rozsah oceanov/jazier: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Rozloha vodnej plochy: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomika: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Otacanie vlakov: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Havarie: {ORANGE}{STRING}
@@ -2221,13 +2225,13 @@ STR_681C_SLOW                                                   :Pomale
 STR_681D_MEDIUM                                                 :Stredne
 STR_681E_FAST                                                   :Rychle
 STR_681F_VERY_FAST                                              :Velmi rychle
-STR_VERY_LOW                                                    :Velmi nizke
-STR_6820_LOW                                                    :Nízky
-STR_6821_MEDIUM                                                 :Stredne
-STR_6822_HIGH                                                   :Vysoký
+STR_VERY_LOW                                                    :Velmi nízka
+STR_6820_LOW                                                    :Nízka
+STR_6821_MEDIUM                                                 :Stredná
+STR_6822_HIGH                                                   :Vysoká
 STR_6823_NONE                                                   :Ziadne
-STR_6824_REDUCED                                                :Znizene
-STR_6825_NORMAL                                                 :Normálny
+STR_6824_REDUCED                                                :Obmedzené
+STR_6825_NORMAL                                                 :Normálne
 STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
@@ -2752,7 +2756,7 @@ STR_8828_UNLOAD                                                 :{BLACK}Vylozit
 STR_REFIT                                                       :{BLACK}Prestavba
 STR_REFIT_TIP                                                   :{BLACK}Vyberte typ nákladu na prestavbu v tomto poradí. CTRL+klik na odstránenie príkazu prestavby
 STR_REFIT_ORDER                                                 :(Prestavba na {STRING})
-STR_TIMETABLE_VIEW                                              :{BLACK}Cestovný poriadok
+STR_TIMETABLE_VIEW                                              :{BLACK}CP
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Prepnút na zobrazenie cestovného poriadku
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec prikazov - -
@@ -2858,8 +2862,8 @@ STR_TIMETABLE_STATUS_ON_TIME                                    :Toto vozidlo id
 STR_TIMETABLE_STATUS_LATE                                       :Toto vozidlo mešká {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :Toto vozidlo ide {STRING} skor
 STR_TIMETABLE_TOTAL_TIME                                        :Na dokoncenie cestovného poriadku je potrebných {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Na dokoncenie cestovného poriadku je potrebných najmenej {STRING} (nie všetko je urcené)
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autovyplnenie
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Na dokoncenie cestovného poriadku je potrebných min. {STRING} (nie všetko je urcené)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Vyplnit
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vyplnit cestovný poriadok automaticky hodnotami z prvej cesty
 
 ##id 0x9000
@@ -3295,17 +3299,17 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. tra
 
 ########### String for New Landscape Generator
 
-STR_GENERATE                                                    :{WHITE}Generovat
+STR_GENERATE                                                    :{WHITE}Vytvorit
 STR_RANDOM                                                      :{BLACK}Nový kód
 STR_RANDOM_HELP                                                 :{BLACK}Zmenit nahodny kod pre generovanie terenu
-STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generovanie krajiny
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Vytvorenie krajiny
 STR_RANDOM_SEED                                                 :{BLACK}Náhodný kód:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Kliknite pre zadanie nahodneho kodu
 STR_LAND_GENERATOR                                              :{BLACK}Generátor krajiny:
 STR_TREE_PLACER                                                 :{BLACK}Generátor stromov:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Orientacia vyskovej mapy:
 STR_TERRAIN_TYPE                                                :{BLACK}Typ terénu:
-STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Mnozstvo jazier:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Rozloha mora:
 STR_SMOOTHNESS                                                  :{BLACK}Clenitost:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Vyska linie snehu:
 STR_DATE                                                        :{BLACK}Rok:
@@ -3329,7 +3333,7 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Ukoncit 
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Skutocne chcete ukoncit generovanie?
 STR_PROGRESS                                                    :{WHITE}{NUM}% hotovych
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
-STR_WORLD_GENERATION                                            :{BLACK}Generovanie krajiny
+STR_WORLD_GENERATION                                            :{BLACK}Vytvorenie krajiny
 STR_TREE_GENERATION                                             :{BLACK}Generovanie stromov
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Nepohyblive generovanie
 STR_CLEARING_TILES                                              :{BLACK}Generovanie nerovnosti a skal
@@ -3349,6 +3353,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Vyska ro
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovat malu mapu na aktualnu poziciu
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Male
