@@ -39,9 +39,6 @@ template<typename T> void Swap(T& a, T& b)
 }
 
 
-/** returns the (absolute) difference between two (scalar) variables */
-template <typename T> static inline T delta(T a, T b) { return a < b ? b - a : a - b; }
-
 /** Some enums need to have allowed incrementing (i.e. StationClassID) */
 #define DECLARE_POSTFIX_INCREMENT(type) \
 	FORCEINLINE type operator ++(type& e, int) \

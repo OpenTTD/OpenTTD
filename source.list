@@ -108,6 +108,7 @@ cargopacket.h
 cargotype.h
 command.h
 console.h
+core/math_func.hpp
 core/random_func.hpp
 currency.h
 date.h
