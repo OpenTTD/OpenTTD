@@ -690,9 +690,10 @@ CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint* p)
 {
 	CGPoint cgp;
 
+	p->y = window_height - p->y;
 	*p = [ qzview convertPoint:*p toView: nil ];
 	*p = [ window convertBaseToScreen:*p ];
-	p->y = window_height - p->y;
+	p->y = device_height - p->y;
 
 	cgp.x = p->x;
 	cgp.y = p->y;
