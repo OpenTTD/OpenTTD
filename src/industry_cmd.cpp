@@ -1428,8 +1428,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->production_rate[0] = indspec->production_rate[0];
 	i->production_rate[1] = indspec->production_rate[1];
 
-	/* don't use smooth economy for industries using production callbacks */
-	if (_patches.smooth_economy  && !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL))) {
+	/* don't use smooth economy for industries using production related callbacks */
+	if (_patches.smooth_economy &&
+	    !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
+	    !(HasBit(indspec->callback_flags, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CHANGE))             // production change callbacks
+	) {
 		i->production_rate[0] = min((RandomRange(256) + 128) * i->production_rate[0] >> 8 , 255);
 		i->production_rate[1] = min((RandomRange(256) + 128) * i->production_rate[1] >> 8 , 255);
 	}
@@ -2001,15 +2004,18 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 	bool standard = true;
 	bool suppress_message = false;
-	/* don't use smooth economy for industries using production callbacks */
-	bool smooth_economy = _patches.smooth_economy && !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL));
+	/* don't use smooth economy for industries using production related callbacks */
+	bool smooth_economy = _patches.smooth_economy &&
+	                      !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
+	                      !(HasBit(indspec->callback_flags, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CHANGE));            // production change callbacks
 	byte div = 0;
 	byte mul = 0;
 
 	if (HasBit(indspec->callback_flags, monthly ? CBM_IND_MONTHLYPROD_CHANGE : CBM_IND_PRODUCTION_CHANGE)) {
 		uint16 res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->xy);
+		standard = false;
+		monthly = false; // smooth economy is disabled so we need to fake random industry production change to allow 'use standard' result
 		if (res != CALLBACK_FAILED) {
-			standard = false;
 			suppress_message = HasBit(res, 7);
 			/* Get the custom message if any */
 			if (HasBit(res, 8)) str = MapGRFStringID(indspec->grf_prop.grffile->grfid, GB(GetRegister(0x100), 0, 16));
