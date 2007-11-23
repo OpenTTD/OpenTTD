@@ -233,7 +233,12 @@ void QZ_GameSizeChanged()
 
 static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 {
-	// For now there is only the quickdraw window mode subdriver, but a pure quartz one should be added.
+	long sysVersion;
+
+	if (Gestalt(gestaltSystemVersion, &sysVersion) == noErr && sysVersion >= 0x1040) {
+		return QZ_CreateWindowQuartzSubdriver(width, height, bpp);
+	}
+
 	return QZ_CreateWindowQuickdrawSubdriver(width, height, bpp);
 }
 

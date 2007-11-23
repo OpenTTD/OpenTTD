@@ -59,6 +59,7 @@ public:
 extern CocoaSubdriver* _cocoa_subdriver;
 
 CocoaSubdriver *QZ_CreateFullscreenSubdriver(int width, int height, int bpp);
+CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp);
 CocoaSubdriver *QZ_CreateWindowQuickdrawSubdriver(int width, int height, int bpp);
 
 void QZ_GameSizeChanged();
