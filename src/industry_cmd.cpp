@@ -1985,6 +1985,10 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 	);
 }
 
+enum {
+	PERCENT_TRANSPORTED_60 = 153,
+};
+
 /** Change industry production or do closure
  * @param i Industry for which changes are performed
  * @param monthly true if it's the monthly call, false if it's the random call
@@ -2036,18 +2040,23 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		if (smooth_economy) {
 			closeit = true;
 			for (byte j = 0; j < 2 && i->produced_cargo[j] != CT_INVALID; j++){
-				uint32 r = Random();
 				int old_prod, new_prod, percent;
+				int mult = (i->last_month_pct_transported[j] > PERCENT_TRANSPORTED_60) ? 1 : -1;
 
 				new_prod = old_prod = i->production_rate[j];
 
-				if (CHANCE16I(20, 1024, r)) new_prod -= max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
-				/* Chance of increasing becomes better when more is transported */
-				if (CHANCE16I(20 + (i->last_month_pct_transported[j] * 20 >> 8), 1024, r >> 16) && !only_decrease) {
-					new_prod += max(((RandomRange(50) + 10) * old_prod) >> 8, 1U);
+				if (only_decrease || CHANCE16(1, 3)) mult *= -1;
+
+				if (CHANCE16(1, 22)) {
+					new_prod += mult * (max(((RandomRange(50) + 10) * old_prod) >> 8, 1U));
 				}
 
+				/* Prevent production to overflow or Oil Rig passengers to be over-"produced" */
 				new_prod = Clamp(new_prod, 1, 255);
+
+				if (((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0) && j == 1)
+					new_prod = Clamp(new_prod, 0, 16);
+
 				/* Do not stop closing the industry when it has the lowest possible production rate */
 				if (new_prod == old_prod && old_prod > 1) {
 					closeit = false;
@@ -2067,7 +2076,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		} else {
 			if (only_decrease || CHANCE16(1, 3)) {
 				/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
-				if (!only_decrease && (i->last_month_pct_transported[0] > 153) != CHANCE16(1, 3)) {
+				if (!only_decrease && (i->last_month_pct_transported[0] > PERCENT_TRANSPORTED_60) != CHANCE16(1, 3)) {
 					mul = 1; // Increase production
 				} else {
 					div = 1; // Decrease production
