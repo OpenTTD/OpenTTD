@@ -2018,9 +2018,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				case 0x3: closeit = true; break;  // The industry announces imminent closure, and is physically removed from the map next month.
 				case 0x4: standard = true; break; // Do the standard random production change as if this industry was a primary one.
 				case 0x5: case 0x6: case 0x7:     // Divide production by 4, 8, 16
-				case 0x8: div = res - 0x5; break; // Divide production by 32
+				case 0x8: div = res - 0x3; break; // Divide production by 32
 				case 0x9: case 0xA: case 0xB:     // Multiply production by 4, 8, 16
-				case 0xC: mul = res - 0x9; break; // Multiply production by 32
+				case 0xC: mul = res - 0x7; break; // Multiply production by 32
 			}
 		}
 	}
