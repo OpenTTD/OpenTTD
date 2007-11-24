@@ -537,13 +537,10 @@ void Vehicle::PreDestructor()
 		delete this->Next();
 	}
 
-	Window **wp;
-	FOR_ALL_WINDOWS(wp) {
-		Window *w = *wp;
-		if (w->viewport != NULL && WP(w, vp_d).follow_vehicle == this->index) {
-			ScrollMainWindowTo(this->x_pos, this->y_pos); // lock the main view on the vehicle's last position
-			WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
-		}
+	Window *w = FindWindowById(WC_VEHICLE_VIEW, this->index);
+	if (w != NULL && WP(w, vp_d).follow_vehicle == this->index) {
+		ScrollMainWindowTo(this->x_pos, this->y_pos); // lock the main view on the vehicle's last position
+		WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
 	}
 }
 
