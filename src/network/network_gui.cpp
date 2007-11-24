@@ -602,14 +602,44 @@ enum {
 	NSSWND_ROWSIZE = 12
 };
 
-/* Uses network_ql_d (network_d, querystr_d and list_d) WP macro */
+/** Enum for NetworkStartServerWindow, referring to _network_start_server_window_widgets */
+enum NetworkStartServerWidgets {
+	NSSW_CLOSE           =  0,   ///< Close 'X' button
+	NSSW_GAMENAME        =  4,   ///< Background for editbox to set game name
+	NSSW_SETPWD          =  5,   ///< 'Set password' button
+	NSSW_SELMAP          =  7,   ///< 'Select map' list
+	NSSW_CONNTYPE_TXT    = 10,   ///< 'Connection type' droplist
+	NSSW_CONNTYPE_BTN    = 11,   ///< 'Connection type' droplist button
+	NSSW_CLIENTS_BTND    = 13,   ///< 'Max clients' downarrow
+	NSSW_CLIENTS_TXT     = 14,   ///< 'Max clients' text
+	NSSW_CLIENTS_BTNU    = 15,   ///< 'Max clients' uparrow
+	NSSW_COMPANIES_BTND  = 17,   ///< 'Max companies' downarrow
+	NSSW_COMPANIES_TXT   = 18,   ///< 'Max companies' text
+	NSSW_COMPANIES_BTNU  = 19,   ///< 'Max companies' uparrow
+	NSSW_SPECTATORS_BTND = 21,   ///< 'Max spectators' downarrow
+	NSSW_SPECTATORS_TXT  = 22,   ///< 'Max spectators' text
+	NSSW_SPECTATORS_BTNU = 23,   ///< 'Max spectators' uparrow
+	NSSW_LANGUAGE_TXT    = 25,   ///< 'Language spoken' droplist
+	NSSW_LANGUAGE_BTN    = 26,   ///< 'Language spoken' droplist button
+	NSSW_START           = 27,   ///< 'Start' button
+	NSSW_LOAD            = 28,   ///< 'Load' button
+	NSSW_CANCEL          = 29,   ///< 'Cancel' button
+};
+
+/** Handler of actions done in the NetworkStartServer window
+ @param w pointer to the Window structure
+ @param e pointer to window event
+ @note    Uses network_ql_d (network_d, querystr_d and list_d) WP macro
+ @see     struct _network_start_server_window_widgets
+ @see     enum NetworkStartServerWidgets
+*/
 static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 {
 	network_d *nd = &WP(w, network_ql_d).n;
 
 	switch (e->event) {
-	case WE_CREATE: /* focus input box */
-		nd->field = 3;
+	case WE_CREATE: // focus input box
+		nd->field = NSSW_GAMENAME;
 		_network_game_info.use_password = (_network_server_password[0] != '\0');
 		break;
 
@@ -617,6 +647,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		int y = NSSWND_START, pos;
 		const FiosItem *item;
 
+		/* draw basic widgets */
 		SetDParam(1, _connection_types_dropdown[_network_advertise]);
 		SetDParam(2, _network_game_info.clients_max);
 		SetDParam(3, _network_game_info.companies_max);
@@ -624,22 +655,15 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		SetDParam(5, STR_NETWORK_LANG_ANY + _network_game_info.server_lang);
 		DrawWindowWidgets(w);
 
-		GfxFillRect(11, 63, 258, 215, 0xD7);
-		DrawEditBox(w, &WP(w, network_ql_d).q, 3);
+		/* editbox to set game name */
+		DrawEditBox(w, &WP(w, network_ql_d).q, NSSW_GAMENAME);
 
-		DrawString(10, 22, STR_NETWORK_NEW_GAME_NAME, TC_GOLD);
-
-		DrawString(10, 43, STR_NETWORK_SELECT_MAP, TC_GOLD);
-
-		DrawString(280,  63, STR_NETWORK_CONNECTION, TC_GOLD);
-		DrawString(280,  95, STR_NETWORK_NUMBER_OF_CLIENTS, TC_GOLD);
-		DrawString(280, 127, STR_NETWORK_NUMBER_OF_COMPANIES, TC_GOLD);
-		DrawString(280, 159, STR_NETWORK_NUMBER_OF_SPECTATORS, TC_GOLD);
-		DrawString(280, 191, STR_NETWORK_LANGUAGE_SPOKEN, TC_GOLD);
-
+		/* if password is set, draw red '*' next to 'Set password' button */
 		if (_network_game_info.use_password) DoDrawString("*", 408, 23, TC_RED);
 
-		// draw list of maps
+		/* draw list of maps */
+		GfxFillRect(11, 63, 258, 215, 0xD7);  // black background of maps list
+
 		pos = w->vscroll.pos;
 		while (pos < _fios_num + 1) {
 			item = _fios_list + pos - 1;
@@ -661,17 +685,17 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		nd->field = e->we.click.widget;
 		switch (e->we.click.widget) {
-		case 0: /* Close 'X' */
-		case 22: /* Cancel button */
+		case NSSW_CLOSE:  // Close 'X'
+		case NSSW_CANCEL: // Cancel button
 			ShowNetworkGameWindow();
 			break;
 
-		case 4: /* Set password button */
-			nd->widget_id = 4;
+		case NSSW_SETPWD: // Set password button
+			nd->widget_id = NSSW_SETPWD;
 			ShowQueryString(BindCString(_network_server_password), STR_NETWORK_SET_PASSWORD, 20, 250, w, CS_ALPHANUMERAL);
 			break;
 
-		case 5: { /* Select map */
+		case NSSW_SELMAP: { // Select map
 			int y = (e->we.click.pt.y - NSSWND_START) / NSSWND_ROWSIZE;
 
 			y += w->vscroll.pos;
@@ -680,41 +704,47 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			nd->map = (y == 0) ? NULL : _fios_list + y - 1;
 			SetWindowDirty(w);
 			} break;
-		case 7: case 8: /* Connection type */
-			ShowDropDownMenu(w, _connection_types_dropdown, _network_advertise, 8, 0, 0); // do it for widget 8
+		case NSSW_CONNTYPE_TXT: case NSSW_CONNTYPE_BTN: // Connection type
+			ShowDropDownMenu(w, _connection_types_dropdown, _network_advertise, NSSW_CONNTYPE_BTN, 0, 0); // do it for widget NSSW_CONNTYPE_BTN
 			break;
-		case  9: case 11: // Click on up/down button for number of players
-		case 12: case 14: // Click on up/down button for number of companies
-		case 15: case 17: // Click on up/down button for number of spectators
+		case NSSW_CLIENTS_BTND:    case NSSW_CLIENTS_BTNU:    // Click on up/down button for number of clients
+		case NSSW_COMPANIES_BTND:  case NSSW_COMPANIES_BTNU:  // Click on up/down button for number of companies
+		case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU: // Click on up/down button for number of spectators
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 				switch (e->we.click.widget) {
 					default: NOT_REACHED();
-					case  9: case 11: _network_game_info.clients_max    = Clamp(_network_game_info.clients_max    + e->we.click.widget - 10, 2, MAX_CLIENTS); break;
-					case 12: case 14: _network_game_info.companies_max  = Clamp(_network_game_info.companies_max  + e->we.click.widget - 13, 1, MAX_PLAYERS); break;
-					case 15: case 17: _network_game_info.spectators_max = Clamp(_network_game_info.spectators_max + e->we.click.widget - 16, 0, MAX_CLIENTS); break;
+					case NSSW_CLIENTS_BTND: case NSSW_CLIENTS_BTNU:
+						_network_game_info.clients_max    = Clamp(_network_game_info.clients_max    + e->we.click.widget - NSSW_CLIENTS_TXT,    2, MAX_CLIENTS);
+						break;
+					case NSSW_COMPANIES_BTND: case NSSW_COMPANIES_BTNU:
+						_network_game_info.companies_max  = Clamp(_network_game_info.companies_max  + e->we.click.widget - NSSW_COMPANIES_TXT,  1, MAX_PLAYERS);
+						break;
+					case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU:
+						_network_game_info.spectators_max = Clamp(_network_game_info.spectators_max + e->we.click.widget - NSSW_SPECTATORS_TXT, 0, MAX_CLIENTS);
+						break;
 				}
 			}
 			_left_button_clicked = false;
 			break;
-		case 10: // Click on number of players
-			nd->widget_id = 10;
+		case NSSW_CLIENTS_TXT:    // Click on number of players
+			nd->widget_id = NSSW_CLIENTS_TXT;
 			SetDParam(0, _network_game_info.clients_max);
-			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_CLIENTS, 3, 50, w, CS_NUMERAL);
+			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_CLIENTS,    3, 50, w, CS_NUMERAL);
 			break;
-		case 13: // Click on number of companies
-			nd->widget_id = 13;
+		case NSSW_COMPANIES_TXT:  // Click on number of companies
+			nd->widget_id = NSSW_COMPANIES_TXT;
 			SetDParam(0, _network_game_info.companies_max);
-			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_COMPANIES, 3, 50, w, CS_NUMERAL);
+			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_COMPANIES,  3, 50, w, CS_NUMERAL);
 			break;
-		case 16: // Click on number of companies
-			nd->widget_id = 16;
+		case NSSW_SPECTATORS_TXT: // Click on number of spectators
+			nd->widget_id = NSSW_SPECTATORS_TXT;
 			SetDParam(0, _network_game_info.spectators_max);
 			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_SPECTATORS, 3, 50, w, CS_NUMERAL);
 			break;
-		case 18: case 19: { /* Language */
+		case NSSW_LANGUAGE_TXT: case NSSW_LANGUAGE_BTN: { // Language
 			uint sel = 0;
 			for (uint i = 0; i < lengthof(_language_dropdown) - 1; i++) {
 				if (_language_dropdown[i] == STR_NETWORK_LANG_ANY + _network_game_info.server_lang) {
@@ -722,10 +752,10 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 			}
-			ShowDropDownMenu(w, _language_dropdown, sel, 19, 0, 0);
+			ShowDropDownMenu(w, _language_dropdown, sel, NSSW_LANGUAGE_BTN, 0, 0);
 			break;
 		}
-		case 20: /* Start game */
+		case NSSW_START: // Start game
 			_is_network_server = true;
 
 			if (nd->map == NULL) { // start random new game
@@ -742,37 +772,38 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 				}
 			}
 			break;
-		case 21: /* Load game */
+		case NSSW_LOAD: // Load game
 			_is_network_server = true;
-			/* XXX - WC_NETWORK_WINDOW should stay, but if it stays, it gets
+			/* XXX - WC_NETWORK_WINDOW (this window) should stay, but if it stays, it gets
 			 * copied all the elements of 'load game' and upon closing that, it segfaults */
-			DeleteWindowById(WC_NETWORK_WINDOW, 0);
+			DeleteWindow(w);
 			ShowSaveLoadDialog(SLD_LOAD_GAME);
 			break;
 		}
 		break;
 
-	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+	case WE_DROPDOWN_SELECT: // we have selected a dropdown item in the list
 		switch (e->we.dropdown.button) {
-			case  8: _network_advertise                = (e->we.dropdown.index != 0); break;
-			case 10: _network_game_info.clients_max    = e->we.dropdown.index;        break;
-			case 12: _network_game_info.companies_max  = e->we.dropdown.index;        break;
-			case 14: _network_game_info.spectators_max = e->we.dropdown.index;        break;
-			case 16:
+			case NSSW_CONNTYPE_BTN:
+				_network_advertise = (e->we.dropdown.index != 0);
+				break;
+			case NSSW_LANGUAGE_BTN:
 				_network_game_info.server_lang = _language_dropdown[e->we.dropdown.index] - STR_NETWORK_LANG_ANY;
 				break;
+			default:
+				NOT_REACHED();
 		}
 
 		SetWindowDirty(w);
 		break;
 
 	case WE_MOUSELOOP:
-		if (nd->field == 3) HandleEditBox(w, &WP(w, network_ql_d).q, 3);
+		if (nd->field == NSSW_GAMENAME) HandleEditBox(w, &WP(w, network_ql_d).q, NSSW_GAMENAME);
 		break;
 
 	case WE_KEYPRESS:
-		if (nd->field == 3) {
-			if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e) == 1) break; // enter pressed
+		if (nd->field == NSSW_GAMENAME) {
+			if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, NSSW_GAMENAME, e) == 1) break; // enter pressed
 
 			ttd_strlcpy(_network_server_name, WP(w, network_ql_d).q.text.buf, sizeof(_network_server_name));
 		}
@@ -781,7 +812,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT:
 		if (e->we.edittext.str == NULL) break;
 
-		if (nd->widget_id == 4) {
+		if (nd->widget_id == NSSW_SETPWD) {
 			ttd_strlcpy(_network_server_password, e->we.edittext.str, lengthof(_network_server_password));
 			_network_game_info.use_password = (_network_server_password[0] != '\0');
 		} else {
@@ -789,9 +820,9 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			InvalidateWidget(w, nd->widget_id);
 			switch (nd->widget_id) {
 				default: NOT_REACHED();
-				case 10: _network_game_info.clients_max    = Clamp(value, 2, MAX_CLIENTS); break;
-				case 13: _network_game_info.companies_max  = Clamp(value, 1, MAX_PLAYERS); break;
-				case 16: _network_game_info.spectators_max = Clamp(value, 0, MAX_CLIENTS); break;
+				case NSSW_CLIENTS_TXT:    _network_game_info.clients_max    = Clamp(value, 2, MAX_CLIENTS); break;
+				case NSSW_COMPANIES_TXT:  _network_game_info.companies_max  = Clamp(value, 1, MAX_PLAYERS); break;
+				case NSSW_SPECTATORS_TXT: _network_game_info.spectators_max = Clamp(value, 0, MAX_CLIENTS); break;
 			}
 		}
 
@@ -801,34 +832,50 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _network_start_server_window_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   419,     0,    13, STR_NETWORK_START_GAME_WINDOW,  STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   419,    14,   243, 0x0,                            STR_NULL},
+/* Window decoration and background panel */
+{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW },               // NSSW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   419,     0,    13, STR_NETWORK_START_GAME_WINDOW,    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   419,    14,   243, STR_NULL,                         STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,   BGC,   100,   272,    22,    33, 0x0,                            STR_NETWORK_NEW_GAME_NAME_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,       STR_NETWORK_PASSWORD_TIP},
+/* Set game name and password widgets */
+{       WWT_TEXT,   RESIZE_NONE,   BGC,    10,    90,    22,    34, STR_NETWORK_NEW_GAME_NAME,        STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   100,   272,    22,    33, STR_NULL,                         STR_NETWORK_NEW_GAME_NAME_TIP},        // NSSW_GAMENAME
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,         STR_NETWORK_PASSWORD_TIP},             // NSSW_SETPWD
 
-{      WWT_INSET,   RESIZE_NONE,   BGC,    10,   271,    62,   216, 0x0,                            STR_NETWORK_SELECT_MAP_TIP},
-{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   259,   270,    63,   215, 0x0,                            STR_0190_SCROLL_BAR_SCROLLS_LIST},
+/* List of playable scenarios */
+{       WWT_TEXT,   RESIZE_NONE,   BGC,    10,   110,    43,    55, STR_NETWORK_SELECT_MAP,           STR_NULL},
+{      WWT_INSET,   RESIZE_NONE,   BGC,    10,   271,    62,   216, STR_NULL,                         STR_NETWORK_SELECT_MAP_TIP},           // NSSW_SELMAP
+{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   259,   270,    63,   215, STR_NULL,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
+
 /* Combo/selection boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
-{      WWT_INSET,   RESIZE_NONE,   BGC,   280,   410,    77,    88, STR_NETWORK_LAN_INTERNET_COMBO, STR_NETWORK_CONNECTION_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,    78,    87, STR_0225,                       STR_NETWORK_CONNECTION_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   280,   291,   109,   120, SPR_ARROW_DOWN,                 STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BGC,   292,   397,   109,   120, STR_NETWORK_CLIENTS_SELECT,     STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   398,   410,   109,   120, SPR_ARROW_UP,                   STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   280,   291,   141,   152, SPR_ARROW_DOWN,                 STR_NETWORK_NUMBER_OF_COMPANIES_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BGC,   292,   397,   141,   152, STR_NETWORK_COMPANIES_SELECT,   STR_NETWORK_NUMBER_OF_COMPANIES_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   398,   410,   141,   152, SPR_ARROW_UP,                   STR_NETWORK_NUMBER_OF_COMPANIES_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   280,   291,   173,   184, SPR_ARROW_DOWN,                 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BGC,   292,   397,   173,   184, STR_NETWORK_SPECTATORS_SELECT,  STR_NETWORK_NUMBER_OF_SPECTATORS_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   398,   410,   173,   184, SPR_ARROW_UP,                   STR_NETWORK_NUMBER_OF_SPECTATORS_TIP},
+{       WWT_TEXT,   RESIZE_NONE,   BGC,   280,   419,    63,    75, STR_NETWORK_CONNECTION,           STR_NULL},
+{      WWT_INSET,   RESIZE_NONE,   BGC,   280,   410,    77,    88, STR_NETWORK_LAN_INTERNET_COMBO,   STR_NETWORK_CONNECTION_TIP},           // NSSW_CONNTYPE_TXT
+{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,    78,    87, STR_0225,                         STR_NETWORK_CONNECTION_TIP},           // NSSW_CONNTYPE_BTN
 
-{      WWT_INSET,   RESIZE_NONE,   BGC,   280,   410,   205,   216, STR_NETWORK_LANGUAGE_COMBO,     STR_NETWORK_LANGUAGE_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,   206,   215, STR_0225,                       STR_NETWORK_LANGUAGE_TIP},
+{       WWT_TEXT,   RESIZE_NONE,   BGC,   280,   419,    95,   107, STR_NETWORK_NUMBER_OF_CLIENTS,    STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   280,   291,   109,   120, SPR_ARROW_DOWN,                   STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_BTND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BGC,   292,   397,   109,   120, STR_NETWORK_CLIENTS_SELECT,       STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_TXT
+{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   398,   410,   109,   120, SPR_ARROW_UP,                     STR_NETWORK_NUMBER_OF_CLIENTS_TIP},    // NSSW_CLIENTS_BTNU
 
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    40,   140,   224,   235, STR_NETWORK_START_GAME,         STR_NETWORK_START_GAME_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   150,   250,   224,   235, STR_NETWORK_LOAD_GAME,          STR_NETWORK_LOAD_GAME_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   260,   360,   224,   235, STR_012E_CANCEL,                STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   BGC,   280,   419,   127,   139, STR_NETWORK_NUMBER_OF_COMPANIES,  STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   280,   291,   141,   152, SPR_ARROW_DOWN,                   STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_BTND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BGC,   292,   397,   141,   152, STR_NETWORK_COMPANIES_SELECT,     STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_TXT
+{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   398,   410,   141,   152, SPR_ARROW_UP,                     STR_NETWORK_NUMBER_OF_COMPANIES_TIP},  // NSSW_COMPANIES_BTNU
+
+{       WWT_TEXT,   RESIZE_NONE,   BGC,   280,   419,   159,   171, STR_NETWORK_NUMBER_OF_SPECTATORS, STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   280,   291,   173,   184, SPR_ARROW_DOWN,                   STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_BTND
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BGC,   292,   397,   173,   184, STR_NETWORK_SPECTATORS_SELECT,    STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_TXT
+{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   398,   410,   173,   184, SPR_ARROW_UP,                     STR_NETWORK_NUMBER_OF_SPECTATORS_TIP}, // NSSW_SPECTATORS_BTNU
+
+{       WWT_TEXT,   RESIZE_NONE,   BGC,   280,   419,   191,   203, STR_NETWORK_LANGUAGE_SPOKEN,      STR_NULL},
+{      WWT_INSET,   RESIZE_NONE,   BGC,   280,   410,   205,   216, STR_NETWORK_LANGUAGE_COMBO,       STR_NETWORK_LANGUAGE_TIP},             // NSSW_LANGUAGE_TXT
+{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,   206,   215, STR_0225,                         STR_NETWORK_LANGUAGE_TIP},             // NSSW_LANGUAGE_BTN
+
+/* Buttons Start / Load / Cancel */
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    40,   140,   224,   235, STR_NETWORK_START_GAME,           STR_NETWORK_START_GAME_TIP},           // NSSW_START
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   150,   250,   224,   235, STR_NETWORK_LOAD_GAME,            STR_NETWORK_LOAD_GAME_TIP},            // NSSW_LOAD
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   260,   360,   224,   235, STR_012E_CANCEL,                  STR_NULL},                             // NSSW_CANCEL
+
 {   WIDGETS_END},
 };
 
