@@ -209,18 +209,51 @@ static void SortNetworkGameList(network_ql_d *nqld)
 	nqld->l.flags &= ~VL_RESORT;
 }
 
-/* Uses network_ql_d (network_d, querystr_d and list_d) WP macro */
+/** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
+enum NetworkGameWindowWidgets {
+	NGWW_CLOSE    = 0,  ///< Close 'X' button
+	NGWW_CONN_TXT = 4,  ///< 'Connection' droplist
+	NGWW_CONN_BTN = 5,  ///< 'Connection' droplist button
+	NGWW_PLAYER   = 6,  ///< Panel with editbox to set player name
+
+	NGWW_NAME     = 7,  ///< 'Name' button
+	NGWW_CLIENTS,       ///< 'Clients' button
+	NGWW_INFO,          ///< Third button in the game list panel
+
+	NGWW_MATRIX   = 10, ///< Panel with list of games
+
+	NGWW_DETAILS  = 12, ///< Panel with game details
+	NGWW_JOIN     = 13, ///< 'Join game' button
+	NGWW_REFRESH  = 14, ///< 'Refresh server' button
+	NGWW_NEWGRF   = 15, ///< 'NewGRF Settings' button
+
+	NGWW_FIND     = 16, ///< 'Find server' button
+	NGWW_ADD,           ///< 'Add server' button
+	NGWW_START,         ///< 'Start server' button
+	NGWW_CANCEL,        ///< 'Cancel' button
+};
+
+/**
+ * Handler of actions done in the NetworkStartServer window
+ *
+ * @param w pointer to the Window structure
+ * @param e pointer to window event
+ * @note    Uses network_ql_d (network_d, querystr_d and list_d) WP macro
+ * @see     struct _network_game_window_widgets
+ * @see     enum NetworkGameWindowWidgets
+ */
+
 static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 {
 	network_d *nd = &WP(w, network_ql_d).n;
 	list_d *ld = &WP(w, network_ql_d).l;
 
 	switch (e->event) {
-	case WE_CREATE: /* Focus input box */
+	case WE_CREATE: // Focus input box
 		w->vscroll.cap = 13;
 		w->resize.step_height = NET_PRC__SIZE_OF_ROW;
 
-		nd->field = 3;
+		nd->field = NGWW_PLAYER;
 		nd->server = NULL;
 
 		WP(w, network_ql_d).sort_list = NULL;
@@ -238,14 +271,16 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		}
 		if (ld->flags & VL_RESORT) SortNetworkGameList(&WP(w, network_ql_d));
 
-		SetWindowWidgetDisabledState(w, 17, sel == NULL);
-		/* Join Button disabling conditions */
-		SetWindowWidgetDisabledState(w, 16, sel == NULL || // no Selected Server
+		/* 'Refresh' button invisible if no server selected */
+		SetWindowWidgetDisabledState(w, NGWW_REFRESH, sel == NULL);
+		/* 'Join' button disabling conditions */
+		SetWindowWidgetDisabledState(w, NGWW_JOIN, sel == NULL || // no Selected Server
 				!sel->online || // Server offline
 				sel->info.clients_on >= sel->info.clients_max || // Server full
 				!sel->info.compatible); // Revision mismatch
 
-		SetWindowWidgetHiddenState(w, 18, sel == NULL ||
+		/* 'NewGRF Settings' button invisible if no NewGRF is used */
+		SetWindowWidgetHiddenState(w, NGWW_NEWGRF, sel == NULL ||
 				!sel->online ||
 				sel->info.grfconfig == NULL);
 
@@ -253,23 +288,23 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		SetDParam(1, _lan_internet_types_dropdown[_network_lan_internet]);
 		DrawWindowWidgets(w);
 
-		DrawEditBox(w, &WP(w, network_ql_d).q, 3);
+		/* Edit box to set player name */
+		DrawEditBox(w, &WP(w, network_ql_d).q, NGWW_PLAYER);
 
-		DrawString(9, 23, STR_NETWORK_CONNECTION, TC_GOLD);
-		DrawString(w->widget[3].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
+		DrawString(w->widget[NGWW_PLAYER].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
 
 		/* Sort based on widgets: name, clients, compatibility */
 		switch (ld->sort_type) {
-			case 6 - 6: DoDrawString(arrow, w->widget[6].right - 10, 42, TC_BLACK); break;
-			case 7 - 6: DoDrawString(arrow, w->widget[7].right - 10, 42, TC_BLACK); break;
-			case 8 - 6: DoDrawString(arrow, w->widget[8].right - 10, 42, TC_BLACK); break;
+			case NGWW_NAME    - NGWW_NAME: DoDrawString(arrow, w->widget[NGWW_NAME].right    - 10, 42, TC_BLACK); break;
+			case NGWW_CLIENTS - NGWW_NAME: DoDrawString(arrow, w->widget[NGWW_CLIENTS].right - 10, 42, TC_BLACK); break;
+			case NGWW_INFO    - NGWW_NAME: DoDrawString(arrow, w->widget[NGWW_INFO].right    - 10, 42, TC_BLACK); break;
 		}
 
 		{ // draw list of games
 			uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
 			int32 n = 0;
 			int32 pos = w->vscroll.pos;
-			uint max_name_width = w->widget[6].right - w->widget[6].left - 5;
+			uint max_name_width = w->widget[NGWW_NAME].right - w->widget[NGWW_NAME].left - 5;
 			const NetworkGameList *cur_item = _network_game_list;
 
 			while (pos > 0 && cur_item != NULL) {
@@ -278,28 +313,28 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			}
 
 			while (cur_item != NULL) {
-				// show highlighted item with a different colour
-				if (cur_item == sel) GfxFillRect(w->widget[6].left + 1, y - 2, w->widget[8].right - 1, y + 9, 10);
+				/* show highlighted item with a different colour */
+				if (cur_item == sel) GfxFillRect(w->widget[NGWW_NAME].left + 1, y - 2, w->widget[NGWW_INFO].right - 1, y + 9, 10);
 
 				SetDParamStr(0, cur_item->info.server_name);
-				DrawStringTruncated(w->widget[6].left + 5, y, STR_02BD, TC_BLACK, max_name_width);
+				DrawStringTruncated(w->widget[NGWW_NAME].left + 5, y, STR_02BD, TC_BLACK, max_name_width);
 
 				SetDParam(0, cur_item->info.clients_on);
 				SetDParam(1, cur_item->info.clients_max);
 				SetDParam(2, cur_item->info.companies_on);
 				SetDParam(3, cur_item->info.companies_max);
-				DrawStringCentered(w->widget[7].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
+				DrawStringCentered(w->widget[NGWW_CLIENTS].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
 
-				// only draw icons if the server is online
+				/* only draw icons if the server is online */
 				if (cur_item->online) {
-					// draw a lock if the server is password protected.
-					if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, w->widget[8].left + 5, y - 1);
+					/* draw a lock if the server is password protected */
+					if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, w->widget[NGWW_INFO].left + 5, y - 1);
 
-					// draw red or green icon, depending on compatibility with server.
-					DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), w->widget[8].left + 15, y);
+					/* draw red or green icon, depending on compatibility with server */
+					DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), w->widget[NGWW_INFO].left + 15, y);
 
-					// draw flag according to server language
-					DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, PAL_NONE, w->widget[8].left + 25, y);
+					/* draw flag according to server language */
+					DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, PAL_NONE, w->widget[NGWW_INFO].left + 25, y);
 				}
 
 				cur_item = cur_item->next;
@@ -309,26 +344,26 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* Draw the right menu */
-		GfxFillRect(w->widget[15].left + 1, 43, w->widget[15].right - 1, 92, 157);
+		GfxFillRect(w->widget[NGWW_DETAILS].left + 1, 43, w->widget[NGWW_DETAILS].right - 1, 92, 157);
 		if (sel == NULL) {
-			DrawStringCentered(w->widget[15].left + 115, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
+			DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
 		} else if (!sel->online) {
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringCentered(w->widget[15].left + 115, 68, STR_ORANGE, TC_FROMSTRING); // game name
+			DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, 68, STR_ORANGE, TC_FROMSTRING); // game name
 
-			DrawStringCentered(w->widget[15].left + 115, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING); // server offline
+			DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING); // server offline
 		} else { // show game info
 			uint16 y = 100;
-			const uint16 x = w->widget[15].left + 5;
+			const uint16 x = w->widget[NGWW_DETAILS].left + 5;
 
-			DrawStringCentered(w->widget[15].left + 115, 48, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
+			DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, 48, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
 
 
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringCenteredTruncated(w->widget[15].left, w->widget[15].right, 62, STR_ORANGE, TC_BLACK); // game name
+			DrawStringCenteredTruncated(w->widget[NGWW_DETAILS].left, w->widget[NGWW_DETAILS].right, 62, STR_ORANGE, TC_BLACK); // game name
 
 			SetDParamStr(0, sel->info.map_name);
-			DrawStringCenteredTruncated(w->widget[15].left, w->widget[15].right, 74, STR_02BD, TC_BLACK); // map name
+			DrawStringCenteredTruncated(w->widget[NGWW_DETAILS].left, w->widget[NGWW_DETAILS].right, 74, STR_02BD, TC_BLACK); // map name
 
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
@@ -370,12 +405,12 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			y += 2;
 
 			if (!sel->info.compatible) {
-				DrawStringCentered(w->widget[15].left + 115, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, TC_FROMSTRING); // server mismatch
+				DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, TC_FROMSTRING); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
-				// Show: server full, when clients_on == clients_max
-				DrawStringCentered(w->widget[15].left + 115, y, STR_NETWORK_SERVER_FULL, TC_FROMSTRING); // server full
+				/* Show: server full, when clients_on == clients_max */
+				DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_SERVER_FULL, TC_FROMSTRING); // server full
 			} else if (sel->info.use_password) {
-				DrawStringCentered(w->widget[15].left + 115, y, STR_NETWORK_PASSWORD, TC_FROMSTRING); // password warning
+				DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_PASSWORD, TC_FROMSTRING); // password warning
 			}
 
 			y += 10;
@@ -385,24 +420,24 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		nd->field = e->we.click.widget;
 		switch (e->we.click.widget) {
-		case 14: // Cancel button
+		case NGWW_CANCEL: // Cancel button
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
 			break;
-		case 4: case 5:
-			ShowDropDownMenu(w, _lan_internet_types_dropdown, _network_lan_internet, 5, 0, 0); // do it for widget 5
+		case NGWW_CONN_TXT: case NGWW_CONN_BTN: // 'Connection' droplist
+			ShowDropDownMenu(w, _lan_internet_types_dropdown, _network_lan_internet, NGWW_CONN_BTN, 0, 0); // do it for widget NSSW_CONN_BTN
 			break;
-		case 6: /* Sort by name */
-		case 7: /* Sort by connected clients */
-		case 8: /* Connectivity (green dot) */
-			if (ld->sort_type == e->we.click.widget - 6) ld->flags ^= VL_DESC;
+		case NGWW_NAME: // Sort by name
+		case NGWW_CLIENTS: // Sort by connected clients
+		case NGWW_INFO: // Connectivity (green dot)
+			if (ld->sort_type == e->we.click.widget - NGWW_NAME) ld->flags ^= VL_DESC;
 			ld->flags |= VL_RESORT;
-			ld->sort_type = e->we.click.widget - 6;
+			ld->sort_type = e->we.click.widget - NGWW_NAME;
 
 			_ng_sorting.order = !!(ld->flags & VL_DESC);
 			_ng_sorting.criteria = ld->sort_type;
 			SetWindowDirty(w);
 			break;
-		case 9: { /* Matrix to show networkgames */
+		case NGWW_MATRIX: { // Matrix to show networkgames
 			NetworkGameList *cur_item;
 			uint32 id_v = (e->we.click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
 
@@ -415,52 +450,54 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			nd->server = cur_item;
 			SetWindowDirty(w);
 		} break;
-		case 11: /* Find server automatically */
+		case NGWW_FIND: // Find server automatically
 			switch (_network_lan_internet) {
 				case 0: NetworkUDPSearchGame(); break;
 				case 1: NetworkUDPQueryMasterServer(); break;
 			}
 			break;
-		case 12: { // Add a server
-				ShowQueryString(
+		case NGWW_ADD: { // Add a server
+			ShowQueryString(
 				BindCString(_network_default_ip),
 				STR_NETWORK_ENTER_IP,
 				31 | 0x1000,  // maximum number of characters OR
 				250, // characters up to this width pixels, whichever is satisfied first
 				w, CS_ALPHANUMERAL);
 		} break;
-		case 13: /* Start server */
+		case NGWW_START: // Start server
 			ShowNetworkStartServerWindow();
 			break;
-		case 16: /* Join Game */
+		case NGWW_JOIN: // Join Game
 			if (nd->server != NULL) {
 				snprintf(_network_last_host, sizeof(_network_last_host), "%s", inet_ntoa(*(struct in_addr *)&nd->server->ip));
 				_network_last_port = nd->server->port;
 				ShowNetworkLobbyWindow(nd->server);
 			}
 			break;
-		case 17: // Refresh
+		case NGWW_REFRESH: // Refresh
 			if (nd->server != NULL)
 				NetworkUDPQueryServer(nd->server->info.hostname, nd->server->port);
 			break;
-		case 18: // NewGRF Settings
+		case NGWW_NEWGRF: // NewGRF Settings
 			if (nd->server != NULL) ShowNewGRFSettings(false, false, false, &nd->server->info.grfconfig);
 			break;
 
 	} break;
 
-	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+	case WE_DROPDOWN_SELECT: // we have selected a dropdown item in the list
 		switch (e->we.dropdown.button) {
-			case 5:
+			case NGWW_CONN_BTN:
 				_network_lan_internet = e->we.dropdown.index;
 				break;
+			default:
+				NOT_REACHED();
 		}
 
 		SetWindowDirty(w);
 		break;
 
 	case WE_MOUSELOOP:
-		if (nd->field == 3) HandleEditBox(w, &WP(w, network_ql_d).q, 3);
+		if (nd->field == NGWW_PLAYER) HandleEditBox(w, &WP(w, network_ql_d).q, NGWW_PLAYER);
 		break;
 
 	case WE_MESSAGE:
@@ -470,9 +507,9 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		if (nd->field != 3) {
+		if (nd->field != NGWW_PLAYER) {
 			if (nd->server != NULL) {
-				if (e->we.keypress.keycode == WKC_DELETE) { /* Press 'delete' to remove servers */
+				if (e->we.keypress.keycode == WKC_DELETE) { // Press 'delete' to remove servers
 					NetworkGameListRemoveItem(nd->server);
 					NetworkRebuildHostList();
 					nd->server = NULL;
@@ -481,9 +518,9 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e) == 1) break; // enter pressed
+		if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, NGWW_PLAYER, e) == 1) break; // enter pressed
 
-		// The name is only allowed when it starts with a letter!
+		/* The name is only allowed when it starts with a letter! */
 		if (_edit_str_buf[0] != '\0' && _edit_str_buf[0] != ' ') {
 			ttd_strlcpy(_network_player_name, _edit_str_buf, lengthof(_network_player_name));
 		} else {
@@ -500,57 +537,59 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	case WE_RESIZE: {
 		w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
 
-		w->widget[9].data = (w->vscroll.cap << 8) + 1;
+		w->widget[NGWW_MATRIX].data = (w->vscroll.cap << 8) + 1;
 
-		int widget_width = w->widget[11].right - w->widget[11].left;
+		int widget_width = w->widget[NGWW_FIND].right - w->widget[NGWW_FIND].left;
 		int space = (w->width - 4 * widget_width - 25) / 3;
 
 		int offset = 10;
 		for (uint i = 0; i < 4; i++) {
-			w->widget[11 + i].left  = offset;
+			w->widget[NGWW_FIND + i].left  = offset;
 			offset += widget_width;
-			w->widget[11 + i].right = offset;
+			w->widget[NGWW_FIND + i].right = offset;
 			offset += space;
 		}
 	} break;
 
-	case WE_DESTROY: /* Nicely clean up the sort-list */
+	case WE_DESTROY: // Nicely clean up the sort-list
 		free(WP(w, network_ql_d).sort_list);
 		break;
 	}
 }
 
 static const Widget _network_game_window_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
+/* TOP */
+{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},            // NGWW_CLOSE
 {    WWT_CAPTION,   RESIZE_RIGHT,  BGC,    11,   449,     0,    13, STR_NETWORK_MULTIPLAYER,        STR_NULL},
 {      WWT_PANEL,   RESIZE_RB,     BGC,     0,   449,    14,   263, 0x0,                            STR_NULL},
 
+{       WWT_TEXT,   RESIZE_NONE,   BGC,     9,    85,    23,    35, STR_NETWORK_CONNECTION,         STR_NULL},
+{      WWT_INSET,   RESIZE_NONE,   BGC,    90,   181,    22,    33, STR_NETWORK_LAN_INTERNET_COMBO, STR_NETWORK_CONNECTION_TIP},       // NGWW_CONN_TXT
+{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   170,   180,    23,    32, STR_0225,                       STR_NETWORK_CONNECTION_TIP},       // NGWW_CONN_BTN
+
+{      WWT_PANEL,   RESIZE_LR,     BGC,   290,   440,    22,    33, 0x0,                            STR_NETWORK_ENTER_NAME_TIP},       // NGWW_PLAYER
+
 /* LEFT SIDE */
-{      WWT_PANEL,   RESIZE_LR,     BGC,   290,   440,    22,    33, 0x0,                            STR_NETWORK_ENTER_NAME_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_RIGHT,  BTC,    10,    70,    42,    53, STR_NETWORK_GAME_NAME,          STR_NETWORK_GAME_NAME_TIP},        // NGWW_NAME
+{ WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,    71,   150,    42,    53, STR_NETWORK_CLIENTS_CAPTION,    STR_NETWORK_CLIENTS_CAPTION_TIP},  // NGWW_CLIENTS
+{ WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,   151,   190,    42,    53, STR_EMPTY,                      STR_NETWORK_INFO_ICONS_TIP},       // NGWW_INFO
 
-{      WWT_INSET,   RESIZE_NONE,   BGC,    90,   181,    22,    33, STR_NETWORK_LAN_INTERNET_COMBO, STR_NETWORK_CONNECTION_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   170,   180,    23,    32, STR_0225,                       STR_NETWORK_CONNECTION_TIP},
-
-{ WWT_PUSHTXTBTN,   RESIZE_RIGHT,  BTC,    10,    70,    42,    53, STR_NETWORK_GAME_NAME,          STR_NETWORK_GAME_NAME_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,    71,   150,    42,    53, STR_NETWORK_CLIENTS_CAPTION,    STR_NETWORK_CLIENTS_CAPTION_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,   151,   190,    42,    53, STR_EMPTY,                      STR_NETWORK_INFO_ICONS_TIP},
-
-{     WWT_MATRIX,   RESIZE_RB,     BGC,    10,   190,    54,   236, (13 << 8) + 1,                  STR_NETWORK_CLICK_GAME_TO_SELECT},
-{  WWT_SCROLLBAR,   RESIZE_LRB,    BGC,   191,   202,    42,   236, STR_NULL,                       STR_0190_SCROLL_BAR_SCROLLS_LIST},
-
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     BTC,    10,   110,   246,   257, STR_NETWORK_FIND_SERVER,        STR_NETWORK_FIND_SERVER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     BTC,   118,   218,   246,   257, STR_NETWORK_ADD_SERVER,         STR_NETWORK_ADD_SERVER_TIP},
+{     WWT_MATRIX,   RESIZE_RB,     BGC,    10,   190,    54,   236, (13 << 8) + 1,                  STR_NETWORK_CLICK_GAME_TO_SELECT}, // NGWW_MATRIX
+{  WWT_SCROLLBAR,   RESIZE_LRB,    BGC,   191,   202,    42,   236, 0x0,                            STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 /* RIGHT SIDE */
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     BTC,   226,   326,   246,   257, STR_NETWORK_START_SERVER,       STR_NETWORK_START_SERVER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,     BTC,   334,   434,   246,   257, STR_012E_CANCEL,                STR_NULL},
+{      WWT_PANEL,   RESIZE_LRB,    BGC,   210,   440,    42,   236, 0x0,                            STR_NULL},                         // NGWW_DETAILS
 
-{      WWT_PANEL,   RESIZE_LRB,    BGC,   210,   440,    42,   236, 0x0,                            STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   BTC,   215,   315,   215,   226, STR_NETWORK_JOIN_GAME,          STR_NULL},                         // NGWW_JOIN
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   BTC,   330,   435,   215,   226, STR_NETWORK_REFRESH,            STR_NETWORK_REFRESH_TIP},          // NGWW_REFRESH
 
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   BTC,   215,   315,   215,   226, STR_NETWORK_JOIN_GAME,          STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   BTC,   330,   435,   215,   226, STR_NETWORK_REFRESH,            STR_NETWORK_REFRESH_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   BTC,   330,   435,   197,   208, STR_NEWGRF_SETTINGS_BUTTON,     STR_NULL},                         // NGWW_NEWGRF
 
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,   BTC,   330,   435,   197,   208, STR_NEWGRF_SETTINGS_BUTTON,     STR_NULL},
+/* BOTTOM */
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     BTC,    10,   110,   246,   257, STR_NETWORK_FIND_SERVER,        STR_NETWORK_FIND_SERVER_TIP},      // NGWW_FIND
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     BTC,   118,   218,   246,   257, STR_NETWORK_ADD_SERVER,         STR_NETWORK_ADD_SERVER_TIP},       // NGWW_ADD
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     BTC,   226,   326,   246,   257, STR_NETWORK_START_SERVER,       STR_NETWORK_START_SERVER_TIP},     // NGWW_START
+{ WWT_PUSHTXTBTN,   RESIZE_TB,     BTC,   334,   434,   246,   257, STR_012E_CANCEL,                STR_NULL},                         // NGWW_CANCEL
 
 {  WWT_RESIZEBOX,   RESIZE_LRTB,   BGC,   438,   449,   252,   263, 0x0,                            STR_RESIZE_BUTTON },
 
