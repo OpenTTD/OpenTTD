@@ -55,12 +55,8 @@ extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum* psn);
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../debug.h"
-#include "../../macros.h"
-#include "../../os/macosx/splash.h"
 #include "../../variables.h"
-#include "../../gfx.h"
 #include "cocoa_v.h"
-#include "cocoa_keys.h"
 #include "../../blitter/factory.hpp"
 #include "../../fileio.h"
 
