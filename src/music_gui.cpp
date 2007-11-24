@@ -247,7 +247,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			byte *p;
 
 			if (msf.playlist < 4) return;
-			if (!IS_INT_INSIDE(y, 0, NUM_SONGS_AVAILABLE)) return;
+			if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
 
 			p = _playlists[msf.playlist];
 			for (i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
@@ -267,7 +267,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			byte *p;
 
 			if (msf.playlist < 4) return;
-			if (!IS_INT_INSIDE(y, 0, NUM_SONGS_AVAILABLE)) return;
+			if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
 
 			p = _playlists[msf.playlist];
 			for (i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {

@@ -356,7 +356,7 @@ static void IConsoleHistoryNavigate(int direction)
 	_iconsole_historypos = i;
 	IConsoleClearCommand();
 	/* copy history to 'command prompt / bash' */
-	assert(_iconsole_history[i] != NULL && IS_INT_INSIDE(i, 0, ICON_HISTORY_SIZE));
+	assert(_iconsole_history[i] != NULL && IsInsideMM(i, 0, ICON_HISTORY_SIZE));
 	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[i], _iconsole_cmdline.maxlength);
 	UpdateTextBufferSize(&_iconsole_cmdline);
 }

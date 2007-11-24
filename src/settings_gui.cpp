@@ -511,7 +511,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 				return;
 
 			x = e->we.click.pt.x - 5;
-			if (!IS_INT_INSIDE(x, 0, 21)) // Button area
+			if (!IsInsideMM(x, 0, 21)) // Button area
 				return;
 
 			y = e->we.click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
@@ -1101,7 +1101,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 
 			switch (line) {
 				case 0: // rate
-					if (IS_INT_INSIDE(x, 10, 30)) { // clicked buttons
+					if (IsInsideMM(x, 10, 30)) { // clicked buttons
 						if (x < 20) {
 							if (_custom_currency.rate > 1) _custom_currency.rate--;
 							WP(w,def_d).data_1 = 1 << (line * 2 + 0);
@@ -1118,7 +1118,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case 1: // separator
-					if (IS_INT_INSIDE(x, 10, 30)) { // clicked button
+					if (IsInsideMM(x, 10, 30)) { // clicked button
 						WP(w,def_d).data_1 = 1 << (line * 2 + 1);
 					}
 					str = BindCString(_str_separator);
@@ -1126,7 +1126,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case 2: // prefix
-					if (IS_INT_INSIDE(x, 10, 30)) { // clicked button
+					if (IsInsideMM(x, 10, 30)) { // clicked button
 						WP(w,def_d).data_1 = 1 << (line * 2 + 1);
 					}
 					str = BindCString(_custom_currency.prefix);
@@ -1134,7 +1134,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case 3: // suffix
-					if (IS_INT_INSIDE(x, 10, 30)) { // clicked button
+					if (IsInsideMM(x, 10, 30)) { // clicked button
 						WP(w,def_d).data_1 = 1 << (line * 2 + 1);
 					}
 					str = BindCString(_custom_currency.suffix);
@@ -1142,7 +1142,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case 4: // to euro
-					if (IS_INT_INSIDE(x, 10, 30)) { // clicked buttons
+					if (IsInsideMM(x, 10, 30)) { // clicked buttons
 						if (x < 20) {
 							_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ?
 								CF_NOEURO : _custom_currency.to_euro - 1;

@@ -1643,8 +1643,8 @@ again:
 			goto again;
 		}
 
-		if (IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) && IsTileType(v->tile, MP_STATION)) {
-			if (IsReversingRoadTrackdir(dir) && IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) {
+		if (IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) && IsTileType(v->tile, MP_STATION)) {
+			if (IsReversingRoadTrackdir(dir) && IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) {
 				/* New direction is trying to turn vehicle around.
 				 * We can't turn at the exit of a road stop so wait.*/
 				v->cur_speed = 0;
@@ -1766,7 +1766,7 @@ again:
 
 	new_dir = RoadVehGetSlidingDirection(v, x, y);
 
-	if (IsRoadVehFront(v) && !IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) {
+	if (IsRoadVehFront(v) && !IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) {
 		/* Vehicle is not in a road stop.
 		 * Check for another vehicle to overtake */
 		Vehicle* u = RoadVehFindCloseTo(v, x, y, new_dir);
@@ -1801,9 +1801,9 @@ again:
 	 * and it's the correct type of stop (bus or truck) and the frame equals the stop frame...
 	 * (the station test and stop type test ensure that other vehicles, using the road stop as
 	 * a through route, do not stop) */
-	if (IsRoadVehFront(v) && ((IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END) &&
+	if (IsRoadVehFront(v) && ((IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END) &&
 			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_opt.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
-			(IS_BYTE_INSIDE(v->u.road.state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
+			(IsInsideMM(v->u.road.state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
 			v->current_order.dest == GetStationIndex(v->tile) &&
 			GetRoadStopType(v->tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK) &&
 			v->u.road.frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {

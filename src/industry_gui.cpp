@@ -539,8 +539,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			if (!IsProductionAlterable(i)) return;
 			x = e->we.click.pt.x;
 			line = (e->we.click.pt.y - WP(w, indview_d).production_offset_y) / 10;
-			if (e->we.click.pt.y >= WP(w, indview_d).production_offset_y && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
-				if (IS_INT_INSIDE(x, 5, 25) ) {
+			if (e->we.click.pt.y >= WP(w, indview_d).production_offset_y && IsInsideMM(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
+				if (IsInsideMM(x, 5, 25) ) {
 					/* Clicked buttons, decrease or increase production */
 					if (x < 15) {
 						if (isProductionMinimum(i, line)) return;
@@ -557,7 +557,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					w->flags4 |= 5 << WF_TIMEOUT_SHL;
 					WP(w, indview_d).clicked_line = line + 1;
 					WP(w, indview_d).clicked_button = (x < 15 ? 1 : 2);
-				} else if (IS_INT_INSIDE(x, 34, 160)) {
+				} else if (IsInsideMM(x, 34, 160)) {
 					/* clicked the text */
 					WP(w, indview_d).editbox_line = line;
 					SetDParam(0, i->production_rate[line] * 8);
@@ -844,7 +844,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 				int y = (e->we.click.pt.y - 28) / 10;
 				uint16 p;
 
-				if (!IS_INT_INSIDE(y, 0, w->vscroll.cap)) return;
+				if (!IsInsideMM(y, 0, w->vscroll.cap)) return;
 				p = y + w->vscroll.pos;
 				if (p < _num_industry_sort) {
 					ScrollMainWindowToTile(_industry_sort[p]->xy);

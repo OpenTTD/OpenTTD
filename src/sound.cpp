@@ -209,8 +209,8 @@ static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 		const ViewPort *vp = (*wz)->viewport;
 
 		if (vp != NULL &&
-				IS_INSIDE_1D(x, vp->virtual_left, vp->virtual_width) &&
-				IS_INSIDE_1D(y, vp->virtual_top, vp->virtual_height)) {
+				IsInsideBS(x, vp->virtual_left, vp->virtual_width) &&
+				IsInsideBS(y, vp->virtual_top, vp->virtual_height)) {
 			int left = (x - vp->virtual_left);
 
 			StartSound(

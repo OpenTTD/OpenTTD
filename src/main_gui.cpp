@@ -1336,7 +1336,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 			HandleButtonClick(w, e->we.click.widget);
 			size += _terraform_size;
 
-			if (!IS_INT_INSIDE(size, 1, 8 + 1)) return;
+			if (!IsInsideMM(size, 1, 8 + 1)) return;
 			_terraform_size = size;
 
 			SndPlayFx(SND_15_BEEP);

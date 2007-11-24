@@ -354,7 +354,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						}
 						MarkTileDirtyByTile(tile);
 
-						if (_game_mode == GM_EDITOR && IS_INT_INSIDE(treetype, TREE_RAINFOREST, TREE_CACTUS))
+						if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS))
 							SetTropicZone(tile, TROPICZONE_RAINFOREST);
 					}
 					cost.AddCost(_price.build_trees);
@@ -418,7 +418,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		/* different tree styles above one of the grounds */
 		if (GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT &&
 				GetTreeDensity(ti->tile) >= 2 &&
-				IS_INT_INSIDE(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
+				IsInsideMM(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
 			index += 164 - (TREE_SUB_ARCTIC << 2);
 		}
 
@@ -494,7 +494,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
 	}
 
 	num = GetTreeCount(tile) + 1;
-	if (IS_INT_INSIDE(GetTreeType(tile), TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
+	if (IsInsideMM(GetTreeType(tile), TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
@@ -510,7 +510,7 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 {
 	TreeType tt = GetTreeType(tile);
 
-	if (IS_INT_INSIDE(tt, TREE_RAINFOREST, TREE_CACTUS)) {
+	if (IsInsideMM(tt, TREE_RAINFOREST, TREE_CACTUS)) {
 		td->str = STR_280F_RAINFOREST;
 	} else {
 		td->str = tt == TREE_CACTUS ? STR_2810_CACTUS_PLANTS : STR_280E_TREES;

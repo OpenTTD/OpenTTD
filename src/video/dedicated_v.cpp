@@ -235,7 +235,7 @@ static void DedicatedHandleKeyInput()
 			if (input_line[i] == '\0')
 				break;
 
-			if (!IS_INT_INSIDE(input_line[i], ' ', 256))
+			if (!IsInsideMM(input_line[i], ' ', 256))
 				input_line[i] = ' ';
 		}
 	}

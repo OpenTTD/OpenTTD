@@ -2465,7 +2465,7 @@ static void NewSpriteGroup(byte *buf, int len)
 					/* Link subroutine group */
 					adjust->subroutine = GetGroupFromGroupID(setid, type, grf_load_byte(&buf));
 				} else {
-					adjust->parameter = IS_BYTE_INSIDE(adjust->variable, 0x60, 0x80) ? grf_load_byte(&buf) : 0;
+					adjust->parameter = IsInsideMM(adjust->variable, 0x60, 0x80) ? grf_load_byte(&buf) : 0;
 				}
 
 				varadjust = grf_load_byte(&buf);

@@ -216,7 +216,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			const Town *t = GetTown(w->window_number);
 			int y = (e->we.click.pt.y - 0x6B) / 10;
 
-			if (!IS_INT_INSIDE(y, 0, 5)) return;
+			if (!IsInsideMM(y, 0, 5)) return;
 
 			y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
 			if (y >= 0) {

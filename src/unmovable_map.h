@@ -21,7 +21,7 @@ enum UnmovableType {
 	UNMOVABLE_HQ_EAST     = 0x82, ///< Offset for the eastern HQ tile
 	UNMOVABLE_HQ_SOUTH    = 0x83, ///< Offset for the southern HQ tile
 
-	/** End of the HQ (rather end + 1 for IS_INT_INSIDE) */
+	/** End of the HQ (rather end + 1 for IsInside) */
 	UNMOVABLE_HQ_END      = UNMOVABLE_HQ_NORTH + HQ_NUM_SIZE * HQ_NUM_TILE
 };
 
@@ -80,7 +80,7 @@ static inline bool IsOwnedLandTile(TileIndex t)
 static inline bool IsCompanyHQ(TileIndex t)
 {
 	assert(IsTileType(t, MP_UNMOVABLE));
-	return IS_INT_INSIDE(GetUnmovableType(t), UNMOVABLE_HQ_NORTH, UNMOVABLE_HQ_END);
+	return IsInsideMM(GetUnmovableType(t), UNMOVABLE_HQ_NORTH, UNMOVABLE_HQ_END);
 }
 
 /**

@@ -233,7 +233,7 @@ static const FiosItem* GetFiosItem(const char* file)
 		if (file == endptr || *endptr != '\0') i = -1;
 	}
 
-	return IS_INT_INSIDE(i, 0, _fios_num) ? &_fios_list[i] : NULL;
+	return IsInsideMM(i, 0, _fios_num) ? &_fios_list[i] : NULL;
 }
 
 

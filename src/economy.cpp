@@ -365,7 +365,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->owner == old_player && IS_BYTE_INSIDE(v->type, VEH_TRAIN, VEH_AIRCRAFT + 1)) {
+			if (v->owner == old_player && IsInsideMM(v->type, VEH_TRAIN, VEH_AIRCRAFT + 1)) {
 				if (new_player == PLAYER_SPECTATOR) {
 					DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 					DeleteWindowById(WC_VEHICLE_DETAILS, v->index);

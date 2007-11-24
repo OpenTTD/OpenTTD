@@ -82,7 +82,7 @@ static inline uint minu(const uint a, const uint b)
  * @param a The value we want to unsign
  * @return The unsigned value
  */
-template <typename T> static inline T abs(T a)
+template <typename T> static inline T abs(const T a)
 {
 	return (a < (T)0) ? -a : a;
 }
@@ -191,37 +191,22 @@ template <typename T> static inline T delta(const T a, const T b) {
  * @param size The size of the interval
  * @return True if the value is in the interval, false else.
  */
-template<typename T> static inline bool IS_INSIDE_1D(const T x, const int base, const uint size)
+template<typename T> static inline bool IsInsideBS(const T x, const uint base, const uint size)
 {
 	return (uint)(x - base) < size;
 }
 
 /**
- * Checks if a byte is in an interval.
+ * Checks if a value is in an interval.
  *
- * Returns true if a byte value is in the interval of [min, max).
+ * Returns true if a value is in the interval of [min, max).
  *
- * @param a The byte value to check
+ * @param a The value to check
  * @param min The minimum of the interval
  * @param max The maximum of the interval
- * @see IS_INSIDE_1D
+ * @see IsInsideBS()
  */
-template<typename T> static inline bool IS_BYTE_INSIDE(const T x, const byte min, const byte max)
-{
-	return (byte)(x - min) < (max - min);
-}
-
-/**
- * Checks if an int is in an interval.
- *
- * Returns true if a integer value is in the interval of [min, max).
- *
- * @param a The integer value to check
- * @param min The minimum of the interval
- * @param max The maximum of the interval
- * @see IS_INSIDE_1D
- */
-template<typename T> static inline bool IS_INT_INSIDE(const T x, const int min, const uint max)
+template<typename T> static inline bool IsInsideMM(const T x, const uint min, const uint max)
 {
 	return (uint)(x - min) < (max - min);
 }

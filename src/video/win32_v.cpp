@@ -737,8 +737,8 @@ static void FindResolutions()
 	 * Doesn't really matter since we don't pass a string anyways, but still
 	 * a letdown */
 	for (i = 0; EnumDisplaySettingsA(NULL, i, &dm) != 0; i++) {
-		if (dm.dmBitsPerPel == BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() && IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
-				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1)) {
+		if (dm.dmBitsPerPel == BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() && IsInsideMM(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
+				IsInsideMM(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1)) {
 			uint j;
 
 			for (j = 0; j < n; j++) {

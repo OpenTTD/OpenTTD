@@ -647,7 +647,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 		TileIndex t = start_tile;
 		start_tile = end_tile;
 		end_tile = t;
-		p2 ^= IS_INT_INSIDE(p2 & 3, 1, 3) ? 3 : 0;
+		p2 ^= IsInsideMM(p2 & 3, 1, 3) ? 3 : 0;
 		drd = DRD_SOUTHBOUND;
 	}
 
@@ -730,7 +730,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 		TileIndex t = start_tile;
 		start_tile = end_tile;
 		end_tile = t;
-		p2 ^= IS_INT_INSIDE(p2 & 3, 1, 3) ? 3 : 0;
+		p2 ^= IsInsideMM(p2 & 3, 1, 3) ? 3 : 0;
 	}
 
 	money.AddCost(GetAvailableMoneyForCommand());

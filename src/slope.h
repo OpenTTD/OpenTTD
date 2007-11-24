@@ -75,7 +75,7 @@ enum Slope {
  */
 static inline bool IsValidCorner(Corner corner)
 {
-	return IS_INT_INSIDE(corner, 0, CORNER_END);
+	return IsInsideMM(corner, 0, CORNER_END);
 }
 
 /**
@@ -294,7 +294,7 @@ static inline bool IsInclinedFoundation(Foundation f)
  */
 static inline bool IsNonContinuousFoundation(Foundation f)
 {
-	return IS_INT_INSIDE(f, FOUNDATION_STEEP_BOTH, FOUNDATION_HALFTILE_N + 1);
+	return IsInsideMM(f, FOUNDATION_STEEP_BOTH, FOUNDATION_HALFTILE_N + 1);
 }
 
 /**
@@ -307,7 +307,7 @@ static inline bool IsNonContinuousFoundation(Foundation f)
  */
 static inline Corner GetHalftileFoundationCorner(Foundation f)
 {
-	assert(IS_INT_INSIDE(f, FOUNDATION_HALFTILE_W, FOUNDATION_HALFTILE_N + 1));
+	assert(IsInsideMM(f, FOUNDATION_HALFTILE_W, FOUNDATION_HALFTILE_N + 1));
 	return (Corner)(f - FOUNDATION_HALFTILE_W);
 }
 
@@ -319,7 +319,7 @@ static inline Corner GetHalftileFoundationCorner(Foundation f)
  */
 static inline bool IsSpecialRailFoundation(Foundation f)
 {
-	return IS_INT_INSIDE(f, FOUNDATION_RAIL_W, FOUNDATION_RAIL_N + 1);
+	return IsInsideMM(f, FOUNDATION_RAIL_W, FOUNDATION_RAIL_N + 1);
 }
 
 /**

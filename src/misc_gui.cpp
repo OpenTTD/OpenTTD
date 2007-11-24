@@ -1917,7 +1917,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 			uint x = e->we.click.pt.x;
 
 			/* not clicking a button? */
-			if (!IS_INT_INSIDE(x, 20, 40) || btn >= lengthof(_cheats_ui)) break;
+			if (!IsInsideMM(x, 20, 40) || btn >= lengthof(_cheats_ui)) break;
 
 			ce = &_cheats_ui[btn];
 			oldvalue = value = (int32)ReadValue(ce->variable, ce->type);

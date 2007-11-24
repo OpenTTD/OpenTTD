@@ -698,11 +698,11 @@ static void AiWantLongIndustryRoute(Player *p)
 	for (;;) {
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 60, 90 + 1)) break;
+		if (IsInsideMM(fr.distance, 60, 90 + 1)) break;
 
 		// try a random one
 		AiFindRandomIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 60, 90 + 1)) break;
+		if (IsInsideMM(fr.distance, 60, 90 + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;
@@ -801,11 +801,11 @@ static void AiWantMediumIndustryRoute(Player *p)
 	for (;;) {
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 40, 60 + 1)) break;
+		if (IsInsideMM(fr.distance, 40, 60 + 1)) break;
 
 		// try a random one
 		AiFindRandomIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 40, 60 + 1)) break;
+		if (IsInsideMM(fr.distance, 40, 60 + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;
@@ -869,11 +869,11 @@ static void AiWantShortIndustryRoute(Player *p)
 	for (;;) {
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 15, 40 + 1)) break;
+		if (IsInsideMM(fr.distance, 15, 40 + 1)) break;
 
 		// try a random one
 		AiFindRandomIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 15, 40 + 1)) break;
+		if (IsInsideMM(fr.distance, 15, 40 + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;
@@ -937,11 +937,11 @@ static void AiWantMailRoute(Player *p)
 	for (;;) {
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 60, 110 + 1)) break;
+		if (IsInsideMM(fr.distance, 60, 110 + 1)) break;
 
 		// try a random one
 		AiFindRandomPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 60, 110 + 1)) break;
+		if (IsInsideMM(fr.distance, 60, 110 + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;
@@ -1038,11 +1038,11 @@ static void AiWantPassengerRoute(Player *p)
 	for (;;) {
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 0, 55 + 1)) break;
+		if (IsInsideMM(fr.distance, 0, 55 + 1)) break;
 
 		// try a random one
 		AiFindRandomPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 0, 55 + 1)) break;
+		if (IsInsideMM(fr.distance, 0, 55 + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;
@@ -1126,11 +1126,11 @@ static void AiWantLongRoadIndustryRoute(Player *p)
 	for (;;) {
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 35, 55 + 1)) break;
+		if (IsInsideMM(fr.distance, 35, 55 + 1)) break;
 
 		// try a random one
 		AiFindRandomIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 35, 55 + 1)) break;
+		if (IsInsideMM(fr.distance, 35, 55 + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;
@@ -1182,11 +1182,11 @@ static void AiWantMediumRoadIndustryRoute(Player *p)
 	for (;;) {
 		// look for one from the subsidy list
 		AiFindSubsidyIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 15, 40 + 1)) break;
+		if (IsInsideMM(fr.distance, 15, 40 + 1)) break;
 
 		// try a random one
 		AiFindRandomIndustryRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 15, 40 + 1)) break;
+		if (IsInsideMM(fr.distance, 15, 40 + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;
@@ -1238,11 +1238,11 @@ static void AiWantLongRoadPassengerRoute(Player *p)
 	for (;;) {
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 55, 180 + 1)) break;
+		if (IsInsideMM(fr.distance, 55, 180 + 1)) break;
 
 		// try a random one
 		AiFindRandomPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, 55, 180 + 1)) break;
+		if (IsInsideMM(fr.distance, 55, 180 + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;
@@ -1407,11 +1407,11 @@ static void AiWantPassengerAircraftRoute(Player *p)
 
 		// look for one from the subsidy list
 		AiFindSubsidyPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, min_squares, max_squares + 1)) break;
+		if (IsInsideMM(fr.distance, min_squares, max_squares + 1)) break;
 
 		// try a random one
 		AiFindRandomPassengerRoute(&fr);
-		if (IS_INT_INSIDE(fr.distance, min_squares, max_squares + 1)) break;
+		if (IsInsideMM(fr.distance, min_squares, max_squares + 1)) break;
 
 		// only test 60 times
 		if (--i == 0) return;

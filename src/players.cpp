@@ -299,7 +299,7 @@ static void GenerateCompanyName(Player *p)
 
 	t = ClosestTownFromTile(tile, (uint)-1);
 
-	if (IS_INT_INSIDE(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST+1)) {
+	if (IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST+1)) {
 		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_PLAYERNAME_START;
 		strp = t->townnameparts;
 

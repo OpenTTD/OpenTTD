@@ -1120,20 +1120,20 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int64 *argv, 
 	}
 
 	/* town name? */
-	if (IS_INT_INSIDE(ind - 6, 0, SPECSTR_TOWNNAME_LAST-SPECSTR_TOWNNAME_START + 1)) {
+	if (IsInsideMM(ind - 6, 0, SPECSTR_TOWNNAME_LAST-SPECSTR_TOWNNAME_START + 1)) {
 		buff = GetSpecialTownNameString(buff, ind - 6, GetInt32(&argv), last);
 		return strecpy(buff, " Transport", last);
 	}
 
 	/* language name? */
-	if (IS_INT_INSIDE(ind, (SPECSTR_LANGUAGE_START - 0x70E4), (SPECSTR_LANGUAGE_END - 0x70E4) + 1)) {
+	if (IsInsideMM(ind, (SPECSTR_LANGUAGE_START - 0x70E4), (SPECSTR_LANGUAGE_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_LANGUAGE_START - 0x70E4);
 		return strecpy(buff,
 			i == _dynlang.curr ? _langpack->own_name : _dynlang.ent[i].name, last);
 	}
 
 	/* resolution size? */
-	if (IS_INT_INSIDE(ind, (SPECSTR_RESOLUTION_START - 0x70E4), (SPECSTR_RESOLUTION_END - 0x70E4) + 1)) {
+	if (IsInsideMM(ind, (SPECSTR_RESOLUTION_START - 0x70E4), (SPECSTR_RESOLUTION_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_RESOLUTION_START - 0x70E4);
 		buff += snprintf(
 			buff, last - buff + 1, "%dx%d", _resolutions[i][0], _resolutions[i][1]
@@ -1142,7 +1142,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int64 *argv, 
 	}
 
 	/* screenshot format name? */
-	if (IS_INT_INSIDE(ind, (SPECSTR_SCREENSHOT_START - 0x70E4), (SPECSTR_SCREENSHOT_END - 0x70E4) + 1)) {
+	if (IsInsideMM(ind, (SPECSTR_SCREENSHOT_START - 0x70E4), (SPECSTR_SCREENSHOT_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_SCREENSHOT_START - 0x70E4);
 		return strecpy(buff, GetScreenshotFormatDesc(i), last);
 	}
@@ -1168,7 +1168,7 @@ StringID RemapOldStringID(StringID s)
 		case 0xA02F: return STR_SV_AIRCRAFT_NAME;
 
 		default:
-			if (IS_INT_INSIDE(s, 0x300F, 0x3030)) {
+			if (IsInsideMM(s, 0x300F, 0x3030)) {
 				return s - 0x300F + STR_SV_STNAME;
 			} else {
 				return s;

@@ -344,8 +344,8 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
 	ViewPort *vp = w->viewport;
 
 	if (vp != NULL &&
-	    IS_INT_INSIDE(x, vp->left, vp->left + vp->width) &&
-			IS_INT_INSIDE(y, vp->top, vp->top + vp->height))
+	    IsInsideMM(x, vp->left, vp->left + vp->width) &&
+			IsInsideMM(y, vp->top, vp->top + vp->height))
 		return vp;
 
 	return NULL;
@@ -501,7 +501,7 @@ void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, 
 static void AddChildSpriteToFoundation(SpriteID image, SpriteID pal, const SubSprite *sub, FoundationPart foundation_part, int extra_offs_x, int extra_offs_y)
 {
 	ViewportDrawer *vd = _cur_vd;
-	assert(IS_INT_INSIDE(foundation_part, 0, FOUNDATION_PART_END));
+	assert(IsInsideMM(foundation_part, 0, FOUNDATION_PART_END));
 	assert(vd->foundation[foundation_part] != NULL);
 	Point offs = vd->foundation_offset[foundation_part];
 
@@ -932,8 +932,8 @@ static void DrawTileSelection(const TileInfo *ti)
 	if (_thd.drawstyle == 0) return;
 
 	/* Inside the inner area? */
-	if (IS_INSIDE_1D(ti->x, _thd.pos.x, _thd.size.x) &&
-			IS_INSIDE_1D(ti->y, _thd.pos.y, _thd.size.y)) {
+	if (IsInsideBS(ti->x, _thd.pos.x, _thd.size.x) &&
+			IsInsideBS(ti->y, _thd.pos.y, _thd.size.y)) {
 		if (_thd.drawstyle & HT_RECT) {
 			DrawTileSelectionRect(ti, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE);
 		} else if (_thd.drawstyle & HT_POINT) {
@@ -978,8 +978,8 @@ static void DrawTileSelection(const TileInfo *ti)
 	/* Check if it's inside the outer area? */
 	if (_thd.outersize.x &&
 			_thd.size.x < _thd.size.x + _thd.outersize.x &&
-			IS_INSIDE_1D(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
-			IS_INSIDE_1D(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
+			IsInsideBS(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
+			IsInsideBS(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
 		/* Draw a blue rect. */
 		DrawTileSelectionRect(ti, PALETTE_SEL_TILE_BLUE);
 		return;
@@ -1754,8 +1754,8 @@ void MarkTileDirty(int x, int y)
 	uint z = 0;
 	Point pt;
 
-	if (IS_INT_INSIDE(x, 0, MapSizeX() * TILE_SIZE) &&
-			IS_INT_INSIDE(y, 0, MapSizeY() * TILE_SIZE))
+	if (IsInsideMM(x, 0, MapSizeX() * TILE_SIZE) &&
+			IsInsideMM(y, 0, MapSizeY() * TILE_SIZE))
 		z = GetTileZ(TileVirtXY(x, y));
 	pt = RemapCoords(x, y, z);
 

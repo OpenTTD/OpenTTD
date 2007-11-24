@@ -953,7 +953,7 @@ Window *FindWindowFromPt(int x, int y)
 
 	for (wz = _last_z_window; wz != _z_windows;) {
 		Window *w = *--wz;
-		if (IS_INSIDE_1D(x, w->left, w->width) && IS_INSIDE_1D(y, w->top, w->height)) {
+		if (IsInsideBS(x, w->left, w->width) && IsInsideBS(y, w->top, w->height)) {
 			return w;
 		}
 	}

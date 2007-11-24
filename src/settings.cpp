@@ -1155,15 +1155,15 @@ static int32 CheckInterval(int32 p1)
 	const Patches *ptc = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
 
 	if (p1) {
-		warning = ( (IS_INT_INSIDE(ptc->servint_trains,   5, 90 + 1) || ptc->servint_trains   == 0) &&
-								(IS_INT_INSIDE(ptc->servint_roadveh,  5, 90 + 1) || ptc->servint_roadveh  == 0) &&
-								(IS_INT_INSIDE(ptc->servint_aircraft, 5, 90 + 1) || ptc->servint_aircraft == 0) &&
-								(IS_INT_INSIDE(ptc->servint_ships,    5, 90 + 1) || ptc->servint_ships    == 0) );
+		warning = ( (IsInsideMM(ptc->servint_trains,   5, 90 + 1) || ptc->servint_trains   == 0) &&
+								(IsInsideMM(ptc->servint_roadveh,  5, 90 + 1) || ptc->servint_roadveh  == 0) &&
+								(IsInsideMM(ptc->servint_aircraft, 5, 90 + 1) || ptc->servint_aircraft == 0) &&
+								(IsInsideMM(ptc->servint_ships,    5, 90 + 1) || ptc->servint_ships    == 0) );
 	} else {
-		warning = ( (IS_INT_INSIDE(ptc->servint_trains,   30, 800 + 1) || ptc->servint_trains   == 0) &&
-								(IS_INT_INSIDE(ptc->servint_roadveh,  30, 800 + 1) || ptc->servint_roadveh  == 0) &&
-								(IS_INT_INSIDE(ptc->servint_aircraft, 30, 800 + 1) || ptc->servint_aircraft == 0) &&
-								(IS_INT_INSIDE(ptc->servint_ships,    30, 800 + 1) || ptc->servint_ships    == 0) );
+		warning = ( (IsInsideMM(ptc->servint_trains,   30, 800 + 1) || ptc->servint_trains   == 0) &&
+								(IsInsideMM(ptc->servint_roadveh,  30, 800 + 1) || ptc->servint_roadveh  == 0) &&
+								(IsInsideMM(ptc->servint_aircraft, 30, 800 + 1) || ptc->servint_aircraft == 0) &&
+								(IsInsideMM(ptc->servint_ships,    30, 800 + 1) || ptc->servint_ships    == 0) );
 	}
 
 	if (!warning)

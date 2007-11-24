@@ -279,7 +279,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_CLICK:
-			if (!IS_INT_INSIDE(e->we.click.widget, 3, 11)) return;
+			if (!IsInsideMM(e->we.click.widget, 3, 11)) return;
 
 			ToggleBit(_legend_excluded_players, e->we.click.widget - 3);
 			ToggleWidgetLoweredState(w, e->we.click.widget);
@@ -1050,7 +1050,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			/* Check which button is clicked */
-			if (IS_INT_INSIDE(e->we.click.widget, 13, 21)) {
+			if (IsInsideMM(e->we.click.widget, 13, 21)) {
 				/* Is it no on disable? */
 				if (!IsWindowWidgetDisabled(w, e->we.click.widget)) {
 					RaiseWindowWidget(w, _performance_rating_detail_player + 13);

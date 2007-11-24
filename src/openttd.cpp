@@ -1357,34 +1357,34 @@ bool AfterLoadGame()
 					if (HasBit(_m[t].m6, 3)) SetBit(_m[t].m6, 2);
 					StationGfx gfx = GetStationGfx(t);
 					StationType st;
-					if (       IS_INT_INSIDE(gfx,   0,   8)) { // Railway station
+					if (       IsInsideMM(gfx,   0,   8)) { // Railway station
 						st = STATION_RAIL;
 						SetStationGfx(t, gfx - 0);
-					} else if (IS_INT_INSIDE(gfx,   8,  67)) { // Airport
+					} else if (IsInsideMM(gfx,   8,  67)) { // Airport
 						st = STATION_AIRPORT;
 						SetStationGfx(t, gfx - 8);
-					} else if (IS_INT_INSIDE(gfx,  67,  71)) { // Truck
+					} else if (IsInsideMM(gfx,  67,  71)) { // Truck
 						st = STATION_TRUCK;
 						SetStationGfx(t, gfx - 67);
-					} else if (IS_INT_INSIDE(gfx,  71,  75)) { // Bus
+					} else if (IsInsideMM(gfx,  71,  75)) { // Bus
 						st = STATION_BUS;
 						SetStationGfx(t, gfx - 71);
 					} else if (gfx == 75) {                    // Oil rig
 						st = STATION_OILRIG;
 						SetStationGfx(t, gfx - 75);
-					} else if (IS_INT_INSIDE(gfx,  76,  82)) { // Dock
+					} else if (IsInsideMM(gfx,  76,  82)) { // Dock
 						st = STATION_DOCK;
 						SetStationGfx(t, gfx - 76);
 					} else if (gfx == 82) {                    // Buoy
 						st = STATION_BUOY;
 						SetStationGfx(t, gfx - 82);
-					} else if (IS_INT_INSIDE(gfx,  83, 168)) { // Extended airport
+					} else if (IsInsideMM(gfx,  83, 168)) { // Extended airport
 						st = STATION_AIRPORT;
 						SetStationGfx(t, gfx - 83 + 67 - 8);
-					} else if (IS_INT_INSIDE(gfx, 168, 170)) { // Drive through truck
+					} else if (IsInsideMM(gfx, 168, 170)) { // Drive through truck
 						st = STATION_TRUCK;
 						SetStationGfx(t, gfx - 168 + GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
-					} else if (IS_INT_INSIDE(gfx, 170, 172)) { // Drive through bus
+					} else if (IsInsideMM(gfx, 170, 172)) { // Drive through bus
 						st = STATION_BUS;
 						SetStationGfx(t, gfx - 170 + GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
 					} else {

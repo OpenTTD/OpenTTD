@@ -465,7 +465,7 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 
 	for (int yc = y1; yc != y2; yc++) {
 		for (int xc = x1; xc != x2; xc++) {
-			if (!(IS_INSIDE_1D(xc, x, w) && IS_INSIDE_1D(yc, y, h))) {
+			if (!(IsInsideBS(xc, x, w) && IsInsideBS(yc, y, h))) {
 				TileIndex tile = TileXY(xc, yc);
 
 				GetProducedCargoProc *gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;

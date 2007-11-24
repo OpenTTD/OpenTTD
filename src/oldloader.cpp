@@ -302,7 +302,7 @@ static void FixOldTowns()
 
 	/* Convert town-names if needed */
 	FOR_ALL_TOWNS(town) {
-		if (IS_INT_INSIDE(town->townnametype, 0x20C1, 0x20C3)) {
+		if (IsInsideMM(town->townnametype, 0x20C1, 0x20C3)) {
 			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _opt.town_name;
 			town->townnameparts = GetOldTownName(town->townnameparts, _opt.town_name);
 		}

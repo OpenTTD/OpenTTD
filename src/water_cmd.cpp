@@ -334,8 +334,8 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 			if (flags & DC_NO_WATER) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
 			/* Make sure it's not an edge tile. */
-			if (!IS_INT_INSIDE(TileX(tile), 1, MapMaxX() - 1) ||
-					!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
+			if (!IsInsideMM(TileX(tile), 1, MapMaxX() - 1) ||
+					!IsInsideMM(TileY(tile), 1, MapMaxY() - 1)) {
 				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 			}
 
@@ -771,8 +771,8 @@ void TileLoop_Water(TileIndex tile)
 	if (IsTileType(tile, MP_WATER) && !(IsSea(tile) || IsCoast(tile))) return;
 
 	/* floods in all four diagonal directions with the exception of the edges */
-	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
-			IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) {
+	if (IsInsideMM(TileX(tile), 1, MapSizeX() - 3 + 1) &&
+			IsInsideMM(TileY(tile), 1, MapSizeY() - 3 + 1)) {
 		uint i;
 
 		for (i = 0; i != lengthof(_tile_loop_offs_array); i++) {
@@ -784,19 +784,19 @@ void TileLoop_Water(TileIndex tile)
 	_current_player = OWNER_NONE;
 
 	/* edges */
-	if (TileX(tile) == 0 && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) { //NE
+	if (TileX(tile) == 0 && IsInsideMM(TileY(tile), 1, MapSizeY() - 3 + 1)) { //NE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[2]);
 	}
 
-	if (TileX(tile) == MapSizeX() - 2 && IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) { //SW
+	if (TileX(tile) == MapSizeX() - 2 && IsInsideMM(TileY(tile), 1, MapSizeY() - 3 + 1)) { //SW
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[0]);
 	}
 
-	if (TileY(tile) == 0 && IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1)) { //NW
+	if (TileY(tile) == 0 && IsInsideMM(TileX(tile), 1, MapSizeX() - 3 + 1)) { //NW
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[1]);
 	}
 
-	if (TileY(tile) == MapSizeY() - 2 && IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1)) { //SE
+	if (TileY(tile) == MapSizeY() - 2 && IsInsideMM(TileX(tile), 1, MapSizeX() - 3 + 1)) { //SE
 		TileLoopWaterHelper(tile, _tile_loop_offs_array[3]);
 	}
 }

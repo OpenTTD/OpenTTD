@@ -697,7 +697,7 @@ skip_column:
 
 				/* Check if y is out of bounds? */
 				y -= dpi->top;
-				if (!IS_INT_INSIDE(y, 0, dpi->height)) continue;
+				if (!IsInsideMM(y, 0, dpi->height)) continue;
 
 				/* Default is to draw both pixels. */
 				skip = false;

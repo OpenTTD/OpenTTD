@@ -31,9 +31,9 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
 
 	if (_m[t].m5 == 0) return WATER_TILE_CLEAR;
 	if (_m[t].m5 == 1) return WATER_TILE_COAST;
-	if (IS_INT_INSIDE(_m[t].m5, LOCK_MIDDLE, LOCK_END)) return WATER_TILE_LOCK;
+	if (IsInsideMM(_m[t].m5, LOCK_MIDDLE, LOCK_END)) return WATER_TILE_LOCK;
 
-	assert(IS_INT_INSIDE(_m[t].m5, DEPOT_NORTH, DEPOT_END));
+	assert(IsInsideMM(_m[t].m5, DEPOT_NORTH, DEPOT_END));
 	return WATER_TILE_DEPOT;
 }
 
@@ -72,7 +72,7 @@ static inline TileIndex GetOtherShipDepotTile(TileIndex t)
 
 static inline TileIndex IsShipDepot(TileIndex t)
 {
-	return IS_INT_INSIDE(_m[t].m5, DEPOT_NORTH, DEPOT_END);
+	return IsInsideMM(_m[t].m5, DEPOT_NORTH, DEPOT_END);
 }
 
 static inline Axis GetShipDepotAxis(TileIndex t)
