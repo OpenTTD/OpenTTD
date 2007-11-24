@@ -65,7 +65,7 @@ void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void GenericPlaceRail(TileIndex tile, int cmd)
 {
 	DoCommandP(tile, _cur_railtype, cmd, CcPlaySound1E,
-		_remove_button_clicked ?
+		(_remove_button_clicked || _ctrl_pressed) ?
 		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) | CMD_NO_WATER :
 		CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK) | CMD_NO_WATER
 	);
@@ -139,10 +139,10 @@ static void PlaceRail_Depot(TileIndex tile)
 
 static void PlaceRail_Waypoint(TileIndex tile)
 {
-	if (!_remove_button_clicked) {
-		DoCommandP(tile, _cur_waypoint_type, 0, CcPlaySound1E, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
-	} else {
+	if (_remove_button_clicked || _ctrl_pressed) {
 		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_WAYPOINT));
+	} else {
+		DoCommandP(tile, _cur_waypoint_type, 0, CcPlaySound1E, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
 	}
 }
 
@@ -157,7 +157,7 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRail_Station(TileIndex tile)
 {
-	if (_remove_button_clicked) {
+	if (_remove_button_clicked || _ctrl_pressed) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
 	} else if (_railstation.dragdrop) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
@@ -184,16 +184,16 @@ static void GenericPlaceSignals(TileIndex tile)
 
 	Track track = FindFirstTrack(trackbits);
 
-	if (!_remove_button_clicked) {
+	if (_remove_button_clicked || _ctrl_pressed) {
+		DoCommandP(tile, track, 0, CcPlaySound1E,
+			CMD_REMOVE_SIGNALS | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM));
+	} else {
 		uint32 p1 = track;
 		SB(p1, 3, 1, _ctrl_pressed);
 		SB(p1, 4, 1, _cur_year < _patches.semaphore_build_before);
 
 		DoCommandP(tile, p1, 0, CcPlaySound1E,
 			CMD_BUILD_SIGNALS | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE));
-	} else {
-		DoCommandP(tile, track, 0, CcPlaySound1E,
-			CMD_REMOVE_SIGNALS | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM));
 	}
 }
 
@@ -347,7 +347,7 @@ static void BuildRailClick_Convert(Window *w)
 static void DoRailroadTrack(int mode)
 {
 	DoCommandP(TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), _cur_railtype | (mode << 4), NULL,
-		_remove_button_clicked ?
+		(_remove_button_clicked || _ctrl_pressed) ?
 		CMD_REMOVE_RAILROAD_TRACK | CMD_NO_WATER | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
 		CMD_BUILD_RAILROAD_TRACK  | CMD_NO_WATER | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
 	);
@@ -389,7 +389,7 @@ static void HandleAutoSignalPlacement()
 		TileVirtXY(thd->selend.x, thd->selend.y),
 		p2,
 		CcPlaySound1E,
-		_remove_button_clicked ?
+		(_remove_button_clicked || _ctrl_pressed)?
 			CMD_REMOVE_SIGNAL_TRACK | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
 			CMD_BUILD_SIGNAL_TRACK  | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE)
 	);
@@ -511,12 +511,9 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 					ShowBuildBridgeWindow(start_tile, end_tile, _cur_railtype);
 					break;
 
-				case DDSP_PLACE_AUTORAIL: {
-					bool old = _remove_button_clicked;
-					if (_ctrl_pressed) _remove_button_clicked = true;
+				case DDSP_PLACE_AUTORAIL:
 					HandleAutodirPlacement();
-					_remove_button_clicked = old;
-				} break;
+					break;
 
 				case DDSP_BUILD_SIGNALS:
 					HandleAutoSignalPlacement();
@@ -539,12 +536,9 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case DDSP_PLACE_RAIL_NE:
-				case DDSP_PLACE_RAIL_NW: {
-					bool old = _remove_button_clicked;
-					if (_ctrl_pressed) _remove_button_clicked = true;
+				case DDSP_PLACE_RAIL_NW:
 					DoRailroadTrack(e->we.place.select_proc == DDSP_PLACE_RAIL_NE ? TRACK_X : TRACK_Y);
-					_remove_button_clicked = old;
-				} break;
+					break;
 			}
 		}
 		break;
