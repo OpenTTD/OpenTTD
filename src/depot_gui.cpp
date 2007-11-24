@@ -290,14 +290,14 @@ struct GetDepotVehiclePtData {
 	Vehicle *wagon;
 };
 
-enum {
-	MODE_ERROR        =  1,
-	MODE_DRAG_VEHICLE =  0,
-	MODE_SHOW_VEHICLE = -1,
-	MODE_START_STOP   = -2,
+enum DepotGUIAction {
+	MODE_ERROR,
+	MODE_DRAG_VEHICLE,
+	MODE_SHOW_VEHICLE,
+	MODE_START_STOP,
 };
 
-static int GetVehicleFromDepotWndPt(const Window *w, int x, int y, Vehicle **veh, GetDepotVehiclePtData *d)
+static DepotGUIAction GetVehicleFromDepotWndPt(const Window *w, int x, int y, Vehicle **veh, GetDepotVehiclePtData *d)
 {
 	Vehicle **vl = WP(w, depot_d).vehicle_list;
 	uint xt, row, xm = 0, ym = 0;
@@ -411,10 +411,10 @@ static void DepotClick(Window *w, int x, int y)
 {
 	GetDepotVehiclePtData gdvp;
 	Vehicle *v = NULL;
-	int mode = GetVehicleFromDepotWndPt(w, x, y, &v, &gdvp);
+	DepotGUIAction mode = GetVehicleFromDepotWndPt(w, x, y, &v, &gdvp);
 
 	/* share / copy orders */
-	if (_thd.place_mode != VHM_NONE && mode <= 0) {
+	if (_thd.place_mode != VHM_NONE && mode != MODE_ERROR) {
 		_place_clicked_vehicle = (WP(w, depot_d).type == VEH_TRAIN ? gdvp.head : v);
 		return;
 	}
