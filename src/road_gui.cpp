@@ -212,7 +212,7 @@ static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
 
 static void PlaceRoad_BusStation(TileIndex tile)
 {
-	if (_remove_button_clicked || _ctrl_pressed) {
+	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, RoadStop::BUS, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[RoadStop::BUS]));
 	} else {
 		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | RoadStop::BUS, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[RoadStop::BUS]));
@@ -221,7 +221,7 @@ static void PlaceRoad_BusStation(TileIndex tile)
 
 static void PlaceRoad_TruckStation(TileIndex tile)
 {
-	if (_remove_button_clicked || _ctrl_pressed) {
+	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, RoadStop::TRUCK, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[RoadStop::TRUCK]));
 	} else {
 		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | RoadStop::TRUCK, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[RoadStop::TRUCK]));

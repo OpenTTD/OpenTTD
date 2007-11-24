@@ -92,9 +92,10 @@ static void DrawSubsidiesWindow(const Window *w)
 
 	ConvertDateToYMD(_date, &ymd);
 
+	int width = w->width - 2;
 	y = 15;
 	x = 1;
-	DrawString(x, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, TC_FROMSTRING);
+	DrawStringTruncated(x, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, TC_FROMSTRING, width);
 	y += 10;
 	num = 0;
 
@@ -103,21 +104,21 @@ static void DrawSubsidiesWindow(const Window *w)
 			int x2;
 
 			SetupSubsidyDecodeParam(s, 1);
-			x2 = DrawString(x + 2, y, STR_2027_FROM_TO, TC_FROMSTRING);
+			x2 = DrawStringTruncated(x + 2, y, STR_2027_FROM_TO, TC_FROMSTRING, width);
 
 			SetDParam(0, _date - ymd.day + 384 - s->age * 32);
-			DrawString(x2, y, STR_2028_BY, TC_FROMSTRING);
+			DrawStringTruncated(x2, y, STR_2028_BY, TC_FROMSTRING, width - x2);
 			y += 10;
 			num++;
 		}
 	}
 
 	if (num == 0) {
-		DrawString(x + 2, y, STR_202A_NONE, TC_FROMSTRING);
+		DrawStringTruncated(x + 2, y, STR_202A_NONE, TC_FROMSTRING, width - 2);
 		y += 10;
 	}
 
-	DrawString(x, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, TC_FROMSTRING);
+	DrawStringTruncated(x, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, TC_FROMSTRING, width);
 	y += 10;
 	num = 0;
 
@@ -130,16 +131,16 @@ static void DrawSubsidiesWindow(const Window *w)
 			PlayerID player = GetStation(s->to)->owner;
 			SetDParam(3, player);
 
-			xt = DrawString(x + 2, y, STR_202C_FROM_TO, TC_FROMSTRING);
+			xt = DrawStringTruncated(x + 2, y, STR_202C_FROM_TO, TC_FROMSTRING, width - 2);
 
 			SetDParam(0, _date - ymd.day + 768 - s->age * 32);
-			DrawString(xt, y, STR_202D_UNTIL, TC_FROMSTRING);
+			DrawStringTruncated(xt, y, STR_202D_UNTIL, TC_FROMSTRING, width - xt);
 			y += 10;
 			num++;
 		}
 	}
 
-	if (num == 0) DrawString(x + 2, y, STR_202A_NONE, TC_FROMSTRING);
+	if (num == 0) DrawStringTruncated(x + 2, y, STR_202A_NONE, TC_FROMSTRING, width - 2);
 }
 
 static void SubsidiesListWndProc(Window *w, WindowEvent *e)
@@ -158,15 +159,15 @@ static void SubsidiesListWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _subsidies_list_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,           STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE, 13,  11, 617,   0,  13, STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE, 13, 618, 629,   0,  13, STR_NULL,           STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE, 13,   0, 629,  14, 126, 0x0,                STR_01FD_CLICK_ON_SERVICE_TO_CENTER},
+{   WWT_CLOSEBOX, RESIZE_NONE,  13,   0,  10,   0,  13, STR_00C5,           STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION, RESIZE_RIGHT, 13,  11, 307,   0,  13, STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX, RESIZE_LR,    13, 308, 319,   0,  13, STR_NULL,           STR_STICKY_BUTTON},
+{      WWT_PANEL, RESIZE_RIGHT, 13,   0, 319,  14, 126, 0x0,                STR_01FD_CLICK_ON_SERVICE_TO_CENTER},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _subsidies_list_desc = {
-	WDP_AUTO, WDP_AUTO, 630, 127, 630, 127,
+	WDP_AUTO, WDP_AUTO, 320, 127, 630, 127,
 	WC_SUBSIDIES_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_subsidies_list_widgets,
