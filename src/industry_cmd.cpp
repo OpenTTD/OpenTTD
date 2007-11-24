@@ -40,6 +40,7 @@
 #include "misc/autoptr.hpp"
 #include "autoslope.h"
 #include "transparency.h"
+#include "water.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);

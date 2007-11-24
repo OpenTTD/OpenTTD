@@ -17,10 +17,6 @@ void DrawClearLandTile(const TileInfo *ti, byte set);
 void DrawClearLandFence(const TileInfo *ti);
 void TileLoopClearHelper(TileIndex tile);
 
-/* water_land.cpp */
-void DrawShipDepotSprite(int x, int y, int image);
-void TileLoop_Water(TileIndex tile);
-
 /* players.cpp */
 bool CheckPlayerHasMoney(CommandCost cost);
 void SubtractMoneyFromPlayer(CommandCost cost);

@@ -55,6 +55,42 @@ static const SpriteID _water_shore_sprites[] = {
 static Vehicle *FindFloodableVehicleOnTile(TileIndex tile);
 static void FloodVehicle(Vehicle *v);
 
+/**
+ * Makes a tile canal or water depending on the surroundings.
+ * This as for example docks and shipdepots do not store
+ * whether the tile used to be canal or 'normal' water.
+ * @param t the tile to change.
+ * @param o the owner of the new tile.
+ */
+void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
+{
+	assert(GetTileSlope(t, NULL) == SLOPE_FLAT);
+
+	/* Non-sealevel -> canal */
+	if (TileHeight(t) != 0) {
+		MakeCanal(t, o);
+		return;
+	}
+
+	bool has_water = false;
+	bool has_canal = false;
+
+	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+		TileIndex neighbour = TileAddByDiagDir(t, dir);
+		if (IsTileType(neighbour, MP_WATER)) {
+			has_water |= IsSea(neighbour) || IsCoast(neighbour);
+			has_canal |= IsCanal(neighbour);
+		}
+	}
+	if (has_canal || !has_water) {
+		MakeCanal(t, o);
+	} else {
+		MakeWater(t);
+	}
+	MarkTileDirtyByTile(t);
+}
+
+
 /** Build a ship depot.
  * @param tile tile where ship depot is built
  * @param flags type of operation
@@ -178,8 +214,8 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile);
-		DoClearSquare(tile + delta);
-		DoClearSquare(tile - delta);
+		MakeWaterOrCanalDependingOnSurroundings(tile + delta, _current_player);
+		MakeWaterOrCanalDependingOnSurroundings(tile - delta, _current_player);
 	}
 
 	return CommandCost(_price.clear_water * 2);

@@ -16,6 +16,7 @@
 #include "sound.h"
 #include "command.h"
 #include "variables.h"
+#include "water.h"
 
 static void ShowBuildDockStationPicker();
 static void ShowBuildDocksDepotPicker();

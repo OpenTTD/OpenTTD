@@ -41,6 +41,7 @@
 #include "misc/autoptr.hpp"
 #include "autoslope.h"
 #include "transparency.h"
+#include "water.h"
 
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
