@@ -665,13 +665,15 @@ enum NetworkStartServerWidgets {
 	NSSW_CANCEL          = 29,   ///< 'Cancel' button
 };
 
-/** Handler of actions done in the NetworkStartServer window
- @param w pointer to the Window structure
- @param e pointer to window event
- @note    Uses network_ql_d (network_d, querystr_d and list_d) WP macro
- @see     struct _network_start_server_window_widgets
- @see     enum NetworkStartServerWidgets
-*/
+/**
+ * Handler of actions done in the NetworkStartServer window
+ *
+ * @param w pointer to the Window structure
+ * @param e pointer to window event
+ * @note    Uses network_ql_d (network_d, querystr_d and list_d) WP macro
+ * @see     struct _network_start_server_window_widgets
+ * @see     enum NetworkStartServerWidgets
+ */
 static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 {
 	network_d *nd = &WP(w, network_ql_d).n;
@@ -874,17 +876,17 @@ static const Widget _network_start_server_window_widgets[] = {
 /* Window decoration and background panel */
 {   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW },               // NSSW_CLOSE
 {    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   419,     0,    13, STR_NETWORK_START_GAME_WINDOW,    STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   419,    14,   243, STR_NULL,                         STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   419,    14,   243, 0x0,                              STR_NULL},
 
 /* Set game name and password widgets */
 {       WWT_TEXT,   RESIZE_NONE,   BGC,    10,    90,    22,    34, STR_NETWORK_NEW_GAME_NAME,        STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,   BGC,   100,   272,    22,    33, STR_NULL,                         STR_NETWORK_NEW_GAME_NAME_TIP},        // NSSW_GAMENAME
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   100,   272,    22,    33, 0x0,                              STR_NETWORK_NEW_GAME_NAME_TIP},        // NSSW_GAMENAME
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,         STR_NETWORK_PASSWORD_TIP},             // NSSW_SETPWD
 
 /* List of playable scenarios */
 {       WWT_TEXT,   RESIZE_NONE,   BGC,    10,   110,    43,    55, STR_NETWORK_SELECT_MAP,           STR_NULL},
 {      WWT_INSET,   RESIZE_NONE,   BGC,    10,   271,    62,   216, STR_NULL,                         STR_NETWORK_SELECT_MAP_TIP},           // NSSW_SELMAP
-{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   259,   270,    63,   215, STR_NULL,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   259,   270,    63,   215, 0x0,                              STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 /* Combo/selection boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
 {       WWT_TEXT,   RESIZE_NONE,   BGC,   280,   419,    63,    75, STR_NETWORK_CONNECTION,           STR_NULL},
