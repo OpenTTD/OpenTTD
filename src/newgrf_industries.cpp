@@ -201,7 +201,11 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x42: { // waiting cargo, but only if those two callback flags are set
 			uint16 callback = indspec->callback_flags;
 			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
-				return min(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0xFFFF);
+				if ((indspec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) {
+					return min(industry->incoming_cargo_waiting[variable - 0x40] / industry->prod_level, (uint16)0xFFFF);
+				} else {
+					return min(industry->incoming_cargo_waiting[variable - 0x40], (uint16)0xFFFF);
+				}
 			} else {
 				return 0;
 			}
@@ -505,6 +509,8 @@ void IndustryProductionCallback(Industry *ind, int reason)
 	ResolverObject object;
 	NewIndustryResolver(&object, ind->xy, ind);
 	if ((spec->behaviour & INDUSTRYBEH_PRODCALLBACK_RANDOM) != 0) object.callback_param1 = Random();
+	int multiplier = 1;
+	if ((spec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) multiplier = ind->prod_level;
 	object.callback_param2 = reason;
 
 	for (uint loop = 0;; loop++) {
@@ -515,10 +521,10 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		bool deref = (group->g.indprod.version == 1);
 
 		for (uint i = 0; i < 3; i++) {
-			ind->incoming_cargo_waiting[i] = Clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->g.indprod.substract_input[i], deref), 0, 0xFFFF);
+			ind->incoming_cargo_waiting[i] = Clamp(ind->incoming_cargo_waiting[i] - DerefIndProd(group->g.indprod.substract_input[i], deref) * multiplier, 0, 0xFFFF);
 		}
 		for (uint i = 0; i < 2; i++) {
-			ind->produced_cargo_waiting[i] = Clamp(ind->produced_cargo_waiting[i] + DerefIndProd(group->g.indprod.add_output[i], deref), 0, 0xFFFF);
+			ind->produced_cargo_waiting[i] = Clamp(ind->produced_cargo_waiting[i] + max(DerefIndProd(group->g.indprod.add_output[i], deref), 0) * multiplier, 0, 0xFFFF);
 		}
 
 		int32 again = DerefIndProd(group->g.indprod.again, deref);
