@@ -1251,7 +1251,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 						top    < si->sign.top + ScaleByZoom(12, dpi->zoom) &&
 						right  > si->sign.left &&
 						left   < si->sign.left + ScaleByZoom(si->sign.width_2, dpi->zoom)) {
-					AddSign(si, STR_2002, si->sign.width_2 | 0x8000);
+					AddSign(si, IsTransparencySet(TO_SIGNS) ? STR_2002_WHITE : STR_2002, si->sign.width_2 | 0x8000);
 				}
 			}
 			break;
