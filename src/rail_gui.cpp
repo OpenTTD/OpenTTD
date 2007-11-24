@@ -157,7 +157,7 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRail_Station(TileIndex tile)
 {
-	if (_remove_button_clicked || _ctrl_pressed) {
+	if (_remove_button_clicked) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
 	} else if (_railstation.dragdrop) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
@@ -184,7 +184,7 @@ static void GenericPlaceSignals(TileIndex tile)
 
 	Track track = FindFirstTrack(trackbits);
 
-	if (_remove_button_clicked || _ctrl_pressed) {
+	if (_remove_button_clicked) {
 		DoCommandP(tile, track, 0, CcPlaySound1E,
 			CMD_REMOVE_SIGNALS | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM));
 	} else {
@@ -389,7 +389,7 @@ static void HandleAutoSignalPlacement()
 		TileVirtXY(thd->selend.x, thd->selend.y),
 		p2,
 		CcPlaySound1E,
-		(_remove_button_clicked || _ctrl_pressed)?
+		_remove_button_clicked ?
 			CMD_REMOVE_SIGNAL_TRACK | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
 			CMD_BUILD_SIGNAL_TRACK  | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE)
 	);
