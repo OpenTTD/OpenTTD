@@ -643,7 +643,7 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 
 	if (p->ai.route_type_mask != 0 &&
 			!(p->ai.route_type_mask & bitmask) &&
-			!CHANCE16(1, 5)) {
+			!Chance16(1, 5)) {
 		return false;
 	}
 
@@ -1452,7 +1452,7 @@ static void AiWantPassengerAircraftRoute(Player *p)
 	 * Also, non-full load is more resistant against starving (by building better stations
 	 * or using exclusive rights)
 	 */
-	p->ai.num_want_fullload = CHANCE16(1, 5); // 20% chance
+	p->ai.num_want_fullload = Chance16(1, 5); // 20% chance
 //	p->ai.loco_id = INVALID_VEHICLE;
 	p->ai.order_list_blocks[0] = 0;
 	p->ai.order_list_blocks[1] = 1;

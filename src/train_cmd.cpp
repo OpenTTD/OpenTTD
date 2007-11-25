@@ -2015,7 +2015,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 
 		case 1:
 			/* diesel smoke */
-			if (u->cur_speed <= 40 && CHANCE16(15, 128)) {
+			if (u->cur_speed <= 40 && Chance16(15, 128)) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_DIESEL_SMOKE);
 				sound = true;
 			}
@@ -2023,7 +2023,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 
 		case 2:
 			/* blue spark */
-			if (GB(v->tick_counter, 0, 2) == 0 && CHANCE16(1, 45)) {
+			if (GB(v->tick_counter, 0, 2) == 0 && Chance16(1, 45)) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_ELECTRIC_SPARK);
 				sound = true;
 			}
@@ -3114,7 +3114,7 @@ static void HandleCrashedTrain(Vehicle *v)
 	}
 
 	uint32 r;
-	if (state <= 200 && CHANCE16R(1, 7, r)) {
+	if (state <= 200 && Chance16R(1, 7, r)) {
 		int index = (r * 10 >> 16);
 
 		Vehicle *u = v;
@@ -3392,7 +3392,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			v->current_order.dest != depot->index &&
-			!CHANCE16(3, 16)) {
+			!Chance16(3, 16)) {
 		return;
 	}
 

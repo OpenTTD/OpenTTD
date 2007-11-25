@@ -261,55 +261,6 @@ template<typename T> static inline uint CountBits(T value)
 	return num;
 }
 
-/**
- * Flips a coin with a given probability.
- *
- * This macro can be used to get true or false randomized according to a
- * given probability. The parameter a and b create a percent value with
- * (a/b). The macro returns true in (a/b) percent.
- *
- * @param a The numerator of the fraction
- * @param b The denominator of the fraction, must of course not be null
- * @return True in (a/b) percent
- */
-#define CHANCE16(a, b) CHANCE16I(a, b, Random())
-
-/**
- * Flips a coin with a given probability and saves the randomize-number in a variable.
- *
- * This macro uses the same parameters as the CHANCE16 marco. The third parameter
- * must be a variable the randomize-number from Random() is saved in.
- *
- * The low 16 bits of r will already be used and can therefor not be passed to
- * CHANCE16I. One can only send the high 16 bits to CHANCE16I.
- *
- * @param a The numerator of the fraction, see CHANCE16
- * @param b The denominator of the fraction, see CHANCE16
- * @param r The variable to save the randomize-number from Random()
- * @return True in (a/b) percent
- */
-#define CHANCE16R(a, b, r) CHANCE16I(a, b, r = Random())
-
-/**
- * Checks if a given randomize-number is below a given probability.
- *
- * This macro is used to check if the given probability by the fraction of (a/b)
- * is greater than low 16 bits of the given randomize-number v.
- *
- * Do not use this function twice on the same random 16 bits as it will yield
- * the same result. One can use a random number for two calls to CHANCE16I,
- * where one call sends the low 16 bits and the other the high 16 bits.
- *
- * @param a The numerator of the fraction, see CHANCE16
- * @param b The denominator of the fraction, see CHANCE16
- * @param r The given randomize-number
- * @return True if v is less or equals (a/b)
- */
-static inline bool CHANCE16I(const uint a, const uint b, const uint32 r)
-{
-	return (uint16)r < (uint16)((65536 * a) / b);
-}
-
 
 #define for_each_bit(_i, _b)            \
 	for (_i = 0; _b != 0; _i++, _b >>= 1) \

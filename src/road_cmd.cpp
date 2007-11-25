@@ -1243,7 +1243,7 @@ static void TileLoop_Road(TileIndex tile)
 			if (t->road_build_months != 0 &&
 					(DistanceManhattan(t->xy, tile) < 8 || grp != 0) &&
 					GetRoadTileType(tile) == ROAD_TILE_NORMAL && CountBits(GetAllRoadBits(tile)) > 1 ) {
-				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile) && CHANCE16(1, 40)) {
+				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile) && Chance16(1, 40)) {
 					StartRoadWorks(tile);
 
 					SndPlayTileFx(SND_21_JACKHAMMER, tile);

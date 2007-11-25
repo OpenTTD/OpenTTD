@@ -406,7 +406,7 @@ static void TileLoop_Town(TileIndex tile)
 	if ((hs->building_flags & BUILDING_IS_ANIMATED) &&
 			house_id < NEW_HOUSE_OFFSET &&
 			!LiftHasDestination(tile) &&
-			CHANCE16(1, 2))
+			Chance16(1, 2))
 		AddAnimatedTile(tile);
 
 	t = GetTownByTile(tile);
@@ -731,14 +731,14 @@ no_slope:
 		 * maybe terraform some. */
 		desired_slope = (dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? SLOPE_NW : SLOPE_NE;
 		if (desired_slope != cur_slope && ComplementSlope(desired_slope) != cur_slope) {
-			if (CHANCE16(1, 8)) {
+			if (Chance16(1, 8)) {
 				CommandCost res = CMD_ERROR;
-				if (!_generating_world && CHANCE16(1, 10)) {
+				if (!_generating_world && Chance16(1, 10)) {
 					/* Note: Do not replace " ^ 0xF" with ComplementSlope(). The slope might be steep. */
-					res = DoCommand(tile, CHANCE16(1, 16) ? cur_slope : cur_slope ^ 0xF, 0,
+					res = DoCommand(tile, Chance16(1, 16) ? cur_slope : cur_slope ^ 0xF, 0,
 							DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
 				}
-				if (CmdFailed(res) && CHANCE16(1, 3)) {
+				if (CmdFailed(res) && Chance16(1, 3)) {
 					/* We can consider building on the slope, though. */
 					goto no_slope;
 				}
@@ -1002,7 +1002,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 				DiagDirection source_dir = ReverseDiagDir(target_dir);
 
-				if (CHANCE16(1, 4)) {
+				if (Chance16(1, 4)) {
 					/* Randomize a new target dir */
 					do target_dir = RandomDiagDir(); while (target_dir == source_dir);
 				}
@@ -1096,7 +1096,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 				 /* Allow a house at the edge. 60% chance or
 				  * always ok if no road allowed. */
 				rcmd = DiagDirToRoadBits(target_dir);
-				allow_house = (!IsRoadAllowedHere(house_tile, target_dir) || CHANCE16(6, 10));
+				allow_house = (!IsRoadAllowedHere(house_tile, target_dir) || Chance16(6, 10));
 				break;
 		}
 
@@ -1104,7 +1104,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 			/* Build a house, but not if there already is a house there. */
 			if (!IsTileType(house_tile, MP_HOUSE)) {
 				/* Level the land if possible */
-				if (CHANCE16(1, 6)) LevelTownLand(house_tile);
+				if (Chance16(1, 6)) LevelTownLand(house_tile);
 
 				/* And build a house.
 				 * Set result to -1 if we managed to build it. */
@@ -1778,7 +1778,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 			uint32 r = Random();
 
 			construction_stage = TOWN_HOUSE_COMPLETED;
-			if (CHANCE16(1, 7)) construction_stage = GB(r, 0, 2);
+			if (Chance16(1, 7)) construction_stage = GB(r, 0, 2);
 
 			if (construction_stage == TOWN_HOUSE_COMPLETED) {
 				ChangePopulation(t, hs->population);
@@ -2155,7 +2155,7 @@ static void UpdateTownGrowRate(Town *t)
 		t->fund_buildings_months--;
 	} else {
 		m = _grow_count_values[1][min(n, 5)];
-		if (n == 0 && !CHANCE16(1, 12)) return;
+		if (n == 0 && !Chance16(1, 12)) return;
 	}
 
 	if (_opt.landscape == LT_ARCTIC) {

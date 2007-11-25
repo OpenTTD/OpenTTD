@@ -1264,7 +1264,7 @@ static void BubbleTick(Vehicle *v)
 	}
 
 	if (b->y == 4 && b->x == 1) {
-		if (v->z_pos > 180 || CHANCE16I(1, 96, InteractiveRandom())) {
+		if (v->z_pos > 180 || Chance16I(1, 96, InteractiveRandom())) {
 			v->spritenum = 5;
 			SndPlayVehicleFx(SND_2F_POP, v);
 		}
@@ -1443,7 +1443,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* increase chance of failure */
 	chance = v->breakdown_chance + 1;
-	if (CHANCE16I(1,25,r)) chance += 25;
+	if (Chance16I(1,25,r)) chance += 25;
 	v->breakdown_chance = min(255, chance);
 
 	/* calculate reliability value to use in comparison */

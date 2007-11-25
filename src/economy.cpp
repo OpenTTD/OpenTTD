@@ -1102,7 +1102,7 @@ static void SubsidyMonthlyHandler()
 	}
 
 	/* 25% chance to go on */
-	if (CHANCE16(1,4)) {
+	if (Chance16(1,4)) {
 		/*  Find a free slot*/
 		s = _subsidies;
 		while (s->cargo_type != CT_INVALID) {

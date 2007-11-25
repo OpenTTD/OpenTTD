@@ -1989,7 +1989,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			v->current_order.flags & OF_NON_STOP &&
-			!CHANCE16(1, 20)) {
+			!Chance16(1, 20)) {
 		return;
 	}
 

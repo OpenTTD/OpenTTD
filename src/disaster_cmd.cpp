@@ -715,7 +715,7 @@ static void DisasterTick_Submarine(Vehicle *v)
 	if (IsValidTile(tile)) {
 		TrackdirBits r = (TrackdirBits)GetTileTrackStatus(tile, TRANSPORT_WATER, 0);
 
-		if (TrackdirBitsToTrackBits(r) == TRACK_BIT_ALL && !CHANCE16(1, 90)) {
+		if (TrackdirBitsToTrackBits(r) == TRACK_BIT_ALL && !Chance16(1, 90)) {
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 			return;
@@ -825,7 +825,7 @@ static void Disaster_Airplane_Init()
 
 	FOR_ALL_INDUSTRIES(i) {
 		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_AIRPLANE_ATTACKS) &&
-				(found == NULL || CHANCE16(1, 2))) {
+				(found == NULL || Chance16(1, 2))) {
 			found = i;
 		}
 	}
@@ -861,7 +861,7 @@ static void Disaster_Helicopter_Init()
 
 	FOR_ALL_INDUSTRIES(i) {
 		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CHOPPER_ATTACKS) &&
-				(found == NULL || CHANCE16(1, 2))) {
+				(found == NULL || Chance16(1, 2))) {
 			found = i;
 		}
 	}

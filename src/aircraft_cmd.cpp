@@ -1255,7 +1255,7 @@ static void HandleCrashedAircraft(Vehicle *v)
 
 	if (v->u.air.crashed_counter < 650) {
 		uint32 r;
-		if (CHANCE16R(1,32,r)) {
+		if (Chance16R(1,32,r)) {
 			static const DirDiff delta[] = {
 				DIRDIFF_45LEFT, DIRDIFF_SAME, DIRDIFF_SAME, DIRDIFF_45RIGHT
 			};

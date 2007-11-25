@@ -558,7 +558,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	case GFX_OILWELL_ANIMATED_2:
 	case GFX_OILWELL_ANIMATED_3:
 		if ((_tick_counter & 7) == 0) {
-			bool b = CHANCE16(1, 7);
+			bool b = Chance16(1, 7);
 			IndustryGfx gfx = GetIndustryGfx(tile);
 
 			m = GetIndustryAnimationState(tile) + 1;
@@ -738,7 +738,7 @@ static void TileLoop_Industry(TileIndex tile)
 	case GFX_COAL_MINE_TOWER_NOT_ANIMATED:
 	case GFX_COPPER_MINE_TOWER_NOT_ANIMATED:
 	case GFX_GOLD_MINE_TOWER_NOT_ANIMATED:
-		if (!(_tick_counter & 0x400) && CHANCE16(1, 2)) {
+		if (!(_tick_counter & 0x400) && Chance16(1, 2)) {
 			switch (gfx) {
 				case GFX_COAL_MINE_TOWER_NOT_ANIMATED:   gfx = GFX_COAL_MINE_TOWER_ANIMATED;   break;
 				case GFX_COPPER_MINE_TOWER_NOT_ANIMATED: gfx = GFX_COPPER_MINE_TOWER_ANIMATED; break;
@@ -751,7 +751,7 @@ static void TileLoop_Industry(TileIndex tile)
 		break;
 
 	case GFX_OILWELL_NOT_ANIMATED:
-		if (CHANCE16(1, 6)) {
+		if (Chance16(1, 6)) {
 			SetIndustryGfx(tile, GFX_OILWELL_ANIMATED_1);
 			SetIndustryAnimationState(tile, 0);
 			AddAnimatedTile(tile);
@@ -775,7 +775,7 @@ static void TileLoop_Industry(TileIndex tile)
 		break;
 
 	case GFX_POWERPLANT_SPARKS:
-		if (CHANCE16(1, 3)) {
+		if (Chance16(1, 3)) {
 			SndPlayTileFx(SND_0C_ELECTRIC_SPARK, tile);
 			AddAnimatedTile(tile);
 		}
@@ -805,7 +805,7 @@ static void TileLoop_Industry(TileIndex tile)
 		break;
 
 	case GFX_SUGAR_MINE_SIEVE:
-		if (CHANCE16(1, 3)) AddAnimatedTile(tile);
+		if (Chance16(1, 3)) AddAnimatedTile(tile);
 		break;
 	}
 }
@@ -863,7 +863,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direct
 		if (IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES)) {
 			byte or_ = type;
 
-			if (or_ == 1 && CHANCE16(1, 7)) or_ = 2;
+			if (or_ == 1 && Chance16(1, 7)) or_ = 2;
 
 			if (direction == AXIS_X) {
 				SetFenceSE(tile, or_);
@@ -990,7 +990,7 @@ static void ProduceIndustryGoods(Industry *i)
 
 	/* play a sound? */
 	if ((i->counter & 0x3F) == 0) {
-		if (CHANCE16R(1, 14, r) && (num = indsp->number_of_sounds) != 0) {
+		if (Chance16R(1, 14, r) && (num = indsp->number_of_sounds) != 0) {
 			SndPlayTileFx(
 				(SoundFx)(indsp->random_sounds[((r >> 16) * num) >> 16]),
 				i->xy);
@@ -1012,7 +1012,7 @@ static void ProduceIndustryGoods(Industry *i)
 			if (HasBit(indsp->callback_flags, CBM_IND_SPECIAL_EFFECT)) {
 				plant = (GetIndustryCallback(CBID_INDUSTRY_SPECIAL_EFFECT, Random(), 0, i, i->type, i->xy) != 0);
 			} else {
-				plant = CHANCE16(1, 8);
+				plant = Chance16(1, 8);
 			}
 
 			if (plant) PlantRandomFarmField(i);
@@ -2052,9 +2052,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 				new_prod = old_prod = i->production_rate[j];
 
-				if (only_decrease || CHANCE16(1, 3)) mult *= -1;
+				if (only_decrease || Chance16(1, 3)) mult *= -1;
 
-				if (CHANCE16(1, 22)) {
+				if (Chance16(1, 22)) {
 					new_prod += mult * (max(((RandomRange(50) + 10) * old_prod) >> 8, 1U));
 				}
 
@@ -2081,9 +2081,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				}
 			}
 		} else {
-			if (only_decrease || CHANCE16(1, 3)) {
+			if (only_decrease || Chance16(1, 3)) {
 				/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
-				if (!only_decrease && (i->last_month_pct_transported[0] > PERCENT_TRANSPORTED_60) != CHANCE16(1, 3)) {
+				if (!only_decrease && (i->last_month_pct_transported[0] > PERCENT_TRANSPORTED_60) != Chance16(1, 3)) {
 					mul = 1; // Increase production
 				} else {
 					div = 1; // Decrease production
@@ -2093,7 +2093,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 
 	if (standard && indspec->life_type & INDUSTRYLIFE_PROCESSING) {
-		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1, smooth_economy ? 180 : 2)) {
+		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && Chance16(1, smooth_economy ? 180 : 2)) {
 			closeit = true;
 		}
 	}
@@ -2172,7 +2172,7 @@ void IndustryMonthlyLoop()
 	}
 
 	/* 3% chance that we start a new industry */
-	if (CHANCE16(3, 100)) {
+	if (Chance16(3, 100)) {
 		MaybeNewIndustry();
 	} else {
 		i = GetRandomIndustry();
