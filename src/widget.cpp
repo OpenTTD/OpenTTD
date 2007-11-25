@@ -184,17 +184,16 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, FrameFlag
 void DrawWindowWidgets(const Window *w)
 {
 	const DrawPixelInfo* dpi = _cur_dpi;
-	Rect r;
-	uint i;
 
-	for (i = 0; i < w->widget_count; i++) {
+	for (uint i = 0; i < w->widget_count; i++) {
 		const Widget *wi = &w->widget[i];
 		bool clicked = IsWindowWidgetLowered(w, i);
+		Rect r;
 
-		if (dpi->left > (r.right=/*w->left + */wi->right) ||
-				dpi->left + dpi->width <= (r.left=wi->left/* + w->left*/) ||
-				dpi->top > (r.bottom=/*w->top +*/ wi->bottom) ||
-				dpi->top + dpi->height <= (r.top = /*w->top +*/ wi->top) ||
+		if (dpi->left > (r.right = wi->right) ||
+				dpi->left + dpi->width <= (r.left = wi->left) ||
+				dpi->top > (r.bottom = wi->bottom) ||
+				dpi->top + dpi->height <= (r.top = wi->top) ||
 				IsWindowWidgetHidden(w, i)) {
 			continue;
 		}
@@ -202,7 +201,7 @@ void DrawWindowWidgets(const Window *w)
 		switch (wi->type & WWT_MASK) {
 		case WWT_IMGBTN:
 		case WWT_IMGBTN_2: {
-			int img = wi->data;
+			SpriteID img = wi->data;
 			assert(img != 0);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 
@@ -234,14 +233,14 @@ void DrawWindowWidgets(const Window *w)
 		}
 
 		case WWT_TEXT: {
-			StringID str = wi->data;
+			const StringID str = wi->data;
 
 			if (str != STR_NULL) DrawStringTruncated(r.left, r.top, str, wi->color, r.right - r.left);
 			break;
 		}
 
 		case WWT_INSET: {
-			StringID str = wi->data;
+			const StringID str = wi->data;
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
 
 			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, TC_FROMSTRING, r.right - r.left - 10);
@@ -275,7 +274,7 @@ void DrawWindowWidgets(const Window *w)
 				GfxFillRect(r.left + 1, x, r.right - 1, x, color);
 			}
 
-			color = _colour_gradient[wi->color&0xF][4];
+			color = _colour_gradient[wi->color & 0xF][4];
 
 			x = r.left - 1;
 			for (ctr = c; ctr > 1; ctr--) {
@@ -286,7 +285,7 @@ void DrawWindowWidgets(const Window *w)
 			x = r.top - 1;
 			for (ctr = d; ctr > 1; ctr--) {
 				x += amt2;
-				GfxFillRect(r.left+1, x, r.right-1, x, color);
+				GfxFillRect(r.left + 1, x, r.right - 1, x, color);
 			}
 
 			goto draw_default;
@@ -295,8 +294,9 @@ void DrawWindowWidgets(const Window *w)
 		/* vertical scrollbar */
 		case WWT_SCROLLBAR: {
 			Point pt;
-			int c1,c2;
+			int c1, c2;
 
+			assert(wi->data == 0);
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			/* draw up/down buttons */
@@ -308,18 +308,18 @@ void DrawWindowWidgets(const Window *w)
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, TC_BLACK);
 
-			c1 = _colour_gradient[wi->color&0xF][3];
-			c2 = _colour_gradient[wi->color&0xF][7];
+			c1 = _colour_gradient[wi->color & 0xF][3];
+			c2 = _colour_gradient[wi->color & 0xF][7];
 
 			/* draw "shaded" background */
-			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
-			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
+			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c2);
+			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 			/* draw shaded lines */
-			GfxFillRect(r.left+2, r.top+10, r.left+2, r.bottom-10, c1);
-			GfxFillRect(r.left+3, r.top+10, r.left+3, r.bottom-10, c2);
-			GfxFillRect(r.left+7, r.top+10, r.left+7, r.bottom-10, c1);
-			GfxFillRect(r.left+8, r.top+10, r.left+8, r.bottom-10, c2);
+			GfxFillRect(r.left + 2, r.top + 10, r.left + 2, r.bottom - 10, c1);
+			GfxFillRect(r.left + 3, r.top + 10, r.left + 3, r.bottom - 10, c2);
+			GfxFillRect(r.left + 7, r.top + 10, r.left + 7, r.bottom - 10, c1);
+			GfxFillRect(r.left + 8, r.top + 10, r.left + 8, r.bottom - 10, c2);
 
 			pt = HandleScrollbarHittest(&w->vscroll, r.top, r.bottom);
 			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE ? FR_LOWERED : FR_NONE);
@@ -327,8 +327,9 @@ void DrawWindowWidgets(const Window *w)
 		}
 		case WWT_SCROLL2BAR: {
 			Point pt;
-			int c1,c2;
+			int c1, c2;
 
+			assert(wi->data == 0);
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			/* draw up/down buttons */
@@ -340,18 +341,18 @@ void DrawWindowWidgets(const Window *w)
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color,  (clicked) ? FR_LOWERED : FR_NONE);
 			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, TC_BLACK);
 
-			c1 = _colour_gradient[wi->color&0xF][3];
-			c2 = _colour_gradient[wi->color&0xF][7];
+			c1 = _colour_gradient[wi->color & 0xF][3];
+			c2 = _colour_gradient[wi->color & 0xF][7];
 
 			/* draw "shaded" background */
-			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
-			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
+			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c2);
+			GfxFillRect(r.left, r.top + 10, r.right, r.bottom - 10, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 			/* draw shaded lines */
-			GfxFillRect(r.left+2, r.top+10, r.left+2, r.bottom-10, c1);
-			GfxFillRect(r.left+3, r.top+10, r.left+3, r.bottom-10, c2);
-			GfxFillRect(r.left+7, r.top+10, r.left+7, r.bottom-10, c1);
-			GfxFillRect(r.left+8, r.top+10, r.left+8, r.bottom-10, c2);
+			GfxFillRect(r.left + 2, r.top + 10, r.left + 2, r.bottom - 10, c1);
+			GfxFillRect(r.left + 3, r.top + 10, r.left + 3, r.bottom - 10, c2);
+			GfxFillRect(r.left + 7, r.top + 10, r.left + 7, r.bottom - 10, c1);
+			GfxFillRect(r.left + 8, r.top + 10, r.left + 8, r.bottom - 10, c2);
 
 			pt = HandleScrollbarHittest(&w->vscroll2, r.top, r.bottom);
 			DrawFrameRect(r.left, pt.x, r.right, pt.y, wi->color, (w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2) ? FR_LOWERED : FR_NONE);
@@ -361,8 +362,9 @@ void DrawWindowWidgets(const Window *w)
 		/* horizontal scrollbar */
 		case WWT_HSCROLLBAR: {
 			Point pt;
-			int c1,c2;
+			int c1, c2;
 
+			assert(wi->data == 0);
 			assert(r.bottom - r.top == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			clicked = ((w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL));
@@ -370,21 +372,21 @@ void DrawWindowWidgets(const Window *w)
 			DrawSprite(SPR_ARROW_LEFT, PAL_NONE, r.left + 1 + clicked, r.top + 1 + clicked);
 
 			clicked = ((w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL));
-			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
+			DrawFrameRect(r.right - 9, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, r.right - 8 + clicked, r.top + 1 + clicked);
 
-			c1 = _colour_gradient[wi->color&0xF][3];
-			c2 = _colour_gradient[wi->color&0xF][7];
+			c1 = _colour_gradient[wi->color & 0xF][3];
+			c2 = _colour_gradient[wi->color & 0xF][7];
 
 			/* draw "shaded" background */
-			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c2);
-			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
+			GfxFillRect(r.left + 10, r.top, r.right - 10, r.bottom, c2);
+			GfxFillRect(r.left + 10, r.top, r.right - 10, r.bottom, c1 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 			/* draw shaded lines */
-			GfxFillRect(r.left+10, r.top+2, r.right-10, r.top+2, c1);
-			GfxFillRect(r.left+10, r.top+3, r.right-10, r.top+3, c2);
-			GfxFillRect(r.left+10, r.top+7, r.right-10, r.top+7, c1);
-			GfxFillRect(r.left+10, r.top+8, r.right-10, r.top+8, c2);
+			GfxFillRect(r.left + 10, r.top + 2, r.right - 10, r.top + 2, c1);
+			GfxFillRect(r.left + 10, r.top + 3, r.right - 10, r.top + 3, c2);
+			GfxFillRect(r.left + 10, r.top + 7, r.right - 10, r.top + 7, c1);
+			GfxFillRect(r.left + 10, r.top + 8, r.right - 10, r.top + 8, c2);
 
 			/* draw actual scrollbar */
 			pt = HandleScrollbarHittest(&w->hscroll, r.left, r.right);
@@ -394,37 +396,39 @@ void DrawWindowWidgets(const Window *w)
 		}
 
 		case WWT_FRAME: {
-			int c1,c2;
+			const StringID str = wi->data;
+			int c1, c2;
 			int x2 = r.left; // by default the left side is the left side of the widget
 
-			if (wi->data != 0) x2 = DrawString(r.left + 6, r.top, wi->data, TC_FROMSTRING);
+			if (str != STR_NULL) x2 = DrawString(r.left + 6, r.top, str, TC_FROMSTRING);
 
 			c1 = _colour_gradient[wi->color][3];
 			c2 = _colour_gradient[wi->color][7];
 
-			/*Line from upper left corner to start of text */
-			GfxFillRect(r.left, r.top+4, r.left+4,r.top+4, c1);
-			GfxFillRect(r.left+1, r.top+5, r.left+4,r.top+5, c2);
+			/* Line from upper left corner to start of text */
+			GfxFillRect(r.left, r.top + 4, r.left + 4, r.top + 4, c1);
+			GfxFillRect(r.left + 1, r.top + 5, r.left + 4, r.top + 5, c2);
 
 			/* Line from end of text to upper right corner */
-			GfxFillRect(x2, r.top+4, r.right-1,r.top+4,c1);
-			GfxFillRect(x2, r.top+5, r.right-2,r.top+5,c2);
+			GfxFillRect(x2, r.top + 4, r.right - 1, r.top + 4, c1);
+			GfxFillRect(x2, r.top + 5, r.right - 2, r.top + 5, c2);
 
 			/* Line from upper left corner to bottom left corner */
-			GfxFillRect(r.left, r.top+5, r.left, r.bottom-1, c1);
-			GfxFillRect(r.left+1, r.top+6, r.left+1, r.bottom-2, c2);
+			GfxFillRect(r.left, r.top + 5, r.left, r.bottom - 1, c1);
+			GfxFillRect(r.left + 1, r.top + 6, r.left + 1, r.bottom - 2, c2);
 
 			/*Line from upper right corner to bottom right corner */
-			GfxFillRect(r.right-1, r.top+5, r.right-1, r.bottom-2, c1);
-			GfxFillRect(r.right, r.top+4, r.right, r.bottom-1, c2);
+			GfxFillRect(r.right - 1, r.top + 5, r.right - 1, r.bottom - 2, c1);
+			GfxFillRect(r.right, r.top + 4, r.right, r.bottom - 1, c2);
 
-			GfxFillRect(r.left+1, r.bottom-1, r.right-1, r.bottom-1, c1);
+			GfxFillRect(r.left + 1, r.bottom - 1, r.right - 1, r.bottom - 1, c1);
 			GfxFillRect(r.left, r.bottom, r.right, r.bottom, c2);
 
 			goto draw_default;
 		}
 
 		case WWT_STICKYBOX: {
+			assert(wi->data == 0);
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			clicked = !!(w->flags4 & WF_STICKY);
@@ -434,6 +438,7 @@ void DrawWindowWidgets(const Window *w)
 		}
 
 		case WWT_RESIZEBOX: {
+			assert(wi->data == 0);
 			assert(r.right - r.left == 11); // XXX - to ensure the same sizes are used everywhere!
 
 			clicked = !!(w->flags4 & WF_SIZING);
@@ -443,26 +448,29 @@ void DrawWindowWidgets(const Window *w)
 		}
 
 		case WWT_CLOSEBOX: {
+			const StringID str = wi->data;
+
+			assert(str == STR_00C5 || str == STR_00C6); // black or silver cross
 			assert(r.right - r.left == 10); // ensure the same sizes are used everywhere
 
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_NONE);
-			DrawString(r.left + 2, r.top + 2, STR_00C5, TC_FROMSTRING);
+			DrawString(r.left + 2, r.top + 2, str, TC_FROMSTRING);
 			break;
 		}
 
 		case WWT_CAPTION: {
 			assert(r.bottom - r.top == 13); // XXX - to ensure the same sizes are used everywhere!
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_BORDERONLY);
-			DrawFrameRect(r.left+1, r.top+1, r.right-1, r.bottom-1, wi->color, (w->caption_color == 0xFF) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
+			DrawFrameRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, wi->color, (w->caption_color == 0xFF) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
 
 			if (w->caption_color != 0xFF) {
-				GfxFillRect(r.left+2, r.top+2, r.right-2, r.bottom-2, _colour_gradient[_player_colors[w->caption_color]][4]);
+				GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_player_colors[w->caption_color]][4]);
 			}
 
-			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top+2, wi->data, 0x84);
+			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top + 2, wi->data, 0x84);
 draw_default:;
 			if (IsWindowWidgetDisabled(w, i)) {
-				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _colour_gradient[wi->color&0xF][2] | (1 << PALETTE_MODIFIER_GREYOUT));
+				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[wi->color & 0xF][2] | (1 << PALETTE_MODIFIER_GREYOUT));
 			}
 		}
 		}
@@ -470,8 +478,7 @@ draw_default:;
 
 
 	if (w->flags4 & WF_WHITE_BORDER_MASK) {
-		//DrawFrameRect(w->left, w->top, w->left + w->width-1, w->top+w->height-1, 0xF, 0x10);
-		DrawFrameRect(0, 0, w->width-1, w->height-1, 0xF, FR_BORDERONLY);
+		DrawFrameRect(0, 0, w->width - 1, w->height - 1, 0xF, FR_BORDERONLY);
 	}
 
 }
