@@ -1689,7 +1689,7 @@ again:
 		uint turn_around_start_frame = RVC_TURN_AROUND_START_FRAME;
 
 		RoadBits tram;
-		if (v->u.road.roadtype == ROADTYPE_TRAM && CountBits(tram = GetRoadBits(v->tile, ROADTYPE_TRAM)) == 1) {
+		if (v->u.road.roadtype == ROADTYPE_TRAM && CountBits(tram = GetAnyRoadBits(v->tile, ROADTYPE_TRAM)) == 1) {
 			/*
 			 * The tram is turning around with one tram 'roadbit'. This means that
 			 * it is using the 'big' corner 'drive data'. However, to support the
