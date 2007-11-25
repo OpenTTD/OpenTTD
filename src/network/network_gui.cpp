@@ -960,7 +960,27 @@ static PlayerID NetworkLobbyFindCompanyIndex(byte pos)
 	return PLAYER_FIRST;
 }
 
-/* uses network_d WP macro */
+/** Enum for NetworkLobbyWindow, referring to _network_lobby_window_widgets */
+enum NetworkLobbyWindowWidgets {
+	NLWW_CLOSE    =  0, ///< Close 'X' button
+	NLWW_MATRIX   =  5, ///< List of companies
+	NLWW_DETAILS  =  7, ///< Company details
+	NLWW_JOIN     =  8, ///< 'Join company' button
+	NLWW_NEW      =  9, ///< 'New company' button
+	NLWW_SPECTATE = 10, ///< 'Spectate game' button
+	NLWW_REFRESH  = 11, ///< 'Refresh server' button
+	NLWW_CANCEL   = 12, ///< 'Cancel' button
+};
+
+/**
+ * Handler of actions done in the NetworkLobby window
+ *
+ * @param w pointer to the Window structure
+ * @param e pointer to window event
+ * @note    uses network_d WP macro
+ * @see     struct _network_lobby_window_widgets
+ * @see     enum NetworkLobbyWindowWidgets
+ */
 static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 {
 	network_d *nd = &WP(w, network_d);
@@ -974,17 +994,16 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		const NetworkGameInfo *gi = &nd->server->info;
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 
-		SetWindowWidgetDisabledState(w, 7, nd->company == (byte)-1);
-		SetWindowWidgetDisabledState(w, 8, gi->companies_on >= gi->companies_max);
-		/* You can not join a server as spectator when it has no companies active..
-		 * it causes some nasty crashes */
-		SetWindowWidgetDisabledState(w, 9, gi->spectators_on >= gi->spectators_max ||
-				gi->companies_on == 0);
+		/* Join button is disabled when no company is selected */
+		SetWindowWidgetDisabledState(w, NLWW_JOIN, nd->company == INVALID_PLAYER);
+		/* Cannot start new company if there are too many */
+		SetWindowWidgetDisabledState(w, NLWW_NEW, gi->companies_on >= gi->companies_max);
+		/* Cannot spectate if there are too many spectators */
+		SetWindowWidgetDisabledState(w, NLWW_SPECTATE, gi->spectators_on >= gi->spectators_max);
 
-		DrawWindowWidgets(w);
-
+		/* Draw window widgets */
 		SetDParamStr(0, gi->server_name);
-		DrawString(10, 22, STR_NETWORK_PREPARE_TO_JOIN, TC_GOLD);
+		DrawWindowWidgets(w);
 
 		/* Draw company list */
 		pos = w->vscroll.pos;
@@ -1009,9 +1028,9 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		/* Draw info about selected company when it is selected in the left window */
 		GfxFillRect(174, 39, 403, 75, 157);
 		DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING);
-		if (nd->company != (byte)-1) {
+		if (nd->company != INVALID_PLAYER) {
 			const uint x = 183;
-			const uint trunc_width = w->widget[6].right - x;
+			const uint trunc_width = w->widget[NLWW_DETAILS].right - x;
 			y = 80;
 
 			SetDParam(0, nd->server->info.clients_on);
@@ -1068,33 +1087,33 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 0: case 11: /* Close 'X' | Cancel button */
+		case NLWW_CLOSE:    // Close 'X'
+		case NLWW_CANCEL:   // Cancel button
 			ShowNetworkGameWindow();
 			break;
-		case 4: { /* Company list */
+		case NLWW_MATRIX: { // Company list
 			uint32 id_v = (e->we.click.pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / NET_PRC__SIZE_OF_ROW;
 
-			if (id_v >= w->vscroll.cap) return;
+			if (id_v >= w->vscroll.cap) break;
 
 			id_v += w->vscroll.pos;
 			nd->company = (id_v >= nd->server->info.companies_on) ? INVALID_PLAYER : NetworkLobbyFindCompanyIndex(id_v);
 			SetWindowDirty(w);
 		} break;
-		case 7: /* Join company */
-			if (nd->company != (byte)-1) {
-				_network_playas = nd->company;
-				NetworkClientConnectGame(_network_last_host, _network_last_port);
-			}
+		case NLWW_JOIN:     // Join company
+			/* Button can be clicked only when it is enabled */
+			_network_playas = nd->company;
+			NetworkClientConnectGame(_network_last_host, _network_last_port);
 			break;
-		case 8: /* New company */
+		case NLWW_NEW:      // New company
 			_network_playas = PLAYER_NEW_COMPANY;
 			NetworkClientConnectGame(_network_last_host, _network_last_port);
 			break;
-		case 9: /* Spectate game */
+		case NLWW_SPECTATE: // Spectate game
 			_network_playas = PLAYER_SPECTATOR;
 			NetworkClientConnectGame(_network_last_host, _network_last_port);
 			break;
-		case 10: /* Refresh */
+		case NLWW_REFRESH:  // Refresh
 			NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
 			NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
 			break;
@@ -1107,24 +1126,25 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _network_lobby_window_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,    STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   419,    14,   234, 0x0,                       STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW },           // NLWW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,      STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   419,    14,   234, 0x0,                         STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   BGC,    10,   419,    22,    34, STR_NETWORK_PREPARE_TO_JOIN, STR_NULL},
 
-// company list
-{      WWT_PANEL,   RESIZE_NONE,   BTC,    10,   155,    38,    49, 0x0,                       STR_NULL},
-{     WWT_MATRIX,   RESIZE_NONE,   BGC,    10,   155,    50,   190, (10 << 8) + 1,             STR_NETWORK_COMPANY_LIST_TIP},
-{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   156,   167,    38,   190, STR_NULL,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+/* company list */
+{      WWT_PANEL,   RESIZE_NONE,   BTC,    10,   155,    38,    49, 0x0,                         STR_NULL},
+{     WWT_MATRIX,   RESIZE_NONE,   BGC,    10,   155,    50,   190, (10 << 8) + 1,               STR_NETWORK_COMPANY_LIST_TIP},     // NLWW_MATRIX
+{  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   156,   167,    38,   190, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-// company/player info
-{      WWT_PANEL,   RESIZE_NONE,   BGC,   173,   404,    38,   190, 0x0,                       STR_NULL},
+/* company/player info */
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   173,   404,    38,   190, 0x0,                         STR_NULL},                         // NLWW_DETAILS
 
-// buttons
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   200,   211, STR_NETWORK_JOIN_COMPANY,  STR_NETWORK_JOIN_COMPANY_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   215,   226, STR_NETWORK_NEW_COMPANY,   STR_NETWORK_NEW_COMPANY_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   158,   268,   200,   211, STR_NETWORK_SPECTATE_GAME, STR_NETWORK_SPECTATE_GAME_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   158,   268,   215,   226, STR_NETWORK_REFRESH,       STR_NETWORK_REFRESH_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   278,   388,   200,   211, STR_012E_CANCEL,           STR_NULL},
+/* buttons */
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   200,   211, STR_NETWORK_JOIN_COMPANY,    STR_NETWORK_JOIN_COMPANY_TIP},     // NLWW_JOIN
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   215,   226, STR_NETWORK_NEW_COMPANY,     STR_NETWORK_NEW_COMPANY_TIP},      // NLWW_NEW
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   158,   268,   200,   211, STR_NETWORK_SPECTATE_GAME,   STR_NETWORK_SPECTATE_GAME_TIP},    // NLWW_SPECTATE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   158,   268,   215,   226, STR_NETWORK_REFRESH,         STR_NETWORK_REFRESH_TIP},          // NLWW_REFRESH
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   278,   388,   200,   211, STR_012E_CANCEL,             STR_NULL},                         // NLWW_CANCEL
 
 {   WIDGETS_END},
 };
