@@ -430,7 +430,6 @@ static bool QZ_PollEvent()
 	switch ([event type]) {
 		case NSMouseMoved:
 		case NSOtherMouseDragged:
-		case NSRightMouseDragged:
 		case NSLeftMouseDragged:
 			pt = _cocoa_subdriver->GetMouseLocation(event);
 			if (!_cocoa_subdriver->MouseIsInsideView(&pt) &&
@@ -440,6 +439,12 @@ static bool QZ_PollEvent()
 				break;
 			}
 
+			QZ_HideMouse();
+			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
+			break;
+
+		case NSRightMouseDragged:
+			pt = _cocoa_subdriver->GetMouseLocation(event);
 			QZ_HideMouse();
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 			break;
