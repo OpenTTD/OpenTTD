@@ -8,6 +8,7 @@
 
 #ifdef WITH_COCOA
 
+#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
 #include <AvailabilityMacros.h>
 
 #import <Cocoa/Cocoa.h>
@@ -229,13 +230,17 @@ void QZ_GameSizeChanged()
 
 static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 {
-	long sysVersion;
+	CocoaSubdriver *ret;
 
-	if (Gestalt(gestaltSystemVersion, &sysVersion) == noErr && sysVersion >= 0x1040) {
-		return QZ_CreateWindowQuartzSubdriver(width, height, bpp);
+	if (MacOSVersionIsAtLeast(10, 4, 0)) {
+		ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
+		if (ret != NULL) return ret;
 	}
 
-	return QZ_CreateWindowQuickdrawSubdriver(width, height, bpp);
+	ret = QZ_CreateWindowQuickdrawSubdriver(width, height, bpp);
+	if (ret != NULL) return ret;
+
+	return NULL;
 }
 
 
@@ -281,6 +286,8 @@ void VideoDriver_Cocoa::Stop()
 const char *VideoDriver_Cocoa::Start(const char * const *parm)
 {
 	int width, height, bpp;
+
+	if (!MacOSVersionIsAtLeast(10, 3, 0)) return "The Cocoa video driver requires Mac OS X 10.3 or later.";
 
 	if (_cocoa_video_started) return "Already started";
 	_cocoa_video_started = true;

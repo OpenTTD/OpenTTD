@@ -1,5 +1,8 @@
 /* $Id$ */
 
+#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
+#include <AvailabilityMacros.h>
+
 #include <AppKit/AppKit.h>
 
 #include <mach/mach.h>
@@ -168,6 +171,81 @@ const char *GetCurrentLocale(const char *)
 	NSArray* languages = [defs objectForKey:@"AppleLanguages"];
 	NSString* preferredLang = [languages objectAtIndex:0];
 	/* preferredLang is either 2 or 5 characters long ("xx" or "xx_YY"). */
-	[ preferredLang getCString:retbuf maxLength:32 encoding:NSASCIIStringEncoding ];
+	if (MacOSVersionIsAtLeast(10, 4, 0)) {
+		[ preferredLang getCString:retbuf maxLength:32 encoding:NSASCIIStringEncoding ];
+	} else {
+		[ preferredLang getCString:retbuf maxLength:32 ];
+	}
 	return retbuf;
+}
+
+
+/*
+ * This will only give an accurate result for versions before OS X 10.8 since it uses bcd encoding
+ * for the minor and bugfix version numbers and a scheme of representing all numbers from 9 and up
+ * with 9. This means we can't tell OS X 10.9 from 10.9 or 10.11. Please use GetMacOSVersionMajor()
+ * and GetMacOSVersionMinor() instead.
+ */
+static long GetMacOSVersion()
+{
+	static long sysVersion = -1;
+
+	if (sysVersion != -1) return sysVersion;
+
+	if (Gestalt(gestaltSystemVersion, &sysVersion) != noErr) sysVersion = -1;
+	 return sysVersion;
+}
+
+long GetMacOSVersionMajor()
+{
+	static long sysVersion = -1;
+
+	if (sysVersion != -1) return sysVersion;
+
+	sysVersion = GetMacOSVersion();
+	if (sysVersion == -1) return -1;
+
+	if (sysVersion >= 0x1040) {
+		if (Gestalt(gestaltSystemVersionMajor, &sysVersion) != noErr) sysVersion = -1;
+	} else {
+		sysVersion = GB(sysVersion, 12, 4) * 10 + GB(sysVersion,  8, 4);
+	}
+
+	return sysVersion;
+}
+
+long GetMacOSVersionMinor()
+{
+	static long sysVersion = -1;
+
+	if (sysVersion != -1) return sysVersion;
+
+	sysVersion = GetMacOSVersion();
+	if (sysVersion == -1) return -1;
+
+	if (sysVersion >= 0x1040) {
+		if (Gestalt(gestaltSystemVersionMinor, &sysVersion) != noErr) sysVersion = -1;
+	} else {
+		sysVersion = GB(sysVersion,  4, 4);
+	}
+
+	return sysVersion;
+}
+
+long GetMacOSVersionBugfix()
+{
+	static long sysVersion = -1;
+
+	if (sysVersion != -1) return sysVersion;
+
+	sysVersion = GetMacOSVersion();
+	if (sysVersion == -1) return -1;
+
+	if (sysVersion >= 0x1040) {
+		if (Gestalt(gestaltSystemVersionBugFix, &sysVersion) != noErr) sysVersion = -1;
+	} else {
+		sysVersion = GB(sysVersion,  0, 4);
+	}
+
+	return sysVersion;
 }

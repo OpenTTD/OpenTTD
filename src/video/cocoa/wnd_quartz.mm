@@ -8,6 +8,7 @@
 
 #ifdef WITH_COCOA
 
+#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_4
 #include <AvailabilityMacros.h>
 
 #import <Cocoa/Cocoa.h>
@@ -685,6 +686,7 @@ CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint* p)
 
 	p->y = window_height - p->y;
 	*p = [ qzview convertPoint:*p toView: nil ];
+
 	*p = [ window convertBaseToScreen:*p ];
 	p->y = device_height - p->y;
 
@@ -778,6 +780,11 @@ bool WindowQuartzSubdriver::WindowResized()
 CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 {
 	WindowQuartzSubdriver *ret;
+
+	if (!MacOSVersionIsAtLeast(10, 4, 0)) {
+		DEBUG(driver, 0, "The cocoa quartz subdriver requires Mac OS X 10.4 or later.");
+		return NULL;
+	}
 
 	if (bpp != 8 && bpp != 32) {
 		DEBUG(driver, 0, "The cocoa quartz subdriver only supports 8 and 32 bpp.");

@@ -27,4 +27,44 @@ void ShowMacErrorDialog(const char *error);
 		(__builtin_expect(!(e), 0) ? ShowMacAssertDialog ( __func__, __FILE__, __LINE__, #e ): (void)0 )
 #endif
 
+
+
+/**
+ * Get the major version of Mac OS we are running under. Useful for things like the cocoa driver.
+ * @return major version of the os. This would be 10 in the case of 10.4.11.
+ */
+long GetMacOSVersionMajor();
+
+/**
+ * Get the minor version of Mac OS we are running under. Useful for things like the cocoa driver.
+ * @return minor version of the os. This would be 4 in the case of 10.4.11.
+ */
+long GetMacOSVersionMinor();
+
+/**
+ * Get the bugfix version of Mac OS we are running under. Useful for things like the cocoa driver.
+ * @return bugfix version of the os. This would be 11 in the case of 10.4.11.
+ */
+long GetMacOSVersionBugfix();
+
+/**
+ * Check if we are at least running on the specified version of Mac OS.
+ * @param major major version of the os. This would be 10 in the case of 10.4.11.
+ * @param minor minor version of the os. This would be 4 in the case of 10.4.11.
+ * @param bugfix bugfix version of the os. This would be 11 in the case of 10.4.11.
+ * @return true if the running os is at least what we asked, false otherwise.
+ */
+static inline bool MacOSVersionIsAtLeast(long major, long minor, long bugfix)
+{
+	long maj = GetMacOSVersionMajor();
+	long min = GetMacOSVersionMinor();
+	long bf = GetMacOSVersionBugfix();
+
+	if (maj < major) return false;
+	if (maj == major && min < minor) return false;
+	if (maj == major && min == minor && bf < bugfix) return false;
+
+	return true;
+}
+
 #endif /* MACOS_H */

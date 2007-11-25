@@ -8,6 +8,8 @@
 
 #ifdef WITH_COCOA
 
+#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
+#define MAC_OS_X_VERSION_MAX_ALLOWED     MAC_OS_X_VERSION_10_3
 #include <AvailabilityMacros.h>
 
 #import <Cocoa/Cocoa.h>
@@ -795,6 +797,10 @@ bool WindowQuickdrawSubdriver::WindowResized()
 CocoaSubdriver *QZ_CreateWindowQuickdrawSubdriver(int width, int height, int bpp)
 {
 	WindowQuickdrawSubdriver *ret;
+
+	if (MacOSVersionIsAtLeast(10, 4, 0)) {
+		DEBUG(driver, 0, "The cocoa quickdraw subdriver is not recommended for Mac OS X 10.4 or later.");
+	}
 
 	if (bpp != 8 && bpp != 32) {
 		DEBUG(driver, 0, "The cocoa quickdraw subdriver only supports 8 and 32 bpp.");

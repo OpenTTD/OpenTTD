@@ -8,6 +8,9 @@
 
 #ifdef WITH_COCOA
 
+#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
+#include <AvailabilityMacros.h>
+
 #include <AudioUnit/AudioUnit.h>
 
 /* Name conflict */
