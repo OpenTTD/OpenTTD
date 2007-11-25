@@ -1312,16 +1312,10 @@ bool AfterLoadGame()
 	/* Update all waypoints */
 	if (CheckSavegameVersion(12)) FixOldWaypoints();
 
-	UpdateAllWaypointSigns();
-
 	/* in version 2.2 of the savegame, we have new airports */
 	if (CheckSavegameVersionOldStyle(2, 2)) UpdateOldAircraft();
 
-	UpdateAllStationVirtCoord();
-
-	/* Setup town coords */
 	AfterLoadTown();
-	UpdateAllSignVirtCoords();
 
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, (uint)-1)) {
@@ -1815,19 +1809,6 @@ bool AfterLoadGame()
 
 	if (!CheckSavegameVersion(27)) AfterLoadStations();
 
-	{
-		/* Set up the engine count for all players */
-		Player *players[MAX_PLAYERS];
-		const Vehicle *v;
-
-		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) players[i] = GetPlayer(i);
-
-		FOR_ALL_VEHICLES(v) {
-			if (!IsEngineCountable(v)) continue;
-			players[v->owner]->num_engines[v->engine_type]++;
-		}
-	}
-
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
 	if (CheckSavegameVersion(31)) {
@@ -2205,6 +2186,12 @@ bool AfterLoadGame()
 	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
 	MarkWholeScreenDirty();
 
+	/* Update coordinates of the signs. */
+	UpdateAllStationVirtCoord();
+	UpdateAllSignVirtCoords();
+	UpdateAllTownVirtCoords();
+	UpdateAllWaypointSigns();
+
 	/* Recalculate */
 	Group *g;
 	FOR_ALL_GROUPS(g) {
@@ -2216,6 +2203,17 @@ bool AfterLoadGame()
 
 			g->num_engines[v->engine_type]++;
 		}
+	}
+
+	/* Set up the engine count for all players */
+	Player *players[MAX_PLAYERS];
+	const Vehicle *v;
+
+	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) players[i] = GetPlayer(i);
+
+	FOR_ALL_VEHICLES(v) {
+		if (!IsEngineCountable(v)) continue;
+		players[v->owner]->num_engines[v->engine_type]++;
 	}
 
 	return true;

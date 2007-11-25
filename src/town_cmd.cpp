@@ -311,6 +311,15 @@ void UpdateTownVirtCoord(Town *t)
 	MarkTownSignDirty(t);
 }
 
+/** Update the virtual coords needed to draw the town sign for all towns. */
+void UpdateAllTownVirtCoords()
+{
+	Town *t;
+	FOR_ALL_TOWNS(t) {
+		UpdateTownVirtCoord(t);
+	}
+}
+
 /**
  * Change the towns population
  * @param t Town which polulation has changed
@@ -2521,7 +2530,6 @@ void AfterLoadTown()
 	Town *t;
 	FOR_ALL_TOWNS(t) {
 		UpdateTownRadius(t);
-		UpdateTownVirtCoord(t);
 	}
 	_town_sort_dirty = true;
 }

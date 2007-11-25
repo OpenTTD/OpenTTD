@@ -207,6 +207,7 @@ VARDEF HouseSpec _house_specs[HOUSE_MAX];
 uint32 GetWorldPopulation();
 
 void UpdateTownVirtCoord(Town *t);
+void UpdateAllTownVirtCoords();
 void InitializeTown();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
