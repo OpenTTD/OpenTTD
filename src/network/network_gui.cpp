@@ -539,6 +539,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 		w->widget[NGWW_MATRIX].data = (w->vscroll.cap << 8) + 1;
 
+		SetVScrollCount(w, ld->list_length);
+
 		int widget_width = w->widget[NGWW_FIND].right - w->widget[NGWW_FIND].left;
 		int space = (w->width - 4 * widget_width - 25) / 3;
 
