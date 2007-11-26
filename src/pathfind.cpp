@@ -663,8 +663,8 @@ static const uint16 _is_upwards_slope[15] = {
 
 static uint DistanceMoo(TileIndex t0, TileIndex t1)
 {
-	const uint dx = delta(TileX(t0), TileX(t1));
-	const uint dy = delta(TileY(t0), TileY(t1));
+	const uint dx = Delta(TileX(t0), TileX(t1));
+	const uint dy = Delta(TileY(t0), TileY(t1));
 
 	const uint straightTracks = 2 * min(dx, dy); // The number of straight (not full length) tracks
 	/* OPTIMISATION:

@@ -311,7 +311,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		/* Fly around randomly */
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
-		if (delta(x, v->x_pos) + delta(y, v->y_pos) >= TILE_SIZE) {
+		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -340,7 +340,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 			return;
 		}
 
-		dist = delta(v->x_pos, u->x_pos) + delta(v->y_pos, u->y_pos);
+		dist = Delta(v->x_pos, u->x_pos) + Delta(v->y_pos, u->y_pos);
 
 		if (dist < TILE_SIZE && !(u->vehstatus & VS_HIDDEN) && u->breakdown_ctr == 0) {
 			u->breakdown_ctr = 3;
@@ -567,7 +567,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 	if (v->current_order.dest == 1) {
 		int x = TileX(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
 		int y = TileY(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
-		if (delta(v->x_pos, x) + delta(v->y_pos, y) >= 8) {
+		if (Delta(v->x_pos, x) + Delta(v->y_pos, y) >= 8) {
 			v->direction = GetDirectionTowards(v, x, y);
 
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
@@ -585,7 +585,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 
 		FOR_ALL_VEHICLES(u) {
 			if (u->type == VEH_TRAIN || u->type == VEH_ROAD) {
-				if (delta(u->x_pos, v->x_pos) + delta(u->y_pos, v->y_pos) <= 12 * TILE_SIZE) {
+				if (Delta(u->x_pos, v->x_pos) + Delta(u->y_pos, v->y_pos) <= 12 * TILE_SIZE) {
 					u->breakdown_ctr = 5;
 					u->breakdown_delay = 0xF0;
 				}
@@ -617,7 +617,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 	} else if (v->current_order.dest == 0) {
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
-		if (delta(x, v->x_pos) + delta(y, v->y_pos) >= TILE_SIZE) {
+		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= TILE_SIZE) {
 			v->direction = GetDirectionTowards(v, x, y);
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -667,7 +667,7 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 
 	if (v->current_order.dest == 0) {
 		u = GetVehicle(v->u.disaster.big_ufo_destroyer_target);
-		if (delta(v->x_pos, u->x_pos) > TILE_SIZE) return;
+		if (Delta(v->x_pos, u->x_pos) > TILE_SIZE) return;
 		v->current_order.dest = 1;
 
 		CreateEffectVehicleRel(u, 0, 7, 8, EV_EXPLOSION_LARGE);

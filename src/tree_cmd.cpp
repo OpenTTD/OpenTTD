@@ -164,7 +164,7 @@ void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 			continue;
 
 		/* Not too much height difference */
-		if (delta(GetTileZ(cur_tile), height) > 2) continue;
+		if (Delta(GetTileZ(cur_tile), height) > 2) continue;
 
 		/* Place one tree and quit */
 		PlaceTree(cur_tile, r);

@@ -175,7 +175,7 @@ static inline int32 ClampToI32(const int64 a)
  * @param b The second scalar
  * @return The absolute difference between the given scalars
  */
-template <typename T> static inline T delta(const T a, const T b) {
+template <typename T> static inline T Delta(const T a, const T b) {
 	return (a < b) ? b - a : a - b;
 }
 

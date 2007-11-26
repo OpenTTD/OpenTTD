@@ -1290,7 +1290,7 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
 			return false;
 
 		/* Don't allow too big of a change if this is the sub-tile check */
-		if (internal != 0 && delta(curh, height) > 1) return false;
+		if (internal != 0 && Delta(curh, height) > 1) return false;
 
 		/* Different height, so the surrounding tiles of this tile
 		 *  has to be correct too (in level, or almost in level)

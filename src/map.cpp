@@ -184,8 +184,8 @@ extern const TileIndexDiffC _tileoffs_by_dir[] = {
  */
 uint DistanceManhattan(TileIndex t0, TileIndex t1)
 {
-	const uint dx = delta(TileX(t0), TileX(t1));
-	const uint dy = delta(TileY(t0), TileY(t1));
+	const uint dx = Delta(TileX(t0), TileX(t1));
+	const uint dy = Delta(TileY(t0), TileY(t1));
 	return dx + dy;
 }
 
@@ -216,8 +216,8 @@ uint DistanceSquare(TileIndex t0, TileIndex t1)
  */
 uint DistanceMax(TileIndex t0, TileIndex t1)
 {
-	const uint dx = delta(TileX(t0), TileX(t1));
-	const uint dy = delta(TileY(t0), TileY(t1));
+	const uint dx = Delta(TileX(t0), TileX(t1));
+	const uint dy = Delta(TileY(t0), TileY(t1));
 	return max(dx, dy);
 }
 
@@ -232,8 +232,8 @@ uint DistanceMax(TileIndex t0, TileIndex t1)
  */
 uint DistanceMaxPlusManhattan(TileIndex t0, TileIndex t1)
 {
-	const uint dx = delta(TileX(t0), TileX(t1));
-	const uint dy = delta(TileY(t0), TileY(t1));
+	const uint dx = Delta(TileX(t0), TileX(t1));
+	const uint dy = Delta(TileY(t0), TileY(t1));
 	return dx > dy ? 2 * dx + dy : 2 * dy + dx;
 }
 

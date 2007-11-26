@@ -220,7 +220,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 		if (w->viewport != NULL)
 			w->viewport->top += y - w->top;
 
-		diff = delta(w->top, y);
+		diff = Delta(w->top, y);
 		w->top = y;
 
 		SetDirtyBlocks(w->left, w->top - diff, w->left + w->width, w->top + w->height);

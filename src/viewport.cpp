@@ -967,7 +967,7 @@ static void DrawTileSelection(const TileInfo *ti)
 				side = 0;
 			} else {
 				TileIndex start = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
-				side = delta(delta(TileX(start), TileX(ti->tile)), delta(TileY(start), TileY(ti->tile)));
+				side = Delta(Delta(TileX(start), TileX(ti->tile)), Delta(TileY(start), TileY(ti->tile)));
 			}
 
 			DrawAutorailSelection(ti, _AutorailType[dir][side]);
@@ -2730,8 +2730,8 @@ calc_heightdiff_single_direction:;
 
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
-				uint dx = delta(TileX(t0), TileX(t1)) + 1;
-				uint dy = delta(TileY(t0), TileY(t1)) + 1;
+				uint dx = Delta(TileX(t0), TileX(t1)) + 1;
+				uint dy = Delta(TileY(t0), TileY(t1)) + 1;
 				byte index = 0;
 				uint64 params[3];
 
