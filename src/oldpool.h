@@ -47,6 +47,16 @@ public:
 	byte **blocks;              ///< An array of blocks (one block hold all the items)
 
 	/**
+	 * Check if the index of pool item being deleted is lower than cached first_free_index
+	 * @param index index of pool item
+	 * @note usage of min() will result in better code on some architectures
+	 */
+	inline void UpdateFirstFreeIndex(uint index)
+	{
+		first_free_index = min(first_free_index, index);
+	}
+
+	/**
 	 * Get the size of this pool, i.e. the total number of items you
 	 * can put into it at the current moment; the pool might still
 	 * be able to increase the size of the pool.
@@ -157,10 +167,26 @@ struct PoolItem {
 
 	/**
 	 * We like to have the correct class destructed.
+	 * @warning It is called even for object allocated on stack,
+	 *          so it is not present in the TPool!
+	 *          Then, index is undefined, not associated with TPool in any way.
+	 * @note    The idea is to free up allocated memory etc.
 	 */
 	virtual ~PoolItem()
 	{
-		if (this->index < Tpool->first_free_index) Tpool->first_free_index = this->index;
+
+	}
+
+	/**
+	 * Constructor of given class.
+	 * @warning It is called even for object allocated on stack,
+	 *          so it may not be present in TPool!
+	 *          Then, index is undefined, not associated with TPool in any way.
+	 * @note    The idea is to initialize variables (except index)
+	 */
+	PoolItem()
+	{
+
 	}
 
 	/**
@@ -176,9 +202,11 @@ struct PoolItem {
 	/**
 	 * 'Free' the memory allocated by the overriden new.
 	 * @param p the memory to 'free'
+	 * @note we only update Tpool->first_free_index
 	 */
 	void operator delete(void *p)
 	{
+		Tpool->UpdateFirstFreeIndex(((T*)p)->index);
 	}
 
 	/**
@@ -199,9 +227,11 @@ struct PoolItem {
 	 * 'Free' the memory allocated by the overriden new.
 	 * @param p     the memory to 'free'
 	 * @param index the original parameter given to create the memory
+	 * @note we only update Tpool->first_free_index
 	 */
 	void operator delete(void *p, int index)
 	{
+		Tpool->UpdateFirstFreeIndex(index);
 	}
 
 	/**
@@ -220,9 +250,11 @@ struct PoolItem {
 	 * 'Free' the memory allocated by the overriden new.
 	 * @param p  the memory to 'free'
 	 * @param pn the pointer that was given to 'new' on creation.
+	 * @note we only update Tpool->first_free_index
 	 */
 	void operator delete(void *p, T *pn)
 	{
+		Tpool->UpdateFirstFreeIndex(pn->index);
 	}
 
 private:
