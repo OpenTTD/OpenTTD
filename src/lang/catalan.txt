@@ -594,8 +594,8 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acciden
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informació de l'Empresa
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Obrir / tancar d'indústries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Canvis de l'Economia
-STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Canvis de producció de l'indústria controlats pel jugador
-STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Canvis de producció de l'indústria controlats pel competidor(s)
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Canvis de producció en indústries proveïdes pel jugador
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Canvis de producció en indústries proveïdes pel competidor(s)
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Altres canvis de producció de l'indústria
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Avisos / informació dels teus vehicles
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nous vehicles
@@ -1705,6 +1705,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}L'edifici s'ha d'enderrocar primer
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Població: {ORANGE}{COMMA}{BLACK}  Cases: {ORANGE}{COMMA}

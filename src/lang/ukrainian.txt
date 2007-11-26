@@ -720,6 +720,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Нещ�
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Інформація компанії
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Відкриття / закриття підприємств
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Зміни в економіці
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Зміна обсягів виробництва на підприємствах гравця
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Зміна обсягів виробництва на підприємствах суперників
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Інші зміни обсягів виробництва
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Поради/інформація про транспорт гравця
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Новий транспорт
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Зміни в попиті на перевезення
@@ -1806,6 +1809,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Буду
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Побудувати трамвайний міст
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Будувати тунель
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Побудувати трамвайний тунель
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Вкл./відкл. односторонні дороги
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Будувати/зруйнувати дорогу
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Будувати/демонтувати колію
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Виберіть направлення депо
@@ -3448,6 +3452,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Висо
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Центрувати мінікарту сюди
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Малий

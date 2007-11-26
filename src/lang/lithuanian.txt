@@ -5,6 +5,8 @@
 ##case kas ko kam ka kuo kur kreip
 ##gender vyr mot
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Už žemelapio kraštų
@@ -313,6 +315,7 @@ STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...priklauso {STRING}
 STR_013C_CARGO                                                  :{BLACK}Keliamoji galia
@@ -781,6 +784,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...abu t
 STR_02A1_SMALL                                                  :{BLACK}Mažas
 STR_02A2_MEDIUM                                                 :{BLACK}Vidutinis
 STR_02A3_LARGE                                                  :{BLACK}Didelis
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Miestas
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Išsirinkite miesto dydį
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Miesto dydis:
 
@@ -805,6 +809,7 @@ STR_02C3_GAME_OPTIONS                                           :Žaidimo nustat
 STR_02C5_DIFFICULTY_SETTINGS                                    :Sunkumo lygio nustatymai
 STR_02C7_CONFIG_PATCHES                                         :Papildomi nustatymai
 STR_NEWGRF_SETTINGS                                             :Papild. grafikos nustatymai (NewGRF)
+STR_TRANSPARENCY_OPTIONS                                        :Permatomumo nustatymai
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Rodyti miestų pavadinimus
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Rodyti stotelių pavadinimus
@@ -1060,6 +1065,7 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infliac
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Pristatyti krovini stotelei tiktai tuomet, kai yra poreikis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Leisti statyti labai ilgus tiltus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Leisti naudoti uzduoti 'Keliauti i depa': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nėra
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Leisti kelias panašias pramonės įmones viename mieste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Leisti statyti to paties tipo fabrikus arti vienas kito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Rodyti pilna data busenos eiluteje: {ORANGE}{STRING}
@@ -1119,6 +1125,8 @@ STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Savo kompanijos
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Visų kompanijų
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Rašyti komandai naudojant <ĮVESTI> (ENTER): {ORANGE}{STRING}
 
+
+
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. traukiniu vienam zaidejui: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. automobiliu zaidejui: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks. lektuvu zaidejui: {ORANGE}{STRING}
@@ -1151,6 +1159,8 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Tolygi 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Leisti pirkti kitų kompanijų akcijas
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tempiant, kopijuoti šviesoforus kas: {ORANGE}{STRING} langel{P į lius lių}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatiškai pastatyti semaforus prieš: {ORANGE}{STRING}
+
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pagrindines irankiu juostos pozicija: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Kaireje
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centruoti
@@ -1354,12 +1364,12 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nustatyt
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Apsaugokite savo zaidima slaptazodziu, jei nenorite, kad jis butu viesai prieinamas
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Pasirinkite zemelapi:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kuriame zemelapyje norite zaisti?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalus klientu skaicius:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Pasirinkite maksimalu klientu skaiciu. Nebutinai visos jungtys turi buti uzpildytos
 STR_NETWORK_LAN                                                 :Vietinis tinklas
 STR_NETWORK_INTERNET                                            :Internetas
 STR_NETWORK_LAN_INTERNET                                        :Vietinis tinklas/ Internetas
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internetas (visiems)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalus klientu skaicius:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Pasirinkite maksimalu klientu skaiciu. Nebutinai visos jungtys turi buti uzpildytos
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maksimum kompaniju:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Riboti serveri iki tam tikro skaiciaus kompaniju
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksimum ziurovu:
@@ -1877,6 +1887,9 @@ STR_4827_REQUIRES                                               :{BLACK}Reikalau
 STR_4828_REQUIRES                                               :{BLACK}Reikalauja: {YELLOW}{STRING.ko}, {STRING.ko}
 STR_4829_REQUIRES                                               :{BLACK}Reikalauja: {YELLOW}{STRING.ko}, {STRING.ko}, {STRING.ko}
 ############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Praėjusio mėnesio produkcija:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportuota)
@@ -2518,6 +2531,7 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Remontas {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Važiuoti nestojant į {TOWN} traukinių depą
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Remontas nestojant {TOWN} traukiniu depe
 
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kursas i {TOWN} depa
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kursas i {TOWN} depa, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servisas {TOWN} Traukiniu Depe
@@ -2638,6 +2652,9 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Stabdomas,
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Nesuderinami begiai
 STR_TRAIN_NO_POWER                                              :{RED}Nėra energijos
 STR_TRAIN_START_NO_CATENARY                                     :Šiuose bėgiuose trūkta grandies, taigi traukiniai negali judėti
+
+
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobilis kelyje
@@ -2846,6 +2863,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Negalima
 STR_GO_TO_AIRPORT_HANGAR                                        :Kursas: {STATION} angaras
 SERVICE_AT_AIRPORT_HANGAR                                       :Remontas {STATION} angare
 
+
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT} Dirizablio katastrofa {STATION}!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Automobilis sunaikintas ateiviu!
@@ -2898,6 +2916,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Failo va
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5suma: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jūs norite atlikti pakeitimus veikiančiam žaidimui: OpenTTD gali pakibti.{}Ar jūs tikrai norite tai atlikti?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Pridėti
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridėti Papild. grafikos failą į sąrašą
@@ -3123,4 +3142,24 @@ STR_MEASURE_AREA                                                :{BLACK}Sritis: 
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Atstumas: {NUM}{}Aukščių skirtumas: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Sritis: {NUM} x {NUM}{}Aukščių skirtumas: {NUM} m
 
+############ Date formatting
+
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
 ########
