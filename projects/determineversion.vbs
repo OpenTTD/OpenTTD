@@ -127,10 +127,7 @@ Function DetermineSVNVersion()
 		' svn detection failed, reset error and try git
 		Err.Clear
 		Set oExec = WshShell.Exec("git rev-parse --verify --short=8 HEAD")
-		Do While oExec.Status = 0 And Err.Number = 0
-			' Wait till command has finished
-		Loop
-		If Err.Number = 0 And oExec.ExitCode = 0 Then
+		If Err.Number = 0 Then
 			version = "g" & oExec.StdOut.ReadLine()
 			Set oExec = WshShell.Exec("git diff-index --exit-code --quiet HEAD ../src")
 			Do While oExec.Status = 0 And Err.Number = 0
