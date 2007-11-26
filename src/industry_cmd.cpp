@@ -2052,7 +2052,11 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 				new_prod = old_prod = i->production_rate[j];
 
-				if (only_decrease || Chance16(1, 3)) mult *= -1;
+				if (only_decrease) {
+					mult = -1;
+				} else if (Chance16(1, 3)) {
+					mult *= -1;
+				}
 
 				if (Chance16(1, 22)) {
 					new_prod += mult * (max(((RandomRange(50) + 10) * old_prod) >> 8, 1U));
