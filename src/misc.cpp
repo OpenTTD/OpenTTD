@@ -205,24 +205,6 @@ void InitializeLandscapeVariables(bool only_constants)
 }
 
 
-
-int FindFirstBit(uint32 value)
-{
-	/* The macro FIND_FIRST_BIT is better to use when your value is
-	  not more than 128. */
-	byte i = 0;
-
-	if (value == 0) return 0;
-
-	if ((value & 0x0000ffff) == 0) { value >>= 16; i += 16; }
-	if ((value & 0x000000ff) == 0) { value >>= 8;  i += 8;  }
-	if ((value & 0x0000000f) == 0) { value >>= 4;  i += 4;  }
-	if ((value & 0x00000003) == 0) { value >>= 2;  i += 2;  }
-	if ((value & 0x00000001) == 0) { i += 1; }
-
-	return i;
-}
-
 static void Save_NAME()
 {
 	int i;

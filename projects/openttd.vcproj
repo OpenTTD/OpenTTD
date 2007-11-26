@@ -198,6 +198,9 @@
 				RelativePath=".\..\src\console_cmds.cpp">
 			</File>
 			<File
+				RelativePath=".\..\src\core\bitmath_func.cpp">
+			</File>
+			<File
 				RelativePath=".\..\src\core\random_func.cpp">
 			</File>
 			<File
@@ -425,6 +428,9 @@
 			</File>
 			<File
 				RelativePath=".\..\src\console.h">
+			</File>
+			<File
+				RelativePath=".\..\src\core\bitmath_func.hpp">
 			</File>
 			<File
 				RelativePath=".\..\src\core\math_func.hpp">

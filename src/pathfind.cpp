@@ -230,17 +230,6 @@ static uint SkipToEndOfTunnel(TrackPathFinder* tpf, TileIndex tile, DiagDirectio
 	return flotr.tile;
 }
 
-const byte _ffb_64[64] = {
- 0,  0,  1,  0,  2,  0,  1,  0,
- 3,  0,  1,  0,  2,  0,  1,  0,
- 4,  0,  1,  0,  2,  0,  1,  0,
- 3,  0,  1,  0,  2,  0,  1,  0,
- 5,  0,  1,  0,  2,  0,  1,  0,
- 3,  0,  1,  0,  2,  0,  1,  0,
- 4,  0,  1,  0,  2,  0,  1,  0,
- 3,  0,  1,  0,  2,  0,  1,  0,
-};
-
 static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction);
 
 /** Most code of the "Normal" case of TPF Mode 1; for signals special tricks

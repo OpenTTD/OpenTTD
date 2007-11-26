@@ -105,8 +105,6 @@ void ChangeTownRating(Town *t, int add, int max);
 uint GetTownRadiusGroup(const Town* t, TileIndex tile);
 void ShowHighscoreTable(int difficulty, int8 rank);
 
-int FindFirstBit(uint32 x);
-
 void AfterLoadTown();
 void UpdatePatches();
 void AskExitGame();
