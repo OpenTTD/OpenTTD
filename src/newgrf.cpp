@@ -2066,6 +2066,10 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				SB(indsp->callback_flags, (prop - 0x21) * 8, 8, aflag);
 			} break;
 
+			case 0x23: // removal cost multiplier
+				indsp->removal_cost_multiplier = grf_load_dword(&buf);
+				break;
+
 			default:
 				ret = true;
 				break;

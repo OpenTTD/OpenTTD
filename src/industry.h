@@ -161,7 +161,8 @@ struct GRFFileProps {
 struct IndustrySpec {
 	const IndustryTileTable *const *table;///< List of the tiles composing the industry
 	byte num_table;                       ///< Number of elements in the table
-	uint8 cost_multiplier;                ///< Base cost multiplier.
+	uint8 cost_multiplier;                ///< Base construction cost multiplier.
+	uint32 removal_cost_multiplier;       ///< Base removal cost multiplier.
 	uint16 raw_industry_cost_multiplier;  ///< Multiplier for the raw industries cost
 	uint32 prospecting_chance;            ///< Chance prospecting succeeds
 	IndustryType conflicting[3];          ///< Industries this industry cannot be close to
@@ -202,6 +203,14 @@ struct IndustrySpec {
 	 * @return the cost (inflation corrected etc)
 	 */
 	Money GetConstructionCost() const;
+
+	/**
+	 * Get the cost for removing this industry
+	 * Take note that the cost will always be zero for non-grf industries.
+	 * Only if the grf author did specified a cost will it be applicable.
+	 * @return the cost (inflation corrected etc)
+	 */
+	Money GetRemovalCost() const;
 };
 
 /**

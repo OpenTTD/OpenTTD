@@ -401,7 +401,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
 	}
 
 	if (flags & DC_EXEC) delete i;
-	return CommandCost();
+	return CommandCost(indspec->GetRemovalCost());
 }
 
 static void TransportIndustryGoods(TileIndex tile)
@@ -2225,6 +2225,11 @@ Money IndustrySpec::GetConstructionCost() const
 					this->raw_industry_cost_multiplier :
 					this->cost_multiplier
 			)) >> 8;
+}
+
+Money IndustrySpec::GetRemovalCost() const
+{
+	return (_price.remove_house * this->removal_cost_multiplier) >> 8;
 }
 
 static CommandCost TerraformTile_Industry(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
