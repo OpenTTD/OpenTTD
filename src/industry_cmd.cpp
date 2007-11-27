@@ -2011,6 +2011,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	                      !(HasBit(indspec->callback_flags, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CHANGE));            // production change callbacks
 	byte div = 0;
 	byte mul = 0;
+	int8 increment = 0;
 
 	if (HasBit(indspec->callback_flags, monthly ? CBM_IND_MONTHLYPROD_CHANGE : CBM_IND_PRODUCTION_CHANGE)) {
 		uint16 res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->xy);
@@ -2032,6 +2033,10 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				case 0x8: div = res - 0x3; break; // Divide production by 32
 				case 0x9: case 0xA: case 0xB:     // Multiply production by 4, 8, 16
 				case 0xC: mul = res - 0x7; break; // Multiply production by 32
+				case 0xD:                         // decrement production
+				case 0xE:                         // increment production
+					increment = res == 0x0D ? -1 : 1;
+					break;
 			}
 		}
 	}
@@ -2120,6 +2125,11 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
 			if (str == STR_NULL) str = indspec->production_down_text;
 		}
+	}
+
+	if (increment != 0) {
+		i->prod_level = ClampU(i->prod_level + increment, 4, 0x80);
+		if (i->prod_level == 4) closeit = true;
 	}
 
 	/* Close if needed and allowed */
