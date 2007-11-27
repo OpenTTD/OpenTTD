@@ -242,10 +242,10 @@ struct Prices {
 	Money ship_base;
 	Money build_trees;
 	Money terraform;
-	Money clear_1;
-	Money purchase_land;
-	Money clear_2;
-	Money clear_3;
+	Money clear_grass;
+	Money clear_roughland;
+	Money clear_rocks;
+	Money clear_fields;
 	Money remove_trees;
 	Money remove_rail;
 	Money remove_signals;

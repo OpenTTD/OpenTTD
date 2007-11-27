@@ -419,7 +419,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 			if (water_ground) {
 				cost.AddCost(-_price.clear_water);
-				cost.AddCost(_price.purchase_land);
+				cost.AddCost(_price.clear_roughland);
 			}
 
 			if (flags & DC_EXEC) {

@@ -791,10 +791,10 @@ static const Money _price_base[NUM_PRICES] = {
 	  65000, ///< ship_base
 	     20, ///< build_trees
 	    250, ///< terraform
-	     20, ///< clear_1
-	     40, ///< purchase_land
-	    200, ///< clear_2
-	    500, ///< clear_3
+	     20, ///< clear_grass
+	     40, ///< clear_roughland
+	    200, ///< clear_rocks
+	    500, ///< clear_fields
 	     20, ///< remove_trees
 	    -70, ///< remove_rail
 	     10, ///< remove_signals

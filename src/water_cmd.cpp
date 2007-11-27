@@ -357,7 +357,7 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 			if (slope == SLOPE_N || slope == SLOPE_E || slope == SLOPE_S || slope == SLOPE_W) {
 				return CommandCost(_price.clear_water);
 			} else {
-				return CommandCost(_price.purchase_land);
+				return CommandCost(_price.clear_roughland);
 			}
 		}
 

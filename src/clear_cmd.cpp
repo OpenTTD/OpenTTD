@@ -438,20 +438,19 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		MarkTileDirtyByTile(tile);
 	}
 
-	return cost.AddCost(_price.purchase_land * 10);
+	return cost.AddCost(_price.clear_roughland * 10);
 }
 
 
 static CommandCost ClearTile_Clear(TileIndex tile, byte flags)
 {
 	static const Money* clear_price_table[] = {
-		&_price.clear_1,
-		&_price.purchase_land,
-		&_price.clear_2,
-		&_price.clear_3,
-		&_price.purchase_land,
-		&_price.purchase_land,
-		&_price.clear_2, // XXX unused?
+		&_price.clear_grass,
+		&_price.clear_roughland,
+		&_price.clear_rocks,
+		&_price.clear_fields,
+		&_price.clear_roughland,
+		&_price.clear_roughland,
 	};
 	CommandCost price;
 
@@ -484,7 +483,7 @@ CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return CommandCost(- _price.purchase_land * 2);
+	return CommandCost(- _price.clear_roughland * 2);
 }
 
 

@@ -324,8 +324,8 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					}
 
 					switch (GetClearGround(tile)) {
-						case CLEAR_FIELDS: cost.AddCost(_price.clear_3); break;
-						case CLEAR_ROCKS:  cost.AddCost(_price.clear_2); break;
+						case CLEAR_FIELDS: cost.AddCost(_price.clear_fields); break;
+						case CLEAR_ROCKS:  cost.AddCost(_price.clear_rocks); break;
 						default: break;
 					}
 
