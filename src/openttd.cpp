@@ -1243,6 +1243,71 @@ static inline RailType UpdateRailType(RailType rt, RailType min)
 	return rt >= min ? (RailType)(rt + 1): rt;
 }
 
+/**
+ * Initialization of the windows and several kinds of caches.
+ * This is not done directly in AfterLoadGame because these
+ * functions require that all saveload conversions have been
+ * done. As people tend to add savegame conversion stuff after
+ * the intialization of the windows and caches quite some bugs
+ * had been made.
+ * Moving this out of there is both cleaner and less bug-prone.
+ *
+ * @return true if everything went according to plan, otherwise false.
+ */
+static bool InitializeWindowsAndCaches()
+{
+	/* Initialize windows */
+	ResetWindowSystem();
+	SetupColorsAndInitialWindow();
+
+	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+
+	WP(w, vp_d).scrollpos_x = _saved_scrollpos_x;
+	WP(w, vp_d).scrollpos_y = _saved_scrollpos_y;
+	WP(w, vp_d).dest_scrollpos_x = _saved_scrollpos_x;
+	WP(w, vp_d).dest_scrollpos_y = _saved_scrollpos_y;
+
+	ViewPort *vp = w->viewport;
+	vp->zoom = (ZoomLevel)min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
+	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
+	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+
+	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
+	MarkWholeScreenDirty();
+
+	/* Update coordinates of the signs. */
+	UpdateAllStationVirtCoord();
+	UpdateAllSignVirtCoords();
+	UpdateAllTownVirtCoords();
+	UpdateAllWaypointSigns();
+
+	/* Recalculate */
+	Group *g;
+	FOR_ALL_GROUPS(g) {
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (!IsEngineCountable(v)) continue;
+
+			if (v->group_id != g->index || v->type != g->vehicle_type || v->owner != g->owner) continue;
+
+			g->num_engines[v->engine_type]++;
+		}
+	}
+
+	/* Set up the engine count for all players */
+	Player *players[MAX_PLAYERS];
+	const Vehicle *v;
+
+	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) players[i] = GetPlayer(i);
+
+	FOR_ALL_VEHICLES(v) {
+		if (!IsEngineCountable(v)) continue;
+		players[v->owner]->num_engines[v->engine_type]++;
+	}
+
+	return true;
+}
+
 bool AfterLoadGame()
 {
 	TileIndex map_size = MapSize();
@@ -2167,56 +2232,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Initialize windows */
-	ResetWindowSystem();
-	SetupColorsAndInitialWindow();
-
-	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
-
-	WP(w, vp_d).scrollpos_x = _saved_scrollpos_x;
-	WP(w, vp_d).scrollpos_y = _saved_scrollpos_y;
-	WP(w, vp_d).dest_scrollpos_x = _saved_scrollpos_x;
-	WP(w, vp_d).dest_scrollpos_y = _saved_scrollpos_y;
-
-	ViewPort *vp = w->viewport;
-	vp->zoom = (ZoomLevel)min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
-	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
-	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
-
-	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
-	MarkWholeScreenDirty();
-
-	/* Update coordinates of the signs. */
-	UpdateAllStationVirtCoord();
-	UpdateAllSignVirtCoords();
-	UpdateAllTownVirtCoords();
-	UpdateAllWaypointSigns();
-
-	/* Recalculate */
-	Group *g;
-	FOR_ALL_GROUPS(g) {
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (!IsEngineCountable(v)) continue;
-
-			if (v->group_id != g->index || v->type != g->vehicle_type || v->owner != g->owner) continue;
-
-			g->num_engines[v->engine_type]++;
-		}
-	}
-
-	/* Set up the engine count for all players */
-	Player *players[MAX_PLAYERS];
-	const Vehicle *v;
-
-	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) players[i] = GetPlayer(i);
-
-	FOR_ALL_VEHICLES(v) {
-		if (!IsEngineCountable(v)) continue;
-		players[v->owner]->num_engines[v->engine_type]++;
-	}
-
-	return true;
+	return InitializeWindowsAndCaches();
 }
 
 /** Reload all NewGRF files during a running game. This is a cut-down
