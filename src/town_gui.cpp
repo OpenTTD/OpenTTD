@@ -109,15 +109,22 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 	return buttons;
 }
 
+/**
+ * Get the position of the Nth set bit.
+ *
+ * If there is no Nth bit set return -1
+ *
+ * @param bits The value to search in
+ * @param n The Nth set bit from which we want to know the position
+ * @return The position of the Nth set bit
+ */
 static int GetNthSetBit(uint32 bits, int n)
 {
-	int i = 0;
-
 	if (n >= 0) {
-		do {
-			if (bits & 1 && --n < 0) return i;
-			i++;
-		} while (bits >>= 1);
+		for (uint i = 0; bits != 0; bits >>= 1, i++) {
+			if (bits & 1) n--;
+			if (n < 0) return i;
+		}
 	}
 	return -1;
 }
