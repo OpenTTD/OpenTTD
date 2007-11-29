@@ -21,8 +21,8 @@ static struct BridgeData {
 	uint count;
 	TileIndex start_tile;
 	TileIndex end_tile;
-	byte type;
-	byte indexes[MAX_BRIDGES];
+	uint8 type;
+	uint8 indexes[MAX_BRIDGES];
 	Money costs[MAX_BRIDGES];
 } _bridgedata;
 
@@ -42,23 +42,26 @@ static void BuildBridge(Window *w, int i)
 static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-		case WE_PAINT:
+		case WE_PAINT: {
 			DrawWindowWidgets(w);
 
-			for (uint i = 0; i < 4 && i + w->vscroll.pos < _bridgedata.count; i++) {
+			uint y = 15;
+			for (uint i = 0; (i < w->vscroll.cap) && ((i + w->vscroll.pos) < _bridgedata.count); i++) {
 				const Bridge *b = &_bridge[_bridgedata.indexes[i + w->vscroll.pos]];
 
 				SetDParam(2, _bridgedata.costs[i + w->vscroll.pos]);
 				SetDParam(1, b->speed * 10 / 16);
 				SetDParam(0, b->material);
-				DrawSprite(b->sprite, b->pal, 3, 15 + i * 22);
 
-				DrawString(44, 15 + i * 22 , STR_500D, TC_FROMSTRING);
+				DrawSprite(b->sprite, b->pal, 3, y);
+				DrawString(44, y, STR_500D, TC_FROMSTRING);
+				y += w->resize.step_height;
 			}
 			break;
+		}
 
 		case WE_KEYPRESS: {
-			uint i = e->we.keypress.keycode - '1';
+			const uint8 i = e->we.keypress.keycode - '1';
 			if (i < 9 && i < _bridgedata.count) {
 				e->we.keypress.cont = false;
 				BuildBridge(w, i);
@@ -69,43 +72,55 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			if (e->we.click.widget == 2) {
-				uint ind = ((int)e->we.click.pt.y - 14) / 22;
-				if (ind < 4 && (ind += w->vscroll.pos) < _bridgedata.count)
-					BuildBridge(w, ind);
+				uint ind = ((int)e->we.click.pt.y - 14) / w->resize.step_height;
+				if (ind < w->vscroll.cap) {
+					ind += w->vscroll.pos;
+					if (ind < _bridgedata.count) {
+						BuildBridge(w, ind);
+					}
+				}
 			}
+			break;
+
+		case WE_RESIZE:
+			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
+			w->widget[2].data = (w->vscroll.cap << 8) + 1;
+			SetVScrollCount(w, _bridgedata.count);
 			break;
 	}
 }
 
 static const Widget _build_bridge_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   199,     0,    13, STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,   RESIZE_NONE,     7,     0,   187,    14,   101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},
-{  WWT_SCROLLBAR,   RESIZE_NONE,     7,   188,   199,    14,   101, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  7,  11, 199,   0,  13, STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  14, 101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  14,  89, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199,  90, 101, 0x0,                         STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_bridge_desc = {
 	WDP_AUTO, WDP_AUTO, 200, 102, 200, 102,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_build_bridge_widgets,
 	BuildBridgeWndProc
 };
 
 
 static const Widget _build_road_bridge_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   199,     0,    13, STR_1803_SELECT_ROAD_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,   RESIZE_NONE,     7,     0,   187,    14,   101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},
-{  WWT_SCROLLBAR,   RESIZE_NONE,     7,   188,   199,    14,   101, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  7,  11, 199,   0,  13, STR_1803_SELECT_ROAD_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  14, 101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  14,  89, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199,  90, 101, 0x0,                         STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_road_bridge_desc = {
 	WDP_AUTO, WDP_AUTO, 200, 102, 200, 102,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_build_road_bridge_widgets,
 	BuildBridgeWndProc
 };
@@ -113,52 +128,49 @@ static const WindowDesc _build_road_bridge_desc = {
 
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 {
-	uint j = 0;
-	CommandCost ret;
-	StringID errmsg;
-
 	DeleteWindowById(WC_BUILD_BRIDGE, 0);
 
 	_bridgedata.type = bridge_type;
 	_bridgedata.start_tile = start;
 	_bridgedata.end_tile = end;
 
-	errmsg = INVALID_STRING_ID;
+	/* only query bridge building possibility once, result is the same for all bridges!
+	 * returns CMD_ERROR on failure, and price on success */
+	StringID errmsg = INVALID_STRING_ID;
+	CommandCost ret = DoCommand(end, start, (bridge_type << 8), DC_AUTO | DC_QUERY_COST, CMD_BUILD_BRIDGE);
 
-	// only query bridge building possibility once, result is the same for all bridges!
-	// returns CMD_ERROR on failure, and price on success
-	ret = DoCommand(end, start, (bridge_type << 8), DC_AUTO | DC_QUERY_COST, CMD_BUILD_BRIDGE);
-
+	uint8 j = 0;
 	if (CmdFailed(ret)) {
 		errmsg = _error_message;
 	} else {
-		// check which bridges can be built
-		// get absolute bridge length
-		// length of the middle parts of the bridge
-		int bridge_len = GetBridgeLength(start, end);
-		// total length of bridge
-		int tot_bridgedata_len = bridge_len + 2;
+		/* check which bridges can be built
+		 * get absolute bridge length
+		 * length of the middle parts of the bridge */
+		const uint bridge_len = GetBridgeLength(start, end);
+		/* total length of bridge */
+		const uint tot_bridgedata_len = CalcBridgeLenCostFactor(bridge_len + 2);
 
-		tot_bridgedata_len = CalcBridgeLenCostFactor(tot_bridgedata_len);
-
-		for (bridge_type = 0; bridge_type != MAX_BRIDGES; bridge_type++) { // loop for all bridgetypes
+		/* loop for all bridgetypes */
+		for (bridge_type = 0; bridge_type != MAX_BRIDGES; bridge_type++) {
 			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
+				/* bridge is accepted, add to list */
 				const Bridge *b = &_bridge[bridge_type];
-				// bridge is accepted, add to list
-				// add to terraforming & bulldozing costs the cost of the bridge itself (not computed with DC_QUERY_COST)
+				/* Add to terraforming & bulldozing costs the cost of the
+				 * bridge itself (not computed with DC_QUERY_COST) */
 				_bridgedata.costs[j] = ret.GetCost() + (((int64)tot_bridgedata_len * _price.build_bridge * b->price) >> 8);
 				_bridgedata.indexes[j] = bridge_type;
 				j++;
 			}
 		}
-	}
 
-	_bridgedata.count = j;
+		_bridgedata.count = j;
+	}
 
 	if (j != 0) {
 		Window *w = AllocateWindowDesc((_bridgedata.type & 0x80) ? &_build_road_bridge_desc : &_build_bridge_desc);
 		w->vscroll.cap = 4;
-		w->vscroll.count = (byte)j;
+		w->vscroll.count = j;
+		w->resize.step_height = 22;
 	} else {
 		ShowErrorMessage(errmsg, STR_5015_CAN_T_BUILD_BRIDGE_HERE, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
 	}
