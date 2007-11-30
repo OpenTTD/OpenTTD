@@ -3,6 +3,8 @@
 #ifndef VIDEO_COCOA_H
 #define VIDEO_COCOA_H
 
+#include <AvailabilityMacros.h>
+
 #include "../video_driver.hpp"
 
 class VideoDriver_Cocoa: public VideoDriver {
@@ -59,8 +61,11 @@ public:
 extern CocoaSubdriver* _cocoa_subdriver;
 
 CocoaSubdriver *QZ_CreateFullscreenSubdriver(int width, int height, int bpp);
-CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp);
 CocoaSubdriver *QZ_CreateWindowQuickdrawSubdriver(int width, int height, int bpp);
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
+CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp);
+#endif
 
 void QZ_GameSizeChanged();
 

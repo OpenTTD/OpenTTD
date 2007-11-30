@@ -8,8 +8,9 @@
 
 #ifdef WITH_COCOA
 
-#define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_4
 #include <AvailabilityMacros.h>
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
 
 #import <Cocoa/Cocoa.h>
 #import <sys/time.h> /* gettimeofday */
@@ -801,4 +802,5 @@ CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 	return ret;
 }
 
+#endif /* MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4 */
 #endif /* WITH_COCOA */

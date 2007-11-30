@@ -232,10 +232,12 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 {
 	CocoaSubdriver *ret;
 
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
 	if (MacOSVersionIsAtLeast(10, 4, 0)) {
 		ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
 		if (ret != NULL) return ret;
 	}
+#endif
 
 	ret = QZ_CreateWindowQuickdrawSubdriver(width, height, bpp);
 	if (ret != NULL) return ret;
