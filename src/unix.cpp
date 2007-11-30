@@ -67,6 +67,10 @@ bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
 	uint32 free = 0;
 
 #ifdef HAS_STATVFS
+# ifdef __APPLE__
+	/* OSX 10.3 lacks statvfs so don't try to use it even though later versions of OSX has it. */
+	if (MacOSVersionIsAtLeast(10, 4, 0))
+# endif
 	{
 		struct statvfs s;
 
