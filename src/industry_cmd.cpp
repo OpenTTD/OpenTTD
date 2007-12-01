@@ -1238,7 +1238,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 
 			if (ind_behav & (INDUSTRYBEH_ONLY_INTOWN | INDUSTRYBEH_TOWN1200_MORE)) {
 				if (!IsTileType(cur_tile, MP_HOUSE)) {
-					_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
+					_error_message = STR_INDUSTRY_MUST_BE_BUILT_ON_HOUSE;
 					return false;
 				}
 				if (CmdFailed(DoCommand(cur_tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR))) return false;
