@@ -749,7 +749,6 @@ STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start a 
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Are you sure you want to quit this scenario ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Quit Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns with a population of at least 1200
-STR_INDUSTRY_MUST_BE_BUILT_ON_HOUSE                             :{WHITE}...can only be built over a house
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Move the starting date backward 1 year
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Move the starting date forward 1 year
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...ends of bridge must both be on land
