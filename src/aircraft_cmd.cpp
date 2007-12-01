@@ -1042,7 +1042,17 @@ static bool AircraftController(Vehicle *v)
 		tile = st->xy;
 
 		/* Jump into our "holding pattern" state machine if possible */
-	if (v->u.air.pos >= afc->nofelements) v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, afc);
+		if (v->u.air.pos >= afc->nofelements) {
+			v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, afc);
+		} else {
+			/* If not possible, just get out of here fast */
+			v->u.air.state = FLYING;
+			UpdateAircraftCache(v);
+			AircraftNextAirportPos_and_Order(v);
+			/* get aircraft back on running altitude */
+			SetAircraftPosition(v, v->x_pos, v->y_pos, GetAircraftFlyingAltitude(v));
+			return false;
+		}
 	}
 
 	/*  get airport moving data */
