@@ -1169,6 +1169,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enable 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging, place signals every: {ORANGE}{STRING1} tile(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enable the signal GUI: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}The town layout "no more roads" isn't valid in the scenario editor
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Select town-road layout: {ORANGE}{STRING1}
@@ -3444,4 +3445,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Change c
 STR_FACE_TIE                                                    :Tie:
 STR_FACE_EARRING                                                :Earring:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Change tie or earring
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Signal Selection
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Can't convert signals here...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard Signal (semaphore){}Signals are necessary to keep trains from crashing on railway networks with more than one train.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Entry-Signal (semaphore){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-Signal (semaphore){}Behaves in the same way as a normal signal but is necessary to trigger the correct colour on entry & combo pre-signals.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Signal (semaphore){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standard Signal (electric){}Signals are necessary to keep trains from crashing on railway networks with more than one train.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Entry-Signal (electric){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-Signal (electric){}Behaves in the same way as a normal signal but is necessary to trigger the correct colour on entry & combo pre-signals.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, CTRL-click will toggle the existing variant.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragging signal density
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrease dragging signal density
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increase dragging signal density
 ########

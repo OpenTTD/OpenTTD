@@ -38,6 +38,9 @@ static bool _remove_button_clicked;
 static DiagDirection _build_depot_direction;
 static byte _waypoint_count = 1;
 static byte _cur_waypoint_type;
+static bool _convert_signal_button; // convert signal button in the signal GUI pressed
+static SignalVariant _cur_signal_variant; // set the signal variant (for signal GUI)
+static SignalType _cur_signal_type; // set the signal type (for signal GUI)
 
 static struct {
 	byte orientation;
@@ -56,6 +59,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end);
 static void ShowBuildTrainDepotPicker();
 static void ShowBuildWaypointPicker();
 static void ShowStationBuilder();
+static void ShowSignalBuilder();
 
 void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -170,6 +174,11 @@ static void PlaceRail_Station(TileIndex tile)
 	}
 }
 
+/**
+ * Build a new signal or edit/remove a present signal, use CmdBuildSingleSignal() or CmdRemoveSingleSignal() in rail_cmd.cpp
+ *
+ * @param tile The tile where the signal will build or edit
+ */
 static void GenericPlaceSignals(TileIndex tile)
 {
 	TrackBits trackbits = (TrackBits)GB(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0), 0, 6);
@@ -188,12 +197,17 @@ static void GenericPlaceSignals(TileIndex tile)
 		DoCommandP(tile, track, 0, CcPlaySound1E,
 			CMD_REMOVE_SIGNALS | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM));
 	} else {
+		if (!_patches.enable_signal_gui) _cur_signal_variant = _cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
+
+		/* various bitstuffed elements for CmdBuildSingleSignal() */
 		uint32 p1 = track;
 		SB(p1, 3, 1, _ctrl_pressed);
-		SB(p1, 4, 1, _cur_year < _patches.semaphore_build_before);
+		SB(p1, 4, 1, _cur_signal_variant);
+		SB(p1, 5, 2, _patches.enable_signal_gui ? _cur_signal_type : SIGTYPE_NORMAL);
+		SB(p1, 7, 1, _convert_signal_button);
 
-		DoCommandP(tile, p1, 0, CcPlaySound1E,
-			CMD_BUILD_SIGNALS | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE));
+		DoCommandP(tile, p1, 0, CcPlaySound1E, CMD_BUILD_SIGNALS |
+			CMD_MSG(_convert_signal_button ? STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_1010_CAN_T_BUILD_SIGNALS_HERE));
 	}
 }
 
@@ -307,9 +321,14 @@ static void BuildRailClick_Station(Window *w)
 	if (HandlePlacePushButton(w, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, VHM_RECT, PlaceRail_Station)) ShowStationBuilder();
 }
 
+/** The "build signal"-button proc from BuildRailToolbWndProc() (start ShowSignalBuilder() and/or HandleAutoSignalPlacement()) */
 static void BuildRailClick_AutoSignals(Window *w)
 {
-	HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals);
+	if (_patches.enable_signal_gui) {
+		if (HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals)) ShowSignalBuilder();
+	} else {
+		HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals);
+	}
 }
 
 static void BuildRailClick_Bridge(Window *w)
@@ -366,6 +385,12 @@ static void HandleAutodirPlacement()
 	DoRailroadTrack(trackstat);
 }
 
+/**
+ * Build new signals or remove signals or (if only one tile marked) edit a signal.
+ *
+ * If one tile marked abort and use GenericPlaceSignals()
+ * else use CmdBuildSingleSignal() or CmdRemoveSingleSignal() in rail_cmd.cpp to build many signals
+ */
 static void HandleAutoSignalPlacement()
 {
 	TileHighlightData *thd = &_thd;
@@ -463,6 +488,12 @@ static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
 	}
 }
 
+/**
+ * Railway toolbar window event definition
+ *
+ * @param w window pointer
+ * @param e event been triggered
+ */
 static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -496,6 +527,9 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		return;
 
 	case WE_PLACE_DRAG: {
+		/* no dragging if you have pressed the convert button */
+		if (_convert_signal_button && IsWindowWidgetLowered(w, RTW_BUILD_SIGNALS)) return;
+
 		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		return;
 	}
@@ -548,10 +582,12 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		DisableWindowWidget(w, RTW_REMOVE);
 		InvalidateWidget(w, RTW_REMOVE);
 
+		w = FindWindowById(WC_BUILD_SIGNAL, 0);
+		if (w != NULL) WP(w, def_d).close = true;
 		w = FindWindowById(WC_BUILD_STATION, 0);
-		if (w != NULL) WP(w,def_d).close = true;
+		if (w != NULL) WP(w, def_d).close = true;
 		w = FindWindowById(WC_BUILD_DEPOT, 0);
-		if (w != NULL) WP(w,def_d).close = true;
+		if (w != NULL) WP(w, def_d).close = true;
 		break;
 
 	case WE_PLACE_PRESIZE: {
@@ -752,7 +788,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		DrawPixelInfo tmp_dpi, *old_dpi;
 		const StationSpec *statspec = newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
 
-		if (WP(w,def_d).close) return;
+		if (WP(w, def_d).close) return;
 
 		if (_railstation.dragdrop) {
 			SetTileSelectSize(1, 1);
@@ -995,7 +1031,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close) {
+		if (WP(w, def_d).close) {
 			DeleteWindow(w);
 			return;
 		}
@@ -1003,7 +1039,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close) ResetObjectToPlace();
+		if (!WP(w, def_d).close) ResetObjectToPlace();
 		break;
 	}
 }
@@ -1107,6 +1143,166 @@ static void ShowStationBuilder()
 	}
 }
 
+/** Enum referring to the widgets of the signal window */
+enum BuildSignalWidgets {
+	BSW_CLOSEBOX = 0,
+	BSW_CAPTION,
+	BSW_SEMAPHORE_NORM,
+	BSW_SEMAPHORE_ENTRY,
+	BSW_SEMAPHORE_EXIT,
+	BSW_SEMAPHORE_COMBO,
+	BSW_ELECTRIC_NORM,
+	BSW_ELECTRIC_ENTRY,
+	BSW_ELECTRIC_EXIT,
+	BSW_ELECTRIC_COMBO,
+	BSW_CONVERT,
+	BSW_DRAG_SIGNALS_DENSITY,
+	BSW_DRAG_SIGNALS_DENSITY_DECREASE,
+	BSW_DRAG_SIGNALS_DENSITY_INCREASE,
+};
+
+/**
+ * Draw dynamic a signal-sprite in a button in the signal GUI
+ * Draw the sprite +1px to the right and down if the button is lowered and change the sprite to sprite + 1 (red to green light)
+ *
+ * @param w            Window on which the widget is located
+ * @param widget_index index of this widget in the window
+ * @param image        the sprite to draw
+ * @param xrel         the relativ x value of the sprite in the grf
+ * @param xsize        the width of the sprite
+ */
+static const void DrawSignalSprite(const Window *w, byte widget_index, SpriteID image, int8 xrel, uint8 xsize)
+{
+	DrawSprite(image + IsWindowWidgetLowered(w, widget_index), PAL_NONE,
+			w->widget[widget_index].left + (w->widget[widget_index].right - w->widget[widget_index].left) / 2 - xrel - xsize / 2 +
+			IsWindowWidgetLowered(w, widget_index), w->widget[widget_index].bottom - 3 + IsWindowWidgetLowered(w, widget_index));
+}
+
+/**
+ * Signal selection window event definition
+ *
+ * @param w window pointer
+ * @param e event been triggered
+ */
+static void SignalBuildWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+		case WE_PAINT:
+			LowerWindowWidget(w, (_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
+
+			SetWindowWidgetLoweredState(w, BSW_CONVERT, _convert_signal_button);
+
+			SetWindowWidgetDisabledState(w, BSW_DRAG_SIGNALS_DENSITY_DECREASE, _patches.drag_signals_density == 1);
+			SetWindowWidgetDisabledState(w, BSW_DRAG_SIGNALS_DENSITY_INCREASE, _patches.drag_signals_density == 20);
+
+			DrawWindowWidgets(w);
+
+			/* The 'hardcoded' off sets are needed because they are reused sprites. */
+			DrawSignalSprite(w, BSW_SEMAPHORE_NORM,  SPR_IMG_SIGNAL_SEMAPHORE_NORM,   0, 12); // xsize of sprite + 1 ==  9
+			DrawSignalSprite(w, BSW_SEMAPHORE_ENTRY, SPR_IMG_SIGNAL_SEMAPHORE_ENTRY, -1, 13); // xsize of sprite + 1 == 10
+			DrawSignalSprite(w, BSW_SEMAPHORE_EXIT,  SPR_IMG_SIGNAL_SEMAPHORE_EXIT,   0, 12); // xsize of sprite + 1 ==  9
+			DrawSignalSprite(w, BSW_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_COMBO,  0, 12); // xsize of sprite + 1 ==  9
+			DrawSignalSprite(w, BSW_ELECTRIC_NORM,   SPR_IMG_SIGNAL_ELECTRIC_NORM,   -1,  4);
+			DrawSignalSprite(w, BSW_ELECTRIC_ENTRY,  SPR_IMG_SIGNAL_ELECTRIC_ENTRY,  -2,  6);
+			DrawSignalSprite(w, BSW_ELECTRIC_EXIT,   SPR_IMG_SIGNAL_ELECTRIC_EXIT,   -2,  6);
+			DrawSignalSprite(w, BSW_ELECTRIC_COMBO,  SPR_IMG_SIGNAL_ELECTRIC_COMBO,  -2,  6);
+
+			/* Draw dragging signal density value in the BSW_DRAG_SIGNALS_DENSITY widget */
+			SetDParam(0, _patches.drag_signals_density);
+			DrawStringCentered(w->widget[BSW_DRAG_SIGNALS_DENSITY].left + (w->widget[BSW_DRAG_SIGNALS_DENSITY].right -
+					w->widget[BSW_DRAG_SIGNALS_DENSITY].left) / 2 + 1,
+					w->widget[BSW_DRAG_SIGNALS_DENSITY].top + 2, STR_JUST_INT, TC_ORANGE);
+			break;
+
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case BSW_SEMAPHORE_NORM:
+				case BSW_SEMAPHORE_ENTRY:
+				case BSW_SEMAPHORE_EXIT:
+				case BSW_SEMAPHORE_COMBO:
+				case BSW_ELECTRIC_NORM:
+				case BSW_ELECTRIC_ENTRY:
+				case BSW_ELECTRIC_EXIT:
+				case BSW_ELECTRIC_COMBO:
+					RaiseWindowWidget(w, (_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
+
+					_cur_signal_type = (SignalType)((uint)((e->we.click.widget - BSW_SEMAPHORE_NORM) % (SIGTYPE_COMBO + 1)));
+					_cur_signal_variant = e->we.click.widget >= BSW_ELECTRIC_NORM ? SIG_ELECTRIC : SIG_SEMAPHORE;
+					break;
+
+				case BSW_CONVERT:
+					_convert_signal_button = !_convert_signal_button;
+					break;
+
+				case BSW_DRAG_SIGNALS_DENSITY_DECREASE:
+					if (_patches.drag_signals_density > 1) _patches.drag_signals_density--;
+					break;
+
+				case BSW_DRAG_SIGNALS_DENSITY_INCREASE:
+					if (_patches.drag_signals_density < 20) _patches.drag_signals_density++;
+					break;
+
+				default: break;
+			}
+
+			SetWindowDirty(w);
+			break;
+
+		case WE_MOUSELOOP:
+			if (WP(w, def_d).close) DeleteWindow(w);
+			return;
+
+		case WE_DESTROY:
+			if (!WP(w, def_d).close) ResetObjectToPlace();
+			break;
+		}
+}
+
+/** Widget definition of the build signal window */
+static const Widget _signal_builder_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,               STR_018B_CLOSE_WINDOW},                 // BSW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  7,  11, 109,   0,  13, STR_SIGNAL_SELECTION,   STR_018C_WINDOW_TITLE_DRAG_THIS},       // BSW_CAPTION
+
+{      WWT_PANEL,   RESIZE_NONE,  7,   0,  21,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP},   // BSW_SEMAPHORE_NORM
+{      WWT_PANEL,   RESIZE_NONE,  7,  22,  43,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP},  // BSW_SEMAPHORE_ENTRY
+{      WWT_PANEL,   RESIZE_NONE,  7,  44,  65,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP},   // BSW_SEMAPHORE_EXIT
+{      WWT_PANEL,   RESIZE_NONE,  7,  66,  87,  14,  40, STR_NULL,               STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP},  // BSW_SEMAPHORE_COMBO
+
+{      WWT_PANEL,   RESIZE_NONE,  7,   0,  21,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP},    // BSW_ELECTRIC_NORM
+{      WWT_PANEL,   RESIZE_NONE,  7,  22,  43,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP},   // BSW_ELECTRIC_ENTRY
+{      WWT_PANEL,   RESIZE_NONE,  7,  44,  65,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP},    // BSW_ELECTRIC_EXIT
+{      WWT_PANEL,   RESIZE_NONE,  7,  66,  87,  41,  67, STR_NULL,               STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP},   // BSW_ELECTRIC_COMBO
+
+{     WWT_IMGBTN,   RESIZE_NONE,  7,  88, 109,  14,  40, SPR_IMG_SIGNAL_CONVERT, STR_SIGNAL_CONVERT_TIP},                // BSW_CONVERT
+{      WWT_PANEL,   RESIZE_NONE,  7,  88, 109,  41,  67, STR_NULL,               STR_DRAG_SIGNALS_DENSITY_TIP},          // BSW_DRAG_SIGNALS_DENSITY
+{ WWT_PUSHIMGBTN,   RESIZE_NONE, 14,  90,  98,  54,  65, SPR_ARROW_LEFT,         STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP}, // BSW_DRAG_SIGNALS_DENSITY_DECREASE
+{ WWT_PUSHIMGBTN,   RESIZE_NONE, 14,  99, 107,  54,  65, SPR_ARROW_RIGHT,        STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP}, // BSW_DRAG_SIGNALS_DENSITY_INCREASE
+
+{   WIDGETS_END},
+};
+
+/** Signal selection window description */
+static const WindowDesc _signal_builder_desc = {
+	WDP_AUTO, WDP_AUTO, 110, 68, 110, 68,
+	WC_BUILD_SIGNAL, WC_BUILD_TOOLBAR,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_signal_builder_widgets,
+	SignalBuildWndProc
+};
+
+/**
+ * Open the signal selection window
+ * @pre reset all signal GUI relevant variables
+ */
+static void ShowSignalBuilder()
+{
+	_convert_signal_button = false;
+	_cur_signal_variant = _cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
+	_cur_signal_type = SIGTYPE_NORMAL;
+
+	AllocateWindowDesc(&_signal_builder_desc);
+}
+
 /** Enum referring to the widgets of the build rail depot window */
 enum BuildRailDepotWidgets {
 	BRDW_CLOSEBOX = 0,
@@ -1149,11 +1345,11 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close) DeleteWindow(w);
+		if (WP(w, def_d).close) DeleteWindow(w);
 		return;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close) ResetObjectToPlace();
+		if (!WP(w, def_d).close) ResetObjectToPlace();
 		break;
 	}
 }
@@ -1248,11 +1444,11 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_MOUSELOOP:
-		if (WP(w,def_d).close) DeleteWindow(w);
+		if (WP(w, def_d).close) DeleteWindow(w);
 		break;
 
 	case WE_DESTROY:
-		if (!WP(w,def_d).close) ResetObjectToPlace();
+		if (!WP(w, def_d).close) ResetObjectToPlace();
 		break;
 	}
 }

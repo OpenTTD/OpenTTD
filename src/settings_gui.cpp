@@ -669,6 +669,7 @@ static const char *_patches_construction[] = {
 	"longbridges",
 	"signal_side",
 	"always_small_airport",
+	"enable_signal_gui",
 	"drag_signals_density",
 	"oil_refinery_limit",
 	"semaphore_build_before",

@@ -247,6 +247,8 @@ struct Patches {
 
 	bool exclusive_rights;   ///< allow buying exclusive rights
 	bool give_money;         ///< allow giving other players money
+
+	bool enable_signal_gui;  ///< Show the signal GUI when the signal button is pressed
 };
 
 VARDEF Patches _patches;

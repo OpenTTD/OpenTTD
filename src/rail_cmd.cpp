@@ -776,16 +776,20 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
  * - p1 = (bit 0-2) - track-orientation, valid values: 0-5 (Track enum)
- * - p1 = (bit 3)   - 1 = override signal/semaphore, or pre/exit/combo signal (CTRL-toggle)
+ * - p1 = (bit 3)   - 1 = override signal/semaphore, or pre/exit/combo signal or (for bit 7) toggle variant (CTRL-toggle)
  * - p1 = (bit 4)   - 0 = signals, 1 = semaphores
+ * - p1 = (bit 5-6) - type of the signal, for valid values see enum SignalType in rail_map.h
+ * - p1 = (bit 7)   - convert the present signal type and variant
  * @param p2 used for CmdBuildManySignals() to copy direction of first signal
  * TODO: p2 should be replaced by two bits for "along" and "against" the track.
  */
 CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Track track = (Track)GB(p1, 0, 3);
-	bool pre_signal = HasBit(p1, 3);
-	SignalVariant sigvar = (pre_signal ^ HasBit(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC;
+	bool ctrl_pressed = HasBit(p1, 3); // was the CTRL button pressed
+	SignalVariant sigvar = (ctrl_pressed ^ HasBit(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC; // the signal variant of the new signal
+	SignalType sigtype = (SignalType)GB(p1, 5, 2); // the signal type of the new signal
+	bool convert_signal = HasBit(p1, 7); // convert button pressed
 	CommandCost cost;
 
 	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoTrainOnTrack(tile, track))
@@ -799,17 +803,18 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
-	_error_message = STR_1005_NO_SUITABLE_RAILROAD_TRACK;
-
 	{
 		/* See if this is a valid track combination for signals, (ie, no overlap) */
 		TrackBits trackbits = GetTrackBits(tile);
 		if (KillFirstBit(trackbits) != TRACK_BIT_NONE && /* More than one track present */
 				trackbits != TRACK_BIT_HORZ &&
 				trackbits != TRACK_BIT_VERT) {
-			return CMD_ERROR;
+			return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
 		}
 	}
+
+	/* you can not convert a signal if no signal is on track */
+	if (convert_signal && !HasSignalOnTrack(tile, track)) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -820,6 +825,17 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 		if (p2 != 0 && sigvar != GetSignalVariant(tile, track)) {
 			/* convert signals <-> semaphores */
 			cost = CommandCost(_price.build_signals + _price.remove_signals);
+
+		} else if (convert_signal) {
+			/* convert button pressed */
+			if (ctrl_pressed || GetSignalVariant(tile, track) != sigvar) {
+				/* convert electric <-> semaphore */
+				cost = CommandCost(_price.build_signals + _price.remove_signals);
+			} else {
+				/* it is free to change signal type: normal-pre-exit-combo */
+				cost = CommandCost();
+			}
+
 		} else {
 			/* it is free to change orientation/pre-exit-combo signals */
 			cost = CommandCost();
@@ -832,7 +848,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 			SetHasSignals(tile, true);
 			SetSignalStates(tile, 0xF); // all signals are on
 			SetPresentSignals(tile, 0); // no signals built by default
-			SetSignalType(tile, track, SIGTYPE_NORMAL);
+			SetSignalType(tile, track, sigtype);
 			SetSignalVariant(tile, track, sigvar);
 		}
 
@@ -840,15 +856,28 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 			if (!HasSignalOnTrack(tile, track)) {
 				/* build new signals */
 				SetPresentSignals(tile, GetPresentSignals(tile) | SignalOnTrack(track));
-				SetSignalType(tile, track, SIGTYPE_NORMAL);
+				SetSignalType(tile, track, sigtype);
 				SetSignalVariant(tile, track, sigvar);
 			} else {
-				if (pre_signal) {
-					/* cycle between normal -> pre -> exit -> combo -> ... */
-					SignalType type = GetSignalType(tile, track);
+				if (convert_signal) {
+					/* convert signal button pressed */
+					if (ctrl_pressed) {
+						/* toggle the pressent signal variant: SIG_ELECTRIC <-> SIG_SEMAPHORE */
+						SetSignalVariant(tile, track, (GetSignalVariant(tile, track) == SIG_ELECTRIC) ? SIG_SEMAPHORE : SIG_ELECTRIC);
 
-					SetSignalType(tile, track, type == SIGTYPE_COMBO ? SIGTYPE_NORMAL : (SignalType)(type + 1));
+					} else {
+						/* convert the present signal to the chosen type and variant */
+						SetSignalType(tile, track, sigtype);
+						SetSignalVariant(tile, track, sigvar);
+					}
+
+				} else if (ctrl_pressed) {
+					/* cycle between normal -> pre -> exit -> combo -> ... */
+					sigtype = GetSignalType(tile, track);
+
+					SetSignalType(tile, track, sigtype == SIGTYPE_COMBO ? SIGTYPE_NORMAL : (SignalType)(sigtype + 1));
 				} else {
+					/* cycle the signal side: both -> left -> right -> both -> ... */
 					CycleSignalSide(tile, track);
 				}
 			}
