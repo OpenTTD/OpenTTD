@@ -80,6 +80,70 @@ void RaiseWindowButtons(Window *w)
 	}
 }
 
+void CDECL Window::SetWidgetsDisabledState(bool disab_stat, int widgets, ...)
+{
+	va_list wdg_list;
+
+	va_start(wdg_list, widgets);
+
+	while (widgets != WIDGET_LIST_END) {
+		SetWidgetDisabledState(widgets, disab_stat);
+		widgets = va_arg(wdg_list, int);
+	}
+
+	va_end(wdg_list);
+}
+
+void CDECL Window::SetWidgetsHiddenState(bool hidden_stat, int widgets, ...)
+{
+	va_list wdg_list;
+
+	va_start(wdg_list, widgets);
+
+	while (widgets != WIDGET_LIST_END) {
+		SetWidgetHiddenState(widgets, hidden_stat);
+		widgets = va_arg(wdg_list, int);
+	}
+
+	va_end(wdg_list);
+}
+
+void CDECL Window::SetWidgetsLoweredState(bool lowered_stat, int widgets, ...)
+{
+	va_list wdg_list;
+
+	va_start(wdg_list, widgets);
+
+	while (widgets != WIDGET_LIST_END) {
+		SetWidgetLoweredState(widgets, lowered_stat);
+		widgets = va_arg(wdg_list, int);
+	}
+
+	va_end(wdg_list);
+}
+
+void Window::RaiseButtons()
+{
+	uint i;
+
+	for (i = 0; i < this->widget_count; i++) {
+		if (IsWidgetLowered(i)) {
+			RaiseWidget(i);
+			InvalidateWidget(i);
+		}
+	}
+}
+
+void Window::InvalidateWidget(byte widget_index)
+{
+	const Widget *wi = &this->widget[widget_index];
+
+	/* Don't redraw the window if the widget is invisible or of no-type */
+	if (wi->type == WWT_EMPTY || IsWidgetHidden(widget_index)) return;
+
+	SetDirtyBlocks(this->left + wi->left, this->top + wi->top, this->left + wi->right + 1, this->top + wi->bottom + 1);
+}
+
 void HandleButtonClick(Window *w, byte widget)
 {
 	LowerWindowWidget(w, widget);

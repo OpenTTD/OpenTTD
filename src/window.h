@@ -278,6 +278,26 @@ struct Window {
 	WindowMessage message;
 	Window *parent;
 	byte custom[WINDOW_CUSTOM_SIZE];
+
+	void SetWidgetDisabledState(byte widget_index, bool disab_stat);
+	void DisableWidget(byte widget_index);
+	void EnableWidget(byte widget_index);
+	bool IsWidgetDisabled(byte widget_index);
+	void SetWidgetHiddenState(byte widget_index, bool hidden_stat);
+	void HideWidget(byte widget_index);
+	void ShowWidget(byte widget_index);
+	bool IsWidgetHidden(byte widget_index);
+	void SetWidgetLoweredState(byte widget_index, bool lowered_stat);
+	void ToggleLoweredState(byte widget_index);
+	void LowerWidget(byte widget_index);
+	void RaiseWidget(byte widget_index);
+	bool IsWidgetLowered(byte widget_index);
+
+	void RaiseButtons();
+	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
+	void CDECL SetWidgetsHiddenState(bool hidden_stat, int widgets, ...);
+	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
+	void InvalidateWidget(byte widget_index);
 };
 
 struct querystr_d {
@@ -817,5 +837,137 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
  * @param right The rightmost widget to resize. Since right side of it is used, remember to set it to RESIZE_RIGHT
  */
 void ResizeButtons(Window *w, byte left, byte right);
+
+
+/**
+ * Sets the enabled/disabled status of a widget.
+ * By default, widgets are enabled.
+ * On certain conditions, they have to be disabled.
+ * @param widget_index : index of this widget in the window
+ * @param disab_stat : status to use ie: disabled = true, enabled = false
+ */
+inline void Window::SetWidgetDisabledState(byte widget_index, bool disab_stat)
+{
+	assert(widget_index < this->widget_count);
+	SB(this->widget[widget_index].display_flags, WIDG_DISABLED, 1, !!disab_stat);
+}
+
+/**
+ * Sets a widget to disabled.
+ * @param widget_index : index of this widget in the window
+ */
+inline void Window::DisableWidget(byte widget_index)
+{
+	SetWidgetDisabledState(widget_index, true);
+}
+
+/**
+ * Sets a widget to Enabled.
+ * @param widget_index : index of this widget in the window
+ */
+inline void Window::EnableWidget(byte widget_index) { SetWidgetDisabledState(widget_index, false); }
+
+/**
+ * Gets the enabled/disabled status of a widget.
+ * @param widget_index : index of this widget in the window
+ * @return status of the widget ie: disabled = true, enabled = false
+ */
+inline bool Window::IsWidgetDisabled(byte widget_index)
+{
+	assert(widget_index < this->widget_count);
+	return HasBit(this->widget[widget_index].display_flags, WIDG_DISABLED);
+}
+
+/**
+ * Sets the hidden/shown status of a widget.
+ * By default, widgets are visible.
+ * On certain conditions, they have to be hidden.
+ * @param widget_index index of this widget in the window
+ * @param hidden_stat status to use ie. hidden = true, visible = false
+ */
+inline void Window::SetWidgetHiddenState(byte widget_index, bool hidden_stat)
+{
+	assert(widget_index < this->widget_count);
+	SB(this->widget[widget_index].display_flags, WIDG_HIDDEN, 1, !!hidden_stat);
+}
+
+/**
+ * Sets a widget hidden.
+ * @param widget_index : index of this widget in the window
+ */
+inline void Window::HideWidget(byte widget_index)
+{
+	SetWidgetHiddenState(widget_index, true);
+}
+
+/**
+ * Sets a widget visible.
+ * @param widget_index : index of this widget in the window
+ */
+inline void Window::ShowWidget(byte widget_index)
+{
+	SetWidgetHiddenState(widget_index, false);
+}
+
+/**
+ * Gets the visibility of a widget.
+ * @param widget_index : index of this widget in the window
+ * @return status of the widget ie: hidden = true, visible = false
+ */
+inline bool Window::IsWidgetHidden(byte widget_index)
+{
+	assert(widget_index < this->widget_count);
+	return HasBit(this->widget[widget_index].display_flags, WIDG_HIDDEN);
+}
+
+/**
+ * Sets the lowered/raised status of a widget.
+ * @param widget_index : index of this widget in the window
+ * @param lowered_stat : status to use ie: lowered = true, raised = false
+ */
+inline void Window::SetWidgetLoweredState(byte widget_index, bool lowered_stat)
+{
+	assert(widget_index < this->widget_count);
+	SB(this->widget[widget_index].display_flags, WIDG_LOWERED, 1, !!lowered_stat);
+}
+
+/**
+ * Invert the lowered/raised  status of a widget.
+ * @param widget_index : index of this widget in the window
+ */
+inline void Window::ToggleLoweredState(byte widget_index)
+{
+	assert(widget_index < this->widget_count);
+	ToggleBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
+}
+
+/**
+ * Marks a widget as lowered.
+ * @param widget_index : index of this widget in the window
+ */
+inline void Window::LowerWidget(byte widget_index)
+{
+	SetWidgetLoweredState(widget_index, true);
+}
+
+/**
+ * Marks a widget as raised.
+ * @param widget_index : index of this widget in the window
+ */
+inline void Window::RaiseWidget(byte widget_index)
+{
+	SetWidgetLoweredState(widget_index, false);
+}
+
+/**
+ * Gets the lowered state of a widget.
+ * @param widget_index : index of this widget in the window
+ * @return status of the widget ie: lowered = true, raised= false
+ */
+inline bool Window::IsWidgetLowered(byte widget_index)
+{
+	assert(widget_index < this->widget_count);
+	return HasBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
+}
 
 #endif /* WINDOW_H */
