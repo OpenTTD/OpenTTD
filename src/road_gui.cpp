@@ -317,9 +317,9 @@ static void BuildRoadClick_TruckStation(Window *w)
  */
 static void BuildRoadClick_OneWay(Window *w)
 {
-	if (IsWindowWidgetDisabled(w, RTW_ONE_WAY)) return;
+	if (w->IsWidgetDisabled(RTW_ONE_WAY)) return;
 	SetWindowDirty(w);
-	ToggleWidgetLoweredState(w, RTW_ONE_WAY);
+	w->ToggleWidgetLoweredState(RTW_ONE_WAY);
 	SetSelectionRed(false);
 }
 
@@ -335,11 +335,11 @@ static void BuildRoadClick_Tunnel(Window *w)
 
 static void BuildRoadClick_Remove(Window *w)
 {
-	if (IsWindowWidgetDisabled(w, RTW_REMOVE)) return;
+	if (w->IsWidgetDisabled(RTW_REMOVE)) return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
-	ToggleWidgetLoweredState(w, RTW_REMOVE);
-	SetSelectionRed(IsWindowWidgetLowered(w, RTW_REMOVE));
+	w->ToggleWidgetLoweredState(RTW_REMOVE);
+	SetSelectionRed(w->IsWidgetLowered(RTW_REMOVE));
 }
 
 /** Array with the handlers of the button-clicks for the road-toolbar */
@@ -385,20 +385,20 @@ static void UpdateOptionWidgetStatus(Window *w, int clicked_widget)
 	 * Both are only valid if they are able to apply as options. */
 	switch (clicked_widget) {
 		case RTW_REMOVE:
-			RaiseWindowWidget(w, RTW_ONE_WAY);
+			w->RaiseWidget(RTW_ONE_WAY);
 			break;
 		case RTW_ONE_WAY:
-			RaiseWindowWidget(w, RTW_REMOVE);
+			w->RaiseWidget(RTW_REMOVE);
 			break;
 		case RTW_BUS_STATION:
 		case RTW_TRUCK_STATION:
-			DisableWindowWidget(w, RTW_ONE_WAY);
-			SetWindowWidgetDisabledState(w, RTW_REMOVE, !IsWindowWidgetLowered(w, clicked_widget));
+			w->DisableWidget(RTW_ONE_WAY);
+			w->SetWidgetDisabledState(RTW_REMOVE, !w->IsWidgetLowered(clicked_widget));
 			break;
 		case RTW_ROAD_X:
 		case RTW_ROAD_Y:
 		case RTW_AUTOROAD:
-			SetWindowWidgetsDisabledState(w, !IsWindowWidgetLowered(w, clicked_widget),
+			w->SetWidgetsDisabledState(!w->IsWidgetLowered(clicked_widget),
 				RTW_REMOVE,
 				RTW_ONE_WAY,
 				WIDGET_LIST_END);
@@ -406,11 +406,11 @@ static void UpdateOptionWidgetStatus(Window *w, int clicked_widget)
 		default:
 			/* When any other buttons than road/station, raise and
 			 * disable the removal button */
-			SetWindowWidgetsDisabledState(w, true,
+			w->SetWidgetsDisabledState(true,
 				RTW_REMOVE,
 				RTW_ONE_WAY,
 				WIDGET_LIST_END);
-			SetWindowWidgetsLoweredState (w, false,
+			w->SetWidgetsLoweredState (false,
 				RTW_REMOVE,
 				RTW_ONE_WAY,
 				WIDGET_LIST_END);
@@ -422,14 +422,14 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE:
-		SetWindowWidgetsDisabledState(w, true,
+		w->SetWidgetsDisabledState(true,
 			RTW_REMOVE,
 			RTW_ONE_WAY,
 			WIDGET_LIST_END);
 		break;
 
 	case WE_PAINT:
-		SetWindowWidgetsDisabledState(w, !CanBuildVehicleInfrastructure(VEH_ROAD),
+		w->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_ROAD),
 			RTW_DEPOT,
 			RTW_BUS_STATION,
 			RTW_TRUCK_STATION,
@@ -461,14 +461,14 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_OBJ:
-		_remove_button_clicked = IsWindowWidgetLowered(w, RTW_REMOVE);
-		_one_way_button_clicked = IsWindowWidgetLowered(w, RTW_ONE_WAY);
+		_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
+		_one_way_button_clicked = w->IsWidgetLowered(RTW_ONE_WAY);
 		_place_proc(e->we.place.tile);
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
 		RaiseWindowButtons(w);
-		DisableWindowWidget(w, RTW_REMOVE);
+		w->DisableWidget(RTW_REMOVE);
 		InvalidateWidget(w, RTW_REMOVE);
 
 		w = FindWindowById(WC_BUS_STATION, 0);
@@ -681,7 +681,7 @@ enum BuildRoadDepotWidgets {
 static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, _road_depot_orientation + BRDW_DEPOT_NE); break;
+	case WE_CREATE: w->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE); break;
 
 	case WE_PAINT:
 		DrawWindowWidgets(w);
@@ -698,9 +698,9 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 			case BRDW_DEPOT_NE:
 			case BRDW_DEPOT_SW:
 			case BRDW_DEPOT_SE:
-				RaiseWindowWidget(w, _road_depot_orientation + BRDW_DEPOT_NE);
+				w->RaiseWidget(_road_depot_orientation + BRDW_DEPOT_NE);
 				_road_depot_orientation = (DiagDirection)(e->we.click.widget - BRDW_DEPOT_NE);
-				LowerWindowWidget(w, _road_depot_orientation + BRDW_DEPOT_NE);
+				w->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
 				break;
@@ -786,15 +786,15 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {
 			_road_station_picker_orientation = DIAGDIR_END;
 		}
-		SetWindowWidgetsDisabledState(w, _cur_roadtype == ROADTYPE_TRAM,
+		w->SetWidgetsDisabledState(_cur_roadtype == ROADTYPE_TRAM,
 			BRSW_STATION_NE,
 			BRSW_STATION_SE,
 			BRSW_STATION_SW,
 			BRSW_STATION_NW,
 			WIDGET_LIST_END);
 
-		LowerWindowWidget(w, _road_station_picker_orientation + BRSW_STATION_NE);
-		LowerWindowWidget(w, _station_show_coverage + BRSW_LT_OFF);
+		w->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
+		w->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
 		break;
 
 	case WE_PAINT: {
@@ -833,18 +833,18 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 			case BRSW_STATION_NW:
 			case BRSW_STATION_X:
 			case BRSW_STATION_Y:
-				RaiseWindowWidget(w, _road_station_picker_orientation + BRSW_STATION_NE);
+				w->RaiseWidget(_road_station_picker_orientation + BRSW_STATION_NE);
 				_road_station_picker_orientation = (DiagDirection)(e->we.click.widget - BRSW_STATION_NE);
-				LowerWindowWidget(w, _road_station_picker_orientation + BRSW_STATION_NE);
+				w->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
 				break;
 
 			case BRSW_LT_OFF:
 			case BRSW_LT_ON:
-				RaiseWindowWidget(w, _station_show_coverage + BRSW_LT_OFF);
+				w->RaiseWidget(_station_show_coverage + BRSW_LT_OFF);
 				_station_show_coverage = (e->we.click.widget != BRSW_LT_OFF);
-				LowerWindowWidget(w, _station_show_coverage + BRSW_LT_OFF);
+				w->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
 				break;

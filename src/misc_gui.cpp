@@ -376,7 +376,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 16: // place trees randomly over the landscape
-			LowerWindowWidget(w, 16);
+			w->LowerWidget(16);
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
 			SndPlayFx(SND_15_BEEP);
 			PlaceTreesRandomly();
@@ -402,7 +402,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_TIMEOUT:
-		RaiseWindowWidget(w, 16);
+		w->RaiseWidget(16);
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
@@ -1220,7 +1220,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 		WP(w, querystr_d).orig = orig_str_buf;
 	}
 
-	LowerWindowWidget(w, QUERY_STR_WIDGET_TEXT);
+	w->LowerWidget(QUERY_STR_WIDGET_TEXT);
 	WP(w, querystr_d).caption = caption;
 	WP(w, querystr_d).afilter = afilter;
 	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, realmaxlen, maxwidth);
@@ -1599,7 +1599,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		 * in those two saveload mode  */
 		if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO)) break;
 
-		if (IsWindowWidgetLowered(w, 11)) { // Delete button clicked
+		if (w->IsWidgetLowered(11)) { // Delete button clicked
 			if (!FiosDelete(WP(w, querystr_d).text.buf)) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
 			} else {
@@ -1610,7 +1610,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 			UpdateTextBufferSize(&WP(w, querystr_d).text);
 			SetWindowDirty(w);
-		} else if (IsWindowWidgetLowered(w, 12)) { // Save button clicked
+		} else if (w->IsWidgetLowered(12)) { // Save button clicked
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, WP(w, querystr_d).text.buf, sizeof(_file_to_saveload.name));
 
@@ -1691,7 +1691,7 @@ void ShowSaveLoadDialog(int mode)
 	assert((uint)mode < lengthof(saveload_captions));
 	w = AllocateWindowDesc(sld);
 	w->widget[1].data = saveload_captions[mode];
-	LowerWindowWidget(w, 7);
+	w->LowerWidget(7);
 
 	WP(w, querystr_d).afilter = CS_ALPHANUMERAL;
 	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 240);

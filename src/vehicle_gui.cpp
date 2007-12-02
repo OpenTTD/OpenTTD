@@ -789,10 +789,10 @@ static void CreateVehicleListWindow(Window *w)
 	/* Hide the widgets that we will not use in this window
 	 * Some windows contains actions only fit for the owner */
 	if (player == _local_player) {
-		HideWindowWidget(w, VLW_WIDGET_OTHER_PLAYER_FILLER);
-		SetWindowWidgetDisabledState(w, VLW_WIDGET_AVAILABLE_VEHICLES, window_type != VLW_STANDARD);
+		w->HideWidget(VLW_WIDGET_OTHER_PLAYER_FILLER);
+		w->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, window_type != VLW_STANDARD);
 	} else {
-		SetWindowWidgetsHiddenState(w, true,
+		w->SetWidgetsHiddenState(true,
 			VLW_WIDGET_AVAILABLE_VEHICLES,
 			VLW_WIDGET_MANAGE_VEHICLES,
 			VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
@@ -976,7 +976,7 @@ static void DrawVehicleListWindow(Window *w)
 		default: NOT_REACHED(); break;
 	}
 
-	SetWindowWidgetsDisabledState(w, vl->l.list_length == 0,
+	w->SetWidgetsDisabledState(vl->l.list_length == 0,
 		VLW_WIDGET_MANAGE_VEHICLES,
 		VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 		VLW_WIDGET_STOP_ALL,
@@ -1460,14 +1460,14 @@ static void DrawVehicleDetailsWindow(Window *w)
 	const Vehicle *v = GetVehicle(w->window_number);
 	byte det_tab = WP(w, vehicledetails_d).tab;
 
-	SetWindowWidgetDisabledState(w, VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_player);
+	w->SetWidgetDisabledState(VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_player);
 
 	if (v->type == VEH_TRAIN) {
-		DisableWindowWidget(w, det_tab + VLD_WIDGET_DETAILS_CARGO_CARRIED);
+		w->DisableWidget(det_tab + VLD_WIDGET_DETAILS_CARGO_CARRIED);
 		SetVScrollCount(w, GetTrainDetailsWndVScroll(v->index, det_tab));
 	}
 
-	SetWindowWidgetsHiddenState(w, v->type != VEH_TRAIN,
+	w->SetWidgetsHiddenState(v->type != VEH_TRAIN,
 		VLD_WIDGET_SCROLLBAR,
 		VLD_WIDGET_DETAILS_CARGO_CARRIED,
 		VLD_WIDGET_DETAILS_TRAIN_VEHICLES,
@@ -1477,7 +1477,7 @@ static void DrawVehicleDetailsWindow(Window *w)
 		WIDGET_LIST_END);
 
 	/* Disable service-scroller when interval is set to disabled */
-	SetWindowWidgetsDisabledState(w, !IsVehicleServiceIntervalEnabled(v->type),
+	w->SetWidgetsDisabledState(!IsVehicleServiceIntervalEnabled(v->type),
 		VLD_WIDGET_INCREASE_SERVICING_INTERVAL,
 		VLD_WIDGET_DECREASE_SERVICING_INTERVAL,
 		WIDGET_LIST_END);
@@ -1598,7 +1598,7 @@ static void VehicleDetailsWndProc(Window *w, WindowEvent *e)
 				case VLD_WIDGET_DETAILS_TRAIN_VEHICLES:
 				case VLD_WIDGET_DETAILS_CAPACITY_OF_EACH:
 				case VLD_WIDGET_DETAILS_TOTAL_CARGO:
-					SetWindowWidgetsDisabledState(w, false,
+					w->SetWidgetsDisabledState(false,
 						VLD_WIDGET_DETAILS_CARGO_CARRIED,
 						VLD_WIDGET_DETAILS_TRAIN_VEHICLES,
 						VLD_WIDGET_DETAILS_CAPACITY_OF_EACH,
@@ -1826,7 +1826,7 @@ static void CreateVehicleViewWindow(Window *w)
 			w->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_ROADVEH;
 			w->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_ROAD_VEHICLE_INFO;
 
-			SetWindowWidgetHiddenState(w, VVW_WIDGET_FORCE_PROCEED, true);
+			w->SetWidgetHiddenState(VVW_WIDGET_FORCE_PROCEED, true);
 			break;
 
 		case VEH_SHIP:
@@ -1848,7 +1848,7 @@ static void CreateVehicleViewWindow(Window *w)
 			w->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_SHIP;
 			w->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_SHIP_INFO;
 
-			SetWindowWidgetsHiddenState(w, true,
+			w->SetWidgetsHiddenState(true,
 																	VVW_WIDGET_TURN_AROUND,
 																	VVW_WIDGET_FORCE_PROCEED,
 																	WIDGET_LIST_END);
@@ -1873,7 +1873,7 @@ static void CreateVehicleViewWindow(Window *w)
 			w->widget[VVW_WIDGET_CLONE_VEH].data = SPR_CLONE_AIRCRAFT;
 			w->widget[VVW_WIDGET_CLONE_VEH].tooltips = STR_CLONE_AIRCRAFT_INFO;
 
-			SetWindowWidgetsHiddenState(w, true,
+			w->SetWidgetsHiddenState(true,
 																	VVW_WIDGET_TURN_AROUND,
 																	VVW_WIDGET_FORCE_PROCEED,
 																	WIDGET_LIST_END);
@@ -1922,14 +1922,14 @@ static void DrawVehicleViewWindow(Window *w)
 	bool is_localplayer = v->owner == _local_player;
 	bool refitable_and_stopped_in_depot = IsVehicleRefitable(v);
 
-	SetWindowWidgetDisabledState(w, VVW_WIDGET_GOTO_DEPOT, !is_localplayer);
-	SetWindowWidgetDisabledState(w, VVW_WIDGET_REFIT_VEH,
+	w->SetWidgetDisabledState(VVW_WIDGET_GOTO_DEPOT, !is_localplayer);
+	w->SetWidgetDisabledState(VVW_WIDGET_REFIT_VEH,
 															 !refitable_and_stopped_in_depot || !is_localplayer);
-	SetWindowWidgetDisabledState(w, VVW_WIDGET_CLONE_VEH, !is_localplayer);
+	w->SetWidgetDisabledState(VVW_WIDGET_CLONE_VEH, !is_localplayer);
 
 	if (v->type == VEH_TRAIN) {
-		SetWindowWidgetDisabledState(w, VVW_WIDGET_FORCE_PROCEED, !is_localplayer);
-		SetWindowWidgetDisabledState(w, VVW_WIDGET_TURN_AROUND, !is_localplayer);
+		w->SetWidgetDisabledState(VVW_WIDGET_FORCE_PROCEED, !is_localplayer);
+		w->SetWidgetDisabledState(VVW_WIDGET_TURN_AROUND, !is_localplayer);
 
 		/* Cargo refit button is disabled, until we know we can enable it below. */
 
@@ -1938,7 +1938,7 @@ static void DrawVehicleViewWindow(Window *w)
 			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 				if (EngInfo(u->engine_type)->refit_mask != 0 ||
 						(RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON && v->cargo_cap != 0)) {
-					EnableWindowWidget(w, VVW_WIDGET_REFIT_VEH);
+					w->EnableWidget(VVW_WIDGET_REFIT_VEH);
 					/* We have a refittable carriage, bail out */
 					break;
 				}
@@ -2150,12 +2150,12 @@ static void VehicleViewWndProc(Window *w, WindowEvent *e)
 			 * allowed only while in depot and stopped.
 			 * This sytem allows to have two buttons, on top of each other.
 			 * The same system applies to widget VVW_WIDGET_REFIT_VEH and VVW_WIDGET_TURN_AROUND.*/
-			if (veh_stopped != IsWindowWidgetHidden(w, VVW_WIDGET_GOTO_DEPOT) || veh_stopped == IsWindowWidgetHidden(w, VVW_WIDGET_CLONE_VEH)) {
-				SetWindowWidgetHiddenState(w,  VVW_WIDGET_GOTO_DEPOT, veh_stopped);  // send to depot
-				SetWindowWidgetHiddenState(w, VVW_WIDGET_CLONE_VEH, !veh_stopped); // clone
+			if (veh_stopped != w->IsWidgetHidden(VVW_WIDGET_GOTO_DEPOT) || veh_stopped == w->IsWidgetHidden(VVW_WIDGET_CLONE_VEH)) {
+				w->SetWidgetHiddenState( VVW_WIDGET_GOTO_DEPOT, veh_stopped);  // send to depot
+				w->SetWidgetHiddenState(VVW_WIDGET_CLONE_VEH, !veh_stopped); // clone
 				if (v->type == VEH_ROAD || v->type == VEH_TRAIN) {
-					SetWindowWidgetHiddenState(w,  VVW_WIDGET_REFIT_VEH, !veh_stopped); // refit
-					SetWindowWidgetHiddenState(w, VVW_WIDGET_TURN_AROUND, veh_stopped);  // force turn around
+					w->SetWidgetHiddenState( VVW_WIDGET_REFIT_VEH, !veh_stopped); // refit
+					w->SetWidgetHiddenState(VVW_WIDGET_TURN_AROUND, veh_stopped);  // force turn around
 				}
 				SetWindowDirty(w);
 			}

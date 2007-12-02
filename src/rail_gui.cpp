@@ -343,12 +343,12 @@ static void BuildRailClick_Tunnel(Window *w)
 
 static void BuildRailClick_Remove(Window *w)
 {
-	if (IsWindowWidgetDisabled(w, RTW_REMOVE)) return;
+	if (w->IsWidgetDisabled(RTW_REMOVE)) return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 
-	ToggleWidgetLoweredState(w, RTW_REMOVE);
-	_remove_button_clicked = IsWindowWidgetLowered(w, RTW_REMOVE);
+	w->ToggleWidgetLoweredState(RTW_REMOVE);
+	_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
 	SetSelectionRed(_remove_button_clicked);
 
 	// handle station builder
@@ -476,14 +476,14 @@ static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
 		case RTW_BUILD_SIGNALS:
 			/* Removal button is enabled only if the rail/signal/waypoint/station
 			 * button is still lowered.  Once raised, it has to be disabled */
-			SetWindowWidgetDisabledState(w, RTW_REMOVE, !IsWindowWidgetLowered(w, clicked_widget));
+			w->SetWidgetDisabledState(RTW_REMOVE, !w->IsWidgetLowered(clicked_widget));
 			break;
 
 		default:
 			/* When any other buttons than rail/signal/waypoint/station, raise and
 			 * disable the removal button */
-			DisableWindowWidget(w, RTW_REMOVE);
-			RaiseWindowWidget(w, RTW_REMOVE);
+			w->DisableWidget(RTW_REMOVE);
+			w->RaiseWidget(RTW_REMOVE);
 			break;
 	}
 }
@@ -497,7 +497,7 @@ static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
 static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: DisableWindowWidget(w, RTW_REMOVE); break;
+	case WE_CREATE: w->DisableWidget(RTW_REMOVE); break;
 
 	case WE_PAINT: DrawWindowWidgets(w); break;
 
@@ -528,7 +528,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_DRAG: {
 		/* no dragging if you have pressed the convert button */
-		if (_convert_signal_button && IsWindowWidgetLowered(w, RTW_BUILD_SIGNALS)) return;
+		if (_convert_signal_button && w->IsWidgetLowered(RTW_BUILD_SIGNALS)) return;
 
 		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		return;
@@ -579,7 +579,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_ABORT_PLACE_OBJ:
 		RaiseWindowButtons(w);
-		DisableWindowWidget(w, RTW_REMOVE);
+		w->DisableWidget(RTW_REMOVE);
 		InvalidateWidget(w, RTW_REMOVE);
 
 		w = FindWindowById(WC_BUILD_SIGNAL, 0);
@@ -750,21 +750,21 @@ static void CheckSelectedSize(Window *w, const StationSpec *statspec)
 	if (statspec == NULL || _railstation.dragdrop) return;
 
 	if (HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
-		RaiseWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+		w->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 		_railstation.numtracks = 1;
 		while (HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
 			_railstation.numtracks++;
 		}
-		LowerWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+		w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 	}
 
 	if (HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
-		RaiseWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+		w->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 		_railstation.platlength = 1;
 		while (HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
 			_railstation.platlength++;
 		}
-		LowerWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+		w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 	}
 }
 
@@ -772,15 +772,15 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE:
-		LowerWindowWidget(w, _railstation.orientation + BRSW_PLATFORM_DIR_X);
+		w->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 		if (_railstation.dragdrop) {
-			LowerWindowWidget(w, BRSW_PLATFORM_DRAG_N_DROP);
+			w->LowerWidget(BRSW_PLATFORM_DRAG_N_DROP);
 		} else {
-			LowerWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-			LowerWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+			w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+			w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 		}
-		SetWindowWidgetLoweredState(w, BRSW_HIGHLIGHT_OFF, !_station_show_coverage);
-		SetWindowWidgetLoweredState(w, BRSW_HIGHLIGHT_ON, _station_show_coverage);
+		w->SetWidgetLoweredState(BRSW_HIGHLIGHT_OFF, !_station_show_coverage);
+		w->SetWidgetLoweredState(BRSW_HIGHLIGHT_ON, _station_show_coverage);
 		break;
 
 	case WE_PAINT: {
@@ -808,11 +808,11 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		for (uint bits = 0; bits < 7; bits++) {
 			bool disable = bits >= _patches.station_spread;
 			if (statspec == NULL) {
-				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_NUM_1, disable);
-				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_LEN_1, disable);
+				w->SetWidgetDisabledState(bits + BRSW_PLATFORM_NUM_1, disable);
+				w->SetWidgetDisabledState(bits + BRSW_PLATFORM_LEN_1, disable);
 			} else {
-				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_NUM_1, HasBit(statspec->disallowed_platforms, bits) || disable);
-				SetWindowWidgetDisabledState(w, bits + BRSW_PLATFORM_LEN_1, HasBit(statspec->disallowed_lengths,   bits) || disable);
+				w->SetWidgetDisabledState(bits + BRSW_PLATFORM_NUM_1, HasBit(statspec->disallowed_platforms, bits) || disable);
+				w->SetWidgetDisabledState(bits + BRSW_PLATFORM_LEN_1, HasBit(statspec->disallowed_lengths,   bits) || disable);
 			}
 		}
 
@@ -873,9 +873,9 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case BRSW_PLATFORM_DIR_X:
 		case BRSW_PLATFORM_DIR_Y:
-			RaiseWindowWidget(w, _railstation.orientation + BRSW_PLATFORM_DIR_X);
+			w->RaiseWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 			_railstation.orientation = e->we.click.widget - BRSW_PLATFORM_DIR_X;
-			LowerWindowWidget(w, _railstation.orientation + BRSW_PLATFORM_DIR_X);
+			w->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -887,8 +887,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case BRSW_PLATFORM_NUM_5:
 		case BRSW_PLATFORM_NUM_6:
 		case BRSW_PLATFORM_NUM_7: {
-			RaiseWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-			RaiseWindowWidget(w, BRSW_PLATFORM_DRAG_N_DROP);
+			w->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+			w->RaiseWidget(BRSW_PLATFORM_DRAG_N_DROP);
 
 			_railstation.numtracks = e->we.click.widget - BRSW_PLATFORM_NUM_BEGIN;
 			_railstation.dragdrop = false;
@@ -898,15 +898,15 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 				/* The previously selected number of platforms in invalid */
 				for (uint i = 0; i < 7; i++) {
 					if (!HasBit(statspec->disallowed_lengths, i)) {
-						RaiseWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+						w->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 						_railstation.platlength = i + 1;
 						break;
 					}
 				}
 			}
 
-			LowerWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-			LowerWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+			w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+			w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -919,8 +919,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case BRSW_PLATFORM_LEN_5:
 		case BRSW_PLATFORM_LEN_6:
 		case BRSW_PLATFORM_LEN_7: {
-			RaiseWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
-			RaiseWindowWidget(w, BRSW_PLATFORM_DRAG_N_DROP);
+			w->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+			w->RaiseWidget(BRSW_PLATFORM_DRAG_N_DROP);
 
 			_railstation.platlength = e->we.click.widget - BRSW_PLATFORM_LEN_BEGIN;
 			_railstation.dragdrop = false;
@@ -930,15 +930,15 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 				/* The previously selected number of tracks in invalid */
 				for (uint i = 0; i < 7; i++) {
 					if (!HasBit(statspec->disallowed_platforms, i)) {
-						RaiseWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+						w->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 						_railstation.numtracks = i + 1;
 						break;
 					}
 				}
 			}
 
-			LowerWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-			LowerWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+			w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+			w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -946,14 +946,14 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 		case BRSW_PLATFORM_DRAG_N_DROP: {
 			_railstation.dragdrop ^= true;
-			ToggleWidgetLoweredState(w, BRSW_PLATFORM_DRAG_N_DROP);
+			w->ToggleWidgetLoweredState(BRSW_PLATFORM_DRAG_N_DROP);
 
 			/* get the first allowed length/number of platforms */
 			const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
 			if (statspec != NULL && HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
 				for (uint i = 0; i < 7; i++) {
 					if (!HasBit(statspec->disallowed_lengths, i)) {
-						RaiseWindowWidget(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+						w->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 						_railstation.platlength = i + 1;
 						break;
 					}
@@ -962,15 +962,15 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			if (statspec != NULL && HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
 				for (uint i = 0; i < 7; i++) {
 					if (!HasBit(statspec->disallowed_platforms, i)) {
-						RaiseWindowWidget(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+						w->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 						_railstation.numtracks = i + 1;
 						break;
 					}
 				}
 			}
 
-			SetWindowWidgetLoweredState(w, _railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN, !_railstation.dragdrop);
-			SetWindowWidgetLoweredState(w, _railstation.platlength + BRSW_PLATFORM_LEN_BEGIN, !_railstation.dragdrop);
+			w->SetWidgetLoweredState(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN, !_railstation.dragdrop);
+			w->SetWidgetLoweredState(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN, !_railstation.dragdrop);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 		} break;
@@ -978,8 +978,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case BRSW_HIGHLIGHT_OFF:
 		case BRSW_HIGHLIGHT_ON:
 			_station_show_coverage = (e->we.click.widget != BRSW_HIGHLIGHT_OFF);
-			SetWindowWidgetLoweredState(w, BRSW_HIGHLIGHT_OFF, !_station_show_coverage);
-			SetWindowWidgetLoweredState(w, BRSW_HIGHLIGHT_ON, _station_show_coverage);
+			w->SetWidgetLoweredState(BRSW_HIGHLIGHT_OFF, !_station_show_coverage);
+			w->SetWidgetLoweredState(BRSW_HIGHLIGHT_ON, _station_show_coverage);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -1173,9 +1173,9 @@ enum BuildSignalWidgets {
  */
 static const void DrawSignalSprite(const Window *w, byte widget_index, SpriteID image, int8 xrel, uint8 xsize)
 {
-	DrawSprite(image + IsWindowWidgetLowered(w, widget_index), PAL_NONE,
+	DrawSprite(image + w->IsWidgetLowered(widget_index), PAL_NONE,
 			w->widget[widget_index].left + (w->widget[widget_index].right - w->widget[widget_index].left) / 2 - xrel - xsize / 2 +
-			IsWindowWidgetLowered(w, widget_index), w->widget[widget_index].bottom - 3 + IsWindowWidgetLowered(w, widget_index));
+			w->IsWidgetLowered(widget_index), w->widget[widget_index].bottom - 3 + w->IsWidgetLowered(widget_index));
 }
 
 /**
@@ -1188,12 +1188,12 @@ static void SignalBuildWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT:
-			LowerWindowWidget(w, (_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
+			w->LowerWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
 
-			SetWindowWidgetLoweredState(w, BSW_CONVERT, _convert_signal_button);
+			w->SetWidgetLoweredState(BSW_CONVERT, _convert_signal_button);
 
-			SetWindowWidgetDisabledState(w, BSW_DRAG_SIGNALS_DENSITY_DECREASE, _patches.drag_signals_density == 1);
-			SetWindowWidgetDisabledState(w, BSW_DRAG_SIGNALS_DENSITY_INCREASE, _patches.drag_signals_density == 20);
+			w->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_DECREASE, _patches.drag_signals_density == 1);
+			w->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_INCREASE, _patches.drag_signals_density == 20);
 
 			DrawWindowWidgets(w);
 
@@ -1224,7 +1224,7 @@ static void SignalBuildWndProc(Window *w, WindowEvent *e)
 				case BSW_ELECTRIC_ENTRY:
 				case BSW_ELECTRIC_EXIT:
 				case BSW_ELECTRIC_COMBO:
-					RaiseWindowWidget(w, (_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
+					w->RaiseWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
 
 					_cur_signal_type = (SignalType)((uint)((e->we.click.widget - BSW_SEMAPHORE_NORM) % (SIGTYPE_COMBO + 1)));
 					_cur_signal_variant = e->we.click.widget >= BSW_ELECTRIC_NORM ? SIG_ELECTRIC : SIG_SEMAPHORE;
@@ -1317,7 +1317,7 @@ enum BuildRailDepotWidgets {
 static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, _build_depot_direction + BRDW_DEPOT_NE); break;
+	case WE_CREATE: w->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE); break;
 
 	case WE_PAINT: {
 		DrawWindowWidgets(w);
@@ -1335,9 +1335,9 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 			case BRDW_DEPOT_SE:
 			case BRDW_DEPOT_SW:
 			case BRDW_DEPOT_NW:
-				RaiseWindowWidget(w, _build_depot_direction + BRDW_DEPOT_NE);
+				w->RaiseWidget(_build_depot_direction + BRDW_DEPOT_NE);
 				_build_depot_direction = (DiagDirection)(e->we.click.widget - BRDW_DEPOT_NE);
-				LowerWindowWidget(w, _build_depot_direction + BRDW_DEPOT_NE);
+				w->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
 				break;
@@ -1399,7 +1399,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		uint i;
 
 		for (i = 0; i < w->hscroll.cap; i++) {
-			SetWindowWidgetLoweredState(w, i + BRWW_WAYPOINT_1, (w->hscroll.pos + i) == _cur_waypoint_type);
+			w->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (w->hscroll.pos + i) == _cur_waypoint_type);
 		}
 
 		DrawWindowWidgets(w);

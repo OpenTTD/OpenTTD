@@ -129,50 +129,50 @@ static void DrawOrdersWindow(Window *w)
 
 	if (v->owner == _local_player) {
 		/* skip */
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_SKIP, v->num_orders <= 1);
+		w->SetWidgetDisabledState(ORDER_WIDGET_SKIP, v->num_orders <= 1);
 
 		/* delete */
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_DELETE,
+		w->SetWidgetDisabledState(ORDER_WIDGET_DELETE,
 				(uint)v->num_orders + ((shared_orders || v->num_orders != 0) ? 1 : 0) <= (uint)WP(w, order_d).sel);
 
 		/* non-stop only for trains */
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_NON_STOP,  v->type != VEH_TRAIN || order == NULL);
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_FULL_LOAD, order == NULL); // full load
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_UNLOAD,    order == NULL); // unload
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_TRANSFER,  order == NULL); // transfer
+		w->SetWidgetDisabledState(ORDER_WIDGET_NON_STOP,  v->type != VEH_TRAIN || order == NULL);
+		w->SetWidgetDisabledState(ORDER_WIDGET_FULL_LOAD, order == NULL); // full load
+		w->SetWidgetDisabledState(ORDER_WIDGET_UNLOAD,    order == NULL); // unload
+		w->SetWidgetDisabledState(ORDER_WIDGET_TRANSFER,  order == NULL); // transfer
 		/* Disable list of vehicles with the same shared orders if there is no list */
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_SHARED_ORDER_LIST, !shared_orders || v->orders == NULL);
-		SetWindowWidgetDisabledState(w, ORDER_WIDGET_REFIT,     order == NULL); // Refit
-		HideWindowWidget(w, ORDER_WIDGET_REFIT); // Refit
+		w->SetWidgetDisabledState(ORDER_WIDGET_SHARED_ORDER_LIST, !shared_orders || v->orders == NULL);
+		w->SetWidgetDisabledState(ORDER_WIDGET_REFIT,     order == NULL); // Refit
+		w->HideWidget(ORDER_WIDGET_REFIT); // Refit
 	} else {
-		DisableWindowWidget(w, ORDER_WIDGET_TRANSFER);
+		w->DisableWidget(ORDER_WIDGET_TRANSFER);
 	}
 
-	ShowWindowWidget(w, ORDER_WIDGET_UNLOAD); // Unload
+	w->ShowWidget(ORDER_WIDGET_UNLOAD); // Unload
 
 	if (order != NULL) {
 		switch (order->type) {
 			case OT_GOTO_STATION: break;
 
 			case OT_GOTO_DEPOT:
-				DisableWindowWidget(w, ORDER_WIDGET_TRANSFER);
+				w->DisableWidget(ORDER_WIDGET_TRANSFER);
 
 				/* Remove unload and replace it with refit */
-				HideWindowWidget(w, ORDER_WIDGET_UNLOAD);
-				ShowWindowWidget(w, ORDER_WIDGET_REFIT);
+				w->HideWidget(ORDER_WIDGET_UNLOAD);
+				w->ShowWidget(ORDER_WIDGET_REFIT);
 				SetDParam(2,STR_SERVICE);
 				break;
 
 			case OT_GOTO_WAYPOINT:
-				DisableWindowWidget(w, ORDER_WIDGET_FULL_LOAD);
-				DisableWindowWidget(w, ORDER_WIDGET_UNLOAD);
-				DisableWindowWidget(w, ORDER_WIDGET_TRANSFER);
+				w->DisableWidget(ORDER_WIDGET_FULL_LOAD);
+				w->DisableWidget(ORDER_WIDGET_UNLOAD);
+				w->DisableWidget(ORDER_WIDGET_TRANSFER);
 				break;
 
 			default: // every other orders
-				DisableWindowWidget(w, ORDER_WIDGET_NON_STOP);
-				DisableWindowWidget(w, ORDER_WIDGET_FULL_LOAD);
-				DisableWindowWidget(w, ORDER_WIDGET_UNLOAD);
+				w->DisableWidget(ORDER_WIDGET_NON_STOP);
+				w->DisableWidget(ORDER_WIDGET_FULL_LOAD);
+				w->DisableWidget(ORDER_WIDGET_UNLOAD);
 		}
 	}
 
@@ -398,8 +398,8 @@ static void OrdersPlaceObj(const Vehicle *v, TileIndex tile, Window *w)
 static void OrderClick_Goto(Window *w, const Vehicle *v)
 {
 	InvalidateWidget(w, ORDER_WIDGET_GOTO);
-	ToggleWidgetLoweredState(w, ORDER_WIDGET_GOTO);
-	if (IsWindowWidgetLowered(w, ORDER_WIDGET_GOTO)) {
+	w->ToggleWidgetLoweredState(ORDER_WIDGET_GOTO);
+	if (w->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 		_place_clicked_vehicle = NULL;
 		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, VHM_RECT, w);
 	} else {
@@ -543,7 +543,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			if (_patches.timetabling) {
 				w->widget[ORDER_WIDGET_CAPTION].right -= 61;
 			} else {
-				HideWindowWidget(w, ORDER_WIDGET_TIMETABLE_VIEW);
+				w->HideWidget(ORDER_WIDGET_TIMETABLE_VIEW);
 			}
 
 			break;
@@ -675,7 +675,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			if (e->we.keypress.keycode == _order_keycodes[i]) {
 				e->we.keypress.cont = false;
 				//see if the button is disabled
-				if (!IsWindowWidgetDisabled(w, i + ORDER_WIDGET_SKIP)) _order_button_proc[i](w, v);
+				if (!w->IsWidgetDisabled(i + ORDER_WIDGET_SKIP)) _order_button_proc[i](w, v);
 				break;
 			}
 		}
@@ -699,7 +699,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
-		RaiseWindowWidget(w, ORDER_WIDGET_GOTO);
+		w->RaiseWidget(ORDER_WIDGET_GOTO);
 		InvalidateWidget( w, ORDER_WIDGET_GOTO);
 	} break;
 
@@ -714,7 +714,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		 * the order is copied to the last open window instead of the
 		 * one where GOTO is enabled
 		 */
-		if (v != NULL && IsWindowWidgetLowered(w, ORDER_WIDGET_GOTO)) {
+		if (v != NULL && w->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 			_place_clicked_vehicle = NULL;
 			HandleOrderVehClick(GetVehicle(w->window_number), v, w);
 		}
@@ -729,8 +729,8 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		// unclick all buttons except for the 'goto' button (ORDER_WIDGET_GOTO), which is 'persistent'
 		uint i;
 		for (i = 0; i < w->widget_count; i++) {
-			if (IsWindowWidgetLowered(w, i) && i != ORDER_WIDGET_GOTO) {
-				RaiseWindowWidget(w, i);
+			if (w->IsWidgetLowered(i) && i != ORDER_WIDGET_GOTO) {
+				w->RaiseWidget(i);
 				InvalidateWidget(w, i);
 			}
 		}

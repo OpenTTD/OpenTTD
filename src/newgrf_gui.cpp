@@ -127,7 +127,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 			w->vscroll.cap = (w->widget[3].bottom - w->widget[3].top) / 10;
 			SetVScrollCount(w, n);
 
-			SetWindowWidgetDisabledState(w, 6, WP(w, newgrf_add_d).sel == NULL || WP(w, newgrf_add_d).sel->IsOpenTTDBaseGRF());
+			w->SetWidgetDisabledState(6, WP(w, newgrf_add_d).sel == NULL || WP(w, newgrf_add_d).sel->IsOpenTTDBaseGRF());
 			DrawWindowWidgets(w);
 
 			GfxFillRect(w->widget[3].left + 1, w->widget[3].top + 1, w->widget[3].right, w->widget[3].bottom, 0xD7);
@@ -269,20 +269,20 @@ static void SetupNewGRFState(Window *w)
 {
 	bool disable_all = WP(w, newgrf_d).sel == NULL || !WP(w, newgrf_d).editable;
 
-	SetWindowWidgetDisabledState(w, 3, !WP(w, newgrf_d).editable);
-	SetWindowWidgetsDisabledState(w, disable_all,
+	w->SetWidgetDisabledState(3, !WP(w, newgrf_d).editable);
+	w->SetWidgetsDisabledState(disable_all,
 		SNGRFS_REMOVE,
 		SNGRFS_MOVE_UP,
 		SNGRFS_MOVE_DOWN,
 		WIDGET_LIST_END
 	);
-	SetWindowWidgetDisabledState(w, SNGRFS_SET_PARAMETERS, !WP(w, newgrf_d).show_params || disable_all);
+	w->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !WP(w, newgrf_d).show_params || disable_all);
 
 	if (!disable_all) {
 		/* All widgets are now enabled, so disable widgets we can't use */
-		if (WP(w, newgrf_d).sel == *WP(w, newgrf_d).list) DisableWindowWidget(w, SNGRFS_MOVE_UP);
-		if (WP(w, newgrf_d).sel->next == NULL) DisableWindowWidget(w, SNGRFS_MOVE_DOWN);
-		if (WP(w, newgrf_d).sel->IsOpenTTDBaseGRF()) DisableWindowWidget(w, SNGRFS_REMOVE);
+		if (WP(w, newgrf_d).sel == *WP(w, newgrf_d).list) w->DisableWidget(SNGRFS_MOVE_UP);
+		if (WP(w, newgrf_d).sel->next == NULL) w->DisableWidget(SNGRFS_MOVE_DOWN);
+		if (WP(w, newgrf_d).sel->IsOpenTTDBaseGRF()) w->DisableWidget(SNGRFS_REMOVE);
 	}
 }
 
@@ -296,7 +296,7 @@ static void SetupNewGRFWindow(Window *w)
 
 	w->vscroll.cap = (w->widget[SNGRFS_FILE_LIST].bottom - w->widget[SNGRFS_FILE_LIST].top) / 14 + 1;
 	SetVScrollCount(w, i);
-	SetWindowWidgetDisabledState(w, SNGRFS_APPLY_CHANGES, !WP(w, newgrf_d).editable);
+	w->SetWidgetDisabledState(SNGRFS_APPLY_CHANGES, !WP(w, newgrf_d).editable);
 }
 
 

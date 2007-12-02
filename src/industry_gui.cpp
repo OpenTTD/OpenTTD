@@ -152,7 +152,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			} else {
 				w->widget[DYNA_INDU_FUND_WIDGET].data = (_patches.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
 			}
-			SetWindowWidgetDisabledState(w, DYNA_INDU_FUND_WIDGET, !_fund_gui.enabled[WP(w, fnd_d).index]);
+			w->SetWidgetDisabledState(DYNA_INDU_FUND_WIDGET, !_fund_gui.enabled[WP(w, fnd_d).index]);
 
 			SetVScrollCount(w, _fund_gui.count);
 

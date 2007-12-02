@@ -266,7 +266,7 @@ static void CreateVehicleGroupWindow(Window *w)
  */
 static void UpdateGroupActionDropdown(Window *w, GroupID gid, bool refresh = true)
 {
-	if (refresh && !IsWindowWidgetLowered(w, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) return;
+	if (refresh && !w->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) return;
 
 	static StringID action_str[] = {
 		STR_REPLACE_VEHICLES,
@@ -329,8 +329,8 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			SetVScroll2Count(w, gv->l.list_length);
 
 			/* The drop down menu is out, *but* it may not be used, retract it. */
-			if (gv->l.list_length == 0 && IsWindowWidgetLowered(w, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
-				RaiseWindowWidget(w, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
+			if (gv->l.list_length == 0 && w->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
+				w->RaiseWidget(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
 				Window **w2;
 				FOR_ALL_WINDOWS(w2) {
 					if (w->window_class  == WP(*w2, dropdown_d).parent_wnd_class &&
@@ -342,7 +342,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			}
 
 			/* Disable all lists management button when the list is empty */
-			SetWindowWidgetsDisabledState(w, gv->l.list_length == 0 || _local_player != owner,
+			w->SetWidgetsDisabledState(gv->l.list_length == 0 || _local_player != owner,
 					GRP_WIDGET_STOP_ALL,
 					GRP_WIDGET_START_ALL,
 					GRP_WIDGET_MANAGE_VEHICLES,
@@ -350,7 +350,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					WIDGET_LIST_END);
 
 			/* Disable the group specific function when we select the default group or all vehicles */
-			SetWindowWidgetsDisabledState(w, IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel) || _local_player != owner,
+			w->SetWidgetsDisabledState(IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel) || _local_player != owner,
 					GRP_WIDGET_DELETE_GROUP,
 					GRP_WIDGET_RENAME_GROUP,
 					GRP_WIDGET_REPLACE_PROTECTION,
@@ -362,7 +362,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			 *  verify, whether you are the owner of the vehicle,
 			 *  so it doesn't have to be disabled
 			 */
-			SetWindowWidgetsDisabledState(w, _local_player != owner,
+			w->SetWidgetsDisabledState(_local_player != owner,
 					GRP_WIDGET_CREATE_GROUP,
 					GRP_WIDGET_AVAILABLE_VEHICLES,
 					WIDGET_LIST_END);

@@ -140,8 +140,8 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		int i;
 		StringID str = STR_02BE_DEFAULT;
 
-		SetWindowWidgetDisabledState(w, 21, !(_vehicle_design_names & 1));
-		if (!IsWindowWidgetDisabled(w, 21)) str = STR_02BF_CUSTOM;
+		w->SetWidgetDisabledState(21, !(_vehicle_design_names & 1));
+		if (!w->IsWidgetDisabled(21)) str = STR_02BF_CUSTOM;
 		SetDParam(0, str);
 		SetDParam(1, _currency_specs[_opt_ptr->currency].name);
 		SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
@@ -152,7 +152,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		i = GetCurRes();
 		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
 		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
-		SetWindowWidgetLoweredState(w, 28, _fullscreen);
+		w->SetWidgetLoweredState(28, _fullscreen);
 
 		DrawWindowWidgets(w);
 		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
@@ -202,7 +202,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), 27, 0, 0);
 			return;
 		case 28: /* Click fullscreen on/off */
-			SetWindowWidgetLoweredState(w, 28, !_fullscreen);
+			w->SetWidgetLoweredState(28, !_fullscreen);
 			ToggleFullScreen(!_fullscreen); // toggle full-screen on/off
 			SetWindowDirty(w);
 			return;
@@ -452,13 +452,13 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE: // Setup disabled buttons when creating window
 		/* disable all other difficulty buttons during gameplay except for 'custom' */
-		SetWindowWidgetDisabledState(w,  3, _game_mode == GM_NORMAL);
-		SetWindowWidgetDisabledState(w,  4, _game_mode == GM_NORMAL);
-		SetWindowWidgetDisabledState(w,  5, _game_mode == GM_NORMAL);
-		SetWindowWidgetDisabledState(w,  6, _game_mode == GM_NORMAL);
-		SetWindowWidgetDisabledState(w,  7, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
-		SetWindowWidgetDisabledState(w, 10, _networking && !_network_server); // Save-button in multiplayer (and if client)
-		LowerWindowWidget(w, _opt_mod_temp.diff_level + 3);
+		w->SetWidgetDisabledState( 3, _game_mode == GM_NORMAL);
+		w->SetWidgetDisabledState( 4, _game_mode == GM_NORMAL);
+		w->SetWidgetDisabledState( 5, _game_mode == GM_NORMAL);
+		w->SetWidgetDisabledState( 6, _game_mode == GM_NORMAL);
+		w->SetWidgetDisabledState( 7, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
+		w->SetWidgetDisabledState(10, _networking && !_network_server); // Save-button in multiplayer (and if client)
+		w->LowerWidget(_opt_mod_temp.diff_level + 3);
 
 		break;
 	case WE_PAINT: {
@@ -547,16 +547,16 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 			// save value in temporary variable
 			((GDType*)&_opt_mod_temp.diff)[btn] = val;
-			RaiseWindowWidget(w, _opt_mod_temp.diff_level + 3);
+			w->RaiseWidget(_opt_mod_temp.diff_level + 3);
 			SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
-			LowerWindowWidget(w, _opt_mod_temp.diff_level + 3);
+			w->LowerWidget(_opt_mod_temp.diff_level + 3);
 			SetWindowDirty(w);
 		} break;
 		case 3: case 4: case 5: case 6: /* Easy / Medium / Hard / Custom */
 			// temporarily change difficulty level
-			RaiseWindowWidget(w, _opt_mod_temp.diff_level + 3);
+			w->RaiseWidget(_opt_mod_temp.diff_level + 3);
 			SetDifficultyLevel(e->we.click.widget - 3, &_opt_mod_temp);
-			LowerWindowWidget(w, _opt_mod_temp.diff_level + 3);
+			w->LowerWidget(_opt_mod_temp.diff_level + 3);
 			SetWindowDirty(w);
 			break;
 		case 7: /* Highscore Table */
@@ -805,7 +805,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			}
 			first_time = false;
 		}
-		LowerWindowWidget(w, 4);
+		w->LowerWidget(4);
 	} break;
 
 	case WE_PAINT: {
@@ -954,9 +954,9 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		case 4: case 5: case 6: case 7: case 8: case 9:
-			RaiseWindowWidget(w, WP(w, def_d).data_1 + 4);
+			w->RaiseWidget(WP(w, def_d).data_1 + 4);
 			WP(w, def_d).data_1 = e->we.click.widget - 4;
-			LowerWindowWidget(w, WP(w, def_d).data_1 + 4);
+			w->LowerWidget(WP(w, def_d).data_1 + 4);
 			DeleteWindowById(WC_QUERY_STRING, 0);
 			SetWindowDirty(w);
 			break;

@@ -315,7 +315,7 @@ void ShowRenameSignWindow(const Sign *si)
 
 	WP(w, editsign_d).caption = STR_280B_EDIT_SIGN_TEXT;
 	WP(w, editsign_d).afilter = CS_ALPHANUMERAL;
-	LowerWindowWidget(w, QUERY_EDIT_SIGN_WIDGET_TEXT);
+	w->LowerWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 
 	UpdateSignEditWindow(w, si);
 }

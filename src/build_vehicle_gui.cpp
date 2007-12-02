@@ -888,7 +888,7 @@ static void DrawBuildVehicleWindow(Window *w)
 	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
 	uint max = min(w->vscroll.pos + w->vscroll.cap, EngList_Count(&bv->eng_list));
 
-	SetWindowWidgetDisabledState(w, BUILD_VEHICLE_WIDGET_BUILD, w->window_number <= VEH_END);
+	w->SetWidgetDisabledState(BUILD_VEHICLE_WIDGET_BUILD, w->window_number <= VEH_END);
 
 	SetVScrollCount(w, EngList_Count(&bv->eng_list));
 	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles

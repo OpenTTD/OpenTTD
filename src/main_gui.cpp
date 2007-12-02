@@ -121,18 +121,18 @@ void HandleOnEditText(const char *str)
  */
 bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, ViewportHighlightMode mode, PlaceProc *placeproc)
 {
-	if (IsWindowWidgetDisabled(w, widget)) return false;
+	if (w->IsWidgetDisabled(widget)) return false;
 
 	SndPlayFx(SND_15_BEEP);
 	SetWindowDirty(w);
 
-	if (IsWindowWidgetLowered(w, widget)) {
+	if (w->IsWidgetLowered(widget)) {
 		ResetObjectToPlace();
 		return false;
 	}
 
 	SetObjectToPlace(cursor, PAL_NONE, mode, w->window_class, w->window_number);
-	LowerWindowWidget(w, widget);
+	w->LowerWidget(widget);
 	_place_proc = placeproc;
 	return true;
 }
@@ -468,7 +468,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY: {
 			Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-			RaiseWindowWidget(v, WP(w,menu_d).main_button);
+			v->RaiseWidget(WP(w,menu_d).main_button);
 			SetWindowDirty(v);
 			return;
 		}
@@ -603,7 +603,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY: {
 		Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		RaiseWindowWidget(v, WP(w,menu_d).main_button);
+		v->RaiseWidget(WP(w,menu_d).main_button);
 		SetWindowDirty(v);
 		return;
 		}
@@ -705,7 +705,7 @@ static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base
 	int x = w->widget[GB(parent_button, 0, 8)].left;
 
 	assert(disabled_mask == 0 || item_count <= 8);
-	LowerWindowWidget(w, parent_button);
+	w->LowerWidget(parent_button);
 	InvalidateWidget(w, parent_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
@@ -740,7 +740,7 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
 {
 	int x = w->widget[main_button].left + w->left;
 
-	LowerWindowWidget(w, main_button);
+	w->LowerWidget(main_button);
 	InvalidateWidget(w, main_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
@@ -1309,7 +1309,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 			} while (--n);
 		}
 
-		if (IsWindowWidgetLowered(w, 5) || IsWindowWidgetLowered(w, 6)) // change area-size if raise/lower corner is selected
+		if (w->IsWidgetLowered(5) || w->IsWidgetLowered(6)) // change area-size if raise/lower corner is selected
 			SetTileSelectSize(_terraform_size, _terraform_size);
 
 		break;
@@ -1359,8 +1359,8 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 	case WE_TIMEOUT: {
 		uint i;
 		for (i = 0; i < w->widget_count; i++) {
-			if (IsWindowWidgetLowered(w, i)) {
-				RaiseWindowWidget(w, i);
+			if (w->IsWidgetLowered(i)) {
+				w->RaiseWidget(i);
 				InvalidateWidget(w, i);
 			}
 			if (i == 3) i = 11;
@@ -1456,7 +1456,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CREATE:
-		LowerWindowWidget(w, _scengen_town_size + 7);
+		w->LowerWidget(_scengen_town_size + 7);
 		break;
 
 	case WE_CLICK:
@@ -1492,17 +1492,17 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		}
 
 		case 7: case 8: case 9: case 10:
-			RaiseWindowWidget(w, _scengen_town_size + 7);
+			w->RaiseWidget(_scengen_town_size + 7);
 			_scengen_town_size = e->we.click.widget - 7;
-			LowerWindowWidget(w, _scengen_town_size + 7);
+			w->LowerWidget(_scengen_town_size + 7);
 			SetWindowDirty(w);
 			break;
 		}
 		break;
 
 	case WE_TIMEOUT:
-		RaiseWindowWidget(w, 5);
-		RaiseWindowWidget(w, 6);
+		w->RaiseWidget(5);
+		w->RaiseWidget(6);
 		SetWindowDirty(w);
 		break;
 	case WE_PLACE_OBJ:
@@ -1510,7 +1510,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		break;
 	case WE_ABORT_PLACE_OBJ:
 		RaiseWindowButtons(w);
-		LowerWindowWidget(w, _scengen_town_size + 7);
+		w->LowerWidget(_scengen_town_size + 7);
 		SetWindowDirty(w);
 		break;
 	}
@@ -1608,18 +1608,18 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		/* If spectator, disable all construction buttons
 		 * ie : Build road, rail, ships, airports and landscaping
 		 * Since enabled state is the default, just disable when needed */
-		SetWindowWidgetsDisabledState(w, _current_player == PLAYER_SPECTATOR, 19, 20, 21, 22, 23, WIDGET_LIST_END);
+		w->SetWidgetsDisabledState(_current_player == PLAYER_SPECTATOR, 19, 20, 21, 22, 23, WIDGET_LIST_END);
 		/* disable company list drop downs, if there are no companies */
-		SetWindowWidgetsDisabledState(w, ActivePlayerCount() == 0, 7, 8, 13, 14, 15, 16, WIDGET_LIST_END);
+		w->SetWidgetsDisabledState(ActivePlayerCount() == 0, 7, 8, 13, 14, 15, 16, WIDGET_LIST_END);
 
-		SetWindowWidgetDisabledState(w, 19, !CanBuildVehicleInfrastructure(VEH_TRAIN));
-		SetWindowWidgetDisabledState(w, 22, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
+		w->SetWidgetDisabledState(19, !CanBuildVehicleInfrastructure(VEH_TRAIN));
+		w->SetWidgetDisabledState(22, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
 
 		DrawWindowWidgets(w);
 		break;
 
 	case WE_CLICK: {
-		if (_game_mode != GM_MENU && !IsWindowWidgetDisabled(w, e->we.click.widget))
+		if (_game_mode != GM_MENU && !w->IsWidgetDisabled(e->we.click.widget))
 			_toolbar_button_procs[e->we.click.widget](w);
 	} break;
 
@@ -1672,18 +1672,18 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
-		RaiseWindowWidget(w, 25);
+		w->RaiseWidget(25);
 		SetWindowDirty(w);
 	} break;
 
 	case WE_MOUSELOOP:
-		if (IsWindowWidgetLowered(w, 0) != !!_pause_game) {
-			ToggleWidgetLoweredState(w, 0);
+		if (w->IsWidgetLowered(0) != !!_pause_game) {
+			w->ToggleWidgetLoweredState(0);
 			InvalidateWidget(w, 0);
 		}
 
-		if (IsWindowWidgetLowered(w, 1) != !!_fast_forward) {
-			ToggleWidgetLoweredState(w, 1);
+		if (w->IsWidgetLowered(1) != !!_fast_forward) {
+			w->ToggleWidgetLoweredState(1);
 			InvalidateWidget(w, 1);
 		}
 		break;
@@ -1718,8 +1718,8 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_TIMEOUT: {
 		uint i;
 		for (i = 2; i < w->widget_count; i++) {
-			if (IsWindowWidgetLowered(w, i)) {
-				RaiseWindowWidget(w, i);
+			if (w->IsWidgetLowered(i)) {
+				w->RaiseWidget(i);
 				InvalidateWidget(w, i);
 			}
 		}
@@ -1849,8 +1849,8 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		SetWindowWidgetDisabledState(w, 6, _patches_newgame.starting_year <= MIN_YEAR);
-		SetWindowWidgetDisabledState(w, 7, _patches_newgame.starting_year >= MAX_YEAR);
+		w->SetWidgetDisabledState(6, _patches_newgame.starting_year <= MIN_YEAR);
+		w->SetWidgetDisabledState(7, _patches_newgame.starting_year >= MAX_YEAR);
 
 		/* Draw brown-red toolbar bg. */
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
@@ -1900,7 +1900,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
-		RaiseWindowWidget(w, 25);
+		w->RaiseWidget(25);
 		SetWindowDirty(w);
 	} break;
 
@@ -1971,13 +1971,13 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP:
-		if (IsWindowWidgetLowered(w, 0) != !!_pause_game) {
-			ToggleWidgetLoweredState(w, 0);
+		if (w->IsWidgetLowered(0) != !!_pause_game) {
+			w->ToggleWidgetLoweredState(0);
 			SetWindowDirty(w);
 		}
 
-		if (IsWindowWidgetLowered(w, 1) != !!_fast_forward) {
-			ToggleWidgetLoweredState(w, 1);
+		if (w->IsWidgetLowered(1) != !!_fast_forward) {
+			w->ToggleWidgetLoweredState(1);
 			SetWindowDirty(w);
 		}
 		break;
@@ -2374,8 +2374,8 @@ void ShowVitalWindows()
 
 	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
 
-	SetWindowWidgetDisabledState(w, 0, _networking && !_network_server); // if not server, disable pause button
-	SetWindowWidgetDisabledState(w, 1, _networking); // if networking, disable fast-forward button
+	w->SetWidgetDisabledState(0, _networking && !_network_server); // if not server, disable pause button
+	w->SetWidgetDisabledState(1, _networking); // if networking, disable fast-forward button
 
 	/* 'w' is for sure a WC_MAIN_TOOLBAR */
 	PositionMainToolbar(w);

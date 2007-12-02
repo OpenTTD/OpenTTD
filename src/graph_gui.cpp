@@ -250,7 +250,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_CREATE:
 			for (uint i = 3; i < w->widget_count; i++) {
-				if (!HasBit(_legend_excluded_players, i - 3)) LowerWindowWidget(w, i);
+				if (!HasBit(_legend_excluded_players, i - 3)) w->LowerWidget(i);
 			}
 			break;
 
@@ -261,7 +261,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 				if (p->is_active) continue;
 
 				SetBit(_legend_excluded_players, p->index);
-				RaiseWindowWidget(w, p->index + 3);
+				w->RaiseWidget(p->index + 3);
 			}
 
 			DrawWindowWidgets(w);
@@ -282,7 +282,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 			if (!IsInsideMM(e->we.click.widget, 3, 11)) return;
 
 			ToggleBit(_legend_excluded_players, e->we.click.widget - 3);
-			ToggleWidgetLoweredState(w, e->we.click.widget);
+			w->ToggleWidgetLoweredState(e->we.click.widget);
 			SetWindowDirty(w);
 			InvalidateWindow(WC_INCOME_GRAPH, 0);
 			InvalidateWindow(WC_OPERATING_PROFIT, 0);
@@ -733,7 +733,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 					 * both the text and the colored box have to be manually painted.
 					 * clk_dif will move one pixel down and one pixel to the right
 					 * when the button is clicked */
-					byte clk_dif = IsWindowWidgetLowered(w, i + 3) ? 1 : 0;
+					byte clk_dif = w->IsWidgetLowered(i + 3) ? 1 : 0;
 
 					GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
 					GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
@@ -761,7 +761,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			if (e->we.click.widget >= 3) {
 				ToggleBit(_legend_excluded_cargo, e->we.click.widget - 3);
-				ToggleWidgetLoweredState(w, e->we.click.widget);
+				w->ToggleWidgetLoweredState(e->we.click.widget);
 				SetWindowDirty(w);
 			}
 			break;
@@ -816,7 +816,7 @@ void ShowCargoPaymentRates()
 		wi->data     = 0;
 		wi->tooltips = STR_7064_TOGGLE_GRAPH_FOR_CARGO;
 
-		if (!HasBit(_legend_excluded_cargo, i)) LowerWindowWidget(w, i + 3);
+		if (!HasBit(_legend_excluded_cargo, i)) w->LowerWidget(i + 3);
 	}
 
 	SetWindowDirty(w);
@@ -932,8 +932,8 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			if (_performance_rating_detail_player == INVALID_PLAYER || !GetPlayer(_performance_rating_detail_player)->is_active) {
 				if (_performance_rating_detail_player != INVALID_PLAYER) {
 					/* Raise and disable the widget for the previous selection. */
-					RaiseWindowWidget(w, _performance_rating_detail_player + 13);
-					DisableWindowWidget(w, _performance_rating_detail_player + 13);
+					w->RaiseWidget(_performance_rating_detail_player + 13);
+					w->DisableWidget(_performance_rating_detail_player + 13);
 					SetWindowDirty(w);
 
 					_performance_rating_detail_player = INVALID_PLAYER;
@@ -942,7 +942,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
 					if (GetPlayer(i)->is_active) {
 						/* Lower the widget corresponding to this player. */
-						LowerWindowWidget(w, i + 13);
+						w->LowerWidget(i + 13);
 						SetWindowDirty(w);
 
 						_performance_rating_detail_player = i;
@@ -958,9 +958,9 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
 				if (!GetPlayer(i)->is_active) {
 					/* Check if we have the player as an active player */
-					if (!IsWindowWidgetDisabled(w, i + 13)) {
+					if (!w->IsWidgetDisabled(i + 13)) {
 						/* Bah, player gone :( */
-						DisableWindowWidget(w, i + 13);
+						w->DisableWidget(i + 13);
 
 						/* We need a repaint */
 						SetWindowDirty(w);
@@ -969,9 +969,9 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				}
 
 				/* Check if we have the player marked as inactive */
-				if (IsWindowWidgetDisabled(w, i + 13)) {
+				if (w->IsWidgetDisabled(i + 13)) {
 					/* New player! Yippie :p */
-					EnableWindowWidget(w, i + 13);
+					w->EnableWidget(i + 13);
 					/* We need a repaint */
 					SetWindowDirty(w);
 				}
@@ -1052,10 +1052,10 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			/* Check which button is clicked */
 			if (IsInsideMM(e->we.click.widget, 13, 21)) {
 				/* Is it no on disable? */
-				if (!IsWindowWidgetDisabled(w, e->we.click.widget)) {
-					RaiseWindowWidget(w, _performance_rating_detail_player + 13);
+				if (!w->IsWidgetDisabled(e->we.click.widget)) {
+					w->RaiseWidget(_performance_rating_detail_player + 13);
 					_performance_rating_detail_player = (PlayerID)(e->we.click.widget - 13);
-					LowerWindowWidget(w, _performance_rating_detail_player + 13);
+					w->LowerWidget(_performance_rating_detail_player + 13);
 					SetWindowDirty(w);
 				}
 			}
@@ -1066,7 +1066,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
 			/* Disable the players who are not active */
 			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-				SetWindowWidgetDisabledState(w, i + 13, !GetPlayer(i)->is_active);
+				w->SetWidgetDisabledState(i + 13, !GetPlayer(i)->is_active);
 			}
 			/* Update all player stats with the current data
 			 * (this is because _score_info is not saved to a savegame) */
@@ -1077,7 +1077,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			w->custom[0] = DAY_TICKS;
 			w->custom[1] = 5;
 
-			if (_performance_rating_detail_player != INVALID_PLAYER) LowerWindowWidget(w, _performance_rating_detail_player + 13);
+			if (_performance_rating_detail_player != INVALID_PLAYER) w->LowerWidget(_performance_rating_detail_player + 13);
 			SetWindowDirty(w);
 
 			break;

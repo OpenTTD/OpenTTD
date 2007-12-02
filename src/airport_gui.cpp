@@ -145,9 +145,9 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE:
-		SetWindowWidgetLoweredState(w, 16, !_station_show_coverage);
-		SetWindowWidgetLoweredState(w, 17, _station_show_coverage);
-		LowerWindowWidget(w, _selected_airport_type + 7);
+		w->SetWidgetLoweredState(16, !_station_show_coverage);
+		w->SetWidgetLoweredState(17, _station_show_coverage);
+		w->LowerWidget(_selected_airport_type + 7);
 		break;
 
 	case WE_PAINT: {
@@ -159,10 +159,10 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 
 		avail_airports = GetValidAirports();
 
-		RaiseWindowWidget(w, _selected_airport_type + 7);
+		w->RaiseWidget(_selected_airport_type + 7);
 		if (!HasBit(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
 		if (!HasBit(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
-		LowerWindowWidget(w, _selected_airport_type + 7);
+		w->LowerWidget(_selected_airport_type + 7);
 
 		/* 'Country Airport' starts at widget 7, and if its bit is set, it is
 		 * available, so take its opposite value to set the disabled state.
@@ -170,7 +170,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		 * XXX TODO : all airports should be held in arrays, with all relevant data.
 		 * This should be part of newgrf-airports, i suppose
 		 */
-		for (i = 0; i < 9; i++) SetWindowWidgetDisabledState(w, i + 7, !HasBit(avail_airports, i));
+		for (i = 0; i < 9; i++) w->SetWidgetDisabledState(i + 7, !HasBit(avail_airports, i));
 
 		// select default the coverage area to 'Off' (16)
 		airport = GetAirport(_selected_airport_type);
@@ -190,16 +190,16 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		switch (e->we.click.widget) {
 		case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15:
-			RaiseWindowWidget(w, _selected_airport_type + 7);
+			w->RaiseWidget(_selected_airport_type + 7);
 			_selected_airport_type = e->we.click.widget - 7;
-			LowerWindowWidget(w, _selected_airport_type + 7);
+			w->LowerWidget(_selected_airport_type + 7);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		case 16: case 17:
 			_station_show_coverage = (e->we.click.widget != 16);
-			SetWindowWidgetLoweredState(w, 16, !_station_show_coverage);
-			SetWindowWidgetLoweredState(w, 17, _station_show_coverage);
+			w->SetWidgetLoweredState(16, !_station_show_coverage);
+			w->SetWidgetLoweredState(17, _station_show_coverage);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;

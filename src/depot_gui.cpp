@@ -216,7 +216,7 @@ static void DrawDepotWindow(Window *w)
 	uint16 boxes_in_each_row = w->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
 
 	/* setup disabled buttons */
-	SetWindowWidgetsDisabledState(w, !IsTileOwner(tile, _local_player),
+	w->SetWidgetsDisabledState(!IsTileOwner(tile, _local_player),
 		DEPOT_WIDGET_STOP_ALL,
 		DEPOT_WIDGET_START_ALL,
 		DEPOT_WIDGET_SELL,
@@ -724,7 +724,7 @@ static void CreateDepotListWindow(Window *w, VehicleType type)
 		+ (type == VEH_TRAIN ? 1 : w->hscroll.cap); // number of boxes in each row. Trains always have just one
 
 
-	SetWindowWidgetsHiddenState(w, type != VEH_TRAIN,
+	w->SetWidgetsHiddenState(type != VEH_TRAIN,
 		DEPOT_WIDGET_H_SCROLL,
 		DEPOT_WIDGET_SELL_CHAIN,
 		WIDGET_LIST_END);
@@ -795,9 +795,9 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 				case DEPOT_WIDGET_CLONE: // Clone button
 					InvalidateWidget(w, DEPOT_WIDGET_CLONE);
-					ToggleWidgetLoweredState(w, DEPOT_WIDGET_CLONE);
+					w->ToggleWidgetLoweredState(DEPOT_WIDGET_CLONE);
 
-					if (IsWindowWidgetLowered(w, DEPOT_WIDGET_CLONE)) {
+					if (w->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
 						static const CursorID clone_icons[] = {
 							SPR_CURSOR_CLONE_TRAIN, SPR_CURSOR_CLONE_ROADVEH,
 							SPR_CURSOR_CLONE_SHIP, SPR_CURSOR_CLONE_AIRPLANE
@@ -855,7 +855,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_ABORT_PLACE_OBJ: {
-			RaiseWindowWidget(w, DEPOT_WIDGET_CLONE);
+			w->RaiseWidget(DEPOT_WIDGET_CLONE);
 			InvalidateWidget(w, DEPOT_WIDGET_CLONE);
 		} break;
 
@@ -864,7 +864,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 			const Vehicle *v = _place_clicked_vehicle;
 
 			/* since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button */
-			if (v != NULL && IsWindowWidgetLowered(w, DEPOT_WIDGET_CLONE)) {
+			if (v != NULL && w->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
 				_place_clicked_vehicle = NULL;
 				HandleCloneVehClick(v, w);
 			}
@@ -906,14 +906,14 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 				} break;
 
 				case DEPOT_WIDGET_SELL: case DEPOT_WIDGET_SELL_CHAIN:
-					if (!IsWindowWidgetDisabled(w, DEPOT_WIDGET_SELL) &&
+					if (!w->IsWidgetDisabled(DEPOT_WIDGET_SELL) &&
 						WP(w, depot_d).sel != INVALID_VEHICLE) {
 						Vehicle *v;
 						uint command;
 						int sell_cmd;
 						bool is_engine;
 
-						if (IsWindowWidgetDisabled(w, e->we.click.widget)) return;
+						if (w->IsWidgetDisabled(e->we.click.widget)) return;
 						if (WP(w, depot_d).sel == INVALID_VEHICLE) return;
 
 						HandleButtonClick(w, e->we.click.widget);

@@ -128,7 +128,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
-		SetWindowWidgetsDisabledState(w, !CanBuildVehicleInfrastructure(VEH_SHIP), 7, 8, 9, WIDGET_LIST_END);
+		w->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP), 7, 8, 9, WIDGET_LIST_END);
 		break;
 
 	case WE_CLICK:
@@ -237,7 +237,7 @@ void ShowBuildDocksToolbar()
 static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, _station_show_coverage + 3); break;
+	case WE_CREATE: w->LowerWidget(_station_show_coverage + 3); break;
 
 	case WE_PAINT: {
 		int rad = (_patches.modified_catchment) ? CA_DOCK : 4;
@@ -259,9 +259,9 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 			case 3:
 			case 4:
-				RaiseWindowWidget(w, _station_show_coverage + 3);
+				w->RaiseWidget(_station_show_coverage + 3);
 				_station_show_coverage = (e->we.click.widget != 3);
-				LowerWindowWidget(w, _station_show_coverage + 3);
+				w->LowerWidget(_station_show_coverage + 3);
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
 				break;
@@ -318,7 +318,7 @@ static void UpdateDocksDirection()
 static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, _ship_depot_direction + 3); break;
+	case WE_CREATE: w->LowerWidget(_ship_depot_direction + 3); break;
 
 	case WE_PAINT:
 		DrawWindowWidgets(w);
@@ -333,9 +333,9 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 3:
 		case 4:
-			RaiseWindowWidget(w, _ship_depot_direction + 3);
+			w->RaiseWidget(_ship_depot_direction + 3);
 			_ship_depot_direction = (e->we.click.widget == 3 ? AXIS_X : AXIS_Y);
-			LowerWindowWidget(w, _ship_depot_direction + 3);
+			w->LowerWidget(_ship_depot_direction + 3);
 			SndPlayFx(SND_15_BEEP);
 			UpdateDocksDirection();
 			SetWindowDirty(w);

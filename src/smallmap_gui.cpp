@@ -805,8 +805,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			DrawPixelInfo new_dpi;
 
 			/* Hide Enable all/Disable all buttons if is not industry type small map*/
-			SetWindowWidgetHiddenState(w, SM_WIDGET_ENABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
-			SetWindowWidgetHiddenState(w, SM_WIDGET_DISABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
+			w->SetWidgetHiddenState(SM_WIDGET_ENABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
+			w->SetWidgetHiddenState(SM_WIDGET_DISABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
 
 			/* draw the window */
 			SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
@@ -891,9 +891,9 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 				case SM_WIDGET_ROUTES:     // Show transport routes
 				case SM_WIDGET_VEGETATION: // Show vegetation
 				case SM_WIDGET_OWNERS:     // Show land owners
-					RaiseWindowWidget(w, _smallmap_type + SM_WIDGET_CONTOUR);
+					w->RaiseWidget(_smallmap_type + SM_WIDGET_CONTOUR);
 					_smallmap_type = e->we.click.widget - SM_WIDGET_CONTOUR;
-					LowerWindowWidget(w, _smallmap_type + SM_WIDGET_CONTOUR);
+					w->LowerWidget(_smallmap_type + SM_WIDGET_CONTOUR);
 
 					SetWindowDirty(w);
 					SndPlayFx(SND_15_BEEP);
@@ -907,8 +907,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					break;
 
 				case SM_WIDGET_TOGGLETOWNNAME: // Toggle town names
-					ToggleWidgetLoweredState(w, SM_WIDGET_TOGGLETOWNNAME);
-					_smallmap_show_towns = IsWindowWidgetLowered(w, SM_WIDGET_TOGGLETOWNNAME);
+					w->ToggleWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME);
+					_smallmap_show_towns = w->IsWidgetLowered(SM_WIDGET_TOGGLETOWNNAME);
 
 					SetWindowDirty(w);
 					SndPlayFx(SND_15_BEEP);
@@ -940,8 +940,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 							}
 						}
 						/* Raise the two buttons "all", as we have done a specific choice */
-						RaiseWindowWidget(w, SM_WIDGET_ENABLEINDUSTRIES);
-						RaiseWindowWidget(w, SM_WIDGET_DISABLEINDUSTRIES);
+						w->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
+						w->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
 						SetWindowDirty(w);
 					}
 					break;
@@ -951,8 +951,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 						_legend_from_industries[i].show_on_map = true;
 					}
 					/* toggle appeareance indicating the choice */
-					LowerWindowWidget(w, SM_WIDGET_ENABLEINDUSTRIES);
-					RaiseWindowWidget(w, SM_WIDGET_DISABLEINDUSTRIES);
+					w->LowerWidget(SM_WIDGET_ENABLEINDUSTRIES);
+					w->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
 					SetWindowDirty(w);
 					break;
 
@@ -961,8 +961,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 						_legend_from_industries[i].show_on_map = false;
 					}
 					/* toggle appeareance indicating the choice */
-					RaiseWindowWidget(w, SM_WIDGET_ENABLEINDUSTRIES);
-					LowerWindowWidget(w, SM_WIDGET_DISABLEINDUSTRIES);
+					w->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
+					w->LowerWidget(SM_WIDGET_DISABLEINDUSTRIES);
 					SetWindowDirty(w);
 					break;
 				}
@@ -1085,8 +1085,8 @@ void ShowSmallMap()
 		}
 	}
 
-	LowerWindowWidget(w, _smallmap_type + SMT_OWNER);
-	SetWindowWidgetLoweredState(w, SM_WIDGET_TOGGLETOWNNAME, _smallmap_show_towns);
+	w->LowerWidget(_smallmap_type + SMT_OWNER);
+	w->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, _smallmap_show_towns);
 
 	SmallMapCenterOnCurrentPos(w);
 }
@@ -1115,7 +1115,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 		/* New viewport start at (zero,zero) */
 		AssignWindowViewport(w, 3, 17, w->widget[4].right - w->widget[4].left - 1, w->widget[4].bottom - w->widget[4].top - 1, 0, ZOOM_LVL_VIEWPORT);
 
-		DisableWindowWidget(w, 5);
+		w->DisableWidget(5);
 		break;
 
 	case WE_PAINT:

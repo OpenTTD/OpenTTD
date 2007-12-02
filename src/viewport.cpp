@@ -442,10 +442,10 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
  * @param widget_zoom_out widget index for window with zoom-out button */
 void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out)
 {
-	SetWindowWidgetDisabledState(w, widget_zoom_in, vp->zoom == ZOOM_LVL_MIN);
+	w->SetWidgetDisabledState(widget_zoom_in, vp->zoom == ZOOM_LVL_MIN);
 	InvalidateWidget(w, widget_zoom_in);
 
-	SetWindowWidgetDisabledState(w, widget_zoom_out, vp->zoom == ZOOM_LVL_MAX);
+	w->SetWidgetDisabledState(widget_zoom_out, vp->zoom == ZOOM_LVL_MAX);
 	InvalidateWidget(w, widget_zoom_out);
 }
 

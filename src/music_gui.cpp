@@ -199,9 +199,9 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 		uint i;
 		int y;
 
-		SetWindowWidgetDisabledState(w, 11, msf.playlist <= 3);
-		LowerWindowWidget(w, 3);
-		LowerWindowWidget(w, 4);
+		w->SetWidgetDisabledState(11, msf.playlist <= 3);
+		w->LowerWidget(3);
+		w->LowerWidget(4);
 		DrawWindowWidgets(w);
 
 		GfxFillRect(3, 23, 3 + 177, 23 + 191, 0);
@@ -342,8 +342,8 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		uint i;
 		StringID str;
 
-		RaiseWindowWidget(w, 7);
-		RaiseWindowWidget(w, 9);
+		w->RaiseWidget(7);
+		w->RaiseWidget(9);
 		DrawWindowWidgets(w);
 
 		GfxFillRect(187, 16, 200, 33, 0);

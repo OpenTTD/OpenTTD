@@ -33,7 +33,7 @@ void CDECL SetWindowWidgetsDisabledState(Window *w, bool disab_stat, int widgets
 	va_start(wdg_list, widgets);
 
 	while (widgets != WIDGET_LIST_END) {
-		SetWindowWidgetDisabledState(w, widgets, disab_stat);
+		w->SetWidgetDisabledState(widgets, disab_stat);
 		widgets = va_arg(wdg_list, int);
 	}
 
@@ -47,7 +47,7 @@ void CDECL SetWindowWidgetsHiddenState(Window *w, bool hidden_stat, int widgets,
 	va_start(wdg_list, widgets);
 
 	while (widgets != WIDGET_LIST_END) {
-		SetWindowWidgetHiddenState(w, widgets, hidden_stat);
+		w->SetWidgetHiddenState(widgets, hidden_stat);
 		widgets = va_arg(wdg_list, int);
 	}
 
@@ -61,7 +61,7 @@ void CDECL SetWindowWidgetsLoweredState(Window *w, bool lowered_stat, int widget
 	va_start(wdg_list, widgets);
 
 	while (widgets != WIDGET_LIST_END) {
-		SetWindowWidgetLoweredState(w, widgets, lowered_stat);
+		w->SetWidgetLoweredState(widgets, lowered_stat);
 		widgets = va_arg(wdg_list, int);
 	}
 
@@ -73,8 +73,8 @@ void RaiseWindowButtons(Window *w)
 	uint i;
 
 	for (i = 0; i < w->widget_count; i++) {
-		if (IsWindowWidgetLowered(w, i)) {
-			RaiseWindowWidget(w, i);
+		if (w->IsWidgetLowered(i)) {
+			w->RaiseWidget(i);
 			InvalidateWidget(w, i);
 		}
 	}
@@ -146,7 +146,7 @@ void Window::InvalidateWidget(byte widget_index)
 
 void HandleButtonClick(Window *w, byte widget)
 {
-	LowerWindowWidget(w, widget);
+	w->LowerWidget(widget);
 	w->flags4 |= 5 << WF_TIMEOUT_SHL;
 	InvalidateWidget(w, widget);
 }
@@ -169,7 +169,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		if (e.we.click.widget < 0) return; // exit if clicked outside of widgets
 
 		/* don't allow any interaction if the button has been disabled */
-		if (IsWindowWidgetDisabled(w, e.we.click.widget)) return;
+		if (w->IsWidgetDisabled(e.we.click.widget)) return;
 
 		wi = &w->widget[e.we.click.widget];
 
@@ -1994,7 +1994,7 @@ void InvalidateWidget(const Window *w, byte widget_index)
 	const Widget *wi = &w->widget[widget_index];
 
 	/* Don't redraw the window if the widget is invisible or of no-type */
-	if (wi->type == WWT_EMPTY || IsWindowWidgetHidden(w, widget_index)) return;
+	if (wi->type == WWT_EMPTY || w->IsWidgetHidden(widget_index)) return;
 
 	SetDirtyBlocks(w->left + wi->left, w->top + wi->top, w->left + wi->right + 1, w->top + wi->bottom + 1);
 }

@@ -140,7 +140,7 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 		if (wi->type == WWT_EMPTY || wi->type == WWT_FRAME) continue;
 
 		if (x >= wi->left && x <= wi->right && y >= wi->top &&  y <= wi->bottom &&
-				!IsWindowWidgetHidden(w, index)) {
+				!w->IsWidgetHidden(index)) {
 			found_index = index;
 		}
 	}
@@ -187,14 +187,14 @@ void DrawWindowWidgets(const Window *w)
 
 	for (uint i = 0; i < w->widget_count; i++) {
 		const Widget *wi = &w->widget[i];
-		bool clicked = IsWindowWidgetLowered(w, i);
+		bool clicked = w->IsWidgetLowered(i);
 		Rect r;
 
 		if (dpi->left > (r.right = wi->right) ||
 				dpi->left + dpi->width <= (r.left = wi->left) ||
 				dpi->top > (r.bottom = wi->bottom) ||
 				dpi->top + dpi->height <= (r.top = wi->top) ||
-				IsWindowWidgetHidden(w, i)) {
+				w->IsWidgetHidden(i)) {
 			continue;
 		}
 
@@ -469,7 +469,7 @@ void DrawWindowWidgets(const Window *w)
 
 			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top + 2, wi->data, 0x84);
 draw_default:;
-			if (IsWindowWidgetDisabled(w, i)) {
+			if (w->IsWidgetDisabled(i)) {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[wi->color & 0xF][2] | (1 << PALETTE_MODIFIER_GREYOUT));
 			}
 		}
@@ -602,7 +602,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 		case WE_DESTROY: {
 			Window *w2 = FindWindowById(WP(w,dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
 			if (w2 != NULL) {
-				RaiseWindowWidget(w2, WP(w,dropdown_d).parent_button);
+				w2->RaiseWidget(WP(w,dropdown_d).parent_button);
 				InvalidateWidget(w2, WP(w,dropdown_d).parent_button);
 			}
 		} break;
@@ -615,7 +615,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	const Widget *wi;
 	Window *w2;
 	const Window *w3;
-	bool is_dropdown_menu_shown = IsWindowWidgetLowered(w, button);
+	bool is_dropdown_menu_shown = w->IsWidgetLowered(button);
 	int top, height;
 	int screen_top, screen_bottom;
 	bool scroll = false;
@@ -624,7 +624,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 	if (is_dropdown_menu_shown) return;
 
-	LowerWindowWidget(w, button);
+	w->LowerWidget(button);
 
 	InvalidateWidget(w, button);
 
@@ -678,7 +678,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	w2->widget[0].right = wi->right - wi[-1].left;
 	w2->widget[0].bottom = height - 1;
 
-	SetWindowWidgetHiddenState(w2, 1, !scroll);
+	w2->SetWidgetHiddenState(1, !scroll);
 
 	if (scroll) {
 		/* We're scrolling, so enable the scroll bar and shrink the list by

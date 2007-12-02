@@ -53,13 +53,13 @@ static inline void SetNewLandscapeType(byte landscape)
 static void SelectGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + 8); break;
+	case WE_CREATE: w->LowerWidget(_opt_newgame.landscape + 8); break;
 
 	case WE_PAINT:
-		SetWindowWidgetLoweredState(w, 8,  _opt_newgame.landscape == LT_TEMPERATE);
-		SetWindowWidgetLoweredState(w, 9,  _opt_newgame.landscape == LT_ARCTIC);
-		SetWindowWidgetLoweredState(w, 10, _opt_newgame.landscape == LT_TROPIC);
-		SetWindowWidgetLoweredState(w, 11, _opt_newgame.landscape == LT_TOYLAND);
+		w->SetWidgetLoweredState(8,  _opt_newgame.landscape == LT_TEMPERATE);
+		w->SetWidgetLoweredState(9,  _opt_newgame.landscape == LT_ARCTIC);
+		w->SetWidgetLoweredState(10, _opt_newgame.landscape == LT_TROPIC);
+		w->SetWidgetLoweredState(11, _opt_newgame.landscape == LT_TOYLAND);
 		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
 		DrawWindowWidgets(w);
 		break;
@@ -85,7 +85,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 8: case 9: case 10: case 11:
-			RaiseWindowWidget(w, _opt_newgame.landscape + 8);
+			w->RaiseWidget(_opt_newgame.landscape + 8);
 			SetNewLandscapeType(e->we.click.widget - 8);
 			break;
 		case 12: ShowGameOptions(); break;

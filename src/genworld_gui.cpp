@@ -228,7 +228,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_CREATE:
-		LowerWindowWidget(w, _opt_newgame.landscape + GLAND_TEMPERATE);
+		w->LowerWidget(_opt_newgame.landscape + GLAND_TEMPERATE);
 
 		snprintf(_genseed_buffer, sizeof(_genseed_buffer), "%u", _patches_newgame.generation_seed);
 		InitializeTextBuffer(&_genseed_query.text, _genseed_buffer, lengthof(_genseed_buffer), 120);
@@ -239,28 +239,28 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		/* You can't select smoothness if not terragenesis */
 		if (mode == GLWP_GENERATE) {
-			SetWindowWidgetDisabledState(w, GLAND_SMOOTHNESS_TEXT,     _patches_newgame.land_generator == 0);
-			SetWindowWidgetDisabledState(w, GLAND_SMOOTHNESS_PULLDOWN, _patches_newgame.land_generator == 0);
+			w->SetWidgetDisabledState(GLAND_SMOOTHNESS_TEXT,     _patches_newgame.land_generator == 0);
+			w->SetWidgetDisabledState(GLAND_SMOOTHNESS_PULLDOWN, _patches_newgame.land_generator == 0);
 		}
 		/* Disable snowline if not hilly */
-		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_TEXT, _opt_newgame.landscape != LT_ARCTIC);
+		w->SetWidgetDisabledState(GLAND_SNOW_LEVEL_TEXT, _opt_newgame.landscape != LT_ARCTIC);
 		/* Disable town, industry and trees in SE */
-		SetWindowWidgetDisabledState(w, GLAND_TOWN_TEXT,         _game_mode == GM_EDITOR);
-		SetWindowWidgetDisabledState(w, GLAND_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
-		SetWindowWidgetDisabledState(w, GLAND_INDUSTRY_TEXT,     _game_mode == GM_EDITOR);
-		SetWindowWidgetDisabledState(w, GLAND_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
-		SetWindowWidgetDisabledState(w, GLAND_TREE_TEXT,         _game_mode == GM_EDITOR);
-		SetWindowWidgetDisabledState(w, GLAND_TREE_PULLDOWN,     _game_mode == GM_EDITOR);
+		w->SetWidgetDisabledState(GLAND_TOWN_TEXT,         _game_mode == GM_EDITOR);
+		w->SetWidgetDisabledState(GLAND_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
+		w->SetWidgetDisabledState(GLAND_INDUSTRY_TEXT,     _game_mode == GM_EDITOR);
+		w->SetWidgetDisabledState(GLAND_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
+		w->SetWidgetDisabledState(GLAND_TREE_TEXT,         _game_mode == GM_EDITOR);
+		w->SetWidgetDisabledState(GLAND_TREE_PULLDOWN,     _game_mode == GM_EDITOR);
 
-		SetWindowWidgetDisabledState(w, GLAND_START_DATE_DOWN, _patches_newgame.starting_year <= MIN_YEAR);
-		SetWindowWidgetDisabledState(w, GLAND_START_DATE_UP,   _patches_newgame.starting_year >= MAX_YEAR);
-		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_DOWN, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_ARCTIC);
-		SetWindowWidgetDisabledState(w, GLAND_SNOW_LEVEL_UP,   _patches_newgame.snow_line_height >= MAX_SNOWLINE_HEIGHT || _opt_newgame.landscape != LT_ARCTIC);
+		w->SetWidgetDisabledState(GLAND_START_DATE_DOWN, _patches_newgame.starting_year <= MIN_YEAR);
+		w->SetWidgetDisabledState(GLAND_START_DATE_UP,   _patches_newgame.starting_year >= MAX_YEAR);
+		w->SetWidgetDisabledState(GLAND_SNOW_LEVEL_DOWN, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_ARCTIC);
+		w->SetWidgetDisabledState(GLAND_SNOW_LEVEL_UP,   _patches_newgame.snow_line_height >= MAX_SNOWLINE_HEIGHT || _opt_newgame.landscape != LT_ARCTIC);
 
-		SetWindowWidgetLoweredState(w, GLAND_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
-		SetWindowWidgetLoweredState(w, GLAND_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
-		SetWindowWidgetLoweredState(w, GLAND_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
-		SetWindowWidgetLoweredState(w, GLAND_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
+		w->SetWidgetLoweredState(GLAND_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
+		w->SetWidgetLoweredState(GLAND_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
+		w->SetWidgetLoweredState(GLAND_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
+		w->SetWidgetLoweredState(GLAND_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
 		DrawWindowWidgets(w);
 
 		y = (mode == GLWP_HEIGHTMAP) ? 22 : 0;
@@ -335,7 +335,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 0: DeleteWindow(w); break;
 		case GLAND_TEMPERATE: case GLAND_ARCTIC: case GLAND_TROPICAL: case GLAND_TOYLAND:
-			RaiseWindowWidget(w, _opt_newgame.landscape + GLAND_TEMPERATE);
+			w->RaiseWidget(_opt_newgame.landscape + GLAND_TEMPERATE);
 			SetNewLandscapeType(e->we.click.widget - GLAND_TEMPERATE);
 			break;
 		case GLAND_MAPSIZE_X_TEXT: case GLAND_MAPSIZE_X_PULLDOWN: // Mapsize X
@@ -605,18 +605,18 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 	static const StringID mapsizes[] = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
 
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + CSCEN_TEMPERATE); break;
+	case WE_CREATE: w->LowerWidget(_opt_newgame.landscape + CSCEN_TEMPERATE); break;
 
 	case WE_PAINT:
-		SetWindowWidgetDisabledState(w, CSCEN_START_DATE_DOWN,       _patches_newgame.starting_year <= MIN_YEAR);
-		SetWindowWidgetDisabledState(w, CSCEN_START_DATE_UP,         _patches_newgame.starting_year >= MAX_YEAR);
-		SetWindowWidgetDisabledState(w, CSCEN_FLAT_LAND_HEIGHT_DOWN, _patches_newgame.se_flat_world_height <= 0);
-		SetWindowWidgetDisabledState(w, CSCEN_FLAT_LAND_HEIGHT_UP,   _patches_newgame.se_flat_world_height >= MAX_TILE_HEIGHT);
+		w->SetWidgetDisabledState(CSCEN_START_DATE_DOWN,       _patches_newgame.starting_year <= MIN_YEAR);
+		w->SetWidgetDisabledState(CSCEN_START_DATE_UP,         _patches_newgame.starting_year >= MAX_YEAR);
+		w->SetWidgetDisabledState(CSCEN_FLAT_LAND_HEIGHT_DOWN, _patches_newgame.se_flat_world_height <= 0);
+		w->SetWidgetDisabledState(CSCEN_FLAT_LAND_HEIGHT_UP,   _patches_newgame.se_flat_world_height >= MAX_TILE_HEIGHT);
 
-		SetWindowWidgetLoweredState(w, CSCEN_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
-		SetWindowWidgetLoweredState(w, CSCEN_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
-		SetWindowWidgetLoweredState(w, CSCEN_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
-		SetWindowWidgetLoweredState(w, CSCEN_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
+		w->SetWidgetLoweredState(CSCEN_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
+		w->SetWidgetLoweredState(CSCEN_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
+		w->SetWidgetLoweredState(CSCEN_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
+		w->SetWidgetLoweredState(CSCEN_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
 		DrawWindowWidgets(w);
 
 		DrawStringRightAligned(211, 97, STR_MAPSIZE, TC_FROMSTRING);
@@ -636,7 +636,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case CSCEN_TEMPERATE: case CSCEN_ARCTIC: case CSCEN_TROPICAL: case CSCEN_TOYLAND:
-			RaiseWindowWidget(w, _opt_newgame.landscape + CSCEN_TEMPERATE);
+			w->RaiseWidget(_opt_newgame.landscape + CSCEN_TEMPERATE);
 			SetNewLandscapeType(e->we.click.widget - CSCEN_TEMPERATE);
 			break;
 		case CSCEN_MAPSIZE_X_TEXT: case CSCEN_MAPSIZE_X_PULLDOWN: // Mapsize X

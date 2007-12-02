@@ -54,29 +54,29 @@ static void DrawTimetableWindow(Window *w)
 
 	if (v->owner == _local_player) {
 		if (selected == -1) {
-			DisableWindowWidget(w, 6);
-			DisableWindowWidget(w, 7);
+			w->DisableWidget(6);
+			w->DisableWidget(7);
 		} else if (selected % 2 == 1) {
-			EnableWindowWidget(w, 6);
-			EnableWindowWidget(w, 7);
+			w->EnableWidget(6);
+			w->EnableWidget(7);
 		} else {
 			const Order *order = GetVehicleOrder(v, (selected + 1) / 2);
 			bool disable = order == NULL || order->type != OT_GOTO_STATION || (_patches.new_nonstop && (order->flags & OF_NON_STOP));
 
-			SetWindowWidgetDisabledState(w, 6, disable);
-			SetWindowWidgetDisabledState(w, 7, disable);
+			w->SetWidgetDisabledState(6, disable);
+			w->SetWidgetDisabledState(7, disable);
 		}
 
-		EnableWindowWidget(w, 8);
-		EnableWindowWidget(w, 9);
+		w->EnableWidget(8);
+		w->EnableWidget(9);
 	} else {
-		DisableWindowWidget(w, 6);
-		DisableWindowWidget(w, 7);
-		DisableWindowWidget(w, 8);
-		DisableWindowWidget(w, 9);
+		w->DisableWidget(6);
+		w->DisableWidget(7);
+		w->DisableWidget(8);
+		w->DisableWidget(9);
 	}
 
-	SetWindowWidgetLoweredState(w, 9, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
+	w->SetWidgetLoweredState(9, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
 
 	SetDParam(0, v->index);
 	DrawWindowWidgets(w);

@@ -272,15 +272,15 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		if (ld->flags & VL_RESORT) SortNetworkGameList(&WP(w, network_ql_d));
 
 		/* 'Refresh' button invisible if no server selected */
-		SetWindowWidgetDisabledState(w, NGWW_REFRESH, sel == NULL);
+		w->SetWidgetDisabledState(NGWW_REFRESH, sel == NULL);
 		/* 'Join' button disabling conditions */
-		SetWindowWidgetDisabledState(w, NGWW_JOIN, sel == NULL || // no Selected Server
+		w->SetWidgetDisabledState(NGWW_JOIN, sel == NULL || // no Selected Server
 				!sel->online || // Server offline
 				sel->info.clients_on >= sel->info.clients_max || // Server full
 				!sel->info.compatible); // Revision mismatch
 
 		/* 'NewGRF Settings' button invisible if no NewGRF is used */
-		SetWindowWidgetHiddenState(w, NGWW_NEWGRF, sel == NULL ||
+		w->SetWidgetHiddenState(NGWW_NEWGRF, sel == NULL ||
 				!sel->online ||
 				sel->info.grfconfig == NULL);
 
@@ -997,11 +997,11 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 
 		/* Join button is disabled when no company is selected */
-		SetWindowWidgetDisabledState(w, NLWW_JOIN, nd->company == INVALID_PLAYER);
+		w->SetWidgetDisabledState(NLWW_JOIN, nd->company == INVALID_PLAYER);
 		/* Cannot start new company if there are too many */
-		SetWindowWidgetDisabledState(w, NLWW_NEW, gi->companies_on >= gi->companies_max);
+		w->SetWidgetDisabledState(NLWW_NEW, gi->companies_on >= gi->companies_max);
 		/* Cannot spectate if there are too many spectators */
-		SetWindowWidgetDisabledState(w, NLWW_SPECTATE, gi->spectators_on >= gi->spectators_max);
+		w->SetWidgetDisabledState(NLWW_SPECTATE, gi->spectators_on >= gi->spectators_max);
 
 		/* Draw window widgets */
 		SetDParamStr(0, gi->server_name);
@@ -1880,7 +1880,7 @@ void ShowNetworkChatQueryWindow(DestType type, int dest)
 
 	w = AllocateWindowDesc(&_chat_window_desc);
 
-	LowerWindowWidget(w, 2);
+	w->LowerWidget(2);
 	WP(w, chatquerystr_d).caption = type; // Misuse of caption
 	WP(w, chatquerystr_d).dest    = dest;
 	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;

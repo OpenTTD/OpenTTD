@@ -249,7 +249,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			 *    Either list is empty
 			 * or The selected replacement engine has a replacement (to prevent loops)
 			 * or The right list (new replacement) has the existing replacement vehicle selected */
-			SetWindowWidgetDisabledState(w, 4,
+			w->SetWidgetDisabledState(4,
 										 selected_id[0] == INVALID_ENGINE ||
 										 selected_id[1] == INVALID_ENGINE ||
 										 EngineReplacementForPlayer(p, selected_id[1], selected_group) != INVALID_ENGINE ||
@@ -258,7 +258,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			/* Disable the "Stop Replacing" button if:
 			 *   The left list (existing vehicle) is empty
 			 *   or The selected vehicle has no replacement set up */
-			SetWindowWidgetDisabledState(w, 6,
+			w->SetWidgetDisabledState(6,
 										 selected_id[0] == INVALID_ENGINE ||
 										 !EngineHasReplacementForPlayer(p, selected_id[0], selected_group));
 

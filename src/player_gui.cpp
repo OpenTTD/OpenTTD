@@ -146,15 +146,15 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 			w->height = new_height;
 			SetWindowDirty(w);
 
-			SetWindowWidgetHiddenState(w, 6, player != _local_player);
-			SetWindowWidgetHiddenState(w, 7, player != _local_player);
+			w->SetWidgetHiddenState(6, player != _local_player);
+			w->SetWidgetHiddenState(7, player != _local_player);
 		}
 
 		/* Borrow button only shows when there is any more money to loan */
-		SetWindowWidgetDisabledState(w, 6, p->current_loan == _economy.max_loan);
+		w->SetWidgetDisabledState(6, p->current_loan == _economy.max_loan);
 
 		/* Repay button only shows when there is any more money to repay */
-		SetWindowWidgetDisabledState(w, 7, player != _local_player || p->current_loan == 0);
+		w->SetWidgetDisabledState(7, player != _local_player || p->current_loan == 0);
 
 		SetDParam(0, p->index);
 		SetDParam(1, p->index);
@@ -293,10 +293,10 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE:
-			LowerWindowWidget(w, WP(w, livery_d).livery_class + 2);
+			w->LowerWidget(WP(w, livery_d).livery_class + 2);
 			if (!_loaded_newgrf_features.has_2CC) {
-				HideWindowWidget(w, 11);
-				HideWindowWidget(w, 12);
+				w->HideWidget(11);
+				w->HideWidget(12);
 			}
 			break;
 
@@ -306,10 +306,10 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 			int y = 51;
 
 			/* Disable dropdown controls if no scheme is selected */
-			SetWindowWidgetDisabledState(w,  9, (WP(w, livery_d).sel == 0));
-			SetWindowWidgetDisabledState(w, 10, (WP(w, livery_d).sel == 0));
-			SetWindowWidgetDisabledState(w, 11, (WP(w, livery_d).sel == 0));
-			SetWindowWidgetDisabledState(w, 12, (WP(w, livery_d).sel == 0));
+			w->SetWidgetDisabledState( 9, (WP(w, livery_d).sel == 0));
+			w->SetWidgetDisabledState(10, (WP(w, livery_d).sel == 0));
+			w->SetWidgetDisabledState(11, (WP(w, livery_d).sel == 0));
+			w->SetWidgetDisabledState(12, (WP(w, livery_d).sel == 0));
 
 			if (!(WP(w, livery_d).sel == 0)) {
 				for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
@@ -357,10 +357,10 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 				case 6: {
 					LiveryScheme scheme;
 
-					RaiseWindowWidget(w, WP(w, livery_d).livery_class + 2);
+					w->RaiseWidget(WP(w, livery_d).livery_class + 2);
 					WP(w, livery_d).livery_class = (LiveryClass)(e->we.click.widget - 2);
 					WP(w, livery_d).sel = 0;
-					LowerWindowWidget(w, WP(w, livery_d).livery_class + 2);
+					w->LowerWidget(WP(w, livery_d).livery_class + 2);
 
 					/* Select the first item in the list */
 					for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
@@ -660,7 +660,7 @@ void DrawFaceStringLabel(const Window *w, byte widget_index, StringID str, uint8
 	/* Write the label in gold (0x2) to the left of the button. */
 	DrawStringRightAligned(w->widget[widget_index].left - (is_bool_widget ? 5 : 14), w->widget[widget_index].top + 1, str, TC_GOLD);
 
-	if (!IsWindowWidgetDisabled(w, widget_index)) {
+	if (!w->IsWidgetDisabled(widget_index)) {
 		if (is_bool_widget) {
 			/* if it a bool button write yes or no */
 			str = (val != 0) ? STR_FACE_YES : STR_FACE_NO;
@@ -672,7 +672,7 @@ void DrawFaceStringLabel(const Window *w, byte widget_index, StringID str, uint8
 
 		/* Draw the value/bool in white (0xC). If the button clicked adds 1px to x and y text coordinates (IsWindowWidgetLowered()). */
 		DrawStringCentered(w->widget[widget_index].left + (w->widget[widget_index].right - w->widget[widget_index].left) / 2 +
-			IsWindowWidgetLowered(w, widget_index), w->widget[widget_index].top + 1 + IsWindowWidgetLowered(w, widget_index), str, TC_WHITE);
+			w->IsWidgetLowered(widget_index), w->widget[widget_index].top + 1 + w->IsWidgetLowered(widget_index), str, TC_WHITE);
 	}
 }
 
@@ -692,14 +692,14 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_PAINT:
 			/* lower the non-selected gender button */
-			SetWindowWidgetLoweredState(w, PFW_WIDGET_MALE,  !is_female);
-			SetWindowWidgetLoweredState(w, PFW_WIDGET_FEMALE, is_female);
+			w->SetWidgetLoweredState(PFW_WIDGET_MALE,  !is_female);
+			w->SetWidgetLoweredState(PFW_WIDGET_FEMALE, is_female);
 
 			/* advanced player face selection window */
 			if (WP(w, facesel_d).advanced) {
 				/* lower the non-selected ethnicity button */
-				SetWindowWidgetLoweredState(w, PFW_WIDGET_ETHNICITY_EUR, !HasBit(ge, ETHNICITY_BLACK));
-				SetWindowWidgetLoweredState(w, PFW_WIDGET_ETHNICITY_AFR,  HasBit(ge, ETHNICITY_BLACK));
+				w->SetWidgetLoweredState(PFW_WIDGET_ETHNICITY_EUR, !HasBit(ge, ETHNICITY_BLACK));
+				w->SetWidgetLoweredState(PFW_WIDGET_ETHNICITY_AFR,  HasBit(ge, ETHNICITY_BLACK));
 
 
 				/* Disable dynamically the widgets which PlayerFaceVariable has less than 2 options
@@ -707,44 +707,44 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 				* If the widgets depend on a HAS-variable and this is false the widgets will be disabled, too. */
 
 				/* Eye colour buttons */
-				SetWindowWidgetsDisabledState(w, _pf_info[PFV_EYE_COLOUR].valid_values[ge] < 2,
+				w->SetWidgetsDisabledState(_pf_info[PFV_EYE_COLOUR].valid_values[ge] < 2,
 					PFW_WIDGET_EYECOLOUR, PFW_WIDGET_EYECOLOUR_L, PFW_WIDGET_EYECOLOUR_R, WIDGET_LIST_END);
 
 				/* Chin buttons */
-				SetWindowWidgetsDisabledState(w, _pf_info[PFV_CHIN].valid_values[ge] < 2,
+				w->SetWidgetsDisabledState(_pf_info[PFV_CHIN].valid_values[ge] < 2,
 					PFW_WIDGET_CHIN, PFW_WIDGET_CHIN_L, PFW_WIDGET_CHIN_R, WIDGET_LIST_END);
 
 				/* Eyebrows buttons */
-				SetWindowWidgetsDisabledState(w, _pf_info[PFV_EYEBROWS].valid_values[ge] < 2,
+				w->SetWidgetsDisabledState(_pf_info[PFV_EYEBROWS].valid_values[ge] < 2,
 					PFW_WIDGET_EYEBROWS, PFW_WIDGET_EYEBROWS_L, PFW_WIDGET_EYEBROWS_R, WIDGET_LIST_END);
 
 				/* Lips or (if it a male face with a moustache) moustache buttons */
-				SetWindowWidgetsDisabledState(w, _pf_info[is_moust_male ? PFV_MOUSTACHE : PFV_LIPS].valid_values[ge] < 2,
+				w->SetWidgetsDisabledState(_pf_info[is_moust_male ? PFV_MOUSTACHE : PFV_LIPS].valid_values[ge] < 2,
 					PFW_WIDGET_LIPS_MOUSTACHE, PFW_WIDGET_LIPS_MOUSTACHE_L, PFW_WIDGET_LIPS_MOUSTACHE_R, WIDGET_LIST_END);
 
 				/* Nose buttons | male faces with moustache haven't any nose options */
-				SetWindowWidgetsDisabledState(w, _pf_info[PFV_NOSE].valid_values[ge] < 2 || is_moust_male,
+				w->SetWidgetsDisabledState(_pf_info[PFV_NOSE].valid_values[ge] < 2 || is_moust_male,
 					PFW_WIDGET_NOSE, PFW_WIDGET_NOSE_L, PFW_WIDGET_NOSE_R, WIDGET_LIST_END);
 
 				/* Hair buttons */
-				SetWindowWidgetsDisabledState(w, _pf_info[PFV_HAIR].valid_values[ge] < 2,
+				w->SetWidgetsDisabledState(_pf_info[PFV_HAIR].valid_values[ge] < 2,
 					PFW_WIDGET_HAIR, PFW_WIDGET_HAIR_L, PFW_WIDGET_HAIR_R, WIDGET_LIST_END);
 
 				/* Jacket buttons */
-				SetWindowWidgetsDisabledState(w, _pf_info[PFV_JACKET].valid_values[ge] < 2,
+				w->SetWidgetsDisabledState(_pf_info[PFV_JACKET].valid_values[ge] < 2,
 					PFW_WIDGET_JACKET, PFW_WIDGET_JACKET_L, PFW_WIDGET_JACKET_R, WIDGET_LIST_END);
 
 				/* Collar buttons */
-				SetWindowWidgetsDisabledState(w, _pf_info[PFV_COLLAR].valid_values[ge] < 2,
+				w->SetWidgetsDisabledState(_pf_info[PFV_COLLAR].valid_values[ge] < 2,
 					PFW_WIDGET_COLLAR, PFW_WIDGET_COLLAR_L, PFW_WIDGET_COLLAR_R, WIDGET_LIST_END);
 
 				/* Tie/earring buttons | female faces without earring haven't any earring options */
-				SetWindowWidgetsDisabledState(w, _pf_info[PFV_TIE_EARRING].valid_values[ge] < 2 ||
+				w->SetWidgetsDisabledState(_pf_info[PFV_TIE_EARRING].valid_values[ge] < 2 ||
 						(is_female && GetPlayerFaceBits(*pf, PFV_HAS_TIE_EARRING, ge) == 0),
 					PFW_WIDGET_TIE_EARRING, PFW_WIDGET_TIE_EARRING_L, PFW_WIDGET_TIE_EARRING_R, WIDGET_LIST_END);
 
 				/* Glasses buttons | faces without glasses haven't any glasses options */
-				SetWindowWidgetsDisabledState(w, _pf_info[PFV_GLASSES].valid_values[ge] < 2 || GetPlayerFaceBits(*pf, PFV_HAS_GLASSES, ge) == 0,
+				w->SetWidgetsDisabledState(_pf_info[PFV_GLASSES].valid_values[ge] < 2 || GetPlayerFaceBits(*pf, PFV_HAS_GLASSES, ge) == 0,
 					PFW_WIDGET_GLASSES, PFW_WIDGET_GLASSES_L, PFW_WIDGET_GLASSES_R, WIDGET_LIST_END);
 			}
 
@@ -1074,34 +1074,34 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			const Player *p = GetPlayer((PlayerID)w->window_number);
 			bool local = w->window_number == _local_player;
 
-			SetWindowWidgetHiddenState(w, PCW_WIDGET_NEW_FACE,       !local);
-			SetWindowWidgetHiddenState(w, PCW_WIDGET_COLOR_SCHEME,   !local);
-			SetWindowWidgetHiddenState(w, PCW_WIDGET_PRESIDENT_NAME, !local);
-			SetWindowWidgetHiddenState(w, PCW_WIDGET_COMPANY_NAME,   !local);
+			w->SetWidgetHiddenState(PCW_WIDGET_NEW_FACE,       !local);
+			w->SetWidgetHiddenState(PCW_WIDGET_COLOR_SCHEME,   !local);
+			w->SetWidgetHiddenState(PCW_WIDGET_PRESIDENT_NAME, !local);
+			w->SetWidgetHiddenState(PCW_WIDGET_COMPANY_NAME,   !local);
 			w->widget[PCW_WIDGET_BUILD_VIEW_HQ].data = (local && p->location_of_house == 0) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
 			if (local && p->location_of_house != 0) w->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
-			SetWindowWidgetDisabledState(w, PCW_WIDGET_BUILD_VIEW_HQ, !local && p->location_of_house == 0);
-			SetWindowWidgetHiddenState(w, PCW_WIDGET_RELOCATE_HQ,      !local || p->location_of_house == 0);
-			SetWindowWidgetHiddenState(w, PCW_WIDGET_BUY_SHARE,        local);
-			SetWindowWidgetHiddenState(w, PCW_WIDGET_SELL_SHARE,       local);
-			SetWindowWidgetHiddenState(w, PCW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
+			w->SetWidgetDisabledState(PCW_WIDGET_BUILD_VIEW_HQ, !local && p->location_of_house == 0);
+			w->SetWidgetHiddenState(PCW_WIDGET_RELOCATE_HQ,      !local || p->location_of_house == 0);
+			w->SetWidgetHiddenState(PCW_WIDGET_BUY_SHARE,        local);
+			w->SetWidgetHiddenState(PCW_WIDGET_SELL_SHARE,       local);
+			w->SetWidgetHiddenState(PCW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
 
 			if (!local) {
 				if (_patches.allow_shares) { // Shares are allowed
 					/* If all shares are owned by someone (none by nobody), disable buy button */
-					SetWindowWidgetDisabledState(w, PCW_WIDGET_BUY_SHARE, GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0 ||
+					w->SetWidgetDisabledState(PCW_WIDGET_BUY_SHARE, GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0 ||
 							/* Only 25% left to buy. If the player is human, disable buying it up.. TODO issues! */
 							(GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 1 && !p->is_ai) ||
 							/* Spectators cannot do anything of course */
 							_local_player == PLAYER_SPECTATOR);
 
 					/* If the player doesn't own any shares, disable sell button */
-					SetWindowWidgetDisabledState(w, PCW_WIDGET_SELL_SHARE, (GetAmountOwnedBy(p, _local_player) == 0) ||
+					w->SetWidgetDisabledState(PCW_WIDGET_SELL_SHARE, (GetAmountOwnedBy(p, _local_player) == 0) ||
 							/* Spectators cannot do anything of course */
 							_local_player == PLAYER_SPECTATOR);
 				} else { // Shares are not allowed, disable buy/sell buttons
-					DisableWindowWidget(w, PCW_WIDGET_BUY_SHARE);
-					DisableWindowWidget(w, PCW_WIDGET_SELL_SHARE);
+					w->DisableWidget(PCW_WIDGET_BUY_SHARE);
+					w->DisableWidget(PCW_WIDGET_SELL_SHARE);
 				}
 			}
 
@@ -1149,7 +1149,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 						wf->caption_color = wf->window_number;
 						WP(wf, livery_d).livery_class = LC_OTHER;
 						WP(wf, livery_d).sel = 1;
-						LowerWindowWidget(wf, 2);
+						wf->LowerWidget(2);
 					}
 					break;
 				}
@@ -1177,7 +1177,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 							return;
 						SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, w);
 						SetTileSelectSize(2, 2);
-						LowerWindowWidget(w, PCW_WIDGET_BUILD_VIEW_HQ);
+						w->LowerWidget(PCW_WIDGET_BUILD_VIEW_HQ);
 						InvalidateWidget(w, PCW_WIDGET_BUILD_VIEW_HQ);
 					} else {
 						ScrollMainWindowToTile(tile);
@@ -1188,7 +1188,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				case PCW_WIDGET_RELOCATE_HQ:
 					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, w);
 					SetTileSelectSize(2, 2);
-					LowerWindowWidget(w, PCW_WIDGET_RELOCATE_HQ);
+					w->LowerWidget(PCW_WIDGET_RELOCATE_HQ);
 					InvalidateWidget(w, PCW_WIDGET_RELOCATE_HQ);
 					break;
 

@@ -801,8 +801,8 @@ static void SetMessageButtonStates(Window *w, byte value, int element)
 {
 	element *= NB_WIDG_PER_SETTING;
 
-	SetWindowWidgetDisabledState(w, element + WIDGET_NEWSOPT_START_OPTION, value == 0);
-	SetWindowWidgetDisabledState(w, element + WIDGET_NEWSOPT_START_OPTION + 2, value == 2);
+	w->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION, value == 0);
+	w->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION + 2, value == 2);
 }
 
 /**
@@ -836,7 +836,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			uint32 val = _news_display_opt;
 			int i, y;
 
-			if (_news_ticker_sound) LowerWindowWidget(w, WIDGET_NEWSOPT_SOUNDTICKER);
+			if (_news_ticker_sound) w->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
 			DrawWindowWidgets(w);
 
 			/* Draw the string of each setting on each button. */
@@ -859,7 +859,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 
 				case WIDGET_NEWSOPT_SOUNDTICKER: // Change ticker sound on/off
 					_news_ticker_sound ^= 1;
-					ToggleWidgetLoweredState(w, e->we.click.widget);
+					w->ToggleWidgetLoweredState(e->we.click.widget);
 					InvalidateWidget(w, e->we.click.widget);
 					break;
 

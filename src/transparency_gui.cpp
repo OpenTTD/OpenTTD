@@ -37,7 +37,7 @@ static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 			/* must be sure that the widgets show the transparency variable changes
 			 * also when we use shortcuts */
 			for (uint i = TTW_WIDGET_SIGNS; i < TTW_WIDGET_END; i++) {
-				SetWindowWidgetLoweredState(w, i, IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_SIGNS)));
+				w->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_SIGNS)));
 			}
 			DrawWindowWidgets(w);
 			break;
