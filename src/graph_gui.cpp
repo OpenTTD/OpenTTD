@@ -65,7 +65,7 @@ struct GraphDrawer {
 	uint height;    ///< The height of the graph in pixels.
 	StringID format_str_y_axis;
 	byte colors[GRAPH_MAX_DATASETS];
-	Money cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
+	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
 };
 
 static void DrawGraph(const GraphDrawer *gw)
@@ -133,7 +133,7 @@ static void DrawGraph(const GraphDrawer *gw)
 	for (int i = 0; i < gw->num_dataset; i++) {
 		if (!HasBit(gw->excluded_data, i)) {
 			for (int j = 0; j < gw->num_on_x_axis; j++) {
-				Money datapoint = gw->cost[i][j];
+				OverflowSafeInt64 datapoint = gw->cost[i][j];
 
 				if (datapoint != INVALID_DATAPOINT) {
 					/* For now, if the graph has negative values the scaling is
@@ -215,12 +215,31 @@ static void DrawGraph(const GraphDrawer *gw)
 			uint prev_y = INVALID_DATAPOINT_POS;
 
 			for (int j = 0; j < gw->num_on_x_axis; j++) {
-				Money datapoint = gw->cost[i][j];
+				OverflowSafeInt64 datapoint = gw->cost[i][j];
 
 				if (datapoint != INVALID_DATAPOINT) {
-					/* XXX: This can overflow if x_axis_offset * datapoint is
-					 * too big to fit in an int64. */
-					y = gw->top + x_axis_offset - (x_axis_offset * datapoint) / highest_value;
+					/*
+					 * Check whether we need to reduce the 'accuracy' of the
+					 * datapoint value and the highest value to splut overflows.
+					 * And when 'drawing' 'one million' or 'one million and one'
+					 * there is no significant difference, so the least
+					 * significant bits can just be removed.
+					 *
+					 * If there are more bits needed than would fit in a 32 bits
+					 * integer, so at about 31 bits because of the sign bit, the
+					 * least significant bits are removed.
+					 */
+					int mult_range = FindLastBit(x_axis_offset) + FindLastBit(abs(datapoint));
+					int reduce_range = max(mult_range - 31, 0);
+
+					/* Handle negative values differently (don't shift sign) */
+					if (datapoint < 0) {
+						datapoint = -(abs(datapoint) >> reduce_range);
+					} else {
+						datapoint >>= reduce_range;
+					}
+
+					y = gw->top + x_axis_offset - (x_axis_offset * datapoint) / (highest_value >> reduce_range);
 
 					/* Draw the point. */
 					GfxFillRect(x - 1, y - 1, x + 1, y + 1, color);

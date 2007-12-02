@@ -25,7 +25,7 @@ const uint8 _ffb_64[64] = {
  * way further. If no bit is set return 0.
  *
  * @param x The value to search
- * @param The position of the first bit set
+ * @return The position of the first bit set
  */
 uint8 FindFirstBit(uint32 x)
 {
@@ -40,6 +40,32 @@ uint8 FindFirstBit(uint32 x)
 	if ((x & 0x0000000f) == 0) { x >>= 4;  pos += 4;  }
 	if ((x & 0x00000003) == 0) { x >>= 2;  pos += 2;  }
 	if ((x & 0x00000001) == 0) { pos += 1; }
+
+	return pos;
+}
+
+/**
+ * Search the last set bit in a 32 bit variable.
+ *
+ * This algorithm is a static implementation of a log
+ * conguence search algorithm. It checks the first half
+ * if there is a bit set search there further. And this
+ * way further. If no bit is set return 0.
+ *
+ * @param x The value to search
+ * @return The position of the last bit set
+ */
+uint8 FindLastBit(uint32 x)
+{
+	if (x == 0) return 0;
+
+	uint8 pos = 0;
+
+	if ((x & 0xffff0000) != 0) { x >>= 16; pos += 16; }
+	if ((x & 0x0000ff00) != 0) { x >>= 8;  pos += 8;  }
+	if ((x & 0x000000f0) != 0) { x >>= 4;  pos += 4;  }
+	if ((x & 0x0000000c) != 0) { x >>= 2;  pos += 2;  }
+	if ((x & 0x00000002) != 0) { pos += 1; }
 
 	return pos;
 }
