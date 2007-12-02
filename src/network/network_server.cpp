@@ -224,6 +224,8 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkTCPSocketHandl
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_NEED_PASSWORD);
 	p->Send_uint8(type);
+	p->Send_uint32(_patches.generation_seed);
+	p->Send_string(_network_unique_id);
 	cs->Send_Packet(p);
 }
 
@@ -247,6 +249,8 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 
 	p = NetworkSend_Init(PACKET_SERVER_WELCOME);
 	p->Send_uint16(cs->index);
+	p->Send_uint32(_patches.generation_seed);
+	p->Send_string(_network_unique_id);
 	cs->Send_Packet(p);
 
 		// Transmit info about all the active clients

@@ -23,6 +23,7 @@
 #include "../ai/ai.h"
 #include "../helpers.hpp"
 #include "../fileio.h"
+#include "../md5.h"
 
 // This file handles all the client-commands
 
@@ -31,6 +32,59 @@
 #define MY_CLIENT DEREF_CLIENT(0)
 
 static uint32 last_ack_frame;
+
+/** One bit of 'entropy' used to generate a salt for the company passwords. */
+static uint32 _password_game_seed;
+/** The other bit of 'entropy' used to generate a salt for the company passwords. */
+static char _password_server_unique_id[NETWORK_UNIQUE_ID_LENGTH];
+
+/** Make sure the unique ID length is the same as a md5 hash. */
+assert_compile(NETWORK_UNIQUE_ID_LENGTH == 16 * 2 + 1);
+
+/**
+ * Generates a hashed password for the company name.
+ * @param password the password to 'encrypt'.
+ * @return the hashed password.
+ */
+static const char *GenerateCompanyPasswordHash(const char *password)
+{
+	if (StrEmpty(password)) return password;
+
+	char salted_password[NETWORK_UNIQUE_ID_LENGTH];
+
+	memset(salted_password, 0, sizeof(salted_password));
+	snprintf(salted_password, sizeof(salted_password), "%s", password);
+	/* Add the game seed and the server's unique ID as the salt. */
+	for (uint i = 0; i < NETWORK_UNIQUE_ID_LENGTH; i++) salted_password[i] ^= _password_server_unique_id[i] ^ (_password_game_seed >> i);
+
+	md5_state_t state;
+	md5_byte_t digest[16];
+	static char hashed_password[NETWORK_UNIQUE_ID_LENGTH];
+
+	/* Generate the MD5 hash */
+	md5_init(&state);
+	md5_append(&state, (const md5_byte_t*)salted_password, sizeof(salted_password));
+	md5_finish(&state, digest);
+
+	for (int di = 0; di < 16; di++) sprintf(hashed_password + di * 2, "%02x", digest[di]);
+
+	return hashed_password;
+}
+
+/**
+ * Hash the current company password; used when the server 'player' sets his/her password.
+ */
+void HashCurrentCompanyPassword()
+{
+	if (StrEmpty(_network_player_info[_local_player].password)) return;
+
+	_password_game_seed = _patches.generation_seed;
+	snprintf(_password_server_unique_id, sizeof(_password_server_unique_id), _network_unique_id);
+
+	const char *new_pw = GenerateCompanyPasswordHash(_network_player_info[_local_player].password);
+	snprintf(_network_player_info[_local_player].password, sizeof(_network_player_info[_local_player].password), new_pw);
+}
+
 
 // **********
 // Sending functions
@@ -103,7 +157,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_PASSWORD)(NetworkPasswordType type, 
 	//
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_PASSWORD);
 	p->Send_uint8 (type);
-	p->Send_string(password);
+	p->Send_string(type == NETWORK_GAME_PASSWORD ? password : GenerateCompanyPasswordHash(password));
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -224,7 +278,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
 	//
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_SET_PASSWORD);
 
-	p->Send_string(password);
+	p->Send_string(GenerateCompanyPasswordHash(password));
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -458,8 +512,13 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 	NetworkPasswordType type = (NetworkPasswordType)p->Recv_uint8();
 
 	switch (type) {
-		case NETWORK_GAME_PASSWORD:
 		case NETWORK_COMPANY_PASSWORD:
+			/* Initialize the password hash salting variables. */
+			_password_game_seed = p->Recv_uint32();
+			p->Recv_string(_password_server_unique_id, sizeof(_password_server_unique_id));
+			if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
+		case NETWORK_GAME_PASSWORD:
 			ShowNetworkNeedPassword(type);
 			return NETWORK_RECV_STATUS_OKAY;
 
@@ -470,6 +529,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
 {
 	_network_own_client_index = p->Recv_uint16();
+
+	/* Initialize the password hash salting variables, even if they were previously. */
+	_password_game_seed = p->Recv_uint32();
+	p->Recv_string(_password_server_unique_id, sizeof(_password_server_unique_id));
 
 	// Start receiving the map
 	SEND_COMMAND(PACKET_CLIENT_GETMAP)();

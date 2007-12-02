@@ -1326,6 +1326,8 @@ DEF_CONSOLE_HOOK(ConHookRconPW)
 	return true;
 }
 
+extern void HashCurrentCompanyPassword();
+
 /* Also use from within player_gui to change the password graphically */
 bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 {
@@ -1346,8 +1348,11 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 
 	ttd_strlcpy(_network_player_info[_local_player].password, argv[0], sizeof(_network_player_info[_local_player].password));
 
-	if (!_network_server)
+	if (!_network_server) {
 		SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
+	} else {
+		HashCurrentCompanyPassword();
+	}
 
 	IConsolePrintF(_icolour_warn, "'company_pw' changed to:  %s", _network_player_info[_local_player].password);
 
