@@ -1294,6 +1294,7 @@ static const SettingDescGlobVarList _network_settings[] = {
 	  SDTG_STR("player_name",           SLE_STRB, S, 0, _network_player_name,          NULL,               STR_NULL, NULL),
 	  SDTG_STR("server_password",       SLE_STRB, S, 0, _network_server_password,      NULL,               STR_NULL, NULL),
 	  SDTG_STR("rcon_password",         SLE_STRB, S, 0, _network_rcon_password,        NULL,               STR_NULL, NULL),
+	  SDTG_STR("default_company_pass",  SLE_STRB, S, 0, _network_default_company_pass, NULL,               STR_NULL, NULL),
 	  SDTG_STR("server_name",           SLE_STRB, S, 0, _network_server_name,          NULL,               STR_NULL, NULL),
 	  SDTG_STR("connect_to_ip",         SLE_STRB, S, 0, _network_default_ip,           NULL,               STR_NULL, NULL),
 	  SDTG_STR("network_id",            SLE_STRB, S, 0, _network_unique_id,            NULL,               STR_NULL, NULL),

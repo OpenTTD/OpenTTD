@@ -2197,7 +2197,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Apziuret
 STR_RELOCATE_HQ                                                 :{BLACK}Perkelti bustine
 STR_COMPANY_PASSWORD                                            :{BLACK}Slaptazodis
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Slaptazodis apsaugo tavo kompanija nuo neleistinu vartotoju prisijungimo.
-STR_SET_COMPANY_PASSWORD                                        :Ivesti slaptazodi
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Ivesti slaptazodi
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Pasauline krize!{}{}Ekonomikai griuvant, finansu ekspertai bijo paties blogiausio!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Krize iveikta!{}{}Prekybos pagyvejimas suteikia naujas viltis pramones imonems!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Pakeisti lango dydi

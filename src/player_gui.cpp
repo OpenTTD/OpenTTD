@@ -25,6 +25,7 @@
 #include "newgrf.h"
 #include "network/network_data.h"
 #include "network/network_client.h"
+#include "network/network_gui.h"
 #include "player_face.h"
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
@@ -1200,15 +1201,11 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					DoCommandP(0, w->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
 					break;
 
-				#ifdef ENABLE_NETWORK
+#ifdef ENABLE_NETWORK
 				case PCW_WIDGET_COMPANY_PASSWORD:
-					if (w->window_number == _local_player) {
-						WP(w, def_d).byte_1 = 2;
-						ShowQueryString(BindCString(_network_player_info[_local_player].password),
-							STR_SET_COMPANY_PASSWORD, sizeof(_network_player_info[_local_player].password), 250, w, CS_ALPHANUMERAL);
-					}
+					if (w->window_number == _local_player) ShowNetworkCompanyPasswordWindow();
 					break;
-				#endif /* ENABLE_NETWORK */
+#endif /* ENABLE_NETWORK */
 			}
 			break;
 
@@ -1230,15 +1227,13 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 		case WE_DESTROY:
 			DeleteWindowById(WC_PLAYER_FACE, w->window_number);
+			if (w->window_number == _local_player) DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
 			break;
 
-		case WE_ON_EDIT_TEXT: {
-			char *b = e->we.edittext.str;
+		case WE_ON_EDIT_TEXT:
+			if (StrEmpty(e->we.edittext.str)) return;
 
-			/* empty string is allowed for password */
-			if (*b == '\0' && WP(w, def_d).byte_1 != 2) return;
-
-			_cmd_text = b;
+			_cmd_text = e->we.edittext.str;
 			switch (WP(w, def_d).byte_1) {
 				case 0: /* Change president name */
 					DoCommandP(0, 0, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
@@ -1246,15 +1241,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				case 1: /* Change company name */
 					DoCommandP(0, 0, 0, NULL, CMD_CHANGE_COMPANY_NAME | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
 					break;
-				#ifdef ENABLE_NETWORK
-				case 2: /* Change company password */
-					if (*b == '\0') *b = '*'; // empty password is a '*' because of console argument
-					NetworkChangeCompanyPassword(1, &b);
-					break;
-				#endif /* ENABLE_NETWORK */
 			}
 			break;
-		}
 	}
 }
 

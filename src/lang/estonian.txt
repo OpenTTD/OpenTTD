@@ -2404,7 +2404,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Vaata pe
 STR_RELOCATE_HQ                                                 :{BLACK}Liiguta peakorterit
 STR_COMPANY_PASSWORD                                            :{BLACK}Salasõna
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ettevõtte kaitsmine salasõnaga, et võõrad ei saaks ilma loata ühineda.
-STR_SET_COMPANY_PASSWORD                                        :Vali ettevõttele salasõna
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vali ettevõttele salasõna
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Majanduslik tagasilöök!{}{}Finantseksperdid ennustavad suurt majanduslangust!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Madalseis on läbi!{}{}Suurem kauplemine julgustab majanduse tugevnemisega ettevõtteid!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Lülita aken suureks/väikseks

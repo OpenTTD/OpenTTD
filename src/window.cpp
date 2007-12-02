@@ -1699,11 +1699,12 @@ void HandleKeypress(uint32 key)
 	e.we.keypress.cont = true;
 
 	/* check if we have a query string window open before allowing hotkeys */
-	if (FindWindowById(WC_QUERY_STRING,       0) != NULL ||
-			FindWindowById(WC_SEND_NETWORK_MSG,   0) != NULL ||
-			FindWindowById(WC_GENERATE_LANDSCAPE, 0) != NULL ||
-			FindWindowById(WC_CONSOLE,            0) != NULL ||
-			FindWindowById(WC_SAVELOAD,           0) != NULL) {
+	if (FindWindowById(WC_QUERY_STRING,            0) != NULL ||
+			FindWindowById(WC_SEND_NETWORK_MSG,        0) != NULL ||
+			FindWindowById(WC_GENERATE_LANDSCAPE,      0) != NULL ||
+			FindWindowById(WC_CONSOLE,                 0) != NULL ||
+			FindWindowById(WC_SAVELOAD,                0) != NULL ||
+			FindWindowById(WC_COMPANY_PASSWORD_WINDOW, 0) != NULL) {
 		query_open = true;
 	}
 
@@ -1717,7 +1718,8 @@ void HandleKeypress(uint32 key)
 				w->window_class != WC_SEND_NETWORK_MSG &&
 				w->window_class != WC_GENERATE_LANDSCAPE &&
 				w->window_class != WC_CONSOLE &&
-				w->window_class != WC_SAVELOAD) {
+				w->window_class != WC_SAVELOAD &&
+				w->window_class != WC_COMPANY_PASSWORD_WINDOW) {
 			continue;
 		}
 		w->wndproc(w, &e);

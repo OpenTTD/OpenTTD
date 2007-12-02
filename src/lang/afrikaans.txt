@@ -2304,7 +2304,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Wys HK
 STR_RELOCATE_HQ                                                 :{BLACK}Beweeg HQ
 STR_COMPANY_PASSWORD                                            :{BLACK}Wagwoord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Wagwoord-beskerm jou maatskappy om onmagtig gebruikers te belet van verbinding
-STR_SET_COMPANY_PASSWORD                                        :Stel maatskappy wagwoord
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Stel maatskappy wagwoord
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}W�eld Insinking!{}{}Finansieel eksperte vrees ergste as ekonomie inmekaar sak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Insinking Oor!{}{}Oplewing in sake gee vertroue na nywerhede as ekonomie versterk!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Tokkel groot/klein venster groote

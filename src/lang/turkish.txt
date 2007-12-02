@@ -2307,7 +2307,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Binaya B
 STR_RELOCATE_HQ                                                 :{BLACK}Binayı Taşı
 STR_COMPANY_PASSWORD                                            :{BLACK}Parola
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Başkalarınin girmemesi için parola koy.
-STR_SET_COMPANY_PASSWORD                                        :Şirket parolası
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Şirket parolası
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Dünyada Kriz!{}{}Çok büyük bir ekonomik kriz yaşanacağı öngörüldü!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Kriz Atlatıldı!{}{}Ekonomi yine eski güzel günlerine döndü!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Pencere boyutunu büyült/küçült

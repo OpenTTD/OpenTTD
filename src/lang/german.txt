@@ -2305,7 +2305,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Firmensi
 STR_RELOCATE_HQ                                                 :{BLACK}Firmensitz verlegen
 STR_COMPANY_PASSWORD                                            :{BLACK}Passwort
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Sie können Ihre Firma mit einem Passwort schützen, sodass nur ausgewählte Spieler beitreten können.
-STR_SET_COMPANY_PASSWORD                                        :Firmenpasswort setzen
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Firmenpasswort setzen
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Weltwirtschaftskrise!{}{}Finanzexperten befürchten schlimmsten Zusammenbruch der Wirtschaft!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Wirtschaftskrise beendet!{}{}Aufschwung des Handels gibt Vertrauen in die Industrie und stärkt die Wirtschaft!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Schalter für großes/kleines Fenster

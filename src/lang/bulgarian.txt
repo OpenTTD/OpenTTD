@@ -2302,7 +2302,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Пока
 STR_RELOCATE_HQ                                                 :{BLACK}Преместване ЦК
 STR_COMPANY_PASSWORD                                            :{BLACK}Парола
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Постави парола за да предпазиш компанията си от неоторизирани потребители.
-STR_SET_COMPANY_PASSWORD                                        :Поставяне парола на компанията
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Поставяне парола на компанията
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Световна икономическа криза!{}{}Финансовите експерти очакват най-лошото от сриващата се световна икономика!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Световната икономическа криза отмина!{}{}Възходът на търговията дава увереност на индустриите в новата засилваща се икономическа реалност!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Активирай голям/малък размер на прозореца

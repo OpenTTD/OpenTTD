@@ -2308,7 +2308,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Vis HK
 STR_RELOCATE_HQ                                                 :{BLACK}Flyt hovedkvarter
 STR_COMPANY_PASSWORD                                            :{BLACK}Kodeord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Beskyt dit selskab med et kodeord for at undgå, at fremmede slutter sig til spillet.
-STR_SET_COMPANY_PASSWORD                                        :Sæt selskabets kodeord
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Sæt selskabets kodeord
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Lavkonjuktur over hele verden!{}{}Vismændende frygter det værste, økonomien skrumper!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Skift mellem stort/lille vindue

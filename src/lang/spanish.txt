@@ -2310,7 +2310,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Ver Sede
 STR_RELOCATE_HQ                                                 :{BLACK}Reubicar Sede
 STR_COMPANY_PASSWORD                                            :{BLACK}Contraseña
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protege por contraseña tu empresa para prevenir que usuarios no autorizados se unan a ella.
-STR_SET_COMPANY_PASSWORD                                        :Configurar contraseña de empresa
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Configurar contraseña de empresa
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}¡Recesión Mundial!{}{}¡Los expertos financieros son pesimistas mientras la economía se hunde!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}¡Fin de la Recesión!{}{}¡Mejora en el comercio da ánimos a las industrias mientras la economía se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Cambiar entre tamaño de ventana grande/pequeño

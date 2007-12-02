@@ -2313,7 +2313,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Ver sede
 STR_RELOCATE_HQ                                                 :{BLACK}Mover sede
 STR_COMPANY_PASSWORD                                            :{BLACK}Senha
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Usar senha na empresa para prevenir utilizadores não autorizados.
-STR_SET_COMPANY_PASSWORD                                        :Definir senha para empresa
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Definir senha para empresa
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recesso Mundial!{}{}Economistas temem crise!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Fim do recesso!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Alternar entre janela grande/pequena

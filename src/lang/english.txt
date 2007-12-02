@@ -2310,7 +2310,12 @@ STR_7072_VIEW_HQ                                                :{BLACK}View HQ
 STR_RELOCATE_HQ                                                 :{BLACK}Relocate HQ
 STR_COMPANY_PASSWORD                                            :{BLACK}Password
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Password-protect your company to prevent unauthorised users from joining.
-STR_SET_COMPANY_PASSWORD                                        :Set company password
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Set company password
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Do not save the entered password
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Give the company the new password
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Company password
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Default company password
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Use this company password as default for new companies
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}World Recession!{}{}Financial experts fear worst as economy slumps!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recession Over!{}{}Upturn in trade gives confidence to industries as economy strengthens!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Toggle large/small window size

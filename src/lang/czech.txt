@@ -2367,7 +2367,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Ředitel
 STR_RELOCATE_HQ                                                 :{BLACK}Přesídlit
 STR_COMPANY_PASSWORD                                            :{BLACK}Heslo
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Heslo - zabrání neautorizovaným uživatelům v připojení se k tvé společnosti.
-STR_SET_COMPANY_PASSWORD                                        :Nastav heslo společnosti.
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Nastav heslo společnosti.
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Celosvětový hospodářský úpadek!{}{}Finanční experti se kvůli prudkému poklesu ekonomiky obávají nejhoršího!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Konec hospodářského úpadku!{}{}Posílení trhu zvýšilo u průmyslu důvěru!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Přepnout velké/malé okno

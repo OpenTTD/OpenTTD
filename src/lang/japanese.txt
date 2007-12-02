@@ -2308,7 +2308,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}本部�
 STR_RELOCATE_HQ                                                 :{BLACK}本部ビルを移動
 STR_COMPANY_PASSWORD                                            :{BLACK}パスワード
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}他のプレヤーがこの会社の経営に参加できないようにするには、パスワードで保護します
-STR_SET_COMPANY_PASSWORD                                        :会社のパスワードを設定
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}会社のパスワードを設定
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}世界中不景気！{}{}経済がスランプに陥る、アナリストの不安説！
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}スランプの終わり！{}{}経済が上昇気流、産業が好転！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}大きい／小さいウィンドウサイズを切り替えます

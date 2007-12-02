@@ -2305,7 +2305,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Sjå hov
 STR_RELOCATE_HQ                                                 :{BLACK}Omplasser hovudkvarter
 STR_COMPANY_PASSWORD                                            :{BLACK}Passord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Passordbeskytt firmaet ditt slik at ikkje alle og einkvar kan verte med. Bruk '*' for å tømme passord.
-STR_SET_COMPANY_PASSWORD                                        :Vel firmapassord
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vel firmapassord
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Verdskrise!{}{}Økonomar fryktar det verste. Nedgangstider i kjømda.
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Verdskrise over!{}{}Opptur i marknaden gjer industrien sjølvkjensla attende.
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Byt mellom stor/liten storleik på vindauga

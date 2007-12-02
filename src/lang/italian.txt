@@ -2312,7 +2312,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Vedi sed
 STR_RELOCATE_HQ                                                 :{BLACK}Sposta sede
 STR_COMPANY_PASSWORD                                            :{BLACK}Password
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protegge la compagnia con una password per impedire ad utenti non autorizzati di accedervi.
-STR_SET_COMPANY_PASSWORD                                        :Imposta password compagnia
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Imposta password compagnia
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recessione mondiale!{}{}Il crollo dell'economia porta gli analisti finanziari a temere il peggio!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessione finita!{}{}La ripresa del commercio da fiducia alle industrie e rafforza l'economia!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Seleziona dimensione grande/piccola della finestra

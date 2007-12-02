@@ -2406,7 +2406,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Zobacz S
 STR_RELOCATE_HQ                                                 :{BLACK}Przenieś SG
 STR_COMPANY_PASSWORD                                            :{BLACK}Hasło
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ochrona hasłem Twojej firmy zapobiega nieautoryzowanemu przyłączeniu się
-STR_SET_COMPANY_PASSWORD                                        :Ustaw hasło firmy
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Ustaw hasło firmy
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Światowa recesja!{}{}Eksperci finansowi obawiają się najgorszego z powodu kryzysu!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Koniec recesji!{}{}Polepszenie się transakcji handlowych daje pewność przedsiębiorstwom dzięki umacniającej się ekonomii!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Przełącz duży/mały rozmiar okna

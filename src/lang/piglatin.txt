@@ -2295,7 +2295,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Iewvay H
 STR_RELOCATE_HQ                                                 :{BLACK}Elocateray HQay
 STR_COMPANY_PASSWORD                                            :{BLACK}Asswordpay
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Asswordpay-otectpray ouryay ompanycay otay eventpray unauthorisedway usersway omfray oiningjay.
-STR_SET_COMPANY_PASSWORD                                        :Etsay ompanycay asswordpay
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Etsay ompanycay asswordpay
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Orldway Ecessionray!{}{}Inancialfay expertsway earfay orstway asway economyway umpsslay!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Ecessionray Overway!{}{}Upturnway inway adetray ivesgay onfidencecay otay industriesway asway economyway engthensstray!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Oggletay argelay/allsmay indowway izesay

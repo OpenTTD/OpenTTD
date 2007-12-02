@@ -848,6 +848,10 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (_local_player != _network_playas && _network_playas == p->index) {
 			assert(_local_player == PLAYER_SPECTATOR);
 			SetLocalPlayer(p->index);
+			if (!StrEmpty(_network_default_company_pass)) {
+				char *password = _network_default_company_pass;
+				NetworkChangeCompanyPassword(1, &password);
+			}
 			MarkWholeScreenDirty();
 		}
 

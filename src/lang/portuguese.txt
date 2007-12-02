@@ -2285,7 +2285,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Ver sede
 STR_RELOCATE_HQ                                                 :{BLACK}Mover sede
 STR_COMPANY_PASSWORD                                            :{BLACK}Palavra passe
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Usar palavra passe na empresa para prevenir utilizadores não autorizados.
-STR_SET_COMPANY_PASSWORD                                        :Definir palavra passe da empresa
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Definir palavra passe da empresa
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Retrocesso Mundial!{}{}Especialistas financeiros temem crise económica!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Fim do retrocesso!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Alternar entre janela grande/pequena

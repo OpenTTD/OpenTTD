@@ -2177,7 +2177,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}查看�
 STR_RELOCATE_HQ                                                 :{BLACK}重置总部
 STR_COMPANY_PASSWORD                                            :{BLACK}密码
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}设置密码可以防止未经授权的用户随意加入。
-STR_SET_COMPANY_PASSWORD                                        :设置公司密码
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}设置公司密码
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}大萧条！{}{}金融专家预测世界经济将全面倒退！
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}大萧条结束！{}{}贸易复苏带动经济全面启动！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}切换窗口大小

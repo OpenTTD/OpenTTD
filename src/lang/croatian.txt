@@ -2306,7 +2306,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Pogledaj
 STR_RELOCATE_HQ                                                 :{BLACK}Premjesti sjedište kompanije
 STR_COMPANY_PASSWORD                                            :{BLACK}Zaporka
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaštiti svoju tvrtku od neovlaštenog korištenja pomoću zaporke.
-STR_SET_COMPANY_PASSWORD                                        :Postavi zaporku tvrtke
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Postavi zaporku tvrtke
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svjetska recesija!{}{}Financijski stručnjaci očekuju najgore zbog ekonomske krize!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesija završena!{}{}Obrat  u trgovanu daje samopouzdanje gospodarstvu jer ekonomija jača!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Namjesti veliku/malu veličinu prozora

@@ -2309,7 +2309,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Bekijk H
 STR_RELOCATE_HQ                                                 :{BLACK}Verplaats HQ
 STR_COMPANY_PASSWORD                                            :{BLACK}Wachtwoord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Bescherm het bedrijf met een wachtwoord zodat niet geautoriseerde personen niet mee kunnen doen.
-STR_SET_COMPANY_PASSWORD                                        :Geef bedrijfswachtwoord op
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Geef bedrijfswachtwoord op
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Wereld Recessie!{}{}Financiële experts vrezen het ergste terwijl economie ineen stort!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessie Voorbij!{}{}Stijgende handel geeft industrie vertrouwen terwijl economie verstevigt!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Schakel tussen groot/klein venster

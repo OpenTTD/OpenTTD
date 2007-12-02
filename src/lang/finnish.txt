@@ -2295,7 +2295,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Näytä 
 STR_RELOCATE_HQ                                                 :{BLACK}Sijoita päämaja
 STR_COMPANY_PASSWORD                                            :{BLACK}Salasana
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Salasanalla voit suojata yhtiösi, jotta kukaan vieras ei pääse liittymään.
-STR_SET_COMPANY_PASSWORD                                        :Aseta yhtiön salasana
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Aseta yhtiön salasana
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Maailmanlaajuinen laskukausi!{}{}Rahoitusasiantuntijat pelkäävät pahinta talouden laskiessa!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Laskukausi ohi!{}{}Kaupankäynnin käänne parempaan lisää luottamusta teollisuuteen talouden vahvistuessa!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Suuri/pieni ikkunan koko

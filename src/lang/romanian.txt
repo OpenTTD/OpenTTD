@@ -2304,7 +2304,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Vezi sed
 STR_RELOCATE_HQ                                                 :{BLACK}Muta sediu
 STR_COMPANY_PASSWORD                                            :{BLACK}Parola
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protejeaza-ti compania cu o parola pentru a preveni accesul neautorizat.
-STR_SET_COMPANY_PASSWORD                                        :Alege parola companiei
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Alege parola companiei
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recesiune mondială!{}{}Experţii financiari se tem de ceea ce e mai rău odată cu prăbuşirea economică!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesiunea s-a încheiat!{}{}Creşterea comerţului dă încredere industriei, iar economia se redresează!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Comutator pentru mărimea ferestrei

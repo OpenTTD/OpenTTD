@@ -724,6 +724,13 @@ static void MakeNewGameDone()
 	SettingsDisableElrail(_patches.disable_elrails);
 	SetDefaultRailGui();
 
+	/* We are the server, we start a new player (not dedicated),
+	 * so set the default password *if* needed. */
+	if (_network_server && !StrEmpty(_network_default_company_pass)) {
+		char *password = _network_default_company_pass;
+		NetworkChangeCompanyPassword(1, &password);
+	}
+
 	MarkWholeScreenDirty();
 }
 

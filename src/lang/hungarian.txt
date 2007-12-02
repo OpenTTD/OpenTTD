@@ -2404,7 +2404,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Székhá
 STR_RELOCATE_HQ                                                 :{BLACK}FH áthelyezése
 STR_COMPANY_PASSWORD                                            :{BLACK}Jelszó
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá.
-STR_SET_COMPANY_PASSWORD                                        :Vállalati jelszó beállítása
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vállalati jelszó beállítása
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Gazdasági visszaesés!{}{}A közgazdászok gazdasági válságtól tartanak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Vége a visszaesésnek!{}{}A kereskedelem fellendül, ami önbizalmat ad az iparnak, és erősödik a gazdaság!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Kicsi/nagy ablakméret közötti váltás

@@ -2154,7 +2154,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Skoða H
 STR_RELOCATE_HQ                                                 :{BLACK}Flytja HS
 STR_COMPANY_PASSWORD                                            :{BLACK}Lykilorð
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Til að vernda fyrirtæki þitt frá óboðnum notendum geturðu sett lykilorð á það
-STR_SET_COMPANY_PASSWORD                                        :Setja lykilorð á fyrirtæki
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Setja lykilorð á fyrirtæki
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Heimssamdráttur!{}{}Hagfræðingar hræddir um efnahagshrun!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Samdráttur!{}{}Uppslag í viðskiptum gefur bjartari von um betri efnahag!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Stækka/smækka gluggastærð

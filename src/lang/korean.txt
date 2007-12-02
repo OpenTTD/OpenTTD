@@ -2299,7 +2299,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}본사 �
 STR_RELOCATE_HQ                                                 :{BLACK}본사 재위치
 STR_COMPANY_PASSWORD                                            :{BLACK}암호
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}다른 참가자가 이 회사로의 플레이를 하지 못하도록 암호로 보호합니다
-STR_SET_COMPANY_PASSWORD                                        :회사 암호 설정
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}회사 암호 설정
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}공황 종료!{}{}무역량의 증대로 경제를 살려낸 결과 산업시설에 대한 신뢰를 가져왔습니다!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}대형/소형 창 크기 토글

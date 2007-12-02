@@ -1795,23 +1795,11 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE:
-		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_CREATE, w->height, 0);
-		SetBit(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
 		break;
 
 	case WE_PAINT: {
-		static const StringID chat_captions[] = {
-			STR_NETWORK_CHAT_ALL_CAPTION,
-			STR_NETWORK_CHAT_COMPANY_CAPTION,
-			STR_NETWORK_CHAT_CLIENT_CAPTION
-		};
-		StringID msg;
-
 		DrawWindowWidgets(w);
 
-		assert(WP(w, chatquerystr_d).caption < lengthof(chat_captions));
-		msg = chat_captions[WP(w, chatquerystr_d).caption];
-		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, msg, TC_BLACK);
 		DrawEditBox(w, &WP(w, chatquerystr_d), 2);
 	} break;
 
@@ -1885,6 +1873,97 @@ void ShowNetworkChatQueryWindow(DestType type, int dest)
 	WP(w, chatquerystr_d).dest    = dest;
 	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;
 	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 0);
+}
+
+/** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
+enum NetworkCompanyPasswordWindowWidgets {
+	NCPWW_CLOSE,                    ///< Close 'X' button
+	NCPWW_CAPTION,                  ///< Caption of the whole window
+	NCPWW_BACKGROUND,               ///< The background of the interface
+	NCPWW_LABEL,                    ///< Label in front of the password field
+	NCPWW_PASSWORD,                 ///< Input field for the password
+	NCPWW_SAVE_AS_DEFAULT_PASSWORD, ///< Toggle 'button' for saving the current password as default password
+	NCPWW_CANCEL,                   ///< Close the window without changing anything
+	NCPWW_OK,                       ///< Safe the password etc.
+};
+
+static void NetworkCompanyPasswordWindowWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+		case WE_PAINT:
+			DrawWindowWidgets(w);
+			DrawEditBox(w, &WP(w, chatquerystr_d), 4);
+			break;
+
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case NCPWW_OK: {
+					if (w->IsWidgetLowered(NCPWW_SAVE_AS_DEFAULT_PASSWORD)) {
+						snprintf(_network_default_company_pass, lengthof(_network_default_company_pass), "%s", _edit_str_buf);
+					}
+
+					/* empty password is a '*' because of console argument */
+					if (StrEmpty(_edit_str_buf)) snprintf(_edit_str_buf, lengthof(_edit_str_buf), "*");
+					char *password = _edit_str_buf;
+					NetworkChangeCompanyPassword(1, &password);
+				}
+
+				/* FALL THROUGH */
+				case NCPWW_CANCEL:
+					DeleteWindow(w);
+					break;
+
+				case NCPWW_SAVE_AS_DEFAULT_PASSWORD:
+					w->ToggleWidgetLoweredState(NCPWW_SAVE_AS_DEFAULT_PASSWORD);
+					SetWindowDirty(w);
+					break;
+			}
+			break;
+
+		case WE_MOUSELOOP:
+			HandleEditBox(w, &WP(w, chatquerystr_d), 4);
+			break;
+
+		case WE_KEYPRESS:
+			switch (HandleEditBoxKey(w, &WP(w, chatquerystr_d), 4, e)) {
+				case 1: // Return
+					/* FALLTHROUGH */
+				case 2: // Escape
+					DeleteWindow(w);
+					break;
+			}
+			break;
+	}
+}
+
+static const Widget _ncp_window_widgets[] = {
+{   WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,  0, 13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION, RESIZE_NONE, 14,  11, 299,  0, 13, STR_COMPANY_PASSWORD_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL, RESIZE_NONE, 14,   0, 299, 14, 50, 0x0,                               STR_NULL},
+{       WWT_TEXT, RESIZE_NONE, 14,   5, 100, 19, 30, STR_COMPANY_PASSWORD,              STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 14, 101, 294, 19, 30, 0x0,                               STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 14, 101, 294, 35, 46, STR_MAKE_DEFAULT_COMPANY_PASSWORD, STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 14,   0, 149, 51, 62, STR_012E_CANCEL,                   STR_COMPANY_PASSWORD_CANCEL},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 14, 150, 299, 51, 62, STR_012F_OK,                       STR_COMPANY_PASSWORD_OK},
+{   WIDGETS_END},
+};
+
+static const WindowDesc _ncp_window_desc = {
+	WDP_AUTO, WDP_AUTO, 300, 63, 300, 63,
+	WC_COMPANY_PASSWORD_WINDOW, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	_ncp_window_widgets,
+	NetworkCompanyPasswordWindowWndProc
+};
+
+void ShowNetworkCompanyPasswordWindow()
+{
+	DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
+
+	_edit_str_buf[0] = '\0';
+	Window *w = AllocateWindowDesc(&_ncp_window_desc);
+	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;
+	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_buf, min(lengthof(_network_default_company_pass), lengthof(_edit_str_buf)), 0);
 }
 
 #endif /* ENABLE_NETWORK */

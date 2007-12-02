@@ -2189,7 +2189,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Vidu HQ
 STR_RELOCATE_HQ                                                 :{BLACK}Relokigu HQ
 STR_COMPANY_PASSWORD                                            :{BLACK}Pasvorto
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Pasvorte protektu vian kompanion por eviti ke eksteruloj aliĝu.
-STR_SET_COMPANY_PASSWORD                                        :Agordu kompanian pasvorton
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Agordu kompanian pasvorton
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Monda Recesio!{}{}Financaj spertuloj timas ke malpliboniĝas treege! Ekonomio malboniĝadas!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj! Ekonomio pliboniĝas!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Ŝaltu inter granda kaj malgranda fenestro

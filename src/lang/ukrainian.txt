@@ -2472,7 +2472,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Пока
 STR_RELOCATE_HQ                                                 :{BLACK}Перенести Офіс
 STR_COMPANY_PASSWORD                                            :{BLACK}Пароль
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Пароль захищає вашу компанію від приєднання інших гравців.
-STR_SET_COMPANY_PASSWORD                                        :Встановлення паролю
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}Встановлення паролю
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Світова економічна криза!{}{}Фінансисти очікують спад виробництва та попиту!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Криза минула!{}{}Збільшення виробництва внаслідок стабілізації економіки надає впевненості підприємствам!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Розмір вікна великий/малий

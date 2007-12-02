@@ -2304,7 +2304,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}檢視�
 STR_RELOCATE_HQ                                                 :{BLACK}搬移總部
 STR_COMPANY_PASSWORD                                            :{BLACK}密碼
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}以密碼保護您的公司，避免其他玩家隨意接手。
-STR_SET_COMPANY_PASSWORD                                        :設定公司密碼
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}設定公司密碼
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}世界不景氣！{}{}財務專家對經濟蕭條做出最壞打算！
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}景氣回升！{}{}湧現的訂單讓工業對經濟熱絡充滿信心！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}切換大/小視窗
