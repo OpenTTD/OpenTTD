@@ -288,7 +288,7 @@ struct Window {
 	void ShowWidget(byte widget_index);
 	bool IsWidgetHidden(byte widget_index) const;
 	void SetWidgetLoweredState(byte widget_index, bool lowered_stat);
-	void ToggleLoweredState(byte widget_index);
+	void ToggleWidgetLoweredState(byte widget_index);
 	void LowerWidget(byte widget_index);
 	void RaiseWidget(byte widget_index);
 	bool IsWidgetLowered(byte widget_index) const;
@@ -938,7 +938,7 @@ inline void Window::SetWidgetLoweredState(byte widget_index, bool lowered_stat)
  * Invert the lowered/raised  status of a widget.
  * @param widget_index : index of this widget in the window
  */
-inline void Window::ToggleLoweredState(byte widget_index)
+inline void Window::ToggleWidgetLoweredState(byte widget_index)
 {
 	assert(widget_index < this->widget_count);
 	ToggleBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
