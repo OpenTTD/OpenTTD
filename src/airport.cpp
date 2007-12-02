@@ -431,18 +431,6 @@ static const char* const _airport_heading_strings[] = {
 	"DUMMY" // extra heading for 255
 };
 
-static uint AirportBlockToString(uint32 block)
-{
-	uint i = 0;
-	if (block & 0xffff0000) { block >>= 16; i += 16; }
-	if (block & 0x0000ff00) { block >>=  8; i +=  8; }
-	if (block & 0x000000f0) { block >>=  4; i +=  4; }
-	if (block & 0x0000000c) { block >>=  2; i +=  2; }
-	if (block & 0x00000002) { i += 1; }
-	return i;
-}
-
-
 static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool full_report)
 {
 	if (!full_report) printf("(P = Current Position; NP = Next Position)\n");
@@ -453,7 +441,7 @@ static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool ful
 				byte heading = (current->heading == 255) ? MAX_HEADINGS + 1 : current->heading;
 				printf("\tPos:%2d NPos:%2d Heading:%15s Block:%2d\n", current->position,
 					    current->next_position, _airport_heading_strings[heading],
-							AirportBlockToString(current->block));
+							FindLastBit(current->block));
 			} else {
 				printf("P:%2d NP:%2d", current->position, current->next_position);
 			}
