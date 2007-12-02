@@ -1171,6 +1171,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Abilita
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permetti l'acquisto di azioni di altre compagnie
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Trascinando il cursore, piazza i segnali ogni: {ORANGE}{STRING} quadrato/i
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Costruisci automaticamente i semafori prima del: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Abilita l'interfaccia di selezione segnali: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}L'opzione "Nessuna nuova strada" non è valida nell'editor di scenari
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Disposizione delle strade cittadine: {ORANGE}{STRING}
@@ -3446,4 +3447,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Cambia i
 STR_FACE_TIE                                                    :Cravatta:
 STR_FACE_EARRING                                                :Orecchino:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambia la cravatta o l'orecchino
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Selezione segnale
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Impossibile convertire i segnali qui...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Segnale normale (semaforico){}I segnali sono necessari per impedire ai treni di scontrarsi su reti ferroviarie con più di un treno.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-segnale (semaforico){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Segnale combinato (semaforico){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Segnale normale (luminoso){}I segnali sono necessari per impedire ai treni di scontrarsi su reti ferroviarie con più di un treno.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-segnale (luminoso){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Segnale di uscita (luminoso){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Segnale combinato (luminoso){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Distanza fra i segnali costruiti automaticamente trascinando il cursore
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Riduce la distanza fra i segnali costruiti
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumenta la distanza fra i segnali costruiti
 ########

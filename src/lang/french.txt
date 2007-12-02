@@ -1170,6 +1170,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Permett
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permettre d'acheter des actions d'autres compagnies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Espacements des signaux en mode drag & drop : {ORANGE}{STRING} case(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construire automatiquement des sémaphores avant: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activer le GUI des signaux: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Le schéma de ville "pas de routes" n'est pas autorisé dans l'éditeur de scénario
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Choisir un schéma de ville: {ORANGE}{STRING}
@@ -3445,4 +3446,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Modifier
 STR_FACE_TIE                                                    :Cravate:
 STR_FACE_EARRING                                                :Boucle d'oreille:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Modifier la cravate ou la boucle d'oreille
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Sélection des signaux
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Impossible de convertir les signaux...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Signal normal (sémaphore){}Les signaux sont nécessaires pour éviter les collisions sur les réseaux avec plus d'un train.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Signal d'entrée (sémaphore){}Vert tant qu'un ou plusieurs signaux de sortie sont verts dans le bloc. Rouge sinon.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Signal de sortie (sémaphore){}Fonctionne comme un signal normal, mais est nécessaire pour commander les signaux d'entrée et combinés.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Signal combiné (sémaphore){}Le signal combiné est simplement l'unification d'un signal d'entrée et d'un signal de sortie. Cela vous permet de construire de larges "arbres" de pré-signaux.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Signal normal (électrique){}Les signaux sont nécessaires pour éviter les collisions sur les réseaux avec plus d'un train.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Signal d'entrée (électrique){}Vert tant qu'un ou plusieurs signaux de sortie sont verts dans le bloc. Rouge sinon.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Signal de sortie (électrique){}Fonctionne comme un signal normal, mais est nécessaire pour commander les signaux d'entrée et combinés.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Signal combiné (électrique){}Le signal combiné est simplement l'unification d'un signal d'entrée et d'un signal de sortie. Cela vous permet de construire de larges "arbres" de pré-signaux.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversion de signal{}Si sélectionné, cliquer sur un signal existant pour le convertir vers le type et la variante choisis, Ctrl-clic pour basculer la variante.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densité de signal
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Réduire la densité de signal
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Augmenter la densité de signal
 ########

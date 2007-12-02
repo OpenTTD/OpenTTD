@@ -596,6 +596,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ава�
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Информация о Компании
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Открытие / закрытие промышленности
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Изменения в экономике
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Изменения уровня производства предприятий, обслуживаемых игроком
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Изменения уровня производства предприятий, обслуживаемых соперниками
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Изменения уровня производства предприятий, никем не обслуживаемых
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Сообщения о транспорте игрока
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Новый транспорт
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Изменения в списке принимаемых грузов
@@ -1682,6 +1685,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Пост
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Построить трамвайный мост
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Построить туннель (авто)
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Построить трамвайный туннель
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Включить/Отключить односторонние дороги
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Переключение строительства/удаления автомобильной инфраструктуры
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Переключение строительства/удаления трамвайной инфраструктуры
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Выбор ориентации гаража
@@ -1703,6 +1707,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Сначала надо уничтожить здания
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Зданий: {ORANGE}{COMMA}
@@ -3089,6 +3094,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} дол
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} должен быть загружен после {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} требует OpenTTD версии {STRING} или выше.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Слишком много загружено новой графики
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добавить
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавить файл NewGRF в список
@@ -3297,6 +3303,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Высо
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Центрировать миникарту по этой позиции
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Малый
@@ -3450,4 +3457,7 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Изме
 STR_FACE_TIE                                                    :Галстук:
 STR_FACE_EARRING                                                :Серьга:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Изменить галстук или серьгу
+########
+
+############ signal GUI
 ########

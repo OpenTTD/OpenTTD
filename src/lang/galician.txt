@@ -1050,6 +1050,8 @@ STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverti
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ningunha
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tódalas compañías
 
+
+
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nº máximo de trens por xogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nº máximo de vehículos de estrada por xogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Nº máximo de aeronaves por xogador: {ORANGE}{STRING}
@@ -1287,12 +1289,12 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Establec
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protexe a túa partida cun contrasinal se non queres que outras persoas se unan
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecciona un mapa:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}¿Que mapa queres xogar?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes permitidos:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolle o máximo número de clientes. Non tódolas liñas teñen que estar cubertas
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (anunciar)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes permitidos:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolle o máximo número de clientes. Non tódolas liñas teñen que estar cubertas
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Nº máx. de compañías:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita-lo servidor a unha certa cantidade de compañías
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Nº máx. de espectadores:
@@ -2494,6 +2496,7 @@ STR_8825_NON_STOP                                               :{BLACK}Non Para
 STR_8826_GO_TO                                                  :{BLACK}Ir a
 STR_8827_FULL_LOAD                                              :{BLACK}Cargar
 STR_8828_UNLOAD                                                 :{BLACK}Descarga
+STR_TIMETABLE_VIEW                                              :{BLACK}Táboa de tempo
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordes)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fin das Ordes - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2572,6 +2575,8 @@ STR_TRAIN_NO_POWER                                              :{RED}Sen enerx�
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}¡Novo {STRING} agora dispoñible!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}¡Nova{STRING} dispoñible!  -  {ENGINE}
+
 
 
 ##id 0x9000
@@ -3053,7 +3058,6 @@ STR_GROUP_CREATE_TIP                                            :{BLACK}Pincha p
 STR_GROUP_DELETE_TIP                                            :{BLACK}Borrar o grupo seleccionado
 STR_GROUP_RENAME_TIP                                            :{BLACK}Renomear o grupo seleccionado
 
-
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
@@ -3066,3 +3070,9 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 
 ########
 
+
+############ Face formatting
+########
+
+############ signal GUI
+########

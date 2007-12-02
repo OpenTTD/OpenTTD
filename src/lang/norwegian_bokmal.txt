@@ -595,6 +595,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmainformasjon
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Åpninger / Stengninger av industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringer
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produksjonsendringer hos industrier som får leveranser av spilleren
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produksjonsendringer hos industrier som får leveranser av motspiller(e)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andre produksjonsendringer
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd/informasjon om spillers kjøretøy
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye kjøretøy
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Endringer i godtatte varer
@@ -1681,6 +1684,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bygg bro
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Bygg bro for trikkespor
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bygg tunnel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Bygg tunnel for trikkespor
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktiver/deaktiver énveiskjørte veier
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Velg mellom bygging/fjerning for veibygging
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Velg mellom bygging/fjerning for trikkesporkonstruksjon
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Velg garasjens retning
@@ -1702,6 +1706,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Bygningen må rives først
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Innbyggertall: {ORANGE}{COMMA}{BLACK}  Antall hus: {ORANGE}{COMMA}
@@ -3286,6 +3291,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Høyde a
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Midstill oversiktskartet på den gjeldende posisjonen
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Liten
@@ -3439,4 +3445,7 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Endre kr
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Ørering:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Endre slips eller ørering
+########
+
+############ signal GUI
 ########

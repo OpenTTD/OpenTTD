@@ -1763,6 +1763,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budova musí být nejprve zničena
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populace: {ORANGE}{COMMA}{BLACK} Domů: {ORANGE}{COMMA}
@@ -3507,4 +3508,7 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Změnit 
 STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Náušnice:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Změnit kravatu nebo náušnice
+########
+
+############ signal GUI
 ########
