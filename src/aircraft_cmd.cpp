@@ -1044,7 +1044,7 @@ static bool AircraftController(Vehicle *v)
 		/* Jump into our "holding pattern" state machine if possible */
 		if (v->u.air.pos >= afc->nofelements) {
 			v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, afc);
-		} else {
+		} else if (v->u.air.targetairport != v->current_order.dest) {
 			/* If not possible, just get out of here fast */
 			v->u.air.state = FLYING;
 			UpdateAircraftCache(v);
