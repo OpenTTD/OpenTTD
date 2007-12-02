@@ -282,16 +282,16 @@ struct Window {
 	void SetWidgetDisabledState(byte widget_index, bool disab_stat);
 	void DisableWidget(byte widget_index);
 	void EnableWidget(byte widget_index);
-	bool IsWidgetDisabled(byte widget_index);
+	bool IsWidgetDisabled(byte widget_index) const;
 	void SetWidgetHiddenState(byte widget_index, bool hidden_stat);
 	void HideWidget(byte widget_index);
 	void ShowWidget(byte widget_index);
-	bool IsWidgetHidden(byte widget_index);
+	bool IsWidgetHidden(byte widget_index) const;
 	void SetWidgetLoweredState(byte widget_index, bool lowered_stat);
 	void ToggleLoweredState(byte widget_index);
 	void LowerWidget(byte widget_index);
 	void RaiseWidget(byte widget_index);
-	bool IsWidgetLowered(byte widget_index);
+	bool IsWidgetLowered(byte widget_index) const;
 
 	void RaiseButtons();
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
@@ -865,14 +865,17 @@ inline void Window::DisableWidget(byte widget_index)
  * Sets a widget to Enabled.
  * @param widget_index : index of this widget in the window
  */
-inline void Window::EnableWidget(byte widget_index) { SetWidgetDisabledState(widget_index, false); }
+inline void Window::EnableWidget(byte widget_index)
+{
+	SetWidgetDisabledState(widget_index, false);
+}
 
 /**
  * Gets the enabled/disabled status of a widget.
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: disabled = true, enabled = false
  */
-inline bool Window::IsWidgetDisabled(byte widget_index)
+inline bool Window::IsWidgetDisabled(byte widget_index) const
 {
 	assert(widget_index < this->widget_count);
 	return HasBit(this->widget[widget_index].display_flags, WIDG_DISABLED);
@@ -914,7 +917,7 @@ inline void Window::ShowWidget(byte widget_index)
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: hidden = true, visible = false
  */
-inline bool Window::IsWidgetHidden(byte widget_index)
+inline bool Window::IsWidgetHidden(byte widget_index) const
 {
 	assert(widget_index < this->widget_count);
 	return HasBit(this->widget[widget_index].display_flags, WIDG_HIDDEN);
@@ -964,7 +967,7 @@ inline void Window::RaiseWidget(byte widget_index)
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: lowered = true, raised= false
  */
-inline bool Window::IsWidgetLowered(byte widget_index)
+inline bool Window::IsWidgetLowered(byte widget_index) const
 {
 	assert(widget_index < this->widget_count);
 	return HasBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
