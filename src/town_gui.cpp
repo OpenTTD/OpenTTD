@@ -121,8 +121,9 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 static int GetNthSetBit(uint32 bits, int n)
 {
 	if (n >= 0) {
-		for (uint i = 0; bits != 0; bits >>= 1, i++) {
-			if (bits & 1) n--;
+		uint i;
+		FOR_EACH_SET_BIT(i, bits) {
+			n--;
 			if (n < 0) return i;
 		}
 	}

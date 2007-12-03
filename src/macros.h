@@ -20,10 +20,20 @@
  */
 #define IS_CUSTOM_SPRITE(sprite) ((sprite) >= SPR_SIGNALS_BASE)
 
-
-#define for_each_bit(_i, _b)            \
-	for (_i = 0; _b != 0; _i++, _b >>= 1) \
-		if (_b & 1)
+/**
+ * Do an operation for each set set bit in a value.
+ *
+ * This macros is used to do an operation for each set
+ * bit in a variable. The first variable can be reused
+ * in the operation due to it's the bit position counter.
+ * The second variable will be cleared during the usage
+ *
+ * @param i The position counter
+ * @param b The value which we check for set bits
+ */
+#define FOR_EACH_SET_BIT(i, b)            \
+	for (i = 0; b != 0; i++, b >>= 1) \
+		if (b & 1)
 
 
 static inline uint16 ReadLE16Aligned(const void* x)

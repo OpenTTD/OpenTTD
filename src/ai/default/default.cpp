@@ -1653,13 +1653,11 @@ clear_town_stuff:;
 			k = 0;
 
 			// Build the rail
-			for (i = 0; i != 6; i++, j >>= 1) {
-				if (j & 1) {
-					k = i;
-					ret = DoCommand(c, railtype, i, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
-					if (CmdFailed(ret)) return CMD_ERROR;
-					total_cost.AddCost(ret);
-				}
+			FOR_EACH_SET_BIT(i, j) {
+				k = i;
+				ret = DoCommand(c, railtype, i, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
+				if (CmdFailed(ret)) return CMD_ERROR;
+				total_cost.AddCost(ret);
 			}
 
 			/* signals too? */
@@ -2854,7 +2852,6 @@ static bool AiCheckRoadFinished(Player *p)
 	TileIndex tile;
 	DiagDirection dir = p->ai.cur_dir_a;
 	uint32 bits;
-	int i;
 
 	are.dest = p->ai.cur_tile_b;
 	tile = TILE_MASK(p->ai.cur_tile_a + TileOffsByDiagDir(dir));
@@ -2865,7 +2862,8 @@ static bool AiCheckRoadFinished(Player *p)
 
 	are.best_dist = (uint)-1;
 
-	for_each_bit(i, bits) {
+	uint i;
+	FOR_EACH_SET_BIT(i, bits) {
 		FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, ROADTYPES_ROAD, (DiagDirection)_dir_by_track[i], (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
 	}
 

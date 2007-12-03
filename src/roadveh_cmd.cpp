@@ -1273,18 +1273,17 @@ do_it:;
 		uint best_dist = (uint)-1;
 		uint best_maxlen = (uint)-1;
 		uint bitmask = (uint)trackdirs;
-		for (int i = 0; bitmask != 0; bitmask >>= 1, i++) {
-			if (HasBit(bitmask, 0)) {
-				if (best_track == INVALID_TRACKDIR) best_track = (Trackdir)i; // in case we don't find the path, just pick a track
-				frd.maxtracklen = (uint)-1;
-				frd.mindist = (uint)-1;
-				FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, v->u.road.compatible_roadtypes, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
+		uint i;
+		FOR_EACH_SET_BIT(i, bitmask) {
+			if (best_track == INVALID_TRACKDIR) best_track = (Trackdir)i; // in case we don't find the path, just pick a track
+			frd.maxtracklen = (uint)-1;
+			frd.mindist = (uint)-1;
+			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, v->u.road.compatible_roadtypes, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
 
-				if (frd.mindist < best_dist || (frd.mindist == best_dist && frd.maxtracklen < best_maxlen)) {
-					best_dist = frd.mindist;
-					best_maxlen = frd.maxtracklen;
-					best_track = (Trackdir)i;
-				}
+			if (frd.mindist < best_dist || (frd.mindist == best_dist && frd.maxtracklen < best_maxlen)) {
+				best_dist = frd.mindist;
+				best_maxlen = frd.maxtracklen;
+				best_track = (Trackdir)i;
 			}
 		}
 	}

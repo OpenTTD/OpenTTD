@@ -403,8 +403,9 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 						ToggleBit(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
 						w->ToggleWidgetLoweredState(e->we.click.widget);
 					} else {
-						for (uint i = 0; facilities != 0; i++, facilities >>= 1) {
-							if (HasBit(facilities, 0)) w->RaiseWidget(i + STATIONLIST_WIDGET_TRAIN);
+						uint i;
+						FOR_EACH_SET_BIT(i, facilities) {
+							w->RaiseWidget(i + STATIONLIST_WIDGET_TRAIN);
 						}
 						SetBit(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
 						w->LowerWidget(e->we.click.widget);
