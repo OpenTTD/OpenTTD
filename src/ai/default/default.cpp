@@ -1646,18 +1646,22 @@ clear_town_stuff:;
 				rating += _cleared_town_rating;
 			}
 		} else if (p->mode == 2) {
-			// Rail
+			/* Rail */
 			if (IsTileType(c, MP_RAILWAY)) return CMD_ERROR;
 
 			j = p->attr;
 			k = 0;
 
-			// Build the rail
-			FOR_EACH_SET_BIT(i, j) {
-				k = i;
-				ret = DoCommand(c, railtype, i, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
-				if (CmdFailed(ret)) return CMD_ERROR;
-				total_cost.AddCost(ret);
+			/* Build the rail
+			 * note: FOR_EACH_SET_BIT cannot be used here
+			 */
+			for (i = 0; i != 6; i++, j >>= 1) {
+				if (j & 1) {
+					k = i;
+					ret = DoCommand(c, railtype, i, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
+					if (CmdFailed(ret)) return CMD_ERROR;
+					total_cost.AddCost(ret);
+				}
 			}
 
 			/* signals too? */
