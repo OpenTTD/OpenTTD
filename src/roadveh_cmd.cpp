@@ -1491,13 +1491,17 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 	uint32 r;
 
 	if (v->u.road.overtaking != 0)  {
-		if (++v->u.road.overtaking_ctr >= 35)
+		if (IsTileType(v->tile, MP_STATION)) {
+			/* Force us to be not overtaking! */
+			v->u.road.overtaking = 0;
+		} else if (++v->u.road.overtaking_ctr >= 35) {
 			/* If overtaking just aborts at a random moment, we can have a out-of-bound problem,
 			 *  if the vehicle started a corner. To protect that, only allow an abort of
 			 *  overtake if we are on straight roads */
 			if (v->u.road.state < RVSB_IN_ROAD_STOP && IsStraightRoadTrackdir((Trackdir)v->u.road.state)) {
 				v->u.road.overtaking = 0;
 			}
+		}
 	}
 
 	/* If this vehicle is in a depot and we've reached this point it must be
