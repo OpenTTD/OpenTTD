@@ -83,11 +83,11 @@ struct Widget {
 };
 
 enum FrameFlags {
-	FR_NONE         = 0x00,
-	FR_TRANSPARENT  = 0x01,  ///< Makes the background transparent if set
-	FR_BORDERONLY   = 0x10,  ///< Draw border only, no background
-	FR_LOWERED      = 0x20,  ///< If set the frame is lowered and the background color brighter (ie. buttons when pressed)
-	FR_DARKENED     = 0x40,  ///< If set the background is darker, allows for lowered frames with normal background color when used with FR_LOWERED (ie. dropdown boxes)
+	FR_NONE         =  0,
+	FR_TRANSPARENT  =  1 << 0,  ///< Makes the background transparent if set
+	FR_BORDERONLY   =  1 << 4,  ///< Draw border only, no background
+	FR_LOWERED      =  1 << 5,  ///< If set the frame is lowered and the background color brighter (ie. buttons when pressed)
+	FR_DARKENED     =  1 << 6,  ///< If set the background is darker, allows for lowered frames with normal background color when used with FR_LOWERED (ie. dropdown boxes)
 };
 
 DECLARE_ENUM_AS_BIT_SET(FrameFlags);
@@ -205,14 +205,14 @@ struct WindowDesc {
 };
 
 enum WindowDefaultFlag {
-	WDF_STD_TOOLTIPS    =   1, ///< use standard routine when displaying tooltips
-	WDF_DEF_WIDGET      =   2, ///< default widget control for some widgets in the on click event
-	WDF_STD_BTN         =   4, ///< default handling for close and drag widgets (widget no 0 and 1)
+	WDF_STD_TOOLTIPS    =   1 << 0, ///< use standard routine when displaying tooltips
+	WDF_DEF_WIDGET      =   1 << 1, ///< default widget control for some widgets in the on click event
+	WDF_STD_BTN         =   1 << 2, ///< default handling for close and drag widgets (widget no 0 and 1)
 
-	WDF_UNCLICK_BUTTONS =  16, ///< Unclick buttons when the window event times out */
-	WDF_STICKY_BUTTON   =  32, ///< Set window to sticky mode; they are not closed unless closed with 'X' (widget 2)
-	WDF_RESIZABLE       =  64, ///< A window can be resized
-	WDF_MODAL           = 128, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
+	WDF_UNCLICK_BUTTONS =   1 << 4, ///< Unclick buttons when the window event times out */
+	WDF_STICKY_BUTTON   =   1 << 5, ///< Set window to sticky mode; they are not closed unless closed with 'X' (widget 2)
+	WDF_RESIZABLE       =   1 << 6, ///< A window can be resized
+	WDF_MODAL           =   1 << 7, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
 };
 
 /* can be used as x or y coordinates to cause a specific placement */
@@ -459,11 +459,11 @@ struct scroller_d {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
 
 enum SortListFlags {
-	VL_NONE    = 0x00,  ///< no sort
-	VL_DESC    = 0x01,  ///< sort descending or ascending
-	VL_RESORT  = 0x02,  ///< instruct the code to resort the list in the next loop
-	VL_REBUILD = 0x04,  ///< create sort-listing to use for qsort and friends
-	VL_END     = 0x08
+	VL_NONE    = 0,      ///< no sort
+	VL_DESC    = 1 << 0, ///< sort descending or ascending
+	VL_RESORT  = 1 << 1, ///< instruct the code to resort the list in the next loop
+	VL_REBUILD = 1 << 2, ///< create sort-listing to use for qsort and friends
+	VL_END     = 1 << 3,
 };
 
 DECLARE_ENUM_AS_BIT_SET(SortListFlags);
