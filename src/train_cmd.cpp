@@ -885,6 +885,7 @@ static void AddWagonToConsist(Vehicle *v, Vehicle *dest)
 	if (dest == NULL) return;
 
 	Vehicle *next = dest->Next();
+	v->SetNext(NULL);
 	dest->SetNext(v);
 	v->SetNext(next);
 	ClearFreeWagon(v);
