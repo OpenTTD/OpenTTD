@@ -350,6 +350,12 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 		}
 	}
 
+	/* Sometimes a full path is given. To support
+	 * the 'subdirectory' must be 'removed'. */
+	if (f == NULL && subdir != NO_DIRECTORY) {
+		f = FioFOpenFile(filename, mode, NO_DIRECTORY, filesize);
+	}
+
 	return f;
 }
 
