@@ -294,6 +294,17 @@ CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint
 	return CommandCost();
 }
 
+/**
+ * In case of an unsafe unpause, we want the
+ * user to confirm that it might crash.
+ * @param w         unused
+ * @param confirmed whether the user confirms his/her action
+ */
+static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
+{
+	DoCommandP(0, confirmed ? 0 : 1, 0, NULL, CMD_PAUSE);
+}
+
 /** Pause/Unpause the game (server-only).
  * Increase or decrease the pause counter. If the counter is zero,
  * the game is unpaused. A counter is used instead of a boolean value
@@ -307,7 +318,24 @@ CommandCost CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
 		_pause_game += (p1 == 1) ? 1 : -1;
-		if (_pause_game == (byte)-1) _pause_game = 0;
+
+		switch (_pause_game) {
+			case (byte)-4:
+			case (byte)-1:
+				_pause_game = 0;
+				break;
+			case (byte)-3:
+				ShowQuery(
+					STR_NEWGRF_UNPAUSE_WARNING_TITLE,
+					STR_NEWGRF_UNPAUSE_WARNING,
+					NULL,
+					AskUnsafeUnpauseCallback
+				);
+				break;
+
+			default: break;
+		}
+
 		InvalidateWindow(WC_STATUS_BAR, 0);
 		InvalidateWindow(WC_MAIN_TOOLBAR, 0);
 	}

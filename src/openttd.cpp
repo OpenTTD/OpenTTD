@@ -1357,7 +1357,7 @@ bool AfterLoadGame()
 
 	switch (gcf_res) {
 		case GLC_COMPATIBLE: _switch_mode_errorstr = STR_NEWGRF_COMPATIBLE_LOAD_WARNING; break;
-		case GLC_NOT_FOUND: _switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; break;
+		case GLC_NOT_FOUND: _switch_mode_errorstr = STR_NEWGRF_DISABLED_WARNING; _pause_game = (byte)-1; break;
 		default: break;
 	}
 
