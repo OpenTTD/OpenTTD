@@ -1170,16 +1170,26 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 
 	/* Do the action for every tile into the area */
 	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
-		/* Make sure the specified tile belongs to the current player, and that it is a railroad station. */
-		if (!IsTileType(tile2, MP_STATION) || !IsRailwayStation(tile2) || !_patches.nonuniform_stations) {
+		/* Make sure the specified tile is a railroad station */
+		if (!IsTileType(tile2, MP_STATION) || !IsRailwayStation(tile2)) {
+			continue;
+		}
+
+		/* If there is a vehicle on ground, do not allow to remove (flood) the tile */
+		if (!EnsureNoVehicleOnGround(tile2)) {
 			continue;
 		}
 
 		/* Check ownership of station */
 		Station *st = GetStationByTile(tile2);
-		if (_current_player != OWNER_WATER && (!CheckOwnership(st->owner) || !EnsureNoVehicleOnGround(tile2))) {
+		if (_current_player != OWNER_WATER && !CheckOwnership(st->owner)) {
 			continue;
 		}
+
+		/* Do not allow removing from stations if non-uniform stations are not enabled
+		 * The check must be here to give correct error message
+ 		 */
+		if (!_patches.nonuniform_stations) return_cmd_error(STR_306D_NONUNIFORM_STATIONS_DISALLOWED);
 
 		/* If we reached here, the tile is valid so increase the quantity of tiles we will remove */
 		quantity++;
