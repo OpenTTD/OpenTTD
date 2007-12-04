@@ -902,6 +902,7 @@ void SwitchMode(int new_mode)
 	case SM_LOAD: { /* Load game, Play Scenario */
 		_opt_ptr = &_opt;
 		ResetGRFConfig(true);
+		ResetWindowSystem();
 
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
 			LoadIntroGame();
