@@ -664,6 +664,20 @@ static Vehicle *FindFloodableVehicleOnTile(TileIndex tile)
 		return NULL;
 	}
 
+	/* if non-uniform stations are disabled, flood some train in this train station (if there is any) */
+	if (!_patches.nonuniform_stations && IsTileType(tile, MP_STATION) && GetStationType(tile) == STATION_RAIL) {
+		const Station *st = GetStationByTile(tile);
+
+		BEGIN_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
+			if (st->TileBelongsToRailStation(t)) {
+				Vehicle *v = FindVehicleOnTileZ(t, 0);
+				if (v != NULL && (v->vehstatus & VS_CRASHED) == 0) return v;
+			}
+		END_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
+
+		return NULL;
+	}
+
 	if (!IsBridgeTile(tile)) return FindVehicleOnTileZ(tile, 0);
 
 	TileIndex end = GetOtherBridgeEnd(tile);
