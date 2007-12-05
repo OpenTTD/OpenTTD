@@ -662,7 +662,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	/* redraw the station view since acceptance changed */
-	InvalidateWindowWidget(WC_STATION_VIEW, st->index, 4);
+	InvalidateWindowWidget(WC_STATION_VIEW, st->index, 5);
 }
 
 static void UpdateStationSignCoord(Station *st)
@@ -2535,7 +2535,7 @@ static void UpdateStationRating(Station *st)
 	if (waiting_changed) {
 		InvalidateWindow(WC_STATION_VIEW, index);
 	} else {
-		InvalidateWindowWidget(WC_STATION_VIEW, index, 5);
+		InvalidateWindowWidget(WC_STATION_VIEW, index, 6);
 	}
 }
 
