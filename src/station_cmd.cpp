@@ -1076,6 +1076,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
 		/* success, so don't delete the new station */
 		st_auto_delete.Detach();
 	}
@@ -1215,6 +1216,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 			/* if we deleted the whole station, delete the train facility. */
 			if (st->train_tile == 0) {
 				st->facilities &= ~FACIL_TRAIN;
+				InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
 				UpdateStationVirtCoordDirty(st);
 				DeleteStationIfEmpty(st);
 			}
@@ -1279,6 +1281,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 		st->num_specs = 0;
 		st->speclist  = NULL;
 
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
 		UpdateStationVirtCoordDirty(st);
 		DeleteStationIfEmpty(st);
 	}
@@ -1458,6 +1461,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_ROADVEHS);
 		/* success, so don't delete the new station and the new road stop */
 		st_auto_delete.Detach();
 		rs_auto_delete.Detach();
@@ -1508,6 +1512,7 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 			pred->next = cur_stop->next;
 		}
 
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_ROADVEHS);
 		delete cur_stop;
 		DoClearSquare(tile);
 		st->rect.AfterRemoveTile(st, tile);
@@ -1771,6 +1776,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_PLANES);
 		/* success, so don't delete the new station */
 		st_auto_delete.Detach();
 	}
@@ -1819,6 +1825,7 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
 		st->airport_tile = 0;
 		st->facilities &= ~FACIL_AIRPORT;
 
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_PLANES);
 		UpdateStationVirtCoordDirty(st);
 		DeleteStationIfEmpty(st);
 	}
@@ -1867,6 +1874,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
 		/* success, so don't delete the new station */
 		st_auto_delete.Detach();
 	}
@@ -1907,6 +1915,8 @@ static CommandCost RemoveBuoy(Station *st, uint32 flags)
 		 * braindead.. */
 		st->facilities &= ~FACIL_DOCK;
 		st->had_vehicle_of_type &= ~HVOT_BUOY;
+
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
 
 		/* We have to set the water tile's state to the same state as before the
 		 * buoy was placed. Otherwise one could plant a buoy on a canal edge,
@@ -2029,6 +2039,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
 		/* success, so don't delete the new station */
 		st_auto_delete.Detach();
 	}
@@ -2057,6 +2068,7 @@ static CommandCost RemoveDock(Station *st, uint32 flags)
 		st->dock_tile = 0;
 		st->facilities &= ~FACIL_DOCK;
 
+		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
 		UpdateStationVirtCoordDirty(st);
 		DeleteStationIfEmpty(st);
 	}
