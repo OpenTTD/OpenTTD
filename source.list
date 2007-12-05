@@ -189,6 +189,7 @@ sound.h
 sprite.h
 spritecache.h
 station.h
+station_gui.h
 stdafx.h
 string.h
 texteff.hpp

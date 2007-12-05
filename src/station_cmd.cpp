@@ -45,6 +45,7 @@
 #include "autoslope.h"
 #include "transparency.h"
 #include "water.h"
+#include "station_gui.h"
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)
@@ -662,7 +663,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	/* redraw the station view since acceptance changed */
-	InvalidateWindowWidget(WC_STATION_VIEW, st->index, 5);
+	InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_ACCEPTLIST);
 }
 
 static void UpdateStationSignCoord(Station *st)
@@ -2533,9 +2534,9 @@ static void UpdateStationRating(Station *st)
 
 	StationID index = st->index;
 	if (waiting_changed) {
-		InvalidateWindow(WC_STATION_VIEW, index);
+		InvalidateWindow(WC_STATION_VIEW, index); // update whole window
 	} else {
-		InvalidateWindowWidget(WC_STATION_VIEW, index, 6);
+		InvalidateWindowWidget(WC_STATION_VIEW, index, SVW_RATINGLIST); // update only ratings list
 	}
 }
 

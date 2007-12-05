@@ -670,6 +670,9 @@
 				RelativePath=".\..\src\station.h">
 			</File>
 			<File
+				RelativePath=".\..\src\station_gui.h">
+			</File>
+			<File
 				RelativePath=".\..\src\stdafx.h">
 			</File>
 			<File

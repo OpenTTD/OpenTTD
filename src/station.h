@@ -250,10 +250,6 @@ StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h);
 void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord();
 
-/* sorter stuff */
-void RebuildStationLists();
-void ResortStationLists();
-
 static inline StationID GetMaxStationIndex()
 {
 	/* TODO - This isn't the real content of the function, but

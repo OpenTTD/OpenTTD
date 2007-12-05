@@ -36,6 +36,7 @@
 #include "helpers.hpp"
 #include "cargotype.h"
 #include "roadveh.h"
+#include "station_gui.h"
 
 Station::Station(TileIndex tile)
 {
@@ -133,7 +134,7 @@ void Station::AddFacility(byte new_facility_bit, TileIndex facil_xy)
 void Station::MarkDirty() const
 {
 	if (sign.width_1 != 0) {
-		InvalidateWindowWidget(WC_STATION_VIEW, index, 1);
+		InvalidateWindowWidget(WC_STATION_VIEW, index, SVW_CAPTION);
 
 		/* We use ZOOM_LVL_MAX here, as every viewport can have an other zoom,
 		 *  and there is no way for us to know which is the biggest. So make the
