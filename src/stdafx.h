@@ -4,6 +4,7 @@
 
 #ifndef STDAFX_H
 #define STDAFX_H
+#define DEBUG_DUMP_COMMANDS
 
 /* It seems that we need to include stdint.h before anything else
  * We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC

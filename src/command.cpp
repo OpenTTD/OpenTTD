@@ -609,6 +609,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		return true;
 	}
 #endif /* ENABLE_NETWORK */
+#ifdef DEBUG_DUMP_COMMANDS
+	debug_dump_commands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)_current_player, tile, p1, p2, cmd, _cmd_text);
+#endif /* DUMP_COMMANDS */
 
 	/* update last build coordinate of player. */
 	if (tile != 0 && IsValidPlayer(_current_player)) {

@@ -1466,7 +1466,7 @@ bool IsNetworkCompatibleVersion(const char *other)
 #ifdef DEBUG_DUMP_COMMANDS
 void CDECL debug_dump_commands(const char *s, ...)
 {
-	static FILE *f = FioFOpenFile("commands-out.log", "wb", SAVE_DIR);
+	static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 	if (f == NULL) return;
 
 	va_list va;
