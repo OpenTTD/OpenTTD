@@ -2197,8 +2197,11 @@ void RelocateAllWindows(int neww, int newh)
 			default:
 				left = w->left;
 				if (left + (w->width >> 1) >= neww) left = neww - w->width;
+				if (left < 0) left = 0;
+
 				top = w->top;
 				if (top + (w->height >> 1) >= newh) top = newh - w->height;
+				if (top < 0) top = 0;
 				break;
 		}
 
