@@ -66,6 +66,9 @@ void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
 {
 	assert(GetTileSlope(t, NULL) == SLOPE_FLAT);
 
+	/* Mark tile dirty in all cases */
+	MarkTileDirtyByTile(t);
+
 	/* Non-sealevel -> canal */
 	if (TileHeight(t) != 0) {
 		MakeCanal(t, o);
@@ -87,7 +90,6 @@ void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
 	} else {
 		MakeWater(t);
 	}
-	MarkTileDirtyByTile(t);
 }
 
 
