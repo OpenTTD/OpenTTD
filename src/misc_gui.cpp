@@ -1180,7 +1180,7 @@ static const Widget _query_string_widgets[] = {
 static const WindowDesc _query_string_desc = {
 	190, 219, 260, 42, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_TEXTENTRY,
 	_query_string_widgets,
 	QueryStringWndProc
 };
@@ -1648,7 +1648,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _load_dialog_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 154, 257, 294,
 	WC_SAVELOAD, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE | WDF_TEXTENTRY,
 	_load_dialog_widgets,
 	SaveLoadDlgWndProc,
 };
@@ -1656,7 +1656,7 @@ static const WindowDesc _load_dialog_desc = {
 static const WindowDesc _save_dialog_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 180, 257, 320,
 	WC_SAVELOAD, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE | WDF_TEXTENTRY,
 	_save_dialog_widgets,
 	SaveLoadDlgWndProc,
 };

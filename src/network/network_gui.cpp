@@ -1852,7 +1852,7 @@ static const Widget _chat_window_widgets[] = {
 static const WindowDesc _chat_window_desc = {
 	WDP_CENTER, -26, 320, 14, 640, 14, // x, y, width, height
 	WC_SEND_NETWORK_MSG, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_TEXTENTRY,
 	_chat_window_widgets,
 	ChatWindowWndProc
 };
@@ -1951,7 +1951,7 @@ static const Widget _ncp_window_widgets[] = {
 static const WindowDesc _ncp_window_desc = {
 	WDP_AUTO, WDP_AUTO, 300, 63, 300, 63,
 	WC_COMPANY_PASSWORD_WINDOW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_TEXTENTRY,
 	_ncp_window_widgets,
 	NetworkCompanyPasswordWindowWndProc
 };
