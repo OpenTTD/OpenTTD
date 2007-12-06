@@ -18,12 +18,18 @@
 #include "bridge.h"
 
 static struct BridgeData {
+	uint8 last_size;
 	uint count;
 	TileIndex start_tile;
 	TileIndex end_tile;
 	uint8 type;
 	uint8 indexes[MAX_BRIDGES];
 	Money costs[MAX_BRIDGES];
+
+	BridgeData()
+		: last_size(4)
+		, count(0)
+		{};
 } _bridgedata;
 
 void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2)
@@ -39,9 +45,32 @@ static void BuildBridge(Window *w, int i)
 		CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
 }
 
+/* Names of the build bridge selection window */
+enum BuildBridgeSelectionWidgets {
+	BBSW_CLOSEBOX = 0,
+	BBSW_CAPTION,
+	BBSW_BRIDGE_LIST,
+	BBSW_SCROLLBAR,
+	BBSW_RESIZEBOX
+};
+
 static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+		case WE_CREATE:
+			w->resize.step_height = 22;
+			w->vscroll.count = _bridgedata.count;
+
+			if (_bridgedata.last_size <= 4) {
+				w->vscroll.cap = 4;
+			} else {
+				/* Resize the bridge selection window if we used a bigger one the last time */
+				w->vscroll.cap = (w->vscroll.count > _bridgedata.last_size) ? _bridgedata.last_size : w->vscroll.count;
+				ResizeWindow(w, 0, (w->vscroll.cap - 4) * w->resize.step_height);
+				w->widget[BBSW_BRIDGE_LIST].data = (w->vscroll.cap << 8) + 1;
+			}
+			break;
+
 		case WE_PAINT: {
 			DrawWindowWidgets(w);
 
@@ -71,7 +100,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_CLICK:
-			if (e->we.click.widget == 2) {
+			if (e->we.click.widget == BBSW_BRIDGE_LIST) {
 				uint ind = ((int)e->we.click.pt.y - 14) / w->resize.step_height;
 				if (ind < w->vscroll.cap) {
 					ind += w->vscroll.pos;
@@ -84,21 +113,25 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 
 		case WE_RESIZE:
 			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
-			w->widget[2].data = (w->vscroll.cap << 8) + 1;
+			w->widget[BBSW_BRIDGE_LIST].data = (w->vscroll.cap << 8) + 1;
 			SetVScrollCount(w, _bridgedata.count);
+
+			_bridgedata.last_size = w->vscroll.cap;
 			break;
 	}
 }
 
+/* Widget definition for the rail bridge selection window */
 static const Widget _build_bridge_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  7,  11, 199,   0,  13, STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  14, 101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  14,  89, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199,  90, 101, 0x0,                         STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},            // BBSW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  7,  11, 199,   0,  13, STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},  // BBSW_CAPTION
+{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  14, 101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},  // BBSW_BRIDGE_LIST
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  14,  89, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST}, // BBSW_SCROLLBAR
+{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199,  90, 101, 0x0,                         STR_RESIZE_BUTTON},                // BBSW_RESIZEBOX
 {   WIDGETS_END},
 };
 
+/* Window definition for the rail bridge selection window */
 static const WindowDesc _build_bridge_desc = {
 	WDP_AUTO, WDP_AUTO, 200, 102, 200, 102,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
@@ -107,16 +140,17 @@ static const WindowDesc _build_bridge_desc = {
 	BuildBridgeWndProc
 };
 
-
+/* Widget definition for the road bridge selection window */
 static const Widget _build_road_bridge_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  7,  11, 199,   0,  13, STR_1803_SELECT_ROAD_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  14, 101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  14,  89, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199,  90, 101, 0x0,                         STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},            // BBSW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  7,  11, 199,   0,  13, STR_1803_SELECT_ROAD_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},  // BBSW_CAPTION
+{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  14, 101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},  // BBSW_BRIDGE_LIST
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  14,  89, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST}, // BBSW_SCROLLBAR
+{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199,  90, 101, 0x0,                         STR_RESIZE_BUTTON},                // BBSW_RESIZEBOX
 {   WIDGETS_END},
 };
 
+/* Window definition for the road bridge selection window */
 static const WindowDesc _build_road_bridge_desc = {
 	WDP_AUTO, WDP_AUTO, 200, 102, 200, 102,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
@@ -167,10 +201,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 	}
 
 	if (j != 0) {
-		Window *w = AllocateWindowDesc((_bridgedata.type & 0x80) ? &_build_road_bridge_desc : &_build_bridge_desc);
-		w->vscroll.cap = 4;
-		w->vscroll.count = j;
-		w->resize.step_height = 22;
+		AllocateWindowDesc((_bridgedata.type & 0x80) ? &_build_road_bridge_desc : &_build_bridge_desc);
 	} else {
 		ShowErrorMessage(errmsg, STR_5015_CAN_T_BUILD_BRIDGE_HERE, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
 	}
