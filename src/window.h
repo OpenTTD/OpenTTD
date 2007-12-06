@@ -208,7 +208,7 @@ enum WindowDefaultFlag {
 	WDF_STD_TOOLTIPS    =   1 << 0, ///< use standard routine when displaying tooltips
 	WDF_DEF_WIDGET      =   1 << 1, ///< default widget control for some widgets in the on click event
 	WDF_STD_BTN         =   1 << 2, ///< default handling for close and drag widgets (widget no 0 and 1)
-	WDF_TEXTENTRY       =   1 << 3, ///< This window is authorized to receive keyboard events
+
 	WDF_UNCLICK_BUTTONS =   1 << 4, ///< Unclick buttons when the window event times out */
 	WDF_STICKY_BUTTON   =   1 << 5, ///< Set window to sticky mode; they are not closed unless closed with 'X' (widget 2)
 	WDF_RESIZABLE       =   1 << 6, ///< A window can be resized

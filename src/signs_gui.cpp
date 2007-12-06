@@ -298,7 +298,7 @@ static const Widget _query_sign_edit_widgets[] = {
 static const WindowDesc _query_sign_edit_desc = {
 	190, 170, 260, 42, 260, 42,
 	WC_QUERY_STRING, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_TEXTENTRY,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_query_sign_edit_widgets,
 	QuerySignEditWndProc
 };

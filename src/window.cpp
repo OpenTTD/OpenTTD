@@ -1676,6 +1676,10 @@ void HandleKeypress(uint32 key)
 {
 	Window* const *wz;
 	WindowEvent e;
+	/* Stores if a window with a textfield for typing is open
+	 * If this is the case, keypress events are only passed to windows with text fields and
+	 * to thein this main toolbar. */
+	bool query_open = false;
 
 	/*
 	* During the generation of the world, there might be
@@ -1694,12 +1698,28 @@ void HandleKeypress(uint32 key)
 	e.we.keypress.keycode = GB(key, 16, 16);
 	e.we.keypress.cont = true;
 
+	/* check if we have a query string window open before allowing hotkeys */
+	if (FindWindowById(WC_QUERY_STRING,            0) != NULL ||
+			FindWindowById(WC_SEND_NETWORK_MSG,        0) != NULL ||
+			FindWindowById(WC_GENERATE_LANDSCAPE,      0) != NULL ||
+			FindWindowById(WC_CONSOLE,                 0) != NULL ||
+			FindWindowById(WC_SAVELOAD,                0) != NULL ||
+			FindWindowById(WC_COMPANY_PASSWORD_WINDOW, 0) != NULL) {
+		query_open = true;
+	}
+
 	/* Call the event, start with the uppermost window. */
 	for (wz = _last_z_window; wz != _z_windows;) {
 		Window *w = *--wz;
 
-		/* Only call the event for the windows declared as been text entry enabled */
-		if (!(w->desc_flags & WDF_TEXTENTRY)) {
+		/* if a query window is open, only call the event for certain window types */
+		if (query_open &&
+				w->window_class != WC_QUERY_STRING &&
+				w->window_class != WC_SEND_NETWORK_MSG &&
+				w->window_class != WC_GENERATE_LANDSCAPE &&
+				w->window_class != WC_CONSOLE &&
+				w->window_class != WC_SAVELOAD &&
+				w->window_class != WC_COMPANY_PASSWORD_WINDOW) {
 			continue;
 		}
 		w->wndproc(w, &e);
