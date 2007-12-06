@@ -8,15 +8,18 @@
 #include "newgrf_callbacks.h"
 
 enum {
-	CC_NOAVAILABLE  = 0,
-	CC_PASSENGERS   = 1 << 0,
-	CC_MAIL         = 1 << 1,
-	CC_EXPRESS      = 1 << 2,
-	CC_ARMOURED     = 1 << 3,
-	CC_BULK         = 1 << 4,
-	CC_PIECE_GOODS  = 1 << 5,
-	CC_LIQUID       = 1 << 6,
-	CC_REFRIGERATED = 1 << 7,
+	CC_NOAVAILABLE  = 0,       ///< No cargo class has been specified
+	CC_PASSENGERS   = 1 <<  0, ///< Passengers
+	CC_MAIL         = 1 <<  1, ///< Mail
+	CC_EXPRESS      = 1 <<  2, ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
+	CC_ARMOURED     = 1 <<  3, ///< Armoured cargo (Valuables, Gold, Diamonds)
+	CC_BULK         = 1 <<  4, ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
+	CC_PIECE_GOODS  = 1 <<  5, ///< Piece goods (Livestock, Wood, Steel, Paper)
+	CC_LIQUID       = 1 <<  6, ///< Liquids (Oil, Water, Rubber)
+	CC_REFRIGERATED = 1 <<  7, ///< Refrigerated cargo (Food, Fruit)
+	CC_HAZARDOUS    = 1 <<  8, ///< Hazardous cargo (Nucleair Fuel, Explosives, etc.)
+	CC_COVERED      = 1 <<  9, ///< Covered/Sheltered Freight (Transporation in Box Vans, Silo Wagons, etc.)
+	CC_SPECIAL      = 1 << 15  ///< Special bit used for livery refit tricks instead of normal cargoes.
 };
 
 static const CargoID CT_DEFAULT      = NUM_CARGO + 0;
