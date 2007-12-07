@@ -580,7 +580,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 	case WE_ABORT_PLACE_OBJ:
 		RaiseWindowButtons(w);
 		w->DisableWidget(RTW_REMOVE);
-		InvalidateWidget(w, RTW_REMOVE);
+		w->InvalidateWidget(RTW_REMOVE);
 
 		w = FindWindowById(WC_BUILD_SIGNAL, 0);
 		if (w != NULL) WP(w, def_d).close = true;

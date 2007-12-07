@@ -794,7 +794,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case DEPOT_WIDGET_CLONE: // Clone button
-					InvalidateWidget(w, DEPOT_WIDGET_CLONE);
+					w->InvalidateWidget(DEPOT_WIDGET_CLONE);
 					w->ToggleWidgetLoweredState(DEPOT_WIDGET_CLONE);
 
 					if (w->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
@@ -856,7 +856,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 		case WE_ABORT_PLACE_OBJ: {
 			w->RaiseWidget(DEPOT_WIDGET_CLONE);
-			InvalidateWidget(w, DEPOT_WIDGET_CLONE);
+			w->InvalidateWidget(DEPOT_WIDGET_CLONE);
 		} break;
 
 			/* check if a vehicle in a depot was clicked.. */

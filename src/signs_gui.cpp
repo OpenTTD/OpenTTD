@@ -184,7 +184,7 @@ static void UpdateSignEditWindow(Window *w, const Sign *si)
 	WP(w, editsign_d).cur_sign = si->index;
 	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, 31, 255); // Allow 31 characters (including \0)
 
-	InvalidateWidget(w, QUERY_EDIT_SIGN_WIDGET_TEXT);
+	w->InvalidateWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 }
 
 static void RenameSign(SignID index, const char *text)

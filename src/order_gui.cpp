@@ -397,7 +397,7 @@ static void OrdersPlaceObj(const Vehicle *v, TileIndex tile, Window *w)
  */
 static void OrderClick_Goto(Window *w, const Vehicle *v)
 {
-	InvalidateWidget(w, ORDER_WIDGET_GOTO);
+	w->InvalidateWidget(ORDER_WIDGET_GOTO);
 	w->ToggleWidgetLoweredState(ORDER_WIDGET_GOTO);
 	if (w->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 		_place_clicked_vehicle = NULL;
@@ -700,7 +700,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 	case WE_ABORT_PLACE_OBJ: {
 		w->RaiseWidget(ORDER_WIDGET_GOTO);
-		InvalidateWidget( w, ORDER_WIDGET_GOTO);
+		w->InvalidateWidget(ORDER_WIDGET_GOTO);
 	} break;
 
 	// check if a vehicle in a depot was clicked..
@@ -731,7 +731,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		for (i = 0; i < w->widget_count; i++) {
 			if (w->IsWidgetLowered(i) && i != ORDER_WIDGET_GOTO) {
 				w->RaiseWidget(i);
-				InvalidateWidget(w, i);
+				w->InvalidateWidget(i);
 			}
 		}
 	} break;

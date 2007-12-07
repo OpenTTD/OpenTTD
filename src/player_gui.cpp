@@ -1179,7 +1179,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 						SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, w);
 						SetTileSelectSize(2, 2);
 						w->LowerWidget(PCW_WIDGET_BUILD_VIEW_HQ);
-						InvalidateWidget(w, PCW_WIDGET_BUILD_VIEW_HQ);
+						w->InvalidateWidget(PCW_WIDGET_BUILD_VIEW_HQ);
 					} else {
 						ScrollMainWindowToTile(tile);
 					}
@@ -1190,7 +1190,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, w);
 					SetTileSelectSize(2, 2);
 					w->LowerWidget(PCW_WIDGET_RELOCATE_HQ);
-					InvalidateWidget(w, PCW_WIDGET_RELOCATE_HQ);
+					w->InvalidateWidget(PCW_WIDGET_RELOCATE_HQ);
 					break;
 
 				case PCW_WIDGET_BUY_SHARE:

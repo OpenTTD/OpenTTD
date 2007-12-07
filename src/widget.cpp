@@ -603,7 +603,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 			Window *w2 = FindWindowById(WP(w,dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
 			if (w2 != NULL) {
 				w2->RaiseWidget(WP(w,dropdown_d).parent_button);
-				InvalidateWidget(w2, WP(w,dropdown_d).parent_button);
+				w2->InvalidateWidget(WP(w,dropdown_d).parent_button);
 			}
 		} break;
 	}
@@ -626,7 +626,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 	w->LowerWidget(button);
 
-	InvalidateWidget(w, button);
+	w->InvalidateWidget(button);
 
 	for (i = 0; strings[i] != INVALID_STRING_ID; i++) {}
 	if (i == 0) return;

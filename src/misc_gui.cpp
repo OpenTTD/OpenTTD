@@ -1016,24 +1016,24 @@ int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *e)
 	case WKC_RETURN: case WKC_NUM_ENTER: return 1;
 	case (WKC_CTRL | 'V'):
 		if (InsertTextBufferClipboard(&string->text))
-			InvalidateWidget(w, wid);
+			w->InvalidateWidget(wid);
 		break;
 	case (WKC_CTRL | 'U'):
 		DeleteTextBufferAll(&string->text);
-		InvalidateWidget(w, wid);
+		w->InvalidateWidget(wid);
 		break;
 	case WKC_BACKSPACE: case WKC_DELETE:
 		if (DeleteTextBufferChar(&string->text, e->we.keypress.keycode))
-			InvalidateWidget(w, wid);
+			w->InvalidateWidget(wid);
 		break;
 	case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
 		if (MoveTextBufferPos(&string->text, e->we.keypress.keycode))
-			InvalidateWidget(w, wid);
+			w->InvalidateWidget(wid);
 		break;
 	default:
 		if (IsValidChar(e->we.keypress.key, string->afilter)) {
 			if (InsertTextBufferChar(&string->text, e->we.keypress.key)) {
-				InvalidateWidget(w, wid);
+				w->InvalidateWidget(wid);
 			}
 		} else { // key wasn't caught. Continue only if standard entry specified
 			e->we.keypress.cont = (string->afilter == CS_ALPHANUMERAL);
@@ -1057,7 +1057,7 @@ bool HandleCaret(Textbuf *tb)
 
 void HandleEditBox(Window *w, querystr_d *string, int wid)
 {
-	if (HandleCaret(&string->text)) InvalidateWidget(w, wid);
+	if (HandleCaret(&string->text)) w->InvalidateWidget(wid);
 }
 
 void DrawEditBox(Window *w, querystr_d *string, int wid)
@@ -1564,7 +1564,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 					/* SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox */
 					ttd_strlcpy(WP(w, querystr_d).text.buf, file->title, WP(w, querystr_d).text.maxlength);
 					UpdateTextBufferSize(&WP(w, querystr_d).text);
-					InvalidateWidget(w, 10);
+					w->InvalidateWidget(10);
 				}
 			} else {
 				/* Changed directory, need repaint. */

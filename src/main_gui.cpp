@@ -706,7 +706,7 @@ static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base
 
 	assert(disabled_mask == 0 || item_count <= 8);
 	w->LowerWidget(parent_button);
-	InvalidateWidget(w, parent_button);
+	w->InvalidateWidget(parent_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
@@ -741,7 +741,7 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
 	int x = w->widget[main_button].left + w->left;
 
 	w->LowerWidget(main_button);
-	InvalidateWidget(w, main_button);
+	w->InvalidateWidget(main_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	w = AllocateWindow(x, 0x16, 0xF1, 0x52, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
@@ -1361,7 +1361,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		for (i = 0; i < w->widget_count; i++) {
 			if (w->IsWidgetLowered(i)) {
 				w->RaiseWidget(i);
-				InvalidateWidget(w, i);
+				w->InvalidateWidget(i);
 			}
 			if (i == 3) i = 11;
 		}
@@ -1679,12 +1679,12 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_MOUSELOOP:
 		if (w->IsWidgetLowered(0) != !!_pause_game) {
 			w->ToggleWidgetLoweredState(0);
-			InvalidateWidget(w, 0);
+			w->InvalidateWidget(0);
 		}
 
 		if (w->IsWidgetLowered(1) != !!_fast_forward) {
 			w->ToggleWidgetLoweredState(1);
-			InvalidateWidget(w, 1);
+			w->InvalidateWidget(1);
 		}
 		break;
 
@@ -1720,7 +1720,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		for (i = 2; i < w->widget_count; i++) {
 			if (w->IsWidgetLowered(i)) {
 				w->RaiseWidget(i);
-				InvalidateWidget(w, i);
+				w->InvalidateWidget(i);
 			}
 		}
 		break;
@@ -2109,14 +2109,14 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 
 		if (WP(w, def_d).data_1 > -1280) { // Scrolling text
 			WP(w, def_d).data_1 -= 2;
-			InvalidateWidget(w, 1);
+			w->InvalidateWidget(1);
 		}
 
 		if (WP(w, def_d).data_2 > 0) { // Red blot to show there are new unread newsmessages
 			WP(w, def_d).data_2 -= 2;
 		} else if (WP(w, def_d).data_2 < 0) {
 			WP(w, def_d).data_2 = 0;
-			InvalidateWidget(w, 1);
+			w->InvalidateWidget(1);
 		}
 
 		break;

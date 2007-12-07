@@ -860,7 +860,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			_network_game_info.use_password = (_network_server_password[0] != '\0');
 		} else {
 			int32 value = atoi(e->we.edittext.str);
-			InvalidateWidget(w, nd->widget_id);
+			w->InvalidateWidget(nd->widget_id);
 			switch (nd->widget_id) {
 				default: NOT_REACHED();
 				case NSSW_CLIENTS_TXT:    _network_game_info.clients_max    = Clamp(value, 2, MAX_CLIENTS); break;

@@ -75,7 +75,7 @@ void RaiseWindowButtons(Window *w)
 	for (i = 0; i < w->widget_count; i++) {
 		if (w->IsWidgetLowered(i)) {
 			w->RaiseWidget(i);
-			InvalidateWidget(w, i);
+			w->InvalidateWidget(i);
 		}
 	}
 }
@@ -148,7 +148,7 @@ void HandleButtonClick(Window *w, byte widget)
 {
 	w->LowerWidget(widget);
 	w->flags4 |= 5 << WF_TIMEOUT_SHL;
-	InvalidateWidget(w, widget);
+	w->InvalidateWidget(widget);
 }
 
 
@@ -200,13 +200,13 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 
 		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX) {
 			StartWindowSizing(w);
-			InvalidateWidget(w, e.we.click.widget);
+			w->InvalidateWidget(e.we.click.widget);
 			return;
 		}
 
 		if (w->desc_flags & WDF_STICKY_BUTTON && wi->type == WWT_STICKYBOX) {
 			w->flags4 ^= WF_STICKY;
-			InvalidateWidget(w, e.we.click.widget);
+			w->InvalidateWidget(e.we.click.widget);
 			return;
 		}
 	}
@@ -2008,7 +2008,7 @@ void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_in
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
 		if (w->window_class == cls && w->window_number == number) {
-			InvalidateWidget(w, widget_index);
+			w->InvalidateWidget(widget_index);
 		}
 	}
 }

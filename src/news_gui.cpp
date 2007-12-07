@@ -860,7 +860,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 				case WIDGET_NEWSOPT_SOUNDTICKER: // Change ticker sound on/off
 					_news_ticker_sound ^= 1;
 					w->ToggleWidgetLoweredState(e->we.click.widget);
-					InvalidateWidget(w, e->we.click.widget);
+					w->InvalidateWidget(e->we.click.widget);
 					break;
 
 				default: { // Clicked on the [<] .. [>] widgets
