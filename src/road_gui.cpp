@@ -467,9 +467,13 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		RaiseWindowButtons(w);
-		w->DisableWidget(RTW_REMOVE);
-		InvalidateWidget(w, RTW_REMOVE);
+		w->RaiseButtons();
+		w->SetWidgetsDisabledState(true,
+			RTW_REMOVE,
+			RTW_ONE_WAY,
+			WIDGET_LIST_END);
+		w->InvalidateWidget(RTW_REMOVE);
+		w->InvalidateWidget(RTW_ONE_WAY);
 
 		w = FindWindowById(WC_BUS_STATION, 0);
 		if (w != NULL) WP(w, def_d).close = true;
