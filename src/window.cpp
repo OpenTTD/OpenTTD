@@ -134,7 +134,7 @@ void Window::RaiseButtons()
 	}
 }
 
-void Window::InvalidateWidget(byte widget_index)
+void Window::InvalidateWidget(byte widget_index) const
 {
 	const Widget *wi = &this->widget[widget_index];
 

@@ -297,7 +297,7 @@ struct Window {
 	void CDECL SetWidgetsDisabledState(bool disab_stat, int widgets, ...);
 	void CDECL SetWidgetsHiddenState(bool hidden_stat, int widgets, ...);
 	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
-	void InvalidateWidget(byte widget_index);
+	void InvalidateWidget(byte widget_index) const;
 };
 
 struct querystr_d {
