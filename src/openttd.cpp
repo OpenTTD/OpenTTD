@@ -2203,6 +2203,20 @@ bool AfterLoadGame()
 		}
 	}
 
+	/*
+	 * Add the 'previous' owner to the ship depots so we can reset it with
+	 * the correct values when it gets destroyed. This prevents that
+	 * someone can remove canals owned by somebody else and it prevents
+	 * making floods using the removal of ship depots.
+	 */
+	if (CheckSavegameVersion(83)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_WATER) && IsShipDepot(t)) {
+				_m[t].m4 = (TileHeight(t) == 0) ? OWNER_WATER : OWNER_NONE;
+			}
+		}
+	}
+
 	if (CheckSavegameVersion(74)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) {

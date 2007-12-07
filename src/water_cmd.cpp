@@ -81,8 +81,8 @@ void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
 	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
 		TileIndex neighbour = TileAddByDiagDir(t, dir);
 		if (IsTileType(neighbour, MP_WATER)) {
-			has_water |= IsSea(neighbour) || IsCoast(neighbour);
-			has_canal |= IsCanal(neighbour);
+			has_water |= IsSea(neighbour) || IsCoast(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) == OWNER_WATER);
+			has_canal |= IsCanal(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) != OWNER_WATER);
 		}
 	}
 	if (has_canal || !has_water) {
@@ -116,6 +116,8 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	if (IsBridgeAbove(tile) || IsBridgeAbove(tile2)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
+	Owner o1 = GetTileOwner(tile);
+	Owner o2 = GetTileOwner(tile2);
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -128,14 +130,23 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (flags & DC_EXEC) {
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis);
-		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis);
+		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis, o1);
+		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis, o2);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 		d_auto_delete.Detach();
 	}
 
 	return cost.AddCost(_price.build_ship_depot);
+}
+
+static void MakeWaterOrCanalDependingOnOwner(TileIndex tile, Owner o)
+{
+	if (o == OWNER_WATER) {
+		MakeWater(tile);
+	} else {
+		MakeCanal(tile, o);
+	}
 }
 
 static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
@@ -154,8 +165,8 @@ static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 		/* Kill the depot, which is registered at the northernmost tile. Use that one */
 		delete GetDepotByTile(tile2 < tile ? tile2 : tile);
 
-		MakeWater(tile);
-		MakeWater(tile2);
+		MakeWaterOrCanalDependingOnOwner(tile,  GetShipDepotWaterOwner(tile));
+		MakeWaterOrCanalDependingOnOwner(tile2, GetShipDepotWaterOwner(tile2));
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 	}
