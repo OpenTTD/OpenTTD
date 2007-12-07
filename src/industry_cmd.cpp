@@ -1184,14 +1184,14 @@ bool IsSlopeRefused(Slope current, Slope refused)
 {
 	if (IsSteepSlope(current)) return true;
 	if (current != SLOPE_FLAT) {
-		if (refused & SLOPE_STEEP) return true;
+		if (IsSteepSlope(refused)) return true;
 
 		Slope t = ComplementSlope(current);
 
-		if (refused & 1 && (t & SLOPE_NW)) return false;
-		if (refused & 2 && (t & SLOPE_NE)) return false;
-		if (refused & 4 && (t & SLOPE_SW)) return false;
-		if (refused & 8 && (t & SLOPE_SE)) return false;
+		if (refused & SLOPE_W && (t & SLOPE_NW)) return true;
+		if (refused & SLOPE_S && (t & SLOPE_NE)) return true;
+		if (refused & SLOPE_E && (t & SLOPE_SW)) return true;
+		if (refused & SLOPE_N && (t & SLOPE_SE)) return true;
 	}
 
 	return false;
