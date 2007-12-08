@@ -575,7 +575,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 				if (len == 0) {
 					*(char**)ptr = NULL;
 				} else {
-					*(char**)ptr = (char*)malloc(len + 1); // terminating '\0'
+					*(char**)ptr = MallocT<char>(len + 1); // terminating '\0'
 					ptr = *(char**)ptr;
 					SlCopyBytes(ptr, len);
 				}
@@ -1060,7 +1060,7 @@ static void WriteLZO(uint size)
 static bool InitLZO()
 {
 	_sl.bufsize = LZO_SIZE;
-	_sl.buf = _sl.buf_ori = (byte*)malloc(LZO_SIZE);
+	_sl.buf = _sl.buf_ori = MallocT<byte>(LZO_SIZE);
 	return true;
 }
 
@@ -1085,7 +1085,7 @@ static void WriteNoComp(uint size)
 static bool InitNoComp()
 {
 	_sl.bufsize = LZO_SIZE;
-	_sl.buf = _sl.buf_ori = (byte*)malloc(LZO_SIZE);
+	_sl.buf = _sl.buf_ori = MallocT<byte>(LZO_SIZE);
 	return true;
 }
 
@@ -1154,7 +1154,7 @@ static bool InitReadZlib()
 	if (inflateInit(&_z) != Z_OK) return false;
 
 	_sl.bufsize = 4096;
-	_sl.buf = _sl.buf_ori = (byte*)malloc(4096 + 4096); // also contains fread buffer
+	_sl.buf = _sl.buf_ori = MallocT<byte>(4096 + 4096); // also contains fread buffer
 	return true;
 }
 
@@ -1194,7 +1194,7 @@ static bool InitWriteZlib()
 	if (deflateInit(&_z, 6) != Z_OK) return false;
 
 	_sl.bufsize = 4096;
-	_sl.buf = _sl.buf_ori = (byte*)malloc(4096); // also contains fread buffer
+	_sl.buf = _sl.buf_ori = MallocT<byte>(4096); // also contains fread buffer
 	return true;
 }
 

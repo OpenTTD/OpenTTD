@@ -491,7 +491,7 @@ const void *GetRawSprite(SpriteID sprite, bool real_sprite)
 void GfxInitSpriteMem()
 {
 	/* initialize sprite cache heap */
-	if (_spritecache_ptr == NULL) _spritecache_ptr = (MemBlock*)malloc(_sprite_cache_size * 1024 * 1024);
+	if (_spritecache_ptr == NULL) _spritecache_ptr = (MemBlock*)MallocT<byte>(_sprite_cache_size * 1024 * 1024);
 
 	/* A big free block */
 	_spritecache_ptr->size = ((_sprite_cache_size * 1024 * 1024) - sizeof(MemBlock)) | S_FREE_MASK;

@@ -144,7 +144,7 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		pixelsize = sizeof(uint8);
 	}
 
-	row_pointer = (png_byte *)malloc(info_ptr->width * pixelsize);
+	row_pointer = (png_byte *)MallocT<byte>(info_ptr->width * pixelsize);
 	if (row_pointer == NULL) {
 		png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
 		return false;

@@ -34,7 +34,7 @@ struct CFixedSizeArrayT {
 	CFixedSizeArrayT()
 	{
 		// allocate block for header + items (don't construct items)
-		m_items = (Titem*)(((int8*)malloc(ThdrSize + Tcapacity * sizeof(Titem))) + ThdrSize);
+		m_items = (Titem*)((MallocT<int8>(ThdrSize + Tcapacity * sizeof(Titem))) + ThdrSize);
 		SizeRef() = 0; // initial number of items
 		RefCnt() = 1; // initial reference counter
 	}

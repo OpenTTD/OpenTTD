@@ -133,7 +133,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 {
 	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 	if (bpp == 0) _dedicated_video_mem = NULL;
-	else          _dedicated_video_mem = malloc(_cur_resolution[0] * _cur_resolution[1] * (bpp / 8));
+	else          _dedicated_video_mem = MallocT<byte>(_cur_resolution[0] * _cur_resolution[1] * (bpp / 8));
 
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];

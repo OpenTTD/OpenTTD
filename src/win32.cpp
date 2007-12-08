@@ -322,7 +322,7 @@ static void SubmitFile(HWND wnd, const TCHAR *file)
 	size = GetFileSize(h, NULL);
 	if (size > 500000) goto error1;
 
-	mem = malloc(size);
+	mem = MallocT<byte>(size);
 	if (mem == NULL) goto error1;
 
 	if (!ReadFile(h, mem, size, &read, NULL) || read != size) goto error2;

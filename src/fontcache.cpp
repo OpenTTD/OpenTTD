@@ -365,7 +365,7 @@ static void SetGlyphPtr(FontSize size, WChar key, const GlyphEntry *glyph)
 
 void *AllocateFont(size_t size)
 {
-	return malloc(size);
+	return MallocT<byte>(size);
 }
 
 

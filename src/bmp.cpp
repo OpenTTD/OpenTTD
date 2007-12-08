@@ -354,7 +354,7 @@ bool BmpReadBitmap(BmpBuffer *buffer, BmpInfo *info, BmpData *data)
 {
 	assert(info != NULL && data != NULL);
 
-	data->bitmap = (byte*)calloc(info->width * info->height, ((info->bpp == 24) ? 3 : 1) * sizeof(byte));
+	data->bitmap = CallocT<byte>(info->width * info->height * ((info->bpp == 24) ? 3 : 1));
 	if (data->bitmap == NULL) return false;
 
 	/* Load image */

@@ -310,7 +310,7 @@ void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets)
 	h->hash = hash;
 	h->size = 0;
 	h->num_buckets = num_buckets;
-	h->buckets = (HashNode*)malloc(num_buckets * (sizeof(*h->buckets) + sizeof(*h->buckets_in_use)));
+	h->buckets = (HashNode*)MallocT<byte>(num_buckets * (sizeof(*h->buckets) + sizeof(*h->buckets_in_use)));
 #ifdef HASH_DEBUG
 	debug("Buckets = %p", h->buckets);
 #endif

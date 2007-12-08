@@ -298,7 +298,7 @@ public:
 	/** all allocation should happen here */
 	static FORCEINLINE CHdr* RawAlloc(bsize_t num_bytes)
 	{
-		return (CHdr*)malloc(num_bytes);
+		return (CHdr*)MallocT<byte>(num_bytes);
 	}
 
 	/** all deallocations should happen here */

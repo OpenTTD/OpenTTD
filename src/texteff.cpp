@@ -292,7 +292,7 @@ TextEffectID AddTextEffect(StringID msg, int x, int y, uint16 duration, TextEffe
 	/* If there is none found, we grow the array */
 	if (i == _num_text_effects) {
 		_num_text_effects += 25;
-		_text_effect_list = (TextEffect*) realloc(_text_effect_list, _num_text_effects * sizeof(TextEffect));
+		_text_effect_list = ReallocT<TextEffect>(_text_effect_list, _num_text_effects);
 		for (; i < _num_text_effects; i++) _text_effect_list[i].string_id = INVALID_STRING_ID;
 		i = _num_text_effects - 1;
 	}

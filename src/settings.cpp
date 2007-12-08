@@ -80,7 +80,7 @@ static SettingsMemoryPool *pool_new(uint minsize)
 	SettingsMemoryPool *p;
 	if (minsize < 4096 - 12) minsize = 4096 - 12;
 
-	p = (SettingsMemoryPool*)malloc(sizeof(SettingsMemoryPool) - 1 + minsize);
+	p = (SettingsMemoryPool*)MallocT<byte>(sizeof(SettingsMemoryPool) - 1 + minsize);
 	p->pos = 0;
 	p->size = minsize;
 	p->next = NULL;
