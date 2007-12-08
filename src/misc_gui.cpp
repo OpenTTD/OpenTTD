@@ -772,7 +772,7 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 	b = InlineString(b, STR_000D_ACCEPTS);
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (b >= lastof(_userstring) - 5) break;
+		if (b >= lastof(_userstring) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
 		switch (sct) {
 			case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CC_PASSENGERS)) continue; break;
 			case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(i, CC_PASSENGERS)) continue; break;
@@ -795,6 +795,10 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 	if (first) b = InlineString(b, STR_00D0_NOTHING);
 
 	*b = '\0';
+
+	/* Make sure we detect any buffer overflow */
+	assert(b < endof(_userstring));
+
 	DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);
 }
 

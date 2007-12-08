@@ -506,6 +506,8 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
 			if (!HasBit(cmask, cid)) continue;
 
+			if (b >= lastof(_userstring) - (2 + 2 * 4)) break; // ", " and two calls to Utf8Encode()
+
 			if (!first) b = strecpy(b, ", ", lastof(_userstring));
 			first = false;
 
@@ -515,6 +517,10 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 
 	/* Terminate and display the completed string */
 	*b = '\0';
+
+	/* Make sure we detect any buffer overflow */
+	assert(b < endof(_userstring));
+
 	return DrawStringMultiLine(x, y, STR_SPEC_USERSTRING, w);
 }
 

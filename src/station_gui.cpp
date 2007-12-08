@@ -807,7 +807,7 @@ static void DrawStationViewWindow(Window *w)
 		b = InlineString(b, STR_000C_ACCEPTS);
 
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			if (b >= endof(_userstring) - 5 - 1) break;
+			if (b >= lastof(_userstring) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
 			if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) {
 				if (first) {
 					first = false;
@@ -824,6 +824,10 @@ static void DrawStationViewWindow(Window *w)
 		if (first) b = InlineString(b, STR_00D0_NOTHING);
 
 		*b = '\0';
+
+		/* Make sure we detect any buffer overflow */
+		assert(b < endof(_userstring));
+
 		DrawStringMultiLine(2, 67, STR_SPEC_USERSTRING, 245);
 	} else { // extended window with list of cargo ratings
 		DrawString(2, 67, STR_3034_LOCAL_RATING_OF_TRANSPORT, TC_FROMSTRING);
