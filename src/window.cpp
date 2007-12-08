@@ -90,6 +90,13 @@ void Window::InvalidateWidget(byte widget_index) const
 	SetDirtyBlocks(this->left + wi->left, this->top + wi->top, this->left + wi->right + 1, this->top + wi->bottom + 1);
 }
 
+void Window::HandleButtonClick(byte widget)
+{
+	this->LowerWidget(widget);
+	this->flags4 |= 5 << WF_TIMEOUT_SHL;
+	this->InvalidateWidget(widget);
+}
+
 void HandleButtonClick(Window *w, byte widget)
 {
 	w->LowerWidget(widget);

@@ -279,6 +279,8 @@ struct Window {
 	Window *parent;
 	byte custom[WINDOW_CUSTOM_SIZE];
 
+	void HandleButtonClick(byte widget);
+
 	void SetWidgetDisabledState(byte widget_index, bool disab_stat);
 	void DisableWidget(byte widget_index);
 	void EnableWidget(byte widget_index);
