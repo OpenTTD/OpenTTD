@@ -1806,6 +1806,7 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 	if (sd == NULL) return CMD_ERROR;
 	if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) return CMD_ERROR;
 
+	if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return CMD_ERROR;
 	if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
