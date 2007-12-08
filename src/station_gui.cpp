@@ -228,7 +228,6 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 
 	/* Create array for sorting */
 	const Station** station_sort = MallocT<const Station*>(GetMaxStationIndex() + 1);
-	if (station_sort == NULL) error("Could not allocate memory for the station-sorting-list");
 
 	DEBUG(misc, 3, "Building station list for player %d", owner);
 
@@ -255,7 +254,6 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 
 	free((void*)sl->sort_list);
 	sl->sort_list = MallocT<const Station*>(n);
-	if (n != 0 && sl->sort_list == NULL) error("Could not allocate memory for the station-sorting-list");
 	sl->list_length = n;
 
 	for (uint i = 0; i < n; ++i) sl->sort_list[i] = station_sort[i];

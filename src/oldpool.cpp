@@ -55,12 +55,9 @@ bool OldMemoryPoolBase::AddBlockToPool()
 
 	/* Increase the poolsize */
 	this->blocks = ReallocT(this->blocks, this->current_blocks + 1);
-	if (this->blocks == NULL) error("Pool: (%s) could not allocate memory for blocks", this->name);
 
 	/* Allocate memory to the new block item */
 	this->blocks[this->current_blocks] = MallocT<byte>(this->item_size * (1 << this->block_size_bits));
-	if (this->blocks[this->current_blocks] == NULL)
-		error("Pool: (%s) could not allocate memory for blocks", this->name);
 
 	/* Clean the content of the new block */
 	memset(this->blocks[this->current_blocks], 0, this->item_size * (1 << this->block_size_bits));

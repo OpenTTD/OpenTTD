@@ -43,9 +43,6 @@ static void BuildGroupList(grouplist_d* gl, PlayerID owner, VehicleType vehicle_
 	if (!(gl->l.flags & VL_REBUILD)) return;
 
 	list = MallocT<const Group*>(GetGroupArraySize());
-	if (GetGroupArraySize() != 0 && list == NULL) {
-		error("Could not allocate memory for the group-sorting-list");
-	}
 
 	FOR_ALL_GROUPS(g) {
 		if (g->owner == owner && g->vehicle_type == vehicle_type) list[n++] = g;
@@ -53,9 +50,6 @@ static void BuildGroupList(grouplist_d* gl, PlayerID owner, VehicleType vehicle_
 
 	free((void*)gl->sort_list);
 	gl->sort_list = MallocT<const Group *>(n);
-	if (n != 0 && gl->sort_list == NULL) {
-		error("Could not allocate memory for the group-sorting-list");
-	}
 	gl->l.list_length = n;
 
 	for (uint i = 0; i < n; ++i) gl->sort_list[i] = list[i];

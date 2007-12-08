@@ -52,14 +52,13 @@ void AllocateMap(uint size_x, uint size_y)
 	free(_m);
 	free(_me);
 
-	_m = CallocT<Tile>(_map_size);
-	_me = CallocT<TileExtended>(_map_size);
-
 	/* XXX @todo handle memory shortage more gracefully
+	 * CallocT does the out-of-memory check
 	 * Maybe some attemps could be made to try with smaller maps down to 64x64
 	 * Maybe check for available memory before doing the calls, after all, we know how big
 	 * the map is */
-	if ((_m == NULL) || (_me == NULL)) error("Failed to allocate memory for the map");
+	_m = CallocT<Tile>(_map_size);
+	_me = CallocT<TileExtended>(_map_size);
 }
 
 

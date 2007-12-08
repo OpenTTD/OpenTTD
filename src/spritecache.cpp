@@ -53,10 +53,6 @@ static SpriteCache *AllocateSpriteCache(uint index)
 
 		_spritecache = ReallocT(_spritecache, items);
 
-		if (_spritecache == NULL) {
-			error("Unable to allocate sprite cache of %d items (%d bytes)", items, items * sizeof(*_spritecache));
-		}
-
 		/* Reset the new items and update the count */
 		memset(_spritecache + _spritecache_items, 0, (items - _spritecache_items) * sizeof(*_spritecache));
 		_spritecache_items = items;
@@ -411,8 +407,7 @@ static void DeleteEntryFromSpriteCache()
 
 	/* Display an error message and die, in case we found no sprite at all.
 	 * This shouldn't really happen, unless all sprites are locked. */
-	if (best == (uint)-1)
-		error("Out of sprite memory");
+	if (best == (uint)-1) error("Out of sprite memory");
 
 	/* Mark the block as free (the block must be in use) */
 	s = (MemBlock*)GetSpriteCache(best)->ptr - 1;

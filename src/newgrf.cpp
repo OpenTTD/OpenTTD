@@ -5421,7 +5421,6 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* No preloaded sprite to work with; allocate and read the
 		 * pseudo sprite content. */
 		buf = MallocT<byte>(num);
-		if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
 		FioReadBlock(buf, num);
 	} else {
 		/* Use the preloaded sprite data. */

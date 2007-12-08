@@ -47,7 +47,6 @@ static void GlobalSortSignList()
 
 	/* Create array for sorting */
 	_sign_sort = ReallocT(_sign_sort, GetMaxSignIndex() + 1);
-	if (_sign_sort == NULL) error("Could not allocate memory for the sign-sorting-list");
 
 	FOR_ALL_SIGNS(si) _sign_sort[n++] = si;
 	_num_sign_sort = n;
