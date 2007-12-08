@@ -26,48 +26,6 @@ static Window _windows[25];
 Window *_z_windows[lengthof(_windows)];
 Window **_last_z_window; ///< always points to the next free space in the z-array
 
-void CDECL SetWindowWidgetsDisabledState(Window *w, bool disab_stat, int widgets, ...)
-{
-	va_list wdg_list;
-
-	va_start(wdg_list, widgets);
-
-	while (widgets != WIDGET_LIST_END) {
-		w->SetWidgetDisabledState(widgets, disab_stat);
-		widgets = va_arg(wdg_list, int);
-	}
-
-	va_end(wdg_list);
-}
-
-void CDECL SetWindowWidgetsHiddenState(Window *w, bool hidden_stat, int widgets, ...)
-{
-	va_list wdg_list;
-
-	va_start(wdg_list, widgets);
-
-	while (widgets != WIDGET_LIST_END) {
-		w->SetWidgetHiddenState(widgets, hidden_stat);
-		widgets = va_arg(wdg_list, int);
-	}
-
-	va_end(wdg_list);
-}
-
-void CDECL SetWindowWidgetsLoweredState(Window *w, bool lowered_stat, int widgets, ...)
-{
-	va_list wdg_list;
-
-	va_start(wdg_list, widgets);
-
-	while (widgets != WIDGET_LIST_END) {
-		w->SetWidgetLoweredState(widgets, lowered_stat);
-		widgets = va_arg(wdg_list, int);
-	}
-
-	va_end(wdg_list);
-}
-
 void RaiseWindowButtons(Window *w)
 {
 	uint i;
@@ -1989,16 +1947,6 @@ void InvalidateWindow(WindowClass cls, WindowNumber number)
 		const Window *w = *wz;
 		if (w->window_class == cls && w->window_number == number) SetWindowDirty(w);
 	}
-}
-
-void InvalidateWidget(const Window *w, byte widget_index)
-{
-	const Widget *wi = &w->widget[widget_index];
-
-	/* Don't redraw the window if the widget is invisible or of no-type */
-	if (wi->type == WWT_EMPTY || w->IsWidgetHidden(widget_index)) return;
-
-	SetDirtyBlocks(w->left + wi->left, w->top + wi->top, w->left + wi->right + 1, w->top + wi->bottom + 1);
 }
 
 void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index)

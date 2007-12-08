@@ -622,167 +622,16 @@ Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void 
 void DrawWindowViewport(const Window *w);
 void ResizeWindow(Window *w, int x, int y);
 
-/**
- * Sets the enabled/disabled status of a widget.
- * By default, widgets are enabled.
- * On certain conditions, they have to be disabled.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- * @param disab_stat : status to use ie: disabled = true, enabled = false
- */
-static inline void SetWindowWidgetDisabledState(Window *w, byte widget_index, bool disab_stat)
-{
-	assert(widget_index < w->widget_count);
-	SB(w->widget[widget_index].display_flags, WIDG_DISABLED, 1, !!disab_stat);
-}
-
-/**
- * Sets a widget to disabled.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- */
-static inline void DisableWindowWidget(Window *w, byte widget_index)
-{
-	SetWindowWidgetDisabledState(w, widget_index, true);
-}
-
-/**
- * Sets a widget to Enabled.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- */
-static inline void EnableWindowWidget(Window *w, byte widget_index)
-{
-	SetWindowWidgetDisabledState(w, widget_index, false);
-}
-
-/**
- * Gets the enabled/disabled status of a widget.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- * @return status of the widget ie: disabled = true, enabled = false
- */
-static inline bool IsWindowWidgetDisabled(const Window *w, byte widget_index)
-{
-	assert(widget_index < w->widget_count);
-	return HasBit(w->widget[widget_index].display_flags, WIDG_DISABLED);
-}
-
-/**
- * Sets the hidden/shown status of a widget.
- * By default, widgets are visible.
- * On certain conditions, they have to be hidden.
- * @param w Window on which the widget is located
- * @param widget_index index of this widget in the window
- * @param hidden_stat status to use ie. hidden = true, visible = false
- */
-static inline void SetWindowWidgetHiddenState(Window *w, byte widget_index, bool hidden_stat)
-{
-	assert(widget_index < w->widget_count);
-	SB(w->widget[widget_index].display_flags, WIDG_HIDDEN, 1, !!hidden_stat);
-}
-
-/**
- * Sets a widget hidden.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- */
-static inline void HideWindowWidget(Window *w, byte widget_index)
-{
-	SetWindowWidgetHiddenState(w, widget_index, true);
-}
-
-/**
- * Sets a widget visible.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- */
-static inline void ShowWindowWidget(Window *w, byte widget_index)
-{
-	SetWindowWidgetHiddenState(w, widget_index, false);
-}
-
-/**
- * Gets the visibility of a widget.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- * @return status of the widget ie: hidden = true, visible = false
- */
-static inline bool IsWindowWidgetHidden(const Window *w, byte widget_index)
-{
-	assert(widget_index < w->widget_count);
-	return HasBit(w->widget[widget_index].display_flags, WIDG_HIDDEN);
-}
-
-/**
- * Sets the lowered/raised status of a widget.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- * @param lowered_stat : status to use ie: lowered = true, raised = false
- */
-static inline void SetWindowWidgetLoweredState(Window *w, byte widget_index, bool lowered_stat)
-{
-	assert(widget_index < w->widget_count);
-	SB(w->widget[widget_index].display_flags, WIDG_LOWERED, 1, !!lowered_stat);
-}
-
-/**
- * Invert the lowered/raised  status of a widget.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- */
-static inline void ToggleWidgetLoweredState(Window *w, byte widget_index)
-{
-	assert(widget_index < w->widget_count);
-	ToggleBit(w->widget[widget_index].display_flags, WIDG_LOWERED);
-}
-
-/**
- * Marks a widget as lowered.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- */
-static inline void LowerWindowWidget(Window *w, byte widget_index)
-{
-	SetWindowWidgetLoweredState(w, widget_index, true);
-}
-
-/**
- * Marks a widget as raised.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- */
-static inline void RaiseWindowWidget(Window *w, byte widget_index)
-{
-	SetWindowWidgetLoweredState(w, widget_index, false);
-}
-
-/**
- * Gets the lowered state of a widget.
- * @param w : Window on which the widget is located
- * @param widget_index : index of this widget in the window
- * @return status of the widget ie: lowered = true, raised= false
- */
-static inline bool IsWindowWidgetLowered(const Window *w, byte widget_index)
-{
-	assert(widget_index < w->widget_count);
-	return HasBit(w->widget[widget_index].display_flags, WIDG_LOWERED);
-}
-
 void InitWindowSystem();
 void UnInitWindowSystem();
 void ResetWindowSystem();
 int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop();
-void InvalidateWidget(const Window *w, byte widget_index);
 void InvalidateThisWindowData(Window *w);
 void InvalidateWindowData(WindowClass cls, WindowNumber number);
 void RaiseWindowButtons(Window *w);
 void RelocateAllWindows(int neww, int newh);
 int PositionMainToolbar(Window *w);
-void CDECL SetWindowWidgetsDisabledState(Window *w, bool disab_stat, int widgets, ...);
-void CDECL SetWindowWidgetsHiddenState(Window *w, bool hidden_stat, int widgets, ...);
-void CDECL SetWindowWidgetsLoweredState(Window *w, bool lowered_stat, int widgets, ...);
 
 /* misc_gui.cpp */
 void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[]);
