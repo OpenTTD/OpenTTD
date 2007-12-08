@@ -432,7 +432,7 @@ STR_0170                                                        :{TINYFONT}{STRI
 STR_0171_PAUSE_GAME                                             :{BLACK}Pause game
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Save game, abandon game, quit
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Display list of company's stations
-STR_0174_DISPLAY_MAP                                            :{BLACK}Display map
+STR_0174_DISPLAY_MAP                                            :{BLACK}Display map, extra viewport or list of signs
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Display map, town directory
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Display town directory
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Display company finances information
@@ -854,7 +854,7 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Select '
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Select 'sub-arctic' landscape style
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Select 'sub-tropical' landscape style
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Select 'toyland' landscape style
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fund construction of new industry
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fund construction of new industry or list all industries
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industry Directory
