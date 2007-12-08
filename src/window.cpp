@@ -26,18 +26,6 @@ static Window _windows[25];
 Window *_z_windows[lengthof(_windows)];
 Window **_last_z_window; ///< always points to the next free space in the z-array
 
-void RaiseWindowButtons(Window *w)
-{
-	uint i;
-
-	for (i = 0; i < w->widget_count; i++) {
-		if (w->IsWidgetLowered(i)) {
-			w->RaiseWidget(i);
-			w->InvalidateWidget(i);
-		}
-	}
-}
-
 void CDECL Window::SetWidgetsDisabledState(bool disab_stat, int widgets, ...)
 {
 	va_list wdg_list;
