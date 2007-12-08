@@ -916,7 +916,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 						if (w->IsWidgetDisabled(e->we.click.widget)) return;
 						if (WP(w, depot_d).sel == INVALID_VEHICLE) return;
 
-						HandleButtonClick(w, e->we.click.widget);
+						w->HandleButtonClick(e->we.click.widget);
 
 						v = GetVehicle(WP(w, depot_d).sel);
 						WP(w, depot_d).sel = INVALID_VEHICLE;

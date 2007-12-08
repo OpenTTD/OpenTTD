@@ -256,7 +256,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 
 				case DYNA_INDU_FUND_WIDGET: {
 					if (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
-						HandleButtonClick(w, DYNA_INDU_FUND_WIDGET);
+						w->HandleButtonClick(DYNA_INDU_FUND_WIDGET);
 
 						if (GetNumTowns() == 0) {
 							ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
@@ -268,7 +268,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 						}
 					} else if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(WP(w, fnd_d).select)->IsRawIndustry()) {
 						DoCommandP(0, WP(w, fnd_d).select, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
-						HandleButtonClick(w, DYNA_INDU_FUND_WIDGET);
+						w->HandleButtonClick(DYNA_INDU_FUND_WIDGET);
 					} else {
 						HandlePlacePushButton(w, DYNA_INDU_FUND_WIDGET, SPR_CURSOR_INDUSTRY, VHM_RECT, NULL);
 					}

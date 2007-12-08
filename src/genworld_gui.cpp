@@ -384,7 +384,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case GLAND_START_DATE_DOWN: case GLAND_START_DATE_UP: // Year buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-				HandleButtonClick(w, e->we.click.widget);
+				w->HandleButtonClick(e->we.click.widget);
 				SetWindowDirty(w);
 
 				_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + e->we.click.widget - GLAND_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
@@ -399,7 +399,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case GLAND_SNOW_LEVEL_DOWN: case GLAND_SNOW_LEVEL_UP: // Snow line buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-				HandleButtonClick(w, e->we.click.widget);
+				w->HandleButtonClick(e->we.click.widget);
 				SetWindowDirty(w);
 
 				_patches_newgame.snow_line_height = Clamp(_patches_newgame.snow_line_height + e->we.click.widget - GLAND_SNOW_LEVEL_TEXT, 2, MAX_SNOWLINE_HEIGHT);
@@ -654,7 +654,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		case CSCEN_START_DATE_DOWN: case CSCEN_START_DATE_UP: // Year buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-				HandleButtonClick(w, e->we.click.widget);
+				w->HandleButtonClick(e->we.click.widget);
 				SetWindowDirty(w);
 
 				_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + e->we.click.widget - CSCEN_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
@@ -669,7 +669,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		case CSCEN_FLAT_LAND_HEIGHT_DOWN: case CSCEN_FLAT_LAND_HEIGHT_UP: // Height level buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-				HandleButtonClick(w, e->we.click.widget);
+				w->HandleButtonClick(e->we.click.widget);
 				SetWindowDirty(w);
 
 				_patches_newgame.se_flat_world_height = Clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - CSCEN_FLAT_LAND_HEIGHT_TEXT, 0, MAX_TILE_HEIGHT);

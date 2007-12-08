@@ -97,14 +97,6 @@ void Window::HandleButtonClick(byte widget)
 	this->InvalidateWidget(widget);
 }
 
-void HandleButtonClick(Window *w, byte widget)
-{
-	w->LowerWidget(widget);
-	w->flags4 |= 5 << WF_TIMEOUT_SHL;
-	w->InvalidateWidget(widget);
-}
-
-
 static void StartWindowDrag(Window *w);
 static void StartWindowSizing(Window *w);
 
@@ -132,7 +124,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 				case WWT_PANEL   | WWB_PUSHBUTTON: /* WWT_PUSHBTN */
 				case WWT_IMGBTN  | WWB_PUSHBUTTON: /* WWT_PUSHIMGBTN */
 				case WWT_TEXTBTN | WWB_PUSHBUTTON: /* WWT_PUSHTXTBTN */
-					HandleButtonClick(w, e.we.click.widget);
+					w->HandleButtonClick(e.we.click.widget);
 					break;
 			}
 		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_SCROLL2BAR || wi->type == WWT_HSCROLLBAR) {

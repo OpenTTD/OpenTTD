@@ -755,7 +755,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU: // Click on up/down button for number of spectators
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-				HandleButtonClick(w, e->we.click.widget);
+				w->HandleButtonClick(e->we.click.widget);
 				SetWindowDirty(w);
 				switch (e->we.click.widget) {
 					default: NOT_REACHED();

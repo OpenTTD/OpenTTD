@@ -1591,7 +1591,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
 			if (HandleEditBoxKey(w, &WP(w, querystr_d), 10, e) == 1) // Press Enter
-					HandleButtonClick(w, 12);
+					w->HandleButtonClick(12);
 		}
 		break;
 	case WE_TIMEOUT:

@@ -907,7 +907,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 static void ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		HandleButtonClick(w, 17);
+		w->HandleButtonClick(17);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -915,7 +915,7 @@ static void ToolbarZoomInClick(Window *w)
 static void ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT,FindWindowById(WC_MAIN_WINDOW, 0))) {
-		HandleButtonClick(w, 18);
+		w->HandleButtonClick(18);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -992,7 +992,7 @@ static void ToolbarScenDateBackward(Window *w)
 {
 	/* don't allow too fast scrolling */
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-		HandleButtonClick(w, 6);
+		w->HandleButtonClick(6);
 		SetWindowDirty(w);
 
 		_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year - 1, MIN_YEAR, MAX_YEAR);
@@ -1005,7 +1005,7 @@ static void ToolbarScenDateForward(Window *w)
 {
 	/* don't allow too fast scrolling */
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-		HandleButtonClick(w, 7);
+		w->HandleButtonClick(7);
 		SetWindowDirty(w);
 
 		_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + 1, MIN_YEAR, MAX_YEAR);
@@ -1023,7 +1023,7 @@ static void ToolbarScenMapTownDir(Window *w)
 static void ToolbarScenZoomIn(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		HandleButtonClick(w, 9);
+		w->HandleButtonClick(9);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -1031,7 +1031,7 @@ static void ToolbarScenZoomIn(Window *w)
 static void ToolbarScenZoomOut(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		HandleButtonClick(w, 10);
+		w->HandleButtonClick(10);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -1333,7 +1333,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 			break;
 		case 12: case 13: { // Increase/Decrease terraform size
 			int size = (e->we.click.widget == 12) ? 1 : -1;
-			HandleButtonClick(w, e->we.click.widget);
+			w->HandleButtonClick(e->we.click.widget);
 			size += _terraform_size;
 
 			if (!IsInsideMM(size, 1, 8 + 1)) return;
@@ -1343,7 +1343,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 		} break;
 		case 14: // gen random land
-			HandleButtonClick(w, 14);
+			w->HandleButtonClick(14);
 			ShowCreateScenario();
 			break;
 		case 15: // Reset landscape
@@ -1410,7 +1410,7 @@ static inline void ShowEditorTerraformToolBar()
 
 static void ToolbarScenGenLand(Window *w)
 {
-	HandleButtonClick(w, 11);
+	w->HandleButtonClick(11);
 	SndPlayFx(SND_15_BEEP);
 
 	ShowEditorTerraformToolBar();
@@ -1469,7 +1469,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 			uint size = min(_scengen_town_size, (int)TSM_CITY);
 			TownSizeMode mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
 
-			HandleButtonClick(w, 5);
+			w->HandleButtonClick(5);
 			_generating_world = true;
 			t = CreateRandomTown(20, mode, size);
 			_generating_world = false;
@@ -1483,7 +1483,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		case 6: {// many random towns
-			HandleButtonClick(w, 6);
+			w->HandleButtonClick(6);
 
 			_generating_world = true;
 			if (!GenerateTowns()) ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
@@ -1526,7 +1526,7 @@ static const WindowDesc _scen_edit_town_gen_desc = {
 
 static void ToolbarScenGenTown(Window *w)
 {
-	HandleButtonClick(w, 12);
+	w->HandleButtonClick(12);
 	SndPlayFx(SND_15_BEEP);
 
 	AllocateWindowDescFront(&_scen_edit_town_gen_desc, 0);
@@ -1534,28 +1534,28 @@ static void ToolbarScenGenTown(Window *w)
 
 static void ToolbarScenGenIndustry(Window *w)
 {
-	HandleButtonClick(w, 13);
+	w->HandleButtonClick(13);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildIndustryWindow();
 }
 
 static void ToolbarScenBuildRoad(Window *w)
 {
-	HandleButtonClick(w, 14);
+	w->HandleButtonClick(14);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildRoadScenToolbar();
 }
 
 static void ToolbarScenPlantTrees(Window *w)
 {
-	HandleButtonClick(w, 15);
+	w->HandleButtonClick(15);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildTreesScenToolbar();
 }
 
 static void ToolbarScenPlaceSign(Window *w)
 {
-	HandleButtonClick(w, 16);
+	w->HandleButtonClick(16);
 	SndPlayFx(SND_15_BEEP);
 	SelectSignTool();
 }

@@ -646,7 +646,6 @@ int GetWidgetFromPos(const Window *w, int x, int y);
 void DrawWindowWidgets(const Window *w);
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask);
 
-void HandleButtonClick(Window *w, byte widget);
 
 Window *GetCallbackWnd();
 void DeleteNonVitalWindows();
