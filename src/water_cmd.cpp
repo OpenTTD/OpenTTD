@@ -589,6 +589,16 @@ static void AnimateTile_Water(TileIndex tile)
 }
 
 /**
+ * Marks tile dirty if it is a canal tile.
+ * Called to avoid glitches when flooding tiles next to canal tile.
+ *
+ * @param tile tile to check
+ */
+static inline void MarkTileDirtyIfCanal(TileIndex tile) {
+	if (IsTileType(tile, MP_WATER) && IsCanal(tile)) MarkTileDirtyByTile(tile);
+}
+
+/**
  * Floods neighboured floodable tiles
  *
  * @param tile The water source tile that causes the flooding.
@@ -650,6 +660,11 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 			MakeWater(target);
 			MarkTileDirtyByTile(target);
+			/* Mark surrounding canal tiles dirty too to avoid glitches */
+			MarkTileDirtyIfCanal(target + TileDiffXY(0, 1));
+			MarkTileDirtyIfCanal(target + TileDiffXY(1, 0));
+			MarkTileDirtyIfCanal(target + TileDiffXY(0, -1));
+			MarkTileDirtyIfCanal(target + TileDiffXY(-1, 0));
 		}
 	}
 }
