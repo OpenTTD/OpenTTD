@@ -1976,7 +1976,7 @@ make_sed() {
 	ppc=`$cc_host -dumpmachine | egrep "powerpc|ppc"`
 	if [ -n "$ppc" ]; then
 		T_CFLAGS="$CFLAGS -DFOUR_BYTE_BOOL"
-		osx_sysroot_version=10.3.9
+		osx_sysroot_version=10.4u
 	else
 		T_CFLAGS="$CFLAGS"
 		osx_sysroot_version=10.4u
