@@ -85,9 +85,9 @@ void Window::RaiseButtons()
 	uint i;
 
 	for (i = 0; i < this->widget_count; i++) {
-		if (IsWidgetLowered(i)) {
-			RaiseWidget(i);
-			InvalidateWidget(i);
+		if (this->IsWidgetLowered(i)) {
+			this->RaiseWidget(i);
+			this->InvalidateWidget(i);
 		}
 	}
 }
@@ -1041,7 +1041,7 @@ static void DecreaseWindowCounters()
 
 		if (w->flags4&WF_TIMEOUT_MASK && !(--w->flags4&WF_TIMEOUT_MASK)) {
 			CallWindowEventNP(w, WE_TIMEOUT);
-			if (w->desc_flags & WDF_UNCLICK_BUTTONS) RaiseWindowButtons(w);
+			if (w->desc_flags & WDF_UNCLICK_BUTTONS) w->RaiseButtons();
 		}
 	}
 }

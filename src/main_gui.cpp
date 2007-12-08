@@ -1389,7 +1389,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		RaiseWindowButtons(w);
+		w->RaiseButtons();
 		SetWindowDirty(w);
 		break;
 	}
@@ -1509,7 +1509,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		_place_proc(e->we.place.tile);
 		break;
 	case WE_ABORT_PLACE_OBJ:
-		RaiseWindowButtons(w);
+		w->RaiseButtons();
 		w->LowerWidget(_scengen_town_size + 7);
 		SetWindowDirty(w);
 		break;

@@ -255,7 +255,7 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		RaiseWindowButtons(w);
+		w->RaiseButtons();
 		break;
 	}
 }

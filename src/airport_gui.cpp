@@ -101,7 +101,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		RaiseWindowButtons(w);
+		w->RaiseButtons();
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
 		if (w != 0)

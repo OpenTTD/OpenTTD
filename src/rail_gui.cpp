@@ -578,7 +578,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		RaiseWindowButtons(w);
+		w->RaiseButtons();
 		w->DisableWidget(RTW_REMOVE);
 		w->InvalidateWidget(RTW_REMOVE);
 

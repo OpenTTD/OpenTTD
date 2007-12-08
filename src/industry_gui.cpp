@@ -248,7 +248,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 						if ((_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
 								WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
 							/* Reset the button state if going to prospecting or "build many industries" */
-							RaiseWindowButtons(w);
+							w->RaiseButtons();
 							ResetObjectToPlace();
 						}
 					}
@@ -337,7 +337,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 
 		case WE_TIMEOUT:
 		case WE_ABORT_PLACE_OBJ:
-			RaiseWindowButtons(w);
+			w->RaiseButtons();
 			break;
 	}
 }

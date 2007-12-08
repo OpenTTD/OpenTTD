@@ -1218,11 +1218,11 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			if (DoCommandP(e->we.place.tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
 				ResetObjectToPlace();
 				w->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // this button can now behave as a normal push button
-				RaiseWindowButtons(w);
+				w->RaiseButtons();
 			break;
 
 		case WE_ABORT_PLACE_OBJ:
-			RaiseWindowButtons(w);
+			w->RaiseButtons();
 			break;
 
 		case WE_DESTROY:

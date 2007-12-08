@@ -629,7 +629,6 @@ int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop();
 void InvalidateThisWindowData(Window *w);
 void InvalidateWindowData(WindowClass cls, WindowNumber number);
-void RaiseWindowButtons(Window *w);
 void RelocateAllWindows(int neww, int newh);
 int PositionMainToolbar(Window *w);
 
