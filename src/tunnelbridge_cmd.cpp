@@ -774,7 +774,7 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 			VehicleFromPos(endtile, &endtile, UpdateTrainPowerProc);
 		}
 
-		return CommandCost((length + 1) * (RailBuildCost(totype) / 2));
+		return CommandCost((length + 1) * RailConvertCost(GetRailType(tile), totype));
 	} else if (IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
 		TileIndex endtile = GetOtherBridgeEnd(tile);
 		byte bridge_height = GetBridgeHeight(tile);
@@ -806,7 +806,7 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 			}
 		}
 
-		return CommandCost((DistanceManhattan(tile, endtile) + 1) * (RailBuildCost(totype) / 2));
+		return CommandCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(GetRailType(tile), totype));
 	} else {
 		return CMD_ERROR;
 	}

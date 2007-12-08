@@ -1201,7 +1201,7 @@ static CommandCost DoConvertRail(TileIndex tile, RailType totype, bool exec)
 		VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
 	}
 
-	return CommandCost(RailBuildCost(totype) / 2);
+	return CommandCost(RailConvertCost(GetRailType(tile), totype) * CountBits(GetTrackBits(tile)));
 }
 
 extern CommandCost DoConvertStationRail(TileIndex tile, RailType totype, bool exec);

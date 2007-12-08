@@ -807,6 +807,34 @@ static inline Money RailBuildCost(RailType railtype)
 	return (_price.build_rail * _railtype_cost_multiplier[railtype]) >> 3;
 }
 
+/**
+ * Calculates the cost of rail conversion
+ * @param from The railtype we are converting from
+ * @param to   The railtype we are converting to
+ * @return Cost per TrackBit
+ */
+static inline Money RailConvertCost(RailType from, RailType to)
+{
+	/* rail -> el. rail
+	 * calculate the price as 5 / 4 of (cost build el. rail) - (cost build rail)
+	 * (the price of workers to get to place is that 1/4)
+	 */
+	if (HasPowerOnRail(from, to)) {
+		return ((RailBuildCost(to) - RailBuildCost(from)) * 5) >> 2;
+	}
+
+	/* el. rail -> rail
+	 * calculate the price as 1 / 4 of (cost build el. rail) - (cost build rail)
+	 * (the price of workers is 1 / 4 + price of copper sold to a recycle center)
+	 */
+	if (HasPowerOnRail(to, from)) {
+		return (RailBuildCost(from) - RailBuildCost(to)) >> 2;
+	}
+
+	/* make the price the same as remove + build new type */
+	return RailBuildCost(to) + _price.remove_rail;
+}
+
 void *UpdateTrainPowerProc(Vehicle *v, void *data);
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
