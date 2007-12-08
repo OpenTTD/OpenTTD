@@ -782,8 +782,8 @@ CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 {
 	WindowQuartzSubdriver *ret;
 
-	if (!MacOSVersionIsAtLeast(10, 4, 0)) {
-		DEBUG(driver, 0, "The cocoa quartz subdriver requires Mac OS X 10.4 or later.");
+	if (!MacOSVersionIsAtLeast(10, 5, 0)) {
+		DEBUG(driver, 0, "The cocoa quartz subdriver requires Mac OS X 10.5 or later.");
 		return NULL;
 	}
 

@@ -798,8 +798,8 @@ CocoaSubdriver *QZ_CreateWindowQuickdrawSubdriver(int width, int height, int bpp
 {
 	WindowQuickdrawSubdriver *ret;
 
-	if (MacOSVersionIsAtLeast(10, 4, 0)) {
-		DEBUG(driver, 0, "The cocoa quickdraw subdriver is not recommended for Mac OS X 10.4 or later.");
+	if (MacOSVersionIsAtLeast(10, 5, 0)) {
+		DEBUG(driver, 0, "The cocoa quickdraw subdriver is not recommended for Mac OS X 10.5 or later.");
 	}
 
 	if (bpp != 8 && bpp != 32) {
