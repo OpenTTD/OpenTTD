@@ -52,11 +52,15 @@ static bool TryBuildIndustry(TileIndex tile, int type)
 }
 bool _ignore_restrictions;
 
-enum {
-	DYNA_INDU_MATRIX_WIDGET = 2,
-	DYNA_INDU_INFOPANEL = 4,
-	DYNA_INDU_FUND_WIDGET,
-	DYNA_INDU_RESIZE_WIDGET,
+/** Names of the widgets of the dynamic place industries gui */
+enum DynamicPlaceIndustriesWidgets {
+	DPIW_CLOSEBOX = 0,
+	DPIW_CAPTION,
+	DPIW_MATRIX_WIDGET,
+	DPIW_SCROLLBAR,
+	DPIW_INFOPANEL,
+	DPIW_FUND_WIDGET,
+	DPIW_RESIZE_WIDGET,
 };
 
 /** Attached struct to the window extended data */
@@ -87,11 +91,11 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			 * info coming from the callback.  SO it will only be available to tis full
 			 * height when newindistries are loaded */
 			if (!_loaded_newgrf_features.has_newindustries) {
-				w->widget[DYNA_INDU_INFOPANEL].bottom -= 44;
-				w->widget[DYNA_INDU_FUND_WIDGET].bottom -= 44;
-				w->widget[DYNA_INDU_FUND_WIDGET].top -= 44;
-				w->widget[DYNA_INDU_RESIZE_WIDGET].bottom -= 44;
-				w->widget[DYNA_INDU_RESIZE_WIDGET].top -= 44;
+				w->widget[DPIW_INFOPANEL].bottom -= 44;
+				w->widget[DPIW_FUND_WIDGET].bottom -= 44;
+				w->widget[DPIW_FUND_WIDGET].top -= 44;
+				w->widget[DPIW_RESIZE_WIDGET].bottom -= 44;
+				w->widget[DPIW_RESIZE_WIDGET].top -= 44;
 				w->resize.height = w->height -= 44;
 			}
 
@@ -138,9 +142,9 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 
 		case WE_PAINT: {
 			const IndustrySpec *indsp = (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(WP(w, fnd_d).select);
-			int x_str = w->widget[DYNA_INDU_INFOPANEL].left + 3;
-			int y_str = w->widget[DYNA_INDU_INFOPANEL].top + 3;
-			const Widget *wi = &w->widget[DYNA_INDU_INFOPANEL];
+			int x_str = w->widget[DPIW_INFOPANEL].left + 3;
+			int y_str = w->widget[DPIW_INFOPANEL].top + 3;
+			const Widget *wi = &w->widget[DPIW_INFOPANEL];
 			int max_width = wi->right - wi->left - 4;
 
 			/* Raw industries might be prospected. Show this fact by changing the string
@@ -148,11 +152,11 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			if (_game_mode == GM_EDITOR) {
 				/* We've chosen many random industries but no industries have been specified */
 				if (indsp == NULL) _fund_gui.enabled[WP(w, fnd_d).index] = _opt.diff.number_industries != 0;
-				w->widget[DYNA_INDU_FUND_WIDGET].data = STR_BUILD_NEW_INDUSTRY;
+				w->widget[DPIW_FUND_WIDGET].data = STR_BUILD_NEW_INDUSTRY;
 			} else {
-				w->widget[DYNA_INDU_FUND_WIDGET].data = (_patches.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
+				w->widget[DPIW_FUND_WIDGET].data = (_patches.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
 			}
-			w->SetWidgetDisabledState(DYNA_INDU_FUND_WIDGET, !_fund_gui.enabled[WP(w, fnd_d).index]);
+			w->SetWidgetDisabledState(DPIW_FUND_WIDGET, !_fund_gui.enabled[WP(w, fnd_d).index]);
 
 			SetVScrollCount(w, _fund_gui.count);
 
@@ -232,11 +236,16 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
+		case WE_DOUBLE_CLICK:
+			if (e->we.click.widget != DPIW_MATRIX_WIDGET) break;
+			e->we.click.widget = DPIW_FUND_WIDGET;
+			/* Fall through */
+
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case DYNA_INDU_MATRIX_WIDGET: {
+				case DPIW_MATRIX_WIDGET: {
 					const IndustrySpec *indsp;
-					int y = (e->we.click.pt.y - w->widget[DYNA_INDU_MATRIX_WIDGET].top) / 13 + w->vscroll.pos ;
+					int y = (e->we.click.pt.y - w->widget[DPIW_MATRIX_WIDGET].top) / 13 + w->vscroll.pos ;
 
 					if (y >= 0 && y < _fund_gui.count) { // Is it within the boundaries of available data?
 						WP(w, fnd_d).index = y;
@@ -254,9 +263,9 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 					}
 				} break;
 
-				case DYNA_INDU_FUND_WIDGET: {
+				case DPIW_FUND_WIDGET: {
 					if (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
-						w->HandleButtonClick(DYNA_INDU_FUND_WIDGET);
+						w->HandleButtonClick(DPIW_FUND_WIDGET);
 
 						if (GetNumTowns() == 0) {
 							ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
@@ -268,9 +277,9 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 						}
 					} else if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(WP(w, fnd_d).select)->IsRawIndustry()) {
 						DoCommandP(0, WP(w, fnd_d).select, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
-						w->HandleButtonClick(DYNA_INDU_FUND_WIDGET);
+						w->HandleButtonClick(DPIW_FUND_WIDGET);
 					} else {
-						HandlePlacePushButton(w, DYNA_INDU_FUND_WIDGET, SPR_CURSOR_INDUSTRY, VHM_RECT, NULL);
+						HandlePlacePushButton(w, DPIW_FUND_WIDGET, SPR_CURSOR_INDUSTRY, VHM_RECT, NULL);
 					}
 				} break;
 			}
@@ -279,7 +288,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 		case WE_RESIZE: {
 			/* Adjust the number of items in the matrix depending of the rezise */
 			w->vscroll.cap  += e->we.sizing.diff.y / (int)w->resize.step_height;
-			w->widget[DYNA_INDU_MATRIX_WIDGET].data = (w->vscroll.cap << 8) + 1;
+			w->widget[DPIW_MATRIX_WIDGET].data = (w->vscroll.cap << 8) + 1;
 		} break;
 
 		case WE_PLACE_OBJ: {
@@ -342,17 +351,19 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 	}
 }
 
+/** Widget definition of the dynamic place industries gui */
 static const Widget _build_dynamic_industry_widgets[] = {
-{   WWT_CLOSEBOX,    RESIZE_NONE,    7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_RIGHT,    7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX,      RESIZE_RB,    7,     0,   157,    14,   118, 0x801,                          STR_INDUSTRY_SELECTION_HINT},
-{  WWT_SCROLLBAR,     RESIZE_LRB,    7,   158,   169,    14,   118, 0x0,                            STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_RTB,    7,     0,   169,   119,   199, 0x0,                            STR_NULL},
-{    WWT_TEXTBTN,     RESIZE_RTB,    7,     0,   157,   200,   211, STR_FUND_NEW_INDUSTRY,          STR_NULL},
-{  WWT_RESIZEBOX,    RESIZE_LRTB,    7,   158,   169,   200,   211, 0x0,                            STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,    RESIZE_NONE,    7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},            // DPIW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_RIGHT,    7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},  // DPIW_CAPTION
+{     WWT_MATRIX,      RESIZE_RB,    7,     0,   157,    14,   118, 0x801,                          STR_INDUSTRY_SELECTION_HINT},      // DPIW_MATRIX_WIDGET
+{  WWT_SCROLLBAR,     RESIZE_LRB,    7,   158,   169,    14,   118, 0x0,                            STR_0190_SCROLL_BAR_SCROLLS_LIST}, // DPIW_SCROLLBAR
+{      WWT_PANEL,     RESIZE_RTB,    7,     0,   169,   119,   199, 0x0,                            STR_NULL},                         // DPIW_INFOPANEL
+{    WWT_TEXTBTN,     RESIZE_RTB,    7,     0,   157,   200,   211, STR_FUND_NEW_INDUSTRY,          STR_NULL},                         // DPIW_FUND_WIDGET
+{  WWT_RESIZEBOX,    RESIZE_LRTB,    7,   158,   169,   200,   211, 0x0,                            STR_RESIZE_BUTTON},                // DPIW_RESIZE_WIDGET
 {   WIDGETS_END},
 };
 
+/** Window definition of the dynamic place industries gui */
 static const WindowDesc _build_industry_dynamic_desc = {
 	WDP_AUTO, WDP_AUTO, 170, 212, 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
@@ -384,6 +395,18 @@ static inline bool IsProductionAlterable(const Industry *i)
 	return ((_game_mode == GM_EDITOR || _cheats.setup_prod.value) &&
 			(i->accepts_cargo[0] == CT_INVALID || i->accepts_cargo[0] == CT_VALUABLES));
 }
+
+/** Names of the widgets of the view industry gui */
+enum IndustryViewWidgets {
+	IVW_CLOSEBOX = 0,
+	IVW_CAPTION,
+	IVW_STICKY,
+	IVW_BACKGROUND,
+	IVW_VIEWPORT,
+	IVW_INFO,
+	IVW_GOTO,
+	IVW_SPACER,
+};
 
 /** Information to store about the industry window */
 struct indview_d : public vp_d {
@@ -530,7 +553,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		Industry *i;
 
 		switch (e->we.click.widget) {
-		case 5: {
+		case IVW_INFO: {
 			int line, x;
 
 			i = GetIndustry(w->window_number);
@@ -565,7 +588,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				}
 			}
 		} break;
-		case 6:
+		case IVW_GOTO:
 			i = GetIndustry(w->window_number);
 			ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
 		} break;
@@ -599,18 +622,20 @@ static void UpdateIndustryProduction(Industry *i)
 	}
 }
 
+/** Widget definition of the view industy gui */
 static const Widget _industry_view_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     9,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     9,    11,   247,     0,    13, STR_4801,          STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,     9,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,    14,   105, 0x0,               STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,     9,     2,   257,    16,   103, 0x0,               STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,   106,   147, 0x0,               STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     9,     0,   129,   148,   159, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON},
-{      WWT_PANEL,   RESIZE_NONE,     9,   130,   259,   148,   159, 0x0,               STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     9,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // IVW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,     9,    11,   247,     0,    13, STR_4801,          STR_018C_WINDOW_TITLE_DRAG_THIS},  // IVW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     9,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},                // IVW_STICKY
+{      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,    14,   105, 0x0,               STR_NULL},                         // IVW_BACKGROUND
+{      WWT_INSET,   RESIZE_NONE,     9,     2,   257,    16,   103, 0x0,               STR_NULL},                         // IVW_VIEWPORT
+{      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,   106,   147, 0x0,               STR_NULL},                         // IVW_INFO
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     9,     0,   129,   148,   159, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON}, // IVW_GOTO
+{      WWT_PANEL,   RESIZE_NONE,     9,   130,   259,   148,   159, 0x0,               STR_NULL},                         // IVW_SPACER
 {   WIDGETS_END},
 };
 
+/** Window definition of the view industy gui */
 static const WindowDesc _industry_view_desc = {
 	WDP_AUTO, WDP_AUTO, 260, 160, 260, 160,
 	WC_INDUSTRY_VIEW, WC_NONE,
@@ -632,26 +657,34 @@ void ShowIndustryViewWindow(int industry)
 	}
 }
 
-enum {
-	DIRECTORY_INDU_SORTBYNAME = 3,
-	DIRECTORY_INDU_SORTBYTYPE,
-	DIRECTORY_INDU_SORTBYPROD,
-	DIRECTORY_INDU_SORTBYTRANSPORT,
-	DIRECTORY_INDU_SHOWINDU = 8,
+/** Names of the widgets of the industry directory gui */
+enum IndustryDirectoryWidgets {
+	IDW_CLOSEBOX = 0,
+	IDW_CAPTION,
+	IDW_STICKY,
+	IDW_SORTBYNAME,
+	IDW_SORTBYTYPE,
+	IDW_SORTBYPROD,
+	IDW_SORTBYTRANSPORT,
+	IDW_SPACER,
+	IDW_INDUSRTY_LIST,
+	IDW_SCROLLBAR,
+	IDW_RESIZE,
 };
 
+/** Widget definition of the industy directory gui */
 static const Widget _industry_directory_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   495,     0,    13, STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,    13,   496,   507,     0,    13, 0x0,                     STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,   100,    14,    25, STR_SORT_BY_NAME,        STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   101,   200,    14,    25, STR_SORT_BY_TYPE,        STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   201,   300,    14,    25, STR_SORT_BY_PRODUCTION,  STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   301,   400,    14,    25, STR_SORT_BY_TRANSPORTED, STR_SORT_ORDER_TIP},
-{      WWT_PANEL,   RESIZE_NONE,    13,   401,   495,    14,    25, 0x0,                     STR_NULL},
-{      WWT_PANEL, RESIZE_BOTTOM,    13,     0,   495,    26,   189, 0x0,                     STR_200A_TOWN_NAMES_CLICK_ON_NAME},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    13,   496,   507,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,     RESIZE_TB,    13,   496,   507,   178,   189, 0x0,                     STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},             // IDW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   495,     0,    13, STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // IDW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,    13,   496,   507,     0,    13, 0x0,                     STR_STICKY_BUTTON},                 // IDW_STICKY
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,   100,    14,    25, STR_SORT_BY_NAME,        STR_SORT_ORDER_TIP},                // IDW_SORTBYNAME
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   101,   200,    14,    25, STR_SORT_BY_TYPE,        STR_SORT_ORDER_TIP},                // IDW_SORTBYTYPE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   201,   300,    14,    25, STR_SORT_BY_PRODUCTION,  STR_SORT_ORDER_TIP},                // IDW_SORTBYPROD
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   301,   400,    14,    25, STR_SORT_BY_TRANSPORTED, STR_SORT_ORDER_TIP},                // IDW_SORTBYTRANSPORT
+{      WWT_PANEL,   RESIZE_NONE,    13,   401,   495,    14,    25, 0x0,                     STR_NULL},                          // IDW_SPACER
+{      WWT_PANEL, RESIZE_BOTTOM,    13,     0,   495,    26,   189, 0x0,                     STR_200A_TOWN_NAMES_CLICK_ON_NAME}, // IDW_INDUSRTY_LIST
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    13,   496,   507,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},  // IDW_SCROLLBAR
+{  WWT_RESIZEBOX,     RESIZE_TB,    13,   496,   507,   178,   189, 0x0,                     STR_RESIZE_BUTTON},                 // IDW_RESIZE
 {   WIDGETS_END},
 };
 
@@ -815,31 +848,31 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-			case DIRECTORY_INDU_SORTBYNAME: {
+			case IDW_SORTBYNAME: {
 				_industry_sort_order = _industry_sort_order == 0 ? 1 : 0;
 				_industry_sort_dirty = true;
 				SetWindowDirty(w);
 			} break;
 
-			case DIRECTORY_INDU_SORTBYTYPE: {
+			case IDW_SORTBYTYPE: {
 				_industry_sort_order = _industry_sort_order == 2 ? 3 : 2;
 				_industry_sort_dirty = true;
 				SetWindowDirty(w);
 			} break;
 
-			case DIRECTORY_INDU_SORTBYPROD: {
+			case IDW_SORTBYPROD: {
 				_industry_sort_order = _industry_sort_order == 4 ? 5 : 4;
 				_industry_sort_dirty = true;
 				SetWindowDirty(w);
 			} break;
 
-			case DIRECTORY_INDU_SORTBYTRANSPORT: {
+			case IDW_SORTBYTRANSPORT: {
 				_industry_sort_order = _industry_sort_order == 6 ? 7 : 6;
 				_industry_sort_dirty = true;
 				SetWindowDirty(w);
 			} break;
 
-			case DIRECTORY_INDU_SHOWINDU: {
+			case IDW_INDUSRTY_LIST: {
 				int y = (e->we.click.pt.y - 28) / 10;
 				uint16 p;
 
@@ -862,8 +895,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-
-/* Industry List */
+/** Window definition of the industy directory gui */
 static const WindowDesc _industry_directory_desc = {
 	WDP_AUTO, WDP_AUTO, 508, 190, 508, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
@@ -871,7 +903,6 @@ static const WindowDesc _industry_directory_desc = {
 	_industry_directory_widgets,
 	IndustryDirectoryWndProc
 };
-
 
 void ShowIndustryDirectory()
 {
