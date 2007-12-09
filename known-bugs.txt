@@ -15,15 +15,16 @@ Bugs for 0.6.0-beta1
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
-- 1434	Network game crashes when player builds SH40
+- 1519	Full screen issues in windows
+- 1495	Long vehicles block multistop station
+- 1487	Ending_year is never written to
+- 1473	Train not going to available platform
 - 1404	Spinner widget interprets one click as many
-- 1401	Crash while scrolling screen
 - 1386	Mac OS X fails to compile out of the box on 10.5
 - 1264	Autoreplace for multiple NewGRF DMU sets fails
 - 1200	Illegal names skip comparisons for uniquity
 - 1141	[OSX] Not smooth moving map with touchpad
 - 1109	[OSX] Choppy mouse cursor movement in fullscreen mode
-- 1094	Foundations showing on 'build on slopes'
 - 1074	Large slowdown when building tracks
 - 1072	Text overflows in several windows
 -  716	Train crash in depot with long long tracks
