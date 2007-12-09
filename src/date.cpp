@@ -267,21 +267,6 @@ void IncreaseDate()
 	/* yes, call various monthly loops */
 	if (_game_mode != GM_MENU) {
 #ifdef DEBUG_DUMP_COMMANDS
-		int data[MAX_PLAYERS][TOTAL_NUM_ENGINES + 1];
-		memset(data, 0, sizeof(data));
-
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (!IsEngineCountable(v)) continue;
-			data[v->owner][v->engine_type]++;
-		}
-
-		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-			const Player *p = GetPlayer(i);
-			if (!p->is_active) continue;
-			for (int j = 0; j < TOTAL_NUM_ENGINES; j++) assert(data[i][j] == p->num_engines[j]);
-		}
-
 		char name[MAX_PATH];
 		snprintf(name, lengthof(name), "dmp_cmds_%d.sav", _date);
 		SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
