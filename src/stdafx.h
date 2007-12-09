@@ -207,7 +207,6 @@
 		#define strcasecmp stricmp
 		#define strncasecmp strnicmp
 	#endif
-/* suppress: warning C4005: 'offsetof' : macro redefinition (VC8) */
 #endif /* defined(_MSC_VER) */
 
 #if defined(WINCE)
