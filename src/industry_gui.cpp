@@ -26,30 +26,6 @@
 #include "newgrf_text.h"
 #include "date.h"
 
-extern Industry *CreateNewIndustry(TileIndex tile, IndustryType type);
-
-/**
- * Search callback function for TryBuildIndustry
- * @param tile to test
- * @param data that is passed by the caller.  In this case, the type of industry been tested
- * @return the success (or not) of the operation
- */
-static bool SearchTileForIndustry(TileIndex tile, uint32 data)
-{
-	return CreateNewIndustry(tile, data) != NULL;
-}
-
-/**
- * Perform a 9*9 tiles circular search around a tile
- * in order to find a suitable zone to create the desired industry
- * @param tile to start search for
- * @param type of the desired industry
- * @return the success (or not) of the operation
- */
-static bool TryBuildIndustry(TileIndex tile, int type)
-{
-	return CircularTileSearch(tile, 9, SearchTileForIndustry, type);
-}
 bool _ignore_restrictions;
 
 /** Names of the widgets of the dynamic place industries gui */
@@ -307,7 +283,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				_current_player = OWNER_NONE;
 				_generating_world = true;
 				_ignore_restrictions = true;
-				success = TryBuildIndustry(e->we.place.tile, WP(w, fnd_d).select);
+				success = DoCommandP(e->we.place.tile, WP(w, fnd_d).select, InteractiveRandomRange(indsp->num_table), NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 				if (!success) {
 					SetDParam(0, indsp->name);
 					ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);

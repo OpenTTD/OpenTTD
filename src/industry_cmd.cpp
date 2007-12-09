@@ -1236,9 +1236,9 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
 			}
 
-			if (ind_behav & (INDUSTRYBEH_ONLY_INTOWN | INDUSTRYBEH_TOWN1200_MORE)) {
+			if (ind_behav & (INDUSTRYBEH_ONLY_INTOWN)) {
 				if (!IsTileType(cur_tile, MP_HOUSE)) {
-					_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
+					_error_message = STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 					return false;
 				}
 				if (CmdFailed(DoCommand(cur_tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR))) return false;
@@ -1253,7 +1253,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 	/* It is almost impossible to have a fully flat land in TG, so what we
 	 *  do is that we check if we can make the land flat later on. See
 	 *  CheckIfCanLevelIndustryPlatform(). */
-	return !refused_slope || (_patches.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape);
+	return !refused_slope || (_patches.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions);
 }
 
 static bool CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
@@ -1558,7 +1558,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 		if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
 	}
 
-	if (!custom_shape_check && _patches.land_generator == LG_TERRAGENESIS && _generating_world && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
+	if (!custom_shape_check && _patches.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
 	if (!CheckIfTooCloseToIndustry(tile, type)) return NULL;
 
 	const Town *t = CheckMultipleIndustryInTown(tile, type);
