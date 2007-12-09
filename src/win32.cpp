@@ -81,6 +81,17 @@ bool LoadLibraryList(Function proc[], const char *dll)
 
 #ifdef _MSC_VER
 static const char *_exception_string = NULL;
+void SetExceptionString(const char *s, ...)
+{
+	va_list va;
+	char buf[512];
+
+	va_start(va, s);
+	vsnprintf(buf, lengthof(buf), s, va);
+	va_end(va);
+
+	_exception_string = strdup(buf);
+}
 #endif
 
 void ShowOSErrorBox(const char *buf)

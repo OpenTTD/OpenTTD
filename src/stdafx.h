@@ -207,6 +207,13 @@
 		#define strcasecmp stricmp
 		#define strncasecmp strnicmp
 	#endif
+
+	void SetExceptionString(const char* s, ...);
+
+	#if defined(NDEBUG) && defined(WITH_ASSERT)
+		#undef assert
+		#define assert(expression) if (!(expression)) { SetExceptionString("Assertion failed at %s:%d: %s", __FILE__, __LINE__, #expression); *(byte*)0 = 0; }
+	#endif
 #endif /* defined(_MSC_VER) */
 
 #if defined(WINCE)

@@ -41,7 +41,7 @@ protected:
 		if (name == NULL) return;
 
 		this->name = strdup(name);
-#if !defined(NDEBUG)
+#if !defined(NDEBUG) || defined(WITH_ASSERT)
 		/* NDEBUG disables asserts and gives a warning: unused variable 'P' */
 		std::pair<Blitters::iterator, bool> P =
 #endif /* !NDEBUG */
