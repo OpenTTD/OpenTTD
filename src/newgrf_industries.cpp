@@ -535,19 +535,3 @@ void IndustryProductionCallback(Industry *ind, int reason)
 
 	InvalidateWindow(WC_INDUSTRY_VIEW, ind->index);
 }
-
-void DoTriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
-{
-	ResolverObject object;
-
-	NewIndustryResolver(&object, ind->xy, ind);
-	object.callback = CBID_RANDOM_TRIGGER;
-	object.trigger = trigger;
-
-	const SpriteGroup *group = Resolve(GetIndustrySpec(ind->type)->grf_prop.spritegroup, &object);
-	if (group == NULL) return;
-
-	byte new_random_bits = Random();
-	ind->random &= ~object.reseed;
-	ind->random |= new_random_bits & object.reseed;
-}

@@ -413,8 +413,6 @@ void TriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger)
 	DoTriggerIndustryTile(tile, trigger, GetIndustryByTile(tile));
 }
 
-extern void DoTriggerIndustry(Industry *ind, IndustryTileTrigger trigger);
-
 void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
 {
 	BEGIN_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
@@ -422,6 +420,4 @@ void TriggerIndustry(Industry *ind, IndustryTileTrigger trigger)
 			DoTriggerIndustryTile(tile, trigger, ind);
 		}
 	END_TILE_LOOP(tile, ind->width, ind->height, ind->xy)
-
-	DoTriggerIndustry(ind, trigger);
 }
