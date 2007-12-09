@@ -256,7 +256,7 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE: // Set up window counter and start position of scroller
-		WP(w, scroller_d).counter = 0;
+		WP(w, scroller_d).counter = 5;
 		WP(w, scroller_d).height = w->height - 40;
 		break;
 	case WE_PAINT: {
@@ -282,8 +282,9 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 		DoDrawStringCentered(210, w->height - 25, "Website: http://www.openttd.org", TC_BLACK);
 		DrawStringCentered(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, TC_FROMSTRING);
 	} break;
-	case WE_MOUSELOOP: // Timer to scroll the text and adjust the new top
-		if (WP(w, scroller_d).counter++ % 3 == 0) {
+	case WE_TICK: // Timer to scroll the text and adjust the new top
+		if (--WP(w, scroller_d).counter == 0) {
+			WP(w, scroller_d).counter = 5;
 			WP(w, scroller_d).height--;
 			SetWindowDirty(w);
 		}
