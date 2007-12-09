@@ -806,7 +806,6 @@ void ShipsYearlyLoop()
 CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	CommandCost value;
-	Vehicle *v;
 	UnitID unit_num;
 	Engine *e;
 
@@ -822,11 +821,9 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileDepotType(tile, TRANSPORT_WATER)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
-	v = new Ship();
 	unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_SHIP);
-	AutoPtrT<Vehicle> v_auto_delete = v;
 
-	if (v == NULL || unit_num > _patches.max_ships)
+	if (!Vehicle::AllocateList(NULL, 1) || unit_num > _patches.max_ships)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
@@ -835,7 +832,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		const ShipVehicleInfo *svi = ShipVehInfo(p1);
 
-		v = new (v) Ship();
+		Vehicle *v = new Ship();
 		v->unitnumber = unit_num;
 
 		v->owner = _current_player;
@@ -888,8 +885,6 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Ship window
 
 		GetPlayer(_current_player)->num_engines[p1]++;
-
-		v_auto_delete.Detach();
 	}
 
 	return value;
