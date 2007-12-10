@@ -211,7 +211,7 @@ static inline uint8 FindFirstBit2x64(const int value)
 }
 
 uint8 FindFirstBit(uint32 x);
-uint8 FindLastBit(uint32 x);
+uint8 FindLastBit(uint64 x);
 
 /**
  * Clear the first bit in an integer.

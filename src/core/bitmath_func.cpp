@@ -45,7 +45,7 @@ uint8 FindFirstBit(uint32 x)
 }
 
 /**
- * Search the last set bit in a 32 bit variable.
+ * Search the last set bit in a 64 bit variable.
  *
  * This algorithm is a static implementation of a log
  * conguence search algorithm. It checks the second half
@@ -55,17 +55,18 @@ uint8 FindFirstBit(uint32 x)
  * @param x The value to search
  * @return The position of the last bit set
  */
-uint8 FindLastBit(uint32 x)
+uint8 FindLastBit(uint64 x)
 {
 	if (x == 0) return 0;
 
 	uint8 pos = 0;
 
-	if ((x & 0xffff0000) != 0) { x >>= 16; pos += 16; }
-	if ((x & 0x0000ff00) != 0) { x >>= 8;  pos += 8;  }
-	if ((x & 0x000000f0) != 0) { x >>= 4;  pos += 4;  }
-	if ((x & 0x0000000c) != 0) { x >>= 2;  pos += 2;  }
-	if ((x & 0x00000002) != 0) { pos += 1; }
+	if ((x & 0xffffffff00000000ULL) != 0) { x >>= 32; pos += 32; }
+	if ((x & 0x00000000ffff0000ULL) != 0) { x >>= 16; pos += 16; }
+	if ((x & 0x000000000000ff00ULL) != 0) { x >>= 8;  pos += 8;  }
+	if ((x & 0x00000000000000f0ULL) != 0) { x >>= 4;  pos += 4;  }
+	if ((x & 0x000000000000000cULL) != 0) { x >>= 2;  pos += 2;  }
+	if ((x & 0x0000000000000002ULL) != 0) { pos += 1; }
 
 	return pos;
 }
