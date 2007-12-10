@@ -1236,7 +1236,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
 			}
 
-			if (ind_behav & (INDUSTRYBEH_ONLY_INTOWN)) {
+			if (ind_behav & (INDUSTRYBEH_ONLY_INTOWN | INDUSTRYBEH_TOWN1200_MORE)) {
 				if (!IsTileType(cur_tile, MP_HOUSE)) {
 					_error_message = STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 					return false;
