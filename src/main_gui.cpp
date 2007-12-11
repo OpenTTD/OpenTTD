@@ -1889,7 +1889,22 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 			case WKC_F11: PlaceLandBlockInfo(); break;
 			case WKC_CTRL | 'S': MenuClickSmallScreenshot(); break;
 			case WKC_CTRL | 'G': MenuClickWorldScreenshot(); break;
+
+			/* those following are all fall through */
+			case WKC_NUM_PLUS:
+			case WKC_EQUALS:
+			case WKC_SHIFT | WKC_EQUALS:
+			case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
+
+			/* those following are all fall through */
+			case WKC_NUM_MINUS:
+			case WKC_MINUS:
+			case WKC_SHIFT | WKC_MINUS:
+			case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
+
 			case 'L': ShowEditorTerraformToolBar(); break;
+			case 'M': ShowSmallMap(); break;
+			case 'V': ShowExtraViewPortWindow(); break;
 			default: return;
 		}
 		e->we.keypress.cont = false;
@@ -2405,6 +2420,7 @@ void InitializeMainGui()
 	_last_built_railtype = RAILTYPE_RAIL;
 	_last_built_roadtype = ROADTYPE_ROAD;
 }
+
 
 
 
