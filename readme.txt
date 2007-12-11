@@ -281,30 +281,35 @@ put them in the data/ folder and you're set to go.
 X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
-  Jean-Francois Claeys (Belugas) - In training, not yet specialized
-  Bjarni Corfitzen (Bjarni)      - Mac OS X port, coder
-  Matthijs Kooijman (blathijs)   - Pathfinder-guru
-  Victor Fischer (Celestar)      - Programming everywhere you need him to
-  Tamás Faragó (Darkvater)       - Lead programmer
-  Loïc Guilloux (glx)            - In training, not yet specialized
+  Jean-Francois Claeys (Belugas) - GUI, newindustries and more
+  Bjarni Corfitzen (Bjarni)      - MacOSX port, coder and vehicles
+  Matthijs Kooijman (blathijs)   - Pathfinder-guru, pool rework
+  Loïc Guilloux (glx)            - General coding
   Jaroslav Mazanec (KUDr)        - YAPG (Yet Another Pathfinder God) ;)
-  Kerekes Miham (MiHaMiX)        - Maintainer of translator service, and host of nightlies
-  Owen Rudge (orudge)            - Contributor, forum host, OS/2 port
-  Peter Nelson (peter1138)       - Spiritual descendant from newgrf gods
-  Remko Bijker (Rubidium)        - THE desync hunter
+  Jonathan Coome (Maedhros)      - High priest of the newGRF Temple
+  Attila Bán (MiHaMiX)           - WebTranslator, Nightlies, Wiki and bugtracker host
+  Owen Rudge (orudge)            - Forum host, OS/2 port
+  Remko Bijker (Rubidium)        - Lead coder and way more
+  Benedikt Brüggemeier (skidd13) - Bug fixer and code reworker
+  Zdenek Sojka (SmatZ)           - Bug finder and fixer
+
+Inactive Developers:
+  Victor Fischer (Celestar)      - Programming everywhere you need him to
+  Tamás Faragó (Darkvater)       - Ex-Lead coder
+  Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods
   Christoph Mallon (Tron)        - Programmer, code correctness police
 
 Retired Developers:
-  Dominik Scherer (dominik81)    - Lead programmer, GUI expert (0.3.0 - 0.3.6)
-  Patric Stout (TrueLight)       - Programmer, webhoster (0.3 - pre0.6)
   Ludvig Strigeus (ludde)        - OpenTTD author, main coder (0.1 - 0.3.3)
   Serge Paquet (vurlix)          - Assistant project manager, coder (0.1 - 0.3.3)
+  Dominik Scherer (dominik81)    - Lead programmer, GUI expert (0.3.0 - 0.3.6)
+  Patric Stout (TrueLight)       - Programmer, webhoster (0.3 - pre0.6)
 
 Thanks to:
   Josef Drexler                  - For his great work on TTDPatch.
   Marcin Grzegorczyk             - For his TTDPatch work and documentation of TTD internals and graphics (signals and track foundations)
   Petr Baudis (pasky)            - Many patches, newgrf support, etc.
-  Simon Sasburg (HackyKid)       - For the many bugfixes he has blessed us with (and future PBS)
+  Simon Sasburg (HackyKid)       - For the many bugfixes he has blessed us with
   Stefan Meißner (sign_de)       - For his work on the console
   Mike Ragsdale                  - OpenTTD installer
   Cian Duffy (MYOB)              - BeOS port / manual writing
