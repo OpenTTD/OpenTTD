@@ -2254,6 +2254,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Update go to buoy orders because they are just waypoints */
+	if (CheckSavegameVersion(84)) {
+		Order *order;
+		FOR_ALL_ORDERS(order) {
+			if (order->type == OT_GOTO_STATION && GetStation(order->dest)->IsBuoy()) {
+				order->flags = 0;
+			}
+		}
+	}
+
 	return InitializeWindowsAndCaches();
 }
 

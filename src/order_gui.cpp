@@ -152,7 +152,15 @@ static void DrawOrdersWindow(Window *w)
 
 	if (order != NULL) {
 		switch (order->type) {
-			case OT_GOTO_STATION: break;
+			case OT_GOTO_STATION:
+				if (!GetStation(order->dest)->IsBuoy()) break;
+				/* Fall-through */
+
+			case OT_GOTO_WAYPOINT:
+				w->DisableWidget(ORDER_WIDGET_FULL_LOAD);
+				w->DisableWidget(ORDER_WIDGET_UNLOAD);
+				w->DisableWidget(ORDER_WIDGET_TRANSFER);
+				break;
 
 			case OT_GOTO_DEPOT:
 				w->DisableWidget(ORDER_WIDGET_TRANSFER);
@@ -161,12 +169,6 @@ static void DrawOrdersWindow(Window *w)
 				w->HideWidget(ORDER_WIDGET_UNLOAD);
 				w->ShowWidget(ORDER_WIDGET_REFIT);
 				SetDParam(2,STR_SERVICE);
-				break;
-
-			case OT_GOTO_WAYPOINT:
-				w->DisableWidget(ORDER_WIDGET_FULL_LOAD);
-				w->DisableWidget(ORDER_WIDGET_UNLOAD);
-				w->DisableWidget(ORDER_WIDGET_TRANSFER);
 				break;
 
 			default: // every other orders

@@ -676,7 +676,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (sel_ord >= v->num_orders) return CMD_ERROR;
 
 	order = GetVehicleOrder(v, sel_ord);
-	if (order->type != OT_GOTO_STATION &&
+	if ((order->type != OT_GOTO_STATION  || GetStation(order->dest)->IsBuoy()) &&
 			(order->type != OT_GOTO_DEPOT    || p2 == OFB_UNLOAD) &&
 			(order->type != OT_GOTO_WAYPOINT || p2 != OFB_NON_STOP)) {
 		return CMD_ERROR;
