@@ -207,9 +207,13 @@ char *TranslateTTDPatchCodes(const char *str)
 	}
 
 	for (;;) {
-		const char *tmp = str; // Used for UTF-8 decoding
-
-		c = (byte)*str++;
+		if (unicode && Utf8EncodedCharLen(*str) != 0) {
+			c = Utf8Consume(&str);
+			/* 'Magic' range of control codes. */
+			if (GB(c, 8, 8) == 0xE0) c = GB(c, 0, 8);
+		} else {
+			c = (byte)*str++;
+		}
 		if (c == 0) break;
 
 		switch (c) {
@@ -290,12 +294,6 @@ char *TranslateTTDPatchCodes(const char *str)
 			case 0xB7: d += Utf8Encode(d, SCC_PLANE); break;
 			case 0xB8: d += Utf8Encode(d, SCC_SHIP); break;
 			default:
-				if (unicode) {
-					d += Utf8Encode(d, Utf8Consume(&tmp));
-					str = tmp;
-					break;
-				}
-
 				/* Validate any unhandled character */
 				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
 				d += Utf8Encode(d, c);
