@@ -1461,25 +1461,21 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 
 /**
  * Can a tram track build without destruction on the given tile?
+ * @param p the player that would be building the tram tracks
  * @param t the tile to build on.
+ * @param r the road bits needed.
  * @return true when a track track can be build on 't'
  */
-static bool CanBuildTramTrackOnTile(TileIndex t)
+static bool CanBuildTramTrackOnTile(PlayerID p, TileIndex t, RoadBits r)
 {
-	switch (GetTileType(t)) {
-		case MP_CLEAR:
-		case MP_TREES:
-			return true;
+	/* The 'current' player is not necessarily the owner of the vehicle. */
+	PlayerID original_player = _current_player;
+	_current_player = p;
 
-		case MP_ROAD:
-			return GetRoadTileType(t) == ROAD_TILE_NORMAL;
+	CommandCost ret = DoCommand(t, ROADTYPE_TRAM << 4 | r, 0, 0, CMD_BUILD_ROAD);
 
-		case MP_WATER:
-			return IsCoast(t);
-
-		default:
-			return false;
-	}
+	_current_player = original_player;
+	return CmdSucceeded(ret);
 }
 
 static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
@@ -1593,7 +1589,7 @@ again:
 					 *   going to cause the tram to split up.
 					 * - Or the front of the tram can drive over the next tile.
 					 */
-				} else if (!IsRoadVehFront(v) || !CanBuildTramTrackOnTile(tile)) {
+				} else if (!IsRoadVehFront(v) || !CanBuildTramTrackOnTile(v->owner, tile, needed)) {
 					/*
 					 * Taking the 'small' corner for trams only happens when:
 					 * - We are not the from vehicle of an articulated tram.
