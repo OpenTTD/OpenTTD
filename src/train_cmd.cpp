@@ -3242,7 +3242,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		if ((ts &= (ts >> 16)) == 0) {
 			/* make a rail/road crossing red
 			 * do not make crossing red behind depot the train is entering */
-			if (IsLevelCrossingTile(tile) && (GetRailTileType(v->tile) != RAIL_TILE_DEPOT || GetRailDepotDirection(v->tile) == dir)) {
+			if (IsLevelCrossingTile(tile) && (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || GetRailDepotDirection(v->tile) == dir)) {
 				if (!IsCrossingBarred(tile)) {
 					BarCrossing(tile);
 					SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
