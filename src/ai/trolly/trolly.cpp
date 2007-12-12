@@ -37,6 +37,7 @@
 #include "../../vehicle.h"
 #include "../../date.h"
 #include "../ai.h"
+#include "../../order.h"
 
 // This function is called after StartUp. It is the init of an AI
 static void AiNew_State_FirstTime(Player *p)
@@ -1171,7 +1172,7 @@ static void AiNew_State_GiveOrders(Player *p)
 	assert(p->ainew.state == AI_STATE_GIVE_ORDERS);
 
 	if (p->ainew.veh_main_id != INVALID_VEHICLE) {
-		AI_DoCommand(0, p->ainew.veh_id + (p->ainew.veh_main_id << 16), 0, DC_EXEC, CMD_CLONE_ORDER);
+		AI_DoCommand(0, p->ainew.veh_id + (p->ainew.veh_main_id << 16), CO_SHARE, DC_EXEC, CMD_CLONE_ORDER);
 
 		p->ainew.state = AI_STATE_START_VEHICLE;
 		return;

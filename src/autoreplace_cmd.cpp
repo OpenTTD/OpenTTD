@@ -18,7 +18,7 @@
 #include "cargotype.h"
 #include "group.h"
 #include "strings.h"
-
+#include "order.h"
 
 /*
  * move the cargo from one engine to another if possible

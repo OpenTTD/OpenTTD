@@ -983,7 +983,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 
 	/* If we had shared orders, recover that */
 	if (bak->clone != INVALID_VEHICLE) {
-		DoCommandP(0, v->index | (bak->clone << 16), 0, NULL, CMD_CLONE_ORDER);
+		DoCommandP(0, v->index | (bak->clone << 16), CO_SHARE, NULL, CMD_CLONE_ORDER);
 	} else {
 
 		/* CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the

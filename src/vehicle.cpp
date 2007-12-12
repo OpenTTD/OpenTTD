@@ -44,6 +44,7 @@
 #include "group.h"
 #include "economy.h"
 #include "strings.h"
+#include "order.h"
 
 #define INVALID_COORD (0x7fffffff)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))

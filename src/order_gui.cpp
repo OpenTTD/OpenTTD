@@ -27,6 +27,7 @@
 #include "vehicle_gui.h"
 #include "timetable.h"
 #include "cargotype.h"
+#include "order.h"
 
 enum OrderWindowWidgets {
 	ORDER_WIDGET_CLOSEBOX = 0,
@@ -364,7 +365,7 @@ static bool HandleOrderVehClick(const Vehicle *v, const Vehicle *u, Window *w)
 	// obviously if you press CTRL on a non-empty orders vehicle you know what you are doing
 	if (v->num_orders != 0 && _ctrl_pressed == 0) return false;
 
-	if (DoCommandP(v->tile, v->index | (u->index << 16), _ctrl_pressed ? 0 : 1, NULL,
+	if (DoCommandP(v->tile, v->index | (u->index << 16), _ctrl_pressed ? CO_SHARE : CO_COPY, NULL,
 		_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_CANT_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_CANT_COPY_ORDER_LIST))) {
 		WP(w,order_d).sel = -1;
 		ResetObjectToPlace();
