@@ -317,7 +317,7 @@ static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
 CommandCost CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) {
-		_pause_game += (p1 == 1) ? 1 : -1;
+		_pause_game += (p1 == 0) ? -1 : 1;
 
 		switch (_pause_game) {
 			case (byte)-4:

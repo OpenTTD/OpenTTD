@@ -912,7 +912,8 @@ void SwitchMode(int new_mode)
 			/* Update the local player for a loaded game. It is either always
 			 * player #1 (eg 0) or in the case of a dedicated server a spectator */
 			SetLocalPlayer(_network_dedicated ? PLAYER_SPECTATOR : PLAYER_FIRST);
-			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
+			/* Decrease pause counter (was increased from opening load dialog) */
+			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
 				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded game)", _file_to_saveload.title);
@@ -956,12 +957,15 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_SAVE: /* Save game */
+		/* Make network saved games on pause compatible to singleplayer */
+		if (_networking && _pause_game == 1) _pause_game = 2;
 		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, NO_DIRECTORY) != SL_OK) {
 			SetDParamStr(0, GetSaveLoadErrorString());
 			ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 		} else {
 			DeleteWindowById(WC_SAVELOAD, 0);
 		}
+		if (_networking && _pause_game == 2) _pause_game = 1;
 		break;
 
 	case SM_GENRANDLAND: /* Generate random land within scenario editor */
