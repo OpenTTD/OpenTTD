@@ -1055,24 +1055,32 @@ static void ScrollMainViewport(int x, int y)
 		WP(w,vp_d).dest_scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
 	}
 }
-
+/**
+ * Describes all the different arrow key combinations the game allows
+ * when it is in scrolling mode.
+ * The real arrow keys are bitwise numbered as
+ * 1 = left
+ * 2 = up
+ * 4 = right
+ * 8 = down
+ */
 static const int8 scrollamt[16][2] = {
-	{ 0,  0},
+	{ 0,  0}, ///<  no key specified
 	{-2,  0}, ///<  1 : left
 	{ 0, -2}, ///<  2 : up
-	{-2, -1}, ///<  3 : left + up
+	{-2, -1}, ///<  3 : left  + up
 	{ 2,  0}, ///<  4 : right
-	{ 0,  0}, ///<  5 : left + right
+	{ 0,  0}, ///<  5 : left  + right = nothing
 	{ 2, -1}, ///<  6 : right + up
-	{ 0, -2}, ///<  7 : left + right + up = up
+	{ 0, -2}, ///<  7 : right + left  + up = up
 	{ 0  ,2}, ///<  8 : down
-	{-2  ,1}, ///<  9 : down+left
-	{ 0,  0}, ///< 10 : impossible
-	{-2,  0}, ///< 11 : left + up + down = left
-	{ 2,  1}, ///< 12 : down+right
-	{ 0,  2}, ///< 13 : left + right + down = down
-	{ 0, -2}, ///< 14 : left + right + up = up
-	{ 0,  0}, ///< 15 : impossible
+	{-2  ,1}, ///<  9 : down  + left
+	{ 0,  0}, ///< 10 : down  + up    = nothing
+	{-2,  0}, ///< 11 : left  + up    +  down = left
+	{ 2,  1}, ///< 12 : down  + right
+	{ 0,  2}, ///< 13 : left  + right +  down = down
+	{ 2,  0}, ///< 14 : right + up    +  down = right
+	{ 0,  0}, ///< 15 : left  + up    +  right + down  = nothing
 };
 
 static void HandleKeyScrolling()
