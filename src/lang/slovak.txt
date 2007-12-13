@@ -1233,6 +1233,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Mierne 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit kupovanie podielov v ostatných spolocnostiach
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri stavbe tahaním umiestnit signály na každé: {ORANGE}{STRING}. pole
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticky stavat semafóry namiesto signálov pred rokom: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Zapnút grafické rozhranie stavby signálov: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Struktúra mesta "žiadne cesty naviac" nie je platná v editore scenárov
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Struktúra mestských ciest: {ORANGE}{STRING}
@@ -2374,6 +2375,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Premiest
 STR_COMPANY_PASSWORD                                            :{BLACK}Heslo
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Heslo-ochrana vasej spolocnosti proti neautorizovanemu pripojeniu hracov
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Nastavte heslo spolocnosti
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neukladat zadané heslo
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Nastavit spolocnosti nové heslo
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Heslo spolocnosti
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Standardné heslo spolocnosti
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Použit toto heslo ako štandardné heslo spolocnosti
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svetova kriza!{}{}Financni experti maju obavy z prepadu ekonomiky!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Koniec krizy!{}{}Ocakava sa vzostup predaja a posilnenie ekonomiky!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Prepnut velkost okna
@@ -3174,6 +3180,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Príslu
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilné GRF použité namiesto chýbajúcich súborov
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chýbajúce GRF súbory boli vypnuté
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Cýbajú GRF súbory potrebné pre nahratie hry
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chýba(jú) GRF súbor(y)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauzovanie môže spôsobit pád OpenTTD. Nezaznamenávajte nasledujúce chyby.{}Naozaj chcete odpauzovat?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastná mena
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3508,4 +3516,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Zmenit g
 STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Náušnica:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Zmenit kravatu alebo náušnicu
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Výber signálu
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Nie je možné zmenit typ signálov ...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardný signál (semafór){}Signály sú nevyhnutné pre zabránenie zrážke v železnicnej sieti s viac ako 1 vlakom.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Vstupný signál (semafór){}Zelený ak je na danom úseku trate 1 alebo viac zelených výstupných signálov, inak je cervený.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Výstupný signál (semafór){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre urcenie správnej farby na na vstupných a kombinovaných signáloch.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinovaný signál (semafór){}Funguje jednoducho ako vstupný a výstupný signál zároven, co umožnuje budovat "stromové" štruktúry.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardný signál (elektrický){}Signály sú nevyhnutné pre zabránenie zrážke v železnicnej sieti s viac ako 1 vlakom.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Vstupný signál (elektrický){}Zelený ak je na danom úseku trate 1 alebo viac zelených výstupných signálov, inak je cervený.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Výstupný signál (elektrický){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre urcenie správnej farby na na vstupných a kombinovaných signáloch.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinovaný signál (elektrický){}Funguje jednoducho ako vstupný a výstupný signál zároven, co umožnuje budovat "stromové" štruktúry.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konverzia signálu{}Pri vybraní, kliknutie na existujúci signál ho zmení na vybraný typ a variant, CTRL+klik prepne existujúci variant.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Hustota signálov pri stavbe tahaním
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Znižit hustotu signálov
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit hustotu signálov
 ########

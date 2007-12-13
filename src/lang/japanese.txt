@@ -1169,6 +1169,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}スム�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}他の会社が所有している株式の購入を入にする
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}ドラッグするときの信号設備頻度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}次の年まで腕木式信号を建設：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}信号のインタフェースを使用：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}シナリオエディタを使用時に、「道路網を拡大せず」という道路網が選択できません
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}道路網の選択：{ORANGE}{STRING}
@@ -1705,6 +1706,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}まずは建物を破壊しなければなりません
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}人口：{ORANGE}{COMMA}人{BLACK}　建物：{ORANGE}{COMMA}戸
@@ -2309,6 +2311,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}本部�
 STR_COMPANY_PASSWORD                                            :{BLACK}パスワード
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}他のプレヤーがこの会社の経営に参加できないようにするには、パスワードで保護します
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}会社のパスワードを設定
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}入力したパスワードを保存しない
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}選択した交通会社の新しいパスワードを設定
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}交通会社のパスワード
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}デフォルトの交通会社のパスワード
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}このパスワードを新しい交通会社のパスワードとして使用
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}世界中不景気！{}{}経済がスランプに陥る、アナリストの不安説！
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}スランプの終わり！{}{}経済が上昇気流、産業が好転！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}大きい／小さいウィンドウサイズを切り替えます
@@ -3109,6 +3116,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}一致�
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}見つからないファイルの代わりに対応している代替 GRF ファイルを使用しています
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}見つからない GRF ファイルを切にしています
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}ゲームを開くには次の GRF ファイルが必要
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF ファイルが見つかりません
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}ポーズを解除した場合は、OpenTTD の安定性に悪影響を与える可能性があります。この後クラッシュが行った場合は、バグレポートの報告をご遠慮ください。{}ポーズを解除してもよろしいですか？
 
 STR_CURRENCY_WINDOW                                             :{WHITE}カスタム通貨
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}為替レート：{ORANGE}{CURRENCY} ＝ £ {COMMA}
@@ -3443,4 +3452,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}襟を�
 STR_FACE_TIE                                                    :ネクタイ：
 STR_FACE_EARRING                                                :イヤリング：
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}ネクタイ／イヤリングを変更
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}信号の選択
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}ここに信号が交換できません...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}通常の信号（腕木式）{}線路上に複数の電車が走った場合は、事故を避けるために信号が必要となります。
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}入り口の信号（腕木式）{}信号の後ろにある部分にせめて一つの青い出口の信号があった場合は青いです。
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}出口の信号（腕木式）{}通常の信号と同様の信号ですが、入り口、コンボの信号を使用した場合は、必要となります。
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}コンボ信号（腕木式）{}コンボの信号は入り口信号と出口信号の機能を結合します。
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}通常の信号（電子式）{}線路上に複数の電車が走った場合は、事故を避けるために信号が必要となります。
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}入り口の信号（電子式）{}信号の後ろにある部分にせめて一つの青い出口の信号があった場合は青いです。
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}出口の信号（電子式）{}通常の信号と同様の信号ですが、入り口、コンボの信号を使用した場合は、必要となります。
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}コンボ信号（電子式）{}コンボの信号は入り口信号と出口信号の機能を結合します。
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}信号を交換{}すでに設置した信号をクリックしたときに選択した信号の書類に交換します。
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}ドラッグ時の信号設置密度
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}ドラッグ時の信号設置密度を減らす
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}ドラッグ時の信号設置密度を増やす
 ########

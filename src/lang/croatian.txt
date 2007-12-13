@@ -596,6 +596,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nesreć
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Podatci vezani za tvrtku
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Otvaranje / zatvaranje industrija
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Promjene u gospodarstvu
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Izmjene u produktivnosti industrija djelovanjem igrača
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Izmjene u produktivnosti industrija djelovanjem suparnika
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Ostale izmjene u produktivnosti industrija
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Savjet / informacija o vozilima igrača
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vozila
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Promjene u prihvaćanju tereta
@@ -1168,6 +1171,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Uključ
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Dopusti kupovanje udjela u drugim tvrtkama
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Kod povlačenja, postavi signale svakih; {ORANGE}{STRING} pločica
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatski izgradi semafore prije: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogući signalni GUI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Raspored grada "nema više cesta" nije valjan u editoru scenarija
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Odaberi grad-cesta raspored: {ORANGE}{STRING}
@@ -1682,6 +1686,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Izgradi 
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Izgradi tramvajski most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Izgradi cestovni tunel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Izgradi tramvajski tunel
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktiviraj/deaktiviraj jednosmjerne ceste
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Aktiviraj izgradnju/uklanjanje ceste
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Aktiviraj izgradnju/brisanje za izgradnju tramvaja
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Odaberi smjer spremišta cestovnih vozila
@@ -1703,6 +1708,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Najprije moraš srušiti građevinu
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Stanovništvo: {ORANGE}{COMMA}{BLACK}  Kuće: {ORANGE}{COMMA}
@@ -2307,6 +2313,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Premjest
 STR_COMPANY_PASSWORD                                            :{BLACK}Zaporka
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaštiti svoju tvrtku od neovlaštenog korištenja pomoću zaporke.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Postavi zaporku tvrtke
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nemoj spremiti upisanu zaporku
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Daj tvrtci novu zaporku
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Zaporka tvrtke
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Inicijalna zaporka tvrtke
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Uporabi zaporku ove tvrtke kao inicijalnu za nove tvrtke
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svjetska recesija!{}{}Financijski stručnjaci očekuju najgore zbog ekonomske krize!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesija završena!{}{}Obrat  u trgovanu daje samopouzdanje gospodarstvu jer ekonomija jača!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Namjesti veliku/malu veličinu prozora
@@ -3287,6 +3298,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Visina r
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centriraj malu mapu na trenutni položaj
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Mala
@@ -3440,4 +3452,12 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Promijen
 STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Naušnica:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Promijeni kravatu ili naušnicu
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Izbornik signala
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Ovdje nije moguće konvertirati signale...
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Gustoća signala prilikom izgradnje
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Smanji gustoću signala prilikom izgradnje
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Povećaj gustoću signala prilikom izgradnje
 ########

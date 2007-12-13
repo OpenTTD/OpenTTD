@@ -433,7 +433,7 @@ STR_0170                                                        :{TINYFONT}{STRI
 STR_0171_PAUSE_GAME                                             :{BLACK}Mettre le jeu en pause
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Sauvegarder, abandonner, quitter
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Afficher la liste des stations de la compagnie
-STR_0174_DISPLAY_MAP                                            :{BLACK}Afficher la carte
+STR_0174_DISPLAY_MAP                                            :{BLACK}Afficher la carte, vue supplémentaire ou liste des panneaux
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Afficher la carte, annuaire des villes
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Afficher l'annuaire des villes
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Afficher les informations financières
@@ -855,7 +855,7 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Sélecti
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Sélectionner l'environnement 'Arctique'
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Sélectionner l'environnement 'Tropical'
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Sélectionner l'environnement 'Monde des jouets'
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financer la construction de nouvelles industries
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financer la construction de nouvelles industries ou liste les industries
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Annuaire des industries
@@ -2312,6 +2312,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Déména
 STR_COMPANY_PASSWORD                                            :{BLACK}Mot de passe
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Permet de protéger par mot de passe votre compagnie pour empêcher des utilisateurs non-autorisés de rejoindre. Utilisez '*' pour vider le mot de passe.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Choisir le mot de passe de la compagnie
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne pas sauver le mot de passe entré
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Donner un nouveau mot de passe à la compagnie
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Mot de passe de compagnie
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Mot de passe de compagnie par défaut
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Utiliser ce mot de passe de compagnie comme défaut pour les nouvelles compagnies
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Récession mondiale!{}{}Les experts financiers craignent le pire!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Fin de la récession!{}{}La reprise redonne confiance aux industries!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Bascule entre une grande/petite fenêtre
@@ -3112,6 +3117,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichier
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatible(s) chargé(s) pour les fichiers absents
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichier(s) GRF absent(s) désactivés
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichier(s) GRF absent(s) pour pouvoir charger la partie
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichier(s) GRF manquant(s)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Retirer la pause peut faire planter OpenTTD. Ne créez pas de rapport de bug pour ceux-ci.{}Voulez-vous vraiment retirer la pause?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = £ {COMMA}

@@ -1169,6 +1169,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Vloeien
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Sta het kopen van aandelen toe
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Plaats automatisch semaphore seinen voor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activeer sein GUI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}De stadsindeling "geen wegen" is niet geldig in de scenario editor
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecteer stedelijke wegindeling: {ORANGE}{STRING}
@@ -2310,6 +2311,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Verplaat
 STR_COMPANY_PASSWORD                                            :{BLACK}Wachtwoord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Bescherm het bedrijf met een wachtwoord zodat niet geautoriseerde personen niet mee kunnen doen.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Geef bedrijfswachtwoord op
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sla het ingegeven wachtwoord niet op
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Geef het bedrijf het nieuwe wachtwoord
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Bedrijfswachtwoord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Standaard bedrijfswachtwoord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Gebruik dit bedrijfswachtwoord als standaard voor nieuwe bedrijven
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Wereld Recessie!{}{}Financiële experts vrezen het ergste terwijl economie ineen stort!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessie Voorbij!{}{}Stijgende handel geeft industrie vertrouwen terwijl economie verstevigt!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Schakel tussen groot/klein venster
@@ -3110,6 +3116,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbeho
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatibele GRF(s) geladen voor ontbrekende bestanden
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(e) GRF bestand(en) zijn uitgeschakeld
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Er zijn missende GRF bestanden om het spel te laden
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekende GRF bestand(en)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pauze uit zetten kan OpenTTD laten vastlopen. Geef geen fout rapporten bij herhaaldelijk vastlopen.{}Weet je zeker dat je pauze wilt uit zetten?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3444,4 +3452,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Verander
 STR_FACE_TIE                                                    :Stropdas:
 STR_FACE_EARRING                                                :Oorbel:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Verander das of oorbel
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Sein keuze
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan sein hier niet ombouwen...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standaard sein (semaphore){}Seinen zijn nodig om te voorkomen dat treinen botsen bij een netwerk met meer dan een trein.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Ingangssein (semaphore){}Groen zolang als er een of meer groene exitseinen zijn volgend na dit sein. Anders is deze rood.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exitsein (semaphore){}Gedraagt zich hetzelfde als een gewoon sein, maar is nodig om ingangs- en combo-voor-seinen te sturen.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Sein (semaphore){}Het combo sein gedraagt zicht als zowel Ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standaard sein (electric){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Ingangssein (electric){}Groen wanneer er meer dan een groen exit-sein is in het volgende traject. Anders is deze rood.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-sein (electric){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combo voorseinen aan te sturen.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-sein (electric){}Het combo sein gedraagt zicht als zowel ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein ombouwen{}Wanneer geselecteerd, door te klikken op een bestaand seintype, zal het sein worden omgebouwd naar het geselecteerde seintype en varianten, CTRL-klik schakeld tussen de bestaande varianten.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sleep sein dichtheid
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Verklein gesleepte sein dichtheid
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Vergroot gesleepte sein dichtheid
 ########

@@ -1165,6 +1165,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Пла�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Позволяване покупката на акции от други компании
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При влачене, поставяне на семафори всеки: {ORANGE}{STRING} плочка(и)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Автоматично построй семафори преди: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Вклучи GUI за сигналите: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Грацкиа план "няма повече пътища" е невалиден в сценарий редакторат
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Избери грацки пътформат: {ORANGE}{STRING}
@@ -1679,6 +1680,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Пост
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Построи трамвайен мост
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Построй тунел
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Построи трамвайен тунел
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Активирай/Деактивирай еднопосочни пътища
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Премахване на асфалтов път
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ориентация на гараж
 STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Избери посоката на трамвайното депо
@@ -1699,6 +1701,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Сградата първо трябва да бъде разрушена
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Жилища: {ORANGE}{COMMA}
@@ -2303,6 +2306,9 @@ STR_RELOCATE_HQ                                                 :{BLACK}Прем
 STR_COMPANY_PASSWORD                                            :{BLACK}Парола
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Постави парола за да предпазиш компанията си от неоторизирани потребители.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Поставяне парола на компанията
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Незапазвай паролата
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Дай на компанията новата парола
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Парола на компанията
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Световна икономическа криза!{}{}Финансовите експерти очакват най-лошото от сриващата се световна икономика!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Световната икономическа криза отмина!{}{}Възходът на търговията дава увереност на индустриите в новата засилваща се икономическа реалност!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Активирай голям/малък размер на прозореца
@@ -3280,6 +3286,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Висо
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Центриране на малката карта на текущата позиция
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Малко
@@ -3433,4 +3440,8 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Cмен�
 STR_FACE_TIE                                                    :Вратовръзкa:
 STR_FACE_EARRING                                                :Oбица:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cмени вратовръзкатa или oбицатa
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Сигнал селекция
 ########

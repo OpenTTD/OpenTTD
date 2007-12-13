@@ -1211,6 +1211,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Omogoč
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Dovoli kupovanje delnic od drugih podjetij
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Med vlečenjem postavi signale vsakih: {ORANGE}{STRING} ploščic
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Samodejno postavi semaforje pred: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogoči vmesnik signalov: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Mestna razporeditev "nič več cest" ni veljavna v urejevalniku terena
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Izberi razporeditev mestnih cest: {ORANGE}{STRING}
@@ -2390,6 +2391,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Preseli 
 STR_COMPANY_PASSWORD                                            :{BLACK}Geslo
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaščiti svoje podjetje z geslom, da preprečiš priključitev drugih uporabnikov k podjetju.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Nastavi geslo podjetja
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne shrani vnešenega gesla
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Dodeli družbi novo geslo
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Geslo družbe
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Privzeto geslo družbe
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Uporabi geslo te družbe kot privzeto za nove družbe
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svetovna recesija!{}{}Ekonomisti se bojijo najhujšega ob trenutnem poteku dogodkov!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Konec recesije!{}{}Izboljšanje trgovanja povečuje zaupanje domače industrije, gospodarstvo napreduje!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Preklopi veliko/majhno velikost okna
@@ -3190,6 +3196,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ustrezn
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilni GRF-ji so naloženi namesto manjkajočih datotek
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manjkajoče GRF datoteke so bile onemogočene
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Manjkajoče datoteke GRF, ki omogočajo nalaganje igre
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manjkajoče GRF datoteke
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Izklop pavze lahko sesuje OpenTTD. Ne poročaj o napaki zaradi takih problemov.{}Zagotovo želiš izklopiti pavzo?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta po meri
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Menjalni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3527,4 +3535,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Spremeni
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Izbor signalov
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Nemogoča sprememba vrste signalov tukaj...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardni signal (semafor){}Signali so potrebni, da preprečijo vlaku trčenje na progi z več vlaki.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Vhodni signal (semafor){}Zelen v kolikor je vsaj en ali več  izhodnih signalov v nadaljevanju proge. Če ne, je rdeč.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Izhodni signal (semafor){}Deluje kot normalen semafor, le da mora biti povezan z ustreznim vhodnim ali kombiniranim signalom.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinirani signal (semafor){}Kombinirani signal deluje kot vhodni in izhodni. To omogoča gradnjo velikih vej signalizacije.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardni signal (električni){}Signali so potrebni, da preprečijo vlaku trčenje na progi z več vlaki.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Vhodni signal (električni){}Zelen v kolikor je vsaj en ali več  izhodnih signalov v nadaljevanju proge. Če ne, je rdeč.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Izhodni signal (električni){}Deluje kot normalen semafor, le da mora biti povezan z ustreznim vhodnim ali kombiniranim signalom.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinirani signal (električni){}Kombinirani signal deluje kot vhodni in izhodni. To omogoča gradnjo velikih vej signalizacije.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Zamenjava signala{}Ko je možnost izbrana, se ob kliku na obstoječi signal le ta spremeni v izbrano vrsto. CTRL-klik preklaplja obstoječo vrsto.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Gostota vlečnih signalov
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Zmanjšaj gostoto signala za vlečenje
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Povečaj gostoto signala za vlečenjeIncrease dragging signal density
 ########

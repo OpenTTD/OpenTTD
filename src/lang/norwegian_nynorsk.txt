@@ -2306,6 +2306,7 @@ STR_RELOCATE_HQ                                                 :{BLACK}Omplasse
 STR_COMPANY_PASSWORD                                            :{BLACK}Passord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Passordbeskytt firmaet ditt slik at ikkje alle og einkvar kan verte med. Bruk '*' for å tømme passord.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vel firmapassord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Bruk passordet fra dette firmaet som standard for nye firma
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Verdskrise!{}{}Økonomar fryktar det verste. Nedgangstider i kjømda.
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Verdskrise over!{}{}Opptur i marknaden gjer industrien sjølvkjensla attende.
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Byt mellom stor/liten storleik på vindauga
@@ -3077,6 +3078,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} må v�
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} må være lasta etter {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} Behøver OpenTTD versjon {STRING} eller betre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fila den var laga for å omsetje
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF lasta
 
 STR_NEWGRF_ADD                                                  :{BLACK}Legg til
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Legg ei ny NewGRF-fil til lista
@@ -3105,6 +3107,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Kunne i
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Ein eller fleire kompatible GRF-filar har vorte lasta inn i plassen for manglande filar
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ein eller fleire manglande GRF-filar har vorte deaktiverte
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Manglar ein eller fleire GRF-filer for å kunne laste inn spelet
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglar GRF fil(er)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanleg valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3438,4 +3442,12 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Bytt kra
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Øyrering:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Bytt slips eller øyrering
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Signal Selection
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan ikkje endre signal her
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard Signal (semaphore){}Signals are necessary to keep trains from crashing on railway networks with more than one train.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Entry-Signal (semaphore){}Grønt så lenge det er eit eller fleir grøne ut-signal i den følgande seksjonen. Ellers syner det raudt.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ut-Signal (semaphore){}Virker på samme måte som normale signal, men er naudsynte for å få rett farge på inn og combo pre-signal.
 ########

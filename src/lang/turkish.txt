@@ -3400,19 +3400,42 @@ STR_FACE_LOAD                                                   :{BLACK}Yükle
 STR_FACE_LOAD_TIP                                               :{BLACK}Tercih edilen yüzü yükle
 STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi.
 STR_FACE_FACECODE                                               :{BLACK}Oyuncu yüzü no.
+STR_FACE_FACECODE_SET                                           :{WHITE}Surat numarası ayarlandı.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Oyuncu surat numarası ayarlanamadı - 0 ve 4.294.967.295 arasında bir sayı olmalı!
 STR_FACE_SAVE                                                   :{BLACK}Kaydet
 STR_FACE_SAVE_TIP                                               :{BLACK}Tercih edilen yüzü kaydet
+STR_FACE_SAVE_DONE                                              :{WHITE}Bu surat OpenTTD ayar dosyasına kaydedilecek.
 STR_FACE_EUROPEAN                                               :{BLACK}Avrupalı
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Beyaz yüz seç
 STR_FACE_AFRICAN                                                :{BLACK}Afrikalı
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Siyah yüz seç
 STR_FACE_YES                                                    :Evet
 STR_FACE_NO                                                     :Hayır
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Bıyık veya küpeyi etkinleştir
 STR_FACE_HAIR                                                   :Saç:
+STR_FACE_HAIR_TIP                                               :{BLACK}Saçı değiştir
 STR_FACE_EYEBROWS                                               :Kaşlar:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Kaşları değiştir
 STR_FACE_EYECOLOUR                                              :Göz rengi:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Göz rengini değiştir
 STR_FACE_GLASSES                                                :Gözlük:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Gözlüğü etkinleştir
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Gözlüğü değiştir
 STR_FACE_NOSE                                                   :Burun:
+STR_FACE_NOSE_TIP                                               :{BLACK}Burnu değiştir
 STR_FACE_LIPS                                                   :Dudak:
 STR_FACE_MOUSTACHE                                              :Bıyık:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Dudakları veya bıyığı değiştir
 STR_FACE_CHIN                                                   :Çene:
+STR_FACE_CHIN_TIP                                               :{BLACK}Çeneyi değiştir
 STR_FACE_JACKET                                                 :Ceket:
+STR_FACE_JACKET_TIP                                             :{BLACK}Ceketi değiştir
+STR_FACE_COLLAR                                                 :Yaka:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Yakayı değiştir
+STR_FACE_TIE                                                    :Kravat:
+STR_FACE_EARRING                                                :Küpe:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Kravatı veya küpeyi değiştir
+########
+
+############ signal GUI
 ########

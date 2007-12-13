@@ -1227,6 +1227,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Plynul�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit kupování podílu z ostatních společností
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat signály každých(é): {ORANGE}{STRING} dilků(y)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafory automaticky stavět do roku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu signálů: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vzor "žádné silnice" se neuplatňuje v editoru scénářů
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vyber vzor městských silnic: {ORANGE}{STRING}
@@ -2368,6 +2369,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Přesíd
 STR_COMPANY_PASSWORD                                            :{BLACK}Heslo
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Heslo - zabrání neautorizovaným uživatelům v připojení se k tvé společnosti.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Nastav heslo společnosti.
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neukládat zadané heslo
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Změnit heslo společnosti
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Heslo společnosti
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Výchozí heslo společností
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Použít toto heslo jako výchozí pro nově založené společnosti
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Celosvětový hospodářský úpadek!{}{}Finanční experti se kvůli prudkému poklesu ekonomiky obávají nejhoršího!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Konec hospodářského úpadku!{}{}Posílení trhu zvýšilo u průmyslu důvěru!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Přepnout velké/malé okno
@@ -3174,6 +3180,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpoví
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní GRF načteny místo chybějících
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící soubory GRF byly vyřazeny
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Pro načtení hry chybí GRF soubory
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící grafické soubory
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3511,4 +3519,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Změnit 
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Výběr signálů
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Zde nelze změnit signály...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardní signál (semafor){}Signály jsou nutné, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Vjezdový signál (semafor){}Svítí zeleně do té doby, kdy v dalším úseku trati je alespoň jeden zeleně svítící výjezdový signál. Jinak svítí červeně.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Výjezdový signál (semafor){}Chová se stejně jako normální signál, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinovaný signál (semafor){}Kombinovaný signál jednoduše slouží jako zároveň vjezdový a výjezdový signál. Tím je možné postavit velké "řetězce" presignálů.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardní signál (elektrický){}Signály jsou nutné, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Vjezdový signál (elektrický){}Svítí zeleně do té doby, kdy v dalším úseku trati je alespoň jeden zeleně svítící výjezdový signál. Jinak svítí červeně.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Výjezdový signál (elektrický){}Chová se stejně jako normální signál, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinovaný signál (elektrický){}Kombinovaný signál jednoduše slouží jako zároveň vjezdový a výjezdový signál. Tím je možné postavit velké "řetězce" presignálů.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Změna signálů{}Pokud je vybrána, signál se změní kliknutím na něj. Při kliknutí s CTRL se bude přepínat mezi variantami existujícího signálu.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Rozestup při stavbě signálů tažením
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Snížit rozestup mezi signály
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit rozestup mezi signály
 ########

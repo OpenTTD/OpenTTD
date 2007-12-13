@@ -1010,10 +1010,10 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COM
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig lufthavn i sin ordreliste
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornyelse af tog mislykkedes {COMMA} (ikke penge nok)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisk fornyelse af køretøj mislykkedes {COMMA} (ikke penge nok)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornyelse af skib mislykkedes {COMMA} (ikke penge nok)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornyelse af fly mislykkedes {COMMA} (ikke penge nok)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornyelse af tog {COMMA} mislykkedes (ikke penge nok)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisk fornyelse af køretøj {COMMA} mislykkedes (ikke penge nok)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornyelse af skib {COMMA} mislykkedes (ikke penge nok)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornyelse af fly {COMMA} mislykkedes (ikke penge nok)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er for langt efter udskiftning
 
 STR_CONFIG_PATCHES                                              :{BLACK}Indstil programrettelser
@@ -1705,6 +1705,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Det er nødvendigt at nedrive bygningen først
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Indbyggere: {ORANGE}{COMMA}{BLACK}  Huse: {ORANGE}{COMMA}
@@ -3443,4 +3444,7 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Ændre k
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Ørering:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Ændre slips eller ørering
+########
+
+############ signal GUI
 ########

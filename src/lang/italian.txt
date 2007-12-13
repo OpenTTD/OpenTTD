@@ -434,7 +434,7 @@ STR_0170                                                        :{TINYFONT}{STRI
 STR_0171_PAUSE_GAME                                             :{BLACK}Pausa
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Salva la partita, abandona la partita, esci
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra l'elenco delle stazioni di una compagnia
-STR_0174_DISPLAY_MAP                                            :{BLACK}Mostra la mappa
+STR_0174_DISPLAY_MAP                                            :{BLACK}Mostra la mappa, apre una mini visuale extra o mostra l'elenco dei cartelli
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Mostra la mappa, l'elenco delle città
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostra l'elenco delle città
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Mostra informazioni finanziare sulle compagnie
@@ -856,7 +856,7 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Selezion
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Seleziona il paesaggio 'sub-artico'
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Seleziona il paesaggio 'sub-tropicale'
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Seleziona il paesaggio 'città dei giocattoli'
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finanzia la costruzione di una nuova industria
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finanzia la costruzione di una nuova industria o mostra l'elenco delle industrie
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Elenco industrie
@@ -2313,6 +2313,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Sposta s
 STR_COMPANY_PASSWORD                                            :{BLACK}Password
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protegge la compagnia con una password per impedire ad utenti non autorizzati di accedervi.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Imposta password compagnia
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non salvare la password inserita
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Assegna la nuova password alla compagnia
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Password della compagnia
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Password predefinita compagnia
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Usa questa password come predefinita per le nuove compagnie
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recessione mondiale!{}{}Il crollo dell'economia porta gli analisti finanziari a temere il peggio!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessione finita!{}{}La ripresa del commercio da fiducia alle industrie e rafforza l'economia!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Seleziona dimensione grande/piccola della finestra
@@ -3113,6 +3118,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}File co
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}File GRF compatibili caricati al posto dei file mancanti
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}I file GRF mancanti sono stati disabilitati
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mancano file GRF necessari per caricare la partita
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}File GRF mancanti
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Uscire dalla pausa può causare un crash di OpenTTD. Si prega di non inviare segnalazioni bug relative ai problemi che potrebbero verificarsi proseguendo.{}(Uscire dalla pausa?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta personalizzata
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cambio: {ORANGE}{CURRENCY} = £ {COMMA}

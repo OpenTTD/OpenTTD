@@ -1171,6 +1171,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ativar 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite comprar ações de outras companhias
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticamente constroi semáforos anteriores: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ativar interface de sinais: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}O layout de cidade "sem mais estradas" não é válido no editor
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecione o layout das estradas {ORANGE}{STRING}
@@ -2314,6 +2315,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Mover se
 STR_COMPANY_PASSWORD                                            :{BLACK}Senha
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Usar senha na empresa para prevenir utilizadores não autorizados.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Definir senha para empresa
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Não salvar a senha digitada
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Dar à empresa uma nova senha
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Senha da empresa
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Senha padrão da empresa
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Usar esta senha de empresa como padrão para novas empresas
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recesso Mundial!{}{}Economistas temem crise!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Fim do recesso!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Alternar entre janela grande/pequena
@@ -3114,6 +3120,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Carregado compativel com GRF(s)  por falta de arquivo
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}arquivo(s) GRF em falta foram desativados
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m) arquivo(s) GRF para carregar o jogo
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) GRF faltantes
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Despausar pode travar OpenTTD. Não envie relatórios de erros sobre travas subseqüentes.{}Você realmente quer despausar?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3448,4 +3456,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Alterar 
 STR_FACE_TIE                                                    :Gravata:
 STR_FACE_EARRING                                                :Brinco:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Alterar gravata ou brinco
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Seleção de Sinais
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Impossível converter sinais aqui...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sinais padrão (semáforos){}Sinais são necessários para manter trens de colidirem nas malhas ferroviárias com mais de um trem.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Sinal de Entrada (semáforo){}Verde contanto que haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, fica vermelho.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Sinal de saída (semáforo){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Sinal combo (semáforo){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Sinal Padrão (elétrico){}Sinais são necessários para impedir que trens batam em redes de ferrovias com mais de uma máquina.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sinal de entrada (elétrico){}Verde contanto que haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, fica vermelho.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinal de saída(elétrico){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinal combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Converter sinal{}Quando selecionado, clicar num sinal existente converte-o para o tipo selecionado e suas variantes. CTRL+clique muda a variante atual.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densidade dos sinais ao clicar e arrastar
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Diminuir a densidade dos sinais
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumentar a densidade dos sinais
 ########

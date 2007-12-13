@@ -1169,6 +1169,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Lugn ek
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillåt inköp av aktier från andra företag
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} ruta
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg automatiskt semaforer innan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Använd signal-GUI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Det går ej att använda "inga fler vägar" i scenario editorn
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Välj stadens väg-inställningar: {ORANGE}{STRING}
@@ -1705,6 +1706,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Byggnad måste rivas först
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Invånare: {ORANGE}{COMMA}{BLACK}  Hus: {ORANGE}{COMMA}
@@ -2309,6 +2311,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Flytta h
 STR_COMPANY_PASSWORD                                            :{BLACK}Lösenord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Lösenordsskydda ditt företag för att förhindra att obehöriga spelare ansluter.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Ange företagets lösenord
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Spara inte det inmatade lösenordet
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Ge företaget det nya lösenordet
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Företagslösenord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Förvalt företagslösenord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Använd detta företagslösenord som förval för nya företag
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Lågkonjuktur!{}{}Finansexperter befarar det värsta när ekonomin sjunker!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i byteshandeln ger tillförsikt till industrier när ekonomin stärks!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Växla stor/liten fönsterstorlek
@@ -3443,4 +3450,10 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Ändra k
 STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Örhänge:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Ändra slips eller örhänge
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Signalval
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan inte konvertera signaler här...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardsignal (semafor){}Signaler är nödvändiga för att tåg inte skall krasha i järnvägsnät innehållande mer än ett tåg.
 ########

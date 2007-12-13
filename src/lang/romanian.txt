@@ -594,6 +594,8 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acciden
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informatii despre companie
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Deschidere / inchidere industrii
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Schimbãri economice
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Schimbări de producţie la industrii partenere cu jucătorul
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Schimbări de producţie la industrii partenere cu concurenţa
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Sfaturi/informatii despre vehiculele tale
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Vehicule noi
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Schimbãri ale acceptãrii mãrfurilor
@@ -1166,6 +1168,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Economi
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite cumpararea de actiuni de la alte companii
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasare automată a semafoarelor la fiecare: {ORANGE}{STRING} pătrăţele
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construieste automat semafaore înainte de: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activare GUI pentru semnale: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Apectul de oras "fara alte drumuri" nu este valid in editorul de scenarii
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Alege aspect drum-de-oras: {ORANGE}{STRING}
@@ -1680,6 +1683,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construi
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construieşte pod pentru tramvaie
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construieşte tunel rutier
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construieşte tunel pentru tramvaie
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activare/Dezactivare sensuri unice
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Comutator pentru construcţie/înlăturare şosele
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Comuta constructie/stergere pentru constructia de linii de tramvaie
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Alege orientarea autobazei
@@ -1701,6 +1705,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Mai întâi trebuie demolată clădirea
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populaţia: {ORANGE}{COMMA}{BLACK}  Locuinţe: {ORANGE}{COMMA}
@@ -2305,6 +2310,10 @@ STR_RELOCATE_HQ                                                 :{BLACK}Muta sed
 STR_COMPANY_PASSWORD                                            :{BLACK}Parola
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protejeaza-ti compania cu o parola pentru a preveni accesul neautorizat.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Alege parola companiei
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Parola introdusă nu se va salva
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Schimbarea parolei pentru companie
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Parola pentru companie
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Parola implicită pentru companie
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recesiune mondială!{}{}Experţii financiari se tem de ceea ce e mai rău odată cu prăbuşirea economică!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesiunea s-a încheiat!{}{}Creşterea comerţului dă încredere industriei, iar economia se redresează!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Comutator pentru mărimea ferestrei
@@ -3076,6 +3085,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} trebui
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} trebuie sa fie incarcat dupa {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} necesita OpenTTD versiunea {STRING} sau mai noua.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fisierul GRF conceput pentru traducere
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Prea multe NewGRF-uri încărcate.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adauga
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adauga un fisier NewGRF in lista
@@ -3284,6 +3294,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Inaltime
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centreaza harta mica la pozitia actuala
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Mic
@@ -3430,11 +3441,16 @@ STR_FACE_MOUSTACHE                                              :Mustata:
 STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Schimba buzele sau mustata
 STR_FACE_CHIN                                                   :Barbie:
 STR_FACE_CHIN_TIP                                               :{BLACK}Schimba barbia
-STR_FACE_JACKET                                                 :Jacheta
-STR_FACE_JACKET_TIP                                             :{BLACK}Schimba jacheta
+STR_FACE_JACKET                                                 :Haină:
+STR_FACE_JACKET_TIP                                             :{BLACK}Schimbă haina
 STR_FACE_COLLAR                                                 :Guler:
-STR_FACE_COLLAR_TIP                                             :{BLACK}Schimba gulerul
+STR_FACE_COLLAR_TIP                                             :{BLACK}Schimbă gulerul
 STR_FACE_TIE                                                    :Cravata:
 STR_FACE_EARRING                                                :Cercei:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Schimba cravata sau cerceii
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Alegere Semnal
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Nu se pot transforma semnalele...
 ########

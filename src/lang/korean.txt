@@ -595,6 +595,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}사고 
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}회사 정보
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}산업 띄우기 / 끄기
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}경제적 변화
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}플레이어에 의한 산업시설의 생산품 변화
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}경쟁자에 의한 산업시설의 생산품 변화
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}다른 산업 생산물 변화
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}조언 / 당신 차량에 대한 정보
 STR_020C_NEW_VEHICLES                                           :{YELLOW}새로운 차량
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}역에서 받는 화물의 변경
@@ -861,6 +864,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :새로운 산�
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}새로운 산업시설 건설
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...도시에만 건설할 수 있습니다!
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...열대우림 지역에만 건설할 수 있습니다!
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...사막 지역에만 건설할 수 있습니다!
@@ -1021,6 +1025,7 @@ STR_CONFIG_PATCHES_OFF                                          :Off
 STR_CONFIG_PATCHES_ON                                           :On
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}상태바에 차량 속도를 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}드래그로 철도역 크기 설정 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}매우 긴 열차 허용 : {ORANGE}{STRING}
@@ -1041,12 +1046,14 @@ STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :답사
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}한 도시당 같은 종류의 산업시설의 중복 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 종류의 산업 시설이 가까이에 지어지는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호등을 통행 방식에 따라 달리 위치함. (좌측통행시 좌측에, 우측통행시 우측에) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호등을 통행 방식에 따라 다른 위치에 설치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTD패치에 적합한 급행(논스톱) 처리 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면을 움직이게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}독점 운송권 구입 허용: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}다른 회사에게 돈을 송금하는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}이미 지어진 역에 추가로 역을 증축하는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}향상된 글로벌 경로탐색 (NPF, NTP 우선) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
@@ -1093,7 +1100,7 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리�
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 정보 링크 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 뷰포인트 스크롤: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}다양한 건설도구를 사용시에 거리측정 툴팁 표시 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}건설도구 사용시 거리측정 툴팁 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}회사 조합원 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :없음
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :내 회사
@@ -1112,13 +1119,16 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}새로운 게임 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :끄기
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :내 회사만
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :모든 회사에
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}적재 정도 표시: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :끄기
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :소유한 회사
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :모든 회사
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}기본 철도 종류 (새 게임/불러오기 후): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}기본값으로 사용할 철도의 종류 (새 게임/불러오기 후): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :보통 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :전개 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :모노레일
@@ -1159,7 +1169,8 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}종료 
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}부드러운 경제 설정 사용 (좀더 적은 변화)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}다른 회사가 주식을 사는 것을 허용
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호등을 매 {ORANGE}{STRING}타일마다 설치
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}자동으로 신호기 설치 : {ORANGE}{STRING} 이전에
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}전자식 신호기의 사용 : {ORANGE}{STRING}년 이후에
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호기 GUI를 사용: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}도시설계 "도로건설 안함"은 시나리오 에디터에서 유효하지 않습니다
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}도시도로 설계: {ORANGE}{STRING}
@@ -1389,13 +1400,13 @@ STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :인터넷
 STR_NETWORK_LAN_INTERNET                                        :LAN / 인터넷
 STR_NETWORK_INTERNET_ADVERTISE                                  :인터넷 (광고 허용)
-STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM}명 접속중
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM}명
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}최대 접속자 수:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}최대 접속자수를 선택합니다. 모든 슬롯이 차있을 필요는 없습니다.
-STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}개의 회사
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}개
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}최대 회사수:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}서버의 회사의 수를 제한합니다
-STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM}명 참관중
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM}명
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}최대 관전자수:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}게임을 관전하는 접속자의 수를 제한합니다
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}대화 언어:
@@ -1696,6 +1707,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}건물을 먼저 제거하십시오!
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}인구: {ORANGE}{COMMA}{BLACK}  가구수: {ORANGE}{COMMA}
@@ -2300,6 +2312,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}본사 �
 STR_COMPANY_PASSWORD                                            :{BLACK}암호
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}다른 참가자가 이 회사로의 플레이를 하지 못하도록 암호로 보호합니다
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}회사 암호 설정
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}입력한 비밀번호는 저장하지 않기
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}이 회사에 새 비밀번호 부여
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}회사 비밀번호
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}회사 비밀번호 기본값
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}이 회사 비밀번호를 새 회사의 비밀번호 기본값으로 사용
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}세계 공황!{}{}경제 전문가들이 경제 슬럼프에 대해 우려를 표망하고 있습니다!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}공황 종료!{}{}무역량의 증대로 경제를 살려낸 결과 산업시설에 대한 신뢰를 가져왔습니다!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}대형/소형 창 크기 토글
@@ -3100,6 +3117,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}매치�
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}사라진 파일의 자리에 알맞은 GRF가 로드되었습니다
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라진 GRF 파일은 사용불가능합니다
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}사라진 GRF 파일이 게임 로드에 사용될 수 있습니다
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 손실
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지는 OpenTTD를 망가뜨릴 수 있습니다. 차후에 나오는 버그를 위해 버그 리포트를 파일로 만들지 마십시오.{}일시정지하시겠습니까?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}사용자 화폐 단위
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}환율: {ORANGE}{CURRENCY} = {COMMA}파운드
@@ -3434,4 +3453,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}옷깃 �
 STR_FACE_TIE                                                    :넥타이:
 STR_FACE_EARRING                                                :귀걸이:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}넥타이/귀걸이 변경
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}신호기 선택
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}이곳의 신호기를 변환할 수 없습니다...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}표준 신호기 (구식){}신호등은 하나 이상의 열차가 한 철도 네트워크상에서 폭발사고를 일으키지 않게 해줍니다.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (구식){}다음 폐색 구간에 출구 신호등이 하나라도 파란불이면 파란불이 뜨고 그렇지 않으면 빨간불이 됩니다.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (구식){}일반 신호등과 같은 방법으로 만들되, 입구 & 콤보 전면 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (구식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}표준 신호기 (전자식){}신호등은 하나 이상의 열차가 한 철도 네트워크상에서 폭발사고를 일으키지 않게 해줍니다.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호등이 하나라도 파란불이면 파란불이 뜨고 그렇지 않으면 빨간불이 됩니다.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호등과 같은 방법으로 만들되, 입구 & 콤보 전면 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}드래그시 신호기 간격
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}드래그시 신호기 간격 감소
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}드래그시 신호기 증가
 ########

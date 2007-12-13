@@ -1169,6 +1169,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Activa 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permet comprar participacions d'altres empreses
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Arrossegant, sitúa senyals cada: {ORANGE}{STRING} quadre(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir semàfors automàticament abans de: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activa la interfície de les senyals: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}El format de poble "no més carreteres" no és vàlid a l'editor d'escenaris
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecciona el format poble-carretera: {ORANGE}{STRING}
@@ -2310,6 +2311,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Trasllad
 STR_COMPANY_PASSWORD                                            :{BLACK}Contrasenya
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protegeix la teva Empresa amb contrasenya per tal d'evitar que la utilitzin usuaris no autoritzats.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Estableix la contrasenya de l'Empresa
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No desis la contrasenya introduïda
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Dóna a la companyia una nova contrasenya
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Contrasenya de la companyia
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Contrasenya de la companyia predeterminada
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Utilitza la contrasenya d'aquesta companyia com a predeterminada per a noves companyies
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recessió Mundial!{}{}Economistes experts temen que l'economia es desplomi!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessió Acabada!{}{}La millora als negocis dóna confiança a les indústries a la vegada que l'economia s'enforteix!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Intercanvia mida gran/petita de finestra
@@ -3110,6 +3116,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}No s'ha
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}S'han carregat els GRF(s) compatibles pels arxius faltants
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Els arxius GRF(s) faltants han estat desactivats
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Arxius GRF(s) faltants per poder carregar el joc
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten arxiu(s) GRF
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Treure la pausa pot provocar fallades d'OpenTTD. No informis d'errors a causa de fallades subseqüents.{}Estàs segur de voler treure la pausa?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalitzada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Canvi de moneda: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3444,4 +3452,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Canvia e
 STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Arracades:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Canvia la corbata o les arracades
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Selecció de senyals
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Aquí no es pot convertir les senyals...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Senyal estàndard (semàfor){}Les senyals són necessàries per impedir que els trens s'accidentin en xarxes de ferrocarrils amb més d'un tren.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Senyal d'endrada (semàfor){}En verd mentre hi hagi una o més senyals de sortida en verd en la secció següent de vies. En cas contrari està en vermell.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Senyal de Sortida (semàfor){}Es comporta com una senyal normal però és necessari actuar sobre el color correcte en les pre-senyals d'entrada i combinada.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Senyal Combinada (semàfor){}La senyal combinada simplement actua com a senyal d'entrada i sortida. Això permet construir grans extensions de pre-senyals.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Senyal estàndard (elèctrica){}Les senyals són necessàries per impedir que els trens s'accidentin en xarxes de ferrocarrils amb més d'un tren.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Senyal d'endrada (elèctrica){}En verd mentre hi hagi una o més senyals de sortida en verd en la secció següent de vies. En cas contrari està en vermell.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Senyal de Sortida (elèctrica){}Es comporta com una senyal normal però és necessari actuar sobre el color correcte en les pre-senyals d'entrada i combinada.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Senyal Combinada (elèctrica){}La senyal combinada simplement actua com a senyal d'entrada i sortida. Això permet construir grans extensions de pre-senyals.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversió de senyals{}Quan esta seleccionat, clicant una senyal existent la converteix en el tipus de senyal seleccionada i variants, CTRL-clic commuta la variant existent.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densitat de senyals en arrossegar
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Disminueix la densitat de senyals en arrossegar
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Incrementa la densitat de senyals en arrossegar
 ########

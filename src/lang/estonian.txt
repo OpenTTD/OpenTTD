@@ -694,6 +694,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Õnnetu
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Ettevõtte teave
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Tööstuste avamised ja sulgemised
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Muutused majanduses
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Mängija poolt teenindavate tööstuste toodangumuutused
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Konkurentide poolt teenindavate tööstuste toodangumuutused
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Ülejäänud tööstuste toodangumuutused
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Soovitused ja teated mängija veovahendite kohta
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Uus veerem
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Veoste vastuvõtutingimuste muutumine
@@ -1801,6 +1804,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Ehitis tuleb eelnevalt hävitada
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Rahvastik: {ORANGE}{COMMA}{BLACK}  Ehitisi: {ORANGE}{COMMA}
@@ -2405,6 +2409,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Liiguta 
 STR_COMPANY_PASSWORD                                            :{BLACK}Salasõna
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ettevõtte kaitsmine salasõnaga, et võõrad ei saaks ilma loata ühineda.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vali ettevõttele salasõna
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sisestatud salasõna ei salvestata
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Määra ettevõtte uus salasõna
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Ettevõtte salasõna
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Vaikimisi määratud ettevõtte salasõna
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Kasuta selle ettevõtte salasõna uute ettevõtete vaikimisi määratud salasõnana
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Majanduslik tagasilöök!{}{}Finantseksperdid ennustavad suurt majanduslangust!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Madalseis on läbi!{}{}Suurem kauplemine julgustab majanduse tugevnemisega ettevõtteid!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Lülita aken suureks/väikseks
@@ -3385,6 +3394,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lameda m
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Vii väikekaart praegusele asukohale
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Väike
@@ -3538,4 +3548,7 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Vaheta k
 STR_FACE_TIE                                                    :Lips:
 STR_FACE_EARRING                                                :Kõrvarõngas:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Vaheta kraed või kõrvarõngast
+########
+
+############ signal GUI
 ########

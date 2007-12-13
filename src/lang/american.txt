@@ -594,6 +594,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acciden
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Company information
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Open / close of industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Economy changes
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Production changes of industries served by the player
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Production changes of industries served by competitor(s)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Other industry production changes
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Advice / information on player's vehicles
 STR_020C_NEW_VEHICLES                                           :{YELLOW}New vehicles
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changes of cargo acceptance
@@ -1166,6 +1169,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enable 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enable the signal GUI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}The town layout "no more roads" isn't valid in the scenario editor
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Select town-road layout: {ORANGE}{STRING}
@@ -1667,7 +1671,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Can't bu
 STR_180A_ROAD_CONSTRUCTION                                      :Road construction
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Tramway construction
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Build road section
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Build road section using the Autoroad mode
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Build tramway section
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Build tramway section using the Autotram mode
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Build road vehicle depot (for building and servicing vehicles)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Build tram vehicle depot (for building and servicing trams)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Build bus station
@@ -1678,6 +1684,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Build ro
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Build tramway bridge
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Build road tunnel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Build tramway tunnel
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activate/Deactivate one way roads
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Toggle build/remove for road construction
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Toggle build/remove for tramway construction
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Select road vehicle depot orientation
@@ -1699,6 +1706,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Building must be demolished first
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Population: {ORANGE}{COMMA}{BLACK}  Houses: {ORANGE}{COMMA}
@@ -2303,6 +2311,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Relocate
 STR_COMPANY_PASSWORD                                            :{BLACK}Password
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Password-protect your company to prevent unauthorized users from joining.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Set company password
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Do not save the entered password
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Give the company the new password
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Company password
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Default company password
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Use this company password as default for new companies
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}World Recession!{}{}Financial experts fear worst as economy slumps!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recession Over!{}{}Upturn in trade gives confidence to industries as economy strengthens!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Toggle large/small window size
@@ -3072,7 +3085,9 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} is des
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalid parameter for {STRING}: parameter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} must be loaded before {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} must be loaded after {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} requires OpenTTD version {STRING} or better.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :the GRF file it was designed to translate
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Too many NewGRFs are loaded.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Add
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Add a NewGRF file to the list
@@ -3281,6 +3296,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Height o
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Center the smallmap on the current position
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Small
@@ -3434,4 +3450,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Change c
 STR_FACE_TIE                                                    :Tie:
 STR_FACE_EARRING                                                :Earring:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Change tie or earring
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Signal Selection
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Can't convert signals here...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard Signal (semaphore){}Signals are necessary to keep trains from crashing on railway networks with more than one train.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Entry-Signal (semaphore){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-Signal (semaphore){}Behaves in the same way as a normal signal but is necessary to trigger the correct color on entry & combo pre-signals.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Signal (semaphore){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standard Signal (electric){}Signals are necessary to keep trains from crashing on railway networks with more than one train.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Entry-Signal (electric){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-Signal (electric){}Behaves in the same way as a normal signal but is necessary to trigger the correct color on entry & combo pre-signals.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, CTRL-click will toggle the existing variant.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragging signal density
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrease dragging signal density
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increase dragging signal density
 ########
