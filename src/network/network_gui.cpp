@@ -1794,11 +1794,23 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE:
+		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_CREATE, w->height, 0);
+		SetBit(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
 		break;
 
 	case WE_PAINT: {
+		static const StringID chat_captions[] = {
+			STR_NETWORK_CHAT_ALL_CAPTION,
+			STR_NETWORK_CHAT_COMPANY_CAPTION,
+			STR_NETWORK_CHAT_CLIENT_CAPTION
+		};
+		StringID msg;
+
 		DrawWindowWidgets(w);
 
+		assert(WP(w, chatquerystr_d).caption < lengthof(chat_captions));
+		msg = chat_captions[WP(w, chatquerystr_d).caption];
+		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, msg, TC_BLACK);
 		DrawEditBox(w, &WP(w, chatquerystr_d), 2);
 	} break;
 
