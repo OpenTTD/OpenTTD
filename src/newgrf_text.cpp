@@ -505,13 +505,25 @@ struct TextRefStack {
 	uint8  PopUnsignedByte()  { assert(this->position < lengthof(this->stack)); return this->stack[this->position++]; }
 	int8   PopSignedByte()    { return (int8)this->PopUnsignedByte(); }
 
-	uint16 PopUnsignedWord()  { return this->PopUnsignedByte()  | (((uint16)this->PopUnsignedByte())  <<  8); }
+	uint16 PopUnsignedWord()
+	{
+		uint16 val = this->PopUnsignedByte();
+		return val | (this->PopUnsignedByte() << 8);
+	}
 	int16  PopSignedWord()    { return (int32)this->PopUnsignedWord(); }
 
-	uint32 PopUnsignedDWord() { return this->PopUnsignedWord()  | (((uint32)this->PopUnsignedWord())  << 16); }
+	uint32 PopUnsignedDWord()
+	{
+		uint32 val = this->PopUnsignedWord();
+		return val | (this->PopUnsignedWord() << 16);
+	}
 	int32  PopSignedDWord()   { return (int32)this->PopUnsignedDWord(); }
 
-	uint64 PopUnsignedQWord() { return this->PopUnsignedDWord() | (((uint64)this->PopUnsignedDWord()) << 32); }
+	uint64 PopUnsignedQWord()
+	{
+		uint64 val = this->PopUnsignedDWord();
+		return val | (((uint64)this->PopUnsignedDWord()) << 32);
+	}
 	int64  PopSignedQWord()   { return (int64)this->PopUnsignedQWord(); }
 
 	/** Rotate the top four words down: W1, W2, W3, W4 -> W4, W1, W2, W3 */
