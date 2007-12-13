@@ -22,7 +22,7 @@
 /* delta between mouse cursor and upper left corner of dragged window */
 static Point _drag_delta;
 
-static Window _windows[25];
+static Window _windows[MAX_NUMBER_OF_WINDOWS];
 Window *_z_windows[lengthof(_windows)];
 Window **_last_z_window; ///< always points to the next free space in the z-array
 

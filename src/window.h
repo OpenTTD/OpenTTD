@@ -14,6 +14,11 @@
 #include "vehicle.h"
 #include "viewport.h"
 
+/**
+ * The maximum number of windows that can be opened.
+ */
+static const int MAX_NUMBER_OF_WINDOWS = 25;
+
 struct WindowEvent;
 
 typedef void WindowProc(Window *w, WindowEvent *e);

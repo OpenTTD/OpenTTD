@@ -32,8 +32,22 @@
 
 ZoomLevel _saved_scrollpos_zoom;
 
-/* XXX - maximum viewports is maximum windows - 2 (main toolbar + status bar) */
-static ViewPort _viewports[25 - 2];
+/**
+ * The maximum number of viewports depends on the maximum number
+ * of windows. Technically is could be the maximum number of
+ * windows, but there is always at least one window that does
+ * not need a viewport. Not having 'support' for that viewport
+ * saves some time and memory.
+ * For the introduction GUI and create game GUIs there is no
+ * need for more than one viewport, however in the normal game
+ * and scenario editor one can make a lot of viewports. For the
+ * normal game one always has a main toolbar and a status bar,
+ * however the statusbar does not exist on the scenario editor.
+ *
+ * This means that we can only safely assume that there is one
+ * window without viewport.
+ */
+static ViewPort _viewports[MAX_NUMBER_OF_WINDOWS - 1];
 static uint32 _active_viewports;    ///< bitmasked variable where each bit signifies if a viewport is in use or not
 assert_compile(lengthof(_viewports) < sizeof(_active_viewports) * 8);
 
