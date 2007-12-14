@@ -561,34 +561,6 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	return cost;
 }
 
-TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
-{
-	uint z = GetTileZ(tile);
-	DiagDirection dir = GetTunnelDirection(tile);
-	TileIndexDiff delta = TileOffsByDiagDir(dir);
-	uint len = 0;
-	TileIndex starttile = tile;
-	Vehicle *v;
-
-	do {
-		tile += delta;
-		len++;
-	} while (
-		!IsTunnelTile(tile) ||
-		ReverseDiagDir(GetTunnelDirection(tile)) != dir ||
-		GetTileZ(tile) != z
-	);
-
-	v = FindVehicleBetween(starttile, tile, z);
-	if (v != NULL) {
-		_error_message = v->type == VEH_TRAIN ?
-			STR_5000_TRAIN_IN_TUNNEL : STR_5001_ROAD_VEHICLE_IN_TUNNEL;
-		return INVALID_TILE;
-	}
-
-	if (length != NULL) *length = len;
-	return tile;
-}
 
 static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 {
@@ -605,14 +577,14 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 {
 	Town *t = NULL;
 	TileIndex endtile;
-	uint length;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (!CheckAllowRemoveTunnelBridge(tile)) return CMD_ERROR;
 
-	endtile = CheckTunnelBusy(tile, &length);
-	if (endtile == INVALID_TILE) return CMD_ERROR;
+	endtile = GetOtherTunnelEnd(tile);
+
+	if (GetVehicleTunnelBridge(tile, endtile) != NULL) return CMD_ERROR;
 
 	_build_tunnel_endtile = endtile;
 
@@ -645,21 +617,9 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 		YapfNotifyTrackLayoutChange(tile, track);
 		YapfNotifyTrackLayoutChange(endtile, track);
 	}
-	return CommandCost(_price.clear_tunnel * (length + 1));
+	return CommandCost(_price.clear_tunnel * (DistanceManhattan(tile, endtile) + 1));
 }
 
-
-static bool IsVehicleOnBridge(TileIndex starttile, TileIndex endtile, uint z)
-{
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		if ((v->tile == starttile || v->tile == endtile) && v->z_pos == z) {
-			_error_message = VehicleInTheWayErrMsg(v);
-			return true;
-		}
-	}
-	return false;
-}
 
 static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 {
@@ -673,13 +633,8 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 	if (!CheckAllowRemoveTunnelBridge(tile)) return CMD_ERROR;
 
 	endtile = GetOtherBridgeEnd(tile);
-	byte bridge_height = GetBridgeHeight(tile);
 
-	if (FindVehicleOnTileZ(tile, bridge_height) != NULL ||
-			FindVehicleOnTileZ(endtile, bridge_height) != NULL ||
-			IsVehicleOnBridge(tile, endtile, bridge_height)) {
-		return CMD_ERROR;
-	}
+	if (GetVehicleTunnelBridge(tile, endtile) != NULL) return CMD_ERROR;
 
 	direction = GetBridgeRampDirection(tile);
 	delta = TileOffsByDiagDir(direction);
@@ -747,16 +702,12 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
 CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 {
 	if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
-		uint length;
-		TileIndex endtile;
+		TileIndex endtile = GetOtherTunnelEnd(tile);
 
 		/* If not coverting rail <-> el. rail, any vehicle cannot be in tunnel */
-		if (!IsCompatibleRail(GetRailType(tile), totype)) {
-			endtile = CheckTunnelBusy(tile, &length);
-			if (endtile == INVALID_TILE) return CMD_ERROR;
-		} else {
-			endtile = GetOtherTunnelEnd(tile);
-			length = DistanceManhattan(tile, endtile);
+		if (!IsCompatibleRail(GetRailType(tile), totype) &&
+				GetVehicleTunnelBridge(tile, endtile) != NULL) {
+			return CMD_ERROR;
 		}
 
 		if (exec) {
@@ -774,15 +725,12 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 			VehicleFromPos(endtile, &endtile, UpdateTrainPowerProc);
 		}
 
-		return CommandCost((length + 1) * RailConvertCost(GetRailType(tile), totype));
+		return CommandCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(GetRailType(tile), totype));
 	} else if (IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
 		TileIndex endtile = GetOtherBridgeEnd(tile);
-		byte bridge_height = GetBridgeHeight(tile);
 
 		if (!IsCompatibleRail(GetRailType(tile), totype) &&
-				(FindVehicleOnTileZ(tile, bridge_height) != NULL ||
-				FindVehicleOnTileZ(endtile, bridge_height) != NULL ||
-				IsVehicleOnBridge(tile, endtile, bridge_height))) {
+				GetVehicleTunnelBridge(tile, endtile) != NULL) {
 			return CMD_ERROR;
 		}
 

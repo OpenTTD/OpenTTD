@@ -175,6 +175,41 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_c
 }
 
 
+/** Struct used for GetVehicleTunnelBridge() */
+struct TunnelBridgeInfo {
+	TileIndex tile;                      ///< tile
+};
+
+/** Procedure called for every vehicle found in tunnel/bridge in the hash map */
+static void *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
+{
+	TunnelBridgeInfo *tbi = (TunnelBridgeInfo*)data;
+
+	if (v->tile != tbi->tile || (v->type != VEH_TRAIN && v->type != VEH_ROAD)) return NULL;
+
+	_error_message = VehicleInTheWayErrMsg(v);
+	return v;
+}
+
+/**
+ * Finds vehicle in tunnel / bridge
+ * @param tile first end
+ * @param endtile second end
+ * @return pointer to vehicle found
+ */
+Vehicle *GetVehicleTunnelBridge(TileIndex tile, TileIndex endtile)
+{
+	TunnelBridgeInfo tbi = {tile};
+
+	Vehicle *v = (Vehicle*)VehicleFromPos(tile, &tbi, &GetVehicleTunnelBridgeProc);
+	if (v != NULL) return v;
+
+	tbi.tile = endtile;
+
+	return (Vehicle*)VehicleFromPos(endtile, &tbi, &GetVehicleTunnelBridgeProc);
+}
+
+
 static void UpdateVehiclePosHash(Vehicle* v, int x, int y);
 
 void VehiclePositionChanged(Vehicle *v)
