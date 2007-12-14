@@ -131,7 +131,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 		case WE_PAINT: {
 			const GRFConfig *c;
 			const Widget *wl = &w->widget[ANGRFW_GRF_LIST];
-			uint n = 0;
+			int n = 0;
 
 			/* Count the number of GRFs */
 			for (c = _all_grfs; c != NULL; c = c->next) n++;

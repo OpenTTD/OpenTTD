@@ -1677,12 +1677,12 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP:
-		if (w->IsWidgetLowered(0) != (bool)_pause_game) {
+		if (w->IsWidgetLowered(0) != !!_pause_game) {
 			w->ToggleWidgetLoweredState(0);
 			w->InvalidateWidget(0);
 		}
 
-		if (w->IsWidgetLowered(1) != (bool)_fast_forward) {
+		if (w->IsWidgetLowered(1) != !!_fast_forward) {
 			w->ToggleWidgetLoweredState(1);
 			w->InvalidateWidget(1);
 		}
@@ -1986,12 +1986,12 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP:
-		if (w->IsWidgetLowered(0) != (bool)_pause_game) {
+		if (w->IsWidgetLowered(0) != !!_pause_game) {
 			w->ToggleWidgetLoweredState(0);
 			SetWindowDirty(w);
 		}
 
-		if (w->IsWidgetLowered(1) != (bool)_fast_forward) {
+		if (w->IsWidgetLowered(1) != !!_fast_forward) {
 			w->ToggleWidgetLoweredState(1);
 			SetWindowDirty(w);
 		}
