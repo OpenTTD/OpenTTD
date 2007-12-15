@@ -121,16 +121,27 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
 			if (_game_mode != GM_EDITOR && GetRoadOwner(tile, rt) == OWNER_TOWN) t = GetTownByTile(tile);
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
 		case MP_STATION:
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if ((IsTunnel(tile) && GetTunnelTransportType(tile) != TRANSPORT_ROAD) ||
-					(IsBridge(tile) && GetBridgeTransportType(tile) != TRANSPORT_ROAD)) return CMD_ERROR;
-			break;
+			{
+				TileIndex endtile;
+				if (IsTunnel(tile)) {
+					if (GetTunnelTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+					endtile = GetOtherTunnelEnd(tile);
+				} else {
+					if (GetBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+					endtile = GetOtherBridgeEnd(tile);
+				}
+
+				if (GetVehicleTunnelBridge(tile, endtile) != NULL) return CMD_ERROR;
+			} break;
 
 		default:
 			return CMD_ERROR;
@@ -142,8 +153,6 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!HasBit(rts, rt)) return CMD_ERROR;
 
 	if (!CheckAllowRemoveRoad(tile, pieces, &edge_road, rt)) return CMD_ERROR;
-
-	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	/* check if you're allowed to remove the street owned by a town
 	 * removal allowance depends on difficulty setting */
@@ -502,12 +511,19 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if ((IsTunnel(tile) && GetTunnelTransportType(tile) != TRANSPORT_ROAD) ||
-					(IsBridge(tile) && GetBridgeTransportType(tile) != TRANSPORT_ROAD)) return CMD_ERROR;
-			if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
-			/* Don't allow "upgrading" the bridge/tunnel when vehicles are already driving on it */
-			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
-			break;
+			{
+				TileIndex endtile;
+				if (IsTunnel(tile)) {
+					if (GetTunnelTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+					endtile = GetOtherTunnelEnd(tile);
+				} else {
+					if (GetBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+					endtile = GetOtherBridgeEnd(tile);
+				}
+				if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+				/* Don't allow "upgrading" the bridge/tunnel when vehicles are already driving on it */
+				if (GetVehicleTunnelBridge(tile, endtile) != NULL) return CMD_ERROR;
+			} break;
 
 		default:
 do_clear:;
