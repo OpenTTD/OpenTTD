@@ -1917,42 +1917,14 @@ static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 /* Special check for SetSignalsAfterProc, to see if there is a vehicle on this tile */
 static bool SignalVehicleCheck(TileIndex tile, uint track)
 {
-	SignalVehicleCheckStruct dest;
-
-	dest.tile = tile;
-	dest.track = track;
-
-	/* Locate vehicles in tunnels or on bridges */
-	if (IsTunnelTile(tile) || IsBridgeTile(tile)) {
-		TileIndex end;
-		DiagDirection direction;
-
-		if (IsTunnelTile(tile)) {
-			end = GetOtherTunnelEnd(tile);
-			direction = GetTunnelDirection(tile);
-		} else {
-			end = GetOtherBridgeEnd(tile);
-			direction = GetBridgeRampDirection(tile);
-		}
-
-		dest.track = 1 << (direction & 1); // get the trackbit the vehicle would have if it has not entered the tunnel yet (ie is still visible)
-
-		/* check for a vehicle with that trackdir on the start tile of the tunnel */
-		if (VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL) return true;
-
-		/* check for a vehicle with that trackdir on the end tile of the tunnel */
-		if (VehicleFromPos(end, &dest, SignalVehicleCheckProc) != NULL) return true;
-
-		/* now check all tiles from start to end for a warping vehicle */
-		dest.track = 0x40;   //Vehicle inside a tunnel or on a bridge
-		if (VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL) return true;
-		if (VehicleFromPos(end, &dest, SignalVehicleCheckProc) != NULL) return true;
-
-		/* no vehicle found */
-		return false;
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		/* Locate vehicles in tunnels or on bridges */
+		TileIndex endtile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
+		return GetVehicleTunnelBridge(tile, endtile) != NULL;
+	} else {
+		SignalVehicleCheckStruct dest = {tile, track};
+		return VehicleFromPos(tile, &dest, &SignalVehicleCheckProc) != NULL;
 	}
-
-	return VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL;
 }
 
 static void SetSignalsAfterProc(TrackPathFinder *tpf)
