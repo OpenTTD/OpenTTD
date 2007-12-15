@@ -3030,7 +3030,7 @@ reverse_train_direction:
  * Deletes/Clears the last wagon of a crashed train. It takes the engine of the
  * train, then goes to the last wagon and deletes that. Each call to this function
  * will remove the last wagon of a crashed train. If this wagon was on a crossing,
- * or inside a tunnel, recalculate the signals as they might need updating
+ * or inside a tunnel/bridge, recalculate the signals as they might need updating
  * @param v the Vehicle of which last wagon is to be removed
  */
 static void DeleteLastWagon(Vehicle *v)
@@ -3059,27 +3059,16 @@ static void DeleteLastWagon(Vehicle *v)
 	 * others are on it */
 	DisableTrainCrossing(v->tile);
 
-	if ((v->u.rail.track == TRACK_BIT_WORMHOLE && v->vehstatus & VS_HIDDEN)) { // inside a tunnel
-		TileIndex endtile = GetOtherTunnelEnd(v->tile);
+	if (v->u.rail.track == TRACK_BIT_WORMHOLE) { // inside a tunnel / bridge
+		TileIndex endtile = IsTunnel(v->tile) ? GetOtherTunnelEnd(v->tile) : GetOtherBridgeEnd(v->tile);
 
-		if (GetVehicleTunnelBridge(v->tile, endtile) != NULL) return; // tunnel is busy (error returned)
+		if (GetVehicleTunnelBridge(v->tile, endtile) != NULL) return; // tunnel / bridge is busy
 
-		switch (v->direction) {
-			case 1:
-			case 5:
-				SetSignalsOnBothDir(v->tile, 0);
-				SetSignalsOnBothDir(endtile, 0);
-				break;
+		DiagDirection dir = IsTunnel(v->tile) ? GetTunnelDirection(v->tile) : GetBridgeRampDirection(v->tile);
 
-			case 3:
-			case 7:
-				SetSignalsOnBothDir(v->tile, 1);
-				SetSignalsOnBothDir(endtile, 1);
-				break;
-
-			default:
-				break;
-		}
+		/* v->direction is "random", so it cannot be used to determine the direction of the track */
+		UpdateSignalsOnSegment(v->tile, dir);
+		UpdateSignalsOnSegment(endtile, ReverseDiagDir(dir));
 	}
 }
 
