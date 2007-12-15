@@ -2195,7 +2195,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 				break;
 		}
 
-		if (ignoring) grfmsg(2, "FeatureChangeInfo: Ignoring property 0x%02X (not implemented)", prop);
+		if (ignoring) grfmsg(1, "FeatureChangeInfo: Ignoring property 0x%02X of feature 0x%02X (not implemented)", prop, feature);
 	}
 }
 
