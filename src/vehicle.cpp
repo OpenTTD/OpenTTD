@@ -606,6 +606,11 @@ void DeleteVehicleChain(Vehicle *v)
 
 	do {
 		Vehicle *u = v;
+		if (!(v->vehstatus & VS_HIDDEN)) {
+			/* sometimes, eg. for disaster vehicles, when company bankrupts, when removing crashed/flooded vehicles,
+			 * it may happen that vehicle chain is deleted when visible */
+			MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+		}
 		v = v->Next();
 		delete u;
 	} while (v != NULL);
