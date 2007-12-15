@@ -82,21 +82,14 @@ const byte _track_sloped_sprites[14] = {
  *               11uuuudd => rail depot
  */
 
-/** Struct used in EnsureNoTrainOnTrack() */
-struct TrainOnTrackData {
-	TileIndex tile;       ///< tile to check
-	uint z;               ///< tile max Z
-	TrackBits rail_bits;  ///< trackbits of interest
-};
 
 static void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
 {
-	const TrainOnTrackData *info = (const TrainOnTrackData *)data;
+	TrackBits rail_bits = *(TrackBits *)data;
 
-	if (v->tile != info->tile || v->type != VEH_TRAIN) return NULL;
-	if (v->z_pos > info->z) return NULL;
+	if (v->type != VEH_TRAIN) return NULL;
 
-	if ((v->u.rail.track != info->rail_bits) && !TracksOverlap(v->u.rail.track | info->rail_bits)) return NULL;
+	if ((v->u.rail.track != rail_bits) && !TracksOverlap(v->u.rail.track | rail_bits)) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
 	return v;
@@ -111,13 +104,9 @@ static void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
  */
 static bool EnsureNoTrainOnTrack(TileIndex tile, Track track)
 {
-	TrainOnTrackData info;
+	TrackBits rail_bits = TrackToTrackBits(track);
 
-	info.tile = tile;
-	info.z = GetTileMaxZ(tile);
-	info.rail_bits = TrackToTrackBits(track);
-
-	return VehicleFromPos(tile, &info, EnsureNoTrainOnTrackProc) == NULL;
+	return VehicleFromPos(tile, &rail_bits, &EnsureNoTrainOnTrackProc) == NULL;
 }
 
 static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags)
@@ -1160,7 +1149,7 @@ void *UpdateTrainPowerProc(Vehicle *v, void *data)
 {
 	/* Similiar checks as in TrainPowerChanged() */
 
-	if (v->type == VEH_TRAIN && v->tile == *(TileIndex*)data && !IsArticulatedPart(v)) {
+	if (v->type == VEH_TRAIN && !IsArticulatedPart(v)) {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 		if (GetVehicleProperty(v, 0x0B, rvi->power) != 0) TrainPowerChanged(v->First());
 	}
@@ -1198,7 +1187,7 @@ static CommandCost DoConvertRail(TileIndex tile, RailType totype, bool exec)
 		}
 
 		/* update power of train engines on this tile */
-		VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
+		VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
 	}
 
 	return CommandCost(RailConvertCost(GetRailType(tile), totype) * CountBits(GetTrackBits(tile)));
@@ -1893,23 +1882,14 @@ static bool SetSignalsEnumProc(TileIndex tile, void* data, Trackdir trackdir, ui
 	return false;
 }
 
-/* Struct to parse data from VehicleFromPos to SignalVehicleCheckProc */
-struct SignalVehicleCheckStruct {
-	TileIndex tile;
-	uint track;
-};
-
 static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 {
-	const SignalVehicleCheckStruct* dest = (SignalVehicleCheckStruct*)data;
+	uint track = *(uint*)data;
 
 	if (v->type != VEH_TRAIN) return NULL;
 
-	/* Wrong tile, or no train? Not a match */
-	if (v->tile != dest->tile) return NULL;
-
 	/* Are we on the same piece of track? */
-	if (dest->track & v->u.rail.track * 0x101) return v;
+	if (track & v->u.rail.track * 0x101) return v;
 
 	return NULL;
 }
@@ -1922,8 +1902,7 @@ static bool SignalVehicleCheck(TileIndex tile, uint track)
 		TileIndex endtile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
 		return GetVehicleTunnelBridge(tile, endtile) != NULL;
 	} else {
-		SignalVehicleCheckStruct dest = {tile, track};
-		return VehicleFromPos(tile, &dest, &SignalVehicleCheckProc) != NULL;
+		return VehicleFromPos(tile, &track, &SignalVehicleCheckProc) != NULL;
 	}
 }
 

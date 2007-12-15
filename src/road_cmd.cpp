@@ -619,7 +619,7 @@ CommandCost DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 		SetRailType(tile, totype);
 		MarkTileDirtyByTile(tile);
 		YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetCrossingRailBits(tile)));
-		VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
+		VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
 	}
 
 	return CommandCost(RailConvertCost(GetRailType(tile), totype));

@@ -1528,15 +1528,15 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 /* Check if the vehicle is a train and is on the tile we are testing */
 static void *TestTrainOnCrossing(Vehicle *v, void *data)
 {
-	if (v->tile != *(const TileIndex*)data || v->type != VEH_TRAIN) return NULL;
+	if (v->type != VEH_TRAIN) return NULL;
 	return v;
 }
 
 static void DisableTrainCrossing(TileIndex tile)
 {
 	if (IsLevelCrossingTile(tile) &&
-			VehicleFromPos(tile, &tile, TestTrainOnCrossing) == NULL && // empty?
-			IsCrossingBarred(tile)) {
+			IsCrossingBarred(tile) &&
+			VehicleFromPos(tile, NULL, &TestTrainOnCrossing) == NULL) { // empty?
 		UnbarCrossing(tile);
 		MarkTileDirtyByTile(tile);
 	}
@@ -2798,17 +2798,12 @@ static void CheckTrainCollision(Vehicle *v)
 	SndPlayVehicleFx(SND_13_BIG_CRASH, v);
 }
 
-struct VehicleAtSignalData {
-	TileIndex tile;
-	Direction direction;
-};
-
 static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 {
-	const VehicleAtSignalData* vasd = (VehicleAtSignalData*)data;
+	Direction dir = *(Direction*)data;
 
-	if (v->type == VEH_TRAIN && IsFrontEngine(v) && v->tile == vasd->tile) {
-		DirDiff diff = ChangeDirDiff(DirDifference(v->direction, vasd->direction), DIRDIFF_90RIGHT);
+	if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
+		DirDiff diff = ChangeDirDiff(DirDifference(v->direction, dir), DIRDIFF_90RIGHT);
 
 		if (diff == DIRDIFF_90RIGHT || (v->cur_speed <= 5 && diff <= DIRDIFF_REVERSE)) return v;
 	}
@@ -2907,12 +2902,10 @@ static void TrainController(Vehicle *v, bool update_image)
 							v->progress = 255 - 10;
 							if (++v->load_unload_time_rem < _patches.wait_twoway_signal * 73) {
 								TileIndex o_tile = gp.new_tile + TileOffsByDiagDir(enterdir);
-								VehicleAtSignalData vasd;
-								vasd.tile = o_tile;
-								vasd.direction = ReverseDir(dir);
+								Direction rdir = ReverseDir(dir);
 
 								/* check if a train is waiting on the other side */
-								if (VehicleFromPos(o_tile, &vasd, CheckVehicleAtSignal) == NULL) return;
+								if (VehicleFromPos(o_tile, &rdir, &CheckVehicleAtSignal) == NULL) return;
 							}
 						}
 						goto reverse_train_direction;

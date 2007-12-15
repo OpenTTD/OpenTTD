@@ -721,8 +721,8 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 
-			VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
-			VehicleFromPos(endtile, &endtile, UpdateTrainPowerProc);
+			VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
+			VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
 		}
 
 		return CommandCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(GetRailType(tile), totype));
@@ -746,8 +746,8 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 
-			VehicleFromPos(tile, &tile, UpdateTrainPowerProc);
-			VehicleFromPos(endtile, &endtile, UpdateTrainPowerProc);
+			VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
+			VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
 
 			for (tile += delta; tile != endtile; tile += delta) {
 				MarkTileDirtyByTile(tile); // TODO encapsulate this into a function

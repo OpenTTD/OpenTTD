@@ -1015,7 +1015,7 @@ static void* EnumFindVehToOvertake(Vehicle* v, void* data)
 	const OvertakeData* od = (OvertakeData*)data;
 
 	return
-		v->tile == od->tile && v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v ?
+		v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v ?
 			v : NULL;
 }
 

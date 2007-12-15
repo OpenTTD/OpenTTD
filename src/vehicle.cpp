@@ -120,10 +120,10 @@ StringID VehicleInTheWayErrMsg(const Vehicle* v)
 
 static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
-	const TileInfo *ti = (const TileInfo*)data;
+	byte z = *(byte*)data;
 
-	if (v->tile != ti->tile || v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
-	if (v->z_pos > ti->z) return NULL;
+	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
+	if (v->z_pos > z) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
 	return v;
@@ -131,12 +131,7 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 
 Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z)
 {
-	TileInfo ti;
-
-	ti.tile = tile;
-	ti.z = z;
-
-	return (Vehicle*)VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ);
+	return (Vehicle*)VehicleFromPos(tile, &z, &EnsureNoVehicleProcZ);
 }
 
 bool EnsureNoVehicleOnGround(TileIndex tile)
@@ -170,17 +165,10 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_c
 }
 
 
-/** Struct used for GetVehicleTunnelBridge() */
-struct TunnelBridgeInfo {
-	TileIndex tile;                      ///< tile
-};
-
 /** Procedure called for every vehicle found in tunnel/bridge in the hash map */
 static void *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
 {
-	TunnelBridgeInfo *tbi = (TunnelBridgeInfo*)data;
-
-	if (v->tile != tbi->tile || (v->type != VEH_TRAIN && v->type != VEH_ROAD)) return NULL;
+	if (v->type != VEH_TRAIN && v->type != VEH_ROAD) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
 	return v;
@@ -194,14 +182,10 @@ static void *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
  */
 Vehicle *GetVehicleTunnelBridge(TileIndex tile, TileIndex endtile)
 {
-	TunnelBridgeInfo tbi = {tile};
-
-	Vehicle *v = (Vehicle*)VehicleFromPos(tile, &tbi, &GetVehicleTunnelBridgeProc);
+	Vehicle *v = (Vehicle*)VehicleFromPos(tile, NULL, &GetVehicleTunnelBridgeProc);
 	if (v != NULL) return v;
 
-	tbi.tile = endtile;
-
-	return (Vehicle*)VehicleFromPos(endtile, &tbi, &GetVehicleTunnelBridgeProc);
+	return (Vehicle*)VehicleFromPos(endtile, NULL, &GetVehicleTunnelBridgeProc);
 }
 
 
