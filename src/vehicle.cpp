@@ -129,16 +129,6 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	return v;
 }
 
-
-bool EnsureNoVehicleOnGround(TileIndex tile)
-{
-	TileInfo ti;
-
-	ti.tile = tile;
-	ti.z = GetTileMaxZ(tile);
-	return VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ) == NULL;
-}
-
 Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z)
 {
 	TileInfo ti;
@@ -147,6 +137,11 @@ Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z)
 	ti.z = z;
 
 	return (Vehicle*)VehicleFromPos(tile, &ti, EnsureNoVehicleProcZ);
+}
+
+bool EnsureNoVehicleOnGround(TileIndex tile)
+{
+	return FindVehicleOnTileZ(tile, GetTileMaxZ(tile)) == NULL;
 }
 
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_crashed)
