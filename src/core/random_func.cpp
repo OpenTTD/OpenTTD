@@ -125,7 +125,7 @@ void SetRandomSeed(uint32 seed)
 }
 
 #ifdef RANDOM_DEBUG
-#include "network/network_data.h"
+#include "../network/network_data.h"
 uint32 DoRandom(int line, const char *file)
 {
 	if (_networking && (DEREF_CLIENT(0)->status != STATUS_INACTIVE || !_network_server))
