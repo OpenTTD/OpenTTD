@@ -31,7 +31,7 @@ LANG_DIR="$SRC_DIR/lang"
 MEDIA_DIR="$ROOT_DIR/media"
 SOURCE_LIST="$ROOT_DIR/source.list"
 
-if [ "$1" = "--reconfig" ]; then
+if [ "$1" = "--reconfig" ] || [ "$1" = "--reconfigure" ]; then
 	if ! [ -f "config.cache" ]; then
 		echo "can't reconfigure, because never configured before"
 		exit 1

@@ -32,6 +32,7 @@ set_default() {
 	personal_dir="1"
 	install_dir="/"
 	enable_debug="0"
+	enable_desync_debug="0"
 	enable_profiling="0"
 	enable_dedicated="0"
 	enable_network="1"
@@ -62,7 +63,7 @@ set_default() {
 	with_psp_config="1"
 	with_threads="1"
 
-	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os cpu_type revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir enable_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config with_threads CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os cpu_type revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir enable_debug enable_desync_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config with_threads CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -142,6 +143,8 @@ detect_params() {
 
 			--enable-debug)               enable_debug="1";;
 			--enable-debug=*)             enable_debug="$optarg";;
+			--enable-desync-debug)        enable_desync_debug="1";;
+			--enable-desync-debug=*)      enable_desync_debug="$optarg";;
 			--enable-profiling)           enable_profiling="1";;
 			--enable-profiling=*)         enable_profiling="$optarg";;
 			--enable-dedicated)           enable_dedicated="1";;
@@ -337,6 +340,13 @@ check_params() {
 		exit 1
 	fi
 
+	# enable_desync_debug should be between 0 and 3
+	if [ -z "`echo $enable_desync_debug | egrep '^[012]$'`" ]; then
+		echo "configure: error: invalid option --enable-desync-debug=$enable_desync_debug"
+		echo " Available options are: --enable-desync-debug[=012]"
+		exit 1
+	fi
+
 	detect_awk
 
 	check_build
@@ -417,6 +427,17 @@ check_params() {
 		log 1 "using debug level... profiling (debug level $enable_debug)"
 	else
 		log 1 "using debug level... level $enable_debug"
+	fi
+
+	if [ "$enable_desync_debug" = "0" ]; then
+		log 1 "using desync debug level... no"
+	else
+		log 1 "using desync debug level... level $enable_desync_debug"
+		log 1 "WARNING: desync debug functions slow down the game considerably."
+		log 1 "WARNING: use only when you are instructed to do so"
+		log 1 "         or when you know what you are doing."
+
+		sleep 5
 	fi
 
 	detect_sdl
@@ -1050,6 +1071,13 @@ make_cflags_and_ldflags() {
 
 	if [ "$enable_assert" = "0" ]; then
 		CFLAGS="$CFLAGS -DNDEBUG"
+	fi
+
+	if [ "$enable_desync_debug" = "1" ]; then
+		CFLAGS="$CFLAGS -DDEBUG_DUMP_COMMANDS"
+	fi
+	if [ "$enable_desync_debug" = "2" ]; then
+		CFLAGS="$CFLAGS -DRANDOM_DEBUG"
 	fi
 
 	if [ "$enable_osx_g5" != "0" ]; then
