@@ -1055,8 +1055,8 @@ static void ScrollMainViewport(int x, int y)
 		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 		assert(w);
 
-		WP(w,vp_d).dest_scrollpos_x += ScaleByZoom(x, w->viewport->zoom);
-		WP(w,vp_d).dest_scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
+		WP(w, vp_d).dest_scrollpos_x += ScaleByZoom(x, w->viewport->zoom);
+		WP(w, vp_d).dest_scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
 	}
 }
 /**

@@ -343,8 +343,8 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 
-		WP(w,tree_d).base = i = _tree_base_by_landscape[_opt.landscape];
-		WP(w,tree_d).count = count = _tree_count_by_landscape[_opt.landscape];
+		WP(w, tree_d).base = i = _tree_base_by_landscape[_opt.landscape];
+		WP(w, tree_d).count = count = _tree_count_by_landscape[_opt.landscape];
 
 		x = 18;
 		y = 54;
@@ -369,10 +369,10 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 		case 3: case 4: case 5: case 6:
 		case 7: case 8: case 9: case 10:
 		case 11:case 12: case 13: case 14:
-			if (wid - 3 >= WP(w,tree_d).count) break;
+			if (wid - 3 >= WP(w, tree_d).count) break;
 
 			if (HandlePlacePushButton(w, wid, SPR_CURSOR_TREE, VHM_RECT, NULL))
-				_tree_to_plant = WP(w,tree_d).base + wid - 3;
+				_tree_to_plant = WP(w, tree_d).base + wid - 3;
 			break;
 
 		case 15: // tree of random type.
@@ -1856,7 +1856,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		int clk = WP(w,def_d).data_1;
+		int clk = WP(w, def_d).data_1;
 		int x, y;
 		int i;
 
@@ -1935,7 +1935,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 			switch (ce->type) {
 			case SLE_BOOL:
-				if (ce->flags & CE_CLICK) WP(w,def_d).data_1 = btn * 2 + 1;
+				if (ce->flags & CE_CLICK) WP(w, def_d).data_1 = btn * 2 + 1;
 				value ^= 1;
 				if (ce->proc != NULL) ce->proc(value, 0);
 				break;
@@ -1953,7 +1953,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				value = ce->proc(value, (x >= 30) ? 1 : -1);
 
 				if (value != oldvalue) {
-					WP(w,def_d).data_1 = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
+					WP(w, def_d).data_1 = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
 				}
 			} break;
 			}
@@ -1969,7 +1969,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_TIMEOUT:
-		WP(w,def_d).data_1 = 0;
+		WP(w, def_d).data_1 = 0;
 		SetWindowDirty(w);
 		break;
 	}

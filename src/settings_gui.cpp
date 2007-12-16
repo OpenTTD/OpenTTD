@@ -810,7 +810,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 	case WE_PAINT: {
 		int x, y;
-		const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
+		const PatchPage *page = &_patches_page[WP(w, def_d).data_1];
 		uint i;
 
 		/* Set up selected category */
@@ -843,7 +843,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				value = (int32)ReadValue(var, sd->save.conv);
 
 				/* Draw [<][>] boxes for settings of an integer-type */
-				DrawArrowButtons(x, y, 3, WP(w,def_d).data_2 - (i * 2), (editable && value != sdb->min), (editable && value != sdb->max));
+				DrawArrowButtons(x, y, 3, WP(w, def_d).data_2 - (i * 2), (editable && value != sdb->min), (editable && value != sdb->max));
 
 				disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
 				if (disabled) {
@@ -868,7 +868,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 		case 3: {
-			const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
+			const PatchPage *page = &_patches_page[WP(w, def_d).data_1];
 			const SettingDesc *sd;
 			void *var;
 			int32 value;
@@ -927,7 +927,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 					/* Set up scroller timeout for numeric values */
 					if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
-						WP(w,def_d).data_2 = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
+						WP(w, def_d).data_2 = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
 						w->flags4 |= 5 << WF_TIMEOUT_SHL;
 						_left_button_clicked = false;
 					}
@@ -945,7 +945,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 					/* Show the correct currency-translated value */
 					if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
 
-					WP(w,def_d).data_3 = btn;
+					WP(w, def_d).data_3 = btn;
 					SetDParam(0, value);
 					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, w, CS_NUMERAL);
 				}
@@ -964,13 +964,13 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_TIMEOUT:
-		WP(w,def_d).data_2 = 0;
+		WP(w, def_d).data_2 = 0;
 		SetWindowDirty(w);
 		break;
 
 	case WE_ON_EDIT_TEXT: {
 		if (e->we.edittext.str != NULL) {
-			const PatchEntry *pe = &_patches_page[WP(w,def_d).data_1].entries[WP(w,def_d).data_3];
+			const PatchEntry *pe = &_patches_page[WP(w, def_d).data_1].entries[WP(w,def_d).data_3];
 			const SettingDesc *sd = pe->setting;
 			int32 value = atoi(e->we.edittext.str);
 
@@ -1052,7 +1052,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		case WE_PAINT: {
 			int x;
 			int y = 20;
-			int clk = WP(w,def_d).data_1;
+			int clk = WP(w, def_d).data_1;
 			DrawWindowWidgets(w);
 
 			// exchange rate
@@ -1105,10 +1105,10 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					if (IsInsideMM(x, 10, 30)) { // clicked buttons
 						if (x < 20) {
 							if (_custom_currency.rate > 1) _custom_currency.rate--;
-							WP(w,def_d).data_1 = 1 << (line * 2 + 0);
+							WP(w, def_d).data_1 = 1 << (line * 2 + 0);
 						} else {
 							if (_custom_currency.rate < 5000) _custom_currency.rate++;
-							WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+							WP(w, def_d).data_1 = 1 << (line * 2 + 1);
 						}
 					} else { // enter text
 						SetDParam(0, _custom_currency.rate);
@@ -1120,7 +1120,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 
 				case 1: // separator
 					if (IsInsideMM(x, 10, 30)) { // clicked button
-						WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+						WP(w, def_d).data_1 = 1 << (line * 2 + 1);
 					}
 					str = BindCString(_str_separator);
 					len = 1;
@@ -1128,7 +1128,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 
 				case 2: // prefix
 					if (IsInsideMM(x, 10, 30)) { // clicked button
-						WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+						WP(w, def_d).data_1 = 1 << (line * 2 + 1);
 					}
 					str = BindCString(_custom_currency.prefix);
 					len = 12;
@@ -1136,7 +1136,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 
 				case 3: // suffix
 					if (IsInsideMM(x, 10, 30)) { // clicked button
-						WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+						WP(w, def_d).data_1 = 1 << (line * 2 + 1);
 					}
 					str = BindCString(_custom_currency.suffix);
 					len = 12;
@@ -1147,11 +1147,11 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 						if (x < 20) {
 							_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ?
 								CF_NOEURO : _custom_currency.to_euro - 1;
-							WP(w,def_d).data_1 = 1 << (line * 2 + 0);
+							WP(w, def_d).data_1 = 1 << (line * 2 + 0);
 						} else {
 							_custom_currency.to_euro =
 								Clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
-							WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+							WP(w, def_d).data_1 = 1 << (line * 2 + 1);
 						}
 					} else { // enter text
 						SetDParam(0, _custom_currency.to_euro);
@@ -1175,7 +1175,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		case WE_ON_EDIT_TEXT: {
 				const char *b = e->we.edittext.str;
 
-				switch (WP(w,def_d).data_2) {
+				switch (WP(w, def_d).data_2) {
 					case 0: /* Exchange rate */
 						_custom_currency.rate = Clamp(atoi(b), 1, 5000);
 						break;
@@ -1206,7 +1206,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_TIMEOUT:
-			WP(w,def_d).data_1 = 0;
+			WP(w, def_d).data_1 = 0;
 			SetWindowDirty(w);
 			break;
 

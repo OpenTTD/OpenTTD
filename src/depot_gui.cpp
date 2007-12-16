@@ -171,7 +171,7 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 
 	switch (v->type) {
 		case VEH_TRAIN:
-			DrawTrainImage(v, x + 21, sprite_y, w->hscroll.cap + 4, w->hscroll.pos, WP(w,depot_d).sel);
+			DrawTrainImage(v, x + 21, sprite_y, w->hscroll.cap + 4, w->hscroll.pos, WP(w, depot_d).sel);
 
 			/* Number of wagons relative to a standard length wagon (rounded up) */
 			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
@@ -273,7 +273,7 @@ static void DrawDepotWindow(Window *w)
 		const Vehicle *v = WP(w, depot_d).wagon_list[num - WP(w, depot_d).engine_count];
 		const Vehicle *u;
 
-		DrawTrainImage(v, x + 50, y, w->hscroll.cap - 29, 0, WP(w,depot_d).sel);
+		DrawTrainImage(v, x + 50, y, w->hscroll.cap - 29, 0, WP(w, depot_d).sel);
 		DrawString(x, y + 2, STR_8816, TC_FROMSTRING);
 
 		/*Draw the train counter */
@@ -429,7 +429,7 @@ static void DepotClick(Window *w, int x, int y)
 			VehicleID sel = WP(w, depot_d).sel;
 
 			if (WP(w, depot_d).type == VEH_TRAIN && sel != INVALID_VEHICLE) {
-				WP(w,depot_d).sel = INVALID_VEHICLE;
+				WP(w, depot_d).sel = INVALID_VEHICLE;
 				TrainDepotMoveVehicle(v, sel, gdvp.head);
 			} else if (v != NULL) {
 				int image = v->GetImage(DIR_W);

@@ -468,7 +468,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY: {
 			Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-			v->RaiseWidget(WP(w,menu_d).main_button);
+			v->RaiseWidget(WP(w, menu_d).main_button);
 			SetWindowDirty(v);
 			return;
 		}
@@ -480,11 +480,11 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 
 		if (index < 0) {
 			Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
-			if (GetWidgetFromPos(w2, e->we.popupmenu.pt.x - w2->left, e->we.popupmenu.pt.y - w2->top) == WP(w,menu_d).main_button)
-				index = WP(w,menu_d).sel_index;
+			if (GetWidgetFromPos(w2, e->we.popupmenu.pt.x - w2->left, e->we.popupmenu.pt.y - w2->top) == WP(w, menu_d).main_button)
+				index = WP(w, menu_d).sel_index;
 		}
 
-		action_id = WP(w,menu_d).action_id;
+		action_id = WP(w, menu_d).action_id;
 		DeleteWindow(w);
 
 		if (index >= 0) {
@@ -498,9 +498,9 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 	case WE_POPUPMENU_OVER: {
 		int index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
 
-		if (index == -1 || index == WP(w,menu_d).sel_index) return;
+		if (index == -1 || index == WP(w, menu_d).sel_index) return;
 
-		WP(w,menu_d).sel_index = index;
+		WP(w, menu_d).sel_index = index;
 		SetWindowDirty(w);
 		return;
 		}
@@ -538,10 +538,10 @@ static void UpdatePlayerMenuHeight(Window *w)
 	byte num = ActivePlayerCount();
 
 	/* Increase one to fit in PlayerList in the menu when in network */
-	if (_networking && WP(w,menu_d).main_button == 9) num++;
+	if (_networking && WP(w, menu_d).main_button == 9) num++;
 
-	if (WP(w,menu_d).item_count != num) {
-		WP(w,menu_d).item_count = num;
+	if (WP(w, menu_d).item_count != num) {
+		WP(w, menu_d).item_count = num;
 		SetWindowDirty(w);
 		num = num * 10 + 2;
 		w->height = num;
@@ -565,11 +565,11 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 		x = 1;
 		y = 1;
-		sel = WP(w,menu_d).sel_index;
-		chk = WP(w,menu_d).checked_items; // let this mean gray items.
+		sel = WP(w, menu_d).sel_index;
+		chk = WP(w, menu_d).checked_items; // let this mean gray items.
 
 		/* 9 = playerlist */
-		if (_networking && WP(w,menu_d).main_button == 9) {
+		if (_networking && WP(w, menu_d).main_button == 9) {
 			if (sel == 0) {
 				GfxFillRect(x, y, x + 238, y + 9, 0);
 			}
@@ -603,18 +603,18 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY: {
 		Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		v->RaiseWidget(WP(w,menu_d).main_button);
+		v->RaiseWidget(WP(w, menu_d).main_button);
 		SetWindowDirty(v);
 		return;
 		}
 
 	case WE_POPUPMENU_SELECT: {
 		int index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
-		int action_id = WP(w,menu_d).action_id;
+		int action_id = WP(w, menu_d).action_id;
 
 		/* We have a new entry at the top of the list of menu 9 when networking
 		 *  so keep that in count */
-		if (_networking && WP(w,menu_d).main_button == 9) {
+		if (_networking && WP(w, menu_d).main_button == 9) {
 			if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
 		} else {
 			index = GetPlayerIndexFromMenu(index);
@@ -622,8 +622,8 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 		if (index < 0) {
 			Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
-			if (GetWidgetFromPos(w2, e->we.popupmenu.pt.x - w2->left, e->we.popupmenu.pt.y - w2->top) == WP(w,menu_d).main_button)
-				index = WP(w,menu_d).sel_index;
+			if (GetWidgetFromPos(w2, e->we.popupmenu.pt.x - w2->left, e->we.popupmenu.pt.y - w2->top) == WP(w, menu_d).main_button)
+				index = WP(w, menu_d).sel_index;
 		}
 
 		DeleteWindow(w);
@@ -641,15 +641,15 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 		/* We have a new entry at the top of the list of menu 9 when networking
 		 * so keep that in count */
-		if (_networking && WP(w,menu_d).main_button == 9) {
+		if (_networking && WP(w, menu_d).main_button == 9) {
 			if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
 		} else {
 			index = GetPlayerIndexFromMenu(index);
 		}
 
-		if (index == -1 || index == WP(w,menu_d).sel_index) return;
+		if (index == -1 || index == WP(w, menu_d).sel_index) return;
 
-		WP(w,menu_d).sel_index = index;
+		WP(w, menu_d).sel_index = index;
 		SetWindowDirty(w);
 		return;
 		}
@@ -722,13 +722,13 @@ static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base
 	w->widget[0].bottom = item_count * 10 + 1;
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 
-	WP(w,menu_d).item_count = item_count;
-	WP(w,menu_d).sel_index = 0;
-	WP(w,menu_d).main_button = GB(parent_button, 0, 8);
-	WP(w,menu_d).action_id = (GB(parent_button, 8, 8) != 0) ? GB(parent_button, 8, 8) : parent_button;
-	WP(w,menu_d).string_id = base_string;
-	WP(w,menu_d).checked_items = 0;
-	WP(w,menu_d).disabled_items = disabled_mask;
+	WP(w, menu_d).item_count = item_count;
+	WP(w, menu_d).sel_index = 0;
+	WP(w, menu_d).main_button = GB(parent_button, 0, 8);
+	WP(w, menu_d).action_id = (GB(parent_button, 8, 8) != 0) ? GB(parent_button, 8, 8) : parent_button;
+	WP(w, menu_d).string_id = base_string;
+	WP(w, menu_d).checked_items = 0;
+	WP(w, menu_d).disabled_items = disabled_mask;
 
 	_popup_menu_active = true;
 
@@ -746,20 +746,20 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	w = AllocateWindow(x, 0x16, 0xF1, 0x52, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
-	WP(w,menu_d).item_count = 0;
-	WP(w,menu_d).sel_index = (_local_player != PLAYER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
+	WP(w, menu_d).item_count = 0;
+	WP(w, menu_d).sel_index = (_local_player != PLAYER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
 	if (_networking && main_button == 9) {
 		if (_local_player != PLAYER_SPECTATOR) {
-			WP(w,menu_d).sel_index++;
+			WP(w, menu_d).sel_index++;
 		} else {
 			/* Select client list by default for spectators */
-			WP(w,menu_d).sel_index = 0;
+			WP(w, menu_d).sel_index = 0;
 		}
 	}
-	WP(w,menu_d).action_id = main_button;
-	WP(w,menu_d).main_button = main_button;
-	WP(w,menu_d).checked_items = gray;
-	WP(w,menu_d).disabled_items = 0;
+	WP(w, menu_d).action_id = main_button;
+	WP(w, menu_d).main_button = main_button;
+	WP(w, menu_d).checked_items = gray;
+	WP(w, menu_d).disabled_items = 0;
 	_popup_menu_active = true;
 	SndPlayFx(SND_15_BEEP);
 	return w;
@@ -876,19 +876,19 @@ bool DoZoomInOutWindow(int how, Window *w)
 			vp->virtual_width >>= 1;
 			vp->virtual_height >>= 1;
 
-			WP(w,vp_d).scrollpos_x += vp->virtual_width >> 1;
-			WP(w,vp_d).scrollpos_y += vp->virtual_height >> 1;
-			WP(w,vp_d).dest_scrollpos_x = WP(w,vp_d).scrollpos_x;
-			WP(w,vp_d).dest_scrollpos_y = WP(w,vp_d).scrollpos_y;
+			WP(w, vp_d).scrollpos_x += vp->virtual_width >> 1;
+			WP(w, vp_d).scrollpos_y += vp->virtual_height >> 1;
+			WP(w, vp_d).dest_scrollpos_x = WP(w,vp_d).scrollpos_x;
+			WP(w, vp_d).dest_scrollpos_y = WP(w,vp_d).scrollpos_y;
 			break;
 		case ZOOM_OUT:
 			if (vp->zoom == ZOOM_LVL_MAX) return false;
 			vp->zoom = (ZoomLevel)((byte)vp->zoom + 1);
 
-			WP(w,vp_d).scrollpos_x -= vp->virtual_width >> 1;
-			WP(w,vp_d).scrollpos_y -= vp->virtual_height >> 1;
-			WP(w,vp_d).dest_scrollpos_x = WP(w,vp_d).scrollpos_x;
-			WP(w,vp_d).dest_scrollpos_y = WP(w,vp_d).scrollpos_y;
+			WP(w, vp_d).scrollpos_x -= vp->virtual_width >> 1;
+			WP(w, vp_d).scrollpos_y -= vp->virtual_height >> 1;
+			WP(w, vp_d).dest_scrollpos_x = WP(w,vp_d).scrollpos_x;
+			WP(w, vp_d).dest_scrollpos_y = WP(w,vp_d).scrollpos_y;
 
 			vp->virtual_width <<= 1;
 			vp->virtual_height <<= 1;
@@ -979,7 +979,7 @@ static void ToolbarOptionsClick(Window *w)
 	if (HasBit(_display_opt, DO_FULL_DETAIL))        SetBit(x, 11);
 	if (IsTransparencySet(TO_HOUSES) && IsTransparencySet(TO_TREES)) SetBit(x, 12);
 	if (IsTransparencySet(TO_SIGNS))                     SetBit(x, 13);
-	WP(w,menu_d).checked_items = x;
+	WP(w, menu_d).checked_items = x;
 }
 
 
@@ -2085,10 +2085,10 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING);
 		} else if (_pause_game) {
 			DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_0319_PAUSED, TC_FROMSTRING);
-		} else if (WP(w,def_d).data_1 > -1280 && FindWindowById(WC_NEWS_WINDOW,0) == NULL && _statusbar_news_item.string_id != 0) {
+		} else if (WP(w, def_d).data_1 > -1280 && FindWindowById(WC_NEWS_WINDOW,0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
-			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w,def_d).data_1, w->widget[1].right - w->widget[1].left - 2)) {
-				WP(w,def_d).data_1 = -1280;
+			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w, def_d).data_1, w->widget[1].right - w->widget[1].left - 2)) {
+				WP(w, def_d).data_1 = -1280;
 				if (p != NULL) {
 					/* This is the default text */
 					SetDParam(0, p->index);
@@ -2402,7 +2402,7 @@ void ShowVitalWindows()
 	w = AllocateWindowDesc(&_main_status_desc);
 	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
 
-	WP(w,def_d).data_1 = -1280;
+	WP(w, def_d).data_1 = -1280;
 }
 
 void GameSizeChanged()

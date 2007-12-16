@@ -58,7 +58,7 @@ enum OrderWindowWidgets {
 static int OrderGetSel(const Window *w)
 {
 	const Vehicle *v = GetVehicle(w->window_number);
-	int num = WP(w,order_d).sel;
+	int num = WP(w, order_d).sel;
 
 	return (num >= 0 && num < v->num_orders) ? num : v->num_orders;
 }
@@ -242,7 +242,7 @@ static void DrawOrdersWindow(Window *w)
 			}
 
 			SetDParam(0, i + 1);
-			DrawString(2, y, str, (i == WP(w,order_d).sel) ? TC_WHITE : TC_BLACK);
+			DrawString(2, y, str, (i == WP(w, order_d).sel) ? TC_WHITE : TC_BLACK);
 
 			y += 10;
 		}
@@ -253,7 +253,7 @@ static void DrawOrdersWindow(Window *w)
 
 	if (i - w->vscroll.pos < w->vscroll.cap) {
 		str = shared_orders ? STR_END_OF_SHARED_ORDERS : STR_882A_END_OF_ORDERS;
-		DrawString(2, y, str, (i == WP(w,order_d).sel) ? TC_WHITE : TC_BLACK);
+		DrawString(2, y, str, (i == WP(w, order_d).sel) ? TC_WHITE : TC_BLACK);
 	}
 }
 
@@ -367,7 +367,7 @@ static bool HandleOrderVehClick(const Vehicle *v, const Vehicle *u, Window *w)
 
 	if (DoCommandP(v->tile, v->index | (u->index << 16), _ctrl_pressed ? CO_SHARE : CO_COPY, NULL,
 		_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_CANT_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_CANT_COPY_ORDER_LIST))) {
-		WP(w,order_d).sel = -1;
+		WP(w, order_d).sel = -1;
 		ResetObjectToPlace();
 	}
 
@@ -387,7 +387,7 @@ static void OrdersPlaceObj(const Vehicle *v, TileIndex tile, Window *w)
 	if (!cmd.IsValid()) return;
 
 	if (DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), PackOrder(&cmd), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
-		if (WP(w,order_d).sel != -1) WP(w,order_d).sel++;
+		if (WP(w, order_d).sel != -1) WP(w,order_d).sel++;
 		ResetObjectToPlace();
 	}
 }
@@ -494,9 +494,9 @@ static void OrderClick_Refit(Window *w, const Vehicle *v)
 {
 	if (_ctrl_pressed) {
 		/* Cancel refitting */
-		DoCommandP(v->tile, v->index, (WP(w,order_d).sel << 16) | (CT_NO_REFIT << 8) | CT_NO_REFIT, NULL, CMD_ORDER_REFIT);
+		DoCommandP(v->tile, v->index, (WP(w, order_d).sel << 16) | (CT_NO_REFIT << 8) | CT_NO_REFIT, NULL, CMD_ORDER_REFIT);
 	} else {
-		ShowVehicleRefitWindow(v, WP(w,order_d).sel);
+		ShowVehicleRefitWindow(v, WP(w, order_d).sel);
 	}
 }
 
@@ -566,7 +566,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			if (sel == INVALID_ORDER) {
 				/* This was a click on an empty part of the orders window, so
 				 * deselect the currently selected order. */
-				WP(w,order_d).sel = -1;
+				WP(w, order_d).sel = -1;
 				SetWindowDirty(w);
 				return;
 			}
@@ -585,12 +585,12 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				if (xy != 0) ScrollMainWindowToTile(xy);
 				return;
 			} else {
-				if (sel == WP(w,order_d).sel) {
+				if (sel == WP(w, order_d).sel) {
 					/* Deselect clicked order */
-					WP(w,order_d).sel = -1;
+					WP(w, order_d).sel = -1;
 				} else {
 					/* Select clicked order */
-					WP(w,order_d).sel = sel;
+					WP(w, order_d).sel = sel;
 
 					if (v->owner == _local_player) {
 						/* Activate drag and drop */
@@ -870,6 +870,6 @@ void ShowOrdersWindow(const Vehicle *v)
 		w->caption_color = v->owner;
 		w->vscroll.cap = 6;
 		w->resize.step_height = 10;
-		WP(w,order_d).sel = -1;
+		WP(w, order_d).sel = -1;
 	}
 }

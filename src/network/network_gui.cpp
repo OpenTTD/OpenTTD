@@ -1403,10 +1403,10 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	w->widget[0].right = w->widget[0].left + 150;
 
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
-	WP(w,menu_d).item_count = 0;
+	WP(w, menu_d).item_count = 0;
 	// Save our client
-	WP(w,menu_d).main_button = client_no;
-	WP(w,menu_d).sel_index = 0;
+	WP(w, menu_d).main_button = client_no;
+	WP(w, menu_d).sel_index = 0;
 	// We are a popup
 	_popup_menu_active = true;
 
@@ -1424,7 +1424,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		// Draw the actions
-		sel = WP(w,menu_d).sel_index;
+		sel = WP(w, menu_d).sel_index;
 		y = 1;
 		for (i = 0; i < MAX_CLIENTLIST_ACTION; i++, y += CLNWND_ROWSIZE) {
 			if (_clientlist_action[i][0] == '\0') continue;
@@ -1446,7 +1446,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 		int index = (e->we.popupmenu.pt.y - w->top) / CLNWND_ROWSIZE;
 
 		if (index >= 0 && e->we.popupmenu.pt.y >= w->top)
-			HandleClientListPopupClick(index, WP(w,menu_d).main_button);
+			HandleClientListPopupClick(index, WP(w, menu_d).main_button);
 
 		DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	} break;
@@ -1455,9 +1455,9 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 		// Our mouse hoovers over an action? Select it!
 		int index = (e->we.popupmenu.pt.y - w->top) / CLNWND_ROWSIZE;
 
-		if (index == -1 || index == WP(w,menu_d).sel_index) return;
+		if (index == -1 || index == WP(w, menu_d).sel_index) return;
 
-		WP(w,menu_d).sel_index = index;
+		WP(w, menu_d).sel_index = index;
 		SetWindowDirty(w);
 	} break;
 

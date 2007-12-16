@@ -237,7 +237,7 @@ struct Textbuf {
 	uint16 caretxoffs;          ///< the current position of the caret in pixels
 };
 
-#define WP(ptr,str) (*(str*)(ptr)->custom)
+#define WP(ptr, str) (*(str*)(ptr)->custom)
 /* You cannot 100% reliably calculate the biggest custom struct as
  * the number of pointers in it and alignment will have a huge impact.
  * 96 is the largest window-size for 64-bit machines currently */

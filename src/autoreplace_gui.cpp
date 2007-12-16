@@ -240,7 +240,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 			Player *p = GetPlayer(_local_player);
 			EngineID selected_id[2];
-			const GroupID selected_group = WP(w,replaceveh_d).sel_group;
+			const GroupID selected_group = WP(w, replaceveh_d).sel_group;
 
 			selected_id[0] = WP(w, replaceveh_d).sel_engine[0];
 			selected_id[1] = WP(w, replaceveh_d).sel_engine[1];

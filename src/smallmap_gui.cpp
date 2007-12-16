@@ -612,10 +612,10 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		}
 	}
 
-	tile_x = WP(w,smallmap_d).scroll_x / TILE_SIZE;
-	tile_y = WP(w,smallmap_d).scroll_y / TILE_SIZE;
+	tile_x = WP(w, smallmap_d).scroll_x / TILE_SIZE;
+	tile_y = WP(w, smallmap_d).scroll_y / TILE_SIZE;
 
-	dx = dpi->left + WP(w,smallmap_d).subscroll;
+	dx = dpi->left + WP(w, smallmap_d).subscroll;
 	tile_x -= dx / 4;
 	tile_y += dx / 4;
 	dx &= 3;
@@ -689,8 +689,8 @@ skip_column:
 					(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
 				/* Remap into flat coordinates. */
 				Point pt = RemapCoords(
-					v->x_pos / TILE_SIZE - WP(w,smallmap_d).scroll_x / TILE_SIZE, // divide each one separately because (a-b)/c != a/c-b/c in integer world
-					v->y_pos / TILE_SIZE - WP(w,smallmap_d).scroll_y / TILE_SIZE, //    dtto
+					v->x_pos / TILE_SIZE - WP(w, smallmap_d).scroll_x / TILE_SIZE, // divide each one separately because (a-b)/c != a/c-b/c in integer world
+					v->y_pos / TILE_SIZE - WP(w, smallmap_d).scroll_y / TILE_SIZE, //    dtto
 					0);
 				x = pt.x;
 				y = pt.y;
@@ -703,7 +703,7 @@ skip_column:
 				skip = false;
 
 				/* Offset X coordinate */
-				x -= WP(w,smallmap_d).subscroll + 3 + dpi->left;
+				x -= WP(w, smallmap_d).subscroll + 3 + dpi->left;
 
 				if (x < 0) {
 					/* if x+1 is 0, that means we're on the very left edge,
@@ -735,7 +735,7 @@ skip_column:
 				(int)(TileX(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_x) / TILE_SIZE,
 				(int)(TileY(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_y) / TILE_SIZE,
 				0);
-			x = pt.x - WP(w,smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
+			x = pt.x - WP(w, smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
 			y = pt.y;
 
 			/* Check if the town sign is within bounds */
@@ -766,8 +766,8 @@ skip_column:
 		x /= TILE_SIZE;
 		y /= TILE_SIZE;
 
-		x -= WP(w,smallmap_d).subscroll;
-		x2 -= WP(w,smallmap_d).subscroll;
+		x -= WP(w, smallmap_d).subscroll;
+		x2 -= WP(w, smallmap_d).subscroll;
 
 		DrawVertMapIndicator(x, y, x, y2);
 		DrawVertMapIndicator(x2, y, x2, y2);
@@ -878,7 +878,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					 */
 					_left_button_clicked = false;
 
-					pt = RemapCoords(WP(w,smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
+					pt = RemapCoords(WP(w, smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
 					WP(w2, vp_d).dest_scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
 					WP(w2, vp_d).dest_scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
 

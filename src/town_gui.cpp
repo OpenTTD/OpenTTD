@@ -140,8 +140,8 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 		SetVScrollCount(w, numact + 1);
 
-		if (WP(w,def_d).data_1 != -1 && !HasBit(buttons, WP(w,def_d).data_1))
-			WP(w,def_d).data_1 = -1;
+		if (WP(w, def_d).data_1 != -1 && !HasBit(buttons, WP(w,def_d).data_1))
+			WP(w, def_d).data_1 = -1;
 
 		w->SetWidgetDisabledState(6, WP(w, def_d).data_1 == -1);
 
@@ -206,7 +206,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 		}
 
 		{
-			int i = WP(w,def_d).data_1;
+			int i = WP(w, def_d).data_1;
 
 			if (i != -1) {
 				SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[i]);
@@ -228,7 +228,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 			y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
 			if (y >= 0) {
-				WP(w,def_d).data_1 = y;
+				WP(w, def_d).data_1 = y;
 				SetWindowDirty(w);
 			}
 			/* Fall through to clicking in case we are double-clicked */
@@ -236,7 +236,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 		}
 
 		case TWA_EXECUTE: {
-			DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w,def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+			DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w, def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 			break;
 		}
 		}
@@ -262,7 +262,7 @@ static void ShowTownAuthorityWindow(uint town)
 
 	if (w != NULL) {
 		w->vscroll.cap = 5;
-		WP(w,def_d).data_1 = -1;
+		WP(w, def_d).data_1 = -1;
 	}
 }
 

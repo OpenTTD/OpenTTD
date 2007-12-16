@@ -503,12 +503,12 @@ static int GetDropdownItem(const Window *w)
 		return - 1;
 
 	item = y / 10;
-	if (item >= WP(w,dropdown_d).num_items || (HasBit(WP(w,dropdown_d).disabled_state, item) && !HasBit(WP(w,dropdown_d).hidden_state, item)) || WP(w,dropdown_d).items[item] == 0)
+	if (item >= WP(w, dropdown_d).num_items || (HasBit(WP(w,dropdown_d).disabled_state, item) && !HasBit(WP(w,dropdown_d).hidden_state, item)) || WP(w,dropdown_d).items[item] == 0)
 		return - 1;
 
 	/* Skip hidden items -- +1 for each hidden item before the clicked item. */
 	for (counter = 0; item >= counter; ++counter)
-		if (HasBit(WP(w,dropdown_d).hidden_state, counter)) item++;
+		if (HasBit(WP(w, dropdown_d).hidden_state, counter)) item++;
 
 	return item;
 }
@@ -527,19 +527,19 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 			x = 1;
 			y = 2 - w->vscroll.pos * 10;
 
-			sel    = WP(w,dropdown_d).selected_index;
+			sel    = WP(w, dropdown_d).selected_index;
 			width  = w->widget[0].right - 3;
 			height = w->widget[0].bottom - 3;
 
-			for (i = 0; WP(w,dropdown_d).items[i] != INVALID_STRING_ID; i++, sel--) {
-				if (HasBit(WP(w,dropdown_d).hidden_state, i)) continue;
+			for (i = 0; WP(w, dropdown_d).items[i] != INVALID_STRING_ID; i++, sel--) {
+				if (HasBit(WP(w, dropdown_d).hidden_state, i)) continue;
 
 				if (y >= 0 && y <= height) {
-					if (WP(w,dropdown_d).items[i] != STR_NULL) {
+					if (WP(w, dropdown_d).items[i] != STR_NULL) {
 						if (sel == 0) GfxFillRect(x + 1, y, x + width, y + 9, 0);
-						DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? TC_WHITE : TC_BLACK, x + width);
+						DrawStringTruncated(x + 2, y, WP(w, dropdown_d).items[i], sel == 0 ? TC_WHITE : TC_BLACK, x + width);
 
-						if (HasBit(WP(w,dropdown_d).disabled_state, i)) {
+						if (HasBit(WP(w, dropdown_d).disabled_state, i)) {
 							GfxFillRect(x, y, x + width, y + 9,
 								(1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[_dropdown_menu_widgets[0].color][5]
 							);
@@ -560,50 +560,50 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 			if (e->we.click.widget != 0) break;
 			item = GetDropdownItem(w);
 			if (item >= 0) {
-				WP(w,dropdown_d).click_delay = 4;
-				WP(w,dropdown_d).selected_index = item;
+				WP(w, dropdown_d).click_delay = 4;
+				WP(w, dropdown_d).selected_index = item;
 				SetWindowDirty(w);
 			}
 		} break;
 
 		case WE_MOUSELOOP: {
-			Window *w2 = FindWindowById(WP(w,dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
+			Window *w2 = FindWindowById(WP(w, dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
 			if (w2 == NULL) {
 				DeleteWindow(w);
 				return;
 			}
 
-			if (WP(w,dropdown_d).click_delay != 0 && --WP(w,dropdown_d).click_delay == 0) {
+			if (WP(w, dropdown_d).click_delay != 0 && --WP(w,dropdown_d).click_delay == 0) {
 				WindowEvent e;
 				e.event = WE_DROPDOWN_SELECT;
-				e.we.dropdown.button = WP(w,dropdown_d).parent_button;
-				e.we.dropdown.index  = WP(w,dropdown_d).selected_index;
+				e.we.dropdown.button = WP(w, dropdown_d).parent_button;
+				e.we.dropdown.index  = WP(w, dropdown_d).selected_index;
 				w2->wndproc(w2, &e);
 				DeleteWindow(w);
 				return;
 			}
 
-			if (WP(w,dropdown_d).drag_mode) {
+			if (WP(w, dropdown_d).drag_mode) {
 				item = GetDropdownItem(w);
 
 				if (!_left_button_clicked) {
-					WP(w,dropdown_d).drag_mode = false;
+					WP(w, dropdown_d).drag_mode = false;
 					if (item < 0) return;
-					WP(w,dropdown_d).click_delay = 2;
+					WP(w, dropdown_d).click_delay = 2;
 				} else {
 					if (item < 0) return;
 				}
 
-				WP(w,dropdown_d).selected_index = item;
+				WP(w, dropdown_d).selected_index = item;
 				SetWindowDirty(w);
 			}
 		} break;
 
 		case WE_DESTROY: {
-			Window *w2 = FindWindowById(WP(w,dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
+			Window *w2 = FindWindowById(WP(w, dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
 			if (w2 != NULL) {
-				w2->RaiseWidget(WP(w,dropdown_d).parent_button);
-				w2->InvalidateWidget(WP(w,dropdown_d).parent_button);
+				w2->RaiseWidget(WP(w, dropdown_d).parent_button);
+				w2->InvalidateWidget(WP(w, dropdown_d).parent_button);
 			}
 		} break;
 	}
@@ -696,19 +696,19 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	w2->desc_flags = WDF_DEF_WIDGET;
 	w2->flags4 &= ~WF_WHITE_BORDER_MASK;
 
-	WP(w2,dropdown_d).disabled_state = disabled_mask;
-	WP(w2,dropdown_d).hidden_state = hidden_mask;
+	WP(w2, dropdown_d).disabled_state = disabled_mask;
+	WP(w2, dropdown_d).hidden_state = hidden_mask;
 
-	WP(w2,dropdown_d).parent_wnd_class = w->window_class;
-	WP(w2,dropdown_d).parent_wnd_num = w->window_number;
-	WP(w2,dropdown_d).parent_button = button;
+	WP(w2, dropdown_d).parent_wnd_class = w->window_class;
+	WP(w2, dropdown_d).parent_wnd_num = w->window_number;
+	WP(w2, dropdown_d).parent_button = button;
 
-	WP(w2,dropdown_d).num_items = i;
-	WP(w2,dropdown_d).selected_index = selected;
-	WP(w2,dropdown_d).items = strings;
+	WP(w2, dropdown_d).num_items = i;
+	WP(w2, dropdown_d).selected_index = selected;
+	WP(w2, dropdown_d).items = strings;
 
-	WP(w2,dropdown_d).click_delay = 0;
-	WP(w2,dropdown_d).drag_mode = true;
+	WP(w2, dropdown_d).click_delay = 0;
+	WP(w2, dropdown_d).drag_mode = true;
 }
 
 
