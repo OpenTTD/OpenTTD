@@ -1064,10 +1064,8 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 		/* Reached a tunnel/bridge? Then continue at the other side of it. */
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (IsTunnel(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
-				*tile_ptr = GetOtherTunnelEnd(tile);
-			} else if (IsBridge(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
-				*tile_ptr = GetOtherBridgeEnd(tile);
+			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
+				*tile_ptr = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
 			}
 			return;
 		}

@@ -1522,12 +1522,8 @@ void SetDefaultRailGui()
 			RailType count[RAILTYPE_END];
 			memset(count, 0, sizeof(count));
 			for (TileIndex t = 0; t < MapSize(); t++) {
-				if (IsTileType(t, MP_RAILWAY) ||
-						IsLevelCrossingTile(t) ||
-						IsRailwayStationTile(t) ||
-						(IsTunnelTile(t) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) ||
-						(IsBridgeTile(t) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)
-						) {
+				if (IsTileType(t, MP_RAILWAY) || IsLevelCrossingTile(t) || IsRailwayStationTile(t) ||
+						(IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)) {
 					count[GetRailType(t)]++;
 				}
 			}

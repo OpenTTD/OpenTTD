@@ -132,11 +132,7 @@ RailType GetTileRailType(TileIndex tile)
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if (IsTunnel(tile)) {
-				if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) return GetRailType(tile);
-			} else {
-				if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) return GetRailType(tile);
-			}
+			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) return GetRailType(tile);
 			break;
 
 		default:

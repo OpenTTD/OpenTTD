@@ -260,16 +260,9 @@ static inline void TPFMode1_NormalCase(TrackPathFinder* tpf, TileIndex tile, Til
 	/* Check if the new tile is a tunnel or bridge head and that the direction
 	 * and transport type match */
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		if (IsTunnel(tile)) {
-			if (GetTunnelBridgeDirection(tile) != direction ||
-					GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
-				return;
-			}
-		} else if (IsBridge(tile)) {
-			if (GetTunnelBridgeDirection(tile) != direction ||
-					GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
-				return;
-			}
+		if (GetTunnelBridgeDirection(tile) != direction ||
+				GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
+			return;
 		}
 	}
 

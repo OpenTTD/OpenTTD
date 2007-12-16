@@ -93,17 +93,11 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if (IsTunnel(t)) {
-				if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
-				if (override != NULL) *override = 1 << GetTunnelBridgeDirection(t);
-				return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(t)));
-			} else {
-				if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
-				if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) {
-					*override = 1 << GetTunnelBridgeDirection(t);
-				}
-				return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(t)));
+			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
+			if (override != NULL && (IsTunnel(t) || DistanceMax(t, GetOtherBridgeEnd(t)) > 1)) {
+				*override = 1 << GetTunnelBridgeDirection(t);
 			}
+			return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(t)));
 
 		case MP_ROAD:
 			if (GetRoadTileType(t) != ROAD_TILE_CROSSING) return TRACK_BIT_NONE;

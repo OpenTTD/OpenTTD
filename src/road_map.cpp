@@ -34,13 +34,8 @@ RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt)
 			return DiagDirToRoadBits(GetRoadStopDir(tile));
 
 		case MP_TUNNELBRIDGE:
-			if (IsTunnel(tile)) {
-				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
-				return DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));
-			} else {
-				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
-				return DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));
-			}
+			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
+			return DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));
 
 		default: return ROAD_NONE;
 	}

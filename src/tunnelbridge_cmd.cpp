@@ -702,63 +702,39 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
  */
 CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 {
-	if (IsTunnel(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
-		TileIndex endtile = GetOtherTunnelEnd(tile);
+	if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return CMD_ERROR;
 
-		/* If not coverting rail <-> el. rail, any vehicle cannot be in tunnel */
-		if (!IsCompatibleRail(GetRailType(tile), totype) &&
-				GetVehicleTunnelBridge(tile, endtile) != NULL) {
-			return CMD_ERROR;
-		}
+	TileIndex endtile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
 
-		if (exec) {
-			SetRailType(tile, totype);
-			SetRailType(endtile, totype);
-			MarkTileDirtyByTile(tile);
-			MarkTileDirtyByTile(endtile);
-
-			Track track = AxisToTrack(DiagDirToAxis(GetTunnelBridgeDirection(tile)));
-
-			YapfNotifyTrackLayoutChange(tile, track);
-			YapfNotifyTrackLayoutChange(endtile, track);
-
-			VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
-			VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
-		}
-
-		return CommandCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(GetRailType(tile), totype));
-	} else if (IsBridge(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
-		TileIndex endtile = GetOtherBridgeEnd(tile);
-
-		if (!IsCompatibleRail(GetRailType(tile), totype) &&
-				GetVehicleTunnelBridge(tile, endtile) != NULL) {
-			return CMD_ERROR;
-		}
-
-		if (exec) {
-			SetRailType(tile, totype);
-			SetRailType(endtile, totype);
-			MarkTileDirtyByTile(tile);
-			MarkTileDirtyByTile(endtile);
-
-			Track track = AxisToTrack(DiagDirToAxis(GetTunnelBridgeDirection(tile)));
-			TileIndexDiff delta = TileOffsByDiagDir(GetTunnelBridgeDirection(tile));
-
-			YapfNotifyTrackLayoutChange(tile, track);
-			YapfNotifyTrackLayoutChange(endtile, track);
-
-			VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
-			VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
-
-			for (tile += delta; tile != endtile; tile += delta) {
-				MarkTileDirtyByTile(tile); // TODO encapsulate this into a function
-			}
-		}
-
-		return CommandCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(GetRailType(tile), totype));
-	} else {
+	/* If not coverting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
+	if (!IsCompatibleRail(GetRailType(tile), totype) &&
+			GetVehicleTunnelBridge(tile, endtile) != NULL) {
 		return CMD_ERROR;
 	}
+
+	if (exec) {
+		SetRailType(tile, totype);
+		SetRailType(endtile, totype);
+
+		Track track = AxisToTrack(DiagDirToAxis(GetTunnelBridgeDirection(tile)));
+
+		YapfNotifyTrackLayoutChange(tile, track);
+		YapfNotifyTrackLayoutChange(endtile, track);
+
+		VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
+		VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
+
+		MarkTileDirtyByTile(tile);
+		MarkTileDirtyByTile(endtile);
+
+		if (IsBridge(tile)) {
+			TileIndexDiff delta = TileOffsByDiagDir(GetTunnelBridgeDirection(tile));
+			TileIndex t = tile + delta;
+			for (; t != endtile; t += delta) MarkTileDirtyByTile(t); // TODO encapsulate this into a function
+		}
+	}
+
+	return CommandCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(GetRailType(tile), totype));
 }
 
 
@@ -1261,28 +1237,23 @@ static void AnimateTile_TunnelBridge(TileIndex tile)
 
 static void TileLoop_TunnelBridge(TileIndex tile)
 {
-	bool snow_or_desert = IsTunnelTile(tile) ? HasTunnelBridgeSnowOrDesert(tile) : HasTunnelBridgeSnowOrDesert(tile);
+	bool snow_or_desert = HasTunnelBridgeSnowOrDesert(tile);
 	switch (_opt.landscape) {
 		case LT_ARCTIC:
 			if (snow_or_desert != (GetTileZ(tile) > GetSnowLine())) {
-				if (IsTunnelTile(tile)) {
-					SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
-				} else {
-					SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
-				}
+				SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
 
 		case LT_TROPIC:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT && !snow_or_desert) {
-				if (IsTunnelTile(tile)) {
-					SetTunnelBridgeSnowOrDesert(tile, true);
-				} else {
-					SetTunnelBridgeSnowOrDesert(tile, true);
-				}
+				SetTunnelBridgeSnowOrDesert(tile, true);
 				MarkTileDirtyByTile(tile);
 			}
+			break;
+
+		default:
 			break;
 	}
 }
@@ -1295,15 +1266,9 @@ static void ClickTile_TunnelBridge(TileIndex tile)
 
 static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode, uint sub_mode)
 {
-	if (IsTunnel(tile)) {
-		if (GetTunnelBridgeTransportType(tile) != mode) return 0;
-		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
-		return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) * 0x101;
-	} else {
-		if (GetTunnelBridgeTransportType(tile) != mode) return 0;
-		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
-		return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) * 0x101;
-	}
+	if (GetTunnelBridgeTransportType(tile) != mode) return 0;
+	if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
+	return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) * 0x101;
 }
 
 static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, PlayerID new_player)
@@ -1318,7 +1283,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 			 * the bridge/tunnel. As all *our* vehicles are already removed, they
 			 * must be of another owner. Therefor this must be a road bridge/tunnel.
 			 * In that case we can safely reassign the ownership to OWNER_NONE. */
-			assert((IsTunnel(tile) ? GetTunnelBridgeTransportType(tile) : GetTunnelBridgeTransportType(tile)) == TRANSPORT_ROAD);
+			assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD);
 			SetTileOwner(tile, OWNER_NONE);
 		}
 	}

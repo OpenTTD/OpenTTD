@@ -926,17 +926,15 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 			return true;
 
 		case MP_TUNNELBRIDGE: {
-			TileIndex orig_tile = tile;
-			/* Skip to end of tunnel or bridge */
-			if (IsBridge(tile)) {
-				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
-				if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(trackdir)) return false;
-				tile = GetOtherBridgeEnd(tile);
-			} else {
-				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
-				if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(trackdir)) return false;
-				tile = GetOtherTunnelEnd(tile);
-			}
+			TileIndex orig_tile = tile; // backup old value
+
+			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
+			if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(trackdir)) return false;
+
+			/* Skip to end of tunnel or bridge
+			 * note that tile is a parameter by reference, so it must be updated */
+			tile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
+
 			signal_ctr += 2 + DistanceMax(orig_tile, tile) * 2;
 			return true;
 		}

@@ -339,13 +339,8 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 	TileType t = GetTileType(tile);
 
 	if (t == MP_TUNNELBRIDGE) {
-		TransportType tt;
+		TransportType tt = GetTunnelBridgeTransportType(tile);
 
-		if (IsTunnel(tile)) {
-			tt = GetTunnelBridgeTransportType(tile);
-		} else {
-			tt = GetTunnelBridgeTransportType(tile);
-		}
 		switch (tt) {
 			case TRANSPORT_RAIL: t = MP_RAILWAY; break;
 			case TRANSPORT_ROAD: t = MP_ROAD;    break;

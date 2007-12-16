@@ -45,10 +45,7 @@ static bool IsRoad(TileIndex tile)
 	return
 		// MP_ROAD, but not a road depot?
 		(IsTileType(tile, MP_ROAD) && !IsTileDepotType(tile, TRANSPORT_ROAD)) ||
-		(IsTileType(tile, MP_TUNNELBRIDGE) && (
-			(IsTunnel(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) ||
-			(IsBridge(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD)
-		));
+		(IsTileType(tile, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD);
 }
 
 
@@ -236,11 +233,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 			// If the next step is a bridge, we have to enter it the right way
 			if (!PathFinderInfo->rail_or_road && IsRoad(atile)) {
 				if (IsTileType(atile, MP_TUNNELBRIDGE)) {
-					if (IsTunnel(atile)) {
-						if (GetTunnelBridgeDirection(atile) != i) continue;
-					} else {
-						if (GetTunnelBridgeDirection(atile) != i) continue;
-					}
+					if (GetTunnelBridgeDirection(atile) != i) continue;
 				}
 			}
 

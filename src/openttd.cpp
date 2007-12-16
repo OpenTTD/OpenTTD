@@ -1759,14 +1759,8 @@ bool AfterLoadGame()
 					break;
 
 				case MP_TUNNELBRIDGE:
-					if (IsTunnel(t)) {
-						if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
-							SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
-						}
-					} else {
-						if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
-							SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
-						}
+					if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
+						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 					}
 					break;
 

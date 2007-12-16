@@ -551,8 +551,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (IsTileType(v->tile, MP_ROAD) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
 
-	if (IsTunnelTile(v->tile) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
-	if (IsBridgeTile(v->tile) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
+	if (IsTileType(v->tile, MP_TUNNELBRIDGE) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) v->u.road.reverse_ctr = 180;
 
@@ -1407,9 +1406,7 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 	if (prev_state == RVSB_WORMHOLE || prev_state == RVSB_IN_DEPOT) {
 		DiagDirection diag_dir = INVALID_DIAGDIR;
 
-		if (IsTunnelTile(tile)) {
-			diag_dir = GetTunnelBridgeDirection(tile);
-		} else if (IsBridgeTile(tile)) {
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			diag_dir = GetTunnelBridgeDirection(tile);
 		} else if (IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
 			diag_dir = ReverseDiagDir(GetRoadDepotDirection(tile));

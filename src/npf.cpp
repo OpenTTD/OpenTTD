@@ -481,8 +481,7 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if ((IsTunnel(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) ||
-					(IsBridge(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL)) {
+			if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
 				return IsTileOwner(tile, owner);
 			}
 			break;
@@ -534,14 +533,11 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	DEBUG(npf, 4, "Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
 
 	/* Find dest tile */
-	if (IsTunnelTile(src_tile) && GetTunnelBridgeDirection(src_tile) == src_exitdir) {
-		/* This is a tunnel. We know this tunnel is our type,
+	if (IsTileType(src_tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(src_tile) == src_exitdir) {
+		/* This is a tunnel/bridge. We know this tunnel/bridge is our type,
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
-		dst_tile = GetOtherTunnelEnd(src_tile);
-		override_dst_check = true;
-	} else if (IsBridgeTile(src_tile) && GetTunnelBridgeDirection(src_tile) == src_exitdir) {
-		dst_tile = GetOtherBridgeEnd(src_tile);
+		dst_tile = IsTunnel(src_tile) ? GetOtherTunnelEnd(src_tile) : GetOtherBridgeEnd(src_tile);
 		override_dst_check = true;
 	} else if (type != TRANSPORT_WATER && (IsStandardRoadStopTile(src_tile) || IsTileDepotType(src_tile, type))) {
 		/* This is a road station (non drive-through) or a train or road depot. We can enter and exit
@@ -590,14 +586,9 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	/* I can't enter a tunnel entry/exit tile from a tile above the tunnel. Note
 	 * that I can enter the tunnel from a tile below the tunnel entrance. This
 	 * solves the problem of vehicles wanting to drive off a tunnel entrance */
-	if (!override_dst_check) {
-		if (IsTileType(dst_tile, MP_TUNNELBRIDGE)) {
-			if (IsTunnel(dst_tile)) {
-				if (GetTunnelBridgeDirection(dst_tile) != src_exitdir) return;
-			} else {
-				if (GetTunnelBridgeDirection(dst_tile) != src_exitdir) return;
-			}
-		}
+	if (!override_dst_check && IsTileType(dst_tile, MP_TUNNELBRIDGE) &&
+			GetTunnelBridgeDirection(dst_tile) != src_exitdir) {
+		return;
 	}
 
 	/* check correct rail type (mono, maglev, etc) */
