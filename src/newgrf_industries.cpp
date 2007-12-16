@@ -36,6 +36,15 @@ IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id)
 	return _industry_mngr.GetID(GB(grf_type, 0, 6), grf_id);
 }
 
+static uint32 GetGRFParameter(IndustryType ind_id, byte parameter)
+{
+	const IndustrySpec *indspec = GetIndustrySpec(ind_id);
+	const GRFFile *file = indspec->grf_prop.grffile;
+
+	if (parameter >= file->param_end) return 0;
+	return file->param[parameter];
+}
+
 /**
  * Finds the distance for the closest tile with water/land given a tile
  * @param tile  the tile to find the distance too
@@ -268,6 +277,9 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 
 		/* Get a variable from the persistent storage */
 		case 0x7C: return industry->psa.Get(parameter);
+
+		/* Read GRF parameter */
+		case 0x7F: return GetGRFParameter(industry->type, parameter);
 
 		/* Industry structure access*/
 		case 0x80: return industry->xy;
