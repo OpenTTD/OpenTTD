@@ -83,4 +83,6 @@ void InitializeLanguagePacks();
 
 int CDECL StringIDSorter(const void *a, const void *b);
 
+void CheckForMissingGlyphsInLoadedLanguagePack();
+
 #endif /* STRINGS_H */

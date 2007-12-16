@@ -255,6 +255,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			break;
 		case 24: /* Change interface language */
 			ReadLanguagePack(e->we.dropdown.index);
+			CheckForMissingGlyphsInLoadedLanguagePack();
 			UpdateAllStationVirtCoord();
 			MarkWholeScreenDirty();
 			break;

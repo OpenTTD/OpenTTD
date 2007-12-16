@@ -342,6 +342,8 @@ static void LoadIntroGame()
 	_cursor.fix_at = false;
 	MarkWholeScreenDirty();
 
+	CheckForMissingGlyphsInLoadedLanguagePack();
+
 	/* Play main theme */
 	if (_music_driver->IsSongPlaying()) ResetMusic();
 }
