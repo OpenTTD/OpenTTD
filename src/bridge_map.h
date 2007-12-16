@@ -64,7 +64,6 @@ static inline bool IsBridgeAbove(TileIndex t)
 	return GB(_m[t].m6, 6, 2) != 0;
 }
 
-
 /**
  * Determines the type of bridge on a tile
  * @param t The tile to analyze
@@ -77,20 +76,6 @@ static inline uint GetBridgeType(TileIndex t)
 	return GB(_m[t].m2, 4, 4);
 }
 
-
-/**
- * Get the direction pointing onto the bridge
- * @param t The tile to analyze
- * @pre IsBridgeTile(t)
- * @return the above mentionned direction
- */
-static inline DiagDirection GetBridgeRampDirection(TileIndex t)
-{
-	assert(IsBridgeTile(t));
-	return (DiagDirection)GB(_m[t].m5, 0, 2);
-}
-
-
 /**
  * Get the axis of the bridge that goes over the tile. Not the axis or the ramp.
  * @param t The tile to analyze
@@ -101,45 +86,6 @@ static inline Axis GetBridgeAxis(TileIndex t)
 {
 	assert(IsBridgeAbove(t));
 	return (Axis)(GB(_m[t].m6, 6, 2) - 1);
-}
-
-
-/**
- * Get the transport type of the bridge's ramp.
- * @param t The ramp tile to analyze
- * @pre IsBridgeTile(t)
- * @return the transport type of the bridge
- */
-static inline TransportType GetBridgeTransportType(TileIndex t)
-{
-	assert(IsBridgeTile(t));
-	return (TransportType)GB(_m[t].m5, 2, 2);
-}
-
-
-/**
- * Does the bridge ramp lie in a snow or desert area?
- * @param t The ramp tile to analyze
- * @pre IsBridgeTile(t)
- * @return true if and only if in a snow or desert area
- */
-static inline bool HasBridgeSnowOrDesert(TileIndex t)
-{
-	assert(IsBridgeTile(t));
-	return HasBit(_m[t].m4, 7);
-}
-
-
-/**
- * Sets whether the bridge ramp lies in a snow or desert area.
- * @param t              The ramp tile to set (un)make a snow/desert area
- * @param snow_or_desert Make (true) or unmake the tile a snow/desert area
- * @pre IsBridgeTile(t)
- */
-static inline void SetBridgeSnowOrDesert(TileIndex t, bool snow_or_desert)
-{
-	assert(IsBridgeTile(t));
-	SB(_m[t].m4, 7, 1, snow_or_desert);
 }
 
 /**
@@ -186,7 +132,6 @@ static inline void ClearSingleBridgeMiddle(TileIndex t, Axis a)
 	assert(MayHaveBridgeAbove(t));
 	ClrBit(_m[t].m6, 6 + a);
 }
-
 
 /**
  * Removes bridges from the given, that is bridges along the X and Y axis.

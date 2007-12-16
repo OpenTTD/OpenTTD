@@ -373,6 +373,7 @@ town_map.h
 tree_map.h
 tunnel_map.cpp
 tunnel_map.h
+tunnelbridge_map.h
 unmovable_map.h
 void_map.h
 water_map.h

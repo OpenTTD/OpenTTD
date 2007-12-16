@@ -11,7 +11,7 @@ struct CYapfCostBase {
 		if (IsDiagonalTrackdir(td)) {
 			if (IsBridgeTile(tile)) {
 				// it is bridge ramp, check if we are entering the bridge
-				if (GetBridgeRampDirection(tile) != TrackdirToExitdir(td)) return false; // no, we are living it, no penalty
+				if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(td)) return false; // no, we are living it, no penalty
 				// we are entering the bridge
 				// if the tile slope is downwards, then bridge ramp has not upward slope
 				uint tile_slope = GetTileSlope(tile, NULL) & 0x0F;

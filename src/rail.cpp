@@ -8,6 +8,8 @@
 #include "rail.h"
 #include "station_map.h"
 #include "tunnel_map.h"
+#include "tunnelbridge_map.h"
+
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the
@@ -131,9 +133,9 @@ RailType GetTileRailType(TileIndex tile)
 
 		case MP_TUNNELBRIDGE:
 			if (IsTunnel(tile)) {
-				if (GetTunnelTransportType(tile) == TRANSPORT_RAIL) return GetRailType(tile);
+				if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) return GetRailType(tile);
 			} else {
-				if (GetBridgeTransportType(tile) == TRANSPORT_RAIL) return GetRailType(tile);
+				if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) return GetRailType(tile);
 			}
 			break;
 

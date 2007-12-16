@@ -32,6 +32,8 @@
 #include "road_map.h"
 #include "station_map.h"
 #include "tunnel_map.h"
+#include "tunnelbridge_map.h"
+
 
 static RailType _cur_railtype;
 static bool _remove_button_clicked;
@@ -1523,8 +1525,8 @@ void SetDefaultRailGui()
 				if (IsTileType(t, MP_RAILWAY) ||
 						IsLevelCrossingTile(t) ||
 						IsRailwayStationTile(t) ||
-						(IsTunnelTile(t) && GetTunnelTransportType(t) == TRANSPORT_RAIL) ||
-						(IsBridgeTile(t) && GetBridgeTransportType(t) == TRANSPORT_RAIL)
+						(IsTunnelTile(t) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) ||
+						(IsBridgeTile(t) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL)
 						) {
 					count[GetRailType(t)]++;
 				}

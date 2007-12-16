@@ -42,6 +42,8 @@
 #include "cargotype.h"
 #include "group.h"
 #include "table/sprites.h"
+#include "tunnelbridge_map.h"
+
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, bool update_image);
@@ -3057,7 +3059,7 @@ static void DeleteLastWagon(Vehicle *v)
 
 		if (GetVehicleTunnelBridge(v->tile, endtile) != NULL) return; // tunnel / bridge is busy
 
-		DiagDirection dir = IsTunnel(v->tile) ? GetTunnelDirection(v->tile) : GetBridgeRampDirection(v->tile);
+		DiagDirection dir = IsTunnel(v->tile) ? GetTunnelBridgeDirection(v->tile) : GetTunnelBridgeDirection(v->tile);
 
 		/* v->direction is "random", so it cannot be used to determine the direction of the track */
 		UpdateSignalsOnSegment(v->tile, dir);
@@ -3174,7 +3176,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	TileIndex tile = v->tile;
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		DiagDirection dir = IsTunnel(tile) ? GetTunnelDirection(tile) : GetBridgeRampDirection(tile);
+		DiagDirection dir = IsTunnel(tile) ? GetTunnelBridgeDirection(tile) : GetTunnelBridgeDirection(tile);
 		if (DiagDirToDir(dir) == v->direction) return true;
 	}
 

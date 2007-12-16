@@ -12,6 +12,7 @@
 #include "tunnel_map.h"
 #include "station_map.h"
 #include "depot.h"
+#include "tunnelbridge_map.h"
 
 
 RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt)
@@ -34,11 +35,11 @@ RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt)
 
 		case MP_TUNNELBRIDGE:
 			if (IsTunnel(tile)) {
-				if (GetTunnelTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
-				return DiagDirToRoadBits(ReverseDiagDir(GetTunnelDirection(tile)));
+				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
+				return DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));
 			} else {
-				if (GetBridgeTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
-				return DiagDirToRoadBits(ReverseDiagDir(GetBridgeRampDirection(tile)));
+				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
+				return DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));
 			}
 
 		default: return ROAD_NONE;

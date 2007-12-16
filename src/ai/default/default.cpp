@@ -28,7 +28,9 @@
 #include "../../bridge.h"
 #include "../../date.h"
 #include "../../helpers.hpp"
+#include "../../tunnelbridge_map.h"
 #include "default.h"
+
 
 // remove some day perhaps?
 static uint _ai_service_interval;
@@ -2233,7 +2235,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 		} else {
 			// Check if the bridge points in the right direction.
 			// This is not really needed the first place AiRemoveTileAndGoForward is called.
-			if (DiagDirToAxis(GetBridgeRampDirection(tile)) != (p->ai.cur_dir_a & 1)) return false;
+			if (DiagDirToAxis(GetTunnelBridgeDirection(tile)) != (p->ai.cur_dir_a & 1)) return false;
 
 			tile = GetOtherBridgeEnd(tile);
 
@@ -3733,13 +3735,13 @@ pos_3:
 	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if (!IsTileOwner(tile, _current_player) ||
 				!IsBridge(tile) ||
-				GetBridgeTransportType(tile) != TRANSPORT_RAIL) {
+				GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) {
 			return;
 		}
 
 		rails = TRACK_BIT_NONE;
 
-		switch (GetBridgeRampDirection(tile)) {
+		switch (GetTunnelBridgeDirection(tile)) {
 			default:
 			case DIAGDIR_NE: goto pos_2;
 			case DIAGDIR_SE: goto pos_3;

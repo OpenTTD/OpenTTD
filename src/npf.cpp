@@ -19,6 +19,7 @@
 #include "tunnel_map.h"
 #include "network/network.h"
 #include "water_map.h"
+#include "tunnelbridge_map.h"
 
 static AyStar _npf_aystar;
 
@@ -170,7 +171,7 @@ static uint NPFTunnelCost(AyStarNode* current)
 {
 	DiagDirection exitdir = TrackdirToExitdir((Trackdir)current->direction);
 	TileIndex tile = current->tile;
-	if (GetTunnelDirection(tile) == ReverseDiagDir(exitdir)) {
+	if (GetTunnelBridgeDirection(tile) == ReverseDiagDir(exitdir)) {
 		/* We just popped out if this tunnel, since were
 		 * facing the tunnel exit */
 		FindLengthOfTunnelResult flotr;
@@ -480,8 +481,8 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if ((IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) ||
-					(IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL)) {
+			if ((IsTunnel(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) ||
+					(IsBridge(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL)) {
 				return IsTileOwner(tile, owner);
 			}
 			break;
@@ -533,13 +534,13 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	DEBUG(npf, 4, "Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
 
 	/* Find dest tile */
-	if (IsTunnelTile(src_tile) && GetTunnelDirection(src_tile) == src_exitdir) {
+	if (IsTunnelTile(src_tile) && GetTunnelBridgeDirection(src_tile) == src_exitdir) {
 		/* This is a tunnel. We know this tunnel is our type,
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
 		dst_tile = GetOtherTunnelEnd(src_tile);
 		override_dst_check = true;
-	} else if (IsBridgeTile(src_tile) && GetBridgeRampDirection(src_tile) == src_exitdir) {
+	} else if (IsBridgeTile(src_tile) && GetTunnelBridgeDirection(src_tile) == src_exitdir) {
 		dst_tile = GetOtherBridgeEnd(src_tile);
 		override_dst_check = true;
 	} else if (type != TRANSPORT_WATER && (IsStandardRoadStopTile(src_tile) || IsTileDepotType(src_tile, type))) {
@@ -592,9 +593,9 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 	if (!override_dst_check) {
 		if (IsTileType(dst_tile, MP_TUNNELBRIDGE)) {
 			if (IsTunnel(dst_tile)) {
-				if (GetTunnelDirection(dst_tile) != src_exitdir) return;
+				if (GetTunnelBridgeDirection(dst_tile) != src_exitdir) return;
 			} else {
-				if (GetBridgeRampDirection(dst_tile) != src_exitdir) return;
+				if (GetTunnelBridgeDirection(dst_tile) != src_exitdir) return;
 			}
 		}
 	}

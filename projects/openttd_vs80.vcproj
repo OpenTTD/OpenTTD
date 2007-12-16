@@ -1816,6 +1816,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\tunnelbridge_map.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\unmovable_map.h"
 				>
 			</File>

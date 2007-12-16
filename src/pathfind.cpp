@@ -17,6 +17,7 @@
 #include "tunnel_map.h"
 #include "variables.h"
 #include "depot.h"
+#include "tunnelbridge_map.h"
 
 /* remember which tiles we have already visited so we don't visit them again. */
 static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
@@ -210,7 +211,7 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection dir)
 		tile += delta;
 	} while(
 		!IsTunnelTile(tile) ||
-		GetTunnelDirection(tile) != dir ||
+		GetTunnelBridgeDirection(tile) != dir ||
 		GetTileZ(tile) != z
 	);
 
@@ -260,13 +261,13 @@ static inline void TPFMode1_NormalCase(TrackPathFinder* tpf, TileIndex tile, Til
 	 * and transport type match */
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if (IsTunnel(tile)) {
-			if (GetTunnelDirection(tile) != direction ||
-					GetTunnelTransportType(tile) != tpf->tracktype) {
+			if (GetTunnelBridgeDirection(tile) != direction ||
+					GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
 				return;
 			}
 		} else if (IsBridge(tile)) {
-			if (GetBridgeRampDirection(tile) != direction ||
-					GetBridgeTransportType(tile) != tpf->tracktype) {
+			if (GetTunnelBridgeDirection(tile) != direction ||
+					GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
 				return;
 			}
 		}
@@ -307,23 +308,23 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if (IsTunnel(tile)) {
-			if (GetTunnelTransportType(tile) != tpf->tracktype) {
+			if (GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
 				return;
 			}
 			/* Only skip through the tunnel if heading inwards. We can
 			 * be headed outwards if our starting position was in a
 			 * tunnel and we're pathfinding backwards */
-			if (GetTunnelDirection(tile) == direction) {
+			if (GetTunnelBridgeDirection(tile) == direction) {
 				tile = SkipToEndOfTunnel(tpf, tile, direction);
-			} else if (GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
+			} else if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
 				/* We don't support moving through the sides of a tunnel
 				 * entrance :-) */
 				return;
 			}
 		} else {
 			TileIndex tile_end;
-			if (GetBridgeRampDirection(tile) != direction ||
-					GetBridgeTransportType(tile) != tpf->tracktype) {
+			if (GetTunnelBridgeDirection(tile) != direction ||
+					GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
 				return;
 			}
 			//fprintf(stderr, "%s: Planning over bridge\n", __func__);
@@ -722,12 +723,12 @@ start_at:
 		 *   need to find the exit of the tunnel. */
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			if (IsTunnel(tile)) {
-				if (GetTunnelDirection(tile) != ReverseDiagDir(direction)) {
+				if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
 					FindLengthOfTunnelResult flotr;
 
 					/* We are not just driving out of the tunnel */
-					if (GetTunnelDirection(tile) != direction ||
-							GetTunnelTransportType(tile) != tpf->tracktype) {
+					if (GetTunnelBridgeDirection(tile) != direction ||
+							GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
 						/* We are not driving into the tunnel, or it is an invalid tunnel */
 						continue;
 					}
@@ -742,10 +743,10 @@ start_at:
 				}
 			} else {
 				TileIndex tile_end;
-				if (GetBridgeRampDirection(tile) != ReverseDiagDir(direction)) {
+				if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
 					/* We are not just leaving the bridge */
-					if (GetBridgeRampDirection(tile) != direction ||
-							GetBridgeTransportType(tile) != tpf->tracktype) {
+					if (GetTunnelBridgeDirection(tile) != direction ||
+							GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
 						/* Not entering the bridge or not compatible */
 						continue;
 					}

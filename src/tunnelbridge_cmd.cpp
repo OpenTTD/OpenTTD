@@ -34,8 +34,9 @@
 #include "newgrf_sound.h"
 #include "autoslope.h"
 #include "transparency.h"
-
+#include "tunnelbridge_map.h"
 #include "table/bridge_land.h"
+
 
 const Bridge orig_bridge[] = {
 /*
@@ -266,7 +267,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 
 	if (IsBridgeTile(tile_start) && IsBridgeTile(tile_end) &&
 			GetOtherBridgeEnd(tile_start) == tile_end &&
-			GetBridgeTransportType(tile_start) == transport_type) {
+			GetTunnelBridgeTransportType(tile_start) == transport_type) {
 		/* Replace a current bridge. */
 
 		/* If this is a railway bridge, make sure the railtypes match. */
@@ -391,7 +392,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 			case MP_TUNNELBRIDGE:
 				if (IsTunnel(tile)) break;
 				if (replace_bridge) break;
-				if (direction == DiagDirToAxis(GetBridgeRampDirection(tile))) goto not_valid_below;
+				if (direction == DiagDirToAxis(GetTunnelBridgeDirection(tile))) goto not_valid_below;
 				if (z_start < GetBridgeHeight(tile)) goto not_valid_below;
 				break;
 
@@ -602,7 +603,7 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 	if (flags & DC_EXEC) {
 		/* We first need to request the direction before calling DoClearSquare
 		 *  else the direction is always 0.. dah!! ;) */
-		DiagDirection dir = GetTunnelDirection(tile);
+		DiagDirection dir = GetTunnelBridgeDirection(tile);
 		Track track;
 
 		/* Adjust the town's player rating. Do this before removing the tile owner info. */
@@ -636,7 +637,7 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 
 	if (GetVehicleTunnelBridge(tile, endtile) != NULL) return CMD_ERROR;
 
-	direction = GetBridgeRampDirection(tile);
+	direction = GetTunnelBridgeDirection(tile);
 	delta = TileOffsByDiagDir(direction);
 
 	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
@@ -701,7 +702,7 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
  */
 CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 {
-	if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
+	if (IsTunnel(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
 		TileIndex endtile = GetOtherTunnelEnd(tile);
 
 		/* If not coverting rail <-> el. rail, any vehicle cannot be in tunnel */
@@ -716,7 +717,7 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
 
-			Track track = AxisToTrack(DiagDirToAxis(GetTunnelDirection(tile)));
+			Track track = AxisToTrack(DiagDirToAxis(GetTunnelBridgeDirection(tile)));
 
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
@@ -726,7 +727,7 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 		}
 
 		return CommandCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(GetRailType(tile), totype));
-	} else if (IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
+	} else if (IsBridge(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
 		TileIndex endtile = GetOtherBridgeEnd(tile);
 
 		if (!IsCompatibleRail(GetRailType(tile), totype) &&
@@ -740,8 +741,8 @@ CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
 
-			Track track = AxisToTrack(DiagDirToAxis(GetBridgeRampDirection(tile)));
-			TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
+			Track track = AxisToTrack(DiagDirToAxis(GetTunnelBridgeDirection(tile)));
+			TileIndexDiff delta = TileOffsByDiagDir(GetTunnelBridgeDirection(tile));
 
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
@@ -894,22 +895,22 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			{  1,  0, -15, -14,  0, 15, 16,  1, 0, 1, 16, 15 }, // SW
 			{  0,  1, -14, -15, 15,  0,  1, 16, 1, 0, 15, 16 }, // NW
 		};
-		const int *BB_data = _tunnel_BB[GetTunnelDirection(ti->tile)];
+		const int *BB_data = _tunnel_BB[GetTunnelBridgeDirection(ti->tile)];
 
 		bool catenary = false;
 
-		if (GetTunnelTransportType(ti->tile) == TRANSPORT_RAIL) {
+		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_RAIL) {
 			image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.tunnel;
 		} else {
 			image = SPR_TUNNEL_ENTRY_REAR_ROAD;
 		}
 
-		if (HasTunnelSnowOrDesert(ti->tile)) image += 32;
+		if (HasTunnelBridgeSnowOrDesert(ti->tile)) image += 32;
 
-		image += GetTunnelDirection(ti->tile) * 2;
+		image += GetTunnelBridgeDirection(ti->tile) * 2;
 		DrawGroundSprite(image, PAL_NONE);
-		if (GetTunnelTransportType(ti->tile) == TRANSPORT_ROAD) {
-			DiagDirection dir = GetTunnelDirection(ti->tile);
+		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
+			DiagDirection dir = GetTunnelBridgeDirection(ti->tile);
 			RoadTypes rts = GetRoadTypes(ti->tile);
 
 			if (HasBit(rts, ROADTYPE_TRAM)) {
@@ -941,9 +942,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
 		const PalSpriteID *psid;
 		int base_offset;
-		bool ice = HasBridgeSnowOrDesert(ti->tile);
+		bool ice = HasTunnelBridgeSnowOrDesert(ti->tile);
 
-		if (GetBridgeTransportType(ti->tile) == TRANSPORT_RAIL) {
+		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_RAIL) {
 			base_offset = GetRailTypeInfo(GetRailType(ti->tile))->bridge_offset;
 			assert(base_offset != 8); // This one is used for roads
 		} else {
@@ -953,10 +954,10 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* as the lower 3 bits are used for other stuff, make sure they are clear */
 		assert( (base_offset & 0x07) == 0x00);
 
-		DrawFoundation(ti, GetBridgeFoundation(ti->tileh, DiagDirToAxis(GetBridgeRampDirection(ti->tile))));
+		DrawFoundation(ti, GetBridgeFoundation(ti->tileh, DiagDirToAxis(GetTunnelBridgeDirection(ti->tile))));
 
 		/* HACK Wizardry to convert the bridge ramp direction into a sprite offset */
-		base_offset += (6 - GetBridgeRampDirection(ti->tile)) % 4;
+		base_offset += (6 - GetTunnelBridgeDirection(ti->tile)) % 4;
 
 		if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
 
@@ -972,7 +973,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* draw ramp */
 
 		/* Draw Trambits as SpriteCombine */
-		if (GetBridgeTransportType(ti->tile) == TRANSPORT_ROAD) StartSpriteCombine();
+		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_ROAD) StartSpriteCombine();
 
 		/* HACK set the height of the BB of a sloped ramp to 1 so a vehicle on
 		 * it doesn't disappear behind it
@@ -981,11 +982,11 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			psid->sprite, psid->pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 0 : 8, ti->z, IsTransparencySet(TO_BRIDGES)
 		);
 
-		if (GetBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
+		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
 			RoadTypes rts = GetRoadTypes(ti->tile);
 
 			if (HasBit(rts, ROADTYPE_TRAM)) {
-				uint offset = GetBridgeRampDirection(ti->tile);
+				uint offset = GetTunnelBridgeDirection(ti->tile);
 				uint z = ti->z;
 				if (ti->tileh != SLOPE_FLAT) {
 					offset = (offset + 1) & 1;
@@ -1084,7 +1085,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	);
 	type = GetBridgeType(rampsouth);
 
-	if (GetBridgeTransportType(rampsouth) == TRANSPORT_RAIL) {
+	if (GetTunnelBridgeTransportType(rampsouth) == TRANSPORT_RAIL) {
 		base_offset = GetRailTypeInfo(GetRailType(rampsouth))->bridge_offset;
 	} else {
 		base_offset = 8;
@@ -1102,7 +1103,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, x, y, 16, 16, 1, bridge_z - TILE_HEIGHT + BB_Z_SEPARATOR);
 
 	/* Draw Trambits as SpriteCombine */
-	if (GetBridgeTransportType(rampsouth) == TRANSPORT_ROAD) StartSpriteCombine();
+	if (GetTunnelBridgeTransportType(rampsouth) == TRANSPORT_ROAD) StartSpriteCombine();
 
 	/* Draw floor and far part of bridge*/
 	if (axis == AXIS_X) {
@@ -1113,7 +1114,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 	psid++;
 
-	if (GetBridgeTransportType(rampsouth) == TRANSPORT_ROAD) {
+	if (GetTunnelBridgeTransportType(rampsouth) == TRANSPORT_ROAD) {
 		RoadTypes rts = GetRoadTypes(rampsouth);
 
 		if (HasBit(rts, ROADTYPE_TRAM)) {
@@ -1137,7 +1138,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	}
 
 	/* Draw TramFront as SpriteCombine */
-	if (GetBridgeTransportType(rampsouth) == TRANSPORT_ROAD) EndSpriteCombine();
+	if (GetTunnelBridgeTransportType(rampsouth) == TRANSPORT_ROAD) EndSpriteCombine();
 
 	psid++;
 	if (ti->z + 5 == z) {
@@ -1168,12 +1169,12 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 	y &= 0xF;
 
 	if (IsTunnel(tile)) {
-		uint pos = (DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? y : x);
+		uint pos = (DiagDirToAxis(GetTunnelBridgeDirection(tile)) == AXIS_X ? y : x);
 
 		/* In the tunnel entrance? */
 		if (5 <= pos && pos <= 10) return z;
 	} else {
-		DiagDirection dir = GetBridgeRampDirection(tile);
+		DiagDirection dir = GetTunnelBridgeDirection(tile);
 		uint pos = (DiagDirToAxis(dir) == AXIS_X ? y : x);
 
 		z += ApplyFoundationToSlope(GetBridgeFoundation(tileh, DiagDirToAxis(dir)), &tileh);
@@ -1200,7 +1201,7 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 
 static Foundation GetFoundation_TunnelBridge(TileIndex tile, Slope tileh)
 {
-	return IsTunnel(tile) ? FOUNDATION_NONE : GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(tile)));
+	return IsTunnel(tile) ? FOUNDATION_NONE : GetBridgeFoundation(tileh, DiagDirToAxis(GetTunnelBridgeDirection(tile)));
 }
 
 
@@ -1244,10 +1245,10 @@ static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = 
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
 	if (IsTunnel(tile)) {
-		td->str = (GetTunnelTransportType(tile) == TRANSPORT_RAIL) ?
+		td->str = (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) ?
 			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
 	} else {
-		td->str = _bridge_tile_str[GetBridgeTransportType(tile) << 4 | GetBridgeType(tile)];
+		td->str = _bridge_tile_str[GetTunnelBridgeTransportType(tile) << 4 | GetBridgeType(tile)];
 	}
 	td->owner = GetTileOwner(tile);
 }
@@ -1260,14 +1261,14 @@ static void AnimateTile_TunnelBridge(TileIndex tile)
 
 static void TileLoop_TunnelBridge(TileIndex tile)
 {
-	bool snow_or_desert = IsTunnelTile(tile) ? HasTunnelSnowOrDesert(tile) : HasBridgeSnowOrDesert(tile);
+	bool snow_or_desert = IsTunnelTile(tile) ? HasTunnelBridgeSnowOrDesert(tile) : HasTunnelBridgeSnowOrDesert(tile);
 	switch (_opt.landscape) {
 		case LT_ARCTIC:
 			if (snow_or_desert != (GetTileZ(tile) > GetSnowLine())) {
 				if (IsTunnelTile(tile)) {
-					SetTunnelSnowOrDesert(tile, !snow_or_desert);
+					SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
 				} else {
-					SetBridgeSnowOrDesert(tile, !snow_or_desert);
+					SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
 				}
 				MarkTileDirtyByTile(tile);
 			}
@@ -1276,9 +1277,9 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 		case LT_TROPIC:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT && !snow_or_desert) {
 				if (IsTunnelTile(tile)) {
-					SetTunnelSnowOrDesert(tile, true);
+					SetTunnelBridgeSnowOrDesert(tile, true);
 				} else {
-					SetBridgeSnowOrDesert(tile, true);
+					SetTunnelBridgeSnowOrDesert(tile, true);
 				}
 				MarkTileDirtyByTile(tile);
 			}
@@ -1295,13 +1296,13 @@ static void ClickTile_TunnelBridge(TileIndex tile)
 static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode, uint sub_mode)
 {
 	if (IsTunnel(tile)) {
-		if (GetTunnelTransportType(tile) != mode) return 0;
-		if (GetTunnelTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
-		return AxisToTrackBits(DiagDirToAxis(GetTunnelDirection(tile))) * 0x101;
+		if (GetTunnelBridgeTransportType(tile) != mode) return 0;
+		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
+		return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) * 0x101;
 	} else {
-		if (GetBridgeTransportType(tile) != mode) return 0;
-		if (GetBridgeTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
-		return AxisToTrackBits(DiagDirToAxis(GetBridgeRampDirection(tile))) * 0x101;
+		if (GetTunnelBridgeTransportType(tile) != mode) return 0;
+		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
+		return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) * 0x101;
 	}
 }
 
@@ -1317,7 +1318,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 			 * the bridge/tunnel. As all *our* vehicles are already removed, they
 			 * must be of another owner. Therefor this must be a road bridge/tunnel.
 			 * In that case we can safely reassign the ownership to OWNER_NONE. */
-			assert((IsTunnel(tile) ? GetTunnelTransportType(tile) : GetBridgeTransportType(tile)) == TRANSPORT_ROAD);
+			assert((IsTunnel(tile) ? GetTunnelBridgeTransportType(tile) : GetTunnelBridgeTransportType(tile)) == TRANSPORT_ROAD);
 			SetTileOwner(tile, OWNER_NONE);
 		}
 	}
@@ -1354,7 +1355,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		if (v->type == VEH_TRAIN) {
 			fc = (x & 0xF) + (y << 4);
 
-			dir = GetTunnelDirection(tile);
+			dir = GetTunnelBridgeDirection(tile);
 			vdir = DirToDiagDir(v->direction);
 
 			if (v->u.rail.track != TRACK_BIT_WORMHOLE && dir == vdir) {
@@ -1382,7 +1383,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			}
 		} else if (v->type == VEH_ROAD) {
 			fc = (x & 0xF) + (y << 4);
-			dir = GetTunnelDirection(tile);
+			dir = GetTunnelBridgeDirection(tile);
 			vdir = DirToDiagDir(v->direction);
 
 			/* Enter tunnel? */
@@ -1422,7 +1423,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 			if (v->cur_speed > spd) v->cur_speed = spd;
 		}
 
-		dir = GetBridgeRampDirection(tile);
+		dir = GetTunnelBridgeDirection(tile);
 		if (DirToDiagDir(v->direction) == dir) {
 			switch (dir) {
 				default: NOT_REACHED();
@@ -1462,7 +1463,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 static CommandCost TerraformTile_TunnelBridge(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
 	if (_patches.build_on_slopes && AutoslopeEnabled() && IsBridge(tile)) {
-		DiagDirection direction = GetBridgeRampDirection(tile);
+		DiagDirection direction = GetTunnelBridgeDirection(tile);
 		Axis axis = DiagDirToAxis(direction);
 		CommandCost res;
 

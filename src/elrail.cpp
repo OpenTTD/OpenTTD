@@ -66,6 +66,8 @@
 #include "train.h"
 #include "gui.h"
 #include "transparency.h"
+#include "tunnelbridge_map.h"
+
 
 static inline TLG GetTLG(TileIndex t)
 {
@@ -93,14 +95,14 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 		case MP_TUNNELBRIDGE:
 			if (IsTunnel(t)) {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
-				if (override != NULL) *override = 1 << GetTunnelDirection(t);
-				return AxisToTrackBits(DiagDirToAxis(GetTunnelDirection(t)));
+				if (override != NULL) *override = 1 << GetTunnelBridgeDirection(t);
+				return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(t)));
 			} else {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
 				if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) {
-					*override = 1 << GetBridgeRampDirection(t);
+					*override = 1 << GetTunnelBridgeDirection(t);
 				}
-				return AxisToTrackBits(DiagDirToAxis(GetBridgeRampDirection(t)));
+				return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(t)));
 			}
 
 		case MP_ROAD:
@@ -131,7 +133,7 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
 		} else if (*tileh != SLOPE_FLAT) {
 			*tileh = SLOPE_FLAT;
 		} else {
-			switch (GetBridgeRampDirection(tile)) {
+			switch (GetTunnelBridgeDirection(tile)) {
 				case DIAGDIR_NE: *tileh = SLOPE_NE; break;
 				case DIAGDIR_SE: *tileh = SLOPE_SE; break;
 				case DIAGDIR_SW: *tileh = SLOPE_SW; break;
@@ -188,7 +190,7 @@ void DrawCatenaryOnTunnel(const TileInfo *ti)
 
 	if ((GetRailType(ti->tile) != RAILTYPE_ELECTRIC) || _patches.disable_elrails) return;
 
-	DiagDirection dir = GetTunnelDirection(ti->tile);
+	DiagDirection dir = GetTunnelBridgeDirection(ti->tile);
 
 	const SortableSpriteStruct *sss = &CatenarySpriteData_Tunnel[dir];
 	const int *BB_data = _tunnel_wire_BB[dir];
@@ -247,7 +249,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		 * existing foundataions, so we do have to do that manually later on.*/
 		tileh[TS_NEIGHBOUR] = GetTileSlope(neighbour, NULL);
 		trackconfig[TS_NEIGHBOUR] = GetRailTrackBitsUniversal(neighbour, NULL);
-		if (IsTunnelTile(neighbour) && i != GetTunnelDirection(neighbour)) trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
+		if (IsTunnelTile(neighbour) && i != GetTunnelBridgeDirection(neighbour)) trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
 
 		/* If the neighboured tile does not smoothly connect to the current tile (because of a foundation),
 		 * we have to draw all pillars on the current tile. */
@@ -264,7 +266,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			/* Next to us, we have a bridge head, don't worry about that one, if it shows away from us */
 			if (TrackSourceTile[i][k] == TS_NEIGHBOUR &&
 			    IsBridgeTile(neighbour) &&
-			    GetBridgeRampDirection(neighbour) == ReverseDiagDir(i)) {
+			    GetTunnelBridgeDirection(neighbour) == ReverseDiagDir(i)) {
 				continue;
 			}
 
@@ -291,7 +293,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		/* Read the foundataions if they are present, and adjust the tileh */
 		if (trackconfig[TS_NEIGHBOUR] != TRACK_BIT_NONE && IsTileType(neighbour, MP_RAILWAY) && GetRailType(neighbour) == RAILTYPE_ELECTRIC) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], trackconfig[TS_NEIGHBOUR]);
 		if (IsBridgeTile(neighbour)) {
-			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetBridgeRampDirection(neighbour)));
+			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetTunnelBridgeDirection(neighbour)));
 		}
 
 		ApplyFoundationToSlope(foundation, &tileh[TS_NEIGHBOUR]);
@@ -443,7 +445,7 @@ void DrawCatenary(const TileInfo *ti)
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
 		TileIndex head = GetNorthernBridgeEnd(ti->tile);
 
-		if (GetBridgeTransportType(head) == TRANSPORT_RAIL && GetRailType(head) == RAILTYPE_ELECTRIC) {
+		if (GetTunnelBridgeTransportType(head) == TRANSPORT_RAIL && GetRailType(head) == RAILTYPE_ELECTRIC) {
 			DrawCatenaryOnBridge(ti);
 		}
 	}

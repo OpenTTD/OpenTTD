@@ -77,6 +77,7 @@
 #include "industry_map.h"
 #include "unmovable_map.h"
 #include "tree_map.h"
+#include "tunnelbridge_map.h"
 
 #include <stdarg.h>
 
@@ -1639,7 +1640,7 @@ bool AfterLoadGame()
 				case MP_TUNNELBRIDGE:
 					/* Middle part of "old" bridges */
 					if (old_bridge && IsBridgeTile(t) && HasBit(_m[t].m5, 6)) break;
-					if ((IsTunnel(t) ? GetTunnelTransportType(t) : (old_bridge ? (TransportType)GB(_m[t].m5, 1, 2) : GetBridgeTransportType(t))) == TRANSPORT_ROAD) {
+					if ((IsTunnel(t) ? GetTunnelBridgeTransportType(t) : (old_bridge ? (TransportType)GB(_m[t].m5, 1, 2) : GetTunnelBridgeTransportType(t))) == TRANSPORT_ROAD) {
 						SetRoadTypes(t, ROADTYPES_ROAD);
 					}
 					break;
@@ -1699,7 +1700,7 @@ bool AfterLoadGame()
 		FOR_ALL_VEHICLES(v) {
 			if (v->type != VEH_TRAIN && v->type != VEH_ROAD) continue;
 			if (IsBridgeTile(v->tile)) {
-				DiagDirection dir = GetBridgeRampDirection(v->tile);
+				DiagDirection dir = GetTunnelBridgeDirection(v->tile);
 
 				if (dir != DirToDiagDir(v->direction)) continue;
 				switch (dir) {
@@ -1757,11 +1758,11 @@ bool AfterLoadGame()
 
 				case MP_TUNNELBRIDGE:
 					if (IsTunnel(t)) {
-						if (GetTunnelTransportType(t) == TRANSPORT_RAIL) {
+						if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
 							SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 						}
 					} else {
-						if (GetBridgeTransportType(t) == TRANSPORT_RAIL) {
+						if (GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL) {
 							SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 						}
 					}

@@ -12,6 +12,7 @@
 #include "../road_map.h"
 #include "../tunnel_map.h"
 #include "../bridge_map.h"
+#include "../tunnelbridge_map.h"
 #include "../bridge.h"
 #include "../station.h"
 #include "../station_map.h"

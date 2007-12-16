@@ -8,6 +8,7 @@
 #include "bridge.h"
 #include "variables.h"
 #include "landscape.h"
+#include "tunnelbridge_map.h"
 
 
 TileIndex GetBridgeEnd(TileIndex tile, DiagDirection dir)
@@ -17,7 +18,7 @@ TileIndex GetBridgeEnd(TileIndex tile, DiagDirection dir)
 	dir = ReverseDiagDir(dir);
 	do {
 		tile += delta;
-	} while (!IsBridgeTile(tile) || GetBridgeRampDirection(tile) != dir);
+	} while (!IsBridgeTile(tile) || GetTunnelBridgeDirection(tile) != dir);
 
 	return tile;
 }
@@ -38,14 +39,14 @@ TileIndex GetSouthernBridgeEnd(TileIndex t)
 TileIndex GetOtherBridgeEnd(TileIndex tile)
 {
 	assert(IsBridgeTile(tile));
-	return GetBridgeEnd(tile, GetBridgeRampDirection(tile));
+	return GetBridgeEnd(tile, GetTunnelBridgeDirection(tile));
 }
 
 uint GetBridgeHeight(TileIndex t)
 {
 	uint h;
 	Slope tileh = GetTileSlope(t, &h);
-	Foundation f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(t)));
+	Foundation f = GetBridgeFoundation(tileh, DiagDirToAxis(GetTunnelBridgeDirection(t)));
 
 	/* one height level extra for the ramp */
 	return h + TILE_HEIGHT + ApplyFoundationToSlope(f, &tileh);

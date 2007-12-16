@@ -12,7 +12,9 @@
 #include "../../depot.h"
 #include "../../tunnel_map.h"
 #include "../../bridge.h"
+#include "../../tunnelbridge_map.h"
 #include "../ai.h"
+
 
 #define TEST_STATION_NO_DIR 0xFF
 
@@ -44,8 +46,8 @@ static bool IsRoad(TileIndex tile)
 		// MP_ROAD, but not a road depot?
 		(IsTileType(tile, MP_ROAD) && !IsTileDepotType(tile, TRANSPORT_ROAD)) ||
 		(IsTileType(tile, MP_TUNNELBRIDGE) && (
-			(IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_ROAD) ||
-			(IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_ROAD)
+			(IsTunnel(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) ||
+			(IsBridge(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD)
 		));
 }
 
@@ -235,9 +237,9 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 			if (!PathFinderInfo->rail_or_road && IsRoad(atile)) {
 				if (IsTileType(atile, MP_TUNNELBRIDGE)) {
 					if (IsTunnel(atile)) {
-						if (GetTunnelDirection(atile) != i) continue;
+						if (GetTunnelBridgeDirection(atile) != i) continue;
 					} else {
-						if (GetBridgeRampDirection(atile) != i) continue;
+						if (GetTunnelBridgeDirection(atile) != i) continue;
 					}
 				}
 			}

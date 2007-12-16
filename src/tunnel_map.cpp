@@ -6,6 +6,8 @@
 #include "openttd.h"
 #include "tile.h"
 #include "tunnel_map.h"
+#include "tunnelbridge_map.h"
+
 
 /**
  * Gets the other end of the tunnel. Where a vehicle would reappear when it
@@ -15,7 +17,7 @@
  */
 TileIndex GetOtherTunnelEnd(TileIndex tile)
 {
-	DiagDirection dir = GetTunnelDirection(tile);
+	DiagDirection dir = GetTunnelBridgeDirection(tile);
 	TileIndexDiff delta = TileOffsByDiagDir(dir);
 	uint z = GetTileZ(tile);
 
@@ -24,7 +26,7 @@ TileIndex GetOtherTunnelEnd(TileIndex tile)
 		tile += delta;
 	} while (
 		!IsTunnelTile(tile) ||
-		GetTunnelDirection(tile) != dir ||
+		GetTunnelBridgeDirection(tile) != dir ||
 		GetTileZ(tile) != z
 	);
 
@@ -52,7 +54,7 @@ bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
 	return
 		z == height &&
 		IsTunnelTile(tile) &&
-		GetTunnelDirection(tile) == dir;
+		GetTunnelBridgeDirection(tile) == dir;
 }
 
 /**

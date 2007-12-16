@@ -42,6 +42,8 @@
 #include "autoslope.h"
 #include "transparency.h"
 #include "water.h"
+#include "tunnelbridge_map.h"
+
 
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
@@ -927,12 +929,12 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 			TileIndex orig_tile = tile;
 			/* Skip to end of tunnel or bridge */
 			if (IsBridge(tile)) {
-				if (GetBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
-				if (GetBridgeRampDirection(tile) != TrackdirToExitdir(trackdir)) return false;
+				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
+				if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(trackdir)) return false;
 				tile = GetOtherBridgeEnd(tile);
 			} else {
-				if (GetTunnelTransportType(tile) != TRANSPORT_RAIL) return false;
-				if (GetTunnelDirection(tile) != TrackdirToExitdir(trackdir)) return false;
+				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return false;
+				if (GetTunnelBridgeDirection(tile) != TrackdirToExitdir(trackdir)) return false;
 				tile = GetOtherTunnelEnd(tile);
 			}
 			signal_ctr += 2 + DistanceMax(orig_tile, tile) * 2;

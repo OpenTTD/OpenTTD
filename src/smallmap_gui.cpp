@@ -28,6 +28,8 @@
 #include "sound.h"
 #include "variables.h"
 #include "blitter/factory.hpp"
+#include "tunnelbridge_map.h"
+
 
 static const Widget _smallmap_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
@@ -340,9 +342,9 @@ static inline TileType GetEffectiveTileType(TileIndex tile)
 		TransportType tt;
 
 		if (IsTunnel(tile)) {
-			tt = GetTunnelTransportType(tile);
+			tt = GetTunnelBridgeTransportType(tile);
 		} else {
-			tt = GetBridgeTransportType(tile);
+			tt = GetTunnelBridgeTransportType(tile);
 		}
 		switch (tt) {
 			case TRANSPORT_RAIL: t = MP_RAILWAY; break;

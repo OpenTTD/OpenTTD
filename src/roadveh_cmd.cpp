@@ -37,6 +37,8 @@
 #include "yapf/yapf.h"
 #include "date.h"
 #include "cargotype.h"
+#include "tunnelbridge_map.h"
+
 
 static const uint16 _roadveh_images[63] = {
 	0xCD4, 0xCDC, 0xCE4, 0xCEC, 0xCF4, 0xCFC, 0xD0C, 0xD14,
@@ -549,8 +551,8 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (IsTileType(v->tile, MP_ROAD) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
 
-	if (IsTunnelTile(v->tile) && DirToDiagDir(v->direction) == GetTunnelDirection(v->tile)) return CMD_ERROR;
-	if (IsBridgeTile(v->tile) && DirToDiagDir(v->direction) == GetBridgeRampDirection(v->tile)) return CMD_ERROR;
+	if (IsTunnelTile(v->tile) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
+	if (IsBridgeTile(v->tile) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) v->u.road.reverse_ctr = 180;
 
@@ -1406,9 +1408,9 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 		DiagDirection diag_dir = INVALID_DIAGDIR;
 
 		if (IsTunnelTile(tile)) {
-			diag_dir = GetTunnelDirection(tile);
+			diag_dir = GetTunnelBridgeDirection(tile);
 		} else if (IsBridgeTile(tile)) {
-			diag_dir = GetBridgeRampDirection(tile);
+			diag_dir = GetTunnelBridgeDirection(tile);
 		} else if (IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
 			diag_dir = ReverseDiagDir(GetRoadDepotDirection(tile));
 		}

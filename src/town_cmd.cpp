@@ -44,6 +44,8 @@
 #include "autoslope.h"
 #include "waypoint.h"
 #include "transparency.h"
+#include "tunnelbridge_map.h"
+
 
 /* Initialize the town-pool */
 DEFINE_OLD_POOL_GENERIC(Town, Town)
@@ -1062,9 +1064,9 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 		/* Reached a tunnel/bridge? Then continue at the other side of it. */
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_ROAD) {
+			if (IsTunnel(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
 				*tile_ptr = GetOtherTunnelEnd(tile);
-			} else if (IsBridge(tile) && GetBridgeTransportType(tile) == TRANSPORT_ROAD) {
+			} else if (IsBridge(tile) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD) {
 				*tile_ptr = GetOtherBridgeEnd(tile);
 			}
 			return;

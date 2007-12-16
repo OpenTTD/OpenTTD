@@ -78,7 +78,7 @@ protected:
 
 		// extra handling for tunnels in our direction
 		if (IsTunnelTile(m_old_tile)) {
-			DiagDirection tunnel_enterdir = GetTunnelDirection(m_old_tile);
+			DiagDirection tunnel_enterdir = GetTunnelBridgeDirection(m_old_tile);
 			if (tunnel_enterdir == m_exitdir) {
 				// we are entering the tunnel
 				FindLengthOfTunnelResult flotr = FindLengthOfTunnel(m_old_tile, m_exitdir);
@@ -92,7 +92,7 @@ protected:
 
 		// extra handling for bridge ramp in our direction
 		if (IsBridgeTile(m_old_tile)) {
-			DiagDirection bridge_enterdir = GetBridgeRampDirection(m_old_tile);
+			DiagDirection bridge_enterdir = GetTunnelBridgeDirection(m_old_tile);
 			if (bridge_enterdir == m_exitdir) {
 				// we are entering the bridge ramp
 				m_new_tile = GetOtherBridgeEnd(m_old_tile);
@@ -208,7 +208,7 @@ protected:
 		if (!IsWaterTT() && IsTileType(m_new_tile, MP_TUNNELBRIDGE)) {
 			if (IsTunnel(m_new_tile)) {
 				if (!m_is_tunnel) {
-					DiagDirection tunnel_enterdir = GetTunnelDirection(m_new_tile);
+					DiagDirection tunnel_enterdir = GetTunnelBridgeDirection(m_new_tile);
 					if (tunnel_enterdir != m_exitdir) {
 						m_err = EC_NO_WAY;
 						return false;
@@ -216,7 +216,7 @@ protected:
 				}
 			} else if (IsBridge(m_new_tile)) {
 				if (!m_is_bridge) {
-					DiagDirection ramp_enderdir = GetBridgeRampDirection(m_new_tile);
+					DiagDirection ramp_enderdir = GetTunnelBridgeDirection(m_new_tile);
 					if (ramp_enderdir != m_exitdir) {
 						m_err = EC_NO_WAY;
 						return false;

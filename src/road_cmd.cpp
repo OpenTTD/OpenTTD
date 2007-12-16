@@ -34,6 +34,8 @@
 #include "misc/autoptr.hpp"
 #include "autoslope.h"
 #include "transparency.h"
+#include "tunnelbridge_map.h"
+
 
 #define M(x) (1 << (x))
 /* Level crossings may only be built on these slopes */
@@ -133,10 +135,10 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			{
 				TileIndex endtile;
 				if (IsTunnel(tile)) {
-					if (GetTunnelTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+					if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
 					endtile = GetOtherTunnelEnd(tile);
 				} else {
-					if (GetBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+					if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
 					endtile = GetOtherBridgeEnd(tile);
 				}
 
@@ -175,7 +177,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				MarkTileDirtyByTile(tile);
 				MarkTileDirtyByTile(other_end);
 				if (IsBridge(tile)) {
-					TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
+					TileIndexDiff delta = TileOffsByDiagDir(GetTunnelBridgeDirection(tile));
 
 					for (TileIndex t = tile + delta; t != other_end; t += delta) MarkTileDirtyByTile(t);
 				}
@@ -514,10 +516,10 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			{
 				TileIndex endtile;
 				if (IsTunnel(tile)) {
-					if (GetTunnelTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+					if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
 					endtile = GetOtherTunnelEnd(tile);
 				} else {
-					if (GetBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+					if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
 					endtile = GetOtherBridgeEnd(tile);
 				}
 				if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
@@ -576,7 +578,7 @@ do_clear:;
 				MarkTileDirtyByTile(other_end);
 				MarkTileDirtyByTile(tile);
 				if (IsBridge(tile)) {
-					TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
+					TileIndexDiff delta = TileOffsByDiagDir(GetTunnelBridgeDirection(tile));
 
 					for (TileIndex t = tile + delta; t != other_end; t += delta) MarkTileDirtyByTile(t);
 				}
@@ -691,12 +693,12 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 			/* Only pay for the upgrade on one side of the bridges and tunnels */
 			if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 				if (IsBridge(tile)) {
-					if ((!had_bridge || GetBridgeRampDirection(tile) == DIAGDIR_SE || GetBridgeRampDirection(tile) == DIAGDIR_SW)) {
+					if ((!had_bridge || GetTunnelBridgeDirection(tile) == DIAGDIR_SE || GetTunnelBridgeDirection(tile) == DIAGDIR_SW)) {
 						cost.AddCost(ret);
 					}
 					had_bridge = true;
 				} else {
-					if ((!had_tunnel || GetTunnelDirection(tile) == DIAGDIR_SE || GetTunnelDirection(tile) == DIAGDIR_SW)) {
+					if ((!had_tunnel || GetTunnelBridgeDirection(tile) == DIAGDIR_SE || GetTunnelBridgeDirection(tile) == DIAGDIR_SW)) {
 						cost.AddCost(ret);
 					}
 					had_tunnel = true;
