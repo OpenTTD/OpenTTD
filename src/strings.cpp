@@ -32,6 +32,8 @@
 #include "signs.h"
 #include "vehicle.h"
 #include "newgrf_engine.h"
+#include "spritecache.h"
+#undef WITH_FREETYPE
 #include "fontcache.h"
 #include "gui.h"
 
