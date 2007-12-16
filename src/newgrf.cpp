@@ -952,6 +952,14 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						ClrBit(dts->ground_pal, 15);
 						SetBit(dts->ground_sprite, SPRITE_MODIFIER_USE_OFFSET);
 					}
+					if (HasBit(dts->ground_sprite, 15)) {
+						ClrBit(dts->ground_sprite, 15);
+						SetBit(dts->ground_sprite, PALETTE_MODIFIER_COLOR);
+					}
+					if (HasBit(dts->ground_sprite, 14)) {
+						ClrBit(dts->ground_sprite, 14);
+						SetBit(dts->ground_sprite, PALETTE_MODIFIER_TRANSPARENT);
+					}
 
 					while (buf < *bufp + len) {
 						DrawTileSeqStruct *dtss;
