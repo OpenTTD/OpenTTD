@@ -1938,7 +1938,11 @@ static void NetworkCompanyPasswordWindowWndProc(Window *w, WindowEvent *e)
 		case WE_KEYPRESS:
 			switch (HandleEditBoxKey(w, &WP(w, chatquerystr_d), 4, e)) {
 				case 1: // Return
-					/* FALLTHROUGH */
+					e->event = WE_CLICK;
+					e->we.click.widget = NCPWW_OK;
+					NetworkCompanyPasswordWindowWndProc(w, e);
+					break;
+
 				case 2: // Escape
 					DeleteWindow(w);
 					break;
