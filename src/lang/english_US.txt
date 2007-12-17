@@ -1,4 +1,4 @@
-##name American
+##name English_US
 ##ownname English (US)
 ##isocode en_US
 ##plural 0
