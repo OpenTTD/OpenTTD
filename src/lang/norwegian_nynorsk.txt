@@ -595,6 +595,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firma informasjon
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Opning / stenging av industriar
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringar
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produksjonsendringar for industriar betente av spelaren sjølve
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produksjonsendringar for industriar betente av konkurrent(ar)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Produksonsendringar for andre industriar
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd/informasjon om køyretøya til spelaren
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køyretøy
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Endringar i godtekne varer
@@ -1167,6 +1170,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Jamn ø
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillat kjøping av aksjar i andre selskap
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal hver: {ORANGE}{STRING} rute{P "" r}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bruk signal GUI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Byoppsettet " ingen fleire vegar" kan ikkje brukast i scenarioredigeringsprogrammet
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Velg oppsett for byvegar: {ORANGE}{STRING}
@@ -1681,6 +1685,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bygg bru
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Bygg bro for trikk
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bygg tunnel
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Bygg tunell for trikk
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktiver / Deaktiver envegskøyrde vegar
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Vel mellom bygging/fjerning for vegbygging
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Byt mellom bygge / fjerne for trikk
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vel retninga på garasjen
@@ -1702,6 +1707,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Bygningen må rivst først
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Innbyggjartal: {ORANGE}{COMMA}{BLACK}  Antal hus: {ORANGE}{COMMA}
@@ -2306,6 +2312,10 @@ STR_RELOCATE_HQ                                                 :{BLACK}Omplasse
 STR_COMPANY_PASSWORD                                            :{BLACK}Passord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Passordbeskytt firmaet ditt slik at ikkje alle og einkvar kan verte med. Bruk '*' for å tømme passord.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vel firmapassord
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK} Ikkje lagre passordet
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gje firmaet nytt passord
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Firmapassord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Standard passord for firma
 STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Bruk passordet fra dette firmaet som standard for nye firma
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Verdskrise!{}{}Økonomar fryktar det verste. Nedgangstider i kjømda.
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Verdskrise over!{}{}Opptur i marknaden gjer industrien sjølvkjensla attende.
@@ -3289,6 +3299,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Høgde p
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Still oversiktskartet midt på på den gjeldande posisjonen
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Liten
@@ -3450,4 +3461,13 @@ STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan ikkj
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard Signal (semaphore){}Signals are necessary to keep trains from crashing on railway networks with more than one train.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Entry-Signal (semaphore){}Grønt så lenge det er eit eller fleir grøne ut-signal i den følgande seksjonen. Ellers syner det raudt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ut-Signal (semaphore){}Virker på samme måte som normale signal, men er naudsynte for å få rett farge på inn og combo pre-signal.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Signal (semaphore){}Combo signal fungerer som både inn og ut signal. Det gjer deg moglegheit til å bygge store "tre" av presignal.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standard Signal (elektrisk){}Signals er naudsynte for at tog ikkje skal kollidere når det er meir en ett på linja.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}In-Signal (elektrisk){}Grøn så lenge det er eit eller fleir grønne ut signal fra den følgande seksjonen. Ellers synar det raudt.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ut-Signal (elektrisk){}Verker på samme måte som vanlege signal, men er naudsynt for å gje rett farge på in og combo pre-signal
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-Signal (elektrisk){}Verker som både inn og ut signaler og gjer det moglegheit til å lage store "tre" av presignal
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Konvertering{}Klikk på eit signal for å endra det til valde type, CTRL-klikk  skifter mellom forskjellige variantar.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Tettleik for dra og slepp signalbygging
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Minsk tettleik for dra og slepp signalbygging
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Auk tettleik for dra og slepp signalbygging
 ########

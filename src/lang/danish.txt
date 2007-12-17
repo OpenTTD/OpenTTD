@@ -1169,6 +1169,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Aktiver
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillad at købe aktier i andre selskaber
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved trækning placer signal hvert: {ORANGE}{STRING} felt
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Byg automatisk semaforer før: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Slå signalbrugerfladen til: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vejlayoutet "ikke flere veje" er ikke gyldigt i scenarieeditoren
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vælg layout for veje i byer: {ORANGE}{STRING}
@@ -2310,6 +2311,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Flyt hov
 STR_COMPANY_PASSWORD                                            :{BLACK}Kodeord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Beskyt dit selskab med et kodeord for at undgå, at fremmede slutter sig til spillet.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Sæt selskabets kodeord
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Gem ikke den indtastede adgangskode
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Giv firmaet den nye adgangskode
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Firma-adgangskode
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Standard firma-adgangskode
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Brug denne firma-adgangskode som standard for nye firmaer
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Lavkonjuktur over hele verden!{}{}Vismændende frygter det værste, økonomien skrumper!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Skift mellem stort/lille vindue
@@ -3110,6 +3116,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Tilsvar
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible GRF fil(er) indlæst i stedet for manglende fil(er)
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF fil(er) er blevet slået fra
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mangler GRF fil(er) for at kunne indlæse spillet
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglende GRF-fil(er)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD kan gå ned, når spillet sættes i gang igen. Undlad at indsende fejlrapporter for efterfølgende nedbrud.{}Vil du virkelig sætte spillet i gang igen?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3447,4 +3455,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Ændre s
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Signalvalg
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan ikke konvertere signaler her...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardsignal (semafor){}Signaler er nødvendige for at undgå sammenstød mellem tog på jernbanenetværk med mere end et tog.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Indgangssignal (semafor){}Grønt så længe der er et eller flere grønne udgangssignaler fra den efterfølgende sporsektion. Ellers vises rødt.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Udgangssignal (semafor){}Fungerer som et normalt signal men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombisignal (semafor){}Kombisignalet fungerer både som indgangs- og udgangssignal. Dette muliggør opbygning af store forgreninger af signaler.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardsignal (electrisk){}Signaler er nødvendige for at undgå sammenstød mellem tog på jernbanenetværk med mere end et tog.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Indgangssignal (elektrisk){}Grønt så længe der er et eller flere grønne udgangssignaler fra den efterfølgende sporsektion. Ellers vises rødt.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Udgangssignal (elektrisk){}Fungerer som et normalt signal men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombisignal (elektrisk){}Kombisignalet fungerer både som indgangs- og udgangssignal. Dette muliggør opbygning af store forgreninger af signaler.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalkonvertering{}Når denne er valgt, vil klik på et eksisterende signal konvertere det til den valgte signaltype og -variant. CTRL-klik vil skifte den eksisterende signalvariant.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Træk-og-slip signaltæthed
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Formindsk træk-og-slip signaltæthed
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Forøg træk-og-slip signaltæthed
 ########

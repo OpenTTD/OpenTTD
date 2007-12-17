@@ -1394,8 +1394,8 @@ STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nome par
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Il nome della partita sarà mostrato dagli altri giocatori nel menu di selezione delle partite multigiocatore
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Imposta password
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protegge la partita con una password in modo che non sia accessibile pubblicamente
-STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleziona una mappa:
-STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Con quale mappa vuoi giocare?
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleziona mappa:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Selezionare la mappa con la quale si desidera giocare
 STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
@@ -2311,7 +2311,7 @@ STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Impossib
 STR_7072_VIEW_HQ                                                :{BLACK}Vedi sede
 STR_RELOCATE_HQ                                                 :{BLACK}Sposta sede
 STR_COMPANY_PASSWORD                                            :{BLACK}Password
-STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protegge la compagnia con una password per impedire ad utenti non autorizzati di accedervi.
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protegge la compagnia con una password per impedire ad utenti non autorizzati di accedervi
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Imposta password compagnia
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non salvare la password inserita
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Assegna la nuova password alla compagnia
@@ -3119,7 +3119,7 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}File GRF
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}I file GRF mancanti sono stati disabilitati
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mancano file GRF necessari per caricare la partita
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}File GRF mancanti
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Uscire dalla pausa può causare un crash di OpenTTD. Si prega di non inviare segnalazioni bug relative ai problemi che potrebbero verificarsi proseguendo.{}(Uscire dalla pausa?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Uscire dalla pausa può causare un crash: nel caso, si prega di non inviare segnalazioni bug al riguardo.{}Uscire dalla pausa?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta personalizzata
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cambio: {ORANGE}{CURRENCY} = £ {COMMA}
