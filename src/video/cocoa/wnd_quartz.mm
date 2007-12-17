@@ -7,6 +7,7 @@
  ******************************************************************************/
 
 #ifdef WITH_COCOA
+#ifdef ENABLE_COCOA_QUARTZ
 
 #include <AvailabilityMacros.h>
 
@@ -782,8 +783,8 @@ CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 {
 	WindowQuartzSubdriver *ret;
 
-	if (!MacOSVersionIsAtLeast(10, 5, 0)) {
-		DEBUG(driver, 0, "The cocoa quartz subdriver requires Mac OS X 10.5 or later.");
+	if (!MacOSVersionIsAtLeast(10, 4, 0)) {
+		DEBUG(driver, 0, "The cocoa quartz subdriver requires Mac OS X 10.4 or later.");
 		return NULL;
 	}
 
@@ -802,5 +803,7 @@ CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 	return ret;
 }
 
+
 #endif /* MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4 */
+#endif /* ENABLE_COCOA_QUARTZ */
 #endif /* WITH_COCOA */

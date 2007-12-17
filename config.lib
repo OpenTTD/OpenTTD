@@ -43,6 +43,8 @@ set_default() {
 	enable_universal="1"
 	enable_osx_g5="0"
 	enable_unicode="1"
+	enable_cocoa_quartz="1"
+	enable_cocoa_quickdraw="1"
 	with_distcc="1"
 	with_ccache="1"
 	with_osx_sysroot="1"
@@ -63,7 +65,7 @@ set_default() {
 	with_psp_config="1"
 	with_threads="1"
 
-	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os cpu_type revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir enable_debug enable_desync_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_osx_sysroot enable_universal enable_osx_g5 enable_unicode with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config with_threads CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os cpu_type revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir enable_debug enable_desync_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_osx_sysroot enable_universal enable_osx_g5 enable_unicode enable_cocoa_quartz enable_cocoa_quickdraw with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config with_threads CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
@@ -172,6 +174,13 @@ detect_params() {
 			--disable-unicode)            enable_unicode="0";;
 			--enable-unicode)             enable_unicode="2";;
 			--enable-unicode=*)           enable_unicode="$optarg";;
+
+			--disable-cocoa-quartz)       enable_cocoa_quartz="0";;
+			--enable-cocoa-quartz)        enable_cocoa_quartz="2";;
+			--enable-cocoa-quartz=*)      enable_cocoa_quartz="$optarg";;
+			--disable-cocoa-quickdraw)    enable_cocoa_quickdraw="0";;
+			--enable-cocoa-quickdraw)     enable_cocoa_quickdraw="2";;
+			--enable-cocoa-quickdraw=*)   enable_cocoa_quickdraw="$optarg";;
 
 			--with-sdl)                   with_sdl="2";;
 			--without-sdl)                with_sdl="0";;
@@ -943,6 +952,14 @@ make_cflags_and_ldflags() {
 	if [ "$with_cocoa" != "0" ]; then
 		CFLAGS="$CFLAGS -DWITH_COCOA"
 		LIBS="$LIBS -F/System/Library/Frameworks -framework Cocoa -framework Carbon -framework AudioUnit"
+
+		if [ "$enable_cocoa_quartz" != "0" ]; then
+			CFLAGS="$CFLAGS -DENABLE_COCOA_QUARTZ"
+		fi
+
+		if [ "$enable_cocoa_quickdraw" != "0" ]; then
+			CFLAGS="$CFLAGS -DENABLE_COCOA_QUICKDRAW"
+		fi
 	fi
 
 	if [ "$with_zlib" != "0" ]; then
@@ -1552,6 +1569,19 @@ detect_cocoa() {
 	fi
 
 	log 1 "checking COCOA... found"
+
+
+	if [ "$enable_cocoa_quartz" != "0" ]; then
+		log 1 "checking whether to enable the Quartz window subdriver... yes"
+	else
+		log 1 "checking whether to enable the Quartz window subdriver... no"
+	fi
+
+	if [ "$enable_cocoa_quickdraw" != "0" ]; then
+		log 1 "checking whether to enable the Quickdraw window subdriver... yes"
+	else
+		log 1 "checking whether to enable the Quickdraw window subdriver... no"
+	fi
 }
 
 detect_library() {
@@ -2203,6 +2233,8 @@ showhelp() {
 	echo "  --enable-translator            enable extra output for translators"
 	echo "  --enable-universal             enable universal builds (OSX ONLY)"
 	echo "  --enable-osx-g5                enables optimalizations for G5 (OSX ONLY)"
+	echo "  --disable-cocoa-quartz         disable the quartz window mode driver for Cocoa (OSX ONLY)"
+	echo "  --disable-cocoa-quickdraw      disable the quickdraw window mode driver for Cocoa (OSX ONLY)"
 	echo "  --disable-unicode              disable unicode support to build win9x"
 	echo "                                 version (Win32 ONLY)"
 	echo "  --disable-network              disable network support"

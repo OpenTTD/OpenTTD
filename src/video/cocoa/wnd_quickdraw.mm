@@ -7,6 +7,7 @@
  ******************************************************************************/
 
 #ifdef WITH_COCOA
+#ifdef ENABLE_COCOA_QUICKDRAW
 
 #define MAC_OS_X_VERSION_MIN_REQUIRED    MAC_OS_X_VERSION_10_3
 #define MAC_OS_X_VERSION_MAX_ALLOWED     MAC_OS_X_VERSION_10_3
@@ -817,4 +818,5 @@ CocoaSubdriver *QZ_CreateWindowQuickdrawSubdriver(int width, int height, int bpp
 	return ret;
 }
 
+#endif /* ENABLE_COCOA_QUICKDRAW */
 #endif /* WITH_COCOA */
