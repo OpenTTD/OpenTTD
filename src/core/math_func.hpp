@@ -1,6 +1,6 @@
-/* $Id */
+/* $Id$ */
 
-/** @file math_func.hpp */
+/** @file math_func.hpp Integer math functions */
 
 #ifndef MATH_FUNC_HPP
 #define MATH_FUNC_HPP

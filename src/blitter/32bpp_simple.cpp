@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #include "../stdafx.h"
 #include "../zoom.hpp"
 #include "../gfx.h"

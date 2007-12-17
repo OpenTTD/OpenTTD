@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #include "../stdafx.h"
 #include "../gfx.h"
 #include "32bpp_base.hpp"
