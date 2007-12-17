@@ -691,54 +691,6 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
 }
 
 /**
- * Switches the rail type for a tunnel or a bridgehead. As the railtype
- * on the bridge are determined by the one of the bridgehead, this
- * functions converts the railtype on the entire bridge.
- * @param tile        The tile on which the railtype is to be convert.
- * @param totype      The railtype we want to convert to
- * @param exec        Switches between test and execute mode
- * @return            The cost and state of the operation
- * @retval CMD_ERROR  An error occured during the operation.
- */
-CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
-{
-	if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) return CMD_ERROR;
-
-	TileIndex endtile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
-
-	/* If not coverting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
-	if (!IsCompatibleRail(GetRailType(tile), totype) &&
-			GetVehicleTunnelBridge(tile, endtile) != NULL) {
-		return CMD_ERROR;
-	}
-
-	if (exec) {
-		SetRailType(tile, totype);
-		SetRailType(endtile, totype);
-
-		Track track = AxisToTrack(DiagDirToAxis(GetTunnelBridgeDirection(tile)));
-
-		YapfNotifyTrackLayoutChange(tile, track);
-		YapfNotifyTrackLayoutChange(endtile, track);
-
-		VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
-		VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
-
-		MarkTileDirtyByTile(tile);
-		MarkTileDirtyByTile(endtile);
-
-		if (IsBridge(tile)) {
-			TileIndexDiff delta = TileOffsByDiagDir(GetTunnelBridgeDirection(tile));
-			TileIndex t = tile + delta;
-			for (; t != endtile; t += delta) MarkTileDirtyByTile(t); // TODO encapsulate this into a function
-		}
-	}
-
-	return CommandCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(GetRailType(tile), totype));
-}
-
-
-/**
  * Draws the pillars under high bridges.
  *
  * @param psid Image and palette of a bridge pillar.

@@ -593,30 +593,6 @@ do_clear:;
 	return cost;
 }
 
-/**
- * Switches the rail type on a level crossing.
- * @param tile        The tile on which the railtype is to be convert.
- * @param totype      The railtype we want to convert to
- * @param exec        Switches between test and execute mode
- * @return            The cost and state of the operation
- * @retval CMD_ERROR  An error occured during the operation.
- */
-CommandCost DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
-{
-	/* not a railroad crossing? */
-	if (!IsLevelCrossing(tile)) return CMD_ERROR;
-
-	if (exec) {
-		SetRailType(tile, totype);
-		MarkTileDirtyByTile(tile);
-		YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetCrossingRailBits(tile)));
-		VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
-	}
-
-	return CommandCost(RailConvertCost(GetRailType(tile), totype));
-}
-
-
 /** Build a long piece of road.
  * @param end_tile end tile of drag
  * @param flags operation to perform

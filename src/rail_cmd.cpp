@@ -1143,8 +1143,7 @@ CommandCost CmdRemoveSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32
 	return CmdSignalTrackHelper(tile, flags, p1, SetBit(p2, 5)); // bit 5 is remove bit
 }
 
-typedef CommandCost DoConvertRailProc(TileIndex tile, RailType totype, bool exec);
-
+/** Update power of train under which is the railtype being converted */
 void *UpdateTrainPowerProc(Vehicle *v, void *data)
 {
 	/* Similiar checks as in TrainPowerChanged() */
@@ -1157,46 +1156,6 @@ void *UpdateTrainPowerProc(Vehicle *v, void *data)
 	return NULL;
 }
 
-/**
- * Switches the rail type.
- * Railtypes are stored on a per-tile basis, not on a per-track basis, so
- * all the tracks in the given tile will be converted.
- * @param tile        The tile on which the railtype is to be convert.
- * @param totype      The railtype we want to convert to
- * @param exec        Switches between test and execute mode
- * @return            The cost and state of the operation
- * @retval CMD_ERROR  An error occured during the operation.
- */
-static CommandCost DoConvertRail(TileIndex tile, RailType totype, bool exec)
-{
-	/* change type. */
-	if (exec) {
-		SetRailType(tile, totype);
-		MarkTileDirtyByTile(tile);
-
-		/* notify YAPF about the track layout change */
-		TrackBits tracks = GetTrackBits(tile);
-		while (tracks != TRACK_BIT_NONE) {
-			YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
-		}
-
-		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
-			/* Update build vehicle window related to this depot */
-			InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
-			InvalidateWindowData(WC_BUILD_VEHICLE, tile);
-		}
-
-		/* update power of train engines on this tile */
-		VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
-	}
-
-	return CommandCost(RailConvertCost(GetRailType(tile), totype) * CountBits(GetTrackBits(tile)));
-}
-
-extern CommandCost DoConvertStationRail(TileIndex tile, RailType totype, bool exec);
-extern CommandCost DoConvertStreetRail(TileIndex tile, RailType totype, bool exec);
-extern CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec);
-
 /** Convert one rail type to the other. You can convert normal rail to
  * monorail/maglev easily or vice-versa.
  * @param tile end tile of rail conversion drag
@@ -1206,72 +1165,137 @@ extern CommandCost DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bo
  */
 CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost ret, cost;
-	Money money;
-	int ex;
-	int ey;
-	int sx, sy, x, y;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+	CommandCost cost;
 
 	if (!ValParamRailtype(p2)) return CMD_ERROR;
 	if (p1 >= MapSize()) return CMD_ERROR;
 
+	RailType totype = (RailType)p2;
+
+	uint ex = TileX(tile);
+	uint ey = TileY(tile);
+	uint sx = TileX(p1);
+	uint sy = TileY(p1);
+
 	/* make sure sx,sy are smaller than ex,ey */
-	ex = TileX(tile);
-	ey = TileY(tile);
-	sx = TileX(p1);
-	sy = TileY(p1);
 	if (ex < sx) Swap(ex, sx);
 	if (ey < sy) Swap(ey, sy);
 
-	money = GetAvailableMoneyForCommand();
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	for (x = sx; x <= ex; ++x) {
-		for (y = sy; y <= ey; ++y) {
+	_error_message = STR_1005_NO_SUITABLE_RAILROAD_TRACK; // by default, there is no track to convert
+
+	for (uint x = sx; x <= ex; ++x) {
+		for (uint y = sy; y <= ey; ++y) {
 			TileIndex tile = TileXY(x, y);
-			DoConvertRailProc *proc;
-			RailType totype = (RailType)p2;
+			TileType tt = GetTileType(tile);
 
-			switch (GetTileType(tile)) {
-				case MP_RAILWAY:      proc = DoConvertRail;             break;
-				case MP_STATION:      proc = DoConvertStationRail;      break;
-				case MP_ROAD:         proc = DoConvertStreetRail;       break;
-				case MP_TUNNELBRIDGE: proc = DoConvertTunnelBridgeRail; break;
+			/* Check if there is any track on tile */
+			switch (tt) {
+				case MP_RAILWAY:
+					break;
+				case MP_STATION:
+					if (!IsRailwayStation(tile)) continue;
+					break;
+				case MP_ROAD:
+					if (!IsLevelCrossing(tile)) continue;
+					break;
+				case MP_TUNNELBRIDGE:
+					if (GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL) continue;
+					break;
 				default: continue;
 			}
 
-			/* It is possible that 'type' is invalid when there is no rail on the tile,
-			 * but this situation will be detected in proc()
-			 */
+			/* Original railtype we are converting from */
 			RailType type = GetRailType(tile);
 
-			/* Not own tile or track is already converted */
-			if ((!CheckTileOwnership(tile) || type == totype) ||
-				/* 'hidden' elrails can't be downgraded to normal rail when elrails are disabled */
-				(_patches.disable_elrails && totype == RAILTYPE_RAIL && type == RAILTYPE_ELECTRIC) ||
-				/* Vehicle on a tile while not converting Rail <-> ElRail */
-				(!IsCompatibleRail(type, totype) && !EnsureNoVehicleOnGround(tile))) {
-					ret = CMD_ERROR;
-					continue;
-			}
+			/* Converting to the same type or converting 'hidden' elrail -> rail */
+			if (type == totype || (_patches.disable_elrails && totype == RAILTYPE_RAIL && type == RAILTYPE_ELECTRIC)) continue;
 
-			ret = proc(tile, totype, false);
-			if (CmdFailed(ret)) continue;
+			/* Trying to convert other's rail */
+			if (!CheckTileOwnership(tile)) continue;
 
-			if (flags & DC_EXEC) {
-				money -= ret.GetCost();
-				if (money < 0) {
-					_additional_cash_required = ret.GetCost();
-					return cost;
+			/* Vehicle on the tile when not converting Rail <-> ElRail
+			 * Tunnels and bridges have special check later */
+			if (tt != MP_TUNNELBRIDGE) {
+				if (!IsCompatibleRail(type, totype) && !EnsureNoVehicleOnGround(tile)) continue;
+				if (flags & DC_EXEC) { // we can safely convert, too
+					SetRailType(tile, totype);
+					MarkTileDirtyByTile(tile);
+					/* update power of train engines on this tile */
+					VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
 				}
-				proc(tile, totype, true);
 			}
-			cost.AddCost(ret);
+
+			switch (tt) {
+				case MP_RAILWAY:
+					if (flags & DC_EXEC) {
+						/* notify YAPF about the track layout change */
+						TrackBits tracks = GetTrackBits(tile);
+						while (tracks != TRACK_BIT_NONE) {
+							YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
+						}
+
+						if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
+							/* Update build vehicle window related to this depot */
+							InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
+							InvalidateWindowData(WC_BUILD_VEHICLE, tile);
+						}
+					}
+
+					cost.AddCost(CommandCost(RailConvertCost(type, totype) * CountBits(GetTrackBits(tile))));
+					break;
+
+				case MP_TUNNELBRIDGE: {
+					TileIndex endtile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
+
+					/* If both ends of tunnel/bridge are in the range, do not try to convert twice -
+					 * it would cause assert because of different test and exec runs */
+					if (endtile < tile && TileX(endtile) >= sx && TileX(endtile) <= ex &&
+							TileY(endtile) >= sy && TileY(endtile) <= ey) continue;
+
+					/* When not coverting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
+					if (!IsCompatibleRail(GetRailType(tile), totype) &&
+							GetVehicleTunnelBridge(tile, endtile) != NULL) continue;
+
+					if (flags & DC_EXEC) {
+						SetRailType(tile, totype);
+						SetRailType(endtile, totype);
+
+						VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
+						VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
+
+						Track track = AxisToTrack(DiagDirToAxis(GetTunnelBridgeDirection(tile)));
+
+						YapfNotifyTrackLayoutChange(tile, track);
+						YapfNotifyTrackLayoutChange(endtile, track);
+
+						MarkTileDirtyByTile(tile);
+						MarkTileDirtyByTile(endtile);
+
+						if (IsBridge(tile)) {
+							TileIndexDiff delta = TileOffsByDiagDir(GetTunnelBridgeDirection(tile));
+							TileIndex t = tile + delta;
+							for (; t != endtile; t += delta) MarkTileDirtyByTile(t); // TODO encapsulate this into a function
+						}
+					}
+
+					cost.AddCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(type, totype));
+				} break;
+
+				default: // MP_STATION, MP_ROAD
+					if (flags & DC_EXEC) {
+						Track track = (tt == MP_STATION) ? GetRailStationTrack(tile) : AxisToTrack(OtherAxis(GetCrossingRoadAxis(tile)));
+						YapfNotifyTrackLayoutChange(tile, track);
+					}
+
+					cost.AddCost(RailConvertCost(type, totype));
+					break;
+			}
 		}
 	}
 
-	return (cost.GetCost() == 0) ? ret : cost;
+	return (cost.GetCost() == 0) ? CMD_ERROR : cost;
 }
 
 static CommandCost RemoveTrainDepot(TileIndex tile, uint32 flags)

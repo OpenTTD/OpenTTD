@@ -1290,29 +1290,6 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 }
 
 /**
- * Switches the rail type at a railway station tile.
- * @param tile        The tile on which the railtype is to be convert.
- * @param totype      The railtype we want to convert to
- * @param exec        Switches between test and execute mode
- * @return            The cost and state of the operation
- * @retval CMD_ERROR  An error occured during the operation.
- */
-CommandCost DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
-{
-	/* Tile is not a railroad station? */
-	if (!IsRailwayStation(tile)) return CMD_ERROR;
-
-	if (exec) {
-		SetRailType(tile, totype);
-		MarkTileDirtyByTile(tile);
-		YapfNotifyTrackLayoutChange(tile, GetRailStationTrack(tile));
-		VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
-	}
-
-	return CommandCost(RailConvertCost(GetRailType(tile), totype));
-}
-
-/**
  * @param truck_station Determines whether a stop is RoadStop::BUS or RoadStop::TRUCK
  * @param st The Station to do the whole procedure for
  * @return a pointer to where to link a new RoadStop*
