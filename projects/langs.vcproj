@@ -52,19 +52,6 @@
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath="..\src\lang\american.txt">
-			<FileConfiguration
-				Name="Debug|Win32">
-				<Tool
-					Name="VCCustomBuildTool"
-					Description="Generating american language file"
-					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;
-"
-					AdditionalDependencies=""
-					Outputs="..\bin\lang\american.lng"/>
-			</FileConfiguration>
-		</File>
-		<File
 			RelativePath="..\src\lang\brazilian_portuguese.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
@@ -166,6 +153,19 @@
 "
 					AdditionalDependencies=""
 					Outputs="..\bin\lang\english.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath="..\src\lang\english_US.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating english_US language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;
+"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\english_US.lng"/>
 			</FileConfiguration>
 		</File>
 		<File
