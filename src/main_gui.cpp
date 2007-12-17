@@ -872,7 +872,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 	switch (how) {
 		case ZOOM_IN:
 			if (vp->zoom == ZOOM_LVL_MIN) return false;
-			vp->zoom = (ZoomLevel)((byte)vp->zoom - 1);
+			vp->zoom = (ZoomLevel)((int)vp->zoom - 1);
 			vp->virtual_width >>= 1;
 			vp->virtual_height >>= 1;
 
@@ -883,7 +883,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 			break;
 		case ZOOM_OUT:
 			if (vp->zoom == ZOOM_LVL_MAX) return false;
-			vp->zoom = (ZoomLevel)((byte)vp->zoom + 1);
+			vp->zoom = (ZoomLevel)((int)vp->zoom + 1);
 
 			WP(w, vp_d).scrollpos_x -= vp->virtual_width >> 1;
 			WP(w, vp_d).scrollpos_y -= vp->virtual_height >> 1;

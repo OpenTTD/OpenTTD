@@ -17,7 +17,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 	uint offset = 0;
 
 	/* Find the offset of this zoom-level */
-	offset = ((const uint8 *)bp->sprite)[(int)zoom * 2] | ((const byte *)bp->sprite)[(int)zoom * 2 + 1] << 8;
+	offset = ((const uint8 *)bp->sprite)[(int)(zoom - ZOOM_LVL_BEGIN) * 2] | ((const byte *)bp->sprite)[(int)(zoom - ZOOM_LVL_BEGIN) * 2 + 1] << 8;
 
 	/* Find where to start reading in the source sprite */
 	src = (const uint8 *)bp->sprite + offset;
@@ -110,9 +110,9 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 	uint index = 0;
 
 	/* Make memory for all zoom-levels */
-	memory += (int)ZOOM_LVL_END * sizeof(uint16);
-	for (int i = 0; i < (int)ZOOM_LVL_END; i++) {
-		memory += UnScaleByZoom(sprite->height, (ZoomLevel)i) * UnScaleByZoom(sprite->width, (ZoomLevel)i);
+	memory += (int)(ZOOM_LVL_END - ZOOM_LVL_BEGIN) * sizeof(uint16);
+	for (ZoomLevel i = ZOOM_LVL_BEGIN; i < ZOOM_LVL_END; i++) {
+		memory += UnScaleByZoom(sprite->height, i) * UnScaleByZoom(sprite->width, i);
 		index += 2;
 	}
 
@@ -121,7 +121,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 	temp_dst = MallocT<byte>(memory);
 
 	/* Make the sprites per zoom-level */
-	for (int i = 0; i < (int)ZOOM_LVL_END; i++) {
+	for (ZoomLevel i = ZOOM_LVL_BEGIN; i < ZOOM_LVL_END; i++) {
 		/* Store the scaled image */
 		const SpriteLoader::CommonPixel *src;
 
@@ -131,19 +131,19 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 
 		byte *dst = &temp_dst[index];
 
-		for (int y = 0; y < UnScaleByZoom(sprite->height, (ZoomLevel)i); y++) {
+		for (int y = 0; y < UnScaleByZoom(sprite->height, i); y++) {
 			uint trans = 0;
 			uint pixels = 0;
 			uint last_color = 0;
 			uint count_index = 0;
 			uint rx = 0;
-			src = &sprite->data[ScaleByZoom(y, (ZoomLevel)i) * sprite->width];
+			src = &sprite->data[ScaleByZoom(y, i) * sprite->width];
 
-			for (int x = 0; x < UnScaleByZoom(sprite->width, (ZoomLevel)i); x++) {
+			for (int x = 0; x < UnScaleByZoom(sprite->width, i); x++) {
 				uint color = 0;
 
 				/* Get the color keeping in mind the zoom-level */
-				for (int j = 0; j < ScaleByZoom(1, (ZoomLevel)i); j++) {
+				for (int j = 0; j < ScaleByZoom(1, i); j++) {
 					if (src->m != 0) color = src->m;
 					src++;
 					rx++;

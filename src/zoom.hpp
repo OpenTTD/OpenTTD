@@ -5,8 +5,11 @@
 #ifndef ZOOM_HPP
 #define ZOOM_HPP
 
+#include "helpers.hpp"
+
 enum ZoomLevel {
 	/* Our possible zoom-levels */
+	ZOOM_LVL_BEGIN  = 0,
 	ZOOM_LVL_NORMAL = 0,
 	ZOOM_LVL_OUT_2X,
 	ZOOM_LVL_OUT_4X,
@@ -32,6 +35,8 @@ enum ZoomLevel {
 
 extern ZoomLevel _saved_scrollpos_zoom;
 
+DECLARE_POSTFIX_INCREMENT(ZoomLevel)
+
 /**
  * Scale by zoom level, usually shift left (when zoom > ZOOM_LVL_NORMAL)
  * When shifting right, value is rounded up
@@ -42,7 +47,7 @@ extern ZoomLevel _saved_scrollpos_zoom;
 static inline int ScaleByZoom(int value, ZoomLevel zoom)
 {
 	if (zoom == ZOOM_LVL_NORMAL) return value;
-	int izoom = (int)zoom - (int)ZOOM_LVL_NORMAL;
+	int izoom = zoom - ZOOM_LVL_NORMAL;
 	return (zoom > ZOOM_LVL_NORMAL) ? value << izoom : (value + (1 << -izoom) - 1) >> -izoom;
 }
 
@@ -56,7 +61,7 @@ static inline int ScaleByZoom(int value, ZoomLevel zoom)
 static inline int UnScaleByZoom(int value, ZoomLevel zoom)
 {
 	if (zoom == ZOOM_LVL_NORMAL) return value;
-	int izoom = (int)zoom - (int)ZOOM_LVL_NORMAL;
+	int izoom = zoom - ZOOM_LVL_NORMAL;
 	return (zoom > ZOOM_LVL_NORMAL) ? (value + (1 << izoom) - 1) >> izoom : value << -izoom;
 }
 
@@ -69,7 +74,7 @@ static inline int UnScaleByZoom(int value, ZoomLevel zoom)
 static inline int ScaleByZoomLower(int value, ZoomLevel zoom)
 {
 	if (zoom == ZOOM_LVL_NORMAL) return value;
-	int izoom = (int)zoom - (int)ZOOM_LVL_NORMAL;
+	int izoom = zoom - ZOOM_LVL_NORMAL;
 	return (zoom > ZOOM_LVL_NORMAL) ? value << izoom : value >> -izoom;
 }
 
@@ -82,7 +87,7 @@ static inline int ScaleByZoomLower(int value, ZoomLevel zoom)
 static inline int UnScaleByZoomLower(int value, ZoomLevel zoom)
 {
 	if (zoom == ZOOM_LVL_NORMAL) return value;
-	int izoom = (int)zoom - (int)ZOOM_LVL_NORMAL;
+	int izoom = zoom - ZOOM_LVL_NORMAL;
 	return (zoom > ZOOM_LVL_NORMAL) ? value >> izoom : value << -izoom;
 }
 
