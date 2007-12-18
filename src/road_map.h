@@ -6,7 +6,8 @@
 #define ROAD_MAP_H
 
 #include "macros.h"
-#include "rail.h"
+#include "track_func.h"
+#include "rail_type.h"
 #include "road.h"
 #include "tile.h"
 

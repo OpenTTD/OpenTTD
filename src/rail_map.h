@@ -6,6 +6,7 @@
 #define RAIL_MAP_H
 
 #include "direction_func.h"
+#include "track_func.h"
 #include "rail.h"
 #include "tile.h"
 
