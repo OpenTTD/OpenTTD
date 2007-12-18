@@ -794,6 +794,15 @@ static bool CanExpandRailroadStation(const Station* st, uint* fin, Axis axis)
 		curh = max(TileY(st->train_tile) + curh, TileY(tile) + h) - y;
 		tile = TileXY(x, y);
 	} else {
+		/* do not allow modifying non-uniform stations,
+		 * the uniform-stations code wouldn't handle it well */
+		BEGIN_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
+			if (!st->TileBelongsToRailStation(t)) { // there may be adjoined station
+				_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
+				return false;
+			}
+		END_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
+
 		/* check so the orientation is the same */
 		if (GetRailStationAxis(st->train_tile) != axis) {
 			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
