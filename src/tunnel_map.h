@@ -8,8 +8,8 @@
 #include "direction_func.h"
 #include "macros.h"
 #include "map.h"
-#include "rail.h"
-#include "road.h"
+#include "rail_type.h"
+#include "road_type.h"
 
 
 /**

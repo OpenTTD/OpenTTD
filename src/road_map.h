@@ -8,7 +8,7 @@
 #include "macros.h"
 #include "track_func.h"
 #include "rail_type.h"
-#include "road.h"
+#include "road_func.h"
 #include "tile.h"
 
 
@@ -304,6 +304,16 @@ RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt);
  * @return the track bits for the given tile
  */
 TrackBits GetAnyRoadTrackBits(TileIndex tile, RoadType rt);
+
+/**
+ * Return if the tile is a valid tile for a crossing.
+ *
+ * @note function is overloaded
+ * @param tile the curent tile
+ * @param ax the axis of the road over the rail
+ * @return true if it is a valid tile
+ */
+bool IsPossibleCrossing(const TileIndex tile, Axis ax);
 
 
 static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadTypes rot, TownID town, Owner road, Owner tram, Owner hway)

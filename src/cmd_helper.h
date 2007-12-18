@@ -5,7 +5,7 @@
 
 #include "direction_type.h"
 #include "macros.h"
-#include "road.h"
+#include "road_type.h"
 
 
 template<uint N> static inline void ExtractValid();

@@ -8,6 +8,7 @@
 #include "debug.h"
 #include "strings.h"
 #include "road_map.h"
+#include "road_internal.h" /* Cleaning up road bits */
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"

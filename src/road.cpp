@@ -4,8 +4,8 @@
 #include "openttd.h"
 #include "functions.h"
 #include "rail_map.h"
-#include "road.h"
 #include "road_map.h"
+#include "road_internal.h"
 #include "water_map.h"
 #include "macros.h"
 

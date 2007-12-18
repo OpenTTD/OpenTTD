@@ -7,8 +7,9 @@
 
 #include "oldpool.h"
 #include "order.h"
-#include "rail.h"
-#include "road.h"
+#include "track_type.h"
+#include "rail_type.h"
+#include "road_type.h"
 #include "cargopacket.h"
 #include "texteff.hpp"
 

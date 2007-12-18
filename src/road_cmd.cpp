@@ -9,6 +9,7 @@
 #include "cmd_helper.h"
 #include "rail_map.h"
 #include "road_map.h"
+#include "road_internal.h"
 #include "sprite.h"
 #include "table/sprites.h"
 #include "table/strings.h"

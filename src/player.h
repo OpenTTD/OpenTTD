@@ -8,7 +8,7 @@
 #include "oldpool.h"
 #include "aystar.h"
 #include "rail.h"
-#include "road.h"
+#include "road_func.h"
 #include "engine.h"
 #include "livery.h"
 #include "genworld.h"

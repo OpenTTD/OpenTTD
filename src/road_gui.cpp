@@ -17,7 +17,6 @@
 #include "sound.h"
 #include "command.h"
 #include "variables.h"
-#include "road.h"
 #include "road_cmd.h"
 #include "road_map.h"
 #include "station_map.h"

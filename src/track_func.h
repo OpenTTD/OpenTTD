@@ -494,4 +494,24 @@ static inline bool TracksOverlap(TrackBits bits)
 	return bits != TRACK_BIT_HORZ && bits != TRACK_BIT_VERT;
 }
 
+/**
+ * Checks whether the trackdir means that we are reversing.
+ * @param dir the trackdir to check
+ * @return true if it is a reversing road trackdir
+ */
+static inline bool IsReversingRoadTrackdir(Trackdir dir)
+{
+	return (dir & 0x07) >= 6;
+}
+
+/**
+ * Checks whether the given trackdir is a straight road
+ * @param dir the trackdir to check
+ * @return true if it is a straight road trackdir
+ */
+static inline bool IsStraightRoadTrackdir(Trackdir dir)
+{
+	return (dir & 0x06) == 0;
+}
+
 #endif /* RAIL_H */

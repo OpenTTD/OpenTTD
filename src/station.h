@@ -10,7 +10,7 @@
 #include "oldpool.h"
 #include "sprite.h"
 #include "tile.h"
-#include "road.h"
+#include "road_type.h"
 #include "newgrf_station.h"
 #include "cargopacket.h"
 #include <list>
