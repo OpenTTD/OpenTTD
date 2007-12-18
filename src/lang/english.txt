@@ -1,4 +1,4 @@
-##name English
+##name English (UK)
 ##ownname English (UK)
 ##isocode en_GB
 ##plural 0

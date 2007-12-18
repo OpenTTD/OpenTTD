@@ -1,4 +1,4 @@
-##name English_US
+##name English (US)
 ##ownname English (US)
 ##isocode en_US
 ##plural 0
