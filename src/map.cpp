@@ -8,7 +8,7 @@
 #include "functions.h"
 #include "macros.h"
 #include "map.h"
-#include "direction.h"
+#include "direction_func.h"
 #include "helpers.hpp"
 
 #if defined(_MSC_VER) && _MSC_VER >= 1400 /* VStudio 2005 is stupid! */

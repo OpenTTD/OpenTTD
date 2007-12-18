@@ -5,7 +5,7 @@
 #ifndef PATHFIND_H
 #define PATHFIND_H
 
-#include "direction.h"
+#include "direction_type.h"
 #include "openttd.h"
 
 enum {

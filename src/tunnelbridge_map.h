@@ -5,7 +5,7 @@
 #ifndef TUNNELBRIDGE_MAP_H
 #define TUNNELBRIDGE_MAP_H
 
-#include "direction.h"            /* DiagDirection */
+#include "direction_func.h"
 #include "core/bitmath_func.hpp"  /* GB, HasBit, SB */
 #include "map.h"                  /* Tile, TileIndex */
 #include "tile.h"                 /* TileType, IsTileType */

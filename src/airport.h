@@ -5,7 +5,7 @@
 #ifndef AIRPORT_H
 #define AIRPORT_H
 
-#include "direction.h"
+#include "direction_type.h"
 
 enum {MAX_TERMINALS =  10};
 enum {MAX_HELIPADS  =   4};

@@ -6,7 +6,7 @@
 #define RAIL_H
 
 #include "gfx.h"
-#include "direction.h"
+#include "direction_func.h"
 #include "tile.h"
 #include "variables.h"
 

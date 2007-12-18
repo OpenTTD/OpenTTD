@@ -5,7 +5,7 @@
 #ifndef RAIL_MAP_H
 #define RAIL_MAP_H
 
-#include "direction.h"
+#include "direction_func.h"
 #include "rail.h"
 #include "tile.h"
 

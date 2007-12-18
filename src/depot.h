@@ -5,7 +5,7 @@
 #ifndef DEPOT_H
 #define DEPOT_H
 
-#include "direction.h"
+#include "direction_type.h"
 #include "oldpool.h"
 #include "tile.h"
 #include "variables.h"

@@ -36,7 +36,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "newgrf_text.h"
-#include "direction.h"
+#include "direction_func.h"
 #include "yapf/yapf.h"
 #include "date.h"
 #include "cargotype.h"

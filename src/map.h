@@ -6,7 +6,7 @@
 #define MAP_H
 
 #include "stdafx.h"
-#include "direction.h"
+#include "direction_func.h"
 
 extern uint _map_tile_mask;
 

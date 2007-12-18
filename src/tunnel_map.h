@@ -5,7 +5,7 @@
 #ifndef TUNNEL_MAP_H
 #define TUNNEL_MAP_H
 
-#include "direction.h"
+#include "direction_func.h"
 #include "macros.h"
 #include "map.h"
 #include "rail.h"

@@ -1,38 +1,11 @@
 /* $Id$ */
 
-/** @file direction.h */
+/** @file direction_func.h Different functions related to conversions between directions. */
 
-#ifndef DIRECTION_H
-#define DIRECTION_H
+#ifndef DIRECTION_FUNC_H
+#define DIRECTION_FUNC_H
 
-#include "helpers.hpp"
-
-/**
- * Defines the 8 directions on the map.
- *
- * This enum defines 8 possible directions which are used for
- * the vehicles in the game. The directions are aligned straight
- * to the viewport, not to the map. So north points to the top of
- * your viewport and not rotated by 45 degrees left or right to get
- * a "north" used in you games.
- */
-enum Direction {
-	DIR_BEGIN = 0,          ///< Used to iterate
-	DIR_N   = 0,            ///< North
-	DIR_NE  = 1,            ///< Northeast
-	DIR_E   = 2,            ///< East
-	DIR_SE  = 3,            ///< Southeast
-	DIR_S   = 4,            ///< South
-	DIR_SW  = 5,            ///< Southwest
-	DIR_W   = 6,            ///< West
-	DIR_NW  = 7,            ///< Northwest
-	DIR_END,                ///< Used to iterate
-	INVALID_DIR = 0xFF,     ///< Flag for an invalid direction
-};
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<Direction> : MakeEnumPropsT<Direction, byte, DIR_BEGIN, DIR_END, INVALID_DIR> {};
-typedef TinyEnumT<Direction> DirectionByte; //typedefing-enumification of Direction
+#include "direction_type.h"
 
 /**
  * Return the reverse of a direction
@@ -45,32 +18,6 @@ static inline Direction ReverseDir(Direction d)
 	return (Direction)(4 ^ d);
 }
 
-
-/**
- * Enumeration for the difference between two directions.
- *
- * This enumeration is used to mark differences between
- * two directions. If you get one direction you can align
- * a second direction in 8 different ways. This enumeration
- * only contains 6 of these 8 differences, but the remaining
- * two can be calculated by adding to differences together.
- * This also means you can add two differences together and
- * get the difference you really want to get. The difference
- * of 45 degrees left + the difference of 45 degrees right results in the
- * difference of 0 degrees.
- *
- * @note To get this mentioned addition of direction you must use
- *       modulo DIR_END or use the #ChangeDirDiff(DirDiff, DirDiff) function.
- * @see ChangeDirDiff(DirDiff, DirDiff)
- */
-enum DirDiff {
-	DIRDIFF_SAME    = 0,    ///< Both directions faces to the same direction
-	DIRDIFF_45RIGHT = 1,    ///< Angle of 45 degrees right
-	DIRDIFF_90RIGHT = 2,    ///< Angle of 90 degrees right
-	DIRDIFF_REVERSE = 4,    ///< One direction is the opposit of the other one
-	DIRDIFF_90LEFT  = 6,    ///< Angle of 90 degrees left
-	DIRDIFF_45LEFT  = 7     ///< Angle of 45 degrees left
-};
 
 /**
  * Calculate the difference between to directions
@@ -117,27 +64,6 @@ static inline Direction ChangeDir(Direction d, DirDiff delta)
 
 
 /**
- * Enumeration for diagonal directions.
- *
- * This enumeration is used for the 4 direction of the tile-edges.
- */
-enum DiagDirection {
-	DIAGDIR_BEGIN = 0,      ///< Used for iterations
-	DIAGDIR_NE  = 0,        ///< Northeast, upper right on your monitor
-	DIAGDIR_SE  = 1,        ///< Southeast
-	DIAGDIR_SW  = 2,        ///< Southwest
-	DIAGDIR_NW  = 3,        ///< Northwest
-	DIAGDIR_END,            ///< Used for iterations
-	INVALID_DIAGDIR = 0xFF, ///< Flag for an invalid DiagDirection
-};
-
-DECLARE_POSTFIX_INCREMENT(DiagDirection);
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<DiagDirection> : MakeEnumPropsT<DiagDirection, byte, DIAGDIR_BEGIN, DIAGDIR_END, INVALID_DIAGDIR> {};
-typedef TinyEnumT<DiagDirection> DiagDirectionByte; //typedefing-enumification of DiagDirection
-
-/**
  * Returns the reverse direction of the given DiagDirection
  *
  * @param d The DiagDirection to get the reverse from
@@ -148,25 +74,6 @@ static inline DiagDirection ReverseDiagDir(DiagDirection d)
 	return (DiagDirection)(2 ^ d);
 }
 
-/**
- * Enumeration for the difference between to DiagDirection.
- *
- * As the DiagDirection only contains 4 possible directions the
- * difference between two of these directions can only be in 4 ways.
- * As the DirDiff enumeration the values can be added together and
- * you will get the resulting difference (use modulo DIAGDIR_END).
- *
- * @see DirDiff
- */
-enum DiagDirDiff {
-	DIAGDIRDIFF_SAME    = 0,        ///< Same directions
-	DIAGDIRDIFF_90RIGHT = 1,        ///< 90 degrees right
-	DIAGDIRDIFF_REVERSE = 2,        ///< Reverse directions
-	DIAGDIRDIFF_90LEFT  = 3         ///< 90 degrees left
-};
-
-/** Allow incrementing of DiagDirDiff variables */
-DECLARE_POSTFIX_INCREMENT(DiagDirDiff);
 
 /**
  * Applies a difference on a DiagDirection
@@ -212,21 +119,6 @@ static inline Direction DiagDirToDir(DiagDirection dir)
 {
 	return (Direction)(dir * 2 + 1);
 }
-
-
-/**
- * Enumeration for the two axis X and Y
- *
- * This enumeration represente the two axis X and Y in the game.
- * The X axis is the one which goes align the north-west edge
- * (and south-east edge). The Y axis must be so the one which goes
- * align the north-east edge (and south-west) edge.
- */
-enum Axis {
-	AXIS_X = 0,     ///< The X axis
-	AXIS_Y = 1,     ///< The y axis
-	AXIS_END        ///< Used for iterations
-};
 
 
 /**

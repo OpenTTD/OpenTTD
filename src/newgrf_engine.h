@@ -6,7 +6,7 @@
 #define NEWGRF_ENGINE_H
 
 #include "newgrf.h"
-#include "direction.h"
+#include "direction_type.h"
 #include "newgrf_cargo.h"
 
 extern int _traininfo_vehicle_pitch;

@@ -3,7 +3,7 @@
 #ifndef CMD_HELPER_H
 #define CMD_HELPER_H
 
-#include "direction.h"
+#include "direction_type.h"
 #include "macros.h"
 #include "road.h"
 
