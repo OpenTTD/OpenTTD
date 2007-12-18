@@ -10,6 +10,7 @@
 #include "viewport.h"
 #include "landscape.h"
 #include "date.h"
+#include "tile.h"
 #include "town.h"
 #include "town_map.h"
 #include "sound.h"

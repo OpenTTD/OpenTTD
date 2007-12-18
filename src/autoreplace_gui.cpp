@@ -16,6 +16,7 @@
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "group.h"
+#include "rail.h"
 
 
 static RailType _railtype_selected_in_replace_gui;

@@ -6,7 +6,7 @@
 #define ENGINE_H
 
 #include "oldpool.h"
-#include "rail.h"
+#include "rail_type.h"
 #include "sound.h"
 #include "vehicle.h"
 

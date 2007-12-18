@@ -8,7 +8,7 @@
 #include "direction_func.h"
 #include "macros.h"
 #include "map.h"
-#include "rail.h"
+#include "rail_type.h"
 #include "road_map.h"
 #include "tile.h"
 

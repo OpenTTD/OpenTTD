@@ -514,4 +514,4 @@ static inline bool IsStraightRoadTrackdir(Trackdir dir)
 	return (dir & 0x06) == 0;
 }
 
-#endif /* RAIL_H */
+#endif /* TRACK_FUNC_H */

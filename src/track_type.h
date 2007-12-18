@@ -122,4 +122,4 @@ template <> struct EnumPropsT<TrackdirBits> : MakeEnumPropsT<TrackdirBits, uint1
 typedef TinyEnumT<TrackdirBits> TrackdirBitsShort;
 DECLARE_ENUM_AS_BIT_SET(TrackdirBits);
 
-#endif /* RAIL_H */
+#endif /* TRACK_TYPE_H */

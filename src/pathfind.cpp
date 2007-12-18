@@ -12,7 +12,7 @@
 #include "map.h"
 #include "tile.h"
 #include "pathfind.h"
-#include "rail.h"
+#include "rail_type.h"
 #include "debug.h"
 #include "tunnel_map.h"
 #include "variables.h"

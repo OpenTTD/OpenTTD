@@ -48,6 +48,7 @@
 #include "table/landscape_sprite.h"
 #include "gfxinit.h"
 #include "fios.h"
+#include "rail.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
