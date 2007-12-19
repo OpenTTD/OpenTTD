@@ -140,7 +140,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	return cost.AddCost(_price.build_ship_depot);
 }
 
-static void MakeWaterOrCanalDependingOnOwner(TileIndex tile, Owner o)
+void MakeWaterOrCanalDependingOnOwner(TileIndex tile, Owner o)
 {
 	if (o == OWNER_WATER) {
 		MakeWater(tile);

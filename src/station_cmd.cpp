@@ -1908,7 +1908,7 @@ static CommandCost RemoveBuoy(Station *st, uint32 flags)
 		/* We have to set the water tile's state to the same state as before the
 		 * buoy was placed. Otherwise one could plant a buoy on a canal edge,
 		 * remove it and flood the land (if the canal edge is at level 0) */
-		MakeWaterOrCanalDependingOnSurroundings(tile, GetTileOwner(tile));
+		MakeWaterOrCanalDependingOnOwner(tile, GetTileOwner(tile));
 		MarkTileDirtyByTile(tile);
 
 		UpdateStationVirtCoordDirty(st);
