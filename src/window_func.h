@@ -22,10 +22,12 @@ void DeletePlayerWindows(PlayerID pi);
 void ChangeWindowOwner(PlayerID old_player, PlayerID new_player);
 
 void ResizeWindow(Window *w, int x, int y);
+int PositionMainToolbar(Window *w);
 
 void InitWindowSystem();
 void UnInitWindowSystem();
 void ResetWindowSystem();
+void SetupColorsAndInitialWindow();
 void InputLoop();
 void InvalidateThisWindowData(Window *w);
 void InvalidateWindowData(WindowClass cls, WindowNumber number);

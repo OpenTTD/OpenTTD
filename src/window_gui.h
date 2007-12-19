@@ -19,8 +19,6 @@
  */
 static const int MAX_NUMBER_OF_WINDOWS = 25;
 
-struct WindowEvent;
-
 typedef void WindowProc(Window *w, WindowEvent *e);
 
 /* How the resize system works:
@@ -228,20 +226,7 @@ enum WindowDefaultPosition {
 	WDP_ALIGN_TBL = -4, ///< Align the left side of the window with the left side of the main toolbar
 };
 
-struct Textbuf {
-	char *buf;                  ///< buffer in which text is saved
-	uint16 maxlength, maxwidth; ///< the maximum size of the buffer. Maxwidth specifies screensize in pixels, maxlength is in bytes
-	uint16 length, width;       ///< the current size of the string. Width specifies screensize in pixels, length is in bytes
-	bool caret;                 ///< is the caret ("_") visible or not
-	uint16 caretpos;            ///< the current position of the caret in the buffer, in bytes
-	uint16 caretxoffs;          ///< the current position of the caret in pixels
-};
-
 #define WP(ptr, str) (*(str*)(ptr)->custom)
-/* You cannot 100% reliably calculate the biggest custom struct as
- * the number of pointers in it and alignment will have a huge impact.
- * 96 is the largest window-size for 64-bit machines currently */
-#define WINDOW_CUSTOM_SIZE 96
 
 struct Scrollbar {
 	uint16 count, cap, pos;
@@ -306,20 +291,6 @@ struct Window {
 	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
 	void InvalidateWidget(byte widget_index) const;
 };
-
-struct querystr_d {
-	StringID caption;
-	Textbuf text;
-	const char *orig;
-	CharSetFilter afilter;
-	bool handled;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
-
-struct chatquerystr_d : public querystr_d {
-	int dest;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(chatquerystr_d));
 
 struct menu_d {
 	byte item_count;      ///< follow_vehicle
@@ -637,7 +608,6 @@ void InputLoop();
 void InvalidateThisWindowData(Window *w);
 void InvalidateWindowData(WindowClass cls, WindowNumber number);
 void RelocateAllWindows(int neww, int newh);
-int PositionMainToolbar(Window *w);
 
 /* misc_gui.cpp */
 void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[]);

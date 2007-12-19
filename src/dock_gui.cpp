@@ -10,6 +10,8 @@
 #include "map.h"
 #include "station.h"
 #include "gui.h"
+#include "window_gui.h"
+#include "station_gui.h"
 #include "viewport.h"
 #include "gfx.h"
 #include "sound.h"

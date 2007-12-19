@@ -31,6 +31,7 @@
 #include "tunnel_map.h"
 #include "vehicle.h"
 #include "viewport.h"
+#include "window_func.h"
 #include "window_gui.h"
 #include "player.h"
 #include "command.h"

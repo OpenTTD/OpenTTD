@@ -11,6 +11,8 @@
 #include "player.h"
 #include "gfx.h"
 #include "gui.h"
+#include "window_func.h"
+#include "textbuf_gui.h"
 #include "economy.h"
 #include "network/network.h"
 #include "variables.h"

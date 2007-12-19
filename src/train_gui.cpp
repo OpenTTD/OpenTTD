@@ -10,6 +10,7 @@
 #include "table/strings.h"
 #include "strings.h"
 #include "gui.h"
+#include "window_gui.h"
 #include "vehicle.h"
 #include "viewport.h"
 #include "command.h"

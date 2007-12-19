@@ -16,6 +16,7 @@
 #include "vehicle.h"
 #include "articulated_vehicles.h"
 #include "gfx.h"
+#include "textbuf_gui.h"
 #include "station.h"
 #include "command.h"
 #include "engine.h"

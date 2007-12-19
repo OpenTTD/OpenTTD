@@ -9,6 +9,7 @@
 #include "functions.h"
 #include "map.h"
 #include "gui.h"
+#include "window_gui.h"
 #include "viewport.h"
 #include "gfx.h"
 #include "command.h"

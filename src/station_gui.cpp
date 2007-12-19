@@ -9,6 +9,8 @@
 #include "strings.h"
 #include "table/strings.h"
 #include "gui.h"
+#include "window_gui.h"
+#include "textbuf_gui.h"
 #include "station.h"
 #include "gfx.h"
 #include "player.h"

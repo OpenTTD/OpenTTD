@@ -44,6 +44,7 @@
 #include "train.h"
 #include "helpers.hpp"
 #include "news.h"
+#include "window_func.h"
 #ifdef WITH_FREETYPE
 #include "gfx.h"
 #include "fontcache.h"

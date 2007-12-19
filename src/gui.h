@@ -5,12 +5,13 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "station.h"
-#include "window_gui.h"
 #include "string.h"
+#include "window_type.h"
+#include "rail_type.h"
+#include "road_type.h"
+#include "vehicle.h"
 
 /* main_gui.cpp */
-void SetupColorsAndInitialWindow();
 void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2);
@@ -106,15 +107,6 @@ void ShowPlayerCompany(PlayerID player);
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y);
 
-enum StationCoverageType {
-	SCT_PASSENGERS_ONLY,
-	SCT_NON_PASSENGERS_ONLY,
-	SCT_ALL
-};
-
-void DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad);
-void CheckRedrawStationCoverage(const Window *w);
-
 void ShowSmallMap();
 void ShowExtraViewPortWindow();
 void SetVScrollCount(Window *w, int num);
@@ -122,19 +114,6 @@ void SetVScroll2Count(Window *w, int num);
 void SetHScrollCount(Window *w, int num);
 
 void ShowCheatWindow();
-
-void DrawEditBox(Window *w, querystr_d *string, int wid);
-void HandleEditBox(Window *w, querystr_d *string, int wid);
-int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we);
-bool HandleCaret(Textbuf *tb);
-
-void DeleteTextBufferAll(Textbuf *tb);
-bool DeleteTextBufferChar(Textbuf *tb, int delmode);
-bool InsertTextBufferChar(Textbuf *tb, uint32 key);
-bool InsertTextBufferClipboard(Textbuf *tb);
-bool MoveTextBufferPos(Textbuf *tb, int navmode);
-void InitializeTextBuffer(Textbuf *tb, const char *buf, uint16 maxlength, uint16 maxwidth);
-void UpdateTextBufferSize(Textbuf *tb);
 
 void BuildFileList();
 void SetFiosType(const byte fiostype);
@@ -146,8 +125,6 @@ extern const TextColour _fios_colors[];
 void ShowBuildBridgeWindow(uint start, uint end, byte type);
 
 void ShowBuildIndustryWindow();
-void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter);
-void ShowQuery(StringID caption, StringID message, Window *w, void (*callback)(Window*, bool));
 void ShowMusicWindow();
 
 /* main_gui.cpp */

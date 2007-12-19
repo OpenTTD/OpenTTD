@@ -17,6 +17,7 @@
 #include "map.h"
 #include "tile.h"
 #include "gui.h"
+#include "window_gui.h"
 #include "tree_map.h"
 #include "tunnel_map.h"
 #include "gfx.h"

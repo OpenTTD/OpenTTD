@@ -13,6 +13,8 @@
 #include "gfx.h"
 #include "viewport.h"
 #include "gui.h"
+#include "window_gui.h"
+#include "textbuf_gui.h"
 #include "command.h"
 #include "player.h"
 #include "network/network.h"

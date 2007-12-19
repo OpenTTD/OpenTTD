@@ -16,6 +16,7 @@
 #include "variables.h"
 #include "genworld.h"
 #include "newgrf_storage.h"
+#include "tile.h"
 
 const char *_cmd_text = NULL;
 

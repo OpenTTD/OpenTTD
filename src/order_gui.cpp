@@ -13,6 +13,7 @@
 #include "map.h"
 #include "tile.h"
 #include "gui.h"
+#include "window_gui.h"
 #include "gfx.h"
 #include "vehicle.h"
 #include "station.h"

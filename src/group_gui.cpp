@@ -8,6 +8,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "gui.h"
+#include "window_gui.h"
+#include "textbuf_gui.h"
 #include "gfx.h"
 #include "vehicle.h"
 #include "command.h"

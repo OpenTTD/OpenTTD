@@ -12,6 +12,8 @@
 #include "date.h"
 #include "engine.h"
 #include "gui.h"
+#include "window_gui.h"
+#include "textbuf_gui.h"
 #include "string.h"
 #include "vehicle.h"
 #include "cargotype.h"

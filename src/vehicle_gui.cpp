@@ -14,6 +14,8 @@
 #include "vehicle.h"
 #include "engine.h"
 #include "gui.h"
+#include "window_gui.h"
+#include "textbuf_gui.h"
 #include "command.h"
 #include "gfx.h"
 #include "variables.h"

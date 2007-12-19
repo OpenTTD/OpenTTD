@@ -13,6 +13,7 @@
 #include "strings.h"
 #include "table/sprites.h"
 #include "gui.h"
+#include "textbuf_gui.h"
 #include "gfx.h"
 #include "vehicle.h"
 #include "viewport.h"

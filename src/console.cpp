@@ -7,6 +7,8 @@
 #include "table/strings.h"
 #include "functions.h"
 #include "gui.h"
+#include "textbuf_gui.h"
+#include "window_gui.h"
 #include "gfx.h"
 #include "player.h"
 #include "variables.h"

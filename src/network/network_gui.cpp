@@ -17,6 +17,8 @@
 #include "network_gui.h"
 #include "network_gamelist.h"
 #include "../gui.h"
+#include "../window_gui.h"
+#include "../textbuf_gui.h"
 #include "../gfx.h"
 #include "../command.h"
 #include "../variables.h"
@@ -30,6 +32,11 @@
 
 #define BGC 5
 #define BTC 15
+
+struct chatquerystr_d : public querystr_d {
+	int dest;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(chatquerystr_d));
 
 struct network_d {
 	PlayerID company;        // select company in network lobby

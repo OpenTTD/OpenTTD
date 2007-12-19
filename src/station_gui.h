@@ -52,4 +52,13 @@ enum StationViewWidgets {
 void RebuildStationLists();
 void ResortStationLists();
 
+enum StationCoverageType {
+	SCT_PASSENGERS_ONLY,
+	SCT_NON_PASSENGERS_ONLY,
+	SCT_ALL
+};
+
+void DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad);
+void CheckRedrawStationCoverage(const Window *w);
+
 #endif /* STATION_GUI_H */

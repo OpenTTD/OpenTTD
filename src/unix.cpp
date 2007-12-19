@@ -8,7 +8,7 @@
 #include "string.h"
 #include "table/strings.h"
 #include "variables.h"
-#include "gui.h"
+#include "textbuf_gui.h"
 
 #include <dirent.h>
 #include <unistd.h>
