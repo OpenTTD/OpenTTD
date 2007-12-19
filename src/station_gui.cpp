@@ -25,6 +25,7 @@
 #include "helpers.hpp"
 #include "cargotype.h"
 #include "station_gui.h"
+#include "station.h"
 
 typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
 
@@ -233,7 +234,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 	DEBUG(misc, 3, "Building station list for player %d", owner);
 
 	FOR_ALL_STATIONS(st) {
-		if (st->owner == owner) {
+		if (st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy() && HasStationInUse(st->index, owner))) {
 			if (facilities & st->facilities) { //only stations with selected facilities
 				int num_waiting_cargo = 0;
 				for (CargoID j = 0; j < NUM_CARGO; j++) {
@@ -380,7 +381,10 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				int x;
 
 				assert(st->xy != 0);
-				assert(st->owner == owner);
+
+ 				/* Do not do the complex check HasStationInUse here, it may be even false
+				 * when the order had been removed and the station list hasn't been removed yet */
+				assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
 
 				SetDParam(0, st->index);
 				SetDParam(1, st->facilities);
@@ -410,7 +414,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					if (id_v >= sl->list_length) return; // click out of list bound
 
 					const Station *st = sl->sort_list[id_v];
-					assert(st->owner == owner);
+					/* do not check HasStationInUse - it is slow and may be invalid */
+					assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
 					ScrollMainWindowToTile(st->xy);
 					break;
 				}

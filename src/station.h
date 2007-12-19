@@ -294,6 +294,8 @@ uint GetNumRoadStops(const Station* st, RoadStop::Type type);
 RoadStop * AllocateRoadStop();
 void ClearSlot(Vehicle *v);
 
+bool HasStationInUse(StationID station, PlayerID player);
+
 void DeleteOilRig(TileIndex t);
 
 #endif /* STATION_H */

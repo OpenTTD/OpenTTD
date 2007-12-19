@@ -1868,15 +1868,20 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return CommandCost(_price.build_dock);
 }
 
-/* Checks if any ship is servicing the buoy specified. Returns yes or no */
-static bool CheckShipsOnBuoy(Station *st)
+/**
+ * Tests whether the player's vehicles have this station in orders
+ * When player == INVALID_PLAYER, then check all vehicles
+ * @param station station ID
+ * @param player player ID, INVALID_PLAYER to disable the check
+ */
+bool HasStationInUse(StationID station, PlayerID player)
 {
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_SHIP) {
+		if (player == INVALID_PLAYER || v->owner == player) {
 			const Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->type == OT_GOTO_STATION && order->dest == st->index) {
+				if (order->type == OT_GOTO_STATION && order->dest == station) {
 					return true;
 				}
 			}
@@ -1892,7 +1897,7 @@ static CommandCost RemoveBuoy(Station *st, uint32 flags)
 
 	TileIndex tile = st->dock_tile;
 
-	if (CheckShipsOnBuoy(st))   return_cmd_error(STR_BUOY_IS_IN_USE);
+	if (HasStationInUse(st->index, INVALID_PLAYER)) return_cmd_error(STR_BUOY_IS_IN_USE);
 	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
