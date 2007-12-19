@@ -7,6 +7,7 @@
 
 #include "stdafx.h"
 #include "direction_func.h"
+#include "tile_type.h"
 
 extern uint _map_tile_mask;
 
@@ -134,11 +135,6 @@ uint ScaleByMapSize(uint);
  * Scale relative to the circumference of the map.
  */
 uint ScaleByMapSize1D(uint);
-
-/**
- * The index/ID of a Tile.
- */
-typedef uint32 TileIndex;
 
 /**
  * An offset value between to tiles.

@@ -14,7 +14,6 @@
 #include "pathfind.h"
 #include "station.h"
 #include "station_map.h"
-#include "tile.h"
 #include "depot.h"
 #include "tunnel_map.h"
 #include "network/network.h"

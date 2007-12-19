@@ -9,8 +9,6 @@
 #include "driver.h"
 #include "saveload.h"
 #include "map.h"
-#include "tile.h"
-#include "void_map.h"
 #include "helpers.hpp"
 
 #include "openttd.h"
@@ -79,6 +77,7 @@
 #include "unmovable_map.h"
 #include "tree_map.h"
 #include "tunnelbridge_map.h"
+#include "void_map.h"
 
 #include <stdarg.h>
 

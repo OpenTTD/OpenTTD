@@ -10,7 +10,6 @@
 #include "functions.h"
 #include "map.h"
 #include "player.h"
-#include "tile.h"
 #include "viewport.h"
 #include "command.h"
 #include "tunnel_map.h"

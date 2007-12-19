@@ -16,7 +16,6 @@
 #include "functions.h"
 #include "map.h"
 #include "landscape.h"
-#include "tile.h"
 #include "tunnel_map.h"
 #include "unmovable_map.h"
 #include "vehicle.h"

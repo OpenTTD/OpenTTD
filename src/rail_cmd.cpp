@@ -15,7 +15,6 @@
 #include "table/strings.h"
 #include "map.h"
 #include "landscape.h"
-#include "tile.h"
 #include "town_map.h"
 #include "tunnel_map.h"
 #include "vehicle.h"

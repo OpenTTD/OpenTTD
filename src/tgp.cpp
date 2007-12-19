@@ -10,7 +10,6 @@
 #include "map.h"
 #include "table/strings.h"
 #include "clear_map.h"
-#include "tile.h"
 #include "variables.h"
 #include "void_map.h"
 #include "tgp.h"

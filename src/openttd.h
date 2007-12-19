@@ -26,10 +26,10 @@ struct Pair {
 };
 
 #include "map.h"
-#include "slope.h"
+#include "slope_type.h"
+#include "vehicle_type.h"
 
 // Forward declarations of structs.
-struct Vehicle;
 struct Depot;
 struct Waypoint;
 struct Station;
@@ -55,7 +55,6 @@ static const StringID INVALID_STRING_ID = 0xFFFF;
 typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
 
 /* IDs used in Pools */
-typedef uint16 VehicleID;
 typedef uint16 StationID;
 static const StationID INVALID_STATION = 0xFFFF;
 typedef uint16 RoadStopID;

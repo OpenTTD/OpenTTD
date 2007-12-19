@@ -10,7 +10,6 @@
 #include "table/strings.h"
 #include "functions.h"
 #include "player.h"
-#include "tile.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "viewport.h"

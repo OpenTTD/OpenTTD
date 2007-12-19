@@ -17,7 +17,6 @@
 #include "functions.h"
 #include "map.h"
 #include "landscape.h"
-#include "tile.h"
 #include "town_map.h"
 #include "vehicle.h"
 #include "viewport.h"

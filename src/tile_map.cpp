@@ -3,7 +3,8 @@
 /** @file tile.cpp */
 
 #include "stdafx.h"
-#include "tile.h"
+#include "openttd.h"
+#include "tile_map.h"
 
 Slope GetTileSlope(TileIndex tile, uint *h)
 {

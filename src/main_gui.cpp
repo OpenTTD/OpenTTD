@@ -13,7 +13,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
-#include "tile.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "window_func.h"

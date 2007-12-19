@@ -11,7 +11,6 @@
 #include "player.h"
 #include "spritecache.h"
 #include "table/sprites.h"
-#include "tile.h"
 #include <stdarg.h>
 #include "viewport.h"
 #include "command.h"

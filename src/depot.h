@@ -7,7 +7,6 @@
 
 #include "direction_type.h"
 #include "oldpool.h"
-#include "tile.h"
 #include "variables.h"
 #include "road_map.h"
 #include "rail_map.h"

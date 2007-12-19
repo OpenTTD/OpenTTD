@@ -7,7 +7,7 @@
 
 #include "industry.h"
 #include "macros.h"
-#include "tile.h"
+#include "tile_map.h"
 
 
 

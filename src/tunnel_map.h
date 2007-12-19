@@ -10,6 +10,7 @@
 #include "map.h"
 #include "rail_type.h"
 #include "road_type.h"
+#include "tile_map.h"
 
 
 /**

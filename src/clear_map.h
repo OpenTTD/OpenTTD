@@ -6,7 +6,6 @@
 #define CLEAR_MAP_H
 
 #include "macros.h"
-#include "tile.h"
 #include "bridge_map.h"
 
 /**

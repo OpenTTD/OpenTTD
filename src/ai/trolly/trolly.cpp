@@ -25,7 +25,6 @@
 #include "../../station_map.h"
 #include "table/strings.h"
 #include "../../map.h"
-#include "../../tile.h"
 #include "../../command.h"
 #include "trolly.h"
 #include "../../town.h"

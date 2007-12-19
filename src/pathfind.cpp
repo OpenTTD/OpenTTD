@@ -10,7 +10,6 @@
 #include "functions.h"
 #include "landscape.h"
 #include "map.h"
-#include "tile.h"
 #include "pathfind.h"
 #include "rail_type.h"
 #include "debug.h"

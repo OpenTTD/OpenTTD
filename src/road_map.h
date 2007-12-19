@@ -9,7 +9,7 @@
 #include "track_func.h"
 #include "rail_type.h"
 #include "road_func.h"
-#include "tile.h"
+#include "tile_map.h"
 
 
 enum RoadTileType {

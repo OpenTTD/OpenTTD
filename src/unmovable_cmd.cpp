@@ -9,7 +9,6 @@
 #include "functions.h"
 #include "landscape.h"
 #include "map.h"
-#include "tile.h"
 #include "command.h"
 #include "viewport.h"
 #include "player.h"

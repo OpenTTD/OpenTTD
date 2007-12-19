@@ -11,7 +11,6 @@
 #include "strings.h"
 #include "functions.h"
 #include "map.h"
-#include "tile.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "gfx.h"

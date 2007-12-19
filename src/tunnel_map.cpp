@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "tile.h"
 #include "tunnel_map.h"
 #include "tunnelbridge_map.h"
 

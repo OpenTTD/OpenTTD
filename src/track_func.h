@@ -7,6 +7,7 @@
 
 #include "track_type.h"
 #include "direction_type.h"
+#include "slope_func.h"
 
 /**
  * Convert an Axis to the corresponding Track

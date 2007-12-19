@@ -728,7 +728,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\tile.cpp"
+				RelativePath=".\..\src\tile_map.cpp"
 				>
 			</File>
 			<File

@@ -8,7 +8,7 @@
 #include "direction_func.h"
 #include "track_func.h"
 #include "rail.h"
-#include "tile.h"
+#include "tile_map.h"
 
 
 /** Different types of Rail-related tiles */

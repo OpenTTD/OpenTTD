@@ -8,7 +8,7 @@
 #include "direction_func.h"
 #include "core/bitmath_func.hpp"  /* GB, HasBit, SB */
 #include "map.h"                  /* Tile, TileIndex */
-#include "tile.h"                 /* TileType, IsTileType */
+#include "tile_map.h"             /* TileType, IsTileType */
 #include "openttd.h"              /* TransportType */
 
 

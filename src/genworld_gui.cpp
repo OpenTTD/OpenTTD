@@ -12,7 +12,6 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "gfx.h"
-#include "tile.h"
 #include "strings.h"
 #include "gfxinit.h"
 #include "player.h"

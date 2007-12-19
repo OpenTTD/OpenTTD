@@ -8,7 +8,6 @@
 #include "depot.h"
 #include "functions.h"
 #include "landscape.h"
-#include "tile.h"
 #include "map.h"
 #include "table/strings.h"
 #include "saveload.h"

@@ -11,7 +11,6 @@
 #include "../../road_map.h"
 #include "../../roadveh.h"
 #include "../../station_map.h"
-#include "../../tile.h"
 #include "../../player.h"
 #include "../../tunnel_map.h"
 #include "../../vehicle.h"

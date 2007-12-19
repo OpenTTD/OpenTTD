@@ -9,7 +9,7 @@
 #include "aystar.h"
 #include "station.h"
 #include "vehicle.h"
-#include "tile.h"
+#include "tile_type.h"
 
 /* mowing grass */
 enum {

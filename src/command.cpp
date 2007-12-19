@@ -9,6 +9,7 @@
 #include "functions.h"
 #include "landscape.h"
 #include "map.h"
+#include "tile_map.h"
 #include "gui.h"
 #include "command.h"
 #include "player.h"
@@ -16,7 +17,6 @@
 #include "variables.h"
 #include "genworld.h"
 #include "newgrf_storage.h"
-#include "tile.h"
 
 const char *_cmd_text = NULL;
 

@@ -13,7 +13,6 @@
 #include "table/strings.h"
 #include "strings.h"
 #include "map.h"
-#include "tile.h"
 #include "tunnel_map.h"
 #include "vehicle.h"
 #include "timetable.h"

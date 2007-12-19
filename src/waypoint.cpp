@@ -15,7 +15,6 @@
 #include "bridge_map.h"
 #include "saveload.h"
 #include "station.h"
-#include "tile.h"
 #include "town.h"
 #include "waypoint.h"
 #include "variables.h"

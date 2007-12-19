@@ -12,6 +12,7 @@
 #include "industry.h"
 #include "newgrf.h"
 #include "newgrf_commons.h"
+#include "tile_map.h"
 
 /** Constructor of generic class
  * @param offset end of original data for this entity. i.e: houses = 110

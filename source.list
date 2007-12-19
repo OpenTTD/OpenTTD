@@ -75,7 +75,7 @@ strings.cpp
 texteff.cpp
 tgp.cpp
 thread.cpp
-tile.cpp
+tile_map.cpp
 #if WIN32
 #else
 	#if WINCE

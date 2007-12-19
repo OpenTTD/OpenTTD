@@ -8,7 +8,6 @@
 #include "gfx.h"
 #include "rail_type.h"
 #include "track_type.h"
-#include "tile.h"
 #include "variables.h"
 
 /** This struct contains all the info that is needed to draw and construct tracks.
@@ -227,8 +226,6 @@ void DrawCatenary(const TileInfo *ti);
 void DrawCatenaryOnTunnel(const TileInfo *ti);
 
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);
-
-void FloodHalftile(TileIndex t);
 
 int32 SettingsDisableElrail(int32 p1); ///< _patches.disable_elrail callback
 

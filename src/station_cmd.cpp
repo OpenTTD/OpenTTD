@@ -15,7 +15,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
-#include "tile.h"
 #include "station.h"
 #include "gfx.h"
 #include "viewport.h"

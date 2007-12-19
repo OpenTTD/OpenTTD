@@ -5,6 +5,8 @@
 #ifndef VOID_MAP_H
 #define VOID_MAP_H
 
+#include "tile_map.h"
+
 /**
  * Make a nice void tile ;)
  * @param t the tile to make void

@@ -5,6 +5,7 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
+#include "vehicle_type.h"
 #include "oldpool.h"
 #include "order.h"
 #include "track_type.h"
@@ -68,20 +69,6 @@ enum RoadVehicleStates {
 	RVSB_TRACKDIR_MASK           = 0x0F,                      ///< The mask used to extract track dirs
 	RVSB_ROAD_STOP_TRACKDIR_MASK = 0x09                       ///< Only bits 0 and 3 are used to encode the trackdir for road stops
 };
-
-enum VehicleType {
-	VEH_TRAIN,
-	VEH_ROAD,
-	VEH_SHIP,
-	VEH_AIRCRAFT,
-	VEH_SPECIAL,
-	VEH_DISASTER,
-	VEH_END,
-	VEH_INVALID = 0xFF,
-};
-DECLARE_POSTFIX_INCREMENT(VehicleType);
-template <> struct EnumPropsT<VehicleType> : MakeEnumPropsT<VehicleType, byte, VEH_TRAIN, VEH_END, VEH_INVALID> {};
-typedef TinyEnumT<VehicleType> VehicleTypeByte;
 
 enum VehStatus {
 	VS_HIDDEN          = 0x01,
@@ -218,7 +205,6 @@ struct VehicleShip {
 	TrackBitsByte state;
 };
 
-struct Vehicle;
 DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 
 /* Some declarations of functions, so we can make them friendly */

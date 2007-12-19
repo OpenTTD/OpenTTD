@@ -8,6 +8,7 @@
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"
+#include "tile_map.h"
 #include "station.h"
 #include "gui.h"
 #include "window_gui.h"

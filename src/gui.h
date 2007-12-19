@@ -9,7 +9,7 @@
 #include "window_type.h"
 #include "rail_type.h"
 #include "road_type.h"
-#include "vehicle.h"
+#include "vehicle_type.h"
 
 /* main_gui.cpp */
 void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);

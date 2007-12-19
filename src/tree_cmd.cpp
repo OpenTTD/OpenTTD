@@ -12,7 +12,6 @@
 #include "functions.h"
 #include "map.h"
 #include "landscape.h"
-#include "tile.h"
 #include "tree_map.h"
 #include "viewport.h"
 #include "command.h"

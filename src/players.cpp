@@ -29,6 +29,7 @@
 #include "group.h"
 #include "settings.h"
 #include "window_func.h"
+#include "tile_map.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a

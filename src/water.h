@@ -10,5 +10,6 @@ void DrawShipDepotSprite(int x, int y, int image);
 void DrawCanalWater(TileIndex tile);
 void MakeWaterOrCanalDependingOnOwner(TileIndex tile, Owner o);
 void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o);
+void FloodHalftile(TileIndex t);
 
 #endif /* WATER_H */
