@@ -9,7 +9,6 @@
 #include "roadveh.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "window.h"
 #include "gui.h"
 #include "strings.h"
 #include "vehicle.h"

@@ -13,7 +13,6 @@
 #include "engine.h"
 #include "gui.h"
 #include "string.h"
-#include "window.h"
 #include "vehicle.h"
 #include "cargotype.h"
 #include "depot.h"

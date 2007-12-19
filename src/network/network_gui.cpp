@@ -16,7 +16,6 @@
 #include "network_client.h"
 #include "network_gui.h"
 #include "network_gamelist.h"
-#include "../window.h"
 #include "../gui.h"
 #include "../gfx.h"
 #include "../command.h"

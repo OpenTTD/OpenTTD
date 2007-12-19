@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "string.h"
 #include "aircraft.h"
 #include "bridge_map.h"
 #include "cmd_helper.h"
@@ -17,7 +18,6 @@
 #include "tile.h"
 #include "station.h"
 #include "gfx.h"
-#include "window.h"
 #include "viewport.h"
 #include "command.h"
 #include "town.h"

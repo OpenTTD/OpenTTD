@@ -12,7 +12,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "vehicle.h"
-#include "window.h"
 #include "engine.h"
 #include "gui.h"
 #include "command.h"

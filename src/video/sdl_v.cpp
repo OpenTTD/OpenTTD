@@ -10,8 +10,6 @@
 #include "../gfx.h"
 #include "../macros.h"
 #include "../sdl.h"
-#include "../window.h"
-#include "../network/network.h"
 #include "../variables.h"
 #include "../blitter/factory.hpp"
 #include "sdl_v.h"

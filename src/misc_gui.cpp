@@ -17,7 +17,6 @@
 #include "strings.h"
 #include "table/tree_land.h"
 #include "map.h"
-#include "window.h"
 #include "gui.h"
 #include "viewport.h"
 #include "gfx.h"

@@ -15,7 +15,6 @@
 #include "player.h"
 #include "station.h"
 #include "vehicle.h"
-#include "window.h"
 #include "gfx.h"
 #include "command.h"
 #include "saveload.h"

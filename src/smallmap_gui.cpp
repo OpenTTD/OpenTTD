@@ -19,7 +19,6 @@
 #include "gui.h"
 #include "tree_map.h"
 #include "tunnel_map.h"
-#include "window.h"
 #include "gfx.h"
 #include "viewport.h"
 #include "player.h"

@@ -10,12 +10,12 @@
 #include "mixer.h"
 #include "sound.h"
 #include "vehicle.h"
-#include "window.h"
 #include "viewport.h"
 #include "fileio.h"
 #include "newgrf_sound.h"
 #include "helpers.hpp"
 #include "fios.h"
+#include "window_gui.h"
 
 static uint _file_count;
 static FileEntry *_files;

@@ -5,6 +5,8 @@
 #ifndef NEWS_H
 #define NEWS_H
 
+#include "window_type.h"
+
 struct NewsItem {
 	StringID string_id; ///< Message text (sometimes also used for storing other info)
 	uint16 duration;    ///< Remaining time for showing this news message

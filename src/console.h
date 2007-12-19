@@ -5,6 +5,8 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
+#include "window_type.h"
+
 /* maximum length of a typed in command */
 #define ICON_CMDLN_SIZE 255
 /* maximum length of a totally expanded command */

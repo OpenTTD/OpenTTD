@@ -5,10 +5,8 @@
 #include "../functions.h"
 #include "../gfx.h"
 #include "../macros.h"
-#include "../network/network.h"
 #include "../variables.h"
 #include "../win32.h"
-#include "../window.h"
 #include "../blitter/factory.hpp"
 #include "win32_v.h"
 #include <windows.h>

@@ -7,7 +7,6 @@
 #include "functions.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "window.h"
 #include "gui.h"
 #include "gfx.h"
 #include "vehicle.h"

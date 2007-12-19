@@ -10,6 +10,7 @@
 #include "track_type.h"
 #include "rail_type.h"
 #include "road_type.h"
+#include "window_type.h"
 #include "cargopacket.h"
 #include "texteff.hpp"
 

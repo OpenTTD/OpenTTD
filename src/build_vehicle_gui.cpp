@@ -12,7 +12,6 @@
 #include "functions.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "window.h"
 #include "gui.h"
 #include "vehicle.h"
 #include "articulated_vehicles.h"

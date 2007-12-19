@@ -7,7 +7,6 @@
 #include "table/strings.h"
 #include "strings.h"
 #include "functions.h"
-#include "window.h"
 #include "station.h"
 #include "industry.h"
 #include "town.h"
@@ -17,6 +16,7 @@
 #include "variables.h"
 #include "date.h"
 #include "cargotype.h"
+#include "window_gui.h"
 
 static void HandleSubsidyClick(int y)
 {

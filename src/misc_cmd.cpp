@@ -10,7 +10,6 @@
 #include "command.h"
 #include "player.h"
 #include "gfx.h"
-#include "window.h"
 #include "gui.h"
 #include "economy.h"
 #include "network/network.h"

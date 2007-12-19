@@ -10,7 +10,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "town.h"
-#include "window.h"
 #include "gfx.h"
 #include "viewport.h"
 #include "gui.h"

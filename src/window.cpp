@@ -9,7 +9,6 @@
 #include "functions.h"
 #include "map.h"
 #include "player.h"
-#include "window.h"
 #include "gfx.h"
 #include "viewport.h"
 #include "console.h"
@@ -18,6 +17,7 @@
 #include "genworld.h"
 #include "helpers.hpp"
 #include "blitter/factory.hpp"
+#include "window_gui.h"
 
 /* delta between mouse cursor and upper left corner of dragged window */
 static Point _drag_delta;

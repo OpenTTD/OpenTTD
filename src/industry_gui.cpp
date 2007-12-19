@@ -11,7 +11,6 @@
 #include "table/sprites.h"
 #include "map.h"
 #include "gui.h"
-#include "window.h"
 #include "gfx.h"
 #include "command.h"
 #include "viewport.h"

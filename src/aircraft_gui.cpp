@@ -11,7 +11,6 @@
 #include "table/strings.h"
 #include "strings.h"
 #include "map.h"
-#include "window.h"
 #include "gui.h"
 #include "vehicle.h"
 #include "gfx.h"

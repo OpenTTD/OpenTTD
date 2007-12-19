@@ -5,10 +5,10 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
-#include "window.h"
 #include "string.h"
 #include "table/strings.h"
 #include "variables.h"
+#include "gui.h"
 
 #include <dirent.h>
 #include <unistd.h>

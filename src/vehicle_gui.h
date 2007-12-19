@@ -5,7 +5,7 @@
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 
-#include "window.h"
+#include "window_gui.h"
 #include "vehicle.h"
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);

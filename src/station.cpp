@@ -14,7 +14,6 @@
 #include "tile.h"
 #include "station.h"
 #include "gfx.h"
-#include "window.h"
 #include "viewport.h"
 #include "command.h"
 #include "town.h"

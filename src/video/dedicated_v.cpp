@@ -9,7 +9,6 @@
 #include "../functions.h"
 #include "../gfx.h"
 #include "../network/network.h"
-#include "../window.h"
 #include "../console.h"
 #include "../variables.h"
 #include "../genworld.h"

@@ -6,7 +6,7 @@
 #define GUI_H
 
 #include "station.h"
-#include "window.h"
+#include "window_gui.h"
 #include "string.h"
 
 /* main_gui.cpp */

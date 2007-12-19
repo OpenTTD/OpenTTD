@@ -1,9 +1,9 @@
 /* $Id$ */
 
-/** @file window.h regroups declarations for all windowing system, as well as a few helper functions */
+/** @file window_gui.h Functions, definitions and such used only by the GUI. */
 
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef WINDOW_GUI_H
+#define WINDOW_GUI_H
 
 #include "macros.h"
 #include "string.h"
@@ -827,4 +827,4 @@ inline bool Window::IsWidgetLowered(byte widget_index) const
 	return HasBit(this->widget[widget_index].display_flags, WIDG_LOWERED);
 }
 
-#endif /* WINDOW_H */
+#endif /* WINDOW_GUI_H */

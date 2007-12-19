@@ -8,9 +8,9 @@
 #include "player.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "window.h"
 #include "gfx.h"
 #include "viewport.h"
+#include "window_gui.h"
 
 static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
 {

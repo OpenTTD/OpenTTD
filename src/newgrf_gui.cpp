@@ -8,7 +8,6 @@
 #include "variables.h"
 #include "gfx.h"
 #include "gui.h"
-#include "window.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "newgrf.h"

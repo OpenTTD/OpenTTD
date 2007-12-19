@@ -10,7 +10,6 @@
 #include "strings.h" // XXX GetCurrentCurrencyRate()
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "window.h"
 #include "gui.h"
 #include "gfx.h"
 #include "command.h"

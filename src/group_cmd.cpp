@@ -16,7 +16,6 @@
 #include "train.h"
 #include "aircraft.h"
 #include "string.h"
-#include "window.h"
 #include "vehicle_gui.h"
 #include "strings.h"
 #include "misc/autoptr.hpp"

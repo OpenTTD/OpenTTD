@@ -15,7 +15,6 @@
 #include "table/strings.h"
 #include "strings.h"
 #include "functions.h"
-#include "window.h"
 #include "map.h"
 #include "landscape.h"
 #include "tile.h"
@@ -36,6 +35,7 @@
 #include "autoslope.h"
 #include "transparency.h"
 #include "tunnelbridge_map.h"
+#include "window_func.h"
 
 
 #define M(x) (1 << (x))

@@ -11,7 +11,6 @@
 #include "saveload.h"
 #include "string.h"
 #include "gfx.h"
-#include "window.h"
 #include "fileio.h"
 #include <windows.h>
 #include <winnt.h>

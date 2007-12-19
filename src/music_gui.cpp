@@ -9,13 +9,13 @@
 #include "strings.h"
 #include "functions.h"
 #include "fileio.h"
-#include "window.h"
 #include "gfx.h"
 #include "sound.h"
 #include "macros.h"
 #include "variables.h"
 #include "music.h"
 #include "music/music_driver.hpp"
+#include "window_gui.h"
 
 static byte _music_wnd_cursong;
 static bool _song_is_active;

@@ -14,7 +14,6 @@
 #include "landscape.h"
 #include "map.h"
 #include "viewport.h"
-#include "window.h"
 #include "vehicle.h"
 #include "station.h"
 #include "gfx.h"

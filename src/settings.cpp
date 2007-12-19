@@ -1085,7 +1085,6 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 #include "table/strings.h"
 
 /* Begin - Callback Functions for the various settings */
-#include "window.h"
 #include "gui.h"
 #include "town.h"
 #include "gfx.h"

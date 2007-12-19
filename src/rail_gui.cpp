@@ -12,7 +12,6 @@
 #include "date.h"
 #include "map.h"
 #include "tile.h"
-#include "window.h"
 #include "gui.h"
 #include "viewport.h"
 #include "gfx.h"

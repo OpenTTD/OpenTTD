@@ -29,7 +29,6 @@
 #include "sprite.h"
 #include "depot.h"
 #include "waypoint.h"
-#include "window.h"
 #include "rail.h"
 #include "railtypes.h" // include table for railtypes
 #include "newgrf.h"
@@ -43,6 +42,7 @@
 #include "transparency.h"
 #include "water.h"
 #include "tunnelbridge_map.h"
+#include "window_func.h"
 
 
 const byte _track_sloped_sprites[14] = {
