@@ -212,6 +212,7 @@ static void CreateVehicleGroupWindow(Window *w)
 	gl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
 
 	gv->group_sel = ALL_GROUP;
+	gv->vehicle_sel = INVALID_VEHICLE;
 
 	switch (gv->vehicle_type) {
 		case VEH_TRAIN:
