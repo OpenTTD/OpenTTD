@@ -16,7 +16,7 @@
 #include "vehicle.h"
 #include "station.h"
 #include "town.h"
-#include "command.h"
+#include "command_func.h"
 #include "viewport.h"
 #include "depot.h"
 #include "waypoint.h"

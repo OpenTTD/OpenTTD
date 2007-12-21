@@ -11,10 +11,6 @@
 
 #include "gfx.h"
 
-/* Prices and also the fractional part. */
-VARDEF Prices _price;
-VARDEF uint16 _price_frac[NUM_PRICES];
-
 VARDEF Money  _cargo_payment_rates[NUM_CARGO];
 VARDEF uint16 _cargo_payment_rates_frac[NUM_CARGO];
 

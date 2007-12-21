@@ -15,7 +15,7 @@
 #include "network_gamelist.h"
 #include "network_gui.h"
 #include "../saveload.h"
-#include "../command.h"
+#include "../command_func.h"
 #include "../console.h"
 #include "../variables.h"
 #include "../ai/ai.h"

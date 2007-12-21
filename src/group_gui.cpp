@@ -12,7 +12,7 @@
 #include "textbuf_gui.h"
 #include "gfx.h"
 #include "vehicle.h"
-#include "command.h"
+#include "command_func.h"
 #include "engine.h"
 #include "vehicle_gui.h"
 #include "depot.h"

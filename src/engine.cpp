@@ -10,7 +10,7 @@
 #include "engine.h"
 #include "gfx.h"
 #include "player.h"
-#include "command.h"
+#include "command_func.h"
 #include "vehicle.h"
 #include "news.h"
 #include "saveload.h"

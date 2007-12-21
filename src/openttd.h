@@ -67,9 +67,6 @@ typedef uint16 GroupID;
 typedef uint16 EngineRenewID;
 typedef uint16 DestinationID;
 
-#include "core/overflowsafe_type.hpp"
-typedef OverflowSafeInt64 Money;
-
 /* DestinationID must be at least as large as every these below, because it can
  * be any of them
  */
@@ -211,60 +208,6 @@ enum TownLayout {
 template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_NO_ROADS, NUM_TLS, NUM_TLS> {};
 typedef TinyEnumT<TownLayout> TownLayoutByte; //typedefing-enumification of TownLayout
 
-enum {
-	NUM_PRICES = 49,
-};
-
-struct Prices {
-	Money station_value;
-	Money build_rail;
-	Money build_road;
-	Money build_signals;
-	Money build_bridge;
-	Money build_train_depot;
-	Money build_road_depot;
-	Money build_ship_depot;
-	Money build_tunnel;
-	Money train_station_track;
-	Money train_station_length;
-	Money build_airport;
-	Money build_bus_station;
-	Money build_truck_station;
-	Money build_dock;
-	Money build_railvehicle;
-	Money build_railwagon;
-	Money aircraft_base;
-	Money roadveh_base;
-	Money ship_base;
-	Money build_trees;
-	Money terraform;
-	Money clear_grass;
-	Money clear_roughland;
-	Money clear_rocks;
-	Money clear_fields;
-	Money remove_trees;
-	Money remove_rail;
-	Money remove_signals;
-	Money clear_bridge;
-	Money remove_train_depot;
-	Money remove_road_depot;
-	Money remove_ship_depot;
-	Money clear_tunnel;
-	Money clear_water;
-	Money remove_rail_station;
-	Money remove_airport;
-	Money remove_bus_station;
-	Money remove_truck_station;
-	Money remove_dock;
-	Money remove_house;
-	Money remove_road;
-	Money running_rail[3];
-	Money aircraft_running;
-	Money roadveh_running;
-	Money ship_running;
-	Money build_industry;
-};
-
 #define GAME_DIFFICULTY_NUM 18
 
 /** Specific type for Game Difficulty to ease changing the type */
@@ -352,79 +295,8 @@ struct ViewportSign {
 	byte width_1, width_2;
 };
 
-/**
- * Common return value for all commands. Wraps the cost and
- * a possible error message/state together.
- */
-class CommandCost {
-	Money cost;       ///< The cost of this action
-	StringID message; ///< Warning message for when success is unset
-	bool success;     ///< Whether the comment went fine up to this moment
 
-public:
-	/**
-	 * Creates a command cost return with no cost and no error
-	 */
-	CommandCost() : cost(0), message(INVALID_STRING_ID), success(true) {}
-
-	/**
-	 * Creates a command return value the is failed with the given message
-	 */
-	CommandCost(StringID msg) : cost(0), message(msg), success(false) {}
-
-	/**
-	 * Creates a command return value with the given start cost
-	 * @param cst the initial cost of this command
-	 */
-	CommandCost(Money cst) : cost(cst), message(INVALID_STRING_ID), success(true) {}
-
-	/**
-	 * Adds the cost of the given command return value to this cost.
-	 * Also takes a possible error message when it is set.
-	 * @param ret the command to add the cost of.
-	 * @return this class.
-	 */
-	CommandCost AddCost(CommandCost ret);
-
-	/**
-	 * Adds the given cost to the cost of the command.
-	 * @param cost the cost to add
-	 * @return this class.
-	 */
-	CommandCost AddCost(Money cost);
-
-	/**
-	 * Multiplies the cost of the command by the given factor.
-	 * @param cost factor to multiply the costs with
-	 * @return this class
-	 */
-	CommandCost MultiplyCost(int factor);
-
-	/**
-	 * The costs as made up to this moment
-	 * @return the costs
-	 */
-	Money GetCost() const;
-
-	/**
-	 * Sets the global error message *if* this class has one.
-	 */
-	void SetGlobalErrorMessage() const;
-
-	/**
-	 * Did this command succeed?
-	 * @return true if and only if it succeeded
-	 */
-	bool Succeeded() const;
-
-	/**
-	 * Did this command fail?
-	 * @return true if and only if it failed
-	 */
-	bool Failed() const;
-};
-
-
+#include "command_type.h"
 typedef void DrawTileProc(TileInfo *ti);
 typedef uint GetSlopeZProc(TileIndex tile, uint x, uint y);
 typedef CommandCost ClearTileProc(TileIndex tile, byte flags);
@@ -493,24 +365,6 @@ struct TileTypeProcs {
 	VehicleEnterTileProc *vehicle_enter_tile_proc;
 	GetFoundationProc *get_foundation_proc;
 	TerraformTileProc *terraform_tile_proc;
-};
-
-
-
-enum ExpensesType {
-	EXPENSES_CONSTRUCTION =  0,
-	EXPENSES_NEW_VEHICLES =  1,
-	EXPENSES_TRAIN_RUN    =  2,
-	EXPENSES_ROADVEH_RUN  =  3,
-	EXPENSES_AIRCRAFT_RUN =  4,
-	EXPENSES_SHIP_RUN     =  5,
-	EXPENSES_PROPERTY     =  6,
-	EXPENSES_TRAIN_INC    =  7,
-	EXPENSES_ROADVEH_INC  =  8,
-	EXPENSES_AIRCRAFT_INC =  9,
-	EXPENSES_SHIP_INC     = 10,
-	EXPENSES_LOAN_INT     = 11,
-	EXPENSES_OTHER        = 12,
 };
 
 typedef void PlaceProc(TileIndex tile);

@@ -16,7 +16,7 @@
 #include "viewport.h"
 #include "gfx.h"
 #include "sound.h"
-#include "command.h"
+#include "command_func.h"
 #include "variables.h"
 #include "water.h"
 

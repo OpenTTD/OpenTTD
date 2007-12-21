@@ -10,7 +10,7 @@
 #include "map.h"
 #include "tile_map.h"
 #include "gui.h"
-#include "command.h"
+#include "command_func.h"
 #include "player.h"
 #include "network/network.h"
 #include "variables.h"
@@ -401,7 +401,7 @@ static int _docommand_recursive;
  * @param procc The command-id to execute (a value of the CMD_* enums)
  * @see CommandProc
  */
-CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
+CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 procc)
 {
 	CommandCost res;
 	CommandProc *proc;

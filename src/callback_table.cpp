@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "callback_table.h"
-#include "functions.h"
 
 /* If you add a callback for DoCommandP, also add the callback in here
  *   see below for the full list!

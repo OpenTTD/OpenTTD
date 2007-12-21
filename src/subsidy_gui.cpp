@@ -11,7 +11,7 @@
 #include "town.h"
 #include "player.h"
 #include "gfx.h"
-#include "economy.h"
+#include "economy_func.h"
 #include "variables.h"
 #include "date.h"
 #include "cargotype.h"

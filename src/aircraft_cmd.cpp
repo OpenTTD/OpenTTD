@@ -16,7 +16,6 @@
 #include "timetable.h"
 #include "depot.h"
 #include "engine.h"
-#include "command.h"
 #include "station.h"
 #include "news.h"
 #include "sound.h"
@@ -33,6 +32,7 @@
 #include "spritecache.h"
 #include "cargotype.h"
 #include "strings_func.h"
+#include "command_func.h"
 
 void Aircraft::UpdateDeltaXY(Direction direction)
 {

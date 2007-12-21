@@ -13,7 +13,7 @@
 #include "window_gui.h"
 #include "vehicle.h"
 #include "viewport.h"
-#include "command.h"
+#include "command_func.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"

@@ -11,7 +11,7 @@
 #include "window_gui.h"
 #include "gfx.h"
 #include "player.h"
-#include "economy.h"
+#include "economy_func.h"
 #include "variables.h"
 #include "date.h"
 #include "helpers.hpp"

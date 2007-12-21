@@ -13,7 +13,7 @@
 #include "table/sprites.h"
 #include <stdarg.h>
 #include "viewport.h"
-#include "command.h"
+#include "command_func.h"
 #include "landscape.h"
 #include "vehicle.h"
 #include "variables.h"

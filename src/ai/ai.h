@@ -6,7 +6,7 @@
 #include "../functions.h"
 #include "../network/network.h"
 #include "../player.h"
-#include "../command.h"
+#include "../command_type.h"
 
 /* How DoCommands look like for an AI */
 struct AICommand {
@@ -14,7 +14,7 @@ struct AICommand {
 	uint32 p1;
 	uint32 p2;
 	uint32 procc;
-	CommandCallback* callback;
+	CommandCallback *callback;
 
 	char *text;
 	uint uid;

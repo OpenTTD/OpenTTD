@@ -9,7 +9,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "gui.h"
-#include "command.h"
+#include "command_func.h"
 #include "variables.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"

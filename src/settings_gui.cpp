@@ -13,7 +13,7 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "gfx.h"
-#include "command.h"
+#include "command_func.h"
 #include "engine.h"
 #include "screenshot.h"
 #include "newgrf.h"

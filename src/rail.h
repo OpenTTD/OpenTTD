@@ -10,6 +10,7 @@
 #include "track_type.h"
 #include "core/bitmath_func.hpp"
 #include "variables.h"
+#include "economy_func.h"
 
 /** This struct contains all the info that is needed to draw and construct tracks.
  */

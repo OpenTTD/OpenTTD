@@ -11,7 +11,6 @@
 #include "town.h"
 #include "industry.h"
 #include "station.h"
-#include "economy.h"
 #include "player.h"
 #include "engine.h"
 #include "vehicle.h"

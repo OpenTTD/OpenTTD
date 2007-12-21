@@ -7,7 +7,7 @@
 #include "table/strings.h"
 #include "functions.h"
 #include "viewport.h"
-#include "command.h"
+#include "command_func.h"
 #include "table/sprites.h"
 
 static void DrawTile_Dummy(TileInfo *ti)

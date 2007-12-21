@@ -13,7 +13,7 @@ extern const char _openttd_revision[];
 #include "../string.h"
 #include "../strings_func.h"
 #include "../map.h"
-#include "../command.h"
+#include "../command_func.h"
 #include "../variables.h"
 #include "../date.h"
 #include "../newgrf_config.h"

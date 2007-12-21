@@ -8,6 +8,7 @@
 #include "vehicle.h"
 #include "engine.h"
 #include "variables.h"
+#include "economy_func.h"
 
 enum RoadVehicleSubType {
 	RVST_FRONT,

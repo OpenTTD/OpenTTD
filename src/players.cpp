@@ -17,7 +17,7 @@
 #include "gfx.h"
 #include "news.h"
 #include "saveload.h"
-#include "command.h"
+#include "command_func.h"
 #include "sound.h"
 #include "network/network.h"
 #include "variables.h"

@@ -15,7 +15,7 @@
 #include "vehicle.h"
 #include "timetable.h"
 #include "engine.h"
-#include "command.h"
+#include "command_func.h"
 #include "station.h"
 #include "news.h"
 #include "pathfind.h"

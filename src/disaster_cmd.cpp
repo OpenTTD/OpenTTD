@@ -25,7 +25,7 @@
 #include "table/strings.h"
 #include "map.h"
 #include "vehicle.h"
-#include "command.h"
+#include "command_func.h"
 #include "news.h"
 #include "station.h"
 #include "waypoint.h"

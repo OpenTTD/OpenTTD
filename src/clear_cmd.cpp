@@ -11,7 +11,7 @@
 #include "map.h"
 #include "player.h"
 #include "viewport.h"
-#include "command.h"
+#include "command_func.h"
 #include "tunnel_map.h"
 #include "bridge_map.h"
 #include "bridge.h"

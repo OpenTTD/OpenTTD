@@ -23,7 +23,7 @@
 #include "viewport.h"
 #include "gfx.h"
 #include "station.h"
-#include "command.h"
+#include "command_func.h"
 #include "player.h"
 #include "town.h"
 #include "sound.h"

@@ -15,7 +15,7 @@
 #include "map.h"
 #include "vehicle.h"
 #include "viewport.h"
-#include "command.h"
+#include "command_func.h"
 #include "town.h"
 #include "news.h"
 #include "sound.h"

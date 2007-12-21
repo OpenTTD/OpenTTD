@@ -6,7 +6,7 @@
 #include "../../debug.h"
 #include "../../functions.h"
 #include "../../map.h"
-#include "../../command.h"
+#include "../../command_func.h"
 #include "trolly.h"
 #include "../../depot.h"
 #include "../../tunnel_map.h"

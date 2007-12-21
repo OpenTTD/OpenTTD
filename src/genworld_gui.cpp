@@ -14,7 +14,7 @@
 #include "gfx.h"
 #include "gfxinit.h"
 #include "player.h"
-#include "command.h"
+#include "command_func.h"
 #include "sound.h"
 #include "variables.h"
 #include "string.h"

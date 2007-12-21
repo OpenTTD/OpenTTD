@@ -18,7 +18,7 @@
 #include "gfx.h"
 #include "viewport.h"
 #include "news.h"
-#include "command.h"
+#include "command_func.h"
 #include "saveload.h"
 #include "player.h"
 #include "engine.h"
@@ -41,7 +41,6 @@
 #include "newgrf_sound.h"
 #include "helpers.hpp"
 #include "group.h"
-#include "economy.h"
 #include "order.h"
 #include "strings_func.h"
 

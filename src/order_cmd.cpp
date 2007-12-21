@@ -11,7 +11,7 @@
 #include "functions.h"
 #include "table/strings.h"
 #include "waypoint.h"
-#include "command.h"
+#include "command_func.h"
 #include "station.h"
 #include "player.h"
 #include "news.h"

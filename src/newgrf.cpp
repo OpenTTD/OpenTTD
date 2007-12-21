@@ -21,7 +21,6 @@
 #include "table/strings.h"
 #include "bridge.h"
 #include "town.h"
-#include "economy.h"
 #include "newgrf_engine.h"
 #include "vehicle.h"
 #include "newgrf_text.h"

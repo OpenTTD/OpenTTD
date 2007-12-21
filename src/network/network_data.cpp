@@ -7,7 +7,7 @@
 #include "network_data.h"
 #include "../string.h"
 #include "network_client.h"
-#include "../command.h"
+#include "../command_func.h"
 #include "../callback_table.h"
 #include "../helpers.hpp"
 

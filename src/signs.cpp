@@ -10,7 +10,7 @@
 #include "player.h"
 #include "signs.h"
 #include "saveload.h"
-#include "command.h"
+#include "command_func.h"
 #include "variables.h"
 #include "string.h"
 #include "misc/autoptr.hpp"

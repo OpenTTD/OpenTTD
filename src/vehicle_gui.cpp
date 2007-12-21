@@ -15,7 +15,7 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
-#include "command.h"
+#include "command_func.h"
 #include "gfx.h"
 #include "variables.h"
 #include "vehicle_gui.h"

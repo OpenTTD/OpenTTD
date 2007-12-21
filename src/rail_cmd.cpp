@@ -19,7 +19,7 @@
 #include "tunnel_map.h"
 #include "vehicle.h"
 #include "viewport.h"
-#include "command.h"
+#include "command_func.h"
 #include "pathfind.h"
 #include "engine.h"
 #include "town.h"

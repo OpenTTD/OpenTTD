@@ -15,9 +15,8 @@
 #include "station.h"
 #include "vehicle.h"
 #include "gfx.h"
-#include "command.h"
+#include "command_func.h"
 #include "saveload.h"
-#include "economy.h"
 #include "industry.h"
 #include "town.h"
 #include "network/network.h"
@@ -89,6 +88,10 @@ const ScoreInfo _score_info[] = {
 };
 
 int _score_part[MAX_PLAYERS][SCORE_END];
+Economy _economy;
+Subsidy _subsidies[MAX_PLAYERS];
+Prices _price;
+uint16 _price_frac[NUM_PRICES];
 
 Money CalculateCompanyValue(const Player* p)
 {

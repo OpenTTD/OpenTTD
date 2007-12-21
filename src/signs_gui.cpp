@@ -16,7 +16,7 @@
 #include "debug.h"
 #include "variables.h"
 #include "helpers.hpp"
-#include "command.h"
+#include "command_func.h"
 #include "strings_func.h"
 
 static const Sign **_sign_sort;

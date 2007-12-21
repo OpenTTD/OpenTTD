@@ -16,7 +16,7 @@
 #include "network/network_client.h"
 #include "network/network_server.h"
 #include "network/network_udp.h"
-#include "command.h"
+#include "command_func.h"
 #include "settings.h"
 #include "fios.h"
 #include "fileio.h"

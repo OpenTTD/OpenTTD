@@ -13,7 +13,6 @@
 #include "gui.h"
 #include "vehicle.h"
 #include "gfx.h"
-#include "command.h"
 #include "engine.h"
 #include "viewport.h"
 #include "player.h"

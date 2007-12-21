@@ -7,7 +7,7 @@
 #include "../../map.h"
 #include "../../road_map.h"
 #include "../../vehicle.h"
-#include "../../command.h"
+#include "../../command_func.h"
 #include "trolly.h"
 #include "../../engine.h"
 #include "../../station.h"

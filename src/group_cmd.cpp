@@ -8,7 +8,7 @@
 #include "functions.h"
 #include "player.h"
 #include "table/strings.h"
-#include "command.h"
+#include "command_func.h"
 #include "vehicle.h"
 #include "saveload.h"
 #include "debug.h"

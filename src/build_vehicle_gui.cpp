@@ -18,7 +18,7 @@
 #include "gfx.h"
 #include "textbuf_gui.h"
 #include "station.h"
-#include "command.h"
+#include "command_func.h"
 #include "engine.h"
 #include "player.h"
 #include "depot.h"

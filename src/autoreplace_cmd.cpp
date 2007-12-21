@@ -7,7 +7,6 @@
 #include "table/strings.h"
 #include "functions.h"
 #include "news.h"
-#include "command.h"
 #include "player.h"
 #include "engine.h"
 #include "debug.h"
@@ -19,6 +18,7 @@
 #include "group.h"
 #include "order.h"
 #include "strings_func.h"
+#include "command_func.h"
 
 /*
  * move the cargo from one engine to another if possible

@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 
-#include "command.h"
+#include "command_func.h"
 #include "functions.h"
 #include "gfx.h"
 #include "landscape.h"

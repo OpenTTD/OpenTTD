@@ -14,12 +14,13 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
-#include "command.h"
+#include "command_func.h"
 #include "player.h"
 #include "network/network.h"
 #include "variables.h"
 #include "helpers.hpp"
 #include "strings_func.h"
+#include "economy_func.h"
 
 enum TownAuthorityWidget {
 	TWA_CLOSEBOX = 0,

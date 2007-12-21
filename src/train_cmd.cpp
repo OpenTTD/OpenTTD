@@ -16,7 +16,7 @@
 #include "vehicle.h"
 #include "timetable.h"
 #include "articulated_vehicles.h"
-#include "command.h"
+#include "command_func.h"
 #include "pathfind.h"
 #include "npf.h"
 #include "station.h"

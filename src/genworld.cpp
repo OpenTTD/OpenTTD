@@ -10,7 +10,7 @@
 #include "table/sprites.h"
 #include "variables.h"
 #include "thread.h"
-#include "command.h"
+#include "command_func.h"
 #include "genworld.h"
 #include "gfx.h"
 #include "gfxinit.h"

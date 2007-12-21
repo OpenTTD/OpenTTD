@@ -3,7 +3,7 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../variables.h"
-#include "../command.h"
+#include "../command_func.h"
 #include "../network/network.h"
 #include "../helpers.hpp"
 #include "ai.h"
@@ -45,7 +45,7 @@ static void AI_DequeueCommands(PlayerID player)
  * Needed for SP; we need to delay DoCommand with 1 tick, because else events
  *  will make infinite loops (AIScript).
  */
-static void AI_PutCommandInQueue(PlayerID player, TileIndex tile, uint32 p1, uint32 p2, uint procc, CommandCallback* callback)
+static void AI_PutCommandInQueue(PlayerID player, TileIndex tile, uint32 p1, uint32 p2, uint32 procc, CommandCallback* callback)
 {
 	AICommand *com;
 
@@ -81,7 +81,7 @@ static void AI_PutCommandInQueue(PlayerID player, TileIndex tile, uint32 p1, uin
 /**
  * Executes a raw DoCommand for the AI.
  */
-CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc, CommandCallback* callback)
+CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 procc, CommandCallback* callback)
 {
 	PlayerID old_lp;
 	CommandCost res;
@@ -103,10 +103,6 @@ CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, u
 
 	/* Restore _cmd_text */
 	_cmd_text = tmp_cmdtext;
-
-	/* If we did a DC_EXEC, and the command did not return an error, execute it
-	 * over the network */
-	if (flags & DC_NO_WATER) procc |= CMD_NO_WATER;
 
 	/* NetworkSend_Command needs _local_player to be set correctly, so
 	 * adjust it, and put it back right after the function */
@@ -134,7 +130,7 @@ CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, u
 }
 
 
-CommandCost AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
+CommandCost AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 procc)
 {
 	return AI_DoCommandCc(tile, p1, p2, flags, procc, NULL);
 }

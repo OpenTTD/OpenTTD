@@ -11,7 +11,7 @@
 #include "map.h"
 #include "vehicle.h"
 #include "timetable.h"
-#include "command.h"
+#include "command_func.h"
 #include "pathfind.h"
 #include "station_map.h"
 #include "station.h"

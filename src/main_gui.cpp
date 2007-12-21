@@ -19,7 +19,7 @@
 #include "viewport.h"
 #include "gfx.h"
 #include "player.h"
-#include "command.h"
+#include "command_func.h"
 #include "news.h"
 #include "town.h"
 #include "vehicle.h"

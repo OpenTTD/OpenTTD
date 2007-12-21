@@ -29,7 +29,7 @@
 #include "variables.h"
 #include "network/network.h"
 #include "settings.h"
-#include "command.h"
+#include "command_func.h"
 #include "console.h"
 #include "saveload.h"
 #include "npf.h"
