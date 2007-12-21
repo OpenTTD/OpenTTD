@@ -7,9 +7,6 @@
 
 #include "string.h"
 #include "window_type.h"
-#include "rail_type.h"
-#include "road_type.h"
-#include "vehicle_type.h"
 
 /* main_gui.cpp */
 void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);
@@ -37,17 +34,8 @@ void ShowLastNewsMessage();
 void ShowMessageOptions();
 void ShowMessageHistory();
 
-/* rail_gui.cpp */
-void ShowBuildRailToolbar(RailType railtype, int button);
-void PlaceProc_BuyLand(TileIndex tile);
-void ReinitGuiAfterToggleElrail(bool disable);
-
 /* train_gui.cpp */
 void ShowOrdersWindow(const Vehicle *v);
-
-/* road_gui.cpp */
-void ShowBuildRoadToolbar(RoadType roadtype);
-void ShowBuildRoadScenToolbar();
 
 /* dock_gui.cpp */
 void ShowBuildDocksToolbar();
@@ -64,6 +52,7 @@ void ShowHeightmapLoad();
 
 void PlaceProc_DemolishArea(TileIndex tile);
 void PlaceProc_LevelLand(TileIndex tile);
+void PlaceProc_BuyLand(TileIndex tile);
 bool GUIPlaceProcDragXY(const WindowEvent *e);
 
 /** Drag and drop selection process, or, what to do with an area of land when
@@ -132,9 +121,6 @@ void HandleOnEditText(const char *str);
 VARDEF bool _station_show_coverage;
 VARDEF PlaceProc *_place_proc;
 
-/* vehicle_gui.cpp */
 void InitializeGUI();
-
-void ShowPlayerGroup(PlayerID player, VehicleType veh);
 
 #endif /* GUI_H */

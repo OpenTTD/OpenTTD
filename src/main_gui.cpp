@@ -42,6 +42,8 @@
 #include "vehicle_gui.h"
 #include "transparency_gui.h"
 #include "newgrf_config.h"
+#include "rail_gui.h"
+#include "road_gui.h"
 
 #include "network/network_data.h"
 #include "network/network_client.h"

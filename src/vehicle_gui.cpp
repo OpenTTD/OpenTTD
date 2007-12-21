@@ -33,6 +33,7 @@
 #include "helpers.hpp"
 #include "cargotype.h"
 #include "group.h"
+#include "group_gui.h"
 
 struct Sorting {
 	Listing aircraft;

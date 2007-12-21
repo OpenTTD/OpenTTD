@@ -63,7 +63,7 @@
 #include "table/elrail_data.h"
 #include "vehicle.h"
 #include "train.h"
-#include "gui.h"
+#include "rail_gui.h"
 #include "transparency.h"
 #include "tunnelbridge_map.h"
 
