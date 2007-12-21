@@ -10,7 +10,7 @@
 #include <mach/machine.h>
 #include <stdio.h>
 #include "../../stdafx.h"
-#include "../../macros.h"
+#include "../../core/bitmath_func.hpp"
 
 #ifndef CPU_SUBTYPE_POWERPC_970
 #define CPU_SUBTYPE_POWERPC_970 ((cpu_subtype_t) 100)
