@@ -6,6 +6,8 @@
 #define ECONOMY_FUNC_H
 
 #include "economy_type.h"
+#include "cargo_type.h"
+#include "vehicle_type.h"
 
 struct Player;
 
@@ -19,6 +21,8 @@ extern Subsidy _subsidies[MAX_PLAYERS];
 /* Prices and also the fractional part. */
 extern Prices _price;
 extern uint16 _price_frac[NUM_PRICES];
+extern Money  _cargo_payment_rates[NUM_CARGO];
+extern uint16 _cargo_payment_rates_frac[NUM_CARGO];
 
 int UpdateCompanyRatingAndValue(Player *p, bool update);
 Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode);

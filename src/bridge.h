@@ -37,4 +37,8 @@ static inline const Bridge *GetBridge(uint i)
 
 void DrawBridgeMiddle(const TileInfo *ti);
 
+bool CheckBridge_Stuff(byte bridge_type, uint bridge_len);
+uint32 GetBridgeLength(TileIndex begin, TileIndex end);
+int CalcBridgeLenCostFactor(int x);
+
 #endif /* BRIDGE_H */

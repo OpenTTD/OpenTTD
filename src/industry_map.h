@@ -156,11 +156,12 @@ static inline void SetIndustryGfx(TileIndex t, IndustryGfx gfx)
 
 /**
  * Make the given tile an industry tile
- * @param t     the tile to make an industry tile
- * @param index the industry this tile belongs to
- * @param gfx   the graphics to use for the tile
+ * @param t      the tile to make an industry tile
+ * @param index  the industry this tile belongs to
+ * @param gfx    the graphics to use for the tile
+ * @param random the random value
  */
-static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx)
+static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx, uint8 random)
 {
 	SetTileType(t, MP_INDUSTRY);
 	_m[t].m1 = 0;
@@ -168,7 +169,7 @@ static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx)
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	SetIndustryGfx(t, gfx);
-	_me[t].m7 = Random();
+	_me[t].m7 = random;
 }
 
 /**

@@ -7,6 +7,8 @@
 
 #include "zoom.hpp"
 #include "window_type.h"
+#include "vehicle_type.h"
+#include "gfx.h"
 
 struct ViewPort {
 	int left,top;                       // screen coordinates for the viewport

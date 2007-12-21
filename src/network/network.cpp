@@ -30,6 +30,7 @@ extern const char _openttd_revision[];
 #include <stdarg.h> /* va_list */
 #include "../md5.h"
 #include "../fileio.h"
+#include "../texteff.hpp"
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);

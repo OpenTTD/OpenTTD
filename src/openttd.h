@@ -28,7 +28,6 @@ struct Pair {
 
 #include "map.h"
 #include "slope_type.h"
-#include "vehicle_type.h"
 
 // Forward declarations of structs.
 struct Depot;
@@ -41,7 +40,6 @@ struct Industry;
 struct DrawPixelInfo;
 struct Group;
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
-typedef byte CargoID;
 typedef byte LandscapeID;
 typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
 struct PalSpriteID {
@@ -233,55 +231,6 @@ struct GameDifficulty {
 	GDType town_council_tolerance; // minimum required town ratings to be allowed to demolish stuff
 };
 
-enum {
-	// Temperate
-	CT_PASSENGERS   =  0,
-	CT_COAL         =  1,
-	CT_MAIL         =  2,
-	CT_OIL          =  3,
-	CT_LIVESTOCK    =  4,
-	CT_GOODS        =  5,
-	CT_GRAIN        =  6,
-	CT_WOOD         =  7,
-	CT_IRON_ORE     =  8,
-	CT_STEEL        =  9,
-	CT_VALUABLES    = 10,
-
-	// Arctic
-	CT_WHEAT        =  6,
-	CT_HILLY_UNUSED =  8,
-	CT_PAPER        =  9,
-	CT_GOLD         = 10,
-	CT_FOOD         = 11,
-
-	// Tropic
-	CT_RUBBER       =  1,
-	CT_FRUIT        =  4,
-	CT_MAIZE        =  6,
-	CT_COPPER_ORE   =  8,
-	CT_WATER        =  9,
-	CT_DIAMONDS     = 10,
-
-	// Toyland
-	CT_SUGAR        =  1,
-	CT_TOYS         =  3,
-	CT_BATTERIES    =  4,
-	CT_CANDY        =  5,
-	CT_TOFFEE       =  6,
-	CT_COLA         =  7,
-	CT_COTTON_CANDY =  8,
-	CT_BUBBLES      =  9,
-	CT_PLASTIC      = 10,
-	CT_FIZZY_DRINKS = 11,
-
-	NUM_CARGO       = 32,
-
-	CT_NO_REFIT     = 0xFE,
-	CT_INVALID      = 0xFF
-};
-
-typedef uint AcceptedCargo[NUM_CARGO];
-
 struct TileDesc {
 	StringID str;
 	Owner owner;
@@ -293,78 +242,6 @@ struct ViewportSign {
 	int32 left;
 	int32 top;
 	byte width_1, width_2;
-};
-
-
-#include "command_type.h"
-typedef void DrawTileProc(TileInfo *ti);
-typedef uint GetSlopeZProc(TileIndex tile, uint x, uint y);
-typedef CommandCost ClearTileProc(TileIndex tile, byte flags);
-typedef void GetAcceptedCargoProc(TileIndex tile, AcceptedCargo res);
-typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
-/**
- * GetTileTrackStatusProcs return a value that contains the possible tracks
- * that can be taken on a given tile by a given transport. The return value is
- * composed as follows: 0xaabbccdd. ccdd and aabb are bitmasks of trackdirs,
- * where bit n corresponds to trackdir n. ccdd are the trackdirs that are
- * present in the tile (1==present, 0==not present), aabb is the signal
- * status, if applicable (0==green/no signal, 1==red, note that this is
- * reversed from map3/2[tile] for railway signals).
- *
- * The result (let's call it ts) is often used as follows:
- * tracks = (byte)(ts | ts >>8)
- * This effectively converts the present part of the result (ccdd) to a
- * track bitmask, which disregards directions. Normally, this is the same as just
- * doing (byte)ts I think, although I am not really sure
- *
- * A trackdir is combination of a track and a dir, where the lower three bits
- * are a track, the fourth bit is the direction. these give 12 (or 14)
- * possible options: 0-5 and 8-13, so we need 14 bits for a trackdir bitmask
- * above.
- * @param tile     the tile to get the track status from
- * @param mode     the mode of transportation
- * @param sub_mode used to differentiate between different kinds within the mode
- * @return the above mentions track status information
- */
-typedef uint32 GetTileTrackStatusProc(TileIndex tile, TransportType mode, uint sub_mode);
-typedef void GetProducedCargoProc(TileIndex tile, CargoID *b);
-typedef void ClickTileProc(TileIndex tile);
-typedef void AnimateTileProc(TileIndex tile);
-typedef void TileLoopProc(TileIndex tile);
-typedef void ChangeTileOwnerProc(TileIndex tile, PlayerID old_player, PlayerID new_player);
-/** @see VehicleEnterTileStatus to see what the return values mean */
-typedef uint32 VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
-typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
-/**
- * Called when a tile is affected by a terraforming operation.
- * The function has to check if terraforming of the tile is allowed and return extra terraform-cost that depend on the tiletype.
- * With DC_EXEC in flags it has to perform tiletype-specific actions (like clearing land etc., but not the terraforming itself).
- *
- * @note The terraforming has not yet taken place. So GetTileZ() and GetTileSlope() refer to the landscape before the terraforming operation.
- *
- * @param tile      The involved tile.
- * @param flags     Command flags passed to the terraform command (DC_EXEC, DC_QUERY_COST, etc.).
- * @param z_new     TileZ after terraforming.
- * @param tileh_new Slope after terraforming.
- * @return Error code or extra cost for terraforming (like clearing land, building foundations, etc., but not the terraforming itself.)
- */
-typedef CommandCost TerraformTileProc(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new);
-
-struct TileTypeProcs {
-	DrawTileProc *draw_tile_proc;
-	GetSlopeZProc *get_slope_z_proc;
-	ClearTileProc *clear_tile_proc;
-	GetAcceptedCargoProc *get_accepted_cargo_proc;
-	GetTileDescProc *get_tile_desc_proc;
-	GetTileTrackStatusProc *get_tile_track_status_proc;
-	ClickTileProc *click_tile_proc;
-	AnimateTileProc *animate_tile_proc;
-	TileLoopProc *tile_loop_proc;
-	ChangeTileOwnerProc *change_tile_owner_proc;
-	GetProducedCargoProc *get_produced_cargo_proc;
-	VehicleEnterTileProc *vehicle_enter_tile_proc;
-	GetFoundationProc *get_foundation_proc;
-	TerraformTileProc *terraform_tile_proc;
 };
 
 typedef void PlaceProc(TileIndex tile);

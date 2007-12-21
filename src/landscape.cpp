@@ -21,6 +21,7 @@
 #include "water_map.h"
 #include "tgp.h"
 #include "genworld.h"
+#include "tile_cmd.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,

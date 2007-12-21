@@ -5,10 +5,10 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
-#include "functions.h"
-#include "viewport.h"
+#include "tile_cmd.h"
 #include "command_func.h"
 #include "table/sprites.h"
+#include "viewport.h"
 
 static void DrawTile_Dummy(TileInfo *ti)
 {

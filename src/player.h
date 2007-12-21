@@ -9,6 +9,8 @@
 #include "aystar.h"
 #include "rail_type.h"
 #include "road_func.h"
+#include "cargo_type.h"
+#include "command_type.h"
 #include "engine.h"
 #include "livery.h"
 #include "genworld.h"

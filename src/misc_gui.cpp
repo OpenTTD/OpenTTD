@@ -40,6 +40,8 @@
 #include "strings_func.h"
 #include "fileio.h"
 #include "fios.h"
+#include "tile_cmd.h"
+
 /* Variables to display file lists */
 FiosItem *_fios_list;
 int _saveload_mode;

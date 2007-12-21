@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "debug.h"
 #include "road_map.h"
 #include "road_internal.h" /* Cleaning up road bits */

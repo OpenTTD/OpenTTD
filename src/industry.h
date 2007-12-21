@@ -6,8 +6,10 @@
 #define INDUSTRY_H
 
 #include "oldpool.h"
-#include "helpers.hpp"
+#include "core/random_func.hpp"
 #include "newgrf_storage.h"
+#include "cargo_type.h"
+#include "economy_type.h"
 
 typedef uint16 IndustryGfx;
 typedef uint8 IndustryType;

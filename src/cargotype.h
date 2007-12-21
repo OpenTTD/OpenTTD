@@ -5,6 +5,7 @@
 #ifndef CARGOTYPE_H
 #define CARGOTYPE_H
 
+#include "cargo_type.h"
 
 typedef uint32 CargoLabel;
 

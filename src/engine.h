@@ -7,8 +7,10 @@
 
 #include "oldpool.h"
 #include "rail_type.h"
+#include "cargo_type.h"
+#include "vehicle_type.h"
+#include "command_type.h"
 #include "sound.h"
-#include "vehicle.h"
 
 enum RailVehicleTypes {
 	RAILVEH_SINGLEHEAD,  ///< indicates a "standalone" locomotive

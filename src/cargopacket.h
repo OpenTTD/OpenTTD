@@ -5,6 +5,7 @@
 #ifndef CARGOPACKET_H
 #define CARGOPACKET_H
 
+#include "economy_type.h"
 #include <list>
 
 typedef uint32 CargoPacketID;

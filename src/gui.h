@@ -7,6 +7,7 @@
 
 #include "string.h"
 #include "window_type.h"
+#include "gfx.h"
 
 /* main_gui.cpp */
 void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);

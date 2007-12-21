@@ -40,6 +40,7 @@
 #include "player_face.h"
 #include "group.h"
 #include "strings_func.h"
+#include "tile_cmd.h"
 
 /**
  * Multiply two integer values and shift the results to right.
@@ -92,6 +93,9 @@ Economy _economy;
 Subsidy _subsidies[MAX_PLAYERS];
 Prices _price;
 uint16 _price_frac[NUM_PRICES];
+Money  _cargo_payment_rates[NUM_CARGO];
+uint16 _cargo_payment_rates_frac[NUM_CARGO];
+Money _additional_cash_required;
 
 Money CalculateCompanyValue(const Player* p)
 {

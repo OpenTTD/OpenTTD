@@ -4,7 +4,7 @@
 #include "../../openttd.h"
 #include "../../aircraft.h"
 #include "../../bridge_map.h"
-#include "../../functions.h"
+#include "../../tile_cmd.h"
 #include "../../landscape.h"
 #include "../../map.h"
 #include "../../rail_map.h"

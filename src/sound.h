@@ -5,7 +5,8 @@
 #ifndef SOUND_H
 #define SOUND_H
 
-#include "helpers.hpp"
+#include "core/enum_type.hpp"
+#include "vehicle_type.h"
 
 struct MusicFileSettings {
 	byte playlist;

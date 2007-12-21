@@ -12,7 +12,7 @@
 #include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "map.h"
 #include "landscape.h"
 #include "tunnel_map.h"
@@ -1257,7 +1257,7 @@ static const byte _tunnel_fractcoord_5[4]    = {0x92, 0x89, 0x58, 0x25};
 static const byte _tunnel_fractcoord_6[4]    = {0x92, 0x89, 0x56, 0x45};
 static const byte _tunnel_fractcoord_7[4]    = {0x52, 0x85, 0x96, 0x49};
 
-static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
 	int z = GetSlopeZ(x, y) - v->z_pos;
 

@@ -11,9 +11,6 @@
 
 #include "gfx.h"
 
-VARDEF Money  _cargo_payment_rates[NUM_CARGO];
-VARDEF uint16 _cargo_payment_rates_frac[NUM_CARGO];
-
 struct GameOptions {
 	GameDifficulty diff;
 	byte diff_level;
@@ -38,9 +35,6 @@ VARDEF GameOptions *_opt_ptr;
 
 /* Amount of game ticks */
 VARDEF uint16 _tick_counter;
-
-/* This one is not used anymore. */
-VARDEF VehicleID _vehicle_id_ctr_day;
 
 /* Skip aging of cargo? */
 VARDEF byte _age_cargo_skip_counter;
@@ -293,7 +287,6 @@ VARDEF uint32 _news_display_opt;
 VARDEF bool _news_ticker_sound;
 
 VARDEF StringID _error_message;
-VARDEF Money _additional_cash_required;
 
 VARDEF bool _rightclick_emulate;
 
@@ -317,10 +310,6 @@ VARDEF byte _switch_mode;
 VARDEF StringID _switch_mode_errorstr;
 VARDEF SmallFiosItem _file_to_saveload;
 
-
-
-VARDEF Vehicle *_place_clicked_vehicle;
-
 VARDEF char _ini_videodriver[32], _ini_musicdriver[32], _ini_sounddriver[32], _ini_blitter[32];
 
 VARDEF int _num_resolutions;
@@ -338,8 +327,6 @@ VARDEF char *_log_file;
 
 /* landscape.cpp */
 extern const byte _tileh_to_sprite[32];
-
-extern const TileTypeProcs * const _tile_type_procs[16];
 
 extern bool _draw_bounding_boxes;
 

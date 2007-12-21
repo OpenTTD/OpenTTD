@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "gui.h"
 #include "spritecache.h"
 #include "table/sprites.h"

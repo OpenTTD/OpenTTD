@@ -7,6 +7,8 @@
 
 #include "oldpool.h"
 #include "core/bitmath_func.hpp"
+#include "cargo_type.h"
+#include "vehicle_type.h"
 
 enum {
 	INVALID_VEH_ORDER_ID = 0xFF,

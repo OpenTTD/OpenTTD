@@ -8,6 +8,7 @@
 #include "gfx.h"
 #include "viewport.h"
 #include "core/random_func.hpp"
+#include "command_type.h"
 
 void UpdateTownMaxPass(Town *t);
 
@@ -37,11 +38,6 @@ void AddAnimatedTile(TileIndex tile);
 void DeleteAnimatedTile(TileIndex tile);
 void AnimateAnimatedTiles();
 void InitializeAnimatedTiles();
-
-/* tunnelbridge_cmd.cpp */
-bool CheckBridge_Stuff(byte bridge_type, uint bridge_len);
-uint32 GetBridgeLength(TileIndex begin, TileIndex end);
-int CalcBridgeLenCostFactor(int x);
 
 /* misc_cmd.cpp */
 void PlaceTreesRandomly();

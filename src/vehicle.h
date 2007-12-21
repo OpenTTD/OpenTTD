@@ -11,29 +11,11 @@
 #include "track_type.h"
 #include "rail_type.h"
 #include "road_type.h"
+#include "cargo_type.h"
 #include "window_type.h"
 #include "cargopacket.h"
 #include "texteff.hpp"
-
-/** The returned bits of VehicleEnterTile. */
-enum VehicleEnterTileStatus {
-	VETS_ENTERED_STATION  = 1, ///< The vehicle entered a station
-	VETS_ENTERED_WORMHOLE = 2, ///< The vehicle either entered a bridge, tunnel or depot tile (this includes the last tile of the bridge/tunnel)
-	VETS_CANNOT_ENTER     = 3, ///< The vehicle cannot enter the tile
-
-	/**
-	 * Shift the VehicleEnterTileStatus this many bits
-	 * to the right to get the station ID when
-	 * VETS_ENTERED_STATION is set
-	 */
-	VETS_STATION_ID_OFFSET = 8,
-
-	/** Bit sets of the above specified bits */
-	VETSB_CONTINUE         = 0,                          ///< The vehicle can continue normally
-	VETSB_ENTERED_STATION  = 1 << VETS_ENTERED_STATION,  ///< The vehicle entered a station
-	VETSB_ENTERED_WORMHOLE = 1 << VETS_ENTERED_WORMHOLE, ///< The vehicle either entered a bridge, tunnel or depot tile (this includes the last tile of the bridge/tunnel)
-	VETSB_CANNOT_ENTER     = 1 << VETS_CANNOT_ENTER,     ///< The vehicle cannot enter the tile
-};
+#include "command_type.h"
 
 /** Road vehicle states */
 enum RoadVehicleStates {
@@ -828,5 +810,10 @@ static inline uint32 GetCmdSendToDepot(const Vehicle *v)
 {
 	return GetCmdSendToDepot(v->type);
 }
+
+/* This one is not used anymore. */
+VARDEF VehicleID _vehicle_id_ctr_day;
+VARDEF Vehicle *_place_clicked_vehicle;
+
 
 #endif /* VEHICLE_H */

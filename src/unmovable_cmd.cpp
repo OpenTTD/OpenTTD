@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "landscape.h"
 #include "map.h"
 #include "command_func.h"

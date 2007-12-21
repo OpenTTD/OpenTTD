@@ -12,6 +12,7 @@
 #include "road_type.h"
 #include "newgrf_station.h"
 #include "cargopacket.h"
+#include "cargo_type.h"
 #include <list>
 #include <set>
 

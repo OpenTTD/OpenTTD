@@ -8,7 +8,7 @@
 #include "bridge.h"
 #include "cmd_helper.h"
 #include "debug.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "rail_map.h"
 #include "road_map.h"
 #include "table/sprites.h"
@@ -2334,7 +2334,7 @@ static const signed char _deltacoord_leaveoffset[8] = {
 	 0,  1,  0, -1  /* y */
 };
 
-static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 {
 	byte fract_coord;
 	byte fract_coord_leave;

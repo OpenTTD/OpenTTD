@@ -24,6 +24,7 @@
 #include "cargotype.h"
 #include "group.h"
 #include "viewport.h"
+#include "economy_func.h"
 
 char _name_array[512][32];
 

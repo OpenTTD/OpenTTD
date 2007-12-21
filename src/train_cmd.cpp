@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "bridge_map.h"
 #include "debug.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "landscape.h"
 #include "gui.h"
 #include "station_map.h"

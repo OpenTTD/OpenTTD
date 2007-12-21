@@ -39,6 +39,7 @@
 #include "transparency.h"
 #include "water.h"
 #include "strings_func.h"
+#include "tile_cmd.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -1511,7 +1512,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 
 			DoCommand(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
-			MakeIndustry(cur_tile, i->index, it->gfx);
+			MakeIndustry(cur_tile, i->index, it->gfx, Random());
 
 			if (_generating_world) {
 				SetIndustryConstructionCounter(cur_tile, 3);

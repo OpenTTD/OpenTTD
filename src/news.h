@@ -6,6 +6,7 @@
 #define NEWS_H
 
 #include "window_type.h"
+#include "vehicle_type.h"
 
 struct NewsItem {
 	StringID string_id; ///< Message text (sometimes also used for storing other info)

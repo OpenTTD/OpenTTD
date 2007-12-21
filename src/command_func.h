@@ -76,6 +76,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
  * used for user input data like names or chat messages.
  */
 extern const char *_cmd_text;
+extern Money _additional_cash_required;
 
 /**
  * Checks if a integer value belongs to a command.

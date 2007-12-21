@@ -7,7 +7,7 @@
 #include "bridge_map.h"
 #include "station_map.h"
 #include "depot.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "landscape.h"
 #include "map.h"
 #include "pathfind.h"
@@ -17,6 +17,7 @@
 #include "variables.h"
 #include "depot.h"
 #include "tunnelbridge_map.h"
+#include "core/random_func.hpp"
 
 /* remember which tiles we have already visited so we don't visit them again. */
 static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)

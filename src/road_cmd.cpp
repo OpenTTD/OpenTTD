@@ -13,7 +13,7 @@
 #include "sprite.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "map.h"
 #include "landscape.h"
 #include "town_map.h"
@@ -1353,7 +1353,7 @@ static const byte _roadveh_enter_depot_dir[4] = {
 	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
 };
 
-static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_CROSSING:

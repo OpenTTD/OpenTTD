@@ -9,7 +9,7 @@
 #include "bridge_map.h"
 #include "cmd_helper.h"
 #include "debug.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "landscape.h"
 #include "station_map.h"
 #include "table/sprites.h"
@@ -2345,7 +2345,7 @@ static const byte _enter_station_speedtable[12] = {
 	215, 195, 175, 155, 135, 115, 95, 75, 55, 35, 15, 0
 };
 
-static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (v->type == VEH_TRAIN) {
 		if (IsRailwayStation(tile) && IsFrontEngine(v) &&
@@ -2365,7 +2365,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 					if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
 					if (y == TILE_SIZE / 2) {
 						if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
-						if (x == 12) return VETSB_ENTERED_STATION | (station_id << VETS_STATION_ID_OFFSET); /* enter station */
+						if (x == 12) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); /* enter station */
 						if (x < 12) {
 							uint16 spd;
 

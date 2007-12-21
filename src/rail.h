@@ -8,6 +8,7 @@
 #include "gfx.h"
 #include "rail_type.h"
 #include "track_type.h"
+#include "vehicle_type.h"
 #include "core/bitmath_func.hpp"
 #include "variables.h"
 #include "economy_func.h"

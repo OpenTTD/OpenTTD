@@ -10,7 +10,7 @@
 #include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "functions.h"
+#include "tile_cmd.h"
 #include "landscape.h"
 #include "map.h"
 #include "vehicle.h"
@@ -891,7 +891,7 @@ static void ChangeTileOwner_Water(TileIndex tile, PlayerID old_player, PlayerID 
 	}
 }
 
-static uint32 VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
+static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
 {
 	return VETSB_CONTINUE;
 }

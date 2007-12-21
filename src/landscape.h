@@ -5,6 +5,8 @@
 #ifndef LANDSCAPE_H
 #define LANDSCAPE_H
 
+#include "gfx.h"
+
 enum {
 	SNOW_LINE_MONTHS = 12,
 	SNOW_LINE_DAYS   = 32,
@@ -46,13 +48,6 @@ void DrawFoundation(TileInfo *ti, Foundation f);
 
 void DoClearSquare(TileIndex tile);
 void RunTileLoop();
-
-uint32 GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode);
-void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
-void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player);
-void AnimateTile(TileIndex tile);
-void ClickTile(TileIndex tile);
-void GetTileDesc(TileIndex tile, TileDesc *td);
 
 void InitializeLandscape();
 void GenerateLandscape(byte mode);
