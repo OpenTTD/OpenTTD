@@ -3,7 +3,6 @@
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../variables.h"
-#include "../../macros.h"
 #include "../../debug.h"
 #include "../../functions.h"
 #include "../../gfx.h"

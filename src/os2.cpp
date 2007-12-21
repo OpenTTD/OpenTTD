@@ -10,7 +10,6 @@
 #include "gfx.h"
 #include "gui.h"
 #include "functions.h"
-#include "macros.h"
 #include "fileio.h"
 #include "fios.h" // opendir/readdir/closedir
 

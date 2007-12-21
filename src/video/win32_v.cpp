@@ -4,7 +4,6 @@
 #include "../openttd.h"
 #include "../functions.h"
 #include "../gfx.h"
-#include "../macros.h"
 #include "../variables.h"
 #include "../win32.h"
 #include "../blitter/factory.hpp"

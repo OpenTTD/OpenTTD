@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "macros.h"
 #include "helpers.hpp"
 #include "saveload.h"
 #include "string.h"
