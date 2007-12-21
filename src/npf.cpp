@@ -10,7 +10,6 @@
 #include "landscape.h"
 #include "npf.h"
 #include "aystar.h"
-#include "macros.h"
 #include "pathfind.h"
 #include "station.h"
 #include "station_map.h"

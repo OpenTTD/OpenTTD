@@ -8,7 +8,6 @@
 #define VARDEF extern
 #endif
 
-#include "macros.h"
 #include "helpers.hpp"
 
 struct Oblong {

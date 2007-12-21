@@ -5,6 +5,7 @@
 #ifndef SLOPE_FUNC_H
 #define SLOPE_FUNC_H
 
+#include "core/math_func.hpp"
 #include "slope_type.h"
 #include "direction_type.h"
 

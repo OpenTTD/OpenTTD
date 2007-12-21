@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
-#include "macros.h"
 #include "strings.h"
 #include "gfx.h"
 #include "landscape.h"

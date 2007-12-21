@@ -6,6 +6,7 @@
 #define BLITTER_32BPP_BASE_HPP
 
 #include "base.hpp"
+#include "../core/bitmath_func.hpp"
 
 class Blitter_32bppBase : public Blitter {
 public:

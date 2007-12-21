@@ -36,6 +36,7 @@
 #define GFX_H
 
 #include "openttd.h"
+#include "core/math_func.hpp"
 #include "zoom.hpp"
 
 enum WindowKeyCodes {

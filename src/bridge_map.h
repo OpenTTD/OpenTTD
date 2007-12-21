@@ -6,7 +6,6 @@
 #define BRIDGE_MAP_H
 
 #include "direction_func.h"
-#include "macros.h"
 #include "map.h"
 #include "rail_type.h"
 #include "road_map.h"

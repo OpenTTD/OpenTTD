@@ -7,7 +7,6 @@
 #include "road_map.h"
 #include "road_internal.h"
 #include "water_map.h"
-#include "macros.h"
 
 bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 {

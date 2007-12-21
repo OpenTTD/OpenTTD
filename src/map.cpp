@@ -6,10 +6,10 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "macros.h"
 #include "map.h"
-#include "direction_func.h"
 #include "helpers.hpp"
+#include "direction_func.h"
+#include "core/bitmath_func.hpp"
 
 #if defined(_MSC_VER) && _MSC_VER >= 1400 /* VStudio 2005 is stupid! */
 /* Why the hell is that not in all MSVC headers?? */

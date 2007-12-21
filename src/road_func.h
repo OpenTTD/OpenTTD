@@ -5,6 +5,7 @@
 #ifndef ROAD_FUNC_H
 #define ROAD_FUNC_H
 
+#include "core/bitmath_func.hpp"
 #include "road_type.h"
 
 /**

@@ -4,7 +4,6 @@
 #define CMD_HELPER_H
 
 #include "direction_type.h"
-#include "macros.h"
 #include "road_type.h"
 
 

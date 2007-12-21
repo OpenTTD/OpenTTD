@@ -7,11 +7,10 @@
 #include "debug.h"
 #include "map.h"
 #include "airport.h"
-#include "macros.h"
 #include "variables.h"
 #include "airport_movement.h"
 #include "date.h"
-#include "helpers.hpp"
+#include "core/bitmath_func.hpp"
 
 /* Uncomment this to print out a full report of the airport-structure
  * You should either use

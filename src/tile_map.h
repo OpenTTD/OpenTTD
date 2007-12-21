@@ -8,6 +8,7 @@
 #include "tile_type.h"
 #include "slope_type.h"
 #include "map.h"
+#include "core/bitmath_func.hpp"
 
 /**
  * Returns the height of a tile

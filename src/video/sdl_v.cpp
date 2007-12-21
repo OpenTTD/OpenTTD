@@ -8,7 +8,6 @@
 #include "../debug.h"
 #include "../functions.h"
 #include "../gfx.h"
-#include "../macros.h"
 #include "../sdl.h"
 #include "../variables.h"
 #include "../blitter/factory.hpp"

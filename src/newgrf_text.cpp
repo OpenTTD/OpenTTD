@@ -15,7 +15,6 @@
 #include "string.h"
 #include "strings.h"
 #include "variables.h"
-#include "macros.h"
 #include "table/strings.h"
 #include "newgrf.h"
 #include "newgrf_text.h"

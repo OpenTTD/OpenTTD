@@ -7,7 +7,6 @@
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
-#include "../../macros.h"
 #include "../../string.h"
 #include "../../helpers.hpp"
 

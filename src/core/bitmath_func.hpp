@@ -276,4 +276,19 @@ template<typename T> static inline T ROR(const T x, const uint8 n)
 	return (T)(x >> n | x << (sizeof(x) * 8 - n));
 }
 
+/**
+ * Do an operation for each set set bit in a value.
+ *
+ * This macros is used to do an operation for each set
+ * bit in a variable. The first variable can be reused
+ * in the operation due to it's the bit position counter.
+ * The second variable will be cleared during the usage
+ *
+ * @param i The position counter
+ * @param b The value which we check for set bits
+ */
+#define FOR_EACH_SET_BIT(i, b)      \
+	for (i = 0; b != 0; i++, b >>= 1) \
+		if (b & 1)
+
 #endif /* BITMATH_FUNC_HPP */

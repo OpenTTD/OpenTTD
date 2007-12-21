@@ -5,6 +5,8 @@
 #ifndef OVERFLOWSAFE_TYPE_HPP
 #define OVERFLOWSAFE_TYPE_HPP
 
+#include "math_func.hpp"
+
 /**
  * Overflow safe template for integers, i.e. integers that will never overflow
  * you multiply the maximum value with 2, or add 2, or substract somethng from

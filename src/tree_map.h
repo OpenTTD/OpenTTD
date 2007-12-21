@@ -5,8 +5,6 @@
 #ifndef TREE_MAP_H
 #define TREE_MAP_H
 
-#include "macros.h"
-
 /**
  * List of tree types along all landscape types.
  *

@@ -5,7 +5,6 @@
 #ifndef WINDOW_GUI_H
 #define WINDOW_GUI_H
 
-#include "macros.h"
 #include "string.h"
 #include "order.h"
 #include "rail_type.h"

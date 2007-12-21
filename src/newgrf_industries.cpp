@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "macros.h"
 #include "variables.h"
 #include "landscape.h"
 #include "table/strings.h"

@@ -8,8 +8,8 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
-#include "../../macros.h"
-#include "../../helpers.hpp"
+#include "../../core/bitmath_func.hpp"
+#include "../../core/math_func.hpp"
 #include "packet.h"
 #include "udp.h"
 

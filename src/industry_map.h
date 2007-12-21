@@ -6,7 +6,6 @@
 #define INDUSTRY_MAP_H
 
 #include "industry.h"
-#include "macros.h"
 #include "tile_map.h"
 
 

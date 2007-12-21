@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "date.h"
 #include "variables.h"
-#include "macros.h"
 #include "vehicle.h"
 #include "network/network.h"
 #include "network/network_data.h"

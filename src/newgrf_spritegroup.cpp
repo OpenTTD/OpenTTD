@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "macros.h"
 #include "landscape.h"
 #include "oldpool.h"
 #include "newgrf_callbacks.h"

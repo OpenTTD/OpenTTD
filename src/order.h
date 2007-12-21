@@ -5,8 +5,8 @@
 #ifndef ORDER_H
 #define ORDER_H
 
-#include "macros.h"
 #include "oldpool.h"
+#include "core/bitmath_func.hpp"
 
 enum {
 	INVALID_VEH_ORDER_ID = 0xFF,

@@ -5,7 +5,6 @@
 #ifndef ROAD_MAP_H
 #define ROAD_MAP_H
 
-#include "macros.h"
 #include "track_func.h"
 #include "rail_type.h"
 #include "road_func.h"

@@ -6,8 +6,7 @@
 #include "openttd.h"
 #include "gfx.h"
 #include "bmp.h"
-#include "macros.h"
-#include "helpers.hpp"
+#include "core/bitmath_func.hpp"
 
 void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file)
 {

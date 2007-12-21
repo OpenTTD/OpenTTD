@@ -5,7 +5,6 @@
 #ifndef CLEAR_MAP_H
 #define CLEAR_MAP_H
 
-#include "macros.h"
 #include "bridge_map.h"
 
 /**

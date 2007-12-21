@@ -8,6 +8,7 @@
 #include "gfx.h"
 #include "rail_type.h"
 #include "track_type.h"
+#include "core/bitmath_func.hpp"
 #include "variables.h"
 
 /** This struct contains all the info that is needed to draw and construct tracks.

@@ -3,9 +3,9 @@
 /** @file random_func.cpp */
 
 #include "../stdafx.h"
-#include "../macros.h"
 #include "../variables.h"
 #include "random_func.hpp"
+#include "bitmath_func.hpp"
 
 uint32 InteractiveRandom()
 {

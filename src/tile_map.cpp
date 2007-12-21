@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "tile_map.h"
+#include "core/math_func.hpp"
 
 Slope GetTileSlope(TileIndex tile, uint *h)
 {

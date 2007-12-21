@@ -5,7 +5,7 @@
 #ifndef STRING_H
 #define STRING_H
 
-#include "macros.h"
+#include "core/bitmath_func.hpp"
 
 /**
  * usage ttd_strlcpy(dst, src, lengthof(dst));

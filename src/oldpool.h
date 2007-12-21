@@ -5,6 +5,8 @@
 #ifndef OLDPOOL_H
 #define OLDPOOL_H
 
+#include "core/math_func.hpp"
+
 /* The function that is called after a new block is added
      start_item is the first item of the new made block */
 typedef void OldMemoryPoolNewBlock(uint start_item);

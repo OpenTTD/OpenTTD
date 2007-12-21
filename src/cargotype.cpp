@@ -4,11 +4,11 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "macros.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "newgrf_cargo.h"
 #include "cargotype.h"
+#include "core/bitmath_func.hpp"
 
 #include "table/cargo_const.h"
 

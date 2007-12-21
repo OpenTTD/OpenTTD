@@ -8,7 +8,6 @@
 #include "string.h"
 #include "debug.h"
 #include "functions.h"
-#include "macros.h"
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "fileio.h"

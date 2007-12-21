@@ -11,7 +11,6 @@
 #include "fileio.h"
 #include "gfx.h"
 #include "sound.h"
-#include "macros.h"
 #include "variables.h"
 #include "music.h"
 #include "music/music_driver.hpp"
