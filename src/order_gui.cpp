@@ -8,7 +8,6 @@
 #include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "map.h"
 #include "gui.h"
@@ -27,6 +26,7 @@
 #include "timetable.h"
 #include "cargotype.h"
 #include "order.h"
+#include "strings_func.h"
 
 enum OrderWindowWidgets {
 	ORDER_WIDGET_CLOSEBOX = 0,

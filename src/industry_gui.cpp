@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "strings.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"
@@ -26,6 +25,7 @@
 #include "newgrf_industries.h"
 #include "newgrf_text.h"
 #include "date.h"
+#include "strings_func.h"
 
 bool _ignore_restrictions;
 

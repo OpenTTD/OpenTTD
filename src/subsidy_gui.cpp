@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "station.h"
 #include "industry.h"
@@ -17,6 +16,7 @@
 #include "date.h"
 #include "cargotype.h"
 #include "window_gui.h"
+#include "strings_func.h"
 
 static void HandleSubsidyClick(int y)
 {

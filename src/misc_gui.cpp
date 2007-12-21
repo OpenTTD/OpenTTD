@@ -11,10 +11,8 @@
 #include "newgrf.h"
 #include "newgrf_text.h"
 #include "saveload.h"
-#include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "table/tree_land.h"
 #include "map.h"
 #include "tile_map.h"
@@ -39,8 +37,7 @@
 #include "date.h"
 #include "cargotype.h"
 #include "player_face.h"
-#include "fileio.h"
-
+#include "strings_func.h"
 #include "fileio.h"
 #include "fios.h"
 /* Variables to display file lists */

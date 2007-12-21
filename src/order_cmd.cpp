@@ -18,8 +18,8 @@
 #include "saveload.h"
 #include "vehicle_gui.h"
 #include "cargotype.h"
-#include "strings.h"
 #include "aircraft.h"
+#include "strings_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Order, Order)
 

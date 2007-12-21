@@ -7,7 +7,6 @@
 #include "engine.h"
 #include "functions.h"
 #include "string.h"
-#include "strings.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"
@@ -30,6 +29,7 @@
 #include "settings.h"
 #include "window_func.h"
 #include "tile_map.h"
+#include "strings_func.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a

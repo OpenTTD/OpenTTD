@@ -4,7 +4,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "strings.h"
 #include "table/strings.h"
 #include "gfx.h"
 #include "fileio.h"
@@ -17,6 +16,7 @@
 #include "helpers.hpp"
 #include "blitter/factory.hpp"
 #include "fileio.h"
+#include "strings_func.h"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;

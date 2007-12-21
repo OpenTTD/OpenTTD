@@ -11,7 +11,7 @@ extern const char _openttd_revision[];
 #include "../debug.h"
 #include "../functions.h"
 #include "../string.h"
-#include "../strings.h"
+#include "../strings_func.h"
 #include "../map.h"
 #include "../command.h"
 #include "../variables.h"

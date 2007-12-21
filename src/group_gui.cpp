@@ -21,8 +21,8 @@
 #include "group.h"
 #include "helpers.hpp"
 #include "viewport.h"
-#include "strings.h"
 #include "debug.h"
+#include "strings_func.h"
 
 
 struct Sorting {

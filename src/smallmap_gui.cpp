@@ -11,7 +11,6 @@
 #include "industry.h"
 #include "station_map.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "table/sprites.h"
 #include "landscape.h"
 #include "map.h"
@@ -28,6 +27,7 @@
 #include "variables.h"
 #include "blitter/factory.hpp"
 #include "tunnelbridge_map.h"
+#include "strings_func.h"
 
 
 static const Widget _smallmap_widgets[] = {

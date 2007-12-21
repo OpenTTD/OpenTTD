@@ -9,7 +9,6 @@
 #include "industry_map.h"
 #include "station_map.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "table/sprites.h"
 #include "map.h"
 #include "train.h"
@@ -40,6 +39,7 @@
 #include "autoslope.h"
 #include "transparency.h"
 #include "water.h"
+#include "strings_func.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);

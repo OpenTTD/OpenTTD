@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "landscape.h"
 #include "date.h"
@@ -26,6 +25,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "train.h"
+#include "strings_func.h"
 
 #include "bridge_map.h"
 #include "rail_map.h"

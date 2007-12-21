@@ -9,6 +9,7 @@
 #endif
 
 #include "helpers.hpp"
+#include "strings_type.h"
 
 struct Oblong {
 	int x, y;
@@ -49,8 +50,6 @@ struct PalSpriteID {
 };
 typedef uint16 EngineID;
 typedef uint16 UnitID;
-typedef uint16 StringID;
-static const StringID INVALID_STRING_ID = 0xFFFF;
 
 typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
 
@@ -512,69 +511,6 @@ enum ExpensesType {
 	EXPENSES_SHIP_INC     = 10,
 	EXPENSES_LOAN_INT     = 11,
 	EXPENSES_OTHER        = 12,
-};
-
-enum {
-	MAX_LANG = 64,
-};
-
-// special string constants
-enum SpecialStrings {
-
-	// special strings for town names. the town name is generated dynamically on request.
-	SPECSTR_TOWNNAME_START     = 0x20C0,
-	SPECSTR_TOWNNAME_ENGLISH   = SPECSTR_TOWNNAME_START,
-	SPECSTR_TOWNNAME_FRENCH,
-	SPECSTR_TOWNNAME_GERMAN,
-	SPECSTR_TOWNNAME_AMERICAN,
-	SPECSTR_TOWNNAME_LATIN,
-	SPECSTR_TOWNNAME_SILLY,
-	SPECSTR_TOWNNAME_SWEDISH,
-	SPECSTR_TOWNNAME_DUTCH,
-	SPECSTR_TOWNNAME_FINNISH,
-	SPECSTR_TOWNNAME_POLISH,
-	SPECSTR_TOWNNAME_SLOVAKISH,
-	SPECSTR_TOWNNAME_NORWEGIAN,
-	SPECSTR_TOWNNAME_HUNGARIAN,
-	SPECSTR_TOWNNAME_AUSTRIAN,
-	SPECSTR_TOWNNAME_ROMANIAN,
-	SPECSTR_TOWNNAME_CZECH,
-	SPECSTR_TOWNNAME_SWISS,
-	SPECSTR_TOWNNAME_DANISH,
-	SPECSTR_TOWNNAME_TURKISH,
-	SPECSTR_TOWNNAME_ITALIAN,
-	SPECSTR_TOWNNAME_CATALAN,
-	SPECSTR_TOWNNAME_LAST      = SPECSTR_TOWNNAME_CATALAN,
-
-	// special strings for player names on the form "TownName transport".
-	SPECSTR_PLAYERNAME_START   = 0x70EA,
-	SPECSTR_PLAYERNAME_ENGLISH = SPECSTR_PLAYERNAME_START,
-	SPECSTR_PLAYERNAME_FRENCH,
-	SPECSTR_PLAYERNAME_GERMAN,
-	SPECSTR_PLAYERNAME_AMERICAN,
-	SPECSTR_PLAYERNAME_LATIN,
-	SPECSTR_PLAYERNAME_SILLY,
-	SPECSTR_PLAYERNAME_LAST    = SPECSTR_PLAYERNAME_SILLY,
-
-	SPECSTR_ANDCO_NAME         = 0x70E6,
-	SPECSTR_PRESIDENT_NAME     = 0x70E7,
-	SPECSTR_SONGNAME           = 0x70E8,
-
-	// reserve MAX_LANG strings for the *.lng files
-	SPECSTR_LANGUAGE_START     = 0x7100,
-	SPECSTR_LANGUAGE_END       = SPECSTR_LANGUAGE_START + MAX_LANG - 1,
-
-	// reserve 32 strings for various screen resolutions
-	SPECSTR_RESOLUTION_START   = SPECSTR_LANGUAGE_END + 1,
-	SPECSTR_RESOLUTION_END     = SPECSTR_RESOLUTION_START + 0x1F,
-
-	// reserve 32 strings for screenshot formats
-	SPECSTR_SCREENSHOT_START   = SPECSTR_RESOLUTION_END + 1,
-	SPECSTR_SCREENSHOT_END     = SPECSTR_SCREENSHOT_START + 0x1F,
-
-	// Used to implement SetDParamStr
-	STR_SPEC_DYNSTRING         = 0xF800,
-	STR_SPEC_USERSTRING        = 0xF808,
 };
 
 typedef void PlaceProc(TileIndex tile);

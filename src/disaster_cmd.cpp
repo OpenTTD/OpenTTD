@@ -23,7 +23,6 @@
 #include "industry_map.h"
 #include "station_map.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "map.h"
 #include "vehicle.h"
 #include "command.h"
@@ -38,6 +37,7 @@
 #include "variables.h"
 #include "table/sprites.h"
 #include "date.h"
+#include "strings_func.h"
 
 enum DisasterSubType {
 	ST_Zeppeliner,

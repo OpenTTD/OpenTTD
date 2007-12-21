@@ -7,7 +7,6 @@
 #include "currency.h"
 #include "functions.h"
 #include "string.h"
-#include "strings.h" // XXX GetCurrentCurrencyRate()
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "gui.h"
@@ -26,6 +25,7 @@
 #include "date.h"
 #include "helpers.hpp"
 #include "newgrf_townname.h"
+#include "strings_func.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;

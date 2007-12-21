@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "strings.h"
 #include "functions.h"
 #include "fileio.h"
 #include "gfx.h"
@@ -15,6 +14,7 @@
 #include "music.h"
 #include "music/music_driver.hpp"
 #include "window_gui.h"
+#include "strings_func.h"
 
 static byte _music_wnd_cursong;
 static bool _song_is_active;

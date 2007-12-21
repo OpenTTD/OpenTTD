@@ -41,11 +41,11 @@
 #include "road_type.h"
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "cargotype.h"
-#include "strings.h"
 #include "autoslope.h"
 #include "transparency.h"
 #include "water.h"
 #include "station_gui.h"
+#include "strings_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)

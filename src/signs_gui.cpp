@@ -13,11 +13,11 @@
 #include "gfx.h"
 #include "player.h"
 #include "signs.h"
-#include "strings.h"
 #include "debug.h"
 #include "variables.h"
 #include "helpers.hpp"
 #include "command.h"
+#include "strings_func.h"
 
 static const Sign **_sign_sort;
 static uint _num_sign_sort;

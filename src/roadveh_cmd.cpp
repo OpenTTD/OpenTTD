@@ -11,7 +11,6 @@
 #include "roadveh.h"
 #include "station_map.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "map.h"
 #include "vehicle.h"
 #include "timetable.h"
@@ -36,6 +35,7 @@
 #include "yapf/yapf.h"
 #include "date.h"
 #include "cargotype.h"
+#include "strings_func.h"
 #include "tunnelbridge_map.h"
 
 

@@ -14,8 +14,8 @@
 #include "table/sprites.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
-#include "strings.h"
 #include "helpers.hpp"
+#include "strings_func.h"
 
 /** Parse an integerlist string and set each found value
  * @param p the string to be parsed. Each element in the list is seperated by a

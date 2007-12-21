@@ -13,12 +13,10 @@
 
 #include "openttd.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "bridge_map.h"
 #include "functions.h"
 #include "mixer.h"
 #include "spritecache.h"
-#include "strings.h"
 #include "gfx.h"
 #include "gfxinit.h"
 #include "gui.h"
@@ -67,6 +65,7 @@
 #include "sound/sound_driver.hpp"
 #include "music/music_driver.hpp"
 #include "video/video_driver.hpp"
+#include "strings_func.h"
 
 #include "bridge_map.h"
 #include "clear_map.h"

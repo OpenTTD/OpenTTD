@@ -8,7 +8,6 @@
 #include "functions.h"
 #include "ship.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -18,6 +17,7 @@
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
+#include "strings_func.h"
 
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 {

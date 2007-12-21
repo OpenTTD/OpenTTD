@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "town.h"
@@ -20,6 +19,7 @@
 #include "network/network.h"
 #include "variables.h"
 #include "helpers.hpp"
+#include "strings_func.h"
 
 enum TownAuthorityWidget {
 	TWA_CLOSEBOX = 0,

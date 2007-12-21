@@ -6,7 +6,7 @@
 #include "../openttd.h" // XXX StringID
 #include "../debug.h"
 #include "../string.h"
-#include "../strings.h"
+#include "../strings_func.h"
 #include "network_data.h"
 #include "core/tcp.h"
 #include "../train.h"

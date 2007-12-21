@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "landscape.h"
 #include "player.h"
@@ -15,6 +14,7 @@
 #include "variables.h"
 #include "string.h"
 #include "misc/autoptr.hpp"
+#include "strings_func.h"
 
 SignID _new_sign_id;
 uint _total_signs;

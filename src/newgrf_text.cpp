@@ -13,7 +13,6 @@
 #include "debug.h"
 #include "openttd.h"
 #include "string.h"
-#include "strings.h"
 #include "variables.h"
 #include "table/strings.h"
 #include "newgrf.h"
@@ -21,6 +20,7 @@
 #include "table/control_codes.h"
 #include "helpers.hpp"
 #include "date.h"
+#include "strings_func.h"
 
 #define GRFTAB  28
 #define TABSIZE 11

@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -28,6 +27,7 @@
 #include "network/network_client.h"
 #include "network/network_gui.h"
 #include "player_face.h"
+#include "strings_func.h"
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
 static void DoSelectPlayerFace(PlayerID player, bool show_big);

@@ -8,7 +8,6 @@
 #include "functions.h"
 #include "gui.h"
 #include "spritecache.h"
-#include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "landscape.h"
@@ -26,6 +25,7 @@
 #include "vehicle_gui.h"
 #include "blitter/factory.hpp"
 #include "transparency.h"
+#include "strings_func.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 

@@ -8,7 +8,6 @@
 #include "functions.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "gui.h"
 #include "command.h"
 #include "variables.h"
@@ -16,7 +15,7 @@
 #include "newgrf_engine.h"
 #include "group.h"
 #include "rail.h"
-
+#include "strings_func.h"
 
 static RailType _railtype_selected_in_replace_gui;
 

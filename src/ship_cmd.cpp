@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "ship.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "landscape.h"
 #include "map.h"
@@ -33,6 +32,7 @@
 #include "date.h"
 #include "spritecache.h"
 #include "misc/autoptr.hpp"
+#include "strings_func.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 

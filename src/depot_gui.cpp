@@ -10,7 +10,6 @@
 #include "ship.h"
 #include "aircraft.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "table/sprites.h"
 #include "gui.h"
 #include "textbuf_gui.h"
@@ -23,6 +22,7 @@
 #include "station_map.h"
 #include "newgrf_engine.h"
 #include "spritecache.h"
+#include "strings_func.h"
 
 /*
  * Since all depot window sizes aren't the same, we need to modify sizes a little.

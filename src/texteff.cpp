@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
-#include "strings.h"
 #include "gfx.h"
 #include "landscape.h"
 #include "viewport.h"
@@ -20,6 +19,7 @@
 #include "texteff.hpp"
 #include "video/video_driver.hpp"
 #include "transparency.h"
+#include "strings_func.h"
 
 enum {
 	MAX_TEXTMESSAGE_LENGTH = 200,

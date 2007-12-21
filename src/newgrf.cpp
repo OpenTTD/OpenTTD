@@ -18,7 +18,6 @@
 #include "newgrf.h"
 #include "variables.h"
 #include "string.h"
-#include "strings.h"
 #include "table/strings.h"
 #include "bridge.h"
 #include "town.h"
@@ -49,6 +48,7 @@
 #include "gfxinit.h"
 #include "fios.h"
 #include "rail.h"
+#include "strings_func.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)

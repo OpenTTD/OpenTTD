@@ -9,7 +9,6 @@
 #include "functions.h"
 #include "spritecache.h"
 #include "station.h"
-#include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
@@ -51,6 +50,7 @@
 #include "network/network_gui.h"
 #include "industry.h"
 #include "transparency.h"
+#include "strings_func.h"
 
 static int _rename_id = 1;
 static int _rename_what = -1;

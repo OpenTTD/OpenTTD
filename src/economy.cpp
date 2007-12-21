@@ -7,7 +7,6 @@
 #include "currency.h"
 #include "functions.h"
 #include "landscape.h"
-#include "strings.h" // XXX InjectDParam()
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"
@@ -41,6 +40,7 @@
 #include "cargotype.h"
 #include "player_face.h"
 #include "group.h"
+#include "strings_func.h"
 
 /**
  * Multiply two integer values and shift the results to right.

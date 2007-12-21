@@ -17,8 +17,8 @@
 #include "aircraft.h"
 #include "string.h"
 #include "vehicle_gui.h"
-#include "strings.h"
 #include "misc/autoptr.hpp"
+#include "strings_func.h"
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one

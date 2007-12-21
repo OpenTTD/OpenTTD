@@ -4,7 +4,7 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../string.h"
-#include "../strings.h"
+#include "../strings_func.h"
 #include "../table/sprites.h"
 #include "network.h"
 #include "../date.h"

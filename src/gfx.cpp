@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "functions.h"
 #include "spritecache.h"
-#include "strings.h"
 #include "string.h"
 #include "gfx.h"
 #include "table/palettes.h"
@@ -20,6 +19,7 @@
 #include "texteff.hpp"
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"
+#include "strings_func.h"
 
 byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 bool _fullscreen;

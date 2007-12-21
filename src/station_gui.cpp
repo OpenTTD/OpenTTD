@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "strings.h"
 #include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -26,6 +25,7 @@
 #include "cargotype.h"
 #include "station_gui.h"
 #include "station.h"
+#include "strings_func.h"
 
 typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
 

@@ -22,8 +22,8 @@
 #include "table/engines.h"
 #include "group.h"
 #include "string.h"
-#include "strings.h"
 #include "misc/autoptr.hpp"
+#include "strings_func.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];

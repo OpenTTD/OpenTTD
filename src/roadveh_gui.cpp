@@ -11,13 +11,13 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "strings.h"
 #include "vehicle.h"
 #include "viewport.h"
 #include "command.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
+#include "strings_func.h"
 
 
 void DrawRoadVehDetails(const Vehicle *v, int x, int y)

@@ -24,8 +24,8 @@
 #include "date.h"
 #include "newgrf.h"
 #include "string.h"
-#include "strings.h"
 #include "misc/autoptr.hpp"
+#include "strings_func.h"
 
 enum {
 	MAX_WAYPOINTS_PER_TOWN = 64,

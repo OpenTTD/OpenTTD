@@ -12,7 +12,6 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "gfx.h"
-#include "strings.h"
 #include "gfxinit.h"
 #include "player.h"
 #include "command.h"
@@ -26,6 +25,7 @@
 #include "thread.h"
 #include "date.h"
 #include "newgrf_config.h"
+#include "strings_func.h"
 
 /**
  * In what 'mode' the GenerateLandscapeWindowProc is.

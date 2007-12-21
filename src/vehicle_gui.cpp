@@ -8,7 +8,6 @@
 #include "functions.h"
 #include "player.h"
 #include "station.h"
-#include "strings.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "vehicle.h"
@@ -34,6 +33,7 @@
 #include "cargotype.h"
 #include "group.h"
 #include "group_gui.h"
+#include "strings_func.h"
 
 struct Sorting {
 	Listing aircraft;

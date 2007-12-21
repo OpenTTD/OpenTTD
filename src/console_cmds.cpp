@@ -22,11 +22,11 @@
 #include "fileio.h"
 #include "vehicle.h"
 #include "station.h"
-#include "strings.h"
 #include "screenshot.h"
 #include "genworld.h"
 #include "date.h"
 #include "network/network.h"
+#include "strings_func.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;

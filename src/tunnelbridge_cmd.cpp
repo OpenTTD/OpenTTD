@@ -12,7 +12,6 @@
 #include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "map.h"
 #include "landscape.h"
@@ -35,6 +34,7 @@
 #include "transparency.h"
 #include "tunnelbridge_map.h"
 #include "table/bridge_land.h"
+#include "strings_func.h"
 
 
 const Bridge orig_bridge[] = {

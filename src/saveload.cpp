@@ -26,8 +26,8 @@
 #include "network/network.h"
 #include "variables.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "window_func.h"
+#include "strings_func.h"
 #include <list>
 
 extern const uint16 SAVEGAME_VERSION = 83;

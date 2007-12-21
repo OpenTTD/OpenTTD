@@ -13,7 +13,6 @@
 #include "sprite.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "map.h"
 #include "landscape.h"
@@ -35,6 +34,7 @@
 #include "transparency.h"
 #include "tunnelbridge_map.h"
 #include "window_func.h"
+#include "strings_func.h"
 
 
 #define M(x) (1 << (x))

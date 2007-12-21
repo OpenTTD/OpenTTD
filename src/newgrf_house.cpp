@@ -14,7 +14,6 @@
 #include "town_map.h"
 #include "sound.h"
 #include "sprite.h"
-#include "strings.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "table/town_land.h"

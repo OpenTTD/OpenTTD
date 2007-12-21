@@ -10,7 +10,6 @@
 #include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "landscape.h"
 #include "map.h"
@@ -31,6 +30,7 @@
 #include "newgrf_canal.h"
 #include "misc/autoptr.hpp"
 #include "transparency.h"
+#include "strings_func.h"
 
 /** Array for the shore sprites */
 static const SpriteID _water_shore_sprites[] = {

@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "map.h"
 #include "gui.h"
@@ -16,6 +15,7 @@
 #include "sound.h"
 #include "variables.h"
 #include "bridge.h"
+#include "strings_func.h"
 
 static struct BridgeData {
 	uint8 last_size;

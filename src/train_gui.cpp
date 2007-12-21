@@ -8,7 +8,6 @@
 #include "functions.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "vehicle.h"
@@ -18,6 +17,7 @@
 #include "depot.h"
 #include "train.h"
 #include "newgrf_engine.h"
+#include "strings_func.h"
 
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {

@@ -11,7 +11,6 @@
 #include "gui.h"
 #include "station_map.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "map.h"
 #include "tunnel_map.h"
 #include "vehicle.h"
@@ -42,6 +41,7 @@
 #include "group.h"
 #include "table/sprites.h"
 #include "tunnelbridge_map.h"
+#include "strings_func.h"
 
 
 static bool TrainCheckIfLineEnds(Vehicle *v);

@@ -18,7 +18,7 @@
 #include "variables.h"
 #include "livery.h"
 #include "player_face.h"
-#include "strings.h"
+#include "strings_func.h"
 
 /** Change the player's face.
  * @param tile unused

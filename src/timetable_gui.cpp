@@ -7,7 +7,6 @@
 #include "functions.h"
 #include "variables.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "command.h"
 #include "date.h"
 #include "engine.h"
@@ -18,6 +17,7 @@
 #include "vehicle.h"
 #include "cargotype.h"
 #include "depot.h"
+#include "strings_func.h"
 
 static int GetOrderFromTimetableWndPt(Window *w, int y, const Vehicle *v)
 {

@@ -6,7 +6,6 @@
 #include "../debug.h"
 #include "../string.h"
 #include "../openttd.h"
-#include "../strings.h"
 #include "network_data.h"
 #include "core/tcp.h"
 #include "../date.h"
@@ -23,6 +22,7 @@
 #include "../helpers.hpp"
 #include "../fileio.h"
 #include "../md5.h"
+#include "../strings_func.h"
 
 // This file handles all the client-commands
 

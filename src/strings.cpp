@@ -7,7 +7,6 @@
 #include "currency.h"
 #include "functions.h"
 #include "string.h"
-#include "strings.h"
 #include "table/strings.h"
 #include "namegen.h"
 #include "station.h"
@@ -35,6 +34,7 @@
 #include "spritecache.h"
 #include "fontcache.h"
 #include "gui.h"
+#include "strings_func.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"

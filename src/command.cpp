@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
-#include "strings.h"
 #include "functions.h"
 #include "landscape.h"
 #include "map.h"
@@ -17,6 +16,7 @@
 #include "variables.h"
 #include "genworld.h"
 #include "newgrf_storage.h"
+#include "strings_func.h"
 
 const char *_cmd_text = NULL;
 

@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "functions.h"
 #include "debug.h"
-#include "strings.h"
 #include "road_map.h"
 #include "road_internal.h" /* Cleaning up road bits */
 #include "table/strings.h"
@@ -45,6 +44,7 @@
 #include "waypoint.h"
 #include "transparency.h"
 #include "tunnelbridge_map.h"
+#include "strings_func.h"
 
 
 /* Initialize the town-pool */
