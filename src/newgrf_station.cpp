@@ -439,6 +439,34 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 		/* Variables which use the parameter */
 		/* Variables 0x60 to 0x65 are handled separately below */
+		case 0x67: { // Land info of nearby tiles
+			Axis axis = GetRailStationAxis(tile);
+
+			if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
+			byte tile_type = GetTerrainType(tile) << 2 | (IsTileType(tile, MP_WATER) ? 1 : 0) << 1;
+
+			uint z;
+			Slope tileh = GetTileSlope(tile, &z);
+			bool swap = (axis == AXIS_Y && HasBit(tileh, 0) != HasBit(tileh, 2));
+			return GetTileType(tile) << 24 | z << 16 | tile_type << 8 | (tileh ^ (swap ? 5 : 0));
+		}
+
+		case 0x68: { // Station info of nearby tiles
+			TileIndex nearby_tile = GetNearbyTile(parameter, tile);
+
+			if (!IsRailwayStationTile(nearby_tile)) return 0xFFFFFFFF;
+
+			uint32 grfid = st->speclist[GetCustomStationSpecIndex(tile)].grfid;
+			bool perpendicular = GetRailStationAxis(tile) != GetRailStationAxis(nearby_tile);
+			bool same_station = st->TileBelongsToRailStation(nearby_tile);
+			uint32 res = GB(GetStationGfx(nearby_tile), 1, 2) << 12 | !!perpendicular << 11 | !!same_station << 10;
+
+			if (IsCustomStationSpecIndex(nearby_tile)) {
+				const StationSpecList ssl = GetStationByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
+				res |= 1 << (ssl.grfid != grfid ? 9 : 8) | ssl.localidx;
+			}
+			return res;
+		}
 
 		/* General station properties */
 		case 0x82: return 50;

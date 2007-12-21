@@ -13,6 +13,7 @@
 #include "newgrf.h"
 #include "newgrf_commons.h"
 #include "tile_map.h"
+#include "station_map.h"
 
 /** Constructor of generic class
  * @param offset end of original data for this entity. i.e: houses = 110
@@ -276,6 +277,9 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile)
 
 	if (x >= 8) x -= 16;
 	if (y >= 8) y -= 16;
+
+	/* Swap width and height depending on axis for railway stations */
+	if (IsRailwayStationTile(tile) && GetRailStationAxis(tile) == AXIS_X) Swap(x, y);
 
 	/* Make sure we never roam outside of the map */
 	return TILE_MASK(tile + TileDiffXY(x, y));
