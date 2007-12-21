@@ -5,7 +5,7 @@
 #ifndef ZOOM_HPP
 #define ZOOM_HPP
 
-#include "helpers.hpp"
+#include "core/enum_type.hpp"
 
 enum ZoomLevel {
 	/* Our possible zoom-levels */

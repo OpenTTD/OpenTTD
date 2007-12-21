@@ -8,6 +8,7 @@
 #define VARDEF extern
 #endif
 
+#include "macros.h"
 #include "helpers.hpp"
 
 struct Oblong {
@@ -68,7 +69,7 @@ typedef uint16 GroupID;
 typedef uint16 EngineRenewID;
 typedef uint16 DestinationID;
 
-typedef OverflowSafeInt<int64, INT64_MAX, INT64_MIN> OverflowSafeInt64;
+#include "core/overflowsafe_type.hpp"
 typedef OverflowSafeInt64 Money;
 
 /* DestinationID must be at least as large as every these below, because it can

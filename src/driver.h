@@ -6,7 +6,7 @@
 #define DRIVER_H
 
 #include "debug.h"
-#include "helpers.hpp"
+#include "core/enum_type.hpp"
 #include "string.h"
 #include <string>
 #include <map>
