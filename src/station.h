@@ -13,6 +13,7 @@
 #include "newgrf_station.h"
 #include "cargopacket.h"
 #include "cargo_type.h"
+#include "core/geometry_type.hpp"
 #include <list>
 #include <set>
 

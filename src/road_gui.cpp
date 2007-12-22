@@ -12,7 +12,6 @@
 #include "window_gui.h"
 #include "station_gui.h"
 #include "viewport.h"
-#include "gfx.h"
 #include "sound.h"
 #include "command_func.h"
 #include "variables.h"

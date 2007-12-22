@@ -45,7 +45,6 @@
 #include "window_func.h"
 #include "strings_func.h"
 #ifdef WITH_FREETYPE
-#include "gfx.h"
 #include "fontcache.h"
 #endif
 #include "spritecache.h"
@@ -1087,7 +1086,6 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 /* Begin - Callback Functions for the various settings */
 #include "gui.h"
 #include "town.h"
-#include "gfx.h"
 /* virtual PositionMainToolbar function, calls the right one.*/
 static int32 v_PositionMainToolbar(int32 p1)
 {

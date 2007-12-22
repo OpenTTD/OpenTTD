@@ -5,10 +5,9 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#include "gfx.h"
-#include "viewport.h"
 #include "core/random_func.hpp"
 #include "command_type.h"
+#include "window_type.h"
 
 void UpdateTownMaxPass(Town *t);
 
@@ -74,15 +73,6 @@ void InvalidateWindowClassesData(WindowClass cls);
 void DeleteWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindowByClass(WindowClass cls);
 
-void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode, Window *w);
-void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, WindowClass window_class, WindowNumber window_num);
-
-void ResetObjectToPlace();
-
-bool ScrollWindowTo(int x, int y, Window *w, bool instant = false);
-
-bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
-bool ScrollMainWindowTo(int x, int y, bool instant = false);
 bool EnsureNoVehicleOnGround(TileIndex tile);
 
 /**

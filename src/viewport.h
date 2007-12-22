@@ -168,4 +168,14 @@ extern TileHighlightData _thd;
 
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
 
+void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode, Window *w);
+void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, WindowClass window_class, WindowNumber window_num);
+
+void ResetObjectToPlace();
+
+bool ScrollWindowTo(int x, int y, Window *w, bool instant = false);
+
+bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
+bool ScrollMainWindowTo(int x, int y, bool instant = false);
+
 #endif /* VIEWPORT_H */

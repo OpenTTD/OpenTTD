@@ -15,6 +15,7 @@
 #include "string.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
+#include "viewport.h"
 
 SignID _new_sign_id;
 uint _total_signs;

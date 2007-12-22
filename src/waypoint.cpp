@@ -7,7 +7,6 @@
 
 #include "command_func.h"
 #include "functions.h"
-#include "gfx.h"
 #include "landscape.h"
 #include "map.h"
 #include "order.h"
@@ -26,6 +25,7 @@
 #include "string.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
+#include "viewport.h"
 
 enum {
 	MAX_WAYPOINTS_PER_TOWN = 64,

@@ -12,7 +12,6 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
-#include "gfx.h"
 #include "command_func.h"
 #include "viewport.h"
 #include "industry.h"

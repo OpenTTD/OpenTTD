@@ -10,7 +10,6 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
-#include "gfx.h"
 #include "player.h"
 #include "network/network.h"
 #include "variables.h"

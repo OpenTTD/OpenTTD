@@ -37,6 +37,8 @@
 
 #include "openttd.h"
 #include "core/math_func.hpp"
+#include "core/geometry_type.hpp"
+#include "core/enum_type.hpp"
 #include "zoom.hpp"
 
 enum WindowKeyCodes {
@@ -125,25 +127,9 @@ enum WindowKeyCodes {
 	WKC_MINUS       = 153, ///< - Minus
 };
 
-enum GameModes {
-	GM_MENU,
-	GM_NORMAL,
-	GM_EDITOR
-};
-
 void GameLoop();
 
 void CreateConsole();
-
-typedef int32 CursorID;
-
-struct Point {
-	int x, y;
-};
-
-struct Rect {
-	int left,top,right,bottom;
-};
 
 /** A single sprite of a list of animated cursors */
 struct AnimCursor {
@@ -203,10 +189,6 @@ extern bool _right_button_down;
 extern bool _right_button_clicked;
 
 extern DrawPixelInfo _screen;
-extern bool _exit_game;
-extern bool _networking;         ///< are we in networking mode?
-extern byte _game_mode;
-extern byte _pause_game;
 
 extern int _pal_first_dirty;
 extern int _pal_count_dirty;
@@ -229,15 +211,12 @@ void HandleExitGameRequest();
 void GameSizeChanged();
 void UndrawMouseCursor();
 
-#include "helpers.hpp"
-
 enum FontSize {
 	FS_NORMAL,
 	FS_SMALL,
 	FS_LARGE,
 	FS_END,
 };
-
 DECLARE_POSTFIX_INCREMENT(FontSize);
 
 void RedrawScreenRect(int left, int top, int right, int bottom);
@@ -281,7 +260,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color);
 void GfxDrawLine(int left, int top, int right, int bottom, int color);
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
-BoundingRect GetStringBoundingBox(const char *str);
+Dimension GetStringBoundingBox(const char *str);
 uint32 FormatStringLinebreaks(char *str, int maxw);
 void LoadStringWidthTable();
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw);

@@ -24,6 +24,7 @@
 #include "newgrf_config.h"
 #include "ai/ai.h"
 #include "date.h"
+#include "zoom.hpp"
 
 enum {
 	HEADER_SIZE = 49,

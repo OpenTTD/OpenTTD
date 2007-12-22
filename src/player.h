@@ -14,7 +14,6 @@
 #include "engine.h"
 #include "livery.h"
 #include "genworld.h"
-#include "gfx.h"
 
 struct PlayerEconomyEntry {
 	Money income;

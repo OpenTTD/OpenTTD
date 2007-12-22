@@ -7,7 +7,6 @@
 #include "variables.h"
 #include "string.h"
 #include "table/strings.h"
-#include "gfx.h"
 #include "gui.h"
 #include "functions.h"
 #include "fileio.h"

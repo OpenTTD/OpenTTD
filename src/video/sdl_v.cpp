@@ -11,6 +11,7 @@
 #include "../sdl.h"
 #include "../variables.h"
 #include "../blitter/factory.hpp"
+#include "../network/network.h"
 #include "sdl_v.h"
 #include <SDL.h>
 

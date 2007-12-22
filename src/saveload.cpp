@@ -1100,7 +1100,6 @@ static void UninitNoComp()
  ********************************************/
 
 #include "table/sprites.h"
-#include "gfx.h"
 #include "gui.h"
 
 struct ThreadedSave {

@@ -11,7 +11,6 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "viewport.h"
-#include "gfx.h"
 #include "player.h"
 #include "command_func.h"
 #include "vehicle.h"

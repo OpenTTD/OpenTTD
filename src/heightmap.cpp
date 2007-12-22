@@ -11,7 +11,6 @@
 #include "table/strings.h"
 #include "void_map.h"
 #include "debug.h"
-#include "gfx.h"
 #include "gui.h"
 #include "saveload.h"
 #include "bmp.h"

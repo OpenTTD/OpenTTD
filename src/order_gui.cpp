@@ -12,7 +12,6 @@
 #include "map.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "gfx.h"
 #include "vehicle.h"
 #include "station.h"
 #include "town.h"

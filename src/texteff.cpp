@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "functions.h"
 #include "tile_cmd.h"
-#include "gfx.h"
 #include "landscape.h"
 #include "viewport.h"
 #include "saveload.h"
@@ -58,7 +57,7 @@ static bool _chatmessage_visible = false;
 
 /* The chatbox grows from the bottom so the coordinates are pixels from
  * the left and pixels from the bottom. The height is the maximum height */
-static const Oblong _chatmsg_box = {10, 30, 500, 150};
+static const PointDimension _chatmsg_box = {10, 30, 500, 150};
 static uint8 _chatmessage_backup[150 * 500 * 6]; // (height * width)
 
 static inline uint GetChatMessageCount()

@@ -8,7 +8,6 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "viewport.h"
-#include "gfx.h"
 #include "sound.h"
 #include "variables.h"
 #include "transparency.h"

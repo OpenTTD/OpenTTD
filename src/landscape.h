@@ -5,7 +5,7 @@
 #ifndef LANDSCAPE_H
 #define LANDSCAPE_H
 
-#include "gfx.h"
+#include "core/geometry_type.hpp"
 
 enum {
 	SNOW_LINE_MONTHS = 12,

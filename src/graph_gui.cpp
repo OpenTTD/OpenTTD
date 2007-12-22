@@ -9,7 +9,6 @@
 #include "functions.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "gfx.h"
 #include "player.h"
 #include "economy_func.h"
 #include "variables.h"

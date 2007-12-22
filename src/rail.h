@@ -5,7 +5,6 @@
 #ifndef RAIL_H
 #define RAIL_H
 
-#include "gfx.h"
 #include "rail_type.h"
 #include "track_type.h"
 #include "vehicle_type.h"

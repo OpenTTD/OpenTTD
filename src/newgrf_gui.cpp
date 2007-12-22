@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "functions.h"
 #include "variables.h"
-#include "gfx.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"

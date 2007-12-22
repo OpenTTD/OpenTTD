@@ -5,6 +5,7 @@
 
 #include "../spritecache.h"
 #include "../spriteloader/spriteloader.hpp"
+#include "../zoom.hpp"
 
 enum BlitterMode {
 	BM_NORMAL,

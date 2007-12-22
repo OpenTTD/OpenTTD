@@ -9,7 +9,6 @@
 #include "functions.h"
 #include "map.h"
 #include "player.h"
-#include "gfx.h"
 #include "viewport.h"
 #include "console.h"
 #include "variables.h"

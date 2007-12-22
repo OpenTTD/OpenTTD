@@ -8,7 +8,6 @@
 #include "functions.h"
 #include "table/strings.h"
 #include "engine.h"
-#include "gfx.h"
 #include "player.h"
 #include "command_func.h"
 #include "vehicle.h"
@@ -24,6 +23,7 @@
 #include "string.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
+#include "viewport.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];

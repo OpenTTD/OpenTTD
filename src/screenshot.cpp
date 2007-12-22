@@ -5,7 +5,6 @@
 #include "debug.h"
 #include "functions.h"
 #include "table/strings.h"
-#include "gfx.h"
 #include "fileio.h"
 #include "viewport.h"
 #include "player.h"

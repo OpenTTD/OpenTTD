@@ -17,7 +17,6 @@
 #include "functions.h"
 #include "mixer.h"
 #include "spritecache.h"
-#include "gfx.h"
 #include "gfxinit.h"
 #include "gui.h"
 #include "landscape.h"

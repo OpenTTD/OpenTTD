@@ -5,9 +5,9 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
+#include "gfx.h"
 #include "spritecache.h"
 #include "string.h"
-#include "gfx.h"
 #include "table/palettes.h"
 #include "table/sprites.h"
 #include "variables.h"
@@ -514,16 +514,16 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 }
 
 /** Return the string dimension in pixels. The height and width are returned
- * in a single BoundingRect value. TINYFONT, BIGFONT modifiers are only
+ * in a single Dimension value. TINYFONT, BIGFONT modifiers are only
  * supported as the first character of the string. The returned dimensions
  * are therefore a rough estimation correct for all the current strings
  * but not every possible combination
  * @param str string to calculate pixel-width
  * @return string width and height in pixels */
-BoundingRect GetStringBoundingBox(const char *str)
+Dimension GetStringBoundingBox(const char *str)
 {
 	FontSize size = _cur_fontsize;
-	BoundingRect br;
+	Dimension br;
 	int max_width;
 	WChar c;
 

@@ -27,6 +27,7 @@
 #include "date.h"
 #include "network/network.h"
 #include "strings_func.h"
+#include "viewport.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;

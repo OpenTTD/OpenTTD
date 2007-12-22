@@ -216,6 +216,7 @@ void NetworkDisconnect();
 
 bool IsNetworkCompatibleVersion(const char *version);
 
+extern bool _networking;         ///< are we in networking mode?
 VARDEF bool _network_server;     ///< network-server is active
 VARDEF bool _network_available;  ///< is network mode available?
 VARDEF bool _network_dedicated;  ///< are we a dedicated server?
@@ -235,7 +236,7 @@ static inline void NetworkShutDown() {}
 
 #endif /* ENABLE_NETWORK */
 
-/* Thss variable must always be registered! */
+/* This variable must always be registered! */
 VARDEF PlayerID _network_playas; ///< an id to play as.. (see players.h:Players)
 
 #endif /* NETWORK_H */

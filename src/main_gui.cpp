@@ -17,7 +17,6 @@
 #include "window_func.h"
 #include "textbuf_gui.h"
 #include "viewport.h"
-#include "gfx.h"
 #include "player.h"
 #include "command_func.h"
 #include "news.h"

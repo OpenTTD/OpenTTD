@@ -22,7 +22,6 @@
 #include "command_func.h"
 #include "player.h"
 #include "town.h"
-#include "gfx.h"
 #include "sound.h"
 #include "yapf/yapf.h"
 #include "depot.h"

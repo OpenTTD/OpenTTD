@@ -21,7 +21,6 @@
 #include "station_gui.h"
 #include "textbuf_gui.h"
 #include "viewport.h"
-#include "gfx.h"
 #include "station.h"
 #include "command_func.h"
 #include "player.h"
@@ -728,7 +727,7 @@ static void TooltipsWndProc(Window *w, WindowEvent *e)
 void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[])
 {
 	char buffer[512];
-	BoundingRect br;
+	Dimension br;
 	Window *w;
 	uint i;
 	int x, y;

@@ -15,7 +15,6 @@
 #include "viewport.h"
 #include "vehicle.h"
 #include "station.h"
-#include "gfx.h"
 #include "town.h"
 #include "signs.h"
 #include "waypoint.h"

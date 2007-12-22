@@ -23,6 +23,7 @@
 #include "cargotype.h"
 #include "town_map.h"
 #include "newgrf_town.h"
+#include "gfx.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 

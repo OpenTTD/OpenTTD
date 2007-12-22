@@ -8,7 +8,6 @@
 #include "player.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "gfx.h"
 #include "viewport.h"
 #include "window_gui.h"
 

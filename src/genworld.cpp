@@ -12,7 +12,6 @@
 #include "thread.h"
 #include "command_func.h"
 #include "genworld.h"
-#include "gfx.h"
 #include "gfxinit.h"
 #include "window_func.h"
 #include "network/network.h"

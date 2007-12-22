@@ -10,7 +10,6 @@
 #include "command_func.h"
 #include "economy_func.h"
 #include "player.h"
-#include "gfx.h"
 #include "gui.h"
 #include "window_func.h"
 #include "textbuf_gui.h"

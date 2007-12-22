@@ -9,7 +9,6 @@
 #include "table/sprites.h"
 #include "table/control_codes.h"
 #include "spritecache.h"
-#include "gfx.h"
 #include "string.h"
 #include "fontcache.h"
 #include "helpers.hpp"

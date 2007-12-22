@@ -7,6 +7,7 @@
 
 #include "string.h"
 #include "window_type.h"
+#include "vehicle_type.h"
 #include "gfx.h"
 
 /* main_gui.cpp */

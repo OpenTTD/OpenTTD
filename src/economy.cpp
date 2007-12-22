@@ -14,7 +14,6 @@
 #include "player.h"
 #include "station.h"
 #include "vehicle.h"
-#include "gfx.h"
 #include "command_func.h"
 #include "saveload.h"
 #include "industry.h"

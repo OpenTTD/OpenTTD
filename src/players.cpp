@@ -14,7 +14,6 @@
 #include "town.h"
 #include "vehicle.h"
 #include "station.h"
-#include "gfx.h"
 #include "news.h"
 #include "saveload.h"
 #include "command_func.h"
@@ -30,6 +29,7 @@
 #include "window_func.h"
 #include "tile_map.h"
 #include "strings_func.h"
+#include "gfx.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a

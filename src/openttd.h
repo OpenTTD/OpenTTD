@@ -11,21 +11,6 @@
 #include "helpers.hpp"
 #include "strings_type.h"
 
-struct Oblong {
-	int x, y;
-	int width, height;
-};
-
-struct BoundingRect {
-	int width;
-	int height;
-};
-
-struct Pair {
-	int a;
-	int b;
-};
-
 #include "map.h"
 #include "slope_type.h"
 
@@ -46,6 +31,7 @@ struct PalSpriteID {
 	SpriteID sprite;
 	SpriteID pal;
 };
+typedef int32 CursorID;
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 
@@ -82,6 +68,12 @@ typedef int32 Year;
 typedef int32 Date;
 
 typedef uint32 PlayerFace; ///< player face bits, info see in player_face.h
+
+enum GameModes {
+	GM_MENU,
+	GM_NORMAL,
+	GM_EDITOR
+};
 
 enum SwitchModes {
 	SM_NONE            =  0,
@@ -281,5 +273,9 @@ enum ThreadMsg {
 };
 
 void OTTD_SendThreadMessage(ThreadMsg msg);
+
+extern byte _game_mode;
+extern bool _exit_game;
+extern byte _pause_game;
 
 #endif /* OPENTTD_H */

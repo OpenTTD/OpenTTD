@@ -8,7 +8,6 @@
 #include "table/sprites.h"
 #include "functions.h"
 #include "fileio.h"
-#include "gfx.h"
 #include "sound.h"
 #include "variables.h"
 #include "music.h"

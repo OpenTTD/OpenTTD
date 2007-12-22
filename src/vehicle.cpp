@@ -15,7 +15,6 @@
 #include "map.h"
 #include "vehicle.h"
 #include "timetable.h"
-#include "gfx.h"
 #include "viewport.h"
 #include "news.h"
 #include "command_func.h"

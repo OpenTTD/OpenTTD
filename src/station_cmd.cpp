@@ -16,7 +16,6 @@
 #include "table/strings.h"
 #include "map.h"
 #include "station.h"
-#include "gfx.h"
 #include "viewport.h"
 #include "command_func.h"
 #include "town.h"

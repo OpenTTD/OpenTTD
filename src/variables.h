@@ -6,10 +6,9 @@
 #define VARIABLES_H
 
 #include "yapf/yapf_settings.h"
+#include "openttd.h"
 
 /* ********* START OF SAVE REGION */
-
-#include "gfx.h"
 
 struct GameOptions {
 	GameDifficulty diff;

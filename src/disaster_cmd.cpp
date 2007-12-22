@@ -18,7 +18,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "gfx.h"
 #include "landscape.h"
 
 #include "industry_map.h"

@@ -5,6 +5,7 @@
 #ifndef ECONOMY_FUNC_H
 #define ECONOMY_FUNC_H
 
+#include "core/geometry_type.hpp"
 #include "economy_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"

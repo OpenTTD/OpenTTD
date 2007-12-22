@@ -10,7 +10,6 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "viewport.h"
-#include "gfx.h"
 #include "command_func.h"
 #include "economy_func.h"
 #include "sound.h"

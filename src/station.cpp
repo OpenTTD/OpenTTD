@@ -12,7 +12,6 @@
 #include "table/strings.h"
 #include "map.h"
 #include "station.h"
-#include "gfx.h"
 #include "viewport.h"
 #include "town.h"
 #include "vehicle.h"

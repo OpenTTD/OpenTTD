@@ -17,7 +17,6 @@
 #include "viewport.h"
 #include "town.h"
 #include "command_func.h"
-#include "gfx.h"
 #include "industry.h"
 #include "station.h"
 #include "vehicle.h"
