@@ -10,6 +10,13 @@
 	#define Point OTTD_Point
 #endif /* __AMIGA__ */
 
+#if defined(__APPLE__)
+	/* Mac OS X already has both Rect and Point declared */
+	#define Rect OTTD_Rect
+	#define Point OTTD_Point
+#endif /* __APPLE__ */
+
+
 struct Point {
 	int x;
 	int y;

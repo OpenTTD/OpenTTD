@@ -40,9 +40,12 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../variables.h"
+#include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
+#include "../../functions.h"
+#include "../../core/math_func.hpp"
+#include "../../gfx_func.h"
 
-#undef Point
 #undef Rect
 
 
@@ -136,7 +139,7 @@ public:
 	virtual void MakeDirty(int left, int top, int width, int height);
 	virtual void UpdatePalette(uint first_color, uint num_colors);
 
-	virtual uint ListModes(OTTDPoint* modes, uint max_modes);
+	virtual uint ListModes(OTTD_Point* modes, uint max_modes);
 
 	virtual bool ChangeResolution(int w, int h);
 
@@ -657,7 +660,7 @@ void WindowQuartzSubdriver::UpdatePalette(uint first_color, uint num_colors)
 	num_dirty_rects = MAX_DIRTY_RECTS;
 }
 
-uint WindowQuartzSubdriver::ListModes(OTTDPoint* modes, uint max_modes)
+uint WindowQuartzSubdriver::ListModes(OTTD_Point* modes, uint max_modes)
 {
 	if (max_modes == 0) return 0;
 

@@ -10,9 +10,7 @@
 #undef true
 
 /* Name conflict */
-#define Rect		OTTDRect
-#define Point		OTTDPoint
-#define GetTime		OTTDGetTime
+#define GetTime		OTTD_GetTime
 
 #define SL_ERROR OSX_SL_ERROR
 

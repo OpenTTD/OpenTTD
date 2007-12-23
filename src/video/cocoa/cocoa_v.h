@@ -40,7 +40,7 @@ public:
 	virtual void MakeDirty(int left, int top, int width, int height) = 0;
 	virtual void UpdatePalette(uint first_color, uint num_colors) = 0;
 
-	virtual uint ListModes(OTTDPoint* modes, uint max_modes) = 0;
+	virtual uint ListModes(OTTD_Point* modes, uint max_modes) = 0;
 
 	virtual bool ChangeResolution(int w, int h) = 0;
 

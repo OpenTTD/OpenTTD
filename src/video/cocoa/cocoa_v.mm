@@ -57,12 +57,11 @@ extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum* psn);
 #include "../../openttd.h"
 #include "../../debug.h"
 #include "../../variables.h"
+#include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
 #include "../../blitter/factory.hpp"
 #include "../../fileio.h"
-
-#undef Point
-#undef Rect
+#include "../../gfx_func.h"
 
 
 @interface OTTDMain : NSObject
@@ -199,7 +198,7 @@ static void setupApplication()
 static void QZ_UpdateVideoModes()
 {
 	uint i, count;
-	OTTDPoint modes[32];
+	OTTD_Point modes[32];
 
 	assert(_cocoa_subdriver != NULL);
 

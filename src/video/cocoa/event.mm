@@ -40,12 +40,13 @@
 #include "../../debug.h"
 #include "../../os/macosx/splash.h"
 #include "../../variables.h"
+#include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
 #include "cocoa_keys.h"
 #include "../../blitter/factory.hpp"
+#include "../../gfx_func.h"
+#include "../../network/network.h"
 
-#undef Point
-#undef Rect
 
 /* Right Mouse Button Emulation enum */
 enum {

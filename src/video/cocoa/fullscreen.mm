@@ -42,9 +42,10 @@ extern "C" void HideMenuBar();
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../variables.h"
+#include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
+#include "../../gfx_func.h"
 
-#undef Point
 #undef Rect
 
 
@@ -447,7 +448,7 @@ public:
 		CGDisplaySetPalette(display_id, palette);
 	}
 
-	virtual uint ListModes(OTTDPoint* modes, uint max_modes)
+	virtual uint ListModes(OTTD_Point* modes, uint max_modes)
 	{
 		CFArrayRef mode_list;
 		CFIndex num_modes;
