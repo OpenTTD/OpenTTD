@@ -9,7 +9,7 @@
 #include "helpers.hpp"
 #include "saveload.h"
 #include "string.h"
-#include "gfx.h"
+#include "gfx_func.h"
 #include "textbuf_gui.h"
 #include "fileio.h"
 #include <windows.h>
