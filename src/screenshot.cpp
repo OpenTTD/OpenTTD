@@ -16,6 +16,7 @@
 #include "blitter/factory.hpp"
 #include "fileio.h"
 #include "strings_func.h"
+#include "zoom_func.h"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;

@@ -5,10 +5,10 @@
 #ifndef VIEWPORT_H
 #define VIEWPORT_H
 
-#include "zoom.hpp"
+#include "zoom_type.h"
 #include "window_type.h"
 #include "vehicle_type.h"
-#include "gfx.h"
+#include "gfx_func.h"
 
 struct ViewPort {
 	int left,top;                       // screen coordinates for the viewport

@@ -14,6 +14,7 @@
 #include "helpers.hpp"
 #include "spriteloader/spriteloader.hpp"
 #include "blitter/factory.hpp"
+#include "gfx_func.h"
 
 #ifdef WITH_FREETYPE
 

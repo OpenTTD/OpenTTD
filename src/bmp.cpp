@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "gfx.h"
 #include "bmp.h"
 #include "core/bitmath_func.hpp"
 

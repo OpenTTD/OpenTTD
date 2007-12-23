@@ -2,7 +2,7 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
-#include "../gfx.h"
+#include "../gfx_func.h"
 #include "../variables.h"
 #include "../debug.h"
 #include "../blitter/factory.hpp"

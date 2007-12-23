@@ -3,7 +3,7 @@
 /** @file grf.cpp */
 
 #include "../stdafx.h"
-#include "../gfx.h"
+#include "../gfx_func.h"
 #include "../fileio.h"
 #include "../debug.h"
 #include "grf.hpp"

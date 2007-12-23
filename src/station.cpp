@@ -32,6 +32,7 @@
 #include "cargotype.h"
 #include "roadveh.h"
 #include "station_gui.h"
+#include "zoom_func.h"
 
 Station::Station(TileIndex tile)
 {

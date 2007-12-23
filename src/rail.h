@@ -8,9 +8,10 @@
 #include "rail_type.h"
 #include "track_type.h"
 #include "vehicle_type.h"
+#include "gfx_type.h"
 #include "core/bitmath_func.hpp"
-#include "variables.h"
 #include "economy_func.h"
+#include "variables.h"
 
 /** This struct contains all the info that is needed to draw and construct tracks.
  */

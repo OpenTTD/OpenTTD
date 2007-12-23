@@ -5,7 +5,7 @@
 #include "../../variables.h"
 #include "../../debug.h"
 #include "../../functions.h"
-#include "../../gfx.h"
+#include "../../gfx_func.h"
 #include "../../fileio.h"
 #include "../../blitter/factory.hpp"
 

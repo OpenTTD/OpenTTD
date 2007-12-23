@@ -8,6 +8,7 @@
 #include "core/random_func.hpp"
 #include "command_type.h"
 #include "window_type.h"
+#include "openttd.h"
 
 void UpdateTownMaxPass(Town *t);
 

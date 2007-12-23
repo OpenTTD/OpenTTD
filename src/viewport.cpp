@@ -25,6 +25,7 @@
 #include "blitter/factory.hpp"
 #include "transparency.h"
 #include "strings_func.h"
+#include "zoom_func.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 

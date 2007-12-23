@@ -19,7 +19,6 @@
 #include "../gui.h"
 #include "../window_gui.h"
 #include "../textbuf_gui.h"
-#include "../gfx.h"
 #include "../variables.h"
 #include "network_server.h"
 #include "network_udp.h"

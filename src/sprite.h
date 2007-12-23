@@ -5,6 +5,8 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include "gfx_type.h"
+
 #define GENERAL_SPRITE_COLOR(color) ((color) + PALETTE_RECOLOR_START)
 #define PLAYER_SPRITE_COLOR(owner) (GENERAL_SPRITE_COLOR(_player_colors[owner]))
 

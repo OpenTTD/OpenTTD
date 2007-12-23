@@ -5,6 +5,8 @@
 #ifndef TRANSPARENCY_H
 #define TRANSPARENCY_H
 
+#include "gfx_func.h"
+
 /**
  * Transparency option bits: which position in _transparency_opt stands for which transparency.
  * If you change the order, change the order of the ShowTransparencyToolbar() stuff in transparency_gui.cpp too.

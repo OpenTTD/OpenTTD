@@ -17,6 +17,7 @@
 #include "genworld.h"
 #include "newgrf_storage.h"
 #include "strings_func.h"
+#include "gfx_func.h"
 
 const char *_cmd_text = NULL;
 

@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
-#include "gfx.h"
+#include "gfx_func.h"
 #include "spritecache.h"
 #include "string.h"
 #include "table/palettes.h"
@@ -15,7 +15,7 @@
 #include "fontcache.h"
 #include "genworld.h"
 #include "debug.h"
-#include "zoom.hpp"
+#include "zoom_func.h"
 #include "texteff.hpp"
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"
@@ -41,6 +41,9 @@ int _pal_count_dirty;
 
 Colour _cur_palette[256];
 byte _stringwidth_table[FS_END][224];
+DrawPixelInfo *_cur_dpi;
+byte _colour_gradient[16][8];
+bool _use_dos_palette;
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL);
 
@@ -561,7 +564,7 @@ Dimension GetStringBoundingBox(const char *str)
  * @param x offset from left side of the screen, if negative offset from the right side
  * @param y offset from top side of the screen, if negative offset from the bottom
  * @param real_color colour of the string, see _string_colormap in
- * table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx.h
+ * table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @return the x-coordinates where the drawing has finished. If nothing is drawn
  * the originally passed x-coordinate is returned */
 int DoDrawString(const char *string, int x, int y, uint16 real_color)

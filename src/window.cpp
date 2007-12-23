@@ -17,6 +17,7 @@
 #include "helpers.hpp"
 #include "blitter/factory.hpp"
 #include "window_gui.h"
+#include "zoom_func.h"
 
 /* delta between mouse cursor and upper left corner of dragged window */
 static Point _drag_delta;

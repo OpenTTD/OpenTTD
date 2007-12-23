@@ -5,7 +5,7 @@
 #ifdef WITH_PNG
 
 #include "../stdafx.h"
-#include "../gfx.h"
+#include "../gfx_func.h"
 #include "../fileio.h"
 #include "../variables.h"
 #include "../debug.h"

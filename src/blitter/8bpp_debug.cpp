@@ -3,8 +3,7 @@
 /** @file 8bpp_debug.cpp */
 
 #include "../stdafx.h"
-#include "../zoom.hpp"
-#include "../gfx.h"
+#include "../zoom_func.h"
 #include "../functions.h"
 #include "8bpp_debug.hpp"
 

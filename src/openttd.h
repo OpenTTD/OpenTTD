@@ -26,12 +26,6 @@ struct DrawPixelInfo;
 struct Group;
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef byte LandscapeID;
-typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
-struct PalSpriteID {
-	SpriteID sprite;
-	SpriteID pal;
-};
-typedef int32 CursorID;
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 

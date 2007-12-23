@@ -5,6 +5,8 @@
 #ifndef BMP_H
 #define BMP_H
 
+#include "gfx_type.h"
+
 struct BmpInfo {
 	uint32 offset;       ///< offset of bitmap data from .bmp file begining
 	uint32 width;        ///< bitmap width

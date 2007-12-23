@@ -3,7 +3,7 @@
 #ifndef FONTCACHE_H
 #define FONTCACHE_H
 
-#include "gfx.h"
+#include "gfx_type.h"
 
 /** Get the SpriteID mapped to the given font size and key */
 SpriteID GetUnicodeGlyph(FontSize size, uint32 key);

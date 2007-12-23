@@ -374,4 +374,10 @@ assert_compile(sizeof(uint8)  == 1);
 	#define MAX_PATH 260
 #endif
 
+/**
+ * The largest value that can be entered in a variable
+ * @param type the type of the variable
+ */
+#define MAX_UVALUE(type) ((type)~(type)0)
+
 #endif /* STDAFX_H */

@@ -3,8 +3,7 @@
 /** @file 8bpp_simple.cpp */
 
 #include "../stdafx.h"
-#include "../zoom.hpp"
-#include "../gfx.h"
+#include "../zoom_func.h"
 #include "8bpp_simple.hpp"
 
 static FBlitter_8bppSimple iFBlitter_8bppSimple;

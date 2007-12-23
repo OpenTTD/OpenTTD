@@ -25,6 +25,7 @@
 #include "group.h"
 #include "viewport.h"
 #include "economy_func.h"
+#include "zoom_func.h"
 
 char _name_array[512][32];
 

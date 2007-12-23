@@ -32,6 +32,8 @@
  * @todo Split the "Sprites" enum into smaller chunks and document them
  */
 
+#include "../gfx_type.h"
+
 enum Sprites {
 	SPR_SELECT_TILE  = 752,
 	SPR_DOT          = 774, // corner marker for lower/raise land

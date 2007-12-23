@@ -64,6 +64,7 @@
 #include "music/music_driver.hpp"
 #include "video/video_driver.hpp"
 #include "strings_func.h"
+#include "zoom_func.h"
 
 #include "bridge_map.h"
 #include "clear_map.h"

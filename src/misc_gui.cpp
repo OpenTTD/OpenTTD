@@ -40,6 +40,7 @@
 #include "fileio.h"
 #include "fios.h"
 #include "tile_cmd.h"
+#include "zoom_func.h"
 
 /* Variables to display file lists */
 FiosItem *_fios_list;

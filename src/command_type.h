@@ -7,6 +7,7 @@
 
 #include "economy_type.h"
 #include "strings_type.h"
+#include "tile_type.h"
 
 /**
  * Common return value for all commands. Wraps the cost and

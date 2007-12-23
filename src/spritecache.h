@@ -5,6 +5,8 @@
 #ifndef SPRITECACHE_H
 #define SPRITECACHE_H
 
+#include "gfx_type.h"
+
 struct Sprite {
 	byte height;
 	uint16 width;

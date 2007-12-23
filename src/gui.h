@@ -8,7 +8,7 @@
 #include "string.h"
 #include "window_type.h"
 #include "vehicle_type.h"
-#include "gfx.h"
+#include "gfx_type.h"
 
 /* main_gui.cpp */
 void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);

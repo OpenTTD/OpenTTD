@@ -6,16 +6,17 @@
 #define VEHICLE_H
 
 #include "vehicle_type.h"
-#include "oldpool.h"
-#include "order.h"
 #include "track_type.h"
 #include "rail_type.h"
 #include "road_type.h"
 #include "cargo_type.h"
 #include "window_type.h"
+#include "gfx_type.h"
+#include "command_type.h"
+#include "oldpool.h"
+#include "order.h"
 #include "cargopacket.h"
 #include "texteff.hpp"
-#include "command_type.h"
 
 /** Road vehicle states */
 enum RoadVehicleStates {

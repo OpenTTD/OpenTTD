@@ -16,6 +16,7 @@
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
 #include "viewport.h"
+#include "zoom_func.h"
 
 SignID _new_sign_id;
 uint _total_signs;

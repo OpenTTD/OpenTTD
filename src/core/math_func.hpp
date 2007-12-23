@@ -18,12 +18,6 @@
 #endif
 
 /**
- * The largest value that can be entered in a variable
- * @param type the type of the variable
- */
-#define MAX_UVALUE(type) ((type)~(type)0)
-
-/**
  * Returns the maximum of two values.
  *
  * This function returns the greater value of two given values.

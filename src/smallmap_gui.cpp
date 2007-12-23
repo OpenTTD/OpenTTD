@@ -27,6 +27,7 @@
 #include "blitter/factory.hpp"
 #include "tunnelbridge_map.h"
 #include "strings_func.h"
+#include "zoom_func.h"
 
 
 static const Widget _smallmap_widgets[] = {

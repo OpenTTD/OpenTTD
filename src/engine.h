@@ -10,6 +10,7 @@
 #include "cargo_type.h"
 #include "vehicle_type.h"
 #include "command_type.h"
+#include "gfx_type.h"
 #include "sound.h"
 
 enum RailVehicleTypes {

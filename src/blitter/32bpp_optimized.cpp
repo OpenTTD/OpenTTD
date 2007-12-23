@@ -1,8 +1,8 @@
 /* $Id$ */
 
 #include "../stdafx.h"
-#include "../zoom.hpp"
-#include "../gfx.h"
+#include "../zoom_func.h"
+#include "../gfx_func.h"
 #include "../debug.h"
 #include "../table/sprites.h"
 #include "32bpp_optimized.hpp"

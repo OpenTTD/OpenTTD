@@ -47,6 +47,7 @@
 #include "fios.h"
 #include "rail.h"
 #include "strings_func.h"
+#include "gfx_func.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)

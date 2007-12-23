@@ -29,7 +29,7 @@
 #include "window_func.h"
 #include "tile_map.h"
 #include "strings_func.h"
-#include "gfx.h"
+#include "gfx_func.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a

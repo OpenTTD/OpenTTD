@@ -1,7 +1,7 @@
 /* $Id$ */
 
 #include "../stdafx.h"
-#include "../gfx.h"
+#include "../gfx_func.h"
 #include "8bpp_base.hpp"
 
 void Blitter_8bppBase::DrawColorMappingRect(void *dst, int width, int height, int pal)

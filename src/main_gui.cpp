@@ -50,6 +50,7 @@
 #include "industry.h"
 #include "transparency.h"
 #include "strings_func.h"
+#include "zoom_func.h"
 
 static int _rename_id = 1;
 static int _rename_what = -1;
