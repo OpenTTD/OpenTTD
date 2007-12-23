@@ -339,14 +339,8 @@ assert_compile(sizeof(uint8)  == 1);
 #if defined(__APPLE__)
 	#define GetString OTTD_GetString
 	#define DrawString OTTD_DrawString
-	#define Random OTTD_Random
 	#define CloseConnection OTTD_CloseConnection
-#endif /* __APPLE */
-
-#if defined(__AMIGA__)
-	/* it seems AmigaOS already have a Point declared */
-	#define Point OTTD_AMIGA_POINT
-#endif
+#endif /* __APPLE__ */
 
 #if !defined(STRGEN)
 	/* In strgen error is not fatal and returns */

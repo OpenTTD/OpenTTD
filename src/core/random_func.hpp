@@ -5,6 +5,11 @@
 #ifndef RANDOM_FUNC_HPP
 #define RANDOM_FUNC_HPP
 
+#if defined(__APPLE__)
+	/* Apple already has Random declared */
+	#define Random OTTD_Random
+#endif /* __APPLE__ */
+
 /**************
  * Warning: DO NOT enable this unless you understand what it does
  *
