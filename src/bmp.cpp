@@ -3,7 +3,7 @@
 /** @file bmp.cpp */
 
 #include "stdafx.h"
-#include "openttd.h"
+#include "helpers.hpp"
 #include "bmp.h"
 #include "core/bitmath_func.hpp"
 

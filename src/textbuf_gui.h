@@ -5,6 +5,7 @@
 #ifndef TEXTBUF_GUI_H
 #define TEXTBUF_GUI_H
 
+#include "string.h"
 #include "window_type.h"
 
 struct Textbuf {

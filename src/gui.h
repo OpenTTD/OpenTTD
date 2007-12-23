@@ -5,7 +5,6 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "string.h"
 #include "window_type.h"
 #include "vehicle_type.h"
 #include "gfx_type.h"

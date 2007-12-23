@@ -43,6 +43,7 @@
 #include "transparency.h"
 #include "tunnelbridge_map.h"
 #include "strings_func.h"
+#include "string.h"
 
 
 /* Initialize the town-pool */
