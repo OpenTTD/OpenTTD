@@ -1173,7 +1173,7 @@ enum BuildSignalWidgets {
  * @param xrel         the relativ x value of the sprite in the grf
  * @param xsize        the width of the sprite
  */
-static const void DrawSignalSprite(const Window *w, byte widget_index, SpriteID image, int8 xrel, uint8 xsize)
+static void DrawSignalSprite(const Window *w, byte widget_index, SpriteID image, int8 xrel, uint8 xsize)
 {
 	DrawSprite(image + w->IsWidgetLowered(widget_index), PAL_NONE,
 			w->widget[widget_index].left + (w->widget[widget_index].right - w->widget[widget_index].left) / 2 - xrel - xsize / 2 +

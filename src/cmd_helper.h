@@ -8,7 +8,7 @@
 
 
 template<uint N> static inline void ExtractValid();
-template<> static inline void ExtractValid<1>() {}
+template<> inline void ExtractValid<1>() {}
 
 
 template<typename T> struct ExtractBits;
