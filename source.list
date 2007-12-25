@@ -132,11 +132,9 @@ gfxinit.h
 group.h
 gui.h
 heightmap.h
-helpers.hpp
 industry.h
 landscape.h
 livery.h
-macros.h
 map.h
 md5.h
 mixer.h
