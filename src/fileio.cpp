@@ -10,6 +10,7 @@
 #include "variables.h"
 #include "debug.h"
 #include "fios.h"
+#include "core/alloc_func.hpp"
 #ifdef WIN32
 #include <windows.h>
 #else

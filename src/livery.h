@@ -5,7 +5,6 @@
 #ifndef LIVERY_H
 #define LIVERY_H
 
-#include "helpers.hpp"
 
 /* List of different livery schemes. */
 enum LiveryScheme {

@@ -6,6 +6,7 @@
 #include "../gfx_func.h"
 #include "../fileio.h"
 #include "../debug.h"
+#include "../core/alloc_func.hpp"
 #include "grf.hpp"
 
 bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, const char *filename, uint8 file_slot, uint32 file_pos)

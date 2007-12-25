@@ -1,7 +1,7 @@
 /* $Id$ */
 
 #include "../stdafx.h"
-#include "../helpers.hpp"
+#include "../core/alloc_func.hpp"
 #include "../gfx_func.h"
 #include "../zoom_func.h"
 #include "../debug.h"

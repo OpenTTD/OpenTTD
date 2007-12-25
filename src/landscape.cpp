@@ -22,6 +22,7 @@
 #include "tgp.h"
 #include "genworld.h"
 #include "tile_cmd.h"
+#include "core/alloc_func.hpp"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,

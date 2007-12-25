@@ -13,9 +13,9 @@
 #include "economy_func.h"
 #include "variables.h"
 #include "date.h"
-#include "helpers.hpp"
 #include "cargotype.h"
 #include "strings_func.h"
+#include "core/alloc_func.hpp"
 
 /* Bitmasks of player and cargo indices that shouldn't be drawn. */
 static uint _legend_excluded_players;

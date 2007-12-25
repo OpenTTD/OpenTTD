@@ -7,9 +7,9 @@
 #include "debug.h"
 #include "functions.h"
 #include "map.h"
-#include "helpers.hpp"
 #include "direction_func.h"
 #include "core/bitmath_func.hpp"
+#include "core/alloc_func.hpp"
 
 #if defined(_MSC_VER) && _MSC_VER >= 1400 /* VStudio 2005 is stupid! */
 /* Why the hell is that not in all MSVC headers?? */

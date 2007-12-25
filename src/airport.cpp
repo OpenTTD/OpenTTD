@@ -11,6 +11,7 @@
 #include "airport_movement.h"
 #include "date.h"
 #include "core/bitmath_func.hpp"
+#include "core/alloc_func.hpp"
 
 /* Uncomment this to print out a full report of the airport-structure
  * You should either use

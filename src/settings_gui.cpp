@@ -22,7 +22,6 @@
 #include "settings.h"
 #include "vehicle.h"
 #include "date.h"
-#include "helpers.hpp"
 #include "newgrf_townname.h"
 #include "strings_func.h"
 

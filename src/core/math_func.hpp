@@ -211,4 +211,16 @@ template<typename T> static inline bool IsInsideMM(const T x, const uint min, co
 	return (uint)(x - min) < (max - min);
 }
 
+/**
+ * Type safe swap operation
+ * @param a variable to swap with b
+ * @param b variable to swap with a
+ */
+template<typename T> void Swap(T& a, T& b)
+{
+	T t = a;
+	a = b;
+	b = t;
+}
+
 #endif /* MATH_FUNC_HPP */

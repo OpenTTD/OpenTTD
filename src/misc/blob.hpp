@@ -2,8 +2,10 @@
 
 /** @file blob.hpp */
 
-#ifndef  BLOB_HPP
-#define  BLOB_HPP
+#ifndef BLOB_HPP
+#define BLOB_HPP
+
+#include "../core/alloc_func.hpp"
 
 /** Type-safe version of memcpy().
  * @param d destination buffer

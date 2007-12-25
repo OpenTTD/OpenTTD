@@ -20,6 +20,7 @@
 #include "cargotype.h"
 #include "aircraft.h"
 #include "strings_func.h"
+#include "core/alloc_func.hpp"
 
 DEFINE_OLD_POOL_GENERIC(Order, Order)
 

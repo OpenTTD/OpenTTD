@@ -16,7 +16,6 @@
 #include "../network_data.h"
 #include "packet.h"
 #include "tcp.h"
-#include "../../helpers.hpp"
 
 /** Very ugly temporary hack !!! */
 void NetworkTCPSocketHandler::Initialize()

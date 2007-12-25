@@ -23,7 +23,6 @@
 #include "date.h"
 #include "industry.h"
 #include "fileio.h"
-#include "helpers.hpp"
 #include "cargotype.h"
 #include "group.h"
 #include "debug.h"

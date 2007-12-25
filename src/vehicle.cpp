@@ -38,7 +38,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
-#include "helpers.hpp"
 #include "group.h"
 #include "order.h"
 #include "strings_func.h"

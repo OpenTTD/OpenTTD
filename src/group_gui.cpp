@@ -18,10 +18,10 @@
 #include "train.h"
 #include "date.h"
 #include "group.h"
-#include "helpers.hpp"
 #include "viewport.h"
 #include "debug.h"
 #include "strings_func.h"
+#include "core/alloc_func.hpp"
 
 
 struct Sorting {

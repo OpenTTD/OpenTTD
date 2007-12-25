@@ -14,10 +14,10 @@
 #include "variables.h"
 #include "table/sprites.h"
 #include "genworld.h"
-#include "helpers.hpp"
 #include "blitter/factory.hpp"
 #include "window_gui.h"
 #include "zoom_func.h"
+#include "core/alloc_func.hpp"
 
 /* delta between mouse cursor and upper left corner of dragged window */
 static Point _drag_delta;

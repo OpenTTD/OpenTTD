@@ -20,11 +20,11 @@
 #include "date.h"
 #include "vehicle.h"
 #include "table/sprites.h"
-#include "helpers.hpp"
 #include "cargotype.h"
 #include "station_gui.h"
 #include "station.h"
 #include "strings_func.h"
+#include "core/alloc_func.hpp"
 
 typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
 

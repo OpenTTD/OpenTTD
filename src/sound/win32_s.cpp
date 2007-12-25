@@ -5,7 +5,7 @@
 #include "../driver.h"
 #include "../functions.h"
 #include "../mixer.h"
-#include "../helpers.hpp"
+#include "../core/alloc_func.hpp"
 #include "win32_s.h"
 #include <windows.h>
 #include <mmsystem.h>

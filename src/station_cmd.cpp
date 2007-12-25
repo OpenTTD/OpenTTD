@@ -34,7 +34,6 @@
 #include "newgrf_station.h"
 #include "yapf/yapf.h"
 #include "date.h"
-#include "helpers.hpp"
 #include "misc/autoptr.hpp"
 #include "road_type.h"
 #include "road_internal.h" /* For drawing catenary/checking road removal */

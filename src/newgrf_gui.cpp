@@ -13,7 +13,6 @@
 #include "table/sprites.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
-#include "helpers.hpp"
 #include "strings_func.h"
 
 /** Parse an integerlist string and set each found value

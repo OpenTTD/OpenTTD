@@ -17,9 +17,9 @@
 #include "player.h"
 #include "network/network.h"
 #include "variables.h"
-#include "helpers.hpp"
 #include "strings_func.h"
 #include "economy_func.h"
+#include "core/alloc_func.hpp"
 
 enum TownAuthorityWidget {
 	TWA_CLOSEBOX = 0,

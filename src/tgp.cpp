@@ -15,7 +15,7 @@
 #include "tgp.h"
 #include "console.h"
 #include "genworld.h"
-#include "helpers.hpp"
+#include "core/alloc_func.hpp"
 
 /*
  *

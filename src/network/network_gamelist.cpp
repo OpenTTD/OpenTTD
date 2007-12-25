@@ -10,7 +10,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../newgrf_config.h"
-#include "../helpers.hpp"
+#include "../core/alloc_func.hpp"
 #include "core/game.h"
 #include "network_udp.h"
 #include "network_gamelist.h"

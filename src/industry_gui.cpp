@@ -17,7 +17,6 @@
 #include "industry.h"
 #include "town.h"
 #include "variables.h"
-#include "helpers.hpp"
 #include "cargotype.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"

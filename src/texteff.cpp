@@ -20,6 +20,7 @@
 #include "video/video_driver.hpp"
 #include "transparency.h"
 #include "strings_func.h"
+#include "core/alloc_func.hpp"
 
 enum {
 	MAX_TEXTMESSAGE_LENGTH = 200,

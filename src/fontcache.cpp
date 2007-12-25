@@ -11,10 +11,10 @@
 #include "spritecache.h"
 #include "string.h"
 #include "fontcache.h"
-#include "helpers.hpp"
 #include "spriteloader/spriteloader.hpp"
 #include "blitter/factory.hpp"
 #include "gfx_func.h"
+#include "core/alloc_func.hpp"
 
 #ifdef WITH_FREETYPE
 

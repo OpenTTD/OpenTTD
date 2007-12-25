@@ -3,9 +3,9 @@
 /** @file bmp.cpp */
 
 #include "stdafx.h"
-#include "helpers.hpp"
 #include "bmp.h"
 #include "core/bitmath_func.hpp"
+#include "core/alloc_func.hpp"
 
 void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file)
 {

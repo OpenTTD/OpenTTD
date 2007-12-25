@@ -26,7 +26,6 @@
 #include "../string.h"
 #include "../town.h"
 #include "../newgrf.h"
-#include "../helpers.hpp"
 
 #define BGC 5
 #define BTC 15

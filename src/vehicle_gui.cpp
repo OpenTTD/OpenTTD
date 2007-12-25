@@ -28,7 +28,6 @@
 #include "aircraft.h"
 #include "roadveh.h"
 #include "depot.h"
-#include "helpers.hpp"
 #include "cargotype.h"
 #include "group.h"
 #include "group_gui.h"

@@ -12,11 +12,11 @@
 #include "variables.h"
 #include "date.h"
 #include "string.h"
-#include "helpers.hpp"
 #include "blitter/factory.hpp"
 #include "fileio.h"
 #include "strings_func.h"
 #include "zoom_func.h"
+#include "core/alloc_func.hpp"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;

@@ -13,7 +13,6 @@
 #include "network/network_data.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
-#include "helpers.hpp"
 
 #include "fileio.h"
 #include "fios.h"

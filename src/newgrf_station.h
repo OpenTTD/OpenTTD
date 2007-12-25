@@ -8,7 +8,6 @@
 #include "engine.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_cargo.h"
-#include "helpers.hpp"
 
 enum StationClassID {
 	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value

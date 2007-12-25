@@ -5,6 +5,8 @@
 #ifndef NEWGRF_STORAGE_H
 #define NEWGRF_STORAGE_H
 
+#include "core/alloc_func.hpp"
+
 /**
  * Base class for all NewGRF storage arrays. Nothing fancy, only here
  * so we have a generalised class to use.

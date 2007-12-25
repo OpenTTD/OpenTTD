@@ -4,8 +4,8 @@
 
 #include "stdafx.h"
 #include "thread.h"
+#include "core/alloc_func.hpp"
 #include <stdlib.h>
-#include "helpers.hpp"
 
 #if defined(__AMIGA__) || defined(PSP) || defined(NO_THREADS)
 OTTDThread *OTTDCreateThread(OTTDThreadFunc function, void *arg) { return NULL; }

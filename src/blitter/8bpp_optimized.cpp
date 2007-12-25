@@ -5,7 +5,7 @@
 #include "../stdafx.h"
 #include "../zoom_func.h"
 #include "../debug.h"
-#include "../helpers.hpp"
+#include "../core/alloc_func.hpp"
 #include "8bpp_optimized.hpp"
 
 static FBlitter_8bppOptimized iFBlitter_8bppOptimized;

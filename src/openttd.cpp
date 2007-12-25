@@ -9,7 +9,6 @@
 #include "driver.h"
 #include "saveload.h"
 #include "map.h"
-#include "helpers.hpp"
 
 #include "openttd.h"
 #include "table/strings.h"

@@ -21,7 +21,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "aystar.h"
-#include "helpers.hpp"
+#include "core/alloc_func.hpp"
 
 int _aystar_stats_open_size;
 int _aystar_stats_closed_size;

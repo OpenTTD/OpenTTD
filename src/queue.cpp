@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "queue.h"
-#include "helpers.hpp"
+#include "core/alloc_func.hpp"
 
 
 /*

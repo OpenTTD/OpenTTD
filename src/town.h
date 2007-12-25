@@ -8,7 +8,6 @@
 #include "oldpool.h"
 #include "player.h"
 #include "functions.h"
-#include "helpers.hpp"
 
 enum {
 	HOUSE_NO_CLASS   = 0,

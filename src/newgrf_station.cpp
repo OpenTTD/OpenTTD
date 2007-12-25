@@ -19,7 +19,6 @@
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 #include "date.h"
-#include "helpers.hpp"
 #include "cargotype.h"
 #include "town_map.h"
 #include "newgrf_town.h"

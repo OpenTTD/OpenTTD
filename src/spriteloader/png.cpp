@@ -9,6 +9,7 @@
 #include "../fileio.h"
 #include "../variables.h"
 #include "../debug.h"
+#include "../core/alloc_func.hpp"
 #include "png.hpp"
 #include <png.h>
 

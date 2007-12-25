@@ -8,7 +8,6 @@
 #include "station.h"
 #include "town.h"
 #include "newgrf_config.h"
-#include "helpers.hpp"
 #include "cargotype.h"
 #include "industry.h"
 

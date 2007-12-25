@@ -28,7 +28,6 @@
 #include "newgrf_station.h"
 #include "yapf/yapf.h"
 #include "date.h"
-#include "helpers.hpp"
 #include "cargotype.h"
 #include "roadveh.h"
 #include "station_gui.h"

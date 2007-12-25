@@ -7,8 +7,8 @@
 #include "functions.h"
 #include "string.h"
 #include "table/control_codes.h"
-#include "helpers.hpp"
 #include "debug.h"
+#include "core/alloc_func.hpp"
 
 #include <stdarg.h>
 #include <ctype.h> // required for tolower()

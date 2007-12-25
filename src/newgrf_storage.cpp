@@ -3,7 +3,6 @@
 /** @file newgrf_storage.cpp Functionality related to the temporary and persistent storage arrays for NewGRFs. */
 
 #include "stdafx.h"
-#include "helpers.hpp"
 #include "newgrf_storage.h"
 #include <set>
 

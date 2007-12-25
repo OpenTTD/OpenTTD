@@ -3,7 +3,7 @@
 #include "../stdafx.h"
 #include "../string.h"
 #include "../table/control_codes.h"
-#include "../helpers.hpp"
+#include "../core/alloc_func.hpp"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

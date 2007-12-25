@@ -9,7 +9,7 @@
 #include "network_client.h"
 #include "../command_func.h"
 #include "../callback_table.h"
-#include "../helpers.hpp"
+#include "../core/alloc_func.hpp"
 
 // Add a command to the local command queue
 void NetworkAddCommandQueue(NetworkTCPSocketHandler *cs, CommandPacket *cp)

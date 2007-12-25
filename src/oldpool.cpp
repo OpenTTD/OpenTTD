@@ -7,7 +7,7 @@
 #include "debug.h"
 #include "functions.h"
 #include "oldpool.h"
-#include "helpers.hpp"
+#include "core/alloc_func.hpp"
 
 /**
  * Clean a pool in a safe way (does free all blocks)

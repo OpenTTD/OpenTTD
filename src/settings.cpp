@@ -40,7 +40,6 @@
 #include "date.h"
 #include "rail.h"
 #include "train.h"
-#include "helpers.hpp"
 #include "news.h"
 #include "window_func.h"
 #include "strings_func.h"

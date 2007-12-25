@@ -5,7 +5,7 @@
 #include "../variables.h"
 #include "../command_func.h"
 #include "../network/network.h"
-#include "../helpers.hpp"
+#include "../core/alloc_func.hpp"
 #include "ai.h"
 #include "default/default.h"
 

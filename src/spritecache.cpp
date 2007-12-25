@@ -11,8 +11,8 @@
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "fileio.h"
-#include "helpers.hpp"
 #include "spriteloader/grf.hpp"
+#include "core/alloc_func.hpp"
 #ifdef WITH_PNG
 #include "spriteloader/png.hpp"
 #endif /* WITH_PNG */

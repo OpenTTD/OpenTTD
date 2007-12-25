@@ -8,7 +8,6 @@
 #define VARDEF extern
 #endif
 
-#include "helpers.hpp"
 #include "strings_type.h"
 
 #include "map.h"

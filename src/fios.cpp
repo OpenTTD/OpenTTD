@@ -10,10 +10,10 @@
 #include "variables.h"
 #include "functions.h"
 #include "heightmap.h"
-#include "helpers.hpp"
 #include "table/strings.h"
 #include "fios.h"
 #include "fileio.h"
+#include "core/alloc_func.hpp"
 #include <sys/types.h>
 #include <sys/stat.h>
 

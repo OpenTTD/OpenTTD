@@ -13,9 +13,9 @@
 #include "viewport.h"
 #include "fileio.h"
 #include "newgrf_sound.h"
-#include "helpers.hpp"
 #include "fios.h"
 #include "window_gui.h"
+#include "core/alloc_func.hpp"
 
 static uint _file_count;
 static FileEntry *_files;

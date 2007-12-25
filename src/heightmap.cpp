@@ -14,8 +14,8 @@
 #include "gui.h"
 #include "saveload.h"
 #include "bmp.h"
-#include "helpers.hpp"
 #include "gfx_func.h"
+#include "core/alloc_func.hpp"
 
 /**
  * Convert RGB colors to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue

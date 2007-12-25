@@ -14,9 +14,9 @@
 #include "signs.h"
 #include "debug.h"
 #include "variables.h"
-#include "helpers.hpp"
 #include "command_func.h"
 #include "strings_func.h"
+#include "core/alloc_func.hpp"
 
 static const Sign **_sign_sort;
 static uint _num_sign_sort;

@@ -19,7 +19,7 @@
 #include "../console.h"
 #include "../variables.h"
 #include "../ai/ai.h"
-#include "../helpers.hpp"
+#include "../core/alloc_func.hpp"
 #include "../fileio.h"
 #include "../md5.h"
 #include "../strings_func.h"

@@ -29,6 +29,7 @@
 #include "window_func.h"
 #include "strings_func.h"
 #include "gfx_func.h"
+#include "core/alloc_func.hpp"
 #include <list>
 
 extern const uint16 SAVEGAME_VERSION = 83;

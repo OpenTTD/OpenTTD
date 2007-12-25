@@ -15,10 +15,10 @@
 #include <stdarg.h>
 #include <string.h>
 #include "console.h"
-#include "helpers.hpp"
 #include "network/network.h"
 #include "network/network_data.h"
 #include "network/network_server.h"
+#include "core/alloc_func.hpp"
 
 #define ICON_BUFFER 79
 #define ICON_HISTORY_SIZE 20

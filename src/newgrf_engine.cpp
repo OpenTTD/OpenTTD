@@ -19,7 +19,6 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_cargo.h"
 #include "date.h"
-#include "helpers.hpp"
 #include "cargotype.h"
 
 

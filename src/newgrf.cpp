@@ -33,7 +33,6 @@
 #include "newgrf_house.h"
 #include "newgrf_sound.h"
 #include "newgrf_spritegroup.h"
-#include "helpers.hpp"
 #include "table/town_land.h"
 #include "cargotype.h"
 #include "industry.h"
