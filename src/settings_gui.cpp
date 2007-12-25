@@ -448,36 +448,55 @@ static GameOptions _opt_mod_temp;
 // 0x383E = (1 << 13) | (1 << 12) | (1 << 11) | (1 << 5) | (1 << 4) | (1 << 3) | (1 << 2) | (1 << 1)
 #define DIFF_INGAME_DISABLED_BUTTONS 0x383E
 
+/* Names of the game difficulty settings window */
+enum GameDifficultyWidgets {
+	GDW_CLOSEBOX = 0,
+	GDW_CAPTION,
+	GDW_UPPER_BG,
+	GDW_LVL_EASY,
+	GDW_LVL_MEDIUM,
+	GDW_LVL_HARD,
+	GDW_LVL_CUSTOM,
+	GDW_HIGHSCORE,
+	GDW_SETTING_BG,
+	GDW_LOWER_BG,
+	GDW_ACCEPT,
+	GDW_CANCEL,
+};
+
 static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: // Setup disabled buttons when creating window
-		/* disable all other difficulty buttons during gameplay except for 'custom' */
-		w->SetWidgetDisabledState( 3, _game_mode == GM_NORMAL);
-		w->SetWidgetDisabledState( 4, _game_mode == GM_NORMAL);
-		w->SetWidgetDisabledState( 5, _game_mode == GM_NORMAL);
-		w->SetWidgetDisabledState( 6, _game_mode == GM_NORMAL);
-		w->SetWidgetDisabledState( 7, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
-		w->SetWidgetDisabledState(10, _networking && !_network_server); // Save-button in multiplayer (and if client)
-		w->LowerWidget(_opt_mod_temp.diff_level + 3);
+	case WE_CREATE:
+		/* Hide the closebox to make sure that the user aborts or confirms his changes */
+		w->HideWidget(GDW_CLOSEBOX);
+		w->widget[GDW_CAPTION].left = 0;
+		/* Setup disabled buttons when creating window
+		 * disable all other difficulty buttons during gameplay except for 'custom' */
+		w->SetWidgetsDisabledState(_game_mode == GM_NORMAL,
+			GDW_LVL_EASY,
+			GDW_LVL_MEDIUM,
+			GDW_LVL_HARD,
+			GDW_LVL_CUSTOM,
+			WIDGET_LIST_END);
+		w->SetWidgetDisabledState(GDW_HIGHSCORE, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
+		w->SetWidgetDisabledState(GDW_ACCEPT, _networking && !_network_server); // Save-button in multiplayer (and if client)
+		w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
 
 		break;
 	case WE_PAINT: {
-		uint32 click_a, click_b, disabled;
-		int i;
-		int y, value;
-
 		DrawWindowWidgets(w);
 
-		click_a = _difficulty_click_a;
-		click_b = _difficulty_click_b;
+		uint32 click_a = _difficulty_click_a;
+		uint32 click_b = _difficulty_click_b;
 
 		/* XXX - Disabled buttons in normal gameplay. Bitshifted for each button to see if
 		 * that bit is set. If it is set, the button is disabled */
-		disabled = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
+		uint32 disabled = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
 
-		y = GAMEDIFF_WND_TOP_OFFSET;
-		for (i = 0; i != GAME_DIFFICULTY_NUM; i++) {
+		int value;
+		int y = GAMEDIFF_WND_TOP_OFFSET;
+		for (uint i = 0; i != GAME_DIFFICULTY_NUM; i++) {
 			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, HasBit(click_a, i) ? FR_LOWERED : FR_NONE);
 			DrawFrameRect(15, y, 15 + 8, y + 8, 3, HasBit(click_b, i) ? FR_LOWERED : FR_NONE);
 			if (HasBit(disabled, i) || (_networking && !_network_server)) {
@@ -501,86 +520,81 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 8: { /* Difficulty settings widget, decode click */
-			const GameSettingData *info;
-			int x, y;
-			uint btn, dis;
-			int16 val;
-
+		case GDW_SETTING_BG: { /* Difficulty settings widget, decode click */
 			/* Don't allow clients to make any changes */
-			if  (_networking && !_network_server)
-				return;
+			if  (_networking && !_network_server) return;
 
-			x = e->we.click.pt.x - 5;
+			int x = e->we.click.pt.x - 5;
 			if (!IsInsideMM(x, 0, 21)) // Button area
 				return;
 
-			y = e->we.click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
-			if (y < 0)
-				return;
+			int y = e->we.click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
+			if (y < 0) return;
 
 			/* Get button from Y coord. */
-			btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
+			uint btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
 			if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9)
 				return;
 
 			/* Clicked disabled button? */
-			dis = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
+			uint dis = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
 
 			if (HasBit(dis, btn))
 				return;
 
 			_difficulty_timeout = 5;
 
-			val = ((GDType*)&_opt_mod_temp.diff)[btn];
+			int16 val = ((GDType*)&_opt_mod_temp.diff)[btn];
 
-			info = &_game_setting_info[btn]; // get information about the difficulty setting
+			const GameSettingData *info = &_game_setting_info[btn]; // get information about the difficulty setting
 			if (x >= 10) {
-				// Increase button clicked
+				/* Increase button clicked */
 				val = min(val + info->step, info->max);
 				SetBit(_difficulty_click_b, btn);
 			} else {
-				// Decrease button clicked
+				/* Decrease button clicked */
 				val -= info->step;
 				val = max(val,  info->min);
 				SetBit(_difficulty_click_a, btn);
 			}
 
-			// save value in temporary variable
+			/* save value in temporary variable */
 			((GDType*)&_opt_mod_temp.diff)[btn] = val;
-			w->RaiseWidget(_opt_mod_temp.diff_level + 3);
+			w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
 			SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
-			w->LowerWidget(_opt_mod_temp.diff_level + 3);
+			w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
 			SetWindowDirty(w);
 		} break;
-		case 3: case 4: case 5: case 6: /* Easy / Medium / Hard / Custom */
-			// temporarily change difficulty level
-			w->RaiseWidget(_opt_mod_temp.diff_level + 3);
-			SetDifficultyLevel(e->we.click.widget - 3, &_opt_mod_temp);
-			w->LowerWidget(_opt_mod_temp.diff_level + 3);
+		case GDW_LVL_EASY:
+		case GDW_LVL_MEDIUM:
+		case GDW_LVL_HARD:
+		case GDW_LVL_CUSTOM:
+			/* temporarily change difficulty level */
+			w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
+			SetDifficultyLevel(e->we.click.widget - GDW_LVL_EASY, &_opt_mod_temp);
+			w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
 			SetWindowDirty(w);
 			break;
-		case 7: /* Highscore Table */
+		case GDW_HIGHSCORE: // Highscore Table
 			ShowHighscoreTable(_opt_mod_temp.diff_level, -1);
 			break;
-		case 10: { /* Save button - save changes */
+		case GDW_ACCEPT: { // Save button - save changes
 			GDType btn, val;
 			for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
 				val = ((GDType*)&_opt_mod_temp.diff)[btn];
-				// if setting has changed, change it
+				/* if setting has changed, change it */
 				if (val != ((GDType*)&_opt_ptr->diff)[btn])
 					DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 			}
 			DoCommandP(0, UINT_MAX, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 			DeleteWindow(w);
-			// If we are in the editor, we should reload the economy.
-			//  This way when you load a game, the max loan and interest rate
-			//  are loaded correctly.
-			if (_game_mode == GM_EDITOR)
-				StartupEconomy();
+			/* If we are in the editor, we should reload the economy.
+			 * This way when you load a game, the max loan and interest rate
+			 * are loaded correctly. */
+			if (_game_mode == GM_EDITOR) StartupEconomy();
 			break;
 		}
-		case 11: /* Cancel button - close window, abandon changes */
+		case GDW_CANCEL: // Cancel button - close window, abandon changes
 			DeleteWindow(w);
 			break;
 	} break;
@@ -594,25 +608,26 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		break;
 	}
 }
-
 #undef DIFF_INGAME_DISABLED_BUTTONS
 
+/* Widget definition for the game difficulty settings window */
 static const Widget _game_difficulty_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_6800_DIFFICULTY_LEVEL,    STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    29, 0x0,                          STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_6801_EASY,                STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_6802_MEDIUM,              STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   184,   270,    16,    27, STR_6803_HARD,                STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   271,   357,    16,    27, STR_6804_CUSTOM,              STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    10,     0,   369,    30,    41, STR_6838_SHOW_HI_SCORE_CHART, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   262, 0x0,                          STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,   263,   278, 0x0,                          STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   105,   185,   265,   276, STR_OPTIONS_SAVE_CHANGES,     STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   186,   266,   265,   276, STR_012E_CANCEL,              STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},           // GDW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_6800_DIFFICULTY_LEVEL,    STR_018C_WINDOW_TITLE_DRAG_THIS}, // GDW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    41, 0x0,                          STR_NULL},                        // GDW_UPPER_BG
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_6801_EASY,                STR_NULL},                        // GDW_LVL_EASY
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_6802_MEDIUM,              STR_NULL},                        // GDW_LVL_MEDIUM
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   184,   270,    16,    27, STR_6803_HARD,                STR_NULL},                        // GDW_LVL_HARD
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   271,   357,    16,    27, STR_6804_CUSTOM,              STR_NULL},                        // GDW_LVL_CUSTOM
+{    WWT_TEXTBTN,   RESIZE_NONE,     6,    10,   357,    28,    39, STR_6838_SHOW_HI_SCORE_CHART, STR_NULL},                        // GDW_HIGHSCORE
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   262, 0x0,                          STR_NULL},                        // GDW_SETTING_BG
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,   263,   278, 0x0,                          STR_NULL},                        // GDW_LOWER_BG
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   105,   185,   265,   276, STR_OPTIONS_SAVE_CHANGES,     STR_NULL},                        // GDW_ACCEPT
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   186,   266,   265,   276, STR_012E_CANCEL,              STR_NULL},                        // GDW_CANCEL
 {   WIDGETS_END},
 };
 
+/* Window definition for the game difficulty settings window */
 static const WindowDesc _game_difficulty_desc = {
 	WDP_CENTER, WDP_CENTER, 370, 279, 370, 279,
 	WC_GAME_OPTIONS, WC_NONE,
