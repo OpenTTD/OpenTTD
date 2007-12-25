@@ -22,6 +22,7 @@
 #include "../debug.h"
 #include "../driver.h"
 #include "../mixer.h"
+#include "../core/endian_func.hpp"
 
 #include "cocoa_s.h"
 

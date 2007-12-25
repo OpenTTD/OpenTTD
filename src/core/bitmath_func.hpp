@@ -291,4 +291,34 @@ template<typename T> static inline T ROR(const T x, const uint8 n)
 	for (i = 0; b != 0; i++, b >>= 1) \
 		if (b & 1)
 
+
+#if defined(__APPLE__)
+	/* Make endian swapping use Apple's macros to increase speed
+	 * (since it will use hardware swapping if available).
+	 * Even though they should return uint16 and uint32, we get
+	 * warnings if we don't cast those (why?) */
+	#define BSWAP32(x) ((uint32)Endian32_Swap(x))
+	#define BSWAP16(x) ((uint16)Endian16_Swap(x))
+#else
+	/**
+	 * Perform a 32 bits endianness bitswap on x.
+	 * @param x the variable to bitswap
+	 * @return the bitswapped value.
+	 */
+	static inline uint32 BSWAP32(uint32 x)
+	{
+		return ((x >> 24) & 0xFF) | ((x >> 8) & 0xFF00) | ((x << 8) & 0xFF0000) | ((x << 24) & 0xFF000000);
+	}
+
+	/**
+	 * Perform a 16 bits endianness bitswap on x.
+	 * @param x the variable to bitswap
+	 * @return the bitswapped value.
+	 */
+	static inline uint16 BSWAP16(uint16 x)
+	{
+		return (x >> 8) | (x << 8);
+	}
+#endif /* __APPLE__ */
+
 #endif /* BITMATH_FUNC_HPP */

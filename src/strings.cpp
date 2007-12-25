@@ -34,9 +34,7 @@
 #include "gui.h"
 #include "strings_func.h"
 #include "functions.h"
-#if defined(TTD_BIG_ENDIAN)
 #include "core/endian_func.hpp"
-#endif
 
 /* for opendir/readdir/closedir */
 # include "fios.h"

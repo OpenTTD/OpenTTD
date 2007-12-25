@@ -56,6 +56,7 @@
  */
 
 #include "stdafx.h"
+#include "core/endian_func.hpp"
 #include "md5.h"
 #include <string.h>
 

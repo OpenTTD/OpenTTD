@@ -27,6 +27,7 @@
 #include "tunnelbridge_map.h"
 #include "strings_func.h"
 #include "zoom_func.h"
+#include "core/endian_func.hpp"
 
 
 static const Widget _smallmap_widgets[] = {

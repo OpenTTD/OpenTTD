@@ -30,6 +30,7 @@
 #include "gfx_func.h"
 #include "core/alloc_func.hpp"
 #include "functions.h"
+#include "core/endian_func.hpp"
 #include <list>
 
 extern const uint16 SAVEGAME_VERSION = 83;

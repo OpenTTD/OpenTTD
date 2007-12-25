@@ -89,13 +89,6 @@
 
 #if defined(__APPLE__)
 	#include "os/macosx/osx_stdafx.h"
-	/* Make endian swapping use Apple's macros to increase speed (since it will use hardware swapping if available)
-	 * Even though they should return uint16 and uint32, we get warnings if we don't cast those (why?) */
-	#define BSWAP32(x) ((uint32)Endian32_Swap(x))
-	#define BSWAP16(x) ((uint16)Endian16_Swap(x))
-#else
-	#define BSWAP32(x) ((((x) >> 24) & 0xFF) | (((x) >> 8) & 0xFF00) | (((x) << 8) & 0xFF0000) | (((x) << 24) & 0xFF000000))
-	#define BSWAP16(x) ((x) >> 8 | (x) << 8)
 #endif /* __APPLE__ */
 
 #if defined(PSP)
@@ -241,20 +234,6 @@
 	#endif /* WIN32 */
 #endif /* STRGEN */
 
-/* Windows has always LITTLE_ENDIAN */
-#if defined(WIN32) || defined(__OS2__) || defined(WIN64)
-	#define TTD_LITTLE_ENDIAN
-#elif defined(TESTING)
-	/* Do noting  */
-#else
-	/* Else include endian[target/host].h, which has the endian-type, autodetected by the Makefile */
-	#if defined(STRGEN)
-		#include "endian_host.h"
-	#else
-		#include "endian_target.h"
-	#endif
-#endif /* WIN32 || __OS2__ || WIN64 */
-
 #if defined(WIN32) || defined(WIN64) || defined(__OS2__) && !defined(__INNOTEK_LIBC__)
 	#define PATHSEP "\\"
 	#define PATHSEPCHAR '\\'
@@ -280,35 +259,6 @@ typedef unsigned char byte;
 	typedef unsigned __int64 uint64;
 	typedef   signed __int64  int64;
 #endif
-
-#if defined(ARM) || defined(__arm__) || defined(__alpha__)
-	#define OTTD_ALIGNMENT
-#endif
-
-/* Setup alignment and conversion macros */
-#if defined(TTD_BIG_ENDIAN)
-	#define TO_BE32X(x)  (x)
-	#define FROM_BE32(x) (x)
-	#define TO_BE32(x)   (x)
-	#define FROM_BE16(x) (x)
-	#define TO_BE16(x)   (x)
-	#define TO_LE32X(x)  BSWAP32(x)
-	static inline uint32 FROM_LE32(uint32 x) { return BSWAP32(x); }
-	static inline uint32 TO_LE32(uint32 x)   { return BSWAP32(x); }
-	static inline uint16 FROM_LE16(uint16 x) { return BSWAP16(x); }
-	static inline uint16 TO_LE16(uint16 x)   { return BSWAP16(x); }
-#else
-	#define TO_BE32X(x)  BSWAP32(x)
-	static inline uint32 FROM_BE32(uint32 x) { return BSWAP32(x); }
-	static inline uint32 TO_BE32(uint32 x)   { return BSWAP32(x); }
-	static inline uint16 FROM_BE16(uint16 x) { return BSWAP16(x); }
-	static inline uint16 TO_BE16(uint16 x)   { return BSWAP16(x); }
-	#define TO_LE32X(x)  (x)
-	#define FROM_LE32(x) (x)
-	#define TO_LE32(x)   (x)
-	#define FROM_LE16(x) (x)
-	#define TO_LE16(x)   (x)
-#endif /* TTD_BIG_ENDIAN */
 
 #if !defined(WITH_PERSONAL_DIR)
 	#define PERSONAL_DIR ""
