@@ -17,7 +17,7 @@
 #elif !defined(TESTING)
 	/* Else include endian[target/host].h, which has the endian-type, autodetected by the Makefile */
 	#if defined(STRGEN)
-		#include "/endian_host.h"
+		#include "endian_host.h"
 	#else
 		#include "endian_target.h"
 	#endif

@@ -4,6 +4,7 @@
 #include "../string.h"
 #include "../table/control_codes.h"
 #include "../core/alloc_func.hpp"
+#include "../core/endian_func.hpp"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
