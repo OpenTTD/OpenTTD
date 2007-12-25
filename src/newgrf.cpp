@@ -9,7 +9,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "fileio.h"
-#include "functions.h"
 #include "engine.h"
 #include "spritecache.h"
 #include "station.h"

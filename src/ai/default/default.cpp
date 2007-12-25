@@ -26,6 +26,8 @@
 #include "../../bridge.h"
 #include "../../date.h"
 #include "../../tunnelbridge_map.h"
+#include "../../window_func.h"
+#include "../../functions.h"
 #include "default.h"
 
 

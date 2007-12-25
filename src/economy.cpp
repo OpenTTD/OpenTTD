@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
-#include "functions.h"
 #include "landscape.h"
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -40,6 +39,8 @@
 #include "group.h"
 #include "strings_func.h"
 #include "tile_cmd.h"
+#include "functions.h"
+#include "window_func.h"
 
 /**
  * Multiply two integer values and shift the results to right.

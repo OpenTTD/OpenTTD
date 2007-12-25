@@ -13,7 +13,6 @@
 #include "openttd.h"
 #include "table/strings.h"
 #include "bridge_map.h"
-#include "functions.h"
 #include "mixer.h"
 #include "spritecache.h"
 #include "gfxinit.h"
@@ -119,34 +118,6 @@ void CDECL ShowInfoF(const char *str, ...)
 	ShowInfo(buf);
 }
 
-
-void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
-{
-	FILE *in;
-	byte *mem;
-	size_t len;
-
-	in = fopen(filename, "rb");
-	if (in == NULL) return NULL;
-
-	fseek(in, 0, SEEK_END);
-	len = ftell(in);
-	fseek(in, 0, SEEK_SET);
-	if (len > maxsize || (mem = MallocT<byte>(len + 1)) == NULL) {
-		fclose(in);
-		return NULL;
-	}
-	mem[len] = 0;
-	if (fread(mem, len, 1, in) != 1) {
-		fclose(in);
-		free(mem);
-		return NULL;
-	}
-	fclose(in);
-
-	*lenp = len;
-	return mem;
-}
 
 extern const char _openttd_revision[];
 static void showhelp()

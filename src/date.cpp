@@ -10,8 +10,9 @@
 #include "network/network.h"
 #include "network/network_data.h"
 #include "network/network_server.h"
-#include "functions.h"
 #include "currency.h"
+#include "window_func.h"
+#include "functions.h"
 #ifdef DEBUG_DUMP_COMMANDS
 #include "saveload.h"
 #endif

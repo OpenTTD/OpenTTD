@@ -9,7 +9,6 @@ extern const char _openttd_revision[];
 
 #include "../openttd.h"
 #include "../debug.h"
-#include "../functions.h"
 #include "../string.h"
 #include "../strings_func.h"
 #include "../map.h"
@@ -31,6 +30,8 @@ extern const char _openttd_revision[];
 #include "../md5.h"
 #include "../fileio.h"
 #include "../texteff.hpp"
+#include "../core/random_func.hpp"
+#include "../window_func.h"
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);

@@ -3,10 +3,10 @@
 #ifndef AI_H
 #define AI_H
 
-#include "../functions.h"
 #include "../network/network.h"
 #include "../player.h"
 #include "../command_type.h"
+#include "../core/random_func.hpp"
 
 /* How DoCommands look like for an AI */
 struct AICommand {

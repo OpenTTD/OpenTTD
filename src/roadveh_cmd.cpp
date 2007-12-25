@@ -37,6 +37,8 @@
 #include "cargotype.h"
 #include "strings_func.h"
 #include "tunnelbridge_map.h"
+#include "functions.h"
+#include "window_func.h"
 
 
 static const uint16 _roadveh_images[63] = {

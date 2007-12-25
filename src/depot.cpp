@@ -6,12 +6,12 @@
 #include "openttd.h"
 #include "vehicle.h"
 #include "depot.h"
-#include "functions.h"
 #include "landscape.h"
 #include "map.h"
 #include "table/strings.h"
 #include "saveload.h"
 #include "order.h"
+#include "window_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Depot, Depot)
 

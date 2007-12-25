@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "functions.h"
 #include "ship.h"
 #include "table/strings.h"
 #include "table/sprites.h"

@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "map.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -20,6 +19,8 @@
 #include "station_map.h"
 //needed for catchments
 #include "station.h"
+#include "functions.h"
+#include "window_func.h"
 
 
 static void ShowRVStationPicker(RoadStop::Type rs);

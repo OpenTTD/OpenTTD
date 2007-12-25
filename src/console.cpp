@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
@@ -19,6 +18,7 @@
 #include "network/network_data.h"
 #include "network/network_server.h"
 #include "core/alloc_func.hpp"
+#include "window_func.h"
 
 #define ICON_BUFFER 79
 #define ICON_HISTORY_SIZE 20

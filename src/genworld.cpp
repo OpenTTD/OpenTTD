@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "landscape.h"
 #include "player.h"
 #include "table/sprites.h"

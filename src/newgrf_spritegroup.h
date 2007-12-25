@@ -8,6 +8,8 @@
 #include "town.h"
 #include "industry.h"
 #include "newgrf_storage.h"
+#include "core/bitmath_func.hpp"
+#include "gfx_type.h"
 
 /**
  * Gets the value of a so-called newgrf "register".

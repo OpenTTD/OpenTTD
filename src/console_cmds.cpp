@@ -7,7 +7,6 @@
 #include "console.h"
 #include "debug.h"
 #include "engine.h"
-#include "functions.h"
 #include "landscape.h"
 #include "saveload.h"
 #include "string.h"
@@ -28,6 +27,8 @@
 #include "network/network.h"
 #include "strings_func.h"
 #include "viewport.h"
+#include "window_func.h"
+#include "functions.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;

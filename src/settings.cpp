@@ -22,7 +22,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
-#include "functions.h"
 #include "screenshot.h"
 #include "sound.h"
 #include "string.h"

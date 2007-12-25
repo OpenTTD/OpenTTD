@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "map.h"
 #include "window_gui.h"
 #include "gui.h"
@@ -18,6 +17,7 @@
 #include "station.h"
 #include "airport.h"
 #include "depot.h"
+#include "window_func.h"
 
 static byte _selected_airport_type;
 

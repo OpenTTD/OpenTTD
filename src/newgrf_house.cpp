@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "variables.h"
 #include "debug.h"
 #include "viewport.h"
@@ -25,6 +24,7 @@
 #include "newgrf_sound.h"
 #include "newgrf_commons.h"
 #include "transparency.h"
+#include "functions.h"
 
 static BuildingCounts    _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];

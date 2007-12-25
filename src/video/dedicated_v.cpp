@@ -6,7 +6,6 @@
 
 #include "../openttd.h"
 #include "../debug.h"
-#include "../functions.h"
 #include "../gfx_func.h"
 #include "../network/network.h"
 #include "../console.h"

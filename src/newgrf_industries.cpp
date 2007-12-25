@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "functions.h"
 #include "variables.h"
 #include "landscape.h"
 #include "table/strings.h"
@@ -20,6 +19,7 @@
 #include "newgrf_text.h"
 #include "newgrf_town.h"
 #include "date.h"
+#include "window_func.h"
 
 /* Since the industry IDs defined by the GRF file don't necessarily correlate
  * to those used by the game, the IDs used for overriding old industries must be

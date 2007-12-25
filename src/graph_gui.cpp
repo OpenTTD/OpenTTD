@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "functions.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "player.h"
@@ -16,6 +15,7 @@
 #include "cargotype.h"
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
+#include "window_func.h"
 
 /* Bitmasks of player and cargo indices that shouldn't be drawn. */
 static uint _legend_excluded_players;

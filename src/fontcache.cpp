@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "debug.h"
 #include "table/sprites.h"
 #include "table/control_codes.h"
@@ -15,6 +14,7 @@
 #include "blitter/factory.hpp"
 #include "gfx_func.h"
 #include "core/alloc_func.hpp"
+#include "core/math_func.hpp"
 
 #ifdef WITH_FREETYPE
 

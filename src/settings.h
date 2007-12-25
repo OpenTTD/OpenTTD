@@ -91,4 +91,9 @@ void IConsoleListPatches();
 const SettingDesc *GetPatchFromName(const char *name, uint *i);
 bool SetPatchValue(uint index, const Patches *object, int32 value);
 
+void LoadFromConfig();
+void SaveToConfig();
+void CheckConfig();
+void UpdatePatches();
+
 #endif /* SETTINGS_H */

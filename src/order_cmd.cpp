@@ -8,7 +8,6 @@
 #include "airport.h"
 #include "vehicle.h"
 #include "depot.h"
-#include "functions.h"
 #include "table/strings.h"
 #include "waypoint.h"
 #include "command_func.h"
@@ -21,6 +20,8 @@
 #include "aircraft.h"
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
+#include "functions.h"
+#include "window_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Order, Order)
 

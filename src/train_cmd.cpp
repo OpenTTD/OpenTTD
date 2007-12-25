@@ -42,6 +42,8 @@
 #include "table/sprites.h"
 #include "tunnelbridge_map.h"
 #include "strings_func.h"
+#include "functions.h"
+#include "window_func.h"
 
 
 static bool TrainCheckIfLineEnds(Vehicle *v);

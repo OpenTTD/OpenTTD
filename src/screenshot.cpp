@@ -3,7 +3,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "functions.h"
 #include "table/strings.h"
 #include "fileio.h"
 #include "viewport.h"

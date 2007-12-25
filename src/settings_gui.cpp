@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
-#include "functions.h"
 #include "string.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -24,6 +23,8 @@
 #include "date.h"
 #include "newgrf_townname.h"
 #include "strings_func.h"
+#include "functions.h"
+#include "window_func.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;

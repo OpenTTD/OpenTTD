@@ -812,6 +812,8 @@ static inline uint32 GetCmdSendToDepot(const Vehicle *v)
 	return GetCmdSendToDepot(v->type);
 }
 
+bool EnsureNoVehicleOnGround(TileIndex tile);
+
 /* This one is not used anymore. */
 VARDEF VehicleID _vehicle_id_ctr_day;
 VARDEF Vehicle *_place_clicked_vehicle;

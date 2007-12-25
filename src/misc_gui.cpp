@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "heightmap.h"
 #include "debug.h"
-#include "functions.h"
 #include "landscape.h"
 #include "newgrf.h"
 #include "newgrf_text.h"
@@ -41,6 +40,8 @@
 #include "fios.h"
 #include "tile_cmd.h"
 #include "zoom_func.h"
+#include "functions.h"
+#include "window_func.h"
 
 /* Variables to display file lists */
 FiosItem *_fios_list;

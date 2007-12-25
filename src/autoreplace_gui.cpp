@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "functions.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "gui.h"
@@ -16,6 +15,7 @@
 #include "group.h"
 #include "rail.h"
 #include "strings_func.h"
+#include "window_func.h"
 
 static RailType _railtype_selected_in_replace_gui;
 

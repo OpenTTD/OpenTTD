@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "functions.h"
 #include "player.h"
 #include "table/strings.h"
 #include "command_func.h"
@@ -19,6 +18,8 @@
 #include "vehicle_gui.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
+#include "functions.h"
+#include "window_func.h"
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one

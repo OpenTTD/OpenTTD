@@ -8,7 +8,6 @@
 #include "clear_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "player.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -18,6 +17,7 @@
 #include "vehicle.h"
 #include "signs.h"
 #include "variables.h"
+#include "functions.h"
 
 void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {

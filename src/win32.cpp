@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "functions.h"
 #include "saveload.h"
 #include "string.h"
 #include "gfx_func.h"
@@ -22,6 +21,8 @@
 #include "fios.h" // opendir/readdir/closedir
 #include "fileio.h"
 #include "core/alloc_func.hpp"
+#include "functions.h"
+#include "core/random_func.hpp"
 #include <ctype.h>
 #include <tchar.h>
 #include <errno.h>

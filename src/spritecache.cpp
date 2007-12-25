@@ -7,12 +7,12 @@
 #include "variables.h"
 #include "string.h"
 #include "debug.h"
-#include "functions.h"
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "fileio.h"
 #include "spriteloader/grf.hpp"
 #include "core/alloc_func.hpp"
+#include "core/math_func.hpp"
 #ifdef WITH_PNG
 #include "spriteloader/png.hpp"
 #endif /* WITH_PNG */

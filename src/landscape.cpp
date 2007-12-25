@@ -6,7 +6,6 @@
 #include "heightmap.h"
 #include "clear_map.h"
 #include "date.h"
-#include "functions.h"
 #include "map.h"
 #include "player.h"
 #include "spritecache.h"
@@ -23,6 +22,9 @@
 #include "genworld.h"
 #include "tile_cmd.h"
 #include "core/alloc_func.hpp"
+#include "functions.h"
+#include "window_func.h"
+#include "functions.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,

@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "landscape.h"
 #include "map.h"
 #include "tile_map.h"
@@ -18,6 +17,7 @@
 #include "newgrf_storage.h"
 #include "strings_func.h"
 #include "gfx_func.h"
+#include "functions.h"
 
 const char *_cmd_text = NULL;
 

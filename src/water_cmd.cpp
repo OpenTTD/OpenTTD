@@ -31,6 +31,8 @@
 #include "misc/autoptr.hpp"
 #include "transparency.h"
 #include "strings_func.h"
+#include "functions.h"
+#include "window_func.h"
 
 /** Array for the shore sprites */
 static const SpriteID _water_shore_sprites[] = {

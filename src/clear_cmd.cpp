@@ -7,7 +7,6 @@
 #include "clear_map.h"
 #include "rail_map.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "map.h"
 #include "player.h"
 #include "viewport.h"
@@ -23,6 +22,8 @@
 #include "industry.h"
 #include "water_map.h"
 #include "tile_cmd.h"
+#include "vehicle.h"
+#include "functions.h"
 
 /*
  * In one terraforming command all four corners of a initial tile can be raised/lowered (though this is not available to the player).

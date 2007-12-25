@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
-#include "functions.h"
 #include "string.h"
 #include "table/strings.h"
 #include "namegen.h"
@@ -34,6 +33,7 @@
 #include "fontcache.h"
 #include "gui.h"
 #include "strings_func.h"
+#include "functions.h"
 #if defined(TTD_BIG_ENDIAN)
 #include "core/endian_func.hpp"
 #endif

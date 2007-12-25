@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "bridge_map.h"
 #include "debug.h"
-#include "functions.h"
 #include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -32,6 +31,8 @@
 #include "roadveh.h"
 #include "station_gui.h"
 #include "zoom_func.h"
+#include "functions.h"
+#include "window_func.h"
 
 Station::Station(TileIndex tile)
 {

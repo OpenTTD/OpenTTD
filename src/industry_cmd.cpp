@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "clear_map.h"
-#include "functions.h"
 #include "industry_map.h"
 #include "station_map.h"
 #include "table/strings.h"
@@ -40,6 +39,8 @@
 #include "water.h"
 #include "strings_func.h"
 #include "tile_cmd.h"
+#include "functions.h"
+#include "window_func.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);

@@ -8,9 +8,10 @@
 #include "string.h"
 #include "table/strings.h"
 #include "gui.h"
-#include "functions.h"
 #include "fileio.h"
 #include "fios.h" // opendir/readdir/closedir
+#include "functions.h"
+#include "core/random_func.hpp"
 
 #include <dirent.h>
 #include <unistd.h>

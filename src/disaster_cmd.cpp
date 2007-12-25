@@ -39,6 +39,7 @@
 #include "table/sprites.h"
 #include "date.h"
 #include "strings_func.h"
+#include "functions.h"
 
 enum DisasterSubType {
 	ST_Zeppeliner,

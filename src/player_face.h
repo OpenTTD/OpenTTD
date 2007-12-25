@@ -5,6 +5,8 @@
 #ifndef PLAYER_FACE_H
 #define PLAYER_FACE_H
 
+#include "core/random_func.hpp"
+
 /** The gender/race combinations that we have faces for */
 enum GenderEthnicity {
 	GENDER_FEMALE    = 0, ///< This bit set means a female, otherwise male

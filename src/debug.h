@@ -129,4 +129,7 @@ const char *GetDebugString();
 	}\
 }
 
+void ShowInfo(const char *str);
+void CDECL ShowInfoF(const char *str, ...);
+
 #endif /* DEBUG_H */

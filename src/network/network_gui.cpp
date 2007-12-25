@@ -11,7 +11,6 @@
 
 #include "../fios.h"
 #include "table/strings.h"
-#include "../functions.h"
 #include "network_data.h"
 #include "network_client.h"
 #include "network_gui.h"
@@ -26,6 +25,8 @@
 #include "../string.h"
 #include "../town.h"
 #include "../newgrf.h"
+#include "../functions.h"
+#include "../window_func.h"
 
 #define BGC 5
 #define BTC 15

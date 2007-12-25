@@ -6,8 +6,8 @@
 #define TOWN_H
 
 #include "oldpool.h"
-#include "player.h"
-#include "functions.h"
+#include "core/random_func.hpp"
+#include "cargo_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,
@@ -350,5 +350,11 @@ uint OriginalTileRandomiser(uint x, uint y);
 void ResetHouses();
 
 void ClearTownHouse(Town *t, TileIndex tile);
+void AfterLoadTown();
+void UpdateTownMaxPass(Town *t);
+bool CheckIfAuthorityAllows(TileIndex tile);
+Town *ClosestTownFromTile(TileIndex tile, uint threshold);
+void ChangeTownRating(Town *t, int add, int max);
+uint GetTownRadiusGroup(const Town* t, TileIndex tile);
 
 #endif /* TOWN_H */

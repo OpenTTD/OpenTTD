@@ -8,7 +8,6 @@
 #include "openttd.h"
 #include "console.h"
 #include "debug.h"
-#include "functions.h"
 #include "string.h"
 #include "network/core/core.h"
 

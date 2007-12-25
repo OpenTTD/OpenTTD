@@ -10,7 +10,6 @@
 #include "core/tcp.h"
 #include "../date.h"
 #include "table/strings.h"
-#include "../functions.h"
 #include "network_client.h"
 #include "network_gamelist.h"
 #include "network_gui.h"
@@ -23,6 +22,7 @@
 #include "../fileio.h"
 #include "../md5.h"
 #include "../strings_func.h"
+#include "../window_func.h"
 
 // This file handles all the client-commands
 

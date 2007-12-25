@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "bridge_map.h"
 #include "clear_map.h"
 #include "industry_map.h"

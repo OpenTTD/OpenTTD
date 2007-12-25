@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
-#include "functions.h"
 #include "landscape.h"
 #include "news.h"
 #include "player.h"
@@ -26,6 +25,7 @@
 #include "viewport.h"
 #include "economy_func.h"
 #include "zoom_func.h"
+#include "functions.h"
 
 char _name_array[512][32];
 

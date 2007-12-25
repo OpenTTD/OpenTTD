@@ -7,10 +7,7 @@
 
 #include "core/random_func.hpp"
 #include "command_type.h"
-#include "window_type.h"
 #include "openttd.h"
-
-void UpdateTownMaxPass(Town *t);
 
 /* clear_land.cpp */
 void DrawHillyLandTile(const TileInfo *ti);
@@ -24,10 +21,6 @@ void SubtractMoneyFromPlayer(CommandCost cost);
 void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cost);
 bool CheckOwnership(Owner owner);
 bool CheckTileOwnership(TileIndex tile);
-
-/* standard */
-void ShowInfo(const char *str);
-void CDECL ShowInfoF(const char *str, ...);
 
 /* openttd.cpp */
 static inline TileIndex RandomTileSeed(uint32 r) { return TILE_MASK(r); }
@@ -67,14 +60,6 @@ void MarkTileDirty(int x, int y);
  * @ingroup dirty
  */
 void MarkTileDirtyByTile(TileIndex tile);
-void InvalidateWindow(WindowClass cls, WindowNumber number);
-void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index);
-void InvalidateWindowClasses(WindowClass cls);
-void InvalidateWindowClassesData(WindowClass cls);
-void DeleteWindowById(WindowClass cls, WindowNumber number);
-void DeleteWindowByClass(WindowClass cls);
-
-bool EnsureNoVehicleOnGround(TileIndex tile);
 
 /**
  * Mark all viewports dirty for repaint.
@@ -85,15 +70,8 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
 void ShowFeederIncomeAnimation(int x, int y, int z, Money cost);
 
-bool CheckIfAuthorityAllows(TileIndex tile);
-Town *ClosestTownFromTile(TileIndex tile, uint threshold);
-void ChangeTownRating(Town *t, int add, int max);
-
-uint GetTownRadiusGroup(const Town* t, TileIndex tile);
 void ShowHighscoreTable(int difficulty, int8 rank);
 
-void AfterLoadTown();
-void UpdatePatches();
 void AskExitGame();
 void AskExitToGameMenu();
 
@@ -115,13 +93,8 @@ void ShowSaveLoadDialog(int mode);
 
 /* callback from drivers that is called if the game size changes dynamically */
 void GameSizeChanged();
-bool FileExists(const char *filename);
 const char *GetCurrentLocale(const char *param);
-void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 
-void LoadFromConfig();
-void SaveToConfig();
-void CheckConfig();
 int ttd_main(int argc, char* argv[]);
 void HandleExitGameRequest();
 

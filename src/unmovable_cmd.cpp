@@ -24,6 +24,8 @@
 #include "bridge.h"
 #include "autoslope.h"
 #include "transparency.h"
+#include "functions.h"
+#include "window_func.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are

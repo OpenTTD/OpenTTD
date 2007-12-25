@@ -8,7 +8,6 @@
 #include "debug.h"
 #include "tile_cmd.h"
 #include "bridge.h"
-#include "functions.h"
 #include "landscape.h"
 #include "npf.h"
 #include "aystar.h"
@@ -20,6 +19,7 @@
 #include "network/network.h"
 #include "water_map.h"
 #include "tunnelbridge_map.h"
+#include "functions.h"
 
 static AyStar _npf_aystar;
 

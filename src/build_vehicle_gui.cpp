@@ -9,7 +9,6 @@
 #include "ship.h"
 #include "aircraft.h"
 #include "debug.h"
-#include "functions.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "gui.h"
@@ -29,6 +28,7 @@
 #include "group.h"
 #include "road_map.h"
 #include "strings_func.h"
+#include "window_func.h"
 
 
 enum BuildVehicleWidgets {

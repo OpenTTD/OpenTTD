@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "variables.h"
 #include "debug.h"
-#include "functions.h"
+#include "core/bitmath_func.hpp"
 #include "town.h"
 
 /** This function implements the town variables that newGRF defines.

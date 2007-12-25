@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "gfx_func.h"
 #include "spritecache.h"
 #include "string.h"
@@ -20,6 +19,7 @@
 #include "blitter/factory.hpp"
 #include "video/video_driver.hpp"
 #include "strings_func.h"
+#include "core/math_func.hpp"
 
 byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 bool _fullscreen;

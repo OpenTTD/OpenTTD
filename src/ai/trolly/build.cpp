@@ -3,7 +3,6 @@
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../debug.h"
-#include "../../functions.h"
 #include "../../map.h"
 #include "../../road_map.h"
 #include "../../vehicle.h"

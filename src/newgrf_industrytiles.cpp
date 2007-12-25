@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "variables.h"
 #include "debug.h"
 #include "viewport.h"
@@ -23,6 +22,7 @@
 #include "table/strings.h"
 #include "sprite.h"
 #include "transparency.h"
+#include "functions.h"
 
 static uint32 GetGRFParameter(IndustryGfx indtile_id, byte parameter)
 {

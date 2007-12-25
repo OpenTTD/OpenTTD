@@ -42,7 +42,6 @@
 #include "../../variables.h"
 #include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
-#include "../../functions.h"
 #include "../../core/math_func.hpp"
 #include "../../gfx_func.h"
 

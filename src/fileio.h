@@ -112,6 +112,8 @@ static inline const char *FioGetSubdirectory(Subdirectory subdir)
 void SanitizeFilename(char *filename);
 void AppendPathSeparator(char *buf, size_t buflen);
 void DeterminePaths(const char *exe);
+void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
+bool FileExists(const char *filename);
 
 extern char *_personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
 

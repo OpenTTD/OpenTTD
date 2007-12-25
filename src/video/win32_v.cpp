@@ -2,7 +2,6 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
-#include "../functions.h"
 #include "../gfx_func.h"
 #include "../variables.h"
 #include "../win32.h"

@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "functions.h"
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
@@ -17,6 +16,7 @@
 #include "command_func.h"
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
+#include "window_func.h"
 
 static const Sign **_sign_sort;
 static uint _num_sign_sort;

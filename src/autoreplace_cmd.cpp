@@ -5,7 +5,6 @@
 #include "roadveh.h"
 #include "ship.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "news.h"
 #include "player.h"
 #include "engine.h"
@@ -19,6 +18,7 @@
 #include "order.h"
 #include "strings_func.h"
 #include "command_func.h"
+#include "functions.h"
 
 /*
  * move the cargo from one engine to another if possible

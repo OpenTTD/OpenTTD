@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "station_map.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "map.h"
 #include "town.h"
 #include "industry.h"
@@ -25,6 +24,7 @@
 #include "ai/ai.h"
 #include "date.h"
 #include "zoom_func.h"
+#include "functions.h"
 
 enum {
 	HEADER_SIZE = 49,

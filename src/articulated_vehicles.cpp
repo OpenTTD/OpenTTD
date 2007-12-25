@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "vehicle.h"
 #include "articulated_vehicles.h"
 #include "engine.h"

@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "gui.h"
@@ -22,6 +21,7 @@
 #include "debug.h"
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
+#include "window_func.h"
 
 
 struct Sorting {

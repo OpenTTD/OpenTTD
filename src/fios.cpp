@@ -8,12 +8,12 @@
 #include "openttd.h"
 #include "string.h"
 #include "variables.h"
-#include "functions.h"
 #include "heightmap.h"
 #include "table/strings.h"
 #include "fios.h"
 #include "fileio.h"
 #include "core/alloc_func.hpp"
+#include "functions.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 

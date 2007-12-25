@@ -5,12 +5,12 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "fileio.h"
-#include "functions.h"
 #include "string.h"
 #include "variables.h"
 #include "debug.h"
 #include "fios.h"
 #include "core/alloc_func.hpp"
+#include "core/math_func.hpp"
 #ifdef WIN32
 #include <windows.h>
 #else
@@ -763,4 +763,32 @@ void SanitizeFilename(char *filename)
 				break;
 		}
 	}
+}
+
+void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
+{
+	FILE *in;
+	byte *mem;
+	size_t len;
+
+	in = fopen(filename, "rb");
+	if (in == NULL) return NULL;
+
+	fseek(in, 0, SEEK_END);
+	len = ftell(in);
+	fseek(in, 0, SEEK_SET);
+	if (len > maxsize || (mem = MallocT<byte>(len + 1)) == NULL) {
+		fclose(in);
+		return NULL;
+	}
+	mem[len] = 0;
+	if (fread(mem, len, 1, in) != 1) {
+		fclose(in);
+		free(mem);
+		return NULL;
+	}
+	fclose(in);
+
+	*lenp = len;
+	return mem;
 }

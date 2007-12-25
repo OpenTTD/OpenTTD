@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "landscape.h"
 #include "player.h"
 #include "signs.h"
@@ -17,6 +16,8 @@
 #include "strings_func.h"
 #include "viewport.h"
 #include "zoom_func.h"
+#include "functions.h"
+#include "window_func.h"
 
 SignID _new_sign_id;
 uint _total_signs;

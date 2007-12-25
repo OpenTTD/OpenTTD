@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "functions.h"
 #include "heightmap.h"
 #include "clear_map.h"
 #include "table/strings.h"

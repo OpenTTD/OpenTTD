@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "variables.h"
 #include "table/strings.h"
 #include "command_func.h"

@@ -4,7 +4,7 @@
 
 #include "../stdafx.h"
 #include "../zoom_func.h"
-#include "../functions.h"
+#include "../core/random_func.hpp"
 #include "8bpp_debug.hpp"
 
 static FBlitter_8bppDebug iFBlitter_8bppDebug;

@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "train.h"
 #include "roadveh.h"
 #include "ship.h"
@@ -22,6 +21,7 @@
 #include "newgrf_engine.h"
 #include "spritecache.h"
 #include "strings_func.h"
+#include "window_func.h"
 
 /*
  * Since all depot window sizes aren't the same, we need to modify sizes a little.

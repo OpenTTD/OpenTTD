@@ -35,6 +35,7 @@
 #include "tunnelbridge_map.h"
 #include "table/bridge_land.h"
 #include "strings_func.h"
+#include "functions.h"
 
 
 const Bridge orig_bridge[] = {

@@ -6,7 +6,6 @@
 
 #include "../openttd.h"
 #include "../debug.h"
-#include "../functions.h"
 #include "../gfx_func.h"
 #include "../sdl.h"
 #include "../variables.h"

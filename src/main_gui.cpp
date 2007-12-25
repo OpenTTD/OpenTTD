@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "heightmap.h"
 #include "currency.h"
-#include "functions.h"
 #include "spritecache.h"
 #include "station.h"
 #include "table/sprites.h"
@@ -42,6 +41,7 @@
 #include "newgrf_config.h"
 #include "rail_gui.h"
 #include "road_gui.h"
+#include "functions.h"
 
 #include "network/network_data.h"
 #include "network/network_client.h"

@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "driver.h"
-#include "functions.h"
 #include "string.h"
 
 #include "sound/sound_driver.hpp"

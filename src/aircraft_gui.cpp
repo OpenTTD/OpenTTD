@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "aircraft.h"
 #include "debug.h"
-#include "functions.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"

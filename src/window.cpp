@@ -6,7 +6,6 @@
 #include <stdarg.h>
 #include "openttd.h"
 #include "debug.h"
-#include "functions.h"
 #include "map.h"
 #include "player.h"
 #include "viewport.h"

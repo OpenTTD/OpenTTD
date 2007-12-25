@@ -44,6 +44,7 @@
 #include "tunnelbridge_map.h"
 #include "strings_func.h"
 #include "string.h"
+#include "window_func.h"
 
 
 /* Initialize the town-pool */

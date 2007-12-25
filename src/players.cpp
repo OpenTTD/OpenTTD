@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "engine.h"
-#include "functions.h"
 #include "string.h"
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -30,6 +29,7 @@
 #include "tile_map.h"
 #include "strings_func.h"
 #include "gfx_func.h"
+#include "functions.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a

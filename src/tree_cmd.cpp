@@ -21,6 +21,8 @@
 #include "variables.h"
 #include "genworld.h"
 #include "transparency.h"
+#include "functions.h"
+#include "player.h"
 
 /**
  * List of tree placer algorithm.

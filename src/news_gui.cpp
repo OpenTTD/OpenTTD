@@ -3,7 +3,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "gui.h"
@@ -17,6 +16,7 @@
 #include "string.h"
 #include "transparency.h"
 #include "strings_func.h"
+#include "window_func.h"
 
 /** @file news_gui.cpp
  *

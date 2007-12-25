@@ -7,7 +7,6 @@
 #include "openttd.h"
 #include "aircraft.h"
 #include "debug.h"
-#include "functions.h"
 #include "landscape.h"
 #include "station_map.h"
 #include "table/strings.h"
@@ -33,6 +32,8 @@
 #include "cargotype.h"
 #include "strings_func.h"
 #include "command_func.h"
+#include "window_func.h"
+#include "functions.h"
 
 void Aircraft::UpdateDeltaXY(Direction direction)
 {

@@ -16,7 +16,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "functions.h"
 #include "vehicle.h"
 #include "station.h"
 #include "thread.h"
@@ -30,6 +29,7 @@
 #include "strings_func.h"
 #include "gfx_func.h"
 #include "core/alloc_func.hpp"
+#include "functions.h"
 #include <list>
 
 extern const uint16 SAVEGAME_VERSION = 83;

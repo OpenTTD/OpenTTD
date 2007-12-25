@@ -43,6 +43,8 @@
 #include "water.h"
 #include "station_gui.h"
 #include "strings_func.h"
+#include "functions.h"
+#include "window_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)

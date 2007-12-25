@@ -4,12 +4,13 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "functions.h"
 #include "player.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "viewport.h"
 #include "window_gui.h"
+#include "window_func.h"
+
 
 static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
 {

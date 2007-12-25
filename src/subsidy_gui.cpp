@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
-#include "functions.h"
 #include "station.h"
 #include "industry.h"
 #include "town.h"

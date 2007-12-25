@@ -3,7 +3,6 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../driver.h"
-#include "../functions.h"
 #include "../mixer.h"
 #include "../core/alloc_func.hpp"
 #include "win32_s.h"

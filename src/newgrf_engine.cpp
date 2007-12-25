@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "variables.h"
 #include "debug.h"
-#include "functions.h"
 #include "engine.h"
 #include "train.h"
 #include "player.h"
