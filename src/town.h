@@ -8,6 +8,7 @@
 #include "oldpool.h"
 #include "core/random_func.hpp"
 #include "cargo_type.h"
+#include "tile_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,

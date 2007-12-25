@@ -8,6 +8,7 @@
 #include "core/math_func.hpp"
 #include "slope_type.h"
 #include "direction_type.h"
+#include "tile_type.h"
 
 /**
  * Rangecheck for Corner enumeration.

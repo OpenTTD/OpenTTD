@@ -7,6 +7,8 @@
 
 #include "yapf/yapf_settings.h"
 #include "openttd.h"
+#include "tile_type.h"
+#include "strings_type.h"
 
 /* ********* START OF SAVE REGION */
 

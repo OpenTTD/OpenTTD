@@ -6,6 +6,9 @@
 #define LANDSCAPE_H
 
 #include "core/geometry_type.hpp"
+#include "tile_cmd.h"
+#include "slope_type.h"
+#include "direction_type.h"
 
 enum {
 	SNOW_LINE_MONTHS = 12,

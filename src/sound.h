@@ -7,6 +7,7 @@
 
 #include "core/enum_type.hpp"
 #include "vehicle_type.h"
+#include "tile_type.h"
 
 struct MusicFileSettings {
 	byte playlist;

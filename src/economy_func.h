@@ -9,6 +9,7 @@
 #include "economy_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"
+#include "tile_type.h"
 
 struct Player;
 

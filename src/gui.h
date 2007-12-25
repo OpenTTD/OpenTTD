@@ -9,6 +9,7 @@
 #include "vehicle_type.h"
 #include "gfx_type.h"
 #include "economy_type.h"
+#include "tile_type.h"
 
 /* main_gui.cpp */
 void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);
@@ -52,10 +53,12 @@ void ShowTerraformToolbar(Window *link = NULL);
 void ShowGenerateLandscape();
 void ShowHeightmapLoad();
 
+typedef void PlaceProc(TileIndex tile);
 void PlaceProc_DemolishArea(TileIndex tile);
 void PlaceProc_LevelLand(TileIndex tile);
 void PlaceProc_BuyLand(TileIndex tile);
 bool GUIPlaceProcDragXY(const WindowEvent *e);
+VARDEF PlaceProc *_place_proc;
 
 /** Drag and drop selection process, or, what to do with an area of land when
  * you've selected it. */
@@ -121,7 +124,6 @@ void ShowMusicWindow();
 /* main_gui.cpp */
 void HandleOnEditText(const char *str);
 VARDEF bool _station_show_coverage;
-VARDEF PlaceProc *_place_proc;
 
 void InitializeGUI();
 

@@ -17,6 +17,7 @@
 #include "zoom_func.h"
 #include "core/alloc_func.hpp"
 #include "core/endian_func.hpp"
+#include "map.h"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;

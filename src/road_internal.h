@@ -5,6 +5,8 @@
 #ifndef ROAD_INTERNAL_H
 #define ROAD_INTERNAL_H
 
+#include "tile_cmd.h"
+
 /**
  * Clean up unneccesary RoadBits of a planed tile.
  * @param tile current tile

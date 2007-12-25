@@ -7,6 +7,7 @@
 
 #include "core/bitmath_func.hpp"
 #include "road_type.h"
+#include "direction_func.h"
 
 /**
  * Whether the given roadtype is valid.

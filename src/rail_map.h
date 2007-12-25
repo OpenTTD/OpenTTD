@@ -5,9 +5,10 @@
 #ifndef RAIL_MAP_H
 #define RAIL_MAP_H
 
+#include "rail_type.h"
+#include "signal_func.h"
 #include "direction_func.h"
 #include "track_func.h"
-#include "rail.h"
 #include "tile_map.h"
 
 

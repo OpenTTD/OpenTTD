@@ -10,6 +10,7 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "cargo_type.h"
+#include "direction_type.h"
 #include "window_type.h"
 #include "gfx_type.h"
 #include "command_type.h"

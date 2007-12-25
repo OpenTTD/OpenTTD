@@ -19,6 +19,7 @@
 #include "heightmap.h"
 #include "date.h"
 #include "viewport.h"
+#include "map.h"
 
 void GenerateClearTile();
 void GenerateIndustries();

@@ -8,10 +8,8 @@
 #define VARDEF extern
 #endif
 
+#include "core/enum_type.hpp"
 #include "strings_type.h"
-
-#include "map.h"
-#include "slope_type.h"
 
 // Forward declarations of structs.
 struct Depot;
@@ -144,15 +142,6 @@ template <> struct EnumPropsT<TransportType> : MakeEnumPropsT<TransportType, byt
 typedef TinyEnumT<TransportType> TransportTypeByte;
 
 
-struct TileInfo {
-	uint x;
-	uint y;
-	Slope tileh;
-	TileIndex tile;
-	uint z;
-};
-
-
 /* Display Options */
 enum {
 	DO_SHOW_TOWN_NAMES    = 0,
@@ -216,20 +205,11 @@ struct GameDifficulty {
 	GDType town_council_tolerance; // minimum required town ratings to be allowed to demolish stuff
 };
 
-struct TileDesc {
-	StringID str;
-	Owner owner;
-	Date build_date;
-	uint64 dparam[2];
-};
-
 struct ViewportSign {
 	int32 left;
 	int32 top;
 	byte width_1, width_2;
 };
-
-typedef void PlaceProc(TileIndex tile);
 
 enum {
 	SORT_ASCENDING  = 0,

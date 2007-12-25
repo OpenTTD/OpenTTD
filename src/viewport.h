@@ -9,6 +9,7 @@
 #include "window_type.h"
 #include "vehicle_type.h"
 #include "gfx_func.h"
+#include "gui.h"
 
 struct ViewPort {
 	int left,top;                       // screen coordinates for the viewport

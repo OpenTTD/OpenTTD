@@ -10,6 +10,7 @@
 #include "map.h"
 #include "order.h"
 #include "rail_map.h"
+#include "rail.h"
 #include "bridge_map.h"
 #include "saveload.h"
 #include "station.h"
@@ -27,6 +28,7 @@
 #include "viewport.h"
 #include "functions.h"
 #include "window_func.h"
+#include "economy_func.h"
 
 enum {
 	MAX_WAYPOINTS_PER_TOWN = 64,

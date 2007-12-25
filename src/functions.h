@@ -8,6 +8,8 @@
 #include "core/random_func.hpp"
 #include "command_type.h"
 #include "openttd.h"
+#include "tile_cmd.h"
+#include "map.h"
 
 /* clear_land.cpp */
 void DrawHillyLandTile(const TileInfo *ti);

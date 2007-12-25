@@ -6,9 +6,11 @@
 #define TILE_CMD_H
 
 #include "slope_type.h"
+#include "tile_type.h"
 #include "command_type.h"
 #include "vehicle_type.h"
 #include "cargo_type.h"
+#include "strings_type.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -30,6 +32,21 @@ enum VehicleEnterTileStatus {
 	VETSB_CANNOT_ENTER     = 1 << VETS_CANNOT_ENTER,     ///< The vehicle cannot enter the tile
 };
 DECLARE_ENUM_AS_BIT_SET(VehicleEnterTileStatus);
+
+struct TileInfo {
+	uint x;
+	uint y;
+	Slope tileh;
+	TileIndex tile;
+	uint z;
+};
+
+struct TileDesc {
+	StringID str;
+	Owner owner;
+	Date build_date;
+	uint64 dparam[2];
+};
 
 typedef void DrawTileProc(TileInfo *ti);
 typedef uint GetSlopeZProc(TileIndex tile, uint x, uint y);

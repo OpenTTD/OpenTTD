@@ -7,11 +7,15 @@
 
 #include "core/enum_type.hpp"
 
-/** Maximum allowed tile height */
-#define MAX_TILE_HEIGHT 15
+enum {
+	TILE_SIZE   = 16,   ///< Tiles are 16x16 "units" in size
+	TILE_PIXELS = 32,   ///< a tile is 32x32 pixels
+	TILE_HEIGHT =  8,   ///< The standard height-difference between tiles on two levels is 8 (z-diff 8)
 
-/** Maximum allowed snowline height */
-#define MAX_SNOWLINE_HEIGHT (MAX_TILE_HEIGHT - 2)
+	MAX_TILE_HEIGHT     = 15,                    ///< Maximum allowed tile height
+	MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2), ///< Maximum allowed snowline height
+};
+
 
 /**
  * The different type of a tile.
@@ -50,5 +54,10 @@ enum TropicZone {
  * The index/ID of a Tile.
  */
 typedef uint32 TileIndex;
+
+/**
+ * The very nice invalid tile marker
+ */
+static const TileIndex INVALID_TILE = (TileIndex)-1;
 
 #endif /* TILE_TYPE_H */

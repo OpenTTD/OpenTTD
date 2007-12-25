@@ -8,6 +8,7 @@
 #include "rail_map.h"
 #include "road_map.h"
 #include "station.h"
+#include "rail.h"
 
 typedef byte StationGfx;
 

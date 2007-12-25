@@ -12,6 +12,7 @@
 #include "core/bitmath_func.hpp"
 #include "economy_func.h"
 #include "variables.h"
+#include "tile_cmd.h"
 
 /** This struct contains all the info that is needed to draw and construct tracks.
  */
@@ -96,42 +97,6 @@ enum {
 	NUM_SSD_ENTRY = 256, ///< max amount of blocks
 	NUM_SSD_STACK =  32, ///< max amount of blocks to check recursively
 };
-
-/*
- * Functions to map tracks to the corresponding bits in the signal
- * presence/status bytes in the map. You should not use these directly, but
- * wrapper functions below instead. XXX: Which are these?
- */
-
-/**
- * Maps a trackdir to the bit that stores its status in the map arrays, in the
- * direction along with the trackdir.
- */
-static inline byte SignalAlongTrackdir(Trackdir trackdir)
-{
-	extern const byte _signal_along_trackdir[TRACKDIR_END];
-	return _signal_along_trackdir[trackdir];
-}
-
-/**
- * Maps a trackdir to the bit that stores its status in the map arrays, in the
- * direction against the trackdir.
- */
-static inline byte SignalAgainstTrackdir(Trackdir trackdir)
-{
-	extern const byte _signal_against_trackdir[TRACKDIR_END];
-	return _signal_against_trackdir[trackdir];
-}
-
-/**
- * Maps a Track to the bits that store the status of the two signals that can
- * be present on the given track.
- */
-static inline byte SignalOnTrack(Track track)
-{
-	extern const byte _signal_on_track[TRACK_END];
-	return _signal_on_track[track];
-}
 
 
 
