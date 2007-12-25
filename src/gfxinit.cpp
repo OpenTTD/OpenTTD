@@ -20,7 +20,7 @@
 
 struct MD5File {
 	const char * filename;     ///< filename
-	md5_byte_t hash[16];       ///< md5 sum of the file
+	uint8 hash[16];            ///< md5 sum of the file
 };
 
 struct FileList {
@@ -108,20 +108,19 @@ static bool FileMD5(const MD5File file)
 	FILE *f = FioFOpenFile(file.filename, "rb", DATA_DIR, &size);
 
 	if (f != NULL) {
-		md5_state_t filemd5state;
-		md5_byte_t buffer[1024];
-		md5_byte_t digest[16];
+		Md5 checksum;
+		uint8 buffer[1024];
+		uint8 digest[16];
 		size_t len;
 
-		md5_init(&filemd5state);
 		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
 			size -= len;
-			md5_append(&filemd5state, buffer, len);
+			checksum.Append(buffer, len);
 		}
 
 		FioFCloseFile(f);
 
-		md5_finish(&filemd5state, digest);
+		checksum.Finish(digest);
 		return memcmp(file.hash, digest, sizeof(file.hash)) == 0;
 	} else { // file not found
 		return false;

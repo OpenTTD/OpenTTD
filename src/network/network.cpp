@@ -1352,8 +1352,8 @@ void NetworkGameLoop()
 
 static void NetworkGenerateUniqueId()
 {
-	md5_state_t state;
-	md5_byte_t digest[16];
+	Md5 checksum;
+	uint8 digest[16];
 	char hex_output[16*2 + 1];
 	char coding_string[NETWORK_NAME_LENGTH];
 	int di;
@@ -1361,9 +1361,8 @@ static void NetworkGenerateUniqueId()
 	snprintf(coding_string, sizeof(coding_string), "%d%s", (uint)Random(), "OpenTTD Unique ID");
 
 	/* Generate the MD5 hash */
-	md5_init(&state);
-	md5_append(&state, (const md5_byte_t*)coding_string, strlen(coding_string));
-	md5_finish(&state, digest);
+	checksum.Append((const uint8*)coding_string, strlen(coding_string));
+	checksum.Finish(digest);
 
 	for (di = 0; di < 16; ++di)
 		sprintf(hex_output + di * 2, "%02x", digest[di]);

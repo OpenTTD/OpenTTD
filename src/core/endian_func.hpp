@@ -25,27 +25,27 @@
 
 /* Setup alignment and conversion macros */
 #if defined(TTD_BIG_ENDIAN)
-	#define TO_BE32X(x)  (x)
-	#define FROM_BE32(x) (x)
-	#define TO_BE32(x)   (x)
 	#define FROM_BE16(x) (x)
+	#define FROM_BE32(x) (x)
 	#define TO_BE16(x)   (x)
+	#define TO_BE32(x)   (x)
+	#define TO_BE32X(x)  (x)
+	#define FROM_LE16(x) BSWAP16(x)
+	#define FROM_LE32(x) BSWAP32(x)
+	#define TO_LE16(x)   BSWAP16(x)
+	#define TO_LE32(x)   BSWAP32(x)
 	#define TO_LE32X(x)  BSWAP32(x)
-	static inline uint32 FROM_LE32(uint32 x) { return BSWAP32(x); }
-	static inline uint32 TO_LE32(uint32 x)   { return BSWAP32(x); }
-	static inline uint16 FROM_LE16(uint16 x) { return BSWAP16(x); }
-	static inline uint16 TO_LE16(uint16 x)   { return BSWAP16(x); }
 #else
+	#define FROM_BE16(x) BSWAP16(x)
+	#define FROM_BE32(x) BSWAP32(x)
+	#define TO_BE16(x)   BSWAP16(x)
+	#define TO_BE32(x)   BSWAP32(x)
 	#define TO_BE32X(x)  BSWAP32(x)
-	static inline uint32 FROM_BE32(uint32 x) { return BSWAP32(x); }
-	static inline uint32 TO_BE32(uint32 x)   { return BSWAP32(x); }
-	static inline uint16 FROM_BE16(uint16 x) { return BSWAP16(x); }
-	static inline uint16 TO_BE16(uint16 x)   { return BSWAP16(x); }
-	#define TO_LE32X(x)  (x)
-	#define FROM_LE32(x) (x)
-	#define TO_LE32(x)   (x)
 	#define FROM_LE16(x) (x)
+	#define FROM_LE32(x) (x)
 	#define TO_LE16(x)   (x)
+	#define TO_LE32(x)   (x)
+	#define TO_LE32X(x)  (x)
 #endif /* TTD_BIG_ENDIAN */
 
 static inline uint16 ReadLE16Aligned(const void *x)

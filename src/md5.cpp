@@ -31,7 +31,7 @@
 
   This code implements the MD5 Algorithm defined in RFC 1321, whose
   text is available at
-	http://www.ietf.org/rfc/rfc1321.txt
+  http://www.ietf.org/rfc/rfc1321.txt
   The code is derived from the text of the RFC, including the test suite
   (section A.5) but excluding the rest of Appendix A.  It does not include
   any code or documentation that is identified in the RFC as being
@@ -41,33 +41,27 @@
   <ghost@aladdin.com>.  Other authors are noted in the change history
   that follows (in reverse chronological order):
 
+  2007-12-24 Changed to C++ and adapted to OpenTTD source
   2002-04-13 lpd Clarified derivation from RFC 1321; now handles byte order
-	either statically or dynamically; added missing #include <string.h>
-	in library.
+             either statically or dynamically; added missing #include <string.h>
+             in library.
   2002-03-11 lpd Corrected argument list for main(), and added int return
-	type, in test program and T value program.
+             type, in test program and T value program.
   2002-02-21 lpd Added missing #include <stdio.h> in test program.
   2000-07-03 lpd Patched to eliminate warnings about "constant is
-	unsigned in ANSI C, signed in traditional"; made test program
-	self-checking.
+             unsigned in ANSI C, signed in traditional"; made test program
+             self-checking.
   1999-11-04 lpd Edited comments slightly for automatic TOC extraction.
   1999-10-18 lpd Fixed typo in header comment (ansi2knr rather than md5).
   1999-05-03 lpd Original version.
  */
 
 #include "stdafx.h"
+#include "core/bitmath_func.hpp"
 #include "core/endian_func.hpp"
 #include "md5.h"
-#include <string.h>
 
-#undef BYTE_ORDER /* 1 = big-endian, -1 = little-endian, 0 = unknown */
-#if defined(TTD_BIG_ENDIAN)
-#  define BYTE_ORDER 1
-#else
-#  define BYTE_ORDER -1
-#endif
-
-#define T_MASK ((md5_word_t)~0)
+#define T_MASK ((uint32)~0)
 #define T1 /* 0xd76aa478 */ (T_MASK ^ 0x28955b87)
 #define T2 /* 0xe8c7b756 */ (T_MASK ^ 0x173848a9)
 #define T3    0x242070db
@@ -133,255 +127,197 @@
 #define T63    0x2ad7d2bb
 #define T64 /* 0xeb86d391 */ (T_MASK ^ 0x14792c6e)
 
-
-static void
-md5_process(md5_state_t *pms, const md5_byte_t *data /*[64]*/)
+static inline void Md5Set1(const uint32 *X, uint32 *a, const uint32 *b, const uint32 *c, const uint32 *d, const uint8 k, const uint8 s, const uint32 Ti)
 {
-    md5_word_t
-	a = pms->abcd[0], b = pms->abcd[1],
-	c = pms->abcd[2], d = pms->abcd[3];
-    md5_word_t t;
-#if BYTE_ORDER > 0
-    /* Define storage only for big-endian CPUs. */
-    md5_word_t X[16];
-#else
-    /* Define storage for little-endian or both types of CPUs. */
-    md5_word_t xbuf[16];
-    const md5_word_t *X;
-#endif
+	uint32 t = (*b & *c) | (~*b & *d);
+	t += *a + X[k] + Ti;
+	*a = ROL(t, s) + *b;
+}
 
-    {
-#if BYTE_ORDER == 0
-	/*
-	 * Determine dynamically whether this is a big-endian or
-	 * little-endian machine, since we can use a more efficient
-	 * algorithm on the latter.
-	 */
-	static const int w = 1;
+static inline void Md5Set2(const uint32 *X, uint32 *a, const uint32 *b, const uint32 *c, const uint32 *d, const uint8 k, const uint8 s, const uint32 Ti)
+{
+	uint32 t = (*b & *d) | (*c & ~*d);
+	t += *a + X[k] + Ti;
+	*a = ROL(t, s) + *b;
+}
 
-	if (*((const md5_byte_t *)&w)) /* dynamic little-endian */
-#endif
-#if BYTE_ORDER <= 0 /* little-endian */
-	{
-	    /*
-	     * On little-endian machines, we can process properly aligned
-	     * data without copying it.
-	     */
-	    if (!((data - (const md5_byte_t *)0) & 3)) {
-		/* data are properly aligned */
-		X = (const md5_word_t *)data;
-	    } else {
-		/* not aligned */
-		memcpy(xbuf, data, 64);
-		X = xbuf;
-	    }
+
+static inline void Md5Set3(const uint32 *X, uint32 *a, const uint32 *b, const uint32 *c, const uint32 *d, const uint8 k, const uint8 s, const uint32 Ti)
+{
+	uint32 t = *b ^ *c ^ *d;
+	t += *a + X[k] + Ti;
+	*a = ROL(t, s) + *b;
+}
+
+static inline void Md5Set4(const uint32 *X, uint32 *a, const uint32 *b, const uint32 *c, const uint32 *d, const uint8 k, const uint8 s, const uint32 Ti)
+{
+	uint32 t = *c ^ (*b | ~*d);
+	t += *a + X[k] + Ti;
+	*a = ROL(t, s) + *b;
+}
+
+Md5::Md5()
+{
+	count[0] = 0;
+	count[1] = 0;
+	abcd[0] = 0x67452301;
+	abcd[1] = /*0xefcdab89*/ T_MASK ^ 0x10325476;
+	abcd[2] = /*0x98badcfe*/ T_MASK ^ 0x67452301;
+	abcd[3] = 0x10325476;
+}
+
+void Md5::Process(const uint8 *data /*[64]*/)
+{
+	uint32 a = this->abcd[0];
+	uint32 b = this->abcd[1];
+	uint32 c = this->abcd[2];
+	uint32 d = this->abcd[3];
+
+	uint32 X[16];
+
+	/* Convert the uint8 data to uint32 LE */
+	uint32 *px = (uint32 *)data;
+	for (uint i = 0; i < 16; i++) {
+		X[i] = TO_LE32(*px);
+		px++;
 	}
-#endif
-#if BYTE_ORDER == 0
-	else /* dynamic big-endian */
-#endif
-#if BYTE_ORDER >= 0 /* big-endian */
-	{
-	    /*
-	     * On big-endian machines, we must arrange the bytes in the
-	     * right order.
-	     */
-	    const md5_byte_t *xp = data;
-	    int i;
 
-#  if BYTE_ORDER == 0
-	    X = xbuf; /* (dynamic only) */
-#  else
-#    define xbuf X /* (static only) */
-#  endif
-	    for (i = 0; i < 16; ++i, xp += 4)
-		xbuf[i] = xp[0] + (xp[1] << 8) + (xp[2] << 16) + (xp[3] << 24);
+	/* Round 1. */
+	Md5Set1(X, &a, &b, &c, &d,  0,  7,  T1);
+	Md5Set1(X, &d, &a, &b, &c,  1, 12,  T2);
+	Md5Set1(X, &c, &d, &a, &b,  2, 17,  T3);
+	Md5Set1(X, &b, &c, &d, &a,  3, 22,  T4);
+	Md5Set1(X, &a, &b, &c, &d,  4,  7,  T5);
+	Md5Set1(X, &d, &a, &b, &c,  5, 12,  T6);
+	Md5Set1(X, &c, &d, &a, &b,  6, 17,  T7);
+	Md5Set1(X, &b, &c, &d, &a,  7, 22,  T8);
+	Md5Set1(X, &a, &b, &c, &d,  8,  7,  T9);
+	Md5Set1(X, &d, &a, &b, &c,  9, 12, T10);
+	Md5Set1(X, &c, &d, &a, &b, 10, 17, T11);
+	Md5Set1(X, &b, &c, &d, &a, 11, 22, T12);
+	Md5Set1(X, &a, &b, &c, &d, 12,  7, T13);
+	Md5Set1(X, &d, &a, &b, &c, 13, 12, T14);
+	Md5Set1(X, &c, &d, &a, &b, 14, 17, T15);
+	Md5Set1(X, &b, &c, &d, &a, 15, 22, T16);
+
+	/* Round 2. */
+	Md5Set2(X, &a, &b, &c, &d,  1,  5, T17);
+	Md5Set2(X, &d, &a, &b, &c,  6,  9, T18);
+	Md5Set2(X, &c, &d, &a, &b, 11, 14, T19);
+	Md5Set2(X, &b, &c, &d, &a,  0, 20, T20);
+	Md5Set2(X, &a, &b, &c, &d,  5,  5, T21);
+	Md5Set2(X, &d, &a, &b, &c, 10,  9, T22);
+	Md5Set2(X, &c, &d, &a, &b, 15, 14, T23);
+	Md5Set2(X, &b, &c, &d, &a,  4, 20, T24);
+	Md5Set2(X, &a, &b, &c, &d,  9,  5, T25);
+	Md5Set2(X, &d, &a, &b, &c, 14,  9, T26);
+	Md5Set2(X, &c, &d, &a, &b,  3, 14, T27);
+	Md5Set2(X, &b, &c, &d, &a,  8, 20, T28);
+	Md5Set2(X, &a, &b, &c, &d, 13,  5, T29);
+	Md5Set2(X, &d, &a, &b, &c,  2,  9, T30);
+	Md5Set2(X, &c, &d, &a, &b,  7, 14, T31);
+	Md5Set2(X, &b, &c, &d, &a, 12, 20, T32);
+
+	/* Round 3. */
+	Md5Set3(X, &a, &b, &c, &d,  5,  4, T33);
+	Md5Set3(X, &d, &a, &b, &c,  8, 11, T34);
+	Md5Set3(X, &c, &d, &a, &b, 11, 16, T35);
+	Md5Set3(X, &b, &c, &d, &a, 14, 23, T36);
+	Md5Set3(X, &a, &b, &c, &d,  1,  4, T37);
+	Md5Set3(X, &d, &a, &b, &c,  4, 11, T38);
+	Md5Set3(X, &c, &d, &a, &b,  7, 16, T39);
+	Md5Set3(X, &b, &c, &d, &a, 10, 23, T40);
+	Md5Set3(X, &a, &b, &c, &d, 13,  4, T41);
+	Md5Set3(X, &d, &a, &b, &c,  0, 11, T42);
+	Md5Set3(X, &c, &d, &a, &b,  3, 16, T43);
+	Md5Set3(X, &b, &c, &d, &a,  6, 23, T44);
+	Md5Set3(X, &a, &b, &c, &d,  9,  4, T45);
+	Md5Set3(X, &d, &a, &b, &c, 12, 11, T46);
+	Md5Set3(X, &c, &d, &a, &b, 15, 16, T47);
+	Md5Set3(X, &b, &c, &d, &a,  2, 23, T48);
+
+	/* Round 4. */
+	Md5Set4(X, &a, &b, &c, &d,  0,  6, T49);
+	Md5Set4(X, &d, &a, &b, &c,  7, 10, T50);
+	Md5Set4(X, &c, &d, &a, &b, 14, 15, T51);
+	Md5Set4(X, &b, &c, &d, &a,  5, 21, T52);
+	Md5Set4(X, &a, &b, &c, &d, 12,  6, T53);
+	Md5Set4(X, &d, &a, &b, &c,  3, 10, T54);
+	Md5Set4(X, &c, &d, &a, &b, 10, 15, T55);
+	Md5Set4(X, &b, &c, &d, &a,  1, 21, T56);
+	Md5Set4(X, &a, &b, &c, &d,  8,  6, T57);
+	Md5Set4(X, &d, &a, &b, &c, 15, 10, T58);
+	Md5Set4(X, &c, &d, &a, &b,  6, 15, T59);
+	Md5Set4(X, &b, &c, &d, &a, 13, 21, T60);
+	Md5Set4(X, &a, &b, &c, &d,  4,  6, T61);
+	Md5Set4(X, &d, &a, &b, &c, 11, 10, T62);
+	Md5Set4(X, &c, &d, &a, &b,  2, 15, T63);
+	Md5Set4(X, &b, &c, &d, &a,  9, 21, T64);
+
+	/* Then perform the following additions. (That is increment each
+	 * of the four registers by the value it had before this block
+	 * was started.) */
+	this->abcd[0] += a;
+	this->abcd[1] += b;
+	this->abcd[2] += c;
+	this->abcd[3] += d;
+}
+
+void Md5::Append(const void *data, const size_t nbytes)
+{
+	const uint8 *p = (const uint8 *)data;
+	size_t left = nbytes;
+	const size_t offset = (this->count[0] >> 3) & 63;
+	const uint32 nbits = (uint32)(nbytes << 3);
+
+	if (nbytes <= 0) return;
+
+	/* Update the message length. */
+	this->count[1] += (uint32)(nbytes >> 29);
+	this->count[0] += nbits;
+
+	if (this->count[0] < nbits) this->count[1]++;
+
+	/* Process an initial partial block. */
+	if (offset) {
+		size_t copy = (offset + nbytes > 64 ? 64 - offset : nbytes);
+
+		memcpy(this->buf + offset, p, copy);
+
+		if (offset + copy < 64) return;
+
+		p += copy;
+		left -= copy;
+		this->Process(this->buf);
 	}
-#endif
-    }
 
-#define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
+	/* Process full blocks. */
+	for (; left >= 64; p += 64, left -= 64) this->Process(p);
 
-    /* Round 1. */
-    /* Let [abcd k s i] denote the operation
-       a = b + ((a + F(b,c,d) + X[k] + T[i]) <<< s). */
-#define F(x, y, z) (((x) & (y)) | (~(x) & (z)))
-#define SET(a, b, c, d, k, s, Ti)\
-  t = a + F(b,c,d) + X[k] + Ti;\
-  a = ROTATE_LEFT(t, s) + b
-    /* Do the following 16 operations. */
-    SET(a, b, c, d,  0,  7,  T1);
-    SET(d, a, b, c,  1, 12,  T2);
-    SET(c, d, a, b,  2, 17,  T3);
-    SET(b, c, d, a,  3, 22,  T4);
-    SET(a, b, c, d,  4,  7,  T5);
-    SET(d, a, b, c,  5, 12,  T6);
-    SET(c, d, a, b,  6, 17,  T7);
-    SET(b, c, d, a,  7, 22,  T8);
-    SET(a, b, c, d,  8,  7,  T9);
-    SET(d, a, b, c,  9, 12, T10);
-    SET(c, d, a, b, 10, 17, T11);
-    SET(b, c, d, a, 11, 22, T12);
-    SET(a, b, c, d, 12,  7, T13);
-    SET(d, a, b, c, 13, 12, T14);
-    SET(c, d, a, b, 14, 17, T15);
-    SET(b, c, d, a, 15, 22, T16);
-#undef SET
-
-     /* Round 2. */
-     /* Let [abcd k s i] denote the operation
-          a = b + ((a + G(b,c,d) + X[k] + T[i]) <<< s). */
-#define G(x, y, z) (((x) & (z)) | ((y) & ~(z)))
-#define SET(a, b, c, d, k, s, Ti)\
-  t = a + G(b,c,d) + X[k] + Ti;\
-  a = ROTATE_LEFT(t, s) + b
-     /* Do the following 16 operations. */
-    SET(a, b, c, d,  1,  5, T17);
-    SET(d, a, b, c,  6,  9, T18);
-    SET(c, d, a, b, 11, 14, T19);
-    SET(b, c, d, a,  0, 20, T20);
-    SET(a, b, c, d,  5,  5, T21);
-    SET(d, a, b, c, 10,  9, T22);
-    SET(c, d, a, b, 15, 14, T23);
-    SET(b, c, d, a,  4, 20, T24);
-    SET(a, b, c, d,  9,  5, T25);
-    SET(d, a, b, c, 14,  9, T26);
-    SET(c, d, a, b,  3, 14, T27);
-    SET(b, c, d, a,  8, 20, T28);
-    SET(a, b, c, d, 13,  5, T29);
-    SET(d, a, b, c,  2,  9, T30);
-    SET(c, d, a, b,  7, 14, T31);
-    SET(b, c, d, a, 12, 20, T32);
-#undef SET
-
-     /* Round 3. */
-     /* Let [abcd k s t] denote the operation
-          a = b + ((a + H(b,c,d) + X[k] + T[i]) <<< s). */
-#define H(x, y, z) ((x) ^ (y) ^ (z))
-#define SET(a, b, c, d, k, s, Ti)\
-  t = a + H(b,c,d) + X[k] + Ti;\
-  a = ROTATE_LEFT(t, s) + b
-     /* Do the following 16 operations. */
-    SET(a, b, c, d,  5,  4, T33);
-    SET(d, a, b, c,  8, 11, T34);
-    SET(c, d, a, b, 11, 16, T35);
-    SET(b, c, d, a, 14, 23, T36);
-    SET(a, b, c, d,  1,  4, T37);
-    SET(d, a, b, c,  4, 11, T38);
-    SET(c, d, a, b,  7, 16, T39);
-    SET(b, c, d, a, 10, 23, T40);
-    SET(a, b, c, d, 13,  4, T41);
-    SET(d, a, b, c,  0, 11, T42);
-    SET(c, d, a, b,  3, 16, T43);
-    SET(b, c, d, a,  6, 23, T44);
-    SET(a, b, c, d,  9,  4, T45);
-    SET(d, a, b, c, 12, 11, T46);
-    SET(c, d, a, b, 15, 16, T47);
-    SET(b, c, d, a,  2, 23, T48);
-#undef SET
-
-     /* Round 4. */
-     /* Let [abcd k s t] denote the operation
-          a = b + ((a + I(b,c,d) + X[k] + T[i]) <<< s). */
-#define I(x, y, z) ((y) ^ ((x) | ~(z)))
-#define SET(a, b, c, d, k, s, Ti)\
-  t = a + I(b,c,d) + X[k] + Ti;\
-  a = ROTATE_LEFT(t, s) + b
-     /* Do the following 16 operations. */
-    SET(a, b, c, d,  0,  6, T49);
-    SET(d, a, b, c,  7, 10, T50);
-    SET(c, d, a, b, 14, 15, T51);
-    SET(b, c, d, a,  5, 21, T52);
-    SET(a, b, c, d, 12,  6, T53);
-    SET(d, a, b, c,  3, 10, T54);
-    SET(c, d, a, b, 10, 15, T55);
-    SET(b, c, d, a,  1, 21, T56);
-    SET(a, b, c, d,  8,  6, T57);
-    SET(d, a, b, c, 15, 10, T58);
-    SET(c, d, a, b,  6, 15, T59);
-    SET(b, c, d, a, 13, 21, T60);
-    SET(a, b, c, d,  4,  6, T61);
-    SET(d, a, b, c, 11, 10, T62);
-    SET(c, d, a, b,  2, 15, T63);
-    SET(b, c, d, a,  9, 21, T64);
-#undef SET
-
-     /* Then perform the following additions. (That is increment each
-        of the four registers by the value it had before this block
-        was started.) */
-    pms->abcd[0] += a;
-    pms->abcd[1] += b;
-    pms->abcd[2] += c;
-    pms->abcd[3] += d;
+	/* Process a final partial block. */
+	if (left) memcpy(this->buf, p, left);
 }
 
-void
-md5_init(md5_state_t *pms)
+void Md5::Finish(uint8 digest[16])
 {
-    pms->count[0] = pms->count[1] = 0;
-    pms->abcd[0] = 0x67452301;
-    pms->abcd[1] = /*0xefcdab89*/ T_MASK ^ 0x10325476;
-    pms->abcd[2] = /*0x98badcfe*/ T_MASK ^ 0x67452301;
-    pms->abcd[3] = 0x10325476;
-}
+	static const uint8 pad[64] = {
+		0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	};
+	uint8 data[8];
+	uint i;
 
-void
-md5_append(md5_state_t *pms, const void *data, size_t nbytes)
-{
-    const md5_byte_t *p = (const md5_byte_t *)data;
-    size_t left = nbytes;
-    size_t offset = (pms->count[0] >> 3) & 63;
-    md5_word_t nbits = (md5_word_t)(nbytes << 3);
+	/* Save the length before padding. */
+	for (i = 0; i < 8; ++i)
+		data[i] = (uint8)(this->count[i >> 2] >> ((i & 3) << 3));
 
-    if (nbytes <= 0)
-	return;
+	/* Pad to 56 bytes mod 64. */
+	this->Append(pad, ((55 - (this->count[0] >> 3)) & 63) + 1);
+	/* Append the length. */
+	this->Append(data, 8);
 
-    /* Update the message length. */
-    pms->count[1] += (md5_word_t)(nbytes >> 29);
-    pms->count[0] += nbits;
-    if (pms->count[0] < nbits)
-	pms->count[1]++;
-
-    /* Process an initial partial block. */
-    if (offset) {
-	size_t copy = (offset + nbytes > 64 ? 64 - offset : nbytes);
-
-	memcpy(pms->buf + offset, p, copy);
-	if (offset + copy < 64)
-	    return;
-	p += copy;
-	left -= copy;
-	md5_process(pms, pms->buf);
-    }
-
-    /* Process full blocks. */
-    for (; left >= 64; p += 64, left -= 64)
-	md5_process(pms, p);
-
-    /* Process a final partial block. */
-    if (left)
-	memcpy(pms->buf, p, left);
-}
-
-void
-md5_finish(md5_state_t *pms, md5_byte_t digest[16])
-{
-    static const md5_byte_t pad[64] = {
-	0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    };
-    md5_byte_t data[8];
-    int i;
-
-    /* Save the length before padding. */
-    for (i = 0; i < 8; ++i)
-	data[i] = (md5_byte_t)(pms->count[i >> 2] >> ((i & 3) << 3));
-    /* Pad to 56 bytes mod 64. */
-    md5_append(pms, pad, ((55 - (pms->count[0] >> 3)) & 63) + 1);
-    /* Append the length. */
-    md5_append(pms, data, 8);
-    for (i = 0; i < 16; ++i)
-	digest[i] = (md5_byte_t)(pms->abcd[i >> 2] >> ((i & 3) << 3));
+	for (i = 0; i < 16; ++i)
+		digest[i] = (uint8)(this->abcd[i >> 2] >> ((i & 3) << 3));
 }
