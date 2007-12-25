@@ -1362,10 +1362,6 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, prefer_teamchat,               S, 0, false,        STR_CONFIG_PATCHES_PREFER_TEAMCHAT,       NULL),
 	SDT_VAR(Patches, scrollwheel_scrolling,SLE_UINT8,S,MS, 0,  0,  2, 0, STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING, NULL),
 	SDT_VAR(Patches,scrollwheel_multiplier,SLE_UINT8,S, 0, 5,  1, 15, 1, STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER,NULL),
-#ifdef __APPLE__
-	/* We might need to emulate a right mouse button on mac */
-	SDT_VAR(Patches,right_mouse_btn_emulation,SLE_UINT8,S,MS,0, 0, 2, 0, STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU,   NULL),
-#endif
 	SDT_BOOL(Patches, pause_on_newgame,              S, 0, false,        STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME,     NULL),
 	 SDT_VAR(Patches,advanced_vehicle_list,SLE_UINT8,S,MS, 1,  0,  2, 0, STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS,NULL),
 	SDT_BOOL(Patches, timetable_in_ticks,            S, 0, false,        STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS,    NULL),
@@ -1578,6 +1574,18 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDVAR(Patches,      tree_placer,              SLE_UINT8,  30, SL_MAX_VERSION, 0, MS,   2,                   0,    2,               0, STR_CONFIG_PATCHES_TREE_PLACER,              NULL),
 	SDT_VAR    (Patches,      heightmap_rotation,       SLE_UINT8,                      S, MS,   0,                   0,    1,               0, STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION,       NULL),
 	SDT_VAR    (Patches,      se_flat_world_height,     SLE_UINT8,                      S, 0,    0,                   0,   15,               0, STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT,     NULL),
+
+	/*
+	 * Since the network code (CmdChangePatchSetting and friends) use the index in this array to decide
+	 * which patch the server is talking about all conditional compilation of this array must be at the
+	 * end. This isn't really the best solution, the patches the server can tell the client about should
+	 * either use a seperate array or some other form of identifier.
+	 */
+
+#ifdef __APPLE__
+	/* We might need to emulate a right mouse button on mac */
+	SDT_VAR(Patches,right_mouse_btn_emulation,SLE_UINT8,S,MS,0, 0, 2, 0, STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU,   NULL),
+#endif
 
 	SDT_END()
 };
