@@ -8,7 +8,6 @@
 #include "table/sprites.h"
 #include "tile_cmd.h"
 #include "landscape.h"
-#include "map.h"
 #include "command_func.h"
 #include "viewport.h"
 #include "player.h"

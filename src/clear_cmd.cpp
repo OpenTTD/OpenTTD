@@ -7,7 +7,6 @@
 #include "clear_map.h"
 #include "rail_map.h"
 #include "table/strings.h"
-#include "map.h"
 #include "player.h"
 #include "viewport.h"
 #include "command_func.h"

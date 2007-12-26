@@ -4,7 +4,6 @@
 #include "../../openttd.h"
 #include "../../bridge_map.h"
 #include "../../debug.h"
-#include "../../map.h"
 #include "../../command_func.h"
 #include "trolly.h"
 #include "../../depot.h"

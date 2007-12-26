@@ -8,8 +8,9 @@
 #include "openttd.h"
 #include "aystar.h"
 #include "station.h"
-#include "vehicle.h"
+#include "vehicle_type.h"
 #include "tile_type.h"
+#include "track_type.h"
 
 /* mowing grass */
 enum {

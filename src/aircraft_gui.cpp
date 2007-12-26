@@ -8,7 +8,6 @@
 #include "debug.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "map.h"
 #include "gui.h"
 #include "vehicle.h"
 #include "engine.h"

@@ -11,7 +11,6 @@
 #include "string.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "map.h"
 #include "vehicle.h"
 #include "saveload.h"
 #include "engine.h"
@@ -26,6 +25,7 @@
 #include "economy_func.h"
 #include "zoom_func.h"
 #include "functions.h"
+#include "map_func.h"
 
 char _name_array[512][32];
 

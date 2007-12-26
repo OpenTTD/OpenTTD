@@ -8,7 +8,6 @@
 #include "debug.h"
 #include "driver.h"
 #include "saveload.h"
-#include "map.h"
 
 #include "openttd.h"
 #include "table/strings.h"

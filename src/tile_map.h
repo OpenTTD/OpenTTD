@@ -7,7 +7,7 @@
 
 #include "tile_type.h"
 #include "slope_type.h"
-#include "map.h"
+#include "map_func.h"
 #include "core/bitmath_func.hpp"
 
 /**

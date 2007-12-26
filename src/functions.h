@@ -9,7 +9,6 @@
 #include "command_type.h"
 #include "openttd.h"
 #include "tile_cmd.h"
-#include "map.h"
 
 /* clear_land.cpp */
 void DrawHillyLandTile(const TileInfo *ti);
@@ -23,10 +22,6 @@ void SubtractMoneyFromPlayer(CommandCost cost);
 void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cost);
 bool CheckOwnership(Owner owner);
 bool CheckTileOwnership(TileIndex tile);
-
-/* openttd.cpp */
-static inline TileIndex RandomTileSeed(uint32 r) { return TILE_MASK(r); }
-static inline TileIndex RandomTile() { return TILE_MASK(Random()); }
 
 /* texteff.cpp */
 void AddAnimatedTile(TileIndex tile);

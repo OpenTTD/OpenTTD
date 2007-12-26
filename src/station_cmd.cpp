@@ -14,7 +14,6 @@
 #include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "map.h"
 #include "station.h"
 #include "viewport.h"
 #include "command_func.h"

@@ -6,7 +6,6 @@
 #include "heightmap.h"
 #include "clear_map.h"
 #include "date.h"
-#include "map.h"
 #include "player.h"
 #include "spritecache.h"
 #include "table/sprites.h"

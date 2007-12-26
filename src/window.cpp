@@ -6,7 +6,6 @@
 #include <stdarg.h>
 #include "openttd.h"
 #include "debug.h"
-#include "map.h"
 #include "player.h"
 #include "viewport.h"
 #include "console.h"
@@ -17,6 +16,8 @@
 #include "window_gui.h"
 #include "zoom_func.h"
 #include "core/alloc_func.hpp"
+#include "vehicle.h"
+#include "map_func.h"
 
 /* delta between mouse cursor and upper left corner of dragged window */
 static Point _drag_delta;

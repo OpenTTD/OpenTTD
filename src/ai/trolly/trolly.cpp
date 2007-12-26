@@ -23,7 +23,6 @@
 #include "../../road_map.h"
 #include "../../station_map.h"
 #include "table/strings.h"
-#include "../../map.h"
 #include "../../command_func.h"
 #include "trolly.h"
 #include "../../town.h"

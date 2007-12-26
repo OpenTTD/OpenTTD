@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "map.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "station_gui.h"
@@ -17,6 +16,7 @@
 #include "road_cmd.h"
 #include "road_map.h"
 #include "station_map.h"
+#include "vehicle.h"
 //needed for catchments
 #include "station.h"
 #include "functions.h"

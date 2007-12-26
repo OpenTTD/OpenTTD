@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "map.h"
 #include "tile_map.h"
 #include "station.h"
 #include "gui.h"
@@ -18,6 +17,7 @@
 #include "variables.h"
 #include "water.h"
 #include "window_func.h"
+#include "vehicle.h"
 
 static void ShowBuildDockStationPicker();
 static void ShowBuildDocksDepotPicker();

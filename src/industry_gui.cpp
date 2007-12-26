@@ -7,7 +7,6 @@
 #include "debug.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "map.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
@@ -23,6 +22,7 @@
 #include "newgrf_text.h"
 #include "date.h"
 #include "strings_func.h"
+#include "map_func.h"
 
 bool _ignore_restrictions;
 

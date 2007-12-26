@@ -13,7 +13,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "tile_cmd.h"
-#include "map.h"
 #include "landscape.h"
 #include "tunnel_map.h"
 #include "unmovable_map.h"

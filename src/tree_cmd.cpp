@@ -10,7 +10,6 @@
 #include "table/sprites.h"
 #include "table/tree_land.h"
 #include "tile_cmd.h"
-#include "map.h"
 #include "landscape.h"
 #include "tree_map.h"
 #include "viewport.h"

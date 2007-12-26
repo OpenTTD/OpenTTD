@@ -29,6 +29,7 @@
 #include "viewport.h"
 #include "window_func.h"
 #include "functions.h"
+#include "map_func.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;

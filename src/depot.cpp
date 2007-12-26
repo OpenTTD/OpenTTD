@@ -7,7 +7,6 @@
 #include "vehicle.h"
 #include "depot.h"
 #include "landscape.h"
-#include "map.h"
 #include "table/strings.h"
 #include "saveload.h"
 #include "order.h"

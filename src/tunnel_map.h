@@ -6,7 +6,6 @@
 #define TUNNEL_MAP_H
 
 #include "direction_func.h"
-#include "map.h"
 #include "rail_type.h"
 #include "road_type.h"
 #include "tile_map.h"

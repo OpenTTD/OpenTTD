@@ -6,7 +6,6 @@
 #include "../../bridge_map.h"
 #include "../../tile_cmd.h"
 #include "../../landscape.h"
-#include "../../map.h"
 #include "../../rail_map.h"
 #include "../../road_map.h"
 #include "../../roadveh.h"

@@ -17,6 +17,7 @@
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
 #include "window_func.h"
+#include "map_func.h"
 
 static const Sign **_sign_sort;
 static uint _num_sign_sort;

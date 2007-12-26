@@ -8,7 +8,6 @@
 #include "string.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "map.h"
 #include "player.h"
 #include "town.h"
 #include "vehicle.h"

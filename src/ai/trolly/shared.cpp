@@ -3,7 +3,7 @@
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../debug.h"
-#include "../../map.h"
+#include "../../map_func.h"
 #include "trolly.h"
 #include "../../vehicle.h"
 

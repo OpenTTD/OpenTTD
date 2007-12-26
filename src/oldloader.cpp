@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "station_map.h"
 #include "table/strings.h"
-#include "map.h"
 #include "town.h"
 #include "industry.h"
 #include "station.h"

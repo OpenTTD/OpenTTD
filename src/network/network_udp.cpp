@@ -14,7 +14,7 @@
 #include "../string.h"
 #include "network_data.h"
 #include "../date.h"
-#include "../map.h"
+#include "../map_func.h"
 #include "network_gamelist.h"
 #include "network_udp.h"
 #include "../variables.h"

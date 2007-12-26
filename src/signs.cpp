@@ -18,6 +18,7 @@
 #include "zoom_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "map_func.h"
 
 SignID _new_sign_id;
 uint _total_signs;

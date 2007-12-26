@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "map.h"
 #include "airport.h"
 #include "variables.h"
 #include "airport_movement.h"

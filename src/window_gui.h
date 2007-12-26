@@ -10,7 +10,7 @@
 #include "rail_type.h"
 #include "road_type.h"
 #include "airport.h"
-#include "vehicle.h"
+#include "vehicle_type.h"
 #include "viewport.h"
 
 /**

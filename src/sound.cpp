@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "landscape.h"
-#include "map.h"
 #include "mixer.h"
 #include "sound.h"
 #include "vehicle.h"
@@ -15,6 +14,7 @@
 #include "fios.h"
 #include "window_gui.h"
 #include "core/alloc_func.hpp"
+#include "map_func.h"
 
 static uint _file_count;
 static FileEntry *_files;

@@ -8,7 +8,6 @@
 #include "station_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "map.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "vehicle.h"

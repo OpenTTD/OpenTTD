@@ -9,7 +9,6 @@
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "date.h"
-#include "map.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "station_gui.h"

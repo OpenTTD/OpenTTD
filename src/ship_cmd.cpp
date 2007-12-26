@@ -8,7 +8,6 @@
 #include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
-#include "map.h"
 #include "vehicle.h"
 #include "timetable.h"
 #include "command_func.h"

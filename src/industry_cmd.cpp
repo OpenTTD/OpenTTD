@@ -9,7 +9,6 @@
 #include "station_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "map.h"
 #include "train.h"
 #include "landscape.h"
 #include "viewport.h"

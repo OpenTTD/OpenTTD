@@ -7,7 +7,6 @@
 
 #include "command_func.h"
 #include "landscape.h"
-#include "map.h"
 #include "order.h"
 #include "rail_map.h"
 #include "rail.h"

@@ -8,7 +8,6 @@
 #include "landscape.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "map.h"
 #include "news.h"
 #include "player.h"
 #include "station.h"

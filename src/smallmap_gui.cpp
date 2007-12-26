@@ -12,7 +12,6 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "landscape.h"
-#include "map.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "tree_map.h"

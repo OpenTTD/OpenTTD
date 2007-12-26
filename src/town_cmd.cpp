@@ -10,7 +10,6 @@
 #include "road_internal.h" /* Cleaning up road bits */
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "map.h"
 #include "landscape.h"
 #include "town_map.h"
 #include "tunnel_map.h"

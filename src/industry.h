@@ -10,7 +10,7 @@
 #include "newgrf_storage.h"
 #include "cargo_type.h"
 #include "economy_type.h"
-#include "map.h"
+#include "map_type.h"
 #include "slope_type.h"
 
 typedef uint16 IndustryGfx;
