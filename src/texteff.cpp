@@ -14,12 +14,12 @@
 #include "table/sprites.h"
 #include "blitter/factory.hpp"
 #include <stdarg.h> /* va_list */
-#include "date.h"
 #include "texteff.hpp"
 #include "video/video_driver.hpp"
 #include "transparency.h"
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
+#include "date_func.h"
 #include "functions.h"
 
 enum {

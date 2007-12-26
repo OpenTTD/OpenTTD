@@ -5,6 +5,8 @@
 #ifndef CURRENCY_H
 #define CURRENCY_H
 
+#include "date_type.h"
+
 enum {
 	CF_NOEURO = 0,
 	CF_ISEURO = 1,

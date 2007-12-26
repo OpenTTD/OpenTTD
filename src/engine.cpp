@@ -16,7 +16,6 @@
 #include "train.h"
 #include "aircraft.h"
 #include "newgrf_cargo.h"
-#include "date.h"
 #include "table/engines.h"
 #include "group.h"
 #include "string.h"
@@ -25,6 +24,7 @@
 #include "viewport.h"
 #include "functions.h"
 #include "window_func.h"
+#include "date_func.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];

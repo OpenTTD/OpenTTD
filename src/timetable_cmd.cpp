@@ -7,7 +7,6 @@
 #include "variables.h"
 #include "table/strings.h"
 #include "command_func.h"
-#include "date.h"
 #include "player.h"
 #include "vehicle.h"
 #include "functions.h"

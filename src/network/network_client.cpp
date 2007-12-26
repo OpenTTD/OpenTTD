@@ -8,7 +8,6 @@
 #include "../openttd.h"
 #include "network_data.h"
 #include "core/tcp.h"
-#include "../date.h"
 #include "table/strings.h"
 #include "network_client.h"
 #include "network_gamelist.h"

@@ -36,8 +36,8 @@
 #include "sound.h"
 #include "variables.h"
 #include "table/sprites.h"
-#include "date.h"
 #include "strings_func.h"
+#include "date_func.h"
 #include "functions.h"
 
 enum DisasterSubType {

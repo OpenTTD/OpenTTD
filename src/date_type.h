@@ -1,11 +1,9 @@
 /* $Id$ */
 
-/** @file date.h */
+/** @file date_type.h Types related to the dates in OpenTTD. */
 
-#ifndef DATE_H
-#define DATE_H
-
-#include "openttd.h"
+#ifndef DATE_TYPE_H
+#define DATE_TYPE_H
 
 /**
  * 1 day is 74 ticks; _date_fract used to be uint16 and incremented by 885. On
@@ -39,10 +37,12 @@
  * be encoded in a single 32 bits date, about 2^31 / 366 years. */
 #define MAX_YEAR 5000000
 
-/* Year and Date are defined elsewhere */
+typedef int32  Date;
+typedef uint16 DateFract;
+
+typedef int32  Year;
 typedef uint8  Month;
 typedef uint8  Day;
-typedef uint16 DateFract;
 
 struct YearMonthDay {
 	Year  year;
@@ -50,14 +50,7 @@ struct YearMonthDay {
 	Day   day;
 };
 
-extern Year      _cur_year;
-extern Month     _cur_month;
-extern Date      _date;
-extern DateFract _date_fract;
+static const Year INVALID_YEAR = -1;
+static const Date INVALID_DATE = -1;
 
-
-void SetDate(Date date);
-void ConvertDateToYMD(Date date, YearMonthDay *ymd);
-Date ConvertYMDToDate(Year year, Month month, Day day);
-
-#endif /* DATE_H */
+#endif /* DATE_TYPE_H */

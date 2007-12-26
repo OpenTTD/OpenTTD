@@ -32,7 +32,7 @@
 #include "../../gui.h"
 #include "../../depot.h"
 #include "../../vehicle.h"
-#include "../../date.h"
+#include "../../date_func.h"
 #include "../ai.h"
 #include "../../order.h"
 

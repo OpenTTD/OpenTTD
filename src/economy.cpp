@@ -32,7 +32,6 @@
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "unmovable.h"
-#include "date.h"
 #include "cargotype.h"
 #include "player_face.h"
 #include "group.h"
@@ -40,6 +39,7 @@
 #include "tile_cmd.h"
 #include "functions.h"
 #include "window_func.h"
+#include "date_func.h"
 
 /**
  * Multiply two integer values and shift the results to right.

@@ -5,6 +5,7 @@
 #ifndef  YAPF_COSTCACHE_HPP
 #define  YAPF_COSTCACHE_HPP
 
+#include "../date_func.h"
 
 /** CYapfSegmentCostCacheNoneT - the formal only yapf cost cache provider that implements
  * PfNodeCacheFetch() and PfNodeCacheFlush() callbacks. Used when nodes don't have CachedData

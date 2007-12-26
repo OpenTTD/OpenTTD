@@ -20,7 +20,6 @@
 #include "variables.h"
 #include "settings.h"
 #include "vehicle.h"
-#include "date.h"
 #include "newgrf_townname.h"
 #include "strings_func.h"
 #include "functions.h"

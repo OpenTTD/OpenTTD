@@ -32,12 +32,12 @@
 #include "newgrf_text.h"
 #include "newgrf_sound.h"
 #include "yapf/yapf.h"
-#include "date.h"
 #include "cargotype.h"
 #include "strings_func.h"
 #include "tunnelbridge_map.h"
 #include "functions.h"
 #include "window_func.h"
+#include "date_func.h"
 
 
 static const uint16 _roadveh_images[63] = {

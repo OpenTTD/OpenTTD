@@ -19,7 +19,6 @@
 #include "newgrf_text.h"
 #include "table/control_codes.h"
 #include "music.h"
-#include "date.h"
 #include "industry.h"
 #include "fileio.h"
 #include "cargotype.h"
@@ -35,6 +34,7 @@
 #include "strings_func.h"
 #include "functions.h"
 #include "core/endian_func.hpp"
+#include "date_func.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"

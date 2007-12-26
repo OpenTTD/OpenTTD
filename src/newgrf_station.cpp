@@ -18,11 +18,11 @@
 #include "newgrf_commons.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
-#include "date.h"
 #include "cargotype.h"
 #include "town_map.h"
 #include "newgrf_town.h"
 #include "gfx_func.h"
+#include "date_func.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 

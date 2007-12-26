@@ -25,13 +25,13 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "yapf/yapf.h"
-#include "date.h"
 #include "cargotype.h"
 #include "roadveh.h"
 #include "station_gui.h"
 #include "zoom_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "date_func.h"
 
 Station::Station(TileIndex tile)
 {

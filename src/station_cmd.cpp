@@ -32,7 +32,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "yapf/yapf.h"
-#include "date.h"
 #include "misc/autoptr.hpp"
 #include "road_type.h"
 #include "road_internal.h" /* For drawing catenary/checking road removal */
@@ -44,6 +43,7 @@
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "date_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)

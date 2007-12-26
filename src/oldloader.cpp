@@ -21,9 +21,9 @@
 #include "depot.h"
 #include "newgrf_config.h"
 #include "ai/ai.h"
-#include "date.h"
 #include "zoom_func.h"
 #include "functions.h"
+#include "date_func.h"
 
 enum {
 	HEADER_SIZE = 49,

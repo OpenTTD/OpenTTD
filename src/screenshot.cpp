@@ -9,7 +9,6 @@
 #include "player.h"
 #include "screenshot.h"
 #include "variables.h"
-#include "date.h"
 #include "string.h"
 #include "blitter/factory.hpp"
 #include "fileio.h"
@@ -18,6 +17,7 @@
 #include "core/alloc_func.hpp"
 #include "core/endian_func.hpp"
 #include "map_func.h"
+#include "date_func.h"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;

@@ -9,6 +9,7 @@
 #include "openttd.h"
 #include "tile_type.h"
 #include "strings_type.h"
+#include "date_type.h"
 
 /* ********* START OF SAVE REGION */
 

@@ -11,7 +11,7 @@
 #include "core/tcp.h"
 #include "../train.h"
 #include "../aircraft.h"
-#include "../date.h"
+#include "../date_func.h"
 #include "table/strings.h"
 #include "network_server.h"
 #include "network_udp.h"

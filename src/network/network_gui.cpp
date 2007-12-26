@@ -7,7 +7,7 @@
 #include "../strings_func.h"
 #include "../table/sprites.h"
 #include "network.h"
-#include "../date.h"
+#include "../date_func.h"
 
 #include "../fios.h"
 #include "table/strings.h"

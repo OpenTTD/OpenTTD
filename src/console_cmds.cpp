@@ -23,13 +23,13 @@
 #include "station.h"
 #include "screenshot.h"
 #include "genworld.h"
-#include "date.h"
 #include "network/network.h"
 #include "strings_func.h"
 #include "viewport.h"
 #include "window_func.h"
 #include "functions.h"
 #include "map_func.h"
+#include "date_func.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;

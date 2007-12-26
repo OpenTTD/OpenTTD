@@ -15,7 +15,6 @@
 #include "vehicle_gui.h"
 #include "depot.h"
 #include "train.h"
-#include "date.h"
 #include "group.h"
 #include "viewport.h"
 #include "debug.h"

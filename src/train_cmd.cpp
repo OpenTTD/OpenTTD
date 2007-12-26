@@ -35,7 +35,6 @@
 #include "newgrf_text.h"
 #include "direction_func.h"
 #include "yapf/yapf.h"
-#include "date.h"
 #include "cargotype.h"
 #include "group.h"
 #include "table/sprites.h"
@@ -43,6 +42,7 @@
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "date_func.h"
 
 
 static bool TrainCheckIfLineEnds(Vehicle *v);

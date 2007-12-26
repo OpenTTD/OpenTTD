@@ -11,10 +11,10 @@
 #include "player.h"
 #include "economy_func.h"
 #include "variables.h"
-#include "date.h"
 #include "cargotype.h"
 #include "window_gui.h"
 #include "strings_func.h"
+#include "date_func.h"
 
 static void HandleSubsidyClick(int y)
 {

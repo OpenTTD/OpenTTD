@@ -19,7 +19,6 @@
 #include "table/strings.h"
 #include "vehicle.h"
 #include "yapf/yapf.h"
-#include "date.h"
 #include "newgrf.h"
 #include "string.h"
 #include "misc/autoptr.hpp"
@@ -28,6 +27,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "economy_func.h"
+#include "date_func.h"
 
 enum {
 	MAX_WAYPOINTS_PER_TOWN = 64,

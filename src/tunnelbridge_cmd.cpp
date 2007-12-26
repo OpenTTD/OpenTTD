@@ -27,13 +27,13 @@
 #include "train.h"
 #include "water_map.h"
 #include "yapf/yapf.h"
-#include "date.h"
 #include "newgrf_sound.h"
 #include "autoslope.h"
 #include "transparency.h"
 #include "tunnelbridge_map.h"
 #include "table/bridge_land.h"
 #include "strings_func.h"
+#include "date_func.h"
 #include "functions.h"
 
 

@@ -12,11 +12,11 @@
 #include "vehicle.h"
 #include "sound.h"
 #include "variables.h"
-#include "date.h"
 #include "string.h"
 #include "transparency.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "date_func.h"
 
 /** @file news_gui.cpp
  *

@@ -28,12 +28,12 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_text.h"
 #include "newgrf_sound.h"
-#include "date.h"
 #include "spritecache.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "date_func.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 

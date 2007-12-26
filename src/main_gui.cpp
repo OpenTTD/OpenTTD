@@ -34,12 +34,12 @@
 #include "screenshot.h"
 #include "genworld.h"
 #include "settings.h"
-#include "date.h"
 #include "vehicle_gui.h"
 #include "transparency_gui.h"
 #include "newgrf_config.h"
 #include "rail_gui.h"
 #include "road_gui.h"
+#include "date_func.h"
 #include "functions.h"
 
 #include "network/network_data.h"

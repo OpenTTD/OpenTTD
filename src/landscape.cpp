@@ -5,7 +5,6 @@
 #include "bridge_map.h"
 #include "heightmap.h"
 #include "clear_map.h"
-#include "date.h"
 #include "player.h"
 #include "spritecache.h"
 #include "table/sprites.h"
@@ -24,6 +23,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "functions.h"
+#include "date_func.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,

@@ -14,6 +14,7 @@
 #include "window_type.h"
 #include "gfx_type.h"
 #include "command_type.h"
+#include "date_type.h"
 #include "oldpool.h"
 #include "order.h"
 #include "cargopacket.h"

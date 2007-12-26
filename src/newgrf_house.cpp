@@ -8,7 +8,6 @@
 #include "debug.h"
 #include "viewport.h"
 #include "landscape.h"
-#include "date.h"
 #include "town.h"
 #include "town_map.h"
 #include "sound.h"

@@ -23,7 +23,7 @@
 #include "../../depot.h"
 #include "../../variables.h"
 #include "../../bridge.h"
-#include "../../date.h"
+#include "../../date_func.h"
 #include "../../tunnelbridge_map.h"
 #include "../../window_func.h"
 #include "../../functions.h"

@@ -28,7 +28,6 @@
 #include "variables.h"
 #include "bridge.h"
 #include "bridge_map.h"
-#include "date.h"
 #include "table/town_land.h"
 #include "genworld.h"
 #include "newgrf.h"

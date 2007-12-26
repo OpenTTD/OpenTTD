@@ -7,7 +7,6 @@
 #include "variables.h"
 #include "table/strings.h"
 #include "command_func.h"
-#include "date.h"
 #include "engine.h"
 #include "gui.h"
 #include "window_gui.h"

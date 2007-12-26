@@ -18,7 +18,6 @@
 #include "roadveh.h"
 #include "train.h"
 #include "aircraft.h"
-#include "date.h"
 #include "newgrf.h"
 #include "network/network_data.h"
 #include "network/network_client.h"
@@ -27,6 +26,7 @@
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "date_func.h"
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
 static void DoSelectPlayerFace(PlayerID player, bool show_big);

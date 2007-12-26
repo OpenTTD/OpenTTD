@@ -20,7 +20,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_industries.h"
 #include "newgrf_text.h"
-#include "date.h"
 #include "strings_func.h"
 #include "map_func.h"
 

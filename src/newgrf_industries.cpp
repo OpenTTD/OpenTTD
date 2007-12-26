@@ -18,7 +18,6 @@
 #include "newgrf_commons.h"
 #include "newgrf_text.h"
 #include "newgrf_town.h"
-#include "date.h"
 #include "window_func.h"
 
 /* Since the industry IDs defined by the GRF file don't necessarily correlate

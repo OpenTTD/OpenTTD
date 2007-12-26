@@ -23,7 +23,6 @@
 #include "table/industry_land.h"
 #include "table/build_industry.h"
 #include "genworld.h"
-#include "date.h"
 #include "water_map.h"
 #include "tree_map.h"
 #include "cargotype.h"
@@ -40,6 +39,7 @@
 #include "tile_cmd.h"
 #include "functions.h"
 #include "window_func.h"
+#include "date_func.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);

@@ -49,15 +49,6 @@ assert_compile(sizeof(DestinationID) == sizeof(DepotID));
 assert_compile(sizeof(DestinationID) == sizeof(WaypointID));
 assert_compile(sizeof(DestinationID) == sizeof(StationID));
 
-
-enum {
-	INVALID_YEAR = -1,
-	INVALID_DATE = -1,
-};
-
-typedef int32 Year;
-typedef int32 Date;
-
 typedef uint32 PlayerFace; ///< player face bits, info see in player_face.h
 
 enum GameModes {

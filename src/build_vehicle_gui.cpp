@@ -23,12 +23,12 @@
 #include "airport.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
-#include "date.h"
 #include "cargotype.h"
 #include "group.h"
 #include "road_map.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "date_func.h"
 
 
 enum BuildVehicleWidgets {

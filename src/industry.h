@@ -12,6 +12,7 @@
 #include "economy_type.h"
 #include "map_type.h"
 #include "slope_type.h"
+#include "date_type.h"
 
 typedef uint16 IndustryGfx;
 typedef uint8 IndustryType;

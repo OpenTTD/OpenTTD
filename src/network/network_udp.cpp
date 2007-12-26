@@ -13,7 +13,7 @@
 #include "../debug.h"
 #include "../string.h"
 #include "network_data.h"
-#include "../date.h"
+#include "../date_func.h"
 #include "../map_func.h"
 #include "network_gamelist.h"
 #include "network_udp.h"

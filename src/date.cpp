@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "date.h"
 #include "variables.h"
 #include "vehicle.h"
 #include "network/network.h"
@@ -13,6 +12,7 @@
 #include "currency.h"
 #include "window_func.h"
 #include "functions.h"
+#include "date_func.h"
 #ifdef DEBUG_DUMP_COMMANDS
 #include "saveload.h"
 #endif

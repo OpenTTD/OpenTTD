@@ -18,7 +18,6 @@
 #include "newgrf.h"
 #include "newgrf_text.h"
 #include "table/control_codes.h"
-#include "date.h"
 #include "strings_func.h"
 
 #define GRFTAB  28

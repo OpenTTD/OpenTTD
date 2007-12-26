@@ -11,6 +11,7 @@
 #include "vehicle_type.h"
 #include "cargo_type.h"
 #include "strings_type.h"
+#include "date_type.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {

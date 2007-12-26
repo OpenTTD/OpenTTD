@@ -16,7 +16,6 @@
 #include "command_func.h"
 #include "variables.h"
 #include "vehicle_gui.h"
-#include "date.h"
 #include "vehicle.h"
 #include "table/sprites.h"
 #include "cargotype.h"

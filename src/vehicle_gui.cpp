@@ -22,7 +22,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
-#include "date.h"
 #include "ship.h"
 #include "aircraft.h"
 #include "roadveh.h"

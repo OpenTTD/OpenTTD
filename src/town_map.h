@@ -6,7 +6,7 @@
 #define TOWN_MAP_H
 
 #include "town.h"
-#include "date.h"
+#include "date_func.h"
 #include "tile_map.h"
 #include "functions.h"
 

@@ -33,7 +33,6 @@
 #include "water_map.h"
 #include "network/network.h"
 #include "yapf/yapf.h"
-#include "date.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
@@ -42,6 +41,7 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "functions.h"
+#include "date_func.h"
 #include "window_func.h"
 
 #define INVALID_COORD (0x7fffffff)

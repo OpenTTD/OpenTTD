@@ -21,10 +21,10 @@
 #include "genworld.h"
 #include "network/network.h"
 #include "thread.h"
-#include "date.h"
 #include "newgrf_config.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "date_func.h"
 
 /**
  * In what 'mode' the GenerateLandscapeWindowProc is.

@@ -36,7 +36,6 @@
 #include "newgrf.h"
 #include "newgrf_config.h"
 #include "genworld.h"
-#include "date.h"
 #include "rail.h"
 #include "train.h"
 #include "news.h"

@@ -11,8 +11,8 @@
 #ifdef ENABLE_NETWORK
 
 #include "config.h"
-#include "../../date.h"
 #include "../../newgrf_config.h"
+#include "../../date_type.h"
 
 /**
  * This is the struct used by both client and server

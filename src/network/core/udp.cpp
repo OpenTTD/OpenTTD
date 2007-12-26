@@ -11,6 +11,7 @@
 #include "../../core/bitmath_func.hpp"
 #include "../../core/math_func.hpp"
 #include "../../core/alloc_func.hpp"
+#include "../../date_func.h"
 #include "packet.h"
 #include "udp.h"
 

@@ -9,8 +9,8 @@
 #include "oldpool.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
-#include "date.h"
 #include "sprite.h"
+#include "date_func.h"
 
 static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item);
 

@@ -17,8 +17,8 @@
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_cargo.h"
-#include "date.h"
 #include "cargotype.h"
+#include "date_func.h"
 
 
 int _traininfo_vehicle_pitch = 0;

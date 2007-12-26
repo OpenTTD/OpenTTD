@@ -16,7 +16,6 @@
 #include "../bridge.h"
 #include "../station.h"
 #include "../station_map.h"
-#include "../date.h"
 #include "../tile_cmd.h"
 #include "../landscape.h"
 #include "yapf.h"

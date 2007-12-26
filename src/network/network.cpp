@@ -14,7 +14,7 @@ extern const char _openttd_revision[];
 #include "../map_func.h"
 #include "../command_func.h"
 #include "../variables.h"
-#include "../date.h"
+#include "../date_func.h"
 #include "../newgrf_config.h"
 #include "table/strings.h"
 #include "network_client.h"

@@ -20,7 +20,6 @@
 #include "variables.h"
 #include "engine.h"
 #include "ai/ai.h"
-#include "date.h"
 #include "player_face.h"
 #include "group.h"
 #include "settings.h"
@@ -29,6 +28,7 @@
 #include "strings_func.h"
 #include "gfx_func.h"
 #include "functions.h"
+#include "date_func.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a
