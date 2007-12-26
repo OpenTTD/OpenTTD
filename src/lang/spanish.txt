@@ -1170,6 +1170,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Activar
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permitir comprar acciones de otras empresas
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cuando arrastre colocar señales cada: {ORANGE}{STRING} casilla(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Coloca automáticamente semáforos antes de: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar la GUI de señales: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}El trazado de ciudad "no más carreteras" no es válido en el editor de escenarios
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecciona trazado de carretera en ciudad: {ORANGE}{STRING}
@@ -2311,6 +2312,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Reubicar
 STR_COMPANY_PASSWORD                                            :{BLACK}Contraseña
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protege por contraseña tu empresa para prevenir que usuarios no autorizados se unan a ella.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Configurar contraseña de empresa
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No grabar la contraseña introducida
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Asignar a la empresa una nueva contraseña
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Contraseña de la empresa
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Contraseña por defecto de la empresa
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Usa la contraseña de esta empresa para el resto de nuevas empresas
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}¡Recesión Mundial!{}{}¡Los expertos financieros son pesimistas mientras la economía se hunde!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}¡Fin de la Recesión!{}{}¡Mejora en el comercio da ánimos a las industrias mientras la economía se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Cambiar entre tamaño de ventana grande/pequeño
@@ -3111,6 +3117,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichero
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargos para ficheros que faltan
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichero(s) GRF perdidos han sido desactivados
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(s) GRF para poder cargar el juego
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3448,4 +3456,7 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambiar 
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Selección de Señales
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}No se pueden convertir las señales aquí...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Señales standard (semaforos){}Las señales son necesarias para evitar los choques de trenes en vías con más de un tren.
 ########

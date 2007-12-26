@@ -213,7 +213,7 @@ STR_00F3_400M                                                   :{BLACK}{TINYFON
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500米
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}列車
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}公車/貨車
-STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}輪船
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}船隻
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}飛機
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}運輸路線
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}煤礦場
@@ -312,7 +312,7 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}遊戲�
 STR_0150_SOMEONE                                                :某人{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :世界地圖
 STR_0152_TOWN_DIRECTORY                                         :市鎮目錄
-STR_0153_SUBSIDIES                                              :補貼
+STR_0153_SUBSIDIES                                              :補助
 
 STR_UNITS_IMPERIAL                                              :英制
 STR_UNITS_METRIC                                                :公制
@@ -441,7 +441,7 @@ STR_0179_DISPLAY_GRAPHS                                         :{BLACK}顯示�
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}顯示公司排行榜
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的列車
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的公車/貨車
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的輪船
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的船隻
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的飛機
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}拉近視域
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}拉遠視域
@@ -481,7 +481,7 @@ STR_AGE_RED                                                     :{RED}{COMMA} �
 
 STR_019C_ROAD_VEHICLE                                           :車輛
 STR_019D_AIRCRAFT                                               :飛機
-STR_019E_SHIP                                                   :船舶
+STR_019E_SHIP                                                   :船隻
 STR_019F_TRAIN                                                  :列車
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA}使用年限將近
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA}使用年限已過
@@ -1166,6 +1166,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}平滑�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}可以從對手購入股份
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}拖放時訊號燈之間距離：{ORANGE}{STRING} 格
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}於日期前自動建立舊式號誌臂：{ORANGE}{STRING}年
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}啟用號誌介面：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}在場景編輯器中，"市鎮道路不再規劃" 是不可行的
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}選擇市鎮道路規劃：{ORANGE}{STRING}
@@ -1680,6 +1681,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}建築�
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}架設電車橋
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}挖掘公路隧道
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}開鐅電車隧道
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}切換單行道/雙向道
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}切換鋪設/移除公路
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}鋪設電車軌開關
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}選擇車庫方向
@@ -1701,6 +1703,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}必須先摧毀建物
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}人口：{ORANGE}{COMMA}{BLACK}  房屋：{ORANGE}{COMMA}
@@ -2305,6 +2308,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}搬移�
 STR_COMPANY_PASSWORD                                            :{BLACK}密碼
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}以密碼保護您的公司，避免其他玩家隨意接手。
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}設定公司密碼
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不要儲存輸入的密碼
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}為公司設定新的密碼
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}公司密碼
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}預設公司密碼
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}使用此密碼當作未來新公司的預設密碼
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}世界不景氣！{}{}財務專家對經濟蕭條做出最壞打算！
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}景氣回升！{}{}湧現的訂單讓工業對經濟熱絡充滿信心！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}切換大/小視窗
@@ -3076,6 +3084,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :載入前 {1:ST
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} 必須在 {STRING} 之後載入。
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} 需要 {STRING} 或更新的 OpenTTD 版本。
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 檔案翻譯後出現錯誤
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :已載入太多的 NewGRF。
 
 STR_NEWGRF_ADD                                                  :{BLACK}新增
 STR_NEWGRF_ADD_TIP                                              :{BLACK}為清單加入新的 NewGRF 檔
@@ -3104,6 +3113,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}找不�
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已為找不到的檔案載入相容 GRF 檔
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}找不到的 GRF 檔已被關閉
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}找不到載入遊戲所需的 GRF 檔案
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}一個或多個 GRF 檔案遺失
 
 STR_CURRENCY_WINDOW                                             :{WHITE}自訂幣值
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}匯率：{ORANGE}{CURRENCY} = £ {COMMA}
@@ -3284,6 +3294,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}平地�
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}將小地圖移到目前地點位置
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}小
@@ -3437,4 +3448,21 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}改變�
 STR_FACE_TIE                                                    :領帶：
 STR_FACE_EARRING                                                :耳飾：
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}改變領帶或耳飾
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}號誌選擇
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}無法轉換這裡的號誌...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}標準號誌 (旗號){}當軌道網路中有多餘一列的列車時，為了避免發生相撞意外，號誌是必要的。
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}入口號誌 (旗號){}當綠燈亮時，代表此號誌後有一個以上的出口號誌呈現綠燈，否則將會是紅燈。
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}出口號誌 (旗號){}與一般號誌類似，但它還得負責切換前頭的入口號誌及組合號誌。
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}組合號誌 (旗號){}組合號誌同時具有入口/出口號誌特性。這可讓玩家設置一卡車的預告號誌。
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}標準號誌 (電氣){}當軌道網路中有多餘一列的列車時，為了避免發生相撞意外，號誌是必要的。
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}入口號誌 (電氣){}當綠燈亮時，代表此號誌後有一個以上的出口號誌呈現綠燈，否則將會是紅燈。
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}出口號誌 (電氣){}與一般號誌類似，但它還得負責切換前頭的入口號誌及組合號誌。
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}組合號誌 (電氣){}組合號誌同時具有入口/出口號誌特性。這可讓玩家設置一卡車的預告號誌。
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}號誌轉換{}當選取時，在現有的號誌上點選，將會轉換成面板上所選取的類型及樣式；若按住 CTRL 點選，只會變更樣式。
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}變更等距號誌拖曳間隔
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}減少 (拉近)
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}增加 (拉遠)
 ########

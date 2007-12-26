@@ -468,7 +468,7 @@ STR_SORT_ORDER_TIP                                              :{BLACK}Sorteeri
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorteerimistingimuse valimine
 STR_SORT_BY                                                     :{BLACK}Sorteeri:
 
-STR_SORT_BY_POPULATION                                          :{BLACK}Rahvastik
+STR_SORT_BY_POPULATION                                          :{BLACK}Rahvaarv
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Toodang
 STR_SORT_BY_TYPE                                                :{BLACK}Tüüp
 STR_SORT_BY_TRANSPORTED                                         :{BLACK}Veetud
@@ -1122,7 +1122,7 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Paikade 
 
 STR_CONFIG_PATCHES_OFF                                          :Väljas
 STR_CONFIG_PATCHES_ON                                           :Sees
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Näita olekuribal veovahendi kiirust: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Olekuribal näidatakse veovahendi kiirust: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Luba ehitised nõlvadele ja kallastele: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Võimalda maastikujunduse teostust majade, rööbaste jms. all (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Võimalda reaalsemaid veekogu alasid: {ORANGE}{STRING}
@@ -1144,12 +1144,12 @@ STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :nagu muud töö
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :uurides
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Luba mitu sama liiki tööstust linna kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Sama liiki tööstusi saab ehitada üksteise lähedale: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Alati näita olekuribal pikka kuupäeva: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Olekuribal näidatakse alati täispikka kuupäeva: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Paiguta signaalid rööbasteele sõidusuunda arvestades: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Näita rahaliste seisude akent iga aasta lõpus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Aasta lõpus näidatakse rahavoogude aruannet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatchiga ühilduv 'mittepeatumine': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Mootorsõidukite järjekorrad (koos mahueffektidega): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Keri vaadet, kui hiir on viidud ekraani serva: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Kursori ekraani serva viimisel keritakse vaadet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Luba kohalikule omavalitsusele altkäemaksu maksmine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Luba eksklusiivseid veoõiguseid osta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Luba teistele ettevõtetele raha saata: {ORANGE}{STRING}
@@ -1172,7 +1172,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Uuenda 
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Uuenda {ORANGE}{STRING}{LTBLUE} kuud enne/pärast veovahendi suurimat vanust
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Iseuuendusele kuluv väikseim summa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Veateate kuvamise kestus: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Näita linna nimesildil rahvaarvu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Linna nimesildil näidatakse rahvaarvu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nähtamatud puud (läbipaistvate ehitistega): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Maaala Generaator: {ORANGE}{STRING}
@@ -1197,15 +1197,15 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kõrgus
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurim jaama ala: {ORANGE}{STRING} {RED}Hoiatus: kõrged seadistused aeglustavad mängu
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hoolda maandumisplatsidel ise helikoptereid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Liida maastikuriba raudtee/tee/vee/lennujaamade tööriistaribaga: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Kui kerid hiirega, liiguta vaade vastassuunda: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Sujuv vaatevälja liigutamine: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Näita mitmesuguste ehitusvahendite kasutamisel mõõtmise kohtspikrit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Vaadet keritakse vastassuunas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Vaatevälja liigutatakse sujuvalt: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mitmete ehitusvahendite kasutamisel näidatakse mõõtmise kohtspikrit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Näita firma livree: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Mitte ükski
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Enda firma
-STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Kõik Firmad
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Eelista Meeskonnajututuba <ENTER>i vajutamisega: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Kerimisratta funktsioon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Enda ettevõte
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Kõik ettevõtted
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Vajutades <ENTER> eelistatakse meeskonna jututuba: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Kerimisrulliku otstarve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Suurenda kaarti
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Keri kaarti
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Väljas
@@ -1707,7 +1707,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Liiga k�
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Sobiv rongitee puudub
 STR_1007_ALREADY_BUILT                                          :{WHITE}...juba ehitatud
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rööbastee tuleb eelnevalt lammutada
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Rööbastee ehitamine
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Rööbasteede ehitus
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifitseeritud rööbastee ehitus
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorelsi ehitamine
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Elektromageetilise rööbastee ehitamine
@@ -1809,7 +1809,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Ehitis tuleb eelnevalt hävitada
 STR_2005                                                        :{WHITE}{TOWN}
-STR_2006_POPULATION                                             :{BLACK}Rahvastik: {ORANGE}{COMMA}{BLACK}  Ehitisi: {ORANGE}{COMMA}
+STR_2006_POPULATION                                             :{BLACK}Rahvaarv: {ORANGE}{COMMA}{BLACK}  Ehitisi: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Linnanime muutmine
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Linnanime ei saa muuta...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} kohalik omavalitsus keeldub seda lubamast
@@ -3529,7 +3529,7 @@ STR_FACE_SELECT_AFRICAN                                         :{BLACK}Vali aaf
 STR_FACE_YES                                                    :Jah
 STR_FACE_NO                                                     :Ei
 STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Vuntsid või kõrvarõngad on lubatud
-STR_FACE_HAIR                                                   :Juuksed:
+STR_FACE_HAIR                                                   :Soeng:
 STR_FACE_HAIR_TIP                                               :{BLACK}Vaheta juukseid
 STR_FACE_EYEBROWS                                               :Kulmud:
 STR_FACE_EYEBROWS_TIP                                           :{BLACK}Vaheta kulmusid

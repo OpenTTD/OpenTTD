@@ -647,6 +647,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Wypadki
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacja firmy
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Otwarcie / zamknięcie przedsiębiorstw
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmiany ekonomiczne
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Zmiany produkcji przedsiębiorstw obsługiwanych przez gracza
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Zmiany produkcji przedsiębiorstw obsługiwanych przez przeciwników
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Zmiany produkcji pozostałych przedsiębiorstw
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Porady / informacje o pojazdach gracza
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nowe pojazdy
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Zamiany w akceptowaniu ładunku
@@ -699,7 +702,7 @@ STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nie m
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Zwiększ rozmiar miasta
 STR_023C_EXPAND                                                 :{BLACK}Rozszerz
 STR_023D_RANDOM_TOWN                                            :{BLACK}Losowe miasto
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Budowanie miasta w losowym miejscu
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Budowa miasta w losowym miejscu
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Tworzenie przedsiębiorstw
 STR_0240_COAL_MINE                                              :{BLACK}{G=f}Kopalnia Węgla
 STR_0240_COAL_MINE.d                                            :{BLACK}{G=f}kopalni węgla
@@ -947,6 +950,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Ufunduj nowe pr
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Ufunduj nowe przedsięb.
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...może być wybudowane tylko w mieście
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...może być wybudowane tylko w lasach deszczowych
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...może być wybudowane tylko na pustyni
@@ -1107,6 +1111,7 @@ STR_CONFIG_PATCHES_OFF                                          :wył.
 STR_CONFIG_PATCHES_ON                                           :wł.
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Pokazuj prędkość pojazdów w pasku statusu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Pozwól budować na pochyłościach i wybrzeżach: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Pozwól na zmiany terenu pod budynkami, torami (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Zezwól na bardziej realistyczny zasięg obejmowania: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Pozwól usuwać drogi, mosty, tunele, itp. należące do miasta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Pozwól budować bardzo długie pociągi: {ORANGE}{STRING}
@@ -1133,6 +1138,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Kompaty
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ustawianie się samochodów w kolejkach (z efektem quantum): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Przesuń okno, kiedy kursor jest przy krawędzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Pozwól dawać łapówki lokalnym władzom: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Pozwól na kupno wyłączności transportowej: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Pozwól na wysyłanie pieniędzy do innych firm:: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nowe szukanie drogi (NPF, zastępuje NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {ORANGE}{STRING}
@@ -1190,9 +1197,21 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Powiększ widok
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Przesuń widok
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Rolka wyłączona
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Prędkość przesuwania widoku: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulacjia prawego przycisku myszy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Wyłączona
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Używaj zaawansowanej listy pojazdów: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Nie używaj
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Dla własnej firmy
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Dla wszystkich firm
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Pokazuj wskaźniki załadunku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Nie pokazuj
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Dla własnej firmy
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Dla wszystkich firm
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Uaktywnij rozkłady jazdy pojazdów: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokazuj rozkłady jazdy w tickach, a nie w dniach: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Domyślny typ torowiska (w nowej grze/po wczytaniu gry): {ORANGE}{STRING}
@@ -1237,6 +1256,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Pozwól
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwól kupować udziały w innych firmach
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} kratk{P e i ek}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Uaktywnij okno budowania sygnałów: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Plan sieci dróg "bez nowych dróg" nie jest poprawny dla edytora scenariuszy
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Wybierz plan sieci dróg miejskich: {ORANGE}{STRING}
@@ -1261,6 +1281,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Bardzo duża
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Ilość miast które staną się metropoliami: {ORANGE}1 na {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ilość miast które staną się metropoliami: {ORANGE}Brak
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Początkowy mnożnik rozmiarów metropolii: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Usuwaj absurdalne fragmenty ulicy podczas rekonstrukcji dróg
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfejs
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstrukcje
@@ -1291,7 +1312,7 @@ STR_CHEAT_MONEY                                                 :{LTBLUE}Zwięks
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Graj jako gracz: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, itp.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się krzyżować: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowanie w czasie pauzy: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowa w czasie pauzy: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzutowce nie będą się często rozbijać na małych lotniskach: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmień klimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmień datę: {ORANGE} {DATE_SHORT}
@@ -1320,7 +1341,7 @@ STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Zmiana t
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Nie można tutaj zbudować pkt. kontolnego...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nie można usunąć pkt. kontrolnego z tego miejsca...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budowanie torów używając trybu Autorail
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budowa torów używając trybu Autorail
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...nie ma żadnego miasta w scenariuszu
 
@@ -1358,7 +1379,7 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Zamiana 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Przeciągnij tutaj lokomotywę by sprzedać cały pociąg
 
 STR_DRAG_DROP                                                   :{BLACK}Przeciągnij i upuść
-STR_STATION_DRAG_DROP                                           :{BLACK}Budowanie stacji używając przeciągnij i upuść
+STR_STATION_DRAG_DROP                                           :{BLACK}Budowj stację używając "przeciągnij i upuść"
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Wybierz rodzaj stacji do pokazania
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Wybierz typ stacji do zbudowania
 
@@ -1736,8 +1757,10 @@ STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Nie moż
 STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nie można zbudować tramwajowej stacji załadunkowej...
 STR_180A_ROAD_CONSTRUCTION                                      :Budowa drogi
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Budowa torowiska tramwajowego
-STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Sekcja budowy dróg
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Budowa dróg
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Budowa drogi używając trybu Autoroad
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Zbuduj fragment torowiska tramwajowego
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Budowa torów tramwajowych używając trybu Autotram
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Zbuduj zajezdnię samochodową (do budowania i serwisowania pojazdów)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Zbuduj zajezdnię tramwajową (do budowania i serwisowania pojazdów)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Budowa przystanku
@@ -1748,6 +1771,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Budowa m
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Zbuduj most tramwajowy
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Budowa tunelu drogowego
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Zbuduj tunel tramwajowy
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Włącz/Wyłącz drogi jednokierunkowe
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Przełącz buduj/usuń dla konstrukcji dróg
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Przełącz buduj/usuń dla konstrukcji torowiska tramwajowego
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Wybierz umiejscowienie zajezdni samochodowej
@@ -1769,6 +1793,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Należy najpierw zburzyć budynek
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populacja: {ORANGE}{COMMA}{BLACK}  Domów: {ORANGE}{COMMA}
@@ -2127,6 +2152,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nie moż
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Należy najpierw usunąć tunel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Należy najpierw usunąć most
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nie można zaczynać i kończyć w tym samym miejscu
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Początki mostu nie są na tej samej wysokości
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Początek i koniec muszą być w jednej linii
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nieodpowiednie miejsce na wejście tunelu
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2407,6 +2433,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Przenie�
 STR_COMPANY_PASSWORD                                            :{BLACK}Hasło
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ochrona hasłem Twojej firmy zapobiega nieautoryzowanemu przyłączeniu się
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Ustaw hasło firmy
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nie zapisuj podanego hasła
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Nadaj firmie nowe hasło
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Hasło firmy
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Hasło domyślne
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Użyj tego hasła jako domyślnego dla nowych firm
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Światowa recesja!{}{}Eksperci finansowi obawiają się najgorszego z powodu kryzysu!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Koniec recesji!{}{}Polepszenie się transakcji handlowych daje pewność przedsiębiorstwom dzięki umacniającej się ekonomii!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Przełącz duży/mały rozmiar okna
@@ -2892,6 +2923,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Dostępn{G y a e} now{G y a e} {STRING} - {ENGINE}!
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Nie można sprzedać zniszczonego pojazdu...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nie można wyznaczyć rozkładu jazdy pojazdu...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Pojazdy mogą czekać tylko na stacjach.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Ten pojazd nie zatrzymuje się na tej stacji.
@@ -3098,7 +3131,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nie moż
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nazwa samolotu
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy samolot przyleciał na {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Katastrofa lotnicza!{}{COMMA} ofiar{P a y ""} na {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbił się z powodu braku paliwa, zginęło {COMMA} osób!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbił się z powodu braku paliwa, zginęł{P a y o} {COMMA} os{P oba oby ób}!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Zmień nazwę
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Zmień nazwę typu samolotu
@@ -3180,7 +3213,9 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} jest z
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Niewłaściwy parametr dla {STRING}: parametr {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musi być wczytany przed {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musi być wczytany po {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} wymaga OpenTTD w wersji {STRING} lub nowszej.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Wczytano za dużo NewGRF.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj plik NewGRF do listy
@@ -3209,6 +3244,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nie zna
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Wczytano kompatybilne GRF dla brakujących plików
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Brakujące pliki GRF zostały wyłączone
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Brak plików GRF potrzebnych do wczytania gry
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Brakujące pliki GRF
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłączenie pauzy może zawiesić OpenTTD. Nie zgłaszaj błędów o powtarzających się zawieszeniach.{}Czy na pewno chcesz wyłączyć pauzę?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Własna waluta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Współczynnik wymiany: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3389,6 +3426,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Wysokoś
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Wyśrodkuj mapę na aktualnej lokalizacji
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Małe
@@ -3495,3 +3533,68 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Ufunduj
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Zleć poszukiwanie
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Wybuduj
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Wybierz przedsiębiorstwo z listy
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Zaawansowane
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Zaawansowany widok wyboru twarzy.
+STR_FACE_SIMPLE                                                 :{BLACK}Prosty widok
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Prosty widok wyboru twarzy.
+STR_FACE_LOAD                                                   :{BLACK}Wczytaj
+STR_FACE_LOAD_TIP                                               :{BLACK}Wczytaj ulubioną twarz
+STR_FACE_LOAD_DONE                                              :{WHITE}Twoja ulubiona twarz została wczytana z pliku konfiguracyjnego OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}Numer twarzy gracza
+STR_FACE_FACECODE_TIP                                           :{BLACK}Obejrzyj i/lub ustaw numer twarzy gracza
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Obejrzyj i/lub ustaw numer twarzy gracza
+STR_FACE_FACECODE_SET                                           :{WHITE}Ustawiono nowy numer twarzy gracza.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nie można ustawić numeru twarzy gracza - musi być liczbą pomiędzy 0 a 4'294'967'295!
+STR_FACE_SAVE                                                   :{BLACK}Zapisz
+STR_FACE_SAVE_TIP                                               :{BLACK}Zapisz ulubioną twarz
+STR_FACE_SAVE_DONE                                              :{WHITE}Ta twarz będzie zapisana w pliku konfiguracyjnym OpenTTD jako Twoja ulubiona
+STR_FACE_EUROPEAN                                               :{BLACK}Europejska
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Wybierz twarz o karnacji europejskiej
+STR_FACE_AFRICAN                                                :{BLACK}Afrykańska
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Wybierz twarz o karnacji afrykańskiej
+STR_FACE_YES                                                    :Tak
+STR_FACE_NO                                                     :Nie
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Pokaż wąsy lub kolczyk
+STR_FACE_HAIR                                                   :Włosy:
+STR_FACE_HAIR_TIP                                               :{BLACK}Zmień włosy
+STR_FACE_EYEBROWS                                               :Rzęsy:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Zmień rzęsy
+STR_FACE_EYECOLOUR                                              :Kolor oczu:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Zmień kolor oczu
+STR_FACE_GLASSES                                                :Okulary
+STR_FACE_GLASSES_TIP                                            :{BLACK}Uaktywnij okulary
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Zmień okulary
+STR_FACE_NOSE                                                   :Nos:
+STR_FACE_NOSE_TIP                                               :{BLACK}Zmień nos
+STR_FACE_LIPS                                                   :Usta:
+STR_FACE_MOUSTACHE                                              :Wąsy:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Zmień usta lub wąsy
+STR_FACE_CHIN                                                   :Broda:
+STR_FACE_CHIN_TIP                                               :{BLACK}Zmień brodę
+STR_FACE_JACKET                                                 :Marynarka:
+STR_FACE_JACKET_TIP                                             :{BLACK}Zmień marynarkę
+STR_FACE_COLLAR                                                 :Kołnierz:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Zmień kołnierz
+STR_FACE_TIE                                                    :Krawat:
+STR_FACE_EARRING                                                :Kolczyk:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Zmień krawat lub kolczyk
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Wybór sygnałów
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Nie można tutaj zmienić sygnałów...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Zwykły sygnał (semafor){}Sygnały są potrzebne aby uniknąć zderzeń pociągów na liniach z więcej niż jednym pociągiem.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-sygnał (semafor){}Jest zielony jeżeli zielony jest przynajmniej jeden exit-sygnał przy pobliskim skrzyżowaniu. W przeciwnym wypadku, jest czerwony.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-sygnał (semafor){}Zachowuje się tak jak zwykły sygnał, ale wpływa na pobliskie pre- i combo-sygnały.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-sygnał(semafor){}Sygnał combo skupia działanie zarówno pre- jak i exit-sygnałów. Pozwala to na budowę zaawansowanych układów sygnałów.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Zwykły sygnał (świetlny){}Sygnały są potrzebne aby uniknąć zderzeń pociągów na liniach z więcej niż jednym pociągiem.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-sygnał (świetlny){}Jest zielony jeżeli zielony jest przynajmniej jeden exit-sygnał przy pobliskim skrzyżowaniu. W przeciwnym wypadku, jest czerwony.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-sygnał (świetlny){}Zachowuje się tak jak zwykły sygnał, ale wpływa na pobliskie pre- i combo-sygnały.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-sygnał(świetlny){}Sygnał combo skupia działanie zarówno pre- jak i exit-sygnałów. Pozwala to na budowę zaawansowanych układów sygnałów.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę jego typu na wybrany obok. CTRL-klik przełącza wygląd semafor/świetlny.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Gęstość sygnałów przy przeciąganiu. CTRL-przeciągnij aby wypełnić trasę sygnałami.
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zwiększ gęstość sygnałów przy przeciąganiu
+########
