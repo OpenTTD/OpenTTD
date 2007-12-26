@@ -8,7 +8,6 @@
 #include "direction_func.h"
 #include "core/bitmath_func.hpp"
 #include "tile_map.h"
-#include "openttd.h"
 
 
 /**

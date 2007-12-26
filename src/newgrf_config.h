@@ -5,7 +5,7 @@
 #ifndef NEWGRF_CONFIG_H
 #define NEWGRF_CONFIG_H
 
-#include "openttd.h"
+#include "strings_type.h"
 
 /* GRF config bit flags */
 enum GCF_Flags {

@@ -7,7 +7,6 @@
 #include "../stdafx.h"
 #include "../gfx_func.h"
 #include "../fileio.h"
-#include "../variables.h"
 #include "../debug.h"
 #include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"

@@ -1,5 +1,6 @@
 /* $Id$ */
-/** @file openttd.h */
+
+/** @file cargo_type.h Types related to cargos... */
 
 #ifndef CARGO_TYPE_H
 #define CARGO_TYPE_H

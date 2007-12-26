@@ -7,7 +7,6 @@
 
 #include "core/random_func.hpp"
 #include "command_type.h"
-#include "openttd.h"
 #include "tile_cmd.h"
 
 /* clear_land.cpp */

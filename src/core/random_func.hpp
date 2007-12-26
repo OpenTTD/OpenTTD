@@ -100,4 +100,6 @@ static inline bool Chance16R(const uint a, const uint b, uint32 &r)
 	return Chance16I(a, b, r);
 }
 
+extern uint32 _random_seeds[2][2];
+
 #endif /* RANDOM_FUNC_HPP */

@@ -20,6 +20,7 @@
 #include "viewport.h"
 #include "map_func.h"
 #include "date_func.h"
+#include "core/random_func.hpp"
 
 void GenerateClearTile();
 void GenerateIndustries();

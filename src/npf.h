@@ -5,7 +5,6 @@
 #ifndef NPF_H
 #define NPF_H
 
-#include "openttd.h"
 #include "aystar.h"
 #include "station.h"
 #include "vehicle_type.h"

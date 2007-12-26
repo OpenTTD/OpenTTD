@@ -3,9 +3,10 @@
 /** @file random_func.cpp */
 
 #include "../stdafx.h"
-#include "../variables.h"
 #include "random_func.hpp"
 #include "bitmath_func.hpp"
+
+uint32 _random_seeds[2][2];
 
 uint32 InteractiveRandom()
 {

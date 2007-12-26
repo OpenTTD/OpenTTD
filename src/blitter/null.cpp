@@ -1,5 +1,8 @@
+/* $Id$ */
+
+/** @file null.cpp A blitter that doesn't blit. */
+
 #include "../stdafx.h"
-#include "../variables.h"
 #include "null.hpp"
 
 static FBlitter_Null iFBlitter_Null;

@@ -6,7 +6,6 @@
 #define PATHFIND_H
 
 #include "direction_type.h"
-#include "openttd.h"
 
 enum {
 	STR_FACTOR  = 2,
