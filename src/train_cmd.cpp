@@ -1570,6 +1570,8 @@ static void AdvanceWagons(Vehicle *v, bool before)
 			Vehicle *tempnext = last->Next();
 			last->SetNext(NULL);
 
+			/* do not update images now because the wagons are disconnected
+			 * and that could cause problems with NewGRFs */
 			for (int i = 0; i < differential; i++) TrainController(first, false);
 
 			last->SetNext(tempnext);
@@ -1605,9 +1607,8 @@ static void ReverseTrainDirection(Vehicle *v)
 	}
 
 	/* count number of vehicles */
-	int r = -1;
-	const Vehicle *u = v;
-	do r++; while ((u = u->Next()) != NULL);
+	int r = 0;  ///< number of vehicles - 1
+	for (const Vehicle *u = v; (u = u->Next()) != NULL;) { r++; }
 
 	AdvanceWagons(v, true);
 
@@ -1622,6 +1623,9 @@ static void ReverseTrainDirection(Vehicle *v)
 	if (IsTileDepotType(v->tile, TRANSPORT_RAIL)) {
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
+
+	/* update all images */
+	for (Vehicle *u = v; u != NULL; u = u->Next()) { u->cur_image = u->GetImage(u->direction); }
 
 	ClrBit(v->u.rail.flags, VRF_REVERSING);
 }
@@ -2597,13 +2601,6 @@ static Direction GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_
 	return _new_vehicle_direction_table[offs];
 }
 
-static Direction GetNewVehicleDirection(const Vehicle *v, int x, int y)
-{
-	uint offs = (y - v->y_pos + 1) * 4 + (x - v->x_pos + 1);
-	assert(offs < 11);
-	return _new_vehicle_direction_table[offs];
-}
-
 static int GetDirectionToVehicle(const Vehicle *v, int x, int y)
 {
 	byte offs;
@@ -2969,7 +2966,9 @@ static void TrainController(Vehicle *v, bool update_image)
 				v->direction = chosen_dir;
 			}
 		} else {
-			/* In tunnel or on a bridge */
+			/* In a tunnel or on a bridge
+			 * - for tunnels, only the part when the vehicle is not visible (part of enter/exit tile too)
+			 * - for bridges, only the middle part - without the bridge heads */
 			if (!(v->vehstatus & VS_HIDDEN)) {
 				v->cur_speed =
 					min(v->cur_speed, GetBridge(GetBridgeType(v->tile))->speed);
@@ -2985,9 +2984,8 @@ static void TrainController(Vehicle *v, bool update_image)
 		}
 
 		/* update image of train, as well as delta XY */
-		Direction newdir = GetNewVehicleDirection(v, gp.x, gp.y);
-		v->UpdateDeltaXY(newdir);
-		if (update_image) v->cur_image = v->GetImage(newdir);
+		v->UpdateDeltaXY(v->direction);
+		if (update_image) v->cur_image = v->GetImage(v->direction);
 
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
