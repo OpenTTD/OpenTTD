@@ -41,7 +41,6 @@ extern "C" void HideMenuBar();
 
 #include "../../stdafx.h"
 #include "../../debug.h"
-#include "../../variables.h"
 #include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
 #include "../../gfx_func.h"
