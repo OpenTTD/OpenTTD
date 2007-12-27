@@ -272,12 +272,12 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 	TEXID_TO_STRINGID(0x006E, 0x008D, STR_QUANTITY_NOTHING);
 	TEXID_TO_STRINGID(0x008E, 0x00AD, STR_ABBREV_NOTHING);
 
-	/* Map building names according to our lang file changes
-	 * 0x200F = Tall Office Block, first house name in the original data, the one that TTDPatch stil uses
-	 * 0x201F = Old houses is the last house name.
-	 * OpenTTD does not have exactly the same order aymore, so, the code below allows
-	 * to compensate for the difference */
+	/* Map building names according to our lang file changes. There are several
+	 * ranges of house ids, all of which need to be remapped to allow newgrfs
+	 * to use original house names. */
 	TEXID_TO_STRINGID(0x200F, 0x201F, STR_200F_TALL_OFFICE_BLOCK);
+	TEXID_TO_STRINGID(0x2036, 0x2041, STR_2036_COTTAGES);
+	TEXID_TO_STRINGID(0x2059, 0x205C, STR_2059_IGLOO);
 
 	/* Same thing for industries, since the introduction of 4 new strings above STR_482A_PRODUCTION_LAST_MONTH */
 	TEXID_TO_STRINGID(0x482A, 0x483B, STR_482A_PRODUCTION_LAST_MONTH);
