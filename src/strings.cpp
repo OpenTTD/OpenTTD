@@ -10,7 +10,6 @@
 #include "namegen.h"
 #include "station.h"
 #include "town.h"
-#include "vehicle.h"
 #include "news.h"
 #include "screenshot.h"
 #include "waypoint.h"
@@ -26,7 +25,6 @@
 #include "debug.h"
 #include "newgrf_townname.h"
 #include "signs.h"
-#include "vehicle.h"
 #include "newgrf_engine.h"
 #include "spritecache.h"
 #include "fontcache.h"
@@ -35,6 +33,7 @@
 #include "functions.h"
 #include "core/endian_func.hpp"
 #include "date_func.h"
+#include "vehicle_base.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"

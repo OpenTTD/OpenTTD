@@ -21,7 +21,6 @@
 #include "station_map.h"
 #include "town_map.h"
 #include "tunnel_map.h"
-#include "vehicle.h"
 #include "viewport.h"
 #include "window_func.h"
 #include "window_gui.h"
@@ -62,6 +61,7 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 #include "bridge_map.h"
 #include "clear_map.h"

@@ -16,7 +16,6 @@
 #include "landscape.h"
 #include "tunnel_map.h"
 #include "unmovable_map.h"
-#include "vehicle.h"
 #include "viewport.h"
 #include "command_func.h"
 #include "player.h"
@@ -35,6 +34,7 @@
 #include "strings_func.h"
 #include "date_func.h"
 #include "functions.h"
+#include "vehicle_func.h"
 
 
 const Bridge orig_bridge[] = {

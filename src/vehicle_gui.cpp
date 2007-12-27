@@ -9,7 +9,6 @@
 #include "station.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "vehicle.h"
 #include "engine.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -32,6 +31,7 @@
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 struct Sorting {
 	Listing aircraft;
@@ -1004,7 +1004,7 @@ static void DrawVehicleListWindow(Window *w)
 		SetDParam(0, v->profit_this_year);
 		SetDParam(1, v->profit_last_year);
 
-		DrawVehicleImage(v, x + 19, y + 6, w->widget[VLW_WIDGET_LIST].right - w->widget[VLW_WIDGET_LIST].left - 20, 0, INVALID_VEHICLE);
+		DrawVehicleImage(v, x + 19, y + 6, INVALID_VEHICLE, w->widget[VLW_WIDGET_LIST].right - w->widget[VLW_WIDGET_LIST].left - 20, 0);
 		DrawString(x + 19, y + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
 
 		if ((v->type == VEH_TRAIN    && v->string_id != STR_SV_TRAIN_NAME)   ||
@@ -1544,7 +1544,7 @@ static void DrawVehicleDetailsWindow(Window *w)
 		case VEH_ROAD:
 		case VEH_SHIP:
 		case VEH_AIRCRAFT:
-			DrawVehicleImage(v, 3, 57, 0, 0, INVALID_VEHICLE);
+			DrawVehicleImage(v, 3, 57, INVALID_VEHICLE, 0, 0);
 			DrawVehicleDetails(v, 75, 57, w->vscroll.pos, w->vscroll.cap, det_tab);
 			break;
 
@@ -2166,5 +2166,16 @@ static void VehicleViewWndProc(Window *w, WindowEvent *e)
 				SetWindowDirty(w);
 			}
 		} break;
+	}
+}
+
+void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip)
+{
+	switch (v->type) {
+		case VEH_TRAIN:    DrawTrainImage(v, x, y, selection, count, skip); break;
+		case VEH_ROAD:     DrawRoadVehImage(v, x, y, selection, count);     break;
+		case VEH_SHIP:     DrawShipImage(v, x, y, selection);               break;
+		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);           break;
+		default: NOT_REACHED();
 	}
 }

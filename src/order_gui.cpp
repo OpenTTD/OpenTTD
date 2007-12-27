@@ -10,7 +10,6 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "vehicle.h"
 #include "station.h"
 #include "town.h"
 #include "command_func.h"
@@ -25,6 +24,7 @@
 #include "order.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 enum OrderWindowWidgets {
 	ORDER_WIDGET_CLOSEBOX = 0,

@@ -11,7 +11,6 @@
 #include "station.h"
 #include "player.h"
 #include "engine.h"
-#include "vehicle.h"
 #include "aircraft.h"
 #include "roadveh.h"
 #include "ship.h"
@@ -24,6 +23,7 @@
 #include "zoom_func.h"
 #include "functions.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 enum {
 	HEADER_SIZE = 49,

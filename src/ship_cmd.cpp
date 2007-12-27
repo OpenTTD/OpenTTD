@@ -8,7 +8,6 @@
 #include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
-#include "vehicle.h"
 #include "timetable.h"
 #include "command_func.h"
 #include "pathfind.h"
@@ -34,6 +33,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 

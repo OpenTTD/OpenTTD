@@ -14,7 +14,6 @@
 #include "viewport.h"
 #include "sound.h"
 #include "command_func.h"
-#include "vehicle.h"
 #include "signs.h"
 #include "variables.h"
 #include "functions.h"

@@ -12,7 +12,6 @@
 #include "viewport.h"
 #include "player.h"
 #include "command_func.h"
-#include "vehicle.h"
 #include "network/network.h"
 #include "variables.h"
 #include "roadveh.h"

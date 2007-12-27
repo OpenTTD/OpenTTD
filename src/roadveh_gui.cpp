@@ -10,13 +10,13 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "vehicle.h"
 #include "viewport.h"
 #include "command_func.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"
+#include "vehicle_func.h"
 
 
 void DrawRoadVehDetails(const Vehicle *v, int x, int y)
@@ -99,7 +99,7 @@ static inline int RoadVehLengthToPixels(int length)
 	return (length * 28) / 8;
 }
 
-void DrawRoadVehImage(const Vehicle *v, int x, int y, int count, VehicleID selection)
+void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int count)
 {
 	/* Road vehicle lengths are measured in eighths of the standard length, so
 	 * count is the number of standard vehicles that should be drawn. If it is

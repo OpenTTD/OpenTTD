@@ -12,7 +12,6 @@
 #include "viewport.h"
 #include "command_func.h"
 #include "landscape.h"
-#include "vehicle.h"
 #include "variables.h"
 #include "void_map.h"
 #include "water_map.h"
@@ -24,6 +23,7 @@
 #include "window_func.h"
 #include "functions.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,

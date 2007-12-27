@@ -6,7 +6,8 @@
 #define TRAIN_H
 
 #include "stdafx.h"
-#include "vehicle.h"
+#include "core/bitmath_func.hpp"
+#include "vehicle_base.h"
 
 
 /*

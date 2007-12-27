@@ -9,7 +9,6 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "vehicle.h"
 #include "viewport.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
@@ -17,6 +16,7 @@
 #include "train.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"
+#include "vehicle_func.h"
 
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -68,7 +68,7 @@ int WagonLengthToPixels(int len)
 	return (len * _traininfo_vehicle_width) / 8;
 }
 
-void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
+void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip)
 {
 	DrawPixelInfo tmp_dpi, *old_dpi;
 	int dx = -(skip * 8) / _traininfo_vehicle_width;

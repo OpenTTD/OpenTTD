@@ -12,7 +12,6 @@
 #include "station.h"
 #include "viewport.h"
 #include "town.h"
-#include "vehicle.h"
 #include "news.h"
 #include "saveload.h"
 #include "player.h"

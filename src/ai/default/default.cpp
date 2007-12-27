@@ -12,7 +12,6 @@
 #include "../../station_map.h"
 #include "../../player.h"
 #include "../../tunnel_map.h"
-#include "../../vehicle.h"
 #include "../../engine.h"
 #include "../../command_func.h"
 #include "../../town.h"
@@ -26,6 +25,7 @@
 #include "../../date_func.h"
 #include "../../tunnelbridge_map.h"
 #include "../../window_func.h"
+#include "../../vehicle_func.h"
 #include "../../functions.h"
 #include "default.h"
 

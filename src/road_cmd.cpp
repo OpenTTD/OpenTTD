@@ -16,7 +16,6 @@
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "town_map.h"
-#include "vehicle.h"
 #include "viewport.h"
 #include "command_func.h"
 #include "player.h"
@@ -33,6 +32,8 @@
 #include "tunnelbridge_map.h"
 #include "window_func.h"
 #include "strings_func.h"
+#include "vehicle_func.h"
+#include "vehicle_base.h"
 
 
 #define M(x) (1 << (x))

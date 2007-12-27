@@ -16,7 +16,6 @@
 #include "landscape.h"
 #include "town_map.h"
 #include "tunnel_map.h"
-#include "vehicle.h"
 #include "viewport.h"
 #include "command_func.h"
 #include "pathfind.h"
@@ -41,6 +40,7 @@
 #include "water.h"
 #include "tunnelbridge_map.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 
 const byte _track_sloped_sprites[14] = {

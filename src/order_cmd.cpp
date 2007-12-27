@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "order.h"
 #include "airport.h"
-#include "vehicle.h"
 #include "depot.h"
 #include "table/strings.h"
 #include "waypoint.h"

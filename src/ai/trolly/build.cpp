@@ -4,13 +4,14 @@
 #include "../../openttd.h"
 #include "../../debug.h"
 #include "../../road_map.h"
-#include "../../vehicle.h"
 #include "../../command_func.h"
 #include "trolly.h"
 #include "../../engine.h"
 #include "../../station.h"
 #include "../../variables.h"
 #include "../../bridge.h"
+#include "../../vehicle_func.h"
+#include "../../vehicle_base.h"
 #include "../ai.h"
 
 // Build HQ

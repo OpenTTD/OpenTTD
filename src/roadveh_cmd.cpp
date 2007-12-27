@@ -11,7 +11,6 @@
 #include "roadveh.h"
 #include "station_map.h"
 #include "table/strings.h"
-#include "vehicle.h"
 #include "timetable.h"
 #include "engine.h"
 #include "command_func.h"
@@ -38,6 +37,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 
 static const uint16 _roadveh_images[63] = {

@@ -5,7 +5,7 @@
 #ifndef ROADVEH_H
 #define ROADVEH_H
 
-#include "vehicle.h"
+#include "vehicle_base.h"
 #include "engine.h"
 #include "variables.h"
 #include "economy_func.h"

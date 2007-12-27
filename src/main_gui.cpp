@@ -19,7 +19,6 @@
 #include "command_func.h"
 #include "news.h"
 #include "town.h"
-#include "vehicle.h"
 #include "console.h"
 #include "sound.h"
 #include "network/network.h"
@@ -41,6 +40,7 @@
 #include "road_gui.h"
 #include "date_func.h"
 #include "functions.h"
+#include "vehicle_func.h"
 
 #include "network/network_data.h"
 #include "network/network_client.h"

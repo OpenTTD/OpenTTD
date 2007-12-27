@@ -7,10 +7,10 @@
 #include "oldpool.h"
 #include "sound.h"
 #include "engine.h"
-#include "vehicle.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
+#include "vehicle_base.h"
 
 static uint _sound_count = 0;
 STATIC_OLD_POOL(SoundInternal, FileEntry, 3, 1000, NULL, NULL)

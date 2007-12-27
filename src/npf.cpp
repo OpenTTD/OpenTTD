@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "npf.h"
-#include "vehicle.h"
 #include "bridge_map.h"
 #include "debug.h"
 #include "tile_cmd.h"
@@ -21,6 +20,7 @@
 #include "water_map.h"
 #include "tunnelbridge_map.h"
 #include "functions.h"
+#include "vehicle_base.h"
 
 static AyStar _npf_aystar;
 

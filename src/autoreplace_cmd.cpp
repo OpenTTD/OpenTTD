@@ -18,6 +18,7 @@
 #include "order.h"
 #include "strings_func.h"
 #include "command_func.h"
+#include "vehicle_func.h"
 #include "functions.h"
 
 /*

@@ -10,7 +10,6 @@
 #include "landscape.h"
 #include "station_map.h"
 #include "table/strings.h"
-#include "vehicle.h"
 #include "timetable.h"
 #include "depot.h"
 #include "engine.h"
@@ -32,6 +31,7 @@
 #include "command_func.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 #include "functions.h"
 
 void Aircraft::UpdateDeltaXY(Direction direction)

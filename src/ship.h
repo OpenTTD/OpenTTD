@@ -5,7 +5,7 @@
 #ifndef SHIP_H
 #define SHIP_H
 
-#include "vehicle.h"
+#include "vehicle_base.h"
 #include "engine.h"
 #include "variables.h"
 #include "economy_func.h"

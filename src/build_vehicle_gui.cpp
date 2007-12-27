@@ -12,7 +12,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "gui.h"
-#include "vehicle.h"
 #include "articulated_vehicles.h"
 #include "textbuf_gui.h"
 #include "station.h"
@@ -29,6 +28,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 
 enum BuildVehicleWidgets {

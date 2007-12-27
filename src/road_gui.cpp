@@ -16,11 +16,11 @@
 #include "road_cmd.h"
 #include "road_map.h"
 #include "station_map.h"
-#include "vehicle.h"
 //needed for catchments
 #include "station.h"
 #include "functions.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 
 static void ShowRVStationPicker(RoadStop::Type rs);

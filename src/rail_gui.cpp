@@ -14,7 +14,6 @@
 #include "viewport.h"
 #include "sound.h"
 #include "command_func.h"
-#include "vehicle.h"
 #include "station.h"
 #include "waypoint.h"
 #include "debug.h"

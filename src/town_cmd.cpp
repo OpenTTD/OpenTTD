@@ -18,7 +18,6 @@
 #include "command_func.h"
 #include "industry.h"
 #include "station.h"
-#include "vehicle.h"
 #include "player.h"
 #include "news.h"
 #include "saveload.h"
@@ -1793,7 +1792,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 				construction_counter = GB(r, 2, 2);
 			}
 		}
-		MakeTownHouse(tile, t->index, construction_counter, construction_stage, house, VehicleRandomBits());
+		MakeTownHouse(tile, t->index, construction_counter, construction_stage, house, Random());
 	}
 }
 

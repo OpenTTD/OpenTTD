@@ -11,7 +11,6 @@
 #include "string.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "vehicle.h"
 #include "saveload.h"
 #include "engine.h"
 #include "vehicle_gui.h"
@@ -26,6 +25,8 @@
 #include "functions.h"
 #include "map_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
+#include "texteff.hpp"
 
 char _name_array[512][32];
 

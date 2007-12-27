@@ -18,7 +18,6 @@
 #include "tunnel_map.h"
 #include "viewport.h"
 #include "player.h"
-#include "vehicle.h"
 #include "town.h"
 #include "sound.h"
 #include "variables.h"
@@ -27,6 +26,7 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "core/endian_func.hpp"
+#include "vehicle_base.h"
 
 
 static const Widget _smallmap_widgets[] = {

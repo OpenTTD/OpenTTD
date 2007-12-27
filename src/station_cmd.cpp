@@ -18,7 +18,6 @@
 #include "viewport.h"
 #include "command_func.h"
 #include "town.h"
-#include "vehicle.h"
 #include "news.h"
 #include "saveload.h"
 #include "player.h"
@@ -44,6 +43,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)

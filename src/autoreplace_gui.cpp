@@ -16,6 +16,7 @@
 #include "rail.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 static RailType _railtype_selected_in_replace_gui;
 

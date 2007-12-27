@@ -19,11 +19,11 @@
 #include "town.h"
 #include "variables.h"
 #include "settings.h"
-#include "vehicle.h"
 #include "newgrf_townname.h"
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "vehicle_base.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;

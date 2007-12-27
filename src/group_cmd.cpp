@@ -8,7 +8,6 @@
 #include "player.h"
 #include "table/strings.h"
 #include "command_func.h"
-#include "vehicle.h"
 #include "saveload.h"
 #include "debug.h"
 #include "group.h"
@@ -20,6 +19,7 @@
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one

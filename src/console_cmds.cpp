@@ -19,7 +19,6 @@
 #include "settings.h"
 #include "fios.h"
 #include "fileio.h"
-#include "vehicle.h"
 #include "station.h"
 #include "screenshot.h"
 #include "genworld.h"
@@ -30,6 +29,7 @@
 #include "functions.h"
 #include "map_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;
@@ -137,19 +137,12 @@ DEF_CONSOLE_CMD(ConResetTile)
 
 DEF_CONSOLE_CMD(ConStopAllVehicles)
 {
-	Vehicle* v;
 	if (argc == 0) {
 		IConsoleHelp("Stops all vehicles in the game. For debugging only! Use at your own risk... Usage: 'stopall'");
 		return true;
 	}
 
-	FOR_ALL_VEHICLES(v) {
-		/* Code ripped from CmdStartStopTrain. Can't call it, because of
-		 * ownership problems, so we'll duplicate some code, for now */
-		v->vehstatus |= VS_STOPPED;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-	}
+	StopAllVehicles();
 	return true;
 }
 #endif /* _DEBUG */

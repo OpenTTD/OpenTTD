@@ -41,6 +41,7 @@
 #include "news.h"
 #include "window_func.h"
 #include "strings_func.h"
+#include "vehicle_func.h"
 #ifdef WITH_FREETYPE
 #include "fontcache.h"
 #endif

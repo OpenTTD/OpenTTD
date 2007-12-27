@@ -60,11 +60,11 @@
 #include "rail_map.h"
 #include "table/sprites.h"
 #include "table/elrail_data.h"
-#include "vehicle.h"
 #include "train.h"
 #include "rail_gui.h"
 #include "transparency.h"
 #include "tunnelbridge_map.h"
+#include "vehicle_func.h"
 
 
 static inline TLG GetTLG(TileIndex t)

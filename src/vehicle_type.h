@@ -25,4 +25,31 @@ typedef TinyEnumT<VehicleType> VehicleTypeByte;
 
 struct Vehicle;
 
+struct BaseVehicle
+{
+	VehicleTypeByte type;    ///< Type of vehicle
+
+	/**
+	 * Is this vehicle a valid vehicle?
+	 * @return true if and only if the vehicle is valid.
+	 */
+	inline bool IsValid() const { return this->type != VEH_INVALID; }
+};
+
+static const VehicleID INVALID_VEHICLE = 0xFFFF;
+
+/* Effect vehicle types */
+enum EffectVehicle {
+	EV_CHIMNEY_SMOKE   = 0,
+	EV_STEAM_SMOKE     = 1,
+	EV_DIESEL_SMOKE    = 2,
+	EV_ELECTRIC_SPARK  = 3,
+	EV_SMOKE           = 4,
+	EV_EXPLOSION_LARGE = 5,
+	EV_BREAKDOWN_SMOKE = 6,
+	EV_EXPLOSION_SMALL = 7,
+	EV_BULLDOZER       = 8,
+	EV_BUBBLE          = 9
+};
+
 #endif /* VEHICLE_TYPE_H */

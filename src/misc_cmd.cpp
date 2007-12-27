@@ -17,9 +17,9 @@
 #include "livery.h"
 #include "player_face.h"
 #include "strings_func.h"
-#include "vehicle.h"
 #include "gfx_func.h"
 #include "functions.h"
+#include "vehicle_func.h"
 
 /** Change the player's face.
  * @param tile unused

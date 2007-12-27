@@ -12,7 +12,6 @@
 #include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
-#include "vehicle.h"
 #include "timetable.h"
 #include "viewport.h"
 #include "news.h"
@@ -43,9 +42,15 @@
 #include "functions.h"
 #include "date_func.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 #define INVALID_COORD (0x7fffffff)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
+
+VehicleID _vehicle_id_ctr_day;
+Vehicle *_place_clicked_vehicle;
+VehicleID _new_vehicle_id;
+uint16 _returned_refit_capacity;
 
 
 /* Tables used in vehicle.h to find the right command for a certain vehicle type */
@@ -3181,4 +3186,16 @@ void SpecialVehicle::UpdateDeltaXY(Direction direction)
 	this->sprite_width  = 1;
 	this->sprite_height = 1;
 	this->z_height      = 1;
+}
+
+void StopAllVehicles()
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		/* Code ripped from CmdStartStopTrain. Can't call it, because of
+		 * ownership problems, so we'll duplicate some code, for now */
+		v->vehstatus |= VS_STOPPED;
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+	}
 }

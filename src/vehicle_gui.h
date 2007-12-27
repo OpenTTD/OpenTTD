@@ -6,7 +6,7 @@
 #define VEHICLE_GUI_H
 
 #include "window_gui.h"
-#include "vehicle.h"
+#include "vehicle_type.h"
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order);
@@ -50,8 +50,8 @@ void PlayerVehWndProc(Window *w, WindowEvent *e);
 
 int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number);
 
-void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection);
-void DrawRoadVehImage(const Vehicle *v, int x, int y, int count, VehicleID selection);
+void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip);
+void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int count);
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection);
 void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
 
@@ -71,16 +71,7 @@ void ShowReplaceVehicleWindow(VehicleType vehicletype);
 void DrawSmallOrderList(const Vehicle *v, int x, int y);
 void ShowReplaceGroupVehicleWindow(GroupID group, VehicleType veh);
 
-static inline void DrawVehicleImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
-{
-	switch (v->type) {
-		case VEH_TRAIN:    DrawTrainImage(v, x, y, count, skip, selection); break;
-		case VEH_ROAD:     DrawRoadVehImage(v, x, y, count, selection);     break;
-		case VEH_SHIP:     DrawShipImage(v, x, y, selection);               break;
-		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);           break;
-		default: NOT_REACHED();
-	}
-}
+void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip);
 
 static inline uint GetVehicleListHeight(VehicleType type)
 {

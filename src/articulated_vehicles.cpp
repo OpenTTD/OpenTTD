@@ -4,13 +4,13 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "vehicle.h"
 #include "articulated_vehicles.h"
 #include "engine.h"
 #include "train.h"
 #include "roadveh.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
+#include "vehicle_func.h"
 
 
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)

@@ -12,7 +12,6 @@
 #include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
-#include "vehicle.h"
 #include "viewport.h"
 #include "command_func.h"
 #include "town.h"
@@ -32,6 +31,7 @@
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 /** Array for the shore sprites */
 static const SpriteID _water_shore_sprites[] = {

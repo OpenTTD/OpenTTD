@@ -4,8 +4,8 @@
 #include "../../openttd.h"
 #include "../../debug.h"
 #include "../../map_func.h"
+#include "../../vehicle_base.h"
 #include "trolly.h"
-#include "../../vehicle.h"
 
 int AiNew_GetRailDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c)
 {

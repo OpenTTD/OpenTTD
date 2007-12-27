@@ -12,7 +12,6 @@
 #include "table/strings.h"
 #include "landscape.h"
 #include "viewport.h"
-#include "vehicle.h"
 #include "station.h"
 #include "town.h"
 #include "signs.h"
@@ -25,6 +24,7 @@
 #include "transparency.h"
 #include "strings_func.h"
 #include "zoom_func.h"
+#include "vehicle_func.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 

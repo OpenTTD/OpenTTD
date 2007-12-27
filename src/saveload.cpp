@@ -16,7 +16,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "vehicle.h"
 #include "station.h"
 #include "thread.h"
 #include "town.h"
@@ -31,6 +30,7 @@
 #include "core/alloc_func.hpp"
 #include "functions.h"
 #include "core/endian_func.hpp"
+#include "vehicle_base.h"
 #include <list>
 
 extern const uint16 SAVEGAME_VERSION = 83;

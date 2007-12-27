@@ -9,7 +9,6 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
-#include "vehicle.h"
 #include "command_func.h"
 #include "engine.h"
 #include "vehicle_gui.h"
@@ -21,6 +20,7 @@
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 
 struct Sorting {
@@ -473,7 +473,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				assert(v->type == gv->vehicle_type && v->owner == owner);
 
-				DrawVehicleImage(v, x + 19, y2 + 6, w->hscroll.cap, 0, gv->vehicle_sel);
+				DrawVehicleImage(v, x + 19, y2 + 6, gv->vehicle_sel, w->hscroll.cap, 0);
 				DrawVehicleProfitButton(v, x, y2 + 13);
 
 				SetDParam(0, v->unitnumber);

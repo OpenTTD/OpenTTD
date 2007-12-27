@@ -21,9 +21,9 @@
 #include "industry.h"
 #include "water_map.h"
 #include "tile_cmd.h"
-#include "vehicle.h"
 #include "functions.h"
 #include "economy_func.h"
+#include "vehicle_func.h"
 
 /*
  * In one terraforming command all four corners of a initial tile can be raised/lowered (though this is not available to the player).

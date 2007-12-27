@@ -12,7 +12,6 @@
 #include "table/sprites.h"
 #include "gui.h"
 #include "textbuf_gui.h"
-#include "vehicle.h"
 #include "viewport.h"
 #include "command_func.h"
 #include "depot.h"
@@ -22,6 +21,7 @@
 #include "spritecache.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 /*
  * Since all depot window sizes aren't the same, we need to modify sizes a little.
@@ -171,14 +171,14 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 
 	switch (v->type) {
 		case VEH_TRAIN:
-			DrawTrainImage(v, x + 21, sprite_y, w->hscroll.cap + 4, w->hscroll.pos, WP(w, depot_d).sel);
+			DrawTrainImage(v, x + 21, sprite_y, WP(w, depot_d).sel, w->hscroll.cap + 4, w->hscroll.pos);
 
 			/* Number of wagons relative to a standard length wagon (rounded up) */
 			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
 			DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING); // Draw the counter
 			break;
 
-		case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, 1, WP(w, depot_d).sel); break;
+		case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, WP(w, depot_d).sel, 1); break;
 		case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, WP(w, depot_d).sel); break;
 		case VEH_AIRCRAFT: {
 			const Sprite *spr = GetSprite(v->GetImage(DIR_W));
@@ -273,7 +273,7 @@ static void DrawDepotWindow(Window *w)
 		const Vehicle *v = WP(w, depot_d).wagon_list[num - WP(w, depot_d).engine_count];
 		const Vehicle *u;
 
-		DrawTrainImage(v, x + 50, y, w->hscroll.cap - 29, 0, WP(w, depot_d).sel);
+		DrawTrainImage(v, x + 50, y, WP(w, depot_d).sel, w->hscroll.cap - 29, 0);
 		DrawString(x, y + 2, STR_8816, TC_FROMSTRING);
 
 		/*Draw the train counter */

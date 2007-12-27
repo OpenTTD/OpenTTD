@@ -8,6 +8,7 @@
 #include "yapf_node_rail.hpp"
 #include "yapf_costrail.hpp"
 #include "yapf_destrail.hpp"
+#include "../vehicle_func.h"
 
 #define DEBUG_YAPF_CACHE 0
 

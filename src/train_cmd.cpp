@@ -12,7 +12,6 @@
 #include "station_map.h"
 #include "table/strings.h"
 #include "tunnel_map.h"
-#include "vehicle.h"
 #include "timetable.h"
 #include "articulated_vehicles.h"
 #include "command_func.h"
@@ -43,6 +42,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 
 static bool TrainCheckIfLineEnds(Vehicle *v);

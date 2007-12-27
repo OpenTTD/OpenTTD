@@ -18,7 +18,6 @@
 #include "../console.h"
 #include "../command_func.h"
 #include "../saveload.h"
-#include "../vehicle.h"
 #include "../station.h"
 #include "../variables.h"
 #include "../genworld.h"

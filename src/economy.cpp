@@ -11,7 +11,6 @@
 #include "news.h"
 #include "player.h"
 #include "station.h"
-#include "vehicle.h"
 #include "command_func.h"
 #include "saveload.h"
 #include "industry.h"
@@ -40,6 +39,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 /**
  * Multiply two integer values and shift the results to right.

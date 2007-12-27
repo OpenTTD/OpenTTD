@@ -8,9 +8,10 @@
 #include "table/strings.h"
 #include "command_func.h"
 #include "player.h"
-#include "vehicle.h"
 #include "functions.h"
 #include "window_func.h"
+#include "vehicle_func.h"
+#include "vehicle_base.h"
 
 
 static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time, bool is_journey)

@@ -7,7 +7,7 @@
 
 #include "track_dir.hpp"
 
-#include "../vehicle.h"
+#include "../vehicle_base.h"
 #include "../depot.h"
 #include "../road_map.h"
 #include "../tunnel_map.h"

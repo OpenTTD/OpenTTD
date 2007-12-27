@@ -27,7 +27,6 @@
 #include "network/network.h"
 #include "string.h"
 #include "variables.h"
-#include "vehicle.h"
 #include "train.h"
 #include "tgp.h"
 #include "settings.h"

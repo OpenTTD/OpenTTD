@@ -10,12 +10,12 @@
 #include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "vehicle.h"
 #include "viewport.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"
+#include "vehicle_func.h"
 
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 {

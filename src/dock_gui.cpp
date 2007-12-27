@@ -17,7 +17,7 @@
 #include "variables.h"
 #include "water.h"
 #include "window_func.h"
-#include "vehicle.h"
+#include "vehicle_func.h"
 
 static void ShowBuildDockStationPicker();
 static void ShowBuildDocksDepotPicker();

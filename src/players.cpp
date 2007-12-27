@@ -10,7 +10,6 @@
 #include "table/sprites.h"
 #include "player.h"
 #include "town.h"
-#include "vehicle.h"
 #include "station.h"
 #include "news.h"
 #include "saveload.h"
@@ -29,6 +28,7 @@
 #include "gfx_func.h"
 #include "functions.h"
 #include "date_func.h"
+#include "vehicle_func.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a
