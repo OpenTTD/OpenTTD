@@ -43,7 +43,7 @@
 
 /* Variables to display file lists */
 FiosItem *_fios_list;
-int _saveload_mode;
+SaveLoadDialogMode _saveload_mode;
 
 
 static bool _fios_path_changed;
@@ -1671,7 +1671,7 @@ static const WindowDesc _save_dialog_desc = {
 	SaveLoadDlgWndProc,
 };
 
-void ShowSaveLoadDialog(int mode)
+void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 {
 	static const StringID saveload_captions[] = {
 		STR_4001_LOAD_GAME,

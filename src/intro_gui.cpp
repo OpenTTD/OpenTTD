@@ -18,8 +18,8 @@
 #include "network/network_gui.h"
 #include "newgrf.h"
 #include "strings_func.h"
-#include "functions.h"
 #include "window_func.h"
+#include "fios.h"
 
 static const Widget _select_game_widgets[] = {
 {    WWT_CAPTION, RESIZE_NONE, 13,   0, 335,   0,  13, STR_0307_OPENTTD,         STR_NULL},

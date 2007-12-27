@@ -31,6 +31,15 @@ struct FiosItem {
 	char name[256 - 12 - 64];
 };
 
+enum SaveLoadDialogMode{
+	SLD_LOAD_GAME,
+	SLD_LOAD_SCENARIO,
+	SLD_SAVE_GAME,
+	SLD_SAVE_SCENARIO,
+	SLD_LOAD_HEIGHTMAP,
+	SLD_NEW_GAME,
+};
+
 enum {
 	FIOS_TYPE_DRIVE        =   0,
 	FIOS_TYPE_PARENT       =   1,
@@ -48,7 +57,10 @@ enum {
 /* Variables to display file lists */
 extern FiosItem *_fios_list; ///< defined in misc_gui.cpp
 extern int _fios_num;        ///< defined in fios.cpp, read_only version of _fios_count
-extern int _saveload_mode;   ///< defined in misc_gui.cpp
+extern SaveLoadDialogMode _saveload_mode;   ///< defined in misc_gui.cpp
+
+/* Launch save/load dialog */
+void ShowSaveLoadDialog(SaveLoadDialogMode mode);
 
 /* Get a list of savegames */
 FiosItem *FiosGetSavegameList(int mode);

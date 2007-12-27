@@ -77,15 +77,6 @@ StringID RemapOldStringID(StringID s);
 
 void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str);
 
-enum {
-	SLD_LOAD_GAME,
-	SLD_LOAD_SCENARIO,
-	SLD_SAVE_GAME,
-	SLD_SAVE_SCENARIO,
-	SLD_LOAD_HEIGHTMAP,
-	SLD_NEW_GAME,
-};
-void ShowSaveLoadDialog(int mode);
 
 /* callback from drivers that is called if the game size changes dynamically */
 void GameSizeChanged();

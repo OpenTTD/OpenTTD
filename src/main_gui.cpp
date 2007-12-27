@@ -41,6 +41,7 @@
 #include "date_func.h"
 #include "functions.h"
 #include "vehicle_func.h"
+#include "fios.h"
 
 #include "network/network_data.h"
 #include "network/network_client.h"
