@@ -395,7 +395,7 @@ check_params() {
 	detect_cputype
 
 	if [ "$enable_static" = "1" ]; then
-		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "MORPHOS" ] || [ "$os" = "OSX" ]; then
+		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "MORPHOS" ]; then
 			enable_static="2"
 		else
 			enable_static="0"
