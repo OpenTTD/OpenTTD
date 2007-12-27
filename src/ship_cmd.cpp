@@ -1067,10 +1067,8 @@ CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
-
-	if (!v->IsStoppedInDepot()) {
-		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
-	}
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
+	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	/* Check cargo */
 	if (!ShipVehInfo(v->engine_type)->refittable) return CMD_ERROR;
