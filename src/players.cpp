@@ -544,7 +544,10 @@ static void MaybeStartNewPlayer()
 void InitializePlayers()
 {
 	memset(_players, 0, sizeof(_players));
-	for (PlayerID i = PLAYER_FIRST; i != MAX_PLAYERS; i++) _players[i].index = i;
+	for (PlayerID i = PLAYER_FIRST; i != MAX_PLAYERS; i++) {
+		_players[i].index = i;
+		for (uint j = 0; j < 4; j++) _players[i].share_owners[j] = PLAYER_SPECTATOR;
+	}
 	_cur_player_tick_index = 0;
 }
 

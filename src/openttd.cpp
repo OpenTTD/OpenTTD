@@ -2239,12 +2239,31 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Update go to buoy orders because they are just waypoints */
 	if (CheckSavegameVersion(84)) {
+		/* Update go to buoy orders because they are just waypoints */
 		Order *order;
 		FOR_ALL_ORDERS(order) {
 			if (order->type == OT_GOTO_STATION && GetStation(order->dest)->IsBuoy()) {
 				order->flags = 0;
+			}
+		}
+
+		/* Set all share owners to PLAYER_SPECTATOR for
+		 * 1) all inactive players
+		 *     (when inactive players were stored in the savegame - TTD, TTDP and some
+		 *      *really* old revisions of OTTD; else it is already set in InitializePlayers())
+		 * 2) shares that are owned by inactive players or self
+		 *     (caused by cheating players in earlier revisions) */
+		Player *p;
+		FOR_ALL_PLAYERS(p) {
+			if (!p->is_active) {
+				for (uint i = 0; i < 4; i++) { p->share_owners[i] = PLAYER_SPECTATOR; }
+			} else {
+				for (uint i = 0; i < 4; i++) {
+					PlayerID o = p->share_owners[i];
+					if (o == PLAYER_SPECTATOR) continue;
+					if (!IsValidPlayer(o) || o == p->index || !GetPlayer(o)->is_active) p->share_owners[i] = PLAYER_SPECTATOR;
+				}
 			}
 		}
 	}

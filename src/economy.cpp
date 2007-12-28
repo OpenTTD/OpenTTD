@@ -285,6 +285,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		/* See if the old_player had shares in other companies */
 		_current_player = old_player;
 		FOR_ALL_PLAYERS(p) {
+			if (!p->is_active) continue;
 			for (i = 0; i < 4; i++) {
 				if (p->share_owners[i] == old_player) {
 					/* Sell his shares */
