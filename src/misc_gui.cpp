@@ -1671,6 +1671,17 @@ static const WindowDesc _save_dialog_desc = {
 	SaveLoadDlgWndProc,
 };
 
+/** These values are used to convert the file/operations mode into a corresponding file type.
+ * So each entry, as expressed by the related comment, is based on the enum   */
+static const FileType _file_modetotype[] = {
+	FT_SAVEGAME,  ///< used for SLD_LOAD_GAME
+	FT_SCENARIO,  ///< used for SLD_LOAD_SCENARIO
+	FT_SAVEGAME,  ///< used for SLD_SAVE_GAME
+	FT_SCENARIO,  ///< used for SLD_SAVE_SCENARIO
+	FT_HEIGHTMAP, ///< used for SLD_LOAD_HEIGHTMAP
+	FT_SAVEGAME,  ///< SLD_NEW_GAME
+};
+
 void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 {
 	static const StringID saveload_captions[] = {
@@ -1692,6 +1703,9 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 	_saveload_mode = mode;
 	SetBit(_no_scroll, SCROLL_SAVE);
 
+	/* Use an array to define what will be the current file type being handled
+	 * by current file mode */
+	_file_to_saveload.filetype = _file_modetotype[mode];
 	switch (mode) {
 		case SLD_SAVE_GAME:     GenerateFileName(); break;
 		case SLD_SAVE_SCENARIO: strcpy(_edit_str_buf, "UNNAMED"); break;

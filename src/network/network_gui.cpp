@@ -810,6 +810,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 				char *name = FiosBrowseTo(nd->map);
 				if (name != NULL) {
 					SetFiosType(nd->map->type);
+					_file_to_saveload.filetype = FT_SCENARIO;
 					ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
 					ttd_strlcpy(_file_to_saveload.title, nd->map->title, sizeof(_file_to_saveload.title));
 

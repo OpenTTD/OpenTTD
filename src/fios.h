@@ -32,6 +32,14 @@ enum SaveLoadDialogMode{
 	SLD_NEW_GAME,
 };
 
+/* The different types of files been handled by the system */
+enum FileType {
+	FT_NONE,      ///< nothing to do
+	FT_SAVEGAME,  ///< old or new savegame
+	FT_SCENARIO,  ///< old or new scenario
+	FT_HEIGHTMAP, ///< heightmap file
+};
+
 enum {
 	FIOS_TYPE_DRIVE        =   0,
 	FIOS_TYPE_PARENT       =   1,
@@ -57,6 +65,7 @@ struct FiosItem {
 /* Deals with the type of the savegame, independent of extension */
 struct SmallFiosItem {
 	int mode;             ///< savegame/scenario type (old, new)
+	FileType filetype;    ///< what type of file are we dealing with
 	char name[MAX_PATH];  ///< name
 	char title[255];      ///< internal name of the game
 };

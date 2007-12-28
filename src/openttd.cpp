@@ -1289,7 +1289,15 @@ static bool InitializeWindowsAndCaches()
 	Player *players[MAX_PLAYERS];
 	const Vehicle *v;
 
-	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) players[i] = GetPlayer(i);
+	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
+		players[i] = GetPlayer(i);
+
+		/* For each player, verify (while loading a scenario) that the inauguration date is the current year and set it
+		 * accordingly if it is not the case.  No need to set it on players that are not been used already,
+		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
+		if (_file_to_saveload.filetype == FT_SCENARIO && players[i]->inaugurated_year != MIN_YEAR)
+			players[i]->inaugurated_year = _cur_year;
+	}
 
 	FOR_ALL_VEHICLES(v) {
 		if (!IsEngineCountable(v)) continue;
