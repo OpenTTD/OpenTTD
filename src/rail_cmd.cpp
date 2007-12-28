@@ -1227,21 +1227,38 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			switch (tt) {
 				case MP_RAILWAY:
-					if (flags & DC_EXEC) {
-						/* notify YAPF about the track layout change */
-						TrackBits tracks = GetTrackBits(tile);
-						while (tracks != TRACK_BIT_NONE) {
-							YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
-						}
+					switch (GetRailTileType(tile)) {
+						case RAIL_TILE_WAYPOINT:
+							if (flags & DC_EXEC) {
+								/* notify YAPF about the track layout change */
+								YapfNotifyTrackLayoutChange(tile, AxisToTrack(GetWaypointAxis(tile)));
+							}
+							cost.AddCost(RailConvertCost(type, totype));
+							break;
 
-						if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
-							/* Update build vehicle window related to this depot */
-							InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
-							InvalidateWindowData(WC_BUILD_VEHICLE, tile);
-						}
+						case RAIL_TILE_DEPOT:
+							if (flags & DC_EXEC) {
+								/* notify YAPF about the track layout change */
+								YapfNotifyTrackLayoutChange(tile, AxisToTrack(DiagDirToAxis(GetRailDepotDirection(tile))));
+
+								/* Update build vehicle window related to this depot */
+								InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
+								InvalidateWindowData(WC_BUILD_VEHICLE, tile);
+							}
+							cost.AddCost(RailConvertCost(type, totype));
+							break;
+
+						default: // RAIL_TILE_NORMAL, RAIL_TILE_SIGNALS
+							if (flags & DC_EXEC) {
+								/* notify YAPF about the track layout change */
+								TrackBits tracks = GetTrackBits(tile);
+								while (tracks != TRACK_BIT_NONE) {
+									YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
+								}
+							}
+							cost.AddCost(RailConvertCost(type, totype) * CountBits(GetTrackBits(tile)));
+							break;
 					}
-
-					cost.AddCost(CommandCost(RailConvertCost(type, totype) * CountBits(GetTrackBits(tile))));
 					break;
 
 				case MP_TUNNELBRIDGE: {
