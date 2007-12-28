@@ -1612,7 +1612,11 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * is nothing we can really do about that. */
 			if (Random() <= indspec->prospecting_chance) {
 				for (int i = 0; i < 5000; i++) {
-					const Industry *ind = CreateNewIndustryHelper(RandomTile(), p1, flags, indspec, RandomRange(indspec->num_table));
+					/* We should not have more than one Random() in a function call
+					 * because parameter evaluation order is not guaranteed in the c++ standard
+					 */
+					tile = RandomTile();
+					const Industry *ind = CreateNewIndustryHelper(tile, p1, flags, indspec, RandomRange(indspec->num_table));
 					if (ind != NULL) {
 						SetDParam(0, indspec->name);
 						if (indspec->new_industry_text > STR_LAST_STRINGID) {
