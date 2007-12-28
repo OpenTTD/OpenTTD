@@ -23,14 +23,6 @@ enum {
 	MAX_FILE_SLOTS = 64
 };
 
-/* Deals with finding savegames */
-struct FiosItem {
-	byte type;
-	uint64 mtime;
-	char title[64];
-	char name[256 - 12 - 64];
-};
-
 enum SaveLoadDialogMode{
 	SLD_LOAD_GAME,
 	SLD_LOAD_SCENARIO,
@@ -54,9 +46,25 @@ enum {
 	FIOS_TYPE_INVALID      = 255,
 };
 
+/* Deals with finding savegames */
+struct FiosItem {
+	byte type;
+	uint64 mtime;
+	char title[64];
+	char name[256 - 12 - 64];
+};
+
+/* Deals with the type of the savegame, independent of extension */
+struct SmallFiosItem {
+	int mode;             ///< savegame/scenario type (old, new)
+	char name[MAX_PATH];  ///< name
+	char title[255];      ///< internal name of the game
+};
+
 /* Variables to display file lists */
 extern FiosItem *_fios_list; ///< defined in misc_gui.cpp
 extern int _fios_num;        ///< defined in fios.cpp, read_only version of _fios_count
+extern SmallFiosItem _file_to_saveload;
 extern SaveLoadDialogMode _saveload_mode;   ///< defined in misc_gui.cpp
 
 /* Launch save/load dialog */

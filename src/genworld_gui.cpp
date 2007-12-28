@@ -25,6 +25,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "fios.h"
 
 /**
  * In what 'mode' the GenerateLandscapeWindowProc is.

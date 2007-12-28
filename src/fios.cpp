@@ -29,6 +29,7 @@ int _fios_num;
 
 static char *_fios_path;
 static FiosItem *_fios_items;
+SmallFiosItem _file_to_saveload;
 static int _fios_count, _fios_alloc;
 
 /* OS-specific functions are taken from their respective files (win32/unix/os2 .c) */

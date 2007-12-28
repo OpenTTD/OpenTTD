@@ -297,17 +297,9 @@ VARDEF TileIndex _terraform_err_tile;
 VARDEF TileIndex _build_tunnel_endtile;
 VARDEF bool _generating_world;
 
-/* Deals with the type of the savegame, independent of extension */
-struct SmallFiosItem {
-	int mode;             // savegame/scenario type (old, new)
-	char name[MAX_PATH];  // name
-	char title[255];      // internal name of the game
-};
-
 /* Used when switching from the intro menu. */
 VARDEF byte _switch_mode;
 VARDEF StringID _switch_mode_errorstr;
-VARDEF SmallFiosItem _file_to_saveload;
 
 VARDEF char _ini_videodriver[32], _ini_musicdriver[32], _ini_sounddriver[32], _ini_blitter[32];
 

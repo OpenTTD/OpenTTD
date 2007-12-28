@@ -32,6 +32,7 @@
 #include "engine.h"
 #include "sound.h"
 #include "fileio.h"
+#include "fios.h"
 #include "airport.h"
 #include "aircraft.h"
 #include "console.h"

@@ -19,7 +19,7 @@
 #include "genworld.h"
 #include "tile_cmd.h"
 #include "core/alloc_func.hpp"
-#include "functions.h"
+#include "fios.h"
 #include "window_func.h"
 #include "functions.h"
 #include "date_func.h"

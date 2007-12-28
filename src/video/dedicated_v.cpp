@@ -12,6 +12,7 @@
 #include "../variables.h"
 #include "../genworld.h"
 #include "../fileio.h"
+#include "../fios.h"
 #include "../blitter/factory.hpp"
 #include "../core/alloc_func.hpp"
 #include "dedicated_v.h"
