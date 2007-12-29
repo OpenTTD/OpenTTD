@@ -5607,6 +5607,17 @@ void LoadNewGRF(uint load_index, uint file_index)
 
 	ResetNewGRFData();
 
+	/*
+	 * Reset the status of all files, so we can 'retry' to load them.
+	 * This is needed when one for example rearranges the NewGRFs in-game
+	 * and a previously disabled NewGRF becomes useable. If it would not
+	 * be reset, the NewGRF would remain disabled even though it should
+	 * have been enabled.
+	 */
+	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+		if (c->status != GCS_NOT_FOUND) c->status = GCS_UNKNOWN;
+	}
+
 	/* Load newgrf sprites
 	 * in each loading stage, (try to) open each file specified in the config
 	 * and load information from it. */
