@@ -1415,6 +1415,7 @@ enum SpriteSetup {
 	TRANSPARENT_BIT = 31,       ///< toggles transparency in the sprite
 	RECOLOR_BIT = 30,           ///< toggles recoloring in the sprite
 	OFFSET_BIT = 29,
+	OPAQUE_BIT = 28,
 
 	PALETTE_WIDTH = 24,         ///< number of bits of the sprite containing the recolor palette
 	SPRITE_WIDTH = 24,          ///< number of bits for the sprite number
@@ -1430,7 +1431,8 @@ enum SpriteSetup {
  */
 enum Modifiers {
 	SPRITE_MODIFIER_USE_OFFSET    = OFFSET_BIT,
-	SPRITE_MODIFIER_OPAQUE        = OFFSET_BIT,
+	/// Set when a sprite must not ever be displayed transparently
+	SPRITE_MODIFIER_OPAQUE        = OPAQUE_BIT,
 	///when a sprite is to be displayed transparently, this bit needs to be set.
 	PALETTE_MODIFIER_TRANSPARENT  = TRANSPARENT_BIT,
 	///this bit is set when a recoloring process is in action

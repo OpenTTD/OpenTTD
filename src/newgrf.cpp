@@ -950,6 +950,10 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						ClrBit(dts->ground_pal, 15);
 						SetBit(dts->ground_sprite, SPRITE_MODIFIER_USE_OFFSET);
 					}
+					if (HasBit(dts->ground_pal, 14)) {
+						ClrBit(dts->ground_pal, 14);
+						SetBit(dts->ground_sprite, SPRITE_MODIFIER_OPAQUE);
+					}
 					if (HasBit(dts->ground_sprite, 15)) {
 						ClrBit(dts->ground_sprite, 15);
 						SetBit(dts->ground_sprite, PALETTE_MODIFIER_COLOR);
@@ -980,6 +984,10 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						if (HasBit(dtss->pal, 15)) {
 							ClrBit(dtss->pal, 15);
 							SetBit(dtss->image, SPRITE_MODIFIER_USE_OFFSET);
+						}
+						if (HasBit(dtss->pal, 14)) {
+							ClrBit(dtss->pal, 14);
+							SetBit(dtss->image, SPRITE_MODIFIER_OPAQUE);
 						}
 
 						if (HasBit(dtss->image, 15)) {
