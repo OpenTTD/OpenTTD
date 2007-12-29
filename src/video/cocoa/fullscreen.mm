@@ -76,6 +76,86 @@ struct OTTD_QuartzGammaTable {
 @end
 
 
+
+uint QZ_ListModes(OTTD_Point* modes, uint max_modes, CGDirectDisplayID display_id, int display_depth)
+{
+	CFArrayRef mode_list;
+	CFIndex num_modes;
+	CFIndex i;
+	uint count = 0;
+
+	mode_list  = CGDisplayAvailableModes(display_id);
+	num_modes = CFArrayGetCount(mode_list);
+
+	/* Build list of modes with the requested bpp */
+	for (i = 0; i < num_modes && count < max_modes; i++) {
+		CFDictionaryRef onemode;
+		CFNumberRef     number;
+		int bpp;
+		int intvalue;
+		bool hasMode;
+		uint16 width, height;
+
+		onemode = (const __CFDictionary*)CFArrayGetValueAtIndex(mode_list, i);
+		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayBitsPerPixel);
+		CFNumberGetValue (number, kCFNumberSInt32Type, &bpp);
+
+		if (bpp != display_depth) continue;
+
+		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayWidth);
+		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
+		width = (uint16)intvalue;
+
+		number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayHeight);
+		CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
+		height = (uint16)intvalue;
+
+		/* Check if mode is already in the list */
+		{
+			uint i;
+			hasMode = false;
+			for (i = 0; i < count; i++) {
+				if (modes[i].x == width &&  modes[i].y == height) {
+					hasMode = true;
+					break;
+				}
+			}
+		}
+
+		if (hasMode) continue;
+
+		/* Add mode to the list */
+		modes[count].x = width;
+		modes[count].y = height;
+		count++;
+	}
+
+	/* Sort list smallest to largest */
+	{
+		uint i, j;
+		for (i = 0; i < count; i++) {
+			for (j = 0; j < count-1; j++) {
+				if (modes[j].x > modes[j + 1].x || (
+					modes[j].x == modes[j + 1].x &&
+					modes[j].y >  modes[j + 1].y
+					)) {
+					uint tmpw = modes[j].x;
+					uint tmph = modes[j].y;
+
+					modes[j].x = modes[j + 1].x;
+					modes[j].y = modes[j + 1].y;
+
+					modes[j + 1].x = tmpw;
+					modes[j + 1].y = tmph;
+				}
+			}
+		}
+	}
+
+	return count;
+}
+
+
 class FullscreenSubdriver: public CocoaSubdriver {
 	int                display_width;
 	int                display_height;
@@ -449,80 +529,7 @@ public:
 
 	virtual uint ListModes(OTTD_Point* modes, uint max_modes)
 	{
-		CFArrayRef mode_list;
-		CFIndex num_modes;
-		CFIndex i;
-		uint count = 0;
-
-		mode_list  = CGDisplayAvailableModes(display_id);
-		num_modes = CFArrayGetCount(mode_list);
-
-		/* Build list of modes with the requested bpp */
-		for (i = 0; i < num_modes && count < max_modes; i++) {
-			CFDictionaryRef onemode;
-			CFNumberRef     number;
-			int bpp;
-			int intvalue;
-			bool hasMode;
-			uint16 width, height;
-
-			onemode = (const __CFDictionary*)CFArrayGetValueAtIndex(mode_list, i);
-			number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayBitsPerPixel);
-			CFNumberGetValue (number, kCFNumberSInt32Type, &bpp);
-
-			if (bpp != display_depth) continue;
-
-			number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayWidth);
-			CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
-			width = (uint16)intvalue;
-
-			number = (const __CFNumber*)CFDictionaryGetValue(onemode, kCGDisplayHeight);
-			CFNumberGetValue(number, kCFNumberSInt32Type, &intvalue);
-			height = (uint16)intvalue;
-
-			/* Check if mode is already in the list */
-			{
-				uint i;
-				hasMode = false;
-				for (i = 0; i < count; i++) {
-					if (modes[i].x == width &&  modes[i].y == height) {
-						hasMode = true;
-						break;
-					}
-				}
-			}
-
-			if (hasMode) continue;
-
-			/* Add mode to the list */
-			modes[count].x = width;
-			modes[count].y = height;
-			count++;
-		}
-
-		/* Sort list smallest to largest */
-		{
-			uint i, j;
-			for (i = 0; i < count; i++) {
-				for (j = 0; j < count-1; j++) {
-					if (modes[j].x > modes[j + 1].x || (
-						modes[j].x == modes[j + 1].x &&
-						modes[j].y >  modes[j + 1].y
-						)) {
-						uint tmpw = modes[j].x;
-						uint tmph = modes[j].y;
-
-						modes[j].x = modes[j + 1].x;
-						modes[j].y = modes[j + 1].y;
-
-						modes[j + 1].x = tmpw;
-						modes[j + 1].y = tmph;
-					}
-				}
-			}
-		}
-
-		return count;
+		return QZ_ListModes(modes, max_modes, display_id, display_depth);
 	}
 
 	virtual bool ChangeResolution(int w, int h)

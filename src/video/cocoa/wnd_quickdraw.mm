@@ -685,12 +685,7 @@ void WindowQuickdrawSubdriver::UpdatePalette(uint first_color, uint num_colors)
 
 uint WindowQuickdrawSubdriver::ListModes(OTTD_Point* modes, uint max_modes)
 {
-	if (max_modes == 0) return 0;
-
-	modes[0].x = window_width;
-	modes[0].y = window_height;
-
-	return 1;
+	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, buffer_depth);
 }
 
 bool WindowQuickdrawSubdriver::ChangeResolution(int w, int h)

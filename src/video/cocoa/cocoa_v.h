@@ -79,4 +79,6 @@ void QZ_GameLoop();
 void QZ_ShowMouse();
 void QZ_HideMouse();
 
+uint QZ_ListModes(OTTD_Point* modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
+
 #endif /* VIDEO_COCOA_H */
