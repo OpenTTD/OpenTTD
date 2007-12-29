@@ -9,7 +9,6 @@
 #include "window_gui.h"
 #include "viewport.h"
 #include "news.h"
-#include "sound.h"
 #include "variables.h"
 #include "string.h"
 #include "transparency.h"
@@ -17,6 +16,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_base.h"
+#include "sound_func.h"
 
 /** @file news_gui.cpp
  *

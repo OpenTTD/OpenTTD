@@ -12,12 +12,12 @@
 #include "window_gui.h"
 #include "station_gui.h"
 #include "viewport.h"
-#include "sound.h"
 #include "command_func.h"
 #include "variables.h"
 #include "water.h"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 static void ShowBuildDockStationPicker();
 static void ShowBuildDocksDepotPicker();

@@ -16,7 +16,6 @@
 #include "command_func.h"
 #include "town.h"
 #include "news.h"
-#include "sound.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "train.h"
@@ -32,6 +31,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 /** Array for the shore sprites */
 static const SpriteID _water_shore_sprites[] = {

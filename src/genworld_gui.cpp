@@ -13,7 +13,6 @@
 #include "gfxinit.h"
 #include "player.h"
 #include "command_func.h"
-#include "sound.h"
 #include "variables.h"
 #include "string.h"
 #include "settings.h"
@@ -25,6 +24,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "sound_func.h"
 #include "fios.h"
 
 /**

@@ -7,9 +7,9 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "viewport.h"
-#include "sound.h"
 #include "variables.h"
 #include "transparency.h"
+#include "sound_func.h"
 
 TransparencyOptionBits _transparency_opt;
 

@@ -3,7 +3,7 @@
 #ifndef __MORPHOS__
 #include "../stdafx.h"
 #include "../openttd.h"
-#include "../sound.h"
+#include "../sound_func.h"
 #include "../string.h"
 #include "../variables.h"
 #include "../debug.h"

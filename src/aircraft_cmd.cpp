@@ -15,7 +15,6 @@
 #include "engine.h"
 #include "station.h"
 #include "news.h"
-#include "sound.h"
 #include "player.h"
 #include "aircraft.h"
 #include "airport.h"
@@ -32,6 +31,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 #include "functions.h"
 
 void Aircraft::UpdateDeltaXY(Direction direction)

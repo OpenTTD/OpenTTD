@@ -17,7 +17,6 @@
 #include "town.h"
 #include "news.h"
 #include "saveload.h"
-#include "sound.h"
 #include "variables.h"
 #include "table/industry_land.h"
 #include "table/build_industry.h"
@@ -40,6 +39,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);

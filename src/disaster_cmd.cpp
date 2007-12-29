@@ -32,7 +32,6 @@
 #include "industry.h"
 #include "player.h"
 #include "airport.h"
-#include "sound.h"
 #include "variables.h"
 #include "table/sprites.h"
 #include "strings_func.h"
@@ -40,6 +39,7 @@
 #include "functions.h"
 #include "vehicle_func.h"
 #include "vehicle_base.h"
+#include "sound_func.h"
 
 enum DisasterSubType {
 	ST_Zeppeliner,

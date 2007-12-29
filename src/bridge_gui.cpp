@@ -10,11 +10,11 @@
 #include "viewport.h"
 #include "command_func.h"
 #include "economy_func.h"
-#include "sound.h"
 #include "variables.h"
 #include "bridge.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "sound_func.h"
 #include "map_func.h"
 
 static struct BridgeData {

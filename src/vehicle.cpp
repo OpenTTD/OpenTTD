@@ -19,7 +19,6 @@
 #include "saveload.h"
 #include "player.h"
 #include "engine.h"
-#include "sound.h"
 #include "debug.h"
 #include "vehicle_gui.h"
 #include "depot.h"
@@ -43,6 +42,7 @@
 #include "date_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 #define INVALID_COORD (0x7fffffff)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))

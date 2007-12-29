@@ -20,7 +20,6 @@
 #include "command_func.h"
 #include "player.h"
 #include "town.h"
-#include "sound.h"
 #include "yapf/yapf.h"
 #include "depot.h"
 #include "newgrf.h"
@@ -34,6 +33,7 @@
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "vehicle_base.h"
+#include "sound_func.h"
 
 
 #define M(x) (1 << (x))

@@ -19,7 +19,6 @@
 #include "pathfind.h"
 #include "npf.h"
 #include "player.h"
-#include "sound.h"
 #include "depot.h"
 #include "bridge.h"
 #include "tunnel_map.h"
@@ -38,6 +37,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 
 static const uint16 _roadveh_images[63] = {

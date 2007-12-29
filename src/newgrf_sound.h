@@ -5,6 +5,8 @@
 #ifndef NEWGRF_SOUND_H
 #define NEWGRF_SOUND_H
 
+#include "sound_type.h"
+
 enum VehicleSoundEvent {
 	VSE_START        = 1,
 	VSE_TUNNEL       = 2,

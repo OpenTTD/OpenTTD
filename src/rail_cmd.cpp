@@ -21,7 +21,6 @@
 #include "pathfind.h"
 #include "engine.h"
 #include "town.h"
-#include "sound.h"
 #include "station.h"
 #include "sprite.h"
 #include "depot.h"
@@ -41,6 +40,7 @@
 #include "tunnelbridge_map.h"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 
 const byte _track_sloped_sprites[14] = {

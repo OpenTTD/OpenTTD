@@ -23,7 +23,6 @@
 #include "openttd.h"
 #include "currency.h"
 #include "screenshot.h"
-#include "sound.h"
 #include "string.h"
 #include "variables.h"
 #include "network/network.h"
@@ -42,6 +41,7 @@
 #include "window_func.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 #ifdef WITH_FREETYPE
 #include "fontcache.h"
 #endif

@@ -19,7 +19,6 @@
 #include "viewport.h"
 #include "player.h"
 #include "town.h"
-#include "sound.h"
 #include "variables.h"
 #include "blitter/factory.hpp"
 #include "tunnelbridge_map.h"
@@ -27,6 +26,7 @@
 #include "zoom_func.h"
 #include "core/endian_func.hpp"
 #include "vehicle_base.h"
+#include "sound_func.h"
 
 
 static const Widget _smallmap_widgets[] = {

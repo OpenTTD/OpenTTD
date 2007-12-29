@@ -10,11 +10,11 @@
 #include "gui.h"
 #include "station_gui.h"
 #include "viewport.h"
-#include "sound.h"
 #include "command_func.h"
 #include "station.h"
 #include "airport.h"
 #include "depot.h"
+#include "sound_func.h"
 #include "window_func.h"
 
 static byte _selected_airport_type;

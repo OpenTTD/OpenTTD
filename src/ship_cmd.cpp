@@ -16,7 +16,6 @@
 #include "news.h"
 #include "engine.h"
 #include "player.h"
-#include "sound.h"
 #include "npf.h"
 #include "depot.h"
 #include "vehicle_gui.h"
@@ -34,6 +33,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 

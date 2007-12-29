@@ -20,7 +20,6 @@
 #include "command_func.h"
 #include "player.h"
 #include "town.h"
-#include "sound.h"
 #include "variables.h"
 #include "bridge.h"
 #include "train.h"
@@ -35,6 +34,7 @@
 #include "date_func.h"
 #include "functions.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 
 const Bridge orig_bridge[] = {

@@ -30,7 +30,6 @@
 #include "industry.h"
 #include "news.h"
 #include "engine.h"
-#include "sound.h"
 #include "fileio.h"
 #include "fios.h"
 #include "airport.h"
@@ -63,6 +62,7 @@
 #include "zoom_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 #include "bridge_map.h"
 #include "clear_map.h"

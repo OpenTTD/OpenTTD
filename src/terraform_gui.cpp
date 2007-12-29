@@ -12,11 +12,11 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "viewport.h"
-#include "sound.h"
 #include "command_func.h"
 #include "signs.h"
 #include "variables.h"
 #include "functions.h"
+#include "sound_func.h"
 
 void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {

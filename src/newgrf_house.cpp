@@ -10,7 +10,6 @@
 #include "landscape.h"
 #include "town.h"
 #include "town_map.h"
-#include "sound.h"
 #include "sprite.h"
 #include "table/strings.h"
 #include "table/sprites.h"

@@ -1,13 +1,11 @@
 /* $Id$ */
 
-/** @file sound.h */
+/** @file sound_type.h Types related to sounds. */
 
-#ifndef SOUND_H
-#define SOUND_H
+#ifndef SOUND_TYPE_H
+#define SOUND_TYPE_H
 
 #include "core/enum_type.hpp"
-#include "vehicle_type.h"
-#include "tile_type.h"
 
 struct MusicFileSettings {
 	byte playlist;
@@ -20,8 +18,6 @@ struct MusicFileSettings {
 	char extmidi[80];
 };
 
-VARDEF MusicFileSettings msf;
-
 struct FileEntry {
 	uint8 file_slot;
 	uint32 file_offset;
@@ -32,9 +28,6 @@ struct FileEntry {
 	uint8 volume;
 	uint8 priority;
 };
-
-bool SoundInitialize(const char *filename);
-uint GetNumOriginalSounds();
 
 enum SoundFx {
 	SND_BEGIN = 0,
@@ -118,9 +111,4 @@ enum SoundFx {
 template <> struct EnumPropsT<SoundFx> : MakeEnumPropsT<SoundFx, byte, SND_BEGIN, SND_END, SND_END> {};
 typedef TinyEnumT<SoundFx> SoundFxByte;
 
-void SndPlayTileFx(SoundFx sound, TileIndex tile);
-void SndPlayVehicleFx(SoundFx sound, const Vehicle *v);
-void SndPlayFx(SoundFx sound);
-void SndCopyToPool();
-
-#endif /* SOUND_H */
+#endif /* SOUND_TYPE_H */

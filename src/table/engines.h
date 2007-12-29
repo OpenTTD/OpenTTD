@@ -7,8 +7,6 @@
  *  This file contains all the data for vehicles
  */
 
-#include "../sound.h"
-
 /** Writes the properties of a train or road vehicle into the EngineInfo struct.
  * @see EngineInfo
  * @param a Introduction date

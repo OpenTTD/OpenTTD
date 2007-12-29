@@ -23,7 +23,6 @@
 #include "command_func.h"
 #include "player.h"
 #include "town.h"
-#include "sound.h"
 #include "network/network.h"
 #include "string.h"
 #include "variables.h"
@@ -40,6 +39,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "sound_func.h"
 
 /* Variables to display file lists */
 FiosItem *_fios_list;

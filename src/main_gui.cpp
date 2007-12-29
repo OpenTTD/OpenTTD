@@ -20,7 +20,6 @@
 #include "news.h"
 #include "town.h"
 #include "console.h"
-#include "sound.h"
 #include "network/network.h"
 #include "signs.h"
 #include "waypoint.h"
@@ -41,6 +40,7 @@
 #include "date_func.h"
 #include "functions.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 #include "fios.h"
 
 #include "network/network_data.h"

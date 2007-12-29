@@ -25,7 +25,6 @@
 #include "fontcache.h"
 #include "currency.h"
 #include "landscape.h"
-#include "sound.h"
 #include "newgrf_config.h"
 #include "newgrf_house.h"
 #include "newgrf_sound.h"
@@ -46,6 +45,7 @@
 #include "gfx_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)

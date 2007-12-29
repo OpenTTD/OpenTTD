@@ -16,7 +16,6 @@
 #include "industry.h"
 #include "town.h"
 #include "network/network.h"
-#include "sound.h"
 #include "engine.h"
 #include "network/network_data.h"
 #include "variables.h"
@@ -40,6 +39,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 /**
  * Multiply two integer values and shift the results to right.

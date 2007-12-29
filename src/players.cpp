@@ -14,7 +14,6 @@
 #include "news.h"
 #include "saveload.h"
 #include "command_func.h"
-#include "sound.h"
 #include "network/network.h"
 #include "variables.h"
 #include "engine.h"
@@ -29,6 +28,7 @@
 #include "functions.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "sound_func.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a
