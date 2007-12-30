@@ -1027,16 +1027,90 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		if (flags & DC_EXEC) src->unitnumber = unit_num;
 	}
 
-	if (dst_head != NULL) {
-		/* Check NewGRF Callback 0x1D */
-		uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, src, dst_head);
-		if (callback != CALLBACK_FAILED) {
-			if (callback == 0xFD) return_cmd_error(STR_INCOMPATIBLE_RAIL_TYPES);
-			if (callback < 0xFD) {
-				StringID error = GetGRFStringID(GetEngineGRFID(dst_head->engine_type), 0xD000 + callback);
-				return_cmd_error(error);
+	/*
+	 * Check whether the vehicles in the source chain are in the destination
+	 * chain. This can easily be done by checking whether the first vehicle
+	 * of the source chain is in the destination chain as the Next/Previous
+	 * pointers always make a doubly linked list of it where the assumption
+	 * v->Next()->Previous() == v holds (assuming v->Next() != NULL).
+	 */
+	bool src_in_dst = false;
+	for (Vehicle *v = dst_head; !src_in_dst && v != NULL; v = v->Next()) src_in_dst = v == src;
+
+	/*
+	 * If the source chain is in the destination chain then the user is
+	 * only reordering the vehicles, thus not attaching a new vehicle.
+	 * Therefor the 'allow wagon attach' callback does not need to be
+	 * called. If it would be called strange things would happen because
+	 * one 'attaches' an already 'attached' vehicle causing more trouble
+	 * than it actually solves (infinite loops and such).
+	 */
+	if (dst_head != NULL && !src_in_dst) {
+		/*
+		 * When performing the 'allow wagon attach' callback, we have to check
+		 * that for each and every wagon, not only the first one. This means
+		 * that we have to test one wagon, attach it to the train and then test
+		 * the next wagon till we have reached the end. We have to restore it
+		 * to the state it was before we 'tried' attaching the train when the
+		 * attaching fails or succeeds because we are not 'only' doing this
+		 * in the DC_EXEC state.
+		 */
+		Vehicle *dst_tail = dst_head;
+		while (dst_tail->Next() != NULL) dst_tail = dst_tail->Next();
+
+		Vehicle *orig_tail = dst_tail;
+		Vehicle *next_to_attach = src;
+		Vehicle *src_previous = src->Previous();
+
+		while (next_to_attach != NULL) {
+			uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, next_to_attach, dst_head);
+			if (callback != CALLBACK_FAILED) {
+				StringID error = STR_NULL;
+
+				if (callback == 0xFD) error = STR_INCOMPATIBLE_RAIL_TYPES;
+				if (callback < 0xFD) error = GetGRFStringID(GetEngineGRFID(dst_head->engine_type), 0xD000 + callback);
+
+				if (error != STR_NULL) {
+					/*
+					 * The attaching is not allowed. In this case 'next_to_attach'
+					 * can contain some vehicles of the 'source' and the destination
+					 * train can have some too. We 'just' add the to-be added wagons
+					 * to the chain and then split it where it was previously
+					 * separated, i.e. the tail of the original destination train.
+					 * Furthermore the 'previous' link of the original source vehicle needs
+					 * to be restored, otherwise the train goes missing in the depot.
+					 */
+					dst_tail->SetNext(next_to_attach);
+					orig_tail->SetNext(NULL);
+					if (src_previous != NULL) src_previous->SetNext(src);
+
+					return_cmd_error(error);
+				}
 			}
+
+			/*
+			 * Adding a next wagon to the chain so we can test the other wagons.
+			 * First 'take' the first wagon from 'next_to_attach' and move it
+			 * to the next wagon. Then add that to the tail of the destination
+			 * train and update the tail with the new vehicle.
+			 */
+			Vehicle *to_add = next_to_attach;
+			next_to_attach = next_to_attach->Next();
+
+			to_add->SetNext(NULL);
+			dst_tail->SetNext(to_add);
+			dst_tail = dst_tail->Next();
 		}
+
+		/*
+		 * When we reach this the attaching is allowed. It also means that the
+		 * chain of vehicles to attach is empty, so we do not need to merge that.
+		 * This means only the splitting needs to be done.
+		 * Furthermore the 'previous' link of the original source vehicle needs
+		 * to be restored, otherwise the train goes missing in the depot.
+		 */
+		orig_tail->SetNext(NULL);
+		if (src_previous != NULL) src_previous->SetNext(src);
 	}
 
 	/* do it? */
