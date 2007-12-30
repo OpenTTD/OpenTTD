@@ -829,66 +829,76 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DNO_THREADS"
 	fi
 
-	# Enable some things only for certain GCC versions
-	cc_version=`$cc_host -dumpversion | cut -c 1,3`
+	if [ `echo $cc_host | cut -c 1-3` = "icc" ]; then
+		# Enable some things only for certain ICC versions
+		cc_version=`$cc_host -dumpversion | cut -c 1-4`
 
-	if [ $cc_version -ge 29 ]; then
-		CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
-		CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
-		CFLAGS="$CFLAGS -Wno-uninitialized"
 
-		CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
-	fi
+		if [ "$cc_version" = "10.1" ]; then
+			CFLAGS="$CFLAGS -Wno-multichar"
+		fi
+	else
+		# Enable some things only for certain GCC versions
+		cc_version=`$cc_host -dumpversion | cut -c 1,3`
 
-	gcc295=""
-	if [ "$cc_version" = 29 ]; then
-		# Make sure we mark GCC 2.95 flag for Makefile.src.in, as we
-		#  need a lovely hack there to make it compile correctly.
-		gcc295="1"
-	fi
+		if [ $cc_version -ge 29 ]; then
+			CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
+			CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
+			CFLAGS="$CFLAGS -Wno-uninitialized"
 
-	if [ $cc_version -ge 30 ]; then
-		CFLAGS="$CFLAGS -W -Wno-unused-parameter"
-	fi
+			CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
+		fi
 
-	if [ $cc_version -ge 34 ]; then
-		CC_CFLAGS="$CC_CFLAGS -Wdeclaration-after-statement -Wold-style-definition"
-	fi
+		gcc295=""
+		if [ "$cc_version" = 29 ]; then
+			# Make sure we mark GCC 2.95 flag for Makefile.src.in, as we
+			#  need a lovely hack there to make it compile correctly.
+			gcc295="1"
+		fi
 
-	if [ "$os" = "CYGWIN" ]; then
-		CFLAGS="$CFLAGS -mwin32"
-		LDFLAGS="$LDFLAGS -mwin32"
-	fi
-	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
-		CFLAGS="$CFLAGS -mno-cygwin"
-		LDFLAGS="$LDFLAGS -mno-cygwin"
-	fi
+		if [ $cc_version -ge 30 ]; then
+			CFLAGS="$CFLAGS -W -Wno-unused-parameter"
+		fi
 
-	if [ "$os" = "CYGWIN" ] || [ "$os" = "MINGW" ]; then
-		LDFLAGS="$LDFLAGS -Wl,--subsystem,windows"
-		LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32"
-	fi
+		if [ $cc_version -ge 34 ]; then
+			CC_CFLAGS="$CC_CFLAGS -Wdeclaration-after-statement -Wold-style-definition"
+		fi
 
-	# GCC 4.0+ complains about that we break strict-aliasing.
-	#  On most places we don't see how to fix it, and it doesn't
-	#  break anything. So disable strict-aliasing to make the
-	#  compiler all happy.
-	if [ $cc_version -ge 40 ]; then
-		CFLAGS="$CFLAGS -fno-strict-aliasing"
-	fi
+		if [ "$os" = "CYGWIN" ]; then
+			CFLAGS="$CFLAGS -mwin32"
+			LDFLAGS="$LDFLAGS -mwin32"
+		fi
+		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ]; then
+			CFLAGS="$CFLAGS -mno-cygwin"
+			LDFLAGS="$LDFLAGS -mno-cygwin"
+		fi
 
-	# GCC 4.2+ automatically assumes that signed overflows do
-	# not occur in signed arithmetics, whereas we are not
-	# sure that they will not happen. It furthermore complains
-	# about it's own optimized code in some places.
-	if [ $cc_version -ge 42 ]; then
-		CFLAGS="$CFLAGS -fno-strict-overflow"
-	fi
+		if [ "$os" = "CYGWIN" ] || [ "$os" = "MINGW" ]; then
+			LDFLAGS="$LDFLAGS -Wl,--subsystem,windows"
+			LIBS="$LIBS -lws2_32 -lwinmm -lgdi32 -ldxguid -lole32"
+		fi
 
-	# GCC 4.3+ gives a warning about empty body of
-	# loops and conditions
-	if [ $cc_version -ge 43 ]; then
-		CFLAGS="$CFLAGS -Wno-empty-body"
+		# GCC 4.0+ complains about that we break strict-aliasing.
+		#  On most places we don't see how to fix it, and it doesn't
+		#  break anything. So disable strict-aliasing to make the
+		#  compiler all happy.
+		if [ $cc_version -ge 40 ]; then
+			CFLAGS="$CFLAGS -fno-strict-aliasing"
+		fi
+
+		# GCC 4.2+ automatically assumes that signed overflows do
+		# not occur in signed arithmetics, whereas we are not
+		# sure that they will not happen. It furthermore complains
+		# about it's own optimized code in some places.
+		if [ $cc_version -ge 42 ]; then
+			CFLAGS="$CFLAGS -fno-strict-overflow"
+		fi
+
+		# GCC 4.3+ gives a warning about empty body of
+		# loops and conditions
+		if [ $cc_version -ge 43 ]; then
+			CFLAGS="$CFLAGS -Wno-empty-body"
+		fi
 	fi
 
 	if [ "$os" != "CYGWIN" ] && [ "$os" != "FREEBSD" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "WINCE" ] && [ "$os" != "PSP" ] && [ "$os" != "OS2" ]; then

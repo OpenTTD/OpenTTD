@@ -14,14 +14,14 @@
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction along with the trackdir */
-extern const byte _signal_along_trackdir[] = {
+extern const byte _signal_along_trackdir[TRACKDIR_END] = {
 	0x8, 0x8, 0x8, 0x2, 0x4, 0x1, 0, 0,
 	0x4, 0x4, 0x4, 0x1, 0x8, 0x2
 };
 
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the
  * direction against the trackdir */
-extern const byte _signal_against_trackdir[] = {
+extern const byte _signal_against_trackdir[TRACKDIR_END] = {
 	0x4, 0x4, 0x4, 0x1, 0x8, 0x2, 0, 0,
 	0x8, 0x8, 0x8, 0x2, 0x4, 0x1
 };
@@ -42,13 +42,13 @@ extern const TrackdirBits _exitdir_reaches_trackdirs[] = {
 	TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_W  /* DIAGDIR_NW */
 };
 
-extern const Trackdir _next_trackdir[] = {
+extern const Trackdir _next_trackdir[TRACKDIR_END] = {
 	TRACKDIR_X_NE,  TRACKDIR_Y_SE,  TRACKDIR_LOWER_E, TRACKDIR_UPPER_E, TRACKDIR_RIGHT_S, TRACKDIR_LEFT_S, INVALID_TRACKDIR, INVALID_TRACKDIR,
 	TRACKDIR_X_SW,  TRACKDIR_Y_NW,  TRACKDIR_LOWER_W, TRACKDIR_UPPER_W, TRACKDIR_RIGHT_N, TRACKDIR_LEFT_N
 };
 
 /* Maps a trackdir to all trackdirs that make 90 deg turns with it. */
-extern const TrackdirBits _track_crosses_trackdirs[] = {
+extern const TrackdirBits _track_crosses_trackdirs[TRACKDIR_END] = {
 	TRACKDIR_BIT_Y_SE     | TRACKDIR_BIT_Y_NW,                                                   /* TRACK_X     */
 	TRACKDIR_BIT_X_NE     | TRACKDIR_BIT_X_SW,                                                   /* TRACK_Y     */
 	TRACKDIR_BIT_RIGHT_N  | TRACKDIR_BIT_RIGHT_S  | TRACKDIR_BIT_LEFT_N  | TRACKDIR_BIT_LEFT_S,  /* TRACK_UPPER */
@@ -69,7 +69,7 @@ extern const TrackBits _track_crosses_tracks[] = {
 
 /* Maps a trackdir to the (4-way) direction the tile is exited when following
  * that trackdir */
-extern const DiagDirection _trackdir_to_exitdir[] = {
+extern const DiagDirection _trackdir_to_exitdir[TRACKDIR_END] = {
 	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_NE,
 	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,
 };
