@@ -3131,7 +3131,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nie moż
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nazwa samolotu
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy samolot przyleciał na {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Katastrofa lotnicza!{}{COMMA} ofiar{P a y ""} na {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbił się z powodu braku paliwa, zginęł{P a y o} {COMMA} os{P oba oby ób}!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbił się z powodu braku paliwa, zginęł{P 0 a y o} {COMMA} os{P oba oby ób}!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Zmień nazwę
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Zmień nazwę typu samolotu
