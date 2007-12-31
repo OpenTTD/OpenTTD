@@ -33,25 +33,6 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 
-/** Array for the shore sprites */
-static const SpriteID _water_shore_sprites[] = {
-	0,
-	SPR_SHORE_TILEH_1,  // SLOPE_W
-	SPR_SHORE_TILEH_2,  // SLOPE_S
-	SPR_SHORE_TILEH_3,  // SLOPE_SW
-	SPR_SHORE_TILEH_4,  // SLOPE_E
-	0,
-	SPR_SHORE_TILEH_6,  // SLOPE_SE
-	0,
-	SPR_SHORE_TILEH_8,  // SLOPE_N
-	SPR_SHORE_TILEH_9,  // SLOPE_NW
-	0,
-	0,
-	SPR_SHORE_TILEH_12, // SLOPE_NE
-	0,
-	0
-};
-
 
 static Vehicle *FindFloodableVehicleOnTile(TileIndex tile);
 static void FloodVehicle(Vehicle *v);
@@ -513,15 +494,18 @@ static void DrawTile_Water(TileInfo *ti)
 			DrawBridgeMiddle(ti);
 			break;
 
-		case WATER_TILE_COAST:
+		case WATER_TILE_COAST: {
+			/* Converts the enum Slope into an offset based on SPR_SHORE_BASE.
+			 * This allows to calculate the proper sprite to display for this Slope */
+			static const byte tileh_to_shoresprite[32] = {
+				0, 1, 2, 3, 4, 16, 6, 7, 8, 9, 17, 11, 12, 13, 14, 0,
+				0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0,  5,  0, 10, 15, 0,
+			};
+
 			assert(!IsSteepSlope(ti->tileh));
-			if (_loaded_newgrf_features.has_newwater) {
-				DrawGroundSprite(_coast_base + ti->tileh, PAL_NONE);
-			} else {
-				DrawGroundSprite(_water_shore_sprites[ti->tileh], PAL_NONE);
-			}
+			DrawGroundSprite(SPR_SHORE_BASE + tileh_to_shoresprite[ti->tileh], PAL_NONE);
 			DrawBridgeMiddle(ti);
-			break;
+		} break;
 
 		case WATER_TILE_LOCK: {
 			const WaterDrawTileStruct *t = _shiplift_display_seq[GetSection(ti->tile)];

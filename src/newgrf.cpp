@@ -59,7 +59,6 @@
 
 static int _skip_sprites; // XXX
 static uint _file_index; // XXX
-SpriteID _coast_base;
 
 static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
@@ -3355,12 +3354,47 @@ static void GraphicsNew(byte *buf, int len)
 		/* case 0x0C: // Snowy temperate trees. Not yet used by OTTD. */
 
 		case 0x0D: // Coast graphics
-			if (num != 16) {
-				grfmsg(1, "GraphicsNew: Coast graphics sprite count must be 16, skipping");
-				return;
+			switch (num) {
+				case 10:
+					if (!_cur_grffile->is_ottdfile) {
+						grfmsg(2, "GraphicsNew: feature is reserved only for OpenTTD, skipping");
+						return;
+					}
+
+					/* openttd(d/w).grf missing shore sprites and initialisation of SPR_SHORE_BASE */
+					LoadNextSprite(      SPR_SHORE_BASE +  0, _file_index, _nfo_line++); // SLOPE_STEEP_S
+					DupSprite(     4063, SPR_SHORE_BASE +  1                          ); // SLOPE_W
+					DupSprite(     4064, SPR_SHORE_BASE +  2                          ); // SLOPE_S
+					DupSprite(     4068, SPR_SHORE_BASE +  3                          ); // SLOPE_SW
+					DupSprite(     4062, SPR_SHORE_BASE +  4                          ); // SLOPE_E
+					LoadNextSprite(      SPR_SHORE_BASE +  5, _file_index, _nfo_line++); // SLOPE_STEEP_W
+					DupSprite(     4066, SPR_SHORE_BASE +  6                          ); // SLOPE_SE
+					LoadNextSprite(      SPR_SHORE_BASE +  7, _file_index, _nfo_line++); // SLOPE_WSE
+					DupSprite(     4065, SPR_SHORE_BASE +  8                          ); // SLOPE_N
+					DupSprite(     4069, SPR_SHORE_BASE +  9                          ); // SLOPE_NW
+					LoadNextSprite(      SPR_SHORE_BASE + 10, _file_index, _nfo_line++); // SLOPE_STEEP_N
+					LoadNextSprite(      SPR_SHORE_BASE + 11, _file_index, _nfo_line++); // SLOPE_NWS
+					DupSprite(     4067, SPR_SHORE_BASE + 12                          ); // SLOPE_NE
+					LoadNextSprite(      SPR_SHORE_BASE + 13, _file_index, _nfo_line++); // SLOPE_ENW
+					LoadNextSprite(      SPR_SHORE_BASE + 14, _file_index, _nfo_line++); // SLOPE_SEN
+					LoadNextSprite(      SPR_SHORE_BASE + 15, _file_index, _nfo_line++); // SLOPE_STEEP_E
+					LoadNextSprite(      SPR_SHORE_BASE + 16, _file_index, _nfo_line++); // SLOPE_EW
+					LoadNextSprite(      SPR_SHORE_BASE + 17, _file_index, _nfo_line++); // SLOPE_NS
+
+					grfmsg(2, "GraphicsNew: Loading all standard shore sprites");
+					break;
+
+				case 16:
+				case 18:
+					/* 'normal' newWater newGRF */
+					replace = SPR_SHORE_BASE;
+					break;
+
+				default:
+					/* no valid shore sprite count */
+					grfmsg(1, "GraphicsNew: Shore graphics sprite count must be 10, 16 or 18, skipping");
+					return;
 			}
-			_coast_base = _cur_spriteid;
-			_loaded_newgrf_features.has_newwater = true;
 			break;
 
 		/* case 0x0E: // New Signals. Not yet used by OTTD. */
@@ -5083,8 +5117,6 @@ static void ResetNewGRFData()
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.has_newhouses     = false;
 	_loaded_newgrf_features.has_newindustries = false;
-	_loaded_newgrf_features.has_newwater      = false;
-	_coast_base = 0;
 
 	InitializeSoundPool();
 	InitializeSpriteGroupPool();
@@ -5473,7 +5505,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 }
 
 
-void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
+void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, bool ottd_grf)
 {
 	const char *filename = config->filename;
 	uint16 num;
@@ -5492,6 +5524,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 		if (_cur_grffile == NULL) error("File '%s' lost in cache.\n", filename);
 		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
 		if (stage == GLS_ACTIVATION && !HasBit(config->flags, GCF_RESERVED)) return;
+		_cur_grffile->is_ottdfile = ottd_grf;
 	}
 
 	if (file_index > LAST_GRF_SLOT) {
@@ -5634,7 +5667,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (!FioCheckFileExists(c->filename)) error("NewGRF file is missing '%s'", c->filename);
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
-			LoadNewGRFFile(c, slot++, stage);
+			LoadNewGRFFile(c, slot++, stage, true);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {

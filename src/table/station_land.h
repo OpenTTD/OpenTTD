@@ -1168,10 +1168,10 @@ static const DrawTileSprites _station_display_datas_oilrig[] = {
 };
 
 static const DrawTileSprites _station_display_datas_dock[] = {
-	{ SPR_SHORE_TILEH_3,              PAL_NONE, _station_display_datas_76 },
-	{ SPR_SHORE_TILEH_9,              PAL_NONE, _station_display_datas_77 },
-	{ SPR_SHORE_TILEH_12,             PAL_NONE, _station_display_datas_78 },
-	{ SPR_SHORE_TILEH_6,              PAL_NONE, _station_display_datas_79 },
+	{ SPR_SHORE_BASE + SLOPE_SW,      PAL_NONE, _station_display_datas_76 },
+	{ SPR_SHORE_BASE + SLOPE_NW,      PAL_NONE, _station_display_datas_77 },
+	{ SPR_SHORE_BASE + SLOPE_NE,      PAL_NONE, _station_display_datas_78 },
+	{ SPR_SHORE_BASE + SLOPE_SE,      PAL_NONE, _station_display_datas_79 },
 	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_80 },
 	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_81 },
 };

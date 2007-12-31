@@ -141,7 +141,11 @@ enum Sprites {
 	SPR_2CCMAP_BASE   = SPR_ELRAIL_BASE + ELRAIL_SPRITE_COUNT,
 	TWOCCMAP_SPRITE_COUNT = 256,
 
-	SPR_AIRPORTX_BASE     = SPR_2CCMAP_BASE + TWOCCMAP_SPRITE_COUNT, // The sprites used for other airport angles
+	/* shore tiles - action 05-0D */
+	SPR_SHORE_BASE                  = SPR_2CCMAP_BASE + TWOCCMAP_SPRITE_COUNT,
+	SPR_SHORE_SPRITE_COUNT          = 18,
+
+	SPR_AIRPORTX_BASE     = SPR_SHORE_BASE + SPR_SHORE_SPRITE_COUNT, // The sprites used for other airport angles
 	SPR_NEWAIRPORT_TARMAC = SPR_AIRPORTX_BASE,
 	SPR_NSRUNWAY1         = SPR_AIRPORTX_BASE + 1,
 	SPR_NSRUNWAY2         = SPR_AIRPORTX_BASE + 2,
@@ -552,17 +556,6 @@ enum Sprites {
 	SPR_FARMLAND_STATE_6        = 4240,
 	SPR_FARMLAND_STATE_7        = 4259,
 	SPR_FARMLAND_HAYPACKS       = 4278,
-
-	/* Shores */
-	SPR_NO_SHORE                = 0,  //used for tileh which have no shore
-	SPR_SHORE_TILEH_4           = 4062, // SLOPE_E
-	SPR_SHORE_TILEH_1           = 4063, // SLOPE_W
-	SPR_SHORE_TILEH_2           = 4064, // SLOPE_S
-	SPR_SHORE_TILEH_8           = 4065, // SLOPE_N
-	SPR_SHORE_TILEH_6           = 4066, // SLOPE_SE
-	SPR_SHORE_TILEH_12          = 4067, // SLOPE_NE
-	SPR_SHORE_TILEH_3           = 4068, // SLOPE_SW
-	SPR_SHORE_TILEH_9           = 4069, // SLOPE_NW
 
 	/* Water-related sprites */
 	SPR_SHIP_DEPOT_SE_FRONT     = 4070,

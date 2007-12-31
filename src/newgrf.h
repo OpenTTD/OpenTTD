@@ -41,6 +41,7 @@ struct GRFLabel {
 
 struct GRFFile {
 	char *filename;
+	bool is_ottdfile;
 	uint32 grfid;
 	uint16 sprite_offset;
 	byte grf_version;
@@ -84,19 +85,16 @@ struct GRFFile {
 
 extern GRFFile *_first_grffile;
 
-extern SpriteID _coast_base;
-
 struct GRFLoadedFeatures {
 	bool has_2CC;             ///< Set if any vehicle is loaded which uses 2cc (two company colours).
 	bool has_newhouses;       ///< Set if there are any newhouses loaded.
 	bool has_newindustries;   ///< Set if there are any newindustries loaded.
-	bool has_newwater;        ///< Set it there are any newwater grf loaded
 };
 
 /* Indicates which are the newgrf features currently loaded ingame */
 extern GRFLoadedFeatures _loaded_newgrf_features;
 
-void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
+void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, bool ottd_grf = false);
 void LoadNewGRF(uint load_index, uint file_index);
 void ReloadNewGRFData(); // in openttd.cpp
 
