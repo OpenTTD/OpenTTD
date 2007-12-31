@@ -329,7 +329,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0xA6: return industry->type;
 		case 0xA7: return industry->founder;
 		case 0xA8: return industry->random_color;
-		case 0xA9: return Clamp(0, industry->last_prod_year - 1920, 255);
+		case 0xA9: return Clamp(0, industry->last_prod_year - ORIGINAL_BASE_YEAR, 255);
 		case 0xAA: return industry->counter;
 		case 0xAB: return GB(industry->counter, 8, 8);
 		case 0xAC: return industry->was_cargo_delivered;
