@@ -5326,8 +5326,11 @@ static void FinaliseHouseArray()
 	 * compatible with TTDPatch, where if no houses have start dates before
 	 * 1930 and the date is before 1930, the game pretends that this is 1930.
 	 * If there have been any houses defined with start dates before 1930 then
-	 * the dates are left alone. */
-	bool reset_dates = true;
+	 * the dates are left alone.
+	 * On the other hand, why 1930? Just 'fix' the houses with the lowest
+	 * minimum introduction date to 0.
+	 */
+	Year min_date = MAX_YEAR;
 
 	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
 		if (file->housespec == NULL) continue;
@@ -5336,16 +5339,16 @@ static void FinaliseHouseArray()
 			HouseSpec *hs = file->housespec[i];
 			if (hs != NULL) {
 				_house_mngr.SetEntitySpec(hs);
-				if (hs->min_date < 1930) reset_dates = false;
+				if (hs->min_date < min_date) min_date = hs->min_date;
 			}
 		}
 	}
 
-	if (reset_dates) {
-		for (int i = NEW_HOUSE_OFFSET; i < HOUSE_MAX; i++) {
+	if (min_date != 0) {
+		for (int i = 0; i < HOUSE_MAX; i++) {
 			HouseSpec *hs = GetHouseSpecs(i);
 
-			if (hs->enabled && hs->min_date == 1930) hs->min_date = 0;
+			if (hs->enabled && hs->min_date == min_date) hs->min_date = 0;
 		}
 	}
 }
