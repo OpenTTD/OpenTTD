@@ -2797,6 +2797,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuevo {STRING} ahora disponible!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}No se puede vender un vehículo destruido...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}No se puede rellenar un vehículo destruido...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}No se puede ajustar horarios al vehículo...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Los vehículos solo pueden esperar en las estaciones.
@@ -3459,4 +3460,15 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambiar 
 STR_SIGNAL_SELECTION                                            :{WHITE}Selección de Señales
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}No se pueden convertir las señales aquí...
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Señales standard (semaforos){}Las señales son necesarias para evitar los choques de trenes en vías con más de un tren.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Señal de entrada (semáforo){}Verde si existe una o más señales de salida en el tramo en verde, de lo contrario estará en rojo
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Señal de salida (semáforo){}Se comporta de la misma manera que una señal normal, pero es necesario para activar el color correcto a la entrada y antes de la combinación de señales.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Señales combo (semáforos){}Las señales combo simplemente actúan como una señal de entrada y de salida. Esto permite construir grandes "árboles" de preseñales.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Señal normal (eléctrica){}Las señales son necesarias para evitar accidentes de trenes en vías con más de un tren.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Señal de entrada (eléctrica){}Verde si existe una o más señales verdes en el siguiente segmento de vía. Si no, mostrará el rojo.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Señal de salida (eléctrica){}Actua igual que una señal normal solo pero es necesaria para cambiar el color correcto en preseñales de entrada y combo.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo señal (eléctrica){}La señal combo actua como señal de entrada y salida. Esto permite construir grandes "árboles" de preseñales.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Convertir señal{}Cuando es seleccionado, pulsando sobre una señal existente la convertiremos a la variante indicada. Pulsa CTRL-click para cambiar de variante.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Arrastrar densidad de señales
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrementar arrastre de intensidad de señales
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Incrementar arrastre de intensidad de señales
 ########

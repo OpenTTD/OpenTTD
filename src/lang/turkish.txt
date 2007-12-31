@@ -1168,6 +1168,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Yüzeys
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Diğer şirketlerin hisseleri alınabilsin
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Sürüklerken her: {ORANGE}{STRING} karede bir sinyal koy
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bu tarihten önce ışık yerine semafor kullan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Sinyal arayüzünü etkinleştir: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Senaryo düzenleyicisinde "yolsuz" şehir seçeneği kullanılamaz
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Şehir yol yerleşimini seç: {ORANGE}{STRING}
@@ -1704,6 +1705,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Önce bina yıkılmalı
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Nüfus: {ORANGE}{COMMA}{BLACK}  Ev: {ORANGE}{COMMA}
@@ -2308,6 +2310,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Binayı 
 STR_COMPANY_PASSWORD                                            :{BLACK}Parola
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Başkalarınin girmemesi için parola koy.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Şirket parolası
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Girilen parolayı kaydetme
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Yeni parolayı şirkete ver
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Şirket parolası
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Öntanımlı şirket parolası
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Bu şirketin parolasını yeni şirketlerde öntanımlı olarak kullan
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Dünyada Kriz!{}{}Çok büyük bir ekonomik kriz yaşanacağı öngörüldü!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Kriz Atlatıldı!{}{}Ekonomi yine eski güzel günlerine döndü!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Pencere boyutunu büyült/küçült
@@ -3107,6 +3114,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Eşleş
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Eksik dosyalar için uyumlu GRF(ler) yüklendi
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GRF dosyaları etkisizleştirildi
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Oyunu yüklemek için gerekli olan GRF dosyaları eksik
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik GRF dosyası
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3285,6 +3293,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Düzlü�
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Küçük haritayı burada ortala
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Küçük
@@ -3438,4 +3447,9 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Kravatı
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Sinyal Seçimi
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Buradaki sinyaller dönüştürülemez...
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sinyal sürükleme yoğunluğu
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Sinyal sürükleme yoğunluğunu azalt
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Sinyal sürükleme yoğunluğunu arttır
 ########

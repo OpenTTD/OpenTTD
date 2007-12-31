@@ -1170,6 +1170,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Jevn ø
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillat aksjekjøp i andre selskaper
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved dra-og-slipp, plasser signal på hver {ORANGE}{STRING}. rute
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg signalsystem med mast automatisk før: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Slå på signalgrensesnittet: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Byutlegget «ingen flere veier» er ikke gyldig i scenariobyggeren
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Velg byvei-layout: {ORANGE}{STRING}
@@ -2311,6 +2312,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Omplasse
 STR_COMPANY_PASSWORD                                            :{BLACK}Passord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Passordbeskytt ditt firma for å forhindre uautoriserte brukere fra å bli med. Bruk '*' for å tømme passord.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Velg firmapassord
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ikke lagre passordet
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gi firmaet nytt passord
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Firmapassord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Standard firmapassord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Bruk dette passordet som standard for nye firmaer
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Verdenskrise!{}{}Økonomer frykter det verste. Nedgangstider i møte.
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Verdenskrise over!{}{}Opptur i markedet gir industrien selvsikkerheten tilbake.
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Bytte mellom stor/liten vindustørrelse
@@ -2791,6 +2797,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING} Nå tilgjengelig!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan ikke selge ødelagt kjøretøy...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kan ikke ombygge ødelagt kjøretøy...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan ikke gi kjøretøy tidstabell...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Kjøretøy kan bare vente på stasjoner.
@@ -3111,6 +3118,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Tilsvar
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF lastet for manglende filer
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF-fil(er) har blitt slått av
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mangler GRF-fil(er) nødvendige for å laste spillet
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Mangler GRF-fil(er)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan gjøre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasje.{}Ønsker du virkelig å slå av pause?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3448,4 +3457,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Endre sl
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Signalvalg
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan ikke konvertere signaler her...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardsignal{}Signaler trengs for å forhindre tog fra å kræsje med hverandre på spor med mer enn ett tog.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Grønt så lenge det er mer enn ett grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Utgangssignal (semafor){}Oppfører seg på samme måte som et vanlig signal ville gjort, men er nødvendig for å riktig farge på inngangs- og kombinasjonspresignaler.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinasjonssignal (semafor){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge «trær» av presignaler.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Vanlig signal (elektrisk){}Signaler trengs for å forhindre togkrasj på jernbanenettverk med mer enn ett tog.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Inngangssignal (elektrisk){}Grønt så lenge det er mer enn ett grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Utgangssignal (elektrisk){}Oppfører seg på samme måte som et vanlig signal ville gjort, men er nødvendig for å riktig farge på inngangs- og kombinasjonspresignaler.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinasjonssignal (elektrisk){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge «trær» av presignaler.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalkonvertering{}Konverterer signaler til den valgte signaltypen; Ctrl-klikk vil endre eksisterende variant.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Signaltetthet ved dra-og-slipp
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Senk signaltetthet ved dra-og-slipp
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Øk signaltetthet ved dra-og-slipp
 ########

@@ -3508,6 +3508,7 @@ STR_FACE_YES                                                    :Igen
 STR_FACE_NO                                                     :Nem
 STR_FACE_HAIR                                                   :Haj:
 STR_FACE_HAIR_TIP                                               :{BLACK}Haj váltása
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Szemszín cseréje
 STR_FACE_GLASSES                                                :Szemüveg:
 STR_FACE_GLASSES_TIP                                            :{BLACK}Szemüveg engedélyezése
 STR_FACE_GLASSES_TIP_2                                          :{BLACK}Szemüveg váltása
@@ -3518,4 +3519,27 @@ STR_FACE_MOUSTACHE                                              :Bajusz:
 STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Ajkak vagy bajusz váltása
 STR_FACE_CHIN                                                   :Ál:
 STR_FACE_CHIN_TIP                                               :{BLACK}Ál váltása
+STR_FACE_JACKET                                                 :Kabát
+STR_FACE_JACKET_TIP                                             :{BLACK}Babát cseréje
+STR_FACE_COLLAR                                                 :Gallér
+STR_FACE_COLLAR_TIP                                             :{BLACK}Gallér cseréje
+STR_FACE_TIE                                                    :Nyakkendő:
+STR_FACE_EARRING                                                :Fülbevaló:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Nyakkendő vagy fülbevaló cseréje
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Szignál választó
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Nem lehet konvertálni a szignálokat itt...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Általános szignál (szemafor){}A szignálok feladata a vonatok összeütközésének megakadályozása a többvonatos vasúti hálózatokon.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Belépő-szignál (szemafor){}Mindaddig zöld, amíg van legalább egy zöld kilépő-szignál az utánakövetkező szakaszon. Egyébként pirosat mutat.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Kilépő-szignál (szemafor){}Ugyanúgy viselkedik mint az általános szignál, de megléte elengedhetetlenül szükséges a belépő- és a kombó-szignálok működéséhez.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombó-szignál (szemafor){}A kombó szignál voltaképpen egy kilépő- és egy belépő-szignál egybeépítve. Segítségével előjelző szignálokból lehet nagy "fákat" kialakítani.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Általános szignál (lámpa){}A szignálok feladata a vonatok összeütközésének megakadályozása a többvonatos vasúti hálózatokon.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Belépő-szignál (lámpa){}Mindaddig zöld, amíg van legalább egy zöld kilépő-szignál az utánakövetkező szakaszon. Egyébként pirosat mutat.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Kilépő-szignál (lámpa){}Ugyanúgy viselkedik mint az általános szignál, de megléte elengedhetetlenül szükséges a belépő- és a kombó-szignálok működéséhez.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombó-szignál (lámpa){}A kombó szignál voltaképpen egy kilépő- és egy belépő-szignál egybeépítve. Segítségével előjelző szignálokból lehet nagy "fákat" kialakítani.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Szignál Átalakító{}Amikor ki van jelölve, egy meglévő szignálra kattintással átkonvertálja a kiválasztott szignál-típusra és -variációra, CTRL+kattintás a variációt fogja változtatni.
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Automata szignáltávolság csökkentése
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Automata szignáltávolság növelése
 ########

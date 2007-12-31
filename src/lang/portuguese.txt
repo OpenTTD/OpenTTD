@@ -594,6 +594,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acident
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informações da empresa
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Abertura / Fecho de indústrias
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Alterações económicas
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Mudanças na produção das industrias servidas pelo jogador
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Mudanças na produção das industrias servidas pelo(s) oponentes
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Mudanças na produção de outras industrias
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Avisos / informações dos veículos do jogador
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Novos veículos
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Alterações de aceitação de carga
@@ -860,6 +863,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financiar nova 
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financiar nova indústria
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só se pode construir em cidades
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...só se pode construir em zonas de floresta
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...só se pode construir em zonas de deserto
@@ -1020,6 +1024,7 @@ STR_CONFIG_PATCHES_OFF                                          :Desligado
 STR_CONFIG_PATCHES_ON                                           :Ligado
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostrar velocidade do veículo na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permitir formação de terra em construções, linhas, etc. (auto-declive): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Dimensionamento mais realista de áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir remoção de mais estradas, pontes, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de comboios muito longos: {ORANGE}{STRING}
@@ -1046,6 +1051,8 @@ STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Funçã
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fila de veículos de estrada (com efeitos de quantidade): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o rato está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Permitir comprar exclusivo dos direitos de transportes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir enviar dinheiro para outras empresas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova procura de caminho global (NPF, substitui NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular comboios pesados: {ORANGE}{STRING}
@@ -1104,6 +1111,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Percorrer mapa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel no mapa: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulação de clique de botão direito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Clique para comando
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique para controlo
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
@@ -1112,7 +1120,11 @@ STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa a
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Desligado
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Sua companhia
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Todas as empresas
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Desligado
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Própria empresa
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Todas as empresas
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activar plano de horários para veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horário em tics em vez dias: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar jogo): {ORANGE}{STRING}
@@ -1157,6 +1169,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Activar
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite comprar acções de outras companhias
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir automaticamente semáforos antes de: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar ferramenta de sinais: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A disposição de cidade "sem mais estradas" não é válida no editor de cenários
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Seleccionar disposição das estradas na cidade: {ORANGE}{STRING}
@@ -1181,6 +1194,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Muito Rápido
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}1 em {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}Nenhuma
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador inicial para dimensão da cidade: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Remover partes absurdas durante a construção de estradas
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construção
@@ -1315,11 +1329,11 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...muito perto de outra indústria
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Adaptar comboio para um tipo de carga diferente
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Adaptar comboio
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Converter comboio para um tipo de carga diferente
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Converter comboio
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccionar tipo de carga do comboio
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Adaptar comboio para transportar a carga seleccionada
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Não é possível ajustar comboio...
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Converter comboio para transportar a carga seleccionada
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Não é possível converter comboio...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção
 
@@ -1380,18 +1394,23 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Definir 
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas se juntem
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleccione um mapa:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Em que mapa deseja jogar?
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Rede Local
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Rede Local / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} cliente{P "" s}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não necessitam estar todos presentes.
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} empresa{P "" s}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de Companhias:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar o servidor a um certo número de Companhias
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} espectador{P "" es}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Máximo de espectadores:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar o servidor a um certo número de espectadores
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Iniciar Jogo
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Iniciar um novo jogo em rede de um mapa aleatório, ou cenário
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Abrir Jogo
@@ -1652,7 +1671,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Não é 
 STR_180A_ROAD_CONSTRUCTION                                      :Construir estradas
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Construção de carris para eléctricos
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir estradas
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construir estradas usando o modo automático
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construir secção de carris para eléctricos
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construir carris para eléctricos usando o modo automático
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir depósito (para criação e manutenção de veículos de estrada)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construir depósito de eléctricos (para construção e manutenção)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construir estação de autocarros
@@ -1663,6 +1684,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construi
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construir ponte para eléctricos
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construir túnel de estrada
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construir túnel para eléctricos
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activar/Desactivar estradas de sentido único
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Alternar entre construir/remover estradas
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Alternar construir/remover linhas de eléctricos e sinais
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Seleccionar a orientação do depósito
@@ -1684,6 +1706,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}O edifício deve ser demolido primeiro
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
@@ -2006,6 +2029,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Não é 
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Deverá demolir o túnel primeiro
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Deverá demolir a ponte primeiro
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Não é posível iniciar e finalizar no mesmo ponto
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Extremos da ponte não estão ao mesmo nível
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Ponte muito baixa para o terreno
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Inicio e fim devem estar alinhados
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}O sítio não é adequado para a entrada do túnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2286,6 +2311,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Mover se
 STR_COMPANY_PASSWORD                                            :{BLACK}Palavra passe
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Usar palavra passe na empresa para prevenir utilizadores não autorizados.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Definir palavra passe da empresa
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Não gravar a password introduzida
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Atribuir nova password à empresa
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Password da empresa
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Password pre-definida da empresa
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Usar a password desta empresa como pre-definida para novas empresas
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Retrocesso Mundial!{}{}Especialistas financeiros temem crise económica!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Fim do retrocesso!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Alternar entre janela grande/pequena
@@ -2765,6 +2795,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível! - {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Não é possível vender um veículo destruido...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Não é possível converter um veículo destruido...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Impossível programar veículo...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Veículos apenas podem esperar em estações.
@@ -2982,10 +3014,10 @@ STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Adaptar 
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Adaptar)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Adaptar aeronave
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccionar tipo de carga da aeronave
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Adaptar aeronave para transportar a carga seleccionada
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converter aeronave para transportar a carga seleccionada
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleccionar tipo de carga:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacidade: {GOLD}{STRING}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
-STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Não é possível adaptar aeronave...
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacidade: {GOLD}{STRING}{}{BLACK}Custo da conversão: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Não é possível converter aeronave...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ir para o hangar de {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Manutenção no hangar de {STATION}
 
@@ -3054,7 +3086,9 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} foi fe
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parâmetro inválido para {STRING}: parâmetro {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} deve ser carregado antes de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve ser carregado antes de {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} necessita da versão {STRING} ou superior do OpenTTD.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :O ficheiro GRF foi desenhado para traduzir
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs carregados.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adicionar um ficheiro NewGRF à lista
@@ -3083,6 +3117,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ficheir
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatíveis carregados para ficheiros ausentes
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ficheiro(s) GRF ausentes foram desactivados
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m) ficheiro(s) GRF para carregar jogo
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ficheiro(s) GRF em falta
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode causar problemas ao OpenTTD. Não envie informações sobre este tipo de problemas.{}Deseja realmente sair da pausa?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de troca: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3263,6 +3299,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altura d
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar o mapa na posição actual
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeno
@@ -3371,4 +3408,66 @@ STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Construi
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Escolha a indústria apropriada desta lista
 
 ############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Avançado
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Selecção avançadade de cara
+STR_FACE_SIMPLE                                                 :{BLACK}Simples
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Selecção simples de cara
+STR_FACE_LOAD                                                   :{BLACK}Carregar
+STR_FACE_LOAD_TIP                                               :{BLACK}Carregar cara preferida
+STR_FACE_LOAD_DONE                                              :{WHITE}A sua cara preferida foi carregada a partir do ficheiro de configuração do OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}Nº de cara
+STR_FACE_FACECODE_TIP                                           :{BLACK}Ver e/ou definir número de cara do jogador
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou definir número de cara do jogador
+STR_FACE_FACECODE_SET                                           :{WHITE}Novo número de código de cara foi definido
+STR_FACE_FACECODE_ERR                                           :{WHITE}Não foi possível definir o número de cara do jogador - deverá ser numérico entre 0 e 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Gravar
+STR_FACE_SAVE_TIP                                               :{BLACK}Gravar cara preferida
+STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara será gravada como a sua preferida no ficheiro de configuração do OpenTTD.
+STR_FACE_EUROPEAN                                               :{BLACK}Europeu
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Seleccionar caras europeias
+STR_FACE_AFRICAN                                                :{BLACK}Africano
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Seleccionar caras africanas
+STR_FACE_YES                                                    :Sim
+STR_FACE_NO                                                     :Não
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Activar bigode ou brinco
+STR_FACE_HAIR                                                   :Cabelo:
+STR_FACE_HAIR_TIP                                               :{BLACK}Mudar cabelo
+STR_FACE_EYEBROWS                                               :Sobrancelhas:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Mudar sobrancelhas
+STR_FACE_EYECOLOUR                                              :Cor dos olhos:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Mudar cor dos olhos
+STR_FACE_GLASSES                                                :Óculos:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Activar óculos
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Mudar óculos
+STR_FACE_NOSE                                                   :Nariz:
+STR_FACE_NOSE_TIP                                               :{BLACK}Mudar nariz
+STR_FACE_LIPS                                                   :Lábios:
+STR_FACE_MOUSTACHE                                              :Bigode:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Mudar lábios ou bigode
+STR_FACE_CHIN                                                   :Queixo:
+STR_FACE_CHIN_TIP                                               :{BLACK}Mudar queixo
+STR_FACE_JACKET                                                 :Casaco:
+STR_FACE_JACKET_TIP                                             :{BLACK}Mudar casaco
+STR_FACE_COLLAR                                                 :Colarinho:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Mudar colarinho
+STR_FACE_TIE                                                    :Gravata:
+STR_FACE_EARRING                                                :Brinco:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Mudar gravata ou brinco
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Selecção de Sinal
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Não é possível converter sinais aqui...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sinal Normal (semáforo){}Os sinais são necessarios para evitar que os comboios choquem nas linhas ferroviárias com mais de um comboio.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Sinal de Saída (semáforo){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pre-sinais de entrada e combinado.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Sinal Combinado (semáforo){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pre-sinais.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Sinal Normal(eléctrico){}Os sinais são necessarios para evitar que os comboios choquem nas linhas ferroviárias com mais de um comboio.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sinal de Entrada (eléctrico){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinal de Saída (eléctrico){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pre-sinais de entrada e combinado.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinal Combinado (eléctrico){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pre-sinais.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Converter Sinal{}Quando seleccionado, ao fazer clique em um sinal existente este será convertido no tipo e variante de sinal seleccionado, CTRL-clique irá comutar a variante existente.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densidade de sinais
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Diminuir densidade de sinais
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumentar densidade de sinais
 ########

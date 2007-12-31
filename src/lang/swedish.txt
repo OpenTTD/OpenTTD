@@ -3116,6 +3116,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchan
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibel GRF laddad för saknade filer
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad GRF fil har stängts av
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Saknas GRF fil för att kunna ladda spel
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej igen bugg-rapport för möjlig krasch.{}Är du säker att du vill avpausa?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3456,4 +3458,15 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Ändra s
 STR_SIGNAL_SELECTION                                            :{WHITE}Signalval
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan inte konvertera signaler här...
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardsignal (semafor){}Signaler är nödvändiga för att tåg inte skall krasha i järnvägsnät innehållande mer än ett tåg.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}För-signal (semafor){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Utfarts-signal (semafor){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinationssignal (semafor){}Kombinationssignalen fungerar helt enkelt som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Normal signal (elektrisk){}Signaler behövs för att se till att tåg inte kraschar på nätverk med mer än ett tåg.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}För-signal (elektrisk){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Utfarts-signal (elektrisk){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar helt enkelt som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konvertera Signal{}När markerad, klicka på en existerande signal för att konvertera den till vald signal-typ och variant. CTRL-klick ändrar den existerande varianten
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragen signals täthet
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Minska dragen signals täthet
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Öka dragen signals täthet
 ########

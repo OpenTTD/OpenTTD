@@ -595,6 +595,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Unfäll
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmendaten
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Öffnen und Schließen von Industrien
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Änderungen der Wirtschaftslage
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produktionsänderungen bei vom Spieler belieferten Industriebetrieben
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsänderungen bei von Wettbewerbern belieferten Industriebetrieben
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andere Produktionsänderungen
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rat / Informationen zu Fahrzeugen des Spielers
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Neue Fahrzeuge
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Änderungen akzeptierter Fracht
@@ -1167,6 +1170,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Feinere
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Erlaube Anteile an anderen Firmen zu kaufen
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale alle {ORANGE}{STRING} Felder beim Ziehen mit der Maus
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatischer Bau von Formsignalen bis: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiviere Signal-Menü: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Der Stadtaufbau "keine weiteren Straßen" ist im Szenarieneditor nicht möglich
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Stadtstraßenaufbau auswählen: {ORANGE}{STRING}
@@ -1681,6 +1685,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Straßen
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Straßenbahnbrücke bauen
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Straßentunnel bauen
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Straßenbahntunnel bauen
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktiviere/Deaktiviere Einbahnstraßen
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Zwischen Bau/Abriss der Straße umschalten
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Umschalten zwischen Bauen/Entfernen für Straßenbahnbau
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ausrichtung des Fahrzeugdepots wählen
@@ -1702,6 +1707,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebäude muss erst abgerissen werden
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Bevölkerung: {ORANGE}{COMMA}{BLACK}  Häuser: {ORANGE}{COMMA}
@@ -2306,6 +2312,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Firmensi
 STR_COMPANY_PASSWORD                                            :{BLACK}Passwort
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Sie können Ihre Firma mit einem Passwort schützen, sodass nur ausgewählte Spieler beitreten können.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Firmenpasswort setzen
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}eingegebenes Passwort nicht speichern
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Passwort der Firma zuweisen
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Firmenpasswort
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Standard-Firmenpasswort
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Benutze dieses Firmenpasswort als Standard für neue Firmen
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Weltwirtschaftskrise!{}{}Finanzexperten befürchten schlimmsten Zusammenbruch der Wirtschaft!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Wirtschaftskrise beendet!{}{}Aufschwung des Handels gibt Vertrauen in die Industrie und stärkt die Wirtschaft!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Schalter für großes/kleines Fenster
@@ -2786,6 +2797,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue{G r "" s} {STRING} jetzt erhältlich!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kann dieses Schrottfahrzeug nicht mehr verkaufen ...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kann zerstörtes Fahrzeug nicht nachrüsten...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kein Fahrplan für das Fahrzeug...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Fahrzeuge halten nur an Stationen.
@@ -3077,6 +3089,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} muss v
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} muss nach {STRING} geladen werden.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} Benötigt OpenTTD-Version {STRING} oder höher.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der GRF-Datei, die es übersetzen soll,
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Hinzufügen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Eine neue NewGRF-Datei zur Liste hinzufügen
@@ -3105,6 +3118,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passend
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatible GRF(s) für fehlende Dateien geladen
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlende GRF-Dateien wurden deaktiviert.
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Es fehlen GRF-Dateien um das Spiel zu laden
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF-Datei(en) fehlen
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das beenden der PAuse kann OpenTTD zum Abstürzen bringen. Bitte sende keine Fehlerberichte bei auftretenden Fehlern. {}Willst du die Pause wirklich beenden?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigene Währung
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3285,6 +3300,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Höhe de
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Zusatzansicht zur akutellen Position scrollen
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}klein
@@ -3438,4 +3454,18 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Kragen �
 STR_FACE_TIE                                                    :Krawatte:
 STR_FACE_EARRING                                                :Ohrring:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Krawatte oder Ohrring ändern
+########
+
+############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Signalauswahl
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kann Signale hier nicht umbauen...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardsignal (Formsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein normales Signal, wird jedoch benötigt, um Einfahr- oder Combosignalen den Block als "frei" zu melden.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combosignal (Formsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardsignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein normales Signal, gibt jedoch das Signal an Einfahr- und Combosignale im vorherliegenden Block weiter.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combosignal (Lichtsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg.+Klicken ändert die bestehende Bauform.
 ########
