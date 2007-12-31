@@ -1063,7 +1063,15 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		Vehicle *src_previous = src->Previous();
 
 		while (next_to_attach != NULL) {
+			/* Back up and clear the first_engine data to avoid using wagon override group */
+			EngineID first_engine = next_to_attach->u.rail.first_engine;
+			next_to_attach->u.rail.first_engine = INVALID_ENGINE;
+
 			uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, next_to_attach, dst_head);
+
+			/* Restore original first_engine data */
+			next_to_attach->u.rail.first_engine = first_engine;
+
 			if (callback != CALLBACK_FAILED) {
 				StringID error = STR_NULL;
 
@@ -1087,6 +1095,9 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 					return_cmd_error(error);
 				}
 			}
+
+			/* Only check further wagons if told to move the chain */
+			if (!HasBit(p2, 0)) break;
 
 			/*
 			 * Adding a next wagon to the chain so we can test the other wagons.
