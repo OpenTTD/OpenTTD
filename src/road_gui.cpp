@@ -812,13 +812,13 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 
 		StationType st = (w->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
 
-		StationPickerDrawSprite(103, 35, st, RAILTYPE_BEGIN, ROADTYPE_ROAD, 0);
-		StationPickerDrawSprite(103, 85, st, RAILTYPE_BEGIN, ROADTYPE_ROAD, 1);
-		StationPickerDrawSprite( 35, 85, st, RAILTYPE_BEGIN, ROADTYPE_ROAD, 2);
-		StationPickerDrawSprite( 35, 35, st, RAILTYPE_BEGIN, ROADTYPE_ROAD, 3);
+		StationPickerDrawSprite(103, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 0);
+		StationPickerDrawSprite(103, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 1);
+		StationPickerDrawSprite( 35, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 2);
+		StationPickerDrawSprite( 35, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 3);
 
-		StationPickerDrawSprite(171, 35, st, RAILTYPE_BEGIN, _cur_roadtype, 4);
-		StationPickerDrawSprite(171, 85, st, RAILTYPE_BEGIN, _cur_roadtype, 5);
+		StationPickerDrawSprite(171, 35, st, INVALID_RAILTYPE, _cur_roadtype, 4);
+		StationPickerDrawSprite(171, 85, st, INVALID_RAILTYPE, _cur_roadtype, 5);
 
 		DrawStationCoverageAreaText(2, 146,
 			(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
