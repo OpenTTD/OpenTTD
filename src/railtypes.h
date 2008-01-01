@@ -57,6 +57,9 @@ RailtypeInfo _railtypes[] = {
 
 		/* custom ground offset */
 		0,
+
+		/* curve speed advantage (multiplier) */
+		0,
 	},
 
 	/** Electrified railway */
@@ -110,6 +113,9 @@ RailtypeInfo _railtypes[] = {
 
 		/* custom ground offset */
 		0,
+
+		/* curve speed advantage (multiplier) */
+		0,
 	},
 
 	/** Monorail */
@@ -159,6 +165,9 @@ RailtypeInfo _railtypes[] = {
 
 		/* custom ground offset */
 		1,
+
+		/* curve speed advantage (multiplier) */
+		1,
 	},
 
 	/** Maglev */
@@ -207,6 +216,9 @@ RailtypeInfo _railtypes[] = {
 		24,
 
 		/* custom ground offset */
+		2,
+
+		/* curve speed advantage (multiplier) */
 		2,
 	},
 };

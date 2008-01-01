@@ -89,6 +89,11 @@ struct RailtypeInfo {
 	 * Offset to add to ground sprite when drawing custom waypoints / stations
 	 */
 	byte custom_ground_offset;
+
+	/**
+	 * Multiplier for curve maximum speed advantage
+	 */
+	byte curve_speed;
 };
 
 

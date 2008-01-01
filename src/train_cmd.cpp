@@ -311,7 +311,8 @@ static bool TrainShouldStop(const Vehicle* v, TileIndex tile)
 /** new acceleration*/
 static int GetTrainAcceleration(Vehicle *v, bool mode)
 {
-	int max_speed = 2000;
+	static const int absolute_max_speed = 2000;
+	int max_speed = absolute_max_speed;
 	int speed = v->cur_speed * 10 / 16; // km-ish/h -> mp/h
 	int curvecount[2] = {0, 0};
 
@@ -352,13 +353,17 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		int total = curvecount[0] + curvecount[1];
 
 		if (curvecount[0] == 1 && curvecount[1] == 1) {
-			max_speed = 0xFFFF;
+			max_speed = absolute_max_speed;
 		} else if (total > 1) {
 			max_speed = 232 - (13 - Clamp(sum, 1, 12)) * (13 - Clamp(sum, 1, 12));
 		}
 	}
 
-	max_speed += (max_speed / 2) * v->u.rail.railtype;
+	if (max_speed != absolute_max_speed) {
+		/* Apply the engine's rail type curve speed advantage, if it slowed by curves */
+		const RailtypeInfo *rti = GetRailTypeInfo(v->u.rail.railtype);
+		max_speed += (max_speed / 2) * rti->curve_speed;
+	}
 
 	if (IsTileType(v->tile, MP_STATION) && IsFrontEngine(v)) {
 		if (TrainShouldStop(v, v->tile)) {
