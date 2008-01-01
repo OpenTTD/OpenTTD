@@ -1232,6 +1232,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Egyenle
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Másik cégekből részvényt lehet vásárolni
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Amikor megragadom helyezzen lámpákat minden {ORANGE}{STRING}. mezőre
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatikusan szemafor épüljön eddig: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Szignálkezelő engedélyezése: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A "nincs több út" városkinézeti séma a pályaszerkesztőben nem elérhető
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Válassz városi úthálózat-sémát: {ORANGE}{STRING}
@@ -1733,7 +1734,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nem lehe
 STR_180A_ROAD_CONSTRUCTION                                      :Útépítés
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Villamospálya építés
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Út építése
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Közút-szakasz megépítése automata módon
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Villamos-sín építése
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Villamos-sín szakasz megépítése automata módon
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Garázs építése (járművek vételére és karbantartására)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Villamos-depó építése (járművek megépítésére és szervizelésére)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Buszmegálló építése
@@ -1744,6 +1747,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Közúti
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Villamos-híd építése
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Közúti alagút építése
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Villamos-alagút építése
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Egyirányú utak ki/be kapcsolása
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Építés/felszedés közötti váltás utaknál
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Építő/bontó üzemmód váltása a villamospályákhoz
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Válaszd ki a garázs helyzetét
@@ -1765,6 +1769,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Előbb le kell rombolnod az épületet
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Lakosság: {ORANGE}{COMMA}{BLACK} Házak: {ORANGE}{COMMA}
@@ -2124,6 +2129,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nem lehe
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Előbb le kell rombolnod az alagutat
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Előbb le kell rombolnod a hidat
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nem kezdődhet és végződhet ugyanott
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Hídfők nem egy szinten vannak
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}A híd túl alacsony a terepre
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}A kezdetének és a végének egy vonalban kell lennie
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nem alkalmas a hely alagút bejáratának
@@ -2405,6 +2411,9 @@ STR_RELOCATE_HQ                                                 :{BLACK}FH áthe
 STR_COMPANY_PASSWORD                                            :{BLACK}Jelszó
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vállalati jelszó beállítása
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne mentsd el a megadott jelszót
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Cég jelszó
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Alapértelmezett cég jelszó
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Gazdasági visszaesés!{}{}A közgazdászok gazdasági válságtól tartanak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Vége a visszaesésnek!{}{}A kereskedelem fellendül, ami önbizalmat ad az iparnak, és erősödik a gazdaság!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Kicsi/nagy ablakméret közötti váltás
@@ -3174,7 +3183,9 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} úgy l
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Hibás paraméterérték ehhez: {STRING}: paraméter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} muszáj hogy betöltődjön ezelőtt: {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} muszáj hogy ezután töltődjön be: {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} csak a {STRING} vagy nagyobb verziójú OpenTTD-vel működik.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Hozzáad
 STR_NEWGRF_ADD_TIP                                              :{BLACK}A NewGRF-et hozzáadja a listához
@@ -3203,6 +3214,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Pontosa
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilis GRF(ek) betöltve a hiányzó fájl(ok) helyett
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányzó GRF fájl(oka)t kikapcsoltam
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Kritikus GRF fájl(ok) hiányoznak, a játék nem betölthető
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Hiányzó GRF fájl(ok)
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3383,6 +3395,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Sima ter
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}A kistérkép közepét a jelenlegi helyre állítja
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Kicsi
@@ -3499,15 +3512,25 @@ STR_FACE_LOAD                                                   :{BLACK}Betölt
 STR_FACE_LOAD_TIP                                               :{BLACK}Kedvenc arcd betöltése
 STR_FACE_LOAD_DONE                                              :{WHITE}A kedvenc arcod az OpenTTD konfig-fájlból be lett töltve.
 STR_FACE_FACECODE                                               :{BLACK}Játékos arc szám
+STR_FACE_FACECODE_TIP                                           :{BLACK}Játékos arc-számának megtekintését/módosítását teszi lehetővé
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Játékos arcszámának megtekintése/módosítása
+STR_FACE_FACECODE_SET                                           :{WHITE}Az új arcszám-kód beállítása megtörtént.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Játékos arc-szám beállítás sikertelen - A megadott értéknek 0 és 4.294.967.295 közé eső számnak kell lennie!
 STR_FACE_SAVE                                                   :{BLACK}Mentés
 STR_FACE_SAVE_TIP                                               :{BLACK}Kedvenc arc elmentése
 STR_FACE_SAVE_DONE                                              :{WHITE}Ez az arc mint a kedvenc arcod fog az OpenTTD konfig-fájlba elmentődni.
 STR_FACE_EUROPEAN                                               :{BLACK}Európai
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Európai arc választása
 STR_FACE_AFRICAN                                                :{BLACK}Afrikai
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Afrikai arc választása
 STR_FACE_YES                                                    :Igen
 STR_FACE_NO                                                     :Nem
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Engedélyezi a bajuszt és/vagy a fülbevalót
 STR_FACE_HAIR                                                   :Haj:
 STR_FACE_HAIR_TIP                                               :{BLACK}Haj váltása
+STR_FACE_EYEBROWS                                               :Szemöldök:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Szemöldök módosítása
+STR_FACE_EYECOLOUR                                              :Szemszín:
 STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Szemszín cseréje
 STR_FACE_GLASSES                                                :Szemüveg:
 STR_FACE_GLASSES_TIP                                            :{BLACK}Szemüveg engedélyezése

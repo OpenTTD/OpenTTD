@@ -596,6 +596,7 @@ STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Deschid
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Schimbãri economice
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Schimbări de producţie la industrii partenere cu jucătorul
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Schimbări de producţie la industrii partenere cu concurenţa
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Alte schimbari in productia industriala
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Sfaturi/informatii despre vehiculele tale
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Vehicule noi
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Schimbãri ale acceptãrii mãrfurilor
@@ -2314,6 +2315,7 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Parola i
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Schimbarea parolei pentru companie
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Parola pentru companie
 STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Parola implicită pentru companie
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Foloseste implicit parola acestei comanii pentru cele nou create
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recesiune mondială!{}{}Experţii financiari se tem de ceea ce e mai rău odată cu prăbuşirea economică!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesiunea s-a încheiat!{}{}Creşterea comerţului dă încredere industriei, iar economia se redresează!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Comutator pentru mărimea ferestrei
@@ -2794,6 +2796,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Un nou {STRING} este acum disponibil!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Vehiculul distrus nu poate fi vandut...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nu putem repara vehiculele distruse...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nu pot programa vehiculul...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehiculele pot astepta numai in statii.
@@ -3114,6 +3117,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nu am g
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Fisier(e) GRF compatibil(e) incarcate pentru fisierele lipsa
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fisierele GRF lipsa au fost dezactivate
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fisierele GRF lipsa pentru permiterea incarcarii jocului
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fisier(e) GRF lipsa
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Reluarea jocului poate bloca OpenTTD. Nu raportati raporturi cu probleme pentru blocari succesive.{}Sigur doresti sa reiei jocul?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Monedă proprie
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3170,7 +3175,7 @@ STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieste {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Incepere inlocuire vehicule
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire inlocuire vehicuke
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire inlocuire vehicule
 STR_NOT_REPLACING                                               :{BLACK}Neinlocuire
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nici un vehicul selectat
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Alege tipul de motor pentru inlocuire
@@ -3183,7 +3188,7 @@ STR_REPLACE_HELP                                                :{BLACK}Aceasta 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã optiunea de autoînlocuire sã pãstreze identicã lungimea unui tren prin eliminarea vagoanelor (începând din fatã), dacã înlocuirea motorului ar face trenul mai lung.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Înlocuire: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ELEMENT EXPERIMENTAL {}Comutã între ferestrele de ]nlocuire motoare si vagoane.{}Înlocuirea de vagoane va fi efectuatã numai dacã noul vagon poate transporta acelasi tip de încãrcãturã ca cel vechi. Aceast lucru este verificat pentru fiecare vagon atunci când este fãcutã înlocuirea efectivã.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ELEMENT EXPERIMENTAL {}Comutã între ferestrele de înlocuire motoare si vagoane.{}Înlocuirea de vagoane va fi efectuatã numai dacã noul vagon poate transporta acelasi tip de încãrcãturã ca cel vechi. Aceast lucru este verificat pentru fiecare vagon atunci când este fãcutã înlocuirea efectivã.
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehiculul nu este disponibil
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Vehiculul nu este disponibil
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Vasul nu este disponibil
@@ -3453,4 +3458,16 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Schimba 
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Alegere Semnal
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Nu se pot transforma semnalele...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Semnal standard (semafor){}Semnalele sunt necesare pentru prevenirea deraierii trenurilor pe retele de cai ferate cu mai mult decat un tren.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cat exista unul sau mai multe semnale verzi de iesire din sectiunea urmatoare a caii ferate. Altfel indica rosu.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Semnal de iesire (semafor){}Se comporta in acelasi fel ca semnalul normal but este necesar pentru declansarea culorii corecte la intrari si presemnalizatoare combinate.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comporta atat ca semnal de intrare si iesire. Acest lucru permite constructiile "arborilor" mari de presemnalizare.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Semnal standard (electric){}Semnalele sunt necesare pentru prevenirea deraierii trenurilor pe retele de cai ferate cu mai mult decat un tren.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Semnal de intrare (electric){}Verde atat timp cat exista unul sau mai multe semnale de iesire in sectiunea urmatoare a caii ferate. Altfel indica rosu.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Semnal de iesire (electric){}Se comporta in acelasi fel ca semnalul normal, dar este necesar pentru declansarea culorii corecte la intrari si presemnalizatoare combinate.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Semnal combinat (electric){}Semnalul combinat se comporta atat ca semnalul de intrare si iesire. Acest lucru permite construirea "arborilor" mari de presemnalizare.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversie semnal{}Cand este selectat, click-ul pe un semafor existent il va converti in tipul si varianta aleasa de semnalizare, iar CTRL-click va comuta varianta existenta.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densitate semnal tractare
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Scade densitatea semnalului de tractare
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Mareste densitatea semnalului de tractare
 ########
