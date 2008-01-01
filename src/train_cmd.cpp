@@ -258,30 +258,6 @@ void TrainConsistChanged(Vehicle* v)
 	TrainCargoChanged(v);
 }
 
-/* These two arrays are used for realistic acceleration. XXX: How should they
- * be interpreted? */
-static const byte _curve_neighbours45[8][2] = {
-	{7, 1},
-	{0, 2},
-	{1, 3},
-	{2, 4},
-	{3, 5},
-	{4, 6},
-	{5, 7},
-	{6, 0},
-};
-
-static const byte _curve_neighbours90[8][2] = {
-	{6, 2},
-	{7, 3},
-	{0, 4},
-	{1, 5},
-	{2, 6},
-	{3, 7},
-	{4, 0},
-	{5, 1},
-};
-
 enum AccelType {
 	AM_ACCEL,
 	AM_BRAKE
@@ -322,32 +298,30 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	int pos = 0;
 	int lastpos = -1;
 	for (const Vehicle *u = v; u->Next() != NULL; u = u->Next(), pos++) {
-		Direction dir = u->direction;
-		Direction ndir = u->Next()->direction;
-		int i;
+		Direction this_dir = u->direction;
+		Direction next_dir = u->Next()->direction;
 
-		for (i = 0; i < 2; i++) {
-			if ( _curve_neighbours45[dir][i] == ndir) {
-				curvecount[i]++;
-				if (lastpos != -1) {
-					numcurve++;
-					sum += pos - lastpos;
-					if (pos - lastpos == 1) {
-						max_speed = 88;
-					}
+		DirDiff dirdiff = DirDifference(this_dir, next_dir);
+		if (dirdiff == DIRDIFF_SAME) continue;
+
+		if (dirdiff == DIRDIFF_45LEFT) curvecount[0]++;
+		if (dirdiff == DIRDIFF_45RIGHT) curvecount[1]++;
+		if (dirdiff == DIRDIFF_45LEFT || dirdiff == DIRDIFF_45RIGHT) {
+			if (lastpos != -1) {
+				numcurve++;
+				sum += pos - lastpos;
+				if (pos - lastpos == 1) {
+					max_speed = 88;
 				}
-				lastpos = pos;
 			}
+			lastpos = pos;
 		}
 
 		/*if we have a 90 degree turn, fix the speed limit to 60 */
-		if (_curve_neighbours90[dir][0] == ndir ||
-				_curve_neighbours90[dir][1] == ndir) {
+		if (dirdiff == DIRDIFF_90LEFT || dirdiff == DIRDIFF_90RIGHT) {
 			max_speed = 61;
 		}
 	}
-
-	if (numcurve > 0) sum /= numcurve;
 
 	if ((curvecount[0] != 0 || curvecount[1] != 0) && max_speed > 88) {
 		int total = curvecount[0] + curvecount[1];
@@ -355,6 +329,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		if (curvecount[0] == 1 && curvecount[1] == 1) {
 			max_speed = absolute_max_speed;
 		} else if (total > 1) {
+			if (numcurve > 0) sum /= numcurve;
 			max_speed = 232 - (13 - Clamp(sum, 1, 12)) * (13 - Clamp(sum, 1, 12));
 		}
 	}
