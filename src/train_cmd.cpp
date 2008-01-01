@@ -164,11 +164,15 @@ void TrainConsistChanged(Vehicle* v)
 	v->u.rail.cached_total_length = 0;
 	v->u.rail.compatible_railtypes = 0;
 
+	bool train_can_tilt = true;
+
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
 
 		/* Check the v->first cache. */
 		assert(u->First() == v);
+
+		if (!HasBit(EngInfo(u->engine_type)->misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
 
 		/* update the 'first engine' */
 		u->u.rail.first_engine = v == u ? INVALID_ENGINE : first_engine;
@@ -253,6 +257,7 @@ void TrainConsistChanged(Vehicle* v)
 
 	/* store consist weight/max speed in cache */
 	v->u.rail.cached_max_speed = max_speed;
+	v->u.rail.cached_tilt = train_can_tilt;
 
 	/* recalculate cached weights and power too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added) */
 	TrainCargoChanged(v);
@@ -338,6 +343,11 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		/* Apply the engine's rail type curve speed advantage, if it slowed by curves */
 		const RailtypeInfo *rti = GetRailTypeInfo(v->u.rail.railtype);
 		max_speed += (max_speed / 2) * rti->curve_speed;
+
+		if (v->u.rail.cached_tilt) {
+			/* Apply max_speed bonus of 20% for a tilting train */
+			max_speed += max_speed / 5;
+		}
 	}
 
 	if (IsTileType(v->tile, MP_STATION) && IsFrontEngine(v)) {
