@@ -368,15 +368,16 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	if (IsTileType(v->tile, MP_STATION) && IsFrontEngine(v)) {
 		if (TrainShouldStop(v, v->tile)) {
 			int station_length = GetStationByTile(v->tile)->GetPlatformLength(v->tile, DirToDiagDir(v->direction));
-			int delta_v;
 
-			max_speed = 120;
+			int st_max_speed = 120;
 
-			delta_v = v->cur_speed / (station_length + 1);
-			if (v->max_speed > (v->cur_speed - delta_v))
-				max_speed = v->cur_speed - (delta_v / 10);
+			int delta_v = v->cur_speed / (station_length + 1);
+			if (v->max_speed > (v->cur_speed - delta_v)) {
+				st_max_speed = v->cur_speed - (delta_v / 10);
+			}
 
-			max_speed = max(max_speed, 25 * station_length);
+			st_max_speed = max(st_max_speed, 25 * station_length);
+			max_speed = min(max_speed, st_max_speed);
 		}
 	}
 
