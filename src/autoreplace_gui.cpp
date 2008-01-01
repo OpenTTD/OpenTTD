@@ -31,6 +31,15 @@ static const StringID _rail_types_list[] = {
 	INVALID_STRING_ID
 };
 
+static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
+{
+	const EngineID va = *(const EngineID*)a;
+	const EngineID vb = *(const EngineID*)b;
+	int r = ListPositionOfEngine(va) - ListPositionOfEngine(vb);
+
+	return r;
+}
+
 /* General Vehicle GUI based procedures that are independent of vehicle types */
 void InitializeVehiclesGuiList()
 {
@@ -172,6 +181,7 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 		if (e == WP(w, replaceveh_d).sel_engine[i]) selected_engine = e; // The selected engine is still in the list
 	}
 	WP(w, replaceveh_d).sel_engine[i] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
+	if (type == VEH_TRAIN) EngList_Sort(list, &TrainEngineNumberSorter);
 }
 
 /** Generate the lists
