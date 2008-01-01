@@ -1643,6 +1643,20 @@ void HandleKeypress(uint32 key)
 	e.we.keypress.keycode = GB(key, 16, 16);
 	e.we.keypress.cont = true;
 
+	/*
+	 * The Unicode standard defines an area called the private use area. Code points in this
+	 * area are reserved for private use and thus not portable between systems. For instance,
+	 * Apple defines code points for the arrow keys in this area, but these are only printable
+	 * on a system running OS X. We don't want these keys to show up in text fields and such,
+	 * and thus we have to clear the unicode character when we encounter such a key.
+	 */
+	if (e.we.keypress.key >= 0xE000 && e.we.keypress.key <= 0xF8FF) e.we.keypress.key = 0;
+
+	/*
+	 * If both key and keycode is zero, we don't bother to process the event.
+	 */
+	if (e.we.keypress.key == 0 && e.we.keypress.keycode == 0) return;
+
 	/* check if we have a query string window open before allowing hotkeys */
 	if (FindWindowById(WC_QUERY_STRING,            0) != NULL ||
 			FindWindowById(WC_SEND_NETWORK_MSG,        0) != NULL ||
