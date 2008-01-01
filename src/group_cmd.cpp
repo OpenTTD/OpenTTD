@@ -196,6 +196,8 @@ CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		g->string_id = str;
 
 		InvalidateWindowData(GetWCForVT(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_player);
+	} else {
+		DeleteName(str);
 	}
 
 	return CommandCost();
