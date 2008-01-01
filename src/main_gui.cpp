@@ -2231,8 +2231,8 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 			case 'Z': {
 				Point pt = GetTileBelowCursor();
 				if (pt.x != -1) {
-					ScrollMainWindowTo(pt.x, pt.y);
 					if (e->we.keypress.keycode == 'Z') MaxZoomInOut(ZOOM_IN, w);
+					ScrollMainWindowTo(pt.x, pt.y);
 				}
 				break;
 			}
