@@ -752,6 +752,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 
 		case WE_TICK: // resort the lists every 20 seconds orso (10 days)
+			if (_pause_game != 0) break;
 			if (--gv->l.resort_timer == 0) {
 				gv->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 				gv->l.flags |= VL_RESORT;
@@ -763,7 +764,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				SetWindowDirty(w);
 			}
 			break;
-		}
+	}
 }
 
 

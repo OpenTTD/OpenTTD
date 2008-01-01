@@ -1102,6 +1102,8 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_TICK:
+			if (_pause_game != 0) break;
+
 			/* Update the player score every 5 days */
 			if (--w->custom[0] == 0) {
 				w->custom[0] = DAY_TICKS;

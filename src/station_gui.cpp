@@ -544,6 +544,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_TICK:
+			if (_pause_game != 0) break;
 			if (--sl->resort_timer == 0) {
 				DEBUG(misc, 3, "Periodic rebuild station list player %d", owner);
 				sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;

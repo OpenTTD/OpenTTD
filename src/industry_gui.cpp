@@ -297,6 +297,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_TICK:
+			if (_pause_game != 0) break;
 			if (!WP(w, fnd_d).timer_enabled) break;
 			if (--WP(w, fnd_d).callback_timer == 0) {
 				/* We have just passed another day.

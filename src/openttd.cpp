@@ -962,7 +962,10 @@ void StateGameLoop()
 	ClearStorageChanges(false);
 
 	/* dont execute the state loop during pause */
-	if (_pause_game) return;
+	if (_pause_game) {
+		CallWindowTickEvent();
+		return;
+	}
 	if (IsGeneratingWorld()) return;
 
 	if (_game_mode == GM_EDITOR) {

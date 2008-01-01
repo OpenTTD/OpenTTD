@@ -1157,6 +1157,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_TICK: /* resort the list every 20 seconds orso (10 days) */
+			if (_pause_game != 0) break;
 			if (--vl->l.resort_timer == 0) {
 				StationID station = ((w->window_number & VLW_MASK) == VLW_STATION_LIST) ? GB(w->window_number, 16, 16) : INVALID_STATION;
 				PlayerID owner = (PlayerID)w->caption_color;
