@@ -151,7 +151,7 @@ void ScreenSizeChanged();
 void UndrawMouseCursor();
 bool ChangeResInGame(int w, int h);
 void SortResolutions(int count);
-void ToggleFullScreen(bool fs);
+bool ToggleFullScreen(bool fs);
 
 /* gfx.cpp */
 #define ASCII_LETTERSTART 32

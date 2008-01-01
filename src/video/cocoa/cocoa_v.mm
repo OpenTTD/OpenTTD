@@ -361,7 +361,7 @@ bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 	return ret;
 }
 
-void VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
+bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 {
 	bool oldfs;
 
@@ -386,6 +386,7 @@ void VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 	QZ_GameSizeChanged();
 
 	QZ_UpdateVideoModes();
+	return _cocoa_subdriver->IsFullscreen() == full_screen;
 }
 
 

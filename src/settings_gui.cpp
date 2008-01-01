@@ -201,8 +201,11 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), 27, 0, 0);
 			return;
 		case 28: /* Click fullscreen on/off */
-			w->SetWidgetLoweredState(28, !_fullscreen);
-			ToggleFullScreen(!_fullscreen); // toggle full-screen on/off
+			/* try to toggle full-screen on/off */
+			if (!ToggleFullScreen(!_fullscreen)) {
+				ShowErrorMessage(INVALID_STRING_ID, STR_FULLSCREEN_FAILED, 0, 0);
+			}
+			w->SetWidgetLoweredState(28, _fullscreen);
 			SetWindowDirty(w);
 			return;
 		case 30: case 31: /* Setup screenshot format dropdown */

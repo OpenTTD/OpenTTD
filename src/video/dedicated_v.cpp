@@ -168,7 +168,7 @@ void VideoDriver_Dedicated::Stop()
 
 void VideoDriver_Dedicated::MakeDirty(int left, int top, int width, int height) {}
 bool VideoDriver_Dedicated::ChangeResolution(int w, int h) { return false; }
-void VideoDriver_Dedicated::ToggleFullscreen(bool fs) {}
+bool VideoDriver_Dedicated::ToggleFullscreen(bool fs) { return false; }
 
 #if defined(UNIX) || defined(__OS2__) || defined(PSP)
 static bool InputWaiting()

@@ -13,7 +13,7 @@ public:
 
 	virtual bool ChangeResolution(int w, int h) = 0;
 
-	virtual void ToggleFullscreen(bool fullscreen) = 0;
+	virtual bool ToggleFullscreen(bool fullscreen) = 0;
 };
 
 class VideoDriverFactoryBase: public DriverFactoryBase {

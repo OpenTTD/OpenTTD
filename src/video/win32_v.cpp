@@ -210,7 +210,7 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
 	}
 }
 
-static void MakeWindow(bool full_screen)
+static bool MakeWindow(bool full_screen)
 {
 	_fullscreen = full_screen;
 
@@ -242,8 +242,8 @@ static void MakeWindow(bool full_screen)
 		settings.dmDisplayFrequency = _display_hz;
 
 		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
-			MakeWindow(false);
-			return;
+			MakeWindow(false);  // don't care about the result
+			return false;  // the request failed
 		}
 	} else if (_wnd.fullscreen) {
 		// restore display?
@@ -291,6 +291,7 @@ static void MakeWindow(bool full_screen)
 		}
 	}
 	GameSizeChanged(); // invalidate all windows, force redraw
+	return true; // the request succedded
 }
 
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -895,12 +896,10 @@ bool VideoDriver_Win32::ChangeResolution(int w, int h)
 	_wnd.width = _wnd.width_org = w;
 	_wnd.height = _wnd.height_org = h;
 
-	MakeWindow(_fullscreen); // _wnd.fullscreen screws up ingame resolution switching
-
-	return true;
+	return MakeWindow(_fullscreen); // _wnd.fullscreen screws up ingame resolution switching
 }
 
-void VideoDriver_Win32::ToggleFullscreen(bool full_screen)
+bool VideoDriver_Win32::ToggleFullscreen(bool full_screen)
 {
-	MakeWindow(full_screen);
+	return MakeWindow(full_screen);
 }

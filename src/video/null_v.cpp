@@ -38,4 +38,4 @@ void VideoDriver_Null::MainLoop()
 
 bool VideoDriver_Null::ChangeResolution(int w, int h) { return false; }
 
-void VideoDriver_Null::ToggleFullscreen(bool fs) {}
+bool VideoDriver_Null::ToggleFullscreen(bool fs) { return false; }

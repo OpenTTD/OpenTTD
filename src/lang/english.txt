@@ -941,6 +941,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Select t
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fullscreen
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Check this box to play OpenTTD fullscreen mode
+STR_FULLSCREEN_FAILED                                           :{WHITE}Fullscreen mode failed
 
 STR_OPTIONS_RES                                                 :{BLACK}Screen resolution
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

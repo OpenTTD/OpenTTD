@@ -521,14 +521,16 @@ bool VideoDriver_SDL::ChangeResolution(int w, int h)
 	return CreateMainSurface(w, h);
 }
 
-void VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
+bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 {
 	_fullscreen = fullscreen;
 	GetVideoModes(); // get the list of available video modes
 	if (_num_resolutions == 0 || !this->ChangeResolution(_cur_resolution[0], _cur_resolution[1])) {
 		// switching resolution failed, put back full_screen to original status
 		_fullscreen ^= true;
+		return false;
 	}
+	return true;
 }
 
 #endif /* WITH_SDL */

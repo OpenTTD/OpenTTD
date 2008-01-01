@@ -1275,12 +1275,13 @@ bool ChangeResInGame(int width, int height)
 	return (_screen.width == width && _screen.height == height) || _video_driver->ChangeResolution(width, height);
 }
 
-void ToggleFullScreen(bool fs)
+bool ToggleFullScreen(bool fs)
 {
-	_video_driver->ToggleFullscreen(fs);
+	bool result = _video_driver->ToggleFullscreen(fs);
 	if (_fullscreen != fs && _num_resolutions == 0) {
 		DEBUG(driver, 0, "Could not find a suitable fullscreen resolution");
 	}
+	return result;
 }
 
 static int CDECL compare_res(const void *pa, const void *pb)

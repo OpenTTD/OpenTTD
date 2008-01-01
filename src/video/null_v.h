@@ -20,7 +20,7 @@ public:
 
 	/* virtual */ bool ChangeResolution(int w, int h);
 
-	/* virtual */ void ToggleFullscreen(bool fullscreen);
+	/* virtual */ bool ToggleFullscreen(bool fullscreen);
 };
 
 class FVideoDriver_Null: public VideoDriverFactory<FVideoDriver_Null> {
