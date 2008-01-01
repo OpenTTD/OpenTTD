@@ -212,7 +212,7 @@ void VehiclePositionChanged(Vehicle *v)
 }
 
 /** Called after load to update coordinates */
-void AfterLoadVehicles()
+void AfterLoadVehicles(bool clear_te_id)
 {
 	Vehicle *v;
 
@@ -222,7 +222,7 @@ void AfterLoadVehicles()
 
 		v->UpdateDeltaXY(v->direction);
 
-		v->fill_percent_te_id = INVALID_TE_ID;
+		if (clear_te_id) v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = NULL;
 		if (v->type == VEH_TRAIN) v->u.rail.first_engine = INVALID_ENGINE;
 		if (v->type == VEH_ROAD)  v->u.road.first_engine = INVALID_ENGINE;

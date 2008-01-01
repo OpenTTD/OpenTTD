@@ -1371,7 +1371,7 @@ bool AfterLoadGame()
 	InitializeLandscapeVariables(true);
 
 	/* Update all vehicles */
-	AfterLoadVehicles();
+	AfterLoadVehicles(true);
 
 	/* Update all waypoints */
 	if (CheckSavegameVersion(12)) FixOldWaypoints();
@@ -2284,7 +2284,7 @@ void ReloadNewGRFData()
 	LoadStringWidthTable();
 	/* reload vehicles */
 	ResetVehiclePosHash();
-	AfterLoadVehicles();
+	AfterLoadVehicles(false);
 	StartupEngines();
 	/* update station and waypoint graphics */
 	AfterLoadWaypoints();
