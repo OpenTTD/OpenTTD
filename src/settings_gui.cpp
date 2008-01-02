@@ -489,29 +489,27 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		DrawWindowWidgets(w);
 
-		uint32 click_a = _difficulty_click_a;
-		uint32 click_b = _difficulty_click_b;
-
-		/* XXX - Disabled buttons in normal gameplay. Bitshifted for each button to see if
-		 * that bit is set. If it is set, the button is disabled */
-		uint32 disabled = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
+		/* XXX - Disabled buttons in normal gameplay or during muliplayer as non server.
+		 *       Bitshifted for each button to see if that bit is set. If it is set, the
+		 *       button is disabled */
+		uint32 disabled = 0;
+		if (_networking && !_network_server) {
+			disabled = MAX_UVALUE(uint32); // Disable all
+		} else if (_game_mode == GM_NORMAL) {
+			disabled = DIFF_INGAME_DISABLED_BUTTONS;
+		}
 
 		int value;
 		int y = GAMEDIFF_WND_TOP_OFFSET;
 		for (uint i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, HasBit(click_a, i) ? FR_LOWERED : FR_NONE);
-			DrawFrameRect(15, y, 15 + 8, y + 8, 3, HasBit(click_b, i) ? FR_LOWERED : FR_NONE);
-			if (HasBit(disabled, i) || (_networking && !_network_server)) {
-				int color = (1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[COLOUR_YELLOW][2];
-				GfxFillRect( 6, y + 1,  6 + 8, y + 8, color);
-				GfxFillRect(16, y + 1, 16 + 8, y + 8, color);
-			}
+			const GameSettingData *gsd = &_game_setting_info[i];
+			value = ((GDType*)&_opt_mod_temp.diff)[i];
 
-			DrawStringCentered(10, y, STR_6819, TC_FROMSTRING);
-			DrawStringCentered(20, y, STR_681A, TC_FROMSTRING);
+			DrawArrowButtons(5, y, 3, HasBit(_difficulty_click_a, i) | HasBit(_difficulty_click_b, i) << 1,
+					!(HasBit(disabled, i) || gsd->min == value),
+					!(HasBit(disabled, i) || gsd->max == value));
 
-
-			value = _game_setting_info[i].str + ((GDType*)&_opt_mod_temp.diff)[i];
+			value += _game_setting_info[i].str;
 			if (i == 4) value *= 1000; // XXX - handle currency option
 			SetDParam(0, value);
 			DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, TC_FROMSTRING);
@@ -526,22 +524,20 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			/* Don't allow clients to make any changes */
 			if  (_networking && !_network_server) return;
 
-			int x = e->we.click.pt.x - 5;
+			const int x = e->we.click.pt.x - 5;
 			if (!IsInsideMM(x, 0, 21)) // Button area
 				return;
 
-			int y = e->we.click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
+			const int y = e->we.click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
 			if (y < 0) return;
 
 			/* Get button from Y coord. */
-			uint btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
+			const uint btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
 			if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9)
 				return;
 
 			/* Clicked disabled button? */
-			uint dis = (_game_mode == GM_NORMAL) ? DIFF_INGAME_DISABLED_BUTTONS : 0;
-
-			if (HasBit(dis, btn))
+			if (_game_mode == GM_NORMAL && HasBit(DIFF_INGAME_DISABLED_BUTTONS, btn))
 				return;
 
 			_difficulty_timeout = 5;
@@ -564,7 +560,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			((GDType*)&_opt_mod_temp.diff)[btn] = val;
 			w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
 			SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
-			w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
+			w->LowerWidget(GDW_LVL_CUSTOM);
 			SetWindowDirty(w);
 		} break;
 		case GDW_LVL_EASY:
