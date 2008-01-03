@@ -3276,19 +3276,19 @@ static uint16 SanitizeSpriteOffset(uint16& num, uint16 offset, int max_sprites, 
  * @param load_index SpriteID of the sprite to be relocated */
 static inline void TranslateShoreSprites(SpriteID load_index)
 {
-	/* Contains the displacement required */
+	/** Contains the displacement required for the corresponding initial sprite*/
 	static const SpriteID shore_dup[8] = {
-		SPR_SHORE_BASE +  4,  //4062
-		SPR_SHORE_BASE +  1,  //4063
-		SPR_SHORE_BASE +  2,  //4064
-		SPR_SHORE_BASE +  8,  //4065
-		SPR_SHORE_BASE +  6,  //4066
-		SPR_SHORE_BASE + 12,  //4067
-		SPR_SHORE_BASE +  3,  //4068
-		SPR_SHORE_BASE +  9,  //4069
+		SPR_SHORE_BASE +  4,  ///< 4062
+		SPR_SHORE_BASE +  1,  ///< 4063
+		SPR_SHORE_BASE +  2,  ///< 4064
+		SPR_SHORE_BASE +  8,  ///< 4065
+		SPR_SHORE_BASE +  6,  ///< 4066
+		SPR_SHORE_BASE + 12,  ///< 4067
+		SPR_SHORE_BASE +  3,  ///< 4068
+		SPR_SHORE_BASE +  9,  ///< 4069
 	};
 
-	DupSprite(load_index, shore_dup[load_index - 4062]);
+	DupSprite(load_index, shore_dup[load_index - SPR_ORIGINALSHORE_START]);
 }
 
 /* Action 0x05 */
@@ -3382,18 +3382,18 @@ static void GraphicsNew(byte *buf, int len)
 
 					/* openttd(d/w).grf missing shore sprites and initialisation of SPR_SHORE_BASE */
 					LoadNextSprite(      SPR_SHORE_BASE +  0, _file_index, _nfo_line++); // SLOPE_STEEP_S
-					TranslateShoreSprites(4063); // SLOPE_W
-					TranslateShoreSprites(4064); // SLOPE_S
-					TranslateShoreSprites(4068); // SLOPE_SW
-					TranslateShoreSprites(4062); // SLOPE_E
+					TranslateShoreSprites(SPR_ORIGINALSHORE_START + 1); // SLOPE_W
+					TranslateShoreSprites(SPR_ORIGINALSHORE_START + 2); // SLOPE_S
+					TranslateShoreSprites(SPR_ORIGINALSHORE_START + 6); // SLOPE_SW
+					TranslateShoreSprites(SPR_ORIGINALSHORE_START); // SLOPE_E
 					LoadNextSprite(      SPR_SHORE_BASE +  5, _file_index, _nfo_line++); // SLOPE_STEEP_W
-					TranslateShoreSprites(4066); // SLOPE_SE
+					TranslateShoreSprites(SPR_ORIGINALSHORE_START + 4); // SLOPE_SE
 					LoadNextSprite(      SPR_SHORE_BASE +  7, _file_index, _nfo_line++); // SLOPE_WSE
-					TranslateShoreSprites(4065); // SLOPE_N
-					TranslateShoreSprites(4069); // SLOPE_NW
+					TranslateShoreSprites(SPR_ORIGINALSHORE_START + 3); // SLOPE_N
+					TranslateShoreSprites(SPR_ORIGINALSHORE_START + 7); // SLOPE_NW
 					LoadNextSprite(      SPR_SHORE_BASE + 10, _file_index, _nfo_line++); // SLOPE_STEEP_N
 					LoadNextSprite(      SPR_SHORE_BASE + 11, _file_index, _nfo_line++); // SLOPE_NWS
-					TranslateShoreSprites(4067); // SLOPE_NE
+					TranslateShoreSprites(SPR_ORIGINALSHORE_START + 5); // SLOPE_NE
 					LoadNextSprite(      SPR_SHORE_BASE + 13, _file_index, _nfo_line++); // SLOPE_ENW
 					LoadNextSprite(      SPR_SHORE_BASE + 14, _file_index, _nfo_line++); // SLOPE_SEN
 					LoadNextSprite(      SPR_SHORE_BASE + 15, _file_index, _nfo_line++); // SLOPE_STEEP_E
@@ -3888,9 +3888,9 @@ static void SpriteReplace(byte *buf, int len)
 			_nfo_line++;
 			LoadNextSprite(load_index, _file_index, _nfo_line); // XXX
 
-			/*  Shore sprites (4062-4069) are now located at different addresses.
+			/*  Shore sprites now located at different addresses.
 			 * So apply the required displacements */
-			if (IsInsideMM(load_index, 4062, 4069+1)) TranslateShoreSprites(load_index);
+			if (IsInsideMM(load_index, SPR_ORIGINALSHORE_START, SPR_ORIGINALSHORE_END + 1)) TranslateShoreSprites(load_index);
 		}
 	}
 }

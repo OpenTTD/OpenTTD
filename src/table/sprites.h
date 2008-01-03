@@ -144,6 +144,8 @@ enum Sprites {
 	/* shore tiles - action 05-0D */
 	SPR_SHORE_BASE                  = SPR_2CCMAP_BASE + TWOCCMAP_SPRITE_COUNT,
 	SPR_SHORE_SPRITE_COUNT          = 18,
+	SPR_ORIGINALSHORE_START         = 4062,
+	SPR_ORIGINALSHORE_END           = 4069,
 
 	SPR_AIRPORTX_BASE     = SPR_SHORE_BASE + SPR_SHORE_SPRITE_COUNT, // The sprites used for other airport angles
 	SPR_NEWAIRPORT_TARMAC = SPR_AIRPORTX_BASE,
