@@ -201,9 +201,8 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			c &= present;
 			if (c == ROAD_NONE) return CMD_ERROR;
 
+			ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 			if (flags & DC_EXEC) {
-				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-
 				present ^= c;
 				if (present == ROAD_NONE) {
 					RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
@@ -236,11 +235,11 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * we can't draw the crossing without trambits ;) */
 			if (rt == ROADTYPE_ROAD && HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) && ((flags & DC_EXEC) || !HasBit(p1, 6))) return CMD_ERROR;
 
-			if (flags & DC_EXEC) {
-				if (rt == ROADTYPE_ROAD) {
-					ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-				}
+			if (rt == ROADTYPE_ROAD) {
+				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
+			}
 
+			if (flags & DC_EXEC) {
 				RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
 				if (rts == ROADTYPES_NONE) {
 					MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GetRailType(tile));

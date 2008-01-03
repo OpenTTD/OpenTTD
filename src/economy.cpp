@@ -402,6 +402,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					}
 				} else {
 					v->owner = new_player;
+					v->colormap = PAL_NONE;
 					v->group_id = DEFAULT_GROUP;
 					if (IsEngineCountable(v)) GetPlayer(new_player)->num_engines[v->engine_type]++;
 					switch (v->type) {

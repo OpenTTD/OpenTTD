@@ -330,15 +330,15 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						default: break;
 					}
 
+					if (_game_mode != GM_EDITOR && IsValidPlayer(_current_player)) {
+						Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+						if (t != NULL)
+							ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
+					}
+
 					if (flags & DC_EXEC) {
 						TreeType treetype;
 						uint growth;
-
-						if (_game_mode != GM_EDITOR && IsValidPlayer(_current_player)) {
-							Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
-							if (t != NULL)
-								ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
-						}
 
 						treetype = (TreeType)p1;
 						if (treetype == TREE_INVALID) {
@@ -488,7 +488,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
 {
 	uint num;
 
-	if ((flags & DC_EXEC) && IsValidPlayer(_current_player)) {
+	if (IsValidPlayer(_current_player)) {
 		Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 		if (t != NULL)
 			ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM);

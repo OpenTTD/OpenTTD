@@ -522,8 +522,8 @@ static CommandCost ClearTile_Town(TileIndex tile, byte flags)
 		}
 	}
 
+	ChangeTownRating(t, -rating, RATING_HOUSE_MINIMUM);
 	if (flags & DC_EXEC) {
-		ChangeTownRating(t, -rating, RATING_HOUSE_MINIMUM);
 		ClearTownHouse(t, tile);
 	}
 
@@ -2261,6 +2261,23 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 	}
 }
 
+static bool _town_rating_test = false;
+
+void SetTownRatingTestMode(bool mode)
+{
+	static int ref_count = 0;
+	if (mode) {
+		if (ref_count == 0) {
+			Town *t;
+			FOR_ALL_TOWNS(t) t->test_rating = t->ratings[_current_player];
+		}
+		ref_count++;
+	} else {
+		assert(ref_count > 0);
+		ref_count--;
+	}
+	_town_rating_test = !(ref_count == 0);
+}
 
 void ChangeTownRating(Town *t, int add, int max)
 {
@@ -2275,7 +2292,7 @@ void ChangeTownRating(Town *t, int add, int max)
 
 	SetBit(t->have_ratings, _current_player);
 
-	rating = t->ratings[_current_player];
+	rating = _town_rating_test ? t->test_rating : t->ratings[_current_player];
 
 	if (add < 0) {
 		if (rating > max) {
@@ -2288,7 +2305,11 @@ void ChangeTownRating(Town *t, int add, int max)
 			if (rating > max) rating = max;
 		}
 	}
-	t->ratings[_current_player] = rating;
+	if (_town_rating_test) {
+		t->test_rating = rating;
+	} else {
+		t->ratings[_current_player] = rating;
+	}
 }
 
 /* penalty for removing town-owned stuff */
@@ -2313,7 +2334,7 @@ bool CheckforTownRating(uint32 flags, Town *t, byte type)
 	 */
 	modemod = _default_rating_settings[_opt.diff.town_council_tolerance][type];
 
-	if (t->ratings[_current_player] < 16 + modemod && !(flags & DC_NO_TOWN_RATING)) {
+	if ((_town_rating_test ? t->test_rating : t->ratings[_current_player]) < 16 + modemod && !(flags & DC_NO_TOWN_RATING)) {
 		SetDParam(0, t->index);
 		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 		return false;
