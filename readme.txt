@@ -289,6 +289,7 @@ The OpenTTD team (in alphabetical order):
   Jonathan Coome (Maedhros)      - High priest of the newGRF Temple
   Attila Bán (MiHaMiX)           - WebTranslator, Nightlies, Wiki and bugtracker host
   Owen Rudge (orudge)            - Forum host, OS/2 port
+  Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods
   Remko Bijker (Rubidium)        - Lead coder and way more
   Benedikt Brüggemeier (skidd13) - Bug fixer and code reworker
   Zdenek Sojka (SmatZ)           - Bug finder and fixer
@@ -296,7 +297,6 @@ The OpenTTD team (in alphabetical order):
 Inactive Developers:
   Victor Fischer (Celestar)      - Programming everywhere you need him to
   Tamás Faragó (Darkvater)       - Ex-Lead coder
-  Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods
   Christoph Mallon (Tron)        - Programmer, code correctness police
 
 Retired Developers:
