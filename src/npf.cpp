@@ -538,7 +538,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		/* This is a tunnel/bridge. We know this tunnel/bridge is our type,
 		 * otherwise we wouldn't have got here. It is also facing us,
 		 * so we should skip it's body */
-		dst_tile = IsTunnel(src_tile) ? GetOtherTunnelEnd(src_tile) : GetOtherBridgeEnd(src_tile);
+		dst_tile = GetOtherTunnelBridgeEnd(src_tile);
 		override_dst_check = true;
 	} else if (type != TRANSPORT_WATER && (IsStandardRoadStopTile(src_tile) || IsTileDepotType(src_tile, type))) {
 		/* This is a road station (non drive-through) or a train or road depot. We can enter and exit

@@ -133,8 +133,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MP_TUNNELBRIDGE:
 			{
 				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
-				TileIndex endtile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
-				if (GetVehicleTunnelBridge(tile, endtile) != NULL) return CMD_ERROR;
+				if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
 			} break;
 
 		default:
@@ -158,9 +157,9 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		CommandCost cost;
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			TileIndex other_end = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
+			TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
 			/* Pay for *every* tile of the bridge or tunnel */
-			cost.AddCost((DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile) + 1) * _price.remove_road);
+			cost.AddCost((DistanceManhattan(other_end, tile) + 1) * _price.remove_road);
 			if (flags & DC_EXEC) {
 				SetRoadTypes(other_end, GetRoadTypes(other_end) & ~RoadTypeToRoadTypes(rt));
 				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
@@ -509,10 +508,8 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
 				if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 
-				TileIndex endtile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
-
 				/* Don't allow "upgrading" the bridge/tunnel when vehicles are already driving on it */
-				if (GetVehicleTunnelBridge(tile, endtile) != NULL) return CMD_ERROR;
+				if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
 			} break;
 
 		default:
@@ -541,7 +538,7 @@ do_clear:;
 	cost.AddCost(CountBits(pieces) * _price.build_road);
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* Pay for *every* tile of the bridge or tunnel */
-		cost.MultiplyCost(DistanceManhattan(IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile), tile));
+		cost.MultiplyCost(DistanceManhattan(GetOtherTunnelBridgeEnd(tile), tile) + 1);
 	}
 
 	if (flags & DC_EXEC) {
@@ -557,7 +554,7 @@ do_clear:;
 			} break;
 
 			case MP_TUNNELBRIDGE: {
-				TileIndex other_end = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
+				TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
 
 				SetRoadTypes(other_end, GetRoadTypes(other_end) | RoadTypeToRoadTypes(rt));
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));

@@ -931,7 +931,7 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 
 			/* Skip to end of tunnel or bridge
 			 * note that tile is a parameter by reference, so it must be updated */
-			tile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
+			tile = GetOtherTunnelBridgeEnd(tile);
 
 			signal_ctr += 2 + DistanceMax(orig_tile, tile) * 2;
 			return true;
@@ -1262,7 +1262,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					break;
 
 				case MP_TUNNELBRIDGE: {
-					TileIndex endtile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
+					TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
 
 					/* If both ends of tunnel/bridge are in the range, do not try to convert twice -
 					 * it would cause assert because of different test and exec runs */
@@ -1938,8 +1938,7 @@ static bool SignalVehicleCheck(TileIndex tile, uint track)
 {
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* Locate vehicles in tunnels or on bridges */
-		TileIndex endtile = IsTunnel(tile) ? GetOtherTunnelEnd(tile) : GetOtherBridgeEnd(tile);
-		return GetVehicleTunnelBridge(tile, endtile) != NULL;
+		return GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL;
 	} else {
 		return VehicleFromPos(tile, &track, &SignalVehicleCheckProc) != NULL;
 	}

@@ -8,6 +8,8 @@
 #include "direction_func.h"
 #include "core/bitmath_func.hpp"
 #include "tile_map.h"
+#include "bridge_map.h"
+#include "tunnel_map.h"
 
 
 /**
@@ -61,6 +63,18 @@ static inline void SetTunnelBridgeSnowOrDesert(TileIndex t, bool snow_or_desert)
 {
 	assert(IsTileType(t, MP_TUNNELBRIDGE));
 	SB(_m[t].m4, 7, 1, snow_or_desert);
+}
+
+/**
+ * Determines type of the wormhole and returns its other end
+ * @param t one end
+ * @pre IsTileType(t, MP_TUNNELBRIDGE)
+ * @return other end
+ */
+static inline TileIndex GetOtherTunnelBridgeEnd(TileIndex t)
+{
+	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	return IsTunnel(t) ? GetOtherTunnelEnd(t) : GetOtherBridgeEnd(t);
 }
 
 #endif /* TUNNELBRIDGE_MAP_H */

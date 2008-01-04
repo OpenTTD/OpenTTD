@@ -2851,11 +2851,7 @@ static void CheckTrainCollision(Vehicle *v)
 	/* find colliding vehicles */
 	if (v->u.rail.track == TRACK_BIT_WORMHOLE) {
 		VehicleFromPos(v->tile, &tcc, FindTrainCollideEnum);
-		if (IsBridgeTile(v->tile)) {
-			VehicleFromPos(GetOtherBridgeEnd(v->tile), &tcc, FindTrainCollideEnum);
-		} else {
-			VehicleFromPos(GetOtherTunnelEnd(v->tile), &tcc, FindTrainCollideEnum);
-		}
+		VehicleFromPos(GetOtherTunnelBridgeEnd(v->tile), &tcc, FindTrainCollideEnum);
 	} else {
 		VehicleFromPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
 	}
@@ -3130,7 +3126,7 @@ static void DeleteLastWagon(Vehicle *v)
 	DisableTrainCrossing(v->tile);
 
 	if (v->u.rail.track == TRACK_BIT_WORMHOLE) { // inside a tunnel / bridge
-		TileIndex endtile = IsTunnel(v->tile) ? GetOtherTunnelEnd(v->tile) : GetOtherBridgeEnd(v->tile);
+		TileIndex endtile = GetOtherTunnelBridgeEnd(v->tile);
 
 		if (GetVehicleTunnelBridge(v->tile, endtile) != NULL) return; // tunnel / bridge is busy
 
