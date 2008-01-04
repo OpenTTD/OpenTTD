@@ -803,7 +803,7 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 
 	totalsets = in_motion ? group->g.real.num_loaded : group->g.real.num_loading;
 
-	if (v->cargo.Count() == v->cargo_cap || totalsets == 1) {
+	if (v->cargo.Count() >= v->cargo_cap || totalsets == 1) {
 		set = totalsets - 1;
 	} else if (v->cargo.Empty() || totalsets == 2) {
 		set = 0;
