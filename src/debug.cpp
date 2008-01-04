@@ -162,7 +162,7 @@ void SetDebugString(const char *s)
 const char *GetDebugString()
 {
 	const DebugLevel *i;
-	static char dbgstr[100];
+	static char dbgstr[150];
 	char dbgval[20];
 
 	memset(dbgstr, 0, sizeof(dbgstr));
