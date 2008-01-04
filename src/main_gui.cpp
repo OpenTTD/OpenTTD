@@ -1382,6 +1382,8 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 				case DDSP_CREATE_ROCKS:
 				case DDSP_CREATE_DESERT:
 				case DDSP_CREATE_WATER:
+				case DDSP_RAISE_AND_LEVEL_AREA:
+				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
 				case DDSP_DEMOLISH_AREA:
 					GUIPlaceProcDragXY(e);

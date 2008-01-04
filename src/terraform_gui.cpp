@@ -105,6 +105,12 @@ bool GUIPlaceProcDragXY(const WindowEvent *e)
 		case DDSP_DEMOLISH_AREA:
 			DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 			break;
+		case DDSP_RAISE_AND_LEVEL_AREA:
+			DoCommandP(end_tile, start_tile, 1, CcTerraform, CMD_LEVEL_LAND| CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE));
+			break;
+		case DDSP_LOWER_AND_LEVEL_AREA:
+			DoCommandP(end_tile, start_tile, -1, CcTerraform, CMD_LEVEL_LAND | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE));
+			break;
 		case DDSP_LEVEL_AREA:
 			DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND);
 			break;
@@ -143,18 +149,12 @@ void PlaceProc_DemolishArea(TileIndex tile)
 
 static void PlaceProc_RaiseLand(TileIndex tile)
 {
-	DoCommandP(
-		tile, SLOPE_N, 1, CcTerraform,
-		CMD_TERRAFORM_LAND | CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE)
-	);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_RAISE_AND_LEVEL_AREA);
 }
 
 static void PlaceProc_LowerLand(TileIndex tile)
 {
-	DoCommandP(
-		tile, SLOPE_N, 0, CcTerraform,
-		CMD_TERRAFORM_LAND | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE)
-	);
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LOWER_AND_LEVEL_AREA);
 }
 
 void PlaceProc_LevelLand(TileIndex tile)
@@ -244,6 +244,8 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		if (e->we.place.pt.x != -1) {
 			switch (e->we.place.select_proc) {
 				case DDSP_DEMOLISH_AREA:
+				case DDSP_RAISE_AND_LEVEL_AREA:
+				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
 					GUIPlaceProcDragXY(e);
 					break;

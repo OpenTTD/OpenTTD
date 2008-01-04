@@ -355,7 +355,7 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param tile end tile of area-drag
  * @param flags for this command type
  * @param p1 start tile of area drag
- * @param p2 unused
+ * @param p2 height difference; eg raise (+1), lower (-1) or level (0)
  * @return  error or cost of terraforming
  */
 CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -364,7 +364,7 @@ CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int ex;
 	int ey;
 	int sx, sy;
-	uint h, curh;
+	uint h, oldh, curh;
 	CommandCost money;
 	CommandCost ret;
 	CommandCost cost;
@@ -374,7 +374,13 @@ CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* remember level height */
-	h = TileHeight(p1);
+	oldh = TileHeight(p1);
+
+	/* compute new height */
+	h = oldh + p2;
+
+	/* Check range of destination height */
+	if (h > MAX_TILE_HEIGHT) return_cmd_error((oldh == 0) ? STR_1003_ALREADY_AT_SEA_LEVEL : STR_1004_TOO_HIGH);
 
 	/* make sure sx,sy are smaller than ex,ey */
 	ex = TileX(tile);
