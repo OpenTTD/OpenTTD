@@ -94,7 +94,7 @@ struct GRFLoadedFeatures {
 /* Indicates which are the newgrf features currently loaded ingame */
 extern GRFLoadedFeatures _loaded_newgrf_features;
 
-void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, bool ottd_grf = false);
+void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
 void LoadNewGRF(uint load_index, uint file_index);
 void ReloadNewGRFData(); // in openttd.cpp
 

@@ -5532,7 +5532,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 }
 
 
-void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, bool ottd_grf)
+void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 {
 	const char *filename = config->filename;
 	uint16 num;
@@ -5551,7 +5551,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, b
 		if (_cur_grffile == NULL) error("File '%s' lost in cache.\n", filename);
 		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
 		if (stage == GLS_ACTIVATION && !HasBit(config->flags, GCF_RESERVED)) return;
-		_cur_grffile->is_ottdfile = ottd_grf;
+		_cur_grffile->is_ottdfile = config->IsOpenTTDBaseGRF();
 	}
 
 	if (file_index > LAST_GRF_SLOT) {
@@ -5694,7 +5694,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (!FioCheckFileExists(c->filename)) error("NewGRF file is missing '%s'", c->filename);
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
-			LoadNewGRFFile(c, slot++, stage, true);
+			LoadNewGRFFile(c, slot++, stage);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {
