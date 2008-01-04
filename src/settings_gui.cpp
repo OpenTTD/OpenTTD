@@ -130,6 +130,29 @@ static inline bool RoadVehiclesAreBuilt()
 }
 
 
+enum GameOptionsWidgets {
+	GAMEOPT_CURRENCY_TXT    =  4,
+	GAMEOPT_CURRENCY_BTN,
+	GAMEOPT_DISTANCE_TXT    =  7,
+	GAMEOPT_DISTANCE_BTN,
+	GAMEOPT_ROADSIDE_TXT    = 10,
+	GAMEOPT_ROADSIDE_BTN,
+	GAMEOPT_TOWNNAME_TXT    = 13,
+	GAMEOPT_TOWNNAME_BTN,
+	GAMEOPT_AUTOSAVE_TXT    = 16,
+	GAMEOPT_AUTOSAVE_BTN,
+	GAMEOPT_VEHICLENAME_TXT = 19,
+	GAMEOPT_VEHICLENAME_BTN,
+	GAMEOPT_VEHICLENAME_SAVE,
+	GAMEOPT_LANG_TXT        = 23,
+	GAMEOPT_LANG_BTN,
+	GAMEOPT_RESOLUTION_TXT  = 26,
+	GAMEOPT_RESOLUTION_BTN,
+	GAMEOPT_FULLSCREEN,
+	GAMEOPT_SCREENSHOT_TXT  = 30,
+	GAMEOPT_SCREENSHOT_BTN,
+};
+
 static void ShowCustCurrency();
 
 static void GameOptionsWndProc(Window *w, WindowEvent *e)
@@ -151,7 +174,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		i = GetCurRes();
 		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
 		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
-		w->SetWidgetLoweredState(28, _fullscreen);
+		w->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
 
 		DrawWindowWidgets(w);
 		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
@@ -159,13 +182,15 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 4: case 5: /* Setup currencies dropdown */
-			ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, 5, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);;
-			return;
-		case 7: case 8: /* Setup distance unit dropdown */
-			ShowDropDownMenu(w, _units_dropdown, _opt_ptr->units, 8, 0, 0);
-			return;
-		case 10: case 11: { /* Setup road-side dropdown */
+		case GAMEOPT_CURRENCY_TXT: case GAMEOPT_CURRENCY_BTN: /* Setup currencies dropdown */
+			ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);;
+			break;
+
+		case GAMEOPT_DISTANCE_TXT: case GAMEOPT_DISTANCE_BTN: /* Setup distance unit dropdown */
+			ShowDropDownMenu(w, _units_dropdown, _opt_ptr->units, GAMEOPT_DISTANCE_BTN, 0, 0);
+			break;
+
+		case GAMEOPT_ROADSIDE_TXT: case GAMEOPT_ROADSIDE_BTN: { /* Setup road-side dropdown */
 			int i = 0;
 
 			/* You can only change the drive side if you are in the menu or ingame with
@@ -173,9 +198,10 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server))
 				i = (-1) ^ (1 << _opt_ptr->road_side); // disable the other value
 
-			ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, 11, i, 0);
-		} return;
-		case 13: case 14: { /* Setup townname dropdown */
+			ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, GAMEOPT_ROADSIDE_BTN, i, 0);
+		} break;
+
+		case GAMEOPT_TOWNNAME_TXT: case GAMEOPT_TOWNNAME_BTN: { /* Setup townname dropdown */
 			uint sel = 0;
 			for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
 				if (_town_names[i] == TownName(_opt_ptr->town_name)) {
@@ -183,40 +209,46 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 			}
-			ShowDropDownMenu(w, _town_names, sel, 14, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << sel), 0);
-			return;
-		}
-		case 16: case 17: /* Setup autosave dropdown */
-			ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, 17, 0, 0);
-			return;
-		case 19: case 20: /* Setup customized vehicle-names dropdown */
-			ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names & 1) ? 1 : 0, 20, (_vehicle_design_names & 2) ? 0 : 2, 0);
-			return;
-		case 21: /* Save customized vehicle-names to disk */
-			return;
-		case 23: case 24: /* Setup interface language dropdown */
-			ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, 24, 0, 0);
-			return;
-		case 26: case 27: /* Setup resolution dropdown */
-			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), 27, 0, 0);
-			return;
-		case 28: /* Click fullscreen on/off */
+			ShowDropDownMenu(w, _town_names, sel, GAMEOPT_TOWNNAME_BTN, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << sel), 0);
+		} break;
+
+		case GAMEOPT_AUTOSAVE_TXT: case GAMEOPT_AUTOSAVE_BTN: /* Setup autosave dropdown */
+			ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
+			break;
+
+		case GAMEOPT_VEHICLENAME_TXT: case GAMEOPT_VEHICLENAME_BTN: /* Setup customized vehicle-names dropdown */
+			ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names & 1) ? 1 : 0, GAMEOPT_VEHICLENAME_BTN, (_vehicle_design_names & 2) ? 0 : 2, 0);
+			break;
+
+		case GAMEOPT_VEHICLENAME_SAVE: /* Save customized vehicle-names to disk */
+			break;  // not implemented
+
+		case GAMEOPT_LANG_TXT: case GAMEOPT_LANG_BTN: /* Setup interface language dropdown */
+			ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, GAMEOPT_LANG_BTN, 0, 0);
+			break;
+
+		case GAMEOPT_RESOLUTION_TXT: case GAMEOPT_RESOLUTION_BTN: /* Setup resolution dropdown */
+			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), GAMEOPT_RESOLUTION_BTN, 0, 0);
+			break;
+
+		case GAMEOPT_FULLSCREEN: /* Click fullscreen on/off */
 			/* try to toggle full-screen on/off */
 			if (!ToggleFullScreen(!_fullscreen)) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_FULLSCREEN_FAILED, 0, 0);
 			}
-			w->SetWidgetLoweredState(28, _fullscreen);
+			w->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
 			SetWindowDirty(w);
-			return;
-		case 30: case 31: /* Setup screenshot format dropdown */
-			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, 31, 0, 0);
-			return;
+			break;
+
+		case GAMEOPT_SCREENSHOT_TXT: case GAMEOPT_SCREENSHOT_BTN: /* Setup screenshot format dropdown */
+			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, GAMEOPT_SCREENSHOT_BTN, 0, 0);
+			break;
 		}
 		break;
 
 	case WE_DROPDOWN_SELECT:
 		switch (e->we.dropdown.button) {
-		case 20: /* Vehicle design names */
+		case GAMEOPT_VEHICLENAME_BTN: /* Vehicle design names */
 			if (e->we.dropdown.index == 0) {
 				DeleteCustomEngineNames();
 				MarkWholeScreenDirty();
@@ -225,22 +257,26 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 				MarkWholeScreenDirty();
 			}
 			break;
-		case 5: /* Currency */
+
+		case GAMEOPT_CURRENCY_BTN: /* Currency */
 			if (e->we.dropdown.index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
 			_opt_ptr->currency = e->we.dropdown.index;
 			MarkWholeScreenDirty();
 			break;
-		case 8: /* Measuring units */
+
+		case GAMEOPT_DISTANCE_BTN: /* Measuring units */
 			_opt_ptr->units = e->we.dropdown.index;
 			MarkWholeScreenDirty();
 			break;
-		case 11: /* Road side */
+
+		case GAMEOPT_ROADSIDE_BTN: /* Road side */
 			if (_opt_ptr->road_side != e->we.dropdown.index) { // only change if setting changed
 				DoCommandP(0, e->we.dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 				MarkWholeScreenDirty();
 			}
 			break;
-		case 14: /* Town names */
+
+		case GAMEOPT_TOWNNAME_BTN: /* Town names */
 			if (_game_mode == GM_MENU) {
 				for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
 					if (_town_names[e->we.dropdown.index] == TownName(i)) {
@@ -251,21 +287,25 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 				InvalidateWindow(WC_GAME_OPTIONS, 0);
 			}
 			break;
-		case 17: /* Autosave options */
+
+		case GAMEOPT_AUTOSAVE_BTN: /* Autosave options */
 			_opt.autosave = _opt_newgame.autosave = e->we.dropdown.index;
 			SetWindowDirty(w);
 			break;
-		case 24: /* Change interface language */
+
+		case GAMEOPT_LANG_BTN: /* Change interface language */
 			ReadLanguagePack(e->we.dropdown.index);
 			CheckForMissingGlyphsInLoadedLanguagePack();
 			UpdateAllStationVirtCoord();
 			MarkWholeScreenDirty();
 			break;
-		case 27: /* Change resolution */
+
+		case GAMEOPT_RESOLUTION_BTN: /* Change resolution */
 			if (e->we.dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->we.dropdown.index][0],_resolutions[e->we.dropdown.index][1]))
 				SetWindowDirty(w);
 			break;
-		case 31: /* Change screenshot format */
+
+		case GAMEOPT_SCREENSHOT_BTN: /* Change screenshot format */
 			SetScreenshotFormat(e->we.dropdown.index);
 			SetWindowDirty(w);
 			break;
@@ -486,6 +526,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
 
 		break;
+
 	case WE_PAINT: {
 		DrawWindowWidgets(w);
 
@@ -563,6 +604,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			w->LowerWidget(GDW_LVL_CUSTOM);
 			SetWindowDirty(w);
 		} break;
+
 		case GDW_LVL_EASY:
 		case GDW_LVL_MEDIUM:
 		case GDW_LVL_HARD:
@@ -573,9 +615,11 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
 			SetWindowDirty(w);
 			break;
+
 		case GDW_HIGHSCORE: // Highscore Table
 			ShowHighscoreTable(_opt_mod_temp.diff_level, -1);
 			break;
+
 		case GDW_ACCEPT: { // Save button - save changes
 			GDType btn, val;
 			for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
@@ -592,6 +636,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			if (_game_mode == GM_EDITOR) StartupEconomy();
 			break;
 		}
+
 		case GDW_CANCEL: // Cancel button - close window, abandon changes
 			DeleteWindow(w);
 			break;
@@ -788,6 +833,16 @@ static PatchPage _patches_page[] = {
 	{_patches_ai,           NULL, lengthof(_patches_ai)},
 };
 
+enum PatchesSelectionWidgets {
+	PATCHSEL_OPTIONSPANEL = 3,
+	PATCHSEL_INTERFACE,
+	PATCHSEL_CONSTRUCTION,
+	PATCHSEL_VEHICLES,
+	PATCHSEL_STATIONS,
+	PATCHSEL_ECONOMY,
+	PATCHSEL_COMPETITORS
+};
+
 /** The main patches window. Shows a number of categories on top and
  * a selection of patches in that category.
  * Uses WP(w, def_d) macro - data_1, data_2, data_3 */
@@ -881,7 +936,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 3: {
+		case PATCHSEL_OPTIONSPANEL: {
 			const PatchPage *page = &_patches_page[WP(w, def_d).data_1];
 			const SettingDesc *sd;
 			void *var;
@@ -964,13 +1019,13 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, w, CS_NUMERAL);
 				}
 			}
+		} break;
 
-			break;
-		}
-		case 4: case 5: case 6: case 7: case 8: case 9:
-			w->RaiseWidget(WP(w, def_d).data_1 + 4);
-			WP(w, def_d).data_1 = e->we.click.widget - 4;
-			w->LowerWidget(WP(w, def_d).data_1 + 4);
+		case PATCHSEL_INTERFACE: case PATCHSEL_CONSTRUCTION: case PATCHSEL_VEHICLES:
+		case PATCHSEL_STATIONS:  case PATCHSEL_ECONOMY:      case PATCHSEL_COMPETITORS:
+			w->RaiseWidget(WP(w, def_d).data_1 + PATCHSEL_INTERFACE);
+			WP(w, def_d).data_1 = e->we.click.widget - PATCHSEL_INTERFACE;
+			w->LowerWidget(WP(w, def_d).data_1 + PATCHSEL_INTERFACE);
 			DeleteWindowById(WC_QUERY_STRING, 0);
 			SetWindowDirty(w);
 			break;
@@ -1058,6 +1113,17 @@ void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, b
 		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, color);
 }
 
+/** These are not, strickly speaking, widget enums,
+ *  since they have been changed as line coordinates.
+ *  So, rather, they are more like order of appearance */
+enum CustomCurrenciesWidgets {
+	CUSTCURR_EXCHANGERATE = 0,
+	CUSTCURR_SEPARATOR,
+	CUSTCURR_PREFIX,
+	CUSTCURR_SUFFIX,
+	CUSTCURR_TO_EURO,
+};
+
 static char _str_separator[2];
 
 static void CustCurrencyWndProc(Window *w, WindowEvent *e)
@@ -1069,43 +1135,42 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			int clk = WP(w, def_d).data_1;
 			DrawWindowWidgets(w);
 
-			// exchange rate
+			/* exchange rate */
 			DrawArrowButtons(10, y, 3, GB(clk, 0, 2), true, true);
 			SetDParam(0, 1);
 			SetDParam(1, 1);
 			DrawString(35, y + 1, STR_CURRENCY_EXCHANGE_RATE, TC_FROMSTRING);
 			y += 12;
 
-			// separator
+			/* separator */
 			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 2, 2) ? FR_LOWERED : FR_NONE);
 			x = DrawString(35, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
 			DoDrawString(_str_separator, x + 4, y + 1, TC_ORANGE);
 			y += 12;
 
-			// prefix
+			/* prefix */
 			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 4, 2) ? FR_LOWERED : FR_NONE);
 			x = DrawString(35, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
 			DoDrawString(_custom_currency.prefix, x + 4, y + 1, TC_ORANGE);
 			y += 12;
 
-			// suffix
+			/* suffix */
 			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 6, 2) ? FR_LOWERED : FR_NONE);
 			x = DrawString(35, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
 			DoDrawString(_custom_currency.suffix, x + 4, y + 1, TC_ORANGE);
 			y += 12;
 
-			// switch to euro
+			/* switch to euro */
 			DrawArrowButtons(10, y, 3, GB(clk, 8, 2), true, true);
 			SetDParam(0, _custom_currency.to_euro);
 			DrawString(35, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, TC_FROMSTRING);
 			y += 12;
 
-			// Preview
+			/* Preview */
 			y += 12;
 			SetDParam(0, 10000);
 			DrawString(35, y + 1, STR_CURRENCY_PREVIEW, TC_FROMSTRING);
-			break;
-		}
+		} break;
 
 		case WE_CLICK: {
 			int line = (e->we.click.pt.y - 20) / 12;
@@ -1115,7 +1180,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			CharSetFilter afilter = CS_ALPHANUMERAL;
 
 			switch (line) {
-				case 0: // rate
+				case CUSTCURR_EXCHANGERATE:
 					if (IsInsideMM(x, 10, 30)) { // clicked buttons
 						if (x < 20) {
 							if (_custom_currency.rate > 1) _custom_currency.rate--;
@@ -1132,7 +1197,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					}
 					break;
 
-				case 1: // separator
+				case CUSTCURR_SEPARATOR:
 					if (IsInsideMM(x, 10, 30)) { // clicked button
 						WP(w, def_d).data_1 = 1 << (line * 2 + 1);
 					}
@@ -1140,7 +1205,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					len = 1;
 					break;
 
-				case 2: // prefix
+				case CUSTCURR_PREFIX:
 					if (IsInsideMM(x, 10, 30)) { // clicked button
 						WP(w, def_d).data_1 = 1 << (line * 2 + 1);
 					}
@@ -1148,7 +1213,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					len = 12;
 					break;
 
-				case 3: // suffix
+				case CUSTCURR_SUFFIX:
 					if (IsInsideMM(x, 10, 30)) { // clicked button
 						WP(w, def_d).data_1 = 1 << (line * 2 + 1);
 					}
@@ -1156,7 +1221,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					len = 12;
 					break;
 
-				case 4: // to euro
+				case CUSTCURR_TO_EURO:
 					if (IsInsideMM(x, 10, 30)) { // clicked buttons
 						if (x < 20) {
 							_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ?
@@ -1183,41 +1248,38 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
 			SetWindowDirty(w);
-			break;
-		}
+		} break;
 
 		case WE_ON_EDIT_TEXT: {
-				const char *b = e->we.edittext.str;
+			const char *b = e->we.edittext.str;
 
-				switch (WP(w, def_d).data_2) {
-					case 0: /* Exchange rate */
-						_custom_currency.rate = Clamp(atoi(b), 1, 5000);
-						break;
+			switch (WP(w, def_d).data_2) {
+				case CUSTCURR_EXCHANGERATE:
+					_custom_currency.rate = Clamp(atoi(b), 1, 5000);
+					break;
 
-					case 1: /* Thousands seperator */
-						_custom_currency.separator = (b[0] == '\0') ? ' ' : b[0];
-						ttd_strlcpy(_str_separator, b, lengthof(_str_separator));
-						break;
+				case CUSTCURR_SEPARATOR: /* Thousands seperator */
+					_custom_currency.separator = (b[0] == '\0') ? ' ' : b[0];
+					ttd_strlcpy(_str_separator, b, lengthof(_str_separator));
+					break;
 
-					case 2: /* Currency prefix */
-						ttd_strlcpy(_custom_currency.prefix, b, lengthof(_custom_currency.prefix));
-						break;
+				case CUSTCURR_PREFIX:
+					ttd_strlcpy(_custom_currency.prefix, b, lengthof(_custom_currency.prefix));
+					break;
 
-					case 3: /* Currency suffix */
-						ttd_strlcpy(_custom_currency.suffix, b, lengthof(_custom_currency.suffix));
-						break;
+				case CUSTCURR_SUFFIX:
+					ttd_strlcpy(_custom_currency.suffix, b, lengthof(_custom_currency.suffix));
+					break;
 
-					case 4: { /* Year to switch to euro */
-						int val = atoi(b);
+				case CUSTCURR_TO_EURO: { /* Year to switch to euro */
+					int val = atoi(b);
 
-						_custom_currency.to_euro =
-							(val < 2000 ? CF_NOEURO : min(val, MAX_YEAR));
-						break;
-					}
+					_custom_currency.to_euro = (val < 2000 ? CF_NOEURO : min(val, MAX_YEAR));
+					break;
 				}
+			}
 			MarkWholeScreenDirty();
-			break;
-		}
+		} break;
 
 		case WE_TIMEOUT:
 			WP(w, def_d).data_1 = 0;
