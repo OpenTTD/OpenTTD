@@ -141,13 +141,23 @@ static const CargoSpec _default_cargo[] = {
 		STR_002D_FIZZY_DRINKS,   STR_004D_FIZZY_DRINK,    STR_NOTHING,    STR_QUANTITY_FIZZY_DRINKS, STR_ABBREV_FIZZY_DRINKS,
 		SPR_CARGO_FIZZYDRINK,    CC_PIECE_GOODS ),
 
+	/* Void slot in temperate */
+	MK( 0xFF,    0,   1,  0, 5688,  0,  30, true,  TE_NONE,
+		STR_000E,                STR_002E,                STR_TONS,       STR_QUANTITY_NOTHING,      STR_ABBREV_NOTHING,
+		SPR_ASCII_SPACE,         CC_NOAVAILABLE ),
+
+	/* Void slot in arctic */
+	MK( 0xFF,    0, 184,  0, 5120,  9, 255, true,  TE_NONE,
+		STR_000E,                STR_002E,                STR_TONS,       STR_QUANTITY_NOTHING,      STR_ABBREV_NOTHING,
+		SPR_ASCII_SPACE,         CC_NOAVAILABLE ),
+
 };
 
 
 /* Table of which cargo types are available in each climate, by default */
 static const CargoLabel _default_climate_cargo[NUM_LANDSCAPE][12] = {
-	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'GRAI', 'WOOD', 'IORE', 'STEL', 'VALU', 'VOID', },
-	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'WHEA', 'WOOD', 'VOID', 'PAPR', 'GOLD', 'FOOD', },
+	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'GRAI', 'WOOD', 'IORE', 'STEL', 'VALU',     33, },
+	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'WHEA', 'WOOD',     34, 'PAPR', 'GOLD', 'FOOD', },
 	{ 'PASS', 'RUBR', 'MAIL',      4, 'FRUT', 'GOOD', 'MAIZ',     11, 'CORE', 'WATR', 'DIAM', 'FOOD', },
 	{ 'PASS', 'SUGR', 'MAIL', 'TOYS', 'BATT', 'SWET', 'TOFF', 'COLA', 'CTCD', 'BUBL', 'PLST', 'FZDR', },
 };

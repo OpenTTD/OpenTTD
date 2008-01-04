@@ -37,7 +37,7 @@ void SetupCargoForClimate(LandscapeID l)
 		if (cl < lengthof(_default_cargo)) {
 			/* Copy the indexed cargo */
 			_cargo[i] = _default_cargo[cl];
-			SetBit(_cargo_mask, i);
+			if (_cargo[i].bitnum != INVALID_CARGO) SetBit(_cargo_mask, i);
 			continue;
 		}
 
