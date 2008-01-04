@@ -546,7 +546,8 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			const GameSettingData *gsd = &_game_setting_info[i];
 			value = ((GDType*)&_opt_mod_temp.diff)[i];
 
-			DrawArrowButtons(5, y, 3, HasBit(_difficulty_click_a, i) | HasBit(_difficulty_click_b, i) << 1,
+			DrawArrowButtons(5, y, 3,
+					!!HasBit(_difficulty_click_a, i) | !!HasBit(_difficulty_click_b, i) << 1,
 					!(HasBit(disabled, i) || gsd->min == value),
 					!(HasBit(disabled, i) || gsd->max == value));
 
