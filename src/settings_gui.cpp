@@ -183,7 +183,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case GAMEOPT_CURRENCY_TXT: case GAMEOPT_CURRENCY_BTN: /* Setup currencies dropdown */
-					ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);;
+					ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 					break;
 
 				case GAMEOPT_DISTANCE_TXT: case GAMEOPT_DISTANCE_BTN: /* Setup distance unit dropdown */
