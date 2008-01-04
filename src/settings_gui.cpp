@@ -158,163 +158,163 @@ static void ShowCustCurrency();
 static void GameOptionsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		int i;
-		StringID str = STR_02BE_DEFAULT;
+		case WE_PAINT: {
+			int i;
+			StringID str = STR_02BE_DEFAULT;
 
-		w->SetWidgetDisabledState(21, !(_vehicle_design_names & 1));
-		if (!w->IsWidgetDisabled(21)) str = STR_02BF_CUSTOM;
-		SetDParam(0, str);
-		SetDParam(1, _currency_specs[_opt_ptr->currency].name);
-		SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
-		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_ptr->road_side);
-		SetDParam(4, TownName(_opt_ptr->town_name));
-		SetDParam(5, _autosave_dropdown[_opt_ptr->autosave]);
-		SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
-		i = GetCurRes();
-		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
-		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
-		w->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
-
-		DrawWindowWidgets(w);
-		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
-	} break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case GAMEOPT_CURRENCY_TXT: case GAMEOPT_CURRENCY_BTN: /* Setup currencies dropdown */
-			ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);;
-			break;
-
-		case GAMEOPT_DISTANCE_TXT: case GAMEOPT_DISTANCE_BTN: /* Setup distance unit dropdown */
-			ShowDropDownMenu(w, _units_dropdown, _opt_ptr->units, GAMEOPT_DISTANCE_BTN, 0, 0);
-			break;
-
-		case GAMEOPT_ROADSIDE_TXT: case GAMEOPT_ROADSIDE_BTN: { /* Setup road-side dropdown */
-			int i = 0;
-
-			/* You can only change the drive side if you are in the menu or ingame with
-			 * no vehicles present. In a networking game only the server can change it */
-			if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server))
-				i = (-1) ^ (1 << _opt_ptr->road_side); // disable the other value
-
-			ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, GAMEOPT_ROADSIDE_BTN, i, 0);
-		} break;
-
-		case GAMEOPT_TOWNNAME_TXT: case GAMEOPT_TOWNNAME_BTN: { /* Setup townname dropdown */
-			uint sel = 0;
-			for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
-				if (_town_names[i] == TownName(_opt_ptr->town_name)) {
-					sel = i;
-					break;
-				}
-			}
-			ShowDropDownMenu(w, _town_names, sel, GAMEOPT_TOWNNAME_BTN, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << sel), 0);
-		} break;
-
-		case GAMEOPT_AUTOSAVE_TXT: case GAMEOPT_AUTOSAVE_BTN: /* Setup autosave dropdown */
-			ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
-			break;
-
-		case GAMEOPT_VEHICLENAME_TXT: case GAMEOPT_VEHICLENAME_BTN: /* Setup customized vehicle-names dropdown */
-			ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names & 1) ? 1 : 0, GAMEOPT_VEHICLENAME_BTN, (_vehicle_design_names & 2) ? 0 : 2, 0);
-			break;
-
-		case GAMEOPT_VEHICLENAME_SAVE: /* Save customized vehicle-names to disk */
-			break;  // not implemented
-
-		case GAMEOPT_LANG_TXT: case GAMEOPT_LANG_BTN: /* Setup interface language dropdown */
-			ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, GAMEOPT_LANG_BTN, 0, 0);
-			break;
-
-		case GAMEOPT_RESOLUTION_TXT: case GAMEOPT_RESOLUTION_BTN: /* Setup resolution dropdown */
-			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), GAMEOPT_RESOLUTION_BTN, 0, 0);
-			break;
-
-		case GAMEOPT_FULLSCREEN: /* Click fullscreen on/off */
-			/* try to toggle full-screen on/off */
-			if (!ToggleFullScreen(!_fullscreen)) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_FULLSCREEN_FAILED, 0, 0);
-			}
+			w->SetWidgetDisabledState(21, !(_vehicle_design_names & 1));
+			if (!w->IsWidgetDisabled(21)) str = STR_02BF_CUSTOM;
+			SetDParam(0, str);
+			SetDParam(1, _currency_specs[_opt_ptr->currency].name);
+			SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
+			SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_ptr->road_side);
+			SetDParam(4, TownName(_opt_ptr->town_name));
+			SetDParam(5, _autosave_dropdown[_opt_ptr->autosave]);
+			SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
+			i = GetCurRes();
+			SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
+			SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
 			w->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
-			SetWindowDirty(w);
-			break;
 
-		case GAMEOPT_SCREENSHOT_TXT: case GAMEOPT_SCREENSHOT_BTN: /* Setup screenshot format dropdown */
-			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, GAMEOPT_SCREENSHOT_BTN, 0, 0);
-			break;
-		}
-		break;
+			DrawWindowWidgets(w);
+			DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
+		} break;
 
-	case WE_DROPDOWN_SELECT:
-		switch (e->we.dropdown.button) {
-		case GAMEOPT_VEHICLENAME_BTN: /* Vehicle design names */
-			if (e->we.dropdown.index == 0) {
-				DeleteCustomEngineNames();
-				MarkWholeScreenDirty();
-			} else if (!(_vehicle_design_names & 1)) {
-				LoadCustomEngineNames();
-				MarkWholeScreenDirty();
-			}
-			break;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case GAMEOPT_CURRENCY_TXT: case GAMEOPT_CURRENCY_BTN: /* Setup currencies dropdown */
+					ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);;
+					break;
 
-		case GAMEOPT_CURRENCY_BTN: /* Currency */
-			if (e->we.dropdown.index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
-			_opt_ptr->currency = e->we.dropdown.index;
-			MarkWholeScreenDirty();
-			break;
+				case GAMEOPT_DISTANCE_TXT: case GAMEOPT_DISTANCE_BTN: /* Setup distance unit dropdown */
+					ShowDropDownMenu(w, _units_dropdown, _opt_ptr->units, GAMEOPT_DISTANCE_BTN, 0, 0);
+					break;
 
-		case GAMEOPT_DISTANCE_BTN: /* Measuring units */
-			_opt_ptr->units = e->we.dropdown.index;
-			MarkWholeScreenDirty();
-			break;
+				case GAMEOPT_ROADSIDE_TXT: case GAMEOPT_ROADSIDE_BTN: { /* Setup road-side dropdown */
+					int i = 0;
 
-		case GAMEOPT_ROADSIDE_BTN: /* Road side */
-			if (_opt_ptr->road_side != e->we.dropdown.index) { // only change if setting changed
-				DoCommandP(0, e->we.dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
-				MarkWholeScreenDirty();
-			}
-			break;
+					/* You can only change the drive side if you are in the menu or ingame with
+					 * no vehicles present. In a networking game only the server can change it */
+					if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server))
+						i = (-1) ^ (1 << _opt_ptr->road_side); // disable the other value
 
-		case GAMEOPT_TOWNNAME_BTN: /* Town names */
-			if (_game_mode == GM_MENU) {
-				for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
-					if (_town_names[e->we.dropdown.index] == TownName(i)) {
-						_opt_ptr->town_name = i;
-						break;
+					ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, GAMEOPT_ROADSIDE_BTN, i, 0);
+				} break;
+
+				case GAMEOPT_TOWNNAME_TXT: case GAMEOPT_TOWNNAME_BTN: { /* Setup townname dropdown */
+					uint sel = 0;
+					for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
+						if (_town_names[i] == TownName(_opt_ptr->town_name)) {
+							sel = i;
+							break;
+						}
 					}
-				}
-				InvalidateWindow(WC_GAME_OPTIONS, 0);
+					ShowDropDownMenu(w, _town_names, sel, GAMEOPT_TOWNNAME_BTN, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << sel), 0);
+				} break;
+
+				case GAMEOPT_AUTOSAVE_TXT: case GAMEOPT_AUTOSAVE_BTN: /* Setup autosave dropdown */
+					ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
+					break;
+
+				case GAMEOPT_VEHICLENAME_TXT: case GAMEOPT_VEHICLENAME_BTN: /* Setup customized vehicle-names dropdown */
+					ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names & 1) ? 1 : 0, GAMEOPT_VEHICLENAME_BTN, (_vehicle_design_names & 2) ? 0 : 2, 0);
+					break;
+
+				case GAMEOPT_VEHICLENAME_SAVE: /* Save customized vehicle-names to disk */
+					break;  // not implemented
+
+				case GAMEOPT_LANG_TXT: case GAMEOPT_LANG_BTN: /* Setup interface language dropdown */
+					ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, GAMEOPT_LANG_BTN, 0, 0);
+					break;
+
+				case GAMEOPT_RESOLUTION_TXT: case GAMEOPT_RESOLUTION_BTN: /* Setup resolution dropdown */
+					ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), GAMEOPT_RESOLUTION_BTN, 0, 0);
+					break;
+
+				case GAMEOPT_FULLSCREEN: /* Click fullscreen on/off */
+					/* try to toggle full-screen on/off */
+					if (!ToggleFullScreen(!_fullscreen)) {
+						ShowErrorMessage(INVALID_STRING_ID, STR_FULLSCREEN_FAILED, 0, 0);
+					}
+					w->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
+					SetWindowDirty(w);
+					break;
+
+				case GAMEOPT_SCREENSHOT_TXT: case GAMEOPT_SCREENSHOT_BTN: /* Setup screenshot format dropdown */
+					ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, GAMEOPT_SCREENSHOT_BTN, 0, 0);
+					break;
 			}
 			break;
 
-		case GAMEOPT_AUTOSAVE_BTN: /* Autosave options */
-			_opt.autosave = _opt_newgame.autosave = e->we.dropdown.index;
-			SetWindowDirty(w);
+		case WE_DROPDOWN_SELECT:
+			switch (e->we.dropdown.button) {
+				case GAMEOPT_VEHICLENAME_BTN: /* Vehicle design names */
+					if (e->we.dropdown.index == 0) {
+						DeleteCustomEngineNames();
+						MarkWholeScreenDirty();
+					} else if (!(_vehicle_design_names & 1)) {
+						LoadCustomEngineNames();
+						MarkWholeScreenDirty();
+					}
+					break;
+
+				case GAMEOPT_CURRENCY_BTN: /* Currency */
+					if (e->we.dropdown.index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
+					_opt_ptr->currency = e->we.dropdown.index;
+					MarkWholeScreenDirty();
+					break;
+
+				case GAMEOPT_DISTANCE_BTN: /* Measuring units */
+					_opt_ptr->units = e->we.dropdown.index;
+					MarkWholeScreenDirty();
+					break;
+
+				case GAMEOPT_ROADSIDE_BTN: /* Road side */
+					if (_opt_ptr->road_side != e->we.dropdown.index) { // only change if setting changed
+						DoCommandP(0, e->we.dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+						MarkWholeScreenDirty();
+					}
+					break;
+
+				case GAMEOPT_TOWNNAME_BTN: /* Town names */
+					if (_game_mode == GM_MENU) {
+						for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
+							if (_town_names[e->we.dropdown.index] == TownName(i)) {
+								_opt_ptr->town_name = i;
+								break;
+							}
+						}
+						InvalidateWindow(WC_GAME_OPTIONS, 0);
+					}
+					break;
+
+				case GAMEOPT_AUTOSAVE_BTN: /* Autosave options */
+					_opt.autosave = _opt_newgame.autosave = e->we.dropdown.index;
+					SetWindowDirty(w);
+					break;
+
+				case GAMEOPT_LANG_BTN: /* Change interface language */
+					ReadLanguagePack(e->we.dropdown.index);
+					CheckForMissingGlyphsInLoadedLanguagePack();
+					UpdateAllStationVirtCoord();
+					MarkWholeScreenDirty();
+					break;
+
+				case GAMEOPT_RESOLUTION_BTN: /* Change resolution */
+					if (e->we.dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->we.dropdown.index][0],_resolutions[e->we.dropdown.index][1]))
+						SetWindowDirty(w);
+					break;
+
+				case GAMEOPT_SCREENSHOT_BTN: /* Change screenshot format */
+					SetScreenshotFormat(e->we.dropdown.index);
+					SetWindowDirty(w);
+					break;
+			}
 			break;
 
-		case GAMEOPT_LANG_BTN: /* Change interface language */
-			ReadLanguagePack(e->we.dropdown.index);
-			CheckForMissingGlyphsInLoadedLanguagePack();
-			UpdateAllStationVirtCoord();
-			MarkWholeScreenDirty();
+		case WE_DESTROY:
+			DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
 			break;
-
-		case GAMEOPT_RESOLUTION_BTN: /* Change resolution */
-			if (e->we.dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->we.dropdown.index][0],_resolutions[e->we.dropdown.index][1]))
-				SetWindowDirty(w);
-			break;
-
-		case GAMEOPT_SCREENSHOT_BTN: /* Change screenshot format */
-			SetScreenshotFormat(e->we.dropdown.index);
-			SetWindowDirty(w);
-			break;
-		}
-		break;
-
-	case WE_DESTROY:
-		DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
-		break;
 	}
 
 }
@@ -509,147 +509,146 @@ enum GameDifficultyWidgets {
 static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE:
-		/* Hide the closebox to make sure that the user aborts or confirms his changes */
-		w->HideWidget(GDW_CLOSEBOX);
-		w->widget[GDW_CAPTION].left = 0;
-		/* Setup disabled buttons when creating window
-		 * disable all other difficulty buttons during gameplay except for 'custom' */
-		w->SetWidgetsDisabledState(_game_mode == GM_NORMAL,
-			GDW_LVL_EASY,
-			GDW_LVL_MEDIUM,
-			GDW_LVL_HARD,
-			GDW_LVL_CUSTOM,
-			WIDGET_LIST_END);
-		w->SetWidgetDisabledState(GDW_HIGHSCORE, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
-		w->SetWidgetDisabledState(GDW_ACCEPT, _networking && !_network_server); // Save-button in multiplayer (and if client)
-		w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
+		case WE_CREATE:
+			/* Hide the closebox to make sure that the user aborts or confirms his changes */
+			w->HideWidget(GDW_CLOSEBOX);
+			w->widget[GDW_CAPTION].left = 0;
+			/* Setup disabled buttons when creating window
+			 * disable all other difficulty buttons during gameplay except for 'custom' */
+			w->SetWidgetsDisabledState(_game_mode == GM_NORMAL,
+				GDW_LVL_EASY,
+				GDW_LVL_MEDIUM,
+				GDW_LVL_HARD,
+				GDW_LVL_CUSTOM,
+				WIDGET_LIST_END);
+			w->SetWidgetDisabledState(GDW_HIGHSCORE, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
+			w->SetWidgetDisabledState(GDW_ACCEPT, _networking && !_network_server); // Save-button in multiplayer (and if client)
+			w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
+			break;
 
-		break;
+		case WE_PAINT: {
+			DrawWindowWidgets(w);
 
-	case WE_PAINT: {
-		DrawWindowWidgets(w);
-
-		/* XXX - Disabled buttons in normal gameplay or during muliplayer as non server.
-		 *       Bitshifted for each button to see if that bit is set. If it is set, the
-		 *       button is disabled */
-		uint32 disabled = 0;
-		if (_networking && !_network_server) {
-			disabled = MAX_UVALUE(uint32); // Disable all
-		} else if (_game_mode == GM_NORMAL) {
-			disabled = DIFF_INGAME_DISABLED_BUTTONS;
-		}
-
-		int value;
-		int y = GAMEDIFF_WND_TOP_OFFSET;
-		for (uint i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-			const GameSettingData *gsd = &_game_setting_info[i];
-			value = ((GDType*)&_opt_mod_temp.diff)[i];
-
-			DrawArrowButtons(5, y, 3,
-					!!HasBit(_difficulty_click_a, i) | !!HasBit(_difficulty_click_b, i) << 1,
-					!(HasBit(disabled, i) || gsd->min == value),
-					!(HasBit(disabled, i) || gsd->max == value));
-
-			value += _game_setting_info[i].str;
-			if (i == 4) value *= 1000; // XXX - handle currency option
-			SetDParam(0, value);
-			DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, TC_FROMSTRING);
-
-			y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
-		}
-	} break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case GDW_SETTING_BG: { /* Difficulty settings widget, decode click */
-			/* Don't allow clients to make any changes */
-			if  (_networking && !_network_server) return;
-
-			const int x = e->we.click.pt.x - 5;
-			if (!IsInsideMM(x, 0, 21)) // Button area
-				return;
-
-			const int y = e->we.click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
-			if (y < 0) return;
-
-			/* Get button from Y coord. */
-			const uint btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
-			if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9)
-				return;
-
-			/* Clicked disabled button? */
-			if (_game_mode == GM_NORMAL && HasBit(DIFF_INGAME_DISABLED_BUTTONS, btn))
-				return;
-
-			_difficulty_timeout = 5;
-
-			int16 val = ((GDType*)&_opt_mod_temp.diff)[btn];
-
-			const GameSettingData *info = &_game_setting_info[btn]; // get information about the difficulty setting
-			if (x >= 10) {
-				/* Increase button clicked */
-				val = min(val + info->step, info->max);
-				SetBit(_difficulty_click_b, btn);
-			} else {
-				/* Decrease button clicked */
-				val -= info->step;
-				val = max(val,  info->min);
-				SetBit(_difficulty_click_a, btn);
+			/* XXX - Disabled buttons in normal gameplay or during muliplayer as non server.
+			 *       Bitshifted for each button to see if that bit is set. If it is set, the
+			 *       button is disabled */
+			uint32 disabled = 0;
+			if (_networking && !_network_server) {
+				disabled = MAX_UVALUE(uint32); // Disable all
+			} else if (_game_mode == GM_NORMAL) {
+				disabled = DIFF_INGAME_DISABLED_BUTTONS;
 			}
 
-			/* save value in temporary variable */
-			((GDType*)&_opt_mod_temp.diff)[btn] = val;
-			w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
-			SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
-			w->LowerWidget(GDW_LVL_CUSTOM);
-			SetWindowDirty(w);
+			int value;
+			int y = GAMEDIFF_WND_TOP_OFFSET;
+			for (uint i = 0; i != GAME_DIFFICULTY_NUM; i++) {
+				const GameSettingData *gsd = &_game_setting_info[i];
+				value = ((GDType*)&_opt_mod_temp.diff)[i];
+
+				DrawArrowButtons(5, y, 3,
+						!!HasBit(_difficulty_click_a, i) | !!HasBit(_difficulty_click_b, i) << 1,
+						!(HasBit(disabled, i) || gsd->min == value),
+						!(HasBit(disabled, i) || gsd->max == value));
+
+				value += _game_setting_info[i].str;
+				if (i == 4) value *= 1000; // XXX - handle currency option
+				SetDParam(0, value);
+				DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, TC_FROMSTRING);
+
+				y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
+			}
 		} break;
 
-		case GDW_LVL_EASY:
-		case GDW_LVL_MEDIUM:
-		case GDW_LVL_HARD:
-		case GDW_LVL_CUSTOM:
-			/* temporarily change difficulty level */
-			w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
-			SetDifficultyLevel(e->we.click.widget - GDW_LVL_EASY, &_opt_mod_temp);
-			w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
-			SetWindowDirty(w);
-			break;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case GDW_SETTING_BG: { /* Difficulty settings widget, decode click */
+					/* Don't allow clients to make any changes */
+					if (_networking && !_network_server) return;
 
-		case GDW_HIGHSCORE: // Highscore Table
-			ShowHighscoreTable(_opt_mod_temp.diff_level, -1);
-			break;
+					const int x = e->we.click.pt.x - 5;
+					if (!IsInsideMM(x, 0, 21)) // Button area
+						return;
 
-		case GDW_ACCEPT: { // Save button - save changes
-			GDType btn, val;
-			for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
-				val = ((GDType*)&_opt_mod_temp.diff)[btn];
-				/* if setting has changed, change it */
-				if (val != ((GDType*)&_opt_ptr->diff)[btn])
-					DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+					const int y = e->we.click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
+					if (y < 0) return;
+
+					/* Get button from Y coord. */
+					const uint btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
+					if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9)
+						return;
+
+					/* Clicked disabled button? */
+					if (_game_mode == GM_NORMAL && HasBit(DIFF_INGAME_DISABLED_BUTTONS, btn))
+						return;
+
+					_difficulty_timeout = 5;
+
+					int16 val = ((GDType*)&_opt_mod_temp.diff)[btn];
+
+					const GameSettingData *info = &_game_setting_info[btn]; // get information about the difficulty setting
+					if (x >= 10) {
+						/* Increase button clicked */
+						val = min(val + info->step, info->max);
+						SetBit(_difficulty_click_b, btn);
+					} else {
+						/* Decrease button clicked */
+						val -= info->step;
+						val = max(val,  info->min);
+						SetBit(_difficulty_click_a, btn);
+					}
+
+					/* save value in temporary variable */
+					((GDType*)&_opt_mod_temp.diff)[btn] = val;
+					w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
+					SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
+					w->LowerWidget(GDW_LVL_CUSTOM);
+					SetWindowDirty(w);
+				} break;
+
+				case GDW_LVL_EASY:
+				case GDW_LVL_MEDIUM:
+				case GDW_LVL_HARD:
+				case GDW_LVL_CUSTOM:
+					/* temporarily change difficulty level */
+					w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
+					SetDifficultyLevel(e->we.click.widget - GDW_LVL_EASY, &_opt_mod_temp);
+					w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
+					SetWindowDirty(w);
+					break;
+
+				case GDW_HIGHSCORE: // Highscore Table
+					ShowHighscoreTable(_opt_mod_temp.diff_level, -1);
+					break;
+
+				case GDW_ACCEPT: { // Save button - save changes
+					GDType btn, val;
+					for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
+						val = ((GDType*)&_opt_mod_temp.diff)[btn];
+						/* if setting has changed, change it */
+						if (val != ((GDType*)&_opt_ptr->diff)[btn])
+							DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+					}
+					DoCommandP(0, UINT_MAX, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+					DeleteWindow(w);
+					/* If we are in the editor, we should reload the economy.
+					 * This way when you load a game, the max loan and interest rate
+					 * are loaded correctly. */
+					if (_game_mode == GM_EDITOR) StartupEconomy();
+					break;
+				}
+
+				case GDW_CANCEL: // Cancel button - close window, abandon changes
+					DeleteWindow(w);
+					break;
+			} break;
+
+		case WE_MOUSELOOP: /* Handle the visual 'clicking' of the buttons */
+			if (_difficulty_timeout != 0 && !--_difficulty_timeout) {
+				_difficulty_click_a = 0;
+				_difficulty_click_b = 0;
+				SetWindowDirty(w);
 			}
-			DoCommandP(0, UINT_MAX, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
-			DeleteWindow(w);
-			/* If we are in the editor, we should reload the economy.
-			 * This way when you load a game, the max loan and interest rate
-			 * are loaded correctly. */
-			if (_game_mode == GM_EDITOR) StartupEconomy();
 			break;
-		}
-
-		case GDW_CANCEL: // Cancel button - close window, abandon changes
-			DeleteWindow(w);
-			break;
-	} break;
-
-	case WE_MOUSELOOP: /* Handle the visual 'clicking' of the buttons */
-		if (_difficulty_timeout != 0 && !--_difficulty_timeout) {
-			_difficulty_click_a = 0;
-			_difficulty_click_b = 0;
-			SetWindowDirty(w);
-		}
-		break;
 	}
 }
 #undef DIFF_INGAME_DISABLED_BUTTONS
@@ -852,210 +851,208 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 	static Patches *patches_ptr;
 
 	switch (e->event) {
-	case WE_CREATE: {
-		static bool first_time = true;
+		case WE_CREATE: {
+			static bool first_time = true;
 
-		patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
+			patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
 
-		/* Build up the dynamic settings-array only once per OpenTTD session */
-		if (first_time) {
-			PatchPage *page;
-			for (page = &_patches_page[0]; page != endof(_patches_page); page++) {
-				uint i;
+			/* Build up the dynamic settings-array only once per OpenTTD session */
+			if (first_time) {
+				PatchPage *page;
+				for (page = &_patches_page[0]; page != endof(_patches_page); page++) {
+					uint i;
 
-				page->entries = MallocT<PatchEntry>(page->num);
-				for (i = 0; i != page->num; i++) {
-					uint index;
-					const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
-					assert(sd != NULL);
+					page->entries = MallocT<PatchEntry>(page->num);
+					for (i = 0; i != page->num; i++) {
+						uint index;
+						const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
+						assert(sd != NULL);
 
-					page->entries[i].setting = sd;
-					page->entries[i].index = index;
-				}
-			}
-			first_time = false;
-		}
-		w->LowerWidget(4);
-	} break;
-
-	case WE_PAINT: {
-		int x, y;
-		const PatchPage *page = &_patches_page[WP(w, def_d).data_1];
-		uint i;
-
-		/* Set up selected category */
-		DrawWindowWidgets(w);
-
-		x = 5;
-		y = 47;
-		for (i = 0; i != page->num; i++) {
-			const SettingDesc *sd = page->entries[i].setting;
-			const SettingDescBase *sdb = &sd->desc;
-			const void *var = GetVariableAddress(patches_ptr, &sd->save);
-			bool editable = true;
-			bool disabled = false;
-
-			// We do not allow changes of some items when we are a client in a networkgame
-			if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) editable = false;
-			if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
-			if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
-
-			if (sdb->cmd == SDT_BOOLX) {
-				static const int _bool_ctabs[2][2] = {{9, 4}, {7, 6}};
-				/* Draw checkbox for boolean-value either on/off */
-				bool on = (*(bool*)var);
-
-				DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
-				SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
-			} else {
-				int32 value;
-
-				value = (int32)ReadValue(var, sd->save.conv);
-
-				/* Draw [<][>] boxes for settings of an integer-type */
-				DrawArrowButtons(x, y, 3, WP(w, def_d).data_2 - (i * 2), (editable && value != sdb->min), (editable && value != sdb->max));
-
-				disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
-				if (disabled) {
-					SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
-				} else {
-					if (sdb->flags & SGF_CURRENCY) {
-						SetDParam(0, STR_CONFIG_PATCHES_CURRENCY);
-					} else if (sdb->flags & SGF_MULTISTRING) {
-						SetDParam(0, sdb->str + value + 1);
-					} else {
-						SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+						page->entries[i].setting = sd;
+						page->entries[i].index = index;
 					}
-					SetDParam(1, value);
 				}
+				first_time = false;
 			}
-			DrawString(30, y, (sdb->str) + disabled, TC_FROMSTRING);
-			y += 11;
-		}
-		break;
-	}
+			w->LowerWidget(4);
+		} break;
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case PATCHSEL_OPTIONSPANEL: {
-			const PatchPage *page = &_patches_page[WP(w, def_d).data_1];
-			const SettingDesc *sd;
-			void *var;
-			int32 value;
+		case WE_PAINT: {
 			int x, y;
-			byte btn;
+			const PatchPage *page = &_patches_page[WP(w, def_d).data_1];
+			uint i;
 
-			y = e->we.click.pt.y - 46 - 1;
-			if (y < 0) return;
+			/* Set up selected category */
+			DrawWindowWidgets(w);
 
-			x = e->we.click.pt.x - 5;
-			if (x < 0) return;
-
-			btn = y / 11;
-			if (y % 11 > 9) return;
-			if (btn >= page->num) return;
-
-			sd = page->entries[btn].setting;
-
-			/* return if action is only active in network, or only settable by server */
-			if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
-			if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
-			if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
-
-			var = GetVariableAddress(patches_ptr, &sd->save);
-			value = (int32)ReadValue(var, sd->save.conv);
-
-			/* clicked on the icon on the left side. Either scroller or bool on/off */
-			if (x < 21) {
+			x = 5;
+			y = 47;
+			for (i = 0; i != page->num; i++) {
+				const SettingDesc *sd = page->entries[i].setting;
 				const SettingDescBase *sdb = &sd->desc;
-				int32 oldvalue = value;
+				const void *var = GetVariableAddress(patches_ptr, &sd->save);
+				bool editable = true;
+				bool disabled = false;
 
-				switch (sdb->cmd) {
-				case SDT_BOOLX: value ^= 1; break;
-				case SDT_NUMX: {
-					/* Add a dynamic step-size to the scroller. In a maximum of
-					 * 50-steps you should be able to get from min to max,
-					 * unless specified otherwise in the 'interval' variable
-					 * of the current patch. */
-					uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
-					if (step == 0) step = 1;
+				// We do not allow changes of some items when we are a client in a networkgame
+				if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) editable = false;
+				if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
+				if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
 
-					// don't allow too fast scrolling
-					if ((w->flags4 & WF_TIMEOUT_MASK) > 2 << WF_TIMEOUT_SHL) {
-						_left_button_clicked = false;
-						return;
-					}
+				if (sdb->cmd == SDT_BOOLX) {
+					static const int _bool_ctabs[2][2] = {{9, 4}, {7, 6}};
+					/* Draw checkbox for boolean-value either on/off */
+					bool on = (*(bool*)var);
 
-					/* Increase or decrease the value and clamp it to extremes */
-					if (x >= 10) {
-						value += step;
-						if (value > sdb->max) value = sdb->max;
+					DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
+					SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+				} else {
+					int32 value;
+
+					value = (int32)ReadValue(var, sd->save.conv);
+
+					/* Draw [<][>] boxes for settings of an integer-type */
+					DrawArrowButtons(x, y, 3, WP(w, def_d).data_2 - (i * 2), (editable && value != sdb->min), (editable && value != sdb->max));
+
+					disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
+					if (disabled) {
+						SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
 					} else {
-						value -= step;
-						if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
+						if (sdb->flags & SGF_CURRENCY) {
+							SetDParam(0, STR_CONFIG_PATCHES_CURRENCY);
+						} else if (sdb->flags & SGF_MULTISTRING) {
+							SetDParam(0, sdb->str + value + 1);
+						} else {
+							SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+						}
+						SetDParam(1, value);
 					}
-
-					/* Set up scroller timeout for numeric values */
-					if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
-						WP(w, def_d).data_2 = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
-						w->flags4 |= 5 << WF_TIMEOUT_SHL;
-						_left_button_clicked = false;
-					}
-				} break;
-				default: NOT_REACHED();
 				}
-
-				if (value != oldvalue) {
-					SetPatchValue(page->entries[btn].index, patches_ptr, value);
-					SetWindowDirty(w);
-				}
-			} else {
-				/* only open editbox for types that its sensible for */
-				if (sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
-					/* Show the correct currency-translated value */
-					if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
-
-					WP(w, def_d).data_3 = btn;
-					SetDParam(0, value);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, w, CS_NUMERAL);
-				}
+				DrawString(30, y, (sdb->str) + disabled, TC_FROMSTRING);
+				y += 11;
 			}
 		} break;
 
-		case PATCHSEL_INTERFACE: case PATCHSEL_CONSTRUCTION: case PATCHSEL_VEHICLES:
-		case PATCHSEL_STATIONS:  case PATCHSEL_ECONOMY:      case PATCHSEL_COMPETITORS:
-			w->RaiseWidget(WP(w, def_d).data_1 + PATCHSEL_INTERFACE);
-			WP(w, def_d).data_1 = e->we.click.widget - PATCHSEL_INTERFACE;
-			w->LowerWidget(WP(w, def_d).data_1 + PATCHSEL_INTERFACE);
-			DeleteWindowById(WC_QUERY_STRING, 0);
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case PATCHSEL_OPTIONSPANEL: {
+					const PatchPage *page = &_patches_page[WP(w, def_d).data_1];
+					const SettingDesc *sd;
+					void *var;
+					int32 value;
+					int x, y;
+					byte btn;
+
+					y = e->we.click.pt.y - 46 - 1;
+					if (y < 0) return;
+
+					x = e->we.click.pt.x - 5;
+					if (x < 0) return;
+
+					btn = y / 11;
+					if (y % 11 > 9) return;
+					if (btn >= page->num) return;
+
+					sd = page->entries[btn].setting;
+
+					/* return if action is only active in network, or only settable by server */
+					if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
+					if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
+					if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
+
+					var = GetVariableAddress(patches_ptr, &sd->save);
+					value = (int32)ReadValue(var, sd->save.conv);
+
+					/* clicked on the icon on the left side. Either scroller or bool on/off */
+					if (x < 21) {
+						const SettingDescBase *sdb = &sd->desc;
+						int32 oldvalue = value;
+
+						switch (sdb->cmd) {
+						case SDT_BOOLX: value ^= 1; break;
+						case SDT_NUMX: {
+							/* Add a dynamic step-size to the scroller. In a maximum of
+							 * 50-steps you should be able to get from min to max,
+							 * unless specified otherwise in the 'interval' variable
+							 * of the current patch. */
+							uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
+							if (step == 0) step = 1;
+
+							// don't allow too fast scrolling
+							if ((w->flags4 & WF_TIMEOUT_MASK) > 2 << WF_TIMEOUT_SHL) {
+								_left_button_clicked = false;
+								return;
+							}
+
+							/* Increase or decrease the value and clamp it to extremes */
+							if (x >= 10) {
+								value += step;
+								if (value > sdb->max) value = sdb->max;
+							} else {
+								value -= step;
+								if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
+							}
+
+							/* Set up scroller timeout for numeric values */
+							if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
+								WP(w, def_d).data_2 = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
+								w->flags4 |= 5 << WF_TIMEOUT_SHL;
+								_left_button_clicked = false;
+							}
+						} break;
+						default: NOT_REACHED();
+						}
+
+						if (value != oldvalue) {
+							SetPatchValue(page->entries[btn].index, patches_ptr, value);
+							SetWindowDirty(w);
+						}
+					} else {
+						/* only open editbox for types that its sensible for */
+						if (sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
+							/* Show the correct currency-translated value */
+							if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
+
+							WP(w, def_d).data_3 = btn;
+							SetDParam(0, value);
+							ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, w, CS_NUMERAL);
+						}
+					}
+				} break;
+
+				case PATCHSEL_INTERFACE: case PATCHSEL_CONSTRUCTION: case PATCHSEL_VEHICLES:
+				case PATCHSEL_STATIONS:  case PATCHSEL_ECONOMY:      case PATCHSEL_COMPETITORS:
+					w->RaiseWidget(WP(w, def_d).data_1 + PATCHSEL_INTERFACE);
+					WP(w, def_d).data_1 = e->we.click.widget - PATCHSEL_INTERFACE;
+					w->LowerWidget(WP(w, def_d).data_1 + PATCHSEL_INTERFACE);
+					DeleteWindowById(WC_QUERY_STRING, 0);
+					SetWindowDirty(w);
+					break;
+			}
+			break;
+
+		case WE_TIMEOUT:
+			WP(w, def_d).data_2 = 0;
 			SetWindowDirty(w);
 			break;
-		}
-		break;
 
-	case WE_TIMEOUT:
-		WP(w, def_d).data_2 = 0;
-		SetWindowDirty(w);
-		break;
+		case WE_ON_EDIT_TEXT:
+			if (e->we.edittext.str != NULL) {
+				const PatchEntry *pe = &_patches_page[WP(w, def_d).data_1].entries[WP(w,def_d).data_3];
+				const SettingDesc *sd = pe->setting;
+				int32 value = atoi(e->we.edittext.str);
 
-	case WE_ON_EDIT_TEXT: {
-		if (e->we.edittext.str != NULL) {
-			const PatchEntry *pe = &_patches_page[WP(w, def_d).data_1].entries[WP(w,def_d).data_3];
-			const SettingDesc *sd = pe->setting;
-			int32 value = atoi(e->we.edittext.str);
+				/* Save the correct currency-translated value */
+				if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
 
-			/* Save the correct currency-translated value */
-			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
+				SetPatchValue(pe->index, patches_ptr, value);
+				SetWindowDirty(w);
+			}
+			break;
 
-			SetPatchValue(pe->index, patches_ptr, value);
-			SetWindowDirty(w);
-		}
-		break;
-	}
-
-	case WE_DESTROY:
-		DeleteWindowById(WC_QUERY_STRING, 0);
-		break;
+		case WE_DESTROY:
+			DeleteWindowById(WC_QUERY_STRING, 0);
+			break;
 	}
 }
 
