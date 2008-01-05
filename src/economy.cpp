@@ -40,6 +40,9 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "track_type.h"
+#include "track_func.h"
+#include "rail_map.h"
 
 /**
  * Multiply two integer values and shift the results to right.
@@ -423,6 +426,22 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		do {
 			ChangeTileOwner(tile, old_player, new_player);
 		} while (++tile != MapSize());
+
+		if (new_player != PLAYER_SPECTATOR) {
+			/* Update all signals because there can be new segment that was owned by two players
+			 * and signals were not propagated */
+			tile = 0;
+
+			do {
+				if (IsTileType(tile, MP_RAILWAY) && IsTileOwner(tile, new_player) && HasSignals(tile)) {
+					TrackBits tracks = GetTrackBits(tile);
+					do { // there may be two tracks with signals for TRACK_BIT_HORZ and TRACK_BIT_VERT
+						Track track = RemoveFirstTrack(&tracks);
+						if (HasSignalOnTrack(tile, track)) SetSignalsOnBothDir(tile, track);
+					} while (tracks != TRACK_BIT_NONE);
+				}
+			} while (++tile != MapSize());
+		}
 	}
 
 	/* Change color of existing windows */
