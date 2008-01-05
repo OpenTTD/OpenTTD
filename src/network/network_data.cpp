@@ -100,6 +100,8 @@ void NetworkExecuteCommand(CommandPacket *cp)
 	}
 
 #ifdef DEBUG_DUMP_COMMANDS
+	extern Date      _date;
+	extern DateFract _date_fract;
 	debug_dump_commands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)cp->player, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text);
 #endif /* DUMP_COMMANDS */
 

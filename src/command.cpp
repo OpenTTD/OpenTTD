@@ -610,6 +610,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	}
 #endif /* ENABLE_NETWORK */
 #ifdef DEBUG_DUMP_COMMANDS
+	extern Date      _date;
+	extern DateFract _date_fract;
 	debug_dump_commands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)_current_player, tile, p1, p2, cmd, _cmd_text);
 #endif /* DUMP_COMMANDS */
 
