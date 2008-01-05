@@ -1450,6 +1450,8 @@ void InitializeLanguagePacks()
  */
 void CheckForMissingGlyphsInLoadedLanguagePack()
 {
+	const Sprite *question_mark = GetGlyph(FS_NORMAL, '?');
+
 	for (uint i = 0; i != 32; i++) {
 		for (uint j = 0; j < _langtab_num[i]; j++) {
 			const char *string = _langpack_offs[_langtab_start[i] + j];
@@ -1465,7 +1467,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 					string++;
 				} else if (c == SCC_SETXY) {
 					string += 2;
-				} else if (IsPrintable(c) && GetUnicodeGlyph(FS_NORMAL, c) == 0) {
+				} else if (IsPrintable(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
 					/*
 					 * The character is printable, but not in the normal font.
 					 * This is the case we were testing for. In this case we
