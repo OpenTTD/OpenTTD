@@ -13,8 +13,8 @@ extern int _traininfo_vehicle_pitch;
 extern int _traininfo_vehicle_width;
 
 
-void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, byte *train_id, int trains);
-const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, byte overriding_engine);
+void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, EngineID *train_id, uint trains);
+const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine);
 void SetCustomEngineSprites(EngineID engine, byte cargo, const struct SpriteGroup *group);
 void SetRotorOverrideSprites(EngineID engine, const struct SpriteGroup *group);
 SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction);

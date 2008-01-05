@@ -26,20 +26,20 @@ int _traininfo_vehicle_pitch = 0;
 int _traininfo_vehicle_width = 29;
 
 struct WagonOverride {
-	byte *train_id;
-	int trains;
+	EngineID *train_id;
+	uint trains;
 	CargoID cargo;
 	const SpriteGroup *group;
 };
 
 struct WagonOverrides {
-	int overrides_count;
+	uint overrides_count;
 	WagonOverride *overrides;
 };
 
 static WagonOverrides _engine_wagon_overrides[TOTAL_NUM_ENGINES];
 
-void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *group, byte *train_id, int trains)
+void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *group, EngineID *train_id, uint trains)
 {
 	WagonOverrides *wos;
 	WagonOverride *wo;
@@ -58,11 +58,11 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 	wo->group = group;
 	wo->cargo = cargo;
 	wo->trains = trains;
-	wo->train_id = MallocT<byte>(trains);
-	memcpy(wo->train_id, train_id, trains);
+	wo->train_id = MallocT<EngineID>(trains);
+	memcpy(wo->train_id, train_id, trains * sizeof *train_id);
 }
 
-const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, byte overriding_engine)
+const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine)
 {
 	const WagonOverrides *wos = &_engine_wagon_overrides[engine];
 
@@ -71,12 +71,12 @@ const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, byt
 	 * for O(1). Or O(logMlogN) and searching binary tree or smt. like
 	 * that. --pasky */
 
-	for (int i = 0; i < wos->overrides_count; i++) {
+	for (uint i = 0; i < wos->overrides_count; i++) {
 		const WagonOverride *wo = &wos->overrides[i];
 
 		if (wo->cargo != cargo && wo->cargo != CT_DEFAULT) continue;
 
-		for (int j = 0; j < wo->trains; j++) {
+		for (uint j = 0; j < wo->trains; j++) {
 			if (wo->train_id[j] == overriding_engine) return wo->group;
 		}
 	}
@@ -88,16 +88,10 @@ const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, byt
  */
 void UnloadWagonOverrides()
 {
-	WagonOverrides *wos;
-	WagonOverride *wo;
-	EngineID engine;
-	int i;
-
-	for (engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
-		wos = &_engine_wagon_overrides[engine];
-		for (i = 0; i < wos->overrides_count; i++) {
-			wo = &wos->overrides[i];
-			wo->group = NULL;
+	for (EngineID engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
+		WagonOverrides *wos = &_engine_wagon_overrides[engine];
+		for (uint i = 0; i < wos->overrides_count; i++) {
+			WagonOverride *wo = &wos->overrides[i];
 			free(wo->train_id);
 		}
 		free(wos->overrides);

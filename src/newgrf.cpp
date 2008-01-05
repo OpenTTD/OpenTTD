@@ -2772,8 +2772,8 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 
 static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 cidcount, bool wagover)
 {
-	static byte *last_engines;
-	static int last_engines_count;
+	static EngineID *last_engines;
+	static uint last_engines_count;
 
 	if (!wagover) {
 		if (last_engines_count != idcount) {
