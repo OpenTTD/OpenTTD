@@ -1481,7 +1481,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 					 * exactly three characters, so it replaces the "XXX" with
 					 * the color marker.
 					 */
-					static char *err_str = strdup("XXXThe current font misses characters used in the strings for this language. Read the readme to see how to solve this.");
+					static char *err_str = strdup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
 					Utf8Encode(err_str, SCC_YELLOW);
 					StringID err_msg = BindCString(err_str);
 					ShowErrorMessage(INVALID_STRING_ID, err_msg, 0, 0);

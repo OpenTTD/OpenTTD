@@ -109,7 +109,7 @@ bool GUIPlaceProcDragXY(const WindowEvent *e)
 			DoCommandP(end_tile, start_tile, 1, CcTerraform, CMD_LEVEL_LAND| CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE));
 			break;
 		case DDSP_LOWER_AND_LEVEL_AREA:
-			DoCommandP(end_tile, start_tile, -1, CcTerraform, CMD_LEVEL_LAND | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE));
+			DoCommandP(end_tile, start_tile, (uint32)-1, CcTerraform, CMD_LEVEL_LAND | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE));
 			break;
 		case DDSP_LEVEL_AREA:
 			DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_LEVEL_LAND);
