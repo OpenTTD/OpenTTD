@@ -418,7 +418,7 @@ not_valid_below:;
 		}
 	}
 
-	if (flags & DC_EXEC) {
+	if (flags & DC_EXEC && railtype != INVALID_RAILTYPE) {
 		Track track = AxisToTrack(direction);
 		SetSignalsOnBothDir(tile_start, track);
 		YapfNotifyTrackLayoutChange(tile_start, track);
