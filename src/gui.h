@@ -14,7 +14,6 @@
 /* main_gui.cpp */
 void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2);
-void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 /* settings_gui.cpp */
 void ShowGameOptions();
@@ -45,9 +44,6 @@ void ShowBuildDocksToolbar();
 
 /* aircraft_gui.cpp */
 void ShowBuildAirToolbar();
-
-/* terraform_gui.cpp */
-void ShowTerraformToolbar(Window *link = NULL);
 
 /* tgp_gui.cpp */
 void ShowGenerateLandscape();

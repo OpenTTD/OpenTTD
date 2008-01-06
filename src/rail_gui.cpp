@@ -11,6 +11,7 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "station_gui.h"
+#include "terraform_gui.h"
 #include "viewport.h"
 #include "command_func.h"
 #include "station.h"
