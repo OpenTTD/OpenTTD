@@ -235,7 +235,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = rvi->max_speed;
-		v->engine_type = (byte)p1;
+		v->engine_type = (EngineID)p1;
 
 		e = GetEngine(p1);
 		v->reliability = e->reliability;
