@@ -943,6 +943,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Selezion
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Schermo intero
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Attiva questa casella per giocate a OpenTTD in modalità schermo intero
+STR_FULLSCREEN_FAILED                                           :{WHITE}Attivazione modalità schermo intero fallita
 
 STR_OPTIONS_RES                                                 :{BLACK}Risoluzione schermo
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

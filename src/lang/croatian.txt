@@ -943,6 +943,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Izaberi 
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Cijeli ekran
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Označi ovu kućicu kako bi igrao OpenTTD preko cijelog ekrana
+STR_FULLSCREEN_FAILED                                           :{WHITE}Neuspješan prelazak na prikaz na cijelom ekranu
 
 STR_OPTIONS_RES                                                 :{BLACK}Razlučivost ekrana
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2798,6 +2799,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novi {STRING} je sada dostupan! - {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Ne mogu prodati uništeno vozilo...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Ne mogu prenamijeniti uništeno vozilo...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Nije moguće rasporediti vozilo...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozila mogu čekati samo na stanicama.
@@ -3118,6 +3120,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odgovar
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilni GRF(ovi) učitani umjesto nepronađenih datoteka
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Nepronađene GRF datoteke su isključene
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Nedostaje(u) datoteka(e) GRF za učitavanje igre
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Nedostaje GRF datoteka(e)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauziranje može uzrokovati rušenje OpenTTD-a. Nemojte slati prijave bugova za posljedična rušenja.{}Želite li stvarno odpauzirati?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Proizvoljna valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3457,6 +3461,15 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Promijen
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Izbornik signala
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Ovdje nije moguće konvertirati signale...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardni signal (semafor){}Signali su nužni kako bi spriječili vlakove da se sudaraju na pružnim mrežama s više od jednog vlaka.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Ulazni signal (semafor){}Zeleno sve dok je jedan ili više zelenih izlaznih signala na narednom dijelu pruge. U protivnom pokazuje crveno.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Izlazni signal (semafor){}Ponaša se na isti način kao i normalni signali, ali je nužno potrefiti točnu boju na ulaznim & kombo pre-signalima.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombo signal (semafor){}Kombo singal jednostavno radi kao ulazni i izlazni signal. Ovo omogućava izgradnju velike "šume" pre-signala.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardni signal (električni){}Signali su nužni kako bi spriječili vlakove da se sudaraju na pružnim mrežama s više od jednog vlaka
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Ulazni signal (električni){}Zeleno sve dok je jedan ili više zelenih izlaznih signala na narednom dijelu pruge. U protivnom pokazuje crveno.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Izlazni signal (električni){}Ponaša se na isti način kao i normalni signali, ali je nužno potrefiti točnu boju na ulaznim & kombo pre-signalima.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombo signal (električni){}Kombo signal jednostavno radi kao ulazni i izlazni signal. Ovo omogućava izgradnju velike "šume" pre-signala.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Pretvaranje signala{}Kada je označeno, klikanjem na bilo koji postojeći signal pretvara taj signal u odabrani tip i varijantu, CRTL+klik mijenja postojeću varijantu.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Gustoća signala prilikom izgradnje
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Smanji gustoću signala prilikom izgradnje
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Povećaj gustoću signala prilikom izgradnje

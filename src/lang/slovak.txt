@@ -1005,6 +1005,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Vyber ja
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Celá obrazovka
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Zaskrtnite, ak chcete hrat OpenTTD na celej obrazovke
+STR_FULLSCREEN_FAILED                                           :{WHITE}Zobrazovanie na celú obrazovku zlyhalo
 
 STR_OPTIONS_RES                                                 :{BLACK}Rozlíšenie obrazovky
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

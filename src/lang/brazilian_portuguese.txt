@@ -872,7 +872,7 @@ STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...só p
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSADO *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Foto salvado com sucesso como '{STRING}'
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}A foto falhou!
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Falha ao tirar foto!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Comprar terreno para uso futuro
 STR_032F_AUTOSAVE                                               :{RED}Gravado automaticamente
@@ -941,8 +941,9 @@ STR_OPTIONS_LANG                                                :{BLACK}Idioma
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Selecionar o idioma da interface do jogo
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Tela Inteira
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Selecione esta opção para jogar o OpenTTD em modo de tela inteiro
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Tela cheia
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Selecione esta opção para jogar o OpenTTD em modo de tela cheia
+STR_FULLSCREEN_FAILED                                           :{WHITE}Falha no modo de tela cheia
 
 STR_OPTIONS_RES                                                 :{BLACK}Resolução da tela
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1012,10 +1013,10 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aeronave
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aeronave {COMMA} possui uma estação inválida em suas ordens
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}A auto-renovação do trem {COMMA} falhou (limite de dinheiro)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}A auto-renovação do automóvel {COMMA} falhou (falta de dinheiro)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}A auto-renovação da embarcação {COMMA} falhou (limite de dinheiro)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}A auto-renovação da aeronave {COMMA} falhou (limite de dinheiro)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Falha na auto-renovação do trem {COMMA} (limite de dinheiro)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Falha na auto-renovação do automóvel {COMMA} (falta de dinheiro)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Falha na auto-renovação da embarcação {COMMA} (limite de dinheiro)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Falha na auto-renovação da aeronave {COMMA} (limite de dinheiro)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}O trem {COMMA} ficará muito longo após a substituição
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurar Correções
@@ -2700,9 +2701,9 @@ STR_8825_NON_STOP                                               :{BLACK}Sem para
 STR_8826_GO_TO                                                  :{BLACK}Ir Para
 STR_8827_FULL_LOAD                                              :{BLACK}Carga
 STR_8828_UNLOAD                                                 :{BLACK}Descarga
-STR_REFIT                                                       :{BLACK}Readaptar
+STR_REFIT                                                       :{BLACK}Adaptar
 STR_REFIT_TIP                                                   :{BLACK}Selecionar a adaptação na ordem atual. CTRL + Clique para remover a instrução
-STR_REFIT_ORDER                                                 :(Readaptar para {STRING})
+STR_REFIT_ORDER                                                 :(Adaptar para {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Plano de horário
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Exibe o plano de horário
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
@@ -2800,6 +2801,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Impossível vender veículo destruído...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Impossível adptar veículo destruído...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Impossível programar veículo...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Veículos só podem aguardar em estações
@@ -2875,10 +2877,10 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Impossí
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ir para a garagem de {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manutenção na garagem de {TOWN}
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reacondicionar automóvel para carregar tipo de carga diferente
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reacondicionar automóvel
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reacondicionar automóvel para carregar o tipo de carga selecionado
-STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossível reacondicionar automóvel...
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Adaptar automóvel para carregar tipo de carga diferente
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Adaptar automóvel
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Adaptar automóvel para carregar o tipo de carga selecionado
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossível adaptar automóvel...
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecionar tipo de carga para o automóvel
 
 ##id 0x9800
@@ -3216,7 +3218,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clique p
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Erro na ordem de readaptação {STRING} {COMMA}
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Falha na parada de ordem de adaptação {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -3241,7 +3243,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} passageiros, {COMMA} sacos de cartas
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões energizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Readaptável para: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Adaptável para: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos as cargas
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tração : {GOLD}{FORCE}

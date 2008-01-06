@@ -1067,6 +1067,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Вибе
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}В повний екран
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Натисніть цю кнопку щоб грати в повний екран
+STR_FULLSCREEN_FAILED                                           :{WHITE}Повноекранний режим не працює
 
 STR_OPTIONS_RES                                                 :{BLACK}Роздільна здатність
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2959,6 +2960,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Став доступним новий {STRING}!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Не можна продати знищений транспорт...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Не можна переобладнати знищений транспорт...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не можна встановити розклад для транспорту...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт може чекати тільки на станціях.

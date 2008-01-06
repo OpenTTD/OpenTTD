@@ -941,7 +941,8 @@ STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{S
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Sélectionner la langue d'interface à utiliser
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Plein écran
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Cocher cette case pour jouer à OpenTTD plein écran
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Cocher cette case pour jouer à OpenTTD en plein écran
+STR_FULLSCREEN_FAILED                                           :{WHITE}Echec du mode plein écran
 
 STR_OPTIONS_RES                                                 :{BLACK}Résolution
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

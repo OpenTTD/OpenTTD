@@ -941,6 +941,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Selectee
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Volledig scherm
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Vink dit vakje aan om OpenTTD in het volledige scherm te spelen
+STR_FULLSCREEN_FAILED                                           :{WHITE}Modus volledigscherm is mislukt
 
 STR_OPTIONS_RES                                                 :{BLACK}Schermresolutie
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

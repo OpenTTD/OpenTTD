@@ -1041,6 +1041,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Vali kas
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Täisekraan
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Märgi see kast, et OpenTTD täisekraanirežiimis mängida
+STR_FULLSCREEN_FAILED                                           :{WHITE}Täisekraanrežiim ebaõnnestus
 
 STR_OPTIONS_RES                                                 :{BLACK}Ekraanilahutus
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

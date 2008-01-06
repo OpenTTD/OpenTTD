@@ -999,6 +999,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Zvolit j
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Na celou obrazovku
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Zaškrtnutím této volby poběží OpenTTD na celé obrazovce
+STR_FULLSCREEN_FAILED                                           :{WHITE}Selhalo přepnutí na celou obrazovku
 
 STR_OPTIONS_RES                                                 :{BLACK}Rozlišení obrazovky
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2860,6 +2861,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nov{G á ý é} {STRING} k dispozici!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Nelze prodat zničené vozidlo...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nelze přestavět zničené vozidlo...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Tomuto vozidlu nejde nastavit jízdní řád...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vozidla mohou čekat jen ve stanicích.

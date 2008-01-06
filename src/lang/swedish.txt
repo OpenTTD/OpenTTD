@@ -941,6 +941,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Välj sp
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Helskärm
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Kryssa i den här rutan för att spela OpenTTD i helskärmsläge
+STR_FULLSCREEN_FAILED                                           :{WHITE}Fullskärmsläge misslyckades
 
 STR_OPTIONS_RES                                                 :{BLACK}Skärmupplösning
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2796,6 +2797,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nya {STRING} är nu tillgänglig  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan inte sälja förstört fordon...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kan inte bygga om ett förstörd fordon...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan inte lägga till fordonet i en tidtabell...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Fordon kan enbart vänta vid stationer.

@@ -2577,7 +2577,12 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}¡Nova{STRING} dispoñible!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Non se pode vender un vehículo destruido...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Non se pode actualizar un vehículo destruido...
 
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Os vehículos só poden parar nas estacións.
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Este vehículo non para nesta estación.
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Haí un vehículo de estrada no camiño
@@ -2786,6 +2791,7 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Non se p
 STR_GO_TO_AIRPORT_HANGAR                                        :Ir ó hangar de {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Face-lo servicio no hangar de {STATION}
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Táboa de tempo)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}¡Desastre cun Zeppelin en {STATION}!
@@ -2840,6 +2846,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aviso: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} está deseñado para ser usado con {STRING}
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} debe cargarse antes de {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} debe cargarse despois de {STRING}.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Engadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Engadir un novo arquivo NewGRF á lista
@@ -2849,8 +2857,13 @@ STR_NEWGRF_MOVEUP                                               :{BLACK}Subir
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Move-lo arquivo NewGRF seleccionado arriba na lista
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Baixar
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move-lo arquivo NewGRF seleccionado abaixo na lista
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Lista dos ficheiros NewGRF instalados. Pincha nun ficheiro para cambiar os parámetros
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parámetros: {SILVER}{STRING}
 
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Engadir á selección
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Actualizar ficheiros
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Actualiza a lista dos ficheiros NewGRF dispoñibles
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Non se pode engadir o ficheiro: ID do GRF duplicado
 
 STR_NEWGRF_DISABLED                                             :{RED}Desactivado
 
@@ -2888,6 +2901,7 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Vas ven
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Tipo de depósito erróneo
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender tódolos trens do depósito
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender tódolos vehículos que hai no depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender tódolos barcos no depósito
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender tódalas aeronaves do hangar
 
@@ -2908,6 +2922,9 @@ STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Non hai 
 STR_REPLACE_HELP                                                :{BLACK}Permíteche reemplazar untipo de máquina cunha doutro tipo, cando trens do tipo orixinal entran nun depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Eliminar os vagóns: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemprazando: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}O vehículo non está dispoñible
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}O vehículo non está dispoñible
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}O barco non está dispoñible
 
 STR_ENGINES                                                     :Máquinas
 STR_WAGONS                                                      :Vagóns
@@ -2951,6 +2968,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} pasaxeiros, {COMMA} sacos de correo
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns tractores: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Actualizable a: {GOLD}
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
 
 ########### String for New Landscape Generator
@@ -2970,6 +2988,9 @@ STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de industrias:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Subir a altura da liña de neve
+STR_SNOW_LINE_DOWN                                              :{BLACK}Baixar a altura da liña de neve
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Cambiar a altura da liña de neve
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambia-lo ano de inicio
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamaño: {ORANGE}{NUM} x {NUM}
@@ -2984,12 +3005,18 @@ STR_SETTINGUP_GAME                                              :{BLACK}Configur
 STR_PREPARING_GAME                                              :{BLACK}Preparando partida
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acción cambiou o nivel de dificultade a Personalizado
 STR_SE_FLAT_WORLD                                               :{WHITE}Terreo Chan
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Xerar terreo chan
 STR_SE_RANDOM_LAND                                              :{WHITE}Terreo aleatorio
 STR_SE_NEW_WORLD                                                :{BLACK}Crear novo escenario
 STR_SE_CAPTION                                                  :{WHITE}Tipo de escenario
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Subir a altura do terreo chan un nivel
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Baixar a altura do terreo chan un nivel
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Cambiar a altura do terreo chan
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altura do terreo chan:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra-lo mapa pequeno na posición actual
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeno
@@ -3045,6 +3072,7 @@ STR_GROUP_ALL_ROADS                                             :Tódolos vehíc
 STR_GROUP_ALL_SHIPS                                             :Tódolos barcos
 STR_GROUP_ALL_AIRCRAFTS                                         :Tódolos avións
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Borrar tódolos vehículos
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear un grupo
 
@@ -3054,6 +3082,7 @@ STR_GROUP_CAN_T_RENAME                                          :{WHITE}Non se p
 STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Non se pode borrar tódolos vehículos deste grupo...
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Non se pode engadir o vehículo a este grupo...
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Pincha nun grupo para ver unha lista dos vehículos dese grupo
 STR_GROUP_CREATE_TIP                                            :{BLACK}Pincha para crear un grupo
 STR_GROUP_DELETE_TIP                                            :{BLACK}Borrar o grupo seleccionado
 STR_GROUP_RENAME_TIP                                            :{BLACK}Renomear o grupo seleccionado
@@ -3072,6 +3101,15 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 
 
 ############ Face formatting
+STR_FACE_SIMPLE                                                 :{BLACK}Simple
+STR_FACE_LOAD                                                   :{BLACK}Cargar
+STR_FACE_FACECODE_ERR                                           :{WHITE}¡Non se pode axustar o número da cara - debe estar entre 0 e 4.294.967.295!
+STR_FACE_SAVE                                                   :{BLACK}Grabar
+STR_FACE_EUROPEAN                                               :{BLACK}Europea
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Seleccionar caras europeas
+STR_FACE_AFRICAN                                                :{BLACK}Africana
+STR_FACE_YES                                                    :Si
+STR_FACE_NO                                                     :Non
 ########
 
 ############ signal GUI
