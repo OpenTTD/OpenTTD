@@ -1994,6 +1994,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 
 enum {
 	PERCENT_TRANSPORTED_60 = 153,
+	PERCENT_TRANSPORTED_80 = 204,
 };
 
 /** Change industry production or do closure
@@ -2055,18 +2056,26 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		if (smooth_economy) {
 			closeit = true;
 			for (byte j = 0; j < 2 && i->produced_cargo[j] != CT_INVALID; j++){
+				uint32 r = Random();
 				int old_prod, new_prod, percent;
+				/* If over 60% is transported, mult is 1, else mult is -1. */
 				int mult = (i->last_month_pct_transported[j] > PERCENT_TRANSPORTED_60) ? 1 : -1;
 
 				new_prod = old_prod = i->production_rate[j];
 
+				/* For industries with only_decrease flags (temperate terrain Oil Wells),
+				 * the multiplier will always be -1 so they will only decrease. */
 				if (only_decrease) {
 					mult = -1;
-				} else if (Chance16(1, 3)) {
+				/* For normal industries, if over 60% is transported, 33% chance for decrease.
+				 * Bonus for very high station ratings (over 80%): 16% chance for decrease. */
+				} else if (Chance16I(1, ((i->last_month_pct_transported[j] > PERCENT_TRANSPORTED_80) ? 6 : 3), r)) {
 					mult *= -1;
 				}
 
-				if (Chance16(1, 22)) {
+				/* 4.5% chance for 3-23% (or 1 unit for very low productions) production change,
+				 * determined by mult value. If mult = 1 prod. increases, else (-1) it decreases. */
+				if (Chance16I(1, 22, r >> 16)) {
 					new_prod += mult * (max(((RandomRange(50) + 10) * old_prod) >> 8, 1U));
 				}
 
@@ -2094,7 +2103,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			}
 		} else {
 			if (only_decrease || Chance16(1, 3)) {
-				/* If you transport > 60%, 66% chance we increase, else 33% chance we increase */
+				/* If more than 60% transported, 66% chance of increase, else 33% chance of increase */
 				if (!only_decrease && (i->last_month_pct_transported[0] > PERCENT_TRANSPORTED_60) != Chance16(1, 3)) {
 					mul = 1; // Increase production
 				} else {
