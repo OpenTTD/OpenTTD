@@ -22,7 +22,13 @@ public:
 
 class FVideoDriver_Dedicated: public VideoDriverFactory<FVideoDriver_Dedicated> {
 public:
+#ifdef DEDICATED
+	/* Automatically select this dedicated driver when making a dedicated
+	 * server build. */
+	static const int priority = 10;
+#else
 	static const int priority = 0;
+#endif
 	/* virtual */ const char *GetName() { return "dedicated"; }
 	/* virtual */ const char *GetDescription() { return "Dedicated Video Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new VideoDriver_Dedicated(); }
