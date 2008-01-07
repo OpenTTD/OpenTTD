@@ -22,6 +22,7 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "autoreplace_gui.h"
+#include "string_func.h"
 
 
 struct Sorting {

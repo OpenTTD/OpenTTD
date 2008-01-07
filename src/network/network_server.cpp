@@ -5,7 +5,6 @@
 #include "../stdafx.h"
 #include "../openttd.h" // XXX StringID
 #include "../debug.h"
-#include "../string.h"
 #include "../strings_func.h"
 #include "network_data.h"
 #include "core/tcp.h"
@@ -23,6 +22,7 @@
 #include "../genworld.h"
 #include "../core/alloc_func.hpp"
 #include "../fileio.h"
+#include "../string_func.h"
 
 // This file handles all the server-commands
 

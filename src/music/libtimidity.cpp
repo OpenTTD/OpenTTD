@@ -3,7 +3,6 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../sound.h"
-#include "../string.h"
 #include "../variables.h"
 #include "../debug.h"
 #include "libtimidity.h"

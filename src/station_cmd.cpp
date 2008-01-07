@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "string.h"
 #include "aircraft.h"
 #include "bridge_map.h"
 #include "cmd_helper.h"
@@ -45,6 +44,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "string_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)

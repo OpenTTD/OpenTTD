@@ -8,7 +8,7 @@
 #include "openttd.h"
 #include "console.h"
 #include "debug.h"
-#include "string.h"
+#include "string_func.h"
 #include "network/core/core.h"
 
 #if defined(ENABLE_NETWORK)

@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
-#include "string.h"
 #include "table/strings.h"
 #include "namegen.h"
 #include "station.h"
@@ -34,6 +33,7 @@
 #include "core/endian_func.hpp"
 #include "date_func.h"
 #include "vehicle_base.h"
+#include "string_func.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"

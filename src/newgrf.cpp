@@ -15,7 +15,6 @@
 #include "sprite.h"
 #include "newgrf.h"
 #include "variables.h"
-#include "string.h"
 #include "table/strings.h"
 #include "bridge.h"
 #include "town.h"
@@ -46,6 +45,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "string_func.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)

@@ -9,7 +9,6 @@ extern const char _openttd_revision[];
 
 #include "../openttd.h"
 #include "../debug.h"
-#include "../string.h"
 #include "../strings_func.h"
 #include "../map_func.h"
 #include "../command_func.h"
@@ -32,6 +31,7 @@ extern const char _openttd_revision[];
 #include "../texteff.hpp"
 #include "../core/random_func.hpp"
 #include "../window_func.h"
+#include "../string_func.h"
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../core/alloc_func.hpp"
 #endif

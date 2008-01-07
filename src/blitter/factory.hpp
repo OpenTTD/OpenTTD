@@ -4,8 +4,8 @@
 #define BLITTER_FACTORY_HPP
 
 #include "base.hpp"
-#include "../string.h"
 #include "../debug.h"
+#include "../string_func.h"
 #include <string>
 #include <map>
 

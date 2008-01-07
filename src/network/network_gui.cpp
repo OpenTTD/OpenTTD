@@ -3,7 +3,6 @@
 #ifdef ENABLE_NETWORK
 #include "../stdafx.h"
 #include "../openttd.h"
-#include "../string.h"
 #include "../strings_func.h"
 #include "../table/sprites.h"
 #include "network.h"
@@ -21,12 +20,12 @@
 #include "../variables.h"
 #include "network_server.h"
 #include "network_udp.h"
-#include "../string.h"
 #include "../town.h"
 #include "../newgrf.h"
 #include "../functions.h"
 #include "../window_func.h"
 #include "../core/alloc_func.hpp"
+#include "../string_func.h"
 
 #define BGC 5
 #define BTC 15

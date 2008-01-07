@@ -9,7 +9,6 @@
 #include "engine.h"
 #include "landscape.h"
 #include "saveload.h"
-#include "string.h"
 #include "variables.h"
 #include "network/network_data.h"
 #include "network/network_client.h"
@@ -30,6 +29,7 @@
 #include "map_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "string_func.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;

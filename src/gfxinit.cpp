@@ -10,7 +10,6 @@
 #include "table/sprites.h"
 #include "fileio.h"
 #include "fios.h"
-#include "string.h"
 #include "newgrf.h"
 #include "md5.h"
 #include "variables.h"

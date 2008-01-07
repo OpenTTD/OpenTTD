@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
-#include "string.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "gui.h"
@@ -25,6 +24,7 @@
 #include "window_func.h"
 #include "vehicle_base.h"
 #include "core/alloc_func.hpp"
+#include "string_func.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;

@@ -11,11 +11,11 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
-#include "string.h"
 #include "cargotype.h"
 #include "depot.h"
 #include "strings_func.h"
 #include "vehicle_base.h"
+#include "string_func.h"
 
 static int GetOrderFromTimetableWndPt(Window *w, int y, const Vehicle *v)
 {

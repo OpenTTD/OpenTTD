@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #define VARDEF
-#include "string.h"
 #include "debug.h"
 #include "driver.h"
 #include "saveload.h"

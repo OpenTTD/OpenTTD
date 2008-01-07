@@ -26,7 +26,6 @@
 #include "train.h"
 #include "roadveh.h"
 #include "bridge_map.h"
-#include "string.h"
 #include "screenshot.h"
 #include "genworld.h"
 #include "vehicle_gui.h"
@@ -49,6 +48,7 @@
 #include "transparency.h"
 #include "strings_func.h"
 #include "zoom_func.h"
+#include "string_func.h"
 
 static int _rename_id = 1;
 static int _rename_what = -1;

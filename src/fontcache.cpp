@@ -8,7 +8,6 @@
 #include "table/sprites.h"
 #include "table/control_codes.h"
 #include "spritecache.h"
-#include "string.h"
 #include "fontcache.h"
 #include "spriteloader/spriteloader.hpp"
 #include "blitter/factory.hpp"

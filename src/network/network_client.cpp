@@ -4,7 +4,6 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../string.h"
 #include "../openttd.h"
 #include "network_data.h"
 #include "core/tcp.h"
@@ -22,6 +21,7 @@
 #include "../md5.h"
 #include "../strings_func.h"
 #include "../window_func.h"
+#include "../string_func.h"
 
 // This file handles all the client-commands
 

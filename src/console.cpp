@@ -10,7 +10,6 @@
 #include "window_gui.h"
 #include "player.h"
 #include "variables.h"
-#include "string.h"
 #include <stdarg.h>
 #include <string.h>
 #include "console.h"
@@ -19,6 +18,7 @@
 #include "network/network_server.h"
 #include "core/alloc_func.hpp"
 #include "window_func.h"
+#include "string_func.h"
 
 #define ICON_BUFFER 79
 #define ICON_HISTORY_SIZE 20

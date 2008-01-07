@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "string.h"
 #include "debug.h"
 #include "spritecache.h"
 #include "table/sprites.h"

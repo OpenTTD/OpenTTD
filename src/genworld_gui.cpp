@@ -14,7 +14,6 @@
 #include "player.h"
 #include "command_func.h"
 #include "variables.h"
-#include "string.h"
 #include "settings_func.h"
 #include "debug.h"
 #include "genworld.h"
@@ -26,6 +25,7 @@
 #include "date_func.h"
 #include "sound_func.h"
 #include "fios.h"
+#include "string_func.h"
 
 /**
  * In what 'mode' the GenerateLandscapeWindowProc is.

@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "string.h"
 #include "table/strings.h"
 #include "command_func.h"
 #include "economy_func.h"
@@ -20,6 +19,7 @@
 #include "gfx_func.h"
 #include "functions.h"
 #include "vehicle_func.h"
+#include "string_func.h"
 
 /** Change the player's face.
  * @param tile unused

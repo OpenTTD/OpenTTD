@@ -11,7 +11,6 @@
 #include "saveload.h"
 #include "command_func.h"
 #include "variables.h"
-#include "string.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
 #include "viewport.h"
@@ -19,6 +18,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "map_func.h"
+#include "string_func.h"
 
 SignID _new_sign_id;
 uint _total_signs;

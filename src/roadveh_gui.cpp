@@ -17,6 +17,7 @@
 #include "newgrf_engine.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
+#include "string_func.h"
 
 
 void DrawRoadVehDetails(const Vehicle *v, int x, int y)

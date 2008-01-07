@@ -7,7 +7,7 @@
 #include "debug.h"
 #include "namegen.h"
 #include "table/namegen.h"
-#include "string.h"
+#include "string_func.h"
 
 static inline uint32 SeedChance(int shift_by, int max, uint32 seed)
 {

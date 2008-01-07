@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "string.h"
 #include "table/strings.h"
 #include "variables.h"
 #include "textbuf_gui.h"

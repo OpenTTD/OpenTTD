@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "string.h"
 #include "table/strings.h"
 #include "gui.h"
 #include "fileio.h"

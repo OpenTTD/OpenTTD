@@ -26,6 +26,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "string_func.h"
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
 static void DoSelectPlayerFace(PlayerID player, bool show_big);

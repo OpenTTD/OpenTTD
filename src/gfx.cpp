@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "gfx_func.h"
 #include "spritecache.h"
-#include "string.h"
 #include "table/palettes.h"
 #include "table/sprites.h"
 #include "variables.h"

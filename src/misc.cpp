@@ -8,7 +8,6 @@
 #include "landscape.h"
 #include "news.h"
 #include "player.h"
-#include "string.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "saveload.h"
@@ -27,6 +26,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "texteff.hpp"
+#include "string_func.h"
 
 char _name_array[512][32];
 

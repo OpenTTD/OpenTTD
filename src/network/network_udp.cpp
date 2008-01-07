@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../string.h"
 #include "network_data.h"
 #include "../date_func.h"
 #include "../map_func.h"
@@ -20,6 +19,7 @@
 #include "../variables.h"
 #include "../newgrf_config.h"
 #include "../core/endian_func.hpp"
+#include "../string_func.h"
 
 #include "core/udp.h"
 

@@ -22,6 +22,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "settings_type.h"
+#include "string_func.h"
 
 DEFINE_OLD_POOL_GENERIC(Order, Order)
 

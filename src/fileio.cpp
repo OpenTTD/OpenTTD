@@ -5,12 +5,12 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "fileio.h"
-#include "string.h"
 #include "variables.h"
 #include "debug.h"
 #include "fios.h"
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
+#include "string_func.h"
 #ifdef WIN32
 #include <windows.h>
 #else

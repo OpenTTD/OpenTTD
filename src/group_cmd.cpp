@@ -13,7 +13,6 @@
 #include "group.h"
 #include "train.h"
 #include "aircraft.h"
-#include "string.h"
 #include "vehicle_gui.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
@@ -22,6 +21,7 @@
 #include "vehicle_func.h"
 #include "autoreplace_base.h"
 #include "autoreplace_func.h"
+#include "string_func.h"
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one

@@ -9,7 +9,6 @@
 #include "player.h"
 #include "screenshot.h"
 #include "variables.h"
-#include "string.h"
 #include "blitter/factory.hpp"
 #include "fileio.h"
 #include "strings_func.h"

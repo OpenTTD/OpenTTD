@@ -5,11 +5,11 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "network_data.h"
-#include "../string.h"
 #include "network_client.h"
 #include "../command_func.h"
 #include "../callback_table.h"
 #include "../core/alloc_func.hpp"
+#include "../string_func.h"
 
 // Add a command to the local command queue
 void NetworkAddCommandQueue(NetworkTCPSocketHandler *cs, CommandPacket *cp)

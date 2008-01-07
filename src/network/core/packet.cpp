@@ -7,7 +7,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "../../stdafx.h"
-#include "../../string.h"
+#include "../../string_func.h"
 
 #include "packet.h"
 

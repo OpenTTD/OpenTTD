@@ -7,7 +7,7 @@
 
 #include "debug.h"
 #include "core/enum_type.hpp"
-#include "string.h"
+#include "string_func.h"
 #include <string>
 #include <map>
 

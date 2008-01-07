@@ -34,6 +34,7 @@
 #include "vehicle_func.h"
 #include "autoreplace_gui.h"
 #include "core/alloc_func.hpp"
+#include "string_func.h"
 
 struct Sorting {
 	Listing aircraft;

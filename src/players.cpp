@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "engine.h"
-#include "string.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "player.h"
@@ -30,6 +29,7 @@
 #include "sound_func.h"
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
+#include "string_func.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a

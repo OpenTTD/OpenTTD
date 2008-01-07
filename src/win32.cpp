@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "saveload.h"
-#include "string.h"
 #include "gfx_func.h"
 #include "textbuf_gui.h"
 #include "fileio.h"

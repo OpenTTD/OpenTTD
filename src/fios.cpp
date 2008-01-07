@@ -6,7 +6,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "string.h"
 #include "variables.h"
 #include "heightmap.h"
 #include "table/strings.h"
@@ -14,6 +13,7 @@
 #include "fileio.h"
 #include "core/alloc_func.hpp"
 #include "functions.h"
+#include "string_func.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 

@@ -9,7 +9,6 @@
 #include "viewport.h"
 #include "saveload.h"
 #include "console.h"
-#include "string.h"
 #include "variables.h"
 #include "table/sprites.h"
 #include "blitter/factory.hpp"

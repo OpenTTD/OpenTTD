@@ -1,11 +1,12 @@
 /* $Id$ */
 
-/** @file string.h */
+/** @file string.h Functions related to low-level strings. */
 
-#ifndef STRING_H
-#define STRING_H
+#ifndef STRING_FUNC_H
+#define STRING_FUNC_H
 
 #include "core/bitmath_func.hpp"
+#include "string_type.h"
 
 /**
  * usage ttd_strlcpy(dst, src, lengthof(dst));
@@ -36,15 +37,6 @@ void str_validate(char *str);
 /** Scans the string for colour codes and strips them */
 void str_strip_colours(char *str);
 
-/**
- * Valid filter types for IsValidChar.
- */
-enum CharSetFilter {
-	CS_ALPHANUMERAL,      ///< Both numeric and alphabetic and spaces and stuff
-	CS_NUMERAL,           ///< Only numeric ones
-	CS_ALPHA,             ///< Only alphabetic values
-};
-
 /** Convert the given string to lowercase, only works with ASCII! */
 void strtolower(char *str);
 
@@ -62,8 +54,6 @@ static inline int ttd_strnlen(const char *str, int maxlen)
 
 /** Convert the md5sum number to a 'hexadecimal' string, return next pos in buffer */
 char *md5sumToString(char *buf, const char *last, const uint8 md5sum[16]);
-
-typedef uint32 WChar;
 
 /**
  * Only allow certain keys. You can define the filter to be used. This makes
@@ -166,5 +156,4 @@ static inline bool IsWhitespace(WChar c)
 	;
 }
 
-
-#endif /* STRING_H */
+#endif /* STRING_FUNC_H */

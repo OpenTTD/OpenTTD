@@ -24,7 +24,6 @@
 #include "player.h"
 #include "town.h"
 #include "network/network.h"
-#include "string.h"
 #include "variables.h"
 #include "train.h"
 #include "tgp.h"
@@ -39,6 +38,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "sound_func.h"
+#include "string_func.h"
 
 /* Variables to display file lists */
 FiosItem *_fios_list;

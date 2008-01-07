@@ -23,7 +23,6 @@
 #include "openttd.h"
 #include "currency.h"
 #include "screenshot.h"
-#include "string.h"
 #include "variables.h"
 #include "network/network.h"
 #include "settings_internal.h"
@@ -48,6 +47,7 @@
 #endif
 #include "spritecache.h"
 #include "transparency.h"
+#include "string_func.h"
 
 GameOptions _opt;
 GameOptions _opt_newgame;
