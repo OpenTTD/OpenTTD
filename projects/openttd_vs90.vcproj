@@ -1405,6 +1405,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\terraform_cmd.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\timetable_cmd.cpp"
 				>
 			</File>

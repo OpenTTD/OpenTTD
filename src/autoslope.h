@@ -6,6 +6,7 @@
 #define AUTOSLOPE_H
 
 #include "depot.h"
+#include "settings_type.h"
 
 /**
  * Autoslope check for tiles with an entrance on an edge.

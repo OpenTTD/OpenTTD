@@ -20,6 +20,7 @@
 #include "command_func.h"
 #include "vehicle_func.h"
 #include "functions.h"
+#include "variables.h"
 
 /*
  * move the cargo from one engine to another if possible

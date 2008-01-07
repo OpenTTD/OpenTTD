@@ -33,6 +33,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "functions.h"
+#include "variables.h"
 
 void Aircraft::UpdateDeltaXY(Direction direction)
 {

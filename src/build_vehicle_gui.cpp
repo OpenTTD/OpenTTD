@@ -29,6 +29,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "settings_type.h"
 
 
 enum BuildVehicleWidgets {

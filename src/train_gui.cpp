@@ -17,6 +17,7 @@
 #include "newgrf_engine.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
+#include "settings_type.h"
 
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {

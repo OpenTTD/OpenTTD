@@ -7,6 +7,7 @@
 #include "../player.h"
 #include "../command_type.h"
 #include "../core/random_func.hpp"
+#include "../settings_type.h"
 
 /* How DoCommands look like for an AI */
 struct AICommand {

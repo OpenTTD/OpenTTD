@@ -34,6 +34,7 @@
 #include "newgrf_station.h"
 #include "train.h"
 #include "misc/autoptr.hpp"
+#include "variables.h"
 #include "autoslope.h"
 #include "transparency.h"
 #include "water.h"

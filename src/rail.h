@@ -11,7 +11,6 @@
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
 #include "economy_func.h"
-#include "variables.h"
 #include "tile_cmd.h"
 
 /** This struct contains all the info that is needed to draw and construct tracks.

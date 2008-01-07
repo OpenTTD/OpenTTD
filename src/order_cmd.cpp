@@ -21,6 +21,7 @@
 #include "core/alloc_func.hpp"
 #include "functions.h"
 #include "window_func.h"
+#include "settings_type.h"
 
 DEFINE_OLD_POOL_GENERIC(Order, Order)
 
@@ -1249,6 +1250,11 @@ void DeleteVehicleOrders(Vehicle *v)
 	if (cur != NULL) {
 		cur->FreeChain(); // Free the orders.
 	}
+}
+
+Date GetServiceIntervalClamped(uint index)
+{
+	return (_patches.servint_ispercent) ? Clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
 }
 
 /**

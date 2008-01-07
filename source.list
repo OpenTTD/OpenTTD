@@ -262,6 +262,7 @@ road_cmd.cpp
 roadveh_cmd.cpp
 ship_cmd.cpp
 station_cmd.cpp
+terraform_cmd.cpp
 timetable_cmd.cpp
 town_cmd.cpp
 train_cmd.cpp

@@ -43,6 +43,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "variables.h"
 
 
 static bool TrainCheckIfLineEnds(Vehicle *v);

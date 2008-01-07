@@ -11,6 +11,7 @@
 #include "../../bridge.h"
 #include "../../tunnelbridge_map.h"
 #include "../ai.h"
+#include "../../variables.h"
 
 
 #define TEST_STATION_NO_DIR 0xFF

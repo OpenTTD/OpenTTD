@@ -21,6 +21,7 @@
 #include "tunnelbridge_map.h"
 #include "functions.h"
 #include "vehicle_base.h"
+#include "settings_type.h"
 
 static AyStar _npf_aystar;
 

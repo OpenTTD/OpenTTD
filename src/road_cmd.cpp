@@ -26,6 +26,7 @@
 #include "station_map.h"
 #include "tunnel_map.h"
 #include "misc/autoptr.hpp"
+#include "variables.h"
 #include "autoslope.h"
 #include "transparency.h"
 #include "tunnelbridge_map.h"

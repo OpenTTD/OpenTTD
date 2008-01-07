@@ -31,6 +31,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "variables.h"
 
 Station::Station(TileIndex tile)
 {

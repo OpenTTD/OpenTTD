@@ -10,6 +10,7 @@
 #include "cargo_type.h"
 #include "vehicle_type.h"
 #include "tile_type.h"
+#include "date_type.h"
 
 enum {
 	INVALID_VEH_ORDER_ID = 0xFF,
@@ -215,5 +216,19 @@ void AssignOrder(Order *order, Order data);
 bool CheckForValidOrders(const Vehicle* v);
 
 Order UnpackOldOrder(uint16 packed);
+
+#define MIN_SERVINT_PERCENT  5
+#define MAX_SERVINT_PERCENT 90
+#define MIN_SERVINT_DAYS    30
+#define MAX_SERVINT_DAYS   800
+
+/**
+ * Get the service interval domain.
+ * Get the new proposed service interval for the vehicle is indeed, clamped
+ * within the given bounds. @see MIN_SERVINT_PERCENT ,etc.
+ * @param index proposed service interval
+ * @return service interval
+ */
+Date GetServiceIntervalClamped(uint index);
 
 #endif /* ORDER_H */

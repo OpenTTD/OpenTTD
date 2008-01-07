@@ -35,6 +35,7 @@
 #include "road_type.h"
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "cargotype.h"
+#include "variables.h"
 #include "autoslope.h"
 #include "transparency.h"
 #include "water.h"

@@ -7,7 +7,6 @@
 
 #include "direction_type.h"
 #include "oldpool.h"
-#include "variables.h"
 #include "road_map.h"
 #include "rail_map.h"
 #include "water_map.h"
@@ -35,23 +34,6 @@ void ShowDepotWindow(TileIndex tile, VehicleType type);
 
 #define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) if (d->IsValid())
 #define FOR_ALL_DEPOTS(d) FOR_ALL_DEPOTS_FROM(d, 0)
-
-#define MIN_SERVINT_PERCENT  5
-#define MAX_SERVINT_PERCENT 90
-#define MIN_SERVINT_DAYS    30
-#define MAX_SERVINT_DAYS   800
-
-/**
- * Get the service interval domain.
- * Get the new proposed service interval for the vehicle is indeed, clamped
- * within the given bounds. @see MIN_SERVINT_PERCENT ,etc.
- * @param index proposed service interval
- * @return service interval
- */
-static inline Date GetServiceIntervalClamped(uint index)
-{
-	return (_patches.servint_ispercent) ? Clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
-}
 
 /**
  * Check if a tile is a depot of the given type.

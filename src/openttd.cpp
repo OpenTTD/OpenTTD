@@ -63,6 +63,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "variables.h"
 
 #include "bridge_map.h"
 #include "clear_map.h"

@@ -25,6 +25,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "settings_type.h"
 
 enum OrderWindowWidgets {
 	ORDER_WIDGET_CLOSEBOX = 0,

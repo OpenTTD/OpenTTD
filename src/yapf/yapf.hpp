@@ -22,8 +22,8 @@
 #include "../pathfind.h"
 #include "../waypoint.h"
 #include "../debug.h"
+#include "../settings_type.h"
 
-extern Patches _patches_newgame;
 extern uint64 _rdtsc();
 
 #include <limits.h>

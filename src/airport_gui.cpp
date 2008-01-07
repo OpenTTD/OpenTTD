@@ -17,6 +17,7 @@
 #include "depot.h"
 #include "sound_func.h"
 #include "window_func.h"
+#include "variables.h"
 
 static byte _selected_airport_type;
 

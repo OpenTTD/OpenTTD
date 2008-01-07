@@ -38,6 +38,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "variables.h"
 
 
 static const uint16 _roadveh_images[63] = {
