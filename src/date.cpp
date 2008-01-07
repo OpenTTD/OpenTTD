@@ -15,6 +15,7 @@
 #include "vehicle_base.h"
 #ifdef DEBUG_DUMP_COMMANDS
 #include "saveload.h"
+#include "town_map.h"
 #endif
 
 Year      _cur_year;
@@ -267,6 +268,17 @@ void IncreaseDate()
 	/* yes, call various monthly loops */
 	if (_game_mode != GM_MENU) {
 #ifdef DEBUG_DUMP_COMMANDS
+		std::map<TownID, uint32> town_pop;
+		for (TileIndex t = 0; t < MapSize(); t++) {
+			if (GetTileType(t) == MP_HOUSE && IsHouseCompleted(t)) {
+				uint32 pop = GetHouseSpecs(GetHouseType(t))->population;
+				town_pop[GetTownIndex(t)] += pop;
+			}
+		}
+
+		Town *t;
+		FOR_ALL_TOWNS(t) assert(t->population == town_pop[t->index]);
+
 		char name[MAX_PATH];
 		snprintf(name, lengthof(name), "dmp_cmds_%d.sav", _date);
 		SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
