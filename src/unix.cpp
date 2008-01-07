@@ -203,6 +203,7 @@ void CSleep(int milliseconds)
 #include <iconv.h>
 #include <errno.h>
 #include "debug.h"
+#include "string_func.h"
 
 #define INTERNALCODE "UTF-8"
 
