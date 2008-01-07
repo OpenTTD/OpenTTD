@@ -25,6 +25,7 @@
 #include "transparency.h"
 #include "functions.h"
 #include "window_func.h"
+#include "vehicle_func.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
@@ -109,6 +110,58 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	}
 
 	return cost;
+}
+
+/** Purchase a land area. Actually you only purchase one tile, so
+ * the name is a bit confusing ;p
+ * @param tile the tile the player is purchasing
+ * @param flags for this command type
+ * @param p1 unused
+ * @param p2 unused
+ * @return error of cost of operation
+ */
+CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	CommandCost cost;
+
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	if (IsOwnedLandTile(tile) && IsTileOwner(tile, _current_player)) {
+		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
+	}
+
+	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	if (CmdFailed(cost)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		MakeOwnedLand(tile, _current_player);
+		MarkTileDirtyByTile(tile);
+	}
+
+	return cost.AddCost(_price.clear_roughland * 10);
+}
+
+/** Sell a land area. Actually you only sell one tile, so
+ * the name is a bit confusing ;p
+ * @param tile the tile the player is selling
+ * @param flags for this command type
+ * @param p1 unused
+ * @param p2 unused
+ * @return error or cost of operation
+ */
+CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+
+	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
+	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;
+
+
+	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) DoClearSquare(tile);
+
+	return CommandCost(- _price.clear_roughland * 2);
 }
 
 static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);

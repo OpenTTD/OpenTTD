@@ -26,6 +26,7 @@ void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 	} else {
+		extern TileIndex _terraform_err_tile;
 		SetRedErrorSquare(_terraform_err_tile);
 	}
 }

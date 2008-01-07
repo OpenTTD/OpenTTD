@@ -5,6 +5,9 @@
 #ifndef UNMOVABLE_MAP_H
 #define UNMOVABLE_MAP_H
 
+#include "core/bitmath_func.hpp"
+#include "tile_map.h"
+
 enum {
 	HQ_NUM_TILE = 4, ///< Number of HQ tiles
 	HQ_NUM_SIZE = 5  ///< Number of stages of an HQ

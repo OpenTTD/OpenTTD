@@ -90,7 +90,6 @@ VARDEF PlayerFace _player_face; ///< for player face storage in openttd.cfg
 
 /* IN/OUT parameters to commands */
 VARDEF byte _yearly_expenses_type;
-VARDEF TileIndex _terraform_err_tile;
 VARDEF TileIndex _build_tunnel_endtile;
 VARDEF bool _generating_world;
 
