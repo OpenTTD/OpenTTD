@@ -20,6 +20,8 @@
 #include "functions.h"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "autoreplace_base.h"
+#include "autoreplace_func.h"
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one

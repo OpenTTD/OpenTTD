@@ -35,6 +35,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "variables.h"
+#include "autoreplace_gui.h"
 
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};

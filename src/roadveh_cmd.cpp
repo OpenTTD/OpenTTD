@@ -39,6 +39,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "variables.h"
+#include "autoreplace_gui.h"
 
 
 static const uint16 _roadveh_images[63] = {

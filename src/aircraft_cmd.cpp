@@ -34,6 +34,8 @@
 #include "sound_func.h"
 #include "functions.h"
 #include "variables.h"
+#include "autoreplace_func.h"
+#include "autoreplace_gui.h"
 
 void Aircraft::UpdateDeltaXY(Direction direction)
 {

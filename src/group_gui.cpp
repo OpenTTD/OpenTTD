@@ -21,6 +21,7 @@
 #include "core/alloc_func.hpp"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "autoreplace_gui.h"
 
 
 struct Sorting {

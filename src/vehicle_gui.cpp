@@ -32,6 +32,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "autoreplace_gui.h"
 
 struct Sorting {
 	Listing aircraft;

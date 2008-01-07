@@ -21,6 +21,7 @@
 #include "vehicle_func.h"
 #include "functions.h"
 #include "variables.h"
+#include "autoreplace_func.h"
 
 /*
  * move the cargo from one engine to another if possible

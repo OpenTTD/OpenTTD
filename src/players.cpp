@@ -28,6 +28,8 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "autoreplace_func.h"
+#include "autoreplace_gui.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a

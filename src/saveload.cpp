@@ -31,6 +31,7 @@
 #include "functions.h"
 #include "core/endian_func.hpp"
 #include "vehicle_base.h"
+#include "autoreplace_base.h"
 #include <list>
 
 extern const uint16 SAVEGAME_VERSION = 83;

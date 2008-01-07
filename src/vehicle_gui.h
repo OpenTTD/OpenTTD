@@ -67,9 +67,7 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type);
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, StationID station);
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex depot_tile);
 
-void ShowReplaceVehicleWindow(VehicleType vehicletype);
 void DrawSmallOrderList(const Vehicle *v, int x, int y);
-void ShowReplaceGroupVehicleWindow(GroupID group, VehicleType veh);
 
 void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip);
 

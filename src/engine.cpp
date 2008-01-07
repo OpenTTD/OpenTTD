@@ -24,6 +24,8 @@
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
+#include "autoreplace_base.h"
+#include "autoreplace_gui.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];

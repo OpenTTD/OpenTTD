@@ -25,6 +25,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "variables.h"
+#include "autoreplace_gui.h"
 
 enum {
 	HEADER_SIZE = 49,
