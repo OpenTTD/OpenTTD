@@ -22,12 +22,13 @@
 #include "core/alloc_func.hpp"
 #include "functions.h"
 #include "core/random_func.hpp"
+#include "core/bitmath_func.hpp"
+#include "string_func.h"
 #include <ctype.h>
 #include <tchar.h>
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <shlobj.h>
 #if defined(_MSC_VER) && !defined(WINCE)
 	#include <dbghelp.h>
 #endif
