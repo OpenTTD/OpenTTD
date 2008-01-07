@@ -743,7 +743,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 /* Figure out what train EngineIDs to put in the list */
 static void GenerateBuildTrainList(Window *w)
 {
-	EngineID eid, sel_id;
+	EngineID sel_id = INVALID_ENGINE;
 	int num_engines = 0;
 	int num_wagons  = 0;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
@@ -756,7 +756,7 @@ static void GenerateBuildTrainList(Window *w)
 	 * Also check to see if the previously selected engine is still available,
 	 * and if not, reset selection to INVALID_ENGINE. This could be the case
 	 * when engines become obsolete and are removed */
-	for (sel_id = INVALID_ENGINE, eid = 0; eid < NUM_TRAIN_ENGINES; eid++) {
+	for (EngineID eid = 0; eid < NUM_TRAIN_ENGINES; eid++) {
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
 
 		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, bv->filter.railtype)) continue;
@@ -789,14 +789,12 @@ static void GenerateBuildTrainList(Window *w)
 /* Figure out what road vehicle EngineIDs to put in the list */
 static void GenerateBuildRoadVehList(Window *w)
 {
-	EngineID eid, sel_id;
+	EngineID sel_id = INVALID_ENGINE;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
 	EngList_RemoveAll(&bv->eng_list);
 
-	sel_id = INVALID_ENGINE;
-
-	for (eid = ROAD_ENGINES_INDEX; eid < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; eid++) {
+	for (EngineID eid = ROAD_ENGINES_INDEX; eid < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; eid++) {
 		if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
 		if (!HasBit(bv->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
 		EngList_Add(&bv->eng_list, eid);
@@ -809,14 +807,12 @@ static void GenerateBuildRoadVehList(Window *w)
 /* Figure out what ship EngineIDs to put in the list */
 static void GenerateBuildShipList(Window *w)
 {
-	EngineID eid, sel_id;
+	EngineID sel_id = INVALID_ENGINE;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
 	EngList_RemoveAll(&bv->eng_list);
 
-	sel_id = INVALID_ENGINE;
-
-	for (eid = SHIP_ENGINES_INDEX; eid < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; eid++) {
+	for (EngineID eid = SHIP_ENGINES_INDEX; eid < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; eid++) {
 		if (!IsEngineBuildable(eid, VEH_SHIP, _local_player)) continue;
 		EngList_Add(&bv->eng_list, eid);
 
@@ -828,7 +824,7 @@ static void GenerateBuildShipList(Window *w)
 /* Figure out what aircraft EngineIDs to put in the list */
 static void GenerateBuildAircraftList(Window *w)
 {
-	EngineID eid, sel_id;
+	EngineID sel_id = INVALID_ENGINE;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
 	EngList_RemoveAll(&bv->eng_list);
@@ -837,8 +833,7 @@ static void GenerateBuildAircraftList(Window *w)
 	 * Also check to see if the previously selected plane is still available,
 	 * and if not, reset selection to INVALID_ENGINE. This could be the case
 	 * when planes become obsolete and are removed */
-	sel_id = INVALID_ENGINE;
-	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
+	for (EngineID eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
 		if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_player)) continue;
 		/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 		if (w->window_number > VEH_END && !CanAircraftUseStation(eid, w->window_number)) continue;
