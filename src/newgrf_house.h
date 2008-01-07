@@ -5,7 +5,7 @@
 #ifndef NEWGRF_HOUSE_H
 #define NEWGRF_HOUSE_H
 
-#include "town.h"
+#include "town_type.h"
 #include "newgrf_callbacks.h"
 
 /**

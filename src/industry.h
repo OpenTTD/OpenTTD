@@ -13,9 +13,8 @@
 #include "map_type.h"
 #include "slope_type.h"
 #include "date_type.h"
-
-typedef uint16 IndustryGfx;
-typedef uint8 IndustryType;
+#include "town_type.h"
+#include "industry_type.h"
 
 enum {
 	INVALID_INDUSTRY       = 0xFFFF,
@@ -64,13 +63,6 @@ enum IndustryConstructionType {
 	ICT_SCENARIO_EDITOR   ///< while scenarion edition
 };
 
-/** From where is callback CBID_INDUSTRY_AVAILABLE been called */
-enum IndustryAvailabilityCallType {
-	IACT_MAPGENERATION,   ///< during random map generation
-	IACT_RANDOMCREATION,  ///< during creation of random ingame industry
-	IACT_USERCREATION,    ///< from the Fund/build window
-};
-
 enum IndustryBehaviour {
 	INDUSTRYBEH_NONE                  =      0,
 	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fileds around itself (temp and artic farms)
@@ -97,7 +89,6 @@ enum IndustryBehaviour {
 
 DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour);
 
-struct Industry;
 DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
 
 /**

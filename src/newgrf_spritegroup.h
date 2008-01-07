@@ -5,8 +5,8 @@
 #ifndef NEWGRF_SPRITEGROUP_H
 #define NEWGRF_SPRITEGROUP_H
 
-#include "town.h"
-#include "industry.h"
+#include "town_type.h"
+#include "industry_type.h"
 #include "newgrf_storage.h"
 #include "core/bitmath_func.hpp"
 #include "gfx_type.h"

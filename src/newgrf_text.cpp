@@ -19,6 +19,8 @@
 #include "newgrf_text.h"
 #include "table/control_codes.h"
 #include "strings_func.h"
+#include "core/alloc_func.hpp"
+#include "newgrf_storage.h"
 
 #define GRFTAB  28
 #define TABSIZE 11

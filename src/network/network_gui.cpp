@@ -26,6 +26,7 @@
 #include "../newgrf.h"
 #include "../functions.h"
 #include "../window_func.h"
+#include "../core/alloc_func.hpp"
 
 #define BGC 5
 #define BTC 15

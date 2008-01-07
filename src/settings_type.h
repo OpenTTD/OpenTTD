@@ -7,6 +7,7 @@
 
 #include "yapf/yapf_settings.h"
 #include "date_type.h"
+#include "town_type.h"
 
 struct GameOptions {
 	GameDifficulty diff;

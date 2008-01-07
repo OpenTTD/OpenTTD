@@ -14,6 +14,7 @@
 #include "newgrf_config.h"
 #include "strings_func.h"
 #include "window_func.h"
+#include "core/alloc_func.hpp"
 
 /** Parse an integerlist string and set each found value
  * @param p the string to be parsed. Each element in the list is seperated by a

@@ -7,6 +7,7 @@
 
 #include "track_func.h"
 #include "rail_type.h"
+#include "town_type.h"
 #include "road_func.h"
 #include "tile_map.h"
 

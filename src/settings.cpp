@@ -42,6 +42,7 @@
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "core/alloc_func.hpp"
 #ifdef WITH_FREETYPE
 #include "fontcache.h"
 #endif

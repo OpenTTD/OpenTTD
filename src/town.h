@@ -10,6 +10,7 @@
 #include "cargo_type.h"
 #include "tile_type.h"
 #include "date_type.h"
+#include "town_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,
@@ -68,15 +69,11 @@ enum HouseExtraFlags {
 
 DECLARE_ENUM_AS_BIT_SET(HouseExtraFlags)
 
-typedef uint16 HouseID;
-typedef uint16 HouseClassID;
-
 struct BuildingCounts {
 	uint8 id_count[HOUSE_MAX];
 	uint8 class_count[HOUSE_CLASS_MAX];
 };
 
-struct Town;
 DECLARE_OLD_POOL(Town, Town, 3, 8000)
 
 struct Town : PoolItem<Town, TownID, &_Town_pool> {
@@ -197,12 +194,6 @@ struct HouseSpec {
 	const struct GRFFile *grffile;     ///< grf file that introduced this house
 };
 
-enum TownSizeMode {
-	TSM_RANDOM,
-	TSM_FIXED,
-	TSM_CITY
-};
-
 VARDEF HouseSpec _house_specs[HOUSE_MAX];
 
 uint32 GetWorldPopulation();
@@ -219,42 +210,6 @@ enum {
 	UNMOVEABLE_REMOVE = 1,
 	TUNNELBRIDGE_REMOVE = 1,
 	INDUSTRY_REMOVE = 2
-};
-
-enum {
-	/* These refer to the maximums, so Appalling is -1000 to -400
-	 * MAXIMUM RATINGS BOUNDARIES */
-	RATING_MINIMUM     = -1000,
-	RATING_APPALLING   =  -400,
-	RATING_VERYPOOR    =  -200,
-	RATING_POOR        =     0,
-	RATING_MEDIOCRE    =   200,
-	RATING_GOOD        =   400,
-	RATING_VERYGOOD    =   600,
-	RATING_EXCELLENT   =   800,
-	RATING_OUTSTANDING =  1000,         ///< OUTSTANDING
-
-	RATING_MAXIMUM = RATING_OUTSTANDING,
-
-	/* RATINGS AFFECTING NUMBERS */
-	RATING_TREE_DOWN_STEP = -35,
-	RATING_TREE_MINIMUM   = RATING_MINIMUM,
-	RATING_TREE_UP_STEP   = 7,
-	RATING_TREE_MAXIMUM   = 220,
-
-	RATING_TUNNEL_BRIDGE_DOWN_STEP = -250,
-	RATING_TUNNEL_BRIDGE_MINIMUM   = 0,
-
-	RATING_INDUSTRY_DOWN_STEP = -1500,
-	RATING_INDUSTRY_MINIMUM   = RATING_MINIMUM,
-
-	RATING_ROAD_DOWN_STEP = -50,
-	RATING_ROAD_MINIMUM   = -100,
-	RATING_HOUSE_MINIMUM  = RATING_MINIMUM,
-
-	RATING_BRIBE_UP_STEP = 200,
-	RATING_BRIBE_MAXIMUM = 800,
-	RATING_BRIBE_DOWN_TO = -50        // XXX SHOULD BE SOMETHING LOWER?
 };
 
 /** This is the number of ticks between towns being processed for building new

@@ -10,6 +10,8 @@
 #include "cargo_type.h"
 #include "vehicle_type.h"
 #include "tile_type.h"
+#include "town_type.h"
+#include "industry_type.h"
 
 struct Player;
 

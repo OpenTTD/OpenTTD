@@ -5,7 +5,7 @@
 #ifndef NEWGRF_INDUSTRIES_H
 #define NEWGRF_INDUSTRIES_H
 
-#include "industry.h"
+#include "industry_type.h"
 #include "newgrf_spritegroup.h"
 
 /** When should the industry(tile) be triggered for random bits? */
@@ -16,6 +16,13 @@ enum IndustryTrigger {
 	INDUSTRY_TRIGGER_256_TICKS        = 2,
 	/** Triggered on cargo delivery */
 	INDUSTRY_TRIGGER_CARGO_DELIVERY   = 4,
+};
+
+/** From where is callback CBID_INDUSTRY_AVAILABLE been called */
+enum IndustryAvailabilityCallType {
+	IACT_MAPGENERATION,   ///< during random map generation
+	IACT_RANDOMCREATION,  ///< during creation of random ingame industry
+	IACT_USERCREATION,    ///< from the Fund/build window
 };
 
 /* in newgrf_industry.cpp */

@@ -16,6 +16,7 @@
 #include "variables.h"
 #include "fontcache.h"
 #include "gfx_func.h"
+#include "core/alloc_func.hpp"
 #include <string.h>
 
 struct MD5File {

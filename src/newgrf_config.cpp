@@ -12,6 +12,7 @@
 #include "network/network_data.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
+#include "core/alloc_func.hpp"
 
 #include "fileio.h"
 #include "fios.h"

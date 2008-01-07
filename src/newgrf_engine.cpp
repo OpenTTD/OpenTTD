@@ -20,6 +20,7 @@
 #include "cargotype.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "core/random_func.hpp"
 
 
 int _traininfo_vehicle_pitch = 0;

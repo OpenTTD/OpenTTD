@@ -16,9 +16,7 @@ struct Depot;
 struct Waypoint;
 struct Station;
 struct ViewPort;
-struct Town;
 struct NewsItem;
-struct Industry;
 struct DrawPixelInfo;
 struct Group;
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
@@ -32,8 +30,6 @@ typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C
 typedef uint16 StationID;
 static const StationID INVALID_STATION = 0xFFFF;
 typedef uint16 RoadStopID;
-typedef uint16 TownID;
-typedef uint16 IndustryID;
 typedef uint16 DepotID;
 typedef uint16 WaypointID;
 typedef uint16 OrderID;
@@ -152,24 +148,6 @@ enum {
 
 	NUM_LANDSCAPE = 4,
 };
-
-/**
- * Town Layouts
- */
-enum TownLayout {
-	TL_NO_ROADS     = 0, ///< Build no more roads, but still build houses
-	TL_ORIGINAL,         ///< Original algorithm (min. 1 distance between roads)
-	TL_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
-	TL_2X2_GRID,         ///< Geometric 2x2 grid algorithm
-	TL_3X3_GRID,         ///< Geometric 3x3 grid algorithm
-
-	NUM_TLS,             ///< Number of town layouts
-};
-
-/* It needs to be 8bits, because we save and load it as such */
-/** Define basic enum properties */
-template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_NO_ROADS, NUM_TLS, NUM_TLS> {};
-typedef TinyEnumT<TownLayout> TownLayoutByte; //typedefing-enumification of TownLayout
 
 #define GAME_DIFFICULTY_NUM 18
 

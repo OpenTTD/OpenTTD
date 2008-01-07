@@ -6,6 +6,7 @@
 #define CLEAR_MAP_H
 
 #include "bridge_map.h"
+#include "industry_type.h"
 
 /**
  * Ground types. Valid densities in comments after the enum.

@@ -23,6 +23,7 @@
 #include "sprite.h"
 #include "transparency.h"
 #include "functions.h"
+#include "town.h"
 
 static uint32 GetGRFParameter(IndustryGfx indtile_id, byte parameter)
 {
