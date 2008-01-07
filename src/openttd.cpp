@@ -43,7 +43,7 @@
 #include "ai/ai.h"
 #include "train.h"
 #include "yapf/yapf.h"
-#include "settings.h"
+#include "settings_func.h"
 #include "genworld.h"
 #include "clear_map.h"
 #include "fontcache.h"

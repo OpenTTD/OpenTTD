@@ -26,7 +26,7 @@
 #include "string.h"
 #include "variables.h"
 #include "network/network.h"
-#include "settings.h"
+#include "settings_internal.h"
 #include "command_func.h"
 #include "console.h"
 #include "saveload.h"
@@ -48,7 +48,10 @@
 #include "spritecache.h"
 #include "transparency.h"
 
-/** The patch values that are used for new games and/or modified in config file */
+GameOptions _opt;
+GameOptions _opt_newgame;
+GameOptions *_opt_ptr;
+Patches _patches;
 Patches _patches_newgame;
 
 struct IniFile;

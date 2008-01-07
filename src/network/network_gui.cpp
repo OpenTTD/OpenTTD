@@ -21,7 +21,6 @@
 #include "../variables.h"
 #include "network_server.h"
 #include "network_udp.h"
-#include "../settings.h"
 #include "../string.h"
 #include "../town.h"
 #include "../newgrf.h"

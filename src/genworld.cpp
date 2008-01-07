@@ -15,7 +15,7 @@
 #include "window_func.h"
 #include "network/network.h"
 #include "debug.h"
-#include "settings.h"
+#include "settings_func.h"
 #include "heightmap.h"
 #include "viewport.h"
 #include "map_func.h"

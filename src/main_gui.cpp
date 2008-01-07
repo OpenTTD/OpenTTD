@@ -29,7 +29,6 @@
 #include "string.h"
 #include "screenshot.h"
 #include "genworld.h"
-#include "settings.h"
 #include "vehicle_gui.h"
 #include "transparency_gui.h"
 #include "newgrf_config.h"

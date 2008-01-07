@@ -1,9 +1,9 @@
 /* $Id$ */
 
-/** @file settings.h */
+/** @file settings_internal.h Functions and types used internally for the settings configurations. */
 
-#ifndef SETTINGS_H
-#define SETTINGS_H
+#ifndef SETTINGS_INTERNAL_H
+#define SETTINGS_INTERNAL_H
 
 #include "saveload.h"
 
@@ -82,18 +82,7 @@ enum IniGroupType {
 	IGT_LIST      = 1, ///< a list of values, seperated by \n and terminated by the next group block
 };
 
-/** The patch values that are used for new games and/or modified in config file */
-extern Patches _patches_newgame;
-
-bool IConsoleSetPatchSetting(const char *name, int32 value);
-void IConsoleGetPatchSetting(const char *name);
-void IConsoleListPatches();
 const SettingDesc *GetPatchFromName(const char *name, uint *i);
 bool SetPatchValue(uint index, const Patches *object, int32 value);
-
-void LoadFromConfig();
-void SaveToConfig();
-void CheckConfig();
-void UpdatePatches();
 
 #endif /* SETTINGS_H */

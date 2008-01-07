@@ -12,7 +12,6 @@
 #include "player.h"
 #include "network/network.h"
 #include "variables.h"
-#include "settings.h"
 #include "heightmap.h"
 #include "genworld.h"
 #include "network/network_gui.h"

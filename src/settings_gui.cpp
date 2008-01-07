@@ -18,7 +18,7 @@
 #include "network/network.h"
 #include "town.h"
 #include "variables.h"
-#include "settings.h"
+#include "settings_internal.h"
 #include "newgrf_townname.h"
 #include "strings_func.h"
 #include "functions.h"

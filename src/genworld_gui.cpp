@@ -15,7 +15,7 @@
 #include "command_func.h"
 #include "variables.h"
 #include "string.h"
-#include "settings.h"
+#include "settings_func.h"
 #include "debug.h"
 #include "genworld.h"
 #include "network/network.h"

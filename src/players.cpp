@@ -20,7 +20,6 @@
 #include "ai/ai.h"
 #include "player_face.h"
 #include "group.h"
-#include "settings.h"
 #include "window_func.h"
 #include "tile_map.h"
 #include "strings_func.h"

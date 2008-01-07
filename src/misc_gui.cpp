@@ -28,7 +28,6 @@
 #include "variables.h"
 #include "train.h"
 #include "tgp.h"
-#include "settings.h"
 #include "cargotype.h"
 #include "player_face.h"
 #include "strings_func.h"
