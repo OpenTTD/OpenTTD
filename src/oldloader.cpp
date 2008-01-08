@@ -25,7 +25,6 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "variables.h"
-#include "autoreplace_gui.h"
 
 enum {
 	HEADER_SIZE = 49,
@@ -1623,7 +1622,6 @@ static bool LoadOldMain(LoadgameState *ls)
 	for (Engine *e = _engines; e != endof(_engines); e++) {
 		if (_date >= (e->intro_date + 365)) {
 			e->flags = (e->flags & ~ENGINE_EXCLUSIVE_PREVIEW) | ENGINE_AVAILABLE;
-			AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 			e->player_avail = (byte)-1;
 		}
 	}
