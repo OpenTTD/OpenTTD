@@ -56,8 +56,6 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 {
 	AllocateMap(size_x, size_y);
 
-	AddTypeToEngines(); // make sure all engines have a type
-
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 
 	_pause_game = 0;

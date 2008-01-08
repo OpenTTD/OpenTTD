@@ -38,6 +38,24 @@ enum {
 };
 
 
+void SetupEngines()
+{
+	/* Copy original static engine data */
+	memcpy(&_engine_info, &orig_engine_info, sizeof(orig_engine_info));
+	memcpy(&_rail_vehicle_info, &orig_rail_vehicle_info, sizeof(orig_rail_vehicle_info));
+	memcpy(&_ship_vehicle_info, &orig_ship_vehicle_info, sizeof(orig_ship_vehicle_info));
+	memcpy(&_aircraft_vehicle_info, &orig_aircraft_vehicle_info, sizeof(orig_aircraft_vehicle_info));
+	memcpy(&_road_vehicle_info, &orig_road_vehicle_info, sizeof(orig_road_vehicle_info));
+
+	/* Add type to engines */
+	Engine* e = _engines;
+	do e->type = VEH_TRAIN;    while (++e < &_engines[ROAD_ENGINES_INDEX]);
+	do e->type = VEH_ROAD;     while (++e < &_engines[SHIP_ENGINES_INDEX]);
+	do e->type = VEH_SHIP;     while (++e < &_engines[AIRCRAFT_ENGINES_INDEX]);
+	do e->type = VEH_AIRCRAFT; while (++e < &_engines[TOTAL_NUM_ENGINES]);
+}
+
+
 void ShowEnginePreviewWindow(EngineID engine);
 
 void DeleteCustomEngineNames()
@@ -106,16 +124,6 @@ static void CalcEngineReliability(Engine *e)
 	}
 	InvalidateWindowClasses(WC_BUILD_VEHICLE); // Update to show the new reliability
 	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
-}
-
-void AddTypeToEngines()
-{
-	Engine* e = _engines;
-
-	do e->type = VEH_TRAIN;    while (++e < &_engines[ROAD_ENGINES_INDEX]);
-	do e->type = VEH_ROAD;     while (++e < &_engines[SHIP_ENGINES_INDEX]);
-	do e->type = VEH_SHIP;     while (++e < &_engines[AIRCRAFT_ENGINES_INDEX]);
-	do e->type = VEH_AIRCRAFT; while (++e < &_engines[TOTAL_NUM_ENGINES]);
 }
 
 void StartupEngines()

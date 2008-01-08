@@ -1631,8 +1631,6 @@ static bool LoadOldMain(LoadgameState *ls)
 	FixOldStations();
 	FixOldVehicles();
 
-	AddTypeToEngines();
-
 	/* We have a new difficulty setting */
 	_opt.diff.town_council_tolerance = Clamp(_opt.diff_level, 0, 2);
 

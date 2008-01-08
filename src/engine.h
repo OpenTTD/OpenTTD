@@ -153,7 +153,7 @@ enum {
 static const EngineID INVALID_ENGINE = 0xFFFF;
 
 
-void AddTypeToEngines();
+void SetupEngines();
 void StartupEngines();
 
 

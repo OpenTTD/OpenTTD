@@ -5063,11 +5063,7 @@ static void ResetNewGRFData()
 	CleanUpGRFTownNames();
 
 	/* Copy/reset original engine info data */
-	memcpy(&_engine_info, &orig_engine_info, sizeof(orig_engine_info));
-	memcpy(&_rail_vehicle_info, &orig_rail_vehicle_info, sizeof(orig_rail_vehicle_info));
-	memcpy(&_ship_vehicle_info, &orig_ship_vehicle_info, sizeof(orig_ship_vehicle_info));
-	memcpy(&_aircraft_vehicle_info, &orig_aircraft_vehicle_info, sizeof(orig_aircraft_vehicle_info));
-	memcpy(&_road_vehicle_info, &orig_road_vehicle_info, sizeof(orig_road_vehicle_info));
+	SetupEngines();
 
 	/* Copy/reset original bridge info data
 	 * First, free sprite table data */
@@ -5123,9 +5119,6 @@ static void ResetNewGRFData()
 
 	/* Reset NewGRF errors. */
 	ResetNewGRFErrors();
-
-	/* Add engine type to engine data. This is needed for the refit precalculation. */
-	AddTypeToEngines();
 
 	/* Set up the default cargo types */
 	SetupCargoForClimate(_opt.landscape);
