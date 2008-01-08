@@ -329,15 +329,14 @@ static void NewVehicleAvailable(Engine *e)
 	/* Do not introduce new rail wagons */
 	if (IsWagon(index)) return;
 
-	if (index < NUM_TRAIN_ENGINES) {
+	if (e->type == VEH_TRAIN) {
 		/* maybe make another rail type available */
 		RailType railtype = RailVehInfo(index)->railtype;
 		assert(railtype < RAILTYPE_END);
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) SetBit(p->avail_railtypes, railtype);
 		}
-	}
-	if ((index - NUM_TRAIN_ENGINES) < NUM_ROAD_ENGINES) {
+	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) SetBit(p->avail_roadtypes, HasBit(EngInfo(index)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
