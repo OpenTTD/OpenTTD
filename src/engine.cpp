@@ -41,11 +41,11 @@ enum {
 void SetupEngines()
 {
 	/* Copy original static engine data */
-	memcpy(&_engine_info, &orig_engine_info, sizeof(orig_engine_info));
-	memcpy(&_rail_vehicle_info, &orig_rail_vehicle_info, sizeof(orig_rail_vehicle_info));
-	memcpy(&_ship_vehicle_info, &orig_ship_vehicle_info, sizeof(orig_ship_vehicle_info));
-	memcpy(&_aircraft_vehicle_info, &orig_aircraft_vehicle_info, sizeof(orig_aircraft_vehicle_info));
-	memcpy(&_road_vehicle_info, &orig_road_vehicle_info, sizeof(orig_road_vehicle_info));
+	memcpy(&_engine_info, &_orig_engine_info, sizeof(_orig_engine_info));
+	memcpy(&_rail_vehicle_info, &_orig_rail_vehicle_info, sizeof(_orig_rail_vehicle_info));
+	memcpy(&_ship_vehicle_info, &_orig_ship_vehicle_info, sizeof(_orig_ship_vehicle_info));
+	memcpy(&_aircraft_vehicle_info, &_orig_aircraft_vehicle_info, sizeof(_orig_aircraft_vehicle_info));
+	memcpy(&_road_vehicle_info, &_orig_road_vehicle_info, sizeof(_orig_road_vehicle_info));
 
 	/* Add type to engines */
 	Engine* e = _engines;

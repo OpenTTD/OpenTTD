@@ -165,7 +165,7 @@ int Aircraft::GetImage(Direction direction) const
 		int sprite = GetCustomVehicleSprite(this, direction);
 
 		if (sprite != 0) return sprite;
-		spritenum = orig_aircraft_vehicle_info[this->engine_type - AIRCRAFT_ENGINES_INDEX].image_index;
+		spritenum = _orig_aircraft_vehicle_info[this->engine_type - AIRCRAFT_ENGINES_INDEX].image_index;
 	}
 	return direction + _aircraft_sprite[spritenum];
 }
@@ -193,7 +193,7 @@ void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal)
 	if (is_custom_sprite(spritenum)) {
 		sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite == 0) {
-			spritenum = orig_aircraft_vehicle_info[engine - AIRCRAFT_ENGINES_INDEX].image_index;
+			spritenum = _orig_aircraft_vehicle_info[engine - AIRCRAFT_ENGINES_INDEX].image_index;
 			sprite = (6 + _aircraft_sprite[spritenum]);
 		}
 	}
@@ -221,7 +221,7 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 	if (is_custom_sprite(spritenum)) {
 		sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite == 0) {
-			spritenum = orig_aircraft_vehicle_info[engine - AIRCRAFT_ENGINES_INDEX].image_index;
+			spritenum = _orig_aircraft_vehicle_info[engine - AIRCRAFT_ENGINES_INDEX].image_index;
 			sprite = (6 + _aircraft_sprite[spritenum]);
 		}
 	}

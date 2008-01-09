@@ -219,12 +219,11 @@ static inline bool IsEngineIndex(uint index)
 }
 
 /* Access Vehicle Data */
-//#include "table/engines.h"
-extern const EngineInfo orig_engine_info[TOTAL_NUM_ENGINES];
-extern const RailVehicleInfo orig_rail_vehicle_info[NUM_TRAIN_ENGINES];
-extern const ShipVehicleInfo orig_ship_vehicle_info[NUM_SHIP_ENGINES];
-extern const AircraftVehicleInfo orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
-extern const RoadVehicleInfo orig_road_vehicle_info[NUM_ROAD_ENGINES];
+extern const EngineInfo _orig_engine_info[TOTAL_NUM_ENGINES];
+extern const RailVehicleInfo _orig_rail_vehicle_info[NUM_TRAIN_ENGINES];
+extern const ShipVehicleInfo _orig_ship_vehicle_info[NUM_SHIP_ENGINES];
+extern const AircraftVehicleInfo _orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
+extern const RoadVehicleInfo _orig_road_vehicle_info[NUM_ROAD_ENGINES];
 
 extern EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 extern RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];

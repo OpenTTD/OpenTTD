@@ -99,7 +99,7 @@ int RoadVehicle::GetImage(Direction direction) const
 	if (is_custom_sprite(img)) {
 		image = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
 		if (image != 0) return image;
-		img = orig_road_vehicle_info[this->engine_type - ROAD_ENGINES_INDEX].image_index;
+		img = _orig_road_vehicle_info[this->engine_type - ROAD_ENGINES_INDEX].image_index;
 	}
 
 	image = direction + _roadveh_images[img];
@@ -118,7 +118,7 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 			DrawSprite(sprite, pal, x, y);
 			return;
 		}
-		spritenum = orig_road_vehicle_info[engine - ROAD_ENGINES_INDEX].image_index;
+		spritenum = _orig_road_vehicle_info[engine - ROAD_ENGINES_INDEX].image_index;
 	}
 	DrawSprite(6 + _roadveh_images[spritenum], pal, x, y);
 }

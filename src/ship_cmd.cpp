@@ -65,7 +65,7 @@ void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
 			DrawSprite(sprite, pal, x, y);
 			return;
 		}
-		spritenum = orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
+		spritenum = _orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
 	}
 	DrawSprite(6 + _ship_sprites[spritenum], pal, x, y);
 }
@@ -82,7 +82,7 @@ void GetShipSpriteSize(EngineID engine, uint &width, uint &height)
 
 	if (is_custom_sprite(spritenum)) {
 		custom_sprite = GetCustomVehicleIcon(engine, DIR_W);
-		spritenum = orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
+		spritenum = _orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
 	}
 	if (custom_sprite == 0) {
 		spritenum = 6 + _ship_sprites[spritenum];
@@ -104,7 +104,7 @@ int Ship::GetImage(Direction direction) const
 		int sprite = GetCustomVehicleSprite(this, direction);
 
 		if (sprite != 0) return sprite;
-		spritenum = orig_ship_vehicle_info[this->engine_type - SHIP_ENGINES_INDEX].image_index;
+		spritenum = _orig_ship_vehicle_info[this->engine_type - SHIP_ENGINES_INDEX].image_index;
 	}
 	return _ship_sprites[spritenum] + direction;
 }

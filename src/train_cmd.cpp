@@ -464,7 +464,7 @@ int Train::GetImage(Direction direction) const
 	if (is_custom_sprite(img)) {
 		base = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
 		if (base != 0) return base;
-		img = orig_rail_vehicle_info[this->engine_type].image_index;
+		img = _orig_rail_vehicle_info[this->engine_type].image_index;
 	}
 
 	base = _engine_sprite_base[img] + ((direction + _engine_sprite_add[img]) & _engine_sprite_and[img]);
@@ -483,7 +483,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 	if (is_custom_sprite(img)) {
 		image = GetCustomVehicleIcon(engine, DIR_W);
 		if (image == 0) {
-			img = orig_rail_vehicle_info[engine].image_index;
+			img = _orig_rail_vehicle_info[engine].image_index;
 		} else {
 			y += _traininfo_vehicle_pitch;
 		}
@@ -498,7 +498,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 		image = 0;
 		if (is_custom_sprite(img)) {
 			image = GetCustomVehicleIcon(engine, DIR_E);
-			if (image == 0) img = orig_rail_vehicle_info[engine].image_index;
+			if (image == 0) img = _orig_rail_vehicle_info[engine].image_index;
 		}
 		if (image == 0) {
 			image =
