@@ -31,6 +31,22 @@
 #include "vehicle_func.h"
 #include "settings_type.h"
 
+struct buildvehicle_d {
+	VehicleType vehicle_type;
+	union {
+		RailTypeByte railtype;
+		AirportFTAClass::Flags flags;
+		RoadTypes roadtypes;
+	} filter;
+	byte sel_index;  ///< deprecated value, used for 'unified' ship and road
+	bool descending_sort_order;
+	byte sort_criteria;
+	bool regenerate_list;
+	EngineID sel_engine;
+	EngineID rename_engine;
+	EngineList eng_list;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildvehicle_d));
 
 enum BuildVehicleWidgets {
 	BUILD_VEHICLE_WIDGET_CLOSEBOX = 0,

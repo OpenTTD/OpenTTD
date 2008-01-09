@@ -6,6 +6,7 @@
 #define BRIDGE_H
 
 #include "gfx_type.h"
+#include "direction_type.h"
 #include "tile_cmd.h"
 
 enum {

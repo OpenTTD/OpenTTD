@@ -5,10 +5,9 @@
 #ifndef WINDOW_GUI_H
 #define WINDOW_GUI_H
 
-#include "order.h"
+#include "core/bitmath_func.hpp"
 #include "rail_type.h"
 #include "road_type.h"
-#include "airport.h"
 #include "vehicle_type.h"
 #include "viewport.h"
 
@@ -326,23 +325,6 @@ struct tooltips_d {
 	uint64 params[5];
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
-
-struct buildvehicle_d {
-	VehicleType vehicle_type;
-	union {
-		RailTypeByte railtype;
-		AirportFTAClass::Flags flags;
-		RoadTypes roadtypes;
-	} filter;
-	byte sel_index;  ///< deprecated value, used for 'unified' ship and road
-	bool descending_sort_order;
-	byte sort_criteria;
-	bool regenerate_list;
-	EngineID sel_engine;
-	EngineID rename_engine;
-	EngineList eng_list;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildvehicle_d));
 
 struct replaceveh_d {
 	byte sel_index[2];
