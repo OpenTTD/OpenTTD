@@ -47,6 +47,7 @@
 #include "sound_func.h"
 #include "string_func.h"
 #include "road_func.h"
+#include "player.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)

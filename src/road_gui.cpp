@@ -23,6 +23,7 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "player.h"
 
 
 static void ShowRVStationPicker(RoadStop::Type rs);

@@ -76,19 +76,7 @@ static inline uint GetGroupArraySize(void)
  * @param id_e The EngineID of the engine to count
  * @return The number of engines with EngineID id_e in the group
  */
-static inline uint GetGroupNumEngines(PlayerID p, GroupID id_g, EngineID id_e)
-{
-	if (IsValidGroupID(id_g)) return GetGroup(id_g)->num_engines[id_e];
-
-	uint num = GetPlayer(p)->num_engines[id_e];
-	if (!IsDefaultGroupID(id_g)) return num;
-
-	const Group *g;
-	FOR_ALL_GROUPS(g) {
-		if (g->owner == p) num -= g->num_engines[id_e];
-	}
-	return num;
-}
+uint GetGroupNumEngines(PlayerID p, GroupID id_g, EngineID id_e);
 
 static inline void IncreaseGroupNumVehicle(GroupID id_g)
 {
@@ -105,6 +93,6 @@ void InitializeGroup();
 void SetTrainGroupID(Vehicle *v, GroupID grp);
 void UpdateTrainGroupID(Vehicle *v);
 void RemoveVehicleFromGroup(const Vehicle *v);
-void RemoveAllGroupsForPlayer(const Player *p);
+void RemoveAllGroupsForPlayer(const PlayerID p);
 
 #endif /* GROUP_H */

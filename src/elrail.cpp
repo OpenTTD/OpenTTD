@@ -65,6 +65,7 @@
 #include "transparency.h"
 #include "tunnelbridge_map.h"
 #include "vehicle_func.h"
+#include "player.h"
 
 
 static inline TLG GetTLG(TileIndex t)

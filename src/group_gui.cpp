@@ -24,6 +24,7 @@
 #include "string_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
+#include "player.h"
 
 
 struct Sorting {

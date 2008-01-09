@@ -5,11 +5,9 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-#include "oldpool.h"
 #include "rail_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"
-#include "command_type.h"
 #include "gfx_type.h"
 #include "date_type.h"
 #include "sound_type.h"

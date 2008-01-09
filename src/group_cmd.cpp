@@ -409,13 +409,26 @@ void UpdateTrainGroupID(Vehicle *v)
 	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
 }
 
+uint GetGroupNumEngines(PlayerID p, GroupID id_g, EngineID id_e)
+{
+	if (IsValidGroupID(id_g)) return GetGroup(id_g)->num_engines[id_e];
 
-void RemoveAllGroupsForPlayer(const Player *p)
+	uint num = GetPlayer(p)->num_engines[id_e];
+	if (!IsDefaultGroupID(id_g)) return num;
+
+	const Group *g;
+	FOR_ALL_GROUPS(g) {
+		if (g->owner == p) num -= g->num_engines[id_e];
+	}
+	return num;
+}
+
+void RemoveAllGroupsForPlayer(const PlayerID p)
 {
 	Group *g;
 
 	FOR_ALL_GROUPS(g) {
-		if (p->index == g->owner) delete g;
+		if (p == g->owner) delete g;
 	}
 }
 

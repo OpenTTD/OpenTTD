@@ -7,6 +7,7 @@
 
 #include "depot.h"
 #include "settings_type.h"
+#include "player.h"
 
 /**
  * Autoslope check for tiles with an entrance on an edge.

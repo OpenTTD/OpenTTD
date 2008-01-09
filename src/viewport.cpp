@@ -25,6 +25,7 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "vehicle_func.h"
+#include "player.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 

@@ -29,6 +29,7 @@
 #include "vehicle_func.h"
 #include "vehicle_base.h"
 #include "string_func.h"
+#include "player.h"
 
 enum {
 	MAX_WAYPOINTS_PER_TOWN = 64,

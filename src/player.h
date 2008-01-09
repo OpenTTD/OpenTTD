@@ -11,6 +11,8 @@
 #include "engine.h"
 #include "livery.h"
 #include "autoreplace_type.h"
+#include "economy_type.h"
+#include "tile_type.h"
 
 struct PlayerEconomyEntry {
 	Money income;

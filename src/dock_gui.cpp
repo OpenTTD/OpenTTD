@@ -20,6 +20,7 @@
 #include "sound_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
+#include "player.h"
 
 static void ShowBuildDockStationPicker();
 static void ShowBuildDocksDepotPicker();

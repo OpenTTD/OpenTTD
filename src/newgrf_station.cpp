@@ -23,6 +23,7 @@
 #include "newgrf_town.h"
 #include "gfx_func.h"
 #include "date_func.h"
+#include "player.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 

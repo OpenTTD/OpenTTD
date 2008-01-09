@@ -6,7 +6,6 @@
 #define STATION_H
 
 #include "airport.h"
-#include "player.h"
 #include "oldpool.h"
 #include "sprite.h"
 #include "road_type.h"

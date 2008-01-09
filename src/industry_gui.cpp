@@ -23,6 +23,7 @@
 #include "newgrf_text.h"
 #include "strings_func.h"
 #include "map_func.h"
+#include "player.h"
 
 bool _ignore_restrictions;
 

@@ -889,7 +889,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			p->is_active = false;
 		}
 		RemoveAllEngineReplacementForPlayer(p);
-		RemoveAllGroupsForPlayer(p);
+		RemoveAllGroupsForPlayer(p->index);
 
 	} break;
 
