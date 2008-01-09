@@ -1377,31 +1377,36 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 }
 
 
-static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
+static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	const Industry *i;
 
-	/* accepting industries won't be close, not even with patch */
 	if (_patches.same_industry_close && indspec->accepts_cargo[0] == CT_INVALID)
+		/* Allow primary industries to be placed close to any other industry */
 		return true;
 
 	FOR_ALL_INDUSTRIES(i) {
+		/* Within 14 tiles from another industry is considered close */
+		bool in_low_distance = DistanceMax(tile, i->xy) <= 14;
+
 		/* check if an industry that accepts the same goods is nearby */
-		if (DistanceMax(tile, i->xy) <= 14 &&
-				indspec->accepts_cargo[0] != CT_INVALID &&
+		if (in_low_distance &&
+				indspec->accepts_cargo[0] != CT_INVALID && // not a primary industry?
 				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
-					_game_mode != GM_EDITOR ||
-					!_patches.same_industry_close ||
-					!_patches.multiple_industry_per_town
-				)) {
+				/* at least one of those options must be true */
+				_game_mode != GM_EDITOR || // editor must not be stopped
+				!_patches.same_industry_close ||
+				!_patches.multiple_industry_per_town)) {
 			_error_message = STR_INDUSTRY_TOO_CLOSE;
 			return false;
 		}
 
-		/* check "not close to" field. */
-		if ((i->type == indspec->conflicting[0] || i->type == indspec->conflicting[1] || i->type == indspec->conflicting[2]) &&
-				DistanceMax(tile, i->xy) <= 14) {
+		/* check if there are any conflicting industry types around */
+		if ((i->type == indspec->conflicting[0] ||
+				i->type == indspec->conflicting[1] ||
+				i->type == indspec->conflicting[2]) &&
+				in_low_distance) {
 			_error_message = STR_INDUSTRY_TOO_CLOSE;
 			return false;
 		}
@@ -1558,7 +1563,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 	}
 
 	if (!custom_shape_check && _patches.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
-	if (!CheckIfTooCloseToIndustry(tile, type)) return NULL;
+	if (!CheckIfFarEnoughFromIndustry(tile, type)) return NULL;
 
 	const Town *t = CheckMultipleIndustryInTown(tile, type);
 	if (t == NULL) return NULL;
