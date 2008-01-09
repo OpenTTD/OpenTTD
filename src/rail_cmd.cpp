@@ -303,15 +303,13 @@ static inline bool ValParamTrackOrientation(Track track) {return IsValidTrack(tr
 CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Slope tileh;
-	RailType railtype;
-	Track track;
+	RailType railtype = (RailType)p1;
+	Track track = (Track)p2;
 	TrackBits trackbit;
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost ret;
 
-	if (!ValParamRailtype(p1) || !ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
-	railtype = (RailType)p1;
-	track = (Track)p2;
+	if (!ValParamRailtype(railtype) || !ValParamTrackOrientation(track)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
 	trackbit = TrackToTrackBits(track);
@@ -703,7 +701,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	Slope tileh;
 
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
-	if (!ValParamRailtype(p1)) return CMD_ERROR;
+	if (!ValParamRailtype((RailType)p1)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
 
@@ -1150,11 +1148,10 @@ void *UpdateTrainPowerProc(Vehicle *v, void *data)
 CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-
-	if (!ValParamRailtype(p2)) return CMD_ERROR;
-	if (p1 >= MapSize()) return CMD_ERROR;
-
 	RailType totype = (RailType)p2;
+
+	if (!ValParamRailtype(totype)) return CMD_ERROR;
+	if (p1 >= MapSize()) return CMD_ERROR;
 
 	uint ex = TileX(tile);
 	uint ey = TileY(tile);

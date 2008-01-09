@@ -20,12 +20,27 @@ enum RailType {
 	INVALID_RAILTYPE  = 0xFF        ///< Flag for invalid railtype
 };
 
-typedef byte RailTypeMask;
-
 /** Allow incrementing of Track variables */
 DECLARE_POSTFIX_INCREMENT(RailType);
 /** Define basic enum properties */
 template <> struct EnumPropsT<RailType> : MakeEnumPropsT<RailType, byte, RAILTYPE_BEGIN, RAILTYPE_END, INVALID_RAILTYPE> {};
 typedef TinyEnumT<RailType> RailTypeByte;
+
+/**
+ * The different roadtypes we support, but then a bitmask of them
+ */
+enum RailTypes {
+	RAILTYPES_NONE     = 0,                      ///< No rail types
+	RAILTYPES_RAIL     = 1 << RAILTYPE_RAIL,     ///< Non-electrified rails
+	RAILTYPES_ELECTRIC = 1 << RAILTYPE_ELECTRIC, ///< Electrified rails
+	RAILTYPES_MONO     = 1 << RAILTYPE_MONO,     ///< Monorail!
+	RAILTYPES_MAGLEV   = 1 << RAILTYPE_MAGLEV,   ///< Ever fast maglev
+	RAILTYPES_ALL      = RAILTYPES_RAIL | RAILTYPES_ELECTRIC | RAILTYPES_MONO | RAILTYPES_MAGLEV, ///< All of them
+	RAILTYPES_END,                               ///< Used for iterations?
+	INVALID_RAILTYPES  = 0xFF                    ///< Invalid railtypes
+};
+DECLARE_ENUM_AS_BIT_SET(RailTypes);
+template <> struct EnumPropsT<RailTypes> : MakeEnumPropsT<RailTypes, byte, RAILTYPES_NONE, RAILTYPES_END, INVALID_RAILTYPES> {};
+typedef TinyEnumT<RailTypes> RailTypesByte;
 
 #endif /* RAIL_TYPE_H */

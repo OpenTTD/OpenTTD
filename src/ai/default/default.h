@@ -3,6 +3,8 @@
 #ifndef DEFAULT_H
 #define DEFAULT_H
 
+#include "../../direction_type.h"
+
 void AiDoGameLoop(Player*);
 void SaveLoad_AI(PlayerID id);
 

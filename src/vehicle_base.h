@@ -106,7 +106,7 @@ struct VehicleRail {
 	TrackBitsByte track;
 	byte force_proceed;
 	RailTypeByte railtype;
-	RailTypeMask compatible_railtypes;
+	RailTypes compatible_railtypes;
 
 	byte flags;
 

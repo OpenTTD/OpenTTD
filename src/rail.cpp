@@ -9,6 +9,8 @@
 #include "station_map.h"
 #include "tunnel_map.h"
 #include "tunnelbridge_map.h"
+#include "settings_type.h"
+#include "date_func.h"
 
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
@@ -139,4 +141,44 @@ RailType GetTileRailType(TileIndex tile)
 			break;
 	}
 	return INVALID_RAILTYPE;
+}
+
+bool HasRailtypeAvail(const PlayerID p, const RailType railtype)
+{
+	return HasBit(GetPlayer(p)->avail_railtypes, railtype);
+}
+
+bool ValParamRailtype(const RailType rail)
+{
+	return HasRailtypeAvail(_current_player, rail);
+}
+
+RailType GetBestRailtype(const PlayerID p)
+{
+	if (HasRailtypeAvail(p, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
+	if (HasRailtypeAvail(p, RAILTYPE_MONO)) return RAILTYPE_MONO;
+	if (HasRailtypeAvail(p, RAILTYPE_ELECTRIC)) return RAILTYPE_ELECTRIC;
+	return RAILTYPE_RAIL;
+}
+
+RailTypes GetPlayerRailtypes(PlayerID p)
+{
+	RailTypes rt = RAILTYPES_NONE;
+
+	for (EngineID i = 0; i != TOTAL_NUM_ENGINES; i++) {
+		const Engine* e = GetEngine(i);
+		const EngineInfo *ei = EngInfo(i);
+
+		if (e->type == VEH_TRAIN && HasBit(ei->climates, _opt.landscape) &&
+				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
+			const RailVehicleInfo *rvi = RailVehInfo(i);
+
+			if (rvi->railveh_type != RAILVEH_WAGON) {
+				assert(rvi->railtype < RAILTYPE_END);
+				SetBit(rt, rvi->railtype);
+			}
+		}
+	}
+
+	return rt;
 }

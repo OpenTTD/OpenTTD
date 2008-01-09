@@ -905,7 +905,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 	/* Does the authority allow this? */
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile_org)) return CMD_ERROR;
-	if (!ValParamRailtype(p2 & 0xF)) return CMD_ERROR;
+	if (!ValParamRailtype((RailType)(p2 & 0xF))) return CMD_ERROR;
 
 	/* unpack parameters */
 	Axis axis = Extract<Axis, 0>(p1);

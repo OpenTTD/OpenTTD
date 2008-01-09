@@ -496,7 +496,7 @@ int32 SettingsDisableElrail(int32 p1)
 			if (v->type == VEH_TRAIN && v->u.rail.railtype == RAILTYPE_ELECTRIC) {
 				/* this railroad vehicle is now compatible only with elrail,
 				*  so add there also normal rail compatibility */
-				v->u.rail.compatible_railtypes |= (1 << RAILTYPE_RAIL);
+				v->u.rail.compatible_railtypes |= RAILTYPES_RAIL;
 				v->u.rail.railtype = RAILTYPE_RAIL;
 				SetBit(v->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
 			}

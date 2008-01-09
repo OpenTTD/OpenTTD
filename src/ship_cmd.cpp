@@ -121,7 +121,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		Trackdir trackdir = GetVehicleTrackdir(v);
-		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPE);
+		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
 		if (ftd.best_bird_dist == 0) {
 			best_depot = GetDepotByTile(ftd.node.tile); /* Found target */
 		} else {
@@ -508,7 +508,7 @@ bad:;
 	return best_bird_dist;
 }
 
-static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypeMask railtypes)
+static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypes railtypes)
 {
 
 	void* perf = NpfBeginInterval();
@@ -537,7 +537,7 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 
 		NPFFillWithOrderData(&fstd, v);
 
-		ftd = PerfNPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE);
+		ftd = PerfNPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPES);
 
 		if (ftd.best_trackdir != 0xff) {
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains

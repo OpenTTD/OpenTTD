@@ -8,7 +8,7 @@
 class CYapfDestinationRailBase
 {
 protected:
-	RailTypeMask m_compatible_railtypes;
+	RailTypes m_compatible_railtypes;
 
 public:
 	void SetDestination(Vehicle* v)

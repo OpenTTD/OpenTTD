@@ -21,6 +21,7 @@
 #include "station.h"
 #include "unmovable_map.h"
 #include "textbuf_gui.h"
+#include "genworld.h"
 
 void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {

@@ -1103,7 +1103,7 @@ static void AiWantTrainRoute(Player *p)
 {
 	uint16 r = GB(Random(), 0, 16);
 
-	_players_ai[p->index].railtype_to_use = GetBestRailtype(p);
+	_players_ai[p->index].railtype_to_use = GetBestRailtype(p->index);
 
 	if (r > 0xD000) {
 		AiWantLongIndustryRoute(p);

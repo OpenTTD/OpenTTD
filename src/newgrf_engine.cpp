@@ -21,6 +21,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "core/random_func.hpp"
+#include "direction_func.h"
 
 
 int _traininfo_vehicle_pitch = 0;

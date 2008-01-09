@@ -64,10 +64,10 @@ struct RailtypeInfo {
 	SpriteID snow_offset;
 
 	/** bitmask to the OTHER railtypes on which an engine of THIS railtype generates power */
-	RailTypeMask powered_railtypes;
+	RailTypes powered_railtypes;
 
 	/** bitmask to the OTHER railtypes on which an engine of THIS railtype can physically travel */
-	RailTypeMask compatible_railtypes;
+	RailTypes compatible_railtypes;
 
 	/**
 	 * Offset between the current railtype and normal rail. This means that:<p>
@@ -200,5 +200,36 @@ void DrawCatenaryOnTunnel(const TileInfo *ti);
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);
 
 int32 SettingsDisableElrail(int32 p1); ///< _patches.disable_elrail callback
+
+/**
+ * Finds out if a Player has a certain railtype available
+ * @param p Player in question
+ * @param railtype requested RailType
+ * @return true if player has requested RailType available
+ */
+bool HasRailtypeAvail(const PlayerID p, const RailType railtype);
+
+/**
+ * Validate functions for rail building.
+ * @param rail the railtype to check.
+ * @return true if the current player may build the rail.
+ */
+bool ValParamRailtype(const RailType rail);
+
+/**
+ * Returns the "best" railtype a player can build.
+ * As the AI doesn't know what the BEST one is, we have our own priority list
+ * here. When adding new railtypes, modify this function
+ * @param p the player "in action"
+ * @return The "best" railtype a player has available
+ */
+RailType GetBestRailtype(const PlayerID p);
+
+/**
+ * Get the rail types the given player can build.
+ * @param p the player to get the rail types for.
+ * @return the rail types.
+ */
+RailTypes GetPlayerRailtypes(const PlayerID p);
 
 #endif /* RAIL_H */

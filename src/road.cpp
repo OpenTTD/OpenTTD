@@ -6,6 +6,11 @@
 #include "road_map.h"
 #include "road_internal.h"
 #include "water_map.h"
+#include "genworld.h"
+#include "player.h"
+#include "engine.h"
+#include "settings_type.h"
+#include "date_func.h"
 
 bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 {
@@ -66,4 +71,39 @@ RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 	}
 
 	return org_rb;
+}
+
+bool HasRoadTypesAvail(const PlayerID p, const RoadTypes rts)
+{
+	RoadTypes avail_roadtypes;
+
+	if (p == OWNER_TOWN || _game_mode == GM_EDITOR || IsGeneratingWorld()) {
+		avail_roadtypes = ROADTYPES_ROAD;
+	} else {
+		if (!IsValidPlayer(p)) return false;
+		avail_roadtypes = (RoadTypes)GetPlayer(p)->avail_roadtypes | ROADTYPES_ROAD; // road is available for always for everybody
+	}
+	return (rts & ~avail_roadtypes) == 0;
+}
+
+bool ValParamRoadType(const RoadType rt)
+{
+	return HasRoadTypesAvail(_current_player, RoadTypeToRoadTypes(rt));
+}
+
+RoadTypes GetPlayerRoadtypes(PlayerID p)
+{
+	RoadTypes rt = ROADTYPES_NONE;
+
+	for (EngineID i = 0; i != TOTAL_NUM_ENGINES; i++) {
+		const Engine* e = GetEngine(i);
+		const EngineInfo *ei = EngInfo(i);
+
+		if (e->type == VEH_ROAD && HasBit(ei->climates, _opt.landscape) &&
+				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
+			SetBit(rt, HasBit(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		}
+	}
+
+	return rt;
 }

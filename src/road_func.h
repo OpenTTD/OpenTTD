@@ -113,4 +113,26 @@ static inline RoadBits DiagDirToRoadBits(DiagDirection d)
 	return (RoadBits)(ROAD_NW << (3 ^ d));
 }
 
+/**
+ * Finds out, whether given player has all given RoadTypes available
+ * @param PlayerID ID of player
+ * @param rts RoadTypes to test
+ * @return true if player has all requested RoadTypes available
+ */
+bool HasRoadTypesAvail(const PlayerID p, const RoadTypes rts);
+
+/**
+ * Validate functions for rail building.
+ * @param rt road type to check.
+ * @return true if the current player may build the road.
+ */
+bool ValParamRoadType(const RoadType rt);
+
+/**
+ * Get the road types the given player can build.
+ * @param p the player to get the roadtypes for.
+ * @return the road types.
+ */
+RoadTypes GetPlayerRoadtypes(const PlayerID p);
+
 #endif /* ROAD_FUNC_H */

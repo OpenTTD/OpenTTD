@@ -442,7 +442,7 @@ struct NewTrackPathFinder {
 	TileIndex dest;
 
 	TransportType tracktype;
-	RailTypeMask railtypes;
+	RailTypes railtypes;
 	uint maxlength;
 
 	HashLink *new_link;
@@ -938,7 +938,7 @@ start_at:
 
 
 /** new pathfinder for trains. better and faster. */
-void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypeMask railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data)
+void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data)
 {
 	NewTrackPathFinder tpf;
 

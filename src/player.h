@@ -5,11 +5,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "road_func.h"
+#include "road_type.h"
+#include "rail_type.h"
 #include "date_type.h"
 #include "engine.h"
 #include "livery.h"
-#include "genworld.h"
 #include "autoreplace_type.h"
 
 struct PlayerEconomyEntry {
@@ -41,8 +41,8 @@ struct Player {
 	byte player_color;
 	Livery livery[LS_END];
 	byte player_money_fraction;
-	byte avail_railtypes;
-	byte avail_roadtypes;
+	RailTypes avail_railtypes;
+	RoadTypes avail_roadtypes;
 	byte block_preview;
 	PlayerByte index;
 
@@ -119,37 +119,6 @@ static inline bool IsValidPlayer(PlayerID pi)
 	return IsInsideBS(pi, PLAYER_FIRST, MAX_PLAYERS);
 }
 
-byte GetPlayerRailtypes(PlayerID p);
-byte GetPlayerRoadtypes(PlayerID p);
-
-/** Finds out if a Player has a certain railtype available
- * @param p Player in question
- * @param Railtype requested RailType
- * @return true if player has requested RailType available
- */
-static inline bool HasRailtypeAvail(const Player *p, const RailType Railtype)
-{
-	return HasBit(p->avail_railtypes, Railtype);
-}
-
-/** Finds out, whether given player has all given RoadTypes available
- * @param PlayerID ID of player
- * @param rts RoadTypes to test
- * @return true if player has all requested RoadTypes available
- */
-static inline bool HasRoadTypesAvail(const PlayerID p, const RoadTypes rts)
-{
-	RoadTypes avail_roadtypes;
-
-	if (p == OWNER_TOWN || _game_mode == GM_EDITOR || IsGeneratingWorld()) {
-		avail_roadtypes = ROADTYPES_ROAD;
-	} else {
-		if (!IsValidPlayer(p)) return false;
-		avail_roadtypes = (RoadTypes)GetPlayer(p)->avail_roadtypes | ROADTYPES_ROAD; // road is available for always for everybody
-	}
-	return (rts & ~avail_roadtypes) == 0;
-}
-
 static inline bool IsHumanPlayer(PlayerID pi)
 {
 	return !GetPlayer(pi)->is_ai;
@@ -161,26 +130,6 @@ static inline bool IsInteractivePlayer(PlayerID pi)
 }
 
 void DrawPlayerIcon(PlayerID p, int x, int y);
-
-/* Validate functions for rail building */
-static inline bool ValParamRailtype(const uint32 rail) { return HasBit(GetPlayer(_current_player)->avail_railtypes, rail);}
-
-/* Validate functions for road building */
-static inline bool ValParamRoadType(const RoadType rt) { return HasRoadTypesAvail(_current_player, RoadTypeToRoadTypes(rt));}
-
-/** Returns the "best" railtype a player can build.
- * As the AI doesn't know what the BEST one is, we have our own priority list
- * here. When adding new railtypes, modify this function
- * @param p the player "in action"
- * @return The "best" railtype a player has available
- */
-static inline RailType GetBestRailtype(const Player *p)
-{
-	if (HasRailtypeAvail(p, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
-	if (HasRailtypeAvail(p, RAILTYPE_MONO)) return RAILTYPE_MONO;
-	if (HasRailtypeAvail(p, RAILTYPE_ELECTRIC)) return RAILTYPE_ELECTRIC;
-	return RAILTYPE_RAIL;
-}
 
 struct HighScore {
 	char company[100];

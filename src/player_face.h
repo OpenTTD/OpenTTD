@@ -6,6 +6,7 @@
 #define PLAYER_FACE_H
 
 #include "core/random_func.hpp"
+#include "core/bitmath_func.hpp"
 
 /** The gender/race combinations that we have faces for */
 enum GenderEthnicity {

@@ -44,10 +44,10 @@ RailtypeInfo _railtypes[] = {
 		SPR_RAIL_SNOW_OFFSET,
 
 		/* Powered railtypes */
-		1 << RAILTYPE_RAIL | 1 << RAILTYPE_ELECTRIC,
+		RAILTYPES_RAIL | RAILTYPES_ELECTRIC,
 
 		/* Compatible railtypes */
-		1 << RAILTYPE_RAIL | 1 << RAILTYPE_ELECTRIC,
+		RAILTYPES_RAIL | RAILTYPES_ELECTRIC,
 
 		/* main offset */
 		0,
@@ -100,10 +100,10 @@ RailtypeInfo _railtypes[] = {
 		SPR_RAIL_SNOW_OFFSET,
 
 		/* Powered railtypes */
-		1 << RAILTYPE_ELECTRIC,
+		RAILTYPES_ELECTRIC,
 
 		/* Compatible railtypes */
-		1 << RAILTYPE_ELECTRIC | 1 << RAILTYPE_RAIL,
+		RAILTYPES_ELECTRIC | RAILTYPES_RAIL,
 
 		/* main offset */
 		0,
@@ -152,10 +152,10 @@ RailtypeInfo _railtypes[] = {
 		SPR_MONO_SNOW_OFFSET,
 
 		/* Powered railtypes */
-		1 << RAILTYPE_MONO,
+		RAILTYPES_MONO,
 
 		/* Compatible Railtypes */
-		1 << RAILTYPE_MONO,
+		RAILTYPES_MONO,
 
 		/* main offset */
 		82,
@@ -204,10 +204,10 @@ RailtypeInfo _railtypes[] = {
 		SPR_MGLV_SNOW_OFFSET,
 
 		/* Powered railtypes */
-		1 << RAILTYPE_MAGLEV,
+		RAILTYPES_MAGLEV,
 
 		/* Compatible Railtypes */
-		1 << RAILTYPE_MAGLEV,
+		RAILTYPES_MAGLEV,
 
 		/* main offset */
 		164,

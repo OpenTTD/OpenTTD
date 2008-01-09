@@ -34,8 +34,12 @@ enum RoadTypes {
 	ROADTYPES_ROADHWAY = ROADTYPES_ROAD | ROADTYPES_HWAY,                   ///< Road + highway (or whatever substitute)
 	ROADTYPES_TRAMHWAY = ROADTYPES_TRAM | ROADTYPES_HWAY,                   ///< Trams + highway (or whatever substitute)
 	ROADTYPES_ALL      = ROADTYPES_ROAD | ROADTYPES_TRAM | ROADTYPES_HWAY,  ///< Road + trams + highway (or whatever substitute)
+	ROADTYPES_END,                                                          ///< Used for iterations?
+	INVALID_ROADTYPES  = 0xFF                                               ///< Invalid roadtypes
 };
 DECLARE_ENUM_AS_BIT_SET(RoadTypes);
+template <> struct EnumPropsT<RoadTypes> : MakeEnumPropsT<RoadTypes, byte, ROADTYPES_NONE, ROADTYPES_END, INVALID_ROADTYPES> {};
+typedef TinyEnumT<RoadTypes> RoadTypesByte;
 
 
 /**

@@ -32,6 +32,8 @@
 #include "string_func.h"
 #include "ai/default/default.h"
 #include "ai/trolly/trolly.h"
+#include "road_func.h"
+#include "rail.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a
@@ -588,47 +590,6 @@ void PlayersYearlyLoop()
 			SndPlayFx(SND_00_GOOD_YEAR);
 		}
 	}
-}
-
-byte GetPlayerRailtypes(PlayerID p)
-{
-	byte rt = 0;
-	EngineID i;
-
-	for (i = 0; i != TOTAL_NUM_ENGINES; i++) {
-		const Engine* e = GetEngine(i);
-		const EngineInfo *ei = EngInfo(i);
-
-		if (e->type == VEH_TRAIN && HasBit(ei->climates, _opt.landscape) &&
-				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
-			const RailVehicleInfo *rvi = RailVehInfo(i);
-
-			if (rvi->railveh_type != RAILVEH_WAGON) {
-				assert(rvi->railtype < RAILTYPE_END);
-				SetBit(rt, rvi->railtype);
-			}
-		}
-	}
-
-	return rt;
-}
-
-byte GetPlayerRoadtypes(PlayerID p)
-{
-	byte rt = 0;
-	EngineID i;
-
-	for (i = 0; i != TOTAL_NUM_ENGINES; i++) {
-		const Engine* e = GetEngine(i);
-		const EngineInfo *ei = EngInfo(i);
-
-		if (e->type == VEH_ROAD && HasBit(ei->climates, _opt.landscape) &&
-				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
-			SetBit(rt, HasBit(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
-		}
-	}
-
-	return rt;
 }
 
 static void DeletePlayerStuff(PlayerID pi)

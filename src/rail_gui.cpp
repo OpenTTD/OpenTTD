@@ -1540,11 +1540,11 @@ void SetDefaultRailGui()
 		switch (rt) {
 			case RAILTYPE_END + 0:
 				rt = RAILTYPE_RAIL;
-				while (rt < RAILTYPE_END && !HasRailtypeAvail(GetPlayer(_local_player), rt)) rt++;
+				while (rt < RAILTYPE_END && !HasRailtypeAvail(_local_player, rt)) rt++;
 				break;
 
 			case RAILTYPE_END + 1:
-				rt = GetBestRailtype(GetPlayer(_local_player));
+				rt = GetBestRailtype(_local_player);
 				break;
 
 			default:
