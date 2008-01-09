@@ -1548,7 +1548,10 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		return;
 	}
 
-	if (v->type == VEH_TRAIN && !IsTileType(v->tile, MP_STATION)) {
+	StationID last_visited = v->last_station_visited;
+	Station *st = GetStation(last_visited);
+
+	if (v->type == VEH_TRAIN && (!IsTileType(v->tile, MP_STATION) || GetStationIndex(v->tile) != st->index)) {
 		/* The train reversed in the station. Take the "easy" way
 		 * out and let the train just leave as it always did. */
 		SetBit(v->vehicle_flags, VF_LOADING_FINISHED);
@@ -1567,9 +1570,6 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	uint32 cargo_full      = 0;
 
 	v->cur_speed = 0;
-
-	StationID last_visited = v->last_station_visited;
-	Station *st = GetStation(last_visited);
 
 	for (; v != NULL; v = v->Next()) {
 		if (v->cargo_cap == 0) continue;
