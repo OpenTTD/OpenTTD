@@ -21,7 +21,7 @@
 #include "newgrf.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
-#include "viewport.h"
+#include "gfx_func.h"
 #include "functions.h"
 #include "window_func.h"
 #include "economy_func.h"

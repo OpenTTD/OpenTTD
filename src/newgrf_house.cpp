@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "variables.h"
 #include "debug.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "landscape.h"
 #include "town.h"
 #include "town_map.h"

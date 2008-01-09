@@ -14,7 +14,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "station.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "command_func.h"
 #include "town.h"
 #include "news.h"

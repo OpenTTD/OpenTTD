@@ -5,6 +5,7 @@
 #ifndef VIEWPORT_TYPE_H
 #define VIEWPORT_TYPE_H
 
+#include "core/geometry_type.hpp"
 #include "zoom_type.h"
 #include "window_type.h"
 #include "tile_type.h"

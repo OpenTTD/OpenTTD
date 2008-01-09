@@ -19,7 +19,7 @@
 #include "group.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
-#include "viewport.h"
+#include "gfx_func.h"
 #include "functions.h"
 #include "window_func.h"
 #include "date_func.h"

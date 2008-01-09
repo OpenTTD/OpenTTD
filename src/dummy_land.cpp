@@ -8,7 +8,7 @@
 #include "tile_cmd.h"
 #include "command_func.h"
 #include "table/sprites.h"
-#include "viewport.h"
+#include "viewport_func.h"
 
 static void DrawTile_Dummy(TileInfo *ti)
 {

@@ -13,7 +13,7 @@
 #include "variables.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "zoom_func.h"
 #include "functions.h"
 #include "window_func.h"

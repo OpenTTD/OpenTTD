@@ -9,7 +9,7 @@
 #include "spritecache.h"
 #include "table/sprites.h"
 #include <stdarg.h>
-#include "viewport.h"
+#include "viewport_func.h"
 #include "command_func.h"
 #include "landscape.h"
 #include "variables.h"

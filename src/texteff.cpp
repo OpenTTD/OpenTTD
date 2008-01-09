@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "tile_cmd.h"
 #include "landscape.h"
-#include "viewport.h"
+#include "gfx_func.h"
 #include "saveload.h"
 #include "console.h"
 #include "variables.h"
@@ -20,6 +20,7 @@
 #include "core/alloc_func.hpp"
 #include "date_func.h"
 #include "functions.h"
+#include "viewport_func.h"
 
 enum {
 	MAX_TEXTMESSAGE_LENGTH = 200,

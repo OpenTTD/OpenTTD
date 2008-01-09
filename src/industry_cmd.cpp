@@ -11,7 +11,7 @@
 #include "table/sprites.h"
 #include "train.h"
 #include "landscape.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "command_func.h"
 #include "industry.h"
 #include "town.h"

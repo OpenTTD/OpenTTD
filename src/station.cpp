@@ -10,7 +10,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "station.h"
-#include "viewport.h"
 #include "town.h"
 #include "news.h"
 #include "saveload.h"

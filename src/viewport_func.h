@@ -5,6 +5,7 @@
 #ifndef VIEWPORT_FUNC_H
 #define VIEWPORT_FUNC_H
 
+#include "gfx_type.h"
 #include "viewport_type.h"
 #include "vehicle_type.h"
 

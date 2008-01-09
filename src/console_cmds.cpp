@@ -23,7 +23,7 @@
 #include "genworld.h"
 #include "network/network.h"
 #include "strings_func.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "window_func.h"
 #include "functions.h"
 #include "map_func.h"
