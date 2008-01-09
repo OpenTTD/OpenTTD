@@ -201,7 +201,23 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 {
 	const Industry *industry = object->u.industry.ind;
 	TileIndex tile = object->u.industry.tile;
-	const IndustrySpec *indspec = GetIndustrySpec(industry->type);
+	IndustryType type = object->u.industry.type;
+	const IndustrySpec *indspec = GetIndustrySpec(type);
+
+	if (industry == NULL) {
+		/* industry does not exist, only use those variables that are "safe" */
+		switch (variable) {
+			/* Read GRF parameter */
+			case 0x7F: return GetGRFParameter(type, parameter);
+			/* Manhattan distance of closes dry/water tile */
+			case 0x43: return GetClosestWaterDistance(tile, (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
+		}
+
+		DEBUG(grf, 1, "Unhandled property 0x%X (no available industry) in callback 0x%x", variable, object->callback);
+
+		*available = false;
+		return UINT_MAX;
+	}
 
 	switch (variable) {
 		case 0x40:
@@ -278,7 +294,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x7C: return industry->psa.Get(parameter);
 
 		/* Read GRF parameter */
-		case 0x7F: return GetGRFParameter(industry->type, parameter);
+		case 0x7F: return GetGRFParameter(type, parameter);
 
 		/* Industry structure access*/
 		case 0x80: return industry->xy;
@@ -368,7 +384,7 @@ static void IndustrySetTriggers(const ResolverObject *object, int triggers)
 	object->u.industry.ind->random_triggers = triggers;
 }
 
-static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *indus)
+static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *indus, IndustryType type)
 {
 	res->GetRandomBits = IndustryGetRandomBits;
 	res->GetTriggers   = IndustryGetTriggers;
@@ -380,6 +396,7 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->u.industry.tile = tile;
 	res->u.industry.ind  = indus;
 	res->u.industry.gfx  = INVALID_INDUSTRYTILE;
+	res->u.industry.type = type;
 
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
@@ -394,7 +411,7 @@ uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, In
 	ResolverObject object;
 	const SpriteGroup *group;
 
-	NewIndustryResolver(&object, tile, industry);
+	NewIndustryResolver(&object, tile, industry, type);
 	object.callback = callback;
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
@@ -465,7 +482,7 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 	ind.selected_layout = itspec_index;
 	ind.town = ClosestTownFromTile(tile, (uint)-1);
 
-	NewIndustryResolver(&object, tile, &ind);
+	NewIndustryResolver(&object, tile, &ind, type);
 	object.GetVariable = IndustryLocationGetVariable;
 	object.callback = CBID_INDUSTRY_LOCATION;
 
@@ -518,7 +535,7 @@ void IndustryProductionCallback(Industry *ind, int reason)
 {
 	const IndustrySpec *spec = GetIndustrySpec(ind->type);
 	ResolverObject object;
-	NewIndustryResolver(&object, ind->xy, ind);
+	NewIndustryResolver(&object, ind->xy, ind, ind->type);
 	if ((spec->behaviour & INDUSTRYBEH_PRODCALLBACK_RANDOM) != 0) object.callback_param1 = Random();
 	int multiplier = 1;
 	if ((spec->behaviour & INDUSTRYBEH_PROD_MULTI_HNDLING) != 0) multiplier = ind->prod_level;

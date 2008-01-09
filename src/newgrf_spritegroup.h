@@ -231,6 +231,7 @@ struct ResolverObject {
 			TileIndex tile;
 			Industry *ind;
 			IndustryGfx gfx;
+			IndustryType type;
 		} industry;
 		struct {
 			const struct CargoSpec *cs;
