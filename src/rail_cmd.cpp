@@ -26,7 +26,7 @@
 #include "depot.h"
 #include "waypoint.h"
 #include "rail.h"
-#include "railtypes.h" // include table for railtypes
+#include "table/railtypes.h" // include table for railtypes
 #include "newgrf.h"
 #include "yapf/yapf.h"
 #include "newgrf_engine.h"
