@@ -80,8 +80,8 @@ uint AiNew_GetSpecialVehicleFlag(Player* p, Vehicle* v)
 	uint i;
 
 	for (i = 0; i < AI_MAX_SPECIAL_VEHICLES; i++) {
-		if (p->ainew.special_vehicles[i].veh_id == v->index) {
-			return p->ainew.special_vehicles[i].flag;
+		if (_players_ainew[p->index].special_vehicles[i].veh_id == v->index) {
+			return _players_ainew[p->index].special_vehicles[i].flag;
 		}
 	}
 
@@ -96,13 +96,13 @@ bool AiNew_SetSpecialVehicleFlag(Player* p, Vehicle* v, uint flag)
 	uint i;
 
 	for (i = 0; i < AI_MAX_SPECIAL_VEHICLES; i++) {
-		if (p->ainew.special_vehicles[i].veh_id == v->index) {
-			p->ainew.special_vehicles[i].flag |= flag;
+		if (_players_ainew[p->index].special_vehicles[i].veh_id == v->index) {
+			_players_ainew[p->index].special_vehicles[i].flag |= flag;
 			return true;
 		}
 		if (new_id == -1 &&
-				p->ainew.special_vehicles[i].veh_id == 0 &&
-				p->ainew.special_vehicles[i].flag == 0) {
+				_players_ainew[p->index].special_vehicles[i].veh_id == 0 &&
+				_players_ainew[p->index].special_vehicles[i].flag == 0) {
 			new_id = i;
 		}
 	}
@@ -112,7 +112,7 @@ bool AiNew_SetSpecialVehicleFlag(Player* p, Vehicle* v, uint flag)
 		DEBUG(ai, 1, "special_vehicles list is too small");
 		return false;
 	}
-	p->ainew.special_vehicles[new_id].veh_id = v->index;
-	p->ainew.special_vehicles[new_id].flag = flag;
+	_players_ainew[p->index].special_vehicles[new_id].veh_id = v->index;
+	_players_ainew[p->index].special_vehicles[new_id].flag = flag;
 	return true;
 }

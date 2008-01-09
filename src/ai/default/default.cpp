@@ -27,11 +27,12 @@
 #include "../../window_func.h"
 #include "../../vehicle_func.h"
 #include "../../functions.h"
+#include "../../saveload.h"
 #include "default.h"
-
 
 // remove some day perhaps?
 static uint _ai_service_interval;
+PlayerAI _players_ai[MAX_PLAYERS];
 
 typedef void AiStateAction(Player *p);
 
@@ -74,14 +75,14 @@ static TrackBits GetRailTrackStatus(TileIndex tile)
 
 static void AiCase0(Player *p)
 {
-	p->ai.state = AIS_REMOVE_TRACK;
-	p->ai.state_counter = 0;
+	_players_ai[p->index].state = AIS_REMOVE_TRACK;
+	_players_ai[p->index].state_counter = 0;
 }
 
 static void AiCase1(Player *p)
 {
-	p->ai.cur_veh = NULL;
-	p->ai.state = AIS_VEH_LOOP;
+	_players_ai[p->index].cur_veh = NULL;
+	_players_ai[p->index].state = AIS_VEH_LOOP;
 }
 
 static void AiStateVehLoop(Player *p)
@@ -89,7 +90,7 @@ static void AiStateVehLoop(Player *p)
 	Vehicle *v;
 	uint index;
 
-	index = (p->ai.cur_veh == NULL) ? 0 : p->ai.cur_veh->index + 1;
+	index = (_players_ai[p->index].cur_veh == NULL) ? 0 : _players_ai[p->index].cur_veh->index + 1;
 
 	FOR_ALL_VEHICLES_FROM(v, index) {
 		if (v->owner != _current_player) continue;
@@ -101,8 +102,8 @@ static void AiStateVehLoop(Player *p)
 			/* replace engine? */
 			if (v->type == VEH_TRAIN && v->engine_type < 3 &&
 					(_price.build_railvehicle >> 3) < p->player_money) {
-				p->ai.state = AIS_VEH_CHECK_REPLACE_VEHICLE;
-				p->ai.cur_veh = v;
+				_players_ai[p->index].state = AIS_VEH_CHECK_REPLACE_VEHICLE;
+				_players_ai[p->index].cur_veh = v;
 				return;
 			}
 
@@ -110,9 +111,9 @@ static void AiStateVehLoop(Player *p)
 			if (v->age >= 730 &&
 					v->profit_last_year < _price.station_value * 5 &&
 					v->profit_this_year < _price.station_value * 5) {
-				p->ai.state_counter = 0;
-				p->ai.state = AIS_SELL_VEHICLE;
-				p->ai.cur_veh = v;
+				_players_ai[p->index].state_counter = 0;
+				_players_ai[p->index].state = AIS_SELL_VEHICLE;
+				_players_ai[p->index].cur_veh = v;
 				return;
 			}
 
@@ -121,15 +122,15 @@ static void AiStateVehLoop(Player *p)
 						v->age != 0 &&
 						GetEngine(v->engine_type)->reliability < 35389
 					)) {
-				p->ai.state = AIS_VEH_CHECK_REPLACE_VEHICLE;
-				p->ai.cur_veh = v;
+				_players_ai[p->index].state = AIS_VEH_CHECK_REPLACE_VEHICLE;
+				_players_ai[p->index].cur_veh = v;
 				return;
 			}
 		}
 	}
 
-	p->ai.state = AIS_WANT_NEW_ROUTE;
-	p->ai.state_counter = 0;
+	_players_ai[p->index].state = AIS_WANT_NEW_ROUTE;
+	_players_ai[p->index].state_counter = 0;
 }
 
 static EngineID AiChooseTrainToBuild(RailType railtype, Money money, byte flag, TileIndex tile)
@@ -230,7 +231,7 @@ static Money AiGetBasePrice(const Player* p)
 	Money base = _price.station_value;
 
 	// adjust base price when more expensive vehicles are available
-	switch (p->ai.railtype_to_use) {
+	switch (_players_ai[p->index].railtype_to_use) {
 		default: NOT_REACHED();
 		case RAILTYPE_RAIL:     break;
 		case RAILTYPE_ELECTRIC: break;
@@ -277,18 +278,18 @@ static EngineID AiChooseShipToReplaceWith(const Player* p, const Vehicle* v)
 
 static void AiHandleGotoDepot(Player *p, int cmd)
 {
-	if (p->ai.cur_veh->current_order.type != OT_GOTO_DEPOT)
-		DoCommand(0, p->ai.cur_veh->index, 0, DC_EXEC, cmd);
+	if (_players_ai[p->index].cur_veh->current_order.type != OT_GOTO_DEPOT)
+		DoCommand(0, _players_ai[p->index].cur_veh->index, 0, DC_EXEC, cmd);
 
-	if (++p->ai.state_counter <= 1387) {
-		p->ai.state = AIS_VEH_DO_REPLACE_VEHICLE;
+	if (++_players_ai[p->index].state_counter <= 1387) {
+		_players_ai[p->index].state = AIS_VEH_DO_REPLACE_VEHICLE;
 		return;
 	}
 
-	if (p->ai.cur_veh->current_order.type == OT_GOTO_DEPOT) {
-		p->ai.cur_veh->current_order.type = OT_DUMMY;
-		p->ai.cur_veh->current_order.flags = 0;
-		InvalidateWindow(WC_VEHICLE_VIEW, p->ai.cur_veh->index);
+	if (_players_ai[p->index].cur_veh->current_order.type == OT_GOTO_DEPOT) {
+		_players_ai[p->index].cur_veh->current_order.type = OT_DUMMY;
+		_players_ai[p->index].cur_veh->current_order.flags = 0;
+		InvalidateWindow(WC_VEHICLE_VIEW, _players_ai[p->index].cur_veh->index);
 	}
 }
 
@@ -304,7 +305,7 @@ static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 
 static void AiHandleReplaceTrain(Player *p)
 {
-	const Vehicle* v = p->ai.cur_veh;
+	const Vehicle* v = _players_ai[p->index].cur_veh;
 	BackuppedOrders orderbak;
 	EngineID veh;
 
@@ -334,7 +335,7 @@ static void AiHandleReplaceTrain(Player *p)
 
 static void AiHandleReplaceRoadVeh(Player *p)
 {
-	const Vehicle* v = p->ai.cur_veh;
+	const Vehicle* v = _players_ai[p->index].cur_veh;
 	BackuppedOrders orderbak[1];
 	EngineID veh;
 
@@ -363,7 +364,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 
 static void AiHandleReplaceAircraft(Player *p)
 {
-	const Vehicle* v = p->ai.cur_veh;
+	const Vehicle* v = _players_ai[p->index].cur_veh;
 	BackuppedOrders orderbak[1];
 	EngineID veh;
 
@@ -414,24 +415,24 @@ static DoReplaceProc* const _veh_do_replace_proc[] = {
 
 static void AiStateCheckReplaceVehicle(Player *p)
 {
-	const Vehicle* v = p->ai.cur_veh;
+	const Vehicle* v = _players_ai[p->index].cur_veh;
 
 	if (!v->IsValid() ||
 			v->owner != _current_player ||
 			v->type > VEH_SHIP ||
 			_veh_check_replace_proc[v->type - VEH_TRAIN](p, v) == INVALID_ENGINE) {
-		p->ai.state = AIS_VEH_LOOP;
+		_players_ai[p->index].state = AIS_VEH_LOOP;
 	} else {
-		p->ai.state_counter = 0;
-		p->ai.state = AIS_VEH_DO_REPLACE_VEHICLE;
+		_players_ai[p->index].state_counter = 0;
+		_players_ai[p->index].state = AIS_VEH_DO_REPLACE_VEHICLE;
 	}
 }
 
 static void AiStateDoReplaceVehicle(Player *p)
 {
-	const Vehicle* v = p->ai.cur_veh;
+	const Vehicle* v = _players_ai[p->index].cur_veh;
 
-	p->ai.state = AIS_VEH_LOOP;
+	_players_ai[p->index].state = AIS_VEH_LOOP;
 	// vehicle is not owned by the player anymore, something went very wrong.
 	if (!v->IsValid() || v->owner != _current_player) return;
 	_veh_do_replace_proc[v->type - VEH_TRAIN](p);
@@ -641,8 +642,8 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 	/* Make sure distance to closest station is < min_distance tiles. */
 	if (dist != 0xFFFF && dist > min_distance) return false;
 
-	if (p->ai.route_type_mask != 0 &&
-			!(p->ai.route_type_mask & bitmask) &&
+	if (_players_ai[p->index].route_type_mask != 0 &&
+			!(_players_ai[p->index].route_type_mask & bitmask) &&
 			!Chance16(1, 5)) {
 		return false;
 	}
@@ -670,7 +671,7 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 		}
 	}
 
-	p->ai.route_type_mask |= bitmask;
+	_players_ai[p->index].route_type_mask |= bitmask;
 	return true;
 }
 
@@ -711,85 +712,85 @@ static void AiWantLongIndustryRoute(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 1)) return;
 
 	// Fill the source field
-	p->ai.dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
-	p->ai.src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
+	_players_ai[p->index].dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
+	_players_ai[p->index].src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
 
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 9;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.unk6 = 1;
-	p->ai.src.unk7 = 0;
-	p->ai.src.buildcmd_a = 0x24;
-	p->ai.src.buildcmd_b = 0xFF;
-	p->ai.src.direction = AiGetDirectionBetweenTiles(
-		p->ai.src.spec_tile,
-		p->ai.dst.spec_tile
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 9;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.unk6 = 1;
+	_players_ai[p->index].src.unk7 = 0;
+	_players_ai[p->index].src.buildcmd_a = 0x24;
+	_players_ai[p->index].src.buildcmd_b = 0xFF;
+	_players_ai[p->index].src.direction = AiGetDirectionBetweenTiles(
+		_players_ai[p->index].src.spec_tile,
+		_players_ai[p->index].dst.spec_tile
 	);
-	p->ai.src.cargo = fr.cargo | 0x80;
+	_players_ai[p->index].src.cargo = fr.cargo | 0x80;
 
 	// Fill the dest field
 
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 9;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.unk6 = 1;
-	p->ai.dst.unk7 = 0;
-	p->ai.dst.buildcmd_a = 0x34;
-	p->ai.dst.buildcmd_b = 0xFF;
-	p->ai.dst.direction = AiGetDirectionBetweenTiles(
-		p->ai.dst.spec_tile,
-		p->ai.src.spec_tile
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 9;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.unk6 = 1;
+	_players_ai[p->index].dst.unk7 = 0;
+	_players_ai[p->index].dst.buildcmd_a = 0x34;
+	_players_ai[p->index].dst.buildcmd_b = 0xFF;
+	_players_ai[p->index].dst.direction = AiGetDirectionBetweenTiles(
+		_players_ai[p->index].dst.spec_tile,
+		_players_ai[p->index].src.spec_tile
 	);
-	p->ai.dst.cargo = fr.cargo;
+	_players_ai[p->index].dst.cargo = fr.cargo;
 
 	// Fill middle field 1
-	p->ai.mid1.spec_tile = AiGetPctTileBetween(
-		p->ai.src.spec_tile,
-		p->ai.dst.spec_tile,
+	_players_ai[p->index].mid1.spec_tile = AiGetPctTileBetween(
+		_players_ai[p->index].src.spec_tile,
+		_players_ai[p->index].dst.spec_tile,
 		0x55
 	);
-	p->ai.mid1.use_tile = 0;
-	p->ai.mid1.rand_rng = 6;
-	p->ai.mid1.cur_building_rule = 0xFF;
-	p->ai.mid1.unk6 = 2;
-	p->ai.mid1.unk7 = 1;
-	p->ai.mid1.buildcmd_a = 0x30;
-	p->ai.mid1.buildcmd_b = 0xFF;
-	p->ai.mid1.direction = p->ai.src.direction;
-	p->ai.mid1.cargo = fr.cargo;
+	_players_ai[p->index].mid1.use_tile = 0;
+	_players_ai[p->index].mid1.rand_rng = 6;
+	_players_ai[p->index].mid1.cur_building_rule = 0xFF;
+	_players_ai[p->index].mid1.unk6 = 2;
+	_players_ai[p->index].mid1.unk7 = 1;
+	_players_ai[p->index].mid1.buildcmd_a = 0x30;
+	_players_ai[p->index].mid1.buildcmd_b = 0xFF;
+	_players_ai[p->index].mid1.direction = _players_ai[p->index].src.direction;
+	_players_ai[p->index].mid1.cargo = fr.cargo;
 
 	// Fill middle field 2
-	p->ai.mid2.spec_tile = AiGetPctTileBetween(
-		p->ai.src.spec_tile,
-		p->ai.dst.spec_tile,
+	_players_ai[p->index].mid2.spec_tile = AiGetPctTileBetween(
+		_players_ai[p->index].src.spec_tile,
+		_players_ai[p->index].dst.spec_tile,
 		0xAA
 	);
-	p->ai.mid2.use_tile = 0;
-	p->ai.mid2.rand_rng = 6;
-	p->ai.mid2.cur_building_rule = 0xFF;
-	p->ai.mid2.unk6 = 2;
-	p->ai.mid2.unk7 = 1;
-	p->ai.mid2.buildcmd_a = 0xFF;
-	p->ai.mid2.buildcmd_b = 0xFF;
-	p->ai.mid2.direction = p->ai.dst.direction;
-	p->ai.mid2.cargo = fr.cargo;
+	_players_ai[p->index].mid2.use_tile = 0;
+	_players_ai[p->index].mid2.rand_rng = 6;
+	_players_ai[p->index].mid2.cur_building_rule = 0xFF;
+	_players_ai[p->index].mid2.unk6 = 2;
+	_players_ai[p->index].mid2.unk7 = 1;
+	_players_ai[p->index].mid2.buildcmd_a = 0xFF;
+	_players_ai[p->index].mid2.buildcmd_b = 0xFF;
+	_players_ai[p->index].mid2.direction = _players_ai[p->index].dst.direction;
+	_players_ai[p->index].mid2.cargo = fr.cargo;
 
 	// Fill common fields
-	p->ai.cargo_type = fr.cargo;
-	p->ai.num_wagons = 3;
-	p->ai.build_kind = 2;
-	p->ai.num_build_rec = 4;
-	p->ai.num_loco_to_build = 2;
-	p->ai.num_want_fullload = 2;
-	p->ai.wagon_list[0] = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
+	_players_ai[p->index].cargo_type = fr.cargo;
+	_players_ai[p->index].num_wagons = 3;
+	_players_ai[p->index].build_kind = 2;
+	_players_ai[p->index].num_build_rec = 4;
+	_players_ai[p->index].num_loco_to_build = 2;
+	_players_ai[p->index].num_want_fullload = 2;
+	_players_ai[p->index].wagon_list[0] = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
 
-	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = UCHAR_MAX;
-	p->ai.state_counter = 0;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
+	_players_ai[p->index].state_mode = UCHAR_MAX;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantMediumIndustryRoute(Player *p)
@@ -814,50 +815,50 @@ static void AiWantMediumIndustryRoute(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 1)) return;
 
 	// Fill the source field
-	p->ai.src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 9;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.unk6 = 1;
-	p->ai.src.unk7 = 0;
-	p->ai.src.buildcmd_a = 0x10;
-	p->ai.src.buildcmd_b = 0xFF;
-	p->ai.src.direction = AiGetDirectionBetweenTiles(
+	_players_ai[p->index].src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 9;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.unk6 = 1;
+	_players_ai[p->index].src.unk7 = 0;
+	_players_ai[p->index].src.buildcmd_a = 0x10;
+	_players_ai[p->index].src.buildcmd_b = 0xFF;
+	_players_ai[p->index].src.direction = AiGetDirectionBetweenTiles(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to)
 	);
-	p->ai.src.cargo = fr.cargo | 0x80;
+	_players_ai[p->index].src.cargo = fr.cargo | 0x80;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 9;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.unk6 = 1;
-	p->ai.dst.unk7 = 0;
-	p->ai.dst.buildcmd_a = 0xFF;
-	p->ai.dst.buildcmd_b = 0xFF;
-	p->ai.dst.direction = AiGetDirectionBetweenTiles(
+	_players_ai[p->index].dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 9;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.unk6 = 1;
+	_players_ai[p->index].dst.unk7 = 0;
+	_players_ai[p->index].dst.buildcmd_a = 0xFF;
+	_players_ai[p->index].dst.buildcmd_b = 0xFF;
+	_players_ai[p->index].dst.direction = AiGetDirectionBetweenTiles(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from)
 	);
-	p->ai.dst.cargo = fr.cargo;
+	_players_ai[p->index].dst.cargo = fr.cargo;
 
 	// Fill common fields
-	p->ai.cargo_type = fr.cargo;
-	p->ai.num_wagons = 3;
-	p->ai.build_kind = 1;
-	p->ai.num_build_rec = 2;
-	p->ai.num_loco_to_build = 1;
-	p->ai.num_want_fullload = 1;
-	p->ai.wagon_list[0] = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
-	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = UCHAR_MAX;
-	p->ai.state_counter = 0;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].cargo_type = fr.cargo;
+	_players_ai[p->index].num_wagons = 3;
+	_players_ai[p->index].build_kind = 1;
+	_players_ai[p->index].num_build_rec = 2;
+	_players_ai[p->index].num_loco_to_build = 1;
+	_players_ai[p->index].num_want_fullload = 1;
+	_players_ai[p->index].wagon_list[0] = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
+	_players_ai[p->index].state_mode = UCHAR_MAX;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantShortIndustryRoute(Player *p)
@@ -882,50 +883,50 @@ static void AiWantShortIndustryRoute(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 1)) return;
 
 	// Fill the source field
-	p->ai.src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 9;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.unk6 = 1;
-	p->ai.src.unk7 = 0;
-	p->ai.src.buildcmd_a = 0x10;
-	p->ai.src.buildcmd_b = 0xFF;
-	p->ai.src.direction = AiGetDirectionBetweenTiles(
+	_players_ai[p->index].src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 9;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.unk6 = 1;
+	_players_ai[p->index].src.unk7 = 0;
+	_players_ai[p->index].src.buildcmd_a = 0x10;
+	_players_ai[p->index].src.buildcmd_b = 0xFF;
+	_players_ai[p->index].src.direction = AiGetDirectionBetweenTiles(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to)
 	);
-	p->ai.src.cargo = fr.cargo | 0x80;
+	_players_ai[p->index].src.cargo = fr.cargo | 0x80;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 9;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.unk6 = 1;
-	p->ai.dst.unk7 = 0;
-	p->ai.dst.buildcmd_a = 0xFF;
-	p->ai.dst.buildcmd_b = 0xFF;
-	p->ai.dst.direction = AiGetDirectionBetweenTiles(
+	_players_ai[p->index].dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 9;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.unk6 = 1;
+	_players_ai[p->index].dst.unk7 = 0;
+	_players_ai[p->index].dst.buildcmd_a = 0xFF;
+	_players_ai[p->index].dst.buildcmd_b = 0xFF;
+	_players_ai[p->index].dst.direction = AiGetDirectionBetweenTiles(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from)
 	);
-	p->ai.dst.cargo = fr.cargo;
+	_players_ai[p->index].dst.cargo = fr.cargo;
 
 	// Fill common fields
-	p->ai.cargo_type = fr.cargo;
-	p->ai.num_wagons = 2;
-	p->ai.build_kind = 1;
-	p->ai.num_build_rec = 2;
-	p->ai.num_loco_to_build = 1;
-	p->ai.num_want_fullload = 1;
-	p->ai.wagon_list[0] = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
-	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = UCHAR_MAX;
-	p->ai.state_counter = 0;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].cargo_type = fr.cargo;
+	_players_ai[p->index].num_wagons = 2;
+	_players_ai[p->index].build_kind = 1;
+	_players_ai[p->index].num_build_rec = 2;
+	_players_ai[p->index].num_loco_to_build = 1;
+	_players_ai[p->index].num_want_fullload = 1;
+	_players_ai[p->index].wagon_list[0] = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
+	_players_ai[p->index].state_mode = UCHAR_MAX;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantMailRoute(Player *p)
@@ -951,82 +952,82 @@ static void AiWantMailRoute(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 1)) return;
 
 	// Fill the source field
-	p->ai.src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 7;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.unk6 = 1;
-	p->ai.src.unk7 = 0;
-	p->ai.src.buildcmd_a = 0x24;
-	p->ai.src.buildcmd_b = 0xFF;
-	p->ai.src.direction = AiGetDirectionBetweenTiles(
+	_players_ai[p->index].src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 7;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.unk6 = 1;
+	_players_ai[p->index].src.unk7 = 0;
+	_players_ai[p->index].src.buildcmd_a = 0x24;
+	_players_ai[p->index].src.buildcmd_b = 0xFF;
+	_players_ai[p->index].src.direction = AiGetDirectionBetweenTiles(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to)
 	);
-	p->ai.src.cargo = fr.cargo;
+	_players_ai[p->index].src.cargo = fr.cargo;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 7;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.unk6 = 1;
-	p->ai.dst.unk7 = 0;
-	p->ai.dst.buildcmd_a = 0x34;
-	p->ai.dst.buildcmd_b = 0xFF;
-	p->ai.dst.direction = AiGetDirectionBetweenTiles(
+	_players_ai[p->index].dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 7;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.unk6 = 1;
+	_players_ai[p->index].dst.unk7 = 0;
+	_players_ai[p->index].dst.buildcmd_a = 0x34;
+	_players_ai[p->index].dst.buildcmd_b = 0xFF;
+	_players_ai[p->index].dst.direction = AiGetDirectionBetweenTiles(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from)
 	);
-	p->ai.dst.cargo = fr.cargo;
+	_players_ai[p->index].dst.cargo = fr.cargo;
 
 	// Fill middle field 1
-	p->ai.mid1.spec_tile = AiGetPctTileBetween(
+	_players_ai[p->index].mid1.spec_tile = AiGetPctTileBetween(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to),
 		0x55
 	);
-	p->ai.mid1.use_tile = 0;
-	p->ai.mid1.rand_rng = 6;
-	p->ai.mid1.cur_building_rule = 0xFF;
-	p->ai.mid1.unk6 = 2;
-	p->ai.mid1.unk7 = 1;
-	p->ai.mid1.buildcmd_a = 0x30;
-	p->ai.mid1.buildcmd_b = 0xFF;
-	p->ai.mid1.direction = p->ai.src.direction;
-	p->ai.mid1.cargo = fr.cargo;
+	_players_ai[p->index].mid1.use_tile = 0;
+	_players_ai[p->index].mid1.rand_rng = 6;
+	_players_ai[p->index].mid1.cur_building_rule = 0xFF;
+	_players_ai[p->index].mid1.unk6 = 2;
+	_players_ai[p->index].mid1.unk7 = 1;
+	_players_ai[p->index].mid1.buildcmd_a = 0x30;
+	_players_ai[p->index].mid1.buildcmd_b = 0xFF;
+	_players_ai[p->index].mid1.direction = _players_ai[p->index].src.direction;
+	_players_ai[p->index].mid1.cargo = fr.cargo;
 
 	// Fill middle field 2
-	p->ai.mid2.spec_tile = AiGetPctTileBetween(
+	_players_ai[p->index].mid2.spec_tile = AiGetPctTileBetween(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to),
 		0xAA
 	);
-	p->ai.mid2.use_tile = 0;
-	p->ai.mid2.rand_rng = 6;
-	p->ai.mid2.cur_building_rule = 0xFF;
-	p->ai.mid2.unk6 = 2;
-	p->ai.mid2.unk7 = 1;
-	p->ai.mid2.buildcmd_a = 0xFF;
-	p->ai.mid2.buildcmd_b = 0xFF;
-	p->ai.mid2.direction = p->ai.dst.direction;
-	p->ai.mid2.cargo = fr.cargo;
+	_players_ai[p->index].mid2.use_tile = 0;
+	_players_ai[p->index].mid2.rand_rng = 6;
+	_players_ai[p->index].mid2.cur_building_rule = 0xFF;
+	_players_ai[p->index].mid2.unk6 = 2;
+	_players_ai[p->index].mid2.unk7 = 1;
+	_players_ai[p->index].mid2.buildcmd_a = 0xFF;
+	_players_ai[p->index].mid2.buildcmd_b = 0xFF;
+	_players_ai[p->index].mid2.direction = _players_ai[p->index].dst.direction;
+	_players_ai[p->index].mid2.cargo = fr.cargo;
 
 	// Fill common fields
-	p->ai.cargo_type = fr.cargo;
-	p->ai.num_wagons = 3;
-	p->ai.build_kind = 2;
-	p->ai.num_build_rec = 4;
-	p->ai.num_loco_to_build = 2;
-	p->ai.num_want_fullload = 0;
-	p->ai.wagon_list[0] = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
-	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = UCHAR_MAX;
-	p->ai.state_counter = 0;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].cargo_type = fr.cargo;
+	_players_ai[p->index].num_wagons = 3;
+	_players_ai[p->index].build_kind = 2;
+	_players_ai[p->index].num_build_rec = 4;
+	_players_ai[p->index].num_loco_to_build = 2;
+	_players_ai[p->index].num_want_fullload = 0;
+	_players_ai[p->index].wagon_list[0] = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
+	_players_ai[p->index].state_mode = UCHAR_MAX;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantPassengerRoute(Player *p)
@@ -1052,57 +1053,57 @@ static void AiWantPassengerRoute(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 1)) return;
 
 	// Fill the source field
-	p->ai.src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 7;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.unk6 = 1;
-	p->ai.src.unk7 = 0;
-	p->ai.src.buildcmd_a = 0x10;
-	p->ai.src.buildcmd_b = 0xFF;
-	p->ai.src.direction = AiGetDirectionBetweenTiles(
+	_players_ai[p->index].src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 7;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.unk6 = 1;
+	_players_ai[p->index].src.unk7 = 0;
+	_players_ai[p->index].src.buildcmd_a = 0x10;
+	_players_ai[p->index].src.buildcmd_b = 0xFF;
+	_players_ai[p->index].src.direction = AiGetDirectionBetweenTiles(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to)
 	);
-	p->ai.src.cargo = fr.cargo;
+	_players_ai[p->index].src.cargo = fr.cargo;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 7;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.unk6 = 1;
-	p->ai.dst.unk7 = 0;
-	p->ai.dst.buildcmd_a = 0xFF;
-	p->ai.dst.buildcmd_b = 0xFF;
-	p->ai.dst.direction = AiGetDirectionBetweenTiles(
+	_players_ai[p->index].dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 7;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.unk6 = 1;
+	_players_ai[p->index].dst.unk7 = 0;
+	_players_ai[p->index].dst.buildcmd_a = 0xFF;
+	_players_ai[p->index].dst.buildcmd_b = 0xFF;
+	_players_ai[p->index].dst.direction = AiGetDirectionBetweenTiles(
 		GET_TOWN_OR_INDUSTRY_TILE(fr.to),
 		GET_TOWN_OR_INDUSTRY_TILE(fr.from)
 	);
-	p->ai.dst.cargo = fr.cargo;
+	_players_ai[p->index].dst.cargo = fr.cargo;
 
 	// Fill common fields
-	p->ai.cargo_type = fr.cargo;
-	p->ai.num_wagons = 2;
-	p->ai.build_kind = 1;
-	p->ai.num_build_rec = 2;
-	p->ai.num_loco_to_build = 1;
-	p->ai.num_want_fullload = 0;
-	p->ai.wagon_list[0] = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
-	p->ai.state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
-	p->ai.state_mode = UCHAR_MAX;
-	p->ai.state_counter = 0;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].cargo_type = fr.cargo;
+	_players_ai[p->index].num_wagons = 2;
+	_players_ai[p->index].build_kind = 1;
+	_players_ai[p->index].num_build_rec = 2;
+	_players_ai[p->index].num_loco_to_build = 1;
+	_players_ai[p->index].num_want_fullload = 0;
+	_players_ai[p->index].wagon_list[0] = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_RAIL_BLOCKS;
+	_players_ai[p->index].state_mode = UCHAR_MAX;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantTrainRoute(Player *p)
 {
 	uint16 r = GB(Random(), 0, 16);
 
-	p->ai.railtype_to_use = GetBestRailtype(p);
+	_players_ai[p->index].railtype_to_use = GetBestRailtype(p);
 
 	if (r > 0xD000) {
 		AiWantLongIndustryRoute(p);
@@ -1139,38 +1140,38 @@ static void AiWantLongRoadIndustryRoute(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 2)) return;
 
 	// Fill the source field
-	p->ai.src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 9;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.buildcmd_a = 1;
-	p->ai.src.direction = 0;
-	p->ai.src.cargo = fr.cargo | 0x80;
+	_players_ai[p->index].src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 9;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.buildcmd_a = 1;
+	_players_ai[p->index].src.direction = 0;
+	_players_ai[p->index].src.cargo = fr.cargo | 0x80;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 9;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.buildcmd_a = 0xFF;
-	p->ai.dst.direction = 0;
-	p->ai.dst.cargo = fr.cargo;
+	_players_ai[p->index].dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 9;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.buildcmd_a = 0xFF;
+	_players_ai[p->index].dst.direction = 0;
+	_players_ai[p->index].dst.cargo = fr.cargo;
 
 	// Fill common fields
-	p->ai.cargo_type = fr.cargo;
-	p->ai.num_build_rec = 2;
-	p->ai.num_loco_to_build = 5;
-	p->ai.num_want_fullload = 5;
+	_players_ai[p->index].cargo_type = fr.cargo;
+	_players_ai[p->index].num_build_rec = 2;
+	_players_ai[p->index].num_loco_to_build = 5;
+	_players_ai[p->index].num_want_fullload = 5;
 
-//	p->ai.loco_id = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
+//	_players_ai[p->index].loco_id = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
 
-	p->ai.state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
-	p->ai.state_mode = UCHAR_MAX;
-	p->ai.state_counter = 0;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
+	_players_ai[p->index].state_mode = UCHAR_MAX;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantMediumRoadIndustryRoute(Player *p)
@@ -1195,38 +1196,38 @@ static void AiWantMediumRoadIndustryRoute(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 2)) return;
 
 	// Fill the source field
-	p->ai.src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 9;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.buildcmd_a = 1;
-	p->ai.src.direction = 0;
-	p->ai.src.cargo = fr.cargo | 0x80;
+	_players_ai[p->index].src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 9;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.buildcmd_a = 1;
+	_players_ai[p->index].src.direction = 0;
+	_players_ai[p->index].src.cargo = fr.cargo | 0x80;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 9;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.buildcmd_a = 0xFF;
-	p->ai.dst.direction = 0;
-	p->ai.dst.cargo = fr.cargo;
+	_players_ai[p->index].dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 9;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.buildcmd_a = 0xFF;
+	_players_ai[p->index].dst.direction = 0;
+	_players_ai[p->index].dst.cargo = fr.cargo;
 
 	// Fill common fields
-	p->ai.cargo_type = fr.cargo;
-	p->ai.num_build_rec = 2;
-	p->ai.num_loco_to_build = 3;
-	p->ai.num_want_fullload = 3;
+	_players_ai[p->index].cargo_type = fr.cargo;
+	_players_ai[p->index].num_build_rec = 2;
+	_players_ai[p->index].num_loco_to_build = 3;
+	_players_ai[p->index].num_want_fullload = 3;
 
-//	p->ai.loco_id = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
+//	_players_ai[p->index].loco_id = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
 
-	p->ai.state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
-	p->ai.state_mode = UCHAR_MAX;
-	p->ai.state_counter = 0;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
+	_players_ai[p->index].state_mode = UCHAR_MAX;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantLongRoadPassengerRoute(Player *p)
@@ -1253,38 +1254,38 @@ static void AiWantLongRoadPassengerRoute(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 2)) return;
 
 	// Fill the source field
-	p->ai.src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 10;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.buildcmd_a = 1;
-	p->ai.src.direction = 0;
-	p->ai.src.cargo = CT_PASSENGERS;
+	_players_ai[p->index].src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 10;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.buildcmd_a = 1;
+	_players_ai[p->index].src.direction = 0;
+	_players_ai[p->index].src.cargo = CT_PASSENGERS;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 10;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.buildcmd_a = 0xFF;
-	p->ai.dst.direction = 0;
-	p->ai.dst.cargo = CT_PASSENGERS;
+	_players_ai[p->index].dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 10;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.buildcmd_a = 0xFF;
+	_players_ai[p->index].dst.direction = 0;
+	_players_ai[p->index].dst.cargo = CT_PASSENGERS;
 
 	// Fill common fields
-	p->ai.cargo_type = CT_PASSENGERS;
-	p->ai.num_build_rec = 2;
-	p->ai.num_loco_to_build = 4;
-	p->ai.num_want_fullload = 0;
+	_players_ai[p->index].cargo_type = CT_PASSENGERS;
+	_players_ai[p->index].num_build_rec = 2;
+	_players_ai[p->index].num_loco_to_build = 4;
+	_players_ai[p->index].num_want_fullload = 0;
 
-//	p->ai.loco_id = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
+//	_players_ai[p->index].loco_id = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
 
-	p->ai.state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
-	p->ai.state_mode = UCHAR_MAX;
-	p->ai.state_counter = 0;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
+	_players_ai[p->index].state_mode = UCHAR_MAX;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantPassengerRouteInsideTown(Player *p)
@@ -1309,38 +1310,38 @@ static void AiWantPassengerRouteInsideTown(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 2)) return;
 
 	// Fill the source field
-	p->ai.src.spec_tile = t->xy;
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 10;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.buildcmd_a = 1;
-	p->ai.src.direction = 0;
-	p->ai.src.cargo = CT_PASSENGERS;
+	_players_ai[p->index].src.spec_tile = t->xy;
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 10;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.buildcmd_a = 1;
+	_players_ai[p->index].src.direction = 0;
+	_players_ai[p->index].src.cargo = CT_PASSENGERS;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = t->xy;
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 10;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.buildcmd_a = 0xFF;
-	p->ai.dst.direction = 0;
-	p->ai.dst.cargo = CT_PASSENGERS;
+	_players_ai[p->index].dst.spec_tile = t->xy;
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 10;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.buildcmd_a = 0xFF;
+	_players_ai[p->index].dst.direction = 0;
+	_players_ai[p->index].dst.cargo = CT_PASSENGERS;
 
 	// Fill common fields
-	p->ai.cargo_type = CT_PASSENGERS;
-	p->ai.num_build_rec = 2;
-	p->ai.num_loco_to_build = 2;
-	p->ai.num_want_fullload = 0;
+	_players_ai[p->index].cargo_type = CT_PASSENGERS;
+	_players_ai[p->index].num_build_rec = 2;
+	_players_ai[p->index].num_loco_to_build = 2;
+	_players_ai[p->index].num_want_fullload = 0;
 
-//	p->ai.loco_id = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
+//	_players_ai[p->index].loco_id = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
 
-	p->ai.state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
-	p->ai.state_mode = UCHAR_MAX;
-	p->ai.state_counter = 0;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_ROAD_BLOCKS;
+	_players_ai[p->index].state_mode = UCHAR_MAX;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantRoadRoute(Player *p)
@@ -1366,7 +1367,7 @@ static void AiWantPassengerAircraftRoute(Player *p)
 	/* Get aircraft that would be bought for this route
 	 * (probably, as conditions may change before the route is fully built,
 	 * like running out of money and having to select different aircraft, etc ...) */
-	EngineID veh = AiChooseAircraftToBuild(p->player_money, p->ai.build_kind != 0 ? 0 : AIR_CTOL);
+	EngineID veh = AiChooseAircraftToBuild(p->player_money, _players_ai[p->index].build_kind != 0 ? 0 : AIR_CTOL);
 
 	/* No aircraft buildable mean no aircraft route */
 	if (veh == INVALID_ENGINE) return;
@@ -1422,24 +1423,24 @@ static void AiWantPassengerAircraftRoute(Player *p)
 
 
 	// Fill the source field
-	p->ai.src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 12;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.cargo = fr.cargo;
+	_players_ai[p->index].src.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.to);
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 12;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.cargo = fr.cargo;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 12;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.cargo = fr.cargo;
+	_players_ai[p->index].dst.spec_tile = GET_TOWN_OR_INDUSTRY_TILE(fr.from);
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 12;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.cargo = fr.cargo;
 
 	// Fill common fields
-	p->ai.cargo_type = fr.cargo;
-	p->ai.build_kind = 0;
-	p->ai.num_build_rec = 2;
-	p->ai.num_loco_to_build = 1;
+	_players_ai[p->index].cargo_type = fr.cargo;
+	_players_ai[p->index].build_kind = 0;
+	_players_ai[p->index].num_build_rec = 2;
+	_players_ai[p->index].num_loco_to_build = 1;
 	/* Using full load always may not be the best.
 	 * Pick random value and rely on selling the vehicle & route
 	 * afterwards if the choice was utterly wrong (or maybe altering the value if AI is improved)
@@ -1452,14 +1453,14 @@ static void AiWantPassengerAircraftRoute(Player *p)
 	 * Also, non-full load is more resistant against starving (by building better stations
 	 * or using exclusive rights)
 	 */
-	p->ai.num_want_fullload = Chance16(1, 5); // 20% chance
-//	p->ai.loco_id = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
+	_players_ai[p->index].num_want_fullload = Chance16(1, 5); // 20% chance
+//	_players_ai[p->index].loco_id = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
 
-	p->ai.state = AIS_AIRPORT_STUFF;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].state = AIS_AIRPORT_STUFF;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantOilRigAircraftRoute(Player *p)
@@ -1492,32 +1493,32 @@ static void AiWantOilRigAircraftRoute(Player *p)
 	if (!AiCheckIfRouteIsGood(p, &fr, 4)) return;
 
 	// Fill the source field
-	p->ai.src.spec_tile = t->xy;
-	p->ai.src.use_tile = 0;
-	p->ai.src.rand_rng = 12;
-	p->ai.src.cur_building_rule = 0xFF;
-	p->ai.src.cargo = CT_PASSENGERS;
+	_players_ai[p->index].src.spec_tile = t->xy;
+	_players_ai[p->index].src.use_tile = 0;
+	_players_ai[p->index].src.rand_rng = 12;
+	_players_ai[p->index].src.cur_building_rule = 0xFF;
+	_players_ai[p->index].src.cargo = CT_PASSENGERS;
 
 	// Fill the dest field
-	p->ai.dst.spec_tile = in->xy;
-	p->ai.dst.use_tile = 0;
-	p->ai.dst.rand_rng = 5;
-	p->ai.dst.cur_building_rule = 0xFF;
-	p->ai.dst.cargo = CT_PASSENGERS;
+	_players_ai[p->index].dst.spec_tile = in->xy;
+	_players_ai[p->index].dst.use_tile = 0;
+	_players_ai[p->index].dst.rand_rng = 5;
+	_players_ai[p->index].dst.cur_building_rule = 0xFF;
+	_players_ai[p->index].dst.cargo = CT_PASSENGERS;
 
 	// Fill common fields
-	p->ai.cargo_type = CT_PASSENGERS;
-	p->ai.build_kind = 1;
-	p->ai.num_build_rec = 2;
-	p->ai.num_loco_to_build = 1;
-	p->ai.num_want_fullload = 0;
-//	p->ai.loco_id = INVALID_VEHICLE;
-	p->ai.order_list_blocks[0] = 0;
-	p->ai.order_list_blocks[1] = 1;
-	p->ai.order_list_blocks[2] = 255;
+	_players_ai[p->index].cargo_type = CT_PASSENGERS;
+	_players_ai[p->index].build_kind = 1;
+	_players_ai[p->index].num_build_rec = 2;
+	_players_ai[p->index].num_loco_to_build = 1;
+	_players_ai[p->index].num_want_fullload = 0;
+//	_players_ai[p->index].loco_id = INVALID_VEHICLE;
+	_players_ai[p->index].order_list_blocks[0] = 0;
+	_players_ai[p->index].order_list_blocks[1] = 1;
+	_players_ai[p->index].order_list_blocks[2] = 255;
 
-	p->ai.state = AIS_AIRPORT_STUFF;
-	p->ai.timeout_counter = 0;
+	_players_ai[p->index].state = AIS_AIRPORT_STUFF;
+	_players_ai[p->index].timeout_counter = 0;
 }
 
 static void AiWantAircraftRoute(Player *p)
@@ -1539,7 +1540,7 @@ static void AiStateWantNewRoute(Player *p)
 	int i;
 
 	if (p->player_money < AiGetBasePrice(p) * 500) {
-		p->ai.state = AIS_0;
+		_players_ai[p->index].state = AIS_0;
 		return;
 	}
 
@@ -1568,11 +1569,11 @@ static void AiStateWantNewRoute(Player *p)
 		}
 
 		// got a route?
-		if (p->ai.state != AIS_WANT_NEW_ROUTE) break;
+		if (_players_ai[p->index].state != AIS_WANT_NEW_ROUTE) break;
 
 		// time out?
 		if (--i == 0) {
-			if (++p->ai.state_counter == 556) p->ai.state = AIS_0;
+			if (++_players_ai[p->index].state_counter == 556) _players_ai[p->index].state = AIS_0;
 			break;
 		}
 	}
@@ -1799,16 +1800,16 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 	CommandCost cost;
 
 	// time out?
-	if (++p->ai.timeout_counter == 1388) {
-		p->ai.state = AIS_DELETE_RAIL_BLOCKS;
+	if (++_players_ai[p->index].timeout_counter == 1388) {
+		_players_ai[p->index].state = AIS_DELETE_RAIL_BLOCKS;
 		return;
 	}
 
 	// do the following 8 times
 	for (i = 0; i < 8; i++) {
 		// check if we can build the default track
-		aib = &p->ai.src;
-		j = p->ai.num_build_rec;
+		aib = &_players_ai[p->index].src;
+		j = _players_ai[p->index].num_build_rec;
 		do {
 			// this item has already been built?
 			if (aib->cur_building_rule != 255) continue;
@@ -1819,22 +1820,22 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 
 			// check if the track can be build there.
 			rule = AiBuildDefaultRailTrack(aib->use_tile,
-				p->ai.build_kind, p->ai.num_wagons,
+				_players_ai[p->index].build_kind, _players_ai[p->index].num_wagons,
 				aib->unk6, aib->unk7,
 				aib->direction, aib->cargo,
-				p->ai.railtype_to_use,
+				_players_ai[p->index].railtype_to_use,
 				&cost
 			);
 
 			if (rule == -1) {
 				// cannot build, terraform after a while
-				if (p->ai.state_counter >= 600) {
-					AiDoTerraformLand(aib->use_tile, (DiagDirection)(Random() & 3), 3, (int8)p->ai.state_mode);
+				if (_players_ai[p->index].state_counter >= 600) {
+					AiDoTerraformLand(aib->use_tile, (DiagDirection)(Random() & 3), 3, (int8)_players_ai[p->index].state_mode);
 				}
 				// also try the other terraform direction
-				if (++p->ai.state_counter >= 1000) {
-					p->ai.state_counter = 0;
-					p->ai.state_mode = -p->ai.state_mode;
+				if (++_players_ai[p->index].state_counter >= 1000) {
+					_players_ai[p->index].state_counter = 0;
+					_players_ai[p->index].state_mode = -_players_ai[p->index].state_mode;
 				}
 			} else if (CheckPlayerHasMoney(cost)) {
 				// player has money, build it.
@@ -1843,7 +1844,7 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 				AiDoBuildDefaultRailTrack(
 					aib->use_tile,
 					_default_rail_track_data[rule]->data,
-					p->ai.railtype_to_use,
+					_players_ai[p->index].railtype_to_use,
 					DC_EXEC | DC_NO_TOWN_RATING
 				);
 			}
@@ -1851,15 +1852,15 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 	}
 
 	// check if we're done with all of them
-	aib = &p->ai.src;
-	j = p->ai.num_build_rec;
+	aib = &_players_ai[p->index].src;
+	j = _players_ai[p->index].num_build_rec;
 	do {
 		if (aib->cur_building_rule == 255) return;
 	} while (++aib, --j);
 
 	// yep, all are done. switch state to the rail building state.
-	p->ai.state = AIS_BUILD_RAIL;
-	p->ai.state_mode = 255;
+	_players_ai[p->index].state = AIS_BUILD_RAIL;
+	_players_ai[p->index].state_mode = 255;
 }
 
 static TileIndex AiGetEdgeOfDefaultRailBlock(byte rule, TileIndex tile, byte cmd, DiagDirection *dir)
@@ -1896,11 +1897,11 @@ static bool AiDoFollowTrack(const Player* p)
 {
 	AiRailPathFindData arpfd;
 
-	arpfd.tile = p->ai.start_tile_a;
-	arpfd.tile2 = p->ai.cur_tile_a;
+	arpfd.tile = _players_ai[p->index].start_tile_a;
+	arpfd.tile2 = _players_ai[p->index].cur_tile_a;
 	arpfd.flag = false;
 	arpfd.count = 0;
-	FollowTrack(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a), 0x2000 | TRANSPORT_RAIL, 0, ReverseDiagDir(p->ai.cur_dir_a),
+	FollowTrack(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(_players_ai[p->index].cur_dir_a), 0x2000 | TRANSPORT_RAIL, 0, ReverseDiagDir(_players_ai[p->index].cur_dir_a),
 		(TPFEnumProc*)AiEnumFollowTrack, NULL, &arpfd);
 	return arpfd.count > 8;
 }
@@ -1937,8 +1938,8 @@ static bool AiIsTileBanned(const Player* p, TileIndex tile, byte val)
 {
 	int i;
 
-	for (i = 0; i != p->ai.banned_tile_count; i++) {
-		if (p->ai.banned_tiles[i] == tile && p->ai.banned_val[i] == val) {
+	for (i = 0; i != _players_ai[p->index].banned_tile_count; i++) {
+		if (_players_ai[p->index].banned_tiles[i] == tile && _players_ai[p->index].banned_val[i] == val) {
 			return true;
 		}
 	}
@@ -1949,16 +1950,16 @@ static void AiBanTile(Player* p, TileIndex tile, byte val)
 {
 	uint i;
 
-	for (i = lengthof(p->ai.banned_tiles) - 1; i != 0; i--) {
-		p->ai.banned_tiles[i] = p->ai.banned_tiles[i - 1];
-		p->ai.banned_val[i] = p->ai.banned_val[i - 1];
+	for (i = lengthof(_players_ai[p->index].banned_tiles) - 1; i != 0; i--) {
+		_players_ai[p->index].banned_tiles[i] = _players_ai[p->index].banned_tiles[i - 1];
+		_players_ai[p->index].banned_val[i] = _players_ai[p->index].banned_val[i - 1];
 	}
 
-	p->ai.banned_tiles[0] = tile;
-	p->ai.banned_val[0] = val;
+	_players_ai[p->index].banned_tiles[0] = tile;
+	_players_ai[p->index].banned_val[0] = val;
 
-	if (p->ai.banned_tile_count != lengthof(p->ai.banned_tiles)) {
-		p->ai.banned_tile_count++;
+	if (_players_ai[p->index].banned_tile_count != lengthof(_players_ai[p->index].banned_tiles)) {
+		_players_ai[p->index].banned_tile_count++;
 	}
 }
 
@@ -2025,7 +2026,7 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 		}
 
 		// Is building a (rail)bridge possible at this place (type doesn't matter)?
-		if (CmdFailed(DoCommand(tile_new, tile, 0 | arf->player->ai.railtype_to_use << 8, DC_AUTO, CMD_BUILD_BRIDGE))) {
+		if (CmdFailed(DoCommand(tile_new, tile, 0 | _players_ai[arf->player->index].railtype_to_use << 8, DC_AUTO, CMD_BUILD_BRIDGE))) {
 			return;
 		}
 		AiBuildRailRecursive(arf, tile_new, dir2);
@@ -2042,7 +2043,7 @@ static inline void AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex tile,
 	uint z;
 
 	if (GetTileSlope(tile, &z) == _dir_table_2[p[0] & 3] && z != 0) {
-		CommandCost cost = DoCommand(tile, arf->player->ai.railtype_to_use, 0, DC_AUTO, CMD_BUILD_TUNNEL);
+		CommandCost cost = DoCommand(tile, _players_ai[arf->player->index].railtype_to_use, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (CmdSucceeded(cost) && cost.GetCost() <= (arf->player->player_money >> 4)) {
 			AiBuildRailRecursive(arf, _build_tunnel_endtile, (DiagDirection)(p[0] & 3));
@@ -2098,7 +2099,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, DiagDirectio
 		do {
 			// Make sure the tile is not in the list of banned tiles and that a rail can be built here.
 			if (!AiIsTileBanned(arf->player, tile, p[0]) &&
-					CmdSucceeded(DoCommand(tile, arf->player->ai.railtype_to_use, p[0], DC_AUTO | DC_NO_WATER | DC_NO_RAIL_OVERLAP, CMD_BUILD_SINGLE_RAIL))) {
+					CmdSucceeded(DoCommand(tile, _players_ai[arf->player->index].railtype_to_use, p[0], DC_AUTO | DC_NO_WATER | DC_NO_RAIL_OVERLAP, CMD_BUILD_SINGLE_RAIL))) {
 				AiBuildRailRecursive(arf, tile, (DiagDirection)p[1]);
 			}
 
@@ -2125,18 +2126,18 @@ static void AiBuildRailConstruct(Player *p)
 
 	// Check too much lookahead?
 	if (AiDoFollowTrack(p)) {
-		p->ai.state_counter = (Random()&0xE)+6; // Destruct this amount of blocks
-		p->ai.state_mode = 1; // Start destruct
+		_players_ai[p->index].state_counter = (Random()&0xE)+6; // Destruct this amount of blocks
+		_players_ai[p->index].state_mode = 1; // Start destruct
 
 		// Ban this tile and don't reach it for a while.
-		AiBanTile(p, p->ai.cur_tile_a, FindFirstBit(GetRailTrackStatus(p->ai.cur_tile_a)));
+		AiBanTile(p, _players_ai[p->index].cur_tile_a, FindFirstBit(GetRailTrackStatus(_players_ai[p->index].cur_tile_a)));
 		return;
 	}
 
 	// Setup recursive finder and call it.
 	arf.player = p;
-	arf.final_tile = p->ai.cur_tile_b;
-	arf.final_dir = p->ai.cur_dir_b;
+	arf.final_tile = _players_ai[p->index].cur_tile_b;
+	arf.final_dir = _players_ai[p->index].cur_dir_b;
 	arf.depth = 0;
 	arf.recursive_mode = 0;
 	arf.best_ptr = NULL;
@@ -2146,11 +2147,11 @@ static void AiBuildRailConstruct(Player *p)
 	arf.best_depth = 0xff;
 	arf.cur_best_tile = 0;
 	arf.best_tile = 0;
-	AiBuildRailRecursive(&arf, p->ai.cur_tile_a, p->ai.cur_dir_a);
+	AiBuildRailRecursive(&arf, _players_ai[p->index].cur_tile_a, _players_ai[p->index].cur_dir_a);
 
 	// Reached destination?
 	if (arf.recursive_mode == 2 && arf.cur_best_depth == 0) {
-		p->ai.state_mode = 255;
+		_players_ai[p->index].state_mode = 255;
 		return;
 	}
 
@@ -2158,24 +2159,24 @@ static void AiBuildRailConstruct(Player *p)
 	if (arf.best_ptr == NULL) {
 		// Terraform some
 		for (i = 0; i != 5; i++) {
-			AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
+			AiDoTerraformLand(_players_ai[p->index].cur_tile_a, _players_ai[p->index].cur_dir_a, 3, 0);
 		}
 
-		if (++p->ai.state_counter == 21) {
-			p->ai.state_counter = 40;
-			p->ai.state_mode = 1;
+		if (++_players_ai[p->index].state_counter == 21) {
+			_players_ai[p->index].state_counter = 40;
+			_players_ai[p->index].state_mode = 1;
 
 			// Ban this tile
-			AiBanTile(p, p->ai.cur_tile_a, FindFirstBit(GetRailTrackStatus(p->ai.cur_tile_a)));
+			AiBanTile(p, _players_ai[p->index].cur_tile_a, FindFirstBit(GetRailTrackStatus(_players_ai[p->index].cur_tile_a)));
 		}
 		return;
 	}
 
-	p->ai.cur_tile_a += TileOffsByDiagDir(p->ai.cur_dir_a);
+	_players_ai[p->index].cur_tile_a += TileOffsByDiagDir(_players_ai[p->index].cur_dir_a);
 
 	if (arf.best_ptr[0] & 0x80) {
 		int i;
-		int32 bridge_len = GetBridgeLength(arf.bridge_end_tile, p->ai.cur_tile_a);
+		int32 bridge_len = GetBridgeLength(arf.bridge_end_tile, _players_ai[p->index].cur_tile_a);
 
 		/* Figure out which (rail)bridge type to build
 		 * start with best bridge, then go down to worse and worse bridges
@@ -2185,27 +2186,27 @@ static void AiBuildRailConstruct(Player *p)
 		 */
 		for (i = MAX_BRIDGES - 1; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
-				CommandCost cost = DoCommand(arf.bridge_end_tile, p->ai.cur_tile_a, i | (p->ai.railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
+				CommandCost cost = DoCommand(arf.bridge_end_tile, _players_ai[p->index].cur_tile_a, i | (_players_ai[p->index].railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
 				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 5)) break;
 			}
 		}
 
 		// Build it
-		DoCommand(arf.bridge_end_tile, p->ai.cur_tile_a, i | (p->ai.railtype_to_use << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
+		DoCommand(arf.bridge_end_tile, _players_ai[p->index].cur_tile_a, i | (_players_ai[p->index].railtype_to_use << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
 
-		p->ai.cur_tile_a = arf.bridge_end_tile;
-		p->ai.state_counter = 0;
+		_players_ai[p->index].cur_tile_a = arf.bridge_end_tile;
+		_players_ai[p->index].state_counter = 0;
 	} else if (arf.best_ptr[0] & 0x40) {
 		// tunnel
-		DoCommand(p->ai.cur_tile_a, p->ai.railtype_to_use, 0, DC_AUTO | DC_EXEC, CMD_BUILD_TUNNEL);
-		p->ai.cur_tile_a = _build_tunnel_endtile;
-		p->ai.state_counter = 0;
+		DoCommand(_players_ai[p->index].cur_tile_a, _players_ai[p->index].railtype_to_use, 0, DC_AUTO | DC_EXEC, CMD_BUILD_TUNNEL);
+		_players_ai[p->index].cur_tile_a = _build_tunnel_endtile;
+		_players_ai[p->index].state_counter = 0;
 	} else {
 		// rail
-		p->ai.cur_dir_a = (DiagDirection)(arf.best_ptr[1] & 3);
-		DoCommand(p->ai.cur_tile_a, p->ai.railtype_to_use, arf.best_ptr[0],
+		_players_ai[p->index].cur_dir_a = (DiagDirection)(arf.best_ptr[1] & 3);
+		DoCommand(_players_ai[p->index].cur_tile_a, _players_ai[p->index].railtype_to_use, arf.best_ptr[0],
 			DC_EXEC | DC_AUTO | DC_NO_WATER | DC_NO_RAIL_OVERLAP, CMD_BUILD_SINGLE_RAIL);
-		p->ai.state_counter = 0;
+		_players_ai[p->index].state_counter = 0;
 	}
 
 	if (arf.best_tile != 0) {
@@ -2220,7 +2221,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	byte b;
 	int bit;
 	const byte *ptr;
-	TileIndex tile = p->ai.cur_tile_a;
+	TileIndex tile = _players_ai[p->index].cur_tile_a;
 	TileIndex tilenew;
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -2228,26 +2229,26 @@ static bool AiRemoveTileAndGoForward(Player *p)
 			// Clear the tunnel and continue at the other side of it.
 			if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR)))
 				return false;
-			p->ai.cur_tile_a = TILE_MASK(_build_tunnel_endtile - TileOffsByDiagDir(p->ai.cur_dir_a));
+			_players_ai[p->index].cur_tile_a = TILE_MASK(_build_tunnel_endtile - TileOffsByDiagDir(_players_ai[p->index].cur_dir_a));
 			return true;
 		} else {
 			// Check if the bridge points in the right direction.
 			// This is not really needed the first place AiRemoveTileAndGoForward is called.
-			if (DiagDirToAxis(GetTunnelBridgeDirection(tile)) != (p->ai.cur_dir_a & 1)) return false;
+			if (DiagDirToAxis(GetTunnelBridgeDirection(tile)) != (_players_ai[p->index].cur_dir_a & 1)) return false;
 
 			tile = GetOtherBridgeEnd(tile);
 
-			tilenew = TILE_MASK(tile - TileOffsByDiagDir(p->ai.cur_dir_a));
+			tilenew = TILE_MASK(tile - TileOffsByDiagDir(_players_ai[p->index].cur_dir_a));
 			// And clear the bridge.
 			if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR)))
 				return false;
-			p->ai.cur_tile_a = tilenew;
+			_players_ai[p->index].cur_tile_a = tilenew;
 			return true;
 		}
 	}
 
 	// Find the railtype at the position. Quit if no rail there.
-	b = GetRailTrackStatus(tile) & _dir_table_3[p->ai.cur_dir_a];
+	b = GetRailTrackStatus(tile) & _dir_table_3[_players_ai[p->index].cur_dir_a];
 	if (b == 0) return false;
 
 	// Convert into a bit position that CMD_REMOVE_SINGLE_RAIL expects.
@@ -2264,12 +2265,12 @@ static bool AiRemoveTileAndGoForward(Player *p)
 		return false;
 
 	// Find the direction at the other edge of the rail.
-	ptr = _ai_table_15[ReverseDiagDir(p->ai.cur_dir_a)];
+	ptr = _ai_table_15[ReverseDiagDir(_players_ai[p->index].cur_dir_a)];
 	while (ptr[0] != bit) ptr += 2;
-	p->ai.cur_dir_a = ReverseDiagDir((DiagDirection)ptr[1]);
+	_players_ai[p->index].cur_dir_a = ReverseDiagDir((DiagDirection)ptr[1]);
 
 	// And then also switch tile.
-	p->ai.cur_tile_a = TILE_MASK(p->ai.cur_tile_a - TileOffsByDiagDir(p->ai.cur_dir_a));
+	_players_ai[p->index].cur_tile_a = TILE_MASK(_players_ai[p->index].cur_tile_a - TileOffsByDiagDir(_players_ai[p->index].cur_dir_a));
 
 	return true;
 }
@@ -2278,13 +2279,13 @@ static bool AiRemoveTileAndGoForward(Player *p)
 static void AiBuildRailDestruct(Player *p)
 {
 	// Decrease timeout.
-	if (!--p->ai.state_counter) {
-		p->ai.state_mode = 2;
-		p->ai.state_counter = 0;
+	if (!--_players_ai[p->index].state_counter) {
+		_players_ai[p->index].state_mode = 2;
+		_players_ai[p->index].state_counter = 0;
 	}
 
 	// Don't do anything if the destination is already reached.
-	if (p->ai.cur_tile_a == p->ai.start_tile_a) return;
+	if (_players_ai[p->index].cur_tile_a == _players_ai[p->index].start_tile_a) return;
 
 	AiRemoveTileAndGoForward(p);
 }
@@ -2292,7 +2293,7 @@ static void AiBuildRailDestruct(Player *p)
 
 static void AiBuildRail(Player *p)
 {
-	switch (p->ai.state_mode) {
+	switch (_players_ai[p->index].state_mode) {
 		case 0: // Construct mode, build new rail.
 			AiBuildRailConstruct(p);
 			break;
@@ -2306,12 +2307,12 @@ static void AiBuildRail(Player *p)
 
 			// Terraform some and then try building again.
 			for (i = 0; i != 4; i++) {
-				AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
+				AiDoTerraformLand(_players_ai[p->index].cur_tile_a, _players_ai[p->index].cur_dir_a, 3, 0);
 			}
 
-			if (++p->ai.state_counter == 4) {
-				p->ai.state_counter = 0;
-				p->ai.state_mode = 0;
+			if (++_players_ai[p->index].state_counter == 4) {
+				_players_ai[p->index].state_counter = 0;
+				_players_ai[p->index].state_mode = 0;
 			}
 		}
 
@@ -2328,26 +2329,26 @@ static void AiStateBuildRail(Player *p)
 	DiagDirection dir;
 
 	// time out?
-	if (++p->ai.timeout_counter == 1388) {
-		p->ai.state = AIS_DELETE_RAIL_BLOCKS;
+	if (++_players_ai[p->index].timeout_counter == 1388) {
+		_players_ai[p->index].state = AIS_DELETE_RAIL_BLOCKS;
 		return;
 	}
 
 	// Currently building a rail between two points?
-	if (p->ai.state_mode != 255) {
+	if (_players_ai[p->index].state_mode != 255) {
 		AiBuildRail(p);
 
 		// Alternate between edges
-		Swap(p->ai.start_tile_a, p->ai.start_tile_b);
-		Swap(p->ai.cur_tile_a,   p->ai.cur_tile_b);
-		Swap(p->ai.start_dir_a,  p->ai.start_dir_b);
-		Swap(p->ai.cur_dir_a,    p->ai.cur_dir_b);
+		Swap(_players_ai[p->index].start_tile_a, _players_ai[p->index].start_tile_b);
+		Swap(_players_ai[p->index].cur_tile_a,   _players_ai[p->index].cur_tile_b);
+		Swap(_players_ai[p->index].start_dir_a,  _players_ai[p->index].start_dir_b);
+		Swap(_players_ai[p->index].cur_dir_a,    _players_ai[p->index].cur_dir_b);
 		return;
 	}
 
 	// Now, find two new points to build between
-	num = p->ai.num_build_rec;
-	aib = &p->ai.src;
+	num = _players_ai[p->index].num_build_rec;
+	aib = &_players_ai[p->index].src;
 
 	for (;;) {
 		cmd = aib->buildcmd_a;
@@ -2360,37 +2361,37 @@ static void AiStateBuildRail(Player *p)
 
 		aib++;
 		if (--num == 0) {
-			p->ai.state = AIS_BUILD_RAIL_VEH;
-			p->ai.state_counter = 0; // timeout
+			_players_ai[p->index].state = AIS_BUILD_RAIL_VEH;
+			_players_ai[p->index].state_counter = 0; // timeout
 			return;
 		}
 	}
 
 	// Find first edge to build from.
 	tile = AiGetEdgeOfDefaultRailBlock(aib->cur_building_rule, aib->use_tile, cmd & 3, &dir);
-	p->ai.start_tile_a = tile;
-	p->ai.cur_tile_a = tile;
-	p->ai.start_dir_a = dir;
-	p->ai.cur_dir_a = dir;
+	_players_ai[p->index].start_tile_a = tile;
+	_players_ai[p->index].cur_tile_a = tile;
+	_players_ai[p->index].start_dir_a = dir;
+	_players_ai[p->index].cur_dir_a = dir;
 	DoCommand(TILE_MASK(tile + TileOffsByDiagDir(dir)), 0, (dir & 1) ? 1 : 0, DC_EXEC, CMD_REMOVE_SINGLE_RAIL);
 
 	assert(TILE_MASK(tile) != 0xFF00);
 
 	// Find second edge to build to
-	aib = (&p->ai.src) + ((cmd >> 4) & 0xF);
+	aib = (&_players_ai[p->index].src) + ((cmd >> 4) & 0xF);
 	tile = AiGetEdgeOfDefaultRailBlock(aib->cur_building_rule, aib->use_tile, (cmd >> 2) & 3, &dir);
-	p->ai.start_tile_b = tile;
-	p->ai.cur_tile_b = tile;
-	p->ai.start_dir_b = dir;
-	p->ai.cur_dir_b = dir;
+	_players_ai[p->index].start_tile_b = tile;
+	_players_ai[p->index].cur_tile_b = tile;
+	_players_ai[p->index].start_dir_b = dir;
+	_players_ai[p->index].cur_dir_b = dir;
 	DoCommand(TILE_MASK(tile + TileOffsByDiagDir(dir)), 0, (dir & 1) ? 1 : 0, DC_EXEC, CMD_REMOVE_SINGLE_RAIL);
 
 	assert(TILE_MASK(tile) != 0xFF00);
 
 	// And setup state.
-	p->ai.state_mode = 2;
-	p->ai.state_counter = 0;
-	p->ai.banned_tile_count = 0;
+	_players_ai[p->index].state_mode = 2;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].banned_tile_count = 0;
 }
 
 static StationID AiGetStationIdByDef(TileIndex tile, int id)
@@ -2444,40 +2445,40 @@ static void AiStateBuildRailVeh(Player *p)
 	Vehicle *v;
 	VehicleID loco_id;
 
-	ptr = _default_rail_track_data[p->ai.src.cur_building_rule]->data;
+	ptr = _default_rail_track_data[_players_ai[p->index].src.cur_building_rule]->data;
 	while (ptr->mode != 0) ptr++;
 
-	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
+	tile = TILE_ADD(_players_ai[p->index].src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
 
-	cargo = p->ai.cargo_type;
+	cargo = _players_ai[p->index].cargo_type;
 	for (i = 0;;) {
-		if (p->ai.wagon_list[i] == INVALID_VEHICLE) {
-			veh = AiFindBestWagon(cargo, p->ai.railtype_to_use);
+		if (_players_ai[p->index].wagon_list[i] == INVALID_VEHICLE) {
+			veh = AiFindBestWagon(cargo, _players_ai[p->index].railtype_to_use);
 			/* veh will return INVALID_ENGINE if no suitable wagon is available.
 			 * We shall treat this in the same way as having no money */
 			if (veh == INVALID_ENGINE) goto handle_nocash;
 			cost = DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE);
 			if (CmdFailed(cost)) goto handle_nocash;
-			p->ai.wagon_list[i] = _new_vehicle_id;
-			p->ai.wagon_list[i + 1] = INVALID_VEHICLE;
+			_players_ai[p->index].wagon_list[i] = _new_vehicle_id;
+			_players_ai[p->index].wagon_list[i + 1] = INVALID_VEHICLE;
 			return;
 		}
 		if (cargo == CT_MAIL) cargo = CT_PASSENGERS;
-		if (++i == p->ai.num_wagons * 2 - 1) break;
+		if (++i == _players_ai[p->index].num_wagons * 2 - 1) break;
 	}
 
 	// Which locomotive to build?
-	veh = AiChooseTrainToBuild(p->ai.railtype_to_use, p->player_money, cargo != CT_PASSENGERS ? 1 : 0, tile);
+	veh = AiChooseTrainToBuild(_players_ai[p->index].railtype_to_use, p->player_money, cargo != CT_PASSENGERS ? 1 : 0, tile);
 	if (veh == INVALID_ENGINE) {
 handle_nocash:
 		// after a while, if AI still doesn't have cash, get out of this block by selling the wagons.
-		if (++p->ai.state_counter == 1000) {
-			for (i = 0; p->ai.wagon_list[i] != INVALID_VEHICLE; i++) {
-				cost = DoCommand(tile, p->ai.wagon_list[i], 0, DC_EXEC, CMD_SELL_RAIL_WAGON);
+		if (++_players_ai[p->index].state_counter == 1000) {
+			for (i = 0; _players_ai[p->index].wagon_list[i] != INVALID_VEHICLE; i++) {
+				cost = DoCommand(tile, _players_ai[p->index].wagon_list[i], 0, DC_EXEC, CMD_SELL_RAIL_WAGON);
 				assert(CmdSucceeded(cost));
 			}
-			p->ai.state = AIS_0;
+			_players_ai[p->index].state = AIS_0;
 		}
 		return;
 	}
@@ -2490,22 +2491,22 @@ handle_nocash:
 	// Sell a vehicle if the train is double headed.
 	v = GetVehicle(loco_id);
 	if (v->Next() != NULL) {
-		i = p->ai.wagon_list[p->ai.num_wagons * 2 - 2];
-		p->ai.wagon_list[p->ai.num_wagons * 2 - 2] = INVALID_VEHICLE;
+		i = _players_ai[p->index].wagon_list[_players_ai[p->index].num_wagons * 2 - 2];
+		_players_ai[p->index].wagon_list[_players_ai[p->index].num_wagons * 2 - 2] = INVALID_VEHICLE;
 		DoCommand(tile, i, 0, DC_EXEC, CMD_SELL_RAIL_WAGON);
 	}
 
 	// Move the wagons onto the train
-	for (i = 0; p->ai.wagon_list[i] != INVALID_VEHICLE; i++) {
-		DoCommand(tile, p->ai.wagon_list[i] | (loco_id << 16), 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+	for (i = 0; _players_ai[p->index].wagon_list[i] != INVALID_VEHICLE; i++) {
+		DoCommand(tile, _players_ai[p->index].wagon_list[i] | (loco_id << 16), 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 	}
 
-	for (i = 0; p->ai.order_list_blocks[i] != 0xFF; i++) {
-		const AiBuildRec* aib = &p->ai.src + p->ai.order_list_blocks[i];
+	for (i = 0; _players_ai[p->index].order_list_blocks[i] != 0xFF; i++) {
+		const AiBuildRec* aib = &_players_ai[p->index].src + _players_ai[p->index].order_list_blocks[i];
 		bool is_pass = (
-			p->ai.cargo_type == CT_PASSENGERS ||
-			p->ai.cargo_type == CT_MAIL ||
-			(_opt.landscape == LT_TEMPERATE && p->ai.cargo_type == CT_VALUABLES)
+			_players_ai[p->index].cargo_type == CT_PASSENGERS ||
+			_players_ai[p->index].cargo_type == CT_MAIL ||
+			(_opt.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
 		);
 		Order order;
 
@@ -2514,7 +2515,7 @@ handle_nocash:
 		order.dest = AiGetStationIdByDef(aib->use_tile, aib->cur_building_rule);
 
 		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
-		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
+		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
 			order.flags |= OF_FULL_LOAD;
 
 		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
@@ -2524,20 +2525,20 @@ handle_nocash:
 
 	DoCommand(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 
-	if (p->ai.num_want_fullload != 0) p->ai.num_want_fullload--;
+	if (_players_ai[p->index].num_want_fullload != 0) _players_ai[p->index].num_want_fullload--;
 
-	if (--p->ai.num_loco_to_build != 0) {
-//		p->ai.loco_id = INVALID_VEHICLE;
-		p->ai.wagon_list[0] = INVALID_VEHICLE;
+	if (--_players_ai[p->index].num_loco_to_build != 0) {
+//		_players_ai[p->index].loco_id = INVALID_VEHICLE;
+		_players_ai[p->index].wagon_list[0] = INVALID_VEHICLE;
 	} else {
-		p->ai.state = AIS_0;
+		_players_ai[p->index].state = AIS_0;
 	}
 }
 
 static void AiStateDeleteRailBlocks(Player *p)
 {
-	const AiBuildRec* aib = &p->ai.src;
-	uint num = p->ai.num_build_rec;
+	const AiBuildRec* aib = &_players_ai[p->index].src;
+	uint num = _players_ai[p->index].num_build_rec;
 
 	do {
 		const AiDefaultBlockData* b;
@@ -2548,7 +2549,7 @@ static void AiStateDeleteRailBlocks(Player *p)
 		}
 	} while (++aib, --num);
 
-	p->ai.state = AIS_0;
+	_players_ai[p->index].state = AIS_0;
 }
 
 static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, byte cargo)
@@ -2677,8 +2678,8 @@ clear_town_stuff:;
 // Make sure the blocks are not too close to each other
 static bool AiCheckBlockDistances(Player *p, TileIndex tile)
 {
-	const AiBuildRec* aib = &p->ai.src;
-	uint num = p->ai.num_build_rec;
+	const AiBuildRec* aib = &_players_ai[p->index].src;
+	uint num = _players_ai[p->index].num_build_rec;
 
 	do {
 		if (aib->cur_building_rule != 255) {
@@ -2699,16 +2700,16 @@ static void AiStateBuildDefaultRoadBlocks(Player *p)
 	CommandCost cost;
 
 	// time out?
-	if (++p->ai.timeout_counter == 1388) {
-		p->ai.state = AIS_DELETE_RAIL_BLOCKS;
+	if (++_players_ai[p->index].timeout_counter == 1388) {
+		_players_ai[p->index].state = AIS_DELETE_RAIL_BLOCKS;
 		return;
 	}
 
 	// do the following 8 times
 	for (i = 0; i != 8; i++) {
 		// check if we can build the default track
-		aib = &p->ai.src;
-		j = p->ai.num_build_rec;
+		aib = &_players_ai[p->index].src;
+		j = _players_ai[p->index].num_build_rec;
 		do {
 			// this item has already been built?
 			if (aib->cur_building_rule != 255) continue;
@@ -2724,13 +2725,13 @@ static void AiStateBuildDefaultRoadBlocks(Player *p)
 
 			if (rule == -1) {
 				// cannot build, terraform after a while
-				if (p->ai.state_counter >= 600) {
-					AiDoTerraformLand(aib->use_tile, (DiagDirection)(Random() & 3), 3, (int8)p->ai.state_mode);
+				if (_players_ai[p->index].state_counter >= 600) {
+					AiDoTerraformLand(aib->use_tile, (DiagDirection)(Random() & 3), 3, (int8)_players_ai[p->index].state_mode);
 				}
 				// also try the other terraform direction
-				if (++p->ai.state_counter >= 1000) {
-					p->ai.state_counter = 0;
-					p->ai.state_mode = -p->ai.state_mode;
+				if (++_players_ai[p->index].state_counter >= 1000) {
+					_players_ai[p->index].state_counter = 0;
+					_players_ai[p->index].state_mode = -_players_ai[p->index].state_mode;
 				}
 			} else if (CheckPlayerHasMoney(cost) && AiCheckBlockDistances(p, aib->use_tile)) {
 				CommandCost r;
@@ -2749,15 +2750,15 @@ static void AiStateBuildDefaultRoadBlocks(Player *p)
 	}
 
 	// check if we're done with all of them
-	aib = &p->ai.src;
-	j = p->ai.num_build_rec;
+	aib = &_players_ai[p->index].src;
+	j = _players_ai[p->index].num_build_rec;
 	do {
 		if (aib->cur_building_rule == 255) return;
 	} while (++aib, --j);
 
 	// yep, all are done. switch state to the rail building state.
-	p->ai.state = AIS_BUILD_ROAD;
-	p->ai.state_mode = 255;
+	_players_ai[p->index].state = AIS_BUILD_ROAD;
+	_players_ai[p->index].state_mode = 255;
 }
 
 struct AiRoadFinder {
@@ -2854,11 +2855,11 @@ static bool AiCheckRoadFinished(Player *p)
 {
 	AiRoadEnum are;
 	TileIndex tile;
-	DiagDirection dir = p->ai.cur_dir_a;
+	DiagDirection dir = _players_ai[p->index].cur_dir_a;
 	uint32 bits;
 
-	are.dest = p->ai.cur_tile_b;
-	tile = TILE_MASK(p->ai.cur_tile_a + TileOffsByDiagDir(dir));
+	are.dest = _players_ai[p->index].cur_tile_b;
+	tile = TILE_MASK(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(dir));
 
 	if (IsRoadStopTile(tile) || IsTileDepotType(tile, TRANSPORT_ROAD)) return false;
 	bits = GetTileTrackStatus(tile, TRANSPORT_ROAD, ROADTYPES_ROAD) & _ai_road_table_and[dir];
@@ -2875,8 +2876,8 @@ static bool AiCheckRoadFinished(Player *p)
 
 	if (are.best_dist == 0) return true;
 
-	p->ai.cur_tile_a = are.best_tile;
-	p->ai.cur_dir_a = _dir_by_track[are.best_track];
+	_players_ai[p->index].cur_tile_a = are.best_tile;
+	_players_ai[p->index].cur_dir_a = _dir_by_track[are.best_track];
 	return false;
 }
 
@@ -3019,14 +3020,14 @@ static void AiBuildRoadConstruct(Player *p)
 
 	// Reached destination?
 	if (AiCheckRoadFinished(p)) {
-		p->ai.state_mode = 255;
+		_players_ai[p->index].state_mode = 255;
 		return;
 	}
 
 	// Setup recursive finder and call it.
 	arf.player = p;
-	arf.final_tile = p->ai.cur_tile_b;
-	arf.final_dir = p->ai.cur_dir_b;
+	arf.final_tile = _players_ai[p->index].cur_tile_b;
+	arf.final_dir = _players_ai[p->index].cur_dir_b;
 	arf.depth = 0;
 	arf.recursive_mode = 0;
 	arf.best_ptr = NULL;
@@ -3036,11 +3037,11 @@ static void AiBuildRoadConstruct(Player *p)
 	arf.best_depth =  0xff;
 	arf.cur_best_tile = 0;
 	arf.best_tile = 0;
-	AiBuildRoadRecursive(&arf, p->ai.cur_tile_a, p->ai.cur_dir_a);
+	AiBuildRoadRecursive(&arf, _players_ai[p->index].cur_tile_a, _players_ai[p->index].cur_dir_a);
 
 	// Reached destination?
 	if (arf.recursive_mode == 2 && arf.cur_best_depth == 0) {
-		p->ai.state_mode = 255;
+		_players_ai[p->index].state_mode = 255;
 		return;
 	}
 
@@ -3049,25 +3050,25 @@ static void AiBuildRoadConstruct(Player *p)
 		// Terraform some
 do_some_terraform:
 		for (i = 0; i != 5; i++)
-			AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
+			AiDoTerraformLand(_players_ai[p->index].cur_tile_a, _players_ai[p->index].cur_dir_a, 3, 0);
 
-		if (++p->ai.state_counter == 21) {
-			p->ai.state_mode = 1;
+		if (++_players_ai[p->index].state_counter == 21) {
+			_players_ai[p->index].state_mode = 1;
 
-			p->ai.cur_tile_a = TILE_MASK(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a));
-			p->ai.cur_dir_a = ReverseDiagDir(p->ai.cur_dir_a);
-			p->ai.state_counter = 0;
+			_players_ai[p->index].cur_tile_a = TILE_MASK(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(_players_ai[p->index].cur_dir_a));
+			_players_ai[p->index].cur_dir_a = ReverseDiagDir(_players_ai[p->index].cur_dir_a);
+			_players_ai[p->index].state_counter = 0;
 		}
 		return;
 	}
 
-	tile = TILE_MASK(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a));
+	tile = TILE_MASK(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(_players_ai[p->index].cur_dir_a));
 
 	if (arf.best_ptr[0] & 0x80) {
 		int i;
 		int32 bridge_len;
-		p->ai.cur_tile_a = arf.bridge_end_tile;
-		bridge_len = GetBridgeLength(tile, p->ai.cur_tile_a); // tile
+		_players_ai[p->index].cur_tile_a = arf.bridge_end_tile;
+		bridge_len = GetBridgeLength(tile, _players_ai[p->index].cur_tile_a); // tile
 
 		/* Figure out what (road)bridge type to build
 		 * start with best bridge, then go down to worse and worse bridges
@@ -3076,28 +3077,28 @@ do_some_terraform:
 		 */
 		for (i = 10; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
-				CommandCost cost = DoCommand(tile, p->ai.cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
+				CommandCost cost = DoCommand(tile, _players_ai[p->index].cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
 				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 5)) break;
 			}
 		}
 
 		// Build it
-		DoCommand(tile, p->ai.cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
+		DoCommand(tile, _players_ai[p->index].cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
 
-		p->ai.state_counter = 0;
+		_players_ai[p->index].state_counter = 0;
 	} else if (arf.best_ptr[0] & 0x40) {
 		// tunnel
 		DoCommand(tile, 0x200, 0, DC_AUTO | DC_EXEC, CMD_BUILD_TUNNEL);
-		p->ai.cur_tile_a = _build_tunnel_endtile;
-		p->ai.state_counter = 0;
+		_players_ai[p->index].cur_tile_a = _build_tunnel_endtile;
+		_players_ai[p->index].state_counter = 0;
 	} else {
 		// road
 		if (!AiBuildRoadHelper(tile, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, arf.best_ptr[0]))
 			goto do_some_terraform;
 
-		p->ai.cur_dir_a = (DiagDirection)(arf.best_ptr[1] & 3);
-		p->ai.cur_tile_a = tile;
-		p->ai.state_counter = 0;
+		_players_ai[p->index].cur_dir_a = (DiagDirection)(arf.best_ptr[1] & 3);
+		_players_ai[p->index].cur_tile_a = tile;
+		_players_ai[p->index].state_counter = 0;
 	}
 
 	if (arf.best_tile != 0) {
@@ -3109,24 +3110,24 @@ do_some_terraform:
 
 static void AiBuildRoad(Player *p)
 {
-	if (p->ai.state_mode < 1) {
+	if (_players_ai[p->index].state_mode < 1) {
 		// Construct mode, build new road.
 		AiBuildRoadConstruct(p);
-	} else if (p->ai.state_mode == 1) {
+	} else if (_players_ai[p->index].state_mode == 1) {
 		// Destruct mode, not implemented for roads.
-		p->ai.state_mode = 2;
-		p->ai.state_counter = 0;
-	} else if (p->ai.state_mode == 2) {
+		_players_ai[p->index].state_mode = 2;
+		_players_ai[p->index].state_counter = 0;
+	} else if (_players_ai[p->index].state_mode == 2) {
 		uint i;
 
 		// Terraform some and then try building again.
 		for (i = 0; i != 4; i++) {
-			AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
+			AiDoTerraformLand(_players_ai[p->index].cur_tile_a, _players_ai[p->index].cur_dir_a, 3, 0);
 		}
 
-		if (++p->ai.state_counter == 4) {
-			p->ai.state_counter = 0;
-			p->ai.state_mode = 0;
+		if (++_players_ai[p->index].state_counter == 4) {
+			_players_ai[p->index].state_counter = 0;
+			_players_ai[p->index].state_mode = 0;
 		}
 	}
 }
@@ -3149,27 +3150,27 @@ static void AiStateBuildRoad(Player *p)
 	DiagDirection dir;
 
 	// time out?
-	if (++p->ai.timeout_counter == 1388) {
-		p->ai.state = AIS_DELETE_ROAD_BLOCKS;
+	if (++_players_ai[p->index].timeout_counter == 1388) {
+		_players_ai[p->index].state = AIS_DELETE_ROAD_BLOCKS;
 		return;
 	}
 
 	// Currently building a road between two points?
-	if (p->ai.state_mode != 255) {
+	if (_players_ai[p->index].state_mode != 255) {
 		AiBuildRoad(p);
 
 		// Alternate between edges
-		Swap(p->ai.start_tile_a, p->ai.start_tile_b);
-		Swap(p->ai.cur_tile_a,   p->ai.cur_tile_b);
-		Swap(p->ai.start_dir_a,  p->ai.start_dir_b);
-		Swap(p->ai.cur_dir_a,    p->ai.cur_dir_b);
+		Swap(_players_ai[p->index].start_tile_a, _players_ai[p->index].start_tile_b);
+		Swap(_players_ai[p->index].cur_tile_a,   _players_ai[p->index].cur_tile_b);
+		Swap(_players_ai[p->index].start_dir_a,  _players_ai[p->index].start_dir_b);
+		Swap(_players_ai[p->index].cur_dir_a,    _players_ai[p->index].cur_dir_b);
 
 		return;
 	}
 
 	// Now, find two new points to build between
-	num = p->ai.num_build_rec;
-	aib = &p->ai.src;
+	num = _players_ai[p->index].num_build_rec;
+	aib = &_players_ai[p->index].src;
 
 	for (;;) {
 		cmd = aib->buildcmd_a;
@@ -3178,30 +3179,30 @@ static void AiStateBuildRoad(Player *p)
 
 		aib++;
 		if (--num == 0) {
-			p->ai.state = AIS_BUILD_ROAD_VEHICLES;
+			_players_ai[p->index].state = AIS_BUILD_ROAD_VEHICLES;
 			return;
 		}
 	}
 
 	// Find first edge to build from.
 	tile = AiGetRoadBlockEdge(aib->cur_building_rule, aib->use_tile, &dir);
-	p->ai.start_tile_a = tile;
-	p->ai.cur_tile_a = tile;
-	p->ai.start_dir_a = dir;
-	p->ai.cur_dir_a = dir;
+	_players_ai[p->index].start_tile_a = tile;
+	_players_ai[p->index].cur_tile_a = tile;
+	_players_ai[p->index].start_dir_a = dir;
+	_players_ai[p->index].cur_dir_a = dir;
 
 	// Find second edge to build to
-	aib = (&p->ai.src) + (cmd & 0xF);
+	aib = (&_players_ai[p->index].src) + (cmd & 0xF);
 	tile = AiGetRoadBlockEdge(aib->cur_building_rule, aib->use_tile, &dir);
-	p->ai.start_tile_b = tile;
-	p->ai.cur_tile_b = tile;
-	p->ai.start_dir_b = dir;
-	p->ai.cur_dir_b = dir;
+	_players_ai[p->index].start_tile_b = tile;
+	_players_ai[p->index].cur_tile_b = tile;
+	_players_ai[p->index].start_dir_b = dir;
+	_players_ai[p->index].cur_dir_b = dir;
 
 	// And setup state.
-	p->ai.state_mode = 2;
-	p->ai.state_counter = 0;
-	p->ai.banned_tile_count = 0;
+	_players_ai[p->index].state_mode = 2;
+	_players_ai[p->index].state_counter = 0;
+	_players_ai[p->index].banned_tile_count = 0;
 }
 
 static StationID AiGetStationIdFromRoadBlock(TileIndex tile, int id)
@@ -3219,13 +3220,13 @@ static void AiStateBuildRoadVehicles(Player *p)
 	EngineID veh;
 	uint i;
 
-	ptr = _road_default_block_data[p->ai.src.cur_building_rule]->data;
+	ptr = _road_default_block_data[_players_ai[p->index].src.cur_building_rule]->data;
 	for (; ptr->mode != 0; ptr++) {}
-	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
+	tile = TILE_ADD(_players_ai[p->index].src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
-	veh = AiChooseRoadVehToBuild(p->ai.cargo_type, p->player_money, tile);
+	veh = AiChooseRoadVehToBuild(_players_ai[p->index].cargo_type, p->player_money, tile);
 	if (veh == INVALID_ENGINE) {
-		p->ai.state = AIS_0;
+		_players_ai[p->index].state = AIS_0;
 		return;
 	}
 
@@ -3233,21 +3234,21 @@ static void AiStateBuildRoadVehicles(Player *p)
 
 	loco_id = _new_vehicle_id;
 
-	if (GetVehicle(loco_id)->cargo_type != p->ai.cargo_type) {
+	if (GetVehicle(loco_id)->cargo_type != _players_ai[p->index].cargo_type) {
 		/* Cargo type doesn't match, so refit it */
-		if (CmdFailed(DoCommand(tile, loco_id, p->ai.cargo_type, DC_EXEC, CMD_REFIT_ROAD_VEH))) {
+		if (CmdFailed(DoCommand(tile, loco_id, _players_ai[p->index].cargo_type, DC_EXEC, CMD_REFIT_ROAD_VEH))) {
 			/* Refit failed... sell the vehicle */
 			DoCommand(tile, loco_id, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
 			return;
 		}
 	}
 
-	for (i = 0; p->ai.order_list_blocks[i] != 0xFF; i++) {
-		const AiBuildRec* aib = &p->ai.src + p->ai.order_list_blocks[i];
+	for (i = 0; _players_ai[p->index].order_list_blocks[i] != 0xFF; i++) {
+		const AiBuildRec* aib = &_players_ai[p->index].src + _players_ai[p->index].order_list_blocks[i];
 		bool is_pass = (
-			p->ai.cargo_type == CT_PASSENGERS ||
-			p->ai.cargo_type == CT_MAIL ||
-			(_opt.landscape == LT_TEMPERATE && p->ai.cargo_type == CT_VALUABLES)
+			_players_ai[p->index].cargo_type == CT_PASSENGERS ||
+			_players_ai[p->index].cargo_type == CT_MAIL ||
+			(_opt.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
 		);
 		Order order;
 
@@ -3256,7 +3257,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 		order.dest = AiGetStationIdFromRoadBlock(aib->use_tile, aib->cur_building_rule);
 
 		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
-		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
+		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
 			order.flags |= OF_FULL_LOAD;
 
 		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
@@ -3265,14 +3266,14 @@ static void AiStateBuildRoadVehicles(Player *p)
 	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
 	DoCommand(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 
-	if (p->ai.num_want_fullload != 0) p->ai.num_want_fullload--;
-	if (--p->ai.num_loco_to_build == 0) p->ai.state = AIS_0;
+	if (_players_ai[p->index].num_want_fullload != 0) _players_ai[p->index].num_want_fullload--;
+	if (--_players_ai[p->index].num_loco_to_build == 0) _players_ai[p->index].state = AIS_0;
 }
 
 static void AiStateDeleteRoadBlocks(Player *p)
 {
-	const AiBuildRec* aib = &p->ai.src;
-	uint num = p->ai.num_build_rec;
+	const AiBuildRec* aib = &_players_ai[p->index].src;
+	uint num = _players_ai[p->index].num_build_rec;
 
 	do {
 		const AiDefaultBlockData* b;
@@ -3284,7 +3285,7 @@ static void AiStateDeleteRoadBlocks(Player *p)
 		}
 	} while (++aib, --num);
 
-	p->ai.state = AIS_0;
+	_players_ai[p->index].state = AIS_0;
 }
 
 
@@ -3305,7 +3306,7 @@ static void AiStateAirportStuff(Player *p)
 		// We do this all twice - once for the source (town in the case
 		// of oilrig route) and then for the destination (oilrig in the
 		// case of oilrig route).
-		aib = &p->ai.src + i;
+		aib = &_players_ai[p->index].src + i;
 
 		FOR_ALL_STATIONS(st) {
 			// Is this an airport?
@@ -3316,7 +3317,7 @@ static void AiStateAirportStuff(Player *p)
 
 			AirportFTAClass::Flags flags = st->Airport()->flags;
 
-			if (!(flags & (p->ai.build_kind == 1 && i == 0 ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES))) {
+			if (!(flags & (_players_ai[p->index].build_kind == 1 && i == 0 ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES))) {
 				continue;
 			}
 
@@ -3355,11 +3356,11 @@ static void AiStateAirportStuff(Player *p)
 			aib->use_tile = st->airport_tile;
 			break;
 		}
-	} while (++i != p->ai.num_build_rec);
+	} while (++i != _players_ai[p->index].num_build_rec);
 
-	p->ai.state = AIS_BUILD_DEFAULT_AIRPORT_BLOCKS;
-	p->ai.state_mode = 255;
-	p->ai.state_counter = 0;
+	_players_ai[p->index].state = AIS_BUILD_DEFAULT_AIRPORT_BLOCKS;
+	_players_ai[p->index].state_mode = 255;
+	_players_ai[p->index].state_counter = 0;
 }
 
 static CommandCost AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
@@ -3424,8 +3425,8 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 	CommandCost cost;
 
 	// time out?
-	if (++p->ai.timeout_counter == 1388) {
-		p->ai.state = AIS_0;
+	if (++_players_ai[p->index].timeout_counter == 1388) {
+		_players_ai[p->index].state = AIS_0;
 		return;
 	}
 
@@ -3433,8 +3434,8 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 	i = 8;
 	do {
 		// check if we can build the default
-		aib = &p->ai.src;
-		j = p->ai.num_build_rec;
+		aib = &_players_ai[p->index].src;
+		j = _players_ai[p->index].num_build_rec;
 		do {
 			// this item has already been built?
 			if (aib->cur_building_rule != 255) continue;
@@ -3444,19 +3445,19 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 			aib->use_tile = AdjustTileCoordRandomly(aib->spec_tile, aib->rand_rng);
 
 			// check if the aircraft stuff can be built there.
-			rule = AiFindBestDefaultAirportBlock(aib->use_tile, aib->cargo, p->ai.build_kind, &cost);
+			rule = AiFindBestDefaultAirportBlock(aib->use_tile, aib->cargo, _players_ai[p->index].build_kind, &cost);
 
 //			SetRedErrorSquare(aib->use_tile);
 
 			if (rule == -1) {
 				// cannot build, terraform after a while
-				if (p->ai.state_counter >= 600) {
-					AiDoTerraformLand(aib->use_tile, (DiagDirection)(Random() & 3), 3, (int8)p->ai.state_mode);
+				if (_players_ai[p->index].state_counter >= 600) {
+					AiDoTerraformLand(aib->use_tile, (DiagDirection)(Random() & 3), 3, (int8)_players_ai[p->index].state_mode);
 				}
 				// also try the other terraform direction
-				if (++p->ai.state_counter >= 1000) {
-					p->ai.state_counter = 0;
-					p->ai.state_mode = -p->ai.state_mode;
+				if (++_players_ai[p->index].state_counter >= 1000) {
+					_players_ai[p->index].state_counter = 0;
+					_players_ai[p->index].state_mode = -_players_ai[p->index].state_mode;
 				}
 			} else if (CheckPlayerHasMoney(cost) && AiCheckBlockDistances(p, aib->use_tile)) {
 				// player has money, build it.
@@ -3475,14 +3476,14 @@ static void AiStateBuildDefaultAirportBlocks(Player *p)
 	} while (--i);
 
 	// check if we're done with all of them
-	aib = &p->ai.src;
-	j = p->ai.num_build_rec;
+	aib = &_players_ai[p->index].src;
+	j = _players_ai[p->index].num_build_rec;
 	do {
 		if (aib->cur_building_rule == 255) return;
 	} while (++aib, --j);
 
 	// yep, all are done. switch state.
-	p->ai.state = AIS_BUILD_AIRCRAFT_VEHICLES;
+	_players_ai[p->index].state = AIS_BUILD_AIRCRAFT_VEHICLES;
 }
 
 static StationID AiGetStationIdFromAircraftBlock(TileIndex tile, int id)
@@ -3500,12 +3501,12 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	int i;
 	VehicleID loco_id;
 
-	ptr = _airport_default_block_data[p->ai.src.cur_building_rule];
+	ptr = _airport_default_block_data[_players_ai[p->index].src.cur_building_rule];
 	for (; ptr->mode != 0; ptr++) {}
 
-	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
+	tile = TILE_ADD(_players_ai[p->index].src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
-	veh = AiChooseAircraftToBuild(p->player_money, p->ai.build_kind != 0 ? 0 : AIR_CTOL);
+	veh = AiChooseAircraftToBuild(p->player_money, _players_ai[p->index].build_kind != 0 ? 0 : AIR_CTOL);
 	if (veh == INVALID_ENGINE) return;
 
 	/* XXX - Have the AI pick the hangar terminal in an airport. Eg get airport-type
@@ -3514,9 +3515,9 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	if (CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) return;
 	loco_id = _new_vehicle_id;
 
-	for (i = 0; p->ai.order_list_blocks[i] != 0xFF; i++) {
-		AiBuildRec *aib = (&p->ai.src) + p->ai.order_list_blocks[i];
-		bool is_pass = (p->ai.cargo_type == CT_PASSENGERS || p->ai.cargo_type == CT_MAIL);
+	for (i = 0; _players_ai[p->index].order_list_blocks[i] != 0xFF; i++) {
+		AiBuildRec *aib = (&_players_ai[p->index].src) + _players_ai[p->index].order_list_blocks[i];
+		bool is_pass = (_players_ai[p->index].cargo_type == CT_PASSENGERS || _players_ai[p->index].cargo_type == CT_MAIL);
 		Order order;
 
 		order.type = OT_GOTO_STATION;
@@ -3524,7 +3525,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 		order.dest = AiGetStationIdFromAircraftBlock(aib->use_tile, aib->cur_building_rule);
 
 		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
-		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
+		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
 			order.flags |= OF_FULL_LOAD;
 
 		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
@@ -3534,9 +3535,9 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 	DoCommand(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 
-	if (p->ai.num_want_fullload != 0) p->ai.num_want_fullload--;
+	if (_players_ai[p->index].num_want_fullload != 0) _players_ai[p->index].num_want_fullload--;
 
-	if (--p->ai.num_loco_to_build == 0) p->ai.state = AIS_0;
+	if (--_players_ai[p->index].num_loco_to_build == 0) _players_ai[p->index].state = AIS_0;
 }
 
 static void AiStateCheckShipStuff(Player *p)
@@ -3556,7 +3557,7 @@ static void AiStateDoShipStuff(Player *p)
 
 static void AiStateSellVeh(Player *p)
 {
-	Vehicle *v = p->ai.cur_veh;
+	Vehicle *v = _players_ai[p->index].cur_veh;
 
 	if (v->owner == _current_player) {
 		if (v->type == VEH_TRAIN) {
@@ -3593,7 +3594,7 @@ static void AiStateSellVeh(Player *p)
 
 	goto return_to_loop;
 going_to_depot:;
-	if (++p->ai.state_counter <= 832) return;
+	if (++_players_ai[p->index].state_counter <= 832) return;
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		v->current_order.type = OT_DUMMY;
@@ -3601,7 +3602,7 @@ going_to_depot:;
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 	}
 return_to_loop:;
-	p->ai.state = AIS_VEH_LOOP;
+	_players_ai[p->index].state = AIS_VEH_LOOP;
 }
 
 static void AiStateRemoveStation(Player *p)
@@ -3612,7 +3613,7 @@ static void AiStateRemoveStation(Player *p)
 	TileIndex tile;
 
 	// Go to this state when we're done.
-	p->ai.state = AIS_1;
+	_players_ai[p->index].state = AIS_1;
 
 	// Get a list of all stations that are in use by a vehicle
 	byte *in_use = MallocT<byte>(GetMaxStationIndex() + 1);
@@ -3652,9 +3653,9 @@ is_rail_crossing:;
 			if (rails & TRACK_BIT_3WAY_NE) {
 pos_0:
 				if ((GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(1, 0))) & TRACK_BIT_3WAY_SW) == 0) {
-					p->ai.cur_dir_a = DIAGDIR_NE;
-					p->ai.cur_tile_a = tile;
-					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
+					_players_ai[p->index].cur_dir_a = DIAGDIR_NE;
+					_players_ai[p->index].cur_tile_a = tile;
+					_players_ai[p->index].state = AIS_REMOVE_SINGLE_RAIL_TILE;
 					return;
 				}
 			}
@@ -3662,9 +3663,9 @@ pos_0:
 			if (rails & TRACK_BIT_3WAY_SE) {
 pos_1:
 				if ((GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(0, 1))) & TRACK_BIT_3WAY_NW) == 0) {
-					p->ai.cur_dir_a = DIAGDIR_SE;
-					p->ai.cur_tile_a = tile;
-					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
+					_players_ai[p->index].cur_dir_a = DIAGDIR_SE;
+					_players_ai[p->index].cur_tile_a = tile;
+					_players_ai[p->index].state = AIS_REMOVE_SINGLE_RAIL_TILE;
 					return;
 				}
 			}
@@ -3672,9 +3673,9 @@ pos_1:
 			if (rails & TRACK_BIT_3WAY_SW) {
 pos_2:
 				if ((GetRailTrackStatus(TILE_MASK(tile + TileDiffXY(1, 0))) & TRACK_BIT_3WAY_NE) == 0) {
-					p->ai.cur_dir_a = DIAGDIR_SW;
-					p->ai.cur_tile_a = tile;
-					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
+					_players_ai[p->index].cur_dir_a = DIAGDIR_SW;
+					_players_ai[p->index].cur_tile_a = tile;
+					_players_ai[p->index].state = AIS_REMOVE_SINGLE_RAIL_TILE;
 					return;
 				}
 			}
@@ -3682,9 +3683,9 @@ pos_2:
 			if (rails & TRACK_BIT_3WAY_NW) {
 pos_3:
 				if ((GetRailTrackStatus(TILE_MASK(tile - TileDiffXY(0, 1))) & TRACK_BIT_3WAY_SE) == 0) {
-					p->ai.cur_dir_a = DIAGDIR_NW;
-					p->ai.cur_tile_a = tile;
-					p->ai.state = AIS_REMOVE_SINGLE_RAIL_TILE;
+					_players_ai[p->index].cur_dir_a = DIAGDIR_NW;
+					_players_ai[p->index].cur_tile_a = tile;
+					_players_ai[p->index].state = AIS_REMOVE_SINGLE_RAIL_TILE;
 					return;
 				}
 			}
@@ -3755,24 +3756,24 @@ static void AiStateRemoveTrack(Player *p)
 	int num = MapSizeX() * 4;
 
 	do {
-		TileIndex tile = ++p->ai.state_counter;
+		TileIndex tile = ++_players_ai[p->index].state_counter;
 
 		// Iterated all tiles?
 		if (tile >= MapSize()) {
-			p->ai.state = AIS_REMOVE_STATION;
+			_players_ai[p->index].state = AIS_REMOVE_STATION;
 			return;
 		}
 
 		// Remove player stuff in that tile
 		AiRemovePlayerRailOrRoad(p, tile);
-		if (p->ai.state != AIS_REMOVE_TRACK) return;
+		if (_players_ai[p->index].state != AIS_REMOVE_TRACK) return;
 	} while (--num);
 }
 
 static void AiStateRemoveSingleRailTile(Player *p)
 {
 	// Remove until we can't remove more.
-	if (!AiRemoveTileAndGoForward(p)) p->ai.state = AIS_REMOVE_TRACK;
+	if (!AiRemoveTileAndGoForward(p)) _players_ai[p->index].state = AIS_REMOVE_TRACK;
 }
 
 static AiStateAction * const _ai_actions[] = {
@@ -3949,11 +3950,11 @@ void AiDoGameLoop(Player *p)
 			"AiStateRemoveSingleRailTile"
 		};
 
-		if (p->ai.state != old_state) {
+		if (_players_ai[p->index].state != old_state) {
 			if (hasdots)
 				printf("\n");
 			hasdots=false;
-			printf("AiState: %s\n", _ai_state_names[old_state=p->ai.state]);
+			printf("AiState: %s\n", _ai_state_names[old_state=_players_ai[p->index].state]);
 		} else {
 			printf(".");
 			hasdots=true;
@@ -3961,5 +3962,76 @@ void AiDoGameLoop(Player *p)
 	}
 #endif
 
-	_ai_actions[p->ai.state](p);
+	_ai_actions[_players_ai[p->index].state](p);
+}
+
+
+static const SaveLoad _player_ai_desc[] = {
+	    SLE_VAR(PlayerAI, state,             SLE_UINT8),
+	    SLE_VAR(PlayerAI, tick,              SLE_UINT8),
+	SLE_CONDVAR(PlayerAI, state_counter,     SLE_FILE_U16 | SLE_VAR_U32,  0, 12),
+	SLE_CONDVAR(PlayerAI, state_counter,     SLE_UINT32,                 13, SL_MAX_VERSION),
+	    SLE_VAR(PlayerAI, timeout_counter,   SLE_UINT16),
+
+	    SLE_VAR(PlayerAI, state_mode,        SLE_UINT8),
+	    SLE_VAR(PlayerAI, banned_tile_count, SLE_UINT8),
+	    SLE_VAR(PlayerAI, railtype_to_use,   SLE_UINT8),
+
+	    SLE_VAR(PlayerAI, cargo_type,        SLE_UINT8),
+	    SLE_VAR(PlayerAI, num_wagons,        SLE_UINT8),
+	    SLE_VAR(PlayerAI, build_kind,        SLE_UINT8),
+	    SLE_VAR(PlayerAI, num_build_rec,     SLE_UINT8),
+	    SLE_VAR(PlayerAI, num_loco_to_build, SLE_UINT8),
+	    SLE_VAR(PlayerAI, num_want_fullload, SLE_UINT8),
+
+	    SLE_VAR(PlayerAI, route_type_mask,   SLE_UINT8),
+
+	SLE_CONDVAR(PlayerAI, start_tile_a,      SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(PlayerAI, start_tile_a,      SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(PlayerAI, cur_tile_a,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(PlayerAI, cur_tile_a,        SLE_UINT32,                  6, SL_MAX_VERSION),
+	    SLE_VAR(PlayerAI, start_dir_a,       SLE_UINT8),
+	    SLE_VAR(PlayerAI, cur_dir_a,         SLE_UINT8),
+
+	SLE_CONDVAR(PlayerAI, start_tile_b,      SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(PlayerAI, start_tile_b,      SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(PlayerAI, cur_tile_b,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(PlayerAI, cur_tile_b,        SLE_UINT32,                  6, SL_MAX_VERSION),
+	    SLE_VAR(PlayerAI, start_dir_b,       SLE_UINT8),
+	    SLE_VAR(PlayerAI, cur_dir_b,         SLE_UINT8),
+
+	    SLE_REF(PlayerAI, cur_veh,           REF_VEHICLE),
+
+	    SLE_ARR(PlayerAI, wagon_list,        SLE_UINT16, 9),
+	    SLE_ARR(PlayerAI, order_list_blocks, SLE_UINT8, 20),
+	    SLE_ARR(PlayerAI, banned_tiles,      SLE_UINT16, 16),
+
+	SLE_CONDNULL(64, 2, SL_MAX_VERSION),
+	SLE_END()
+};
+
+static const SaveLoad _player_ai_build_rec_desc[] = {
+	SLE_CONDVAR(AiBuildRec, spec_tile,         SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(AiBuildRec, spec_tile,         SLE_UINT32,                 6, SL_MAX_VERSION),
+	SLE_CONDVAR(AiBuildRec, use_tile,          SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(AiBuildRec, use_tile,          SLE_UINT32,                 6, SL_MAX_VERSION),
+	    SLE_VAR(AiBuildRec, rand_rng,          SLE_UINT8),
+	    SLE_VAR(AiBuildRec, cur_building_rule, SLE_UINT8),
+	    SLE_VAR(AiBuildRec, unk6,              SLE_UINT8),
+	    SLE_VAR(AiBuildRec, unk7,              SLE_UINT8),
+	    SLE_VAR(AiBuildRec, buildcmd_a,        SLE_UINT8),
+	    SLE_VAR(AiBuildRec, buildcmd_b,        SLE_UINT8),
+	    SLE_VAR(AiBuildRec, direction,         SLE_UINT8),
+	    SLE_VAR(AiBuildRec, cargo,             SLE_UINT8),
+	SLE_END()
+};
+
+
+void SaveLoad_AI(PlayerID id)
+{
+	PlayerAI *pai = &_players_ai[id];
+	SlObject(pai, _player_ai_desc);
+	for (int i = 0; i != pai->num_build_rec; i++) {
+		SlObject(&pai->src + i, _player_ai_build_rec_desc);
+	}
 }

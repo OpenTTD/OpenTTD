@@ -20,6 +20,7 @@
 #include "depot.h"
 #include "newgrf_config.h"
 #include "ai/ai.h"
+#include "ai/default/default.h"
 #include "zoom_func.h"
 #include "functions.h"
 #include "date_func.h"
@@ -811,10 +812,10 @@ static bool OldLoadAIBuildRec(LoadgameState *ls, int num)
 	Player *p = GetPlayer(_current_player_id);
 
 	switch (num) {
-		case 0: return LoadChunk(ls, &p->ai.src, player_ai_build_rec_chunk);
-		case 1: return LoadChunk(ls, &p->ai.dst, player_ai_build_rec_chunk);
-		case 2: return LoadChunk(ls, &p->ai.mid1, player_ai_build_rec_chunk);
-		case 3: return LoadChunk(ls, &p->ai.mid2, player_ai_build_rec_chunk);
+		case 0: return LoadChunk(ls, &_players_ai[p->index].src, player_ai_build_rec_chunk);
+		case 1: return LoadChunk(ls, &_players_ai[p->index].dst, player_ai_build_rec_chunk);
+		case 2: return LoadChunk(ls, &_players_ai[p->index].mid1, player_ai_build_rec_chunk);
+		case 3: return LoadChunk(ls, &_players_ai[p->index].mid2, player_ai_build_rec_chunk);
 	}
 
 	return false;
@@ -924,11 +925,10 @@ static const OldChunks player_ai_chunk[] = {
 
 static bool OldPlayerAI(LoadgameState *ls, int num)
 {
-	Player *p = GetPlayer(_current_player_id);
-
-	return LoadChunk(ls, &p->ai, player_ai_chunk);
+	return LoadChunk(ls, &_players_ai[_current_player_id], player_ai_chunk);
 }
 
+uint8 ai_tick;
 static const OldChunks player_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_string_id ),
 	OCL_SVAR( OC_UINT32, Player, name_2 ),
@@ -958,7 +958,7 @@ static const OldChunks player_chunk[] = {
 	OCL_CHUNK( 1, OldPlayerAI ),
 
 	OCL_SVAR(  OC_UINT8, Player, block_preview ),
-	OCL_SVAR(  OC_UINT8, Player, ai.tick ),
+	 OCL_VAR(  OC_UINT8,   1, &ai_tick ),
 	OCL_SVAR(  OC_UINT8, Player, avail_railtypes ),
 	OCL_SVAR(   OC_TILE, Player, location_of_house ),
 	OCL_SVAR(  OC_UINT8, Player, share_owners[0] ),
@@ -982,6 +982,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 	p->name_1 = RemapOldStringID(_old_string_id);
 	p->president_name_1 = RemapOldStringID(_old_string_id_2);
 	p->player_money = p->player_money;
+	_players_ai[_current_player_id].tick = ai_tick;
 
 	if (num == 0) {
 		/* If the first player has no name, make sure we call it UNNAMED */
@@ -1007,10 +1008,10 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 		p->location_of_house = 0;
 
 	/* State 20 for AI players is sell vehicle. Since the AI struct is not
-	 * really figured out as of now, p->ai.cur_veh; needed for 'sell vehicle'
+	 * really figured out as of now, _players_ai[p->index].cur_veh; needed for 'sell vehicle'
 	 * is NULL and the function will crash. To fix this, just change the state
 	 * to some harmless state, like 'loop vehicle'; 1 */
-	if (!IsHumanPlayer((PlayerID)num) && p->ai.state == 20) p->ai.state = 1;
+	if (!IsHumanPlayer((PlayerID)num) && _players_ai[p->index].state == 20) _players_ai[p->index].state = 1;
 
 	if (p->is_ai && (!_networking || _network_server) && _ai.enabled)
 		AI_StartNewAI(p->index);

@@ -239,6 +239,22 @@ typedef void AiNew_StateFunction(Player *p);
 // ai_new.c
 void AiNewDoGameLoop(Player *p);
 
+struct Ai_PathFinderInfo {
+	TileIndex start_tile_tl; ///< tl = top-left
+	TileIndex start_tile_br; ///< br = bottom-right
+	TileIndex end_tile_tl;   ///< tl = top-left
+	TileIndex end_tile_br;   ///< br = bottom-right
+	DiagDirection start_direction; ///< 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+	DiagDirection end_direction;   ///< 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+
+	TileIndex route[500];
+	byte route_extra[500];   ///< Some extra information about the route like bridge/tunnel
+	int route_length;
+	int position;            ///< Current position in the build-path, needed to build the path
+
+	bool rail_or_road;       ///< true = rail, false = road
+};
+
 // ai_pathfinder.c
 AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFinderInfo);
 void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo);
@@ -258,5 +274,65 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 EngineID AiNew_PickVehicle(Player *p);
 CommandCost AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag);
 CommandCost AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte flag);
+
+/* The amount of memory reserved for the AI-special-vehicles */
+#define AI_MAX_SPECIAL_VEHICLES 100
+
+struct Ai_SpecialVehicle {
+	VehicleID veh_id;
+	uint32 flag;
+};
+
+struct PlayerAiNew {
+	uint8 state;
+	uint tick;
+	uint idle;
+
+	int temp;    ///< A value used in more than one function, but it just temporary
+	             ///< The use is pretty simple: with this we can 'think' about stuff
+	             ///<   in more than one tick, and more than one AI. A static will not
+	             ///<   do, because they are not saved. This way, the AI is almost human ;)
+	int counter; ///< For the same reason as temp, we have counter. It can count how
+	             ///<  long we are trying something, and just abort if it takes too long
+
+	/* Pathfinder stuff */
+	Ai_PathFinderInfo path_info;
+	AyStar *pathfinder;
+
+	/* Route stuff */
+
+	CargoID cargo;
+	byte tbt;    ///< train/bus/truck 0/1/2 AI_TRAIN/AI_BUS/AI_TRUCK
+	Money new_cost;
+
+	byte action;
+
+	int last_id; ///< here is stored the last id of the searched city/industry
+	Date last_vehiclecheck_date; // Used in CheckVehicle
+	Ai_SpecialVehicle special_vehicles[AI_MAX_SPECIAL_VEHICLES]; ///< Some vehicles have some special flags
+
+	TileIndex from_tile;
+	TileIndex to_tile;
+
+	DiagDirectionByte from_direction;
+	DiagDirectionByte to_direction;
+
+	bool from_deliver; ///< True if this is the station that GIVES cargo
+	bool to_deliver;
+
+	TileIndex depot_tile;
+	DiagDirectionByte depot_direction;
+
+	byte amount_veh;       ///< How many vehicles we are going to build in this route
+	byte cur_veh;          ///< How many vehicles did we bought?
+	VehicleID veh_id;      ///< Used when bought a vehicle
+	VehicleID veh_main_id; ///< The ID of the first vehicle, for shared copy
+
+	int from_ic;           ///< ic = industry/city. This is the ID of them
+	byte from_type;        ///< AI_NO_TYPE/AI_CITY/AI_INDUSTRY
+	int to_ic;
+	byte to_type;
+};
+extern PlayerAiNew _players_ainew[MAX_PLAYERS];
 
 #endif /* AI_TROLLY_H */

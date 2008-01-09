@@ -2,6 +2,7 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
+#include "../player.h"
 #include "../variables.h"
 #include "../command_func.h"
 #include "../network/network.h"

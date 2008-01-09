@@ -30,6 +30,8 @@
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
+#include "ai/default/default.h"
+#include "ai/trolly/trolly.h"
 
 /**
  * Sets the local player and updates the patch settings that are set on a
@@ -441,6 +443,8 @@ static Player *AllocatePlayer()
 		if (!p->is_active) {
 			PlayerID i = p->index;
 			memset(p, 0, sizeof(Player));
+			memset(&_players_ai[i], 0, sizeof(PlayerAI));
+			memset(&_players_ainew[i], 0, sizeof(PlayerAiNew));
 			p->index = i;
 			return p;
 		}
@@ -480,7 +484,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->player_money = p->current_loan = 100000;
 
 	p->is_ai = is_ai;
-	p->ai.state = 5; // AIS_WANT_NEW_ROUTE
+	_players_ai[p->index].state = 5; // AIS_WANT_NEW_ROUTE
 	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = PLAYER_SPECTATOR;
 
 	p->avail_railtypes = GetPlayerRailtypes(p->index);
@@ -1193,66 +1197,6 @@ static const SaveLoad _player_economy_desc[] = {
 	SLE_END()
 };
 
-static const SaveLoad _player_ai_desc[] = {
-	    SLE_VAR(PlayerAI, state,             SLE_UINT8),
-	    SLE_VAR(PlayerAI, tick,              SLE_UINT8),
-	SLE_CONDVAR(PlayerAI, state_counter,     SLE_FILE_U16 | SLE_VAR_U32,  0, 12),
-	SLE_CONDVAR(PlayerAI, state_counter,     SLE_UINT32,                 13, SL_MAX_VERSION),
-	    SLE_VAR(PlayerAI, timeout_counter,   SLE_UINT16),
-
-	    SLE_VAR(PlayerAI, state_mode,        SLE_UINT8),
-	    SLE_VAR(PlayerAI, banned_tile_count, SLE_UINT8),
-	    SLE_VAR(PlayerAI, railtype_to_use,   SLE_UINT8),
-
-	    SLE_VAR(PlayerAI, cargo_type,        SLE_UINT8),
-	    SLE_VAR(PlayerAI, num_wagons,        SLE_UINT8),
-	    SLE_VAR(PlayerAI, build_kind,        SLE_UINT8),
-	    SLE_VAR(PlayerAI, num_build_rec,     SLE_UINT8),
-	    SLE_VAR(PlayerAI, num_loco_to_build, SLE_UINT8),
-	    SLE_VAR(PlayerAI, num_want_fullload, SLE_UINT8),
-
-	    SLE_VAR(PlayerAI, route_type_mask,   SLE_UINT8),
-
-	SLE_CONDVAR(PlayerAI, start_tile_a,      SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(PlayerAI, start_tile_a,      SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(PlayerAI, cur_tile_a,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(PlayerAI, cur_tile_a,        SLE_UINT32,                  6, SL_MAX_VERSION),
-	    SLE_VAR(PlayerAI, start_dir_a,       SLE_UINT8),
-	    SLE_VAR(PlayerAI, cur_dir_a,         SLE_UINT8),
-
-	SLE_CONDVAR(PlayerAI, start_tile_b,      SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(PlayerAI, start_tile_b,      SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(PlayerAI, cur_tile_b,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(PlayerAI, cur_tile_b,        SLE_UINT32,                  6, SL_MAX_VERSION),
-	    SLE_VAR(PlayerAI, start_dir_b,       SLE_UINT8),
-	    SLE_VAR(PlayerAI, cur_dir_b,         SLE_UINT8),
-
-	    SLE_REF(PlayerAI, cur_veh,           REF_VEHICLE),
-
-	    SLE_ARR(PlayerAI, wagon_list,        SLE_UINT16, 9),
-	    SLE_ARR(PlayerAI, order_list_blocks, SLE_UINT8, 20),
-	    SLE_ARR(PlayerAI, banned_tiles,      SLE_UINT16, 16),
-
-	SLE_CONDNULL(64, 2, SL_MAX_VERSION),
-	SLE_END()
-};
-
-static const SaveLoad _player_ai_build_rec_desc[] = {
-	SLE_CONDVAR(AiBuildRec, spec_tile,         SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(AiBuildRec, spec_tile,         SLE_UINT32,                 6, SL_MAX_VERSION),
-	SLE_CONDVAR(AiBuildRec, use_tile,          SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(AiBuildRec, use_tile,          SLE_UINT32,                 6, SL_MAX_VERSION),
-	    SLE_VAR(AiBuildRec, rand_rng,          SLE_UINT8),
-	    SLE_VAR(AiBuildRec, cur_building_rule, SLE_UINT8),
-	    SLE_VAR(AiBuildRec, unk6,              SLE_UINT8),
-	    SLE_VAR(AiBuildRec, unk7,              SLE_UINT8),
-	    SLE_VAR(AiBuildRec, buildcmd_a,        SLE_UINT8),
-	    SLE_VAR(AiBuildRec, buildcmd_b,        SLE_UINT8),
-	    SLE_VAR(AiBuildRec, direction,         SLE_UINT8),
-	    SLE_VAR(AiBuildRec, cargo,             SLE_UINT8),
-	SLE_END()
-};
-
 static const SaveLoad _player_livery_desc[] = {
 	SLE_CONDVAR(Livery, in_use,  SLE_BOOL,  34, SL_MAX_VERSION),
 	SLE_CONDVAR(Livery, colour1, SLE_UINT8, 34, SL_MAX_VERSION),
@@ -1268,10 +1212,7 @@ static void SaveLoad_PLYR(Player* p)
 
 	/* Write AI? */
 	if (!IsHumanPlayer(p->index)) {
-		SlObject(&p->ai, _player_ai_desc);
-		for (i = 0; i != p->ai.num_build_rec; i++) {
-			SlObject(&p->ai.src + i, _player_ai_build_rec_desc);
-		}
+		SaveLoad_AI(p->index);
 	}
 
 	/* Write economy */

@@ -27,14 +27,14 @@ static bool TestCanBuildStationHere(TileIndex tile, byte dir)
 		// TODO: currently we only allow spots that can be access from al 4 directions...
 		//  should be fixed!!!
 		for (dir = 0; dir < 4; dir++) {
-			ret = AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST);
+			ret = AiNew_Build_Station(p, _players_ainew[p->index].tbt, tile, 1, 1, dir, DC_QUERY_COST);
 			if (CmdSucceeded(ret)) return true;
 		}
 		return false;
 	}
 
 	// return true if command succeeded, so the inverse of CmdFailed()
-	return CmdSucceeded(AiNew_Build_Station(p, p->ainew.tbt, tile, 1, 1, dir, DC_QUERY_COST));
+	return CmdSucceeded(AiNew_Build_Station(p, _players_ainew[p->index].tbt, tile, 1, 1, dir, DC_QUERY_COST));
 }
 
 
