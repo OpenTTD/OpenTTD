@@ -125,33 +125,6 @@ void UnloadCustomEngineSprites()
 	memset(_engine_grf, 0, sizeof(_engine_grf));
 }
 
-static const SpriteGroup *heli_rotor_custom_sprites[NUM_AIRCRAFT_ENGINES];
-
-/** Load a rotor override sprite group for an aircraft */
-void SetRotorOverrideSprites(EngineID engine, const SpriteGroup *group)
-{
-	assert(engine >= AIRCRAFT_ENGINES_INDEX);
-	assert(engine < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES);
-
-	if (heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX] != NULL) {
-		grfmsg(6, "SetRotorOverrideSprites: engine %d already has group -- replacing.", engine);
-	}
-	heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX] = group;
-}
-
-/** Unload all rotor override sprite groups */
-void UnloadRotorOverrideSprites()
-{
-	EngineID engine;
-
-	/* Starting at AIRCRAFT_ENGINES_INDEX may seem pointless, but it means
-	 * the context of EngineID is correct */
-	for (engine = AIRCRAFT_ENGINES_INDEX; engine < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; engine++) {
-		heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX] = NULL;
-	}
-}
-
-
 /**
  * Tie a GRFFile entry to an engine, to allow us to retrieve GRF parameters
  * etc during a game.
@@ -898,7 +871,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
 
 	object.info_view = info_view;
 
-	group = heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX];
+	group = GetWagonOverrideSpriteSet(engine, CT_DEFAULT, engine);
 	group = Resolve(group, &object);
 
 	if (group == NULL || group->type != SGT_RESULT) return 0;
