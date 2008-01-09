@@ -162,7 +162,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Это �
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Невозможно расчистить...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Оригинальные авторские права {COPYRIGHT} 1995 Chris Sawyer, Все права защищены
 STR_00B7_VERSION                                                :{BLACK}OpenTTD v{REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 Команда разработчиков OpenTTD
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 Команда разработчиков OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Переводчики - Назаров Дмитрий (aka Smoky555), Олег Попков (aka Oleg)  - http://forums.ttdrussia.net
 
 STR_00C5                                                        :{BLACK}{CROSS}

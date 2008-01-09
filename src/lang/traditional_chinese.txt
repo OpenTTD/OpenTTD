@@ -160,7 +160,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}不能�
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}不能清除這個地段....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}原著作權為{COPYRIGHT} 1995 Chris Sawyer, 版權所有
 STR_00B7_VERSION                                                :{BLACK}OpenTTD 版本 {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD 小組
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 OpenTTD 小組
 STR_TRANSLATED_BY                                               :{BLACK}  翻譯 -
 
 STR_00C5                                                        :{BLACK}{CROSS}

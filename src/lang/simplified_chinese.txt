@@ -160,7 +160,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}不能�
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}不能清除这个区域……
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}原始版权由 {COPYRIGHT} 1995 Chris Sawyer 所有，保留一切权力。
 STR_00B7_VERSION                                                :{BLACK}OpenTTD 版本 {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}简体中文翻译者：Fishingsnow@yjrg.net
 
 STR_00C5                                                        :{BLACK}{CROSS}

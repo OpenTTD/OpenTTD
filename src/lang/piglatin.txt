@@ -160,7 +160,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}An'tcay 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}An'tcay earclay isthay areaway....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originalway opyrightcay {COPYRIGHT} 1995 Ischray Awyersay, Allway ightsray eservedray
 STR_00B7_VERSION                                                :{BLACK}OpenTTDWAY ersionvay {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTDWAY {COPYRIGHT}2002-2007 Ethay OpenTTDWAY eamtay
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTDWAY {COPYRIGHT}2002-2008 Ethay OpenTTDWAY eamtay
 STR_TRANSLATED_BY                                               :{BLACK}  Anslatortray(say) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

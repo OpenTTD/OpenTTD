@@ -161,7 +161,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne eblas
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Ne eblas malplenigi la regionon....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Origina kopirajto {COPYRIGHT} 1995 Chris Sawyer, Ĉiuj rajtoj rezervitaj
 STR_00B7_VERSION                                                :{BLACK}OpenTTD-versio {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 La teamo de OpenTTD
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 La teamo de OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Tradukanto(j) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

@@ -260,7 +260,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Seda ei 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Seda ala ei saa puhastada....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Algupärane autorikaitse {COPYRIGHT} 1995 Chris Sawyer, kõik õigused kaitstud
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versioon {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 OpenTTD meeskond
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 OpenTTD meeskond
 STR_TRANSLATED_BY                                               :{BLACK}  Tõlgi(d) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

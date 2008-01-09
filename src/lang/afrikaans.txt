@@ -160,7 +160,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan nie 
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan nie die area reinig nie....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Oorspronklik kopiereg {COPYRIGHT} 1995 Chris Sawyer, Alle regte voorbehou
 STR_00B7_VERSION                                                :{BLACK}OpenTTD uitgawe {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 Die OpenTTD span
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 Die OpenTTD span
 STR_TRANSLATED_BY                                               :{BLACK}  Vertaler(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

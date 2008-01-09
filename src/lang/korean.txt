@@ -161,7 +161,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}그렇�
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}이 지역을 파괴할 수 없습니다....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD 버전 {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  한글화 -
 
 STR_00C5                                                        :{BLACK}{CROSS}

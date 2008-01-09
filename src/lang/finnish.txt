@@ -160,7 +160,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ei onnis
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Aluetta ei voi tyhjentää....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Alkuperäiset oikeudet {COPYRIGHT} 1995 Chris Sawyer, kaikki oikeudet pidätetään
 STR_00B7_VERSION                                                :{BLACK}OpenTTD-versio {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2007 The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Kääntäjä(t) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
