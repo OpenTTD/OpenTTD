@@ -13,6 +13,7 @@
 #include "viewport.h"
 #include "command_func.h"
 #include "variables.h"
+#include "road_type.h"
 #include "road_cmd.h"
 #include "road_map.h"
 #include "station_map.h"

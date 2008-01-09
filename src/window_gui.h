@@ -6,8 +6,6 @@
 #define WINDOW_GUI_H
 
 #include "core/bitmath_func.hpp"
-#include "rail_type.h"
-#include "road_type.h"
 #include "vehicle_type.h"
 #include "viewport.h"
 
