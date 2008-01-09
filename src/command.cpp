@@ -17,6 +17,7 @@
 #include "strings_func.h"
 #include "gfx_func.h"
 #include "functions.h"
+#include "town.h"
 
 const char *_cmd_text = NULL;
 
@@ -388,7 +389,7 @@ byte GetCommandFlags(uint cmd)
 	return _command_proc_table[cmd & 0xFF].flags;
 }
 
-static int _docommand_recursive;
+static int _docommand_recursive = 0;
 
 /*!
  * This function executes a given command with the parameters from the #CommandProc parameter list.
@@ -420,7 +421,9 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32
 
 	/* only execute the test call if it's toplevel, or we're not execing. */
 	if (_docommand_recursive == 1 || !(flags & DC_EXEC) || (flags & DC_FORCETEST) ) {
+		SetTownRatingTestMode(true);
 		res = proc(tile, flags & ~DC_EXEC, p1, p2);
+		SetTownRatingTestMode(false);
 		if (CmdFailed(res)) {
 			res.SetGlobalErrorMessage();
 			goto error;
@@ -540,7 +543,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	 *  e.g.: if you demolish a whole town, the dryrun would say okay.
 	 *  but by really destroying, your rating drops and at a certain point
 	 *  it will fail. so res and res2 are different
-	 * CMD_REMOVE_ROAD: This command has special local authority
+	 * CMD_REMOVE_LONG_ROAD: This command has special local authority
 	 * restrictions which may cause the test run to fail (the previous
 	 * road fragments still stay there and the town won't let you
 	 * disconnect the road system), but the exec will succeed and this
@@ -551,7 +554,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	notest =
 		(cmd & 0xFF) == CMD_CLEAR_AREA ||
 		(cmd & 0xFF) == CMD_LEVEL_LAND ||
-		(cmd & 0xFF) == CMD_REMOVE_ROAD ||
 		(cmd & 0xFF) == CMD_REMOVE_LONG_ROAD ||
 		(cmd & 0xFF) == CMD_CLONE_VEHICLE;
 
@@ -581,7 +583,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	if (!((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		/* first test if the command can be executed. */
+		SetTownRatingTestMode(true);
 		res = proc(tile, flags, p1, p2);
+		SetTownRatingTestMode(false);
 		if (CmdFailed(res)) {
 			res.SetGlobalErrorMessage();
 			goto show_error;

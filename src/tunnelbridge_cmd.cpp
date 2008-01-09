@@ -596,15 +596,17 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 		}
 	}
 
+	/* checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
+	 * you have a "Poor" (0) town rating */
+	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
+		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
+	}
+
 	if (flags & DC_EXEC) {
 		/* We first need to request the direction before calling DoClearSquare
 		 *  else the direction is always 0.. dah!! ;) */
 		DiagDirection dir = GetTunnelBridgeDirection(tile);
 		Track track;
-
-		/* Adjust the town's player rating. Do this before removing the tile owner info. */
-		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
-			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
@@ -645,14 +647,15 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 		}
 	}
 
+	/* checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
+	 * you have a "Poor" (0) town rating */
+	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
+		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
+	}
+
 	if (flags & DC_EXEC) {
 		TileIndex c;
 		Track track;
-
-		/* checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
-		 * you have a "Poor" (0) town rating */
-		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
-			ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM);
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
