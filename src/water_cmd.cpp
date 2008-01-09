@@ -12,7 +12,7 @@
 #include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "command_func.h"
 #include "town.h"
 #include "news.h"

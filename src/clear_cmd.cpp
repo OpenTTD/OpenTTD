@@ -7,7 +7,6 @@
 #include "clear_map.h"
 #include "table/strings.h"
 #include "player.h"
-#include "viewport.h"
 #include "command_func.h"
 #include "bridge.h"
 #include "landscape.h"
@@ -21,6 +20,7 @@
 #include "functions.h"
 #include "economy_func.h"
 #include "table/clear_land.h"
+#include "viewport_func.h"
 
 static CommandCost ClearTile_Clear(TileIndex tile, byte flags)
 {

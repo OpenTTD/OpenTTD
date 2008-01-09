@@ -49,13 +49,6 @@ void ShowBuildAirToolbar();
 void ShowGenerateLandscape();
 void ShowHeightmapLoad();
 
-typedef void PlaceProc(TileIndex tile);
-void PlaceProc_DemolishArea(TileIndex tile);
-void PlaceProc_LevelLand(TileIndex tile);
-void PlaceProc_BuyLand(TileIndex tile);
-bool GUIPlaceProcDragXY(const WindowEvent *e);
-VARDEF PlaceProc *_place_proc;
-
 /** Drag and drop selection process, or, what to do with an area of land when
  * you've selected it. */
 enum {

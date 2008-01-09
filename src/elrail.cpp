@@ -48,7 +48,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "station_map.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "variables.h" /* ... same here */
 #include "landscape.h"
 #include "rail_type.h"

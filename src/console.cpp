@@ -19,6 +19,7 @@
 #include "core/alloc_func.hpp"
 #include "window_func.h"
 #include "string_func.h"
+#include "gfx_func.h"
 
 #define ICON_BUFFER 79
 #define ICON_HISTORY_SIZE 20

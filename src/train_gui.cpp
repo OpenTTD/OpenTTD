@@ -9,7 +9,7 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "viewport.h"
+#include "gfx_func.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
 #include "depot.h"

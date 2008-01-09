@@ -7,7 +7,7 @@
 
 #include "core/bitmath_func.hpp"
 #include "vehicle_type.h"
-#include "viewport.h"
+#include "viewport_type.h"
 
 /**
  * The maximum number of windows that can be opened.

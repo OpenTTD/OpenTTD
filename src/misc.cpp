@@ -18,7 +18,7 @@
 #include "newgrf_house.h"
 #include "cargotype.h"
 #include "group.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "economy_func.h"
 #include "zoom_func.h"
 #include "functions.h"
@@ -27,6 +27,8 @@
 #include "vehicle_func.h"
 #include "texteff.hpp"
 #include "string_func.h"
+#include "gfx_func.h"
+
 
 char _name_array[512][32];
 

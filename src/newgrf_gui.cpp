@@ -16,6 +16,7 @@
 #include "window_func.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
+#include "gfx_func.h"
 
 /** Parse an integerlist string and set each found value
  * @param p the string to be parsed. Each element in the list is seperated by a

@@ -15,7 +15,6 @@
 #include "depot.h"
 #include "train.h"
 #include "group.h"
-#include "viewport.h"
 #include "debug.h"
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
@@ -23,6 +22,8 @@
 #include "vehicle_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
+#include "viewport_func.h"
+#include "gfx_func.h"
 
 
 struct Sorting {

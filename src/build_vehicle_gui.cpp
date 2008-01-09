@@ -30,6 +30,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "settings_type.h"
+#include "gfx_func.h"
 
 struct buildvehicle_d {
 	VehicleType vehicle_type;

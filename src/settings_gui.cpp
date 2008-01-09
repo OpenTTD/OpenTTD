@@ -25,6 +25,7 @@
 #include "vehicle_base.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
+#include "gfx_func.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;

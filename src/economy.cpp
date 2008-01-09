@@ -43,6 +43,7 @@
 #include "track_type.h"
 #include "track_func.h"
 #include "rail_map.h"
+#include "gfx_func.h"
 
 /**
  * Multiply two integer values and shift the results to right.

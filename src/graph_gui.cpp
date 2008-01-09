@@ -16,6 +16,7 @@
 #include "core/alloc_func.hpp"
 #include "window_func.h"
 #include "date_func.h"
+#include "gfx_func.h"
 
 /* Bitmasks of player and cargo indices that shouldn't be drawn. */
 static uint _legend_excluded_players;

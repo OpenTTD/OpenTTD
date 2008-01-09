@@ -7,7 +7,7 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "news.h"
 #include "variables.h"
 #include "transparency.h"

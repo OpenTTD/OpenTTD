@@ -7,7 +7,6 @@
 #include "landscape.h"
 #include "mixer.h"
 #include "sound_func.h"
-#include "viewport.h"
 #include "fileio.h"
 #include "newgrf_sound.h"
 #include "fios.h"

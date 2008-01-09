@@ -8,7 +8,7 @@
 #include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "viewport.h"
+#include "gfx_func.h"
 #include "engine.h"
 #include "command_func.h"
 #include "economy_func.h"

@@ -10,13 +10,13 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "engine.h"
-#include "viewport.h"
 #include "player.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
+#include "gfx_func.h"
 
 /**
 * Draw the details for the given vehicle at the position (x,y)

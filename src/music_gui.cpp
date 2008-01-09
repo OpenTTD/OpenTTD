@@ -14,6 +14,8 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "sound_func.h"
+#include "gfx_func.h"
+#include "core/math_func.hpp"
 
 static byte _music_wnd_cursong;
 static bool _song_is_active;

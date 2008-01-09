@@ -26,6 +26,7 @@
 #include "../window_func.h"
 #include "../core/alloc_func.hpp"
 #include "../string_func.h"
+#include "../gfx_func.h"
 
 #define BGC 5
 #define BTC 15

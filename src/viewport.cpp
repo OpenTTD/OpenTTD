@@ -11,7 +11,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "landscape.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "station.h"
 #include "town.h"
 #include "signs.h"
@@ -28,6 +28,8 @@
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
+PlaceProc *_place_proc;
+Point _tile_fract_coords;
 ZoomLevel _saved_scrollpos_zoom;
 
 /**
@@ -865,23 +867,22 @@ static bool IsPartOfAutoLine(int px, int py)
 	px -= _thd.selstart.x;
 	py -= _thd.selstart.y;
 
-	switch (_thd.drawstyle) {
-	case HT_LINE | HT_DIR_X:  return py == 0; // x direction
-	case HT_LINE | HT_DIR_Y:  return px == 0; // y direction
-	case HT_LINE | HT_DIR_HU: return px == -py || px == -py - 16; // horizontal upper
-	case HT_LINE | HT_DIR_HL: return px == -py || px == -py + 16; // horizontal lower
-	case HT_LINE | HT_DIR_VL: return px == py || px == py + 16; // vertival left
-	case HT_LINE | HT_DIR_VR: return px == py || px == py - 16; // vertical right
-	default:
-		NOT_REACHED();
-	}
+	if ((_thd.drawstyle & ~HT_DIR_MASK) != HT_LINE) return false;
 
-	/* useless, but avoids compiler warning this way */
-	return 0;
+	switch (_thd.drawstyle & HT_DIR_MASK) {
+		case HT_DIR_X:  return py == 0; // x direction
+		case HT_DIR_Y:  return px == 0; // y direction
+		case HT_DIR_HU: return px == -py || px == -py - 16; // horizontal upper
+		case HT_DIR_HL: return px == -py || px == -py + 16; // horizontal lower
+		case HT_DIR_VL: return px == py || px == py + 16; // vertival left
+		case HT_DIR_VR: return px == py || px == py - 16; // vertical right
+		default:
+			NOT_REACHED();
+	}
 }
 
 // [direction][side]
-static const int _AutorailType[6][2] = {
+static const HighLightStyle _autorail_type[6][2] = {
 	{ HT_DIR_X,  HT_DIR_X },
 	{ HT_DIR_Y,  HT_DIR_Y },
 	{ HT_DIR_HU, HT_DIR_HL },
@@ -969,7 +970,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			/* autorail highlight piece under cursor */
 			uint type = _thd.drawstyle & 0xF;
 			assert(type <= 5);
-			DrawAutorailSelection(ti, _AutorailType[type][0]);
+			DrawAutorailSelection(ti, _autorail_type[type][0]);
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) {
 			/* autorail highlighting long line */
 			int dir = _thd.drawstyle & ~0xF0;
@@ -982,7 +983,7 @@ static void DrawTileSelection(const TileInfo *ti)
 				side = Delta(Delta(TileX(start), TileX(ti->tile)), Delta(TileY(start), TileY(ti->tile)));
 			}
 
-			DrawAutorailSelection(ti, _AutorailType[dir][side]);
+			DrawAutorailSelection(ti, _autorail_type[dir][side]);
 		}
 		return;
 	}
@@ -2229,9 +2230,9 @@ void SetTileSelectBigSize(int ox, int oy, int sx, int sy)
 }
 
 /** returns the best autorail highlight type from map coordinates */
-static byte GetAutorailHT(int x, int y)
+static HighLightStyle GetAutorailHT(int x, int y)
 {
-	return HT_RAIL | _AutorailPiece[x & 0xF][y & 0xF];
+	return HT_RAIL | _autorail_piece[x & 0xF][y & 0xF];
 }
 
 /**
@@ -2376,7 +2377,7 @@ static void VpStartPreSizing()
 
 /** returns information about the 2x1 piece to be build.
  * The lower bits (0-3) are the track type. */
-static byte Check2x1AutoRail(int mode)
+static HighLightStyle Check2x1AutoRail(int mode)
 {
 	int fxpy = _tile_fract_coords.x + _tile_fract_coords.y;
 	int sxpy = (_thd.selend.x & 0xF) + (_thd.selend.y & 0xF);
@@ -2384,28 +2385,27 @@ static byte Check2x1AutoRail(int mode)
 	int sxmy = (_thd.selend.x & 0xF) - (_thd.selend.y & 0xF);
 
 	switch (mode) {
-	case 0: // end piece is lower right
-		if (fxpy >= 20 && sxpy <= 12) { /*SwapSelection(); DoRailroadTrack(0); */return 3; }
-		if (fxmy < -3 && sxmy > 3) {/* DoRailroadTrack(0); */return 5; }
-		return 1;
+		default: NOT_REACHED();
+		case 0: // end piece is lower right
+			if (fxpy >= 20 && sxpy <= 12) { /*SwapSelection(); DoRailroadTrack(0); */return HT_DIR_HL; }
+			if (fxmy < -3 && sxmy > 3) {/* DoRailroadTrack(0); */return HT_DIR_VR; }
+			return HT_DIR_Y;
 
-	case 1:
-		if (fxmy > 3 && sxmy < -3) { /*SwapSelection(); DoRailroadTrack(0); */return 4; }
-		if (fxpy <= 12 && sxpy >= 20) { /*DoRailroadTrack(0); */return 2; }
-		return 1;
+		case 1:
+			if (fxmy > 3 && sxmy < -3) { /*SwapSelection(); DoRailroadTrack(0); */return HT_DIR_VL; }
+			if (fxpy <= 12 && sxpy >= 20) { /*DoRailroadTrack(0); */return HT_DIR_HU; }
+			return HT_DIR_Y;
 
-	case 2:
-		if (fxmy > 3 && sxmy < -3) { /*DoRailroadTrack(3);*/ return 4; }
-		if (fxpy >= 20 && sxpy <= 12) { /*SwapSelection(); DoRailroadTrack(0); */return 3; }
-		return 0;
+		case 2:
+			if (fxmy > 3 && sxmy < -3) { /*DoRailroadTrack(3);*/ return HT_DIR_VL; }
+			if (fxpy >= 20 && sxpy <= 12) { /*SwapSelection(); DoRailroadTrack(0); */return HT_DIR_HL; }
+			return HT_DIR_X;
 
-	case 3:
-		if (fxmy < -3 && sxmy > 3) { /*SwapSelection(); DoRailroadTrack(3);*/ return 5; }
-		if (fxpy <= 12 && sxpy >= 20) { /*DoRailroadTrack(0); */return 2; }
-		return 0;
+		case 3:
+			if (fxmy < -3 && sxmy > 3) { /*SwapSelection(); DoRailroadTrack(3);*/ return HT_DIR_VR; }
+			if (fxpy <= 12 && sxpy >= 20) { /*DoRailroadTrack(0); */return HT_DIR_HU; }
+			return HT_DIR_X;
 	}
-
-	return 0; // avoids compiler warnings
 }
 
 /** Check if the direction of start and end tile should be swapped based on
@@ -2749,7 +2749,7 @@ calc_heightdiff_single_direction:;
 
 				/* If dragging an area (eg dynamite tool) and it is actually a single
 				 * row/column, change the type to 'line' to get proper calculation for height */
-				style = _thd.next_drawstyle;
+				style = (HighLightStyle)_thd.next_drawstyle;
 				if (style & HT_RECT) {
 					if (dx == 1) {
 						style = HT_LINE | HT_DIR_Y;

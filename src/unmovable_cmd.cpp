@@ -9,7 +9,7 @@
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "command_func.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "player.h"
 #include "gui.h"
 #include "station.h"

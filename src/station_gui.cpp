@@ -23,6 +23,8 @@
 #include "strings_func.h"
 #include "core/alloc_func.hpp"
 #include "window_func.h"
+#include "viewport_func.h"
+#include "gfx_func.h"
 
 typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
 

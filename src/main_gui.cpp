@@ -13,7 +13,7 @@
 #include "window_gui.h"
 #include "window_func.h"
 #include "textbuf_gui.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "player.h"
 #include "command_func.h"
 #include "news.h"

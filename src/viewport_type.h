@@ -1,15 +1,13 @@
 /* $Id$ */
 
-/** @file viewport.h */
+/** @file viewport_type.h Types related to viewports. */
 
-#ifndef VIEWPORT_H
-#define VIEWPORT_H
+#ifndef VIEWPORT_TYPE_H
+#define VIEWPORT_TYPE_H
 
 #include "zoom_type.h"
 #include "window_type.h"
-#include "vehicle_type.h"
-#include "gfx_func.h"
-#include "gui.h"
+#include "tile_type.h"
 
 struct ViewPort {
 	int left,top;                       // screen coordinates for the viewport
@@ -21,32 +19,11 @@ struct ViewPort {
 	ZoomLevel zoom;
 };
 
-void SetSelectionRed(bool);
-
-/* viewport.cpp */
-void InitViewports();
-void DeleteWindowViewport(Window *w);
-void AssignWindowViewport(Window *w, int x, int y,
-	int width, int height, uint32 follow_flags, ZoomLevel zoom);
-ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);
-Point GetTileBelowCursor();
-void UpdateViewportPosition(Window *w);
-
 enum {
 	ZOOM_IN   = 0,
 	ZOOM_OUT  = 1,
 	ZOOM_NONE = 2, // hack, used to update the button status
 };
-
-bool DoZoomInOutWindow(int how, Window *w);
-void ZoomInOrOutToCursorWindow(bool in, Window * w);
-Point GetTileZoomCenterWindow(bool in, Window * w);
-void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out);
-
-static inline void MaxZoomInOut(int how, Window *w)
-{
-	while (DoZoomInOutWindow(how, w)) {};
-}
 
 /**
  * Some values for constructing bounding boxes (BB). The Z positions under bridges are:
@@ -58,26 +35,6 @@ enum {
 	BB_HEIGHT_UNDER_BRIDGE = 6, ///< Everything that can be built under low bridges, must not exceed this Z height.
 	BB_Z_SEPARATOR  = 7,        ///< Separates the bridge/tunnel from the things under/above it.
 };
-
-void OffsetGroundSprite(int x, int y);
-
-void DrawGroundSprite(SpriteID image, SpriteID pal, const SubSprite *sub = NULL);
-void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, const SubSprite *sub = NULL);
-void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, int dz, int z, bool transparent = false, int bb_offset_x = 0, int bb_offset_y = 0, int bb_offset_z = 0, const SubSprite *sub = NULL);
-void *AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2);
-void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool transparent = false, const SubSprite *sub = NULL);
-
-
-void StartSpriteCombine();
-void EndSpriteCombine();
-
-void HandleViewportClicked(const ViewPort *vp, int x, int y);
-void PlaceObject();
-void SetRedErrorSquare(TileIndex tile);
-void SetTileSelectSize(int w, int h);
-void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
-
-Vehicle *CheckMouseOverVehicle();
 
 /** Viewport place method (type of highlighted area and placed objects) */
 enum ViewportPlaceMethod {
@@ -100,14 +57,8 @@ enum ViewportHighlightMode {
 	VHM_RAIL    = 5, ///< rail pieces
 };
 
-void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method);
-void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, byte process);
-void VpSetPresizeRange(uint from, uint to);
-void VpSetPlaceSizingLimit(int limit);
-
 /* highlighting draw styles */
-typedef byte HighLightStyle;
-enum HighLightStyles {
+enum HighLightStyle {
 	HT_NONE   = 0x00,
 	HT_RECT   = 0x80,
 	HT_POINT  = 0x40,
@@ -127,6 +78,8 @@ enum HighLightStyles {
 	HT_DIR_VR = 5,    ///< vertical right
 	HT_DIR_MASK = 0x7 ///< masks the drag-direction
 };
+DECLARE_ENUM_AS_BIT_SET(HighLightStyle);
+
 
 struct TileHighlightData {
 	Point size;
@@ -158,25 +111,4 @@ struct TileHighlightData {
 	TileIndex redsq;
 };
 
-
-/* common button handler */
-bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, ViewportHighlightMode mode, PlaceProc *placeproc);
-
-VARDEF Point _tile_fract_coords;
-
-extern TileHighlightData _thd;
-
-
-void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
-
-void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode, Window *w);
-void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, WindowClass window_class, WindowNumber window_num);
-
-void ResetObjectToPlace();
-
-bool ScrollWindowTo(int x, int y, Window *w, bool instant = false);
-
-bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
-bool ScrollMainWindowTo(int x, int y, bool instant = false);
-
-#endif /* VIEWPORT_H */
+#endif /* VIEWPORT_TYPE_H */

@@ -10,7 +10,6 @@
 #include "gui.h"
 #include "station_gui.h"
 #include "terraform_gui.h"
-#include "viewport.h"
 #include "command_func.h"
 #include "station.h"
 #include "airport.h"
@@ -18,6 +17,8 @@
 #include "sound_func.h"
 #include "window_func.h"
 #include "variables.h"
+#include "viewport_func.h"
+#include "gfx_func.h"
 
 static byte _selected_airport_type;
 

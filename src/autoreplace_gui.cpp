@@ -18,6 +18,7 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "autoreplace_func.h"
+#include "gfx_func.h"
 
 static RailType _railtype_selected_in_replace_gui;
 

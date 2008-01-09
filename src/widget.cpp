@@ -7,7 +7,7 @@
 #include "player.h"
 #include "table/sprites.h"
 #include "table/strings.h"
-#include "viewport.h"
+#include "gfx_func.h"
 #include "window_gui.h"
 #include "window_func.h"
 

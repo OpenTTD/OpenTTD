@@ -7,7 +7,6 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "viewport.h"
 #include "command_func.h"
 #include "economy_func.h"
 #include "variables.h"
@@ -16,6 +15,8 @@
 #include "window_func.h"
 #include "sound_func.h"
 #include "map_func.h"
+#include "viewport_func.h"
+#include "gfx_func.h"
 
 static struct BridgeData {
 	uint8 last_size;

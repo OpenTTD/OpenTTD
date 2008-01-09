@@ -45,6 +45,7 @@
 #include "sound_func.h"
 #include "variables.h"
 #include "autoreplace_gui.h"
+#include "gfx_func.h"
 
 
 static bool TrainCheckIfLineEnds(Vehicle *v);

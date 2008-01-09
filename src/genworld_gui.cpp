@@ -26,6 +26,7 @@
 #include "sound_func.h"
 #include "fios.h"
 #include "string_func.h"
+#include "gfx_func.h"
 
 /**
  * In what 'mode' the GenerateLandscapeWindowProc is.

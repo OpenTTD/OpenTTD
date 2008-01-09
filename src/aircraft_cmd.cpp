@@ -36,6 +36,7 @@
 #include "variables.h"
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
+#include "gfx_func.h"
 
 void Aircraft::UpdateDeltaXY(Direction direction)
 {

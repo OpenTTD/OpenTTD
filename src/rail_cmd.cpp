@@ -16,7 +16,7 @@
 #include "landscape.h"
 #include "town_map.h"
 #include "tunnel_map.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "command_func.h"
 #include "pathfind.h"
 #include "engine.h"

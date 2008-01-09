@@ -6,7 +6,6 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "viewport.h"
 #include "variables.h"
 #include "transparency.h"
 #include "sound_func.h"

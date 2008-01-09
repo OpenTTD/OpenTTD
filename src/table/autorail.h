@@ -52,21 +52,21 @@ static const int _AutorailTilehSprite[][6] = {
 
 // maps each pixel of a tile (16x16) to a selection type
 // (0,0) is the top corner, (16,16) the bottom corner
-static const byte _AutorailPiece[][16] = {
-	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
-	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
-	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
-	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
-	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
-	{ 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5 },
-	{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 },
-	{ 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1 },
-	{ 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1 },
-	{ 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1 },
-	{ 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3 },
-	{ 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3 },
-	{ 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3 },
-	{ 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3 },
-	{ 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3 },
-	{ 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3 }
+static const HighLightStyle _autorail_piece[][16] = {
+	{ HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR },
+	{ HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR },
+	{ HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR },
+	{ HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR },
+	{ HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR },
+	{ HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_HU, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR, HT_DIR_VR },
+	{ HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_Y, HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y  },
+	{ HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y, HT_DIR_X, HT_DIR_Y, HT_DIR_Y, HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y  },
+	{ HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y, HT_DIR_Y, HT_DIR_X, HT_DIR_Y, HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y  },
+	{ HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y,  HT_DIR_Y  },
+	{ HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL },
+	{ HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL },
+	{ HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL },
+	{ HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL },
+	{ HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL },
+	{ HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_VL, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_X, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL, HT_DIR_HL }
 };

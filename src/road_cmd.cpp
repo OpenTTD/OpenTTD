@@ -16,7 +16,7 @@
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "town_map.h"
-#include "viewport.h"
+#include "viewport_func.h"
 #include "command_func.h"
 #include "player.h"
 #include "town.h"
